@@ -47,8 +47,11 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.gag = player.base_info.gag
     responsedata.closure = player.base_info.closure
 
-    for i in player.finance._finances:
-        responsedata.finances.append(i)
+    for k, i in enumerate(player.finance._finances):
+        if k == const.GOLD:
+            responsedata.finances.append(i - player.finance._finances[const.CONSUME_GOLD])
+        else:
+            responsedata.finances.append(i)
 
     responsedata.fine_hero = player.last_pick_time.fine_hero
     responsedata.excellent_hero = player.last_pick_time.excellent_hero
@@ -82,7 +85,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.base_info.vip_level)
     logger.debug("register_time:%d", player.base_info.register_time)
-    # logger.debug("stamina:%d", player.stamina.stamina)
+    logger.debug("buy_stamina_times:%d", player.stamina.buy_stamina_times)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
