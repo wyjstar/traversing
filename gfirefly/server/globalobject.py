@@ -33,14 +33,18 @@ class GlobalObject:
         self.logclient = LogClient()
         self.msdk = None
         self.pay = None
+        self.channel = ''
+        self.remote_deployed = False
 
-    def config(self, netfactory=None, root=None, remote=None, db=None):
+    def config(self, netfactory=None, root=None, remote=None, db=None, channel='', remote_deployed=False):
         """配置存放的对象实例
         """
         self.netfactory = netfactory
         self.root = root
         self.remote = remote
         self.db = db
+        self.channel = channel
+        self.remote_deployed = remote_deployed
 
     def child(self, key):
         return self.root.childsmanager.child(key)
