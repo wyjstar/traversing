@@ -48,7 +48,8 @@ class CharacterBaseInfoComponent(Component):
         self._google_consume_data = ''
         self._apple_transaction_id = ''
         self._first_recharge_ids = []
-        self._recharge = 0 # 累积充值
+        self._recharge = 0  # 累积充值
+        self._login_time = int(time.time())  # 登录时间
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -212,6 +213,14 @@ class CharacterBaseInfoComponent(Component):
     @level.setter
     def level(self, value):
         self._level = value
+
+    @property
+    def login_time(self):
+        return self._login_time
+
+    @login_time.setter
+    def login_time(self, value):
+        self._login_time = value
 
     @property
     def exp(self):

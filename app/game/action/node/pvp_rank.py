@@ -352,7 +352,7 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
                      best_skill=best_skill,
                      unpar_skill=skill,
                      unpar_skill_level=skill_level,
-                     ap=player.line_up_component.combat_power,
+                     ap=int(player.line_up_component.combat_power),
                      character_id=player.base_info.id,
                      units=red_units,
                      slots=slots)
