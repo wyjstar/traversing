@@ -6,7 +6,7 @@ import gate
 from shared.utils.const import const
 from gfirefly.server.globalobject import GlobalObject
 
-if GlobalObject().channel == "tencent":
+if GlobalObject().allconfig["deploy"]["channel"]== "tencent":
     import login_Tencent
-elif GlobalObject().channel == "taiwan":
+elif GlobalObject().allconfig["deploy"]["channel"]== "taiwan":
     import login_MA

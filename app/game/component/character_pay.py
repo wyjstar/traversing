@@ -21,7 +21,7 @@ class CharacterPay(Component):
         self._pf = ""
         self._pfkey = ""
         self._zoneid = 0
-        self.REMOTE_DEPLOYED = GlobalObject().remote_deployed
+        self.REMOTE_DEPLOYED = GlobalObject().allconfig["deploy"]["remote_deployed"]
 
     def set_pay_arg(self, value):
         self._platform = value.get("platform")

@@ -50,7 +50,7 @@ class FFServer:
 
     def config(self, config, servername=None, dbconfig=None,
                memconfig=None, redis_config=None, masterconf=None,
-               model_default_config=None, model_config=None, msdk_config=None, deploy_config=None):
+               model_default_config=None, model_config=None, msdk_config=None):
         """配置服务器"""
         GlobalObject().json_config = config
         GlobalObject().json_model_config = model_default_config
@@ -107,9 +107,7 @@ class FFServer:
         if cpuid:
             affinity.set_process_affinity_mask(os.getpid(), cpuid)
         GlobalObject().config(netfactory=self.netfactory, root=self.root,
-                              remote=self.remote,
-                              channel=deploy_config.get("channel"),
-                              remote_deployed=deploy_config.get("remote_deployed"))
+                              remote=self.remote)
         if app:
             __import__(app)
         if mreload:
