@@ -14,27 +14,27 @@ class BattleUnit(object):
         self._slot_no = 0
         self._unit_name = ""
         self._unit_no = 0
-        self._hp = 0.0
         self._hp_max = 0.0
+        self._hp = 0.0
         self._atk = 0.0
         self._physical_def = 0.0
         self._magic_def = 0.0
-        self._hit = 0.0           # 命中率
-        self._dodge = 0.0         # 闪避率
-        self._cri = 0.0           # 暴击率
-        self._cri_coeff = 0.0     # 暴击伤害系数
-        self._cri_ded_coeff = 0.0 # 暴击减免系数
-        self._block = 0.0         # 格挡率
-        self._ductility = 0.0     # 韧性
-        self._level = 0.0         # 等级
-        self._break_level = 0     # 突破等级
-        self._mp_base = 0         # 武将基础mp
-        self._quality = 0         # 武将品质
-        self._is_boss = 0         # 是否为boss
-        self._skill = None        # 技能
-        self._is_break = False    # 是否为突破
-        self._is_awake = False    # 是否觉醒
-        self._origin_no = 0       # 突破或者觉醒武将的原始no
+        self._hit = 0.0            # 命中率
+        self._dodge = 0.0          # 闪避率
+        self._cri = 0.0            # 暴击率
+        self._cri_coeff = 0.0      # 暴击伤害系数
+        self._cri_ded_coeff = 0.0  # 暴击减免系数
+        self._block = 0.0          # 格挡率
+        self._ductility = 0.0      # 韧性
+        self._level = 0.0          # 等级
+        self._break_level = 0      # 突破等级
+        self._mp_base = 0          # 武将基础mp
+        self._quality = 0          # 武将品质
+        self._is_boss = 0          # 是否为boss
+        self._skill = None         # 技能
+        self._is_break = False     # 是否为突破
+        self._is_awake = False     # 是否觉醒
+        self._origin_no = 0        # 突破或者觉醒武将的原始no
 
         self._buff_manager = BuffManager(self)
 
@@ -258,10 +258,12 @@ class BattleUnit(object):
     @property
     def info(self):
         return dict(unit_no=self.unit_no, quality=self._quality,
-                    break_skills=self.skill.break_skill_ids, hp=self._hp, atk=self._atk,
-                    physical_def=self._physical_def,
-                    magic_def=self._magic_def, hit=self._hit, dodge=self._dodge, cri=self._cri,
-                    cri_coeff=self._cri_coeff, cri_ded_coeff=self._cri_ded_coeff, block=self._block,
+                    break_skills=self.skill.break_skill_ids,
+                    hp_max=self._hp_max, hp=self._hp, atk=self._atk,
+                    physical_def=self._physical_def, magic_def=self._magic_def,
+                    hit=self._hit, dodge=self._dodge, cri=self._cri,
+                    cri_coeff=self._cri_coeff,
+                    cri_ded_coeff=self._cri_ded_coeff, block=self._block,
                     ductility=self._ductility,
                     level=self._level,
                     is_boss=self._is_boss,
