@@ -190,7 +190,7 @@
         "valid_host": "10.130.2.233:80"
     },
     "deploy":{
-        "channel": "tencent",
+        "channel": "taiwan",
         "remote_deployed": false
     }
 }
