@@ -64,7 +64,9 @@ def sign_in_1401(pro_data, player):
     get_return(player, return_data, response.gain)
     #vip双倍
     print("vip================", player.base_info.vip_level, sign_in_info.get("vipDouble"))
-    if player.base_info.vip_level > 0 and player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+    if player.base_info.vip_level > 0 and \
+        sign_in_info.get("vipDouble") and \
+        player.base_info.vip_level >= sign_in_info.get("vipDouble"):
         return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
         get_return(player, return_data, response.gain)
     print(response.gain)
@@ -160,7 +162,9 @@ def repair_sign_in_1403(pro_data, player):
     get_return(player, return_data, response.gain)
 
     #vip双倍
-    if player.base_info.vip_level > 0 and player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+    if player.base_info.vip_level > 0 and \
+        sign_in_info.get("vipDouble") and \
+        player.base_info.vip_level >= sign_in_info.get("vipDouble"):
         return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
         get_return(player, return_data, response.gain)
 
