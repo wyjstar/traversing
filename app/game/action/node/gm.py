@@ -57,6 +57,10 @@ def modify_user_info(data, player):
         player.base_info.level = int(args['attr_value'])
         player.base_info.save_data()
         return {'success': 1}
+    elif args['attr_name'] == 'newbee_guide':
+        player.base_info.newbee_guide_id = int(args['attr_value'])
+        player.base_info.save_data()
+        return {'success': 1}
     elif args['attr_name'] == 'vip_level':
         player.base_info.vip_level = int(args['attr_value'])
         player.base_info.save_data()

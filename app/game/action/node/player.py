@@ -272,8 +272,9 @@ def new_guide_step_1802(data, player):
     # logger.debug(player.finance.coin)
     logger.debug("============================")
 
-    player.base_info.newbee_guide_id = request.step_id
-    player.base_info.save_data()
+    if my_newbee_sequence < new_guide_item.get('Sequence'):
+        player.base_info.newbee_guide_id = request.step_id
+        player.base_info.save_data()
     response.res.result = True
 
     return response.SerializePartialToString()

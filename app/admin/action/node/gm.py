@@ -174,6 +174,10 @@ def modify_user_info(args):
         data = {'level': int(args['attr_value'])}
         character_obj.hmset(data)
         return {'success': 1}
+    elif args['attr_name'] == 'newbee_guide':
+        data = {'newbee_guide_id': int(args['attr_value'])}
+        character_obj.hmset(data)
+        return {'success': 1}
     elif args['attr_name'] == 'vip_level':
         data = {'vip_level': int(args['attr_value'])}
         character_obj.hmset(data)

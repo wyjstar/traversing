@@ -201,8 +201,7 @@ message MineBattleResponse{
 	repeated int32 awake_no = 8;        //
 	optional int32 seed1= 9;
 	optional int32 seed2= 10;
-	repeated stoneData normal = 11;//符文石数据
-	repeated stoneData lucky = 12;//符文石数据
+	repeated Runt1 runt = 11;
 }
 
 //返回 StageStartResponse

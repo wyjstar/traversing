@@ -154,10 +154,10 @@ class Equipment(object):
                  nobbing_effect={}, is_guard=False, main_attr={},
                  minor_attr={}, prefix=0):
 
-        logger.debug("enhance_info========== %s" % _enhance_info)
+        # logger.debug("enhance_info========== %s" % _enhance_info)
         if _enhance_info == 0:
             _enhance_info = []
-        logger.debug("enhance_info========== %s" % _enhance_info)
+        # logger.debug("enhance_info========== %s" % _enhance_info)
         self._character_id = character_id
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,
@@ -313,8 +313,8 @@ class Equipment(object):
             data_format.before_lv = before_lv
             data_format.after_lv = after_lv
             data_format.cost_coin = enhance_cost
-        logger.debug("equipment_pb.data===============")
-        logger.debug(equipment_pb.data)
+        # logger.debug("equipment_pb.data===============")
+        # logger.debug(equipment_pb.data)
 
     def calculate_attr(self, hero_self_attr):
         """根据属性和强化等级计算装备属性"""
