@@ -969,6 +969,9 @@ def invite_join_1803(data, player):
         return response.SerializeToString()
 
     if not guild_obj.invite_join.get(user_id):
+        for u_id, i_time in guild_obj.invite_join.items():
+            if i_time + game_configs.base_config.get('guildInviteTime') > int(time.tiem()):
+                del guild_obj.invite_join[u_id]
         if len(guild_obj.invite_join)+1 > guild_p_max:
             response.result = False
             response.message = "超出可邀请人数上限"
@@ -1040,6 +1043,7 @@ def deal_invite_join_1804(data, player):
             response.result = False
             response.message = "超出公会人数上限"
 
+        open_stage_id = game_configs.base_config.get('guildOpenStage')
         if player.stage_component.get_stage(open_stage_id).state == -2:
             response.result = False
             response.message = "未完成指定关卡"

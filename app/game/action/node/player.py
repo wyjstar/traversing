@@ -252,21 +252,24 @@ def new_guide_step_1802(data, player):
     logger.info('newbee:%s step:%s',
                 player.base_info.id,
                 player.base_info.newbee_guide_id)
+    my_newbee_sequence = 0
+    if player.base_info.newbee_guide_id:
+        my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide_id).get('Sequence')
+    if my_newbee_sequence < new_guide_item.get('Sequence'):
+        gain_data = new_guide_item.get('rewards')
+        return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
+        get_return(player, return_data, response.gain)
 
-    gain_data = new_guide_item.get('rewards')
-    return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
-    get_return(player, return_data, response.gain)
+    consume_config = new_guide_item.get('consume')
+    result = is_afford(player, consume_config)  # 校验
+    if not result.get('result'):
+        logger.error('newbee guide comsume:%s', consume_config)
+    else:
+        consume_data = consume(player, consume_config)
+        get_return(player, consume_data, response.consume)
 
-    #consume_config = new_guide_item.get('consume')
-    #result = is_afford(player, consume_config)  # 校验
-    #if not result.get('result'):
-        #logger.error('newbee guide comsume:%s', consume_config)
-    #else:
-        #consume_data = consume(player, consume_config)
-        #get_return(player, consume_data, response.consume)
-
-    logger.debug("gain_data %s %s" % (gain_data, request.step_id))
-    logger.debug(player.finance.coin)
+    # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
+    # logger.debug(player.finance.coin)
     logger.debug("============================")
 
     player.base_info.newbee_guide_id = request.step_id

@@ -41,6 +41,7 @@ def settle(player, result, response, lively_event, conf):
         return
 
     player.finance.coin += conf.currency
+    player.finance.save_data()
     player.base_info.addexp(conf.playerExp, const.STAGE)
     player.base_info.save_data()
     for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
