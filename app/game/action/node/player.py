@@ -109,7 +109,6 @@ def buy_stamina_6(request_proto, player):
     player.finance.save_data()
 
     player.stamina.buy_stamina_times += 1
-    player.base_info.save_data()
 
     player.stamina.stamina += 120
     player.stamina.last_buy_stamina_time = int(time.time())
