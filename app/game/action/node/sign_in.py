@@ -27,7 +27,7 @@ def get_sign_in_1400(pro_data, player):
     response.current_day = sign_in_component.current_day()
     [response.continuous_sign_in_prize.append(i) for i in sign_in_component.continuous_sign_in_prize]
     response.repair_sign_in_times = sign_in_component.repair_sign_in_times
-    logger.debug("get_sign_in: days %s  sign_round %s current_day %s" %  (sign_in_component.sign_in_days, sign_in_component.sign_round, response.current_day))
+    [response.box_sign_in_prize.append(i) for i in sign_in_component.box_sign_in_prize]
     logger.debug("get_sign_in: %s" % response)
     return response.SerializePartialToString()
 
@@ -180,14 +180,14 @@ def sign_in_box_1404(pro_data, player):
     activity_info = game_configs.activity_config.get(_id)
 
     # 验证宝箱签到, 是否领取
-    if _id not in player.sigin_in.box_sign_in_prize:
+    if _id in player.sign_in_component.box_sign_in_prize:
         response.res.result = False
         response.res.result_no = 1404
         logger.debug(response)
         return response.SerializePartialToString()
     # 验证宝箱签到条件
     for day in activity_info.parameterC:
-        if day not in player.sign_in.sign_in_days:
+        if day not in player.sign_in_component.sign_in_days:
             response.res.result = False
             response.res.result_no = 1405
             logger.debug(response)
@@ -195,6 +195,9 @@ def sign_in_box_1404(pro_data, player):
 
     return_data = gain(player, activity_info.reward, const.BOX_SIGN)
     get_return(player, return_data, response.gain)
+
+    player.sign_in_component.box_sign_in_prize.append(_id)
+    player.sign_in_component.save_data()
 
     response.res.result = True
     logger.debug(response)

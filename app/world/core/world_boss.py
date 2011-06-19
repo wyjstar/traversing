@@ -142,18 +142,41 @@ class WorldBoss(BaseBoss):
         """
         排行奖励, top 10
         """
-        pass
+        award_info = game_configs.base_config.get('hurt_rank_rewards')
+        for up, down, big_bag_id in award_info.values():
+            ranks = self._rank_instance.get(up, down)
+            for player_id, v in ranks:
+                self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id)
+
     def send_award_add_up(self):
         """
         累积奖励
         """
-        pass
+        i = 0
+        hp_max = self.get_hp()
+        accumulated_rewards = game_configs.base_config.get('accumulated_rewards')
+        has_award = True
+        while True and i < 1000:
+            i+=1
+            ranks = self._rank_instance.get(100*(i-1)+1, 100*i)
+            if len(ranks) == 0:
+                return
+            for player_id, v in ranks:
+                for i in range(5, 1, -1):
+                    reward_info = accumulated_rewards.get(i)
+                    if hp_max * reward_info[0] < v:
+                        self.send_award(player_id, const.PVB_TOP_TEN_AWARD, reward_info[1])
+                        break
+                    else:
+                        return
+
     def send_award_last(self):
         """
         最后击杀
         """
         player_id = self._last_shot_item['player_id']
-        self.send_award(player_id, const.PVB_LAST_AWARD, "")
+        big_bag_id = game_configs.base_config.get('accumulated_rewards')
+        self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
 
     def send_award(self, player_id, award_type, award):
         """
@@ -161,7 +184,7 @@ class WorldBoss(BaseBoss):
         """
         award_data = WorldBossAwardDB()
         award_data.award_type = award_type
-        award_data.award = award
+        award_data.award = cPickle.dumps(award)
         remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
         remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
                                                     int(player_id), award_data)

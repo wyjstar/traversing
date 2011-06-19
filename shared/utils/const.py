@@ -178,7 +178,7 @@ const.GAIN = 1  # 掉落
 
 # ==================================================
 # pvb奖励类型
-const.PVB_FIRST_TEN_AWARD = 1 #排名奖
+const.PVB_TOP_TEN_AWARD = 1 #排名奖
 const.PVB_ADD_UP_AWARD = 2 #累积奖
 const.PVB_LAST_AWARD = 3 #斩杀奖
 const.PVB_IN_AWARD = 4 #参与奖

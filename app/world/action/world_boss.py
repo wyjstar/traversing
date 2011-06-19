@@ -72,8 +72,9 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
 def update_rank_items(rank_item_pb, rank_item):
     rank_item_pb.nickname = rank_item.get("nickname", "")
     rank_item_pb.level = rank_item.get("level", 0)
-    rank_item_pb.first_hero_no = rank_item.get("first_hero_no", 0)
+    rank_item_pb.head = rank_item.get("now_head", 0) #rank_item.get("first_hero_no", 0)
     rank_item_pb.demage_hp = int(rank_item.get("demage_hp", 0))
+    rank_item_pb.line_up_info = rank_item.get("line_up_info", 0)
 
 @rootserviceHandle
 def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info, boss_id):
@@ -91,12 +92,6 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
 
     # 保存排行和玩家信息
     demage_hp = blue_units.get(5).hp - hp_left # 伤害血量
-    first_unit = red_units.values()[0]
-    first_hero_no = first_unit.unit_no # 第一个武将no，用于显示头像
-    if first_unit.is_awake:
-        first_hero_no = first_unit.origin_no
-
-    player_info["first_hero_no"] = first_hero_no
     player_info["demage_hp"] = demage_hp
     boss.add_rank_item(player_info)
 

@@ -43,7 +43,9 @@ class CharacterSignInComponent(Component):
             sign_round=self._sign_round,
             sign_in_days=self._sign_in_days,
             continuous_sign_in_prize=self._continuous_sign_in_prize,
-            repair_sign_in_times=self._repair_sign_in_times)
+            repair_sign_in_times=self._repair_sign_in_times,
+            box_sign_in_prize=self._box_sign_in_prize
+        )
         return {'sign_in': props}
 
     @property

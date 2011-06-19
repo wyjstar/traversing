@@ -1,5 +1,6 @@
 import "common.proto";
 import "stage.proto";
+import "line_up.proto";
 //获取boss开始前的所有信息， command:1701,1704
 message PvbRequest
 {
@@ -8,8 +9,9 @@ message PvbRequest
 message PvbRankItem{
     required string nickname = 1; //玩家昵称
     required int32 level = 2;//等级
-    required int32 first_hero_no = 3;//第一位武将id，用来显示玩家头像
+    required int32 now_head = 3;//玩家头像
     required int32 demage_hp = 4; //伤害血量
+    required LineUpResponse line_up_info = 5; //阵容信息
 }
 
 message LuckyHeroAttr

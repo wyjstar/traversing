@@ -7,6 +7,7 @@ from gfirefly.server.logobj import logger
 from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, \
     PvbPlayerInfoRequest, PvbRequest, PvbAwardResponse
 from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file.db_pb2 import WorldBossAwardDB
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
@@ -258,6 +259,7 @@ def pvb_fight_start_1705(pro_data, player):
     # mock fight.
     player_info = {}
     player_info["player_id"] = player.base_info.id
+    player_info["now_head"] = player.base_info.heads.now_head
     player_info["nickname"] = player.base_info.base_name
     player_info["level"] = player.base_info.level
     player_info["line_up_info"] = line_up_info(player).SerializePartialToString()
@@ -294,10 +296,17 @@ def pvb_fight_start_1705(pro_data, player):
 
 
 @remoteserviceHandle('gate')
-def receive_pvb_award_remote(pvb_award, is_online, player):
+def receive_pvb_award_remote(pvb_award_data, is_online, player):
     logger.debug("receive_pvb_award_remote=================")
+    pvb_award = WorldBossAwardDB()
+    pvb_award.ParseFromString(pvb_award_data)
     award_type = pvb_award.award_type
     award = pvb_award.award
+    if award_type in [const.PVB_TOP_TEN_AWARD, const.PVB_LAST_AWARD]:
+        pass
+
+
+
     player.world_boss.set_award(award_type, award)
     return True
 

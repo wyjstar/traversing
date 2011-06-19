@@ -7,6 +7,7 @@ message GetSignInResponse{
     required int32 current_day = 5; //登陆当天
     repeated int32 continuous_sign_in_prize = 3; //已经获取的连续签到奖励，保存列表[7，15，25]
     required int32 repair_sign_in_times = 4; //补充签到次数
+    repeated int32 box_sign_in_prize = 6; //已经获取的宝箱签到奖励，保存列表[]
 }
 
 // 补签:1403
