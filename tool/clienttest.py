@@ -124,6 +124,6 @@ def main():
 
 # this only runs if the module was *not* imported
 if __name__ == '__main__':
-    # main()
-    from redisco.tests import all_tests
-    print all_tests()
+    main()
+    # from redisco.tests import all_tests
+    # print all_tests()

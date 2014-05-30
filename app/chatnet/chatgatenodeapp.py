@@ -13,4 +13,5 @@ def push_message(send_list, message):
     from app.chat.proto_file.chat import chat_pb2
     argument = chat_pb2.chatMessageResponse()
     argument.ParseFromString(message)
+    print 1000, message, send_list
     GlobalObject().netfactory.pushObject(1000, message, send_list)

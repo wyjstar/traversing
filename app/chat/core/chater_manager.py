@@ -75,3 +75,5 @@ class ChaterManager(object):
         chater.dynamic_id = -1
         del self.mapping[dynamic_id]  #删除这个动态id与角色id的对应关系
         del self._chaters[chater_id]
+
+        print self.mapping, self._chaters

@@ -132,6 +132,7 @@ class MMode(RedisObject):
         """检测同步
         """
         ntime = time.time()
+        ntime = float('%.02f' % ntime)
         print ntime
         objtime = RedisObject.get(self, '_time')
         objtime = float(objtime)
