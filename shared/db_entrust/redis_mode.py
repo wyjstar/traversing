@@ -97,6 +97,18 @@ class MMode(RedisObject):
             return False
         return True
 
+    def dumps_data(self, data):
+        props = {}
+        for key, value in data.items():
+            if key == self._pk:
+                props[key] = value
+            else:
+                props[key] = cPickle.dumps(value)
+        return props
+
+    def loads_data(self, data):
+        pass
+
     def syncDB(self):
         """同步到数据库
         """
@@ -107,23 +119,24 @@ class MMode(RedisObject):
             return
         elif state == MMODE_STATE_NEW:
             props = self.get('data')
-            pk = self.get('_pk')
             props = cPickle.loads(props)
+            pk = self.get('_pk')
+            props = self.dumps_data(props)
             result = util.InsertIntoDB(tablename, props)
         elif state == MMODE_STATE_UPDATE:
             props = self.get('data')
             pk = self.get('_pk')
             props = cPickle.loads(props)
             prere = {pk: props.get(pk)}
+            props = self.dumps_data(props)
             util.UpdateWithDict(tablename, props, prere)
             result = True
         else:
             pk = self.get('_pk')
-            print pk, type(pk)
             props = self.get('data')
-            print 'props:', props
             props = cPickle.loads(props)
             prere = {pk: props.get(pk)}
+            props = self.dumps_data(props)
             result = util.DeleteFromDB(tablename, prere)
         if result:
             RedisObject.update(self, '_state', MMODE_STATE_ORI)
@@ -178,6 +191,7 @@ class MAdmin(RedisObject):
         recordlist = util.ReadDataFromDB(mmname)
         for record in recordlist:
             pk = record[self._pk]
+            record = self.loads_data(record)
             mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
             mm.insert()
 
@@ -204,6 +218,18 @@ class MAdmin(RedisObject):
         fkmm.insert()
         return dbkeylist
 
+    def loads_data(self, data):
+        props = {}
+        for key, value in data.items():
+            if key == self._pk:
+                props[key] = value
+            else:
+                props[key] = cPickle.loads(value)
+        return props
+
+    def dumps_data(self, data):
+        pass
+
     def getObj(self, pk):
         '''根据主键，可以获得mmode对象的实例.\n
         >>> m = madmin.getObj(1)
@@ -217,6 +243,7 @@ class MAdmin(RedisObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
+        record = self.loads_data(record)
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
         mm.insert()
         return mm
@@ -235,6 +262,7 @@ class MAdmin(RedisObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
+        record = self.loads_data(record)
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
         mm.insert()
         return record
@@ -258,6 +286,7 @@ class MAdmin(RedisObject):
             recordlist = util.GetRecordList(self._name, self._pk, _pklist)
             for record in recordlist:
                 pk = record[self._pk]
+                record = self.loads_data(record)
                 mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
                 mm.insert()
                 objlist.append(mm)
