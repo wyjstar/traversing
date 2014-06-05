@@ -45,3 +45,8 @@ if __name__ == '__main__':
     print encrpt_data
     print decrpt_data
     print decrpt_data==data
+
+    import hashlib
+    md5 = hashlib.md5()
+    md5.update('12345678901234567890')
+    print len(md5.hexdigest())

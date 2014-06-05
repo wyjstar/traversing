@@ -2,6 +2,7 @@
 """
 created by server on 14-5-27下午1:51.
 """
+import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
 from gfirefly.dbentrust.madminanager import MAdminManager
 from shared.db_entrust.redis_client import redis_manager
@@ -38,15 +39,15 @@ if __name__ == '__main__':
     #         'matrixid': 100001L, 'rule': u'[[4001,4001,4001,4001,4001],[1,3,5,7,9]]', 'boundinfo': u'sdfsadfas',
     #         'id': 2}
 
-    data = {'uid': 1027, 'items': {'test': 'test'}}
-
-    n = tower_info.new(data)
-    n.insert()
+    # data = {'uid': 1027, 'items': {'test': 'test'}}
+    #
+    # n = tower_info.new(data)
+    # n.insert()
 
     m = tower_info.getObj(1027)
     data = m.get("data")
     print m._time
-    print data
+    print cPickle.loads(data)
 
-    MAdminManager().checkAdmins()
+    # MAdminManager().checkAdmins()
 
