@@ -30,32 +30,18 @@ if __name__ == '__main__':
 
     redis_manager.connection_setup(connection_setting)
 
-    tower_info = MAdmin("tb_account", "id")
+    tower_info = MAdmin("tb_account_mapping", "account_token")
     tower_info.insert()
     # tower_info.load()
+    MAdminManager().registe(tower_info)
 
-    # MAdminManager().registe(tower_info)
 
-    # print tower_info.madmininfo
-
-    # m = tower_info.getObj(1)
-    #
-    # data = m.get("data")
-
-    # data = {'name': u'haha', 'monsterdesc': u'1213', 'level': 30L, 'expbound': 10000L, 'dropoutid': 4001L,
-    #         'matrixid': 100001L, 'rule': u'[[4001,4001,4001,4001,4001],[1,3,5,7,9]]', 'boundinfo': u'sdfsadfas',
-    #         'id': 2}
-
-    # data = {'uid': 1027, 'items': {'test': 'test'}}
-    #
+    # data = {'id': 1028, 'account_token': '51aeb77a87ba5006a671b002814ad25a'}
     # n = tower_info.new(data)
     # n.insert()
-
-    m = tower_info.getObj(2052)
-    print 'm:',m
+    m = tower_info.getObj('e8054ceece61204cbef4b01d59d355e8')
     data = m.get("data")
-    print m._time
-    print cPickle.loads(data)
+    print 'data:', cPickle.loads(data)
 
     # MAdminManager().checkAdmins()
 

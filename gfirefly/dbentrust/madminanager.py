@@ -24,6 +24,8 @@ class MAdminManager:
         """
 
         self.admins[admin._name] = admin
+
+        print 'MAdminManager:', self.admins
         
     def dropAdmin(self,adminname):
         """移除一个madmin对象.
@@ -45,5 +47,6 @@ class MAdminManager:
 
         >>>MAdminManager().checkAdmins()
         """
+        print 'checkAdmins:', self.admins.values()
         for admin in self.admins.values():
             admin.checkAll()

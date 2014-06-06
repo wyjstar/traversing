@@ -7,6 +7,7 @@ from app.account.model.sequence import get_id
 from app.account.redis_mode import tb_account
 from app.account.redis_mode import tb_account_mapping
 from app.account.service.local.local_service import localservice_handle
+from gfirefly.dbentrust.madminanager import MAdminManager
 from gfirefly.utils.pyuuid import get_uuid
 import cPickle
 
@@ -56,6 +57,7 @@ def __guest_register():
     data = dict(id=account_id, account_token=token)
     account_mapping = tb_account_mapping.new(data)
     account_mapping.insert()
+    MAdminManager().checkAdmins()
     return {'result': True, 'token': token}
 
 
@@ -72,6 +74,7 @@ def __account_register(user_name, password):
     data = dict(id=account_id, account_token=token)
     account_mapping = tb_account_mapping.new(data)
     account_mapping.insert()
+    MAdminManager().checkAdmins()
     return {'result': True, 'token': token}
 
 
@@ -92,7 +95,9 @@ def __binding_register(user_name, password, key):
     md5 = hashlib.md5()
     md5.update('%s:%s:%s:%s' % (account_id, account_uuid, user_name, password))
     token = md5.hexdigest()
-    return {'result':True, 'token':token}
+    MAdminManager().checkAdmins()
+    print token
+    return {'result': True, 'token': token}
 
 
 

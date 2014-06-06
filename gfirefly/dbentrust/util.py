@@ -138,6 +138,9 @@ def InsertIntoDB(tablename,data):
     """写入数据库
     """
     sql = forEachPlusInsertProps(tablename,data)
+
+    print 'sql:', sql
+
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
@@ -264,7 +267,7 @@ def getredisallkeys(key, mem):
         for item in itemss:
             keysplit = item.split(':')
             pk = keysplit[1]
-            if not pk.isdigit():
+            if pk.startswith('_'):
                 continue
             nowlist.add(pk)
         allkeys = allkeys.union(nowlist)

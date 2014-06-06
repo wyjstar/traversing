@@ -47,10 +47,10 @@ class EchoClient(protocol.Protocol):
     def connectionMade(self):
 
         argument = account_pb2.AccountInfo()
-        argument.type = 3
+        argument.type = 2
         argument.user_name = 'ghh0001'
         argument.password = '123457'
-        argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
+        # argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
         self.dateSend(argument, 1)
 
     def dataReceived(self, data):
@@ -61,7 +61,7 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
             argument = account_pb2.LoginResquest()
-            argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
+            argument.key.key = 'e8054ceece61204cbef4b01d59d355e8'
             argument.user_name = 'ghh0001'
             argument.password = '123457'
             self.dateSend(argument, 2)

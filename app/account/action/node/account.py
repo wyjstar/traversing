@@ -23,10 +23,11 @@ def register_1(command_id, dynamic_id, request_proto):
     key = account_info.key.key
 
     result = localservice.callTarget(command_id, dynamic_id, account_type, user_name, password, key)
-
+    print 'result:', result
     account_key = account_pb2.AccountResponse()
     account_key.result = result.get('result')
-    account_key.key.key = result.get('token')
+    if result.get('token', None):
+        account_key.key.key = result.get('token')
 
     return account_key.SerializeToString()
 
