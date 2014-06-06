@@ -17,6 +17,7 @@ def _doChildConnect(name,transport):
     root_list = [rootport.get('rootname') for rootport in remoteport]
     GlobalObject().remote_map[name] = {"host":child_host,"root_list":root_list}
     #通知有需要连的node节点连接到此root节点
+    print root_list
     for servername,remote_list in GlobalObject().remote_map.items():
         remote_host = remote_list.get("host","")
         remote_name_host = remote_list.get("root_list","")

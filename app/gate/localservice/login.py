@@ -4,9 +4,11 @@ Created on 2012-2-27
 
 @author: sean_lan
 '''
-from app.gate.appinterface import login
 import json
-from app.gate.gateservice import localserviceHandle
+
+from app.gate.appinterface import login
+from app.gate.service.local.gateservice import localserviceHandle
+
 
 @localserviceHandle
 def loginToServer_101(key,dynamicId,request_proto):

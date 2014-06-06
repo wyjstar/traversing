@@ -10,6 +10,8 @@ def parse_setting(setting):
     """解析配置
     """
     host, port = setting.split(':')
+    host = str(host)
+    port = int(port)
     print dict(host=host, port=port, db=0)
     return dict(host=host, port=port, db=0)
 
@@ -34,9 +36,11 @@ class RedisManager(object):
         self.hash_ring = None
 
     def connection_setup(self, connection_settings):
+        print type(connection_settings), connection_settings
         self.hash_ring = HashRing(connection_settings)
         for setting in connection_settings:
             setting_dict = parse_setting(setting)
+            print setting_dict
             client = RedisClient(**setting_dict)
             self.connections[setting] = client
         self.connection_settings = connection_settings

@@ -6,6 +6,4 @@ Created on 2013-8-14
 
 
 def load_module():
-    import gateservice
-    # from gaterootapp import *
-    # from localservice import *
+    from action.root import netforwarding

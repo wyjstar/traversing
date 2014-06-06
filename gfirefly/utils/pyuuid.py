@@ -2,8 +2,8 @@
 """
 created by server on 14-6-5下午10:01.
 """
-import pyuuid
+import uuid
 
 
 def get_uuid():
-    return pyuuid.uuid1().get_hex()
+    return uuid.uuid1().get_hex()

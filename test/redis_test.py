@@ -9,6 +9,13 @@ from shared.db_entrust.redis_client import redis_manager
 from shared.db_entrust.redis_mode import MAdmin
 from shared.db_entrust.redis_object import RedisObject
 
+
+class Account(RedisObject):
+
+    def __init__(self, name, mc):
+        pass
+
+
 if __name__ == '__main__':
     hostname = "127.0.0.1"  #  要连接的数据库主机名
     user = "test"  #  要连接的数据库用户名
@@ -23,11 +30,11 @@ if __name__ == '__main__':
 
     redis_manager.connection_setup(connection_setting)
 
-    tower_info = MAdmin("tb_test", "uid")
+    tower_info = MAdmin("tb_account", "id")
     tower_info.insert()
-    tower_info.load()
+    # tower_info.load()
 
-    MAdminManager().registe(tower_info)
+    # MAdminManager().registe(tower_info)
 
     # print tower_info.madmininfo
 
@@ -44,7 +51,8 @@ if __name__ == '__main__':
     # n = tower_info.new(data)
     # n.insert()
 
-    m = tower_info.getObj(1027)
+    m = tower_info.getObj(2052)
+    print 'm:',m
     data = m.get("data")
     print m._time
     print cPickle.loads(data)

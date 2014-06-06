@@ -5,15 +5,19 @@ Created on 2013-8-14
 @author: lan (www.9miao.com)
 '''
 from gfirefly.server.globalobject import rootserviceHandle
+from gfirefly.server.globalobject import GlobalObject
 from gtwisted.utils import log
+from shared.utils.const import const
 
 
 @rootserviceHandle
-def forwarding(key, dynamicId, data):
+def forwarding(key, dynamic_id, data):
     """
     """
-    log.msg('net forwarding:', key, dynamicId, data)
-    print key, type(key)
+    if key in const.ACCOUNT_COMMAND:
+        print key, dynamic_id, data
+        return GlobalObject().root.callChild('account', key, dynamic_id, data)
+
     
 
 # @rootserviceHandle

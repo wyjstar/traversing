@@ -112,7 +112,7 @@ class User:
     
     def disconnectClient(self):
         '''断开'''
-        from app.gate.gaterootapp.netforwarding import SavePlayerInfoInDB,pushObject
+        from app.gate.action.root.netforwarding import SavePlayerInfoInDB,pushObject
         dynamicId = self.dynamicId
         SavePlayerInfoInDB(dynamicId)
         msg = u"您账户其他地方登录"

@@ -116,6 +116,6 @@ class RedisObject:
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
 
-        print newmapping
+        print 'newmapping:', newmapping
 
         self._client.mset(newmapping)

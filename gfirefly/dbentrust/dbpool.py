@@ -21,7 +21,7 @@ class DBPool(object):
         '''
         self.config = kw
         creator = DBCS.get(kw.get('engine','mysql'),MySQLdb)
-        self.pool = PooledDB(creator,5,**kw)
+        self.pool = PooledDB(creator, 5, **kw)
         
     def connection(self):
         return self.pool.connection()

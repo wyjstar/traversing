@@ -44,6 +44,7 @@ class MMode(RedisObject):
         """
         """
         RedisObject.__init__(self, name, redis_manager)
+        print 'MMode:', name
         self._state = MMODE_STATE_ORI  #对象的状态 0未变更  1新建 2更新 3删除
         self._pk = pk
         self.data = cPickle.dumps(data)
@@ -52,21 +53,25 @@ class MMode(RedisObject):
     def update(self, key, values):
         data = self.get_multi(['data', '_state'])
         ntime = time.time()
+        _column_data = data['data']
+        data['data'] = cPickle.loads(_column_data)
         data['data'].update({key: values})
         if data.get('_state') == MMODE_STATE_NEW:
-            props = {'data': data.get('data'), '_time': ntime}
+            props = {'data': self.dumps_data(data.get('data')), '_time': ntime}
         else:
-            props = {'_state': MMODE_STATE_UPDATE, 'data': data.get('data'), '_time': ntime}
+            props = {'_state': MMODE_STATE_UPDATE, 'data': self.dumps_data(data.get('data')), '_time': ntime}
         return RedisObject.update_multi(self, props)
 
     def update_multi(self, mapping):
         ntime = time.time()
         data = self.get_multi(['data', '_state'])
+        _column_data = data['data']
+        data['data'] = cPickle.loads(_column_data)
         data['data'].update(mapping)
         if data.get('_state') == MMODE_STATE_NEW:
-            props = {'data': data.get('data'), '_time': ntime}
+            props = {'data': self.dumps_data(data.get('data')), '_time': ntime}
         else:
-            props = {'_state': MMODE_STATE_UPDATE, 'data': data.get('data'), '_time': ntime}
+            props = {'_state': MMODE_STATE_UPDATE, 'data': self.dumps_data(data.get('data')), '_time': ntime}
         return RedisObject.update_multi(self, props)
 
     def get(self, key):
@@ -235,10 +240,13 @@ class MAdmin(RedisObject):
         >>> m = madmin.getObj(1)
         '''
         mm = MMode(self._name + ':%s' % pk, self._pk)
+        print mm.__dict__
         if not mm.IsEffective():
             return None
+        print '11111'
         if mm.get('data'):
             return mm
+        print '222222'
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
@@ -257,7 +265,7 @@ class MAdmin(RedisObject):
             return None
         data = mm.get('data')
         if mm.get('data'):
-            return data
+            return cPickle.loads(data)
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
         if not record:

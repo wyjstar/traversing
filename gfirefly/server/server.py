@@ -16,6 +16,7 @@ from gtwisted.utils import log
 from gtwisted.core import reactor
 from gfirefly.utils import services
 import os,sys,affinity
+from shared.db_entrust.redis_client import redis_manager
 
 reactor = reactor
 
@@ -59,6 +60,7 @@ class FFServer:
         logpath = config.get('log')#日志
         hasdb = config.get('db')#数据库连接
         hasmem = config.get('mem')#memcached连接
+        # hasredis = config.get('redis')
         app = config.get('app')#入口模块名称
         cpuid = config.get('cpu')#绑定cpu
         mreload = config.get('reload')#重新加载模块名称
@@ -97,11 +99,16 @@ class FFServer:
         if hasdb and dbconfig:
             log.msg(str(dbconfig))
             dbpool.initPool(**dbconfig)
-            
+
+        # if hasmem and memconfig:
+        #     urls = memconfig.get('urls')
+        #     hostname = str(memconfig.get('hostname'))
+        #     mclient.connect(urls, hostname)
+        print hasmem, memconfig
         if hasmem and memconfig:
-            urls = memconfig.get('urls')
-            hostname = str(memconfig.get('hostname'))
-            mclient.connect(urls, hostname)
+            connection_setting = memconfig.get('urls')
+            print connection_setting, type(connection_setting)
+            redis_manager.connection_setup(connection_setting)
             
         if logpath:
             log.addObserver(loogoo(logpath))#日志处理
@@ -122,6 +129,7 @@ class FFServer:
     def remote_connect(self, rname, rhost):
         """进行rpc的连接
         """
+        print 'rpc remote_connect:', rname, rhost, self.remoteportlist
         for cnf in self.remoteportlist:
             _rname = cnf.get('rootname')
             if rname == _rname:
