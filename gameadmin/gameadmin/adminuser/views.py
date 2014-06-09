@@ -2,9 +2,11 @@
 
 # Create your views here.
 from django.shortcuts import render_to_response,HttpResponseRedirect,HttpResponse
-from gameadmin.toolfunc import checklogin,checkSecurity
+
 import admin
 import datetime
+from gameadmin.toolfunc import checkSecurity
+
 
 @checkSecurity
 def login(request):
