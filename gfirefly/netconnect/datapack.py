@@ -78,7 +78,7 @@ class DataPackProtoc:
         command = ud[7]
         print HEAD_0, HEAD_1, HEAD_2,HEAD_3, protoVersion, serverVersion, length, command
         if HEAD_0 <>self.HEAD_0 or HEAD_1<>self.HEAD_1 or\
-             HEAD_2<>self.HEAD_2 or HEAD_3<>self.HEAD_3 or\
+             HEAD_2<>self.HEAD_2 or \
               protoVersion<>self.protoVersion or serverVersion<>self.serverVersion:
             return {'result':False,'command':0,'length':0}
         return {'result':True,'command':command,'length':length}
@@ -99,6 +99,3 @@ class DataPackProtoc:
         print struct.unpack('!sssss3I', data)
         data = data + response
         return data
-        
-    
-    
