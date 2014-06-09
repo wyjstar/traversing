@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+</head>
+<body>
+ <p align="center">
+ 联营商:
+ <select id='operator_c' onchange="fleshServerlist()">
+ <option value="0">全部</option>
+ {% for toperator in operatorlist %}
+     {% ifequal operator toperator.id%}
+     <option value='{{toperator.id}}' selected="selected">{{toperator.name}}</option>
+     {%else%}
+     <option value='{{toperator.id}}'>{{toperator.name}}</option>
+     {%endifequal%}
+ {% endfor %}
+ </select>
+  服务器:
+ <select id='server_c' onchange="fleshServerlist()">
+ <option value="0">全部</option>
+ {% for tserver in serverlist %}
+     {% ifequal server tserver.id%}
+     <option value='{{tserver.id}}' selected="selected">{{tserver.name}}</option>
+     {%else%}
+     <option value='{{tserver.id}}'>{{tserver.name}}</option>
+     {%endifequal%}
+ {% endfor %}
+ </select>
+ <input type='button' onclick="lastpage()" value="上一页">
+ 页码:<u id="index">{{index}}</u>
+ <input type='button' onclick="nextpage()" value="下一页">
+ </p>
+<div id="serverlist" align="center">
+
+{%if server%}
+单日数据
+<table border="1">
+<tr>
+<td>日期</td>
+<td>新增注册</td>
+<td>登录角色</td>
+<td>付费人数</td>
+<td>新增付费</td>
+<td>付费arpu</td>
+<td>注册arpu</td>
+<td>付费率(%)</td>
+<td>留存率(%)</td>
+<td>最高在线</td>
+<td>元宝消耗</td>
+<td>消费用户</td>
+</tr>
+{% for data in datalist %}
+    <tr>
+    <td>{{data.recorddate}}</td>
+    <td>{{data.createrole}}</td>
+    <td>{{data.loginuser}}</td>
+    <td>{{data.pay_cnt}}</td>
+    <td>{{data.pay_goal|floatformat:"2"}}</td>
+    <td>{{data.f_arpu}}</td>
+    <td>{{data.z_arpu}}</td>
+    <td>{{data.pay_rate}}</td>
+    <td>{{data.r_rate}}</td>
+    <td>{{data.high}}</td>
+    <td>{{data.cons_goal}}</td>
+    <td>{{data.user_cnt}}</td>
+    </tr>
+{% endfor %}
+</table>
+单服总数据
+<table border="1">
+<tr>
+<td>总注册数</td>
+<td>总创建数</td>
+<td>总付费人数</td>
+<td>总付费金额</td>
+</tr>
+<tr>
+<td>{{goaldata.reg_cnt}}</td>
+<td>{{goaldata.role_cnt}}</td>
+<td>{{goaldata.fu_cnt}}</td>
+<td>{{goaldata.income|floatformat:"2"}}</td>
+</tr>
+</table>
+{%else%}
+————请选择指定服务器————
+{%endif%}
+</div>
+</body>
+</html>
+ 

@@ -1,0 +1,64 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+</head>
+<body>
+ <p align="center">
+ 联营商:
+ <select id='operator_c' onchange="fleshServerlist()">
+ <option value="0">全部</option>
+ {% for toperator in operatorlist %}
+     {% ifequal operator toperator.id%}
+     <option value='{{toperator.id}}' selected="selected">{{toperator.name}}</option>
+     {%else%}
+     <option value='{{toperator.id}}'>{{toperator.name}}</option>
+     {%endifequal%}
+ {% endfor %}
+ </select>
+  服务器:
+ <select id='server_c' onchange="fleshServerlist()">
+ <option value="0">全部</option>
+ {% for tserver in serverlist %}
+     {% ifequal server tserver.id%}
+     <option value='{{tserver.id}}' selected="selected">{{tserver.name}}</option>
+     {%else%}
+     <option value='{{tserver.id}}'>{{tserver.name}}</option>
+     {%endifequal%}
+ {% endfor %}
+ </select>
+ <input type='button' onclick="lastpage()" value="上一页">
+ 页码:<u id="index">{{index}}</u><input type='button' onclick="nextpage()" value="下一页">
+ </p>
+<div id="serverlist" align="center">
+<table border="1">
+<tr>
+<td>名称</td>
+<td>地址</td>
+<td>联营商</td>
+<td>开服时间</td>
+<td>是否开启</td>
+<td>操作</td>
+<td>重新加载</td>
+</tr>
+{% for server in serverlist %}
+    <tr>
+    <td>{{server.name}}</td>
+    <td>{{server.ip}}</td>
+    <td>{{server.lianyun.name}}</td>
+    <td>{{server.createtime|date:'Y-m-d'}}</td>
+    <td>{{server.started}}</td>
+    {% if server.started%}
+        <td><input type='button' onclick="sendRequest('/')" value="关闭"></td>
+    {% else%}
+        <td><input type='button' value="开启"></td>
+    {% endif%}
+    <td><input type='button' value="加载"></td>
+    </tr>
+{% endfor %}
+</table>
+</div>
+</body>
+</html>
+ 

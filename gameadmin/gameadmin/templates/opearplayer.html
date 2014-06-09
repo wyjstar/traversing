@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+</head>
+<body>
+ <p align="center">
+ 联营商:
+ <select id='operator_c' onchange="fleshServerlist()">
+ <option value="0">全部</option>
+ {% for toperator in operatorlist %}
+     {% ifequal operator toperator.id%}
+     <option value='{{toperator.id}}' selected="selected">{{toperator.name}}</option>
+     {%else%}
+     <option value='{{toperator.id}}'>{{toperator.name}}</option>
+     {%endifequal%}
+ {% endfor %}
+ </select>
+  服务器:
+ <select id='server_c' onchange="fleshServerlist()">
+ <option value="0">全部</option>
+ {% for tserver in serverlist %}
+     {% ifequal server tserver.id%}
+     <option value='{{tserver.id}}' selected="selected">{{tserver.name}}</option>
+     {%else%}
+     <option value='{{tserver.id}}'>{{tserver.name}}</option>
+     {%endifequal%}
+ {% endfor %}
+ </select>
+<div id="serverlist" align="center">
+{%if server%}
+    {%if result%}
+        <div>{{result}}</div>
+        <div><input type="button" onClick="fleshServerlist()" value="返回"/><br/> </div> 
+    {%else%}
+        <label for="id_username" >请输入要修改的账号</label>
+		  <input type="text" id="id_username" name="username"><br/> 
+		  <label for="select" >请选择要进行的操作</label>
+		  <select id="select" name = "select" onchange="showBox()">
+		  <option value="1">增加金钱</option>
+		  <option value="2">增加经验</option>
+		  <option value="3">增加钻</option>
+		  <!--<option value="4">增加VIP经验</option>-->
+		  <option value="5">增加活力</option>
+		  <option value="6">设置人物等级</option>
+		  <!--<option value="7">添加物品</option>
+		  <option value="8">添加宠物</option>-->
+		  </select><br/> 
+        <div id='addval' class='Parameter' style="display: block">
+		  <label for="change_val" >请输入要增加的值</label>
+		  <input type="text" id="change_val"><br/> 
+		  </div>
+		  <div id='addtemplateId' class='Parameter' style="display: none">
+		  <label for="change_templateId" >请输入要增加的宠物/物品的模板id</label>
+		  <input type="text" id="change_templateId"><br/> 
+		  <label for="change_number" >请输入要增加的宠物/物品的等级/数量</label>
+		  <input type="text" id="change_number"><br/> 
+		  </div>
+		  <input type="button" onClick="submitChange();" value="执行"/><br/> 
+		  {%endif%}
+{%else%}
+————请选择指定服务器————
+{%endif%}
+</table>
+</div>
+</body>
+</html>
+ 
