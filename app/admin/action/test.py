@@ -11,3 +11,7 @@ def test():
     print 'test'
 
     return 'test'
+
+@webserviceHandle('/opera')
+def opera():
+    print 111111

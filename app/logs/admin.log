@@ -1,0 +1,6 @@
+[2014-06-10 15:59:18.861032]
+ERROR
+	127.0.0.1 - - [2014-06-10 15:59:18] "GET /opera?username=123&opera_str=player.finance.addCoin(123) HTTP/1.1" 500 412 0.039522
+[2014-06-10 16:01:35.222359]
+ERROR
+	127.0.0.1 - - [2014-06-10 16:01:35] "GET /opera?username=sadf&opera_str=player.finance.addCoin(123) HTTP/1.1" 500 412 0.000683
