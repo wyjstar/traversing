@@ -217,7 +217,7 @@ class MAdmin(RedisObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
-        record = MMode.loads(record)
+        record = mm.loads(record)
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
         mm.insert()
         return mm
@@ -240,7 +240,7 @@ class MAdmin(RedisObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
-        record = MMode.loads(record)
+        record = mm.loads(record)
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
         mm.insert()
         return record
@@ -264,7 +264,8 @@ class MAdmin(RedisObject):
             recordlist = util.GetRecordList(self._name, self._pk, _pklist)
             for record in recordlist:
                 pk = record[self._pk]
-                record = MMode.loads(record)
+                mm = MMode(self._name + ':%s' % pk, self._pk)
+                record = mm.loads(record)
                 mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
                 mm.insert()
                 objlist.append(mm)

@@ -33,13 +33,12 @@ class SerializerMetaClass(type):
 class Serializer(object):
     __metaclass__ = SerializerMetaClass
 
-    @classmethod
-    def loads(cls, data):
+    def loads(self, data):
         """
         将一个dict转换成model对象实例
             data: dict对象
         """
-        columns = cls.def_attrs
+        columns = self.def_attrs
         for attr in columns:
             if attr in data:
                 if columns[attr] == "simple":
@@ -50,7 +49,7 @@ class Serializer(object):
                     else:
                         data[attr] = None
                 else:
-                    loads_func = getattr(cls, columns[attr] + "_loads")
+                    loads_func = getattr(self, columns[attr] + "_loads")
                     data[attr] = loads_func(data[attr])
         return data
 
