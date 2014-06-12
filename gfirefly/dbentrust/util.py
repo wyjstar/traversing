@@ -139,8 +139,6 @@ def InsertIntoDB(tablename,data):
     """
     sql = forEachPlusInsertProps(tablename,data)
 
-    print 'sql:', sql
-
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
@@ -226,17 +224,13 @@ def DBTest():
     return result
 
 def getallkeys(key,mem):
-    print key
     itemsinfo = mem.get_stats('items')
-    print 'itemsinfo:', itemsinfo
     itemindex = []
     for items in itemsinfo:
         itemindex += [ _key.split(':')[1] for _key in items[1].keys()]
     s =  set(itemindex)
     itemss = [mem.get_stats('cachedump %s 0'%i) for i in s]
-    print 'itemss:', itemss
     allkeys = set([])
-    print 'allkeys:', allkeys
     for item in itemss:
         for _item in item:
             nowlist = set([])
@@ -250,7 +244,6 @@ def getallkeys(key,mem):
                 if _key.startswith(key) and not pk.startswith('_'):
                     nowlist.add(pk)
             allkeys = allkeys.union(nowlist)
-    print allkeys
     return allkeys
 
 def getAllPkByFkInMEM(key,fk,mem):
@@ -271,5 +264,4 @@ def getredisallkeys(key, mem):
                 continue
             nowlist.add(pk)
         allkeys = allkeys.union(nowlist)
-    print allkeys
     return allkeys

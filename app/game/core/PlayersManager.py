@@ -1,80 +1,79 @@
-#coding:utf8
-'''
-Created on 2011-3-24
-
-@author: sean_lan
-'''
+#-*- coding:utf-8 -*-
+"""
+created by server on 14-5-27下午5:21.
+"""
 from gfirefly.utils.singleton import Singleton
 
+
 class PlayersManager:
-    '''在线角色单例管理器'''
+    """在线角色单例管理器
+    """
 
     __metaclass__ = Singleton
 
     def __init__(self):
-        '''初始化单例管理器'''
+        """初始化单例管理器
+        """
         self._players = {}
-    
-    def getAll(self):
-        alllist=self._players.values()
-        return alllist
-    
-    def addPlayer(self, player):
-        '''添加一个在线角色'''
+
+    def get_all(self):
+        """ 取得全部角色
+        @return: list
+        """
+        all_list = self._players.values()
+        return all_list
+
+    def add_player(self, player):
+        """添加一个在线角色
+        @param player:
+        @return:
+        """
+        #TODO
         if self._players.has_key(player.baseInfo.id):
 #            raise Exception("系统记录冲突")
             pass
         self._players[player.baseInfo.id] = player
 
-    def getPlayerByID(self, pid):
-        '''根据角色id获取玩家角色实例
-        @id （int） 角色id
-        '''
-        return self._players.get(pid,None)
+    def get_player_by_id(self, pid):
+        """根据角色id获取玩家角色实例
+        """
+        return self._players.get(pid, None)
 
-    
-    def getPlayerBydynamicId(self,dynamicId):
-        '''根据角色动态id获取玩家角色实例
+    def get_player_by_dynamic_id(self, dynamic_id):
+        """根据角色动态id获取玩家角色实例
         @dynamicId （int） 角色动态id
-        '''
+        """
         for player in self._players.values():
-            if player.dynamicId ==dynamicId:
+            if player.dynamic_id == dynamic_id:
                 return player
         return None
 
-    def getPlayerByNickname(self, nickname):
-        '''根据角色昵称获取玩家角色实例
+    def get_player_by_nickname(self, nickname):
+        """根据角色昵称获取玩家角色实例
         @nickname （str） 角色昵称
-        '''
+        """
         for k in self._players.values():
-            if k.baseInfo.getNickName() == nickname:
+            if k.baseInfo.get_nickname == nickname:
                 return k
         return None
 
-    def dropPlayer(self, player):
-        '''移除在线角色
+    def drop_player(self, player):
+        """移除在线角色
         @player （PlayerCharacter）角色实例
-        '''
-        playerId = player.baseInfo.id
-        self.dropPlayerByID(playerId)
+        """
+        player_id = player.baseInfo.id
+        self.drop_player_by_id(player_id)
 
-    def dropPlayerByID(self, pid):
-        '''移除在线角色
+    def drop_player_by_id(self, pid):
+        """移除在线角色
         @id （int） 角色id
-        '''
+        """
         try:
             del self._players[pid]
         except:
             pass
-        
-    def IsPlayerOnline(self,pid):
-        '''判断角色是否在线'''
-        return self._players.has_key(pid)
-    
-    def doPlayerOffLine(self,player):
-        '''
-        '''
-        pass
-    
-    
-    
+
+    def is_player_online(self, pid):
+        """判断角色是否在线
+        """
+        return pid in self._players

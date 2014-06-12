@@ -272,7 +272,6 @@ class MAdmin(MemObject):
         """同步内存中的数据到对应的数据表中。\n
         >>> m = madmin.checkAll()
         """
-        print self._name
         key = '%s:%s:'%(mclient._hostname,self._name)
         _pklist = util.getallkeys(key, mclient.connection)
         for pk in _pklist:

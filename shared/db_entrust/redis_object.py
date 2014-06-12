@@ -4,8 +4,10 @@ created by server on 14-5-28下午12:14.
 """
 
 import cPickle
+from shared.db_entrust.serializer import Serializer
 
-class RedisObject:
+
+class RedisObject(Serializer):
     """redis 关系对象,可以将一个对象的属性值记录到redis中。
 
     >>> class Mcharacter(MemObject):
@@ -28,6 +30,7 @@ class RedisObject:
         @param  name: str 对象的名称\n
         @param  lock: int 对象锁  为1时表示对象被锁定无法进行修改\n
         """
+        super(RedisObject, self).__init__()
         self._client = mc.get_connection(name)
         self._name = name
         self._lock = lock
@@ -61,8 +64,11 @@ class RedisObject:
     def get(self, key):
         """获取对象值
         """
-        key = self.produceKey(key)
-        value = self._client.get(key)
+        produce_key = self.produceKey(key)
+        value = self._client.get(produce_key)
+        if value and key == 'data':
+            value = cPickle.loads(value)
+            print 'get:', value, type(value)
         return value
 
     def get_multi(self, keys):
@@ -70,10 +76,12 @@ class RedisObject:
         @param keys: list(str) key的列表
         """
         keynamelist = [self.produceKey(keyname) for keyname in keys]
-        print keynamelist
         olddict = self._client.mget(keynamelist)
-        print olddict
         newdict = dict(zip([keyname.split(':')[-1] for keyname in keynamelist], olddict))
+
+        if ('data' in newdict) and newdict['data']:
+            newdict['data'] = self.loads(cPickle.loads(newdict['data']))
+
         return newdict
 
     def update(self, key, values):
@@ -81,14 +89,22 @@ class RedisObject:
         """
         if self.locked():
             return False
-        key = self.produceKey(key)
-        return self._client.set(key, values)
+        produce_key = self.produceKey(key)
+
+        if values and key == 'data':
+            values = cPickle.dumps(self.dumps(values))
+
+        return self._client.set(produce_key, values)
 
     def update_multi(self, mapping):
         """同时修改多个key值
         """
         if self.locked():
             return False
+
+        if ('data' in mapping) and mapping['data']:
+            mapping['data'] = cPickle.dumps(self.dumps(mapping['data']))
+
         newmapping = dict(zip([self.produceKey(keyname) for keyname in mapping.keys()],
                               mapping.values()))
         return self._client.mset(newmapping)
@@ -113,9 +129,10 @@ class RedisObject:
         """
         nowdict = dict(self.__dict__)
         del nowdict['_client']
+        if 'data' in nowdict:
+            nowdict['data'] = cPickle.dumps(self.dumps(nowdict['data']))
+
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
-
-        print 'newmapping:', newmapping
 
         self._client.mset(newmapping)

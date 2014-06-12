@@ -1,24 +1,114 @@
 {
-"master":{"roothost":"127.0.0.1","rootport":9999,"webport":9998},
-"servers":{
-"admin":{"webport":2012,"name":"admin","app":"app.adminserver","log":"app/logs/admin.log"},
-"gate":{"rootport":10000,"name":"gate","app":"app.gateserver","log":"app/logs/gate.log"},
-"chatgate":{"rootport":10001,"name":"chatgate","app":"app.chatgateserver","log":"app/logs/chatgate.log"},
-"chat":{"name":"chat","remoteport":[{"rootport":10001,"rootname":"chatgate"}],"app":"app.chatserver","log":"app/logs/chatserver.log"},
-"net":{"netport":11009,"name":"net","remoteport":[{"rootport":10000,"rootname":"gate"}],"app":"app.netserver","log":"app/logs/net.log"},
-"chatnet":{"netport":11010,"name":"chatnet","remoteport":[{"rootport":10001,"rootname":"chatgate"}],"app":"app.chatnetserver","log":"app/logs/chatnet.log"},
-"account":{"name":"account","mem":true,"db":true,"remoteport":[{"rootport":10000,"rootname":"gate"}],"app":"app.accountserver","log":"app/logs/account.log"}
-},
-"db":{
-"host":"127.0.0.1",
-"user":"test",
-"passwd":"test",
-"port":8066,
-"db":"db_traversing",
-"charset":"utf8"
-},
-"memcached":{
-"urls":["127.0.0.1:6379"],
-"hostname":"redis"
-}
+    "master": {
+        "roothost": "127.0.0.1",
+        "rootport": 9999,
+        "webport": 9998
+    },
+    "servers": {
+        "admin": {
+            "webport": 2012,
+            "name": "admin",
+            "app": "app.adminserver",
+            "log": "app/logs/admin.log"
+        },
+        "gate": {
+            "rootport": 10000,
+            "name": "gate",
+            "app": "app.gateserver",
+            "log": "app/logs/gate.log"
+        },
+        "chatgate": {
+            "rootport": 10001,
+            "name": "chatgate",
+            "app": "app.chatgateserver",
+            "log": "app/logs/chatgate.log"
+        },
+        "chat": {
+            "name": "chat",
+            "remoteport": [
+                {
+                    "rootport": 10001,
+                    "rootname": "chatgate"
+                }
+            ],
+            "app": "app.chatserver",
+            "log": "app/logs/chatserver.log"
+        },
+        "net": {
+            "netport": 11009,
+            "name": "net",
+            "remoteport": [
+                {
+                    "rootport": 10000,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.netserver",
+            "log": "app/logs/net.log"
+        },
+        "chatnet": {
+            "netport": 11010,
+            "name": "chatnet",
+            "remoteport": [
+                {
+                    "rootport": 10001,
+                    "rootname": "chatgate"
+                }
+            ],
+            "app": "app.chatnetserver",
+            "log": "app/logs/chatnet.log"
+        },
+        "account": {
+            "name": "account",
+            "mem": true,
+            "db": true,
+            "remoteport": [
+                {
+                    "rootport": 10000,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.accountserver",
+            "log": "app/logs/account.log"
+        }
+    },
+    "db": {
+        "host": "127.0.0.1",
+        "user": "test",
+        "passwd": "test",
+        "port": 8066,
+        "db": "db_traversing",
+        "charset": "utf8"
+    },
+    "memcached": {
+        "urls": ["127.0.0.1:6379"],
+        "hostname": "redis"
+    },
+
+    "model_default": {
+        "pkey_field": "uid",
+        "cache_prefix": "rktest",
+        "def_attrs": {}
+    },
+
+    "models": {
+        "tb_account_mapping": {
+            "pkey_field": "account_token",
+            "def_attrs": {
+                "uid": "simple"
+            }
+        },
+        "tb_account": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "uuid":"simple",
+                "account_name":"simple",
+                "account_password":"simple",
+                "last_login":"simple"
+            }
+        }
+    }
+
+
 }

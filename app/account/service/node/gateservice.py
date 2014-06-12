@@ -14,7 +14,6 @@ class NodeServiceHandler(CommandService):
         @param targetKey: target ID
         @param data: client data
         """
-        print command_id, args, kw
         target = self.getTarget(command_id)
         if not target:
             log.err('the command %s not Found on service[%s]' % (str(command_id)), self._name)

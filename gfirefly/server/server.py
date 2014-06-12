@@ -47,10 +47,13 @@ class FFServer:
         self.remoteportlist = []
         
     def config(self, config, servername=None, dbconfig=None,
-                memconfig=None, masterconf=None):
+                memconfig=None, masterconf=None, model_default_config=None,
+                model_config=None):
         '''配置服务器
         '''
         GlobalObject().json_config = config
+        GlobalObject().json_model_config = model_default_config
+        GlobalObject().json_model_config = model_config
         netport = config.get('netport')#客户端连接
         webport = config.get('webport')#http连接
         rootport = config.get('rootport')#root节点配置

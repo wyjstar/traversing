@@ -28,7 +28,7 @@ def login_2(command_id, dynamic_id, key, user_name, password):
     if mapping_data:
         account_id = mapping_data.get('id', None)  # 取得帐号ID
     #  没有帐号ID，登录错误
-    if not account_id:
+    if account_id is None:
         return {'result': False}
 
     if user_name and password:
@@ -37,7 +37,6 @@ def login_2(command_id, dynamic_id, key, user_name, password):
         _user_name = account_data.get('account_name', None)
         _password = account_data.get('account_password', None)
 
-        print user_name, _user_name, password, _password
         # 帐号名或者密码错误
         if (user_name != _user_name) or (password != _password):
             return {'result': False}
@@ -57,13 +56,14 @@ def __guest_register():
     data = dict(id=account_id, account_token=token)
     account_mapping = tb_account_mapping.new(data)
     account_mapping.insert()
-    # MAdminManager().checkAdmins()
+    MAdminManager().checkAdmins()
     return {'result': True, 'token': token}
 
 
 def __account_register(user_name, password):
-    # TODO 校验
+    # TODO 格式校验 帐号校验
     account_id = get_id()
+    print 'zhanghao zhuce account_id:', account_id
     uuid = get_uuid()
     data = dict(id=account_id, uuid=uuid, account_name=user_name, account_password=password, last_login=0)
     account_mmode = tb_account.new(data)
@@ -74,7 +74,7 @@ def __account_register(user_name, password):
     data = dict(id=account_id, account_token=token)
     account_mapping = tb_account_mapping.new(data)
     account_mapping.insert()
-    # MAdminManager().checkAdmins()
+    MAdminManager().checkAdmins()
     return {'result': True, 'token': token}
 
 
@@ -95,8 +95,7 @@ def __binding_register(user_name, password, key):
     md5 = hashlib.md5()
     md5.update('%s:%s:%s:%s' % (account_id, account_uuid, user_name, password))
     token = md5.hexdigest()
-    # MAdminManager().checkAdmins()
-    print token
+    MAdminManager().checkAdmins()
     return {'result': True, 'token': token}
 
 
