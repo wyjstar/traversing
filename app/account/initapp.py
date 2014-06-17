@@ -9,3 +9,5 @@ def load_module():
 
     from action.node import account
     from action.local import account
+
+    from shared.db_opear.configs_data import game_configs
