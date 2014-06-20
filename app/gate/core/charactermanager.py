@@ -19,7 +19,7 @@ class VCharacterManager:
         self.client_character = {}
 
     def add_character(self, vcharacter):
-        characterid = vcharacter.characterid()
+        characterid = vcharacter.characterid
         self.character_client[characterid] = vcharacter
         self.client_character[vcharacter.dynamicid] = vcharacter
 

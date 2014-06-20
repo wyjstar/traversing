@@ -28,12 +28,10 @@ def character_login_4(key, dynamicid, request_proto):
     if not data.get('result'):
         return json.dumps(data)
     log.msg("token is correct+++++++++++++++++++++++++++++++++++++")
-    dd = enter_scene(dynamicid)  # 登录成功，进入场景
-    if not dd:
-        return
-    dd.addCallback(return_message)  # 进入场景后，返回消息
+    response = enter_scene(dynamicid)  # 登录成功，进入场景
 
-    return dd
+
+    return response  # 进入场景后，返回消息
 
 
 def character_login(dynamicid, token):
@@ -42,13 +40,13 @@ def character_login(dynamicid, token):
     if not userinfo:
         return {'result': False, 'message': u'token_error'}
 
-    characterinfo = dbcharacter.get_character_by_userid_area(userinfo['userid'], const.const.AREA)
+    characterinfo = dbcharacter.get_character_by_userid(userinfo['userid'])
     if not characterinfo:
         return {'result': False, 'message': u'no_role'}
 
     old_character = VCharacterManager().get_character_by_characterid(characterinfo['id'])
     if old_character:
-        old_character.setdynamicid(dynamicid)
+        old_character.dynamicid = dynamicid
     else:
         character = VirtualCharacter(characterinfo['id'], dynamicid)
         VCharacterManager().add_character(character)
@@ -63,10 +61,10 @@ def enter_scene(dynamicid):
     vplayer = VCharacterManager().get_character_by_clientid(dynamicid)
     if not vplayer:
         return None
-    nownode = SceneSerManager().get_best_sceneid()
-    response = GlobalObject().root.callChild(nownode, 601, dynamicid)
-    vplayer.setNode(nownode)
-    SceneSerManager().add_client(nownode, vplayer.dynamicId)
+    currentnode = SceneSerManager().get_best_sceneid()
+    response = GlobalObject().root.callChild(currentnode, 601, dynamicid)
+    vplayer.node = currentnode
+    SceneSerManager().add_client(currentnode, vplayer.dynamicid)
     return response
 
 

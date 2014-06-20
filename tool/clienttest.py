@@ -27,6 +27,7 @@ def sendData(sendstr,commandId):
     senddata = data+sendstr
     return senddata
 
+
 def resolveRecvdata(data):
     head = struct.unpack('!sssss3I',data[:17])
     lenght = head[6]
@@ -38,8 +39,11 @@ def login():
     client.sendall(sendData(json.dumps({"username":"test106","password":"111111"}),101))
     print resolveRecvdata(client.recv(2048))
 
+
 def rolelogin():
-    client.sendall(sendData(json.dumps({"token": "tokencode123456"}), 4))
+    token = "tokencode123456"
+    print "我想要登录游戏，我的token是：", token
+    client.sendall(sendData(json.dumps({"token": token}), 4))
     print resolveRecvdata(client.recv(2048))
 
 #login()

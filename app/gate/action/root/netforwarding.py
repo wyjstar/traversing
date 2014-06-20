@@ -12,13 +12,14 @@ from app.gate.core.charactermanager import VCharacterManager
 from app.gate.core.scenesermanger import SceneSerManager
 from app.gate.service.local.gateservice import localservice
 
+
 @rootserviceHandle
 def forwarding(key, dynamic_id, data):
     """
     """
-    if key in const.ACCOUNT_COMMAND:
-        log.msg(key, dynamic_id, data)
-        return GlobalObject().root.callChild('account', key, dynamic_id, data)
+    # if key in const.ACCOUNT_COMMAND:
+    #     log.msg(key, dynamic_id, data)
+    #     return GlobalObject().root.callChild('account', key, dynamic_id, data)
     log.msg(localservice._targets)
     log.msg(key)
     if localservice._targets.has_key(key):
