@@ -49,6 +49,17 @@
             "app": "app.chatnetserver",
             "log": "app/logs/chatnet.log"
         },
+        "game1":{
+            "remoteport": [
+                {
+                    "rootport":10000,
+                    "rootname":"gate"
+                }
+            ],
+            "name":"game1",
+            "app":"app.game1server",
+            "log":"app/logs/game1.log"
+        },
         "account": {
             "name": "account",
             "mem": true,
@@ -76,10 +87,10 @@
     },
     "db": {
         "host": "127.0.0.1",
-        "user": "test",
-        "passwd": "test",
-        "port": 8066,
-        "db": "db_traversing",
+        "user": "root",
+        "passwd": "123456",
+        "port": 3306,
+        "db": "test",
         "charset": "utf8"
     },
     "memcached": {

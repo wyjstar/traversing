@@ -8,3 +8,4 @@ from gfirefly.dbentrust.dbpool import dbpool
 
 def load_module():
     from action.root import netforwarding
+    from action.local import login

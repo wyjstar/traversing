@@ -12,7 +12,11 @@ class ChildsManager(object):
     def __init__(self):
         '''初始化子节点管理器'''
         self._childs = {}
-        
+
+    @property
+    def childs(self):
+        return self._childs
+
     def getChildById(self,childId):
         '''根据节点的ID获取节点实例'''
         return self._childs.get(childId)
