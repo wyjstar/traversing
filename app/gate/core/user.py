@@ -19,3 +19,4 @@ class User(object):
         self.dynamic_id = dynamic_id
         self.name = name
         self.password = password
+        self.character_id = 0

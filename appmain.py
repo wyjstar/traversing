@@ -1,9 +1,9 @@
 # coding:utf8
 
-from gevent import monkey;
-
+from gevent import monkey
 monkey.patch_os()
-import json, sys
+import json
+import sys
 from gfirefly.server.server import FFServer
 
 if __name__ == "__main__":

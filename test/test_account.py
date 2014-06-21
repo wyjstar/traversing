@@ -45,13 +45,13 @@ class EchoClient(protocol.Protocol):
         self.transport.write(sendData(argument.SerializeToString(), command_id))
 
     def connectionMade(self):
-
-        argument = account_pb2.AccountInfo()
-        argument.type = 2
-        argument.user_name = 'ghh0001'
-        argument.password = '123457'
-        # argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
-        self.dateSend(argument, 1)
+        pass
+        # argument = account_pb2.AccountInfo()
+        # argument.type = 2
+        # argument.user_name = 'ghh0001'
+        # argument.password = '123457'
+        # # argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
+        # self.dateSend(argument, 1)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
@@ -91,7 +91,7 @@ class EchoFactory(protocol.ClientFactory):
 def main():
 
     HOST = 'localhost'
-    PORT = 11009
+    PORT = 10000
 
     f = EchoFactory()
     reactor.connectTCP(HOST, PORT, f)

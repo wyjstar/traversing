@@ -59,12 +59,13 @@ class PBRoot:
         '''设置代理通道
         @param name: 根节点的名称
         '''
-        log.msg('node [%s] takeProxy ready' % name)
+        log.msg('#1 node [%s] takeProxy ready' % name)
         child = Child(name,name)
         self.childsmanager.addChild(child)
         child.setTransport(transport)
         self.doChildConnect(name, transport)
-        
+        log.msg('#2 node [%s] takeProxy ready' % name)
+
     def doChildConnect(self,name,transport):
         """当node节点连接时的处理
         """

@@ -11,11 +11,18 @@ from gtwisted.utils import log
 def _doChildConnect(name,transport):
     """当server节点连接到master的处理
     """
+    # 当前启动的server 的配置
+    print 'master dochildconnect:',  name, transport
     server_config = GlobalObject().json_config.get('servers',{}).get(name,{})
+    print 'server_config:', server_config
     remoteport = server_config.get('remoteport',[])
+    print 'remoteport:', remoteport
     child_host = transport.transport.address[0]
+    print 'child_host:', child_host
     root_list = [rootport.get('rootname') for rootport in remoteport]
+    print 'root_list:', root_list
     GlobalObject().remote_map[name] = {"host":child_host,"root_list":root_list}
+    print 'remote_map:', GlobalObject().remote_map
     #通知有需要连的node节点连接到此root节点
     print root_list
     for servername,remote_list in GlobalObject().remote_map.items():

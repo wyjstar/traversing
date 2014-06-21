@@ -99,6 +99,7 @@ class PBProtocl(BaseProtocol):
         request = marshal.loads(data)
         _msgtype = request['_msgtype']
         if _msgtype==ASK_SIGNAL or _msgtype==NOTICE_SIGNAL:
+            print 'request:', request
             self.askReceived(request)
         elif _msgtype==ANSWER_SIGNAL:
             self.answerReceived(request)
@@ -111,6 +112,7 @@ class PBProtocl(BaseProtocol):
         _args = request['_args']
         _kw = request['_kw']
         method = self.getRemoteMethod(_name)
+        print 'askReceived:', method
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
             response = {'_msgtype':ANSWER_SIGNAL,'_key':_key,'result':result}

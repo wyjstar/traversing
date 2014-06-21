@@ -34,5 +34,6 @@ def sreload():
 def remote_connect(rname, rhost):
     """供master调用的接口：进行远程的rpc连接
     """
+    print 'master service :', rname, rhost
     GlobalObject().remote_connect(rname, rhost)
 
