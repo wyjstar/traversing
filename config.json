@@ -16,6 +16,8 @@
             "mem": true,
             "db": true,
             "name": "gate",
+            "mem": true,
+            "db": true,
             "app": "app.gateserver",
             "log": "app/logs/gate.log"
         },

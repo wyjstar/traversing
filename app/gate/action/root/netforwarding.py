@@ -25,12 +25,12 @@ def forwarding(key, dynamic_id, data):
     if localservice._targets.has_key(key):
         return localservice.callTarget(key, dynamic_id, data)
     else:
-        oldvcharacter = VCharacterManager().getVCharacterByClientId(dynamic_id)
+        oldvcharacter = VCharacterManager().get_character_by_clientid(dynamic_id)
         if not oldvcharacter:
             return
         if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
             return
-        node = VCharacterManager().getNodeByClientId(dynamic_id)
+        node = VCharacterManager().get_node_by_clientid(dynamic_id)
         return GlobalObject().root.callChild(node, key, dynamic_id, data)
 
 @rootserviceHandle
@@ -49,7 +49,7 @@ def opera_player(pid, oprea_str):
     if not vcharacter:
         node = "game1"
     else:
-        node = vcharacter.getNode()
+        node = vcharacter.node
     GlobalObject().root.callChildNotForResult(node, 99, pid, oprea_str)
 
 
@@ -64,7 +64,7 @@ def save_playerinfo_in_db(dynamicid):
 def drop_client(dynamicid, vcharacter):
     """清理客户端的记录
     """
-    node = vcharacter.getNode()
+    node = vcharacter.node
     if node:  # 角色在场景中的处理
         SceneSerManager().drop_client(node, dynamicid)
 
@@ -77,8 +77,8 @@ def netconnlost(dynamicid):
     @param dynamicid: int 客户端的动态ID
     """
     vcharacter = VCharacterManager().get_character_by_clientid(dynamicid)
-    if vcharacter and vcharacter.getNode() > 0:  # 判断是否已经登入角色
-        vcharacter.lock()  # 锁定角色
+    if vcharacter and vcharacter.node > 0:  # 判断是否已经登入角色
+        #vcharacter.lock()  # 锁定角色
         result = save_playerinfo_in_db(dynamicid)  # 保存角色,写入角色数据
         if result:
             drop_client(dynamicid, vcharacter)  # 清理客户端的数据
