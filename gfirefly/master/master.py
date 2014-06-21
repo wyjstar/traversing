@@ -92,5 +92,3 @@ class Master:
         else:
             self.masterapp()
             reactor.run()
-            
-            

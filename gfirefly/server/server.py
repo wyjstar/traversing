@@ -135,7 +135,9 @@ class FFServer:
     def remote_connect(self, rname, rhost):
         """进行rpc的连接
         """
+        print self.servername
         print 'rpc remote_connect:', rname, rhost, self.remoteportlist
+
         for cnf in self.remoteportlist:
             _rname = cnf.get('rootname')
             if rname == _rname:

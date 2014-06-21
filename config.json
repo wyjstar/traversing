@@ -13,6 +13,8 @@
         },
         "gate": {
             "rootport": 10000,
+            "mem": true,
+            "db": true,
             "name": "gate",
             "mem": true,
             "db": true,
@@ -24,17 +26,6 @@
             "name": "chatgate",
             "app": "app.chatgateserver",
             "log": "app/logs/chatgate.log"
-        },
-        "chat": {
-            "name": "chat",
-            "remoteport": [
-                {
-                    "rootport": 10001,
-                    "rootname": "chatgate"
-                }
-            ],
-            "app": "app.chatserver",
-            "log": "app/logs/chatserver.log"
         },
         "net": {
             "netport": 11009,
@@ -83,6 +74,17 @@
             ],
             "app": "app.accountserver",
             "log": "app/logs/account.log"
+        },
+        "chat": {
+            "name": "chat",
+            "remoteport": [
+                {
+                    "rootport": 10001,
+                    "rootname": "chatgate"
+                }
+            ],
+            "app": "app.chatserver",
+            "log": "app/logs/chatserver.log"
         }
     },
     "db": {

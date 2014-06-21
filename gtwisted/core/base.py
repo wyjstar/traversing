@@ -100,7 +100,9 @@ class BasePortListener(Greenlet):
         """启动监听器
         """
         print "start port %s" % self.port
+        print self.server_cls
         ser = self.server_cls(self.getHost(),self.factory,backlog=100000)
+        print 'ser:', ser
         ser.serve_forever()
     
 
