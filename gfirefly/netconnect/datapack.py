@@ -97,5 +97,5 @@ class DataPackProtoc:
         data = struct.pack('!sssss3I', HEAD_0, HEAD_1, HEAD_2, HEAD_3,\
                            protoVersion, serverVersion, length, commandID)
         print struct.unpack('!sssss3I', data)
-        data = data + response
+        data = data + str(response)
         return data

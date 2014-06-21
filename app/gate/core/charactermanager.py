@@ -67,6 +67,12 @@ class VCharacterManager:
             return character.node
         return -1
 
+    def get_node_by_clientid(self, clientid):
+        character = self.client_character.get(clientid)
+        if character:
+            return character.node
+        return -1
+
     def get_clientid_by_characterid(self, characterid):
         character = self.character_client.get(characterid)
         if character:

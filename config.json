@@ -14,6 +14,8 @@
         "gate": {
             "rootport": 10000,
             "name": "gate",
+            "mem": true,
+            "db": true,
             "app": "app.gateserver",
             "log": "app/logs/gate.log"
         },
