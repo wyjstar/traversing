@@ -87,10 +87,10 @@
     },
     "db": {
         "host": "127.0.0.1",
-        "user": "root",
-        "passwd": "123456",
-        "port": 3306,
-        "db": "test",
+        "user": "test",
+        "passwd": "test",
+        "port": 8066,
+        "db": "db_traversing",
         "charset": "utf8"
     },
     "memcached": {

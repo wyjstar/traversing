@@ -1,57 +1,60 @@
-[2014-06-20 11:12:55.234780]
-ERROR
-	KeyboardInterrupt
-[2014-06-20 11:12:55.234985]
+[2014-06-21 17:16:22.436601]
 ERROR
 	Traceback (most recent call last):
-[2014-06-20 11:12:55.235067]
+[2014-06-21 17:16:22.462103]
 ERROR
-	  File "appmain.py", line 30, in <module>
-[2014-06-20 11:12:55.277910]
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/greenlet.py", line 327, in run
+[2014-06-21 17:16:22.467092]
 ERROR
-	    ser.start()
-[2014-06-20 11:12:55.278083]
+	    result = self._run(*self.args, **self.kwargs)
+[2014-06-21 17:16:22.467218]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 156, in start
-[2014-06-20 11:12:55.280279]
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/rpc.py", line 103, in msgResolve
+[2014-06-21 17:16:22.490258]
 ERROR
-	    reactor.run()
-[2014-06-20 11:12:55.280442]
+	    self.askReceived(request)
+[2014-06-21 17:16:22.490433]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 75, in run
-[2014-06-20 11:12:55.295771]
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/rpc.py", line 116, in askReceived
+[2014-06-21 17:16:22.490580]
 ERROR
-	    gevent.joinall([gevent.spawn(self.start())])
-[2014-06-20 11:12:55.295929]
+	    result = self.callRemoteMethod(method, _args, _kw)
+[2014-06-21 17:16:22.490709]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 69, in start
-[2014-06-20 11:12:55.296050]
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/rpc.py", line 131, in callRemoteMethod
+[2014-06-21 17:16:22.491009]
 ERROR
-	    gevent.sleep(600)
-[2014-06-20 11:12:55.296193]
+	    return method(*_args,**_kw)
+[2014-06-21 17:16:22.491135]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 75, in sleep
-[2014-06-20 11:12:55.310431]
+	  File "/home/server/PycharmProjects/traversing/gfirefly/distributed/root.py", line 30, in remote_callTarget
+[2014-06-21 17:16:22.516040]
 ERROR
-	    hub.wait(loop.timer(seconds, ref=ref))
-[2014-06-20 11:12:55.310541]
+	    data = self.factory.root.remote_callTarget(command,*args,**kw)
+[2014-06-21 17:16:22.516224]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 341, in wait
-[2014-06-20 11:12:55.310687]
+	  File "/home/server/PycharmProjects/traversing/gfirefly/distributed/root.py", line 79, in remote_callTarget
+[2014-06-21 17:16:22.516368]
 ERROR
-	    result = waiter.get()
-[2014-06-20 11:12:55.310780]
+	    data = self.service.callTarget(command,*args,**kw)
+[2014-06-21 17:16:22.516500]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 568, in get
-[2014-06-20 11:12:55.314288]
+	  File "/home/server/PycharmProjects/traversing/gfirefly/utils/services.py", line 67, in callTarget
+[2014-06-21 17:16:22.523844]
 ERROR
-	    return self.hub.switch()
-[2014-06-20 11:12:55.314389]
+	    response = target(*args,**kw)
+[2014-06-21 17:16:22.523987]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 331, in switch
-[2014-06-20 11:12:55.314506]
+	  File "/home/server/PycharmProjects/traversing/app/gate/action/root/netforwarding.py", line 80, in netconnlost
+[2014-06-21 17:16:22.562186]
 ERROR
-	    return greenlet.switch(self)
-[2014-06-20 11:12:55.314613]
+	    if vcharacter and vcharacter.getNode() > 0:  # 判断是否已经登入角色
+[2014-06-21 17:16:22.562369]
 ERROR
-	KeyboardInterrupt
+	AttributeError: VirtualCharacter instance has no attribute 'getNode'
+[2014-06-21 17:16:22.562592]
+ERROR
+	<Greenlet at 0x2e12550: <bound method BilateralBroker.msgResolve of <BilateralBroker at 0x2e12c30>>('{t\x04\x00\x00\x00_keyt\x00\x00\x00\x00t\x05\x00\)> failed with AttributeError
+[2014-06-21 17:16:22.562732]
+ERROR
+	
