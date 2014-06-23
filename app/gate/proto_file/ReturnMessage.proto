@@ -1,6 +1,0 @@
-message ReturnMessage
-{
-    required int32 result = 0;
-    required string message =
-
-}
