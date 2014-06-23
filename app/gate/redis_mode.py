@@ -12,5 +12,11 @@ tb_account.insert()
 tb_account_mapping = MAdmin('tb_account_mapping', 'account_token')  # 帐号匹配表
 tb_account_mapping.insert()
 
+tb_character_info = MAdmin('tb_character_info', 'uid')
+tb_character_info.insert()
+
+tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
+tb_nickname_mapping.insert()
+
 MAdminManager().registe(tb_account)
 MAdminManager().registe(tb_account_mapping)

@@ -2,52 +2,66 @@
 """
 created by wzp on 14-6-19下午12:11.
 """
+from app.gate.core.sceneser_manger import SceneSerManager
+from app.gate.core.user import User
+from app.gate.core.users_manager import UsersManager
+from app.gate.proto_file import game_pb2
+from app.gate.redis_mode import tb_account_mapping
 from app.gate.service.local.gateservice import localservicehandle
-import json
-from app.gate.model import dbcharacter
-from shared.utils import const
-from app.gate.core.virtualcharacter import VirtualCharacter
-from app.gate.core.charactermanager import VCharacterManager
-from enterscene import enter_scene
-from app.gate.model import dbuser
-from gtwisted.utils import log
-
+from app.gate.core.virtual_character import VirtualCharacter
+from app.gate.core.character_manager import VCharacterManager
 
 
 @localservicehandle
-def character_login_4(key, dynamicid, request_proto):
+def character_login_4(key, dynamic_id, request_proto):
     """角色登录
-    :return:
+    @return:
     """
+    account_id = None
+    argument = game_pb2.GameLoginResquest()
+    argument.ParseFromString(request_proto)
+    token = argument.token
 
-    args = json.loads(request_proto)
-    token = args.get('token')
-    data = character_login(dynamicid, token)
+    result = __character_login(dynamic_id, token)
 
-    if not data.get('result'):
-        return json.dumps(data)
+    argument = game_pb2.GameLoginResponse()
+    argument.result = result.get('result')
+    argument.nickname = result.get('nickname')
 
-    response = enter_scene(dynamicid)  # 登录成功，进入场景
-    return response  # 进入场景后，返回消息
+    print '111111111111111111'
+    print argument
+
+    return argument.SerializePartialToString()
 
 
-def character_login(dynamicid, token):
+def __character_login(dynamic_id, token):
+    mapping_data = tb_account_mapping.getObjData(token)
+    if mapping_data:
+        account_id = mapping_data.get('id', None)  # 取得帐号ID
 
-    userinfo = dbuser.get_userinfo_by_token(token)
-    if not userinfo:
-        return {'result': 0, 'message': u'token_error'}
+    print 'account_id:', account_id
+    if not account_id:
+        return {'result': False, 'nickname': ''}
 
-    characterinfo = dbcharacter.get_character_by_userid(userinfo['userid'])
-    if not characterinfo:
-        log.msg('no_role+++++++++++++++++++++++++++++++')
-        return {'result': 0, 'message': u'no_role'}
-
-    old_character = VCharacterManager().get_character_by_characterid(characterinfo['id'])
-    if old_character:
-        old_character.dynamicid = dynamicid
+    user = UsersManager().get_by_id(account_id)
+    if user:
+        user.dynamic_id = dynamic_id
     else:
-        character = VirtualCharacter(characterinfo['id'], dynamicid)
-        VCharacterManager().add_character(character)
+        user = User(token, dynamic_id)
+        user.init_user()
 
-    return {'result': True, 'message': u'login_success', 'data': characterinfo}
+    character_info = user.character
 
+    # TODO 校验character_info 和  user 中id 是否相同
+
+    v_character = VCharacterManager().get_by_id(user.user_id)
+    if v_character:
+        v_character.dynamic_id = dynamic_id
+    else:
+        v_character = VirtualCharacter(user.user_id, dynamic_id)
+        VCharacterManager().add_character(v_character)
+
+    now_node = SceneSerManager().get_best_sceneid()
+    v_character.node = now_node
+
+    return {'result': True, 'nickname': character_info.get('nickname')}

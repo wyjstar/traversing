@@ -22,7 +22,7 @@ class LocalService(CommandService):
             return None
         if targetKey not in self.unDisplay:
             log.msg("call method %s on service[single]"%target.__name__)
-        response = target(targetKey,*args,**kw)
+        response = target(targetKey, *args, **kw)
         return response
 
 localservice = LocalService('localservice')

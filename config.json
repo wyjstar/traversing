@@ -122,6 +122,13 @@
                 "account_password":"simple",
                 "last_login":"simple"
             }
+        },
+        "tb_character_info": {
+            "pkey_field": "uid",
+            "def_attrs": {
+                "uid": "simple",
+                "nickname":"simple"
+            }
         }
     }
 

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game.proto',
   package='proto_file.game',
-  serialized_pb='\n\ngame.proto\x12\x0fproto_file.game\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t')
+  serialized_pb='\n\ngame.proto\x12\x0fproto_file.game\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
 
 
 
@@ -45,13 +45,62 @@ _GAMELOGINRESQUEST = _descriptor.Descriptor(
   serialized_end=65,
 )
 
+
+_GAMELOGINRESPONSE = _descriptor.Descriptor(
+  name='GameLoginResponse',
+  full_name='proto_file.game.GameLoginResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='proto_file.game.GameLoginResponse.result', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='nickname', full_name='proto_file.game.GameLoginResponse.nickname', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='proto_file.game.GameLoginResponse.message', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=67,
+  serialized_end=137,
+)
+
 DESCRIPTOR.message_types_by_name['GameLoginResquest'] = _GAMELOGINRESQUEST
+DESCRIPTOR.message_types_by_name['GameLoginResponse'] = _GAMELOGINRESPONSE
 
 class GameLoginResquest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GAMELOGINRESQUEST
 
   # @@protoc_insertion_point(class_scope:proto_file.game.GameLoginResquest)
+
+class GameLoginResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GAMELOGINRESPONSE
+
+  # @@protoc_insertion_point(class_scope:proto_file.game.GameLoginResponse)
 
 
 # @@protoc_insertion_point(module_scope)

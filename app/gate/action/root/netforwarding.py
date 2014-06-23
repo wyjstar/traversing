@@ -8,8 +8,8 @@ from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from gtwisted.utils import log
 from shared.utils.const import const
-from app.gate.core.charactermanager import VCharacterManager
-from app.gate.core.scenesermanger import SceneSerManager
+from app.gate.core.character_manager import VCharacterManager
+from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import localservice
 
 
@@ -17,12 +17,10 @@ from app.gate.service.local.gateservice import localservice
 def forwarding(key, dynamic_id, data):
     """
     """
-    # if key in const.ACCOUNT_COMMAND:
-    #     log.msg(key, dynamic_id, data)
-    #     return GlobalObject().root.callChild('account', key, dynamic_id, data)
-    log.msg(localservice._targets)
-    log.msg(key)
-    if localservice._targets.has_key(key):
+    if key in const.ACCOUNT_COMMAND:
+        log.msg(key, dynamic_id, data)
+        return GlobalObject().root.callChild('account', key, dynamic_id, data)
+    elif localservice._targets.has_key(key):
         return localservice.callTarget(key, dynamic_id, data)
     else:
         oldvcharacter = VCharacterManager().get_character_by_clientid(dynamic_id)
@@ -76,12 +74,12 @@ def netconnlost(dynamicid):
     """客户端断开连接时的处理
     @param dynamicid: int 客户端的动态ID
     """
-    vcharacter = VCharacterManager().get_character_by_clientid(dynamicid)
-    if vcharacter and vcharacter.node > 0:  # 判断是否已经登入角色
-        #vcharacter.lock()  # 锁定角色
-        result = save_playerinfo_in_db(dynamicid)  # 保存角色,写入角色数据
-        if result:
-            drop_client(dynamicid, vcharacter)  # 清理客户端的数据
+    # vcharacter = VCharacterManager().get_character_by_clientid(dynamicid)
+    # if vcharacter and vcharacter.node > 0:  # 判断是否已经登入角色
+    #     #vcharacter.lock()  # 锁定角色
+    #     result = save_playerinfo_in_db(dynamicid)  # 保存角色,写入角色数据
+    #     if result:
+    #         drop_client(dynamicid, vcharacter)  # 清理客户端的数据
 
 
 

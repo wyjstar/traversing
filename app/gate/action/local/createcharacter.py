@@ -8,8 +8,8 @@ from app.gate.model import dbuser
 from enterscene import enter_scene
 from gtwisted.utils import log
 import json
-from app.gate.core.virtualcharacter import VirtualCharacter
-from app.gate.core.charactermanager import VCharacterManager
+from app.gate.core.virtual_character import VirtualCharacter
+from app.gate.core.character_manager import VCharacterManager
 
 
 @localservicehandle
