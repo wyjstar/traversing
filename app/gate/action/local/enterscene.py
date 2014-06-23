@@ -3,8 +3,8 @@
 created by server on 14-6-20下午1:40.
 """
 from gfirefly.server.globalobject import GlobalObject
-from app.gate.core.scenesermanger import SceneSerManager
-from app.gate.core.charactermanager import VCharacterManager
+from app.gate.core.sceneser_manger import SceneSerManager
+from app.gate.core.character_manager import VCharacterManager
 
 
 def enter_scene(dynamicid):

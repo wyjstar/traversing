@@ -1,8 +1,13 @@
+# -*- coding:utf-8 -*-
+"""
+created by server on 14-6-23上午11:59.
+"""
 #coding:utf8
 
 import struct
 from twisted.internet import reactor, protocol
-from app.account.proto_file import account_pb2
+from app.gate.proto_file import game_pb2
+
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -45,32 +50,17 @@ class EchoClient(protocol.Protocol):
         self.transport.write(sendData(argument.SerializeToString(), command_id))
 
     def connectionMade(self):
-
-        argument = account_pb2.AccountInfo()
-        argument.type = 2
-        argument.user_name = 'ghh0001'
-        argument.password = '123457'
-        # argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
-        self.dateSend(argument, 1)
+        argument = game_pb2.GameLoginResquest()
+        argument.token = '372ea206ebf515cf814ca46060210a81'
+        self.dateSend(argument, 4)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
-        if command == 1:
-            argument = account_pb2.AccountResponse()
+        if command == 4:
+            argument = game_pb2.GameLoginResponse()
             argument.ParseFromString(message)
             print argument
-            argument = account_pb2.LoginResquest()
-            argument.key.key = '372ea206ebf515cf814ca46060210a81'
-            argument.user_name = 'ghh0001'
-            argument.password = '123457'
-            self.dateSend(argument, 2)
-
-        if command == 2:
-            argument = account_pb2.AccountResponse()
-            argument.ParseFromString(message)
-            print argument
-
 
     def connectionLost(self, reason):
         print "connection lost"

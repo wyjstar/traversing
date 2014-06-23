@@ -116,6 +116,7 @@ class PBProtocl(BaseProtocol):
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
             response = {'_msgtype':ANSWER_SIGNAL,'_key':_key,'result':result}
+            print response
             _response = marshal.dumps(response)
             self.writeData(_response)
         
