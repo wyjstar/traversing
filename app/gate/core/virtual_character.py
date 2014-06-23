@@ -8,33 +8,31 @@ class VirtualCharacter:
     """
     虚拟角色类，记录角色对应的游戏服务器
     """
-    def __init__(self, characterid, dynamicid, node="game"):
+    def __init__(self, character_id, dynamic_id, node="game"):
         """
-        :param characterid: character id
-        :param dynamicid: connection id
-        :param node: 游戏服务器
-
-        :attribute locked: character lock status
+        @param character_id: character id
+        @param dynamic_id: connection id
+        @param node: 游戏服务器
         """
-        self._character_id = characterid
-        self._dynamic_id = dynamicid
+        self._character_id = character_id
+        self._dynamic_id = dynamic_id
         self._node = node
         self._locked = False
 
     @property
-    def characterid(self):
+    def character_id(self):
         return self._character_id
 
-    @characterid.setter
-    def characterid(self, value):
+    @character_id.setter
+    def character_id(self, value):
         self._character_id = value
 
     @property
-    def dynamicid(self):
+    def dynamic_id(self):
         return self._dynamic_id
 
-    @dynamicid.setter
-    def dynamicid(self, value):
+    @dynamic_id.setter
+    def dynamic_id(self, value):
         self._dynamic_id = value
 
     @property
