@@ -10,6 +10,7 @@ from app.gate.redis_mode import tb_account_mapping
 from app.gate.service.local.gateservice import localservicehandle
 from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.character_manager import VCharacterManager
+from gfirefly.server.globalobject import GlobalObject
 
 
 @localservicehandle
@@ -17,7 +18,7 @@ def character_login_4(key, dynamic_id, request_proto):
     """角色登录
     @return:
     """
-    account_id = None
+
     argument = game_pb2.GameLoginResquest()
     argument.ParseFromString(request_proto)
     token = argument.token
@@ -35,6 +36,7 @@ def character_login_4(key, dynamic_id, request_proto):
 
 
 def __character_login(dynamic_id, token):
+    account_id = None
     mapping_data = tb_account_mapping.getObjData(token)
     if mapping_data:
         account_id = mapping_data.get('id', None)  # 取得帐号ID
@@ -64,4 +66,8 @@ def __character_login(dynamic_id, token):
     now_node = SceneSerManager().get_best_sceneid()
     v_character.node = now_node
 
-    return {'result': True, 'nickname': character_info.get('nickname')}
+    nickname = character_info.get('nickname')
+
+    GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+
+    return {'result': True, 'nickname': nickname}

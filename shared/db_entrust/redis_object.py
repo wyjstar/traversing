@@ -38,6 +38,7 @@ class RedisObject(Serializer):
     def produceKey(self, keyname):
         """重新生成key
         """
+        print 'produce key:', self._name
         if isinstance(keyname, basestring):
             return ''.join([self._name, ':', keyname])
         else:
@@ -47,7 +48,12 @@ class RedisObject(Serializer):
         """检测对象是否被锁定
         """
         key = self.produceKey('_lock')
-        return self._client.get(key)
+        print 'locked key:', key
+        print 'locked result:', type(self._client.get(key)), self._client.get(key)
+        lock = self._client.get(key)
+        if lock:
+            lock = int(lock)
+        return lock
 
     def lock(self):
         """锁定对象
@@ -87,10 +93,11 @@ class RedisObject(Serializer):
     def update(self, key, values):
         """修改对象的值
         """
+        print 'update:', self.locked()
         if self.locked():
             return False
         produce_key = self.produceKey(key)
-
+        print 'update:', produce_key
         if values and key == 'data':
             values = cPickle.dumps(self.dumps(values))
 

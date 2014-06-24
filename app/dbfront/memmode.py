@@ -1,21 +1,16 @@
 #-*-coding:utf8-*-
-'''
-Created on 2013-6-5
 
-@author: lan (www.9miao.com)
-'''
-from gfirefly.dbentrust.mmode import MAdmin
 
-tbitemadmin = MAdmin('tb_item','id',fk ='characterId',incrkey='id')
-tbitemadmin.insert()
-tb_character_admin = MAdmin('tb_character','id',incrkey='id')
-tb_character_admin.insert()
-tb_zhanyi_record_admin = MAdmin('tb_zhanyi_record','id',fk ='characterId',incrkey='id')
-tb_zhanyi_record_admin.insert()
-tb_matrix_amin = MAdmin('tb_character_matrix','characterId',incrkey='id')
-tb_matrix_amin.insert()
-tb_equipment = MAdmin('tb_equipment','characterId',incrkey='id')
-tb_equipment.insert()
-tbpetadmin = MAdmin('tb_pet','id',fk ='ownerID',incrkey='id')
-tbpetadmin.insert()
+from shared.db_entrust.redis_mode import MAdmin
 
+tb_account = MAdmin('tb_account', 'id')  # 帐号表
+tb_account.insert()
+
+tb_account_mapping = MAdmin('tb_account_mapping', 'account_token')  # 帐号匹配表
+tb_account_mapping.insert()
+
+tb_character_info = MAdmin('tb_character_info', 'uid')
+tb_character_info.insert()
+
+tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
+tb_nickname_mapping.insert()

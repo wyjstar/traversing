@@ -6,4 +6,4 @@ Created on 2013-8-13
 '''
 from dbfront import initconfig
 
-initconfig.loadModule()
+initconfig.load_module()

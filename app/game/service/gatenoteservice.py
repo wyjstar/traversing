@@ -11,7 +11,7 @@ remoteservice = CommandService("gateremote")
 GlobalObject().remote['gate']._reference.addService(remoteservice)
 
 
-def remoteservice_handle(target):
+def remote_service_handle(target):
     """
     """
     remoteservice.mapTarget(target)

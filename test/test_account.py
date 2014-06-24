@@ -61,7 +61,7 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
             argument = account_pb2.LoginResquest()
-            argument.key.key = '372ea206ebf515cf814ca46060210a81'
+            argument.key.key = '591442209f104d98aea0ed453f0d4bdd'
             argument.user_name = 'ghh0001'
             argument.password = '123457'
             self.dateSend(argument, 2)

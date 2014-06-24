@@ -18,5 +18,3 @@ tb_character_info.insert()
 tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
 tb_nickname_mapping.insert()
 
-MAdminManager().registe(tb_account)
-MAdminManager().registe(tb_account_mapping)
