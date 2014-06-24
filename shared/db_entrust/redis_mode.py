@@ -52,6 +52,8 @@ class MMode(RedisObject):
     def update(self, key, values):
         n_time = time.time()
         data = self.get_multi(['data', '_state'])
+        print data
+        print type(data['_state'])
         data['data'].update({key: values})
         if data.get('_state') == MMODE_STATE_NEW:
             props = {'data': data.get('data'), '_time': n_time}
@@ -101,6 +103,7 @@ class MMode(RedisObject):
         """同步到数据库
         """
         state = int(self.get('_state'))
+        print 'state:', state, type(state)
         tablename = self._name.split(':')[0]
         if state == MMODE_STATE_ORI:
             return
@@ -110,6 +113,7 @@ class MMode(RedisObject):
             pk = self.get('_pk')
             print 'sync db props:',props
             result = util.InsertIntoDB(tablename, props)
+            print 'result:', result
         elif state == MMODE_STATE_UPDATE:
             props = self.get('data')
             pk = self.get('_pk')
@@ -124,6 +128,7 @@ class MMode(RedisObject):
             prere = {pk: props.get(pk)}
             result = util.DeleteFromDB(tablename, prere)
         if result:
+            print '1111111111111111111111111;ljf;ljsadl;fjksad;l'
             RedisObject.update(self, '_state', MMODE_STATE_ORI)
 
     def checkSync(self, timeout=TIMEOUT):
@@ -134,9 +139,11 @@ class MMode(RedisObject):
         objtime = RedisObject.get(self, '_time')
         objtime = float(objtime)
         print objtime, type(objtime)
+        print ntime, type(ntime)
         if ntime - objtime >= timeout and timeout:
             self.mdelete()
         else:
+            print 'sync start'
             self.syncDB()
 
 

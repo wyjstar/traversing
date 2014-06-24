@@ -13,8 +13,6 @@
         },
         "gate": {
             "rootport": 10000,
-            "mem": true,
-            "db": true,
             "name": "gate",
             "mem": true,
             "db": true,
@@ -51,16 +49,18 @@
             "app": "app.chatnetserver",
             "log": "app/logs/chatnet.log"
         },
-        "game1":{
+        "game": {
             "remoteport": [
                 {
-                    "rootport":10000,
-                    "rootname":"gate"
+                    "rootport": 10000,
+                    "rootname": "gate"
                 }
             ],
-            "name":"game1",
-            "app":"app.game1server",
-            "log":"app/logs/game1.log"
+            "name": "game",
+            "mem": true,
+            "db": true,
+            "app": "app.game1server",
+            "log": "app/logs/game1.log"
         },
         "account": {
             "name": "account",
@@ -85,6 +85,13 @@
             ],
             "app": "app.chatserver",
             "log": "app/logs/chatserver.log"
+        },
+        "dbfront": {
+            "name": "dbfront",
+            "db": true,
+            "mem": true,
+            "app": "app.dbfrontserver",
+            "log": "app/logs/dbfront.log"
         }
     },
     "db": {
@@ -117,17 +124,17 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
-                "uuid":"simple",
-                "account_name":"simple",
-                "account_password":"simple",
-                "last_login":"simple"
+                "uuid": "simple",
+                "account_name": "simple",
+                "account_password": "simple",
+                "last_login": "simple"
             }
         },
         "tb_character_info": {
             "pkey_field": "uid",
             "def_attrs": {
                 "uid": "simple",
-                "nickname":"simple"
+                "nickname": "simple"
             }
         }
     }

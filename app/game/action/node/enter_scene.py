@@ -2,17 +2,19 @@
 """
 created by wzp on 14-6-19下午7: 51.
 """
-from app.game.service.gatenoteservice import remoteservice_handle
+from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 
 
-
-@remoteservice_handle
-def enter_scene_601(dynamicid):
+@remote_service_handle
+def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
-    # if not player:
-    #     player = PlayerCharacter(characterid, dynamic_id=dynamicid)
+
+    print '11111111111111111111111111111111111111111111111111111111111'
+
+    player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
+
     # PlayersManager().addPlayer(player)
     # playerinfo = player.formatInfo()
     # responsedata = {'result': True, 'message': '',
@@ -27,5 +29,5 @@ def enter_scene_601(dynamicid):
     #                         'gas': playerinfo['energy'],
     #                         'profession': playerinfo['profession']}
     #                 }
-    #return responsedata
-    return "I get to enter scene"
+    # return responsedata
+    # return "I get to enter scene"
