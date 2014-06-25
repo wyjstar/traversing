@@ -1,0 +1,57 @@
+[2014-06-24 15:45:46.969468]
+ERROR
+	KeyboardInterrupt
+[2014-06-24 15:45:46.969623]
+ERROR
+	Traceback (most recent call last):
+[2014-06-24 15:45:46.969739]
+ERROR
+	  File "appmain.py", line 30, in <module>
+[2014-06-24 15:45:46.991242]
+ERROR
+	    ser.start()
+[2014-06-24 15:45:46.991353]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 157, in start
+[2014-06-24 15:45:47.075288]
+ERROR
+	    reactor.run()
+[2014-06-24 15:45:47.075451]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 75, in run
+[2014-06-24 15:45:47.075697]
+ERROR
+	    gevent.joinall([gevent.spawn(self.start())])
+[2014-06-24 15:45:47.075839]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 69, in start
+[2014-06-24 15:45:47.076004]
+ERROR
+	    gevent.sleep(600)
+[2014-06-24 15:45:47.076169]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 75, in sleep
+[2014-06-24 15:45:47.076323]
+ERROR
+	    hub.wait(loop.timer(seconds, ref=ref))
+[2014-06-24 15:45:47.076464]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 341, in wait
+[2014-06-24 15:45:47.076591]
+ERROR
+	    result = waiter.get()
+[2014-06-24 15:45:47.076690]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 568, in get
+[2014-06-24 15:45:47.076846]
+ERROR
+	    return self.hub.switch()
+[2014-06-24 15:45:47.076954]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 331, in switch
+[2014-06-24 15:45:47.077168]
+ERROR
+	    return greenlet.switch(self)
+[2014-06-24 15:45:47.085500]
+ERROR
+	KeyboardInterrupt
