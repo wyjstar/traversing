@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game.proto',
   package='proto_file.game',
-  serialized_pb='\n\ngame.proto\x12\x0fproto_file.game\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
+  serialized_pb='\n\ngame.proto\x12\x0fproto_file.game\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t\")\n\x15\x43reateNickNameRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\"E\n\x10NickNameResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
 
 
 
@@ -87,8 +87,80 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
   serialized_end=137,
 )
 
+
+_CREATENICKNAMEREQUEST = _descriptor.Descriptor(
+  name='CreateNickNameRequest',
+  full_name='proto_file.game.CreateNickNameRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='nickname', full_name='proto_file.game.CreateNickNameRequest.nickname', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=139,
+  serialized_end=180,
+)
+
+
+_NICKNAMERESPONSE = _descriptor.Descriptor(
+  name='NickNameResponse',
+  full_name='proto_file.game.NickNameResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='proto_file.game.NickNameResponse.result', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='nickname', full_name='proto_file.game.NickNameResponse.nickname', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='proto_file.game.NickNameResponse.message', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=182,
+  serialized_end=251,
+)
+
 DESCRIPTOR.message_types_by_name['GameLoginResquest'] = _GAMELOGINRESQUEST
 DESCRIPTOR.message_types_by_name['GameLoginResponse'] = _GAMELOGINRESPONSE
+DESCRIPTOR.message_types_by_name['CreateNickNameRequest'] = _CREATENICKNAMEREQUEST
+DESCRIPTOR.message_types_by_name['NickNameResponse'] = _NICKNAMERESPONSE
 
 class GameLoginResquest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -101,6 +173,18 @@ class GameLoginResponse(_message.Message):
   DESCRIPTOR = _GAMELOGINRESPONSE
 
   # @@protoc_insertion_point(class_scope:proto_file.game.GameLoginResponse)
+
+class CreateNickNameRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CREATENICKNAMEREQUEST
+
+  # @@protoc_insertion_point(class_scope:proto_file.game.CreateNickNameRequest)
+
+class NickNameResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _NICKNAMERESPONSE
+
+  # @@protoc_insertion_point(class_scope:proto_file.game.NickNameResponse)
 
 
 # @@protoc_insertion_point(module_scope)

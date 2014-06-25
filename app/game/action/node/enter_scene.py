@@ -11,7 +11,6 @@ from app.game.core.PlayersManager import PlayersManager
 def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
 
-    print '11111111111111111111111111111111111111111111111111111111111'
 
     player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
 
