@@ -136,6 +136,13 @@
                 "uid": "simple",
                 "nickname": "simple"
             }
+        },
+        "tb_nickname_mapping": {
+            "pkey_field": "id",
+            "def_attrs": {
+            "id": "simple",
+            "nickname":"simple"
+            }
         }
     }
 

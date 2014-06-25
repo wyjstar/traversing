@@ -50,12 +50,13 @@ class UsersManager:
     #     """
     #     return self._users.get(uid)
     #
-    # def getUserByDynamicId(self,dynamicId):
+    def get_user_dynamicId(self, dynamic_Id):
     #     '''根据客户端的动态ID获取user实例'''
-    #     for user in self._users.values():
-    #         if user.dynamicId==dynamicId:
-    #             return user
-    #     return None
+        for user in self._users.values():
+            print dynamic_Id
+            if user.dynamic_id == dynamic_Id:
+                return user
+        return None
     #
     # def getUserByUsername(self, username):
     #     """根据用户名获取用户信息

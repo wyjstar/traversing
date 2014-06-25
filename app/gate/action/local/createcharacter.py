@@ -13,7 +13,7 @@ from app.gate.core.character_manager import VCharacterManager
 
 
 @localservicehandle
-def create_character_5(key, dynamicid, request_proto):
+def create_character_15(key, dynamicid, request_proto):
     """创建角色
     arguments=(userId,nickName)
     userId用户ID

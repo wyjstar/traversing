@@ -1,0 +1,1686 @@
+[2014-06-25 10:30:35.945685]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '60' for key 'PRIMARY'")
+
+[2014-06-25 10:30:35.945827]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ghh0001','123457',0,'134c5c62fb5111e3874e080027a4fa58',60);"
+[2014-06-25 10:30:36.054128]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '25' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.054419]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('vvvvvv','123457',0,'54dbefbcf86311e3b634080027a4fa58',25);"
+[2014-06-25 10:30:36.090081]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '26' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.090187]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('kkkkkk','123457',0,'8dc39f42f86711e381b8080027a4fa58',26);"
+[2014-06-25 10:30:36.122423]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '27' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.122542]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('bbbbbb','123457',0,'ca700b10f86711e3b993080027a4fa58',27);"
+[2014-06-25 10:30:36.165810]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '20' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.169869]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('rrrrrrr','123457',0,'51102af4f85b11e3a410080027a4fa58',20);"
+[2014-06-25 10:30:36.206683]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '21' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.206802]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('yyyyyy','123457',0,'5fca7012f85c11e3a4b5080027a4fa58',21);"
+[2014-06-25 10:30:36.220508]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '22' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.220749]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('cccccc','123457',0,'79c9a262f85c11e3b2dd080027a4fa58',22);"
+[2014-06-25 10:30:36.236790]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '23' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.236893]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('mmmmmm','123457',0,'01c13a94f85e11e3aa61080027a4fa58',23);"
+[2014-06-25 10:30:36.263968]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '28' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.264085]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('xxxxxx','123457',0,'56546c20f86811e3a282080027a4fa58',28);"
+[2014-06-25 10:30:36.276359]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '29' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.276463]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ccccccb','123457',0,'b5239e54f86a11e3966b080027a4fa58',29);"
+[2014-06-25 10:30:36.288507]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.288622]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('fgfhjgfsa','123457',0,'34e6cfa8f78511e3901c080027a4fa58',0);"
+[2014-06-25 10:30:36.300165]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '2' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.300268]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('fgfhjgfsa','123457',0,'c7a3eb44f78711e3b196080027a4fa58',2);"
+[2014-06-25 10:30:36.322196]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '4' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.322303]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('fgfhjgfsa','123457',0,'15ece580f78811e39125080027a4fa58',4);"
+[2014-06-25 10:30:36.334385]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.334503]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('etewfgdd','123457',0,'8ad62e52f78c11e3a63d080027a4fa58',6);"
+[2014-06-25 10:30:36.347602]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '8' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.347682]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('wwewrwerw','123457',0,'007a8b1cf78d11e399e5080027a4fa58',8);"
+[2014-06-25 10:30:36.394960]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '15' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.395062]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('eeeeee','123457',0,'cf009cdef84f11e38761080027a4fa58',15);"
+[2014-06-25 10:30:36.411832]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '14' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.411922]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ffffff','123457',0,'9ff877faf83f11e3b915080027a4fa58',14);"
+[2014-06-25 10:30:36.420040]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '11' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.420060]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('mmbnvnvn','123457',0,'116437c0f79711e3ad96080027a4fa58',11);"
+[2014-06-25 10:30:36.428889]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '10' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.428979]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('rterterte','123457',0,'855b1594f78e11e39c7c080027a4fa58',10);"
+[2014-06-25 10:30:36.444889]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '13' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.444990]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('wenjihu','123457',0,'8e4146fef83f11e3b915080027a4fa58',13);"
+[2014-06-25 10:30:36.463978]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '12' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.464067]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ghgghjd','123457',0,'308a440ef82911e389e8080027a4fa58',12);"
+[2014-06-25 10:30:36.480984]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '59' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.481199]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ghh0001','123457',0,'08ed0f78fb5111e3874e080027a4fa58',59);"
+[2014-06-25 10:30:36.499591]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '58' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.499696]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('dsfsdfsdf','123457',0,'06ab51fcfa8411e3874ab95b29798ee3',58);"
+[2014-06-25 10:30:36.512207]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '17' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.512207]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('wwwwww','123457',0,'4c3aaddaf85911e3bdde080027a4fa58',17);"
+[2014-06-25 10:30:36.524654]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '16' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.524758]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('zzzzzz','123457',0,'f5b3e576f85811e3b62d080027a4fa58',16);"
+[2014-06-25 10:30:36.557641]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '55' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.557751]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('zzzsssaaa1','123457',0,'e9ef92dcfa7c11e3976801cbb823c4a3',55);"
+[2014-06-25 10:30:36.583436]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '54' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.584671]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('zzzsssaaa','123457',0,'43d84784fa7911e3a794a56124b10472',54);"
+[2014-06-25 10:30:36.606092]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '57' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.606584]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('yyyuuuiii','123457',0,'4297b9d4fa8011e3a3f119116682f45c',57);"
+[2014-06-25 10:30:36.637760]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '51' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.639404]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuyyyyyy','123457',0,'ab886498f92c11e3b686080027a4fa58',51);"
+[2014-06-25 10:30:36.663138]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '50' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.665277]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuyyyyy','123457',0,'836ae92cf92c11e3a75f080027a4fa58',50);"
+[2014-06-25 10:30:36.707603]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '52' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.707666]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuttttt','123457',0,'e66598cef92c11e3819f080027a4fa58',52);"
+[2014-06-25 10:30:36.775331]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '18' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.775552]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('gggggg','123457',0,'86277ffaf85911e3a3a8080027a4fa58',18);"
+[2014-06-25 10:30:36.824250]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '56' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.825281]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('dddfffggg','123457',0,'5c520d90fa7e11e3bcca8111540428a6',56);"
+[2014-06-25 10:30:36.862988]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '19' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.863106]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuu','123457',0,'23f6a940f85a11e39be9080027a4fa58',19);"
+[2014-06-25 10:30:36.888217]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '53' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.890666]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('vvvxxxxxx','123457',0,'6ccd63ecf92d11e39ef8080027a4fa58',53);"
+[2014-06-25 10:30:36.926419]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '48' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.926565]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('oooooooppp','123457',0,'76cc2fbaf92b11e3ace7080027a4fa58',48);"
+[2014-06-25 10:30:36.938292]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '49' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.938395]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuyyyy','123457',0,'2ef3a636f92c11e3bd66080027a4fa58',49);"
+[2014-06-25 10:30:36.951605]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '46' for key 'PRIMARY'")
+
+[2014-06-25 10:30:36.951706]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('oooooooopp','123457',0,'b1d705c2f92a11e3b65a080027a4fa58',46);"
+[2014-06-25 10:30:36.999807]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '44' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.000219]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('oooooooo','123457',0,'519a31fcf92a11e3992e080027a4fa58',44);"
+[2014-06-25 10:30:37.020178]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '45' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.021281]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('oooooooop','123457',0,'7e7b09b2f92a11e3a6ea080027a4fa58',45);"
+[2014-06-25 10:30:37.038233]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '42' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.038303]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('zzzzzzzzzz','123457',0,'0de0bb28f92711e38393080027a4fa58',42);"
+[2014-06-25 10:30:37.065211]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '43' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.067238]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('vvvvvvvvvv','123457',0,'b69785eef92711e38d8b080027a4fa58',43);"
+[2014-06-25 10:30:37.092273]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '40' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.093601]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('wwwwwwwwww','123457',0,'251997c0f92611e38e6d080027a4fa58',40);"
+[2014-06-25 10:30:37.120102]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '41' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.120224]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('aaaaaaaaaa','123457',0,'d1178f6ef92611e3a5fc080027a4fa58',41);"
+[2014-06-25 10:30:37.172377]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '3' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.172489]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('fgfhjgfsa','123457',0,'e60a8b4cf78711e39125080027a4fa58',3);"
+[2014-06-25 10:30:37.199151]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '5' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.202504]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ertertert','123457',0,'4dd43dccf78811e38839080027a4fa58',5);"
+[2014-06-25 10:30:37.226159]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '7' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.226264]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('yutyutyu','123457',0,'c897861ef78c11e38c8b080027a4fa58',7);"
+[2014-06-25 10:30:37.244809]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '9' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.244809]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('thrthrthr','123457',0,'5b272facf78d11e3a562080027a4fa58',9);"
+[2014-06-25 10:30:37.298070]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '24' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.298223]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('llllll','123457',0,'048a18ccf86311e3abff080027a4fa58',24);"
+[2014-06-25 10:30:37.366346]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '39' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.366529]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('qqq','123457',0,'bb373f98f91511e39693080027a4fa58',39);"
+[2014-06-25 10:30:37.393978]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '38' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.393978]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('eerrrr@#','123457',0,'1247a9f0f91411e3ac3f080027a4fa58',38);"
+[2014-06-25 10:30:37.414085]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '33' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.414378]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuup','123457',0,'83d4d078f90711e39ce22d5cc834d18e',33);"
+[2014-06-25 10:30:37.430539]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '32' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.431206]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('wweeee','123457',0,'6cfe83eaf90611e3a15f080027a4fa58',32);"
+[2014-06-25 10:30:37.448036]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '31' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.448147]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('sssxxx','123457',0,'9f06bbe4f90311e3b400080027a4fa58',31);"
+[2014-06-25 10:30:37.475991]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '30' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.478705]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('xxxzzz','123457',0,'72d13ba8f90311e38e03080027a4fa58',30);"
+[2014-06-25 10:30:37.504455]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '37' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.504566]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('yyyyyyyyy','123457',0,'b00c398ef91011e3ba68080027a4fa58',37);"
+[2014-06-25 10:30:37.534978]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '36' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.535141]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('uuuuuuuuu','123457',0,'7fbb2de4f91011e3b333080027a4fa58',36);"
+[2014-06-25 10:30:37.564631]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '35' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.564749]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('kkkkkkkk','123457',0,'41ca9330f90b11e385994fdcfc3fe3b8',35);"
+[2014-06-25 10:30:37.590480]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '34' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.590589]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ttttttt','123457',0,'462469d4f90a11e39fbd87ddfc79fb60',34);"
+[2014-06-25 10:30:37.636764]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '47' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.637011]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('ooooooooppp','123457',0,'df8d29b0f92a11e3b77b080027a4fa58',47);"
+[2014-06-25 10:30:37.729162]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '414bfd45734297c489b4c47a213b91c0' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.729277]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('414bfd45734297c489b4c47a213b91c0',41);"
+[2014-06-25 10:30:37.761191]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'c1c0d459090f2eace70654739ee42204' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.761887]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('c1c0d459090f2eace70654739ee42204',0);"
+[2014-06-25 10:30:37.792660]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '18ac4ad8c996eee75b6fabb9eb911332' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.792783]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('18ac4ad8c996eee75b6fabb9eb911332',0);"
+[2014-06-25 10:30:37.819579]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '56b34fba88c83b757db31f7f314b1fa1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.820575]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('56b34fba88c83b757db31f7f314b1fa1',37);"
+[2014-06-25 10:30:37.839472]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0625a2ae8dd1ef57e525e3953ba1648c' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.839580]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0625a2ae8dd1ef57e525e3953ba1648c',3);"
+[2014-06-25 10:30:37.863848]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a4ceb8327a8335a363a12f7fb48b478d' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.864592]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a4ceb8327a8335a363a12f7fb48b478d',0);"
+[2014-06-25 10:30:37.888714]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '65b06fb12cd85d4afeea01c7e7d1d4cf' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.889699]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('65b06fb12cd85d4afeea01c7e7d1d4cf',52);"
+[2014-06-25 10:30:37.920005]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '2922416cba8e55a3925e306b6338a227' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.921310]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('2922416cba8e55a3925e306b6338a227',0);"
+[2014-06-25 10:30:37.948177]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'c7f849bbaeb82439806fa00684a3d96b' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.948418]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('c7f849bbaeb82439806fa00684a3d96b',43);"
+[2014-06-25 10:30:37.970772]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'abecec7042e2af3bab6e5ab5738811c8' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.974538]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('abecec7042e2af3bab6e5ab5738811c8',0);"
+[2014-06-25 10:30:37.994342]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'ef5507d7806943a0dfcf0b6a2d7ece59' for key 'PRIMARY'")
+
+[2014-06-25 10:30:37.996333]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('ef5507d7806943a0dfcf0b6a2d7ece59',47);"
+[2014-06-25 10:30:38.021866]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f6451f2891ea003bef2b19bdc3eee4b1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.024667]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f6451f2891ea003bef2b19bdc3eee4b1',0);"
+[2014-06-25 10:30:38.049632]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b2318526fd9e604964c4bb0335680fdb' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.049730]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b2318526fd9e604964c4bb0335680fdb',0);"
+[2014-06-25 10:30:38.072689]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'dfd31c5a64c5da6906b66a01a288bb49' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.072798]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('dfd31c5a64c5da6906b66a01a288bb49',29);"
+[2014-06-25 10:30:38.099171]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a05ccc38e7236506da24343ea84256da' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.099279]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a05ccc38e7236506da24343ea84256da',30);"
+[2014-06-25 10:30:38.124749]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'af506c75d66f1eae898a2b861d4ac10d' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.124856]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('af506c75d66f1eae898a2b861d4ac10d',12);"
+[2014-06-25 10:30:38.158299]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '21e6807ea1119a02a317e8b1e4e6b946' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.159563]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('21e6807ea1119a02a317e8b1e4e6b946',0);"
+[2014-06-25 10:30:38.191114]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f40c0a6270673689bfa94fbe28eb3729' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.191220]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f40c0a6270673689bfa94fbe28eb3729',18);"
+[2014-06-25 10:30:38.217293]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b21b922e3ed9ecd0a1929972aaa48d74' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.217434]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b21b922e3ed9ecd0a1929972aaa48d74',5);"
+[2014-06-25 10:30:38.247439]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'e25f1b02b9b9e0929a7f4599ab9e252c' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.247815]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('e25f1b02b9b9e0929a7f4599ab9e252c',0);"
+[2014-06-25 10:30:38.276273]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '72a50389d6e18b8b62fb09c3b27ef0f6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.276397]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('72a50389d6e18b8b62fb09c3b27ef0f6',21);"
+[2014-06-25 10:30:38.299128]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '67755362cbfa1df0d515efe6a0bd9dbd' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.300561]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('67755362cbfa1df0d515efe6a0bd9dbd',0);"
+[2014-06-25 10:30:38.321285]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '24060f7cf9263404538b8b97041b4dcc' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.322052]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('24060f7cf9263404538b8b97041b4dcc',36);"
+[2014-06-25 10:30:38.334656]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '10c40e7256ebaa6314a5be1595ce381a' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.334757]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('10c40e7256ebaa6314a5be1595ce381a',0);"
+[2014-06-25 10:30:38.353614]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '9c8deeb121651c70d01372c5a3285f1f' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.353819]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('9c8deeb121651c70d01372c5a3285f1f',0);"
+[2014-06-25 10:30:38.369099]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '4c73da4420042184fd644e8a8d536e05' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.369198]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('4c73da4420042184fd644e8a8d536e05',0);"
+[2014-06-25 10:30:38.386467]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '5528cee67489db782b62a6523f3b8068' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.386951]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('5528cee67489db782b62a6523f3b8068',26);"
+[2014-06-25 10:30:38.400256]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'c434b0c25952b15204291860a1387672' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.400358]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('c434b0c25952b15204291860a1387672',0);"
+[2014-06-25 10:30:38.413438]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '4a261b9cc63d646b7d08347933d754cd' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.413550]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('4a261b9cc63d646b7d08347933d754cd',0);"
+[2014-06-25 10:30:38.430296]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a954171d0f81ad016c141a9a2ed8c28a' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.430404]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a954171d0f81ad016c141a9a2ed8c28a',0);"
+[2014-06-25 10:30:38.442917]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '9fc545a58ec440a5a80d00f0466ae3b7' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.442981]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('9fc545a58ec440a5a80d00f0466ae3b7',24);"
+[2014-06-25 10:30:38.459903]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0bc65ca503ca2e1342835b472c8db0a6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.460009]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0bc65ca503ca2e1342835b472c8db0a6',0);"
+[2014-06-25 10:30:38.476694]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b47456baf3635632ab66588c68481ff8' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.476864]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b47456baf3635632ab66588c68481ff8',39);"
+[2014-06-25 10:30:38.486231]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '1780200b516ae65ee16e709294ca1a00' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.486331]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('1780200b516ae65ee16e709294ca1a00',9);"
+[2014-06-25 10:30:38.495680]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'afbdd139ae82a0a5f8a06a378fa7686b' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.495767]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('afbdd139ae82a0a5f8a06a378fa7686b',31);"
+[2014-06-25 10:30:38.505018]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '8b1991079b4716b2d2da5730357bd2e6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.505019]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('8b1991079b4716b2d2da5730357bd2e6',53);"
+[2014-06-25 10:30:38.513927]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '4d8d467f8b752125bd74b7bfeea6c456' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.514186]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('4d8d467f8b752125bd74b7bfeea6c456',14);"
+[2014-06-25 10:30:38.523181]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '596c1af5956a1a27ac84509ae5db924c' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.523267]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('596c1af5956a1a27ac84509ae5db924c',55);"
+[2014-06-25 10:30:38.531447]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0c99beede3c2037388c425c7276c83a7' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.532350]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0c99beede3c2037388c425c7276c83a7',33);"
+[2014-06-25 10:30:38.540749]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '8da7a56347305c93ebdea32a9b7e6a8d' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.540834]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('8da7a56347305c93ebdea32a9b7e6a8d',49);"
+[2014-06-25 10:30:38.557295]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b98f074252a910be5fdab45a3190bdc6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.557395]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b98f074252a910be5fdab45a3190bdc6',44);"
+[2014-06-25 10:30:38.574580]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '7041d73f9dd27c1da12a4f94b12ed692' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.574669]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('7041d73f9dd27c1da12a4f94b12ed692',0);"
+[2014-06-25 10:30:38.588823]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'cdd04580a279b62a246a05db275929dd' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.588909]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('cdd04580a279b62a246a05db275929dd',2);"
+[2014-06-25 10:30:38.607342]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '03ef3dbcb0966656668494a359086340' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.607434]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('03ef3dbcb0966656668494a359086340',45);"
+[2014-06-25 10:30:38.626920]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '442a0b797426d50d15d6135fd8f494f9' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.626933]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('442a0b797426d50d15d6135fd8f494f9',35);"
+[2014-06-25 10:30:38.639792]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'bce67e7b7ca2a40b63e1f45985f52f16' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.639821]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('bce67e7b7ca2a40b63e1f45985f52f16',0);"
+[2014-06-25 10:30:38.653363]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '3d85ecbf459e724e1d5806cc59d25e6b' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.653463]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('3d85ecbf459e724e1d5806cc59d25e6b',58);"
+[2014-06-25 10:30:38.671428]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0555cef7dc0be43a3b7fc959a62cb5e0' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.671589]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0555cef7dc0be43a3b7fc959a62cb5e0',0);"
+[2014-06-25 10:30:38.684872]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '39c8b84bc6734e6d97aa5a1333e767d6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.684980]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('39c8b84bc6734e6d97aa5a1333e767d6',23);"
+[2014-06-25 10:30:38.697530]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '707d82ecfc15a015080533d4d5d0f7d7' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.698039]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('707d82ecfc15a015080533d4d5d0f7d7',15);"
+[2014-06-25 10:30:38.711635]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '231811c018d49256890ea1babd9bc176' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.711761]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('231811c018d49256890ea1babd9bc176',0);"
+[2014-06-25 10:30:38.724777]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'eeef9b58b89b7a99a6408a9fed7d85d5' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.724894]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('eeef9b58b89b7a99a6408a9fed7d85d5',7);"
+[2014-06-25 10:30:38.738081]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b7eb83ddef9fd17d252c3f8d39bd56bf' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.738182]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b7eb83ddef9fd17d252c3f8d39bd56bf',0);"
+[2014-06-25 10:30:38.746747]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '259b55dd762e3aea5fdca8ce30388184' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.746831]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('259b55dd762e3aea5fdca8ce30388184',4);"
+[2014-06-25 10:30:38.761927]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '3e7543c74a676037a6a8c10b7f2e31e1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.761927]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('3e7543c74a676037a6a8c10b7f2e31e1',0);"
+[2014-06-25 10:30:38.777571]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '684ed58722ab5b0ff59a1cf1d213bb05' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.777668]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('684ed58722ab5b0ff59a1cf1d213bb05',19);"
+[2014-06-25 10:30:38.792243]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '6aa70918fda7c89ce2a921f717658090' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.793094]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('6aa70918fda7c89ce2a921f717658090',0);"
+[2014-06-25 10:30:38.808088]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '2fe3aede838109a3a14c32360a326c07' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.808379]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('2fe3aede838109a3a14c32360a326c07',0);"
+[2014-06-25 10:30:38.827771]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'e61f29575c8860dfbaf7f98fe09e13cf' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.828063]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('e61f29575c8860dfbaf7f98fe09e13cf',0);"
+[2014-06-25 10:30:38.856951]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0afd10ff552e21d21fd00cf726643efc' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.857056]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0afd10ff552e21d21fd00cf726643efc',0);"
+[2014-06-25 10:30:38.873436]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f96666c723d2211876f65c667aab68a7' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.873611]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f96666c723d2211876f65c667aab68a7',17);"
+[2014-06-25 10:30:38.885920]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '22d8718dd03cc961562134dcda003c8d' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.885943]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('22d8718dd03cc961562134dcda003c8d',20);"
+[2014-06-25 10:30:38.907060]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b562024d3bbaf3544525334ce6dc0259' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.907164]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b562024d3bbaf3544525334ce6dc0259',10);"
+[2014-06-25 10:30:38.920362]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'dea94493bf499aec1896f42e62d343ff' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.920503]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('dea94493bf499aec1896f42e62d343ff',42);"
+[2014-06-25 10:30:38.929642]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '1eda39903943420628d48e618791427e' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.929743]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('1eda39903943420628d48e618791427e',0);"
+[2014-06-25 10:30:38.938863]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '4d56284aa8213d8813b37b712ddd4bd6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.938954]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('4d56284aa8213d8813b37b712ddd4bd6',0);"
+[2014-06-25 10:30:38.947466]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '59c324b746ee1f316fd7ad8b31be8fd6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.947487]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('59c324b746ee1f316fd7ad8b31be8fd6',0);"
+[2014-06-25 10:30:38.955324]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f917317d237a824b355cecedbd065f7d' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.955413]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f917317d237a824b355cecedbd065f7d',25);"
+[2014-06-25 10:30:38.973573]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '56539309b926df3051349653cb1257cf' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.974620]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('56539309b926df3051349653cb1257cf',0);"
+[2014-06-25 10:30:38.989513]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '5db0daa4583e3de543ac04d08d752103' for key 'PRIMARY'")
+
+[2014-06-25 10:30:38.989513]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('5db0daa4583e3de543ac04d08d752103',0);"
+[2014-06-25 10:30:39.005924]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'e993ee2feeae9287d2850d2ee7ad9da6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.006016]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('e993ee2feeae9287d2850d2ee7ad9da6',0);"
+[2014-06-25 10:30:39.022190]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '29ca1bdc21284bdaba3bd8f7dd3ecc12' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.022282]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('29ca1bdc21284bdaba3bd8f7dd3ecc12',0);"
+[2014-06-25 10:30:39.037249]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '7892005b9e57cb0c4d2eadd61c3a8123' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.037332]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('7892005b9e57cb0c4d2eadd61c3a8123',0);"
+[2014-06-25 10:30:39.054863]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0a8705f1221edd276ab88fe9128d1320' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.054938]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0a8705f1221edd276ab88fe9128d1320',22);"
+[2014-06-25 10:30:39.088695]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '21fd3739320624a1716ca3a0fc322047' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.088815]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('21fd3739320624a1716ca3a0fc322047',54);"
+[2014-06-25 10:30:39.112556]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '1a1b3eb1bc79525e6e9c9dc0dc65fbb1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.115236]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('1a1b3eb1bc79525e6e9c9dc0dc65fbb1',0);"
+[2014-06-25 10:30:39.145021]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '996e77fd651e96dd35d2f3a6f4cc6d3a' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.145126]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('996e77fd651e96dd35d2f3a6f4cc6d3a',0);"
+[2014-06-25 10:30:39.154936]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'bde695d346cae76eb2307fa1ff7d90c7' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.155149]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('bde695d346cae76eb2307fa1ff7d90c7',28);"
+[2014-06-25 10:30:39.164423]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '9bec8e67f89cc10b5a332fb8b82e47a9' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.164518]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('9bec8e67f89cc10b5a332fb8b82e47a9',0);"
+[2014-06-25 10:30:39.182446]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '36c8f622bc4a46fa3ba3d1167c4117a8' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.182543]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('36c8f622bc4a46fa3ba3d1167c4117a8',57);"
+[2014-06-25 10:30:39.198079]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '36192d29cd502ea032c3b58645a11371' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.199224]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('36192d29cd502ea032c3b58645a11371',0);"
+[2014-06-25 10:30:39.221267]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '47a36849ff2bc4a2cbe4af20468f9bc1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.222337]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('47a36849ff2bc4a2cbe4af20468f9bc1',0);"
+[2014-06-25 10:30:39.252794]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '0d86931d7b379ea83e4955cccf9a9e30' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.252915]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('0d86931d7b379ea83e4955cccf9a9e30',0);"
+[2014-06-25 10:30:39.281104]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'bbedea1140ce85bcc6d221936f3986d3' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.282952]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('bbedea1140ce85bcc6d221936f3986d3',0);"
+[2014-06-25 10:30:39.311383]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a349c2c1bf4f68f1ba6a28d0bf8cc5c0' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.311511]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a349c2c1bf4f68f1ba6a28d0bf8cc5c0',51);"
+[2014-06-25 10:30:39.337911]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '628757f6b4612ffef84909fbfd720cb5' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.338030]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('628757f6b4612ffef84909fbfd720cb5',0);"
+[2014-06-25 10:30:39.362209]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '20fcb0df732c0dd0d93a1450e2b8cd35' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.362322]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('20fcb0df732c0dd0d93a1450e2b8cd35',40);"
+[2014-06-25 10:30:39.387484]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '94e9503bfc87354b0d58edcf37355563' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.390243]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('94e9503bfc87354b0d58edcf37355563',13);"
+[2014-06-25 10:30:39.411377]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'cbc9bdff69b4433fdb0b87cdba4bfa08' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.411551]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('cbc9bdff69b4433fdb0b87cdba4bfa08',8);"
+[2014-06-25 10:30:39.437170]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'c250cdba47792dca579ee3be1fc7dac3' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.437274]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('c250cdba47792dca579ee3be1fc7dac3',0);"
+[2014-06-25 10:30:39.462966]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '3d30eb16dbef1f7656fe4db30e17d55a' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.463632]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('3d30eb16dbef1f7656fe4db30e17d55a',46);"
+[2014-06-25 10:30:39.478371]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'de9b2f3714f3775ceb06ac73458f6be2' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.478475]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('de9b2f3714f3775ceb06ac73458f6be2',59);"
+[2014-06-25 10:30:39.491023]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '2344da92b1354135a90544d1e7c5b0cf' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.491126]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('2344da92b1354135a90544d1e7c5b0cf',0);"
+[2014-06-25 10:30:39.508005]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '5558f197af192162b4add6e7d22afe2b' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.508055]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('5558f197af192162b4add6e7d22afe2b',11);"
+[2014-06-25 10:30:39.520966]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a63b1ea767e5d1ddfc5ca3c3f8f92982' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.521208]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a63b1ea767e5d1ddfc5ca3c3f8f92982',38);"
+[2014-06-25 10:30:39.535247]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '6b618bcb63edc33d5a1a13ee3e74c4f4' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.535348]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('6b618bcb63edc33d5a1a13ee3e74c4f4',0);"
+[2014-06-25 10:30:39.544838]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '9c43176df010cc2ded2bbbc5bb0ee06c' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.544941]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('9c43176df010cc2ded2bbbc5bb0ee06c',32);"
+[2014-06-25 10:30:39.553654]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'c2d2a03581fa832b12671a124832e30b' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.553755]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('c2d2a03581fa832b12671a124832e30b',0);"
+[2014-06-25 10:30:39.562350]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '88e7ada1211776a0939b90ccc1419deb' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.562436]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('88e7ada1211776a0939b90ccc1419deb',0);"
+[2014-06-25 10:30:39.570528]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f4571f2a35ac5b6ff8b7f007e9e6312c' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.571207]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f4571f2a35ac5b6ff8b7f007e9e6312c',0);"
+[2014-06-25 10:30:39.580345]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a9f38c5f592241f4ab3a8cd6e376a058' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.580433]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a9f38c5f592241f4ab3a8cd6e376a058',0);"
+[2014-06-25 10:30:39.596294]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f032054e3fd9107090a16c9bdac01a60' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.596396]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f032054e3fd9107090a16c9bdac01a60',48);"
+[2014-06-25 10:30:39.611594]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '4f40a9296675092ab35ea0d7d7a900b2' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.611696]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('4f40a9296675092ab35ea0d7d7a900b2',27);"
+[2014-06-25 10:30:39.627878]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a785ddd3fda82b437cc35999f147494e' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.627968]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a785ddd3fda82b437cc35999f147494e',34);"
+[2014-06-25 10:30:39.644482]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '3392bc4390ff716874695b9fac36fed6' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.645455]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('3392bc4390ff716874695b9fac36fed6',0);"
+[2014-06-25 10:30:39.663021]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '924b9d5dad8445b490aee8e793984e46' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.663119]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('924b9d5dad8445b490aee8e793984e46',16);"
+[2014-06-25 10:30:39.681020]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '041878c552b15a79a9e7921b8151a453' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.681151]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('041878c552b15a79a9e7921b8151a453',0);"
+[2014-06-25 10:30:39.694799]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '886fbec4b6c4aa73e6e99fc63c4fe84f' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.694904]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('886fbec4b6c4aa73e6e99fc63c4fe84f',0);"
+[2014-06-25 10:30:39.708631]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'd0097b5e18890877ab4ccaddc23f02d1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.708740]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('d0097b5e18890877ab4ccaddc23f02d1',0);"
+[2014-06-25 10:30:39.721795]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'f25959e9806a8191afc9789c45eaf2f1' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.721906]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('f25959e9806a8191afc9789c45eaf2f1',0);"
+[2014-06-25 10:30:39.739679]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '25fb50bfd5db39eebec85efb3f12aa3c' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.740796]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('25fb50bfd5db39eebec85efb3f12aa3c',60);"
+[2014-06-25 10:30:39.756600]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '8da077d324ba491a85db654ec49cc8c8' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.757631]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('8da077d324ba491a85db654ec49cc8c8',6);"
+[2014-06-25 10:30:39.771925]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'd8878d4294ec8432691b9dafe5229cde' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.772030]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('d8878d4294ec8432691b9dafe5229cde',0);"
+[2014-06-25 10:30:39.780684]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '34c8ce0a9a60f76179e7da01ea84d981' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.780782]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('34c8ce0a9a60f76179e7da01ea84d981',0);"
+[2014-06-25 10:30:39.798031]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '148dd0f32dc43727925f9229cf989fe8' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.798153]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('148dd0f32dc43727925f9229cf989fe8',0);"
+[2014-06-25 10:30:39.819163]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'a3a289d9c76d73195b4d3ae51bfa23a2' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.819265]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('a3a289d9c76d73195b4d3ae51bfa23a2',50);"
+[2014-06-25 10:30:39.835649]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'e00e08f1a03e8a6c9bef8a37b9b02e95' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.836518]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('e00e08f1a03e8a6c9bef8a37b9b02e95',0);"
+[2014-06-25 10:30:39.850946]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry 'b8b020514c42ddc888f548c759c59d9d' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.851639]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('b8b020514c42ddc888f548c759c59d9d',0);"
+[2014-06-25 10:30:39.874337]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '44b15152c4958ff5b496e438c063e0bd' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.874387]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('44b15152c4958ff5b496e438c063e0bd',0);"
+[2014-06-25 10:30:39.887775]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '3d00221cd4bec31a5646989d7371c304' for key 'PRIMARY'")
+
+[2014-06-25 10:30:39.887898]
+ERROR
+	"INSERT INTO `tb_account_mapping` (`account_token`, `id`) values ('3d00221cd4bec31a5646989d7371c304',56);"
+[2014-06-25 10:30:39.922565]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.OperationalError: (1049, "Unknown dataNode ''")
+
+[2014-06-25 10:30:39.922699]
+ERROR
+	"INSERT INTO `tb_nickname_mapping` (`nickname`, `id`) values ('qqwwee',59);"
+[2014-06-25 10:31:08.477586]
+ERROR
+	KeyboardInterrupt
+[2014-06-25 10:31:08.477839]
+ERROR
+	Traceback (most recent call last):
+[2014-06-25 10:31:08.477951]
+ERROR
+	  File "appmain.py", line 30, in <module>
+[2014-06-25 10:31:08.478088]
+ERROR
+	    ser.start()
+[2014-06-25 10:31:08.478245]
+ERROR
+	  File "/home/server/PycharmProjects/traversing_nick/gfirefly/server/server.py", line 157, in start
+[2014-06-25 10:31:08.478403]
+ERROR
+	    reactor.run()
+[2014-06-25 10:31:08.478528]
+ERROR
+	  File "/home/server/PycharmProjects/traversing_nick/gtwisted/core/greactor.py", line 75, in run
+[2014-06-25 10:31:08.478664]
+ERROR
+	    gevent.joinall([gevent.spawn(self.start())])
+[2014-06-25 10:31:08.495488]
+ERROR
+	  File "/home/server/PycharmProjects/traversing_nick/gtwisted/core/greactor.py", line 69, in start
+[2014-06-25 10:31:08.495583]
+ERROR
+	    gevent.sleep(600)
+[2014-06-25 10:31:08.495668]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 75, in sleep
+[2014-06-25 10:31:08.495761]
+ERROR
+	    hub.wait(loop.timer(seconds, ref=ref))
+[2014-06-25 10:31:08.495832]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 341, in wait
+[2014-06-25 10:31:08.495832]
+ERROR
+	    result = waiter.get()
+[2014-06-25 10:31:08.495832]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 568, in get
+[2014-06-25 10:31:08.495832]
+ERROR
+	    return self.hub.switch()
+[2014-06-25 10:31:08.495931]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 331, in switch
+[2014-06-25 10:31:08.496045]
+ERROR
+	    return greenlet.switch(self)
+[2014-06-25 10:31:08.496189]
+ERROR
+	KeyboardInterrupt

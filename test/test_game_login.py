@@ -51,7 +51,7 @@ class EchoClient(protocol.Protocol):
 
     def connectionMade(self):
         argument = game_pb2.GameLoginResquest()
-        argument.token = '372ea206ebf515cf814ca46060210a81'
+        argument.token = 'de9b2f3714f3775ceb06ac73458f6be2'
         self.dateSend(argument, 4)
 
     def dataReceived(self, data):
@@ -61,6 +61,16 @@ class EchoClient(protocol.Protocol):
             argument = game_pb2.GameLoginResponse()
             argument.ParseFromString(message)
             print argument
+
+            if not argument.nickname:
+                argument = game_pb2.CreateNickNameRequest()
+                argument.nickname = 'qqwwee'
+                self.dateSend(argument, 5)
+        if command == 5:
+            argument = game_pb2.NickNameResponse()
+            argument.ParseFromString(message)
+            print argument
+
 
     def connectionLost(self, reason):
         print "connection lost"

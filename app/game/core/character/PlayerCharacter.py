@@ -30,6 +30,7 @@ class PlayerCharacter(Character):
         """初始化角色信息
         """
         pid = self.base_info.id
+        print pid
         data = tb_character_info.getObjData(pid)
         if not data:
             log.msg("Inint_player _" + str(self.baseInfo.id))
@@ -37,6 +38,6 @@ class PlayerCharacter(Character):
         log.msg(data)
         print data['nickname']
         a = data['nickname']
-        self.base_info.base_name(a)
+        self.base_info.base_name = a
 
         print '11111111111'

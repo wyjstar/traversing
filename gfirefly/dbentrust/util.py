@@ -189,6 +189,9 @@ def GetOneRecordInfo(tablename,props):
     '''
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s"""%(tablename,props)
+
+    print 'sql:', sql
+
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass = DictCursor)
     cursor.execute(sql)

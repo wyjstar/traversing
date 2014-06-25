@@ -79,6 +79,7 @@ class User(object):
     def character(self):
         character = self._character
         if not character:
+            print 'user_id:', self.user_id
             character = tb_character_info.getObjData(self.user_id)
             if not character:
                 character = {'uid': self.user_id, 'nickname': ''}
@@ -90,6 +91,8 @@ class User(object):
     @character.setter
     def character(self, character):
         self._character = character
+        pmmode = tb_character_info.getObj(self._character.get('uid'))
+        pmmode.update_multi(self._character)
 
     @property
     def token(self):
@@ -99,3 +102,10 @@ class User(object):
     def token(self, token):
         self._token = token
 
+    @property
+    def dynamic_id(self):
+        return self._dynamic_id
+
+    @dynamic_id.setter
+    def dynamic_id(self, dynamic_id):
+        self._dynamic_id = dynamic_id

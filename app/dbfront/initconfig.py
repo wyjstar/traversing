@@ -15,4 +15,4 @@ from app.dbfront.dataloader import registe_madmin, check_mem_db
 
 def load_module():
     registe_madmin()
-    check_mem_db(10)
+    check_mem_db(1800)
