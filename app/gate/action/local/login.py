@@ -7,10 +7,13 @@ from app.gate.core.user import User
 from app.gate.core.users_manager import UsersManager
 from app.gate.proto_file import game_pb2
 from app.gate.redis_mode import tb_account_mapping
+from app.gate.redis_mode import tb_nickname_mapping
 from app.gate.service.local.gateservice import localservicehandle
 from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.character_manager import VCharacterManager
 from gfirefly.server.globalobject import GlobalObject
+from gfirefly.dbentrust.madminanager import MAdminManager
+
 
 
 @localservicehandle
@@ -51,6 +54,7 @@ def __character_login(dynamic_id, token):
     else:
         user = User(token, dynamic_id)
         user.init_user()
+        UsersManager().add_user(user)
 
     character_info = user.character
 
@@ -68,6 +72,36 @@ def __character_login(dynamic_id, token):
 
     nickname = character_info.get('nickname')
 
-    GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    if nickname:
+        print nickname
+        GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+
+    return {'result': True, 'nickname': character_info.get('nickname')}
+
+
+@localservicehandle
+def nickname_create_5(key, dynamic_id, request_proto):
+    argument = game_pb2.CreateNickNameRequest()
+    argument.ParseFromString(request_proto)
+    nickname = argument.nickname
+    result = __nickname_create(dynamic_id, nickname)
+
+    argument = game_pb2.NickNameResponse()
+    argument.result = result.get('result')
+    argument.nickname = result.get('nickname')
+
+    return argument.SerializePartialToString()
+
+
+def __nickname_create(dynamic_id, nickname):
+    user = UsersManager().get_user_dynamicId(dynamic_id)
+    if not user:
+        return {'result': False, 'nickname': nickname}
+    else:
+        user.character = {'uid': user.user_id, 'nickname': nickname}
+
+        nickname_data = dict(id=user.user_id, nickname=nickname)
+        nickname_mmode = tb_nickname_mapping.new(nickname_data)
+        nickname_mmode.insert()
 
     return {'result': True, 'nickname': nickname}
