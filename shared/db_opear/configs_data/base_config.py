@@ -3,7 +3,7 @@
 created by server on 14-6-17下午5:29.
 """
 
-class BaseConfig(object):
 
-    def __init__(self):
-        pass
+class BaseConfig(dict):
+    def __getattr__(self, name):
+        return self.get(name, None)
