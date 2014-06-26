@@ -36,7 +36,40 @@ all_config_name = {
     # 'bases_config': BaseConfig,
 }
 
+
+class ConfigFactory(object):
+
+    @classmethod
+    def type_value(cls, stype, val):
+        stype = stype.strip().lower()
+        if stype == 'int':
+            return int(val)
+        elif stype == 'str':
+            return str(val)
+        elif stype == 'float':
+            return float(val)
+        elif stype == 'list':
+            return eval(val)
+        elif stype == 'dict':
+            return eval(val)
+
+    @classmethod
+    def creat_config(cls, config_name, config_value):
+        obj = None
+        if config_name in all_config_name.keys():
+            if config_name == 'bases_config':
+                obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
+                return obj
+            obj = all_config_name[config_name].parser(config_value)
+
+        return obj
+
+
 for config_name in all_config_name.keys():
     game_conf = get_config_value(config_name)
 
-    print game_conf
+    if not game_conf:
+        continue
+
+    objs = ConfigFactory.creat_config(config_name, eval(game_conf.config_value))
+    exec(config_name + '=objs')
