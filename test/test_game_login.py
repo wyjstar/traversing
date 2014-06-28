@@ -6,7 +6,7 @@ created by server on 14-6-23上午11:59.
 
 import struct
 from twisted.internet import reactor, protocol
-from app.gate.proto_file import game_pb2
+from app.gate.proto_file import game_pb2, account_pb2
 
 
 def sendData(sendstr,commandId):
@@ -50,13 +50,28 @@ class EchoClient(protocol.Protocol):
         self.transport.write(sendData(argument.SerializeToString(), command_id))
 
     def connectionMade(self):
-        argument = game_pb2.GameLoginResquest()
-        argument.token = 'de9b2f3714f3775ceb06ac73458f6be2'
-        self.dateSend(argument, 4)
+
+        # 帐号登录
+        argument = account_pb2.LoginResquest()
+        argument.key.key = '6b97f2728fe5823e6ca749ac039a1a75'
+        argument.user_name = 'ghh0001'
+        argument.password = '123457'
+        self.dateSend(argument, 2)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
+
+        if command == 2:
+
+            argument = account_pb2.AccountResponse()
+            argument.ParseFromString(message)
+            print argument
+
+            argument = game_pb2.GameLoginResquest()
+            argument.token = 'de9b2f3714f3775ceb06ac73458f6be2'
+            self.dateSend(argument, 4)
+
         if command == 4:
             argument = game_pb2.GameLoginResponse()
             argument.ParseFromString(message)

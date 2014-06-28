@@ -7,29 +7,27 @@ from gtwisted.utils import log
 
 
 class LocalService(CommandService):
-    def callTarget(self, command_id, *args, **kw):
+    def callTarget(self, target_key, *args, **kw):
         """call Target by Single
-        @param target_key:
-        @param args:
-        @param kw:
-        @param targetKey: target ID
+        @param conn: client connection
+        @param target_key: target ID
         @param data: client data
         """
-        target = self.getTarget(command_id)
+        target = self.getTarget(target_key)
         if not target:
-            log.err('the command %s not Found on service[%s]' % (str(command_id)), self._name)
+            log.err('the command %s not Found on service:[%s]' % (target_key, self._name))
             return None
-        if command_id not in self.unDisplay:
-            log.msg("call method %s on service[%s]" % (target.__name__, self._name))
-        response = target(command_id, *args, **kw)
+        if target_key not in self.unDisplay:
+            log.msg("call method %s on service:[%s]" % (target.__name__, self._name))
+        response = target(target_key, *args, **kw)
         return response
 
 
-localservice = LocalService('localservice')
+local_service = LocalService('account_local_service')
 
 
-def localservice_handle(target):
+def local_service_handle(target):
     """服务处理
     @param target: func Object
     """
-    localservice.mapTarget(target)
+    local_service.mapTarget(target)

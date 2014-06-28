@@ -61,7 +61,7 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
             argument = account_pb2.LoginResquest()
-            argument.key.key = '591442209f104d98aea0ed453f0d4bdd'
+            argument.key.key = '6b97f2728fe5823e6ca749ac039a1a75'
             argument.user_name = 'ghh0001'
             argument.password = '123457'
             self.dateSend(argument, 2)
@@ -70,7 +70,6 @@ class EchoClient(protocol.Protocol):
             argument = account_pb2.AccountResponse()
             argument.ParseFromString(message)
             print argument
-
 
     def connectionLost(self, reason):
         print "connection lost"
