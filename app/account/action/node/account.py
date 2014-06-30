@@ -23,6 +23,38 @@ def register_1(command_id, dynamic_id, account_type, user_name, password, key):
 @node_service_handle
 def login_2(command_id, dynamic_id, key, user_name, password):
     """登录
+@nodeservice_handle
+def register_1(command_id, dynamic_id, request_proto):
+    """
+    @param command_id: 操作编号
+    @param dynamic_id: 动态编号
+    @param request_proto: 传输数据
+    @return: 唯一机器标识 MD5('%s:%s:%s:%s' % (帐号ID, 帐号uuid, 用户名, 密码))
+    """
+    account_info = account_pb2.AccountInfo()
+    account_info.ParseFromString(request_proto)
+    account_type = account_info.type
+    user_name = account_info.user_name
+    password = account_info.password
+    key = account_info.key.keyload_module
+
+    result = localservice.callTarget(command_id, dynamic_id, account_type, user_name, password, key)
+    account_key = account_pb2.AccountResponse()
+    account_key.result = result.get('result')
+    if result.get('token', None):
+        account_key.key.key = result.get('token')
+
+    return account_key.SerializeToString()
+
+
+@nodeservice_handle
+def login_2(command_id, dynamic_id, request_proto):
+    """帐号登录
+    @param command_id:
+    @param dynamic_id:
+    @param request_proto:
+    @return: 登录成功/失败
+>>>>>>> Stashed changes
     """
     account_id = None  # 帐号ID
     mapping_data = tb_account_mapping.getObjData(key)  # 帐号匹配信息
