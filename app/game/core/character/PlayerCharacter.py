@@ -6,7 +6,7 @@ from gtwisted.utils import log
 from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
-
+from app.game.redis_mode import tb_equipment_list
 
 class PlayerCharacter(Character):
     """玩家角色类
@@ -39,5 +39,14 @@ class PlayerCharacter(Character):
         print data['nickname']
         a = data['nickname']
         self.base_info.base_name = a
+
+        self.base_info.equipment_id_list = data['equipment']
+
+        print 'fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+        print data
+
+        equip_data = tb_equipment_list.getObjData(pid)
+        self.base_info.user_equipment_list.append(equip_data.get('equipdata'))
+        print equip_data
 
         print '11111111111'
