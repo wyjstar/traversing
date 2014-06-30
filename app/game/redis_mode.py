@@ -6,3 +6,6 @@ from shared.db_entrust.redis_mode import MAdmin
 
 tb_character_info = MAdmin('tb_character_info', 'uid')
 tb_character_info.insert()
+
+tb_equipment_list = MAdmin('tb_equipment_list', 'uid')
+tb_equipment_list.insert()

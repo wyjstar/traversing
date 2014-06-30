@@ -8,7 +8,7 @@ from gfirefly.dbentrust.dbpool import dbpool
 
 print id(dbpool)
 from shared.db_opear.configs_data.base_config import BaseConfig
-
+from shared.db_opear.configs_data.equipment_config import equipmentconfig
 
 def get_config_value(config_key):
     """获取所有翻译信息
@@ -34,6 +34,7 @@ base_config = {}
 all_config_name = {
     'hero':BaseConfig,
     # 'bases_config': BaseConfig,
+    'equipment': equipmentconfig,
 }
 
 
@@ -57,12 +58,12 @@ class ConfigFactory(object):
     def creat_config(cls, config_name, config_value):
         obj = None
         if config_name in all_config_name.keys():
-            # if config_name == 'bases_config':
-            #     obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
-            #     return obj
-            obj = all_config_name[config_name].parser(config_value)
+             if config_name == 'bases_config':
+                obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
+                return obj
+            #obj = all_config_name[config_name].parser(config_value)
 
-        return obj
+        return config_value
 
 
 for config_name in all_config_name.keys():
@@ -71,5 +72,5 @@ for config_name in all_config_name.keys():
     if not game_conf:
         continue
 
-    objs = ConfigFactory.creat_config(config_name, eval(game_conf.config_value))
+    objs = ConfigFactory.creat_config(config_name, game_conf)
     exec(config_name + '=objs')

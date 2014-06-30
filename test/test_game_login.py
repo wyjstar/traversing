@@ -53,24 +53,24 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = '6b97f2728fe5823e6ca749ac039a1a75'
-        argument.user_name = 'ghh0001'
-        argument.password = '123457'
-        self.dateSend(argument, 2)
+        argument.key.key = 'de9b2f3714f3775ceb06ac73458f6be2'
+        #argument.user_name = 'ghh0001'
+        #argument.password = '123457'
+        self.dateSend(argument, 4)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
 
-        if command == 2:
+        #if command == 2:
 
-            argument = account_pb2.AccountResponse()
-            argument.ParseFromString(message)
-            print argument
+           # argument = account_pb2.AccountResponse()
+            #argument.ParseFromString(message)
+            #print argument
 
-            argument = game_pb2.GameLoginResquest()
-            argument.token = 'de9b2f3714f3775ceb06ac73458f6be2'
-            self.dateSend(argument, 4)
+            #argument = game_pb2.GameLoginResquest()
+            #argument.token = 'de9b2f3714f3775ceb06ac73458f6be2'
+            #self.dateSend(argument, 4)
 
         if command == 4:
             argument = game_pb2.GameLoginResponse()

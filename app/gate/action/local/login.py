@@ -39,9 +39,8 @@ def character_login_4(key, dynamic_id, request_proto):
 def __character_login(dynamic_id, token):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
-
     if not user:
-        return {'result': False}
+        return {'result': False, 'nickname': ''}
 
     character_info = user.character
 
