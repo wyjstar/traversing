@@ -57,11 +57,7 @@ def __character_login(dynamic_id, token):
     now_node = SceneSerManager().get_best_sceneid()
     v_character.node = now_node
 
-    # nickname = character_info.get('nickname')
-    #
-    # if nickname:
-    #     print nickname
-    #     GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
 
     return {'result': True, 'nickname': character_info.get('nickname')}
 

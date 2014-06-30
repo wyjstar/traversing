@@ -1,27 +1,138 @@
-[2014-06-30 13:30:40.024049]
+[2014-06-30 14:46:54.699154]
 ERROR
 	Unhandled Error
 Traceback (most recent call last):
 Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '39' for key 'PRIMARY'")
 
-[2014-06-30 13:30:40.024296]
+[2014-06-30 14:46:54.699399]
 ERROR
 	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'5ad4effafce011e3ab40080027a4fa58',39);"
-[2014-06-30 13:30:40.047866]
+[2014-06-30 14:46:54.717516]
 ERROR
 	Unhandled Error
 Traceback (most recent call last):
 Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '38' for key 'PRIMARY'")
 
-[2014-06-30 13:30:40.048004]
+[2014-06-30 14:46:54.717757]
 ERROR
 	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'8d09fb60fcdf11e3b19a080027a4fa58',38);"
-[2014-06-30 13:30:40.904000]
+[2014-06-30 14:46:55.369995]
 ERROR
 	Unhandled Error
 Traceback (most recent call last):
 Failure: _mysql_exceptions.OperationalError: (1054, "Unknown column 'id' in 'field list'")
 
-[2014-06-30 13:30:40.904153]
+[2014-06-30 14:46:55.370183]
 ERROR
 	"INSERT INTO `tb_nickname_mapping` (`nickname`, `id`) values ('qqwwee',46);"
+[2014-06-30 15:16:56.429473]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '39' for key 'PRIMARY'")
+
+[2014-06-30 15:16:56.457558]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'5ad4effafce011e3ab40080027a4fa58',39);"
+[2014-06-30 15:16:56.472071]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '38' for key 'PRIMARY'")
+
+[2014-06-30 15:16:56.472166]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'8d09fb60fcdf11e3b19a080027a4fa58',38);"
+[2014-06-30 15:16:57.191525]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.OperationalError: (1054, "Unknown column 'id' in 'field list'")
+
+[2014-06-30 15:16:57.191710]
+ERROR
+	"INSERT INTO `tb_nickname_mapping` (`nickname`, `id`) values ('qqwwee',46);"
+[2014-06-30 15:46:57.804670]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '39' for key 'PRIMARY'")
+
+[2014-06-30 15:46:57.823372]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'5ad4effafce011e3ab40080027a4fa58',39);"
+[2014-06-30 15:46:57.840651]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '38' for key 'PRIMARY'")
+
+[2014-06-30 15:46:57.840876]
+ERROR
+	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'8d09fb60fcdf11e3b19a080027a4fa58',38);"
+[2014-06-30 15:46:58.633596]
+ERROR
+	Unhandled Error
+Traceback (most recent call last):
+Failure: _mysql_exceptions.OperationalError: (1054, "Unknown column 'id' in 'field list'")
+
+[2014-06-30 15:46:58.633710]
+ERROR
+	"INSERT INTO `tb_nickname_mapping` (`nickname`, `id`) values ('qqwwee',46);"
+[2014-06-30 15:47:01.674895]
+ERROR
+	KeyboardInterrupt
+[2014-06-30 15:47:01.675265]
+ERROR
+	Traceback (most recent call last):
+[2014-06-30 15:47:01.675436]
+ERROR
+	  File "appmain.py", line 30, in <module>
+[2014-06-30 15:47:01.705351]
+ERROR
+	    ser.start()
+[2014-06-30 15:47:01.705486]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 157, in start
+[2014-06-30 15:47:01.748487]
+ERROR
+	    reactor.run()
+[2014-06-30 15:47:01.748592]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 75, in run
+[2014-06-30 15:47:01.757414]
+ERROR
+	    gevent.joinall([gevent.spawn(self.start())])
+[2014-06-30 15:47:01.757509]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 69, in start
+[2014-06-30 15:47:01.757605]
+ERROR
+	    gevent.sleep(600)
+[2014-06-30 15:47:01.757691]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 75, in sleep
+[2014-06-30 15:47:01.788662]
+ERROR
+	    hub.wait(loop.timer(seconds, ref=ref))
+[2014-06-30 15:47:01.788761]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 341, in wait
+[2014-06-30 15:47:01.788877]
+ERROR
+	    result = waiter.get()
+[2014-06-30 15:47:01.789003]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 568, in get
+[2014-06-30 15:47:01.789203]
+ERROR
+	    return self.hub.switch()
+[2014-06-30 15:47:01.789330]
+ERROR
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 331, in switch
+[2014-06-30 15:47:01.789421]
+ERROR
+	    return greenlet.switch(self)
+[2014-06-30 15:47:01.789570]
+ERROR
+	KeyboardInterrupt
