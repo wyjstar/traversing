@@ -38,27 +38,9 @@ def character_login_4(key, dynamic_id, request_proto):
 
 def __character_login(dynamic_id, token):
 
-    #user = UsersManager().get_by_dynamic_id(dynamic_id)
-
-    account_id = None
-    mapping_data = tb_account_mapping.getObjData(token)
-    if mapping_data:
-        account_id = mapping_data.get('id', None)  # 取得帐号ID
-
-    print 'account_id:', account_id
-    if not account_id:
+    user = UsersManager().get_by_dynamic_id(dynamic_id)
+    if not user:
         return {'result': False, 'nickname': ''}
-
-    user = UsersManager().get_by_id(account_id)
-    if user:
-        user.dynamic_id = dynamic_id
-    else:
-        user = User(token, dynamic_id)
-        user.init_user()
-        UsersManager().add_user(user)
-
-    #if not user:
-        #return {'result': False, 'nickname': ''}
 
     character_info = user.character
 
