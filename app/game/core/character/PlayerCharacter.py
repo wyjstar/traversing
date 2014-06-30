@@ -40,10 +40,6 @@ class PlayerCharacter(Character):
         a = data['nickname']
         self.base_info.base_name = a
 
-        self.base_info.equipment_id_list = data['equipment']
-
-        print 'fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
-        print data
 
         equip_data = tb_equipment_list.getObjData(pid)
         self.base_info.user_equipment_list.append(equip_data.get('equipdata'))
