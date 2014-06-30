@@ -17,18 +17,15 @@ from app.gate.service.local.gateservice import local_service
 def forwarding(key, dynamic_id, data):
     """
     """
-    # if key in const.ACCOUNT_COMMAND:
-    #     log.msg(key, dynamic_id, data)
-    #     return GlobalObject().root.callChild('account', key, dynamic_id, data)
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)
     else:
-        oldvcharacter = VCharacterManager().get_character_by_clientid(dynamic_id)
+        oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         if not oldvcharacter:
             return
         if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
             return
-        node = VCharacterManager().get_node_by_clientid(dynamic_id)
+        node = VCharacterManager().get_node_by_dynamic_id(dynamic_id)
         return GlobalObject().root.callChild(node, key, dynamic_id, data)
 #
 # @rootserviceHandle

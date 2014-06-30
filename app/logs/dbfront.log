@@ -1,36 +1,27 @@
-[2014-06-28 19:20:51.248803]
+[2014-06-30 13:30:40.024049]
 ERROR
 	Unhandled Error
 Traceback (most recent call last):
 Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '39' for key 'PRIMARY'")
 
-[2014-06-28 19:20:51.249112]
+[2014-06-30 13:30:40.024296]
 ERROR
 	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'5ad4effafce011e3ab40080027a4fa58',39);"
-[2014-06-28 19:20:51.278625]
+[2014-06-30 13:30:40.047866]
 ERROR
 	Unhandled Error
 Traceback (most recent call last):
 Failure: _mysql_exceptions.IntegrityError: (1062, "Duplicate entry '38' for key 'PRIMARY'")
 
-[2014-06-28 19:20:51.279083]
+[2014-06-30 13:30:40.048004]
 ERROR
 	"INSERT INTO `tb_account` (`account_name`, `account_password`, `last_login`, `uuid`, `id`) values ('None','None',0,'8d09fb60fcdf11e3b19a080027a4fa58',38);"
-[2014-06-28 19:20:52.302232]
-ERROR
-	Unhandled Error
-Traceback (most recent call last):
-Failure: _mysql_exceptions.ProgrammingError: (1064, 'partition key cannot be changed')
-
-[2014-06-28 19:20:52.302436]
-ERROR
-	"UPDATE `tb_character_info` SET  `nickname`='qqwwee', `uid`=46 WHERE  `uid`=46;"
-[2014-06-28 19:20:53.215906]
+[2014-06-30 13:30:40.904000]
 ERROR
 	Unhandled Error
 Traceback (most recent call last):
 Failure: _mysql_exceptions.OperationalError: (1054, "Unknown column 'id' in 'field list'")
 
-[2014-06-28 19:20:53.216038]
+[2014-06-30 13:30:40.904153]
 ERROR
 	"INSERT INTO `tb_nickname_mapping` (`nickname`, `id`) values ('qqwwee',46);"

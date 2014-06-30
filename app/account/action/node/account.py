@@ -7,6 +7,7 @@ import hashlib
 from app.account.model.sequence import get_id
 from app.account.redis_mode import tb_account
 from app.account.redis_mode import tb_account_mapping
+from app.account.redis_mode import tb_name_mapping
 from gfirefly.utils.pyuuid import get_uuid
 
 
@@ -64,17 +65,26 @@ def __guest_register():
 
 def __account_register(user_name, password):
     # TODO 校验
+
+    if not __check_register_name(user_name):
+        return {'result': False}
+
     account_id = get_id()
     uuid = get_uuid()
     data = dict(id=account_id, uuid=uuid, account_name=user_name, account_password=password, last_login=0)
     account_mmode = tb_account.new(data)
     account_mmode.insert()
+
     md5 = hashlib.md5()
     md5.update('%s:%s' % (account_id, uuid))
     token = md5.hexdigest()
     data = dict(id=account_id, account_token=token)
     account_mapping = tb_account_mapping.new(data)
     account_mapping.insert()
+
+    data = dict(account_name=user_name, id=account_id)
+    name_mapping = tb_name_mapping.new(data)
+    name_mapping.insert()
 
     return {'result': True, 'token': token, 'account_id': account_id}
 
@@ -98,6 +108,16 @@ def __binding_register(user_name, password, key):
     token = md5.hexdigest()
 
     return {'result': True, 'token': token, 'account_id': account_id}
+
+
+def __check_register_name(user_name):
+    mapping_data = tb_name_mapping.getObjData(user_name)
+    if not mapping_data:
+        return True
+
+    return False
+
+
 
 
 
