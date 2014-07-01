@@ -9,9 +9,8 @@ created by server on 14-6-23下午3:11.
 """
 import struct
 from twisted.internet import reactor, protocol
-from app.gate.proto_file.request_pb2 import CommonRequest, CharacterLoginRequest, CreateCharacterRequest
 from shared.proto_file.player_response_pb2 import PlayerResponse
-from app.gate.proto_file.response_pb2 import CommonResponse, CharacterLoginResponse
+from shared.proto_file.player_request_pb2 import PlayerLoginResquest
 
 
 def sendData(sendstr, commandId):
@@ -55,7 +54,7 @@ class EchoClient(protocol.Protocol):
         self.transport.write(sendData(argument.SerializeToString(), command_id))
 
     def connectionMade(self):
-        argument = CharacterLoginRequest()
+        argument = PlayerLoginResquest()
         argument.token = '0e4157d1dc4b70ca7269226318b85354'
         self.dateSend(argument, 4)
 

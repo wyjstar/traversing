@@ -1,8 +1,0 @@
-package app.gate;
-message CharacterInfo
-{
-    required int64 id = 1;
-    required string nickname = 2;
-    required int32 level = 3;
-    required int32 money = 4;
-}

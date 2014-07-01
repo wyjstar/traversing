@@ -6,8 +6,9 @@ created by server on 14-6-23上午11:59.
 
 import struct
 from twisted.internet import reactor, protocol
-from app.gate.proto_file import game_pb2, account_pb2
-
+from shared.proto_file.player_response_pb2 import PlayerResponse
+from shared.proto_file import account_pb2
+from shared.proto_file.player_request_pb2 import CreatePlayerRequest, PlayerLoginResquest
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -68,17 +69,17 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = game_pb2.GameLoginResquest()
+            argument = PlayerLoginResquest()
             argument.token = '6b97f2728fe5823e6ca749ac039a1a75'
             self.dateSend(argument, 4)
 
         if command == 4:
-            argument = game_pb2.GameLoginResponse()
+            argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
 
             if not argument.nickname:
-                argument = game_pb2.CreateNickNameRequest()
+                argument = CreatePlayerRequest()
                 argument.nickname = 'qqwwee'
                 self.dateSend(argument, 5)
         # if command == 5:

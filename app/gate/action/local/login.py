@@ -5,7 +5,7 @@ created by wzp on 14-6-19下午12:11.
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.core.user import User
 from app.gate.core.users_manager import UsersManager
-from app.gate.proto_file import game_pb2
+from shared.proto_file import player_request_pb2
 from app.gate.redis_mode import tb_account_mapping
 from app.gate.redis_mode import tb_nickname_mapping
 from app.gate.service.local.gateservice import local_service_handle
@@ -19,8 +19,8 @@ def character_login_4(key, dynamic_id, request_proto):
     """角色登录
     @return:
     """
-
-    argument = game_pb2.GameLoginResquest()
+    return enter_scene(dynamic_id)
+    argument = player_request_pb2.PlayerLoginResquest()
     argument.ParseFromString(request_proto)
     token = argument.token
 
@@ -35,6 +35,10 @@ def character_login_4(key, dynamic_id, request_proto):
 
     return argument.SerializePartialToString()
 
+
+def enter_scene(dynamic_id):
+    now_node = SceneSerManager().get_best_sceneid()
+    return GlobalObject().root.callChild(now_node, 601, dynamic_id, 2)
 
 def __character_login(dynamic_id, token):
 
@@ -64,16 +68,20 @@ def __character_login(dynamic_id, token):
 
 @local_service_handle
 def nickname_create_5(key, dynamic_id, request_proto):
-    argument = game_pb2.CreateNickNameRequest()
+    argument = player_request_pb2.CreatePlayerRequest()
     argument.ParseFromString(request_proto)
     nickname = argument.nickname
     result = __nickname_create(dynamic_id, nickname)
 
-    argument = game_pb2.NickNameResponse()
-    argument.result = result.get('result')
-    argument.nickname = result.get('nickname')
+    user = UsersManager().get_by_dynamic_id(dynamic_id)
 
-    return argument.SerializePartialToString()
+    if not user:
+        return {'result': False}
+
+    character_info = user.character
+    now_node = SceneSerManager().get_best_sceneid()
+
+    return GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
 
 
 def __nickname_create(dynamic_id, nickname):
