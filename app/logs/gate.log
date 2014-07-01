@@ -1,57 +1,84 @@
-[2014-06-30 15:47:01.675858]
-ERROR
-	KeyboardInterrupt
-[2014-06-30 15:47:01.676068]
+[2014-07-01 12:45:31.618489]
 ERROR
 	Traceback (most recent call last):
-[2014-06-30 15:47:01.676164]
+[2014-07-01 12:45:31.618800]
 ERROR
-	  File "appmain.py", line 30, in <module>
-[2014-06-30 15:47:01.705702]
+	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/greenlet.py", line 327, in run
+[2014-07-01 12:45:31.619103]
 ERROR
-	    ser.start()
-[2014-06-30 15:47:01.705814]
+	    result = self._run(*self.args, **self.kwargs)
+[2014-07-01 12:45:31.619327]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 157, in start
-[2014-06-30 15:47:01.748563]
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/rpc.py", line 103, in msgResolve
+[2014-07-01 12:45:31.619569]
 ERROR
-	    reactor.run()
-[2014-06-30 15:47:01.748663]
+	    self.askReceived(request)
+[2014-07-01 12:45:31.619727]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 75, in run
-[2014-06-30 15:47:01.757840]
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/rpc.py", line 116, in askReceived
+[2014-07-01 12:45:31.619905]
 ERROR
-	    gevent.joinall([gevent.spawn(self.start())])
-[2014-06-30 15:47:01.757980]
+	    result = self.callRemoteMethod(method, _args, _kw)
+[2014-07-01 12:45:31.620106]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 69, in start
-[2014-06-30 15:47:01.758048]
+	  File "/home/server/PycharmProjects/traversing/gtwisted/core/rpc.py", line 132, in callRemoteMethod
+[2014-07-01 12:45:31.620244]
 ERROR
-	    gevent.sleep(600)
-[2014-06-30 15:47:01.758245]
+	    return method(*_args,**_kw)
+[2014-07-01 12:45:31.620414]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 75, in sleep
-[2014-06-30 15:47:01.791483]
+	  File "/home/server/PycharmProjects/traversing/gfirefly/distributed/root.py", line 30, in remote_callTarget
+[2014-07-01 12:45:31.620571]
 ERROR
-	    hub.wait(loop.timer(seconds, ref=ref))
-[2014-06-30 15:47:01.791576]
+	    data = self.factory.root.remote_callTarget(command,*args,**kw)
+[2014-07-01 12:45:31.620699]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 341, in wait
-[2014-06-30 15:47:01.791690]
+	  File "/home/server/PycharmProjects/traversing/gfirefly/distributed/root.py", line 79, in remote_callTarget
+[2014-07-01 12:45:31.620845]
 ERROR
-	    result = waiter.get()
-[2014-06-30 15:47:01.791771]
+	    data = self.service.callTarget(command,*args,**kw)
+[2014-07-01 12:45:31.620968]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 568, in get
-[2014-06-30 15:47:01.791920]
+	  File "/home/server/PycharmProjects/traversing/gfirefly/utils/services.py", line 67, in callTarget
+[2014-07-01 12:45:31.621239]
 ERROR
-	    return self.hub.switch()
-[2014-06-30 15:47:01.791995]
+	    response = target(*args,**kw)
+[2014-07-01 12:45:31.621360]
 ERROR
-	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 331, in switch
-[2014-06-30 15:47:01.792145]
+	  File "/home/server/PycharmProjects/traversing/app/gate/action/root/netforwarding.py", line 21, in forwarding
+[2014-07-01 12:45:31.621525]
 ERROR
-	    return greenlet.switch(self)
-[2014-06-30 15:47:01.792235]
+	    return local_service.callTarget(key, dynamic_id, data)
+[2014-07-01 12:45:31.621715]
 ERROR
-	KeyboardInterrupt
+	  File "/home/server/PycharmProjects/traversing/app/gate/service/local/gateservice.py", line 22, in callTarget
+[2014-07-01 12:45:31.621871]
+ERROR
+	    response = target(target_key, *args, **kw)
+[2014-07-01 12:45:31.621998]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/app/gate/action/local/login.py", line 70, in nickname_create_5
+[2014-07-01 12:45:31.622205]
+ERROR
+	    result = __nickname_create(dynamic_id, nickname)
+[2014-07-01 12:45:31.622432]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/app/gate/action/local/login.py", line 84, in __nickname_create
+[2014-07-01 12:45:31.622565]
+ERROR
+	    user.character = {'uid': user.user_id, 'nickname': nickname}
+[2014-07-01 12:45:31.622820]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/app/gate/core/user.py", line 82, in character
+[2014-07-01 12:45:31.623101]
+ERROR
+	    pmmode.update_multi(self._character)
+[2014-07-01 12:45:31.623235]
+ERROR
+	AttributeError: 'NoneType' object has no attribute 'update_multi'
+[2014-07-01 12:45:31.623442]
+ERROR
+	<Greenlet at 0x211cc30: <bound method BilateralBroker.msgResolve of <BilateralBroker at 0x1f959b0>>('{t\x04\x00\x00\x00_keys \x00\x00\x0080894fea38c88)> failed with AttributeError
+[2014-07-01 12:45:31.623560]
+ERROR
+	

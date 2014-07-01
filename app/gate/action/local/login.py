@@ -12,11 +12,9 @@ from app.gate.service.local.gateservice import local_service_handle
 from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.virtual_character_manager import VCharacterManager
 from gfirefly.server.globalobject import GlobalObject
-from gfirefly.dbentrust.madminanager import MAdminManager
 
 
-
-@localservicehandle
+@local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
     """角色登录
     @return:
@@ -39,22 +37,11 @@ def character_login_4(key, dynamic_id, request_proto):
 
 
 def __character_login(dynamic_id, token):
-    account_id = None
-    mapping_data = tb_account_mapping.getObjData(token)
-    if mapping_data:
-        account_id = mapping_data.get('id', None)  # 取得帐号ID
 
-    print 'account_id:', account_id
-    if not account_id:
-        return {'result': False, 'nickname': ''}
+    user = UsersManager().get_by_dynamic_id(dynamic_id)
 
-    user = UsersManager().get_by_id(account_id)
-    if user:
-        user.dynamic_id = dynamic_id
-    else:
-        user = User(token, dynamic_id)
-        user.init_user()
-        UsersManager().add_user(user)
+    if not user:
+        return {'result': False}
 
     character_info = user.character
 
@@ -75,7 +62,7 @@ def __character_login(dynamic_id, token):
     return {'result': True, 'nickname': character_info.get('nickname')}
 
 
-@localservicehandle
+@local_service_handle
 def nickname_create_5(key, dynamic_id, request_proto):
     argument = game_pb2.CreateNickNameRequest()
     argument.ParseFromString(request_proto)
@@ -90,11 +77,13 @@ def nickname_create_5(key, dynamic_id, request_proto):
 
 
 def __nickname_create(dynamic_id, nickname):
-    user = UsersManager().get_user_dynamicId(dynamic_id)
+    user = UsersManager().get_by_dynamic_id(dynamic_id)
     if not user:
         return {'result': False, 'nickname': nickname}
     else:
         user.character = {'uid': user.user_id, 'nickname': nickname}
+
+        print 'sadfasdfas:', user.character
 
         nickname_data = dict(id=user.user_id, nickname=nickname)
         nickname_mmode = tb_nickname_mapping.new(nickname_data)

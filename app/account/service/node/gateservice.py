@@ -16,23 +16,23 @@ class NodeServiceHandler(CommandService):
         """
         target = self.getTarget(command_id)
         if not target:
-            log.err('the command %s not Found on service[%s]' % (str(command_id)), self._name)
+            log.err('the command %s not Found on service:[%s]' % (str(command_id)), self._name)
             return None
         if command_id not in self.unDisplay:
-            log.msg("call method %s on service[%s]" % (target.__name__, self._name))
+            log.msg("call method %s on service:[%s]" % (target.__name__, self._name))
         response = target(command_id, *args, **kw)
         return response
 
 
-nodeservice = NodeServiceHandler('nodeservice')
+node_service = NodeServiceHandler('gate_node_service')
 
 
-def nodeservice_handle(target):
+def node_service_handle(target):
     """服务处理，添加处理函数
     @param target: func Object
     """
-    nodeservice.mapTarget(target)
+    node_service.mapTarget(target)
 
 
-noderemote = GlobalObject().remote['gate']
-noderemote._reference.addService(nodeservice)
+node_remote = GlobalObject().remote['gate']
+node_remote._reference.addService(node_service)
