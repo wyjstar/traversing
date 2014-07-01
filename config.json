@@ -117,7 +117,15 @@
         "tb_account_mapping": {
             "pkey_field": "account_token",
             "def_attrs": {
-                "uid": "simple"
+                "account_token": "simple",
+                "id": "simple"
+            }
+        },
+        "tb_name_mapping": {
+            "pkey_field": "account_name",
+            "def_attrs": {
+                "account_name": "simple",
+                "id": "simple"
             }
         },
         "tb_account": {

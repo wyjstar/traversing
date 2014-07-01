@@ -39,6 +39,9 @@ def resolveRecvdata(data):
 # a client protocol
 times = 0
 class EchoClient(protocol.Protocol):
+
+    _times = 0
+
     """Once connected, send a message, then print the result."""
 
     def dateSend(self, argument, command_id):
@@ -46,31 +49,40 @@ class EchoClient(protocol.Protocol):
 
     def connectionMade(self):
 
+        # 帐号注册： 游客
         argument = account_pb2.AccountInfo()
-        argument.type = 2
-        argument.user_name = 'ghh0001'
-        argument.password = '123457'
-        # argument.key.key = '63dd6b2d9e610f81ef7f335c4f9b3013'
+        argument.type = 1
         self.dateSend(argument, 1)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
         if command == 1:
+
             argument = account_pb2.AccountResponse()
             argument.ParseFromString(message)
             print argument
-            argument = account_pb2.LoginResquest()
-            argument.key.key = '591442209f104d98aea0ed453f0d4bdd'
-            argument.user_name = 'ghh0001'
-            argument.password = '123457'
-            self.dateSend(argument, 2)
+
+            # 帐号注册： 帐号
+            if not self._times:
+                argument = account_pb2.AccountInfo()
+                argument.type = 2
+                argument.user_name = 'ceshi1'
+                argument.password = 'ceshi1'
+                self.dateSend(argument, 1)
+
+                self._times += 1
+            else:
+                argument = account_pb2.LoginResquest()
+                argument.key.key = '386f15f2f92629119eb3cfbe1f947f1b'
+                argument.user_name = 'ceshi1'
+                argument.password = 'ceshi1'
+                self.dateSend(argument, 2)
 
         if command == 2:
             argument = account_pb2.AccountResponse()
             argument.ParseFromString(message)
             print argument
-
 
     def connectionLost(self, reason):
         print "connection lost"

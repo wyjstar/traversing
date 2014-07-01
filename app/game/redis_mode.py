@@ -9,3 +9,7 @@ tb_character_info.insert()
 
 tb_hero = MAdmin('tb_hero', 'characterid')
 tb_hero.insert()
+
+tb_equipment_list = MAdmin('tb_equipment_list', 'uid')
+tb_equipment_list.insert()
+
