@@ -12,6 +12,7 @@ from gfirefly.dbentrust.madminanager import MAdminManager
 from gfirefly.dbentrust.memclient import mclient
 from gfirefly.dbentrust.mmode import MAdmin
 
+
 hostname = "localhost"  #  要连接的数据库主机名
 user = "root"  #  要连接的数据库用户名
 password = "123456"  #  要连接的数据库密码
