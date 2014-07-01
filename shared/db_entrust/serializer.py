@@ -39,6 +39,7 @@ class Serializer(object):
             data: dict对象
         """
         columns = self.def_attrs
+        print 'all +++++++++++++++++++++++++++++++++++++', self.def_attrs
         for attr in columns:
             if attr in data:
                 if columns[attr] == "simple":

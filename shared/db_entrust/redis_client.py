@@ -52,6 +52,10 @@ class RedisManager(object):
             return client.redis()
         return None
 
+    def flushall(self):
+        for client in self.connections.values:
+            client.redis().flushall()
+
 redis_manager = RedisManager()
 
 

@@ -6,9 +6,10 @@ from MySQLdb.cursors import DictCursor
 import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
 
+
 print id(dbpool)
+from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
-from shared.db_opear.configs_data.equipment_config import equipmentconfig
 
 def get_config_value(config_key):
     """获取所有翻译信息
@@ -32,9 +33,8 @@ def get_config_value(config_key):
 base_config = {}
 
 all_config_name = {
-    'hero':BaseConfig,
+    'hero': HeroConfig(),
     # 'bases_config': BaseConfig,
-    'equipment': equipmentconfig,
 }
 
 
@@ -58,19 +58,40 @@ class ConfigFactory(object):
     def creat_config(cls, config_name, config_value):
         obj = None
         if config_name in all_config_name.keys():
-             if config_name == 'bases_config':
+            if config_name == 'bases_config':
                 obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
                 return obj
-            #obj = all_config_name[config_name].parser(config_value)
+            obj = all_config_name[config_name].parser(config_value)
 
-        return config_value
+        return obj
 
 
+def init():
+    hostname = "127.0.0.1"  #  要连接的数据库主机名
+    user = "test"  #  要连接的数据库用户名
+    password = "test"  #  要连接的数据库密码
+    port = 8066  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
+    dbname = "db_traversing"  #  要使用的数据库库名
+    charset = "utf8"  #  要使用的数据库的编码
+    dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
+                    charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
+
+
+init()
 for config_name in all_config_name.keys():
     game_conf = get_config_value(config_name)
 
     if not game_conf:
         continue
 
-    objs = ConfigFactory.creat_config(config_name, game_conf)
-    exec(config_name + '=objs')
+    config = all_config_name[config_name]
+
+    config.parser(game_conf[config_name])
+
+    #print "hero_no", config['10001'].no
+
+    #objs = ConfigFactory.creat_config(config_name, eval(game_conf.config_value))
+    #exec(config_name + '=objs')
+
+
+
