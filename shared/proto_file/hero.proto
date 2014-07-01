@@ -1,0 +1,8 @@
+//武将信息
+message Hero_PB
+{
+    required string hero_no = 1;
+    required int32 level = 3;
+    required int32 exp = 4;
+    required int32 breaklevel = 5;
+}
