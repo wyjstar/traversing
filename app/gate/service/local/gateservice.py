@@ -1,33 +1,35 @@
-# -*- coding:utf-8 -*-
+#coding:utf8
 """
-created by server on 14-6-5下午3:33.
+Created on 2013-8-14
+
+@author: lan (www.9miao.com)
 """
 from gfirefly.utils.services import CommandService
 from gtwisted.utils import log
 
 
 class LocalService(CommandService):
-    def callTarget(self, target_key, *args, **kw):
+    
+    def callTarget(self, targetKey, *args, **kw):
         """call Target by Single
         @param conn: client connection
-        @param target_key: target ID
+        @param targetKey: target ID
         @param data: client data
         """
-        target = self.getTarget(target_key)
+        target = self.getTarget(targetKey)
         if not target:
-            log.err('the command %s not Found on service:[%s]' % (target_key, self._name))
+            log.err('the command '+str(targetKey)+' not Found on service')
             return None
-        if target_key not in self.unDisplay:
-            log.msg("call method %s on service:[%s]" % (target.__name__, self._name))
-        response = target(target_key, *args, **kw)
+        if targetKey not in self.unDisplay:
+            log.msg("call method %s on service[single]"%target.__name__)
+        response = target(targetKey, *args, **kw)
         return response
 
+localservice = LocalService('localservice')
 
-local_service = LocalService('gate_local_service')
 
-
-def local_service_handle(target):
+def localservicehandle(target):
     """服务处理
     @param target: func Object
     """
-    local_service.mapTarget(target)
+    localservice.mapTarget(target)

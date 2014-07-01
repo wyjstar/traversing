@@ -1,0 +1,16 @@
+package app.gate;
+
+import "characterinfo.proto";
+
+message CommonResponse
+{
+    required bool result = 1;
+    optional string message = 2;
+}
+
+message CharacterLoginResponse
+{
+    required bool result = 1;
+    optional string message = 2;
+    optional CharacterInfo character_info = 3;
+}

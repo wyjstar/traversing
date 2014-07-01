@@ -72,11 +72,13 @@ class MMode(RedisObject):
         return RedisObject.update_multi(self, props)
 
     def get(self, key):
+        return self.data.get(key)
         n_time = time.time()
         RedisObject.update(self, "_time", n_time)
         return RedisObject.get(self, key)
 
     def get_multi(self, keys):
+
         n_time = time.time()
         RedisObject.update(self, "_time", n_time)
         return RedisObject.get_multi(self, keys)
@@ -164,6 +166,9 @@ class MAdmin(RedisObject):
         super(MAdmin, self).__init__(name, redis_manager)
         self._pk = pk
         self._fk = kw.get('fk', '')
+        print 'name++++++++++++++++++++',name
+        print 'pk++++++++++++++++++++++++++++++++++++',pk
+        print 'fk++++++++++++++++++++++++++++++++++++++', self._fk
         self._incrkey = kw.get('incrkey', '')
         self._incrvalue = kw.get('incrvalue', 0)
         self._timeout = timeout
@@ -198,12 +203,19 @@ class MAdmin(RedisObject):
         '''根据外键获取主键列表
         '''
         name = '%s_fk:%s' % (self._name, fk)
+        print 'fk name',name
         fkmm = MFKMode(name)
-        pklist = fkmm.get('pklist')
-        if pklist is not None:
+        pklist = fkmm.pklist
+
+        print 'pklist type', type(pklist)
+        print pklist
+        if pklist:
+            print "pk+++++++++++++++++++",pklist
             return pklist
         props = {self._fk: fk}
+        print 'props',props
         dbkeylist = util.getAllPkByFkInDB(self._name, self._pk, props)
+
         name = '%s_fk:%s' % (self._name, fk)
         fkmm = MFKMode(name, pklist=dbkeylist)
         fkmm.insert()
@@ -241,12 +253,14 @@ class MAdmin(RedisObject):
             return None
         data = mm.get('data')
         if mm.get('data'):
-            print type(data)
+            print "record+++++++++++++++++++++++",type(data)
             return data
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
+        print "record+++++++++++++++++++++",record
         if not record:
             return None
+
         record = mm.loads(record)
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
         mm.insert()
@@ -259,6 +273,7 @@ class MAdmin(RedisObject):
         '''
         _pklist = []
         objlist = []
+
         for pk in pklist:
             mm = MMode(self._name + ':%s' % pk, self._pk)
             if not mm.IsEffective():
@@ -266,13 +281,17 @@ class MAdmin(RedisObject):
             if mm.get('data'):
                 objlist.append(mm)
             else:
+                print "_pklist",_pklist
                 _pklist.append(pk)
         if _pklist:
             recordlist = util.GetRecordList(self._name, self._pk, _pklist)
             for record in recordlist:
                 pk = record[self._pk]
                 mm = MMode(self._name + ':%s' % pk, self._pk)
+                print "record++++++++++++++++++++", record
+                print "record++++++++++++++++++++", record["hero_no"]
                 record = mm.loads(record)
+                print "record+++++++++++++++++",record.get("hero_no")
                 mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
                 mm.insert()
                 objlist.append(mm)

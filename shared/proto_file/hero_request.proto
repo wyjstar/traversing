@@ -1,0 +1,31 @@
+package app.gate;
+
+message CommonRequest
+{
+    required int64 playerid = 1;
+    optional string message = 2;
+}
+
+message HeroUpgradeRequest
+{
+    required int64 playerid = 1;
+    required int32 herono = 2;
+    required int32 exp = 3;
+    required int32 level = 4;
+}
+
+message HeroComposeRequest
+{
+    required int64 playerid = 1;
+    required int32 herono = 2;
+    required int32 coin = 3; //消费的金币
+    repeated int32 chipids = 4; //使用的碎片
+}
+
+message HeroBreakRequest
+{
+    required int64 playerid = 1;
+    required int32 herono = 2;
+    required int32 breaklevel = 3;
+    required int32 coin = 4; //消费的金币
+}

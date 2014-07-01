@@ -9,7 +9,7 @@ from enterscene import enter_scene
 from gtwisted.utils import log
 import json
 from app.gate.core.virtual_character import VirtualCharacter
-from app.gate.core.virtual_character_manager import VCharacterManager
+from app.gate.core.character_manager import VCharacterManager
 
 
 @localservicehandle
