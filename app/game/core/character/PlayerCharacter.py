@@ -4,9 +4,14 @@ created by server on 14-6-4下午3:04.
 """
 from gtwisted.utils import log
 from app.game.core.character.Character import Character
-from app.game.redis_mode import tb_character_info
+from app.game.core.hero import Hero
+from app.game.core.hero_chip import HeroChip
+from app.game.redis_mode import tb_character_info, tb_char_hero_chip
 from shared.utils.const import const
-from app.game.redis_mode import tb_equipment_list
+from app.game.component.character_herolist_component import CharacterHeroListComponent
+from app.game.component.character_fiance_component import CharacterFinanceComponent
+from app.game.component.character_hero_chip_component import CharacterHeroChipComponent
+import json
 
 class PlayerCharacter(Character):
     """玩家角色类
@@ -22,7 +27,9 @@ class PlayerCharacter(Character):
         self.dynamic_id = dynamic_id   # 角色登陆服务器时的动态id
         #--------角色的各个组件类------------
         # TODO
-
+        self._hero_list = CharacterHeroListComponent(self) #武将列表
+        self._finance = CharacterFinanceComponent(self) #金币
+        self._hero_chip_list = CharacterHeroChipComponent(self) #武将碎片
         if status:
             self.__init_player_info()  #初始化角色
 
@@ -32,17 +39,41 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
         print pid
         data = tb_character_info.getObjData(pid)
+
         if not data:
-            log.msg("Inint_player _" + str(self.baseInfo.id))
+            log.msg("Init_player %s error!" + str(self.base_info.id))
+            return
         #------------初始化角色基础信息组件---------
-        log.msg(data)
-        print data['nickname']
-        a = data['nickname']
-        self.base_info.base_name = a
+
+        nickname = data['nickname']
+        self.base_info.base_name = nickname
+        self._hero_list.init_hero_list(pid)  # 初始化武将列表
+
+        return
+        self.finance.coin = data.get('coin')  # 初始化金币
+        self._hero_chip_list.init_hero_chip_list(pid)  #初始化武将碎片
 
 
-        equip_data = tb_equipment_list.getObjData(pid)
-        self.base_info.user_equipment_list.append(equip_data.get('equipdata'))
-        print equip_data
+    @property
+    def hero_list(self):
+        return self._hero_list
 
-        print '11111111111'
+    @hero_list.setter
+    def hero_list(self, value):
+        self._hero_list = value
+
+    @property
+    def finance(self):
+        return self._finance
+
+    @finance.setter
+    def finance(self, value):
+        self._finance = value
+
+    @property
+    def chip_list(self):
+        return self._hero_chip_list
+
+    @chip_list.setter
+    def chip_list(self, value):
+        self._hero_chip_list = value

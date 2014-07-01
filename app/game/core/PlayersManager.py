@@ -29,10 +29,10 @@ class PlayersManager:
         @return:
         """
         #TODO
-        if self._players.has_key(player.baseInfo.id):
+        if self._players.has_key(player.base_info.id):
 #            raise Exception("系统记录冲突")
             pass
-        self._players[player.baseInfo.id] = player
+        self._players[player.base_info.id] = player
 
     def get_player_by_id(self, pid):
         """根据角色id获取玩家角色实例
@@ -53,7 +53,7 @@ class PlayersManager:
         @nickname （str） 角色昵称
         """
         for k in self._players.values():
-            if k.baseInfo.get_nickname == nickname:
+            if k.base_info.get_nickname == nickname:
                 return k
         return None
 
@@ -61,7 +61,7 @@ class PlayersManager:
         """移除在线角色
         @player （PlayerCharacter）角色实例
         """
-        player_id = player.baseInfo.id
+        player_id = player.base_info.id
         self.drop_player_by_id(player_id)
 
     def drop_player_by_id(self, pid):

@@ -21,8 +21,12 @@
   <schema name="db_traversing">
     <table name="configs" dataNode="master"/>
     <table name="tb_test" dataNode="dn_traversing$0-3" rule="rule1" />
+    <table name="tb_character_info" dataNode="dn_traversing$0-3" rule="rule1" />
+    <table name="tb_char_hero" dataNode="dn_traversing$0-3" rule="rule1" />
+    <table name="tb_char_hero_chip" dataNode="dn_traversing$0-3" rule="rule1" />
     <table name="tb_account" dataNode="dn_account$0-7" rule="rule2" />
     <table name="tb_account_mapping" dataNode="dn_account$0-7" rule="rule2" />
+    <table name="tb_name_mapping" dataNode="dn_account$0-7" rule="rule2" />
     <table name="account_sequence" dataNode="dn_sequence"/>
   </schema>
 
@@ -48,6 +52,7 @@
     </property>
   </dataNode>
 
+
   <!-- 数据源定义，数据源是一个具体的后端数据连接的表示。-->
   <dataSource name="ds_shard_traversing" type="mysql">
     <property name="location">
@@ -57,7 +62,7 @@
       <location>127.0.0.1:3306/sequence</location>
     </property>
     <property name="user">root</property>
-    <property name="password">123456</property>
+    <property name="password">root</property>
     <property name="sqlMode">STRICT_TRANS_TABLES</property>
   </dataSource>
 
