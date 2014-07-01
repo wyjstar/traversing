@@ -148,11 +148,24 @@
         "tb_nickname_mapping": {
             "pkey_field": "id",
             "def_attrs": {
-            "id": "simple",
-            "nickname":"simple"
+                "id": "simple",
+                "nickname": "simple"
+            }
+        },
+
+        "tb_char_hero":{
+            "pkey_field": "id",
+            "def_attrs": {
+            "characterid": "simple",
+            "hero_no":"simple",
+            "level":"simple",
+            "break_level":"simple",
+            "exp":"simple",
+            "equipment_ids":"simple"
             }
         }
-    }
+        }
+
 
 
 }
