@@ -2,40 +2,26 @@
 """
 created by server on 14-6-10下午5:30.
 """
-from app.gate.redis_mode import tb_account, tb_character_info, tb_account_mapping
+from app.gate.redis_mode import tb_account
+from app.gate.redis_mode import tb_character_info
+from app.gate.redis_mode import tb_account_mapping
+
 
 class User(object):
     """用户帐号类
     """
-
-    def __init__(self, token, dynamic_id=-1):
+    def __init__(self, token, user_id, name='', password='', dynamic_id=-1):
         """ 初始化
+        @param token: 用户登录用
+        @param dynamic_id: 客户端动态ID
         """
         self._dynamic_id = dynamic_id
         self._token = token
-        self._user_id = 0
-        self._name = ''
-        self._password = ''
-        self._is_effective = True  # 是否是有效的
+        self._user_id = user_id
+        self._name = name
+        self._password = password
         self._character = {}
-
-    def init_user(self):
-        """初始化用户类
-        """
-
-        mapping_data = tb_account_mapping.getObjData(self.token)
-
-        if not mapping_data:
-            self.is_effective = False
-            return
-
-        user_id = mapping_data.get('id')
-
-        account_data = tb_account.getObjData(user_id)
-        # TODO 帐号表需要添加enable,做帐号开关
-        self.user_id = user_id
-        self.name = mapping_data.get('name', '')
-        self.password = mapping_data.get('account_password', '')
+        self._is_effective = True  # 是否是有效的
 
     def create_character(self):
         pass
@@ -85,11 +71,12 @@ class User(object):
                 character = {'uid': self.user_id, 'nickname': ''}
                 character_obj = tb_character_info.new(character)
                 character_obj.insert()
-                self.character = character
+                self._character = character
         return character
 
     @character.setter
     def character(self, character):
+        print 'character:', character
         self._character = character
         pmmode = tb_character_info.getObj(self._character.get('uid'))
         pmmode.update_multi(self._character)

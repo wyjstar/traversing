@@ -14,7 +14,7 @@ class PlayersManager:
     def __init__(self):
         """初始化单例管理器
         """
-        self._players = {}
+        self._players = {}  # {'id': player obj}
 
     def get_all(self):
         """ 取得全部角色
