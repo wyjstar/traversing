@@ -19,7 +19,7 @@ class CharacterHeroListComponent(Component):
         hero_list = tb_char_hero.getObjList(hero_id_list)
 
         for hero_data in hero_list:
-            hero = Hero(hero_data)
+            hero = Hero(hero_data.get('data'))
             self.add_hero(hero)
 
 

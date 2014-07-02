@@ -38,7 +38,7 @@ class RedisObject(Serializer):
     def produceKey(self, keyname):
         """重新生成key
         """
-        print 'produce key:', self._name
+        #print 'produce key:', self._name
         if isinstance(keyname, basestring):
             return ''.join([self._name, ':', keyname])
         else:
@@ -72,9 +72,10 @@ class RedisObject(Serializer):
         """
         produce_key = self.produceKey(key)
         value = self._client.get(produce_key)
+        print 'get key value:', produce_key, value
         if value and key == 'data':
             value = cPickle.loads(value)
-            print 'get:', value, type(value)
+            #print 'get:', value, type(value)
         return value
 
     def get_multi(self, keys):
@@ -129,7 +130,10 @@ class RedisObject(Serializer):
         """自增
         """
         key = self.produceKey(key)
-        return self._client.incr(key, delta)
+        print key
+        incr_value = self._client.incr(key, delta)
+        print 'incr:', incr_value, type(incr_value)
+        return int(incr_value)
 
     def insert(self):
         """插入对象记录
@@ -141,5 +145,5 @@ class RedisObject(Serializer):
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
-
+        print newmapping
         self._client.mset(newmapping)

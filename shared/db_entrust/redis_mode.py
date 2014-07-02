@@ -72,7 +72,6 @@ class MMode(RedisObject):
         return RedisObject.update_multi(self, props)
 
     def get(self, key):
-        return self.data.get(key)
         n_time = time.time()
         RedisObject.update(self, "_time", n_time)
         return RedisObject.get(self, key)
@@ -145,7 +144,7 @@ class MMode(RedisObject):
         if ntime - objtime >= timeout and timeout:
             self.mdelete()
         else:
-            print 'sync start'
+            print 'sync lll'
             self.syncDB()
 
 
@@ -178,6 +177,9 @@ class MAdmin(RedisObject):
         """
         if self._incrkey and not self.get("_incrvalue"):
             self._incrvalue = util.GetTableIncrValue(self._name)
+        else:
+            self._incrvalue = self.get("_incrvalue")
+
         RedisObject.insert(self)
 
     def load(self):
