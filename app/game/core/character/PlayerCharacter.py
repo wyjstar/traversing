@@ -6,11 +6,11 @@ from gtwisted.utils import log
 from app.game.core.character.Character import Character
 from app.game.core.hero import Hero
 from app.game.core.hero_chip import HeroChip
-from app.game.redis_mode import tb_character_info, tb_char_hero_chip
+from app.game.redis_mode import tb_character_info, tb_character_hero_chip
 from shared.utils.const import const
-from app.game.component.character_herolist_component import CharacterHeroListComponent
+from app.game.component.character_herolist import CharacterHeroListComponent
 from app.game.component.character_fiance_component import CharacterFinanceComponent
-from app.game.component.character_hero_chip_component import CharacterHeroChipComponent
+from app.game.component.character_hero_chip import CharacterHeroChipComponent
 import json
 
 class PlayerCharacter(Character):

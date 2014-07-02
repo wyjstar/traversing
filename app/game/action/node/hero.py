@@ -36,7 +36,7 @@ def hero_compose(dynamicid, data):
     args = HeroUpgradeRequest()
     args.ParseFromString(data)
     playerid = args.id
-    hero_no = args.hero_no
+    hero_no = args.herono
     consume_coin = args.coin
     consume_chipids = args.chipids
 

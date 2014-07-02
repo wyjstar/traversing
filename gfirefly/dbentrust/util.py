@@ -205,11 +205,12 @@ def GetRecordList(tablename,pkname,pklist):
     """
     pkliststr = ""
     for pkid in pklist:
-        pkliststr+="%s,"%pkid
+        pkliststr+="'%s',"%pkid
     pkliststr = "(%s)"%pkliststr[:-1]
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;"""%(tablename,pkname,pkliststr)
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass = DictCursor)
+    print 'sqlxyz',sql
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero.proto',
   package='',
-  serialized_pb='\n\nhero.proto\"J\n\x07Hero_PB\x12\x0f\n\x07hero_no\x18\x01 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x04 \x02(\x05\x12\x12\n\nbreaklevel\x18\x05 \x02(\x05')
+  serialized_pb='\n\nhero.proto\"J\n\x07Hero_PB\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x04 \x02(\x05\x12\x12\n\nbreaklevel\x18\x05 \x02(\x05')
 
 
 
@@ -27,8 +27,8 @@ _HERO_PB = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='hero_no', full_name='Hero_PB.hero_no', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

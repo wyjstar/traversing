@@ -142,7 +142,9 @@
             "pkey_field": "uid",
             "def_attrs": {
                 "uid": "simple",
-                "nickname": "simple"
+                "nickname": "simple",
+                "hero_list": "simple",
+                "hero_chip_list": "simple"
             }
         },
         "tb_nickname_mapping": {
@@ -153,10 +155,10 @@
             }
         },
 
-        "tb_char_hero":{
+        "tb_character_hero":{
             "pkey_field": "id",
             "def_attrs": {
-            "characterid": "simple",
+            "character_id": "simple",
             "hero_no":"simple",
             "level":"simple",
             "break_level":"simple",

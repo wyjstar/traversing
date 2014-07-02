@@ -24,6 +24,7 @@ class Hero(object):
         print "no", data.get("hero_no")
         print data.get("break_level")
         print data.get("equipment_ids")
+        self._hero_id = data.get("id")
         self._hero_no = data.get("hero_no")
         self._level = data.get("level")
         self._exp = data.get("exp")

@@ -4,7 +4,7 @@ created by server on 14-6-27下午6:44.
 """
 from app.game.component.Component import Component
 from app.game.core.hero_chip import HeroChip
-from app.game.redis_mode import tb_char_hero_chip
+from app.game.redis_mode import tb_character_hero_chip, tb_character_info
 
 
 class CharacterHeroChipComponent(Component):
@@ -14,8 +14,9 @@ class CharacterHeroChipComponent(Component):
         self._chip_list = {}
 
     def init_hero_chip_list(self, pid):
-        hero_chip_id_list = tb_char_hero_chip.getAllPkByFk(pid)
-        hero_chip_list = tb_char_hero_chip.getObjList(hero_chip_id_list)
+        character = tb_character_info.getObjData(pid)
+        hero_chip_list_ids = character.get('data').get('hero_chip_list').split(',')
+        hero_chip_list = tb_character_hero_chip.getObjList(hero_chip_list_ids)
 
         for chip_data in hero_chip_list:
             chip = HeroChip(chip_data)

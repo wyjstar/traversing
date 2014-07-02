@@ -165,7 +165,7 @@ class MAdmin(RedisObject):
         super(MAdmin, self).__init__(name, redis_manager)
         self._pk = pk
         self._fk = kw.get('fk', '')
-        
+
         self._incrkey = kw.get('incrkey', '')
         self._incrvalue = kw.get('incrvalue', 0)
         self._timeout = timeout

@@ -38,7 +38,7 @@ def character_login_4(key, dynamic_id, request_proto):
 
 def enter_scene(dynamic_id):
     now_node = SceneSerManager().get_best_sceneid()
-    return GlobalObject().root.callChild(now_node, 601, dynamic_id, 2)
+    return GlobalObject().root.callChild(now_node, 601, dynamic_id, 1)
 
 def __character_login(dynamic_id, token):
 
