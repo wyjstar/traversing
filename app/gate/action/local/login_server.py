@@ -4,7 +4,7 @@ created by server on 14-6-28下午4:08.
 """
 from app.gate.core.user import User
 from app.gate.core.users_manager import UsersManager
-from shared.proto_file import account_pb2
+from app.proto_file import account_pb2
 from app.gate.service.local.gateservice import local_service_handle
 from gfirefly.server.globalobject import GlobalObject
 

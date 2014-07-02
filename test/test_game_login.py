@@ -5,10 +5,13 @@ created by server on 14-6-23上午11:59.
 #coding:utf8
 
 import struct
+
 from twisted.internet import reactor, protocol
+
 from shared.proto_file.player_response_pb2 import PlayerResponse
 from shared.proto_file import account_pb2
-from shared.proto_file.player_request_pb2 import CreatePlayerRequest, PlayerLoginResquest
+from app.proto_file.player_request_pb2 import CreatePlayerRequest, PlayerLoginResquest
+
 
 def sendData(sendstr,commandId):
     '''定义协议头

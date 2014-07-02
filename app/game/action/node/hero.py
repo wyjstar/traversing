@@ -4,9 +4,9 @@ created by wzp on 14-6-27下午2:05.
 """
 
 from app.game.service.gatenoteservice import remote_service_handle
-from shared.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroUpgradeRequest, HeroBreakRequest
+from app.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroBreakRequest
 from app.game.core.hero import Hero
-from shared.proto_file.hero_response_pb2 import CommonResponse
+from app.proto_file.hero_response_pb2 import CommonResponse
 from app.game.core.PlayersManager import PlayersManager
 
 

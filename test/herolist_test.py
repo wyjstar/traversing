@@ -8,9 +8,11 @@ created by server on 14-6-30上午11:01.
 created by server on 14-6-23下午3:11.
 """
 import struct
+
 from twisted.internet import reactor, protocol
-from shared.proto_file.player_response_pb2 import PlayerResponse
-from shared.proto_file.player_request_pb2 import PlayerLoginResquest
+
+from app.proto_file.player_response_pb2 import PlayerResponse
+from app.proto_file.player_request_pb2 import PlayerLoginResquest
 
 
 def sendData(sendstr, commandId):

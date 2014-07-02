@@ -5,7 +5,7 @@ created by wzp on 14-6-19下午7: 51.
 from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
-from shared.proto_file.player_response_pb2 import PlayerResponse
+from app.proto_file.player_response_pb2 import PlayerResponse
 
 
 
