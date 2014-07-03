@@ -95,24 +95,9 @@ def hero_break(dynamicid, data):
     return response.SerializeToString()
 
 
-# def get_hero_list(hero_list, response):
-#     """序列化武将列表"""
-#     # arg = CommonRequest()
-#     # arg.ParseFromString(data)
-#     # playerid = arg.id
-#     # player = PlayersManager.get_player_by_id(playerid)
-#     # hero_list = player.hero_list
-#     #
-#     # hero_list_pb = HeroListResponse()
-#     # hero_list_pb.result = True
-#     for hero in hero_list:
-#         hero_pb = response.hero_list.add()
-#         hero_pb.no = hero.config['no']
-#         hero_pb.level = hero.level
-#         hero_pb.breaklevel = hero.breaklevel
-#         hero_pb.starlevel = hero.starlevel
-
-
+@remote_service_handle
+def hero_sacrifice(dynamicid, data):
+    pass
 
 
 

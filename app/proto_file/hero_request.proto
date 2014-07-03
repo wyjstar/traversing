@@ -29,3 +29,8 @@ message HeroBreakRequest
     required int32 breaklevel = 3;
     required int32 coin = 4; //消费的金币
 }
+
+message HeroBreakRequest
+{
+
+}

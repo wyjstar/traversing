@@ -48,8 +48,7 @@ class Hero(object):
         self._level = data.get("level")
         self._exp = data.get("exp")
         self._breaklevel = data.get("break_level")
-        self._equipment_ids = str(data.get("equipment_ids")).split(',')  # 穿戴装备列表
-
+        self._equipment_ids = data.get("equipment_ids")  # 穿戴装备列表
 
     @property
     def hero_no(self):
@@ -95,9 +94,6 @@ class Hero(object):
     def config(self):
         return self._equipment_ids
 
-    @config.setter
-    def config(self, value):
-        self._config = value
 
 
 
