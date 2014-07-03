@@ -9,7 +9,9 @@ from gfirefly.dbentrust.dbpool import dbpool
 
 print id(dbpool)
 from shared.db_opear.configs_data.hero_config import HeroConfig
+from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
+
 
 def get_config_value(config_key):
     """获取所有翻译信息
@@ -27,17 +29,20 @@ def get_config_value(config_key):
     data = {}
     for item in result:
         data[item['config_key']] = cPickle.loads(item['config_value'])
+        print "data type", type(data)
     return data
 
-
 base_config = {}
-hero = None
+hero = {}
+hero_exp = {}
+item = {}
 
 
 
 all_config_name = {
     'hero': HeroConfig(),
-    # 'bases_config': BaseConfig,
+    'hero_exp': HeroExpConfig()
+    #'bases_config': None,
 }
 
 
@@ -45,15 +50,28 @@ class ConfigFactory(object):
 
     @classmethod
     def creat_config(cls, config_name, config_value):
+
         obj = None
+
         if config_name in all_config_name.keys():
             if config_name == 'bases_config':
                 obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
                 return obj
-            obj = all_config_name[config_name].parser(config_value)
 
-        return obj
+        return all_config_name[config_name].parser(config_value)
 
+for config_name in all_config_name.keys():
+        game_conf = get_config_value(config_name)
+
+        print game_conf
+
+        if not game_conf:
+            continue
+        objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
+        exec(config_name + '=objs')
+
+        print hero
+        print hero_exp
 
 def init():
     hostname = "127.0.0.1"  #  要连接的数据库主机名
@@ -65,26 +83,10 @@ def init():
     dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
                     charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
 
-for config_name in all_config_name.keys():
-        game_conf = get_config_value(config_name)
 
-        print game_conf
-
-        if not game_conf:
-            continue
-
-        # config = all_config_name[config_name]
-        # print game_conf
-        # config.parser(game_conf[config_name])
-
-        #print "hero_no", config['10001'].no
-
-        objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
-        exec(config_name + '=objs')
-
-        print hero
 if __name__ == '__main__':
     init()
+
 
 
 

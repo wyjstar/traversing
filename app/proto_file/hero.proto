@@ -4,5 +4,5 @@ message Hero_PB
     required int32 hero_no = 1;
     required int32 level = 3;
     required int32 exp = 4;
-    required int32 breaklevel = 5;
+    required int32 break_level = 5;
 }

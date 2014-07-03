@@ -15,13 +15,19 @@ message HeroListResponse
     repeated Hero_PB hero_list = 2;
 }
 
-
-
 //武将升级
 message HeroUpgradeResponse
 {
     required int64 id = 1;
     required int32 level = 2;
     required int32 percent = 3;
+}
+
+//武将献祭
+message HeroSacrificeResponse
+{
+    required int32 hero_soul = 2;
+    required int32 exp_item_no = 3;
+    required int32 exp_item_num = 4;
 }
 

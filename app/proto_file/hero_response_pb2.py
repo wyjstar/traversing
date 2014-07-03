@@ -4,14 +4,17 @@
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
+from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
-from app.proto_file import hero_pb2
+
+
+import hero_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='app.gate',
-  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"?\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1b\n\thero_list\x18\x02 \x03(\x0b\x32\x08.Hero_PB\"A\n\x13HeroUpgradeResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x0f\n\x07percent\x18\x03 \x02(\x05')
+  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"?\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1b\n\thero_list\x18\x02 \x03(\x0b\x32\x08.Hero_PB\"A\n\x13HeroUpgradeResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x0f\n\x07percent\x18\x03 \x02(\x05\"a\n\x15HeroSacrificeResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x11\n\thero_soul\x18\x02 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x02(\x05')
 
 
 
@@ -127,10 +130,60 @@ _HEROUPGRADERESPONSE = _descriptor.Descriptor(
   serialized_end=226,
 )
 
+
+_HEROSACRIFICERESPONSE = _descriptor.Descriptor(
+  name='HeroSacrificeResponse',
+  full_name='app.gate.HeroSacrificeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='app.gate.HeroSacrificeResponse.id', index=0,
+      number=1, type=3, cpp_type=2, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero_soul', full_name='app.gate.HeroSacrificeResponse.hero_soul', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='exp_item_no', full_name='app.gate.HeroSacrificeResponse.exp_item_no', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='exp_item_num', full_name='app.gate.HeroSacrificeResponse.exp_item_num', index=3,
+      number=4, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=228,
+  serialized_end=325,
+)
+
 _HEROLISTRESPONSE.fields_by_name['hero_list'].message_type = hero_pb2._HERO_PB
 DESCRIPTOR.message_types_by_name['CommonResponse'] = _COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['HeroListResponse'] = _HEROLISTRESPONSE
 DESCRIPTOR.message_types_by_name['HeroUpgradeResponse'] = _HEROUPGRADERESPONSE
+DESCRIPTOR.message_types_by_name['HeroSacrificeResponse'] = _HEROSACRIFICERESPONSE
 
 class CommonResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -149,6 +202,12 @@ class HeroUpgradeResponse(_message.Message):
   DESCRIPTOR = _HEROUPGRADERESPONSE
 
   # @@protoc_insertion_point(class_scope:app.gate.HeroUpgradeResponse)
+
+class HeroSacrificeResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROSACRIFICERESPONSE
+
+  # @@protoc_insertion_point(class_scope:app.gate.HeroSacrificeResponse)
 
 
 # @@protoc_insertion_point(module_scope)
