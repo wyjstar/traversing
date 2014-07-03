@@ -10,15 +10,34 @@ from gtwisted.utils import log
 class Hero(object):
     """武将类"""
 
-    def __init__(self, data=None):
+    def __init__(self, mmode=None):
         """
-        :param data: mmode
+        :param mmode: 对应redis中的一条数据
         :field _level: 等级
         :field _breaklevel: 突破等级
         :field _exp: 当前等级的经验
         :field _equipmentids: 装备IDs
         """
-        print "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+
+        self._hero_id = ''
+        self._hero_no = 0
+        self._level = 0
+        self._exp = 0
+        self._breaklevel = 0
+        self._equipment_ids = []
+        self._mmode = mmode
+
+        hero_config = all_config_name['hero'].get(self._hero_no)
+        if not hero_config:
+            log.msg("武将%s配置文件初始化失败！" % self._hero_no)
+        self._config = hero_config
+
+    def init_data(self):
+        if not self._mmode:
+            log.msg("mmode=None 武将初始化数据为空！")
+            return
+        data = self._mmode.get('data')
+        print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
         print "level", data.get("level")
         print "exp", data.get('exp')
         print "no", data.get("hero_no")
@@ -31,18 +50,10 @@ class Hero(object):
         self._breaklevel = data.get("break_level")
         self._equipment_ids = str(data.get("equipment_ids")).split(',')  # 穿戴装备列表
 
-        hero_config = all_config_name['hero'].get(self._hero_no)
-        if not hero_config:
-            log.msg("武将%s配置文件初始化失败！" % self._hero_no)
-        self._config = hero_config
 
     @property
     def hero_no(self):
         return self._hero_no
-
-    @hero_no.setter
-    def hero_no(self, value):
-        self._hero_no = value
 
     @property
     def level(self):
@@ -51,6 +62,7 @@ class Hero(object):
     @level.setter
     def level(self, value):
         self._level = value
+        self._mmode.update('level', value)
 
     @property
     def exp(self):
@@ -59,6 +71,7 @@ class Hero(object):
     @exp.setter
     def exp(self, value):
         self._exp = value
+        self._mmode.update('exp', self._exp)
 
     @property
     def breaklevel(self):
@@ -67,6 +80,7 @@ class Hero(object):
     @breaklevel.setter
     def breaklevel(self, value):
         self._breaklevel = value
+        self._mmode.update('breaklevel', self._breaklevel)
 
     @property
     def equipment_ids(self):
@@ -75,6 +89,7 @@ class Hero(object):
     @equipment_ids.setter
     def equipment_ids(self, value):
         self._equipment_ids = value
+        self._mmode.update('equipment_ids', self._equipment_ids)
 
     @property
     def config(self):

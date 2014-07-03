@@ -19,7 +19,6 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata = PlayerResponse()
     for hero in player.hero_list.get_heros():
         hero_pb = responsedata.hero_list.add()
-        print "hero_no", type(hero.hero_no)
         hero_pb.hero_no = hero.hero_no
         hero_pb.level = hero.level
         hero_pb.breaklevel = hero.breaklevel

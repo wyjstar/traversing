@@ -22,8 +22,9 @@ class CharacterHeroListComponent(Component):
         hero_list_ids = character.get('hero_list').split(',')
         hero_list = tb_character_hero.getObjList(hero_list_ids)
 
-        for hero_data in hero_list:
-            hero = Hero(hero_data.get('data'))
+        for hero_mmode in hero_list:
+            hero = Hero(hero_mmode)
+            hero.init_data()
             self.add_hero(hero)
 
     def get_hero_by_no(self, hero_no):

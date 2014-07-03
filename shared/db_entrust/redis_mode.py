@@ -52,8 +52,7 @@ class MMode(RedisObject):
     def update(self, key, values):
         n_time = time.time()
         data = self.get_multi(['data', '_state'])
-        print data
-        print type(data['_state'])
+
         data['data'].update({key: values})
         if data.get('_state') == MMODE_STATE_NEW:
             props = {'data': data.get('data'), '_time': n_time}

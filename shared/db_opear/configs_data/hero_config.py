@@ -7,12 +7,18 @@ from shared.db_opear.configs_data.base_config import BaseConfig
 import json
 
 
-class HeroConfig(BaseConfig):
+class HeroConfig(object):
     """武将配置类"""
+
+    def __init__(self):
+        self.heros = {}
+
     def parser(self, config_value):
         """解析config到HeroConfig"""
         for hero_no, value in config_value.items():
-            self[hero_no] = self.Item(value)
+            self.heros[hero_no] = self.Item(value)
+
+        return self.heros
 
     class Item(object):
         """内部类：单个英雄配置文件"""

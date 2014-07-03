@@ -31,6 +31,9 @@ def get_config_value(config_key):
 
 
 base_config = {}
+hero = None
+
+
 
 all_config_name = {
     'hero': HeroConfig(),
@@ -39,20 +42,6 @@ all_config_name = {
 
 
 class ConfigFactory(object):
-
-    @classmethod
-    def type_value(cls, stype, val):
-        stype = stype.strip().lower()
-        if stype == 'int':
-            return int(val)
-        elif stype == 'str':
-            return str(val)
-        elif stype == 'float':
-            return float(val)
-        elif stype == 'list':
-            return eval(val)
-        elif stype == 'dict':
-            return eval(val)
 
     @classmethod
     def creat_config(cls, config_name, config_value):
@@ -76,22 +65,28 @@ def init():
     dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
                     charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
 
-
-init()
 for config_name in all_config_name.keys():
-    game_conf = get_config_value(config_name)
+        game_conf = get_config_value(config_name)
 
-    if not game_conf:
-        continue
+        print game_conf
 
-    config = all_config_name[config_name]
+        if not game_conf:
+            continue
 
-    config.parser(game_conf[config_name])
+        # config = all_config_name[config_name]
+        # print game_conf
+        # config.parser(game_conf[config_name])
 
-    #print "hero_no", config['10001'].no
+        #print "hero_no", config['10001'].no
 
-    #objs = ConfigFactory.creat_config(config_name, eval(game_conf.config_value))
-    #exec(config_name + '=objs')
+        objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
+        exec(config_name + '=objs')
+
+        print hero
+if __name__ == '__main__':
+    init()
+
+
 
 
 

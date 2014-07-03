@@ -20,6 +20,7 @@ class CharacterHeroChipComponent(Component):
 
         for chip_data in hero_chip_list:
             chip = HeroChip(chip_data)
+            chip.init_data()
             self.add_chip(chip)
 
     def add_chip(self, chip):
