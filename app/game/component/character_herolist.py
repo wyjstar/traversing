@@ -33,11 +33,21 @@ class CharacterHeroListComponent(Component):
     def get_heros(self):
         return self._heros.values()
 
+    def get_heros_by_nos(self, hero_no_list):
+        heros = []
+        for no in hero_no_list:
+            heros.append(self._heros.get(no))
+        return heros
+
     def add_hero(self, hero):
         self._heros[hero.hero_no] = hero
 
-    def remove_hero(self, hero_id):
-        del self._heros[hero_id]
+    def remove_hero(self, hero_no):
+        del self._heros[hero_no]
+
+    def remove_heros_by_nos(self, hero_no_list):
+        for no in hero_no_list:
+            del self._heros[no]
 
     def contain_hero(self, hero_no):
         return hero_no in self._heros

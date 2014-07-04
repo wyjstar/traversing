@@ -5,30 +5,32 @@ message CommonRequest
     required int64 playerid = 1;
     optional string message = 2;
 }
+
 //武将升级
 message HeroUpgradeRequest
 {
-    required int64 playerid = 1;
-    required int32 hero_no = 2;
-    required int32 exp = 3;
-    required int32 level = 4;
+    repeated int32 hero_no_list = 1;
+    repeated int32 exp_list = 2;
 }
+
+//武将升级，使用道具
+message HeroUpgradeWithItemRequest
+{
+    required int32 hero_no = 1;
+    required int32 exp_item_no = 2;
+    required int32 exp_item_num = 3;
+}
+
 //武将合成
 message HeroComposeRequest
 {
-    required int64 playerid = 1;
-    required int32 hero_no = 2;
-    required int32 coin = 3; //消费的金币
-    repeated int32 chipids = 4; //使用的碎片
+    required int32 hero_chip_no = 2;
 }
 
 //武将突破
 message HeroBreakRequest
 {
-    required int64 playerid = 1;
-    required int32 hero_no = 2;
-    required int32 break_level = 3;
-    required int32 coin = 4; //消费的金币
+    required int32 hero_no = 1;
 }
 
 //武将献祭

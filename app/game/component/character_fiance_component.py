@@ -8,7 +8,9 @@ from gtwisted.utils import log
 
 class CharacterFinanceComponent(Component):
     """金币"""
-    def __init__(self):
+
+    def __init__(self, owner):
+        super(CharacterFinanceComponent, self).__init__(owner)
         self._coin = 0
         self._hero_soul = 0
         self._mmode = None

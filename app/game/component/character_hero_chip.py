@@ -5,6 +5,7 @@ created by server on 14-6-27下午6:44.
 from app.game.component.Component import Component
 from app.game.core.hero_chip import HeroChip
 from app.game.redis_mode import tb_character_hero_chip, tb_character_info
+from gtwisted.utils import log
 
 
 class CharacterHeroChipComponent(Component):
@@ -26,10 +27,13 @@ class CharacterHeroChipComponent(Component):
     def add_chip(self, chip):
         self._chip_list[chip.chip_no] = chip
 
-    def consume_chip(self, chips):
-        """消耗碎片"""
-        for chip_no, num in chips:
-            chip = self._chip_list.get(chip_no)
-            chip.consume(num)
+    def is_afford(self, chip_no, chip_num):
+        if not chip_no in self._chip_list:
+            return False
+        if self._chip_list[chip_no].num < chip_num:
+            return False
+        return True
+
+    
 
 

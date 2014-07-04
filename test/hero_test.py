@@ -55,6 +55,9 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(self.hero.level, 12306, 'level error!')
         self.assertEqual(self.hero_mmode.get('data').get('level'), 12306, 'mmode level error')
 
+    def test_get_all_exp(self):
+        # todo:
+        pass
 
 if __name__ == '__main__':
     unittest.main()

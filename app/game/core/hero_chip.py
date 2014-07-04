@@ -43,3 +43,4 @@ class HeroChip(object):
         """消费碎片"""
         self.num -= num
         self._mmode.update('num', self._num)
+
