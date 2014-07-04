@@ -74,7 +74,7 @@ class RedisObject(Serializer):
         value = self._client.get(produce_key)
         print 'get key value:', produce_key, value
         if value and key == 'data':
-            value = cPickle.loads(value)
+            value = self.loads(cPickle.loads(value))
             #print 'get:', value, type(value)
         return value
 

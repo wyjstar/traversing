@@ -10,6 +10,7 @@ from twisted.internet import reactor, protocol
 
 from shared.proto_file.player_response_pb2 import PlayerResponse
 from shared.proto_file import account_pb2
+from app.proto_file import item_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest, PlayerLoginResquest
 
 
@@ -57,9 +58,9 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = '6b97f2728fe5823e6ca749ac039a1a75'
-        argument.user_name = 'ghh0001'
-        argument.password = '123457'
+        argument.key.key = '7771ff6fbe80392384754f6b26369885'
+        # argument.user_name = 'ghh0001'
+        # argument.password = '123457'
         self.dateSend(argument, 2)
 
     def dataReceived(self, data):
@@ -73,7 +74,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = '6b97f2728fe5823e6ca749ac039a1a75'
+            argument.token = '7771ff6fbe80392384754f6b26369885'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -81,14 +82,16 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            if not argument.nickname:
-                argument = CreatePlayerRequest()
-                argument.nickname = 'qqwwee'
-                self.dateSend(argument, 5)
-        # if command == 5:
-        #     argument = game_pb2.NickNameResponse()
-        #     argument.ParseFromString(message)
-        #     print argument
+            self.transport.write(sendData('', 301))
+
+        if command == 301:
+            print '301'
+            argument = item_pb2.ItemsResponse()
+            argument.ParseFromString(message)
+            items = argument.item
+            for item in items:
+                print item
+
 
 
     def connectionLost(self, reason):

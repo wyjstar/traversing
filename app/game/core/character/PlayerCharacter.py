@@ -2,6 +2,7 @@
 """
 created by server on 14-6-4下午3:04.
 """
+from app.game.component.pack.character_item_package import CharacterItemPackageComponent
 from gtwisted.utils import log
 from app.game.core.character.Character import Character
 from app.game.core.hero import Hero
@@ -12,6 +13,8 @@ from app.game.component.character_herolist import CharacterHeroListComponent
 from app.game.component.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chip import CharacterHeroChipComponent
 import json
+
+
 
 class PlayerCharacter(Character):
     """玩家角色类
@@ -27,11 +30,13 @@ class PlayerCharacter(Character):
         self.dynamic_id = dynamic_id   # 角色登陆服务器时的动态id
         #--------角色的各个组件类------------
         # TODO
-        self._hero_list = CharacterHeroListComponent(self) #武将列表
-        self._finance = CharacterFinanceComponent(self) #金币
-        self._hero_chip_list = CharacterHeroChipComponent(self) #武将碎片
+        self._hero_list = CharacterHeroListComponent(self)  # 武将列表
+        self._finance = CharacterFinanceComponent(self)  # 金币
+        self._hero_chip_list = CharacterHeroChipComponent(self)  # 武将碎片
+        self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
+
         if status:
-            self.__init_player_info()  #初始化角色
+            self.__init_player_info()  # 初始化角色
 
     def __init_player_info(self):
         """初始化角色信息
@@ -48,11 +53,11 @@ class PlayerCharacter(Character):
         nickname = data['nickname']
         self.base_info.base_name = nickname
         self._hero_list.init_hero_list(pid)  # 初始化武将列表
+        self._item_package.init_data()
 
         return
         self.finance.coin = data.get('coin')  # 初始化金币
         self._hero_chip_list.init_hero_chip_list(pid)  #初始化武将碎片
-
 
     @property
     def hero_list(self):
@@ -77,3 +82,7 @@ class PlayerCharacter(Character):
     @chip_list.setter
     def chip_list(self, value):
         self._hero_chip_list = value
+
+    @property
+    def item_package(self):
+        return self._item_package

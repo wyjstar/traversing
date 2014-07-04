@@ -44,7 +44,7 @@ class PlayersManager:
         @dynamicId （int） 角色动态id
         """
         for player in self._players.values():
-            if player.dynamicid == dynamic_id:
+            if player.dynamic_id == dynamic_id:
                 return player
         return None
 

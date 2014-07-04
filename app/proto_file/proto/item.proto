@@ -8,6 +8,9 @@ message Item{
 }
 
 // 请求全部道具 command：301
-message ItemsResquest{
+
+
+
+message ItemsResponse{
 	repeated Item item = 1;
 }

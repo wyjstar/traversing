@@ -20,7 +20,7 @@ class HeroConfig(object):
 
         return self.heros
 
-    class Item(object):
+    class Item(dict):
         """内部类：单个英雄配置文件"""
         def __init__(self, jsondata):
             self.no = jsondata['id']

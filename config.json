@@ -155,18 +155,26 @@
             }
         },
 
-        "tb_character_hero":{
+        "tb_character_hero": {
             "pkey_field": "id",
             "def_attrs": {
-            "character_id": "simple",
-            "hero_no":"simple",
-            "level":"simple",
-            "break_level":"simple",
-            "exp":"simple",
-            "equipment_ids":"simple"
+                "character_id": "simple",
+                "hero_no": "simple",
+                "level": "simple",
+                "break_level": "simple",
+                "exp": "simple",
+                "equipment_ids": "simple"
+            }
+        },
+        "tb_character_item_package": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "items": "complex"
             }
         }
-        }
+
+    }
 
 
 

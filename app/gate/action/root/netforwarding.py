@@ -23,9 +23,12 @@ def forwarding(key, dynamic_id, data):
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         if not oldvcharacter:
             return
-        if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
-            return
+        # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
+        #     return
         node = VCharacterManager().get_node_by_dynamic_id(dynamic_id)
+
+        print 'node:', node
+
         return GlobalObject().root.callChild(node, key, dynamic_id, data)
 #
 
