@@ -6,6 +6,8 @@ from MySQLdb.cursors import DictCursor
 import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.item_config import ItemsConfig
+from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
+from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 
 
 print id(dbpool)
@@ -34,28 +36,19 @@ def get_config_value(config_key):
     return data
 
 base_config = {}
-
-hero = None
-item = {}
-
-
-all_config_name = {
-    'hero': HeroConfig(),
-    'hero_exp': HeroExpConfig()
-    # 'bases_config': BaseConfig,
-    'item': ItemsConfig,
-
 hero = {}
 hero_exp = {}
 item = {}
-
-
+small_bag = {}
+big_bag = {}
 
 all_config_name = {
     'hero': HeroConfig(),
-    'hero_exp': HeroExpConfig()
+    'hero_exp': HeroExpConfig(),
+    'item': ItemsConfig,
+    'small_bag': SmallBagsConfig,
+    'big_bag': BigBagsConfig,
     #'bases_config': None,
->>>>>>> refs/remotes/origin/master
 }
 
 
