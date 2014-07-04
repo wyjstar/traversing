@@ -32,7 +32,7 @@ def get_config_value(config_key):
         print "data type", type(data)
     return data
 
-base_config = {}
+base = {}
 hero = {}
 hero_exp = {}
 item = {}

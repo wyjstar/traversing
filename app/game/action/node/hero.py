@@ -8,7 +8,7 @@ from app.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroBreakRequest
 from app.game.core.hero import Hero
 from app.proto_file.hero_response_pb2 import CommonResponse, HeroSacrificeResponse
 from app.game.core.PlayersManager import PlayersManager
-from shared.db_opear.configs_data.game_configs import base_config, item
+from shared.db_opear.configs_data.game_configs import base, item
 
 
 @remote_service_handle
@@ -103,20 +103,34 @@ def hero_sacrifice_104(dynamicid, data):
     args.ParseFromString(data)
 
     player = PlayersManager.get_player_by_dynamic_id(dynamicid)
+    heros = player.hero_list.get_heros_by_nos(args.hero_no_list)
+    total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
 
+    response = HeroSacrificeResponse()
+    response.hero_soul = total_hero_soul
+    response.exp_item_no = exp_item_no
+    response.exp_item_num = exp_item_num
+    return response.SerializeToString()
+
+
+def hero_sacrifice(heros):
+    """
+    武将献祭，返回总武魂、经验药水
+    :param heros: 被献祭的武将
+    :return total_hero_soul:总武魂数量, exp_item_no:经验药水编号, exp_item_num:经验药水数量
+    """
     total_exp = 0
     total_hero_soul = 0
     exp_item_no = 0
     exp_item_num = 0
 
-    for hero_no in args.hero_no_list:
-        hero = player.hero_list.get_hero_by_no(hero_no)
+    for hero in heros:
         hero_soul = hero.config.sacrifice_hero_soul
         total_hero_soul += hero_soul
         exp = hero.get_all_exp()
         total_exp += exp
 
-    exp_items = base_config.get("sacrifice_exp")
+    exp_items = base.get("exp_items")
     for item_no in exp_items:
         item_config = item.get(item_no)
         exp = item_config.get("exp")
@@ -124,11 +138,8 @@ def hero_sacrifice_104(dynamicid, data):
             exp_item_no = item_no
             exp_item_num = total_exp/exp
 
-    response = HeroSacrificeResponse()
-    response.hero_soul = total_hero_soul
-    response.exp_item_no = exp_item_no
-    response.exp_item_num = exp_item_num
-    return response.SerializeToString()
+    return total_hero_soul, exp_item_no, exp_item_num
+
 
 
 

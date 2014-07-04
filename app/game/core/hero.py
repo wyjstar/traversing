@@ -54,6 +54,10 @@ class Hero(object):
     def hero_no(self):
         return self._hero_no
 
+    @hero_no.setter
+    def hero_no(self, value):
+        self._hero_no = value
+
     @property
     def level(self):
         return self._level
