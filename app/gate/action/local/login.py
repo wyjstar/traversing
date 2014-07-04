@@ -10,6 +10,7 @@ from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.virtual_character_manager import VCharacterManager
 from app.proto_file import player_request_pb2
 from gfirefly.server.globalobject import GlobalObject
+from app.proto_file import game_pb2
 
 
 @local_service_handle
@@ -17,16 +18,19 @@ def character_login_4(key, dynamic_id, request_proto):
     """角色登录
     @return:
     """
-    return enter_scene(dynamic_id)
+
     argument = player_request_pb2.PlayerLoginResquest()
     argument.ParseFromString(request_proto)
     token = argument.token
 
     result = __character_login(dynamic_id, token)
-
+    print 'result:', result
     argument = game_pb2.GameLoginResponse()
     argument.result = result.get('result')
-    argument.nickname = result.get('nickname')
+
+    nickname = result.get('nickname', None)
+    if nickname:
+        argument.nickname = nickname
 
     print '111111111111111111'
     print argument
@@ -37,6 +41,7 @@ def character_login_4(key, dynamic_id, request_proto):
 def enter_scene(dynamic_id):
     now_node = SceneSerManager().get_best_sceneid()
     return GlobalObject().root.callChild(now_node, 601, dynamic_id, 1)
+
 
 def __character_login(dynamic_id, token):
 
@@ -57,6 +62,7 @@ def __character_login(dynamic_id, token):
         VCharacterManager().add_character(v_character)
 
     now_node = SceneSerManager().get_best_sceneid()
+    print 'now_node:', now_node
     v_character.node = now_node
 
     GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)

@@ -12,3 +12,7 @@ tb_character_hero.insert()
 
 tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
 tb_character_hero_chip.insert()
+
+# 用户道具背包
+tb_character_item_package = MAdmin('tb_character_item_package', 'id')
+tb_character_item_package.insert()

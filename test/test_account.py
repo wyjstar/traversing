@@ -2,7 +2,7 @@
 
 import struct
 from twisted.internet import reactor, protocol
-from app.account.proto_file import account_pb2
+from app.proto_file import account_pb2
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -74,9 +74,9 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.LoginResquest()
-                argument.key.key = '386f15f2f92629119eb3cfbe1f947f1b'
-                argument.user_name = 'ghh0001'
-                argument.password = '123457'
+                argument.key.key = '7771ff6fbe80392384754f6b26369885'
+                # argument.user_name = 'ghh0001'
+                # argument.password = '123457'
                 self.dateSend(argument, 2)
 
         if command == 2:

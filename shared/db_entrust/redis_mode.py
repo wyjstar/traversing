@@ -174,8 +174,8 @@ class MAdmin(RedisObject):
         """
         if self._incrkey and not self.get("_incrvalue"):
             self._incrvalue = util.GetTableIncrValue(self._name)
-        else:
-            self._incrvalue = self.get("_incrvalue")
+        # else:
+        #     self._incrvalue = self.get("_incrvalue")
 
         RedisObject.insert(self)
 
@@ -208,7 +208,7 @@ class MAdmin(RedisObject):
 
         print 'pklist type', type(pklist)
         print pklist
-        if pklist:
+        if pklist is not None:
             print "pk+++++++++++++++++++",pklist
             return pklist
         props = {self._fk: fk}
@@ -365,6 +365,7 @@ class MAdmin(RedisObject):
             pklist.append(pk)
             fkmm.update('pklist', pklist)
         setattr(mm, '_state', MMODE_STATE_NEW)
+        print 'mm #3:', mm.data
         mm.insert()
         return mm
 

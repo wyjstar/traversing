@@ -19,7 +19,7 @@ class CharacterHeroListComponent(Component):
         character = tb_character_info.getObjData(pid)
         if not character:
             log.err('玩家角色为空！')
-        hero_list_ids = character.get('hero_list').split(',')
+        hero_list_ids = character.get('hero_list', '').split(',')
         hero_list = tb_character_hero.getObjList(hero_list_ids)
 
         for hero_mmode in hero_list:

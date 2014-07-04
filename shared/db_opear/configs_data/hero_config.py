@@ -18,3 +18,4 @@ class HeroConfig(object):
         for row in config_value:
             self.heros[row.get('id')] = CommonItem(row)
         return self.heros
+
