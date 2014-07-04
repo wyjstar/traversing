@@ -256,7 +256,7 @@ class MAdmin(RedisObject):
             return data
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
-        print "record+++++++++++++++++++++",record
+        print "record+++++++++++++++++++++", record
         if not record:
             return None
 
@@ -264,7 +264,6 @@ class MAdmin(RedisObject):
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
         mm.insert()
         return record
-
 
     def getObjList(self, pklist):
         '''根据主键列表获取mmode对象的列表.\n

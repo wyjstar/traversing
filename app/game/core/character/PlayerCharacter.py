@@ -30,10 +30,13 @@ class PlayerCharacter(Character):
         self.dynamic_id = dynamic_id   # 角色登陆服务器时的动态id
         #--------角色的各个组件类------------
         # TODO
+
         self._hero_list = CharacterHeroListComponent(self)  # 武将列表
         self._finance = CharacterFinanceComponent(self)  # 金币
         self._hero_chip_list = CharacterHeroChipComponent(self)  # 武将碎片
         self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
+
+        self._mmode = None
 
         if status:
             self.__init_player_info()  # 初始化角色
@@ -42,21 +45,21 @@ class PlayerCharacter(Character):
         """初始化角色信息
         """
         pid = self.base_info.id
-        print pid
-        data = tb_character_info.getObjData(pid)
+        character_mmode = tb_character_info.getObj(pid)
+        if not character_mmode:
+            log.err("初始化玩家角色出错,mmode==None！")
 
         if not data:
             log.msg("Init_player %s error!" + str(self.base_info.id))
             return
         #------------初始化角色基础信息组件---------
 
-        nickname = data['nickname']
-        self.base_info.base_name = nickname
+        self.base_info.base_name = character_mmode.get('data').get('nickname')  #初始化基本信息
         self._hero_list.init_hero_list(pid)  # 初始化武将列表
         self._item_package.init_data()
 
-        return
-        self.finance.coin = data.get('coin')  # 初始化金币
+        retrun
+        self.finance.init_data(character_mmode)  #初始化金币
         self._hero_chip_list.init_hero_chip_list(pid)  #初始化武将碎片
 
     @property
