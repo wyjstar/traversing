@@ -24,9 +24,9 @@ base['exp_items'] = [1000101, 1000102, 1000103, 1000104]
 
 #------------------------hero----------------------------
 
-hero1 = {'id': 10001, 'level': 11, 'name': 'hero10001', 'sacrifice_hero_soul': 100}
-hero2 = {'id': 10002, 'level': 12, 'name': 'hero10002', 'sacrifice_hero_soul': 200}
-hero3 = {'id': 10003, 'level': 13, 'name': 'hero10003', 'sacrifice_hero_soul': 300}
+hero1 = {'id': 10001, 'name': 'hero10001', 'sacrifice_hero_soul': 100}
+hero2 = {'id': 10002, 'name': 'hero10002', 'sacrifice_hero_soul': 200}
+hero3 = {'id': 10003, 'name': 'hero10003', 'sacrifice_hero_soul': 300}
 
 hero.clear()
 hero[10001] = CommonItem(hero1)

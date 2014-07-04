@@ -3,8 +3,8 @@
 created by server on 14-7-4上午10:16.
 """
 
-import test.hero.mock_redis
 import test.hero.mock_config
+import test.hero.mock_redis
 from test.hero.mock_heros import player
 from app.game.action.node.hero import hero_sacrifice
 import unittest
@@ -21,8 +21,8 @@ class HeroActionTest(unittest.TestCase):
 
         total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
         self.assertEqual(total_hero_soul, 300, "total hero soul error!")
-        self.assertEqual(exp_item_no, 1000101, "exp_item_no error!")
-        self.assertEqual(exp_item_num, 2, "exp_item_num error!")
+        self.assertEqual(exp_item_no, 1000103, "exp_item_no error!")
+        self.assertEqual(exp_item_num, 1, "exp_item_num error!")
 
 
 

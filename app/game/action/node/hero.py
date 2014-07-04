@@ -106,6 +106,8 @@ def hero_sacrifice_104(dynamicid, data):
     heros = player.hero_list.get_heros_by_nos(args.hero_no_list)
     total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
 
+    # remove hero
+    player.hero_list.remove_heros_by_nos(args.hero_no_list)
     response = HeroSacrificeResponse()
     response.hero_soul = total_hero_soul
     response.exp_item_no = exp_item_no
@@ -125,6 +127,7 @@ def hero_sacrifice(heros):
     exp_item_num = 0
 
     for hero in heros:
+        print "sacrifice_hero_soul", hero.config
         hero_soul = hero.config.sacrifice_hero_soul
         total_hero_soul += hero_soul
         exp = hero.get_all_exp()
@@ -133,10 +136,11 @@ def hero_sacrifice(heros):
     exp_items = base.get("exp_items")
     for item_no in exp_items:
         item_config = item.get(item_no)
-        exp = item_config.get("exp")
+        exp = item_config.get("func_args")
         if total_exp/exp > 0:
             exp_item_no = item_no
             exp_item_num = total_exp/exp
+            break
 
     return total_hero_soul, exp_item_no, exp_item_num
 

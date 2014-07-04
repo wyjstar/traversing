@@ -37,6 +37,7 @@ class CharacterHeroListComponent(Component):
         heros = []
         for no in hero_no_list:
             heros.append(self._heros.get(no))
+        return heros
 
     def add_hero(self, hero):
         self._heros[hero.hero_no] = hero
