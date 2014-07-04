@@ -24,5 +24,14 @@ class HeroActionTest(unittest.TestCase):
         self.assertEqual(exp_item_no, 1000103, "exp_item_no error!")
         self.assertEqual(exp_item_num, 1, "exp_item_num error!")
 
+    def test_hero_upgrade(self):
+        pass
+
+    def test_hero_break(self):
+        pass
+
+    def test_hero_compose(self):
+        pass
+
 
 

@@ -35,10 +35,12 @@ def get_config_value(config_key):
 
 
 
-base = {}
-hero = {}
-hero_exp = {}
-item = {}
+base_config = {}
+hero_config = {}
+hero_exp_config = {}
+hero_breakup_config = {}
+hero_chip_config = {}
+item_config = {}
 
 
 

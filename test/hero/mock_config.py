@@ -13,14 +13,14 @@ def init():
                     charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
 init()  # init pool
 
-from shared.db_opear.configs_data.game_configs import hero, hero_exp, base, item
+from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, item_config
 from shared.db_opear.configs_data.common_item import CommonItem
 
 
 #------------------------base----------------------------
 
-base.clear()
-base['exp_items'] = [1000101, 1000102, 1000103, 1000104]
+base_config.clear()
+base_config['exp_items'] = [1000101, 1000102, 1000103, 1000104]
 
 #------------------------hero----------------------------
 
@@ -28,10 +28,10 @@ hero1 = {'id': 10001, 'name': 'hero10001', 'sacrifice_hero_soul': 100}
 hero2 = {'id': 10002, 'name': 'hero10002', 'sacrifice_hero_soul': 200}
 hero3 = {'id': 10003, 'name': 'hero10003', 'sacrifice_hero_soul': 300}
 
-hero.clear()
-hero[10001] = CommonItem(hero1)
-hero[10002] = CommonItem(hero2)
-hero[10003] = CommonItem(hero3)
+hero_config.clear()
+hero_config[10001] = CommonItem(hero1)
+hero_config[10002] = CommonItem(hero2)
+hero_config[10003] = CommonItem(hero3)
 
 #------------------------item----------------------------
 
@@ -40,11 +40,11 @@ item2 = {'id': 1000102, 'func_args': 50000}
 item3 = {'id': 1000103, 'func_args': 10000}
 item4 = {'id': 1000104, 'func_args': 5000}
 
-item.clear()
-item[1000101] = item1
-item[1000102] = item2
-item[1000103] = item3
-item[1000104] = item4
+item_config.clear()
+item_config[1000101] = item1
+item_config[1000102] = item2
+item_config[1000103] = item3
+item_config[1000104] = item4
 
 #------------------------hero_exp----------------------------
 
@@ -62,20 +62,20 @@ hero_exp11 = {'level': 11, 'exp': 1100}
 hero_exp12 = {'level': 12, 'exp': 1200}
 hero_exp13 = {'level': 13, 'exp': 1300}
 
-hero_exp.clear()
-hero_exp[1] = hero_exp1
-hero_exp[2] = hero_exp2
-hero_exp[3] = hero_exp3
-hero_exp[4] = hero_exp4
-hero_exp[5] = hero_exp5
-hero_exp[6] = hero_exp6
-hero_exp[7] = hero_exp7
-hero_exp[8] = hero_exp8
-hero_exp[9] = hero_exp9
-hero_exp[10] = hero_exp10
-hero_exp[11] = hero_exp11
-hero_exp[12] = hero_exp12
-hero_exp[13] = hero_exp13
+hero_exp_config.clear()
+hero_exp_config[1] = hero_exp1
+hero_exp_config[2] = hero_exp2
+hero_exp_config[3] = hero_exp3
+hero_exp_config[4] = hero_exp4
+hero_exp_config[5] = hero_exp5
+hero_exp_config[6] = hero_exp6
+hero_exp_config[7] = hero_exp7
+hero_exp_config[8] = hero_exp8
+hero_exp_config[9] = hero_exp9
+hero_exp_config[10] = hero_exp10
+hero_exp_config[11] = hero_exp11
+hero_exp_config[12] = hero_exp12
+hero_exp_config[13] = hero_exp13
 
 
 

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_request.proto',
   package='app.gate',
-  serialized_pb='\n\x12hero_request.proto\x12\x08\x61pp.gate\"2\n\rCommonRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\"S\n\x12HeroUpgradeRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x02(\x05\x12\r\n\x05level\x18\x04 \x02(\x05\"V\n\x12HeroComposeRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x03 \x02(\x05\x12\x0f\n\x07\x63hipids\x18\x04 \x03(\x05\"X\n\x10HeroBreakRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x13\n\x0b\x62reak_level\x18\x03 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x04 \x02(\x05\",\n\x14HeroSacrificeRequest\x12\x14\n\x0chero_no_list\x18\x01 \x03(\x05')
+  serialized_pb='\n\x12hero_request.proto\x12\x08\x61pp.gate\"2\n\rCommonRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\"2\n\x12HeroUpgradeRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x02 \x02(\x05\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"V\n\x12HeroComposeRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x03 \x02(\x05\x12\x0f\n\x07\x63hipids\x18\x04 \x03(\x05\"X\n\x10HeroBreakRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x13\n\x0b\x62reak_level\x18\x03 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x04 \x02(\x05\",\n\x14HeroSacrificeRequest\x12\x14\n\x0chero_no_list\x18\x01 \x03(\x05')
 
 
 
@@ -61,29 +61,15 @@ _HEROUPGRADEREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='playerid', full_name='app.gate.HeroUpgradeRequest.playerid', index=0,
-      number=1, type=3, cpp_type=2, label=2,
+      name='hero_no', full_name='app.gate.HeroUpgradeRequest.hero_no', index=0,
+      number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hero_no', full_name='app.gate.HeroUpgradeRequest.hero_no', index=1,
+      name='exp', full_name='app.gate.HeroUpgradeRequest.exp', index=1,
       number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='exp', full_name='app.gate.HeroUpgradeRequest.exp', index=2,
-      number=3, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='level', full_name='app.gate.HeroUpgradeRequest.level', index=3,
-      number=4, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -98,7 +84,49 @@ _HEROUPGRADEREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=84,
-  serialized_end=167,
+  serialized_end=134,
+)
+
+
+_HEROUPGRADEWITHITEMREQUEST = _descriptor.Descriptor(
+  name='HeroUpgradeWithItemRequest',
+  full_name='app.gate.HeroUpgradeWithItemRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='hero_no', full_name='app.gate.HeroUpgradeWithItemRequest.hero_no', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='exp_item_no', full_name='app.gate.HeroUpgradeWithItemRequest.exp_item_no', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='exp_item_num', full_name='app.gate.HeroUpgradeWithItemRequest.exp_item_num', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=136,
+  serialized_end=224,
 )
 
 
@@ -146,8 +174,8 @@ _HEROCOMPOSEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=169,
-  serialized_end=255,
+  serialized_start=226,
+  serialized_end=312,
 )
 
 
@@ -195,8 +223,8 @@ _HEROBREAKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=257,
-  serialized_end=345,
+  serialized_start=314,
+  serialized_end=402,
 )
 
 
@@ -223,12 +251,13 @@ _HEROSACRIFICEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=347,
-  serialized_end=391,
+  serialized_start=404,
+  serialized_end=448,
 )
 
 DESCRIPTOR.message_types_by_name['CommonRequest'] = _COMMONREQUEST
 DESCRIPTOR.message_types_by_name['HeroUpgradeRequest'] = _HEROUPGRADEREQUEST
+DESCRIPTOR.message_types_by_name['HeroUpgradeWithItemRequest'] = _HEROUPGRADEWITHITEMREQUEST
 DESCRIPTOR.message_types_by_name['HeroComposeRequest'] = _HEROCOMPOSEREQUEST
 DESCRIPTOR.message_types_by_name['HeroBreakRequest'] = _HEROBREAKREQUEST
 DESCRIPTOR.message_types_by_name['HeroSacrificeRequest'] = _HEROSACRIFICEREQUEST
@@ -244,6 +273,12 @@ class HeroUpgradeRequest(_message.Message):
   DESCRIPTOR = _HEROUPGRADEREQUEST
 
   # @@protoc_insertion_point(class_scope:app.gate.HeroUpgradeRequest)
+
+class HeroUpgradeWithItemRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROUPGRADEWITHITEMREQUEST
+
+  # @@protoc_insertion_point(class_scope:app.gate.HeroUpgradeWithItemRequest)
 
 class HeroComposeRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

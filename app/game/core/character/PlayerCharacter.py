@@ -79,11 +79,11 @@ class PlayerCharacter(Character):
         self._finance = value
 
     @property
-    def chip_list(self):
+    def hero_chip_list(self):
         return self._hero_chip_list
 
-    @chip_list.setter
-    def chip_list(self, value):
+    @hero_chip_list.setter
+    def hero_chip_list(self, value):
         self._hero_chip_list = value
 
     @property

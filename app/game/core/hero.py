@@ -3,7 +3,7 @@
 created by server on 14-6-25下午5:27.
 """
 
-from shared.db_opear.configs_data.game_configs import hero, hero_exp
+from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config
 from gtwisted.utils import log
 
 
@@ -45,7 +45,7 @@ class Hero(object):
         self._exp = data.get("exp")
         self._break_level = data.get("break_level")
         self._equipment_ids = data.get("equipment_ids")  # 穿戴装备列表
-        hero_config = hero.get(self._hero_no)
+        hero_config = hero_config.get(self._hero_no)
         if not hero_config:
             log.msg("武将%s配置文件初始化失败！" % self._hero_no)
         # print "@", hero_config
@@ -103,9 +103,34 @@ class Hero(object):
         """根据等级+当前等级经验，得到总经验"""
         total_exp = 0
         for level in range(1, self._level):
-            total_exp += hero_exp[level].get('exp', 0)
+            total_exp += hero_exp_config[level].get('exp', 0)
 
         return total_exp + self._exp
+
+    def upgrade(self, exp):
+        """根据经验升级"""
+        level = self._level
+        temp_exp = self._exp
+        temp_exp += exp
+        while True:
+            current_level_exp = hero_exp_config[level].get('exp', 0)
+            if current_level_exp < temp_exp:
+                level += 1
+                temp_exp -= current_level_exp
+            else:
+                break
+
+        self.level = level
+        self.exp = exp
+        return level, temp_exp
+
+
+
+
+
+
+
+
 
 
 

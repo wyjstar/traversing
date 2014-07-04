@@ -1,7 +1,7 @@
 package app.gate;
 import "hero.proto";
 
-//通用请求，无参数
+//通用响应，无参数
 message CommonResponse
 {
     required bool result = 1;
@@ -18,14 +18,15 @@ message HeroListResponse
 //武将升级
 message HeroUpgradeResponse
 {
-    required int64 id = 1;
+    required bool result = 1;
     required int32 level = 2;
-    required int32 percent = 3;
+    required int32 exp = 3;
 }
 
 //武将献祭
 message HeroSacrificeResponse
 {
+    required bool result = 1;
     required int32 hero_soul = 2;
     required int32 exp_item_no = 3;
     required int32 exp_item_num = 4;

@@ -42,6 +42,12 @@ class CharacterItemPackageComponent(Component):
 
         self.save_data()
 
+    def get_item(self, item_no):
+        return self._items.get(item_no)
+
+    def consume_item(self, item_no, item_num):
+        self._items.get(item_no).num -= item_num
+
     def save_data(self):
         props = {}
         for item_no, item in self._items:
