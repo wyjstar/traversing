@@ -4,12 +4,12 @@ created by server on 14-7-4上午10:16.
 """
 
 import unittest
-import test.hero.mock_config
-import test.hero.mock_redis
-import test.hero.mock_item
-import test.hero.mock_hero_chips
+import test.unittest.hero.mock_config
+import test.unittest.hero.mock_redis
+import test.unittest.hero.mock_item
+import test.unittest.hero.mock_hero_chips
 
-from test.hero.mock_heros import player
+from test.unittest.hero.mock_heros import player
 from app.game.action.node.hero import *
 from app.proto_file.hero_response_pb2 import *
 from app.game.service.gatenoteservice import remoteservice

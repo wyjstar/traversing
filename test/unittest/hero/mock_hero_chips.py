@@ -3,7 +3,7 @@
 created by server on 14-7-7下午5:29.
 """
 
-from test.hero.mock_player import player
+from test.unittest.hero.mock_player import player
 from app.game.core.hero_chip import HeroChip
 from app.game.redis_mode import tb_character_hero_chip
 
