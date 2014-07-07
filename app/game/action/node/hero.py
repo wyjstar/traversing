@@ -5,11 +5,12 @@ created by wzp on 14-6-27下午2:05.
 
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroUpgradeWithItemRequest,\
-    HeroBreakRequest, HeroSacrificeRequest
-from app.proto_file.hero_response_pb2 import CommonResponse, HeroListResponse, HeroSacrificeResponse
+    HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest
+from app.proto_file.hero_response_pb2 import CommonResponse, HeroListResponse, \
+    HeroSacrificeResponse
 from app.game.core.PlayersManager import PlayersManager
 from shared.db_opear.configs_data.game_configs import base_config, item_config, hero_breakup_config, hero_chip_config
-
+from app.game.core.hero import Hero
 
 @remote_service_handle
 def get_hero_list_101(dynamic_id, pro_data=None):
@@ -168,6 +169,44 @@ def hero_sacrifice(heros):
             break
 
     return total_hero_soul, exp_item_no, exp_item_num
+
+
+@remote_service_handle
+def hero_compose_106(dynamicid, data):
+    """武将合成"""
+    args = HeroComposeRequest()
+    args.ParseFromString(data)
+    hero_chip_no = args.hero_chip_no
+
+    player = PlayersManager().get_player_by_dynamic_id(dynamicid)
+    response = CommonResponse()
+
+    hero_no = hero_chip_config.get(hero_chip_no).hero_no
+    need_num = hero_chip_config.get(hero_chip_no).need_num
+    hero_chip = player.hero_chip_list.get_chip(hero_chip_no)
+
+    # 服务器校验
+    if hero_chip.num < need_num:
+        response.result = False
+        response.message = "碎片不足，合成失败！"
+        return response.SerializeToString()
+
+    print "hero_no", hero_no
+    if player.hero_list.contain_hero(hero_no):
+        response.result = False
+        response.message = "武将已存在，合成失败！"
+        return response.SerializeToString()
+
+    hero = Hero()
+    hero.init_data()
+    hero.hero_no = hero_no
+    player.hero_list.add_hero(hero)
+
+    hero_chip.consume(need_num)  # 消耗碎片
+
+    # 3、返回
+    response.result = True
+    return response.SerializeToString()
 
 
 

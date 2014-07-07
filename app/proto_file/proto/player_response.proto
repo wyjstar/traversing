@@ -4,8 +4,6 @@ message PlayerResponse
 {
     required int64 id = 1;
     required string nickname = 2;
-    //todo 装备列表
-    //todo 活动信息
 
 
 }

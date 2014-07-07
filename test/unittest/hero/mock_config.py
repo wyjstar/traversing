@@ -14,7 +14,7 @@ def init():
 init()  # init pool
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
-    item_config, hero_breakup_config
+    item_config, hero_breakup_config, hero_chip_config
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 
@@ -100,6 +100,12 @@ hero_breakup1 = {'id': 10001, 'break2': 31000102,
 hero_breakup_config.clear()
 hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
+
+#------------------------hero_chip----------------------------
+
+hero_chip1 = {'id': 1000114, 'hero_no': 10004, 'need_num': 20}
+hero_chip_config.clear()
+hero_chip_config[1000114] = CommonItem(hero_chip1)
 
 
 

@@ -87,6 +87,26 @@ class HeroActionTest(unittest.TestCase):
         print 'item', item.num
         self.assertEqual(item.num, 0, "item error!%d_%d" % (item.num, 0))
 
+    def hero_compose_106_test(self):
+        request = HeroComposeRequest()
+        request.hero_chip_no = 1000114
+        hero_chip = player.hero_chip_list.get_chip(1000114)
+        print hero_chip.num
+
+        str_response = remoteservice.callTarget(106, 1, request.SerializeToString())
+        response = CommonResponse()
+        response.ParseFromString(str_response)
+
+        hero = player.hero_list.get_hero_by_no(10004)
+        self.assertEqual(response.result, True, "return result error!")
+        self.assertFalse(hero == None, "compose hero error!")
+
+
+        print hero_chip.num
+        self.assertEqual(hero_chip.num, 280, "hero_chip error!%d_%d" % (hero_chip.num, 280))
+
+
+
 
 
 
