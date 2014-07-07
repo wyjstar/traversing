@@ -49,6 +49,6 @@ class CharacterHeroChipComponent(Component):
             props[no] = chip.num
 
         items_data = tb_character_hero_chip.getObj(self.owner.base_info.id)
-        items_data.update_multi(props)
+        items_data.update('hero_chips', props)
 
 
