@@ -13,8 +13,10 @@ def init():
                     charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
 init()  # init pool
 
-from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, item_config
+from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
+    item_config, hero_breakup_config
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 
 
 #------------------------base----------------------------
@@ -38,7 +40,7 @@ hero_config[10003] = CommonItem(hero3)
 item1 = {'id': 1000101, 'func_args': 100000}
 item2 = {'id': 1000102, 'func_args': 50000}
 item3 = {'id': 1000103, 'func_args': 10000}
-item4 = {'id': 1000104, 'func_args': 5000}
+item4 = {'id': 1000104, 'func_args': 1000}
 
 item_config.clear()
 item_config[1000101] = item1
@@ -61,6 +63,10 @@ hero_exp10 = {'level': 10, 'exp': 1000}
 hero_exp11 = {'level': 11, 'exp': 1100}
 hero_exp12 = {'level': 12, 'exp': 1200}
 hero_exp13 = {'level': 13, 'exp': 1300}
+hero_exp14 = {'level': 14, 'exp': 1400}
+hero_exp15 = {'level': 15, 'exp': 1500}
+hero_exp16 = {'level': 16, 'exp': 1600}
+hero_exp17 = {'level': 17, 'exp': 1700}
 
 hero_exp_config.clear()
 hero_exp_config[1] = hero_exp1
@@ -76,6 +82,25 @@ hero_exp_config[10] = hero_exp10
 hero_exp_config[11] = hero_exp11
 hero_exp_config[12] = hero_exp12
 hero_exp_config[13] = hero_exp13
+hero_exp_config[14] = hero_exp14
+hero_exp_config[15] = hero_exp15
+hero_exp_config[16] = hero_exp16
+
+
+#------------------------hero_breakup----------------------------
+# 1 :coin
+# 2 :break_pill
+# 3 :hero_chip
+hero_breakup1 = {'id': 10001, 'break2': 31000102,
+                 'consume2': {1: [1000, 1000, 0],
+                              2: [2, 2, 1000111],
+                              3: [20, 20, 1000112]
+                 }}
+
+hero_breakup_config.clear()
+hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
+
+
 
 
 

@@ -30,18 +30,20 @@ class HeroBreakupConfig(object):
             :param consume_name: coin, break_pill, hero_chip
             :return:
             """
-            consume_info = self.info.get('consume' + str(break_level))
+            consume_info = self.info.get('consume' + str(break_level+1))
+            print "???????????????consume_info", self.info, break_level, consume_name
             if consume_name == 'coin':
                 lst = consume_info.get(1)
                 return lst[0]
 
-            elif consume_info == 'break_pill':
+            elif consume_name == 'break_pill':
                 lst = consume_info.get(2)
-                return lst[0], lst[2]
 
-            elif consume_info == 'hero_chip':
+                return lst[2], lst[0]
+
+            elif consume_name == 'hero_chip':
                 lst = consume_info.get(3)
-                return lst[0], lst[2]
+                return lst[2], lst[0]
 
 
 

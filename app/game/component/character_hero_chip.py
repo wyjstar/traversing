@@ -12,28 +12,43 @@ class CharacterHeroChipComponent(Component):
     """武将碎片组件"""
     def __init__(self, owner):
         super(CharacterHeroChipComponent, self).__init__(owner)
-        self._chip_list = {}
+        self._chips = {}
 
-    def init_hero_chip_list(self, pid):
-        character = tb_character_info.getObjData(pid)
-        hero_chip_list_ids = character.get('data').get('hero_chip_list').split(',')
-        hero_chip_list = tb_character_hero_chip.getObjList(hero_chip_list_ids)
+    def init_hero_chips(self, pid):
+        hero_chips = tb_character_hero_chip.getObjData(self.owner.base_info.id)
+        if hero_chips:
+            hero_chips_data = hero_chips.get('hero_chips', {})
+            for no, num in hero_chips_data:
+                hero_chip = HeroChip(no, num)
+                self._chips[no] = hero_chip
+        else:
+            mm_item = tb_character_hero_chip.new({'id': self.owner.base_info.id, 'items': {}})
 
-        for chip_data in hero_chip_list:
-            chip = HeroChip(chip_data)
-            chip.init_data()
-            self.add_chip(chip)
-
-    def add_chip(self, chip):
-        self._chip_list[chip.chip_no] = chip
-
+    def get_chip(self, chip_no):
+        return self._chips.get(chip_no)
+    
     def is_afford(self, chip_no, chip_num):
-        if not chip_no in self._chip_list:
+        if not chip_no in self._chips:
             return False
-        if self._chip_list[chip_no].num < chip_num:
+        if self._chips[chip_no].num < chip_num:
             return False
         return True
 
-    
+    def add_chip(self, hero_chip):
+        """添加道具
+        """
+        if hero_chip.chip_no in self._chips:  # 已经存在的item_no
+            self._chips[hero_chip.chip_no].num += hero_chip.num
+        else:
+            self._chips[hero_chip.chip_no] = hero_chip
+        self.save_data()
+
+    def save_data(self):
+        props = {}
+        for no, chip in self._chips.items():
+            props[no] = chip.num
+
+        items_data = tb_character_hero_chip.getObj(self.owner.base_info.id)
+        items_data.update_multi(props)
 
 

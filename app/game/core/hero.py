@@ -121,7 +121,7 @@ class Hero(object):
                 break
 
         self.level = level
-        self.exp = exp
+        self.exp = temp_exp
         return level, temp_exp
 
 
