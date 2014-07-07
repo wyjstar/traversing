@@ -189,7 +189,6 @@ def hero_sacrifice(heros):
     exp_item_num = 0
 
     for hero in heros:
-        print "sacrifice_hero_soul", hero.config
         hero_soul = hero.config.sacrifice_hero_soul
         total_hero_soul += hero_soul
         exp = hero.get_all_exp()

@@ -58,8 +58,6 @@ def __guest_register():
     account_mapping = tb_account_mapping.new(data)
     account_mapping.insert()
 
-    print 'register:', tb_account_mapping.getObjData(token)
-
     return {'result': True, 'token': token, 'account_id': account_id}
 
 

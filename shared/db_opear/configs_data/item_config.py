@@ -2,11 +2,7 @@
 """
 created by server on 14-7-3下午8:47.
 """
-
-
-class Item(dict):
-    def __getattr__(self, name):
-        return self.get(name, None)
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class ItemsConfig(object):
@@ -17,7 +13,7 @@ class ItemsConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
-            item = Item(row)
+            item = CommonItem(row)
             self._items[item.id] = item
         return self._items
 

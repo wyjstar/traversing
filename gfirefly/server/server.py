@@ -77,7 +77,6 @@ class FFServer:
             
         if webport:
             self.webroot = Flask("master")
-            print GlobalObject().webroot
             GlobalObject().webroot = self.webroot
             # reactor.listenTCP(webport, self.webroot)
             reactor.listenWSGI(webport, self.webroot)
@@ -100,10 +99,9 @@ class FFServer:
         #     urls = memconfig.get('urls')
         #     hostname = str(memconfig.get('hostname'))
         #     mclient.connect(urls, hostname)
-        print hasmem, memconfig
+
         if hasmem and memconfig:
             connection_setting = memconfig.get('urls')
-            print connection_setting, type(connection_setting)
             redis_manager.connection_setup(connection_setting)
             
         if logpath:
@@ -129,15 +127,11 @@ class FFServer:
             self.master_remote.connect(addr)
             GlobalObject().masterremote = self.master_remote
 
-
         import admin
 
     def remote_connect(self, rname, rhost):
         """进行rpc的连接
         """
-        print self.servername
-        print 'rpc remote_connect:', rname, rhost, self.remoteportlist
-
         for cnf in self.remoteportlist:
             _rname = cnf.get('rootname')
             if rname == _rname:
@@ -155,5 +149,3 @@ class FFServer:
         log.msg('%s start...'%self.servername)
         log.msg('%s pid: %s'%(self.servername,os.getpid()))
         reactor.run()
-        
-        

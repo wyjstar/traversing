@@ -103,7 +103,6 @@ class MMode(RedisObject):
         """同步到数据库
         """
         state = int(self.get('_state'))
-        print 'state:', state, type(state)
         tablename = self._name.split(':')[0]
         if state == MMODE_STATE_ORI:
             return
@@ -111,9 +110,7 @@ class MMode(RedisObject):
             props = self.get('data')
             props = self.dumps(props)
             pk = self.get('_pk')
-            print 'sync db props:',props
             result = util.InsertIntoDB(tablename, props)
-            print 'result:', result
         elif state == MMODE_STATE_UPDATE:
             props = self.get('data')
             pk = self.get('_pk')
@@ -128,7 +125,6 @@ class MMode(RedisObject):
             prere = {pk: props.get(pk)}
             result = util.DeleteFromDB(tablename, prere)
         if result:
-            print '1111111111111111111111111;ljf;ljsadl;fjksad;l'
             RedisObject.update(self, '_state', MMODE_STATE_ORI)
 
     def checkSync(self, timeout=TIMEOUT):
@@ -138,12 +134,9 @@ class MMode(RedisObject):
         ntime = float('%.02f' % ntime)
         objtime = RedisObject.get(self, '_time')
         objtime = float(objtime)
-        print objtime, type(objtime)
-        print ntime, type(ntime)
         if ntime - objtime >= timeout and timeout:
             self.mdelete()
         else:
-            print 'sync lll'
             self.syncDB()
 
 
@@ -202,17 +195,12 @@ class MAdmin(RedisObject):
         '''根据外键获取主键列表
         '''
         name = '%s_fk:%s' % (self._name, fk)
-        print 'fk name',name
         fkmm = MFKMode(name)
         pklist = fkmm.pklist
 
-        print 'pklist type', type(pklist)
-        print pklist
         if pklist is not None:
-            print "pk+++++++++++++++++++",pklist
             return pklist
         props = {self._fk: fk}
-        print 'props',props
         dbkeylist = util.getAllPkByFkInDB(self._name, self._pk, props)
 
         name = '%s_fk:%s' % (self._name, fk)
@@ -227,10 +215,8 @@ class MAdmin(RedisObject):
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
-        print '11111'
         if mm.get('data'):
             return mm
-        print '222222'
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
@@ -245,18 +231,13 @@ class MAdmin(RedisObject):
         >>> m = madmin.getObjData(1)
         '''
         mm = MMode(self._name + ':%s' % pk, self._pk)
-
-        print 'MMode:', mm.__dict__
-
         if not mm.IsEffective():
             return None
         data = mm.get('data')
         if mm.get('data'):
-            print "record+++++++++++++++++++++++",type(data)
             return data
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
-        print "record+++++++++++++++++++++", record
         if not record:
             return None
 
@@ -279,17 +260,13 @@ class MAdmin(RedisObject):
             if mm.get('data'):
                 objlist.append(mm)
             else:
-                print "_pklist",_pklist
                 _pklist.append(pk)
         if _pklist:
             recordlist = util.GetRecordList(self._name, self._pk, _pklist)
             for record in recordlist:
                 pk = record[self._pk]
                 mm = MMode(self._name + ':%s' % pk, self._pk)
-                print "record++++++++++++++++++++", record
-                print "record++++++++++++++++++++", record["hero_no"]
                 record = mm.loads(record)
-                print "record+++++++++++++++++",record.get("hero_no")
                 mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
                 mm.insert()
                 objlist.append(mm)
@@ -365,7 +342,6 @@ class MAdmin(RedisObject):
             pklist.append(pk)
             fkmm.update('pklist', pklist)
         setattr(mm, '_state', MMODE_STATE_NEW)
-        print 'mm #3:', mm.data
         mm.insert()
         return mm
 

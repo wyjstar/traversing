@@ -6,6 +6,8 @@ from MySQLdb.cursors import DictCursor
 import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.item_config import ItemsConfig
+from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
+from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 
 
 print id(dbpool)
@@ -30,8 +32,8 @@ def get_config_value(config_key):
     data = {}
     for item in result:
         data[item['config_key']] = cPickle.loads(item['config_value'])
-        #print "data type", type(data)
     return data
+
 
 
 
@@ -41,15 +43,18 @@ hero_exp_config = {}
 hero_breakup_config = {}
 hero_chip_config = {}
 item_config = {}
+small_bag = {}
+big_bag = {}
 
 
 
 all_config_name = {
     'hero': HeroConfig(),
     'hero_exp': HeroExpConfig(),
-     'item': ItemsConfig,
+    'item': ItemsConfig,
+    'small_bag': SmallBagsConfig,
+    'big_bag': BigBagsConfig,
     #'bases_config': None,
-
 }
 
 
@@ -76,9 +81,6 @@ for config_name in all_config_name.keys():
             continue
         objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
         exec(config_name + '=objs')
-        #
-        # print hero
-        # print hero_exp
 
 # def init():
 #     hostname = "127.0.0.1"  #  要连接的数据库主机名

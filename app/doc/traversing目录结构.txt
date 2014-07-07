@@ -1,0 +1,57 @@
+travering: 项目根
+    |
+    |——app：项目代码
+    |    |
+    |    |——doc：文档说明
+    |    |
+    |    |——logs：日志
+    |    |
+    |    |——proto_file: proto文件
+    |    |
+    |    |——**server：举例说明进程服务目录结构net, gate, game, account, chat, dbfront 
+    |    |    |
+    |    |    |——action: 逻辑处理，尽量一个文件处理同一个模块的协议
+    |    |    |    |
+    |    |    |    |——local：本地服务处理逻辑
+    |    |    |    |
+    |    |    |    |——root：作为RPC server 提供给 节点node 使用的逻辑处理, 如果给多个node使用，按照node的名称添加目录，公共使用的在最外层
+    |    |    |    |
+    |    |    |    |——node：作为RPC node 提供给 root 使用的逻辑处理（同理）
+    |    |    |    
+    |    |    |——component：功能模块的组件    
+    |    |    | 
+    |    |    |——core: 核心代码
+    |    |    | 
+    |    |    |——service：
+    |    |    |     |
+    |    |    |     |——local：
+    |    |    |     |
+    |    |    |     |——root：
+    |    |    |     |
+    |    |    |     |——node：
+    |    |    |     
+    |    |    |——initapp.py 初始化server     
+    |    |    |
+    |    |    |——redis_mode.py redis存储管理
+    |    | 
+    |    |——**server.py 启动加载initapp
+    |
+    |——gfirefly：框架代码
+    |
+    |——shared：针对框架添加的功能
+    |        |
+    |        |——db_entrust: redis
+    |        |
+    |        |——utils: 工具
+    |
+    |——test：测试文件目录
+    |
+    |——tool：工具脚本
+    |
+    |——appmain.py: 进程服务启动
+    |
+    |——startmaster.py: 项目启动
+    |
+    |——config.json: 配置
+
+     

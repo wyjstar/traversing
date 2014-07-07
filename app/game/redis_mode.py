@@ -16,3 +16,7 @@ tb_character_hero_chip.insert()
 # 用户道具背包
 tb_character_item_package = MAdmin('tb_character_item_package', 'id')
 tb_character_item_package.insert()
+
+# 用户阵容信息
+tb_character_line_up = MAdmin('tb_character_line_up', 'id')
+tb_character_line_up.insert()
