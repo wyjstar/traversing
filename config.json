@@ -166,6 +166,13 @@
                 "equipment_ids": "simple"
             }
         },
+        "tb_character_hero_chip": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "hero_chips": "complex"
+            }
+        },
         "tb_character_item_package": {
             "pkey_field": "id",
             "def_attrs": {

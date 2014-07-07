@@ -134,6 +134,7 @@ class RedisObject(Serializer):
         nowdict = dict(self.__dict__)
         del nowdict['_client']
         if ('data' in nowdict) and nowdict['data']:
+            print "?+?", nowdict['data']
             nowdict['data'] = cPickle.dumps(self.dumps(nowdict['data']))
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],

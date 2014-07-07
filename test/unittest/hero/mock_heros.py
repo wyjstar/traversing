@@ -4,7 +4,7 @@ created by server on 14-7-4上午10:32.
 """
 
 from app.game.core.hero import Hero
-from test.hero.mock_player import player
+from test.unittest.hero.mock_player import player
 from app.game.redis_mode import tb_character_hero
 
 data1 = {'hero_no': 10001,

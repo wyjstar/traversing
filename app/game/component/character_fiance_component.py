@@ -31,7 +31,7 @@ class CharacterFinanceComponent(Component):
     @coin.setter
     def coin(self, value):
         self._coin = value
-        self.update_coin()
+        #self.update_coin()
 
     @property
     def hero_soul(self):
@@ -40,23 +40,23 @@ class CharacterFinanceComponent(Component):
     @hero_soul.setter
     def hero_soul(self, value):
         self._hero_soul = value
-        self.update_hero_soul()
+        # self.update_hero_soul()
 
     def add_coin(self, coin):
         self._coin += coin
-        self.update_coin()
+        # self.update_coin()
 
     def consume_coin(self, coin):
         self._coin -= coin
-        self.update_coin()
+        # self.update_coin()
 
     def add_hero_soul(self, hero_soul):
         self._hero_soul += hero_soul
-        self.update_hero_soul()
+        # self.update_hero_soul()
 
     def consume_hero_soul(self, hero_soul):
         self._hero_soul -= hero_soul
-        self.update_hero_soul()
+        # self.update_hero_soul()
 
     def update_coin(self):
         self._mmode.update('coin', self._coin)

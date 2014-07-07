@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_request.proto',
   package='app.gate',
-  serialized_pb='\n\x12hero_request.proto\x12\x08\x61pp.gate\"2\n\rCommonRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\"2\n\x12HeroUpgradeRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x02 \x02(\x05\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"V\n\x12HeroComposeRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x03 \x02(\x05\x12\x0f\n\x07\x63hipids\x18\x04 \x03(\x05\"X\n\x10HeroBreakRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x13\n\x0b\x62reak_level\x18\x03 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x04 \x02(\x05\",\n\x14HeroSacrificeRequest\x12\x14\n\x0chero_no_list\x18\x01 \x03(\x05')
+  serialized_pb='\n\x12hero_request.proto\x12\x08\x61pp.gate\"2\n\rCommonRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\"<\n\x12HeroUpgradeRequest\x12\x14\n\x0chero_no_list\x18\x01 \x03(\x05\x12\x10\n\x08\x65xp_list\x18\x02 \x03(\x05\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"*\n\x12HeroComposeRequest\x12\x14\n\x0chero_chip_no\x18\x02 \x02(\x05\"#\n\x10HeroBreakRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\",\n\x14HeroSacrificeRequest\x12\x14\n\x0chero_no_list\x18\x01 \x03(\x05')
 
 
 
@@ -61,16 +61,16 @@ _HEROUPGRADEREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='hero_no', full_name='app.gate.HeroUpgradeRequest.hero_no', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      name='hero_no_list', full_name='app.gate.HeroUpgradeRequest.hero_no_list', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='exp', full_name='app.gate.HeroUpgradeRequest.exp', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      name='exp_list', full_name='app.gate.HeroUpgradeRequest.exp_list', index=1,
+      number=2, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -84,7 +84,7 @@ _HEROUPGRADEREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=84,
-  serialized_end=134,
+  serialized_end=144,
 )
 
 
@@ -125,8 +125,8 @@ _HEROUPGRADEWITHITEMREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=136,
-  serialized_end=224,
+  serialized_start=146,
+  serialized_end=234,
 )
 
 
@@ -138,30 +138,9 @@ _HEROCOMPOSEREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='playerid', full_name='app.gate.HeroComposeRequest.playerid', index=0,
-      number=1, type=3, cpp_type=2, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hero_no', full_name='app.gate.HeroComposeRequest.hero_no', index=1,
+      name='hero_chip_no', full_name='app.gate.HeroComposeRequest.hero_chip_no', index=0,
       number=2, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='coin', full_name='app.gate.HeroComposeRequest.coin', index=2,
-      number=3, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='chipids', full_name='app.gate.HeroComposeRequest.chipids', index=3,
-      number=4, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -174,8 +153,8 @@ _HEROCOMPOSEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=226,
-  serialized_end=312,
+  serialized_start=236,
+  serialized_end=278,
 )
 
 
@@ -187,29 +166,8 @@ _HEROBREAKREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='playerid', full_name='app.gate.HeroBreakRequest.playerid', index=0,
-      number=1, type=3, cpp_type=2, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hero_no', full_name='app.gate.HeroBreakRequest.hero_no', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='break_level', full_name='app.gate.HeroBreakRequest.break_level', index=2,
-      number=3, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='coin', full_name='app.gate.HeroBreakRequest.coin', index=3,
-      number=4, type=5, cpp_type=1, label=2,
+      name='hero_no', full_name='app.gate.HeroBreakRequest.hero_no', index=0,
+      number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -223,8 +181,8 @@ _HEROBREAKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=314,
-  serialized_end=402,
+  serialized_start=280,
+  serialized_end=315,
 )
 
 
@@ -251,8 +209,8 @@ _HEROSACRIFICEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=404,
-  serialized_end=448,
+  serialized_start=317,
+  serialized_end=361,
 )
 
 DESCRIPTOR.message_types_by_name['CommonRequest'] = _COMMONREQUEST
