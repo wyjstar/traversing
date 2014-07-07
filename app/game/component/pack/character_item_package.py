@@ -24,7 +24,7 @@ class CharacterItemPackageComponent(Component):
                 item = Item(item_no, item_num)
                 self._items[item_no] = item
         else:
-            mm_item = tb_character_item_package.new({'id': self.owner.base_info.id, 'items': {}})
+            tb_character_item_package.new({'id': self.owner.base_info.id, 'items': {}})
 
     @property
     def items(self):
@@ -50,11 +50,11 @@ class CharacterItemPackageComponent(Component):
 
     def save_data(self):
         props = {}
-        for item_no, item in self._items.items():
+        for item_no, item in self._items.iteritems():
             props[item_no] = item.num
 
         items_data = tb_character_item_package.getObj(self.owner.base_info.id)
-        items_data.update_multi(props)
+        items_data.update('items', props)
 
 
 

@@ -20,3 +20,11 @@ tb_character_item_package.insert()
 # 用户阵容信息
 tb_character_line_up = MAdmin('tb_character_line_up', 'id')
 tb_character_line_up.insert()
+
+# 用户装备列表
+tb_character_equipments = MAdmin('tb_character_equipments', 'id')
+tb_character_equipments.insert()
+
+# 装备信息表
+tb_equipment_info = MAdmin('tb_equipment_info', 'equipment_id')
+tb_equipment_info.insert()
