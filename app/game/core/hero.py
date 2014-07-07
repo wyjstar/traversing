@@ -45,11 +45,11 @@ class Hero(object):
         self._exp = data.get("exp")
         self._break_level = data.get("break_level")
         self._equipment_ids = data.get("equipment_ids")  # 穿戴装备列表
-        hero_config = hero_config.get(self._hero_no)
-        if not hero_config:
+        _config = hero_config.get(self._hero_no)
+        if not _config:
             log.msg("武将%s配置文件初始化失败！" % self._hero_no)
         # print "@", hero_config
-        self._config = hero_config
+        self._config = _config
 
     @property
     def hero_no(self):

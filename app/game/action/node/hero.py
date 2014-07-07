@@ -13,7 +13,7 @@ from shared.db_opear.configs_data.game_configs import base_config, item_config, 
 
 
 @remote_service_handle
-def get_hero_list_101(dynamic_id, pro_data):
+def get_hero_list_101(dynamic_id, pro_data=None):
     """取得武将列表
     """
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)

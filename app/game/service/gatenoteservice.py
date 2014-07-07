@@ -8,9 +8,10 @@ from gfirefly.utils.services import CommandService
 
 
 remoteservice = CommandService("gateremote")
+
 try:
     GlobalObject().remote['gate']._reference.addService(remoteservice)
-except Exception as err:
+except Exception:
     pass
 
 
@@ -18,3 +19,4 @@ def remote_service_handle(target):
     """
     """
     remoteservice.mapTarget(target)
+
