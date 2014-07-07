@@ -201,6 +201,13 @@
                 "character_id":"simple",
                 "equipment_info": "complex"
             }
+        },
+        "tb_character_equipment_chip": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "chips": "complex"
+            }
         }
     }
 
