@@ -11,7 +11,6 @@ from app.proto_file import item_pb2
 def get_items_301(dynamic_id, pro_data):
     """取得全部道具
     """
-    print 'items 301'
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
     game_items = player.item_package.items
     items = item_pb2.ItemsResponse()

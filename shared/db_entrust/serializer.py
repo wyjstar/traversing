@@ -23,7 +23,6 @@ class SerializerMetaClass(type):
                 for attr in model_default_config:
                     setattr(result, attr, model_default_config[attr])
             if name in model_config:
-                print 'model_config[name]:', model_config[name]
                 for attr in model_config[name]:
                     setattr(result, attr, model_config[name][attr])
 
@@ -39,7 +38,6 @@ class Serializer(object):
             data: dict对象
         """
         columns = self.def_attrs
-        print 'all +++++++++++++++++++++++++++++++++++++', self.def_attrs
         for attr in columns:
             if attr in data:
                 if columns[attr] == "simple":

@@ -172,8 +172,14 @@
                 "id":"simple",
                 "items": "complex"
             }
+        },
+        "tb_character_line_up": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "line_up": "complex"
+            }
         }
-
     }
 
 

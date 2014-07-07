@@ -2,6 +2,7 @@
 """
 created by server on 14-6-4下午3:04.
 """
+from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
 from gtwisted.utils import log
 from app.game.core.character.Character import Character
@@ -35,6 +36,7 @@ class PlayerCharacter(Character):
         self._finance = CharacterFinanceComponent(self)  # 金币
         self._hero_chip_list = CharacterHeroChipComponent(self)  # 武将碎片
         self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
+        self._line_up = CharacterLineUpComponent(self)  # 阵容
 
         self._mmode = None
 
@@ -49,16 +51,17 @@ class PlayerCharacter(Character):
         if not character_mmode:
             log.err("初始化玩家角色出错,mmode==None！")
 
-        if not data:
-            log.msg("Init_player %s error!" + str(self.base_info.id))
-            return
+        # if not data:
+        #     log.msg("Init_player %s error!" + str(self.base_info.id))
+        #     return
         #------------初始化角色基础信息组件---------
 
         self.base_info.base_name = character_mmode.get('data').get('nickname')  #初始化基本信息
         self._hero_list.init_hero_list(pid)  # 初始化武将列表
         self._item_package.init_data()
+        self._line_up.init_data()
 
-        retrun
+        return
         self.finance.init_data(character_mmode)  #初始化金币
         self._hero_chip_list.init_hero_chip_list(pid)  #初始化武将碎片
 

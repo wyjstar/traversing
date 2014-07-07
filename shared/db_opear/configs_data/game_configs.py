@@ -32,7 +32,6 @@ def get_config_value(config_key):
     data = {}
     for item in result:
         data[item['config_key']] = cPickle.loads(item['config_value'])
-        #print "data type", type(data)
     return data
 
 
@@ -82,9 +81,6 @@ for config_name in all_config_name.keys():
             continue
         objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
         exec(config_name + '=objs')
-        #
-        # print hero
-        # print hero_exp
 
 # def init():
 #     hostname = "127.0.0.1"  #  要连接的数据库主机名

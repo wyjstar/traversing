@@ -18,9 +18,6 @@ def login_chat_1(command_id, dynamic_id, request_proto):
     character_id = argument.owner.id
     character_nickname = argument.owner.nickname
 
-    print 'character_id:',character_id
-    print 'character_nickname:', character_nickname
-
     result = localservice.callTarget(command_id, character_id, dynamic_id, character_nickname)
     response.result = result
     return response.SerializeToString()
