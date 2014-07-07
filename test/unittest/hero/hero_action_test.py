@@ -3,13 +3,10 @@
 created by server on 14-7-4上午10:16.
 """
 
+from test.unittest.init_test_data import init
+init()
 import unittest
-import test.unittest.hero.mock_config
-import test.unittest.hero.mock_redis
-import test.unittest.hero.mock_item
-import test.unittest.hero.mock_hero_chips
-
-from test.unittest.hero.mock_heros import player
+from test.unittest.init_data.mock_heros import player
 from app.game.action.node.hero import *
 from app.proto_file.hero_response_pb2 import *
 from app.game.service.gatenoteservice import remoteservice
@@ -91,7 +88,6 @@ class HeroActionTest(unittest.TestCase):
         request = HeroComposeRequest()
         request.hero_chip_no = 1000114
         hero_chip = player.hero_chip_list.get_chip(1000114)
-        print hero_chip.num
 
         str_response = remoteservice.callTarget(106, 1, request.SerializeToString())
         response = CommonResponse()
@@ -101,8 +97,6 @@ class HeroActionTest(unittest.TestCase):
         self.assertEqual(response.result, True, "return result error!")
         self.assertFalse(hero == None, "compose hero error!")
 
-
-        print hero_chip.num
         self.assertEqual(hero_chip.num, 280, "hero_chip error!%d_%d" % (hero_chip.num, 280))
 
 
