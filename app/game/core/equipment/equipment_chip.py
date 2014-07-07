@@ -19,8 +19,8 @@ class EquipmentChip(object):
 
     @property
     def chip_no(self):
-        return self.chip_no
+        return self._chip_no
 
     @property
     def chip_num(self):
-        return self.chip_num
+        return self._chip_num
