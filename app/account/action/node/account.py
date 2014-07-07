@@ -2,13 +2,14 @@
 """
 created by server on 14-6-5下午5:41.
 """
-from app.account.service.node.gateservice import node_service_handle
 import hashlib
+
+from app.account.service.node.gateservice import node_service_handle
 from app.account.model.sequence import get_id
 from app.account.redis_mode import tb_account
 from app.account.redis_mode import tb_account_mapping
 from app.account.redis_mode import tb_name_mapping
-from gfirefly.utils.pyuuid import get_uuid
+from shared.utils.pyuuid import get_uuid
 
 
 @node_service_handle

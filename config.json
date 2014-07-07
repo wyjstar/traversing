@@ -179,6 +179,21 @@
                 "id":"simple",
                 "line_up": "complex"
             }
+        },
+        "tb_character_equipments": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "equipments": "complex"
+            }
+        },
+        "tb_equipment_info": {
+            "pkey_field": "equipment_id",
+            "def_attrs": {
+                "equipment_id":"simple",
+                "character_id":"simple",
+                "equipment_info": "complex"
+            }
         }
     }
 

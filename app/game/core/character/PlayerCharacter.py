@@ -3,6 +3,7 @@
 created by server on 14-6-4下午3:04.
 """
 from app.game.component.character_line_up import CharacterLineUpComponent
+from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
 from gtwisted.utils import log
 from app.game.core.character.Character import Character
@@ -37,6 +38,7 @@ class PlayerCharacter(Character):
         self._hero_chip_list = CharacterHeroChipComponent(self)  # 武将碎片
         self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
         self._line_up = CharacterLineUpComponent(self)  # 阵容
+        self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
 
         self._mmode = None
 
@@ -60,6 +62,7 @@ class PlayerCharacter(Character):
         self._hero_list.init_hero_list(pid)  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
+        self._equipment.init_data()
 
         return
         self.finance.init_data(character_mmode)  #初始化金币
