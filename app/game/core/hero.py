@@ -25,11 +25,9 @@ class Hero(object):
         self._break_level = 0
         self._equipment_ids = []
         self._mmode = mmode
-        self._config = None
 
     def init_data(self):
         if not self._mmode:
-            log.msg("mmode=None 武将初始化数据为空！")
             return
         data = self._mmode.get('data')
         print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
@@ -39,11 +37,7 @@ class Hero(object):
         self._exp = hero_property.get("exp")
         self._break_level = hero_property.get("break_level")
         self._equipment_ids = hero_property.get("equipment_ids")  # 穿戴装备列表
-        _config = hero_config.get(self._hero_no)
-        if not _config:
-            log.msg("武将%s配置文件初始化失败！" % self._hero_no)
-        # print "@", hero_config
-        self._config = _config
+
 
     @property
     def hero_no(self):
@@ -68,7 +62,6 @@ class Hero(object):
     @exp.setter
     def exp(self, value):
         self._exp = value
-        print "+++++++?", type(self._exp)
 
     @property
     def break_level(self):
@@ -89,6 +82,10 @@ class Hero(object):
     @property
     def config(self):
         return self._config
+
+    @config.setter
+    def config(self, value):
+        self._config = value
 
     @property
     def mmode(self):
