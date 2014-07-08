@@ -1,11 +1,30 @@
-DROP TABLE IF EXISTS `tb_character_info`;
+/*
+Navicat MySQL Data Transfer
 
+Source Server         : travers
+Source Server Version : 50617
+Source Host           : 192.168.10.179:3306
+Source Database       : traversing_1
+
+Target Server Type    : MYSQL
+Target Server Version : 50617
+File Encoding         : 65001
+
+Date: 2014-07-08 14:50:59
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `tb_character_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_character_info`;
 CREATE TABLE `tb_character_info` (
   `uid` bigint(20) NOT NULL,
-  `nickname` char(50) NOT NULL,
-  `createdate` datetime NOT NULL,
-  `coin` int not null,
-  `hero_soul` int not null,
-  `gold` int not null,
- PRIMARY KEY (`uid`)
+  `nickname` varchar(128) DEFAULT '',
+  `coin` bigint(20) NOT NULL DEFAULT '0',
+  `gold` bigint(20) NOT NULL DEFAULT '0',
+  `hero_soul` bigint(20) NOT NULL DEFAULT '0',
+  `level` int(11) NOT NULL DEFAULT '1',
+  `exp` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
