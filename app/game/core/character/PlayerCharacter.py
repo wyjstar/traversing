@@ -4,6 +4,7 @@ created by server on 14-6-4下午3:04.
 """
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
+from app.game.component.fiance.character_fiance_component import CharacterFinanceComponent
 from app.game.component.level.character_level import CharacterLevelComponent
 from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
@@ -12,7 +13,6 @@ from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
-from app.game.component.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 import json
 

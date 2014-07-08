@@ -1,48 +1,42 @@
-[2014-07-08 16:47:41.182604]
+[2014-07-08 16:50:24.078066]
 ERROR
 	Traceback (most recent call last):
-[2014-07-08 16:47:41.182771]
+[2014-07-08 16:50:24.078652]
 ERROR
 	  File "appmain.py", line 29, in <module>
-[2014-07-08 16:47:41.182929]
+[2014-07-08 16:50:24.080555]
 ERROR
 	    model_default_config=model_default_config, model_config=model_config)
-[2014-07-08 16:47:41.183052]
+[2014-07-08 16:50:24.080844]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 116, in config
-[2014-07-08 16:47:41.183295]
+[2014-07-08 16:50:24.080976]
 ERROR
 	    __import__(app)
-[2014-07-08 16:47:41.183423]
+[2014-07-08 16:50:24.081086]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/app/game1server.py", line 8, in <module>
-[2014-07-08 16:47:41.189335]
+[2014-07-08 16:50:24.081219]
 ERROR
 	    initapp.load_module()
-[2014-07-08 16:47:41.189427]
+[2014-07-08 16:50:24.081746]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/app/game/initapp.py", line 9, in load_module
-[2014-07-08 16:47:41.189555]
+[2014-07-08 16:50:24.081888]
 ERROR
 	    from action.node import enter_scene
-[2014-07-08 16:47:41.189785]
+[2014-07-08 16:50:24.083763]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/app/game/action/node/enter_scene.py", line 6, in <module>
-[2014-07-08 16:47:41.189921]
+[2014-07-08 16:50:24.084001]
 ERROR
 	    from app.game.core.character.PlayerCharacter import PlayerCharacter
-[2014-07-08 16:47:41.190052]
+[2014-07-08 16:50:24.085224]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/app/game/core/character/PlayerCharacter.py", line 14, in <module>
-[2014-07-08 16:47:41.190184]
+	  File "/home/server/PycharmProjects/traversing/app/game/core/character/PlayerCharacter.py", line 15, in <module>
+[2014-07-08 16:50:24.085422]
 ERROR
-	    from app.game.component.character_heros import CharacterHerosComponent
-[2014-07-08 16:47:41.190320]
+	    from app.game.component.character_fiance_component import CharacterFinanceComponent
+[2014-07-08 16:50:24.087404]
 ERROR
-	  File "/home/server/PycharmProjects/traversing/app/game/component/character_heros.py", line 7, in <module>
-[2014-07-08 16:47:41.190565]
-ERROR
-	    from app.game.redis_mode import tb_character_hero, tb_character_heros
-[2014-07-08 16:47:41.190764]
-ERROR
-	ImportError: cannot import name tb_character_heros
+	ImportError: No module named character_fiance_component
