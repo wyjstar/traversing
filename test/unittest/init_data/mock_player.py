@@ -11,4 +11,5 @@ if not PlayersManager().get_player_by_id(1):
     player = PlayerCharacter(1, dynamic_id=1, status=0)
     player.finance.coin = 30000
     player.finance.hero_soul = 20000
+
     PlayersManager().add_player(player)

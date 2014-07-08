@@ -5,7 +5,7 @@ created by server on 14-6-25下午5:27.
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config
 from gtwisted.utils import log
-
+import cPickle
 
 class Hero(object):
     """武将类"""
@@ -58,6 +58,7 @@ class Hero(object):
     @hero_no.setter
     def hero_no(self, value):
         self._hero_no = value
+        self.save_data()
 
     @property
     def level(self):
@@ -66,7 +67,7 @@ class Hero(object):
     @level.setter
     def level(self, value):
         self._level = value
-        self._mmode.update('level', value)
+        self.save_data()
 
     @property
     def exp(self):
@@ -75,7 +76,7 @@ class Hero(object):
     @exp.setter
     def exp(self, value):
         self._exp = value
-        self._mmode.update('exp', self._exp)
+        self.save_data()
 
     @property
     def break_level(self):
@@ -84,7 +85,7 @@ class Hero(object):
     @break_level.setter
     def break_level(self, value):
         self._break_level = value
-        self._mmode.update('break_level', self._break_level)
+        self.save_data()
 
     @property
     def equipment_ids(self):
@@ -93,11 +94,19 @@ class Hero(object):
     @equipment_ids.setter
     def equipment_ids(self, value):
         self._equipment_ids = value
-        self._mmode.update('equipment_ids', self._equipment_ids)
+        self.save_data()
 
     @property
     def config(self):
         return self._config
+
+    @property
+    def mmode(self):
+        return self._mmode
+
+    @mmode.setter
+    def mmode(self, value):
+        self._mmode = value
 
     def get_all_exp(self):
         """根据等级+当前等级经验，得到总经验"""
@@ -123,6 +132,18 @@ class Hero(object):
         self.level = level
         self.exp = temp_exp
         return level, temp_exp
+
+    def save_data(self):
+        hero_property = {
+            'hero_no': self._hero_no,
+            'level': self._level,
+            'exp': self._exp,
+            'break_level': self._break_level,
+            'equipment_ids': cPickle.dumps(self._equipment_ids)
+        }
+        self._mmode.update('property', hero_property)
+
+
 
 
 

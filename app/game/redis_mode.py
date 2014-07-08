@@ -7,6 +7,9 @@ from shared.db_entrust.redis_mode import MAdmin
 tb_character_info = MAdmin('tb_character_info', 'uid')
 tb_character_info.insert()
 
+tb_character_heros = MAdmin('tb_character_heros', 'id')
+tb_character_heros.insert()
+
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
 
