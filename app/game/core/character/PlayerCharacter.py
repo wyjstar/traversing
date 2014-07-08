@@ -38,8 +38,8 @@ class PlayerCharacter(Character):
         self._hero_chip_list = CharacterHeroChipComponent(self)  # 武将碎片
         self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
         self._line_up = CharacterLineUpComponent(self)  # 阵容
-        #self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
-        #self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
+        self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
+        self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
 
         self._mmode = None
 
@@ -62,8 +62,8 @@ class PlayerCharacter(Character):
         self._hero_list.init_hero_list(pid)  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
-        #self._equipment.init_data()
-        #self._equipment_chip.init_data()
+        self._equipment.init_data()
+        self._equipment_chip.init_data()
 
         return
         self.finance.init_data(character_mmode)  #初始化金币
