@@ -18,7 +18,7 @@ def get_hero_list_101(dynamic_id, pro_data=None):
     """
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
     response = HeroListResponse()
-    for hero in player.hero_list.get_heros():
+    for hero in player.hero_component.get_heros():
         hero_pb = response.hero_list.add()
         hero_pb.hero_no = hero.hero_no
         hero_pb.level = hero.level
@@ -40,7 +40,7 @@ def hero_upgrade_102(dynamicid, data):
     player = PlayersManager().get_player_by_dynamic_id(dynamicid)
 
     for i in range(len(hero_no_list)):
-        hero = player.hero_list.get_hero_by_no(hero_no_list[i])
+        hero = player.hero_component.get_hero_by_no(hero_no_list[i])
         exp = exp_list[i]
         hero.upgrade(exp)
 
@@ -70,7 +70,7 @@ def hero_upgrade_with_item_103(dynamicid, data):
         return response.SerializeToString()
 
     exp = item_config.get(exp_item_no).get('func_args')
-    hero = player.hero_list.get_hero_by_no(hero_no)
+    hero = player.hero_component.get_hero_by_no(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)
 
@@ -87,7 +87,7 @@ def hero_break_104(dynamicid, data):
     hero_no = args.hero_no
     player = PlayersManager().get_player_by_dynamic_id(dynamicid)
 
-    hero = player.hero_list.get_hero_by_no(hero_no)
+    hero = player.hero_component.get_hero_by_no(hero_no)
     response = CommonResponse()
     # 获取该武将突破所需的消耗
     coin = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level, 'coin')
@@ -107,7 +107,7 @@ def hero_break_104(dynamicid, data):
         response.message = "突破丹不足！"
         return response.SerializeToString()
 
-    hero_chip = player.hero_chip_list.get_chip(hero_chip_no)
+    hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
     print "hero_chip", hero_chip, hero_chip_no, hero_chip_num
     if not hero_chip or hero_chip_num > hero_chip.num:
         response.result = False
@@ -130,11 +130,11 @@ def hero_sacrifice_105(dynamicid, data):
     args.ParseFromString(data)
 
     player = PlayersManager().get_player_by_dynamic_id(dynamicid)
-    heros = player.hero_list.get_heros_by_nos(args.hero_no_list)
+    heros = player.hero_component.get_heros_by_nos(args.hero_no_list)
     total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
 
     # remove hero
-    player.hero_list.remove_heros_by_nos(args.hero_no_list)
+    player.hero_component.remove_heros_by_nos(args.hero_no_list)
     response = HeroSacrificeResponse()
     response.hero_soul = total_hero_soul
     response.exp_item_no = exp_item_no
@@ -183,7 +183,7 @@ def hero_compose_106(dynamicid, data):
 
     hero_no = hero_chip_config.get(hero_chip_no).hero_no
     need_num = hero_chip_config.get(hero_chip_no).need_num
-    hero_chip = player.hero_chip_list.get_chip(hero_chip_no)
+    hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
 
     # 服务器校验
     if hero_chip.num < need_num:
@@ -192,7 +192,7 @@ def hero_compose_106(dynamicid, data):
         return response.SerializeToString()
 
     print "hero_no", hero_no
-    if player.hero_list.contain_hero(hero_no):
+    if player.hero_component.contain_hero(hero_no):
         response.result = False
         response.message = "武将已存在，合成失败！"
         return response.SerializeToString()
@@ -200,7 +200,7 @@ def hero_compose_106(dynamicid, data):
     hero = Hero()
     hero.init_data()
     hero.hero_no = hero_no
-    player.hero_list.add_hero(hero)
+    player.hero_component.add_hero(hero)
 
     hero_chip.consume(need_num)  # 消耗碎片
 

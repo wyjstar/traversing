@@ -12,9 +12,9 @@ from app.game.core.hero import Hero
 from app.game.core.hero_chip import HeroChip
 from app.game.redis_mode import tb_character_info, tb_character_hero_chip
 from shared.utils.const import const
-from app.game.component.character_herolist import CharacterHeroListComponent
+from app.game.component.character_heros import CharacterHerosComponent
 from app.game.component.character_fiance_component import CharacterFinanceComponent
-from app.game.component.character_hero_chip import CharacterHeroChipComponent
+from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 import json
 
 
@@ -33,9 +33,9 @@ class PlayerCharacter(Character):
         #--------角色的各个组件类------------
         # TODO
 
-        self._hero_list = CharacterHeroListComponent(self)  # 武将列表
+        self._hero_component = CharacterHerosComponent(self)  # 武将列表
         self._finance = CharacterFinanceComponent(self)  # 金币
-        self._hero_chip_list = CharacterHeroChipComponent(self)  # 武将碎片
+        self._hero_chip_component = CharacterHeroChipsComponent(self)  # 武将碎片
         self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
         self._line_up = CharacterLineUpComponent(self)  # 阵容
         self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
@@ -53,13 +53,10 @@ class PlayerCharacter(Character):
         character_mmode = tb_character_info.getObj(pid)
         if not character_mmode:
             log.err("初始化玩家角色出错,mmode==None！")
-        # if not data:
-        #     log.msg("Init_player %s error!" + str(self.base_info.id))
-        #     return
-        #------------初始化角色基础信息组件---------
 
+        #------------初始化角色基础信息组件---------
         self.base_info.base_name = character_mmode.get('data').get('nickname')  #初始化基本信息
-        self._hero_list.init_hero_list(pid)  # 初始化武将列表
+        self._hero_component.init_heros(pid)  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
         self._equipment.init_data()
@@ -67,15 +64,15 @@ class PlayerCharacter(Character):
 
         return
         self.finance.init_data(character_mmode)  #初始化金币
-        self._hero_chip_list.init_hero_chip_list(pid)  #初始化武将碎片
+        self._hero_chip_list.init_hero_chips(pid)  #初始化武将碎片
 
     @property
-    def hero_list(self):
-        return self._hero_list
+    def hero_component(self):
+        return self._hero_component
 
-    @hero_list.setter
-    def hero_list(self, value):
-        self._hero_list = value
+    @hero_component.setter
+    def hero_component(self, value):
+        self._hero_component = value
 
     @property
     def finance(self):
@@ -86,12 +83,12 @@ class PlayerCharacter(Character):
         self._finance = value
 
     @property
-    def hero_chip_list(self):
-        return self._hero_chip_list
+    def hero_chip_component(self):
+        return self._hero_chip_component
 
-    @hero_chip_list.setter
-    def hero_chip_list(self, value):
-        self._hero_chip_list = value
+    @hero_chip_component.setter
+    def hero_chip_component(self, value):
+        self._hero_chip_component = value
 
     @property
     def item_package(self):

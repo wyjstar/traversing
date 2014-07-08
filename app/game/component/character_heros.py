@@ -9,14 +9,14 @@ from gtwisted.utils import log
 import cPickle
 
 
-class CharacterHeroListComponent(Component):
+class CharacterHerosComponent(Component):
     """武将列表类"""
 
     def __init__(self, owner):
-        super(CharacterHeroListComponent, self).__init__(owner)
+        super(CharacterHerosComponent, self).__init__(owner)
         self._heros = {}
 
-    def init_hero_list(self, pid):
+    def init_heros(self, pid):
         character_heros = tb_character_heros.getObjData(pid)
         if not character_heros:
             "没有武将列表数据"

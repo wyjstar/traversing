@@ -24,10 +24,10 @@ class HeroTest(unittest.TestCase):
         hero.break_level = 2
         hero.exp = 1
         hero.equipment_ids = []
-        player.hero_list.add_hero(hero)
-        length = len(player.hero_list.get_heros())
+        player.hero_component.add_hero(hero)
+        length = len(player.hero_component.get_heros())
         self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
-        hero = player.hero_list.get_hero_by_no(10011)
+        hero = player.hero_component.get_hero_by_no(10011)
         self.assertFalse(hero == None, 'add error!')
         self.assertEqual(hero.level, 11)
         self.assertEqual(hero.break_level, 2)
@@ -39,9 +39,9 @@ class HeroTest(unittest.TestCase):
         length = len(heros.get('hero_ids'))
         self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
 
-        hero_id = player.hero_list.get_hero_id(10011)
+        hero_id = player.hero_component.get_hero_id(10011)
         hero_in_redis = tb_character_hero.getObjData(hero_id)
-        hero = player.hero_list.get_hero_by_no(10011)
+        hero = player.hero_component.get_hero_by_no(10011)
         self.assertEqual(hero_in_redis.get('character_id'), 1)
 
         hero_property = hero_in_redis.get('property')
@@ -51,8 +51,8 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(cPickle.loads(hero_property.get('equipment_ids')), [])
 
     def remove_hero_test(self):
-        player.hero_list.remove_hero(10001)
-        hero = player.hero_list.get_hero_by_no(10001)
+        player.hero_component.remove_hero(10001)
+        hero = player.hero_component.get_hero_by_no(10001)
         self.assertEqual(hero, None)
 
         #redis
@@ -61,25 +61,25 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
 
     def get_all_exp_test(self):
-        hero = player.hero_list.get_hero_by_no(10001)
+        hero = player.hero_component.get_hero_by_no(10001)
         all_exp = hero.get_all_exp()
         self.assertEqual(all_exp, 5501, "get_all_exp_test error!%d_%d" % (all_exp, 5501))
 
     def upgrade_test(self):
-        hero = player.hero_list.get_hero_by_no(10001)
+        hero = player.hero_component.get_hero_by_no(10001)
         hero.upgrade(3000)
         self.assertEqual(hero.level, 13, "error!%d_%d" % (hero.level, 13))
         self.assertEqual(hero.exp, 701, "error!%d_%d" % (hero.exp, 701))
 
     def save_data_test(self):
-        hero = player.hero_list.get_hero_by_no(10001)
+        hero = player.hero_component.get_hero_by_no(10001)
         hero.level = 10
         hero.break_level = 11
         hero.exp = 13
         hero.equipment_ids = [1, 2]
         hero.save_data()
 
-        hero_id = player.hero_list.get_hero_id(10001)
+        hero_id = player.hero_component.get_hero_id(10001)
         hero_in_redis = tb_character_hero.getObjData(hero_id)
         hero_property = hero_in_redis.get('property')
         self.assertEqual(hero_property.get('level'), 10)

@@ -28,9 +28,9 @@ hero3.exp = 3
 hero3.equipment_ids = []
 
 
-player.hero_list.add_hero(hero1)
-player.hero_list.add_hero(hero2)
-player.hero_list.add_hero(hero3)
+player.hero_component.add_hero(hero1)
+player.hero_component.add_hero(hero2)
+player.hero_component.add_hero(hero3)
 
 print "hero1", hero1.hero_no
 print "hero2", hero2.hero_no

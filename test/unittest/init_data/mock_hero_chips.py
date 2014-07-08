@@ -13,5 +13,5 @@ hero_chip2 = HeroChip(1000114, 300)
 data = {'id': 1, 'hero_chips': ''}
 tb_character_hero_chip.new(data)
 
-player.hero_chip_list.add_chip(hero_chip1)
-player.hero_chip_list.add_chip(hero_chip2)
+player.hero_chip_component.add_chip(hero_chip1)
+player.hero_chip_component.add_chip(hero_chip2)

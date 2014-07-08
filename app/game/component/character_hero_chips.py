@@ -8,10 +8,10 @@ from app.game.redis_mode import tb_character_hero_chip, tb_character_info
 from gtwisted.utils import log
 
 
-class CharacterHeroChipComponent(Component):
+class CharacterHeroChipsComponent(Component):
     """武将碎片组件"""
     def __init__(self, owner):
-        super(CharacterHeroChipComponent, self).__init__(owner)
+        super(CharacterHeroChipsComponent, self).__init__(owner)
         self._chips = {}
 
     def init_hero_chips(self, pid):
@@ -22,7 +22,7 @@ class CharacterHeroChipComponent(Component):
                 hero_chip = HeroChip(no, num)
                 self._chips[no] = hero_chip
         else:
-            mm_item = tb_character_hero_chip.new({'id': self.owner.base_info.id, 'items': {}})
+            tb_character_hero_chip.new({'id': self.owner.base_info.id, 'hero_chips': {}})
 
     def get_chip(self, chip_no):
         return self._chips.get(chip_no)
