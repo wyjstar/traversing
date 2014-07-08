@@ -16,6 +16,7 @@
 -->
 <!DOCTYPE cobar:schema SYSTEM "schema.dtd">
 <cobar:schema xmlns:cobar="http://cobar.alibaba.com/">
+f
   <!-- schema定义 -->
   <schema name="db_traversing">
     <table name="configs" dataNode="master"/>

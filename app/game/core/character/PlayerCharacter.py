@@ -17,7 +17,6 @@ from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 import json
 
 
-
 class PlayerCharacter(Character):
     """玩家角色类
     """
