@@ -4,18 +4,18 @@ created by server on 14-6-4下午3:04.
 """
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
+from app.game.component.level.character_level import CharacterLevelComponent
 from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
 from gtwisted.utils import log
 from app.game.core.character.Character import Character
-from app.game.core.hero import Hero
-from app.game.core.hero_chip import HeroChip
-from app.game.redis_mode import tb_character_info, tb_character_hero_chip
+from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
 from app.game.component.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 import json
+
 
 
 class PlayerCharacter(Character):
@@ -40,6 +40,7 @@ class PlayerCharacter(Character):
         self._line_up = CharacterLineUpComponent(self)  # 阵容
         self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
         self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
+        self._level = CharacterLevelComponent(self)  # 等级
 
         self._mmode = None
 
@@ -50,21 +51,45 @@ class PlayerCharacter(Character):
         """初始化角色信息
         """
         pid = self.base_info.id
-        character_mmode = tb_character_info.getObj(pid)
-        if not character_mmode:
-            log.err("初始化玩家角色出错,mmode==None！")
+
+        character_info = tb_character_info.getObjData(pid)
+        if not character_info:
+            log.msg("Init_player %s error!" + str(pid))
+
+        #------------角色信息表数据---------------
+        nickname = character_info['nickname']
+        coin = character_info['coin']
+        gold = character_info['gold']
+        hero_soul = character_info['hero_soul']
+        level = character_info['level']
+        exp = character_info['exp']
 
         #------------初始化角色基础信息组件---------
-        self.base_info.base_name = character_mmode.get('data').get('nickname')  #初始化基本信息
-        self._hero_component.init_heros(pid)  # 初始化武将列表
+        self.base_info.base_name = nickname  # 角色昵称
+
+        #------------初始化角色货币信息------------
+        self._finance.coin = coin
+        self._finance.gold = gold
+        self._finance.hero_soul = hero_soul
+
+        #------------初始化角色等级信息------------
+        self._level.level = level
+        self._level.exp = exp
+
+        #------------初始化角色其他组件------------
+        self._hero_list.init_hero_list(pid)  # 初始化武将列表
+
+		self._hero_component.init_heros(pid)  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
         self._equipment.init_data()
         self._equipment_chip.init_data()
 
         return
+
         self.finance.init_data(character_mmode)  #初始化金币
         self._hero_chip_list.init_hero_chips(pid)  #初始化武将碎片
+
 
     @property
     def hero_component(self):

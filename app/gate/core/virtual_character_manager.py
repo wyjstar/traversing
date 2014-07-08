@@ -32,41 +32,32 @@ class VCharacterManager:
         character_id = self.client_character.get(dynamic_id)
         return self.get_by_id(character_id)
 
-    # def get_character_by_clientid(self, clientid):
-    #     return self.client_character.get(clientid)
+    def drop_by_dynamic_id(self, dynamic_id):
+        """
+        """
+        character = self.get_by_dynamic_id(dynamic_id)
+        try:
+            del self.character_client[character.character_id]
+        finally:
+            pass
+        try:
+            del self.client_character[dynamic_id]
+        finally:
+            pass
 
-    # def drop_character_by_clientid(self, clientid):
-    #     """
-    #     下线时删除character
-    #     :param clientid: dynamicid
-    #     :return:
-    #     """
-    #     character = self.get_character_by_clientid(clientid)
-    #     try:
-    #         del self.character_client[character.characterid]
-    #     finally:
-    #         pass
-    #     try:
-    #         del self.client_character[character.dynamicid]
-    #     finally:
-    #         pass
-    #
-    # def drop_character_by_characterid(self, characterid):
-    #     """
-    #     下线时删除character
-    #     :param characterid: characterid
-    #     :return:
-    #     """
-    #     character = self.get_character_by_characterid(characterid)
-    #     try:
-    #         del self.character_client[character.characterid]
-    #     finally:
-    #         pass
-    #     try:
-    #         del self.client_character[character.dynamicid]
-    #     finally:
-    #         pass
-    #
+    def drop_by_id(self, character_id):
+        """
+        """
+        character = self.get_by_id(character_id)
+        try:
+            del self.character_client[character.character_id]
+        finally:
+            pass
+        try:
+            del self.client_character[character.dynamic_id]
+        finally:
+            pass
+
     def get_node_by_dynamic_id(self, dynamic_id):
         print self.character_client
         print self.client_character
@@ -76,24 +67,6 @@ class VCharacterManager:
             print character.__dict__
             return character.node
         return -1
-    #
-    # def get_node_by_clientid(self, clientid):
-    #     character = self.client_character.get(clientid)
-    #     if character:
-    #         return character.node
-    #     return -1
-    #
-    # def get_clientid_by_characterid(self, characterid):
-    #     character = self.character_client.get(characterid)
-    #     if character:
-    #         return character.dynamicid
-    #     return -1
-    #
-    # def get_character_id_by_clientid(self, clientid):
-    #     character = self.client_character.get(clientid)
-    #     if character:
-    #         return character.characterid
-    #     return -1
 
 
 

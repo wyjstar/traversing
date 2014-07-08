@@ -4,15 +4,15 @@ created by server on 14-6-10下午9:09.
 """
 from shared.db_entrust.redis_mode import MAdmin
 
+# 用户信息表
 tb_character_info = MAdmin('tb_character_info', 'uid')
 tb_character_info.insert()
 
-tb_character_heros = MAdmin('tb_character_heros', 'id')
-tb_character_heros.insert()
-
+# 用户英雄信息表
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
 
+# 用户英雄碎片信息表
 tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
 tb_character_hero_chip.insert()
 
