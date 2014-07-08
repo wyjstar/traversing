@@ -21,9 +21,13 @@
   <schema name="db_traversing">
     <table name="configs" dataNode="master"/>
     <table name="tb_test" dataNode="dn_traversing$0-3" rule="rule1" />
+    
     <table name="tb_character_info" dataNode="dn_traversing$0-3" rule="rule1" />
-    <table name="tb_char_hero" dataNode="dn_traversing$0-3" rule="rule2" />
-    <table name="tb_char_hero_chip" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_character_heros" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_character_hero" dataNode="dn_traversing$0-3" rule="rule3" /> 
+	<table name="tb_character_line_up" dataNode="dn_traversing$0-3" rule="rule2" /> 
+    <table name="tb_character_hero_chip" dataNode="dn_traversing$0-3" rule="rule3" />
+	<table name="tb_character_item_package" dataNode="dn_traversing$0-3" rule="rule1" />
     <table name="tb_account" dataNode="dn_account$0-7" rule="rule2" />
     <table name="tb_account_mapping" dataNode="dn_account$0-7" rule="rule2" />
     <table name="tb_name_mapping" dataNode="dn_account$0-7" rule="rule2" />
