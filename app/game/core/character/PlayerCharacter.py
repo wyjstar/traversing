@@ -79,7 +79,7 @@ class PlayerCharacter(Character):
         #------------初始化角色其他组件------------
         self._hero_list.init_hero_list(pid)  # 初始化武将列表
 
-		self._hero_component.init_heros(pid)  # 初始化武将列表
+        self._hero_component.init_heros(pid)  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
         self._equipment.init_data()
