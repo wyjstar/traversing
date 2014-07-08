@@ -121,6 +121,7 @@ class Hero(object):
 
         self.level = level
         self.exp = temp_exp
+        self.save_data()
         return level, temp_exp
 
     def save_data(self):

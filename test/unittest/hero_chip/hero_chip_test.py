@@ -15,12 +15,21 @@ class HeroChipTest(unittest.TestCase):
     def setUp(self):
         pass
 
-    def save_data_test(self):
-        hero_chip_component = CharacterHeroChipComponent(player)
+    def init_data_test(self):
         data = tb_character_hero_chip.getObjData(1)
         self.assertEqual(data.get('id'), 1, "player id error!")
         num = data.get('hero_chips').get(1000112)
         self.assertEqual(num, 300, "hero_chip num error!%d_%d" % (num, 300))
+
+    def save_data_test(self):
+        hero_chip = player.hero_chip_list.get_chip(1000112)
+        hero_chip.num = 1000
+        player.hero_chip_list.save_data()
+        data = tb_character_hero_chip.getObjData(1)
+        self.assertEqual(data.get('id'), 1, "player id error!")
+        num = data.get('hero_chips').get(1000112)
+        self.assertEqual(num, 1000, "hero_chip num error!%d_%d" % (num, 1000))
+
 
 
 
