@@ -13,6 +13,7 @@ hero1.break_level = 1
 hero1.exp = 1
 hero1.equipment_ids = []
 
+
 hero2 = Hero()
 hero2.hero_no = 10002
 hero2.level = 12

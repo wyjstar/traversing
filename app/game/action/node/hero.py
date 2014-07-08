@@ -11,6 +11,7 @@ from app.proto_file.hero_response_pb2 import CommonResponse, HeroListResponse, \
 from app.game.core.PlayersManager import PlayersManager
 from shared.db_opear.configs_data.game_configs import base_config, item_config, hero_breakup_config, hero_chip_config
 from app.game.core.hero import Hero
+from shared.db_opear.configs_data.game_configs import hero_config
 
 @remote_service_handle
 def get_hero_list_101(dynamic_id, pro_data=None):
@@ -114,9 +115,14 @@ def hero_break_104(dynamicid, data):
         response.message = "武将碎片不足！"
         return response.SerializeToString()
 
-    player.finance.consume_coin(coin)  # 消耗金币
+    player.finance.coin -= coin  # 消耗金币
+    player.finance.save_data()
+
     player.item_package.consume_item(break_pill_no, break_pill_num)  # 消耗突破丹
+    player.item_package.save_data()
+
     hero_chip.consume(hero_chip_num)  # 消耗碎片
+    player.hero_chip_component.save_data()
 
     # 3、返回
     response.result = True
@@ -154,7 +160,7 @@ def hero_sacrifice(heros):
     exp_item_num = 0
 
     for hero in heros:
-        hero_soul = hero.config.sacrifice_hero_soul
+        hero_soul = hero_config.get(hero.hero_no).sacrifice_hero_soul
         total_hero_soul += hero_soul
         exp = hero.get_all_exp()
         total_exp += exp
