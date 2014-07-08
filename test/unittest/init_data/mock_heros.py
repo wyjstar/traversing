@@ -10,21 +10,21 @@ hero1 = Hero()
 hero1.hero_no = 10001
 hero1.level = 11
 hero1.break_level = 1
-hero1.exp = 1,
+hero1.exp = 1
 hero1.equipment_ids = []
 
 hero2 = Hero()
 hero2.hero_no = 10002
 hero2.level = 12
 hero2.break_level = 2
-hero2.exp = 2,
+hero2.exp = 2
 hero2.equipment_ids = []
 
 hero3 = Hero()
 hero3.hero_no = 10003
 hero3.level = 13
 hero3.break_level = 3
-hero3.exp = 3,
+hero3.exp = 3
 hero3.equipment_ids = []
 
 

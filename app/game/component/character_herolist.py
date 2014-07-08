@@ -26,8 +26,8 @@ class CharacterHeroListComponent(Component):
             }
             tb_character_heros.new(data)
             return
-        str_hero_ids = character_heros.get('hero_ids')
-        hero_ids = cPickle.loads(str_hero_ids)
+        hero_ids = character_heros.get('hero_ids')
+        print "hero_ids", hero_ids
         heros = tb_character_hero.getObjList(hero_ids)
 
         for hero_mmode in heros:
@@ -68,9 +68,9 @@ class CharacterHeroListComponent(Component):
         hero_ids = []
         character_id = self.owner.base_info.id
         for hero_no in self._heros:
-            hero_ids.append(str(character_id)+'_'+str(hero_no))
+            hero_ids.append(self.get_hero_id(hero_no))
 
-        character_heros = tb_character_heros.getObjData(character_id)
+        character_heros = tb_character_heros.getObj(character_id)
         character_heros.update('hero_ids', hero_ids)
 
     def get_hero_id(self, hero_no):

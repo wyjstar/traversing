@@ -19,7 +19,6 @@ class Hero(object):
         :field _equipmentids: 装备IDs
         """
 
-        self._hero_id = ''
         self._hero_no = 0
         self._level = 0
         self._exp = 0
@@ -34,17 +33,12 @@ class Hero(object):
             return
         data = self._mmode.get('data')
         print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
-        print "level", data.get("level")
-        print "exp", data.get('exp')
-        print "no", data.get("hero_no")
-        print data.get("break_level")
-        print data.get("equipment_ids")
-        self._hero_id = data.get("id")
-        self._hero_no = data.get("hero_no")
-        self._level = data.get("level")
-        self._exp = data.get("exp")
-        self._break_level = data.get("break_level")
-        self._equipment_ids = data.get("equipment_ids")  # 穿戴装备列表
+        hero_property = data.get("property")
+        self._hero_no = hero_property.get("hero_no")
+        self._level = hero_property.get("level")
+        self._exp = hero_property.get("exp")
+        self._break_level = hero_property.get("break_level")
+        self._equipment_ids = hero_property.get("equipment_ids")  # 穿戴装备列表
         _config = hero_config.get(self._hero_no)
         if not _config:
             log.msg("武将%s配置文件初始化失败！" % self._hero_no)
@@ -58,7 +52,6 @@ class Hero(object):
     @hero_no.setter
     def hero_no(self, value):
         self._hero_no = value
-        self.save_data()
 
     @property
     def level(self):
@@ -67,7 +60,6 @@ class Hero(object):
     @level.setter
     def level(self, value):
         self._level = value
-        self.save_data()
 
     @property
     def exp(self):
@@ -76,7 +68,7 @@ class Hero(object):
     @exp.setter
     def exp(self, value):
         self._exp = value
-        self.save_data()
+        print "+++++++?", type(self._exp)
 
     @property
     def break_level(self):
@@ -85,7 +77,6 @@ class Hero(object):
     @break_level.setter
     def break_level(self, value):
         self._break_level = value
-        self.save_data()
 
     @property
     def equipment_ids(self):
@@ -94,7 +85,6 @@ class Hero(object):
     @equipment_ids.setter
     def equipment_ids(self, value):
         self._equipment_ids = value
-        self.save_data()
 
     @property
     def config(self):
@@ -142,19 +132,6 @@ class Hero(object):
             'equipment_ids': cPickle.dumps(self._equipment_ids)
         }
         self._mmode.update('property', hero_property)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
