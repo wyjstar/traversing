@@ -13,6 +13,7 @@ from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
+from app.game.component.fiance.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 import json
 
@@ -54,6 +55,7 @@ class PlayerCharacter(Character):
         character_info = tb_character_info.getObjData(pid)
         if not character_info:
             log.msg("Init_player %s error!" + str(pid))
+
 
         #------------角色信息表数据---------------
         nickname = character_info['nickname']
