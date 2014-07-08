@@ -18,7 +18,7 @@ class CharacterHerosComponent(Component):
     def init_heros(self, pid):
         character_heros = tb_character_heros.getObjData(pid)
         if not character_heros:
-            "没有武将列表数据"
+            # 没有武将列表数据
             data = {
                 'id': pid,
                 'hero_ids': cPickle.dumps([]),
@@ -26,7 +26,12 @@ class CharacterHerosComponent(Component):
             tb_character_heros.new(data)
             return
         hero_ids = character_heros.get('hero_ids')
+        hero_ids = cPickle.loads(hero_ids)
         print "hero_ids", hero_ids
+
+        if not hero_ids:
+            return
+
         heros = tb_character_hero.getObjList(hero_ids)
 
         for hero_mmode in heros:

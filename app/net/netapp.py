@@ -4,6 +4,7 @@ Created on 2013-8-14
 
 @author: lan (www.9miao.com)
 '''
+from app.proto_file import item_pb2
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.utils.services import CommandService
 from gtwisted.utils import log
@@ -41,5 +42,12 @@ def Forwarding_0(keyname,_conn,data):
     """
     log.msg("forwarding_0++++++++++++++++++++++++++++++++++++")
     dd = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
+    print 'dd:', dd
+    if keyname == 301:
+        items = item_pb2.ItemsResponse()
+        items.ParseFromString(dd)
+
+        print '#########3333333:', items.item
+
     return dd
 
