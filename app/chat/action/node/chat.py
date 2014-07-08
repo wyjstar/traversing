@@ -1,34 +1,53 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 created by server on 14-5-20下午8:33.
 """
-from app.chat.proto_file.chat import chat_pb2
-from app.chat.service.local.local_service import localservice
+from app.chat.core.chater_manager import ChaterManager
 from app.chat.service.node.chatgateservice import nodeservice_handle
+from app.proto_file.chat import chat_pb2
+from app.chat.service.node.chatgateservice import noderemote
 
 
 @nodeservice_handle
-def send_message_1002(command_id, dynamic_id, request_proto):
-    """发送消息
-    @param command_id: 协议号
-    @param dynamic_id: 动态ID
-    #param request_proto: 消息体
+def send_message_1002(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
+                      to_character_id, to_character_nickname):
+    """发送信息
+    @param character_nickname: 角色昵称
+    @param to_character_id: 私聊对象角色id
+    @param to_character_nickname: 私聊对象角色昵称
+    @param dynamic_id: int 客户端的id
+    @param character_id: int角色的id
+    @param room_id: int 聊天频道
+    @param content: str 聊天内容
+    @param command_id: 协议编号
     """
+    chater = ChaterManager().getchater_by_id(character_id)
+    ids = []
 
-    argument = chat_pb2.ChatConectingRequest()
-    argument.ParseFromString(request_proto)
-    response = chat_pb2.ChatResponse()
+    if not chater:
+        # TODO message 信息要补充
+        return {'result': False}
 
-    character_id = argument.owner.id
-    character_nickname = argument.owner.nickname
-    room_id = argument.channel
-    content = argument.content
-    to_character_id = argument.other.id
-    to_character_nickname = argument.other.nickname
+    if room_id == 1:  # 世界聊天频道
+        ids = ChaterManager().getall_dynamicid()
+        response = chat_pb2.chatMessageResponse()
+        response.channel = room_id
+        owner = response.owner
+        owner.id = character_id
+        owner.nickname = character_nickname
+        response.content = content
+        noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
+    # TODO message 公会频道
+    if room_id == 3:  # 私聊频道
+        other_chater = ChaterManager().getchater_by_id(to_character_id)
+        if not other_chater:
+            return {'result': False}
+        response = chat_pb2.chatMessageResponse()
+        response.channel = room_id
+        owner = response.owner
+        owner.id = character_id
+        owner.nickname = character_nickname
+        response.content = content
+        noderemote.callRemoteNotForResult('push_chat_message', [other_chater.dynamic_id], response.SerializeToString())
 
-    info = localservice.callTarget(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
-                                   to_character_id, to_character_nickname)
-    result = info.get('result', False)
-    response.result = result
-    return response.SerializeToString()
-
+    return {'result': True}

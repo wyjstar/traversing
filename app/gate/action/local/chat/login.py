@@ -2,13 +2,12 @@
 """
 created by server on 14-5-20下午12:11.
 """
+from app.gate.service.local.gateservice import local_service_handle
+from app.proto_file.chat import chat_pb2
+from gfirefly.server.globalobject import GlobalObject
 
-from app.chat.proto_file.chat import chat_pb2
-from app.chat.service.local.local_service import localservice
-from app.chat.service.node.chatgateservice import nodeservice_handle
 
-
-@nodeservice_handle
+@local_service_handle
 def login_chat_1001(command_id, dynamic_id, request_proto):
     """登录聊天服务器
     """
@@ -18,14 +17,15 @@ def login_chat_1001(command_id, dynamic_id, request_proto):
     character_id = argument.owner.id
     character_nickname = argument.owner.nickname
 
-    result = localservice.callTarget(command_id, character_id, dynamic_id, character_nickname)
+    result = GlobalObject().root.callChild('chat', command_id, \
+                                           character_id, dynamic_id, character_nickname)
     response.result = result
     return response.SerializeToString()
 
 
-@nodeservice_handle
-def logout_chat_1003(command_id, dynamic_id):
-    """登出聊天服务器
-    """
-    return localservice.callTarget(command_id, dynamic_id)
+# @nodeservice_handle
+# def logout_chat_1003(command_id, dynamic_id):
+#     """登出聊天服务器
+#     """
+#     return localservice.callTarget(command_id, dynamic_id)
 

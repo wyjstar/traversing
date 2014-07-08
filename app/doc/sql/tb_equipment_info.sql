@@ -19,7 +19,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_equipment_info`;
 CREATE TABLE `tb_equipment_info` (
-  `equipment_id` varchar(32) NOT NULL,
+  `id` varchar(32) NOT NULL,
   `character_id` bigint(20) NOT NULL,
   `equipment_info` mediumblob,
   PRIMARY KEY (`equipment_id`)

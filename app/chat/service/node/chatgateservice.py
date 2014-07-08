@@ -33,5 +33,5 @@ def nodeservice_handle(target):
     """
     nodeservice.mapTarget(target)
 
-noderemote = GlobalObject().remote['chatgate']
+noderemote = GlobalObject().remote['gate']
 noderemote._reference.addService(nodeservice)

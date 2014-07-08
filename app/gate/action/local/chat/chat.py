@@ -2,12 +2,12 @@
 """
 created by server on 14-5-20下午8:33.
 """
-from app.chat.proto_file.chat import chat_pb2
-from app.chat.service.local.local_service import localservice
-from app.chat.service.node.chatgateservice import nodeservice_handle
+from app.gate.service.local.gateservice import local_service_handle
+from app.proto_file.chat import chat_pb2
+from gfirefly.server.globalobject import GlobalObject
 
 
-@nodeservice_handle
+@local_service_handle
 def send_message_1002(command_id, dynamic_id, request_proto):
     """发送消息
     @param command_id: 协议号
@@ -26,8 +26,11 @@ def send_message_1002(command_id, dynamic_id, request_proto):
     to_character_id = argument.other.id
     to_character_nickname = argument.other.nickname
 
-    info = localservice.callTarget(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
-                                   to_character_id, to_character_nickname)
+    info = GlobalObject().root.callChild('chat', command_id, character_id, dynamic_id, room_id, content, \
+                                         character_nickname, to_character_id, to_character_nickname)
+
+    # info = localservice.callTarget(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
+    #                                to_character_id, to_character_nickname)
     result = info.get('result', False)
     response.result = result
     return response.SerializeToString()

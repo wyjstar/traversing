@@ -7,11 +7,10 @@ created by server on 14-6-23上午11:59.
 import struct
 
 from twisted.internet import reactor, protocol
-
-from shared.proto_file.player_response_pb2 import PlayerResponse
-from shared.proto_file import account_pb2
 from app.proto_file import item_pb2
-from app.proto_file.player_request_pb2 import CreatePlayerRequest, PlayerLoginResquest
+from app.proto_file import account_pb2
+from app.proto_file.player_request_pb2 import PlayerLoginResquest
+from app.proto_file.player_response_pb2 import PlayerResponse
 
 
 def sendData(sendstr,commandId):

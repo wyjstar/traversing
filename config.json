@@ -179,9 +179,9 @@
             }
         },
         "tb_equipment_info": {
-            "pkey_field": "equipment_id",
+            "pkey_field": "id",
             "def_attrs": {
-                "equipment_id":"simple",
+                "id":"simple",
                 "character_id":"simple",
                 "equipment_info": "complex"
             }

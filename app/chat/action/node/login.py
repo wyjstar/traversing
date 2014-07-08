@@ -2,30 +2,40 @@
 """
 created by server on 14-5-20下午12:11.
 """
-
-from app.chat.proto_file.chat import chat_pb2
-from app.chat.service.local.local_service import localservice
+from app.chat.core.chat_room_manager import ChatRoomManager
+from app.chat.core.chater_manager import ChaterManager
 from app.chat.service.node.chatgateservice import nodeservice_handle
 
 
 @nodeservice_handle
-def login_chat_1001(command_id, dynamic_id, request_proto):
+def login_chat_1001(command_id, character_id, dynamic_id, character_nickname):
     """登录聊天服务器
+    @param dynamic_id: int 客户端的id
+    @param character_id: int角色的id
     """
-    argument = chat_pb2.LoginToChatRequest()
-    argument.ParseFromString(request_proto)
-    response = chat_pb2.ChatResponse()
-    character_id = argument.owner.id
-    character_nickname = argument.owner.nickname
-
-    result = localservice.callTarget(command_id, character_id, dynamic_id, character_nickname)
-    response.result = result
-    return response.SerializeToString()
+    character = ChaterManager().addchater_by_id(character_id)
+    if character:
+        ChaterManager().update_onland(character_id, dynamic_id)
+        character.name = character_nickname
+        ChatRoomManager().join_room(dynamic_id, character.room_id)
+    return True
 
 
 @nodeservice_handle
 def logout_chat_1003(command_id, dynamic_id):
     """登出聊天服务器
+    @param command_id:
+    @param dynamic_id:
     """
-    return localservice.callTarget(command_id, dynamic_id)
+    character_id = ChaterManager().getid_by_dynamicid(dynamic_id)
+
+    if not character_id:
+        return False
+
+    character = ChaterManager().getchater_by_id(character_id)
+    if character:
+        ChatRoomManager().leave_room(dynamic_id, character.room_id)
+        ChaterManager().update_outland(character.character_id, dynamic_id)
+
+    return True
 

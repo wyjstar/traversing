@@ -4,8 +4,7 @@ created by server on 14-6-25下午7:00.
 """
 from app.game.component.Component import Component
 from app.game.core.hero import Hero
-from app.game.redis_mode import tb_character_hero
-from gtwisted.utils import log
+from app.game.redis_mode import tb_character_hero, tb_character_heros
 import cPickle
 
 
