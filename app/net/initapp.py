@@ -10,7 +10,7 @@ from gfirefly.netconnect.datapack import DataPackProtoc
 
 def conn_lost(conn):
     dynamic_id = conn.transport.sessionno
-    GlobalObject().remote['gate'].callRemoteNotForResult("netconnlost", dynamic_id)
+    GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
 
 
 GlobalObject().netfactory.doConnectionLost = conn_lost

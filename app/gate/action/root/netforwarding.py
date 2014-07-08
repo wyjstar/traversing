@@ -4,6 +4,7 @@ Created on 2013-8-14
 
 @author: lan (www.9miao.com)
 """
+from app.gate.core.users_manager import UsersManager
 from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from gtwisted.utils import log
@@ -50,40 +51,42 @@ def forwarding(key, dynamic_id, data):
 #     else:
 #         node = vcharacter.node
 #     GlobalObject().root.callChildNotForResult(node, 99, pid, oprea_str)
-#
-#
-# def save_playerinfo_in_db(dynamicid):
-#     """将玩家信息写入数据库"""
-#     vcharacter = VCharacterManager().get_character_by_clientid(dynamicid)
-#     node = vcharacter.getNode()
-#     result = GlobalObject().root.callChild(node, 2, dynamicid)
-#     return result
-#
-#
-# def drop_client(dynamicid, vcharacter):
-#     """清理客户端的记录
-#     """
-#     node = vcharacter.node
-#     if node:  # 角色在场景中的处理
-#         SceneSerManager().drop_client(node, dynamicid)
-#
-#     VCharacterManager().drop_character_by_clientid(dynamicid)
-#
-#
-# @rootserviceHandle
-# def netconnlost(dynamicid):
-#     """客户端断开连接时的处理
-#     @param dynamicid: int 客户端的动态ID
-#     """
-    # vcharacter = VCharacterManager().get_character_by_clientid(dynamicid)
-    # if vcharacter and vcharacter.node > 0:  # 判断是否已经登入角色
-    #     #vcharacter.lock()  # 锁定角色
-    #     result = save_playerinfo_in_db(dynamicid)  # 保存角色,写入角色数据
-    #     if result:
-    #         drop_client(dynamicid, vcharacter)  # 清理客户端的数据
 
 
+def save_playerinfo_in_db(dynamic_id):
+    """
+    """
+    vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
+    node = vcharacter.node
+    result = GlobalObject().root.callChild(node, 602, dynamic_id)
+    return result
 
 
+def drop_client(dynamic_id, vcharacter):
+    """清理客户端的记录
+    """
+    node = vcharacter.node
+    if node:  # 角色在场景中的处理
+        SceneSerManager().drop_client(node, dynamic_id)
+
+    VCharacterManager().d(dynamic_id)
 
 
+@rootserviceHandle
+def net_conn_lost(dynamic_id):
+    """客户端断开连接时的处理
+    @param dynamic_id: int 客户端的动态ID
+    """
+    vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
+
+    print 'gate net conn lost:', vcharacter.__dict__
+
+    if vcharacter and vcharacter.node:
+        vcharacter.locked = True  # 锁定角色
+
+        result = save_playerinfo_in_db(dynamic_id)
+
+        if result:
+            pass
+    else:
+        UsersManager().drop_by_dynamic_id(dynamic_id)
