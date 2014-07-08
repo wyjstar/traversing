@@ -50,9 +50,6 @@ class PlayerCharacter(Character):
         """
         pid = self.base_info.id
         character_info = tb_character_info.getObjData(pid)
-
-        print 'character_info:', character_info
-
         if not character_info:
             log.msg("Init_player %s error!" + str(pid))
 

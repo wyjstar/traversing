@@ -154,16 +154,18 @@
                 "nickname": "simple"
             }
         },
-
+        "tb_character_heros": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "character_id": "simple",
+                "heros": "complex"
+            }
+        },
         "tb_character_hero": {
             "pkey_field": "id",
             "def_attrs": {
                 "character_id": "simple",
-                "hero_no": "simple",
-                "level": "simple",
-                "break_level": "simple",
-                "exp": "simple",
-                "equipment_ids": "simple"
+                "property": "complex"
             }
         },
         "tb_character_hero_chip": {
