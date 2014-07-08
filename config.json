@@ -19,12 +19,6 @@
             "app": "app.gateserver",
             "log": "app/logs/gate.log"
         },
-        "chatgate": {
-            "rootport": 10001,
-            "name": "chatgate",
-            "app": "app.chatgateserver",
-            "log": "app/logs/chatgate.log"
-        },
         "net": {
             "netport": 11009,
             "name": "net",
@@ -36,18 +30,6 @@
             ],
             "app": "app.netserver",
             "log": "app/logs/net.log"
-        },
-        "chatnet": {
-            "netport": 11010,
-            "name": "chatnet",
-            "remoteport": [
-                {
-                    "rootport": 10001,
-                    "rootname": "chatgate"
-                }
-            ],
-            "app": "app.chatnetserver",
-            "log": "app/logs/chatnet.log"
         },
         "game": {
             "remoteport": [
@@ -79,8 +61,8 @@
             "name": "chat",
             "remoteport": [
                 {
-                    "rootport": 10001,
-                    "rootname": "chatgate"
+                    "rootport": 10000,
+                    "rootname": "gate"
                 }
             ],
             "app": "app.chatserver",

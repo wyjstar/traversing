@@ -9,7 +9,7 @@ from app.chat.service.node.chatgateservice import noderemote
 
 
 @localservice_handle
-def send_message_2(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
+def send_message_1002(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
                    to_character_id, to_character_nickname):
     """发送信息
     @param character_nickname: 角色昵称

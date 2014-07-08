@@ -8,7 +8,7 @@ from app.chat.service.local.local_service import localservice_handle
 
 
 @localservice_handle
-def login_chat_1(command_id, character_id, dynamic_id, character_nickname):
+def login_chat_1001(command_id, character_id, dynamic_id, character_nickname):
     """登录聊天服务器
     @param dynamic_id: int 客户端的id
     @param character_id: int角色的id
@@ -22,7 +22,7 @@ def login_chat_1(command_id, character_id, dynamic_id, character_nickname):
 
 
 @localservice_handle
-def logout_chat_3(command_id, dynamic_id):
+def logout_chat_1003(command_id, dynamic_id):
     """登出聊天服务器
     @param command_id:
     @param dynamic_id:

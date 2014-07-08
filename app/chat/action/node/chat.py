@@ -8,7 +8,7 @@ from app.chat.service.node.chatgateservice import nodeservice_handle
 
 
 @nodeservice_handle
-def send_message_2(command_id, dynamic_id, request_proto):
+def send_message_1002(command_id, dynamic_id, request_proto):
     """发送消息
     @param command_id: 协议号
     @param dynamic_id: 动态ID

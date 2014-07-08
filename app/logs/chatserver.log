@@ -1,0 +1,36 @@
+[2014-07-08 16:47:40.968856]
+ERROR
+	Traceback (most recent call last):
+[2014-07-08 16:47:40.968984]
+ERROR
+	  File "appmain.py", line 29, in <module>
+[2014-07-08 16:47:40.969084]
+ERROR
+	    model_default_config=model_default_config, model_config=model_config)
+[2014-07-08 16:47:40.969224]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 116, in config
+[2014-07-08 16:47:40.969457]
+ERROR
+	    __import__(app)
+[2014-07-08 16:47:40.969672]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/app/chatserver.py", line 7, in <module>
+[2014-07-08 16:47:40.969829]
+ERROR
+	    initapp.load_module()
+[2014-07-08 16:47:40.969930]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/app/chat/initapp.py", line 22, in load_module
+[2014-07-08 16:47:40.970061]
+ERROR
+	    from service.node import chatgateservice
+[2014-07-08 16:47:40.970174]
+ERROR
+	  File "/home/server/PycharmProjects/traversing/app/chat/service/node/chatgateservice.py", line 36, in <module>
+[2014-07-08 16:47:41.026891]
+ERROR
+	    noderemote = GlobalObject().remote['chatgate']
+[2014-07-08 16:47:41.026995]
+ERROR
+	KeyError: 'chatgate'

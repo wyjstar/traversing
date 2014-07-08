@@ -9,7 +9,7 @@ from app.chat.service.node.chatgateservice import nodeservice_handle
 
 
 @nodeservice_handle
-def login_chat_1(command_id, dynamic_id, request_proto):
+def login_chat_1001(command_id, dynamic_id, request_proto):
     """登录聊天服务器
     """
     argument = chat_pb2.LoginToChatRequest()
@@ -24,7 +24,7 @@ def login_chat_1(command_id, dynamic_id, request_proto):
 
 
 @nodeservice_handle
-def logout_chat_3(command_id, dynamic_id):
+def logout_chat_1003(command_id, dynamic_id):
     """登出聊天服务器
     """
     return localservice.callTarget(command_id, dynamic_id)
