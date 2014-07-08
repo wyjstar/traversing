@@ -68,7 +68,7 @@ class User(object):
             print 'user_id:', self.user_id
             character = tb_character_info.getObjData(self.user_id)
             if not character:
-                character = {'uid': self.user_id, 'nickname': ''}
+                character = {'id': self.user_id, 'nickname': ''}
                 character_obj = tb_character_info.new(character)
                 character_obj.insert()
                 self._character = character
@@ -78,7 +78,7 @@ class User(object):
     def character(self, character):
         print 'character:', character
         self._character = character
-        pmmode = tb_character_info.getObj(self._character.get('uid'))
+        pmmode = tb_character_info.getObj(self._character.get('id'))
         pmmode.update_multi(self._character)
 
     @property

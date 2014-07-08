@@ -90,7 +90,7 @@
     },
 
     "model_default": {
-        "pkey_field": "uid",
+        "pkey_field": "id",
         "cache_prefix": "rktest",
         "def_attrs": {}
     },
@@ -121,9 +121,9 @@
             }
         },
         "tb_character_info": {
-            "pkey_field": "uid",
+            "pkey_field": "id",
             "def_attrs": {
-                "uid": "simple",
+                "id": "simple",
                 "nickname": "simple",
                 "hero_list": "simple",
                 "hero_chip_list": "simple"

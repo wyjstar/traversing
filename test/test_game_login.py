@@ -9,6 +9,7 @@ import struct
 from twisted.internet import reactor, protocol
 from app.proto_file import item_pb2
 from app.proto_file import account_pb2
+from app.proto_file.chat import chat_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
 
@@ -90,6 +91,14 @@ class EchoClient(protocol.Protocol):
             items = argument.item
             for item in items:
                 print item
+
+            self.transport.write(sendData('', 1001))
+
+        if command == 1001:
+            argument = chat_pb2.ChatResponse()
+            argument.ParseFromString(message)
+            print argument
+
 
 
 

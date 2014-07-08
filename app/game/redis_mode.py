@@ -5,7 +5,7 @@ created by server on 14-6-10下午9:09.
 from shared.db_entrust.redis_mode import MAdmin
 
 # 用户信息表
-tb_character_info = MAdmin('tb_character_info', 'uid')
+tb_character_info = MAdmin('tb_character_info', 'id')
 tb_character_info.insert()
 
 # 用户英雄信息表
