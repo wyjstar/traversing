@@ -28,8 +28,8 @@ class PlayerCharacter(Character):
         """
         Character.__init__(self, cid, name)
 
-        self.character_type = const.PLAYER_TYPE  # 设置角色类型为玩家角色
-        self.dynamic_id = dynamic_id   # 角色登陆服务器时的动态id
+        self._character_type = const.PLAYER_TYPE  # 设置角色类型为玩家角色
+        self._dynamic_id = dynamic_id   # 角色登陆服务器时的动态id
         #--------角色的各个组件类------------
         # TODO
 
@@ -90,6 +90,13 @@ class PlayerCharacter(Character):
         self.finance.init_data(character_mmode)  #初始化金币
         self._hero_chip_list.init_hero_chips(pid)  #初始化武将碎片
 
+    @property
+    def character_type(self):
+        return self._character_type
+
+    @property
+    def dynamic_id(self):
+        return self._dynamic_id
 
     @property
     def hero_component(self):
@@ -118,3 +125,21 @@ class PlayerCharacter(Character):
     @property
     def item_package(self):
         return self._item_package
+
+    @property
+    def equipment(self):
+        return self._equipment
+
+    @property
+    def equipment_chip(self):
+        return self._equipment_chip
+
+    def check_dynamic_id(self, dynamic_id):
+        """检测客户端ID是否匹配
+        @param dynamic_id: 客户端动态ID
+        @return:
+        """
+        if self._dynamic_id == dynamic_id:
+            return True
+        return False
+

@@ -24,3 +24,11 @@ class Equipment(object):
                                    'alv': self._attribute.awakening_lv}}
         tb_equipment_info.new(data)
 
+    @property
+    def base_info(self):
+        return self._base_info
+
+    @property
+    def attribute(self):
+        return self._attribute
+

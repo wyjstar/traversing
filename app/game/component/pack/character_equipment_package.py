@@ -12,6 +12,7 @@ from shared.utils.pyuuid import get_uuid
 class CharacterEquipmentPackageComponent(Component):
     """角色的装备背包
     """
+
     def __init__(self, owner):
         super(CharacterEquipmentPackageComponent, self).__init__(owner)
         self._equipments = []  # 装备列表 [装备ID]
@@ -28,7 +29,8 @@ class CharacterEquipmentPackageComponent(Component):
                 equipment_data = tb_equipment_info.getObjData(equipment_id)
                 equipment_info = equipment_data.get('equipment_info')
                 print 'equipment_data:', equipment_data
-                equipment_no = equipment_info.get('no')  # 装备编号
+                # {'equipment_info': {'alv': 1, 'equipment_no': 10001, 'slv': 1}, 'character_id': 68L, 'id': '7598df1c068c11e49cf5080027a4fa58'}
+                equipment_no = equipment_info.get('equipment_no')  # 装备编号
                 strengthen_lv = equipment_info.get('slv')  # 装备强化等级
                 awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
                 equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, awakening_lv)
@@ -63,8 +65,18 @@ class CharacterEquipmentPackageComponent(Component):
         return None
 
     def get_by_type(self, equipment_type):
+        """根据装备类型 取得装备
+        @param equipment_type:
+        @return:
+        """
+        return [equipment_obj.equipment_type for equipment_obj in self._equipments_obj.values() if
+                equipment_obj.equipment_type and (equipment_obj.equipment_type == equipment_type)]
 
-        sorted(self._equipments_obj.iteritems())
+    def get_all(self):
+        """返回全部装备
+        """
+        return self._equipments_obj.values()
+
 
 
 
