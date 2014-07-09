@@ -86,6 +86,7 @@ class DataPackProtoc:
     def pack(self,response,command):
         '''打包数据包
         '''
+        print 'data pack #1:', response, command
         HEAD_0 = chr(self.HEAD_0)
         HEAD_1 = chr(self.HEAD_1)
         HEAD_2 = chr(self.HEAD_2)

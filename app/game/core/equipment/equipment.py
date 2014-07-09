@@ -17,7 +17,7 @@ class Equipment(object):
         self._attribute = EquipmentAttributeComponent(self, strengthen_lv, awakening_lv)
 
     def save_data(self, character_id):
-        data = {'equipment_id': self._base_info.id, \
+        data = {'id': self._base_info.id, \
                 'character_id': character_id, \
                 'equipment_info': {'equipment_no': self._base_info.equipment_no, \
                                    'slv': self._attribute.strengthen_lv, \

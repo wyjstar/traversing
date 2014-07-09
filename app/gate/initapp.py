@@ -10,3 +10,6 @@ def load_module():
     from action.root import netforwarding
     from action.local import login
     from action.local import login_server
+
+    from action.local.chat import login
+    from action.local.chat import chat

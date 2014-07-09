@@ -5,6 +5,7 @@ Created on 2013-8-14
 @author: lan (www.9miao.com)
 """
 from app.gate.core.users_manager import UsersManager
+from app.proto_file import item_pb2
 from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from gtwisted.utils import log
@@ -28,9 +29,9 @@ def forwarding(key, dynamic_id, data):
         #     return
         node = VCharacterManager().get_node_by_dynamic_id(dynamic_id)
 
-        print 'node:', node
+        result = GlobalObject().root.callChild(node, key, dynamic_id, data)
 
-        return GlobalObject().root.callChild(node, key, dynamic_id, data)
+        return result
 #
 
 # @rootserviceHandle
@@ -78,8 +79,6 @@ def net_conn_lost(dynamic_id):
     @param dynamic_id: int 客户端的动态ID
     """
     vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-
-    print 'gate net conn lost:', vcharacter.__dict__
 
     if vcharacter and vcharacter.node:
         vcharacter.locked = True  # 锁定角色

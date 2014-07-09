@@ -62,8 +62,9 @@ class LiberateProtocol(protocols.BaseProtocol):
                 break
             self.buff = self.buff[length+rlength:]
             response = self.factory.doDataReceived(self,command,request)
-            if not response:
-                continue
+
+            # if not response:
+            #     continue
 
             print 'safeToWriteData:', response, command
             self.safeToWriteData(response, command)
@@ -101,6 +102,9 @@ class LiberateFactory(protocols.ServerFactory):
     def doDataReceived(self,conn,commandID,data):
         '''数据到达时的处理'''
         response = self.service.callTarget(commandID,conn,data)
+
+        print 'doDataReceived:', response
+
         return response
     
     def produceResult(self,command,response):

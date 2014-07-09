@@ -7,11 +7,11 @@ created by server on 14-6-23上午11:59.
 import struct
 
 from twisted.internet import reactor, protocol
-
-from shared.proto_file.player_response_pb2 import PlayerResponse
-from shared.proto_file import account_pb2
 from app.proto_file import item_pb2
-from app.proto_file.player_request_pb2 import CreatePlayerRequest, PlayerLoginResquest
+from app.proto_file import account_pb2
+from app.proto_file.chat import chat_pb2
+from app.proto_file.player_request_pb2 import PlayerLoginResquest
+from app.proto_file.player_response_pb2 import PlayerResponse
 
 
 def sendData(sendstr,commandId):
@@ -34,7 +34,7 @@ def sendData(sendstr,commandId):
 def resolveRecvdata(data):
     '''解析数据，根据定义的协议头解析服务器返回的数据
     '''
-    ud = struct.unpack('!sssss3I',data[:17])
+    ud = struct.unpack('!sssss3I', data[:17])
     HEAD_0 = ord(ud[0])
     HEAD_1 = ord(ud[1])
     HEAD_2 = ord(ud[2])
@@ -44,6 +44,8 @@ def resolveRecvdata(data):
     lenght = ud[6]
     command = ud[7]
     message = data[17:17+lenght]
+    print command, message
+
     return command, message
 
 # a client protocol
@@ -66,7 +68,6 @@ class EchoClient(protocol.Protocol):
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
-
         if command == 2:
 
             argument = account_pb2.AccountResponse()
@@ -88,9 +89,17 @@ class EchoClient(protocol.Protocol):
             print '301'
             argument = item_pb2.ItemsResponse()
             argument.ParseFromString(message)
-            items = argument.item
-            for item in items:
-                print item
+            print 'items:', argument.item
+            # for item in items:
+            #     print item
+            print '1111111111111'
+            self.transport.write(sendData('', 1001))
+
+        if command == 1001:
+            argument = chat_pb2.ChatResponse()
+            argument.ParseFromString(message)
+            print argument
+
 
 
 

@@ -19,12 +19,12 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_character_info`;
 CREATE TABLE `tb_character_info` (
-  `uid` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `nickname` varchar(128) DEFAULT '',
   `coin` bigint(20) NOT NULL DEFAULT '0',
   `gold` bigint(20) NOT NULL DEFAULT '0',
   `hero_soul` bigint(20) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '1',
   `exp` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`uid`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

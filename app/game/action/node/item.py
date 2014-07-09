@@ -11,14 +11,17 @@ from app.proto_file import item_pb2
 def get_items_301(dynamic_id, pro_data):
     """取得全部道具
     """
+    print '301'
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
     game_items = player.item_package.items
+    # game_items = {1000:1, 1001:2}
     items = item_pb2.ItemsResponse()
-    if game_items:
-        for item_no, item_num in game_items.items():
-            item = items.item.add()
-            item.item_no = item_no
-            item.item_num = item_num
+    item = items.item
+    for item_no, item_num in game_items.items():
+        _item = item.add()
+        _item.item_no = item_no
+        _item.item_num = item_num
+    print 'items:', items.item
     return items.SerializePartialToString()
 
 
