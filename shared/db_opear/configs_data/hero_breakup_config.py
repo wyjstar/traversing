@@ -15,7 +15,7 @@ class HeroBreakupConfig(object):
         """解析config到HeroConfig"""
         heros = {}
         for row in config_value:
-            self.hero_breakups[row.get('id')] = HeroBreakupItem(row)
+            self.hero_breakups[row.get('id')] = HeroBreakupConfig.HeroBreakupItem(row)
         return self.hero_breakups
 
     class HeroBreakupItem(object):
@@ -31,14 +31,12 @@ class HeroBreakupConfig(object):
             :return:
             """
             consume_info = self.info.get('consume' + str(break_level+1))
-            print "???????????????consume_info", self.info, break_level, consume_name
             if consume_name == 'coin':
                 lst = consume_info.get(1)
                 return lst[0]
 
             elif consume_name == 'break_pill':
                 lst = consume_info.get(2)
-
                 return lst[2], lst[0]
 
             elif consume_name == 'hero_chip':

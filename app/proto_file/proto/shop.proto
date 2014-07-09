@@ -3,9 +3,3 @@ message ShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
 }
-//通用响应，无参数
-message CommonResponse
-{
-    required bool result = 1;
-    optional string message = 2;
-}

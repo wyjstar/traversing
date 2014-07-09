@@ -49,6 +49,7 @@ small_bag = {}
 big_bag = {}
 equipment_config = {}
 equipment_strengthen_config = {}
+shop_config = {}
 
 
 

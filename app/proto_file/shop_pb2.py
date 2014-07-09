@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\"\x19\n\x0bShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t')
+  serialized_pb='\n\nshop.proto\"\x19\n\x0bShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05')
 
 
 
@@ -45,55 +45,13 @@ _SHOPREQUEST = _descriptor.Descriptor(
   serialized_end=39,
 )
 
-
-_COMMONRESPONSE = _descriptor.Descriptor(
-  name='CommonResponse',
-  full_name='CommonResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='result', full_name='CommonResponse.result', index=0,
-      number=1, type=8, cpp_type=7, label=2,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='message', full_name='CommonResponse.message', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=41,
-  serialized_end=90,
-)
-
 DESCRIPTOR.message_types_by_name['ShopRequest'] = _SHOPREQUEST
-DESCRIPTOR.message_types_by_name['CommonResponse'] = _COMMONRESPONSE
 
 class ShopRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _SHOPREQUEST
 
   # @@protoc_insertion_point(class_scope:ShopRequest)
-
-class CommonResponse(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _COMMONRESPONSE
-
-  # @@protoc_insertion_point(class_scope:CommonResponse)
 
 
 # @@protoc_insertion_point(module_scope)

@@ -40,8 +40,6 @@ class CharacterItemPackageComponent(Component):
             item_obj = item
             self._items[item.item_no] = item_obj
 
-        self.save_data()
-
     def get_item(self, item_no):
         return self._items.get(item_no)
 

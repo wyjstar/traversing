@@ -73,3 +73,21 @@ class CharacterFinanceComponent(Component):
         if self._coin < coin:
             return False
         return True
+
+    def add_coin(self, num):
+        self._coin += num
+
+    def consume_coin(self, num):
+        self._coin -= num
+
+    def add_gold(self, num):
+        self._gold += num
+
+    def consume_gold(self, num):
+        self._gold -= num
+
+    def add_hero_soul(self, num):
+        self._hero_soul += num
+
+    def consume_hero_soul(self, num):
+        self._hero_soul -= num
