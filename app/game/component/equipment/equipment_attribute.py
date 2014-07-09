@@ -3,6 +3,7 @@
 created by server on 14-7-7下午4:29.
 """
 from app.game.component.Component import Component
+from shared.db_opear.configs_data import game_configs
 
 
 class EquipmentAttributeComponent(Component):
@@ -22,5 +23,22 @@ class EquipmentAttributeComponent(Component):
     @property
     def awakening_lv(self):
         return self._awakening_lv
+
+    @property
+    def equipment_type(self):
+        """返回装备类型
+        """
+        equipment_no = self.owner.base_info.equipment_no
+        obj = game_configs.equipment_config.get(equipment_no, None)
+        if not obj:
+            return None
+        return obj.type
+
+
+
+
+
+
+
 
 
