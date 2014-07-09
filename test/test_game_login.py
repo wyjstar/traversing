@@ -10,6 +10,7 @@ from twisted.internet import reactor, protocol
 from app.proto_file import item_pb2
 from app.proto_file import account_pb2
 from app.proto_file.chat import chat_pb2
+from app.proto_file import equipment_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
 
@@ -68,6 +69,7 @@ class EchoClient(protocol.Protocol):
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
+
         if command == 2:
 
             argument = account_pb2.AccountResponse()
@@ -100,8 +102,16 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            argument = equipment_pb2.GetEquipmentsRequest()
+            argument.type = 0
 
+            self.dateSend(argument, 401)
 
+        if command == 401:
+            argument = equipment_pb2.GetEquipmentResponse()
+            argument.ParseFromString(message)
+            for equipment in argument.equipment:
+                print equipment
 
     def connectionLost(self, reason):
         print "connection lost"
