@@ -46,15 +46,18 @@ class RedisManager(object):
         self.connection_settings = connection_settings
 
     def get_connection(self, key):
+        print "?????????", type(key), key
         node = self.hash_ring.get_node(key)
         if node and node in self.connections.keys():
             client = self.connections[node]
             return client.redis()
         return None
 
-    def flushall(self):
-        for client in self.connections.values:
-            client.redis().flushall()
+    def flushall(self, key):
+        connection = self.get_connection(key)
+        if connection:
+            connection.flushall()
+
 
 redis_manager = RedisManager()
 
