@@ -9,4 +9,5 @@ def load_module():
     from action.node import enter_scene
     from action.node import logout
     from action.node import item
+    from action.node import equipment
 

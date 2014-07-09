@@ -40,6 +40,13 @@
     </rule>
   </tableRule>
 
+   <tableRule name="rule5">
+    <rule>
+      <columns>id</columns>
+      <algorithm><![CDATA[ func3(${id}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
   <function name="func2" class="com.alibaba.cobar.route.function.PartitionByLong">
     <property name="partitionCount">8</property> <!-- 有几个分库 -->
     <property name="partitionLength">128</property><!-- partitionCount * partitionLength=1024 -->

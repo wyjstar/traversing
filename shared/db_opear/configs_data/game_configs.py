@@ -47,8 +47,8 @@ hero_chip_config = {}
 item_config = {}
 small_bag = {}
 big_bag = {}
-equipment = {}
-equipment_strengthen = {}
+equipment_config = {}
+equipment_strengthen_config = {}
 
 
 
@@ -59,8 +59,8 @@ all_config_name = {
     'small_bag': SmallBagsConfig,
     'big_bag': BigBagsConfig,
     #'bases_config': None,
-    'equipment': EquipmentConfig(),
-    'equipment_strengthen': EquipmentStrengthenConfig()
+    'equipment_config': EquipmentConfig(),
+    'equipment_strengthen_config': EquipmentStrengthenConfig()
 }
 
 
@@ -88,7 +88,7 @@ for config_name in all_config_name.keys():
         objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
         exec(config_name + '=objs')
 
-print equipment
+
 
 # def init():
 #     hostname = "127.0.0.1"  #  要连接的数据库主机名

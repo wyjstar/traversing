@@ -53,6 +53,21 @@ class CharacterEquipmentPackageComponent(Component):
         equipments_obj = tb_character_equipments.getObj(self.owner.base_info.id)
         equipments_obj.update('equipments', self._equipments)
 
+    def get_by_id(self, equipment_id):
+        """根据装备ID 取得装备
+        @param equipment_id: 装备ID
+        @return: 装备对象
+        """
+        if equipment_id in self._equipments_obj:
+            return self._equipments_obj[equipment_id]
+        return None
+
+    def get_by_type(self, equipment_type):
+
+        sorted(self._equipments_obj.iteritems())
+
+
+
 
 
 

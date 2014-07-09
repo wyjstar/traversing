@@ -26,7 +26,7 @@
     <table name="tb_character_heros" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_character_equipment_chip" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_character_equipments" dataNode="dn_traversing$0-3" rule="rule2" />
-    <table name="tb_equipmen_info" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_equipment_info" dataNode="dn_traversing$0-3" rule="rule5" />
     <table name="tb_character_hero" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_character_line_up" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_character_hero_chip" dataNode="dn_traversing$0-3" rule="rule2" />
