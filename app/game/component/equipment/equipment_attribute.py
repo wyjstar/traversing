@@ -47,7 +47,6 @@ class EquipmentAttributeComponent(Component):
         """ 根据强化等级返回强化消耗
         """
         equipment_no = self.owner.base_info.equipment_no
-        equipment_no = 110001
         print 'equipment_no:', equipment_no
         print 'strengthen_lv:', self._strengthen_lv
         # 配置数据

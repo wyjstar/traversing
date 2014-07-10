@@ -23,6 +23,9 @@ def forwarding(key, dynamic_id, data):
         return local_service.callTarget(key, dynamic_id, data)
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
+        print 'dynamic_id:', dynamic_id
+        print VCharacterManager().__dict__
+        print 'gaet forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
             return
         # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
@@ -70,7 +73,7 @@ def drop_client(dynamic_id, vcharacter):
     if node:  # 角色在场景中的处理
         SceneSerManager().drop_client(node, dynamic_id)
 
-    VCharacterManager().d(dynamic_id)
+    VCharacterManager().drop_by_dynamic_id(dynamic_id)
 
 
 @rootserviceHandle
@@ -86,6 +89,6 @@ def net_conn_lost(dynamic_id):
         result = save_playerinfo_in_db(dynamic_id)
 
         if result:
-            pass
+            drop_client(dynamic_id, vcharacter)
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)

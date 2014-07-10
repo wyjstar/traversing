@@ -70,7 +70,14 @@ class SceneSerManager:
     
     def drop_client(self, sceneid, clientid):
         """清除一个客户端"""
+
+        print '_scenesers:', self._scenesers
+        print sceneid, clientid
+
         sceneser = self.get_scene_by_id(sceneid)
+
+        print sceneser.__dict__
+
         if sceneser:
             try:
                 sceneser.drop_client(clientid)
