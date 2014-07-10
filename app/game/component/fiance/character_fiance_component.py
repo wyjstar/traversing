@@ -26,7 +26,7 @@ class CharacterFinanceComponent(Component):
 
     @property
     def hero_soul(self):
-        return self._coin
+        return self._hero_soul
 
     @hero_soul.setter
     def hero_soul(self, value):
