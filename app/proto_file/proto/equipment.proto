@@ -47,3 +47,14 @@ message EnhanceEquipmentResponse{
 	required CommonResponse res = 1;
 	repeated EnhanceDataFormat data= 2;
 }
+
+// 装备合成 command:  403
+message ComposeEquipmentRequest{
+	required string no = 1;  //装备No
+}
+
+message ComposeEquipmentResponse{
+	required CommonResponse res = 1;
+	optional Equipment equ = 2;  //装备
+}
+

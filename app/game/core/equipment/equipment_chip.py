@@ -11,16 +11,35 @@ class EquipmentChip(object):
         self._chip_no = chip_no  # 碎片编号
         self._chip_num = chip_num  # 碎片数量
 
-    def modify_num(self, num=0, add=True):
-        if add:
-            self._chip_num += num
-        else:
-            self._chip_num -= num
-
     @property
     def chip_no(self):
         return self._chip_no
 
+    @chip_no.setter
+    def chip_no(self, chip_no):
+        self._chip_no = chip_no
+
     @property
     def chip_num(self):
         return self._chip_num
+
+    @chip_num.setter
+    def chip_num(self, chip_num):
+        self._chip_num = chip_num
+
+    def modify_single_attr(self, attr_name='', num=0, add=True):
+        """修改单个属性的值
+        @param attr_name:  属性名称
+        @param num:  修改的数量
+        @param add: 添加或者减少
+        @return:
+        """
+        if add:
+            setattr(self, attr_name, getattr(self, attr_name, 0) + int(num))
+        else:
+            setattr(self, attr_name, getattr(self, attr_name, 0) - int(num))
+
+    @property
+    def compose_num(self):
+        """合成数量配置
+        """

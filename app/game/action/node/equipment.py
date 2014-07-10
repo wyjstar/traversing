@@ -2,7 +2,7 @@
 """
 created by server on 14-7-9上午11:28.
 """
-from app.game.logic.equipment import get_equipments_info, enhance_equipment
+from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import equipment_pb2
 
@@ -38,6 +38,7 @@ def get_equipments_401(dynamic_id, pro_data):
         # TODO hero_no, set
     return response.SerializePartialToString()
 
+
 @remote_service_handle
 def enhance_equipment_402(dynamic_id, pro_data):
     """强化装备
@@ -72,4 +73,20 @@ def enhance_equipment_402(dynamic_id, pro_data):
         data_format.cost_coin = enhance_cost
 
     return response.SerializePartialToString()
+
+
+@remote_service_handle
+def compose_equipment_403(dynamic_id, pro_data):
+    """合成装备
+    @param dynamic_id:
+    @param pro_data:
+    @return:
+    """
+    request = equipment_pb2.ComposeEquipmentRequest()
+    request.ParseFromString()
+    equipment_no = request.no
+
+    compose_equipment()
+
+
 

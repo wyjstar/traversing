@@ -85,6 +85,14 @@ def __do_enhance(player, equipment_obj):
     return before_lv, after_lv, enhance_cost
 
 
+@have_player
+def compose_equipment(dynamic_id, equipment_no, **kwargs):
+    """强化装备
+    """
+    player = kwargs.get('player')
+
+
+
 
 
 
