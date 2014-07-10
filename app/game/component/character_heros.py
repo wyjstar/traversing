@@ -25,7 +25,7 @@ class CharacterHerosComponent(Component):
                 'hero_ids': cPickle.dumps([]),
             }
             tb_character_heros.new(data)
-            mmode = tb_character_heros.getObjData(pid)
+            return
         hero_ids = character_heros.get('hero_ids')
         hero_ids = cPickle.loads(hero_ids)
         print "hero_ids", hero_ids

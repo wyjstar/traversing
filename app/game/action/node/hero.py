@@ -12,6 +12,7 @@ from app.game.core.PlayersManager import PlayersManager
 from shared.db_opear.configs_data.game_configs import base_config, item_config, hero_breakup_config, hero_chip_config
 from app.game.core.hero import Hero
 from shared.db_opear.configs_data.game_configs import hero_config
+from app.game.logic.item_group_helper import is_afford, consume
 
 @remote_service_handle
 def get_hero_list_101(dynamic_id, pro_data=None):
@@ -90,39 +91,12 @@ def hero_break_104(dynamicid, data):
 
     hero = player.hero_component.get_hero_by_no(hero_no)
     response = CommonResponse()
-    # 获取该武将突破所需的消耗
-    coin = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level, 'coin')
-    break_pill_no, break_pill_num = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level, 'break_pill')
-    hero_chip_no, hero_chip_num = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level, 'hero_chip')
 
-    # 服务器校验
-    if not player.finance.is_afford(coin):
-        response.result = False
-        response.message = "金币不足！"
-        return response.SerializeToString()
-
-    break_pill = player.item_package.get_item(break_pill_no)
-    print "break_pill", break_pill, break_pill_no, break_pill_num
-    if not break_pill or break_pill_num > break_pill.num:
-        response.result = False
-        response.message = "突破丹不足！"
-        return response.SerializeToString()
-
-    hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
-    print "hero_chip", hero_chip, hero_chip_no, hero_chip_num
-    if not hero_chip or hero_chip_num > hero_chip.num:
-        response.result = False
-        response.message = "武将碎片不足！"
-        return response.SerializeToString()
-
-    player.finance.coin -= coin  # 消耗金币
-    player.finance.save_data()
-
-    player.item_package.consume_item(break_pill_no, break_pill_num)  # 消耗突破丹
-    player.item_package.save_data()
-
-    hero_chip.consume(hero_chip_num)  # 消耗碎片
-    player.hero_chip_component.save_data()
+    item_group = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level)
+    is_afford(player, item_group)  # 校验
+    consume(player, item_group)  # 消耗
+    hero.break_level += 1
+    hero.save_data()
 
     # 3、返回
     response.result = True
@@ -207,7 +181,7 @@ def hero_compose_106(dynamicid, data):
     hero.hero_no = hero_no
     player.hero_component.add_hero(hero)
 
-    hero_chip.consume(need_num)  # 消耗碎片
+    hero_chip.consume_chip(need_num)  # 消耗碎片
 
     # 3、返回
     response.result = True

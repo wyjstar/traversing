@@ -20,7 +20,8 @@ from app.game.core.hero import Hero
 
 def is_afford(player, item_group):
     """消耗是否足够。"""
-    for type_id, group_item in item_group.items():
+    for group_item in item_group:
+        type_id = group_item.type_id
         num = group_item.num
         obj_id = group_item.obj_id
         if type_id == COIN and player.finance.coin < num:
@@ -43,7 +44,8 @@ def is_afford(player, item_group):
 
 def consume(player, item_group):
     """消耗"""
-    for type_id, group_item in item_group.items():
+    for group_item in item_group:
+        type_id = group_item.type_id
         num = group_item.num
         obj_id = group_item.obj_id
         if type_id == COIN:
@@ -71,7 +73,8 @@ def consume(player, item_group):
 
 def gain(player, item_group):
     """获取"""
-    for type_id, group_item in item_group.items():
+    for group_item in item_group:
+        type_id = group_item.type_id
         num = group_item.num
         obj_id = group_item.obj_id
         if type_id == COIN:
@@ -120,7 +123,7 @@ def gain(player, item_group):
 
 def parse(data):
     item_group = []
-    for typeid, lst in data:
+    for typeid, lst in data.items():
         max_num = lst[0]
         min_num = lst[1]
         obj_id = lst[2]

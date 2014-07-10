@@ -4,6 +4,7 @@ created by server on 14-7-4下午4:42.
 """
 
 from common_item import CommonItem
+from app.game.logic.item_group_helper import parse
 
 
 class HeroBreakupConfig(object):
@@ -23,25 +24,14 @@ class HeroBreakupConfig(object):
         def __init__(self, row):
             self.info = row
 
-        def get_consume(self, break_level, consume_name):
+        def get_consume(self, break_level):
             """
             获取突破消耗
             :param break_level: 1-7
-            :param consume_name: coin, break_pill, hero_chip
             :return:
             """
             consume_info = self.info.get('consume' + str(break_level+1))
-            if consume_name == 'coin':
-                lst = consume_info.get(1)
-                return lst[0]
-
-            elif consume_name == 'break_pill':
-                lst = consume_info.get(2)
-                return lst[2], lst[0]
-
-            elif consume_name == 'hero_chip':
-                lst = consume_info.get(3)
-                return lst[2], lst[0]
+            return parse(consume_info)
 
 
 

@@ -40,44 +40,6 @@ class SmallBag(object):
             finally:
                 pass
 
-    def random_pick(self):
-        """随机掉落
-        """
-        return self.__do_random()
-
-    def random_multi_pick(self, times):
-        drop_items = []
-        for i in range(times):
-            picked_item = self.random_pick()
-            drop_items.append(picked_item)
-        return drop_items
-
-    def random_multi_pick_without_repeat(self, times):
-        drop_items = []
-
-        small_bag_copy = copy.deepcopy(self)
-        for i in range(times):
-            picked_item = small_bag_copy.random_pick()
-            drop_items.append(picked_item)
-            small_bag_copy.del_drop_item(picked_item)
-
-        return drop_items
-
-    def __do_random(self):
-        pick_result = None
-        odds_dict = {}
-        for items_id, items in self._drops.items():
-            odds_dict[items] = items.item_weight
-        random_max = sum(odds_dict.values())
-        x = random.randint(0, random_max)
-        odds_cur = 0
-        for items, weight in odds_dict.items():
-            odds_cur += weight
-            if x <= odds_cur:
-                pick_result = items
-                break
-        return pick_result
-
 
 class SmallBagsConfig(object):
     """掉落小包
