@@ -15,7 +15,8 @@ class CharacterHerosComponent(Component):
         super(CharacterHerosComponent, self).__init__(owner)
         self._heros = {}
 
-    def init_heros(self, pid):
+    def init_heros(self):
+        pid = self.owner.base_info.id
         character_heros = tb_character_heros.getObjData(pid)
         if not character_heros:
             # 没有武将列表数据
@@ -25,8 +26,6 @@ class CharacterHerosComponent(Component):
             }
             tb_character_heros.new(data)
             mmode = tb_character_heros.getObjData(pid)
-            print "##########", mmode
-            return
         hero_ids = character_heros.get('hero_ids')
         hero_ids = cPickle.loads(hero_ids)
         print "hero_ids", hero_ids
@@ -37,8 +36,8 @@ class CharacterHerosComponent(Component):
         heros = tb_character_hero.getObjList(hero_ids)
 
         for hero_mmode in heros:
-            hero = Hero(hero_mmode)
-            hero.init_data()
+            hero = Hero()
+            hero.init_data(hero_mmode)
             self.add_hero(hero)
 
     def get_hero_by_no(self, hero_no):
@@ -55,8 +54,7 @@ class CharacterHerosComponent(Component):
 
     def add_hero(self, hero):
         self._heros[hero.hero_no] = hero
-        mmode = self.new_hero_data(hero)
-        hero.mmode = mmode
+        self.new_hero_data(hero)
         self.save_data()
 
     def remove_hero(self, hero_no):
@@ -98,7 +96,7 @@ class CharacterHerosComponent(Component):
             'character_id': character_id,
             'property': hero_property
         }
-        return tb_character_hero.new(data)
+        hero.mmode = tb_character_hero.new(data)
 
     def delete_data(self, hero_no):
         tb_character_hero.deleteMode(self.get_hero_id(hero_no))

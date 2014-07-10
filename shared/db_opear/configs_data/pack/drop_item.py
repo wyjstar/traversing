@@ -39,11 +39,11 @@ class DropItem(object):
         self._item_type = item_type
 
     @property
-    def item_count(self):
+    def item_num(self):
         return self._item_count
 
-    @item_count.setter
-    def item_count(self, item_count):
+    @item_num.setter
+    def item_num(self, item_count):
         self._item_count = item_count
 
     @property

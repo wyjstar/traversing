@@ -3,6 +3,8 @@
 created by server on 14-7-4下午5:02.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.game_configs import small_bag_config
+import copy
 
 
 class BigBag(object):
@@ -52,7 +54,19 @@ class BigBag(object):
     #
     #         if small_bag_times == 1:
 
+    def get_drop_items(self):
+        drop_items = []
+        for small_bag_id, small_bag_times, is_uniq in \
+                zip(self._small_packages, self._small_package_times, self._is_uniq_list):
+            small_bag = small_bag_config.get(small_bag_id)
+            if is_uniq:
+                lst = small_bag.random_pick_without_repeat(small_bag_times)
+                drop_items.append(lst)
+            else:
+                lst = small_bag.random_multi_pick(small_bag_times)
+                drop_items.append(lst)
 
+        return drop_items
 
 
 class BigBagsConfig(object):

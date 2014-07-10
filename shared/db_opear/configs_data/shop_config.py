@@ -2,7 +2,8 @@
 """
 created by server on 14-7-9下午3:28.
 """
-from shared.db_opear.configs_data.common_item import CommonGroupItem
+from shared.db_opear.configs_data.common_item import CommonGroupItem, CommonItem
+from app.game.logic.item_group_helper import parse
 
 
 class ShopConfig(object):
@@ -13,32 +14,16 @@ class ShopConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
-            item = ShopConfig.ShopItem(row)
+            row["consume"] = parse(row.get("consume"))
+            row["gain"] = parse(row.get("gain"))
+            row["extra_gain"] = parse(row.get("extra_gain"))
+            item = CommonItem(row)
             self._items[item.id] = item
+
         return self._items
 
-    class ShopItem(object):
-        def __init__(self, row):
-            self.consume_item_group = {}
-            self.get_item_group = {}
-            self.extra_get_item_group = {}
-            for typeid, lst in row.get("consume"):
-                max_num = lst[0]
-                min_num = lst[1]
-                obj_id = lst[2]
-                self.consume_item_group[typeid] = CommonGroupItem(obj_id, max_num, min_num)
 
-            for typeid, lst in row.get("get"):
-                max_num = lst[0]
-                min_num = lst[1]
-                obj_id = lst[2]
-                self.get_item_group[typeid] = CommonGroupItem(obj_id, max_num, min_num)
 
-            for typeid, lst in row.get("extra_get"):
-                max_num = lst[0]
-                min_num = lst[1]
-                obj_id = lst[2]
-                self.extra_get_item_group[typeid] = CommonGroupItem(obj_id, max_num, min_num)
 
 
 

@@ -45,8 +45,8 @@ hero_exp_config = {}
 hero_breakup_config = {}
 hero_chip_config = {}
 item_config = {}
-small_bag = {}
-big_bag = {}
+small_bag_config = {}
+big_bag_config = {}
 equipment_config = {}
 equipment_strengthen_config = {}
 shop_config = {}
@@ -69,7 +69,6 @@ class ConfigFactory(object):
 
     @classmethod
     def creat_config(cls, config_name, config_value):
-
         obj = None
 
         if config_name in all_config_name.keys():

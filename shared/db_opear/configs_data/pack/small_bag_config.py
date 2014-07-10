@@ -3,6 +3,7 @@
 created by server on 14-7-4下午2:46.
 """
 import random
+import copy
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.pack.drop_item import DropItem
 
@@ -17,6 +18,10 @@ class SmallBag(object):
     @property
     def small_bag_id(self):
         return self._small_bag_id
+
+    @property
+    def drops(self):
+        return self._drops
 
     @small_bag_id.setter
     def small_bag_id(self, small_bag_id):
@@ -40,6 +45,24 @@ class SmallBag(object):
         """
         return self.__do_random()
 
+    def random_multi_pick(self, times):
+        drop_items = []
+        for i in range(times):
+            picked_item = self.random_pick()
+            drop_items.append(picked_item)
+        return drop_items
+
+    def random_multi_pick_without_repeat(self, times):
+        drop_items = []
+
+        small_bag_copy = copy.deepcopy(self)
+        for i in range(times):
+            picked_item = small_bag_copy.random_pick()
+            drop_items.append(picked_item)
+            small_bag_copy.del_drop_item(picked_item)
+
+        return drop_items
+
     def __do_random(self):
         pick_result = None
         odds_dict = {}
@@ -48,8 +71,8 @@ class SmallBag(object):
         random_max = sum(odds_dict.values())
         x = random.randint(0, random_max)
         odds_cur = 0
-        for items, item_odds in odds_dict.items():
-            odds_cur += item_odds
+        for items, weight in odds_dict.items():
+            odds_cur += weight
             if x <= odds_cur:
                 pick_result = items
                 break
@@ -72,7 +95,7 @@ class SmallBagsConfig(object):
             drop_item.drop_id = item.subId
             drop_item.item_no = item.detailID
             drop_item.item_type = item.type
-            drop_item.item_count = item.count
+            drop_item.item_num = item.count
             drop_item.item_weight = item.weight
 
             # 组织掉落小包数据
@@ -85,5 +108,6 @@ class SmallBagsConfig(object):
             small_bag.add_drop_item(drop_item)
 
         return self._small_bags
+
 
 

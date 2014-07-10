@@ -8,8 +8,14 @@ HERO_SOUL = 3
 HERO_CHIP = 4
 ITEM = 5
 BIG_BAG = 6
+HERO = 7
+
 from app.game.core.hero_chip import HeroChip
 from app.game.core.pack.item import Item
+from shared.db_opear.configs_data.game_configs import hero_chip_config
+from shared.db_opear.configs_data.common_item import CommonGroupItem
+from app.game.core.drop_bag import BigBag
+from app.game.core.hero import Hero
 
 
 def is_afford(player, item_group):
@@ -63,7 +69,7 @@ def consume(player, item_group):
             player.item_package.save_data()
 
 
-def get(player, item_group):
+def gain(player, item_group):
     """获取"""
     for type_id, group_item in item_group.items():
         num = group_item.num
@@ -81,17 +87,43 @@ def get(player, item_group):
             player.finance.save_data()
 
         elif type_id == HERO_CHIP:
-            hero_chip = player.hero_chip_component.get_chip(obj_id)
             hero_chip = HeroChip(obj_id, num)
             player.hero_chip_component.add_chip(hero_chip)
             player.hero_chip_component.save_data()
 
         elif type_id == ITEM:
-            item = player.item_package.get_chip(obj_id)
             item = Item(obj_id, num)
             player.item_package.add_item(item)
             player.item_package.save_data()
 
-        elif type_id == BIG_BAG:
+        elif type_id == HERO:
+            if player.hero_component.contain_hero(obj_id):
+                # 已经存在该武将，自动转换为武将碎片
+                # 获取hero对应的hero_chip_no, hero_chip_num
+                hero_chip_config_item = hero_chip_config.get("hero_no").get(obj_id)
+                hero_chip_no = hero_chip_config_item.id
+                hero_chip_num = hero_chip_config_item.need_num
 
+                hero_chip = HeroChip(hero_chip_no, hero_chip_num)
+                player.hero_chip_component.add_chip(hero_chip)
+                player.hero_chip_component.save_data()
+
+            else:
+                hero = Hero()
+                hero.hero_no = obj_id
+                player.hero_component.add_hero(hero)
+
+        elif type_id == BIG_BAG:
+            big_bag = BigBag(obj_id)
+            gain(player, big_bag.get_drop_items())
+
+
+def parse(data):
+    item_group = []
+    for typeid, lst in data:
+        max_num = lst[0]
+        min_num = lst[1]
+        obj_id = lst[2]
+        item_group.append(CommonGroupItem(obj_id, max_num, min_num, typeid))
+    return item_group
 

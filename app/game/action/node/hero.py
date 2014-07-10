@@ -204,7 +204,6 @@ def hero_compose_106(dynamicid, data):
         return response.SerializeToString()
 
     hero = Hero()
-    hero.init_data()
     hero.hero_no = hero_no
     player.hero_component.add_hero(hero)
 

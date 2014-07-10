@@ -7,7 +7,7 @@ from app.proto_file.shop_pb2 import ShopRequest
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import shop_config
 from app.game.core.PlayersManager import PlayersManager
-from app.game.logic.item_group_helper import is_afford, consume, get
+from app.game.logic.item_group_helper import is_afford, consume, gain
 
 
 def lucky_draw_hero_501(dynamic_id, pro_data):
@@ -37,10 +37,10 @@ def shop_oper(dynamic_id, pro_data):
     shop_id = request.id
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
     shop_item = shop_config.get(shop_id)
-    is_afford(player, shop_item.consume_item_group)  # 服务器验证
-    consume(player, shop_item.consume_item_group)  # 消耗
-    get(player, shop_item.get_item_group)  # 获取
-    get(player, shop_item.extra_get_item_group)  # 额外获取
+    is_afford(player, shop_item.consume)  # 服务器验证
+    consume(player, shop_item.consume)  # 消耗
+    gain(player, shop_item.gain)  # 获取
+    gain(player, shop_item.extra_gain)  # 额外获取
     response = CommonResponse()
     response.result = True
     return response.SerializeToString()

@@ -12,11 +12,12 @@ class CommonItem(dict):
 
 
 class CommonGroupItem():
-    def __init__(self, obj_id, max_num, min_num):
+    def __init__(self, obj_id, max_num, min_num, type_id):
 
         self._max_num = max_num
         self._min_num = min_num
         self._obj_id = obj_id
+        self._type_id = type_id
 
     @property
     def obj_id(self):
@@ -27,3 +28,7 @@ class CommonGroupItem():
         if self._max_num == self._min_num:
             return self._max_num
         return random.randint(self._min_num, self._max_num)
+
+    @property
+    def type_id(self):
+        return self._type_id
