@@ -50,6 +50,7 @@ class CharacterEquipmentPackageComponent(Component):
 
         equipment_obj.save_data(self.owner.base_info.id)
         self.save_data()
+        return equipment_obj
 
     def save_data(self):
         equipments_obj = tb_character_equipments.getObj(self.owner.base_info.id)
