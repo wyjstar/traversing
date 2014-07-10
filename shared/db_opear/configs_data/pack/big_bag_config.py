@@ -4,7 +4,6 @@ created by server on 14-7-4下午5:02.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
 
-
 class BigBag(object):
     def __init__(self):
         self._big_bag_id = 0
@@ -43,16 +42,6 @@ class BigBag(object):
     @is_uniq_list.setter
     def is_uniq_list(self, is_uniq_list):
         self._is_uniq_list = is_uniq_list
-
-    # def random_pick(self):
-    #     """随机掉落
-    #     """
-    #     for smll_bag_id, small_bag_times, is_uniq in \
-    #             zip(self._small_packages, self._small_package_times, self._is_uniq_list):
-    #
-    #         if small_bag_times == 1:
-
-
 
 
 class BigBagsConfig(object):

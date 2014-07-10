@@ -1,0 +1,5 @@
+
+message ShopRequest
+{
+    required int32 id = 1; // 对应shop配置表中商品编号
+}

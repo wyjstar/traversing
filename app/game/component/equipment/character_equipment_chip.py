@@ -36,7 +36,6 @@ class CharacterEquipmentChipComponent(Component):
             item_obj.modify_num(equipment_chip.chip_num, add=True)
         else:
             self._chips[equipment_chip.chip_no] = equipment_chip
-        self.save_data()
 
     def save_data(self):
         props = {}

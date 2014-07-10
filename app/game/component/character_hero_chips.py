@@ -14,7 +14,7 @@ class CharacterHeroChipsComponent(Component):
         super(CharacterHeroChipsComponent, self).__init__(owner)
         self._chips = {}
 
-    def init_hero_chips(self, pid):
+    def init_hero_chips(self):
         hero_chips = tb_character_hero_chip.getObjData(self.owner.base_info.id)
         if hero_chips:
             hero_chips_data = hero_chips.get('hero_chips', {})

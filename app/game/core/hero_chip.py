@@ -28,7 +28,8 @@ class HeroChip(object):
     def num(self, value):
         self._num = value
 
-    def consume(self, num):
+    def consume_chip(self, num):
         """消费碎片"""
         self.num -= num
+
 

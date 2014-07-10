@@ -73,7 +73,7 @@ class HeroActionTest(unittest.TestCase):
 
         hero = self.player.hero_component.get_hero_by_no(10001)
         self.assertEqual(response.result, True, "return result error!")
-        self.assertEqual(hero.break_level, 1, "hero breaklevel error!%d_%d" % (hero.break_level, 1))
+        self.assertEqual(hero.break_level, 2, "hero breaklevel error!%d_%d" % (hero.break_level, 2))
         self.assertEqual(self.player.finance.coin, 29000, "hero coin error!%d_%d" % (self.player.finance.coin, 3000))
 
         hero_chip = self.player.hero_chip_component.get_chip(1000112)

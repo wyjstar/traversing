@@ -57,7 +57,6 @@ class PlayerCharacter(Character):
             log.msg("Init_player %s error!" + str(pid))
             return
 
-
         #------------角色信息表数据---------------
         nickname = character_info['nickname']
         coin = character_info['coin']
@@ -79,16 +78,12 @@ class PlayerCharacter(Character):
         self._level.exp = exp
 
         #------------初始化角色其他组件------------
-        self._hero_component.init_heros(pid)  # 初始化武将列表
+        self._hero_component.init_heros()  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
         self._equipment.init_data()
         self._equipment_chip.init_data()
-
-        return
-
-        self.finance.init_data(character_mmode)  #初始化金币
-        self._hero_chip_list.init_hero_chips(pid)  #初始化武将碎片
+        self.hero_chip_component.init_hero_chips()  # 初始化武将碎片
 
     @property
     def character_type(self):

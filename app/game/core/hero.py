@@ -7,12 +7,12 @@ from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_conf
 from gtwisted.utils import log
 import cPickle
 
+
 class Hero(object):
     """武将类"""
 
-    def __init__(self, mmode=None):
+    def __init__(self):
         """
-        :param mmode: 对应redis中的一条数据
         :field _level: 等级
         :field _break_level: 突破等级
         :field _exp: 当前等级的经验
@@ -24,11 +24,12 @@ class Hero(object):
         self._exp = 0
         self._break_level = 0
         self._equipment_ids = []
-        self._mmode = mmode
+        self._mmode = None
 
-    def init_data(self):
-        if not self._mmode:
+    def init_data(self, mmode):
+        if not mmode:
             return
+        self._mmode = mmode
         data = self._mmode.get('data')
         print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
         hero_property = data.get("property")
@@ -37,7 +38,6 @@ class Hero(object):
         self._exp = hero_property.get("exp")
         self._break_level = hero_property.get("break_level")
         self._equipment_ids = hero_property.get("equipment_ids")  # 穿戴装备列表
-
 
     @property
     def hero_no(self):
@@ -78,14 +78,6 @@ class Hero(object):
     @equipment_ids.setter
     def equipment_ids(self, value):
         self._equipment_ids = value
-
-    @property
-    def config(self):
-        return self._config
-
-    @config.setter
-    def config(self, value):
-        self._config = value
 
     @property
     def mmode(self):
