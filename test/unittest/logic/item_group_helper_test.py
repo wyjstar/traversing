@@ -6,6 +6,7 @@ import test.unittest.init_data.init_connection
 import unittest
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.item_group_helper import *
+from shared.db_opear.configs_data.data_helper import parse
 
 
 class ItemGroupHelperTest(unittest.TestCase):

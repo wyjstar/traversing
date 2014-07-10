@@ -3,7 +3,7 @@
 created by server on 14-7-9下午3:28.
 """
 from shared.db_opear.configs_data.common_item import CommonGroupItem, CommonItem
-from app.game.logic.item_group_helper import parse
+from shared.db_opear.configs_data.data_helper import parse
 
 
 class ShopConfig(object):

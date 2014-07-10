@@ -9,7 +9,7 @@ from app.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroUpgradeWithI
 from app.proto_file.hero_response_pb2 import CommonResponse, HeroListResponse, \
     HeroSacrificeResponse
 from app.game.core.PlayersManager import PlayersManager
-from shared.db_opear.configs_data.game_configs import base_config, item_config, hero_breakup_config, hero_chip_config
+from shared.db_opear.configs_data.game_configs import base_config, item_config, hero_breakup_config, chip_config
 from app.game.core.hero import Hero
 from shared.db_opear.configs_data.game_configs import hero_config
 from app.game.logic.item_group_helper import is_afford, consume

@@ -4,7 +4,7 @@ created by server on 14-7-4下午4:42.
 """
 
 from common_item import CommonItem
-from app.game.logic.item_group_helper import parse
+from shared.db_opear.configs_data.data_helper import parse
 
 
 class HeroBreakupConfig(object):

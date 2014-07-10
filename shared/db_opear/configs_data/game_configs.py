@@ -5,11 +5,14 @@ created by server on 14-6-6上午11:05.
 from MySQLdb.cursors import DictCursor
 import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
+from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
+from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
+from shared.db_opear.configs_data.shop_config import ShopConfig
 
 
 print id(dbpool)
@@ -17,6 +20,18 @@ from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
 
+
+def init():
+    hostname = "127.0.0.1"  #  要连接的数据库主机名
+    user = "test"  #  要连接的数据库用户名
+    password = "test"  #  要连接的数据库密码
+    port = 8066  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
+    dbname = "db_traversing"  #  要使用的数据库库名
+    charset = "utf8"  #  要使用的数据库的编码
+    dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
+                    charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
+
+init()
 
 def get_config_value(config_key):
     """获取所有翻译信息
@@ -36,14 +51,11 @@ def get_config_value(config_key):
         data[item['config_key']] = cPickle.loads(item['config_value'])
     return data
 
-
-
-
 base_config = {}
 hero_config = {}
 hero_exp_config = {}
 hero_breakup_config = {}
-hero_chip_config = {}
+chip_config = {}
 item_config = {}
 small_bag_config = {}
 big_bag_config = {}
@@ -51,17 +63,17 @@ equipment_config = {}
 equipment_strengthen_config = {}
 shop_config = {}
 
-
-
 all_config_name = {
-    'hero': HeroConfig(),
-    'hero_exp': HeroExpConfig(),
-    'item': ItemsConfig,
-    'small_bag': SmallBagsConfig,
-    'big_bag': BigBagsConfig,
-    #'bases_config': None,
+    'hero_config': HeroConfig(),
+    'hero_exp_config': HeroExpConfig(),
+    'hero_breakup_config': HeroBreakupConfig(),
+    'item_config': ItemsConfig,
+    'small_bag_config': SmallBagsConfig(),
+    'big_bag_config': BigBagsConfig(),
     'equipment_config': EquipmentConfig(),
-    'equipment_strengthen_config': EquipmentStrengthenConfig()
+    'equipment_strengthen_config': EquipmentStrengthenConfig(),
+    'chip_config': ChipConfig(),
+    'shop_config': ShopConfig(),
 }
 
 
@@ -87,22 +99,21 @@ for config_name in all_config_name.keys():
             continue
         objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
         exec(config_name + '=objs')
-
-
-
-# def init():
-#     hostname = "127.0.0.1"  #  要连接的数据库主机名
-#     user = "test"  #  要连接的数据库用户名
-#     password = "test"  #  要连接的数据库密码
-#     port = 8066  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
-#     dbname = "db_traversing"  #  要使用的数据库库名
-#     charset = "utf8"  #  要使用的数据库的编码
-#     dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
-#                     charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
-
+print '---------------------------------------------------------'
+print hero_config
+print hero_exp_config
+print hero_breakup_config
+print chip_config
+print item_config
+print small_bag_config
+print big_bag_config
+print equipment_config
+print equipment_strengthen_config
+print shop_config
+print '---------------------------------------------------------'
 
 if __name__ == '__main__':
-    # init()
+    init()
     pass
 
 

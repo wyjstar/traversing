@@ -13,8 +13,7 @@ EQUIPMENT = 8
 
 from app.game.core.hero_chip import HeroChip
 from app.game.core.pack.item import Item
-from shared.db_opear.configs_data.game_configs import hero_chip_config
-from shared.db_opear.configs_data.common_item import CommonGroupItem
+from shared.db_opear.configs_data.game_configs import chip_config
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
 
@@ -105,8 +104,8 @@ def gain(player, item_group):
             if player.hero_component.contain_hero(obj_id):
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
-                print hero_chip_config
-                hero_chip_config_item = hero_chip_config.get("hero_no").get(obj_id)
+                print chip_config
+                hero_chip_config_item = chip_config.get("mapping").get(obj_id)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.need_num
 
@@ -127,12 +126,5 @@ def gain(player, item_group):
             pass
 
 
-def parse(data):
-    item_group = []
-    for typeid, lst in data.items():
-        max_num = lst[0]
-        min_num = lst[1]
-        obj_id = lst[2]
-        item_group.append(CommonGroupItem(obj_id, max_num, min_num, typeid))
-    return item_group
+
 

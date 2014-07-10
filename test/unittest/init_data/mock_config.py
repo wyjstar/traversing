@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
-    item_config, hero_breakup_config, hero_chip_config
+    item_config, hero_breakup_config, chip_config
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
-from shared.db_opear.configs_data.hero_chip_config import HeroChipConfig
+from shared.db_opear.configs_data.chip_config import ChipConfig
 
 
 #------------------------base----------------------------
@@ -93,11 +93,11 @@ hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 hero_chip1 = {'id': 1000114, 'hero_id': 10004, 'need_num': 20}
 hero_chip2 = {'id': 1010005, 'hero_id': 10005, 'need_num': 20}
-hero_chip_config.clear()
-config = HeroChipConfig()
-hero_chip_config_mock = config.parser([hero_chip1, hero_chip2])
-hero_chip_config['hero_no'] = hero_chip_config_mock['hero_no']
-hero_chip_config['hero_chip_no'] = hero_chip_config_mock['hero_chip_no']
+chip_config.clear()
+config = ChipConfig()
+chip_config_mock = config.parser([hero_chip1, hero_chip2])
+chip_config['mapping'] = chip_config_mock['mapping']
+chip_config['chips'] = chip_config_mock['chips']
 
 
 
