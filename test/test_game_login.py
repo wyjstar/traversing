@@ -113,6 +113,19 @@ class EchoClient(protocol.Protocol):
             for equipment in argument.equipment:
                 print equipment
 
+
+            argument = equipment_pb2.EnhanceEquipmentRequest()
+            argument.id = 'd98b1c72068e11e4b433080027a4fa58'
+            argument.type = 1
+            self.dateSend(argument, 402)
+
+        if command == 402:
+            argument = equipment_pb2.EnhanceEquipmentResponse()
+            argument.ParseFromString(message)
+            print argument.res
+            for value in argument.data:
+                print value
+
     def connectionLost(self, reason):
         print "connection lost"
 

@@ -29,11 +29,11 @@ class CharacterEquipmentPackageComponent(Component):
                 equipment_data = tb_equipment_info.getObjData(equipment_id)
                 equipment_info = equipment_data.get('equipment_info')
                 print 'equipment_data:', equipment_data
-                # {'equipment_info': {'alv': 1, 'equipment_no': 10001, 'slv': 1}, 'character_id': 68L, 'id': '7598df1c068c11e49cf5080027a4fa58'}
                 equipment_no = equipment_info.get('equipment_no')  # 装备编号
                 strengthen_lv = equipment_info.get('slv')  # 装备强化等级
                 awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
-                equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, awakening_lv)
+                enhance_info = equipment_info.get('enhance_info')  # 装备强化花费记录
+                equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, awakening_lv, enhance_info)
                 self._equipments_obj[equipment_id] = equipment_obj
         else:
             tb_character_equipments.new({'id': self.owner.base_info.id, 'equipments': []})
@@ -76,6 +76,9 @@ class CharacterEquipmentPackageComponent(Component):
         """返回全部装备
         """
         return self._equipments_obj.values()
+
+
+
 
 
 

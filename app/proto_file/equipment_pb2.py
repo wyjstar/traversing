@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment.proto',
   package='proto_file.equipment',
-  serialized_pb='\n\x0f\x65quipment.proto\x12\x14proto_file.equipment\x1a\x0c\x63ommon.proto\"\'\n\x0cSetEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"\x92\x01\n\tEquipment\x12\n\n\x02id\x18\x01 \x02(\t\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x15\n\rstrengthen_lv\x18\x03 \x01(\x05\x12\x14\n\x0c\x61wakening_lv\x18\x04 \x01(\x05\x12\x0f\n\x07hero_no\x18\x05 \x01(\x05\x12/\n\x03set\x18\x06 \x01(\x0b\x32\".proto_file.equipment.SetEquipment\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"h\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x32\n\tequipment\x18\x02 \x03(\x0b\x32\x1f.proto_file.equipment.Equipment')
+  serialized_pb='\n\x0f\x65quipment.proto\x12\x14proto_file.equipment\x1a\x0c\x63ommon.proto\"\'\n\x0cSetEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"K\n\x11\x45nhanceDataFormat\x12\x11\n\tbefore_lv\x18\x01 \x01(\x05\x12\x10\n\x08\x61\x66ter_lv\x18\x02 \x01(\x05\x12\x11\n\tcost_coin\x18\x03 \x01(\x05\"\x92\x01\n\tEquipment\x12\n\n\x02id\x18\x01 \x02(\t\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x15\n\rstrengthen_lv\x18\x03 \x01(\x05\x12\x14\n\x0c\x61wakening_lv\x18\x04 \x01(\x05\x12\x0f\n\x07hero_no\x18\x05 \x01(\x05\x12/\n\x03set\x18\x06 \x01(\x0b\x32\".proto_file.equipment.SetEquipment\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"h\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x32\n\tequipment\x18\x02 \x03(\x0b\x32\x1f.proto_file.equipment.Equipment\"@\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0b\n\x03num\x18\x03 \x01(\x05\"o\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x35\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\'.proto_file.equipment.EnhanceDataFormat')
 
 
 
@@ -51,6 +51,48 @@ _SETEQUIPMENT = _descriptor.Descriptor(
   extension_ranges=[],
   serialized_start=55,
   serialized_end=94,
+)
+
+
+_ENHANCEDATAFORMAT = _descriptor.Descriptor(
+  name='EnhanceDataFormat',
+  full_name='proto_file.equipment.EnhanceDataFormat',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='before_lv', full_name='proto_file.equipment.EnhanceDataFormat.before_lv', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='after_lv', full_name='proto_file.equipment.EnhanceDataFormat.after_lv', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='cost_coin', full_name='proto_file.equipment.EnhanceDataFormat.cost_coin', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=96,
+  serialized_end=171,
 )
 
 
@@ -112,8 +154,8 @@ _EQUIPMENT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=97,
-  serialized_end=243,
+  serialized_start=174,
+  serialized_end=320,
 )
 
 
@@ -147,8 +189,8 @@ _GETEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=245,
-  serialized_end=293,
+  serialized_start=322,
+  serialized_end=370,
 )
 
 
@@ -182,23 +224,111 @@ _GETEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=295,
-  serialized_end=399,
+  serialized_start=372,
+  serialized_end=476,
+)
+
+
+_ENHANCEEQUIPMENTREQUEST = _descriptor.Descriptor(
+  name='EnhanceEquipmentRequest',
+  full_name='proto_file.equipment.EnhanceEquipmentRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='proto_file.equipment.EnhanceEquipmentRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='proto_file.equipment.EnhanceEquipmentRequest.type', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='num', full_name='proto_file.equipment.EnhanceEquipmentRequest.num', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=478,
+  serialized_end=542,
+)
+
+
+_ENHANCEEQUIPMENTRESPONSE = _descriptor.Descriptor(
+  name='EnhanceEquipmentResponse',
+  full_name='proto_file.equipment.EnhanceEquipmentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='proto_file.equipment.EnhanceEquipmentResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='proto_file.equipment.EnhanceEquipmentResponse.data', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=544,
+  serialized_end=655,
 )
 
 _EQUIPMENT.fields_by_name['set'].message_type = _SETEQUIPMENT
 _GETEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETEQUIPMENTRESPONSE.fields_by_name['equipment'].message_type = _EQUIPMENT
+_ENHANCEEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_ENHANCEEQUIPMENTRESPONSE.fields_by_name['data'].message_type = _ENHANCEDATAFORMAT
 DESCRIPTOR.message_types_by_name['SetEquipment'] = _SETEQUIPMENT
+DESCRIPTOR.message_types_by_name['EnhanceDataFormat'] = _ENHANCEDATAFORMAT
 DESCRIPTOR.message_types_by_name['Equipment'] = _EQUIPMENT
 DESCRIPTOR.message_types_by_name['GetEquipmentsRequest'] = _GETEQUIPMENTSREQUEST
 DESCRIPTOR.message_types_by_name['GetEquipmentResponse'] = _GETEQUIPMENTRESPONSE
+DESCRIPTOR.message_types_by_name['EnhanceEquipmentRequest'] = _ENHANCEEQUIPMENTREQUEST
+DESCRIPTOR.message_types_by_name['EnhanceEquipmentResponse'] = _ENHANCEEQUIPMENTRESPONSE
 
 class SetEquipment(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _SETEQUIPMENT
 
   # @@protoc_insertion_point(class_scope:proto_file.equipment.SetEquipment)
+
+class EnhanceDataFormat(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ENHANCEDATAFORMAT
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.EnhanceDataFormat)
 
 class Equipment(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -217,6 +347,18 @@ class GetEquipmentResponse(_message.Message):
   DESCRIPTOR = _GETEQUIPMENTRESPONSE
 
   # @@protoc_insertion_point(class_scope:proto_file.equipment.GetEquipmentResponse)
+
+class EnhanceEquipmentRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ENHANCEEQUIPMENTREQUEST
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.EnhanceEquipmentRequest)
+
+class EnhanceEquipmentResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ENHANCEEQUIPMENTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.EnhanceEquipmentResponse)
 
 
 # @@protoc_insertion_point(module_scope)
