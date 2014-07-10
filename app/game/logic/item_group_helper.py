@@ -105,6 +105,7 @@ def gain(player, item_group):
             if player.hero_component.contain_hero(obj_id):
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
+                print hero_chip_config
                 hero_chip_config_item = hero_chip_config.get("hero_no").get(obj_id)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.need_num
@@ -121,6 +122,9 @@ def gain(player, item_group):
         elif type_id == BIG_BAG:
             big_bag = BigBag(obj_id)
             gain(player, big_bag.get_drop_items())
+
+        elif type_id == EQUIPMENT:
+            pass
 
 
 def parse(data):

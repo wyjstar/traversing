@@ -30,6 +30,10 @@ class CharacterItemPackageComponent(Component):
     def items(self):
         return self._items
 
+    @property
+    def items_count(self):
+        return len(self._items)
+
     def add_item(self, item):
         """添加道具
         """

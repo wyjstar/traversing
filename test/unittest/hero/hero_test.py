@@ -29,7 +29,7 @@ class HeroTest(unittest.TestCase):
         self.player.hero_component.add_hero(hero)
         length = len(self.player.hero_component.get_heros())
         self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
-        hero = self.player.hero_component.get_hero_by_no(10011)
+        hero = self.player.hero_component.get_hero(10011)
         self.assertFalse(hero == None, 'add error!')
         self.assertEqual(hero.level, 11)
         self.assertEqual(hero.break_level, 2)
@@ -43,7 +43,7 @@ class HeroTest(unittest.TestCase):
 
         hero_id = self.player.hero_component.get_hero_id(10011)
         hero_in_redis = tb_character_hero.getObjData(hero_id)
-        hero = self.player.hero_component.get_hero_by_no(10011)
+        hero = self.player.hero_component.get_hero(10011)
         self.assertEqual(hero_in_redis.get('character_id'), 1)
 
         hero_property = hero_in_redis.get('property')
@@ -54,7 +54,7 @@ class HeroTest(unittest.TestCase):
 
     def test_remove_hero(self):
         self.player.hero_component.remove_hero(10001)
-        hero = self.player.hero_component.get_hero_by_no(10001)
+        hero = self.player.hero_component.get_hero(10001)
         self.assertEqual(hero, None)
 
         #redis
@@ -63,18 +63,18 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(length, 3, 'len of hero_list error!%d_%d' % (length, 3))
 
     def test_get_all_exp(self):
-        hero = self.player.hero_component.get_hero_by_no(10001)
+        hero = self.player.hero_component.get_hero(10001)
         all_exp = hero.get_all_exp()
         self.assertEqual(all_exp, 5501, "get_all_exp error!%d_%d" % (all_exp, 5501))
 
     def test_upgrade(self):
-        hero = self.player.hero_component.get_hero_by_no(10001)
+        hero = self.player.hero_component.get_hero(10001)
         hero.upgrade(3000)
         self.assertEqual(hero.level, 13, "error!%d_%d" % (hero.level, 13))
         self.assertEqual(hero.exp, 701, "error!%d_%d" % (hero.exp, 701))
 
     def test_save_data(self):
-        hero = self.player.hero_component.get_hero_by_no(10002)
+        hero = self.player.hero_component.get_hero(10002)
         hero.level = 10
         hero.break_level = 11
         hero.exp = 13

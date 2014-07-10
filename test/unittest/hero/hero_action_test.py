@@ -43,7 +43,7 @@ class HeroActionTest(unittest.TestCase):
         response = CommonResponse()
         response.ParseFromString(str_response)
 
-        hero = self.player.hero_component.get_hero_by_no(10001)
+        hero = self.player.hero_component.get_hero(10001)
 
         self.assertEqual(response.result, True, "return result error!")
         self.assertEqual(hero.exp, 901, "hero exp error!%d_%d" % (hero.exp, 901))
@@ -59,7 +59,7 @@ class HeroActionTest(unittest.TestCase):
         response = CommonResponse()
         response.ParseFromString(str_response)
 
-        hero = self.player.hero_component.get_hero_by_no(10001)
+        hero = self.player.hero_component.get_hero(10001)
         self.assertEqual(response.result, True, "return result error!")
         self.assertEqual(hero.exp, 901, "hero exp error!%d_%d" % (hero.exp, 901))
         self.assertEqual(hero.level, 12, "hero level error!%d_%d" % (hero.level, 12))
@@ -71,7 +71,7 @@ class HeroActionTest(unittest.TestCase):
         response = CommonResponse()
         response.ParseFromString(str_response)
 
-        hero = self.player.hero_component.get_hero_by_no(10001)
+        hero = self.player.hero_component.get_hero(10001)
         self.assertEqual(response.result, True, "return result error!")
         self.assertEqual(hero.break_level, 2, "hero breaklevel error!%d_%d" % (hero.break_level, 2))
         self.assertEqual(self.player.finance.coin, 29000, "hero coin error!%d_%d" % (self.player.finance.coin, 3000))
@@ -92,7 +92,7 @@ class HeroActionTest(unittest.TestCase):
         response = CommonResponse()
         response.ParseFromString(str_response)
 
-        hero = self.player.hero_component.get_hero_by_no(10004)
+        hero = self.player.hero_component.get_hero(10004)
         self.assertEqual(response.result, True, "return result error!")
         self.assertFalse(hero == None, "compose hero error!")
 
