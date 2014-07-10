@@ -22,7 +22,7 @@ CREATE TABLE `tb_equipment_info` (
   `id` varchar(32) NOT NULL,
   `character_id` bigint(20) NOT NULL,
   `equipment_info` mediumblob,
-  PRIMARY KEY (`equipment_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
