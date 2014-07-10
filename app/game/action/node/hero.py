@@ -160,9 +160,10 @@ def hero_compose_106(dynamicid, data):
 
     player = PlayersManager().get_player_by_dynamic_id(dynamicid)
     response = CommonResponse()
+    print 'combine', chip_config.get("chips").get(hero_chip_no)
+    hero_no = chip_config.get("chips").get(hero_chip_no).combineResult
 
-    hero_no = hero_chip_config.get(hero_chip_no).hero_no
-    need_num = hero_chip_config.get(hero_chip_no).need_num
+    need_num = chip_config.get("chips").get(hero_chip_no).need_num
     hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
 
     # 服务器校验

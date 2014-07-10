@@ -91,8 +91,8 @@ hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 #------------------------hero_chip----------------------------
 
-hero_chip1 = {'id': 1000114, 'hero_id': 10004, 'need_num': 20}
-hero_chip2 = {'id': 1010005, 'hero_id': 10005, 'need_num': 20}
+hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'need_num': 20}
+hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'need_num': 20}
 chip_config.clear()
 config = ChipConfig()
 chip_config_mock = config.parser([hero_chip1, hero_chip2])
