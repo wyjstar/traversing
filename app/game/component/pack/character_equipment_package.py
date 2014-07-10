@@ -38,7 +38,7 @@ class CharacterEquipmentPackageComponent(Component):
         else:
             tb_character_equipments.new({'id': self.owner.base_info.id, 'equipments': []})
 
-        self.add_equipment(10001)
+        self.add_equipment(110001)
 
     def add_equipment(self, equipment_no):
         """添加装备

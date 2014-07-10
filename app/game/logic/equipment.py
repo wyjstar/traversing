@@ -76,6 +76,7 @@ def __do_enhance(player, equipment_obj):
     @return: {'before_lv':1, 'after_lv':2, 'cost_coin':21}
     """
     curr_coin = player.finance.coin  # 用户金币
+    # curr_coin = 1000000
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
     if not enhance_cost or curr_coin < enhance_cost:
         return False

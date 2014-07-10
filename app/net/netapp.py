@@ -42,12 +42,5 @@ def Forwarding_0(keyname,_conn,data):
     """
     log.msg("forwarding_0++++++++++++++++++++++++++++++++++++")
     dd = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
-    print 'dd:', dd
-    if keyname == 301:
-        items = item_pb2.ItemsResponse()
-        items.ParseFromString(dd)
-
-        print '#########3333333:', items.item
-
     return dd
 
