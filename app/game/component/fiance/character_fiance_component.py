@@ -47,6 +47,7 @@ class CharacterFinanceComponent(Component):
         @param add: 添加或者减少
         @return:
         """
+        print 'finance modify_single_attr:', attr_name, num, add
         if add:
             setattr(self, attr_name, getattr(self, attr_name, 0) + int(num))
         else:
