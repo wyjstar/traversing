@@ -40,7 +40,7 @@ class CharacterHerosComponent(Component):
             hero.init_data(hero_mmode)
             self.add_hero(hero)
 
-    def get_hero_by_no(self, hero_no):
+    def get_hero(self, hero_no):
         return self._heros.get(hero_no)
 
     def get_heros(self):

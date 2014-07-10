@@ -42,7 +42,7 @@ def hero_upgrade_102(dynamicid, data):
     player = PlayersManager().get_player_by_dynamic_id(dynamicid)
 
     for i in range(len(hero_no_list)):
-        hero = player.hero_component.get_hero_by_no(hero_no_list[i])
+        hero = player.hero_component.get_hero(hero_no_list[i])
         exp = exp_list[i]
         hero.upgrade(exp)
 
@@ -72,7 +72,7 @@ def hero_upgrade_with_item_103(dynamicid, data):
         return response.SerializeToString()
 
     exp = item_config.get(exp_item_no).get('func_args')
-    hero = player.hero_component.get_hero_by_no(hero_no)
+    hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)
 
@@ -89,7 +89,7 @@ def hero_break_104(dynamicid, data):
     hero_no = args.hero_no
     player = PlayersManager().get_player_by_dynamic_id(dynamicid)
 
-    hero = player.hero_component.get_hero_by_no(hero_no)
+    hero = player.hero_component.get_hero(hero_no)
     response = CommonResponse()
 
     item_group = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level)

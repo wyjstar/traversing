@@ -24,6 +24,10 @@ class CharacterHeroChipsComponent(Component):
         else:
             tb_character_hero_chip.new({'id': self.owner.base_info.id, 'hero_chips': {}})
 
+    @property
+    def chips_count(self):
+        return len(self._chips)
+
     def get_chip(self, chip_no):
         return self._chips.get(chip_no)
     

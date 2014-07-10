@@ -7,6 +7,7 @@ import unittest
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.item_group_helper import *
 
+
 class ItemGroupHelperTest(unittest.TestCase):
 
     def setUp(self):
@@ -68,7 +69,63 @@ class ItemGroupHelperTest(unittest.TestCase):
         self.assertEqual(result.get('result'), False)
 
     def test_consume(self):
-        pass
+        consume_data = {1: [30000, 30000, 0],
+                        2: [10000, 10000, 0],
+                        3: [20000, 20000, 0],
+                        4: [300, 300, 1000112],
+                        5: [2, 2, 1000111]}
+
+        consume(self.player, parse(consume_data))
+
+        self.assertEqual(self.player.finance.coin, 0, 'coin %d_%d' % (self.player.finance.coin, 0))
+        self.assertEqual(self.player.finance.hero_soul, 0, 'hero_soul %d_%d' % (self.player.finance.hero_soul, 0))
+        self.assertEqual(self.player.finance.gold, 0, 'gold %d_%d' % (self.player.finance.gold, 0))
+        hero_chip = self.player.hero_chip_component.get_chip(1000112)
+        self.assertEqual(hero_chip.num, 0, 'chips_count %d_%d' % (hero_chip.num, 0))
+
+        item = self.player.item_package.get_item(1000111)
+        self.assertEqual(item.num, 0, 'item_count %d_%d' % (item.num, 0))
 
     def test_gain(self):
-        pass
+        gain_data = {COIN: [30000, 30000, 0],
+                     GOLD: [10000, 10000, 0],
+                     HERO_SOUL: [20000, 20000, 0],
+                     HERO_CHIP: [300, 300, 1000112],
+                     ITEM: [2, 2, 1000111]}
+
+        gain(self.player, parse(gain_data))
+
+        coin = self.player.finance.coin
+        hero_soul = self.player.finance.hero_soul
+        gold = self.player.finance.gold
+
+        hero_chip = self.player.hero_chip_component.get_chip(1000112)
+        item = self.player.item_package.get_item(1000111)
+
+        self.assertEqual(coin, 60000, "%d_%d" % (coin, 60000))
+        self.assertEqual(hero_soul, 40000, "%d_%d" % (hero_soul, 40000))
+        self.assertEqual(gold, 20000, "%d_%d" % (gold, 20000))
+        self.assertEqual(hero_chip.num, 600, "%d_%d" % (hero_chip.num, 600))
+        self.assertEqual(item.num, 4, "%d_%d" % (item.num, 4))
+
+        gain_data = {HERO: [1, 1, 10005]}
+        gain(self.player, parse(gain_data))
+
+        hero = self.player.hero_component.get_hero(10005)
+        self.assertFalse(hero==None)
+        self.assertEqual(hero.hero_no, 10005, "%d_%d" % (hero.hero_no, 10005))
+
+        gain_data = {HERO: [1, 1, 10005]}
+        gain(self.player, parse(gain_data))
+
+        hero_chip = self.player.hero_chip_component.get_chip(1010005)
+        self.assertEqual(hero_chip.num, 20, "%d_%d" % (hero_chip.num, 20))
+
+        gain_data = {EQUIPMENT: [1, 1, 10002]}
+
+
+
+
+
+
+
