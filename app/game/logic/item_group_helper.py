@@ -9,6 +9,7 @@ HERO_CHIP = 4
 ITEM = 5
 BIG_BAG = 6
 HERO = 7
+EQUIPMENT = 8
 
 from app.game.core.hero_chip import HeroChip
 from app.game.core.pack.item import Item
@@ -24,6 +25,7 @@ def is_afford(player, item_group):
         type_id = group_item.type_id
         num = group_item.num
         obj_id = group_item.obj_id
+        print "hero_soul", player.finance.hero_soul
         if type_id == COIN and player.finance.coin < num:
             return {'result': False}
         elif type_id == GOLD and player.finance.gold < num:
