@@ -20,6 +20,7 @@ class Equipment(object):
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
     def add_data(self, character_id):
+        print 'sdjf;asdjfaksldjfklasdjfalk;sdjf'
         data = {'id': self._base_info.id, \
                 'character_id': character_id, \
                 'equipment_info': {'equipment_no': self._base_info.equipment_no, \
@@ -27,6 +28,9 @@ class Equipment(object):
                                    'alv': self._attribute.awakening_lv}, \
                 'enhance_info': self._record.enhance_record, \
                 'nobbing_effect': self._attribute.nobbing_effect}
+
+        print '#1 ------:', data
+
         tb_equipment_info.new(data)
 
     def save_data(self):

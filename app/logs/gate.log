@@ -1,57 +1,57 @@
-[2014-07-11 15:58:54.624665]
+[2014-07-11 18:10:06.464242]
 ERROR
 	KeyboardInterrupt
-[2014-07-11 15:58:54.624822]
+[2014-07-11 18:10:06.464381]
 ERROR
 	Traceback (most recent call last):
-[2014-07-11 15:58:54.624915]
+[2014-07-11 18:10:06.464527]
 ERROR
 	  File "appmain.py", line 30, in <module>
-[2014-07-11 15:58:54.625022]
+[2014-07-11 18:10:06.464628]
 ERROR
 	    ser.start()
-[2014-07-11 15:58:54.625120]
+[2014-07-11 18:10:06.464731]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/gfirefly/server/server.py", line 151, in start
-[2014-07-11 15:58:54.625234]
+[2014-07-11 18:10:06.464843]
 ERROR
 	    reactor.run()
-[2014-07-11 15:58:54.625353]
+[2014-07-11 18:10:06.464991]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 75, in run
-[2014-07-11 15:58:54.625436]
+[2014-07-11 18:10:06.465167]
 ERROR
 	    gevent.joinall([gevent.spawn(self.start())])
-[2014-07-11 15:58:54.625673]
+[2014-07-11 18:10:06.465263]
 ERROR
 	  File "/home/server/PycharmProjects/traversing/gtwisted/core/greactor.py", line 69, in start
-[2014-07-11 15:58:54.625748]
+[2014-07-11 18:10:06.465365]
 ERROR
 	    gevent.sleep(600)
-[2014-07-11 15:58:54.625857]
+[2014-07-11 18:10:06.465434]
 ERROR
 	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 75, in sleep
-[2014-07-11 15:58:54.625955]
+[2014-07-11 18:10:06.465566]
 ERROR
 	    hub.wait(loop.timer(seconds, ref=ref))
-[2014-07-11 15:58:54.626043]
+[2014-07-11 18:10:06.465800]
 ERROR
 	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 341, in wait
-[2014-07-11 15:58:54.626149]
+[2014-07-11 18:10:06.465928]
 ERROR
 	    result = waiter.get()
-[2014-07-11 15:58:54.626238]
+[2014-07-11 18:10:06.466019]
 ERROR
 	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 568, in get
-[2014-07-11 15:58:54.626404]
+[2014-07-11 18:10:06.466179]
 ERROR
 	    return self.hub.switch()
-[2014-07-11 15:58:54.626527]
+[2014-07-11 18:10:06.466267]
 ERROR
 	  File "/usr/local/python2.7.6/lib/python2.7/site-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/hub.py", line 331, in switch
-[2014-07-11 15:58:54.626612]
+[2014-07-11 18:10:06.466364]
 ERROR
 	    return greenlet.switch(self)
-[2014-07-11 15:58:54.626684]
+[2014-07-11 18:10:06.466435]
 ERROR
 	KeyboardInterrupt

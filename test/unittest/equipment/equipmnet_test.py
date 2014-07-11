@@ -22,6 +22,8 @@ class EquipmentTest(unittest.TestCase):
         equipment.attribute.awakening_lv = 4
         equipment.save_data()
 
+        print
+
         equipment = self.player.equipment_component.get_equipment(equipment.base_info.id)
         name = equipment.base_info.base_name
         slv = equipment.attribute.strengthen_lv
@@ -39,6 +41,10 @@ class EquipmentTest(unittest.TestCase):
         self.assertEqual(data.get('alv'), 4, "%d_%d" % (data.get('alv'), 4))
 
     def test_delete_equipment(self):
+
+        print '#2 -------------------------------'
+        print self.player.equipment_component.get_all()
+
         first = self.player.equipment_component.get_all()[0]
 
         self.player.equipment_component.delete_equipment(first.base_info.id)

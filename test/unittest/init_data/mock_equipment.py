@@ -7,6 +7,7 @@ from app.game.core.PlayersManager import PlayersManager
 
 
 def init_equipment():
+    print '#1 --------------------'
     player = PlayersManager().get_player_by_id(1)
     equipment = player.equipment_component.add_equipment(110001)
     equipment.base_info.base_name = 'e1'

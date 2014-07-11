@@ -66,19 +66,15 @@ class webserviceHandle:
         self._url = url
         self.kw = kw
 
-        print self._url
-
     def __call__(self, cls):
         """
         """
-        print cls
         if self._url:
             child_name = self._url
         else:
             child_name = cls.__name__
 
         print child_name, self.kw
-        print 'handler:', GlobalObject().webroot
         return GlobalObject().webroot.route(child_name, **self.kw)(cls)
 
 

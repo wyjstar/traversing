@@ -190,8 +190,6 @@ def GetOneRecordInfo(tablename,props):
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s"""%(tablename,props)
 
-    print 'sql:', sql
-
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass = DictCursor)
     cursor.execute(sql)
@@ -239,7 +237,6 @@ def getallkeys(key,mem):
         for _item in item:
             nowlist = set([])
             for _key in _item[1].keys():
-                print _key
                 try:
                     keysplit = _key.split(':')
                     pk = keysplit[2]
@@ -259,7 +256,6 @@ def getredisallkeys(key, mem):
     allkeys = set([])
     for client in mem.connections.values():
         itemss = client.redis().keys('%s*' % key)
-        print itemss
         nowlist = set([])
         for item in itemss:
             keysplit = item.split(':')
