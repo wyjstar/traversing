@@ -32,12 +32,12 @@ class CharacterEquipmentPackageComponent(Component):
                 strengthen_lv = equipment_info.get('slv')  # 装备强化等级
                 awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
                 enhance_info = equipment_info.get('enhance_info')  # 装备强化花费记录
-                equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, awakening_lv, enhance_info)
+                nobbing_effect = equipment_info.get('nobbing_effect')  # 装备锤炼效果
+                equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, \
+                                          awakening_lv, enhance_info, nobbing_effect)
                 self._equipments_obj[equipment_id] = equipment_obj
         else:
             tb_character_equipments.new({'id': self.owner.base_info.id, 'equipments': []})
-
-        self.add_equipment(110001)
 
     def add_equipment(self, equipment_no):
         """添加装备
@@ -46,12 +46,14 @@ class CharacterEquipmentPackageComponent(Component):
         equipment_obj = Equipment(equipment_id, '', equipment_no)
         self._equipments_obj[equipment_id] = equipment_obj
 
-        self.new_equipment_data(equipment_obj)
-        self.save_data()
+        equipment_obj.add_data(self.owner.base_info.id)
         return equipment_obj
 
     def delete_equipment(self, equipment_id):
-        del self._equipments_obj[equipment_id]
+        try:
+            del self._equipments_obj[equipment_id]
+        except:
+            pass
         tb_equipment_info.deleteMode(equipment_id)
         self.save_data()
 
@@ -81,16 +83,16 @@ class CharacterEquipmentPackageComponent(Component):
         """
         return self._equipments_obj.values()
 
-    def new_equipment_data(self, equipment):
-        character_id = self.owner.base_info.id
-        equipment_info = equipment.equipment_info_dict()
-
-        data = {
-            'id': equipment.base_info.id,
-            'character_id': character_id,
-            'equipment_info': equipment_info
-        }
-        tb_equipment_info.new(data)
+    # def new_equipment_data(self, equipment):
+    #     character_id = self.owner.base_info.id
+    #     equipment_info = equipment.equipment_info_dict()
+    #
+    #     data = {
+    #         'id': equipment.base_info.id,
+    #         'character_id': character_id,
+    #         'equipment_info': equipment_info
+    #     }
+    #     tb_equipment_info.new(data)
 
 
 

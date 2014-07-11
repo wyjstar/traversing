@@ -115,7 +115,7 @@ class EchoClient(protocol.Protocol):
 
 
             argument = equipment_pb2.EnhanceEquipmentRequest()
-            argument.id = '47c98826080711e481c9080027a4fa58'
+            argument.id = '5f5a15c608c711e49461080027a4fa58'
             argument.type = 1
             self.dateSend(argument, 402)
 

@@ -64,7 +64,6 @@ class DataPackProtoc:
         '''
         try:
             ud = struct.unpack('!sssss3I',dpack)
-            print 'ud:', ud
         except struct.error,de:
             log.err(de)
             return {'result':False,'command':0,'length':0}

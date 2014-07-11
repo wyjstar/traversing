@@ -2,7 +2,7 @@
 """
 created by server on 14-7-9上午11:28.
 """
-from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment
+from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import equipment_pb2
 
@@ -105,4 +105,47 @@ def compose_equipment_403(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
+@remote_service_handle
+def nobbing_equipment_404(dynamic_id, pro_data):
+    """锤炼装备
+    @param dynamic_id:
+    @param pro_data:
+    @return:
+    """
+    pass
+    # request = equipment_pb2.NobbingEquipmentRequest()
+    # request.ParseFromString()
+    #
+    # equipment_id = request.id
+    # nobbing_equipment(dynamic_id, equipment_id)
+
+
+@remote_service_handle
+def melting_equipment_405(dynamic_id, pro_data):
+    """熔炼装备
+    @param dynamic_id:
+    @param pro_data:
+    @return:
+    """
+    request = equipment_pb2.MeltingEquipmentRequest()
+    request.ParseFromString()
+
+    equipment_id = request.id
+    data = melting_equipment(dynamic_id, equipment_id)
+
+    result = data.get('result')
+    response = equipment_pb2.MeltingEquipmentResponse()
+    res = response.res
+    if not result:
+        res.result_no = data.get('result_no')
+        res.message = data.get('message')
+        return response.SerializePartialToString()
+
+    melting_items = data.get('melting_items', [])
+
+    # for melting_item in melting_items:
+    #     add = response.cgr.add()
+    #     add.id = melting_item.type_id
+    #     add.no = melting_item.
+    #     add.item_no
 

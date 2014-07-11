@@ -47,8 +47,6 @@ class RedisObject(Serializer):
         """检测对象是否被锁定
         """
         key = self.produceKey('_lock')
-        print 'locked key:', key
-        print 'locked result:', type(self._client.get(key)), self._client.get(key)
         lock = self._client.get(key)
         if lock:
             lock = int(lock)
@@ -134,7 +132,6 @@ class RedisObject(Serializer):
         nowdict = dict(self.__dict__)
         del nowdict['_client']
         if ('data' in nowdict) and nowdict['data']:
-            print "?+?", nowdict['data']
             nowdict['data'] = cPickle.dumps(self.dumps(nowdict['data']))
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],

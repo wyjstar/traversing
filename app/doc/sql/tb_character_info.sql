@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2014-07-08 14:50:59
+Date: 2014-07-11 11:31:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,5 +26,8 @@ CREATE TABLE `tb_character_info` (
   `hero_soul` bigint(20) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '1',
   `exp` int(11) NOT NULL DEFAULT '0',
+  `junior_stone` int(11) NOT NULL DEFAULT '0',
+  `middle_stone` int(11) NOT NULL DEFAULT '0',
+  `high_stone` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

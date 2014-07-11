@@ -20,6 +20,7 @@ message Equipment{
 	optional int32 no = 2;  // 装备NO
 	optional int32 strengthen_lv = 3;  //装备强化等级
 	optional int32 awakening_lv = 4;  //装备觉醒等级
+	optional int32 nobbing_effect =7;  //装备锤炼效果
 	optional int32 hero_no = 5;  //装备武将编号
 	optional SetEquipment set = 6;
 }
@@ -56,5 +57,26 @@ message ComposeEquipmentRequest{
 message ComposeEquipmentResponse{
 	required CommonResponse res = 1;
 	optional Equipment equ = 2;  //装备
+}
+
+// 装备锤炼 command:  404
+message NobbingEquipmentRequest{
+	required string id = 1; // 装备ID
+}
+
+message NobbingEquipmentResponse{
+	required CommonResponse res = 1;
+	optional Equipment equ = 2;  //装备
+	repeated CommonGameResources cgr = 3; // 消耗
+}
+
+// 装备熔炼
+message MeltingEquipmentRequest{
+	required string id = 1; // 装备ID
+}
+
+message MeltingEquipmentResponse{
+	required CommonResponse res = 1;
+	repeated CommonGameResources cgr = 3; // 消耗
 }
 

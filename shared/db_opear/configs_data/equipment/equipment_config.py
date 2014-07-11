@@ -3,6 +3,7 @@
 created by server on 14-7-7下午2:07.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data import data_helper
 
 
 class EquipmentConfig(object):
@@ -17,5 +18,6 @@ class EquipmentConfig(object):
         """解析
         """
         for row in config_value:
+            row['gain'] = data_helper.parse(row.get("gain"))
             self._equipments[row.get('id')] = CommonItem(row)
         return self._equipments

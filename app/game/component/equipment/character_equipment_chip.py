@@ -15,7 +15,12 @@ class CharacterEquipmentChipComponent(Component):
         self._chips = {}
 
     def init_data(self):
+
+        print '#!:'
         equipment_chip_data = tb_character_equipment_chip.getObjData(self.owner.base_info.id)
+
+        print '#!:', equipment_chip_data
+
         if equipment_chip_data:
             chips = equipment_chip_data.get('chips')
             for chip_no, chip_num in chips.items():

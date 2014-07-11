@@ -215,9 +215,6 @@ class MAdmin(RedisObject):
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
-
-        print ">>>>>>>", mm.get("data"), mm, pk
-        print ">>>>>>>s"
         if mm.get('data'):
             return mm
         props = {self._pk: pk}
@@ -237,10 +234,16 @@ class MAdmin(RedisObject):
         if not mm.IsEffective():
             return None
         data = mm.get('data')
+
+        print 'getObjData:', mm.get('data')
+
         if mm.get('data'):
             return data
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
+
+        print 'recoed:', record
+
         if not record:
             return None
 

@@ -126,7 +126,15 @@
                 "id": "simple",
                 "nickname": "simple",
                 "hero_list": "simple",
-                "hero_chip_list": "simple"
+                "hero_chip_list": "simple",
+                "coin": "simple",
+                "gold": "simple",
+                "hero_soul": "simple",
+                "level": "simple",
+                "exp": "simple",
+                "junior_stone": "simple",
+                "middle_stone": "simple",
+                "high_stone": "simple"
             }
         },
         "tb_nickname_mapping": {
@@ -183,7 +191,9 @@
             "def_attrs": {
                 "id":"simple",
                 "character_id":"simple",
-                "equipment_info": "complex"
+                "equipment_info": "complex",
+                "enhance_info": "complex",
+                "nobbing_effect": "complex"
             }
         },
         "tb_character_equipment_chip": {

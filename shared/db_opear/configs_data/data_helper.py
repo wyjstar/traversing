@@ -7,6 +7,7 @@ from shared.db_opear.configs_data.common_item import CommonGroupItem
 
 
 def parse(data):
+
     item_group = []
     for typeid, lst in data.items():
         max_num = lst[0]

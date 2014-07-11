@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment.proto',
   package='proto_file.equipment',
-  serialized_pb='\n\x0f\x65quipment.proto\x12\x14proto_file.equipment\x1a\x0c\x63ommon.proto\"\'\n\x0cSetEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"K\n\x11\x45nhanceDataFormat\x12\x11\n\tbefore_lv\x18\x01 \x01(\x05\x12\x10\n\x08\x61\x66ter_lv\x18\x02 \x01(\x05\x12\x11\n\tcost_coin\x18\x03 \x01(\x05\"\x92\x01\n\tEquipment\x12\n\n\x02id\x18\x01 \x02(\t\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x15\n\rstrengthen_lv\x18\x03 \x01(\x05\x12\x14\n\x0c\x61wakening_lv\x18\x04 \x01(\x05\x12\x0f\n\x07hero_no\x18\x05 \x01(\x05\x12/\n\x03set\x18\x06 \x01(\x0b\x32\".proto_file.equipment.SetEquipment\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"h\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x32\n\tequipment\x18\x02 \x03(\x0b\x32\x1f.proto_file.equipment.Equipment\"@\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0b\n\x03num\x18\x03 \x01(\x05\"o\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x35\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\'.proto_file.equipment.EnhanceDataFormat\"%\n\x17\x43omposeEquipmentRequest\x12\n\n\x02no\x18\x01 \x02(\t\"f\n\x18\x43omposeEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12,\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x1f.proto_file.equipment.Equipment')
+  serialized_pb='\n\x0f\x65quipment.proto\x12\x14proto_file.equipment\x1a\x0c\x63ommon.proto\"\'\n\x0cSetEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"K\n\x11\x45nhanceDataFormat\x12\x11\n\tbefore_lv\x18\x01 \x01(\x05\x12\x10\n\x08\x61\x66ter_lv\x18\x02 \x01(\x05\x12\x11\n\tcost_coin\x18\x03 \x01(\x05\"\xaa\x01\n\tEquipment\x12\n\n\x02id\x18\x01 \x02(\t\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x15\n\rstrengthen_lv\x18\x03 \x01(\x05\x12\x14\n\x0c\x61wakening_lv\x18\x04 \x01(\x05\x12\x16\n\x0enobbing_effect\x18\x07 \x01(\x05\x12\x0f\n\x07hero_no\x18\x05 \x01(\x05\x12/\n\x03set\x18\x06 \x01(\x0b\x32\".proto_file.equipment.SetEquipment\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"h\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x32\n\tequipment\x18\x02 \x03(\x0b\x32\x1f.proto_file.equipment.Equipment\"@\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0b\n\x03num\x18\x03 \x01(\x05\"o\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x35\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\'.proto_file.equipment.EnhanceDataFormat\"%\n\x17\x43omposeEquipmentRequest\x12\n\n\x02no\x18\x01 \x02(\t\"f\n\x18\x43omposeEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12,\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x1f.proto_file.equipment.Equipment\"%\n\x17NobbingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"\x89\x01\n\x18NobbingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12,\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x1f.proto_file.equipment.Equipment\x12!\n\x03\x63gr\x18\x03 \x03(\x0b\x32\x14.CommonGameResources\"%\n\x17MeltingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"[\n\x18MeltingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12!\n\x03\x63gr\x18\x03 \x03(\x0b\x32\x14.CommonGameResources')
 
 
 
@@ -132,14 +132,21 @@ _EQUIPMENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hero_no', full_name='proto_file.equipment.Equipment.hero_no', index=4,
+      name='nobbing_effect', full_name='proto_file.equipment.Equipment.nobbing_effect', index=4,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero_no', full_name='proto_file.equipment.Equipment.hero_no', index=5,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='set', full_name='proto_file.equipment.Equipment.set', index=5,
+      name='set', full_name='proto_file.equipment.Equipment.set', index=6,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -155,7 +162,7 @@ _EQUIPMENT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=174,
-  serialized_end=320,
+  serialized_end=344,
 )
 
 
@@ -189,8 +196,8 @@ _GETEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=322,
-  serialized_end=370,
+  serialized_start=346,
+  serialized_end=394,
 )
 
 
@@ -224,8 +231,8 @@ _GETEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=372,
-  serialized_end=476,
+  serialized_start=396,
+  serialized_end=500,
 )
 
 
@@ -266,8 +273,8 @@ _ENHANCEEQUIPMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=478,
-  serialized_end=542,
+  serialized_start=502,
+  serialized_end=566,
 )
 
 
@@ -301,8 +308,8 @@ _ENHANCEEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=544,
-  serialized_end=655,
+  serialized_start=568,
+  serialized_end=679,
 )
 
 
@@ -329,8 +336,8 @@ _COMPOSEEQUIPMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=657,
-  serialized_end=694,
+  serialized_start=681,
+  serialized_end=718,
 )
 
 
@@ -364,8 +371,141 @@ _COMPOSEEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=696,
-  serialized_end=798,
+  serialized_start=720,
+  serialized_end=822,
+)
+
+
+_NOBBINGEQUIPMENTREQUEST = _descriptor.Descriptor(
+  name='NobbingEquipmentRequest',
+  full_name='proto_file.equipment.NobbingEquipmentRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='proto_file.equipment.NobbingEquipmentRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=824,
+  serialized_end=861,
+)
+
+
+_NOBBINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
+  name='NobbingEquipmentResponse',
+  full_name='proto_file.equipment.NobbingEquipmentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='proto_file.equipment.NobbingEquipmentResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='equ', full_name='proto_file.equipment.NobbingEquipmentResponse.equ', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='cgr', full_name='proto_file.equipment.NobbingEquipmentResponse.cgr', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=864,
+  serialized_end=1001,
+)
+
+
+_MELTINGEQUIPMENTREQUEST = _descriptor.Descriptor(
+  name='MeltingEquipmentRequest',
+  full_name='proto_file.equipment.MeltingEquipmentRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='proto_file.equipment.MeltingEquipmentRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1003,
+  serialized_end=1040,
+)
+
+
+_MELTINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
+  name='MeltingEquipmentResponse',
+  full_name='proto_file.equipment.MeltingEquipmentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='proto_file.equipment.MeltingEquipmentResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='cgr', full_name='proto_file.equipment.MeltingEquipmentResponse.cgr', index=1,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1042,
+  serialized_end=1133,
 )
 
 _EQUIPMENT.fields_by_name['set'].message_type = _SETEQUIPMENT
@@ -375,6 +515,11 @@ _ENHANCEEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMO
 _ENHANCEEQUIPMENTRESPONSE.fields_by_name['data'].message_type = _ENHANCEDATAFORMAT
 _COMPOSEEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _COMPOSEEQUIPMENTRESPONSE.fields_by_name['equ'].message_type = _EQUIPMENT
+_NOBBINGEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_NOBBINGEQUIPMENTRESPONSE.fields_by_name['equ'].message_type = _EQUIPMENT
+_NOBBINGEQUIPMENTRESPONSE.fields_by_name['cgr'].message_type = common_pb2._COMMONGAMERESOURCES
+_MELTINGEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_MELTINGEQUIPMENTRESPONSE.fields_by_name['cgr'].message_type = common_pb2._COMMONGAMERESOURCES
 DESCRIPTOR.message_types_by_name['SetEquipment'] = _SETEQUIPMENT
 DESCRIPTOR.message_types_by_name['EnhanceDataFormat'] = _ENHANCEDATAFORMAT
 DESCRIPTOR.message_types_by_name['Equipment'] = _EQUIPMENT
@@ -384,6 +529,10 @@ DESCRIPTOR.message_types_by_name['EnhanceEquipmentRequest'] = _ENHANCEEQUIPMENTR
 DESCRIPTOR.message_types_by_name['EnhanceEquipmentResponse'] = _ENHANCEEQUIPMENTRESPONSE
 DESCRIPTOR.message_types_by_name['ComposeEquipmentRequest'] = _COMPOSEEQUIPMENTREQUEST
 DESCRIPTOR.message_types_by_name['ComposeEquipmentResponse'] = _COMPOSEEQUIPMENTRESPONSE
+DESCRIPTOR.message_types_by_name['NobbingEquipmentRequest'] = _NOBBINGEQUIPMENTREQUEST
+DESCRIPTOR.message_types_by_name['NobbingEquipmentResponse'] = _NOBBINGEQUIPMENTRESPONSE
+DESCRIPTOR.message_types_by_name['MeltingEquipmentRequest'] = _MELTINGEQUIPMENTREQUEST
+DESCRIPTOR.message_types_by_name['MeltingEquipmentResponse'] = _MELTINGEQUIPMENTRESPONSE
 
 class SetEquipment(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -438,6 +587,30 @@ class ComposeEquipmentResponse(_message.Message):
   DESCRIPTOR = _COMPOSEEQUIPMENTRESPONSE
 
   # @@protoc_insertion_point(class_scope:proto_file.equipment.ComposeEquipmentResponse)
+
+class NobbingEquipmentRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _NOBBINGEQUIPMENTREQUEST
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.NobbingEquipmentRequest)
+
+class NobbingEquipmentResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _NOBBINGEQUIPMENTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.NobbingEquipmentResponse)
+
+class MeltingEquipmentRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _MELTINGEQUIPMENTREQUEST
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.MeltingEquipmentRequest)
+
+class MeltingEquipmentResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _MELTINGEQUIPMENTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:proto_file.equipment.MeltingEquipmentResponse)
 
 
 # @@protoc_insertion_point(module_scope)

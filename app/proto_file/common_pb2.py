@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='common.proto',
   package='',
-  serialized_pb='\n\x0c\x63ommon.proto\"D\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\t')
+  serialized_pb='\n\x0c\x63ommon.proto\"D\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\t\"?\n\x13\x43ommonGameResources\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\x12\x0f\n\x07item_no\x18\x03 \x01(\x05')
 
 
 
@@ -59,13 +59,62 @@ _COMMONRESPONSE = _descriptor.Descriptor(
   serialized_end=84,
 )
 
+
+_COMMONGAMERESOURCES = _descriptor.Descriptor(
+  name='CommonGameResources',
+  full_name='CommonGameResources',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='CommonGameResources.id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='num', full_name='CommonGameResources.num', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='item_no', full_name='CommonGameResources.item_no', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=86,
+  serialized_end=149,
+)
+
 DESCRIPTOR.message_types_by_name['CommonResponse'] = _COMMONRESPONSE
+DESCRIPTOR.message_types_by_name['CommonGameResources'] = _COMMONGAMERESOURCES
 
 class CommonResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _COMMONRESPONSE
 
   # @@protoc_insertion_point(class_scope:CommonResponse)
+
+class CommonGameResources(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _COMMONGAMERESOURCES
+
+  # @@protoc_insertion_point(class_scope:CommonGameResources)
 
 
 # @@protoc_insertion_point(module_scope)
