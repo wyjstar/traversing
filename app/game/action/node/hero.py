@@ -93,7 +93,10 @@ def hero_break_104(dynamicid, data):
     response = CommonResponse()
 
     item_group = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level)
-    is_afford(player, item_group)  # 校验
+    result = is_afford(player, item_group)  # 校验
+    if not result.get('result'):
+        response.result = False
+        response.message = '消费不足！'
     consume(player, item_group)  # 消耗
     hero.break_level += 1
     hero.save_data()
