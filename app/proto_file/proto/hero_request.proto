@@ -6,13 +6,6 @@ message CommonRequest
     optional string message = 2;
 }
 
-//武将升级
-message HeroUpgradeRequest
-{
-    repeated int32 hero_no_list = 1;
-    repeated int32 exp_list = 2;
-}
-
 //武将升级，使用道具
 message HeroUpgradeWithItemRequest
 {

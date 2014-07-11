@@ -34,21 +34,6 @@ class HeroActionTest(unittest.TestCase):
         self.assertEqual(exp_item_no, 1000103, "exp_item_no error!")
         self.assertEqual(exp_item_num, 1, "exp_item_num error!")
 
-    def test_hero_upgrade_102(self):
-        request = HeroUpgradeRequest()
-        request.hero_no_list.append(10001)
-        request.exp_list.append(2000)
-
-        str_response = remoteservice.callTarget(102, 1, request.SerializeToString())
-        response = CommonResponse()
-        response.ParseFromString(str_response)
-
-        hero = self.player.hero_component.get_hero(10001)
-
-        self.assertEqual(response.result, True, "return result error!")
-        self.assertEqual(hero.exp, 901, "hero exp error!%d_%d" % (hero.exp, 901))
-        self.assertEqual(hero.level, 12, "hero level error!%d_%d" % (hero.level, 12))
-
     def test_hero_upgrade_with_item_103(self):
         request = HeroUpgradeWithItemRequest()
         request.hero_no = 10001

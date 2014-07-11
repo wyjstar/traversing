@@ -14,7 +14,7 @@ import hero_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='app.gate',
-  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"?\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1b\n\thero_list\x18\x02 \x03(\x0b\x32\x08.Hero_PB\"A\n\x13HeroUpgradeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x02(\x05\"e\n\x15HeroSacrificeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\thero_soul\x18\x02 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x02(\x05')
+  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"?\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1b\n\thero_list\x18\x02 \x03(\x0b\x32\x08.Hero_PB\"A\n\x13HeroUpgradeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"e\n\x15HeroSacrificeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\thero_soul\x18\x02 \x01(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x01(\x05')
 
 
 
@@ -105,14 +105,14 @@ _HEROUPGRADERESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='level', full_name='app.gate.HeroUpgradeResponse.level', index=1,
-      number=2, type=5, cpp_type=1, label=2,
+      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='exp', full_name='app.gate.HeroUpgradeResponse.exp', index=2,
-      number=3, type=5, cpp_type=1, label=2,
+      number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -147,21 +147,21 @@ _HEROSACRIFICERESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='hero_soul', full_name='app.gate.HeroSacrificeResponse.hero_soul', index=1,
-      number=2, type=5, cpp_type=1, label=2,
+      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='exp_item_no', full_name='app.gate.HeroSacrificeResponse.exp_item_no', index=2,
-      number=3, type=5, cpp_type=1, label=2,
+      number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='exp_item_num', full_name='app.gate.HeroSacrificeResponse.exp_item_num', index=3,
-      number=4, type=5, cpp_type=1, label=2,
+      number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

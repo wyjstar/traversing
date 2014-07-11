@@ -4,7 +4,7 @@ created by wzp on 14-6-27下午2:05.
 """
 
 from app.game.service.gatenoteservice import remote_service_handle
-from app.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroUpgradeWithItemRequest,\
+from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
     HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest
 from app.proto_file.hero_response_pb2 import CommonResponse, HeroListResponse, \
     HeroSacrificeResponse
@@ -29,27 +29,6 @@ def get_hero_list_101(dynamic_id, pro_data=None):
         hero_pb.exp = hero.exp
 
     return response.SerializePartialToString()
-
-
-@remote_service_handle
-def hero_upgrade_102(dynamicid, data):
-    """武将升级"""
-    args = HeroUpgradeRequest()
-    args.ParseFromString(data)
-
-    hero_no_list = args.hero_no_list
-    exp_list = args.exp_list
-    player = PlayersManager().get_player_by_dynamic_id(dynamicid)
-
-    for i in range(len(hero_no_list)):
-        hero = player.hero_component.get_hero(hero_no_list[i])
-        exp = exp_list[i]
-        hero.upgrade(exp)
-
-    # 返回
-    response = CommonResponse()
-    response.result = True
-    return response.SerializeToString()
 
 
 @remote_service_handle
