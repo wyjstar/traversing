@@ -20,14 +20,14 @@ class ItemGroupHelperTest(unittest.TestCase):
         data = {1: [1, 1, 1001], 2: [2, 2, 1002], 3: [3, 3, 1003]}
         item_group = parse(data)
         first = item_group[0]
-        self.assertEqual(first.type_id, 1, "first item type id error!%d_%d" % (first.type_id, 1))
+        self.assertEqual(first.item_type, 1, "first item type id error!%d_%d" % (first.item_type, 1))
         self.assertEqual(first.num, 1, "first item type id error!%d_%d" % (first.num, 1))
-        self.assertEqual(first.obj_id, 1001, "first item type id error!%d_%d" % (first.obj_id, 0011))
+        self.assertEqual(first.item_no, 1001, "first item type id error!%d_%d" % (first.item_no, 0011))
 
         last = item_group[len(item_group)-1]
-        self.assertEqual(last.type_id, 3, "first item type id error!%d_%d" % (last.type_id, 3))
+        self.assertEqual(last.item_type, 3, "first item type id error!%d_%d" % (last.item_type, 3))
         self.assertEqual(last.num, 3, "first item type id error!%d_%d" % (last.num, 3))
-        self.assertEqual(last.obj_id, 1003, "first item type id error!%d_%d" % (last.obj_id, 1003))
+        self.assertEqual(last.item_no, 1003, "first item type id error!%d_%d" % (last.item_no, 1003))
 
     def test_is_afford(self):
         consume_data = {1: [30000, 30000, 0],

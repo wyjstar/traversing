@@ -13,6 +13,3 @@ from shared.db_entrust.redis_mode import MAdmin
 def init_redis():
     config = json.load(open(config_json_path, 'r'))
     redis_manager.flushall(config.get("memcached").get("urls")[0])
-
-
-

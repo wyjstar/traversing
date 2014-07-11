@@ -54,7 +54,6 @@ class CharacterEquipmentPackageComponent(Component):
         del self._equipments_obj[equipment_id]
         tb_equipment_info.deleteMode(equipment_id)
         self.save_data()
-        return equipment_obj
 
     def save_data(self):
         equipments_mmode = tb_character_equipments.getObj(self.owner.base_info.id)
