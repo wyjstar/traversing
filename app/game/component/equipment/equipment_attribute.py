@@ -16,6 +16,8 @@ class EquipmentAttributeComponent(Component):
         self._strengthen_lv = strengthen_lv  # 强化等级
         self._awakening_lv = awakening_lv  # 觉醒等级
 
+        self._nobbing_effect = {}  # 锤炼效果
+
     @property
     def strengthen_lv(self):
         return self._strengthen_lv

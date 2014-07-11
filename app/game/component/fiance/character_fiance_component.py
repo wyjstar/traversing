@@ -16,7 +16,6 @@ class CharacterFinanceComponent(Component):
         self._gold = gold  # 角色的充值币
         self._hero_soul = 0  # 角色的武魂
 
-        # TODO 以下没有加到表中
         self._junior_stone = 0  # 低级熔炼石头
         self._middle_stone = 0  # 中级熔炼石头
         self._high_stone = 0  # 高级熔炼石头
