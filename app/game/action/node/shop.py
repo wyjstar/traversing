@@ -34,13 +34,18 @@ def shop_oper(dynamic_id, pro_data):
     """商城所有操作"""
     request = ShopRequest()
     request.ParseFromString(pro_data)
+    response = CommonResponse()
+
     shop_id = request.id
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
     shop_item = shop_config.get(shop_id)
-    is_afford(player, shop_item.consume)  # 服务器验证
+    result = is_afford(player, shop_item.consume)  # 校验
+    if not result.get('result'):
+        response.result = False
+        response.message = '消费不足！'
     consume(player, shop_item.consume)  # 消耗
     gain(player, shop_item.gain)  # 获取
     gain(player, shop_item.extra_gain)  # 额外获取
-    response = CommonResponse()
+
     response.result = True
     return response.SerializeToString()

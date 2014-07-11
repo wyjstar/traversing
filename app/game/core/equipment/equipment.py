@@ -12,31 +12,40 @@ from shared.db_opear.configs_data import game_configs
 class Equipment(object):
     """装备
     """
+
     def __init__(self, equipment_id, equipment_name, equipment_no, \
                  strengthen_lv=1, awakening_lv=1, enhance_record={}, nobbing_effect={}):
         self._base_info = EquipmentBaseInfoComponent(self, equipment_id, equipment_name, equipment_no)
         self._attribute = EquipmentAttributeComponent(self, strengthen_lv, awakening_lv, nobbing_effect)
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
-    def save_data(self, character_id):
+    def add_data(self, character_id):
         data = {'id': self._base_info.id, \
                 'character_id': character_id, \
                 'equipment_info': {'equipment_no': self._base_info.equipment_no, \
                                    'slv': self._attribute.strengthen_lv, \
                                    'alv': self._attribute.awakening_lv}, \
-                'enhance_info': self._record, \
-                'nobbing_effect': self._attribute.nobbing_effect
-                }
+                'enhance_info': self._record.enhance_record, \
+                'nobbing_effect': self._attribute.nobbing_effect}
         tb_equipment_info.new(data)
 
-    def update_data(self, **kwargs):
+    def save_data(self):
+        data = {
+            'equipment_info': {'equipment_no': self._base_info.equipment_no, \
+                               'slv': self._attribute.strengthen_lv, \
+                               'alv': self._attribute.awakening_lv}, \
+            'enhance_info': self._record.enhance_record, \
+            'nobbing_effect': self._attribute.nobbing_effect
+        }
+
         items_data = tb_equipment_info.getObj(self._base_info.id)
-        items_data.update_multi(kwargs)
+        items_data.update_multi(data)
 
     def delete(self):
         items_data = tb_equipment_info.getObj(self._base_info.id)
         items_data.delete()
 
+        
     @property
     def base_info(self):
         return self._base_info

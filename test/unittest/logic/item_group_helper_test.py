@@ -20,14 +20,14 @@ class ItemGroupHelperTest(unittest.TestCase):
         data = {1: [1, 1, 1001], 2: [2, 2, 1002], 3: [3, 3, 1003]}
         item_group = parse(data)
         first = item_group[0]
-        self.assertEqual(first.type_id, 1, "first item type id error!%d_%d" % (first.type_id, 1))
+        self.assertEqual(first.item_type, 1, "first item type id error!%d_%d" % (first.item_type, 1))
         self.assertEqual(first.num, 1, "first item type id error!%d_%d" % (first.num, 1))
-        self.assertEqual(first.obj_id, 1001, "first item type id error!%d_%d" % (first.obj_id, 0011))
+        self.assertEqual(first.item_no, 1001, "first item type id error!%d_%d" % (first.item_no, 0011))
 
         last = item_group[len(item_group)-1]
-        self.assertEqual(last.type_id, 3, "first item type id error!%d_%d" % (last.type_id, 3))
+        self.assertEqual(last.item_type, 3, "first item type id error!%d_%d" % (last.item_type, 3))
         self.assertEqual(last.num, 3, "first item type id error!%d_%d" % (last.num, 3))
-        self.assertEqual(last.obj_id, 1003, "first item type id error!%d_%d" % (last.obj_id, 1003))
+        self.assertEqual(last.item_no, 1003, "first item type id error!%d_%d" % (last.item_no, 1003))
 
     def test_is_afford(self):
         consume_data = {1: [30000, 30000, 0],
@@ -122,7 +122,26 @@ class ItemGroupHelperTest(unittest.TestCase):
         hero_chip = self.player.hero_chip_component.get_chip(1010005)
         self.assertEqual(hero_chip.num, 20, "%d_%d" % (hero_chip.num, 20))
 
-        gain_data = {EQUIPMENT: [1, 1, 10002]}
+        gain_data = {EQUIPMENT: [1, 1, 110005]}
+        gain(self.player, parse(gain_data))
+        lst = self.get_equipmnets_by_no(110005)
+        self.assertEqual(len(lst), 1)
+
+        gain(self.player, parse(gain_data))
+        lst = lst = self.get_equipmnets_by_no(110005)
+        self.assertEqual(len(lst), 2)
+
+    def get_equipmnets_by_no(self, no):
+        lst = []
+        equipments = self.player.equipment_component.get_all()
+
+        for equipment in equipments:
+            if equipment.base_info.equipment_no == no:
+                lst.append(equipment)
+        return lst
+
+
+
 
 
 

@@ -122,7 +122,7 @@ class PlayerCharacter(Character):
         return self._item_package
 
     @property
-    def equipment(self):
+    def equipment_component(self):
         return self._equipment
 
     @property

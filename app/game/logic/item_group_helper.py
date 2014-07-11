@@ -21,9 +21,9 @@ from app.game.core.hero import Hero
 def is_afford(player, item_group):
     """消耗是否足够。"""
     for group_item in item_group:
-        type_id = group_item.type_id
+        type_id = group_item.item_type
         num = group_item.num
-        obj_id = group_item.obj_id
+        obj_id = group_item.item_no
         print "hero_soul", player.finance.hero_soul
         if type_id == COIN and player.finance.coin < num:
             return {'result': False}
@@ -46,9 +46,9 @@ def is_afford(player, item_group):
 def consume(player, item_group):
     """消耗"""
     for group_item in item_group:
-        type_id = group_item.type_id
+        type_id = group_item.item_type
         num = group_item.num
-        obj_id = group_item.obj_id
+        obj_id = group_item.item_no
         if type_id == COIN:
             player.finance.coin -= num
             player.finance.save_data()
@@ -75,9 +75,9 @@ def consume(player, item_group):
 def gain(player, item_group):
     """获取"""
     for group_item in item_group:
-        type_id = group_item.type_id
+        type_id = group_item.item_type
         num = group_item.num
-        obj_id = group_item.obj_id
+        item_no = group_item.item_no
         if type_id == COIN:
             player.finance.coin += num
             player.finance.save_data()
@@ -91,21 +91,21 @@ def gain(player, item_group):
             player.finance.save_data()
 
         elif type_id == HERO_CHIP:
-            hero_chip = HeroChip(obj_id, num)
+            hero_chip = HeroChip(item_no, num)
             player.hero_chip_component.add_chip(hero_chip)
             player.hero_chip_component.save_data()
 
         elif type_id == ITEM:
-            item = Item(obj_id, num)
+            item = Item(item_no, num)
             player.item_package.add_item(item)
             player.item_package.save_data()
 
         elif type_id == HERO:
-            if player.hero_component.contain_hero(obj_id):
+            if player.hero_component.contain_hero(item_no):
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
                 print chip_config
-                hero_chip_config_item = chip_config.get("mapping").get(obj_id)
+                hero_chip_config_item = chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.need_num
 
@@ -114,16 +114,14 @@ def gain(player, item_group):
                 player.hero_chip_component.save_data()
 
             else:
-                hero = Hero()
-                hero.hero_no = obj_id
-                player.hero_component.add_hero(hero)
+                player.hero_component.add_hero(item_no)
 
         elif type_id == BIG_BAG:
-            big_bag = BigBag(obj_id)
+            big_bag = BigBag(item_no)
             gain(player, big_bag.get_drop_items())
 
         elif type_id == EQUIPMENT:
-            pass
+            player.equipment_component.add_equipment(item_no)
 
 
 

@@ -218,6 +218,9 @@ class MAdmin(RedisObject):
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
+
+        print ">>>>>>>", mm.get("data"), mm, pk
+        print ">>>>>>>s"
         if mm.get('data'):
             return mm
         props = {self._pk: pk}

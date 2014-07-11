@@ -4,7 +4,7 @@ created by wzp on 14-6-27下午2:05.
 """
 
 from app.game.service.gatenoteservice import remote_service_handle
-from app.proto_file.hero_request_pb2 import HeroUpgradeRequest, HeroUpgradeWithItemRequest,\
+from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
     HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest
 from app.proto_file.hero_response_pb2 import CommonResponse, HeroListResponse, \
     HeroSacrificeResponse
@@ -29,27 +29,6 @@ def get_hero_list_101(dynamic_id, pro_data=None):
         hero_pb.exp = hero.exp
 
     return response.SerializePartialToString()
-
-
-@remote_service_handle
-def hero_upgrade_102(dynamicid, data):
-    """武将升级"""
-    args = HeroUpgradeRequest()
-    args.ParseFromString(data)
-
-    hero_no_list = args.hero_no_list
-    exp_list = args.exp_list
-    player = PlayersManager().get_player_by_dynamic_id(dynamicid)
-
-    for i in range(len(hero_no_list)):
-        hero = player.hero_component.get_hero(hero_no_list[i])
-        exp = exp_list[i]
-        hero.upgrade(exp)
-
-    # 返回
-    response = CommonResponse()
-    response.result = True
-    return response.SerializeToString()
 
 
 @remote_service_handle
@@ -93,7 +72,10 @@ def hero_break_104(dynamicid, data):
     response = CommonResponse()
 
     item_group = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level)
-    is_afford(player, item_group)  # 校验
+    result = is_afford(player, item_group)  # 校验
+    if not result.get('result'):
+        response.result = False
+        response.message = '消费不足！'
     consume(player, item_group)  # 消耗
     hero.break_level += 1
     hero.save_data()
@@ -114,7 +96,7 @@ def hero_sacrifice_105(dynamicid, data):
     total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
 
     # remove hero
-    player.hero_component.remove_heros_by_nos(args.hero_no_list)
+    player.hero_component.delete_heros_by_nos(args.hero_no_list)
     response = HeroSacrificeResponse()
     response.hero_soul = total_hero_soul
     response.exp_item_no = exp_item_no
@@ -178,10 +160,9 @@ def hero_compose_106(dynamicid, data):
         response.message = "武将已存在，合成失败！"
         return response.SerializeToString()
 
-    hero = Hero()
-    hero.hero_no = hero_no
-    player.hero_component.add_hero(hero)
+    player.hero_component.add_hero(hero_no)
 
+    print "++++++++++++", player.hero_component.get_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
 
     # 3、返回

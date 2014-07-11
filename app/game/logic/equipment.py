@@ -17,13 +17,13 @@ def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
 
     equipments = []
     if get_type == -1:
-        obj = player.equipment.get_by_id(get_id)
+        obj = player.equipment_component.get_equipment(get_id)
         if obj:
             equipments.append(obj)
     elif get_type == 0:
-        equipments.extend(player.equipment.get_all())
+        equipments.extend(player.equipment_component.get_all())
     else:
-        equipments.extend(player.equipment.get_by_type(get_type))
+        equipments.extend(player.equipment_component.get_by_type(get_type))
 
     return equipments
 
@@ -40,7 +40,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     """
     player = kwargs.get('player')
 
-    equipment_obj = player.equipment.get_by_id(equipment_id)
+    equipment_obj = player.equipment_component.get_equipment(equipment_id)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
 

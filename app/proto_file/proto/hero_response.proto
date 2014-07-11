@@ -19,16 +19,16 @@ message HeroListResponse
 message HeroUpgradeResponse
 {
     required bool result = 1;
-    required int32 level = 2;
-    required int32 exp = 3;
+    optional int32 level = 2;
+    optional int32 exp = 3;
 }
 
 //武将献祭
 message HeroSacrificeResponse
 {
     required bool result = 1;
-    required int32 hero_soul = 2;
-    required int32 exp_item_no = 3;
-    required int32 exp_item_num = 4;
+    optional int32 hero_soul = 2;
+    optional int32 exp_item_no = 3;
+    optional int32 exp_item_num = 4;
 }
 
