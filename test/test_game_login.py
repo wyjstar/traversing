@@ -126,6 +126,8 @@ class EchoClient(protocol.Protocol):
             for value in argument.data:
                 print value
 
+
+
     def connectionLost(self, reason):
         print "connection lost"
 

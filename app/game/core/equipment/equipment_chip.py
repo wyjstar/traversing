@@ -2,6 +2,7 @@
 """
 created by server on 14-7-7下午9:15.
 """
+from shared.db_opear.configs_data import game_configs
 
 
 class EquipmentChip(object):
@@ -43,3 +44,8 @@ class EquipmentChip(object):
     def compose_num(self):
         """合成数量配置
         """
+        chip_obj = game_configs.chip_config.get('mapping', {}).get(self._chip_no, None)
+        if not chip_obj:
+            return None
+        need_num = chip_obj.needNum
+        return need_num

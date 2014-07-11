@@ -86,7 +86,23 @@ def compose_equipment_403(dynamic_id, pro_data):
     request.ParseFromString()
     equipment_no = request.no
 
-    compose_equipment()
+    data = compose_equipment(dynamic_id, equipment_no)
+    result = data.get('result')
+    response = equipment_pb2.ComposeEquipmentResponse()
+    res = response.res
+    if not result:
+        res.result_no = data.get('result_no')
+        res.message = data.get('message')
+        return response.SerializePartialToString()
+
+    equipment_obj = data.get('equipment_obj')
+    equ = response.equ
+    equ.id = equipment_obj.base_info.id
+    equ.no = equipment_obj.base_info.equipment_no
+    equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
+    equ.awakening_lv = equipment_obj.attribute.awakening_lv
+
+    return response.SerializePartialToString()
 
 
 

@@ -86,10 +86,28 @@ def __do_enhance(player, equipment_obj):
 
 
 @have_player
-def compose_equipment(dynamic_id, equipment_no, **kwargs):
+def compose_equipment(dynamic_id, chip_no, **kwargs):
     """强化装备
     """
     player = kwargs.get('player')
+
+    chip = player.equipment_chip.get_chip(chip_no)
+
+    # 没有碎片
+    if not chip:
+        return {'result': False, 'result_no': 102, 'message': u''}
+
+    compose_num = chip.compose_num
+    chip_num = chip.chip_num
+
+    # 碎片不足
+    if chip_num < compose_num:
+        return {'result': False, 'result_no': 102, 'message': u''}
+
+    equipment_obj = player.equipment.add_equipment(chip_no)
+    return {'result': True, 'equipment_obj': equipment_obj}
+
+
 
 
 
