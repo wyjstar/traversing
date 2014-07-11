@@ -122,7 +122,26 @@ class ItemGroupHelperTest(unittest.TestCase):
         hero_chip = self.player.hero_chip_component.get_chip(1010005)
         self.assertEqual(hero_chip.num, 20, "%d_%d" % (hero_chip.num, 20))
 
-        gain_data = {EQUIPMENT: [1, 1, 10002]}
+        gain_data = {EQUIPMENT: [1, 1, 110005]}
+        gain(self.player, parse(gain_data))
+        lst = self.get_equipmnets_by_no(110005)
+        self.assertEqual(len(lst), 1)
+
+        gain(self.player, parse(gain_data))
+        lst = lst = self.get_equipmnets_by_no(110005)
+        self.assertEqual(len(lst), 2)
+
+    def get_equipmnets_by_no(self, no):
+        lst = []
+        equipments = self.player.equipment_component.get_all()
+
+        for equipment in equipments:
+            if equipment.base_info.equipment_no == no:
+                lst.append(equipment)
+        return lst
+
+
+
 
 
 
