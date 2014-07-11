@@ -1,0 +1,12 @@
+
+message Finance_PB{
+    optional int32 coin = 1;
+    optional int32 gold = 2;
+    optional int32 hero_soul = 3;
+}
+
+message Player_PB{
+    required int64 player_id = 1;
+    optional Finance_PB finance = 2;
+
+}

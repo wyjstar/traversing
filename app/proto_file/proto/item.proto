@@ -8,9 +8,6 @@ message Item{
 }
 
 // 请求全部道具 command：301
-
-
-
 message ItemsResponse{
 	repeated Item item = 1;
 }

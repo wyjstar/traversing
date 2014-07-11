@@ -74,6 +74,9 @@ def consume(player, item_group):
 
 def gain(player, item_group):
     """获取"""
+
+    result = []
+
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
@@ -112,6 +115,9 @@ def gain(player, item_group):
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)
                 player.hero_chip_component.save_data()
+                type_id = HERO_CHIP
+                item_no = hero_chip_no
+                num = hero_chip_num
 
             else:
                 player.hero_component.add_hero(item_no)
@@ -122,6 +128,17 @@ def gain(player, item_group):
 
         elif type_id == EQUIPMENT:
             player.equipment_component.add_equipment(item_no)
+
+        result.append([type_id, num, item_no])
+    return result
+
+
+def get_return(player, item_group):
+    pass
+
+
+
+
 
 
 
