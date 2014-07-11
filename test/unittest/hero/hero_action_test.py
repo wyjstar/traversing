@@ -93,6 +93,7 @@ class HeroActionTest(unittest.TestCase):
         response.ParseFromString(str_response)
 
         hero = self.player.hero_component.get_hero(10004)
+        print "hero++++++++++++", hero
         self.assertEqual(response.result, True, "return result error!")
         self.assertFalse(hero == None, "compose hero error!")
 

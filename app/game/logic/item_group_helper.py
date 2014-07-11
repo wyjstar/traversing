@@ -114,7 +114,7 @@ def gain(player, item_group):
                 player.hero_chip_component.save_data()
 
             else:
-                hero = Hero()
+                hero = Hero(player.base_info.id)
                 hero.hero_no = obj_id
                 player.hero_component.add_hero(hero)
 

@@ -48,7 +48,7 @@ class HeroTest(unittest.TestCase):
                 'equipment_ids': ''}
         self.hero_mmode = m1.new(data)
 
-        self.hero = Hero(self.hero_mmode)
+        self.hero = Hero(1)
         self.hero.level = 12306
 
     def test_level(self):

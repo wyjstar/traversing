@@ -15,7 +15,6 @@ class CharacterEquipmentPackageComponent(Component):
 
     def __init__(self, owner):
         super(CharacterEquipmentPackageComponent, self).__init__(owner)
-        self._equipments = []  # 装备列表 [装备ID]
         self._equipments_obj = {}  # {装备ID：装备obj}
 
         # self._equipments_chip = {}  # 装备碎片 {装备No: 装备num}
@@ -24,8 +23,8 @@ class CharacterEquipmentPackageComponent(Component):
         equipments_data = tb_character_equipments.getObjData(self.owner.base_info.id)
         if equipments_data:
             print 'equipments_data:', equipments_data
-            self._equipments = equipments_data.get('equipments')
-            for equipment_id in self._equipments:
+            equipment_ids = equipments_data.get('equipments')
+            for equipment_id in equipment_ids:
                 equipment_data = tb_equipment_info.getObjData(equipment_id)
                 equipment_info = equipment_data.get('equipment_info')
                 print 'equipment_data:', equipment_data
@@ -45,17 +44,22 @@ class CharacterEquipmentPackageComponent(Component):
         """
         equipment_id = get_uuid()
         equipment_obj = Equipment(equipment_id, '', equipment_no)
-        self._equipments.append(equipment_id)
         self._equipments_obj[equipment_id] = equipment_obj
 
-        equipment_obj.save_data(self.owner.base_info.id)
+        self.new_equipment_data(equipment_obj)
+        self.save_data()
+        return equipment_obj
+
+    def delete_equipment(self, equipment_id):
+        del self._equipments_obj[equipment_id]
+        tb_equipment_info.deleteMode(equipment_id)
         self.save_data()
 
     def save_data(self):
-        equipments_obj = tb_character_equipments.getObj(self.owner.base_info.id)
-        equipments_obj.update('equipments', self._equipments)
+        equipments_mmode = tb_character_equipments.getObj(self.owner.base_info.id)
+        equipments_mmode.update('equipments', self._equipments_obj.keys())
 
-    def get_by_id(self, equipment_id):
+    def get_equipment(self, equipment_id):
         """根据装备ID 取得装备
         @param equipment_id: 装备ID
         @return: 装备对象
@@ -76,6 +80,17 @@ class CharacterEquipmentPackageComponent(Component):
         """返回全部装备
         """
         return self._equipments_obj.values()
+
+    def new_equipment_data(self, equipment):
+        character_id = self.owner.base_info.id
+        equipment_info = equipment.equipment_info_dict()
+
+        data = {
+            'id': equipment.base_info.id,
+            'character_id': character_id,
+            'equipment_info': equipment_info
+        }
+        tb_equipment_info.new(data)
 
 
 

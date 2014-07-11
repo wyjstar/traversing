@@ -17,15 +17,17 @@ class Equipment(object):
         self._attribute = EquipmentAttributeComponent(self, strengthen_lv, awakening_lv)
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
-    def save_data(self, character_id):
-        data = {'id': self._base_info.id, \
-                'character_id': character_id, \
-                'equipment_info': {'equipment_no': self._base_info.equipment_no, \
-                                   'slv': self._attribute.strengthen_lv, \
-                                   'alv': self._attribute.awakening_lv}, \
-                'enhance_info': self._record
-                }
-        tb_equipment_info.new(data)
+    def save_data(self):
+        equipment_info = self.equipment_info_dict()
+        mmode = tb_equipment_info.getObj(self._base_info.id)
+        mmode.update('equipment_info', equipment_info)
+
+    def equipment_info_dict(self):
+        equipment_info = {'equipment_no': self._base_info.equipment_no,
+                'slv': self._attribute.strengthen_lv,
+                'alv': self._attribute.awakening_lv,
+                'enhance_info': self._record}
+        return equipment_info
 
     @property
     def base_info(self):

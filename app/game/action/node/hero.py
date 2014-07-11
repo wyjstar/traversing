@@ -114,7 +114,7 @@ def hero_sacrifice_105(dynamicid, data):
     total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
 
     # remove hero
-    player.hero_component.remove_heros_by_nos(args.hero_no_list)
+    player.hero_component.delete_heros_by_nos(args.hero_no_list)
     response = HeroSacrificeResponse()
     response.hero_soul = total_hero_soul
     response.exp_item_no = exp_item_no
@@ -178,10 +178,9 @@ def hero_compose_106(dynamicid, data):
         response.message = "武将已存在，合成失败！"
         return response.SerializeToString()
 
-    hero = Hero()
-    hero.hero_no = hero_no
-    player.hero_component.add_hero(hero)
+    player.hero_component.add_hero(hero_no)
 
+    print "++++++++++++", player.hero_component.get_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
 
     # 3、返回

@@ -6,32 +6,32 @@ created by server on 14-6-25下午5:27.
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config
 from gtwisted.utils import log
 import cPickle
+from app.game.redis_mode import tb_character_hero
 
 
 class Hero(object):
     """武将类"""
 
-    def __init__(self):
+    def __init__(self, character_id=0):
         """
         :field _level: 等级
         :field _break_level: 突破等级
         :field _exp: 当前等级的经验
         :field _equipmentids: 装备IDs
         """
-
         self._hero_no = 0
         self._level = 0
         self._exp = 0
         self._break_level = 0
         self._equipment_ids = []
-        self._mmode = None
+        self._character_id = character_id
 
     def init_data(self, mmode):
         if not mmode:
             return
-        self._mmode = mmode
-        data = self._mmode.get('data')
+        data = mmode.get('data')
         print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+        self._character_id = data.get("character_id")
         hero_property = data.get("property")
         self._hero_no = hero_property.get("hero_no")
         self._level = hero_property.get("level")
@@ -79,14 +79,6 @@ class Hero(object):
     def equipment_ids(self, value):
         self._equipment_ids = value
 
-    @property
-    def mmode(self):
-        return self._mmode
-
-    @mmode.setter
-    def mmode(self, value):
-        self._mmode = value
-
     def get_all_exp(self):
         """根据等级+当前等级经验，得到总经验"""
         total_exp = 0
@@ -114,6 +106,11 @@ class Hero(object):
         return level, temp_exp
 
     def save_data(self):
+        hero_id = str(self._character_id) + '_' + str(self._hero_no)
+        mmode = tb_character_hero.getObj(hero_id)
+        mmode.update('property', self.hero_proerty_dict())
+
+    def hero_proerty_dict(self):
         hero_property = {
             'hero_no': self._hero_no,
             'level': self._level,
@@ -121,7 +118,7 @@ class Hero(object):
             'break_level': self._break_level,
             'equipment_ids': cPickle.dumps(self._equipment_ids)
         }
-        self._mmode.update('property', hero_property)
+        return hero_property
 
 
 
