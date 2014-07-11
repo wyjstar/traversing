@@ -33,12 +33,12 @@ class CharacterEquipmentPackageComponent(Component):
                 strengthen_lv = equipment_info.get('slv')  # 装备强化等级
                 awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
                 enhance_info = equipment_info.get('enhance_info')  # 装备强化花费记录
-                equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, awakening_lv, enhance_info)
+                nobbing_effect = equipment_info.get('nobbing_effect')  # 装备锤炼效果
+                equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv, \
+                                          awakening_lv, enhance_info, nobbing_effect)
                 self._equipments_obj[equipment_id] = equipment_obj
         else:
             tb_character_equipments.new({'id': self.owner.base_info.id, 'equipments': []})
-
-        self.add_equipment(110001)
 
     def add_equipment(self, equipment_no):
         """添加装备

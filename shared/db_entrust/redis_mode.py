@@ -125,6 +125,9 @@ class MMode(RedisObject):
             prere = {pk: props.get(pk)}
             result = util.DeleteFromDB(tablename, prere)
         if result:
+
+            print 'syncDB result:',result
+
             RedisObject.update(self, '_state', MMODE_STATE_ORI)
 
     def checkSync(self, timeout=TIMEOUT):

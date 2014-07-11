@@ -14,7 +14,12 @@ def registe_madmin():
     MAdminManager().registe(memmode.tb_character_info)
     MAdminManager().registe(memmode.tb_account)
     MAdminManager().registe(memmode.tb_account_mapping)
-    MAdminManager().registe(memmode.tb_nickname_mapping)
+    MAdminManager().registe(memmode.tb_character_equipment_chip)
+
+    MAdminManager().registe(memmode.tb_character_equipments)
+    MAdminManager().registe(memmode.tb_equipment_info)
+
+
 
 
 def check_mem_db(delta):

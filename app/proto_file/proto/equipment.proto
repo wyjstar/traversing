@@ -61,21 +61,22 @@ message ComposeEquipmentResponse{
 
 // 装备锤炼 command:  404
 message NobbingEquipmentRequest{
-	repeated Equipment equ = 1;
+	required string id = 1; // 装备ID
 }
 
 message NobbingEquipmentResponse{
 	required CommonResponse res = 1;
 	optional Equipment equ = 2;  //装备
-	optional CommonGameResources cgr = 3; // 消耗
+	repeated CommonGameResources cgr = 3; // 消耗
 }
 
 // 装备熔炼
 message MeltingEquipmentRequest{
-	repeated Equipment equ = 1;
+	required string id = 1; // 装备ID
 }
 
 message MeltingEquipmentResponse{
-
+	required CommonResponse res = 1;
+	repeated CommonGameResources cgr = 3; // 消耗
 }
 
