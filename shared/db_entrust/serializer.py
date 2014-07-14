@@ -66,8 +66,6 @@ class Serializer(object):
                 if columns[attr] == "simple":
                     pass
                 elif columns[attr] == "complex":
-                    print columns
-                    print cPickle.dumps(val, cPickle.HIGHEST_PROTOCOL)
                     data[attr] = val if shallow else cPickle.dumps(val)
                 else:
                     dumps_func = getattr(self, columns[attr] + "_dumps")

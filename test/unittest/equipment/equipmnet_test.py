@@ -22,8 +22,6 @@ class EquipmentTest(unittest.TestCase):
         equipment.attribute.awakening_lv = 4
         equipment.save_data()
 
-        print
-
         equipment = self.player.equipment_component.get_equipment(equipment.base_info.id)
         name = equipment.base_info.base_name
         slv = equipment.attribute.strengthen_lv
@@ -45,25 +43,25 @@ class EquipmentTest(unittest.TestCase):
         print '#2 -------------------------------'
         print self.player.equipment_component.get_all()
 
-        first = self.player.equipment_component.get_all()[0]
-
-        self.player.equipment_component.delete_equipment(first.base_info.id)
-        first = self.player.equipment_component.get_equipment(first.base_info.id)
-        self.assertTrue(first==None)
-
-    def test_save_data(self):
         equipment = self.player.equipment_component.get_all()[0]
 
-        equipment.base_info.base_name = 'e3'
-        equipment.attribute.strengthen_lv = 3
-        equipment.attribute.awakening_lv = 4
-        equipment.save_data()
+        self.player.equipment_component.delete_equipment(equipment.base_info.id)
+        first = self.player.equipment_component.get_equipment(equipment.base_info.id)
+        self.assertTrue(first == None)
 
-        equipment = self.player.equipment_component.get_equipment(equipment.base_info.id)
+    def test_save_data(self):
+        first = self.player.equipment_component.get_all()[0]
+
+        first.base_info.base_name = 'e3'
+        first.attribute.strengthen_lv = 3
+        first.attribute.awakening_lv = 4
+        first.save_data()
+
+        equipment = self.player.equipment_component.get_equipment(first.base_info.id)
         name = equipment.base_info.base_name
         slv = equipment.attribute.strengthen_lv
         alv = equipment.attribute.awakening_lv
-        self.assertEqual(equipment.base_info.equipment_no, 110001, "%d_%d" % (equipment.base_info.equipment_no, 110001))
+        self.assertEqual(equipment.base_info.equipment_no, first.base_info.equipment_no, "%d_%d" % (equipment.base_info.equipment_no, first.base_info.equipment_no))
         self.assertEqual(name, 'e3', "%s_%s" % (name, 'e3'))
 
 
