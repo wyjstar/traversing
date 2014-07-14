@@ -82,7 +82,7 @@ class RedisObject(Serializer):
         newdict = dict(zip([keyname.split(':')[-1] for keyname in keynamelist], olddict))
 
         if ('data' in newdict) and newdict['data']:
-            newdict['data'] = self.loads(cPickle.loads(newdict['data']))
+            newdict['data'] = self.loads(cPickle.loads(dict(newdict['data'])))
 
         return newdict
 
@@ -104,7 +104,7 @@ class RedisObject(Serializer):
             return False
 
         if ('data' in mapping) and mapping['data']:
-            mapping['data'] = cPickle.dumps(self.dumps(mapping['data']))
+            mapping['data'] = cPickle.dumps(self.dumps(dict(mapping['data'])))
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in mapping.keys()],
                               mapping.values()))
@@ -132,8 +132,9 @@ class RedisObject(Serializer):
         nowdict = dict(self.__dict__)
         del nowdict['_client']
         if ('data' in nowdict) and nowdict['data']:
-            nowdict['data'] = cPickle.dumps(self.dumps(nowdict['data']))
+            nowdict['data'] = cPickle.dumps(self.dumps(dict(nowdict['data'])))
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
+
         self._client.mset(newmapping)
