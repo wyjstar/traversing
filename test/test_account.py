@@ -74,7 +74,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.LoginResquest()
-                argument.key.key = '7771ff6fbe80392384754f6b26369885'
+                argument.key.key = '3c6d9c947daddb1633db25d37b7abd3b'
                 # argument.user_name = 'ghh0001'
                 # argument.password = '123457'
                 self.dateSend(argument, 2)

@@ -18,6 +18,7 @@ def forEachPlusInsertProps(tablename,props):
                   "'%s',"%str(val).replace("'", "\\'") for val in props.values()]
     pvaluesstr = ''.join(pvaluesstr)[:-1]
     sqlstr = """INSERT INTO `%s` %s values (%s);"""%(tablename,pkeysstr,pvaluesstr)
+    print 'inster:', sqlstr
     return sqlstr
 
 def FormatCondition(props):
@@ -53,7 +54,8 @@ def forEachUpdateProps(tablename,props,prere):
     assert type(props) == dict
     pro = FormatUpdateStr(props)
     pre = FormatCondition(prere)
-    sqlstr = """UPDATE `%s` SET %s WHERE %s;"""%(tablename,pro,pre) 
+    sqlstr = """UPDATE `%s` SET %s WHERE %s;"""%(tablename,pro,pre)
+    print 'update:', sqlstr
     return sqlstr
 
 def EachQueryProps(props):
@@ -138,7 +140,7 @@ def InsertIntoDB(tablename,data):
     """写入数据库
     """
     sql = forEachPlusInsertProps(tablename,data)
-
+    print 'insert into db:', sql
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
@@ -187,9 +189,10 @@ def getAllPkByFkInDB(tablename,pkname,props):
 def GetOneRecordInfo(tablename,props):
     '''获取单条数据的信息
     '''
+    print 'GetOneRecordInfo:', props
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s"""%(tablename,props)
-
+    print 'get one:', sql
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass = DictCursor)
     cursor.execute(sql)
@@ -265,3 +268,22 @@ def getredisallkeys(key, mem):
             nowlist.add(pk)
         allkeys = allkeys.union(nowlist)
     return allkeys
+
+if __name__ == '__main__':
+    import cPickle
+    dbpool.initPool(**{
+        "host": "127.0.0.1",
+        "user": "test",
+        "passwd": "test",
+        "port": 8066,
+        "db": "db_traversing",
+        "charset": "utf8"
+    })
+
+    InsertIntoDB('tb_character_equipments', {'equipments': cPickle.dumps({123: 456}), 'id': 4})
+    GetOneRecordInfo('tb_character_equipments', {'id': 4})
+
+    UpdateWithDict('tb_character_equipments', {'equipments': cPickle.dumps({123: 567})}, {'id': 4})
+    GetOneRecordInfo('tb_character_equipments', {'id': 4})
+
+    DeleteFromDB('tb_character_equipments', {'id': 4})

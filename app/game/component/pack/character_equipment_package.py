@@ -24,6 +24,7 @@ class CharacterEquipmentPackageComponent(Component):
         if equipments_data:
             print 'equipments_data:', equipments_data
             equipment_ids = equipments_data.get('equipments')
+
             for equipment_id in equipment_ids:
                 equipment_data = tb_equipment_info.getObjData(equipment_id)
                 equipment_info = equipment_data.get('equipment_info')
