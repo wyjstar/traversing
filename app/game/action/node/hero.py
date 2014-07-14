@@ -21,11 +21,10 @@ def get_hero_list_101(dynamic_id, pro_data=None):
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
     response = HeroListResponse()
     for hero in player.hero_component.get_heros():
-        hero_pb = response.hero_list.add()
+        hero_pb = response.heros.add()
         hero_pb.hero_no = hero.hero_no
         hero_pb.level = hero.level
         hero_pb.break_level = hero.break_level
-        hero_pb.hero_no = hero.hero_no
         hero_pb.exp = hero.exp
 
     return response.SerializePartialToString()

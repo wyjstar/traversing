@@ -20,10 +20,10 @@ class HeroActionTest(unittest.TestCase):
         str_response = remoteservice.callTarget(101, 1)
         response = HeroListResponse()
         response.ParseFromString(str_response)
-        hero_list_len = len(response.hero_list)
+        hero_list_len = len(response.heros)
         self.assertEqual(hero_list_len, 3, "return hero len error!%d" % hero_list_len)
-        self.assertEqual(response.hero_list[0].hero_no, 10001, "first hero no error!")
-        self.assertEqual(response.hero_list[hero_list_len-1].hero_no, 10003, "last hero no error!")
+        self.assertEqual(response.heros[0].hero_no, 10001, "first hero no error!")
+        self.assertEqual(response.heros[hero_list_len-1].hero_no, 10003, "last hero no error!")
 
     def test_hero_sacrifice(self):
         hero_no_list = [10001, 10002]

@@ -1,4 +1,3 @@
-package proto_file.equipment;
 import "common.proto";
 
 // 套装属性
@@ -15,7 +14,7 @@ message EnhanceDataFormat{
 }
 
 // 装备
-message Equipment{
+message EquipmentPB{
 	required string id = 1; // 装备ID
 	optional int32 no = 2;  // 装备NO
 	optional int32 strengthen_lv = 3;  //装备强化等级
@@ -34,7 +33,7 @@ message GetEquipmentsRequest{
 
 message GetEquipmentResponse{
 	required CommonResponse res = 1;
-	repeated Equipment equipment = 2;
+	repeated EquipmentPB equipment = 2;
 }
 
 // 装备强化 command: 402
@@ -56,7 +55,7 @@ message ComposeEquipmentRequest{
 
 message ComposeEquipmentResponse{
 	required CommonResponse res = 1;
-	optional Equipment equ = 2;  //装备
+	optional EquipmentPB equ = 2;  //装备
 }
 
 // 装备锤炼 command:  404
@@ -66,7 +65,7 @@ message NobbingEquipmentRequest{
 
 message NobbingEquipmentResponse{
 	required CommonResponse res = 1;
-	optional Equipment equ = 2;  //装备
+	optional EquipmentPB equ = 2;  //装备
 	repeated CommonGameResources cgr = 3; // 消耗
 }
 

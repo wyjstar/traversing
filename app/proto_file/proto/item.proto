@@ -1,16 +1,10 @@
-package proto_file.item;
-
-
 // 道具
-message Item{
+message ItemPB{
 	required int32 item_no = 1;  //道具编号
 	required int32 item_num = 2;  //道具数量
 }
 
 // 请求全部道具 command：301
-
-
-
 message ItemsResponse{
-	repeated Item item = 1;
+	repeated ItemPB item = 1;
 }

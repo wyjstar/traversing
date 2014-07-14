@@ -14,7 +14,7 @@ import hero_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='app.gate',
-  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"?\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1b\n\thero_list\x18\x02 \x03(\x0b\x32\x08.Hero_PB\"A\n\x13HeroUpgradeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"e\n\x15HeroSacrificeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\thero_soul\x18\x02 \x01(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x01(\x05')
+  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\":\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x16\n\x05heros\x18\x02 \x03(\x0b\x32\x07.HeroPB\"A\n\x13HeroUpgradeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"e\n\x15HeroSacrificeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\thero_soul\x18\x02 \x01(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x01(\x05')
 
 
 
@@ -69,7 +69,7 @@ _HEROLISTRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hero_list', full_name='app.gate.HeroListResponse.hero_list', index=1,
+      name='heros', full_name='app.gate.HeroListResponse.heros', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -85,7 +85,7 @@ _HEROLISTRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=96,
-  serialized_end=159,
+  serialized_end=154,
 )
 
 
@@ -126,8 +126,8 @@ _HEROUPGRADERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=161,
-  serialized_end=226,
+  serialized_start=156,
+  serialized_end=221,
 )
 
 
@@ -175,11 +175,11 @@ _HEROSACRIFICERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=228,
-  serialized_end=329,
+  serialized_start=223,
+  serialized_end=324,
 )
 
-_HEROLISTRESPONSE.fields_by_name['hero_list'].message_type = hero_pb2._HERO_PB
+_HEROLISTRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
 DESCRIPTOR.message_types_by_name['CommonResponse'] = _COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['HeroListResponse'] = _HEROLISTRESPONSE
 DESCRIPTOR.message_types_by_name['HeroUpgradeResponse'] = _HEROUPGRADERESPONSE

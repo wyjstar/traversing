@@ -16,6 +16,9 @@ from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.game_configs import chip_config
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
+from app.proto_file.hero_pb2 import HeroPB
+from app.proto_file.player_pb2 import FinancePB
+from app.proto_file.player_response_pb2 import GameResourcesResponse
 
 
 def is_afford(player, item_group):
@@ -74,6 +77,9 @@ def consume(player, item_group):
 
 def gain(player, item_group):
     """获取"""
+
+    result = []
+
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
@@ -112,6 +118,9 @@ def gain(player, item_group):
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)
                 player.hero_chip_component.save_data()
+                type_id = HERO_CHIP
+                item_no = hero_chip_no
+                num = hero_chip_num
 
             else:
                 player.hero_component.add_hero(item_no)
@@ -121,7 +130,73 @@ def gain(player, item_group):
             gain(player, big_bag.get_drop_items())
 
         elif type_id == EQUIPMENT:
-            player.equipment_component.add_equipment(item_no)
+            equipment = player.equipment_component.add_equipment(item_no)
+            item_no = equipment.base_info.id
+
+        result.append([type_id, num, item_no])
+    return result
+
+
+def get_return(player, return_data, game_resources_response):
+    """
+    构造返回数据
+    :param player:
+    :param return_data: 需要返回的信息
+    :param game_resources_response: 返回数据
+    """
+    # finance
+    finance_pb = game_resources_response.finance
+    if not finance_pb:
+        finance_pb = FinancePB()
+        # finance_pb.coin = 0
+        # finance_pb.gold = 0
+        # finance_pb.hero_soul = 0
+        game_resources_response.finance = finance_pb
+
+    for lst in return_data:
+        item_type = lst[0]
+        item_num = lst[1]
+        item_no = lst[2]
+
+        if COIN == item_type:
+            finance_pb.coin += item_num
+        elif GOLD == item_type:
+            finance_pb.gold += item_num
+        elif HERO_SOUL == item_type:
+            finance_pb.hero_soul += item_num
+        elif HERO_CHIP == item_type:
+            hero_chip_pb = game_resources_response.hero_chips.add()
+            hero_chip_pb.hero_chip_no = item_no
+            hero_chip_pb.hero_chip_num = item_num
+        elif ITEM == item_type:
+            item_pb = game_resources_response.items.add()
+            item_pb.item_no = item_no
+            item_pb.item_num = item_num
+        elif HERO == item_type:
+            hero = player.hero_component.get_hero(item_no)
+            hero_pb = game_resources_response.heros.add()
+            hero_pb.hero_no = hero.hero_no
+            hero_pb.level = hero.level
+            hero_pb.exp = hero.exp
+            hero_pb.break_level = hero.break_level
+        elif EQUIPMENT == item_type:
+            equipment = player.equipment_component.get_equipment(item_no)
+            equipment_pb = game_resources_response.equipments.add()
+            equipment_pb.id = equipment.base_info.id
+            equipment_pb.no = equipment.base_info.equipment_no
+            equipment_pb.strengthen_lv = equipment.attribute.strengthen_lv
+            equipment_pb.awakening_lv = equipment.attribute.awakening_lv
+            equipment_pb.nobbing_effect = 0
+            equipment_pb.hero_no = 0
+
+
+
+
+
+
+
+
+
 
 
 
