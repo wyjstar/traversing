@@ -4,6 +4,7 @@ import "item.proto";
 import "hero_chip.proto";
 import "equipment_chip.proto";
 import "player.proto";
+import "common.proto";
 
 message PlayerResponse
 {

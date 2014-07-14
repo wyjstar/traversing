@@ -1,0 +1,27 @@
+message LineUpItem
+{
+    required int32 hero_no = 1;
+    repeated string equipment_ids = 2;
+}
+
+message AddHeroRequest
+{
+    required int32 hero_no = 1;
+}
+
+message ChangeHeroRequest
+{
+    required int32 line_up_item_id = 1;
+    required int32 hero_no = 2;
+}
+
+message ChangeEquipmentsRequest
+{
+    required int32 line_up_item_id = 1;
+    required string equipment_id = 2;
+}
+
+message ChangeLineUpOrderRequest
+{
+    repeated int32 line_up_order = 1;
+}

@@ -176,7 +176,8 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id":"simple",
-                "line_up": "complex"
+                "line_up_items": "simple",
+                "line_up_order": "simple"
             }
         },
         "tb_character_equipments": {

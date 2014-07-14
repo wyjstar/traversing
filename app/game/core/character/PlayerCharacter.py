@@ -129,6 +129,10 @@ class PlayerCharacter(Character):
     def equipment_chip(self):
         return self._equipment_chip
 
+    @property
+    def line_up_component(self):
+        return self._line_up
+
     def check_dynamic_id(self, dynamic_id):
         """检测客户端ID是否匹配
         @param dynamic_id: 客户端动态ID
