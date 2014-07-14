@@ -7,7 +7,9 @@ from app.proto_file.shop_pb2 import ShopRequest
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import shop_config
 from app.game.core.PlayersManager import PlayersManager
-from app.game.logic.item_group_helper import is_afford, consume, gain
+from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
+from app.proto_file.player_response_pb2 import GameResourcesResponse
+
 
 
 def lucky_draw_hero_501(dynamic_id, pro_data):
@@ -44,8 +46,11 @@ def shop_oper(dynamic_id, pro_data):
         response.result = False
         response.message = '消费不足！'
     consume(player, shop_item.consume)  # 消耗
-    gain(player, shop_item.gain)  # 获取
-    gain(player, shop_item.extra_gain)  # 额外获取
+    return_data = gain(player, shop_item.gain)  # 获取
+    extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
+    game_resources_response = GameResourcesResponse()
+    return_data(player, return_data, game_resources_response)
+    return_data(player, extra_return_data, game_resources_response)
 
     response.result = True
     return response.SerializeToString()
