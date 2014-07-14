@@ -1,9 +1,22 @@
 import "hero.proto";
+import "equipment.proto";
+import "item.proto";
+import "hero_chip.proto";
+import "equipment_chip.proto";
+import "player.proto";
 
 message PlayerResponse
 {
     required int64 id = 1;
     required string nickname = 2;
+}
 
-
+message GameResourcesResponse
+{
+    repeated HeroPB heros = 1;
+    repeated EquipmentPB equipments = 2;
+    repeated ItemPB items = 3;
+    repeated HeroChipPB hero_chips = 4;
+    repeated EquipmentChipPB equipment_chips = 5;
+    optional FinancePB finance = 6;
 }

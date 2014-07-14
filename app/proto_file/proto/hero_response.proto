@@ -12,7 +12,7 @@ message CommonResponse
 message HeroListResponse
 {
     required bool result = 1;
-    repeated Hero_PB hero_list = 2;
+    repeated HeroPB heros = 2;
 }
 
 //武将升级

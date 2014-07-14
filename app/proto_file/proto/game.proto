@@ -1,7 +1,6 @@
 package proto_file.game;
 
 
-
 // 游戏服登录 command：4
 message GameLoginResquest{
 	required string token = 1;
