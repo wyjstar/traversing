@@ -82,7 +82,7 @@ class RedisObject(Serializer):
         newdict = dict(zip([keyname.split(':')[-1] for keyname in keynamelist], olddict))
 
         if ('data' in newdict) and newdict['data']:
-            newdict['data'] = self.loads(cPickle.loads(dict(newdict['data'])))
+            newdict['data'] = self.loads(cPickle.loads(newdict['data']))
 
         return newdict
 
