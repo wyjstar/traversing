@@ -36,7 +36,9 @@ def shop_oper(dynamic_id, pro_data):
     """商城所有操作"""
     request = ShopRequest()
     request.ParseFromString(pro_data)
+    game_resources_response = GameResourcesResponse()
     response = CommonResponse()
+    game_resources_response.res = response
 
     shop_id = request.id
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
@@ -48,9 +50,9 @@ def shop_oper(dynamic_id, pro_data):
     consume(player, shop_item.consume)  # 消耗
     return_data = gain(player, shop_item.gain)  # 获取
     extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
-    game_resources_response = GameResourcesResponse()
-    return_data(player, return_data, game_resources_response)
-    return_data(player, extra_return_data, game_resources_response)
+
+    get_return(player, return_data, game_resources_response)
+    get_return(player, extra_return_data, game_resources_response)
 
     response.result = True
-    return response.SerializeToString()
+    return game_resources_response.SerializeToString()

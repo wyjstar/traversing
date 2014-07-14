@@ -138,10 +138,17 @@ def gain(player, item_group):
 
 
 def get_return(player, return_data, game_resources_response):
-    # 构造返回数据
-
-    finance_pb = FinancePB()
-    game_resources_response.finance = finance_pb
+    """
+    构造返回数据
+    :param player:
+    :param return_data: 需要返回的信息
+    :param game_resources_response: 返回数据
+    """
+    # finance
+    finance_pb = game_resources_response.finance
+    if not finance_pb:
+        finance_pb = FinancePB()
+        game_resources_response.finance = finance_pb
 
     for lst in return_data:
         item_type = lst[0]
