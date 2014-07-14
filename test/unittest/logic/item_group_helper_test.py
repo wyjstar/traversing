@@ -7,12 +7,13 @@ import unittest
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.item_group_helper import *
 from shared.db_opear.configs_data.data_helper import parse
+from app.proto_file.player_response_pb2 import GameResourcesResponse
 
 
 class ItemGroupHelperTest(unittest.TestCase):
-
     def setUp(self):
         from test.unittest.init_test_data import init
+
         init()
         self.player = PlayersManager().get_player_by_id(1)
 
@@ -24,7 +25,7 @@ class ItemGroupHelperTest(unittest.TestCase):
         self.assertEqual(first.num, 1, "first item type id error!%d_%d" % (first.num, 1))
         self.assertEqual(first.item_no, 1001, "first item type id error!%d_%d" % (first.item_no, 0011))
 
-        last = item_group[len(item_group)-1]
+        last = item_group[len(item_group) - 1]
         self.assertEqual(last.item_type, 3, "first item type id error!%d_%d" % (last.item_type, 3))
         self.assertEqual(last.num, 3, "first item type id error!%d_%d" % (last.num, 3))
         self.assertEqual(last.item_no, 1003, "first item type id error!%d_%d" % (last.item_no, 1003))
@@ -40,6 +41,7 @@ class ItemGroupHelperTest(unittest.TestCase):
         self.assertEqual(result.get('result'), True)
 
         import copy
+
         consume_data_copy = copy.deepcopy(consume_data)
         consume_data_copy[1][0] += 1
         consume_data_copy[1][1] += 1
@@ -113,7 +115,7 @@ class ItemGroupHelperTest(unittest.TestCase):
         gain(self.player, parse(gain_data))
 
         hero = self.player.hero_component.get_hero(10005)
-        self.assertFalse(hero==None)
+        self.assertFalse(hero == None)
         self.assertEqual(hero.hero_no, 10005, "%d_%d" % (hero.hero_no, 10005))
 
         gain_data = {HERO: [1, 1, 10005]}
@@ -139,6 +141,50 @@ class ItemGroupHelperTest(unittest.TestCase):
             if equipment.base_info.equipment_no == no:
                 lst.append(equipment)
         return lst
+
+    def test_get_return(self):
+        response = GameResourcesResponse()
+        return_data = [[COIN, 30000, 0],
+                       [GOLD, 10000, 0],
+                       [HERO_SOUL, 20000, 0],
+                       [HERO_CHIP, 300, 1000112],
+                       [ITEM, 2, 1000111],
+                       [HERO, 1, 10001]]
+        get_return(self.player, return_data, response)
+
+        self.assertEqual(response.finance.coin, 30000, "%d_%d" % (response.finance.coin, 30000))
+        self.assertEqual(response.finance.gold, 10000, "%d_%d" % (response.finance.gold, 10000))
+        self.assertEqual(response.finance.hero_soul, 20000, "%d_%d" % (response.finance.hero_soul, 20000))
+        hero = response.heros[0]
+        self.assertFalse(hero==None, "hero")
+        self.assertEqual(hero.hero_no, 10001, "%d_%d" % (hero.hero_no, 10001))
+        self.assertEqual(hero.level, 11, "%d_%d" % (hero.level, 11))
+        self.assertEqual(hero.exp, 1, "%d_%d" % (hero.exp, 1))
+        self.assertEqual(hero.break_level, 1, "%d_%d" % (hero.break_level, 1))
+
+        # 单独测试装备
+        equipment = self.player.equipment_component.get_all()[0]
+        return_data = [[EQUIPMENT, 1, equipment.base_info.id]]
+        get_return(self.player, return_data, response)
+        equipment_pb = response.equipments[0]
+        self.assertFalse(equipment==None, "equipment")
+        self.assertEqual(equipment_pb.no, equipment.base_info.equipment_no, "%d_%d" %
+                         (equipment_pb.no, equipment.base_info.equipment_no))
+        self.assertEqual(equipment_pb.strengthen_lv, equipment.attribute.strengthen_lv, "%d_%d" %
+                         (equipment_pb.strengthen_lv, equipment.attribute.strengthen_lv))
+        self.assertEqual(equipment_pb.awakening_lv, equipment.attribute.awakening_lv, "%d_%d" %
+                         (equipment_pb.awakening_lv, equipment.attribute.awakening_lv))
+        # todo: 添加详细信息测试
+        self.assertEqual(equipment_pb.nobbing_effect, 0, "%d_%d" %
+                         (equipment_pb.nobbing_effect, 0))
+        self.assertEqual(equipment_pb.hero_no, 0, "%d_%d" %
+                         (equipment_pb.hero_no, 0))
+
+
+
+
+
+
 
 
 

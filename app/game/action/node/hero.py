@@ -25,7 +25,6 @@ def get_hero_list_101(dynamic_id, pro_data=None):
         hero_pb.hero_no = hero.hero_no
         hero_pb.level = hero.level
         hero_pb.break_level = hero.break_level
-        hero_pb.hero_no = hero.hero_no
         hero_pb.exp = hero.exp
 
     return response.SerializePartialToString()
