@@ -147,13 +147,14 @@
         "tb_character_heros": {
             "pkey_field": "id",
             "def_attrs": {
-                "character_id": "simple",
+                "id": "simple",
                 "heros": "complex"
             }
         },
         "tb_character_hero": {
             "pkey_field": "id",
             "def_attrs": {
+                "id": "simple",
                 "character_id": "simple",
                 "property": "complex"
             }

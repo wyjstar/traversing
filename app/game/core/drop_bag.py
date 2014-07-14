@@ -21,10 +21,10 @@ class BigBag(object):
 
             if is_uniq:
                 lst = small_bag.random_multi_pick_without_repeat(small_bag_times)
-                drop_items.append(lst)
+                drop_items.extend(lst)
             else:
                 lst = small_bag.random_multi_pick(small_bag_times)
-                drop_items.append(lst)
+                drop_items.extend(lst)
 
         drop_item_group = []
         for drop_item in drop_items:
@@ -46,18 +46,30 @@ class SmallBag(object):
         return self.__do_random()
 
     def random_multi_pick(self, times):
+        """重复掉落多次
+        """
         drop_items = []
         for i in range(times):
             picked_item = self.random_pick()
+
+            if not picked_item:
+                continue
+
             drop_items.append(picked_item)
         return drop_items
 
     def random_multi_pick_without_repeat(self, times):
+        """重复掉落多次，要去重
+        """
         drop_items = []
 
-        small_bag_copy = copy.deepcopy(self)
+        small_bag_copy = copy.deepcopy(self.small_bag)
         for i in range(times):
             picked_item = small_bag_copy.random_pick()
+
+            if not picked_item:
+                continue
+
             drop_items.append(picked_item)
             small_bag_copy.del_drop_item(picked_item)
 
