@@ -22,13 +22,12 @@ class CharacterHerosComponent(Component):
             # 没有武将列表数据
             data = {
                 'id': pid,
-                'hero_ids': cPickle.dumps([]),
+                'hero_ids': [],
             }
             tb_character_heros.new(data)
             return
+
         hero_ids = character_heros.get('hero_ids')
-        hero_ids = cPickle.loads(hero_ids)
-        print "hero_ids", hero_ids
 
         if not hero_ids:
             return
