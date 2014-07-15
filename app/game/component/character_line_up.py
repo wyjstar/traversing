@@ -17,6 +17,7 @@ class CharacterLineUpComponent(Component):
         # TODO 有多少个位置 需要读取baseinfo配置表
         self._line_up_slots = dict([(i, None) for i in range(1, 7)])  # 卡牌位列表
         self._line_up_order = []
+        self._employee = None
         self._unique = 0  # 无双
 
     def init_data(self):
@@ -41,6 +42,14 @@ class CharacterLineUpComponent(Component):
     @line_up_order.setter
     def line_up_order(self, value):
         self._line_up_order = value
+
+    @property
+    def employee(self):
+        return self._employee
+
+    @employee.setter
+    def employee(self, value):
+        self._employee = value
 
     def get_line_up_slot(self, line_up_slot_id):
         return self._line_up_slots[line_up_slot_id - 1]

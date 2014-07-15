@@ -76,6 +76,12 @@ def change_line_up_order_704(dynamic_id, pro_data):
     player.line_up_component.save_data()
 
 
+# @remote_service_handle
+# def employ_705(dynamic_id, pro_data):
+#     """雇佣"""
+#
+
+
 
 
 
