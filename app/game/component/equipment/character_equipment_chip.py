@@ -39,9 +39,10 @@ class CharacterEquipmentChipComponent(Component):
         """
         if equipment_chip.chip_no in self._chips:  # 已经存在的item_no
             item_obj = self._chips[equipment_chip.chip_no]
-            item_obj.modify_num(equipment_chip.chip_num, add=True)
+            item_obj.modify_single_attr('chip_num', equipment_chip.chip_num, add=True)
         else:
             self._chips[equipment_chip.chip_no] = equipment_chip
+        self.save_data()
 
     def save_data(self):
         props = {}

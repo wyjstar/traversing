@@ -4,6 +4,7 @@ created by server on 14-7-9下午5:11.
 """
 
 from app.game.core.hero_chip import HeroChip
+from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.game_configs import chip_config
 from app.game.core.drop_bag import BigBag
@@ -18,7 +19,7 @@ def is_afford(player, item_group):
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
-        obj_id = group_item.item_no
+        item_no = group_item.item_no
         print "hero_soul", player.finance.hero_soul
         if type_id == const.COIN and player.finance.coin < num:
             return {'result': False}
@@ -27,11 +28,15 @@ def is_afford(player, item_group):
         elif type_id == const.HERO_SOUL and player.finance.hero_soul < num:
             return {'result': False}
         elif type_id == const.HERO_CHIP:
-            hero_chip = player.hero_chip_component.get_chip(obj_id)
+            hero_chip = player.hero_chip_component.get_chip(item_no)
             if not hero_chip or hero_chip.num < num:
                 return {'result': False}
+        elif type_id == const.EQUIPMENT_CHIP:
+            equipment_chip = player.equipment_chip_component.get_chip(item_no)
+            if not equipment_chip or equipment_chip.chip_num < num:
+                return {'result': False}
         elif type_id == const.ITEM:
-            item = player.item_package.get_item(obj_id)
+            item = player.item_package.get_item(item_no)
             if not item or item.num < num:
                 return {'result': False}
 
@@ -43,7 +48,7 @@ def consume(player, item_group):
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
-        obj_id = group_item.item_no
+        item_no = group_item.item_no
         if type_id == const.COIN:
             player.finance.coin -= num
             player.finance.save_data()
@@ -57,12 +62,17 @@ def consume(player, item_group):
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
-            hero_chip = player.hero_chip_component.get_chip(obj_id)
+            hero_chip = player.hero_chip_component.get_chip(item_no)
             hero_chip.num -= num
             player.hero_chip_component.save_data()
 
+        elif type_id == const.EQUIPMENT_CHIP:
+            equipment_chip = player.equipment_chip_component.get_chip(item_no)
+            equipment_chip.chip_num -= num
+            player.equipment_chip_component.save_data()
+
         elif type_id == const.ITEM:
-            item = player.item_package.get_item(obj_id)
+            item = player.item_package.get_item(item_no)
             item.num -= num
             player.item_package.save_data()
 
@@ -117,7 +127,7 @@ def gain(player, item_group):
             else:
                 player.hero_component.add_hero(item_no)
 
-        elif type_id == BIG_BAG:
+        elif type_id == const.BIG_BAG:
             big_bag = BigBag(item_no)
             gain(player, big_bag.get_drop_items())
 
@@ -125,6 +135,10 @@ def gain(player, item_group):
             equipment = player.equipment_component.add_equipment(item_no)
             item_no = equipment.base_info.id
 
+        elif type_id == const.EQUIPMENT_CHIP:
+            chip = EquipmentChip(item_no, num)
+            player.equipment_chip_component.add_chip(chip)
+            player.equipment_chip_component.save_data()
         result.append([type_id, num, item_no])
     return result
 
@@ -167,19 +181,15 @@ def get_return(player, return_data, game_resources_response):
         elif const.HERO == item_type:
             hero = player.hero_component.get_hero(item_no)
             hero_pb = game_resources_response.heros.add()
-            hero_pb.hero_no = hero.hero_no
-            hero_pb.level = hero.level
-            hero_pb.exp = hero.exp
-            hero_pb.break_level = hero.break_level
+            hero.update_pb(hero_pb)
         elif const.EQUIPMENT == item_type:
             equipment = player.equipment_component.get_equipment(item_no)
             equipment_pb = game_resources_response.equipments.add()
-            equipment_pb.id = equipment.base_info.id
-            equipment_pb.no = equipment.base_info.equipment_no
-            equipment_pb.strengthen_lv = equipment.attribute.strengthen_lv
-            equipment_pb.awakening_lv = equipment.attribute.awakening_lv
-            equipment_pb.nobbing_effect = 0
-            equipment_pb.hero_no = 0
+            equipment.update_pb(equipment_pb)
+        elif const.EQUIPMENT_CHIP == item_type:
+            chip_pb = game_resources_response.equipment_chips.add()
+            chip_pb.equipment_chip_no = item_no
+            chip_pb.equipment_chip_num = item_num
 
 
 
