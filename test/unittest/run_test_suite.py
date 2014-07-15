@@ -19,8 +19,8 @@ if __name__ == "__main__":
     suite.addTest(unittest.makeSuite(HeroTest))
     suite.addTest(unittest.makeSuite(HeroChipTest))
     suite.addTest(unittest.makeSuite(EquipmentTest))
-    suite.addTest(unittest.makeSuite(LineUpTest))
-    suite.addTest(unittest.makeSuite(LineUpActionTest))
+    # suite.addTest(unittest.makeSuite(LineUpTest))
+    # suite.addTest(unittest.makeSuite(LineUpActionTest))
     suite.addTest(unittest.makeSuite(DropBagTest))
     unittest.TextTestRunner().run(suite)
 

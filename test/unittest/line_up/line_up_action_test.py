@@ -18,7 +18,7 @@ class LineUpActionTest(unittest.TestCase):
         self.add_hero(10001)
         self.add_hero(10002)
 
-    def test_add_hero(self):
+    def test_add_hero_701(self):
         self.add_hero(10003)
 
         line_up_component = self.player.line_up_component

@@ -49,7 +49,8 @@ def use_item_302(dynamic_id, pro_data):
     common_response = CommonResponse()
     common_response.result = True
     game_resources_response = GameResourcesResponse()
-    game_resources_response.res = common_response
+    common_response = game_resources_response.res  # = common_response
+    common_response.result = True
 
     if item_func == 2:
         # 宝箱
@@ -57,18 +58,18 @@ def use_item_302(dynamic_id, pro_data):
         box_key = player.item_package.get_item(box_key_no)
         if not box_key or box_key.num < func_args2 * item_num:
             common_response.result = False
-            common_response.message = "box key 不足！"
+            common_response.message = "box key 不足！" + str(func_args2 * item_num) + "_" + box_key.num
             return game_resources_response
         # 消耗key
         box_key.num -= func_args2 * item_num
         player.item_package.save_data()
 
     big_bag = BigBag(drop_id)
-    drop_item_group = big_bag.get_drop_items()
-    return_data = gain(player, drop_item_group)
-
-    get_return(player, return_data, game_resources_response)
-    return game_resources_response
+    for i in range(item_num):
+        drop_item_group = big_bag.get_drop_items()
+        return_data = gain(player, drop_item_group)
+        get_return(player, return_data, game_resources_response)
+    return game_resources_response.SerializeToString()
 
 
 

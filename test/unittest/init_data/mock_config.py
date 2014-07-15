@@ -7,6 +7,7 @@ from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.chip_config import ChipConfig
+from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.utils.const import *
 
 # ------------------------base----------------------------
@@ -32,15 +33,14 @@ item2 = {'id': 1000102, 'func_args1': 50000}
 item3 = {'id': 1000103, 'func_args1': 10000}
 item4 = {'id': 1000104, 'func_args1': 1000}
 
-item5 = {'id': 1000105, 'func_args1': 2, 'func_args2': 1}
+item5 = {'id': 1000112, 'func': 2, 'func_args1': 1000113, 'func_args2': 1, 'dropId': 10002}
+item6 = {'id': 1000113, 'func': 0}
 
 item_config.clear()
-item_config[1000101] = item1
-item_config[1000102] = item2
-item_config[1000103] = item3
-item_config[1000104] = item4
-
-#------------------------hero_exp----------------------------
+item_config_mock = ItemsConfig().parser([item1, item2, item3, item4, item5, item6])
+for key, value in item_config_mock.items():
+    item_config[key] = value
+# ------------------------hero_exp----------------------------
 
 hero_exp1 = {'level': 1, 'exp': 100}
 hero_exp2 = {'level': 2, 'exp': 200}
@@ -106,7 +106,8 @@ chip_config['chips'] = chip_config_mock['chips']
 #------------------------big_bag----------------------------
 
 big_bag1 = dict(dropId=10001, smallPacketId=[1002, 1003], smallPacketTimes=[5, 1], isUniq=[1, 0])
-big_bag_config_mock = BigBagsConfig().parser([big_bag1])
+big_bag2 = dict(dropId=10002, smallPacketId=[1004], smallPacketTimes=[1], isUniq=[0])
+big_bag_config_mock = BigBagsConfig().parser([big_bag1, big_bag2])
 for key, value in big_bag_config_mock.items():
     big_bag_config[key] = value
 
@@ -126,7 +127,9 @@ small_bag10 = dict(id=1010, dropId=1002, subId=2, type=const.HERO, count=1, deta
 small_bag11 = dict(id=1011, dropId=1003, subId=1, type=const.COIN, count=1000, detailID=0, weight=1)
 small_bag12 = dict(id=1012, dropId=1003, subId=2, type=const.HERO, count=1, detailID=10006, weight=1)
 
-small_bag_config_mock = SmallBagsConfig().parser([small_bag9, small_bag10, small_bag11, small_bag12])
+small_bag13 = dict(id=1013, dropId=1004, subId=1, type=const.COIN, count=1000, detailID=0, weight=1)
+
+small_bag_config_mock = SmallBagsConfig().parser([small_bag9, small_bag10, small_bag11, small_bag12, small_bag13])
 
 for key, value in small_bag_config_mock.items():
     small_bag_config[key] = value

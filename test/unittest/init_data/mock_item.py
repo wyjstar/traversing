@@ -16,6 +16,12 @@ def init_item():
     # 突破丹
     item5 = Item(1000111, 2)
 
+
+    # box
+    item6 = Item(1000112, 2)
+    # key
+    item7 = Item(1000113, 2)
+
     data = {'id': 1, 'items': ''}
     tb_character_item_package.new(data)
 
@@ -25,3 +31,5 @@ def init_item():
     player.item_package.add_item(item3)
     player.item_package.add_item(item4)
     player.item_package.add_item(item5)
+    player.item_package.add_item(item6)
+    player.item_package.add_item(item7)
