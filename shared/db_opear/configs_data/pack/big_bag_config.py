@@ -58,7 +58,7 @@ class BigBagsConfig(object):
             big_bag.big_bag_id = item.dropId
             big_bag.small_packages = item.smallPacketId
             big_bag.is_uniq_list = item.isUniq
-
+            big_bag.small_package_times = item.smallPacketTimes
             self._big_bags[big_bag.big_bag_id] = big_bag
 
         return self._big_bags

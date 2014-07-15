@@ -92,7 +92,7 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
     """
     player = kwargs.get('player')
 
-    chip = player.equipment_chip.get_chip(chip_no)
+    chip = player.equipment_chip_component.get_chip(chip_no)
 
     # 没有碎片
     if not chip:

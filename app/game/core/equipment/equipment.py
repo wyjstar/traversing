@@ -85,6 +85,14 @@ class Equipment(object):
             return None
         return equ_config_obj.gain
 
+    def update_pb(self, equipment_pb):
+        equipment_pb.id = self.base_info.id
+        equipment_pb.no = self.base_info.equipment_no
+        equipment_pb.strengthen_lv = self.attribute.strengthen_lv
+        equipment_pb.awakening_lv = self.attribute.awakening_lv
+        equipment_pb.nobbing_effect = 0
+        equipment_pb.hero_no = 0
+
 
 
 

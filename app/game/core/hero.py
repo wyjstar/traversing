@@ -120,6 +120,12 @@ class Hero(object):
         }
         return hero_property
 
+    def update_pb(self, hero_pb):
+        hero_pb.hero_no = self._hero_no
+        hero_pb.level = self._level
+        hero_pb.break_level = self._break_level
+        hero_pb.exp = self._exp
+
 
 
 

@@ -9,67 +9,33 @@ from google.protobuf import descriptor_pb2
 
 
 import hero_pb2
+import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='app.gate',
-  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\"1\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\":\n\x10HeroListResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x16\n\x05heros\x18\x02 \x03(\x0b\x32\x07.HeroPB\"A\n\x13HeroUpgradeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"e\n\x15HeroSacrificeResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\thero_soul\x18\x02 \x01(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x01(\x05')
+  serialized_pb='\n\x13hero_response.proto\x12\x08\x61pp.gate\x1a\nhero.proto\x1a\x0c\x63ommon.proto\"H\n\x10GetHerosResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x16\n\x05heros\x18\x02 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"F\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x62reak_level\x18\x02 \x01(\x05\"s\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x11\n\thero_soul\x18\x02 \x01(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x01(\x05\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB')
 
 
 
 
-_COMMONRESPONSE = _descriptor.Descriptor(
-  name='CommonResponse',
-  full_name='app.gate.CommonResponse',
+_GETHEROSRESPONSE = _descriptor.Descriptor(
+  name='GetHerosResponse',
+  full_name='app.gate.GetHerosResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='app.gate.CommonResponse.result', index=0,
-      number=1, type=8, cpp_type=7, label=2,
-      has_default_value=False, default_value=False,
+      name='res', full_name='app.gate.GetHerosResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='message', full_name='app.gate.CommonResponse.message', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=45,
-  serialized_end=94,
-)
-
-
-_HEROLISTRESPONSE = _descriptor.Descriptor(
-  name='HeroListResponse',
-  full_name='app.gate.HeroListResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='result', full_name='app.gate.HeroListResponse.result', index=0,
-      number=1, type=8, cpp_type=7, label=2,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='heros', full_name='app.gate.HeroListResponse.heros', index=1,
+      name='heros', full_name='app.gate.GetHerosResponse.heros', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -84,8 +50,8 @@ _HEROLISTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=96,
-  serialized_end=154,
+  serialized_start=59,
+  serialized_end=131,
 )
 
 
@@ -97,9 +63,9 @@ _HEROUPGRADERESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='app.gate.HeroUpgradeResponse.result', index=0,
-      number=1, type=8, cpp_type=7, label=2,
-      has_default_value=False, default_value=False,
+      name='res', full_name='app.gate.HeroUpgradeResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -126,8 +92,43 @@ _HEROUPGRADERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=156,
-  serialized_end=221,
+  serialized_start=133,
+  serialized_end=212,
+)
+
+
+_HEROBREAKRESPONSE = _descriptor.Descriptor(
+  name='HeroBreakResponse',
+  full_name='app.gate.HeroBreakResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='app.gate.HeroBreakResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='break_level', full_name='app.gate.HeroBreakResponse.break_level', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=214,
+  serialized_end=284,
 )
 
 
@@ -139,9 +140,9 @@ _HEROSACRIFICERESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='app.gate.HeroSacrificeResponse.result', index=0,
-      number=1, type=8, cpp_type=7, label=2,
-      has_default_value=False, default_value=False,
+      name='res', full_name='app.gate.HeroSacrificeResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -175,27 +176,63 @@ _HEROSACRIFICERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=223,
-  serialized_end=324,
+  serialized_start=286,
+  serialized_end=401,
 )
 
-_HEROLISTRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
-DESCRIPTOR.message_types_by_name['CommonResponse'] = _COMMONRESPONSE
-DESCRIPTOR.message_types_by_name['HeroListResponse'] = _HEROLISTRESPONSE
+
+_HEROCOMPOSERESPONSE = _descriptor.Descriptor(
+  name='HeroComposeResponse',
+  full_name='app.gate.HeroComposeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='app.gate.HeroComposeResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero', full_name='app.gate.HeroComposeResponse.hero', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=403,
+  serialized_end=477,
+)
+
+_GETHEROSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_GETHEROSRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
+_HEROUPGRADERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_HEROBREAKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_HEROSACRIFICERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_HEROCOMPOSERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_HEROCOMPOSERESPONSE.fields_by_name['hero'].message_type = hero_pb2._HEROPB
+DESCRIPTOR.message_types_by_name['GetHerosResponse'] = _GETHEROSRESPONSE
 DESCRIPTOR.message_types_by_name['HeroUpgradeResponse'] = _HEROUPGRADERESPONSE
+DESCRIPTOR.message_types_by_name['HeroBreakResponse'] = _HEROBREAKRESPONSE
 DESCRIPTOR.message_types_by_name['HeroSacrificeResponse'] = _HEROSACRIFICERESPONSE
+DESCRIPTOR.message_types_by_name['HeroComposeResponse'] = _HEROCOMPOSERESPONSE
 
-class CommonResponse(_message.Message):
+class GetHerosResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _COMMONRESPONSE
+  DESCRIPTOR = _GETHEROSRESPONSE
 
-  # @@protoc_insertion_point(class_scope:app.gate.CommonResponse)
-
-class HeroListResponse(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _HEROLISTRESPONSE
-
-  # @@protoc_insertion_point(class_scope:app.gate.HeroListResponse)
+  # @@protoc_insertion_point(class_scope:app.gate.GetHerosResponse)
 
 class HeroUpgradeResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -203,11 +240,23 @@ class HeroUpgradeResponse(_message.Message):
 
   # @@protoc_insertion_point(class_scope:app.gate.HeroUpgradeResponse)
 
+class HeroBreakResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROBREAKRESPONSE
+
+  # @@protoc_insertion_point(class_scope:app.gate.HeroBreakResponse)
+
 class HeroSacrificeResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _HEROSACRIFICERESPONSE
 
   # @@protoc_insertion_point(class_scope:app.gate.HeroSacrificeResponse)
+
+class HeroComposeResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROCOMPOSERESPONSE
+
+  # @@protoc_insertion_point(class_scope:app.gate.HeroComposeResponse)
 
 
 # @@protoc_insertion_point(module_scope)

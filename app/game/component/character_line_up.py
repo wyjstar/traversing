@@ -84,7 +84,6 @@ class CharacterLineUpComponent(Component):
         return equipment_no_list
 
     def save_data(self):
-
         props = {'line_up_slots': dict([(slot_no, LineUpSlot(slot_no).dumps()) for slot_no in
                                         self._line_up_slots.keys()]),
                  'line_up_order': self._line_up_order}
@@ -151,6 +150,7 @@ class CharacterLineUpComponent(Component):
                     activation = 0
                     break
         return activation
+
 
 
 
