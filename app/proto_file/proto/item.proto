@@ -1,3 +1,4 @@
+import "common.proto";
 // 道具
 message ItemPB{
 	required int32 item_no = 1;  //道具编号
@@ -5,6 +6,7 @@ message ItemPB{
 }
 
 // 请求全部道具 command：301
-message ItemsResponse{
-	repeated ItemPB item = 1;
+message GetItemsResponse{
+    required CommonResponse res = 1;
+	repeated ItemPB items = 2;
 }

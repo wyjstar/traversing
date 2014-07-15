@@ -13,21 +13,21 @@ from app.game.logic.item_group_helper import gain, get_return
 
 
 @remote_service_handle
-def get_items_301(dynamic_id, pro_data):
+def get_items_301(dynamic_id, pro_data=None):
     """取得全部道具
     """
-    print '301', dynamic_id, pro_data
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
-    print player
-    game_items = player.item_package.items
+    items = player.item_package.get_all()
     # game_items = {1000:1, 1001:2}
-    items = item_pb2.ItemsResponse()
-    item = items.item
-    for item_no, item_num in game_items.items():
-        _item = item.add()
-        _item.item_no = item_no
-        _item.item_num = item_num
-    return items.SerializePartialToString()
+    response = item_pb2.GetItemsResponse()
+
+    for item in items:
+        _item = response.items.add()
+        _item.item_no = item.item_no
+        _item.item_num = item.num
+
+    response.res.result = True
+    return response.SerializePartialToString()
 
 
 @remote_service_handle
