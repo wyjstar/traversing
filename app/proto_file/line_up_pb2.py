@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\"4\n\nLineUpItem\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x15\n\requipment_ids\x18\x02 \x03(\t\"!\n\x0e\x41\x64\x64HeroRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"=\n\x11\x43hangeHeroRequest\x12\x17\n\x0fline_up_item_id\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\"H\n\x17\x43hangeEquipmentsRequest\x12\x17\n\x0fline_up_item_id\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x02(\t\"1\n\x18\x43hangeLineUpOrderRequest\x12\x15\n\rline_up_order\x18\x01 \x03(\x05')
+  serialized_pb='\n\rline_up.proto\"4\n\nLineUpItem\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x15\n\requipment_ids\x18\x02 \x03(\t\"!\n\x0e\x41\x64\x64HeroRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"=\n\x11\x43hangeHeroRequest\x12\x17\n\x0fline_up_slot_id\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\"I\n\x17\x43hangeEquipmentsRequest\x12\x17\n\x0fline_up_slot_id\x18\x01 \x02(\x05\x12\x15\n\requipment_ids\x18\x02 \x03(\t\"1\n\x18\x43hangeLineUpOrderRequest\x12\x15\n\rline_up_order\x18\x01 \x03(\x05')
 
 
 
@@ -89,7 +89,7 @@ _CHANGEHEROREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='line_up_item_id', full_name='ChangeHeroRequest.line_up_item_id', index=0,
+      name='line_up_slot_id', full_name='ChangeHeroRequest.line_up_slot_id', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -124,16 +124,16 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='line_up_item_id', full_name='ChangeEquipmentsRequest.line_up_item_id', index=0,
+      name='line_up_slot_id', full_name='ChangeEquipmentsRequest.line_up_slot_id', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='equipment_id', full_name='ChangeEquipmentsRequest.equipment_id', index=1,
-      number=2, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      name='equipment_ids', full_name='ChangeEquipmentsRequest.equipment_ids', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -147,7 +147,7 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=169,
-  serialized_end=241,
+  serialized_end=242,
 )
 
 
@@ -174,8 +174,8 @@ _CHANGELINEUPORDERREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=243,
-  serialized_end=292,
+  serialized_start=244,
+  serialized_end=293,
 )
 
 DESCRIPTOR.message_types_by_name['LineUpItem'] = _LINEUPITEM

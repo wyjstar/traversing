@@ -19,5 +19,6 @@ class LineUpTest(unittest.TestCase):
         line_up_component = self.player.line_up_component
         line_up_component.add_hero(10001)
         line_up_item = line_up_component.get_line_up_item(1)
-        self.assertEqual(line_up_item.hero_no, 10001, "%d_%d" % (line_up_component.hero_no, 10001))
+        self.assertEqual(line_up_item.hero_no, 10001, "%d_%d" % (line_up_item.hero_no, 10001))
         self.assertEqual(len(line_up_component.line_up_order), 1, "%d_%d" % (len(line_up_component.line_up_order), 1))
+        self.assertEqual(line_up_component.line_up_order[0], 1, "%d_%d" % (line_up_component.line_up_order[0], 1))
