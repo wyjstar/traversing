@@ -127,7 +127,7 @@ class PlayerCharacter(Character):
         return self._equipment
 
     @property
-    def equipment_chip(self):
+    def equipment_chip_component(self):
         return self._equipment_chip
 
     @property

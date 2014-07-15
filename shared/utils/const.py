@@ -36,3 +36,15 @@ const.ITEM_EQUIP = 102  # 装备类型
 
 const.LINE_UP_INDEX = [1, 2, 3, 4, 5, 6]  # 阵容编号
 
+const.COIN = 1
+const.GOLD = 2
+const.HERO_SOUL = 3
+const.HERO = 4
+const.HERO_CHIP = 5
+const.EQUIPMENT = 6
+const.EQUIPMENT_CHIP = 7
+const.ITEM = 8
+const.BIG_BAG = 9
+
+
+

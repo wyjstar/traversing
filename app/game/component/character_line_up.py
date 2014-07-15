@@ -70,8 +70,6 @@ class CharacterLineUpComponent(Component):
                 'hero_no': slot.hero_no,
                 'equipment_ids': slot.equipment_ids
             })
-        print "________________"
-        print data
         tb_character_line_up.update('line_up_slots', cPickle.dumps(data))
         tb_character_line_up.update('line_up_order', cPickle.dumps(self._line_up_order))
 

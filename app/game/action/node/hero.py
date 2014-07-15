@@ -49,7 +49,7 @@ def hero_upgrade_with_item_103(dynamicid, data):
         response.message = "经验药水道具不足！"
         return response.SerializeToString()
 
-    exp = item_config.get(exp_item_no).get('func_args')
+    exp = item_config.get(exp_item_no).get('func_args1')
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)
@@ -123,7 +123,7 @@ def hero_sacrifice(heros):
     exp_items = base_config.get("exp_items")
     for item_no in exp_items:
         config = item_config.get(item_no)
-        exp = config.get("func_args")
+        exp = config.get("func_args1")
         if total_exp/exp > 0:
             exp_item_no = item_no
             exp_item_num = total_exp/exp

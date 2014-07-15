@@ -62,10 +62,10 @@ class SmallBag(object):
         """重复掉落多次，要去重
         """
         drop_items = []
-
         small_bag_copy = copy.deepcopy(self.small_bag)
+        self.small_bag = small_bag_copy
         for i in range(times):
-            picked_item = small_bag_copy.random_pick()
+            picked_item = self.random_pick()
 
             if not picked_item:
                 continue
