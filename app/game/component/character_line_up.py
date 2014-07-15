@@ -63,8 +63,6 @@ class CharacterLineUpComponent(Component):
         self._line_up_order.append(len(self._line_up_slots))
 
     def save_data(self):
-
-
         props = {'line_up_slots': dict([(slot_no, LineUpSlot(slot_no).dumps()) for slot_no in
                                         self._line_up_slots.keys()]),
                  'line_up_order': self._line_up_order}
