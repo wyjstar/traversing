@@ -84,9 +84,9 @@ hero_exp_config[16] = hero_exp16
 # 2 :break_pill
 # 3 :hero_chip
 hero_breakup1 = {'id': 10001, 'break2': 31000102,
-                 'consume2': {1: [1000, 1000, 0],
-                              5: [2, 2, 1000111],
-                              4: [20, 20, 1000112]}}
+                 'consume2': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]}}
 
 hero_breakup_config.clear()
 hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
