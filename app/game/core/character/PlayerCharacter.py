@@ -37,10 +37,12 @@ class PlayerCharacter(Character):
         self._finance = CharacterFinanceComponent(self)  # 金币
         self._hero_chip_component = CharacterHeroChipsComponent(self)  # 武将碎片
         self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
-        self._line_up = CharacterLineUpComponent(self)  # 阵容
         self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
         self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
         self._level = CharacterLevelComponent(self)  # 等级
+        self._link = CharacterLinkComponent(self)  # 羁绊
+
+        self._line_up = CharacterLineUpComponent(self)  # 阵容
 
         self._mmode = None
 

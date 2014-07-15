@@ -10,6 +10,7 @@ from shared.db_opear.configs_data.equipment.equipment_config import EquipmentCon
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
+from shared.db_opear.configs_data.link_config import LinkConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
@@ -61,6 +62,7 @@ big_bag_config = {}
 equipment_config = {}
 equipment_strengthen_config = {}
 shop_config = {}
+link_config = {}
 
 all_config_name = {
     'hero_config': HeroConfig(),
@@ -73,6 +75,7 @@ all_config_name = {
     'equipment_strengthen_config': EquipmentStrengthenConfig(),
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
+    'link_config': LinkConfig(),
 }
 
 
