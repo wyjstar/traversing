@@ -23,7 +23,6 @@ def get_items(dynamic_id, **kwargs):
         _item = response.items.add()
         _item.item_no = item.item_no
         _item.item_num = item.num
-    response.res.result = True
     return response.SerializePartialToString()
 
 

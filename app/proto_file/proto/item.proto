@@ -7,6 +7,5 @@ message ItemPB{
 
 // 请求全部道具 command：301
 message GetItemsResponse{
-    required CommonResponse res = 1;
-	repeated ItemPB items = 2;
+	repeated ItemPB items = 1;
 }

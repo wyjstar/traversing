@@ -24,7 +24,6 @@ class ItemActionTest(unittest.TestCase):
         response_str = remoteservice.callTarget(301, 1)
         response = GetItemsResponse()
         response.ParseFromString(response_str)
-        self.assertEqual(response.res.result, True)
         items = response.items
         self.assertEqual(len(items), 7, "%d_%d" % (len(items), 7))
         self.assertEqual(items[6].item_no, 1000113, "%d_%d" % (items[6].item_no, 1000113))

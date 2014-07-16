@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='item.proto',
   package='',
-  serialized_pb='\n\nitem.proto\x1a\x0c\x63ommon.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"H\n\x10GetItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x16\n\x05items\x18\x02 \x03(\x0b\x32\x07.ItemPB')
+  serialized_pb='\n\nitem.proto\x1a\x0c\x63ommon.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"*\n\x10GetItemsResponse\x12\x16\n\x05items\x18\x01 \x03(\x0b\x32\x07.ItemPB')
 
 
 
@@ -62,15 +62,8 @@ _GETITEMSRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='res', full_name='GetItemsResponse.res', index=0,
-      number=1, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='items', full_name='GetItemsResponse.items', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='items', full_name='GetItemsResponse.items', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -85,10 +78,9 @@ _GETITEMSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=73,
-  serialized_end=145,
+  serialized_end=115,
 )
 
-_GETITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETITEMSRESPONSE.fields_by_name['items'].message_type = _ITEMPB
 DESCRIPTOR.message_types_by_name['ItemPB'] = _ITEMPB
 DESCRIPTOR.message_types_by_name['GetItemsResponse'] = _GETITEMSRESPONSE
