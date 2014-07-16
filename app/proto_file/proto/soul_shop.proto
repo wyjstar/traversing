@@ -1,0 +1,9 @@
+message SoulShopRequest
+{
+    required int32 id = 1; // 对应shop配置表中商品编号
+}
+
+message GetShopItemsResponse
+{
+    repeated int32 id = 1;
+}

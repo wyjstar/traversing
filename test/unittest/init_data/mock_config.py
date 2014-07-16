@@ -1,19 +1,23 @@
 # -*- coding:utf-8 -*-
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
-    item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config
+    item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
+from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
+
 from shared.utils.const import *
 
 # ------------------------base----------------------------
 
 base_config.clear()
-base_config['exp_items'] = [1000101, 1000102, 1000103, 1000104]
+base_config_mock = CommonItem(dict(exp_items=[1000101, 1000102, 1000103, 1000104], soul_shop_item_num=6))
+for key, value in base_config_mock.items():
+    base_config[key] = value
 
 # ------------------------hero----------------------------
 
@@ -79,7 +83,7 @@ hero_exp_config[15] = hero_exp15
 hero_exp_config[16] = hero_exp16
 
 
-#------------------------hero_breakup----------------------------
+# ------------------------hero_breakup----------------------------
 # 1 :coin
 # 2 :break_pill
 # 3 :hero_chip
@@ -92,7 +96,7 @@ hero_breakup_config.clear()
 hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 
-#------------------------hero_chip----------------------------
+# ------------------------hero_chip----------------------------
 
 hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'need_num': 20}
 hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'need_num': 20}
@@ -134,5 +138,10 @@ small_bag_config_mock = SmallBagsConfig().parser([small_bag9, small_bag10, small
 for key, value in small_bag_config_mock.items():
     small_bag_config[key] = value
 
-
+#------------------------soul_shop----------------------------
+soul_shop1 = dict(id=1001, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, weight=50)
+soul_shop2 = dict(id=1002, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, weight=50)
+soul_shop_config_mock = SoulShopConfig().parser([soul_shop1, soul_shop2])
+for key, value in soul_shop_config_mock.items():
+    soul_shop_config[key] = value
 

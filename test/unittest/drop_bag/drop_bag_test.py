@@ -15,29 +15,6 @@ class DropBagTest(unittest.TestCase):
         init()
         self.player = PlayersManager().get_player_by_id(1)
 
-    def test_random_pick(self):
-        small_bag = SmallBag(1002)
-        for i in range(100):
-            drop_item = small_bag.random_pick()
-            self.assertTrue(drop_item.drop_id in [1, 2])
-            print drop_item.drop_id, drop_item.item_no, drop_item.item_type, drop_item.item_num
-
-    def test_random_multi_pick(self):
-        small_bag = SmallBag(1002)
-        drop_items = small_bag.random_multi_pick(100)
-        self.assertTrue(len(drop_items) == 100)
-        for drop_item in drop_items:
-            self.assertTrue(drop_item.drop_id in [1, 2])
-            print drop_item.drop_id, drop_item.item_no, drop_item.item_type, drop_item.item_num
-
-    def test_random_multi_pick_without_repeat(self):
-        small_bag = SmallBag(1002)
-        drop_items = small_bag.random_multi_pick_without_repeat(100)
-        self.assertTrue(len(drop_items) == 2, "%d_%d" % (len(drop_items), 2))
-        for drop_item in drop_items:
-            self.assertTrue(drop_item.drop_id in [1, 2])
-            print drop_item.drop_id, drop_item.item_no, drop_item.item_type, drop_item.item_num
-
     def test_get_drop_items(self):
         big_bag = BigBag(10001)
         drop_items = big_bag.get_drop_items()
