@@ -3,6 +3,13 @@
 created by server on 14-7-15下午11:03.
 """
 from app.proto_file import line_up_pb2
+from app.game.logic.common.check import have_player
+
+
+@have_player
+def get_line_up_info(dynamic_id, **kwargs):
+    player = kwargs.get('player')
+    return line_up_info(player)
 
 
 def line_up_info(player):

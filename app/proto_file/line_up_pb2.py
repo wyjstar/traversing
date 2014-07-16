@@ -10,12 +10,13 @@ from google.protobuf import descriptor_pb2
 
 import hero_pb2
 import equipment_pb2
+import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"+\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\";\n\x17\x43hangeEquipmentsRequest\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x01(\t\"5\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x01(\x05')
+  serialized_pb='\n\rline_up.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x0c\x63ommon.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"I\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x1c\n\x03res\x18\x01 \x01(\x0b\x32\x0f.CommonResponse\";\n\x17\x43hangeEquipmentsRequest\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x01(\t\"5\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x01(\x05')
 
 
 
@@ -50,8 +51,8 @@ _SLOTEQUIPMENT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=46,
-  serialized_end=100,
+  serialized_start=60,
+  serialized_end=114,
 )
 
 
@@ -99,8 +100,8 @@ _LINEUPSLOT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=102,
-  serialized_end=204,
+  serialized_start=116,
+  serialized_end=218,
 )
 
 
@@ -113,8 +114,15 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='slot', full_name='LineUpResponse.slot', index=0,
-      number=1, type=11, cpp_type=10, label=3,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='LineUpResponse.res', index=1,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -127,8 +135,8 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=206,
-  serialized_end=249,
+  serialized_start=220,
+  serialized_end=293,
 )
 
 
@@ -162,8 +170,8 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=251,
-  serialized_end=310,
+  serialized_start=295,
+  serialized_end=354,
 )
 
 
@@ -197,14 +205,15 @@ _CHANGEHEROREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=312,
-  serialized_end=365,
+  serialized_start=356,
+  serialized_end=409,
 )
 
 _SLOTEQUIPMENT.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
 _LINEUPSLOT.fields_by_name['hero'].message_type = hero_pb2._HEROPB
 _LINEUPSLOT.fields_by_name['equs'].message_type = _SLOTEQUIPMENT
 _LINEUPRESPONSE.fields_by_name['slot'].message_type = _LINEUPSLOT
+_LINEUPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['SlotEquipment'] = _SLOTEQUIPMENT
 DESCRIPTOR.message_types_by_name['LineUpSlot'] = _LINEUPSLOT
 DESCRIPTOR.message_types_by_name['LineUpResponse'] = _LINEUPRESPONSE

@@ -13,5 +13,5 @@ class LinkConfig(object):
     def parser(self, config_value):
         for row in config_value:
             item = CommonItem(row)
-            self._items[item.id] = item
-        return self._items
+            self._link[item.id] = item
+        return self._link

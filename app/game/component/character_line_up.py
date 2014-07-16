@@ -27,9 +27,11 @@ class CharacterLineUpComponent(Component):
 
         if line_up_data:
             slots = line_up_data.get("line_up_slots")
-            for slot in slots:
+            for slot_no, slot in slots.items():
                 line_up_slot = LineUpSlot.loads(slot)
-                self._line_up_slots[line_up_slot.slot_no] = line_up_slot
+                self._line_up_slots[slot_no] = line_up_slot
+
+            print 'line up init data:', self._line_up_slots[1].__dict__
             self._line_up_order = line_up_data.get("line_up_order")
         else:
             tb_character_line_up.new({'id': self.owner.base_info.id,

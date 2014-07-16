@@ -1,5 +1,6 @@
 import "hero.proto";
 import "equipment.proto";
+import "common.proto";
 
 //格子装备
 message SlotEquipment{
@@ -21,7 +22,8 @@ message LineUpSlot{
 
 //所有返回
 message LineUpResponse{
-	repeated LineUpSlot slot = 1;
+	repeated LineUpSlot slot = 2;
+	optional CommonResponse res = 1;
 }
 
 // 更换装备 702
