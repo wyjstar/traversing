@@ -6,8 +6,9 @@ import cPickle
 
 
 class LineUpSlot(object):
-    """卡牌位"""
-    def __init__(self, slot_no, activation=False, hero_no=0, equipment_ids=['']*6):
+    """卡牌位
+    """
+    def __init__(self, slot_no, activation=False, hero_no=0, equipment_ids={}.fromkeys([1, 2, 3, 4, 5, 6], '')):
         self._slot_no = slot_no  # 卡牌位置
         self._activation = activation  # 激活状态
         self._hero_no = hero_no  # 英雄编号
@@ -49,7 +50,7 @@ class LineUpSlot(object):
     def info(self):
         """卡牌信息
         """
-        return dict(hero_no=self._hero_no, equipment_ids=self._equipment_ids)
+        return dict(slot_no=self._slot_no, activation=self._activation, hero_no=self._hero_no, equipment_ids=self._equipment_ids)
 
     @classmethod
     def loads(cls, data):

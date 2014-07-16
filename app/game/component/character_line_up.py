@@ -91,8 +91,8 @@ class CharacterLineUpComponent(Component):
         line_up_obj = tb_character_line_up.getObj(self.owner.base_info.id)
         line_up_obj.update_multi(props)
 
-    @property
-    def links(self):
+    # ------------------羁绊信息------------------
+    def get_links(self):
         """羁绊
         """
         if self._links:
@@ -104,11 +104,11 @@ class CharacterLineUpComponent(Component):
             hero_no = slot.hero_no  # 阵容英雄编号
             if not hero_no:  # 空位置
                 continue
-            link_data = self.hero_links(hero_no, slot.slot_no)
+            link_data = self.__hero_links(hero_no, slot.slot_no)
             self._links[hero_no] = link_data
         return self._links
 
-    def hero_links(self, hero_no, slot_no):
+    def __hero_links(self, hero_no, slot_no):
         """英雄的羁绊
         """
         link_data = {}
@@ -125,12 +125,12 @@ class CharacterLineUpComponent(Component):
             if not link_no:  # 无羁绊技能
                 continue
 
-            result = self.is_activation(trigger_list, slot_no)
+            result = self.__is_activation(trigger_list, slot_no)
             link_data[link_no] = result
 
         return link_data
 
-    def is_activation(self, trigger_list, slot_no):
+    def __is_activation(self, trigger_list, slot_no):
         """羁绊是否激活
         @param trigger_list: 羁绊触发条件列表
         @param slot_no:  当前位置编号
@@ -150,7 +150,7 @@ class CharacterLineUpComponent(Component):
                     activation = 0
                     break
         return activation
-
+    # ------------------羁绊信息------------------
 
 
 

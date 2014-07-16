@@ -1,27 +1,39 @@
-message LineUpItem
-{
-    required int32 hero_no = 1;
-    repeated string equipment_ids = 2;
+import "hero.proto";
+import "equipment.proto";
+
+//格子装备
+message SlotEquipment{
+	required int32 no = 1; // 装备格子编号
+	optional EquipmentPB equ = 2; // 装备
 }
 
-message AddHeroRequest
-{
-    required int32 hero_no = 1;
+
+// 阵容格子
+message LineUpSlot{
+	required int32 slot_no = 1; // 位置编号
+	optional bool activation = 2; //是否激活
+	optional HeroPB hero = 3; //英雄
+	repeated SlotEquipment equs = 4; //装备
 }
 
-message ChangeHeroRequest
-{
-    required int32 line_up_slot_id = 1;
-    required int32 hero_no = 2;
+
+// 取得阵容 701
+
+//所有返回
+message LineUpResponse{
+	repeated LineUpSlot slot = 1;
 }
 
+// 更换装备 702
 message ChangeEquipmentsRequest
 {
-    required int32 line_up_slot_id = 1;
-    repeated string equipment_ids = 2;
+    required int32 no = 1;  //装备格子编号
+    optional string equipment_id = 2; // 装备ID
 }
 
-message ChangeLineUpOrderRequest
-{
-    repeated int32 line_up_order = 1;
+
+// 更换武将 703
+message ChangeHeroRequest{
+	required int32 slot_no = 1; // 位置编号
+	optional int32 hero_no = 2; // 英雄编号
 }

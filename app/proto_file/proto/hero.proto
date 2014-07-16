@@ -1,3 +1,10 @@
+
+//羁绊信息
+message LinkPB{
+	required int32 link_no = 1;  // 羁绊编号
+	optional bool is_activation = 2;  // 是否激活
+}
+
 //武将信息
 message HeroPB
 {
@@ -5,4 +12,5 @@ message HeroPB
     optional int32 level = 3;
     optional int32 exp = 4;
     optional int32 break_level = 5;
+    repeated LinkPB links = 6;
 }
