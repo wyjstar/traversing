@@ -30,6 +30,7 @@ class HeroTest(unittest.TestCase):
             dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
                             charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
 
+
         init()
         client = RedisClient()
 
