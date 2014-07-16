@@ -29,8 +29,9 @@ message LineUpResponse{
 // 更换装备 703
 message ChangeEquipmentsRequest
 {
-    required int32 no = 1;  //装备格子编号
-    optional string equipment_id = 2; // 装备ID
+	required int32 slot_no = 1; // 位置编号
+    optional int32 no = 2;  //装备格子编号
+    optional string equipment_id = 3; // 装备ID
 }
 
 

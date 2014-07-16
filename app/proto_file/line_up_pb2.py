@@ -16,7 +16,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x0c\x63ommon.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"I\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x1c\n\x03res\x18\x01 \x01(\x0b\x32\x0f.CommonResponse\";\n\x17\x43hangeEquipmentsRequest\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x01(\t\"5\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x01(\x05')
+  serialized_pb='\n\rline_up.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x0c\x63ommon.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"I\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x1c\n\x03res\x18\x01 \x01(\x0b\x32\x0f.CommonResponse\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"5\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x01(\x05')
 
 
 
@@ -148,15 +148,22 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='no', full_name='ChangeEquipmentsRequest.no', index=0,
+      name='slot_no', full_name='ChangeEquipmentsRequest.slot_no', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='equipment_id', full_name='ChangeEquipmentsRequest.equipment_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='no', full_name='ChangeEquipmentsRequest.no', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='equipment_id', full_name='ChangeEquipmentsRequest.equipment_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -171,7 +178,7 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=295,
-  serialized_end=354,
+  serialized_end=371,
 )
 
 
@@ -205,8 +212,8 @@ _CHANGEHEROREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=356,
-  serialized_end=409,
+  serialized_start=373,
+  serialized_end=426,
 )
 
 _SLOTEQUIPMENT.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
