@@ -3,6 +3,7 @@
 created by server on 14-7-9上午11:42.
 """
 from app.game.logic.common.check import have_player
+from app.game.logic import item_group_helper
 
 
 @have_player
@@ -16,13 +17,13 @@ def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
 
     equipments = []
     if get_type == -1:
-        obj = player.equipment.get_by_id(get_id)
+        obj = player.equipment_component.get_equipment(get_id)
         if obj:
             equipments.append(obj)
     elif get_type == 0:
-        equipments.extend(player.equipment.get_all())
+        equipments.extend(player.equipment_component.get_all())
     else:
-        equipments.extend(player.equipment.get_by_type(get_type))
+        equipments.extend(player.equipment_component.get_by_type(get_type))
 
     return equipments
 
@@ -39,7 +40,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     """
     player = kwargs.get('player')
 
-    equipment_obj = player.equipment.get_by_id(equipment_id)
+    equipment_obj = player.equipment_component.get_equipment(equipment_id)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
 
@@ -91,7 +92,7 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
     """
     player = kwargs.get('player')
 
-    chip = player.equipment_chip.get_chip(chip_no)
+    chip = player.equipment_chip_component.get_chip(chip_no)
 
     # 没有碎片
     if not chip:
@@ -106,6 +107,32 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
 
     equipment_obj = player.equipment.add_equipment(chip_no)
     return {'result': True, 'equipment_obj': equipment_obj}
+
+
+@have_player
+def nobbing_equipment(dynamic_id, equipment_id, **kwargs):
+    player = kwargs.get('player')
+
+    pass
+
+
+@have_player
+def melting_equipment(dynamic_id, equipment_id, **kwargs):
+    """熔炼
+    @param dynamic_id:
+    @param equipment_id:
+    @param kwargs:
+    @return:
+    """
+    player = kwargs.get('player')
+    equipment_obj = player.equipment.get_by_id(equipment_id)
+    if not equipment_obj:
+        return {'result': False, 'result_no': 401, 'message': u''}
+    melting_items = equipment_obj.equipment_obj
+    item_group_helper.gain(player, melting_items)
+
+    return {'result': True, 'gain': melting_items}
+
 
 
 

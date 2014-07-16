@@ -108,6 +108,9 @@ class MMode(RedisObject):
             return
         elif state == MMODE_STATE_NEW:
             props = self.get('data')
+
+            print 'MMODE_STATE_NEW:', props
+
             props = self.dumps(props)
             pk = self.get('_pk')
             result = util.InsertIntoDB(tablename, props)
@@ -230,20 +233,39 @@ class MAdmin(RedisObject):
         '''根据主键，可以获得mmode对象的实例的数据.\n
         >>> m = madmin.getObjData(1)
         '''
+
+        print 'getObjData:', pk
+
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
         data = mm.get('data')
+
+        print 'getObjData:', mm.get('data')
+
         if mm.get('data'):
             return data
         props = {self._pk: pk}
+
+        print props
+
         record = util.GetOneRecordInfo(self._name, props)
+
+        print 'recoed#1:', repr(record)
+
         if not record:
             return None
 
         record = mm.loads(record)
+
+        print 'recoed#2:', record
+
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+
+        print 'recoed#3:', record
+
         mm.insert()
+        print 'recoed#4:', record
         return record
 
     def getObjList(self, pklist):

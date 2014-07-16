@@ -1,30 +1,11 @@
 package app.gate;
 
-message CommonRequest
-{
-    required int64 playerid = 1;
-    optional string message = 2;
-}
-
-//武将升级
-message HeroUpgradeRequest
-{
-    repeated int32 hero_no_list = 1;
-    repeated int32 exp_list = 2;
-}
-
 //武将升级，使用道具
 message HeroUpgradeWithItemRequest
 {
     required int32 hero_no = 1;
     required int32 exp_item_no = 2;
     required int32 exp_item_num = 3;
-}
-
-//武将合成
-message HeroComposeRequest
-{
-    required int32 hero_chip_no = 2;
 }
 
 //武将突破
@@ -36,5 +17,11 @@ message HeroBreakRequest
 //武将献祭
 message HeroSacrificeRequest
 {
-    repeated int32 hero_no_list = 1;
+    repeated int32 hero_nos = 1;
+}
+
+//武将合成
+message HeroComposeRequest
+{
+    required int32 hero_chip_no = 2;
 }

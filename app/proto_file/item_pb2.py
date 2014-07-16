@@ -8,32 +8,33 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='item.proto',
-  package='proto_file.item',
-  serialized_pb='\n\nitem.proto\x12\x0fproto_file.item\")\n\x04Item\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"4\n\rItemsResponse\x12#\n\x04item\x18\x01 \x03(\x0b\x32\x15.proto_file.item.Item')
+  package='',
+  serialized_pb='\n\nitem.proto\x1a\x0c\x63ommon.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"H\n\x10GetItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x16\n\x05items\x18\x02 \x03(\x0b\x32\x07.ItemPB')
 
 
 
 
-_ITEM = _descriptor.Descriptor(
-  name='Item',
-  full_name='proto_file.item.Item',
+_ITEMPB = _descriptor.Descriptor(
+  name='ItemPB',
+  full_name='ItemPB',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='item_no', full_name='proto_file.item.Item.item_no', index=0,
+      name='item_no', full_name='ItemPB.item_no', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='item_num', full_name='proto_file.item.Item.item_num', index=1,
+      name='item_num', full_name='ItemPB.item_num', index=1,
       number=2, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -48,21 +49,28 @@ _ITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=31,
-  serialized_end=72,
+  serialized_start=28,
+  serialized_end=71,
 )
 
 
-_ITEMSRESPONSE = _descriptor.Descriptor(
-  name='ItemsResponse',
-  full_name='proto_file.item.ItemsResponse',
+_GETITEMSRESPONSE = _descriptor.Descriptor(
+  name='GetItemsResponse',
+  full_name='GetItemsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='item', full_name='proto_file.item.ItemsResponse.item', index=0,
-      number=1, type=11, cpp_type=10, label=3,
+      name='res', full_name='GetItemsResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='items', full_name='GetItemsResponse.items', index=1,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -76,25 +84,26 @@ _ITEMSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=74,
-  serialized_end=126,
+  serialized_start=73,
+  serialized_end=145,
 )
 
-_ITEMSRESPONSE.fields_by_name['item'].message_type = _ITEM
-DESCRIPTOR.message_types_by_name['Item'] = _ITEM
-DESCRIPTOR.message_types_by_name['ItemsResponse'] = _ITEMSRESPONSE
+_GETITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_GETITEMSRESPONSE.fields_by_name['items'].message_type = _ITEMPB
+DESCRIPTOR.message_types_by_name['ItemPB'] = _ITEMPB
+DESCRIPTOR.message_types_by_name['GetItemsResponse'] = _GETITEMSRESPONSE
 
-class Item(_message.Message):
+class ItemPB(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _ITEM
+  DESCRIPTOR = _ITEMPB
 
-  # @@protoc_insertion_point(class_scope:proto_file.item.Item)
+  # @@protoc_insertion_point(class_scope:ItemPB)
 
-class ItemsResponse(_message.Message):
+class GetItemsResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _ITEMSRESPONSE
+  DESCRIPTOR = _GETITEMSRESPONSE
 
-  # @@protoc_insertion_point(class_scope:proto_file.item.ItemsResponse)
+  # @@protoc_insertion_point(class_scope:GetItemsResponse)
 
 
 # @@protoc_insertion_point(module_scope)

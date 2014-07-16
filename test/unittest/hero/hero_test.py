@@ -20,13 +20,13 @@ class HeroTest(unittest.TestCase):
         self.player = PlayersManager().get_player_by_id(1)
 
     def test_add_hero(self):
-        hero = Hero()
+        hero = self.player.hero_component.add_hero(10011)
         hero.hero_no = 10011
         hero.level = 11
         hero.break_level = 2
         hero.exp = 1
         hero.equipment_ids = []
-        self.player.hero_component.add_hero(hero)
+        hero.save_data()
         length = len(self.player.hero_component.get_heros())
         self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
         hero = self.player.hero_component.get_hero(10011)
@@ -53,14 +53,14 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(cPickle.loads(hero_property.get('equipment_ids')), [])
 
     def test_remove_hero(self):
-        self.player.hero_component.remove_hero(10001)
+        self.player.hero_component.delete_hero(10001)
         hero = self.player.hero_component.get_hero(10001)
         self.assertEqual(hero, None)
 
         #redis
         heros = tb_character_heros.getObjData(1)
         length = len(heros.get('hero_ids'))
-        self.assertEqual(length, 3, 'len of hero_list error!%d_%d' % (length, 3))
+        self.assertEqual(length, 2, 'len of hero_list error!%d_%d' % (length, 2))
 
     def test_get_all_exp(self):
         hero = self.player.hero_component.get_hero(10001)

@@ -1,0 +1,5 @@
+// 装备碎片
+message EquipmentChipPB{
+	required int32 equipment_chip_no = 1;  //编号
+	required int32 equipment_chip_num = 2;  //数量
+}

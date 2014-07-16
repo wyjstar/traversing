@@ -49,7 +49,6 @@ class LiberateProtocol(protocols.BaseProtocol):
         self.buff += data
         while self.buff.__len__() >= length: 
             unpackdata = self.factory.dataprotocl.unpack(self.buff[:length])
-            print 'unpackdata:', unpackdata
             if not unpackdata.get('result'):
                 log.msg('illegal data package --')
                 self.transport.connectionLost()
@@ -66,7 +65,6 @@ class LiberateProtocol(protocols.BaseProtocol):
             # if not response:
             #     continue
 
-            print 'safeToWriteData:', response, command
             self.safeToWriteData(response, command)
             
 class LiberateFactory(protocols.ServerFactory):

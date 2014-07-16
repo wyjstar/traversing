@@ -1,4 +1,5 @@
 
+
 message PlayerLoginResquest
 {
     required string token = 1;
@@ -7,4 +8,5 @@ message PlayerLoginResquest
 message CreatePlayerRequest{
      optional string nickname = 1;//角色昵称
 }
+
 

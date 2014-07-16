@@ -10,6 +10,7 @@ from app.gate.redis_mode import tb_account_mapping
 class User(object):
     """用户帐号类
     """
+
     def __init__(self, token, user_id, name='', password='', dynamic_id=-1):
         """ 初始化
         @param token: 用户登录用
@@ -68,7 +69,16 @@ class User(object):
             print 'user_id:', self.user_id
             character = tb_character_info.getObjData(self.user_id)
             if not character:
-                character = {'id': self.user_id, 'nickname': ''}
+                character = {'id': self.user_id,
+                             'nickname': '',
+                             'coin': 0,
+                             'gold': 0,
+                             'hero_soul': 0,
+                             'level': 0,
+                             'exp': 0,
+                             'junior_stone': 0,
+                             'middle_stone': 0,
+                             'high_stone': 0}
                 character_obj = tb_character_info.new(character)
                 character_obj.insert()
                 self._character = character

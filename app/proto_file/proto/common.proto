@@ -6,3 +6,9 @@ message CommonResponse
     optional string message = 3;
 }
 
+// 通用游戏资源
+message CommonGameResources{
+	required int32 id = 1;  //资源类型编号
+	optional int32 num = 2;  //资源数量
+	optional int32 item_no = 3;  //资源类中物品ID
+}

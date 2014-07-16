@@ -53,7 +53,6 @@ class RemoteObject(object):
     def connect(self,addr):
         '''初始化远程调用对象'''
         self._addr = addr
-        print '初始化远程调用对象', self._name, addr[0], addr[1], self._factory
         reactor.connectTCP(addr[0], addr[1], self._factory)
         self.takeProxy()
         

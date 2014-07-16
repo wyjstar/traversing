@@ -45,6 +45,5 @@ class MAdminManager:
 
         >>>MAdminManager().checkAdmins()
         """
-        print 'checkAdmins:', self.admins.values()
         for admin in self.admins.values():
             admin.checkAll()

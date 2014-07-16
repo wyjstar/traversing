@@ -1,8 +1,8 @@
 //武将信息
-message Hero_PB
+message HeroPB
 {
     required int32 hero_no = 1;
-    required int32 level = 3;
-    required int32 exp = 4;
-    required int32 break_level = 5;
+    optional int32 level = 3;
+    optional int32 exp = 4;
+    optional int32 break_level = 5;
 }

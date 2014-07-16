@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ - Copyright 1999-2012 Alibaba Group.
+ -  
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -  
+ -      http://www.apache.org/licenses/LICENSE-2.0
+ -  
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+-->
+<!DOCTYPE cobar:rule SYSTEM "rule.dtd">
+<cobar:rule xmlns:cobar="http://cobar.alibaba.com/">
+
+  <!-- 路由规则定义，定义什么表，什么字段，采用什么路由算法 -->
+
+  <tableRule name="rule2">
+    <rule>
+      <columns>id</columns>
+      <algorithm><![CDATA[ func2(${id}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <tableRule name="rule3">
+    <rule>
+      <columns>nickname</columns>
+      <algorithm><![CDATA[ func3(${nickname}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <tableRule name="rule4">
+    <rule>
+      <columns>account_name</columns>
+      <algorithm><![CDATA[ func3(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <tableRule name="rule5">
+    <rule>
+      <columns>id</columns>
+      <algorithm><![CDATA[ func3(${id}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <function name="func2" class="com.alibaba.cobar.route.function.PartitionByLong">
+    <property name="partitionCount">8</property> <!-- 有几个分库 --> 
+    <property name="partitionLength">128</property><!-- partitionCount * partitionLength=1024 -->  
+  </function>
+
+  <function name="func3" class="com.alibaba.cobar.route.function.PartitionByString">  
+    <property name="partitionCount">4</property>  
+    <property name="partitionLength">256</property>  
+  </function>  
+
+</cobar:rule>

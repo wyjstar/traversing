@@ -10,6 +10,7 @@ from shared.db_opear.configs_data.equipment.equipment_config import EquipmentCon
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
+from shared.db_opear.configs_data.link_config import LinkConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
@@ -37,7 +38,6 @@ def get_config_value(config_key):
     """获取所有翻译信息
     """
     sql = "SELECT * FROM configs where config_key='%s';" % config_key
-    print 'sql:', sql
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
@@ -62,6 +62,7 @@ big_bag_config = {}
 equipment_config = {}
 equipment_strengthen_config = {}
 shop_config = {}
+link_config = {}
 
 all_config_name = {
     'hero_config': HeroConfig(),
@@ -74,6 +75,7 @@ all_config_name = {
     'equipment_strengthen_config': EquipmentStrengthenConfig(),
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
+    'link_config': LinkConfig(),
 }
 
 
@@ -93,24 +95,10 @@ class ConfigFactory(object):
 for config_name in all_config_name.keys():
         game_conf = get_config_value(config_name)
 
-        # print game_conf
-
         if not game_conf:
             continue
         objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
         exec(config_name + '=objs')
-print '---------------------------------------------------------'
-print hero_config
-print hero_exp_config
-print hero_breakup_config
-print chip_config
-print item_config
-print small_bag_config
-print big_bag_config
-print equipment_config
-print equipment_strengthen_config
-print shop_config
-print '---------------------------------------------------------'
 
 if __name__ == '__main__':
     init()
