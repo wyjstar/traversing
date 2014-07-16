@@ -26,7 +26,7 @@ message LineUpResponse{
 	optional CommonResponse res = 1;
 }
 
-// 更换装备 702
+// 更换装备 703
 message ChangeEquipmentsRequest
 {
     required int32 no = 1;  //装备格子编号
@@ -34,7 +34,7 @@ message ChangeEquipmentsRequest
 }
 
 
-// 更换武将 703
+// 更换武将 702
 message ChangeHeroRequest{
 	required int32 slot_no = 1; // 位置编号
 	optional int32 hero_no = 2; // 英雄编号

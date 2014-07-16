@@ -18,7 +18,7 @@ class CharacterLineUpComponent(Component):
         # TODO 有多少个位置 需要读取baseinfo配置表
         self._line_up_slots = dict([(i, None) for i in range(1, 7)])  # 卡牌位列表
         self._line_up_order = []
-        self._employee = None
+        # self._employee = None
         self._unique = 0  # 无双
         self._links = {}   # 羁绊缓存数据 {'hero_no': link_data}
 
@@ -40,6 +40,14 @@ class CharacterLineUpComponent(Component):
                                       'line_up_order': self._line_up_order})
 
     @property
+    def line_up_slots(self):
+        return self._line_up_slots
+
+    @line_up_slots.setter
+    def line_up_slots(self, line_up_slots):
+        self._line_up_slots = line_up_slots
+
+    @property
     def line_up_order(self):
         return self._line_up_order
 
@@ -47,24 +55,30 @@ class CharacterLineUpComponent(Component):
     def line_up_order(self, value):
         self._line_up_order = value
 
-    @property
-    def employee(self):
-        return self._employee
+    # @property
+    # def employee(self):
+    #     return self._employee
+    #
+    # @employee.setter
+    # def employee(self, value):
+    #     self._employee = value
 
-    @employee.setter
-    def employee(self, value):
-        self._employee = value
+    # def get_line_up_slot(self, line_up_slot_id):
+    #     return self._line_up_slots[line_up_slot_id - 1]
+    #
+    # def get_all(self):
+    #     return self._line_up_slots
 
-    def get_line_up_slot(self, line_up_slot_id):
-        return self._line_up_slots[line_up_slot_id - 1]
-
-    def get_all(self):
-        return self._line_up_slots
-
-    def add_hero(self, hero_no):
-        line_up_slot = LineUpSlot(hero_no)
-        self._line_up_slots.append(line_up_slot)
-        self._line_up_order.append(len(self._line_up_slots))
+    def change_hero(self, slot_no, hero_no):
+        """更换阵容主将
+        @param slot_no:
+        @param hero_no:
+        @return:
+        """
+        print 'adfjasdjfl #1:', self._line_up_slots
+        print 'adfjasdjfl:', slot_no
+        slot_obj = self._line_up_slots.get(slot_no)
+        slot_obj.hero_no = hero_no
 
     @property
     def hero_ids(self):

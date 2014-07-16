@@ -114,6 +114,16 @@ class EchoClient(protocol.Protocol):
             for item in argument.slot:
                 print item
 
+            argument = line_up_pb2.ChangeHeroRequest()
+            argument.slot_no = 1
+            argument.hero_no = 10010
+            self.dateSend(argument, 702)
+        if command == 702:
+            argument = line_up_pb2.LineUpResponse()
+            argument.ParseFromString(message)
+            for item in argument.slot:
+                print item
+
         # if command == 401:
         #     argument = equipment_pb2.GetEquipmentResponse()
         #     argument.ParseFromString(message)
