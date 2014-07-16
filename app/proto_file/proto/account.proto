@@ -1,6 +1,6 @@
 package proto_file.account;
 
-
+// 注册 command:  1
 message AccountInfo{
 	required int32 type = 1;//注册类型 1.游客 2.帐号 3.绑定
 	optional string user_name = 2; //用户名
@@ -19,6 +19,7 @@ message AccountResponse{
      optional AccountKey key = 3;
 }
 
+// 登录 command:2
 message LoginResquest{
 	required AccountKey key = 1;
 	optional string user_name = 2; //用户名

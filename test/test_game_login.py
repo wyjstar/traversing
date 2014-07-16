@@ -13,6 +13,7 @@ from app.proto_file.chat import chat_pb2
 from app.proto_file import equipment_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
+from app.proto_file import line_up_pb2
 
 
 def sendData(sendstr,commandId):
@@ -85,46 +86,62 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            self.transport.write(sendData('', 301))
+            self.transport.write(sendData('', 701))
 
-        if command == 301:
-            print '301'
-            argument = item_pb2.ItemsResponse()
+        # if command == 301:
+        #     print '301'
+        #     argument = item_pb2.ItemsResponse()
+        #     argument.ParseFromString(message)
+        #     print 'items:', argument.item
+        #     # for item in items:
+        #     #     print item
+        #     print '1111111111111'
+        #     self.transport.write(sendData('', 1001))
+        #
+        # if command == 1001:
+        #     argument = chat_pb2.ChatResponse()
+        #     argument.ParseFromString(message)
+        #     print argument
+        #
+        #     argument = equipment_pb2.GetEquipmentsRequest()
+        #     argument.type = 0
+        #
+        #     self.dateSend(argument, 701)
+
+        if command == 701:
+            argument = line_up_pb2.LineUpResponse()
             argument.ParseFromString(message)
-            print 'items:', argument.item
-            # for item in items:
-            #     print item
-            print '1111111111111'
-            self.transport.write(sendData('', 1001))
+            for item in argument.slot:
+                print item
 
-        if command == 1001:
-            argument = chat_pb2.ChatResponse()
+            argument = line_up_pb2.ChangeHeroRequest()
+            argument.slot_no = 1
+            argument.hero_no = 10010
+            self.dateSend(argument, 702)
+        if command == 702:
+            argument = line_up_pb2.LineUpResponse()
             argument.ParseFromString(message)
-            print argument
+            for item in argument.slot:
+                print item
 
-            argument = equipment_pb2.GetEquipmentsRequest()
-            argument.type = 0
-
-            self.dateSend(argument, 401)
-
-        if command == 401:
-            argument = equipment_pb2.GetEquipmentResponse()
-            argument.ParseFromString(message)
-            for equipment in argument.equipment:
-                print equipment
-
-
-            argument = equipment_pb2.EnhanceEquipmentRequest()
-            argument.id = '5f5a15c608c711e49461080027a4fa58'
-            argument.type = 1
-            self.dateSend(argument, 402)
-
-        if command == 402:
-            argument = equipment_pb2.EnhanceEquipmentResponse()
-            argument.ParseFromString(message)
-            print argument.res
-            for value in argument.data:
-                print value
+        # if command == 401:
+        #     argument = equipment_pb2.GetEquipmentResponse()
+        #     argument.ParseFromString(message)
+        #     for equipment in argument.equipment:
+        #         print equipment
+        #
+        #
+        #     argument = equipment_pb2.EnhanceEquipmentRequest()
+        #     argument.id = '5f5a15c608c711e49461080027a4fa58'
+        #     argument.type = 1
+        #     self.dateSend(argument, 402)
+        #
+        # if command == 402:
+        #     argument = equipment_pb2.EnhanceEquipmentResponse()
+        #     argument.ParseFromString(message)
+        #     print argument.res
+        #     for value in argument.data:
+        #         print value
 
 
 

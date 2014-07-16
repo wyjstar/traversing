@@ -19,6 +19,10 @@ class CharacterEquipmentPackageComponent(Component):
 
         # self._equipments_chip = {}  # 装备碎片 {装备No: 装备num}
 
+    @property
+    def equipments_obj(self):
+        return self._equipments_obj
+
     def init_data(self):
         equipments_data = tb_character_equipments.getObjData(self.owner.base_info.id)
         if equipments_data:

@@ -15,6 +15,14 @@ class CharacterHerosComponent(Component):
         super(CharacterHerosComponent, self).__init__(owner)
         self._heros = {}
 
+    @property
+    def heros(self):
+        return self._heros
+
+    @heros.setter
+    def heros(self, heros):
+        self._heros = heros
+
     def init_heros(self):
         pid = self.owner.base_info.id
         character_heros = tb_character_heros.getObjData(pid)

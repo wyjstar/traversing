@@ -8,33 +8,85 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import hero_pb2
+import equipment_pb2
+import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\"4\n\nLineUpItem\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x15\n\requipment_ids\x18\x02 \x03(\t\"!\n\x0e\x41\x64\x64HeroRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"=\n\x11\x43hangeHeroRequest\x12\x17\n\x0fline_up_slot_id\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\"I\n\x17\x43hangeEquipmentsRequest\x12\x17\n\x0fline_up_slot_id\x18\x01 \x02(\x05\x12\x15\n\requipment_ids\x18\x02 \x03(\t\"1\n\x18\x43hangeLineUpOrderRequest\x12\x15\n\rline_up_order\x18\x01 \x03(\x05')
+  serialized_pb='\n\rline_up.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x0c\x63ommon.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"I\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x1c\n\x03res\x18\x01 \x01(\x0b\x32\x0f.CommonResponse\";\n\x17\x43hangeEquipmentsRequest\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x01(\t\"5\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x01(\x05')
 
 
 
 
-_LINEUPITEM = _descriptor.Descriptor(
-  name='LineUpItem',
-  full_name='LineUpItem',
+_SLOTEQUIPMENT = _descriptor.Descriptor(
+  name='SlotEquipment',
+  full_name='SlotEquipment',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='hero_no', full_name='LineUpItem.hero_no', index=0,
+      name='no', full_name='SlotEquipment.no', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='equipment_ids', full_name='LineUpItem.equipment_ids', index=1,
-      number=2, type=9, cpp_type=9, label=3,
+      name='equ', full_name='SlotEquipment.equ', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=60,
+  serialized_end=114,
+)
+
+
+_LINEUPSLOT = _descriptor.Descriptor(
+  name='LineUpSlot',
+  full_name='LineUpSlot',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='slot_no', full_name='LineUpSlot.slot_no', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='activation', full_name='LineUpSlot.activation', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero', full_name='LineUpSlot.hero', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='equs', full_name='LineUpSlot.equs', index=3,
+      number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -48,22 +100,29 @@ _LINEUPITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=17,
-  serialized_end=69,
+  serialized_start=116,
+  serialized_end=218,
 )
 
 
-_ADDHEROREQUEST = _descriptor.Descriptor(
-  name='AddHeroRequest',
-  full_name='AddHeroRequest',
+_LINEUPRESPONSE = _descriptor.Descriptor(
+  name='LineUpResponse',
+  full_name='LineUpResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='hero_no', full_name='AddHeroRequest.hero_no', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      name='slot', full_name='LineUpResponse.slot', index=0,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='LineUpResponse.res', index=1,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -76,43 +135,8 @@ _ADDHEROREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=71,
-  serialized_end=104,
-)
-
-
-_CHANGEHEROREQUEST = _descriptor.Descriptor(
-  name='ChangeHeroRequest',
-  full_name='ChangeHeroRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='line_up_slot_id', full_name='ChangeHeroRequest.line_up_slot_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hero_no', full_name='ChangeHeroRequest.hero_no', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=106,
-  serialized_end=167,
+  serialized_start=220,
+  serialized_end=293,
 )
 
 
@@ -124,16 +148,16 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='line_up_slot_id', full_name='ChangeEquipmentsRequest.line_up_slot_id', index=0,
+      name='no', full_name='ChangeEquipmentsRequest.no', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='equipment_ids', full_name='ChangeEquipmentsRequest.equipment_ids', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      name='equipment_id', full_name='ChangeEquipmentsRequest.equipment_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -146,22 +170,29 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=169,
-  serialized_end=242,
+  serialized_start=295,
+  serialized_end=354,
 )
 
 
-_CHANGELINEUPORDERREQUEST = _descriptor.Descriptor(
-  name='ChangeLineUpOrderRequest',
-  full_name='ChangeLineUpOrderRequest',
+_CHANGEHEROREQUEST = _descriptor.Descriptor(
+  name='ChangeHeroRequest',
+  full_name='ChangeHeroRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='line_up_order', full_name='ChangeLineUpOrderRequest.line_up_order', index=0,
-      number=1, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
+      name='slot_no', full_name='ChangeHeroRequest.slot_no', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero_no', full_name='ChangeHeroRequest.hero_no', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -174,33 +205,38 @@ _CHANGELINEUPORDERREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=244,
-  serialized_end=293,
+  serialized_start=356,
+  serialized_end=409,
 )
 
-DESCRIPTOR.message_types_by_name['LineUpItem'] = _LINEUPITEM
-DESCRIPTOR.message_types_by_name['AddHeroRequest'] = _ADDHEROREQUEST
-DESCRIPTOR.message_types_by_name['ChangeHeroRequest'] = _CHANGEHEROREQUEST
+_SLOTEQUIPMENT.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
+_LINEUPSLOT.fields_by_name['hero'].message_type = hero_pb2._HEROPB
+_LINEUPSLOT.fields_by_name['equs'].message_type = _SLOTEQUIPMENT
+_LINEUPRESPONSE.fields_by_name['slot'].message_type = _LINEUPSLOT
+_LINEUPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+DESCRIPTOR.message_types_by_name['SlotEquipment'] = _SLOTEQUIPMENT
+DESCRIPTOR.message_types_by_name['LineUpSlot'] = _LINEUPSLOT
+DESCRIPTOR.message_types_by_name['LineUpResponse'] = _LINEUPRESPONSE
 DESCRIPTOR.message_types_by_name['ChangeEquipmentsRequest'] = _CHANGEEQUIPMENTSREQUEST
-DESCRIPTOR.message_types_by_name['ChangeLineUpOrderRequest'] = _CHANGELINEUPORDERREQUEST
+DESCRIPTOR.message_types_by_name['ChangeHeroRequest'] = _CHANGEHEROREQUEST
 
-class LineUpItem(_message.Message):
+class SlotEquipment(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _LINEUPITEM
+  DESCRIPTOR = _SLOTEQUIPMENT
 
-  # @@protoc_insertion_point(class_scope:LineUpItem)
+  # @@protoc_insertion_point(class_scope:SlotEquipment)
 
-class AddHeroRequest(_message.Message):
+class LineUpSlot(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _ADDHEROREQUEST
+  DESCRIPTOR = _LINEUPSLOT
 
-  # @@protoc_insertion_point(class_scope:AddHeroRequest)
+  # @@protoc_insertion_point(class_scope:LineUpSlot)
 
-class ChangeHeroRequest(_message.Message):
+class LineUpResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CHANGEHEROREQUEST
+  DESCRIPTOR = _LINEUPRESPONSE
 
-  # @@protoc_insertion_point(class_scope:ChangeHeroRequest)
+  # @@protoc_insertion_point(class_scope:LineUpResponse)
 
 class ChangeEquipmentsRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -208,11 +244,11 @@ class ChangeEquipmentsRequest(_message.Message):
 
   # @@protoc_insertion_point(class_scope:ChangeEquipmentsRequest)
 
-class ChangeLineUpOrderRequest(_message.Message):
+class ChangeHeroRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CHANGELINEUPORDERREQUEST
+  DESCRIPTOR = _CHANGEHEROREQUEST
 
-  # @@protoc_insertion_point(class_scope:ChangeLineUpOrderRequest)
+  # @@protoc_insertion_point(class_scope:ChangeHeroRequest)
 
 
 # @@protoc_insertion_point(module_scope)
