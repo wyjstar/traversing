@@ -31,7 +31,11 @@ class CharacterLineUpComponent(Component):
                 line_up_slot = LineUpSlot.loads(slot)
                 self._line_up_slots[slot_no] = line_up_slot
 
-            print 'line up init data:', self._line_up_slots[1].__dict__
+            print 'line up init data:', self._line_up_slots
+
+            for key, value in self._line_up_slots.iteritems():
+                print key, value.__dict__
+
             self._line_up_order = line_up_data.get("line_up_order")
         else:
             tb_character_line_up.new({'id': self.owner.base_info.id,
@@ -75,10 +79,19 @@ class CharacterLineUpComponent(Component):
         @param hero_no:
         @return:
         """
-        print 'adfjasdjfl #1:', self._line_up_slots
-        print 'adfjasdjfl:', slot_no
         slot_obj = self._line_up_slots.get(slot_no)
         slot_obj.hero_no = hero_no
+
+    def change_equipment(self, slot_no, no, equipment_id):
+        """更改装备
+        @param slot_no: 阵容位置
+        @param no: 装备位置
+        @param equipment_id: 装备ID
+        @return:
+        """
+        slot_obj = self._line_up_slots.get(slot_no)
+        slot_obj.change_equipment(no, equipment_id)
+
 
     @property
     def hero_ids(self):
@@ -100,8 +113,8 @@ class CharacterLineUpComponent(Component):
         return equipment_no_list
 
     def save_data(self):
-        props = {'line_up_slots': dict([(slot_no, LineUpSlot(slot_no).dumps()) for slot_no in
-                                        self._line_up_slots.keys()]),
+        props = {'line_up_slots': dict([(slot_no, slot.dumps()) for slot_no, slot in
+                                        self._line_up_slots.items()]),
                  'line_up_order': self._line_up_order}
 
         line_up_obj = tb_character_line_up.getObj(self.owner.base_info.id)

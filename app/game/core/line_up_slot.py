@@ -65,6 +65,10 @@ class LineUpSlot(object):
         """
         return cPickle.dumps(self.info)
 
+    def change_equipment(self, no, equipment_id):
+        self._equipment_ids[no] = equipment_id
+
+
 
 
 

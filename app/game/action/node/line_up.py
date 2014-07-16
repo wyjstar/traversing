@@ -2,7 +2,7 @@
 """
 created by server on 14-7-14下午5:25.
 """
-from app.game.logic.line_up import get_line_up_info, change_hero
+from app.game.logic.line_up import get_line_up_info, change_hero, change_equipment
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import line_up_pb2
 
@@ -29,7 +29,12 @@ def change_hero_702(dynamic_id, pro_data):
 def change_equipments_703(dynamic_id, pro_data):
     """更换装备
     """
-    pass
+    request = line_up_pb2.ChangeEquipmentsRequest()
+    request.ParseFromString(pro_data)
+    slot_no = request.slot_no
+    no = request.no
+    equipment_id = request.equipment_id
+    return change_equipment(dynamic_id, slot_no, no, equipment_id)
 
 
 

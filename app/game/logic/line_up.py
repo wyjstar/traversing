@@ -12,6 +12,7 @@ def get_line_up_info(dynamic_id, **kwargs):
     response = line_up_info(player)
     return response.SerializePartialToString()
 
+
 @have_player
 def change_hero(dynamic_id, slot_no, hero_no, **kwargs):
     """
@@ -31,6 +32,23 @@ def change_hero(dynamic_id, slot_no, hero_no, **kwargs):
     player.line_up_component.change_hero(slot_no, hero_no)
     player.line_up_component.save_data()
 
+    response = line_up_info(player)
+    return response.SerializePartialToString()
+
+
+@have_player
+def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
+    """
+    @param dynamic_id: 动态ID
+    @param slot_no: 阵容位置
+    @param no: 装备位置
+    @param equipment_id: 装备ID
+    @return:
+    """
+    player = kwargs.get('player')
+
+    player.line_up_component.change_equipment(slot_no, no, equipment_id)
+    player.line_up_component.save_data()
     response = line_up_info(player)
     return response.SerializePartialToString()
 
