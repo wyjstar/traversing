@@ -23,7 +23,6 @@ class Hero(object):
         self._level = 0
         self._exp = 0
         self._break_level = 0
-        self._equipment_ids = []
         self._character_id = character_id
 
     def init_data(self, mmode):
@@ -37,7 +36,6 @@ class Hero(object):
         self._level = hero_property.get("level")
         self._exp = hero_property.get("exp")
         self._break_level = hero_property.get("break_level")
-        self._equipment_ids = hero_property.get("equipment_ids")  # 穿戴装备列表
 
     @property
     def hero_no(self):
@@ -70,14 +68,6 @@ class Hero(object):
     @break_level.setter
     def break_level(self, value):
         self._break_level = value
-
-    @property
-    def equipment_ids(self):
-        return self._equipment_ids
-
-    @equipment_ids.setter
-    def equipment_ids(self, value):
-        self._equipment_ids = value
 
     def get_all_exp(self):
         """根据等级+当前等级经验，得到总经验"""
@@ -115,8 +105,7 @@ class Hero(object):
             'hero_no': self._hero_no,
             'level': self._level,
             'exp': self._exp,
-            'break_level': self._break_level,
-            'equipment_ids': cPickle.dumps(self._equipment_ids)
+            'break_level': self._break_level
         }
         return hero_property
 

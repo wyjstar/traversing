@@ -8,6 +8,7 @@ import unittest
 from app.game.action.node.line_up import *
 from app.game.service.gatenoteservice import remoteservice
 from app.proto_file.line_up_pb2 import *
+from app.game.core.PlayersManager import PlayersManager
 
 
 class LineUpActionTest(unittest.TestCase):

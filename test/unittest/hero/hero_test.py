@@ -34,7 +34,6 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(hero.level, 11)
         self.assertEqual(hero.break_level, 2)
         self.assertEqual(hero.exp, 1, 'exp %d' % hero.exp)
-        self.assertEqual(hero.equipment_ids, [])
 
         #redis
         heros = tb_character_heros.getObjData(1)
@@ -50,7 +49,6 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(hero_property.get('level'), 11)
         self.assertEqual(hero_property.get('break_level'), 2)
         self.assertEqual(hero_property.get('exp'), 1, 'exp %d' % hero.exp)
-        self.assertEqual(cPickle.loads(hero_property.get('equipment_ids')), [])
 
     def test_remove_hero(self):
         self.player.hero_component.delete_hero(10001)
@@ -87,7 +85,6 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(hero_property.get('level'), 10)
         self.assertEqual(hero_property.get('break_level'), 11)
         self.assertEqual(hero_property.get('exp'), 13, 'exp %d' % hero.exp)
-        self.assertEqual(cPickle.loads(hero_property.get('equipment_ids')), [1, 2])
 
 
 
