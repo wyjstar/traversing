@@ -62,7 +62,9 @@ big_bag_config = {}
 equipment_config = {}
 equipment_strengthen_config = {}
 shop_config = {}
+soul_shop_config = {}
 link_config = {}
+
 
 all_config_name = {
     'hero_config': HeroConfig(),

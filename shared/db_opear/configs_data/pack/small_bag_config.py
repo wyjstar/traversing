@@ -27,18 +27,13 @@ class SmallBag(object):
     def small_bag_id(self, small_bag_id):
         self._small_bag_id = small_bag_id
 
+    def get_drop_item(self, drop_id):
+        return self._drops.get(drop_id)
+
     def add_drop_item(self, drop_item):
         """添加掉落信息
         """
         self._drops[drop_item.drop_id] = drop_item
-
-    def del_drop_item(self, drop_item):
-
-        if drop_item.drop_id in self._drops:
-            try:
-                del self._drops[drop_item.drop_id]
-            finally:
-                pass
 
 
 class SmallBagsConfig(object):

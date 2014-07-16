@@ -13,44 +13,9 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_request.proto',
   package='app.gate',
-  serialized_pb='\n\x12hero_request.proto\x12\x08\x61pp.gate\"2\n\rCommonRequest\x12\x10\n\x08playerid\x18\x01 \x02(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"#\n\x10HeroBreakRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"(\n\x14HeroSacrificeRequest\x12\x10\n\x08hero_nos\x18\x01 \x03(\x05\"*\n\x12HeroComposeRequest\x12\x14\n\x0chero_chip_no\x18\x02 \x02(\x05')
+  serialized_pb='\n\x12hero_request.proto\x12\x08\x61pp.gate\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"#\n\x10HeroBreakRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"(\n\x14HeroSacrificeRequest\x12\x10\n\x08hero_nos\x18\x01 \x03(\x05\"*\n\x12HeroComposeRequest\x12\x14\n\x0chero_chip_no\x18\x02 \x02(\x05')
 
 
-
-
-_COMMONREQUEST = _descriptor.Descriptor(
-  name='CommonRequest',
-  full_name='app.gate.CommonRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='playerid', full_name='app.gate.CommonRequest.playerid', index=0,
-      number=1, type=3, cpp_type=2, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='message', full_name='app.gate.CommonRequest.message', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=32,
-  serialized_end=82,
-)
 
 
 _HEROUPGRADEWITHITEMREQUEST = _descriptor.Descriptor(
@@ -90,8 +55,8 @@ _HEROUPGRADEWITHITEMREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=84,
-  serialized_end=172,
+  serialized_start=32,
+  serialized_end=120,
 )
 
 
@@ -118,8 +83,8 @@ _HEROBREAKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=174,
-  serialized_end=209,
+  serialized_start=122,
+  serialized_end=157,
 )
 
 
@@ -146,8 +111,8 @@ _HEROSACRIFICEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=211,
-  serialized_end=251,
+  serialized_start=159,
+  serialized_end=199,
 )
 
 
@@ -174,21 +139,14 @@ _HEROCOMPOSEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=253,
-  serialized_end=295,
+  serialized_start=201,
+  serialized_end=243,
 )
 
-DESCRIPTOR.message_types_by_name['CommonRequest'] = _COMMONREQUEST
 DESCRIPTOR.message_types_by_name['HeroUpgradeWithItemRequest'] = _HEROUPGRADEWITHITEMREQUEST
 DESCRIPTOR.message_types_by_name['HeroBreakRequest'] = _HEROBREAKREQUEST
 DESCRIPTOR.message_types_by_name['HeroSacrificeRequest'] = _HEROSACRIFICEREQUEST
 DESCRIPTOR.message_types_by_name['HeroComposeRequest'] = _HEROCOMPOSEREQUEST
-
-class CommonRequest(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _COMMONREQUEST
-
-  # @@protoc_insertion_point(class_scope:app.gate.CommonRequest)
 
 class HeroUpgradeWithItemRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

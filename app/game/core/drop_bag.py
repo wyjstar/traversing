@@ -6,6 +6,7 @@ import random
 import copy
 from shared.db_opear.configs_data.game_configs import big_bag_config, small_bag_config
 from shared.db_opear.configs_data.common_item import CommonGroupItem
+from shared.utils.random_pick import *
 
 
 class BigBag(object):
@@ -14,17 +15,18 @@ class BigBag(object):
         self.big_bag = big_bag_config.get(big_bag_config_id)
 
     def get_drop_items(self):
+        """获取大包内物品"""
         drop_items = []
         for small_bag_id, small_bag_times, is_uniq in \
                 zip(self.big_bag.small_packages, self.big_bag.small_package_times, self.big_bag.is_uniq_list):
             small_bag = SmallBag(small_bag_id)
-
+            items = small_bag.get_drop_items()
             if is_uniq:
-                lst = small_bag.random_multi_pick_without_repeat(small_bag_times)
-                drop_items.extend(lst)
+                ids = random_multi_pick_without_repeat(items, small_bag_times)
             else:
-                lst = small_bag.random_multi_pick(small_bag_times)
-                drop_items.extend(lst)
+                ids = random_multi_pick(items, small_bag_times)
+            for drop_id in ids:
+                drop_items.append(small_bag.get_drop_item(drop_id))
 
         drop_item_group = []
         for drop_item in drop_items:
@@ -40,52 +42,12 @@ class SmallBag(object):
     def __init__(self, small_bag_config_id):
         self.small_bag = small_bag_config.get(small_bag_config_id)
 
-    def random_pick(self):
-        """随机掉落
-        """
-        return self.__do_random()
+    def get_drop_items(self):
+        data = {}
+        for drop_id, drop_item in self.small_bag.drops.items():
+            data[drop_id] = drop_item.item_weight
 
-    def random_multi_pick(self, times):
-        """重复掉落多次
-        """
-        drop_items = []
-        for i in range(times):
-            picked_item = self.random_pick()
+        return data
 
-            if not picked_item:
-                continue
-
-            drop_items.append(picked_item)
-        return drop_items
-
-    def random_multi_pick_without_repeat(self, times):
-        """重复掉落多次，要去重
-        """
-        drop_items = []
-        small_bag_copy = copy.deepcopy(self.small_bag)
-        self.small_bag = small_bag_copy
-        for i in range(times):
-            picked_item = self.random_pick()
-
-            if not picked_item:
-                continue
-
-            drop_items.append(picked_item)
-            small_bag_copy.del_drop_item(picked_item)
-
-        return drop_items
-
-    def __do_random(self):
-        pick_result = None
-        odds_dict = {}
-        for items_id, items in self.small_bag.drops.items():
-            odds_dict[items] = items.item_weight
-        random_max = sum(odds_dict.values())
-        x = random.randint(0, random_max)
-        odds_cur = 0
-        for items, weight in odds_dict.items():
-            odds_cur += weight
-            if x <= odds_cur:
-                pick_result = items
-                break
-        return pick_result
+    def get_drop_item(self, drop_id):
+        return self.small_bag.get_drop_item(drop_id)

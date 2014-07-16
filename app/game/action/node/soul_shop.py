@@ -1,45 +1,21 @@
 # -*- coding:utf-8 -*-
 """
-created by server on 14-7-9下午2:39.
+created by server on 14-7-15下午8:33.
 """
+
 from app.game.service.gatenoteservice import remote_service_handle
-from app.proto_file.shop_pb2 import ShopRequest
+from app.proto_file.soul_shop_pb2 import SoulShopRequest, GetShopItemsResponse
 from app.proto_file.common_pb2 import CommonResponse
-from shared.db_opear.configs_data.game_configs import shop_config
+from shared.db_opear.configs_data.game_configs import soul_shop_config
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
 from app.proto_file.player_response_pb2 import GameResourcesResponse
+from app.game.core.soul_shop import get_shop_item_ids
 
-
-
-def lucky_draw_hero_501(dynamic_id, pro_data):
-    """抽取hero"""
-    return shop_oper(dynamic_id, pro_data)
-
-
-def lucky_draw_equipment_502(dynamic_id, pro_data):
-    """抽取equipment"""
-    return shop_oper(dynamic_id, pro_data)
-
-
-def buy_item_503(dynamic_id, pro_data):
-    """购买item"""
-    return shop_oper(dynamic_id, pro_data)
-
-
-def buy_gift_pack_504(dynamic_id, pro_data):
-    """购买礼包"""
-    return shop_oper(dynamic_id, pro_data)
-
-
-def get_shop_items_505(dynamic_id, pro_data):
-    """获取商品列表"""
-    pass
-
-
-def shop_oper(dynamic_id, pro_data):
-    """商城所有操作"""
-    request = ShopRequest()
+@remote_service_handle
+def soul_shop_506(dynamic_id, pro_data):
+    """武魂商店"""
+    request = SoulShopRequest()
     request.ParseFromString(pro_data)
     game_resources_response = GameResourcesResponse()
     response = CommonResponse()
@@ -47,7 +23,7 @@ def shop_oper(dynamic_id, pro_data):
 
     shop_id = request.id
     player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
-    shop_item = shop_config.get(shop_id)
+    shop_item = soul_shop_config.get(shop_id)
     result = is_afford(player, shop_item.consume)  # 校验
     if not result.get('result'):
         response.result = False
@@ -61,3 +37,17 @@ def shop_oper(dynamic_id, pro_data):
 
     response.result = True
     return game_resources_response.SerializeToString()
+
+
+@remote_service_handle
+def get_shop_items_507(dynamic_id, pro_data=None):
+    """获取商品列表"""
+
+    ids = get_shop_item_ids()
+    shop = GetShopItemsResponse()
+    for x in ids:
+        shop.id.append(x)
+    return shop.SerializeToString()
+
+
+
