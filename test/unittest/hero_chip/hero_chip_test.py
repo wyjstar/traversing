@@ -6,6 +6,8 @@ import test.unittest.init_data.init_connection
 import unittest
 from app.game.redis_mode import tb_character_hero_chip
 from app.game.core.PlayersManager import PlayersManager
+from app.game.logic.hero_chip import get_hero_chips
+from app.proto_file.hero_chip_pb2 import GetHeroChipsResponse
 
 
 class HeroChipTest(unittest.TestCase):
@@ -30,7 +32,13 @@ class HeroChipTest(unittest.TestCase):
         num = data.get('hero_chips').get(1000112)
         self.assertEqual(num, 1000, "hero_chip num error!%d_%d" % (num, 1000))
 
+    def test_get_hero_chips(self):
+        response_str = get_hero_chips(1)
+        response = GetHeroChipsResponse()
+        response.ParseFromString(response_str)
 
+        lst = [x for x in response.hero_chips]
+        self.assertEqual(len(lst), 2, "%d_%d" % (len(lst), 2))
 
 
 

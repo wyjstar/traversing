@@ -4,13 +4,6 @@ created by server on 14-7-15下午8:33.
 """
 
 from app.game.service.gatenoteservice import remote_service_handle
-from app.proto_file.soul_shop_pb2 import SoulShopRequest, GetShopItemsResponse
-from app.proto_file.common_pb2 import CommonResponse
-from shared.db_opear.configs_data.game_configs import soul_shop_config
-from app.game.core.PlayersManager import PlayersManager
-from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
-from app.proto_file.player_response_pb2 import GameResourcesResponse
-from app.game.core.soul_shop import get_shop_item_ids
 from app.game.logic.soul_shop import soul_shop, get_shop_items
 
 

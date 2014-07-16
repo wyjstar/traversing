@@ -31,4 +31,8 @@ class HeroChip(object):
         """消费碎片"""
         self.num -= num
 
+    def update_pb(self, hero_chip_pb):
+        hero_chip_pb.hero_chip_no = self._chip_no
+        hero_chip_pb.hero_chip_num = self._num
+
 

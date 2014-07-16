@@ -34,6 +34,9 @@ class CharacterEquipmentChipComponent(Component):
         chip = self._chips.get(chip_no)
         return chip
 
+    def get_all(self):
+        return self._chips.values()
+
     def add_chip(self, equipment_chip):
         """添加碎片
         """

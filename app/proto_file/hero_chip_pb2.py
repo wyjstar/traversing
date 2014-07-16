@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_chip.proto',
   package='',
-  serialized_pb='\n\x0fhero_chip.proto\"9\n\nHeroChipPB\x12\x14\n\x0chero_chip_no\x18\x01 \x02(\x05\x12\x15\n\rhero_chip_num\x18\x02 \x02(\x05')
+  serialized_pb='\n\x0fhero_chip.proto\"9\n\nHeroChipPB\x12\x14\n\x0chero_chip_no\x18\x01 \x02(\x05\x12\x15\n\rhero_chip_num\x18\x02 \x02(\x05\"7\n\x14GetHeroChipsResponse\x12\x1f\n\nhero_chips\x18\x01 \x03(\x0b\x32\x0b.HeroChipPB')
 
 
 
@@ -52,13 +52,49 @@ _HEROCHIPPB = _descriptor.Descriptor(
   serialized_end=76,
 )
 
+
+_GETHEROCHIPSRESPONSE = _descriptor.Descriptor(
+  name='GetHeroChipsResponse',
+  full_name='GetHeroChipsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='hero_chips', full_name='GetHeroChipsResponse.hero_chips', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=78,
+  serialized_end=133,
+)
+
+_GETHEROCHIPSRESPONSE.fields_by_name['hero_chips'].message_type = _HEROCHIPPB
 DESCRIPTOR.message_types_by_name['HeroChipPB'] = _HEROCHIPPB
+DESCRIPTOR.message_types_by_name['GetHeroChipsResponse'] = _GETHEROCHIPSRESPONSE
 
 class HeroChipPB(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _HEROCHIPPB
 
   # @@protoc_insertion_point(class_scope:HeroChipPB)
+
+class GetHeroChipsResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GETHEROCHIPSRESPONSE
+
+  # @@protoc_insertion_point(class_scope:GetHeroChipsResponse)
 
 
 # @@protoc_insertion_point(module_scope)

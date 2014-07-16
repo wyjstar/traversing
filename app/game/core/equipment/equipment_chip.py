@@ -49,3 +49,7 @@ class EquipmentChip(object):
             return None
         need_num = chip_obj.needNum
         return need_num
+    
+    def update_pb(self, equipment_chip_pb):
+        equipment_chip_pb.equipment_chip_no = self._chip_no
+        equipment_chip_pb.equipment_chip_num = self._chip_num
