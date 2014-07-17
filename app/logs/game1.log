@@ -1,0 +1,81 @@
+[2014-07-17 17:35:44.429752]
+ERROR
+	Traceback (most recent call last):
+[2014-07-17 17:35:44.429865]
+ERROR
+	  File "appmain.py", line 29, in <module>
+[2014-07-17 17:35:44.429961]
+ERROR
+	    model_default_config=model_default_config, model_config=model_config)
+[2014-07-17 17:35:44.430051]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/gfirefly/server/server.py", line 116, in config
+[2014-07-17 17:35:44.430160]
+ERROR
+	    __import__(app)
+[2014-07-17 17:35:44.430263]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/game1server.py", line 8, in <module>
+[2014-07-17 17:35:44.430340]
+ERROR
+	    initapp.load_module()
+[2014-07-17 17:35:44.430406]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/game/initapp.py", line 9, in load_module
+[2014-07-17 17:35:44.430628]
+ERROR
+	    from action.node import enter_scene
+[2014-07-17 17:35:44.430710]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/game/action/node/enter_scene.py", line 6, in <module>
+[2014-07-17 17:35:44.431206]
+ERROR
+	    from app.game.core.character.PlayerCharacter import PlayerCharacter
+[2014-07-17 17:35:44.431285]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/game/core/character/PlayerCharacter.py", line 5, in <module>
+[2014-07-17 17:35:44.431464]
+ERROR
+	    from app.game.component.character_line_up import CharacterLineUpComponent
+[2014-07-17 17:35:44.431534]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/game/component/character_line_up.py", line 7, in <module>
+[2014-07-17 17:35:44.431792]
+ERROR
+	    from app.game.redis_mode import tb_character_line_up
+[2014-07-17 17:35:44.431871]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/game/redis_mode.py", line 9, in <module>
+[2014-07-17 17:35:44.431931]
+ERROR
+	    tb_character_info.insert()
+[2014-07-17 17:35:44.432463]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/shared/db_entrust/redis_mode.py", line 176, in insert
+[2014-07-17 17:35:44.432624]
+ERROR
+	    RedisObject.insert(self)
+[2014-07-17 17:35:44.432707]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/shared/db_entrust/redis_object.py", line 140, in insert
+[2014-07-17 17:35:44.432801]
+ERROR
+	    self._client.mset(newmapping)
+[2014-07-17 17:35:44.432910]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/client.py", line 782, in mset
+[2014-07-17 17:35:44.433115]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/client.py", line 464, in execute_command
+[2014-07-17 17:35:44.433219]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/connection.py", line 334, in send_command
+[2014-07-17 17:35:44.433884]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/connection.py", line 316, in send_packed_command
+[2014-07-17 17:35:44.434058]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/connection.py", line 253, in connect
+[2014-07-17 17:35:44.434218]
+ERROR
+	redis.exceptions.ConnectionError: Error 111 connecting 127.0.0.1:6379. Connection refused.

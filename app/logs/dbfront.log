@@ -1,0 +1,69 @@
+[2014-07-17 17:35:44.519064]
+ERROR
+	Traceback (most recent call last):
+[2014-07-17 17:35:44.519245]
+ERROR
+	  File "appmain.py", line 29, in <module>
+[2014-07-17 17:35:44.519457]
+ERROR
+	    model_default_config=model_default_config, model_config=model_config)
+[2014-07-17 17:35:44.519543]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/gfirefly/server/server.py", line 116, in config
+[2014-07-17 17:35:44.519641]
+ERROR
+	    __import__(app)
+[2014-07-17 17:35:44.519742]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/dbfrontserver.py", line 7, in <module>
+[2014-07-17 17:35:44.519798]
+ERROR
+	    from dbfront import initconfig
+[2014-07-17 17:35:44.520097]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/dbfront/initconfig.py", line 13, in <module>
+[2014-07-17 17:35:44.520242]
+ERROR
+	    from app.dbfront.dataloader import registe_madmin, check_mem_db
+[2014-07-17 17:35:44.520339]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/dbfront/dataloader.py", line 5, in <module>
+[2014-07-17 17:35:44.520411]
+ERROR
+	    import memmode
+[2014-07-17 17:35:44.520507]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/app/dbfront/memmode.py", line 7, in <module>
+[2014-07-17 17:35:44.520588]
+ERROR
+	    tb_account.insert()
+[2014-07-17 17:35:44.520694]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/shared/db_entrust/redis_mode.py", line 176, in insert
+[2014-07-17 17:35:44.520792]
+ERROR
+	    RedisObject.insert(self)
+[2014-07-17 17:35:44.520869]
+ERROR
+	  File "/home/server/PycharmProjects/sphinx/shared/db_entrust/redis_object.py", line 140, in insert
+[2014-07-17 17:35:44.520962]
+ERROR
+	    self._client.mset(newmapping)
+[2014-07-17 17:35:44.521038]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/client.py", line 782, in mset
+[2014-07-17 17:35:44.521254]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/client.py", line 464, in execute_command
+[2014-07-17 17:35:44.521404]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/connection.py", line 334, in send_command
+[2014-07-17 17:35:44.522347]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/connection.py", line 316, in send_packed_command
+[2014-07-17 17:35:44.523928]
+ERROR
+	  File "build/bdist.linux-x86_64/egg/redis/connection.py", line 253, in connect
+[2014-07-17 17:35:44.524627]
+ERROR
+	redis.exceptions.ConnectionError: Error 111 connecting 127.0.0.1:6379. Connection refused.
