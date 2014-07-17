@@ -30,7 +30,10 @@ class CharacterHeroChipsComponent(Component):
 
     def get_chip(self, chip_no):
         return self._chips.get(chip_no)
-    
+
+    def get_all(self):
+        return self._chips.values()
+
     def is_afford(self, chip_no, chip_num):
         if not chip_no in self._chips:
             return False

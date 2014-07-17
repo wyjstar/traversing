@@ -15,6 +15,8 @@ from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
 from app.game.component.fiance.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
+from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
+import json
 
 
 class PlayerCharacter(Character):
@@ -41,6 +43,7 @@ class PlayerCharacter(Character):
         self._level = CharacterLevelComponent(self)  # 等级
         self._line_up = CharacterLineUpComponent(self)  # 阵容
         self._stage = CharacterStageComponent(self)  # 关卡
+        self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
         self._mmode = None
 
@@ -65,6 +68,10 @@ class PlayerCharacter(Character):
         hero_soul = character_info['hero_soul']
         level = character_info['level']
         exp = character_info['exp']
+        fine_hero_last_pick_time = character_info['fine_hero_last_pick_time']
+        excellent_hero_last_pick_time = character_info['excellent_hero_last_pick_time']
+        fine_equipment_last_pick_time = character_info['fine_equipment_last_pick_time']
+        excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
 
         #------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
@@ -73,6 +80,12 @@ class PlayerCharacter(Character):
         self._finance.coin = coin
         self._finance.gold = gold
         self._finance.hero_soul = hero_soul
+
+        #------------初始化上次抽取信息------------
+        self._last_pick_time.fine_hero = fine_hero_last_pick_time
+        self._last_pick_time.excellent_hero = excellent_hero_last_pick_time
+        self._last_pick_time.fine_equipment = fine_equipment_last_pick_time
+        self._last_pick_time.excellent_equipment = excellent_equipment_last_pick_time
 
         #------------初始化角色等级信息------------
         self._level.level = level
@@ -110,6 +123,14 @@ class PlayerCharacter(Character):
     @finance.setter
     def finance(self, value):
         self._finance = value
+
+    @property
+    def last_pick_time(self):
+        return self._last_pick_time
+
+    @last_pick_time.setter
+    def last_pick_time(self, value):
+        self._last_pick_time = value
 
     @property
     def hero_chip_component(self):

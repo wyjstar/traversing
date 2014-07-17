@@ -5,7 +5,6 @@ import "common.proto";
 //请求武将列表
 message GetHerosResponse
 {
-    required CommonResponse res = 1;
     repeated HeroPB heros = 2;
 }
 

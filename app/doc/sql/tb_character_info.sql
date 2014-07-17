@@ -29,5 +29,9 @@ CREATE TABLE `tb_character_info` (
   `junior_stone` int(11) NOT NULL DEFAULT '0',
   `middle_stone` int(11) NOT NULL DEFAULT '0',
   `high_stone` int(11) NOT NULL DEFAULT '0',
+  `fine_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
+  `excellent_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
+  `fine_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
+  `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -8,6 +8,7 @@ import unittest
 from app.game.action.node.hero import *
 from app.proto_file.hero_response_pb2 import *
 from app.game.service.gatenoteservice import remoteservice
+from app.game.core.PlayersManager import PlayersManager
 
 
 class HeroActionTest(unittest.TestCase):
@@ -73,11 +74,11 @@ class HeroActionTest(unittest.TestCase):
         self.assertEqual(response.exp_item_no, 1000103, "exp_item_no error!")
         self.assertEqual(response.exp_item_num, 1, "exp_item_num error!")
 
-    def test_hero_sacrifice(self):
+    def test_hero_sacrifice_oper(self):
         hero_no_list = [10001, 10002]
         heros = self.player.hero_component.get_heros_by_nos(hero_no_list)
 
-        total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice(heros)
+        total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice_oper(heros)
         self.assertEqual(total_hero_soul, 300, "total hero soul error!")
         self.assertEqual(exp_item_no, 1000103, "exp_item_no error!")
         self.assertEqual(exp_item_num, 1, "exp_item_num error!")

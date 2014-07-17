@@ -6,12 +6,14 @@ import test.unittest.init_data.init_connection
 import unittest
 from app.game.redis_mode import tb_character_equipment_chip
 from app.game.core.PlayersManager import PlayersManager
+from app.game.logic.equipment_chip import get_equipment_chips
+from app.proto_file.equipment_chip_pb2 import GetEquipmentChipsResponse
 
 
 class EquipmentChipTest(unittest.TestCase):
-
     def setUp(self):
         from test.unittest.init_test_data import init
+
         init()
         self.player = PlayersManager().get_player_by_id(1)
 
@@ -31,4 +33,13 @@ class EquipmentChipTest(unittest.TestCase):
         self.assertEqual(data.get('id'), 1, "player id error!")
         num = data.get('chips').get(1000112)
         self.assertEqual(num, 300, "chip num error!%d_%d" % (num, 300))
+
+    def test_get_equipment_chips(self):
+        response_str = get_equipment_chips(1)
+        response = GetEquipmentChipsResponse()
+        response.ParseFromString(response_str)
+
+        lst = [x for x in response.equipment_chips]
+        self.assertEqual(len(lst), 2, "%d_%d" % (len(lst), 2))
+        
 

@@ -8,7 +8,6 @@ from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.player_response_pb2 import PlayerResponse
 
 
-
 @remote_service_handle
 def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
