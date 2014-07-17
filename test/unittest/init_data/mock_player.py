@@ -15,4 +15,10 @@ def init_player():
     player.finance.gold = 10000
     player.finance.save_data()
 
+    player.last_pick_time.fine_hero = 0
+    player.last_pick_time.excellent_hero = 0
+    player.last_pick_time.fine_equipment = 0
+    player.last_pick_time.excellent_equipment = 0
+    player.last_pick_time.save_data()
+
     PlayersManager().add_player(player)
