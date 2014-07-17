@@ -5,7 +5,7 @@ created by server on 14-7-16下午1:47.
 import test.unittest.init_data.init_connection
 from app.game.core.PlayersManager import PlayersManager
 import unittest
-from app.game.core.soul_shop import *
+from app.game.logic.soul_shop import *
 
 
 class SoulShopTest(unittest.TestCase):

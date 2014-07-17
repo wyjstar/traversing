@@ -7,7 +7,8 @@ from app.proto_file.soul_shop_pb2 import SoulShopRequest, GetShopItemsResponse
 from shared.db_opear.configs_data.game_configs import soul_shop_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
 from app.proto_file.player_response_pb2 import GameResourcesResponse
-from app.game.core.soul_shop import get_shop_item_ids
+from shared.db_opear.configs_data.game_configs import base_config
+from shared.utils.random_pick import random_multi_pick_without_repeat
 
 
 @have_player
@@ -44,5 +45,17 @@ def get_shop_items(**kwargs):
     return shop.SerializeToString()
 
 
+def get_all_shop_items():
+    """从配置文件中读取所有商品"""
+    data = {}
+    for item_id, item in soul_shop_config.items():
+        data[item_id] = item.weight
+    return data
 
+
+def get_shop_item_ids():
+    """随机筛选ids"""
+    items = get_all_shop_items()
+    item_num = base_config.get('soul_shop_item_num')
+    return random_multi_pick_without_repeat(items, item_num)
 
