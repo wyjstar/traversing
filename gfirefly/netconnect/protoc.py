@@ -46,6 +46,7 @@ class LiberateProtocol(protocols.BaseProtocol):
         @param data: str 客户端传送过来的数据
         '''
         length = self.factory.dataprotocl.getHeadlength()#获取协议头的长度
+        print 'dataReceived:', length
         self.buff += data
         while self.buff.__len__() >= length: 
             unpackdata = self.factory.dataprotocl.unpack(self.buff[:length])

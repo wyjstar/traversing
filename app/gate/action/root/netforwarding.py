@@ -19,6 +19,9 @@ from app.gate.service.local.gateservice import local_service
 def forwarding(key, dynamic_id, data):
     """
     """
+
+    print data
+
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)
     else:

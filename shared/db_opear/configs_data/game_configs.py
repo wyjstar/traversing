@@ -14,6 +14,7 @@ from shared.db_opear.configs_data.link_config import LinkConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
+from shared.db_opear.configs_data.stage_config import StageConfig
 
 
 print id(dbpool)
@@ -64,6 +65,7 @@ equipment_strengthen_config = {}
 shop_config = {}
 soul_shop_config = {}
 link_config = {}
+stage_config = {}
 
 
 all_config_name = {
@@ -78,6 +80,7 @@ all_config_name = {
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
     'link_config': LinkConfig(),
+    'stage_config': StageConfig(),
 }
 
 

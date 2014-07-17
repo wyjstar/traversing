@@ -7,6 +7,7 @@ from app.game.component.equipment.character_equipment_chip import CharacterEquip
 from app.game.component.level.character_level import CharacterLevelComponent
 from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
+from app.game.component.stage.character_stage import CharacterStageComponent
 from gtwisted.utils import log
 from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
@@ -14,7 +15,6 @@ from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
 from app.game.component.fiance.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
-import json
 
 
 class PlayerCharacter(Character):
@@ -40,6 +40,7 @@ class PlayerCharacter(Character):
         self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
         self._level = CharacterLevelComponent(self)  # 等级
         self._line_up = CharacterLineUpComponent(self)  # 阵容
+        self._stage = CharacterStageComponent(self)  # 关卡
 
         self._mmode = None
 
@@ -84,6 +85,7 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
+        self._stage.init_data()
 
     @property
     def character_type(self):

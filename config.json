@@ -204,6 +204,14 @@
                 "id":"simple",
                 "chips": "complex"
             }
+        },
+        "tb_character_stages":{
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "complete": "complex",
+                "open": "complex"
+            }
         }
     }
 
