@@ -18,6 +18,7 @@ class EquipmentConfig(object):
         """解析
         """
         for row in config_value:
-            row['gain'] = data_helper.parse(row.get("gain"))
+            if row.get('gain'):
+                row['gain'] = data_helper.parse(row.get("gain"))
             self._equipments[row.get('id')] = CommonItem(row)
         return self._equipments
