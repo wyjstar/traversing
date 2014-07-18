@@ -45,6 +45,8 @@ class PlayerCharacter(Character):
         self._stage = CharacterStageComponent(self)  # 关卡
         self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
+        # self._fight_cache = CharacterFightCache(self)  # 关卡战斗缓存
+
         self._mmode = None
 
         if status:

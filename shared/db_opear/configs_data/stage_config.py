@@ -18,7 +18,7 @@ class StageConfig(object):
             self._stages[item.id] = item
 
         for stage_id, stage in self._stages.items():
-            if stage.chapter == 1 and stage.section == 1 and stage.type == 1:  # 第一章第一节难度简单
+            if stage.chapter == 1 and stage.section == 1 and stage.type == 1:  # 第一章第一节难度普通
                 self._first_stage_id = stage_id
 
         return {'stages': self._stages, 'first_stage_id': self._first_stage_id}
