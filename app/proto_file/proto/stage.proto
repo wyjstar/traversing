@@ -1,0 +1,57 @@
+message BattleUnit{
+	required int32 no = 1;  //战斗单位ID
+	optional int32 quality = 2;  //战斗单位品质
+	optional int32 normal_skill = 3;  //战斗单位普通技能
+	optional int32 rage_skill = 4;  //战斗单位怒气技能
+	optional float hp = 5; // 战斗单位血量
+	optional float atk = 6; //战斗单位攻击
+	optional float physical_def = 7;//战斗单位物理防御
+	optional float magic_dif = 8;  //战斗单位魔法防御
+	optional float hit = 9; //战斗单位命中率
+	optional float dodge = 10;  //战斗单位闪避率
+	optional float cri = 11;  //战斗单位暴击率
+	optional float cri_Coeff = 12; //战斗单位暴击伤害系数
+	optional float cri_ded_coeff = 13;  //战斗单位暴伤减免系数
+	optional float block = 14;  //战斗单位格挡率
+}
+
+
+message Stage{
+	required int32 stage_id = 1;  //关卡编号
+	optional int32 attacks = 2;  //攻击次数
+	optional int32 state = 3;  //关卡状态 -1:开启没打过 0：输  1：赢
+}
+
+message StageAward{
+	required int32 chapter_id = 1; //章节编号
+	repeated int32 award = 2;  //奖励数组 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+}
+
+
+//请求关卡信息 command:901
+message StageInfoRequest{
+	optional int32 chapter_id = 1; //章节编号
+	optional int32 section_id = 2; //关卡编号
+}
+
+message StageInfoResponse{
+	repeated Stage stage = 1;
+	repeated StageAward stage_award = 2;
+}
+
+
+// 进入关卡战斗 command:901
+message StageStartRequest{
+	required int32 stage_id = 1; //关卡编号
+}
+
+message StageStartResponse{
+	required int32 stage_id = 1;  //关卡编号
+
+}
+
+// 关卡结算 command:902
+message StageSettlementResponse{
+
+}
