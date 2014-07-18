@@ -78,7 +78,11 @@ class User(object):
                              'exp': 0,
                              'junior_stone': 0,
                              'middle_stone': 0,
-                             'high_stone': 0}
+                             'high_stone': 0,
+                             'fine_hero_last_pick_time': 0,
+                             'excellent_hero_last_pick_time': 0,
+                             'fine_equipment_last_pick_time': 0,
+                             'excellent_equipment_last_pick_time': 0}
                 character_obj = tb_character_info.new(character)
                 character_obj.insert()
                 self._character = character

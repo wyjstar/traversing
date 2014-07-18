@@ -21,10 +21,10 @@ class SerializerMetaClass(type):
 
             if model_default_config:
                 for attr in model_default_config:
-                    setattr(result, attr, model_default_config[attr])
+                    setattr(result, ('_%s' % attr), model_default_config[attr])
             if name in model_config:
                 for attr in model_config[name]:
-                    setattr(result, attr, model_config[name][attr])
+                    setattr(result, ('_%s' % attr), model_config[name][attr])
 
         return result
 
@@ -37,7 +37,7 @@ class Serializer(object):
         将一个dict转换成model对象实例
             data: dict对象
         """
-        columns = self.def_attrs
+        columns = self._def_attrs
         for attr in columns:
             if attr in data:
                 if columns[attr] == "simple":
@@ -57,7 +57,7 @@ class Serializer(object):
 
     def dumps(self, data, shallow=False):
 
-        columns = self.def_attrs
+        columns = self._def_attrs
         print 'columns #1:', columns
         print data
         for attr in columns:

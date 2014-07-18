@@ -11,15 +11,21 @@ from shared.db_opear.configs_data import game_configs
 class CharacterStageComponent(Component):
     """用户关卡信息组件
     """
+
     def __init__(self, owner):
         super(CharacterStageComponent, self).__init__(owner)
 
         self._stage_info = {}  # 关卡信息
-        self._award_info = {}  # 按章节记录星星数量
+        self._award_info = {}  # 按章节记录奖励信息
 
     def init_data(self):
         stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
+
+        print 'stage_data #1111:', stage_data
+
         if stage_data:
+
+            print 'stage_data:', stage_data
 
             stages = stage_data.get('stage_info')
             for stage_id, stage in stages.items():
@@ -31,13 +37,37 @@ class CharacterStageComponent(Component):
         else:
             first_stage_id = game_configs.stage_config.get('first_stage_id')
             self._stage_info[first_stage_id] = Stage(first_stage_id)
-            tb_character_stages.new({'complete': self._complete, 'open': self._open})
+            tb_character_stages.new({'id': self.owner.base_info.id,
+                                     'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in
+                                                         self._stage_info.iteritems()]),
+                                     'award_info': dict(
+                                         [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
+                                          self._award_info.iteritems()])})
 
+    def get_stage(self, stage_id):
+        """取得关卡信息
+        """
+        stage_obj = self._stage_info.get(stage_id, None)
+        if not stage_obj:
+            stage_obj = Stage(stage_id, state=-2)
+        return stage_obj
 
+    def get_stages(self):
+        """取得全部关卡信息
+        """
+        stages_config = game_configs.stage_config.get('stages')
+        return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.contents]
 
+    def get_chapter(self, chapter_id):
+        """取得章节奖励信息
+        """
+        chapter_obj = self._award_info.get(chapter_id, None)
+        if not chapter_obj:
+            chapter_obj = StageAward(chapter_id)
+        return chapter_obj
 
-
-
-
-
-
+    def get_chapters(self):
+        """取得全部章节奖励信息
+        """
+        chapter_ids = game_configs.stage_config.get('chapter_ids')
+        return [self.get_chapter(chapter_id) for chapter_id in chapter_ids]

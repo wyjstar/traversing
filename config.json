@@ -213,8 +213,8 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id":"simple",
-                "complete": "complex",
-                "open": "complex"
+                "stage_info": "complex",
+                "award_info": "complex"
             }
         }
     }

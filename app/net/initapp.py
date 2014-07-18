@@ -10,6 +10,7 @@ from gfirefly.netconnect.datapack import DataPackProtoc
 
 def conn_made(conn):
     '''当连接建立时调用的方法'''
+    return
     GlobalObject().netfactory.pushObject(10001, "Distributed Login Test", [conn.transport.sessionno])
 
 

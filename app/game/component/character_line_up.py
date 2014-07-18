@@ -16,7 +16,7 @@ class CharacterLineUpComponent(Component):
     def __init__(self, owner):
         super(CharacterLineUpComponent, self).__init__(owner)
         # TODO 有多少个位置 需要读取baseinfo配置表
-        self._line_up_slots = dict([(i, None) for i in range(1, 7)])  # 卡牌位列表
+        self._line_up_slots = dict([(slot_no, LineUpSlot(slot_no)) for slot_no in range(1, 7)])  # 卡牌位列表
         self._line_up_order = []
         # self._employee = None
         self._unique = 0  # 无双
@@ -24,7 +24,7 @@ class CharacterLineUpComponent(Component):
 
     def init_data(self):
         line_up_data = tb_character_line_up.getObjData(self.owner.base_info.id)
-
+        print 'line_up_data #1:', line_up_data
         if line_up_data:
             slots = line_up_data.get("line_up_slots")
             for slot_no, slot in slots.items():

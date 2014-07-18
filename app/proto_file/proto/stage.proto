@@ -32,7 +32,7 @@ message StageAward{
 //请求关卡信息 command:901
 message StageInfoRequest{
 	optional int32 chapter_id = 1; //章节编号
-	optional int32 section_id = 2; //关卡编号
+	optional int32 stage_id = 2; //关卡编号
 }
 
 message StageInfoResponse{

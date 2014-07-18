@@ -37,10 +37,15 @@ GlobalObject().netfactory.addServiceChannel(netservice)
 
 
 @netserviceHandle
-def Forwarding_0(keyname,_conn,data):
+def Forwarding_0(keyname, _conn, data):
     """消息转发，将客户端发送的消息请求转发给gateserver分配处理
     """
     log.msg("forwarding_0++++++++++++++++++++++++++++++++++++")
+
+    if keyname == 100002:
+        print 'data:', data
+        return data
+
     dd = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
     return dd
 

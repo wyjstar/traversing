@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage.proto',
   package='',
-  serialized_pb='\n\x0bstage.proto\"\xf7\x01\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x14\n\x0cnormal_skill\x18\x03 \x01(\x05\x12\x12\n\nrage_skill\x18\x04 \x01(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_dif\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_Coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\":\n\x10StageInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x01(\x05\x12\x12\n\nsection_id\x18\x02 \x01(\x05\"L\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\x12 \n\x0bstage_award\x18\x02 \x03(\x0b\x32\x0b.StageAward\"%\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"&\n\x12StageStartResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"\x19\n\x17StageSettlementResponse')
+  serialized_pb='\n\x0bstage.proto\"\xf7\x01\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x14\n\x0cnormal_skill\x18\x03 \x01(\x05\x12\x12\n\nrage_skill\x18\x04 \x01(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_dif\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_Coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"*\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"%\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"&\n\x12StageStartResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"\x19\n\x17StageSettlementResponse')
 
 
 
@@ -229,15 +229,8 @@ _STAGEINFOREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='chapter_id', full_name='StageInfoRequest.chapter_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='section_id', full_name='StageInfoRequest.section_id', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      name='stage_id', full_name='StageInfoRequest.stage_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -252,7 +245,7 @@ _STAGEINFOREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=394,
-  serialized_end=452,
+  serialized_end=430,
 )
 
 
@@ -270,9 +263,58 @@ _STAGEINFORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=432,
+  serialized_end=474,
+)
+
+
+_CHAPTERINFOREQUEST = _descriptor.Descriptor(
+  name='ChapterInfoRequest',
+  full_name='ChapterInfoRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
     _descriptor.FieldDescriptor(
-      name='stage_award', full_name='StageInfoResponse.stage_award', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='chapter_id', full_name='ChapterInfoRequest.chapter_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=476,
+  serialized_end=516,
+)
+
+
+_CHAPTERINFORESPONSE = _descriptor.Descriptor(
+  name='ChapterInfoResponse',
+  full_name='ChapterInfoResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='stage_award', full_name='ChapterInfoResponse.stage_award', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -286,8 +328,8 @@ _STAGEINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=454,
-  serialized_end=530,
+  serialized_start=518,
+  serialized_end=573,
 )
 
 
@@ -314,8 +356,8 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=532,
-  serialized_end=569,
+  serialized_start=575,
+  serialized_end=612,
 )
 
 
@@ -342,8 +384,8 @@ _STAGESTARTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=571,
-  serialized_end=609,
+  serialized_start=614,
+  serialized_end=652,
 )
 
 
@@ -363,17 +405,19 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=611,
-  serialized_end=636,
+  serialized_start=654,
+  serialized_end=679,
 )
 
 _STAGEINFORESPONSE.fields_by_name['stage'].message_type = _STAGE
-_STAGEINFORESPONSE.fields_by_name['stage_award'].message_type = _STAGEAWARD
+_CHAPTERINFORESPONSE.fields_by_name['stage_award'].message_type = _STAGEAWARD
 DESCRIPTOR.message_types_by_name['BattleUnit'] = _BATTLEUNIT
 DESCRIPTOR.message_types_by_name['Stage'] = _STAGE
 DESCRIPTOR.message_types_by_name['StageAward'] = _STAGEAWARD
 DESCRIPTOR.message_types_by_name['StageInfoRequest'] = _STAGEINFOREQUEST
 DESCRIPTOR.message_types_by_name['StageInfoResponse'] = _STAGEINFORESPONSE
+DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
+DESCRIPTOR.message_types_by_name['ChapterInfoResponse'] = _CHAPTERINFORESPONSE
 DESCRIPTOR.message_types_by_name['StageStartRequest'] = _STAGESTARTREQUEST
 DESCRIPTOR.message_types_by_name['StageStartResponse'] = _STAGESTARTRESPONSE
 DESCRIPTOR.message_types_by_name['StageSettlementResponse'] = _STAGESETTLEMENTRESPONSE
@@ -407,6 +451,18 @@ class StageInfoResponse(_message.Message):
   DESCRIPTOR = _STAGEINFORESPONSE
 
   # @@protoc_insertion_point(class_scope:StageInfoResponse)
+
+class ChapterInfoRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CHAPTERINFOREQUEST
+
+  # @@protoc_insertion_point(class_scope:ChapterInfoRequest)
+
+class ChapterInfoResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CHAPTERINFORESPONSE
+
+  # @@protoc_insertion_point(class_scope:ChapterInfoResponse)
 
 class StageStartRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

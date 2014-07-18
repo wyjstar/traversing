@@ -11,4 +11,5 @@ def load_module():
     from action.node import item
     from action.node import equipment
     from action.node import line_up
+    from action.node import stage
 

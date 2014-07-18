@@ -42,4 +42,6 @@ tb_character_equipment_chip.insert()
 
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
+
+print 'tb_character_stages redis mode:', tb_character_stages.__dict__
 tb_character_stages.insert()

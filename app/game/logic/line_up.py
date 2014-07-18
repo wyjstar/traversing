@@ -57,7 +57,10 @@ def line_up_info(player):
     """取得用户的阵容信息
     """
     line_up_slots = player.line_up_component.line_up_slots
+    print 'line_up_slots:', line_up_slots
     links_info = player.line_up_component.get_links()  # 羁绊信息
+
+    print 'links_info:', links_info
 
     response = line_up_pb2.LineUpResponse()
 

@@ -167,3 +167,8 @@ class PlayerCharacter(Character):
             return True
         return False
 
+    @property
+    def stage_component(self):
+        return self._stage
+
+

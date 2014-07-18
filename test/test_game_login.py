@@ -14,6 +14,7 @@ from app.proto_file import equipment_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file import line_up_pb2
+from app.proto_file import stage_pb2
 
 
 def sendData(sendstr,commandId):
@@ -62,7 +63,7 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = 'c85f123ae9259a7d353a5d6bc27c7b72'
+        argument.key.key = '0cd6d373df384258b78194352b092637'
         # argument.user_name = 'ghh0001'
         # argument.password = '123457'
         self.dateSend(argument, 2)
@@ -78,7 +79,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = 'c85f123ae9259a7d353a5d6bc27c7b72'
+            argument.token = '0cd6d373df384258b78194352b092637'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -86,7 +87,32 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            self.transport.write(sendData('', 701))
+            argument = stage_pb2.StageInfoRequest()
+            argument.stage_id = 0
+
+            self.dateSend(argument, 901)
+
+            # self.transport.write(sendData('', 901))
+
+        if command == 901:
+            argument = stage_pb2.StageInfoResponse()
+            argument.ParseFromString(message)
+
+            for stage in argument.stage:
+                print stage
+
+            argument = stage_pb2.ChapterInfoRequest()
+            argument.chapter_id = 0
+
+            self.dateSend(argument, 902)
+
+        if command == 902:
+            argument = stage_pb2.ChapterInfoResponse()
+            argument.ParseFromString(message)
+
+            for award in argument.stage_award:
+                print award
+
 
         # if command == 301:
         #     print '301'
@@ -108,33 +134,33 @@ class EchoClient(protocol.Protocol):
         #
         #     self.dateSend(argument, 701)
 
-        if command == 701:
-            argument = line_up_pb2.LineUpResponse()
-            argument.ParseFromString(message)
-            for item in argument.slot:
-                print item
-
-            argument = line_up_pb2.ChangeHeroRequest()
-            argument.slot_no = 1
-            argument.hero_no = 10010
-            self.dateSend(argument, 702)
-        if command == 702:
-            argument = line_up_pb2.LineUpResponse()
-            argument.ParseFromString(message)
-            for item in argument.slot:
-                print item
-
-            argument = line_up_pb2.ChangeEquipmentsRequest()
-            argument.slot_no = 1
-            argument.no = 1
-            argument.equipment_id = 'dafjasjflkasdf'
-            self.dateSend(argument, 703)
-
-        if command == 703:
-            argument = line_up_pb2.LineUpResponse()
-            argument.ParseFromString(message)
-            for item in argument.slot:
-                print item
+        # if command == 701:
+        #     argument = line_up_pb2.LineUpResponse()
+        #     argument.ParseFromString(message)
+        #     for item in argument.slot:
+        #         print item
+        #
+        #     argument = line_up_pb2.ChangeHeroRequest()
+        #     argument.slot_no = 1
+        #     argument.hero_no = 10010
+        #     self.dateSend(argument, 702)
+        # if command == 702:
+        #     argument = line_up_pb2.LineUpResponse()
+        #     argument.ParseFromString(message)
+        #     for item in argument.slot:
+        #         print item
+        #
+        #     argument = line_up_pb2.ChangeEquipmentsRequest()
+        #     argument.slot_no = 1
+        #     argument.no = 1
+        #     argument.equipment_id = 'dafjasjflkasdf'
+        #     self.dateSend(argument, 703)
+        #
+        # if command == 703:
+        #     argument = line_up_pb2.LineUpResponse()
+        #     argument.ParseFromString(message)
+        #     for item in argument.slot:
+        #         print item
 
         # if command == 401:
         #     argument = equipment_pb2.GetEquipmentResponse()
