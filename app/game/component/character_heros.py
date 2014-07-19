@@ -50,6 +50,9 @@ class CharacterHerosComponent(Component):
     def get_hero(self, hero_no):
         return self._heros.get(hero_no)
 
+    def get_multi_hero(self, *args):
+        return [self.get_hero(hero_no) for hero_no in args]
+
     def get_heros(self):
         return self._heros.values()
 
