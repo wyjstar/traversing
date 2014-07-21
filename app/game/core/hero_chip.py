@@ -11,9 +11,6 @@ class HeroChip(object):
     def __init__(self, no, num):
         self._chip_no = no  # 碎片编号
         self._num = num  # 碎片数量
-        if not chip_config:
-            log.msg("武将碎片%s配置文件初始化失败！" % self._chip_no)
-        self._config = chip_config
 
     @property
     def chip_no(self):
