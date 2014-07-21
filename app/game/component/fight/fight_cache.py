@@ -13,7 +13,7 @@ class CharacterFightCacheComponent(Component):
     """
 
     def __init__(self, owner):
-        super(self, CharacterFightCacheComponent).__init__(owner)
+        super(CharacterFightCacheComponent, self).__init__(owner)
 
         self._stage_id = 0  # 关卡ID
         self._drop_num = 0  # 关卡小怪掉落数量
