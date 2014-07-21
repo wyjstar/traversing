@@ -70,35 +70,3 @@ def __character_login(dynamic_id, token):
     return {'result': True, 'nickname': character_info.get('nickname')}
 
 
-# @local_service_handle
-# def nickname_create_5(key, dynamic_id, request_proto):
-#     argument = player_request_pb2.CreatePlayerRequest()
-#     argument.ParseFromString(request_proto)
-#     nickname = argument.nickname
-#     result = __nickname_create(dynamic_id, nickname)
-#
-#     user = UsersManager().get_by_dynamic_id(dynamic_id)
-#
-#     if not user:
-#         return {'result': False}
-#
-#     character_info = user.character
-#     now_node = SceneSerManager().get_best_sceneid()
-#
-#     return GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
-#
-#
-# def __nickname_create(dynamic_id, nickname):
-#     user = UsersManager().get_by_dynamic_id(dynamic_id)
-#     if not user:
-#         return {'result': False, 'nickname': nickname}
-#     else:
-#         user.character = {'uid': user.user_id, 'nickname': nickname}
-#
-#         print 'sadfasdfas:', user.character
-#
-#         nickname_data = dict(id=user.user_id, nickname=nickname)
-#         nickname_mmode = tb_nickname_mapping.new(nickname_data)
-#         nickname_mmode.insert()
-#
-#     return {'result': True, 'nickname': nickname}

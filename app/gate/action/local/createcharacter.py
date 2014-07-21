@@ -24,6 +24,7 @@ def create_character_15(key, dynamicid, request_proto):
     nickname = data.get('nickname')
     log.msg('token', token)
     log.msg('nickname', nickname)
+    # todo: 根据token获得user信息
     userinfo = dbuser.get_userinfo_by_token(token)
     result = create_character(userinfo['userid'], nickname)
 

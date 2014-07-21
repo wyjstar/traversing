@@ -45,3 +45,7 @@ tb_character_stages = MAdmin('tb_character_stages', 'id')
 
 print 'tb_character_stages redis mode:', tb_character_stages.__dict__
 tb_character_stages.insert()
+
+# 昵称表
+tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
+tb_nickname_mapping.insert()

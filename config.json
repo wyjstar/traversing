@@ -142,7 +142,7 @@
             }
         },
         "tb_nickname_mapping": {
-            "pkey_field": "id",
+            "pkey_field": "nickname",
             "def_attrs": {
                 "id": "simple",
                 "nickname": "simple"
