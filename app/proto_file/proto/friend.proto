@@ -1,0 +1,7 @@
+import "common.proto";
+
+// 好友
+message SetEquipment{
+	required int32 player_id = 1;  //player id
+	optional int32 friends = 2;  //
+}

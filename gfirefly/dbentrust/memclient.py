@@ -4,7 +4,7 @@ Created on 2013-7-10
 memcached client
 @author: lan (www.9miao.com)
 '''
-import memcache
+#`import memcache
 
 class MemConnError(Exception): 
     """memcached 连接错误
