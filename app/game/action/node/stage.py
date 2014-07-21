@@ -46,3 +46,15 @@ def get_chapter_902(dynamic_id, pro_data):
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
 
     return response.SerializePartialToString()
+
+
+@remote_service_handle
+def stage_start_903(dynamic_id, pro_data):
+    """开始战斗
+    """
+    request = stage_pb2.StageStartRequest()
+    stage_id = request.stage_id
+
+
+
+

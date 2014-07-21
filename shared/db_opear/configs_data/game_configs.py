@@ -11,6 +11,8 @@ from shared.db_opear.configs_data.equipment.equipment_strengthen_config import E
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.link_config import LinkConfig
+from shared.db_opear.configs_data.monster_config import MonsterConfig
+from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
@@ -66,6 +68,8 @@ shop_config = {}
 soul_shop_config = {}
 link_config = {}
 stage_config = {}
+monster_config = {}
+monster_group_config = {}
 
 
 all_config_name = {
@@ -81,6 +85,9 @@ all_config_name = {
     'shop_config': ShopConfig(),
     'link_config': LinkConfig(),
     'stage_config': StageConfig(),
+    'monster_config': MonsterConfig(),
+    'monster_group_config': MonsterGroupConfig()
+
 }
 
 
