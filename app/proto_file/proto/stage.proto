@@ -1,3 +1,5 @@
+import "common.proto";
+
 message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
 	optional int32 quality = 2;  //战斗单位品质
@@ -10,11 +12,15 @@ message BattleUnit{
 	optional float hit = 9; //战斗单位命中率
 	optional float dodge = 10;  //战斗单位闪避率
 	optional float cri = 11;  //战斗单位暴击率
-	optional float cri_Coeff = 12; //战斗单位暴击伤害系数
+	optional float cri_coeff = 12; //战斗单位暴击伤害系数
 	optional float cri_ded_coeff = 13;  //战斗单位暴伤减免系数
 	optional float block = 14;  //战斗单位格挡率
+	optional bool is_boss = 15; //是否是boss
 }
 
+message BattleUnitGrop{
+	repeated BattleUnit group = 1;
+}
 
 message Stage{
 	required int32 stage_id = 1;  //关卡编号
@@ -31,27 +37,36 @@ message StageAward{
 
 //请求关卡信息 command:901
 message StageInfoRequest{
-	optional int32 chapter_id = 1; //章节编号
-	optional int32 stage_id = 2; //关卡编号
+	required int32 stage_id = 1; //关卡编号 0: 全部信息
 }
 
 message StageInfoResponse{
 	repeated Stage stage = 1;
-	repeated StageAward stage_award = 2;
+
 }
 
+//请求章节奖励信息 command:902
+message ChapterInfoRequest{
+	required int32 chapter_id = 1; //章节编号 0：全部信息
+}
 
-// 进入关卡战斗 command:901
+message ChapterInfoResponse{
+	repeated StageAward stage_award = 1;
+}
+
+// 进入关卡战斗 command:903
 message StageStartRequest{
 	required int32 stage_id = 1; //关卡编号
 }
 
 message StageStartResponse{
-	required int32 stage_id = 1;  //关卡编号
-
+	required CommonResponse res = 1;
+	optional int32 drop_num = 2;  //掉落数量
+	repeated BattleUnit red = 4; //红方数据 自己
+	repeated BattleUnitGrop blue = 5; //对方数据
 }
 
-// 关卡结算 command:902
+// 关卡结算 command:904
 message StageSettlementResponse{
 
 }

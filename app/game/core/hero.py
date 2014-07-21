@@ -2,8 +2,9 @@
 """
 created by server on 14-6-25下午5:27.
 """
+from shared.db_opear.configs_data.common_item import CommonItem
 
-from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config
+from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, hero_breakup_config
 from gtwisted.utils import log
 import cPickle
 from app.game.redis_mode import tb_character_hero
@@ -115,22 +116,39 @@ class Hero(object):
         hero_pb.break_level = self._break_level
         hero_pb.exp = self._exp
 
+    def calculate_attr(self):
+        """根据属性和等级计算卡牌属性
+        """
+        item_config = hero_config.get(self._hero_no)
 
+        hp = item_config.hp + self._level * item_config.growHp  # 血
+        atk = item_config.atk + self._level * item_config.growAtk  # 攻击
+        physica_def = item_config.physicaDef + self._level * item_config.growPhysicaDef  # 物理防御
+        magic_def = item_config.magicDef + self._level * item_config.growMagicDef  # 魔法防御
+        hit = item_config.hit  # 命中率
+        dodge = item_config.dodge  # 闪避率
+        cri = item_config.cri  # 暴击率
+        cri_coeff = item_config.criCoeff  # 暴击伤害系数
+        cri_ded_coeff = item_config.criDedCoeff  # 暴击减免系数
+        block = item_config.block  # 格挡率
 
+        break_skill_ids = self.__break_skills()
 
+        return CommonItem(
+            dict(hp=hp, atk=atk, physica_def=physica_def, magic_def=magic_def, hit=hit, dodge=dodge, cri=cri,
+                 cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block, break_skill_ids=break_skill_ids))
 
+    def __break_skills(self):
+        """根据突破等级取得突破技能ID
+        """
+        breakup_config = hero_breakup_config.get(self._hero_no)
 
+        skill_ids = []
+        for i in range(self._break_level + 1):
+            skill_id = getattr(breakup_config, 'break%s' % (i + 1))
+            skill_ids.append(skill_id)
 
-
-
-
-
-
-
-
-
-
-
+        return skill_ids
 
 
 
