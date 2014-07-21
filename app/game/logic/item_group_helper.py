@@ -78,7 +78,9 @@ def consume(player, item_group):
 
 
 def gain(player, item_group):
-    """获取"""
+    """获取
+    @param item_group: [obj,obj]
+    """
 
     result = []
 

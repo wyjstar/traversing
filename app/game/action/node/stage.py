@@ -2,7 +2,7 @@
 """
 created by server on 14-7-17下午6:21.
 """
-from app.game.logic.stage import get_stage_info, get_chapter_info, fight_start
+from app.game.logic.stage import get_stage_info, get_chapter_info, fight_start, fight_settlement
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import stage_pb2
 
@@ -80,6 +80,15 @@ def stage_start_903(dynamic_id, pro_data):
             assemble(blue_add, blue_unit)
 
     return response.SerializePartialToString()
+
+
+@remote_service_handle
+def fight_settlement_904(dynamic_id, pro_data):
+    request = stage_pb2.StageSettlementRequest()
+    stage_id = request.stage_id
+    result = request.result
+    drops = fight_settlement(dynamic_id, stage_id, result)
+    return drops
 
 
 def assemble(unit_add, unit):

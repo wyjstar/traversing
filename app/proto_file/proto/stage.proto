@@ -1,4 +1,5 @@
 import "common.proto";
+import "player_response.proto";
 
 message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
@@ -66,7 +67,12 @@ message StageStartResponse{
 	repeated BattleUnitGrop blue = 5; //对方数据
 }
 
-// 关卡结算 command:904
-message StageSettlementResponse{
 
+// 关卡结算 command:904
+message StageSettlementRequest{
+	required int32 stage_id = 1; //关卡编号
+	required int32 result = 2;  //输赢
+}
+message StageSettlementResponse{
+	optional GameResourcesResponse drops = 2;
 }

@@ -4,6 +4,7 @@ created by server on 14-7-17下午6:54.
 """
 import random
 from app.game.component.Component import Component
+from app.game.core.drop_bag import BigBag
 from app.game.core.fight.battle_unit import BattleUnit
 from shared.db_opear.configs_data import game_configs
 
@@ -17,6 +18,17 @@ class CharacterFightCacheComponent(Component):
 
         self._stage_id = 0  # 关卡ID
         self._drop_num = 0  # 关卡小怪掉落数量
+        self._common_drop = 0  # 关卡小怪掉落编号
+        self._elite_drop = 0  # 关卡boss掉落编号
+
+        self._red_unit = []  # 红方战斗单位
+        self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
+
+    def init_data(self):
+        """初始创建红方单位
+        """
+        heros = self.__get_hero_obj()
+        self._red_unit = [self.__assemble_hero(hero) if hero else None for hero in heros]
 
     @property
     def stage_id(self):
@@ -166,20 +178,56 @@ class CharacterFightCacheComponent(Component):
                                                  monster_config.block, is_boss)
                 round_monsters.append(battle_unit)
         monsters.append(round_monsters)
+
+        # 保存关卡怪物信息, 掉落信息
+        self._blue_unit = monsters
+        self._common_drop = stage_config.commonDrop
+        self._elite_drop = stage_config.eliteDrop
+
         return monsters
 
     def fighting_start(self):
         """战斗开始
         """
-        heros = self.__get_hero_obj()
+        # heros = self.__get_hero_obj()
+        #
+        # print '#3:', heros
+        #
+        # red_units = [self.__assemble_hero(hero) if hero else None for hero in heros]  # 英雄单位
 
-        print '#3:', heros
+        red_units = self._red_unit
 
-        red_units = [self.__assemble_hero(hero) if hero else None for hero in heros]  # 英雄单位
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
 
         return red_units, blue_units, drop_num
+
+    def fighting_settlement(self, result):
+        """战斗结算
+        """
+
+        # TODO 根据result更新stage信息
+
+        drops = []
+        # 关卡掉落
+        for _ in range(self._drop_num):
+            common_bag = BigBag(self._common_drop)
+            common_drop = common_bag.get_drop_items()
+            drops.extend(common_drop)
+
+        elite_bag = BigBag(self._common_drop)
+        elite_drop = elite_bag.get_drop_items()
+        drops.extend(elite_drop)
+
+        return drops
+
+
+
+
+
+
+
+
 
 
 

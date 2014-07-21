@@ -15,6 +15,7 @@ tb_character_heros.insert()
 # 英雄信息表
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
+tb_character_hero.load()
 
 # 用户英雄碎片信息表
 tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
