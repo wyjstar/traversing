@@ -4,7 +4,6 @@ created by wzp on 14-6-19下午12:11.
 """
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.core.users_manager import UsersManager
-from app.gate.redis_mode import tb_nickname_mapping
 from app.gate.service.local.gateservice import local_service_handle
 from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.virtual_character_manager import VCharacterManager
