@@ -43,8 +43,9 @@ class CharacterHerosComponent(Component):
         heros = tb_character_hero.getObjList(hero_ids)
 
         for hero_mmode in heros:
+            data = hero_mmode.get('data')
             hero = Hero(pid)
-            hero.init_data(hero_mmode)
+            hero.init_data(data)
             self.add_hero(hero)
 
     def get_hero(self, hero_no):

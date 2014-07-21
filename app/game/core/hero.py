@@ -26,10 +26,7 @@ class Hero(object):
         self._break_level = 0
         self._character_id = character_id
 
-    def init_data(self, mmode):
-        if not mmode:
-            return
-        data = mmode.get('data')
+    def init_data(self, data):
         print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
         self._character_id = data.get("character_id")
         hero_property = data.get("property")
