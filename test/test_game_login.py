@@ -114,6 +114,10 @@ class EchoClient(protocol.Protocol):
                 print award
 
 
+            argument = stage_pb2.StageStartRequest()
+            argument.stage_id = 100100
+            self.dateSend(argument, 903)
+
         # if command == 301:
         #     print '301'
         #     argument = item_pb2.ItemsResponse()
