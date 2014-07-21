@@ -37,7 +37,7 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_config(self):
         """取得关卡配置数据
         """
-        stages_config = game_configs.StageConfig.get('stages')
+        stages_config = game_configs.StageConfig.get('stages', {})
         return stages_config.get(self._stage_id)
 
     def __get_monster_group_config(self, group_id):
@@ -66,6 +66,7 @@ class CharacterFightCacheComponent(Component):
         """阵容编号
         """
         hero_ids = self.owner.line_up_component.hero_ids
+        print '##1:', hero_ids
         return hero_ids
 
     def __get_hero_obj(self):
@@ -85,6 +86,9 @@ class CharacterFightCacheComponent(Component):
     def __assemble_hero(self, hero):
         """组装英雄战斗单位
         """
+
+        print '#2:', hero
+
         common_item = hero.calculate_attr()
 
         break_skill_ids = common_item.break_skill_ids  # 突破技能
@@ -141,15 +145,25 @@ class CharacterFightCacheComponent(Component):
         for i in range(3):
             monster_group_config = self.__get_monster_group_config(getattr(stage_config, 'round%s' % (i + 1)))
             round_monsters = []
+
+            boss_position = monster_group_config.bossPosition
+
             for j in range(6):
-                monster_config = self.__get_monster_config(getattr(monster_group_config, 'pos%s' % (j + 1)))
+                monster_id = getattr(monster_group_config, 'pos%s' % (j + 1))
+                if not monster_id:
+                    round_monsters.append(None)
+                    continue
+                is_boss = False
+                if j + 1 == boss_position:
+                    is_boss = True
+                monster_config = self.__get_monster_config(monster_id)
                 battle_unit = self.__do_assemble(monster_config.id, monster_config.quality, monster_config.normalSkill,
                                                  monster_config.rageSkill, monster_config.hp, monster_config.atk,
                                                  monster_config.physicalDef, monster_config.magicDef,
                                                  monster_config.hit, monster_config.dodge,
                                                  monster_config.cri, monster_config.criCoeff,
                                                  monster_config.criDedCoeff, monster_config.block,
-                                                 monster_config.block)
+                                                 monster_config.block, is_boss)
                 round_monsters.append(battle_unit)
         monsters.append(round_monsters)
         return monsters
@@ -158,7 +172,10 @@ class CharacterFightCacheComponent(Component):
         """战斗开始
         """
         heros = self.__get_hero_obj()
-        red_units = [self.__assemble_hero(hero) for hero in heros]  # 英雄单位
+
+        print '#3:', heros
+
+        red_units = [self.__assemble_hero(hero) if hero else None for hero in heros]  # 英雄单位
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
 

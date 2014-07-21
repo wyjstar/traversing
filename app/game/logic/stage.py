@@ -40,6 +40,20 @@ def get_chapter_info(dynamic_id, chapter_id, **kwargs):
     return response
 
 
+@have_player
+def fight_start(dynamic_id, stage_id, **kwargs):
+    """开始战斗
+    """
+    player = kwargs.get('player')
+
+    fight_cache_component = player.fight_cache_component
+    fight_cache_component.stage_id = stage_id
+    red_units, blue_units, drop_num = fight_cache_component.fighting_start()
+    return red_units, blue_units, drop_num
+
+
+
+
 
 
 
