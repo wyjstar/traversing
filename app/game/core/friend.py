@@ -3,12 +3,13 @@
 created by server on 14-7-17下午5:21.
 """
 
+import datetime
 from app.game.logic.common.check import have_player
 from app.game.redis_mode import tb_character_friend
 
 
-#@have_player
-def add_friend_request(dynamic_id, target_id):
+@have_player
+def add_friend_request(dynamic_id, target_id, **kwargs):
     """
     add target to inviter's applicants list
     :param dynamic_id:
@@ -23,14 +24,13 @@ def add_friend_request(dynamic_id, target_id):
         tb_character_friend.new(data)
     target = tb_character_friend.getObjData(target_id)
     target_applicants = target.get('applicants_list')
-    target_applicants.append(target_id)
+    target_applicants[target_id]=datetime.datetime.now()
 
 
 
 @have_player
 def become_friends(dynamic_id, target_id, **kwargs):
     """
-
     :param dynamic_id:
     :param target_id:
     :param kwargs:

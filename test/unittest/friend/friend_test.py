@@ -15,11 +15,15 @@ class FriendTest(unittest.TestCase):
         from test.unittest.init_test_data import init
 
         init()
-        self.player = PlayersManager().get_player_by_id(1)
-
+        self.player1 = PlayersManager().get_player_by_id(1)
+        self.player2 = PlayersManager().get_player_by_id(2)
 
     def test_get_equipment_chips(self):
         print 'friend test beging'
-        add_friend_request(1, 2)
 
+        become_friends(self.player2.base_info.id, 1)
+
+        add_friend_request(self.player1.base_info.id, 2)
+
+        become_friends(self.player2.base_info.id, 1)
 
