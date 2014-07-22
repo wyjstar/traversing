@@ -40,9 +40,10 @@ tb_equipment_info.insert()
 tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
 tb_character_equipment_chip.insert()
 
-# 装备碎片表
+# friend表
 tb_character_friend = MAdmin('tb_character_friend', 'id')
 tb_character_friend.insert()
+
 
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')

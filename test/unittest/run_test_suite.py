@@ -15,23 +15,25 @@ from test.unittest.drop_bag.drop_bag_test import DropBagTest
 from test.unittest.logic.item_group_helper_test import ItemGroupHelperTest
 from test.unittest.soul_shop.soul_shop_test import SoulShopTest
 from test.unittest.shop.shop_test import ShopTest
+from test.unittest.friend.friend_test import FriendTest
 
 import unittest
 
 if __name__ == "__main__":
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(HeroActionTest))
-    suite.addTest(unittest.makeSuite(HeroTest))
-    suite.addTest(unittest.makeSuite(HeroChipTest))
-    suite.addTest(unittest.makeSuite(EquipmentTest))
+    # suite.addTest(unittest.makeSuite(HeroActionTest))
+    # suite.addTest(unittest.makeSuite(HeroTest))
+    # suite.addTest(unittest.makeSuite(HeroChipTest))
+    # suite.addTest(unittest.makeSuite(EquipmentTest))
     suite.addTest(unittest.makeSuite(EquipmentChipTest))
-    suite.addTest(unittest.makeSuite(ItemActionTest))
-    # suite.addTest(unittest.makeSuite(LineUpTest))
-    # suite.addTest(unittest.makeSuite(LineUpActionTest))
-    suite.addTest(unittest.makeSuite(DropBagTest))
-    suite.addTest(unittest.makeSuite(ItemGroupHelperTest))
-    suite.addTest(unittest.makeSuite(ShopTest))
-    suite.addTest(unittest.makeSuite(SoulShopTest))
+    # suite.addTest(unittest.makeSuite(ItemActionTest))
+    # # suite.addTest(unittest.makeSuite(LineUpTest))
+    # # suite.addTest(unittest.makeSuite(LineUpActionTest))
+    # suite.addTest(unittest.makeSuite(DropBagTest))
+    # suite.addTest(unittest.makeSuite(ItemGroupHelperTest))
+    # suite.addTest(unittest.makeSuite(ShopTest))
+    # suite.addTest(unittest.makeSuite(SoulShopTest))
+    # suite.addTest(unittest.makeSuite(FriendTest))
     unittest.TextTestRunner().run(suite)
 
 

@@ -1,7 +1,13 @@
 import "common.proto";
 
-// 好友
-message SetEquipment{
-	required int32 player_id = 1;  //player id
-	optional int32 friends = 2;  //
+// add_friend_request 好友
+message AddFriendRequest{
+//	required int32 player_id = 1;  //player id
+	required int32 target_id = 1;  //
+}
+
+// add_friend_response
+message add_friend_response{
+    required bool result = 1;      //result
+	required int32 target_id = 2;  //
 }
