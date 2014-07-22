@@ -40,6 +40,14 @@ tb_equipment_info.insert()
 tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
 tb_character_equipment_chip.insert()
 
+# 公会信息表
+tb_guild_info = MAdmin('tb_guild_info', 'id')
+tb_guild_info.insert()
+
+# 玩家公会对应表
+tb_character_guild = MAdmin('tb_character_guild', 'id')
+tb_character_guild.insert()
+
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 
