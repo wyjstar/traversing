@@ -1,0 +1,9 @@
+import "common.proto";
+
+// 创建公会 command：801 create_guild_801
+message CreateGuildRequest{
+	required string name = 1;  //公会名
+}
+message CreateGuildResponse{
+	required CommonResponse res = 1;
+}
