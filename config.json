@@ -216,6 +216,13 @@
                 "stage_info": "complex",
                 "award_info": "complex"
             }
+        },
+        "tb_guild_info":{
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "info": "complex"
+            }
         }
     }
 
