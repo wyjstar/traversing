@@ -38,8 +38,7 @@ def use_item(dynamic_id, pro_data, **kwargs):
     drop_id = item_config_item.dropId
     func_args1 = item_config_item.func_args1
     func_args2 = item_config_item.func_args2
-    common_response = CommonResponse()
-    common_response.result = True
+
     game_resources_response = GameResourcesResponse()
     common_response = game_resources_response.res  # = common_response
     common_response.result = True

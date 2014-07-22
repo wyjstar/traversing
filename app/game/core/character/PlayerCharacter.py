@@ -172,4 +172,6 @@ class PlayerCharacter(Character):
     def stage_component(self):
         return self._stage
 
-
+    @property
+    def fight_cache_component(self):
+        return self._fight_cache
