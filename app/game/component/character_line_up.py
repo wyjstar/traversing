@@ -96,7 +96,9 @@ class CharacterLineUpComponent(Component):
     def hero_ids(self):
         """阵容英雄编号列表
         """
-        return [slot.slot_no for slot in self._line_up_slots.values()]
+
+        print '##2:', self._line_up_slots
+        return [slot.hero_no for slot in self._line_up_slots.values()]
 
     def get_equipment_ids(self, slot_no):
         """根据位置取得装备no列表

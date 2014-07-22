@@ -15,6 +15,4 @@ tb_account_mapping.insert()
 tb_character_info = MAdmin('tb_character_info', 'id')
 tb_character_info.insert()
 
-tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
-tb_nickname_mapping.insert()
 
