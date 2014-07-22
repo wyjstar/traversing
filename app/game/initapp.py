@@ -17,8 +17,5 @@ def load_module():
     from action.node import guild
     from action.node import shop
     from action.node import soul_shop
-<<<<<<< HEAD
     from action.node import hero_chip
-=======
     from action.node import stage
->>>>>>> refs/remotes/origin/master
