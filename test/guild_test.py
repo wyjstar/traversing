@@ -14,7 +14,7 @@ from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file import line_up_pb2
 from app.proto_file import stage_pb2
-from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse
+from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, JoinGuildRequest, JoinGuildResponse
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -67,11 +67,6 @@ class EchoClient(protocol.Protocol):
         # argument.password = '123457'
         self.dateSend(argument, 2)
 
-
-        # argument1 = CreateGuildRequest()
-        # argument1.name = 'cuick'
-        # self.dateSend(argument1, 801)
-
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
@@ -85,8 +80,6 @@ class EchoClient(protocol.Protocol):
             argument = PlayerLoginResquest()
             argument.token = '0cd6d373df384258b78194352b092637'
             self.dateSend(argument, 4)
-
-
 
         if command == 4:
             argument = PlayerResponse()
@@ -102,9 +95,17 @@ class EchoClient(protocol.Protocol):
             self.dateSend(argument1, 801)
             # self.transport.write(sendData('', 901))
 
-
         if command == 801:
             argument = CreateGuildResponse()
+            argument.ParseFromString(message)
+            print argument
+
+            argument1 = JoinGuildRequest()
+            argument1.g_id = 'b347eb9a117311e49361080027a4fa58'
+            self.dateSend(argument1, 802)
+
+        if command == 802:
+            argument = JoinGuildResponse()
             argument.ParseFromString(message)
             print argument
 
@@ -126,7 +127,6 @@ class EchoClient(protocol.Protocol):
         #
         #     for award in argument.stage_award:
         #         print award
-
 
         # if command == 301:
         #     print '301'
@@ -182,7 +182,6 @@ class EchoClient(protocol.Protocol):
         #     for equipment in argument.equipment:
         #         print equipment
         #
-        #
         #     argument = equipment_pb2.EnhanceEquipmentRequest()
         #     argument.id = '5f5a15c608c711e49461080027a4fa58'
         #     argument.type = 1
@@ -195,10 +194,9 @@ class EchoClient(protocol.Protocol):
         #     for value in argument.data:
         #         print value
 
-
-
     def connectionLost(self, reason):
         print "connection lost"
+
 
 class EchoFactory(protocol.ClientFactory):
     protocol = EchoClient

@@ -9,20 +9,21 @@ from shared.utils.pyuuid import get_uuid
 class Guild(object):
     """公会
     """
-    def __init__(self, name, g_id=0, p_num=1, level=1, exp=0, fund=0, call='', p_list={}, apple={}):
+    def __init__(self):
         """创建一个角色
         """
-        self._name = name
-        self._g_id = g_id
-        self._p_num = p_num
-        self._level = level
-        self._exp = exp
-        self._fund = fund
-        self._call = call
-        self._p_list = p_list
-        self._apple = apple
+        self._name = ''
+        self._g_id = 0
+        self._p_num = 1
+        self._level = 1
+        self._exp = 0
+        self._fund = 0
+        self._call = ''
+        self._p_list = {}
+        self._apply = []
 
-    def create_guild(self, p_id):
+    def create_guild(self, p_id, name):
+        self._name = name
         uuid = get_uuid()
         self._g_id = uuid
         self._p_list = {p_id: {'position': 1, \
@@ -52,7 +53,7 @@ class Guild(object):
                          'fund': self._fund, \
                          'call': self._call, \
                          'p_list': self._p_list, \
-                         'apply': self._apple}}
+                         'apply': self._apply}}
         print 'cuick,AAAAAAAAAAAAAAAAAA,04,core/guild,02,data:', data
         tb_guild_info.new(data)
         # 玩家id：公会id
@@ -67,14 +68,30 @@ class Guild(object):
                      'fund': self._fund, \
                      'call': self._call, \
                      'p_list': self._p_list, \
-                     'apply': self._apple}}
-
+                     'apply': self._apply}}
+        print "cuick,###############,SAVE_DATA,info:", data
         guild_data = tb_guild_info.getObj(self._g_id)
         guild_data.update_multi(data)
 
-    def init_data(self):
-        data = tb_guild_info.getObjData(self._g_id)
-        print '==========data:', data, '================='
+    def init_data(self, data):
+        self._g_id = data.get("id")
+        info = data.get("info")
+        print "cuick,AAAAAAAAAAAAAAAAAAAAAAAA,init_date,info:", info
+        self._name = info.get("name")
+        self._p_num = info.get("p_num")
+        self._level = info.get("level")
+        self._exp = info.get("exp")
+        self._fund = info.get("fund")
+        self._call = info.get("call")
+        self._p_list = info.get("p_list")
+        self._apply = info.get("apply")
+
+    def join_guild(self, p_id):
+        print "cuick,BBBBBBBBBBBBBBBBBBBBB,init_date,self._p_num:", self._p_num, p_id
+        self._apply += [p_id]
+        print "cuick,BBBBBBBBBBBBBBBBBBBBB,init_date,self._p_num:", '_apply:', self._apply
+
+
 
 
 
