@@ -223,6 +223,13 @@
                 "id":"simple",
                 "info": "complex"
             }
+        },
+        "tb_guild_name": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "info": "complex"
+            }
         }
     }
 

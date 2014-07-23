@@ -29,22 +29,7 @@ class Guild(object):
         self._p_list = {p_id: {'position': 1, \
                                'contribution': 0, \
                                'k_num': 0}}
-        print 'cuick,AAAAAAAAAAAAAAAAAA,03,core/guild,01,name:', self._name
-        # tb_guild_info
-        # tb_character_guild
         # fund 资金
-        # position 职位 1会长 2副会长 3长老 4精英 5会员
-        # data = {'id': uuid, \
-        #         'base_info': {'name': self._name, \
-        #                       'p_num': self._p_num, \
-        #                       'level': self._level, \
-        #                       'exp': self._exp, \
-        #                       'fund': self._fund}, \
-        #         'call': self._call, \
-        #         'p_list': {p_id: {'position': 1, \
-        #                           'contribution': 0, \
-        #                           'k_num': 0}}, \
-        #         'apply': self._apple}
         data = {'id': self._g_id, \
                 'info': {'name': self._name, \
                          'p_num': self._p_num, \
@@ -54,7 +39,6 @@ class Guild(object):
                          'call': self._call, \
                          'p_list': self._p_list, \
                          'apply': self._apply}}
-        print 'cuick,AAAAAAAAAAAAAAAAAA,04,core/guild,02,data:', data
         tb_guild_info.new(data)
         # 玩家id：公会id
         # 存入
@@ -76,7 +60,6 @@ class Guild(object):
     def init_data(self, data):
         self._g_id = data.get("id")
         info = data.get("info")
-        print "cuick,AAAAAAAAAAAAAAAAAAAAAAAA,init_date,info:", info
         self._name = info.get("name")
         self._p_num = info.get("p_num")
         self._level = info.get("level")
@@ -87,10 +70,14 @@ class Guild(object):
         self._apply = info.get("apply")
 
     def join_guild(self, p_id):
-        print "cuick,BBBBBBBBBBBBBBBBBBBBB,init_date,self._p_num:", self._p_num, p_id
-        self._apply += [p_id]
-        print "cuick,BBBBBBBBBBBBBBBBBBBBB,init_date,self._p_num:", '_apply:', self._apply
+        if self._apply.count(p_id) >= 1:
+            self._apply.remove(p_id)
+        if len(self._apply) >= 50:
+            self._apply.pop(0)
+        self._apply.append(p_id)
 
+    def get_p_num(self):
+        return self._p_num
 
 
 

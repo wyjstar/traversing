@@ -62,9 +62,9 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = '0cd6d373df384258b78194352b092637'
-        # argument.user_name = 'ghh0001'
-        # argument.password = '123457'
+        argument.key.key = 'ca7feba2dcd5ff2630967a3e3c9ee21b'
+        argument.user_name = 'ceshi1'
+        argument.password = 'ceshi1'
         self.dateSend(argument, 2)
 
     def dataReceived(self, data):
@@ -78,7 +78,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = '0cd6d373df384258b78194352b092637'
+            argument.token = 'ca7feba2dcd5ff2630967a3e3c9ee21b'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -91,7 +91,7 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument, 901)
 
             argument1 = CreateGuildRequest()
-            argument1.name = 'guildnamecuick'
+            argument1.name = 'gnamef'
             self.dateSend(argument1, 801)
             # self.transport.write(sendData('', 901))
 
@@ -107,6 +107,7 @@ class EchoClient(protocol.Protocol):
         if command == 802:
             argument = JoinGuildResponse()
             argument.ParseFromString(message)
+            # print argument.res.message
             print argument
 
         # if command == 901:

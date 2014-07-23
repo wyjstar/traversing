@@ -49,6 +49,10 @@ tb_guild_info.insert()
 tb_character_guild = MAdmin('tb_character_guild', 'id')
 tb_character_guild.insert()
 
+# 公会名表
+tb_guild_name = MAdmin('tb_guild_name', 'id')
+tb_guild_name.insert()
+
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 
