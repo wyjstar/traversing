@@ -18,12 +18,20 @@ class FriendTest(unittest.TestCase):
         self.player1 = PlayersManager().get_player_by_id(1)
         self.player2 = PlayersManager().get_player_by_id(2)
 
+    def print_friend_data(self, player_id):
+        for i in player_id:
+            friend_data = tb_character_friend.getObjData(i)
+            print '>>>>>>player_id', i, friend_data
+
     def test_get_equipment_chips(self):
-        print 'friend test beging'
+        print '==========friend test beging=========='
 
-        become_friends(self.player2.base_info.id, 1)
+        # become_friends(self.player2.base_info.id, 1)
 
+        print '==========add friend request=========='
         add_friend_request(self.player1.base_info.id, 2)
+        self.print_friend_data([1, 2])
 
+        print '==========become friend=========='
         become_friends(self.player2.base_info.id, 1)
-
+        self.print_friend_data([1, 2])
