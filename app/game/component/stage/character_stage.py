@@ -71,3 +71,7 @@ class CharacterStageComponent(Component):
         """
         chapter_ids = game_configs.stage_config.get('chapter_ids')
         return [self.get_chapter(chapter_id) for chapter_id in chapter_ids]
+
+    def settlement(self):
+        """结算
+        """
