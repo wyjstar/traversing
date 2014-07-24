@@ -14,7 +14,8 @@ def load_module():
     from action.node import line_up
     from action.node import stage
     from action.node import hero
-    from action.node import hero_chip
+    from action.node import guild
     from action.node import shop
     from action.node import soul_shop
+    from action.node import hero_chip
     from action.node import stage
