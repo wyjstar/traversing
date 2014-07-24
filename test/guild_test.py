@@ -6,15 +6,12 @@ created by server on 14-7-19下午5:19.
 import struct
 
 from twisted.internet import reactor, protocol
-from app.proto_file import item_pb2
 from app.proto_file import account_pb2
-from app.proto_file.chat import chat_pb2
-from app.proto_file import equipment_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
-from app.proto_file import line_up_pb2
-from app.proto_file import stage_pb2
-from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, JoinGuildRequest, JoinGuildResponse
+from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, \
+    JoinGuildRequest, JoinGuildResponse, ExitGuildRequest, ExitGuildResponse, \
+    EditorCallRequest, EditorCallResponse
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -62,9 +59,9 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = '0cd6d373df384258b78194352b092637'
-        # argument.user_name = 'ghh0001'
-        # argument.password = '123457'
+        argument.key.key = 'ca7feba2dcd5ff2630967a3e3c9ee21b'
+        argument.user_name = 'ceshi1'
+        argument.password = 'ceshi1'
         self.dateSend(argument, 2)
 
     def dataReceived(self, data):
@@ -78,7 +75,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = '0cd6d373df384258b78194352b092637'
+            argument.token = 'ca7feba2dcd5ff2630967a3e3c9ee21b'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -86,113 +83,50 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # argument = stage_pb2.StageInfoRequest()
-            # argument.stage_id = 0
-            # self.dateSend(argument, 901)
-
+            # --------801创建公会------------
             argument1 = CreateGuildRequest()
-            argument1.name = 'guildnamecuick'
+            argument1.name = '一二三四五六'
             self.dateSend(argument1, 801)
-            # self.transport.write(sendData('', 901))
+
+            # --------802加入公会------------
+            # argument1 = JoinGuildRequest()
+            # argument1.g_id = 'b6fe62e612e511e48b81080027a4fa58'
+            # self.dateSend(argument1, 802)
+
+            # --------803退出公会------------
+            # argument1 = ExitGuildRequest()
+            # argument1.g_id = 'c09708e412f911e48504080027a4fa58'
+            # self.dateSend(argument1, 803)
+
+            # --------804编辑公告------------
+            # argument1 = EditorCallRequest()
+            # argument1.g_id = 'a302c176130611e4ac48080027a4fa58'
+            # argument1.call = 'aaaaaa空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
+            # self.dateSend(argument1, 804)
 
         if command == 801:
+            # 创建公会
             argument = CreateGuildResponse()
             argument.ParseFromString(message)
             print argument
 
-            argument1 = JoinGuildRequest()
-            argument1.g_id = 'b347eb9a117311e49361080027a4fa58'
-            self.dateSend(argument1, 802)
-
         if command == 802:
+            # 加入公会
             argument = JoinGuildResponse()
             argument.ParseFromString(message)
             print argument
 
-        # if command == 901:
-        #     argument = stage_pb2.StageInfoResponse()
-        #     argument.ParseFromString(message)
-        #
-        #     for stage in argument.stage:
-        #         print stage
-        #
-        #     argument = stage_pb2.ChapterInfoRequest()
-        #     argument.chapter_id = 0
-        #
-        #     self.dateSend(argument, 902)
-        #
-        # if command == 902:
-        #     argument = stage_pb2.ChapterInfoResponse()
-        #     argument.ParseFromString(message)
-        #
-        #     for award in argument.stage_award:
-        #         print award
+        if command == 803:
+            # 退出公会
+            argument = ExitGuildResponse()
+            argument.ParseFromString(message)
+            print argument
 
-        # if command == 301:
-        #     print '301'
-        #     argument = item_pb2.ItemsResponse()
-        #     argument.ParseFromString(message)
-        #     print 'items:', argument.item
-        #     # for item in items:
-        #     #     print item
-        #     print '1111111111111'
-        #     self.transport.write(sendData('', 1001))
-        #
-        # if command == 1001:
-        #     argument = chat_pb2.ChatResponse()
-        #     argument.ParseFromString(message)
-        #     print argument
-        #
-        #     argument = equipment_pb2.GetEquipmentsRequest()
-        #     argument.type = 0
-        #
-        #     self.dateSend(argument, 701)
-
-        # if command == 701:
-        #     argument = line_up_pb2.LineUpResponse()
-        #     argument.ParseFromString(message)
-        #     for item in argument.slot:
-        #         print item
-        #
-        #     argument = line_up_pb2.ChangeHeroRequest()
-        #     argument.slot_no = 1
-        #     argument.hero_no = 10010
-        #     self.dateSend(argument, 702)
-        # if command == 702:
-        #     argument = line_up_pb2.LineUpResponse()
-        #     argument.ParseFromString(message)
-        #     for item in argument.slot:
-        #         print item
-        #
-        #     argument = line_up_pb2.ChangeEquipmentsRequest()
-        #     argument.slot_no = 1
-        #     argument.no = 1
-        #     argument.equipment_id = 'dafjasjflkasdf'
-        #     self.dateSend(argument, 703)
-        #
-        # if command == 703:
-        #     argument = line_up_pb2.LineUpResponse()
-        #     argument.ParseFromString(message)
-        #     for item in argument.slot:
-        #         print item
-
-        # if command == 401:
-        #     argument = equipment_pb2.GetEquipmentResponse()
-        #     argument.ParseFromString(message)
-        #     for equipment in argument.equipment:
-        #         print equipment
-        #
-        #     argument = equipment_pb2.EnhanceEquipmentRequest()
-        #     argument.id = '5f5a15c608c711e49461080027a4fa58'
-        #     argument.type = 1
-        #     self.dateSend(argument, 402)
-        #
-        # if command == 402:
-        #     argument = equipment_pb2.EnhanceEquipmentResponse()
-        #     argument.ParseFromString(message)
-        #     print argument.res
-        #     for value in argument.data:
-        #         print value
+        if command == 804:
+            # 编辑公告
+            argument = EditorCallResponse()
+            argument.ParseFromString(message)
+            print argument
 
     def connectionLost(self, reason):
         print "connection lost"

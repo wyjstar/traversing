@@ -1,11 +1,11 @@
-import "common.proto";
+import "guild_common.proto";
 
 // 创建公会 command：801
 message CreateGuildRequest{
-	required string name = 1;  //公会名
+	required bytes name = 1;  //公会名
 }
 message CreateGuildResponse{
-	required CommonResponse res = 1;
+	required GuildCommonResponse res = 1;
 }
 
 // 加入公会 command：802
@@ -13,5 +13,22 @@ message JoinGuildRequest{
 	required string g_id = 1;  //公会id
 }
 message JoinGuildResponse{
-	required CommonResponse res = 1;
+	required GuildCommonResponse res = 1;
+}
+
+// 退出公会 command：803
+message ExitGuildRequest{
+	required string g_id = 1;  //公会id
+}
+message ExitGuildResponse{
+	required GuildCommonResponse res = 1;
+}
+
+// 退出公会 command：804
+message EditorCallRequest{
+	required string g_id = 1;  //公会id
+	required bytes call = 2;  //公告内容
+}
+message EditorCallResponse{
+	required GuildCommonResponse res = 1;
 }

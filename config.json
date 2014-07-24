@@ -232,6 +232,13 @@
                 "blacklist": "complex",
                 "applicants_list": "complex"
             }
+        },
+        "tb_guild_name": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "info": "complex"
+            }
         }
     }
 

@@ -8,13 +8,13 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
-import common_pb2
+import guild_common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='guild.proto',
   package='',
-  serialized_pb='\n\x0bguild.proto\x1a\x0c\x63ommon.proto\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\t\"3\n\x13\x43reateGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"1\n\x11JoinGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x0bguild.proto\x1a\x12guild_common.proto\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\"8\n\x13\x43reateGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"6\n\x11JoinGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10\x45xitGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"6\n\x11\x45xitGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\"/\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04\x63\x61ll\x18\x02 \x02(\x0c\"7\n\x12\x45\x64itorCallResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse')
 
 
 
@@ -28,8 +28,8 @@ _CREATEGUILDREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='name', full_name='CreateGuildRequest.name', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=1, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value="",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -42,8 +42,8 @@ _CREATEGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=29,
-  serialized_end=63,
+  serialized_start=35,
+  serialized_end=69,
 )
 
 
@@ -70,8 +70,8 @@ _CREATEGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=65,
-  serialized_end=116,
+  serialized_start=71,
+  serialized_end=127,
 )
 
 
@@ -98,8 +98,8 @@ _JOINGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=118,
-  serialized_end=150,
+  serialized_start=129,
+  serialized_end=161,
 )
 
 
@@ -126,16 +126,141 @@ _JOINGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=152,
-  serialized_end=201,
+  serialized_start=163,
+  serialized_end=217,
 )
 
-_CREATEGUILDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_JOINGUILDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+
+_EXITGUILDREQUEST = _descriptor.Descriptor(
+  name='ExitGuildRequest',
+  full_name='ExitGuildRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='g_id', full_name='ExitGuildRequest.g_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=219,
+  serialized_end=251,
+)
+
+
+_EXITGUILDRESPONSE = _descriptor.Descriptor(
+  name='ExitGuildResponse',
+  full_name='ExitGuildResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='ExitGuildResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=253,
+  serialized_end=307,
+)
+
+
+_EDITORCALLREQUEST = _descriptor.Descriptor(
+  name='EditorCallRequest',
+  full_name='EditorCallRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='g_id', full_name='EditorCallRequest.g_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='call', full_name='EditorCallRequest.call', index=1,
+      number=2, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value="",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=309,
+  serialized_end=356,
+)
+
+
+_EDITORCALLRESPONSE = _descriptor.Descriptor(
+  name='EditorCallResponse',
+  full_name='EditorCallResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='EditorCallResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=358,
+  serialized_end=413,
+)
+
+_CREATEGUILDRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_JOINGUILDRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_EXITGUILDRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_EDITORCALLRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
 DESCRIPTOR.message_types_by_name['CreateGuildRequest'] = _CREATEGUILDREQUEST
 DESCRIPTOR.message_types_by_name['CreateGuildResponse'] = _CREATEGUILDRESPONSE
 DESCRIPTOR.message_types_by_name['JoinGuildRequest'] = _JOINGUILDREQUEST
 DESCRIPTOR.message_types_by_name['JoinGuildResponse'] = _JOINGUILDRESPONSE
+DESCRIPTOR.message_types_by_name['ExitGuildRequest'] = _EXITGUILDREQUEST
+DESCRIPTOR.message_types_by_name['ExitGuildResponse'] = _EXITGUILDRESPONSE
+DESCRIPTOR.message_types_by_name['EditorCallRequest'] = _EDITORCALLREQUEST
+DESCRIPTOR.message_types_by_name['EditorCallResponse'] = _EDITORCALLRESPONSE
 
 class CreateGuildRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -160,6 +285,30 @@ class JoinGuildResponse(_message.Message):
   DESCRIPTOR = _JOINGUILDRESPONSE
 
   # @@protoc_insertion_point(class_scope:JoinGuildResponse)
+
+class ExitGuildRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _EXITGUILDREQUEST
+
+  # @@protoc_insertion_point(class_scope:ExitGuildRequest)
+
+class ExitGuildResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _EXITGUILDRESPONSE
+
+  # @@protoc_insertion_point(class_scope:ExitGuildResponse)
+
+class EditorCallRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _EDITORCALLREQUEST
+
+  # @@protoc_insertion_point(class_scope:EditorCallRequest)
+
+class EditorCallResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _EDITORCALLRESPONSE
+
+  # @@protoc_insertion_point(class_scope:EditorCallResponse)
 
 
 # @@protoc_insertion_point(module_scope)
