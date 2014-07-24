@@ -21,6 +21,7 @@ class Guild(object):
         self._call = ''
         self._p_list = {}
         self._apply = []
+        self._record = 0
 
     def create_guild(self, p_id, name):
         self._name = name
@@ -37,6 +38,7 @@ class Guild(object):
                          'exp': self._exp, \
                          'fund': self._fund, \
                          'call': self._call, \
+                         'record': self._record, \
                          'p_list': self._p_list, \
                          'apply': self._apply}}
         tb_guild_info.new(data)
@@ -51,6 +53,7 @@ class Guild(object):
                      'exp': self._exp, \
                      'fund': self._fund, \
                      'call': self._call, \
+                     'record': self._record, \
                      'p_list': self._p_list, \
                      'apply': self._apply}}
         print "cuick,###############,SAVE_DATA,info:", data
@@ -68,6 +71,7 @@ class Guild(object):
         self._call = info.get("call")
         self._p_list = info.get("p_list")
         self._apply = info.get("apply")
+        self._record = info.get("record")
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
@@ -76,10 +80,24 @@ class Guild(object):
             self._apply.pop(0)
         self._apply.append(p_id)
 
+    def exit_guild(self, p_id):
+        self._p_num -= 1
+        if p_id in self._p_list.keys():
+            print "cuick,###############,SAVE_DATA,info:", p_id
+            self._p_list.pop(p_id)
+
+    def delete_guild(self):
+        guild_info_obj = tb_guild_info.getObj(self._g_id)
+        guild_info_obj.delete()
+
+    def editor_call(self, call):
+        self._call = call
+
     def get_p_num(self):
         return self._p_num
 
-
+    def get_p_list(self):
+        return self._p_list
 
 
 

@@ -73,7 +73,10 @@ class MMode(RedisObject):
     def get(self, key):
         n_time = time.time()
         RedisObject.update(self, "_time", n_time)
-        return RedisObject.get(self, key)
+        value = RedisObject.get(self, key)
+        if key == '_state':
+            value = int(value)
+        return value
 
     def get_multi(self, keys):
 

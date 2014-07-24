@@ -1,0 +1,6 @@
+message GuildCommonResponse
+{
+    required bool result = 1;  //处理结果 True：正确
+    optional int32 result_no = 2;
+    optional bytes message = 3;
+}
