@@ -34,13 +34,42 @@ class FriendTest(unittest.TestCase):
         self.assertEqual(result, 0, "friend error!%d" % result)
         self.print_friend_data([1, 2])
 
-        print '==========add friend request=========='
+        print '==========re-add friend request=========='
         result = add_friend_request(self.player1.base_info.id, 2)
         self.assertEqual(result, 1, "friend error!%d" % result)
         self.print_friend_data([1, 2])
 
-
         print '==========become friend=========='
         result = become_friends(self.player2.base_info.id, 1)
         self.assertEqual(result, 0, "become friend error!%d" % result)
-        self.print_friend_data([2, 1])
+        self.print_friend_data([1, 2])
+
+        print '==========del friend=========='
+        result = del_friend(self.player2.dynamic_id, 1)
+        self.assertEqual(result, 0, "del friend error!%d" % result)
+        self.print_friend_data([1, 2])
+
+        print '==========re-del friend=========='
+        result = del_friend(self.player2.dynamic_id, 1)
+        self.assertEqual(result, 1, "del friend error!%d" % result)
+        self.print_friend_data([1, 2])
+
+        print '==========del blacklist=========='
+        result = del_player_from_blacklist(self.player1.dynamic_id, 3)
+        self.assertEqual(result, 1, "del blacklist error!%d" % result)
+        self.print_friend_data([1, 2])
+
+        print '==========add blacklist=========='
+        result = add_player_to_blacklist(self.player1.dynamic_id, 3)
+        self.assertEqual(result, 0, "add blacklist error!%d" % result)
+        self.print_friend_data([1, 2])
+
+        print '==========re-add blacklist=========='
+        result = add_player_to_blacklist(self.player1.dynamic_id, 3)
+        self.assertEqual(result, 1, "re-add blacklist error!%d" % result)
+        self.print_friend_data([1, 2])
+
+        print '==========del blacklist=========='
+        result = del_player_from_blacklist(self.player1.dynamic_id, 3)
+        self.assertEqual(result, 0, "del blacklist error!%d" % result)
+        self.print_friend_data([1, 2])
