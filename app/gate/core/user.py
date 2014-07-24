@@ -84,7 +84,6 @@ class User(object):
                              'fine_equipment_last_pick_time': 0,
                              'excellent_equipment_last_pick_time': 0}
                 character_obj = tb_character_info.new(character)
-                character_obj.insert()
                 self._character = character
         return character
 
