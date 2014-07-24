@@ -2,12 +2,10 @@
 """
 created by server on 14-7-15下午6:30.
 """
-import test.unittest.init_data.init_connection
 import unittest
 from app.game.redis_mode import tb_character_friend
 from app.game.core.PlayersManager import PlayersManager
-from app.game.core.friend import *
-# from app.proto_file.friend_pb2 import *
+from app.game.logic.friend import *
 
 
 class FriendTest(unittest.TestCase):
@@ -38,11 +36,11 @@ class FriendTest(unittest.TestCase):
 
         print '==========add friend request=========='
         result = add_friend_request(self.player1.base_info.id, 2)
-        self.assertEqual(result, 2, "friend error!%d" % result)
+        self.assertEqual(result, 1, "friend error!%d" % result)
         self.print_friend_data([1, 2])
 
 
         print '==========become friend=========='
         result = become_friends(self.player2.base_info.id, 1)
         self.assertEqual(result, 0, "become friend error!%d" % result)
-        self.print_friend_data([1, 2])
+        self.print_friend_data([2, 1])

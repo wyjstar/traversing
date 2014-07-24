@@ -4,7 +4,7 @@ created by server on 14-7-17下午4:36.
 """
 
 from app.game.service.gatenoteservice import remote_service_handle
-from app.game.core.friend import *
+from app.game.logic.friend import *
 
 
 @remote_service_handle
