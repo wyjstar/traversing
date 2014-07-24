@@ -38,11 +38,11 @@ class FriendTest(unittest.TestCase):
 
         print '==========add friend request=========='
         result = add_friend_request(self.player1.base_info.id, 2)
-        self.assertEqual(result, 2, "friend error!%d" % result)
+        self.assertEqual(result, 1, "friend error!%d" % result)
         self.print_friend_data([1, 2])
 
 
         print '==========become friend=========='
         result = become_friends(self.player2.base_info.id, 1)
         self.assertEqual(result, 0, "become friend error!%d" % result)
-        self.print_friend_data([1, 2])
+        self.print_friend_data([2, 1])

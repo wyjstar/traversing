@@ -42,28 +42,18 @@ def add_friend_request(dynamic_id, invitee_id, **kwargs):
     :return:
     """
     player = kwargs.get('player')
-
     invitee_player = PlayersManager().get_player_by_id(invitee_id)
-    if not invitee_player:
-        return 1  # 'invitee is not exist'
 
-    invitee_data = tb_character_friend.getObjData(invitee_id)
-    if not invitee_data:
-        data = {'id': invitee_id, 'friends': [], 'blacklist': [], 'applicants_list': {}}
-        tb_character_friend.new(data)
+    if invitee_player:
+        if not invitee_player.friends.add_applicant(player.base_info.id):
+            return 1  # fail
+    else:
+        # todo sendto target message of friend application
+        pass
 
-    invitee_data = tb_character_friend.getObjData(invitee_id)
-    invitee_applicants = invitee_data.get('applicants_list')
-    if player.base_info.id in invitee_applicants.keys():
-        return 2  # re-invite"
+    invitee_player.friends.save_data()
 
-    invitee_applicants[player.base_info.id] = datetime.datetime.now()
-    invitee_obj = tb_character_friend.getObj(invitee_id)
-    invitee_obj.update('applicants_list', invitee_applicants)
-
-    # todo sendto target message of friend application
-
-    return 0  # jsuccess"
+    return 0  # fail
 
 
 @have_player
@@ -76,45 +66,26 @@ def become_friends(dynamic_id, inviter_id, **kwargs):
     """
     player = kwargs.get('player')
 
-    invitee_data = tb_character_friend.getObjData(player.base_info.id)
-    # no invite record
-    if not invitee_data:
-        return 1  # no applicant data
+    if not player.friends.is_in_applicants_list(inviter_id):
+        return 1  # inviter id is not exit in applicants
 
-    # error inviter not exit in applicant list
-    invitee_applicants = invitee_data.get('applicants_list')
-    if not inviter_id in invitee_applicants.keys():
-        return 2  # inviter id is not exit in applicants
+    if not player.friends.del_applicant(inviter_id):
+        return 2  # del applicant error
 
-    invite_time = invitee_applicants[inviter_id]
-    period = datetime.datetime.now() - invite_time
+    inviter_player = PlayersManager().get_player_by_id(inviter_id)
 
-    # remove inviter id from invitee's applicant list
-    del(invitee_applicants[inviter_id])
-    player_friend_obj = tb_character_friend.getObj(player.base_info.id)
-    player_friend_obj.update('applicants_list', invitee_applicants)
+    if inviter_player:
+        if not inviter_player.friends.add_friend(player.base_info.id):
+            return 3
+        if not player.friends.add_friend(inviter_id):
+            return 3
 
-    # inviting time is expired
-    if period.days > 2:
-        return 3  # period of between invited time and now is over 2 days
-
-    inviter_data = tb_character_friend.getObjData(inviter_id)
-    if not inviter_data:
-        data = {'id': inviter_id, 'friends': [], 'blacklist': [], 'applicants_list': {}}
-        tb_character_friend.new(data)
-
-    # add both id in friend_list
-    player_friend_data = tb_character_friend.getObjData(player.base_info.id)
-    player_friends = player_friend_data.get('friends')
-    player_friends.append(inviter_id)
-    player_friend_obj = tb_character_friend.getObj(player.base_info.id)
-    player_friend_obj.update('friends', player_friends)
-
-    player_friend_data = tb_character_friend.getObjData(inviter_id)
-    player_friends = player_friend_data.get('friends')
-    player_friends.append(player.base_info.id)
-    player_friend_obj = tb_character_friend.getObj(inviter_id)
-    player_friend_obj.update('friends', player_friends)
+        # save data
+        inviter_player.friends.save_data()
+        player.friends.save_data()
+    else:
+        # todo modify offline data
+        pass
 
     return 0
 
@@ -130,21 +101,13 @@ def refuse_invition(dynamic_id, inviter_id, **kwargs):
     """
     player = kwargs.get('player')
 
-    invitee_data = tb_character_friend.getObjData(player.base_info.id)
-    # no invite record
-    if not invitee_data:
-        return 1  # no applicant data
+    if not player.friends.is_in_applicants_list(inviter_id):
+        return 1
+    if not player.friends.del_applicant(inviter_id):
+        return 2
 
-    # error inviter not exit in applicant list
-    invitee_applicants = invitee_data.get('applicants_list')
-    if not inviter_id in invitee_applicants.keys():
-        return 2  # inviter id is not exit in applicants
-
-    # remove inviter id from invitee's applicant list
-    del(invitee_applicants[inviter_id])
-    player_friend_obj = tb_character_friend.getObj(player.base_info.id)
-    player_friend_obj.update('applicants_list', invitee_applicants)
-
+    # save data
+    player.friends.save_data()
     return 0
 
 
@@ -159,17 +122,14 @@ def del_friend(dynamic_id, friend_id, **kwargs):
     """
     player = kwargs.get('player')
 
-    if not is_friend(player, friend_id):
+    if not player.friends.is_friend(friend_id):
         return 1  # there is no friend with friend id
 
-    # remove friend id from friend list
-    player_data = tb_character_friend.getObjData(player.base_info.id)
-    player_friends = player_data.get('friends')
+    if not player.friends.del_friend(friend_id):
+        return 2
 
-    del(player_friends[friend_id])
-    player_friends_obj = tb_character_friend.getObj(player.base_info.id)
-    player_friends_obj.update('friends', player_data)
-
+    # save data
+    player.friends.save_data()
     return 0
 
 
@@ -183,13 +143,34 @@ def add_player_to_blacklist(dynamic_id, target_id, **kwargs):
     """
     player = kwargs.get('player')
 
-    if is_exist_in_black_list(player, target_id):
-        return 1  # target is already exist in black list
+    if player.friends.is_in_blacklist(target_id):
+        return 1  # already exist the player in blacklist
 
+    if not player.friends.add_blacklist(target_id):
+        return 2
 
+    # save data
+    player.friends.save_data()
     return 0
 
 
-def del_player_from_blacklist(dynamic_id, target_id):
+@have_player
+def del_player_from_blacklist(dynamic_id, target_id, **kwargs):
+    """
+
+    :param dynamic_id:
+    :param target_id:
+    :return:
+    """
+    player = kwargs.get('player')
+
+    if not player.friends.is_in_blacklist(target_id):
+        return 1  # not exist the player in blacklist
+
+    if not player.friends.del_blacklist(target_id):
+        return 2
+
+    # save data
+    player.friends.save_data()
     return 0
 
