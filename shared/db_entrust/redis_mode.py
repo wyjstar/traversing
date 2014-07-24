@@ -234,38 +234,25 @@ class MAdmin(RedisObject):
         >>> m = madmin.getObjData(1)
         '''
 
-        print 'getObjData:', pk
-
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
         data = mm.get('data')
 
-        print 'getObjData:', mm.get('data')
-
         if mm.get('data'):
             return data
         props = {self._pk: pk}
 
-        print props
-
         record = util.GetOneRecordInfo(self._name, props)
-
-        print 'recoed#1:', repr(record)
 
         if not record:
             return None
 
         record = mm.loads(record)
 
-        print 'recoed#2:', record
-
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
 
-        print 'recoed#3:', record
-
         mm.insert()
-        print 'recoed#4:', record
         return record
 
     def getObjList(self, pklist):
