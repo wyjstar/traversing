@@ -101,7 +101,7 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
-        self._stage.init_data()
+        # self._stage.init_data()
 
     @property
     def character_type(self):

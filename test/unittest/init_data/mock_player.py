@@ -22,3 +22,18 @@ def init_player():
     player.last_pick_time.save_data()
 
     PlayersManager().add_player(player)
+
+    PlayersManager().drop_player_by_id(2)
+    player = PlayerCharacter(2, dynamic_id=2, status=1)
+    player.finance.coin = 30000
+    player.finance.hero_soul = 20000
+    player.finance.gold = 10000
+    player.finance.save_data()
+
+    player.last_pick_time.fine_hero = 0
+    player.last_pick_time.excellent_hero = 0
+    player.last_pick_time.fine_equipment = 0
+    player.last_pick_time.excellent_equipment = 0
+    player.last_pick_time.save_data()
+
+    PlayersManager().add_player(player)
