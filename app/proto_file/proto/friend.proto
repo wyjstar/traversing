@@ -2,12 +2,10 @@ import "common.proto";
 
 // add_friend_request 好友
 message AddFriendRequest{
-//	required int32 player_id = 1;  //player id
-	required int32 target_id = 1;  //
+	required int32 invitee_id = 1;  // invitee id
 }
 
-// add_friend_response
-message add_friend_response{
+// add friend response
+message AddFriendResponse{
     required bool result = 1;      //result
-	required int32 target_id = 2;  //
 }

@@ -4,7 +4,6 @@ created by server on 14-7-17下午4:36.
 """
 
 from app.game.service.gatenoteservice import remote_service_handle
-from app.game.core.PlayersManager import PlayersManager
 from app.game.core.friend import *
 
 
@@ -16,15 +15,8 @@ def add_friend_request_1(dynamic_id, target_id):
     :param target_id:
     :return:
     """
-    target = PlayersManager().get_player_by_id(target_id)
-    if not target:
-        return 'target is not exist'
 
-    add_friend_request(dynamic_id, target_id)
-
-    # todo sendto target message of friend application
-
-    return "success"
+    return add_friend_request(dynamic_id, target_id)
 
 
 @remote_service_handle
@@ -46,43 +38,34 @@ def add_friend_respond_refuse_3(dynamic_id, inviter_id):
     :param dynamic_id:
     :param inviter_id:
     """
-    dynamic_id
-    inviter_id
-    # todo sendto inviter refuse message
-    pass
+    return refuse_invition(dynamic_id, inviter_id)
 
 
 @remote_service_handle
-def del_friend_request_4(dynamic_id, target_id):
+def del_friend_request_4(dynamic_id, friend_id):
     """
-
+    delete friend from friend list
     :param dynamic_id:
     :param target_id:
     """
-    dynamic_id
-    target_id
-    pass
+    return del_friend(dynamic_id, friend_id)
 
 
 @remote_service_handle
 def add_black_list_5(dynamic_id, target_id):
     """
-
+    add a player to blacklist by id
     :param dynamic_id:
     :param target_id:
     """
-    dynamic_id
-    target_id
-    pass
+    return add_player_to_blacklist(dynamic_id, target_id)
 
 
 @remote_service_handle
 def del_black_list_6(dynamic_id, target_id):
     """
-
+    delete a player from blacklist
     :param dynamic_id:
     :param target_id:
     """
-    dynamic_id
-    target_id
-    pass
+    return del_player_from_blacklist(dynamic_id, target_id)

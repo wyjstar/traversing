@@ -23,15 +23,26 @@ class FriendTest(unittest.TestCase):
             friend_data = tb_character_friend.getObjData(i)
             print '>>>>>>player_id', i, friend_data
 
-    def test_get_equipment_chips(self):
+    def test_friend_function(self):
         print '==========friend test beging=========='
 
-        # become_friends(self.player2.base_info.id, 1)
-
-        print '==========add friend request=========='
-        add_friend_request(self.player1.base_info.id, 2)
+        print '==========become friend=========='
+        result = become_friends(self.player2.base_info.id, 1)
+        self.assertEqual(result, 1, "become friend error!%d" % result)
         self.print_friend_data([1, 2])
 
+        print '==========add friend request=========='
+        result = add_friend_request(self.player1.base_info.id, 2)
+        self.assertEqual(result, 0, "friend error!%d" % result)
+        self.print_friend_data([1, 2])
+
+        print '==========add friend request=========='
+        result = add_friend_request(self.player1.base_info.id, 2)
+        self.assertEqual(result, 2, "friend error!%d" % result)
+        self.print_friend_data([1, 2])
+
+
         print '==========become friend=========='
-        become_friends(self.player2.base_info.id, 1)
+        result = become_friends(self.player2.base_info.id, 1)
+        self.assertEqual(result, 0, "become friend error!%d" % result)
         self.print_friend_data([1, 2])
