@@ -117,7 +117,10 @@ class Hero(object):
         """根据属性和等级计算卡牌属性
         """
         item_config = hero_config.get(self._hero_no)
-
+        hero_no = self._hero_no
+        quality = item_config.quality
+        normal_skill = item_config.normalSkill
+        rage_skill = item_config.rageSkill
         hp = item_config.hp + self._level * item_config.growHp  # 血
         atk = item_config.atk + self._level * item_config.growAtk  # 攻击
         physica_def = item_config.physicaDef + self._level * item_config.growPhysicaDef  # 物理防御
@@ -132,8 +135,10 @@ class Hero(object):
         break_skill_ids = self.__break_skills()
 
         return CommonItem(
-            dict(hp=hp, atk=atk, physica_def=physica_def, magic_def=magic_def, hit=hit, dodge=dodge, cri=cri,
-                 cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block, break_skill_ids=break_skill_ids))
+            dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
+                 physica_def=physica_def, magic_def=magic_def,
+                 hit=hit, dodge=dodge, cri=cri, cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block,
+                 break_skill_ids=break_skill_ids))
 
     def __break_skills(self):
         """根据突破等级取得突破技能ID

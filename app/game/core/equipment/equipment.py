@@ -93,6 +93,19 @@ class Equipment(object):
         equipment_pb.nobbing_effect = 0
         equipment_pb.hero_no = 0
 
+    def calculate_attr(self):
+        """根据属性和强化等级计算装备属性
+        """
+        equipment_no = self._base_info.equipment_no
+        equ_config_obj = game_configs.equipment_config.get(equipment_no)
+
+        atk = equ_config_obj.baseAtk + equ_config_obj.growAtk * self._attribute.strengthen_lv  # 攻击
+        hp = equ_config_obj.baseHp + equ_config_obj.growHp * self._attribute.strengthen_lv  # 血量
+        physical_def = equ_config_obj.basePdef + equ_config_obj.growPdef * self._attribute.strengthen_lv  # 物理防御
+        magic_def = equ_config_obj.baseMdef + equ_config_obj.growMdef * self._attribute.strengthen_lv  # 魔法防御
+
+        return atk, hp, physical_def, magic_def
+
 
 
 
