@@ -26,7 +26,7 @@ def create_guild(dynamicid, data, **kwargs):
     response = CreateGuildResponse()
     res = response.res
     p_id = player.base_info.id
-    # 判断name合法性，长度,敏感字过滤
+    # TODO 判断name合法性，敏感字过滤
     if len(name) > 18:
         print "cuick,###############,TEST,call:", name, 'call_len:', len(name)
         res.result = True
@@ -77,6 +77,7 @@ def join_guild(dynamicid, data, **kwargs):
         return response.SerializeToString()
     guild_obj = Guild()
     guild_obj.init_data(data1)
+    # TODO 根据公会等级得到公会人数上限，取配置
     if guild_obj.get_p_num() >= 30:
         res.result = False
         res.message = "公会已满员"
@@ -117,7 +118,7 @@ def exit_guild(dynamicid, data, **kwargs):
     if guild_obj.get_p_num() <= 1:
         print "cuick,###############,TEST,guild_obj.get_p_num():", guild_obj.get_p_num()
         # 解散公会
-        # 删除公会名字
+        # TODO 删除公会名字
         guild_obj.delete_guild()
         res.result = True
         res.message = "公会已解散"

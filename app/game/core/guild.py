@@ -12,24 +12,28 @@ class Guild(object):
     def __init__(self):
         """创建一个角色
         """
-        self._name = ''
-        self._g_id = 0
-        self._p_num = 1
-        self._level = 1
-        self._exp = 0
-        self._fund = 0
-        self._call = ''
-        self._p_list = {}
-        self._apply = []
-        self._record = 0
+        self._name = ''  # 名
+        self._g_id = 0  # id
+        self._p_num = 1  # 人数
+        self._level = 1  # 等级
+        self._exp = 0  # 经验
+        self._fund = 0  # 资金
+        self._call = ''  # 公告
+        self._p_list = {}  # 成员信息
+        self._apply = []  # 加入申请
+        self._record = 0  # 战绩
 
     def create_guild(self, p_id, name):
         self._name = name
         uuid = get_uuid()
         self._g_id = uuid
+        # position 职位，contribution 贡献，k_num 杀人数，worship 膜拜次数，worship_time 膜拜时间
+        # 公会贡献 ，，剩下的 。。。
         self._p_list = {p_id: {'position': 1, \
                                'contribution': 0, \
-                               'k_num': 0}}
+                               'k_num': 0, \
+                               'worship': 0, \
+                               'worship_time': 0}}
         # fund 资金
         data = {'id': self._g_id, \
                 'info': {'name': self._name, \

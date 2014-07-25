@@ -59,7 +59,7 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = 'ca7feba2dcd5ff2630967a3e3c9ee21b'
+        argument.key.key = 'bfb3fa4bd2b26123b1d92023049fbb08'
         argument.user_name = 'ceshi1'
         argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -75,7 +75,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = 'ca7feba2dcd5ff2630967a3e3c9ee21b'
+            argument.token = 'bfb3fa4bd2b26123b1d92023049fbb08'
             self.dateSend(argument, 4)
 
         if command == 4:
