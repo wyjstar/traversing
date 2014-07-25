@@ -6,6 +6,7 @@ created by server on 14-7-17下午5:21.
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.offline.friend_offline import FriendOffline
+from app.gate.action.root.netforwarding import push_object
 
 
 @have_player
@@ -22,7 +23,8 @@ def add_friend_request(dynamic_id, invitee_id, **kwargs):
     if invitee_player:
         if not invitee_player.friends.add_applicant(player.base_info.id):
             return 1  # fail
-        # todo sendto target message of friend application
+
+        push_object(1010, player.base_info.id, invitee_player.dynamic_id)
     else:
         friend_offline = FriendOffline(invitee_id)
         if not friend_offline.add_applicant(player.base_info.id):
@@ -49,13 +51,17 @@ def become_friends(dynamic_id, inviter_id, **kwargs):
     if not player.friends.del_applicant(inviter_id):
         return 2  # del applicant error
 
+    if not player.friends.add_friend(inviter_id):
+        return 3
+
+    # save data
+    player.friends.save_data()
+
     inviter_player = PlayersManager().get_player_by_id(inviter_id)
 
     if inviter_player:
         if not inviter_player.friends.add_friend(player.base_info.id):
-            return 3
-        if not player.friends.add_friend(inviter_id):
-            return 3
+            return 4
 
         # save data
         inviter_player.friends.save_data()
@@ -63,9 +69,7 @@ def become_friends(dynamic_id, inviter_id, **kwargs):
     else:
         friend_offline = FriendOffline(inviter_id)
         if not friend_offline.add_friend(player.base_info.id):
-            return 4
-        if not player.friends.add_friend(inviter_id):
-            return 4
+            return 5
 
     return 0
 
