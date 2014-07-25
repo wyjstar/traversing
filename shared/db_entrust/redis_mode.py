@@ -74,7 +74,7 @@ class MMode(RedisObject):
         n_time = time.time()
         RedisObject.update(self, "_time", n_time)
         value = RedisObject.get(self, key)
-        if key == '_state':
+        if value and key == '_state':
             value = int(value)
         return value
 
