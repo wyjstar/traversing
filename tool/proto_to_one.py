@@ -10,6 +10,7 @@ for file_name in os.listdir(root_path):
     file_path = root_path + file_name
     temp = open(file_path, "r")
     data = temp.readlines()
-    print data
-    result_file.writelines(data)
+    for line in data:
+        if not line.startswith("import"):
+            result_file.write(line)
 result_file.close()

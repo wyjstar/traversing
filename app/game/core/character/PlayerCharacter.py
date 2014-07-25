@@ -43,7 +43,7 @@ class PlayerCharacter(Character):
         self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
         self._level = CharacterLevelComponent(self)  # 等级
         self._line_up = CharacterLineUpComponent(self)  # 阵容
-        self._stage = CharacterStageComponent(self)  # 关卡
+        # self._stage = CharacterStageComponent(self)  # 关卡
         self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
@@ -101,7 +101,7 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
-        self._stage.init_data()
+        # self._stage.init_data()
 
     @property
     def character_type(self):

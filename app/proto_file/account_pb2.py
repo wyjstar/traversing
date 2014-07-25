@@ -12,42 +12,42 @@ from google.protobuf import descriptor_pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='account.proto',
-  package='proto_file.account',
-  serialized_pb='\n\raccount.proto\x12\x12proto_file.account\"m\n\x0b\x41\x63\x63ountInfo\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12+\n\x03key\x18\x04 \x01(\x0b\x32\x1e.proto_file.account.AccountKey\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"_\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12+\n\x03key\x18\x03 \x01(\x0b\x32\x1e.proto_file.account.AccountKey\"a\n\rLoginResquest\x12+\n\x03key\x18\x01 \x02(\x0b\x32\x1e.proto_file.account.AccountKey\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t')
+  package='',
+  serialized_pb='\n\raccount.proto\"Z\n\x0b\x41\x63\x63ountInfo\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x18\n\x03key\x18\x04 \x01(\x0b\x32\x0b.AccountKey\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"L\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x18\n\x03key\x18\x03 \x01(\x0b\x32\x0b.AccountKey\"N\n\rLoginResquest\x12\x18\n\x03key\x18\x01 \x02(\x0b\x32\x0b.AccountKey\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t')
 
 
 
 
 _ACCOUNTINFO = _descriptor.Descriptor(
   name='AccountInfo',
-  full_name='proto_file.account.AccountInfo',
+  full_name='AccountInfo',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='type', full_name='proto_file.account.AccountInfo.type', index=0,
+      name='type', full_name='AccountInfo.type', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_name', full_name='proto_file.account.AccountInfo.user_name', index=1,
+      name='user_name', full_name='AccountInfo.user_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='password', full_name='proto_file.account.AccountInfo.password', index=2,
+      name='password', full_name='AccountInfo.password', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='key', full_name='proto_file.account.AccountInfo.key', index=3,
+      name='key', full_name='AccountInfo.key', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -62,20 +62,20 @@ _ACCOUNTINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=37,
-  serialized_end=146,
+  serialized_start=17,
+  serialized_end=107,
 )
 
 
 _ACCOUNTKEY = _descriptor.Descriptor(
   name='AccountKey',
-  full_name='proto_file.account.AccountKey',
+  full_name='AccountKey',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='proto_file.account.AccountKey.key', index=0,
+      name='key', full_name='AccountKey.key', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -90,34 +90,34 @@ _ACCOUNTKEY = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=148,
-  serialized_end=173,
+  serialized_start=109,
+  serialized_end=134,
 )
 
 
 _ACCOUNTRESPONSE = _descriptor.Descriptor(
   name='AccountResponse',
-  full_name='proto_file.account.AccountResponse',
+  full_name='AccountResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='proto_file.account.AccountResponse.result', index=0,
+      name='result', full_name='AccountResponse.result', index=0,
       number=1, type=8, cpp_type=7, label=2,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='message', full_name='proto_file.account.AccountResponse.message', index=1,
+      name='message', full_name='AccountResponse.message', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='key', full_name='proto_file.account.AccountResponse.key', index=2,
+      name='key', full_name='AccountResponse.key', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -132,34 +132,34 @@ _ACCOUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=175,
-  serialized_end=270,
+  serialized_start=136,
+  serialized_end=212,
 )
 
 
 _LOGINRESQUEST = _descriptor.Descriptor(
   name='LoginResquest',
-  full_name='proto_file.account.LoginResquest',
+  full_name='LoginResquest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='proto_file.account.LoginResquest.key', index=0,
+      name='key', full_name='LoginResquest.key', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_name', full_name='proto_file.account.LoginResquest.user_name', index=1,
+      name='user_name', full_name='LoginResquest.user_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='password', full_name='proto_file.account.LoginResquest.password', index=2,
+      name='password', full_name='LoginResquest.password', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -174,8 +174,8 @@ _LOGINRESQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=272,
-  serialized_end=369,
+  serialized_start=214,
+  serialized_end=292,
 )
 
 _ACCOUNTINFO.fields_by_name['key'].message_type = _ACCOUNTKEY
@@ -190,25 +190,25 @@ class AccountInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _ACCOUNTINFO
 
-  # @@protoc_insertion_point(class_scope:proto_file.account.AccountInfo)
+  # @@protoc_insertion_point(class_scope:AccountInfo)
 
 class AccountKey(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _ACCOUNTKEY
 
-  # @@protoc_insertion_point(class_scope:proto_file.account.AccountKey)
+  # @@protoc_insertion_point(class_scope:AccountKey)
 
 class AccountResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _ACCOUNTRESPONSE
 
-  # @@protoc_insertion_point(class_scope:proto_file.account.AccountResponse)
+  # @@protoc_insertion_point(class_scope:AccountResponse)
 
 class LoginResquest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _LOGINRESQUEST
 
-  # @@protoc_insertion_point(class_scope:proto_file.account.LoginResquest)
+  # @@protoc_insertion_point(class_scope:LoginResquest)
 
 
 # @@protoc_insertion_point(module_scope)

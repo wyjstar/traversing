@@ -18,11 +18,11 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
     request = ShopRequest()
     request.ParseFromString(pro_data)
     game_resources_response = GameResourcesResponse()
-    response = CommonResponse()
-    game_resources_response.res = response
+    response = game_resources_response.res
 
     shop_id = request.id
     shop_item = shop_config.get(shop_id)
+    print "shop_id", shop_id
 
     if is_consume(player, shop_item):
         # 判断是否消耗
