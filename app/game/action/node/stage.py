@@ -88,6 +88,7 @@ def fight_settlement_904(dynamic_id, pro_data):
     stage_id = request.stage_id
     result = request.result
     drops = fight_settlement(dynamic_id, stage_id, result)
+
     return drops
 
 
