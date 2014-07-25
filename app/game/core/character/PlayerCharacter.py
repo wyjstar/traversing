@@ -17,7 +17,7 @@ from app.game.component.character_heros import CharacterHerosComponent
 from app.game.component.fiance.character_fiance_component import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
-import json
+from app.game.component.friend.friend import FriendComponent
 
 
 class PlayerCharacter(Character):
@@ -47,6 +47,7 @@ class PlayerCharacter(Character):
         self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
+        self._friends = FriendComponent(self)  # friend system
 
         self._mmode = None
 
@@ -101,6 +102,7 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
+        self._friends.init_data()
         # self._stage.init_data()
 
     @property
@@ -175,3 +177,8 @@ class PlayerCharacter(Character):
     @property
     def fight_cache_component(self):
         return self._fight_cache
+
+    @property
+    def friends(self):
+        return self._friends
+
