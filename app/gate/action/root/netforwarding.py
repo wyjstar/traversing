@@ -38,16 +38,16 @@ def forwarding(key, dynamic_id, data):
         result = GlobalObject().root.callChild(node, key, dynamic_id, data)
 
         return result
-#
 
-# @rootserviceHandle
-# def pushObject(topic_id, msg, send_list):
-#     """ send msg to client in send_list
-#         send_list:
-#     """
-#     GlobalObject().root.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
-#
-#
+
+@rootserviceHandle
+def push_object(topic_id, msg, send_list):
+    """ send msg to client in send_list
+        send_list:
+    """
+    GlobalObject().root.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
+
+
 # @rootserviceHandle
 # def opera_player(pid, oprea_str):
 #     """
