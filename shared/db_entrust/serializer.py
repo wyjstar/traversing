@@ -58,8 +58,6 @@ class Serializer(object):
     def dumps(self, data, shallow=False):
 
         columns = self._def_attrs
-        print 'columns #1:', columns
-        print data
         for attr in columns:
             if attr in data:
                 val = data[attr]
@@ -71,5 +69,4 @@ class Serializer(object):
                     dumps_func = getattr(self, columns[attr] + "_dumps")
                     data[attr] = dumps_func(val)
 
-        print 'dumps:', data
         return data

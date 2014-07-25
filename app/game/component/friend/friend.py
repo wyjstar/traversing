@@ -77,6 +77,7 @@ class FriendComponent(Component):
 
     def del_friend(self, friend_id):
         if not friend_id in self._friends:
+            print 'del friend', 'can not find friend'
             return False
 
         self._friends.remove(friend_id)
@@ -96,13 +97,14 @@ class FriendComponent(Component):
 
     def del_blacklist(self, target_id):
         if not target_id in self._blacklist:
+            print 'del blacklist', 'can not find player in blacklist!!!'
             return False
 
         self._blacklist.remove(target_id)
         return True
 
     def add_applicant(self, target_id):
-        if target_id in self._applicants_list:
+        if target_id in self._applicants_list.keys():
             print 'add applicant', 'exist in applicants!!!!'
             return False
 
@@ -119,6 +121,7 @@ class FriendComponent(Component):
 
     def del_applicant(self, target_id):
         if not target_id in self._applicants_list:
+            print 'del applicant', 'can not find player in applicants list'
             return False
 
         del(self._applicants_list[target_id])
