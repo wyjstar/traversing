@@ -14,28 +14,21 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"2\n\x0cSetEquipment\x12\x11\n\tplayer_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x66riends\x18\x02 \x01(\x05')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"!\n\x0c\x46riendCommon\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08')
 
 
 
 
-_SETEQUIPMENT = _descriptor.Descriptor(
-  name='SetEquipment',
-  full_name='SetEquipment',
+_FRIENDCOMMON = _descriptor.Descriptor(
+  name='FriendCommon',
+  full_name='FriendCommon',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='player_id', full_name='SetEquipment.player_id', index=0,
+      name='target_id', full_name='FriendCommon.target_id', index=0,
       number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='friends', full_name='SetEquipment.friends', index=1,
-      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -50,16 +43,51 @@ _SETEQUIPMENT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=30,
-  serialized_end=80,
+  serialized_end=63,
 )
 
-DESCRIPTOR.message_types_by_name['SetEquipment'] = _SETEQUIPMENT
 
-class SetEquipment(_message.Message):
+_ADDFRIENDRESPONSE = _descriptor.Descriptor(
+  name='AddFriendResponse',
+  full_name='AddFriendResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='AddFriendResponse.result', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=65,
+  serialized_end=100,
+)
+
+DESCRIPTOR.message_types_by_name['FriendCommon'] = _FRIENDCOMMON
+DESCRIPTOR.message_types_by_name['AddFriendResponse'] = _ADDFRIENDRESPONSE
+
+class FriendCommon(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SETEQUIPMENT
+  DESCRIPTOR = _FRIENDCOMMON
 
-  # @@protoc_insertion_point(class_scope:SetEquipment)
+  # @@protoc_insertion_point(class_scope:FriendCommon)
+
+class AddFriendResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ADDFRIENDRESPONSE
+
+  # @@protoc_insertion_point(class_scope:AddFriendResponse)
 
 
 # @@protoc_insertion_point(module_scope)

@@ -32,11 +32,11 @@
     <table name="tb_character_hero_chip" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_character_item_package" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_nickname_mapping" dataNode="dn_traversing$0-3" rule="rule3" />
-    <table name="tb_character_stages" dataNode="dn_traversing$0-3" rule="rule2" />
 
     <table name="tb_account" dataNode="dn_account$0-7" rule="rule2" />
     <table name="tb_account_mapping" dataNode="dn_account$0-7" rule="rule2" />
     <table name="tb_name_mapping" dataNode="dn_account$0-7" rule="rule4" />
+    <table name="tb_character_friend" dataNode="dn_traversing$0-3" rule="rule5" />
 
     <table name="account_sequence" dataNode="dn_sequence"/>
 

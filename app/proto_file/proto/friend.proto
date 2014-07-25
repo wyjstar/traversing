@@ -1,8 +1,8 @@
 import "common.proto";
 
-// add_friend_request 好友
-message AddFriendRequest{
-	required int32 invitee_id = 1;  // invitee id
+// add_friend_common 好友
+message FriendCommon{
+	required int32 target_id = 1;  // invitee id
 }
 
 // add friend response
