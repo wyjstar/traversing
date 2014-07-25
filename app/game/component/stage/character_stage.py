@@ -50,6 +50,7 @@ class CharacterStageComponent(Component):
         stage_obj = self._stage_info.get(stage_id, None)
         if not stage_obj:
             stage_obj = Stage(stage_id, state=-2)
+            self._stage_info[stage_id] = stage_obj
         return stage_obj
 
     def get_stages(self):
@@ -64,6 +65,7 @@ class CharacterStageComponent(Component):
         chapter_obj = self._award_info.get(chapter_id, None)
         if not chapter_obj:
             chapter_obj = StageAward(chapter_id)
+            self._award_info[chapter_id] = chapter_obj
         return chapter_obj
 
     def get_chapters(self):
@@ -72,6 +74,38 @@ class CharacterStageComponent(Component):
         chapter_ids = game_configs.stage_config.get('chapter_ids')
         return [self.get_chapter(chapter_id) for chapter_id in chapter_ids]
 
-    def settlement(self):
+    def settlement(self, stage_id, result):
         """结算
         """
+        stage = self.get_stage(stage_id)
+        stage.update(result)
+        if result:  # win
+            stages_conf = self.get_chapters()
+            stage_conf = stages_conf.get(stage_id)
+            chapter_id = stage_conf.chapter
+            chapter = self.get_chapter(chapter_id)
+            chapter.update(self.calculation_star(chapter_id))
+
+    def calculation_star(self, chapter_id):
+        """根据章节ID计算当前星数
+        """
+
+        stages_config = game_configs.stage_config.get('stages')
+        chapter_stages_config = [self.get_stage(stage_id) for stage_id, item in stages_config.items() if
+                                 not item.contents and item.chapter == chapter_id]
+
+        num = 0
+        for stage_config in chapter_stages_config:
+            stage_id = stage_config.id
+            stage = self.get_stage(stage_id)
+            if not stage.state == 1:
+                continue
+            num += 1
+
+        return num
+
+    def update(self):
+        pass
+
+
+

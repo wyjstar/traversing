@@ -356,7 +356,8 @@ class CharacterFightCacheComponent(Component):
         """
 
         # TODO 根据result更新stage信息
-
+        self.stage_component.settlement(self._stage_id, result)
+        self.stage_component.update()
         drops = []
         # 关卡掉落
         for _ in range(self._drop_num):
