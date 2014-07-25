@@ -6,9 +6,9 @@ created by server on 14-7-17下午5:21.
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.offline.friend_offline import FriendOffline
-from app.gate.action.root.netforwarding import push_object
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.friend_pb2 import FriendCommon
+from app.game.action.root.netforwarding import push_object
 
 
 @have_player
