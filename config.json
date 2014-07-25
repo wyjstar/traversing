@@ -216,6 +216,29 @@
                 "stage_info": "complex",
                 "award_info": "complex"
             }
+        },
+        "tb_guild_info":{
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "info": "complex"
+		    }
+	    },
+        "tb_character_friend":{
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "friends": "complex",
+                "blacklist": "complex",
+                "applicants_list": "complex"
+            }
+        },
+        "tb_guild_name": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "info": "complex"
+            }
         }
     }
 

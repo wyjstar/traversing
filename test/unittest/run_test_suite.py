@@ -15,6 +15,7 @@ from test.unittest.drop_bag.drop_bag_test import DropBagTest
 from test.unittest.logic.item_group_helper_test import ItemGroupHelperTest
 from test.unittest.soul_shop.soul_shop_test import SoulShopTest
 from test.unittest.shop.shop_test import ShopTest
+from test.unittest.friend.friend_test import FriendTest
 
 import unittest
 
@@ -32,6 +33,7 @@ if __name__ == "__main__":
     suite.addTest(unittest.makeSuite(ItemGroupHelperTest))
     suite.addTest(unittest.makeSuite(ShopTest))
     suite.addTest(unittest.makeSuite(SoulShopTest))
+    suite.addTest(unittest.makeSuite(FriendTest))
     unittest.TextTestRunner().run(suite)
 
 

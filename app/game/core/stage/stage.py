@@ -3,6 +3,7 @@
 created by server on 14-7-17下午8:43.
 """
 import cPickle
+from shared.db_opear.configs_data import game_configs
 
 
 class Stage(object):
@@ -37,6 +38,15 @@ class Stage(object):
         info = cPickle.loads(data)
         return cls(**info)
 
+    def update(self, result):
+        """更新攻击次数和关卡状态
+        """
+        if result:  # win
+            self._attacks += 1  # 攻击次数+1
+            self._state = 1  # 状态赢
+        else:
+            self._state = 0
+
 
 class StageAward(object):
     """关卡奖励
@@ -69,3 +79,41 @@ class StageAward(object):
     def loads(cls, data):
         info = cPickle.loads(data)
         return cls(**info)
+
+    def update(self, star_num):
+        """根据星星数量更新奖励信息
+        """
+        award_info = self.check(star_num)
+        if self._award_info:  # 领取奖励信息存在
+            curr_award_info = []
+            for curr_info, old_info in zip(award_info, self._award_info):
+                if old_info == 0 or old_info == 1:  # 奖励没有领取或者已经领取完成
+                    curr_award_info.append(old_info)
+                else:
+                    if curr_info == 0:
+                        curr_award_info.append(curr_info)
+                    else:
+                        curr_award_info.append(old_info)
+            self._award_info = curr_award_info
+        else:
+            self._award_info = award_info
+
+    def check(self, star_num):
+        """根据星星数量判断是否能领取奖励
+        """
+        stage = None  # 章节配置数据
+        award_info = []  # 奖励可以领取状态
+        stages_config = game_configs.stage_config.get('stages')
+        for stage_id, item in stages_config.items():
+            if item.contents and item.chapter == self._chapter_id:
+                stage = item
+                break
+        star = stage.star
+        for value in star:
+            if star_num >= value:  # 可以领奖
+                award_info.append(0)
+            else:
+                award_info.append(-1)  # 没达成
+
+        return award_info
+

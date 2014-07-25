@@ -16,6 +16,8 @@ from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
+from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
+from shared.db_opear.configs_data.skill_config import SkillConfig
 from shared.db_opear.configs_data.stage_config import StageConfig
 
 
@@ -36,6 +38,7 @@ def init():
                     charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
 
 init()
+
 
 def get_config_value(config_key):
     """获取所有翻译信息
@@ -70,6 +73,8 @@ link_config = {}
 stage_config = {}
 monster_config = {}
 monster_group_config = {}
+skill_config = {}
+skill_buff_config = {}
 
 
 all_config_name = {
@@ -86,8 +91,9 @@ all_config_name = {
     'link_config': LinkConfig(),
     'stage_config': StageConfig(),
     'monster_config': MonsterConfig(),
-    'monster_group_config': MonsterGroupConfig()
-
+    'monster_group_config': MonsterGroupConfig(),
+    'skill_config': SkillConfig(),
+    'skill_buff_config': SkillBuffConfig(),
 }
 
 

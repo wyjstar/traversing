@@ -1,0 +1,11 @@
+import "common.proto";
+
+// add_friend_common 好友
+message FriendCommon{
+	required int32 target_id = 1;  // invitee id
+}
+
+// add friend response
+message AddFriendResponse{
+    required bool result = 1;      //result
+}

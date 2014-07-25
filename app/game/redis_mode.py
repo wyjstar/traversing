@@ -15,6 +15,7 @@ tb_character_heros.insert()
 # 英雄信息表
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
+tb_character_hero.load()
 
 # 用户英雄碎片信息表
 tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
@@ -40,10 +41,25 @@ tb_equipment_info.insert()
 tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
 tb_character_equipment_chip.insert()
 
+# 公会信息表
+tb_guild_info = MAdmin('tb_guild_info', 'id')
+tb_guild_info.insert()
+
+# 玩家公会表
+tb_character_guild = MAdmin('tb_character_guild', 'id')
+tb_character_guild.insert()
+
+# 公会名表
+tb_guild_name = MAdmin('tb_guild_name', 'id')
+tb_guild_name.insert()
+
+# friend表
+tb_character_friend = MAdmin('tb_character_friend', 'id')
+tb_character_friend.insert()
+
+
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
-
-print 'tb_character_stages redis mode:', tb_character_stages.__dict__
 tb_character_stages.insert()
 
 # 昵称表

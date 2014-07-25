@@ -3,6 +3,8 @@
 created by server on 14-7-18下午3:44.
 """
 from app.game.logic.common.check import have_player
+from app.game.logic.item_group_helper import gain, get_return
+from app.proto_file import stage_pb2
 
 
 @have_player
@@ -50,6 +52,29 @@ def fight_start(dynamic_id, stage_id, **kwargs):
     fight_cache_component.stage_id = stage_id
     red_units, blue_units, drop_num = fight_cache_component.fighting_start()
     return red_units, blue_units, drop_num
+
+
+@have_player
+def fight_settlement(dynamic_id, stage_id, result, **kwargs):
+    player = kwargs.get('player')
+
+    response = stage_pb2.StageSettlementResponse()
+    drops = response.drops
+    drops.res.result = True
+
+    # 校验是否保存关卡
+    fight_cache_component = player.fight_cache_component
+    if stage_id != fight_cache_component.stage_id:
+        drops.res.result = True
+        return response.SerializePartialToString()
+
+    player.stage_component.settlement(stage_id, result)
+
+    drops = fight_cache_component.fighting_settlement(stage_id, result)
+    data = gain(player, drops)
+    get_return(player, data, drops)
+    return response.SerializePartialToString()
+
 
 
 

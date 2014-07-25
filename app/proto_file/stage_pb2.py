@@ -9,12 +9,13 @@ from google.protobuf import descriptor_pb2
 
 
 import common_pb2
+import player_response_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage.proto',
   package='',
-  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\"\x88\x02\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x14\n\x0cnormal_skill\x18\x03 \x01(\x05\x12\x12\n\nrage_skill\x18\x04 \x01(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_dif\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\x12\x0f\n\x07is_boss\x18\x0f \x01(\x08\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"*\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"%\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"}\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\"\x19\n\x17StageSettlementResponse')
+  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\x88\x02\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x14\n\x0cnormal_skill\x18\x03 \x01(\x05\x12\x12\n\nrage_skill\x18\x04 \x01(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_def\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\x12\x0f\n\x07is_boss\x18\x0f \x01(\x08\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"*\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"%\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"}\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\":\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0e\n\x06result\x18\x02 \x02(\x05\"@\n\x17StageSettlementResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -76,7 +77,7 @@ _BATTLEUNIT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='magic_dif', full_name='BattleUnit.magic_dif', index=7,
+      name='magic_def', full_name='BattleUnit.magic_def', index=7,
       number=8, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -140,8 +141,8 @@ _BATTLEUNIT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=30,
-  serialized_end=294,
+  serialized_start=53,
+  serialized_end=317,
 )
 
 
@@ -168,8 +169,8 @@ _BATTLEUNITGROP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=296,
-  serialized_end=340,
+  serialized_start=319,
+  serialized_end=363,
 )
 
 
@@ -210,8 +211,8 @@ _STAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=342,
-  serialized_end=399,
+  serialized_start=365,
+  serialized_end=422,
 )
 
 
@@ -252,8 +253,8 @@ _STAGEAWARD = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=401,
-  serialized_end=469,
+  serialized_start=424,
+  serialized_end=492,
 )
 
 
@@ -280,8 +281,8 @@ _STAGEINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=471,
-  serialized_end=507,
+  serialized_start=494,
+  serialized_end=530,
 )
 
 
@@ -308,8 +309,8 @@ _STAGEINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=509,
-  serialized_end=551,
+  serialized_start=532,
+  serialized_end=574,
 )
 
 
@@ -336,8 +337,8 @@ _CHAPTERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=553,
-  serialized_end=593,
+  serialized_start=576,
+  serialized_end=616,
 )
 
 
@@ -364,8 +365,8 @@ _CHAPTERINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=595,
-  serialized_end=650,
+  serialized_start=618,
+  serialized_end=673,
 )
 
 
@@ -392,8 +393,8 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=652,
-  serialized_end=689,
+  serialized_start=675,
+  serialized_end=712,
 )
 
 
@@ -441,8 +442,43 @@ _STAGESTARTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=691,
-  serialized_end=816,
+  serialized_start=714,
+  serialized_end=839,
+)
+
+
+_STAGESETTLEMENTREQUEST = _descriptor.Descriptor(
+  name='StageSettlementRequest',
+  full_name='StageSettlementRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='stage_id', full_name='StageSettlementRequest.stage_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='result', full_name='StageSettlementRequest.result', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=841,
+  serialized_end=899,
 )
 
 
@@ -453,6 +489,13 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='drops', full_name='StageSettlementResponse.drops', index=0,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -462,8 +505,8 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=818,
-  serialized_end=843,
+  serialized_start=901,
+  serialized_end=965,
 )
 
 _BATTLEUNITGROP.fields_by_name['group'].message_type = _BATTLEUNIT
@@ -472,6 +515,7 @@ _CHAPTERINFORESPONSE.fields_by_name['stage_award'].message_type = _STAGEAWARD
 _STAGESTARTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _STAGESTARTRESPONSE.fields_by_name['red'].message_type = _BATTLEUNIT
 _STAGESTARTRESPONSE.fields_by_name['blue'].message_type = _BATTLEUNITGROP
+_STAGESETTLEMENTRESPONSE.fields_by_name['drops'].message_type = player_response_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['BattleUnit'] = _BATTLEUNIT
 DESCRIPTOR.message_types_by_name['BattleUnitGrop'] = _BATTLEUNITGROP
 DESCRIPTOR.message_types_by_name['Stage'] = _STAGE
@@ -482,6 +526,7 @@ DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
 DESCRIPTOR.message_types_by_name['ChapterInfoResponse'] = _CHAPTERINFORESPONSE
 DESCRIPTOR.message_types_by_name['StageStartRequest'] = _STAGESTARTREQUEST
 DESCRIPTOR.message_types_by_name['StageStartResponse'] = _STAGESTARTRESPONSE
+DESCRIPTOR.message_types_by_name['StageSettlementRequest'] = _STAGESETTLEMENTREQUEST
 DESCRIPTOR.message_types_by_name['StageSettlementResponse'] = _STAGESETTLEMENTRESPONSE
 
 class BattleUnit(_message.Message):
@@ -543,6 +588,12 @@ class StageStartResponse(_message.Message):
   DESCRIPTOR = _STAGESTARTRESPONSE
 
   # @@protoc_insertion_point(class_scope:StageStartResponse)
+
+class StageSettlementRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _STAGESETTLEMENTREQUEST
+
+  # @@protoc_insertion_point(class_scope:StageSettlementRequest)
 
 class StageSettlementResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
