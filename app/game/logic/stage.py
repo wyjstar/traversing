@@ -69,6 +69,7 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
         return response.SerializePartialToString()
 
     player.stage_component.settlement(stage_id, result)
+
     drops = fight_cache_component.fighting_settlement(stage_id, result)
     data = gain(player, drops)
     get_return(player, data, drops)
