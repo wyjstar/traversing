@@ -105,7 +105,12 @@ class CharacterStageComponent(Component):
         return num
 
     def update(self):
-        pass
+        props = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in self._stage_info.iteritems()]),
+                 'award_info': dict(
+                     [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()])}
+        stage_obj = tb_character_stages.getObj(self.owner.base_info.id)
+        stage_obj.update_multi(props)
+
 
 
 
