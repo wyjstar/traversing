@@ -5,6 +5,7 @@ created by server on 14-7-17下午5:21.
 
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
+from app.game.core.offline.friend_offline import FriendOffline
 
 
 @have_player
@@ -21,9 +22,11 @@ def add_friend_request(dynamic_id, invitee_id, **kwargs):
     if invitee_player:
         if not invitee_player.friends.add_applicant(player.base_info.id):
             return 1  # fail
-    else:
         # todo sendto target message of friend application
-        pass
+    else:
+        friend_offline = FriendOffline(invitee_id)
+        if not friend_offline.add_applicant(player.base_info.id):
+            return 2  # offline fail
 
     invitee_player.friends.save_data()
 
@@ -58,8 +61,11 @@ def become_friends(dynamic_id, inviter_id, **kwargs):
         inviter_player.friends.save_data()
         player.friends.save_data()
     else:
-        # todo modify offline data
-        pass
+        friend_offline = FriendOffline(inviter_id)
+        if not friend_offline.add_friend(player.base_info.id):
+            return 4
+        if not player.friends.add_friend(inviter_id):
+            return 4
 
     return 0
 
@@ -104,6 +110,18 @@ def del_friend(dynamic_id, friend_id, **kwargs):
 
     # save data
     player.friends.save_data()
+
+    friend_player = PlayersManager().get_player_by_id(friend_id)
+    if friend_player:
+        if not friend_player.friends.is_friend(player.base_info.id):
+            return 3
+        if not friend_player.friends.del_friend(player.base_info.id):
+            return 4
+    else:
+        friend_offline = FriendOffline(friend_id)
+        if not friend_offline.del_friend(player.base_info.id):
+            return 5
+
     return 0
 
 
