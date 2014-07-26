@@ -1,11 +1,10 @@
-package app.gate;
 import "hero.proto";
 import "common.proto";
 
 //请求武将列表
 message GetHerosResponse
 {
-    repeated HeroPB heros = 2;
+    repeated HeroPB heros = 1;
 }
 
 //武将升级

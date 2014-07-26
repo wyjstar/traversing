@@ -10,4 +10,6 @@ from app.game.logic.hero_chip import *
 def get_hero_chips_107(dynamic_id, pro_data=None):
     """取得武将碎片列表
     """
+
+    return
     return get_hero_chips(dynamic_id)

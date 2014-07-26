@@ -12,21 +12,21 @@ from google.protobuf import descriptor_pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game.proto',
-  package='proto_file.game',
-  serialized_pb='\n\ngame.proto\x12\x0fproto_file.game\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
+  package='',
+  serialized_pb='\n\ngame.proto\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
 
 
 
 
 _GAMELOGINRESQUEST = _descriptor.Descriptor(
   name='GameLoginResquest',
-  full_name='proto_file.game.GameLoginResquest',
+  full_name='GameLoginResquest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='token', full_name='proto_file.game.GameLoginResquest.token', index=0,
+      name='token', full_name='GameLoginResquest.token', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -41,34 +41,34 @@ _GAMELOGINRESQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=31,
-  serialized_end=65,
+  serialized_start=14,
+  serialized_end=48,
 )
 
 
 _GAMELOGINRESPONSE = _descriptor.Descriptor(
   name='GameLoginResponse',
-  full_name='proto_file.game.GameLoginResponse',
+  full_name='GameLoginResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='proto_file.game.GameLoginResponse.result', index=0,
+      name='result', full_name='GameLoginResponse.result', index=0,
       number=1, type=8, cpp_type=7, label=2,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='nickname', full_name='proto_file.game.GameLoginResponse.nickname', index=1,
+      name='nickname', full_name='GameLoginResponse.nickname', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='message', full_name='proto_file.game.GameLoginResponse.message', index=2,
+      name='message', full_name='GameLoginResponse.message', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -83,8 +83,8 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=67,
-  serialized_end=137,
+  serialized_start=50,
+  serialized_end=120,
 )
 
 DESCRIPTOR.message_types_by_name['GameLoginResquest'] = _GAMELOGINRESQUEST
@@ -94,13 +94,13 @@ class GameLoginResquest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GAMELOGINRESQUEST
 
-  # @@protoc_insertion_point(class_scope:proto_file.game.GameLoginResquest)
+  # @@protoc_insertion_point(class_scope:GameLoginResquest)
 
 class GameLoginResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GAMELOGINRESPONSE
 
-  # @@protoc_insertion_point(class_scope:proto_file.game.GameLoginResponse)
+  # @@protoc_insertion_point(class_scope:GameLoginResponse)
 
 
 # @@protoc_insertion_point(module_scope)

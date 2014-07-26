@@ -32,7 +32,7 @@ def character_login_4(key, dynamic_id, request_proto):
         argument.nickname = nickname
 
     print '111111111111111111'
-    print argument
+    print argument.result
 
     return argument.SerializePartialToString()
 

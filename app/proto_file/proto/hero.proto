@@ -9,8 +9,8 @@ message LinkPB{
 message HeroPB
 {
     required int32 hero_no = 1;
-    optional int32 level = 3;
-    optional int32 exp = 4;
-    optional int32 break_level = 5;
-    repeated LinkPB links = 6;
+    optional int32 level = 2;
+    optional int32 exp = 3;
+    optional int32 break_level = 4;
+    repeated LinkPB links = 5;
 }

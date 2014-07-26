@@ -2,6 +2,7 @@
 """
 created by server on 14-6-20上午10:19.
 """
+from test.unittest.init_test_data import init
 
 
 def load_module():
@@ -19,3 +20,4 @@ def load_module():
     from action.node import soul_shop
     from action.node import hero_chip
     from action.node import stage
+

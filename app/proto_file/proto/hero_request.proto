@@ -1,5 +1,3 @@
-package app.gate;
-
 //武将升级，使用道具
 message HeroUpgradeWithItemRequest
 {

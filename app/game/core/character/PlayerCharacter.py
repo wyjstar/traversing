@@ -19,6 +19,8 @@ from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
 from app.game.component.friend.friend import FriendComponent
 from app.game.component.character_guild import CharacterGuildComponent
+import json
+
 
 
 class PlayerCharacter(Character):
@@ -44,7 +46,7 @@ class PlayerCharacter(Character):
         self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
         self._level = CharacterLevelComponent(self)  # 等级
         self._line_up = CharacterLineUpComponent(self)  # 阵容
-        self._stage = CharacterStageComponent(self)  # 关卡
+        # self._stage = CharacterStageComponent(self)  # 关卡
         self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
@@ -106,6 +108,8 @@ class PlayerCharacter(Character):
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._friends.init_data()
         self._guild.init_data()
+
+
         # self._stage.init_data()
 
     @property
