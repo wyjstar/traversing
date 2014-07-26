@@ -29,36 +29,30 @@ class Guild(object):
         self._g_id = uuid
         # position 职位，contribution 贡献，k_num 杀人数，worship 膜拜次数，worship_time 膜拜时间
         # 公会贡献 ，，剩下的 。。。
-        self._p_list = {p_id: {'position': 1, \
-                               'contribution': 0, \
-                               'k_num': 0, \
-                               'worship': 0, \
-                               'worship_time': 0}}
+        self._p_list = {1: [p_id]}
         # fund 资金
-        data = {'id': self._g_id, \
-                'info': {'name': self._name, \
-                         'p_num': self._p_num, \
-                         'level': self._level, \
-                         'exp': self._exp, \
-                         'fund': self._fund, \
-                         'call': self._call, \
-                         'record': self._record, \
-                         'p_list': self._p_list, \
+        data = {'id': self._g_id,
+                'info': {'name': self._name,
+                         'p_num': self._p_num,
+                         'level': self._level,
+                         'exp': self._exp,
+                         'fund': self._fund,
+                         'call': self._call,
+                         'record': self._record,
+                         'p_list': self._p_list,
                          'apply': self._apply}}
         tb_guild_info.new(data)
-        # 玩家id：公会id
-        # 存入
 
     def save_data(self):
         data = {
-            'info': {'name': self._name, \
-                     'p_num': self._p_num, \
-                     'level': self._level, \
-                     'exp': self._exp, \
-                     'fund': self._fund, \
-                     'call': self._call, \
-                     'record': self._record, \
-                     'p_list': self._p_list, \
+            'info': {'name': self._name,
+                     'p_num': self._p_num,
+                     'level': self._level,
+                     'exp': self._exp,
+                     'fund': self._fund,
+                     'call': self._call,
+                     'record': self._record,
+                     'p_list': self._p_list,
                      'apply': self._apply}}
         print "cuick,###############,SAVE_DATA,info:", data
         guild_data = tb_guild_info.getObj(self._g_id)
@@ -102,6 +96,9 @@ class Guild(object):
 
     def get_p_list(self):
         return self._p_list
+
+    def get_g_id(self):
+        return self._g_id
 
 
 

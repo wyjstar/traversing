@@ -239,6 +239,13 @@
                 "id": "simple",
                 "info": "complex"
             }
+        },
+        "tb_character_guild": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "info": "complex"
+            }
         }
     }
 

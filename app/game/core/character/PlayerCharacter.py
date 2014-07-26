@@ -18,6 +18,7 @@ from app.game.component.fiance.character_fiance_component import CharacterFinanc
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
 from app.game.component.friend.friend import FriendComponent
+from app.game.component.character_guild import CharacterGuildComponent
 
 
 class PlayerCharacter(Character):
@@ -48,6 +49,7 @@ class PlayerCharacter(Character):
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
         self._friends = FriendComponent(self)  # friend system
+        self._guild = CharacterGuildComponent(self)  # 公会组件
 
         self._mmode = None
 
@@ -103,6 +105,7 @@ class PlayerCharacter(Character):
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._friends.init_data()
+        self._guild.init_data()
         # self._stage.init_data()
 
     @property
@@ -181,4 +184,8 @@ class PlayerCharacter(Character):
     @property
     def friends(self):
         return self._friends
+
+    @property
+    def guild(self):
+        return self._guild
 

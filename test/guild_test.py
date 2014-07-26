@@ -1,10 +1,6 @@
-# -*- coding:utf-8 -*-
-"""
-created by server on 14-7-19下午5:19.
-"""
+#coding:utf8
 
 import struct
-
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
@@ -33,7 +29,7 @@ def sendData(sendstr,commandId):
 def resolveRecvdata(data):
     '''解析数据，根据定义的协议头解析服务器返回的数据
     '''
-    ud = struct.unpack('!sssss3I', data[:17])
+    ud = struct.unpack('!sssss3I',data[:17])
     HEAD_0 = ord(ud[0])
     HEAD_1 = ord(ud[1])
     HEAD_2 = ord(ud[2])
@@ -43,13 +39,16 @@ def resolveRecvdata(data):
     lenght = ud[6]
     command = ud[7]
     message = data[17:17+lenght]
-    print command, message
-
+    print 'command:', command
+    print 'message:', message
     return command, message
 
 # a client protocol
 times = 0
 class EchoClient(protocol.Protocol):
+
+    _times = 0
+
     """Once connected, send a message, then print the result."""
 
     def dateSend(self, argument, command_id):
@@ -57,25 +56,43 @@ class EchoClient(protocol.Protocol):
 
     def connectionMade(self):
 
-        # 帐号登录
-        argument = account_pb2.LoginResquest()
-        argument.key.key = '2a783aaee6151af889dd76e3d498cdde'
-        # argument.user_name = 'ceshi1'
-        # argument.password = 'ceshi1'
-        self.dateSend(argument, 2)
+        # 帐号注册： 游客
+        argument = account_pb2.AccountInfo()
+        argument.type = 1
+        self.dateSend(argument, 1)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
-
-        if command == 2:
+        if command == 1:
 
             argument = account_pb2.AccountResponse()
             argument.ParseFromString(message)
             print argument
 
+            # 帐号注册： 帐号
+            if not self._times:
+                argument = account_pb2.AccountInfo()
+                argument.type = 2
+                argument.user_name = 'ceshi2'
+                argument.password = 'ceshi1'
+                self.dateSend(argument, 1)
+
+                self._times += 1
+            else:
+                argument = account_pb2.LoginResquest()
+                argument.key.key = '1505ccc1bcb1d1bf854e535bd13c2b90'
+                # argument.user_name = 'ghh0001'
+                # argument.password = '123457'
+                self.dateSend(argument, 2)
+
+        if command == 2:
+            argument = account_pb2.AccountResponse()
+            argument.ParseFromString(message)
+            print argument
+
             argument = PlayerLoginResquest()
-            argument.token = '2a783aaee6151af889dd76e3d498cdde'
+            argument.token = '1505ccc1bcb1d1bf854e535bd13c2b90'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -85,7 +102,7 @@ class EchoClient(protocol.Protocol):
 
             # --------801创建公会------------
             argument1 = CreateGuildRequest()
-            argument1.name = '一二三四五六'
+            argument1.name = '一二三四08'
             self.dateSend(argument1, 801)
 
             # --------802加入公会------------
@@ -130,7 +147,6 @@ class EchoClient(protocol.Protocol):
 
     def connectionLost(self, reason):
         print "connection lost"
-
 
 class EchoFactory(protocol.ClientFactory):
     protocol = EchoClient

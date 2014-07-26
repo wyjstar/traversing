@@ -3,104 +3,69 @@
 created by server on 14-7-24下午6:32.
 """
 from app.game.component.Component import Component
-from app.game.core.guild import Guild
-from app.game.redis_mode import tb_character_guild, tb_guild_info, tb_guild_name
+from app.game.redis_mode import tb_character_guild
 
 
 class CharacterGuildComponent(Component):
-    """公会组件类"""
+    """
+    公会组件类
+    """
 
     def __init__(self, owner):
         super(CharacterGuildComponent, self).__init__(owner)
-        self._heros = {}
+        self._g_id = 0  # 公会id
+        self._position = 5  # 职务
+        self._contribution = 0  # 贡献
+        self._k_num = 0  # 杀人数
+        self._worship = 0  # 膜拜次数
+        self._worship_time = 1  # 最后膜拜时间
+        self._exit_time = 1  # 上次退出公会时间
+
+    def init_data(self):
+        """
+        初始化公会组件
+        """
+        p_id = self.owner.base_info.id
+        character_guild = tb_character_guild.getObjData(p_id)
+        if not character_guild:
+            # 没有公会数据
+            data = {'id': p_id,
+                    'info': {'g_id': self._g_id,
+                             'position': self._position,
+                             'contribution': self._contribution,
+                             'k_num': self._k_num,
+                             'worship': self._worship,
+                             'worship_time': self._worship_time,
+                             'exit_time': self._exit_time}}
+            tb_character_guild.new(data)
+            return
+        info = character_guild.get("info")
+        self._g_id = info.get("g_id")
+        self._position = info.get("position")
+        self._contribution = info.get("contribution")
+        self._k_num = info.get("k_num")
+        self._worship = info.get("worship")
+        self._worship_time = info.get("worship_time")
+        self._exit_time = info.get("exit_time")
+
+    def save_data(self):
+        data = {
+            'info': {'g_id': self._g_id,
+                     'position': self._position,
+                     'contribution': self._contribution,
+                     'k_num': self._k_num,
+                     'worship': self._worship,
+                     'worship_time': self._worship_time,
+                     'exit_time': self._exit_time}}
+        print "cuick,###############,CharacterGuildComponent,SAVE_DATA,info:", data
+        p_guild_data = tb_character_guild.getObj(self.owner.base_info.id)
+        p_guild_data.update_multi(data)
 
     @property
-    def heros(self):
-        return self._heros
+    def g_id(self):
+        return self._g_id
 
-    @heros.setter
-    def heros(self, heros):
-        self._heros = heros
-
-    # def init_heros(self):
-    #     pid = self.owner.base_info.id
-    #     character_heros = tb_character_heros.getObjData(pid)
-    #     if not character_heros:
-    #         # 没有武将列表数据
-    #         data = {
-    #             'id': pid,
-    #             'hero_ids': [],
-    #         }
-    #         tb_character_heros.new(data)
-    #         return
-    #
-    #     hero_ids = character_heros.get('hero_ids')
-    #
-    #     if not hero_ids:
-    #         return
-    #
-    #     heros = tb_character_hero.getObjList(hero_ids)
-    #
-    #     for hero_mmode in heros:
-    #         data = hero_mmode.get('data')
-    #         hero = Hero(pid)
-    #         hero.init_data(data)
-    #         self.add_hero(hero)
-    #
-    # def get_hero(self, hero_no):
-    #     return self._heros.get(hero_no)
-    #
-    # def get_multi_hero(self, *args):
-    #     return [self.get_hero(hero_no) for hero_no in args]
-    #
-    # def get_heros(self):
-    #     return self._heros.values()
-    #
-    # def get_heros_by_nos(self, hero_no_list):
-    #     heros = []
-    #     for no in hero_no_list:
-    #         heros.append(self._heros.get(no))
-    #     return heros
-    #
-    # def add_hero(self, hero_no):
-    #     hero = Hero(self.owner.base_info.id)
-    #     hero.hero_no = hero_no
-    #     self._heros[hero_no] = hero
-    #     self.new_hero_data(hero)
-    #     self.save_data()
-    #     return hero
-    #
-    # def delete_hero(self, hero_no):
-    #     del self._heros[hero_no]
-    #     self.save_data()
-    #     tb_character_hero.deleteMode(self.get_hero_id(hero_no))
-    #
-    # def delete_heros_by_nos(self, hero_no_list):
-    #     for no in hero_no_list:
-    #         self.delete_hero(no)
-    #
-    # def contain_hero(self, hero_no):
-    #     return hero_no in self._heros
-    #
-    # def save_data(self):
-    #     hero_ids = []
-    #     character_id = self.owner.base_info.id
-    #     for hero_no in self._heros:
-    #         hero_ids.append(self.get_hero_id(hero_no))
-    #     character_heros = tb_character_heros.getObj(character_id)
-    #     character_heros.update('hero_ids', hero_ids)
-    #
-    # def get_hero_id(self, hero_no):
-    #     character_id = self.owner.base_info.id
-    #     return str(character_id)+'_'+str(hero_no)
-    #
-    # def new_hero_data(self, hero):
-    #     character_id = self.owner.base_info.id
-    #     hero_property = hero.hero_proerty_dict()
-    #
-    #     data = {
-    #         'id': self.get_hero_id(hero.hero_no),
-    #         'character_id': character_id,
-    #         'property': hero_property
-    #     }
-    #     hero.mmode = tb_character_hero.new(data)
+    @g_id.setter
+    def g_id(self, g_id):
+        self._g_id = g_id
+        self.save_data()

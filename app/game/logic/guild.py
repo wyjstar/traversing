@@ -26,10 +26,16 @@ def create_guild(dynamicid, data, **kwargs):
     response = CreateGuildResponse()
     res = response.res
     p_id = player.base_info.id
+    g_id = player.guild.g_id
+    print g_id, '******************'
+    if g_id != 0:
+        res.result = False
+        res.message = "您已加入公会"
+        return response.SerializeToString()
     # TODO 判断name合法性，敏感字过滤
     if len(name) > 18:
         print "cuick,###############,TEST,call:", name, 'call_len:', len(name)
-        res.result = True
+        res.result = False
         res.message = "公告内容超过字数限制"
         return response.SerializeToString()
     # 判断有没有重名
@@ -49,6 +55,7 @@ def create_guild(dynamicid, data, **kwargs):
     # 创建公会
     guild_obj = Guild()
     guild_obj.create_guild(p_id, name)
+    player.guild.g_id = guild_obj.get_g_id()
     guild_obj.save_data()
     res.result = True
     return response.SerializeToString()
