@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  - Copyright 1999-2012 Alibaba Group.
- -
+ -  
  - Licensed under the Apache License, Version 2.0 (the "License");
  - you may not use this file except in compliance with the License.
  - You may obtain a copy of the License at
- -
+ -  
  -      http://www.apache.org/licenses/LICENSE-2.0
- -
+ -  
  - Unless required by applicable law or agreed to in writing, software
  - distributed under the License is distributed on an "AS IS" BASIS,
  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,42 +19,76 @@
 
   <!-- 路由规则定义，定义什么表，什么字段，采用什么路由算法 -->
 
-  <tableRule name="rule2">
+  <!-- 规则1：使用8个分库，按照id进行分配 -->
+  <tableRule name="rule1">
     <rule>
       <columns>id</columns>
-      <algorithm><![CDATA[ func2(${id}) ]]></algorithm>
+      <algorithm><![CDATA[ func1(${id}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <tableRule name="rule3">
-    <rule>
-      <columns>nickname</columns>
-      <algorithm><![CDATA[ func3(${nickname}) ]]></algorithm>
-    </rule>
-  </tableRule>
-
-  <tableRule name="rule4">
-    <rule>
-      <columns>account_name</columns>
-      <algorithm><![CDATA[ func3(${account_name}) ]]></algorithm>
-    </rule>
-  </tableRule>
-
-   <tableRule name="rule5">
+  <!-- 规则2：使用4个分库，按照id进行分配 -->
+  <tableRule name="rule2">
     <rule>
       <columns>id</columns>
       <algorithm><![CDATA[ func3(${id}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <function name="func2" class="com.alibaba.cobar.route.function.PartitionByLong">
-    <property name="partitionCount">8</property> <!-- 有几个分库 -->
-    <property name="partitionLength">128</property><!-- partitionCount * partitionLength=1024 -->
+  <!-- 规则3：使用8个分库，按照nickname进行分配 -->
+  <tableRule name="rule3">
+    <rule>
+      <columns>nickname</columns>
+      <algorithm><![CDATA[ func2(${nickname}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则4：使用4个分库，按照nickname进行分配 -->
+  <tableRule name="rule4">
+    <rule>
+      <columns>nickname</columns>
+      <algorithm><![CDATA[ func4(${nickname}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则5：使用8个分库，按照account_name进行分配 -->
+  <tableRule name="rule5">
+    <rule>
+      <columns>account_name</columns>
+      <algorithm><![CDATA[ func2(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则6：使用4个分库，按照account_name进行分配 -->
+  <tableRule name="rule6">
+    <rule>
+      <columns>account_name</columns>
+      <algorithm><![CDATA[ func4(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!--分配函数1：按照int分配到8个库-->
+  <function name="func1" class="com.alibaba.cobar.route.function.PartitionByLong">
+    <property name="partitionCount">8</property> <!-- 有几个分库 --> 
+    <property name="partitionLength">128</property><!-- partitionCount * partitionLength=1024 -->  
   </function>
 
-  <function name="func3" class="com.alibaba.cobar.route.function.PartitionByString">
-    <property name="partitionCount">4</property>
+  <!--分配函数2：按照str分配到8个库-->
+  <function name="func2" class="com.alibaba.cobar.route.function.PartitionByString">  
+    <property name="partitionCount">4</property>  
+    <property name="partitionLength">256</property>  
+  </function>  
+
+  <!--分配函数3：按照int分配到4个库-->
+  <function name="func3" class="com.alibaba.cobar.route.function.PartitionByLong">
+    <property name="partitionCount">4</property> 
     <property name="partitionLength">256</property>
   </function>
+
+  <!--分配函数4：按照str分配到4个库-->
+  <function name="func4" class="com.alibaba.cobar.route.function.PartitionByString">  
+    <property name="partitionCount">4</property>  
+    <property name="partitionLength">256</property>  
+  </function>  
 
 </cobar:rule>
