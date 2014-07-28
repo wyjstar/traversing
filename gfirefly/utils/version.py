@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 '''
 Created on 2014年2月17日
 
@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 import datetime
 import os
 import subprocess
+
 
 def get_version(version=None):
     "Returns a PEP 386-compliant version number from VERSION."
@@ -43,8 +44,8 @@ def get_git_changeset():
     """
     repo_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     git_log = subprocess.Popen('git log --pretty=format:%ct --quiet -1 HEAD',
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            shell=True, cwd=repo_dir, universal_newlines=True)
+                               stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                               shell=True, cwd=repo_dir, universal_newlines=True)
     timestamp = git_log.communicate()[0]
     try:
         timestamp = datetime.datetime.utcfromtimestamp(int(timestamp))
