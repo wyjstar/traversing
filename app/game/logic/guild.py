@@ -154,6 +154,8 @@ def exit_guild(dynamicid, data, **kwargs):
         res.result = True
         res.message = "公会已解散"
         return response.SerializeToString()
+    position = player.guild.position
+
     p_list = guild_obj.get_p_list()
     p_info = p_list.get(p_id)
     if p_info:
