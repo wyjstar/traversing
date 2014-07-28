@@ -22,17 +22,19 @@ class MyProtocol(Protocol):
         self.transport.loseConnection()
         
     def connectionLost(self, reason):
-        pass
-#         print "connectionLost",reason
-        
+        # pass
+        print "connectionLost", reason
+
+
 class MyServerFactory(ServerFactory):
-    protocol = MyProtocol
+    def __init__(self):
+        self.protocol = MyProtocol
     
 from gtwisted.utils import log
 
 ss = MyServerFactory()
 import sys
 log.startLogging(sys.stdout)
-reactor.listenTCP(80, ss)
-reactor.callLater(5, log.msg,"asdfasdf")
+reactor.listenTCP(8080, ss)
+reactor.callLater(5, log.msg, "asdfasdf")
 reactor.run()

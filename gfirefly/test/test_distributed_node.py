@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 '''
 Created on 2011-10-17
 
@@ -14,10 +14,10 @@ log.startLogging(sys.stdout)
 
 reactor = reactor
 
-addr = ('localhost',9090)#目标主机的地址
-remote = RemoteObject('test_node')#实例化远程调用对象
+addr = ('localhost', 9090)  #目标主机的地址
+remote = RemoteObject('test_node')  #实例化远程调用对象
 
-service = services.CommandService('reference')#实例化一条服务对象
+service = services.CommandService('reference')  #实例化一条服务对象
 remote.addServiceChannel(service)
 
 
@@ -27,22 +27,26 @@ def serviceHandle(target):
     '''
     service.mapTarget(target)
 
+
 @serviceHandle
 def printOK_1(data):
     print data
     print "############################"
     return "call printOK_01"
-    
-def apptest(commandID,*args,**kw):
-    d = remote.callRemote(commandID,*args,**kw)
-    print "apptest result:",d
+
+
+def apptest(commandID, *args, **kw):
+    d = remote.callRemote(commandID, *args, **kw)
+    print "apptest result:", d
     return d
 
+
 def startClient():
-    reactor.callLater(3,apptest,'printData1',u"node测试1",u"node测试2")
-    remote.connect(addr)#连接远程主机
+    reactor.callLater(3, apptest, 'printData1', u"node测试1", u"node测试2")
+    remote.connect(addr)  #连接远程主机
     reactor.run()
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     startClient()
 

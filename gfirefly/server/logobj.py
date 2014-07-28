@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 '''
 Created on 2013-8-6
 
@@ -13,12 +13,12 @@ class loogoo:
     '''日志处理
     '''
     implements(log.ILogObserver)
-    
-    def __init__(self,logpath):
+
+    def __init__(self, logpath):
         '''配置日志路径
         '''
         self.file = file(logpath, 'w')
-        
+
     def __call__(self, eventDict):
         '''日志处理
         '''
@@ -32,6 +32,6 @@ class loogoo:
         if text is None or level != 'ERROR':
             return
         nowdate = datetime.datetime.now()
-        self.file.write('['+str(nowdate)+']\n'+str(level)+ '\n\t' + text + '\r\n')
+        self.file.write('[' + str(nowdate) + ']\n' + str(level) + '\n\t' + text + '\r\n')
         self.file.flush()
         

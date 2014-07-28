@@ -18,7 +18,8 @@ class MyPBClientProtocl(PBClientProtocl):
     
     def remote_printok(self):
         print "Hello World!"
-        
+
+
 class MyPBClientFactory(PBClientFactory):
     
     protocol = MyPBClientProtocl
@@ -31,7 +32,7 @@ def printok():
     
 def callRemote():
     dd = client.getRootObject()
-    result = dd.callRemoteForResult('getResult1',8,9)
+    result = dd.callRemoteForResult('getResult',8,9)
     print result
     
 def callRemote2():
@@ -39,9 +40,9 @@ def callRemote2():
     result = dd.callRemoteForResult('getResult',8,9)
     print 'result',result
 
-reactor.connectTCP('localhost', 1000, client)
-# reactor.callLater(3, callRemote)
-reactor.callLater(5, callRemote2)
+reactor.connectTCP('localhost', 10000, client)
+reactor.callLater(3, callRemote)
+# reactor.callLater(5, callRemote2)
 # reactor.callLater(1, printok)
 log.startLogging(sys.stdout)
 reactor.run()
