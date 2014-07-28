@@ -16,7 +16,7 @@ class ShopConfig(object):
         for row in config_value:
             row["consume"] = parse(row.get("consume"))
             row["gain"] = parse(row.get("gain"))
-            row["extra_gain"] = parse(row.get("extra_gain"))
+            row["extraGain"] = parse(row.get("extraGain"))
             item = CommonItem(row)
             self._items[item.id] = item
 

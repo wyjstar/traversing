@@ -1,19 +1,20 @@
-#coding:utf8
+# coding:utf8
 '''
 Created on 2013-8-12
 
 @author: lan (www.9miao.com)
 '''
-import urllib,sys
+import urllib, sys
+
 
 def execute(*args):
     """
     """
     if not args:
-        masterport =9998
+        masterport = 9998
     else:
         masterport = int(args[0])
-    url = "http://localhost:%s/reloadmodule"%masterport
+    url = "http://localhost:%s/reloadmodule" % masterport
     try:
         response = urllib.urlopen(url)
     except:

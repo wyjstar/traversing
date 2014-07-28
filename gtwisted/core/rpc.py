@@ -4,7 +4,7 @@ Created on 2014年2月22日
 这里定义了两个服务之间进行接口调用的过程
 @author:  lan (www.9miao.com)
 '''
-from gtwisted.core.protocols import BaseProtocol,ClientFactory,ServerFactory
+from gtwisted.core.protocols import BaseProtocol, ClientFactory, ServerFactory
 from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
@@ -13,22 +13,22 @@ import marshal
 import struct
 
 
-ASK_SIGNAL = "ASK"#请求结果的信号
-NOTICE_SIGNAL = "NOTICE"#仅做通知的信号，不要求返回值
-ANSWER_SIGNAL = "ANSWER"#返回结果值的信号
-DEFAULT_TIMEOUT = 60#默认的结果放回超时时间
-RPC_DATA_MAX_LENGTH = 2147483647#rpc数据包允许的最大长度
+ASK_SIGNAL = "ASK"  # 请求结果的信号
+NOTICE_SIGNAL = "NOTICE"  # 仅做通知的信号，不要求返回值
+ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
+DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
+RPC_DATA_MAX_LENGTH = 2147483647  # rpc数据包允许的最大长度
 
 class RemoteObject:
     """远程调用对象
     """
-    def __init__(self,broker,timeout=DEFAULT_TIMEOUT):
+    def __init__(self, broker, timeout=DEFAULT_TIMEOUT):
         """
         """
         self.broker = broker
         self.timeout = timeout
         
-    def callRemoteForResult(self,_name,*args, **kw):
+    def callRemoteForResult(self, _name, *args, **kw):
         """执行远程调用,并等待结果
         @param _name: 调用的远程方法的名称
         @param timeout: int 结果返回的默认超时时间
@@ -36,16 +36,16 @@ class RemoteObject:
         @param kw: 远程方法需要的默认参数
         """
         _key,result = AsyncResultFactory().createAsyncResult()
-        self.broker._sendMessage(_key,_name,args,kw)
+        self.broker._sendMessage(_key, _name, args, kw)
         return result.get(timeout=Timeout(self.timeout))
         
-    def callRemoteNotForResult(self,_name,*args, **kw):
+    def callRemoteNotForResult(self, _name, *args, **kw):
         """执行远程调用，不需要等待结果
         @param _name: 调用的远程方法的名称
         @param args: 远程方法需要的参数
         @param kw: 远程方法需要的默认参数
         """
-        self.broker._sendMessage('',_name,args,kw)
+        self.broker._sendMessage('', _name, args, kw)
 
         
 class PBProtocl(BaseProtocol):
@@ -56,12 +56,12 @@ class PBProtocl(BaseProtocol):
         BaseProtocol.__init__(self, transport, factory)
         self.buff = ""
     
-    def getRootObject(self,timeout=DEFAULT_TIMEOUT):
+    def getRootObject(self, timeout=DEFAULT_TIMEOUT):
         """获取远程调用对象
         """
-        return RemoteObject(self,timeout=timeout)
+        return RemoteObject(self, timeout=timeout)
     
-    def _sendMessage(self,_key,_name,args,kw):
+    def _sendMessage(self, _key, _name, args, kw):
         """发送远程请求
         """
         if _key:
@@ -71,21 +71,21 @@ class PBProtocl(BaseProtocol):
         request = marshal.dumps({'_msgtype':_msgtype,'_key':_key,'_name':_name,'_args':args,'_kw':kw})
         self.writeData(request)
         
-    def writeData(self,data):
+    def writeData(self, data):
         """发送数据的统一接口
         """
         _length = len(data)
-        if _length>RPC_DATA_MAX_LENGTH:
+        if _length > RPC_DATA_MAX_LENGTH:
             raise RPCDataTooLongError
-        self.transport.sendall(struct.pack("!i",_length)+data)
+        self.transport.sendall(struct.pack("!i", _length)+data)
         
     def dataReceived(self, data):
         """数据到达时的处理
         """
         self.buff += data
-        while len(self.buff)>=4:
-            data_length, = struct.unpack('!i',self.buff[:4])
-            if len(self.buff[4:])<data_length:
+        while len(self.buff) >= 4:
+            data_length, = struct.unpack('!i', self.buff[:4])
+            if len(self.buff[4:]) < data_length:
                 break
             else:
                 request = self.buff[4:4+data_length]

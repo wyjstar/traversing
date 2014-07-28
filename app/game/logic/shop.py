@@ -32,7 +32,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
             response.message = '消费不足！'
         consume(player, shop_item.consume)  # 消耗
     return_data = gain(player, shop_item.gain)  # 获取
-    extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
+    extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
 
     get_return(player, return_data, game_resources_response)
     get_return(player, extra_return_data, game_resources_response)
@@ -43,7 +43,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
 
 def is_consume(player, shop_item):
     """判断是否免费抽取"""
-    free_period = shop_item.free_period
+    free_period = shop_item.freePeriod
     shop_item_type = shop_item.type
     if free_period == -1:
         return True

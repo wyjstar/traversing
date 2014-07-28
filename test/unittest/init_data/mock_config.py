@@ -147,10 +147,10 @@ for key, value in soul_shop_config_mock.items():
     soul_shop_config[key] = value
 
 #------------------------shop----------------------------
-shop1 = dict(id=1001, type=1, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extra_gain={3: [20, 20, 0]}, free_period=2)
-shop2 = dict(id=1002, type=2, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extra_gain={3: [20, 20, 0]}, free_period=2)
-shop3 = dict(id=1003, type=3, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extra_gain={3: [20, 20, 0]}, free_period=2)
-shop4 = dict(id=1004, type=4, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extra_gain={3: [20, 20, 0]}, free_period=-1)
+shop1 = dict(id=1001, type=1, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
+shop2 = dict(id=1002, type=2, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
+shop3 = dict(id=1003, type=3, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
+shop4 = dict(id=1004, type=4, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=-1)
 
 shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4])
 for key, value in shop_config_mock.items():
