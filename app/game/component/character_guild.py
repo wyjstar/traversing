@@ -41,6 +41,7 @@ class CharacterGuildComponent(Component):
             return
         info = character_guild.get("info")
         self._g_id = info.get("g_id")
+        # print info.get("g_id"), "init guid"
         self._position = info.get("position")
         self._contribution = info.get("contribution")
         self._k_num = info.get("k_num")

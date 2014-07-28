@@ -1,6 +1,7 @@
 #coding:utf8
 
 import struct
+import time
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginResquest
@@ -81,7 +82,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.LoginResquest()
-                argument.key.key = 'c00deaa2b56e3b53a7d496476d70224a'
+                argument.key.key = '51d769509405d43f7b1c60b0c2054952'
                 # argument.user_name = 'ghh0001'
                 # argument.password = '123457'
                 self.dateSend(argument, 2)
@@ -92,17 +93,16 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = 'c00deaa2b56e3b53a7d496476d70224a'
+            argument.token = '51d769509405d43f7b1c60b0c2054952'
             self.dateSend(argument, 4)
 
         if command == 4:
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
-
             # --------801创建公会------------
             argument1 = CreateGuildRequest()
-            argument1.name = '一二三四16'
+            argument1.name = '一二三四12'
             self.dateSend(argument1, 801)
 
             # --------802加入公会------------
