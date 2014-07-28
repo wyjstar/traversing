@@ -8,6 +8,7 @@ from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, \
     JoinGuildRequest, JoinGuildResponse, ExitGuildRequest, ExitGuildResponse, \
     EditorCallRequest, EditorCallResponse
 from app.game.redis_mode import tb_guild_info, tb_guild_name
+import time
 
 
 @have_player
@@ -39,7 +40,7 @@ def create_guild(dynamicid, data, **kwargs):
         res.message = "公告内容超过字数限制"
         return response.SerializeToString()
     # 判断有没有重名
-    guild_name_data = tb_guild_name.getObjData(4)
+    guild_name_data = tb_guild_name.getObjData(1)
     if guild_name_data:
         g_names = guild_name_data.get('info')
         if g_names.count(name) >= 1:
@@ -48,10 +49,10 @@ def create_guild(dynamicid, data, **kwargs):
             return response.SerializeToString()
         else:
             g_names.append(name)
-            guild_name_data1 = tb_guild_name.getObj(4)
+            guild_name_data1 = tb_guild_name.getObj(1)
             guild_name_data1.update_multi({'info': g_names})
     else:
-            tb_guild_name.new({'id': 4, 'info': [name]})
+            tb_guild_name.new({'id': 1, 'info': [name]})
     # 创建公会
     guild_obj = Guild()
     guild_obj.create_guild(p_id, name)
@@ -130,15 +131,16 @@ def exit_guild(dynamicid, data, **kwargs):
     args.ParseFromString(data)
     response = ExitGuildResponse()
     res = response.res
-    g_id = args.g_id
+    # g_id = args.g_id
     m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObjData(g_id)
-    print "cuick,###############,TEST,data1:", data1
-    if g_id == 0:
+    data1 = tb_guild_info.getObjData(m_g_id)
+    print "cuick,###############,TEST,guild_name_data:", tb_guild_name.getObjData(1)
+    print "cuick,###############,TEST,data1:", data1, 'm_g_id:', m_g_id
+    if m_g_id == 0:
         res.result = False
         res.message = "您还未加入公会"
         return response.SerializeToString()
-    if not data1 or m_g_id != g_id:
+    if not data1:
         res.result = False
         res.message = "公会ID错误"
         return response.SerializeToString()
@@ -149,25 +151,36 @@ def exit_guild(dynamicid, data, **kwargs):
     if guild_obj.get_p_num() <= 1:
         print "cuick,###############,TEST,guild_obj.get_p_num():", guild_obj.get_p_num()
         # 解散公会
-        # TODO 删除公会名字
+        # 删除公会名字
+        guild_name_data = tb_guild_name.getObjData(1)
+        if guild_name_data:
+            g_names = guild_name_data.get('info')
+            g_names.remove(guild_obj.name)
+        player.guild._g_id = 0
+        player.guild.exit_time = time.time()
+        player.guild.save_data()
         guild_obj.delete_guild()
         res.result = True
         res.message = "公会已解散"
         return response.SerializeToString()
     position = player.guild.position
-
     p_list = guild_obj.get_p_list()
-    p_info = p_list.get(p_id)
-    if p_info:
-        if p_info.get('position') == 1:
+    position_p = p_list.get(position)
+
+    if position_p.count(p_id) >= 1:
+        if position == 1:
             # 转让公会
             res.result = True
             res.message = "公会已转让"
             return response.SerializeToString()
-        guild_obj.exit_guild(p_id)
+        player.guild._g_id = 0
+        player.guild.exit_time = time.time()
+        player.guild.save_data()
+        guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
         res.result = True
         return response.SerializeToString()
+
     res.result = False
     res.message = "您不在此公会"
     return response.SerializeToString()
@@ -203,10 +216,13 @@ def editor_call(dynamicid, data, **kwargs):
         return response.SerializeToString()
     guild_obj = Guild()
     guild_obj.init_data(data1)
+
+    position = player.guild.position
     p_list = guild_obj.get_p_list()
-    p_info = p_list.get(p_id)
-    if p_info:
-        if p_info.get('position') > 2:
+    position_p = p_list.get(position)
+
+    if position_p.count(p_id) >= 1:
+        if position > 2:
             res.result = True
             res.message = "权限不够"
             return response.SerializeToString()
@@ -219,3 +235,13 @@ def editor_call(dynamicid, data, **kwargs):
         res.result = False
         res.message = "您不在此公会"
         return response.SerializeToString()
+
+@have_player
+def deal_apply(dynamicid, data, **kwargs):
+    """
+    处理申请
+    :param dynamicid:
+    :param data:
+    :param kwargs:
+    :return:
+    """
