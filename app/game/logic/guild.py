@@ -57,6 +57,8 @@ def create_guild(dynamicid, data, **kwargs):
     guild_obj.create_guild(p_id, name)
     print 'cuick,test,guild_obj.get_g_id():', guild_obj.get_g_id()
     player.guild.g_id = guild_obj.get_g_id()
+    player.guild.position = 1
+    player.guild.save_data()
     guild_obj.save_data()
     res.result = True
     return response.SerializeToString()
@@ -79,21 +81,27 @@ def join_guild(dynamicid, data, **kwargs):
     res = response.res
     g_id = args.g_id
     m_g_id = player.guild.g_id
+
     if m_g_id == g_id:
         res.result = False
         res.message = "您已加入此公会"
         return response.SerializeToString()
+
     if m_g_id != 0:
         res.result = False
         res.message = "您已加入公会"
         return response.SerializeToString()
+
     data1 = tb_guild_info.getObjData(g_id)
+
     if not data1:
         res.result = False
         res.message = "公会ID错误"
         return response.SerializeToString()
+
     guild_obj = Guild()
     guild_obj.init_data(data1)
+
     # TODO 根据公会等级得到公会人数上限，取配置
     if guild_obj.get_p_num() >= 30:
         res.result = False

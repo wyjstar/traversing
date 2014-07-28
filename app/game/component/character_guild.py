@@ -69,4 +69,11 @@ class CharacterGuildComponent(Component):
     @g_id.setter
     def g_id(self, g_id):
         self._g_id = g_id
-        self.save_data()
+
+    @property
+    def position(self):
+        return self._g_id
+
+    @g_id.setter
+    def position(self, position):
+        self._position = position
