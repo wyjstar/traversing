@@ -81,7 +81,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.LoginResquest()
-                argument.key.key = '1505ccc1bcb1d1bf854e535bd13c2b90'
+                argument.key.key = 'c00deaa2b56e3b53a7d496476d70224a'
                 # argument.user_name = 'ghh0001'
                 # argument.password = '123457'
                 self.dateSend(argument, 2)
@@ -92,7 +92,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = '1505ccc1bcb1d1bf854e535bd13c2b90'
+            argument.token = 'c00deaa2b56e3b53a7d496476d70224a'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -102,17 +102,17 @@ class EchoClient(protocol.Protocol):
 
             # --------801创建公会------------
             argument1 = CreateGuildRequest()
-            argument1.name = '一二三四08'
+            argument1.name = '一二三四16'
             self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
-            # argument1.g_id = 'b6fe62e612e511e48b81080027a4fa58'
+            # argument1.g_id = '1c18875e14af11e483f5080027a4fa58'
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
             # argument1 = ExitGuildRequest()
-            # argument1.g_id = 'c09708e412f911e48504080027a4fa58'
+            # argument1.g_id = '58f1bfc814b011e4aa5d080027a4fa58'
             # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------

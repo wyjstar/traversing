@@ -27,7 +27,6 @@ def create_guild(dynamicid, data, **kwargs):
     res = response.res
     p_id = player.base_info.id
     g_id = player.guild.g_id
-    print g_id, '******************'
     if g_id != 0:
         res.result = False
         res.message = "您已加入公会"
@@ -55,6 +54,7 @@ def create_guild(dynamicid, data, **kwargs):
     # 创建公会
     guild_obj = Guild()
     guild_obj.create_guild(p_id, name)
+
     player.guild.g_id = guild_obj.get_g_id()
     guild_obj.save_data()
     res.result = True
@@ -77,6 +77,15 @@ def join_guild(dynamicid, data, **kwargs):
     response = JoinGuildResponse()
     res = response.res
     g_id = args.g_id
+    m_g_id = player.guild.g_id
+    if m_g_id == g_id:
+        res.result = False
+        res.message = "您已加入此公会"
+        return response.SerializeToString()
+    if m_g_id != 0:
+        res.result = False
+        res.message = "您已加入公会"
+        return response.SerializeToString()
     data1 = tb_guild_info.getObjData(g_id)
     if not data1:
         res.result = False
@@ -113,12 +122,18 @@ def exit_guild(dynamicid, data, **kwargs):
     response = ExitGuildResponse()
     res = response.res
     g_id = args.g_id
+    m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(g_id)
     print "cuick,###############,TEST,data1:", data1
-    if not data1:
+    if g_id == 0:
+        res.result = False
+        res.message = "您还未加入公会"
+        return response.SerializeToString()
+    if not data1 or m_g_id != g_id:
         res.result = False
         res.message = "公会ID错误"
         return response.SerializeToString()
+
     guild_obj = Guild()
     guild_obj.init_data(data1)
     # 判断是否在公会，判断是否是会长，如果是会长，要转让。如果只有会长一个人，自动解散公会。
