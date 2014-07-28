@@ -38,16 +38,25 @@ class CharacterGuildComponent(Component):
                              'worship_time': self._worship_time,
                              'exit_time': self._exit_time}}
             tb_character_guild.new(data)
+            print "cuick,###############,CharacterGuildComponent,INIT_DATA1,data:", data, 'id:', self.owner.base_info.id
             return
         info = character_guild.get("info")
         self._g_id = info.get("g_id")
-        # print info.get("g_id"), "init guid"
         self._position = info.get("position")
         self._contribution = info.get("contribution")
         self._k_num = info.get("k_num")
         self._worship = info.get("worship")
         self._worship_time = info.get("worship_time")
         self._exit_time = info.get("exit_time")
+        data = {'id': p_id,
+                'info': {'g_id': self._g_id,
+                         'position': self._position,
+                         'contribution': self._contribution,
+                         'k_num': self._k_num,
+                         'worship': self._worship,
+                         'worship_time': self._worship_time,
+                         'exit_time': self._exit_time}}
+        print "cuick,###############,CharacterGuildComponent,INIT_DATA,data:", data
 
     def save_data(self):
         data = {
@@ -58,7 +67,7 @@ class CharacterGuildComponent(Component):
                      'worship': self._worship,
                      'worship_time': self._worship_time,
                      'exit_time': self._exit_time}}
-        print "cuick,###############,CharacterGuildComponent,SAVE_DATA,info:", data
+        print "cuick,###############,CharacterGuildComponent,SAVE_DATA,info:", data, 'id:', self.owner.base_info.id
         p_guild_data = tb_character_guild.getObj(self.owner.base_info.id)
         p_guild_data.update_multi(data)
 
@@ -74,6 +83,14 @@ class CharacterGuildComponent(Component):
     def position(self):
         return self._g_id
 
-    @g_id.setter
+    @position.setter
     def position(self, position):
         self._position = position
+
+    @property
+    def exit_time(self):
+        return self._exit_time
+
+    @exit_time.setter
+    def exit_time(self, exit_time):
+        self._exit_time = exit_time

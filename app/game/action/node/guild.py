@@ -3,10 +3,7 @@
 created by server on 14-7-17下午4:50.
 """
 from app.game.service.gatenoteservice import remote_service_handle
-from app.game.logic.guild import join_guild
-from app.game.logic.guild import create_guild
-from app.game.logic.guild import exit_guild
-from app.game.logic.guild import editor_call
+from app.game.logic.guild import *
 
 
 @remote_service_handle
@@ -24,6 +21,7 @@ def join_guild_802(dynamic_id, pro_data):
     print('cuick,BBBBBBBBBBBBBBBBBB,01,node,join_guild_802')
     return join_guild(dynamic_id, pro_data)
 
+
 @remote_service_handle
 def exit_guild_803(dynamic_id, pro_data):
     """退出公会
@@ -31,9 +29,18 @@ def exit_guild_803(dynamic_id, pro_data):
     print('cuick,CCCCCCCCCCCCCCCCCC,01,node,exit_guild_803')
     return exit_guild(dynamic_id, pro_data)
 
+
 @remote_service_handle
 def editor_call_804(dynamic_id, pro_data):
     """编辑公告
     """
-    print('cuick,DDDDDDDDDDDDDDDDDDD,01,node,exit_guild_803')
+    print('cuick,DDDDDDDDDDDDDDDDDDD,01,node,editor_call_804')
     return editor_call(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def deal_apply_805(dynamic_id, pro_data):
+    """处理加入公会申请
+    """
+    print('cuick,EEEEEEEEEEEEEEEEEEE,01,node,exit_guild_805')
+    return deal_apply(dynamic_id, pro_data)
