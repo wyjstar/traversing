@@ -5,9 +5,29 @@ created by server on 14-7-4上午10:30.
 
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
+from app.game.redis_mode import tb_character_info
 
 
 def init_player():
+    character_obj = tb_character_info.getObj(1)
+    if not character_obj:
+        character = {'id': 1,
+                     'nickname': '',
+                     'coin': 0,
+                     'gold': 0,
+                     'hero_soul': 0,
+                     'level': 0,
+                     'exp': 0,
+                     'junior_stone': 0,
+                     'middle_stone': 0,
+                     'high_stone': 0,
+                     'fine_hero_last_pick_time': 0,
+                     'excellent_hero_last_pick_time': 0,
+                     'fine_equipment_last_pick_time': 0,
+                     'excellent_equipment_last_pick_time': 0}
+        tb_character_info.new(character)
+
+
     PlayersManager().drop_player_by_id(1)
     player = PlayerCharacter(1, name="wzp", dynamic_id=1, status=1)
     player.finance.coin = 30000
@@ -22,6 +42,24 @@ def init_player():
     player.last_pick_time.save_data()
 
     PlayersManager().add_player(player)
+
+    character_obj = tb_character_info.getObj(2)
+    if not character_obj:
+        character = {'id': 2,
+                     'nickname': '',
+                     'coin': 0,
+                     'gold': 0,
+                     'hero_soul': 0,
+                     'level': 0,
+                     'exp': 0,
+                     'junior_stone': 0,
+                     'middle_stone': 0,
+                     'high_stone': 0,
+                     'fine_hero_last_pick_time': 0,
+                     'excellent_hero_last_pick_time': 0,
+                     'fine_equipment_last_pick_time': 0,
+                     'excellent_equipment_last_pick_time': 0}
+        tb_character_info.new(character)
 
     PlayersManager().drop_player_by_id(2)
     player = PlayerCharacter(2, dynamic_id=2, status=1)
