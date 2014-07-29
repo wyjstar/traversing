@@ -30,7 +30,7 @@ def character_login_4(key, dynamic_id, request_proto):
     nickname = result.get('nickname', None)
     if nickname:
         argument.nickname = nickname
-        #TODO 起名时修改昵称登录
+        #TODO 起名时修改昵称
         # 聊天室登录
         GlobalObject().root.callChild('chat', 1001, result.get('character_id'), dynamic_id, nickname)
     return argument.SerializePartialToString()
