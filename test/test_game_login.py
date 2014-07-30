@@ -63,7 +63,7 @@ class EchoClient(protocol.Protocol):
 
         # 帐号登录
         argument = account_pb2.LoginResquest()
-        argument.key.key = 'ca1d102f607231552fe610495d85e51e'
+        argument.key.key = '06656fe419bd1d9799f220d2fce0b439'
         # argument.user_name = 'ghh0001'
         # argument.password = '123457'
         self.dateSend(argument, 2)
@@ -79,7 +79,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginResquest()
-            argument.token = 'ca1d102f607231552fe610495d85e51e'
+            argument.token = '06656fe419bd1d9799f220d2fce0b439'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -87,8 +87,16 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = stage_pb2.StageInfoRequest()
-            argument.stage_id = 0
+            argument = chat_pb2.ChatConectingRequest()
+            owner = argument.owner
+            owner.id = 11
+            owner.nickname = ''
+            argument.channel = 1
+            argument.content = 'whats a fuck day!'
+            self.dateSend(argument, 1002)
+
+            # argument = stage_pb2.StageInfoRequest()
+            # argument.stage_id = 0
 
             #self.dateSend(argument, 901)
 
@@ -128,13 +136,18 @@ class EchoClient(protocol.Protocol):
         #     print '1111111111111'
         #     self.transport.write(sendData('', 1001))
         #
-        # if command == 1001:
-        #     argument = chat_pb2.ChatResponse()
-        #     argument.ParseFromString(message)
-        #     print argument
-        #
-        #     argument = equipment_pb2.GetEquipmentsRequest()
-        #     argument.type = 0
+        if command == 1002:
+            argument = chat_pb2.ChatResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 1000:
+            argument = chat_pb2.chatMessageResponse()
+            argument.ParseFromString(message)
+            print argument
+
+            # argument = equipment_pb2.GetEquipmentsRequest()
+            # argument.type = 0
         #
         #     self.dateSend(argument, 701)
 
