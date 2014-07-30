@@ -48,6 +48,12 @@ def push_object(topic_id, msg, send_list):
     GlobalObject().root.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
 
 
+@rootserviceHandle
+def push_chat_message(send_list, msg):
+    print 'push_chat_message:', send_list, msg
+    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
+
+
 # @rootserviceHandle
 # def opera_player(pid, oprea_str):
 #     """

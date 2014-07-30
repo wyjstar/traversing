@@ -30,10 +30,9 @@ def character_login_4(key, dynamic_id, request_proto):
     nickname = result.get('nickname', None)
     if nickname:
         argument.nickname = nickname
-
-    print '111111111111111111'
-    print argument.result
-
+        #TODO 起名时修改昵称登录
+        # 聊天室登录
+        GlobalObject().root.callChild('chat', 1001, result.get('character_id'), dynamic_id, nickname)
     return argument.SerializePartialToString()
 
 
@@ -61,11 +60,12 @@ def __character_login(dynamic_id, token):
         VCharacterManager().add_character(v_character)
 
     now_node = SceneSerManager().get_best_sceneid()
-    print 'now_node:', now_node
+
+    # game服登录
     GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
     v_character.node = now_node
     SceneSerManager().add_client(now_node, dynamic_id)
 
-    return {'result': True, 'nickname': character_info.get('nickname')}
+    return {'result': True, 'nickname': character_info.get('nickname'), 'character_id': character_info.get('id')}
 
 

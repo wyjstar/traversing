@@ -35,9 +35,14 @@
     <table name="tb_character_item_package" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_character_stages" dataNode="dn_traversing$0-3" rule="rule2" />
     <table name="tb_equipment_info" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_guild_info" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_guild_name" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_character_guild" dataNode="dn_traversing$0-3" rule="rule2" />
+    <table name="tb_character_friend" dataNode="dn_traversing$0-3" rule="rule2" />
 
     <table name="tb_nickname_mapping" dataNode="dn_traversing$0-3" rule="rule4" />
     <table name="tb_name_mapping" dataNode="dn_account$0-7" rule="rule5" />
+    
 
     <table name="account_sequence" dataNode="dn_sequence"/>
   </schema>

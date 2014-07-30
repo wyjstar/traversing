@@ -24,6 +24,6 @@ class MyPBServerFactory(PBServerFactory):
     
     protocol = MyPBServerProtocl
     
-reactor.listenTCP(1000, MyPBServerFactory())
+reactor.listenTCP(10000, MyPBServerFactory())
 log.startLogging(sys.stdout)
 reactor.run()

@@ -7,4 +7,3 @@ if __name__ == "__main__":
     master = Master()
     master.config('config.json', 'appmain.py')
     master.start()
-
