@@ -18,7 +18,7 @@ def character_login_4(key, dynamic_id, request_proto):
     @return:
     """
 
-    argument = player_request_pb2.PlayerLoginResquest()
+    argument = player_request_pb2.PlayerLoginRequest()
     argument.ParseFromString(request_proto)
     token = argument.token
 

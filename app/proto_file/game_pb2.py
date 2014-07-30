@@ -13,20 +13,20 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game.proto',
   package='',
-  serialized_pb='\n\ngame.proto\"\"\n\x11GameLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
+  serialized_pb='\n\ngame.proto\"!\n\x10GameLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"F\n\x11GameLoginResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t')
 
 
 
 
-_GAMELOGINRESQUEST = _descriptor.Descriptor(
-  name='GameLoginResquest',
-  full_name='GameLoginResquest',
+_GAMELOGINREQUEST = _descriptor.Descriptor(
+  name='GameLoginRequest',
+  full_name='GameLoginRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='token', full_name='GameLoginResquest.token', index=0,
+      name='token', full_name='GameLoginRequest.token', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -42,7 +42,7 @@ _GAMELOGINRESQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=14,
-  serialized_end=48,
+  serialized_end=47,
 )
 
 
@@ -83,18 +83,18 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=50,
-  serialized_end=120,
+  serialized_start=49,
+  serialized_end=119,
 )
 
-DESCRIPTOR.message_types_by_name['GameLoginResquest'] = _GAMELOGINRESQUEST
+DESCRIPTOR.message_types_by_name['GameLoginRequest'] = _GAMELOGINREQUEST
 DESCRIPTOR.message_types_by_name['GameLoginResponse'] = _GAMELOGINRESPONSE
 
-class GameLoginResquest(_message.Message):
+class GameLoginRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _GAMELOGINRESQUEST
+  DESCRIPTOR = _GAMELOGINREQUEST
 
-  # @@protoc_insertion_point(class_scope:GameLoginResquest)
+  # @@protoc_insertion_point(class_scope:GameLoginRequest)
 
 class GameLoginResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

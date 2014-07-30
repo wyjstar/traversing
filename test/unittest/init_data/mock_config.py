@@ -3,6 +3,7 @@
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
     item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
@@ -22,14 +23,14 @@ for key, value in base_config_mock.items():
 
 # ------------------------hero----------------------------
 
-hero1 = {'id': 10001, 'name': 'hero10001', 'sacrifice_hero_soul': 100}
-hero2 = {'id': 10002, 'name': 'hero10002', 'sacrifice_hero_soul': 200}
-hero3 = {'id': 10003, 'name': 'hero10003', 'sacrifice_hero_soul': 300}
+hero1 = {'id': 10001, 'name': 'hero10001', 'sacrificeGain': {3: [100, 100, 0]}, 'sellGain': {1: [100, 100, 0]}}
+hero2 = {'id': 10002, 'name': 'hero10002', 'sacrificeGain': {3: [200, 200, 0]}, 'sellGain': {1: [200, 300, 0]}}
+hero3 = {'id': 10003, 'name': 'hero10003', 'sacrificeGain': {3: [300, 300, 0]}, 'sellGain': {1: [300, 300, 0]}}
 
 hero_config.clear()
-hero_config[10001] = CommonItem(hero1)
-hero_config[10002] = CommonItem(hero2)
-hero_config[10003] = CommonItem(hero3)
+hero_config_mock = HeroConfig().parser([hero1, hero2, hero3])
+for key, value in hero_config_mock.items():
+    hero_config[key] = value
 
 # ------------------------item----------------------------
 

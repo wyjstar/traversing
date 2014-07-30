@@ -46,6 +46,6 @@ def Forwarding_0(keyname, _conn, data):
         print 'data:', data
         return data
 
-    dd = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
+    dd = GlobalObject().remote['gate'].callRemote("forwarding_test", keyname, _conn.transport.sessionno, data)
     return dd
 

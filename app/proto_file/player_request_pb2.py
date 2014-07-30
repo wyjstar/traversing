@@ -13,20 +13,20 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_request.proto',
   package='',
-  serialized_pb='\n\x14player_request.proto\"$\n\x13PlayerLoginResquest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t')
+  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t')
 
 
 
 
-_PLAYERLOGINRESQUEST = _descriptor.Descriptor(
-  name='PlayerLoginResquest',
-  full_name='PlayerLoginResquest',
+_PLAYERLOGINREQUEST = _descriptor.Descriptor(
+  name='PlayerLoginRequest',
+  full_name='PlayerLoginRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='token', full_name='PlayerLoginResquest.token', index=0,
+      name='token', full_name='PlayerLoginRequest.token', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -42,7 +42,7 @@ _PLAYERLOGINRESQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=24,
-  serialized_end=60,
+  serialized_end=59,
 )
 
 
@@ -69,18 +69,18 @@ _CREATEPLAYERREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=62,
-  serialized_end=101,
+  serialized_start=61,
+  serialized_end=100,
 )
 
-DESCRIPTOR.message_types_by_name['PlayerLoginResquest'] = _PLAYERLOGINRESQUEST
+DESCRIPTOR.message_types_by_name['PlayerLoginRequest'] = _PLAYERLOGINREQUEST
 DESCRIPTOR.message_types_by_name['CreatePlayerRequest'] = _CREATEPLAYERREQUEST
 
-class PlayerLoginResquest(_message.Message):
+class PlayerLoginRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _PLAYERLOGINRESQUEST
+  DESCRIPTOR = _PLAYERLOGINREQUEST
 
-  # @@protoc_insertion_point(class_scope:PlayerLoginResquest)
+  # @@protoc_insertion_point(class_scope:PlayerLoginRequest)
 
 class CreatePlayerRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

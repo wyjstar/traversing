@@ -11,7 +11,7 @@ from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
 from app.proto_file import equipment_pb2
-from app.proto_file.player_request_pb2 import PlayerLoginResquest
+from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file import line_up_pb2
 from app.proto_file import stage_pb2
@@ -73,6 +73,7 @@ class EchoClient(protocol.Protocol):
         command, message = resolveRecvdata(data)
 
         if command == 101:
+            print message, "?????"
             argument = GetHerosResponse()
             argument.ParseFromString(message)
             print ">>>>>>>>>>>>>>>>>>"

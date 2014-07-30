@@ -1,6 +1,6 @@
 
 
-message PlayerLoginResquest
+message PlayerLoginRequest
 {
     required string token = 1;
 }

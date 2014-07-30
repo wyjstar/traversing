@@ -4,7 +4,7 @@ import struct
 import time
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
-from app.proto_file.player_request_pb2 import PlayerLoginResquest
+from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, \
     JoinGuildRequest, JoinGuildResponse, ExitGuildRequest, ExitGuildResponse, \
@@ -81,7 +81,7 @@ class EchoClient(protocol.Protocol):
 
                 self._times += 1
             else:
-                argument = account_pb2.LoginResquest()
+                argument = account_pb2.AccountLoginRequest()
                 argument.key.key = '5dc844a90dc5f97cb1b782faa08f5e03'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
@@ -92,7 +92,7 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = PlayerLoginResquest()
+            argument = PlayerLoginRequest()
             argument.token = '5dc844a90dc5f97cb1b782faa08f5e03'
             self.dateSend(argument, 4)
 
