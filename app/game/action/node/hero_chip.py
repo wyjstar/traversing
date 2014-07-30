@@ -7,8 +7,7 @@ from app.game.logic.hero_chip import *
 
 
 @remote_service_handle
-def get_hero_chips_107(dynamic_id, pro_data=None):
+def get_hero_chips_108(dynamic_id, pro_data=None):
     """取得武将碎片列表
     """
-
     return get_hero_chips(dynamic_id)

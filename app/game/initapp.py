@@ -20,4 +20,5 @@ def load_module():
     from action.node import soul_shop
     from action.node import hero_chip
     from action.node import stage
+    init()
 
