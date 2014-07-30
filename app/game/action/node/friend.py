@@ -69,3 +69,13 @@ def del_black_list_1005(dynamic_id, data):
     :param target_id:
     """
     return del_player_from_blacklist(dynamic_id, data)
+
+
+@remote_service_handle
+def get_player_friend_list_1006(dynamic_id, data):
+    return get_player_friend_list(dynamic_id)
+
+
+@remote_service_handle
+def find_friend_request_1007(dynamic_id, data):
+    return find_friend_request(dynamic_id, data)

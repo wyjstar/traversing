@@ -50,7 +50,7 @@ class PlayerCharacter(Character):
         self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
-        # self._friends = FriendComponent(self)  # friend system
+        self._friends = FriendComponent(self)  # friend system
         # self._guild = CharacterGuildComponent(self)  # 公会组件
 
         self._mmode = None
@@ -106,7 +106,7 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
-        # self._friends.init_data()
+        self._friends.init_data()
         # self._guild.init_data()
 
 
