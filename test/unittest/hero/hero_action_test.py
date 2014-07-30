@@ -70,7 +70,8 @@ class HeroActionTest(unittest.TestCase):
         response = GameResourcesResponse()
         response.ParseFromString(str_response)
         self.assertEqual(response.res.result, True)
-        self.assertEqual(response.finance.hero_soul, 300, "total hero soul error!")
+        self.assertEqual(response.finance.hero_soul, 300, "total hero soul error!%d_%d" %
+                         (response.finance.hero_soul, 300))
         self.assertEqual(response.items[0].item_no, 1000103, "exp_item_no error!")
         self.assertEqual(response.items[0].item_num, 1, "exp_item_num error!")
 

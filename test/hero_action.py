@@ -80,9 +80,9 @@ class EchoClient(protocol.Protocol):
             print argument.heros[0].hero_no
             print argument.heros[1].hero_no
             print argument.heros[2].hero_no
-            self.dateSend("", 107)
+            self.dateSend("", 108)
 
-        if command == 107:
+        if command == 108:
             argument = GetHeroChipsResponse()
             argument.ParseFromString(message)
             print ">>>>>>>>>>>>>>>>>>"

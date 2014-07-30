@@ -23,9 +23,12 @@ for key, value in base_config_mock.items():
 
 # ------------------------hero----------------------------
 
-hero1 = {'id': 10001, 'name': 'hero10001', 'sacrificeGain': {3: [100, 100, 0]}, 'sellGain': {1: [100, 100, 0]}}
-hero2 = {'id': 10002, 'name': 'hero10002', 'sacrificeGain': {3: [200, 200, 0]}, 'sellGain': {1: [200, 300, 0]}}
-hero3 = {'id': 10003, 'name': 'hero10003', 'sacrificeGain': {3: [300, 300, 0]}, 'sellGain': {1: [300, 300, 0]}}
+hero1 = {'id': 10001, 'name': 'hero10001', 'sacrificeGain': {const.HERO_SOUL: [100, 100, 0]},
+         'sellGain': {const.COIN: [100, 100, 0]}}
+hero2 = {'id': 10002, 'name': 'hero10002', 'sacrificeGain': {const.HERO_SOUL: [200, 200, 0]},
+         'sellGain': {const.COIN: [200, 300, 0]}}
+hero3 = {'id': 10003, 'name': 'hero10003', 'sacrificeGain': {const.HERO_SOUL: [300, 300, 0]},
+         'sellGain': {const.COIN: [300, 300, 0]}}
 
 hero_config.clear()
 hero_config_mock = HeroConfig().parser([hero1, hero2, hero3])
@@ -109,7 +112,7 @@ chip_config['mapping'] = chip_config_mock['mapping']
 chip_config['chips'] = chip_config_mock['chips']
 
 
-#------------------------big_bag----------------------------
+# ------------------------big_bag----------------------------
 
 big_bag1 = dict(dropId=10001, smallPacketId=[1002, 1003], smallPacketTimes=[5, 1], isUniq=[1, 0])
 big_bag2 = dict(dropId=10002, smallPacketId=[1004], smallPacketTimes=[1], isUniq=[0])
@@ -141,17 +144,18 @@ for key, value in small_bag_config_mock.items():
     small_bag_config[key] = value
 
 #------------------------soul_shop----------------------------
-soul_shop1 = dict(id=1001, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, weight=50)
-soul_shop2 = dict(id=1002, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, weight=50)
+soul_shop1 = dict(id=1001, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, weight=50)
+soul_shop2 = dict(id=1002, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, weight=50)
 soul_shop_config_mock = SoulShopConfig().parser([soul_shop1, soul_shop2])
 for key, value in soul_shop_config_mock.items():
     soul_shop_config[key] = value
 
 #------------------------shop----------------------------
-shop1 = dict(id=1001, type=1, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop2 = dict(id=1002, type=2, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop3 = dict(id=1003, type=3, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop4 = dict(id=1004, type=4, consume={3: [20, 20, 0]}, gain={3: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=-1)
+shop1 = dict(id=1001, type=1, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
+shop2 = dict(id=1002, type=2, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
+shop3 = dict(id=1003, type=3, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
+shop4 = dict(id=1004, type=4, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]},
+             freePeriod=-1)
 
 shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4])
 for key, value in shop_config_mock.items():

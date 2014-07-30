@@ -92,7 +92,6 @@ def hero_sacrifice_oper(heros, player):
     :return total_hero_soul:总武魂数量, exp_item_no:经验药水编号, exp_item_num:经验药水数量
     """
     total_exp = 0
-    total_hero_soul = 0
     exp_item_no = 0
     exp_item_num = 0
 
