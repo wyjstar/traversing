@@ -27,8 +27,6 @@ class Guild(object):
         self._name = name
         uuid = get_uuid()
         self._g_id = uuid
-        # position 职位，contribution 贡献，k_num 杀人数，worship 膜拜次数，worship_time 膜拜时间
-        # 公会贡献 ，，剩下的 。。。
         self._p_list = {1: [p_id]}
         # fund 资金
         data = {'id': self._g_id,
@@ -80,8 +78,8 @@ class Guild(object):
 
     def exit_guild(self, p_id, position):
         self._p_num -= 1
-        position_p = self._p_list.get(position)
-        position.remove(p_id)
+        position_p_list = self._p_list.get(position)
+        position_p.remove(p_id)
         print "cuick,###############,TEST,info:", p_id
 
     def delete_guild(self):
@@ -108,5 +106,28 @@ class Guild(object):
     def name(self, name):
         self._name = name
 
+    @property
+    def apply(self):
+        return self._apply
+
+    @apply.setter
+    def apply(self, t_p_id):
+        self._apply = t_p_id
+
+    @property
+    def p_list(self):
+        return self._p_list
+
+    @p_list.setter
+    def p_list(self, p_list):
+        self._p_list = p_list
+
+    @property
+    def p_num(self):
+        return self._p_num
+
+    @p_num.setter
+    def p_num(self, p_num):
+        self._p_num = p_num
 
 

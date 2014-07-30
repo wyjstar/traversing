@@ -101,9 +101,9 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
             # --------801创建公会------------
-            # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四96'
-            # self.dateSend(argument1, 801)
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四94'
+            self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
@@ -111,9 +111,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
-            argument1 = ExitGuildRequest()
-            argument1.g_id = '51dfe866163d11e4ba3a080027a4fa58'
-            self.dateSend(argument1, 803)
+            # argument1 = ExitGuildRequest()
+            # argument1.g_id = '51dfe866163d11e4ba3a080027a4fa58'
+            # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
             # argument1 = EditorCallRequest()
