@@ -2,6 +2,7 @@
 """
 created by server on 14-7-9上午11:28.
 """
+from app.game.logic import item_group_helper
 from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import equipment_pb2
@@ -141,7 +142,9 @@ def melting_equipment_405(dynamic_id, pro_data):
         res.message = data.get('message')
         return response.SerializePartialToString()
 
-    melting_items = data.get('melting_items', [])
+    gain = data.get('gain', [])
+
+    item_group_helper.get_return()
 
     # for melting_item in melting_items:
     #     add = response.cgr.add()
