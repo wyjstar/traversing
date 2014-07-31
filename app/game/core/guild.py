@@ -92,9 +92,6 @@ class Guild(object):
     def get_p_num(self):
         return self._p_num
 
-    def get_p_list(self):
-        return self._p_list
-
     def get_g_id(self):
         return self._g_id
 

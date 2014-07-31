@@ -4,7 +4,7 @@ import struct
 import time
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
-from app.proto_file.player_request_pb2 import PlayerLoginRequest
+from app.proto_file.player_request_pb2 import PlayerLoginResquest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, \
     JoinGuildRequest, JoinGuildResponse, ExitGuildRequest, ExitGuildResponse, \
@@ -83,7 +83,7 @@ class EchoClient(protocol.Protocol):
             else:
 
                 argument = account_pb2.LoginResquest()
-                argument.key.key = 'ea93b955c76de71380559058cdcd6932'
+                argument.key.key = '89b746bddf02c635ae29006c7db3ac0e'
 
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
@@ -104,14 +104,22 @@ class EchoClient(protocol.Protocol):
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
+
+            # 89b746bddf02c635ae29006c7db3ac0e 创建者
+            # d7dd61f2186111e48ad9080027a4fa58 公会id
+            # b76d940ef53d50d475cb65cd9fe7c48f 申请加入
+            #
+            #
+            #
+
             # --------801创建公会------------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四94'
-            self.dateSend(argument1, 801)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四102'
+            # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
-            # argument1.g_id = '51dfe866163d11e4ba3a080027a4fa58'
+            # argument1.g_id = 'd7dd61f2186111e48ad9080027a4fa58'
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
@@ -120,10 +128,10 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
-            # argument1 = EditorCallRequest()
-            # argument1.g_id = 'a302c176130611e4ac48080027a4fa58'
-            # argument1.call = 'aaaaaa空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
-            # self.dateSend(argument1, 804)
+            argument1 = EditorCallRequest()
+            argument1.g_id = 'd7dd61f2186111e48ad9080027a4fa58'
+            argument1.call = 'aaaaaa空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
+            self.dateSend(argument1, 804)
 
         if command == 801:
             # 创建公会

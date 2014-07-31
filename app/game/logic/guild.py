@@ -171,7 +171,7 @@ def exit_guild(dynamicid, data, **kwargs):
         res.message = "公会已解散"
         return response.SerializeToString()
     position = player.guild.position
-    p_list = guild_obj.get_p_list()
+    p_list = guild_obj.p_list
     position_p = p_list.get(position)
 
     if position_p.count(p_id) >= 1:
@@ -225,7 +225,8 @@ def editor_call(dynamicid, data, **kwargs):
     guild_obj.init_data(data1)
 
     position = player.guild.position
-    p_list = guild_obj.get_p_list()
+    p_list = guild_obj.p_list
+    print position, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     position_p_list = p_list.get(position)
 
     if position_p_list.count(p_id) >= 1:
@@ -324,7 +325,7 @@ def change_president(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    p_list = guild_obj.get_p_list()
+    p_list = guild_obj.p_list()
     for num in range(2, 5):
         p_list1 = p_list.get(num)
         if p_list1.count(p_p_id) >= 1:
@@ -372,7 +373,7 @@ def kick(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    p_list = guild_obj.get_p_list()
+    p_list = guild_obj.p_list
     for num in range(2, 5):
         p_list1 = p_list.get(num)
         if p_list1.count(p_p_id) >= 1:
@@ -472,7 +473,7 @@ def promotion(dynamicid, data, **kwargs):
 @have_player
 def worship(dynamicid, data, **kwargs):
     """
-    晋升
+    膜拜
     :param dynamicid:
     :param data:
     :param kwargs:
@@ -490,6 +491,7 @@ def worship(dynamicid, data, **kwargs):
 
     m_wopship_time = player.guild.worship_time
     # TODO 查询每天可以膜拜的次数
+    # TODO 判断钱够不够
     can_wopshiptimes = 5
     if (int(time.time())-m_wopship) < (60*60*24):
         if can_wopshiptimes > m_wopship_time:
