@@ -19,53 +19,109 @@
 
   <!-- 路由规则定义，定义什么表，什么字段，采用什么路由算法 -->
 
-  <!-- 规则1：使用8个分库，按照id进行分配 -->
-  <tableRule name="rule1">
+
+  <!-- =======id======= -->
+  <!-- 规则id_int_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="id_int_8">
     <rule>
       <columns>id</columns>
       <algorithm><![CDATA[ func1(${id}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <!-- 规则2：使用4个分库，按照id进行分配 -->
-  <tableRule name="rule2">
+  <!-- 规则id_str_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="id_str_8">
+    <rule>
+      <columns>id</columns>
+      <algorithm><![CDATA[ func2(${id}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则id_int_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="id_int_4">
     <rule>
       <columns>id</columns>
       <algorithm><![CDATA[ func3(${id}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <!-- 规则3：使用8个分库，按照nickname进行分配 -->
-  <tableRule name="rule3">
+  <!-- 规则id_str_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="id_str_4">
     <rule>
-      <columns>nickname</columns>
-      <algorithm><![CDATA[ func2(${nickname}) ]]></algorithm>
+      <columns>id</columns>
+      <algorithm><![CDATA[ func4(${id}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <!-- 规则4：使用4个分库，按照nickname进行分配 -->
-  <tableRule name="rule4">
+
+  <!-- =======nikename======= -->
+  <!-- 规则nikename_int_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="nikename_int_8">
     <rule>
-      <columns>nickname</columns>
-      <algorithm><![CDATA[ func4(${nickname}) ]]></algorithm>
+      <columns>nikename</columns>
+      <algorithm><![CDATA[ func1(${nikename}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <!-- 规则5：使用8个分库，按照account_name进行分配 -->
-  <tableRule name="rule5">
+  <!-- 规则nikename_str_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="nikename_str_8">
+    <rule>
+      <columns>nikename</columns>
+      <algorithm><![CDATA[ func2(${nikename}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则nikename_int_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="nikename_int_4">
+    <rule>
+      <columns>nikename</columns>
+      <algorithm><![CDATA[ func3(${nikename}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则nikename_str_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="nikename_str_4">
+    <rule>
+      <columns>nikename</columns>
+      <algorithm><![CDATA[ func4(${nikename}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+
+  <!-- =======account_name======= -->
+  <!-- 规则account_name_int_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="account_name_int_8">
+    <rule>
+      <columns>account_name</columns>
+      <algorithm><![CDATA[ func1(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则account_name_str_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="account_name_str_8">
     <rule>
       <columns>account_name</columns>
       <algorithm><![CDATA[ func2(${account_name}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <!-- 规则6：使用4个分库，按照account_name进行分配 -->
-  <tableRule name="rule6">
+  <!-- 规则account_name_int_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="account_name_int_4">
+    <rule>
+      <columns>account_name</columns>
+      <algorithm><![CDATA[ func3(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则account_name_str_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="account_name_str_4">
     <rule>
       <columns>account_name</columns>
       <algorithm><![CDATA[ func4(${account_name}) ]]></algorithm>
     </rule>
   </tableRule>
+
+
 
   <!--分配函数1：按照int分配到8个库-->
   <function name="func1" class="com.alibaba.cobar.route.function.PartitionByLong">
@@ -75,8 +131,8 @@
 
   <!--分配函数2：按照str分配到8个库-->
   <function name="func2" class="com.alibaba.cobar.route.function.PartitionByString">  
-    <property name="partitionCount">4</property>  
-    <property name="partitionLength">256</property>  
+    <property name="partitionCount">8</property>  
+    <property name="partitionLength">128</property>  
   </function>  
 
   <!--分配函数3：按照int分配到4个库-->

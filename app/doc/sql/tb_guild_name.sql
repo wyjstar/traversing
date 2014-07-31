@@ -19,7 +19,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_guild_name`;
 CREATE TABLE `tb_guild_name` (
-  `id` int NOT NULL,
+  `id` int(10) NOT NULL,
   `info` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
