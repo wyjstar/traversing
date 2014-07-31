@@ -9,6 +9,6 @@ message ShopRequest
 message ShopResponse
 {
     required CommonResponse res = 1;
-    required GameResourcesResponse consume = 2;
-    required GameResourcesResponse gain = 3;
+    optional GameResourcesResponse consume = 2;
+    optional GameResourcesResponse gain = 3;
 }
