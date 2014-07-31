@@ -9,8 +9,7 @@ import unittest
 from app.game.action.node.item import *
 from app.game.service.gatenoteservice import remoteservice
 from app.proto_file.item_pb2 import ItemPB
-from app.proto_file.player_response_pb2 import GameResourcesResponse
-from app.proto_file.item_pb2 import GetItemsResponse
+from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
 
 
 class ItemActionTest(unittest.TestCase):
@@ -35,8 +34,16 @@ class ItemActionTest(unittest.TestCase):
         item_pb.item_no = 1000112
         item_pb.item_num = 2
         game_resources_response_str = remoteservice.callTarget(302, 1, item_pb.SerializeToString())
-        game_resources_response = GameResourcesResponse()
-        game_resources_response.ParseFromString(game_resources_response_str)
-        self.assertEqual(game_resources_response.res.result, True)
-        self.assertEqual(game_resources_response.finance.coin, 2000)
+        response = ItemUseResponse()
+        response.ParseFromString(game_resources_response_str)
+        self.assertEqual(response.res.result, True)
+        self.assertEqual(response.gain.finance.coin, 2000)
+
+        item_pb = ItemPB()
+        item_pb.item_no = 1000112
+        item_pb.item_num = 10000
+        game_resources_response_str = remoteservice.callTarget(302, 1, item_pb.SerializeToString())
+        response = ItemUseResponse()
+        response.ParseFromString(game_resources_response_str)
+        self.assertEqual(response.res.result, False)
 

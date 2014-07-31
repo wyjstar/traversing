@@ -1,4 +1,3 @@
-import "common.proto";
 
 // 套装属性
 message SetEquipment{
@@ -22,60 +21,5 @@ message EquipmentPB{
 	optional int32 nobbing_effect =7;  //装备锤炼效果
 	optional int32 hero_no = 5;  //装备武将编号
 	optional SetEquipment set = 6;
-}
-
-
-// 请求全部装备 command：401
-message GetEquipmentsRequest{
-	required int32 type = 1; //请求装备类型 -1：一件 0：全部 1：武器 2：头盔 3：衣服 4：项链 5：饰品 6：宝物
-	optional string id = 2;  //装备ID
-}
-
-message GetEquipmentResponse{
-	required CommonResponse res = 1;
-	repeated EquipmentPB equipment = 2;
-}
-
-// 装备强化 command: 402
-message EnhanceEquipmentRequest{
-	required string id = 1;  //装备ID
-	optional int32 type = 2; //强化类型 1：强化 2：自动强化
-	optional int32 num = 3;  //类型1使用：强化次数
-}
-
-message EnhanceEquipmentResponse{
-	required CommonResponse res = 1;
-	repeated EnhanceDataFormat data= 2;
-}
-
-// 装备合成 command:  403
-message ComposeEquipmentRequest{
-	required string no = 1;  //装备No
-}
-
-message ComposeEquipmentResponse{
-	required CommonResponse res = 1;
-	optional EquipmentPB equ = 2;  //装备
-}
-
-// 装备锤炼 command:  404
-message NobbingEquipmentRequest{
-	required string id = 1; // 装备ID
-}
-
-message NobbingEquipmentResponse{
-	required CommonResponse res = 1;
-	optional EquipmentPB equ = 2;  //装备
-	repeated CommonGameResources cgr = 3; // 消耗
-}
-
-// 装备熔炼
-message MeltingEquipmentRequest{
-	required string id = 1; // 装备ID
-}
-
-message MeltingEquipmentResponse{
-	required CommonResponse res = 1;
-	repeated CommonGameResources cgr = 3; // 消耗
 }
 

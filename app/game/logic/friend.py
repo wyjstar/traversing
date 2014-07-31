@@ -6,8 +6,9 @@ created by server on 14-7-17下午5:21.
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.offline.friend_offline import FriendOffline
+from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
-from app.proto_file.friend_pb2 import FriendCommon
+from app.proto_file.friend_pb2 import *
 from app.game.action.root.netforwarding import push_object
 
 
@@ -218,4 +219,72 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
 
     # save data
     player.friends.save_data()
+    return response.SerializePartialToString()
+
+
+@have_player
+def get_player_friend_list(dynamic_id, **kwargs):
+
+    response = GetPlayerFriendsResponse()
+    player = kwargs.get('player')
+
+    for pid in player.friends.friends:
+        player_data = tb_character_info.getObjData(pid)
+        if player_data:
+            response_friend_add = response.friends.add()
+            response_friend_add.player_id = pid
+            response_friend_add.nickname = player_data.get('nickname')
+        else:
+            print 'get_player_friend_list', 'cant find player id:', pid
+
+    for pid in player.friends.black_list:
+        player_data = tb_character_info.getObjData(pid)
+        if player_data:
+            response_blacklist_add = response.blacklist.add()
+            response_blacklist_add.player_id = pid
+            response_friend_add.nickname = player_data.get('nickname')
+        else:
+            print 'get_player_friend_list', 'cant find player id:', pid
+
+    for pid in player.friends.applicant_list:
+        player_data = tb_character_info.getObjData(pid)
+        if player_data:
+            response_applicant_list_add = response.applicant_list.add()
+            response_applicant_list_add.player_id = pid
+            response_friend_add.nickname = player_data.get('nickname')
+        else:
+            print 'get_player_friend_list', 'cant find player id:', pid
+
+    return response.SerializePartialToString()
+
+
+
+@have_player
+def find_friend_request(dynamic_id, data, **kwargs):
+    """
+
+    :param dynamic_id:
+    :param data:
+    :param kwargs:
+    :return:
+    """
+    response = FindFriendRequest()
+    response.result = 0
+    request = FindFriendResponse()
+    request.ParseFromString(data)
+
+    response.id = 0
+    response.nickname = 'none'
+
+    if request.id_or_nickname.isdigit():
+        player_data = tb_character_info.getObjData(request.id_or_nick_name)
+        if player_data:
+            response.id = player_data.get('id')
+            response.nickname = player_data.get('nickname')
+    else:
+        player_data = tb_nickname_mapping.getObjData(request.id_or_nickname)
+        if player_data:
+            response.id = player_data.get('id')
+            response.nickname = player_data.get('nickname')
+
     return response.SerializePartialToString()

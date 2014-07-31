@@ -81,8 +81,10 @@ class EchoClient(protocol.Protocol):
 
                 self._times += 1
             else:
+
                 argument = account_pb2.LoginResquest()
                 argument.key.key = '89b746bddf02c635ae29006c7db3ac0e'
+
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -92,8 +94,10 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+
             argument = PlayerLoginResquest()
-            argument.token = '89b746bddf02c635ae29006c7db3ac0e'
+            argument.token = 'ea93b955c76de71380559058cdcd6932'
+
             self.dateSend(argument, 4)
 
         if command == 4:

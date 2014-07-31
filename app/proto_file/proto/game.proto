@@ -1,5 +1,5 @@
 // 游戏服登录 command：4
-message GameLoginResquest{
+message GameLoginRequest{
 	required string token = 1;
 }
 

@@ -1,3 +1,4 @@
+import "common.proto";
 message SoulShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
@@ -6,4 +7,11 @@ message SoulShopRequest
 message GetShopItemsResponse
 {
     repeated int32 id = 1;
+}
+
+message SoulShopResponse
+{
+    required CommonResponse res = 1;
+    required GameResourcesResponse consume = 2;
+    required GameResourcesResponse gain = 3;
 }

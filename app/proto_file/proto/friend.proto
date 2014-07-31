@@ -9,3 +9,31 @@ message FriendCommon{
 message AddFriendResponse{
     required bool result = 1;      //result
 }
+
+// find friend by friend's player id or nickname
+message FindFriendRequest{
+    optional string id_or_nickname = 1;
+}
+
+//
+message FindFriendResponse{
+    optional int32  id = 1;
+    optional string nickname = 2;
+}
+
+message GetPlayerFriendsRequest{
+
+}
+
+// character information
+message CharacterInfo{
+    optional int32 player_id = 1;
+    optional string nickname = 2;
+}
+
+// player friend items
+message GetPlayerFriendsResponse{
+    repeated CharacterInfo friends = 1;
+    repeated CharacterInfo blacklist = 2;
+    repeated CharacterInfo applicant_list = 3;
+}

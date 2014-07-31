@@ -41,6 +41,21 @@ def forwarding(key, dynamic_id, data):
 
 
 @rootserviceHandle
+def forwarding_test(key, dynamic_id, data):
+    """
+    """
+    print data
+
+    if local_service._targets.has_key(key):
+        return local_service.callTarget(key, dynamic_id, data)
+    else:
+
+        result = GlobalObject().root.callChild('game', key, dynamic_id, data)
+
+        return result
+
+
+@rootserviceHandle
 def push_object(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
@@ -51,7 +66,7 @@ def push_object(topic_id, msg, send_list):
 @rootserviceHandle
 def push_chat_message(send_list, msg):
     print 'push_chat_message:', send_list, msg
-    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
+    GlobalObject().root.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
 
 
 # @rootserviceHandle

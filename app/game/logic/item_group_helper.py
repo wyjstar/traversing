@@ -45,6 +45,7 @@ def is_afford(player, item_group):
 
 def consume(player, item_group):
     """消耗"""
+    result = []
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
@@ -75,6 +76,8 @@ def consume(player, item_group):
             item = player.item_package.get_item(item_no)
             item.num -= num
             player.item_package.save_data()
+        result.append([type_id, num, item_no])
+    return result
 
 
 def gain(player, item_group):

@@ -70,18 +70,11 @@ class HeroActionTest(unittest.TestCase):
         response = HeroSacrificeResponse()
         response.ParseFromString(str_response)
         self.assertEqual(response.res.result, True)
-        self.assertEqual(response.hero_soul, 300, "total hero soul error!")
-        self.assertEqual(response.exp_item_no, 1000103, "exp_item_no error!")
-        self.assertEqual(response.exp_item_num, 1, "exp_item_num error!")
+        self.assertEqual(response.gain.finance.hero_soul, 300, "total hero soul error!%d_%d" %
+                         (response.gain.finance.hero_soul, 300))
+        self.assertEqual(response.gain.items[0].item_no, 1000103, "exp_item_no error!")
+        self.assertEqual(response.gain.items[0].item_num, 1, "exp_item_num error!")
 
-    def test_hero_sacrifice_oper(self):
-        hero_no_list = [10001, 10002]
-        heros = self.player.hero_component.get_heros_by_nos(hero_no_list)
-
-        total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice_oper(heros)
-        self.assertEqual(total_hero_soul, 300, "total hero soul error!")
-        self.assertEqual(exp_item_no, 1000103, "exp_item_no error!")
-        self.assertEqual(exp_item_num, 1, "exp_item_num error!")
 
     def test_hero_compose_106(self):
         request = HeroComposeRequest()

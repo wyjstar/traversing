@@ -1,5 +1,13 @@
+import "common.proto";
 
 message ShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
+}
+
+message ShopResponse
+{
+    required CommonResponse res = 1;
+    required GameResourcesResponse consume = 2;
+    required GameResourcesResponse gain = 3;
 }

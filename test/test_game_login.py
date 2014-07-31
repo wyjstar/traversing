@@ -11,7 +11,7 @@ from app.proto_file import item_pb2
 from app.proto_file import account_pb2
 from app.proto_file.chat import chat_pb2
 from app.proto_file import equipment_pb2
-from app.proto_file.player_request_pb2 import PlayerLoginResquest
+from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file import line_up_pb2
 from app.proto_file import stage_pb2
@@ -62,8 +62,10 @@ class EchoClient(protocol.Protocol):
     def connectionMade(self):
 
         # 帐号登录
+
         argument = account_pb2.LoginResquest()
         argument.key.key = '06656fe419bd1d9799f220d2fce0b439'
+
         # argument.user_name = 'ghh0001'
         # argument.password = '123457'
         self.dateSend(argument, 2)
@@ -78,9 +80,10 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = PlayerLoginResquest()
-            argument.token = '06656fe419bd1d9799f220d2fce0b439'
-            self.dateSend(argument, 4)
+            argument = PlayerLoginRequest()
+            argument.token = 'ca1d102f607231552fe610495d85e51e'
+            # self.dateSend(argument, 4)
+
 
         if command == 4:
             argument = PlayerResponse()
