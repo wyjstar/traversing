@@ -48,8 +48,8 @@ def use_item(dynamic_id, pro_data, **kwargs):
         box_key = player.item_package.get_item(box_key_no)
         if not box_key or box_key.num < func_args2 * item_num:
             common_response.result = False
-            common_response.message = "box key 不足！" + str(func_args2 * item_num) + "_" + box_key.num
-            return game_resources_response
+            common_response.message = u"box key 不足！" + str(func_args2 * item_num) + "_" + str(box_key.num)
+            return game_resources_response.SerializeToString()
         # 消耗key
         box_key.num -= func_args2 * item_num
         player.item_package.save_data()
