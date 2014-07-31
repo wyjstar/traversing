@@ -4,20 +4,20 @@ created by server on 14-7-17下午6:21.
 """
 from app.game.logic.stage import get_stage_info, get_chapter_info, fight_start, fight_settlement
 from app.game.service.gatenoteservice import remote_service_handle
-from app.proto_file import stage_pb2
-
+from app.proto_file import stage_request_pb2
+from app.proto_file import stage_response_pb2
 
 @remote_service_handle
 def get_stages_901(dynamic_id, pro_data):
     """取得关卡信息
     """
-    request = stage_pb2.StageInfoRequest()
+    request = stage_request_pb2.StageInfoRequest()
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
     stages_obj = get_stage_info(dynamic_id, stage_id)
 
-    response = stage_pb2.StageInfoResponse()
+    response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
         add = response.stage.add()
         add.stage_id = stage_obj.stage_id
@@ -31,13 +31,13 @@ def get_stages_901(dynamic_id, pro_data):
 def get_chapter_902(dynamic_id, pro_data):
     """取得章节奖励信息
     """
-    request = stage_pb2.ChapterInfoRequest()
+    request = stage_request_pb2.ChapterInfoRequest()
     request.ParseFromString(pro_data)
     chapter_id = request.chapter_id
 
     chapters_id = get_chapter_info(dynamic_id, chapter_id)
 
-    response = stage_pb2.ChapterInfoResponse()
+    response = stage_response_pb2.ChapterInfoResponse()
     for chapter_obj in chapters_id:
         stage_award_add = response.stage_award.add()
         stage_award_add.chapter_id = chapter_obj.chapter_id
@@ -54,7 +54,7 @@ def get_chapter_902(dynamic_id, pro_data):
 def stage_start_903(dynamic_id, pro_data):
     """开始战斗
     """
-    request = stage_pb2.StageStartRequest()
+    request = stage_request_pb2.StageStartRequest()
     request.ParseFromString(pro_data)
     # 关卡编号
     stage_id = request.stage_id
@@ -62,7 +62,7 @@ def stage_start_903(dynamic_id, pro_data):
 
     red_units, blue_units, drop_num = fight_start(dynamic_id, stage_id)
 
-    response = stage_pb2.StageStartResponse()
+    response = stage_response_pb2.StageStartResponse()
 
     res = response.res
     res.result = True
@@ -84,7 +84,7 @@ def stage_start_903(dynamic_id, pro_data):
 
 @remote_service_handle
 def fight_settlement_904(dynamic_id, pro_data):
-    request = stage_pb2.StageSettlementRequest()
+    request = stage_request_pb2.StageSettlementRequest()
     stage_id = request.stage_id
     result = request.result
     drops = fight_settlement(dynamic_id, stage_id, result)

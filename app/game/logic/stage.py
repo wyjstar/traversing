@@ -4,8 +4,7 @@ created by server on 14-7-18下午3:44.
 """
 from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
-from app.proto_file import stage_pb2
-
+from app.proto_file import stage_response_pb2
 
 @have_player
 def get_stage_info(dynamic_id, stage_id, **kwargs):
@@ -58,7 +57,7 @@ def fight_start(dynamic_id, stage_id, **kwargs):
 def fight_settlement(dynamic_id, stage_id, result, **kwargs):
     player = kwargs.get('player')
 
-    response = stage_pb2.StageSettlementResponse()
+    response = stage_response_pb2.StageSettlementResponse()
     drops = response.drops
     drops.res.result = True
 
