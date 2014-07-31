@@ -67,13 +67,13 @@ class HeroActionTest(unittest.TestCase):
         request = HeroSacrificeRequest()
         [request.hero_nos.append(x) for x in hero_no_list]
         str_response = remoteservice.callTarget(105, 1, request.SerializeToString())
-        response = GameResourcesResponse()
+        response = HeroSacrificeResponse()
         response.ParseFromString(str_response)
         self.assertEqual(response.res.result, True)
-        self.assertEqual(response.finance.hero_soul, 300, "total hero soul error!%d_%d" %
-                         (response.finance.hero_soul, 300))
-        self.assertEqual(response.items[0].item_no, 1000103, "exp_item_no error!")
-        self.assertEqual(response.items[0].item_num, 1, "exp_item_num error!")
+        self.assertEqual(response.gain.finance.hero_soul, 300, "total hero soul error!%d_%d" %
+                         (response.gain.finance.hero_soul, 300))
+        self.assertEqual(response.gain.items[0].item_no, 1000103, "exp_item_no error!")
+        self.assertEqual(response.gain.items[0].item_num, 1, "exp_item_num error!")
 
 
     def test_hero_compose_106(self):

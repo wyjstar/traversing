@@ -4,8 +4,6 @@ import "item.proto";
 import "hero_chip.proto";
 import "equipment_chip.proto";
 import "player.proto";
-import "common.proto";
-
 
 message CommonResponse
 {
@@ -16,10 +14,10 @@ message CommonResponse
 
 message GameResourcesResponse
 {
-    repeated HeroPB heros = 2;
-    repeated EquipmentPB equipments = 3;
-    repeated ItemPB items = 4;
-    repeated HeroChipPB hero_chips = 5;
-    repeated EquipmentChipPB equipment_chips = 6;
-    optional FinancePB finance = 7;
+    repeated HeroPB heros = 1;
+    repeated EquipmentPB equipments = 2;
+    repeated ItemPB items = 3;
+    repeated HeroChipPB hero_chips = 4;
+    repeated EquipmentChipPB equipment_chips = 5;
+    optional FinancePB finance = 6;
 }

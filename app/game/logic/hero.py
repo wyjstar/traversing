@@ -7,11 +7,11 @@ from app.game.logic.common.check import have_player
 from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
     HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest, HeroSellRequest
 from app.proto_file.hero_response_pb2 import GetHerosResponse, HeroUpgradeResponse, \
-    HeroSacrificeResponse, HeroBreakResponse, HeroComposeResponse
+    HeroBreakResponse, HeroComposeResponse
 from shared.db_opear.configs_data.game_configs import base_config, item_config, \
     hero_breakup_config, chip_config, hero_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
-from app.proto_file.player_response_pb2 import GameResourcesResponse
+from app.proto_file.hero_response_pb2 import HeroSacrificeResponse, HeroSellResponse
 
 
 @have_player
@@ -64,7 +64,11 @@ def hero_break(dynamicid, data, **kwargs):
     if not result.get('result'):
         response.res.result = False
         response.res.message = '消费不足！'
-    consume(player, item_group)  # 消耗
+
+    # 返回消耗
+    return_data = consume(player, item_group)
+    get_return(player,return_data, response.consume)
+
     hero.break_level += 1
     hero.save_data()
     # 3、返回
@@ -95,11 +99,12 @@ def hero_sacrifice_oper(heros, player):
     exp_item_no = 0
     exp_item_num = 0
 
-    response = GameResourcesResponse()
+    response = HeroSacrificeResponse()
+    gain_response = response.gain
     for hero in heros:
         sacrifice_gain = hero_config.get(hero.hero_no).sacrificeGain
         return_data = gain(player, sacrifice_gain)
-        get_return(player, return_data, response)
+        get_return(player, return_data, gain_response)
         # 经验
         exp = hero.get_all_exp()
         total_exp += exp
@@ -113,7 +118,7 @@ def hero_sacrifice_oper(heros, player):
             exp_item_no = item_no
             exp_item_num = total_exp/exp
             break
-    item_pb = response.items.add()
+    item_pb = gain_response.items.add()
     item_pb.item_no = exp_item_no
     item_pb.item_num = exp_item_num
     response.res.result = True
@@ -159,11 +164,11 @@ def hero_sell(dynamicid, data, **kwargs):
     args.ParseFromString(data)
     hero_nos = args.hero_nos
 
-    response = GameResourcesResponse()
+    response = HeroSellResponse()
     for hero_no in hero_nos:
         sell_gain = hero_config.get(hero_no).sellGain
         return_data = gain(player, sell_gain)
-        get_return(player, return_data, response)
+        get_return(player, return_data, response.gain)
 
     response.res.result = True
     return response

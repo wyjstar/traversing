@@ -1,13 +1,13 @@
 import "common.proto";
 import "hero.proto";
 
-//请求武将列表
+//请求武将列表 command:101
 message GetHerosResponse
 {
     repeated HeroPB heros = 1;
 }
 
-//武将升级
+//武将升级 command:103
 message HeroUpgradeResponse
 {
     required CommonResponse res = 1;
@@ -15,26 +15,31 @@ message HeroUpgradeResponse
     optional int32 exp = 3;
 }
 
-//武将突破
+//武将突破 command:104
 message HeroBreakResponse
 {
     required CommonResponse res = 1;
-    optional int32 break_level = 2;
+    optional GameResourcesResponse consume = 2;
+    optional int32 break_level = 3;
 }
 
-//武将献祭
+//武将献祭 command:105
 message HeroSacrificeResponse
 {
     required CommonResponse res = 1;
-    optional int32 hero_soul = 2;
-    optional int32 exp_item_no = 3;
-    optional int32 exp_item_num = 4;
+    optional GameResourcesResponse gain = 2;
 }
 
-//武将合成
+//武将合成 command:106
 message HeroComposeResponse
 {
     required CommonResponse res = 1;
     optional HeroPB hero = 2;
 }
 
+//武将出售 command:107
+message HeroSellResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

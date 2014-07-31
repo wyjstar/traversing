@@ -3,10 +3,9 @@
 created by server on 14-7-16下午3:35.
 """
 from app.game.logic.common.check import have_player
-from app.proto_file.soul_shop_pb2 import SoulShopRequest, GetShopItemsResponse
+from app.proto_file.soul_shop_pb2 import SoulShopRequest, GetShopItemsResponse, SoulShopResponse
 from shared.db_opear.configs_data.game_configs import soul_shop_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
-from app.proto_file.player_response_pb2 import GameResourcesResponse
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils.random_pick import random_multi_pick_without_repeat
 
@@ -16,8 +15,8 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
     player = kwargs.get('player')
     request = SoulShopRequest()
     request.ParseFromString(pro_data)
-    game_resources_response = GameResourcesResponse()
-    common_response = game_resources_response.res
+    response = SoulShopResponse()
+    common_response = response.res
     shop_id = request.id
 
     shop_item = soul_shop_config.get(shop_id)
@@ -30,10 +29,10 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
 
     return_data = gain(player, shop_item.gain)  # 获取
     extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
-    get_return(player, return_data, game_resources_response)
-    get_return(player, extra_return_data, game_resources_response)
+    get_return(player, return_data, response)
+    get_return(player, extra_return_data, response)
     common_response.result = True
-    return game_resources_response.SerializeToString()
+    return response.SerializeToString()
 
 
 @have_player

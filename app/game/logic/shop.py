@@ -3,11 +3,10 @@
 created by server on 14-7-16下午3:25.
 """
 from app.game.logic.common.check import have_player
-from app.proto_file.shop_pb2 import ShopRequest
+from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import shop_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
-from app.proto_file.player_response_pb2 import GameResourcesResponse
 import time
 
 
@@ -17,8 +16,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
     """商城所有操作"""
     request = ShopRequest()
     request.ParseFromString(pro_data)
-    game_resources_response = GameResourcesResponse()
-    response = game_resources_response.res
+    response = ShopResponse()
 
     shop_id = request.id
     shop_item = shop_config.get(shop_id)
@@ -30,15 +28,16 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
         if not result.get('result'):
             response.result = False
             response.message = '消费不足！'
-        consume(player, shop_item.consume)  # 消耗
+        return_data = consume(player, shop_item.consume)  # 消耗
+        return_data(response.consume)
     return_data = gain(player, shop_item.gain)  # 获取
     extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
 
-    get_return(player, return_data, game_resources_response)
-    get_return(player, extra_return_data, game_resources_response)
+    get_return(player, return_data, response.gain)
+    get_return(player, extra_return_data, response.gain)
 
-    response.result = True
-    return game_resources_response.SerializeToString()
+    response.res.result = True
+    return response.SerializeToString()
 
 
 def is_consume(player, shop_item):

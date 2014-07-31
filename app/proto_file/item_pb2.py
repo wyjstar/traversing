@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='item.proto',
   package='',
-  serialized_pb='\n\nitem.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"*\n\x10GetItemsResponse\x12\x16\n\x05items\x18\x01 \x03(\x0b\x32\x07.ItemPB')
+  serialized_pb='\n\nitem.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
 
 
 
@@ -52,49 +52,13 @@ _ITEMPB = _descriptor.Descriptor(
   serialized_end=57,
 )
 
-
-_GETITEMSRESPONSE = _descriptor.Descriptor(
-  name='GetItemsResponse',
-  full_name='GetItemsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='items', full_name='GetItemsResponse.items', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=59,
-  serialized_end=101,
-)
-
-_GETITEMSRESPONSE.fields_by_name['items'].message_type = _ITEMPB
 DESCRIPTOR.message_types_by_name['ItemPB'] = _ITEMPB
-DESCRIPTOR.message_types_by_name['GetItemsResponse'] = _GETITEMSRESPONSE
 
 class ItemPB(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _ITEMPB
 
   # @@protoc_insertion_point(class_scope:ItemPB)
-
-class GetItemsResponse(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _GETITEMSRESPONSE
-
-  # @@protoc_insertion_point(class_scope:GetItemsResponse)
 
 
 # @@protoc_insertion_point(module_scope)

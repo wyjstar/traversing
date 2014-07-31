@@ -7,8 +7,8 @@ import unittest
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.item_group_helper import *
 from shared.db_opear.configs_data.data_helper import parse
-from app.proto_file.player_response_pb2 import GameResourcesResponse
 from shared.utils.const import *
+from app.proto_file.common_pb2 import GameResourcesResponse
 
 
 class ItemGroupHelperTest(unittest.TestCase):

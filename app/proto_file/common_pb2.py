@@ -14,13 +14,12 @@ import item_pb2
 import hero_chip_pb2
 import equipment_chip_pb2
 import player_pb2
-import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='common.proto',
   package='',
-  serialized_pb='\n\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\nitem.proto\x1a\x0fhero_chip.proto\x1a\x14\x65quipment_chip.proto\x1a\x0cplayer.proto\x1a\x0c\x63ommon.proto\"D\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\t\"\xd2\x01\n\x15GameResourcesResponse\x12\x16\n\x05heros\x18\x02 \x03(\x0b\x32\x07.HeroPB\x12 \n\nequipments\x18\x03 \x03(\x0b\x32\x0c.EquipmentPB\x12\x16\n\x05items\x18\x04 \x03(\x0b\x32\x07.ItemPB\x12\x1f\n\nhero_chips\x18\x05 \x03(\x0b\x32\x0b.HeroChipPB\x12)\n\x0f\x65quipment_chips\x18\x06 \x03(\x0b\x32\x10.EquipmentChipPB\x12\x1b\n\x07\x66inance\x18\x07 \x01(\x0b\x32\n.FinancePB')
+  serialized_pb='\n\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\nitem.proto\x1a\x0fhero_chip.proto\x1a\x14\x65quipment_chip.proto\x1a\x0cplayer.proto\"D\n\x0e\x43ommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\t\"\xd2\x01\n\x15GameResourcesResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\x12 \n\nequipments\x18\x02 \x03(\x0b\x32\x0c.EquipmentPB\x12\x16\n\x05items\x18\x03 \x03(\x0b\x32\x07.ItemPB\x12\x1f\n\nhero_chips\x18\x04 \x03(\x0b\x32\x0b.HeroChipPB\x12)\n\x0f\x65quipment_chips\x18\x05 \x03(\x0b\x32\x10.EquipmentChipPB\x12\x1b\n\x07\x66inance\x18\x06 \x01(\x0b\x32\n.FinancePB')
 
 
 
@@ -62,8 +61,8 @@ _COMMONRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=124,
-  serialized_end=192,
+  serialized_start=110,
+  serialized_end=178,
 )
 
 
@@ -76,42 +75,42 @@ _GAMERESOURCESRESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='heros', full_name='GameResourcesResponse.heros', index=0,
-      number=2, type=11, cpp_type=10, label=3,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='equipments', full_name='GameResourcesResponse.equipments', index=1,
-      number=3, type=11, cpp_type=10, label=3,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='items', full_name='GameResourcesResponse.items', index=2,
-      number=4, type=11, cpp_type=10, label=3,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='hero_chips', full_name='GameResourcesResponse.hero_chips', index=3,
-      number=5, type=11, cpp_type=10, label=3,
+      number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='equipment_chips', full_name='GameResourcesResponse.equipment_chips', index=4,
-      number=6, type=11, cpp_type=10, label=3,
+      number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='finance', full_name='GameResourcesResponse.finance', index=5,
-      number=7, type=11, cpp_type=10, label=1,
+      number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -125,8 +124,8 @@ _GAMERESOURCESRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=195,
-  serialized_end=405,
+  serialized_start=181,
+  serialized_end=391,
 )
 
 _GAMERESOURCESRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
