@@ -60,12 +60,21 @@ def stage_start_903(dynamic_id, pro_data):
     stage_id = request.stage_id
     print stage_id
 
-    red_units, blue_units, drop_num = fight_start(dynamic_id, stage_id)
+    stage_info = fight_start(dynamic_id, stage_id)
+
+    result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()
 
     res = response.res
-    res.result = True
+    res.result = result
+
+    if not result:
+        return response.SerializePartialToString()
+
+    red_units = stage_info.get('red_units')
+    blue_units = stage_info.get('blue_units')
+    drop_num = stage_info.get('drop_num')
 
     response.drop_num = drop_num
 

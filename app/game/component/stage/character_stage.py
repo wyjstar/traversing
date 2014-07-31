@@ -53,6 +53,14 @@ class CharacterStageComponent(Component):
             self._stage_info[stage_id] = stage_obj
         return stage_obj
 
+    def get_stage_by_condition(self, stage_id):
+        """根据条件关卡编号取得开启关卡信息
+        """
+        condition_mapping = game_configs.stage_config.get('condition_mapping')
+        stage_ids = condition_mapping.get(stage_id, [])
+
+        return [self.get_stage(stage_id) for stage_id in stage_ids]
+
     def get_stages(self):
         """取得全部关卡信息
         """
@@ -78,6 +86,10 @@ class CharacterStageComponent(Component):
         """结算
         """
         stage = self.get_stage(stage_id)
+
+        if stage.state == -2:  # 未开启
+            return False
+
         stage.update(result)
         if result:  # win
             stages_conf = self.get_chapters()
@@ -85,6 +97,24 @@ class CharacterStageComponent(Component):
             chapter_id = stage_conf.chapter
             chapter = self.get_chapter(chapter_id)
             chapter.update(self.calculation_star(chapter_id))
+
+            # 校验当前关卡是否已经通关
+            state = self.check_stage_state(stage_id)
+            if state != 1:
+                # 开启下一关卡
+                stages = self.get_stage_by_condition(stage_id)
+                for stage in stages:
+                    stage.state = -1  # 更新状态开启没打过
+
+        return True
+
+    def check_stage_state(self, stage_id):
+        """校验当前关卡是否已经通关
+        """
+        if stage_id in self._stage_info.keys():
+            stage = self.get_stage(stage_id)
+            return stage.state
+        return -2
 
     def calculation_star(self, chapter_id):
         """根据章节ID计算当前星数
