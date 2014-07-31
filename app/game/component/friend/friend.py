@@ -39,6 +39,21 @@ class FriendComponent(Component):
         elif friend_obj:
             tb_character_friend.deleteMode(self.owner.base_info.id)
 
+
+    @property
+    def friends(self):
+        return self._friends
+
+
+    @property
+    def blacklist(self):
+        return self._blacklist
+
+
+    @property
+    def applicant_list(self):
+        return self._applicants_list
+
     def is_friend(self, friend_id):
         if friend_id in self._friends:
             return True

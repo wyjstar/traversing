@@ -2,9 +2,9 @@
 """
 created by server on 14-7-23下午5:25.
 """
-from app.proto_file.account_pb2 import LoginResquest, AccountResponse
+from app.proto_file.account_pb2 import AccountLoginRequest, AccountResponse
 
-request = LoginResquest()
+request = AccountLoginRequest()
 request.key.key = "fuckfuckfuck"
 request.user_name = "mbmbmb"
 request.password = "12345678"

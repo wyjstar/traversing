@@ -21,5 +21,11 @@ message HeroSacrificeRequest
 //武将合成
 message HeroComposeRequest
 {
-    required int32 hero_chip_no = 2;
+    required int32 hero_chip_no = 1;
+}
+
+//武将出售
+message HeroSellRequest
+{
+    repeated int32 hero_nos = 1;
 }

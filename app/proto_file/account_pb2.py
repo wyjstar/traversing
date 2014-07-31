@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='account.proto',
   package='',
-  serialized_pb='\n\raccount.proto\"Z\n\x0b\x41\x63\x63ountInfo\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x18\n\x03key\x18\x04 \x01(\x0b\x32\x0b.AccountKey\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"L\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x18\n\x03key\x18\x03 \x01(\x0b\x32\x0b.AccountKey\"N\n\rLoginResquest\x12\x18\n\x03key\x18\x01 \x02(\x0b\x32\x0b.AccountKey\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t')
+  serialized_pb='\n\raccount.proto\"Z\n\x0b\x41\x63\x63ountInfo\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x18\n\x03key\x18\x04 \x01(\x0b\x32\x0b.AccountKey\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"L\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x18\n\x03key\x18\x03 \x01(\x0b\x32\x0b.AccountKey\"T\n\x13\x41\x63\x63ountLoginRequest\x12\x18\n\x03key\x18\x01 \x02(\x0b\x32\x0b.AccountKey\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t')
 
 
 
@@ -137,29 +137,29 @@ _ACCOUNTRESPONSE = _descriptor.Descriptor(
 )
 
 
-_LOGINRESQUEST = _descriptor.Descriptor(
-  name='LoginResquest',
-  full_name='LoginResquest',
+_ACCOUNTLOGINREQUEST = _descriptor.Descriptor(
+  name='AccountLoginRequest',
+  full_name='AccountLoginRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='LoginResquest.key', index=0,
+      name='key', full_name='AccountLoginRequest.key', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='user_name', full_name='LoginResquest.user_name', index=1,
+      name='user_name', full_name='AccountLoginRequest.user_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='password', full_name='LoginResquest.password', index=2,
+      name='password', full_name='AccountLoginRequest.password', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -175,16 +175,16 @@ _LOGINRESQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=214,
-  serialized_end=292,
+  serialized_end=298,
 )
 
 _ACCOUNTINFO.fields_by_name['key'].message_type = _ACCOUNTKEY
 _ACCOUNTRESPONSE.fields_by_name['key'].message_type = _ACCOUNTKEY
-_LOGINRESQUEST.fields_by_name['key'].message_type = _ACCOUNTKEY
+_ACCOUNTLOGINREQUEST.fields_by_name['key'].message_type = _ACCOUNTKEY
 DESCRIPTOR.message_types_by_name['AccountInfo'] = _ACCOUNTINFO
 DESCRIPTOR.message_types_by_name['AccountKey'] = _ACCOUNTKEY
 DESCRIPTOR.message_types_by_name['AccountResponse'] = _ACCOUNTRESPONSE
-DESCRIPTOR.message_types_by_name['LoginResquest'] = _LOGINRESQUEST
+DESCRIPTOR.message_types_by_name['AccountLoginRequest'] = _ACCOUNTLOGINREQUEST
 
 class AccountInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -204,11 +204,11 @@ class AccountResponse(_message.Message):
 
   # @@protoc_insertion_point(class_scope:AccountResponse)
 
-class LoginResquest(_message.Message):
+class AccountLoginRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _LOGINRESQUEST
+  DESCRIPTOR = _ACCOUNTLOGINREQUEST
 
-  # @@protoc_insertion_point(class_scope:LoginResquest)
+  # @@protoc_insertion_point(class_scope:AccountLoginRequest)
 
 
 # @@protoc_insertion_point(module_scope)

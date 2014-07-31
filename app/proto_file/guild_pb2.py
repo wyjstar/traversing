@@ -14,7 +14,7 @@ import guild_common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='guild.proto',
   package='',
-  serialized_pb='\n\x0bguild.proto\x1a\x12guild_common.proto\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\"8\n\x13\x43reateGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"6\n\x11JoinGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10\x45xitGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"6\n\x11\x45xitGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\"/\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04\x63\x61ll\x18\x02 \x02(\x0c\"7\n\x12\x45\x64itorCallResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse')
+  serialized_pb='\n\x0bguild.proto\x1a\x12guild_common.proto\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\"8\n\x13\x43reateGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"6\n\x11JoinGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10\x45xitGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"6\n\x11\x45xitGuildResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\"/\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04\x63\x61ll\x18\x02 \x02(\x0c\"7\n\x12\x45\x64itorCallResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\".\n\x10\x44\x65\x61lApplyRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x02(\x05\"6\n\x11\x44\x65\x61lApplyResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\t\"<\n\x17\x43hangePresidentResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\"\x1b\n\x0bKickRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\t\"1\n\x0cKickResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\" \n\x10PromotionRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\t\"6\n\x11PromotionResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse\"\x1e\n\x0eWorshipRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\t\"4\n\x0fWorshipResponse\x12!\n\x03res\x18\x01 \x02(\x0b\x32\x14.GuildCommonResponse')
 
 
 
@@ -249,10 +249,302 @@ _EDITORCALLRESPONSE = _descriptor.Descriptor(
   serialized_end=413,
 )
 
+
+_DEALAPPLYREQUEST = _descriptor.Descriptor(
+  name='DealApplyRequest',
+  full_name='DealApplyRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='p_id', full_name='DealApplyRequest.p_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='DealApplyRequest.type', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=415,
+  serialized_end=461,
+)
+
+
+_DEALAPPLYRESPONSE = _descriptor.Descriptor(
+  name='DealApplyResponse',
+  full_name='DealApplyResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='DealApplyResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=463,
+  serialized_end=517,
+)
+
+
+_CHANGEPRESIDENTREQUEST = _descriptor.Descriptor(
+  name='ChangePresidentRequest',
+  full_name='ChangePresidentRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='p_id', full_name='ChangePresidentRequest.p_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=519,
+  serialized_end=557,
+)
+
+
+_CHANGEPRESIDENTRESPONSE = _descriptor.Descriptor(
+  name='ChangePresidentResponse',
+  full_name='ChangePresidentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='ChangePresidentResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=559,
+  serialized_end=619,
+)
+
+
+_KICKREQUEST = _descriptor.Descriptor(
+  name='KickRequest',
+  full_name='KickRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='p_id', full_name='KickRequest.p_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=621,
+  serialized_end=648,
+)
+
+
+_KICKRESPONSE = _descriptor.Descriptor(
+  name='KickResponse',
+  full_name='KickResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='KickResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=650,
+  serialized_end=699,
+)
+
+
+_PROMOTIONREQUEST = _descriptor.Descriptor(
+  name='PromotionRequest',
+  full_name='PromotionRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='p_id', full_name='PromotionRequest.p_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=701,
+  serialized_end=733,
+)
+
+
+_PROMOTIONRESPONSE = _descriptor.Descriptor(
+  name='PromotionResponse',
+  full_name='PromotionResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='PromotionResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=735,
+  serialized_end=789,
+)
+
+
+_WORSHIPREQUEST = _descriptor.Descriptor(
+  name='WorshipRequest',
+  full_name='WorshipRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='p_id', full_name='WorshipRequest.p_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=791,
+  serialized_end=821,
+)
+
+
+_WORSHIPRESPONSE = _descriptor.Descriptor(
+  name='WorshipResponse',
+  full_name='WorshipResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='WorshipResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=823,
+  serialized_end=875,
+)
+
 _CREATEGUILDRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
 _JOINGUILDRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
 _EXITGUILDRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
 _EDITORCALLRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_DEALAPPLYRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_CHANGEPRESIDENTRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_KICKRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_PROMOTIONRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
+_WORSHIPRESPONSE.fields_by_name['res'].message_type = guild_common_pb2._GUILDCOMMONRESPONSE
 DESCRIPTOR.message_types_by_name['CreateGuildRequest'] = _CREATEGUILDREQUEST
 DESCRIPTOR.message_types_by_name['CreateGuildResponse'] = _CREATEGUILDRESPONSE
 DESCRIPTOR.message_types_by_name['JoinGuildRequest'] = _JOINGUILDREQUEST
@@ -261,6 +553,16 @@ DESCRIPTOR.message_types_by_name['ExitGuildRequest'] = _EXITGUILDREQUEST
 DESCRIPTOR.message_types_by_name['ExitGuildResponse'] = _EXITGUILDRESPONSE
 DESCRIPTOR.message_types_by_name['EditorCallRequest'] = _EDITORCALLREQUEST
 DESCRIPTOR.message_types_by_name['EditorCallResponse'] = _EDITORCALLRESPONSE
+DESCRIPTOR.message_types_by_name['DealApplyRequest'] = _DEALAPPLYREQUEST
+DESCRIPTOR.message_types_by_name['DealApplyResponse'] = _DEALAPPLYRESPONSE
+DESCRIPTOR.message_types_by_name['ChangePresidentRequest'] = _CHANGEPRESIDENTREQUEST
+DESCRIPTOR.message_types_by_name['ChangePresidentResponse'] = _CHANGEPRESIDENTRESPONSE
+DESCRIPTOR.message_types_by_name['KickRequest'] = _KICKREQUEST
+DESCRIPTOR.message_types_by_name['KickResponse'] = _KICKRESPONSE
+DESCRIPTOR.message_types_by_name['PromotionRequest'] = _PROMOTIONREQUEST
+DESCRIPTOR.message_types_by_name['PromotionResponse'] = _PROMOTIONRESPONSE
+DESCRIPTOR.message_types_by_name['WorshipRequest'] = _WORSHIPREQUEST
+DESCRIPTOR.message_types_by_name['WorshipResponse'] = _WORSHIPRESPONSE
 
 class CreateGuildRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -309,6 +611,66 @@ class EditorCallResponse(_message.Message):
   DESCRIPTOR = _EDITORCALLRESPONSE
 
   # @@protoc_insertion_point(class_scope:EditorCallResponse)
+
+class DealApplyRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DEALAPPLYREQUEST
+
+  # @@protoc_insertion_point(class_scope:DealApplyRequest)
+
+class DealApplyResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DEALAPPLYRESPONSE
+
+  # @@protoc_insertion_point(class_scope:DealApplyResponse)
+
+class ChangePresidentRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CHANGEPRESIDENTREQUEST
+
+  # @@protoc_insertion_point(class_scope:ChangePresidentRequest)
+
+class ChangePresidentResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CHANGEPRESIDENTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:ChangePresidentResponse)
+
+class KickRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _KICKREQUEST
+
+  # @@protoc_insertion_point(class_scope:KickRequest)
+
+class KickResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _KICKRESPONSE
+
+  # @@protoc_insertion_point(class_scope:KickResponse)
+
+class PromotionRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PROMOTIONREQUEST
+
+  # @@protoc_insertion_point(class_scope:PromotionRequest)
+
+class PromotionResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PROMOTIONRESPONSE
+
+  # @@protoc_insertion_point(class_scope:PromotionResponse)
+
+class WorshipRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _WORSHIPREQUEST
+
+  # @@protoc_insertion_point(class_scope:WorshipRequest)
+
+class WorshipResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _WORSHIPRESPONSE
+
+  # @@protoc_insertion_point(class_scope:WorshipResponse)
 
 
 # @@protoc_insertion_point(module_scope)

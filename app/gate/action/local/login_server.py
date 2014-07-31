@@ -44,8 +44,22 @@ def server_login_2(command_id, dynamic_id, request_proto):
     @param request_proto:
     @return:
     """
+    account_key = account_pb2.AccountLoginRequest()
+    account_key.ParseFromString(request_proto)
+    key = account_key.key.key
+    user_name = account_key.user_name
+    password = account_key.password
+    print 'key', key
+    print 'user_name', user_name
+    print 'password', password
+    account_key = account_pb2.AccountResponse()
+    account_key.result = True
+    return account_key.SerializeToString()
+
+
+
     # 登录数据解析
-    account_key = account_pb2.LoginResquest()
+    account_key = account_pb2.AccountLoginRequest()
     account_key.ParseFromString(request_proto)
     key = account_key.key.key
     user_name = account_key.user_name

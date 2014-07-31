@@ -5,12 +5,13 @@ created by server on 14-7-16下午2:55.
 
 from app.game.logic.common.check import have_player
 from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
-    HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest
+    HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest, HeroSellRequest
 from app.proto_file.hero_response_pb2 import GetHerosResponse, HeroUpgradeResponse, \
     HeroSacrificeResponse, HeroBreakResponse, HeroComposeResponse
 from shared.db_opear.configs_data.game_configs import base_config, item_config, \
     hero_breakup_config, chip_config, hero_config
-from app.game.logic.item_group_helper import is_afford, consume
+from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
+from app.proto_file.player_response_pb2 import GameResourcesResponse
 
 
 @have_player
@@ -78,31 +79,28 @@ def hero_sacrifice(dynamicid, data, **kwargs):
     args = HeroSacrificeRequest()
     args.ParseFromString(data)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
-    total_hero_soul, exp_item_no, exp_item_num = hero_sacrifice_oper(heros)
+    response = hero_sacrifice_oper(heros, player)
     # remove hero
     player.hero_component.delete_heros_by_nos(args.hero_nos)
-    response = HeroSacrificeResponse()
-    response.res.result = True
-    response.hero_soul = total_hero_soul
-    response.exp_item_no = exp_item_no
-    response.exp_item_num = exp_item_num
     return response.SerializeToString()
 
 
-def hero_sacrifice_oper(heros):
+def hero_sacrifice_oper(heros, player):
     """
     武将献祭，返回总武魂、经验药水
     :param heros: 被献祭的武将
     :return total_hero_soul:总武魂数量, exp_item_no:经验药水编号, exp_item_num:经验药水数量
     """
     total_exp = 0
-    total_hero_soul = 0
     exp_item_no = 0
     exp_item_num = 0
 
+    response = GameResourcesResponse()
     for hero in heros:
-        hero_soul = hero_config.get(hero.hero_no).sacrifice_hero_soul
-        total_hero_soul += hero_soul
+        sacrifice_gain = hero_config.get(hero.hero_no).sacrificeGain
+        return_data = gain(player, sacrifice_gain)
+        get_return(player, return_data, response)
+        # 经验
         exp = hero.get_all_exp()
         total_exp += exp
 
@@ -115,8 +113,11 @@ def hero_sacrifice_oper(heros):
             exp_item_no = item_no
             exp_item_num = total_exp/exp
             break
-
-    return total_hero_soul, exp_item_no, exp_item_num
+    item_pb = response.items.add()
+    item_pb.item_no = exp_item_no
+    item_pb.item_num = exp_item_num
+    response.res.result = True
+    return response
 
 
 @have_player
@@ -147,5 +148,24 @@ def hero_compose(dynamicid, data, **kwargs):
     response.res.result = True
     hero.update_pb(response.hero)
     return response.SerializeToString()
+
+
+@have_player
+def hero_sell(dynamicid, data, **kwargs):
+    """武将出售"""
+    player = kwargs.get('player')
+
+    args = HeroSellRequest()
+    args.ParseFromString(data)
+    hero_nos = args.hero_nos
+
+    response = GameResourcesResponse()
+    for hero_no in hero_nos:
+        sell_gain = hero_config.get(hero_no).sellGain
+        return_data = gain(player, sell_gain)
+        get_return(player, return_data, response)
+
+    response.res.result = True
+    return response
 
 

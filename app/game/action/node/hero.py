@@ -38,6 +38,12 @@ def hero_compose_106(dynamicid, data):
     return hero_compose(dynamicid, data)
 
 
+@remote_service_handle
+def hero_sell_107(dynamicid, data):
+    """武将出售"""
+    return hero_sell(dynamicid, data)
+
+
 
 
 

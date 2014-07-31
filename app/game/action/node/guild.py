@@ -44,3 +44,35 @@ def deal_apply_805(dynamic_id, pro_data):
     """
     print('cuick,EEEEEEEEEEEEEEEEEEE,01,node,exit_guild_805')
     return deal_apply(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def change_president_806(dynamic_id, pro_data):
+    """
+    """
+    print('cuick,FFFFFFFFFFFFFFFFFFFFF,01,node,change_president_806')
+    return change_president(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def kick_807(dynamic_id, pro_data):
+    """
+    """
+    print('cuick,GGGGGGGGGGGGGGGGGGGGGG,01,node,change_president_806')
+    return kick(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def promotion_808(dynamic_id, pro_data):
+    """
+    """
+    print('cuick,HHHHHHHHHHHHHHHHHHHHHH,01,node,change_president_806')
+    return promotion(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def worship_809(dynamic_id, pro_data):
+    """
+    """
+    print('cuick,HHHHHHHHHHHHHHHHHHHHHH,01,node,change_president_806')
+    return worship(dynamic_id, pro_data)

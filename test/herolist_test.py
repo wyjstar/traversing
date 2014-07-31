@@ -12,7 +12,7 @@ import struct
 from twisted.internet import reactor, protocol
 
 from app.proto_file.player_response_pb2 import PlayerResponse
-from app.proto_file.player_request_pb2 import PlayerLoginResquest
+from app.proto_file.player_request_pb2 import PlayerLoginRequest
 
 
 def sendData(sendstr, commandId):
@@ -56,7 +56,7 @@ class EchoClient(protocol.Protocol):
         self.transport.write(sendData(argument.SerializeToString(), command_id))
 
     def connectionMade(self):
-        argument = PlayerLoginResquest()
+        argument = PlayerLoginRequest()
         argument.token = '0e4157d1dc4b70ca7269226318b85354'
         self.dateSend(argument, 4)
 
