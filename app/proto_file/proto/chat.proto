@@ -1,0 +1,32 @@
+package proto_file.chat.chat;
+
+message ChatObjectInfo{
+     required int32 id = 1;//角色id
+     optional string nickname=2;//角色昵称
+}
+
+//登录 command:1001
+message LoginToChatRequest{
+	required ChatObjectInfo owner = 1;
+}
+
+// 发言
+message ChatConectingRequest{
+	required ChatObjectInfo owner = 1; // 发言角色信息
+    required int32 channel = 2;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
+    required string content = 3;//聊天内容
+    optional ChatObjectInfo other = 4; // 私聊角色信息
+}
+
+//返回结果
+message ChatResponse{
+     required bool result = 1;
+     optional string message = 2;
+}
+
+//推送聊天信息
+message chatMessageResponse{
+    required int32 channel = 1;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
+	required ChatObjectInfo owner = 2;
+    required string content = 5;//消息内容
+}
