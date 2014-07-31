@@ -5,7 +5,8 @@ created by server on 14-7-9上午11:28.
 from app.game.logic import item_group_helper
 from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment
 from app.game.service.gatenoteservice import remote_service_handle
-from app.proto_file import equipment_pb2
+from app.proto_file import equipment_request_pb2
+from app.proto_file import equipment_response_pb2
 
 
 @remote_service_handle
@@ -15,18 +16,16 @@ def get_equipments_401(dynamic_id, pro_data):
     @param pro_data:
     @return:
     """
-    request = equipment_pb2.GetEquipmentsRequest()
+    request = equipment_request_pb2.GetEquipmentsRequest()
     request.ParseFromString(pro_data)
     get_type = request.type
     get_id = request.id
 
     equipments = get_equipments_info(dynamic_id, get_type, get_id)
 
-    response = equipment_pb2.GetEquipmentResponse()
+    response = equipment_response_pb2.GetEquipmentResponse()
     res = response.res
     res.result = True
-
-    print 'equipments:', equipments
 
     for obj in equipments:
         print obj.base_info.__dict__
@@ -47,7 +46,7 @@ def enhance_equipment_402(dynamic_id, pro_data):
     @param pro_data:
     @return:
     """
-    request = equipment_pb2.EnhanceEquipmentRequest()
+    request = equipment_request_pb2.EnhanceEquipmentRequest()
     request.ParseFromString(pro_data)
     equipment_id = request.id
     enhance_type = request.type
@@ -57,7 +56,7 @@ def enhance_equipment_402(dynamic_id, pro_data):
 
     result = enhance_info.get('result')
 
-    response = equipment_pb2.EnhanceEquipmentResponse()
+    response = equipment_response_pb2.EnhanceEquipmentResponse()
     res = response.res
     res.result = result
     if not result:
@@ -83,13 +82,13 @@ def compose_equipment_403(dynamic_id, pro_data):
     @param pro_data:
     @return:
     """
-    request = equipment_pb2.ComposeEquipmentRequest()
+    request = equipment_request_pb2.ComposeEquipmentRequest()
     request.ParseFromString()
     equipment_no = request.no
 
     data = compose_equipment(dynamic_id, equipment_no)
     result = data.get('result')
-    response = equipment_pb2.ComposeEquipmentResponse()
+    response = equipment_response_pb2.ComposeEquipmentResponse()
     res = response.res
     if not result:
         res.result_no = data.get('result_no')
@@ -128,27 +127,23 @@ def melting_equipment_405(dynamic_id, pro_data):
     @param pro_data:
     @return:
     """
-    request = equipment_pb2.MeltingEquipmentRequest()
+    request = equipment_request_pb2.MeltingEquipmentRequest()
     request.ParseFromString()
 
     equipment_id = request.id
     data = melting_equipment(dynamic_id, equipment_id)
 
     result = data.get('result')
-    response = equipment_pb2.MeltingEquipmentResponse()
+    response = equipment_response_pb2.MeltingEquipmentResponse()
     res = response.res
     if not result:
         res.result_no = data.get('result_no')
         res.message = data.get('message')
         return response.SerializePartialToString()
 
+    player = data.get('player')
     gain = data.get('gain', [])
+    item_group_helper.get_return(player, gain, response.cgr)
 
-    item_group_helper.get_return()
-
-    # for melting_item in melting_items:
-    #     add = response.cgr.add()
-    #     add.id = melting_item.type_id
-    #     add.no = melting_item.
-    #     add.item_no
+    return response.SerializePartialToString()
 
