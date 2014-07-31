@@ -3,7 +3,7 @@
 created by server on 14-5-20下午12:11.
 """
 from app.gate.service.local.gateservice import local_service_handle
-from app.proto_file.chat import chat_pb2
+from app.proto_file import chat_pb2
 from gfirefly.server.globalobject import GlobalObject
 
 

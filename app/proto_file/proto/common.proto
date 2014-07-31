@@ -1,3 +1,11 @@
+import "hero.proto";
+import "equipment.proto";
+import "item.proto";
+import "hero_chip.proto";
+import "equipment_chip.proto";
+import "player.proto";
+import "common.proto";
+
 
 message CommonResponse
 {
@@ -6,9 +14,12 @@ message CommonResponse
     optional string message = 3;
 }
 
-// 通用游戏资源
-message CommonGameResources{
-	required int32 id = 1;  //资源类型编号
-	optional int32 num = 2;  //资源数量
-	optional int32 item_no = 3;  //资源类中物品ID
+message GameResourcesResponse
+{
+    repeated HeroPB heros = 2;
+    repeated EquipmentPB equipments = 3;
+    repeated ItemPB items = 4;
+    repeated HeroChipPB hero_chips = 5;
+    repeated EquipmentChipPB equipment_chips = 6;
+    optional FinancePB finance = 7;
 }

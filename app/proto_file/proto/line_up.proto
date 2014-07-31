@@ -1,6 +1,6 @@
+import "common.proto";
 import "hero.proto";
 import "equipment.proto";
-import "common.proto";
 
 //格子装备
 message SlotEquipment{

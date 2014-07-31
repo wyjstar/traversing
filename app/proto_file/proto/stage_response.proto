@@ -1,0 +1,27 @@
+
+import "stage.proto";
+import "common.proto";
+
+//请求关卡信息返回 command:901
+message StageInfoResponse{
+	repeated Stage stage = 1;
+
+}
+
+//请求章节奖励信息返回 command:902
+message ChapterInfoResponse{
+	repeated StageAward stage_award = 1;
+}
+
+// 进入关卡战斗返回 command:903
+message StageStartResponse{
+	required CommonResponse res = 1;
+	optional int32 drop_num = 2;  //掉落数量
+	repeated BattleUnit red = 4; //红方数据 自己
+	repeated BattleUnitGrop blue = 5; //对方数据
+}
+
+// 关卡结算返回 command:904
+message StageSettlementResponse{
+	optional GameResourcesResponse drops = 2;
+}

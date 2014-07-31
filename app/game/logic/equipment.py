@@ -128,10 +128,11 @@ def melting_equipment(dynamic_id, equipment_id, **kwargs):
     equipment_obj = player.equipment.get_by_id(equipment_id)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
-    melting_items = equipment_obj.equipment_obj
-    item_group_helper.gain(player, melting_items)
+    melting_items = equipment_obj.melting_item
+    gain = item_group_helper.gain(player, melting_items)
 
-    return {'result': True, 'gain': melting_items}
+    return {'result': True, 'gain': gain, 'player': player}
+
 
 
 
