@@ -1,5 +1,5 @@
-import "hero.proto";
 import "common.proto";
+import "hero.proto";
 
 //请求武将列表
 message GetHerosResponse

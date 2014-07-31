@@ -8,13 +8,12 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
-import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='item.proto',
   package='',
-  serialized_pb='\n\nitem.proto\x1a\x0c\x63ommon.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"*\n\x10GetItemsResponse\x12\x16\n\x05items\x18\x01 \x03(\x0b\x32\x07.ItemPB')
+  serialized_pb='\n\nitem.proto\"+\n\x06ItemPB\x12\x0f\n\x07item_no\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\"*\n\x10GetItemsResponse\x12\x16\n\x05items\x18\x01 \x03(\x0b\x32\x07.ItemPB')
 
 
 
@@ -49,8 +48,8 @@ _ITEMPB = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=28,
-  serialized_end=71,
+  serialized_start=14,
+  serialized_end=57,
 )
 
 
@@ -77,8 +76,8 @@ _GETITEMSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=73,
-  serialized_end=115,
+  serialized_start=59,
+  serialized_end=101,
 )
 
 _GETITEMSRESPONSE.fields_by_name['items'].message_type = _ITEMPB

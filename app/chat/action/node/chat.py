@@ -4,7 +4,7 @@ created by server on 14-5-20下午8:33.
 """
 from app.chat.core.chater_manager import ChaterManager
 from app.chat.service.node.chatgateservice import nodeservice_handle
-from app.proto_file.chat import chat_pb2
+from app.proto_file import chat_pb2
 from app.chat.service.node.chatgateservice import noderemote
 
 

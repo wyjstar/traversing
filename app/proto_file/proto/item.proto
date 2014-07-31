@@ -1,4 +1,4 @@
-import "common.proto";
+
 // 道具
 message ItemPB{
 	required int32 item_no = 1;  //道具编号
