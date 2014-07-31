@@ -1,10 +1,11 @@
 import "common.proto";
 
+//商城请求 command:501/502/503/504
 message ShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
 }
-
+//商城返回 command:501/502/503/504
 message ShopResponse
 {
     required CommonResponse res = 1;

@@ -58,11 +58,12 @@ message PlayerPB{
     optional FinancePB finance = 2;
 
 }
+//商城请求 command:501/502/503/504
 message ShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
 }
-
+//商城返回 command:501/502/503/504
 message ShopResponse
 {
     required CommonResponse res = 1;
@@ -84,7 +85,7 @@ message HeroChipPB{
 	required int32 hero_chip_num = 2;  //数量
 }
 
-// 返回碎片列表
+// 返回碎片列表 command:108
 message GetHeroChipsResponse
 {
     repeated HeroChipPB hero_chips = 1;
@@ -96,6 +97,7 @@ message CommonResponse
     optional string message = 3;
 }
 
+// 数据集合
 message GameResourcesResponse
 {
     repeated HeroPB heros = 1;
@@ -151,16 +153,17 @@ message MeltingEquipmentRequest{
 	required string id = 1; // 装备ID
 }
 
+//武魂商城购买请求 command:506
 message SoulShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
 }
-
+//获取武魂商城列表 command:507
 message GetShopItemsResponse
 {
     repeated int32 id = 1;
 }
-
+//武魂商城购买响应 command:506
 message SoulShopResponse
 {
     required CommonResponse res = 1;
@@ -422,7 +425,8 @@ message StageStartResponse{
 // 关卡结算返回 command:904
 message StageSettlementResponse{
 	optional GameResourcesResponse drops = 2;
-}//武将升级，使用道具 command:103
+}
+//武将升级，使用道具 command:103
 message HeroUpgradeWithItemRequest
 {
     required int32 hero_no = 1;
@@ -458,6 +462,7 @@ message GetItemsResponse{
 	repeated ItemPB items = 1;
 }
 
+// 请求全部道具 command：302
 message ItemUseResponse
 {
     required CommonResponse res = 1;
