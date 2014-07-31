@@ -40,3 +40,11 @@ class ItemActionTest(unittest.TestCase):
         self.assertEqual(game_resources_response.res.result, True)
         self.assertEqual(game_resources_response.finance.coin, 2000)
 
+        item_pb = ItemPB()
+        item_pb.item_no = 1000112
+        item_pb.item_num = 10000
+        game_resources_response_str = remoteservice.callTarget(302, 1, item_pb.SerializeToString())
+        game_resources_response = GameResourcesResponse()
+        game_resources_response.ParseFromString(game_resources_response_str)
+        self.assertEqual(game_resources_response.res.result, False)
+
