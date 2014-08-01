@@ -9,6 +9,7 @@ from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import CreateGuildRequest, CreateGuildResponse, \
     JoinGuildRequest, JoinGuildResponse, ExitGuildRequest, ExitGuildResponse, \
     EditorCallRequest, EditorCallResponse
+from app.proto_file.friend_pb2 import *
 
 
 def sendData(sendstr, commandId):
@@ -84,7 +85,7 @@ class EchoClient(protocol.Protocol):
 
                 self._times += 1
             else:
-                argument = account_pb2.LoginRequest()
+                argument = account_pb2.LoginResquest()
                 argument.key.key = 'ea93b955c76de71380559058cdcd6932'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
@@ -103,6 +104,10 @@ class EchoClient(protocol.Protocol):
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
+
+            request = FriendCommon()
+            request.target_id = 2
+            self.dateSend(request, 1101)
             # --------801创建公会------------
             # argument1 = CreateGuildRequest()
             # argument1.name = '一二三四96'
