@@ -52,11 +52,16 @@ def use_item(dynamic_id, pro_data, **kwargs):
         # 消耗key
         box_key.num -= func_args2 * item_num
         player.item_package.save_data()
+    # 消耗道具
+    item = player.item_package.get_item(item_no)
+    item.num -= item_num
+
     big_bag = BigBag(drop_id)
     for i in range(item_num):
         drop_item_group = big_bag.get_drop_items()
         return_data = gain(player, drop_item_group)
         get_return(player, return_data, response.gain)
+
     return response.SerializeToString()
 
 

@@ -39,6 +39,9 @@ class ItemActionTest(unittest.TestCase):
         self.assertEqual(response.res.result, True)
         self.assertEqual(response.gain.finance.coin, 2000)
 
+        item = self.player.item_package.get_item(item_pb.item_no)
+        self.assertEqual(item.num, 1998)
+
         item_pb = ItemPB()
         item_pb.item_no = 1000112
         item_pb.item_num = 10000

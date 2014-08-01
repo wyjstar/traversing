@@ -14,6 +14,8 @@ for file_name in os.listdir(root_path):
     temp = open(file_path, "r")
     data = temp.readlines()
     for line in data:
-        if not line.startswith("import"):
+        if not line.startswith("import") and not line.startswith("package"):
             result_file.write(line)
+
+    result_file.write("\n")
 result_file.close()
