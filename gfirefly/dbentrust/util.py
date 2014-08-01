@@ -138,6 +138,8 @@ def DeleteFromDB(tablename, props):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
     cursor.close()
@@ -157,6 +159,8 @@ def InsertIntoDB(tablename, data):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
     cursor.close()
@@ -175,6 +179,8 @@ def UpdateWithDict(tablename, props, prere):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
     cursor.close()
