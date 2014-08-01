@@ -34,13 +34,12 @@ def add_friend_request(dynamic_id, data, **kwargs):
             return response.SerializePartialToString()  # fail
 
         push_object(1010, player.base_info.id, invitee_player.dynamic_id)
+        invitee_player.friends.save_data()
     else:
         friend_offline = FriendOffline(request.target_id)
         if not friend_offline.add_applicant(player.base_info.id):
             response.result = 2  # offline fail
             return response.SerializePartialToString()  # fail
-
-    invitee_player.friends.save_data()
 
     return response.SerializePartialToString()  # fail
 

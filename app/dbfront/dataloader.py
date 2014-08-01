@@ -18,6 +18,7 @@ def registe_madmin():
 
     MAdminManager().registe(memmode.tb_character_equipments)
     MAdminManager().registe(memmode.tb_equipment_info)
+    MAdminManager().registe(memmode.tb_character_friend)
 
 
 
