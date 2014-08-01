@@ -24,4 +24,8 @@ message GameLoginResponse{
      optional int32 excellent_hero = 12;
      optional int32 fine_equipment = 13;
      optional int32 excellent_equipment = 14;
+
+     //other
+     optional int32 stamina = 15;
+     optional int32 pvp_times = 16;
 }

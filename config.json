@@ -138,7 +138,9 @@
                 "fine_hero_last_pick_time": "simple",
                 "excellent_hero_last_pick_time": "simple",
                 "fine_equipment_last_pick_time": "simple",
-                "excellent_equipment_last_pick_time": "simple"
+                "excellent_equipment_last_pick_time": "simple",
+                "stamina": "simple",
+                "pvp_times": "simple"
             }
         },
         "tb_nickname_mapping": {
