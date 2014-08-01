@@ -4,5 +4,6 @@ message PlayerResponse
 {
     required int64 id = 1;
     required string nickname = 2;
+
 }
 

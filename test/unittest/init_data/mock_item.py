@@ -18,9 +18,9 @@ def init_item():
 
 
     # box
-    item6 = Item(1000112, 2000)
+    item6 = Item(1000112, 5)
     # key
-    item7 = Item(1000113, 2000)
+    item7 = Item(1000113, 5)
 
     data = {'id': 1, 'items': ''}
     tb_character_item_package.new(data)

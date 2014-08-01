@@ -137,6 +137,10 @@ class PlayerCharacter(Character):
         self._finance = value
 
     @property
+    def level(self):
+        return self._level
+
+    @property
     def last_pick_time(self):
         return self._last_pick_time
 

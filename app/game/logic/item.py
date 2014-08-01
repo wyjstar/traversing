@@ -33,6 +33,14 @@ def use_item(dynamic_id, pro_data, **kwargs):
     item_no = item_pb.item_no
     item_num = item_pb.item_num
     item_config_item = item_config.get(item_no)
+    if not item_config_item:
+        print("item %d is not itemconfig." % item_no)
+
+        return
+    print "item_no", item_no
+    print "item_num", item_num
+    print "item_config_item", item_config_item
+    print ("item????????", item_config_item.dropId)
     item_func = item_config_item.func
     drop_id = item_config_item.dropId
     func_args1 = item_config_item.func_args1
