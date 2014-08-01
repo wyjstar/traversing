@@ -12,6 +12,7 @@ message CommonResponse
     optional string message = 3;
 }
 
+// 数据集合
 message GameResourcesResponse
 {
     repeated HeroPB heros = 1;

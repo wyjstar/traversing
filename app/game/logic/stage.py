@@ -47,10 +47,16 @@ def fight_start(dynamic_id, stage_id, **kwargs):
     """
     player = kwargs.get('player')
 
+    # 校验关卡是否开启
+    state = player.stage_component.check_stage_state(stage_id)
+
+    if state == -2:  # 未开启
+        return {'result': False}
+
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
     red_units, blue_units, drop_num = fight_cache_component.fighting_start()
-    return red_units, blue_units, drop_num
+    return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num}
 
 
 @have_player

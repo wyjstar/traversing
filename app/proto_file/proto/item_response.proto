@@ -6,6 +6,7 @@ message GetItemsResponse{
 	repeated ItemPB items = 1;
 }
 
+// 道具使用返回 command：302
 message ItemUseResponse
 {
     required CommonResponse res = 1;

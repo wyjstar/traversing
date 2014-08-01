@@ -18,7 +18,7 @@ def character_login_4(key, dynamic_id, request_proto):
     @return:
     """
 
-    argument = player_request_pb2.PlayerLoginRequest()
+    argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
     token = argument.token
 
@@ -65,6 +65,8 @@ def __character_login(dynamic_id, token):
     GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
     v_character.node = now_node
     SceneSerManager().add_client(now_node, dynamic_id)
+
+    print "login success++++++++++++++++++++++++++"
 
     return {'result': True, 'nickname': character_info.get('nickname'), 'character_id': character_info.get('id')}
 

@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"\x19\n\x0bShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"{\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"\x19\n\x0bShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"{\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -63,14 +63,14 @@ _SHOPRESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='consume', full_name='ShopResponse.consume', index=1,
-      number=2, type=11, cpp_type=10, label=2,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='gain', full_name='ShopResponse.gain', index=2,
-      number=3, type=11, cpp_type=10, label=2,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

@@ -14,6 +14,7 @@ message HeroPB
     optional int32 break_level = 4;
     repeated LinkPB links = 5;
 }
+
 message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
 	optional int32 quality = 2;  //战斗单位品质
@@ -47,6 +48,7 @@ message StageAward{
 	repeated int32 award = 2;  //奖励数组 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
 	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
 }
+
 message FinancePB{
     optional int32 coin = 1;
     optional int32 gold = 2;
@@ -58,17 +60,20 @@ message PlayerPB{
     optional FinancePB finance = 2;
 
 }
+
+//商城请求 command:501/502/503/504
 message ShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
 }
-
+//商城返回 command:501/502/503/504
 message ShopResponse
 {
     required CommonResponse res = 1;
-    required GameResourcesResponse consume = 2;
-    required GameResourcesResponse gain = 3;
-}// 装备碎片
+    optional GameResourcesResponse consume = 2;
+    optional GameResourcesResponse gain = 3;
+}
+// 装备碎片
 message EquipmentChipPB{
 	required int32 equipment_chip_no = 1;  //编号
 	required int32 equipment_chip_num = 2;  //数量
@@ -78,17 +83,19 @@ message EquipmentChipPB{
 message GetEquipmentChipsResponse
 {
     repeated EquipmentChipPB equipment_chips = 1;
-}// 武将碎片
+}
+// 武将碎片
 message HeroChipPB{
 	required int32 hero_chip_no = 1;  //编号
 	required int32 hero_chip_num = 2;  //数量
 }
 
-// 返回碎片列表
+// 返回碎片列表 command:108
 message GetHeroChipsResponse
 {
     repeated HeroChipPB hero_chips = 1;
 }
+
 message CommonResponse
 {
     required bool result = 1;  //处理结果 True：正确
@@ -96,6 +103,7 @@ message CommonResponse
     optional string message = 3;
 }
 
+// 数据集合
 message GameResourcesResponse
 {
     repeated HeroPB heros = 1;
@@ -104,7 +112,8 @@ message GameResourcesResponse
     repeated HeroChipPB hero_chips = 4;
     repeated EquipmentChipPB equipment_chips = 5;
     optional FinancePB finance = 6;
-}// 游戏服登录 command：4
+}
+// 游戏服登录 command：4
 message GameLoginRequest{
 	required string token = 1;
 }
@@ -115,6 +124,7 @@ message GameLoginResponse{
      optional string nickname = 2;
      optional string message = 3;
 }
+
 // 请求全部装备 command：401
 message GetEquipmentsRequest{
 	required int32 type = 1; //请求装备类型 -1：一件 0：全部 1：武器 2：头盔 3：衣服 4：项链 5：饰品 6：宝物
@@ -151,22 +161,25 @@ message MeltingEquipmentRequest{
 	required string id = 1; // 装备ID
 }
 
+
+//武魂商城购买请求 command:506
 message SoulShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
 }
-
+//获取武魂商城列表 command:507
 message GetShopItemsResponse
 {
     repeated int32 id = 1;
 }
-
+//武魂商城购买响应 command:506
 message SoulShopResponse
 {
     required CommonResponse res = 1;
     required GameResourcesResponse consume = 2;
     required GameResourcesResponse gain = 3;
 }
+
 // add_friend_common 好友
 message FriendCommon{
 	required int32 target_id = 1;  // invitee id
@@ -204,6 +217,7 @@ message GetPlayerFriendsResponse{
     repeated CharacterInfo blacklist = 2;
     repeated CharacterInfo applicant_list = 3;
 }
+
 //请求武将列表 command:101
 message GetHerosResponse
 {
@@ -246,13 +260,13 @@ message HeroSellResponse
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
 }
+
 message GuildCommonResponse
 {
     required bool result = 1;  //处理结果 True：正确
     optional int32 result_no = 2;
     optional bytes message = 3;
-}package proto_file.chat.chat;
-
+}
 message ChatObjectInfo{
      required int32 id = 1;//角色id
      optional string nickname=2;//角色昵称
@@ -284,11 +298,13 @@ message chatMessageResponse{
     required string content = 5;//消息内容
 }
 
+
 // 道具
 message ItemPB{
 	required int32 item_no = 1;  //道具编号
 	required int32 item_num = 2;  //道具数量
 }
+
 
 
 
@@ -301,6 +317,7 @@ message PlayerLoginRequest
 message CreatePlayerRequest{
      optional string nickname = 1;//角色昵称
 }
+
 
 
 // 注册 command:  1
@@ -338,6 +355,7 @@ message AccountLoginRequest{
 //绑定 request: command:3, data:AccountInfo
 //    response: AccountResponse
 
+
 //请求关卡信息 command:901
 message StageInfoRequest{
 	required int32 stage_id = 1; //关卡编号 0: 全部信息
@@ -359,6 +377,7 @@ message StageSettlementRequest{
 	required int32 stage_id = 1; //关卡编号
 	required int32 result = 2;  //输赢
 }
+
 
 
 //格子装备
@@ -400,6 +419,7 @@ message ChangeHeroRequest{
 	optional int32 hero_no = 2; // 英雄编号
 }
 
+
 //请求关卡信息返回 command:901
 message StageInfoResponse{
 	repeated Stage stage = 1;
@@ -422,7 +442,9 @@ message StageStartResponse{
 // 关卡结算返回 command:904
 message StageSettlementResponse{
 	optional GameResourcesResponse drops = 2;
-}//武将升级，使用道具 command:103
+}
+
+//武将升级，使用道具 command:103
 message HeroUpgradeWithItemRequest
 {
     required int32 hero_no = 1;
@@ -453,16 +475,19 @@ message HeroSellRequest
 {
     repeated int32 hero_nos = 1;
 }
+
 // 请求全部道具 command：301
 message GetItemsResponse{
 	repeated ItemPB items = 1;
 }
 
+// 道具使用返回 command：302
 message ItemUseResponse
 {
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
 }
+
 // 创建公会 command：801
 message CreateGuildRequest{
 	required bytes name = 1;  //公会名
@@ -536,6 +561,7 @@ message WorshipRequest{
 message WorshipResponse{
 	required GuildCommonResponse res = 1;
 }
+
 // 请求全部装备返回 command：401
 message GetEquipmentResponse{
 	required CommonResponse res = 1;
@@ -568,11 +594,13 @@ message MeltingEquipmentResponse{
 	optional GameResourcesResponse cgr = 3; // 消耗
 }
 
+
 message PlayerResponse
 {
     required int64 id = 1;
     required string nickname = 2;
 }
+
 
 
 // 套装属性
@@ -598,4 +626,5 @@ message EquipmentPB{
 	optional int32 hero_no = 5;  //装备武将编号
 	optional SetEquipment set = 6;
 }
+
 

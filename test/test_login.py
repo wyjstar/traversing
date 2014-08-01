@@ -15,6 +15,8 @@ from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file import line_up_pb2
 from app.proto_file import stage_pb2
 from app.proto_file.account_pb2 import AccountResponse, AccountLoginRequest
+from app.proto_file.game_pb2 import GameLoginRequest, GameLoginResponse
+from app.proto_file.hero_response_pb2 import GetHerosResponse
 
 
 def sendData(sendstr,commandId):
@@ -80,33 +82,24 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = PlayerLoginRequest()
-            argument.token = 'ca1d102f607231552fe610495d85e51e'
-            # self.dateSend(argument, 4)
+            argument = GameLoginRequest()
+            argument.token = argument.token
+            self.dateSend(argument, 4)
 
-        if command == 901:
-            argument = stage_pb2.StageInfoResponse()
+        if command == 4:
+            argument = GameLoginResponse()
             argument.ParseFromString(message)
+            print argument
+            self.dateSend(argument, 101)
 
-            for stage in argument.stage:
-                print stage
-
-            argument = stage_pb2.ChapterInfoRequest()
-            argument.chapter_id = 0
-
-            self.dateSend(argument, 902)
-
-        if command == 902:
-            argument = stage_pb2.ChapterInfoResponse()
+        if command == 101:
+            print message, "?????"
+            argument = GetHerosResponse()
             argument.ParseFromString(message)
+            print ">>>>>>>>>>>>>>>>>>"
+            print argument.heros
 
-            for award in argument.stage_award:
-                print award
 
-
-            argument = stage_pb2.StageStartRequest()
-            argument.stage_id = 100100
-            self.dateSend(argument, 903)
 
 
     def connectionLost(self, reason):
