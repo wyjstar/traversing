@@ -17,7 +17,6 @@ class FriendComponent(Component):
 
     def init_data(self):
         friend_data = tb_character_friend.getObjData(self.owner.base_info.id)
-        print '>>>>> player id:%d friends!:%s' % (self.owner.base_info.id, friend_data)
 
         if friend_data:
             self._friends = friend_data.get('friends')
