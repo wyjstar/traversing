@@ -18,22 +18,19 @@ def character_login_4(key, dynamic_id, request_proto):
     @return:
     """
 
-    argument = player_request_pb2.PlayerLoginRequest()
+    argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
     token = argument.token
 
-    result = __character_login(dynamic_id, token)
-    print 'result:', result
-    argument = game_pb2.GameLoginResponse()
-    argument.result = result.get('result')
+    response = __character_login(dynamic_id, token)
 
-    nickname = result.get('nickname', None)
+    nickname = response[0].nickname
     if nickname:
         argument.nickname = nickname
         #TODO 起名时候
         # 聊天室登录
-        GlobalObject().root.callChild('chat', 1001, result.get('character_id'), dynamic_id, nickname)
-    return argument.SerializePartialToString()
+        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname)
+    return response[0].SerializePartialToString()
 
 
 def enter_scene(dynamic_id):
@@ -62,10 +59,14 @@ def __character_login(dynamic_id, token):
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
-    GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+
     v_character.node = now_node
     SceneSerManager().add_client(now_node, dynamic_id)
 
-    return {'result': True, 'nickname': character_info.get('nickname'), 'character_id': character_info.get('id')}
+    print "login success++++++++++++++++++++++++++"
+    response = game_pb2.GameLoginResponse()
+    response.ParseFromString(player_data)
+    return response, character_info.get('id')
 
 

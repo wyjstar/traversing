@@ -29,7 +29,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
             response.result = False
             response.message = '消费不足！'
         return_data = consume(player, shop_item.consume)  # 消耗
-        return_data(response.consume)
+        get_return(player, return_data, response.consume)
     return_data = gain(player, shop_item.gain)  # 获取
     extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
 

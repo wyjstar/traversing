@@ -22,7 +22,6 @@ from app.game.component.character_guild import CharacterGuildComponent
 import json
 
 
-
 class PlayerCharacter(Character):
     """玩家角色类
     """
@@ -34,8 +33,8 @@ class PlayerCharacter(Character):
         Character.__init__(self, cid, name)
 
         self._character_type = const.PLAYER_TYPE  # 设置角色类型为玩家角色
-        self._dynamic_id = dynamic_id   # 角色登陆服务器时的动态id
-        #--------角色的各个组件类------------
+        self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
+        # --------角色的各个组件类------------
         # TODO
 
         self._hero_component = CharacterHerosComponent(self)  # 武将列表
@@ -52,7 +51,8 @@ class PlayerCharacter(Character):
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
         self._friends = FriendComponent(self)  # friend system
         # self._guild = CharacterGuildComponent(self)  # 公会组件
-
+        self._stamina = 100  # 体力
+        self._pvp_times = 0  # pvp次数
         self._mmode = None
 
         if status:
@@ -69,7 +69,7 @@ class PlayerCharacter(Character):
             log.msg("Init_player %s error!" + str(pid))
             return
 
-        #------------角色信息表数据---------------
+        # ------------角色信息表数据---------------
         nickname = character_info['nickname']
         coin = character_info['coin']
         gold = character_info['gold']
@@ -80,8 +80,10 @@ class PlayerCharacter(Character):
         excellent_hero_last_pick_time = character_info['excellent_hero_last_pick_time']
         fine_equipment_last_pick_time = character_info['fine_equipment_last_pick_time']
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
+        stamina = character_info['stamina']
+        pvp_times = character_info['pvp_times']
 
-        #------------初始化角色基础信息组件---------
+        # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
 
         #------------初始化角色货币信息------------
@@ -108,9 +110,9 @@ class PlayerCharacter(Character):
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._friends.init_data()
         # self._guild.init_data()
-
-
         # self._stage.init_data()
+        self._stamina = stamina
+        self._pvp_times = pvp_times
 
     @property
     def character_type(self):
@@ -135,6 +137,10 @@ class PlayerCharacter(Character):
     @finance.setter
     def finance(self, value):
         self._finance = value
+
+    @property
+    def level(self):
+        return self._level
 
     @property
     def last_pick_time(self):
@@ -193,3 +199,23 @@ class PlayerCharacter(Character):
     def guild(self):
         return self._guild
 
+    @property
+    def pvp_times(self):
+        return self._pvp_times
+
+    @pvp_times.setter
+    def pvp_times(self, value):
+        self._pvp_times = value
+
+    @property
+    def stamina(self):
+        return self._stamina
+
+    @stamina.setter
+    def stamina(self, value):
+        self._stamina = value
+
+    def save_data(self):
+        pid = self.base_info.id
+        character_info = tb_character_info.getObj(pid)
+        character_info.update_multi(dict(stamina=self._stamina, pvp_times=self._pvp_times))

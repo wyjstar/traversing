@@ -24,7 +24,9 @@ def init_player():
                      'fine_hero_last_pick_time': 0,
                      'excellent_hero_last_pick_time': 0,
                      'fine_equipment_last_pick_time': 0,
-                     'excellent_equipment_last_pick_time': 0}
+                     'excellent_equipment_last_pick_time': 0,
+                     'stamina': 100,
+                     'pvp_times': 0}
         tb_character_info.new(character)
 
 
@@ -58,7 +60,9 @@ def init_player():
                      'fine_hero_last_pick_time': 0,
                      'excellent_hero_last_pick_time': 0,
                      'fine_equipment_last_pick_time': 0,
-                     'excellent_equipment_last_pick_time': 0}
+                     'excellent_equipment_last_pick_time': 0,
+                     'stamina': 100,
+                     'pvp_times': 0}
         tb_character_info.new(character)
 
     PlayersManager().drop_player_by_id(2)

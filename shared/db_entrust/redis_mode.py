@@ -112,7 +112,7 @@ class MMode(RedisObject):
         elif state == MMODE_STATE_NEW:
             props = self.get('data')
 
-            print 'MMODE_STATE_NEW:', props
+            # print 'MMODE_STATE_NEW:', props
 
             props = self.dumps(props)
             pk = self.get('_pk')

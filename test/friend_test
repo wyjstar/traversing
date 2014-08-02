@@ -1,16 +1,15 @@
-#coding:utf8
+# coding:utf8
 
 import struct
 import time
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
-from app.proto_file.player_request_pb2 import PlayerLoginRequest
+from app.proto_file import player_request_pb2
 from app.proto_file.player_response_pb2 import PlayerResponse
-from app.proto_file.guild_pb2 import CreateGuildRequest, \
-    JoinGuildRequest, \
-    EditorCallRequest, GuildCommonResponse
+from app.proto_file.friend_pb2 import *
 
-def sendData(sendstr,commandId):
+
+def sendData(sendstr, commandId):
     '''定义协议头
     '''
     HEAD_0 = chr(0)
@@ -21,16 +20,17 @@ def sendData(sendstr,commandId):
     ServerVersion = 0
     sendstr = sendstr
     print 'len:', len(sendstr)
-    data = struct.pack('!sssss3I',HEAD_0,HEAD_1,HEAD_2,\
-                       HEAD_3,ProtoVersion,ServerVersion,\
-                       len(sendstr)+4,commandId)
-    senddata = data+sendstr
+    data = struct.pack('!sssss3I', HEAD_0, HEAD_1, HEAD_2, \
+                       HEAD_3, ProtoVersion, ServerVersion, \
+                       len(sendstr) + 4, commandId)
+    senddata = data + sendstr
     return senddata
+
 
 def resolveRecvdata(data):
     '''解析数据，根据定义的协议头解析服务器返回的数据
     '''
-    ud = struct.unpack('!sssss3I',data[:17])
+    ud = struct.unpack('!sssss3I', data[:17])
     HEAD_0 = ord(ud[0])
     HEAD_1 = ord(ud[1])
     HEAD_2 = ord(ud[2])
@@ -39,15 +39,16 @@ def resolveRecvdata(data):
     serverVersion = ud[5]
     lenght = ud[6]
     command = ud[7]
-    message = data[17:17+lenght]
+    message = data[17:17 + lenght]
     print 'command:', command
     print 'message:', message
     return command, message
 
 # a client protocol
 times = 0
-class EchoClient(protocol.Protocol):
 
+
+class EchoClient(protocol.Protocol):
     _times = 0
 
     """Once connected, send a message, then print the result."""
@@ -75,14 +76,14 @@ class EchoClient(protocol.Protocol):
             if not self._times:
                 argument = account_pb2.AccountInfo()
                 argument.type = 2
-                argument.user_name = 'ceshi4'
-                argument.password = 'ceshi1'
+                # argument.user_name = 'ceshi3'
+                # argument.password = 'ceshi1'
                 self.dateSend(argument, 1)
 
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '74f8df0157d5ff84177d8dfca278a010'
+                argument.key.key = 'ea93b955c76de71380559058cdcd6932'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -92,8 +93,8 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = PlayerLoginRequest()
-            argument.token = '74f8df0157d5ff84177d8dfca278a010'
+            argument = player_request_pb2.PlayerLoginRequest()
+            argument.token = 'ea93b955c76de71380559058cdcd6932'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -101,21 +102,17 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # 201df57fb815edc404b3710155183afc 创建
-            # a5e37364189111e4b087080027a4fa58 公会id
-            # b76d940ef53d50d475cb65cd9fe7c48f 加入
-            #
-            #
-            #
-
+            request = FriendCommon()
+            request.target_id = 2
+            self.dateSend(request, 1106)
             # --------801创建公会------------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四117'
-            self.dateSend(argument1, 801)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四96'
+            # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
-            # argument1.g_id = 'a5e37364189111e4b087080027a4fa58'
+            # argument1.g_id = '51dfe866163d11e4ba3a080027a4fa58'
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
@@ -125,35 +122,37 @@ class EchoClient(protocol.Protocol):
 
             # --------804编辑公告------------
             # argument1 = EditorCallRequest()
+            # argument1.g_id = 'a302c176130611e4ac48080027a4fa58'
             # argument1.call = 'aaaaaa空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
             # self.dateSend(argument1, 804)
 
         if command == 801:
             # 创建公会
-            argument = GuildCommonResponse()
+            argument = CreateGuildResponse()
             argument.ParseFromString(message)
             print argument
 
         if command == 802:
             # 加入公会
-            argument = GuildCommonResponse()
+            argument = JoinGuildResponse()
             argument.ParseFromString(message)
             print argument
 
         if command == 803:
             # 退出公会
-            argument = GuildCommonResponse()
+            argument = ExitGuildResponse()
             argument.ParseFromString(message)
             print argument
 
         if command == 804:
             # 编辑公告
-            argument = GuildCommonResponse()
+            argument = EditorCallResponse()
             argument.ParseFromString(message)
             print argument
 
     def connectionLost(self, reason):
         print "connection lost"
+
 
 class EchoFactory(protocol.ClientFactory):
     protocol = EchoClient
@@ -169,7 +168,6 @@ class EchoFactory(protocol.ClientFactory):
 
 # this connects the protocol to a server runing on port 8000
 def main():
-
     HOST = 'localhost'
     PORT = 11009
 

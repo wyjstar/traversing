@@ -6,15 +6,22 @@ import datetime
 from app.game.redis_mode import tb_character_friend
 
 
-class FriendOffline(object):
+class FriendOffline():
     def __init__(self, player_id):
         self._player_id = player_id
         self._player_data = tb_character_friend.getObjData(self._player_id)
+        if not self._player_data:
+            data = {'id': self._player_id,
+                    'friends': [],
+                    'blacklist': [],
+                    'applicants_list': {}}
+            tb_character_friend.new(data)
+            self._player_data = tb_character_friend.getObjData(self._player_id)
         self._player_obj = tb_character_friend.getObj(self._player_id)
 
     def add_applicant(self, target_id):
         player_applicants = self._player_data.get('applicants_list')
-        if target_id in player_applicants.key():
+        if target_id in player_applicants.keys():
             print 'offline add applicant', 'exist in applicants!!!!'
             return False
 

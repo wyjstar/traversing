@@ -33,6 +33,14 @@ def use_item(dynamic_id, pro_data, **kwargs):
     item_no = item_pb.item_no
     item_num = item_pb.item_num
     item_config_item = item_config.get(item_no)
+    if not item_config_item:
+        print("item %d is not itemconfig." % item_no)
+
+        return
+    print "item_no", item_no
+    print "item_num", item_num
+    print "item_config_item", item_config_item
+    print ("item????????", item_config_item.dropId)
     item_func = item_config_item.func
     drop_id = item_config_item.dropId
     func_args1 = item_config_item.func_args1
@@ -52,11 +60,16 @@ def use_item(dynamic_id, pro_data, **kwargs):
         # 消耗key
         box_key.num -= func_args2 * item_num
         player.item_package.save_data()
+    # 消耗道具
+    item = player.item_package.get_item(item_no)
+    item.num -= item_num
+
     big_bag = BigBag(drop_id)
     for i in range(item_num):
         drop_item_group = big_bag.get_drop_items()
         return_data = gain(player, drop_item_group)
         get_return(player, return_data, response.gain)
+
     return response.SerializeToString()
 
 

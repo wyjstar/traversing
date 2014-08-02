@@ -5,10 +5,6 @@ created by server on 14-7-17下午5:37.
 from app.game.logic.common.check import have_player
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
-    # CreateGuildRequest, CreateGuildResponse, \
-    # JoinGuildRequest, JoinGuildResponse, ExitGuildRequest, ExitGuildResponse, \
-    # EditorCallRequest, EditorCallResponse, DealApplyRequest, DealApplyResponse, \
-    # ChangePresidentRequest
 from app.game.redis_mode import tb_guild_info, tb_guild_name
 import time
 from app.game.redis_mode import tb_character_guild
@@ -27,30 +23,29 @@ def create_guild(dynamicid, data, **kwargs):
     args = CreateGuildRequest()
     args.ParseFromString(data)
     p_name = args.name
-    response = CreateGuildResponse()
-    res = response.res
+    response = GuildCommonResponse()
     p_id = player.base_info.id
     g_id = player.guild.g_id
     print "cuick,###############,TEST,create_guild,g_id:", g_id
     # TODO 判断等级够不够
     if g_id != 0:
-        res.result = False
-        res.message = "您已加入公会"
+        response.result = False
+        response.message = "您已加入公会"
         return response.SerializeToString()
     # TODO 判断元宝数够不够
     # TODO 判断name合法性，敏感字过滤
     if len(p_name) > 18:
         print "cuick,###############,TEST,create_guild:", p_name, 'call_len:', len(p_name)
-        res.result = False
-        res.message = "公告内容超过字数限制"
+        response.result = False
+        response.message = "公告内容超过字数限制"
         return response.SerializeToString()
     # 判断有没有重名
     guild_name_data = tb_guild_name.getObjData(1)
     if guild_name_data:
         g_names = guild_name_data.get('info')
         if g_names.count(p_name) >= 1:
-            res.result = False
-            res.message = "此名已存在"
+            response.result = False
+            response.message = "此名已存在"
             return response.SerializeToString()
         else:
             g_names.append(p_name)
@@ -63,11 +58,11 @@ def create_guild(dynamicid, data, **kwargs):
     guild_obj.create_guild(p_id, p_name)
     print 'cuick,test,guild_obj.get_g_id():', guild_obj.get_g_id()
     player.guild.g_id = guild_obj.get_g_id()
-    player.guild.position = 1
+    player.guild.position = 3
     player.guild.save_data()
     guild_obj.save_data()
     # TODO 扣除元宝
-    res.result = True
+    response.result = True
     return response.SerializeToString()
 
 
@@ -84,25 +79,24 @@ def join_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = JoinGuildRequest()
     args.ParseFromString(data)
-    response = JoinGuildResponse()
-    res = response.res
+    response = GuildCommonResponse()
     g_id = args.g_id
     m_g_id = player.guild.g_id
     m_exit_time = player.guild.exit_time
     if (int(time.time())-m_exit_time) <= (60*30):
-        res.result = False
-        res.message = "退出公会办小时内不可加入公会"
+        response.result = False
+        response.message = "退出公会办小时内不可加入公会"
         return response.SerializeToString()
     if m_g_id != 0:
-        res.result = False
-        res.message = "您已加入公会"
+        response.result = False
+        response.message = "您已加入公会"
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObjData(g_id)
 
     if not data1:
-        res.result = False
-        res.message = "公会ID错误"
+        response.result = False
+        response.message = "公会ID错误"
         return response.SerializeToString()
 
     guild_obj = Guild()
@@ -110,14 +104,14 @@ def join_guild(dynamicid, data, **kwargs):
 
     # TODO 根据公会等级得到公会人数上限，取配置
     if guild_obj.get_p_num() >= 30:
-        res.result = False
-        res.message = "公会已满员"
+        response.result = False
+        response.message = "公会已满员"
         return response.SerializeToString()
     else:
         guild_obj.join_guild(p_id)
         guild_obj.save_data()
     # 返回
-    res.result = True
+    response.result = True
     return response.SerializeToString()
 
 
@@ -132,22 +126,18 @@ def exit_guild(dynamicid, data, **kwargs):
     """
     player = kwargs.get('player')
     p_id = player.base_info.id
-    args = ExitGuildRequest()
-    args.ParseFromString(data)
-    response = ExitGuildResponse()
-    res = response.res
-    # g_id = args.g_id
+    response = GuildCommonResponse()
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(m_g_id)
     print "cuick,###############,TEST,guild_name_data:", tb_guild_name.getObjData(1)
     print "cuick,###############,TEST,data1:", data1, 'm_g_id:', m_g_id
     if m_g_id == 0:
-        res.result = False
-        res.message = "您还未加入公会"
+        response.result = False
+        response.message = "您还未加入公会"
         return response.SerializeToString()
     if not data1:
-        res.result = False
-        res.message = "公会ID错误"
+        response.result = False
+        response.message = "公会ID错误"
         return response.SerializeToString()
 
     guild_obj = Guild()
@@ -167,8 +157,8 @@ def exit_guild(dynamicid, data, **kwargs):
         player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.delete_guild()
-        res.result = True
-        res.message = "公会已解散"
+        response.result = True
+        response.message = "公会已解散"
         return response.SerializeToString()
     position = player.guild.position
     p_list = guild_obj.p_list
@@ -177,19 +167,19 @@ def exit_guild(dynamicid, data, **kwargs):
     if position_p.count(p_id) >= 1:
         if position == 1:
             # 转让公会
-            res.result = True
-            res.message = "公会已转让"
+            response.result = True
+            response.message = "公会已转让"
             return response.SerializeToString()
         player.guild._g_id = 0
         player.guild.exit_time = time.time()
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
-        res.result = True
+        response.result = True
         return response.SerializeToString()
 
-    res.result = False
-    res.message = "您不在此公会"
+    response.result = False
+    response.message = "您不在此公会"
     return response.SerializeToString()
 
 
@@ -206,20 +196,19 @@ def editor_call(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = EditorCallRequest()
     args.ParseFromString(data)
-    response = EditorCallResponse()
-    res = response.res
-    g_id = args.g_id
+    response = GuildCommonResponse()
     call = args.call
     if len(call) > 150:
         print "cuick,###############,TEST,call:", call, 'call_len:', len(call)
-        res.result = True
-        res.message = "公告内容超过字数限制"
+        response.result = True
+        response.message = "公告内容超过字数限制"
         return response.SerializeToString()
-    data1 = tb_guild_info.getObjData(g_id)
+    print player.guild.g_id, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+    data1 = tb_guild_info.getObjData(player.guild.g_id)
     print "cuick,###############,TEST,data1:", data1
     if not data1:
-        res.result = False
-        res.message = "公会ID错误"
+        response.result = False
+        response.message = "公会ID错误"
         return response.SerializeToString()
     guild_obj = Guild()
     guild_obj.init_data(data1)
@@ -231,17 +220,17 @@ def editor_call(dynamicid, data, **kwargs):
 
     if position_p_list.count(p_id) >= 1:
         if position > 2:
-            res.result = True
-            res.message = "权限不够"
+            response.result = True
+            response.message = "权限不够"
             return response.SerializeToString()
         guild_obj.editor_call(call)
         guild_obj.save_data()
-        res.result = True
+        response.result = True
         print "cuick,###############,TEST,call:", call, 'call_len:', len(call)
         return response.SerializeToString()
     else:
-        res.result = False
-        res.message = "您不在此公会"
+        response.result = False
+        response.message = "您不在此公会"
         return response.SerializeToString()
 
 
@@ -258,8 +247,7 @@ def deal_apply(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = DealApplyRequest()
     args.ParseFromString(data)
-    response = DealApplyResponse()
-    res = response.res
+    response = GuildCommonResponse()
     p_p_id = args.p_id
     p_type = args.type
     m_g_id = player.guild.g_id
@@ -267,8 +255,8 @@ def deal_apply(dynamicid, data, **kwargs):
     data1 = tb_guild_info.getObjData(m_g_id)
 
     if not data1 or m_g_id == 0:
-        res.result = False
-        res.message = "公会ID错误"
+        response.result = False
+        response.message = "公会ID错误"
         return response.SerializeToString()
     # TODO 判断申请者有没有公会
     # TODO 判断申请者上次离开公会时间。没有必要。。在玩家发申请的时候判断就好了
@@ -277,8 +265,8 @@ def deal_apply(dynamicid, data, **kwargs):
 
     # TODO 根据公会等级得到公会人数上限，取配置
     if guild_obj.get_p_num() >= 30:
-        res.result = False
-        res.message = "公会已满员"
+        response.result = False
+        response.message = "公会已满员"
         return response.SerializeToString()
     # 处理玩家数据
     # 通过玩家id判断是否在线，如果在线，要通知玩家，并修改玩家数据，如果不在线，也要发邮件通知，直接修改redis，通知其他玩家
@@ -291,11 +279,11 @@ def deal_apply(dynamicid, data, **kwargs):
             guild_obj.p_list = t_p_list
             guild_obj.p_num += 1
         guild_obj.save_data()
-        res.result = True
+        response.result = True
         return response.SerializeToString()
     else:
-        res.result = False
-        res.message = "申请不存在"
+        response.result = False
+        response.message = "申请不存在"
         return response.SerializeToString()
 
 
@@ -312,13 +300,12 @@ def change_president(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = ChangePresidentRequest()
     args.ParseFromString(data)
-    response = ChangePresidentResponse()
-    res = response.res
+    response = GuildCommonResponse()
     p_p_id = args.p_id
     m_g_id = player.guild.g_id
     if player.guild.position != 1:
-        res.result = False
-        res.message = "您不是会长"
+        response.result = False
+        response.message = "您不是会长"
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -339,12 +326,12 @@ def change_president(dynamicid, data, **kwargs):
             # 判断玩家再不在线，在线直接通知，不在线的话发邮件。通知其他玩家
             player.guild.position = 5
             player.guild.save_data()
-            res.result = True
-            res.message = "转让成功"
+            response.result = True
+            response.message = "转让成功"
             return response.SerializeToString()
     # 没有找到此玩家
-    res.result = False
-    res.message = "玩家不在此公会"
+    response.result = False
+    response.message = "玩家不在此公会"
     return response.SerializeToString()
 
 
@@ -360,13 +347,12 @@ def kick(dynamicid, data, **kwargs):
     player = kwargs.get('player')
     args = KickRequest()
     args.ParseFromString(data)
-    response = KickResponse()
-    res = response.res
+    response = GuildCommonResponse()
     p_p_id = args.p_id
     m_g_id = player.guild.g_id
     if player.guild.position != 1:
-        res.result = False
-        res.message = "您不是会长"
+        response.result = False
+        response.message = "您不是会长"
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -383,12 +369,12 @@ def kick(dynamicid, data, **kwargs):
             guild_obj.p_num += 1
             guild_obj.save_data()
             # 判断目标玩家再不在线，发消息，通知，通知其他玩家
-            res.result = True
-            res.message = "转让成功"
+            response.result = True
+            response.message = "转让成功"
             return response.SerializeToString()
     # 没有找到此玩家
-    res.result = False
-    res.message = "玩家不在此公会"
+    response.result = False
+    response.message = "玩家不在此公会"
     return response.SerializeToString()
 
 
@@ -402,17 +388,13 @@ def promotion(dynamicid, data, **kwargs):
     :return:
     """
     player = kwargs.get('player')
-    args = KickRequest()
-    args.ParseFromString(data)
-    response = KickResponse()
-    res = response.res
-    # p_p_id = args.p_id
+    response = GuildCommonResponse()
     m_g_id = player.guild.g_id
     m_p_id = player.base_info.id
     m_position = player.guild.position
     if m_position <= 2:
-        res.result = False
-        res.message = "您不能再晋升了"
+        response.result = False
+        response.message = "您不能再晋升了"
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -425,18 +407,18 @@ def promotion(dynamicid, data, **kwargs):
     t_position = m_position - 1
     if t_position == 2:
         if list_len >= 2:
-            res.result = False
-            res.message = "上一级职位已满"
+            response.result = False
+            response.message = "上一级职位已满"
             return response.SerializeToString()
     elif t_position == 3:
         if list_len >= 3:
-            res.result = False
-            res.message = "上一级职位已满"
+            response.result = False
+            response.message = "上一级职位已满"
             return response.SerializeToString()
     else:
         if list_len >= 4:
-            res.result = False
-            res.message = "上一级职位已满"
+            response.result = False
+            response.message = "上一级职位已满"
             return response.SerializeToString()
     guildinfolist = {}
     for p_id1 in t_p_list:
@@ -447,8 +429,8 @@ def promotion(dynamicid, data, **kwargs):
     guildinfolist.update(m_guildinfo)
     new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
     if new_list[-1][0] == m_p_id:
-        res.result = False
-        res.message = "总贡献必须超过上一级职位最低贡献才能晋级"
+        response.result = False
+        response.message = "总贡献必须超过上一级职位最低贡献才能晋级"
         return response.SerializeToString()
     # 和最后一个调换
     player.guild.position -= 1
@@ -465,8 +447,8 @@ def promotion(dynamicid, data, **kwargs):
     p_list.update({m_position: p_list1, tihuan_position: p_list2})
     guild_obj.p_list = p_list
     guild_obj.save_data()
-    res.result = True
-    res.message = "晋升成功"
+    response.result = True
+    response.message = "晋升成功"
     return response.SerializeToString()
 
 
@@ -482,8 +464,7 @@ def worship(dynamicid, data, **kwargs):
     player = kwargs.get('player')
     args = WorshipRequest()
     args.ParseFromString(data)
-    response = WorshipResponse()
-    res = response.res
+    response = GuildCommonResponse()
     # p_p_id = args.p_id
     m_g_id = player.guild.g_id
     m_p_id = player.base_info.id
@@ -498,8 +479,8 @@ def worship(dynamicid, data, **kwargs):
             pass
             # mobai,膜拜次数+1
         else:
-            res.result = False
-            res.message = "今天的膜拜次数已用完"
+            response.result = False
+            response.message = "今天的膜拜次数已用完"
             return response.SerializeToString()
     else:
         # 膜拜次数+1，时间改成今天

@@ -32,9 +32,15 @@ class FriendTest(unittest.TestCase):
 
         print '==========friend test beging=========='
 
-
         request = FriendCommon()
         response = CommonResponse()
+        friendlist = GetPlayerFriendsResponse()
+
+        print '==========get friend list=========='
+        result = get_player_friend_list(self.player1.base_info.id)
+        friendlist.ParseFromString(result)
+        print 'friends', friendlist.friends, 'blacklist', friendlist.blacklist, \
+            'applicant_list', friendlist.applicant_list
 
         print '==========become friend=========='
         request.target_id = 1
@@ -50,6 +56,12 @@ class FriendTest(unittest.TestCase):
         self.assertEqual(response.result, 0, "friend error!%d" % response.result)
         self.print_friend_data([1, 2])
 
+        print '==========get friend list=========='
+        result = get_player_friend_list(self.player2.base_info.id)
+        friendlist.ParseFromString(result)
+        print 'friends', friendlist.friends, 'blacklist', friendlist.blacklist, \
+            'applicant_list', friendlist.applicant_list
+
         print '==========re-add friend request=========='
         request.target_id = 2
         result = add_friend_request(self.player1.base_info.id, request.SerializePartialToString())
@@ -63,6 +75,12 @@ class FriendTest(unittest.TestCase):
         response.ParseFromString(result)
         self.assertEqual(response.result, 0, "become friend error!%d" % response.result)
         self.print_friend_data([1, 2])
+
+        print '==========get friend list=========='
+        result = get_player_friend_list(self.player1.base_info.id)
+        friendlist.ParseFromString(result)
+        print 'friends', friendlist.friends, 'blacklist', friendlist.blacklist, \
+            'applicant_list', friendlist.applicant_list
 
         print '==========del friend=========='
         request.target_id = 1

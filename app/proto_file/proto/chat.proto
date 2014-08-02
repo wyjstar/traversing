@@ -1,5 +1,3 @@
-package proto_file.chat.chat;
-
 message ChatObjectInfo{
      required int32 id = 1;//角色id
      optional string nickname=2;//角色昵称

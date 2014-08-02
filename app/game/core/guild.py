@@ -52,7 +52,7 @@ class Guild(object):
                      'record': self._record,
                      'p_list': self._p_list,
                      'apply': self._apply}}
-        print "cuick,###############,SAVE_DATA,info:", data
+        print "cuick,###############,SAVE_DATA,guild info:", data
         guild_data = tb_guild_info.getObj(self._g_id)
         guild_data.update_multi(data)
 
@@ -79,8 +79,9 @@ class Guild(object):
     def exit_guild(self, p_id, position):
         self._p_num -= 1
         position_p_list = self._p_list.get(position)
-        position_p.remove(p_id)
-        print "cuick,###############,TEST,info:", p_id
+        position_p_list.remove(p_id)
+        print "cuick,###############???????????????????????" \
+              "???????????????????????????????????????,TEST,info:", p_id
 
     def delete_guild(self):
         guild_info_obj = tb_guild_info.getObj(self._g_id)

@@ -18,7 +18,7 @@ def forEachPlusInsertProps(tablename, props):
                   "'%s'," % str(val).replace("'", "\\'") for val in props.values()]
     pvaluesstr = ''.join(pvaluesstr)[:-1]
     sqlstr = """INSERT INTO `%s` %s values (%s);""" % (tablename, pkeysstr, pvaluesstr)
-    print 'inster:', sqlstr
+    # print 'inster:', sqlstr
     return sqlstr
 
 
@@ -58,7 +58,7 @@ def forEachUpdateProps(tablename, props, prere):
     pro = FormatUpdateStr(props)
     pre = FormatCondition(prere)
     sqlstr = """UPDATE `%s` SET %s WHERE %s;""" % (tablename, pro, pre)
-    print 'update:', sqlstr
+    # print 'update:', sqlstr
     return sqlstr
 
 
@@ -138,6 +138,8 @@ def DeleteFromDB(tablename, props):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
     cursor.close()
@@ -149,7 +151,7 @@ def InsertIntoDB(tablename, data):
     """写入数据库
     """
     sql = forEachPlusInsertProps(tablename, data)
-    print 'insert into db:', sql
+    # print 'insert into db:', sql
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
@@ -157,6 +159,9 @@ def InsertIntoDB(tablename, data):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
+        import traceback
+        traceback.print_stack()
+        log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
     cursor.close()
@@ -175,6 +180,8 @@ def UpdateWithDict(tablename, props, prere):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
     cursor.close()
@@ -201,10 +208,10 @@ def getAllPkByFkInDB(tablename, pkname, props):
 def GetOneRecordInfo(tablename, props):
     '''获取单条数据的信息
     '''
-    print 'GetOneRecordInfo:', props
+    # print 'GetOneRecordInfo:', props
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)
-    print 'get one:', sql
+    # print 'get one:', sql
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
@@ -224,7 +231,7 @@ def GetRecordList(tablename, pkname, pklist):
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
-    print 'sqlxyz', sql
+    # print 'sqlxyz', sql
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

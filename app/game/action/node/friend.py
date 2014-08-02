@@ -8,7 +8,7 @@ from app.game.logic.friend import *
 
 
 @remote_service_handle
-def add_friend_request_1000(dynamic_id, data):
+def add_friend_request_1100(dynamic_id, data):
     """
     request to invite target as friend
     :param dynamic_id:
@@ -20,7 +20,7 @@ def add_friend_request_1000(dynamic_id, data):
 
 
 @remote_service_handle
-def add_friend_respond_accept_1001(dynamic_id, data):
+def add_friend_respond_accept_1101(dynamic_id, data):
     """
     respond to inviter
     :param target_id:
@@ -32,7 +32,7 @@ def add_friend_respond_accept_1001(dynamic_id, data):
 
 
 @remote_service_handle
-def add_friend_respond_refuse_1002(dynamic_id, data):
+def add_friend_respond_refuse_1102(dynamic_id, data):
     """
     refuse inviting
     :param dynamic_id:
@@ -42,7 +42,7 @@ def add_friend_respond_refuse_1002(dynamic_id, data):
 
 
 @remote_service_handle
-def del_friend_request_1003(dynamic_id, data):
+def del_friend_request_1103(dynamic_id, data):
     """
     delete friend from friend list
     :param dynamic_id:
@@ -52,7 +52,7 @@ def del_friend_request_1003(dynamic_id, data):
 
 
 @remote_service_handle
-def add_black_list_1004(dynamic_id, data):
+def add_black_list_1104(dynamic_id, data):
     """
     add a player to blacklist by id
     :param dynamic_id:
@@ -62,7 +62,7 @@ def add_black_list_1004(dynamic_id, data):
 
 
 @remote_service_handle
-def del_black_list_1005(dynamic_id, data):
+def del_black_list_1105(dynamic_id, data):
     """
     delete a player from blacklist
     :param dynamic_id:
@@ -72,10 +72,12 @@ def del_black_list_1005(dynamic_id, data):
 
 
 @remote_service_handle
-def get_player_friend_list_1006(dynamic_id, data):
+def get_player_friend_list_1106(dynamic_id, data):
+    import traceback
+    traceback.print_stack()
     return get_player_friend_list(dynamic_id)
 
 
 @remote_service_handle
-def find_friend_request_1007(dynamic_id, data):
+def find_friend_request_1107(dynamic_id, data):
     return find_friend_request(dynamic_id, data)
