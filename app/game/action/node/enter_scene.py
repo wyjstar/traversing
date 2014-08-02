@@ -16,13 +16,7 @@ def enter_scene_601(dynamic_id, character_id):
     PlayersManager().add_player(player)
 
     responsedata = PlayerResponse()
-    for hero in player.hero_component.get_heros():
-        hero_pb = responsedata.hero_list.add()
-        hero_pb.hero_no = hero.hero_no
-        hero_pb.level = hero.level
-        hero_pb.break_level = hero.break_level
-        hero_pb.hero_no = hero.hero_no
-        hero_pb.exp = hero.exp
+
     responsedata.id = player.base_info.id
     responsedata.nickname = player.base_info.base_name
     return responsedata.SerializeToString()

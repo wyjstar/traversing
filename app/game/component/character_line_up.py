@@ -20,7 +20,9 @@ class CharacterLineUpComponent(Component):
         self._line_up_order = []
         # self._employee = None
         self._unique = 0  # 无双
-        self._links = {}   # 羁绊缓存数据 {'hero_no': link_data}
+        self._links = {}  # 羁绊缓存数据 {'hero_no': link_data}
+
+        self._suit = {}  # 保存套装信息 {'装备ID': suit_data}
 
     def init_data(self):
         line_up_data = tb_character_line_up.getObjData(self.owner.base_info.id)
@@ -61,7 +63,7 @@ class CharacterLineUpComponent(Component):
 
     # @property
     # def employee(self):
-    #     return self._employee
+    # return self._employee
     #
     # @employee.setter
     # def employee(self, value):
@@ -180,10 +182,60 @@ class CharacterLineUpComponent(Component):
                     activation = 0
                     break
         return activation
+
     # ------------------羁绊信息------------------
 
+    def get_suit_config(self, equipment_no):
+        """根据装备编号取得套装信息
+        """
+        equ_conf_obj = game_configs.equipment_config.get(equipment_no)  # 装备配置
+        suit_no = equ_conf_obj.suitNo
+
+        suit_conf_obj = game_configs.set_equipment_config.get(suit_no)
+
+        return suit_conf_obj
+
+    # ------------------套装信息------------------
+    def get_suit(self):
+        """取得套装信息
+        """
+        if self._suit:
+            return self._suit
+
+        self._suit = {}
+
+        for slot in self._line_up_slots:
+
+            equipment_no_list = self.get_equipment_ids(slot.slot_no)  # 阵容格子中的装备编号
+
+            equipment_ids = slot.equipment_ids
+            for equipment_id in equipment_ids:
+                equipment_obj = self.owner.equipment_component.equipments_obj.get(equipment_id)
+                equipment_no = equipment_obj.base_info.equipment_no
+
+                suit_conf_obj = self.get_suit_config(equipment_no)
+
+                suit_intersection = list(
+                    set(equipment_no_list).intersection(set(suit_conf_obj.suitMapping)))  # 获取两个list 的交集
+
+                self._suit[equipment_id] = {'num': len(suit_intersection), 'suit_no': suit_conf_obj.id}  # 激活数量，激活编号
+
+        return self._suit
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+                # ------------------套装信息------------------
 
 
 

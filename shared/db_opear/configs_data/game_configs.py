@@ -8,6 +8,7 @@ from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
+from shared.db_opear.configs_data.equipment.set_equipment_config import SetEquipmentConfig
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.link_config import LinkConfig
@@ -65,8 +66,9 @@ chip_config = {}
 item_config = {}
 small_bag_config = {}
 big_bag_config = {}
-equipment_config = {}
-equipment_strengthen_config = {}
+equipment_config = {}  # 装备配置
+equipment_strengthen_config = {}  # 装备强化等级消耗金币路线
+set_equipment_config = {}
 shop_config = {}
 soul_shop_config = {}
 link_config = {}
@@ -86,6 +88,7 @@ all_config_name = {
     'big_bag_config': BigBagsConfig(),
     'equipment_config': EquipmentConfig(),
     'equipment_strengthen_config': EquipmentStrengthenConfig(),
+    'set_equipment_config': SetEquipmentConfig(),
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
     'link_config': LinkConfig(),
