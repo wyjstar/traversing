@@ -73,6 +73,8 @@ def del_black_list_1105(dynamic_id, data):
 
 @remote_service_handle
 def get_player_friend_list_1106(dynamic_id, data):
+    import traceback
+    traceback.print_stack()
     return get_player_friend_list(dynamic_id)
 
 

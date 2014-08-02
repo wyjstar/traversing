@@ -160,6 +160,7 @@ def InsertIntoDB(tablename, data):
         conn.commit()
     except Exception, e:
         import traceback
+        traceback.print_stack()
         log.err(traceback.format_exc())
         log.err(e)
         log.err(sql)
