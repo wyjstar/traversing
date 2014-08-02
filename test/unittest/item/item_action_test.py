@@ -26,7 +26,7 @@ class ItemActionTest(unittest.TestCase):
         items = response.items
         self.assertEqual(len(items), 7, "%d_%d" % (len(items), 7))
         self.assertEqual(items[6].item_no, 1000113, "%d_%d" % (items[6].item_no, 1000113))
-        self.assertEqual(items[6].item_num, 2, "%d_%d" % (items[6].item_num, 2))
+        self.assertEqual(items[6].item_num, 5, "%d_%d" % (items[6].item_num, 5))
 
     def test_use_item_302(self):
         """测试两个box"""
