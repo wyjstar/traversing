@@ -83,6 +83,10 @@ def hero_sacrifice(dynamicid, data, **kwargs):
     args = HeroSacrificeRequest()
     args.ParseFromString(data)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
+    print args.hero_nos
+    print heros, "heros++++++++"
+    if len(heros) == 0:
+        print "hero %s is not exists." % str(args.hero_nos)
     response = hero_sacrifice_oper(heros, player)
     # remove hero
     player.hero_component.delete_heros_by_nos(args.hero_nos)

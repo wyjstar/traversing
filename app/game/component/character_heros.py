@@ -60,7 +60,9 @@ class CharacterHerosComponent(Component):
     def get_heros_by_nos(self, hero_no_list):
         heros = []
         for no in hero_no_list:
-            heros.append(self._heros.get(no))
+            hero = self._heros.get(no)
+            if not hero:
+                heros.append(hero)
         return heros
 
     def add_hero(self, hero_no):

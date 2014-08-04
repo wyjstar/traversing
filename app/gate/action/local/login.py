@@ -46,6 +46,7 @@ def __character_login(dynamic_id, token):
         return {'result': False}
 
     character_info = user.character
+    print 'character login nickname', character_info.get('nickname')
 
     # TODO 校验character_info 和  user 中id 是否相同
 
