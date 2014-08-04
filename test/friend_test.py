@@ -4,6 +4,7 @@ import struct
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
+from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.game_pb2 import GameLoginResponse
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.friend_pb2 import *
@@ -52,7 +53,7 @@ class EchoClient(protocol.Protocol):
 
     def __init__(self):
         self._times = 0
-        self._user_name = 'test3'
+        self._user_name = 'test5'
         self._password = '111'
 
     """Once connected, send a message, then print the result."""
@@ -95,11 +96,23 @@ class EchoClient(protocol.Protocol):
         if command == 4:
             argument = GameLoginResponse()
             argument.ParseFromString(message)
-            print 'nickname:', argument.naickname, 'level:', argument.level
+            print 'nickname:', argument.nickname, 'level:', argument.level
 
+            # add friend
             request = FriendCommon()
-            request.target_id = 2
+            request.target_id = 50
             self.send_message(request, 1106)
+
+        if command == 1100:
+            response = CommonResponse()
+            response.ParseFromString(message)
+            print 'add friend result:%s result_no:%s' % (response.result, response.result_no)
+
+        if command == 1106:
+            response = GetPlayerFriendsResponse()
+            response.ParseFromString(message)
+            format_str = 'friends:%s, blacklist:%s, applicant list:%s'
+            print format_str % (response.friends, response.blacklist, response.applicant_list)
 
     def connectionLost(self, reason):
         print "connection lost"
