@@ -236,12 +236,12 @@ def get_player_friend_list(dynamic_id, **kwargs):
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
-    for pid in player.friends.black_list:
+    for pid in player.friends.blacklist:
         player_data = tb_character_info.getObjData(pid)
         if player_data:
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.player_id = pid
-            response_friend_add.nickname = player_data.get('nickname')
+            response_blacklist_add.nickname = player_data.get('nickname')
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -250,7 +250,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
         if player_data:
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.player_id = pid
-            response_friend_add.nickname = player_data.get('nickname')
+            response_applicant_list_add.nickname = player_data.get('nickname')
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
