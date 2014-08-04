@@ -66,20 +66,21 @@ class EchoClient(protocol.Protocol):
     def connectionMade(self):
 
         self.dateSend("", 101)
+        self.dateSend("", 108)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
         command, message = resolveRecvdata(data)
 
         if command == 101:
-            print message, "?????"
+            #print message, "?????"
             argument = GetHerosResponse()
             argument.ParseFromString(message)
             print ">>>>>>>>>>>>>>>>>>"
             print argument.heros[0].hero_no
             print argument.heros[1].hero_no
             print argument.heros[2].hero_no
-            self.dateSend("", 108)
+            #self.dateSend("", 108)
 
         if command == 108:
             argument = GetHeroChipsResponse()
@@ -90,7 +91,7 @@ class EchoClient(protocol.Protocol):
 
             shop_request = ShopRequest()
             shop_request.id = 1001
-            self.dateSend(shop_request.SerializeToString(), 501)
+            #self.dateSend(shop_request.SerializeToString(), 501)
 
         if command == 501:
             argument = ShopResponse()

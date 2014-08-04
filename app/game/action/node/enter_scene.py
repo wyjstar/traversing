@@ -33,6 +33,6 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata.fine_equipment = player.last_pick_time.fine_equipment
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
     responsedata.stamina = player.stamina
-    responsedata.pvptimes = player.pvp_times
+    responsedata.pvp_times = player.pvp_times
 
     return responsedata.SerializeToString()
