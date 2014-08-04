@@ -1,3 +1,5 @@
+import "common.proto";
+
 // 游戏服登录 command：4
 message GameLoginRequest{
 	required string token = 1;
@@ -5,7 +7,25 @@ message GameLoginRequest{
 
 //返回结果
 message GameLoginResponse{
-     required bool result = 1;
+     required CommonResponse res = 1;
      optional string nickname = 2;
-     optional string message = 3;
+     //等级
+     optional int32 level = 3;
+     optional int32 exp = 4;
+     //金币
+     optional int32 coin = 5;
+     optional int32 gold = 6;
+     optional int32 hero_soul = 7;
+     optional int32 junior_stone = 8;
+     optional int32 middle_stone = 9;
+     optional int32 high_stone = 10;
+     //抽取时间
+     optional int32 fine_hero = 11;
+     optional int32 excellent_hero = 12;
+     optional int32 fine_equipment = 13;
+     optional int32 excellent_equipment = 14;
+
+     //other
+     optional int32 stamina = 15;
+     optional int32 pvp_times = 16;
 }

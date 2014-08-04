@@ -3,9 +3,3 @@ message FinancePB{
     optional int32 gold = 2;
     optional int32 hero_soul = 3;
 }
-
-message PlayerPB{
-    required int64 player_id = 1;
-    optional FinancePB finance = 2;
-
-}

@@ -34,13 +34,12 @@ def add_friend_request(dynamic_id, data, **kwargs):
             return response.SerializePartialToString()  # fail
 
         push_object(1010, player.base_info.id, invitee_player.dynamic_id)
+        invitee_player.friends.save_data()
     else:
         friend_offline = FriendOffline(request.target_id)
         if not friend_offline.add_applicant(player.base_info.id):
             response.result = 2  # offline fail
             return response.SerializePartialToString()  # fail
-
-    invitee_player.friends.save_data()
 
     return response.SerializePartialToString()  # fail
 
@@ -237,12 +236,12 @@ def get_player_friend_list(dynamic_id, **kwargs):
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
-    for pid in player.friends.black_list:
+    for pid in player.friends.blacklist:
         player_data = tb_character_info.getObjData(pid)
         if player_data:
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.player_id = pid
-            response_friend_add.nickname = player_data.get('nickname')
+            response_blacklist_add.nickname = player_data.get('nickname')
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -251,7 +250,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
         if player_data:
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.player_id = pid
-            response_friend_add.nickname = player_data.get('nickname')
+            response_applicant_list_add.nickname = player_data.get('nickname')
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 

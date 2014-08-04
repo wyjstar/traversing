@@ -17,7 +17,7 @@ message EnhanceEquipmentRequest{
 
 // 装备合成 command:  403
 message ComposeEquipmentRequest{
-	required string no = 1;  //装备No
+	required string no = 1;  //装备碎片No
 }
 
 

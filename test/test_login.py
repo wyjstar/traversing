@@ -82,9 +82,11 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            argument = GameLoginRequest()
-            argument.token = argument.token
-            self.dateSend(argument, 4)
+            request = GameLoginRequest()
+            request.token = argument.key.key
+            print request.token, "token"
+            print argument.result, "result"
+            self.dateSend(request, 4)
 
         if command == 4:
             argument = GameLoginResponse()
@@ -98,8 +100,6 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print ">>>>>>>>>>>>>>>>>>"
             print argument.heros
-
-
 
 
     def connectionLost(self, reason):

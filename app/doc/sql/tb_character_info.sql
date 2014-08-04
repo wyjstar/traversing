@@ -33,5 +33,7 @@ CREATE TABLE `tb_character_info` (
   `excellent_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `fine_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
+  `stamina` int(11),
+  `pvp_times` int(11),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
