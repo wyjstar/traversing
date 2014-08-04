@@ -221,21 +221,7 @@ class CharacterLineUpComponent(Component):
                 self._suit[equipment_id] = {'num': len(suit_intersection), 'suit_no': suit_conf_obj.id}  # 激活数量，激活编号
 
         return self._suit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                # ------------------套装信息------------------
+    # ------------------套装信息------------------
 
 
 
