@@ -28,6 +28,15 @@ if __name__ == '__main__':
     # ------------Time---------------------------
     # print 'time:', int(time.time())
 
+
+
+
+
+
+
+
+
+
     # timeStamp = int(time.time())
     # timeArray = time.localtime(timeStamp)
     # otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
@@ -38,3 +47,7 @@ if __name__ == '__main__':
     # for a in [1, 2, 3, 4, 5]:
     #     b += a
     # print 'b:', b
+
+    t = time.localtime(time.time())
+    time1 = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', t), '%Y-%m-%d %H:%M:%S'))
+    print time1, 'aaaaaa'

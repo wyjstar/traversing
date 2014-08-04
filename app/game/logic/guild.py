@@ -465,25 +465,44 @@ def worship(dynamicid, data, **kwargs):
     args = WorshipRequest()
     args.ParseFromString(data)
     response = GuildCommonResponse()
-    # p_p_id = args.p_id
+    p_type = args.type
     m_g_id = player.guild.g_id
-    m_p_id = player.base_info.id
     m_wopship = player.guild.worship
+
+    data1 = tb_guild_info.getObjData(m_g_id)
+    if not data1 or m_g_id == 0:
+        response.result = False
+        response.message = "公会ID错误"
+        return response.SerializeToString()
+
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
 
     m_wopship_time = player.guild.worship_time
     # TODO 查询每天可以膜拜的次数
-    # TODO 判断钱够不够
-    can_wopshiptimes = 5
-    if (int(time.time())-m_wopship) < (60*60*24):
-        if can_wopshiptimes > m_wopship_time:
-            pass
-            # mobai,膜拜次数+1
+    # TODO 判断钱够不够,根据膜拜类型
+    can_wopship = 5
+    if (int(time.time())-m_wopship_time) < (60*60*24):
+        if can_wopship > m_wopship:
+            player.guild.worship += 1
+            player.guild.contribution += 100
+            player.guild.all_contribution += 100  # 配置
+            guild_obj.fund += 100  # 公会加经验，加资金，
+            guild_obj.exp += 100
         else:
             response.result = False
             response.message = "今天的膜拜次数已用完"
             return response.SerializeToString()
     else:
-        # 膜拜次数+1，时间改成今天
-        pass
+        localtime = time.localtime(time.time())
+        new_time = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', localtime), '%Y-%m-%d %H:%M:%S'))
+        player.guild.worship += 1
+        player.guild.contribution += 100
+        player.guild.all_contribution += 100  # 配置
+        guild_obj.fund += 100  # 公会加经验，加资金，
+        guild_obj.exp += 100
+        player.guild.wopship_time = new_time
 
-    # 膜拜：公会贡献+，玩家公会贡献+。膜拜次数+。膜拜时间更新。
+    player.guild.save_data()
+    guild_obj.save_data()
+    # 膜拜：公会贡献+，玩家公会贡献+。膜拜次数+。膜拜时间更新。公会资金+，公会经验+

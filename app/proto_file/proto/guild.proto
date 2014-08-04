@@ -38,5 +38,5 @@ message KickRequest{
 
 // 膜拜 command：809
 message WorshipRequest{
-	required int32 type = 1;  //玩家id
+	required int32 type = 1;  //膜拜类型
 }
