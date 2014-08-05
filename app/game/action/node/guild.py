@@ -48,7 +48,7 @@ def deal_apply_805(dynamic_id, pro_data):
 
 @remote_service_handle
 def change_president_806(dynamic_id, pro_data):
-    """
+    """转让会长
     """
     print('cuick,FFFFFFFFFFFFFFFFFFFFF,01,node,change_president_806')
     return change_president(dynamic_id, pro_data)
@@ -56,23 +56,55 @@ def change_president_806(dynamic_id, pro_data):
 
 @remote_service_handle
 def kick_807(dynamic_id, pro_data):
+    """踢人
     """
-    """
-    print('cuick,GGGGGGGGGGGGGGGGGGGGGG,01,node,change_president_806')
+    print('cuick,GGGGGGGGGGGGGGGGGGGGGG,01,node,kick_807')
     return kick(dynamic_id, pro_data)
 
 
 @remote_service_handle
 def promotion_808(dynamic_id, pro_data):
+    """晋升
     """
-    """
-    print('cuick,HHHHHHHHHHHHHHHHHHHHHH,01,node,change_president_806')
+    print('cuick,HHHHHHHHHHHHHHHHHHHHHH,01,node,promotion_808')
     return promotion(dynamic_id, pro_data)
 
 
 @remote_service_handle
 def worship_809(dynamic_id, pro_data):
+    """膜拜
     """
-    """
-    print('cuick,HHHHHHHHHHHHHHHHHHHHHH,01,node,change_president_806')
+    print('cuick,IIIIIIIIIIIIIIIIIIIIIIII,01,node,worship_809')
     return worship(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def get_guild_rank_810(dynamic_id, pro_data):
+    """获取公会排行
+    """
+    print('cuick,JJJJJJJJJJJJJJJJJJJJJJJJJ,01,node,get_guild_rank_810')
+    return get_guild_rank(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def get_role_list_811(dynamic_id, pro_data):
+    """角色列表
+    """
+    print('cuick,KKKKKKKKKKKKKKKKKKKKKKKKK,01,node,get_role_list_811')
+    return get_role_list(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def get_guild_info_812(dynamic_id, pro_data):
+    """获取公会信息
+    """
+    print('cuick,LLLLLLLLLLLLLLLLLLLLLLLLLL,01,node,get_guild_info_812')
+    return get_guild_info(dynamic_id, pro_data)
+
+
+@remote_service_handle
+def get_apply_list_813(dynamic_id, pro_data):
+    """获取申请列表
+    """
+    print('cuick,MMMMMMMMMMMMMMMMMMMMMMMMMMM,01,node,get_apply_list_813')
+    return get_apply_list(dynamic_id, pro_data)

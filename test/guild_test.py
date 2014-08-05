@@ -8,7 +8,8 @@ from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import CreateGuildRequest, \
     JoinGuildRequest, \
-    EditorCallRequest, GuildCommonResponse
+    EditorCallRequest, GuildCommonResponse, \
+    GuildInfoProto
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -110,7 +111,7 @@ class EchoClient(protocol.Protocol):
 
             # --------801创建公会------------
             argument1 = CreateGuildRequest()
-            argument1.name = '一二三四117'
+            argument1.name = '一二三四127'
             self.dateSend(argument1, 801)
 
             # --------802加入公会------------
@@ -134,6 +135,10 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四117'
+            self.dateSend(argument1, 812)
+
         if command == 802:
             # 加入公会
             argument = GuildCommonResponse()
@@ -149,6 +154,12 @@ class EchoClient(protocol.Protocol):
         if command == 804:
             # 编辑公告
             argument = GuildCommonResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 812:
+            # 编辑公告
+            argument = GuildInfoProto()
             argument.ParseFromString(message)
             print argument
 

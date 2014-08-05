@@ -14,10 +14,6 @@ from app.game.redis_mode import tb_character_guild
 def create_guild(dynamicid, data, **kwargs):
     """
     创建公会
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     args = CreateGuildRequest()
@@ -70,10 +66,6 @@ def create_guild(dynamicid, data, **kwargs):
 def join_guild(dynamicid, data, **kwargs):
     """
     加入公会
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     p_id = player.base_info.id
@@ -119,10 +111,6 @@ def join_guild(dynamicid, data, **kwargs):
 def exit_guild(dynamicid, data, **kwargs):
     """
     退出公会
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     p_id = player.base_info.id
@@ -187,10 +175,6 @@ def exit_guild(dynamicid, data, **kwargs):
 def editor_call(dynamicid, data, **kwargs):
     """
     编辑公告
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     p_id = player.base_info.id
@@ -238,10 +222,6 @@ def editor_call(dynamicid, data, **kwargs):
 def deal_apply(dynamicid, data, **kwargs):
     """
     处理加会申请
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     p_id = player.base_info.id
@@ -249,7 +229,7 @@ def deal_apply(dynamicid, data, **kwargs):
     args.ParseFromString(data)
     response = GuildCommonResponse()
     p_p_id = args.p_id
-    p_type = args.type
+    res_type = args.res_type
     m_g_id = player.guild.g_id
 
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -273,7 +253,7 @@ def deal_apply(dynamicid, data, **kwargs):
     # 处理公会这边数据
     if guild_obj.apply.count(p_p_id) >= 1:
         guild_obj.apply.remove(p_p_id)
-        if p_type == 1:
+        if res_type == 1:
             t_p_list = guild_obj.p_list
             t_p_list.update({5: guild_obj.p_list.get(5).append(p_p_id)})
             guild_obj.p_list = t_p_list
@@ -291,10 +271,6 @@ def deal_apply(dynamicid, data, **kwargs):
 def change_president(dynamicid, data, **kwargs):
     """
     转让会长
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     p_id = player.base_info.id
@@ -339,10 +315,6 @@ def change_president(dynamicid, data, **kwargs):
 def kick(dynamicid, data, **kwargs):
     """
     踢出公会
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     args = KickRequest()
@@ -382,10 +354,6 @@ def kick(dynamicid, data, **kwargs):
 def promotion(dynamicid, data, **kwargs):
     """
     晋升
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     response = GuildCommonResponse()
@@ -456,16 +424,12 @@ def promotion(dynamicid, data, **kwargs):
 def worship(dynamicid, data, **kwargs):
     """
     膜拜
-    :param dynamicid:
-    :param data:
-    :param kwargs:
-    :return:
     """
     player = kwargs.get('player')
     args = WorshipRequest()
     args.ParseFromString(data)
     response = GuildCommonResponse()
-    p_type = args.type
+    w_type = args.w_type
     m_g_id = player.guild.g_id
     m_wopship = player.guild.worship
 
@@ -506,3 +470,121 @@ def worship(dynamicid, data, **kwargs):
     player.guild.save_data()
     guild_obj.save_data()
     # 膜拜：公会贡献+，玩家公会贡献+。膜拜次数+。膜拜时间更新。公会资金+，公会经验+
+
+
+@have_player
+def get_guild_rank(dynamicid, data, **kwargs
+):
+    """
+    获取公会排行列表
+    """
+    response = GuildRankProto()
+    # TODO 得到公会排行，g-id-list
+    guild_rank_list = []
+    for g_id in guild_rank_list:
+        # TODO 获取公会的：排名，名称，等级，会长，人数，战绩
+        role_rank = response.guild_rank.add()
+        role_rank.g_id = g_id
+
+    response.result = True
+    return response.SerializeToString()
+
+
+@have_player
+def get_role_list(dynamicid, data, **kwargs):
+    """
+    获取公会玩家列表
+    """
+    response = GuildRoleListProto()
+    player = kwargs.get('player')
+    m_g_id = player.guild.g_id
+    if m_g_id == 0:
+        response.result = False
+        response.message = "没有公会"
+        return response.SerializeToString()
+
+    data1 = tb_guild_info.getObjData(m_g_id)
+    if not data1:
+        response.result = False
+        response.message = "公会ID错误"
+        return response.SerializeToString()
+
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
+
+    guild_p_list = guild_obj.p_list
+    for p_list in guild_p_list.values:
+        for role_id in p_list:
+            role_info = response.role_info.add()
+            role_info.p_id = role_id
+            # 获取名称,等级，职位，总贡献，杀敌
+    response.result = True
+    return response.SerializeToString()
+
+
+@have_player
+def get_guild_info(dynamicid, data, **kwargs):
+    """
+    获取公会信息
+    """
+    response = GuildInfoProto()
+    player = kwargs.get('player')
+    m_g_id = player.guild.g_id
+    if m_g_id == 0:
+        response.result = False
+        response.message = "没有公会"
+        return response.SerializeToString()
+
+    data1 = tb_guild_info.getObjData(m_g_id)
+    if not data1:
+        response.result = False
+        response.message = "公会ID错误"
+        return response.SerializeToString()
+
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
+
+    response.result = True
+    guild_info = response.guild_info
+    print 'cuick,Test##################,G ID :', guild_obj.g_id
+    guild_info.g_id = guild_obj.g_id
+    guild_info.name = guild_obj.name
+    guild_info.p_num = guild_obj.p_num
+    guild_info.level = guild_obj.level
+    guild_info.exp = guild_obj.exp
+    guild_info.fund = guild_obj.fund
+    guild_info.call = guild_obj.call
+    guild_info.record = guild_obj.record
+    return response.SerializeToString()
+
+
+@have_player
+def get_apply_list(dynamicid, data, **kwargs):
+    """
+    获取申请列表
+    """
+    response = ApplyListProto()
+    player = kwargs.get('player')
+    m_g_id = player.guild.g_id
+    if m_g_id == 0:
+        response.result = False
+        response.message = "没有公会"
+        return response.SerializeToString()
+
+    data1 = tb_guild_info.getObjData(m_g_id)
+    if not data1:
+        response.result = False
+        response.message = "公会ID错误"
+        return response.SerializeToString()
+
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
+
+    guild_apply = guild_obj.apply
+    for role_id in guild_apply:
+        # TODO 获取玩家name，等级，战斗力，vip等级
+        role_info = response.role_info.add()
+        role_info.p_id = role_id
+
+    response.result = True
+    return response.SerializeToString()
