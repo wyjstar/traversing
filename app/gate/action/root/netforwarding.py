@@ -20,7 +20,7 @@ def forwarding(key, dynamic_id, data):
     """
     """
 
-    print data
+    print '<<<data>>>', data, '<<<key>>>', key
 
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)

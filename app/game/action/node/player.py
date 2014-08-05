@@ -9,7 +9,7 @@ from app.game.logic.player import nickname_create
 
 
 @remote_service_handle
-def nickname_create_5(key, dynamic_id, request_proto):
+def nickname_create_5(dynamic_id, request_proto):
     argument = CreatePlayerRequest()
     argument.ParseFromString(request_proto)
     nickname = argument.nickname

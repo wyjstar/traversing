@@ -27,6 +27,11 @@ def add_friend_request(dynamic_id, data, **kwargs):
 
     player = kwargs.get('player')
     invitee_player = PlayersManager().get_player_by_id(request.target_id)
+    if player.base_info.id == request.target_id:
+        response.result = False  # cant invite oneself as friend
+        response.result_no = 3  # fail
+        return response.SerializePartialToString()  # fail
+
 
     if invitee_player:
         if not invitee_player.friends.add_applicant(player.base_info.id):
@@ -285,15 +290,15 @@ def find_friend_request(dynamic_id, data, **kwargs):
     :param kwargs:
     :return:
     """
-    request = FindFriendResponse()
+    request = FindFriendRequest()
     request.ParseFromString(data)
 
-    response = FindFriendRequest()
+    response = FindFriendResponse()
     response.id = 0
     response.nickname = 'none'
 
     if request.id_or_nickname.isdigit():
-        player_data = tb_character_info.getObjData(request.id_or_nick_name)
+        player_data = tb_character_info.getObjData(request.id_or_nickname)
         if player_data:
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')

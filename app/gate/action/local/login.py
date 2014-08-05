@@ -26,7 +26,6 @@ def character_login_4(key, dynamic_id, request_proto):
 
     nickname = response[0].nickname
     if nickname:
-        argument.nickname = nickname
         #TODO 起名时候
         # 聊天室登录
         GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname)
