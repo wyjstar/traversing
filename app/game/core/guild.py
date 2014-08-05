@@ -128,4 +128,19 @@ class Guild(object):
     def p_num(self, p_num):
         self._p_num = p_num
 
+    @property
+    def fund(self):
+        return self._fund
+
+    @fund.setter
+    def fund(self, fund):
+        self._fund = fund
+
+    @property
+    def exp(self):
+        return self._exp
+
+    @exp.setter
+    def exp(self, exp):
+        self._exp = exp
 
