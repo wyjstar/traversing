@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"!\n\x0c\x46riendCommon\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\t\"2\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\"\x19\n\x17GetPlayerFriendsRequest\"4\n\rCharacterInfo\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\"\x86\x01\n\x18GetPlayerFriendsResponse\x12\x1f\n\x07\x66riends\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"!\n\x0c\x46riendCommon\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\t\"2\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\"\x19\n\x17GetPlayerFriendsRequest\"_\n\rCharacterInfo\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x86\x01\n\x18GetPlayerFriendsResponse\x12\x1f\n\x07\x66riends\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo')
 
 
 
@@ -180,6 +180,27 @@ _CHARACTERINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='ap', full_name='CharacterInfo.ap', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='icon_id', full_name='CharacterInfo.icon_id', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gift', full_name='CharacterInfo.gift', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -190,7 +211,7 @@ _CHARACTERINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=226,
-  serialized_end=278,
+  serialized_end=321,
 )
 
 
@@ -231,8 +252,8 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=281,
-  serialized_end=415,
+  serialized_start=324,
+  serialized_end=458,
 )
 
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO

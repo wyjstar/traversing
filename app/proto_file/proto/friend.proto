@@ -29,6 +29,9 @@ message GetPlayerFriendsRequest{
 message CharacterInfo{
     optional int32 player_id = 1;
     optional string nickname = 2;
+    optional int32 ap = 3;
+    optional int32 icon_id = 4;
+    optional int32 gift = 5;
 }
 
 // player friend items

@@ -256,6 +256,9 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_friend_add = response.friends.add()
             response_friend_add.player_id = pid
             response_friend_add.nickname = player_data.get('nickname')
+            response_friend_add.ap = 999
+            response_friend_add.icon_id = 99
+            response_friend_add.git = 9
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -265,6 +268,9 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.player_id = pid
             response_blacklist_add.nickname = player_data.get('nickname')
+            response_blacklist_add.ap = 888
+            response_blacklist_add.icon_id = 88
+            response_blacklist_add.git = 8
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -274,6 +280,9 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.player_id = pid
             response_applicant_list_add.nickname = player_data.get('nickname')
+            response_applicant_list_add.ap = 666
+            response_applicant_list_add.icon_id = 66
+            response_applicant_list_add.git = 6
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 

@@ -46,6 +46,8 @@ class FriendOffline():
             print 'offline add friend', 'exist in friend list'
             return False
 
+        player_friends.append(friend_id)
+        self._player_obj.update('friends', player_friends)
         return True
 
     def del_friend(self, friend_id):
@@ -55,6 +57,8 @@ class FriendOffline():
             print 'offline del friend', 'can not find friend'
             return False
 
+        player_friends.remove(friend_id)
+        self._player_obj.update('friends', player_friends)
         return True
 
 

@@ -54,8 +54,8 @@ class EchoClient(protocol.Protocol):
 
     def __init__(self):
         self._times = 0
-        self._user_name = 'test5'
-        self._password = '111'
+        self._user_name = 'test12'
+        self._password = '123456'
         self._nickname = 'bab5'
 
     """Once connected, send a message, then print the result."""
@@ -102,20 +102,21 @@ class EchoClient(protocol.Protocol):
             print format_str % (argument.res.result, argument.nickname, argument.level)
 
             # add friend | get friend list
-            # request = FriendCommon()
-            # request.target_id = 49
+            request = FriendCommon()
+            request.target_id = 61
+            # self.send_message(request, 1101)
             # self.send_message(request, 1100)
-            # self.send_message(request, 1106)
+            self.send_message(request, 1106)
 
             # # find friend by id or nickname
             # request = FindFriendRequest()
             # request.id_or_nickname = '50'
             # self.send_message(request, 1107)
 
-            # change nickname
-            request = CreatePlayerRequest()
-            request.nickname = self._nickname
-            self.send_message(request, 5)
+            # # change nickname
+            # request = CreatePlayerRequest()
+            # request.nickname = self._nickname
+            # self.send_message(request, 5)
 
         # change nickname
         if command == 5:
@@ -129,12 +130,30 @@ class EchoClient(protocol.Protocol):
             response.ParseFromString(message)
             print 'add friend result:%s result_no:%s' % (response.result, response.result_no)
 
+            # get friend list
+            request = FriendCommon()
+            request.target_id = 0
+            self.send_message(request, 1106)
+
+        # add friend
+        if command == 1101:
+            response = CommonResponse()
+            response.ParseFromString(message)
+            print 'accept friend result:%s result_no:%s' % (response.result, response.result_no)
+
+            # get friend list
+            request = FriendCommon()
+            request.target_id = 0
+            self.send_message(request, 1106)
+
         # get friend list
         if command == 1106:
             response = GetPlayerFriendsResponse()
             response.ParseFromString(message)
             format_str = 'friends:%s, blacklist:%s, applicant list:%s'
-            print format_str % (response.friends, response.blacklist, response.applicant_list)
+            print 'friend:', [_ for _ in response.friends]
+            print 'blacklist:', [_ for _ in response.blacklist]
+            print 'applicant list:', [_ for _ in response.applicant_list]
 
         # find friend
         if command == 1107:
@@ -160,6 +179,7 @@ class EchoFactory(protocol.ClientFactory):
 
 # this connects the protocol to a server runing on port 8000
 def main():
+    # HOST = '192.168.10.186'
     HOST = 'localhost'
     PORT = 11009
 
