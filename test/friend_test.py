@@ -1,13 +1,13 @@
 # coding:utf8
 
 import struct
+
 from twisted.internet import reactor, protocol
+
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.game_pb2 import GameLoginResponse
-from app.proto_file.player_request_pb2 import CreatePlayerRequest
-from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.friend_pb2 import *
 
 
@@ -54,7 +54,7 @@ class EchoClient(protocol.Protocol):
 
     def __init__(self):
         self._times = 0
-        self._user_name = 'test12'
+        self._user_name = 'test32'
         self._password = '123456'
         self._nickname = 'bab5'
 
@@ -103,10 +103,10 @@ class EchoClient(protocol.Protocol):
 
             # add friend | get friend list
             request = FriendCommon()
-            request.target_id = 61
+            request.target_id = 67
             # self.send_message(request, 1101)
-            # self.send_message(request, 1100)
-            self.send_message(request, 1106)
+            self.send_message(request, 1100)
+            # self.send_message(request, 1106)
 
             # # find friend by id or nickname
             # request = FindFriendRequest()
@@ -150,10 +150,12 @@ class EchoClient(protocol.Protocol):
         if command == 1106:
             response = GetPlayerFriendsResponse()
             response.ParseFromString(message)
-            format_str = 'friends:%s, blacklist:%s, applicant list:%s'
-            print 'friend:', [_ for _ in response.friends]
-            print 'blacklist:', [_ for _ in response.blacklist]
-            print 'applicant list:', [_ for _ in response.applicant_list]
+            for _ in response.friends:
+                print 'friend:', _
+            for _ in response.blacklist:
+                print 'blacklist:', _
+            for _ in response.applicant_list:
+                print 'applicant list:', _
 
         # find friend
         if command == 1107:
