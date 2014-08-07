@@ -1,0 +1,1111 @@
+02:55:06,737 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=44427,schema=db_traversing] idle timeout
+11:00:09,134 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44561,schema=db_traversing]'test' login success
+11:00:09,146 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44562,schema=db_traversing]'test' login success
+11:00:09,150 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44563,schema=db_traversing]'test' login success
+11:00:09,156 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44564,schema=db_traversing]'test' login success
+11:00:09,165 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44565,schema=db_traversing]'test' login success
+11:00:09,395 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44575,schema=db_traversing]'test' login success
+11:00:09,399 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44576,schema=db_traversing]'test' login success
+11:00:09,406 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44577,schema=db_traversing]'test' login success
+11:00:09,408 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44578,schema=db_traversing]'test' login success
+11:00:09,410 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44579,schema=db_traversing]'test' login success
+11:04:01,647 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44727,schema=db_traversing]'test' login success
+11:04:01,649 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44728,schema=db_traversing]'test' login success
+11:04:01,653 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44729,schema=db_traversing]'test' login success
+11:04:01,656 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44730,schema=db_traversing]'test' login success
+11:04:01,658 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44731,schema=db_traversing]'test' login success
+11:04:01,758 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44741,schema=db_traversing]'test' login success
+11:04:01,760 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44742,schema=db_traversing]'test' login success
+11:04:01,763 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44743,schema=db_traversing]'test' login success
+11:04:01,764 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44744,schema=db_traversing]'test' login success
+11:04:01,765 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44745,schema=db_traversing]'test' login success
+11:08:08,156 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44896,schema=db_traversing]'test' login success
+11:08:08,161 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44897,schema=db_traversing]'test' login success
+11:08:08,162 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44898,schema=db_traversing]'test' login success
+11:08:08,166 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44899,schema=db_traversing]'test' login success
+11:08:08,167 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44900,schema=db_traversing]'test' login success
+11:08:08,330 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44910,schema=db_traversing]'test' login success
+11:08:08,336 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44911,schema=db_traversing]'test' login success
+11:08:08,337 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44912,schema=db_traversing]'test' login success
+11:08:08,341 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44913,schema=db_traversing]'test' login success
+11:08:08,344 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=44914,schema=db_traversing]'test' login success
+11:08:41,316 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45066,schema=db_traversing]'test' login success
+11:08:41,318 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45067,schema=db_traversing]'test' login success
+11:08:41,321 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45068,schema=db_traversing]'test' login success
+11:08:41,322 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45069,schema=db_traversing]'test' login success
+11:08:41,323 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45070,schema=db_traversing]'test' login success
+11:08:41,462 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45080,schema=db_traversing]'test' login success
+11:08:41,464 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45081,schema=db_traversing]'test' login success
+11:08:41,469 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45082,schema=db_traversing]'test' login success
+11:08:41,471 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45083,schema=db_traversing]'test' login success
+11:08:41,472 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45084,schema=db_traversing]'test' login success
+11:47:40,064 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45239,schema=db_traversing]'test' login success
+11:47:40,065 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45240,schema=db_traversing]'test' login success
+11:47:40,066 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45241,schema=db_traversing]'test' login success
+11:47:40,067 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45242,schema=db_traversing]'test' login success
+11:47:40,074 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45243,schema=db_traversing]'test' login success
+11:47:40,346 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45253,schema=db_traversing]'test' login success
+11:47:40,351 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45254,schema=db_traversing]'test' login success
+11:47:40,364 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45255,schema=db_traversing]'test' login success
+11:47:40,366 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45256,schema=db_traversing]'test' login success
+11:47:40,366 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45257,schema=db_traversing]'test' login success
+11:50:20,489 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45288,schema=db_traversing]'test' login success
+11:50:20,490 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45289,schema=db_traversing]'test' login success
+11:50:20,491 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45290,schema=db_traversing]'test' login success
+11:50:20,491 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45291,schema=db_traversing]'test' login success
+11:50:20,497 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45292,schema=db_traversing]'test' login success
+11:50:20,684 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45302,schema=db_traversing]'test' login success
+11:50:20,688 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45303,schema=db_traversing]'test' login success
+11:50:20,690 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45304,schema=db_traversing]'test' login success
+11:50:20,700 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45305,schema=db_traversing]'test' login success
+11:50:20,702 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45306,schema=db_traversing]'test' login success
+11:56:08,733 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45339,schema=db_traversing]'test' login success
+11:56:08,742 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45340,schema=db_traversing]'test' login success
+11:56:08,746 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45341,schema=db_traversing]'test' login success
+11:56:08,748 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45342,schema=db_traversing]'test' login success
+11:56:08,748 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45343,schema=db_traversing]'test' login success
+11:56:08,891 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45353,schema=db_traversing]'test' login success
+11:56:08,893 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45354,schema=db_traversing]'test' login success
+11:56:08,894 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45355,schema=db_traversing]'test' login success
+11:56:08,896 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45356,schema=db_traversing]'test' login success
+11:56:08,899 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45357,schema=db_traversing]'test' login success
+11:56:56,198 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45389,schema=db_traversing]'test' login success
+11:56:56,200 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45390,schema=db_traversing]'test' login success
+11:56:56,202 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45391,schema=db_traversing]'test' login success
+11:56:56,203 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45392,schema=db_traversing]'test' login success
+11:56:56,206 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45393,schema=db_traversing]'test' login success
+11:56:56,284 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45403,schema=db_traversing]'test' login success
+11:56:56,285 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45404,schema=db_traversing]'test' login success
+11:56:56,285 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45405,schema=db_traversing]'test' login success
+11:56:56,286 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45406,schema=db_traversing]'test' login success
+11:56:56,290 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45407,schema=db_traversing]'test' login success
+11:58:11,207 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45441,schema=db_traversing]'test' login success
+11:58:11,210 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45442,schema=db_traversing]'test' login success
+11:58:11,216 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45443,schema=db_traversing]'test' login success
+11:58:11,218 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45444,schema=db_traversing]'test' login success
+11:58:11,219 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45445,schema=db_traversing]'test' login success
+11:58:11,401 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45455,schema=db_traversing]'test' login success
+11:58:11,406 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45456,schema=db_traversing]'test' login success
+11:58:11,407 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45457,schema=db_traversing]'test' login success
+11:58:11,410 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45458,schema=db_traversing]'test' login success
+11:58:11,410 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45459,schema=db_traversing]'test' login success
+11:59:47,762 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45491,schema=db_traversing]'test' login success
+11:59:47,764 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45492,schema=db_traversing]'test' login success
+11:59:47,767 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45493,schema=db_traversing]'test' login success
+11:59:47,769 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45494,schema=db_traversing]'test' login success
+11:59:47,773 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45495,schema=db_traversing]'test' login success
+11:59:47,908 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45505,schema=db_traversing]'test' login success
+11:59:47,910 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45506,schema=db_traversing]'test' login success
+11:59:47,911 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45507,schema=db_traversing]'test' login success
+11:59:47,917 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45508,schema=db_traversing]'test' login success
+11:59:47,923 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45509,schema=db_traversing]'test' login success
+12:02:14,533 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45542,schema=db_traversing]'test' login success
+12:02:14,540 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45543,schema=db_traversing]'test' login success
+12:02:14,544 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45544,schema=db_traversing]'test' login success
+12:02:14,552 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45545,schema=db_traversing]'test' login success
+12:02:14,553 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45546,schema=db_traversing]'test' login success
+12:02:14,845 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45556,schema=db_traversing]'test' login success
+12:02:14,847 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45557,schema=db_traversing]'test' login success
+12:02:14,848 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45558,schema=db_traversing]'test' login success
+12:02:14,848 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45559,schema=db_traversing]'test' login success
+12:02:14,852 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45560,schema=db_traversing]'test' login success
+12:03:10,036 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45593,schema=db_traversing]'test' login success
+12:03:10,038 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45594,schema=db_traversing]'test' login success
+12:03:10,039 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45595,schema=db_traversing]'test' login success
+12:03:10,041 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45596,schema=db_traversing]'test' login success
+12:03:10,041 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45597,schema=db_traversing]'test' login success
+12:03:10,213 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45607,schema=db_traversing]'test' login success
+12:03:10,214 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45608,schema=db_traversing]'test' login success
+12:03:10,215 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45609,schema=db_traversing]'test' login success
+12:03:10,217 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45610,schema=db_traversing]'test' login success
+12:03:10,220 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45611,schema=db_traversing]'test' login success
+12:03:26,956 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45644,schema=db_traversing]'test' login success
+12:03:26,967 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45645,schema=db_traversing]'test' login success
+12:03:26,969 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45646,schema=db_traversing]'test' login success
+12:03:26,976 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45647,schema=db_traversing]'test' login success
+12:03:26,978 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45648,schema=db_traversing]'test' login success
+12:03:27,209 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45658,schema=db_traversing]'test' login success
+12:03:27,211 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45659,schema=db_traversing]'test' login success
+12:03:27,214 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45660,schema=db_traversing]'test' login success
+12:03:27,216 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45661,schema=db_traversing]'test' login success
+12:03:27,217 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45662,schema=db_traversing]'test' login success
+12:04:02,478 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45695,schema=db_traversing]'test' login success
+12:04:02,480 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45696,schema=db_traversing]'test' login success
+12:04:02,480 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45697,schema=db_traversing]'test' login success
+12:04:02,481 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45698,schema=db_traversing]'test' login success
+12:04:02,482 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45699,schema=db_traversing]'test' login success
+12:04:02,575 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45709,schema=db_traversing]'test' login success
+12:04:02,577 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45710,schema=db_traversing]'test' login success
+12:04:02,578 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45711,schema=db_traversing]'test' login success
+12:04:02,578 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45712,schema=db_traversing]'test' login success
+12:04:02,578 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45713,schema=db_traversing]'test' login success
+12:04:22,872 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45746,schema=db_traversing]'test' login success
+12:04:22,874 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45747,schema=db_traversing]'test' login success
+12:04:22,875 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45748,schema=db_traversing]'test' login success
+12:04:22,876 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45749,schema=db_traversing]'test' login success
+12:04:22,876 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45750,schema=db_traversing]'test' login success
+12:04:23,023 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45760,schema=db_traversing]'test' login success
+12:04:23,028 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45761,schema=db_traversing]'test' login success
+12:04:23,033 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45762,schema=db_traversing]'test' login success
+12:04:23,036 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45763,schema=db_traversing]'test' login success
+12:04:23,036 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45764,schema=db_traversing]'test' login success
+12:10:26,436 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45798,schema=db_traversing]'test' login success
+12:10:26,437 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45799,schema=db_traversing]'test' login success
+12:10:26,437 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45800,schema=db_traversing]'test' login success
+12:10:26,439 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45801,schema=db_traversing]'test' login success
+12:10:26,441 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45802,schema=db_traversing]'test' login success
+12:10:26,703 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45812,schema=db_traversing]'test' login success
+12:10:26,704 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45813,schema=db_traversing]'test' login success
+12:10:26,710 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45814,schema=db_traversing]'test' login success
+12:10:26,713 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45815,schema=db_traversing]'test' login success
+12:10:26,715 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45816,schema=db_traversing]'test' login success
+12:10:26,949 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45814,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "49cd792008b111e496d2080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:10:26,961 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45814,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "49cd792008b111e496d2080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:10:26,966 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45846,schema=db_traversing]'test' login success
+12:10:26,967 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45846,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "49cd792008b111e496d2080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:12:49,862 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45847,schema=db_traversing]'test' login success
+12:12:49,868 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45848,schema=db_traversing]'test' login success
+12:12:49,872 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45849,schema=db_traversing]'test' login success
+12:12:49,873 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45850,schema=db_traversing]'test' login success
+12:12:49,873 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45851,schema=db_traversing]'test' login success
+12:12:50,105 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45861,schema=db_traversing]'test' login success
+12:12:50,108 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45862,schema=db_traversing]'test' login success
+12:12:50,109 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45863,schema=db_traversing]'test' login success
+12:12:50,120 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45864,schema=db_traversing]'test' login success
+12:12:50,120 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45865,schema=db_traversing]'test' login success
+12:12:50,393 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45863,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "9f4bef7608b111e495a6080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:12:50,393 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45863,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "9f4bef7608b111e495a6080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:12:50,394 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45895,schema=db_traversing]'test' login success
+12:12:50,395 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45895,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "9f4bef7608b111e495a6080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:19:32,829 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45896,schema=db_traversing]'test' login success
+12:19:32,833 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45897,schema=db_traversing]'test' login success
+12:19:32,834 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45898,schema=db_traversing]'test' login success
+12:19:32,834 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45899,schema=db_traversing]'test' login success
+12:19:32,834 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45900,schema=db_traversing]'test' login success
+12:19:33,021 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45910,schema=db_traversing]'test' login success
+12:19:33,022 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45911,schema=db_traversing]'test' login success
+12:19:33,022 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45912,schema=db_traversing]'test' login success
+12:19:33,024 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45913,schema=db_traversing]'test' login success
+12:19:33,025 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45914,schema=db_traversing]'test' login success
+12:19:33,234 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45912,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "8f6dddac08b211e4825b080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:19:33,236 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45912,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "8f6dddac08b211e4825b080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:19:33,237 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45945,schema=db_traversing]'test' login success
+12:19:33,239 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45945,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "8f6dddac08b211e4825b080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:21:15,886 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45946,schema=db_traversing]'test' login success
+12:21:15,887 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45947,schema=db_traversing]'test' login success
+12:21:15,887 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45948,schema=db_traversing]'test' login success
+12:21:15,888 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45949,schema=db_traversing]'test' login success
+12:21:15,889 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45950,schema=db_traversing]'test' login success
+12:21:16,024 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45960,schema=db_traversing]'test' login success
+12:21:16,027 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45961,schema=db_traversing]'test' login success
+12:21:16,028 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45962,schema=db_traversing]'test' login success
+12:21:16,029 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45963,schema=db_traversing]'test' login success
+12:21:16,030 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45964,schema=db_traversing]'test' login success
+12:21:16,238 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45962,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "ccce579408b211e4be6d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:21:16,247 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45962,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "ccce579408b211e4be6d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:21:16,250 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45996,schema=db_traversing]'test' login success
+12:21:16,250 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45996,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "ccce579408b211e4be6d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:22:21,438 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45997,schema=db_traversing]'test' login success
+12:22:21,440 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45998,schema=db_traversing]'test' login success
+12:22:21,441 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=45999,schema=db_traversing]'test' login success
+12:22:21,443 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46000,schema=db_traversing]'test' login success
+12:22:21,445 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46001,schema=db_traversing]'test' login success
+12:22:21,627 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46011,schema=db_traversing]'test' login success
+12:22:21,627 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46012,schema=db_traversing]'test' login success
+12:22:21,634 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46013,schema=db_traversing]'test' login success
+12:22:21,637 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46014,schema=db_traversing]'test' login success
+12:22:21,637 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46015,schema=db_traversing]'test' login success
+12:22:21,814 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46013,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "f3ec33e608b211e494ad080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:22:21,815 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46013,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "f3ec33e608b211e494ad080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:22:21,816 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46046,schema=db_traversing]'test' login success
+12:22:21,817 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46046,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "f3ec33e608b211e494ad080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:23:11,856 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46047,schema=db_traversing]'test' login success
+12:23:11,869 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46048,schema=db_traversing]'test' login success
+12:23:11,870 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46049,schema=db_traversing]'test' login success
+12:23:11,870 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46050,schema=db_traversing]'test' login success
+12:23:11,871 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46051,schema=db_traversing]'test' login success
+12:23:12,150 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46061,schema=db_traversing]'test' login success
+12:23:12,161 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46062,schema=db_traversing]'test' login success
+12:23:12,162 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46063,schema=db_traversing]'test' login success
+12:23:12,163 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46064,schema=db_traversing]'test' login success
+12:23:12,166 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46065,schema=db_traversing]'test' login success
+12:23:35,491 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46079,schema=db_traversing]'test' login success
+12:23:35,492 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46080,schema=db_traversing]'test' login success
+12:23:35,492 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46081,schema=db_traversing]'test' login success
+12:23:35,500 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46082,schema=db_traversing]'test' login success
+12:23:35,501 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46083,schema=db_traversing]'test' login success
+12:23:35,647 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46093,schema=db_traversing]'test' login success
+12:23:35,647 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46094,schema=db_traversing]'test' login success
+12:23:35,655 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46095,schema=db_traversing]'test' login success
+12:23:35,656 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46096,schema=db_traversing]'test' login success
+12:23:35,656 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46097,schema=db_traversing]'test' login success
+12:23:35,886 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46095,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "200d1df008b311e48e5d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:23:35,893 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46095,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "200d1df008b311e48e5d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:23:35,894 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46128,schema=db_traversing]'test' login success
+12:23:35,896 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46128,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "200d1df008b311e48e5d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:26:03,411 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46129,schema=db_traversing]'test' login success
+12:26:03,412 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46130,schema=db_traversing]'test' login success
+12:26:03,413 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46131,schema=db_traversing]'test' login success
+12:26:03,421 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46132,schema=db_traversing]'test' login success
+12:26:03,423 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46133,schema=db_traversing]'test' login success
+12:26:03,604 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46143,schema=db_traversing]'test' login success
+12:26:03,612 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46144,schema=db_traversing]'test' login success
+12:26:03,614 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46145,schema=db_traversing]'test' login success
+12:26:03,619 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46146,schema=db_traversing]'test' login success
+12:26:03,621 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46147,schema=db_traversing]'test' login success
+12:26:03,794 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46145,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "783b08ac08b311e4bc6d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:26:03,799 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46145,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "783b08ac08b311e4bc6d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+12:26:03,802 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46178,schema=db_traversing]'test' login success
+12:26:03,803 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46178,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "783b08ac08b311e4bc6d080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:11:09,260 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46185,schema=db_traversing]'test' login success
+13:11:09,261 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46186,schema=db_traversing]'test' login success
+13:11:09,261 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46187,schema=db_traversing]'test' login success
+13:11:09,262 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46188,schema=db_traversing]'test' login success
+13:11:09,262 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46189,schema=db_traversing]'test' login success
+13:11:09,340 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46199,schema=db_traversing]'test' login success
+13:11:09,347 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46200,schema=db_traversing]'test' login success
+13:11:09,348 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46201,schema=db_traversing]'test' login success
+13:11:09,349 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46202,schema=db_traversing]'test' login success
+13:11:09,350 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46203,schema=db_traversing]'test' login success
+13:11:09,499 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46201,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "c4f5cd0208b911e4ae35080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:11:09,500 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46201,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "c4f5cd0208b911e4ae35080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:11:09,501 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46236,schema=db_traversing]'test' login success
+13:11:09,502 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46236,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "c4f5cd0208b911e4ae35080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:42:56,878 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46240,schema=db_traversing]'test' login success
+13:42:56,880 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46241,schema=db_traversing]'test' login success
+13:42:56,882 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46242,schema=db_traversing]'test' login success
+13:42:56,888 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46243,schema=db_traversing]'test' login success
+13:42:56,890 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46244,schema=db_traversing]'test' login success
+13:42:57,070 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46254,schema=db_traversing]'test' login success
+13:42:57,072 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46255,schema=db_traversing]'test' login success
+13:42:57,075 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46256,schema=db_traversing]'test' login success
+13:42:57,077 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46257,schema=db_traversing]'test' login success
+13:42:57,077 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46258,schema=db_traversing]'test' login success
+13:42:57,271 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46256,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "361081ae08be11e4ac75080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:42:57,271 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46256,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "361081ae08be11e4ac75080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:42:57,278 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46291,schema=db_traversing]'test' login success
+13:42:57,280 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46291,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "361081ae08be11e4ac75080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:46:04,084 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46292,schema=db_traversing]'test' login success
+13:46:04,089 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46293,schema=db_traversing]'test' login success
+13:46:04,089 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46294,schema=db_traversing]'test' login success
+13:46:04,090 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46295,schema=db_traversing]'test' login success
+13:46:04,091 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46296,schema=db_traversing]'test' login success
+13:46:04,223 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46306,schema=db_traversing]'test' login success
+13:46:04,225 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46307,schema=db_traversing]'test' login success
+13:46:04,228 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46308,schema=db_traversing]'test' login success
+13:46:04,229 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46309,schema=db_traversing]'test' login success
+13:46:04,231 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46310,schema=db_traversing]'test' login success
+13:46:04,461 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46308,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "a59f1ada08be11e49388080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:46:04,461 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46308,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "a59f1ada08be11e49388080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:46:04,466 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46341,schema=db_traversing]'test' login success
+13:46:04,466 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46341,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "a59f1ada08be11e49388080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:56:14,811 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46342,schema=db_traversing]'test' login success
+13:56:14,821 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46343,schema=db_traversing]'test' login success
+13:56:14,821 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46344,schema=db_traversing]'test' login success
+13:56:14,824 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46345,schema=db_traversing]'test' login success
+13:56:14,824 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46346,schema=db_traversing]'test' login success
+13:56:15,003 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46356,schema=db_traversing]'test' login success
+13:56:15,007 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46357,schema=db_traversing]'test' login success
+13:56:15,007 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46358,schema=db_traversing]'test' login success
+13:56:15,017 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46359,schema=db_traversing]'test' login success
+13:56:15,024 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46360,schema=db_traversing]'test' login success
+13:56:15,235 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46358,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "11aec97c08c011e49d70080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:56:15,236 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46358,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "11aec97c08c011e49d70080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:56:15,241 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46392,schema=db_traversing]'test' login success
+13:56:15,241 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46392,schema=db_traversing]
+java.lang.NumberFormatException: For input string: "11aec97c08c011e49d70080027a4fa58"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.parseLong(Long.java:631)
+	at com.alibaba.cobar.route.function.PartitionByLong.calculate(PartitionByLong.java:59)
+	at com.alibaba.cobar.route.ServerRouter.calcDataNodeIndexesByFunction(ServerRouter.java:431)
+	at com.alibaba.cobar.route.ServerRouter.ruleCalculate(ServerRouter.java:550)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:189)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+13:59:14,210 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46395,schema=db_traversing]'test' login success
+13:59:14,214 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46396,schema=db_traversing]'test' login success
+13:59:14,216 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46397,schema=db_traversing]'test' login success
+13:59:14,216 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46398,schema=db_traversing]'test' login success
+13:59:14,217 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46399,schema=db_traversing]'test' login success
+13:59:14,291 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46409,schema=db_traversing]'test' login success
+13:59:14,292 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46410,schema=db_traversing]'test' login success
+13:59:14,293 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46411,schema=db_traversing]'test' login success
+13:59:14,294 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46412,schema=db_traversing]'test' login success
+13:59:14,295 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46413,schema=db_traversing]'test' login success
+13:59:42,396 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46446,schema=db_traversing]'test' login success
+13:59:42,399 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46447,schema=db_traversing]'test' login success
+13:59:42,399 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46448,schema=db_traversing]'test' login success
+13:59:42,399 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46449,schema=db_traversing]'test' login success
+13:59:42,401 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46450,schema=db_traversing]'test' login success
+13:59:42,539 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46460,schema=db_traversing]'test' login success
+13:59:42,542 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46461,schema=db_traversing]'test' login success
+13:59:42,544 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46462,schema=db_traversing]'test' login success
+13:59:42,545 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46463,schema=db_traversing]'test' login success
+13:59:42,545 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46464,schema=db_traversing]'test' login success
+14:15:51,072 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46498,schema=db_traversing]'test' login success
+14:15:51,073 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46499,schema=db_traversing]'test' login success
+14:15:51,073 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46500,schema=db_traversing]'test' login success
+14:15:51,074 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46501,schema=db_traversing]'test' login success
+14:15:51,074 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46502,schema=db_traversing]'test' login success
+14:15:51,285 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46512,schema=db_traversing]'test' login success
+14:15:51,287 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46513,schema=db_traversing]'test' login success
+14:15:51,287 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46514,schema=db_traversing]'test' login success
+14:15:51,288 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46515,schema=db_traversing]'test' login success
+14:15:51,291 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46516,schema=db_traversing]'test' login success
+14:16:12,468 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46548,schema=db_traversing]'test' login success
+14:16:12,470 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46549,schema=db_traversing]'test' login success
+14:16:12,471 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46550,schema=db_traversing]'test' login success
+14:16:12,471 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46551,schema=db_traversing]'test' login success
+14:16:12,472 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46552,schema=db_traversing]'test' login success
+14:16:12,607 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46562,schema=db_traversing]'test' login success
+14:16:12,608 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46563,schema=db_traversing]'test' login success
+14:16:12,610 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46564,schema=db_traversing]'test' login success
+14:16:12,611 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46565,schema=db_traversing]'test' login success
+14:16:12,614 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46566,schema=db_traversing]'test' login success
+14:16:43,307 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46596,schema=db_traversing]'test' login success
+14:16:43,312 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46597,schema=db_traversing]'test' login success
+14:16:43,313 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46598,schema=db_traversing]'test' login success
+14:16:43,317 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46599,schema=db_traversing]'test' login success
+14:16:43,317 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46600,schema=db_traversing]'test' login success
+14:16:43,517 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46601,schema=db_traversing]'test' login success
+14:16:43,517 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46602,schema=db_traversing]'test' login success
+14:16:43,518 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46603,schema=db_traversing]'test' login success
+14:16:43,519 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46604,schema=db_traversing]'test' login success
+14:16:43,521 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=46605,schema=db_traversing]'test' login success
+14:26:17,314 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47001,schema=db_traversing]'test' login success
+14:26:17,315 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47002,schema=db_traversing]'test' login success
+14:26:17,315 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47003,schema=db_traversing]'test' login success
+14:26:17,316 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47004,schema=db_traversing]'test' login success
+14:26:17,319 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47005,schema=db_traversing]'test' login success
+14:26:17,502 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47006,schema=db_traversing]'test' login success
+14:26:17,502 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47007,schema=db_traversing]'test' login success
+14:26:17,504 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47008,schema=db_traversing]'test' login success
+14:26:17,505 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47009,schema=db_traversing]'test' login success
+14:26:17,506 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47010,schema=db_traversing]'test' login success
+14:26:28,166 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47406,schema=db_traversing]'test' login success
+14:26:28,171 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47407,schema=db_traversing]'test' login success
+14:26:28,172 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47408,schema=db_traversing]'test' login success
+14:26:28,174 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47409,schema=db_traversing]'test' login success
+14:26:28,175 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47410,schema=db_traversing]'test' login success
+14:26:28,358 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47411,schema=db_traversing]'test' login success
+14:26:28,360 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47412,schema=db_traversing]'test' login success
+14:26:28,367 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47413,schema=db_traversing]'test' login success
+14:26:28,370 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47414,schema=db_traversing]'test' login success
+14:26:28,370 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47415,schema=db_traversing]'test' login success
+14:27:07,009 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47457,schema=db_traversing]'test' login success
+14:27:07,010 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47458,schema=db_traversing]'test' login success
+14:27:07,012 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47459,schema=db_traversing]'test' login success
+14:27:07,012 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47460,schema=db_traversing]'test' login success
+14:27:07,012 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47461,schema=db_traversing]'test' login success
+14:27:07,199 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47462,schema=db_traversing]'test' login success
+14:27:07,200 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47463,schema=db_traversing]'test' login success
+14:27:07,203 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47464,schema=db_traversing]'test' login success
+14:27:07,204 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47465,schema=db_traversing]'test' login success
+14:27:07,207 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47466,schema=db_traversing]'test' login success
+14:28:15,874 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47506,schema=db_traversing]'test' login success
+14:28:15,874 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47507,schema=db_traversing]'test' login success
+14:28:15,876 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47508,schema=db_traversing]'test' login success
+14:28:15,878 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47509,schema=db_traversing]'test' login success
+14:28:15,878 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47510,schema=db_traversing]'test' login success
+14:28:16,107 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47511,schema=db_traversing]'test' login success
+14:28:16,108 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47512,schema=db_traversing]'test' login success
+14:28:16,109 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47513,schema=db_traversing]'test' login success
+14:28:16,110 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47514,schema=db_traversing]'test' login success
+14:28:16,110 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47515,schema=db_traversing]'test' login success
+14:29:36,072 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47555,schema=db_traversing]'test' login success
+14:29:36,073 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47556,schema=db_traversing]'test' login success
+14:29:36,074 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47557,schema=db_traversing]'test' login success
+14:29:36,074 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47558,schema=db_traversing]'test' login success
+14:29:36,074 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47559,schema=db_traversing]'test' login success
+14:29:36,170 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47569,schema=db_traversing]'test' login success
+14:29:36,171 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47570,schema=db_traversing]'test' login success
+14:29:36,175 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47571,schema=db_traversing]'test' login success
+14:29:36,177 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47572,schema=db_traversing]'test' login success
+14:29:36,177 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47573,schema=db_traversing]'test' login success
+14:30:28,283 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47607,schema=db_traversing]'test' login success
+14:30:28,285 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47608,schema=db_traversing]'test' login success
+14:30:28,286 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47609,schema=db_traversing]'test' login success
+14:30:28,287 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47610,schema=db_traversing]'test' login success
+14:30:28,295 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47611,schema=db_traversing]'test' login success
+14:30:28,507 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47621,schema=db_traversing]'test' login success
+14:30:28,507 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47622,schema=db_traversing]'test' login success
+14:30:28,508 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47623,schema=db_traversing]'test' login success
+14:30:28,510 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47624,schema=db_traversing]'test' login success
+14:30:28,511 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47625,schema=db_traversing]'test' login success
+14:31:09,402 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47777,schema=db_traversing]'test' login success
+14:31:09,403 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47778,schema=db_traversing]'test' login success
+14:31:09,405 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47779,schema=db_traversing]'test' login success
+14:31:09,406 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47780,schema=db_traversing]'test' login success
+14:31:09,406 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47781,schema=db_traversing]'test' login success
+14:31:09,585 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47782,schema=db_traversing]'test' login success
+14:31:09,587 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47783,schema=db_traversing]'test' login success
+14:31:09,588 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47784,schema=db_traversing]'test' login success
+14:31:09,588 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47785,schema=db_traversing]'test' login success
+14:31:09,589 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=47786,schema=db_traversing]'test' login success
+14:42:14,035 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48280,schema=db_traversing]'test' login success
+14:42:14,036 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48281,schema=db_traversing]'test' login success
+14:42:14,038 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48282,schema=db_traversing]'test' login success
+14:42:14,038 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48283,schema=db_traversing]'test' login success
+14:42:14,039 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48284,schema=db_traversing]'test' login success
+14:42:14,305 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48285,schema=db_traversing]'test' login success
+14:42:14,307 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48286,schema=db_traversing]'test' login success
+14:42:14,308 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48287,schema=db_traversing]'test' login success
+14:42:14,308 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48288,schema=db_traversing]'test' login success
+14:42:14,310 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48289,schema=db_traversing]'test' login success
+14:42:38,453 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48778,schema=db_traversing]'test' login success
+14:42:38,454 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48779,schema=db_traversing]'test' login success
+14:42:38,455 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48780,schema=db_traversing]'test' login success
+14:42:38,455 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48781,schema=db_traversing]'test' login success
+14:42:38,455 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48782,schema=db_traversing]'test' login success
+14:42:38,680 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48783,schema=db_traversing]'test' login success
+14:42:38,681 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48784,schema=db_traversing]'test' login success
+14:42:38,682 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48785,schema=db_traversing]'test' login success
+14:42:38,685 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48786,schema=db_traversing]'test' login success
+14:42:38,685 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48787,schema=db_traversing]'test' login success
+14:52:07,845 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49277,schema=db_traversing]'test' login success
+14:52:07,846 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49278,schema=db_traversing]'test' login success
+14:52:07,846 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49279,schema=db_traversing]'test' login success
+14:52:07,847 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49280,schema=db_traversing]'test' login success
+14:52:07,847 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49281,schema=db_traversing]'test' login success
+14:52:07,882 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49282,schema=db_traversing]'test' login success
+14:52:07,889 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49283,schema=db_traversing]'test' login success
+14:52:07,890 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49284,schema=db_traversing]'test' login success
+14:52:07,890 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49285,schema=db_traversing]'test' login success
+14:52:07,891 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49286,schema=db_traversing]'test' login success
+14:52:23,850 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49338,schema=db_traversing]'test' login success
+14:52:23,851 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49339,schema=db_traversing]'test' login success
+14:52:23,851 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49340,schema=db_traversing]'test' login success
+14:52:23,852 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49341,schema=db_traversing]'test' login success
+14:52:23,852 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49342,schema=db_traversing]'test' login success
+14:52:23,871 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49343,schema=db_traversing]'test' login success
+14:52:23,872 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49344,schema=db_traversing]'test' login success
+14:52:23,876 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49345,schema=db_traversing]'test' login success
+14:52:23,876 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49346,schema=db_traversing]'test' login success
+14:52:23,877 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49347,schema=db_traversing]'test' login success
+14:55:26,855 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49399,schema=db_traversing]'test' login success
+14:55:26,865 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49400,schema=db_traversing]'test' login success
+14:55:26,865 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49401,schema=db_traversing]'test' login success
+14:55:26,865 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49402,schema=db_traversing]'test' login success
+14:55:26,866 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49403,schema=db_traversing]'test' login success
+14:55:26,894 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49404,schema=db_traversing]'test' login success
+14:55:26,895 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49405,schema=db_traversing]'test' login success
+14:55:26,895 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49406,schema=db_traversing]'test' login success
+14:55:26,896 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49407,schema=db_traversing]'test' login success
+14:55:26,896 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49408,schema=db_traversing]'test' login success
+15:00:29,933 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49465,schema=db_traversing]'test' login success
+15:00:29,941 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49466,schema=db_traversing]'test' login success
+15:00:29,942 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49467,schema=db_traversing]'test' login success
+15:00:29,943 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49468,schema=db_traversing]'test' login success
+15:00:29,943 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49469,schema=db_traversing]'test' login success
+15:00:30,317 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49470,schema=db_traversing]'test' login success
+15:00:30,319 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49471,schema=db_traversing]'test' login success
+15:00:30,320 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49472,schema=db_traversing]'test' login success
+15:00:30,330 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49473,schema=db_traversing]'test' login success
+15:00:30,331 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49474,schema=db_traversing]'test' login success
+15:21:25,588 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49965,schema=db_traversing]'test' login success
+15:21:25,590 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49966,schema=db_traversing]'test' login success
+15:21:25,590 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49967,schema=db_traversing]'test' login success
+15:21:25,590 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49968,schema=db_traversing]'test' login success
+15:21:25,591 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49969,schema=db_traversing]'test' login success
+15:22:54,000 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49970,schema=db_traversing]'test' login success
+15:22:54,001 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49971,schema=db_traversing]'test' login success
+15:22:54,006 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49972,schema=db_traversing]'test' login success
+15:22:54,006 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49973,schema=db_traversing]'test' login success
+15:22:54,007 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49974,schema=db_traversing]'test' login success
+15:22:54,139 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49975,schema=db_traversing]'test' login success
+15:22:54,139 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49976,schema=db_traversing]'test' login success
+15:22:54,140 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49977,schema=db_traversing]'test' login success
+15:22:54,141 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49978,schema=db_traversing]'test' login success
+15:22:54,141 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49979,schema=db_traversing]'test' login success
+15:23:47,112 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50439,schema=db_traversing]'test' login success
+15:23:47,113 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50440,schema=db_traversing]'test' login success
+15:23:47,114 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50441,schema=db_traversing]'test' login success
+15:23:47,116 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50442,schema=db_traversing]'test' login success
+15:23:47,117 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50443,schema=db_traversing]'test' login success
+15:23:47,249 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50444,schema=db_traversing]'test' login success
+15:23:47,249 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50445,schema=db_traversing]'test' login success
+15:23:47,250 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50446,schema=db_traversing]'test' login success
+15:23:47,251 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50447,schema=db_traversing]'test' login success
+15:23:47,251 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50448,schema=db_traversing]'test' login success
+18:58:43,568 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50938,schema=db_traversing]'test' login success
+18:58:43,569 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50939,schema=db_traversing]'test' login success
+18:58:43,569 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50940,schema=db_traversing]'test' login success
+18:58:43,571 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50941,schema=db_traversing]'test' login success
+18:58:43,571 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50942,schema=db_traversing]'test' login success
+18:58:43,789 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50943,schema=db_traversing]'test' login success
+18:58:43,789 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50944,schema=db_traversing]'test' login success
+18:58:43,790 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50945,schema=db_traversing]'test' login success
+18:58:43,790 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50946,schema=db_traversing]'test' login success
+18:58:43,791 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50947,schema=db_traversing]'test' login success
+18:58:55,032 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51436,schema=db_traversing]'test' login success
+18:58:55,037 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51437,schema=db_traversing]'test' login success
+18:58:55,038 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51438,schema=db_traversing]'test' login success
+18:58:55,038 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51439,schema=db_traversing]'test' login success
+18:58:55,039 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51440,schema=db_traversing]'test' login success
+18:58:55,255 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51441,schema=db_traversing]'test' login success
+18:58:55,257 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51442,schema=db_traversing]'test' login success
+18:58:55,257 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51443,schema=db_traversing]'test' login success
+18:58:55,258 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51444,schema=db_traversing]'test' login success
+18:58:55,258 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51445,schema=db_traversing]'test' login success
+18:59:09,685 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51932,schema=db_traversing]'test' login success
+18:59:09,686 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51933,schema=db_traversing]'test' login success
+18:59:09,689 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51934,schema=db_traversing]'test' login success
+18:59:09,690 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51935,schema=db_traversing]'test' login success
+18:59:09,691 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51936,schema=db_traversing]'test' login success
+18:59:10,010 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51937,schema=db_traversing]'test' login success
+18:59:10,010 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51938,schema=db_traversing]'test' login success
+18:59:10,012 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51939,schema=db_traversing]'test' login success
+18:59:10,012 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51940,schema=db_traversing]'test' login success
+18:59:10,013 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51941,schema=db_traversing]'test' login success
