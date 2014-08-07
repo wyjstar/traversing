@@ -89,12 +89,11 @@ class CharacterGuildComponent(Component):
 
     @property
     def position(self):
-        return self._g_id
+        return self._position
 
     @position.setter
     def position(self, position):
         self._position = position
-        print 'cccccccccccccccccccccccccccccccccccccccccccc'
 
     @property
     def exit_time(self):
@@ -119,3 +118,19 @@ class CharacterGuildComponent(Component):
     @worship_time.setter
     def worship_time(self, worship_time):
         self._worship_time = worship_time
+
+    @property
+    def contribution(self):
+        return self._contribution
+
+    @contribution.setter
+    def contribution(self, contribution):
+        self._contribution = contribution
+
+    @property
+    def all_contribution(self):
+        return self._all_contribution
+
+    @all_contribution.setter
+    def all_contribution(self, all_contribution):
+        self._all_contribution = all_contribution

@@ -96,6 +96,10 @@ class Guild(object):
     def get_g_id(self):
         return self._g_id
 
+    def get_guild_info(self):
+        return [self._g_id, self._name, self.p_num, self._level,
+                self._exp, self.fund, self._call, self._record]
+
     @property
     def name(self):
         return self._name
@@ -128,4 +132,50 @@ class Guild(object):
     def p_num(self, p_num):
         self._p_num = p_num
 
+    @property
+    def fund(self):
+        return self._fund
 
+    @fund.setter
+    def fund(self, fund):
+        self._fund = fund
+
+    @property
+    def exp(self):
+        return self._exp
+
+    @exp.setter
+    def exp(self, exp):
+        self._exp = exp
+
+    @property
+    def g_id(self):
+        return self._g_id
+
+    @g_id.setter
+    def g_id(self, g_id):
+        self._g_id = g_id
+
+    @property
+    def level(self):
+        return self._level
+
+    @level.setter
+    def level(self, level):
+        self._level = level
+
+    @property
+    def call(self):
+        return self._call
+
+    @call.setter
+    def call(self, call):
+        self._call = call
+
+    @property
+    def record(self):
+        return self._record
+
+    @record.setter
+    def record(self, record):
+        self._record = record

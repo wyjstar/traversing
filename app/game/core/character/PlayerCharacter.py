@@ -50,7 +50,7 @@ class PlayerCharacter(Character):
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
         self._friends = FriendComponent(self)  # friend system
-        # self._guild = CharacterGuildComponent(self)  # 公会组件
+        self._guild = CharacterGuildComponent(self)  # 公会组件
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
         self._mmode = None
@@ -109,7 +109,7 @@ class PlayerCharacter(Character):
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._friends.init_data()
-        # self._guild.init_data()
+        self._guild.init_data()
         # self._stage.init_data()
         self._stamina = stamina
         self._pvp_times = pvp_times

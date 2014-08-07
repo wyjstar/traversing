@@ -43,17 +43,17 @@ class FriendTest(unittest.TestCase):
             'applicant_list', friendlist.applicant_list
 
         print '==========become friend=========='
-        request.target_id = 1
+        request.target_ids = [1]
         result = become_friends(self.player2.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 1, "become friend error!%s" % response.result)
+        self.assertEqual(response.result_no, 1, "become friend error!%s" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========add friend request=========='
-        request.target_id = 2
+        request.target_ids = [2]
         result = add_friend_request(self.player1.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 0, "friend error!%d" % response.result)
+        self.assertEqual(response.result_no, 0, "friend error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========get friend list=========='
@@ -63,17 +63,17 @@ class FriendTest(unittest.TestCase):
             'applicant_list', friendlist.applicant_list
 
         print '==========re-add friend request=========='
-        request.target_id = 2
+        request.target_ids = [2]
         result = add_friend_request(self.player1.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 1, "friend error!%d" % response.result)
+        self.assertEqual(response.result_no, 1, "friend error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========become friend=========='
-        request.target_id = 1
+        request.target_ids = [1]
         result = become_friends(self.player2.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 0, "become friend error!%d" % response.result)
+        self.assertEqual(response.result_no, 0, "become friend error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========get friend list=========='
@@ -83,43 +83,43 @@ class FriendTest(unittest.TestCase):
             'applicant_list', friendlist.applicant_list
 
         print '==========del friend=========='
-        request.target_id = 1
+        request.target_ids = [1]
         result = del_friend(self.player2.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 0, "del friend error!%d" % response.result)
+        self.assertEqual(response.result_no, 0, "del friend error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========re-del friend=========='
-        request.target_id = 1
+        request.target_ids = [1]
         result = del_friend(self.player2.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 1, "del friend error!%d" % response.result)
+        self.assertEqual(response.result_no, 1, "del friend error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========del blacklist=========='
-        request.target_id = 3
+        request.target_ids = [3]
         result = del_player_from_blacklist(self.player1.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 1, "del blacklist error!%d" % response.result)
+        self.assertEqual(response.result_no, 1, "del blacklist error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========add blacklist=========='
-        request.target_id = 3
+        request.target_ids = [3]
         result = add_player_to_blacklist(self.player1.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 0, "add blacklist error!%d" % response.result)
+        self.assertEqual(response.result_no, 0, "add blacklist error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========re-add blacklist=========='
-        request.target_id = 3
+        request.target_ids = [3]
         result = add_player_to_blacklist(self.player1.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 1, "re-add blacklist error!%d" % response.result)
+        self.assertEqual(response.result_no, 1, "re-add blacklist error!%d" % response.result)
         self.print_friend_data([1, 2])
 
         print '==========del blacklist=========='
-        request.target_id = 3
+        request.target_ids = [3]
         result = del_player_from_blacklist(self.player1.base_info.id, request.SerializePartialToString())
         response.ParseFromString(result)
-        self.assertEqual(response.result, 0, "del blacklist error!%d" % response.result)
+        self.assertEqual(response.result_no, 0, "del blacklist error!%d" % response.result)
         self.print_friend_data([1, 2])

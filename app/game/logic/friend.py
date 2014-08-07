@@ -2,6 +2,7 @@
 """
 created by server on 14-7-17下午5:21.
 """
+import datetime
 
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
@@ -21,27 +22,40 @@ def add_friend_request(dynamic_id, data, **kwargs):
     :return:
     """
     response = CommonResponse()
-    response.result = 0
+    response.result = True
     request = FriendCommon()
     request.ParseFromString(data)
 
+    if len(request) < 1:
+        response.result = False  # cant invite oneself as friend
+        return response.SerializePartialToString()  # fail
+
+    target_id = request.target_ids[0]
+
     player = kwargs.get('player')
-    invitee_player = PlayersManager().get_player_by_id(request.target_id)
+    invitee_player = PlayersManager().get_player_by_id(target_id)
+    if player.base_info.id == target_id:
+        response.result = False  # cant invite oneself as friend
+        response.result_no = 3  # fail
+        return response.SerializePartialToString()  # fail
+
 
     if invitee_player:
         if not invitee_player.friends.add_applicant(player.base_info.id):
-            response.result = 1  # fail
+            response.result = False
+            response.result_no = 1  # fail
             return response.SerializePartialToString()  # fail
 
         push_object(1010, player.base_info.id, invitee_player.dynamic_id)
         invitee_player.friends.save_data()
     else:
-        friend_offline = FriendOffline(request.target_id)
+        friend_offline = FriendOffline(target_id)
         if not friend_offline.add_applicant(player.base_info.id):
-            response.result = 2  # offline fail
+            response.result = False
+            response.result_no = 2  # offline fail
             return response.SerializePartialToString()  # fail
 
-    return response.SerializePartialToString()  # fail
+    return response.SerializePartialToString()
 
 
 @have_player
@@ -53,42 +67,33 @@ def become_friends(dynamic_id, data, **kwargs):
     :return:
     """
     response = CommonResponse()
-    response.result = 0
+    response.result = True
+    response.result_no = 0
     request = FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
-    if not player.friends.is_in_applicants_list(request.target_id):
-        response.result = 1  # inviter id is not exit in applicants
-        return response.SerializePartialToString()
+    for target_id in request.target_ids:
+        if not player.friends.add_friend(target_id):
+            response.result = False
+        # save data
+        player.friends.save_data()
 
-    if not player.friends.del_applicant(request.target_id):
-        response.result = 2  # del applicant error
-        return response.SerializePartialToString()
-
-    if not player.friends.add_friend(request.target_id):
-        response.result = 3
-        return response.SerializePartialToString()
-
-    # save data
-    player.friends.save_data()
-
-    inviter_player = PlayersManager().get_player_by_id(request.target_id)
-
-    if inviter_player:
-        if not inviter_player.friends.add_friend(player.base_info.id):
-            response.result = 4
-            return response.SerializePartialToString()
+        inviter_player = PlayersManager().get_player_by_id(target_id)
+        if inviter_player:
+            if not inviter_player.friends.add_friend(player.base_info.id):
+                response.result = False
 
         # save data
-        inviter_player.friends.save_data()
-        player.friends.save_data()
-    else:
-        friend_offline = FriendOffline(request.target_id)
-        if not friend_offline.add_friend(player.base_info.id):
-            response.result = 5
-            return response.SerializePartialToString()
+            inviter_player.friends.save_data()
+            player.friends.save_data()
+        else:
+            friend_offline = FriendOffline(target_id)
+            if not friend_offline.add_friend(player.base_info.id):
+                response.result = False
+
+        response.result_no += 1
 
     return response.SerializePartialToString()
 
@@ -103,18 +108,17 @@ def refuse_invitation(dynamic_id, data, **kwargs):
     :return:
     """
     response = CommonResponse()
-    response.result = 0
+    response.result = True
+    response.result_no = 0
     request = FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
-    if not player.friends.is_in_applicants_list(request.target_id):
-        response.result = 1
-        return response.SerializePartialToString()
-    if not player.friends.del_applicant(request.target_id):
-        response.result = 2
-        return response.SerializePartialToString()
+    for target_id in request.targett_ids:
+        if not player.friends.del_applicant(target_id):
+            response.result = False
+        response.result_no += 1
 
     # save data
     player.friends.save_data()
@@ -131,36 +135,29 @@ def del_friend(dynamic_id, data, **kwargs):
     :return:
     """
     response = CommonResponse()
-    response.result = 0
+    response.result = True
+    response.result_no = 0
     request = FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
-    if not player.friends.is_friend(request.target_id):
-        response.result = 1  # there is no friend with friend id
-        return response.SerializePartialToString()
+    for target_id in request.target_ids:
+        if not player.friends.del_friend(target_id):
+            response.result = False
 
-    if not player.friends.del_friend(request.target_id):
-        response.result = 2
-        return response.SerializePartialToString()
+        # save data
+        player.friends.save_data()
 
-    # save data
-    player.friends.save_data()
-
-    friend_player = PlayersManager().get_player_by_id(request.target_id)
-    if friend_player:
-        if not friend_player.friends.is_friend(player.base_info.id):
-            response.result = 3
-            return response.SerializePartialToString()
-        if not friend_player.friends.del_friend(player.base_info.id):
-            response.result = 4
-            return response.SerializePartialToString()
-    else:
-        friend_offline = FriendOffline(request.target_id)
-        if not friend_offline.del_friend(player.base_info.id):
-            response.result = 5
-            return response.SerializePartialToString()
+        friend_player = PlayersManager().get_player_by_id(target_id)
+        if friend_player:
+            if not friend_player.friends.del_friend(player.base_info.id):
+                response.result = False
+        else:
+            friend_offline = FriendOffline(target_id)
+            if not friend_offline.del_friend(player.base_info.id):
+                response.result = False
+        response.result_no += 1
 
     return response.SerializePartialToString()
 
@@ -174,19 +171,20 @@ def add_player_to_blacklist(dynamic_id, data, **kwargs):
     :return:
     """
     response = CommonResponse()
-    response.result = 0
+    response.result = True
+    response.result_no = 0
     request = FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
-    if player.friends.is_in_blacklist(request.target_id):
-        response.result = 1  # already exist the player in blacklist
-        return response.SerializePartialToString()
+    for target_id in request.target_ids:
+        if player.friends.is_in_blacklist(target_id):
+            response.result = False  # already exist the player in blacklist
 
-    if not player.friends.add_blacklist(request.target_id):
-        response.result = 2
-        return response.SerializePartialToString()
+        if not player.friends.add_blacklist(target_id):
+            response.result = False
+        response.result_no += 1
 
     # save data
     player.friends.save_data()
@@ -202,19 +200,19 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
     :return:
     """
     response = CommonResponse()
-    response.result = 0
+    response.result = True
     request = FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
-    if not player.friends.is_in_blacklist(request.target_id):
-        response.result = 1  # not exist the player in blacklist
-        return response.SerializePartialToString()
+    for target_id in request.target_ids:
+        if not player.friends.is_in_blacklist(target_id):
+            response.result = False  # not exist the player in blacklist
 
-    if not player.friends.del_blacklist(request.target_id):
-        response.result = 2
-        return response.SerializePartialToString()
+        if not player.friends.del_blacklist(target_id):
+            response.result = False
+        response.result_no += 1
 
     # save data
     player.friends.save_data()
@@ -233,6 +231,9 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_friend_add = response.friends.add()
             response_friend_add.player_id = pid
             response_friend_add.nickname = player_data.get('nickname')
+            response_friend_add.ap = 999
+            response_friend_add.icon_id = 99
+            response_friend_add.gift = datetime.datetime.now().day
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -242,6 +243,9 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.player_id = pid
             response_blacklist_add.nickname = player_data.get('nickname')
+            response_blacklist_add.ap = 888
+            response_blacklist_add.icon_id = 88
+            response_blacklist_add.gift = datetime.datetime.now().day
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -251,6 +255,9 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.player_id = pid
             response_applicant_list_add.nickname = player_data.get('nickname')
+            response_applicant_list_add.ap = 666
+            response_applicant_list_add.icon_id = 66
+            response_applicant_list_add.gift = datetime.datetime.now().day
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -267,16 +274,15 @@ def find_friend_request(dynamic_id, data, **kwargs):
     :param kwargs:
     :return:
     """
-    response = FindFriendRequest()
-    response.result = 0
-    request = FindFriendResponse()
+    request = FindFriendRequest()
     request.ParseFromString(data)
 
+    response = FindFriendResponse()
     response.id = 0
     response.nickname = 'none'
 
     if request.id_or_nickname.isdigit():
-        player_data = tb_character_info.getObjData(request.id_or_nick_name)
+        player_data = tb_character_info.getObjData(request.id_or_nickname)
         if player_data:
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')
