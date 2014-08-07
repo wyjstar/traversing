@@ -134,6 +134,25 @@ def melting_equipment(dynamic_id, equipment_id, **kwargs):
     return {'result': True, 'gain': gain, 'player': player}
 
 
+@have_player
+def awakening_equipment(dynamic_id, equipment_id, **kwargs):
+    """觉醒
+    @param dynamic_id:
+    @param equipment_id:
+    @param kwargs:
+    @return:
+    """
+    pass
+    # player = kwargs.get('player')
+    # equipment_obj = player.equipment.get_by_id(equipment_id)
+    # if not equipment_obj:
+    #     return {'result': False, 'result_no': 401, 'message': u''}
+    #
+    #
+    # equipment_chip = player.equipment_chip_component.get_chip()
+    #
+    # return {'result': True, 'player': player}
+
 
 
 

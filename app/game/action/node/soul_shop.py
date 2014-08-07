@@ -16,7 +16,7 @@ def soul_shop_506(dynamic_id, pro_data):
 @remote_service_handle
 def get_shop_items_507(dynamic_id, pro_data=None):
     """获取商品列表"""
-    return get_shop_items()
+    return get_shop_items(dynamic_id)
 
 
 

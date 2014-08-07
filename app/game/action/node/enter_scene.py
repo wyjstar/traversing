@@ -12,7 +12,6 @@ from app.proto_file.game_pb2 import GameLoginResponse
 def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
     player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
-
     PlayersManager().add_player(player)
     responsedata = GameLoginResponse()
     responsedata.res.result = True

@@ -24,11 +24,11 @@ for key, value in base_config_mock.items():
 # ------------------------hero----------------------------
 
 hero1 = {'id': 10001, 'name': 'hero10001', 'sacrificeGain': {const.HERO_SOUL: [100, 100, 0]},
-         'sellGain': {const.COIN: [100, 100, 0]}}
+         'sellGain': {const.COIN: [100, 100, 0]}, 'breakLimit': 6}
 hero2 = {'id': 10002, 'name': 'hero10002', 'sacrificeGain': {const.HERO_SOUL: [200, 200, 0]},
-         'sellGain': {const.COIN: [200, 300, 0]}}
+         'sellGain': {const.COIN: [200, 300, 0]}, 'breakLimit': 6}
 hero3 = {'id': 10003, 'name': 'hero10003', 'sacrificeGain': {const.HERO_SOUL: [300, 300, 0]},
-         'sellGain': {const.COIN: [300, 300, 0]}}
+         'sellGain': {const.COIN: [300, 300, 0]}, 'breakLimit': 6}
 
 hero_config.clear()
 hero_config_mock = HeroConfig().parser([hero1, hero2, hero3])
@@ -37,12 +37,12 @@ for key, value in hero_config_mock.items():
 
 # ------------------------item----------------------------
 
-item1 = {'id': 1000101, 'func_args1': 100000}
-item2 = {'id': 1000102, 'func_args1': 50000}
-item3 = {'id': 1000103, 'func_args1': 10000}
-item4 = {'id': 1000104, 'func_args1': 1000}
+item1 = {'id': 1000101, 'funcArgs1': 100000}
+item2 = {'id': 1000102, 'funcArgs1': 50000}
+item3 = {'id': 1000103, 'funcArgs1': 10000}
+item4 = {'id': 1000104, 'funcArgs1': 1000}
 
-item5 = {'id': 1000112, 'func': 2, 'func_args1': 1000113, 'func_args2': 1, 'dropId': 10002}
+item5 = {'id': 1000112, 'func': 2, 'funcArgs1': 1000113, 'funcArgs2': 1, 'dropId': 10002}
 item6 = {'id': 1000113, 'func': 0}
 
 item_config.clear()
@@ -93,9 +93,22 @@ hero_exp_config[16] = hero_exp16
 # 2 :break_pill
 # 3 :hero_chip
 hero_breakup1 = {'id': 10001, 'break2': 31000102,
+                 'consume1': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
                  'consume2': {const.COIN: [1000, 1000, 0],
                               const.ITEM: [2, 2, 1000111],
-                              const.HERO_CHIP: [20, 20, 1000112]}}
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 'consume3': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 'consume4': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 'consume5': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 }
 
 hero_breakup_config.clear()
 hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)

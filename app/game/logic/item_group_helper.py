@@ -22,23 +22,23 @@ def is_afford(player, item_group):
         item_no = group_item.item_no
         print "hero_soul", player.finance.hero_soul
         if type_id == const.COIN and player.finance.coin < num:
-            return {'result': False}
+            return {'result': False, 'result_no': 101}
         elif type_id == const.GOLD and player.finance.gold < num:
-            return {'result': False}
+            return {'result': False, 'result_no': 102}
         elif type_id == const.HERO_SOUL and player.finance.hero_soul < num:
-            return {'result': False}
+            return {'result': False, 'result_no': 103}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             if not hero_chip or hero_chip.num < num:
-                return {'result': False}
+                return {'result': False, 'result_no': 104}
         elif type_id == const.EQUIPMENT_CHIP:
             equipment_chip = player.equipment_chip_component.get_chip(item_no)
             if not equipment_chip or equipment_chip.chip_num < num:
-                return {'result': False}
+                return {'result': False, 'result_no': 105}
         elif type_id == const.ITEM:
             item = player.item_package.get_item(item_no)
             if not item or item.num < num:
-                return {'result': False}
+                return {'result': False, 'result_no': 106}
 
     return {'result': True}
 
