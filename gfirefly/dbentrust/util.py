@@ -181,7 +181,7 @@ def UpdateWithDict(tablename, props, prere):
         conn.commit()
     except Exception, e:
         import traceback
-        log.err(traceback.format_exc())
+        traceback.print_stack()
         log.err(e)
         log.err(sql)
     cursor.close()

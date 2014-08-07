@@ -41,11 +41,20 @@ class FriendOffline():
 
     def add_friend(self, friend_id):
         player_friends = self._player_data.get('friends')
+        player_blacklist = self._player_data.get('blacklist')
+        player_applicant_list = self._player_data.get('applicants_list')
 
         if friend_id in player_friends:
             print 'offline add friend', 'exist in friend list'
             return False
 
+        if friend_id in player_applicant_list:
+            print 'offline add friend', 'remove friend id from applicant list'
+            del (player_applicant_list[friend_id])
+            self._player_obj.update('applicants_list', player_applicant_list)
+
+        player_friends.append(friend_id)
+        self._player_obj.update('friends', player_friends)
         return True
 
     def del_friend(self, friend_id):
@@ -55,6 +64,8 @@ class FriendOffline():
             print 'offline del friend', 'can not find friend'
             return False
 
+        player_friends.remove(friend_id)
+        self._player_obj.update('friends', player_friends)
         return True
 
 
