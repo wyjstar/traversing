@@ -27,29 +27,23 @@ if __name__ == '__main__':
 
     # ------------Time---------------------------
     # print 'time:', int(time.time())
-    test1 = {1: [1, 2, 3, 4, 5], 2: [6, 7, 8, 9], 3: [10, 11, 12], 4: [8]}
-    print test1.values()
 
+    # test1 = {1: [1, 2, 3, 4, 5], 2: [6, 7, 8, 9], 3: [10, 11, 12], 4: [8]}
+    # print test1.values()
 
+    # level_instance = Ranking.instance('Level')
+    # fifo_instance = Ranking.instance('Fifo')
 
+    # for i in xrange(10000):
+    #     uid = "uid%d" % i
+    #     level = random.randint(1, 40)
+    #
+    #     fifo_instance.add(uid, level=level)  # 添加rank数据
+    #     level_instance.add(uid, level=level)  # 添加rank数据
 
-
-
-
-
-
-
-    # timeStamp = int(time.time())
-    # timeArray = time.localtime(timeStamp)
-    # otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
-    # print 'otherStyleTime:', otherStyleTime
-
-    # print '时间戳减法：', int(time.time())-1406602661
-    # b = 1
-    # for a in [1, 2, 3, 4, 5]:
-    #     b += a
-    # print 'b:', b
-
-    t = time.localtime(time.time())
-    time1 = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', t), '%Y-%m-%d %H:%M:%S'))
-    print time1, 'aaaaaa'
+    # data = level_instance.get("Level", 20)  # 获取等级最高的玩家列表(20条)
+    # print "Level:", data
+    #
+    # data = fifo_instance.get("Lv007", 20)  # 获取等级为7级的玩家列表(20条)
+    # print "Level:", data
+    print 1!=2

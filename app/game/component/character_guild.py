@@ -89,12 +89,11 @@ class CharacterGuildComponent(Component):
 
     @property
     def position(self):
-        return self._g_id
+        return self._position
 
     @position.setter
     def position(self, position):
         self._position = position
-        print 'cccccccccccccccccccccccccccccccccccccccccccc'
 
     @property
     def exit_time(self):
