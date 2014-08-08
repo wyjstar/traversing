@@ -15,7 +15,7 @@ import equipment_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment_response.proto',
   package='',
-  serialized_pb='\n\x18\x65quipment_response.proto\x1a\x0c\x63ommon.proto\x1a\x0f\x65quipment.proto\"U\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1f\n\tequipment\x18\x02 \x03(\x0b\x32\x0c.EquipmentPB\"Z\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"S\n\x18\x43omposeEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"x\n\x18NobbingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\x12#\n\x03\x63gr\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"]\n\x18MeltingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x18\x65quipment_response.proto\x1a\x0c\x63ommon.proto\x1a\x0f\x65quipment.proto\"U\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1f\n\tequipment\x18\x02 \x03(\x0b\x32\x0c.EquipmentPB\"Z\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"S\n\x18\x43omposeEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"x\n\x18NobbingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\x12#\n\x03\x63gr\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"]\n\x18MeltingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"_\n\x1a\x41wakeningEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -183,7 +183,7 @@ _MELTINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='cgr', full_name='MeltingEquipmentResponse.cgr', index=1,
-      number=3, type=11, cpp_type=10, label=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -201,6 +201,41 @@ _MELTINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
   serialized_end=538,
 )
 
+
+_AWAKENINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
+  name='AwakeningEquipmentResponse',
+  full_name='AwakeningEquipmentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='AwakeningEquipmentResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='cgr', full_name='AwakeningEquipmentResponse.cgr', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=540,
+  serialized_end=635,
+)
+
 _GETEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETEQUIPMENTRESPONSE.fields_by_name['equipment'].message_type = equipment_pb2._EQUIPMENTPB
 _ENHANCEEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -212,11 +247,14 @@ _NOBBINGEQUIPMENTRESPONSE.fields_by_name['equ'].message_type = equipment_pb2._EQ
 _NOBBINGEQUIPMENTRESPONSE.fields_by_name['cgr'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _MELTINGEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _MELTINGEQUIPMENTRESPONSE.fields_by_name['cgr'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_AWAKENINGEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_AWAKENINGEQUIPMENTRESPONSE.fields_by_name['cgr'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['GetEquipmentResponse'] = _GETEQUIPMENTRESPONSE
 DESCRIPTOR.message_types_by_name['EnhanceEquipmentResponse'] = _ENHANCEEQUIPMENTRESPONSE
 DESCRIPTOR.message_types_by_name['ComposeEquipmentResponse'] = _COMPOSEEQUIPMENTRESPONSE
 DESCRIPTOR.message_types_by_name['NobbingEquipmentResponse'] = _NOBBINGEQUIPMENTRESPONSE
 DESCRIPTOR.message_types_by_name['MeltingEquipmentResponse'] = _MELTINGEQUIPMENTRESPONSE
+DESCRIPTOR.message_types_by_name['AwakeningEquipmentResponse'] = _AWAKENINGEQUIPMENTRESPONSE
 
 class GetEquipmentResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -247,6 +285,12 @@ class MeltingEquipmentResponse(_message.Message):
   DESCRIPTOR = _MELTINGEQUIPMENTRESPONSE
 
   # @@protoc_insertion_point(class_scope:MeltingEquipmentResponse)
+
+class AwakeningEquipmentResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _AWAKENINGEQUIPMENTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:AwakeningEquipmentResponse)
 
 
 # @@protoc_insertion_point(module_scope)

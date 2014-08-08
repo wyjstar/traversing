@@ -11,6 +11,8 @@ from twisted.internet import reactor, protocol
 from app.proto_file.hero_response_pb2 import GetHerosResponse
 from app.proto_file.hero_chip_pb2 import GetHeroChipsResponse
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
+from app.proto_file.equipment_request_pb2 import GetEquipmentsRequest
+from app.proto_file.equipment_response_pb2 import GetEquipmentResponse
 
 
 def sendData(sendstr,commandId):
@@ -83,12 +85,25 @@ class EchoClient(protocol.Protocol):
 
             shop_request = ShopRequest()
             shop_request.id = 1001
-            #self.dateSend(shop_request.SerializeToString(), 501)
+            self.dateSend(shop_request.SerializeToString(), 501)
 
         if command == 501:
             argument = ShopResponse()
             argument.ParseFromString(message)
             print argument
+
+
+            request = GetEquipmentsRequest()
+            request.type = 0
+            self.dateSend(request.SerializeToString(), 401)
+
+        if command == 401:
+
+            print message, "message"
+            response = GetEquipmentResponse()
+            response.ParseFromString(message)
+
+            print "len", len(response.equipment)
 
 
 

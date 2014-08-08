@@ -30,5 +30,13 @@ message NobbingEquipmentResponse{
 // 装备熔炼返回 command:405
 message MeltingEquipmentResponse{
 	required CommonResponse res = 1;
-	optional GameResourcesResponse cgr = 3; // 消耗
+	optional GameResourcesResponse cgr = 2; // 消耗
+}
+
+
+// 装备觉醒 command:406
+message AwakeningEquipmentResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse cgr = 2; // 消耗
 }

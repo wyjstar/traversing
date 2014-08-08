@@ -19,17 +19,19 @@ class BigBag(object):
     def get_drop_items(self):
         """获取大包内物品"""
         drop_items = []
-        for small_bag_id, small_bag_times, is_uniq in \
-                zip(self.big_bag.small_packages, self.big_bag.small_package_times, self.big_bag.is_uniq_list):
-            small_bag = SmallBag(small_bag_id)
-            items = small_bag.get_drop_items()
-            if is_uniq:
-                ids = random_multi_pick_without_repeat(items, small_bag_times)
-            else:
-                ids = random_multi_pick(items, small_bag_times)
-            for drop_id in ids:
-                drop_items.append(small_bag.get_drop_item(drop_id))
-
+        try:
+            for small_bag_id, small_bag_times, is_uniq in \
+                    zip(self.big_bag.small_packages, self.big_bag.small_package_times, self.big_bag.is_uniq_list):
+                small_bag = SmallBag(small_bag_id)
+                items = small_bag.get_drop_items()
+                if is_uniq:
+                    ids = random_multi_pick_without_repeat(items, small_bag_times)
+                else:
+                    ids = random_multi_pick(items, small_bag_times)
+                for drop_id in ids:
+                    drop_items.append(small_bag.get_drop_item(drop_id))
+        except Exception as ex:
+            print("config error!")
         drop_item_group = []
         for drop_item in drop_items:
             drop_item_type = drop_item.item_type

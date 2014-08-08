@@ -15,6 +15,7 @@ from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
 @have_player
 def get_items(dynamic_id, **kwargs):
     player = kwargs.get('player')
+    print "playerid", player.base_info.id
     items = player.item_package.get_all()
     # game_items = {1000:1, 1001:2}
     response = GetItemsResponse()
@@ -35,7 +36,6 @@ def use_item(dynamic_id, pro_data, **kwargs):
     item_config_item = item_config.get(item_no)
     if not item_config_item:
         print("item %d is not itemconfig." % item_no)
-
         return
     print "item_no", item_no
     print "item_num", item_num
@@ -43,26 +43,40 @@ def use_item(dynamic_id, pro_data, **kwargs):
     print ("item????????", item_config_item.dropId)
     item_func = item_config_item.func
     drop_id = item_config_item.dropId
-    func_args1 = item_config_item.func_args1
-    func_args2 = item_config_item.func_args2
+    func_args1 = item_config_item.funcArgs1
+    func_args2 = item_config_item.funcArgs2
 
     response = ItemUseResponse()
     common_response = response.res  # = common_response
     common_response.result = True
+
+    # 校验道具数量
+    item = player.item_package.get_item(item_no)
+    if not item or item.num < item_num:
+        common_response.result = False
+        common_response.result_no = 106
+        # common_response.message = u"道具不足！"
+        return response.SerializeToString()
+
     if item_func == 2:
         # 宝箱
         box_key_no = func_args1
         box_key = player.item_package.get_item(box_key_no)
         if not box_key or box_key.num < func_args2 * item_num:
             common_response.result = False
-            common_response.message = u"box key 不足！" + str(func_args2 * item_num) + "_" + str(box_key.num)
+            common_response.result_no = 107
+            # common_response.message = u"box key 不足！" + str(func_args2 * item_num) + "_" + str(box_key.num)
             return response.SerializeToString()
         # 消耗key
         box_key.num -= func_args2 * item_num
+        if box_key.num == 0:
+            player.item_package.get_item
         player.item_package.save_data()
     # 消耗道具
-    item = player.item_package.get_item(item_no)
     item.num -= item_num
+
+
+
 
     big_bag = BigBag(drop_id)
     for i in range(item_num):
