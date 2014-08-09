@@ -15,8 +15,8 @@ from app.proto_file.friend_pb2 import *
 # HOST = '192.168.10.186'
 HOST = 'localhost'
 PORT = 11009
-MAX_LOGIN_CLIENT = 10
-MAX_LOGIN_QUEUE = 2
+MAX_LOGIN_CLIENT = 5000
+MAX_LOGIN_QUEUE = 200
 USER_NAME = 'test'  # 'test32'
 PASSWORD = '123456'  # pwd  # '123456'
 NICKNAME = 'nick'  # 'bab5'
@@ -29,7 +29,6 @@ def build_data(send_str, command_id):
     ProtoVersion = chr(0)
     ServerVersion = 0
     send_str = send_str
-    print 'len:', len(send_str)
     data = struct.pack('!sssss3I', HEAD_0, HEAD_1, HEAD_2,
                        HEAD_3, ProtoVersion, ServerVersion,
                        len(send_str) + 4, command_id)
@@ -68,7 +67,7 @@ class SimulatorLogin(protocol.Protocol):
             key = attr.split('_')[-1]
             if key.isdigit():
                 self._distributor[key] = attr
-        print self._distributor
+        # print self._distributor
 
     def send_message(self, argument, command_id):
         self.transport.write(build_data(argument.SerializeToString(), command_id))
@@ -84,7 +83,7 @@ class SimulatorLogin(protocol.Protocol):
 
     def dataReceived(self, data):
         command, message = resolve_receive_data(data)
-        print command, message
+        # print command
         fun = getattr(self, self._distributor[str(command)])
         if fun:
             fun(message)
@@ -97,7 +96,7 @@ class SimulatorLogin(protocol.Protocol):
     def acount_register_1(self, message):
         argument = account_pb2.AccountResponse()
         argument.ParseFromString(message)
-        print 'account register', argument
+        # print 'account register', argument.result
 
         argument = account_pb2.AccountLoginRequest()
         argument.user_name = self._user_name
@@ -138,13 +137,16 @@ class SimulatorLogin(protocol.Protocol):
         # get friend list
         response = GetPlayerFriendsResponse()
         response.ParseFromString(message)
-        print 'get friends list:'
+        # print 'get friends list:'
         for _ in response.friends:
             print 'friend:', _
         for _ in response.blacklist:
             print 'blacklist:', _
         for _ in response.applicant_list:
             print 'applicant list:', _
+        # get friend list
+        request = FriendCommon()
+        self.send_message(request, 1106)
 
     def connectionLost(self, reason):
         SimulatorLogin.LOGIN_PROCESSING -= 1
@@ -152,22 +154,30 @@ class SimulatorLogin(protocol.Protocol):
         print "connection lost"
 
 
-def run(c):
+def run(num):
     count = SimulatorLogin.LOGIN_FAIL_COUNT + SimulatorLogin.LOGIN_SUCCESS_COUNT
     if count < MAX_LOGIN_CLIENT and SimulatorLogin.LOGIN_PROCESSING < MAX_LOGIN_QUEUE:
-        user_name = '%s%d' % (USER_NAME, c)
-        nickname = '%s%d' % (NICKNAME, c)
+        user_name = '%s%d' % (USER_NAME, num)
+        nickname = '%s%d' % (NICKNAME, num)
         print 'add client:', user_name, nickname
         c = ClientCreator(reactor, SimulatorLogin, user_name, PASSWORD, nickname)
         c.connectTCP(HOST, PORT)
-        c += 1
-    reactor.callLater(0, run, c)
+        num += 1
+    reactor.callLater(0, run, num)
+
+
+def tick():
+    count = SimulatorLogin.LOGIN_FAIL_COUNT + SimulatorLogin.LOGIN_SUCCESS_COUNT
+    print 'login success:%d login fail:%d login queue:%d' % \
+          (SimulatorLogin.LOGIN_SUCCESS_COUNT, SimulatorLogin.LOGIN_FAIL_COUNT, SimulatorLogin.LOGIN_PROCESSING)
+    reactor.callLater(1, tick)
 
 
 # this connects the protocol to a server runing on port 8000
 def main():
     count = 1
     reactor.callLater(0, run, count)
+    reactor.callLater(1, tick)
     reactor.run()
 
 # this only runs if the module was *not* imported

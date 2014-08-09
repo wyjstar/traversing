@@ -24,17 +24,17 @@ class CharacterLineUpComponent(Component):
 
     def init_data(self):
         line_up_data = tb_character_line_up.getObjData(self.owner.base_info.id)
-        print 'line_up_data #1:', line_up_data
+        # print 'line_up_data #1:', line_up_data
         if line_up_data:
             slots = line_up_data.get("line_up_slots")
             for slot_no, slot in slots.items():
                 line_up_slot = LineUpSlot.loads(slot)
                 self._line_up_slots[slot_no] = line_up_slot
 
-            print 'line up init data:', self._line_up_slots
+            # print 'line up init data:', self._line_up_slots
 
-            for key, value in self._line_up_slots.iteritems():
-                print key, value.__dict__
+            # for key, value in self._line_up_slots.iteritems():
+            #     print key, value.__dict__
 
             self._line_up_order = line_up_data.get("line_up_order")
         else:
@@ -97,7 +97,7 @@ class CharacterLineUpComponent(Component):
         """阵容英雄编号列表
         """
 
-        print '##2:', self._line_up_slots
+        # print '##2:', self._line_up_slots
         return [slot.hero_no for slot in self._line_up_slots.values()]
 
     def get_equipment_ids(self, slot_no):
