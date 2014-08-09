@@ -18,43 +18,18 @@
 <cobar:rule xmlns:cobar="http://cobar.alibaba.com/">
 
   <!-- 路由规则定义，定义什么表，什么字段，采用什么路由算法 -->
-
-  <tableRule name="rule2">
+  <tableRule name="rule1">
     <rule>
       <columns>id</columns>
-      <algorithm><![CDATA[ func2(${id}) ]]></algorithm>
+      <algorithm><![CDATA[ func1(${id}) ]]></algorithm>
     </rule>
   </tableRule>
 
-  <tableRule name="rule3">
-    <rule>
-      <columns>nickname</columns>
-      <algorithm><![CDATA[ func3(${nickname}) ]]></algorithm>
-    </rule>
-  </tableRule>
-
-  <tableRule name="rule4">
-    <rule>
-      <columns>account_name</columns>
-      <algorithm><![CDATA[ func3(${account_name}) ]]></algorithm>
-    </rule>
-  </tableRule>
-
-  <tableRule name="rule5">
-    <rule>
-      <columns>id</columns>
-      <algorithm><![CDATA[ func3(${id}) ]]></algorithm>
-    </rule>
-  </tableRule>
-
-  <function name="func2" class="com.alibaba.cobar.route.function.PartitionByLong">
-    <property name="partitionCount">8</property> <!-- 有几个分库 --> 
-    <property name="partitionLength">128</property><!-- partitionCount * partitionLength=1024 -->  
+  <!-- 路由函数定义 -->
+  <function name="func1"
+    class="com.alibaba.cobar.route.function.PartitionByLong">
+    <property name="partitionCount">2</property>
+    <property name="partitionLength">512</property>
   </function>
-
-  <function name="func3" class="com.alibaba.cobar.route.function.PartitionByString">  
-    <property name="partitionCount">4</property>  
-    <property name="partitionLength">256</property>  
-  </function>  
 
 </cobar:rule>

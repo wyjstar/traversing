@@ -1,0 +1,97 @@
+13:46:25,445 INFO  ===============================================
+13:46:25,470 INFO  Cobar is ready to startup ...
+13:46:25,470 INFO  Startup processors ...
+13:46:25,511 INFO  Startup connector ...
+13:46:25,519 INFO  Initialize dataNodes ...
+13:46:25,642 INFO  dn_traversing[2]:0 init success
+13:46:25,649 INFO  dn_traversing[1]:0 init success
+13:46:25,650 INFO  dn_traversing[3]:0 init success
+13:46:25,652 INFO  dn_sequence:0 init success
+13:46:25,653 INFO  dn_traversing[0]:0 init success
+13:46:25,654 INFO  master:0 init success
+13:46:25,655 INFO  dn_account[0]:0 init success
+13:46:25,656 INFO  dn_account[1]:0 init success
+13:46:25,656 INFO  dn_account[2]:0 init success
+13:46:25,657 INFO  dn_account[3]:0 init success
+13:46:25,658 INFO  dn_account[4]:0 init success
+13:46:25,665 INFO  dn_account[5]:0 init success
+13:46:25,666 INFO  dn_account[6]:0 init success
+13:46:25,667 INFO  dn_account[7]:0 init success
+13:46:25,680 INFO  CobarManager is started and listening on 9066
+13:46:25,681 INFO  CobarServer is started and listening on 8066
+13:46:25,681 INFO  ===============================================
+13:53:23,603 INFO  ===============================================
+13:53:23,614 INFO  Cobar is ready to startup ...
+13:53:23,614 INFO  Startup processors ...
+13:53:23,850 INFO  Startup connector ...
+13:53:23,852 INFO  Initialize dataNodes ...
+13:53:24,037 INFO  dn_traversing[2]:0 init success
+13:53:24,041 INFO  dn_traversing[1]:0 init success
+13:53:24,055 INFO  dn_traversing[3]:0 init success
+13:53:24,064 INFO  dn_sequence:0 init success
+13:53:24,068 INFO  dn_traversing[0]:0 init success
+13:53:24,070 INFO  master:0 init success
+13:53:24,076 INFO  dn_account[0]:0 init success
+13:53:24,077 INFO  dn_account[1]:0 init success
+13:53:24,078 INFO  dn_account[2]:0 init success
+13:53:24,083 INFO  dn_account[3]:0 init success
+13:53:24,085 INFO  dn_account[4]:0 init success
+13:53:24,089 INFO  dn_account[5]:0 init success
+13:53:24,093 INFO  dn_account[6]:0 init success
+13:53:24,095 INFO  dn_account[7]:0 init success
+13:53:24,126 INFO  CobarManager is started and listening on 9066
+13:53:24,129 INFO  CobarServer is started and listening on 8066
+13:53:24,129 INFO  ===============================================
+14:03:47,814 INFO  ===============================================
+14:03:47,835 INFO  Cobar is ready to startup ...
+14:03:47,835 INFO  Startup processors ...
+14:03:47,922 INFO  Startup connector ...
+14:03:47,932 INFO  Initialize dataNodes ...
+14:03:48,091 INFO  dn_traversing[2]:0 init success
+14:03:48,098 INFO  dn_traversing[1]:0 init success
+14:03:48,101 INFO  dn_traversing[3]:0 init success
+14:03:48,110 INFO  dn_sequence:0 init success
+14:03:48,115 INFO  dn_traversing[0]:0 init success
+14:03:48,118 INFO  master:0 init success
+14:03:48,119 INFO  dn_account[0]:0 init success
+14:03:48,133 INFO  dn_account[1]:0 init success
+14:03:48,134 INFO  dn_account[2]:0 init success
+14:03:48,135 INFO  dn_account[3]:0 init success
+14:03:48,136 INFO  dn_account[4]:0 init success
+14:03:48,142 INFO  dn_account[5]:0 init success
+14:03:48,143 INFO  dn_account[6]:0 init success
+14:03:48,145 INFO  dn_account[7]:0 init success
+14:03:48,179 INFO  CobarManager is started and listening on 9066
+14:03:48,181 INFO  CobarServer is started and listening on 8066
+14:03:48,181 INFO  ===============================================
+14:12:17,110 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49759,schema=null]'test' login success
+14:12:18,743 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49760,schema=null]'test' login success
+14:18:24,150 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49920,schema=null]'test' login success
+14:18:28,158 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49923,schema=null]'test' login success
+14:18:29,792 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49924,schema=null]'test' login success
+14:18:30,891 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49925,schema=null]'test' login success
+14:18:31,789 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49926,schema=null]'test' login success
+14:18:32,563 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49927,schema=null]'test' login success
+14:18:33,378 INFO  [thread=Processor0-H0,class=ServerConnection,host=192.168.10.247,port=49928,schema=null]'test' login success
+15:11:58,255 INFO  ===============================================
+15:11:58,267 INFO  Cobar is ready to startup ...
+15:11:58,268 INFO  Startup processors ...
+15:11:58,318 INFO  Startup connector ...
+15:11:58,323 INFO  Initialize dataNodes ...
+15:11:58,430 INFO  dn_traversing[2]:0 init success
+15:11:58,431 INFO  dn_traversing[1]:0 init success
+15:11:58,435 INFO  dn_traversing[3]:0 init success
+15:11:58,439 INFO  dn_sequence:0 init success
+15:11:58,442 INFO  dn_traversing[0]:0 init success
+15:11:58,443 INFO  master:0 init success
+15:11:58,444 INFO  dn_account[0]:0 init success
+15:11:58,446 INFO  dn_account[1]:0 init success
+15:11:58,447 INFO  dn_account[2]:0 init success
+15:11:58,448 INFO  dn_account[3]:0 init success
+15:11:58,455 INFO  dn_account[4]:0 init success
+15:11:58,457 INFO  dn_account[5]:0 init success
+15:11:58,458 INFO  dn_account[6]:0 init success
+15:11:58,459 INFO  dn_account[7]:0 init success
+15:11:58,468 INFO  CobarManager is started and listening on 9066
+15:11:58,469 INFO  CobarServer is started and listening on 8066
+15:11:58,469 INFO  ===============================================

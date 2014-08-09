@@ -1,0 +1,260 @@
+09:20:56,628 INFO  ===============================================
+09:20:56,648 INFO  Cobar is ready to startup ...
+09:20:56,648 INFO  Startup processors ...
+09:20:56,735 INFO  Startup connector ...
+09:20:56,738 INFO  Initialize dataNodes ...
+09:20:56,949 INFO  dn_traversing[2]:0 init success
+09:20:56,956 INFO  dn_traversing[1]:0 init success
+09:20:56,961 INFO  dn_traversing[3]:0 init success
+09:20:56,965 INFO  dn_sequence:0 init success
+09:20:56,972 INFO  dn_traversing[0]:0 init success
+09:20:56,973 INFO  master:0 init success
+09:20:56,985 INFO  dn_account[0]:0 init success
+09:20:56,985 INFO  dn_account[1]:0 init success
+09:20:56,986 INFO  dn_account[2]:0 init success
+09:20:56,988 INFO  dn_account[3]:0 init success
+09:20:56,990 INFO  dn_account[4]:0 init success
+09:20:56,992 INFO  dn_account[5]:0 init success
+09:20:56,998 INFO  dn_account[6]:0 init success
+09:20:57,002 INFO  dn_account[7]:0 init success
+09:20:57,018 INFO  CobarManager is started and listening on 9066
+09:20:57,019 INFO  CobarServer is started and listening on 8066
+09:20:57,019 INFO  ===============================================
+09:31:25,632 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48772,schema=db_traversing]'test' login success
+09:31:25,639 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48775,schema=db_traversing]'test' login success
+09:31:25,642 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48774,schema=db_traversing]'test' login success
+09:31:25,643 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48773,schema=db_traversing]'test' login success
+09:31:25,674 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48777,schema=db_traversing]'test' login success
+09:31:25,675 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48778,schema=db_traversing]'test' login success
+09:31:25,678 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48779,schema=db_traversing]'test' login success
+09:31:25,680 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48780,schema=db_traversing]'test' login success
+09:31:25,692 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48781,schema=db_traversing]'test' login success
+09:31:25,692 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48782,schema=db_traversing]'test' login success
+09:31:25,692 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48783,schema=db_traversing]'test' login success
+09:31:25,692 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48784,schema=db_traversing]'test' login success
+09:31:25,696 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48785,schema=db_traversing]'test' login success
+09:31:25,696 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48786,schema=db_traversing]'test' login success
+09:31:25,697 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48787,schema=db_traversing]'test' login success
+09:31:25,697 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48788,schema=db_traversing]'test' login success
+09:31:25,701 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48789,schema=db_traversing]'test' login success
+09:31:25,701 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48790,schema=db_traversing]'test' login success
+09:31:25,703 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48791,schema=db_traversing]'test' login success
+09:31:25,703 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48792,schema=db_traversing]'test' login success
+09:31:26,450 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48820,schema=db_traversing]'test' login success
+09:31:26,452 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48821,schema=db_traversing]'test' login success
+09:31:26,454 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48822,schema=db_traversing]'test' login success
+09:31:26,455 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48823,schema=db_traversing]'test' login success
+09:31:26,458 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=48824,schema=db_traversing]'test' login success
+14:22:21,846 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49107,schema=db_traversing]'test' login success
+14:22:21,855 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49108,schema=db_traversing]'test' login success
+14:22:21,856 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49109,schema=db_traversing]'test' login success
+14:22:21,857 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49110,schema=db_traversing]'test' login success
+14:22:21,874 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49111,schema=db_traversing]'test' login success
+14:22:21,892 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49113,schema=db_traversing]'test' login success
+14:22:21,895 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49114,schema=db_traversing]'test' login success
+14:22:21,906 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49118,schema=db_traversing]'test' login success
+14:22:21,907 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49119,schema=db_traversing]'test' login success
+14:22:21,908 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49120,schema=db_traversing]'test' login success
+14:22:21,909 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49121,schema=db_traversing]'test' login success
+14:22:21,913 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49122,schema=db_traversing]'test' login success
+14:22:21,918 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49124,schema=db_traversing]'test' login success
+14:22:21,919 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49125,schema=db_traversing]'test' login success
+14:22:21,920 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49126,schema=db_traversing]'test' login success
+14:22:21,926 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49123,schema=db_traversing]'test' login success
+14:22:21,927 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49128,schema=db_traversing]'test' login success
+14:22:21,934 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49129,schema=db_traversing]'test' login success
+14:22:21,935 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49130,schema=db_traversing]'test' login success
+14:22:21,940 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49127,schema=db_traversing]'test' login success
+14:22:21,959 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49131,schema=db_traversing]'test' login success
+14:22:21,961 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49137,schema=db_traversing]'test' login success
+14:22:21,962 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49138,schema=db_traversing]'test' login success
+14:22:21,964 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49139,schema=db_traversing]'test' login success
+14:22:21,964 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49140,schema=db_traversing]'test' login success
+15:41:52,774 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49264,schema=db_traversing]'test' login success
+15:41:52,789 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49265,schema=db_traversing]'test' login success
+15:41:52,790 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49266,schema=db_traversing]'test' login success
+15:41:52,792 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49267,schema=db_traversing]'test' login success
+15:41:52,794 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49268,schema=db_traversing]'test' login success
+15:41:52,818 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49269,schema=db_traversing]'test' login success
+15:41:52,834 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49273,schema=db_traversing]'test' login success
+15:41:52,835 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49274,schema=db_traversing]'test' login success
+15:41:52,835 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49275,schema=db_traversing]'test' login success
+15:41:52,836 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49276,schema=db_traversing]'test' login success
+15:41:52,850 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49277,schema=db_traversing]'test' login success
+15:41:52,851 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49279,schema=db_traversing]'test' login success
+15:41:52,868 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49278,schema=db_traversing]'test' login success
+15:41:52,869 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49281,schema=db_traversing]'test' login success
+15:41:52,873 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49282,schema=db_traversing]'test' login success
+15:41:52,874 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49283,schema=db_traversing]'test' login success
+15:41:52,875 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49284,schema=db_traversing]'test' login success
+15:41:52,881 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49280,schema=db_traversing]'test' login success
+15:41:52,882 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49285,schema=db_traversing]'test' login success
+15:41:52,883 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49286,schema=db_traversing]'test' login success
+15:41:52,894 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49287,schema=db_traversing]'test' login success
+15:41:52,896 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49288,schema=db_traversing]'test' login success
+15:41:52,909 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49289,schema=db_traversing]'test' login success
+15:41:52,909 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49291,schema=db_traversing]'test' login success
+15:41:52,911 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49292,schema=db_traversing]'test' login success
+15:41:53,094 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49285,schema=db_traversing]UPDATE `tb_equipment_info` SET  `enhance_info`='(dp1
+.', `equipment_info`='(dp1
+S\'alv\'
+p2
+I2
+sS\'equipment_no\'
+p3
+I110001
+sS\'slv\'
+p4
+I2
+s.', `character_id`=1, `id`='dc21768a1c6811e4b9a7080027f6205d', `nobbing_effect`='(dp1
+.' WHERE  `id`='dc21768a1c6811e4b9a7080027f6205d' ;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:41:53,166 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49279,schema=db_traversing]UPDATE `tb_character_equipment_chip` SET  `chips`='(dp1
+I1000112
+I300
+sI1000114
+I300
+s.', `id`=1 WHERE  `id`=1;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:41:53,228 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49286,schema=db_traversing]UPDATE `tb_character_info` SET  `fine_equipment_last_pick_time`=0, `hero_soul`=20000, `excellent_equipment_last_pick_time`=0, `exp`=0, `gold`=10000, `junior_stone`=0, `high_stone`=0, `level`=0, `middle_stone`=0, `id`=1, `stamina`=100, `fine_hero_last_pick_time`=0, `pvp_times`=0, `coin`=30000, `nickname`='', `excellent_hero_last_pick_time`=0 WHERE  `id`=1;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:41:53,238 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49285,schema=db_traversing]UPDATE `tb_character_info` SET  `fine_equipment_last_pick_time`=0, `hero_soul`=20000, `excellent_equipment_last_pick_time`=0, `exp`=0, `gold`=10000, `junior_stone`=0, `high_stone`=0, `level`=0, `middle_stone`=0, `id`=2, `stamina`=100, `fine_hero_last_pick_time`=0, `pvp_times`=0, `coin`=30000, `nickname`='', `excellent_hero_last_pick_time`=0 WHERE  `id`=2;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:42:03,294 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49279,schema=db_traversing]UPDATE `tb_equipment_info` SET  `enhance_info`='(dp1
+.', `equipment_info`='(dp1
+S\'alv\'
+p2
+I2
+sS\'equipment_no\'
+p3
+I110001
+sS\'slv\'
+p4
+I2
+s.', `character_id`=1, `id`='f7ec87501c7311e4a87e080027f6205d', `nobbing_effect`='(dp1
+.' WHERE  `id`='f7ec87501c7311e4a87e080027f6205d' ;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:42:03,318 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49286,schema=db_traversing]UPDATE `tb_character_equipment_chip` SET  `chips`='(dp1
+I1000112
+I300
+sI1000114
+I300
+s.', `id`=1 WHERE  `id`=1;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:42:03,330 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49285,schema=db_traversing]UPDATE `tb_character_info` SET  `fine_equipment_last_pick_time`=0, `hero_soul`=20000, `excellent_equipment_last_pick_time`=0, `exp`=0, `gold`=10000, `junior_stone`=0, `high_stone`=0, `level`=0, `middle_stone`=0, `id`=1, `stamina`=100, `fine_hero_last_pick_time`=0, `pvp_times`=0, `coin`=30000, `nickname`='', `excellent_hero_last_pick_time`=0 WHERE  `id`=1;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:42:03,334 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49280,schema=db_traversing]UPDATE `tb_character_info` SET  `fine_equipment_last_pick_time`=0, `hero_soul`=20000, `excellent_equipment_last_pick_time`=0, `exp`=0, `gold`=10000, `junior_stone`=0, `high_stone`=0, `level`=0, `middle_stone`=0, `id`=2, `stamina`=100, `fine_hero_last_pick_time`=0, `pvp_times`=0, `coin`=30000, `nickname`='', `excellent_hero_last_pick_time`=0 WHERE  `id`=2;
+java.sql.SQLFeatureNotSupportedException: partition key cannot be changed
+	at com.alibaba.cobar.route.ServerRouter.validateAST(ServerRouter.java:480)
+	at com.alibaba.cobar.route.ServerRouter.route(ServerRouter.java:188)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:146)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:90)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+15:43:43,605 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49677,schema=db_traversing]'test' login success
+15:43:43,622 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49678,schema=db_traversing]'test' login success
+15:43:43,623 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49679,schema=db_traversing]'test' login success
+15:43:43,623 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49680,schema=db_traversing]'test' login success
+15:43:43,624 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49681,schema=db_traversing]'test' login success
+15:43:43,666 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49687,schema=db_traversing]'test' login success
+15:43:43,676 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49688,schema=db_traversing]'test' login success
+15:43:43,677 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49689,schema=db_traversing]'test' login success
+15:43:43,679 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49690,schema=db_traversing]'test' login success
+15:43:43,680 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49691,schema=db_traversing]'test' login success
+15:43:43,680 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49686,schema=db_traversing]'test' login success
+15:43:43,681 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49692,schema=db_traversing]'test' login success
+15:43:43,683 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49693,schema=db_traversing]'test' login success
+15:43:43,684 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49694,schema=db_traversing]'test' login success
+15:43:43,687 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49695,schema=db_traversing]'test' login success
+15:43:43,720 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49696,schema=db_traversing]'test' login success
+15:43:43,720 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49698,schema=db_traversing]'test' login success
+15:43:43,730 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49706,schema=db_traversing]'test' login success
+15:43:43,731 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49707,schema=db_traversing]'test' login success
+15:43:43,732 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49708,schema=db_traversing]'test' login success
+15:43:43,753 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49713,schema=db_traversing]'test' login success
+15:43:43,768 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49718,schema=db_traversing]'test' login success
+15:43:43,769 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49719,schema=db_traversing]'test' login success
+15:43:43,769 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49720,schema=db_traversing]'test' login success
+15:43:43,784 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49722,schema=db_traversing]'test' login success
+23:43:58,057 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49677,schema=db_traversing] idle timeout
+23:43:58,057 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49678,schema=db_traversing] idle timeout
+23:43:58,058 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49679,schema=db_traversing] idle timeout
+23:43:58,058 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49686,schema=db_traversing] idle timeout
+23:43:58,058 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49692,schema=db_traversing] idle timeout
+23:43:58,058 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49693,schema=db_traversing] idle timeout
+23:43:58,058 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49694,schema=db_traversing] idle timeout
+23:43:58,058 WARN  [thread=TimerExecutor0,class=ServerConnection,host=127.0.0.1,port=49695,schema=db_traversing] idle timeout

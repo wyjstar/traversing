@@ -35,7 +35,6 @@ def get_equipments_401(dynamic_id, pro_data):
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
 
-        # TODO hero_no, set
     return response.SerializePartialToString()
 
 
@@ -146,4 +145,35 @@ def melting_equipment_405(dynamic_id, pro_data):
     item_group_helper.get_return(player, gain, response.cgr)
 
     return response.SerializePartialToString()
+
+
+@remote_service_handle
+def awakening_equipment_406(dynamic_id, pro_data):
+    """熔炼装备
+    @param dynamic_id:
+    @param pro_data:
+    @return:
+    """
+    request = equipment_request_pb2.AwakeningEquipmentRequest
+    request.ParseFromString()
+
+    equipment_id = request.id
+    data = awakening_equipment(dynamic_id, equipment_id)
+
+    result = data.get('result')
+    response = equipment_response_pb2.MeltingEquipmentResponse()
+    res = response.res
+    if not result:
+        res.result_no = data.get('result_no')
+        res.message = data.get('message')
+        return response.SerializePartialToString()
+
+    player = data.get('player')
+    gain = data.get('gain', [])
+    item_group_helper.get_return(player, gain, response.cgr)
+
+    return response.SerializePartialToString()
+
+
+
 

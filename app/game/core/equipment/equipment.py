@@ -20,7 +20,6 @@ class Equipment(object):
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
     def add_data(self, character_id):
-        print 'sdjf;asdjfaksldjfklasdjfalk;sdjf'
         data = {'id': self._base_info.id, \
                 'character_id': character_id, \
                 'equipment_info': {'equipment_no': self._base_info.equipment_no, \
@@ -28,8 +27,6 @@ class Equipment(object):
                                    'alv': self._attribute.awakening_lv}, \
                 'enhance_info': self._record.enhance_record, \
                 'nobbing_effect': self._attribute.nobbing_effect}
-
-        print '#1 ------:', data
 
         tb_equipment_info.new(data)
 
@@ -49,7 +46,7 @@ class Equipment(object):
         items_data = tb_equipment_info.getObj(self._base_info.id)
         items_data.delete()
 
-        
+
     @property
     def base_info(self):
         return self._base_info
@@ -84,6 +81,15 @@ class Equipment(object):
         if not equ_config_obj:
             return None
         return equ_config_obj.gain
+
+    @property
+    def awakening_item(self):
+        """觉醒需要装备，数量"""
+        equipment_no = self._base_info.equipment_no
+        equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
+        if not equ_config_obj:
+            return None
+        return equ_config_obj.awakening_item
 
     def update_pb(self, equipment_pb):
         equipment_pb.id = self.base_info.id

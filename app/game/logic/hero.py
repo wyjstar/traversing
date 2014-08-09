@@ -40,7 +40,7 @@ def hero_upgrade_with_item(dynamicid, data, **kwargs):
         response.res.result = False
         response.res.message = "经验药水道具不足！"
         return response.SerializeToString()
-    exp = item_config.get(exp_item_no).get('func_args1')
+    exp = item_config.get(exp_item_no).get('funcArgs1')
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)
@@ -59,15 +59,23 @@ def hero_break(dynamicid, data, **kwargs):
     hero_no = args.hero_no
     hero = player.hero_component.get_hero(hero_no)
     response = HeroBreakResponse()
+    # 验证武将是否突破到上限
+    if hero.break_level == hero_config.get(hero_no).breakLimit:
+        response.res.result = False
+        response.res.result_no = 201
+        return response.SerializeToString()
+
     item_group = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level)
+    # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):
         response.res.result = False
-        response.res.message = '消费不足！'
+        response.res.result_no = result.get('result_no')
+        return response.SerializeToString()
 
     # 返回消耗
     return_data = consume(player, item_group)
-    get_return(player,return_data, response.consume)
+    get_return(player, return_data, response.consume)
 
     hero.break_level += 1
     hero.save_data()
@@ -117,7 +125,7 @@ def hero_sacrifice_oper(heros, player):
     exp_items = base_config.get("exp_items")
     for item_no in exp_items:
         config = item_config.get(item_no)
-        exp = config.get("func_args1")
+        exp = config.get("funcArgs1")
         if total_exp/exp > 0:
             exp_item_no = item_no
             exp_item_num = total_exp/exp

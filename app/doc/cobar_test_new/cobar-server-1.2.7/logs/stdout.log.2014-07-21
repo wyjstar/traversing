@@ -1,0 +1,1197 @@
+08:59:45,802 INFO  ===============================================
+08:59:45,819 INFO  Cobar is ready to startup ...
+08:59:45,819 INFO  Startup processors ...
+08:59:45,916 INFO  Startup connector ...
+08:59:45,924 INFO  Initialize dataNodes ...
+08:59:46,082 INFO  dn_traversing[2]:0 init success
+08:59:46,086 INFO  dn_traversing[1]:0 init success
+08:59:46,095 INFO  dn_traversing[3]:0 init success
+08:59:46,100 INFO  dn_sequence:0 init success
+08:59:46,101 INFO  dn_traversing[0]:0 init success
+08:59:46,102 INFO  master:0 init success
+08:59:46,108 INFO  dn_account[0]:0 init success
+08:59:46,115 INFO  dn_account[1]:0 init success
+08:59:46,115 INFO  dn_account[2]:0 init success
+08:59:46,124 INFO  dn_account[3]:0 init success
+08:59:46,125 INFO  dn_account[4]:0 init success
+08:59:46,126 INFO  dn_account[5]:0 init success
+08:59:46,128 INFO  dn_account[6]:0 init success
+08:59:46,129 INFO  dn_account[7]:0 init success
+08:59:46,145 INFO  CobarManager is started and listening on 9066
+08:59:46,145 INFO  CobarServer is started and listening on 8066
+08:59:46,145 INFO  ===============================================
+10:43:34,172 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49750,schema=db_traversing]'test' login success
+10:43:34,202 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49751,schema=db_traversing]'test' login success
+10:43:34,204 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49752,schema=db_traversing]'test' login success
+10:43:34,205 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49753,schema=db_traversing]'test' login success
+10:43:34,206 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49754,schema=db_traversing]'test' login success
+10:43:34,883 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49755,schema=db_traversing]'test' login success
+10:43:34,884 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49756,schema=db_traversing]'test' login success
+10:43:34,887 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49757,schema=db_traversing]'test' login success
+10:43:34,888 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49758,schema=db_traversing]'test' login success
+10:43:34,891 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49759,schema=db_traversing]'test' login success
+10:45:30,884 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49802,schema=db_traversing]'test' login success
+10:45:30,885 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49803,schema=db_traversing]'test' login success
+10:45:30,886 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49804,schema=db_traversing]'test' login success
+10:45:30,887 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49805,schema=db_traversing]'test' login success
+10:45:30,890 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49806,schema=db_traversing]'test' login success
+10:45:30,993 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing]'test' login success
+10:45:30,996 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing]'test' login success
+10:45:30,998 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing]'test' login success
+10:45:31,000 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing]'test' login success
+10:45:31,002 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing]'test' login success
+10:45:31,210 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,228 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49839,schema=db_traversing]'test' login success
+10:45:31,229 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49839,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,340 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,344 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49856,schema=db_traversing]'test' login success
+10:45:31,346 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49856,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,422 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,427 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49873,schema=db_traversing]'test' login success
+10:45:31,427 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49873,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,501 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,502 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49890,schema=db_traversing]'test' login success
+10:45:31,503 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49890,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,566 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,567 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49907,schema=db_traversing]'test' login success
+10:45:31,568 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49907,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,616 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,618 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49924,schema=db_traversing]'test' login success
+10:45:31,619 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49924,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,672 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,676 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49941,schema=db_traversing]'test' login success
+10:45:31,676 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49941,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,740 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,741 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49958,schema=db_traversing]'test' login success
+10:45:31,743 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49958,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,775 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,778 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49975,schema=db_traversing]'test' login success
+10:45:31,780 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49975,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,818 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,821 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49992,schema=db_traversing]'test' login success
+10:45:31,821 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49992,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,868 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,871 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50009,schema=db_traversing]'test' login success
+10:45:31,875 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50009,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,916 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,918 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50026,schema=db_traversing]'test' login success
+10:45:31,918 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50026,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,943 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,944 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50043,schema=db_traversing]'test' login success
+10:45:31,946 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50043,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,971 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:31,972 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50060,schema=db_traversing]'test' login success
+10:45:31,973 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50060,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,032 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,034 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50077,schema=db_traversing]'test' login success
+10:45:32,035 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50077,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,120 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,122 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50094,schema=db_traversing]'test' login success
+10:45:32,122 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50094,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,202 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,203 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50111,schema=db_traversing]'test' login success
+10:45:32,205 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50111,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,286 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,287 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50128,schema=db_traversing]'test' login success
+10:45:32,288 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50128,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,352 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,353 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50145,schema=db_traversing]'test' login success
+10:45:32,354 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50145,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,387 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,390 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50162,schema=db_traversing]'test' login success
+10:45:32,391 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50162,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,430 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,442 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50179,schema=db_traversing]'test' login success
+10:45:32,443 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50179,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,518 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,519 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50196,schema=db_traversing]'test' login success
+10:45:32,520 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50196,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,562 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,564 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50213,schema=db_traversing]'test' login success
+10:45:32,565 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50213,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,618 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,619 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50230,schema=db_traversing]'test' login success
+10:45:32,620 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50230,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,687 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,688 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50247,schema=db_traversing]'test' login success
+10:45:32,690 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50247,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,757 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,759 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50264,schema=db_traversing]'test' login success
+10:45:32,760 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50264,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,815 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49807,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,816 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50281,schema=db_traversing]'test' login success
+10:45:32,816 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50281,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,855 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49809,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,863 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50298,schema=db_traversing]'test' login success
+10:45:32,864 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50298,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,924 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49811,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,926 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50315,schema=db_traversing]'test' login success
+10:45:32,927 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50315,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,986 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49808,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:32,987 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50332,schema=db_traversing]'test' login success
+10:45:32,987 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50332,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:33,037 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=49810,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:45:33,039 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50349,schema=db_traversing]'test' login success
+10:45:33,041 WARN  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50349,schema=db_traversing].default{Select * from `tb_character_stages` where  `id`=1}
+com.alibaba.cobar.exception.UnknownDataNodeException
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.newExecute(SingleNodeExecutor.java:128)
+	at com.alibaba.cobar.mysql.bio.executor.SingleNodeExecutor.execute(SingleNodeExecutor.java:102)
+	at com.alibaba.cobar.server.session.BlockingSession.execute(BlockingSession.java:96)
+	at com.alibaba.cobar.server.ServerConnection.execute(ServerConnection.java:156)
+	at com.alibaba.cobar.server.handler.SelectHandler.handle(SelectHandler.java:90)
+	at com.alibaba.cobar.server.ServerQueryHandler.query(ServerQueryHandler.java:63)
+	at com.alibaba.cobar.net.FrontendConnection.query(FrontendConnection.java:266)
+	at com.alibaba.cobar.net.handler.FrontendCommandHandler.handle(FrontendCommandHandler.java:48)
+	at com.alibaba.cobar.net.FrontendConnection$1.run(FrontendConnection.java:372)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+10:54:56,964 INFO  ===============================================
+10:54:56,964 INFO  Cobar is ready to startup ...
+10:54:56,964 INFO  Startup processors ...
+10:54:56,987 INFO  Startup connector ...
+10:54:56,989 INFO  Initialize dataNodes ...
+10:54:57,030 INFO  dn_traversing[2]:0 init success
+10:54:57,031 INFO  dn_traversing[1]:0 init success
+10:54:57,032 INFO  dn_traversing[3]:0 init success
+10:54:57,034 INFO  dn_sequence:0 init success
+10:54:57,034 INFO  dn_traversing[0]:0 init success
+10:54:57,035 INFO  master:0 init success
+10:54:57,035 INFO  dn_account[0]:0 init success
+10:54:57,037 INFO  dn_account[1]:0 init success
+10:54:57,037 INFO  dn_account[2]:0 init success
+10:54:57,038 INFO  dn_account[3]:0 init success
+10:54:57,039 INFO  dn_account[4]:0 init success
+10:54:57,040 INFO  dn_account[5]:0 init success
+10:54:57,041 INFO  dn_account[6]:0 init success
+10:54:57,041 INFO  dn_account[7]:0 init success
+10:54:57,052 INFO  CobarManager is started and listening on 9066
+10:54:57,053 INFO  CobarServer is started and listening on 8066
+10:54:57,053 INFO  ===============================================
+10:55:21,220 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50364,schema=db_traversing]'test' login success
+10:55:21,233 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50365,schema=db_traversing]'test' login success
+10:55:21,241 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50366,schema=db_traversing]'test' login success
+10:55:21,243 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50367,schema=db_traversing]'test' login success
+10:55:21,244 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50368,schema=db_traversing]'test' login success
+10:55:21,396 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing]'test' login success
+10:55:21,398 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing]'test' login success
+10:55:21,399 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing]'test' login success
+10:55:21,404 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing]'test' login success
+10:55:21,406 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing]'test' login success
+10:55:21,577 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:21,681 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:21,747 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:21,826 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:21,905 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:21,949 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:21,998 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,077 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,131 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,174 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,227 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,301 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,368 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,437 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,527 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,588 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,639 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,716 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,758 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,823 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,885 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,942 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:22,987 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,026 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,102 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,145 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,190 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50369,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,232 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50371,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,293 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50373,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,340 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50370,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+10:55:23,393 WARN  
+ MSG:Table 'traversing_1.tb_character_stages' doesn't exist
+ ROUTE:[thread=Processor0-E0,class=ServerConnection,host=127.0.0.1,port=50372,schema=db_traversing] -> [host=127.0.0.1,port=3306,schema=traversing_1]
+ SQL:Select * from `tb_character_stages` where  `id`=1
+18:05:25,628 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50916,schema=db_traversing]'test' login success
+18:05:25,630 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50917,schema=db_traversing]'test' login success
+18:05:25,631 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50918,schema=db_traversing]'test' login success
+18:05:25,639 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50920,schema=db_traversing]'test' login success
+18:05:25,642 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50921,schema=db_traversing]'test' login success
+18:05:25,650 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50919,schema=db_traversing]'test' login success
+18:05:25,651 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50923,schema=db_traversing]'test' login success
+18:05:25,651 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50924,schema=db_traversing]'test' login success
+18:05:25,657 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50925,schema=db_traversing]'test' login success
+18:05:25,658 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50926,schema=db_traversing]'test' login success
+18:05:25,665 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50922,schema=db_traversing]'test' login success
+18:05:25,666 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50928,schema=db_traversing]'test' login success
+18:05:25,672 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50927,schema=db_traversing]'test' login success
+18:05:25,675 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50929,schema=db_traversing]'test' login success
+18:05:25,676 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50930,schema=db_traversing]'test' login success
+18:05:25,676 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50931,schema=db_traversing]'test' login success
+18:05:25,679 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50932,schema=db_traversing]'test' login success
+18:05:25,680 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50933,schema=db_traversing]'test' login success
+18:05:25,693 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50934,schema=db_traversing]'test' login success
+18:05:25,694 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50935,schema=db_traversing]'test' login success
+18:05:25,700 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50936,schema=db_traversing]'test' login success
+18:05:25,710 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50937,schema=db_traversing]'test' login success
+18:05:25,724 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50938,schema=db_traversing]'test' login success
+18:05:25,725 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50939,schema=db_traversing]'test' login success
+18:05:25,727 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50940,schema=db_traversing]'test' login success
+18:05:56,526 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50945,schema=db_traversing]'test' login success
+18:05:56,527 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50946,schema=db_traversing]'test' login success
+18:05:56,528 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50947,schema=db_traversing]'test' login success
+18:05:56,540 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50948,schema=db_traversing]'test' login success
+18:05:56,541 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50950,schema=db_traversing]'test' login success
+18:05:56,552 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50951,schema=db_traversing]'test' login success
+18:05:56,562 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50953,schema=db_traversing]'test' login success
+18:05:56,563 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50954,schema=db_traversing]'test' login success
+18:05:56,564 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50955,schema=db_traversing]'test' login success
+18:05:56,564 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50956,schema=db_traversing]'test' login success
+18:05:56,581 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50959,schema=db_traversing]'test' login success
+18:05:56,588 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50961,schema=db_traversing]'test' login success
+18:05:56,588 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50963,schema=db_traversing]'test' login success
+18:05:56,591 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50964,schema=db_traversing]'test' login success
+18:05:56,592 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50965,schema=db_traversing]'test' login success
+18:05:56,595 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50960,schema=db_traversing]'test' login success
+18:05:56,596 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50966,schema=db_traversing]'test' login success
+18:05:56,597 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50967,schema=db_traversing]'test' login success
+18:05:56,598 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50968,schema=db_traversing]'test' login success
+18:05:56,601 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50962,schema=db_traversing]'test' login success
+18:05:56,601 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50969,schema=db_traversing]'test' login success
+18:05:56,607 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50970,schema=db_traversing]'test' login success
+18:05:56,608 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50971,schema=db_traversing]'test' login success
+18:05:56,610 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50972,schema=db_traversing]'test' login success
+18:05:56,610 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=50973,schema=db_traversing]'test' login success
+18:06:24,403 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51049,schema=db_traversing]'test' login success
+18:06:24,404 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51050,schema=db_traversing]'test' login success
+18:06:24,405 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51051,schema=db_traversing]'test' login success
+18:06:24,419 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51052,schema=db_traversing]'test' login success
+18:06:24,421 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51053,schema=db_traversing]'test' login success
+18:06:24,454 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51057,schema=db_traversing]'test' login success
+18:06:24,455 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51058,schema=db_traversing]'test' login success
+18:06:24,456 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51059,schema=db_traversing]'test' login success
+18:06:24,457 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51060,schema=db_traversing]'test' login success
+18:06:24,469 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51061,schema=db_traversing]'test' login success
+18:06:24,493 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51069,schema=db_traversing]'test' login success
+18:06:24,496 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51070,schema=db_traversing]'test' login success
+18:06:24,496 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51071,schema=db_traversing]'test' login success
+18:06:24,497 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51072,schema=db_traversing]'test' login success
+18:06:24,504 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51073,schema=db_traversing]'test' login success
+18:06:24,514 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51080,schema=db_traversing]'test' login success
+18:06:24,515 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51081,schema=db_traversing]'test' login success
+18:06:24,516 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51082,schema=db_traversing]'test' login success
+18:06:24,517 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51083,schema=db_traversing]'test' login success
+18:06:24,517 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51084,schema=db_traversing]'test' login success
+18:06:24,527 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51090,schema=db_traversing]'test' login success
+18:06:24,540 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51099,schema=db_traversing]'test' login success
+18:06:24,541 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51100,schema=db_traversing]'test' login success
+18:06:24,542 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51101,schema=db_traversing]'test' login success
+18:06:24,542 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51102,schema=db_traversing]'test' login success
+18:08:57,284 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51356,schema=db_traversing]'test' login success
+18:08:57,287 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51357,schema=db_traversing]'test' login success
+18:08:57,287 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51358,schema=db_traversing]'test' login success
+18:08:57,302 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51359,schema=db_traversing]'test' login success
+18:08:57,308 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51360,schema=db_traversing]'test' login success
+18:08:57,328 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51362,schema=db_traversing]'test' login success
+18:08:57,329 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51364,schema=db_traversing]'test' login success
+18:08:57,330 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51365,schema=db_traversing]'test' login success
+18:08:57,331 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51366,schema=db_traversing]'test' login success
+18:08:57,340 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51361,schema=db_traversing]'test' login success
+18:08:57,342 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51368,schema=db_traversing]'test' login success
+18:08:57,343 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51369,schema=db_traversing]'test' login success
+18:08:57,346 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51370,schema=db_traversing]'test' login success
+18:08:57,346 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51367,schema=db_traversing]'test' login success
+18:08:57,354 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51371,schema=db_traversing]'test' login success
+18:08:57,356 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51372,schema=db_traversing]'test' login success
+18:08:57,363 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51373,schema=db_traversing]'test' login success
+18:08:57,364 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51374,schema=db_traversing]'test' login success
+18:08:57,373 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51377,schema=db_traversing]'test' login success
+18:08:57,373 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51378,schema=db_traversing]'test' login success
+18:08:57,399 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51385,schema=db_traversing]'test' login success
+18:08:57,400 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51386,schema=db_traversing]'test' login success
+18:08:57,412 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51391,schema=db_traversing]'test' login success
+18:08:57,412 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51392,schema=db_traversing]'test' login success
+18:08:57,414 INFO  [thread=Processor0-H0,class=ServerConnection,host=127.0.0.1,port=51393,schema=db_traversing]'test' login success

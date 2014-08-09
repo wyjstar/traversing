@@ -36,7 +36,7 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
 
 
 @have_player
-def get_shop_items(**kwargs):
+def get_shop_items(dynamic_id, **kwargs):
     ids = get_shop_item_ids()
     shop = GetShopItemsResponse()
     for x in ids:
