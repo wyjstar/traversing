@@ -86,13 +86,17 @@ class CharacterLineUpComponent(Component):
     # def get_all(self):
     #     return self._line_up_slots
 
-    def change_hero(self, slot_no, hero_no):
+    def change_hero(self, slot_no, hero_no, change_type):
         """更换阵容主将
         @param slot_no:
         @param hero_no:
         @return:
         """
-        slot_obj = self._line_up_slots.get(slot_no)
+        if not change_type:
+            slot_obj = self._line_up_slots.get(slot_no)
+        else:
+            slot_obj = self._sub_slots.get(slot_no)
+
         slot_obj.hero_no = hero_no
 
     def change_equipment(self, slot_no, no, equipment_id):

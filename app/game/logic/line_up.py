@@ -14,7 +14,7 @@ def get_line_up_info(dynamic_id, **kwargs):
 
 
 @have_player
-def change_hero(dynamic_id, slot_no, hero_no, **kwargs):
+def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     """
     @param dynamic_id:
     @param slot_no:
@@ -29,7 +29,7 @@ def change_hero(dynamic_id, slot_no, hero_no, **kwargs):
 
     # TODO 校验
 
-    player.line_up_component.change_hero(slot_no, hero_no)
+    player.line_up_component.change_hero(slot_no, hero_no, change_type)
     player.line_up_component.save_data()
 
     response = line_up_info(player)
