@@ -103,9 +103,9 @@ class EchoClient(protocol.Protocol):
 
             # add friend | get friend list
             request = FriendCommon()
-            request.target_id = 67
+            request.target_ids.append(67)
             # self.send_message(request, 1101)
-            self.send_message(request, 1100)
+            # self.send_message(request, 1100)
             self.send_message(request, 1106)
 
             # # find friend by id or nickname
