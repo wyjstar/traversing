@@ -14,7 +14,7 @@ def get_line_up_info(dynamic_id, **kwargs):
 
 
 @have_player
-def change_hero(dynamic_id, slot_no, hero_no, **kwargs):
+def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     """
     @param dynamic_id:
     @param slot_no:
@@ -29,7 +29,7 @@ def change_hero(dynamic_id, slot_no, hero_no, **kwargs):
 
     # TODO 校验
 
-    player.line_up_component.change_hero(slot_no, hero_no)
+    player.line_up_component.change_hero(slot_no, hero_no, change_type)
     player.line_up_component.save_data()
 
     response = line_up_info(player)
@@ -56,16 +56,20 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
 def line_up_info(player):
     """取得用户的阵容信息
     """
-    line_up_slots = player.line_up_component.line_up_slots
-    print 'line_up_slots:', line_up_slots
-    links_info = player.line_up_component.get_links()  # 羁绊信息
-
-    print 'links_info:', links_info
-
     response = line_up_pb2.LineUpResponse()
+    assembly_slots(player, response)
+    assembly_sub_slots(player, response)
 
+    return response
+
+
+def assembly_slots(player, response):
+    """组装阵容单元格
+    """
+    line_up_slots = player.line_up_component.line_up_slots
+    links_info = player.line_up_component.get_links()  # 羁绊信息
     for slot in line_up_slots.values():
-        add_slot = response.slot.add()
+        add_slot = response.sub.add()
         add_slot.slot_no = slot.slot_no
         add_slot.activation = slot.activation
 
@@ -103,10 +107,37 @@ def line_up_info(player):
 
                 # TODO
 
-    return response
 
+def assembly_sub_slots(player, response):
+    """组装助威阵容
+    """
+    sub_slots = player.line_up_component.sub_slots
+    links_info = player.line_up_component.get_links()  # 羁绊信息
 
+    for slot in sub_slots.values():
+        add_slot = response.slot.add()
+        add_slot.slot_no = slot.slot_no
+        add_slot.activation = slot.activation
 
+        hero_no = slot.hero_no  # 英雄编号
+
+        # 组装英雄
+        hero_obj = None
+        if hero_no:
+            hero_obj = player.hero_component.heros.get(hero_no)
+        if hero_obj:
+            hero = add_slot.hero
+            hero.hero_no = hero_obj.hero_no
+            hero.level = hero_obj.level
+            hero.exp = hero_obj.exp
+            hero.break_level = hero_obj.break_level
+
+            link_info = links_info.get(hero_no, {})
+
+            for key, value in link_info.items():
+                add_link = hero.links.add()
+                add_link.link_no = key
+                add_link.is_activation = value
 
 
 

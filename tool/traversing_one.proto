@@ -408,8 +408,9 @@ message LineUpSlot{
 
 //所有返回
 message LineUpResponse{
-	repeated LineUpSlot slot = 2;
-	optional CommonResponse res = 1;
+	repeated LineUpSlot slot = 1;
+	repeated LineUpSlot sub = 2;
+	optional CommonResponse res = 3;
 }
 
 // 更换装备 703
@@ -424,7 +425,8 @@ message ChangeEquipmentsRequest
 // 更换武将 702
 message ChangeHeroRequest{
 	required int32 slot_no = 1; // 位置编号
-	optional int32 hero_no = 2; // 英雄编号
+	optional int32 change_type = 2; // 更换类型：0：阵容 1：助威
+	optional int32 hero_no = 3; // 英雄编号
 }
 
 
@@ -502,6 +504,51 @@ message GuildCommonResponse
     optional bytes message = 3;
 }
 
+message GuildInfo
+{
+    required bytes g_id = 1;    //id
+    required bytes name = 2;    //名
+    required int32 p_num = 3;   //人数
+    required int32 level = 4;   //等级
+    required int32 exp = 5;     //经验
+    required int32 fund = 6;    //资金
+    required bytes call = 7;    //公告
+    required int32 record = 8;  //战绩
+
+}
+
+message RoleInfo
+{
+    required int32 p_id = 1;    //id
+    required bytes name = 2;    //名
+    required int32 level = 3;   //等级
+    required int32 vip_level = 4;   //vip等级
+    required int32 fight_power = 5;   //战斗力
+}
+
+message RoleInfo1
+{
+    required int32 p_id = 1;    //id
+    required bytes name = 2;    //名
+    required int32 level = 3;   //等级
+    required int32 position = 4;   //职位
+    required int32 all_contribution = 5;   //总贡献
+    required int32 k_num = 6;   //杀敌数
+}
+
+message GuildRank
+{
+    required int32 g_id = 1;    //id
+    required int32 rank = 2;    //排名
+    required bytes name = 3;    //名
+    required int32 level = 4;   //等级
+    required int32 president = 5;   //会长
+    required int32 p_num = 6;   //人数
+    required int32 record = 7;   //战绩
+}
+
+////////////////////////////////////////////////////
+
 // 创建公会 command：801
 message CreateGuildRequest{
 	required bytes name = 1;  //公会名
@@ -520,7 +567,7 @@ message EditorCallRequest{
 // 处理加会申请 command：805
 message DealApplyRequest{
 	required string p_id = 1;  //申请玩家id
-	required int32 type = 2;  // 结果1同意，2不同意
+	required int32 res_type = 2;  // 结果1同意，2不同意
 }
 
 // 转让会长 command：806 change_president_806
@@ -535,7 +582,35 @@ message KickRequest{
 
 // 膜拜 command：809
 message WorshipRequest{
-	required int32 type = 1;  //玩家id
+	required int32 w_type = 1;  //膜拜类型
+}
+
+// 获取公会信息 command：812
+message GuildInfoProto{
+	required bool result = 1;  //处理结果
+    optional GuildInfo guild_info = 2;
+    optional bytes message = 3;
+}
+
+// 获取申请列表 command：813
+message ApplyListProto{
+	required bool result = 1;  //处理结果
+    repeated RoleInfo role_info = 2;
+    optional bytes message = 3;
+}
+
+// 获取公会成员列表 command：811
+message GuildRoleListProto{
+	required bool result = 1;  //处理结果
+    repeated RoleInfo1 role_info = 2;
+    optional bytes message = 3;
+}
+
+// 获取公会排行列表 command：810
+message GuildRankProto{
+	required bool result = 1;  //处理结果
+    repeated GuildRank guild_rank = 2;
+    optional bytes message = 3;
 }
 
 // 请求全部装备返回 command：401

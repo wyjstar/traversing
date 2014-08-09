@@ -15,6 +15,7 @@ def enter_scene_601(dynamic_id, character_id):
     PlayersManager().add_player(player)
     responsedata = GameLoginResponse()
     responsedata.res.result = True
+
     responsedata.nickname = player.base_info.base_name
 
     responsedata.level = player.level.level

@@ -21,8 +21,9 @@ def change_hero_702(dynamic_id, pro_data):
     request = line_up_pb2.ChangeHeroRequest()
     request.ParseFromString(pro_data)
     slot_no = request.slot_no
+    change_type = request.change_type  # 更换类型
     hero_no = request.hero_no
-    return change_hero(dynamic_id, slot_no, hero_no)
+    return change_hero(dynamic_id, slot_no, hero_no, change_type)
 
 
 @remote_service_handle
