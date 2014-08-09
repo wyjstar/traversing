@@ -63,7 +63,7 @@ class Master:
         reactor.listenTCP(rootport, BilateralFactory(self.root))
 
     def start(self):
-        '''
+        '''baidu
         '''
         sys_args = sys.argv
         if len(sys_args) > 2 and sys_args[1] == "single":

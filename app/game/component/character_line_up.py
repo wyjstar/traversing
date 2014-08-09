@@ -17,6 +17,7 @@ class CharacterLineUpComponent(Component):
         super(CharacterLineUpComponent, self).__init__(owner)
         # TODO 有多少个位置 需要读取baseinfo配置表
         self._line_up_slots = dict([(slot_no, LineUpSlot(slot_no)) for slot_no in range(1, 7)])  # 卡牌位列表
+        self._sub_slots = dict([(slot_no, LineUpSlot(slot_no)) for slot_no in range(1, 7)])  # 卡牌位替补
         self._line_up_order = []
         # self._employee = None
         self._unique = 0  # 无双
@@ -43,6 +44,8 @@ class CharacterLineUpComponent(Component):
             tb_character_line_up.new({'id': self.owner.base_info.id,
                                       'line_up_slots': dict([(slot_no, LineUpSlot(slot_no).dumps()) for slot_no in
                                                              self._line_up_slots.keys()]),
+                                      'sub_slots': dict([(slot_no, LineUpSlot(slot_no).dumps()) for slot_no in
+                                                         self._sub_slots.keys()]),
                                       'line_up_order': self._line_up_order})
 
     @property
@@ -61,13 +64,21 @@ class CharacterLineUpComponent(Component):
     def line_up_order(self, value):
         self._line_up_order = value
 
+    @property
+    def sub_slots(self):
+        return self._sub_slots
+
+    @sub_slots.setter
+    def sub_slots(self, sub_slots):
+        self._sub_slots = sub_slots
+
     # @property
     # def employee(self):
     # return self._employee
     #
     # @employee.setter
     # def employee(self, value):
-    #     self._employee = value
+    # self._employee = value
 
     # def get_line_up_slot(self, line_up_slot_id):
     #     return self._line_up_slots[line_up_slot_id - 1]
@@ -132,7 +143,12 @@ class CharacterLineUpComponent(Component):
 
         # 遍历生成
         self._links = {}
-        for slot in self._line_up_slots.values():
+
+        line_up = {}
+        line_up.update(self._line_up_slots)
+        line_up.update(self._sub_slots)
+
+        for slot in line_up:
             hero_no = slot.hero_no  # 阵容英雄编号
             if not hero_no:  # 空位置
                 continue
@@ -221,7 +237,7 @@ class CharacterLineUpComponent(Component):
                 self._suit[equipment_id] = {'num': len(suit_intersection), 'suit_no': suit_conf_obj.id}  # 激活数量，激活编号
 
         return self._suit
-    # ------------------套装信息------------------
+        # ------------------套装信息------------------
 
 
 
