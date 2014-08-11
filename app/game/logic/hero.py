@@ -21,6 +21,7 @@ def get_heros(dynamic_id, **kwargs):
     for hero in player.hero_component.get_heros():
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
+    print "get_heros+++++++++++++++++++++++++++++++++++++++++++"
     return response.SerializePartialToString()
 
 

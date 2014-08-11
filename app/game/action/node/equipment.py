@@ -51,10 +51,12 @@ def enhance_equipment_402(dynamic_id, pro_data):
     enhance_type = request.type
     enhance_num = request.num
 
+    print request.id, request.type, request.num, "request"
+
     enhance_info = enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num)
 
     result = enhance_info.get('result')
-
+    print request, "result"
     response = equipment_response_pb2.EnhanceEquipmentResponse()
     res = response.res
     res.result = result
@@ -82,11 +84,12 @@ def compose_equipment_403(dynamic_id, pro_data):
     @return:
     """
     request = equipment_request_pb2.ComposeEquipmentRequest()
-    request.ParseFromString()
-    equipment_no = request.no
-
-    data = compose_equipment(dynamic_id, equipment_no)
+    request.ParseFromString(pro_data)
+    equipment_chip_no = request.no
+    print "request.no", request.no
+    data = compose_equipment(dynamic_id, equipment_chip_no)
     result = data.get('result')
+    print "compose_equipment.result", result
     response = equipment_response_pb2.ComposeEquipmentResponse()
     res = response.res
     if not result:
@@ -101,6 +104,7 @@ def compose_equipment_403(dynamic_id, pro_data):
     equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
     equ.awakening_lv = equipment_obj.attribute.awakening_lv
 
+    res.result = True
     return response.SerializePartialToString()
 
 
@@ -127,23 +131,16 @@ def melting_equipment_405(dynamic_id, pro_data):
     @return:
     """
     request = equipment_request_pb2.MeltingEquipmentRequest()
-    request.ParseFromString()
+    request.ParseFromString(pro_data)
 
-    equipment_id = request.id
-    data = melting_equipment(dynamic_id, equipment_id)
-
-    result = data.get('result')
+    equipment_ids = request.id
     response = equipment_response_pb2.MeltingEquipmentResponse()
-    res = response.res
-    if not result:
-        res.result_no = data.get('result_no')
-        res.message = data.get('message')
-        return response.SerializePartialToString()
 
-    player = data.get('player')
-    gain = data.get('gain', [])
-    item_group_helper.get_return(player, gain, response.cgr)
+    for equipment_id in equipment_ids:
+        data = melting_equipment(dynamic_id, equipment_id, response)
+        result = data.get('result')
 
+    response.res.result = True
     return response.SerializePartialToString()
 
 

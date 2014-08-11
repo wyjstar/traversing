@@ -38,6 +38,10 @@ class EquipmentAttributeComponent(Component):
     def nobbing_effect(self):
         return self._nobbing_effect
 
+    @nobbing_effect.setter
+    def nobbing_effect(self, value):
+        self._nobbing_effect = value
+
     @property
     def equipment_type(self):
         """返回装备类型
@@ -57,7 +61,7 @@ class EquipmentAttributeComponent(Component):
         print 'strengthen_lv:', self._strengthen_lv
         # 配置数据
         equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
-        str_config_obj = game_configs.equipment_strengthen_config.get(self._strengthen_lv, None)
+        str_config_obj = game_configs.equipment_strengthen_config.get(self._strengthen_lv + 1, None)
         print '##1:', str_config_obj
         print '##1:', equ_config_obj
         if (not equ_config_obj) or (not str_config_obj):

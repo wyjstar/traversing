@@ -44,11 +44,20 @@ class EquipmentChip(object):
     def compose_num(self):
         """合成数量配置
         """
-        chip_obj = game_configs.chip_config.get('mapping', {}).get(self._chip_no, None)
+        chip_obj = game_configs.chip_config.get('chips', {}).get(self._chip_no, None)
         if not chip_obj:
             return None
         need_num = chip_obj.needNum
         return need_num
+
+    @property
+    def combine_result(self):
+        """合成后的装备
+        """
+        chip_obj = game_configs.chip_config.get('chips', {}).get(self._chip_no, None)
+        if not chip_obj:
+            return None
+        return chip_obj.combineResult
     
     def update_pb(self, equipment_chip_pb):
         equipment_chip_pb.equipment_chip_no = self._chip_no

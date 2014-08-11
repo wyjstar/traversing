@@ -21,4 +21,6 @@ def init():
     init_equipment()
     from test.unittest.init_data.mock_equipment_chip import init_equipment_chip
     init_equipment_chip()
+    from test.unittest.init_data.mock_line_up import init_line_up
+    init_line_up()
 

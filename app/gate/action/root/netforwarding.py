@@ -60,7 +60,7 @@ def push_object(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
     """
-    GlobalObject().root.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
+    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
 
 
 @rootserviceHandle

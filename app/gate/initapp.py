@@ -13,3 +13,4 @@ def load_module():
 
     from action.local.chat import login
     from action.local.chat import chat
+    from action.local import heart_beat

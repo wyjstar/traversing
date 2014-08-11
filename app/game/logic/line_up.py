@@ -69,6 +69,8 @@ def line_up_info(player):
         add_slot.slot_no = slot.slot_no
         add_slot.activation = slot.activation
 
+        if not slot.activation:  # 如果卡牌位未激活，则不初始化信息
+            continue
         hero_no = slot.hero_no  # 英雄编号
 
         # 组装英雄

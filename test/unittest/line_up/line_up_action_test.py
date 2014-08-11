@@ -9,6 +9,8 @@ from app.game.action.node.line_up import *
 from app.game.service.gatenoteservice import remoteservice
 from app.proto_file.line_up_pb2 import *
 from app.game.core.PlayersManager import PlayersManager
+from app.game.logic.line_up import get_line_up_info
+from app.proto_file import line_up_pb2
 
 
 class LineUpActionTest(unittest.TestCase):
@@ -16,58 +18,55 @@ class LineUpActionTest(unittest.TestCase):
         from test.unittest.init_test_data import init
         init()
         self.player = PlayersManager().get_player_by_id(1)
-        self.add_hero(10001)
-        self.add_hero(10002)
+        # self.add_hero(10001)
+        # self.add_hero(10002)
 
-    def test_add_hero_701(self):
-        self.add_hero(10003)
+    def test_get_line_up_info_701(self):
+        str_response = get_line_up_info(1)
+        response = line_up_pb2.LineUpResponse()
+        response.ParseFromString(str_response)
 
-        line_up_component = self.player.line_up_component
-        line_up_slot = line_up_component.get_line_up_slot(3)
-        self.assertEqual(line_up_slot.hero_no, 10003, "%d_%d" % (line_up_slot.hero_no, 10003))
-        self.assertEqual(len(line_up_component.line_up_order), 3, "%d_%d" % (len(line_up_component.line_up_order), 3))
-        self.assertEqual(line_up_component.line_up_order[2], 3, "%d_%d" % (line_up_component.line_up_order[2], 3))
+        slot = response.slot[0]
+        self.assertEqual(slot.hero.hero_no, 10001, "%d_%d" % (slot.hero.hero_no, 10001))
+        self.assertEqual(slot.activation, True)
+
+        slot = response.slot[5]
+        self.assertEqual(slot.hero.hero_no, 0, "%d_%d" % (slot.hero.hero_no, 0))
+        self.assertEqual(slot.activation, False)
 
     def test_change_hero_702(self):
         request = ChangeHeroRequest()
         request.hero_no = 10003
-        request.line_up_slot_id = 1
+        request.slot_no = 1
         remoteservice.callTarget(702, 1, request.SerializeToString())
 
         line_up_component = self.player.line_up_component
-        line_up_slot = line_up_component.get_line_up_slot(1)
+        line_up_slot = line_up_component.line_up_slots[1]
         self.assertEqual(line_up_slot.hero_no, 10003, "%d_%d" % (line_up_slot.hero_no, 10003))
-        self.assertEqual(len(line_up_component.line_up_order), 2, "%d_%d" % (len(line_up_component.line_up_order), 2))
-        self.assertEqual(line_up_component.line_up_order[0], 1, "%d_%d" % (line_up_component.line_up_order[0], 1))
 
     def test_change_equipments_703(self):
         equipments = self.player.equipment_component.get_all()
+        last_equipment_id = equipments[len(equipments)-1].base_info.id
 
         request = ChangeEquipmentsRequest()
-        request.line_up_slot_id = 1
-        for item in equipments:
-            request.equipment_ids.append(item.base_info.id)
-        else:
-            for i in range(6-len(equipments)):
-                request.equipment_ids.append('')
+        request.slot_no = 1
+        request.no = 1
+        request.equipment_id = last_equipment_id
+
         remoteservice.callTarget(703, 1, request.SerializeToString())
 
         line_up_component = self.player.line_up_component
-        line_up_slot = line_up_component.get_line_up_slot(1)
-        self.assertEqual(len(line_up_slot.equipment_ids), 6, "%d_%d" % (len(line_up_slot.equipment_ids), 6))
-        self.assertEqual(line_up_slot.equipment_ids[1], equipments[1].base_info.id, "%s_%s" %
-                         (line_up_slot.equipment_ids[1], equipments[1].base_info.id))
+        line_up_slot = line_up_component.line_up_slots[1]
+        self.assertEqual(line_up_slot.equipment_ids[1], last_equipment_id, "%s_%s" %
+                         (line_up_slot.equipment_ids[1], last_equipment_id))
 
     def test_change_line_up_order_704(self):
-        request = ChangeLineUpOrderRequest()
-        order = [2, 1, 3, 4, 6, 5]
-        [request.line_up_order.append(x) for x in order]
-        remoteservice.callTarget(704, 1, request.SerializeToString())
+        pass
+        # request = ChangeLineUpOrderRequest()
+        # order = [2, 1, 3, 4, 6, 5]
+        # [request.line_up_order.append(x) for x in order]
+        # remoteservice.callTarget(704, 1, request.SerializeToString())
+        #
+        # line_up_order = self.player.line_up_component.line_up_order
+        # self.assertEqual(line_up_order[2], 3, "%d_%d" % (line_up_order[2], 3))
 
-        line_up_order = self.player.line_up_component.line_up_order
-        self.assertEqual(line_up_order[2], 3, "%d_%d" % (line_up_order[2], 3))
-
-    def add_hero(self, hero_no):
-        request = AddHeroRequest()
-        request.hero_no = hero_no
-        remoteservice.callTarget(701, 1, request.SerializeToString())

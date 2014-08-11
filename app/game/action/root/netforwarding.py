@@ -9,6 +9,6 @@ def push_object(topic_id, msg, send_list):
         send_list:
     """
     if 'gate' in GlobalObject().remote.keys():
-        GlobalObject().remote['gate'].callRemote("pushObject", topic_id, msg, send_list)
+        GlobalObject().remote['gate'].callRemote("push_object", topic_id, msg, send_list)
 
 

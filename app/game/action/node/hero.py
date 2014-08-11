@@ -5,12 +5,14 @@ created by wzp on 14-6-27下午2:05.
 
 from app.game.service.gatenoteservice import remote_service_handle
 from app.game.logic.hero import *
+from app.game.action.root.netforwarding import push_object
 
 
 @remote_service_handle
 def get_heros_101(dynamic_id, pro_data=None):
     """取得武将列表
     """
+    push_object(199, "push_object", [dynamic_id])
     return get_heros(dynamic_id)
 
 
