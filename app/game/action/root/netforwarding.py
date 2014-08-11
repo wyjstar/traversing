@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 """
 """
 from gfirefly.server.globalobject import GlobalObject
@@ -10,5 +10,3 @@ def push_object(topic_id, msg, send_list):
     """
     if 'gate' in GlobalObject().remote.keys():
         GlobalObject().remote['gate'].callRemote("pushObject", topic_id, msg, send_list)
-
-

@@ -4,6 +4,7 @@ created by server on 14-5-28下午4:47.
 """
 import redis
 from shared.utils.hash_ring import HashRing
+from redis.connection import BlockingConnectionPool
 
 
 def parse_setting(setting):
@@ -17,6 +18,7 @@ def parse_setting(setting):
 
 class RedisClient(object):
     def __init__(self, **kwargs):
+        kwargs['connection_pool'] = BlockingConnectionPool(100, 120)
         self.connection_settings = kwargs or {'host': 'localhost',
                 'port': 6379, 'db': 0}
 
