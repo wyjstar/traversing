@@ -146,7 +146,6 @@ message GetEquipmentsRequest{
 }
 
 
-
 // 装备强化 command: 402
 message EnhanceEquipmentRequest{
 	required string id = 1;  //装备ID
@@ -155,12 +154,10 @@ message EnhanceEquipmentRequest{
 }
 
 
-
 // 装备合成 command:  403
 message ComposeEquipmentRequest{
 	required string no = 1;  //装备碎片No
 }
-
 
 
 // 装备锤炼 command:  404
@@ -169,12 +166,17 @@ message NobbingEquipmentRequest{
 }
 
 
-
 // 装备熔炼 command:405
 message MeltingEquipmentRequest{
 	required string id = 1; // 装备ID
 }
 
+
+// 装备觉醒 command:406
+message AwakeningEquipmentRequest
+{
+    required string id = 1; // 装备ID
+}
 
 //武魂商城购买请求 command:506
 message SoulShopRequest
@@ -196,7 +198,7 @@ message SoulShopResponse
 
 // add_friend_common 好友
 message FriendCommon{
-	required int32 target_id = 1;  // invitee id
+	repeated int32 target_ids = 1;  // invitee id
 }
 
 // add friend response
@@ -213,6 +215,9 @@ message FindFriendRequest{
 message FindFriendResponse{
     optional int32  id = 1;
     optional string nickname = 2;
+    optional int32 ap = 3;
+    optional int32 icon_id = 4;
+    optional int32 gift = 5;
 }
 
 message GetPlayerFriendsRequest{
@@ -223,6 +228,9 @@ message GetPlayerFriendsRequest{
 message CharacterInfo{
     optional int32 player_id = 1;
     optional string nickname = 2;
+    optional int32 ap = 3;
+    optional int32 icon_id = 4;
+    optional int32 gift = 5;
 }
 
 // player friend items
@@ -506,7 +514,7 @@ message GuildCommonResponse
 
 message GuildInfo
 {
-    required bytes g_id = 1;    //id
+    required string g_id = 1;    //id
     required bytes name = 2;    //名
     required int32 p_num = 3;   //人数
     required int32 level = 4;   //等级
@@ -538,7 +546,7 @@ message RoleInfo1
 
 message GuildRank
 {
-    required int32 g_id = 1;    //id
+    required string g_id = 1;    //id
     required int32 rank = 2;    //排名
     required bytes name = 3;    //名
     required int32 level = 4;   //等级
@@ -566,18 +574,18 @@ message EditorCallRequest{
 
 // 处理加会申请 command：805
 message DealApplyRequest{
-	required string p_id = 1;  //申请玩家id
-	required int32 res_type = 2;  // 结果1同意，2不同意
+	repeated int32 p_id = 1;  //申请玩家id
+	required int32 res_type = 2;  // 结果1同意，2不同意,3全部删除
 }
 
 // 转让会长 command：806 change_president_806
 message ChangePresidentRequest{
-	required string p_id = 1;  //目标玩家id
+	required int32 p_id = 1;  //目标玩家id
 }
 
 // 踢出公会 command：807
 message KickRequest{
-	required string p_id = 1;  //目标玩家id
+	repeated int32 p_ids = 1;  //目标玩家ids
 }
 
 // 膜拜 command：809
@@ -642,7 +650,15 @@ message NobbingEquipmentResponse{
 // 装备熔炼返回 command:405
 message MeltingEquipmentResponse{
 	required CommonResponse res = 1;
-	optional GameResourcesResponse cgr = 3; // 消耗
+	optional GameResourcesResponse cgr = 2; // 消耗
+}
+
+
+// 装备觉醒 command:406
+message AwakeningEquipmentResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse cgr = 2; // 消耗
 }
 
 
