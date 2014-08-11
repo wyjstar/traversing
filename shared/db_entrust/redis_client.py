@@ -17,7 +17,7 @@ def parse_setting(setting):
 
 class RedisClient(object):
     def __init__(self, **kwargs):
-        # kwargs["connection_pool"] = BlockingConnectionPool()
+        kwargs['connection_pool'] = BlockingConnectionPool(100, 120)
         self.connection_settings = kwargs or {'host': 'localhost',
                 'port': 6379, 'db': 0}
 

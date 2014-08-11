@@ -23,23 +23,26 @@ def add_friend_request(dynamic_id, data, **kwargs):
     """
     response = CommonResponse()
     response.result = True
+    response.result_no = 0
     request = FriendCommon()
     request.ParseFromString(data)
 
-    if len(request) < 1:
-        response.result = False  # cant invite oneself as friend
+    if len(request.target_ids) < 1:
+        response.result = False
+        response.result_no = 5  # fail
+        print 'add_friend_request target_ids less one!'
         return response.SerializePartialToString()  # fail
 
     target_id = request.target_ids[0]
 
     player = kwargs.get('player')
-    invitee_player = PlayersManager().get_player_by_id(target_id)
-    if player.base_info.id == target_id:
+    if target_id == player.base_info.id:
         response.result = False  # cant invite oneself as friend
-        response.result_no = 3  # fail
+        response.result_no = 4  # fail
+        print 'add_friend_request cant add oneself as friend!'
         return response.SerializePartialToString()  # fail
 
-
+    invitee_player = PlayersManager().get_player_by_id(target_id)
     if invitee_player:
         if not invitee_player.friends.add_applicant(player.base_info.id):
             response.result = False
@@ -77,13 +80,17 @@ def become_friends(dynamic_id, data, **kwargs):
     for target_id in request.target_ids:
         if not player.friends.add_friend(target_id):
             response.result = False
+            print 'player add friend fail'
+            continue
+
         # save data
         player.friends.save_data()
 
         inviter_player = PlayersManager().get_player_by_id(target_id)
         if inviter_player:
-            if not inviter_player.friends.add_friend(player.base_info.id):
+            if not inviter_player.friends.add_friend(player.base_info.id, False):
                 response.result = False
+                print 'inviter add friend fail'
 
         # save data
             inviter_player.friends.save_data()
@@ -92,9 +99,9 @@ def become_friends(dynamic_id, data, **kwargs):
             friend_offline = FriendOffline(target_id)
             if not friend_offline.add_friend(player.base_info.id):
                 response.result = False
+                print 'offline player add friend fail'
 
-        response.result_no += 1
-
+        # response.result_no += 1
     return response.SerializePartialToString()
 
 
@@ -179,9 +186,6 @@ def add_player_to_blacklist(dynamic_id, data, **kwargs):
     player = kwargs.get('player')
 
     for target_id in request.target_ids:
-        if player.friends.is_in_blacklist(target_id):
-            response.result = False  # already exist the player in blacklist
-
         if not player.friends.add_blacklist(target_id):
             response.result = False
         response.result_no += 1
@@ -201,15 +205,13 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
     """
     response = CommonResponse()
     response.result = True
+    response.result_no = 0
     request = FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
     for target_id in request.target_ids:
-        if not player.friends.is_in_blacklist(target_id):
-            response.result = False  # not exist the player in blacklist
-
         if not player.friends.del_blacklist(target_id):
             response.result = False
         response.result_no += 1
@@ -264,7 +266,6 @@ def get_player_friend_list(dynamic_id, **kwargs):
     return response.SerializePartialToString()
 
 
-
 @have_player
 def find_friend_request(dynamic_id, data, **kwargs):
     """
@@ -280,6 +281,9 @@ def find_friend_request(dynamic_id, data, **kwargs):
     response = FindFriendResponse()
     response.id = 0
     response.nickname = 'none'
+    response.ap = 111
+    response.icon_id = 11
+    response.gift = datetime.datetime.now().day
 
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObjData(request.id_or_nickname)

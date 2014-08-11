@@ -59,12 +59,12 @@ class VCharacterManager:
             pass
 
     def get_node_by_dynamic_id(self, dynamic_id):
-        print self.character_client
-        print self.client_character
+        # print self.character_client
+        # print self.client_character
         print dynamic_id
         character = self.get_by_dynamic_id(dynamic_id)
         if character:
-            print character.__dict__
+            # print character.__dict__
             return character.node
         return -1
 

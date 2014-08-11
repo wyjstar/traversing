@@ -1,13 +1,13 @@
 # coding:utf8
 
 import struct
-
 from twisted.internet import reactor, protocol
-
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.game_pb2 import GameLoginResponse
+from app.proto_file.player_request_pb2 import CreatePlayerRequest
+from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.friend_pb2 import *
 
 
@@ -103,10 +103,10 @@ class EchoClient(protocol.Protocol):
 
             # add friend | get friend list
             request = FriendCommon()
-            request.target_id = 67
+            request.target_ids.append(67)
             # self.send_message(request, 1101)
-            self.send_message(request, 1100)
-            # self.send_message(request, 1106)
+            # self.send_message(request, 1100)
+            self.send_message(request, 1106)
 
             # # find friend by id or nickname
             # request = FindFriendRequest()

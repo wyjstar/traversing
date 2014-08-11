@@ -27,7 +27,7 @@ def forwarding(key, dynamic_id, data):
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         print 'dynamic_id:', dynamic_id
-        print VCharacterManager().__dict__
+        # print VCharacterManager().__dict__
         print 'gaet forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
             return

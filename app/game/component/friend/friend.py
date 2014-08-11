@@ -87,7 +87,7 @@ class FriendComponent(Component):
 
         if is_active:
             if not friend_id in self._applicants_list:
-                print 'add friend', 'exist in applicants list!!!!'
+                print 'add friend - exist in applicants list! friend:id', friend_id, self._applicants_list
                 return False
             del(self._applicants_list[friend_id])
 

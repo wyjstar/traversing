@@ -67,7 +67,7 @@ class DataPackProtoc:
         '''
         try:
             ud = struct.unpack('!sssss3I', dpack)
-            print 'unpack:', ud
+            # print 'unpack:', ud
         except struct.error, de:
             log.err(de)
             return {'result': False, 'command': 0, 'length': 0}
@@ -100,6 +100,6 @@ class DataPackProtoc:
         commandID = command
         data = struct.pack('!sssss3I', HEAD_0, HEAD_1, HEAD_2, HEAD_3, \
                            protoVersion, serverVersion, length, commandID)
-        print struct.unpack('!sssss3I', data)
+        # print struct.unpack('!sssss3I', data)
         data = data + str(response)
         return data

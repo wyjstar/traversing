@@ -28,7 +28,7 @@ def get_equipments_401(dynamic_id, pro_data):
     res.result = True
 
     for obj in equipments:
-        print obj.base_info.__dict__
+        # print obj.base_info.__dict__
         equipment_add = response.equipment.add()
         equipment_add.id = obj.base_info.id
         equipment_add.no = obj.base_info.equipment_no

@@ -22,8 +22,9 @@ message LineUpSlot{
 
 //所有返回
 message LineUpResponse{
-	repeated LineUpSlot slot = 2;
-	optional CommonResponse res = 1;
+	repeated LineUpSlot slot = 1;
+	repeated LineUpSlot sub = 2;
+	optional CommonResponse res = 3;
 }
 
 // 更换装备 703
@@ -38,5 +39,6 @@ message ChangeEquipmentsRequest
 // 更换武将 702
 message ChangeHeroRequest{
 	required int32 slot_no = 1; // 位置编号
-	optional int32 hero_no = 2; // 英雄编号
+	optional int32 change_type = 2; // 更换类型：0：阵容 1：助威
+	optional int32 hero_no = 3; // 英雄编号
 }
