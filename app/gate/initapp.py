@@ -14,10 +14,9 @@ def load_module():
 
     from action.local.chat import login
     from action.local.chat import chat
-<<<<<<< HEAD
+    from action.local import heart_beat
 
 def init_guild_rank():
-    # **************************************
     fifo_configs = {
         'label': 'Fifo',
         'redis_server': '127.0.0.1',
@@ -39,6 +38,3 @@ def init_guild_rank():
     Ranking.init(fifo_configs)
     Ranking.init(level_configs)
     print 'guild rank init ok'
-=======
-    from action.local import heart_beat
->>>>>>> refs/remotes/origin/master
