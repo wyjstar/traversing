@@ -160,6 +160,7 @@ def exit_guild(dynamicid, data, **kwargs):
     if position_p.count(p_id) >= 1:
         if position == 1:
             # 转让公会
+
             response.result = True
             response.message = "公会已转让"
             return response.SerializeToString()
@@ -234,24 +235,19 @@ def deal_apply(dynamicid, data, **kwargs):
 
     res_type = args.res_type
     m_g_id = player.guild.g_id
-    print 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaap_ids', args.p_ids, 'bbbbbbbbbbbbbres_bype', res_type
     data1 = tb_guild_info.getObjData(m_g_id)
-    print 'eeeeeeeeeeeeeee', data1, 'ffffffffff', m_g_id
     if not data1 or m_g_id == 0:
-        print 'gggggggggggggggggggggggggggg'
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    print 'hhhhhhhhhhhhhhhhhh', res_type, 'iiiiiiii', args.p_ids
     if res_type == 1:
         # TODO 根据公会等级得到公会人数上限，取配置
         p_ids = args.p_ids
 
         if guild_obj.get_p_num()+len(p_ids) > 30:
-            print 'cccccccccccccccccccccc', guild_obj.get_p_num(), 'ddddd', len(p_ids)
             response.result = False
             response.message = "超出公会人数上限"
             return response.SerializeToString()
@@ -265,20 +261,23 @@ def deal_apply(dynamicid, data, **kwargs):
                 response.message = "次玩家已有公会"
                 return response.SerializeToString()
             data = {
-            'info': {'g_id': player.guild.g_id,
-                     'position': 5,
-                     'contribution': 0,
-                     'all_contribution': 0,
-                     'k_num': 0,
-                     'worship': 0,
-                     'worship_time': 1,
-                     'exit_time': 1}}
+                'info': {'g_id': player.guild.g_id,
+                         'position': 5,
+                         'contribution': 0,
+                         'all_contribution': 0,
+                         'k_num': 0,
+                         'worship': 0,
+                         'worship_time': 1,
+                         'exit_time': 1}}
             p_guild_data = tb_character_guild.getObj(p_id)
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(5):
-                    guild_obj.p_list.update({5: guild_obj.p_list.get(5).append(p_id)})
-                guild_obj.p_list.update({5: [p_id]})
+                    p_list1 = guild_obj.p_list.get(5)
+                    p_list1.append(p_id)
+                    guild_obj.p_list.update({5: p_list1})
+                else:
+                    guild_obj.p_list.update({5: [p_id]})
                 guild_obj.p_num += 1
             p_guild_data.update_multi(data)
 
@@ -328,8 +327,26 @@ def change_president(dynamicid, data, **kwargs):
             p_list.update({num: p_list1, 5: p_list5, 1: [p_p_id]})
             guild_obj.p_list = p_list
             guild_obj.save_data()
-            # 修改目标玩家个人属性
             # 判断玩家再不在线，在线直接通知，不在线的话发邮件。通知其他玩家
+
+            character_guild = tb_character_guild.getObjData(p_p_id)
+            info = character_guild.get("info")
+            if info.get("g_id") != player.guild.g_id:
+                response.result = False
+                response.message = "此玩家不在公会"
+                return response.SerializeToString()
+            data = {
+                'info': {'g_id': info.get("g_id"),
+                         'position': 1,
+                         'contribution': info.get("contribution"),
+                         'all_contribution': info.get("all_contribution"),
+                         'k_num': info.get("k_num"),
+                         'worship': info.get("worship"),
+                         'worship_time': info.get("worship_time"),
+                         'exit_time': info.get("exit_time")}}
+            p_guild_data = tb_character_guild.getObj(p_p_id)
+            p_guild_data.update_multi(data)
+
             player.guild.position = 5
             player.guild.save_data()
             response.result = True
@@ -369,7 +386,24 @@ def kick(dynamicid, data, **kwargs):
                 guild_obj.p_list = p_list
                 guild_obj.p_num -= 1
                 guild_obj.save_data()
-                # 判断目标玩家再不在线，发消息，通知
+                # TODO 判断目标玩家再不在线，发消息，通知
+                character_guild = tb_character_guild.getObjData(p_id)
+                info = character_guild.get("info")
+                if info.get("g_id") == 0:
+                    response.result = False
+                    response.message = "此玩家不在公会"
+                    return response.SerializeToString()
+                data = {
+                    'info': {'g_id': 0,
+                             'position': 5,
+                             'contribution': 0,
+                             'all_contribution': 0,
+                             'k_num': 0,
+                             'worship': 0,
+                             'worship_time': 1,
+                             'exit_time': 1}}
+                p_guild_data = tb_character_guild.getObj(p_id)
+                p_guild_data.update_multi(data)
     response.result = True
     response.message = "踢人成功"
     return response.SerializeToString()
@@ -396,50 +430,75 @@ def promotion(dynamicid, data, **kwargs):
 
     p_list = guild_obj.p_list
     t_p_list = p_list.get(m_position - 1)
-    list_len = len(t_p_list)
-    t_position = m_position - 1
-    if t_position == 2:
-        if list_len >= 2:
+    if t_p_list and len(t_p_list) >= 1:
+        list_len = len(t_p_list)
+        t_position = m_position - 1
+        if t_position == 2:
+            if list_len >= 2:
+                response.result = False
+                response.message = "上一级职位已满"
+                return response.SerializeToString()
+        elif t_position == 3:
+            if list_len >= 3:
+                response.result = False
+                response.message = "上一级职位已满"
+                return response.SerializeToString()
+        else:
+            if list_len >= 4:
+                response.result = False
+                response.message = "上一级职位已满"
+                return response.SerializeToString()
+        guildinfolist = {}
+        for p_id1 in t_p_list:
+            guildinfo = tb_character_guild.getObjData(p_id1)
+            if guildinfo:
+                guildinfolist.update(guildinfo)
+        m_guildinfo = tb_character_guild.getObjData(m_p_id)
+        guildinfolist.update(m_guildinfo)
+        new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
+        if new_list[-1][0] == m_p_id:
             response.result = False
-            response.message = "上一级职位已满"
+            response.message = "总贡献必须超过上一级职位最低贡献才能晋级"
             return response.SerializeToString()
-    elif t_position == 3:
-        if list_len >= 3:
+
+        tihuan_id = new_list[-1][0]
+        # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
+        character_guild = tb_character_guild.getObjData(tihuan_id)
+        info = character_guild.get("info")
+        if info.get("g_id") != player.guild.g_id:
             response.result = False
-            response.message = "上一级职位已满"
+            response.message = "此玩家不在公会"
             return response.SerializeToString()
+        data = {
+            'info': {'g_id': info.get("g_id"),
+                     'position': m_position - 1,
+                     'contribution': info.get("contribution"),
+                     'all_contribution': info.get("all_contribution"),
+                     'k_num': info.get("k_num"),
+                     'worship': info.get("worship"),
+                     'worship_time': info.get("worship_time"),
+                     'exit_time': info.get("exit_time")}}
+        p_guild_data = tb_character_guild.getObj(tihuan_id)
+        p_guild_data.update_multi(data)
+
+        p_list1 = p_list.get(m_position)
+        p_list1.remove(m_p_id)
+        p_list1.append(tihuan_id)
+        p_list2 = p_list.get(m_position - 1)
+        p_list2.remove(tihuan_id)
+        p_list2.append(m_p_id)
     else:
-        if list_len >= 4:
-            response.result = False
-            response.message = "上一级职位已满"
-            return response.SerializeToString()
-    guildinfolist = {}
-    for p_id1 in t_p_list:
-        guildinfo = tb_character_guild.getObjData(p_id1)
-        if guildinfo:
-            guildinfolist.update(guildinfo)
-    m_guildinfo = tb_character_guild.getObjData(m_p_id)
-    guildinfolist.update(m_guildinfo)
-    new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
-    if new_list[-1][0] == m_p_id:
-        response.result = False
-        response.message = "总贡献必须超过上一级职位最低贡献才能晋级"
-        return response.SerializeToString()
-    # 和最后一个调换
+        p_list1 = p_list.get(m_position)
+        p_list1.remove(m_p_id)
+        p_list2 = [m_p_id]
+
     player.guild.position -= 1
     player.guild.save_data()
-    tihuan_id = new_list[-1][0]
-    # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
-    p_list1 = p_list.get(m_position)
-    p_list1.remove(m_p_id)
-    p_list1.append(tihuan_id)
-    tihuan_position = m_position - 1
-    p_list2 = p_list.get(tihuan_position)
-    p_list2.remove(tihuan_id)
-    p_list2.append(m_p_id)
-    p_list.update({m_position: p_list1, tihuan_position: p_list2})
+
+    p_list.update({m_position: p_list1, m_position - 1: p_list2})
     guild_obj.p_list = p_list
     guild_obj.save_data()
+
     response.result = True
     response.message = "晋升成功"
     return response.SerializeToString()
@@ -557,21 +616,22 @@ def get_role_list(dynamicid, data, **kwargs):
 
     guild_p_list = guild_obj.p_list
     # guild_p_list = {1: [12, 23, 34, 45], 2: [23, 34, 45], 3: [56, 67, 78]}
-    for p_list in guild_p_list.values():
-        for role_id in p_list:
-            role_info = response.role_info.add()
-            role_info.p_id = role_id
-            # TODO 获取名称,等级，职位，总贡献，杀敌
-            character_guild = tb_character_guild.getObjData(role_id)
-            info = character_guild.get("info")
+    if guild_p_list.values():
+        for p_list in guild_p_list.values():
+            for role_id in p_list:
+                role_info = response.role_info.add()
+                role_info.p_id = role_id
+                # TODO 获取名称,等级，职位，总贡献，杀敌
+                character_guild = tb_character_guild.getObjData(role_id)
+                info = character_guild.get("info")
 
-            role_info.name = 'name'
-            role_info.level = 1
-            role_info.position = info.get("position")
-            role_info.all_contribution = info.get("all_contribution")
-            role_info.k_num = info.get("k_num")
-    response.result = True
-    return response.SerializeToString()
+                role_info.name = 'name'
+                role_info.level = 1
+                role_info.position = info.get("position")
+                role_info.all_contribution = info.get("all_contribution")
+                role_info.k_num = info.get("k_num")
+        response.result = True
+        return response.SerializeToString()
 
 
 @have_player
@@ -607,6 +667,8 @@ def get_guild_info(dynamicid, data, **kwargs):
     guild_info.fund = guild_obj.fund
     guild_info.call = guild_obj.call
     guild_info.record = guild_obj.record
+    print 'aaaaaaaaaaaaaaaaaaaaa', player.guild.position
+    guild_info.my_position = player.guild.position
     return response.SerializeToString()
 
 

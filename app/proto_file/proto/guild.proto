@@ -15,6 +15,7 @@ message GuildInfo
     required int32 fund = 6;    //资金
     required bytes call = 7;    //公告
     required int32 record = 8;  //战绩
+    required int32 my_position = 9; //我的职位
 
 }
 

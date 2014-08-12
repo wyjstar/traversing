@@ -64,7 +64,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'a88b9a23ab64785c9f13f9ece6529404'
+        argument.key.key = '1e9f6c31b4ceeb2d95a69bce00ea84e9'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +89,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'a88b9a23ab64785c9f13f9ece6529404'
+                argument.key.key = '1e9f6c31b4ceeb2d95a69bce00ea84e9'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,7 +100,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'a88b9a23ab64785c9f13f9ece6529404'
+            argument.token = '1e9f6c31b4ceeb2d95a69bce00ea84e9'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -108,18 +108,18 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # a88b9a23ab64785c9f13f9ece6529404
-            # a61eb6c4b45ae7de399f7d7696bb2f26
-            # 658c8daa222af1656141fd665c6445da 申请加入
+            # 1e9f6c31b4ceeb2d95a69bce00ea84e9
+            # 2d24ca45e71a0d811ed373679136d671
+            # 43014583c182bcbf37f7de4569a857d6 申请加入
 
             # --------801创建公会------------
             # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四002'
+            # argument1.name = '一二三四001'
             # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
-            # argument1.g_id = '29df1ce821d111e4ba13080027545076'
+            # argument1.g_id = '9f02d52a222411e4af58080027545076'
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
@@ -134,7 +134,8 @@ class EchoClient(protocol.Protocol):
 
             # --------805处理加入公会申请------------
             # argument1 = DealApplyRequest()
-            # argument1.p_ids.append(465)
+            # argument1.p_ids.append(500)
+            # argument1.p_ids.append(501)
             # argument1.res_type = 1
             # self.dateSend(argument1, 805)
 
@@ -167,9 +168,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 812)
 
             # --------811获取公会玩家列表---------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四117'
-            self.dateSend(argument1, 811)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四117'
+            # self.dateSend(argument1, 811)
 
             # --------813获取申请列表---------
             # argument1 = CreateGuildRequest()
