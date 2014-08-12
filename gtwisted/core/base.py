@@ -99,6 +99,7 @@ class BasePortListener(Greenlet):
     def _run(self):
         """启动监听器
         """
+        print '# 启动监听：', self.server_cls
         ser = self.server_cls(self.getHost(),self.factory,backlog=100000)
         ser.serve_forever()
     

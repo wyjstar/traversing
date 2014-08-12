@@ -1,7 +1,9 @@
 # -*- coding:utf-8 -*-
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
-    item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config
+    item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config,\
+    equipment_strengthen_config, equipment_config
+
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
@@ -11,6 +13,8 @@ from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
+from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
+from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 
 from shared.utils.const import *
 
@@ -24,11 +28,11 @@ for key, value in base_config_mock.items():
 # ------------------------hero----------------------------
 
 hero1 = {'id': 10001, 'name': 'hero10001', 'sacrificeGain': {const.HERO_SOUL: [100, 100, 0]},
-         'sellGain': {const.COIN: [100, 100, 0]}}
+         'sellGain': {const.COIN: [100, 100, 0]}, 'breakLimit': 6}
 hero2 = {'id': 10002, 'name': 'hero10002', 'sacrificeGain': {const.HERO_SOUL: [200, 200, 0]},
-         'sellGain': {const.COIN: [200, 300, 0]}}
+         'sellGain': {const.COIN: [200, 300, 0]}, 'breakLimit': 6}
 hero3 = {'id': 10003, 'name': 'hero10003', 'sacrificeGain': {const.HERO_SOUL: [300, 300, 0]},
-         'sellGain': {const.COIN: [300, 300, 0]}}
+         'sellGain': {const.COIN: [300, 300, 0]}, 'breakLimit': 6}
 
 hero_config.clear()
 hero_config_mock = HeroConfig().parser([hero1, hero2, hero3])
@@ -37,12 +41,12 @@ for key, value in hero_config_mock.items():
 
 # ------------------------item----------------------------
 
-item1 = {'id': 1000101, 'func_args1': 100000}
-item2 = {'id': 1000102, 'func_args1': 50000}
-item3 = {'id': 1000103, 'func_args1': 10000}
-item4 = {'id': 1000104, 'func_args1': 1000}
+item1 = {'id': 1000101, 'funcArgs1': 100000}
+item2 = {'id': 1000102, 'funcArgs1': 50000}
+item3 = {'id': 1000103, 'funcArgs1': 10000}
+item4 = {'id': 1000104, 'funcArgs1': 1000}
 
-item5 = {'id': 1000112, 'func': 2, 'func_args1': 1000113, 'func_args2': 1, 'dropId': 10002}
+item5 = {'id': 1000112, 'func': 2, 'funcArgs1': 1000113, 'funcArgs2': 1, 'dropId': 10002}
 item6 = {'id': 1000113, 'func': 0}
 
 item_config.clear()
@@ -93,21 +97,36 @@ hero_exp_config[16] = hero_exp16
 # 2 :break_pill
 # 3 :hero_chip
 hero_breakup1 = {'id': 10001, 'break2': 31000102,
+                 'consume1': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
                  'consume2': {const.COIN: [1000, 1000, 0],
                               const.ITEM: [2, 2, 1000111],
-                              const.HERO_CHIP: [20, 20, 1000112]}}
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 'consume3': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 'consume4': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 'consume5': {const.COIN: [1000, 1000, 0],
+                              const.ITEM: [2, 2, 1000111],
+                              const.HERO_CHIP: [20, 20, 1000112]},
+                 }
 
 hero_breakup_config.clear()
 hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 
-# ------------------------hero_chip----------------------------
+# ------------------------chip----------------------------
 
 hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'need_num': 20}
 hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'need_num': 20}
+
+equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'need_num': 1}
 chip_config.clear()
 config = ChipConfig()
-chip_config_mock = config.parser([hero_chip1, hero_chip2])
+chip_config_mock = config.parser([hero_chip1, hero_chip2, equipment_chip1])
 chip_config['mapping'] = chip_config_mock['mapping']
 chip_config['chips'] = chip_config_mock['chips']
 
@@ -161,3 +180,19 @@ shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4])
 for key, value in shop_config_mock.items():
     shop_config[key] = value
 
+#------------------------equipment----------------------------
+equipment1 = dict(id=100037, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment3 = dict(id=100036, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment2 = dict(id=100001, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment_config_mock = EquipmentConfig().parser([equipment1, equipment2, equipment3])
+for key, value in equipment_config_mock.items():
+    equipment_config[key] = value
+
+#------------------------equipment_strength----------------------------
+
+equipment_strength_1 = dict(level=1, currencyCost1=16, currencyCost2=20, currencyCost3=24, currencyCost4=40, currencyCost5=69)
+equipment_strength_2 = dict(level=2, currencyCost1=18, currencyCost2=21, currencyCost3=27, currencyCost4=44, currencyCost5=74)
+
+equipment_strength_config_mock = EquipmentStrengthenConfig().parser([equipment_strength_1, equipment_strength_2])
+for key, value in equipment_strength_config_mock.items():
+    equipment_strengthen_config[key] = value

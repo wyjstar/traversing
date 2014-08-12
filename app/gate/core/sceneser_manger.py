@@ -41,7 +41,7 @@ class SceneSerManager:
         self.init_scene()
         
     def init_scene(self):
-        print GlobalObject().root.childsmanager._childs
+        # print GlobalObject().root.childsmanager._childs
         for childname in GlobalObject().root.childsmanager._childs.keys():
             if "game" in childname:
                 print 'childname:', childname
@@ -76,7 +76,7 @@ class SceneSerManager:
 
         sceneser = self.get_scene_by_id(sceneid)
 
-        print sceneser.__dict__
+        # print sceneser.__dict__
 
         if sceneser:
             try:

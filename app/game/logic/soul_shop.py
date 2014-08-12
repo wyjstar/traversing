@@ -25,18 +25,19 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
         common_response.result = False
         common_response.message = '消费不足！'
 
-    consume(player, shop_item.consume)  # 消耗
+    consume_return_data = consume(player, shop_item.consume)  # 消耗
 
     return_data = gain(player, shop_item.gain)  # 获取
-    extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
-    get_return(player, return_data, response)
-    get_return(player, extra_return_data, response)
+    #extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
+    get_return(player, consume_return_data, response.consume)
+    get_return(player, return_data, response.gain)
+    #get_return(player, extra_return_data, response)
     common_response.result = True
     return response.SerializeToString()
 
 
 @have_player
-def get_shop_items(**kwargs):
+def get_shop_items(dynamic_id, **kwargs):
     ids = get_shop_item_ids()
     shop = GetShopItemsResponse()
     for x in ids:

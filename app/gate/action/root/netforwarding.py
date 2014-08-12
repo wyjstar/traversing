@@ -28,7 +28,7 @@ def forwarding(key, dynamic_id, data):
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         print 'dynamic_id:', dynamic_id
-        print VCharacterManager().__dict__
+        # print VCharacterManager().__dict__
         print 'gaet forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
             return
@@ -61,7 +61,7 @@ def push_object(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
     """
-    GlobalObject().root.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
+    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
 
 
 @rootserviceHandle

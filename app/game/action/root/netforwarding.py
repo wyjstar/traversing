@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 """
 """
 from gfirefly.server.globalobject import GlobalObject

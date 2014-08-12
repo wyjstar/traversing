@@ -28,14 +28,13 @@ def get_equipments_401(dynamic_id, pro_data):
     res.result = True
 
     for obj in equipments:
-        print obj.base_info.__dict__
+        # print obj.base_info.__dict__
         equipment_add = response.equipment.add()
         equipment_add.id = obj.base_info.id
         equipment_add.no = obj.base_info.equipment_no
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
 
-        # TODO hero_no, set
     return response.SerializePartialToString()
 
 
@@ -52,10 +51,12 @@ def enhance_equipment_402(dynamic_id, pro_data):
     enhance_type = request.type
     enhance_num = request.num
 
+    print request.id, request.type, request.num, "request"
+
     enhance_info = enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num)
 
     result = enhance_info.get('result')
-
+    print request, "result"
     response = equipment_response_pb2.EnhanceEquipmentResponse()
     res = response.res
     res.result = result
@@ -83,11 +84,12 @@ def compose_equipment_403(dynamic_id, pro_data):
     @return:
     """
     request = equipment_request_pb2.ComposeEquipmentRequest()
-    request.ParseFromString()
-    equipment_no = request.no
-
-    data = compose_equipment(dynamic_id, equipment_no)
+    request.ParseFromString(pro_data)
+    equipment_chip_no = request.no
+    print "request.no", request.no
+    data = compose_equipment(dynamic_id, equipment_chip_no)
     result = data.get('result')
+    print "compose_equipment.result", result
     response = equipment_response_pb2.ComposeEquipmentResponse()
     res = response.res
     if not result:
@@ -102,6 +104,7 @@ def compose_equipment_403(dynamic_id, pro_data):
     equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
     equ.awakening_lv = equipment_obj.attribute.awakening_lv
 
+    res.result = True
     return response.SerializePartialToString()
 
 
@@ -128,10 +131,31 @@ def melting_equipment_405(dynamic_id, pro_data):
     @return:
     """
     request = equipment_request_pb2.MeltingEquipmentRequest()
+    request.ParseFromString(pro_data)
+
+    equipment_ids = request.id
+    response = equipment_response_pb2.MeltingEquipmentResponse()
+
+    for equipment_id in equipment_ids:
+        data = melting_equipment(dynamic_id, equipment_id, response)
+        result = data.get('result')
+
+    response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remote_service_handle
+def awakening_equipment_406(dynamic_id, pro_data):
+    """熔炼装备
+    @param dynamic_id:
+    @param pro_data:
+    @return:
+    """
+    request = equipment_request_pb2.AwakeningEquipmentRequest
     request.ParseFromString()
 
     equipment_id = request.id
-    data = melting_equipment(dynamic_id, equipment_id)
+    data = awakening_equipment(dynamic_id, equipment_id)
 
     result = data.get('result')
     response = equipment_response_pb2.MeltingEquipmentResponse()
@@ -146,4 +170,7 @@ def melting_equipment_405(dynamic_id, pro_data):
     item_group_helper.get_return(player, gain, response.cgr)
 
     return response.SerializePartialToString()
+
+
+
 

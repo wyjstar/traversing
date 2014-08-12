@@ -27,13 +27,16 @@ class FriendComponent(Component):
         friend_obj = tb_character_friend.getObj(self.owner.base_info.id)
         count = len(self._friends) + len(self._blacklist) + len(self._applicants_list)
         if count > 0:
-            data = {'id': self.owner.base_info.id,
-                    'friends': self._friends,
-                    'blacklist': self._blacklist,
-                    'applicants_list': self._applicants_list}
             if friend_obj:
+                data = {'friends': self._friends,
+                        'blacklist': self._blacklist,
+                        'applicants_list': self._applicants_list}
                 friend_obj.update_multi(data)
             else:
+                data = {'id': self.owner.base_info.id,
+                        'friends': self._friends,
+                        'blacklist': self._blacklist,
+                        'applicants_list': self._applicants_list}
                 tb_character_friend.new(data)
         elif friend_obj:
             tb_character_friend.deleteMode(self.owner.base_info.id)
@@ -73,7 +76,7 @@ class FriendComponent(Component):
             return True
         return False
 
-    def add_friend(self, friend_id):
+    def add_friend(self, friend_id, is_active=True):
         if friend_id in self._friends:
             print 'add friend', 'exist in friends!!!!'
             return False
@@ -82,9 +85,11 @@ class FriendComponent(Component):
             print 'add friend', 'exist in blacklist!!!!'
             return False
 
-        if friend_id in self._applicants_list:
-            print 'add friend', 'exist in applicants list!!!!'
-            return False
+        if is_active:
+            if not friend_id in self._applicants_list:
+                print 'add friend - exist in applicants list! friend:id', friend_id, self._applicants_list
+                return False
+            del(self._applicants_list[friend_id])
 
         self._friends.append(friend_id)
         return True

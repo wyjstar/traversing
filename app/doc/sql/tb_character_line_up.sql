@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS `tb_character_line_up`;
 CREATE TABLE `tb_character_line_up` (
   `id` bigint(20) NOT NULL,
   `line_up_slots` mediumblob,
+  `sub_slots` mediumblob,
   `line_up_order` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

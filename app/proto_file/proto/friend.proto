@@ -2,7 +2,7 @@ import "common.proto";
 
 // add_friend_common 好友
 message FriendCommon{
-	required int32 target_id = 1;  // invitee id
+	repeated int32 target_ids = 1;  // invitee id
 }
 
 // add friend response
@@ -19,6 +19,9 @@ message FindFriendRequest{
 message FindFriendResponse{
     optional int32  id = 1;
     optional string nickname = 2;
+    optional int32 ap = 3;
+    optional int32 icon_id = 4;
+    optional int32 gift = 5;
 }
 
 message GetPlayerFriendsRequest{
@@ -29,6 +32,9 @@ message GetPlayerFriendsRequest{
 message CharacterInfo{
     optional int32 player_id = 1;
     optional string nickname = 2;
+    optional int32 ap = 3;
+    optional int32 icon_id = 4;
+    optional int32 gift = 5;
 }
 
 // player friend items

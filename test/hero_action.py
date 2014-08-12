@@ -11,6 +11,8 @@ from twisted.internet import reactor, protocol
 from app.proto_file.hero_response_pb2 import GetHerosResponse
 from app.proto_file.hero_chip_pb2 import GetHeroChipsResponse
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
+from app.proto_file.equipment_request_pb2 import GetEquipmentsRequest
+from app.proto_file.equipment_response_pb2 import GetEquipmentResponse
 
 
 def sendData(sendstr,commandId):
@@ -43,7 +45,7 @@ def resolveRecvdata(data):
     lenght = ud[6]
     command = ud[7]
     message = data[17:17+lenght]
-    print command, message
+    #print command, message
 
     return command, message
 
@@ -58,21 +60,23 @@ class EchoClient(protocol.Protocol):
     def connectionMade(self):
 
         self.dateSend("", 101)
-        self.dateSend("", 108)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
+
         command, message = resolveRecvdata(data)
+
+        print data
+        print "+++++++++++++++++++++++++++"
 
         if command == 101:
             #print message, "?????"
             argument = GetHerosResponse()
             argument.ParseFromString(message)
-            print ">>>>>>>>>>>>>>>>>>"
             print argument.heros[0].hero_no
-            print argument.heros[1].hero_no
-            print argument.heros[2].hero_no
             #self.dateSend("", 108)
+        if command == 199:
+            print message, "199???????"
 
         if command == 108:
             argument = GetHeroChipsResponse()
@@ -83,12 +87,30 @@ class EchoClient(protocol.Protocol):
 
             shop_request = ShopRequest()
             shop_request.id = 1001
-            #self.dateSend(shop_request.SerializeToString(), 501)
+            self.dateSend(shop_request.SerializeToString(), 501)
 
         if command == 501:
             argument = ShopResponse()
             argument.ParseFromString(message)
             print argument
+
+
+            request = GetEquipmentsRequest()
+            request.type = 0
+            self.dateSend(request.SerializeToString(), 401)
+
+        if command == 401:
+
+            print message, "message401"
+            response = GetEquipmentResponse()
+            response.ParseFromString(message)
+
+            print "len", len(response.equipment)
+            self.dateSend('', 88)
+
+        if command == 88:
+            print "????"
+            print "recv88", message
 
 
 

@@ -28,7 +28,7 @@ if __name__ == "__main__":
     suite.addTest(unittest.makeSuite(EquipmentChipTest))
     suite.addTest(unittest.makeSuite(ItemActionTest))
     # suite.addTest(unittest.makeSuite(LineUpTest))
-    # suite.addTest(unittest.makeSuite(LineUpActionTest))
+    suite.addTest(unittest.makeSuite(LineUpActionTest))
     suite.addTest(unittest.makeSuite(DropBagTest))
     suite.addTest(unittest.makeSuite(ItemGroupHelperTest))
     suite.addTest(unittest.makeSuite(ShopTest))

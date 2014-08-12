@@ -19,7 +19,7 @@ class CharacterEquipmentChipComponent(Component):
         print '#!:'
         equipment_chip_data = tb_character_equipment_chip.getObjData(self.owner.base_info.id)
 
-        print '#!:', equipment_chip_data
+        # print '#!:', equipment_chip_data
 
         if equipment_chip_data:
             chips = equipment_chip_data.get('chips')

@@ -67,35 +67,3 @@ class LineUpSlot(object):
 
     def change_equipment(self, no, equipment_id):
         self._equipment_ids[no] = equipment_id
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
