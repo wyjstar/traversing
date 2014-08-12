@@ -12,7 +12,6 @@ from app.game.action.root.netforwarding import push_object
 def get_heros_101(dynamic_id, pro_data=None):
     """取得武将列表
     """
-    push_object(199, "push_object", [dynamic_id])
     return get_heros(dynamic_id)
 
 
