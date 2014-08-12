@@ -93,9 +93,6 @@ class Guild(object):
     def get_p_num(self):
         return self._p_num
 
-    def get_g_id(self):
-        return self._g_id
-
     def get_guild_info(self):
         return [self._g_id, self._name, self.p_num, self._level,
                 self._exp, self.fund, self._call, self._record]
