@@ -50,3 +50,4 @@ if __name__ == '__main__':
     for b in []:
         a = 2
     print a
+
