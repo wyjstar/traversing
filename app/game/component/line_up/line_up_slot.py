@@ -45,6 +45,10 @@ class LineUpSlotComponent(Component):
         self._activation = activation
 
     @property
+    def hero_slot(self):
+        return self._hero_slot
+
+    @property
     def info(self):
         """卡牌信息
         """

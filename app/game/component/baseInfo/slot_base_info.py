@@ -17,3 +17,7 @@ class SlotBaseInfoComponent(BaseInfoComponent):
     @property
     def activation(self):
         return self._activation
+
+    @activation.setter
+    def activation(self, activation):
+        self._activation = activation

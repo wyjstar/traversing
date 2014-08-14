@@ -13,27 +13,47 @@ def init_line_up():
 
     slot = player.line_up_component.line_up_slots[1]
     slot.activation = True
-    slot.hero_no = 10001
-    slot.equipment_ids[1] = equipment_ids[0]
-    slot.equipment_ids[2] = equipment_ids[1]
+
+    slot.hero_slot.hero_no = 10001
+    slot.hero_slot.activation = True
+
+    slot.equipment_slots[1].equipment_id = equipment_ids[0]
+    slot.equipment_slots[1].activation = True
+    slot.equipment_slots[2].equipment_id = equipment_ids[1]
+    slot.equipment_slots[2].activation = True
 
     slot = player.line_up_component.line_up_slots[2]
     slot.activation = True
-    slot.hero_no = 10002
-    slot.equipment_ids[1] = equipment_ids[1]
-    slot.equipment_ids[3] = equipment_ids[2]
+
+    slot.hero_slot.hero_no = 10002
+    slot.hero_slot.activation = True
+
+    slot.equipment_slots[1].equipment_id = equipment_ids[1]
+    slot.equipment_slots[1].activation = True
+    slot.equipment_slots[3].equipment_id = equipment_ids[2]
+    slot.equipment_slots[3].activation = True
 
     slot = player.line_up_component.line_up_slots[3]
     slot.activation = True
-    slot.hero_no = 10003
-    slot.equipment_ids[1] = equipment_ids[2]
-    slot.equipment_ids[4] = equipment_ids[3]
+
+    slot.hero_slot.hero_no = 10003
+    slot.hero_slot.activation = True
+
+    slot.equipment_slots[1].equipment_id = equipment_ids[2]
+    slot.equipment_slots[1].activation = True
+    slot.equipment_slots[4].equipment_id = equipment_ids[3]
+    slot.equipment_slots[4].activation = True
 
     slot = player.line_up_component.line_up_slots[4]
     slot.activation = True
-    slot.hero_no = 10004
-    slot.equipment_ids[1] = equipment_ids[3]
-    slot.equipment_ids[5] = equipment_ids[4]
+
+    slot.hero_slot.hero_no = 10004
+    slot.hero_slot.activation = True
+
+    slot.equipment_slots[1].equipment_id = equipment_ids[3]
+    slot.equipment_slots[1].activation = True
+    slot.equipment_slots[5].equipment_id = equipment_ids[4]
+    slot.equipment_slots[5].activation = True
 
     slot = player.line_up_component.line_up_slots[5]
     slot.activation = False

@@ -22,5 +22,5 @@ def load_module():
     from action.node import stage
     from action.node import friend
     from action.node import player
-    # init()
+    init()
 
