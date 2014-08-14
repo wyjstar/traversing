@@ -3,10 +3,10 @@
 created by server on 14-6-25下午5:27.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
-
-from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, hero_breakup_config
-from gtwisted.utils import log
-import cPickle
+from shared.db_opear.configs_data.game_configs import hero_config
+from shared.db_opear.configs_data.game_configs import hero_exp_config
+from shared.db_opear.configs_data.game_configs import hero_breakup_config
+from shared.db_opear.configs_data.game_configs import link_config
 from app.game.redis_mode import tb_character_hero
 
 
@@ -152,6 +152,11 @@ class Hero(object):
 
         return skill_ids
 
+    @property
+    def hero_links(self):
+        """英雄羁绊配置数据
+        """
+        return link_config.get(self._hero_no)
 
 
 
