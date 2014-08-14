@@ -131,10 +131,9 @@ def exit_guild(dynamicid, data, **kwargs):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    if guild_obj.get_p_num() <= 1:
+    if guild_obj.get_p_num() == 1:
         print "cuick,###############,TEST,guild_obj.get_p_num():", guild_obj.get_p_num()
         # 解散公会
-
         # 删除公会名字
         guild_name_data = tb_guild_name.getObjData(guild_obj.name)
         print guild_name_data, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -153,15 +152,56 @@ def exit_guild(dynamicid, data, **kwargs):
     p_list = guild_obj.p_list
     position_p = p_list.get(position)
 
-    if position_p.count(p_id) >= 1:
-
+    if position_p.count(p_id) == 1:
         if position == 1:
-            # 转让公会
+            # 转让公会,并自己退出
+            p_list = guild_obj.p_list
+            guildinfolist = {}
+            for num in range(2, 6):
+                p_list1 = p_list.get(num)
+                if p_list1:
+                    for p_id1 in p_list1:
+                        guildinfo = tb_character_guild.getObjData(p_id1)
+                        if guildinfo:
+                            guildinfolist.update({guildinfo.get('id'): guildinfo.get('info')})
+            new_list = sorted(guildinfolist.items(), key=lambda x: (-1 * x[1]['position'], x[1]['contribution'],
+                                                                    x[1]['k_num']), reverse=True)
+            tihuan_id = new_list[0][0]
+            tihuan_position = new_list[0][1].get('position')
+            # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
+            character_guild = tb_character_guild.getObjData(tihuan_id)
+            info = character_guild.get("info")
+            if info.get("g_id") != player.guild.g_id:
+                response.result = False
+                response.message = "此玩家不在公会"
+                return response.SerializeToString()
+            data = {
+                'info': {'g_id': info.get("g_id"),
+                         'position': 1,
+                         'contribution': info.get("contribution"),
+                         'all_contribution': info.get("all_contribution"),
+                         'k_num': info.get("k_num"),
+                         'worship': info.get("worship"),
+                         'worship_time': info.get("worship_time"),
+                         'exit_time': info.get("exit_time")}}
+            p_guild_data = tb_character_guild.getObj(tihuan_id)
+            p_guild_data.update_multi(data)
+
+            p_list1 = p_list.get(tihuan_position)
+            p_list1.remove(tihuan_id)
+
+            p_list.update({1: [tihuan_id], tihuan_position: p_list1})
+
+            player.guild.g_id = 0
+            player.guild.exit_time = time.time()
+            player.guild.save_data()
+
+            guild_obj.save_data()
 
             response.result = True
-            response.message = "公会已转让"
+            response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
-        player.guild._g_id = 0
+        player.guild.g_id = 0
         player.guild.exit_time = time.time()
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
@@ -427,63 +467,71 @@ def promotion(dynamicid, data, **kwargs):
 
     p_list = guild_obj.p_list
     t_p_list = p_list.get(m_position - 1)
+    # 此职位还没有人
     if t_p_list and len(t_p_list) >= 1:
         list_len = len(t_p_list)
         t_position = m_position - 1
+        flag = 0
         if t_position == 2:
             if list_len >= 2:
-                response.result = False
-                response.message = "上一级职位已满"
-                return response.SerializeToString()
+                flag = 1
         elif t_position == 3:
             if list_len >= 3:
-                response.result = False
-                response.message = "上一级职位已满"
-                return response.SerializeToString()
-        else:
+                flag = 1
+        elif t_position == 4:
             if list_len >= 4:
+                flag = 1
+        else:
+            response.result = False
+            response.message = "未知错误"
+            return response.SerializeToString()
+        # 此职位的人满了
+        if flag == 1:
+            guildinfolist = {}
+            for p_id1 in t_p_list:
+                guildinfo = tb_character_guild.getObjData(p_id1)
+                if guildinfo:
+                    guildinfolist.update({guildinfo.get('id'): guildinfo.get('info')})
+            m_guildinfo = tb_character_guild.getObjData(m_p_id)
+            guildinfolist.update({m_guildinfo.get('id'): m_guildinfo.get('info')})
+            new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution'],
+                                                                    x[1]['k_num']), reverse=True)
+            if new_list[-1][0] == m_p_id:
                 response.result = False
-                response.message = "上一级职位已满"
+                response.message = "总贡献必须超过上一级职位最低贡献才能晋级"
                 return response.SerializeToString()
-        guildinfolist = {}
-        for p_id1 in t_p_list:
-            guildinfo = tb_character_guild.getObjData(p_id1)
-            if guildinfo:
-                guildinfolist.update(guildinfo)
-        m_guildinfo = tb_character_guild.getObjData(m_p_id)
-        guildinfolist.update(m_guildinfo)
-        new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
-        if new_list[-1][0] == m_p_id:
-            response.result = False
-            response.message = "总贡献必须超过上一级职位最低贡献才能晋级"
-            return response.SerializeToString()
 
-        tihuan_id = new_list[-1][0]
-        # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
-        character_guild = tb_character_guild.getObjData(tihuan_id)
-        info = character_guild.get("info")
-        if info.get("g_id") != player.guild.g_id:
-            response.result = False
-            response.message = "此玩家不在公会"
-            return response.SerializeToString()
-        data = {
-            'info': {'g_id': info.get("g_id"),
-                     'position': m_position - 1,
-                     'contribution': info.get("contribution"),
-                     'all_contribution': info.get("all_contribution"),
-                     'k_num': info.get("k_num"),
-                     'worship': info.get("worship"),
-                     'worship_time': info.get("worship_time"),
-                     'exit_time': info.get("exit_time")}}
-        p_guild_data = tb_character_guild.getObj(tihuan_id)
-        p_guild_data.update_multi(data)
+            tihuan_id = new_list[-1][0]
+            # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
+            character_guild = tb_character_guild.getObjData(tihuan_id)
+            info = character_guild.get("info")
+            if info.get("g_id") != player.guild.g_id:
+                response.result = False
+                response.message = "此玩家不在公会"
+                return response.SerializeToString()
+            data = {
+                'info': {'g_id': info.get("g_id"),
+                         'position': m_position,
+                         'contribution': info.get("contribution"),
+                         'all_contribution': info.get("all_contribution"),
+                         'k_num': info.get("k_num"),
+                         'worship': info.get("worship"),
+                         'worship_time': info.get("worship_time"),
+                         'exit_time': info.get("exit_time")}}
+            p_guild_data = tb_character_guild.getObj(tihuan_id)
+            p_guild_data.update_multi(data)
 
-        p_list1 = p_list.get(m_position)
-        p_list1.remove(m_p_id)
-        p_list1.append(tihuan_id)
-        p_list2 = p_list.get(m_position - 1)
-        p_list2.remove(tihuan_id)
-        p_list2.append(m_p_id)
+            p_list1 = p_list.get(m_position)
+            p_list1.remove(m_p_id)
+            p_list1.append(tihuan_id)
+            p_list2 = p_list.get(m_position - 1)
+            p_list2.remove(tihuan_id)
+            p_list2.append(m_p_id)
+        else:  #此职位还没满
+            p_list1 = p_list.get(m_position)
+            p_list1.remove(m_p_id)
+            p_list2 = p_list.get(m_position - 1)
+            p_list2.append(m_p_id)
     else:
         p_list1 = p_list.get(m_position)
         p_list1.remove(m_p_id)
