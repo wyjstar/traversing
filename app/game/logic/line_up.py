@@ -96,8 +96,8 @@ def assembly_slots(player, response):
                 equ.no = equipment_obj.base_info.equipment_no
                 equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
                 equ.awakening_lv = equipment_obj.attribute.awakening_lv
-
-                # TODO
+                equ.set.no = equipment_slot.suit.get('suit_no', 0)
+                equ.set.num = equipment_slot.suit.get('num', 0)
 
 
 def assembly_sub_slots(player, response):
