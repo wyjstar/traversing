@@ -60,6 +60,12 @@ message CreateGuildRequest{
 message JoinGuildRequest{
 	required string g_id = 1;  //公会id
 }
+message JoinGuildResponse{
+	required bool result = 1;  //处理结果 True：正确
+    optional int32 result_no = 2;
+    optional bytes message = 3;
+    repeated int32 spare_time = 4;
+}
 
 // 修改公告 command：804
 message EditorCallRequest{
@@ -71,6 +77,12 @@ message DealApplyRequest{
 	repeated int32 p_ids = 1;  //申请玩家id
 	required int32 res_type = 2;  // 结果：1同意，2不同意,3清空
 }
+message DealApplyResponse{
+    required bool result = 1;  //处理结果 True：正确
+    optional int32 result_no = 2;
+    optional bytes message = 3;
+    repeated int32 p_ids = 4;
+}
 
 // 转让会长 command：806 change_president_806
 message ChangePresidentRequest{
@@ -80,6 +92,14 @@ message ChangePresidentRequest{
 // 踢出公会 command：807
 message KickRequest{
 	repeated int32 p_ids = 1;  //目标玩家ids
+}
+
+// 晋升返回 command：808
+message PromotionResponse{
+	required bool result = 1;
+    optional int32 result_no = 2;
+    optional bytes message = 3;
+    optional int32 p_id = 4;
 }
 
 // 膜拜 command：809

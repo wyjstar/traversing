@@ -23,26 +23,28 @@ def create_guild(dynamicid, data, **kwargs):
     response = GuildCommonResponse()
     p_id = player.base_info.id
     g_id = player.guild.g_id
-    print "cuick,###############,TEST,create_guild,g_id:", g_id
+
     # TODO 判断等级够不够
     if g_id != 0:
         response.result = False
         response.message = "您已加入公会"
         return response.SerializeToString()
+
     # TODO 判断元宝数够不够
     # TODO 判断name合法性，敏感字过滤
+
     if len(g_name) > 18:
-        print "cuick,###############,TEST,create_guild:", g_name, 'call_len:', len(g_name)
         response.result = False
         response.message = "公告内容超过字数限制"
         return response.SerializeToString()
+
     # 判断有没有重名
     guild_name_data = tb_guild_name.getObjData(g_name)
-    print 'aaaaaaaaaaaaaaaaa', guild_name_data
     if guild_name_data:
         response.result = False
         response.message = "此名已存在"
         return response.SerializeToString()
+
     # 创建公会
     guild_obj = Guild()
     guild_obj.create_guild(p_id, g_name)
@@ -57,7 +59,9 @@ def create_guild(dynamicid, data, **kwargs):
     player.guild.position = 1
     player.guild.save_data()
     guild_obj.save_data()
+
     # TODO 扣除元宝
+
     response.result = True
     return response.SerializeToString()
 
@@ -75,11 +79,14 @@ def join_guild(dynamicid, data, **kwargs):
     g_id = args.g_id
     m_g_id = player.guild.g_id
     m_exit_time = player.guild.exit_time
-    print 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', m_exit_time
-    if m_exit_time != 1 and (int(time.time())-m_exit_time) < (60*30):
+    the_time = int(time.time())-m_exit_time
+
+    if m_exit_time != 1 and the_time < (60*30):
         response.result = False
         response.message = "退出公会办小时内不可加入公会"
+        response.spare_time = 60*30 - the_time
         return response.SerializeToString()
+
     if m_g_id != 0:
         response.result = False
         response.message = "您已加入公会"
@@ -118,12 +125,12 @@ def exit_guild(dynamicid, data, **kwargs):
     response = GuildCommonResponse()
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(m_g_id)
-    print "cuick,###############,TEST,guild_name_data:", tb_guild_name.getObjData(1)
-    print "cuick,###############,TEST,data1:", data1, 'm_g_id:', m_g_id
+
     if m_g_id == 0:
         response.result = False
         response.message = "您还未加入公会"
         return response.SerializeToString()
+
     if not data1:
         response.result = False
         response.message = "公会ID错误"
@@ -132,7 +139,7 @@ def exit_guild(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
     if guild_obj.get_p_num() == 1:
-        print "cuick,###############,TEST,guild_obj.get_p_num():", guild_obj.get_p_num()
+
         # 解散公会
         # 删除公会名字
         guild_name_data = tb_guild_name.getObjData(guild_obj.name)
@@ -148,6 +155,7 @@ def exit_guild(dynamicid, data, **kwargs):
         response.result = True
         response.message = "公会已解散"
         return response.SerializeToString()
+
     position = player.guild.position
     p_list = guild_obj.p_list
     position_p = p_list.get(position)
@@ -226,13 +234,11 @@ def editor_call(dynamicid, data, **kwargs):
     response = GuildCommonResponse()
     call = args.call
     if len(call) > 150:
-        print "cuick,###############,TEST,call:", call, 'call_len:', len(call)
         response.result = True
         response.message = "公告内容超过字数限制"
         return response.SerializeToString()
     # TODO 过滤敏感词语
     data1 = tb_guild_info.getObjData(player.guild.g_id)
-    print "cuick,###############,TEST,data1:", data1
     if not data1:
         response.result = False
         response.message = "公会ID错误"
@@ -268,7 +274,7 @@ def deal_apply(dynamicid, data, **kwargs):
     player = kwargs.get('player')
     args = DealApplyRequest()
     args.ParseFromString(data)
-    response = GuildCommonResponse()
+    response = DealApplyResponse()
 
     res_type = args.res_type
     m_g_id = player.guild.g_id
@@ -290,13 +296,14 @@ def deal_apply(dynamicid, data, **kwargs):
             return response.SerializeToString()
 
         for p_id in p_ids:
-            # TODO 判断申请者有没有公会
             character_guild = tb_character_guild.getObjData(p_id)
             info = character_guild.get("info")
             if info.get("g_id") != 0:
-                response.result = False
-                response.message = "次玩家已有公会"
-                return response.SerializeToString()
+                #TODO 已有公会的 放入数组
+                if guild_obj.apply.count(p_id) == 1:
+                    guild_obj.apply.remove(p_id)
+                    response.p_ids.append(p_id)
+                continue
             data = {
                 'info': {'g_id': player.guild.g_id,
                          'position': 5,
@@ -452,7 +459,7 @@ def promotion(dynamicid, data, **kwargs):
     晋升
     """
     player = kwargs.get('player')
-    response = GuildCommonResponse()
+    response = PromotionResponse()
     m_g_id = player.guild.g_id
     m_p_id = player.base_info.id
     m_position = player.guild.position
@@ -473,13 +480,13 @@ def promotion(dynamicid, data, **kwargs):
         t_position = m_position - 1
         flag = 0
         if t_position == 2:
-            if list_len >= 2:
+            if list_len >= 1:
                 flag = 1
         elif t_position == 3:
-            if list_len >= 3:
+            if list_len >= 2:
                 flag = 1
         elif t_position == 4:
-            if list_len >= 4:
+            if list_len >= 3:
                 flag = 1
         else:
             response.result = False
@@ -494,9 +501,8 @@ def promotion(dynamicid, data, **kwargs):
                     guildinfolist.update({guildinfo.get('id'): guildinfo.get('info')})
             m_guildinfo = tb_character_guild.getObjData(m_p_id)
             guildinfolist.update({m_guildinfo.get('id'): m_guildinfo.get('info')})
-            new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution'],
-                                                                    x[1]['k_num']), reverse=True)
-            if new_list[-1][0] == m_p_id:
+            new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
+            if new_list[-1][0] == m_p_id or new_list[-1][1].get('contribution') == new_list[-2][1].get('contribution'):
                 response.result = False
                 response.message = "总贡献必须超过上一级职位最低贡献才能晋级"
                 return response.SerializeToString()
@@ -507,7 +513,7 @@ def promotion(dynamicid, data, **kwargs):
             info = character_guild.get("info")
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
-                response.message = "此玩家不在公会"
+                response.message = "未知错误"
                 return response.SerializeToString()
             data = {
                 'info': {'g_id': info.get("g_id"),
@@ -527,6 +533,7 @@ def promotion(dynamicid, data, **kwargs):
             p_list2 = p_list.get(m_position - 1)
             p_list2.remove(tihuan_id)
             p_list2.append(m_p_id)
+            response.p_id = tihuan_id
         else:  #此职位还没满
             p_list1 = p_list.get(m_position)
             p_list1.remove(m_p_id)
@@ -612,10 +619,9 @@ def get_guild_rank(dynamicid, data, **kwargs):
     获取公会排行列表
     """
     response = GuildRankProto()
-    # 得到公会排行，g-id-list
+
+    # 得到公会排行
     ranks = get_guild_rank_from_gate()
-    print 'cuick,create_guild,gate_res,BBBBBBBBBBBB,:', ranks
-    # guild_rank_list = ['123', '456', '789' '111', '222', '333']
     rank_num = 1
     for rank in ranks:
         data1 = tb_guild_info.getObjData(rank[0])
@@ -632,7 +638,10 @@ def get_guild_rank(dynamicid, data, **kwargs):
             president_id = guild_obj.p_list.get(1)[0]
             player_data = tb_character_info.getObjData(president_id)
             if player_data:
-                guild_rank.president = player_data.get('nickname').encode("utf-8")
+                if player_data.get('nickname').encode("utf-8"):
+                    guild_rank.president = player_data.get('nickname').encode("utf-8")
+                else:
+                    guild_rank.president = '无名'
             else:
                 guild_rank.president = '未知'
 
@@ -666,7 +675,6 @@ def get_role_list(dynamicid, data, **kwargs):
     guild_obj.init_data(data1)
 
     guild_p_list = guild_obj.p_list
-    # guild_p_list = {1: [12, 23, 34, 45], 2: [23, 34, 45], 3: [56, 67, 78]}
     if guild_p_list.values():
         for p_list in guild_p_list.values():
             for role_id in p_list:
@@ -709,7 +717,6 @@ def get_guild_info(dynamicid, data, **kwargs):
 
     response.result = True
     guild_info = response.guild_info
-    print 'cuick,Test##################,G ID :', guild_obj.g_id
     guild_info.g_id = guild_obj.g_id
     guild_info.name = guild_obj.name
     guild_info.p_num = guild_obj.p_num
@@ -718,7 +725,6 @@ def get_guild_info(dynamicid, data, **kwargs):
     guild_info.fund = guild_obj.fund
     guild_info.call = guild_obj.call
     guild_info.record = guild_obj.record
-    print 'aaaaaaaaaaaaaaaaaaaaa', player.guild.position
     guild_info.my_position = player.guild.position
     return response.SerializeToString()
 
