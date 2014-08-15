@@ -42,7 +42,7 @@ def editor_call_804(dynamic_id, pro_data):
 def deal_apply_805(dynamic_id, pro_data):
     """处理加入公会申请
     """
-    print('cuick,EEEEEEEEEEEEEEEEEEE,01,node,exit_guild_805')
+    print('cuick,EEEEEEEEEEEEEEEEEEE,01,node,deal_apply_805')
     return deal_apply(dynamic_id, pro_data)
 
 
