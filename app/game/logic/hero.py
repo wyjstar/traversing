@@ -12,6 +12,7 @@ from shared.db_opear.configs_data.game_configs import base_config, item_config, 
     hero_breakup_config, chip_config, hero_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
 from app.proto_file.hero_response_pb2 import HeroSacrificeResponse, HeroSellResponse
+from app.game.action.root.netforwarding import push_object
 
 
 @have_player
@@ -21,7 +22,6 @@ def get_heros(dynamic_id, **kwargs):
     for hero in player.hero_component.get_heros():
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
-    print "get_heros+++++++++++++++++++++++++++++++++++++++++++"
     return response.SerializePartialToString()
 
 
@@ -158,7 +158,8 @@ def hero_compose(dynamicid, data, **kwargs):
     print "hero_no", hero_no
     if player.hero_component.contain_hero(hero_no):
         response.res.result = False
-        response.res.message = "武将已存在，合成失败！"
+        response.res.result_no = 202
+        response.res.message = u"武将已存在，合成失败！"
         return response.SerializeToString()
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片

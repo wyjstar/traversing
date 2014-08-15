@@ -2,7 +2,7 @@
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
     item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config,\
-    equipment_strengthen_config, equipment_config
+    equipment_strengthen_config, equipment_config, link_config
 
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_config import HeroConfig
@@ -15,6 +15,7 @@ from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
+from shared.db_opear.configs_data.link_config import LinkConfig
 
 from shared.utils.const import *
 
@@ -120,10 +121,10 @@ hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 # ------------------------chip----------------------------
 
-hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'need_num': 20}
-hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'need_num': 20}
+hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'needNum': 20}
+hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'needNum': 20}
 
-equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'need_num': 1}
+equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'needNum': 100}
 chip_config.clear()
 config = ChipConfig()
 chip_config_mock = config.parser([hero_chip1, hero_chip2, equipment_chip1])
@@ -170,20 +171,23 @@ for key, value in soul_shop_config_mock.items():
     soul_shop_config[key] = value
 
 #------------------------shop----------------------------
-shop1 = dict(id=1001, type=1, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop2 = dict(id=1002, type=2, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop3 = dict(id=1003, type=3, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop4 = dict(id=1004, type=4, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]},
+shop1 = dict(id=1001, type=1, consume={const.COIN: [21, 21, 0]}, gain={const.COIN: [21, 21, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=24)
+shop2 = dict(id=1002, type=1, consume={const.COIN: [22, 22, 0]}, gain={const.COIN: [22, 22, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=-1)
+shop3 = dict(id=1003, type=5, consume={const.GOLD: [23, 23, 0]}, gain={const.COIN: [23, 23, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=72)
+shop4 = dict(id=1004, type=5, consume={const.GOLD: [24, 24, 0]}, gain={const.COIN: [24, 24, 0]}, extraGain={const.COIN: [20, 20, 0]},
              freePeriod=-1)
+shop5 = dict(id=1005, type=2, consume={const.COIN: [25, 25, 0]}, gain={const.COIN: [25, 25, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=24)
+shop6 = dict(id=1006, type=6, consume={const.GOLD: [26, 26, 0]}, gain={const.COIN: [26, 26, 0]}, extraGain={const.COIN: [20, 20, 0]},
+             freePeriod=48)
 
-shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4])
+shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4, shop5, shop6])
 for key, value in shop_config_mock.items():
     shop_config[key] = value
 
 #------------------------equipment----------------------------
-equipment1 = dict(id=100037, gain={1: [200, 200, 0]}, currencyDir=1)
-equipment3 = dict(id=100036, gain={1: [200, 200, 0]}, currencyDir=1)
-equipment2 = dict(id=100001, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment1 = dict(id=100037, gain={1: [200, 200, 0]}, currencyDir=1, suitNo=0)
+equipment3 = dict(id=100036, gain={1: [200, 200, 0]}, currencyDir=1, suitNo=0)
+equipment2 = dict(id=100001, gain={1: [200, 200, 0]}, currencyDir=1, suitNo=0)
 equipment_config_mock = EquipmentConfig().parser([equipment1, equipment2, equipment3])
 for key, value in equipment_config_mock.items():
     equipment_config[key] = value
@@ -196,3 +200,17 @@ equipment_strength_2 = dict(level=2, currencyCost1=18, currencyCost2=21, currenc
 equipment_strength_config_mock = EquipmentStrengthenConfig().parser([equipment_strength_1, equipment_strength_2])
 for key, value in equipment_strength_config_mock.items():
     equipment_strengthen_config[key] = value
+
+#------------------------link_config----------------------------
+# 10001	2400100011	2500100011	2100011	[10002]	0	0	0	[0]	0	0	0	[0]	0	0	0	[0]	0	0	0	[0]
+
+line_1 = dict(link1=2100011, id=10001, trigger1=[10002], link2=2100071, trigger2=[10003])
+line_2 = dict(link1=2100021, id=10002, trigger1=[10002], link2=2100081, trigger2=[10003])
+line_3 = dict(link1=2100031, id=10003, trigger1=[10002], link2=2100091, trigger2=[10003])
+line_4 = dict(link1=2100041, id=10004, trigger1=[10002], link2=2100101, trigger2=[10003])
+line_5 = dict(link1=2100051, id=10005, trigger1=[10002], link2=2100111, trigger2=[10003])
+line_6 = dict(link1=2100061, id=10006, trigger1=[10002], link2=2100121, trigger2=[10003])
+
+link_config_mock = LinkConfig().parser([line_1, line_2, line_3, line_4, line_5, line_6])
+for key, value in link_config_mock.items():
+    link_config[key] = value

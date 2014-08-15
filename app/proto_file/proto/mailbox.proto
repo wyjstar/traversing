@@ -1,0 +1,48 @@
+import "common.proto";
+
+//邮件基本信息
+message Mail_PB
+{
+    required string sender_id = 1; //发件人ID
+    required string sender_name = 2; //发件人
+    required string title = 3; //标题
+    required int32 content = 4; //邮件内容
+    required int32 mail_type = 5; //邮件类型
+    required int32 send_time = 6; //发件时间
+    optional int32 bag_id = 7; //邮件掉落包
+}
+
+//汇总邮箱信息, command : 1301
+message GetMailInfos
+{
+    repeated Mail_PB mails = 1;
+}
+
+//读邮件, command : 1302
+message ReadMailRequest
+{
+    repeated string mail_ids = 1;
+    optional int32 mail_type = 2;
+}
+
+//读邮件, command : 1302
+message ReadMailResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+//删除邮件, command : 1303
+message DeleteMailRequest
+{
+    repeated string mail_id = 1;
+}
+
+//发送邮件
+message SendMailRequest
+{
+    required string receive_name = 1;
+    required string title = 2;
+    required string content = 3;
+}
+

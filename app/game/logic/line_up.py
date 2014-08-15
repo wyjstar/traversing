@@ -68,8 +68,11 @@ def assembly_slots(player, response):
     """
     line_up_slots = player.line_up_component.line_up_slots
     for slot in line_up_slots.values():
-        add_slot = response.sub.add()
+        add_slot = response.slot.add()
         add_slot.slot_no = slot.slot_no
+
+        print '# assembly slots:', slot.activation
+
         add_slot.activation = slot.activation
         if not slot.activation:  # 如果卡牌位未激活，则不初始化信息
             continue
@@ -80,7 +83,7 @@ def assembly_slots(player, response):
             hero.level = hero_obj.level
             hero.exp = hero_obj.exp
             hero.break_level = hero_obj.break_level
-            link_info = hero_obj.link
+            link_info = slot.hero_slot.link
             for key, value in link_info.items():
                 add_link = hero.links.add()
                 add_link.link_no = key
@@ -105,7 +108,7 @@ def assembly_sub_slots(player, response):
     """
     sub_slots = player.line_up_component.sub_slots
     for slot in sub_slots.values():
-        add_slot = response.slot.add()
+        add_slot = response.sub.add()
         add_slot.slot_no = slot.slot_no
         add_slot.activation = slot.activation
         hero_obj = slot.hero_slot.hero_obj  # 英雄实例

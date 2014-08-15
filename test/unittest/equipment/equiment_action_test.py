@@ -38,7 +38,7 @@ class EquipmentTest(unittest.TestCase):
         request = ComposeEquipmentRequest()
         request.no = 1000112
 
-        str_response = remoteservice.callTarget(402, 1, request.SerializeToString())
+        str_response = remoteservice.callTarget(403, 1, request.SerializeToString())
         print str_response, "str_response"
         response = ComposeEquipmentResponse()
         response.ParseFromString(str_response)

@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"\x19\n\x0bShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"{\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"&\n\x0bShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"{\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -33,6 +33,13 @@ _SHOPREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='num', full_name='ShopRequest.num', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -43,7 +50,7 @@ _SHOPREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=28,
-  serialized_end=53,
+  serialized_end=66,
 )
 
 
@@ -84,8 +91,8 @@ _SHOPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=55,
-  serialized_end=178,
+  serialized_start=68,
+  serialized_end=191,
 )
 
 _SHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

@@ -92,6 +92,8 @@ class Equipment(object):
         """
         equipment_no = self._base_info.equipment_no
         equ_conf_obj = game_configs.equipment_config.get(equipment_no, None)  # 装备配置
+        if not equ_conf_obj:
+            return None
         suit_no = equ_conf_obj.suitNo
         suit_conf_obj = game_configs.set_equipment_config.get(suit_no)
         return suit_conf_obj
