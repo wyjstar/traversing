@@ -64,7 +64,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'f8a5f34048fa591a2c4fea89cd5f7eaf'
+        argument.key.key = 'cf038c8f6fd618b86aac3cd86fcde05d'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +89,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'f8a5f34048fa591a2c4fea89cd5f7eaf'
+                argument.key.key = 'cf038c8f6fd618b86aac3cd86fcde05d'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,7 +100,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'f8a5f34048fa591a2c4fea89cd5f7eaf'
+            argument.token = 'cf038c8f6fd618b86aac3cd86fcde05d'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -113,9 +113,9 @@ class EchoClient(protocol.Protocol):
             # 43014583c182bcbf37f7de4569a857d6 申请加入
 
             # --------801创建公会------------
-            # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四001'
-            # self.dateSend(argument1, 801)
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四001'
+            self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
@@ -123,9 +123,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四129'
-            self.dateSend(argument1, 803)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四129'
+            # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
             # argument1 = EditorCallRequest()
