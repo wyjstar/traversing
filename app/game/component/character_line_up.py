@@ -152,7 +152,7 @@ class CharacterLineUpComponent(Component):
         line_up.update(self._line_up_slots)
         line_up.update(self._sub_slots)
 
-        for slot in line_up:
+        for slot in line_up.values():
             hero_no = slot.hero_no  # 阵容英雄编号
             if not hero_no:  # 空位置
                 continue

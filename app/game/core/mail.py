@@ -1,0 +1,92 @@
+# -*- coding:utf-8 -*-
+"""
+created by server on 14-8-14下午3:20.
+"""
+from app.game.redis_mode import tb_mail_info
+
+
+class Mail(object):
+    """
+    邮件
+    """
+    def __init__(self, mail_id='', title='', sender_id=-1, receiver_id=-1,\
+                 sender_name=u'', content=u'', mail_type=1, is_readed=0, is_saved=0,\
+                 send_time=u'', stamina_inside=0):
+        """初始化邮件信息
+        """
+        self._id = mail_id  # 邮件的ID
+        self._character_id = 0  # 玩家ID
+        self._title = title  # 邮件的主题
+        self._sender_id = sender_id  # 发送人id
+        self._sender_name = sender_name   # 发送者的昵称
+        self._receiver_id = receiver_id  # 接受人id
+        self._mail_type = mail_type  # 邮件的类型（1.赠送  2.领奖 3.公告 4.消息  ）
+        self._content = content  # 邮件的内容
+        self._is_readed = is_readed  # 是否已读
+        self._send_time = send_time  # 发送时间
+        self._bag = None  # 邮件物品包裹
+
+    def init_data(self):
+        mail_data = tb_mail_info.getObjData(self._id)
+        self._character_id = mail_data.get("character_id")
+        mail_prop = mail_data.get("property")
+        self._sender_id = mail_prop.get("sender_id")
+        self._sender_name = mail_prop.get("sender_name")
+        self._receiver_id = mail_prop.get("receiver_id")
+        self._mail_type = mail_prop.get("mail_type")
+        self._content = mail_prop.get("content")
+        self._is_readed = mail_prop.get("is_readed")
+        self._send_time = mail_prop.get("send_time")
+        self._bag = mail_prop.get("bag")
+
+    @property
+    def mail_id(self):
+        return self._id
+
+    @property
+    def mail_type(self):
+        return self._mail_type
+
+    @property
+    def title(self):
+        return self._title
+
+    @property
+    def content(self):
+        return self._content
+
+    @property
+    def receive_id(self):
+        return self._receiver_id
+
+    @property
+    def sender_id(self):
+        return self.sender_id
+
+    @property
+    def sender_name(self):
+        return self.sender_name
+
+    @property
+    def send_time(self):
+        return self.send_time
+
+    @property
+    def is_readed(self):
+        return self._is_readed
+
+    @is_readed.setter
+    def is_readed(self, value):
+        self._is_readed = value
+
+    @property
+    def bag(self):
+        return self._bag
+
+    def update(self, mail_pb):
+        mail_pb.sender_name = self._sender_name
+        mail_pb.sender_id = self._sender_id
+        mail_pb.title = self._title
+        mail_pb.content = self._content
+        mail_pb.mail_type = self._mail_type
+        mail_pb.send_time = self._send_time

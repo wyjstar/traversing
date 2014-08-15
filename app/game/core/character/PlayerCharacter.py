@@ -19,6 +19,7 @@ from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
 from app.game.component.friend.friend import FriendComponent
 from app.game.component.character_guild import CharacterGuildComponent
+from app.game.component.tb_character_mail import CharacterMailComponent
 import json
 
 
@@ -51,6 +52,7 @@ class PlayerCharacter(Character):
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
         self._friends = FriendComponent(self)  # friend system
         self._guild = CharacterGuildComponent(self)  # 公会组件
+        self._mail = CharacterMailComponent(self)  # 邮箱组件
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
         self._mmode = None
@@ -214,6 +216,10 @@ class PlayerCharacter(Character):
     @stamina.setter
     def stamina(self, value):
         self._stamina = value
+
+    @property
+    def mail_component(self):
+        return self._mail
 
     def save_data(self):
         pid = self.base_info.id

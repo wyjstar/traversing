@@ -60,6 +60,7 @@ message FinancePB{
 message ShopRequest
 {
     required int32 id = 1; // 对应shop配置表中商品编号
+    optional int32 num = 2; // 抽取次数
 }
 //商城返回 command:501/502/503/504
 message ShopResponse
@@ -176,7 +177,7 @@ message MeltingEquipmentRequest{
 // 装备觉醒 command:406
 message AwakeningEquipmentRequest
 {
-    required string id = 1; // 装备ID
+    required string ids = 1; // 装备ID
 }
 
 //武魂商城购买请求 command:506

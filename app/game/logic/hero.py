@@ -158,7 +158,8 @@ def hero_compose(dynamicid, data, **kwargs):
     print "hero_no", hero_no
     if player.hero_component.contain_hero(hero_no):
         response.res.result = False
-        response.res.message = "武将已存在，合成失败！"
+        response.res.result_no = 202
+        response.res.message = u"武将已存在，合成失败！"
         return response.SerializeToString()
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片

@@ -46,7 +46,7 @@ class CharacterHerosComponent(Component):
             data = hero_mmode.get('data')
             hero = Hero(pid)
             hero.init_data(data)
-            self.add_hero(hero)
+            self._heros[hero.hero_no] = hero
 
     def get_hero(self, hero_no):
         return self._heros.get(hero_no)
@@ -88,7 +88,7 @@ class CharacterHerosComponent(Component):
     def save_data(self):
         hero_ids = []
         character_id = self.owner.base_info.id
-        for hero_no in self._heros:
+        for hero_no in self._heros.keys():
             hero_ids.append(self.get_hero_id(hero_no))
         character_heros = tb_character_heros.getObj(character_id)
         character_heros.update('hero_ids', hero_ids)

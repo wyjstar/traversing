@@ -120,10 +120,10 @@ hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 # ------------------------chip----------------------------
 
-hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'need_num': 20}
-hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'need_num': 20}
+hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'needNum': 20}
+hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'needNum': 20}
 
-equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'need_num': 1}
+equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'needNum': 100}
 chip_config.clear()
 config = ChipConfig()
 chip_config_mock = config.parser([hero_chip1, hero_chip2, equipment_chip1])
@@ -170,13 +170,16 @@ for key, value in soul_shop_config_mock.items():
     soul_shop_config[key] = value
 
 #------------------------shop----------------------------
-shop1 = dict(id=1001, type=1, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop2 = dict(id=1002, type=2, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop3 = dict(id=1003, type=3, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]}, freePeriod=2)
-shop4 = dict(id=1004, type=4, consume={const.HERO_SOUL: [20, 20, 0]}, gain={const.HERO_SOUL: [20, 20, 0]}, extraGain={3: [20, 20, 0]},
+shop1 = dict(id=1001, type=1, consume={const.COIN: [21, 21, 0]}, gain={const.COIN: [21, 21, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=24)
+shop2 = dict(id=1002, type=1, consume={const.COIN: [22, 22, 0]}, gain={const.COIN: [22, 22, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=-1)
+shop3 = dict(id=1003, type=5, consume={const.GOLD: [23, 23, 0]}, gain={const.COIN: [23, 23, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=72)
+shop4 = dict(id=1004, type=5, consume={const.GOLD: [24, 24, 0]}, gain={const.COIN: [24, 24, 0]}, extraGain={const.COIN: [20, 20, 0]},
              freePeriod=-1)
+shop5 = dict(id=1005, type=2, consume={const.COIN: [25, 25, 0]}, gain={const.COIN: [25, 25, 0]}, extraGain={const.COIN: [20, 20, 0]}, freePeriod=24)
+shop6 = dict(id=1006, type=6, consume={const.GOLD: [26, 26, 0]}, gain={const.COIN: [26, 26, 0]}, extraGain={const.COIN: [20, 20, 0]},
+             freePeriod=48)
 
-shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4])
+shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4, shop5, shop6])
 for key, value in shop_config_mock.items():
     shop_config[key] = value
 

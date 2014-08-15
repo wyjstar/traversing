@@ -24,7 +24,7 @@ class ShopTest(unittest.TestCase):
 
         shop_item = shop_config.get(1002)
         result = is_consume(self.player, shop_item)
-        self.assertFalse(result)
+        self.assertTrue(result)
 
         shop_item = shop_config.get(1003)
         result = is_consume(self.player, shop_item)
@@ -33,3 +33,7 @@ class ShopTest(unittest.TestCase):
         shop_item = shop_config.get(1004)
         result = is_consume(self.player, shop_item)
         self.assertTrue(result)
+
+        shop_item = shop_config.get(1005)
+        result = is_consume(self.player, shop_item)
+        self.assertFalse(result)

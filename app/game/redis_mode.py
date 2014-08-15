@@ -65,3 +65,11 @@ tb_character_stages.insert()
 # 昵称表
 tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
 tb_nickname_mapping.insert()
+
+# 玩家邮件表
+tb_character_mails = MAdmin('tb_character_mails', 'id')
+tb_character_mails.insert()
+
+# 邮件表
+tb_mail_info = MAdmin('tb_mail_info', 'id')
+tb_mail_info.insert()

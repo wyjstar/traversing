@@ -140,7 +140,8 @@
                 "fine_equipment_last_pick_time": "simple",
                 "excellent_equipment_last_pick_time": "simple",
                 "stamina": "simple",
-                "pvp_times": "simple"
+                "pvp_times": "simple",
+                "last_login_time": "simple"
             }
         },
         "tb_nickname_mapping": {
@@ -247,6 +248,21 @@
             "def_attrs": {
                 "id": "simple",
                 "info": "complex"
+            }
+        },
+        "tb_character_mails": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "mail_ids": "complex"
+            }
+        },
+        "tb_mail": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "character_id": "simple",
+                "property": "complex"
             }
         }
     }
