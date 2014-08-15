@@ -1,5 +1,6 @@
 # coding: utf-8
 
+
 class Singleton(type):
     """Singleton Metaclass"""
 
@@ -11,4 +12,3 @@ class Singleton(type):
         if self.instance is None:
             self.instance = super(Singleton, self).__call__(*args, **kwargs)
         return self.instance
-        

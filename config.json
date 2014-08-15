@@ -19,6 +19,17 @@
             "app": "app.gateserver",
             "log": "app/logs/gate.log"
         },
+        "transit": {
+            "name": "transit",
+            "remoteport": [
+                {
+                    "rootport": 10000,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.transitserver",
+            "log": "app/logs/transitserver.log"
+        },
         "net": {
             "netport": 11009,
             "name": "net",

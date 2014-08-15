@@ -9,7 +9,6 @@ from flask import Flask
 from gfirefly.distributed.root import PBRoot, BilateralFactory
 from gfirefly.distributed.node import RemoteObject
 from gfirefly.dbentrust.dbpool import dbpool
-from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.logobj import loogoo
 from gfirefly.server.globalobject import GlobalObject
 from gtwisted.utils import log

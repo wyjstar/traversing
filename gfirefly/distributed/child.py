@@ -44,8 +44,3 @@ class Child(object):
         remote = self._transport.getRootObject()
         recvdata = remote.callRemoteForResult('callChild', *args, **kw)
         return recvdata
-        
-        
-        
-        
-        

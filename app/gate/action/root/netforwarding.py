@@ -5,11 +5,8 @@ Created on 2013-8-14
 @author: lan (www.9miao.com)
 """
 from app.gate.core.users_manager import UsersManager
-from app.proto_file import item_pb2
 from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.server.globalobject import GlobalObject
-from gtwisted.utils import log
-from shared.utils.const import const
 from app.gate.core.virtual_character_manager import VCharacterManager
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
@@ -28,7 +25,7 @@ def forwarding(key, dynamic_id, data):
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         print 'dynamic_id:', dynamic_id
         # print VCharacterManager().__dict__
-        print 'gaet forwarding oldvcharacter:', oldvcharacter
+        print 'gate forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
             return
         # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
