@@ -8,6 +8,7 @@ message GameLoginRequest{
 //返回结果
 message GameLoginResponse{
      required CommonResponse res = 1;
+     optional int32 id = 17;
      optional string nickname = 2;
      //等级
      optional int32 level = 3;

@@ -19,3 +19,8 @@ def init_equipment_chip():
     player = PlayersManager().get_player_by_id(1)
     player.equipment_chip_component.add_chip(chip1)
     player.equipment_chip_component.add_chip(chip2)
+
+    chip1 = EquipmentChip(2100080, 10)
+    chip2 = EquipmentChip(2100079, 4)
+    player.equipment_chip_component.add_chip(chip1)
+    player.equipment_chip_component.add_chip(chip2)

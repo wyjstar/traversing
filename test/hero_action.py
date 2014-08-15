@@ -45,7 +45,7 @@ def resolveRecvdata(data):
     lenght = ud[6]
     command = ud[7]
     message = data[17:17+lenght]
-    print command, message
+    #print command, message
 
     return command, message
 
@@ -60,21 +60,23 @@ class EchoClient(protocol.Protocol):
     def connectionMade(self):
 
         self.dateSend("", 101)
-        self.dateSend("", 108)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
+
         command, message = resolveRecvdata(data)
+
+        print data
+        print "+++++++++++++++++++++++++++"
 
         if command == 101:
             #print message, "?????"
             argument = GetHerosResponse()
             argument.ParseFromString(message)
-            print ">>>>>>>>>>>>>>>>>>"
             print argument.heros[0].hero_no
-            print argument.heros[1].hero_no
-            print argument.heros[2].hero_no
             #self.dateSend("", 108)
+        if command == 199:
+            print message, "199???????"
 
         if command == 108:
             argument = GetHeroChipsResponse()
@@ -99,11 +101,16 @@ class EchoClient(protocol.Protocol):
 
         if command == 401:
 
-            print message, "message"
+            print message, "message401"
             response = GetEquipmentResponse()
             response.ParseFromString(message)
 
             print "len", len(response.equipment)
+            self.dateSend('', 88)
+
+        if command == 88:
+            print "????"
+            print "recv88", message
 
 
 

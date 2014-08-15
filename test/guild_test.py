@@ -64,7 +64,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '76d58b899861633863d9bf26d2168cf9'
+        argument.key.key = 'f8a5f34048fa591a2c4fea89cd5f7eaf'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +89,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '76d58b899861633863d9bf26d2168cf9'
+                argument.key.key = 'f8a5f34048fa591a2c4fea89cd5f7eaf'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,7 +100,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '76d58b899861633863d9bf26d2168cf9'
+            argument.token = 'f8a5f34048fa591a2c4fea89cd5f7eaf'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -108,38 +108,58 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # 88d9ad2c1d3411e4a90a080027545076 公会id
-            # 76d58b899861633863d9bf26d2168cf9 创建者
-            # 5808ee3d4235d1f753d34a044f936155 申请加入
-            # 1217440fcdba16bb6b6317829ae81e74 shenqing jiaru
+            # 41eaaaa61e1bd68cf4b6657628f08951
+            # f8a5f34048fa591a2c4fea89cd5f7eaf
+            # 43014583c182bcbf37f7de4569a857d6 申请加入
 
             # --------801创建公会------------
             # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四131'
+            # argument1.name = '一二三四001'
             # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
-            # argument1.g_id = '88d9ad2c1d3411e4a90a080027545076'
+            # argument1.g_id = 'a84403fa22d011e48b48080027545076'
             # self.dateSend(argument1, 802)
 
             # --------803退出公会------------
-            # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四129'
-            # self.dateSend(argument1, 803)
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四129'
+            self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
             # argument1 = EditorCallRequest()
             # argument1.call = 'aaaaaa空间弗兰克道具弗具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
             # self.dateSend(argument1, 804)
 
+            # --------805处理加入公会申请------------
+            # argument1 = DealApplyRequest()
+            # argument1.p_ids.append(539)
+            # argument1.res_type = 1
+            # self.dateSend(argument1, 805)
+
+            # --------806转让会长------------
+            # argument1 = ChangePresidentRequest()
+            # argument1.p_id = 500
+            # self.dateSend(argument1, 806)
+
             # --------807踢人------------
-            argument1 = KickRequest()
-            argument1.p_ids.append(123)
-            argument1.p_ids.append(123)
-            argument1.p_ids.append(456)
-            argument1.p_ids.append(789)
-            self.dateSend(argument1, 807)
+            # argument1 = KickRequest()
+            # argument1.p_ids.append(123)
+            # argument1.p_ids.append(123)
+            # argument1.p_ids.append(456)
+            # argument1.p_ids.append(789)
+            # self.dateSend(argument1, 807)
+
+            # --------808晋升------------
+            # argument1 = WorshipRequest()
+            # argument1.w_type = 1
+            # self.dateSend(argument1, 808)
+
+            # --------809膜拜------------
+            # argument1 = WorshipRequest()
+            # argument1.w_type = 1
+            # self.dateSend(argument1, 809)
 
             # --------812获取公会信息---------
             # argument1 = CreateGuildRequest()
@@ -185,8 +205,20 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+        if command == 806:
+            # 转让公会
+            argument = GuildCommonResponse()
+            argument.ParseFromString(message)
+            print argument
+
         if command == 807:
             # 踢人
+            argument = GuildCommonResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 809:
+            # 膜拜
             argument = GuildCommonResponse()
             argument.ParseFromString(message)
             print argument
@@ -212,6 +244,12 @@ class EchoClient(protocol.Protocol):
         if command == 810:
             # 获取公会排行
             argument = GuildRankProto()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 805:
+            #
+            argument = GuildCommonResponse()
             argument.ParseFromString(message)
             print argument
 

@@ -117,6 +117,7 @@ message GameLoginRequest{
 //返回结果
 message GameLoginResponse{
      required CommonResponse res = 1;
+     optional int32 id = 17;
      optional string nickname = 2;
      //等级
      optional int32 level = 3;
@@ -156,7 +157,7 @@ message EnhanceEquipmentRequest{
 
 // 装备合成 command:  403
 message ComposeEquipmentRequest{
-	required string no = 1;  //装备碎片No
+	required int32 no = 1;  //装备碎片No
 }
 
 
@@ -168,7 +169,7 @@ message NobbingEquipmentRequest{
 
 // 装备熔炼 command:405
 message MeltingEquipmentRequest{
-	required string id = 1; // 装备ID
+	repeated string id = 1; // 装备ID
 }
 
 

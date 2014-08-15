@@ -6,7 +6,6 @@ import redis
 from shared.utils.hash_ring import HashRing
 from redis.connection import BlockingConnectionPool
 
-
 def parse_setting(setting):
     """解析配置
     """

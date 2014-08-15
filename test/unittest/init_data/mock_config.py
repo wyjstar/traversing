@@ -1,7 +1,9 @@
 # -*- coding:utf-8 -*-
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
-    item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config
+    item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config,\
+    equipment_strengthen_config, equipment_config
+
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
@@ -11,6 +13,8 @@ from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
+from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
+from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 
 from shared.utils.const import *
 
@@ -114,13 +118,15 @@ hero_breakup_config.clear()
 hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 
-# ------------------------hero_chip----------------------------
+# ------------------------chip----------------------------
 
 hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'need_num': 20}
 hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'need_num': 20}
+
+equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'need_num': 1}
 chip_config.clear()
 config = ChipConfig()
-chip_config_mock = config.parser([hero_chip1, hero_chip2])
+chip_config_mock = config.parser([hero_chip1, hero_chip2, equipment_chip1])
 chip_config['mapping'] = chip_config_mock['mapping']
 chip_config['chips'] = chip_config_mock['chips']
 
@@ -174,3 +180,19 @@ shop_config_mock = ShopConfig().parser([shop1, shop2, shop3, shop4])
 for key, value in shop_config_mock.items():
     shop_config[key] = value
 
+#------------------------equipment----------------------------
+equipment1 = dict(id=100037, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment3 = dict(id=100036, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment2 = dict(id=100001, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment_config_mock = EquipmentConfig().parser([equipment1, equipment2, equipment3])
+for key, value in equipment_config_mock.items():
+    equipment_config[key] = value
+
+#------------------------equipment_strength----------------------------
+
+equipment_strength_1 = dict(level=1, currencyCost1=16, currencyCost2=20, currencyCost3=24, currencyCost4=40, currencyCost5=69)
+equipment_strength_2 = dict(level=2, currencyCost1=18, currencyCost2=21, currencyCost3=27, currencyCost4=44, currencyCost5=74)
+
+equipment_strength_config_mock = EquipmentStrengthenConfig().parser([equipment_strength_1, equipment_strength_2])
+for key, value in equipment_strength_config_mock.items():
+    equipment_strengthen_config[key] = value

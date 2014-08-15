@@ -46,4 +46,8 @@ if __name__ == '__main__':
     #
     # data = fifo_instance.get("Lv007", 20)  # 获取等级为7级的玩家列表(20条)
     # print "Level:", data
-    print 1!=2
+    a = 1
+    for b in []:
+        a = 2
+    print a
+

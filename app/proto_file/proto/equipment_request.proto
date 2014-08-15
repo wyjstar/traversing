@@ -15,7 +15,7 @@ message EnhanceEquipmentRequest{
 
 // 装备合成 command:  403
 message ComposeEquipmentRequest{
-	required string no = 1;  //装备碎片No
+	required int32 no = 1;  //装备碎片No
 }
 
 
@@ -27,12 +27,12 @@ message NobbingEquipmentRequest{
 
 // 装备熔炼 command:405
 message MeltingEquipmentRequest{
-	required string id = 1; // 装备ID
+	repeated string id = 1; // 装备ID
 }
 
 
 // 装备觉醒 command:406
 message AwakeningEquipmentRequest
 {
-    required string id = 1; // 装备ID
+    required string ids = 1; // 装备ID
 }

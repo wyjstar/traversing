@@ -7,10 +7,10 @@ from app.gate.core.users_manager import UsersManager
 from app.gate.service.local.gateservice import local_service_handle
 from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.virtual_character_manager import VCharacterManager
-from app.proto_file import player_request_pb2
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import game_pb2
-
+from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file.player_request_pb2 import CreatePlayerRequest
 
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
@@ -68,5 +68,28 @@ def __character_login(dynamic_id, token):
     response = game_pb2.GameLoginResponse()
     response.ParseFromString(player_data)
     return response, character_info.get('id')
+
+@local_service_handle
+def create_nickname_5(key, dynamic_id, request_proto):
+    argument = CreatePlayerRequest()
+    argument.ParseFromString(request_proto)
+    nickname = argument.nickname
+
+
+    now_node = SceneSerManager().get_best_sceneid()
+    info = GlobalObject().root.callChild(now_node, 5, dynamic_id, request_proto)
+
+    response = CommonResponse()
+    response.ParseFromString(info)
+
+    user = UsersManager().get_by_dynamic_id(dynamic_id)
+
+    if response.result and nickname:
+        # 聊天室登录
+        print '# chat login:', user.user_id, dynamic_id, nickname
+        GlobalObject().root.callChild('chat', 1001, user.user_id, dynamic_id, nickname)
+
+    return info
+
 
 

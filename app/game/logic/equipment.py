@@ -39,8 +39,10 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     @return:
     """
     player = kwargs.get('player')
+    print player, "player"
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
+    print equipment_obj, "equipment_obj"
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
 
@@ -66,6 +68,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
                 break
             enhance_record.append(result)
 
+    print "return succ"
     # TODO 更新
     return {'result': True, 'enhance_record': enhance_record}
 
@@ -82,30 +85,32 @@ def __do_enhance(player, equipment_obj):
     if not enhance_cost or curr_coin < enhance_cost:
         return False
     before_lv, after_lv = equipment_obj.enhance()
+    print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
     return before_lv, after_lv, enhance_cost
 
 
 @have_player
 def compose_equipment(dynamic_id, chip_no, **kwargs):
-    """强化装备
+    """合成装备
     """
     player = kwargs.get('player')
 
     chip = player.equipment_chip_component.get_chip(chip_no)
-
+    print "chip", chip
     # 没有碎片
     if not chip:
         return {'result': False, 'result_no': 102, 'message': u''}
 
     compose_num = chip.compose_num
     chip_num = chip.chip_num
-
+    print "chip_num", compose_num, chip_num
     # 碎片不足
     if chip_num < compose_num:
         return {'result': False, 'result_no': 102, 'message': u''}
-
-    equipment_obj = player.equipment.add_equipment(chip_no)
+    equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
+    chip.chip_num -= compose_num
+    print "equipment_obj", equipment_obj
     return {'result': True, 'equipment_obj': equipment_obj}
 
 
@@ -117,21 +122,22 @@ def nobbing_equipment(dynamic_id, equipment_id, **kwargs):
 
 
 @have_player
-def melting_equipment(dynamic_id, equipment_id, **kwargs):
+def melting_equipment(dynamic_id, equipment_ids, response, **kwargs):
     """熔炼
     @param dynamic_id:
-    @param equipment_id:
+    @param equipment_ids:
     @param kwargs:
     @return:
     """
     player = kwargs.get('player')
-    equipment_obj = player.equipment.get_by_id(equipment_id)
+
+
+    equipment_obj = player.equipment_component.get_equipment(id)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
     melting_items = equipment_obj.melting_item
     gain = item_group_helper.gain(player, melting_items)
-
-    return {'result': True, 'gain': gain, 'player': player}
+    item_group_helper.get_return(player, gain, response.cgr)
 
 
 @have_player

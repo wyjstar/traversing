@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment_request.proto',
   package='',
-  serialized_pb='\n\x17\x65quipment_request.proto\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"@\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0b\n\x03num\x18\x03 \x01(\x05\"%\n\x17\x43omposeEquipmentRequest\x12\n\n\x02no\x18\x01 \x02(\t\"%\n\x17NobbingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"%\n\x17MeltingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"\'\n\x19\x41wakeningEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t')
+  serialized_pb='\n\x17\x65quipment_request.proto\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"@\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0b\n\x03num\x18\x03 \x01(\x05\"%\n\x17\x43omposeEquipmentRequest\x12\n\n\x02no\x18\x01 \x02(\x05\"%\n\x17NobbingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"%\n\x17MeltingEquipmentRequest\x12\n\n\x02id\x18\x01 \x03(\t\"(\n\x19\x41wakeningEquipmentRequest\x12\x0b\n\x03ids\x18\x01 \x02(\t')
 
 
 
@@ -104,8 +104,8 @@ _COMPOSEEQUIPMENTREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='no', full_name='ComposeEquipmentRequest.no', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -160,8 +160,8 @@ _MELTINGEQUIPMENTREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='MeltingEquipmentRequest.id', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -187,7 +187,7 @@ _AWAKENINGEQUIPMENTREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='AwakeningEquipmentRequest.id', index=0,
+      name='ids', full_name='AwakeningEquipmentRequest.ids', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -203,7 +203,7 @@ _AWAKENINGEQUIPMENTREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=260,
-  serialized_end=299,
+  serialized_end=300,
 )
 
 DESCRIPTOR.message_types_by_name['GetEquipmentsRequest'] = _GETEQUIPMENTSREQUEST
