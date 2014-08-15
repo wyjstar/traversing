@@ -7,3 +7,4 @@ Created on 2013-8-13
 from gate import initapp
 
 initapp.load_module()
+initapp.init_guild_rank()

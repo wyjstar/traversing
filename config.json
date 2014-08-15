@@ -237,7 +237,7 @@
             }
         },
         "tb_guild_name": {
-            "pkey_field": "id",
+            "pkey_field": "g_name",
             "def_attrs": {
                 "id": "simple",
                 "info": "complex"

@@ -77,9 +77,6 @@ class Equipment(object):
         """
         equipment_no = self._base_info.equipment_no
         equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
-        # 无配置数据
-        if not equ_config_obj:
-            return None
         return equ_config_obj.gain
 
     @property
@@ -87,9 +84,17 @@ class Equipment(object):
         """觉醒需要装备，数量"""
         equipment_no = self._base_info.equipment_no
         equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
-        if not equ_config_obj:
-            return None
         return equ_config_obj.awakening_item
+
+    @property
+    def suit_conf(self):
+        """套装信息
+        """
+        equipment_no = self._base_info.equipment_no
+        equ_conf_obj = game_configs.equipment_config.get(equipment_no, None)  # 装备配置
+        suit_no = equ_conf_obj.suitNo
+        suit_conf_obj = game_configs.set_equipment_config.get(suit_no)
+        return suit_conf_obj
 
     def update_pb(self, equipment_pb):
         equipment_pb.id = self.base_info.id
@@ -111,13 +116,3 @@ class Equipment(object):
         magic_def = equ_config_obj.baseMdef + equ_config_obj.growMdef * self._attribute.strengthen_lv  # 魔法防御
 
         return atk, hp, physical_def, magic_def
-
-
-
-
-
-
-
-
-
-

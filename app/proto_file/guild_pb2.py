@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='guild.proto',
   package='',
-  serialized_pb='\n\x0bguild.proto\"I\n\x13GuildCommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"~\n\tGuildInfo\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05p_num\x18\x03 \x02(\x05\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x05 \x02(\x05\x12\x0c\n\x04\x66und\x18\x06 \x02(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x02(\x0c\x12\x0e\n\x06record\x18\x08 \x02(\x05\"]\n\x08RoleInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x11\n\tvip_level\x18\x04 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x02(\x05\"q\n\tRoleInfo1\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x10\n\x08position\x18\x04 \x02(\x05\x12\x18\n\x10\x61ll_contribution\x18\x05 \x02(\x05\x12\r\n\x05k_num\x18\x06 \x02(\x05\"v\n\tGuildRank\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x0c\n\x04name\x18\x03 \x02(\x0c\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x11\n\tpresident\x18\x05 \x02(\x05\x12\r\n\x05p_num\x18\x06 \x02(\x05\x12\x0e\n\x06record\x18\x07 \x02(\x05\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"!\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04\x63\x61ll\x18\x02 \x02(\x0c\"2\n\x10\x44\x65\x61lApplyRequest\x12\x0c\n\x04p_id\x18\x01 \x03(\x05\x12\x10\n\x08res_type\x18\x02 \x02(\x05\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\"\x1c\n\x0bKickRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\" \n\x0eWorshipRequest\x12\x0e\n\x06w_type\x18\x01 \x02(\x05\"Q\n\x0eGuildInfoProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_info\x18\x02 \x01(\x0b\x32\n.GuildInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"O\n\x0e\x41pplyListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1c\n\trole_info\x18\x02 \x03(\x0b\x32\t.RoleInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"T\n\x12GuildRoleListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1d\n\trole_info\x18\x02 \x03(\x0b\x32\n.RoleInfo1\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"Q\n\x0eGuildRankProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_rank\x18\x02 \x03(\x0b\x32\n.GuildRank\x12\x0f\n\x07message\x18\x03 \x01(\x0c')
+  serialized_pb='\n\x0bguild.proto\"I\n\x13GuildCommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"\x93\x01\n\tGuildInfo\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05p_num\x18\x03 \x02(\x05\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x05 \x02(\x05\x12\x0c\n\x04\x66und\x18\x06 \x02(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x02(\x0c\x12\x0e\n\x06record\x18\x08 \x02(\x05\x12\x13\n\x0bmy_position\x18\t \x02(\x05\"]\n\x08RoleInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x11\n\tvip_level\x18\x04 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x02(\x05\"q\n\tRoleInfo1\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x10\n\x08position\x18\x04 \x02(\x05\x12\x18\n\x10\x61ll_contribution\x18\x05 \x02(\x05\x12\r\n\x05k_num\x18\x06 \x02(\x05\"v\n\tGuildRank\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x0c\n\x04name\x18\x03 \x02(\x0c\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x11\n\tpresident\x18\x05 \x02(\x0c\x12\r\n\x05p_num\x18\x06 \x02(\x05\x12\x0e\n\x06record\x18\x07 \x02(\x05\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\t\"!\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04\x63\x61ll\x18\x02 \x02(\x0c\"3\n\x10\x44\x65\x61lApplyRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\x12\x10\n\x08res_type\x18\x02 \x02(\x05\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\"\x1c\n\x0bKickRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\" \n\x0eWorshipRequest\x12\x0e\n\x06w_type\x18\x01 \x02(\x05\"Q\n\x0eGuildInfoProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_info\x18\x02 \x01(\x0b\x32\n.GuildInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"O\n\x0e\x41pplyListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1c\n\trole_info\x18\x02 \x03(\x0b\x32\t.RoleInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"T\n\x12GuildRoleListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1d\n\trole_info\x18\x02 \x03(\x0b\x32\n.RoleInfo1\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"Q\n\x0eGuildRankProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_rank\x18\x02 \x03(\x0b\x32\n.GuildRank\x12\x0f\n\x07message\x18\x03 \x01(\x0c')
 
 
 
@@ -123,6 +123,13 @@ _GUILDINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='my_position', full_name='GuildInfo.my_position', index=8,
+      number=9, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -132,8 +139,8 @@ _GUILDINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=90,
-  serialized_end=216,
+  serialized_start=91,
+  serialized_end=238,
 )
 
 
@@ -188,8 +195,8 @@ _ROLEINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=218,
-  serialized_end=311,
+  serialized_start=240,
+  serialized_end=333,
 )
 
 
@@ -251,8 +258,8 @@ _ROLEINFO1 = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=313,
-  serialized_end=426,
+  serialized_start=335,
+  serialized_end=448,
 )
 
 
@@ -293,8 +300,8 @@ _GUILDRANK = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='president', full_name='GuildRank.president', index=4,
-      number=5, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      number=5, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value="",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -321,8 +328,8 @@ _GUILDRANK = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=428,
-  serialized_end=546,
+  serialized_start=450,
+  serialized_end=568,
 )
 
 
@@ -349,8 +356,8 @@ _CREATEGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=548,
-  serialized_end=582,
+  serialized_start=570,
+  serialized_end=604,
 )
 
 
@@ -377,8 +384,8 @@ _JOINGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=584,
-  serialized_end=616,
+  serialized_start=606,
+  serialized_end=638,
 )
 
 
@@ -405,8 +412,8 @@ _EDITORCALLREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=618,
-  serialized_end=651,
+  serialized_start=640,
+  serialized_end=673,
 )
 
 
@@ -418,7 +425,7 @@ _DEALAPPLYREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='p_id', full_name='DealApplyRequest.p_id', index=0,
+      name='p_ids', full_name='DealApplyRequest.p_ids', index=0,
       number=1, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -440,8 +447,8 @@ _DEALAPPLYREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=653,
-  serialized_end=703,
+  serialized_start=675,
+  serialized_end=726,
 )
 
 
@@ -468,8 +475,8 @@ _CHANGEPRESIDENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=705,
-  serialized_end=743,
+  serialized_start=728,
+  serialized_end=766,
 )
 
 
@@ -496,8 +503,8 @@ _KICKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=745,
-  serialized_end=773,
+  serialized_start=768,
+  serialized_end=796,
 )
 
 
@@ -524,8 +531,8 @@ _WORSHIPREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=775,
-  serialized_end=807,
+  serialized_start=798,
+  serialized_end=830,
 )
 
 
@@ -566,8 +573,8 @@ _GUILDINFOPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=809,
-  serialized_end=890,
+  serialized_start=832,
+  serialized_end=913,
 )
 
 
@@ -608,8 +615,8 @@ _APPLYLISTPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=892,
-  serialized_end=971,
+  serialized_start=915,
+  serialized_end=994,
 )
 
 
@@ -650,8 +657,8 @@ _GUILDROLELISTPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=973,
-  serialized_end=1057,
+  serialized_start=996,
+  serialized_end=1080,
 )
 
 
@@ -692,8 +699,8 @@ _GUILDRANKPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1059,
-  serialized_end=1140,
+  serialized_start=1082,
+  serialized_end=1163,
 )
 
 _GUILDINFOPROTO.fields_by_name['guild_info'].message_type = _GUILDINFO

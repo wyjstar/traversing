@@ -80,8 +80,7 @@ class Guild(object):
         self._p_num -= 1
         position_p_list = self._p_list.get(position)
         position_p_list.remove(p_id)
-        print "cuick,###############???????????????????????" \
-              "???????????????????????????????????????,TEST,info:", p_id
+        self._p_list.update({position: position_p_list})
 
     def delete_guild(self):
         guild_info_obj = tb_guild_info.getObj(self._g_id)
@@ -92,9 +91,6 @@ class Guild(object):
 
     def get_p_num(self):
         return self._p_num
-
-    def get_g_id(self):
-        return self._g_id
 
     def get_guild_info(self):
         return [self._g_id, self._name, self.p_num, self._level,

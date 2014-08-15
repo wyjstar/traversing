@@ -122,6 +122,39 @@
   </tableRule>
 
 
+  <!-- =======g_name======= -->
+  <!-- 规则g_name_int_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="g_name_int_8">
+    <rule>
+      <columns>g_name</columns>
+      <algorithm><![CDATA[ func1(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则g_name_str_8：使用8个分库，按照id进行分配 -->
+  <tableRule name="g_name_str_8">
+    <rule>
+      <columns>g_name</columns>
+      <algorithm><![CDATA[ func2(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则g_name_int_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="g_name_int_4">
+    <rule>
+      <columns>g_name</columns>
+      <algorithm><![CDATA[ func3(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
+  <!-- 规则g_name_str_4：使用4个分库，按照id进行分配 -->
+  <tableRule name="g_name_str_4">
+    <rule>
+      <columns>g_name</columns>
+      <algorithm><![CDATA[ func4(${account_name}) ]]></algorithm>
+    </rule>
+  </tableRule>
+
 
   <!--分配函数1：按照int分配到8个库-->
   <function name="func1" class="com.alibaba.cobar.route.function.PartitionByLong">

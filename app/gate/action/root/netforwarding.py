@@ -13,6 +13,7 @@ from shared.utils.const import const
 from app.gate.core.virtual_character_manager import VCharacterManager
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
+from shared.utils.ranking import Ranking
 
 
 @rootserviceHandle
@@ -66,8 +67,27 @@ def push_object(topic_id, msg, send_list):
 @rootserviceHandle
 def push_chat_message(send_list, msg):
     print 'push_chat_message:', send_list, msg
-    GlobalObject().root.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
+    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
 
+
+@rootserviceHandle
+def get_guild_rank():
+    level_instance = Ranking.instance('Level')
+    fifo_instance = Ranking.instance('Fifo')
+    # fifo_instance.add(guild_obj.g_id, level=1)  # 添加rank数据
+    # level_instance.add(guild_obj.g_id, level=1)  # 添加rank数据
+
+    data = level_instance.get("Level", 20)  # 获取等级最高的玩家列表(20条)
+    print "cuick,gate,test,aaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbb,guild-rank,Level:", data
+    return data
+
+@rootserviceHandle
+def add_guild_to_rank(g_id):
+    print 'cuick,gid,test,cccccccccccccccccccc,gid:', g_id
+    level_instance = Ranking.instance('Level')
+    fifo_instance = Ranking.instance('Fifo')
+    fifo_instance.add(g_id, level=1)  # 添加rank数据
+    level_instance.add(g_id, level=1)  # 添加rank数据
 
 # @rootserviceHandle
 # def opera_player(pid, oprea_str):
