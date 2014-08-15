@@ -2,7 +2,7 @@
 
 from shared.db_opear.configs_data.game_configs import hero_config, hero_exp_config, base_config, \
     item_config, hero_breakup_config, chip_config, big_bag_config, small_bag_config, soul_shop_config, shop_config,\
-    equipment_strengthen_config, equipment_config
+    equipment_strengthen_config, equipment_config, link_config
 
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.hero_config import HeroConfig
@@ -15,6 +15,7 @@ from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
+from shared.db_opear.configs_data.link_config import LinkConfig
 
 from shared.utils.const import *
 
@@ -184,9 +185,9 @@ for key, value in shop_config_mock.items():
     shop_config[key] = value
 
 #------------------------equipment----------------------------
-equipment1 = dict(id=100037, gain={1: [200, 200, 0]}, currencyDir=1)
-equipment3 = dict(id=100036, gain={1: [200, 200, 0]}, currencyDir=1)
-equipment2 = dict(id=100001, gain={1: [200, 200, 0]}, currencyDir=1)
+equipment1 = dict(id=100037, gain={1: [200, 200, 0]}, currencyDir=1, suitNo=0)
+equipment3 = dict(id=100036, gain={1: [200, 200, 0]}, currencyDir=1, suitNo=0)
+equipment2 = dict(id=100001, gain={1: [200, 200, 0]}, currencyDir=1, suitNo=0)
 equipment_config_mock = EquipmentConfig().parser([equipment1, equipment2, equipment3])
 for key, value in equipment_config_mock.items():
     equipment_config[key] = value
@@ -199,3 +200,17 @@ equipment_strength_2 = dict(level=2, currencyCost1=18, currencyCost2=21, currenc
 equipment_strength_config_mock = EquipmentStrengthenConfig().parser([equipment_strength_1, equipment_strength_2])
 for key, value in equipment_strength_config_mock.items():
     equipment_strengthen_config[key] = value
+
+#------------------------link_config----------------------------
+# 10001	2400100011	2500100011	2100011	[10002]	0	0	0	[0]	0	0	0	[0]	0	0	0	[0]	0	0	0	[0]
+
+line_1 = dict(link1=2100011, id=10001, trigger1=[10002], link2=2100071, trigger2=[10003])
+line_2 = dict(link1=2100021, id=10002, trigger1=[10002], link2=2100081, trigger2=[10003])
+line_3 = dict(link1=2100031, id=10003, trigger1=[10002], link2=2100091, trigger2=[10003])
+line_4 = dict(link1=2100041, id=10004, trigger1=[10002], link2=2100101, trigger2=[10003])
+line_5 = dict(link1=2100051, id=10005, trigger1=[10002], link2=2100111, trigger2=[10003])
+line_6 = dict(link1=2100061, id=10006, trigger1=[10002], link2=2100121, trigger2=[10003])
+
+link_config_mock = LinkConfig().parser([line_1, line_2, line_3, line_4, line_5, line_6])
+for key, value in link_config_mock.items():
+    link_config[key] = value

@@ -39,7 +39,6 @@ class CharacterLineUpComponent(Component):
             for slot_no, slot in line_up_slots.items():
                 line_up_slot = LineUpSlotComponent.loads(self, slot)
                 self._line_up_slots[slot_no] = line_up_slot
-                print 'line up slot:', line_up_slot._equipment_slots.values()[0].get_equipment_obj()
             # 助威位置信息
             line_sub_slots = line_up_data.get('sub_slots')
             for sub_slot_no, sub_slot in line_sub_slots.items():
@@ -123,9 +122,9 @@ class CharacterLineUpComponent(Component):
         """英雄对象 list
         """
         heros = []
-        for slot in self._line_up_slots:
+        for slot in self._line_up_slots.values():
             heros.append(slot.hero_slot.hero_obj)
-        for slot in self._sub_slots:
+        for slot in self._sub_slots.values():
             heros.append(slot.hero_slot.hero_obj)
         return heros
 

@@ -9,7 +9,7 @@ class HeroSlotComponent(SlotBaseInfoComponent):
     """阵容英雄格子
     """
 
-    def __init__(self, owner, slot_no, activation=0, hero_no=0, base_name=''):
+    def __init__(self, owner, slot_no, activation=False, hero_no=0, base_name=''):
         super(HeroSlotComponent, self).__init__(owner, slot_no, base_name, activation)
 
         self._hero_no = hero_no  # 英雄

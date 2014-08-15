@@ -9,7 +9,7 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
     """阵容装备格子
     """
 
-    def __init__(self, owner, slot_no, activation=0, equipment_id=0, base_name=''):
+    def __init__(self, owner, slot_no, activation=False, equipment_id=0, base_name=''):
         super(EquipmentSlotComponent, self).__init__(owner, slot_no, base_name, activation)
 
         self._equipment_id = equipment_id  # 装备
@@ -39,6 +39,8 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
         """
         equ_no_list = self.owner.equipment_nos  # 全部装备编号
         suit_conf = self.equipment_obj.suit_conf
+        if not suit_conf:
+            return {'num': 0, 'suit_no': 0}
         suit_intersection = list(set(equ_no_list).intersection(set(suit_conf.suitMapping)))  # 获取两个list 的交集
         return {'num': len(suit_intersection), 'suit_no': suit_conf.id}  # 激活数量，激活编号
 
