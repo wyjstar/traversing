@@ -3,5 +3,5 @@
 created by sphinx on 
 """
 
-from gate import initapp
+from transit import initapp
 initapp.load_module()
