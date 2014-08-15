@@ -67,75 +67,55 @@ def assembly_slots(player, response):
     """组装阵容单元格
     """
     line_up_slots = player.line_up_component.line_up_slots
-    links_info = player.line_up_component.get_links()  # 羁绊信息
     for slot in line_up_slots.values():
         add_slot = response.sub.add()
         add_slot.slot_no = slot.slot_no
         add_slot.activation = slot.activation
-
         if not slot.activation:  # 如果卡牌位未激活，则不初始化信息
             continue
-        hero_no = slot.hero_no  # 英雄编号
-
-        # 组装英雄
-        hero_obj = None
-        if hero_no:
-            hero_obj = player.hero_component.heros.get(hero_no)
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
             hero = add_slot.hero
             hero.hero_no = hero_obj.hero_no
             hero.level = hero_obj.level
             hero.exp = hero_obj.exp
             hero.break_level = hero_obj.break_level
-
-            link_info = links_info.get(hero_no, {})
-
+            link_info = hero_obj.link
             for key, value in link_info.items():
                 add_link = hero.links.add()
                 add_link.link_no = key
                 add_link.is_activation = value
-
-        for key, value in slot.equipment_ids.items():
+        for key, equipment_slot in slot.equipment_slots.items():
             equ_add = add_slot.equs.add()
             equ_add.no = key
 
-            equipment_obj = player.equipment_component.equipments_obj.get(value)
+            equipment_obj = equipment_slot.equipment_obj
             if equipment_obj:
                 equ = equ_add.equ
                 equ.id = equipment_obj.base_info.id
                 equ.no = equipment_obj.base_info.equipment_no
                 equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
                 equ.awakening_lv = equipment_obj.attribute.awakening_lv
-
-                # TODO
+                equ.set.no = equipment_slot.suit.get('suit_no', 0)
+                equ.set.num = equipment_slot.suit.get('num', 0)
 
 
 def assembly_sub_slots(player, response):
     """组装助威阵容
     """
     sub_slots = player.line_up_component.sub_slots
-    links_info = player.line_up_component.get_links()  # 羁绊信息
-
     for slot in sub_slots.values():
         add_slot = response.slot.add()
         add_slot.slot_no = slot.slot_no
         add_slot.activation = slot.activation
-
-        hero_no = slot.hero_no  # 英雄编号
-
-        # 组装英雄
-        hero_obj = None
-        if hero_no:
-            hero_obj = player.hero_component.heros.get(hero_no)
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
             hero = add_slot.hero
             hero.hero_no = hero_obj.hero_no
             hero.level = hero_obj.level
             hero.exp = hero_obj.exp
             hero.break_level = hero_obj.break_level
-
-            link_info = links_info.get(hero_no, {})
-
+            link_info = hero_obj.link
             for key, value in link_info.items():
                 add_link = hero.links.add()
                 add_link.link_no = key
