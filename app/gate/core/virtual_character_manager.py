@@ -24,6 +24,7 @@ class VCharacterManager:
         character_id = v_character.character_id
         self.character_client[character_id] = v_character
         self.client_character[v_character.dynamic_id] = character_id
+        print 'vcharacter added:', v_character.__dict__
 
     def get_by_id(self, character_id):
         return self.character_client.get(character_id)

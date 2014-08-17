@@ -1,6 +1,7 @@
 # coding:utf8
 
 import struct
+import gevent
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
@@ -54,7 +55,7 @@ class EchoClient(protocol.Protocol):
 
     def __init__(self):
         self._times = 0
-        self._user_name = 'test32'
+        self._user_name = 'test1'
         self._password = '123456'
         self._nickname = 'bab5'
 
@@ -103,10 +104,11 @@ class EchoClient(protocol.Protocol):
 
             # add friend | get friend list
             request = FriendCommon()
-            request.target_ids.append(67)
+            gevent.sleep(3)
+            request.target_ids.append(144)
             # self.send_message(request, 1101)
             # self.send_message(request, 1100)
-            self.send_message(request, 1106)
+            # self.send_message(request, 1106)
 
             # # find friend by id or nickname
             # request = FindFriendRequest()
@@ -132,7 +134,7 @@ class EchoClient(protocol.Protocol):
 
             # get friend list
             request = FriendCommon()
-            request.target_id = 0
+            # request.target_id = 0
             self.send_message(request, 1106)
 
         # add friend

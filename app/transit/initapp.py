@@ -5,4 +5,4 @@ created by sphinx on
 
 
 def load_module():
-    pass
+    from action.local import message

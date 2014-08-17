@@ -24,6 +24,9 @@ class Child(object):
         '''设置子节点的通道'''
         self._transport = transport
 
+    def get_remote(self):
+        return self._transport.getRootObject()
+
     def callbackChild(self, *args, **kw):
         '''回调子节点的接口\n
         return a Defered Object (recvdata)
