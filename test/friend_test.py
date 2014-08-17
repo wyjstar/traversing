@@ -105,7 +105,7 @@ class EchoClient(protocol.Protocol):
             # add friend | get friend list
             request = FriendCommon()
             gevent.sleep(3)
-            request.target_ids.append(144)
+            request.target_ids.append(154)
             # self.send_message(request, 1101)
             # self.send_message(request, 1100)
             # self.send_message(request, 1106)
