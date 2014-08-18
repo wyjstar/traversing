@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 created by server on 14-5-28下午4:47.
 """
@@ -19,7 +19,7 @@ class RedisClient(object):
     def __init__(self, **kwargs):
         kwargs['connection_pool'] = BlockingConnectionPool(100, 120)
         self.connection_settings = kwargs or {'host': 'localhost',
-                'port': 6379, 'db': 0}
+        'port': 6379, 'db': 0}
 
     def redis(self):
         return redis.StrictRedis(**self.connection_settings)
@@ -57,20 +57,3 @@ class RedisManager(object):
 
 
 redis_manager = RedisManager()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

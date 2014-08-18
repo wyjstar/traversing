@@ -1,0 +1,39 @@
+"""
+created by sphinx on 
+"""
+import marshal
+import redis
+
+_redis_host = '127.0.0.1'
+_redis_post = 6379
+_db = 1
+
+
+class MessageCache:
+    def __init__(self):
+        self._redis = redis.Redis(host=_redis_host, port=_redis_post, db=_db)
+
+    def cache(self, topic_id, character_id, *args, **kw):
+        key = '%d_%d' % (character_id, topic_id)
+        value = marshal.dumps({'topic_id': topic_id,
+                               'character': character_id,
+                               'args': args,
+                               '_kw': kw})
+        self._redis[key] = value
+
+    def get(self, character_id):
+        request_key = '%d*' %  character_id
+        keys = self._redis.keys(request_key)
+
+        if keys:
+            for _ in keys:
+                value = self._redis.get(_)
+                request = marshal.loads(value)
+                yield request
+
+    def delete(self, topic_id, character_id):
+        key = '%d_%d' % (character_id, topic_id)
+        self._redis.delete(key)
+
+
+message_cache = MessageCache()
