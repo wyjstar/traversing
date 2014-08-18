@@ -107,7 +107,7 @@ class EchoClient(protocol.Protocol):
             gevent.sleep(3)
             request.target_ids.append(154)
             # self.send_message(request, 1101)
-            self.send_message(request, 1100)
+            # self.send_message(request, 1100)
             # self.send_message(request, 1106)
 
             # # find friend by id or nickname
