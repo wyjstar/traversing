@@ -13,7 +13,7 @@ message Mail_PB
     required int32 mail_type = 8; //邮件类型
     optional int32 send_time = 9; //发件时间
     optional bool is_readed = 10; //是否已读
-    optional int32 bag_id = 11; //邮件掉落包
+    optional string prize = 11; //奖品
 }
 
 //汇总邮箱信息, command : 1301

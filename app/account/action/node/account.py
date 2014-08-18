@@ -27,7 +27,7 @@ def register_1(command_id, dynamic_id, account_type, user_name, password, key):
 def login_2(command_id, dynamic_id, key, user_name, password):
     """登录
     """
-    # return {'result': True, 'account_id': 12345+dynamic_id}
+    return {'result': True, 'account_id': 12345+dynamic_id}
     print 'player login user:%s pwd:%s key:%s' % (user_name, password, key)
     account_id = None  # 帐号ID
     mapping_data = tb_account_mapping.getObjData(key)  # 帐号匹配信息

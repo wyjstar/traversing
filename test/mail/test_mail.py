@@ -7,12 +7,19 @@ created by server on 14-6-23上午11:59.
 import struct
 
 from twisted.internet import reactor, protocol
-
+from app.proto_file import item_pb2
+from app.proto_file import account_pb2
+from app.proto_file import equipment_pb2
+from app.proto_file.player_request_pb2 import PlayerLoginRequest
+from app.proto_file.player_response_pb2 import PlayerResponse
+from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file.mailbox_pb2 import *
+from app.proto_file.account_pb2 import AccountResponse, AccountLoginRequest
+from app.proto_file.game_pb2 import GameLoginRequest, GameLoginResponse
 from app.proto_file.hero_response_pb2 import GetHerosResponse
-from app.proto_file.mailbox_pb2 import SendMailRequest, ReceiveMailRequest
 
 
-def sendData(sendstr, commandId):
+def sendData(sendstr,commandId):
     '''定义协议头
     '''
     HEAD_0 = chr(0)
@@ -42,7 +49,7 @@ def resolveRecvdata(data):
     lenght = ud[6]
     command = ud[7]
     message = data[17:17+lenght]
-    #print command, message
+    print command, message
 
     return command, message
 
@@ -52,29 +59,62 @@ class EchoClient(protocol.Protocol):
     """Once connected, send a message, then print the result."""
 
     def dateSend(self, argument, command_id):
-        self.transport.write(sendData(argument, command_id))
+        self.transport.write(sendData(argument.SerializeToString(), command_id))
 
     def connectionMade(self):
 
-        self.dateSend("", 1304)
+        # 帐号登录
+
+        argument = account_pb2.AccountLoginRequest()
+        argument.key.key = '06656fe419bd1d9799f220d2fce0b439'
+
+        # argument.user_name = 'ghh0001'
+        # argument.password = '123457'
+        self.dateSend(argument, 2)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
-
         command, message = resolveRecvdata(data)
+        player_id = 0
+        if command == 2:
 
-        print data
-        print "+++++++++++++++++++++++++++"
-
-        if command == 101:
-            argument = GetHerosResponse()
+            argument = AccountResponse()
             argument.ParseFromString(message)
-            print argument.heros[0].hero_no
-            #self.dateSend("", 108)
+            print argument
+
+            request = GameLoginRequest()
+            request.token = argument.key.key
+            print request.token, "token"
+            print argument.result, "result"
+            self.dateSend(request, 4)
+
+        if command == 4:
+            argument = GameLoginResponse()
+            argument.ParseFromString(message)
+            print argument.id, 'id'
+            player_id = argument.id
+            send_mail_request = SendMailRequest()
+            mail = send_mail_request.mail
+            mail.mail_id = '001'
+            mail.sender_id = player_id
+            mail.sender_name = 'player1'
+            mail.receive_id = player_id
+            mail.receive_name = 'player1'
+            mail.title = 'title1'
+            mail.content = 'content1'
+            mail.mail_type = 4
+
+            self.dateSend(send_mail_request, 1304)
+
+        if command == 1304:
+            response = CommonResponse()
+            response.ParseFromString(message)
+            print "send response:", response.result
+
+
 
     def connectionLost(self, reason):
         print "connection lost"
-
 
 class EchoFactory(protocol.ClientFactory):
     protocol = EchoClient
@@ -90,6 +130,7 @@ class EchoFactory(protocol.ClientFactory):
 
 # this connects the protocol to a server runing on port 8000
 def main():
+
     HOST = 'localhost'
     PORT = 11009
 

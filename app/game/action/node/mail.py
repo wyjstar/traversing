@@ -7,6 +7,7 @@ from app.game.logic.mail import get_mails, read_mail, delete_mail, \
     receive_mail, send_mail
 from app.proto_file.mailbox_pb2 import GetMailInfos, \
     ReadMailRequest, DeleteMailRequest, SendMailRequest
+from app.proto_file.common_pb2 import CommonResponse
 
 
 @remote_service_handle
@@ -34,16 +35,20 @@ def send_mail_1304(dynamic_id, proto_data):
     """发送邮件"""
     request = SendMailRequest()
     request.ParseFromString(proto_data)
-    mail = {'sender_id': request.sender_id,
-            'sender_name': request.sender_name,
-            'receive_id': request.receive_id,
-            'receive_name': request.receive_name,
-            'title': request.title,
-            'content': request.content,
-            'mail_type': request.mail_type,
-            'send_time': request.send_time,
-            'prize': request.prize}
+    mail = request.mail
+    mail = {'sender_id': mail.sender_id,
+            'sender_name': mail.sender_name,
+            'receive_id': mail.receive_id,
+            'receive_name': mail.receive_name,
+            'title': mail.title,
+            'content': mail.content,
+            'mail_type': mail.mail_type,
+            'send_time': mail.send_time,
+            'prize': mail.prize}
     send_mail(dynamic_id, mail)
+    response = CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
 
 
 @remote_service_handle
