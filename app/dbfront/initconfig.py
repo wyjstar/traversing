@@ -10,9 +10,9 @@
 #     MAdminManager().checkAdmins()
 #
 # GlobalObject().stophandler = doWhenStop
-from app.dbfront.dataloader import registe_madmin, check_mem_db
+from app.dbfront.dataloader import register_madmin, check_mem_db
 
 
 def load_module():
-    registe_madmin()
+    register_madmin()
     check_mem_db(10)

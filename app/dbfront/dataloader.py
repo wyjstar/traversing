@@ -8,7 +8,7 @@ from gtwisted.core import reactor
 reactor = reactor
 
 
-def registe_madmin():
+def register_madmin():
     """注册数据库与memcached对应
     """
     MAdminManager().registe(memmode.tb_character_info)
@@ -21,13 +21,10 @@ def registe_madmin():
     MAdminManager().registe(memmode.tb_character_friend)
 
 
-
-
 def check_mem_db(delta):
     """同步内存数据到数据库
     """
 
-    pass
-    # MAdminManager().checkAdmins()
-    # reactor.callLater(delta,check_mem_db,delta)
+    MAdminManager().checkAdmins()
+    reactor.callLater(delta, check_mem_db, delta)
 

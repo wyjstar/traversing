@@ -105,7 +105,7 @@ class LiberateFactory(protocols.ServerFactory):
         '''数据到达时的处理'''
         response = self.service.callTarget(commandID, conn, data)
 
-        print 'doDataReceived:', response
+        # print 'doDataReceived:', response
 
         return response
 

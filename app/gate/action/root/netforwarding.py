@@ -19,15 +19,13 @@ def forwarding(key, dynamic_id, data):
     """
     """
 
-    print '<<<data>>>', data, '<<<key>>>', key
-
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-        print 'dynamic_id:', dynamic_id
+        # print 'dynamic_id:', dynamic_id
         # print VCharacterManager().__dict__
-        print 'gate forwarding oldvcharacter:', oldvcharacter
+        # print 'gate forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
             return
         # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
