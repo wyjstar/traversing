@@ -10,7 +10,7 @@ from app.game.core.offline.friend_offline import FriendOffline
 from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.friend_pb2 import *
-from app.game.action.root.netforwarding import push_object
+from app.game.action.root.netforwarding import push_object, push_message
 
 
 @have_player
@@ -39,7 +39,8 @@ def add_friend_request(dynamic_id, data, **kwargs):
     if target_id == player.base_info.id:
         response.result = False  # cant invite oneself as friend
         response.result_no = 4  # fail
-        print 'add_friend_request cant add oneself as friend!'
+        print 'add_friend_request cant add oneself as friend! self:%d target:%d'\
+              % (player.base_info.id, target_id)
         return response.SerializePartialToString()  # fail
 
     invitee_player = PlayersManager().get_player_by_id(target_id)
@@ -52,6 +53,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
         push_object(1010, player.base_info.id, invitee_player.dynamic_id)
         invitee_player.friends.save_data()
     else:
+        push_message(10000, target_id)
         friend_offline = FriendOffline(target_id)
         if not friend_offline.add_applicant(player.base_info.id):
             response.result = False
