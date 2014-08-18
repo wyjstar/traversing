@@ -22,7 +22,7 @@ class MessageCache:
         self._redis[key] = value
 
     def get(self, character_id):
-        request_key = '%d*' %  character_id
+        request_key = '%d*' % character_id
         keys = self._redis.keys(request_key)
 
         if keys:

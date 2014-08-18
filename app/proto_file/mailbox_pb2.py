@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='mailbox.proto',
   package='',
-  serialized_pb='\n\rmailbox.proto\x1a\x0c\x63ommon.proto\"\xab\x01\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x02(\t\x12\x11\n\tsender_id\x18\x02 \x02(\x05\x12\x13\n\x0bsender_name\x18\x03 \x02(\t\x12\r\n\x05title\x18\x04 \x02(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x02(\t\x12\x11\n\tmail_type\x18\x06 \x02(\x05\x12\x11\n\tsend_time\x18\x07 \x01(\x05\x12\x11\n\tis_readed\x18\x08 \x01(\x08\x12\x0e\n\x06\x62\x61g_id\x18\t \x01(\x05\"\'\n\x0cGetMailInfos\x12\x17\n\x05mails\x18\x01 \x03(\x0b\x32\x08.Mail_PB\"6\n\x0fReadMailRequest\x12\x10\n\x08mail_ids\x18\x01 \x03(\t\x12\x11\n\tmail_type\x18\x02 \x01(\x05\"V\n\x10ReadMailResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"$\n\x11\x44\x65leteMailRequest\x12\x0f\n\x07mail_id\x18\x01 \x03(\t\")\n\x0fSendMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB\",\n\x12ReceiveMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB')
+  serialized_pb='\n\rmailbox.proto\x1a\x0c\x63ommon.proto\"\xd5\x01\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x02(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x12\n\nreceive_id\x18\x04 \x01(\x05\x12\x14\n\x0creceive_name\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x11\n\tmail_type\x18\x08 \x02(\x05\x12\x11\n\tsend_time\x18\t \x01(\x05\x12\x11\n\tis_readed\x18\n \x01(\x08\x12\x0e\n\x06\x62\x61g_id\x18\x0b \x01(\x05\"\'\n\x0cGetMailInfos\x12\x17\n\x05mails\x18\x01 \x03(\x0b\x32\x08.Mail_PB\"6\n\x0fReadMailRequest\x12\x10\n\x08mail_ids\x18\x01 \x03(\t\x12\x11\n\tmail_type\x18\x02 \x01(\x05\"V\n\x10ReadMailResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"$\n\x11\x44\x65leteMailRequest\x12\x0f\n\x07mail_id\x18\x01 \x03(\t\")\n\x0fSendMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB\",\n\x12ReceiveMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB')
 
 
 
@@ -35,56 +35,70 @@ _MAIL_PB = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='sender_id', full_name='Mail_PB.sender_id', index=1,
-      number=2, type=5, cpp_type=1, label=2,
+      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='sender_name', full_name='Mail_PB.sender_name', index=2,
-      number=3, type=9, cpp_type=9, label=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='title', full_name='Mail_PB.title', index=3,
-      number=4, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='content', full_name='Mail_PB.content', index=4,
-      number=5, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='mail_type', full_name='Mail_PB.mail_type', index=5,
-      number=6, type=5, cpp_type=1, label=2,
+      name='receive_id', full_name='Mail_PB.receive_id', index=3,
+      number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='send_time', full_name='Mail_PB.send_time', index=6,
-      number=7, type=5, cpp_type=1, label=1,
+      name='receive_name', full_name='Mail_PB.receive_name', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='title', full_name='Mail_PB.title', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='content', full_name='Mail_PB.content', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_type', full_name='Mail_PB.mail_type', index=7,
+      number=8, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_readed', full_name='Mail_PB.is_readed', index=7,
-      number=8, type=8, cpp_type=7, label=1,
+      name='send_time', full_name='Mail_PB.send_time', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='is_readed', full_name='Mail_PB.is_readed', index=9,
+      number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='bag_id', full_name='Mail_PB.bag_id', index=8,
-      number=9, type=5, cpp_type=1, label=1,
+      name='bag_id', full_name='Mail_PB.bag_id', index=10,
+      number=11, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -99,7 +113,7 @@ _MAIL_PB = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=32,
-  serialized_end=203,
+  serialized_end=245,
 )
 
 
@@ -126,8 +140,8 @@ _GETMAILINFOS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=205,
-  serialized_end=244,
+  serialized_start=247,
+  serialized_end=286,
 )
 
 
@@ -161,8 +175,8 @@ _READMAILREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=246,
-  serialized_end=300,
+  serialized_start=288,
+  serialized_end=342,
 )
 
 
@@ -196,8 +210,8 @@ _READMAILRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=302,
-  serialized_end=388,
+  serialized_start=344,
+  serialized_end=430,
 )
 
 
@@ -224,8 +238,8 @@ _DELETEMAILREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=390,
-  serialized_end=426,
+  serialized_start=432,
+  serialized_end=468,
 )
 
 
@@ -252,8 +266,8 @@ _SENDMAILREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=428,
-  serialized_end=469,
+  serialized_start=470,
+  serialized_end=511,
 )
 
 
@@ -280,8 +294,8 @@ _RECEIVEMAILREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=471,
-  serialized_end=515,
+  serialized_start=513,
+  serialized_end=557,
 )
 
 _GETMAILINFOS.fields_by_name['mails'].message_type = _MAIL_PB

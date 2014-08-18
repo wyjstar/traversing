@@ -14,6 +14,7 @@ from app.proto_file.mailbox_pb2 import *
 class MailActionTest(unittest.TestCase):
     def setUp(self):
         from test.unittest.init_test_data import init
+
         init()
         self.player = PlayersManager().get_player_by_id(1)
 
@@ -66,7 +67,19 @@ class MailActionTest(unittest.TestCase):
         self.assertEqual(mail, None)
 
     def test_send_mail_1304(self):
-        pass
+        mail = {'sender_id': 1,
+                'sender_name': 'player1',
+                'receive_id': 2,
+                'receive_name': 'player2',
+                'title': 'title10',
+                'content': 'content10',
+                'mail_type': 4,
+                'send_time': 0,
+                'prize': None}
+        send_mail(1, mail)
+        receiver = PlayersManager().get_player_by_id(2)
+        mails = receiver.mail_component.get_mails()
+        self.assertEqual(len(mails), 1, "%d_%d" % (len(mails), 1))
 
     def test_receive_mail_1305(self):
         pass

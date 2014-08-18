@@ -36,11 +36,13 @@ def send_mail_1304(dynamic_id, proto_data):
     request.ParseFromString(proto_data)
     mail = {'sender_id': request.sender_id,
             'sender_name': request.sender_name,
+            'receive_id': request.receive_id,
+            'receive_name': request.receive_name,
             'title': request.title,
             'content': request.content,
             'mail_type': request.mail_type,
             'send_time': request.send_time,
-            'bag_id': request.bag_id}
+            'prize': request.prize}
     send_mail(dynamic_id, mail)
 
 

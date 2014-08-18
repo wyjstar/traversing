@@ -58,6 +58,11 @@ class CharacterMailComponent(Component):
 
     def add_mail(self, sender_id, sender_name, title, content, mail_type, send_time, bag):
         """添加邮件"""
+        if mail_type == 1:  # 领取体力邮件不能超过15个
+            mails = self.get_mails_by_type(1)
+            if len(mails) == 15:
+                return
+
         mail_id = get_uuid()
         character_id = self.owner.base_info.id
 
@@ -73,6 +78,10 @@ class CharacterMailComponent(Component):
         """获取角色邮件列表
         """
         return self._mails.values()
+
+    def get_mails_by_type(self, mail_type):
+        """根据邮件类型获取邮件"""
+        return [mail for mail in self._mails.values() if mail.mail_type == mail_type]
 
     def get_mail(self, mail_id):
         """根据ID获取邮件"""

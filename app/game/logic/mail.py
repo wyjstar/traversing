@@ -116,8 +116,8 @@ def receive_mail(dynamic_id, proto_data, **kwargs):
     """在线/登录时，接收邮件"""
     player = kwargs.get('player')
     mail_type = proto_data.get("mail_type")
-    sender_id = proto_data("sender_id")
-    sender_name = proto_data("sender_name")
+    sender_id = proto_data.get("sender_id")
+    sender_name = proto_data.get("sender_name")
     title = proto_data.get("title")
     content = proto_data.get("content")
     send_time = proto_data.get("send_time")
@@ -130,8 +130,12 @@ def receive_mail(dynamic_id, proto_data, **kwargs):
 @have_player
 def send_mail(dynamic_id, mail, **kwargs):
     """发送邮件， mail为json类型"""
+    player = kwargs.get('player')
     mail['send_time'] = int(time.time())
-    netforwarding.send_mail(mail)
+    receive_id = mail['receive_id']
+    # command:id 为收邮件的命令ID
+    netforwarding.push_message(1305, receive_id, mail)
+
 
 
 
