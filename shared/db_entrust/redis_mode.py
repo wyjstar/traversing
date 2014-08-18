@@ -74,8 +74,8 @@ class MMode(RedisObject):
         n_time = time.time()
         RedisObject.update(self, "_time", n_time)
         value = RedisObject.get(self, key)
-        if value and key == '_state':
-            value = int(value)
+        # if value and key == '_state':
+        #     value = int(value)
         return value
 
     def get_multi(self, keys):
@@ -105,7 +105,8 @@ class MMode(RedisObject):
     def syncDB(self):
         """同步到数据库
         """
-        state = int(self.get('_state'))
+        # state = int(self.get('_state'))
+        state = self.get('_state')
         tablename = self._name.split(':')[0]
         if state == MMODE_STATE_ORI:
             return
