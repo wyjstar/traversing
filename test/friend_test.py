@@ -55,7 +55,7 @@ class EchoClient(protocol.Protocol):
 
     def __init__(self):
         self._times = 0
-        self._user_name = 'test1'
+        self._user_name = 'test2'
         self._password = '123456'
         self._nickname = 'bab5'
 
@@ -107,7 +107,7 @@ class EchoClient(protocol.Protocol):
             gevent.sleep(3)
             request.target_ids.append(154)
             # self.send_message(request, 1101)
-            # self.send_message(request, 1100)
+            self.send_message(request, 1100)
             # self.send_message(request, 1106)
 
             # # find friend by id or nickname
