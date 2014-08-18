@@ -91,4 +91,3 @@ class remoteserviceHandle:
         """
         """
         GlobalObject().remote[self.remotename]._reference._service.mapTarget(target)
-        

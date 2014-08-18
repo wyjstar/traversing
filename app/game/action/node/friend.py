@@ -79,3 +79,9 @@ def get_player_friend_list_1106(dynamic_id, data):
 @remote_service_handle
 def find_friend_request_1107(dynamic_id, data):
     return find_friend_request(dynamic_id, data)
+
+
+@remote_service_handle
+def find_friend_request_10000(dynamic_id, data, target_id):
+    print '='*28, data, target_id
+    return False

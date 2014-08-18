@@ -47,9 +47,9 @@ class Ranking:
         if instance is None:
             conf = cls.parse_config(configs)
             if conf is not None:
-                instance = cls(conf['label'], \
-                               conf['redis'], \
-                               conf, \
+                instance = cls(conf['label'],
+                               conf['redis'],
+                               conf,
                                conf['eval_rank_cb'])
                 cls._instances[label] = instance
 
@@ -109,9 +109,9 @@ class Ranking:
             conf['eval_rank_cb'] = _import_func(configs['eval_rank_func'])
 
         try:
-            conf['redis'] = redis.StrictRedis(host=conf['redis_server'], \
-                                              port=conf['redis_port'], \
-                                              db=conf['redis_db'], \
+            conf['redis'] = redis.StrictRedis(host=conf['redis_server'],
+                                              port=conf['redis_port'],
+                                              db=conf['redis_db'],
                                               socket_timeout=3)
         except Exception, e:
             print "Ranking.parse_config.Error:", e

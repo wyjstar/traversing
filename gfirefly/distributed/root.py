@@ -66,6 +66,10 @@ class PBRoot:
         self.doChildConnect(name, transport)
         log.msg('#2 node [%s] takeProxy ready' % name)
 
+    @property
+    def childsmanager(self):
+        return self.childsmanager
+
     def doChildConnect(self, name, transport):
         """当node节点连接时的处理
         """
