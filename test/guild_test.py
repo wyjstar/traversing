@@ -64,7 +64,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'cf038c8f6fd618b86aac3cd86fcde05d'
+        argument.key.key = '8223d5143407cd39d6a6b3c009e649dd'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +89,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'cf038c8f6fd618b86aac3cd86fcde05d'
+                argument.key.key = '8223d5143407cd39d6a6b3c009e649dd'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,7 +100,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'cf038c8f6fd618b86aac3cd86fcde05d'
+            argument.token = '8223d5143407cd39d6a6b3c009e649dd'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -113,9 +113,9 @@ class EchoClient(protocol.Protocol):
             # 43014583c182bcbf37f7de4569a857d6 申请加入
 
             # --------801创建公会------------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四001'
-            self.dateSend(argument1, 801)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四001'
+            # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
             # argument1 = JoinGuildRequest()
@@ -157,9 +157,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 808)
 
             # --------809膜拜------------
-            # argument1 = WorshipRequest()
-            # argument1.w_type = 1
-            # self.dateSend(argument1, 809)
+            argument1 = WorshipRequest()
+            argument1.w_type = 1
+            self.dateSend(argument1, 809)
 
             # --------812获取公会信息---------
             # argument1 = CreateGuildRequest()

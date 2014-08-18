@@ -77,7 +77,6 @@ class CharacterGuildComponent(Component):
                      'exit_time': self._exit_time}}
         print "cuick,###############,CharacterGuildComponent,SAVE_DATA,player,guild,info:", data, 'id:', self.owner.base_info.id
         p_guild_data = tb_character_guild.getObj(self.owner.base_info.id)
-        print 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', self.owner.base_info.id
         p_guild_data.update_multi(data)
 
     @property
