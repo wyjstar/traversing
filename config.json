@@ -141,7 +141,8 @@
                 "excellent_equipment_last_pick_time": "simple",
                 "stamina": "simple",
                 "pvp_times": "simple",
-                "last_login_time": "simple"
+                "last_login_time": "simple",
+                "get_stamina_times": "simple"
             }
         },
         "tb_nickname_mapping": {
@@ -257,7 +258,7 @@
                 "mail_ids": "complex"
             }
         },
-        "tb_mail": {
+        "tb_mail_info": {
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",

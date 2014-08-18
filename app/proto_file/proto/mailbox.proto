@@ -3,13 +3,15 @@ import "common.proto";
 //邮件基本信息
 message Mail_PB
 {
-    required string sender_id = 1; //发件人ID
-    required string sender_name = 2; //发件人
-    required string title = 3; //标题
-    required int32 content = 4; //邮件内容
-    required int32 mail_type = 5; //邮件类型
-    required int32 send_time = 6; //发件时间
-    optional int32 bag_id = 7; //邮件掉落包
+    required string mail_id = 1; // ID
+    required int32 sender_id = 2; //发件人ID
+    required string sender_name = 3; //发件人
+    required string title = 4; //标题
+    required string content = 5; //邮件内容
+    required int32 mail_type = 6; //邮件类型
+    optional int32 send_time = 7; //发件时间
+    optional bool is_readed = 8; //是否已读
+    optional int32 bag_id = 9; //邮件掉落包
 }
 
 //汇总邮箱信息, command : 1301
@@ -38,11 +40,15 @@ message DeleteMailRequest
     repeated string mail_id = 1;
 }
 
-//发送邮件
+//发送邮件, command: 1304
 message SendMailRequest
 {
-    required string receive_name = 1;
-    required string title = 2;
-    required string content = 3;
+    required Mail_PB mail = 1;
+}
+
+//接收邮件, command: 1305
+message ReceiveMailRequest
+{
+    required Mail_PB mail = 1;
 }
 

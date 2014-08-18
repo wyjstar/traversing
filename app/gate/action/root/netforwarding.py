@@ -81,6 +81,7 @@ def get_guild_rank():
     print "cuick,gate,test,aaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbb,guild-rank,Level:", data
     return data
 
+
 @rootserviceHandle
 def add_guild_to_rank(g_id):
     print 'cuick,gid,test,cccccccccccccccccccc,gid:', g_id
@@ -88,6 +89,14 @@ def add_guild_to_rank(g_id):
     fifo_instance = Ranking.instance('Fifo')
     fifo_instance.add(g_id, level=1)  # 添加rank数据
     level_instance.add(g_id, level=1)  # 添加rank数据
+
+
+@rootserviceHandle
+def send_mail(mail):
+    """发送邮件
+    mail: json 类型"""
+    print "发送邮件到消息队列中..."
+    # todo: 发送到消息队列中，如果消息队列为在
 
 # @rootserviceHandle
 # def opera_player(pid, oprea_str):

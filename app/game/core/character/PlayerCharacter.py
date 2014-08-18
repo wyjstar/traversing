@@ -55,6 +55,7 @@ class PlayerCharacter(Character):
         self._mail = CharacterMailComponent(self)  # 邮箱组件
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
+        self._get_stamina_times = 0  # 获取体力次数
         self._mmode = None
 
         if status:
@@ -84,6 +85,7 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
         stamina = character_info['stamina']
         pvp_times = character_info['pvp_times']
+        get_stamina_times = character_info['get_stamina_times']  # 获取体力次数
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
@@ -110,11 +112,14 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
+        self._mail.init_data()  # 初始化邮箱
         # self._friends.init_data()
-        # self._guild.init_data()
+        self._guild.init_data()
         # self._stage.init_data()
         self._stamina = stamina
         self._pvp_times = pvp_times
+        self._get_stamina_times = get_stamina_times
+
 
     @property
     def character_type(self):
@@ -220,6 +225,14 @@ class PlayerCharacter(Character):
     @property
     def mail_component(self):
         return self._mail
+
+    @property
+    def get_stamina_times(self):
+        return self._get_stamina_times
+
+    @get_stamina_times.setter
+    def get_stamina_times(self, value):
+        self._get_stamina_times = value
 
     def save_data(self):
         pid = self.base_info.id

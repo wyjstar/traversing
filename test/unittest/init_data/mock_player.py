@@ -26,9 +26,9 @@ def init_player():
                      'fine_equipment_last_pick_time': 0,
                      'excellent_equipment_last_pick_time': 0,
                      'stamina': 100,
-                     'pvp_times': 0}
+                     'pvp_times': 0,
+                     'get_stamina_times': 0}
         tb_character_info.new(character)
-
 
     PlayersManager().drop_player_by_id(1)
     player = PlayerCharacter(1, name="wzp", dynamic_id=1, status=1)
@@ -62,7 +62,8 @@ def init_player():
                      'fine_equipment_last_pick_time': 0,
                      'excellent_equipment_last_pick_time': 0,
                      'stamina': 100,
-                     'pvp_times': 0}
+                     'pvp_times': 0,
+                     'get_stamina_times': 0}
         tb_character_info.new(character)
 
     PlayersManager().drop_player_by_id(2)
