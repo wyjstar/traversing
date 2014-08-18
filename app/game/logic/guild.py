@@ -25,6 +25,7 @@ def create_guild(dynamicid, data, **kwargs):
     g_id = player.guild.g_id
 
     # TODO 判断等级够不够
+
     if g_id != 0:
         response.result = False
         response.message = "您已加入公会"
@@ -48,7 +49,6 @@ def create_guild(dynamicid, data, **kwargs):
     # 创建公会
     guild_obj = Guild()
     guild_obj.create_guild(p_id, g_name)
-    player.guild.g_id = guild_obj.g_id
 
     add_guild_to_rank(guild_obj.g_id)
 
@@ -56,6 +56,12 @@ def create_guild(dynamicid, data, **kwargs):
             'g_id': guild_obj.g_id}
     tb_guild_name.new(data)
 
+    player.guild.g_id = guild_obj.g_id
+    player.guild.worship = 0
+    player.guild.worship_time = 1
+    player.guild.contribution = 0
+    player.guild.all_contribution = 0
+    player.guild.k_num = 0
     player.guild.position = 1
     player.guild.save_data()
     guild_obj.save_data()
@@ -299,7 +305,6 @@ def deal_apply(dynamicid, data, **kwargs):
             character_guild = tb_character_guild.getObjData(p_id)
             info = character_guild.get("info")
             if info.get("g_id") != 0:
-                #TODO 已有公会的 放入数组
                 if guild_obj.apply.count(p_id) == 1:
                     guild_obj.apply.remove(p_id)
                     response.p_ids.append(p_id)
@@ -567,7 +572,6 @@ def worship(dynamicid, data, **kwargs):
     response = GuildCommonResponse()
     w_type = args.w_type
     m_g_id = player.guild.g_id
-    m_wopship = player.guild.worship
 
     data1 = tb_guild_info.getObjData(m_g_id)
     if not data1 or m_g_id == 0:
@@ -578,13 +582,12 @@ def worship(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    m_wopship_time = player.guild.worship_time
     # TODO 查询每天可以膜拜的次数
     # TODO 判断钱够不够,根据膜拜类型
     # TODO 根据膜拜类型，加资源数，经验数不同。
     can_wopship = 5
-    if (int(time.time())-m_wopship_time) < (60*60*24):
-        if can_wopship > m_wopship:
+    if (int(time.time())-player.guild.worship_time) < (60*60*24):
+        if can_wopship > player.guild.worship:
             player.guild.worship += 1
             player.guild.contribution += 100
             player.guild.all_contribution += 100  # 配置
@@ -602,9 +605,8 @@ def worship(dynamicid, data, **kwargs):
         player.guild.all_contribution += 100  # 配置
         guild_obj.fund += 100  # 公会加经验，加资金，
         guild_obj.exp += 100
-        player.guild.wopship_time = new_time
+        player.guild.worship_time = new_time
     # TODO 判断公会经验有没有升级！！！！！！！！！！
-    print player.guild.contribution,'aaa',guild_obj.fund,'bbbb',guild_obj.exp
     player.guild.save_data()
     guild_obj.save_data()
     # 膜拜：公会贡献+，玩家公会贡献+。膜拜次数+。膜拜时间更新。公会资金+，公会经验+
