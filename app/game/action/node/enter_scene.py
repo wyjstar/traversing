@@ -2,7 +2,6 @@
 """
 created by wzp on 14-6-19下午7: 51.
 """
-from app.game.action.root.netforwarding import pull_message
 from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
@@ -38,8 +37,6 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
     responsedata.stamina = player.stamina
     responsedata.pvp_times = player.pvp_times
-
-    pull_message(character_id)
 
     return responsedata.SerializeToString()
 

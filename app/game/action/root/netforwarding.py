@@ -33,9 +33,3 @@ def push_message(topic_id, character_id, *args, **kw):
     if 'gate' in GlobalObject().remote:
         print 'game call push message'
         GlobalObject().remote['gate'].callRemote("push_message", topic_id, character_id, args, kw)
-
-
-def pull_message(character_id, *args, **kw):
-    if 'gate' in GlobalObject().remote:
-        print 'game call pull message'
-        GlobalObject().remote['gate'].callRemote("pull_message", character_id, args, kw)
