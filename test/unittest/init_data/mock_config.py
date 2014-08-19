@@ -22,7 +22,8 @@ from shared.utils.const import *
 # ------------------------base----------------------------
 
 base_config.clear()
-base_config_mock = CommonItem(dict(exp_items=[1000101, 1000102, 1000103, 1000104], soul_shop_item_num=6))
+base_config_mock = CommonItem(dict(sacrificeGainExp={100000: 1000101, 10000: 1000102, 1000: 1000103, 100: 1000104},
+                                   soulShopItemNum=6))
 for key, value in base_config_mock.items():
     base_config[key] = value
 
@@ -121,8 +122,8 @@ hero_breakup_config[10001] = HeroBreakupConfig.HeroBreakupItem(hero_breakup1)
 
 # ------------------------chip----------------------------
 
-hero_chip1 = {'id': 1000114, 'combineResult': 10004, 'needNum': 20}
-hero_chip2 = {'id': 1010005, 'combineResult': 10005, 'needNum': 20}
+hero_chip1 = {'id': 1000114, 'combineResult': 10009, 'needNum': 20}
+hero_chip2 = {'id': 1010005, 'combineResult': 10010, 'needNum': 20}
 
 equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'needNum': 100}
 chip_config.clear()

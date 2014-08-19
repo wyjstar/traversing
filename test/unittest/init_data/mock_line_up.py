@@ -60,3 +60,5 @@ def init_line_up():
 
     slot = player.line_up_component.line_up_slots[6]
     slot.activation = False
+
+    player.line_up_component.save_data()

@@ -123,8 +123,8 @@ def hero_sacrifice_oper(heros, player):
         total_exp += exp
 
     # baseconfig {1000000: 'item_id'}
-    exp_items = base_config.get("exp_items")
-    for item_no in exp_items:
+    exp_items = base_config.get("sacrificeGainExp")
+    for exp, item_no in exp_items.items():
         config = item_config.get(item_no)
         exp = config.get("funcArgs1")
         if total_exp/exp > 0:
@@ -148,7 +148,9 @@ def hero_compose(dynamicid, data, **kwargs):
     response = HeroComposeResponse()
     print 'combine', chip_config.get("chips").get(hero_chip_no)
     hero_no = chip_config.get("chips").get(hero_chip_no).combineResult
-    need_num = chip_config.get("chips").get(hero_chip_no).need_num
+    need_num = chip_config.get("chips").get(hero_chip_no).needNum
+    if not hero_no or not need_num:
+        print ("chip_config数据不全!")
     hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
     # 服务器校验
     if hero_chip.num < need_num:

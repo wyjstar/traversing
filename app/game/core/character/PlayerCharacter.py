@@ -108,7 +108,7 @@ class PlayerCharacter(Character):
         #------------初始化角色其他组件------------
         self._hero_component.init_heros()  # 初始化武将列表
         self._item_package.init_data()
-        # self._line_up.init_data()
+        self._line_up.init_data()
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片

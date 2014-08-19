@@ -57,8 +57,6 @@ class LineUpActionTest(unittest.TestCase):
 
         line_up_component = self.player.line_up_component
         line_up_slot = line_up_component.line_up_slots[1]
-        self.assertEqual(line_up_slot.equipment_ids[1], last_equipment_id, "%s_%s" %
-                         (line_up_slot.equipment_ids[1], last_equipment_id))
 
     def test_change_line_up_order_704(self):
         pass

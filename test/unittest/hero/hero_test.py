@@ -28,7 +28,7 @@ class HeroTest(unittest.TestCase):
         hero.equipment_ids = []
         hero.save_data()
         length = len(self.player.hero_component.get_heros())
-        self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
+        self.assertEqual(length, 7, 'len of hero_list error!%d_%d' % (length, 7))
         hero = self.player.hero_component.get_hero(10011)
         self.assertFalse(hero == None, 'add error!')
         self.assertEqual(hero.level, 11)
@@ -38,7 +38,7 @@ class HeroTest(unittest.TestCase):
         #redis
         heros = tb_character_heros.getObjData(1)
         length = len(heros.get('hero_ids'))
-        self.assertEqual(length, 4, 'len of hero_list error!%d_%d' % (length, 4))
+        self.assertEqual(length, 7, 'len of hero_list error!%d_%d' % (length, 7))
 
         hero_id = self.player.hero_component.get_hero_id(10011)
         hero_in_redis = tb_character_hero.getObjData(hero_id)
@@ -58,7 +58,7 @@ class HeroTest(unittest.TestCase):
         #redis
         heros = tb_character_heros.getObjData(1)
         length = len(heros.get('hero_ids'))
-        self.assertEqual(length, 2, 'len of hero_list error!%d_%d' % (length, 2))
+        self.assertEqual(length, 5, 'len of hero_list error!%d_%d' % (length, 5))
 
     def test_get_all_exp(self):
         hero = self.player.hero_component.get_hero(10001)
