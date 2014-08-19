@@ -64,7 +64,10 @@ class Service(object):
             return None
         if targetKey not in self.unDisplay:
             log.msg("call method %s on service[%s]" % (target.__name__, self._name))
-        response = target(*args, **kw)
+        if __debug__:
+            print 'args;:', args
+            print 'kw::', kw
+        response = apply(target, args, kw)
         return response
 
 
