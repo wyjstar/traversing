@@ -53,7 +53,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
         push_object(1010, player.base_info.id, invitee_player.dynamic_id)
         invitee_player.friends.save_data()
     else:
-        push_message(10000, target_id, 1, 2, 3, 'a', 'b')
+        push_message(1050, target_id, 1, 2, 3, 'a', 'b')
         friend_offline = FriendOffline(target_id)
         if not friend_offline.add_applicant(player.base_info.id):
             response.result = False
