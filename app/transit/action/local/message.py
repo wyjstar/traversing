@@ -24,7 +24,8 @@ def pull_message(character_id):
             args += message.get('args')
             kw = message.get('kw')
             print 'pull message =====', args, '*****', kw
-            if GlobalObject().root.callChild(child, 100001, *args, **kw):
+            result = GlobalObject().root.callChild(child, 100001, *args, **kw)
+            if type(result) is bool and result:
                 print 'delete message'
                 message_cache.delete(message.get('topic_id'), character_id)
                 break

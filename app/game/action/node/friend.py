@@ -82,6 +82,5 @@ def find_friend_request_1107(dynamic_id, data):
 
 
 @remote_service_handle
-def find_friend_request_1050(dynamic_id, a, b, c, d, e):
-    print '='*28, a, b, c, d, e  # , target_id
-    return True
+def find_friend_request_1050(dynamic_id, target_id):
+    return add_friend_request_remote(dynamic_id, target_id)
