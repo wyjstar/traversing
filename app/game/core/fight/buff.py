@@ -9,10 +9,10 @@ class Buff(object):
     """buff
     """
 
-    def __init__(self, buff_no, effec_id, trigger_type, value_type, value_effect):
+    def __init__(self, buff_no, effect_id, trigger_type, value_type, value_effect):
         self._buff_no = buff_no
 
-        self._effec_id = effec_id
+        self._effect_id = effect_id
         self._trigger_type = trigger_type
         self._value_type = value_type
         self._value_effect = value_effect
@@ -22,8 +22,8 @@ class Buff(object):
         return self._buff_no
 
     @property
-    def effec_id(self):
-        return self._effec_id
+    def effect_id(self):
+        return self._effect_id
 
     @property
     def trigger_type(self):
@@ -39,8 +39,8 @@ class Buff(object):
 
     def __cmp__(self, other):
         if self is not None and other is not None:
-            return cmp((self.effec_id, self.trigger_type, self.value_type, self.value_effect),
-                       (self.effec_id, self.trigger_type, self.value_type, self.value_effect))
+            return cmp((self.effect_id, self.trigger_type, self.value_type, self.value_effect),
+                       (self.effect_id, self.trigger_type, self.value_type, self.value_effect))
 
         if self is None and other is None:
             return 0

@@ -1,11 +1,16 @@
 import "common.proto";
 import "player_response.proto";
 
+message Skill{
+	required int32 id = 1;  //技能ID
+	repeated int32 buffs = 2;  //技能buff组
+}
+
 message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
 	optional int32 quality = 2;  //战斗单位品质
-	optional int32 normal_skill = 3;  //战斗单位普通技能
-	optional int32 rage_skill = 4;  //战斗单位怒气技能
+	optional Skill normal_skill = 3;  //战斗单位普通技能
+	optional Skill rage_skill = 4;  //战斗单位怒气技能
 	optional float hp = 5; // 战斗单位血量
 	optional float atk = 6; //战斗单位攻击
 	optional float physical_def = 7;//战斗单位物理防御
@@ -17,6 +22,7 @@ message BattleUnit{
 	optional float cri_ded_coeff = 13;  //战斗单位暴伤减免系数
 	optional float block = 14;  //战斗单位格挡率
 	optional bool is_boss = 15; //是否是boss
+	repeated Skill break_skill = 16; //突破技能
 }
 
 message BattleUnitGrop{

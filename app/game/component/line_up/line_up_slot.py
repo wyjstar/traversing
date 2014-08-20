@@ -108,3 +108,17 @@ class LineUpSlotComponent(Component):
         """英雄编号 list
         """
         return self.owner.hero_nos
+
+    @property
+    def equ_suit(self):
+        """套装信息
+        """
+        suit_info = {}  # suit_no:attr
+        for no, slot in self._equipment_slots.items():
+            suit = slot.suit
+            suit_no = suit.get('suit_no')
+            if suit_no in suit_info:
+                continue
+            suit_info[suit_no] = slot.suit_attr
+        return suit_info
+

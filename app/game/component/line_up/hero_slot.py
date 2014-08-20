@@ -3,6 +3,8 @@
 created by server on 14-8-13下午3:32.
 """
 from app.game.component.baseInfo.slot_base_info import SlotBaseInfoComponent
+from app.game.core.fight.skill import Skill
+from app.game.core.fight.skill_helper import SkillHelper
 
 
 class HeroSlotComponent(SlotBaseInfoComponent):
@@ -65,4 +67,22 @@ class HeroSlotComponent(SlotBaseInfoComponent):
                     activation = 0
                     break
         return activation
+
+    @property
+    def link_attr(self):
+        """羁绊属性数值
+        """
+        skills = []
+        for skill_id, activation in self.link.items():
+            if activation:  # 激活
+                skill = Skill(skill_id)
+                skill.init_attr()
+                skills.append(skill)
+
+        skill_helper = SkillHelper(skills)
+        skill_helper.init_attr()
+        attr = skill_helper.parse_buffs()
+        return attr
+
+
 
