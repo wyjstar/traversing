@@ -26,6 +26,7 @@ print id(dbpool)
 from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
+from shared.db_opear.configs_data.guild_config import GuildConfig
 
 
 def init():
@@ -77,9 +78,11 @@ monster_config = {}
 monster_group_config = {}
 skill_config = {}
 skill_buff_config = {}
+guild_config = {}
 
 
 all_config_name = {
+    'base_config': BaseConfig(),
     'hero_config': HeroConfig(),
     'hero_exp_config': HeroExpConfig(),
     'hero_breakup_config': HeroBreakupConfig(),
@@ -97,6 +100,7 @@ all_config_name = {
     'monster_group_config': MonsterGroupConfig(),
     'skill_config': SkillConfig(),
     'skill_buff_config': SkillBuffConfig(),
+    'guild_config': GuildConfig(),
 }
 
 
@@ -104,12 +108,6 @@ class ConfigFactory(object):
 
     @classmethod
     def creat_config(cls, config_name, config_value):
-        obj = None
-
-        if config_name in all_config_name.keys():
-            if config_name == 'bases_config':
-                obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
-                return obj
         return all_config_name[config_name].parser(config_value)
 
 for config_name in all_config_name.keys():
