@@ -6,30 +6,29 @@ from app.transit.root.messagecache import message_cache
 
 
 @rootserviceHandle
-def push_message(topic_id, character_id, *args, **kw):
-    message_cache.cache(topic_id, character_id, args, kw)
-    print 'transit =============== push message', character_id
+def push_message(topic_id, character_id, args, kw):
+    message_cache.cache(topic_id, character_id, *args, **kw)
     return True
 
 
 @rootserviceHandle
-def pull_message(character_id, *args, **kw):
+def pull_message(character_id):
     print 'transit pull message:', character_id
-    count = 1
-    for _ in message_cache.get(character_id):
+    count = 0
+    for message in message_cache.get(character_id):
         childs = GlobalObject().root.childsmanager.childs
-        print GlobalObject().root.childsmanager
+        # print GlobalObject().root.childsmanager
+
         for child in childs.keys():
-            print 'child'*6, child
-            if GlobalObject().root.callChild(child, 100100, _.get('topic_id'),
-                                             _.get('character'), _.get('args'), _.get('_kw')):
-            # if child.get_remote().callRemoteForResult('send_message_to_character',
-            #                                           _.get('topic_id'),
-            #                                           _.get('character'),
-            #                                           _.get('args'),
-            #                                           _.get('_kw')):
-                message_cache.delete(_.get('topic_id'), _.get('character_id'))
+            args = (message.get('topic_id'), message.get('character_id'))
+            args += message.get('args')
+            kw = message.get('kw')
+            print 'pull message =====', args, '*****', kw
+            result = GlobalObject().root.callChild(child, 100001, *args, **kw)
+            if type(result) is bool and result:
+                print 'delete message'
+                message_cache.delete(message.get('topic_id'), character_id)
+                count += 1
                 break
-        count += 1
     print 'pull message:', count
     return True

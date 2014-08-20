@@ -56,6 +56,6 @@ def get_all_shop_items():
 def get_shop_item_ids():
     """随机筛选ids"""
     items = get_all_shop_items()
-    item_num = base_config.get('soul_shop_item_num')
+    item_num = base_config.get('soulShopItemNum')
     return random_multi_pick_without_repeat(items, item_num)
 

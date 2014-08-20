@@ -15,7 +15,11 @@ def enter_scene(dynamicid):
     if not vplayer:
         return None
     current_node = SceneSerManager().get_best_sceneid()
-    vplayer.node = current_node
     response = GlobalObject().root.callChild(current_node, 601, dynamicid)
+
+    # pull message from transit
+    GlobalObject().remote['transit'].callRemoteNotForResult("pull_message", vplayer.character_id)
+
+    vplayer.node = current_node
     SceneSerManager().add_client(current_node, vplayer.dynamicid)
     return response

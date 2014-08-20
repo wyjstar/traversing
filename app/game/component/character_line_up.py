@@ -135,12 +135,12 @@ class CharacterLineUpComponent(Component):
         return [hero_obj.hero_no for hero_obj in self.hero_objs if hero_obj]
 
     def save_data(self):
-        props = {'id': self.owner.base_info.id,
-                 'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
-                                        slot_no in self._line_up_slots.keys()]),
-                 'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
-                                    slot_no in self._sub_slots.keys()]),
-                 'line_up_order': self._line_up_order}
+        props = {
+            'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
+                                   slot_no in self._line_up_slots.keys()]),
+            'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
+                               slot_no in self._sub_slots.keys()]),
+            'line_up_order': self._line_up_order}
 
         line_up_obj = tb_character_line_up.getObj(self.owner.base_info.id)
         line_up_obj.update_multi(props)

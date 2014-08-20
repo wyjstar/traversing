@@ -40,6 +40,6 @@ class EquipmentChipTest(unittest.TestCase):
         response.ParseFromString(response_str)
 
         lst = [x for x in response.equipment_chips]
-        self.assertEqual(len(lst), 2, "%d_%d" % (len(lst), 2))
+        self.assertEqual(len(lst), 4, "%d_%d" % (len(lst), 4))
         
 

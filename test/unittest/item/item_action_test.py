@@ -26,7 +26,7 @@ class ItemActionTest(unittest.TestCase):
         items = response.items
         self.assertEqual(len(items), 7, "%d_%d" % (len(items), 7))
         self.assertEqual(items[6].item_no, 1000113, "%d_%d" % (items[6].item_no, 1000113))
-        self.assertEqual(items[6].item_num, 5, "%d_%d" % (items[6].item_num, 5))
+        self.assertEqual(items[6].item_num, 15, "%d_%d" % (items[6].item_num, 15))
 
     def test_use_item_302(self):
         """测试两个box"""
@@ -40,7 +40,7 @@ class ItemActionTest(unittest.TestCase):
         self.assertEqual(response.gain.finance.coin, 2000)
 
         item = self.player.item_package.get_item(item_pb.item_no)
-        self.assertEqual(item.num, 3)
+        self.assertEqual(item.num, 13)
 
 
         game_resources_response_str = remoteservice.callTarget(302, 1, item_pb.SerializeToString())
@@ -50,7 +50,7 @@ class ItemActionTest(unittest.TestCase):
         self.assertEqual(response.gain.finance.coin, 2000)
 
         item = self.player.item_package.get_item(item_pb.item_no)
-        self.assertEqual(item.num, 1)
+        self.assertEqual(item.num, 11)
 
         item_pb = ItemPB()
         item_pb.item_no = 1000112
