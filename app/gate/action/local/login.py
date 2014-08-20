@@ -32,14 +32,14 @@ def character_login_4(key, dynamic_id, request_proto):
     return response[0].SerializePartialToString()
 
 
-def enter_scene(dynamic_id):
-    now_node = SceneSerManager().get_best_sceneid()
-
-    # pull message from transit
-    vplayer = VCharacterManager().get_by_dynamic_id(dynamic_id)
-    GlobalObject().remote['transit'].callRemote("pull_message", vplayer.character_id)
-
-    return GlobalObject().root.callChild(now_node, 601, dynamic_id, 1)
+# def enter_scene(dynamic_id):
+#     now_node = SceneSerManager().get_best_sceneid()
+#
+#     pull message from transit
+    # vplayer = VCharacterManager().get_by_dynamic_id(dynamic_id)
+    # GlobalObject().remote['transit'].callRemote("pull_message", vplayer.character_id)
+    #
+    # return GlobalObject().root.callChild(now_node, 601, dynamic_id, 1)
 
 
 def __character_login(dynamic_id, token):
@@ -68,7 +68,7 @@ def __character_login(dynamic_id, token):
     v_character.node = now_node
 
     # pull message from transit
-    GlobalObject().remote['transit'].callRemoteNotForResult("pull_message", user.user_id)
+    GlobalObject().remote['transit'].callRemote("pull_message", user.user_id)
 
     SceneSerManager().add_client(now_node, dynamic_id)
 

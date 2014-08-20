@@ -89,27 +89,30 @@ def add_guild_to_rank(g_id):
 
 @rootserviceHandle
 def push_message(topic_id, character_id, args, kw):
-    print 'gate receive push message'
+    # print 'gate receive push message'
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
+    # print VCharacterManager().character_client
     if oldvcharacter:
-        print 'gate found character to push message'
-        GlobalObject().root.callChild(oldvcharacter.node, topic_id, oldvcharacter.dynamic_id, args, kw)
+        print 'gate pull message found character to push message:', character_id
+        return GlobalObject().root.callChild(oldvcharacter.node,
+                                             *(topic_id, oldvcharacter.dynamic_id, False) + args,
+                                             **kw)
     else:
-        print 'gate cant found character to push message to transit'
-        GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
+        print 'gate pull message cant found character to push message to transit'
+        return GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
 
 
-def pull_message(topic_id, character_id, args, kw):
-    print 'gate receive pull message'
-
-    oldvcharacter = VCharacterManager().get_by_id(character_id)
-    if oldvcharacter:
-        print 'gate found character to push message'
-        GlobalObject().root.callChild(oldvcharacter.node, topic_id, oldvcharacter.dynamic_id, args, kw)
-    else:
-        print 'gate cant found character to push message to transit'
-        GlobalObject().remote['transit'].callRemote("pull_message", topic_id, character_id, args, kw)
+# def pull_message(topic_id, character_id, args, kw):
+#     print 'gate receive pull message'
+#
+#     oldvcharacter = VCharacterManager().get_by_id(character_id)
+#     if oldvcharacter:
+#         print 'gate found character to push message'
+#         GlobalObject().root.callChild(oldvcharacter.node, topic_id, oldvcharacter.dynamic_id, args, kw)
+#     else:
+#         print 'gate cant found character to push message to transit'
+#         GlobalObject().remote['transit'].callRemote("pull_message", topic_id, character_id, args, kw)
 
 
 remoteservice = CommandService("transitremote")
@@ -117,13 +120,15 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 
 @remoteserviceHandle('transit')
-def send_message_to_character_100100(topic_id, character_id, *args, **kw):
-    print 'gate send message to character topic id:%d character:%d' % (topic_id, character_id)
+def send_message_to_character_100001(topic_id, character_id, *args, **kw):
+    print 'gate send message to character topic id:%d character:%d' % (topic_id, character_id), args
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
-        print 'gate found character to pull message:', oldvcharacter.__dict__
-        return GlobalObject().root.callChild(oldvcharacter.node, *((topic_id, oldvcharacter.dynamic_id) + args), **kw)
+        # print 'gate found character to pull message:', oldvcharacter.__dict__
+        return GlobalObject().root.callChild(oldvcharacter.node,
+                                             *((topic_id, oldvcharacter.dynamic_id, True) + args),
+                                             **kw)
 
 
 # @rootserviceHandle

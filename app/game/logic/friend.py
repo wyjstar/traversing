@@ -53,14 +53,21 @@ def add_friend_request(dynamic_id, data, **kwargs):
         push_object(1010, player.base_info.id, invitee_player.dynamic_id)
         invitee_player.friends.save_data()
     else:
-        push_message(10000, target_id, 1, 2, 3, 'a', 'b')
-        friend_offline = FriendOffline(target_id)
-        if not friend_offline.add_applicant(player.base_info.id):
+        if not push_message(1050, target_id, player.base_info.id):
             response.result = False
             response.result_no = 2  # offline fail
             return response.SerializePartialToString()  # fail
 
     return response.SerializePartialToString()
+
+
+@have_player
+def add_friend_request_remote(dynamic_id, is_logining, target_id, **kwargs):
+    player = kwargs.get('player')
+    if player.friends.add_applicant(target_id):
+        print 'remote add applicant success', is_logining
+    print 'remote add applicant fail', is_logining
+    return True
 
 
 @have_player
@@ -98,13 +105,21 @@ def become_friends(dynamic_id, data, **kwargs):
             inviter_player.friends.save_data()
             player.friends.save_data()
         else:
-            friend_offline = FriendOffline(target_id)
-            if not friend_offline.add_friend(player.base_info.id):
+            if not push_message(1051, target_id, player.base_info.id):
                 response.result = False
                 print 'offline player add friend fail'
 
         # response.result_no += 1
     return response.SerializePartialToString()
+
+
+@have_player
+def become_friends_remote(dynamic_id, is_logining, target_id, **kwargs):
+    player = kwargs.get('player')
+    if player.friends.add_friend(target_id, False):
+        print 'remote add friend success:', is_logining
+    print 'remote add friend fail:', is_logining
+    return True
 
 
 @have_player

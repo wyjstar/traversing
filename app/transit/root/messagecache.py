@@ -16,9 +16,9 @@ class MessageCache:
     def cache(self, topic_id, character_id, *args, **kw):
         key = '%d_%d' % (character_id, topic_id)
         value = marshal.dumps({'topic_id': topic_id,
-                               'character': character_id,
+                               'character_id': character_id,
                                'args': args,
-                               '_kw': kw})
+                               'kw': kw})
         self._redis[key] = value
 
     def get(self, character_id):
@@ -32,8 +32,11 @@ class MessageCache:
                 yield request
 
     def delete(self, topic_id, character_id):
-        key = '%d_%d' % (character_id, topic_id)
-        self._redis.delete(key)
+        key = '%s_%s' % (character_id, topic_id)
+        if self._redis.exists(key):
+            self._redis.delete(key)
+        else:
+            print 'cant find message by key:', key
 
 
 message_cache = MessageCache()
