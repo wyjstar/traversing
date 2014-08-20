@@ -120,7 +120,7 @@ def gain(player, item_group):
                 print chip_config
                 hero_chip_config_item = chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
-                hero_chip_num = hero_chip_config_item.need_num
+                hero_chip_num = hero_chip_config_item.needNum
 
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)

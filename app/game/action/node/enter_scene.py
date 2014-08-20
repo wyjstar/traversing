@@ -6,16 +6,17 @@ from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
+from test.init_data.init_data import init
 
 
 @remote_service_handle
 def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
     player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
-
-    # print 'enter scene:', player.__dict__
-
     PlayersManager().add_player(player)
+    # player = mock_player(player)
+    # init(player)
+
     responsedata = GameLoginResponse()
     responsedata.res.result = True
     responsedata.id = player.base_info.id
@@ -39,3 +40,13 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata.pvp_times = player.pvp_times
 
     return responsedata.SerializeToString()
+
+
+def mock_player(player):
+    if player.base_info.id != 1:
+        PlayersManager().drop_player(player)
+
+    player1 = PlayersManager().get_player_by_id(1)
+    player1.dynamic_id = player.dynamic_id
+    player1.base_info.base_name = player.base_info.base_name
+    return player1

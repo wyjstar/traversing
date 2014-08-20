@@ -56,7 +56,7 @@ class CharacterMailComponent(Component):
     def add_exist_mail(self, mail):
         self._mails[mail.mail_id] = mail
 
-    def add_mail(self, sender_id, sender_name, title, content, mail_type, send_time, bag):
+    def add_mail(self, sender_id, sender_name, title, content, mail_type, send_time, prize):
         """添加邮件"""
         if mail_type == 1:  # 领取体力邮件不能超过15个
             mails = self.get_mails_by_type(1)
@@ -69,10 +69,11 @@ class CharacterMailComponent(Component):
         mail = Mail(mail_id=mail_id, character_id=character_id,
                     sender_id=sender_id, sender_name=sender_name,
                     title=title, content=content,
-                    mail_type=mail_type, send_time=send_time, bag=bag)
+                    mail_type=mail_type, send_time=send_time, prize=prize)
         self._mails[mail_id] = mail
         self.new_mail_data(mail)
         self.save_data()
+        return mail
 
     def get_mails(self):
         """获取角色邮件列表

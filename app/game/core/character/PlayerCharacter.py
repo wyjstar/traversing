@@ -129,6 +129,10 @@ class PlayerCharacter(Character):
     def dynamic_id(self):
         return self._dynamic_id
 
+    @dynamic_id.setter
+    def dynamic_id(self, value):
+        self._dynamic_id = value
+
     @property
     def hero_component(self):
         return self._hero_component

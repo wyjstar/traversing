@@ -2,7 +2,7 @@
 """
 created by server on 14-8-14下午6:32.
 """
-from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailRequest, ReadMailResponse
+from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailRequest, ReadMailResponse, ReceiveMailResponse
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
@@ -45,6 +45,8 @@ def read_mail(dynamic_id, mail_ids, mail_type, **kwargs):
     """读取邮件"""
     player = kwargs.get('player')
     response = ReadMailResponse()
+    print "mail_ids", mail_ids
+    print "mail_type", mail_type
     if mail_type == 1:
         # 领取赠送体力
         result = check_gives(mail_ids, player)
@@ -58,12 +60,14 @@ def read_mail(dynamic_id, mail_ids, mail_type, **kwargs):
             mail = player.mail_component.get_mail(mail_id)
             mail_return = {'sender_id': player.base_info.id,
                            'sender_name': player.base_info.base_name,
+                           'receive_id': mail.sender_id,
+                           'receive_name': mail.sender_name,
                            'title': mail.title,
                            'content': mail.content,
                            'mail_type': mail_type,
                            'send_time': int(time.time()),
-                           'bag_id': 0}
-            netforwarding.send_mail(mail)
+                           'prize': 0}
+            netforwarding.push_message(1305, mail.sender_id, mail_return)
         player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 2:
@@ -78,6 +82,7 @@ def read_mail(dynamic_id, mail_ids, mail_type, **kwargs):
             mail.is_readed = True
             mail.read_time = int(time.time())
 
+    print ("read mail")
     response.res.result = True
     return response.SerializePartialToString()
 
@@ -112,7 +117,40 @@ def delete_mail(dynamic_id, mail_ids, **kwargs):
 
 
 @have_player
-def receive_mail(dynamic_id, proto_data, **kwargs):
+def receive_mail(dynamic_id, online, mail, **kwargs):
+    """在线/登录时，接收邮件"""
+    player = kwargs.get('player')
+    mail_type = mail.get("mail_type")
+    sender_id = mail.get("sender_id")
+    sender_name = mail.get("sender_name")
+    title = mail.get("title")
+    content = mail.get("content")
+    send_time = mail.get("send_time")
+    prize = mail.get("prize")
+
+    mail = player.mail_component.add_mail(sender_id, sender_name, title,
+                                   content, mail_type, send_time, prize)
+
+    print "online", online
+    if not online:
+
+        response = ReceiveMailResponse()
+        mail.update(response.mail)
+        netforwarding.push_object(1305, response.SerializePartialToString(), [player.dynamic_id])
+
+
+@have_player
+def send_mail(dynamic_id, mail, **kwargs):
+    """发送邮件， mail为json类型"""
+    player = kwargs.get('player')
+    mail['send_time'] = int(time.time())
+    receive_id = mail['receive_id']
+    # command:id 为收邮件的命令ID
+    netforwarding.push_message(1305, receive_id, mail)
+
+
+@have_player
+def receive_mail_from_client_1306(dynamic_id, proto_data, **kwargs):
     """在线/登录时，接收邮件"""
     player = kwargs.get('player')
     mail_type = proto_data.get("mail_type")
@@ -125,16 +163,6 @@ def receive_mail(dynamic_id, proto_data, **kwargs):
 
     player.mail_component.add_mail(sender_id, sender_name, title,
                                    content, mail_type, send_time, bag)
-
-
-@have_player
-def send_mail(dynamic_id, mail, **kwargs):
-    """发送邮件， mail为json类型"""
-    player = kwargs.get('player')
-    mail['send_time'] = int(time.time())
-    receive_id = mail['receive_id']
-    # command:id 为收邮件的命令ID
-    netforwarding.push_message(1305, receive_id, mail)
 
 
 

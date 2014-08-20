@@ -31,7 +31,7 @@ class PlayersManager:
         #TODO
         if self._players.has_key(player.base_info.id):
 #            raise Exception("系统记录冲突")
-            pass
+            return
         self._players[player.base_info.id] = player
 
     def get_player_by_id(self, pid):

@@ -49,7 +49,7 @@ message SendMailRequest
 }
 
 //接收邮件, command: 1305
-message ReceiveMailRequest
+message ReceiveMailResponse
 {
     required Mail_PB mail = 1;
 }

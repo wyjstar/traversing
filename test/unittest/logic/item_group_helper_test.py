@@ -125,27 +125,27 @@ class ItemGroupHelperTest(unittest.TestCase):
         self.assertEqual(equipment_chip.chip_num, 600, "%d_%d" % (equipment_chip.chip_num, 600))
         self.assertEqual(item.num, 4, "%d_%d" % (item.num, 4))
 
-        gain_data = {const.HERO: [1, 1, 10005]}
+        gain_data = {const.HERO: [1, 1, 10011]}
         gain(self.player, parse(gain_data))
 
-        hero = self.player.hero_component.get_hero(10005)
+        hero = self.player.hero_component.get_hero(10011)
         self.assertFalse(hero == None)
-        self.assertEqual(hero.hero_no, 10005, "%d_%d" % (hero.hero_no, 10005))
+        self.assertEqual(hero.hero_no, 10011, "%d_%d" % (hero.hero_no, 10011))
 
         gain_data = {const.HERO: [1, 1, 10005]}
         gain(self.player, parse(gain_data))
 
-        hero_chip = self.player.hero_chip_component.get_chip(1010005)
+        hero_chip = self.player.hero_chip_component.get_chip(1000113)
         self.assertEqual(hero_chip.num, 20, "%d_%d" % (hero_chip.num, 20))
 
         gain_data = {const.EQUIPMENT: [1, 1, 110005]}
         gain(self.player, parse(gain_data))
         lst = self.get_equipmnets_by_no(110005)
-        self.assertEqual(len(lst), 1)
+        self.assertEqual(len(lst), 2)
 
         gain(self.player, parse(gain_data))
         lst = lst = self.get_equipmnets_by_no(110005)
-        self.assertEqual(len(lst), 2)
+        self.assertEqual(len(lst), 3)
 
     def get_equipmnets_by_no(self, no):
         lst = []

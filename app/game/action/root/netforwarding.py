@@ -15,6 +15,7 @@ def push_object(topic_id, msg, send_list):
 def send_mail(mail):
     """send mail through gate"""
     if 'gate' in GlobalObject().remote.keys():
+        print "send_mail_gate"
         GlobalObject().remote['gate'].callRemote("send_mail", mail)
 
 
