@@ -80,6 +80,7 @@ skill_buff_config = {}
 
 
 all_config_name = {
+    'base_config': BaseConfig(),
     'hero_config': HeroConfig(),
     'hero_exp_config': HeroExpConfig(),
     'hero_breakup_config': HeroBreakupConfig(),
@@ -104,12 +105,6 @@ class ConfigFactory(object):
 
     @classmethod
     def creat_config(cls, config_name, config_value):
-        obj = None
-
-        if config_name in all_config_name.keys():
-            if config_name == 'bases_config':
-                obj = all_config_name[config_name](dict((k, cls.type_value(v['config_type'], v['config_value'])) for k, v in config_value.items()))
-                return obj
         return all_config_name[config_name].parser(config_value)
 
 for config_name in all_config_name.keys():
