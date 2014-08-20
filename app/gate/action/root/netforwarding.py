@@ -1,18 +1,16 @@
-#coding:utf8
+# coding:utf8
 """
 Created on 2013-8-14
 
 @author: lan (www.9miao.com)
 """
 from app.gate.core.users_manager import UsersManager
-from app.proto_file import item_pb2
-from gfirefly.server.globalobject import rootserviceHandle
+from gfirefly.server.globalobject import rootserviceHandle, remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
-from gtwisted.utils import log
-from shared.utils.const import const
 from app.gate.core.virtual_character_manager import VCharacterManager
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
+from gfirefly.utils.services import CommandService
 from shared.utils.ranking import Ranking
 
 
@@ -21,22 +19,20 @@ def forwarding(key, dynamic_id, data):
     """
     """
 
-    print '<<<data>>>', data, '<<<key>>>', key
-
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-        print 'dynamic_id:', dynamic_id
+        # print 'dynamic_id:', dynamic_id
         # print VCharacterManager().__dict__
-        print 'gaet forwarding oldvcharacter:', oldvcharacter
+        # print 'gate forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
             return
         # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
         #     return
-        node = VCharacterManager().get_node_by_dynamic_id(dynamic_id)
+        # node = VCharacterManager().get_node_by_dynamic_id(dynamic_id)
 
-        result = GlobalObject().root.callChild(node, key, dynamic_id, data)
+        result = GlobalObject().root.callChild(oldvcharacter.node, key, dynamic_id, data)
 
         return result
 
@@ -81,6 +77,7 @@ def get_guild_rank():
     print "cuick,gate,test,aaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbb,guild-rank,Level:", data
     return data
 
+
 @rootserviceHandle
 def add_guild_to_rank(g_id):
     print 'cuick,gid,test,cccccccccccccccccccc,gid:', g_id
@@ -88,6 +85,51 @@ def add_guild_to_rank(g_id):
     fifo_instance = Ranking.instance('Fifo')
     fifo_instance.add(g_id, level=1)  # 添加rank数据
     level_instance.add(g_id, level=1)  # 添加rank数据
+
+
+@rootserviceHandle
+def push_message(topic_id, character_id, args, kw):
+    # print 'gate receive push message'
+
+    oldvcharacter = VCharacterManager().get_by_id(character_id)
+    # print VCharacterManager().character_client
+    if oldvcharacter:
+        print 'gate pull message found character to push message:', character_id
+        return GlobalObject().root.callChild(oldvcharacter.node,
+                                             *(topic_id, oldvcharacter.dynamic_id, True) + args,
+                                             **kw)
+    else:
+        print 'gate pull message cant found character to push message to transit'
+        return GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
+
+
+# def pull_message(topic_id, character_id, args, kw):
+#     print 'gate receive pull message'
+#
+#     oldvcharacter = VCharacterManager().get_by_id(character_id)
+#     if oldvcharacter:
+#         print 'gate found character to push message'
+#         GlobalObject().root.callChild(oldvcharacter.node, topic_id, oldvcharacter.dynamic_id, args, kw)
+#     else:
+#         print 'gate cant found character to push message to transit'
+#         GlobalObject().remote['transit'].callRemote("pull_message", topic_id, character_id, args, kw)
+
+
+remoteservice = CommandService("transitremote")
+GlobalObject().remote['transit']._reference.addService(remoteservice)
+
+
+@remoteserviceHandle('transit')
+def send_message_to_character_100001(topic_id, character_id, *args, **kw):
+    print 'gate send message to character topic id:%d character:%d' % (topic_id, character_id), args
+
+    oldvcharacter = VCharacterManager().get_by_id(character_id)
+    if oldvcharacter:
+        # print 'gate found character to pull message:', oldvcharacter.__dict__
+        return GlobalObject().root.callChild(oldvcharacter.node,
+                                             *((topic_id, oldvcharacter.dynamic_id, False) + args),
+                                             **kw)
+
 
 # @rootserviceHandle
 # def opera_player(pid, oprea_str):

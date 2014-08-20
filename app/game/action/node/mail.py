@@ -3,9 +3,11 @@
 created by server on 14-8-14下午3:16.
 """
 from app.game.service.gatenoteservice import remote_service_handle
-from app.game.logic.mail import get_mails, read_mail, delete_mail
+from app.game.logic.mail import get_mails, read_mail, delete_mail, \
+    receive_mail, send_mail
 from app.proto_file.mailbox_pb2 import GetMailInfos, \
-    ReadMailRequest, DeleteMailRequest
+    ReadMailRequest, DeleteMailRequest, SendMailRequest
+from app.proto_file.common_pb2 import CommonResponse
 
 
 @remote_service_handle
@@ -29,27 +31,34 @@ def delete_mail_1303(dynamic_id, proto_data):
 
 
 @remote_service_handle
-def get_give_1304(dynamic_id, proto_data):
-    """获取赠送的体力， 并进行反馈操作"""
-    pass
-
-
-@remote_service_handle
-def get_prize_1305(dynamic_id, proto_data):
-    """获取系统奖励"""
-    pass
-
-
-@remote_service_handle
-def send_mail_1306(dynamic_id, proto_data):
+def send_mail_1304(dynamic_id, proto_data):
     """发送邮件"""
-    pass
+    request = SendMailRequest()
+    request.ParseFromString(proto_data)
+    mail = request.mail
+    mail = {'sender_id': mail.sender_id,
+            'sender_name': mail.sender_name,
+            'receive_id': mail.receive_id,
+            'receive_name': mail.receive_name,
+            'title': mail.title,
+            'content': mail.content,
+            'mail_type': mail.mail_type,
+            'send_time': mail.send_time,
+            'prize': mail.prize}
+    send_mail(dynamic_id, mail)
+    response = CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
 
 
 @remote_service_handle
-def receive_mail_1307(dynamic_id, proto_data):
-    """接受邮件"""
-    pass
+def receive_mail_1305(dynamic_id, proto_data):
+    """接收邮件"""
+    receive_mail(dynamic_id, proto_data)
+
+
+
+
 
 
 

@@ -33,8 +33,8 @@ class Service(object):
         key = target.__name__
         if self._targets.has_key(key):
             exist_target = self._targets.get(key)
-            raise "target [%d] Already exists,\
-            Conflict between the %s and %s" % (key, exist_target.__name__, target.__name__)
+            raise "target [%d] Already exists, Conflict between the %s and %s"\
+                  % (key, exist_target.__name__, target.__name__)
         self._targets[key] = target
 
     def unMapTarget(self, target):
@@ -63,7 +63,10 @@ class Service(object):
             log.err('the command ' + str(targetKey) + ' not Found on service')
             return None
         if targetKey not in self.unDisplay:
-            log.msg("call method %s on service[single]" % target.__name__)
+            log.msg("call method %s on service[%s]" % (target.__name__, self._name))
+        # if __debug__:
+        #     print 'args;:', args
+        #     print 'kw::', kw
         response = target(*args, **kw)
         return response
 
@@ -77,10 +80,10 @@ class CommandService(Service):
         """Add a target to the service.
         """
         key = int(target.__name__.split('_')[-1])
-        if self._targets.has_key(key):
+        if key in self._targets:
             exist_target = self._targets.get(key)
-            raise "target [%d] Already exists,\
-            Conflict between the %s and %s" % (key, exist_target.__name__, target.__name__)
+            raise "target [%d] Already exists, Conflict between the %s and %s"\
+                  % (key, exist_target.__name__, target.__name__)
         self._targets[key] = target
 
     def unMapTarget(self, target):

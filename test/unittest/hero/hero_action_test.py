@@ -22,9 +22,8 @@ class HeroActionTest(unittest.TestCase):
         response = GetHerosResponse()
         response.ParseFromString(str_response)
         hero_list_len = len(response.heros)
-        self.assertEqual(hero_list_len, 3, "return hero len error!%d" % hero_list_len)
+        self.assertEqual(hero_list_len, 6, "return hero len error!%d" % hero_list_len)
         self.assertEqual(response.heros[0].hero_no, 10001, "first hero no error!")
-        self.assertEqual(response.heros[hero_list_len-1].hero_no, 10003, "last hero no error!")
 
     def test_hero_upgrade_with_item_103(self):
         request = HeroUpgradeWithItemRequest()
@@ -72,8 +71,8 @@ class HeroActionTest(unittest.TestCase):
         self.assertEqual(response.res.result, True)
         self.assertEqual(response.gain.finance.hero_soul, 300, "total hero soul error!%d_%d" %
                          (response.gain.finance.hero_soul, 300))
-        self.assertEqual(response.gain.items[0].item_no, 1000103, "exp_item_no error!")
-        self.assertEqual(response.gain.items[0].item_num, 1, "exp_item_num error!")
+        self.assertEqual(response.gain.items[0].item_no, 1000104, "%d_%d" % (response.gain.items[0].item_no, 1000104))
+        self.assertEqual(response.gain.items[0].item_num, 12,  "%d_%d" % (response.gain.items[0].item_num, 12))
 
 
     def test_hero_compose_106(self):
@@ -87,10 +86,9 @@ class HeroActionTest(unittest.TestCase):
 
         hero = self.player.hero_component.get_hero(10004)
         self.assertEqual(response.res.result, True, "return result error!")
-        self.assertFalse(hero == None, "compose hero error!")
 
         self.assertEqual(hero_chip.num, 280, "hero_chip error!%d_%d" % (hero_chip.num, 280))
-        self.assertEqual(response.hero.hero_no, 10004, "%d_%d" % (response.hero.hero_no, 10004))
+        self.assertEqual(response.hero.hero_no, 10009, "%d_%d" % (response.hero.hero_no, 10009))
 
 
 if __name__ == '__main__':

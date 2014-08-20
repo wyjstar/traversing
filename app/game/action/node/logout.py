@@ -18,4 +18,3 @@ def net_conn_lost_602(dynamic_id):
     # TODO 是否需要保存数据
     PlayersManager().drop_player(player)
     return True
-

@@ -69,6 +69,10 @@ class RedisObject(Serializer):
         """
         produce_key = self.produceKey(key)
         value = self._client.get(produce_key)
+
+        if value and key == '_state':
+            value = int(value)
+
         if value and key == 'data':
             value = self.loads(cPickle.loads(value))
         return value
@@ -80,6 +84,9 @@ class RedisObject(Serializer):
         keynamelist = [self.produceKey(keyname) for keyname in keys]
         olddict = self._client.mget(keynamelist)
         newdict = dict(zip([keyname.split(':')[-1] for keyname in keynamelist], olddict))
+
+        if ('_state' in newdict) and newdict['_state']:
+            newdict['_state'] = int(newdict['_state'])
 
         if ('data' in newdict) and newdict['data']:
             newdict['data'] = self.loads(cPickle.loads(newdict['data']))

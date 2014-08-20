@@ -84,7 +84,8 @@ class User(object):
                              'fine_equipment_last_pick_time': 0,
                              'excellent_equipment_last_pick_time': 0,
                              'stamina': 0,
-                             'pvp_times': 0}
+                             'pvp_times': 0,
+                             'get_stamina_times': 0}
                 character_obj = tb_character_info.new(character)
                 self._character = character
         return character

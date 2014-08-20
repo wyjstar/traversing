@@ -61,7 +61,7 @@ class CharacterHerosComponent(Component):
         heros = []
         for no in hero_no_list:
             hero = self._heros.get(no)
-            if not hero:
+            if hero:
                 heros.append(hero)
         return heros
 

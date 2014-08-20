@@ -11,9 +11,21 @@
             "app": "app.adminserver",
             "log": "app/logs/admin.log"
         },
+        "transit": {
+            "rootport": 20000,
+            "name": "transit",
+            "app": "app.transitserver",
+            "log": "app/logs/transitserver.log"
+        },
         "gate": {
             "rootport": 10000,
             "name": "gate",
+            "remoteport": [
+                {
+                    "rootport": 20000,
+                    "rootname": "transit"
+                }
+            ],
             "mem": true,
             "db": true,
             "app": "app.gateserver",
@@ -141,7 +153,8 @@
                 "excellent_equipment_last_pick_time": "simple",
                 "stamina": "simple",
                 "pvp_times": "simple",
-                "last_login_time": "simple"
+                "last_login_time": "simple",
+                "get_stamina_times": "simple"
             }
         },
         "tb_nickname_mapping": {
@@ -257,7 +270,7 @@
                 "mail_ids": "complex"
             }
         },
-        "tb_mail": {
+        "tb_mail_info": {
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
