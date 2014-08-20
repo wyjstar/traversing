@@ -29,7 +29,7 @@ def sendData(sendstr,commandId):
     ProtoVersion = chr(0)
     ServerVersion = 0
     sendstr = sendstr
-    print 'len:', len(sendstr)
+
     data = struct.pack('!sssss3I',HEAD_0,HEAD_1,HEAD_2,\
                        HEAD_3,ProtoVersion,ServerVersion,\
                        len(sendstr)+4,commandId)
@@ -49,14 +49,17 @@ def resolveRecvdata(data):
     lenght = ud[6]
     command = ud[7]
     message = data[17:17+lenght]
-    print command, message
+    # print command, message
+    print "长度", command, 17+lenght
 
-    return command, message
+    return command, message, data[17+lenght:]
 
 # a client protocol
 times = 0
 class EchoClient(protocol.Protocol):
     """Once connected, send a message, then print the result."""
+    def __init__(self):
+        self.buff = ''
 
     def dateSend(self, argument, command_id):
         self.transport.write(sendData(argument.SerializeToString(), command_id))
@@ -70,11 +73,19 @@ class EchoClient(protocol.Protocol):
 
         # argument.user_name = 'ghh0001'
         # argument.password = '123457'
+
         self.dateSend(argument, 2)
 
     def dataReceived(self, data):
         "As soon as any data is received, write it back."
-        command, message = resolveRecvdata(data)
+        self.buff += data
+        print 'data', len(data)
+        while self.buff:
+            self.handle()
+
+    def handle(self):
+        command, message, self.buff = resolveRecvdata(self.buff)
+        print "buff", self.buff, "buff"
         player_id = 0
         if command == 2:
 
@@ -84,14 +95,11 @@ class EchoClient(protocol.Protocol):
 
             request = GameLoginRequest()
             request.token = argument.key.key
-            print request.token, "token"
-            print argument.result, "result"
             self.dateSend(request, 4)
 
         if command == 4:
             argument = GameLoginResponse()
             argument.ParseFromString(message)
-            print argument.id, 'id'
             player_id = argument.id
             send_mail_request = SendMailRequest()
             mail = send_mail_request.mail

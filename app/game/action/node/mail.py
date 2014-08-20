@@ -53,9 +53,9 @@ def send_mail_1304(dynamic_id, proto_data):
 
 
 @remote_service_handle
-def receive_mail_1305(dynamic_id, online, receive_id, mail):
+def receive_mail_1305(dynamic_id, online, mail):
     """接收邮件"""
-    return receive_mail(dynamic_id, online, mail)
+    receive_mail(dynamic_id, online, mail)
 
 
 @remote_service_handle
