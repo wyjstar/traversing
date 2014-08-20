@@ -6,7 +6,7 @@ from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
-from test.unittest.init_test_data import init
+from test.init_data.init_data import init
 
 
 @remote_service_handle
@@ -15,6 +15,7 @@ def enter_scene_601(dynamic_id, character_id):
     player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
     PlayersManager().add_player(player)
     # player = mock_player(player)
+    # init(player)
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True
@@ -42,11 +43,9 @@ def enter_scene_601(dynamic_id, character_id):
 
 
 def mock_player(player):
-    init()
     if player.base_info.id != 1:
         PlayersManager().drop_player(player)
 
-    print PlayersManager()._players, "players+++++++++++++"
     player1 = PlayersManager().get_player_by_id(1)
     player1.dynamic_id = player.dynamic_id
     player1.base_info.base_name = player.base_info.base_name
