@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='mailbox.proto',
   package='',
-  serialized_pb='\n\rmailbox.proto\x1a\x0c\x63ommon.proto\"\xd4\x01\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x02(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x12\n\nreceive_id\x18\x04 \x01(\x05\x12\x14\n\x0creceive_name\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x11\n\tmail_type\x18\x08 \x02(\x05\x12\x11\n\tsend_time\x18\t \x01(\x05\x12\x11\n\tis_readed\x18\n \x01(\x08\x12\r\n\x05prize\x18\x0b \x01(\t\"\'\n\x0cGetMailInfos\x12\x17\n\x05mails\x18\x01 \x03(\x0b\x32\x08.Mail_PB\"6\n\x0fReadMailRequest\x12\x10\n\x08mail_ids\x18\x01 \x03(\t\x12\x11\n\tmail_type\x18\x02 \x01(\x05\"V\n\x10ReadMailResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"$\n\x11\x44\x65leteMailRequest\x12\x0f\n\x07mail_id\x18\x01 \x03(\t\")\n\x0fSendMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB\",\n\x12ReceiveMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB')
+  serialized_pb='\n\rmailbox.proto\x1a\x0c\x63ommon.proto\"\xd4\x01\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x02(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x12\n\nreceive_id\x18\x04 \x01(\x05\x12\x14\n\x0creceive_name\x18\x05 \x01(\t\x12\r\n\x05title\x18\x06 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x07 \x01(\t\x12\x11\n\tmail_type\x18\x08 \x02(\x05\x12\x11\n\tsend_time\x18\t \x01(\x05\x12\x11\n\tis_readed\x18\n \x01(\x08\x12\r\n\x05prize\x18\x0b \x01(\t\"\'\n\x0cGetMailInfos\x12\x17\n\x05mails\x18\x01 \x03(\x0b\x32\x08.Mail_PB\"6\n\x0fReadMailRequest\x12\x10\n\x08mail_ids\x18\x01 \x03(\t\x12\x11\n\tmail_type\x18\x02 \x01(\x05\"V\n\x10ReadMailResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"$\n\x11\x44\x65leteMailRequest\x12\x0f\n\x07mail_id\x18\x01 \x03(\t\")\n\x0fSendMailRequest\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB\"-\n\x13ReceiveMailResponse\x12\x16\n\x04mail\x18\x01 \x02(\x0b\x32\x08.Mail_PB')
 
 
 
@@ -271,15 +271,15 @@ _SENDMAILREQUEST = _descriptor.Descriptor(
 )
 
 
-_RECEIVEMAILREQUEST = _descriptor.Descriptor(
-  name='ReceiveMailRequest',
-  full_name='ReceiveMailRequest',
+_RECEIVEMAILRESPONSE = _descriptor.Descriptor(
+  name='ReceiveMailResponse',
+  full_name='ReceiveMailResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='mail', full_name='ReceiveMailRequest.mail', index=0,
+      name='mail', full_name='ReceiveMailResponse.mail', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -295,21 +295,21 @@ _RECEIVEMAILREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=512,
-  serialized_end=556,
+  serialized_end=557,
 )
 
 _GETMAILINFOS.fields_by_name['mails'].message_type = _MAIL_PB
 _READMAILRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _READMAILRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _SENDMAILREQUEST.fields_by_name['mail'].message_type = _MAIL_PB
-_RECEIVEMAILREQUEST.fields_by_name['mail'].message_type = _MAIL_PB
+_RECEIVEMAILRESPONSE.fields_by_name['mail'].message_type = _MAIL_PB
 DESCRIPTOR.message_types_by_name['Mail_PB'] = _MAIL_PB
 DESCRIPTOR.message_types_by_name['GetMailInfos'] = _GETMAILINFOS
 DESCRIPTOR.message_types_by_name['ReadMailRequest'] = _READMAILREQUEST
 DESCRIPTOR.message_types_by_name['ReadMailResponse'] = _READMAILRESPONSE
 DESCRIPTOR.message_types_by_name['DeleteMailRequest'] = _DELETEMAILREQUEST
 DESCRIPTOR.message_types_by_name['SendMailRequest'] = _SENDMAILREQUEST
-DESCRIPTOR.message_types_by_name['ReceiveMailRequest'] = _RECEIVEMAILREQUEST
+DESCRIPTOR.message_types_by_name['ReceiveMailResponse'] = _RECEIVEMAILRESPONSE
 
 class Mail_PB(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -347,11 +347,11 @@ class SendMailRequest(_message.Message):
 
   # @@protoc_insertion_point(class_scope:SendMailRequest)
 
-class ReceiveMailRequest(_message.Message):
+class ReceiveMailResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _RECEIVEMAILREQUEST
+  DESCRIPTOR = _RECEIVEMAILRESPONSE
 
-  # @@protoc_insertion_point(class_scope:ReceiveMailRequest)
+  # @@protoc_insertion_point(class_scope:ReceiveMailResponse)
 
 
 # @@protoc_insertion_point(module_scope)

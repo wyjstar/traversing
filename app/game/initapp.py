@@ -23,5 +23,5 @@ def load_module():
     from action.node import friend
     from action.node import mail
     from action.node import player
-    # init()
+    init()
 

@@ -1,5 +1,5 @@
 
-œ>
+ù?
 traversing_one.proto"0
 LinkPB
 link_no (
@@ -59,15 +59,21 @@ chapter_id (
 equipment_chip_no (
 equipment_chip_num ("F
 GetEquipmentChipsResponse)
-equipment_chips (2.EquipmentChipPB"á
-Mail_PB
-	sender_id (	
-sender_name (	
-title (	
-content (
-	mail_type (
-	send_time (
-bag_id ("'
+equipment_chips (2.EquipmentChipPB"‘
+Mail_PB
+mail_id (	
+	sender_id (
+sender_name (	
+
+receive_id (
+receive_name (	
+title (	
+content (	
+	mail_type (
+	send_time	 (
+	is_readed
+ (
+prize (	"'
 GetMailInfos
 mails (2.Mail_PB"6
 ReadMailRequest
@@ -79,8 +85,8 @@ chapter_id (
 DeleteMailRequest
 mail_id (	")
 SendMailRequest
-mail (2.Mail_PB",
-ReceiveMailRequest
+mail (2.Mail_PB"-
+ReceiveMailResponse
 mail (2.Mail_PB"9
 
 HeroChipPB

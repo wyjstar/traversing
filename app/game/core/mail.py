@@ -3,6 +3,8 @@
 created by server on 14-8-14下午3:20.
 """
 from app.game.redis_mode import tb_mail_info
+import json
+import cPickle
 
 
 class Mail(object):
@@ -37,7 +39,7 @@ class Mail(object):
         self._is_readed = mail_prop.get("is_readed")
         self._send_time = mail_prop.get("send_time")
         self._read_time = mail_prop.get("read_time")
-        self._prize = mail_prop.get("prize")
+        self._prize = cPickle.loads(mail_prop.get("prize"))
 
     @property
     def mail_id(self):
@@ -57,15 +59,15 @@ class Mail(object):
 
     @property
     def sender_id(self):
-        return self.sender_id
+        return self._sender_id
 
     @property
     def sender_name(self):
-        return self.sender_name
+        return self._sender_name
 
     @property
     def send_time(self):
-        return self.send_time
+        return self._send_time
 
     @property
     def is_readed(self):
@@ -96,7 +98,8 @@ class Mail(object):
         mail_pb.mail_type = self._mail_type
         mail_pb.send_time = self._send_time
         mail_pb.is_readed = self._is_readed
-        mail_pb.prize = self._prize
+
+        mail_pb.prize = json.dumps(self._prize)
 
     def mail_proerty_dict(self):
         mail_property = {
@@ -108,7 +111,7 @@ class Mail(object):
             'content': self._content,
             'is_readed': self._is_readed,
             'send_time': self._send_time,
-            'prize': self._prize
+            'prize': cPickle.dumps(self._prize)
         }
         return mail_property
 

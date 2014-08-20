@@ -42,7 +42,10 @@ class MailActionTest(unittest.TestCase):
 
     def test_read_mail_1302(self):
         # 赠送体力
-        read_mail(1, ['001'], 1)
+        response_data = read_mail(1, ['001'], 1)
+        response = ReadMailResponse()
+        response.ParseFromString(response_data)
+        print response, "read_mail"
         mail = self.player.mail_component.get_mail('001')
         self.assertEqual(mail, None)
         # 领奖
@@ -66,20 +69,3 @@ class MailActionTest(unittest.TestCase):
         mail = self.player.mail_component.get_mail('003')
         self.assertEqual(mail, None)
 
-    def test_send_mail_1304(self):
-        mail = {'sender_id': 1,
-                'sender_name': 'player1',
-                'receive_id': 2,
-                'receive_name': 'player2',
-                'title': 'title10',
-                'content': 'content10',
-                'mail_type': 4,
-                'send_time': 0,
-                'prize': None}
-        send_mail(1, mail)
-        receiver = PlayersManager().get_player_by_id(2)
-        mails = receiver.mail_component.get_mails()
-        self.assertEqual(len(mails), 1, "%d_%d" % (len(mails), 1))
-
-    def test_receive_mail_1305(self):
-        pass
