@@ -14,6 +14,7 @@ class BattleUnit(object):
         self._quality = 2  # 战斗单位品质
         self._normal_skill = 3  # 战斗单位普通技能
         self._rage_skill = 4  # 战斗单位怒气技能
+        self._break_skills = 16  # 战斗单位突破技能
         self._hp = 5  # 战斗单位血量
         self._atk = 6  # 战斗单位攻击
         self._physical_def = 7  # 战斗单位物理防御
@@ -145,3 +146,11 @@ class BattleUnit(object):
     @is_boss.setter
     def is_boss(self, is_boss):
         self._is_boss = is_boss
+
+    @property
+    def break_skills(self):
+        return self._break_skills
+
+    @break_skills.setter
+    def break_skills(self, skills):
+        self._break_skills = skills

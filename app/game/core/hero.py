@@ -2,6 +2,9 @@
 """
 created by server on 14-6-25下午5:27.
 """
+from app.game.core.fight.skill import Skill
+from app.game.core.fight.skill_helper import SkillHelper
+from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.game_configs import hero_config
 from shared.db_opear.configs_data.game_configs import hero_exp_config
@@ -117,10 +120,10 @@ class Hero(object):
         """根据属性和等级计算卡牌属性
         """
         item_config = hero_config.get(self._hero_no)
-        hero_no = self._hero_no
-        quality = item_config.quality
-        normal_skill = item_config.normalSkill
-        rage_skill = item_config.rageSkill
+
+        hero_no = self._hero_no  # 英雄编号
+        quality = item_config.quality  # 英雄品质
+
         hp = item_config.hp + self._level * item_config.growHp  # 血
         atk = item_config.atk + self._level * item_config.growAtk  # 攻击
         physica_def = item_config.physicaDef + self._level * item_config.growPhysicaDef  # 物理防御
@@ -132,15 +135,31 @@ class Hero(object):
         cri_ded_coeff = item_config.criDedCoeff  # 暴击减免系数
         block = item_config.block  # 格挡率
 
-        break_skill_ids = self.__break_skills()
+        normal_skill = self.normal_skill
+        rage_skill = self.rage_skill
+        break_skills = self.break_skills
 
         return CommonItem(
             dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
                  physica_def=physica_def, magic_def=magic_def,
                  hit=hit, dodge=dodge, cri=cri, cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block,
-                 break_skill_ids=break_skill_ids))
+                 break_skills=break_skills))
 
-    def __break_skills(self):
+    def break_attr(self):
+        """突破技能带来的属性加成
+        """
+        skills = []
+        for skill_id in self.break_skill_ids:
+            skill = Skill(skill_id)
+            skill.init_attr()
+            skills.append(skill)
+        skill_helper = SkillHelper(skills)
+        skill_helper.init_attr()
+        attr = skill_helper.parse_buffs()
+        return attr
+
+    @property
+    def break_skill_ids(self):
         """根据突破等级取得突破技能ID
         """
         breakup_config = hero_breakup_config.get(self._hero_no)
@@ -157,6 +176,108 @@ class Hero(object):
         """英雄羁绊配置数据
         """
         return link_config.get(self._hero_no)
+
+    @property
+    def normal_skill_id(self):
+        """普通技能ID
+        """
+        item_config = hero_config.get(self._hero_no)
+        skill_id = item_config.normalSkill  # 普通技能
+        return skill_id
+
+    @property
+    def rage_skill_id(self):
+        """怒气技能ID
+        """
+        item_config = hero_config.get(self._hero_no)
+        rage_id = item_config.rageSkill  # 怒气技能
+        return rage_id
+
+    @property
+    def group_by_normal(self):
+        """根据普通技能ID获得技能buff组
+        """
+        normal_skill_id = self.normal_skill_id
+        normal_skill_config = game_configs.skill_config.get(normal_skill_id)
+        normal_group = normal_skill_config.group[:]  # 取得一个拷贝
+        return normal_group
+
+    @property
+    def group_by_rage(self):
+        """根据怒气技能ID获得技能buff组
+        """
+        rage_skill_id = self.rage_skill_id
+        rage_skill_config = game_configs.skill_config.get(rage_skill_id)
+        rage_group = rage_skill_config.group[:]  # 取得一个拷贝
+        return rage_group
+
+    @property
+    def normal_skill(self):
+        """普通技能ID，buff组
+        """
+        normal_id = self.normal_skill_id  # 普通技能ID
+        normal_group = self.normal_skill  # 普通技能buff组
+        normal_group = self.__assemble_skills(normal_group)
+        return [normal_id] + normal_group
+
+    @property
+    def rage_skill(self):
+        """怒气技能ID，buff组
+        """
+        rage_id = self.rage_skill_id  # 怒气技能ID
+        rage_group = self.rage_skill  # 怒气技能buff组
+        rage_group = self.__assemble_skills(rage_group)
+        return [rage_id] + rage_group
+
+    @property
+    def break_skills(self):
+        """突破技能ID，buff组
+        """
+        skills = []
+        skill_ids = self.break_skill_ids
+        for skill_id in skill_ids:
+            skill = [skill_id]
+            skill_config = game_configs.skill_config.get(skill_id)  # 技能配置
+            group = skill_config.group  # buff组
+            for buff_id in group[:]:
+                buff_config = game_configs.skill_buff_config.get(buff_id)  # buff配置
+                trigger_type = buff_config.triggerType  # 触发类别
+                if trigger_type == 1 or trigger_type == 6 or trigger_type == 7 or trigger_type == 8 or trigger_type \
+                        == 9 or trigger_type == 10:
+                    continue
+                skill.append(buff_id)
+            skills.append(skill)
+        return skills
+
+    def __assemble_skills(self, buffs, mold=0):
+        """根据突破技能组装技能
+        @param buffs: 技能buff组
+        @param mold： 0：普通技能 1：怒气技能
+        @return: 普通技能ID，普通技能buff组，怒气技能ID，怒气技能buff组
+        """
+        skill_ids = self.break_skill_ids
+        for skill in skill_ids:
+            skill_config = game_configs.skill_config.get(skill)  # 技能配置
+            group = skill_config.group  # buff组
+            for buff_id in group:
+                buff_config = game_configs.skill_buff_config.get(buff_id)  # buff配置
+                trigger_type = buff_config.triggerType  # 触发类别
+                # 6-如果普通技能组击中敌人则生效
+                # 7-如果怒气技能组击中敌人则生效
+                # 8-普通技能组或怒气技能组击中敌人则生效
+                # 9-普通技能组或怒气技能是治疗技能则生效
+                # 10-普通技能组或怒气技能组释放前生效
+                if trigger_type == 6 and not mold:
+                    buffs.append(buff_id)
+                    continue
+                if trigger_type == 7 and mold:
+                    buffs.append(buff_id)
+                    continue
+                if trigger_type == 8 or trigger_type == 9 or trigger_type == 10:
+                    buffs.append(buff_id)
+                    continue
+        return buffs
+
 
 
 

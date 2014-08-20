@@ -6,9 +6,6 @@ import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
 from app.game.core.fight.battle_unit import BattleUnit
-from app.game.core.fight.buff import Buff
-from app.game.core.fight.skill_helper import SkillHelper
-from app.game.core.fight.skill import Skill
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 
@@ -32,15 +29,43 @@ class CharacterFightCacheComponent(Component):
         """初始创建红方单位
         """
         red_unit = []
-        infos = self.__get_hero_obj()
-        for info in infos:
-            hero = info.get('hero')
-            equipments = info.get('equipments')
+        for no, slot in self.line_up_slots.items():
 
-            if not hero:
-                red_unit.append(None)
+            # 英雄
+            hero_obj = slot.hero_slot.hero_obj
 
-            red = self.__assemble_hero(hero, equipments)
+            if not hero_obj:
+                continue
+
+            # hero_no, quality, hp, atk, physica_def, magic_def, hit
+            # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+            # rage_skill, break_skills
+
+            hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+
+            # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+            # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+
+            attr = CommonItem()
+            hero_break_attr = hero_obj.bread_attr()  # 英雄突破技能属性
+            attr += hero_break_attr
+
+            hero_link_attr = slot.hero_slot.link_attr  # 英雄羁绊技能属性
+            attr += hero_link_attr
+
+            # 装备
+            equ_slots = slot.equipment_slots
+
+            for equ_no, equ_slot in equ_slots.items():
+
+                # atk,hp, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+                equipment_base_attr = equ_slot.equipment_obj.calculate_attr()  # 装备基础属性，强化等级
+                attr += equipment_base_attr
+
+            equ_suit = slot.equ_suit  # 装备套装技能属性
+            attr += equ_suit
+
+            red = self.__assemble_hero(hero_base_attr, attr)
             red_unit.append(red)
         self._red_unit = red_unit
 
@@ -88,202 +113,56 @@ class CharacterFightCacheComponent(Component):
         self._drop_num = drop_num
         return drop_num
 
-    def __get_line_up(self):
-        """阵容编号
+    @property
+    def line_up_slots(self):
+        """阵容
         """
         slots = self.owner.line_up_component.line_up_slots
         return slots
 
-    def __get_hero_obj(self):
-        """取得阵容武将对象
-        """
-        slots = self.__get_line_up()
-
-        infos = []  # [{'hero': obj, 'equipment': [obj]}]
-        for slot in slots:
-            hero_info = {}
-            hero_id = slot.hero_no  # 英雄
-            if not hero_id:
-                hero_info['hero'] = None
-                infos.append(hero_info)
-                continue
-            hero = self.owner.hero_component.get_hero(hero_id)
-            hero_info['hero'] = hero
-            hero_info['equipments'] = []
-            equipment_ids = slot.equipment_ids
-            for equipment_id in equipment_ids.vlues():
-                if equipment_id:
-                    equipment = self.owner.equipments_obj.get_equipment(equipment_id)
-                    hero_info['equipments'].append(equipment)
-
-            infos.append(hero_info)
-
-        return infos
-
-    def __get_hero_links(self, hero):
-        links = self.owner.line_up_component.get_links()
-        if hero.hero_no in links:
-            hero_links = links.get(hero.hero_no, {})
-            return [key for key, value in hero_links.items() if value]
-        return []
-
-    def __parse_buffs(self, buffs):
-        """解析buffs
-        """
-        hp_up = 0  # HP上限增加
-        hp_up_rate = 0  # HP上限增加率
-        hp_down = 0  # HP上限减少
-        hp_down_rate = 0  # HP上限减少率
-
-        atk_up = 0  # ATK上限增加
-        atk_up_rate = 0  # ATK上限增加率
-        atk_down = 0  # ATK上限减少
-        atk_down_rate = 0  # ATK上限减少率
-
-        physical_def_up = 0  # 物理防御增加
-        physical_def_up_rate = 0  # 物理防御增加率
-        physical_def_down = 0  # 物理防御减少
-        physical_def_down_rate = 0  # 物理防御减少率
-
-        magic_def_up = 0  # 魔法防御增加
-        magic_def_up_rate = 0  # 魔法防御增加率
-        magic_def_down = 0  # 魔法防御减少
-        magic_def_down_rate = 0  # 魔法防御减少率
-
-        for buff in buffs:
-            if buff.effec_id == 4 and buff.value_type == 1:
-                hp_up += buff.value_effect
-                continue
-            if buff.effec_id == 4 and buff.value_type == 2:
-                hp_up_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 5 and buff.value_type == 1:
-                hp_down += buff.value_effect
-                continue
-
-            if buff.effec_id == 5 and buff.value_type == 2:
-                hp_down_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 6 and buff.value_type == 1:
-                atk_up += buff.value_effect
-                continue
-
-            if buff.effec_id == 6 and buff.value_type == 2:
-                atk_up_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 7 and buff.value_type == 1:
-                atk_down += buff.value_effect
-                continue
-
-            if buff.effec_id == 7 and buff.value_type == 2:
-                atk_down_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 10 and buff.value_type == 1:
-                physical_def_up += buff.value_effect
-                continue
-
-            if buff.effec_id == 10 and buff.value_type == 2:
-                physical_def_up_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 11 and buff.value_effect == 1:
-                physical_def_down += buff.value_effect
-                continue
-
-            if buff.effec_id == 11 and buff.value_type == 2:
-                physical_def_down_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 12 and buff.value_effect == 1:
-                magic_def_up += buff.value_effect
-                continue
-
-            if buff.effec_id == 12 and buff.value_type == 2:
-                magic_def_up_rate += buff.value_effect
-                continue
-
-            if buff.effec_id == 13 and buff.value_type == 1:
-                magic_def_down += buff.value_effect
-                continue
-
-            if buff.effec_id == 13 and buff.value_type == 2:
-                magic_def_down_rate += buff.value_effect
-                continue
-        return CommonItem(
-            dict(hp_up=hp_up, hp_up_rate=hp_up_rate, hp_down=hp_down, hp_down_rate=hp_down_rate, atk_up=atk_up,
-                 atk_up_rate=atk_up_rate, atk_down=atk_down, atk_down_rate=atk_down_rate,
-                 physical_def_up=physical_def_up, physical_def_up_rate=physical_def_up_rate,
-                 physical_def_down=physical_def_down, physical_def_down_rate=physical_def_down_rate,
-                 magic_def_up=magic_def_up, magic_def_up_rate=magic_def_up_rate, magic_def_down=magic_def_down,
-                 magic_def_down_rate=magic_def_down_rate))
-
-    def __assemble_hero(self, hero, equipments):
+    def __assemble_hero(self, base_attr, attr):
         """组装英雄战斗单位
         """
-        # 英雄属性 升级成长
-        common_item = hero.calculate_attr()
+        # base_attr: 英雄基础，等级 属性
+        # hero_no, quality, hp, atk, physica_def, magic_def, hit
+        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+        # rage_skill, break_skills
 
-        # 装备附加属性 强化成长
-        equ_atk = 0
-        equ_hp = 0
-        equ_physical_def = 0
-        equ_magic_def = 0
+        # attr: 属性
+        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
 
-        for equipment in equipments:
-            atk, hp, physical_def, magic_def = equipment.calculate_attr()
-            equ_atk += atk
-            equ_hp += hp
-            equ_physical_def += physical_def
-            equ_magic_def += magic_def
+        no = base_attr.hero_no
+        quality = base_attr.quality
 
-        # 技能附加属性
-        skill_ids = []
-        break_skill_ids = common_item.break_skill_ids  # 突破技能
-        link_skill_ids = self.__get_hero_links(hero)  # 羁绊技能
+        normal_skill = base_attr.normal_skill
+        rage_skill = base_attr.rage_skill
+        break_skills = base_attr.break_skills
 
-        skill_ids.extend(break_skill_ids)
-        skill_ids.extend(link_skill_ids)
+        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
+        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
+        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
+        magic_dif = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        hit = base_attr.hit + attr.hit
+        dodge = base_attr.dodge + attr.dodge
+        cri = base_attr.cri + attr.cri
+        cri_coeff = base_attr.cri_coeff + attr.cri_coeff
+        cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
+        block = base_attr.block + attr.block
+        is_boss = False
 
-        skills = []
-        for skill_id in skill_ids:
-            skill = Skill(skill_id)
-            skill.init_attr()
-        buff_helper = SkillHelper(skills)
-        buff_helper.init_attr()
-
-        common_attr = self.__parse_buffs(buff_helper.buffs)
-
-        no = common_item.hero_no
-        quality = common_item.quality
-        normal_skill = common_item.normal_skill
-        rage_skill = common_item.rage_skill
-        hp = common_item.hp + equ_hp + common_attr.hp_up + common_item.hp * common_attr.hp_up_rate - common_attr.hp_down - common_item.hp * common_attr.hp_down_rate
-        atk = common_item.atk + equ_atk + common_attr.atk_up + common_item.atk * common_attr.atk_up_rate - common_attr.atk_down - common_item.atk * common_attr.atk_down_rate
-        physical_def = common_item.physica_def + equ_physical_def + common_attr.physical_def_up + common_item.physica_def * common_attr.physical_def_up_rate - common_attr.physical_def_down - common_item.physica_def * common_attr.physical_def_down_rate
-        magic_dif = common_item.magic_def + equ_magic_def + common_attr.magic_def_up + common_item.magic_def * common_attr.magic_def_up_rate - common_attr.magic_def_down - common_item.magic_def * common_attr.magic_def_down_rate
-        hit = common_item.hit
-        dodge = common_item.dodge
-        cri = common_item.cri
-        cri_coeff = common_item.cri_coeff
-        cri_ded_coeff = common_item.cri_ded_coeff
-        block = common_item.block
-        is_boss = 15
-
-        battlt_unit = self.__do_assemble(no, quality, normal_skill, rage_skill, hp, atk, physical_def, magic_dif, hit,
-                                         dodge, cri, cri_coeff, cri_ded_coeff, block, is_boss)
+        battlt_unit = self.__do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def,
+                                         magic_dif, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, is_boss)
 
         return battlt_unit
 
-    def __do_assemble(self, no, quality, normal_skill, rage_skill, hp, atk, physical_def, magic_dif, hit, dodge,
-                      cri, cri_coeff, cri_ded_coeff, block, is_boss=False):
+    def __do_assemble(self, no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def, magic_dif,
+                      hit, dodge, cri, cri_coeff, cri_ded_coeff, block, is_boss=False):
         battle_unit = BattleUnit(no)
         battle_unit.quality = quality
         battle_unit.normal_skill = normal_skill
         battle_unit.rage_skill = rage_skill
+        battle_unit.break_skills = break_skills
         battle_unit.hp = hp
         battle_unit.atk = atk
         battle_unit.physical_def = physical_def

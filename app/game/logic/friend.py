@@ -62,11 +62,11 @@ def add_friend_request(dynamic_id, data, **kwargs):
 
 
 @have_player
-def add_friend_request_remote(dynamic_id, is_logining, target_id, **kwargs):
+def add_friend_request_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     if player.friends.add_applicant(target_id):
-        print 'remote add applicant success', is_logining
-    print 'remote add applicant fail', is_logining
+        print 'remote add applicant success', is_online
+    print 'remote add applicant fail', is_online
     return True
 
 
@@ -114,11 +114,11 @@ def become_friends(dynamic_id, data, **kwargs):
 
 
 @have_player
-def become_friends_remote(dynamic_id, is_logining, target_id, **kwargs):
+def become_friends_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     if player.friends.add_friend(target_id, False):
-        print 'remote add friend success:', is_logining
-    print 'remote add friend fail:', is_logining
+        print 'remote add friend success:', is_online
+    print 'remote add friend fail:', is_online
     return True
 
 
