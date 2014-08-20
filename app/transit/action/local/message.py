@@ -28,7 +28,7 @@ def pull_message(character_id):
             if type(result) is bool and result:
                 print 'delete message'
                 message_cache.delete(message.get('topic_id'), character_id)
+                count += 1
                 break
-        count += 1
     print 'pull message:', count
     return True

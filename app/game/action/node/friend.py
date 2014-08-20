@@ -82,5 +82,9 @@ def find_friend_request_1107(dynamic_id, data):
 
 
 @remote_service_handle
-def find_friend_request_1050(dynamic_id, target_id):
-    return add_friend_request_remote(dynamic_id, target_id)
+def add_friend_request_1050(dynamic_id, is_logining, target_id):
+    return add_friend_request_remote(dynamic_id, is_logining, target_id)
+
+@remote_service_handle
+def become_friends_1051(dynamic_id, is_logining, target_id):
+    return become_friends_remote(dynamic_id, is_logining, target_id)

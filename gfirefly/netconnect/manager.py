@@ -58,12 +58,13 @@ class ConnectionManager:
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息
         """
-        for target in sendList:
-            try:
+        try:
+            for target in sendList:
                 conn = self.getConnectionByID(target)
                 if conn:
                     conn.safeToWriteData(topicID, msg)
-            except Exception, e:
-                log.err(str(e))
+        except Exception, e:
+            print 'topic id:', topicID, '**', sendList
+            log.err(str(e))
 
 

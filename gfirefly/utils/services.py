@@ -67,7 +67,7 @@ class Service(object):
         # if __debug__:
         #     print 'args;:', args
         #     print 'kw::', kw
-        response = apply(target, args, kw)
+        response = target(*args, **kw)
         return response
 
 

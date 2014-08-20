@@ -95,7 +95,9 @@ def push_message(topic_id, character_id, args, kw):
     # print VCharacterManager().character_client
     if oldvcharacter:
         print 'gate pull message found character to push message:', character_id
-        return GlobalObject().root.callChild(oldvcharacter.node, *(topic_id, oldvcharacter.dynamic_id) + args, **kw)
+        return GlobalObject().root.callChild(oldvcharacter.node,
+                                             *(topic_id, oldvcharacter.dynamic_id, False) + args,
+                                             **kw)
     else:
         print 'gate pull message cant found character to push message to transit'
         return GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
@@ -124,7 +126,9 @@ def send_message_to_character_100001(topic_id, character_id, *args, **kw):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
         # print 'gate found character to pull message:', oldvcharacter.__dict__
-        return GlobalObject().root.callChild(oldvcharacter.node, *((topic_id, oldvcharacter.dynamic_id) + args), **kw)
+        return GlobalObject().root.callChild(oldvcharacter.node,
+                                             *((topic_id, oldvcharacter.dynamic_id, True) + args),
+                                             **kw)
 
 
 # @rootserviceHandle

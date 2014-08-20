@@ -123,6 +123,7 @@ class MMode(RedisObject):
             pk = self.get('_pk')
             props = self.dumps(props)
             prere = {pk: props.get(pk)}
+            del(props[pk])
             util.UpdateWithDict(tablename, props, prere)
             result = True
         else:
