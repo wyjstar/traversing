@@ -7,6 +7,7 @@ from app.game.component.equipment.equipment_attribute import EquipmentAttributeC
 from app.game.component.record.equipment_enhance import EquipmentEnhanceComponent
 from app.game.redis_mode import tb_equipment_info
 from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class Equipment(object):
@@ -116,5 +117,20 @@ class Equipment(object):
         hp = equ_config_obj.baseHp + equ_config_obj.growHp * self._attribute.strengthen_lv  # 血量
         physical_def = equ_config_obj.basePdef + equ_config_obj.growPdef * self._attribute.strengthen_lv  # 物理防御
         magic_def = equ_config_obj.baseMdef + equ_config_obj.growMdef * self._attribute.strengthen_lv  # 魔法防御
+        hit = equ_config_obj.hit  # 命中率
+        dodge = equ_config_obj.dodge  # 闪避率
+        cri = equ_config_obj.cri  # 暴击率
+        cri_coeff = equ_config_obj.criCoeff  # 暴击伤害系数
+        cri_ded_coeff = equ_config_obj.criDedCoeff  # 暴击减免系数
+        block = equ_config_obj.block  # 格挡率
 
-        return atk, hp, physical_def, magic_def
+        return CommonItem(dict(atk=atk,
+                               hp=hp,
+                               physical_def=physical_def,
+                               magic_def=magic_def,
+                               hit=hit,
+                               dodge=dodge,
+                               cri=cri,
+                               cri_coeff=cri_coeff,
+                               cri_ded_coeff=cri_ded_coeff,
+                               block=block))

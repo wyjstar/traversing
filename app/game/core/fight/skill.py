@@ -27,7 +27,7 @@ class Skill(object):
         for buff_no in group:
             buff_config = self.__get_buff_config(buff_no)
 
-            effec_id = buff_config.effecId  # 效果ID
+            effect_id = buff_config.effecId  # 效果ID
             trigger_type = buff_config.triggerType  # 触发类别
             value_type = buff_config.valueType  # 数值类型
             value_effect = buff_config.valueEffect  # 基础数值效果
@@ -35,7 +35,7 @@ class Skill(object):
             if trigger_type != 1:  # 战斗前显示
                 continue
 
-            buff = Buff(buff_no, effec_id, trigger_type, value_type, value_effect)
+            buff = Buff(buff_no, effect_id, trigger_type, value_type, value_effect)
             buffs.append(buff)
         self._buffs = buffs
 

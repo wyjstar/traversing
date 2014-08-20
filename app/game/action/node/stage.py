@@ -104,8 +104,30 @@ def fight_settlement_904(dynamic_id, pro_data):
 def assemble(unit_add, unit):
     unit_add.no = unit.no
     unit_add.quality = unit.quality
-    unit_add.normal_skill = unit.normal_skill
-    unit_add.rage_skill = unit.rage_skill
+
+    normal_skill = unit_add.normal_skill
+    if unit.normal_skill:
+        normal_skill.id = unit.normal_skill[0]
+        buffs = normal_skill.buffs
+        for buff in unit.normal_skill[1:]:
+            buffs.append(buff)
+
+    rage_skill = unit_add.rage_skill
+    if unit.rage_skill:
+        rage_skill.id = unit.rage_skill[0]
+        buffs = rage_skill.buffs
+        for buff in unit.rage_skill[1:]:
+            buffs.append(buff)
+
+    if unit.break_skills:
+        for break_skill in unit.break_skills:
+            if break_skill:
+                break_skill_add = unit_add.break_skill.add()
+                break_skill_add.id = break_skill[0]
+                buffs = break_skill_add.buffs
+                for buff in break_skill[1:]:
+                    buffs.append(buff)
+
     unit_add.hp = unit.hp
     unit_add.atk = unit.atk
     unit_add.physical_def = unit.physical_def
