@@ -11,7 +11,7 @@ from app.game.redis_mode import tb_character_guild
 from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank
 from app.game.redis_mode import  tb_character_info
 from shared.db_opear.configs_data.game_configs import guild_config
-# from shared.db_opear.configs_data.base_config import base_config
+from shared.db_opear.configs_data.game_configs import base_config
 # guild_config.get(2).exp
 
 @have_player
@@ -27,19 +27,16 @@ def create_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-
-    # TODO 判断等级够不够,从base——config里取，等级和元宝数
-    need_p_level = 20
-    need_money = 1000
-    if need_p_level > player.level.level:
-        response.result = False
-        response.message = "等级不够"
-        return response.SerializeToString()
-
-    if need_money > player.finance.gold:
-        response.result = False
-        response.message = "元宝不足"
-        return response.SerializeToString()
+    # TODO 判断等级够不够,元宝数够不够
+    # if base_config.get('create_level') > player.level.level:
+    #     response.result = False
+    #     response.message = "等级不够"
+    #     return response.SerializeToString()
+    #
+    # if base_config.get('create_money') > player.finance.gold:
+    #     response.result = False
+    #     response.message = "元宝不足"
+    #     return response.SerializeToString()
 
     if g_id != 0:
         response.result = False
@@ -81,6 +78,8 @@ def create_guild(dynamicid, data, **kwargs):
     guild_obj.save_data()
 
     # TODO 扣除元宝，保存
+    # player.finance.gold -= base_config.get('create_money')
+    # player.finance.save()
 
     response.result = True
     return response.SerializeToString()
@@ -101,10 +100,10 @@ def join_guild(dynamicid, data, **kwargs):
     m_exit_time = player.guild.exit_time
     the_time = int(time.time())-m_exit_time
 
-    if m_exit_time != 1 and the_time < (60*30):
+    if m_exit_time != 1 and the_time < base_config.get('exit_time'):
         response.result = False
         response.message = "退出公会办小时内不可加入公会"
-        response.spare_time = 60*30 - the_time
+        response.spare_time = base_config.get('exit_time') - the_time
         return response.SerializeToString()
 
     if m_g_id != 0:
@@ -277,7 +276,6 @@ def editor_call(dynamicid, data, **kwargs):
         guild_obj.editor_call(call)
         guild_obj.save_data()
         response.result = True
-        print "cuick,###############,TEST,call:", call, 'call_len:', len(call)
         return response.SerializeToString()
     else:
         response.result = False
@@ -498,13 +496,13 @@ def promotion(dynamicid, data, **kwargs):
         t_position = m_position - 1
         flag = 0
         if t_position == 2:
-            if list_len >= 1:
+            if list_len >= base_config.pos_p_num[0]:
                 flag = 1
         elif t_position == 3:
-            if list_len >= 2:
+            if list_len >= base_config.pos_p_num[1]:
                 flag = 1
         elif t_position == 4:
-            if list_len >= 3:
+            if list_len >= base_config.pos_p_num[2]:
                 flag = 1
         else:
             response.result = False
@@ -693,17 +691,21 @@ def get_role_list(dynamicid, data, **kwargs):
     if guild_p_list.values():
         for p_list in guild_p_list.values():
             for role_id in p_list:
-                role_info = response.role_info.add()
-                role_info.p_id = role_id
                 # TODO 获取名称,等级，职位，总贡献，杀敌
                 character_guild = tb_character_guild.getObjData(role_id)
-                info = character_guild.get("info")
+                character_info = tb_character_info.getObjData(role_id)
+                if character_info and character_guild:
+                    guild_info = character_guild.get("info")
+                    role_info = response.role_info.add()
+                    role_info.p_id = role_id
 
-                role_info.name = 'name'
-                role_info.level = 1
-                role_info.position = info.get("position")
-                role_info.all_contribution = info.get("all_contribution")
-                role_info.k_num = info.get("k_num")
+                    role_info.name = character_info['nickname'].encode("utf-8")
+                    role_info.level = character_info['level']
+
+                    role_info.position = guild_info.get("position")
+                    role_info.all_contribution = guild_info.get("all_contribution")
+                    role_info.k_num = guild_info.get("k_num")
+
         response.result = True
         return response.SerializeToString()
 
@@ -769,12 +771,14 @@ def get_apply_list(dynamicid, data, **kwargs):
     guild_apply = guild_obj.apply
     for role_id in guild_apply:
         # TODO 获取玩家name，等级，战斗力，vip等级
-        role_info = response.role_info.add()
-        role_info.p_id = role_id
-        role_info.name = 'name'
-        role_info.level = 1
-        role_info.vip_level = 1
-        role_info.fight_power = 1
+        character_info = tb_character_info.getObjData(role_id)
+        if character_info:
+            role_info = response.role_info.add()
+            role_info.p_id = role_id
+            role_info.name = character_info['nickname']
+            role_info.level = character_info['level']
+            role_info.vip_level = 1
+            role_info.fight_power = 1
 
     response.result = True
     return response.SerializeToString()
