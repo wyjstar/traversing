@@ -775,7 +775,7 @@ def get_apply_list(dynamicid, data, **kwargs):
         if character_info:
             role_info = response.role_info.add()
             role_info.p_id = role_id
-            role_info.name = character_info['nickname']
+            role_info.name = character_info['nickname'].encode("utf-8")
             role_info.level = character_info['level']
             role_info.vip_level = 1
             role_info.fight_power = 1
