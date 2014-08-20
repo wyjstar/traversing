@@ -73,6 +73,7 @@ class CharacterMailComponent(Component):
         self._mails[mail_id] = mail
         self.new_mail_data(mail)
         self.save_data()
+        return mail
 
     def get_mails(self):
         """获取角色邮件列表

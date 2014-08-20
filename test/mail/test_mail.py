@@ -111,6 +111,11 @@ class EchoClient(protocol.Protocol):
             response.ParseFromString(message)
             print "send response:", response.result
 
+        if command == 1305:
+            response = ReceiveMailResponse()
+            response.ParseFromString(message)
+            print "receive response:", response.mail
+
 
 
     def connectionLost(self, reason):

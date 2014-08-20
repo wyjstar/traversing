@@ -2,7 +2,7 @@
 """
 created by server on 14-8-14下午6:32.
 """
-from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailRequest, ReadMailResponse
+from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailRequest, ReadMailResponse, ReceiveMailResponse
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
@@ -117,7 +117,7 @@ def delete_mail(dynamic_id, mail_ids, **kwargs):
 
 
 @have_player
-def receive_mail(dynamic_id, mail, **kwargs):
+def receive_mail(dynamic_id, online, mail, **kwargs):
     """在线/登录时，接收邮件"""
     player = kwargs.get('player')
     mail_type = mail.get("mail_type")
@@ -128,8 +128,13 @@ def receive_mail(dynamic_id, mail, **kwargs):
     send_time = mail.get("send_time")
     prize = mail.get("prize")
 
-    player.mail_component.add_mail(sender_id, sender_name, title,
+    mail = player.mail_component.add_mail(sender_id, sender_name, title,
                                    content, mail_type, send_time, prize)
+
+    if online:
+        response = ReceiveMailResponse()
+        mail.update(response.mail)
+        netforwarding.push_object(1305, response.SerializePartialToString(), [player.base_info.id])
 
 
 @have_player
