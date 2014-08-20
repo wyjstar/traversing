@@ -26,6 +26,7 @@ print id(dbpool)
 from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
+from shared.db_opear.configs_data.guild_config import GuildConfig
 
 
 def init():
@@ -77,6 +78,7 @@ monster_config = {}
 monster_group_config = {}
 skill_config = {}
 skill_buff_config = {}
+guild_config = {}
 
 
 all_config_name = {
@@ -97,6 +99,7 @@ all_config_name = {
     'monster_group_config': MonsterGroupConfig(),
     'skill_config': SkillConfig(),
     'skill_buff_config': SkillBuffConfig(),
+    'guild_config': GuildConfig(),
 }
 
 

@@ -9,7 +9,10 @@ from app.game.redis_mode import tb_guild_info, tb_guild_name
 import time
 from app.game.redis_mode import tb_character_guild
 from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank
-from app.game.redis_mode import tb_nickname_mapping, tb_character_info
+from app.game.redis_mode import  tb_character_info
+from shared.db_opear.configs_data.game_configs import guild_config
+# from shared.db_opear.configs_data.base_config import base_config
+# guild_config.get(2).exp
 
 @have_player
 def create_guild(dynamicid, data, **kwargs):
@@ -24,14 +27,25 @@ def create_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    # TODO 判断等级够不够
+
+    # TODO 判断等级够不够,从base——config里取，等级和元宝数
+    need_p_level = 20
+    need_money = 1000
+    if need_p_level > player.level.level:
+        response.result = False
+        response.message = "等级不够"
+        return response.SerializeToString()
+
+    if need_money > player.finance.gold:
+        response.result = False
+        response.message = "元宝不足"
+        return response.SerializeToString()
 
     if g_id != 0:
         response.result = False
         response.message = "您已加入公会"
         return response.SerializeToString()
 
-    # TODO 判断元宝数够不够
     # TODO 判断name合法性，敏感字过滤
 
     if len(g_name) > 18:
@@ -66,7 +80,7 @@ def create_guild(dynamicid, data, **kwargs):
     player.guild.save_data()
     guild_obj.save_data()
 
-    # TODO 扣除元宝
+    # TODO 扣除元宝，保存
 
     response.result = True
     return response.SerializeToString()
@@ -108,15 +122,15 @@ def join_guild(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    # TODO 根据公会等级得到公会人数上限，取配置
-    if guild_obj.get_p_num() >= 30:
+    #  TODO 根据公会等级得到公会人数上限，取配置
+    if guild_obj.get_p_num() >= guild_config.get(guild_obj.level).p_max:
         response.result = False
         response.message = "公会已满员"
         return response.SerializeToString()
     else:
         guild_obj.join_guild(p_id)
         guild_obj.save_data()
-    # 返回
+
     response.result = True
     return response.SerializeToString()
 
@@ -149,7 +163,6 @@ def exit_guild(dynamicid, data, **kwargs):
         # 解散公会
         # 删除公会名字
         guild_name_data = tb_guild_name.getObjData(guild_obj.name)
-        print guild_name_data, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         if guild_name_data:
             guild_name_obj = tb_guild_name.getObj(guild_obj.name)
             guild_name_obj.delete()
@@ -296,7 +309,7 @@ def deal_apply(dynamicid, data, **kwargs):
         # TODO 根据公会等级得到公会人数上限，取配置
         p_ids = args.p_ids
 
-        if guild_obj.get_p_num()+len(p_ids) > 30:
+        if guild_obj.get_p_num()+len(p_ids) > guild_config.get(guild_obj.level).p_max:
             response.result = False
             response.message = "超出公会人数上限"
             return response.SerializeToString()
@@ -606,7 +619,7 @@ def worship(dynamicid, data, **kwargs):
         guild_obj.fund += 100  # 公会加经验，加资金，
         guild_obj.exp += 100
         player.guild.worship_time = new_time
-    # TODO 判断公会经验有没有升级！！！！！！！！！！
+    # TODO 判断公会经验有没有升级！！！！！！！！！！guild_config.get(guild_obj.level).exp
     player.guild.save_data()
     guild_obj.save_data()
     # 膜拜：公会贡献+，玩家公会贡献+。膜拜次数+。膜拜时间更新。公会资金+，公会经验+
