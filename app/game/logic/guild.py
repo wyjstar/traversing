@@ -9,10 +9,10 @@ from app.game.redis_mode import tb_guild_info, tb_guild_name
 import time
 from app.game.redis_mode import tb_character_guild
 from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank
-from app.game.redis_mode import  tb_character_info
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
-# guild_config.get(2).exp
+
 
 @have_player
 def create_guild(dynamicid, data, **kwargs):
@@ -27,7 +27,7 @@ def create_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    # TODO 判断等级够不够,元宝数够不够
+    # TODO 暂注
     # if base_config.get('create_level') > player.level.level:
     #     response.result = False
     #     response.message = "等级不够"
@@ -43,7 +43,7 @@ def create_guild(dynamicid, data, **kwargs):
         response.message = "您已加入公会"
         return response.SerializeToString()
 
-    # TODO 判断name合法性，敏感字过滤
+    # TODO 公会名 ，敏感字过滤
 
     if len(g_name) > 18:
         response.result = False
@@ -77,7 +77,7 @@ def create_guild(dynamicid, data, **kwargs):
     player.guild.save_data()
     guild_obj.save_data()
 
-    # TODO 扣除元宝，保存
+    # TODO 暂注
     # player.finance.gold -= base_config.get('create_money')
     # player.finance.save()
 
@@ -121,7 +121,6 @@ def join_guild(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    #  TODO 根据公会等级得到公会人数上限，取配置
     if guild_obj.get_p_num() >= guild_config.get(guild_obj.level).p_max:
         response.result = False
         response.message = "公会已满员"
@@ -194,7 +193,7 @@ def exit_guild(dynamicid, data, **kwargs):
                                                                     x[1]['k_num']), reverse=True)
             tihuan_id = new_list[0][0]
             tihuan_position = new_list[0][1].get('position')
-            # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
+
             character_guild = tb_character_guild.getObjData(tihuan_id)
             info = character_guild.get("info")
             if info.get("g_id") != player.guild.g_id:
@@ -255,7 +254,7 @@ def editor_call(dynamicid, data, **kwargs):
         response.result = True
         response.message = "公告内容超过字数限制"
         return response.SerializeToString()
-    # TODO 过滤敏感词语
+    # TODO 公告 ，过滤敏感词语
     data1 = tb_guild_info.getObjData(player.guild.g_id)
     if not data1:
         response.result = False
@@ -304,7 +303,6 @@ def deal_apply(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
     if res_type == 1:
-        # TODO 根据公会等级得到公会人数上限，取配置
         p_ids = args.p_ids
 
         if guild_obj.get_p_num()+len(p_ids) > guild_config.get(guild_obj.level).p_max:
@@ -446,7 +444,7 @@ def kick(dynamicid, data, **kwargs):
                 guild_obj.p_list = p_list
                 guild_obj.p_num -= 1
                 guild_obj.save_data()
-                # TODO 判断目标玩家再不在线，发消息，通知
+                # TODO 踢人。判断目标玩家再不在线，发消息，通知
                 character_guild = tb_character_guild.getObjData(p_id)
                 info = character_guild.get("info")
                 if info.get("g_id") == 0:
@@ -593,17 +591,35 @@ def worship(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    # TODO 查询每天可以膜拜的次数
-    # TODO 判断钱够不够,根据膜拜类型
-    # TODO 根据膜拜类型，加资源数，经验数不同。
-    can_wopship = 5
+    # TODO 查询每天可以膜拜的次数.----玩家vip查询
+    # 先判断是不是vip
+    if 0:
+        can_wopship = base_config.get('vip_worship_times') + base_config.get('worship_times')
+    else:
+        can_wopship = base_config.get('worship_times')
+
+    # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
+    worship_info = base_config.get('worship').get(w_type)
+
+    # TODO 暂注
+    # if worship_info[1] == 1:  # 1金币  2元宝
+    #     if worship_info[2] > player.finance.coin:
+    #         response.result = False
+    #         response.message = "金币不足"
+    #         return response.SerializeToString()
+    # else:
+    #     if worship_info[2] > player.finance.gold:
+    #         response.result = False
+    #         response.message = "元宝不足"
+    #         return response.SerializeToString()
+
     if (int(time.time())-player.guild.worship_time) < (60*60*24):
         if can_wopship > player.guild.worship:
             player.guild.worship += 1
-            player.guild.contribution += 100
-            player.guild.all_contribution += 100  # 配置
-            guild_obj.fund += 100  # 公会加经验，加资金，
-            guild_obj.exp += 100
+            player.guild.contribution += worship_info[5]
+            player.guild.all_contribution += worship_info[5]
+            guild_obj.fund += worship_info[4]
+            guild_obj.exp += worship_info[3]
         else:
             response.result = False
             response.message = "今天的膜拜次数已用完"
@@ -612,15 +628,19 @@ def worship(dynamicid, data, **kwargs):
         localtime = time.localtime(time.time())
         new_time = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', localtime), '%Y-%m-%d %H:%M:%S'))
         player.guild.worship += 1
-        player.guild.contribution += 100
-        player.guild.all_contribution += 100  # 配置
-        guild_obj.fund += 100  # 公会加经验，加资金，
-        guild_obj.exp += 100
+        player.guild.contribution += worship_info[5]
+        player.guild.all_contribution += worship_info[5]
+        guild_obj.fund += worship_info[4]
+        guild_obj.exp += worship_info[3]
         player.guild.worship_time = new_time
-    # TODO 判断公会经验有没有升级！！！！！！！！！！guild_config.get(guild_obj.level).exp
+
+    if guild_obj.exp >= guild_config.get(guild_obj.level).exp:
+        guild_obj.level += 1
+        guild_obj.exp -= guild_config.get(guild_obj.level).exp
+
     player.guild.save_data()
     guild_obj.save_data()
-    # 膜拜：公会贡献+，玩家公会贡献+。膜拜次数+。膜拜时间更新。公会资金+，公会经验+
+
     response.result = True
     response.message = "膜拜成功"
     return response.SerializeToString()
@@ -691,7 +711,6 @@ def get_role_list(dynamicid, data, **kwargs):
     if guild_p_list.values():
         for p_list in guild_p_list.values():
             for role_id in p_list:
-                # TODO 获取名称,等级，职位，总贡献，杀敌
                 character_guild = tb_character_guild.getObjData(role_id)
                 character_info = tb_character_info.getObjData(role_id)
                 if character_info and character_guild:
@@ -770,7 +789,7 @@ def get_apply_list(dynamicid, data, **kwargs):
 
     guild_apply = guild_obj.apply
     for role_id in guild_apply:
-        # TODO 获取玩家name，等级，战斗力，vip等级
+        # TODO 获取玩家 战斗力，vip等级
         character_info = tb_character_info.getObjData(role_id)
         if character_info:
             role_info = response.role_info.add()
