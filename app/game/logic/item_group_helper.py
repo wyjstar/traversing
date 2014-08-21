@@ -117,7 +117,7 @@ def gain(player, item_group):
             if player.hero_component.contain_hero(item_no):
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
-                print chip_config
+                print chip_config, item_no
                 hero_chip_config_item = chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.needNum

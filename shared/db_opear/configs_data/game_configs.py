@@ -120,7 +120,7 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     init()
-    pass
+    print big_bag_config
 
 
 
