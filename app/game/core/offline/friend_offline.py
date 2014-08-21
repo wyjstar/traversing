@@ -6,7 +6,7 @@ import datetime
 from app.game.redis_mode import tb_character_friend
 
 
-class FriendOffline():
+class ___delete_FriendOffline():
     def __init__(self, player_id):
         self._player_id = player_id
         self._player_data = tb_character_friend.getObjData(self._player_id)
@@ -41,7 +41,6 @@ class FriendOffline():
 
     def add_friend(self, friend_id):
         player_friends = self._player_data.get('friends')
-        player_blacklist = self._player_data.get('blacklist')
         player_applicant_list = self._player_data.get('applicants_list')
 
         if friend_id in player_friends:
@@ -60,12 +59,10 @@ class FriendOffline():
     def del_friend(self, friend_id):
         player_friends = self._player_data.get('friends')
 
-        if not friend_id in player_friends:
+        if friend_id not in player_friends:
             print 'offline del friend', 'can not find friend'
             return False
 
         player_friends.remove(friend_id)
         self._player_obj.update('friends', player_friends)
         return True
-
-
