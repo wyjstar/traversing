@@ -18,7 +18,7 @@ class CharacterHeroChipsComponent(Component):
         hero_chips = tb_character_hero_chip.getObjData(self.owner.base_info.id)
         if hero_chips:
             hero_chips_data = hero_chips.get('hero_chips', {})
-            for no, num in hero_chips_data:
+            for no, num in hero_chips_data.items():
                 hero_chip = HeroChip(no, num)
                 self._chips[no] = hero_chip
         else:

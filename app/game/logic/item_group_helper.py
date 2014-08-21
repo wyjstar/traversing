@@ -134,7 +134,7 @@ def gain(player, item_group):
 
         elif type_id == const.BIG_BAG:
             big_bag = BigBag(item_no)
-            gain(player, big_bag.get_drop_items())
+            return gain(player, big_bag.get_drop_items())
 
         elif type_id == const.EQUIPMENT:
             equipment = player.equipment_component.add_equipment(item_no)

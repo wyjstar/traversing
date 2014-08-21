@@ -15,5 +15,6 @@ if __name__ == '__main__':
     response2 = CommonResponse()
     response2.ParseFromString(data)
     print response2.result_no
+    print response2.message
 
 

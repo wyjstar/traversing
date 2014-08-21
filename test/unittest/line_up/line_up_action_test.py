@@ -11,6 +11,7 @@ from app.proto_file.line_up_pb2 import *
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.line_up import get_line_up_info
 from app.proto_file import line_up_pb2
+from app.proto_file import common_pb2
 
 
 class LineUpActionTest(unittest.TestCase):
@@ -18,8 +19,6 @@ class LineUpActionTest(unittest.TestCase):
         from test.unittest.init_test_data import init
         init()
         self.player = PlayersManager().get_player_by_id(1)
-        # self.add_hero(10001)
-        # self.add_hero(10002)
 
     def test_get_line_up_info_701(self):
         str_response = get_line_up_info(1)
@@ -30,9 +29,29 @@ class LineUpActionTest(unittest.TestCase):
         self.assertEqual(slot.hero.hero_no, 10001, "%d_%d" % (slot.hero.hero_no, 10001))
         self.assertEqual(slot.activation, True)
 
-        slot = response.slot[5]
-        self.assertEqual(slot.hero.hero_no, 0, "%d_%d" % (slot.hero.hero_no, 0))
-        self.assertEqual(slot.activation, False)
+        slot5 = response.slot[4]
+        self.assertEqual(slot5.hero.hero_no, 0, "%d_%d" % (slot5.hero.hero_no, 0))
+        self.assertEqual(slot5.activation, False)
+        print(slot5.hero, "hero")
+        print (slot5.hero.hero_no)
+        print (slot5.hero.level)
+        print type(response.res), "res"
+
+        # response = line_up_pb2.LineUpResponse()
+        # slot = response.slot.add()
+        # # slot.slot_no = 1
+        # slot.activation = False
+        # data = response.SerializePartialToString()
+        # response = line_up_pb2.LineUpResponse()
+        # response.ParseFromString(data)
+        #
+        # slot = response.slot[0]
+        # print (slot.hero, "????")
+        # print (slot.activation, "????")
+        # print (response.res, "res")
+        # print (response.res.result, "res")
+        # print (response.res.result_no, "res")
+        # print (response.res.message, "message")
 
     def test_change_hero_702(self):
         request = ChangeHeroRequest()
