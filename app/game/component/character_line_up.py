@@ -89,7 +89,7 @@ class CharacterLineUpComponent(Component):
         else:
             slot_obj = self._sub_slots.get(slot_no)
 
-        slot_obj.hero_no = hero_no
+        slot_obj.change_hero(hero_no)
 
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
