@@ -69,6 +69,7 @@ class CharacterLineUpComponent(Component):
             for slot in self._line_up_slots:
                 slot_no = slot.slot_no
                 self._line_up_order.append(slot_no)
+            self.save_data()
         return self._line_up_order
 
     @line_up_order.setter
