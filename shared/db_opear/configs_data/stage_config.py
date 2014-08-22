@@ -14,10 +14,16 @@ class StageConfig(object):
         self._first_stage_id = None  # 第一关
         self._chapter_ids = set()  # 章节编号
         self._condition_mapping = {}  # 开启条件 {'开启条件关卡编号'：['开启关卡编号']}
+        self._activity_stages = {}  # 活动关卡
 
     def parser(self, config_value):
         for row in config_value:
             item = CommonItem(row)
+
+            if item.type == 4:  # 活动
+                self._activity_stages[item.id] = item
+                continue
+
             self._chapter_ids.add(item.chapter)
             self._stages[item.id] = item
 
@@ -29,4 +35,4 @@ class StageConfig(object):
                 self._first_stage_id = stage_id
 
         return {'stages': self._stages, 'first_stage_id': self._first_stage_id, 'chapter_ids': list(self._chapter_ids),
-                'condition_mapping': self._condition_mapping}
+                'condition_mapping': self._condition_mapping, 'activity_stages': self._activity_stages}

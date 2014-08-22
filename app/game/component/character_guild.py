@@ -42,7 +42,6 @@ class CharacterGuildComponent(Component):
                              'exit_time': self._exit_time}}
             tb_character_guild.new(data)
             character_guild = tb_character_guild.getObjData(p_id)
-            print 'dddddddddddddddddddddddddddddddddd', character_guild
             print "cuick,###############,CharacterGuildComponent,INIT_DATA1,data:", data, 'id:', self.owner.base_info.id
             return
         info = character_guild.get("info")

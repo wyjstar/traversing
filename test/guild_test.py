@@ -7,6 +7,8 @@ from app.proto_file import account_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import *
+from app.proto_file.stage_request_pb2 import *
+from app.proto_file.stage_response_pb2 import *
     # CreateGuildRequest, \
     # JoinGuildRequest, \
     # EditorCallRequest, GuildCommonResponse, \
@@ -64,7 +66,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '8223d5143407cd39d6a6b3c009e649dd'
+        argument.key.key = '65d4c0a07f36a81e7a9b92f1f10e9141'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +91,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '8223d5143407cd39d6a6b3c009e649dd'
+                argument.key.key = '65d4c0a07f36a81e7a9b92f1f10e9141'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,13 +102,23 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '8223d5143407cd39d6a6b3c009e649dd'
+            argument.token = '65d4c0a07f36a81e7a9b92f1f10e9141'
             self.dateSend(argument, 4)
 
         if command == 4:
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
+
+            # --------902请求关卡------------
+            argument1 = ChapterInfoRequest()
+            argument1.chapter_id = 0
+            self.dateSend(argument1, 902)
+
+            # --------901请求关卡------------
+            # argument1 = StageInfoRequest()
+            # argument1.stage_id = 0
+            # self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -157,9 +169,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 808)
 
             # --------809膜拜------------
-            argument1 = WorshipRequest()
-            argument1.w_type = 1
-            self.dateSend(argument1, 809)
+            # argument1 = WorshipRequest()
+            # argument1.w_type = 1
+            # self.dateSend(argument1, 809)
 
             # --------812获取公会信息---------
             # argument1 = CreateGuildRequest()
@@ -253,6 +265,17 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+        if command == 901:
+            # 获取关卡信息
+            argument = StageInfoResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 902:
+            # 获取章节信息
+            argument = ChapterInfoResponse()
+            argument.ParseFromString(message)
+            print argument
     def connectionLost(self, reason):
         print "connection lost"
 
