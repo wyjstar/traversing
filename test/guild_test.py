@@ -107,6 +107,7 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+
             # --------903进入战斗------------
             argument1 = StageStartRequest()
             argument1.stage_id = 100101

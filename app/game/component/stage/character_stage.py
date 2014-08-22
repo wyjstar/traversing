@@ -111,6 +111,9 @@ class CharacterStageComponent(Component):
     def check_stage_state(self, stage_id):
         """校验当前关卡是否已经通关
         """
+
+        print 'stage_id:', stage_id
+
         if stage_id in self._stage_info.keys():
             stage = self.get_stage(stage_id)
             return stage.state

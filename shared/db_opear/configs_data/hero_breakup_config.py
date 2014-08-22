@@ -33,7 +33,3 @@ class HeroBreakupConfig(object):
             consume_info = self.info.get('consume' + str(break_level+1))
             print consume_info, "consume++++++++++++"
             return parse(consume_info)
-
-
-
-

@@ -16,7 +16,7 @@ def enter_scene_601(dynamic_id, character_id):
     PlayersManager().add_player(player)
     # player = mock_player(player)
     init(player)
-
+    print ("mock player info.....")
     responsedata = GameLoginResponse()
     responsedata.res.result = True
     responsedata.id = player.base_info.id

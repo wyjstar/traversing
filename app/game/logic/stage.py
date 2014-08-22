@@ -49,7 +49,9 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
 
     # 校验关卡是否开启
     state = player.stage_component.check_stage_state(stage_id)
-
+    print '#1 fight start:', state, line_up
+    print "#1 line_up1_hero_no:", player.line_up_component.line_up_slots[1].hero_slot.hero_no
+    print '#1 :',id(player), player
     if state == -2:  # 未开启
         return {'result': False}
 
@@ -59,6 +61,11 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
+
+    print '#2 fight start:', state, line_up
+    print "#2 line_up1_hero_no:", player.line_up_component.line_up_slots[1].hero_slot.hero_no
+    print '#2 :', id(player), player
+
     red_units, blue_units, drop_num = fight_cache_component.fighting_start()
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num}
 

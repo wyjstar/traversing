@@ -30,6 +30,8 @@ class HeroSlotComponent(SlotBaseInfoComponent):
     def hero_obj(self):
         """取得英雄对象
         """
+        print '#1 hero slot:', self._hero_no
+
         return self.owner.get_hero_obj(self._hero_no) if self._hero_no else None
 
     @property

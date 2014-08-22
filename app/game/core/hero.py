@@ -119,14 +119,21 @@ class Hero(object):
     def calculate_attr(self):
         """根据属性和等级计算卡牌属性
         """
+        print hero_config
+
+        print type(self._hero_no), self._hero_no
+
         item_config = hero_config.get(self._hero_no)
+        print 'item config:', item_config
+
+        print 'level:', self._level
 
         hero_no = self._hero_no  # 英雄编号
         quality = item_config.quality  # 英雄品质
 
         hp = item_config.hp + self._level * item_config.growHp  # 血
         atk = item_config.atk + self._level * item_config.growAtk  # 攻击
-        physica_def = item_config.physicaDef + self._level * item_config.growPhysicaDef  # 物理防御
+        physical_def = item_config.physicalDef + self._level * item_config.growPhysicalDef  # 物理防御
         magic_def = item_config.magicDef + self._level * item_config.growMagicDef  # 魔法防御
         hit = item_config.hit  # 命中率
         dodge = item_config.dodge  # 闪避率
@@ -141,7 +148,7 @@ class Hero(object):
 
         return CommonItem(
             dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
-                 physica_def=physica_def, magic_def=magic_def,
+                 physical_def=physical_def, magic_def=magic_def,
                  hit=hit, dodge=dodge, cri=cri, cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block,
                  break_skills=break_skills))
 
@@ -153,9 +160,13 @@ class Hero(object):
             skill = Skill(skill_id)
             skill.init_attr()
             skills.append(skill)
+
+        print '# break attr skills:', skills
         skill_helper = SkillHelper(skills)
         skill_helper.init_attr()
+        print 'sdkajflka;sdjflk;sadjflasjdkl;fjas'
         attr = skill_helper.parse_buffs()
+        print 'sdkajflka;sdjflk;sadjflasjdkl;fjas'
         return attr
 
     @property
@@ -163,10 +174,10 @@ class Hero(object):
         """根据突破等级取得突破技能ID
         """
         breakup_config = hero_breakup_config.get(self._hero_no)
-
+        print 'breakup config:', breakup_config.__dict__
         skill_ids = []
         for i in range(self._break_level + 1):
-            skill_id = getattr(breakup_config, 'break%s' % (i + 1))
+            skill_id = breakup_config.info.get('break%s' % (i + 1))
             skill_ids.append(skill_id)
 
         return skill_ids
@@ -216,7 +227,7 @@ class Hero(object):
         """普通技能ID，buff组
         """
         normal_id = self.normal_skill_id  # 普通技能ID
-        normal_group = self.normal_skill  # 普通技能buff组
+        normal_group = self.group_by_normal  # 普通技能buff组
         normal_group = self.__assemble_skills(normal_group)
         return [normal_id] + normal_group
 
@@ -225,7 +236,7 @@ class Hero(object):
         """怒气技能ID，buff组
         """
         rage_id = self.rage_skill_id  # 怒气技能ID
-        rage_group = self.rage_skill  # 怒气技能buff组
+        rage_group = self.group_by_rage  # 怒气技能buff组
         rage_group = self.__assemble_skills(rage_group)
         return [rage_id] + rage_group
 

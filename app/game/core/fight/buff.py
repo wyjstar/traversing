@@ -37,6 +37,10 @@ class Buff(object):
     def value_effect(self):
         return self._value_effect
 
+    @value_effect.setter
+    def value_effect(self, value):
+        self._value_effect = value
+
     def __cmp__(self, other):
         if self is not None and other is not None:
             return cmp((self.effect_id, self.trigger_type, self.value_type, self.value_effect),
@@ -50,29 +54,5 @@ class Buff(object):
             return 1
 
     def __add__(self, other):
-        self.value_effect += other.value_effect
-
-
-if __name__ == '__main__':
-    a = Buff(1, 2, 3, 4, 5)
-    b = Buff(1, 2, 3, 4, 5)
-
-    c = []
-
-    c.append(a)
-
-    if b in c:
-        pass
-    else:
-        c.append(b)
-
-    print c
-
-
-
-
-
-
-
-
-
+        if self is not None and other is not None:
+            self.value_effect += other.value_effect

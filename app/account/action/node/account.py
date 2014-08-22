@@ -14,7 +14,6 @@ from shared.utils.pyuuid import get_uuid
 
 @node_service_handle
 def register_1(command_id, dynamic_id, account_type, user_name, password, key):
-    print 'player register type:%s user:%s pwd:%s key:%s' % (account_type, user_name, password, key)
     if account_type == 1:  # 游客注册
         return __guest_register()
     if account_type == 2:  # 帐号注册
@@ -27,7 +26,7 @@ def register_1(command_id, dynamic_id, account_type, user_name, password, key):
 def login_2(command_id, dynamic_id, key, user_name, password):
     """登录
     """
-    # return {'result': True, 'account_id': 12345+dynamic_id}
+    return {'result': True, 'account_id': 12345+dynamic_id}
     print 'player login user:%s pwd:%s key:%s' % (user_name, password, key)
     account_id = None  # 帐号ID
     mapping_data = tb_account_mapping.getObjData(key)  # 帐号匹配信息
