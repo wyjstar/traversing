@@ -203,17 +203,16 @@ class LineUpSlotComponent(Component):
     def combat_power(self):
         """战斗力
         ((攻击 + 物防 + 魔防) * 血量) ^ 战斗力系数A * （命中率 + 闪避率） * （1 + 暴击率 * （暴击伤害系数 + 暴击伤害减免系数 - 100）/ 10000）*
-        （100 + 格挡率 * （1 - 格挡伤害系数） / 100 * 战斗力系数B）
+        (（100 + 格挡率 * （1 - 格挡伤害系数）) / 100 * 战斗力系数B）
         """
 
         unit = self.slot_attr()
         if not unit:
             return 0
-        return (((unit.atk + unit.physical_def + unit.magic_dif) * unit.hp) ** game_configs.base_config.get(
+        return (((unit.atk + unit.physical_def + unit.magic_def) * unit.hp) ** game_configs.base_config.get(
             'zhandouli_xishu_a', 0.5)) * (unit.hit + unit.dodge) * (
-               1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * (
-                   100 + unit.block * (
-                       1 - game_configs.base_config.get('a4', 0.7)) / 100 * game_configs.base_config.get(
-                       'zhandouli_xishu_b', 1))
+               1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * ((100 + unit.block * (
+               1 - game_configs.base_config.get('a4', 0.7))) / 100 * game_configs.base_config.get(
+               'zhandouli_xishu_b', 1))
 
 
