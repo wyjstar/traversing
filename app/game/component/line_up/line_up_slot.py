@@ -6,6 +6,8 @@ import cPickle
 from app.game.component.Component import Component
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.component.line_up.hero_slot import HeroSlotComponent
+from app.game.logic.fight import do_assemble
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class LineUpSlotComponent(Component):
@@ -121,4 +123,81 @@ class LineUpSlotComponent(Component):
                 continue
             suit_info[suit_no] = slot.suit_attr
         return suit_info
+
+    def slot_attr(self):
+        """
+        """
+        # 英雄
+        hero_obj = self.hero_slot.hero_obj
+
+        if not hero_obj:
+            return
+
+        # hero_no, quality, hp, atk, physica_def, magic_def, hit
+        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+        # rage_skill, break_skills
+
+        hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+
+        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+
+        attr = CommonItem()
+        hero_break_attr = hero_obj.bread_attr()  # 英雄突破技能属性
+        attr += hero_break_attr
+
+        hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
+        attr += hero_link_attr
+
+        # 装备
+        equ_slots = self.equipment_slots
+
+        for equ_no, equ_slot in equ_slots.items():
+
+            # atk,hp, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+            equipment_base_attr = equ_slot.equipment_obj.calculate_attr()  # 装备基础属性，强化等级
+            attr += equipment_base_attr
+
+        equ_suit = self.equ_suit  # 装备套装技能属性
+        attr += equ_suit
+
+        red = self.__assemble_hero(hero_base_attr, attr)
+        return red
+
+    def __assemble_hero(self, base_attr, attr):
+        """组装英雄战斗单位
+        """
+        # base_attr: 英雄基础，等级 属性
+        # hero_no, quality, hp, atk, physica_def, magic_def, hit
+        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+        # rage_skill, break_skills
+
+        # attr: 属性
+        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+
+        no = base_attr.hero_no
+        quality = base_attr.quality
+
+        normal_skill = base_attr.normal_skill
+        rage_skill = base_attr.rage_skill
+        break_skills = base_attr.break_skills
+
+        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
+        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
+        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
+        magic_dif = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        hit = base_attr.hit + attr.hit
+        dodge = base_attr.dodge + attr.dodge
+        cri = base_attr.cri + attr.cri
+        cri_coeff = base_attr.cri_coeff + attr.cri_coeff
+        cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
+        block = base_attr.block + attr.block
+        is_boss = False
+
+        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def,
+                                  magic_dif, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, is_boss)
+
+        return battlt_unit
+
 

@@ -126,7 +126,7 @@ def hero_sacrifice_oper(heros, player):
     exp_items = base_config.get("sacrificeGainExp")
     for exp, item_no in exp_items.items():
         config = item_config.get(item_no)
-        exp = config.get("funcArgs1")
+        exp = config.get("funcArg1")
         if total_exp/exp > 0:
             exp_item_no = item_no
             exp_item_num = total_exp/exp

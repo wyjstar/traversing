@@ -40,6 +40,8 @@ class LiberateProtocol(protocols.BaseProtocol):
         if data is None:
             return
         senddata = self.factory.produceResult(data, command)
+        print ("response data length:", len(data))
+        print ("response command:", command)
         self.transport.sendall(senddata)
 
     def dataReceived(self, data):

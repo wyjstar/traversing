@@ -31,6 +31,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
         return_data = consume(player, shop_item.consume)  # 消耗
         get_return(player, return_data, response.consume)
     return_data = gain(player, shop_item.gain)  # 获取
+    print (return_data, "return_data")
     extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
 
     get_return(player, return_data, response.gain)

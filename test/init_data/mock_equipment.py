@@ -7,17 +7,20 @@ from app.game.core.PlayersManager import PlayersManager
 
 
 def init_equipment(player):
-    equipment = player.equipment_component.add_equipment(100001)
-    equipment.attribute.strengthen_lv = 1
-    equipment.attribute.awakening_lv = 1
-    equipment.save_data()
+    equipment_obj = Equipment('0001', '', 100001)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    equipment = player.equipment_component.add_equipment(100002)
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    equipment_obj = Equipment('0002', '', 100002)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    equipment = player.equipment_component.add_equipment(100003)
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    equipment_obj = Equipment('0003', '', 100003)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()

@@ -14,6 +14,9 @@ def init_player(player):
     player.finance.gold = 10000
     player.finance.save_data()
 
+    player.level.level = 200
+    player.level.exp = 100
+
     player.last_pick_time.fine_hero = 0
     player.last_pick_time.excellent_hero = 0
     player.last_pick_time.fine_equipment = 0

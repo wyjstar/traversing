@@ -110,7 +110,11 @@ def assembly_sub_slots(player, response):
     for slot in sub_slots.values():
         add_slot = response.sub.add()
         add_slot.slot_no = slot.slot_no
+        print '# assembly sub slots:', slot.activation
+
         add_slot.activation = slot.activation
+        if not slot.activation:  # 如果卡牌位未激活，则不初始化信息
+            continue
         hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
             hero = add_slot.hero

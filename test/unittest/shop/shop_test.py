@@ -5,9 +5,11 @@ created by server on 14-7-17上午11:29.
 import test.unittest.init_data.init_connection
 from app.game.core.PlayersManager import PlayersManager
 import unittest
-from app.game.logic.shop import is_consume
+from app.game.logic.shop import is_consume, shop_oper
 import time
 from shared.db_opear.configs_data.game_configs import shop_config
+from app.proto_file.shop_pb2 import ShopRequest
+
 
 
 class ShopTest(unittest.TestCase):
@@ -18,22 +20,10 @@ class ShopTest(unittest.TestCase):
 
     def test_is_consume(self):
         self.player.last_pick_time.fine_hero = time.time()
-        shop_item = shop_config.get(1001)
+        shop_item = shop_config.get(10001)
         result = is_consume(self.player, shop_item)
         self.assertTrue(result)
 
-        shop_item = shop_config.get(1002)
-        result = is_consume(self.player, shop_item)
-        self.assertTrue(result)
-
-        shop_item = shop_config.get(1003)
-        result = is_consume(self.player, shop_item)
-        self.assertFalse(result)
-
-        shop_item = shop_config.get(1004)
-        result = is_consume(self.player, shop_item)
-        self.assertTrue(result)
-
-        shop_item = shop_config.get(1005)
-        result = is_consume(self.player, shop_item)
-        self.assertFalse(result)
+        request = ShopRequest()
+        request.id = 10001
+        shop_oper(1, request.SerializePartialToString())
