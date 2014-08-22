@@ -1,3 +1,5 @@
+import "stage.proto";
+
 //请求关卡信息 command:901
 message StageInfoRequest{
 	required int32 stage_id = 1; //关卡编号 0: 全部信息
@@ -8,10 +10,12 @@ message ChapterInfoRequest{
 	required int32 chapter_id = 1; //章节编号 0：全部信息
 }
 
-
 // 进入关卡战斗 command:903
 message StageStartRequest{
 	required int32 stage_id = 1; //关卡编号
+	repeated LineUp lineup = 2; // 队形
+	optional int32 unparalleled = 3; //无双技能ID
+	optional int32 fid = 4; //好友ID
 }
 
 // 关卡结算 command:904
@@ -19,4 +23,6 @@ message StageSettlementRequest{
 	required int32 stage_id = 1; //关卡编号
 	required int32 result = 2;  //输赢
 }
+
+
 

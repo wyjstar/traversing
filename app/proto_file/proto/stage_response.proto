@@ -25,3 +25,13 @@ message StageStartResponse{
 message StageSettlementResponse{
 	optional GameResourcesResponse drops = 2;
 }
+
+// 请求队形信息: 905
+message FormationResponse{
+	repeated LineUp lineup = 1; // 队形
+}
+
+// 请求无双信息：906
+message UnparalleledResponse{
+	repeated Unparalleled unpar =  1; //无双信息
+}
