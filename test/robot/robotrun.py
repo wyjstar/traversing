@@ -1,17 +1,18 @@
 # -*- coding:utf-8 -*-
 
 
-from fsmmanager import fsm_manager
+from fsmmanager import FsmManager
 from twisted.internet import reactor
+from fsm import FsmCommand
+
+fsm_manager = FsmManager(FsmCommand)
 
 
 def tick():
-    print 'tick 1'
     fsm_manager.frame()
     reactor.callLater(0, tick)
 
 
 if __name__ == '__main__':
-    print 'begin'
     reactor.callLater(0, tick)
     reactor.run()

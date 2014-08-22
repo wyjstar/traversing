@@ -4,6 +4,7 @@ created by server on 14-8-8下午2:45.
 """
 
 from robotbase import RobotBase
+from robotmanager import robot_manager
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
 from app.proto_file.common_pb2 import CommonResponse
@@ -12,7 +13,7 @@ from app.proto_file.game_pb2 import GameLoginResponse
 
 class Robot(RobotBase):
     def __init__(self, user_name, pwd, nickname):
-        super(self.__name__, self).__init__()
+        RobotBase.__init__(self)
 
         self.on_connection_make = self.connection_made
         self.on_account_login_result = None
@@ -21,6 +22,7 @@ class Robot(RobotBase):
         self._user_name = user_name  # 'test32'
         self._password = pwd  # '123456'
         self._nickname = nickname  # 'bab5'
+        robot_manager.register_robot(self)
 
     def connection_made(self):
         argument = account_pb2.AccountInfo()
@@ -47,7 +49,7 @@ class Robot(RobotBase):
         self.on_account_login_result(response.result)
 
         request = player_request_pb2.PlayerLoginRequest()
-        # request.token = 'ea93b955c76de71380559058cdcd6932'
+        request.token = 'ea93b955c76de71380559058cdcd6932'
         self.send_message(request, 4)
 
     def character_login_4(self, message):

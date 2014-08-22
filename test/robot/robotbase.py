@@ -38,13 +38,23 @@ class RobotBase(protocol.Protocol):
         self.on_command_error = None
         self.on_connection_lost = None
         self.on_connection_made = None
+        self.on_command_finish = None
 
         self._distributor = {}
+        self._commands = []
         for attr in dir(self):
-            key = attr.split('_')[-1]
-            if key.isdigit():
-                self._distributor[key] = attr
+            key = attr.split('_')
+            if key[0] == 'command':
+                self._commands.append(attr)
+            if key[-1].isdigit():
+                self._distributor[key[-1]] = attr
+
+        # print self._commands
         # print self._distributor
+
+    @property
+    def commands(self):
+        return self._commands
 
     def send_message(self, argument, command_id):
         data = build_data(argument.SerializeToString(), command_id)
@@ -64,4 +74,5 @@ class RobotBase(protocol.Protocol):
             print 'cant find processor by command:', command
 
     def connectionLost(self, reason):
+        print 'connection fail'
         self.on_connection_lost()
