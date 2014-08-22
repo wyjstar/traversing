@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS `tb_character_guild`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_character_guild` (
-  `id` varchar(32) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `info` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -210,9 +210,9 @@ DROP TABLE IF EXISTS `tb_guild_name`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_guild_name` (
-  `id` int(11) NOT NULL,
-  `info` mediumblob,
-  PRIMARY KEY (`id`)
+  `g_name` varchar(32) NOT NULL,
+  `g_id` varchar(32) NOT NULL,
+  PRIMARY KEY (`g_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
