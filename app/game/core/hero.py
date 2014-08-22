@@ -30,7 +30,6 @@ class Hero(object):
         self._character_id = character_id
 
     def init_data(self, data):
-        print "武将初始化nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
         self._character_id = data.get("character_id")
         hero_property = data.get("property")
         self._hero_no = hero_property.get("hero_no")
