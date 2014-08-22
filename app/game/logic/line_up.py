@@ -71,8 +71,6 @@ def assembly_slots(player, response):
         add_slot = response.slot.add()
         add_slot.slot_no = slot.slot_no
 
-        print '# assembly slots:', slot.activation
-
         add_slot.activation = slot.activation
         if not slot.activation:  # 如果卡牌位未激活，则不初始化信息
             continue
@@ -110,7 +108,6 @@ def assembly_sub_slots(player, response):
     for slot in sub_slots.values():
         add_slot = response.sub.add()
         add_slot.slot_no = slot.slot_no
-        print '# assembly sub slots:', slot.activation
 
         add_slot.activation = slot.activation
         if not slot.activation:  # 如果卡牌位未激活，则不初始化信息
