@@ -5,7 +5,7 @@ created by server on 14-8-22下午2:08.
 from app.game.core.fight.battle_unit import BattleUnit
 
 
-def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def, magic_dif, hit, dodge,
+def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def, magic_def, hit, dodge,
                 cri, cri_coeff, cri_ded_coeff, block, is_boss=False):
     """组装战斗单位
     @param no: 编号
@@ -16,7 +16,7 @@ def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, ph
     @param hp: 血
     @param atk: 攻
     @param physical_def: 物理防御
-    @param magic_dif: 魔法防御
+    @param magic_def: 魔法防御
     @param hit: 命中
     @param dodge: 闪避
     @param cri: 暴击
@@ -34,7 +34,7 @@ def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, ph
     battle_unit.hp = hp
     battle_unit.atk = atk
     battle_unit.physical_def = physical_def
-    battle_unit.magic_dif = magic_dif
+    battle_unit.magic_def = magic_def
     battle_unit.hit = hit
     battle_unit.dodge = dodge
     battle_unit.cri = cri

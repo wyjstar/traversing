@@ -9,10 +9,7 @@ from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import *
 from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
-    # CreateGuildRequest, \
-    # JoinGuildRequest, \
-    # EditorCallRequest, GuildCommonResponse, \
-    # GuildInfoProto
+
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -66,7 +63,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '65d4c0a07f36a81e7a9b92f1f10e9141'
+        argument.key.key = '56f7ed4182edec31c13ba570016339bb'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -91,7 +88,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '65d4c0a07f36a81e7a9b92f1f10e9141'
+                argument.key.key = '56f7ed4182edec31c13ba570016339bb'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -102,7 +99,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '65d4c0a07f36a81e7a9b92f1f10e9141'
+            argument.token = '56f7ed4182edec31c13ba570016339bb'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -110,10 +107,35 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            # --------903进入战斗------------
+            argument1 = StageStartRequest()
+            argument1.stage_id = 100101
+            line_up = argument1.lineup.add()
+            line_up.pos = 1
+            line_up.hero_id = 10026
+            line_up = argument1.lineup.add()
+            line_up.pos = 2
+            line_up.hero_id = 10028
+            line_up = argument1.lineup.add()
+            line_up.pos = 3
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 4
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 5
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 6
+            line_up.hero_id = 0
+
+
+            self.dateSend(argument1, 903)
+
             # --------902请求关卡------------
-            argument1 = ChapterInfoRequest()
-            argument1.chapter_id = 0
-            self.dateSend(argument1, 902)
+            # argument1 = ChapterInfoRequest()
+            # argument1.chapter_id = 0
+            # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
             # argument1 = StageInfoRequest()
@@ -276,6 +298,13 @@ class EchoClient(protocol.Protocol):
             argument = ChapterInfoResponse()
             argument.ParseFromString(message)
             print argument
+
+        if command == 903:
+            # 进入战斗
+            argument = StageStartResponse()
+            argument.ParseFromString(message)
+            print argument
+
     def connectionLost(self, reason):
         print "connection lost"
 

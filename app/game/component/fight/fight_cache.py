@@ -52,7 +52,7 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_config(self):
         """取得关卡配置数据
         """
-        stages_config = game_configs.StageConfig.get('stages', {})
+        stages_config = game_configs.stage_config.get('stages')
         return stages_config.get(self._stage_id)
 
     def __get_monster_group_config(self, group_id):
@@ -105,13 +105,22 @@ class CharacterFightCacheComponent(Component):
                 if j + 1 == boss_position:
                     is_boss = True
                 monster_config = self.__get_monster_config(monster_id)
-                battle_unit = do_assemble(monster_config.id, monster_config.quality, monster_config.normalSkill,
-                                          monster_config.rageSkill, monster_config.hp, monster_config.atk,
+                monster_normal_config = game_configs.skill_config.get(monster_config.normalSkill)
+                monster_rage_config = game_configs.skill_config.get(monster_config.rageSkill)
+                # 取得怪物普通技能
+                normal_skill = [monster_config.normalSkill]
+                normal_skill.extend(monster_normal_config.group)
+                # 取得怪物怒气技能
+                rage_skill = [monster_config.rageSkill]
+                rage_skill.extend(monster_rage_config.group)
+
+                battle_unit = do_assemble(monster_config.id, monster_config.quality, normal_skill,
+                                          rage_skill, None, monster_config.hp, monster_config.atk,
                                           monster_config.physicalDef, monster_config.magicDef,
                                           monster_config.hit, monster_config.dodge,
                                           monster_config.cri, monster_config.criCoeff,
                                           monster_config.criDedCoeff, monster_config.block,
-                                          monster_config.block, is_boss)
+                                          is_boss)
                 round_monsters.append(battle_unit)
         monsters.append(round_monsters)
 

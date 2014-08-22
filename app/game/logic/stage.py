@@ -42,7 +42,7 @@ def get_chapter_info(dynamic_id, chapter_id, **kwargs):
 
 
 @have_player
-def fight_start(dynamic_id, stage_id, **kwargs):
+def fight_start(dynamic_id, stage_id, line_up, **kwargs):
     """开始战斗
     """
     player = kwargs.get('player')
@@ -52,6 +52,10 @@ def fight_start(dynamic_id, stage_id, **kwargs):
 
     if state == -2:  # 未开启
         return {'result': False}
+
+    # 保存阵容
+    player.line_up_component.line_up_order = line_up
+    player.line_up_component.save_data()
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id

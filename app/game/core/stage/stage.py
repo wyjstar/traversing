@@ -109,7 +109,6 @@ class StageAward(object):
 
         for stage_id, item in stages_config.items():
             if item.sectionCount and item.chapter == self._chapter_id:
-                print '#check:', item.__dict__
                 stage = item
                 break
         star = stage.star
@@ -120,6 +119,5 @@ class StageAward(object):
             else:
                 award_info.append(-1)  # 没达成
 
-        print '##check:', award_info
         return award_info
 

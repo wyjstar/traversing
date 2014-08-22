@@ -131,7 +131,7 @@ class LineUpSlotComponent(Component):
         hero_obj = self.hero_slot.hero_obj
 
         if not hero_obj:
-            return
+            return None
 
         # hero_no, quality, hp, atk, physica_def, magic_def, hit
         # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
@@ -186,7 +186,7 @@ class LineUpSlotComponent(Component):
         hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
         atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
         physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
-        magic_dif = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
         hit = base_attr.hit + attr.hit
         dodge = base_attr.dodge + attr.dodge
         cri = base_attr.cri + attr.cri
@@ -196,7 +196,7 @@ class LineUpSlotComponent(Component):
         is_boss = False
 
         battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def,
-                                  magic_dif, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, is_boss)
+                                  magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, is_boss)
 
         return battlt_unit
 
