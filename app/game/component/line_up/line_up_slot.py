@@ -205,7 +205,6 @@ class LineUpSlotComponent(Component):
         ((攻击 + 物防 + 魔防) * 血量) ^ 战斗力系数A * （命中率 + 闪避率） * （1 + 暴击率 * （暴击伤害系数 + 暴击伤害减免系数 - 100）/ 10000）*
         (（100 + 格挡率 * （1 - 格挡伤害系数）) / 100 * 战斗力系数B）
         """
-
         unit = self.slot_attr()
         if not unit:
             return 0
