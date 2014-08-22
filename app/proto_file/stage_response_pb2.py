@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_response.proto',
   package='',
-  serialized_pb='\n\x14stage_response.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"*\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"}\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\"@\n\x17StageSettlementResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x14stage_response.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"*\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"}\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\"@\n\x17StageSettlementResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\",\n\x11\x46ormationResponse\x12\x17\n\x06lineup\x18\x01 \x03(\x0b\x32\x07.LineUp\"4\n\x14UnparalleledResponse\x12\x1c\n\x05unpar\x18\x01 \x03(\x0b\x32\r.Unparalleled')
 
 
 
@@ -152,16 +152,76 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
   serialized_end=343,
 )
 
+
+_FORMATIONRESPONSE = _descriptor.Descriptor(
+  name='FormationResponse',
+  full_name='FormationResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='lineup', full_name='FormationResponse.lineup', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=345,
+  serialized_end=389,
+)
+
+
+_UNPARALLELEDRESPONSE = _descriptor.Descriptor(
+  name='UnparalleledResponse',
+  full_name='UnparalleledResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='unpar', full_name='UnparalleledResponse.unpar', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=391,
+  serialized_end=443,
+)
+
 _STAGEINFORESPONSE.fields_by_name['stage'].message_type = stage_pb2._STAGE
 _CHAPTERINFORESPONSE.fields_by_name['stage_award'].message_type = stage_pb2._STAGEAWARD
 _STAGESTARTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _STAGESTARTRESPONSE.fields_by_name['red'].message_type = stage_pb2._BATTLEUNIT
 _STAGESTARTRESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNITGROP
 _STAGESETTLEMENTRESPONSE.fields_by_name['drops'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_FORMATIONRESPONSE.fields_by_name['lineup'].message_type = stage_pb2._LINEUP
+_UNPARALLELEDRESPONSE.fields_by_name['unpar'].message_type = stage_pb2._UNPARALLELED
 DESCRIPTOR.message_types_by_name['StageInfoResponse'] = _STAGEINFORESPONSE
 DESCRIPTOR.message_types_by_name['ChapterInfoResponse'] = _CHAPTERINFORESPONSE
 DESCRIPTOR.message_types_by_name['StageStartResponse'] = _STAGESTARTRESPONSE
 DESCRIPTOR.message_types_by_name['StageSettlementResponse'] = _STAGESETTLEMENTRESPONSE
+DESCRIPTOR.message_types_by_name['FormationResponse'] = _FORMATIONRESPONSE
+DESCRIPTOR.message_types_by_name['UnparalleledResponse'] = _UNPARALLELEDRESPONSE
 
 class StageInfoResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -186,6 +246,18 @@ class StageSettlementResponse(_message.Message):
   DESCRIPTOR = _STAGESETTLEMENTRESPONSE
 
   # @@protoc_insertion_point(class_scope:StageSettlementResponse)
+
+class FormationResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FORMATIONRESPONSE
+
+  # @@protoc_insertion_point(class_scope:FormationResponse)
+
+class UnparalleledResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _UNPARALLELEDRESPONSE
+
+  # @@protoc_insertion_point(class_scope:UnparalleledResponse)
 
 
 # @@protoc_insertion_point(module_scope)

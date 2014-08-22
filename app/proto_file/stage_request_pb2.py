@@ -8,12 +8,13 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import stage_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_request.proto',
   package='',
-  serialized_pb='\n\x13stage_request.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"%\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0e\n\x06result\x18\x02 \x02(\x05')
+  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"a\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x17\n\x06lineup\x18\x02 \x03(\x0b\x32\x07.LineUp\x12\x14\n\x0cunparalleled\x18\x03 \x01(\x05\x12\x0b\n\x03\x66id\x18\x04 \x01(\x05\":\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0e\n\x06result\x18\x02 \x02(\x05')
 
 
 
@@ -41,8 +42,8 @@ _STAGEINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=23,
-  serialized_end=59,
+  serialized_start=36,
+  serialized_end=72,
 )
 
 
@@ -69,8 +70,8 @@ _CHAPTERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=61,
-  serialized_end=101,
+  serialized_start=74,
+  serialized_end=114,
 )
 
 
@@ -88,6 +89,27 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='lineup', full_name='StageStartRequest.lineup', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='unparalleled', full_name='StageStartRequest.unparalleled', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='fid', full_name='StageStartRequest.fid', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -97,8 +119,8 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=103,
-  serialized_end=140,
+  serialized_start=116,
+  serialized_end=213,
 )
 
 
@@ -132,10 +154,11 @@ _STAGESETTLEMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=142,
-  serialized_end=200,
+  serialized_start=215,
+  serialized_end=273,
 )
 
+_STAGESTARTREQUEST.fields_by_name['lineup'].message_type = stage_pb2._LINEUP
 DESCRIPTOR.message_types_by_name['StageInfoRequest'] = _STAGEINFOREQUEST
 DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
 DESCRIPTOR.message_types_by_name['StageStartRequest'] = _STAGESTARTREQUEST

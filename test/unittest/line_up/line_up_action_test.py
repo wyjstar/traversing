@@ -57,11 +57,15 @@ class LineUpActionTest(unittest.TestCase):
         request = ChangeHeroRequest()
         request.hero_no = 10003
         request.slot_no = 1
-        remoteservice.callTarget(702, 1, request.SerializeToString())
+        str_response = remoteservice.callTarget(702, 1, request.SerializeToString())
+
+        response = line_up_pb2.LineUpResponse()
+        response.ParseFromString(str_response)
 
         line_up_component = self.player.line_up_component
         line_up_slot = line_up_component.line_up_slots[1]
-        self.assertEqual(line_up_slot.hero_no, 10003, "%d_%d" % (line_up_slot.hero_no, 10003))
+        self.assertEqual(line_up_slot.hero_slot.hero_no, 10003, "%d_%d" % (line_up_slot.hero_slot.hero_no, 10003))
+        self.assertEqual(response.slot[0].hero.hero_no, 10003, "%d_%d" % (response.slot[0].hero.hero_no, 10003))
 
     def test_change_equipments_703(self):
         equipments = self.player.equipment_component.get_all()
