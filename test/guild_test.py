@@ -7,10 +7,9 @@ from app.proto_file import account_pb2
 from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import *
-    # CreateGuildRequest, \
-    # JoinGuildRequest, \
-    # EditorCallRequest, GuildCommonResponse, \
-    # GuildInfoProto
+from app.proto_file.stage_request_pb2 import *
+from app.proto_file.stage_response_pb2 import *
+
 
 def sendData(sendstr,commandId):
     '''定义协议头
@@ -64,7 +63,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '8223d5143407cd39d6a6b3c009e649dd'
+        argument.key.key = '56f7ed4182edec31c13ba570016339bb'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +88,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '8223d5143407cd39d6a6b3c009e649dd'
+                argument.key.key = '56f7ed4182edec31c13ba570016339bb'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,13 +99,48 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '8223d5143407cd39d6a6b3c009e649dd'
+            argument.token = '56f7ed4182edec31c13ba570016339bb'
             self.dateSend(argument, 4)
 
         if command == 4:
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
+
+            # --------903进入战斗------------
+            argument1 = StageStartRequest()
+            argument1.stage_id = 100101
+            line_up = argument1.lineup.add()
+            line_up.pos = 1
+            line_up.hero_id = 10026
+            line_up = argument1.lineup.add()
+            line_up.pos = 2
+            line_up.hero_id = 10028
+            line_up = argument1.lineup.add()
+            line_up.pos = 3
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 4
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 5
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 6
+            line_up.hero_id = 0
+
+
+            self.dateSend(argument1, 903)
+
+            # --------902请求关卡------------
+            # argument1 = ChapterInfoRequest()
+            # argument1.chapter_id = 0
+            # self.dateSend(argument1, 902)
+
+            # --------901请求关卡------------
+            # argument1 = StageInfoRequest()
+            # argument1.stage_id = 0
+            # self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -157,9 +191,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 808)
 
             # --------809膜拜------------
-            argument1 = WorshipRequest()
-            argument1.w_type = 1
-            self.dateSend(argument1, 809)
+            # argument1 = WorshipRequest()
+            # argument1.w_type = 1
+            # self.dateSend(argument1, 809)
 
             # --------812获取公会信息---------
             # argument1 = CreateGuildRequest()
@@ -250,6 +284,24 @@ class EchoClient(protocol.Protocol):
         if command == 805:
             #
             argument = GuildCommonResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 901:
+            # 获取关卡信息
+            argument = StageInfoResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 902:
+            # 获取章节信息
+            argument = ChapterInfoResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 903:
+            # 进入战斗
+            argument = StageStartResponse()
             argument.ParseFromString(message)
             print argument
 

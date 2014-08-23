@@ -55,6 +55,16 @@ message StageAward{
 	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
 }
 
+message LineUp{
+	required int32 pos = 1;  // 位置
+	optional int32 hero_id = 2;  //英雄编号
+}
+
+message Unparalleled{
+	repeated Skill unpar = 1; // 无双技能
+	optional bool activate = 2; //是否激活
+}
+
 message FinancePB{
     optional int32 coin = 1;
     optional int32 gold = 2;
@@ -436,6 +446,7 @@ message AccountLoginRequest{
 //    response: AccountResponse
 
 
+
 //请求关卡信息 command:901
 message StageInfoRequest{
 	required int32 stage_id = 1; //关卡编号 0: 全部信息
@@ -446,10 +457,12 @@ message ChapterInfoRequest{
 	required int32 chapter_id = 1; //章节编号 0：全部信息
 }
 
-
 // 进入关卡战斗 command:903
 message StageStartRequest{
 	required int32 stage_id = 1; //关卡编号
+	repeated LineUp lineup = 2; // 队形
+	optional int32 unparalleled = 3; //无双技能ID
+	optional int32 fid = 4; //好友ID
 }
 
 // 关卡结算 command:904
@@ -457,6 +470,8 @@ message StageSettlementRequest{
 	required int32 stage_id = 1; //关卡编号
 	required int32 result = 2;  //输赢
 }
+
+
 
 
 
@@ -524,6 +539,16 @@ message StageStartResponse{
 // 关卡结算返回 command:904
 message StageSettlementResponse{
 	optional GameResourcesResponse drops = 2;
+}
+
+// 请求队形信息: 905
+message FormationResponse{
+	repeated LineUp lineup = 1; // 队形
+}
+
+// 请求无双信息：906
+message UnparalleledResponse{
+	repeated Unparalleled unpar =  1; //无双信息
 }
 
 //武将升级，使用道具 command:103

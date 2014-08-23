@@ -27,7 +27,6 @@ class CharacterGuildComponent(Component):
         初始化公会组件
         """
         p_id = self.owner.base_info.id
-        print 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', p_id
         character_guild = tb_character_guild.getObjData(p_id)
         if not character_guild:
             # 没有公会数据
@@ -41,8 +40,6 @@ class CharacterGuildComponent(Component):
                              'worship_time': self._worship_time,
                              'exit_time': self._exit_time}}
             tb_character_guild.new(data)
-            character_guild = tb_character_guild.getObjData(p_id)
-            print 'dddddddddddddddddddddddddddddddddd', character_guild
             print "cuick,###############,CharacterGuildComponent,INIT_DATA1,data:", data, 'id:', self.owner.base_info.id
             return
         info = character_guild.get("info")

@@ -62,6 +62,8 @@ class StageAward(object):
 
     @property
     def award_info(self):
+        if not self._award_info:
+            self.update(0)
         return self._award_info
 
     @property
@@ -104,11 +106,13 @@ class StageAward(object):
         stage = None  # 章节配置数据
         award_info = []  # 奖励可以领取状态
         stages_config = game_configs.stage_config.get('stages')
+
         for stage_id, item in stages_config.items():
-            if item.contents and item.chapter == self._chapter_id:
+            if item.sectionCount and item.chapter == self._chapter_id:
                 stage = item
                 break
         star = stage.star
+        print '### star:', type(star), star
         for value in star:
             if star_num >= value:  # 可以领奖
                 award_info.append(0)

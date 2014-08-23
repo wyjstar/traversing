@@ -58,9 +58,12 @@ def stage_start_903(dynamic_id, pro_data):
     request.ParseFromString(pro_data)
     # 关卡编号
     stage_id = request.stage_id
-    print stage_id
 
-    stage_info = fight_start(dynamic_id, stage_id)
+    line_up = []
+    for line in request.lineup:
+        line_up.append(line.hero_id)
+
+    stage_info = fight_start(dynamic_id, stage_id, line_up)
 
     result = stage_info.get('result')
 
@@ -77,14 +80,18 @@ def stage_start_903(dynamic_id, pro_data):
     drop_num = stage_info.get('drop_num')
 
     response.drop_num = drop_num
-
+    print '# red_units:', red_units
     for red_unit in red_units:
+        if not red_unit:
+            continue
         red_add = response.red.add()
         assemble(red_add, red_unit)
-
+    print '# blue_units:', blue_units
     for blue_group in blue_units:
         blue_group_add = response.blue.add()
         for blue_unit in blue_group:
+            if not blue_unit:
+                continue
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
 
@@ -131,7 +138,7 @@ def assemble(unit_add, unit):
     unit_add.hp = unit.hp
     unit_add.atk = unit.atk
     unit_add.physical_def = unit.physical_def
-    unit_add.magic_dif = unit.magic_dif
+    unit_add.magic_def = unit.magic_def
     unit_add.hit = unit.hit
     unit_add.dodge = unit.dodge
     unit_add.cri = unit.cri

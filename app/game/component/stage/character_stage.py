@@ -65,7 +65,7 @@ class CharacterStageComponent(Component):
         """取得全部关卡信息
         """
         stages_config = game_configs.stage_config.get('stages')
-        return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.contents]
+        return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.chaptersTab]
 
     def get_chapter(self, chapter_id):
         """取得章节奖励信息

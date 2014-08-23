@@ -18,7 +18,7 @@ class BattleUnit(object):
         self._hp = 5  # 战斗单位血量
         self._atk = 6  # 战斗单位攻击
         self._physical_def = 7  # 战斗单位物理防御
-        self._magic_dif = 8  # 战斗单位魔法防御
+        self._magic_def = 8  # 战斗单位魔法防御
         self._hit = 9  # 战斗单位命中率
         self._dodge = 10  # 战斗单位闪避率
         self._cri = 11  # 战斗单位暴击率
@@ -84,12 +84,12 @@ class BattleUnit(object):
         self._physical_def = physical_def
 
     @property
-    def magic_dif(self):
-        return self._magic_dif
+    def magic_def(self):
+        return self._magic_def
 
-    @magic_dif.setter
-    def magic_dif(self, magic_dif):
-        self._magic_dif = magic_dif
+    @magic_def.setter
+    def magic_def(self, magic_def):
+        self._magic_def = magic_def
 
     @property
     def hit(self):

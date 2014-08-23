@@ -112,10 +112,10 @@ class PlayerCharacter(Character):
         self._equipment.init_data()
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
-        self._mail.init_data()  # 初始化邮箱
+        # self._mail.init_data()  # 初始化邮箱
         self._friends.init_data()
         self._guild.init_data()
-        # self._stage.init_data()
+        self._stage.init_data()
         self._stamina = stamina
         self._pvp_times = pvp_times
         self._get_stamina_times = get_stamina_times

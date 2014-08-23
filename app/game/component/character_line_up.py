@@ -77,6 +77,13 @@ class CharacterLineUpComponent(Component):
 
     @property
     def line_up_order(self):
+        """取得队形
+        """
+        if not self._line_up_order:  # 默认队形
+            for slot in self._line_up_slots:
+                slot_no = slot.slot_no
+                self._line_up_order.append(slot_no)
+            self.save_data()
         return self._line_up_order
 
     @line_up_order.setter
