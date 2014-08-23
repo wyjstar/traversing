@@ -10,7 +10,7 @@ from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.game_pb2 import GameLoginResponse
-from app.proto_file.friend_pb2 import *
+from app.proto_file import friend_pb2
 
 # HOST = '192.168.10.186'
 HOST = 'localhost'
@@ -20,6 +20,7 @@ MAX_LOGIN_QUEUE = 200
 USER_NAME = 'test'  # 'test32'
 PASSWORD = '123456'  # pwd  # '123456'
 NICKNAME = 'nick'  # 'bab5'
+
 
 def build_data(send_str, command_id):
     HEAD_0 = chr(0)
@@ -35,14 +36,15 @@ def build_data(send_str, command_id):
     result_data = data + send_str
     return result_data
 
+
 def resolve_receive_data(data):
     ud = struct.unpack('!sssss3I', data[:17])
-    HEAD_0 = ord(ud[0])
-    HEAD_1 = ord(ud[1])
-    HEAD_2 = ord(ud[2])
-    HEAD_3 = ord(ud[3])
-    protoVersion = ord(ud[4])
-    serverVersion = ud[5]
+    # HEAD_0 = ord(ud[0])
+    # HEAD_1 = ord(ud[1])
+    # HEAD_2 = ord(ud[2])
+    # HEAD_3 = ord(ud[3])
+    # protoVersion = ord(ud[4])
+    # serverVersion = ud[5]
     lenght = ud[6]
     command = ud[7]
     message = data[17:17 + lenght]
@@ -70,7 +72,8 @@ class SimulatorLogin(protocol.Protocol):
         # print self._distributor
 
     def send_message(self, argument, command_id):
-        self.transport.write(build_data(argument.SerializeToString(), command_id))
+        self.transport.write(build_data(argument.SerializeToString(),
+                                        command_id))
 
     def connectionMade(self):
         # 帐号注册： 游客
@@ -79,7 +82,6 @@ class SimulatorLogin(protocol.Protocol):
         argument.password = self._password
         argument.type = 2
         self.send_message(argument, 1)
-
 
     def dataReceived(self, data):
         command, message = resolve_receive_data(data)
@@ -91,7 +93,6 @@ class SimulatorLogin(protocol.Protocol):
             SimulatorLogin.LOGIN_FAIL_COUNT += 1
             SimulatorLogin.LOGIN_PROCESSING -= 1
             print 'cant find processor by command:', command
-
 
     def acount_register_1(self, message):
         argument = account_pb2.AccountResponse()
@@ -119,13 +120,15 @@ class SimulatorLogin(protocol.Protocol):
         argument = GameLoginResponse()
         argument.ParseFromString(message)
         format_str = 'character login result:%s nickname:%s level;%s'
-        print format_str % (argument.res.result, argument.nickname, argument.level)
+        print format_str % (argument.res.result,
+                            argument.nickname,
+                            argument.level)
 
         SimulatorLogin.LOGIN_PROCESSING -= 1
         SimulatorLogin.LOGIN_SUCCESS_COUNT += 1
 
         # get friend list
-        request = FriendCommon()
+        request = friend_pb2.FriendCommon()
         self.send_message(request, 1106)
 
     def change_nickname_5(self, message):
@@ -135,7 +138,7 @@ class SimulatorLogin(protocol.Protocol):
 
     def get_friend_list_1106(self, message):
         # get friend list
-        response = GetPlayerFriendsResponse()
+        response = friend_pb2.GetPlayerFriendsResponse()
         response.ParseFromString(message)
         # print 'get friends list:'
         for _ in response.friends:
@@ -145,7 +148,7 @@ class SimulatorLogin(protocol.Protocol):
         for _ in response.applicant_list:
             print 'applicant list:', _
         # get friend list
-        request = FriendCommon()
+        request = friend_pb2.FriendCommon()
         self.send_message(request, 1106)
 
     def connectionLost(self, reason):
@@ -156,20 +159,26 @@ class SimulatorLogin(protocol.Protocol):
 
 def run(num):
     count = SimulatorLogin.LOGIN_FAIL_COUNT + SimulatorLogin.LOGIN_SUCCESS_COUNT
-    if count < MAX_LOGIN_CLIENT and SimulatorLogin.LOGIN_PROCESSING < MAX_LOGIN_QUEUE:
+    if count < MAX_LOGIN_CLIENT \
+            and SimulatorLogin.LOGIN_PROCESSING < MAX_LOGIN_QUEUE:
         user_name = '%s%d' % (USER_NAME, num)
         nickname = '%s%d' % (NICKNAME, num)
         print 'add client:', user_name, nickname
-        c = ClientCreator(reactor, SimulatorLogin, user_name, PASSWORD, nickname)
+        c = ClientCreator(reactor,
+                          SimulatorLogin,
+                          user_name,
+                          PASSWORD,
+                          nickname)
         c.connectTCP(HOST, PORT)
         num += 1
     reactor.callLater(0, run, num)
 
 
 def tick():
-    count = SimulatorLogin.LOGIN_FAIL_COUNT + SimulatorLogin.LOGIN_SUCCESS_COUNT
     print 'login success:%d login fail:%d login queue:%d' % \
-          (SimulatorLogin.LOGIN_SUCCESS_COUNT, SimulatorLogin.LOGIN_FAIL_COUNT, SimulatorLogin.LOGIN_PROCESSING)
+          (SimulatorLogin.LOGIN_SUCCESS_COUNT,
+           SimulatorLogin.LOGIN_FAIL_COUNT,
+           SimulatorLogin.LOGIN_PROCESSING)
     reactor.callLater(1, tick)
 
 
