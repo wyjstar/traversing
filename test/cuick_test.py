@@ -50,6 +50,7 @@ times = 0
 class EchoClient(protocol.Protocol):
 
     _times = 0
+    _flag = 1
 
     """Once connected, send a message, then print the result."""
 
@@ -107,31 +108,35 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            # --------904结算------------
+            # argument1 = StageSettlementRequest()
+            # argument1.stage_id = 100101
+            # argument1.result = 1
+            # self.dateSend(argument1, 904)
 
             # --------903进入战斗------------
-            argument1 = StageStartRequest()
-            argument1.stage_id = 100101
-            line_up = argument1.lineup.add()
-            line_up.pos = 1
-            line_up.hero_id = 10026
-            line_up = argument1.lineup.add()
-            line_up.pos = 2
-            line_up.hero_id = 10028
-            line_up = argument1.lineup.add()
-            line_up.pos = 3
-            line_up.hero_id = 0
-            line_up = argument1.lineup.add()
-            line_up.pos = 4
-            line_up.hero_id = 0
-            line_up = argument1.lineup.add()
-            line_up.pos = 5
-            line_up.hero_id = 0
-            line_up = argument1.lineup.add()
-            line_up.pos = 6
-            line_up.hero_id = 0
-
-
-            self.dateSend(argument1, 903)
+            # argument1 = StageStartRequest()
+            # argument1.stage_id = 100101
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 1
+            # line_up.hero_id = 10026
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 2
+            # line_up.hero_id = 10028
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 3
+            # line_up.hero_id = 0
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 4
+            # line_up.hero_id = 0
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 5
+            # line_up.hero_id = 0
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 6
+            # line_up.hero_id = 0
+            #
+            # self.dateSend(argument1, 903)
 
             # --------902请求关卡------------
             # argument1 = ChapterInfoRequest()
@@ -139,9 +144,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
-            # argument1 = StageInfoRequest()
-            # argument1.stage_id = 0
-            # self.dateSend(argument1, 901)
+            argument1 = StageInfoRequest()
+            argument1.stage_id = 0
+            self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -293,18 +298,59 @@ class EchoClient(protocol.Protocol):
             argument = StageInfoResponse()
             argument.ParseFromString(message)
             print argument
+            argument1 = ChapterInfoRequest()
+            argument1.chapter_id = 0
+            self.dateSend(argument1, 902)
 
         if command == 902:
             # 获取章节信息
             argument = ChapterInfoResponse()
             argument.ParseFromString(message)
             print argument
+            argument1 = StageStartRequest()
+            argument1.stage_id = 100101
+            line_up = argument1.lineup.add()
+            line_up.pos = 1
+            line_up.hero_id = 10026
+            line_up = argument1.lineup.add()
+            line_up.pos = 2
+            line_up.hero_id = 10028
+            line_up = argument1.lineup.add()
+            line_up.pos = 3
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 4
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 5
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 6
+            line_up.hero_id = 0
+
+            self.dateSend(argument1, 903)
 
         if command == 903:
             # 进入战斗
             argument = StageStartResponse()
             argument.ParseFromString(message)
             print argument
+            argument1 = StageSettlementRequest()
+            argument1.stage_id = 100101
+            argument1.result = 1
+            self.dateSend(argument1, 904)
+
+        if command == 904:
+            # 进入战斗
+            argument = StageSettlementResponse()
+            argument.ParseFromString(message)
+            print argument
+            if self._flag:
+                # --------901请求关卡------------
+                argument1 = StageInfoRequest()
+                argument1.stage_id = 0
+                self.dateSend(argument1, 901)
+                self._flag = 0
 
     def connectionLost(self, reason):
         print "connection lost"

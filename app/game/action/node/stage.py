@@ -101,8 +101,10 @@ def stage_start_903(dynamic_id, pro_data):
 @remote_service_handle
 def fight_settlement_904(dynamic_id, pro_data):
     request = stage_request_pb2.StageSettlementRequest()
+    request.ParseFromString(pro_data)
     stage_id = request.stage_id
     result = request.result
+    print 'aaaaaaaaaaaaaaaaa', stage_id, 'bbbbbbbbbbbbbbbbb', result
     drops = fight_settlement(dynamic_id, stage_id, result)
 
     return drops

@@ -76,19 +76,28 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
     response = stage_response_pb2.StageSettlementResponse()
     drops = response.drops
-    drops.res.result = True
+    res = response.res
+    res.result = True
 
     # 校验是否保存关卡
     fight_cache_component = player.fight_cache_component
     if stage_id != fight_cache_component.stage_id:
-        drops.res.result = True
-        return response.SerializePartialToString()
+        res.result = False
+        res.message = u"关卡id和战斗缓存id不同"
+        return response.SerializeToString()
+    print 'ccccccccccc', stage_id, 'dddddddddddd', result
+    # player.stage_component.settlement(stage_id, result)
 
-    player.stage_component.settlement(stage_id, result)
+    settlement_drops = fight_cache_component.fighting_settlement(stage_id, result)
+    data = gain(player, settlement_drops)
 
-    drops = fight_cache_component.fighting_settlement(stage_id, result)
-    data = gain(player, drops)
+    print 'fight settlement:', data
+
     get_return(player, data, drops)
+    res.message = u'成功返回'
+
+    print response
+
     return response.SerializePartialToString()
 
 

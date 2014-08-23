@@ -34,7 +34,7 @@ class BigBag(object):
             print("config error!")
         drop_item_group = []
         for drop_item in drop_items:
-            drop_item_type = drop_item.item_type
+            drop_item_type = u'%s' % drop_item.item_type
             drop_item_no = drop_item.item_no
             drop_item_num = drop_item.item_num
             drop_item_group.append(CommonGroupItem(drop_item_no, drop_item_num, drop_item_num, drop_item_type))

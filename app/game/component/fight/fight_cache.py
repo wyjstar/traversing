@@ -30,9 +30,7 @@ class CharacterFightCacheComponent(Component):
         """
         red_unit = []
         for no, slot in self.line_up_slots.items():
-            print '#1 fight init data', slot.hero_slot.__dict__
             red = slot.slot_attr()
-            print '#2 fight init data:', red
             red_unit.append(red)
         self._red_unit = red_unit
         return self._red_unit
@@ -89,12 +87,7 @@ class CharacterFightCacheComponent(Component):
     def line_up_slots(self):
         """阵容
         """
-
-
-
         slots = self.owner.line_up_component.line_up_slots
-
-        print '######fight cache :', slots[1].hero_slot.hero_no
 
         print id(self.owner), self.owner
 
@@ -169,14 +162,16 @@ class CharacterFightCacheComponent(Component):
 
         return red_units, blue_units, drop_num
 
-    def fighting_settlement(self, result):
+    def fighting_settlement(self, stage_id, result):
         """战斗结算
         """
 
-        # TODO 根据result更新stage信息
-        self.stage_component.settlement(self._stage_id, result)
-        self.stage_component.update()
+        # TODO 根据result更新stage信息; 校验stage_id
+        self.owner.stage_component.settlement(self._stage_id, result)
+        self.owner.stage_component.update()
         drops = []
+        if not result:
+            return drops
         # 关卡掉落
         for _ in range(self._drop_num):
             common_bag = BigBag(self._common_drop)
