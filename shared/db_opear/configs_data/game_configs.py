@@ -20,6 +20,7 @@ from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
 from shared.db_opear.configs_data.skill_config import SkillConfig
 from shared.db_opear.configs_data.stage_config import StageConfig
+from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 
 
 print id(dbpool)
@@ -101,6 +102,7 @@ all_config_name = {
     'skill_config': SkillConfig(),
     'skill_buff_config': SkillBuffConfig(),
     'guild_config': GuildConfig(),
+    'soul_shop_config': SoulShopConfig(),
 }
 
 
