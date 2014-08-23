@@ -46,7 +46,7 @@ class PlayerCharacter(Character):
         self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
         self._level = CharacterLevelComponent(self)  # 等级
         self._line_up = CharacterLineUpComponent(self)  # 阵容
-        # self._stage = CharacterStageComponent(self)  # 关卡
+        self._stage = CharacterStageComponent(self)  # 关卡
         self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
         self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
@@ -241,4 +241,5 @@ class PlayerCharacter(Character):
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        character_info.update_multi(dict(stamina=self._stamina, pvp_times=self._pvp_times))
+        character_info.update_multi(dict(level = self._level.level, exp = self.level.exp,stamina=self._stamina,
+                                         pvp_times=self._pvp_times))

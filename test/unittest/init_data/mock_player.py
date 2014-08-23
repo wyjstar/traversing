@@ -16,7 +16,7 @@ def init_player():
                      'coin': 0,
                      'gold': 0,
                      'hero_soul': 0,
-                     'level': 0,
+                     'level': 200,
                      'exp': 0,
                      'junior_stone': 0,
                      'middle_stone': 0,

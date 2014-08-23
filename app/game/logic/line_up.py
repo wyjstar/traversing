@@ -26,8 +26,12 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     print 'have player change hero #1:', slot_no, hero_no
 
     player = kwargs.get('player')
-
-    # TODO 校验
+    # 校验该武将是否已经上阵
+    response = line_up_pb2.LineUpResponse()
+    if hero_no in player.line_up_component.hero_nos:
+        response.res.result = False
+        response.res.result_no = 701
+        return response.SerializePartialToString()
 
     player.line_up_component.change_hero(slot_no, hero_no, change_type)
     player.line_up_component.save_data()
@@ -46,6 +50,12 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @return:
     """
     player = kwargs.get('player')
+    # 校验该装备是否已经装备
+    response = line_up_pb2.LineUpResponse()
+    if equipment_id in player.line_up_component.on_equipment_ids:
+        response.res.result = False
+        response.res.result_no = 702
+        return response.SerializePartialToString()
 
     player.line_up_component.change_equipment(slot_no, no, equipment_id)
     player.line_up_component.save_data()
@@ -122,7 +132,7 @@ def assembly_sub_slots(player, response):
             hero.level = hero_obj.level
             hero.exp = hero_obj.exp
             hero.break_level = hero_obj.break_level
-            link_info = hero_obj.link
+            link_info = slot.hero_slot.link
             for key, value in link_info.items():
                 add_link = hero.links.add()
                 add_link.link_no = key

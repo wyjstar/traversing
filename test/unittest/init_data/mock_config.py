@@ -23,7 +23,10 @@ from shared.utils.const import *
 
 base_config.clear()
 base_config_mock = CommonItem(dict(sacrificeGainExp={100000: 1000101, 10000: 1000102, 1000: 1000103, 100: 1000104},
-                                   soulShopItemNum=6))
+                                   soulShopItemNum=6,
+                                   hero_position_open_level = {1:1,2:2,3:5,4:10,5:16,6:20},
+                                   friend_position_open_level = {1:20,2:30,3:40,4:50,5:60,6:70}
+                                   ))
 for key, value in base_config_mock.items():
     base_config[key] = value
 

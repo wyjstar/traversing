@@ -23,7 +23,7 @@ class CharacterLevelComponent(Component):
 
     @property
     def exp(self):
-        return self._level
+        return self._exp
 
     @exp.setter
     def exp(self, exp):

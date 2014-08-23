@@ -28,10 +28,17 @@ class LineUpActionTest(unittest.TestCase):
         slot = response.slot[0]
         self.assertEqual(slot.hero.hero_no, 10001, "%d_%d" % (slot.hero.hero_no, 10001))
         self.assertEqual(slot.activation, True)
+        for i in range(0, 6):
+            print i+1, slot.equs[i].equ.id
+        self.assertEqual(slot.equs[3].equ.id, "", "%s_%s" % (slot.equs[3].equ.id, ""))
 
         slot5 = response.slot[4]
         self.assertEqual(slot5.hero.hero_no, 0, "%d_%d" % (slot5.hero.hero_no, 0))
         self.assertEqual(slot5.activation, False)
+
+
+
+
         print(slot5.hero, "hero")
         print (slot5.hero.hero_no)
         print (slot5.hero.level)
@@ -57,15 +64,16 @@ class LineUpActionTest(unittest.TestCase):
         request = ChangeHeroRequest()
         request.hero_no = 10003
         request.slot_no = 1
+        request.change_type = 1
         str_response = remoteservice.callTarget(702, 1, request.SerializeToString())
 
         response = line_up_pb2.LineUpResponse()
         response.ParseFromString(str_response)
 
         line_up_component = self.player.line_up_component
-        line_up_slot = line_up_component.line_up_slots[1]
+        line_up_slot = line_up_component.sub_slots[1]
         self.assertEqual(line_up_slot.hero_slot.hero_no, 10003, "%d_%d" % (line_up_slot.hero_slot.hero_no, 10003))
-        self.assertEqual(response.slot[0].hero.hero_no, 10003, "%d_%d" % (response.slot[0].hero.hero_no, 10003))
+        self.assertEqual(response.sub[0].hero.hero_no, 10003, "%d_%d" % (response.sub[0].hero.hero_no, 10003))
 
     def test_change_equipments_703(self):
         equipments = self.player.equipment_component.get_all()
@@ -80,6 +88,7 @@ class LineUpActionTest(unittest.TestCase):
 
         line_up_component = self.player.line_up_component
         line_up_slot = line_up_component.line_up_slots[1]
+
 
     def test_change_line_up_order_704(self):
         pass
