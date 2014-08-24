@@ -5,7 +5,7 @@ from app.game.core.PlayersManager import PlayersManager
 
 def get_gate_remote():
     remote_gate = None
-    if 'gate' in GlobalObject().remote['gate']:
+    if 'gate' in GlobalObject().remote:
         remote_gate = GlobalObject().remote['gate']
     return remote_gate
 
