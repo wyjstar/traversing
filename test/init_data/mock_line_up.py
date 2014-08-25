@@ -10,7 +10,10 @@ def init_line_up(player):
     equipments = player.equipment_component.equipments_obj
 
     slot = player.line_up_component.line_up_slots[1]
-    slot.activation = 1
+
+    print '###1 init line up:', slot.__dict__
+
+    slot.activation = True
 
     slot.hero_slot.hero_no = 10001
     slot.hero_slot.activation = True
@@ -29,4 +32,5 @@ def init_line_up(player):
     slot.equipment_slots[1].equipment_id = '0003'
     slot.equipment_slots[1].activation = True
 
+    print id(player)
     player.line_up_component.save_data()

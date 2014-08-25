@@ -23,6 +23,8 @@ class SkillHelper(object):
             for buff in buffs:
                 self.add_buff(buff)
 
+        print 'skill helper:', self._buffs
+
     def add_buff(self, add_buff):
         """添加合并
         :param add_buff:
@@ -32,7 +34,7 @@ class SkillHelper(object):
         if buff:
             buff += add_buff
         else:
-            self._buffs.append(buff)
+            self._buffs.append(add_buff)
 
     def get_buff(self, add_buff):
         for buff in self._buffs:
@@ -187,15 +189,3 @@ class SkillHelper(object):
                  cri_coeff=cri_coeff,
                  cri_ded_coeff=cri_ded_coeff,
                  block=block_up+block_down))
-
-
-            # dict(hp_up=hp_up, hp_up_rate=hp_up_rate, hp_down=hp_down, hp_down_rate=hp_down_rate, atk_up=atk_up,
-            #      atk_up_rate=atk_up_rate, atk_down=atk_down, atk_down_rate=atk_down_rate,
-            #      physical_def_up=physical_def_up, physical_def_up_rate=physical_def_up_rate,
-            #      physical_def_down=physical_def_down, physical_def_down_rate=physical_def_down_rate,
-            #      magic_def_up=magic_def_up, magic_def_up_rate=magic_def_up_rate, magic_def_down=magic_def_down,
-            #      magic_def_down_rate=magic_def_down_rate, hit_up=hit_up, hit_down=hit_down, dodge_up=dodge_up,
-            #      dodge_down=dodge_down, cri_up=cri_up, cri_down=cri_down, cri_coeff=cri_coeff,
-            #      cri_ded_coeff=cri_ded_coeff, block_up=block_up, block_down=block_down)
-
-

@@ -85,25 +85,30 @@ class FsmRobotAction:
 
     def enter_state(self):
         print '='*68
-        print 'please input robot id:',
+        print "please input robot id[0-%d]:" % (robot_manager.count),
         robot_id = raw_input()
         while not robot_id.isdigit() or int(robot_id) > robot_manager.count:
             print 'error! please input robot id again:',
             robot_id = raw_input()
 
-        commands = robot_manager.get_robot_command(robot_id)
+        commands, command_args = robot_manager.get_robot_command(robot_id)
         print len(commands)
         for _ in range(len(commands)):
-            print "%d.%s" % (_, commands[_])
+            print "%d.%s %s" % (_, commands[_], command_args[_])
+
         print 'please input command id:',
-        command_id = raw_input()
-        while not command_id.isdigit() or int(command_id) > len(commands):
+        command = raw_input()
+        cid = command.split(' ')[0]
+        args = command.split(' ')[1:]
+        while not cid.isdigit() or int(cid) > len(commands):
             print 'error! please input command id again:',
-            command_id = raw_input()
+            command = raw_input()
+            cid = command.split(' ')[0]
+            args = command.split(' ')[1:]
 
         robot_manager.do_command(robot_id,
-                                 commands[int(command_id)],
-                                 self.on_command_finish)
+                                 commands[int(cid)],
+                                 self.on_command_finish, *args)
 
     def on_command_finish(self):
         print 'command finish'

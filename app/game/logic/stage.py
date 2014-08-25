@@ -49,7 +49,6 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
 
     # 校验关卡是否开启
     state = player.stage_component.check_stage_state(stage_id)
-
     if state == -2:  # 未开启
         return {'result': False}
 
@@ -59,6 +58,7 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
+
     red_units, blue_units, drop_num = fight_cache_component.fighting_start()
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num}
 
@@ -69,19 +69,22 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
     response = stage_response_pb2.StageSettlementResponse()
     drops = response.drops
-    drops.res.result = True
+    res = response.res
+    res.result = True
 
     # 校验是否保存关卡
     fight_cache_component = player.fight_cache_component
     if stage_id != fight_cache_component.stage_id:
-        drops.res.result = True
-        return response.SerializePartialToString()
+        res.result = False
+        res.message = u"关卡id和战斗缓存id不同"
+        return response.SerializeToString()
 
-    player.stage_component.settlement(stage_id, result)
+    settlement_drops = fight_cache_component.fighting_settlement(stage_id, result)
+    data = gain(player, settlement_drops)
 
-    drops = fight_cache_component.fighting_settlement(stage_id, result)
-    data = gain(player, drops)
     get_return(player, data, drops)
+    res.message = u'成功返回'
+
     return response.SerializePartialToString()
 
 

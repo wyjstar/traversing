@@ -17,24 +17,14 @@ def load_module():
     from action.local import heart_beat
 
 def init_guild_rank():
-    fifo_configs = {
-        'label': 'Fifo',
-        'redis_server': '127.0.0.1',
-        'redis_port': 6379,
-        'redis_db': 0,
-        'rank_len': 20,
-        'eval_rank_func': 'testcase1_eval',
-    }
-
     level_configs = {
-        'label': 'Level',
+        'label': 'GuildLevel',
         'redis_server': '127.0.0.1',
         'redis_port': 6379,
         'redis_db': 0,
         'rank_len': 20,
-        'eval_rank_func': 'testcase1_eval2',
+        'eval_rank_func': 'guild_eval',
     }
 
-    Ranking.init(fifo_configs)
     Ranking.init(level_configs)
     print 'guild rank init ok'

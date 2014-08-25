@@ -156,6 +156,7 @@ def get_return(player, return_data, game_resources_response):
     :param game_resources_response: 返回数据
     """
     # finance
+    print 'get return:', return_data
     finance_pb = game_resources_response.finance
     if not finance_pb:
         finance_pb = FinancePB()
@@ -195,6 +196,8 @@ def get_return(player, return_data, game_resources_response):
             chip_pb = game_resources_response.equipment_chips.add()
             chip_pb.equipment_chip_no = item_no
             chip_pb.equipment_chip_num = item_num
+
+    print game_resources_response
 
 
 

@@ -40,7 +40,11 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
         """套装信息
         """
         equ_no_list = self.owner.equipment_nos  # 全部装备编号
-        suit_conf = self.equipment_obj.suit_conf
+
+        equ_obj = self.equipment_obj
+        if not equ_obj:
+            return {'num': 0, 'suit_no': 0}
+        suit_conf = equ_obj.suit_conf
         if not suit_conf:
             return {'num': 0, 'suit_no': 0}
         suit_intersection = list(set(equ_no_list).intersection(set(suit_conf.suitMapping)))  # 获取两个list 的交集
@@ -52,9 +56,16 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
         """
         skills = []
         for skill_id in self.suit_skills:
+
+            print 'equ slot skill:', self.suit_skills
+
             skill = Skill(skill_id)
             skill.init_attr()
             skills.append(skill)
+
+        if not skills:
+            return None
+
         skill_helper = SkillHelper(skills)
         skill_helper.init_attr()
         attr = skill_helper.parse_buffs()
@@ -64,13 +75,25 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
     def suit_skills(self):
         """套装附加技能
         """
-        suit = self.suit  # 套装数据
-        suit_conf = self.equipment_obj.suit_conf  # 套装配置
-        num = suit.get('num', 0)  # 套装激活数量
         skills = []
-        for i in range(num):
-            skill = getattr(suit_conf, 'attr%s' % (i+1))
-            skills.append(skill)
+        suit = self.suit  # 套装数据
+        print 'suit_skills:', suit
+
+        equ_obj = self.equipment_obj
+        if not equ_obj:
+            return skills
+        suit_conf = equ_obj.suit_conf  # 套装配置
+        if not suit_conf:
+            return skills
+        print 'suit_skills:', suit_conf
+        num = suit.get('num', 0)  # 套装激活数量
+        for i in range(3):
+            skill_cof = getattr(suit_conf, 'attr%s' % (i+1))  # 套装属性配置
+            if num >= skill_cof[0]:
+                skills.append(skill_cof[1])
+
+        print skills, '#############'
+
         return skills
 
 

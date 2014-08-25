@@ -18,6 +18,7 @@ class CommonItem(dict):
                 other[k] += v
             else:
                 other[k] = v
+        print 'common item:', type(other)
         return other
 
 
@@ -35,8 +36,9 @@ class CommonGroupItem():
 
     @property
     def num(self):
-        if self._max_num == self._min_num:
-            return self._max_num
+        # print 'aaaaaaaaaa', self._min_num, 'bbbbbb', self._max_num
+        # if self._max_num == self._min_num:
+        #     return self._max_num
         return random.randint(self._min_num, self._max_num)
 
     @property

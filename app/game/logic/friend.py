@@ -137,7 +137,7 @@ def refuse_invitation(dynamic_id, data, **kwargs):
 
     player = kwargs.get('player')
 
-    for target_id in request.targett_ids:
+    for target_id in request.target_ids:
         if not player.friends.del_applicant(target_id):
             response.result = False
         response.result_no += 1
