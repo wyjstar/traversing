@@ -75,6 +75,7 @@ class CharacterEquipmentPackageComponent(Component):
         @param equipment_id: 装备ID
         @return: 装备对象
         """
+        print 'cccccccccccccccccccccccc', self._equipments_obj, 'ddddddd', equipment_id
         if equipment_id in self._equipments_obj:
             return self._equipments_obj[equipment_id]
         return None

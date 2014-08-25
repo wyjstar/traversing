@@ -9,6 +9,8 @@ from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import *
 from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
+from app.proto_file.equipment_request_pb2 import *
+from app.proto_file.equipment_response_pb2 import *
 
 
 def sendData(sendstr,commandId):
@@ -107,6 +109,18 @@ class EchoClient(protocol.Protocol):
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
+
+            # --------402强化------------
+            # argument1 = EnhanceEquipmentRequest()
+            # argument1.id = u"0006"
+            # argument1.type = 1
+            # argument1.num = 1
+            # self.dateSend(argument1, 402)
+
+            # --------405分解------------
+            argument1 = MeltingEquipmentRequest()
+            argument1.id.append(u"0006")
+            self.dateSend(argument1, 405)
 
             # --------904结算------------
             # argument1 = StageSettlementRequest()
@@ -217,9 +231,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 813)
 
             # --------810获取公会排行---------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四117'
-            self.dateSend(argument1, 810)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四117'
+            # self.dateSend(argument1, 810)
 
         if command == 801:
             # 创建公会
@@ -352,6 +366,19 @@ class EchoClient(protocol.Protocol):
                 argument1.stage_id = 0
                 self.dateSend(argument1, 901)
                 self._flag = 0
+
+        if command == 405:
+            # 溶炼
+            argument = MeltingEquipmentResponse()
+            argument.ParseFromString(message)
+            argument.cgr
+            print argument, argument.cgr.finance.coin
+
+        if command == 402:
+            # 
+            argument = EnhanceEquipmentResponse()
+            argument.ParseFromString(message)
+            print argument
 
     def connectionLost(self, reason):
         print "connection lost"
