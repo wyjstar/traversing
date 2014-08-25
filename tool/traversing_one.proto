@@ -538,6 +538,7 @@ message StageStartResponse{
 
 // 关卡结算返回 command:904
 message StageSettlementResponse{
+    required CommonResponse res = 1;
 	optional GameResourcesResponse drops = 2;
 }
 

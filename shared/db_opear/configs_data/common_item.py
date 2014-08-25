@@ -18,6 +18,7 @@ class CommonItem(dict):
                 other[k] += v
             else:
                 other[k] = v
+        print 'common item:', type(other)
         return other
 
 

@@ -50,6 +50,7 @@ times = 0
 class EchoClient(protocol.Protocol):
 
     _times = 0
+    _flag = 1
 
     """Once connected, send a message, then print the result."""
 
@@ -63,7 +64,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '56f7ed4182edec31c13ba570016339bb'
+        argument.key.key = '6da9107450377ab0fe18badc928dc602'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -88,7 +89,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '56f7ed4182edec31c13ba570016339bb'
+                argument.key.key = '6da9107450377ab0fe18badc928dc602'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -99,7 +100,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '56f7ed4182edec31c13ba570016339bb'
+            argument.token = '6da9107450377ab0fe18badc928dc602'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -107,30 +108,35 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            # --------904结算------------
+            # argument1 = StageSettlementRequest()
+            # argument1.stage_id = 100101
+            # argument1.result = 1
+            # self.dateSend(argument1, 904)
+
             # --------903进入战斗------------
-            argument1 = StageStartRequest()
-            argument1.stage_id = 100101
-            line_up = argument1.lineup.add()
-            line_up.pos = 1
-            line_up.hero_id = 10026
-            line_up = argument1.lineup.add()
-            line_up.pos = 2
-            line_up.hero_id = 10028
-            line_up = argument1.lineup.add()
-            line_up.pos = 3
-            line_up.hero_id = 0
-            line_up = argument1.lineup.add()
-            line_up.pos = 4
-            line_up.hero_id = 0
-            line_up = argument1.lineup.add()
-            line_up.pos = 5
-            line_up.hero_id = 0
-            line_up = argument1.lineup.add()
-            line_up.pos = 6
-            line_up.hero_id = 0
-
-
-            self.dateSend(argument1, 903)
+            # argument1 = StageStartRequest()
+            # argument1.stage_id = 100101
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 1
+            # line_up.hero_id = 10026
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 2
+            # line_up.hero_id = 10028
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 3
+            # line_up.hero_id = 0
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 4
+            # line_up.hero_id = 0
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 5
+            # line_up.hero_id = 0
+            # line_up = argument1.lineup.add()
+            # line_up.pos = 6
+            # line_up.hero_id = 0
+            #
+            # self.dateSend(argument1, 903)
 
             # --------902请求关卡------------
             # argument1 = ChapterInfoRequest()
@@ -148,7 +154,7 @@ class EchoClient(protocol.Protocol):
 
             # --------801创建公会------------
             # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四001'
+            # argument1.name = '一二三四003'
             # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
@@ -211,9 +217,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 813)
 
             # --------810获取公会排行---------
-            # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四117'
-            # self.dateSend(argument1, 810)
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四117'
+            self.dateSend(argument1, 810)
 
         if command == 801:
             # 创建公会
@@ -292,6 +298,9 @@ class EchoClient(protocol.Protocol):
             argument = StageInfoResponse()
             argument.ParseFromString(message)
             print argument
+            argument1 = ChapterInfoRequest()
+            argument1.chapter_id = 0
+            self.dateSend(argument1, 902)
 
         if command == 902:
             # 获取章节信息
@@ -299,11 +308,50 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            argument1 = StageStartRequest()
+            argument1.stage_id = 100101
+            line_up = argument1.lineup.add()
+            line_up.pos = 1
+            line_up.hero_id = 10026
+            line_up = argument1.lineup.add()
+            line_up.pos = 2
+            line_up.hero_id = 10028
+            line_up = argument1.lineup.add()
+            line_up.pos = 3
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 4
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 5
+            line_up.hero_id = 0
+            line_up = argument1.lineup.add()
+            line_up.pos = 6
+            line_up.hero_id = 0
+
+            self.dateSend(argument1, 903)
+
         if command == 903:
             # 进入战斗
             argument = StageStartResponse()
             argument.ParseFromString(message)
             print argument
+            argument1 = StageSettlementRequest()
+            argument1.stage_id = 100101
+            argument1.result = 1
+            self.dateSend(argument1, 904)
+
+        if command == 904:
+            # 进入战斗
+            argument = StageSettlementResponse()
+            argument.ParseFromString(message)
+            print argument
+            if self._flag:
+                # --------901请求关卡------------
+                argument1 = StageInfoRequest()
+                argument1.stage_id = 0
+                self.dateSend(argument1, 901)
+                self._flag = 0
 
     def connectionLost(self, reason):
         print "connection lost"

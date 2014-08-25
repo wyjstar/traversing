@@ -123,6 +123,12 @@ class Ranking:
 # 回调接口
 # 返回值格式 (rank_name, score)
 
+def guild_eval(**kwargs):
+    # 建立等级的rank，玩家根据级别大小排列。
+    lv = kwargs['level']
+    return ('GuildLevel', lv)
+
+
 def testcase1_eval(**kwargs):
     # 为每个等级建立一个rank，rank的依据是当前时间
     # 实现：搜索指定顶级的玩家列表功能

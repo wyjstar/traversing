@@ -24,7 +24,8 @@ class CharacterFightCacheComponent(Component):
         self._red_unit = []  # 红方战斗单位
         self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
 
-    def init_data(self):
+    @property
+    def red_unit(self):
         """初始创建红方单位
         """
         red_unit = []
@@ -32,6 +33,11 @@ class CharacterFightCacheComponent(Component):
             red = slot.slot_attr()
             red_unit.append(red)
         self._red_unit = red_unit
+        return self._red_unit
+
+    @red_unit.setter
+    def red_unit(self, value):
+        self._red_unit = value
 
     @property
     def stage_id(self):
@@ -82,6 +88,9 @@ class CharacterFightCacheComponent(Component):
         """阵容
         """
         slots = self.owner.line_up_component.line_up_slots
+
+        print id(self.owner), self.owner
+
         return slots
 
     def __assmble_monsters(self):
@@ -140,21 +149,29 @@ class CharacterFightCacheComponent(Component):
         #
         # red_units = [self.__assemble_hero(hero) if hero else None for hero in heros]  # 英雄单位
 
-        red_units = self._red_unit
+
+        print "#3 line_up1_hero_no:", self.owner.line_up_component.line_up_slots[1].hero_slot.hero_no
+
+
+        red_units = self.red_unit
+
+        print '#########red units:', red_units
 
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
 
         return red_units, blue_units, drop_num
 
-    def fighting_settlement(self, result):
+    def fighting_settlement(self, stage_id, result):
         """战斗结算
         """
 
-        # TODO 根据result更新stage信息
-        self.stage_component.settlement(self._stage_id, result)
-        self.stage_component.update()
+        # TODO 根据result更新stage信息; 校验stage_id
+        self.owner.stage_component.settlement(self._stage_id, result)
+        self.owner.stage_component.update()
         drops = []
+        if not result:
+            return drops
         # 关卡掉落
         for _ in range(self._drop_num):
             common_bag = BigBag(self._common_drop)

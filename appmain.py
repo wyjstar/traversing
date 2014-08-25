@@ -20,7 +20,6 @@ def dump_stacks(signal, frame):
             codes.append('File: "%s", line %d, in %s' % (filename, lineno, name))
             if line:
                 codes.append("  %s" % (line.strip()))
-                print "\n".join(codes)
 
 
 def print_stack(signal, frame):

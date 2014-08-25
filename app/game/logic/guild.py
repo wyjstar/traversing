@@ -61,7 +61,7 @@ def create_guild(dynamicid, data, **kwargs):
     guild_obj = Guild()
     guild_obj.create_guild(p_id, g_name)
 
-    add_guild_to_rank(guild_obj.g_id)
+    add_guild_to_rank(guild_obj.g_id, 1)
 
     data = {'g_name': g_name,
             'g_id': guild_obj.g_id}
@@ -637,9 +637,18 @@ def worship(dynamicid, data, **kwargs):
     if guild_obj.exp >= guild_config.get(guild_obj.level).exp:
         guild_obj.level += 1
         guild_obj.exp -= guild_config.get(guild_obj.level).exp
+        # TODO 膜拜成功后，公会排行 刷新！！！！！！
+        add_guild_to_rank(guild_obj.g_id, guild_obj.level + (guild_obj.fund * 100))
 
     player.guild.save_data()
     guild_obj.save_data()
+
+
+
+    # TODO 暂注
+    # 根据膜拜类型判断减什么钱，然后扣除
+    # player.finance.gold -= base_config.get('create_money')
+    # player.finance.save()
 
     response.result = True
     response.message = "膜拜成功"
@@ -676,7 +685,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
                 else:
                     guild_rank.president = '无名'
             else:
-                guild_rank.president = '未知'
+                guild_rank.president = '错误'
 
             guild_rank.p_num = guild_obj.p_num
             guild_rank.record = guild_obj.record

@@ -120,7 +120,6 @@ class PlayerCharacter(Character):
         self._pvp_times = pvp_times
         self._get_stamina_times = get_stamina_times
 
-
     @property
     def character_type(self):
         return self._character_type
