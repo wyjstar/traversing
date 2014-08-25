@@ -1,17 +1,19 @@
 """
-created by sphinx on 
+created by sphinx on
 """
 import marshal
 import redis
 
-_redis_host = '127.0.0.1'
-_redis_post = 6379
-_db = 1
+REDIS_HOST = '127.0.0.1'
+REDIS_POST = 6379
+DB = 1
 
 
 class MessageCache:
+    """
+    """
     def __init__(self):
-        self._redis = redis.Redis(host=_redis_host, port=_redis_post, db=_db)
+        self._redis = redis.Redis(host=REDIS_HOST, port=REDIS_POST, db=DB)
 
     def cache(self, topic_id, character_id, *args, **kw):
         key = '%d_%d' % (character_id, topic_id)
