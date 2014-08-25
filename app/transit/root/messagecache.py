@@ -2,26 +2,27 @@
 """
 created by sphinx on
 """
-import marshal
+import cPickle
 import redis
 import uuid
 
-REDIS_HOST = '127.0.0.1'
-REDIS_POST = 6379
-DB = 1
+# REDIS_HOST = '127.0.0.1'
+# REDIS_POST = 6379
+# DB = 1
 
 
 class MessageCache:
     """
     """
     def __init__(self):
+        # self._redis = redis.Redis(host=REDIS_HOST, port=REDIS_POST, db=DB)
         self._redis = redis.Redis()
         self._redis.pipeline()
 
     def cache(self, topic_id, character_id, *args, **kw):
         unique_id = uuid.uuid4()
         key = '%d_%d_%s' % (character_id, topic_id, unique_id)
-        value = marshal.dumps({'topic_id': topic_id,
+        value = cPickle.dumps({'topic_id': topic_id,
                                'character_id': character_id,
                                'args': args,
                                'kw': kw})
@@ -34,7 +35,7 @@ class MessageCache:
         if keys:
             for _ in keys:
                 value = self._redis.get(_)
-                request = marshal.loads(value)
+                request = cPickle.loads(value)
                 yield request
 
     def delete(self, topic_id, character_id):
