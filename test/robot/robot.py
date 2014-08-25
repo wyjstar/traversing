@@ -15,7 +15,7 @@ class Robot(RobotBase):
     def __init__(self, user_name, pwd, nickname):
         RobotBase.__init__(self)
 
-        self.on_connection_make = self.connection_made
+        self.on_connection_made = self.connection_made
         self.on_account_login_result = None
         self.on_character_login_result = None
 
@@ -55,8 +55,9 @@ class Robot(RobotBase):
     def character_login_4(self, message):
         argument = GameLoginResponse()
         argument.ParseFromString(message)
-        format_str = 'character login result:%s nickname:%s level;%s'
+        format_str = 'character login result:%s id:%d nickname:%s level;%s'
         print format_str % (argument.res.result,
+                            argument.id,
                             argument.nickname,
                             argument.level)
         self.on_character_login_result(argument.res.result)

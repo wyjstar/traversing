@@ -1,5 +1,5 @@
 """
-created by sphinx on 
+created by sphinx on
 """
 from gfirefly.server.globalobject import rootserviceHandle, GlobalObject
 from app.transit.root.messagecache import message_cache

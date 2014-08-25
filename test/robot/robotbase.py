@@ -4,6 +4,7 @@ created by server on 14-8-21下午2:45.
 """
 
 import struct
+import inspect
 from twisted.internet import protocol
 
 
@@ -42,10 +43,13 @@ class RobotBase(protocol.Protocol):
 
         self._distributor = {}
         self._commands = []
+        self._command_args = []
         for attr in dir(self):
             key = attr.split('_')
             if key[0] == 'command':
                 self._commands.append(attr)
+                fun = getattr(self, attr)
+                self._command_args.append(inspect.getargspec(fun)[0])
             if key[-1].isdigit():
                 self._distributor[key[-1]] = attr
 
@@ -56,12 +60,16 @@ class RobotBase(protocol.Protocol):
     def commands(self):
         return self._commands
 
+    @property
+    def commands_args(self):
+        return self._command_args
+
     def send_message(self, argument, command_id):
         data = build_data(argument.SerializeToString(), command_id)
         self.transport.write(data)
 
     def connectionMade(self):
-        self.on_connection_make()
+        self.on_connection_made()
 
     def dataReceived(self, data):
         command, message = parse_data(data)

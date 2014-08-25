@@ -62,20 +62,20 @@ class RobotManager:
 
     def get_robot_command(self, index):
         robot = self._robots[int(index)]
-        return robot.commands
+        return robot.commands, robot.commands_args
 
-    def do_command(self, robot_index, command, fun):
+    def do_command(self, robot_index, command, fun, *args):
         robot = self._robots[int(robot_index)]
         com = getattr(robot, command)
         setattr(robot, 'on_command_finish', fun)
         if com:
-            com()
+            com(*args)
 
     def is_robots_logined(self):
         return self._robot_count == self._robot_login_success_num
 
     def add_robot(self, robot_type, number):
-        for _ in number:
+        for _ in range(int(number)):
             robot_name = 'robot' + str(self._robot_count)
             pwd = '123456'
             robot_nickname = 'robot' + str(self._robot_count)
