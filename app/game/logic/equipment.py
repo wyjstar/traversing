@@ -131,12 +131,12 @@ def melting_equipment(dynamic_id, equipment_ids, response, **kwargs):
     """
     player = kwargs.get('player')
 
-
-    equipment_obj = player.equipment_component.get_equipment(id)
+    equipment_obj = player.equipment_component.get_equipment(equipment_ids)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
     melting_items = equipment_obj.melting_item
     gain = item_group_helper.gain(player, melting_items)
+    print melting_items, 'aaaaaaaa,bdgasdflkjl;sakfj;'
     item_group_helper.get_return(player, gain, response.cgr)
 
 
