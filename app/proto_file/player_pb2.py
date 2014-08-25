@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player.proto',
   package='',
-  serialized_pb='\n\x0cplayer.proto\":\n\tFinancePB\x12\x0c\n\x04\x63oin\x18\x01 \x01(\x05\x12\x0c\n\x04gold\x18\x02 \x01(\x05\x12\x11\n\thero_soul\x18\x03 \x01(\x05')
+  serialized_pb='\n\x0cplayer.proto\"z\n\tFinancePB\x12\x0c\n\x04\x63oin\x18\x01 \x01(\x05\x12\x0c\n\x04gold\x18\x02 \x01(\x05\x12\x11\n\thero_soul\x18\x03 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x04 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\x05 \x01(\x05\x12\x12\n\nhigh_stone\x18\x06 \x01(\x05')
 
 
 
@@ -46,6 +46,27 @@ _FINANCEPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='junior_stone', full_name='FinancePB.junior_stone', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='middle_stone', full_name='FinancePB.middle_stone', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='high_stone', full_name='FinancePB.high_stone', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -56,7 +77,7 @@ _FINANCEPB = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=16,
-  serialized_end=74,
+  serialized_end=138,
 )
 
 DESCRIPTOR.message_types_by_name['FinancePB'] = _FINANCEPB

@@ -119,7 +119,7 @@ class EchoClient(protocol.Protocol):
 
             # --------405分解------------
             argument1 = MeltingEquipmentRequest()
-            argument1.id.append(u"0006")
+            argument1.id.append(u"0005")
             self.dateSend(argument1, 405)
 
             # --------904结算------------
@@ -372,7 +372,7 @@ class EchoClient(protocol.Protocol):
             argument = MeltingEquipmentResponse()
             argument.ParseFromString(message)
             argument.cgr
-            print argument, argument.cgr.finance.coin
+            print argument
 
         if command == 402:
             # 
