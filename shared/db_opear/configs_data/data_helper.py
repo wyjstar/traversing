@@ -10,8 +10,8 @@ def parse(data):
 
     item_group = []
     for typeid, lst in data.items():
-        max_num = lst[0]
-        min_num = lst[1]
+        min_num = lst[0]
+        max_num = lst[1]
         obj_id = lst[2]
         item_group.append(CommonGroupItem(obj_id, max_num, min_num, typeid))
     return item_group

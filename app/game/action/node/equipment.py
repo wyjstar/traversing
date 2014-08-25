@@ -3,7 +3,8 @@
 created by server on 14-7-9上午11:28.
 """
 from app.game.logic import item_group_helper
-from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment
+from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment, \
+    awakening_equipment
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import equipment_request_pb2
 from app.proto_file import equipment_response_pb2
@@ -138,7 +139,7 @@ def melting_equipment_405(dynamic_id, pro_data):
 
     for equipment_id in equipment_ids:
         data = melting_equipment(dynamic_id, equipment_id, response)
-        result = data.get('result')
+        # result = data.get('result')
 
     response.res.result = True
     return response.SerializePartialToString()
