@@ -36,10 +36,9 @@ class MessageCache:
             for _ in keys:
                 value = self._redis.get(_)
                 request = cPickle.loads(value)
-                yield request
+                yield _, request
 
-    def delete(self, topic_id, character_id):
-        key = '%s_%s*' % (character_id, topic_id)
+    def delete(self, key):
         if self._redis.exists(key):
             self._redis.delete(key)
         else:
@@ -51,5 +50,6 @@ message_cache = MessageCache()
 
 if __name__ == '__main__':
     message_cache.cache(444, 222, 'hihi', 'go')
-    for request in message_cache.get(222):
+    for key, request in message_cache.get(222):
         print request.get('args'), request.get('character_id')
+        message_cache.delete(key)
