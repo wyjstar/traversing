@@ -24,3 +24,21 @@ def init_equipment(player):
     equipment_obj.attribute.strengthen_lv = 2
     equipment_obj.attribute.awakening_lv = 2
     equipment_obj.save_data()
+
+    equipment_obj = Equipment('0004', '', 100004)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
+
+    equipment_obj = Equipment('0005', '', 100005)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
+
+    equipment_obj = Equipment('0006', '', 100006)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()

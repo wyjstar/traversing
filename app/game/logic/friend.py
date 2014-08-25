@@ -6,10 +6,9 @@ import datetime
 
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
-from app.game.core.offline.friend_offline import FriendOffline
 from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
-from app.proto_file.friend_pb2 import *
+from app.proto_file import friend_pb2
 from app.game.action.root.netforwarding import push_object, push_message
 
 
@@ -24,7 +23,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
-    request = FriendCommon()
+    request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
     if len(request.target_ids) < 1:
@@ -55,7 +54,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
     else:
         if not push_message(1050, target_id, player.base_info.id):
             response.result = False
-            response.result_no = 2  # offline fail
+            response.result_no = 2
             return response.SerializePartialToString()  # fail
 
     return response.SerializePartialToString()
@@ -64,9 +63,8 @@ def add_friend_request(dynamic_id, data, **kwargs):
 @have_player
 def add_friend_request_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
-    if player.friends.add_applicant(target_id):
-        print 'remote add applicant success', is_online
-    print 'remote add applicant fail', is_online
+    result = player.friends.add_applicant(target_id)
+    print 'remote add applicant result:', result, is_online
     return True
 
 
@@ -81,7 +79,7 @@ def become_friends(dynamic_id, data, **kwargs):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
-    request = FriendCommon()
+    request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
@@ -97,7 +95,8 @@ def become_friends(dynamic_id, data, **kwargs):
 
         inviter_player = PlayersManager().get_player_by_id(target_id)
         if inviter_player:
-            if not inviter_player.friends.add_friend(player.base_info.id, False):
+            if not inviter_player.friends.add_friend(player.base_info.id,
+                                                     False):
                 response.result = False
                 print 'inviter add friend fail'
 
@@ -116,9 +115,8 @@ def become_friends(dynamic_id, data, **kwargs):
 @have_player
 def become_friends_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
-    if player.friends.add_friend(target_id, False):
-        print 'remote add friend success:', is_online
-    print 'remote add friend fail:', is_online
+    result = player.friends.add_friend(target_id, False)
+    print 'remote add friend result:', result, is_online
     return True
 
 
@@ -134,12 +132,12 @@ def refuse_invitation(dynamic_id, data, **kwargs):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
-    request = FriendCommon()
+    request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
 
-    for target_id in request.targett_ids:
+    for target_id in request.target_ids:
         if not player.friends.del_applicant(target_id):
             response.result = False
         response.result_no += 1
@@ -161,7 +159,7 @@ def del_friend(dynamic_id, data, **kwargs):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
-    request = FriendCommon()
+    request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
@@ -178,12 +176,19 @@ def del_friend(dynamic_id, data, **kwargs):
             if not friend_player.friends.del_friend(player.base_info.id):
                 response.result = False
         else:
-            friend_offline = FriendOffline(target_id)
-            if not friend_offline.del_friend(player.base_info.id):
+            if not push_message(1052, target_id, player.base_info.id):
                 response.result = False
         response.result_no += 1
 
     return response.SerializePartialToString()
+
+
+@have_player
+def del_friend_remote(dynamic_id, is_online, target_id, **kwargs):
+    player = kwargs.get('player')
+    result = player.friends.del_friend(target_id, False)
+    print 'remote del friend result:', result, is_online
+    return True
 
 
 @have_player
@@ -197,7 +202,7 @@ def add_player_to_blacklist(dynamic_id, data, **kwargs):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
-    request = FriendCommon()
+    request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
@@ -223,7 +228,7 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
-    request = FriendCommon()
+    request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
     player = kwargs.get('player')
@@ -241,7 +246,7 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
 @have_player
 def get_player_friend_list(dynamic_id, **kwargs):
 
-    response = GetPlayerFriendsResponse()
+    response = friend_pb2.GetPlayerFriendsResponse()
     player = kwargs.get('player')
 
     for pid in player.friends.friends:
@@ -292,10 +297,10 @@ def find_friend_request(dynamic_id, data, **kwargs):
     :param kwargs:
     :return:
     """
-    request = FindFriendRequest()
+    request = friend_pb2.FindFriendRequest()
     request.ParseFromString(data)
 
-    response = FindFriendResponse()
+    response = friend_pb2.FindFriendResponse()
     response.id = 0
     response.nickname = 'none'
     response.ap = 111

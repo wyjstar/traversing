@@ -16,9 +16,10 @@ def init_player(player):
 
     player.level.level = 200
     player.level.exp = 100
-
+    player.line_up_component.update_slot_activation()
     player.last_pick_time.fine_hero = 0
     player.last_pick_time.excellent_hero = 0
     player.last_pick_time.fine_equipment = 0
     player.last_pick_time.excellent_equipment = 0
     player.last_pick_time.save_data()
+    player.save_data()

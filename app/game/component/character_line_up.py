@@ -21,6 +21,7 @@ class CharacterLineUpComponent(Component):
         super(CharacterLineUpComponent, self).__init__(owner)
 
         # TODO 有多少个位置 需要读取baseinfo配置表
+
         self._line_up_slots = dict([(slot_no, LineUpSlotComponent(self, slot_no)) for slot_no in range(1, 7)])  # 卡牌位列表
         self._sub_slots = dict([(slot_no, LineUpSlotComponent(self, slot_no)) for slot_no in range(1, 7)])  # 卡牌位替补
 
@@ -53,6 +54,19 @@ class CharacterLineUpComponent(Component):
                                                          slot_no in self._sub_slots.keys()]),
                                       'line_up_order': self._line_up_order})
 
+        self.update_slot_activation()
+
+    def update_slot_activation(self):
+        # 根据base_config获取卡牌位激活状态
+        print game_configs.base_config
+        for i in range(1, 7):
+            slot = self._line_up_slots[i]
+            if self.owner.level.level > game_configs.base_config.get("hero_position_open_level").get(i):
+                slot.activation = True
+        for i in range(1, 7):
+            slot = self._sub_slots[i]
+            if self.owner.level.level > game_configs.base_config.get("friend_position_open_level").get(i):
+                slot.activation = True
     @property
     def line_up_slots(self):
         return self._line_up_slots
@@ -140,6 +154,16 @@ class CharacterLineUpComponent(Component):
         """英雄编号 list
         """
         return [hero_obj.hero_no for hero_obj in self.hero_objs if hero_obj]
+
+    @property
+    def on_equipment_ids(self):
+        """获取所有已经装备的装备ID"""
+        on_equipment_ids = []
+        for slot in self._line_up_slots.values():
+            temp = [slot.equipment_id for slot in slot.equipment_slots.values() if slot.equipment_id]
+            on_equipment_ids.extend(temp)
+
+        return on_equipment_ids
 
     def save_data(self):
         props = {

@@ -27,6 +27,9 @@ def forwarding(key, dynamic_id, data):
         # print VCharacterManager().__dict__
         # print 'gate forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
+            print "玩家没有登录！", dynamic_id
+            print VCharacterManager().character_client
+            print VCharacterManager().client_character
             return
         # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
         #     return

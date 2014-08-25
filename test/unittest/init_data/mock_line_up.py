@@ -36,29 +36,6 @@ def init_line_up():
     slot = player.line_up_component.line_up_slots[3]
     slot.activation = True
 
-    slot.hero_slot.hero_no = 10003
-    slot.hero_slot.activation = True
 
-    slot.equipment_slots[1].equipment_id = equipment_ids[2]
-    slot.equipment_slots[1].activation = True
-    slot.equipment_slots[4].equipment_id = equipment_ids[3]
-    slot.equipment_slots[4].activation = True
-
-    slot = player.line_up_component.line_up_slots[4]
-    slot.activation = True
-
-    slot.hero_slot.hero_no = 10004
-    slot.hero_slot.activation = True
-
-    slot.equipment_slots[1].equipment_id = equipment_ids[3]
-    slot.equipment_slots[1].activation = True
-    slot.equipment_slots[5].equipment_id = equipment_ids[4]
-    slot.equipment_slots[5].activation = True
-
-    slot = player.line_up_component.line_up_slots[5]
-    slot.activation = False
-
-    slot = player.line_up_component.line_up_slots[6]
-    slot.activation = False
 
     player.line_up_component.save_data()

@@ -240,4 +240,5 @@ class PlayerCharacter(Character):
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        character_info.update_multi(dict(stamina=self._stamina, pvp_times=self._pvp_times))
+        character_info.update_multi(dict(level = self._level.level, exp = self.level.exp,stamina=self._stamina,
+                                         pvp_times=self._pvp_times))

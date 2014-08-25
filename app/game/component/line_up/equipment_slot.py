@@ -11,7 +11,7 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
     """阵容装备格子
     """
 
-    def __init__(self, owner, slot_no, activation=False, equipment_id=0, base_name=''):
+    def __init__(self, owner, slot_no, activation=False, equipment_id='', base_name=''):
         super(EquipmentSlotComponent, self).__init__(owner, slot_no, base_name, activation)
 
         self._equipment_id = equipment_id  # 装备
