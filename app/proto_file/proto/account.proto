@@ -1,4 +1,3 @@
-// 注册 command:  1
 message AccountInfo{
 	required int32 type = 1;//注册类型 1.游客 2.帐号 3.绑定
 	optional string user_name = 2; //用户名

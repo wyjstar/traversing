@@ -80,6 +80,7 @@ monster_group_config = {}
 skill_config = {}
 skill_buff_config = {}
 guild_config = {}
+sign_in_config = {}
 
 
 all_config_name = {
