@@ -51,7 +51,7 @@ def enhance_equipment_402(dynamic_id, pro_data):
     enhance_type = request.type
     enhance_num = request.num
 
-    print request.id, request.type, request.num, "request"
+    print request.id, request.type, request.num, "##request"
 
     enhance_info = enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num)
 

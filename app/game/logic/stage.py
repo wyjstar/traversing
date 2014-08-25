@@ -49,9 +49,6 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
 
     # 校验关卡是否开启
     state = player.stage_component.check_stage_state(stage_id)
-    print '#1 fight start:', state, line_up
-    print "#1 line_up1_hero_no:", player.line_up_component.line_up_slots[1].hero_slot.hero_no
-    print '#1 :',id(player), player
     if state == -2:  # 未开启
         return {'result': False}
 
@@ -61,10 +58,6 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
-
-    print '#2 fight start:', state, line_up
-    print "#2 line_up1_hero_no:", player.line_up_component.line_up_slots[1].hero_slot.hero_no
-    print '#2 :', id(player), player
 
     red_units, blue_units, drop_num = fight_cache_component.fighting_start()
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num}
@@ -85,18 +78,12 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
         res.result = False
         res.message = u"关卡id和战斗缓存id不同"
         return response.SerializeToString()
-    print 'ccccccccccc', stage_id, 'dddddddddddd', result
-    # player.stage_component.settlement(stage_id, result)
 
     settlement_drops = fight_cache_component.fighting_settlement(stage_id, result)
     data = gain(player, settlement_drops)
 
-    print 'fight settlement:', data
-
     get_return(player, data, drops)
     res.message = u'成功返回'
-
-    print response
 
     return response.SerializePartialToString()
 

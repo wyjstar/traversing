@@ -64,7 +64,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '56f7ed4182edec31c13ba570016339bb'
+        argument.key.key = '6da9107450377ab0fe18badc928dc602'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -89,7 +89,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '56f7ed4182edec31c13ba570016339bb'
+                argument.key.key = '6da9107450377ab0fe18badc928dc602'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -100,7 +100,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '56f7ed4182edec31c13ba570016339bb'
+            argument.token = '6da9107450377ab0fe18badc928dc602'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -144,9 +144,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
-            argument1 = StageInfoRequest()
-            argument1.stage_id = 0
-            self.dateSend(argument1, 901)
+            # argument1 = StageInfoRequest()
+            # argument1.stage_id = 0
+            # self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -154,7 +154,7 @@ class EchoClient(protocol.Protocol):
 
             # --------801创建公会------------
             # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四001'
+            # argument1.name = '一二三四003'
             # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
@@ -217,9 +217,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 813)
 
             # --------810获取公会排行---------
-            # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四117'
-            # self.dateSend(argument1, 810)
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四117'
+            self.dateSend(argument1, 810)
 
         if command == 801:
             # 创建公会
@@ -307,6 +307,7 @@ class EchoClient(protocol.Protocol):
             argument = ChapterInfoResponse()
             argument.ParseFromString(message)
             print argument
+
             argument1 = StageStartRequest()
             argument1.stage_id = 100101
             line_up = argument1.lineup.add()

@@ -25,9 +25,9 @@ def get_guild_rank_from_gate():
         return res
 
 
-def add_guild_to_rank(g_id):
+def add_guild_to_rank(g_id, dengji):
     if 'gate' in GlobalObject().remote.keys():
-        GlobalObject().remote['gate'].callRemote("add_guild_to_rank", g_id)
+        GlobalObject().remote['gate'].callRemote("add_guild_to_rank", g_id, dengji)
 
 
 def push_message(topic_id, character_id, *args, **kw):
