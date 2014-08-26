@@ -21,9 +21,6 @@ class CharacterStageComponent(Component):
     def init_data(self):
         stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
         if stage_data:
-
-            print 'stage_data:', stage_data
-
             stages = stage_data.get('stage_info')
             for stage_id, stage in stages.items():
                 self._stage_info[stage_id] = Stage.loads(stage)
@@ -105,10 +102,8 @@ class CharacterStageComponent(Component):
         """校验当前关卡是否已经通关
         """
 
-        print 'stage_id:', stage_id
         if stage_id in self._stage_info.keys():
             stage = self.get_stage(stage_id)
-            print 'stage:', stage.state
             return stage.state
         return -2
 

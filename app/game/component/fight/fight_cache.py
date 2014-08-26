@@ -89,8 +89,6 @@ class CharacterFightCacheComponent(Component):
         """
         slots = self.owner.line_up_component.line_up_slots
 
-        print id(self.owner), self.owner
-
         return slots
 
     def __assmble_monsters(self):
@@ -149,13 +147,7 @@ class CharacterFightCacheComponent(Component):
         #
         # red_units = [self.__assemble_hero(hero) if hero else None for hero in heros]  # 英雄单位
 
-
-        print "#3 line_up1_hero_no:", self.owner.line_up_component.line_up_slots[1].hero_slot.hero_no
-
-
         red_units = self.red_unit
-
-        print '#########red units:', red_units
 
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()

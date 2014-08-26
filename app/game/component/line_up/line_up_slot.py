@@ -119,8 +119,6 @@ class LineUpSlotComponent(Component):
         suit_info = {}  # suit_no:attr
         for no, slot in self._equipment_slots.items():
             suit = slot.suit
-            print slot.__dict__
-            print 'line up slot suit:', suit
             suit_no = suit.get('suit_no')
             if not suit_no or suit_no in suit_info or not slot.suit_attr:
                 continue
@@ -171,7 +169,6 @@ class LineUpSlotComponent(Component):
     def __assemble_hero(self, base_attr, attr):
         """组装英雄战斗单位
         """
-        print type(base_attr), type(attr)
         # base_attr: 英雄基础，等级 属性
         # hero_no, quality, hp, atk, physical_def, magic_def, hit
         # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
@@ -190,7 +187,6 @@ class LineUpSlotComponent(Component):
 
         hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
         atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
-        print base_attr.physical_def , base_attr.physical_def , attr.physical_def_rate , attr.physical_def
         physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
         magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
         hit = base_attr.hit + attr.hit

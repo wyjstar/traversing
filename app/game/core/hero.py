@@ -119,14 +119,7 @@ class Hero(object):
     def calculate_attr(self):
         """根据属性和等级计算卡牌属性
         """
-        print hero_config
-
-        print type(self._hero_no), self._hero_no
-
         item_config = hero_config.get(self._hero_no)
-        print 'item config:', item_config
-
-        print 'level:', self._level
 
         hero_no = self._hero_no  # 英雄编号
         quality = item_config.quality  # 英雄品质

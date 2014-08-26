@@ -628,10 +628,10 @@ def worship(dynamicid, data, **kwargs):
         localtime = time.localtime(time.time())
         new_time = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', localtime), '%Y-%m-%d %H:%M:%S'))
         player.guild.worship += 1
-        player.guild.contribution += worship_info[5]
-        player.guild.all_contribution += worship_info[5]
-        guild_obj.fund += worship_info[4]
-        guild_obj.exp += worship_info[3]
+        player.guild.contribution += worship_info[4]
+        player.guild.all_contribution += worship_info[4]
+        guild_obj.fund += worship_info[3]
+        guild_obj.exp += worship_info[2]
         player.guild.worship_time = new_time
 
     if guild_obj.exp >= guild_config.get(guild_obj.level).exp:

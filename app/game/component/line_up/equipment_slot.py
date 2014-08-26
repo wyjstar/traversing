@@ -56,9 +56,6 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
         """
         skills = []
         for skill_id in self.suit_skills:
-
-            print 'equ slot skill:', self.suit_skills
-
             skill = Skill(skill_id)
             skill.init_attr()
             skills.append(skill)
@@ -77,23 +74,17 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
         """
         skills = []
         suit = self.suit  # 套装数据
-        print 'suit_skills:', suit
-
         equ_obj = self.equipment_obj
         if not equ_obj:
             return skills
         suit_conf = equ_obj.suit_conf  # 套装配置
         if not suit_conf:
             return skills
-        print 'suit_skills:', suit_conf
         num = suit.get('num', 0)  # 套装激活数量
         for i in range(3):
             skill_cof = getattr(suit_conf, 'attr%s' % (i+1))  # 套装属性配置
             if num >= skill_cof[0]:
                 skills.append(skill_cof[1])
-
-        print skills, '#############'
-
         return skills
 
 

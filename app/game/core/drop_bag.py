@@ -20,6 +20,8 @@ class BigBag(object):
         """获取大包内物品"""
         drop_items = []
         try:
+            import traceback
+            traceback.print_stack
             for small_bag_id, small_bag_times, is_uniq in \
                     zip(self.big_bag.small_packages, self.big_bag.small_package_times, self.big_bag.is_uniq_list):
                 small_bag = SmallBag(small_bag_id)
