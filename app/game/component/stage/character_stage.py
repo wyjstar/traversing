@@ -20,13 +20,7 @@ class CharacterStageComponent(Component):
 
     def init_data(self):
         stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
-
-        print 'stage_data #1111:', stage_data
-
         if stage_data:
-
-            print 'stage_data:', stage_data
-
             stages = stage_data.get('stage_info')
             for stage_id, stage in stages.items():
                 self._stage_info[stage_id] = Stage.loads(stage)
@@ -93,26 +87,20 @@ class CharacterStageComponent(Component):
         stage.update(result)
         if result:  # win
             conf = game_configs.stage_config.get('stages')
-            print 'eeeeeeeeeeeee', conf.get(stage_id).get('chapter'), 'fffffff'
             chapter_id = conf.get(stage_id).get('chapter')
             chapter = self.get_chapter(chapter_id)
             chapter.update(self.calculation_star(chapter_id))
-            print 'cuick,01eeeeeeeeeeeee', conf.get(stage_id).get('chapter'), 'fffffff'
-            # 校验当前关卡是否已经通关
-            state = self.check_stage_state(stage_id)
-            if state != 1:
-                # 开启下一关卡
-                stages = self.get_stage_by_condition(stage_id)
-                for stage in stages:
+            # 开启下一关卡
+            stages = self.get_stage_by_condition(stage_id)
+            for stage in stages:
+                state = self.check_stage_state(stage.stage_id)
+                if state == -2:
                     stage.state = -1  # 更新状态开启没打过
-
         return True
 
     def check_stage_state(self, stage_id):
         """校验当前关卡是否已经通关
         """
-
-        print 'stage_id:', stage_id
 
         if stage_id in self._stage_info.keys():
             stage = self.get_stage(stage_id)

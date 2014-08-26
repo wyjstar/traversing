@@ -21,8 +21,10 @@ from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
 from shared.db_opear.configs_data.skill_config import SkillConfig
 from shared.db_opear.configs_data.stage_config import StageConfig
 from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
+from shared.db_opear.configs_data.sign_in_config import SignInConfig
 from shared.db_opear.configs_data.warriors_config import WarriorsConfig
 from shared.db_opear.configs_data.activity_config import ActivityConfig
+
 
 
 print id(dbpool)
@@ -84,6 +86,7 @@ monster_group_config = {}
 skill_config = {}
 skill_buff_config = {}
 guild_config = {}
+sign_in_config = {}
 warriors_config = {}
 activity_config = {}
 
@@ -109,6 +112,7 @@ all_config_name = {
     'skill_buff_config': SkillBuffConfig(),
     'guild_config': GuildConfig(),
     'soul_shop_config': SoulShopConfig(),
+    'sign_in_config': SignInConfig(),
     'warriors_config': WarriorsConfig(),
     'activity_config': ActivityConfig(),
 }

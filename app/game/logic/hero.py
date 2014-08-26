@@ -41,7 +41,9 @@ def hero_upgrade_with_item(dynamicid, data, **kwargs):
         response.res.result = False
         response.res.message = "经验药水道具不足！"
         return response.SerializeToString()
-    exp = item_config.get(exp_item_no).get('funcArgs1')
+    exp = item_config.get(exp_item_no).get('funcArg1')
+    print "exp", exp
+    print "item_config", item_config.get(exp_item_no)
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)

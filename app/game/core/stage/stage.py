@@ -26,6 +26,10 @@ class Stage(object):
     def state(self):
         return self._state
 
+    @state.setter
+    def state(self, state):
+        self._state = state
+
     @property
     def info(self):
         return dict(stage_id=self._stage_id, attacks=self._attacks, state=self._state)

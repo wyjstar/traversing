@@ -1,0 +1,24 @@
+import "common.proto";
+
+// 签到:1401
+message SignInRequest{
+    required int32 month = 1;
+    required int32 day = 2;
+}
+
+// 签到返回奖励:1401
+message SignInResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+// 连续签到获取额外奖励
+message ContinuousSignInRequest{
+    required int32 sign_in_days = 1; //连续登录天数: 7, 15 , 25
+}
+
+// 连续签到返回奖励:1402
+message ContinuousSignInResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

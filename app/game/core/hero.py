@@ -119,14 +119,7 @@ class Hero(object):
     def calculate_attr(self):
         """根据属性和等级计算卡牌属性
         """
-        print hero_config
-
-        print type(self._hero_no), self._hero_no
-
         item_config = hero_config.get(self._hero_no)
-        print 'item config:', item_config
-
-        print 'level:', self._level
 
         hero_no = self._hero_no  # 英雄编号
         quality = item_config.quality  # 英雄品质
@@ -161,12 +154,9 @@ class Hero(object):
             skill.init_attr()
             skills.append(skill)
 
-        print '# break attr skills:', skills
         skill_helper = SkillHelper(skills)
         skill_helper.init_attr()
-        print 'sdkajflka;sdjflk;sadjflasjdkl;fjas'
         attr = skill_helper.parse_buffs()
-        print 'sdkajflka;sdjflk;sadjflasjdkl;fjas'
         return attr
 
     @property
@@ -174,7 +164,6 @@ class Hero(object):
         """根据突破等级取得突破技能ID
         """
         breakup_config = hero_breakup_config.get(self._hero_no)
-        print 'breakup config:', breakup_config.__dict__
         skill_ids = []
         for i in range(self._break_level + 1):
             skill_id = breakup_config.info.get('break%s' % (i + 1))

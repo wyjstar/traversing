@@ -279,6 +279,13 @@
                 "character_id": "simple",
                 "property": "complex"
             }
+        },
+        "tb_character_activity": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "sign_in": "simple"
+            }
         }
     }
 
