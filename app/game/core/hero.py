@@ -161,12 +161,9 @@ class Hero(object):
             skill.init_attr()
             skills.append(skill)
 
-        print '# break attr skills:', skills
         skill_helper = SkillHelper(skills)
         skill_helper.init_attr()
-        print 'sdkajflka;sdjflk;sadjflasjdkl;fjas'
         attr = skill_helper.parse_buffs()
-        print 'sdkajflka;sdjflk;sadjflasjdkl;fjas'
         return attr
 
     @property
@@ -174,7 +171,6 @@ class Hero(object):
         """根据突破等级取得突破技能ID
         """
         breakup_config = hero_breakup_config.get(self._hero_no)
-        print 'breakup config:', breakup_config.__dict__
         skill_ids = []
         for i in range(self._break_level + 1):
             skill_id = breakup_config.info.get('break%s' % (i + 1))

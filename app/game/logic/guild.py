@@ -599,7 +599,7 @@ def worship(dynamicid, data, **kwargs):
         can_wopship = base_config.get('worship_times')
 
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
-    worship_info = base_config.get('worship').get(w_type)
+    worship_info = base_config.get('worship').get(unicode(w_type))
 
     # TODO 暂注
     # if worship_info[1] == 1:  # 1金币  2元宝
@@ -616,10 +616,10 @@ def worship(dynamicid, data, **kwargs):
     if (int(time.time())-player.guild.worship_time) < (60*60*24):
         if can_wopship > player.guild.worship:
             player.guild.worship += 1
-            player.guild.contribution += worship_info[5]
-            player.guild.all_contribution += worship_info[5]
-            guild_obj.fund += worship_info[4]
-            guild_obj.exp += worship_info[3]
+            player.guild.contribution += worship_info[4]
+            player.guild.all_contribution += worship_info[3]
+            guild_obj.fund += worship_info[3]
+            guild_obj.exp += worship_info[2]
         else:
             response.result = False
             response.message = "今天的膜拜次数已用完"
