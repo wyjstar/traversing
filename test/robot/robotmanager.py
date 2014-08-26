@@ -81,7 +81,7 @@ class RobotManager:
             robot_nickname = 'robot' + str(self._robot_count)
             self._robot_count += 1
 
-            c = ClientCreator(reactor, robot_type,
+            c = ClientCreator(reactor, robot_type, self,
                               robot_name, pwd, robot_nickname)
             c.connectTCP(HOST, PORT)
 
