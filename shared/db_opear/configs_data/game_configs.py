@@ -52,6 +52,7 @@ def get_config_value(config_key):
     """获取所有翻译信息
     """
     sql = "SELECT * FROM configs where config_key='%s';" % config_key
+    print 'sql:', sql
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
