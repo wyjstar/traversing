@@ -15,7 +15,6 @@ class Skill(object):
 
     def __get_group(self):
         skill_config = game_configs.skill_config.get(self._skill_no)
-        print skill_config, type(skill_config.group)
         return skill_config.group
 
     def __get_buff_config(self, buff_no):
@@ -27,7 +26,6 @@ class Skill(object):
         buffs = []
         for buff_no in group:
             buff_config = self.__get_buff_config(buff_no)
-            print buff_config
             effect_id = buff_config.effectId  # 效果ID
             trigger_type = buff_config.triggerType  # 触发类别
             value_type = buff_config.valueType  # 数值类型
@@ -35,7 +33,6 @@ class Skill(object):
 
             if trigger_type != 1:  # 战斗前显示
                 continue
-            print buff_no, effect_id, trigger_type, value_type, value_effect
             buff = Buff(buff_no, effect_id, trigger_type, value_type, value_effect)
             buffs.append(buff)
         self._buffs = buffs

@@ -23,8 +23,6 @@ class SkillHelper(object):
             for buff in buffs:
                 self.add_buff(buff)
 
-        print 'skill helper:', self._buffs
-
     def add_buff(self, add_buff):
         """添加合并
         :param add_buff:
