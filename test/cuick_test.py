@@ -111,16 +111,16 @@ class EchoClient(protocol.Protocol):
             print argument
 
             # --------402强化------------
-            # argument1 = EnhanceEquipmentRequest()
-            # argument1.id = u"0006"
-            # argument1.type = 1
-            # argument1.num = 1
-            # self.dateSend(argument1, 402)
+            argument1 = EnhanceEquipmentRequest()
+            argument1.id = u"0004"
+            argument1.type = 1
+            argument1.num = 10
+            self.dateSend(argument1, 402)
 
             # --------405分解------------
-            argument1 = MeltingEquipmentRequest()
-            argument1.id.append(u"0006")
-            self.dateSend(argument1, 405)
+            # argument1 = MeltingEquipmentRequest()
+            # argument1.id.append(u"0005")
+            # self.dateSend(argument1, 405)
 
             # --------904结算------------
             # argument1 = StageSettlementRequest()
@@ -371,8 +371,7 @@ class EchoClient(protocol.Protocol):
             # 溶炼
             argument = MeltingEquipmentResponse()
             argument.ParseFromString(message)
-            argument.cgr
-            print argument, argument.cgr.finance.coin
+            print argument
 
         if command == 402:
             # 

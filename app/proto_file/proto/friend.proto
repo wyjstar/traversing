@@ -39,7 +39,7 @@ message CharacterInfo{
 
 // player friend items
 message GetPlayerFriendsResponse{
-    optional int32 page_num = 1
+    optional int32 page_num = 1;
     repeated CharacterInfo friends = 2;
     repeated CharacterInfo blacklist = 3;
     repeated CharacterInfo applicant_list = 4;

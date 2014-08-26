@@ -27,6 +27,12 @@ def is_afford(player, item_group):
             return {'result': False, 'result_no': 102}
         elif type_id == const.HERO_SOUL and player.finance.hero_soul < num:
             return {'result': False, 'result_no': 103}
+        elif type_id == const.JUNIOR_STONE and player.finance.junior_stone < num:
+            return {'result': False, 'result_no': 107}
+        elif type_id == const.MIDDLE_STONE and player.finance.middle_stone < num:
+            return {'result': False, 'result_no': 108}
+        elif type_id == const.HIGH_STONE and player.finance.hign_stone < num:
+            return {'result': False, 'result_no': 109}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             if not hero_chip or hero_chip.num < num:
@@ -60,6 +66,18 @@ def consume(player, item_group):
 
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul -= num
+            player.finance.save_data()
+
+        elif type_id == const.JUNIOR_STONE:
+            player.finance.junior_stone -= num
+            player.finance.save_data()
+
+        elif type_id == const.MIDDLE_STONE:
+            player.finance.middle_stone -= num
+            player.finance.save_data()
+
+        elif type_id == const.HIGH_STONE:
+            player.finance.hign_stone -= num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
@@ -102,6 +120,17 @@ def gain(player, item_group):
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul += num
             player.finance.save_data()
+
+        elif type_id == const.JUNIOR_STONE:
+            player.finance.junior_stone += num
+            player.finance.save_data()
+        elif type_id == const.MIDDLE_STONE:
+            player.finance.middle_stone += num
+            player.finance.save_data()
+        elif type_id == const.HIGH_STONE:
+            player.finance.hign_stone += num
+            player.finance.save_data()
+
 
         elif type_id == const.HERO_CHIP:
             hero_chip = HeroChip(item_no, num)
@@ -176,6 +205,12 @@ def get_return(player, return_data, game_resources_response):
             finance_pb.gold += item_num
         elif const.HERO_SOUL == item_type:
             finance_pb.hero_soul += item_num
+        elif const.JUNIOR_STONE == item_type:
+            finance_pb.junior_stone += item_num
+        elif const.MIDDLE_STONE == item_type:
+            finance_pb.middle_stone += item_num
+        elif const.HIGH_STONE == item_type:
+            finance_pb.high_stone += item_num
         elif const.HERO_CHIP == item_type:
             hero_chip_pb = game_resources_response.hero_chips.add()
             hero_chip_pb.hero_chip_no = item_no
