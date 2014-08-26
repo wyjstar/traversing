@@ -61,8 +61,9 @@ message LineUp{
 }
 
 message Unparalleled{
-	repeated Skill unpar = 1; // 无双技能
-	optional bool activate = 2; //是否激活
+	required int32 id = 1; //无双ID
+	repeated Skill unpar = 2; // 无双技能
+	optional bool activate = 3; //是否激活
 }
 
 message FinancePB{
@@ -309,10 +310,12 @@ message CharacterInfo{
 
 // player friend items
 message GetPlayerFriendsResponse{
-    repeated CharacterInfo friends = 1;
-    repeated CharacterInfo blacklist = 2;
-    repeated CharacterInfo applicant_list = 3;
+    optional int32 page_num = 1
+    repeated CharacterInfo friends = 2;
+    repeated CharacterInfo blacklist = 3;
+    repeated CharacterInfo applicant_list = 4;
 }
+
 
 //请求武将列表 command:101
 message GetHerosResponse

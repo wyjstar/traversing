@@ -2,7 +2,7 @@
 """
 created by server on 14-7-17下午6:21.
 """
-from app.game.logic.stage import get_stage_info, get_chapter_info, fight_start, fight_settlement
+from app.game.logic.stage import get_stage_info, get_chapter_info, fight_start, fight_settlement, get_warriors
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import stage_request_pb2
 from app.proto_file import stage_response_pb2
@@ -108,6 +108,11 @@ def fight_settlement_904(dynamic_id, pro_data):
 
     return drops
 
+@remote_service_handle
+def get_warriors_906(dynamic_id, pro_data):
+    """请求无双
+    """
+    return get_warriors(dynamic_id)
 
 def assemble(unit_add, unit):
     unit_add.no = unit.no

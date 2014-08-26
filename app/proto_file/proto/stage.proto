@@ -47,6 +47,7 @@ message LineUp{
 }
 
 message Unparalleled{
-	repeated Skill unpar = 1; // 无双技能
-	optional bool activate = 2; //是否激活
+	required int32 id = 1; //无双ID
+	repeated Skill unpar = 2; // 无双技能
+	optional bool activate = 3; //是否激活
 }
