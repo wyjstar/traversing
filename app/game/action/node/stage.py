@@ -64,7 +64,6 @@ def stage_start_903(dynamic_id, pro_data):
         line_up.append(line.hero_id)
 
     stage_info = fight_start(dynamic_id, stage_id, line_up)
-    print 'stage_info:', stage_info
     result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()
@@ -80,13 +79,11 @@ def stage_start_903(dynamic_id, pro_data):
     drop_num = stage_info.get('drop_num')
 
     response.drop_num = drop_num
-    print '# red_units:', red_units
     for red_unit in red_units:
         if not red_unit:
             continue
         red_add = response.red.add()
         assemble(red_add, red_unit)
-    print '# blue_units:', blue_units
     for blue_group in blue_units:
         blue_group_add = response.blue.add()
         for blue_unit in blue_group:

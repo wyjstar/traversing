@@ -5,6 +5,7 @@ from twisted.internet import reactor
 
 from robot import Robot
 from robot_friend import RobotFriend
+from test.robot.robot_guild import RobotGuild
 
 
 class FsmCommand:
@@ -50,6 +51,7 @@ class FsmAddRobot:
         self._robot_type = {}
         self._robot_type['1'] = Robot
         self._robot_type['2'] = RobotFriend
+        self._robot_type['3'] = RobotGuild
 
     def enter_state(self):
         print '='*68
@@ -85,14 +87,13 @@ class FsmRobotAction:
 
     def enter_state(self):
         print '='*68
-        print "please input robot id[0-%d]:" % (robot_manager.count),
+        print "please input robot id[0-%d]:" % (robot_manager.count - 1),
         robot_id = raw_input()
         while not robot_id.isdigit() or int(robot_id) > robot_manager.count:
             print 'error! please input robot id again:',
             robot_id = raw_input()
 
         commands, command_args = robot_manager.get_robot_command(robot_id)
-        print len(commands)
         for _ in range(len(commands)):
             print "%d.%s %s" % (_, commands[_], command_args[_])
 

@@ -24,9 +24,6 @@ class Skill(object):
 
     def init_attr(self):
         group = self.__get_group()
-
-        print '#########################3:', group
-
         buffs = []
         for buff_no in group:
             buff_config = self.__get_buff_config(buff_no)

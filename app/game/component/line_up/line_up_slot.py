@@ -148,13 +148,8 @@ class LineUpSlotComponent(Component):
         attr = CommonItem()
         hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
         attr += hero_break_attr
-
-        print '#1 attr:', type(attr)
-
         hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
         attr += hero_link_attr
-
-        print '#2 attr:', type(attr)
 
         # 装备
         equ_slots = self.equipment_slots
@@ -167,15 +162,9 @@ class LineUpSlotComponent(Component):
                 continue
             equipment_base_attr = equ_obj.calculate_attr()  # 装备基础属性，强化等级
             attr += equipment_base_attr
-
-        print '#3 attr:', type(attr)
-
         equ_suit = self.equ_suit  # 装备套装技能属性
         for equ_attr in equ_suit.values():
             attr += equ_attr
-
-        print '#4 attr:', type(attr)
-
         red = self.__assemble_hero(hero_base_attr, attr)
         return red
 
