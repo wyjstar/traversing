@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\t\"]\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x19\n\x17GetPlayerFriendsRequest\"_\n\rCharacterInfo\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x86\x01\n\x18GetPlayerFriendsResponse\x12\x1f\n\x07\x66riends\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\t\"]\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x19\n\x17GetPlayerFriendsRequest\"_\n\rCharacterInfo\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x98\x01\n\x18GetPlayerFriendsResponse\x12\x10\n\x08page_num\x18\x01 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo')
 
 
 
@@ -244,22 +244,29 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='friends', full_name='GetPlayerFriendsResponse.friends', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='page_num', full_name='GetPlayerFriendsResponse.page_num', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='blacklist', full_name='GetPlayerFriendsResponse.blacklist', index=1,
+      name='friends', full_name='GetPlayerFriendsResponse.friends', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='applicant_list', full_name='GetPlayerFriendsResponse.applicant_list', index=2,
+      name='blacklist', full_name='GetPlayerFriendsResponse.blacklist', index=2,
       number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='applicant_list', full_name='GetPlayerFriendsResponse.applicant_list', index=3,
+      number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -274,7 +281,7 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=368,
-  serialized_end=502,
+  serialized_end=520,
 )
 
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO

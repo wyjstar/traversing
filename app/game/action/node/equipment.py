@@ -68,11 +68,15 @@ def enhance_equipment_402(dynamic_id, pro_data):
 
     enhance_record = enhance_info.get('enhance_record')
 
+    data_format = response.data.add()
+    flag = 1
+    data_format.cost_coin = 0
     for before_lv, after_lv, enhance_cost in enhance_record:
-        data_format = response.data.add()
-        data_format.before_lv = before_lv
+        if flag == 1:
+            data_format.before_lv = before_lv
+            flag = 2
         data_format.after_lv = after_lv
-        data_format.cost_coin = enhance_cost
+        data_format.cost_coin += enhance_cost
 
     return response.SerializePartialToString()
 
