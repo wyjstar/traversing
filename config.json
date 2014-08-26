@@ -54,6 +54,7 @@
             "mem": true,
             "db": true,
             "app": "app.game1server",
+            "reload":"app.game.doreload",
             "log": "app/logs/game1.log"
         },
         "account": {
