@@ -2,4 +2,7 @@ message FinancePB{
     optional int32 coin = 1;
     optional int32 gold = 2;
     optional int32 hero_soul = 3;
+    optional int32 junior_stone = 4;
+    optional int32 middle_stone = 5;
+    optional int32 high_stone = 6;
 }

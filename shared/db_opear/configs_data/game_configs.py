@@ -21,6 +21,7 @@ from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
 from shared.db_opear.configs_data.skill_config import SkillConfig
 from shared.db_opear.configs_data.stage_config import StageConfig
 from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
+from shared.db_opear.configs_data.warriors_config import WarriorsConfig
 
 
 print id(dbpool)
@@ -80,6 +81,7 @@ monster_group_config = {}
 skill_config = {}
 skill_buff_config = {}
 guild_config = {}
+warriors_config = {}
 
 
 all_config_name = {
@@ -103,6 +105,7 @@ all_config_name = {
     'skill_buff_config': SkillBuffConfig(),
     'guild_config': GuildConfig(),
     'soul_shop_config': SoulShopConfig(),
+    'warriors_config': WarriorsConfig(),
 }
 
 
@@ -122,7 +125,7 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     init()
-    print big_bag_config
+    print warriors_config
 
 
 

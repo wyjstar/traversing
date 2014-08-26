@@ -69,6 +69,9 @@ message FinancePB{
     optional int32 coin = 1;
     optional int32 gold = 2;
     optional int32 hero_soul = 3;
+    optional int32 junior_stone = 4;
+    optional int32 middle_stone = 5;
+    optional int32 high_stone = 6;
 }
 
 
@@ -309,10 +312,12 @@ message CharacterInfo{
 
 // player friend items
 message GetPlayerFriendsResponse{
-    repeated CharacterInfo friends = 1;
-    repeated CharacterInfo blacklist = 2;
-    repeated CharacterInfo applicant_list = 3;
+    optional int32 page_num = 1;
+    repeated CharacterInfo friends = 2;
+    repeated CharacterInfo blacklist = 3;
+    repeated CharacterInfo applicant_list = 4;
 }
+
 
 //请求武将列表 command:101
 message GetHerosResponse
