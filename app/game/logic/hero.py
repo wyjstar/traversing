@@ -39,7 +39,8 @@ def hero_upgrade_with_item(dynamicid, data, **kwargs):
     # 服务器验证
     if exp_item.num < exp_item_num:
         response.res.result = False
-        response.res.message = "经验药水道具不足！"
+        response.res.result_no = 106
+        response.res.message = u"经验药水道具不足！"
         return response.SerializeToString()
     exp = item_config.get(exp_item_no).get('funcArg1')
     print "exp", exp
@@ -62,8 +63,10 @@ def hero_break(dynamicid, data, **kwargs):
     hero_no = args.hero_no
     hero = player.hero_component.get_hero(hero_no)
     response = HeroBreakResponse()
+
     # 验证武将是否突破到上限
     if hero.break_level == hero_config.get(hero_no).breakLimit:
+        print "response 1"
         response.res.result = False
         response.res.result_no = 201
         return response.SerializeToString()
@@ -72,6 +75,7 @@ def hero_break(dynamicid, data, **kwargs):
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):
+        print "response 2"
         response.res.result = False
         response.res.result_no = result.get('result_no')
         return response.SerializeToString()
@@ -82,6 +86,7 @@ def hero_break(dynamicid, data, **kwargs):
 
     hero.break_level += 1
     hero.save_data()
+    print "response 3"
     # 3、返回
     response.res.result = True
     response.break_level = hero.break_level

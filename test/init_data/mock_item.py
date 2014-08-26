@@ -17,16 +17,19 @@ def init_item(player):
 
     # 经验
     item6 = Item(10003, 15)
+    item9 = Item(10002, 15)
 
     # box
     item7 = Item(30003, 15)
     # key
     item8 = Item(30013, 15)
+
     player.item_package.add_item(item1)
     player.item_package.add_item(item2)
     player.item_package.add_item(item3)
     player.item_package.add_item(item4)
     player.item_package.add_item(item5)
     player.item_package.add_item(item6)
+    player.item_package.add_item(item9)
     # player.item_package.add_item(item7)
     # player.item_package.add_item(item8)
