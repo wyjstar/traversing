@@ -84,11 +84,12 @@ class HeroActionTest(unittest.TestCase):
         response = HeroComposeResponse()
         response.ParseFromString(str_response)
 
-        hero = self.player.hero_component.get_hero(10004)
+        hero = self.player.hero_component.get_hero(10016)
+        print response.res.result_no
         self.assertEqual(response.res.result, True, "return result error!")
 
         self.assertEqual(hero_chip.num, 280, "hero_chip error!%d_%d" % (hero_chip.num, 280))
-        self.assertEqual(response.hero.hero_no, 10009, "%d_%d" % (response.hero.hero_no, 10009))
+        self.assertEqual(response.hero.hero_no, 10016, "%d_%d" % (response.hero.hero_no, 10016))
 
 
 if __name__ == '__main__':

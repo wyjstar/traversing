@@ -20,6 +20,7 @@ from app.game.component.character_last_pick_time import CharacterLastPickTimeCom
 from app.game.component.friend.friend import FriendComponent
 from app.game.component.character_guild import CharacterGuildComponent
 from app.game.component.tb_character_mail import CharacterMailComponent
+from app.game.component.character_sign_in import CharacterSignInComponent
 import json
 
 
@@ -53,9 +54,12 @@ class PlayerCharacter(Character):
         self._friends = FriendComponent(self)  # friend system
         self._guild = CharacterGuildComponent(self)  # 公会组件
         self._mail = CharacterMailComponent(self)  # 邮箱组件
+        self._sign_in = CharacterSignInComponent(self)  # 签到组件
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
-        self._get_stamina_times = 0  # 获取体力次数
+        self._get_stamina_times = 0  # 邮件获取体力次数
+        self._sign_in_days = []  # 签到日期
+        self._continus_sign_in_days = 0  # 连续签到天数
         self._mmode = None
 
         if status:
@@ -85,7 +89,7 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
         stamina = character_info['stamina']
         pvp_times = character_info['pvp_times']
-        get_stamina_times = character_info['get_stamina_times']  # 获取体力次数
+        get_stamina_times = character_info['get_stamina_times']  # 邮件获取体力次数
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
@@ -119,6 +123,7 @@ class PlayerCharacter(Character):
         self._stamina = stamina
         self._pvp_times = pvp_times
         self._get_stamina_times = get_stamina_times
+        self._sign_in.init_sign_in()
 
     @property
     def character_type(self):
@@ -230,15 +235,21 @@ class PlayerCharacter(Character):
         return self._mail
 
     @property
+    def sign_in_component(self):
+        return self._sign_in
+
+    @property
     def get_stamina_times(self):
+        """邮件中获取赠送体力次数"""
         return self._get_stamina_times
 
     @get_stamina_times.setter
     def get_stamina_times(self, value):
+        """邮件中获取赠送体力次数"""
         self._get_stamina_times = value
 
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        character_info.update_multi(dict(level = self._level.level, exp = self.level.exp,stamina=self._stamina,
-                                         pvp_times=self._pvp_times))
+        character_info.update_multi(dict(level=self._level.level, exp=self.level.exp, stamina=self._stamina,
+                                         pvp_times=self._pvp_times, get_stamina_times=self._get_stamina_times))

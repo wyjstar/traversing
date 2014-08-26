@@ -14,7 +14,7 @@ def init_player(player):
     player.finance.gold = 10000
     player.finance.save_data()
 
-    player.level.level = 15
+    player.level.level = 60
     player.level.exp = 100
     player.line_up_component.update_slot_activation()
     player.last_pick_time.fine_hero = 0

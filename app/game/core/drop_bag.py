@@ -14,7 +14,7 @@ class BigBag(object):
     def __init__(self, big_bag_config_id):
         self.big_bag = big_bag_config.get(big_bag_config_id)
         if not self.big_bag:
-            print "big_bag is None", big_bag_config_id
+            print "big_bag is None", big_bag_config_id, big_bag_config
 
     def get_drop_items(self):
         """获取大包内物品"""
