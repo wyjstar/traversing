@@ -5,6 +5,7 @@ from twisted.internet import reactor
 
 from robot import Robot
 from robot_friend import RobotFriend
+from test.robot.robot_guild import RobotGuild
 
 
 class FsmCommand:
@@ -50,6 +51,8 @@ class FsmAddRobot:
         self._robot_type = {}
         self._robot_type['1'] = Robot
         self._robot_type['2'] = RobotFriend
+        self._robot_type['3'] = RobotGuild
+
 
     def enter_state(self):
         print '='*68

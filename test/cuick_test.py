@@ -66,7 +66,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '6da9107450377ab0fe18badc928dc602'
+        argument.key.key = 'e77f4cb44bcd0552c5cde26b10415ae7'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -91,7 +91,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '6da9107450377ab0fe18badc928dc602'
+                argument.key.key = 'e77f4cb44bcd0552c5cde26b10415ae7'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -102,7 +102,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '6da9107450377ab0fe18badc928dc602'
+            argument.token = 'e77f4cb44bcd0552c5cde26b10415ae7'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -111,11 +111,11 @@ class EchoClient(protocol.Protocol):
             print argument
 
             # --------402强化------------
-            argument1 = EnhanceEquipmentRequest()
-            argument1.id = u"0004"
-            argument1.type = 1
-            argument1.num = 10
-            self.dateSend(argument1, 402)
+            # argument1 = EnhanceEquipmentRequest()
+            # argument1.id = u"0004"
+            # argument1.type = 1
+            # argument1.num = 10
+            # self.dateSend(argument1, 402)
 
             # --------405分解------------
             # argument1 = MeltingEquipmentRequest()
@@ -158,9 +158,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
-            # argument1 = StageInfoRequest()
-            # argument1.stage_id = 0
-            # self.dateSend(argument1, 901)
+            argument1 = StageInfoRequest()
+            argument1.stage_id = 0
+            self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf

@@ -15,6 +15,7 @@ def feast(dynamicid, data, **kwargs):
     # 比较 此次酒席时间
     # 得到 当前体力值
     # 添加 体力值
+    # 保存 已经领取状态
     # 返回 成功
 
     return 123
