@@ -175,3 +175,38 @@ class CharacterLineUpComponent(Component):
 
         line_up_obj = tb_character_line_up.getObj(self.owner.base_info.id)
         line_up_obj.update_multi(props)
+
+    @property
+    def warriors(self):
+        """无双列表
+        """
+        warrior_list = []
+        warriors_config = game_configs.warriors_config
+        hero_nos = set(self.hero_nos)  # 阵容英雄编号
+        for warrior_id, warrior in warriors_config.items():
+            conditions = set()
+            for i in range(1, 7):
+                condition = getattr(warrior, 'condition%s' % i, None)
+                if condition:
+                    conditions.add(condition)
+
+            length = len(conditions)  # 无双需求英雄数量
+            condition_intersection = hero_nos.intersection(conditions)  # 交集
+
+            if length == len(condition_intersection):  # 激活的无双
+                warrior_list.append(warrior_id)
+                continue
+
+        return warrior_list
+
+
+
+
+
+
+
+
+
+
+
+

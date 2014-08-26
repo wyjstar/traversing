@@ -5,6 +5,8 @@ created by server on 14-7-18下午3:44.
 from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
 from app.proto_file import stage_response_pb2
+from shared.db_opear.configs_data import game_configs
+
 
 @have_player
 def get_stage_info(dynamic_id, stage_id, **kwargs):
@@ -87,8 +89,31 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
     return response.SerializePartialToString()
 
+@have_player
+def get_warriors(dynamic_id, **kwargs):
+    player = kwargs.get('player')
+    response = stage_response_pb2.UnparalleledResponse()
 
+    warriors = player.line_up_component.warriors
+    for warrior in warriors:
+        unpar_add = response.unpar.add()
+        unpar_add.id = warrior
+        warriors_cof = game_configs.warriors_config.get(warrior)   # 无双配置
 
+        for i in range(1, 4):
+            triggle = getattr(warriors_cof, 'triggle%s' % i)  # 技能编号
+            if triggle:
+                skill_cof = game_configs.skill_config.get(triggle)  # 技能配置
+                group = skill_cof.group
+
+                skill = unpar_add.unpar.add()
+                skill.id = triggle
+
+                buffs = skill.buffs
+
+                for buff_id in group:
+                    buffs.append(buff_id)
+    return response.SerializePartialToString()
 
 
 

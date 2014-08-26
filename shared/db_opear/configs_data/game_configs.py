@@ -22,6 +22,9 @@ from shared.db_opear.configs_data.skill_config import SkillConfig
 from shared.db_opear.configs_data.stage_config import StageConfig
 from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 from shared.db_opear.configs_data.sign_in_config import SignInConfig
+from shared.db_opear.configs_data.warriors_config import WarriorsConfig
+from shared.db_opear.configs_data.activity_config import ActivityConfig
+
 
 
 print id(dbpool)
@@ -38,8 +41,9 @@ def init():
     port = 8066  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
     dbname = "db_traversing"  #  要使用的数据库库名
     charset = "utf8"  #  要使用的数据库的编码
+    ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
     dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
-                    charset=charset)  ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
+                    charset=charset)
 
 init()
 
@@ -82,6 +86,8 @@ skill_config = {}
 skill_buff_config = {}
 guild_config = {}
 sign_in_config = {}
+warriors_config = {}
+activity_config = {}
 
 
 all_config_name = {
@@ -106,6 +112,8 @@ all_config_name = {
     'guild_config': GuildConfig(),
     'soul_shop_config': SoulShopConfig(),
     'sign_in_config': SignInConfig(),
+    'warriors_config': WarriorsConfig(),
+    'activity_config': ActivityConfig(),
 }
 
 
@@ -125,7 +133,7 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     init()
-    print big_bag_config
+    print activity_config
 
 
 

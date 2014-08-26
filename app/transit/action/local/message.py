@@ -16,7 +16,7 @@ def push_message(topic_id, character_id, args, kw):
 def pull_message(character_id):
     print 'transit pull message:', character_id
     count = 0
-    for message in message_cache.get(character_id):
+    for key, message in message_cache.get(character_id):
         childs = GlobalObject().root.childsmanager.childs
         # print GlobalObject().root.childsmanager
 
@@ -28,7 +28,7 @@ def pull_message(character_id):
             result = GlobalObject().root.callChild(child, 100001, *args, **kw)
             if type(result) is bool and result:
                 print 'delete message'
-                message_cache.delete(message.get('topic_id'), character_id)
+                message_cache.delete(key)
                 count += 1
                 break
     print 'pull message:', count
