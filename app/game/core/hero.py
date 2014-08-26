@@ -24,7 +24,7 @@ class Hero(object):
         :field _equipmentids: 装备IDs
         """
         self._hero_no = 0
-        self._level = 0
+        self._level = 1
         self._exp = 0
         self._break_level = 0
         self._character_id = character_id
