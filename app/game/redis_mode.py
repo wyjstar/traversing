@@ -73,3 +73,7 @@ tb_character_mails.insert()
 # 邮件表
 tb_mail_info = MAdmin('tb_mail_info', 'id')
 tb_mail_info.insert()
+
+# 玩家活动表
+tb_character_activity = MAdmin('tb_character_activity', 'id')
+tb_character_activity.insert()

@@ -10,6 +10,7 @@ delete from tb_character_heros;
 delete from tb_character_info;
 delete from tb_character_item_package;
 delete from tb_character_line_up;
+delete from tb_character_stages;
 delete from tb_equipment_info;
 delete from tb_guild_name;
 delete from tb_name_mapping;
