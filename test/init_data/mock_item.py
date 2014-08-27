@@ -9,11 +9,11 @@ from app.game.redis_mode import tb_character_item_package
 
 def init_item(player):
     # 突破丹
-    item1 = Item(20001, 1)
-    item2 = Item(20002, 2)
-    item3 = Item(20003, 3)
-    item4 = Item(20004, 4)
-    item5 = Item(20005, 5)
+    item1 = Item(20001, 10)
+    item2 = Item(20002, 20)
+    item3 = Item(20003, 30)
+    item4 = Item(20004, 40)
+    item5 = Item(20005, 50)
 
     # 经验
     item6 = Item(10003, 15)

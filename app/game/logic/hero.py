@@ -75,7 +75,7 @@ def hero_break(dynamicid, data, **kwargs):
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):
-        print "response 2"
+        print "response 2", result.get('result_no')
         response.res.result = False
         response.res.result_no = result.get('result_no')
         return response.SerializeToString()
