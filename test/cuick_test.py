@@ -66,7 +66,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'c18ff0fda27458a8d0632f90a42b1565'
+        argument.key.key = '1fb4a6c33fbf76d470e655ce02baae85'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -91,7 +91,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'c18ff0fda27458a8d0632f90a42b1565'
+                argument.key.key = '1fb4a6c33fbf76d470e655ce02baae85'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -102,7 +102,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'c18ff0fda27458a8d0632f90a42b1565'
+            argument.token = '1fb4a6c33fbf76d470e655ce02baae85'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -158,9 +158,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
-            argument1 = StageInfoRequest()
-            argument1.stage_id = 0
-            self.dateSend(argument1, 901)
+            # argument1 = StageInfoRequest()
+            # argument1.stage_id = 0
+            # self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -182,9 +182,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
-            # argument1 = EditorCallRequest()
-            # argument1.call = 'aaaaaa空间弗兰克道具弗具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
-            # self.dateSend(argument1, 804)
+            argument1 = EditorCallRequest()
+            argument1.call = '11111111111'
+            self.dateSend(argument1, 804)
 
             # --------805处理加入公会申请------------
             # argument1 = DealApplyRequest()

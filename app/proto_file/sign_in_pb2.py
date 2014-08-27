@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='sign_in.proto',
   package='',
-  serialized_pb='\n\rsign_in.proto\x1a\x0c\x63ommon.proto\"\x1c\n\rSignInRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"T\n\x0eSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x17\x43ontinuousSignInRequest\x12\x14\n\x0csign_in_days\x18\x01 \x02(\x05\"^\n\x18\x43ontinuousSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\rsign_in.proto\x1a\x0c\x63ommon.proto\"+\n\rSignInRequest\x12\r\n\x05month\x18\x01 \x02(\x05\x12\x0b\n\x03\x64\x61y\x18\x02 \x02(\x05\"T\n\x0eSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x17\x43ontinuousSignInRequest\x12\x14\n\x0csign_in_days\x18\x01 \x02(\x05\"^\n\x18\x43ontinuousSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -27,8 +27,15 @@ _SIGNINREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='day', full_name='SignInRequest.day', index=0,
+      name='month', full_name='SignInRequest.month', index=0,
       number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='day', full_name='SignInRequest.day', index=1,
+      number=2, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -43,7 +50,7 @@ _SIGNINREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=31,
-  serialized_end=59,
+  serialized_end=74,
 )
 
 
@@ -77,8 +84,8 @@ _SIGNINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=61,
-  serialized_end=145,
+  serialized_start=76,
+  serialized_end=160,
 )
 
 
@@ -105,8 +112,8 @@ _CONTINUOUSSIGNINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=147,
-  serialized_end=194,
+  serialized_start=162,
+  serialized_end=209,
 )
 
 
@@ -140,8 +147,8 @@ _CONTINUOUSSIGNINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=196,
-  serialized_end=290,
+  serialized_start=211,
+  serialized_end=305,
 )
 
 _SIGNINRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

@@ -55,7 +55,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
                 return {'result': False, 'result_no': 101, 'message': u''}
             enhance_record.append(result)
         else:  # 强化多次
-            for i in xrange(1, enhance_num):
+            for i in xrange(0, enhance_num):
                 result = __do_enhance(player, equipment_obj)
                 if not result:
                     break
