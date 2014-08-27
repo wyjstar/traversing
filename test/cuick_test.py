@@ -66,7 +66,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'c18ff0fda27458a8d0632f90a42b1565'
+        argument.key.key = '1fb4a6c33fbf76d470e655ce02baae85'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -91,7 +91,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'c18ff0fda27458a8d0632f90a42b1565'
+                argument.key.key = '1fb4a6c33fbf76d470e655ce02baae85'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -102,7 +102,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'c18ff0fda27458a8d0632f90a42b1565'
+            argument.token = '1fb4a6c33fbf76d470e655ce02baae85'
             self.dateSend(argument, 4)
 
         if command == 4:
