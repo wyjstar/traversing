@@ -593,8 +593,7 @@ def worship(dynamicid, data, **kwargs):
     if 0:
         can_wopship = base_config.get('vip_worship_times') + base_config.get('worship_times')
     else:
-        # can_wopship = base_config.get('worship_times')
-        can_wopship = 20
+        can_wopship = base_config.get('worship_times')
 
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
     worship_info = base_config.get('worship').get(unicode(w_type))

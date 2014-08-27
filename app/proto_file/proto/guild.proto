@@ -69,7 +69,7 @@ message JoinGuildResponse{
 
 // 修改公告 command：804
 message EditorCallRequest{
-	required bytes call = 2;  //公告内容
+	required bytes call = 1;  //公告内容
 }
 
 // 处理加会申请 command：805

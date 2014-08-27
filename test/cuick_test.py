@@ -158,9 +158,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
-            argument1 = StageInfoRequest()
-            argument1.stage_id = 0
-            self.dateSend(argument1, 901)
+            # argument1 = StageInfoRequest()
+            # argument1.stage_id = 0
+            # self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -182,9 +182,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
-            # argument1 = EditorCallRequest()
-            # argument1.call = 'aaaaaa空间弗兰克道具弗具弗阿里空间弗兰克道具弗阿里空间弗兰克道具弗'
-            # self.dateSend(argument1, 804)
+            argument1 = EditorCallRequest()
+            argument1.call = '11111111111'
+            self.dateSend(argument1, 804)
 
             # --------805处理加入公会申请------------
             # argument1 = DealApplyRequest()
