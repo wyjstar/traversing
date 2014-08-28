@@ -86,6 +86,3 @@ class RobotManager:
                               robot_name, pwd, robot_nickname)
             c.connectTCP(HOST, PORT)
             print 'add a client'
-
-
-robot_manager = RobotManager()

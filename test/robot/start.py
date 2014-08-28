@@ -7,7 +7,6 @@ from sfsm import Sfsm
 from robot import Robot
 from robot_friend import RobotFriend
 from robot_guild import RobotGuild
-import gevent
 
 monkey.patch_os()
 
