@@ -27,16 +27,15 @@ def create_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    # TODO 暂注
-    # if base_config.get('create_level') > player.level.level:
-    #     response.result = False
-    #     response.message = "等级不够"
-    #     return response.SerializeToString()
-    #
-    # if base_config.get('create_money') > player.finance.gold:
-    #     response.result = False
-    #     response.message = "元宝不足"
-    #     return response.SerializeToString()
+    if base_config.get('create_level') > player.level.level:
+        response.result = False
+        response.message = "等级不够"
+        return response.SerializeToString()
+
+    if base_config.get('create_money') > player.finance.gold:
+        response.result = False
+        response.message = "元宝不足"
+        return response.SerializeToString()
 
     if g_id != 0:
         response.result = False
@@ -76,10 +75,8 @@ def create_guild(dynamicid, data, **kwargs):
     player.guild.position = 1
     player.guild.save_data()
     guild_obj.save_data()
-
-    # TODO 暂注
-    # player.finance.gold -= base_config.get('create_money')
-    # player.finance.save()
+    player.finance.gold -= base_config.get('create_money ')
+    player.finance.save_data()
 
     response.result = True
     return response.SerializeToString()
@@ -601,17 +598,16 @@ def worship(dynamicid, data, **kwargs):
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
     worship_info = base_config.get('worship').get(unicode(w_type))
 
-    # TODO 暂注
-    # if worship_info[1] == 1:  # 1金币  2元宝
-    #     if worship_info[2] > player.finance.coin:
-    #         response.result = False
-    #         response.message = "金币不足"
-    #         return response.SerializeToString()
-    # else:
-    #     if worship_info[2] > player.finance.gold:
-    #         response.result = False
-    #         response.message = "元宝不足"
-    #         return response.SerializeToString()
+    if worship_info[1] == 1:  # 1金币  2元宝
+        if worship_info[2] > player.finance.coin:
+            response.result = False
+            response.message = "金币不足"
+            return response.SerializeToString()
+    else:
+        if worship_info[2] > player.finance.gold:
+            response.result = False
+            response.message = "元宝不足"
+            return response.SerializeToString()
 
     if (int(time.time())-player.guild.worship_time) < (60*60*24):
         if can_wopship > player.guild.worship:
@@ -635,21 +631,19 @@ def worship(dynamicid, data, **kwargs):
         player.guild.worship_time = new_time
 
     if guild_obj.exp >= guild_config.get(guild_obj.level).exp:
-        guild_obj.level += 1
         guild_obj.exp -= guild_config.get(guild_obj.level).exp
-        # TODO 膜拜成功后，公会排行 刷新！！！！！！
+        guild_obj.level += 1
         add_guild_to_rank(guild_obj.g_id, guild_obj.level + (guild_obj.fund * 100))
 
     player.guild.save_data()
     guild_obj.save_data()
 
-
-
-    # TODO 暂注
     # 根据膜拜类型判断减什么钱，然后扣除
-    # player.finance.gold -= base_config.get('create_money')
-    # player.finance.save()
-
+    if worship_info[1] == 1:  # 1金币  2元宝
+        player.finance.coin -= worship_info[2]
+    else:
+        player.finance.gold -= worship_info[2]
+    player.finance.save_data()
     response.result = True
     response.message = "膜拜成功"
     return response.SerializeToString()
