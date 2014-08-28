@@ -8,7 +8,7 @@ import unittest
 from app.game.logic.shop import is_consume, shop_oper
 import time
 from shared.db_opear.configs_data.game_configs import shop_config
-from app.proto_file.shop_pb2 import ShopRequest
+from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 
 
 
@@ -26,4 +26,7 @@ class ShopTest(unittest.TestCase):
 
         request = ShopRequest()
         request.id = 10001
-        shop_oper(1, request.SerializePartialToString())
+        response_data = shop_oper(1, request.SerializePartialToString())
+        response = ShopResponse()
+        response.ParseFromString(response_data)
+        print "gain", response.gain

@@ -37,6 +37,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
     get_return(player, return_data, response.gain)
     get_return(player, extra_return_data, response.gain)
 
+    print(response.gain)
     response.res.result = True
     return response.SerializeToString()
 

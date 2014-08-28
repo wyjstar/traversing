@@ -134,7 +134,7 @@ hero_chip3 = {'id': 1000113, 'combineResult': 10005, 'needNum': 20}
 hero_chip4 = {'id': 1000114, 'combineResult': 10016, 'needNum': 20}
 
 equipment_chip1 = {'id': 1000112, 'combineResult': 100001, 'needNum': 100}
-chip_config.clear()
+# chip_config.clear()
 config = ChipConfig()
 chip_config_mock = config.parser([hero_chip1, hero_chip2, hero_chip3, hero_chip4, equipment_chip1])
 chip_config['mapping'] = chip_config_mock['mapping']
@@ -142,16 +142,16 @@ chip_config['chips'] = chip_config_mock['chips']
 
 
 # ------------------------big_bag----------------------------
-big_bag_config.clear()
-big_bag1 = dict(dropId=10001, smallPacketId=[1002, 1003], smallPacketTimes=[5, 1], isUniq=[1, 0])
-big_bag2 = dict(dropId=10002, smallPacketId=[1004], smallPacketTimes=[1], isUniq=[0])
-big_bag3 = dict(dropId=1001, smallPacketId=[1001], smallPacketTimes=[1], isUniq=[0])
-big_bag_config_mock = BigBagsConfig().parser([big_bag1, big_bag2, big_bag3])
-for key, value in big_bag_config_mock.items():
-    big_bag_config[key] = value
+# big_bag_config.clear()
+# big_bag1 = dict(dropId=100012, smallPacketId=[1002, 1003], smallPacketTimes=[5, 1], isUniq=[1, 0])
+# big_bag2 = dict(dropId=10002, smallPacketId=[1004], smallPacketTimes=[1], isUniq=[0])
+# big_bag3 = dict(dropId=1001, smallPacketId=[1001], smallPacketTimes=[1], isUniq=[0])
+# big_bag_config_mock = BigBagsConfig().parser([big_bag1, big_bag2, big_bag3])
+# for key, value in big_bag_config_mock.items():
+#     big_bag_config[key] = value
 
 # ------------------------small_bag----------------------------
-small_bag_config.clear()
+# small_bag_config.clear()
 small_bag1 = dict(id=1001, dropId=1001, subId=1, type=const.COIN, count=1000, detailID=0, weight=1)
 small_bag2 = dict(id=1002, dropId=1001, subId=2, type=const.GOLD, count=1000, detailID=0, weight=1)
 small_bag3 = dict(id=1003, dropId=1001, subId=3, type=const.HERO_SOUL, count=1000, detailID=0, weight=1)

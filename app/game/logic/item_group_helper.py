@@ -109,6 +109,7 @@ def gain(player, item_group):
         type_id = group_item.item_type
         num = group_item.num
         item_no = group_item.item_no
+        print type_id, num, item_no, "item_group"
         if type_id == const.COIN:
             player.finance.coin += num
             player.finance.save_data()
@@ -130,7 +131,6 @@ def gain(player, item_group):
         elif type_id == const.HIGH_STONE:
             player.finance.hign_stone += num
             player.finance.save_data()
-
 
         elif type_id == const.HERO_CHIP:
             hero_chip = HeroChip(item_no, num)
@@ -157,6 +157,7 @@ def gain(player, item_group):
                 type_id = const.HERO_CHIP
                 item_no = hero_chip_no
                 num = hero_chip_num
+                print "hero_chip_config_item", hero_chip_config_item
 
             else:
                 player.hero_component.add_hero(item_no)
