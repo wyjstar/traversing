@@ -130,7 +130,8 @@
                 "uuid": "simple",
                 "account_name": "simple",
                 "account_password": "simple",
-                "last_login": "simple"
+                "last_login": "simple",
+                "create_time": "simple"
             }
         },
         "tb_character_info": {
@@ -155,7 +156,8 @@
                 "stamina": "simple",
                 "pvp_times": "simple",
                 "last_login_time": "simple",
-                "get_stamina_times": "simple"
+                "get_stamina_times": "simple",
+                "create_time": "simple"
             }
         },
         "tb_nickname_mapping": {

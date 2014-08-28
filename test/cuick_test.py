@@ -66,7 +66,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '1fb4a6c33fbf76d470e655ce02baae85'
+        argument.key.key = 'd8078ae3a3c45caa0c4758b62850477c'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -91,7 +91,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '1fb4a6c33fbf76d470e655ce02baae85'
+                argument.key.key = 'd8078ae3a3c45caa0c4758b62850477c'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -102,7 +102,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '1fb4a6c33fbf76d470e655ce02baae85'
+            argument.token = 'd8078ae3a3c45caa0c4758b62850477c'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -182,9 +182,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 803)
 
             # --------804编辑公告------------
-            argument1 = EditorCallRequest()
-            argument1.call = '11111111111'
-            self.dateSend(argument1, 804)
+            # argument1 = EditorCallRequest()
+            # argument1.call = '11111111111'
+            # self.dateSend(argument1, 804)
 
             # --------805处理加入公会申请------------
             # argument1 = DealApplyRequest()
