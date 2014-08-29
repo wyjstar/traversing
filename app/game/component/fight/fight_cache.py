@@ -104,7 +104,8 @@ class CharacterFightCacheComponent(Component):
             boss_position = monster_group_config.bossPosition
 
             for j in range(6):
-                monster_id = getattr(monster_group_config, 'pos%s' % (j + 1))
+                pos = j + 1
+                monster_id = getattr(monster_group_config, 'pos%s' % pos)
                 if not monster_id:
                     round_monsters.append(None)
                     continue
@@ -127,6 +128,7 @@ class CharacterFightCacheComponent(Component):
                                           monster_config.hit, monster_config.dodge,
                                           monster_config.cri, monster_config.criCoeff,
                                           monster_config.criDedCoeff, monster_config.block,
+                                          pos,
                                           is_boss)
                 round_monsters.append(battle_unit)
         monsters.append(round_monsters)

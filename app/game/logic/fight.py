@@ -6,7 +6,7 @@ from app.game.core.fight.battle_unit import BattleUnit
 
 
 def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def, magic_def, hit, dodge,
-                cri, cri_coeff, cri_ded_coeff, block, is_boss=False):
+                cri, cri_coeff, cri_ded_coeff, block, position, is_boss=False):
     """组装战斗单位
     @param no: 编号
     @param quality: 品质
@@ -42,5 +42,6 @@ def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, ph
     battle_unit.cri_ded_coeff = cri_ded_coeff
     battle_unit.block = block
     battle_unit.is_boss = is_boss
+    battle_unit.position = position
 
     return battle_unit

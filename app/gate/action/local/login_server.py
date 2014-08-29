@@ -88,6 +88,7 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
     """
     user = UsersManager().get_by_id(account_id)
     if user:
+        #TODO 修改game中player中dynamic_id
         user.dynamic_id = dynamic_id
     else:
         user = User(token, account_id, user_name, password, dynamic_id)

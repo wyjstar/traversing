@@ -59,9 +59,9 @@ def stage_start_903(dynamic_id, pro_data):
     # 关卡编号
     stage_id = request.stage_id
 
-    line_up = []
+    line_up = {}  # {hero_id:pos}
     for line in request.lineup:
-        line_up.append(line.hero_id)
+        line_up[line.hero_id] = line.pos
 
     stage_info = fight_start(dynamic_id, stage_id, line_up)
     result = stage_info.get('result')
