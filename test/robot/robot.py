@@ -8,6 +8,7 @@ from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file.game_pb2 import GameLoginResponse
+from app.proto_file.player_request_pb2 import CreatePlayerRequest
 
 
 class Robot(RobotBase):
@@ -59,9 +60,15 @@ class Robot(RobotBase):
                             argument.id,
                             argument.nickname,
                             argument.level)
-        self.on_character_login_result(argument.res.result)
+        if not argument.res.result:
+            self.on_character_login_result(argument.res.result)
+
+        request = CreatePlayerRequest()
+        request.nickname = self._nickname
+        self.send_message(request, 5)
 
     def change_nickname_5(self, message):
         response = CommonResponse()
         response.ParseFromString(message)
         print 'change nickname result:', response.result
+        self.on_character_login_result(True)
