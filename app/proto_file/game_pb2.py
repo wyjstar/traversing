@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game.proto',
   package='',
-  serialized_pb='\n\ngame.proto\x1a\x0c\x63ommon.proto\"!\n\x10GameLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\xde\x02\n\x11GameLoginResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x11 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\r\n\x05level\x18\x03 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x04 \x01(\x05\x12\x0c\n\x04\x63oin\x18\x05 \x01(\x05\x12\x0c\n\x04gold\x18\x06 \x01(\x05\x12\x11\n\thero_soul\x18\x07 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x08 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\t \x01(\x05\x12\x12\n\nhigh_stone\x18\n \x01(\x05\x12\x11\n\tfine_hero\x18\x0b \x01(\x05\x12\x16\n\x0e\x65xcellent_hero\x18\x0c \x01(\x05\x12\x16\n\x0e\x66ine_equipment\x18\r \x01(\x05\x12\x1b\n\x13\x65xcellent_equipment\x18\x0e \x01(\x05\x12\x0f\n\x07stamina\x18\x0f \x01(\x05\x12\x11\n\tpvp_times\x18\x10 \x01(\x05')
+  serialized_pb='\n\ngame.proto\x1a\x0c\x63ommon.proto\"!\n\x10GameLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\x86\x03\n\x11GameLoginResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x11 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\r\n\x05level\x18\x03 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x04 \x01(\x05\x12\x0c\n\x04\x63oin\x18\x05 \x01(\x05\x12\x0c\n\x04gold\x18\x06 \x01(\x05\x12\x11\n\thero_soul\x18\x07 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x08 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\t \x01(\x05\x12\x12\n\nhigh_stone\x18\n \x01(\x05\x12\x11\n\tfine_hero\x18\x0b \x01(\x05\x12\x16\n\x0e\x65xcellent_hero\x18\x0c \x01(\x05\x12\x16\n\x0e\x66ine_equipment\x18\r \x01(\x05\x12\x1b\n\x13\x65xcellent_equipment\x18\x0e \x01(\x05\x12\x0f\n\x07stamina\x18\x0f \x01(\x05\x12\x11\n\tpvp_times\x18\x10 \x01(\x05\x12\x11\n\tvip_level\x18\x12 \x01(\x05\x12\x13\n\x0bserver_time\x18\x13 \x01(\x05')
 
 
 
@@ -173,6 +173,20 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='vip_level', full_name='GameLoginResponse.vip_level', index=17,
+      number=18, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='server_time', full_name='GameLoginResponse.server_time', index=18,
+      number=19, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -183,7 +197,7 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=64,
-  serialized_end=414,
+  serialized_end=454,
 )
 
 _GAMELOGINRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

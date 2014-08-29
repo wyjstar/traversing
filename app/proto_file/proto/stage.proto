@@ -23,6 +23,7 @@ message BattleUnit{
 	optional float block = 14;  //战斗单位格挡率
 	optional bool is_boss = 15; //是否是boss
 	repeated Skill break_skill = 16; //突破技能
+	optional int32 position = 17; //位置
 }
 
 message BattleUnitGrop{

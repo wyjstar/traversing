@@ -5,6 +5,7 @@ created by server on 14-6-10下午5:30.
 from app.gate.redis_mode import tb_account
 from app.gate.redis_mode import tb_character_info
 from app.gate.redis_mode import tb_account_mapping
+import time
 
 
 class User(object):
@@ -85,7 +86,8 @@ class User(object):
                              'excellent_equipment_last_pick_time': 0,
                              'stamina': 0,
                              'pvp_times': 0,
-                             'get_stamina_times': 0}
+                             'get_stamina_times': 0,
+                             'create_time': int(time.time())}
                 character_obj = tb_character_info.new(character)
                 self._character = character
         return character

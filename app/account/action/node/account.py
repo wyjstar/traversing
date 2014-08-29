@@ -10,6 +10,7 @@ from app.account.redis_mode import tb_account
 from app.account.redis_mode import tb_account_mapping
 from app.account.redis_mode import tb_name_mapping
 from shared.utils.pyuuid import get_uuid
+import time
 
 
 @node_service_handle
@@ -58,7 +59,8 @@ def login_2(command_id, dynamic_id, key, user_name, password):
 def __guest_register():
     account_id = get_id()
     uuid = get_uuid()
-    data = dict(id=account_id, uuid=uuid, account_name=None, account_password=None, last_login=0)
+    data = dict(id=account_id, uuid=uuid, account_name=None, account_password=None, last_login=0,
+                create_time=int(time.time()))
     account_mmode = tb_account.new(data)
     account_mmode.insert()
     md5 = hashlib.md5()
@@ -80,7 +82,8 @@ def __account_register(user_name, password):
 
     account_id = get_id()
     uuid = get_uuid()
-    data = dict(id=account_id, uuid=uuid, account_name=user_name, account_password=password, last_login=0)
+    data = dict(id=account_id, uuid=uuid, account_name=user_name, account_password=password, last_login=0,
+                create_time=int(time.time()))
     account_mmode = tb_account.new(data)
     account_mmode.insert()
 

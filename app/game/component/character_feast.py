@@ -1,18 +1,17 @@
 # -*- coding:utf-8 -*-
 """
-created by server on 14-6-27下午6:44.
+created by server on 14-8-29上午11:39.
 """
 from app.game.component.Component import Component
-from app.game.core.hero_chip import HeroChip
 from app.game.redis_mode import tb_character_activity, tb_character_info
 import cPickle
 
 
-class CharacterSignInComponent(Component):
+class CharacterFeastComponent(Component):
     """武将碎片组件"""
 
     def __init__(self, owner):
-        super(CharacterSignInComponent, self).__init__(owner)
+        super(CharacterFeastComponent, self).__init__(owner)
         self._sign_in_days = []  # 签到日期
         self._continuous_sign_in_days = 0  # 连续签到天数
         self._continuous_sign_in_prize = []  # 已经获取的连续签到奖励，保存列表[7，15，25]

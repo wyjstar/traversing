@@ -27,24 +27,24 @@ class RobotManager:
                             self._robot_login_success_num)
 
     def on_robot_command_error(self):
-        self._robot_login_fail_num -= 1
+        self._robot_login_fail_num += 1
         self._robot_processing_num -= 1
         self.print_info()
 
     def on_robot_login_fail(self):
-        self._robot_login_fail_num -= 1
+        self._robot_login_fail_num += 1
         self._robot_processing_num -= 1
         self.print_info()
 
     def on_robot_account_login_result(self, result):
         if not result:
-            self._robot_login_fail_num -= 1
+            self._robot_login_fail_num += 1
             self._robot_processing_num -= 1
         self.print_info()
 
     def on_robot_character_login_result(self, result):
         if not result:
-            self._robot_login_fail_num -= 1
+            self._robot_login_fail_num += 1
             self._robot_processing_num -= 1
         else:
             self._robot_login_success_num += 1
@@ -80,10 +80,9 @@ class RobotManager:
             pwd = '123456'
             robot_nickname = 'robot' + str(self._robot_count)
             self._robot_count += 1
+            self._robot_processing_num += 1
 
             c = ClientCreator(reactor, robot_type, self,
                               robot_name, pwd, robot_nickname)
             c.connectTCP(HOST, PORT)
-
-
-robot_manager = RobotManager()
+            print 'add a client'
