@@ -7,6 +7,7 @@ from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
 from test.init_data.init_data import init
+import time
 
 
 @remote_service_handle
@@ -38,6 +39,9 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
     responsedata.stamina = player.stamina
     responsedata.pvp_times = player.pvp_times
+    # TODO vip_level
+    responsedata.vip_level = 1
+    responsedata.server_time = int(time.time())
 
     return responsedata.SerializeToString()
 
