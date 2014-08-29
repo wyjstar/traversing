@@ -28,6 +28,7 @@ CREATE TABLE `tb_account` (
   `account_name` varchar(20) DEFAULT NULL,
   `account_password` varchar(32) DEFAULT NULL,
   `last_login` int(11) NOT NULL,
+  `create_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

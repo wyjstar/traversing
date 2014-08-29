@@ -75,7 +75,7 @@ def create_guild(dynamicid, data, **kwargs):
     player.guild.position = 1
     player.guild.save_data()
     guild_obj.save_data()
-    player.finance.gold -= base_config.get('create_money ')
+    player.finance.gold -= base_config.get('create_money')
     player.finance.save_data()
 
     response.result = True
@@ -577,6 +577,7 @@ def worship(dynamicid, data, **kwargs):
     args.ParseFromString(data)
     response = GuildCommonResponse()
     w_type = args.w_type
+
     m_g_id = player.guild.g_id
 
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -584,6 +585,7 @@ def worship(dynamicid, data, **kwargs):
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
+
 
     guild_obj = Guild()
     guild_obj.init_data(data1)

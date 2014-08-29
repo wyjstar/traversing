@@ -39,5 +39,6 @@ CREATE TABLE `tb_character_info` (
   `sign_in_days` int(11) NOT NULL DEFAULT '0',
   `continus_sign_in_days` blob NOT NULL,
   `last_login_time` int(11),
+  `create_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
