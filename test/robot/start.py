@@ -42,8 +42,10 @@ def enter_command(e):
 
 def enter_addrobot(e):
     print '='*68
-    for _i, _type in robot_type.items():
-        print "%s:%s" % (_i, _type)
+    keys = robot_type.keys()
+    keys.sort()
+    for k in keys:
+        print "%s:%s" % (k, robot_type[k])
 
     print 'please input type id:',
     select = raw_input()
