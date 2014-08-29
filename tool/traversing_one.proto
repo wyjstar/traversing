@@ -216,6 +216,8 @@ message GameLoginResponse{
      //other
      optional int32 stamina = 15;
      optional int32 pvp_times = 16;
+     optional int32 vip_level = 18;
+     optional int32 server_time = 19;
 }
 
 // 请求全部装备 command：401

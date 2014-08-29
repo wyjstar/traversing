@@ -29,6 +29,6 @@ message GameLoginResponse{
      //other
      optional int32 stamina = 15;
      optional int32 pvp_times = 16;
-     optional int32 vip_level = 17;
-     optional int32 server_time = 18
+     optional int32 vip_level = 18;
+     optional int32 server_time = 19;
 }
