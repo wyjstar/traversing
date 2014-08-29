@@ -1,0 +1,125 @@
+机器人程序目录: test/robot/
+
+运行机器人脚本: test/robot/start.py
+
+机器人命令界面分为3个部分：命令界面，添加机器人界面，机器人行为界面
+
+1.命令界面
+
+	====================================================================
+	1.add robot
+	2.robot action
+	3.quit
+	please input command id: 1
+
+
+	输入1回车，进入添加机器人界面
+	输入2回车，进入机器人行为界面
+	输入3回车，推出机器人
+
+
+2.添加机器人界面
+
+	====================================================================
+	1:robot.Robot
+	2:robot_friend.RobotFriend
+	3:robot_guild.RobotGuild
+	please input type id: 
+
+
+	选择要添加的机器人类
+
+	自己添加的机器人类在 test/robot/start.py 文件里面进行注册
+
+		robot_type = {}
+		robot_type['1'] = Robot
+		robot_type['2'] = RobotFriend
+		robot_type['3'] = RobotGuild
+
+
+	====================================================================
+	1:robot.Robot
+	3:robot_guild.RobotGuild
+	2:robot_friend.RobotFriend
+	please input type id: 2
+	please input number wanna robot create: 
+
+	然后选择添加机器人的数量并回车
+
+	输入数量后机器人就会开始登陆，在所有人登陆成功后回到命令界面，等待下次添加机器人或者，
+	执行机器人命令
+
+
+		====================================================================
+		1:robot.Robot
+		3:robot_guild.RobotGuild
+		2:robot_friend.RobotFriend
+		please input type id: 2
+		please input number wanna robot create: 2
+		add a client
+		add a client
+		login request result: True
+		processing:2, login fail:0, login success:0
+		login request result: True
+		processing:2, login fail:0, login success:0
+		character login result:True id:187 nickname: level;60
+		processing:1, login fail:0, login success:1
+		character login result:True id:186 nickname: level;60
+		processing:0, login fail:0, login success:2
+		====================================================================
+		1.add robot
+		2.robot action
+		3.quit
+		please input command id: 
+
+
+
+
+3.机器人命令界面
+
+	1.add robot
+	2.robot action
+	3.quit
+	please input command id: 2
+	====================================================================
+	please input robot id[0-1]: 
+
+
+	首先选择机器人id，指定某个机器人准备执行命令
+	====================================================================
+	please input robot id[0-1]: 0
+	0.command_accept_friend ['self', 'target_id']
+	1.command_add_friend ['self', 'target_id']
+	2.command_find_friend ['self', 'key']
+	3.command_get_friend_list ['self']
+	4.command_refuse_friend ['self', 'target_id']
+	please input command id: 
+
+
+	然后会把，指定的机器人的命令菜单显示出来（以及命令参数）
+	然后选择命令id，如果有参数在id后面以空格隔开
+	如：please input command id: 2 robot1
+
+
+
+4.机器人类型的添加
+	class RobotGuild(Robot):
+		def command_enhance_equipment(self):
+			argument1 = EnhanceEquipmentRequest()
+			argument1.id = u"0004"
+			argument1.type = 1
+			argument1.num = 10
+			self.send_message(argument1, 402)
+
+		def get_fnd_402(self, message):
+			argument = EnhanceEquipmentResponse()
+			argument.ParseFromString(message)
+			print argument
+			self.on_command_finish()
+
+
+	新添加的机器人的类需要继承自Robot类，然后现实特定的command命令，
+	命令以函数command_开头，否则不会现在是机器人命令菜单中
+
+	消息处理函数和服务器一样以消息id结尾的函数名，如****_101(self, message)
+	新机器人参考上面机器人界面说明
