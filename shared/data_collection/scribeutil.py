@@ -9,6 +9,7 @@ try:
     from thrift.protocol import TBinaryProtocol
     SCRIBE_AVAILABLE = True    # 检查scribe相关库正常，不要影响业务系统
 except ImportError, e:
+    print '<------->'
     print e
     SCRIBE_AVAILABLE = False
 
