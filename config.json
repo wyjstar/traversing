@@ -286,7 +286,8 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
-                "sign_in": "simple"
+                "sign_in": "simple",
+                "feast": "simple"
             }
         }
     }
