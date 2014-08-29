@@ -36,7 +36,7 @@ class CharacterMailComponent(Component):
 
         if not mail_ids:
             return
-
+        print "mail_ids:", mail_ids
         for mail_id in mail_ids:
             mail = Mail(mail_id=mail_id)
             mail.init_data()
@@ -51,10 +51,13 @@ class CharacterMailComponent(Component):
             'character_id': character_id,
             'property': mail_property
         }
+        print "new_mail_data", data
         tb_mail_info.new(data)
 
     def add_exist_mail(self, mail):
         self._mails[mail.mail_id] = mail
+        self.new_mail_data(mail)
+        self.save_data()
 
     def add_mail(self, sender_id, sender_name, title, content, mail_type, send_time, prize):
         """添加邮件"""

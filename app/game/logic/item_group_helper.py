@@ -98,12 +98,12 @@ def consume(player, item_group):
     return result
 
 
-def gain(player, item_group):
+def gain(player, item_group, result=None):
     """获取
     @param item_group: [obj,obj]
     """
-
-    result = []
+    if result is None:
+        result = []
 
     for group_item in item_group:
         type_id = group_item.item_type
@@ -164,7 +164,9 @@ def gain(player, item_group):
 
         elif type_id == const.BIG_BAG:
             big_bag = BigBag(item_no)
-            return gain(player, big_bag.get_drop_items())
+            for i in range(num):
+                gain(player, big_bag.get_drop_items(), result)
+            return result
 
         elif type_id == const.EQUIPMENT:
             equipment = player.equipment_component.add_equipment(item_no)

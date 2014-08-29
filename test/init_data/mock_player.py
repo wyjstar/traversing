@@ -9,9 +9,9 @@ from app.game.redis_mode import tb_character_info
 
 
 def init_player(player):
-    player.finance.coin = 30000
-    player.finance.hero_soul = 20000
-    player.finance.gold = 10000
+    player.finance.coin = 3000000
+    player.finance.hero_soul = 2000000
+    player.finance.gold = 1000000
     player.finance.save_data()
 
     player.level.level = 60

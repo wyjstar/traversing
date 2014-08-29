@@ -25,7 +25,7 @@ class ShopTest(unittest.TestCase):
         self.assertTrue(result)
 
         request = ShopRequest()
-        request.id = 10001
+        request.id = 10002
         response_data = shop_oper(1, request.SerializePartialToString())
         response = ShopResponse()
         response.ParseFromString(response_data)

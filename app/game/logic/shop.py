@@ -26,8 +26,10 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
         # 判断是否消耗
         result = is_afford(player, shop_item.consume)  # 校验
         if not result.get('result'):
-            response.result = False
-            response.message = '消费不足！'
+            response.res.result = False
+            response.res.result_no = result.get('result_no')
+            print "result_no:", result.get('result_no')
+            response.res.message = u'消费不足！'
         return_data = consume(player, shop_item.consume)  # 消耗
         get_return(player, return_data, response.consume)
     return_data = gain(player, shop_item.gain)  # 获取

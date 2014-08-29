@@ -30,16 +30,17 @@ class Mail(object):
 
     def init_data(self):
         mail_data = tb_mail_info.getObjData(self._id)
-        self._character_id = mail_data.get("character_id")
-        mail_prop = mail_data.get("property")
-        self._sender_id = mail_prop.get("sender_id")
-        self._sender_name = mail_prop.get("sender_name")
-        self._mail_type = mail_prop.get("mail_type")
-        self._content = mail_prop.get("content")
-        self._is_readed = mail_prop.get("is_readed")
-        self._send_time = mail_prop.get("send_time")
-        self._read_time = mail_prop.get("read_time")
-        self._prize = cPickle.loads(mail_prop.get("prize"))
+        if mail_data:
+            self._character_id = mail_data.get("character_id")
+            mail_prop = mail_data.get("property")
+            self._sender_id = mail_prop.get("sender_id")
+            self._sender_name = mail_prop.get("sender_name")
+            self._mail_type = mail_prop.get("mail_type")
+            self._content = mail_prop.get("content")
+            self._is_readed = mail_prop.get("is_readed")
+            self._send_time = mail_prop.get("send_time")
+            self._read_time = mail_prop.get("read_time")
+            self._prize = cPickle.loads(mail_prop.get("prize"))
 
     @property
     def mail_id(self):
