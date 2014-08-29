@@ -7,6 +7,7 @@ from app.gate.core.users_manager import UsersManager
 from app.proto_file import account_pb2
 from app.gate.service.local.gateservice import local_service_handle
 from gfirefly.server.globalobject import GlobalObject
+from shared.data_collection.static_api import write
 
 
 @local_service_handle
@@ -56,6 +57,11 @@ def server_login_2(command_id, dynamic_id, request_proto):
     # account_key = account_pb2.AccountResponse()
     # account_key.result = True
     # return account_key.SerializeToString()
+
+
+    #TODO
+    for i in range(100):
+        write()
 
     # 登录数据解析
     account_key = account_pb2.AccountLoginRequest()
