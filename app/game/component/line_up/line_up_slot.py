@@ -196,7 +196,10 @@ class LineUpSlotComponent(Component):
         cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
         block = base_attr.block + attr.block
         is_boss = False
-        position = self._position
+        
+        line_up_order = self.owner.line_up_order
+        position = line_up_order.index(self._slot_no)
+        position += 1
 
         battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def,
                                   magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, position, is_boss)
