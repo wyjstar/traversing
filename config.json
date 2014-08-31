@@ -288,7 +288,6 @@
                 "id": "simple",
                 "sign_in": "simple",
                 "online_gift": "complex",
-                "sign_in": "simple",
                 "feast": "simple"
             }
         }

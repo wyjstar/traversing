@@ -1,0 +1,6 @@
+import "common.proto";
+
+// get online gift
+message GetOnlineGift{
+	repeated int32 gift_id = 1;
+}
