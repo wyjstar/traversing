@@ -5,7 +5,6 @@ created by server on 14-8-26
 import datetime
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_activity
-from shared.db_opear.configs_data.game_configs import activity_config
 
 
 class CharacterOnlineGift(Component):
@@ -31,39 +30,30 @@ class CharacterOnlineGift(Component):
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'online_gift': data})
 
-    # def save_data(self):
-    #     pass
-
-    def offline_player(self):
-        accumulate_time = datetime.datetime.now() - self._login_on_time
-        self._online_time += accumulate_time.seconds
-
+    def save_data(self):
         activity = tb_character_activity.getObj(self.owner.base_info.id)
         data = {'online_time': self._online_time,
                 'received_gift_ids': self._received_gift_ids}
         print 'offline datetime', data
         activity.update('online_gift', data)
 
-    def get_online_gift(self, gift_id):
-        values = activity_config.values()
-        activity_online_gift = filter(lambda _: _['type'] == 4, values)
-        online_minutes = self._online_time  #  / 60
+    def offline_player(self):
+        accumulate_time = datetime.datetime.now() - self._login_on_time
+        self._online_time += accumulate_time.seconds
+        self.save_data()
 
-        if gift_id in self._received_gift_ids:
-            return False
+    @property
+    def online_time(self):
+        return self._online_time
 
-        activity = tb_character_activity.getObj(self.owner.base_info.id)
-        if not activity:
-            return False
+    @online_time.setter
+    def online_time(self, value):
+        self._online_time = value
 
-        for a in activity_online_gift:
-            if gift_id == a['id']:
-                if online_minutes >= a['parameterA']:
-                    self._received_gift_ids.append(a['id'])
-                    data = {'online_time': self._online_time,
-                            'received_gift_ids': self._received_gift_ids}
-                    print 'get gift datetime', data
-                    activity.update('online_gift', data)
-                else:
-                    break
-        return False
+    @property
+    def received_gift_ids(self):
+        return self._received_gift_ids
+
+    @received_gift_ids.setter
+    def received_gift_ids(self, value):
+        self._received_gift_ids = value

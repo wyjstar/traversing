@@ -19,12 +19,12 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_character_equipments)
     MAdminManager().registe(memmode.tb_equipment_info)
     MAdminManager().registe(memmode.tb_character_friend)
+    MAdminManager().registe(memmode.tb_character_activity)
 
 
 def check_mem_db(delta):
     """同步内存数据到数据库
     """
-    pass
-    # MAdminManager().checkAdmins()
-    # reactor.callLater(delta, check_mem_db, delta)
+    MAdminManager().checkAdmins()
+    reactor.callLater(delta, check_mem_db, delta)
 
