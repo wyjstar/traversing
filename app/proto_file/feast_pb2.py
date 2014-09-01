@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='feast.proto',
   package='',
-  serialized_pb='\n\x0b\x66\x65\x61st.proto\x1a\x0c\x63ommon.proto\"D\n\x12GetEatTimeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65\x61t_time\x18\x02 \x03(\x05')
+  serialized_pb='\n\x0b\x66\x65\x61st.proto\x1a\x0c\x63ommon.proto\"D\n\x12GetEatTimeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65\x61t_time\x18\x02 \x01(\x05')
 
 
 
@@ -35,8 +35,8 @@ _GETEATTIMERESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='eat_time', full_name='GetEatTimeResponse.eat_time', index=1,
-      number=2, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

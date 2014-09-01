@@ -27,7 +27,8 @@ def get_eat_time_821(dynamic_id, pro_data):
     response = GetEatTimeResponse()
     print('cuick,BBBBBBBBBBBBBBBBBBBB,01,node,feast_821')
 
-    abc = get_time(dynamic_id)
+    last_eat_time = get_time(dynamic_id)
 
-    response.result = True
+    response.res.result = True
+    response.eat_time = last_eat_time
     return response.SerializeToString()

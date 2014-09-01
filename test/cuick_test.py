@@ -11,6 +11,8 @@ from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
 from app.proto_file.equipment_request_pb2 import *
 from app.proto_file.equipment_response_pb2 import *
+from app.proto_file.feast_pb2 import *
+from app.proto_file.common_pb2 import *
 
 
 def sendData(sendstr,commandId):
@@ -109,6 +111,20 @@ class EchoClient(protocol.Protocol):
             argument = PlayerResponse()
             argument.ParseFromString(message)
             print argument
+
+            # --------821获取上次吃大餐时间------------
+            argument1 = EnhanceEquipmentRequest()
+            argument1.id = u"0004"
+            argument1.type = 1
+            argument1.num = 10
+            self.dateSend(argument1, 820)
+
+            # --------821获取上次吃大餐时间------------
+            # argument1 = EnhanceEquipmentRequest()
+            # argument1.id = u"0004"
+            # argument1.type = 1
+            # argument1.num = 10
+            # self.dateSend(argument1, 821)
 
             # --------402强化------------
             # argument1 = EnhanceEquipmentRequest()
@@ -376,6 +392,18 @@ class EchoClient(protocol.Protocol):
         if command == 402:
             # 
             argument = EnhanceEquipmentResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 821:
+            #
+            argument = GetEatTimeResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 820:
+            #
+            argument = CommonResponse()
             argument.ParseFromString(message)
             print argument
 

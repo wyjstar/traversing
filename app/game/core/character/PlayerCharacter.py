@@ -130,6 +130,7 @@ class PlayerCharacter(Character):
         self._get_stamina_times = get_stamina_times
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
+        self._feast.init_feast()
 
     @property
     def character_type(self):
@@ -247,6 +248,14 @@ class PlayerCharacter(Character):
     @property
     def online_gift(self):
         return self._online_gift
+
+    @property
+    def feast(self):
+        return self._feast
+
+    @feast.setter
+    def feast(self, value):
+        self._feast = value
 
     @property
     def get_stamina_times(self):

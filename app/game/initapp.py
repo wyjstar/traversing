@@ -24,5 +24,6 @@ def load_module():
     from action.node import mail
     from action.node import player
     from action.node import online_gift
+    from action.node import feast
     # init()
 

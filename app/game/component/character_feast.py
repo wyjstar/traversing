@@ -3,8 +3,7 @@
 created by server on 14-8-29上午11:39.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_activity, tb_character_info
-import cPickle
+from app.game.redis_mode import tb_character_activity
 import time
 
 
@@ -18,9 +17,12 @@ class CharacterFeastComponent(Component):
     def init_feast(self):
         activity = tb_character_activity.getObjData(self.owner.base_info.id)
         if activity:
-            self._last_eat_time = cPickle.loads(activity.get('feast'))
+            date = activity.get('feast')
+            if date:
+                self._last_eat_time = date
         else:
-            tb_character_activity.new({'id': self.owner.base_info.id, 'sign_in': cPickle.dumps({}), 'feast': 1})
+            tb_character_activity.new({'id': self.owner.base_info.id,
+                                       'feast': 1})
 
     @property
     def last_eat_time(self):
