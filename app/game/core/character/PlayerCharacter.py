@@ -21,6 +21,7 @@ from app.game.component.friend.friend import FriendComponent
 from app.game.component.character_guild import CharacterGuildComponent
 from app.game.component.tb_character_mail import CharacterMailComponent
 from app.game.component.character_sign_in import CharacterSignInComponent
+from app.game.component.character_feast import CharacterFeastComponent
 import json
 
 
@@ -55,6 +56,7 @@ class PlayerCharacter(Character):
         self._guild = CharacterGuildComponent(self)  # 公会组件
         self._mail = CharacterMailComponent(self)  # 邮箱组件
         self._sign_in = CharacterSignInComponent(self)  # 签到组件
+        self._feast = CharacterFeastComponent(self)
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
         self._get_stamina_times = 0  # 邮件获取体力次数

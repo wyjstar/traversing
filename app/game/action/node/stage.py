@@ -91,7 +91,7 @@ def stage_start_903(dynamic_id, pro_data):
                 continue
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
-
+    print '< start fight>', response
     return response.SerializePartialToString()
 
 
