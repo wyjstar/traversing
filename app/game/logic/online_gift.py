@@ -30,7 +30,6 @@ def get_online_gift(dynamic_id, data, **kwargs):
                 return_data = gain(player, gain_data)
                 get_return(player, return_data, response.gain)
 
-                player.online_gift.received_gift_ids.append(a['id'])
                 data = {'online_time': player.online_gift.online_time,
                         'received_gift_ids': player.online_gift.received_gift_ids}
                 print 'get gift datetime', data

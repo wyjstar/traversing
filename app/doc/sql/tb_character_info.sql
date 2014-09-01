@@ -36,8 +36,6 @@ CREATE TABLE `tb_character_info` (
   `stamina` int(11),
   `pvp_times` int(11),
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
-  `sign_in_days` int(11) NOT NULL DEFAULT '0',
-  `continus_sign_in_days` blob NOT NULL,
   `last_login_time` int(11),
   `create_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
