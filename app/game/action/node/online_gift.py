@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-created by sphinx on 
+created by sphinx on
 """
 
 from app.game.service.gatenoteservice import remote_service_handle

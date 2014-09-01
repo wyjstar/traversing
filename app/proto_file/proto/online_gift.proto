@@ -2,5 +2,9 @@ import "common.proto";
 
 // get online gift
 message GetOnlineGift{
-	repeated int32 gift_id = 1;
+	required int32 gift_id = 1;
+}
+
+message GetOnlineGiftResponse{
+	required bool result = 1;
 }

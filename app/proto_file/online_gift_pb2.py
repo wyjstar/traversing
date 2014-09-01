@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='online_gift.proto',
   package='',
-  serialized_pb='\n\x11online_gift.proto\x1a\x0c\x63ommon.proto\" \n\rGetOnlineGift\x12\x0f\n\x07gift_id\x18\x01 \x03(\x05')
+  serialized_pb='\n\x11online_gift.proto\x1a\x0c\x63ommon.proto\" \n\rGetOnlineGift\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\"\'\n\x15GetOnlineGiftResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08')
 
 
 
@@ -28,8 +28,8 @@ _GETONLINEGIFT = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='gift_id', full_name='GetOnlineGift.gift_id', index=0,
-      number=1, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -46,13 +46,48 @@ _GETONLINEGIFT = _descriptor.Descriptor(
   serialized_end=67,
 )
 
+
+_GETONLINEGIFTRESPONSE = _descriptor.Descriptor(
+  name='GetOnlineGiftResponse',
+  full_name='GetOnlineGiftResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='GetOnlineGiftResponse.result', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=69,
+  serialized_end=108,
+)
+
 DESCRIPTOR.message_types_by_name['GetOnlineGift'] = _GETONLINEGIFT
+DESCRIPTOR.message_types_by_name['GetOnlineGiftResponse'] = _GETONLINEGIFTRESPONSE
 
 class GetOnlineGift(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GETONLINEGIFT
 
   # @@protoc_insertion_point(class_scope:GetOnlineGift)
+
+class GetOnlineGiftResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GETONLINEGIFTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:GetOnlineGiftResponse)
 
 
 # @@protoc_insertion_point(module_scope)
