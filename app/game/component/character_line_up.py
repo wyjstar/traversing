@@ -89,7 +89,7 @@ class CharacterLineUpComponent(Component):
 
     @line_up_order.setter
     def line_up_order(self, line_up_order):
-        new_line_up_order = self._line_up_order[:]  # copy[1,2,3,4,5,6]
+        new_line_up_order = self.line_up_order[:]  # copy[1,2,3,4,5,6]
         # 更新队形
         for pos, slot_no in enumerate(self._line_up_order):
             slot = self._line_up_slots.get(slot_no)  # 格子对象
@@ -98,7 +98,7 @@ class CharacterLineUpComponent(Component):
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
             new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
-
+        print '<character line up>', self._line_up_order, new_line_up_order
         self._line_up_order = new_line_up_order
 
     @property

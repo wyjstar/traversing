@@ -25,6 +25,7 @@ class BattleUnit(object):
         self._cri_coeff = 12  # 战斗单位暴击伤害系数
         self._cri_ded_coeff = 13  # 战斗单位暴伤减免系数
         self._block = 14  # 战斗单位格挡率
+        self._position = 16  # 战斗单位位置
         self._is_boss = 15  # 是否是boss bool
 
     @property
@@ -154,3 +155,11 @@ class BattleUnit(object):
     @break_skills.setter
     def break_skills(self, skills):
         self._break_skills = skills
+
+    @property
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, position):
+        self._position = position

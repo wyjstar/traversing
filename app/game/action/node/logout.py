@@ -15,6 +15,8 @@ def net_conn_lost_602(dynamic_id):
     if not player:
         return True
 
+    player.online_gift.offline_player()
+
     # TODO 是否需要保存数据
     PlayersManager().drop_player(player)
     return True

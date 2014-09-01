@@ -61,7 +61,11 @@ def stage_start_903(dynamic_id, pro_data):
 
     line_up = {}  # {hero_id:pos}
     for line in request.lineup:
+        if not line.hero_id:
+            continue
         line_up[line.hero_id] = line.pos
+
+    print '<stage start>', line_up
 
     stage_info = fight_start(dynamic_id, stage_id, line_up)
     result = stage_info.get('result')
@@ -148,6 +152,7 @@ def assemble(unit_add, unit):
     unit_add.cri_coeff = unit.cri_coeff
     unit_add.cri_ded_coeff = unit.cri_ded_coeff
     unit_add.block = unit.block
+    unit_add.position = unit.position
     unit_add.is_boss = unit.is_boss
 
 
