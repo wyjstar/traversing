@@ -3,6 +3,7 @@
 created by server on 14-6-4下午3:04.
 """
 from app.game.component.character_line_up import CharacterLineUpComponent
+from app.game.component.character_online_gift import CharacterOnlineGift
 from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
 from app.game.component.fight.fight_cache import CharacterFightCacheComponent
 from app.game.component.level.character_level import CharacterLevelComponent
@@ -21,7 +22,6 @@ from app.game.component.friend.friend import FriendComponent
 from app.game.component.character_guild import CharacterGuildComponent
 from app.game.component.tb_character_mail import CharacterMailComponent
 from app.game.component.character_sign_in import CharacterSignInComponent
-import json
 
 
 class PlayerCharacter(Character):
@@ -55,6 +55,7 @@ class PlayerCharacter(Character):
         self._guild = CharacterGuildComponent(self)  # 公会组件
         self._mail = CharacterMailComponent(self)  # 邮箱组件
         self._sign_in = CharacterSignInComponent(self)  # 签到组件
+        self._online_gift = CharacterOnlineGift(self)  # online gift
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
         self._get_stamina_times = 0  # 邮件获取体力次数
@@ -124,6 +125,7 @@ class PlayerCharacter(Character):
         self._pvp_times = pvp_times
         self._get_stamina_times = get_stamina_times
         self._sign_in.init_sign_in()
+        self._online_gift.init_data()
 
     @property
     def character_type(self):
@@ -237,6 +239,10 @@ class PlayerCharacter(Character):
     @property
     def sign_in_component(self):
         return self._sign_in
+
+    @property
+    def online_gift(self):
+        return self._online_gift
 
     @property
     def get_stamina_times(self):

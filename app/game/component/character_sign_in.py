@@ -27,7 +27,10 @@ class CharacterSignInComponent(Component):
             self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
             self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
         else:
-            tb_character_activity.new({'id': self.owner.base_info.id, 'sign_in': cPickle.dumps({}), 'feast': 1})
+            tb_character_activity.new({'id': self.owner.base_info.id,
+                                       'sign_in': cPickle.dumps({}),
+                                       'feast': 1,
+                                       'online_gift': 1})
 
     @property
     def sign_in_days(self):
