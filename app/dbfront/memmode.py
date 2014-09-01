@@ -60,3 +60,7 @@ tb_character_guild.insert()
 # 公会名表
 tb_guild_name = MAdmin('tb_guild_name', 'id')
 tb_guild_name.insert()
+
+# 玩家活动表
+tb_character_activity = MAdmin('tb_character_activity', 'id')
+tb_character_activity.insert()

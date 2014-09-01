@@ -16,4 +16,5 @@ class RobotOnlineGift(Robot):
         response = online_gift_pb2.GetOnlineGiftResponse()
         response.ParseFromString(message)
         print 'result:', response.result
+        print 'gain:', response.gain
         self.on_command_finish()

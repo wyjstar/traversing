@@ -134,7 +134,11 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     init()
-    print activity_config
+    # print activity_config
+    for k, v in activity_config.items():
+        print k, '='*5
+        for _ in v:
+            print _
 
 
 

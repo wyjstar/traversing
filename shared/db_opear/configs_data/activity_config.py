@@ -15,6 +15,8 @@ class ActivityConfig(object):
         for row in config_value:
             row["reward"] = parse(row.get("reward"))
             item = CommonItem(row)
-            self._items[item.id] = item
+            if not self._items.get(item.type):
+                self._items[item.type] = []
+            self._items[item.type].append(item)
 
         return self._items
