@@ -47,6 +47,7 @@ def __character_login(dynamic_id, token):
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 
     if not user:
+        print 'cant find user dynamic_id:', dynamic_id
         return {'result': False}
 
     character_info = user.character

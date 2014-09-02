@@ -66,7 +66,7 @@ class ServerFactory:
         """
         @param sessionno: int 用来记录客户端连接的动态编号
         """
-        self.sessionno = 0
+        self.sessionno = 1
         
     def buildProtocol(self, transport):
         """

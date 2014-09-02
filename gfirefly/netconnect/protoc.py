@@ -29,6 +29,7 @@ class LiberateProtocol(protocols.BaseProtocol):
     def connectionLost(self, reason):
         '''连接断开处理
         '''
+        print 'client login out', reason
         log.msg('Client %d login out.' % (self.transport.sessionno))
         self.factory.doConnectionLost(self)
         self.factory.connmanager.dropConnectionByID(self.transport.sessionno)
@@ -121,6 +122,9 @@ class LiberateFactory(protocols.ServerFactory):
         """主动端口与客户端的连接
         """
         self.connmanager.loseConnection(connID)
+
+    def change_id(self, new_id, cur_id):
+        return self.connmanager.change_id(new_id, cur_id)
 
     def pushObject(self, topicID, msg, sendList):
         '''服务端向客户端推消息

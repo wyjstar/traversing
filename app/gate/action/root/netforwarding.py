@@ -99,18 +99,6 @@ def push_message(topic_id, character_id, args, kw):
         return GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
 
 
-# def pull_message(topic_id, character_id, args, kw):
-#     print 'gate receive pull message'
-#
-#     oldvcharacter = VCharacterManager().get_by_id(character_id)
-#     if oldvcharacter:
-#         print 'gate found character to push message'
-#         GlobalObject().root.callChild(oldvcharacter.node, topic_id, oldvcharacter.dynamic_id, args, kw)
-#     else:
-#         print 'gate cant found character to push message to transit'
-#         GlobalObject().remote['transit'].callRemote("pull_message", topic_id, character_id, args, kw)
-
-
 remoteservice = CommandService("transitremote")
 GlobalObject().remote['transit']._reference.addService(remoteservice)
 
