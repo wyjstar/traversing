@@ -29,8 +29,7 @@ class CharacterSignInComponent(Component):
         else:
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'sign_in': cPickle.dumps({}),
-                                       'feast': 1,
-                                       'online_gift': 1})
+                                       'feast': 1})
 
     @property
     def sign_in_days(self):

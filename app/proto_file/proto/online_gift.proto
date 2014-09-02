@@ -7,4 +7,5 @@ message GetOnlineGift{
 
 message GetOnlineGiftResponse{
 	required bool result = 1;
+    optional GameResourcesResponse gain = 2;
 }
