@@ -2,6 +2,7 @@
 """
 created by server on 14-6-28下午4:08.
 """
+from app.gate.action.node import net
 from app.gate.core.user import User
 from app.gate.core.users_manager import UsersManager
 from app.proto_file import account_pb2
@@ -60,8 +61,8 @@ def server_login_2(command_id, dynamic_id, request_proto):
 
 
     #TODO
-    for i in range(100):
-        write()
+    # for i in range(100):
+    #     write()
 
     # 登录数据解析
     account_key = account_pb2.AccountLoginRequest()
@@ -78,8 +79,9 @@ def server_login_2(command_id, dynamic_id, request_proto):
 
     if is_login:  # 登录成功
         account_id = result.get('account_id')
-        __manage_user(key, account_id, user_name, password, dynamic_id)
-    account_key.result = is_login
+        account_key.result = __manage_user(key, account_id, user_name, password, dynamic_id)
+    else:
+        account_key.result = is_login
     return account_key.SerializeToString()
 
 
@@ -87,9 +89,13 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
     """管理用户
     """
     user = UsersManager().get_by_id(account_id)
-    if user:
-        #TODO 修改game中player中dynamic_id
-        user.dynamic_id = dynamic_id
+    if user and user.dynamic_id != dynamic_id:
+        print 'user exit! info:', user
+        if not net.change_dynamic_id(user.dynamic_id, dynamic_id):
+            print 'error!, change user id fail, dynamic:', user.dynamic_id
+            return False
+        # user.dynamic_id = dynamic_id
     else:
         user = User(token, account_id, user_name, password, dynamic_id)
         UsersManager().add_user(user)
+    return True

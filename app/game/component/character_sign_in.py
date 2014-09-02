@@ -22,14 +22,14 @@ class CharacterSignInComponent(Component):
         activity = tb_character_activity.getObjData(self.owner.base_info.id)
         if activity:
             sign_in_data = cPickle.loads(activity.get('sign_in'))
-            self._sign_in_days = sign_in_data.get('sign_in_days', [])
-            self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days', 0)
-            self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
-            self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
+            if sign_in_data:
+                self._sign_in_days = sign_in_data.get('sign_in_days', [])
+                self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days', 0)
+                self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
+                self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
         else:
             tb_character_activity.new({'id': self.owner.base_info.id,
-                                       'sign_in': cPickle.dumps({}),
-                                       'feast': 1})
+                                       'sign_in': cPickle.dumps({})})
 
     @property
     def sign_in_days(self):
