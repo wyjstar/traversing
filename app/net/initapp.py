@@ -16,7 +16,9 @@ def conn_made(conn):
 
 def conn_lost(conn):
     dynamic_id = conn.transport.sessionno
-    GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
+    print 'logout conn id:', dynamic_id
+    if dynamic_id != 0:
+        GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
 
 
 GlobalObject().netfactory.doConnectionLost = conn_lost

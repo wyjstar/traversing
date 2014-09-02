@@ -4,14 +4,13 @@ Created on 2013-8-14
 
 @author: lan (www.9miao.com)
 '''
-from app.proto_file import item_pb2
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.utils.services import CommandService
 from gtwisted.utils import log
 
 class NetCommandService(CommandService):
     
-    def callTarget(self,targetKey,*args,**kw):
+    def callTarget(self, targetKey, *args, **kw):
         '''call Target by Single
         @param conn: client connection
         @param targetKey: target ID
@@ -22,7 +21,7 @@ class NetCommandService(CommandService):
             log.err('the command '+str(targetKey)+' not Found on service')
             return None
         if targetKey not in self.unDisplay:
-            log.msg("call method %s on service[single]"%target.__name__)
+            log.msg("call method %s on service[single]" % target.__name__)
         response = target(targetKey,*args,**kw)
         return response
     

@@ -11,11 +11,7 @@ class Connection:
     '''
 
     def __init__(self, _conn):
-        '''
-        id 连接的ID
-        transport 连接的通道
-        '''
-        self.id = _conn.transport.sessionno
+        ''' transport 连接的通道'''
         self.instance = _conn
 
     def loseConnection(self):
@@ -27,6 +23,13 @@ class Connection:
         """发送消息
         """
         self.instance.safeToWriteData(msg, topicID)
-        
-        
-        
+
+    @property
+    def dynamic_id(self):
+        return self.instance.transport.sessionno
+
+    @dynamic_id.setter
+    def dynamic_id(self, value):
+        print '-=-'*6, self.instance.transport.sessionno
+        self.instance.transport.sessionno = value
+        print '-=-'*6, self.instance.transport.sessionno

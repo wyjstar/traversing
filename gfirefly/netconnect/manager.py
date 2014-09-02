@@ -29,9 +29,9 @@ class ConnectionManager:
         @param _conn: Conn object
         '''
         _conn = Connection(conn)
-        if self._connections.has_key(_conn.id):
+        if self._connections.has_key(_conn.dynamic_id):
             raise Exception("系统记录冲突")
-        self._connections[_conn.id] = _conn
+        self._connections[_conn.dynamic_id] = _conn
 
     def dropConnectionByID(self, connID):
         '''更加连接的id删除连接实例
@@ -54,6 +54,20 @@ class ConnectionManager:
         conn = self.getConnectionByID(connID)
         if conn:
             conn.loseConnection()
+
+    def change_id(self, new_id, cur_id):
+        connection = self._connections[cur_id]
+        if not connection:
+            return False
+        old_connection = self._connections[new_id]
+        if old_connection:
+            old_connection.loseConnection()
+            old_connection.instance.transport.sessionno = 0
+
+        del self._connections[cur_id]
+        self._connections[new_id] = connection
+        connection.instance.transport.sessionno = new_id
+        return True
 
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息
