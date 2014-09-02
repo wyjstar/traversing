@@ -12,12 +12,12 @@ from app.proto_file.common_pb2 import CommonResponse
 def feast_820(dynamic_id, pro_data):
     """美味酒席
     """
-    response = CommonResponse()
+    response = EatFeastResponse()
     print('cuick,AAAAAAAAAAAAAAAAA,01,node,feast_820')
 
-    abc = eat_feast(dynamic_id)
+    res = eat_feast(dynamic_id)
 
-    response.result = True
+    response.res = res
     return response.SerializeToString()
 
 @remote_service_handle

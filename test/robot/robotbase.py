@@ -65,7 +65,10 @@ class RobotBase(protocol.Protocol):
         return self._command_args
 
     def send_message(self, argument, command_id):
-        data = build_data(argument.SerializeToString(), command_id)
+        if argument:
+            data = build_data(argument.SerializeToString(), command_id)
+        else:
+            data = build_data('', command_id)
         self.transport.write(data)
 
     def connectionMade(self):

@@ -5,3 +5,8 @@ message GetEatTimeResponse{
 	required CommonResponse res = 1;
 	optional int32 eat_time = 2;
 }
+
+// 吃酒席 command：820
+message EatFeastResponse{
+	required int32 res = 1;
+}

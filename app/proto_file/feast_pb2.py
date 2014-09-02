@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='feast.proto',
   package='',
-  serialized_pb='\n\x0b\x66\x65\x61st.proto\x1a\x0c\x63ommon.proto\"D\n\x12GetEatTimeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65\x61t_time\x18\x02 \x01(\x05')
+  serialized_pb='\n\x0b\x66\x65\x61st.proto\x1a\x0c\x63ommon.proto\"D\n\x12GetEatTimeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65\x61t_time\x18\x02 \x01(\x05\"\x1f\n\x10\x45\x61tFeastResponse\x12\x0b\n\x03res\x18\x01 \x02(\x05')
 
 
 
@@ -53,14 +53,49 @@ _GETEATTIMERESPONSE = _descriptor.Descriptor(
   serialized_end=97,
 )
 
+
+_EATFEASTRESPONSE = _descriptor.Descriptor(
+  name='EatFeastResponse',
+  full_name='EatFeastResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='EatFeastResponse.res', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=99,
+  serialized_end=130,
+)
+
 _GETEATTIMERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['GetEatTimeResponse'] = _GETEATTIMERESPONSE
+DESCRIPTOR.message_types_by_name['EatFeastResponse'] = _EATFEASTRESPONSE
 
 class GetEatTimeResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _GETEATTIMERESPONSE
 
   # @@protoc_insertion_point(class_scope:GetEatTimeResponse)
+
+class EatFeastResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _EATFEASTRESPONSE
+
+  # @@protoc_insertion_point(class_scope:EatFeastResponse)
 
 
 # @@protoc_insertion_point(module_scope)

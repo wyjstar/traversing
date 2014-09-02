@@ -68,7 +68,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'd8078ae3a3c45caa0c4758b62850477c'
+        argument.key.key = '470f2e953d48e660bee758111703f15c'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -93,7 +93,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'd8078ae3a3c45caa0c4758b62850477c'
+                argument.key.key = '470f2e953d48e660bee758111703f15c'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -104,7 +104,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'd8078ae3a3c45caa0c4758b62850477c'
+            argument.token = '470f2e953d48e660bee758111703f15c'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -403,7 +403,7 @@ class EchoClient(protocol.Protocol):
 
         if command == 820:
             #
-            argument = CommonResponse()
+            argument = EatFeastResponse()
             argument.ParseFromString(message)
             print argument
 

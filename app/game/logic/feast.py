@@ -12,22 +12,27 @@ def eat_feast(dynamicid, **kwargs):
     """
     吃
     """
-
-    # 得到 上次酒席时间
-    # 比较 此次酒席时间
-    # 得到 当前体力值
-    # 添加 体力值
-    # 保存 已经领取状态
-    # 返回 成功
-
+    # (tm_year=2014, tm_mon=9, tm_mday=1, tm_hour=18, tm_min=38, tm_sec=1, tm_wday=0, tm_yday=244, tm_isdst=0)
     player = kwargs.get('player')
-    last_eat_time = player.feast.last_eat_time
-    eat_time = base_config.get(u'manual_give_time')
-    new = time.time()
-    # if new
-    add_manual_num = base_config.get(u'manual_give_value')
-    return 123
-    # [[u'12:00', u'14:00'], [u'18:00', u'20:00']]
+    last_eat_time = time.localtime(player.feast.last_eat_time).tm_hour*60*60 + \
+        time.localtime(player.feast.last_eat_time).tm_min*60
+    eat_times = base_config.get(u'manual_give_time')
+    now = time.localtime().tm_hour*60*60 + time.localtime().tm_min*60
+    for eat_time in eat_times:
+        t1 = eat_time[0].split(':')
+        time1 = int(t1[0])*60*60 + int(t1[1])*60
+        t2 = eat_time[1].split(':')
+        time2 = int(t2[0])*60*60 + int(t2[1])*60
+        if time2 >= now >= time1:
+            if time2 >= last_eat_time >= time1:
+                # 已经吃过
+                return 1
+            # 吃
+            player.stamina += base_config.get(u'manual_give_value')
+            player.save_data()
+            return 2
+    # 没到时间
+    return 3
 
 
 @have_player
