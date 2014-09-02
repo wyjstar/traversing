@@ -8,5 +8,5 @@ message GetEatTimeResponse{
 
 // 吃酒席 command：820
 message EatFeastResponse{
-	required int32 res = 1;
+	required int32 res = 1; //1:已经吃过 2 成功吃 3还没到时间
 }

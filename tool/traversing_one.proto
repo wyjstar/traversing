@@ -455,6 +455,16 @@ message AccountLoginRequest{
 
 
 
+// get online gift
+message GetOnlineGift{
+	required int32 gift_id = 1;
+}
+
+message GetOnlineGiftResponse{
+	required bool result = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
 //请求关卡信息 command:901
 message StageInfoRequest{
 	required int32 stage_id = 1; //关卡编号 0: 全部信息
@@ -522,6 +532,17 @@ message ChangeHeroRequest{
 	required int32 slot_no = 1; // 位置编号
 	optional int32 change_type = 2; // 更换类型：0：阵容 1：助威
 	optional int32 hero_no = 3; // 英雄编号
+}
+
+// 上次吃酒席时间 command：821
+message GetEatTimeResponse{
+	required CommonResponse res = 1;
+	optional int32 eat_time = 2;
+}
+
+// 吃酒席 command：820
+message EatFeastResponse{
+	required int32 res = 1; //1:已经吃过 2 成功吃 3还没到时间
 }
 
 
