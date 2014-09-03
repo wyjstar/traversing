@@ -1,12 +1,12 @@
 {
     "master": {
         "roothost": "127.0.0.1",
-        "rootport": 9999,
-        "webport": 9998
+        "rootport": 20099,
+        "webport": 20098
     },
     "servers": {
         "admin": {
-            "webport": 2012,
+            "webport": 22001,
             "name": "admin",
             "app": "app.adminserver",
             "log": "app/logs/admin.log"

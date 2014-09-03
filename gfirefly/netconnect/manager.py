@@ -59,14 +59,15 @@ class ConnectionManager:
         connection = self._connections[cur_id]
         if not connection:
             return False
-        old_connection = self._connections[new_id]
-        if old_connection:
+
+        if new_id in self._connections:
+            old_connection = self._connections[new_id]
             old_connection.loseConnection()
-            old_connection.instance.transport.sessionno = 0
+            old_connection.dynamic_id = 0
 
         del self._connections[cur_id]
         self._connections[new_id] = connection
-        connection.instance.transport.sessionno = new_id
+        connection.dynamic_id = new_id
         return True
 
     def pushObject(self, topicID, msg, sendList):
@@ -80,5 +81,3 @@ class ConnectionManager:
         except Exception, e:
             print 'topic id:', topicID, '**', sendList
             log.err(str(e))
-
-
