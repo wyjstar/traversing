@@ -6,7 +6,7 @@ Created on 2014-2-23
 '''
 
 
-class Connection:
+class Connection(object):
     '''
     '''
 
@@ -30,6 +30,4 @@ class Connection:
 
     @dynamic_id.setter
     def dynamic_id(self, value):
-        print '-=-'*6, self.instance.transport.sessionno
         self.instance.transport.sessionno = value
-        print '-=-'*6, self.instance.transport.sessionno

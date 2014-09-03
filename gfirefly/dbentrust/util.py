@@ -211,7 +211,7 @@ def GetOneRecordInfo(tablename, props):
     # print 'GetOneRecordInfo:', props
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)
-    print 'get one:', sql
+    # print 'get one:', sql
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
