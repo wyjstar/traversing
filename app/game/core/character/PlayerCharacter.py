@@ -59,6 +59,7 @@ class PlayerCharacter(Character):
         self._sign_in = CharacterSignInComponent(self)  # 签到组件
         self._feast = CharacterFeastComponent(self)
         self._online_gift = CharacterOnlineGift(self)  # online gift
+        self._level_gift = CharacterOnlineGift(self)  # level gift
 
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
@@ -130,6 +131,7 @@ class PlayerCharacter(Character):
         self._get_stamina_times = get_stamina_times
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
+        self._level_gift.init_data()
         self._feast.init_feast()
 
     @property
@@ -248,6 +250,10 @@ class PlayerCharacter(Character):
     @property
     def online_gift(self):
         return self._online_gift
+
+    @property
+    def level_gift(self):
+        return self._level_gift
 
     @property
     def feast(self):
