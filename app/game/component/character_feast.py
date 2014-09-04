@@ -17,9 +17,9 @@ class CharacterFeastComponent(Component):
     def init_feast(self):
         activity = tb_character_activity.getObjData(self.owner.base_info.id)
         if activity:
-            date = activity.get('feast')
-            if date:
-                self._last_eat_time = date
+            data = activity.get('feast')
+            if data:
+                self._last_eat_time = data
         else:
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'feast': 1})
