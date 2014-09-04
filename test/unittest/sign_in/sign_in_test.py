@@ -17,7 +17,7 @@ class SignInTest(unittest.TestCase):
         self.player = PlayersManager().get_player_by_id(1)
 
     def test_sign_in_1401(self):
-        response_data = sign_in(1, 8, 26)
+        response_data = sign_in(1)
         response = SignInResponse()
         response.ParseFromString(response_data)
 
@@ -35,9 +35,10 @@ class SignInTest(unittest.TestCase):
 
     def test_repair_sign_in_1403(self):
         """补签到"""
-        response_data = repair_sign_in(1)
-        response = CommonResponse()
+        response_data = repair_sign_in(1, 1)
+        response = SignInResponse()
         response.ParseFromString(response_data)
-        self.assertTrue(response.result)
+
+        self.assertTrue(response.res.result)
         self.assertEqual(self.player.finance.gold, 9950, "%d_%d" % (self.player.finance.gold, 9950))
         self.assertEqual(self.player.sign_in_component.repair_sign_in_times, 1, "%d_%d" % (self.player.sign_in_component.repair_sign_in_times, 1))

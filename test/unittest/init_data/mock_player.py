@@ -32,9 +32,9 @@ def init_player():
 
     PlayersManager().drop_player_by_id(1)
     player = PlayerCharacter(1, name="wzp", dynamic_id=1, status=1)
-    player.finance.coin = 3000000
+    player.finance.coin = 30000
     player.finance.hero_soul = 20000
-    player.finance.gold = 1000000
+    player.finance.gold = 10000
     player.finance.save_data()
 
     player.last_pick_time.fine_hero = 0
