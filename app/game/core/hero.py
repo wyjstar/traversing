@@ -143,7 +143,7 @@ class Hero(object):
             dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
                  physical_def=physical_def, magic_def=magic_def,
                  hit=hit, dodge=dodge, cri=cri, cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block,
-                 break_skills=break_skills))
+                 break_skills=break_skills, level=self._level, break_level=self._break_level))
 
     def break_attr(self):
         """突破技能带来的属性加成
