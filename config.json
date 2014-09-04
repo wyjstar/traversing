@@ -1,12 +1,12 @@
 {
     "master": {
         "roothost": "127.0.0.1",
-        "rootport": 9999,
-        "webport": 9998
+        "rootport": 20099,
+        "webport": 20098
     },
     "servers": {
         "admin": {
-            "webport": 2012,
+            "webport": 22001,
             "name": "admin",
             "app": "app.adminserver",
             "log": "app/logs/admin.log"
@@ -29,7 +29,15 @@
             "mem": true,
             "db": true,
             "app": "app.gateserver",
-            "log": "app/logs/gate.log"
+            "log": "app/logs/gate.log",
+            "Ranking_configs": {
+                "label": "GuildLevel",
+                "redis_server": "127.0.0.1",
+                "redis_port": 6379,
+                "redis_db": 0,
+                "rank_len": 20,
+                "eval_rank_func": "guild_eval"
+            }
         },
         "net": {
             "netport": 11009,

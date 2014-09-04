@@ -14,3 +14,4 @@ def doWhenStop():
 
 def load_module():
     import action.test
+    import action.gm_add_test_data
