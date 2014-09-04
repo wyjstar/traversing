@@ -25,6 +25,7 @@ def register_madmin():
 def check_mem_db(delta):
     """同步内存数据到数据库
     """
-    MAdminManager().checkAdmins()
-    reactor.callLater(delta, check_mem_db, delta)
+    pass
+    # MAdminManager().checkAdmins()
+    # reactor.callLater(delta, check_mem_db, delta)
 

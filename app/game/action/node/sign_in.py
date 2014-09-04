@@ -9,6 +9,11 @@ from app.proto_file.sign_in_pb2 import SignInRequest, ContinuousSignInRequest
 
 
 @remote_service_handle
+def get_sign_in_1401(dynamic_id, pro_data):
+    """获取签到信息"""
+
+
+@remote_service_handle
 def sign_in_1401(dynamic_id, pro_data):
     """签到"""
     request = SignInRequest()
@@ -27,6 +32,4 @@ def continus_sign_in_1402(dynamic_id, pro_data):
 @remote_service_handle
 def repair_sign_in_1403(dynamic_id, pro_data):
     """补充签到"""
-    request = ContinuousSignInRequest()
-    request.ParseFromString(pro_data)
     return repair_sign_in(dynamic_id)

@@ -13,6 +13,7 @@ class CharacterSignInComponent(Component):
 
     def __init__(self, owner):
         super(CharacterSignInComponent, self).__init__(owner)
+        self._month = 0  # 当前签到月
         self._sign_in_days = []  # 签到日期
         self._continuous_sign_in_days = 0  # 连续签到天数
         self._continuous_sign_in_prize = []  # 已经获取的连续签到奖励，保存列表[7，15，25]
