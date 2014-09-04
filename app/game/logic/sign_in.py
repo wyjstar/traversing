@@ -13,6 +13,7 @@ import datetime
 
 @have_player
 def get_sign_in(dynamic_id, **kwargs):
+    """获取签到初始化信息"""
     player = kwargs.get('player')
     response = GetSignInResponse()
     sign_in_component = player.sign_in_component
@@ -22,17 +23,21 @@ def get_sign_in(dynamic_id, **kwargs):
     response.repair_sign_in_times = sign_in_component.repair_sign_in_times
     return response.SerializePartialToString()
 
+
 @have_player
-def sign_in(dynamic_id, month, day, **kwargs):
+def sign_in(dynamic_id, **kwargs):
     """签到"""
     player = kwargs.get('player')
     response = SignInResponse()
 
     # 签到
-    player.sign_in_component.sign_in(datetime.datetime.now())
+    date = datetime.datetime.now()
+    month = date.month
+    day = date.day
+    player.sign_in_component.sign_in(month, day)
     player.sign_in_component.save_data()
+    day = date.day
     # 获取奖励
-
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
         print "sign_in_config 配置文件信息不足！", sign_in_config
     gain_data = sign_in_config.get(month).get(day)
@@ -78,10 +83,10 @@ def continuous_sign_in(dynamic_id, days, **kwargs):
 
 
 @have_player
-def repair_sign_in(dynamic_id, **kwargs):
+def repair_sign_in(dynamic_id, day, **kwargs):
     """补充签到"""
     player = kwargs.get('player')
-    response = CommonResponse()
+    response = SignInResponse()
 
     sign_in_add = base_config.get("signInAdd")
     if not sign_in_add:
@@ -103,7 +108,20 @@ def repair_sign_in(dynamic_id, **kwargs):
     # 消耗
     player.finance.gold -= consume_gold
     player.finance.save_data()
+    # 签到奖励
+
+    date = datetime.datetime.now()
+    month = date.month
+    player.sign_in_component.sign_in(month, day)
+    player.sign_in_component.save_data()
+    if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
+        print "sign_in_config 配置文件信息不足！", sign_in_config
+
+    gain_data = sign_in_config.get(month).get(day)
+    return_data = gain(player, gain_data)
+    get_return(player, return_data, response.gain)
+
     player.sign_in_component.repair_sign_in_times += 1
     player.sign_in_component.save_data()
-    response.result = True
+    response.res.result = True
     return response.SerializePartialToString()

@@ -9,9 +9,8 @@ message GetSignInResponse{
 }
 
 // 补签:1403
-message SignInRequest{
-    required int32 month = 1;
-    required int32 day = 2;
+message RepairSignInRequest{
+    required int32 day = 1;
 }
 
 // 签到，补签:1401，1403
@@ -20,7 +19,7 @@ message SignInResponse{
     optional GameResourcesResponse gain = 2;
 }
 
-// 连续签到获取额外奖励
+// 连续签到获取额外奖励:1402
 message ContinuousSignInRequest{
     required int32 sign_in_days = 1; //连续登录天数: 7, 15 , 25
 }

@@ -24,6 +24,7 @@ class CharacterSignInComponent(Component):
         if activity:
             sign_in_data = cPickle.loads(activity.get('sign_in'))
             if sign_in_data:
+                self._month = sign_in_data.get('month', 0)
                 self._sign_in_days = sign_in_data.get('sign_in_days', [])
                 self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days', 0)
                 self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
@@ -64,18 +65,20 @@ class CharacterSignInComponent(Component):
     def repair_sign_in_times(self, value):
         self._repair_sign_in_times = value
 
-    def sign_in(self, date):
+    def sign_in(self, month, day):
         """签到"""
-        if self._sign_in_days and date.month - self._sign_in_days[-1].month > 0:
+        if self._sign_in_days and month - self._month != 0:
+            self._month = month
             self._sign_in_days = []
             self._continuous_sign_in_days = 0
 
-        self._sign_in_days.append(date)
-        if not self._sign_in_days or date.day - self._sign_in_days[-1].day == 1:
+        self._sign_in_days.append(day)
+        if not self._sign_in_days or day - self._sign_in_days[-1] == 1:
             self._continuous_sign_in_days += 1
 
     def save_data(self):
         props = dict(
+            month=self._month,
             sign_in_days=self._sign_in_days,
             continuous_sign_in_days=self._continuous_sign_in_days,
             continuous_sign_in_prize=self._continuous_sign_in_prize,
