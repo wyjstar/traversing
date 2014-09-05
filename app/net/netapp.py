@@ -8,6 +8,7 @@ from gfirefly.server.globalobject import GlobalObject
 from gfirefly.utils.services import CommandService
 from gtwisted.utils import log
 
+
 class NetCommandService(CommandService):
     
     def callTarget(self, targetKey, *args, **kw):
@@ -22,10 +23,11 @@ class NetCommandService(CommandService):
             return None
         if targetKey not in self.unDisplay:
             log.msg("call method %s on service[single]" % target.__name__)
-        response = target(targetKey,*args,**kw)
+        response = target(targetKey, *args, **kw)
         return response
     
 netservice = NetCommandService("loginService")
+
 
 def netserviceHandle(target):
     """
