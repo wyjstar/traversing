@@ -26,6 +26,7 @@ class LiberateProtocol(protocols.BaseProtocol):
         self.factory.connmanager.addConnection(self)
         self.factory.doConnectionMade(self)
 
+
     def connectionLost(self, reason):
         '''连接断开处理
         '''

@@ -65,6 +65,10 @@ class CharacterSignInComponent(Component):
     def repair_sign_in_times(self, value):
         self._repair_sign_in_times = value
 
+    def is_signd(self, month, day):
+        """是否已经签到"""
+        return day in self._sign_in_days and month == self._month
+
     def sign_in(self, month, day):
         """签到"""
         if self._sign_in_days and month - self._month != 0:

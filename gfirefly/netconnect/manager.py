@@ -7,6 +7,8 @@ Created on 2014-2-23
 
 from gtwisted.utils import log
 from connection import Connection
+from shared.utils.const import const
+import collections
 
 
 class ConnectionManager:
@@ -19,18 +21,41 @@ class ConnectionManager:
         @param _connections: dict {connID:conn Object}
         '''
         self._connections = {}
+        self._queue_conns = collections.OrderedDict()
 
     def getNowConnCnt(self):
         '''获取当前连接数量'''
         return len(self._connections.items())
 
+    @property
+    def queue_num(self):
+        return len(self._queue_conns)
+
+    @property
+    def connect_ids(self):
+        print "_connections", self._connections
+        print "_queue_conns", self._queue_conns.keys()
+        return self._connections.keys()
+
+    def hasConnection(self, dynamic_id):
+        """是否包含连接"""
+        print self._connections.keys()
+        return dynamic_id in self._connections.keys()
+
     def addConnection(self, conn):
         '''加入一条连接
         @param _conn: Conn object
         '''
+
         _conn = Connection(conn)
         if self._connections.has_key(_conn.dynamic_id):
             raise Exception("系统记录冲突")
+
+        # 连接数达到上限，将连接缓存到队列中
+        if const.MAX_CONNECTION <= len(self._connections):
+            self._queue_conns[_conn.dynamic_id] = _conn
+            return
+
         self._connections[_conn.dynamic_id] = _conn
 
     def dropConnectionByID(self, connID):
@@ -70,6 +95,14 @@ class ConnectionManager:
         connection.dynamic_id = new_id
         return True
 
+    def pop_queue(self):
+        print "pop"
+        if len(self._queue_conns) <= 0:
+            return
+        tmp = self._queue_conns.popitem(False)
+        self._connections[tmp[0]] = tmp[1]
+        return tmp[1]
+
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息
         """
@@ -77,6 +110,11 @@ class ConnectionManager:
             for target in sendList:
                 conn = self.getConnectionByID(target)
                 if conn:
+                    print "normal conn:", topicID, msg
+                    conn.safeToWriteData(topicID, msg)
+                conn = self._queue_conns.get(target, None)
+                if conn:
+                    print "queue conn:", topicID, msg
                     conn.safeToWriteData(topicID, msg)
         except Exception, e:
             print 'topic id:', topicID, '**', sendList

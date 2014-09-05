@@ -37,6 +37,13 @@ def sign_in(dynamic_id, **kwargs):
     player.sign_in_component.sign_in(month, day)
     player.sign_in_component.save_data()
     day = date.day
+
+    # 同一天签到校验
+    if player.sign_in_component.is_signd(month, day):
+        response.res.result = False
+        response.res.result_no = 1405
+        return response.SerializePartialToString()
+
     # 获取奖励
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
         print "sign_in_config 配置文件信息不足！", sign_in_config
@@ -57,15 +64,14 @@ def continuous_sign_in(dynamic_id, days, **kwargs):
     if not sign_in_prize:
         print "base_config 信息不足！"
     # 验证连续签到日期
-    if player.sign_in_component.continuous_sign_in_days < days \
-            and days in player.sign_in_component.continuous_sign_in_days:
-        response.result = False
-        response.result_no = 1402
+    if player.sign_in_component.continuous_sign_in_days < days:
+        response.res.result = False
+        response.res.result_no = 1402
         print "连续签到日期不足", days
         return response.SerializePartialToString()
     if days in player.sign_in_component.continuous_sign_in_prize:
-        response.result = False
-        response.result_no = 1403
+        response.res.result = False
+        response.res.result_no = 1403
         print "已经领取连续签到奖励", days
         return response.SerializePartialToString()
 
@@ -95,7 +101,7 @@ def repair_sign_in(dynamic_id, day, **kwargs):
     repair_sign_in_times = player.sign_in_component.repair_sign_in_times
     gold = player.finance.gold
     # 校验签到次数
-    if repair_sign_in_times == sign_in_add:
+    if repair_sign_in_times == len(sign_in_add):
         response.res.result = False
         response.res.result_no = 1404
         return response.SerializePartialToString()
@@ -103,8 +109,9 @@ def repair_sign_in(dynamic_id, day, **kwargs):
     consume_gold = sign_in_add[repair_sign_in_times]
     if consume_gold > gold:
         response.res.result = False
-        response.res.result_no = 1405
+        response.res.result_no = 102
         return response.SerializePartialToString()
+
     # 消耗
     player.finance.gold -= consume_gold
     player.finance.save_data()
@@ -112,10 +119,17 @@ def repair_sign_in(dynamic_id, day, **kwargs):
 
     date = datetime.datetime.now()
     month = date.month
+
+    # 同一天签到校验
+    if player.sign_in_component.is_signd(month, day):
+        response.res.result = False
+        response.res.result_no = 1405
+        return response.SerializePartialToString()
+
     player.sign_in_component.sign_in(month, day)
     player.sign_in_component.save_data()
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
-        print "sign_in_config 配置文件信息不足！", sign_in_config
+        print "sign_in_config 配置文件信息不足！", month, day, sign_in_config
 
     gain_data = sign_in_config.get(month).get(day)
     return_data = gain(player, gain_data)

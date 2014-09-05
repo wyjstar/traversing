@@ -45,6 +45,11 @@ def Forwarding_0(keyname, _conn, data):
         print 'data:', data
         return data
 
+    dynamic_id = _conn.transport.sessionno
+    if not GlobalObject().netfactory.connmanager.hasConnection(dynamic_id):
+        print "queue conn!"
+        return
+    print "dynamic_id: ", dynamic_id
     dd = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
     return dd
 

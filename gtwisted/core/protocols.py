@@ -76,7 +76,7 @@ class ServerFactory:
     def __call__(self,socket,address):
         """每当有客户端连接产生是会被调用
         """
-        t = Transport(socket,address,self.sessionno)
+        t = Transport(socket,address, self.sessionno)
         self.buildProtocol(t)
         p = self.protocol(t,self)
         p.start()
