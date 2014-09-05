@@ -195,14 +195,32 @@ class LineUpSlotComponent(Component):
         cri_coeff = base_attr.cri_coeff + attr.cri_coeff
         cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
         block = base_attr.block + attr.block
+
+        base_hp = base_attr.hp
+        base_atk = base_attr.atk
+        base_physical_def = base_attr.physical_def
+        base_magic_def = base_attr.magic_def
+        base_hit = base_attr.hit
+        base_dodge = base_attr.dodge
+        base_cri = base_attr.cri
+        base_cri_coeff = base_attr.cri_coeff
+        base_cri_ded_coeff = base_attr.cri_ded_coeff
+        base_block = base_attr.block
+
+        level = base_attr.level
+        break_level = base_attr.break_level
+
         is_boss = False
         
         line_up_order = self.owner.line_up_order
         position = line_up_order.index(self._slot_no)
         position += 1
 
-        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def,
-                                  magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, position, is_boss)
+        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills,
+                      base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
+                      base_cri_coeff, base_cri_ded_coeff, base_block,
+                      hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, position,
+                      level, break_level, is_boss)
 
         return battlt_unit
 

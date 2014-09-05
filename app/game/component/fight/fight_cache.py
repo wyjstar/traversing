@@ -122,13 +122,17 @@ class CharacterFightCacheComponent(Component):
                 rage_skill = [monster_config.rageSkill]
                 rage_skill.extend(monster_rage_config.group)
 
-                battle_unit = do_assemble(monster_config.id, monster_config.quality, normal_skill,
-                                          rage_skill, None, monster_config.hp, monster_config.atk,
-                                          monster_config.physicalDef, monster_config.magicDef,
-                                          monster_config.hit, monster_config.dodge,
-                                          monster_config.cri, monster_config.criCoeff,
-                                          monster_config.criDedCoeff, monster_config.block,
-                                          pos,
+                level = 1
+                break_level = 1
+
+                battle_unit = do_assemble(monster_config.id, monster_config.quality, normal_skill, rage_skill, None,
+                                          monster_config.hp, monster_config.atk, monster_config.physicalDef,
+                                          monster_config.magicDef, monster_config.hit, monster_config.dodge,
+                                          monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
+                                          monster_config.block, monster_config.hp, monster_config.atk,
+                                          monster_config.physicalDef, monster_config.magicDef, monster_config.hit,
+                                          monster_config.dodge, monster_config.cri, monster_config.criCoeff,
+                                          monster_config.criDedCoeff, monster_config.block, pos, level, break_level,
                                           is_boss)
                 round_monsters.append(battle_unit)
         monsters.append(round_monsters)
