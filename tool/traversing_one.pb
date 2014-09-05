@@ -1,5 +1,5 @@
 
-ù?
+¸H
 traversing_one.proto"0
 LinkPB
 link_no (
@@ -9,15 +9,19 @@
 level (
 exp (
 break_level (
-links (2.LinkPB"à
+links (2.LinkPB""
+Skill
+
+id (
+buffs ("«
 
 BattleUnit
 
 no (
-quality (
-normal_skill (
+quality (
+normal_skill (2.Skill
 
-rage_skill (
+rage_skill (2.Skill
 
 hp (
 atk (
@@ -30,7 +34,9 @@ rage_skill (
 	cri_coeff (
 cri_ded_coeff (
 block (
-is_boss (",
+is_boss (
+break_skill (2.Skill
+position (",
 BattleUnitGrop
 group (2.BattleUnit"9
 Stage
@@ -42,11 +48,23 @@ StageAward
 
 chapter_id (
 award (
-dragon_gift (":
+dragon_gift ("&
+LineUp
+pos (
+hero_id ("C
+Unparalleled
+
+id (
+unpar (2.Skill
+activate ("z
 	FinancePB
 coin (
 gold (
-	hero_soul ("&
+	hero_soul (
+junior_stone (
+middle_stone (
+
+high_stone ("&
 ShopRequest
 
 id (
@@ -110,7 +128,7 @@ hero_chips (2.HeroChipPB)
 finance (2
 .FinancePB"!
 GameLoginRequest
-token (	"ﬁ
+token (	"Ü
 GameLoginResponse
 res (2.CommonResponse
 
@@ -131,7 +149,9 @@ high_stone
 fine_equipment (
 excellent_equipment (
 stamina (
-	pvp_times ("0
+	pvp_times (
+	vip_level (
+server_time ("0
 GetEquipmentsRequest
 type (
 
@@ -184,11 +204,12 @@ target_ids ("#
 
 ap (
 icon_id (
-gift ("Ü
-GetPlayerFriendsResponse
-friends (2.CharacterInfo!
-	blacklist (2.CharacterInfo&
-applicant_list (2.CharacterInfo"*
+gift ("ò
+GetPlayerFriendsResponse
+page_num (
+friends (2.CharacterInfo!
+	blacklist (2.CharacterInfo&
+applicant_list (2.CharacterInfo"*
 GetHerosResponse
 heros (2.HeroPB"O
 HeroUpgradeResponse
@@ -225,7 +246,12 @@ target_ids ("#
 chatMessageResponse
 channel (
 owner (2.ChatObjectInfo
-content (	"+
+content (	"
+GetLevelGift
+gift_id ("L
+GetLevelGiftResponse
+result ($
+gain (2.GameResourcesResponse"+
 ItemPB
 item_no (
 item_num ("#
@@ -248,14 +274,22 @@ AccountKey
 AccountLoginRequest
 key (2.AccountKey
 	user_name (	
-password (	"$
+password (	" 
+GetOnlineGift
+gift_id ("M
+GetOnlineGiftResponse
+result ($
+gain (2.GameResourcesResponse"$
 StageInfoRequest
 stage_id ("(
 ChapterInfoRequest
 
-chapter_id ("%
+chapter_id ("a
 StageStartRequest
-stage_id (":
+stage_id (
+lineup (2.LineUp
+unparalleled (
+fid (":
 StageSettlementRequest
 stage_id (
 result ("6
@@ -282,7 +316,12 @@ activation (
 ChangeHeroRequest
 slot_no (
 change_type (
-hero_no ("*
+hero_no ("D
+GetEatTimeResponse
+res (2.CommonResponse
+eat_time ("
+EatFeastResponse
+res ("*
 StageInfoResponse
 stage (2.Stage"7
 ChapterInfoResponse 
@@ -291,9 +330,29 @@ activation (
 res (2.CommonResponse
 drop_num (
 red (2.BattleUnit
-blue (2.BattleUnitGrop"@
-StageSettlementResponse%
-drops (2.GameResourcesResponse"X
+blue (2.BattleUnitGrop"^
+StageSettlementResponse
+res (2.CommonResponse%
+drops (2.GameResourcesResponse",
+FormationResponse
+lineup (2.LineUp"4
+UnparalleledResponse
+unpar (2.Unparalleled"Ç
+GetSignInResponse
+days (
+continuous_sign_in_days ( 
+continuous_sign_in_prize (
+repair_sign_in_times (""
+RepairSignInRequest
+day ("T
+SignInResponse
+res (2.CommonResponse$
+gain (2.GameResourcesResponse"/
+ContinuousSignInRequest
+sign_in_days ("^
+ContinuousSignInResponse
+res (2.CommonResponse$
+gain (2.GameResourcesResponse"X
 HeroUpgradeWithItemRequest
 hero_no (
 exp_item_no (
@@ -357,7 +416,7 @@ activation (
 
 spare_time ("!
 EditorCallRequest
-call ("3
+call ("3
 DealApplyRequest
 p_ids (
 res_type ("V

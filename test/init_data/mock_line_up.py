@@ -15,7 +15,7 @@ def init_line_up(player):
 
     slot.activation = True
 
-    slot.hero_slot.hero_no = 10001
+    slot.hero_slot.hero_no = 10005
     slot.hero_slot.activation = True
 
     slot.equipment_slots[1].equipment_id = '0001'
@@ -26,7 +26,7 @@ def init_line_up(player):
     slot = player.line_up_component.line_up_slots[2]
     slot.activation = True
 
-    slot.hero_slot.hero_no = 10002
+    slot.hero_slot.hero_no = 10015
     slot.hero_slot.activation = True
 
     slot.equipment_slots[1].equipment_id = '0003'

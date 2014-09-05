@@ -4,7 +4,7 @@ created by server on 14-8-25下午8:31.
 """
 from shared.db_opear.configs_data.game_configs import sign_in_config, base_config
 from app.game.logic.item_group_helper import gain, get_return
-from app.proto_file.sign_in_pb2 import SignInResponse, ContinuousSignInResponse
+from app.proto_file.sign_in_pb2 import SignInResponse, ContinuousSignInResponse, GetSignInResponse
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.drop_bag import BigBag
 from app.game.logic.common.check import have_player
@@ -12,24 +12,39 @@ import datetime
 
 
 @have_player
-def sign_in(dynamic_id, month, day, **kwargs):
+def get_sign_in(dynamic_id, **kwargs):
+    """获取签到初始化信息"""
+    player = kwargs.get('player')
+    response = GetSignInResponse()
+    sign_in_component = player.sign_in_component
+    [response.days.append(i) for i in sign_in_component.sign_in_days]
+    response.continuous_sign_in_days = sign_in_component.continuous_sign_in_days
+    [response.continuous_sign_in_prize.append(i) for i in sign_in_component.continuous_sign_in_prize]
+    response.repair_sign_in_times = sign_in_component.repair_sign_in_times
+    return response.SerializePartialToString()
+
+
+@have_player
+def sign_in(dynamic_id, **kwargs):
     """签到"""
     player = kwargs.get('player')
     response = SignInResponse()
 
-    # 校验签到时间
-    month_server = datetime.datetime.now().month
-    day_server = datetime.datetime.now().day
-    if month != month_server and day != day_server:
+    # 签到
+    date = datetime.datetime.now()
+    month = date.month
+    day = date.day
+    player.sign_in_component.sign_in(month, day)
+    player.sign_in_component.save_data()
+    day = date.day
+
+    # 同一天签到校验
+    if player.sign_in_component.is_signd(month, day):
         response.res.result = False
-        response.res.result_no = 1401
+        response.res.result_no = 1405
         return response.SerializePartialToString()
 
-    # 签到
-    player.sign_in_component.sign_in(datetime.datetime.now())
-    player.sign_in_component.save_data()
     # 获取奖励
-
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
         print "sign_in_config 配置文件信息不足！", sign_in_config
     gain_data = sign_in_config.get(month).get(day)
@@ -49,15 +64,14 @@ def continuous_sign_in(dynamic_id, days, **kwargs):
     if not sign_in_prize:
         print "base_config 信息不足！"
     # 验证连续签到日期
-    if player.sign_in_component.continuous_sign_in_days < days \
-            and days in player.sign_in_component.continuous_sign_in_days:
-        response.result = False
-        response.result_no = 1402
+    if player.sign_in_component.continuous_sign_in_days < days:
+        response.res.result = False
+        response.res.result_no = 1402
         print "连续签到日期不足", days
         return response.SerializePartialToString()
     if days in player.sign_in_component.continuous_sign_in_prize:
-        response.result = False
-        response.result_no = 1403
+        response.res.result = False
+        response.res.result_no = 1403
         print "已经领取连续签到奖励", days
         return response.SerializePartialToString()
 
@@ -75,10 +89,10 @@ def continuous_sign_in(dynamic_id, days, **kwargs):
 
 
 @have_player
-def repair_sign_in(dynamic_id, **kwargs):
+def repair_sign_in(dynamic_id, day, **kwargs):
     """补充签到"""
     player = kwargs.get('player')
-    response = CommonResponse()
+    response = SignInResponse()
 
     sign_in_add = base_config.get("signInAdd")
     if not sign_in_add:
@@ -87,7 +101,7 @@ def repair_sign_in(dynamic_id, **kwargs):
     repair_sign_in_times = player.sign_in_component.repair_sign_in_times
     gold = player.finance.gold
     # 校验签到次数
-    if repair_sign_in_times == sign_in_add:
+    if repair_sign_in_times == len(sign_in_add):
         response.res.result = False
         response.res.result_no = 1404
         return response.SerializePartialToString()
@@ -95,12 +109,33 @@ def repair_sign_in(dynamic_id, **kwargs):
     consume_gold = sign_in_add[repair_sign_in_times]
     if consume_gold > gold:
         response.res.result = False
-        response.res.result_no = 1405
+        response.res.result_no = 102
         return response.SerializePartialToString()
+
     # 消耗
     player.finance.gold -= consume_gold
     player.finance.save_data()
+    # 签到奖励
+
+    date = datetime.datetime.now()
+    month = date.month
+
+    # 同一天签到校验
+    if player.sign_in_component.is_signd(month, day):
+        response.res.result = False
+        response.res.result_no = 1405
+        return response.SerializePartialToString()
+
+    player.sign_in_component.sign_in(month, day)
+    player.sign_in_component.save_data()
+    if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
+        print "sign_in_config 配置文件信息不足！", month, day, sign_in_config
+
+    gain_data = sign_in_config.get(month).get(day)
+    return_data = gain(player, gain_data)
+    get_return(player, return_data, response.gain)
+
     player.sign_in_component.repair_sign_in_times += 1
     player.sign_in_component.save_data()
-    response.result = True
+    response.res.result = True
     return response.SerializePartialToString()

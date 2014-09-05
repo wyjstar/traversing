@@ -5,8 +5,10 @@ created by server on 14-8-22下午2:08.
 from app.game.core.fight.battle_unit import BattleUnit
 
 
-def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, physical_def, magic_def, hit, dodge,
-                cri, cri_coeff, cri_ded_coeff, block, position, is_boss=False):
+def do_assemble(no, quality, normal_skill, rage_skill, break_skills, base_hp, base_atk, base_physical_def,
+                base_magic_def, base_hit, base_dodge, base_cri, base_cri_coeff, base_cri_ded_coeff, base_block, hp,
+                atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, position, level,
+                break_level, is_boss=False):
     """组装战斗单位
     @param no: 编号
     @param quality: 品质
@@ -31,6 +33,7 @@ def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, ph
     battle_unit.normal_skill = normal_skill
     battle_unit.rage_skill = rage_skill
     battle_unit.break_skills = break_skills
+
     battle_unit.hp = hp
     battle_unit.atk = atk
     battle_unit.physical_def = physical_def
@@ -41,6 +44,21 @@ def do_assemble(no, quality, normal_skill, rage_skill, break_skills, hp, atk, ph
     battle_unit.cri_coeff = cri_coeff
     battle_unit.cri_ded_coeff = cri_ded_coeff
     battle_unit.block = block
+
+    battle_unit.base_hp = base_hp
+    battle_unit.base_atk = base_atk
+    battle_unit.base_physical_def = base_physical_def
+    battle_unit.base_magic_def = base_magic_def
+    battle_unit.base_hit = base_hit
+    battle_unit.base_dodge = base_dodge
+    battle_unit.base_cri = base_cri
+    battle_unit.base_cri_coeff = base_cri_coeff
+    battle_unit.base_cri_ded_coeff = base_cri_ded_coeff
+    battle_unit.base_block = base_block
+
+    battle_unit.level = level
+    battle_unit.break_level = break_level
+
     battle_unit.is_boss = is_boss
     battle_unit.position = position
 

@@ -1,18 +1,25 @@
 import "common.proto";
 
-// 签到:1401
-message SignInRequest{
-    required int32 month = 1;
-    required int32 day = 2;
+// 获取签到初始化信息:1400
+message GetSignInResponse{
+    repeated int32 days = 1; // 签到日期
+    required int32 continuous_sign_in_days = 2; //连续签到天数
+    repeated int32 continuous_sign_in_prize = 3; //已经获取的连续签到奖励，保存列表[7，15，25]
+    required int32 repair_sign_in_times = 4; //补充签到次数
 }
 
-// 签到返回奖励:1401
+// 补签:1403
+message RepairSignInRequest{
+    required int32 day = 1;
+}
+
+// 签到，补签:1401，1403
 message SignInResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
 }
 
-// 连续签到获取额外奖励
+// 连续签到获取额外奖励:1402
 message ContinuousSignInRequest{
     required int32 sign_in_days = 1; //连续登录天数: 7, 15 , 25
 }

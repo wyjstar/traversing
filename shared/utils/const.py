@@ -68,4 +68,6 @@ const.BIG_BAG = u'106'
 # 105 游戏道具类型 （对应item表）
 # 106 掉落大包（对应big_bag表）
 
+const.MAX_CONNECTION = 1000
+
 

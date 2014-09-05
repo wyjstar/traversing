@@ -4,6 +4,7 @@ created by server on 14-7-10下午3:37.
 """
 from app.game.core.equipment.equipment import Equipment
 from app.game.core.PlayersManager import PlayersManager
+from shared.utils.pyuuid import get_uuid
 
 
 def init_equipment():
@@ -45,7 +46,7 @@ def init_equipment():
     equipment.attribute.awakening_lv = 2
     equipment.save_data()
 
-    equipment = Equipment("001111", '', 100001)
+    equipment = Equipment(get_uuid(), '', 100001)
     player.equipment_component.add_exist_equipment(equipment)
     equipment.base_info.base_name = 'e6'
     equipment.attribute.strengthen_lv = 10
@@ -53,7 +54,7 @@ def init_equipment():
     equipment.attribute.nobbing_effect = 9
     equipment.save_data()
 
-    equipment = Equipment("001112", '', 100023)
+    equipment = Equipment(get_uuid(), '', 100023)
     player.equipment_component.add_exist_equipment(equipment)
     equipment.base_info.base_name = 'e6'
     equipment.attribute.strengthen_lv = 11
@@ -61,7 +62,7 @@ def init_equipment():
     equipment.attribute.nobbing_effect = 9
     equipment.save_data()
 
-    equipment = Equipment("001113", '', 100022)
+    equipment = Equipment(get_uuid(), '', 100022)
     player.equipment_component.add_exist_equipment(equipment)
     equipment.base_info.base_name = 'e6'
     equipment.attribute.strengthen_lv = 2
@@ -69,7 +70,7 @@ def init_equipment():
     equipment.attribute.nobbing_effect = 9
     equipment.save_data()
 
-    equipment = Equipment("001114", '', 100036)
+    equipment = Equipment(get_uuid(), '', 100036)
     player.equipment_component.add_exist_equipment(equipment)
     equipment.base_info.base_name = 'e6'
     equipment.attribute.strengthen_lv = 110
@@ -77,7 +78,7 @@ def init_equipment():
     equipment.attribute.nobbing_effect = 9
     equipment.save_data()
 
-    equipment = Equipment("001115", '', 100037)
+    equipment = Equipment(get_uuid(), '', 100037)
     player.equipment_component.add_exist_equipment(equipment)
     equipment.base_info.base_name = 'e6'
     equipment.attribute.strengthen_lv = 0

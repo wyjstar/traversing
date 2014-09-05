@@ -19,3 +19,4 @@ delete from tb_mail_info;
 delete from tb_character_activity;
 delete from account_sequence;
 insert into account_sequence value(1);
+
