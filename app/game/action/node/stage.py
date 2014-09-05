@@ -152,6 +152,21 @@ def assemble(unit_add, unit):
     unit_add.cri_coeff = unit.cri_coeff
     unit_add.cri_ded_coeff = unit.cri_ded_coeff
     unit_add.block = unit.block
+
+    unit_add.base_hp = unit.base_hp
+    unit_add.base_atk = unit.base_atk
+    unit_add.base_physical_def = unit.base_physical_def
+    unit_add.base_magic_def = unit.base_magic_def
+    unit_add.base_hit = unit.base_hit
+    unit_add.base_dodge = unit.base_dodge
+    unit_add.base_cri = unit.base_cri
+    unit_add.base_cri_coeff = unit.base_cri_coeff
+    unit_add.base_cri_ded_coeff = unit.base_cri_ded_coeff
+    unit_add.base_block = unit.base_block
+
+    unit_add.level = unit.level
+    unit_add.break_level = unit.break_level
+
     unit_add.position = unit.position
     unit_add.is_boss = unit.is_boss
 
