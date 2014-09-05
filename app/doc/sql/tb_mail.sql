@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `tb_character_mails`;
 
 CREATE TABLE `tb_character_mails` (
-  `id` varchar(50),
+  `id` bigint(20),
   `mail_ids` blob NOT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
