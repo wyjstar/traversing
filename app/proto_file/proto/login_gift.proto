@@ -1,0 +1,14 @@
+import "common.proto";
+
+// get login gift 831
+message GetloginGiftRespones{
+	required int32 cumulative_received = 1;
+	repeated int32 continuous_received = 2;
+	repeated int32 cumulative_day = 3;
+	repeated int32 continuous_day = 4;
+}
+
+message GetLevelGiftResponse{
+	required bool result = 1;
+    optional GameResourcesResponse gain = 2;
+}

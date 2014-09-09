@@ -41,6 +41,7 @@ def get_login_gift(dynamicid, **kwargs):
     获取登录活动信息
     """
     player = kwargs.get('player')
-    return player.feast.last_eat_time
+    return player.login_gift.cumulative_received, player.login_gift.continuous_received,\
+        player.login_gift.cumulative_day, player.login_gift.continuous_day
 
 
