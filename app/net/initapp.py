@@ -23,12 +23,12 @@ def conn_lost(conn):
     if dynamic_id != 0:
         GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
 
-    print "test++++++++++++++1", GlobalObject().netfactory.connmanager, GlobalObject().netfactory.connmanager.connect_ids
-    conn1 = GlobalObject().netfactory.connmanager.pop_queue()
-    print "test++++++++++++++2", conn1, conn1.transport
-    if conn1:
-        GlobalObject().netfactory.pushObject(1326, str(0), [conn1.transport.sessionno])
-        print "push message OK:", conn1, conn1.transport.sessionno
+    # pop queue conn to normal conn, when conn lost
+    print "current connection ids:", GlobalObject().netfactory.connmanager.connect_ids
+    conn = GlobalObject().netfactory.connmanager.pop_queue()
+    if conn:
+        GlobalObject().netfactory.pushObject(1326, str(0), [conn.instance.transport.sessionno])
+        print "push message OK:", conn, conn.instance.transport.sessionno
 
 
 

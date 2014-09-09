@@ -43,3 +43,18 @@ def get_online_gift(dynamic_id, data, **kwargs):
 
     response.result = False
     return response.SerializeToString()
+
+
+@have_player
+def get_online_and_level_gift_data(dynamic_id, data, **kwargs):
+    response = online_gift_pb2.GetOnlineLevelGiftData()
+
+    player = kwargs.get('player')
+
+    response.online_time = player.online_gift.online_time
+    for _ in player.online_gift.received_gift_ids:
+        response.received_online_gift_id.append(_)
+    for _ in player.level_gift.received_gift_ids:
+        response.received_online_gift_id.append(_)
+
+    return response.SerializeToString()

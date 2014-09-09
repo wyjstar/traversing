@@ -9,6 +9,8 @@ from gtwisted.utils import log
 from connection import Connection
 from shared.utils.const import const
 import collections
+import gevent
+
 
 
 class ConnectionManager:
@@ -22,6 +24,7 @@ class ConnectionManager:
         '''
         self._connections = {}
         self._queue_conns = collections.OrderedDict()
+        self.loop_check()
 
     def getNowConnCnt(self):
         '''获取当前连接数量'''
@@ -62,10 +65,10 @@ class ConnectionManager:
         '''更加连接的id删除连接实例
         @param connID: int 连接的id
         '''
-        try:
+        if connID in self._connections:
             del self._connections[connID]
-        except Exception as e:
-            log.msg(str(e))
+        if connID in self._queue_conns:
+            del self._queue_conns[connID]
 
     def getConnectionByID(self, connID):
         """根据ID获取一条连接
@@ -96,7 +99,6 @@ class ConnectionManager:
         return True
 
     def pop_queue(self):
-        print "pop"
         if len(self._queue_conns) <= 0:
             return
         tmp = self._queue_conns.popitem(False)
@@ -119,3 +121,14 @@ class ConnectionManager:
         except Exception, e:
             print 'topic id:', topicID, '**', sendList
             log.err(str(e))
+
+    def check_timeout(self):
+        print "check time out ......"
+        for k, v in self._connections.items():
+            if v.time_out:
+                v.loseConnection()
+
+    def loop_check(self):
+        loop = gevent.get_hub().loop
+        t = loop.timer(0.0, const.TIME_OUT / 2)
+        t.start(self.check_timeout)
