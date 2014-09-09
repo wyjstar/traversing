@@ -19,7 +19,7 @@ class CharacterLoginGiftComponent(Component):
         self._cumulative_day = [1, 1]  # 累积登录天数
         self._last_login = int(time.time())  # 日期
 
-    def init_feast(self):
+    def init_data(self):
         activity = tb_character_activity.getObjData(self.owner.base_info.id)
         if activity:
             data = activity.get('login_gift')
@@ -37,9 +37,9 @@ class CharacterLoginGiftComponent(Component):
                         self._cumulative_day[0] = data.get('cumulative_day')[0] + 1
                         self._cumulative_day[1] = 1
                         self._cumulative_received = data.get('cumulative_received')
-                    else:  # 不是新手活动，S1不做
-                        self._cumulative_day[0] = 0
-                        self._cumulative_day[1] = 0
+                    else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
+                        self._cumulative_day[0] = data.get('cumulative_day')[0]
+                        self._cumulative_day[1] = 1
                         self._cumulative_received = data.get('cumulative_received')
 
                     continuous_login_config = activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
@@ -48,9 +48,9 @@ class CharacterLoginGiftComponent(Component):
                         self._continuous_day[0] = data.get('continuous_day')[0] + 1
                         self._continuous_day[1] = 1
                         self._continuous_received = data.get('continuous_received')
-                    else:  # 不是新手活动，S1不做
-                        self._continuous_day[0] = 0
-                        self._continuous_day[1] = 0
+                    else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
+                        self._continuous_day[0] = data.get('continuous_day')[0]
+                        self._continuous_day[1] = 1
                         self._continuous_received = data.get('continuous_received')
                     self._last_login = int(time.time())
 
@@ -62,14 +62,17 @@ class CharacterLoginGiftComponent(Component):
                                                       'continuous_received': [],
                                                       'cumulative_received': [],
                                                       'continuous_day': [1, 1],
-                                                      'cumulative_day': [1, 1]}})
+                                                      'cumula'
+                                                      'tive_day': [1, 1]}})
 
     def save_data(self):
         sign_in_data = tb_character_activity.getObj(self.owner.base_info.id)
         sign_in_data.update('login_gift', {
-            'received': self._received,
+            'continuous_received': self._continuous_received,
+            'cumulative_received': self._cumulative_received,
+            'cumulative_day': self._cumulative_day,
             'continuous_day': self._continuous_day,
-            'cumulative_day': self._cumulative_day})
+            'last_login': self._last_login})
 
     @property
     def continuous_received(self):

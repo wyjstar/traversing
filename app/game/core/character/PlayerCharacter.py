@@ -23,6 +23,7 @@ from app.game.component.character_guild import CharacterGuildComponent
 from app.game.component.tb_character_mail import CharacterMailComponent
 from app.game.component.character_sign_in import CharacterSignInComponent
 from app.game.component.character_feast import CharacterFeastComponent
+from app.game.component.character_login_gift import CharacterLoginGiftComponent
 
 
 
@@ -60,6 +61,7 @@ class PlayerCharacter(Character):
         self._feast = CharacterFeastComponent(self)
         self._online_gift = CharacterOnlineGift(self)  # online gift
         self._level_gift = CharacterOnlineGift(self)  # level gift
+        self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
 
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
@@ -133,6 +135,7 @@ class PlayerCharacter(Character):
         self._online_gift.init_data()
         self._level_gift.init_data()
         self._feast.init_feast()
+        self._login_gift.init_data()
 
     @property
     def character_type(self):
@@ -254,6 +257,14 @@ class PlayerCharacter(Character):
     @property
     def level_gift(self):
         return self._level_gift
+
+    @property
+    def login_gift(self):
+        return self._login_gift
+
+    @login_gift.setter
+    def login_gift(self, value):
+        self._login_gift = value
 
     @property
     def feast(self):
