@@ -107,6 +107,9 @@ class LiberateFactory(protocols.ServerFactory):
 
     def doDataReceived(self, conn, commandID, data):
         '''数据到达时的处理'''
+        if commandID == 88:
+            conn.transport.set_time()
+            return ''
         response = self.service.callTarget(commandID, conn, data)
 
         # print 'doDataReceived:', response
