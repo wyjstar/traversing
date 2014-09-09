@@ -2,6 +2,7 @@
 """
 created by server on 14-6-4下午3:04.
 """
+from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.character_online_gift import CharacterOnlineGift
 from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
@@ -60,7 +61,7 @@ class PlayerCharacter(Character):
         self._sign_in = CharacterSignInComponent(self)  # 签到组件
         self._feast = CharacterFeastComponent(self)
         self._online_gift = CharacterOnlineGift(self)  # online gift
-        self._level_gift = CharacterOnlineGift(self)  # level gift
+        self._level_gift = CharacterLevelGift(self)  # level gift
         self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
 
         self._stamina = 100  # 体力
