@@ -35,6 +35,19 @@ class RobotActivity(Robot):
         print 'gain:', response.gain
         self.on_command_finish()
 
+    def command_get_online_level_gift_data(self):
+        self.send_message(None, 1120)
+
+    def get_online_level_gift_data_1120(self, message):
+        response = online_gift_pb2.GetOnlineLevelGiftData()
+        response.ParseFromString(message)
+        print 'online time:', response.online_time
+        for _ in response.received_online_gift_id:
+            print 'received online gift:', _
+        for _ in response.received_level_gift_id:
+            print 'received online gift:', _
+        self.on_command_finish()
+
     def command_eat_feast(self, hello):
         self.send_message(None, 820)
 

@@ -6,8 +6,8 @@ from gfirefly.server.globalobject import webserviceHandle
 from flask import request
 
 
-@webserviceHandle('/gmtestdata')
-def gm_add_test_data():
-    account_name = request.args.get('name')
+@webserviceHandle('/gmtestdata:name')
+def gm_add_test_data(account_name='hello world'):
+    # account_name = request.args.get('name')
 
     return account_name
