@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 """
-created by server on 14-6-6上午11:12.
+created by sphinx on
 """
-
 from shared.db_entrust.redis_mode import MAdmin
 
 tb_account = MAdmin('tb_account', 'id')  # 帐号表

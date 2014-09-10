@@ -91,5 +91,3 @@ class RemoteObject(object):
         '''
         deferedRemote = self._factory.getRootObject(timeout=self._timeout)
         return deferedRemote.callRemoteNotForResult('callTarget', commandId, *args, **kw)
-    
-    

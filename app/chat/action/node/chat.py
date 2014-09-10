@@ -38,7 +38,7 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         response.content = content
         noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
     # TODO message 公会频道
-    if room_id == 3:  # 私聊频道
+    elif room_id == 3:  # 私聊频道
         other_chater = ChaterManager().getchater_by_id(to_character_id)
         if not other_chater:
             return {'result': False}

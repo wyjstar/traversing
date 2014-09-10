@@ -25,8 +25,8 @@ class NetCommandService(CommandService):
             log.msg("call method %s on service[single]" % target.__name__)
         response = target(targetKey, *args, **kw)
         return response
-    
-netservice = NetCommandService("loginService")
+
+netservice = NetCommandService("NetService")
 
 
 def netserviceHandle(target):

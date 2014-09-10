@@ -11,8 +11,16 @@
             "app": "app.adminserver",
             "log": "app/logs/admin.log"
         },
-        "transit": {
+        "login": {
             "rootport": 20000,
+            "netport": 22009,
+            "name": "login",
+            "mem": true,
+            "app": "app.loginserver",
+            "log": "app/logs/loginserver.log"
+        },
+        "transit": {
+            "rootport": 20001,
             "name": "transit",
             "app": "app.transitserver",
             "log": "app/logs/transitserver.log"
@@ -22,8 +30,12 @@
             "name": "gate",
             "remoteport": [
                 {
-                    "rootport": 20000,
+                    "rootport": 20001,
                     "rootname": "transit"
+                },
+                {
+                    "rootport": 20000,
+                    "rootname": "login"
                 }
             ],
             "mem": true,
