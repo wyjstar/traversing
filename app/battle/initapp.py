@@ -18,5 +18,4 @@ GlobalObject().stophandler = doWhenStop
 
 
 def load_module():
-    from service.node import chatgateservice
-    from action.node import chat, login
+    pass
