@@ -12,6 +12,7 @@ from app.proto_file.stage_response_pb2 import *
 from app.proto_file.equipment_request_pb2 import *
 from app.proto_file.equipment_response_pb2 import *
 from app.proto_file.feast_pb2 import *
+from app.proto_file.login_gift_pb2 import *
 from app.proto_file.common_pb2 import *
 
 
@@ -68,7 +69,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '470f2e953d48e660bee758111703f15c'
+        argument.key.key = 'ec3ebed2d1e816a29a9ca1b507ac6923'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -93,7 +94,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '470f2e953d48e660bee758111703f15c'
+                argument.key.key = 'ec3ebed2d1e816a29a9ca1b507ac6923'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -104,7 +105,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '470f2e953d48e660bee758111703f15c'
+            argument.token = 'ec3ebed2d1e816a29a9ca1b507ac6923'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -112,12 +113,25 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            # --------826获取上次吃大餐时间------------
+            argument1 = GetLoginGiftRequest()
+            argument1.activity_id = 1
+            argument1.activity_type = 1
+            self.dateSend(argument1, 826)
+
+            # --------825获取上次吃大餐时间------------
+            # argument1 = EnhanceEquipmentRequest()
+            # argument1.id = u"0004"
+            # argument1.type = 1
+            # argument1.num = 10
+            # self.dateSend(argument1, 825)
+
             # --------821获取上次吃大餐时间------------
-            argument1 = EnhanceEquipmentRequest()
-            argument1.id = u"0004"
-            argument1.type = 1
-            argument1.num = 10
-            self.dateSend(argument1, 820)
+            # argument1 = EnhanceEquipmentRequest()
+            # argument1.id = u"0004"
+            # argument1.type = 1
+            # argument1.num = 10
+            # self.dateSend(argument1, 820)
 
             # --------821获取上次吃大餐时间------------
             # argument1 = EnhanceEquipmentRequest()
@@ -404,6 +418,18 @@ class EchoClient(protocol.Protocol):
         if command == 820:
             #
             argument = EatFeastResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 825:
+            #
+            argument = InitLoginGiftResponse()
+            argument.ParseFromString(message)
+            print argument
+
+        if command == 826:
+            #
+            argument = CommonResponse()
             argument.ParseFromString(message)
             print argument
 

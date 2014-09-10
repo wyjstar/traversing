@@ -1,0 +1,19 @@
+message LoginInfo
+{
+    required int32 login_day = 1;
+    required int32 is_new_p = 2;
+}
+
+//  login gift info 825
+message InitLoginGiftResponse{
+	repeated int32 cumulative_received = 1;
+	repeated int32 continuous_received = 2;
+	required LoginInfo cumulative_day = 3;
+	required LoginInfo continuous_day = 4;
+}
+
+// get login gift 826
+message GetLoginGiftRequest{
+	required int32 activity_id = 1;
+	required int32 activity_type = 2;
+}

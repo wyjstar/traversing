@@ -55,6 +55,6 @@ def get_online_and_level_gift_data(dynamic_id, data, **kwargs):
     for _ in player.online_gift.received_gift_ids:
         response.received_online_gift_id.append(_)
     for _ in player.level_gift.received_gift_ids:
-        response.received_online_gift_id.append(_)
+        response.received_level_gift_id.append(_)
 
     return response.SerializeToString()

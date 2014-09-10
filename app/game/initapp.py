@@ -27,5 +27,6 @@ def load_module():
     from action.node import level_gift
     from action.node import feast
     from action.node import sign_in
+    from action.node import login_gift
     # init()
 
