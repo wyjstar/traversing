@@ -5,6 +5,7 @@ CREATE TABLE `tb_character_activity` (
   `sign_in` blob,
   `online_gift` blob,
   `level_gift` blob,
-  `feast` bigint(20),
+  `feast` int default 0,
+  `login_gift` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

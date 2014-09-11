@@ -14,6 +14,7 @@ from app.proto_file.equipment_response_pb2 import *
 from app.proto_file.feast_pb2 import *
 from app.proto_file.login_gift_pb2 import *
 from app.proto_file.common_pb2 import *
+from app.proto_file.chat_pb2 import *
 
 
 def sendData(sendstr,commandId):
@@ -113,13 +114,19 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # --------826获取上次吃大餐时间------------
+            # --------1002聊天------------
             argument1 = GetLoginGiftRequest()
             argument1.activity_id = 1
             argument1.activity_type = 1
             self.dateSend(argument1, 826)
 
-            # --------825获取上次吃大餐时间------------
+            # --------826领取登录奖励------------
+            # argument1 = GetLoginGiftRequest()
+            # argument1.activity_id = 1
+            # argument1.activity_type = 1
+            # self.dateSend(argument1, 826)
+
+            # --------825获取登录奖励信息------------
             # argument1 = EnhanceEquipmentRequest()
             # argument1.id = u"0004"
             # argument1.type = 1
