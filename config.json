@@ -11,9 +11,16 @@
             "app": "app.adminserver",
             "log": "app/logs/admin.log"
         },
+        "MA": {
+            "webport": 20100,
+            "name": "MA",
+            "app": "app.MAserver",
+            "log": "app/logs/MAserver.log"
+        },
         "login": {
             "rootport": 20000,
             "netport": 22009,
+            "webport": 20097,
             "name": "login",
             "mem": true,
             "app": "app.loginserver",

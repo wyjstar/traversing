@@ -9,11 +9,19 @@ message AccountKey{
 	required string key = 1; //服务器生成的KEY，标识机器
 }
 
+message ServerInfo{
+    required string name = 1;
+    required string ip = 2;
+    required string port = 3;
+    required string status = 4;
+}
+
 //返回结果
 message AccountResponse{
      required bool result = 1;
      optional string message = 2;
      optional AccountKey key = 3;
+     repeated ServerInfo server_list = 4;
 }
 
 // 登录 command:2

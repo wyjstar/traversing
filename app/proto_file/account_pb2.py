@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='account.proto',
   package='',
-  serialized_pb='\n\raccount.proto\"Z\n\x0b\x41\x63\x63ountInfo\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x18\n\x03key\x18\x04 \x01(\x0b\x32\x0b.AccountKey\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"L\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x18\n\x03key\x18\x03 \x01(\x0b\x32\x0b.AccountKey\"T\n\x13\x41\x63\x63ountLoginRequest\x12\x18\n\x03key\x18\x01 \x02(\x0b\x32\x0b.AccountKey\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t')
+  serialized_pb='\n\raccount.proto\"Z\n\x0b\x41\x63\x63ountInfo\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x18\n\x03key\x18\x04 \x01(\x0b\x32\x0b.AccountKey\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"D\n\nServerInfo\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\n\n\x02ip\x18\x02 \x02(\t\x12\x0c\n\x04port\x18\x03 \x02(\t\x12\x0e\n\x06status\x18\x04 \x02(\t\"n\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x18\n\x03key\x18\x03 \x01(\x0b\x32\x0b.AccountKey\x12 \n\x0bserver_list\x18\x04 \x03(\x0b\x32\x0b.ServerInfo\"T\n\x13\x41\x63\x63ountLoginRequest\x12\x18\n\x03key\x18\x01 \x02(\x0b\x32\x0b.AccountKey\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t')
 
 
 
@@ -95,6 +95,55 @@ _ACCOUNTKEY = _descriptor.Descriptor(
 )
 
 
+_SERVERINFO = _descriptor.Descriptor(
+  name='ServerInfo',
+  full_name='ServerInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='ServerInfo.name', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ip', full_name='ServerInfo.ip', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='port', full_name='ServerInfo.port', index=2,
+      number=3, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='ServerInfo.status', index=3,
+      number=4, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=136,
+  serialized_end=204,
+)
+
+
 _ACCOUNTRESPONSE = _descriptor.Descriptor(
   name='AccountResponse',
   full_name='AccountResponse',
@@ -123,6 +172,13 @@ _ACCOUNTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='server_list', full_name='AccountResponse.server_list', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -132,8 +188,8 @@ _ACCOUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=136,
-  serialized_end=212,
+  serialized_start=206,
+  serialized_end=316,
 )
 
 
@@ -174,15 +230,17 @@ _ACCOUNTLOGINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=214,
-  serialized_end=298,
+  serialized_start=318,
+  serialized_end=402,
 )
 
 _ACCOUNTINFO.fields_by_name['key'].message_type = _ACCOUNTKEY
 _ACCOUNTRESPONSE.fields_by_name['key'].message_type = _ACCOUNTKEY
+_ACCOUNTRESPONSE.fields_by_name['server_list'].message_type = _SERVERINFO
 _ACCOUNTLOGINREQUEST.fields_by_name['key'].message_type = _ACCOUNTKEY
 DESCRIPTOR.message_types_by_name['AccountInfo'] = _ACCOUNTINFO
 DESCRIPTOR.message_types_by_name['AccountKey'] = _ACCOUNTKEY
+DESCRIPTOR.message_types_by_name['ServerInfo'] = _SERVERINFO
 DESCRIPTOR.message_types_by_name['AccountResponse'] = _ACCOUNTRESPONSE
 DESCRIPTOR.message_types_by_name['AccountLoginRequest'] = _ACCOUNTLOGINREQUEST
 
@@ -197,6 +255,12 @@ class AccountKey(_message.Message):
   DESCRIPTOR = _ACCOUNTKEY
 
   # @@protoc_insertion_point(class_scope:AccountKey)
+
+class ServerInfo(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SERVERINFO
+
+  # @@protoc_insertion_point(class_scope:ServerInfo)
 
 class AccountResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
