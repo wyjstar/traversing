@@ -178,10 +178,8 @@ class CharacterLineUpComponent(Component):
 
     def save_data(self):
         props = {
-            'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
-                                   slot_no in self._line_up_slots.keys()]),
-            'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
-                               slot_no in self._sub_slots.keys()]),
+            'line_up_slots': dict([(slot_no, slot.dumps()) for slot_no, slot in self._line_up_slots.items()]),
+            'sub_slots': dict([(slot_no, sub_slot.dumps()) for slot_no, sub_slot in self._sub_slots.items()]),
             'line_up_order': self._line_up_order}
 
         line_up_obj = tb_character_line_up.getObj(self.owner.base_info.id)
