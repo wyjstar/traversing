@@ -41,6 +41,8 @@ def enter_scene_601(dynamic_id, character_id, is_new_character):
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
     responsedata.stamina = player.stamina
     responsedata.pvp_times = player.pvp_times
+    if player.guild.g_id != 0:
+        responsedata.guild_id = player.guild.g_id
     # TODO vip_level
     responsedata.vip_level = 1
     responsedata.server_time = int(time.time())

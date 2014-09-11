@@ -29,6 +29,7 @@ def eat_feast(dynamicid, **kwargs):
                 return 1
             # 吃
             player.stamina += base_config.get(u'manual_give_value')
+            player.feast.last_eat_time = int(time.time())
             player.save_data()
             return 2
     # 没到时间

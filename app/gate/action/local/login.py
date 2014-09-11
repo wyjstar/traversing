@@ -23,12 +23,15 @@ def character_login_4(key, dynamic_id, request_proto):
     token = argument.token
 
     response = __character_login(dynamic_id, token)
-
+    if response[0].guild_id:
+        guild_id = response[0].guild_id
+    else:
+        guild_id = 0
     nickname = response[0].nickname
     if nickname:
         #TODO 起名时候
         # 聊天室登录
-        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname)
+        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname, guild_id)
     return response[0].SerializePartialToString()
 
 
@@ -83,27 +86,27 @@ def __character_login(dynamic_id, token):
     response.ParseFromString(player_data)
     return response, character_info.get('id')
 
-@local_service_handle
-def create_nickname_5(key, dynamic_id, request_proto):
-    argument = CreatePlayerRequest()
-    argument.ParseFromString(request_proto)
-    nickname = argument.nickname
-
-
-    now_node = SceneSerManager().get_best_sceneid()
-    info = GlobalObject().root.callChild(now_node, 5, dynamic_id, request_proto)
-
-    response = CommonResponse()
-    response.ParseFromString(info)
-
-    user = UsersManager().get_by_dynamic_id(dynamic_id)
-
-    if response.result and nickname:
-        # 聊天室登录
-        print '# chat login:', user.user_id, dynamic_id, nickname
-        GlobalObject().root.callChild('chat', 1001, user.user_id, dynamic_id, nickname)
-
-    return info
+# @local_service_handle
+# def create_nickname_5(key, dynamic_id, request_proto):
+#     argument = CreatePlayerRequest()
+#     argument.ParseFromString(request_proto)
+#     nickname = argument.nickname
+#
+#
+#     now_node = SceneSerManager().get_best_sceneid()
+#     info = GlobalObject().root.callChild(now_node, 5, dynamic_id, request_proto)
+#
+#     response = CommonResponse()
+#     response.ParseFromString(info)
+#
+#     user = UsersManager().get_by_dynamic_id(dynamic_id)
+#
+#     if response.result and nickname:
+#         # 聊天室登录
+#         print '# chat login:', user.user_id, dynamic_id, nickname
+#         GlobalObject().root.callChild('chat', 1001, user.user_id, dynamic_id, nickname)
+#
+#     return info
 
 
 
