@@ -10,7 +10,7 @@ from app.chat.service.node.chatgateservice import noderemote
 
 @nodeservice_handle
 def send_message_1002(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
-                      to_character_id, to_character_nickname):
+                      to_character_id, to_character_nickname, guild_id):
     """发送信息
     @param character_nickname: 角色昵称
     @param to_character_id: 私聊对象角色id
@@ -37,8 +37,8 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.nickname = character_nickname
         response.content = content
         noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
-    # TODO message 公会频道
-    if room_id == 3:  # 私聊频道
+
+    elif room_id == 3:  # 私聊频道
         other_chater = ChaterManager().getchater_by_id(to_character_id)
         if not other_chater:
             return {'result': False}
@@ -49,5 +49,15 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.nickname = character_nickname
         response.content = content
         noderemote.callRemoteNotForResult('push_chat_message', [other_chater.dynamic_id], response.SerializeToString())
+
+    elif room_id == 2:  # 公会频道
+        ids = ChaterManager().get_guild_dynamicid(guild_id)
+        response = chat_pb2.chatMessageResponse()
+        response.channel = room_id
+        owner = response.owner
+        owner.id = character_id
+        owner.nickname = character_nickname
+        response.content = content
+        noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
 
     return {'result': True}

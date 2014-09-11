@@ -6,6 +6,7 @@ created by server on 14-7-21下午5:12.
 from app.game.logic.common.check import have_player
 from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
+from gfirefly.server.globalobject import GlobalObject
 
 
 @have_player
@@ -30,6 +31,9 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         response.result_no = 2
         return response.SerializeToString()
     character_obj.update('nickname', nickname)
+
+    # 聊天室登录
+    GlobalObject().root.callChild('chat', 1001, player.base_info.id, dynamic_id, nickname, player.guild.g_id)
 
     response.result = True
     return response.SerializeToString()

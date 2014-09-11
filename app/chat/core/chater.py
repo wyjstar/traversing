@@ -8,7 +8,7 @@ class Chater(object):
     """聊天成员类
     """
 
-    def __init__(self, character_id, dynamic_id=-1, name=u''):
+    def __init__(self, character_id, dynamic_id=-1, guild_id=0, name=u''):
         """初始化
         @param character_id: int 角色的id
         @param name: str 角色的名称
@@ -19,6 +19,7 @@ class Chater(object):
         self._dynamic_id = dynamic_id
         self._room_id = 1  # 房间号ID
         self._island = True  # 是否在线  False表示离线,True表示在线
+        self._guild_id = guild_id
 
     @property
     def character_id(self):
@@ -59,3 +60,11 @@ class Chater(object):
     @island.setter
     def island(self, island):
         self._island = island
+
+    @property
+    def guild_id(self):
+        return self._guild_id
+
+    @guild_id.setter
+    def guild_id(self, guild_id):
+        self._guild_id = guild_id
