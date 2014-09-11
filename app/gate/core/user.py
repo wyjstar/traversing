@@ -99,6 +99,15 @@ class User(object):
         pmmode = tb_character_info.getObj(self._character.get('id'))
         pmmode.update_multi(self._character)
 
+
+    def has_character(self):
+        print "self._character", self._character
+        if not self._character:
+            character = tb_character_info.getObjData(self.user_id)
+            if not character:
+                return False
+        return True
+
     @property
     def token(self):
         return self._token

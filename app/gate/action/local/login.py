@@ -53,6 +53,11 @@ def __character_login(dynamic_id, token):
         print 'cant find user dynamic_id:', dynamic_id
         return {'result': False}
 
+    is_new_character = False  # 是否为新用户
+
+    if not user.has_character():
+        print "new character....."
+        is_new_character = True
     character_info = user.character
     print 'character login nickname', character_info.get('nickname')
 
@@ -68,7 +73,7 @@ def __character_login(dynamic_id, token):
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
-    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id, is_new_character)
     v_character.node = now_node
 
     # pull message from transit
