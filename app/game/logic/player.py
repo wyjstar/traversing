@@ -32,8 +32,5 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         return response.SerializeToString()
     character_obj.update('nickname', nickname)
 
-    # 聊天室登录
-    GlobalObject().root.callChild('chat', 1001, player.base_info.id, dynamic_id, nickname, player.guild.g_id)
-
     response.result = True
     return response.SerializeToString()
