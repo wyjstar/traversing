@@ -71,4 +71,3 @@ const.BIG_BAG = u'106'
 const.MAX_CONNECTION = 2000
 const.TIME_OUT = 1000*60  # 秒
 
-
