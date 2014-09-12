@@ -20,7 +20,6 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
 
     shop_id = request.id
     shop_item = shop_config.get(shop_id)
-    print "shop_id", shop_id
 
     if is_consume(player, shop_item):
         # 判断是否消耗
@@ -28,18 +27,15 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
         if not result.get('result'):
             response.res.result = False
             response.res.result_no = result.get('result_no')
-            print "result_no:", result.get('result_no')
             response.res.message = u'消费不足！'
         return_data = consume(player, shop_item.consume)  # 消耗
         get_return(player, return_data, response.consume)
     return_data = gain(player, shop_item.gain)  # 获取
-    print (return_data, "return_data")
     extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
 
     get_return(player, return_data, response.gain)
     get_return(player, extra_return_data, response.gain)
 
-    print(response.gain)
     response.res.result = True
     return response.SerializeToString()
 
@@ -55,7 +51,6 @@ def shop_equipment_oper(dynamic_id, pro_data, **kwargs):
     shop_id = request.id
     shop_num = request.num
     shop_item = shop_config.get(shop_id)
-    print "shop_id", shop_id, shop_num
 
     if shop_num == 1 and not is_consume(player, shop_item):
         # 免费抽取

@@ -14,6 +14,7 @@ from app.proto_file.equipment_response_pb2 import *
 from app.proto_file.feast_pb2 import *
 from app.proto_file.login_gift_pb2 import *
 from app.proto_file.common_pb2 import *
+from app.proto_file.chat_pb2 import *
 
 
 def sendData(sendstr,commandId):
@@ -69,7 +70,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'ec3ebed2d1e816a29a9ca1b507ac6923'
+        argument.key.key = '33d92d3b3c9cfcd1d854a8d23dcef4b2'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -94,7 +95,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'ec3ebed2d1e816a29a9ca1b507ac6923'
+                argument.key.key = '33d92d3b3c9cfcd1d854a8d23dcef4b2'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -105,7 +106,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'ec3ebed2d1e816a29a9ca1b507ac6923'
+            argument.token = '33d92d3b3c9cfcd1d854a8d23dcef4b2'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -113,13 +114,19 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # --------826获取上次吃大餐时间------------
+            # --------1002聊天------------
             argument1 = GetLoginGiftRequest()
             argument1.activity_id = 1
             argument1.activity_type = 1
             self.dateSend(argument1, 826)
 
-            # --------825获取上次吃大餐时间------------
+            # --------826领取登录奖励------------
+            # argument1 = GetLoginGiftRequest()
+            # argument1.activity_id = 1
+            # argument1.activity_type = 1
+            # self.dateSend(argument1, 826)
+
+            # --------825获取登录奖励信息------------
             # argument1 = EnhanceEquipmentRequest()
             # argument1.id = u"0004"
             # argument1.type = 1
@@ -198,7 +205,7 @@ class EchoClient(protocol.Protocol):
 
             # --------801创建公会------------
             # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四003'
+            # argument1.name = '一二三四005'
             # self.dateSend(argument1, 801)
 
             # --------802加入公会------------
@@ -429,7 +436,7 @@ class EchoClient(protocol.Protocol):
 
         if command == 826:
             #
-            argument = CommonResponse()
+            argument = GetLoginGiftResponse()
             argument.ParseFromString(message)
             print argument
 

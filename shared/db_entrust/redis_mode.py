@@ -6,7 +6,6 @@ from shared.db_entrust.redis_client import redis_manager
 from shared.db_entrust.redis_object import RedisObject
 from gfirefly.dbentrust import util
 import time
-import cPickle
 
 MMODE_STATE_ORI = 0  #未变更
 MMODE_STATE_NEW = 1  #创建
@@ -187,8 +186,8 @@ class MAdmin(RedisObject):
         recordlist = util.ReadDataFromDB(mmname)
         for record in recordlist:
             pk = record[self._pk]
-            record = MMode.loads(record)
-            mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+            mm = MMode(self._name + ':%s' % pk, self._pk)
+            mm.loads(record)
             mm.insert()
 
     @property
@@ -229,8 +228,7 @@ class MAdmin(RedisObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
-        record = mm.loads(record)
-        mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+        mm.loads(record)
         mm.insert()
         return mm
 
@@ -252,11 +250,7 @@ class MAdmin(RedisObject):
 
         if not record:
             return None
-
-        record = mm.loads(record)
-
-        mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
-
+        mm.loads(record)
         mm.insert()
         return record
 
@@ -280,8 +274,7 @@ class MAdmin(RedisObject):
             for record in recordlist:
                 pk = record[self._pk]
                 mm = MMode(self._name + ':%s' % pk, self._pk)
-                record = mm.loads(record)
-                mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+                mm.loads(record)
                 mm.insert()
                 objlist.append(mm)
         return objlist

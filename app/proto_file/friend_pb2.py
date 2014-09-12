@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\t\"]\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x19\n\x17GetPlayerFriendsRequest\"_\n\rCharacterInfo\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x98\x01\n\x18GetPlayerFriendsResponse\x12\x10\n\x08page_num\x18\x01 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\t\"\xa2\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x02\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\"\x19\n\x17GetPlayerFriendsRequest\"_\n\rCharacterInfo\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\n\n\x02\x61p\x18\x03 \x01(\x05\x12\x0f\n\x07icon_id\x18\x04 \x01(\x05\x12\x0c\n\x04gift\x18\x05 \x01(\x05\"\x98\x01\n\x18GetPlayerFriendsResponse\x12\x10\n\x08page_num\x18\x01 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo')
 
 
 
@@ -125,22 +125,50 @@ _FINDFRIENDRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='ap', full_name='FindFriendResponse.ap', index=2,
+      name='hero_no', full_name='FindFriendResponse.hero_no', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='icon_id', full_name='FindFriendResponse.icon_id', index=3,
+      name='gift', full_name='FindFriendResponse.gift', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='gift', full_name='FindFriendResponse.gift', index=4,
-      number=5, type=5, cpp_type=1, label=1,
+      name='power', full_name='FindFriendResponse.power', index=4,
+      number=5, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hp', full_name='FindFriendResponse.hp', index=5,
+      number=6, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='atk', full_name='FindFriendResponse.atk', index=6,
+      number=7, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='physical_def', full_name='FindFriendResponse.physical_def', index=7,
+      number=8, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='magic_def', full_name='FindFriendResponse.magic_def', index=8,
+      number=9, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -154,8 +182,8 @@ _FINDFRIENDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=148,
-  serialized_end=241,
+  serialized_start=149,
+  serialized_end=311,
 )
 
 
@@ -175,8 +203,8 @@ _GETPLAYERFRIENDSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=243,
-  serialized_end=268,
+  serialized_start=313,
+  serialized_end=338,
 )
 
 
@@ -231,8 +259,8 @@ _CHARACTERINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=270,
-  serialized_end=365,
+  serialized_start=340,
+  serialized_end=435,
 )
 
 
@@ -280,8 +308,8 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=368,
-  serialized_end=520,
+  serialized_start=438,
+  serialized_end=590,
 )
 
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO

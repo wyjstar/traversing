@@ -32,7 +32,6 @@ def get_online_gift(dynamic_id, data, **kwargs):
 
                 data = {'online_time': player.online_gift.online_time,
                         'received_gift_ids': player.online_gift.received_gift_ids}
-                print 'get gift datetime', data
                 player.online_gift.received_gift_ids.append(request.gift_id)
                 player.online_gift.save_data()
 

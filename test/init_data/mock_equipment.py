@@ -43,3 +43,5 @@ def init_equipment(player):
     equipment_obj.attribute.strengthen_lv = 2
     equipment_obj.attribute.awakening_lv = 2
     equipment_obj.save_data()
+
+    player.equipment_component.save_data()

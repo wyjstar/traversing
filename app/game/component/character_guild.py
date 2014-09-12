@@ -40,7 +40,6 @@ class CharacterGuildComponent(Component):
                              'worship_time': self._worship_time,
                              'exit_time': self._exit_time}}
             tb_character_guild.new(data)
-            print "cuick,###############,CharacterGuildComponent,INIT_DATA1,data:", data, 'id:', self.owner.base_info.id
             return
         info = character_guild.get("info")
         self._g_id = info.get("g_id")
@@ -60,7 +59,6 @@ class CharacterGuildComponent(Component):
                          'worship': self._worship,
                          'worship_time': self._worship_time,
                          'exit_time': self._exit_time}}
-        print "cuick,###############,CharacterGuildComponent,INIT_DATA,data:", data
 
     def save_data(self):
         data = {
@@ -72,7 +70,6 @@ class CharacterGuildComponent(Component):
                      'worship': self._worship,
                      'worship_time': self._worship_time,
                      'exit_time': self._exit_time}}
-        print "cuick,###############,CharacterGuildComponent,SAVE_DATA,player,guild,info:", data, 'id:', self.owner.base_info.id
         p_guild_data = tb_character_guild.getObj(self.owner.base_info.id)
         p_guild_data.update_multi(data)
 

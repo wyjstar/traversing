@@ -15,6 +15,12 @@ class ChaterManager(object):
     def __init__(self):
         self._chaters = {}  # 在线成员
         self.mapping = {}  # 动态id 对应 角色id
+        self.guild = {}
+
+    def get_guild_dynamicid(self, guild_id):
+        """获取公会成员的动态id
+        """
+        return self.guild[guild_id]
 
     def getall_dynamicid(self):
         """获取所有在线角色的动态id
@@ -55,7 +61,7 @@ class ChaterManager(object):
             return self._chaters[chater_id]
         return None
 
-    def update_onland(self, chater_id, dynamic_id):
+    def update_onland(self, chater_id, dynamic_id, guild_id):
         """设置角色登陆
         @param chater_id: int 角色id
         @param dynamic_id: int 动态id
@@ -64,8 +70,12 @@ class ChaterManager(object):
         chater.island = True
         chater.dynamic_id = dynamic_id
         self.mapping[dynamic_id] = chater_id  #动态id对应角色id
+        if guild_id:
+            if not self.guild.get(guild_id):
+                self.guild[guild_id] = []
+            self.guild[guild_id].append(dynamic_id)
 
-    def update_outland(self, chater_id, dynamic_id):
+    def update_outland(self, chater_id, dynamic_id, guild_id):
         """设置角色下线
         @param chater_id: int 角色id
         @param dynamic_id: int 动态id
@@ -75,3 +85,21 @@ class ChaterManager(object):
         chater.dynamic_id = -1
         del self.mapping[dynamic_id]  #删除这个动态id与角色id的对应关系
         del self._chaters[chater_id]
+        if guild_id:
+            if self.guild.get(guild_id):
+                if self.guild[guild_id].count(dynamic_id):
+                    self.guild[guild_id].remove(dynamic_id)
+
+    def join_room(self, dynamic_id, guild_id):
+        """加入公会房间
+        """
+        if not self.guild.get(guild_id):
+            self.guild[guild_id] = []
+        self.guild[guild_id].append(dynamic_id)
+
+    def leave_room(self, dynamic_id, guild_id):
+        """退出公会房间
+        """
+        if self.guild.get(guild_id):
+            if self.guild[guild_id].count(dynamic_id):
+                self.guild[guild_id].remove(dynamic_id)

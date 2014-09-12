@@ -38,7 +38,6 @@ class BigBag(object):
             drop_item_no = drop_item.item_no
             drop_item_num = drop_item.item_num
             drop_item_group.append(CommonGroupItem(drop_item_no, drop_item_num, drop_item_num, drop_item_type))
-        print ("drop_item_group:", drop_item_group)
         return drop_item_group
 
 

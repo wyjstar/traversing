@@ -30,7 +30,6 @@ class LiberateProtocol(protocols.BaseProtocol):
     def connectionLost(self, reason):
         '''连接断开处理
         '''
-        print 'client login out', reason
         log.msg('Client %d login out.' % (self.transport.sessionno))
         self.factory.doConnectionLost(self)
         self.factory.connmanager.dropConnectionByID(self.transport.sessionno)
@@ -42,8 +41,6 @@ class LiberateProtocol(protocols.BaseProtocol):
         if data is None:
             return
         senddata = self.factory.produceResult(data, command)
-        print ("response data length:", len(data))
-        print ("response command:", command)
         self.transport.sendall(senddata)
 
     def dataReceived(self, data):
@@ -52,7 +49,6 @@ class LiberateProtocol(protocols.BaseProtocol):
         @param data: str 客户端传送过来的数据
         '''
         length = self.factory.dataprotocl.getHeadlength()  #获取协议头的长度
-        print 'dataReceived:', length
         self.buff += data
         while self.buff.__len__() >= length:
             unpackdata = self.factory.dataprotocl.unpack(self.buff[:length])
@@ -112,8 +108,6 @@ class LiberateFactory(protocols.ServerFactory):
             return ''
         response = self.service.callTarget(commandID, conn, data)
 
-        # print 'doDataReceived:', response
-
         return response
 
     def produceResult(self, command, response):
@@ -136,7 +130,6 @@ class LiberateFactory(protocols.ServerFactory):
         @param msg: 消息的类容，protobuf结构类型
         @param sendList: 推向的目标列表(客户端id 列表)
         '''
-        print 'pushObject:', topicID, msg, sendList
         self.connmanager.pushObject(topicID, msg, sendList)
         
 

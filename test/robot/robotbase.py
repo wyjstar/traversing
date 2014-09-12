@@ -76,7 +76,7 @@ class RobotBase(protocol.Protocol):
 
     def dataReceived(self, data):
         command, message = parse_data(data)
-        # print command
+        print command
         fun = getattr(self, self._distributor[str(command)])
         if fun:
             fun(message)

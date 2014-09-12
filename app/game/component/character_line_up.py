@@ -30,9 +30,7 @@ class CharacterLineUpComponent(Component):
         # self._unique = 0  # 无双
 
     def init_data(self):
-        line_up_data = tb_character_line_up.getObjData(self.owner.base_info.id)
-
-        # print '#line up init data:', line_up_data
+        line_up_data = tb_character_line_up.getObjData(self.character_id)
 
         if line_up_data:
             # 阵容位置信息
@@ -47,7 +45,7 @@ class CharacterLineUpComponent(Component):
                 self._sub_slots[sub_slot_no] = line_sub_slot
             self._line_up_order = line_up_data.get('line_up_order')
         else:
-            tb_character_line_up.new({'id': self.owner.base_info.id,
+            tb_character_line_up.new({'id': self.character_id,
                                       'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
                                                              slot_no in self._line_up_slots.keys()]),
                                       'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
@@ -58,7 +56,6 @@ class CharacterLineUpComponent(Component):
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态
-        print game_configs.base_config
         for i in range(1, 7):
             slot = self._line_up_slots[i]
             if self.owner.level.level > game_configs.base_config.get("hero_position_open_level").get(i):
@@ -67,6 +64,7 @@ class CharacterLineUpComponent(Component):
             slot = self._sub_slots[i]
             if self.owner.level.level > game_configs.base_config.get("friend_position_open_level").get(i):
                 slot.activation = True
+
     @property
     def line_up_slots(self):
         return self._line_up_slots
@@ -98,7 +96,6 @@ class CharacterLineUpComponent(Component):
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
             new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
-        print '<character line up>', self._line_up_order, new_line_up_order
         self._line_up_order = new_line_up_order
 
     @property
@@ -178,13 +175,11 @@ class CharacterLineUpComponent(Component):
 
     def save_data(self):
         props = {
-            'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
-                                   slot_no in self._line_up_slots.keys()]),
-            'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
-                               slot_no in self._sub_slots.keys()]),
+            'line_up_slots': dict([(slot_no, slot.dumps()) for slot_no, slot in self._line_up_slots.items()]),
+            'sub_slots': dict([(slot_no, sub_slot.dumps()) for slot_no, sub_slot in self._sub_slots.items()]),
             'line_up_order': self._line_up_order}
 
-        line_up_obj = tb_character_line_up.getObj(self.owner.base_info.id)
+        line_up_obj = tb_character_line_up.getObj(self.character_id)
         line_up_obj.update_multi(props)
 
     @property
@@ -210,14 +205,6 @@ class CharacterLineUpComponent(Component):
 
         return warrior_list
 
-
-
-
-
-
-
-
-
-
-
-
+    @property
+    def character_id(self):
+        return self.owner.base_info.id
