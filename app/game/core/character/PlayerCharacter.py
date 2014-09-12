@@ -2,7 +2,6 @@
 """
 created by server on 14-6-4下午3:04.
 """
-from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.character_online_gift import CharacterOnlineGift
 from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
@@ -25,6 +24,7 @@ from app.game.component.tb_character_mail import CharacterMailComponent
 from app.game.component.character_sign_in import CharacterSignInComponent
 from app.game.component.character_feast import CharacterFeastComponent
 from app.game.component.character_login_gift import CharacterLoginGiftComponent
+from app.game.component.character_level_gift import CharacterLevelGift
 
 
 
