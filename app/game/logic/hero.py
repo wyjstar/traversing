@@ -43,8 +43,6 @@ def hero_upgrade_with_item(dynamicid, data, **kwargs):
         response.res.message = u"经验药水道具不足！"
         return response.SerializeToString()
     exp = item_config.get(exp_item_no).get('funcArg1')
-    print "exp", exp
-    print "item_config", item_config.get(exp_item_no)
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)
@@ -66,7 +64,6 @@ def hero_break(dynamicid, data, **kwargs):
 
     # 验证武将是否突破到上限
     if hero.break_level == hero_config.get(hero_no).breakLimit:
-        print "response 1"
         response.res.result = False
         response.res.result_no = 201
         return response.SerializeToString()
@@ -75,7 +72,6 @@ def hero_break(dynamicid, data, **kwargs):
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):
-        print "response 2", result.get('result_no')
         response.res.result = False
         response.res.result_no = result.get('result_no')
         return response.SerializeToString()
@@ -86,7 +82,6 @@ def hero_break(dynamicid, data, **kwargs):
 
     hero.break_level += 1
     hero.save_data()
-    print "response 3"
     # 3、返回
     response.res.result = True
     response.break_level = hero.break_level
@@ -99,8 +94,6 @@ def hero_sacrifice(dynamicid, data, **kwargs):
     args = HeroSacrificeRequest()
     args.ParseFromString(data)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
-    print args.hero_nos
-    print heros, "heros++++++++"
     if len(heros) == 0:
         print "hero %s is not exists." % str(args.hero_nos)
     response = hero_sacrifice_oper(heros, player)
@@ -153,7 +146,6 @@ def hero_compose(dynamicid, data, **kwargs):
     args.ParseFromString(data)
     hero_chip_no = args.hero_chip_no
     response = HeroComposeResponse()
-    print 'combine', chip_config.get("chips").get(hero_chip_no)
     hero_no = chip_config.get("chips").get(hero_chip_no).combineResult
     need_num = chip_config.get("chips").get(hero_chip_no).needNum
     if not hero_no or not need_num:
@@ -164,7 +156,6 @@ def hero_compose(dynamicid, data, **kwargs):
         response.res.result = False
         response.res.message = "碎片不足，合成失败！"
         return response.SerializeToString()
-    print "hero_no", hero_no
     if player.hero_component.contain_hero(hero_no):
         response.res.result = False
         response.res.result_no = 202

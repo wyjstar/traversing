@@ -25,7 +25,6 @@ def server_register_1(command_id, dynamic_id, request_proto):
 
     # 通知帐号服
     result = GlobalObject().root.callChild('account', command_id, dynamic_id, account_type, user_name, password, key)
-    print 'result', result
 
     if result.get('result', True):  # 注册成功
         account_id = result.get('account_id')
@@ -73,7 +72,6 @@ def server_login_2(command_id, dynamic_id, request_proto):
 
     # 通知帐号服
     result = GlobalObject().root.callChild('account', command_id, dynamic_id, key, user_name, password)
-    print result
     account_key = account_pb2.AccountResponse()
     is_login = result.get('result')
 
@@ -90,9 +88,7 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
     """
     user = UsersManager().get_by_id(account_id)
     if user and user.dynamic_id != dynamic_id:
-        print 'user exit! info:', user
         if not net.change_dynamic_id(user.dynamic_id, dynamic_id):
-            print 'error!, change user id fail, dynamic:', user.dynamic_id
             return False
         # user.dynamic_id = dynamic_id
     else:

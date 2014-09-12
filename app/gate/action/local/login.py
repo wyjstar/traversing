@@ -31,7 +31,8 @@ def character_login_4(key, dynamic_id, request_proto):
     if nickname:
         #TODO 起名时候
         # 聊天室登录
-        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname, guild_id)
+        # TODO chat guild id
+        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname, 'abc')
     return response[0].SerializePartialToString()
 
 
@@ -50,7 +51,6 @@ def __character_login(dynamic_id, token):
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 
     if not user:
-        print 'cant find user dynamic_id:', dynamic_id
         return {'result': False}
 
     is_new_character = False  # 是否为新用户
@@ -59,7 +59,6 @@ def __character_login(dynamic_id, token):
         print "new character....."
         is_new_character = True
     character_info = user.character
-    print 'character login nickname', character_info.get('nickname')
 
     # TODO 校验character_info 和  user 中id 是否相同
 
@@ -81,7 +80,6 @@ def __character_login(dynamic_id, token):
 
     SceneSerManager().add_client(now_node, dynamic_id)
 
-    print "login success++++++++++++++++++++++++++"
     response = game_pb2.GameLoginResponse()
     response.ParseFromString(player_data)
     return response, character_info.get('id')

@@ -56,6 +56,10 @@
                 {
                     "rootport": 10000,
                     "rootname": "gate"
+                },
+                {
+                    "rootport": 20000,
+                    "rootname": "battle"
                 }
             ],
             "name": "game",
@@ -95,6 +99,14 @@
             "mem": true,
             "app": "app.dbfrontserver",
             "log": "app/logs/dbfront.log"
+        },
+        "battle": {
+            "rootport": 30000,
+            "name": "battle",
+            "db": true,
+            "mem": true,
+            "app": "app.battleserver",
+            "log": "app/logs/battle.log"
         }
     },
     "db": {
@@ -297,7 +309,15 @@
                 "id": "simple",
                 "sign_in": "simple",
                 "online_gift": "complex",
-                "feast": "simple"
+                "feast": "simple",
+                "login_gift": "simple"
+            }
+        },
+        "tb_character_lord": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "attr_info": "complex"
             }
         }
     }

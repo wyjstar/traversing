@@ -39,7 +39,6 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     @return:
     """
     player = kwargs.get('player')
-    print player, "player"
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     print equipment_obj, "equipment_obj"
@@ -68,7 +67,6 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
                 break
             enhance_record.append(result)
 
-    print "return succ"
     # TODO 更新
     return {'result': True, 'enhance_record': enhance_record}
 
@@ -97,7 +95,6 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
     player = kwargs.get('player')
 
     chip = player.equipment_chip_component.get_chip(chip_no)
-    print "chip", chip
     # 没有碎片
     if not chip:
         return {'result': False, 'result_no': 102, 'message': u''}
@@ -110,7 +107,6 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
         return {'result': False, 'result_no': 102, 'message': u''}
     equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
     chip.chip_num -= compose_num
-    print "equipment_obj", equipment_obj
     return {'result': True, 'equipment_obj': equipment_obj}
 
 
@@ -136,7 +132,6 @@ def melting_equipment(dynamic_id, equipment_ids, response, **kwargs):
         return {'result': False, 'result_no': 401, 'message': u''}
     melting_items = equipment_obj.melting_item
     gain = item_group_helper.gain(player, melting_items)
-    print melting_items, 'aaaaaaaa,bdgasdflkjl;sakfj;'
     item_group_helper.get_return(player, gain, response.cgr)
 
 

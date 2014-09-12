@@ -13,10 +13,7 @@ def feast_820(dynamic_id, pro_data):
     """美味酒席
     """
     response = EatFeastResponse()
-    print('cuick,AAAAAAAAAAAAAAAAA,01,node,feast_820')
-
     res = eat_feast(dynamic_id)
-
     response.res = res
     return response.SerializeToString()
 
@@ -25,10 +22,7 @@ def get_eat_time_821(dynamic_id, pro_data):
     """获取上次吃的时间
     """
     response = GetEatTimeResponse()
-    print('cuick,BBBBBBBBBBBBBBBBBBBB,01,node,feast_821')
-
     last_eat_time = get_time(dynamic_id)
-
     response.res.result = True
     response.eat_time = last_eat_time
     return response.SerializeToString()

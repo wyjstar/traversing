@@ -116,7 +116,6 @@ class StageAward(object):
                 stage = item
                 break
         star = stage.star
-        print '### star:', type(star), star
         for value in star:
             if star_num >= value:  # 可以领奖
                 award_info.append(0)

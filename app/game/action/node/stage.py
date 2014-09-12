@@ -2,7 +2,11 @@
 """
 created by server on 14-7-17下午6:21.
 """
-from app.game.logic.stage import get_stage_info, get_chapter_info, fight_start, fight_settlement, get_warriors
+from app.game.logic.stage import get_chapter_info
+from app.game.logic.stage import get_stage_info
+from app.game.logic.stage import fight_start
+from app.game.logic.stage import fight_settlement
+from app.game.logic.stage import get_warriors
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import stage_request_pb2
 from app.proto_file import stage_response_pb2
@@ -56,8 +60,10 @@ def stage_start_903(dynamic_id, pro_data):
     """
     request = stage_request_pb2.StageStartRequest()
     request.ParseFromString(pro_data)
-    # 关卡编号
-    stage_id = request.stage_id
+
+    stage_id = request.stage_id  # 关卡编号
+    unparalleled = request.unparalleled  # 无双编号
+    fid = request.fid  # 好友ID
 
     line_up = {}  # {hero_id:pos}
     for line in request.lineup:
@@ -65,9 +71,7 @@ def stage_start_903(dynamic_id, pro_data):
             continue
         line_up[line.hero_id] = line.pos
 
-    print '<stage start>', line_up
-
-    stage_info = fight_start(dynamic_id, stage_id, line_up)
+    stage_info = fight_start(dynamic_id, stage_id, line_up, unparalleled, fid)
     result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()
@@ -81,6 +85,8 @@ def stage_start_903(dynamic_id, pro_data):
     red_units = stage_info.get('red_units')
     blue_units = stage_info.get('blue_units')
     drop_num = stage_info.get('drop_num')
+    monster_unpara = stage_info.get('monster_unpara')
+    f_unit = stage_info.get('f_unit')
 
     response.drop_num = drop_num
     for red_unit in red_units:
@@ -95,7 +101,17 @@ def stage_start_903(dynamic_id, pro_data):
                 continue
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
-    print '< start fight>', response
+
+    unpara = response.monster_unpara
+    if monster_unpara:
+        unpara.id = monster_unpara[0]
+        buffs = unpara.buffs
+        for buff in monster_unpara[1:]:
+            buffs.append(buff)
+    if f_unit:
+        friend = response.friend
+        assemble(friend, f_unit)
+
     return response.SerializePartialToString()
 
 
@@ -109,11 +125,13 @@ def fight_settlement_904(dynamic_id, pro_data):
 
     return drops
 
+
 @remote_service_handle
 def get_warriors_906(dynamic_id, pro_data):
     """请求无双
     """
     return get_warriors(dynamic_id)
+
 
 def assemble(unit_add, unit):
     unit_add.no = unit.no

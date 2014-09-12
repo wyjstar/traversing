@@ -52,12 +52,9 @@ def enhance_equipment_402(dynamic_id, pro_data):
     enhance_type = request.type
     enhance_num = request.num
 
-    print request.id, request.type, request.num, "##request"
-
     enhance_info = enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num)
 
     result = enhance_info.get('result')
-    print request, "result"
     response = equipment_response_pb2.EnhanceEquipmentResponse()
     res = response.res
     res.result = result
@@ -91,10 +88,8 @@ def compose_equipment_403(dynamic_id, pro_data):
     request = equipment_request_pb2.ComposeEquipmentRequest()
     request.ParseFromString(pro_data)
     equipment_chip_no = request.no
-    print "request.no", request.no
     data = compose_equipment(dynamic_id, equipment_chip_no)
     result = data.get('result')
-    print "compose_equipment.result", result
     response = equipment_response_pb2.ComposeEquipmentResponse()
     res = response.res
     if not result:
