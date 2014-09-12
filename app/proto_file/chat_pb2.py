@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='chat.proto',
   package='',
-  serialized_pb='\n\nchat.proto\".\n\x0e\x43hatObjectInfo\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\"4\n\x12LoginToChatRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\"x\n\x14\x43hatConectingRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63hannel\x18\x02 \x02(\x05\x12\x0f\n\x07\x63ontent\x18\x03 \x02(\t\x12\x1e\n\x05other\x18\x04 \x01(\x0b\x32\x0f.ChatObjectInfo\"/\n\x0c\x43hatResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"W\n\x13\x63hatMessageResponse\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\x12\x1e\n\x05owner\x18\x02 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63ontent\x18\x05 \x02(\t')
+  serialized_pb='\n\nchat.proto\".\n\x0e\x43hatObjectInfo\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\"4\n\x12LoginToChatRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\"\x8a\x01\n\x14\x43hatConectingRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63hannel\x18\x02 \x02(\x05\x12\x0f\n\x07\x63ontent\x18\x03 \x02(\t\x12\x1e\n\x05other\x18\x04 \x01(\x0b\x32\x0f.ChatObjectInfo\x12\x10\n\x08guild_id\x18\x05 \x01(\t\"/\n\x0c\x43hatResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"W\n\x13\x63hatMessageResponse\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\x12\x1e\n\x05owner\x18\x02 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63ontent\x18\x05 \x02(\t')
 
 
 
@@ -116,6 +116,13 @@ _CHATCONECTINGREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='guild_id', full_name='ChatConectingRequest.guild_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -125,8 +132,8 @@ _CHATCONECTINGREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=116,
-  serialized_end=236,
+  serialized_start=117,
+  serialized_end=255,
 )
 
 
@@ -160,8 +167,8 @@ _CHATRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=238,
-  serialized_end=285,
+  serialized_start=257,
+  serialized_end=304,
 )
 
 
@@ -202,8 +209,8 @@ _CHATMESSAGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=287,
-  serialized_end=374,
+  serialized_start=306,
+  serialized_end=393,
 )
 
 _LOGINTOCHATREQUEST.fields_by_name['owner'].message_type = _CHATOBJECTINFO

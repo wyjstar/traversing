@@ -23,12 +23,16 @@ def character_login_4(key, dynamic_id, request_proto):
     token = argument.token
 
     response = __character_login(dynamic_id, token)
-
+    if response[0].guild_id:
+        guild_id = response[0].guild_id
+    else:
+        guild_id = 0
     nickname = response[0].nickname
     if nickname:
         #TODO 起名时候
         # 聊天室登录
-        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname)
+        # TODO chat guild id
+        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname, 'abc')
     return response[0].SerializePartialToString()
 
 
@@ -50,6 +54,11 @@ def __character_login(dynamic_id, token):
         print 'cant find user dynamic_id:', dynamic_id
         return {'result': False}
 
+    is_new_character = False  # 是否为新用户
+
+    if not user.has_character():
+        print "new character....."
+        is_new_character = True
     character_info = user.character
     print 'character login nickname', character_info.get('nickname')
 
@@ -65,7 +74,7 @@ def __character_login(dynamic_id, token):
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
-    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id, is_new_character)
     v_character.node = now_node
 
     # pull message from transit
@@ -78,27 +87,27 @@ def __character_login(dynamic_id, token):
     response.ParseFromString(player_data)
     return response, character_info.get('id')
 
-@local_service_handle
-def create_nickname_5(key, dynamic_id, request_proto):
-    argument = CreatePlayerRequest()
-    argument.ParseFromString(request_proto)
-    nickname = argument.nickname
-
-
-    now_node = SceneSerManager().get_best_sceneid()
-    info = GlobalObject().root.callChild(now_node, 5, dynamic_id, request_proto)
-
-    response = CommonResponse()
-    response.ParseFromString(info)
-
-    user = UsersManager().get_by_dynamic_id(dynamic_id)
-
-    if response.result and nickname:
-        # 聊天室登录
-        print '# chat login:', user.user_id, dynamic_id, nickname
-        GlobalObject().root.callChild('chat', 1001, user.user_id, dynamic_id, nickname)
-
-    return info
+# @local_service_handle
+# def create_nickname_5(key, dynamic_id, request_proto):
+#     argument = CreatePlayerRequest()
+#     argument.ParseFromString(request_proto)
+#     nickname = argument.nickname
+#
+#
+#     now_node = SceneSerManager().get_best_sceneid()
+#     info = GlobalObject().root.callChild(now_node, 5, dynamic_id, request_proto)
+#
+#     response = CommonResponse()
+#     response.ParseFromString(info)
+#
+#     user = UsersManager().get_by_dynamic_id(dynamic_id)
+#
+#     if response.result and nickname:
+#         # 聊天室登录
+#         print '# chat login:', user.user_id, dynamic_id, nickname
+#         GlobalObject().root.callChild('chat', 1001, user.user_id, dynamic_id, nickname)
+#
+#     return info
 
 
 

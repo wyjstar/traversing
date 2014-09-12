@@ -11,13 +11,15 @@ import time
 
 
 @remote_service_handle
-def enter_scene_601(dynamic_id, character_id):
+def enter_scene_601(dynamic_id, character_id, is_new_character):
     """进入场景"""
     player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
     PlayersManager().add_player(player)
     # player = mock_player(player)
-    init(player)
-    print ("mock player info.....")
+    if is_new_character:
+        print ("mock player info.....", is_new_character)
+        init(player)
+
     responsedata = GameLoginResponse()
     responsedata.res.result = True
     responsedata.id = player.base_info.id
@@ -39,6 +41,8 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
     responsedata.stamina = player.stamina
     responsedata.pvp_times = player.pvp_times
+    if player.guild.g_id != 0:
+        responsedata.guild_id = player.guild.g_id
     # TODO vip_level
     responsedata.vip_level = 1
     responsedata.server_time = int(time.time())

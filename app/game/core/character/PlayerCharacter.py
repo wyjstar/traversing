@@ -84,7 +84,7 @@ class PlayerCharacter(Character):
         if not character_info:
             log.msg("Init_player %s error!" + str(pid))
             return
-
+        print 'character_id', pid
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
         coin = character_info['coin']

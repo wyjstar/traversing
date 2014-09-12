@@ -32,7 +32,6 @@ class CharacterEquipmentPackageComponent(Component):
             for equipment_id in equipment_ids:
                 equipment_data = tb_equipment_info.getObjData(equipment_id)
                 equipment_info = equipment_data.get('equipment_info')
-                print 'equipment_data:', equipment_data
                 equipment_no = equipment_info.get('equipment_no')  # 装备编号
                 strengthen_lv = equipment_info.get('slv')  # 装备强化等级
                 awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
