@@ -300,7 +300,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_applicant_list_add.player_id = pid
             response_applicant_list_add.nickname = player_data.get('nickname')
             response_applicant_list_add.gift = datetime.datetime.now().day
-            
+
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
