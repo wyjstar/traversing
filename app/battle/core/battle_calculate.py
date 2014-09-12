@@ -25,12 +25,12 @@ class BattleCalculate(object):
     # 战斗公式 暴击伤害系数
     # k1:攻方总暴击伤害系数
     # k2:守方总暴伤减免系数
-    def cri_hurt_coeff(self,k1,k2):
+    def cri_hurt_coeff(self, k1, k2):
         return k1 - k2
 
     # 战斗公式 格挡受伤系数
     # k1:基础配置表单手配置(0.7)
-    def block_hurt_coeff(self,k1):
+    def block_hurt_coeff(self, k1):
         return k1
 
     # 战斗公式 等级压制系数
@@ -113,7 +113,7 @@ class BattleCalculate(object):
     # k2: 技能效果参数 读表
     # k3: 等级效果参数 读表
     # k4: 卡牌等级
-    def real_on_hit_cure(self,k1, k2, k3, k4):
+    def real_on_hit_cure(self, k1, k2, k3, k4):
         if k3 != 0:
             k2 = k2 + k3 * k4
 
