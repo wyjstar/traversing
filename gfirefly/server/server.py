@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2013-8-2
 
 @author: lan (www.9miao.com)
-'''
+"""
 from gfirefly.netconnect.protoc import LiberateFactory
 from flask import Flask
 from gfirefly.distributed.root import PBRoot, BilateralFactory
@@ -35,8 +35,8 @@ class FFServer:
     """
 
     def __init__(self):
-        '''
-        '''
+        """
+        """
         self.netfactory = None  #net前端
         self.root = None  #分布式root节点
         self.webroot = None  #http服务
