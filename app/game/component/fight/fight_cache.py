@@ -30,7 +30,7 @@ class CharacterFightCacheComponent(Component):
         """
         red_unit = []
         for no, slot in self.line_up_slots.items():
-            red = slot.slot_attr()
+            red = slot.slot_attr
             red_unit.append(red)
         self._red_unit = red_unit
         return self._red_unit

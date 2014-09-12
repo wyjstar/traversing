@@ -64,3 +64,23 @@ tb_guild_name.insert()
 # 玩家活动表
 tb_character_activity = MAdmin('tb_character_activity', 'id')
 tb_character_activity.insert()
+
+# 主将信息表
+tb_character_lord = MAdmin('tb_character_lord', 'id')
+tb_character_lord.insert()
+
+# 关卡信息表
+tb_character_stages = MAdmin('tb_character_stages', 'id')
+tb_character_stages.insert()
+
+# 昵称表
+tb_nickname_mapping = MAdmin('tb_nickname_mapping', 'nickname')
+tb_nickname_mapping.insert()
+
+# 玩家邮件表
+tb_character_mails = MAdmin('tb_character_mails', 'id')
+tb_character_mails.insert()
+
+# 邮件表
+tb_mail_info = MAdmin('tb_mail_info', 'id')
+tb_mail_info.insert()
