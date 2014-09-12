@@ -270,6 +270,7 @@ class MAdmin(RedisObject):
             else:
                 _pklist.append(pk)
         if _pklist:
+            print '_pklist:', _pklist
             recordlist = util.GetRecordList(self._name, self._pk, _pklist)
             for record in recordlist:
                 pk = record[self._pk]
