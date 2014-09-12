@@ -7,6 +7,7 @@ from app.game.component.Component import Component
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.component.line_up.hero_slot import HeroSlotComponent
 from app.game.logic.fight import do_assemble
+from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 
@@ -125,6 +126,7 @@ class LineUpSlotComponent(Component):
             suit_info[suit_no] = slot.suit_attr
         return suit_info
 
+    @property
     def slot_attr(self):
         """
         """
@@ -211,16 +213,17 @@ class LineUpSlotComponent(Component):
         break_level = base_attr.break_level
 
         is_boss = False
-        
+
         line_up_order = self.owner.line_up_order
         position = line_up_order.index(self._slot_no)
         position += 1
 
         battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills,
-                      base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
-                      base_cri_coeff, base_cri_ded_coeff, base_block,
-                      hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, position,
-                      level, break_level, is_boss)
+                                  base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
+                                  base_cri_coeff, base_cri_ded_coeff, base_block,
+                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
+                                  position,
+                                  level, break_level, is_boss)
 
         return battlt_unit
 
@@ -229,13 +232,32 @@ class LineUpSlotComponent(Component):
         ((攻击 + 物防 + 魔防) * 血量) ^ 战斗力系数A * （命中率 + 闪避率） * （1 + 暴击率 * （暴击伤害系数 + 暴击伤害减免系数 - 100）/ 10000）*
         (（100 + 格挡率 * （1 - 格挡伤害系数）) / 100 * 战斗力系数B）
         """
-        unit = self.slot_attr()
+        unit = self.slot_attr
         if not unit:
             return 0
         return (((unit.atk + unit.physical_def + unit.magic_def) * unit.hp) ** game_configs.base_config.get(
             'zhandouli_xishu_a', 0.5)) * (unit.hit + unit.dodge) * (
-               1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * ((100 + unit.block * (
-               1 - game_configs.base_config.get('a4', 0.7))) / 100 * game_configs.base_config.get(
-               'zhandouli_xishu_b', 1))
+            1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * ((100 + unit.block * (
+            1 - game_configs.base_config.get('a4', 0.7))) / 100 * game_configs.base_config.get(
+            'zhandouli_xishu_b', 1))
 
+    def update_lord_info(self):
+        """
+        更新主将属性
+        """
+        print '#2>>>>>', self.owner.character_id
+        unit = self.slot_attr
+        lord_data = tb_character_lord.getObjData(self.owner.character_id)
+        print '#1>>>>> lord_data:', lord_data
+        if lord_data:
+            lord_obj = tb_character_lord.getObj(self.owner.character_id)
+            lord_obj.update('attr_info', {'info': unit.dumps(), 'power': self.combat_power()})
+        else:
+            tb_character_lord.new({'id': self.owner.character_id, 'attr_info': {'info': unit.dumps(),
+                                                                                'power': self.combat_power()}})
 
+    @property
+    def first_slot(self):
+        """取得第一个格子
+        """
+        return self.owner.line_up_slots.get(1)

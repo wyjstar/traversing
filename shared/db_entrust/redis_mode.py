@@ -252,7 +252,7 @@ class MAdmin(RedisObject):
 
         if not record:
             return None
-
+        print '<>>>>', record
         record = mm.loads(record)
 
         mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
