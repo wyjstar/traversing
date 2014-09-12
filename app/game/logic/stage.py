@@ -2,8 +2,10 @@
 """
 created by server on 14-7-18下午3:44.
 """
+from app.game.core.fight.battle_unit import BattleUnit
 from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
+from app.game.redis_mode import tb_character_lord
 from app.proto_file import stage_response_pb2
 from shared.db_opear.configs_data import game_configs
 
@@ -44,7 +46,7 @@ def get_chapter_info(dynamic_id, chapter_id, **kwargs):
 
 
 @have_player
-def fight_start(dynamic_id, stage_id, line_up, **kwargs):
+def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     """开始战斗
     """
     player = kwargs.get('player')
@@ -61,8 +63,17 @@ def fight_start(dynamic_id, stage_id, line_up, **kwargs):
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
 
-    red_units, blue_units, drop_num = fight_cache_component.fighting_start()
-    return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num}
+    red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
+
+    # 好友
+    lord_data = tb_character_lord.getObjData(fid)
+    f_unit = None
+    if lord_data:
+        info = lord_data.get('info')
+        f_unit = BattleUnit.loads(info)
+
+    return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num,
+            'monster_unpara': monster_unpara, 'f_unit': f_unit}
 
 
 @have_player

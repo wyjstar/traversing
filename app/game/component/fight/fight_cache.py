@@ -61,6 +61,11 @@ class CharacterFightCacheComponent(Component):
         stages_config = game_configs.stage_config.get('stages')
         return stages_config.get(self._stage_id)
 
+    def __get_skill_config(self, skill_id):
+        """取得技能BUFF配置
+        """
+        return game_configs.skill_config.get(skill_id)
+
     def __get_monster_group_config(self, group_id):
         """取得怪物组信息
         """
@@ -144,21 +149,25 @@ class CharacterFightCacheComponent(Component):
 
         return monsters
 
+    def __get_monster_unpara(self):
+        """取得怪物无双
+        """
+        stage_config = self.__get_stage_config()  # 关卡配置
+        unpara = stage_config.warriorsSkill  # 无双编号
+
+        skill_config = self.__get_skill_config(unpara)
+        group = skill_config.group
+        return [unpara] + group
+
     def fighting_start(self):
         """战斗开始
         """
-        # heros = self.__get_hero_obj()
-        #
-        # print '#3:', heros
-        #
-        # red_units = [self.__assemble_hero(hero) if hero else None for hero in heros]  # 英雄单位
-
         red_units = self.red_unit
-
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
+        monster_unpara = self.__get_monster_unpara()
 
-        return red_units, blue_units, drop_num
+        return red_units, blue_units, drop_num, monster_unpara
 
     def fighting_settlement(self, stage_id, result):
         """战斗结算
