@@ -8,7 +8,7 @@ from app.chat.service.node.chatgateservice import nodeservice_handle
 
 
 @nodeservice_handle
-def login_chat_1001(command_id, character_id, dynamic_id, character_nickname, guild_id):
+def login_chat_1001(command_id, dynamic_id, character_id, guild_id, character_nickname):
     """登录聊天服务器
     @param dynamic_id: int 客户端的id
     @param character_id: int角色的id

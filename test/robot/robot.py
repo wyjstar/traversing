@@ -12,6 +12,10 @@ from app.proto_file.player_request_pb2 import CreatePlayerRequest
 
 
 class Robot(RobotBase):
+    def __init__(self):
+        self.id = 0
+        self.nickname = ''
+
     def __init__(self, manager, user_name, pwd, nickname):
         RobotBase.__init__(self)
 
@@ -63,6 +67,8 @@ class Robot(RobotBase):
         if not argument.res.result:
             self.on_character_login_result(argument.res.result)
 
+        self.id = argument.id
+        self.nickname = argument.nickname
         request = CreatePlayerRequest()
         request.nickname = self._nickname
         self.send_message(request, 5)

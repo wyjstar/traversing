@@ -2,6 +2,7 @@
 """
 created by server on 14-7-21下午5:12.
 """
+from app.game.action.root.netforwarding import login_chat
 
 from app.game.logic.common.check import have_player
 from app.game.redis_mode import tb_nickname_mapping, tb_character_info
@@ -31,6 +32,9 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         response.result_no = 2
         return response.SerializeToString()
     character_obj.update('nickname', nickname)
+
+    # 加入聊天
+    login_chat(dynamic_id, player.base_info.id, player.guild.g_id, nickname)
 
     response.result = True
     return response.SerializeToString()
