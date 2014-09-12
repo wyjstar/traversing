@@ -14,6 +14,7 @@
         "MA": {
             "webport": 20100,
             "name": "MA",
+            "db": true,
             "app": "app.MAserver",
             "log": "app/logs/MAserver.log"
         },

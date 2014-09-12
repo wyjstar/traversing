@@ -3,6 +3,7 @@
 created by sphinx on
 """
 import cPickle
+import gevent
 import redis
 import uuid
 
@@ -48,8 +49,22 @@ class MessageCache:
 message_cache = MessageCache()
 
 
+import time
 if __name__ == '__main__':
     message_cache.cache(444, 222, 'hihi', 'go')
     for key, request in message_cache.get(222):
         print request.get('args'), request.get('character_id')
         message_cache.delete(key)
+
+    def get_message():
+        print 'begin'
+        for _ in range(10000):
+            message = message_cache.get(222)
+        print 'end'
+
+    _time = time.time()
+    threads = []
+    for _ in range(100):
+        threads.append(gevent.spawn(get_message))
+    gevent.joinall(threads)
+    print 'use time:', time.time() - _time
