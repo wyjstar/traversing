@@ -67,7 +67,6 @@ class User(object):
     def character(self):
         character = self._character
         if not character:
-            print 'user_id:', self.user_id
             character = tb_character_info.getObjData(self.user_id)
             if not character:
                 character = {'id': self.user_id,
@@ -102,7 +101,6 @@ class User(object):
 
 
     def has_character(self):
-        print "self._character", self._character
         if not self._character:
             character = tb_character_info.getObjData(self.user_id)
             if not character:

@@ -110,7 +110,6 @@ class CharacterStageComponent(Component):
     def calculation_star(self, chapter_id):
         """根据章节ID计算当前星数
         """
-        print 'cuick,02eeeeeeeeeeeee', 'fffffff'
         stages_config = game_configs.stage_config.get('stages')
         chapter_stages_config = [self.get_stage(stage_id) for stage_id, item in stages_config.items() if
                                  not item.contents and item.chapter == chapter_id]
@@ -122,7 +121,6 @@ class CharacterStageComponent(Component):
             if not stage.state == 1:
                 continue
             num += 1
-        print 'cuick,03eeeeeeeeeeeee', num, 'fffffff'
         return num
 
     def update(self):

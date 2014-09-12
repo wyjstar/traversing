@@ -27,7 +27,5 @@ def init_guild_rank():
         string += """\n
         Error:Couldn't import the json config 'config.json' in the directory containing %(file)r.
         """ % {'file': __file__}
-        print string
 
     Ranking.init(level_configs)
-    print 'guild rank init ok'

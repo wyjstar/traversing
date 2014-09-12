@@ -11,7 +11,6 @@ from gfirefly.netconnect.datapack import DataPackProtoc
 def conn_made(conn):
     '''当连接建立时调用的方法'''
     if not GlobalObject().netfactory.connmanager.hasConnection(conn.transport.sessionno):
-        print "conn in queue!"
         queue_num = GlobalObject().netfactory.connmanager.queue_num
         GlobalObject().netfactory.pushObject(1326, str(queue_num), [conn.transport.sessionno])
     return
@@ -19,17 +18,13 @@ def conn_made(conn):
 
 def conn_lost(conn):
     dynamic_id = conn.transport.sessionno
-    print 'logout conn id:', dynamic_id
     if dynamic_id != 0:
         GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
 
     # pop queue conn to normal conn, when conn lost
-    print "current connection ids:", GlobalObject().netfactory.connmanager.connect_ids
     conn = GlobalObject().netfactory.connmanager.pop_queue()
     if conn:
         GlobalObject().netfactory.pushObject(1326, str(0), [conn.instance.transport.sessionno])
-        print "push message OK:", conn, conn.instance.transport.sessionno
-
 
 
 GlobalObject().netfactory.doConnectionLost = conn_lost

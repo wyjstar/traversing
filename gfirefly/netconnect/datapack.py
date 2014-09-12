@@ -67,7 +67,6 @@ class DataPackProtoc:
         '''
         try:
             ud = struct.unpack('!sssss3I', dpack)
-            # print 'unpack:', ud
         except struct.error, de:
             log.err(de)
             return {'result': False, 'command': 0, 'length': 0}
@@ -79,7 +78,6 @@ class DataPackProtoc:
         serverVersion = ud[5]
         length = ud[6] - 4
         command = ud[7]
-        print HEAD_0, HEAD_1, HEAD_2, HEAD_3, protoVersion, serverVersion, length, command
         if HEAD_0 <> self.HEAD_0 or HEAD_1 <> self.HEAD_1 or \
                         HEAD_2 <> self.HEAD_2 or \
                         protoVersion <> self.protoVersion or serverVersion <> self.serverVersion:
@@ -89,7 +87,6 @@ class DataPackProtoc:
     def pack(self, response, command):
         '''打包数据包
         '''
-        print 'data pack #1:', response, command
         HEAD_0 = chr(self.HEAD_0)
         HEAD_1 = chr(self.HEAD_1)
         HEAD_2 = chr(self.HEAD_2)

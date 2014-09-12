@@ -18,7 +18,6 @@ def forEachPlusInsertProps(tablename, props):
                   "'%s'," % str(val).replace("'", "\\'") for val in props.values()]
     pvaluesstr = ''.join(pvaluesstr)[:-1]
     sqlstr = """INSERT INTO `%s` %s values (%s);""" % (tablename, pkeysstr, pvaluesstr)
-    # print 'inster:', sqlstr
     return sqlstr
 
 

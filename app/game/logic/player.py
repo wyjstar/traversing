@@ -19,7 +19,6 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     if data:
         response.result = False
         response.result_no = 1
-        print 'the nickanme(%s) is used' % nickname
         return response.SerializeToString()
 
     nickname_data = dict(id=player.base_info.id, nickname=nickname)
@@ -28,7 +27,6 @@ def nickname_create(dynamic_id, nickname, **kwargs):
 
     character_obj = tb_character_info.getObj(player.base_info.id)
     if not character_obj:
-        print 'nickname create: cant find character info obj by id:', player.base_info.id
         response.result_no = 2
         return response.SerializeToString()
     character_obj.update('nickname', nickname)
