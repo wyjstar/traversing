@@ -251,9 +251,10 @@ class LineUpSlotComponent(Component):
         print '#1>>>>> lord_data:', lord_data
         if lord_data:
             lord_obj = tb_character_lord.getObj(self.owner.character_id)
-            lord_obj.update('attr_info', {'info': unit.dumps()})
+            lord_obj.update('attr_info', {'info': unit.dumps(), 'power': self.combat_power()})
         else:
-            tb_character_lord.new({'id': self.owner.character_id, 'attr_info': {'info': unit.dumps()}})
+            tb_character_lord.new({'id': self.owner.character_id, 'attr_info': {'info': unit.dumps(),
+                                                                                'power': self.combat_power()}})
 
     @property
     def first_slot(self):

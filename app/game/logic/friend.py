@@ -6,11 +6,13 @@ import datetime
 
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
-from app.game.redis_mode import tb_nickname_mapping, tb_character_info
+from app.game.redis_mode import tb_nickname_mapping
+from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_lord
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
-from app.game.action.root.netforwarding import push_object, push_message
-
+from app.game.action.root.netforwarding import push_object
+from app.game.action.root.netforwarding import push_message
 
 @have_player
 def add_friend_request(dynamic_id, data, **kwargs):
@@ -255,9 +257,18 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_friend_add = response.friends.add()
             response_friend_add.player_id = pid
             response_friend_add.nickname = player_data.get('nickname')
-            response_friend_add.ap = 999
-            response_friend_add.icon_id = 99
             response_friend_add.gift = datetime.datetime.now().day
+
+            # 添加好友主将的属性
+            lord_data = tb_character_lord.getObjData(pid)
+            if lord_data:
+                info = lord_data.get('info', {})
+                response_friend_add.hero_no = info.get('no', 0)
+                response_friend_add.power = lord_data.get('power', 0)
+                response_friend_add.hp = info.get('hp', 0)
+                response_friend_add.atk = info.get('atk', 0)
+                response_friend_add.physical_def = info.get('physical_def', 0)
+                response_friend_add.magic_def = info.get('magic_def', 0)
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -267,9 +278,18 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.player_id = pid
             response_blacklist_add.nickname = player_data.get('nickname')
-            response_blacklist_add.ap = 888
-            response_blacklist_add.icon_id = 88
             response_blacklist_add.gift = datetime.datetime.now().day
+
+            # 添加好友主将的属性
+            lord_data = tb_character_lord.getObjData(pid)
+            if lord_data:
+                info = lord_data.get('info', {})
+                response_friend_add.hero_no = info.get('no', 0)
+                response_friend_add.power = lord_data.get('power', 0)
+                response_friend_add.hp = info.get('hp', 0)
+                response_friend_add.atk = info.get('atk', 0)
+                response_friend_add.physical_def = info.get('physical_def', 0)
+                response_friend_add.magic_def = info.get('magic_def', 0)
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -279,9 +299,18 @@ def get_player_friend_list(dynamic_id, **kwargs):
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.player_id = pid
             response_applicant_list_add.nickname = player_data.get('nickname')
-            response_applicant_list_add.ap = 666
-            response_applicant_list_add.icon_id = 66
             response_applicant_list_add.gift = datetime.datetime.now().day
+            
+            # 添加好友主将的属性
+            lord_data = tb_character_lord.getObjData(pid)
+            if lord_data:
+                info = lord_data.get('info', {})
+                response_friend_add.hero_no = info.get('no', 0)
+                response_friend_add.power = lord_data.get('power', 0)
+                response_friend_add.hp = info.get('hp', 0)
+                response_friend_add.atk = info.get('atk', 0)
+                response_friend_add.physical_def = info.get('physical_def', 0)
+                response_friend_add.magic_def = info.get('magic_def', 0)
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
