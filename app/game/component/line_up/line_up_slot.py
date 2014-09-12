@@ -245,10 +245,8 @@ class LineUpSlotComponent(Component):
         """
         更新主将属性
         """
-        print '#2>>>>>', self.owner.character_id
         unit = self.slot_attr
         lord_data = tb_character_lord.getObjData(self.owner.character_id)
-        print '#1>>>>> lord_data:', lord_data
         if lord_data:
             lord_obj = tb_character_lord.getObj(self.owner.character_id)
             lord_obj.update('attr_info', {'info': unit.dumps(), 'power': self.combat_power()})

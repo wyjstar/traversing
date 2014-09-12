@@ -52,7 +52,6 @@ class Guild(object):
                      'record': self._record,
                      'p_list': self._p_list,
                      'apply': self._apply}}
-        print "cuick,###############,SAVE_DATA,guild info:", data
         guild_data = tb_guild_info.getObj(self._g_id)
         guild_data.update_multi(data)
 

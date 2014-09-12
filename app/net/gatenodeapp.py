@@ -14,13 +14,11 @@ def pushObject(topicID,msg,sendList):
 
 @remoteserviceHandle('gate')
 def disconnect(connection_id):
-    print 'disconnect a player', connection_id
     GlobalObject().netfactory.loseConnection(connection_id)
     return True
 
 
 @remoteserviceHandle('gate')
 def change_dynamic_id(old_id, new_id):
-    print 'net - gat change id new id', new_id, '>>>>>', old_id
     GlobalObject().netfactory.change_id(old_id, new_id)
     return True

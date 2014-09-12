@@ -31,7 +31,6 @@ def add_friend_request(dynamic_id, data, **kwargs):
     if len(request.target_ids) < 1:
         response.result = False
         response.result_no = 5  # fail
-        print 'add_friend_request target_ids less one!'
         return response.SerializePartialToString()  # fail
 
     target_id = request.target_ids[0]
@@ -40,8 +39,6 @@ def add_friend_request(dynamic_id, data, **kwargs):
     if target_id == player.base_info.id:
         response.result = False  # cant invite oneself as friend
         response.result_no = 4  # fail
-        print 'add_friend_request cant add oneself as friend! self:%d target:%d'\
-              % (player.base_info.id, target_id)
         return response.SerializePartialToString()  # fail
 
     invitee_player = PlayersManager().get_player_by_id(target_id)
@@ -66,7 +63,6 @@ def add_friend_request(dynamic_id, data, **kwargs):
 def add_friend_request_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.add_applicant(target_id)
-    print 'remote add applicant result:', result, is_online
     return True
 
 
@@ -89,7 +85,6 @@ def become_friends(dynamic_id, data, **kwargs):
     for target_id in request.target_ids:
         if not player.friends.add_friend(target_id):
             response.result = False
-            print 'player add friend fail'
             continue
 
         # save data
@@ -100,7 +95,6 @@ def become_friends(dynamic_id, data, **kwargs):
             if not inviter_player.friends.add_friend(player.base_info.id,
                                                      False):
                 response.result = False
-                print 'inviter add friend fail'
 
         # save data
             inviter_player.friends.save_data()
@@ -108,7 +102,6 @@ def become_friends(dynamic_id, data, **kwargs):
         else:
             if not push_message(1051, target_id, player.base_info.id):
                 response.result = False
-                print 'offline player add friend fail'
 
         # response.result_no += 1
     return response.SerializePartialToString()
@@ -118,7 +111,6 @@ def become_friends(dynamic_id, data, **kwargs):
 def become_friends_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.add_friend(target_id, False)
-    print 'remote add friend result:', result, is_online
     return True
 
 
@@ -189,7 +181,6 @@ def del_friend(dynamic_id, data, **kwargs):
 def del_friend_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.del_friend(target_id, False)
-    print 'remote del friend result:', result, is_online
     return True
 
 

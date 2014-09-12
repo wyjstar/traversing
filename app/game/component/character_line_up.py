@@ -32,8 +32,6 @@ class CharacterLineUpComponent(Component):
     def init_data(self):
         line_up_data = tb_character_line_up.getObjData(self.character_id)
 
-        # print '#line up init data:', line_up_data
-
         if line_up_data:
             # 阵容位置信息
             line_up_slots = line_up_data.get('line_up_slots')
@@ -58,7 +56,6 @@ class CharacterLineUpComponent(Component):
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态
-        print game_configs.base_config
         for i in range(1, 7):
             slot = self._line_up_slots[i]
             if self.owner.level.level > game_configs.base_config.get("hero_position_open_level").get(i):
@@ -99,7 +96,6 @@ class CharacterLineUpComponent(Component):
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
             new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
-        print '<character line up>', self._line_up_order, new_line_up_order
         self._line_up_order = new_line_up_order
 
     @property

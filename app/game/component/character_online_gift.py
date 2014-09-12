@@ -34,7 +34,6 @@ class CharacterOnlineGift(Component):
         activity = tb_character_activity.getObj(self.owner.base_info.id)
         data = {'online_time': self._online_time,
                 'received_gift_ids': self._received_gift_ids}
-        print 'offline datetime', data
         activity.update('online_gift', data)
 
     def offline_player(self):

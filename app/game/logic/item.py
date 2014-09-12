@@ -15,7 +15,6 @@ from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
 @have_player
 def get_items(dynamic_id, **kwargs):
     player = kwargs.get('player')
-    print "playerid", player.base_info.id
     items = player.item_package.get_all()
     # game_items = {1000:1, 1001:2}
     response = GetItemsResponse()
@@ -35,12 +34,7 @@ def use_item(dynamic_id, pro_data, **kwargs):
     item_num = item_pb.item_num
     item_config_item = item_config.get(item_no)
     if not item_config_item:
-        print("item %d is not itemconfig." % item_no)
         return
-    print "item_no", item_no
-    print "item_num", item_num
-    print "item_config_item", item_config_item
-    print ("item????????", item_config_item.dropId)
     item_func = item_config_item.func
     drop_id = item_config_item.dropId
     func_args1 = item_config_item.funcArgs1

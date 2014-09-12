@@ -51,5 +51,4 @@ message_cache = MessageCache()
 if __name__ == '__main__':
     message_cache.cache(444, 222, 'hihi', 'go')
     for key, request in message_cache.get(222):
-        print request.get('args'), request.get('character_id')
         message_cache.delete(key)

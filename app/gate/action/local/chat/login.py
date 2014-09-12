@@ -12,8 +12,6 @@ def login_chat_1001(command_id, dynamic_id, request_proto):
     """登录聊天服务器
     """
     # TODO 登录协议需要修改
-    print command_id, dynamic_id, request_proto
-
     argument = chat_pb2.LoginToChatRequest()
     argument.ParseFromString(request_proto)
     response = chat_pb2.ChatResponse()
