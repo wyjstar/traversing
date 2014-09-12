@@ -106,7 +106,7 @@ class CharacterHerosComponent(Component):
             'character_id': character_id,
             'property': hero_property
         }
-        hero.mmode = tb_character_hero.new(data)
+        tb_character_hero.new(data)
 
 
 

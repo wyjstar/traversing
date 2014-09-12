@@ -32,6 +32,8 @@ from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
 from shared.db_opear.configs_data.guild_config import GuildConfig
+from shared.db_opear.configs_data.vip_config import VIPConfig
+
 
 
 def init():
@@ -89,6 +91,7 @@ guild_config = {}
 sign_in_config = {}
 warriors_config = {}
 activity_config = {}
+vip_config = {}
 
 
 all_config_name = {
@@ -115,6 +118,7 @@ all_config_name = {
     'sign_in_config': SignInConfig(),
     'warriors_config': WarriorsConfig(),
     'activity_config': ActivityConfig(),
+    'vip_config': VIPConfig(),
 }
 
 

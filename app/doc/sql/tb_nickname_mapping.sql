@@ -22,5 +22,5 @@ DROP TABLE IF EXISTS `tb_nickname_mapping`;
 CREATE TABLE `tb_nickname_mapping` (
   `id` int(11) NOT NULL,
   `nickname` char(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

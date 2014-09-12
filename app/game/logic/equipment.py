@@ -30,7 +30,7 @@ def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
 
 @have_player
 def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwargs):
-    """
+    """装备强化
     @param dynamic_id:  客户端动态ID
     @param equipment_id: 装备ID
     @param enhance_type: 强化类型
