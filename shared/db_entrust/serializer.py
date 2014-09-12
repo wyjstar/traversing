@@ -50,6 +50,7 @@ class Serializer(object):
                 else:
                     loads_func = getattr(self, columns[attr] + "_loads")
                     data[attr] = loads_func(data[attr])
+        setattr(self, 'data', data)
         return data
 
     def dumps(self, data, shallow=False):
