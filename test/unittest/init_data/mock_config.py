@@ -36,11 +36,11 @@ for key, value in base_config_mock.items():
 # ------------------------hero----------------------------
 
 hero1 = {'id': 10001, 'name': 'hero10001', 'sacrificeGain': {const.HERO_SOUL: [100, 100, 0]},
-         'sellGain': {const.COIN: [100, 100, 0]}, 'breakLimit': 6}
+         'sellGain': {const.COIN: [100, 100, 0]}, 'breakLimit': 6, 'growHp': 10}
 hero2 = {'id': 10002, 'name': 'hero10002', 'sacrificeGain': {const.HERO_SOUL: [200, 200, 0]},
-         'sellGain': {const.COIN: [200, 300, 0]}, 'breakLimit': 6}
+         'sellGain': {const.COIN: [200, 300, 0]}, 'breakLimit': 6, 'growHp': 10}
 hero3 = {'id': 10003, 'name': 'hero10003', 'sacrificeGain': {const.HERO_SOUL: [300, 300, 0]},
-         'sellGain': {const.COIN: [300, 300, 0]}, 'breakLimit': 6}
+         'sellGain': {const.COIN: [300, 300, 0]}, 'breakLimit': 6, 'growHp': 10}
 
 hero_config.clear()
 hero_config_mock = HeroConfig().parser([hero1, hero2, hero3])
