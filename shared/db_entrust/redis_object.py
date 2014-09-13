@@ -140,8 +140,6 @@ class RedisObject(Serializer):
         del nowdict['_client']
         if ('data' in nowdict) and nowdict['data']:
             nowdict['data'] = cPickle.dumps(self.dumps(dict(nowdict['data'])))
-
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
-
         self._client.mset(newmapping)
