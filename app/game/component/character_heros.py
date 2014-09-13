@@ -100,13 +100,13 @@ class CharacterHerosComponent(Component):
     def new_hero_data(self, hero):
         character_id = self.owner.base_info.id
         hero_property = hero.hero_proerty_dict()
-
+        print 'new hero data:', hero_property, type(hero_property)
         data = {
             'id': self.get_hero_id(hero.hero_no),
             'character_id': character_id,
             'property': hero_property
         }
-        hero.mmode = tb_character_hero.new(data)
+        tb_character_hero.new(data)
 
 
 
