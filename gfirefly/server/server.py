@@ -79,6 +79,7 @@ class FFServer:
         if webport:
             self.webroot = Flask("master")
             GlobalObject().webroot = self.webroot
+            self.webroot.debug = True
             # reactor.listenTCP(webport, self.webroot)
             reactor.listenWSGI(webport, self.webroot)
 
