@@ -36,7 +36,6 @@ class CharacterHerosComponent(Component):
             return
 
         hero_ids = character_heros.get('hero_ids')
-        print '#1 >>>> init_heros:', hero_ids, type(hero_ids)
         if not hero_ids:
             return
 
