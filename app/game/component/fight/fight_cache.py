@@ -154,7 +154,8 @@ class CharacterFightCacheComponent(Component):
         """
         stage_config = self.__get_stage_config()  # 关卡配置
         unpara = stage_config.warriorsSkill  # 无双编号
-
+        if not unpara:
+            return []
         skill_config = self.__get_skill_config(unpara)
         group = skill_config.group
         return [unpara] + group
