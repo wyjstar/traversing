@@ -191,7 +191,7 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
-                "heros": "complex"
+                "hero_ids": "complex"
             }
         },
         "tb_character_hero": {
