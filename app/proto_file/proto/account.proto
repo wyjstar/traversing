@@ -20,7 +20,7 @@ message ServerInfo{
 message AccountResponse{
      required bool result = 1;
      optional string message = 2;
-     optional AccountKey key = 3;
+     optional string passport = 3;
      repeated ServerInfo server_list = 4;
 }
 

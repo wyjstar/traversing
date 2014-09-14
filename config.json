@@ -85,19 +85,6 @@
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log"
         },
-        "account": {
-            "name": "account",
-            "mem": true,
-            "db": true,
-            "remoteport": [
-                {
-                    "rootport": 10000,
-                    "rootname": "gate"
-                }
-            ],
-            "app": "app.accountserver",
-            "log": "app/logs/account.log"
-        },
         "chat": {
             "name": "chat",
             "remoteport": [
