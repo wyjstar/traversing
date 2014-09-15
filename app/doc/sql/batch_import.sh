@@ -1,6 +1,6 @@
  for i in *.sql
  do
-    if [[ $i == delete* ]]
+    if [[ $i == delete* ]] || [[ $i == traversing_master* ]]
     then
         echo "filter the file $i"
         continue
