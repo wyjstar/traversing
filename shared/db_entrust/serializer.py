@@ -44,6 +44,8 @@ class Serializer(object):
                     pass
                 elif columns[attr] == "complex":
                     if data[attr]:
+                        print attr, data[attr]
+                        print cPickle.loads(str(data[attr]))
                         data[attr] = cPickle.loads(str(data[attr]))
                     else:
                         data[attr] = None

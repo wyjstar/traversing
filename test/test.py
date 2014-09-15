@@ -3,18 +3,23 @@
 created by server on 14-7-23下午3:45.
 """
 import time
+import cPickle
 from app.proto_file.common_pb2 import CommonResponse
 if __name__ == '__main__':
-    response = CommonResponse()
-    data = response.SerializePartialToString()
-    print response.result
-    print response.result_no
-    print response.message
-    print type(response)
+    # response = CommonResponse()
+    # data = response.SerializePartialToString()
+    # print response.result
+    # print response.result_no
+    # print response.message
+    # print type(response)
+    #
+    # response2 = CommonResponse()
+    # response2.ParseFromString(data)
+    # print response2.result_no
+    # print response2.message
+#     print cPickle.loads("(dp1\nS'sub_slots'\np2\nS'(dp1\\nI1\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI1\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np2\\nsI2\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI2\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np3\\nsI3\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI3\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np4\\nsI4\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI4\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np5\\nsI5\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI00\\\\nsS\\'slot_no\\'\\\\np4\\\\nI5\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np6\\nsI6\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI00\\\\nsS\\'slot_no\\'\\\\np4\\\\nI6\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np7\\ns.'\np3\nsS'id'\np4\nL2L\nsS'line_up_order'\np5\nS'(lp1\\nI1\\naI2\\naI3\\naI4\\naI5\\naI6\\na.'\np6\nsS'line_up_slots'\np7\nS'(dp1\\nI1\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI10005\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI1\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nS\\'0001\\'\\\\np7\\\\nsI2\\\\nS\\'0002\\'\\\\np8\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np2\\nsI2\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI10015\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI2\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nS\\'0003\\'\\\\np7\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np3\\nsI3\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI3\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np4\\nsI4\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI4\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np5\\nsI5\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI5\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np6\\nsI6\\nS\"(dp1\\\\nS\\'hero_no\\'\\\\np2\\\\nI0\\\\nsS\\'activation\\'\\\\np3\\\\nI01\\\\nsS\\'slot_no\\'\\\\np4\\\\nI6\\\\nsS\\'equipment_ids\\'\\\\np5\\\\n(dp6\\\\nI1\\\\nI0\\\\nsI2\\\\nI0\\\\nsI3\\\\nI0\\\\nsI4\\\\nI0\\\\nsI5\\\\nI0\\\\nsI6\\\\nI0\\\\nss.\"\\np7\\ns.'\np8\ns."
+# )
+    print cPickle.loads(str('(dp1\nI1\nS"(dp1\\nS\'hero_no\'\\np2\\nI0\\nsS\'activation\'\\np3\\nI01\\nsS\'slot_no'
+                           '\'\\np4\\nI1\\nsS\'equipment_ids\'\\np5\\n(dp6\\nI1\\nI0\\nsI2\\nI0\\nsI3\\nI0\\nsI4\\nI0\\nsI5\\nI0\\nsI6\\nI0\\nss."\np2\nsI2\nS"(dp1\\nS\'hero_no\'\\np2\\nI0\\nsS\'activation\'\\np3\\nI01\\nsS\'slot_no\'\\np4\\nI2\\nsS\'equipment_ids\'\\np5\\n(dp6\\nI1\\nI0\\nsI2\\nI0\\nsI3\\nI0\\nsI4\\nI0\\nsI5\\nI0\\nsI6\\nI0\\nss."\np3\nsI3\nS"(dp1\\nS\'hero_no\'\\np2\\nI0\\nsS\'activation\'\\np3\\nI01\\nsS\'slot_no\'\\np4\\nI3\\nsS\'equipment_ids\'\\np5\\n(dp6\\nI1\\nI0\\nsI2\\nI0\\nsI3\\nI0\\nsI4\\nI0\\nsI5\\nI0\\nsI6\\nI0\\nss."\np4\nsI4\nS"(dp1\\nS\'hero_no\'\\np2\\nI0\\nsS\'activation\'\\np3\\nI01\\nsS\'slot_no\'\\np4\\nI4\\nsS\'equipment_ids\'\\np5\\n(dp6\\nI1\\nI0\\nsI2\\nI0\\nsI3\\nI0\\nsI4\\nI0\\nsI5\\nI0\\nsI6\\nI0\\nss."\np5\nsI5\nS"(dp1\\nS\'hero_no\'\\np2\\nI0\\nsS\'activation\'\\np3\\nI00\\nsS\'slot_no\'\\np4\\nI5\\nsS\'equipment_ids\'\\np5\\n(dp6\\nI1\\nI0\\nsI2\\nI0\\nsI3\\nI0\\nsI4\\nI0\\nsI5\\nI0\\nsI6\\nI0\\nss."\np6\nsI6\nS"(dp1\\nS\'hero_no\'\\np2\\nI0\\nsS\'activation\'\\np3\\nI00\\nsS\'slot_no\'\\np4\\nI6\\nsS\'equipment_ids\'\\np5\\n(dp6\\nI1\\nI0\\nsI2\\nI0\\nsI3\\nI0\\nsI4\\nI0\\nsI5\\nI0\\nsI6\\nI0\\nss."\np7\ns.'))
 
-    response2 = CommonResponse()
-    response2.ParseFromString(data)
-    print response2.result_no
-    print response2.message
-
-
+    print cPickle.loads(str('(dp1\nI1\nS"(dp1\nS\'hero_no\'\np2\nI0\nsS\'activation\'\np3\nI01\nsS\'slot_no\'\np4\nI1\nsS\'equipment_ids\'\np5\n(dp6\nI1\nI0\nsI2\nI0\nsI3\nI0\nsI4\nI0\nsI5\nI0\nsI6\nI0\nss."\np2\nsI2\nS"(dp1\nS\'hero_no\'\np2\nI0\nsS\'activation\'\np3\nI01\nsS\'slot_no\'\np4\nI2\nsS\'equipment_ids\'\np5\n(dp6\nI1\nI0\nsI2\nI0\nsI3\nI0\nsI4\nI0\nsI5\nI0\nsI6\nI0\nss."\np3\nsI3\nS"(dp1\nS\'hero_no\'\np2\nI0\nsS\'activation\'\np3\nI01\nsS\'slot_no\'\np4\nI3\nsS\'equipment_ids\'\np5\n(dp6\nI1\nI0\nsI2\nI0\nsI3\nI0\nsI4\nI0\nsI5\nI0\nsI6\nI0\nss."\np4\nsI4\nS"(dp1\nS\'hero_no\'\np2\nI0\nsS\'activation\'\np3\nI01\nsS\'slot_no\'\np4\nI4\nsS\'equipment_ids\'\np5\n(dp6\nI1\nI0\nsI2\nI0\nsI3\nI0\nsI4\nI0\nsI5\nI0\nsI6\nI0\nss."\np5\nsI5\nS"(dp1\nS\'hero_no\'\np2\nI0\nsS\'activation\'\np3\nI00\nsS\'slot_no\'\np4\nI5\nsS\'equipment_ids\'\np5\n(dp6\nI1\nI0\nsI2\nI0\nsI3\nI0\nsI4\nI0\nsI5\nI0\nsI6\nI0\nss."\np6\nsI6\nS"(dp1\nS\'hero_no\'\np2\nI0\nsS\'activation\'\np3\nI00\nsS\'slot_no\'\np4\nI6\nsS\'equipment_ids\'\np5\n(dp6\nI1\nI0\nsI2\nI0\nsI3\nI0\nsI4\nI0\nsI5\nI0\nsI6\nI0\nss."\np7\ns.'))
