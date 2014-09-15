@@ -82,7 +82,7 @@ def __do_enhance(player, equipment_obj):
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
     if not enhance_cost or curr_coin < enhance_cost:
         return False
-    before_lv, after_lv = equipment_obj.enhance()
+    before_lv, after_lv = equipment_obj.enhance(player)
     print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
     return before_lv, after_lv, enhance_cost

@@ -26,6 +26,7 @@ def get_sign_in(dynamic_id, **kwargs):
 @have_player
 def sign_in(dynamic_id, **kwargs):
     """签到"""
+    print "sign_in++++++++++++++"
     player = kwargs.get('player')
     response = SignInResponse()
 
@@ -39,6 +40,7 @@ def sign_in(dynamic_id, **kwargs):
 
     # 同一天签到校验
     if player.sign_in_component.is_signd(month, day):
+        print "sign in error code:", 1405
         response.res.result = False
         response.res.result_no = 1405
         return response.SerializePartialToString()
@@ -88,6 +90,7 @@ def continuous_sign_in(dynamic_id, days, **kwargs):
 @have_player
 def repair_sign_in(dynamic_id, day, **kwargs):
     """补充签到"""
+    print "repair_sign_in+++++++++++", day
     player = kwargs.get('player')
     response = SignInResponse()
 

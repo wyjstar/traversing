@@ -8,6 +8,7 @@ from app.game.component.record.equipment_enhance import EquipmentEnhanceComponen
 from app.game.redis_mode import tb_equipment_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.utils.random_pick import random_pick_with_percent
 
 
 class Equipment(object):
@@ -56,16 +57,27 @@ class Equipment(object):
     def attribute(self):
         return self._attribute
 
-    def enhance(self):
+    def enhance(self, player):
         """强化
         """
         before_lv = self._attribute.strengthen_lv
         enhance_lv = 1
-        # TODO 暴击强化修改enhance_lv
+        extra_enhance = self.get_extra_enhance_times(player)*enhance_lv
+
         self._attribute.modify_single_attr('strengthen_lv', enhance_lv, add=True)
         after_lv = self._attribute.strengthen_lv
 
         return before_lv, after_lv
+
+    def get_extra_enhance_times(self, player):
+        """ 获取强化暴击倍数
+        return: 暴击倍数
+        """
+        items = player.equipment_strength_cli_times
+        times = random_pick_with_percent(items)
+        if times:
+            return times
+        return 1
 
     def nobbing(self):
         """锤炼

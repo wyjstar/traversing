@@ -64,7 +64,7 @@ class PlayerCharacter(Character):
         self._online_gift = CharacterOnlineGift(self)  # online gift
         self._level_gift = CharacterLevelGift(self)  # level gift
         self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
-        self._vip_level = CharacterVIPComponent(self)  # VIP level
+        self._vip = CharacterVIPComponent(self)  # VIP level
 
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
@@ -139,7 +139,7 @@ class PlayerCharacter(Character):
         self._level_gift.init_data()
         self._feast.init_feast()
         self._login_gift.init_data()
-        self._vip_level.init_vip(vip_level)
+        self._vip.init_vip(vip_level)
 
     @property
     def character_type(self):
@@ -255,6 +255,10 @@ class PlayerCharacter(Character):
         return self._sign_in
 
     @property
+    def vip_component(self):
+        return self._vip
+
+    @property
     def online_gift(self):
         return self._online_gift
 
@@ -293,4 +297,4 @@ class PlayerCharacter(Character):
         character_info = tb_character_info.getObj(pid)
         character_info.update_multi(dict(level=self._level.level, exp=self.level.exp, stamina=self._stamina,
                                          pvp_times=self._pvp_times, get_stamina_times=self._get_stamina_times,
-                                         vip_level = self._vip_level.vip_level))
+                                         vip_level = self._vip.vip_level))
