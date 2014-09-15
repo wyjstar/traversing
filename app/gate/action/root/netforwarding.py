@@ -70,7 +70,7 @@ def add_guild_to_rank(g_id, dengji):
 @rootserviceHandle
 def login_chat(dynamic_id, character_id, guild_id, nickname):
     # TODO chat guild id
-    GlobalObject().root.callChild('chat', 1001, dynamic_id, character_id, 'abc', nickname)
+    GlobalObject().root.callChild('chat', 1001, dynamic_id, character_id, nickname, 'abc')
 
 
 @rootserviceHandle

@@ -28,11 +28,12 @@ def character_login_4(key, dynamic_id, request_proto):
     else:
         guild_id = 0
     nickname = response[0].nickname
+    nickname = unicode(dynamic_id)+'aaa'
     if nickname:
         #TODO 起名时候
         # 聊天室登录
         # TODO chat guild id
-        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname, 'abc')
+        GlobalObject().root.callChild('chat', 1001, dynamic_id, response[1], nickname, 'abc')
     return response[0].SerializePartialToString()
 
 

@@ -20,7 +20,10 @@ class ChaterManager(object):
     def get_guild_dynamicid(self, guild_id):
         """获取公会成员的动态id
         """
-        return self.guild[guild_id]
+        ids = self.guild.get(guild_id)
+        if ids:
+            return ids
+        return []
 
     def getall_dynamicid(self):
         """获取所有在线角色的动态id
@@ -73,7 +76,8 @@ class ChaterManager(object):
         if guild_id:
             if not self.guild.get(guild_id):
                 self.guild[guild_id] = []
-            self.guild[guild_id].append(dynamic_id)
+            if self.guild[guild_id].count(dynamic_id) == 0:
+                self.guild[guild_id].append(dynamic_id)
 
     def update_outland(self, chater_id, dynamic_id, guild_id):
         """设置角色下线

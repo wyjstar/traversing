@@ -23,7 +23,7 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
     """
     chater = ChaterManager().getchater_by_id(character_id)
     ids = []
-
+    ids = ChaterManager().getall_dynamicid()
     if not chater:
         # TODO message 信息要补充
         return {'result': False}
