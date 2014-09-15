@@ -182,7 +182,6 @@ def InsertIntoDB(tablename, data):
     """写入数据库
     """
     sql = forEachPlusInsertProps(tablename, data)
-    print 'insert into db:', sql
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
@@ -242,14 +241,12 @@ def GetOneRecordInfo(tablename, props):
     # print 'GetOneRecordInfo:', props
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)
-    print 'get one:', sql
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
     conn.close()
-    print 'select one >>>>:', result
     return result
 
 
@@ -264,7 +261,6 @@ def GetRecordList(tablename, pkname, pklist):
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
-    print 'sqlxyz', sql
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
