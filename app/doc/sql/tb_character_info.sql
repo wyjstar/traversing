@@ -37,6 +37,7 @@ CREATE TABLE `tb_character_info` (
   `pvp_times` int(11),
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
   `last_login_time` int(11),
-  `create_time` int(11) NOT NULL,
+  `vip_level` int(11) NOT NULL DEFAULT '0',
+  `create_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -18,7 +18,6 @@ def forEachPlusInsertProps(tablename, props):
                   "'%s'," % str(val).replace("'", "\\'") for val in props.values()]
     pvaluesstr = ''.join(pvaluesstr)[:-1]
     sqlstr = """INSERT INTO `%s` %s values (%s);""" % (tablename, pkeysstr, pvaluesstr)
-    # print 'inster:', sqlstr
     return sqlstr
 
 
@@ -224,6 +223,7 @@ def GetOneRecordInfo(tablename, props):
 def GetRecordList(tablename, pkname, pklist):
     """
     """
+    print pklist
     pkliststr = ""
     for pkid in pklist:
         pkliststr += "'%s'," % pkid
@@ -231,7 +231,7 @@ def GetRecordList(tablename, pkname, pklist):
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
     conn = dbpool.connection()
     cursor = conn.cursor(cursorclass=DictCursor)
-    # print 'sqlxyz', sql
+    print 'sqlxyz', sql
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

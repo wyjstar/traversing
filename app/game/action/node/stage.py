@@ -71,8 +71,6 @@ def stage_start_903(dynamic_id, pro_data):
             continue
         line_up[line.hero_id] = line.pos
 
-    print '<stage start>', line_up
-
     stage_info = fight_start(dynamic_id, stage_id, line_up, unparalleled, fid)
     result = stage_info.get('result')
 
@@ -114,7 +112,6 @@ def stage_start_903(dynamic_id, pro_data):
         friend = response.friend
         assemble(friend, f_unit)
 
-    print '< start fight>', response
     return response.SerializePartialToString()
 
 

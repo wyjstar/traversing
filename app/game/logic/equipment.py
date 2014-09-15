@@ -30,7 +30,7 @@ def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
 
 @have_player
 def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwargs):
-    """
+    """装备强化
     @param dynamic_id:  客户端动态ID
     @param equipment_id: 装备ID
     @param enhance_type: 强化类型
@@ -39,7 +39,6 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     @return:
     """
     player = kwargs.get('player')
-    print player, "player"
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     print equipment_obj, "equipment_obj"
@@ -68,7 +67,6 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
                 break
             enhance_record.append(result)
 
-    print "return succ"
     # TODO 更新
     return {'result': True, 'enhance_record': enhance_record}
 
@@ -97,7 +95,6 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
     player = kwargs.get('player')
 
     chip = player.equipment_chip_component.get_chip(chip_no)
-    print "chip", chip
     # 没有碎片
     if not chip:
         return {'result': False, 'result_no': 102, 'message': u''}
@@ -110,7 +107,6 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
         return {'result': False, 'result_no': 102, 'message': u''}
     equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
     chip.chip_num -= compose_num
-    print "equipment_obj", equipment_obj
     return {'result': True, 'equipment_obj': equipment_obj}
 
 

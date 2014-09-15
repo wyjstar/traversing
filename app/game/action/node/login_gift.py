@@ -12,7 +12,6 @@ def init_login_gift_825(dynamic_id, pro_data):
     """登录奖励
     """
     response = InitLoginGiftResponse()
-    print('cuick,AAAAAAAAAAAAAAAAA,01,node,get_login_gift_825')
 
     cumulative_received, continuous_received, cumulative_day, continuous_day = init_login_gift(dynamic_id)
     for i in cumulative_received:
@@ -34,7 +33,6 @@ def init_login_gift_825(dynamic_id, pro_data):
 def get_login_gift_826(dynamic_id, pro_data):
     """领取登录奖励
     """
-    print('cuick,BBBBBBBBBBBBBBBBBBBBB,01,node,get_login_gift_826')
     args = GetLoginGiftRequest()
     args.ParseFromString(pro_data)
     activity_id = args.activity_id

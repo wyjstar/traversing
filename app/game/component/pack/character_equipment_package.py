@@ -26,7 +26,6 @@ class CharacterEquipmentPackageComponent(Component):
     def init_data(self):
         equipments_data = tb_character_equipments.getObjData(self.owner.base_info.id)
         if equipments_data:
-            print 'equipments_data:', equipments_data
             equipment_ids = equipments_data.get('equipments')
 
             for equipment_id in equipment_ids:

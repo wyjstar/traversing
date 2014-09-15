@@ -74,7 +74,6 @@ class webserviceHandle:
         else:
             child_name = cls.__name__
 
-        print child_name, self.kw
         return GlobalObject().webroot.route(child_name, **self.kw)(cls)
 
 
