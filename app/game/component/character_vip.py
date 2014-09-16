@@ -81,6 +81,7 @@ class CharacterVIPComponent(Component):
     @property
     def equipment_strength_cli_times(self):
         """装备强化暴击次数"""
+        return {2:0.3, 4:0.1}
         return self._vip_content.equipmentStrengthCliTimes
 
     @property

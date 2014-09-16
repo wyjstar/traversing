@@ -73,7 +73,7 @@ class Equipment(object):
         """ 获取强化暴击倍数
         return: 暴击倍数
         """
-        items = player.equipment_strength_cli_times
+        items = player.vip_component.equipment_strength_cli_times
         times = random_pick_with_percent(items)
         if times:
             return times

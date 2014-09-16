@@ -67,7 +67,10 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
                 break
             enhance_record.append(result)
 
-    # TODO 更新
+    # 保存
+    equipment_obj.save_data()
+    player.finance.save_data()
+
     return {'result': True, 'enhance_record': enhance_record}
 
 
@@ -83,8 +86,10 @@ def __do_enhance(player, equipment_obj):
     if not enhance_cost or curr_coin < enhance_cost:
         return False
     before_lv, after_lv = equipment_obj.enhance(player)
+
     print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
+
     return before_lv, after_lv, enhance_cost
 
 
