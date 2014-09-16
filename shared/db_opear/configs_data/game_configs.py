@@ -2,7 +2,6 @@
 """
 created by server on 14-6-6上午11:05.
 """
-from MySQLdb.cursors import DictCursor
 import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.chip_config import ChipConfig
@@ -56,7 +55,14 @@ def get_config_value(config_key):
     sql = "SELECT * FROM configs where config_key='%s';" % config_key
     # print 'sql:', sql
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+
+    if dbpool._pymysql:
+        from pymysql.cursors import DictCursor
+        cursor = conn.cursor(cursor=DictCursor)
+    else:
+        from MySQLdb.cursors import DictCursor
+        cursor = conn.cursor(cursorclass=DictCursor)
+
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
