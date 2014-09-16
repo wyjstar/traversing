@@ -310,7 +310,7 @@
                 "sign_in": "simple",
                 "online_gift": "complex",
                 "feast": "simple",
-                "login_gift": "simple"
+                "login_gift": "complex"
             }
         },
         "tb_character_lord": {

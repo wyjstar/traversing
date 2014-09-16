@@ -117,6 +117,7 @@ def load(path, checker):
 
 
 def main(argv):
+    print "aaa", argv
     if len(argv) < 2:
         raise Exception("provide at least one parameter")
     check = TrieCheck()
@@ -124,4 +125,5 @@ def main(argv):
     print check.replace_bad_word('我喜欢毛泽东哈遺囑哈，邓小平')
 
 if __name__ == "__main__":
-    main(sys.argv)
+    # main(sys.argv)
+    main([1, "/share/abc.config"])
