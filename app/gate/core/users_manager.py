@@ -15,6 +15,7 @@ class UsersManager:
     def add_user(self, user):
         """添加用户对象
         """
+        print "add_user:", user, self._users
         if user.user_id in self._users:
             self._users[user.user_id].disconnect()
             self.drop_by_id(user.user_id)

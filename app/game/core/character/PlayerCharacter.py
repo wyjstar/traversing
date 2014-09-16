@@ -2,7 +2,6 @@
 """
 created by server on 14-6-4下午3:04.
 """
-from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.character_online_gift import CharacterOnlineGift
 from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
@@ -25,6 +24,8 @@ from app.game.component.tb_character_mail import CharacterMailComponent
 from app.game.component.character_sign_in import CharacterSignInComponent
 from app.game.component.character_feast import CharacterFeastComponent
 from app.game.component.character_login_gift import CharacterLoginGiftComponent
+from app.game.component.character_level_gift import CharacterLevelGift
+from app.game.component.character_vip import CharacterVIPComponent
 
 
 
@@ -63,6 +64,7 @@ class PlayerCharacter(Character):
         self._online_gift = CharacterOnlineGift(self)  # online gift
         self._level_gift = CharacterLevelGift(self)  # level gift
         self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
+        self._vip = CharacterVIPComponent(self)  # VIP level
 
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
@@ -98,6 +100,7 @@ class PlayerCharacter(Character):
         stamina = character_info['stamina']
         pvp_times = character_info['pvp_times']
         get_stamina_times = character_info['get_stamina_times']  # 邮件获取体力次数
+        vip_level = character_info['vip_level']
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
@@ -136,6 +139,7 @@ class PlayerCharacter(Character):
         self._level_gift.init_data()
         self._feast.init_feast()
         self._login_gift.init_data()
+        self._vip.init_vip(vip_level)
 
     @property
     def character_type(self):
@@ -251,6 +255,10 @@ class PlayerCharacter(Character):
         return self._sign_in
 
     @property
+    def vip_component(self):
+        return self._vip
+
+    @property
     def online_gift(self):
         return self._online_gift
 
@@ -288,4 +296,5 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
         character_info.update_multi(dict(level=self._level.level, exp=self.level.exp, stamina=self._stamina,
-                                         pvp_times=self._pvp_times, get_stamina_times=self._get_stamina_times))
+                                         pvp_times=self._pvp_times, get_stamina_times=self._get_stamina_times,
+                                         vip_level = self._vip.vip_level))

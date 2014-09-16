@@ -86,5 +86,9 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(hero_property.get('break_level'), 11)
         self.assertEqual(hero_property.get('exp'), 13, 'exp %d' % hero.exp)
 
+    def test_test(self):
+
+        self.assertEqual(1,1)
+
 
 

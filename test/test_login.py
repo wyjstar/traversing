@@ -66,7 +66,7 @@ class EchoClient(protocol.Protocol):
         # 帐号登录
 
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '06656fe419bd1d9799f220d2fce0b439'
+        argument.key.key = '614601302346b4ed7a3b52d4d1023981'
 
         # argument.user_name = 'ghh0001'
         # argument.password = '123457'

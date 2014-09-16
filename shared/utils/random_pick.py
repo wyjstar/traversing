@@ -25,6 +25,23 @@ def random_pick_with_weight(items):
             break
     return pick_result
 
+def random_pick_with_percent(items):
+    """ 根据百分比获取随机item
+    """
+    pick_result = None
+    random_max = sum(items.values())
+    x = random.randint(0, 100)
+    odds_cur = 0
+    for item_id, percent in items.items():
+        weight = percent*100
+        odds_cur += weight
+        if x <= odds_cur:
+            pick_result = item_id
+            break
+
+    return pick_result
+
+
 
 def random_multi_pick(items, times):
     """重复掉落多次"""

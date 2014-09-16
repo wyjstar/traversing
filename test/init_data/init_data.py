@@ -20,4 +20,3 @@ def init(player):
     init_equipment_chip(player)
     init_item(player)
     init_line_up(player)
-    init_mail(player)

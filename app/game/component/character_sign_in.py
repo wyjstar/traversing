@@ -67,6 +67,7 @@ class CharacterSignInComponent(Component):
 
     def is_signd(self, month, day):
         """是否已经签到"""
+        print "sign_in_days:", self._sign_in_days
         return day in self._sign_in_days and month == self._month
 
     def sign_in(self, month, day):

@@ -16,7 +16,7 @@ class LineUpSlotComponent(Component):
     """阵容位置信息组件， 包括1个英雄格子，6个装备格子
     """
 
-    def __init__(self, owner, slot_no, activation=False, hero_no=0, equipment_ids={}.fromkeys([1, 2, 3, 4, 5, 6], 0)):
+    def __init__(self, owner, slot_no, activation=False, hero_no=0, equipment_ids={}.fromkeys([1, 2, 3, 4, 5, 6], None)):
         """
         """
 

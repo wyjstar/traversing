@@ -5,10 +5,18 @@ created by server on 14-7-4上午10:32.
 
 from app.game.core.hero import Hero
 from app.game.core.PlayersManager import PlayersManager
-
+from shared.db_opear.configs_data.game_configs import hero_config
 
 def init_hero(player):
 
+    for k, val in hero_config.items():
+        hero1 = player.hero_component.add_hero(k)
+        hero1.hero_no = k
+        hero1.level = 1
+        hero1.break_level = 1
+        hero1.exp = 0
+
+    return
     hero1 = player.hero_component.add_hero(10005)
     hero2 = player.hero_component.add_hero(10015)
     hero3 = player.hero_component.add_hero(10022)

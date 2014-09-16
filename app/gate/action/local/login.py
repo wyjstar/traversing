@@ -31,8 +31,7 @@ def character_login_4(key, dynamic_id, request_proto):
     if nickname:
         #TODO 起名时候
         # 聊天室登录
-        # TODO chat guild id
-        GlobalObject().root.callChild('chat', 1001, response[1], dynamic_id, nickname, 'abc')
+        GlobalObject().root.callChild('chat', 1001, dynamic_id, response[1], nickname, guild_id)
     return response[0].SerializePartialToString()
 
 
@@ -50,6 +49,7 @@ def __character_login(dynamic_id, token):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 
+    print "user_id:", user.user_id, dynamic_id
     if not user:
         return {'result': False}
 

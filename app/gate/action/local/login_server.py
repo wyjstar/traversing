@@ -28,6 +28,7 @@ def server_register_1(command_id, dynamic_id, request_proto):
 
     if result.get('result', True):  # 注册成功
         account_id = result.get('account_id')
+        print "register account id: ", account_id
         __manage_user(key, account_id, user_name, password, dynamic_id)
 
     account_key = account_pb2.AccountResponse()
@@ -86,7 +87,9 @@ def server_login_2(command_id, dynamic_id, request_proto):
 def __manage_user(token, account_id, user_name, password, dynamic_id):
     """管理用户
     """
+    print "account_id????????", account_id
     user = UsersManager().get_by_id(account_id)
+    print "user:", user, account_id
     if user and user.dynamic_id != dynamic_id:
         if not net.change_dynamic_id(user.dynamic_id, dynamic_id):
             return False

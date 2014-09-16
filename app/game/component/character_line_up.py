@@ -30,6 +30,7 @@ class CharacterLineUpComponent(Component):
         # self._unique = 0  # 无双
 
     def init_data(self):
+        print '>>>:', self.character_id
         line_up_data = tb_character_line_up.getObjData(self.character_id)
 
         if line_up_data:
@@ -45,6 +46,16 @@ class CharacterLineUpComponent(Component):
                 self._sub_slots[sub_slot_no] = line_sub_slot
             self._line_up_order = line_up_data.get('line_up_order')
         else:
+
+            print '>>>:', {'id': self.character_id,
+                                      'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
+                                                             slot_no in self._line_up_slots.keys()]),
+                                      'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
+                                                         slot_no in self._sub_slots.keys()]),
+                                      'line_up_order': self._line_up_order}
+
+
+
             tb_character_line_up.new({'id': self.character_id,
                                       'line_up_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
                                                              slot_no in self._line_up_slots.keys()]),

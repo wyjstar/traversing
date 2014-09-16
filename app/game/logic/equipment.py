@@ -30,7 +30,7 @@ def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
 
 @have_player
 def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwargs):
-    """
+    """装备强化
     @param dynamic_id:  客户端动态ID
     @param equipment_id: 装备ID
     @param enhance_type: 强化类型
@@ -67,7 +67,10 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
                 break
             enhance_record.append(result)
 
-    # TODO 更新
+    # 保存
+    equipment_obj.save_data()
+    player.finance.save_data()
+
     return {'result': True, 'enhance_record': enhance_record}
 
 
@@ -82,9 +85,11 @@ def __do_enhance(player, equipment_obj):
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
     if not enhance_cost or curr_coin < enhance_cost:
         return False
-    before_lv, after_lv = equipment_obj.enhance()
+    before_lv, after_lv = equipment_obj.enhance(player)
+
     print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
+
     return before_lv, after_lv, enhance_cost
 
 

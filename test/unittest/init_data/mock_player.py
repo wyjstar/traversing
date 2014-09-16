@@ -27,6 +27,7 @@ def init_player():
                      'excellent_equipment_last_pick_time': 0,
                      'stamina': 100,
                      'pvp_times': 0,
+                     'vip_level': 0,
                      'get_stamina_times': 0}
         tb_character_info.new(character)
 
@@ -63,6 +64,7 @@ def init_player():
                      'excellent_equipment_last_pick_time': 0,
                      'stamina': 100,
                      'pvp_times': 0,
+                     'vip_level': 0,
                      'get_stamina_times': 0}
         tb_character_info.new(character)
 

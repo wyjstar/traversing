@@ -177,6 +177,7 @@
                 "pvp_times": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
+                "vip_level": "simple",
                 "create_time": "simple"
             }
         },
@@ -191,7 +192,7 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
-                "heros": "complex"
+                "hero_ids": "complex"
             }
         },
         "tb_character_hero": {
@@ -309,7 +310,7 @@
                 "sign_in": "simple",
                 "online_gift": "complex",
                 "feast": "simple",
-                "login_gift": "simple"
+                "login_gift": "complex"
             }
         },
         "tb_character_lord": {

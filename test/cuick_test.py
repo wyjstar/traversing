@@ -114,11 +114,6 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
-            # --------1002聊天------------
-            argument1 = GetLoginGiftRequest()
-            argument1.activity_id = 1
-            argument1.activity_type = 1
-            self.dateSend(argument1, 826)
 
             # --------826领取登录奖励------------
             # argument1 = GetLoginGiftRequest()

@@ -24,6 +24,8 @@ class CharacterLoginGiftComponent(Component):
         if activity:
             data = activity.get('login_gift')
             if data:
+                print data, type(data)
+                print  time.localtime(data.get('last_login')), type(time.localtime(data.get('last_login')))
                 if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday:  # 上次更新是今天
                     self._continuous_received = data.get('continuous_received')
                     self._cumulative_received = data.get('cumulative_received')

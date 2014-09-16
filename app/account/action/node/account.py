@@ -34,6 +34,7 @@ def login_2(command_id, dynamic_id, key, user_name, password):
     else:
         pass
 
+    
     if not account_id and user_name and password:
         name_mapping_data = tb_name_mapping.getObjData(user_name)
         if name_mapping_data:
@@ -44,7 +45,6 @@ def login_2(command_id, dynamic_id, key, user_name, password):
             _password = account_data.get('account_password', None)
             if (user_name != _user_name) or (password != _password):
                 return {'result': False}
-
     #  没有帐号ID，登录错误
     if not account_id:
         return {'result': False}
