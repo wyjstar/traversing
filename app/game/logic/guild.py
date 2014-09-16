@@ -96,7 +96,7 @@ def join_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = JoinGuildRequest()
     args.ParseFromString(data)
-    response = GuildCommonResponse()
+    response = JoinGuildResponse()
     g_id = args.g_id
     m_g_id = player.guild.g_id
     m_exit_time = player.guild.exit_time
@@ -235,7 +235,7 @@ def exit_guild(dynamicid, data, **kwargs):
             response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
         player.guild.g_id = 0
-        player.guild.exit_time = time.time()
+        player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
@@ -354,6 +354,8 @@ def deal_apply(dynamicid, data, **kwargs):
             invitee_player = PlayersManager().get_player_by_id(p_id)
             if invitee_player:  # 在线
                 login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
+                invitee_player.guild.g_id = player.guild.g_id
+                invitee_player.guild.save_data()
 
     elif res_type == 2:
         p_ids = args.p_ids
@@ -487,6 +489,8 @@ def kick(dynamicid, data, **kwargs):
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
                     logout_guild_chat(invitee_player.dynamic_id)
+                    invitee_player.guild.g_id = player.guild.g_id
+                    invitee_player.guild.save_data()
 
     response.result = True
     response.message = "踢人成功"
