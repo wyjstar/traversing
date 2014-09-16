@@ -82,7 +82,7 @@
       <location>127.0.0.1:3306/sequence</location>
     </property>
     <property name="user">root</property>
-    <property name="password">root</property>
+    <property name="password">123456</property>
     <property name="sqlMode">STRICT_TRANS_TABLES</property>
   </dataSource>
 
