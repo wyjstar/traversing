@@ -705,8 +705,8 @@ def get_guild_rank(dynamicid, data, **kwargs):
             president_id = guild_obj.p_list.get(1)[0]
             player_data = tb_character_info.getObjData(president_id)
             if player_data:
-                if player_data.get('nickname').encode("utf-8"):
-                    guild_rank.president = player_data.get('nickname').encode("utf-8")
+                if player_data.get('nickname'):
+                    guild_rank.president = player_data.get('nickname')
                 else:
                     guild_rank.president = '无名'
             else:
@@ -752,7 +752,7 @@ def get_role_list(dynamicid, data, **kwargs):
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
 
-                    role_info.name = character_info['nickname'].encode("utf-8")
+                    role_info.name = character_info['nickname']
                     role_info.level = character_info['level']
 
                     role_info.position = guild_info.get("position")
@@ -828,7 +828,7 @@ def get_apply_list(dynamicid, data, **kwargs):
         if character_info:
             role_info = response.role_info.add()
             role_info.p_id = role_id
-            role_info.name = character_info['nickname'].encode("utf-8")
+            role_info.name = character_info['nickname']
             role_info.level = character_info['level']
             role_info.vip_level = 1
             role_info.fight_power = 1

@@ -35,16 +35,6 @@ def character_login_4(key, dynamic_id, request_proto):
     return response[0].SerializePartialToString()
 
 
-# def enter_scene(dynamic_id):
-#     now_node = SceneSerManager().get_best_sceneid()
-#
-#     pull message from transit
-    # vplayer = VCharacterManager().get_by_dynamic_id(dynamic_id)
-    # GlobalObject().remote['transit'].callRemote("pull_message", vplayer.character_id)
-    #
-    # return GlobalObject().root.callChild(now_node, 601, dynamic_id, 1)
-
-
 def __character_login(dynamic_id, token):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
@@ -83,28 +73,6 @@ def __character_login(dynamic_id, token):
     response = game_pb2.GameLoginResponse()
     response.ParseFromString(player_data)
     return response, character_info.get('id')
-
-# @local_service_handle
-# def create_nickname_5(key, dynamic_id, request_proto):
-#     argument = CreatePlayerRequest()
-#     argument.ParseFromString(request_proto)
-#     nickname = argument.nickname
-#
-#
-#     now_node = SceneSerManager().get_best_sceneid()
-#     info = GlobalObject().root.callChild(now_node, 5, dynamic_id, request_proto)
-#
-#     response = CommonResponse()
-#     response.ParseFromString(info)
-#
-#     user = UsersManager().get_by_dynamic_id(dynamic_id)
-#
-#     if response.result and nickname:
-#         # 聊天室登录
-#         print '# chat login:', user.user_id, dynamic_id, nickname
-#         GlobalObject().root.callChild('chat', 1001, user.user_id, dynamic_id, nickname)
-#
-#     return info
 
 
 

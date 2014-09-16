@@ -16,8 +16,6 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     response = CommonResponse()
     # 判断昵称是否重复
     print type(nickname), "nickname++++++++++++++++++++++++++++"
-    # nickname = unicode(nickname, encoding="utf-8")
-    # print type(nickname), "nickname2+++++++++"
     nickname = nickname.encode("utf-8")
     print type(nickname), "nickname2++++++++++++++++++++++++++++"
     data = tb_nickname_mapping.getObjData(nickname)
