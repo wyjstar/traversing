@@ -69,8 +69,22 @@ def add_guild_to_rank(g_id, dengji):
 
 @rootserviceHandle
 def login_chat(dynamic_id, character_id, guild_id, nickname):
-    # TODO chat guild id
-    GlobalObject().root.callChild('chat', 1001, dynamic_id, character_id, nickname, 'abc')
+    GlobalObject().root.callChild('chat', 1001, dynamic_id, character_id, nickname, guild_id)
+
+
+@rootserviceHandle
+def login_guild_chat(dynamic_id, guild_id):
+    GlobalObject().root.callChild('chat', 1004, dynamic_id, guild_id)
+
+
+@rootserviceHandle
+def logout_guild_chat(dynamic_id):
+    GlobalObject().root.callChild('chat', 1005, dynamic_id)
+
+
+@rootserviceHandle
+def del_guild_room(guild_id):
+    GlobalObject().root.callChild('chat', 1006, guild_id)
 
 
 @rootserviceHandle

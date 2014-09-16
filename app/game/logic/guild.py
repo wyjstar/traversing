@@ -2,16 +2,18 @@
 """
 created by server on 14-7-17下午5:37.
 """
+from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.common.check import have_player
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info, tb_guild_name
 import time
 from app.game.redis_mode import tb_character_guild
-from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank
+from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank, push_object, del_guild_room
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
+from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
 
 
 @have_player
@@ -77,6 +79,9 @@ def create_guild(dynamicid, data, **kwargs):
     guild_obj.save_data()
     player.finance.gold -= base_config.get('create_money')
     player.finance.save_data()
+
+    # 加入公会聊天
+    login_guild_chat(dynamicid, player.guild.g_id)
 
     response.result = True
     return response.SerializeToString()
@@ -162,7 +167,10 @@ def exit_guild(dynamicid, data, **kwargs):
             guild_name_obj = tb_guild_name.getObj(guild_obj.name)
             guild_name_obj.delete()
 
-        player.guild._g_id = 0
+        # 解散公会，删除公会聊天室
+        del_guild_room(player.guild.g_id)
+
+        player.guild.g_id = 0
         player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.delete_guild()
@@ -220,6 +228,9 @@ def exit_guild(dynamicid, data, **kwargs):
 
             guild_obj.save_data()
 
+            # 退出公会聊天
+            logout_guild_chat(dynamicid)
+
             response.result = True
             response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
@@ -228,6 +239,8 @@ def exit_guild(dynamicid, data, **kwargs):
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
+        # 退出公会聊天
+        logout_guild_chat(dynamicid)
         response.result = True
         return response.SerializeToString()
 
@@ -239,6 +252,7 @@ def exit_guild(dynamicid, data, **kwargs):
 @have_player
 def editor_call(dynamicid, data, **kwargs):
     """
+
     编辑公告
     """
     player = kwargs.get('player')
@@ -336,6 +350,11 @@ def deal_apply(dynamicid, data, **kwargs):
                 guild_obj.p_num += 1
             p_guild_data.update_multi(data)
 
+            # 加入公会聊天室
+            invitee_player = PlayersManager().get_player_by_id(p_id)
+            if invitee_player:  # 在线
+                login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
+
     elif res_type == 2:
         p_ids = args.p_ids
         for p_id in p_ids:
@@ -404,6 +423,10 @@ def change_president(dynamicid, data, **kwargs):
 
             player.guild.position = 5
             player.guild.save_data()
+
+            # 退出公会聊天
+            logout_guild_chat(dynamicid)
+
             response.result = True
             response.message = "转让成功"
             return response.SerializeToString()
@@ -459,6 +482,12 @@ def kick(dynamicid, data, **kwargs):
                              'exit_time': time.time()}}
                 p_guild_data = tb_character_guild.getObj(p_id)
                 p_guild_data.update_multi(data)
+
+                # 退出公会聊天室
+                invitee_player = PlayersManager().get_player_by_id(p_id)
+                if invitee_player:  # 在线
+                    logout_guild_chat(invitee_player.dynamic_id)
+
     response.result = True
     response.message = "踢人成功"
     return response.SerializeToString()

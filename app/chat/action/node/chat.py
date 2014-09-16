@@ -52,6 +52,8 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
 
     elif room_id == 2:  # 公会频道
         ids = ChaterManager().get_guild_dynamicid(guild_id)
+        if ids.count(dynamic_id) != 1:
+            return {'result': False}
         response = chat_pb2.chatMessageResponse()
         response.channel = room_id
         owner = response.owner

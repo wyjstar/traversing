@@ -40,6 +40,21 @@ def login_chat(dynamic_id, character_id, guild_id, nickname):
         get_gate_remote().callRemote("login_chat", dynamic_id, character_id, guild_id, nickname)
 
 
+def login_guild_chat(dynamic_id, guild_id):
+    if get_gate_remote():
+        get_gate_remote().callRemote("login_guild_chat", dynamic_id, guild_id)
+
+
+def logout_guild_chat(dynamic_id):
+    if get_gate_remote():
+        get_gate_remote().callRemote("logout_guild_chat", dynamic_id)
+
+
+def del_guild_room(guild_id):
+    if get_gate_remote():
+        get_gate_remote().callRemote("del_guild_room", guild_id)
+
+
 def push_message(topic_id, character_id, *args, **kw):
     if get_gate_remote():
         player = PlayersManager().get_player_by_id(character_id)
