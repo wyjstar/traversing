@@ -50,6 +50,7 @@ def __character_login(dynamic_id, token):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 
+    print "user_id:", user.user_id, dynamic_id
     if not user:
         return {'result': False}
 

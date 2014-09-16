@@ -139,7 +139,7 @@ for config_name in all_config_name.keys():
 if __name__ == '__main__':
     init()
     # print activity_config
-    for k, v in skill_config.items():
+    for k, v in equipment_config.items():
         print k, '='*5, v
         for _ in v:
             print _

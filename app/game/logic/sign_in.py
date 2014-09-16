@@ -20,6 +20,7 @@ def get_sign_in(dynamic_id, **kwargs):
     response.continuous_sign_in_days = sign_in_component.continuous_sign_in_days
     [response.continuous_sign_in_prize.append(i) for i in sign_in_component.continuous_sign_in_prize]
     response.repair_sign_in_times = sign_in_component.repair_sign_in_times
+    print "get_sign_in:", player.sign_in_component.sign_in_days, player.base_info.id
     return response.SerializePartialToString()
 
 
@@ -34,9 +35,6 @@ def sign_in(dynamic_id, **kwargs):
     date = datetime.datetime.now()
     month = date.month
     day = date.day
-    player.sign_in_component.sign_in(month, day)
-    player.sign_in_component.save_data()
-    day = date.day
 
     # 同一天签到校验
     if player.sign_in_component.is_signd(month, day):
@@ -44,6 +42,10 @@ def sign_in(dynamic_id, **kwargs):
         response.res.result = False
         response.res.result_no = 1405
         return response.SerializePartialToString()
+
+    player.sign_in_component.sign_in(month, day)
+    player.sign_in_component.save_data()
+
 
     # 获取奖励
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):

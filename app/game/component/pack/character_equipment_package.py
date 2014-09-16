@@ -50,11 +50,13 @@ class CharacterEquipmentPackageComponent(Component):
         self._equipments_obj[equipment_id] = equipment_obj
 
         equipment_obj.add_data(self.owner.base_info.id)
+        self.save_data()
         return equipment_obj
 
     def add_exist_equipment(self, equipment):
         self._equipments_obj[equipment.base_info.id] = equipment
         equipment.add_data(self.owner.base_info.id)
+        self.save_data()
 
     def delete_equipment(self, equipment_id):
         try:
