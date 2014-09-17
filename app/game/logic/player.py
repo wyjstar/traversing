@@ -23,9 +23,7 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     print type(nickname), "nickname2++++++++++++++++++++++++++++"
 
     # TODO 名字不合法 返回错误码
-    print 'aaaaaaaaaaaaaaaaaaaaa', trie_tree.check.replace_bad_word(nickname).encode("utf-8"), nickname, type(nickname), type(trie_tree.check.replace_bad_word(nickname).encode("utf-8"))
     if trie_tree.check.replace_bad_word(nickname).encode("utf-8") != nickname:
-        print 'bbbbbbbbbbbbbbbb', trie_tree.check.replace_bad_word(nickname).encode("utf-8"), nickname, type(nickname), type(trie_tree.check.replace_bad_word(nickname).encode("utf-8"))
         response.result = False
         response.result_no = 1
         return response.SerializeToString()

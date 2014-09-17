@@ -28,9 +28,8 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
     if not chater:
         # TODO message 信息要补充
         return {'result': False}
-
     if content:
-        content = trie_tree.check.replace_bad_word(content.encode("utf-8")).encode("utf-8")
+        content = trie_tree.check.replace_bad_word(content.encode("utf-8"))
 
     if room_id == 1:  # 世界聊天频道
         ids = ChaterManager().getall_dynamicid()
