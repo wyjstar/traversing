@@ -124,11 +124,7 @@ def load(path, checker):
                 continue
             checker.add_word(line)
 
-if len("/share/abc.config") < 1:
-    raise Exception("provide at least one parameter")
 check = TrieCheck()
-
-
 import os.path
 root_dir = os.path.join(os.path.split(os.path.abspath(__file__))[0], os.pardir, os.pardir)
 load(os.path.join(root_dir, 'mgc.config'), check)
