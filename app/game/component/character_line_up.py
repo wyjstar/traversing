@@ -208,3 +208,13 @@ class CharacterLineUpComponent(Component):
     @property
     def character_id(self):
         return self.owner.base_info.id
+
+    @property
+    def combat_power(self):
+        """总战斗力
+        """
+        _power = 0
+        for slot in self._line_up_slots.values():
+            each_power = slot.combat_power()
+            _power += each_power
+        return _power

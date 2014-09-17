@@ -32,4 +32,5 @@ message GameLoginResponse{
      optional int32 vip_level = 18;
      optional int32 server_time = 19;
      optional bytes guild_id = 20;
+     optional float combat_power = 21;
 }
