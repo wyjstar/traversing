@@ -170,6 +170,7 @@ def exit_guild(dynamicid, data, **kwargs):
         if guild_name_data:
             guild_name_obj = tb_guild_name.getObj(guild_obj.name)
             guild_name_obj.delete()
+            tb_guild_name.deleteMode(guild_obj.name)
 
         # 解散公会，删除公会聊天室
         del_guild_room(player.guild.g_id)
