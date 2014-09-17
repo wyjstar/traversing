@@ -130,8 +130,10 @@ check = TrieCheck()
 load("/share/abc.config", check)
 
 
-def main(argv):
-    print "aaa", argv
+# =========================================================================================
+
+
+def test(argv):
     if len(argv) < 2:
         raise Exception("provide at least one parameter")
     check = TrieCheck()
@@ -141,16 +143,4 @@ def main(argv):
     print check.get_bad_word('我喜欢毛泽东哈遺囑哈，邓明明，我草你大爷。')
 
 if __name__ == "__main__":
-    f1 = open("/share/mgc.txt", 'r')
-    f2 = open("/share/abc.config", 'w')
-    b = ''
-    for a in f1.read():
-        if a == '[' or a == ']':
-            continue
-        if a == '|':
-            f2.write('\n')
-            continue
-        f2.write(a)
-    f1.close()
-    f2.close()
-    main([1, "/share/abc.config"])
+    test([1, "/share/abc.config"])
