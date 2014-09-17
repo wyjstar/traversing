@@ -286,10 +286,10 @@ def editor_call(dynamicid, data, **kwargs):
             response.result = True
             response.message = "权限不够"
             return response.SerializeToString()
-        print 'aaaaaaaa', type(call), call
+
         if call:
-           call = trie_tree.check.replace_bad_word(call).encode("utf-8")
-        print 'bbbbbbbb', call
+            call = trie_tree.check.replace_bad_word(call).encode("utf-8")
+
         guild_obj.editor_call(call)
         guild_obj.save_data()
         response.result = True
