@@ -46,7 +46,6 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @param equipment_id: 装备ID
     @return:
     """
-    print '703>>>#1', equipment_id, type(equipment_id)
     player = kwargs.get('player')
     # 校验该装备是否已经装备
     response = line_up_pb2.LineUpResponse()
@@ -59,7 +58,6 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     player.line_up_component.change_equipment(slot_no, no, equipment_id)
     player.line_up_component.save_data()
     response = line_up_info(player)
-    print '703>>>', response
     return response.SerializePartialToString()
 
 
