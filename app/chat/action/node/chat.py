@@ -6,6 +6,7 @@ from app.chat.core.chater_manager import ChaterManager
 from app.chat.service.node.chatgateservice import nodeservice_handle
 from app.proto_file import chat_pb2
 from app.chat.service.node.chatgateservice import noderemote
+from shared.utils import trie_tree
 
 
 @nodeservice_handle
@@ -27,6 +28,9 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
     if not chater:
         # TODO message 信息要补充
         return {'result': False}
+
+    if content:
+        content = trie_tree.check.replace_bad_word(content.encode("utf-8")).encode("utf-8")
 
     if room_id == 1:  # 世界聊天频道
         ids = ChaterManager().getall_dynamicid()

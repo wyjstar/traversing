@@ -33,3 +33,5 @@ def init_item(player):
     player.item_package.add_item(item9)
     # player.item_package.add_item(item7)
     # player.item_package.add_item(item8)
+
+    player.item_package.save_data()
