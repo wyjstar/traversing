@@ -3,7 +3,7 @@
 created by server on 14-9-17下午3:16.
 """
 f1 = open("/share/mgc.txt", 'r')
-f2 = open("/share/abc.config", 'w')
+f2 = open("/share/mgc.config", 'w')
 b = ''
 for a in f1.read():
     if a == '[' or a == ']':
