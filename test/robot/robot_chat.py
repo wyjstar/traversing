@@ -12,7 +12,7 @@ class RobotChat(Robot):
         argument1.owner.id = self.id
         argument1.owner.nickname = self.nickname
         argument1.channel = 2
-        argument1.content = u"nihaohnihaonihaihoani.nihao"
+        argument1.content = "nihaohnihaonihaihoani.nihao"
         argument1.guild_id = u"abc"
         self.send_message(argument1, 1002)
 

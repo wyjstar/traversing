@@ -2,7 +2,7 @@
 """
 created by server on 14-6-20上午11:49.
 """
-from app.gate.service.local.gateservice import localservicehandle
+from app.gate.service.local.gateservice import local_service_handle
 from app.gate.model import dbcharacter
 from app.gate.model import dbuser
 from enterscene import enter_scene
@@ -12,7 +12,7 @@ from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.virtual_character_manager import VCharacterManager
 
 
-@localservicehandle
+@local_service_handle
 def create_character_15(key, dynamicid, request_proto):
     """创建角色
     arguments=(userId,nickName)

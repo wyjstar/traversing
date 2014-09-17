@@ -64,7 +64,7 @@ message JoinGuildResponse{
 	required bool result = 1;  //处理结果 True：正确
     optional int32 result_no = 2;
     optional bytes message = 3;
-    repeated int32 spare_time = 4;
+    optional int32 spare_time = 4;
 }
 
 // 修改公告 command：804

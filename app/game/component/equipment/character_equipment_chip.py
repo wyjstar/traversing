@@ -46,7 +46,8 @@ class CharacterEquipmentChipComponent(Component):
     def save_data(self):
         props = {}
         for no, chip in self._chips.items():
-            props[no] = chip.chip_num
+            if chip.chip_num:  # 如果chip num == 0, 则不保存
+                props[no] = chip.chip_num
         items_data = tb_character_equipment_chip.getObj(self.owner.base_info.id)
         items_data.update('chips', props)
 

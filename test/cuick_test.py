@@ -70,7 +70,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '33d92d3b3c9cfcd1d854a8d23dcef4b2'
+        argument.key.key = 'a97e54ed97028cca704be9cf6ab24596'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -95,7 +95,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '33d92d3b3c9cfcd1d854a8d23dcef4b2'
+                argument.key.key = 'a97e54ed97028cca704be9cf6ab24596'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -106,7 +106,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '33d92d3b3c9cfcd1d854a8d23dcef4b2'
+            argument.token = 'a97e54ed97028cca704be9cf6ab24596'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -220,7 +220,7 @@ class EchoClient(protocol.Protocol):
 
             # --------805处理加入公会申请------------
             # argument1 = DealApplyRequest()
-            # argument1.p_ids.append(539)
+            # argument1.p_ids.append(13)
             # argument1.res_type = 1
             # self.dateSend(argument1, 805)
 
@@ -231,7 +231,7 @@ class EchoClient(protocol.Protocol):
 
             # --------807踢人------------
             # argument1 = KickRequest()
-            # argument1.p_ids.append(123)
+            # argument1.p_ids.append(13)
             # argument1.p_ids.append(123)
             # argument1.p_ids.append(456)
             # argument1.p_ids.append(789)
@@ -253,9 +253,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 812)
 
             # --------811获取公会玩家列表---------
-            # argument1 = CreateGuildRequest()
-            # argument1.name = '一二三四117'
-            # self.dateSend(argument1, 811)
+            argument1 = CreateGuildRequest()
+            argument1.name = '一二三四117'
+            self.dateSend(argument1, 811)
 
             # --------813获取申请列表---------
             # argument1 = CreateGuildRequest()
@@ -434,6 +434,13 @@ class EchoClient(protocol.Protocol):
             argument = GetLoginGiftResponse()
             argument.ParseFromString(message)
             print argument
+
+        if command == 814:
+            #
+            # argument = GetLoginGiftResponse()
+            # argument.ParseFromString(message)
+            # print argument
+            print 'aaaaaaaaaaaaaaaaaaaaaa814'
 
     def connectionLost(self, reason):
         print "connection lost"
