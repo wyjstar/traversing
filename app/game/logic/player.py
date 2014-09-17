@@ -38,6 +38,7 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         response.result_no = 1
         return response.SerializeToString()
 
+    player.base_info.base_name = nickname
     nickname_data = dict(id=player.base_info.id, nickname=nickname)
     nickname_mmode = tb_nickname_mapping.new(nickname_data)
     nickname_mmode.insert()

@@ -89,11 +89,15 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
     """
     print "account_id????????", account_id
     user = UsersManager().get_by_id(account_id)
-    print "user:", user, account_id
+    print "user:", account_id, dynamic_id
     if user and user.dynamic_id != dynamic_id:
-        if not net.change_dynamic_id(user.dynamic_id, dynamic_id):
-            return False
-        # user.dynamic_id = dynamic_id
+
+        # if not net.change_dynamic_id(user.dynamic_id, dynamic_id):
+        #     print "???????????????????????????1", user.dynamic_id, dynamic_id
+        #
+        #     return False
+        print "???????????????????????????2", user.dynamic_id, dynamic_id
+        user.dynamic_id = dynamic_id
     else:
         user = User(token, account_id, user_name, password, dynamic_id)
         UsersManager().add_user(user)
