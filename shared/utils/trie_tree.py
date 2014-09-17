@@ -127,7 +127,7 @@ def load(path, checker):
 if len("/share/abc.config") < 1:
     raise Exception("provide at least one parameter")
 check = TrieCheck()
-load("/share/abc.config", check)
+load("../../mgc.config", check)
 
 
 # =========================================================================================
@@ -143,4 +143,5 @@ def test(argv):
     print check.get_bad_word('我喜欢毛泽东哈遺囑哈，邓明明，我草你大爷。')
 
 if __name__ == "__main__":
-    test([1, "/share/abc.config"])
+
+    test([1, "../../mgc.config"])

@@ -492,12 +492,13 @@ def kick(dynamicid, data, **kwargs):
                 p_guild_data = tb_character_guild.getObj(p_id)
                 p_guild_data.update_multi(data)
 
-                # 退出公会聊天室
+                # 踢出公会聊天室
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
                     logout_guild_chat(invitee_player.dynamic_id)
                     invitee_player.guild.g_id = player.guild.g_id
                     invitee_player.guild.save_data()
+                    push_object(814, '', invitee_player.dynamic_id)
 
     response.result = True
     response.message = "踢人成功"
