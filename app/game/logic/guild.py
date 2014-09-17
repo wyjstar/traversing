@@ -96,7 +96,7 @@ def join_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = JoinGuildRequest()
     args.ParseFromString(data)
-    response = GuildCommonResponse()
+    response = JoinGuildResponse()
     g_id = args.g_id
     m_g_id = player.guild.g_id
     m_exit_time = player.guild.exit_time
@@ -235,7 +235,7 @@ def exit_guild(dynamicid, data, **kwargs):
             response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
         player.guild.g_id = 0
-        player.guild.exit_time = time.time()
+        player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
@@ -354,6 +354,8 @@ def deal_apply(dynamicid, data, **kwargs):
             invitee_player = PlayersManager().get_player_by_id(p_id)
             if invitee_player:  # 在线
                 login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
+                invitee_player.guild.g_id = player.guild.g_id
+                invitee_player.guild.save_data()
 
     elif res_type == 2:
         p_ids = args.p_ids
@@ -487,6 +489,8 @@ def kick(dynamicid, data, **kwargs):
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
                     logout_guild_chat(invitee_player.dynamic_id)
+                    invitee_player.guild.g_id = player.guild.g_id
+                    invitee_player.guild.save_data()
 
     response.result = True
     response.message = "踢人成功"
@@ -705,8 +709,8 @@ def get_guild_rank(dynamicid, data, **kwargs):
             president_id = guild_obj.p_list.get(1)[0]
             player_data = tb_character_info.getObjData(president_id)
             if player_data:
-                if player_data.get('nickname').encode("utf-8"):
-                    guild_rank.president = player_data.get('nickname').encode("utf-8")
+                if player_data.get('nickname'):
+                    guild_rank.president = player_data.get('nickname')
                 else:
                     guild_rank.president = '无名'
             else:
@@ -752,7 +756,7 @@ def get_role_list(dynamicid, data, **kwargs):
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
 
-                    role_info.name = character_info['nickname'].encode("utf-8")
+                    role_info.name = character_info['nickname']
                     role_info.level = character_info['level']
 
                     role_info.position = guild_info.get("position")
@@ -828,7 +832,7 @@ def get_apply_list(dynamicid, data, **kwargs):
         if character_info:
             role_info = response.role_info.add()
             role_info.p_id = role_id
-            role_info.name = character_info['nickname'].encode("utf-8")
+            role_info.name = character_info['nickname']
             role_info.level = character_info['level']
             role_info.vip_level = 1
             role_info.fight_power = 1

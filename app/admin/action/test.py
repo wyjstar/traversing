@@ -2,11 +2,13 @@
 """
 created by server on 14-5-26下午12:14.
 """
+from flask import request
 from gfirefly.server.globalobject import webserviceHandle
 
 
 @webserviceHandle('/test')
 def test():
+    # request.args.get
 
     print 'test'
 

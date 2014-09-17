@@ -57,7 +57,7 @@ def push_chat_message(send_list, msg):
 @rootserviceHandle
 def get_guild_rank():
     level_instance = Ranking.instance('GuildLevel')
-    data = level_instance.get("GuildLevel", 999)  # 获取排行最高的公会列表(999条)
+    data = level_instance.get("GuildLevel", 9999)  # 获取排行最高的公会列表(999条)
     return data
 
 
