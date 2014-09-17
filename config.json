@@ -131,20 +131,11 @@
                 "id": "simple"
             }
         },
-        "tb_name_mapping": {
-            "pkey_field": "account_name",
-            "def_attrs": {
-                "account_name": "simple",
-                "id": "simple"
-            }
-        },
         "tb_account": {
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
                 "uuid": "simple",
-                "account_name": "simple",
-                "account_password": "simple",
                 "last_login": "simple",
                 "create_time": "simple"
             }

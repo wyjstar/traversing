@@ -8,7 +8,7 @@ from app.account.service.node.gateservice import node_service_handle
 from app.account.model.sequence import get_id
 from app.account.redis_mode import tb_account
 from app.account.redis_mode import tb_account_mapping
-from app.account.redis_mode import tb_name_mapping
+# from app.account.redis_mode import tb_name_mapping
 from shared.utils.pyuuid import get_uuid
 import time
 
@@ -36,18 +36,18 @@ def login_2(command_id, dynamic_id, key, user_name, password):
     else:
         print 'key is not exist'
 
-    if not account_id and user_name and password:
-        name_mapping_data = tb_name_mapping.getObjData(user_name)
-        print name_mapping_data
-        if name_mapping_data:
-            # 用户名，密码校验
-            account_id = name_mapping_data.get('id')
-            account_data = tb_account.getObjData(account_id)
-            _user_name = account_data.get('account_name', None)
-            _password = account_data.get('account_password', None)
-            if (user_name != _user_name) or (password != _password):
-                print 'user or pwd is error!'
-                return {'result': False}
+    # if not account_id and user_name and password:
+    #     name_mapping_data = tb_name_mapping.getObjData(user_name)
+    #     print name_mapping_data
+    #     if name_mapping_data:
+    #         用户名，密码校验
+            # account_id = name_mapping_data.get('id')
+            # account_data = tb_account.getObjData(account_id)
+            # _user_name = account_data.get('account_name', None)
+            # _password = account_data.get('account_password', None)
+            # if (user_name != _user_name) or (password != _password):
+            #     print 'user or pwd is error!'
+            #     return {'result': False}
 
     #  没有帐号ID，登录错误
     if not account_id:
@@ -95,8 +95,8 @@ def __account_register(user_name, password):
     account_mapping.insert()
 
     data = dict(account_name=user_name, id=account_id)
-    name_mapping = tb_name_mapping.new(data)
-    name_mapping.insert()
+    # name_mapping = tb_name_mapping.new(data)
+    # name_mapping.insert()
 
     return {'result': True, 'token': token, 'account_id': account_id}
 
@@ -123,9 +123,9 @@ def __binding_register(user_name, password, key):
 
 
 def __check_register_name(user_name):
-    mapping_data = tb_name_mapping.getObjData(user_name)
-    if not mapping_data:
-        return True
+    # mapping_data = tb_name_mapping.getObjData(user_name)
+    # if not mapping_data:
+    #     return True
 
     return False
 

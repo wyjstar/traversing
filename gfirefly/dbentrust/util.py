@@ -4,6 +4,7 @@ Created on 2013-5-8
 
 @author: lan (www.9miao.com)
 '''
+import MySQLdb
 
 from dbpool import dbpool
 from MySQLdb.cursors import DictCursor
@@ -12,6 +13,7 @@ from gtwisted.utils import log
 
 
 def forEachPlusInsertProps(tablename, props):
+    MySQLdb.escape_string
     assert type(props) == dict
     pkeysstr = str(tuple(props.keys())).replace('\'', '`')
     pvaluesstr = ["%s," % val if isinstance(val, Number) else

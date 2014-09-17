@@ -2,6 +2,5 @@
 """
 created by sphinx on 
 """
-from app.login import load_module
+import login
 
-load_module()

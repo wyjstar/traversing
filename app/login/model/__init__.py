@@ -10,5 +10,3 @@ tb_account.insert()
 tb_account_mapping = MAdmin('tb_account_mapping', 'account_token')  # 帐号匹配表
 tb_account_mapping.insert()
 
-tb_name_mapping = MAdmin('tb_name_mapping', 'account_name')  # 用户名匹配表
-tb_name_mapping.insert()

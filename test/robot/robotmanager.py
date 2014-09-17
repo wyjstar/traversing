@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+import urllib
+import gevent
 
 from twisted.internet import reactor
 from twisted.internet.protocol import ClientCreator
@@ -76,13 +78,50 @@ class RobotManager:
 
     def add_robot(self, robot_type, number):
         for _ in range(int(number)):
+            while self._robot_processing_num >= 200:
+                gevent.sleep(1)
+                self.print_info()
+
             robot_name = 'robot' + str(self._robot_count)
             pwd = '123456'
             robot_nickname = 'robot' + str(self._robot_count)
             self._robot_count += 1
             self._robot_processing_num += 1
 
-            c = ClientCreator(reactor, robot_type, self,
-                              robot_name, pwd, robot_nickname)
-            c.connectTCP(HOST, PORT)
+            reactor.callLater(0, add_robot, robot_type, self, robot_name, pwd, robot_nickname)
             print 'add a client'
+
+
+def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
+    register_url = 'http://localhost:20100/register?name=%s&pwd=%s' % \
+                   (robot_name, pwd)
+    register_response = eval((urllib.urlopen(register_url)).read())
+    print 'register response:', register_response
+    if register_response.get('result') is False and \
+            register_response.get('message').find('exist') == -1:
+        print 'register fail'
+        return
+    print 'register success'
+
+    login_url = 'http://localhost:20100/login?name=%s&pwd=%s' % \
+                (robot_name, pwd)
+    login_response = eval((urllib.urlopen(login_url)).read())
+    print 'login response:', login_response
+    if login_response.get('result') is False:
+        print 'login fail'
+        return
+    print 'login success'
+
+    passport = login_response.get('passport')
+    print passport
+    login_game_url = 'http://localhost:20097/login?passport=' + passport
+    login_game_response = eval((urllib.urlopen(login_game_url)).read())
+    print 'login game response:', login_game_response
+    if login_game_response.get('result') is False:
+        print 'login game fail'
+        return
+    print 'login game success'
+    game_passport = login_game_response.get('passport')
+
+    c = ClientCreator(reactor, robot_type, manager, game_passport, robot_nickname)
+    c.connectTCP(HOST, PORT)

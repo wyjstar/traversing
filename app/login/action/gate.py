@@ -2,14 +2,19 @@
 """
 created by sphinx on
 """
+from app.login.action.login import account_cache
 from gfirefly.server.globalobject import rootserviceHandle
 
 
 @rootserviceHandle
-def register_server(name, ip, port):
-    return True
+def account_verify(key):
+    response = {'result': False}
+    print 'account verify:', key
+    if key in account_cache:
+        response['result'] = True
+        response['uuid'] = account_cache[key]
+    else:
+        print account_cache
 
-
-@rootserviceHandle
-def synchronize_info(name, status):
-    return True
+    print 'acount verify result:', response
+    return str(response)

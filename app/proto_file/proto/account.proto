@@ -26,9 +26,7 @@ message AccountResponse{
 
 // 登录 command:2
 message AccountLoginRequest{
-	required AccountKey key = 1;
-	optional string user_name = 2; //用户名
-	optional string password = 3;//密码
+	required string passport = 1;
 }
 
 //注册 request: command:1，data:AccountInfo

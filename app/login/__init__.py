@@ -2,6 +2,7 @@
 """
 created by sphinx on 
 """
+import action.login
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.netconnect.datapack import DataPackProtoc
 
@@ -19,7 +20,3 @@ GlobalObject().netfactory.doConnectionLost = conn_lost
 GlobalObject().netfactory.doConnectionMade = conn_made
 data_protocol = DataPackProtoc(0, 0, 0, 0, 0, 0)
 GlobalObject().netfactory.setDataProtocl(data_protocol)
-
-
-def load_module():
-    import action.login
