@@ -246,7 +246,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
         player_data = tb_character_info.getObjData(pid)
         if player_data:
             response_friend_add = response.friends.add()
-            response_friend_add.player_id = pid
+            response_friend_add.id = pid
             response_friend_add.nickname = player_data.get('nickname')
             response_friend_add.gift = datetime.datetime.now().day
 
@@ -267,7 +267,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
         player_data = tb_character_info.getObjData(pid)
         if player_data:
             response_blacklist_add = response.blacklist.add()
-            response_blacklist_add.player_id = pid
+            response_blacklist_add.id = pid
             response_blacklist_add.nickname = player_data.get('nickname')
             response_blacklist_add.gift = datetime.datetime.now().day
 
@@ -288,7 +288,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
         player_data = tb_character_info.getObjData(pid)
         if player_data:
             response_applicant_list_add = response.applicant_list.add()
-            response_applicant_list_add.player_id = pid
+            response_applicant_list_add.id = pid
             response_applicant_list_add.nickname = player_data.get('nickname')
             response_applicant_list_add.gift = datetime.datetime.now().day
 
