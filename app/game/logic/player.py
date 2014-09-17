@@ -2,6 +2,7 @@
 """
 created by server on 14-7-21下午5:12.
 """
+import time
 from app.game.action.root.netforwarding import login_chat
 
 from app.game.logic.common.check import have_player
@@ -9,18 +10,18 @@ from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.globalobject import GlobalObject
 
-
 @have_player
 def nickname_create(dynamic_id, nickname, **kwargs):
     player = kwargs.get('player')
     response = CommonResponse()
     # 判断昵称是否重复
     print type(nickname), "nickname++++++++++++++++++++++++++++"
-    # nickname = unicode(nickname, encoding="utf-8")
-    # print type(nickname), "nickname2+++++++++"
     nickname = nickname.encode("utf-8")
     print type(nickname), "nickname2++++++++++++++++++++++++++++"
+    start_time = time.time()
     data = tb_nickname_mapping.getObjData(nickname)
+    end_time = time.time()
+    print 'command 5 :', end_time - start_time
     if data:
         response.result = False
         response.result_no = 1
