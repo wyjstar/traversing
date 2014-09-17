@@ -127,8 +127,11 @@ def load(path, checker):
 if len("/share/abc.config") < 1:
     raise Exception("provide at least one parameter")
 check = TrieCheck()
-load("../../mgc.config", check)
 
+
+import os.path
+root_dir = os.path.join(os.path.split(os.path.abspath(__file__))[0], os.pardir, os.pardir)
+load(os.path.join(root_dir, 'mgc.config'), check)
 
 # =========================================================================================
 
@@ -144,4 +147,4 @@ def test(argv):
 
 if __name__ == "__main__":
 
-    test([1, "../../mgc.config"])
+    test([1, os.path.join(root_dir, 'mgc.config')])
