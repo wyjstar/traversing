@@ -38,6 +38,7 @@ class LiberateProtocol(protocols.BaseProtocol):
         '''线程安全的向客户端发送数据
         @param data: str 要向客户端写的数据
         '''
+        print "send data:", command, len(data), self.transport.sessionno
         if data is None:
             return
         senddata = self.factory.produceResult(data, command)

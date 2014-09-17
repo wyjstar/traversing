@@ -80,7 +80,8 @@ class ConnectionManager:
         if conn:
             conn.loseConnection()
 
-    def change_id(self, new_id, cur_id):
+    def change_id(self, cur_id, new_id):
+        print "self._connections", self._connections, cur_id, new_id
         connection = self._connections[cur_id]
         if not connection:
             return False
