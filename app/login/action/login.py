@@ -4,7 +4,6 @@ created by sphinx on
 """
 import uuid
 from gfirefly.server.globalobject import webserviceHandle, rootserviceHandle
-from app.login.model import tb_account_mapping
 from flask import request
 import urllib
 
@@ -43,5 +42,3 @@ def __login(passport):
     if response.get('result') is True:
         return str({'result': True, 'account_id': '\'%s\'' % passport})
     return str({'result': False})
-
-
