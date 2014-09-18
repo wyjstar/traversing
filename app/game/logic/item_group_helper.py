@@ -127,7 +127,7 @@ def gain(player, item_group, result=None):
             player.finance.middle_stone += num
             player.finance.save_data()
         elif type_id == const.HIGH_STONE:
-            player.finance.hign_stone += num
+            player.finance.high_stone += num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
