@@ -2,6 +2,7 @@
 """
 created by server on 14-7-17下午6:54.
 """
+import copy
 import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
@@ -23,6 +24,8 @@ class CharacterFightCacheComponent(Component):
 
         self._red_unit = []  # 红方战斗单位
         self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
+
+        self._not_replace= []  # 不能替换的英雄
 
     @property
     def red_unit(self):
@@ -220,6 +223,7 @@ class CharacterFightCacheComponent(Component):
     def check_hero(self, condition_param):
         hero_nos = self.owner.line_up_component.hero_nos
         if condition_param in hero_nos:
+            self._not_replace.append(condition_param)
             return True
         return False
 
@@ -238,6 +242,12 @@ class CharacterFightCacheComponent(Component):
     def check_link(self, condition_param):
         for slot in self.line_up_slots.values():
             if condition_param in slot.hero_slot.link:
+                link_config = game_configs.link_config.get(slot.hero_slot.hero_no)
+                for i in (1, 6):
+                    link = getattr(link_config, 'link%s' % i)
+                    if condition_param == link:
+                        trigger = getattr(link_config, 'trigger%s' % i)
+                        self._not_replace.extend(trigger)
                 return True
         return False
 
@@ -273,10 +283,22 @@ class CharacterFightCacheComponent(Component):
 
         return drops
 
-    def break_hero_units(self):
+    def break_hero_units(self, red_units):
         odds = self.__get_break_stage_odds()
         if odds <= random.random(0, 1):
-            pass
+            for red_unit in red_units:
+                if red_unit.no in self._not_replace:
+                    continue
+
+                # 拷贝一个乱入战斗单位
+                break_unit = copy.deepcopy(red_unit)
+                # break_config = self.__get_stage_break_config()
+                # hero_id = break_config.hero_id
+                # hero_config = game_configs.hero_config.get(hero_id)
+
+
+
+
 
 
 
