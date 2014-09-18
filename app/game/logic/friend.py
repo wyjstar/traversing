@@ -323,7 +323,7 @@ def find_friend_request(dynamic_id, data, **kwargs):
     response = friend_pb2.FindFriendResponse()
     response.id = 0
     response.nickname = 'none'
-    response.ap = 111
+    response.atk = 111
     response.icon_id = 11
     response.gift = datetime.datetime.now().day
 

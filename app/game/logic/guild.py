@@ -168,8 +168,9 @@ def exit_guild(dynamicid, data, **kwargs):
         # 删除公会名字
         guild_name_data = tb_guild_name.getObjData(guild_obj.name)
         if guild_name_data:
-            guild_name_obj = tb_guild_name.getObj(guild_obj.name)
-            guild_name_obj.delete()
+            # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
+            # guild_name_obj.delete()
+            tb_guild_name.deleteMode(guild_obj.name)
 
         # 解散公会，删除公会聊天室
         del_guild_room(player.guild.g_id)
@@ -286,10 +287,10 @@ def editor_call(dynamicid, data, **kwargs):
             response.result = True
             response.message = "权限不够"
             return response.SerializeToString()
-        print 'aaaaaaaa', type(call), call
+
         if call:
-           call = trie_tree.check.replace_bad_word(call).encode("utf-8")
-        print 'bbbbbbbb', call
+            call = trie_tree.check.replace_bad_word(call).encode("utf-8")
+
         guild_obj.editor_call(call)
         guild_obj.save_data()
         response.result = True
