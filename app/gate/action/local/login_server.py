@@ -22,11 +22,12 @@ def server_login_2(command_id, dynamic_id, request_proto):
     """
 
     # 登录数据解析
-    account_key = account_pb2.AccountLoginRequest()
-    account_key.ParseFromString(request_proto)
-    key = account_key.passport
+    account_request = account_pb2.AccountLoginRequest()
+    account_request.ParseFromString(request_proto)
+    key = account_request.passport
 
-    account_key = account_pb2.AccountResponse()
+    account_response = account_pb2.AccountResponse()
+    account_response.result = False
 
     # 通知帐号服
     print 'rpc account verify:', key
@@ -39,17 +40,14 @@ def server_login_2(command_id, dynamic_id, request_proto):
         print 'login uuid:', uuid
         account_id = get_account_id(uuid)
         if account_id == 0:
-            account_key.result = False
+            account_response.result = False
         else:
-            account_key.result = __manage_user(uuid, account_id, '', '', dynamic_id)
-    else:
-        account_key.result = False
-    return account_key.SerializeToString()
+            account_response.result = __manage_user(uuid, account_id, '', '', dynamic_id)
+    return account_response.SerializeToString()
 
 
 def __manage_user(token, account_id, user_name, password, dynamic_id):
-    """管理用户
-    """
+    """管理用户 """
     user = UsersManager().get_by_id(account_id)
     if user and user.dynamic_id != dynamic_id:
         print 'user exit! info:', user
@@ -61,14 +59,14 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
         user = User(token, account_id, user_name, password, dynamic_id)
         print 'add user:', user
         UsersManager().add_user(user)
-    print 'user mana:', UsersManager()._users
+    # print 'user mana:', UsersManager()._users
     return True
 
 
 def get_account_id(uuid):
     sql_result = util.GetOneRecordInfo('tb_account', dict(uuid=uuid))
     if sql_result is not None:
-        print sql_result
+        # print sql_result
         return sql_result['id']
     else:
         data = dict(uuid=uuid, last_login=0, create_time=time.time())

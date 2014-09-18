@@ -3,11 +3,10 @@
 created by sphinx on
 """
 import uuid
-from gfirefly.server.globalobject import webserviceHandle, rootserviceHandle
-from flask import request
 import urllib
-
-account_cache = {}
+from flask import request
+from app.login.model.manager import account_cache
+from gfirefly.server.globalobject import webserviceHandle
 
 
 @webserviceHandle('/login')

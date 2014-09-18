@@ -2,7 +2,7 @@
 """
 created by sphinx on
 """
-from app.login.action.login import account_cache
+from app.login.model.manager import account_cache
 from gfirefly.server.globalobject import rootserviceHandle
 
 
