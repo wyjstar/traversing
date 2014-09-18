@@ -26,13 +26,11 @@ class CharacterEquipmentPackageComponent(Component):
     def init_data(self):
         equipments_data = tb_character_equipments.getObjData(self.owner.base_info.id)
         if equipments_data:
-            print 'equipments_data:', equipments_data
             equipment_ids = equipments_data.get('equipments')
 
             for equipment_id in equipment_ids:
                 equipment_data = tb_equipment_info.getObjData(equipment_id)
                 equipment_info = equipment_data.get('equipment_info')
-                print 'equipment_data:', equipment_data
                 equipment_no = equipment_info.get('equipment_no')  # 装备编号
                 strengthen_lv = equipment_info.get('slv')  # 装备强化等级
                 awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
@@ -52,11 +50,13 @@ class CharacterEquipmentPackageComponent(Component):
         self._equipments_obj[equipment_id] = equipment_obj
 
         equipment_obj.add_data(self.owner.base_info.id)
+        self.save_data()
         return equipment_obj
 
     def add_exist_equipment(self, equipment):
         self._equipments_obj[equipment.base_info.id] = equipment
         equipment.add_data(self.owner.base_info.id)
+        self.save_data()
 
     def delete_equipment(self, equipment_id):
         try:
@@ -91,6 +91,7 @@ class CharacterEquipmentPackageComponent(Component):
         """返回全部装备
         """
         return self._equipments_obj.values()
+
 
     # def new_equipment_data(self, equipment):
     #     character_id = self.owner.base_info.id

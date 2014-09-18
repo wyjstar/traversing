@@ -1,3 +1,4 @@
+import "common.proto";
 message LoginInfo
 {
     required int32 login_day = 1;
@@ -16,4 +17,10 @@ message InitLoginGiftResponse{
 message GetLoginGiftRequest{
 	required int32 activity_id = 1;
 	required int32 activity_type = 2;
+}
+
+message GetLoginGiftResponse{
+	required bool result = 1;
+	optional int32 result_no = 2;
+    optional GameResourcesResponse gain = 3;
 }

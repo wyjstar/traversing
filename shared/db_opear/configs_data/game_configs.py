@@ -2,7 +2,6 @@
 """
 created by server on 14-6-6上午11:05.
 """
-from MySQLdb.cursors import DictCursor
 import cPickle
 from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.chip_config import ChipConfig
@@ -32,6 +31,8 @@ from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
 from shared.db_opear.configs_data.guild_config import GuildConfig
+from shared.db_opear.configs_data.vip_config import VIPConfig
+
 
 
 def init():
@@ -54,7 +55,14 @@ def get_config_value(config_key):
     sql = "SELECT * FROM configs where config_key='%s';" % config_key
     # print 'sql:', sql
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+
+    if dbpool._pymysql:
+        from pymysql.cursors import DictCursor
+        cursor = conn.cursor(cursor=DictCursor)
+    else:
+        from MySQLdb.cursors import DictCursor
+        cursor = conn.cursor(cursorclass=DictCursor)
+
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -89,6 +97,7 @@ guild_config = {}
 sign_in_config = {}
 warriors_config = {}
 activity_config = {}
+vip_config = {}
 
 
 all_config_name = {
@@ -115,6 +124,7 @@ all_config_name = {
     'sign_in_config': SignInConfig(),
     'warriors_config': WarriorsConfig(),
     'activity_config': ActivityConfig(),
+    'vip_config': VIPConfig(),
 }
 
 
@@ -135,8 +145,8 @@ for config_name in all_config_name.keys():
 if __name__ == '__main__':
     init()
     # print activity_config
-    for k, v in activity_config.items():
-        print k, '='*5
+    for k, v in equipment_config.items():
+        print k, '='*5, v
         for _ in v:
             print _
 

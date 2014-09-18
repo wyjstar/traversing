@@ -5,7 +5,6 @@ created by server on 14-9-3下午5:28.
 from app.game.service.gatenoteservice import remote_service_handle
 from app.game.logic.login_gift import *
 from app.proto_file.login_gift_pb2 import *
-from app.proto_file.common_pb2 import *
 
 
 @remote_service_handle
@@ -13,7 +12,6 @@ def init_login_gift_825(dynamic_id, pro_data):
     """登录奖励
     """
     response = InitLoginGiftResponse()
-    print('cuick,AAAAAAAAAAAAAAAAA,01,node,get_login_gift_825')
 
     cumulative_received, continuous_received, cumulative_day, continuous_day = init_login_gift(dynamic_id)
     for i in cumulative_received:
@@ -35,14 +33,12 @@ def init_login_gift_825(dynamic_id, pro_data):
 def get_login_gift_826(dynamic_id, pro_data):
     """领取登录奖励
     """
-    print('cuick,BBBBBBBBBBBBBBBBBBBBB,01,node,get_login_gift_826')
     args = GetLoginGiftRequest()
     args.ParseFromString(pro_data)
     activity_id = args.activity_id
     activity_type = args.activity_type
-    response = CommonResponse()
-    res, err_no = get_login_gift(dynamic_id, activity_id, activity_type)
-
+    response = GetLoginGiftResponse()
+    res, err_no = get_login_gift(dynamic_id, activity_id, activity_type, response)
     response.result = res
     if err_no:
             response.result_no = err_no

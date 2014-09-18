@@ -45,8 +45,6 @@ def read_mail(dynamic_id, mail_ids, mail_type, **kwargs):
     """读取邮件"""
     player = kwargs.get('player')
     response = ReadMailResponse()
-    print "mail_ids", mail_ids
-    print "mail_type", mail_type
     if mail_type == 1:
         # 领取赠送体力
         result = check_gives(mail_ids, player)
@@ -82,7 +80,6 @@ def read_mail(dynamic_id, mail_ids, mail_type, **kwargs):
             mail.is_readed = True
             mail.read_time = int(time.time())
 
-    print ("read mail")
     response.res.result = True
     return response.SerializePartialToString()
 

@@ -23,18 +23,8 @@ def forwarding(key, dynamic_id, data):
         return local_service.callTarget(key, dynamic_id, data)
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-        # print 'dynamic_id:', dynamic_id
-        # print VCharacterManager().__dict__
-        # print 'gate forwarding oldvcharacter:', oldvcharacter
         if not oldvcharacter:
-            print "玩家没有登录！", dynamic_id
-            print VCharacterManager().character_client
-            print VCharacterManager().client_character
             return
-        # if oldvcharacter.getLocked():  # 判断角色对象是否被锁定
-        #     return
-        # node = VCharacterManager().get_node_by_dynamic_id(dynamic_id)
-
         result = GlobalObject().root.callChild(oldvcharacter.node, key, dynamic_id, data)
 
         return result
@@ -44,14 +34,10 @@ def forwarding(key, dynamic_id, data):
 def forwarding_test(key, dynamic_id, data):
     """
     """
-    print data
-
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)
     else:
-
         result = GlobalObject().root.callChild('game', key, dynamic_id, data)
-
         return result
 
 
@@ -65,15 +51,13 @@ def push_object(topic_id, msg, send_list):
 
 @rootserviceHandle
 def push_chat_message(send_list, msg):
-    print 'push_chat_message:', send_list, msg
     GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
 
 
 @rootserviceHandle
 def get_guild_rank():
     level_instance = Ranking.instance('GuildLevel')
-
-    data = level_instance.get("GuildLevel", 999)  # 获取排行最高的公会列表(999条)
+    data = level_instance.get("GuildLevel", 9999)  # 获取排行最高的公会列表(999条)
     return data
 
 
@@ -84,18 +68,36 @@ def add_guild_to_rank(g_id, dengji):
 
 
 @rootserviceHandle
+def login_chat(dynamic_id, character_id, guild_id, nickname):
+    GlobalObject().root.callChild('chat', 1001, dynamic_id, character_id, nickname, guild_id)
+
+
+@rootserviceHandle
+def login_guild_chat(dynamic_id, guild_id):
+    GlobalObject().root.callChild('chat', 1004, dynamic_id, guild_id)
+
+
+@rootserviceHandle
+def logout_guild_chat(dynamic_id):
+    GlobalObject().root.callChild('chat', 1005, dynamic_id)
+
+
+@rootserviceHandle
+def del_guild_room(guild_id):
+    GlobalObject().root.callChild('chat', 1006, guild_id)
+
+
+@rootserviceHandle
 def push_message(topic_id, character_id, args, kw):
     # print 'gate receive push message'
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
     if oldvcharacter:
-        print 'gate pull message found character to push message:', character_id
         return GlobalObject().root.callChild(oldvcharacter.node,
                                              *(topic_id, oldvcharacter.dynamic_id, True) + args,
                                              **kw)
     else:
-        print 'gate pull message cant found character to push message to transit'
         return GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
 
 
@@ -105,8 +107,6 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 @remoteserviceHandle('transit')
 def send_message_to_character_100001(topic_id, character_id, *args, **kw):
-    print 'gate send message to character topic id:%d character:%d' % (topic_id, character_id), args
-
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
         # print 'gate found character to pull message:', oldvcharacter.__dict__
@@ -152,13 +152,14 @@ def net_conn_lost(dynamic_id):
     @param dynamic_id: int 客户端的动态ID
     """
     vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-
+    print "net lost1++++++++++++++++", dynamic_id
     if vcharacter and vcharacter.node:
         vcharacter.locked = True  # 锁定角色
 
         result = save_playerinfo_in_db(dynamic_id)
-
+        print "net lost2++++++++++++++++", result
         if result:
             drop_client(dynamic_id, vcharacter)
+            print "net lost3++++++++++++++++", dynamic_id, vcharacter
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)

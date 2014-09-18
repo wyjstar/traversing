@@ -2,8 +2,6 @@
 """
 created by server on 14-6-20上午10:19.
 """
-from test.unittest.init_test_data import init
-
 
 def load_module():
     from shared.db_opear.configs_data import game_configs
@@ -28,5 +26,4 @@ def load_module():
     from action.node import feast
     from action.node import sign_in
     from action.node import login_gift
-    # init()
 

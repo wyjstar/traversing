@@ -234,6 +234,8 @@ message GameLoginResponse{
      optional int32 pvp_times = 16;
      optional int32 vip_level = 18;
      optional int32 server_time = 19;
+     optional bytes guild_id = 20;
+     optional float combat_power = 21;
 }
 
 // 请求全部装备 command：401
@@ -312,9 +314,14 @@ message FindFriendRequest{
 message FindFriendResponse{
     optional int32  id = 1;
     optional string nickname = 2;
-    optional int32 ap = 3;
-    optional int32 icon_id = 4;
-    optional int32 gift = 5;
+    optional int32 hero_no = 3;  //英雄编号
+    optional int32 gift = 4;
+    optional float power = 5;  // 战斗力
+    optional float hp = 6;  //血
+    optional float atk = 7;  //攻
+    optional float physical_def = 8;  //物理防御
+    optional float magic_def = 9;  //魔法防御
+
 }
 
 message GetPlayerFriendsRequest{
@@ -323,11 +330,15 @@ message GetPlayerFriendsRequest{
 
 // character information
 message CharacterInfo{
-    optional int32 player_id = 1;
+    optional int32 id = 1;
     optional string nickname = 2;
-    optional int32 ap = 3;
-    optional int32 icon_id = 4;
-    optional int32 gift = 5;
+    optional int32 hero_no = 3;  //英雄编号
+    optional int32 gift = 4;
+    optional float power = 5;  // 战斗力
+    optional float hp = 6;  //血
+    optional float atk = 7;  //攻
+    optional float physical_def = 8;  //物理防御
+    optional float magic_def = 9;  //魔法防御
 }
 
 // player friend items
@@ -398,6 +409,7 @@ message ChatConectingRequest{
     required int32 channel = 2;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
     required string content = 3;//聊天内容
     optional ChatObjectInfo other = 4; // 私聊角色信息
+    optional string guild_id = 5;//公会ID
 }
 
 //返回结果
@@ -483,13 +495,59 @@ message AccountLoginRequest{
 
 // get online gift
 message GetOnlineGift{
-	required int32 gift_id = 1;
+    required int32 gift_id = 1;
 }
 
 message GetOnlineGiftResponse{
-	required bool result = 1;
+    required bool result = 1;
     optional GameResourcesResponse gain = 2;
 }
+
+message GetOnlineLevelGiftData{
+    optional int32 online_time = 1;
+    repeated int32 received_online_gift_id = 2;
+    repeated int32 received_level_gift_id = 3;
+}
+
+message RoundUnit{
+        required int32 id = 1;                            //战斗单位ID
+        optional float hp = 2;                            // 战斗单位血量
+        optional float atk = 3;                           //战斗单位攻击
+        optional float physical_def = 4;             //战斗单位物理防御
+        optional float magic_def = 5;                //战斗单位魔法防御
+        optional float hit = 6;                           //战斗单位命中率
+        optional float dodge = 7;                     //战斗单位闪避率
+        optional float cri = 8;                          //战斗单位暴击率
+        optional float cri_coeff = 9;                //战斗单位暴击伤害系数
+        optional float cri_ded_coeff = 10;      //战斗单位暴伤减免系数
+        optional float block = 11;                  //战斗单位格挡率
+}
+
+
+message Effect{
+        required int32 type = 1;
+        required float value = 2;
+}
+
+message Buff{
+            required int32  id = 1;
+            required string name = 2;                //buff 名称
+            repeated RoundUnit targets = 3;         //buff 对应的目标
+            repeated RoundUnit executors = 4;       //buff 执行者
+            optional int32 has_parent = 5;          //0:木有引发他的buff 其它值 引发它的buff id
+            repeated int32 unpara = 6;              //无双攻击起始
+            optional  Effect effect = 7;               // 造成的影响
+}
+
+message Round{
+            required int32 camp = 1;                    // camp 1:army <-> red 2:enemy <-> blue
+            optional RoundUnit executor = 2;      // 这个round的技能施放者
+            optional int32 skill_id = 3;                 // 施放的技能ID
+            optional int32 skill_type = 4;             //
+            repeated Buff buffs = 5;                    // 造成的buff组
+}
+
+
 
 //请求关卡信息 command:901
 message StageInfoRequest{
@@ -589,6 +647,8 @@ message StageStartResponse{
 	optional int32 drop_num = 2;  //掉落数量
 	repeated BattleUnit red = 4; //红方数据 自己
 	repeated BattleUnitGrop blue = 5; //对方数据
+	optional BattleUnit friend = 6; // 好友
+	optional Skill monster_unpara = 7; // 怪物无双
 }
 
 // 关卡结算返回 command:904
@@ -747,7 +807,7 @@ message JoinGuildResponse{
 	required bool result = 1;  //处理结果 True：正确
     optional int32 result_no = 2;
     optional bytes message = 3;
-    repeated int32 spare_time = 4;
+    optional int32 spare_time = 4;
 }
 
 // 修改公告 command：804
@@ -893,3 +953,28 @@ message EquipmentPB{
 }
 
 
+message LoginInfo
+{
+    required int32 login_day = 1;
+    required int32 is_new_p = 2;
+}
+
+//  login gift info 825
+message InitLoginGiftResponse{
+	repeated int32 cumulative_received = 1;
+	repeated int32 continuous_received = 2;
+	required LoginInfo cumulative_day = 3;
+	required LoginInfo continuous_day = 4;
+}
+
+// get login gift 826
+message GetLoginGiftRequest{
+	required int32 activity_id = 1;
+	required int32 activity_type = 2;
+}
+
+message GetLoginGiftResponse{
+	required bool result = 1;
+	optional int32 result_no = 2;
+    optional GameResourcesResponse gain = 3;
+}

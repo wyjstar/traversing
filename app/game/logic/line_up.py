@@ -22,9 +22,6 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     @param kwargs:
     @return:
     """
-
-    print 'have player change hero #1:', slot_no, hero_no
-
     player = kwargs.get('player')
     # 校验该武将是否已经上阵
     response = line_up_pb2.LineUpResponse()
@@ -52,6 +49,7 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     player = kwargs.get('player')
     # 校验该装备是否已经装备
     response = line_up_pb2.LineUpResponse()
+    print player.line_up_component.on_equipment_ids
     if equipment_id in player.line_up_component.on_equipment_ids:
         response.res.result = False
         response.res.result_no = 702

@@ -36,13 +36,10 @@ class ConnectionManager:
 
     @property
     def connect_ids(self):
-        print "_connections", self._connections
-        print "_queue_conns", self._queue_conns.keys()
         return self._connections.keys()
 
     def hasConnection(self, dynamic_id):
         """是否包含连接"""
-        print self._connections.keys()
         return dynamic_id in self._connections.keys()
 
     def addConnection(self, conn):
@@ -83,7 +80,8 @@ class ConnectionManager:
         if conn:
             conn.loseConnection()
 
-    def change_id(self, new_id, cur_id):
+    def change_id(self, cur_id, new_id):
+        print "self._connections", self._connections, cur_id, new_id
         connection = self._connections[cur_id]
         if not connection:
             return False
@@ -112,18 +110,14 @@ class ConnectionManager:
             for target in sendList:
                 conn = self.getConnectionByID(target)
                 if conn:
-                    print "normal conn:", topicID, msg
                     conn.safeToWriteData(topicID, msg)
                 conn = self._queue_conns.get(target, None)
                 if conn:
-                    print "queue conn:", topicID, msg
                     conn.safeToWriteData(topicID, msg)
         except Exception, e:
-            print 'topic id:', topicID, '**', sendList
             log.err(str(e))
 
     def check_timeout(self):
-        print "check time out ......"
         for k, v in self._connections.items():
             if v.time_out:
                 v.loseConnection()

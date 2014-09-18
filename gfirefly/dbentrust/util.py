@@ -11,16 +11,47 @@ from MySQLdb.cursors import DictCursor
 from numbers import Number
 from gtwisted.utils import log
 
+import MySQLdb
+escape_string = MySQLdb.escape_string
+
+
+def force_str(text, encoding="utf-8", errors='strict'):
+    t_type = type(text)
+    if t_type == str:
+        return text
+    elif t_type == unicode:
+        return text.encode(encoding, errors)
+    return str(text)
+
+
+def _smart(v):
+    t = type(v)
+    if t == str:
+        return v
+    elif t == unicode:
+        return force_str(v)
+    elif (t == int) or (t == long) or (t == float):
+        return str(v)
+    # elif t == datetime.datetime:
+    #     return v.strftime("%Y-%m-%d %H:%M:%S")
+    return str(v)
+
+
+def _pairtext(k, v):
+    if v is None:
+        return "%s=null" % k
+    return "%s='%s'" % (k, escape_string(_smart(v)))
+
+
+def _sqltext(data, delimiter=","):
+    sql = delimiter.join([_pairtext(k[0], k[1]) for k in data.items()])
+    return sql
+
 
 def forEachPlusInsertProps(tablename, props):
     MySQLdb.escape_string
     assert type(props) == dict
-    pkeysstr = str(tuple(props.keys())).replace('\'', '`')
-    pvaluesstr = ["%s," % val if isinstance(val, Number) else
-                  "'%s'," % str(val).replace("'", "\\'") for val in props.values()]
-    pvaluesstr = ''.join(pvaluesstr)[:-1]
-    sqlstr = """INSERT INTO `%s` %s values (%s);""" % (tablename, pkeysstr, pvaluesstr)
-    # print 'inster:', sqlstr
+    sqlstr = "INSERT INTO %s SET %s" % (tablename, _sqltext(props, ","))
     return sqlstr
 
 
@@ -31,9 +62,9 @@ def FormatCondition(props):
     itemstrlist = []
     for _item in items:
         if isinstance(_item[1], Number):
-            sqlstr = " `%s`=%s AND" % _item
+            sqlstr = " %s=%s AND" % _item
         else:
-            sqlstr = " `%s`='%s' AND " % (_item[0], str(_item[1]).replace("'", "\\'"))
+            sqlstr = " %s='%s' AND" % (_item[0], escape_string(_smart(_item[1])))
         itemstrlist.append(sqlstr)
     sqlstr = ''.join(itemstrlist)
     return sqlstr[:-4]
@@ -48,7 +79,7 @@ def FormatUpdateStr(props):
         if isinstance(_item[1], Number):
             sqlstr = " `%s`=%s," % _item
         else:
-            sqlstr = " `%s`='%s'," % (_item[0], str(_item[1]).replace("'", "\\'"))
+            sqlstr = " `%s`='%s'," % (_item[0], escape_string(_smart(_item[1])))
         itemstrlist.append(sqlstr)
     sqlstr = ''.join(itemstrlist)
     return sqlstr[:-1]
@@ -59,7 +90,7 @@ def forEachUpdateProps(tablename, props, prere):
     assert type(props) == dict
     pro = FormatUpdateStr(props)
     pre = FormatCondition(prere)
-    sqlstr = """UPDATE `%s` SET %s WHERE %s;""" % (tablename, pro, pre)
+    sqlstr = """UPDATE %s SET %s WHERE %s;""" % (tablename, pro, pre)
     # print 'update:', sqlstr
     return sqlstr
 
@@ -120,7 +151,12 @@ def ReadDataFromDB(tablename):
     """
     sql = """select * from %s""" % tablename
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    if dbpool._pymysql:
+        from pymysql.cursors import DictCursor
+        cursor = conn.cursor(cursor=DictCursor)
+    else:
+        from MySQLdb.cursors import DictCursor
+        cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -153,7 +189,6 @@ def InsertIntoDB(tablename, data):
     """写入数据库
     """
     sql = forEachPlusInsertProps(tablename, data)
-    # print 'insert into db:', sql
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
@@ -213,9 +248,13 @@ def GetOneRecordInfo(tablename, props):
     # print 'GetOneRecordInfo:', props
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)
-    # print 'get one:', sql
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    if dbpool._pymysql:
+        from pymysql.cursors import DictCursor
+        cursor = conn.cursor(cursor=DictCursor)
+    else:
+        from MySQLdb.cursors import DictCursor
+        cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
@@ -226,14 +265,19 @@ def GetOneRecordInfo(tablename, props):
 def GetRecordList(tablename, pkname, pklist):
     """
     """
+    print pklist
     pkliststr = ""
     for pkid in pklist:
         pkliststr += "'%s'," % pkid
     pkliststr = "(%s)" % pkliststr[:-1]
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
-    # print 'sqlxyz', sql
+    if dbpool._pymysql:
+        from pymysql.cursors import DictCursor
+        cursor = conn.cursor(cursor=DictCursor)
+    else:
+        from MySQLdb.cursors import DictCursor
+        cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -244,7 +288,12 @@ def GetRecordList(tablename, pkname, pklist):
 def DBTest():
     sql = """SELECT * FROM tb_item WHERE characterId=1000001;"""
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    if dbpool._pymysql:
+        from pymysql.cursors import DictCursor
+        cursor = conn.cursor(cursor=DictCursor)
+    else:
+        from MySQLdb.cursors import DictCursor
+        cursor = conn.cursor(cursorclass=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

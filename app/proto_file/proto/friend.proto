@@ -19,9 +19,14 @@ message FindFriendRequest{
 message FindFriendResponse{
     optional int32  id = 1;
     optional string nickname = 2;
-    optional int32 ap = 3;
-    optional int32 icon_id = 4;
-    optional int32 gift = 5;
+    optional int32 hero_no = 3;  //英雄编号
+    optional int32 gift = 4;
+    optional float power = 5;  // 战斗力
+    optional float hp = 6;  //血
+    optional float atk = 7;  //攻
+    optional float physical_def = 8;  //物理防御
+    optional float magic_def = 9;  //魔法防御
+
 }
 
 message GetPlayerFriendsRequest{
@@ -30,11 +35,15 @@ message GetPlayerFriendsRequest{
 
 // character information
 message CharacterInfo{
-    optional int32 player_id = 1;
+    optional int32 id = 1;
     optional string nickname = 2;
-    optional int32 ap = 3;
-    optional int32 icon_id = 4;
-    optional int32 gift = 5;
+    optional int32 hero_no = 3;  //英雄编号
+    optional int32 gift = 4;
+    optional float power = 5;  // 战斗力
+    optional float hp = 6;  //血
+    optional float atk = 7;  //攻
+    optional float physical_def = 8;  //物理防御
+    optional float magic_def = 9;  //魔法防御
 }
 
 // player friend items

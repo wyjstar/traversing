@@ -69,6 +69,5 @@ const.BIG_BAG = u'106'
 # 106 掉落大包（对应big_bag表）
 
 const.MAX_CONNECTION = 2000
-const.TIME_OUT = 5*60  # 秒
-
+const.TIME_OUT = 1000*60  # 秒
 

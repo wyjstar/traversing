@@ -20,7 +20,6 @@ def is_afford(player, item_group):
         type_id = group_item.item_type
         num = group_item.num
         item_no = group_item.item_no
-        print "hero_soul", player.finance.hero_soul
         if type_id == const.COIN and player.finance.coin < num:
             return {'result': False, 'result_no': 101}
         elif type_id == const.GOLD and player.finance.gold < num:
@@ -31,7 +30,7 @@ def is_afford(player, item_group):
             return {'result': False, 'result_no': 107}
         elif type_id == const.MIDDLE_STONE and player.finance.middle_stone < num:
             return {'result': False, 'result_no': 108}
-        elif type_id == const.HIGH_STONE and player.finance.hign_stone < num:
+        elif type_id == const.HIGH_STONE and player.finance.high_stone < num:
             return {'result': False, 'result_no': 109}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
@@ -77,7 +76,7 @@ def consume(player, item_group):
             player.finance.save_data()
 
         elif type_id == const.HIGH_STONE:
-            player.finance.hign_stone -= num
+            player.finance.high_stone -= num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
@@ -109,7 +108,6 @@ def gain(player, item_group, result=None):
         type_id = group_item.item_type
         num = group_item.num
         item_no = group_item.item_no
-        print type_id, num, item_no, "item_group"
         if type_id == const.COIN:
             player.finance.coin += num
             player.finance.save_data()
@@ -129,7 +127,7 @@ def gain(player, item_group, result=None):
             player.finance.middle_stone += num
             player.finance.save_data()
         elif type_id == const.HIGH_STONE:
-            player.finance.hign_stone += num
+            player.finance.high_stone += num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
@@ -146,7 +144,6 @@ def gain(player, item_group, result=None):
             if player.hero_component.contain_hero(item_no):
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
-                print chip_config, item_no
                 hero_chip_config_item = chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.needNum
@@ -157,8 +154,6 @@ def gain(player, item_group, result=None):
                 type_id = const.HERO_CHIP
                 item_no = hero_chip_no
                 num = hero_chip_num
-                print "hero_chip_config_item", hero_chip_config_item
-
             else:
                 player.hero_component.add_hero(item_no)
 
@@ -188,7 +183,6 @@ def get_return(player, return_data, game_resources_response):
     :param game_resources_response: 返回数据
     """
     # finance
-    print 'get return:', return_data
     finance_pb = game_resources_response.finance
     if not finance_pb:
         finance_pb = FinancePB()

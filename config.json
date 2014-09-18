@@ -76,6 +76,10 @@
                 {
                     "rootport": 10000,
                     "rootname": "gate"
+                },
+                {
+                    "rootport": 20000,
+                    "rootname": "battle"
                 }
             ],
             "name": "game",
@@ -102,6 +106,14 @@
             "mem": true,
             "app": "app.dbfrontserver",
             "log": "app/logs/dbfront.log"
+        },
+        "battle": {
+            "rootport": 30000,
+            "name": "battle",
+            "db": true,
+            "mem": true,
+            "app": "app.battleserver",
+            "log": "app/logs/battle.log"
         }
     },
     "db": {
@@ -163,6 +175,7 @@
                 "pvp_times": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
+                "vip_level": "simple",
                 "create_time": "simple"
             }
         },
@@ -177,7 +190,7 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
-                "heros": "complex"
+                "hero_ids": "complex"
             }
         },
         "tb_character_hero": {
@@ -294,7 +307,15 @@
                 "id": "simple",
                 "sign_in": "simple",
                 "online_gift": "complex",
-                "feast": "simple"
+                "feast": "simple",
+                "login_gift": "complex"
+            }
+        },
+        "tb_character_lord": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "attr_info": "complex"
             }
         }
     }

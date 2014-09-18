@@ -46,6 +46,7 @@
 
     <table name="tb_character_mails" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_mail_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
+    <table name="tb_character_lord" dataNode="dn_traversing$0-3" rule="id_int_4" />
 
     <table name="tb_name_mapping" dataNode="dn_account" rule="account_name_str_8" />
     <table name="account_sequence" dataNode="dn_sequence"/>

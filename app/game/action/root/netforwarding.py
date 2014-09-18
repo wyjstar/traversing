@@ -35,13 +35,32 @@ def add_guild_to_rank(g_id, dengji):
         get_gate_remote().callRemote("add_guild_to_rank", g_id, dengji)
 
 
+def login_chat(dynamic_id, character_id, guild_id, nickname):
+    if get_gate_remote():
+        get_gate_remote().callRemote("login_chat", dynamic_id, character_id, guild_id, nickname)
+
+
+def login_guild_chat(dynamic_id, guild_id):
+    if get_gate_remote():
+        get_gate_remote().callRemote("login_guild_chat", dynamic_id, guild_id)
+
+
+def logout_guild_chat(dynamic_id):
+    if get_gate_remote():
+        get_gate_remote().callRemote("logout_guild_chat", dynamic_id)
+
+
+def del_guild_room(guild_id):
+    if get_gate_remote():
+        get_gate_remote().callRemote("del_guild_room", guild_id)
+
+
 def push_message(topic_id, character_id, *args, **kw):
     if get_gate_remote():
         player = PlayersManager().get_player_by_id(character_id)
         if player:
             pargs = (player.dynamic_id, True) + args
             get_gate_remote()._reference.callTarget(*pargs, **kw)
-        print 'game call push message'
         get_gate_remote().callRemote("push_message",
                                      topic_id,
                                      character_id,

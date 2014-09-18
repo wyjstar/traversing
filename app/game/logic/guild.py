@@ -2,16 +2,19 @@
 """
 created by server on 14-7-17下午5:37.
 """
+from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.common.check import have_player
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info, tb_guild_name
 import time
 from app.game.redis_mode import tb_character_guild
-from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank
+from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank, push_object, del_guild_room
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
+from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
+from shared.utils import trie_tree
 
 
 @have_player
@@ -42,11 +45,14 @@ def create_guild(dynamicid, data, **kwargs):
         response.message = "您已加入公会"
         return response.SerializeToString()
 
-    # TODO 公会名 ，敏感字过滤
+    if trie_tree.check.replace_bad_word(g_name).encode("utf-8") != g_name:
+        response.result = False
+        response.message = "公会名不合法"
+        return response.SerializeToString()
 
     if len(g_name) > 18:
         response.result = False
-        response.message = "公告内容超过字数限制"
+        response.message = "名称超过字数限制"
         return response.SerializeToString()
 
     # 判断有没有重名
@@ -78,6 +84,9 @@ def create_guild(dynamicid, data, **kwargs):
     player.finance.gold -= base_config.get('create_money')
     player.finance.save_data()
 
+    # 加入公会聊天
+    login_guild_chat(dynamicid, player.guild.g_id)
+
     response.result = True
     return response.SerializeToString()
 
@@ -91,7 +100,7 @@ def join_guild(dynamicid, data, **kwargs):
     p_id = player.base_info.id
     args = JoinGuildRequest()
     args.ParseFromString(data)
-    response = GuildCommonResponse()
+    response = JoinGuildResponse()
     g_id = args.g_id
     m_g_id = player.guild.g_id
     m_exit_time = player.guild.exit_time
@@ -159,10 +168,14 @@ def exit_guild(dynamicid, data, **kwargs):
         # 删除公会名字
         guild_name_data = tb_guild_name.getObjData(guild_obj.name)
         if guild_name_data:
-            guild_name_obj = tb_guild_name.getObj(guild_obj.name)
-            guild_name_obj.delete()
+            # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
+            # guild_name_obj.delete()
+            tb_guild_name.deleteMode(guild_obj.name)
 
-        player.guild._g_id = 0
+        # 解散公会，删除公会聊天室
+        del_guild_room(player.guild.g_id)
+
+        player.guild.g_id = 0
         player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.delete_guild()
@@ -220,14 +233,19 @@ def exit_guild(dynamicid, data, **kwargs):
 
             guild_obj.save_data()
 
+            # 退出公会聊天
+            logout_guild_chat(dynamicid)
+
             response.result = True
             response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
         player.guild.g_id = 0
-        player.guild.exit_time = time.time()
+        player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
+        # 退出公会聊天
+        logout_guild_chat(dynamicid)
         response.result = True
         return response.SerializeToString()
 
@@ -239,6 +257,7 @@ def exit_guild(dynamicid, data, **kwargs):
 @have_player
 def editor_call(dynamicid, data, **kwargs):
     """
+
     编辑公告
     """
     player = kwargs.get('player')
@@ -251,7 +270,6 @@ def editor_call(dynamicid, data, **kwargs):
         response.result = True
         response.message = "公告内容超过字数限制"
         return response.SerializeToString()
-    # TODO 公告 ，过滤敏感词语
     data1 = tb_guild_info.getObjData(player.guild.g_id)
     if not data1:
         response.result = False
@@ -269,6 +287,10 @@ def editor_call(dynamicid, data, **kwargs):
             response.result = True
             response.message = "权限不够"
             return response.SerializeToString()
+
+        if call:
+            call = trie_tree.check.replace_bad_word(call).encode("utf-8")
+
         guild_obj.editor_call(call)
         guild_obj.save_data()
         response.result = True
@@ -335,6 +357,13 @@ def deal_apply(dynamicid, data, **kwargs):
                     guild_obj.p_list.update({5: [p_id]})
                 guild_obj.p_num += 1
             p_guild_data.update_multi(data)
+
+            # 加入公会聊天室
+            invitee_player = PlayersManager().get_player_by_id(p_id)
+            if invitee_player:  # 在线
+                login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
+                invitee_player.guild.g_id = player.guild.g_id
+                invitee_player.guild.save_data()
 
     elif res_type == 2:
         p_ids = args.p_ids
@@ -404,6 +433,10 @@ def change_president(dynamicid, data, **kwargs):
 
             player.guild.position = 5
             player.guild.save_data()
+
+            # 退出公会聊天
+            logout_guild_chat(dynamicid)
+
             response.result = True
             response.message = "转让成功"
             return response.SerializeToString()
@@ -459,6 +492,15 @@ def kick(dynamicid, data, **kwargs):
                              'exit_time': time.time()}}
                 p_guild_data = tb_character_guild.getObj(p_id)
                 p_guild_data.update_multi(data)
+
+                # 踢出公会聊天室
+                invitee_player = PlayersManager().get_player_by_id(p_id)
+                if invitee_player:  # 在线
+                    logout_guild_chat(invitee_player.dynamic_id)
+                    invitee_player.guild.g_id = player.guild.g_id
+                    invitee_player.guild.save_data()
+                    push_object(814, '', invitee_player.dynamic_id)
+
     response.result = True
     response.message = "踢人成功"
     return response.SerializeToString()
@@ -676,8 +718,8 @@ def get_guild_rank(dynamicid, data, **kwargs):
             president_id = guild_obj.p_list.get(1)[0]
             player_data = tb_character_info.getObjData(president_id)
             if player_data:
-                if player_data.get('nickname').encode("utf-8"):
-                    guild_rank.president = player_data.get('nickname').encode("utf-8")
+                if player_data.get('nickname'):
+                    guild_rank.president = player_data.get('nickname')
                 else:
                     guild_rank.president = '无名'
             else:
@@ -723,7 +765,7 @@ def get_role_list(dynamicid, data, **kwargs):
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
 
-                    role_info.name = character_info['nickname'].encode("utf-8")
+                    role_info.name = character_info['nickname']
                     role_info.level = character_info['level']
 
                     role_info.position = guild_info.get("position")
@@ -799,7 +841,7 @@ def get_apply_list(dynamicid, data, **kwargs):
         if character_info:
             role_info = response.role_info.add()
             role_info.p_id = role_id
-            role_info.name = character_info['nickname'].encode("utf-8")
+            role_info.name = character_info['nickname']
             role_info.level = character_info['level']
             role_info.vip_level = 1
             role_info.fight_power = 1

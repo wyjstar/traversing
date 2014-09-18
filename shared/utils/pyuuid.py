@@ -3,6 +3,7 @@
 created by server on 14-6-5下午10:01.
 """
 import uuid
+import time
 
 
 def get_uuid():
@@ -10,4 +11,4 @@ def get_uuid():
 
 
 if __name__ == '__main__':
-    print type(get_uuid())
+    print get_uuid()
