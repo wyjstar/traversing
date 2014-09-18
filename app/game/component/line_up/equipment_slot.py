@@ -9,6 +9,12 @@ from app.game.core.fight.skill_helper import SkillHelper
 
 class EquipmentSlotComponent(SlotBaseInfoComponent):
     """阵容装备格子
+    1:头盔
+    2:武器
+    3:衣服
+    4:钻石
+    5:项链
+    6:指环
     """
 
     def __init__(self, owner, equ_slot_no, activation=False, equipment_id=None, base_name=''):

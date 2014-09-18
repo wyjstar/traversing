@@ -2,6 +2,21 @@
 """
 created by server on 14-6-20上午10:19.
 """
+from gfirefly.dbentrust.madminanager import MAdminManager
+from gfirefly.server.globalobject import GlobalObject
+
+
+def doWhenStop():
+    """服务器关闭前的处理
+    """
+    print "##############################"
+    print "##########checkAdmins#############"
+    print "##############################"
+    MAdminManager().checkAdmins()
+
+
+GlobalObject().stophandler = doWhenStop
+
 
 def load_module():
     from shared.db_opear.configs_data import game_configs
