@@ -22,6 +22,6 @@ def tick():
                                               front_port,
                                               'normal')
 
-    reactor.callLater(10, tick)
+    reactor.callLater(60, tick)
 
-reactor.callLater(5, tick)
+reactor.callLater(3, tick)
