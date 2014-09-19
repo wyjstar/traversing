@@ -2,7 +2,7 @@
 """
 created by server on 14-7-14下午5:25.
 """
-from app.game.logic.line_up import get_line_up_info, change_hero, change_equipment
+from app.game.logic.line_up import get_line_up_info, change_hero, change_equipment, get_target_line_up_info
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import line_up_pb2
 
@@ -12,6 +12,14 @@ def get_line_up_info_701(dynamic_id, pro_data):
     """取得阵容信息
     """
     return get_line_up_info(dynamic_id)
+
+@remote_service_handle
+def get_target_line_up_info_706(dynamic_id, pro_data):
+    """取得目标玩家阵容信息
+    """
+    request = line_up_pb2.GetLineUpResponse()
+    request.ParseFromString(pro_data)
+    return get_target_line_up_info(dynamic_id, request.target_id)
 
 
 @remote_service_handle

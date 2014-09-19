@@ -42,3 +42,8 @@ message ChangeHeroRequest{
 	optional int32 change_type = 2; // 更换类型：0：阵容 1：助威
 	optional int32 hero_no = 3; // 英雄编号
 }
+
+// 查看目标玩家的阵容信息 706
+message GetLineUpResponse{
+	required int32 target_id = 1; // 玩家ID
+}

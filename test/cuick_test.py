@@ -4,6 +4,7 @@ import struct
 import time
 from twisted.internet import reactor, protocol
 from app.proto_file import account_pb2
+from app.proto_file.line_up_pb2 import GetLineUpResponse, LineUpResponse
 from app.proto_file.player_request_pb2 import PlayerLoginRequest
 from app.proto_file.player_response_pb2 import PlayerResponse
 from app.proto_file.guild_pb2 import *
@@ -70,7 +71,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = 'a97e54ed97028cca704be9cf6ab24596'
+        argument.key.key = '088bda71b446e8a92b7a61ea4e6c2795'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -95,7 +96,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = 'a97e54ed97028cca704be9cf6ab24596'
+                argument.key.key = '088bda71b446e8a92b7a61ea4e6c2795'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -106,7 +107,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = 'a97e54ed97028cca704be9cf6ab24596'
+            argument.token = '088bda71b446e8a92b7a61ea4e6c2795'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -114,6 +115,10 @@ class EchoClient(protocol.Protocol):
             argument.ParseFromString(message)
             print argument
 
+            # --------706获取目标玩家阵容信息------------
+            argument1 = GetLineUpResponse()
+            argument1.target_id = 7
+            self.dateSend(argument1, 706)
 
             # --------826领取登录奖励------------
             # argument1 = GetLoginGiftRequest()
@@ -253,9 +258,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 812)
 
             # --------811获取公会玩家列表---------
-            argument1 = CreateGuildRequest()
-            argument1.name = '一二三四117'
-            self.dateSend(argument1, 811)
+            # argument1 = CreateGuildRequest()
+            # argument1.name = '一二三四117'
+            # self.dateSend(argument1, 811)
 
             # --------813获取申请列表---------
             # argument1 = CreateGuildRequest()
@@ -441,6 +446,12 @@ class EchoClient(protocol.Protocol):
             # argument.ParseFromString(message)
             # print argument
             print 'aaaaaaaaaaaaaaaaaaaaaa814'
+
+        if command == 706:
+            #
+            argument = LineUpResponse()
+            argument.ParseFromString(message)
+            print argument
 
     def connectionLost(self, reason):
         print "connection lost"
