@@ -15,7 +15,6 @@ from app.game.logic.common.check import have_player, check_have_equipment
 def get_line_up_info(dynamic_id, **kwargs):
     player = kwargs.get('player')
     response = line_up_info(player)
-    print '######################3', response, '#######################'
     return response.SerializePartialToString()
 
 
