@@ -218,3 +218,16 @@ class CharacterLineUpComponent(Component):
             each_power = slot.combat_power()
             _power += each_power
         return _power
+
+    def get_slot_by_hero(self, hero_no):
+        """根据英雄编号拿到格子对象
+        :param hero_no:
+        :return:
+        """
+        for slot in self._line_up_slots.values():
+            if hero_no == slot.hero_slot.hero_no:
+                return slot
+        return None
+
+
+
