@@ -5,7 +5,7 @@ from twisted.internet.protocol import ClientCreator
 
 
 HOST = '127.0.0.1'
-PORT = 11009
+PORT = 31009
 
 
 class RobotManager:

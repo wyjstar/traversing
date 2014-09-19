@@ -84,8 +84,27 @@ class LineUpSlotComponent(Component):
         @param equipment_id:
         @return:
         """
+
+        if not self.check_equipment_pos(no, equipment_id):
+            return False
+
         equipment_slot = self._equipment_slots.get(no)
         equipment_slot.equipment_id = equipment_id
+
+        return True
+
+    def check_equipment_pos(self, no, equipment_id):
+        """校验装备类型
+        @param no:
+        @param equipment_id:
+        @return:
+        """
+        equ_obj = self.get_equipment_obj(equipment_id)
+        equipment_type = equ_obj.attribute.equipment_type
+        print equipment_type, no, "check_equipment_pos+++++++++++++++++++++++++++"
+        if no == equipment_type:
+            return True
+        return False
 
     @property
     def equipment_objs(self):

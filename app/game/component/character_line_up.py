@@ -128,7 +128,7 @@ class CharacterLineUpComponent(Component):
         @return:
         """
         slot_obj = self._line_up_slots.get(slot_no)
-        slot_obj.change_equipment(no, equipment_id)
+        return slot_obj.change_equipment(no, equipment_id)
 
     @property
     def hero_ids(self):

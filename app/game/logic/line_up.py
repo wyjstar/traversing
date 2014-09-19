@@ -8,7 +8,7 @@ from app.game.core.hero import Hero
 from app.game.redis_mode import tb_character_line_up, tb_character_heros, tb_character_hero, tb_character_equipments, \
     tb_equipment_info
 from app.proto_file import line_up_pb2
-from app.game.logic.common.check import have_player
+from app.game.logic.common.check import have_player, check_have_equipment
 
 
 @have_player
@@ -52,16 +52,31 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @param equipment_id: 装备ID
     @return:
     """
+    print slot_no, no, equipment_id, "change equipment id +++++++++++++++++++++++++++"
     player = kwargs.get('player')
-    # 校验该装备是否已经装备
     response = line_up_pb2.LineUpResponse()
-    print player.line_up_component.on_equipment_ids
-    if equipment_id in player.line_up_component.on_equipment_ids:
+
+    # 检验装备是否存在
+    if not check_have_equipment(player, equipment_id):
+        print "1check_have_equipment++++++++++++++++"
         response.res.result = False
         response.res.result_no = 702
         return response.SerializePartialToString()
 
-    player.line_up_component.change_equipment(slot_no, no, equipment_id)
+    # 校验该装备是否已经装备
+    if equipment_id in player.line_up_component.on_equipment_ids:
+        print "2check_have_equipment++++++++++++++++"
+        response.res.result = False
+        response.res.result_no = 703
+        return response.SerializePartialToString()
+
+    # 校验装备类型
+    if not player.line_up_component.change_equipment(slot_no, no, equipment_id):
+        print "3check_have_equipment++++++++++++++++"
+        response.res.result = False
+        response.res.result_no = 704
+        return response.SerializePartialToString()
+    print "0check_have_equipment++++++++++++++++"
     player.line_up_component.save_data()
     response = line_up_info(player)
     return response.SerializePartialToString()

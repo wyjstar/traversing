@@ -18,15 +18,12 @@ from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
 from shared.db_opear.configs_data.skill_config import SkillConfig
+from shared.db_opear.configs_data.stage_break_config import StageBreakConfig
 from shared.db_opear.configs_data.stage_config import StageConfig
 from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
 from shared.db_opear.configs_data.sign_in_config import SignInConfig
 from shared.db_opear.configs_data.warriors_config import WarriorsConfig
 from shared.db_opear.configs_data.activity_config import ActivityConfig
-
-
-
-print id(dbpool)
 from shared.db_opear.configs_data.hero_config import HeroConfig
 from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
@@ -98,7 +95,7 @@ sign_in_config = {}
 warriors_config = {}
 activity_config = {}
 vip_config = {}
-
+stage_break_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -125,6 +122,7 @@ all_config_name = {
     'warriors_config': WarriorsConfig(),
     'activity_config': ActivityConfig(),
     'vip_config': VIPConfig(),
+    'stage_break_config': StageBreakConfig(),
 }
 
 
@@ -145,11 +143,11 @@ for config_name in all_config_name.keys():
 if __name__ == '__main__':
     init()
     # print activity_config
-    for k, v in equipment_config.items():
-        print k, '='*5, v
-        for _ in v:
-            print _
-
+    # for k, v in equipment_config.items():
+    #     print k, '='*5, v
+    #     for _ in v:
+    #         print _
+    print stage_break_config
 
 
 

@@ -2,6 +2,7 @@
 """
 created by server on 14-7-17下午6:54.
 """
+import copy
 import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
@@ -23,6 +24,8 @@ class CharacterFightCacheComponent(Component):
 
         self._red_unit = []  # 红方战斗单位
         self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
+
+        self._not_replace= []  # 不能替换的英雄
 
     @property
     def red_unit(self):
@@ -77,6 +80,12 @@ class CharacterFightCacheComponent(Component):
         """
         monster_config = game_configs.monster_config.get(monster_id)
         return monster_config
+
+    def __get_stage_break_config(self):
+        """取得关卡乱入信息
+        """
+        stage_break_config = game_configs.stage_break_config.get(self._stage_id)
+        return stage_break_config
 
     def __get_drop_num(self):
         """取得关卡小怪掉落数量
@@ -160,6 +169,88 @@ class CharacterFightCacheComponent(Component):
         group = skill_config.group
         return [unpara] + group
 
+    def __get_break_stage_odds(self):
+        """取得乱入概率
+        """
+        odds = 0
+        stage_break_config = self.__get_stage_break_config()
+
+        if not stage_break_config:
+            return odds
+
+        for i in range(1, 8):
+            condition_config = getattr(stage_break_config, 'condition%s' % i)  # 乱入条件
+            odds_config = getattr(stage_break_config, 'odds%s' % i)  # 乱入几率
+
+            if self.check_condition(condition_config):
+                odds += odds_config
+
+        return odds
+
+    def check_condition(self, condition_config):
+        """
+        @param condition_config: 武将乱入条件配置
+        @return: 此条件是否完成
+        """
+        for condition_type, condition_param in condition_config.items():
+            if not self.__do_check_condition(condition_type, condition_param):
+                return False
+        return True
+
+    def __do_check_condition(self, condition_type, condition_param):
+        """
+        @param condition_type:  条件类型
+        @param condition_param:  条件参数
+        @return:
+        """
+        mapping_dict = {
+            1: self.check_num,  # 上阵人数
+            2: self.check_hero,  # 上阵英雄
+            3: self.check_equ,  # 上阵装备
+            4: self.check_suit,  # 激活套装
+            5: self.check_link,  # 激活羁绊
+        }
+
+        return mapping_dict[condition_type](condition_param)
+
+    def check_num(self, condition_param):
+        hero_nos = self.owner.line_up_component.hero_nos
+        num = len(hero_nos)
+        if condition_param > num:
+            return False
+        return True
+
+    def check_hero(self, condition_param):
+        hero_nos = self.owner.line_up_component.hero_nos
+        if condition_param in hero_nos:
+            self._not_replace.append(condition_param)
+            return True
+        return False
+
+    def check_equ(self, condition_param):
+        for slot in self.line_up_slots.values():
+            if condition_param in slot.equipment_nos:
+                return True
+        return False
+
+    def check_suit(self, condition_param):
+        for slot in self.line_up_slots.values():
+            if condition_param in slot.equ_suit:
+                return True
+        return False
+
+    def check_link(self, condition_param):
+        for slot in self.line_up_slots.values():
+            if condition_param in slot.hero_slot.link:
+                link_config = game_configs.link_config.get(slot.hero_slot.hero_no)
+                for i in (1, 6):
+                    link = getattr(link_config, 'link%s' % i)
+                    if condition_param == link:
+                        trigger = getattr(link_config, 'trigger%s' % i)
+                        self._not_replace.extend(trigger)
+                return True
+        return False
+
     def fighting_start(self):
         """战斗开始
         """
@@ -191,6 +282,23 @@ class CharacterFightCacheComponent(Component):
         drops.extend(elite_drop)
 
         return drops
+
+    def break_hero_units(self, red_units):
+        odds = self.__get_break_stage_odds()
+        if odds <= random.random(0, 1):
+            for red_unit in red_units:
+                if red_unit.no in self._not_replace:
+                    continue
+
+                # 拷贝一个乱入战斗单位
+                break_unit = copy.deepcopy(red_unit)
+                # break_config = self.__get_stage_break_config()
+                # hero_id = break_config.hero_id
+                # hero_config = game_configs.hero_config.get(hero_id)
+
+
+
+
 
 
 

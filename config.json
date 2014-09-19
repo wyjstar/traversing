@@ -6,23 +6,23 @@
     },
     "servers": {
         "admin": {
-            "webport": 22001,
+            "webport": 32001,
             "name": "admin",
             "app": "app.adminserver",
             "log": "app/logs/admin.log"
         },
         "transit": {
-            "rootport": 20000,
+            "rootport": 30002,
             "name": "transit",
             "app": "app.transitserver",
             "log": "app/logs/transitserver.log"
         },
         "gate": {
-            "rootport": 10000,
+            "rootport": 30001,
             "name": "gate",
             "remoteport": [
                 {
-                    "rootport": 20000,
+                    "rootport": 30002,
                     "rootname": "transit"
                 }
             ],
@@ -40,11 +40,11 @@
             }
         },
         "net": {
-            "netport": 11009,
+            "netport": 31009,
             "name": "net",
             "remoteport": [
                 {
-                    "rootport": 10000,
+                    "rootport": 30001,
                     "rootname": "gate"
                 }
             ],
@@ -54,11 +54,11 @@
         "game": {
             "remoteport": [
                 {
-                    "rootport": 10000,
+                    "rootport": 30001,
                     "rootname": "gate"
                 },
                 {
-                    "rootport": 20000,
+                    "rootport": 30002,
                     "rootname": "battle"
                 }
             ],
@@ -75,7 +75,7 @@
             "db": true,
             "remoteport": [
                 {
-                    "rootport": 10000,
+                    "rootport": 30001,
                     "rootname": "gate"
                 }
             ],
@@ -86,7 +86,7 @@
             "name": "chat",
             "remoteport": [
                 {
-                    "rootport": 10000,
+                    "rootport": 30001,
                     "rootname": "gate"
                 }
             ],
