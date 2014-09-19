@@ -52,7 +52,7 @@
             "log": "app/logs/gate.log",
             "name": "lucas",
             "front_ip": "127.0.0.1",
-            "front_port": 11009,
+            "front_port": 31009,
             "Ranking_configs": {
                 "label": "GuildLevel",
                 "redis_server": "127.0.0.1",
