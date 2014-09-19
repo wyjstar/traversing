@@ -100,7 +100,8 @@ class LineUpSlotComponent(Component):
         @return:
         """
         equ_obj = self.get_equipment_obj(equipment_id)
-        equipment_type = equ_obj.attribut.equipment_type
+        equipment_type = equ_obj.attribute.equipment_type
+        print equipment_type, no, "check_equipment_pos+++++++++++++++++++++++++++"
         if no == equipment_type:
             return True
         return False

@@ -46,27 +46,31 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @param equipment_id: 装备ID
     @return:
     """
+    print slot_no, no, equipment_id, "change equipment id +++++++++++++++++++++++++++"
     player = kwargs.get('player')
     response = line_up_pb2.LineUpResponse()
 
     # 检验装备是否存在
     if not check_have_equipment(player, equipment_id):
+        print "1check_have_equipment++++++++++++++++"
         response.res.result = False
         response.res.result_no = 702
         return response.SerializePartialToString()
 
     # 校验该装备是否已经装备
     if equipment_id in player.line_up_component.on_equipment_ids:
+        print "2check_have_equipment++++++++++++++++"
         response.res.result = False
         response.res.result_no = 703
         return response.SerializePartialToString()
 
     # 校验装备类型
     if not player.line_up_component.change_equipment(slot_no, no, equipment_id):
+        print "3check_have_equipment++++++++++++++++"
         response.res.result = False
         response.res.result_no = 704
         return response.SerializePartialToString()
-
+    print "0check_have_equipment++++++++++++++++"
     player.line_up_component.save_data()
     response = line_up_info(player)
     return response.SerializePartialToString()
