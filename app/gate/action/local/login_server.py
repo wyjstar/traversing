@@ -50,7 +50,7 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
     """管理用户 """
     user = UsersManager().get_by_id(account_id)
     if user and user.dynamic_id != dynamic_id:
-        print 'user exit! info:', user
+        print 'user exist! info:', user
         if not net.change_dynamic_id(user.dynamic_id, dynamic_id):
             print 'error!, change user id fail, dynamic:', user.dynamic_id
             return False

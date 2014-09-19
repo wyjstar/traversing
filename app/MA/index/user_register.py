@@ -2,6 +2,7 @@
 """
 created by sphinx on 11/9/14.
 """
+import json
 from gfirefly.dbentrust import util
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.dbentrust.dbpool import dbpool
@@ -22,7 +23,7 @@ def __user_register(account_name='', account_password=''):
     # sql_result = select_execute(USER_TABLE_NAME, dict(account_name=account_name))
     sql_result = util.GetOneRecordInfo(USER_TABLE_NAME, dict(account_name=account_name))
     if sql_result:
-        return str({'result': False, 'message': 'account name is exist'})
+        return json.dumps(dict(result=False, message='account name is exist'))
 
     user_data = dict(id=get_uuid(),
                      account_name=account_name,
@@ -32,8 +33,8 @@ def __user_register(account_name='', account_password=''):
 
     insert_result = util.InsertIntoDB(USER_TABLE_NAME, user_data)
     if insert_result:
-        return str({'result': True, 'passport': user_data.get('uuid')})
-    return str({'result': False, 'message': 'error'})
+        return json.dumps(dict(result=True, passport=user_data.get('uuid')))
+    return json.dumps(dict(result=False, message='error'))
 
 
 @webserviceHandle('/register')
@@ -50,11 +51,11 @@ def __user_login(account_name='', account_password=''):
                                                              account_password=account_password))
     print get_result
     if get_result is None:
-        return str({'result': False, 'message': 'account name or password error!'})
+        return json.dumps(dict(result=False, message='account name or password error!'))
 
     if get_result['id'] not in account_login_cache:
         account_login_cache.append(get_result['id'])
-    return str({'result': True, 'passport': get_result['id']})
+    return json.dumps(dict(result=True, passport=get_result['id']))
 
 
 @webserviceHandle('/login')

@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import urllib
 import gevent
+import json
 
 from twisted.internet import reactor
 from twisted.internet.protocol import ClientCreator
@@ -95,7 +96,7 @@ class RobotManager:
 def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
     register_url = 'http://localhost:20100/register?name=%s&pwd=%s' % \
                    (robot_name, pwd)
-    register_response = eval((urllib.urlopen(register_url)).read())
+    register_response = json.loads((urllib.urlopen(register_url)).read())
     print 'register response:', register_response
     if register_response.get('result') is False and \
             register_response.get('message').find('exist') == -1:
@@ -105,7 +106,7 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
 
     login_url = 'http://localhost:20100/login?name=%s&pwd=%s' % \
                 (robot_name, pwd)
-    login_response = eval((urllib.urlopen(login_url)).read())
+    login_response = json.loads((urllib.urlopen(login_url)).read())
     print 'login response:', login_response
     if login_response.get('result') is False:
         print 'login fail'
@@ -115,8 +116,12 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
     passport = login_response.get('passport')
     print passport
     login_game_url = 'http://localhost:20097/login?passport=' + passport
-    login_game_response = eval((urllib.urlopen(login_game_url)).read())
+    login_game_response = (urllib.urlopen(login_game_url)).read()
     print 'login game response:', login_game_response
+    login_game_response = json.loads(login_game_response)
+    print 'login game response:', login_game_response
+    net_ip = login_game_response.get('servers')[0].get('ip')
+    net_port = login_game_response.get('servers')[0].get('port')
     if login_game_response.get('result') is False:
         print 'login game fail'
         return
@@ -124,4 +129,4 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
     game_passport = login_game_response.get('passport')
 
     c = ClientCreator(reactor, robot_type, manager, game_passport, robot_nickname)
-    c.connectTCP(HOST, PORT)
+    c.connectTCP(net_ip, net_port)

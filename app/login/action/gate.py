@@ -2,7 +2,7 @@
 """
 created by sphinx on
 """
-from app.login.model.manager import account_cache
+from app.login.model.manager import account_cache, server_manager
 from gfirefly.server.globalobject import rootserviceHandle
 
 
@@ -18,3 +18,9 @@ def account_verify(key):
 
     print 'acount verify result:', response
     return str(response)
+
+
+@rootserviceHandle
+def server_sync(name, ip, port, status):
+    server_manager.sync_server(name, ip, port, status)
+    print server_manager.get_server()

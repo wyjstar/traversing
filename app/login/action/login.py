@@ -2,10 +2,11 @@
 """
 created by sphinx on
 """
+import json
 import uuid
 import urllib
 from flask import request
-from app.login.model.manager import account_cache
+from app.login.model.manager import account_cache, server_manager
 from gfirefly.server.globalobject import webserviceHandle
 
 
@@ -16,20 +17,17 @@ def server_login():
     verify_passport = request.args.get('passport')
     result = eval(__login(verify_passport))
     if result.get('result') is False:
-        return str({'result': False})
+        return json.dumps(dict(result=False))
 
     game_passport = uuid.uuid1().get_hex()
     account_cache[game_passport] = verify_passport
-    server1 = {'name': '60', 'port': 11009, 'ip': '192.168.1.60', 'status': 'normal'}
-    server2 = {'name': 'cui', 'port': 11009, 'ip': '192.168.1.111', 'status': 'normal'}
-    server3 = {'name': 'wang', 'port': 11009, 'ip': '192.168.1.24', 'status': 'normal'}
-    server4 = {'name': 'lee', 'port': 11009, 'ip': '192.168.1.181', 'status': 'normal'}
 
-    server_list = {'result': True, 'passport': game_passport,
-                   'servers': [server1, server2, server3, server4]}
+    server_list = dict(result=True,
+                       passport=game_passport,
+                       servers=server_manager.get_server())
 
     print server_list
-    return str(server_list)
+    return json.dumps(server_list)
 
 
 def __login(passport):

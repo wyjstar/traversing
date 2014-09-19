@@ -22,7 +22,7 @@ def character_login_4(key, dynamic_id, request_proto):
     argument.ParseFromString(request_proto)
     token = argument.token
 
-    response = __character_login(dynamic_id, token)
+    response = __character_login(dynamic_id)
     if response[0].guild_id:
         guild_id = response[0].guild_id
     else:
@@ -35,7 +35,7 @@ def character_login_4(key, dynamic_id, request_proto):
     return response[0].SerializePartialToString()
 
 
-def __character_login(dynamic_id, token):
+def __character_login(dynamic_id):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 

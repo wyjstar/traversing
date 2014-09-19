@@ -49,6 +49,6 @@ def Forwarding_0(keyname, _conn, data):
     dynamic_id = _conn.transport.sessionno
     if not GlobalObject().netfactory.connmanager.hasConnection(dynamic_id):
         return
-    dd = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
-    return dd
+    result = GlobalObject().remote['gate'].callRemote("forwarding", keyname, _conn.transport.sessionno, data)
+    return result
 
