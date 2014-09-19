@@ -150,6 +150,10 @@ class LineUpSlotComponent(Component):
         """
         """
         hero_base_attr, attr = self.hero_attr()
+
+        if not hero_base_attr:
+            return None
+
         equ_attr = self.equ_attr()
         attr += equ_attr
         red = self.__assemble_hero(hero_base_attr, attr)
@@ -159,11 +163,12 @@ class LineUpSlotComponent(Component):
         """
         英雄属性：包括突破和羁绊
         """
+        attr = CommonItem()
         # 英雄
         hero_obj = self.hero_slot.hero_obj
 
         if not hero_obj:
-            return None
+            return None, attr
 
         # hero_no, quality, hp, atk, physical_def, magic_def, hit
         # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
