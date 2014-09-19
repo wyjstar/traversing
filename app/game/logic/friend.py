@@ -324,7 +324,7 @@ def find_friend_request(dynamic_id, data, **kwargs):
     response.id = 0
     response.nickname = 'none'
     response.atk = 111
-    response.icon_id = 11
+    response.hero_no = 11
     response.gift = datetime.datetime.now().day
 
     if request.id_or_nickname.isdigit():
