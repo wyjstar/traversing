@@ -93,6 +93,9 @@ class PlayerCharacter(Character):
         hero_soul = character_info['hero_soul']
         level = character_info['level']
         exp = character_info['exp']
+        junior_stone = character_info['junior_stone']
+        middle_stone = character_info['middle_stone']
+        high_stone = character_info['high_stone']
         fine_hero_last_pick_time = character_info['fine_hero_last_pick_time']
         excellent_hero_last_pick_time = character_info['excellent_hero_last_pick_time']
         fine_equipment_last_pick_time = character_info['fine_equipment_last_pick_time']
@@ -109,6 +112,9 @@ class PlayerCharacter(Character):
         self._finance.coin = coin
         self._finance.gold = gold
         self._finance.hero_soul = hero_soul
+        self._finance.junior_stone = junior_stone
+        self._finance.middle_stone = middle_stone
+        self._finance.high_stone = high_stone
 
         #------------初始化上次抽取信息------------
         self._last_pick_time.fine_hero = fine_hero_last_pick_time
