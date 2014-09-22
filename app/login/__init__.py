@@ -2,7 +2,7 @@
 """
 created by sphinx on 
 """
-import action.login
+import action
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.netconnect.datapack import DataPackProtoc
 
