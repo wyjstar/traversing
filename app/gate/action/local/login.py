@@ -43,7 +43,7 @@ def character_login_4(key, dynamic_id, request_proto):
         #TODO 起名时候
         # 聊天室登录
         GlobalObject().root.callChild('chat', 1001, dynamic_id, response.id, nickname, guild_id)
-    return response[0].SerializePartialToString()
+    return response.SerializePartialToString()
 
 
 def __character_login(dynamic_id, token):
