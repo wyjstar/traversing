@@ -6,8 +6,10 @@ import copy
 import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
+from app.game.core.hero import Hero
 from app.game.logic.fight import do_assemble
 from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class CharacterFightCacheComponent(Component):
@@ -284,17 +286,98 @@ class CharacterFightCacheComponent(Component):
         return drops
 
     def break_hero_units(self, red_units):
+        unit = None
         odds = self.__get_break_stage_odds()
         if odds <= random.random(0, 1):
+            replace = []  # 可以替换的英雄
             for red_unit in red_units:
-                if red_unit.no in self._not_replace:
+                hero_no = red_unit.no  # 英雄编号
+                if hero_no in self._not_replace:
                     continue
 
-                # 拷贝一个乱入战斗单位
-                break_unit = copy.deepcopy(red_unit)
-                # break_config = self.__get_stage_break_config()
-                # hero_id = break_config.hero_id
-                # hero_config = game_configs.hero_config.get(hero_id)
+            hero_no = random.choice(replace)
+
+            break_config = self.__get_stage_break_config()
+            hero_id = break_config.hero_id
+
+            replace.append(hero_no)
+            level = red_unit.level  # 等级
+            break_level = red_unit.break_level  # 突破等级
+
+            hero_obj = Hero()  # 实例化一个替换英雄对象
+            hero_obj.hero_no = hero_id
+            hero_obj.level = level
+            hero_obj.break_level = break_level
+
+            hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+
+            attr = CommonItem()
+            hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
+            attr += hero_break_attr
+
+            slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
+            equ_attr = slot_obj.equ_attr()
+            attr += equ_attr
+
+            unit = self.__assemble_hero(hero_base_attr, attr)
+
+        return unit
+
+    def __assemble_hero(self, base_attr, attr):
+        """组装英雄战斗单位
+        """
+        # base_attr: 英雄基础，等级 属性
+        # hero_no, quality, hp, atk, physical_def, magic_def, hit
+        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+        # rage_skill, break_skills
+
+        # attr: 属性
+        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+
+        no = base_attr.hero_no
+        quality = base_attr.quality
+
+        normal_skill = base_attr.normal_skill
+        rage_skill = base_attr.rage_skill
+        break_skills = base_attr.break_skills
+
+        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
+        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
+        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
+        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        hit = base_attr.hit + attr.hit
+        dodge = base_attr.dodge + attr.dodge
+        cri = base_attr.cri + attr.cri
+        cri_coeff = base_attr.cri_coeff + attr.cri_coeff
+        cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
+        block = base_attr.block + attr.block
+
+        base_hp = base_attr.hp
+        base_atk = base_attr.atk
+        base_physical_def = base_attr.physical_def
+        base_magic_def = base_attr.magic_def
+        base_hit = base_attr.hit
+        base_dodge = base_attr.dodge
+        base_cri = base_attr.cri
+        base_cri_coeff = base_attr.cri_coeff
+        base_cri_ded_coeff = base_attr.cri_ded_coeff
+        base_block = base_attr.block
+
+        level = base_attr.level
+        break_level = base_attr.break_level
+        is_boss = False
+        position = 0
+
+        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills,
+                                  base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
+                                  base_cri_coeff, base_cri_ded_coeff, base_block,
+                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
+                                  position,
+                                  level, break_level, is_boss)
+
+        return battlt_unit
+
 
 
 
