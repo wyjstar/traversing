@@ -15,6 +15,7 @@ class Connection(object):
         ''' transport 连接的通道'''
         self.instance = _conn
         self.last_heart_beat_time = 0
+        self.set_time()
 
     def loseConnection(self):
         '''断开与客户端的连接

@@ -14,6 +14,7 @@ from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
+from shared.utils import trie_tree
 
 
 @have_player
@@ -44,11 +45,14 @@ def create_guild(dynamicid, data, **kwargs):
         response.message = "您已加入公会"
         return response.SerializeToString()
 
-    # TODO 公会名 ，敏感字过滤
+    if trie_tree.check.replace_bad_word(g_name).encode("utf-8") != g_name:
+        response.result = False
+        response.message = "公会名不合法"
+        return response.SerializeToString()
 
     if len(g_name) > 18:
         response.result = False
-        response.message = "公告内容超过字数限制"
+        response.message = "名称超过字数限制"
         return response.SerializeToString()
 
     # 判断有没有重名
@@ -164,8 +168,9 @@ def exit_guild(dynamicid, data, **kwargs):
         # 删除公会名字
         guild_name_data = tb_guild_name.getObjData(guild_obj.name)
         if guild_name_data:
-            guild_name_obj = tb_guild_name.getObj(guild_obj.name)
-            guild_name_obj.delete()
+            # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
+            # guild_name_obj.delete()
+            tb_guild_name.deleteMode(guild_obj.name)
 
         # 解散公会，删除公会聊天室
         del_guild_room(player.guild.g_id)
@@ -265,7 +270,6 @@ def editor_call(dynamicid, data, **kwargs):
         response.result = True
         response.message = "公告内容超过字数限制"
         return response.SerializeToString()
-    # TODO 公告 ，过滤敏感词语
     data1 = tb_guild_info.getObjData(player.guild.g_id)
     if not data1:
         response.result = False
@@ -283,6 +287,10 @@ def editor_call(dynamicid, data, **kwargs):
             response.result = True
             response.message = "权限不够"
             return response.SerializeToString()
+
+        if call:
+            call = trie_tree.check.replace_bad_word(call).encode("utf-8")
+
         guild_obj.editor_call(call)
         guild_obj.save_data()
         response.result = True
@@ -485,12 +493,13 @@ def kick(dynamicid, data, **kwargs):
                 p_guild_data = tb_character_guild.getObj(p_id)
                 p_guild_data.update_multi(data)
 
-                # 退出公会聊天室
+                # 踢出公会聊天室
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
                     logout_guild_chat(invitee_player.dynamic_id)
                     invitee_player.guild.g_id = player.guild.g_id
                     invitee_player.guild.save_data()
+                    push_object(814, '', invitee_player.dynamic_id)
 
     response.result = True
     response.message = "踢人成功"

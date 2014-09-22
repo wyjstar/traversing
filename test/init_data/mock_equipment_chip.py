@@ -10,8 +10,8 @@ from app.game.redis_mode import tb_character_equipment_chip
 
 def init_equipment_chip(player):
 
-    chip1 = EquipmentChip(2100005, 300)
-    chip2 = EquipmentChip(2100006, 300)
+    chip1 = EquipmentChip(2100005, 16)
+    chip2 = EquipmentChip(2100006, 16)
 
     player.equipment_chip_component.add_chip(chip1)
     player.equipment_chip_component.add_chip(chip2)

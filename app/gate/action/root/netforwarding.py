@@ -152,13 +152,14 @@ def net_conn_lost(dynamic_id):
     @param dynamic_id: int 客户端的动态ID
     """
     vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-
+    print "net lost1++++++++++++++++", dynamic_id
     if vcharacter and vcharacter.node:
         vcharacter.locked = True  # 锁定角色
 
         result = save_playerinfo_in_db(dynamic_id)
-
+        print "net lost2++++++++++++++++", result
         if result:
             drop_client(dynamic_id, vcharacter)
+            print "net lost3++++++++++++++++", dynamic_id, vcharacter
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)

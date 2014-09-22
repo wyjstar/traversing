@@ -31,6 +31,7 @@ def login_2(command_id, dynamic_id, key, user_name, password):
     mapping_data = tb_account_mapping.getObjData(key)  # 帐号匹配信息
     if mapping_data:
         account_id = mapping_data.get('id', None)
+        print "get_account_id_from key+++++++++++++++++++++++++++++++:", account_id
     else:
         pass
 
@@ -43,6 +44,10 @@ def login_2(command_id, dynamic_id, key, user_name, password):
             account_data = tb_account.getObjData(account_id)
             _user_name = account_data.get('account_name', None)
             _password = account_data.get('account_password', None)
+
+            print "username", user_name, _user_name
+            print "password", password, _password
+
             if (user_name != _user_name) or (password != _password):
                 return {'result': False}
     #  没有帐号ID，登录错误

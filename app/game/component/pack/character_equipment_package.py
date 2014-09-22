@@ -92,6 +92,7 @@ class CharacterEquipmentPackageComponent(Component):
         """
         return self._equipments_obj.values()
 
+
     # def new_equipment_data(self, equipment):
     #     character_id = self.owner.base_info.id
     #     equipment_info = equipment.equipment_info_dict()

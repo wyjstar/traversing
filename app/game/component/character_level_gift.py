@@ -19,9 +19,9 @@ class CharacterLevelGift(Component):
         if activity:
             data = activity.get('level_gift')
             if data:
-                self._received_gift_ids = data['level_gift_ids']
+                self._received_gift_ids = data['received_gift_ids']
         else:
-            data = {'level_gift_ids': self._received_gift_ids}
+            data = {'received_gift_ids': self._received_gift_ids}
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'level_gift': data})
 

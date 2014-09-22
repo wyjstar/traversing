@@ -30,7 +30,7 @@ def is_afford(player, item_group):
             return {'result': False, 'result_no': 107}
         elif type_id == const.MIDDLE_STONE and player.finance.middle_stone < num:
             return {'result': False, 'result_no': 108}
-        elif type_id == const.HIGH_STONE and player.finance.hign_stone < num:
+        elif type_id == const.HIGH_STONE and player.finance.high_stone < num:
             return {'result': False, 'result_no': 109}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
@@ -76,7 +76,7 @@ def consume(player, item_group):
             player.finance.save_data()
 
         elif type_id == const.HIGH_STONE:
-            player.finance.hign_stone -= num
+            player.finance.high_stone -= num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
@@ -127,7 +127,7 @@ def gain(player, item_group, result=None):
             player.finance.middle_stone += num
             player.finance.save_data()
         elif type_id == const.HIGH_STONE:
-            player.finance.hign_stone += num
+            player.finance.high_stone += num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:

@@ -84,8 +84,27 @@ class LineUpSlotComponent(Component):
         @param equipment_id:
         @return:
         """
+
+        if not self.check_equipment_pos(no, equipment_id):
+            return False
+
         equipment_slot = self._equipment_slots.get(no)
         equipment_slot.equipment_id = equipment_id
+
+        return True
+
+    def check_equipment_pos(self, no, equipment_id):
+        """校验装备类型
+        @param no:
+        @param equipment_id:
+        @return:
+        """
+        equ_obj = self.get_equipment_obj(equipment_id)
+        equipment_type = equ_obj.attribute.equipment_type
+        print equipment_type, no, "check_equipment_pos+++++++++++++++++++++++++++"
+        if no == equipment_type:
+            return True
+        return False
 
     @property
     def equipment_objs(self):
@@ -130,11 +149,26 @@ class LineUpSlotComponent(Component):
     def slot_attr(self):
         """
         """
+        hero_base_attr, attr = self.hero_attr()
+
+        if not hero_base_attr:
+            return None
+
+        equ_attr = self.equ_attr()
+        attr += equ_attr
+        red = self.__assemble_hero(hero_base_attr, attr)
+        return red
+
+    def hero_attr(self):
+        """
+        英雄属性：包括突破和羁绊
+        """
+        attr = CommonItem()
         # 英雄
         hero_obj = self.hero_slot.hero_obj
 
         if not hero_obj:
-            return None
+            return None, attr
 
         # hero_no, quality, hp, atk, physical_def, magic_def, hit
         # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
@@ -150,13 +184,17 @@ class LineUpSlotComponent(Component):
         attr += hero_break_attr
         hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
         attr += hero_link_attr
+        return hero_base_attr, attr
 
+    def equ_attr(self):
+        """
+        装备属性：
+        """
+        attr = CommonItem()
         # 装备
         equ_slots = self.equipment_slots
-
         for equ_no, equ_slot in equ_slots.items():
             # atk,hp, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
-
             equ_obj = equ_slot.equipment_obj
             if not equ_obj:
                 continue
@@ -165,8 +203,7 @@ class LineUpSlotComponent(Component):
         equ_suit = self.equ_suit  # 装备套装技能属性
         for equ_attr in equ_suit.values():
             attr += equ_attr
-        red = self.__assemble_hero(hero_base_attr, attr)
-        return red
+        return attr
 
     def __assemble_hero(self, base_attr, attr):
         """组装英雄战斗单位

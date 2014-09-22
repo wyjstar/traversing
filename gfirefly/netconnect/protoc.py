@@ -104,7 +104,9 @@ class LiberateFactory(protocols.ServerFactory):
     def doDataReceived(self, conn, commandID, data):
         '''数据到达时的处理'''
         if commandID == 88:
-            conn.transport.set_time()
+            connection = self.connmanager.getConnectionByID(conn.transport.sessionno)
+            connection.set_time()
+            print "+++++++++++++++++++++++++++++88++++++++++++++++++++++++++++++++++++++++"
             return ''
         response = self.service.callTarget(commandID, conn, data)
 

@@ -112,6 +112,7 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
         return {'result': False, 'result_no': 102, 'message': u''}
     equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
     chip.chip_num -= compose_num
+    player.equipment_chip_component.save_data()
     return {'result': True, 'equipment_obj': equipment_obj}
 
 
