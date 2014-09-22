@@ -93,7 +93,12 @@ class CharacterFinanceComponent(Component):
     def save_data(self):
         """保存数据
         """
-        props = {'coin': self._coin, 'gold': self._gold, 'hero_soul': self._hero_soul}
+        props = {'coin': self._coin,
+                 'gold': self._gold,
+                 'hero_soul': self._hero_soul,
+                 'junior_stone': self._junior_stone,
+                 'middle_stone': self._middle_stone,
+                 'high_stone': self._high_stone}
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
         character_obj.update_multi(props)
 
