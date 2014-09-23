@@ -618,6 +618,11 @@ message ChangeHeroRequest{
 	optional int32 hero_no = 3; // 英雄编号
 }
 
+// 查看目标玩家的阵容信息 706
+message GetLineUpResponse{
+	required int32 target_id = 1; // 玩家ID
+}
+
 // 上次吃酒席时间 command：821
 message GetEatTimeResponse{
 	required CommonResponse res = 1;

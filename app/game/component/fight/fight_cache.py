@@ -2,11 +2,14 @@
 """
 created by server on 14-7-17下午6:54.
 """
+import copy
 import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
+from app.game.core.hero import Hero
 from app.game.logic.fight import do_assemble
 from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class CharacterFightCacheComponent(Component):
@@ -23,6 +26,8 @@ class CharacterFightCacheComponent(Component):
 
         self._red_unit = []  # 红方战斗单位
         self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
+
+        self._not_replace= []  # 不能替换的英雄
 
     @property
     def red_unit(self):
@@ -77,6 +82,12 @@ class CharacterFightCacheComponent(Component):
         """
         monster_config = game_configs.monster_config.get(monster_id)
         return monster_config
+
+    def __get_stage_break_config(self):
+        """取得关卡乱入信息
+        """
+        stage_break_config = game_configs.stage_break_config.get(self._stage_id)
+        return stage_break_config
 
     def __get_drop_num(self):
         """取得关卡小怪掉落数量
@@ -160,6 +171,88 @@ class CharacterFightCacheComponent(Component):
         group = skill_config.group
         return [unpara] + group
 
+    def __get_break_stage_odds(self):
+        """取得乱入概率
+        """
+        odds = 0
+        stage_break_config = self.__get_stage_break_config()
+
+        if not stage_break_config:
+            return odds
+
+        for i in range(1, 8):
+            condition_config = getattr(stage_break_config, 'condition%s' % i)  # 乱入条件
+            odds_config = getattr(stage_break_config, 'odds%s' % i)  # 乱入几率
+
+            if self.check_condition(condition_config):
+                odds += odds_config
+
+        return odds
+
+    def check_condition(self, condition_config):
+        """
+        @param condition_config: 武将乱入条件配置
+        @return: 此条件是否完成
+        """
+        for condition_type, condition_param in condition_config.items():
+            if not self.__do_check_condition(condition_type, condition_param):
+                return False
+        return True
+
+    def __do_check_condition(self, condition_type, condition_param):
+        """
+        @param condition_type:  条件类型
+        @param condition_param:  条件参数
+        @return:
+        """
+        mapping_dict = {
+            1: self.check_num,  # 上阵人数
+            2: self.check_hero,  # 上阵英雄
+            3: self.check_equ,  # 上阵装备
+            4: self.check_suit,  # 激活套装
+            5: self.check_link,  # 激活羁绊
+        }
+
+        return mapping_dict[condition_type](condition_param)
+
+    def check_num(self, condition_param):
+        hero_nos = self.owner.line_up_component.hero_nos
+        num = len(hero_nos)
+        if condition_param > num:
+            return False
+        return True
+
+    def check_hero(self, condition_param):
+        hero_nos = self.owner.line_up_component.hero_nos
+        if condition_param in hero_nos:
+            self._not_replace.append(condition_param)
+            return True
+        return False
+
+    def check_equ(self, condition_param):
+        for slot in self.line_up_slots.values():
+            if condition_param in slot.equipment_nos:
+                return True
+        return False
+
+    def check_suit(self, condition_param):
+        for slot in self.line_up_slots.values():
+            if condition_param in slot.equ_suit:
+                return True
+        return False
+
+    def check_link(self, condition_param):
+        for slot in self.line_up_slots.values():
+            if condition_param in slot.hero_slot.link:
+                link_config = game_configs.link_config.get(slot.hero_slot.hero_no)
+                for i in (1, 6):
+                    link = getattr(link_config, 'link%s' % i)
+                    if condition_param == link:
+                        trigger = getattr(link_config, 'trigger%s' % i)
+                        self._not_replace.extend(trigger)
+                return True
+        return False
+
     def fighting_start(self):
         """战斗开始
         """
@@ -191,6 +284,105 @@ class CharacterFightCacheComponent(Component):
         drops.extend(elite_drop)
 
         return drops
+
+    def break_hero_units(self, red_units):
+        unit = None
+        replace_hero = 0
+        odds = self.__get_break_stage_odds()
+        if odds <= random.random(0, 1):
+            replace = []  # 可以替换的英雄
+            for red_unit in red_units:
+                hero_no = red_unit.no  # 英雄编号
+                if hero_no in self._not_replace:
+                    continue
+
+            hero_no = random.choice(replace)
+            replace_hero = hero_no
+            break_config = self.__get_stage_break_config()
+            hero_id = break_config.hero_id
+
+            replace.append(hero_no)
+            level = red_unit.level  # 等级
+            break_level = red_unit.break_level  # 突破等级
+
+            hero_obj = Hero()  # 实例化一个替换英雄对象
+            hero_obj.hero_no = hero_id
+            hero_obj.level = level
+            hero_obj.break_level = break_level
+
+            hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+
+            attr = CommonItem()
+            hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
+            attr += hero_break_attr
+
+            slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
+            equ_attr = slot_obj.equ_attr()
+            attr += equ_attr
+
+            unit = self.__assemble_hero(hero_base_attr, attr)
+
+        return replace_hero, unit
+
+    def __assemble_hero(self, base_attr, attr):
+        """组装英雄战斗单位
+        """
+        # base_attr: 英雄基础，等级 属性
+        # hero_no, quality, hp, atk, physical_def, magic_def, hit
+        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+        # rage_skill, break_skills
+
+        # attr: 属性
+        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+
+        no = base_attr.hero_no
+        quality = base_attr.quality
+
+        normal_skill = base_attr.normal_skill
+        rage_skill = base_attr.rage_skill
+        break_skills = base_attr.break_skills
+
+        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
+        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
+        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
+        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        hit = base_attr.hit + attr.hit
+        dodge = base_attr.dodge + attr.dodge
+        cri = base_attr.cri + attr.cri
+        cri_coeff = base_attr.cri_coeff + attr.cri_coeff
+        cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
+        block = base_attr.block + attr.block
+
+        base_hp = base_attr.hp
+        base_atk = base_attr.atk
+        base_physical_def = base_attr.physical_def
+        base_magic_def = base_attr.magic_def
+        base_hit = base_attr.hit
+        base_dodge = base_attr.dodge
+        base_cri = base_attr.cri
+        base_cri_coeff = base_attr.cri_coeff
+        base_cri_ded_coeff = base_attr.cri_ded_coeff
+        base_block = base_attr.block
+
+        level = base_attr.level
+        break_level = base_attr.break_level
+        is_boss = False
+        position = 0
+
+        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills,
+                                  base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
+                                  base_cri_coeff, base_cri_ded_coeff, base_block,
+                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
+                                  position,
+                                  level, break_level, is_boss)
+
+        return battlt_unit
+
+
+
+
+
 
 
 

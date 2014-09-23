@@ -16,7 +16,7 @@ import equipment_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"c\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\x12\x18\n\x03sub\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x1c\n\x03res\x18\x03 \x01(\x0b\x32\x0f.CommonResponse\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"J\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x63hange_type\x18\x02 \x01(\x05\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05')
+  serialized_pb='\n\rline_up.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"c\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\x12\x18\n\x03sub\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x1c\n\x03res\x18\x03 \x01(\x0b\x32\x0f.CommonResponse\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"J\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x63hange_type\x18\x02 \x01(\x05\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\"&\n\x11GetLineUpResponse\x12\x11\n\ttarget_id\x18\x01 \x02(\x05')
 
 
 
@@ -230,6 +230,34 @@ _CHANGEHEROREQUEST = _descriptor.Descriptor(
   serialized_end=473,
 )
 
+
+_GETLINEUPRESPONSE = _descriptor.Descriptor(
+  name='GetLineUpResponse',
+  full_name='GetLineUpResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='target_id', full_name='GetLineUpResponse.target_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=475,
+  serialized_end=513,
+)
+
 _SLOTEQUIPMENT.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
 _LINEUPSLOT.fields_by_name['hero'].message_type = hero_pb2._HEROPB
 _LINEUPSLOT.fields_by_name['equs'].message_type = _SLOTEQUIPMENT
@@ -241,6 +269,7 @@ DESCRIPTOR.message_types_by_name['LineUpSlot'] = _LINEUPSLOT
 DESCRIPTOR.message_types_by_name['LineUpResponse'] = _LINEUPRESPONSE
 DESCRIPTOR.message_types_by_name['ChangeEquipmentsRequest'] = _CHANGEEQUIPMENTSREQUEST
 DESCRIPTOR.message_types_by_name['ChangeHeroRequest'] = _CHANGEHEROREQUEST
+DESCRIPTOR.message_types_by_name['GetLineUpResponse'] = _GETLINEUPRESPONSE
 
 class SlotEquipment(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -271,6 +300,12 @@ class ChangeHeroRequest(_message.Message):
   DESCRIPTOR = _CHANGEHEROREQUEST
 
   # @@protoc_insertion_point(class_scope:ChangeHeroRequest)
+
+class GetLineUpResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GETLINEUPRESPONSE
+
+  # @@protoc_insertion_point(class_scope:GetLineUpResponse)
 
 
 # @@protoc_insertion_point(module_scope)

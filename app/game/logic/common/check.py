@@ -2,7 +2,6 @@
 """
 created by server on 14-7-9下午4:19.
 """
-import functools
 from app.game.core.PlayersManager import PlayersManager
 
 
@@ -17,3 +16,16 @@ def have_player(func):
         ret = func(dynamic_id, *args, player=player)
         return ret
     return wrapper
+
+
+def check_have_equipment(player, equipment_id):
+    """ 校验用户是否有该装备
+    @param player: 用户对象
+    @param equipment_id: 装备ID
+    @return: 有：True
+    """
+    equipments_obj = player.equipment_component.equipments_obj
+    equ_ids = equipments_obj.keys()
+    if equipment_id in equ_ids:
+        return True
+    return False

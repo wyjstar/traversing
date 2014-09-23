@@ -324,7 +324,7 @@ def find_friend_request(dynamic_id, data, **kwargs):
     response.id = 0
     response.nickname = 'none'
     response.atk = 111
-    response.icon_id = 11
+    response.hero_no = 11
     response.gift = datetime.datetime.now().day
 
     if request.id_or_nickname.isdigit():
@@ -333,7 +333,8 @@ def find_friend_request(dynamic_id, data, **kwargs):
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')
     else:
-        player_data = tb_nickname_mapping.getObjData(request.id_or_nickname)
+        nickname_utf8 = request.id_or_nickname.encode('utf-8')
+        player_data = tb_nickname_mapping.getObjData(nickname_utf8)
         if player_data:
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')
