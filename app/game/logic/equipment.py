@@ -46,26 +46,23 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
         return {'result': False, 'result_no': 401, 'message': u''}
 
     enhance_record = []
-    if enhance_type == 1:
-        #  强化1次
-        if (not enhance_num) or enhance_num == 1:
-            result = __do_enhance(player, equipment_obj)
-            if not result:  # 金币不足
-                return {'result': False, 'result_no': 101, 'message': u''}
-            enhance_record.append(result)
-        else:  # 强化多次
-            for i in xrange(0, enhance_num):
-                result = __do_enhance(player, equipment_obj)
-                if not result:
-                    break
-                enhance_record.append(result)
-    else:
-        # 强化到没钱
-        while True:
-            result = __do_enhance(player, equipment_obj)
-            if not result:
-                break
-            enhance_record.append(result)
+
+    curr_coin = player.finance.coin  # 用户金币
+    # curr_coin = 1000000
+    enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
+    if not enhance_cost or curr_coin < enhance_cost:
+        return {'result': False, 'result_no': 101, 'message': u''}
+
+    if equipment_obj.attribute.strengthen_lv > 200 or \
+        equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level * equipment_obj.strength_max:
+        print "max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
+        return {'result': False, 'result_no': 402, 'message': u''}
+
+    for i in xrange(0, enhance_num):
+        result = __do_enhance(player, equipment_obj)
+        if not result.get('result'):
+            return result
+        enhance_record.append(result.get('record'))
 
     # 保存
     equipment_obj.save_data()
@@ -80,17 +77,14 @@ def __do_enhance(player, equipment_obj):
     @param equipment_obj: 装备对象
     @return: {'before_lv':1, 'after_lv':2, 'cost_coin':21}
     """
-    curr_coin = player.finance.coin  # 用户金币
-    # curr_coin = 1000000
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
-    if not enhance_cost or curr_coin < enhance_cost:
-        return False
+
     before_lv, after_lv = equipment_obj.enhance(player)
 
     print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
 
-    return before_lv, after_lv, enhance_cost
+    return {'result': True, 'record':(before_lv, after_lv, enhance_cost)}
 
 
 @have_player

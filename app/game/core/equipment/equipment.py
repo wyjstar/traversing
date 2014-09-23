@@ -9,6 +9,7 @@ from app.game.redis_mode import tb_equipment_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
+from shared.db_opear.configs_data.game_configs import base_config
 
 
 class Equipment(object):
@@ -146,3 +147,8 @@ class Equipment(object):
                                cri_coeff=cri_coeff,
                                cri_ded_coeff=cri_ded_coeff,
                                block=block))
+
+    @property
+    def strength_max(self):
+        """获取装备上限倍数"""
+        return base_config.get("equipment_strength_max", 3)

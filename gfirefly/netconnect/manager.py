@@ -124,5 +124,5 @@ class ConnectionManager:
 
     def loop_check(self):
         loop = gevent.get_hub().loop
-        t = loop.timer(0.0, const.TIME_OUT / 2)
+        t = loop.timer(0.0, const.TIME_OUT / 4)
         t.start(self.check_timeout)
