@@ -54,7 +54,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
         return {'result': False, 'result_no': 101, 'message': u''}
 
     if equipment_obj.attribute.strengthen_lv > 200 or \
-        equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level * equipment_obj.strength_max:
+        equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
         print "max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
         return {'result': False, 'result_no': 402, 'message': u''}
 

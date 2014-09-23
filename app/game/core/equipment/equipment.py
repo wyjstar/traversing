@@ -150,5 +150,5 @@ class Equipment(object):
 
     @property
     def strength_max(self):
-        """获取装备上限倍数"""
-        return base_config.get("equipment_strength_max", 3)
+        """获取装备上限为玩家等级+strength_max"""
+        return base_config.get("max_equipment_strength", 3)

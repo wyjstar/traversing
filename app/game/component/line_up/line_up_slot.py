@@ -85,7 +85,7 @@ class LineUpSlotComponent(Component):
         @return:
         """
 
-        if not self.check_equipment_pos(no, equipment_id):
+        if equipment_id != '0' and not self.check_equipment_pos(no, equipment_id):
             return False
 
         equipment_slot = self._equipment_slots.get(no)
