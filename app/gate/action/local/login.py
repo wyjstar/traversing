@@ -20,12 +20,10 @@ def character_login_4(key, dynamic_id, request_proto):
 
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
-    token = argument.token
 
     data = __character_login(dynamic_id)
 
     response = game_pb2.GameLoginResponse()
-
 
     if not data.get('result', True):
         response.res.result = False
