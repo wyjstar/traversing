@@ -22,17 +22,28 @@ def character_login_4(key, dynamic_id, request_proto):
     argument.ParseFromString(request_proto)
     token = argument.token
 
-    response = __character_login(dynamic_id)
-    if response[0].guild_id:
-        guild_id = response[0].guild_id
+    data = __character_login(dynamic_id)
+
+    response = game_pb2.GameLoginResponse()
+
+
+    if not data.get('result', True):
+        response.res.result = False
+        return response.SerializePartialToString()
+    player_data = data.get('player_data')
+    response.ParseFromString(player_data)
+
+    # TODO 需要修改
+    if response.guild_id:
+        guild_id = response.guild_id
     else:
         guild_id = 0
-    nickname = response[0].nickname
+    nickname = response.nickname
     if nickname:
         #TODO 起名时候
         # 聊天室登录
-        GlobalObject().root.callChild('chat', 1001, dynamic_id, response[1], nickname, guild_id)
-    return response[0].SerializePartialToString()
+        GlobalObject().root.callChild('chat', 1001, dynamic_id, response.id, nickname, guild_id)
+    return response.SerializePartialToString()
 
 
 def __character_login(dynamic_id):
@@ -70,9 +81,7 @@ def __character_login(dynamic_id):
 
     SceneSerManager().add_client(now_node, dynamic_id)
 
-    response = game_pb2.GameLoginResponse()
-    response.ParseFromString(player_data)
-    return response, character_info.get('id')
+    return {'result': True, 'player_data': player_data, 'character_id': character_info.get('id')}
 
 
 

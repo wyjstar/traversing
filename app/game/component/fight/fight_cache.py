@@ -287,6 +287,7 @@ class CharacterFightCacheComponent(Component):
 
     def break_hero_units(self, red_units):
         unit = None
+        replace_hero = 0
         odds = self.__get_break_stage_odds()
         if odds <= random.random(0, 1):
             replace = []  # 可以替换的英雄
@@ -296,7 +297,7 @@ class CharacterFightCacheComponent(Component):
                     continue
 
             hero_no = random.choice(replace)
-
+            replace_hero = hero_no
             break_config = self.__get_stage_break_config()
             hero_id = break_config.hero_id
 
@@ -321,7 +322,7 @@ class CharacterFightCacheComponent(Component):
 
             unit = self.__assemble_hero(hero_base_attr, attr)
 
-        return unit
+        return replace_hero, unit
 
     def __assemble_hero(self, base_attr, attr):
         """组装英雄战斗单位
