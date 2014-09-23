@@ -2,9 +2,7 @@
 """
 created by server on 14-6-10下午5:30.
 """
-from app.gate.redis_mode import tb_account
 from app.gate.redis_mode import tb_character_info
-from app.gate.redis_mode import tb_account_mapping
 import time
 
 

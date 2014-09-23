@@ -139,13 +139,6 @@
     },
 
     "models": {
-        "tb_account_mapping": {
-            "pkey_field": "account_token",
-            "def_attrs": {
-                "account_token": "simple",
-                "id": "simple"
-            }
-        },
         "tb_account": {
             "pkey_field": "id",
             "def_attrs": {

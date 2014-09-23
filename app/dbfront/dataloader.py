@@ -26,8 +26,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_account)
     # 用户阵容信息
     MAdminManager().registe(memmode.tb_character_line_up)
-    # 帐号匹配表
-    MAdminManager().registe(memmode.tb_account_mapping)
     # 装备碎片表
     MAdminManager().registe(memmode.tb_character_equipment_chip)
     # 用户装备列表
