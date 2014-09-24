@@ -13,8 +13,10 @@ import time
 @remote_service_handle
 def enter_scene_601(dynamic_id, character_id, is_new_character):
     """进入场景"""
-    player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
-    PlayersManager().add_player(player)
+    player = PlayersManager().get_player_by_id(character_id)
+    if not player:
+        player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
+        PlayersManager().add_player(player)
     # player = mock_player(player)
     if is_new_character:
         print ("mock player info.....", is_new_character)

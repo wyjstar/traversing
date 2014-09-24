@@ -25,8 +25,7 @@
     <table name="tb_user" dataNode="dn_account" rule="id_str_8" />
 
     <table name="tb_account" dataNode="dn_account" rule="id_int_8" />
-    <table name="tb_account_mapping" dataNode="dn_account" rule="id_int_8" />
-   
+
     <table name="tb_character_info" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_character_heros" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_equipment_chip" dataNode="dn_traversing$0-3" rule="id_int_4" />

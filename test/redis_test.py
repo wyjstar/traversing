@@ -30,11 +30,11 @@ if __name__ == '__main__':
 
     redis_manager.connection_setup(connection_setting)
 
-    tower_info = MAdmin("tb_account_mapping", "account_token")
-    print '#1:', tower_info.__dict__
-    tower_info.insert()
-    # tower_info.load()
-    MAdminManager().registe(tower_info)
+    # tower_info = MAdmin("tb_account_mapping", "account_token")
+    # print '#1:', tower_info.__dict__
+    # tower_info.insert()
+    # # tower_info.load()
+    # MAdminManager().registe(tower_info)
 
 
     data = {'id': 1029, 'account_token': 'e8054ceece61204cbef4b01d59d355e9'}
