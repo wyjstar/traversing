@@ -147,6 +147,6 @@ class FFServer:
     def start(self):
         '''启动服务器
         '''
-        log.msg('%s start...' % self.servername)
+        log.msg('%s start...' % self.servername, logLevel=10)
         log.msg('%s pid: %s' % (self.servername, os.getpid()))
         reactor.run()

@@ -422,7 +422,7 @@ def emit(self, eventDict):
         level = logging.ERROR
     else:
         level = logging.INFO
-    if level < log.level: # 在patch之前，log是没有这个属性的
+    if level < log.level:  # 在patch之前，log是没有这个属性的
         return
     timeStr = self.formatTime(eventDict['time'])
     fmtDict = {'system': eventDict['system'], 'text': text.replace("\n", "\n\t")}
