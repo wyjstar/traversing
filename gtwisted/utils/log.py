@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 '''
 Created on 2014年2月17日
 日志的处理
@@ -389,5 +389,66 @@ Created on 2014年2月17日
 #         defaultObserver = None
 #     addObserver(observer)
 #     msg("Log opened.")
-from twisted.python.log import *
-    
+# from twisted.python import log
+# from twisted.python.log import *
+
+"""
+自己打了个path
+"""
+
+
+import logging
+from twisted.python import log, util
+from twisted.python.log import ILogObserver
+from twisted.python.log import startLogging
+from twisted.python.log import addObserver
+from twisted.python.log import textFromEventDict
+from twisted.python.log import msg
+
+
+LEGAL_LOG_LEVEL = (logging.DEBUG, logging.ERROR, logging.INFO)
+LOG_LEVEL_ARG = dict(enumerate(LEGAL_LOG_LEVEL))
+
+def emit(self, eventDict):
+    text = log.textFromEventDict(eventDict)
+    if text is None:
+        return
+
+    if 'logLevel' in eventDict:
+        level = eventDict['logLevel']
+        if not level in LEGAL_LOG_LEVEL:
+            level = logging.INFO
+    elif eventDict['isError']:
+        level = logging.ERROR
+    else:
+        level = logging.INFO
+    if level < log.level: # 在patch之前，log是没有这个属性的
+        return
+    timeStr = self.formatTime(eventDict['time'])
+    fmtDict = {'system': eventDict['system'], 'text': text.replace("\n", "\n\t")}
+    msgStr = log._safeFormat("%(text)s\n", fmtDict)
+    util.untilConcludes(self.write, '%02d|%s %s' % (level, timeStr, msgStr))
+    util.untilConcludes(self.flush)
+
+
+def parse_level(level=None):
+    try:
+        return LOG_LEVEL_ARG[int(level)]
+    except:
+        return logging.INFO
+
+
+def set_level(level=None, need_parse=False):
+    if need_parse:
+        level = parse_level(level)
+    elif not level in LEGAL_LOG_LEVEL:
+        level = logging.INFO
+    log.level = level
+
+
+if not hasattr(log.FileLogObserver, 'log_patch'):
+    log.FileLogObserver.emit = emit
+    # 阅读源码可以发现，FileLogObserver会先尝试使用timeFormat字段来格式化时间
+    log.FileLogObserver.timeFormat = '%D %H:%M:%S'
+    set_level(logging.DEBUG)
+    log.FileLogObserver.log_patch = True

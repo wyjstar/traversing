@@ -34,4 +34,3 @@ class loogoo:
         nowdate = datetime.datetime.now()
         self.file.write('[' + str(nowdate) + ']\n' + str(level) + '\n\t' + text + '\r\n')
         self.file.flush()
-        
