@@ -5,6 +5,7 @@ Created on 2013-8-2
 @author: lan (www.9miao.com)
 '''
 from gfirefly.utils.singleton import Singleton
+from shared.utils.logclient import LogClient
 
 
 class GlobalObject:
@@ -23,10 +24,12 @@ class GlobalObject:
         self.masterremote = None
         self.reloadmodule = None
         self.remote_connect = None
+        self.log = None
         self.json_config = {}
         self.remote_map = {}
         self.json_model_default_config = {}
         self.json_model_config = {}
+        self.logclient = LogClient()
 
     def config(self, netfactory=None, root=None, remote=None, db=None):
         """配置存放的对象实例

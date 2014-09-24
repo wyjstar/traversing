@@ -39,6 +39,12 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     player.line_up_component.save_data()
 
     response = line_up_info(player)
+
+    for slot in response.slot:
+        print slot.slot_no, slot.hero.hero_no, "slot no +++++++++++"
+        for equip in slot.equs:
+            print equip.no, "equip no +++++++++++"
+
     return response.SerializePartialToString()
 
 
@@ -56,14 +62,14 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     response = line_up_pb2.LineUpResponse()
 
     # 检验装备是否存在
-    if not check_have_equipment(player, equipment_id):
-        print "1check_have_equipment++++++++++++++++"
+    if equipment_id != '0' and not check_have_equipment(player, equipment_id):
+        print "1check_have_equipment++++++++++++++++", equipment_id
         response.res.result = False
         response.res.result_no = 702
         return response.SerializePartialToString()
 
     # 校验该装备是否已经装备
-    if equipment_id in player.line_up_component.on_equipment_ids:
+    if equipment_id != '0' and equipment_id in player.line_up_component.on_equipment_ids:
         print "2check_have_equipment++++++++++++++++"
         response.res.result = False
         response.res.result_no = 703
