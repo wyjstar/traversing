@@ -10,6 +10,8 @@ from app.game.logic.stage import get_warriors
 from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import stage_request_pb2
 from app.proto_file import stage_response_pb2
+from gtwisted.utils import log
+
 
 @remote_service_handle
 def get_stages_901(dynamic_id, pro_data):
@@ -111,7 +113,7 @@ def stage_start_903(dynamic_id, pro_data):
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
-
+    log.msg('进入关卡返回数据:', response)
     return response.SerializePartialToString()
 
 
