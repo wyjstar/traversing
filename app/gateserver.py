@@ -20,7 +20,7 @@ def tick():
     GlobalObject().remote['login'].callRemote('server_sync',
                                               name, front_ip,
                                               front_port,
-                                              'normal')
+                                              'recommend')
 
     reactor.callLater(60, tick)
 
