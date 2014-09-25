@@ -151,8 +151,9 @@ class CharacterFightCacheComponent(Component):
                                           monster_config.dodge, monster_config.cri, monster_config.criCoeff,
                                           monster_config.criDedCoeff, monster_config.block, pos, level, break_level,
                                           is_boss)
+                log.msg('怪物ID：%s' % monster_config.id, logLevel=10)
                 round_monsters.append(battle_unit)
-        monsters.append(round_monsters)
+            monsters.append(round_monsters)
 
         # 保存关卡怪物信息, 掉落信息
         self._blue_unit = monsters
