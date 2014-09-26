@@ -138,6 +138,9 @@ class FFServer:
             _rname = cnf.get('rootname')
             if rname == _rname:
                 rport = cnf.get('rootport')
+                local_host = cnf.get('roothost')
+                if local_host:
+                    rhost = local_host
                 if not rhost:
                     addr = ('localhost', rport)
                 else:
