@@ -83,13 +83,17 @@ class Master:
             for sername in sersconf.keys():
                 # cmds = "kernprof -o app/logs/%s.lprof -l -b %s %s %s " % (sername, self.mainpath, sername, self.configpath)
                 cmds = 'python %s %s %s' % (self.mainpath, sername, self.configpath)
+                # print 'mutiple', cmds
                 subprocess.Popen(cmds, shell=True)
             reactor.run()
         elif mode == SINGLE_SERVER_MODE:
-            config = json.load(open(self.configpath, 'r'))
+            self.masterapp()
+            # config = json.load(open(self.configpath, 'r'))
             sername = server_name
             cmds = 'python %s %s %s' % (self.mainpath, sername, self.configpath)
+            # print 'single', cmds
             subprocess.Popen(cmds, shell=True)
+            reactor.run()
         else:
             self.masterapp()
             reactor.run()

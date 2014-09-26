@@ -392,12 +392,13 @@ Created on 2014年2月17日
 # from twisted.python import log
 # from twisted.python.log import *
 
+
 """
 自己打了个path
 """
 
-
 import logging
+import functools
 from twisted.python import log, util
 from twisted.python.log import ILogObserver
 from twisted.python.log import startLogging
@@ -422,7 +423,7 @@ def emit(self, eventDict):
         level = logging.ERROR
     else:
         level = logging.INFO
-    if level < log.level: # 在patch之前，log是没有这个属性的
+    if level < log.level:  # 在patch之前，log是没有这个属性的
         return
     timeStr = self.formatTime(eventDict['time'])
     fmtDict = {'system': eventDict['system'], 'text': text.replace("\n", "\n\t")}
@@ -444,6 +445,12 @@ def set_level(level=None, need_parse=False):
     elif not level in LEGAL_LOG_LEVEL:
         level = logging.INFO
     log.level = level
+
+# Aliases
+DEBUG = functools.partial(msg, logLevel=10)
+INFO = functools.partial(msg, logLevel=20)
+WARNING = functools.partial(msg, logLevel=30)
+ERROR = functools.partial(msg, logLevel=40)
 
 
 if not hasattr(log.FileLogObserver, 'log_patch'):

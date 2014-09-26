@@ -164,8 +164,8 @@
 
   <!--分配函数2：按照str分配到8个库-->
   <function name="func2" class="com.alibaba.cobar.route.function.PartitionByString">  
-    <property name="partitionCount">8</property>  
-    <property name="partitionLength">128</property>  
+    <property name="partitionCount">1</property>
+    <property name="partitionLength">1024</property>
   </function>  
 
   <!--分配函数3：按照int分配到4个库-->

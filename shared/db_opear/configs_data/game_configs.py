@@ -29,6 +29,7 @@ from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
 from shared.db_opear.configs_data.base_config import BaseConfig
 from shared.db_opear.configs_data.guild_config import GuildConfig
 from shared.db_opear.configs_data.vip_config import VIPConfig
+from shared.db_opear.configs_data.special_stage_config import SpecialStageConfig
 
 
 
@@ -52,6 +53,7 @@ def get_config_value(config_key):
     sql = "SELECT * FROM configs where config_key='%s';" % config_key
     # print 'sql:', sql
     conn = dbpool.connection()
+
 
     if dbpool._pymysql:
         from pymysql.cursors import DictCursor
@@ -96,6 +98,7 @@ warriors_config = {}
 activity_config = {}
 vip_config = {}
 stage_break_config = {}
+special_stage_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -123,6 +126,7 @@ all_config_name = {
     'activity_config': ActivityConfig(),
     'vip_config': VIPConfig(),
     'stage_break_config': StageBreakConfig(),
+    'special_stage_config': SpecialStageConfig(),
 }
 
 
@@ -147,7 +151,7 @@ if __name__ == '__main__':
     #     print k, '='*5, v
     #     for _ in v:
     #         print _
-    print stage_break_config
+    print base_config
 
 
 

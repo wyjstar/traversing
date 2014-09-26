@@ -533,13 +533,13 @@ def promotion(dynamicid, data, **kwargs):
         t_position = m_position - 1
         flag = 0
         if t_position == 2:
-            if list_len >= base_config.pos_p_num[0]:
+            if list_len >= base_config.get('pos_p_num')[0]:
                 flag = 1
         elif t_position == 3:
-            if list_len >= base_config.pos_p_num[1]:
+            if list_len >= base_config.get('pos_p_num')[1]:
                 flag = 1
         elif t_position == 4:
-            if list_len >= base_config.pos_p_num[2]:
+            if list_len >= base_config.get('pos_p_num')[2]:
                 flag = 1
         else:
             response.result = False

@@ -19,13 +19,14 @@ def pull_message(character_id):
         childs = GlobalObject().root.childsmanager.childs
         # print GlobalObject().root.childsmanager
 
+        args = (message.get('topic_id'), message.get('character_id'))
+        args += message.get('args')
+        kw = message.get('kw')
+
         for child in childs.keys():
-            args = (message.get('topic_id'), message.get('character_id'))
-            args += message.get('args')
-            kw = message.get('kw')
             result = GlobalObject().root.callChild(child, 100001, *args, **kw)
             if type(result) is bool and result:
-                message_cache.delete(key)
+                message_cache.delete(character_id, key)
                 count += 1
                 break
     return True

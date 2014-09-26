@@ -41,8 +41,8 @@ import math
 
 
 def ran():
-    X1 = 3.0
-    X2 = 4.0
+    X1 = 0.0
+    X2 = 1.0
     A1 = 727595.0
     A2 = 798406.0
     D20 = 1048576.0
@@ -78,7 +78,7 @@ def bsd_rand(X1, X2):
 
 
 if __name__ == '__main__':
-    rand_test = bsd_rand(3.0, 4.0)
+    rand_test = bsd_rand(0.0, 1.0)
     for i in range(10):
         print rand_test()
 
