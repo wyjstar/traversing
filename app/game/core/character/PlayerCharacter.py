@@ -69,6 +69,7 @@ class PlayerCharacter(Character):
         self._stamina = 100  # 体力
         self._pvp_times = 0  # pvp次数
         self._get_stamina_times = 0  # 邮件获取体力次数
+        self._buy_stamina_times = 0  # 已购买体力次数
         self._sign_in_days = []  # 签到日期
         self._continus_sign_in_days = 0  # 连续签到天数
         self._mmode = None
@@ -103,6 +104,7 @@ class PlayerCharacter(Character):
         stamina = character_info['stamina']
         pvp_times = character_info['pvp_times']
         get_stamina_times = character_info['get_stamina_times']  # 邮件获取体力次数
+        buy_stamina_times = character_info['buy_stamina_times']  # 已购买体力次数
         vip_level = character_info['vip_level']
 
         # ------------初始化角色基础信息组件---------
@@ -140,6 +142,7 @@ class PlayerCharacter(Character):
         self._stamina = stamina
         self._pvp_times = pvp_times
         self._get_stamina_times = get_stamina_times
+        self._buy_stamina_times = buy_stamina_times
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
         self._level_gift.init_data()
@@ -297,6 +300,16 @@ class PlayerCharacter(Character):
     def get_stamina_times(self, value):
         """邮件中获取赠送体力次数"""
         self._get_stamina_times = value
+
+    @property
+    def buy_stamina_times(self):
+        """已经购买的体力次数"""
+        return self._buy_stamina_times
+
+    @buy_stamina_times.setter
+    def buy_stamina_times(self, value):
+        """已经购买的体力次数"""
+        self._buy_stamina_times = value
 
     def save_data(self):
         pid = self.base_info.id

@@ -10,6 +10,9 @@ from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils import trie_tree
+from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data.game_configs import vip_config
+
 
 
 @have_player
@@ -54,3 +57,41 @@ def nickname_create(dynamic_id, nickname, **kwargs):
 
     response.result = True
     return response.SerializeToString()
+
+
+@have_player
+def buy_stamina(dynamic_id, **kwargs):
+    """购买体力"""
+    player = kwargs.get('player')
+    response = CommonResponse()
+
+    current_vip_level = player.vip_component.vip_level
+    current_buy_stamina_times = player.buy_stamina_times
+    current_stamina = player.stamina
+    current_gold = player.finance.gold
+
+    available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
+
+
+    # 校验购买次数上限
+    if current_buy_stamina_times >= available_buy_stamina_times:
+        response.result = False
+        response.result_no = 1
+        return response.SerializePartialToString()
+
+    need_gold = base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
+    # 校验金币是否不足
+
+
+
+
+
+
+
+
+
+
+
+
+    response.result = True
+    return response.SerializePartialToString()
