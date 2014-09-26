@@ -7,6 +7,7 @@ from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from app.proto_file import stage_response_pb2
+from gtwisted.utils import log
 from shared.db_opear.configs_data import game_configs
 
 
@@ -124,6 +125,7 @@ def get_warriors(dynamic_id, **kwargs):
 
                 for buff_id in group:
                     buffs.append(buff_id)
+    log.msg('warriors: %s' % response)
     return response.SerializePartialToString()
 
 
