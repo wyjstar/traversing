@@ -300,6 +300,17 @@ class BattleUnit(object):
     def break_level(self, break_level):
         self._break_level = break_level
 
+    def __cmp__(self, other):
+        if self is not None and other is not None:
+            return cmp(self.no, other.no)
+
+        if self is None and other is None:
+            return 0
+        elif other is None:
+            return -1
+        else:
+            return 1
+
 if __name__ == '__main__':
     class A(object):
         def __init__(self):

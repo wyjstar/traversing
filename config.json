@@ -11,6 +11,22 @@
             "app": "app.adminserver",
             "log": "app/logs/admin.log"
         },
+        "MA": {
+            "webport": 20100,
+            "name": "MA",
+            "db": true,
+            "app": "app.MAserver",
+            "log": "app/logs/MAserver.log"
+        },
+        "login": {
+            "rootport": 20000,
+            "netport": 22009,
+            "webport": 20097,
+            "name": "login",
+            "mem": true,
+            "app": "app.loginserver",
+            "log": "app/logs/loginserver.log"
+        },
         "transit": {
             "rootport": 30002,
             "name": "transit",
@@ -24,12 +40,19 @@
                 {
                     "rootport": 30002,
                     "rootname": "transit"
+                },
+                {
+                    "rootport": 20000,
+                    "rootname": "login"
                 }
             ],
             "mem": true,
             "db": true,
             "app": "app.gateserver",
             "log": "app/logs/gate.log",
+            "name": "lucas",
+            "front_ip": "127.0.0.1",
+            "front_port": 31009,
             "Ranking_configs": {
                 "label": "GuildLevel",
                 "redis_server": "127.0.0.1",
@@ -68,19 +91,6 @@
             "app": "app.game1server",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log"
-        },
-        "account": {
-            "name": "account",
-            "mem": true,
-            "db": true,
-            "remoteport": [
-                {
-                    "rootport": 30001,
-                    "rootname": "gate"
-                }
-            ],
-            "app": "app.accountserver",
-            "log": "app/logs/account.log"
         },
         "chat": {
             "name": "chat",
@@ -129,27 +139,11 @@
     },
 
     "models": {
-        "tb_account_mapping": {
-            "pkey_field": "account_token",
-            "def_attrs": {
-                "account_token": "simple",
-                "id": "simple"
-            }
-        },
-        "tb_name_mapping": {
-            "pkey_field": "account_name",
-            "def_attrs": {
-                "account_name": "simple",
-                "id": "simple"
-            }
-        },
         "tb_account": {
             "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
                 "uuid": "simple",
-                "account_name": "simple",
-                "account_password": "simple",
                 "last_login": "simple",
                 "create_time": "simple"
             }

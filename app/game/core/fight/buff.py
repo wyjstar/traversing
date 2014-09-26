@@ -44,7 +44,7 @@ class Buff(object):
     def __cmp__(self, other):
         if self is not None and other is not None:
             return cmp((self.effect_id, self.trigger_type, self.value_type, self.value_effect),
-                       (self.effect_id, self.trigger_type, self.value_type, self.value_effect))
+                       (other.effect_id, other.trigger_type, other.value_type, other.value_effect))
 
         if self is None and other is None:
             return 0

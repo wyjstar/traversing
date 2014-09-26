@@ -103,5 +103,3 @@ def install():
     reactor = GeventReactor()
     from gtwisted.core.installer import installReactor
     installReactor(reactor)
-    
-    

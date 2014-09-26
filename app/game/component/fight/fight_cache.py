@@ -8,6 +8,7 @@ from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
 from app.game.logic.fight import do_assemble
+from gtwisted.utils import log
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 
@@ -154,14 +155,15 @@ class CharacterFightCacheComponent(Component):
                                           monster_config.dodge, monster_config.cri, monster_config.criCoeff,
                                           monster_config.criDedCoeff, monster_config.block, pos, level, break_level,
                                           is_boss)
+                log.msg('怪物ID：%s' % monster_config.id, logLevel=10)
                 round_monsters.append(battle_unit)
-        monsters.append(round_monsters)
+            monsters.append(round_monsters)
 
         # 保存关卡怪物信息, 掉落信息
         self._blue_unit = monsters
         self._common_drop = stage_config.commonDrop
         self._elite_drop = stage_config.eliteDrop
-
+        log.msg('关卡怪物信息: %s ' % monsters)
         return monsters
 
     def __get_monster_unpara(self):
@@ -185,9 +187,10 @@ class CharacterFightCacheComponent(Component):
             return odds
 
         for i in range(1, 8):
+            print i
             condition_config = getattr(stage_break_config, 'condition%s' % i)  # 乱入条件
             odds_config = getattr(stage_break_config, 'odds%s' % i)  # 乱入几率
-
+            log.msg('乱入条件: %s' % condition_config, logLevel=10)
             if self.check_condition(condition_config):
                 odds += odds_config
 
@@ -210,11 +213,11 @@ class CharacterFightCacheComponent(Component):
         @return:
         """
         mapping_dict = {
-            1: self.check_num,  # 上阵人数
-            2: self.check_hero,  # 上阵英雄
-            3: self.check_equ,  # 上阵装备
-            4: self.check_suit,  # 激活套装
-            5: self.check_link,  # 激活羁绊
+            '1': self.check_num,  # 上阵人数
+            '2': self.check_hero,  # 上阵英雄
+            '3': self.check_equ,  # 上阵装备
+            '4': self.check_suit,  # 激活套装
+            '5': self.check_link,  # 激活羁绊
         }
 
         return mapping_dict[condition_type](condition_param)
@@ -264,6 +267,7 @@ class CharacterFightCacheComponent(Component):
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
+        replace_unit = self.__break_hero_units(red_units)
 
         return red_units, blue_units, drop_num, monster_unpara
 
@@ -289,44 +293,52 @@ class CharacterFightCacheComponent(Component):
 
         return drops
 
-    def break_hero_units(self, red_units):
+    def __break_hero_units(self, red_units):
         unit = None
-        replace_hero = 0
         odds = self.__get_break_stage_odds()
-        if odds <= random.random(0, 1):
+
+        rand_odds = random.random()
+
+        if rand_odds <= odds:
+            log.msg('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units), logLevel=10)
             replace = []  # 可以替换的英雄
             for red_unit in red_units:
+                if not red_unit:
+                    continue
                 hero_no = red_unit.no  # 英雄编号
                 if hero_no in self._not_replace:
                     continue
+                replace.append(red_unit)
+            log.msg('乱入可以替换的战斗单位: %s' % replace, logLevel=10)
+            if not replace:
+                return
 
-            hero_no = random.choice(replace)
-            replace_hero = hero_no
+            red_unit = random.choice(replace)  # 选出可以替换的单位
+
+            log.msg('乱入被替换战斗单位属性: %s' % red_unit.__dict__, logLevel=10)
+
             break_config = self.__get_stage_break_config()
             hero_id = break_config.hero_id
-
-            replace.append(hero_no)
             level = red_unit.level  # 等级
             break_level = red_unit.break_level  # 突破等级
-
             hero_obj = Hero()  # 实例化一个替换英雄对象
             hero_obj.hero_no = hero_id
             hero_obj.level = level
             hero_obj.break_level = break_level
-
             hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
-
             attr = CommonItem()
             hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
             attr += hero_break_attr
-
             slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
-
-            unit = self.__assemble_hero(hero_base_attr, attr)
-
-        return replace_hero, unit
+            unit = self.__assemble_hero(hero_base_attr, attr, )
+            unit.position = red_unit.position
+            log.msg('乱入替换战斗单位属性: %s' % unit.__dict__, logLevel=10)
+            if red_unit in red_units:
+                index = red_units.index(red_unit)
+                red_units[index] = unit
+        return red_units
 
     def __assemble_hero(self, base_attr, attr):
         """组装英雄战斗单位

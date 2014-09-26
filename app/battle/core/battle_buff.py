@@ -98,36 +98,36 @@ class BattleBuff(object):
     def locate_target(self, red, blue):
         pass
 
-    def parse_effect(self):
-        if self.effect_id == 1:
-
-        elif self.effect_id == 2:
-        elif self.effect_id == 3:
-        elif self.effect_id == 4:
-        elif self.effect_id == 5:
-        elif self.effect_id == 6:
-        elif self.effect_id == 7:
-        elif self.effect_id == 8:
-        elif self.effect_id == 9:
-        elif self.effect_id == 10:
-        elif self.effect_id == 11:
-        elif self.effect_id == 12:
-        elif self.effect_id == 13:
-        elif self.effect_id == 14:
-        elif self.effect_id == 15:
-        elif self.effect_id == 16:
-        elif self.effect_id == 17:
-        elif self.effect_id == 18:
-        elif self.effect_id == 19:
-        elif self.effect_id == 20:
-        elif self.effect_id == 21:
-        elif self.effect_id == 22:
-        elif self.effect_id == 23:
-        elif self.effect_id == 24:
-        elif self.effect_id == 25:
-        elif self.effect_id == 26:
-        elif self.effect_id == 27:
-        else:
+    # def parse_effect(self):
+    #     if self.effect_id == 1:
+    #
+    #     elif self.effect_id == 2:
+    #     elif self.effect_id == 3:
+    #     elif self.effect_id == 4:
+    #     elif self.effect_id == 5:
+    #     elif self.effect_id == 6:
+    #     elif self.effect_id == 7:
+    #     elif self.effect_id == 8:
+    #     elif self.effect_id == 9:
+    #     elif self.effect_id == 10:
+    #     elif self.effect_id == 11:
+    #     elif self.effect_id == 12:
+    #     elif self.effect_id == 13:
+    #     elif self.effect_id == 14:
+    #     elif self.effect_id == 15:
+    #     elif self.effect_id == 16:
+    #     elif self.effect_id == 17:
+    #     elif self.effect_id == 18:
+    #     elif self.effect_id == 19:
+    #     elif self.effect_id == 20:
+    #     elif self.effect_id == 21:
+    #     elif self.effect_id == 22:
+    #     elif self.effect_id == 23:
+    #     elif self.effect_id == 24:
+    #     elif self.effect_id == 25:
+    #     elif self.effect_id == 26:
+    #     elif self.effect_id == 27:
+    #     else:
 
 
 
