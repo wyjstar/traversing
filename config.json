@@ -50,8 +50,8 @@
             "db": true,
             "app": "app.gateserver",
             "log": "app/logs/gate.log",
-            "name": "lucas",
-            "front_ip": "127.0.0.1",
+            "name": "wzp",
+            "front_ip": "192.168.10.24",
             "front_port": 31009,
             "Ranking_configs": {
                 "label": "GuildLevel",

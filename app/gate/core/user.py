@@ -86,6 +86,7 @@ class User(object):
                              'get_stamina_times': 0,
                              'create_time': int(time.time()),
                              'vip_level': 0,
+                             'buy_stamina_times': 0,
                              'last_login_time': int(time.time())}
                 character_obj = tb_character_info.new(character)
                 self._character = character

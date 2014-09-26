@@ -12,7 +12,7 @@ from gfirefly.server.globalobject import GlobalObject
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
-
+from gtwisted.utils import log
 
 
 @have_player
@@ -72,26 +72,27 @@ def buy_stamina(dynamic_id, **kwargs):
 
     available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
 
-
+    log.DEBUG("available_buy_stamina_times++++++++++++++++", available_buy_stamina_times)
     # 校验购买次数上限
     if current_buy_stamina_times >= available_buy_stamina_times:
         response.result = False
-        response.result_no = 1
+        response.result_no = 11
         return response.SerializePartialToString()
 
     need_gold = base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
+    log.DEBUG("need_gold++++++++++++++++", need_gold)
     # 校验金币是否不足
+    if need_gold > current_gold:
+        log.DEBUG("gold not enough++++++++++++")
+        response.result = False
+        response.result_no = 102
+        return response.SerializePartialToString()
 
+    player.finance.gold += need_gold
+    player.finance.save_data()
 
-
-
-
-
-
-
-
-
-
+    player.buy_stamina_times += 1
+    player.save_data()
 
     response.result = True
     return response.SerializePartialToString()
