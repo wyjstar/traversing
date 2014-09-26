@@ -255,7 +255,9 @@
             "def_attrs": {
                 "id":"simple",
                 "stage_info": "complex",
-                "award_info": "complex"
+                "award_info": "complex",
+                "elite_stage": "complex",
+                "act_stage": "complex"
             }
         },
         "tb_guild_info":{

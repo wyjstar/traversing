@@ -22,6 +22,8 @@ CREATE TABLE `tb_character_stages` (
   `id` bigint(20) NOT NULL,
   `stage_info` mediumblob,
   `award_info` mediumblob,
+  `elite_stage` mediumblob,
+  `act_stage` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

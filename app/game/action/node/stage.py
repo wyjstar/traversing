@@ -78,6 +78,8 @@ def stage_start_903(dynamic_id, pro_data):
 
     res = response.res
     res.result = result
+    if stage_info.get('result_no'):
+        res.result_no = response.get('result_no')
 
     if not result:
         return response.SerializePartialToString()

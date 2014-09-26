@@ -71,7 +71,7 @@ class EchoClient(protocol.Protocol):
         # argument.type = 1
         # self.dateSend(argument, 1)
         argument = account_pb2.AccountLoginRequest()
-        argument.key.key = '088bda71b446e8a92b7a61ea4e6c2795'
+        argument.key.key = '9da63f551a4a7fb138bca6b3db4ab758'
         # argument.user_name = 'ceshi3'
         # argument.password = 'ceshi1'
         self.dateSend(argument, 2)
@@ -96,7 +96,7 @@ class EchoClient(protocol.Protocol):
                 self._times += 1
             else:
                 argument = account_pb2.AccountLoginRequest()
-                argument.key.key = '088bda71b446e8a92b7a61ea4e6c2795'
+                argument.key.key = '9da63f551a4a7fb138bca6b3db4ab758'
                 # argument.user_name = 'ceshi3'
                 # argument.password = 'ceshi1'
                 self.dateSend(argument, 2)
@@ -107,7 +107,7 @@ class EchoClient(protocol.Protocol):
             print argument
 
             argument = PlayerLoginRequest()
-            argument.token = '088bda71b446e8a92b7a61ea4e6c2795'
+            argument.token = '9da63f551a4a7fb138bca6b3db4ab758'
             self.dateSend(argument, 4)
 
         if command == 4:
@@ -116,9 +116,9 @@ class EchoClient(protocol.Protocol):
             print argument
 
             # --------706获取目标玩家阵容信息------------
-            argument1 = GetLineUpResponse()
-            argument1.target_id = 7
-            self.dateSend(argument1, 706)
+            # argument1 = GetLineUpResponse()
+            # argument1.target_id = 7
+            # self.dateSend(argument1, 706)
 
             # --------826领取登录奖励------------
             # argument1 = GetLoginGiftRequest()
@@ -195,9 +195,9 @@ class EchoClient(protocol.Protocol):
             # self.dateSend(argument1, 902)
 
             # --------901请求关卡------------
-            # argument1 = StageInfoRequest()
-            # argument1.stage_id = 0
-            # self.dateSend(argument1, 901)
+            argument1 = StageInfoRequest()
+            argument1.stage_id = 0
+            self.dateSend(argument1, 901)
 
             # 41eaaaa61e1bd68cf4b6657628f08951
             # f8a5f34048fa591a2c4fea89cd5f7eaf
@@ -363,10 +363,10 @@ class EchoClient(protocol.Protocol):
             argument1.stage_id = 100101
             line_up = argument1.lineup.add()
             line_up.pos = 1
-            line_up.hero_id = 10026
+            line_up.hero_id = 10029
             line_up = argument1.lineup.add()
             line_up.pos = 2
-            line_up.hero_id = 10028
+            line_up.hero_id = 10043
             line_up = argument1.lineup.add()
             line_up.pos = 3
             line_up.hero_id = 0
@@ -473,7 +473,7 @@ class EchoFactory(protocol.ClientFactory):
 def main():
 
     HOST = 'localhost'
-    PORT = 11009
+    PORT = 31009
 
     f = EchoFactory()
     reactor.connectTCP(HOST, PORT, f)
