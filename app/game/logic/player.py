@@ -67,7 +67,7 @@ def buy_stamina(dynamic_id, **kwargs):
 
     current_vip_level = player.vip_component.vip_level
     current_buy_stamina_times = player.buy_stamina_times
-    current_stamina = player.stamina
+    current_stamina = player.stamina.stamina
     current_gold = player.finance.gold
 
     available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
@@ -88,11 +88,34 @@ def buy_stamina(dynamic_id, **kwargs):
         response.result_no = 102
         return response.SerializePartialToString()
 
-    player.finance.gold += need_gold
+    player.finance.gold -= need_gold
     player.finance.save_data()
 
     player.buy_stamina_times += 1
     player.save_data()
 
+    player.stamina.stamina += 120
+    player.stamina.save_data()
+
     response.result = True
     return response.SerializePartialToString()
+
+
+@have_player
+def add_stamina(dynamic_id, **kwargs):
+    """按时自动增长体力"""
+    player = kwargs.get('player')
+    response = CommonResponse()
+
+    # 校验时间是否足够
+    current_time = time.time()
+    last_gain_stamina_time = player.stamina.stamina
+
+    if current_time - last_gain_stamina_time < 270:
+        response.result_no = 12
+        response.result = False
+        return response.SerializePartialToString()
+
+    player.stamina.stamina += 1
+    player.stamina.last_gain_stamina_time = current_time
+    player.stamina.stamina.save_data()

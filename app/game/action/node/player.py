@@ -21,3 +21,9 @@ def buy_stamina_6(dynamic_id, request_proto):
     """购买体力"""
     return buy_stamina(dynamic_id)
 
+
+@remote_service_handle
+def add_stamina_6(dynamic_id, request_proto):
+    """按时增长体力"""
+    return buy_stamina(dynamic_id)
+

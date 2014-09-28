@@ -26,6 +26,7 @@ from app.game.component.character_feast import CharacterFeastComponent
 from app.game.component.character_login_gift import CharacterLoginGiftComponent
 from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_vip import CharacterVIPComponent
+from app.game.component.character_stamina import CharacterStaminaComponent
 
 
 
@@ -66,10 +67,8 @@ class PlayerCharacter(Character):
         self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
         self._vip = CharacterVIPComponent(self)  # VIP level
 
-        self._stamina = 100  # 体力
+        self._stamina = CharacterStaminaComponent()  # 体力
         self._pvp_times = 0  # pvp次数
-        self._get_stamina_times = 0  # 邮件获取体力次数
-        self._buy_stamina_times = 0  # 已购买体力次数
         self._sign_in_days = []  # 签到日期
         self._continus_sign_in_days = 0  # 连续签到天数
         self._mmode = None
@@ -101,10 +100,7 @@ class PlayerCharacter(Character):
         excellent_hero_last_pick_time = character_info['excellent_hero_last_pick_time']
         fine_equipment_last_pick_time = character_info['fine_equipment_last_pick_time']
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
-        stamina = character_info['stamina']
         pvp_times = character_info['pvp_times']
-        get_stamina_times = character_info['get_stamina_times']  # 邮件获取体力次数
-        buy_stamina_times = character_info['buy_stamina_times']  # 已购买体力次数
         vip_level = character_info['vip_level']
 
         # ------------初始化角色基础信息组件---------
@@ -139,10 +135,8 @@ class PlayerCharacter(Character):
         self._friends.init_data()
         self._guild.init_data()
         self._stage.init_data()
-        self._stamina = stamina
+        self._stamina.init_data()
         self._pvp_times = pvp_times
-        self._get_stamina_times = get_stamina_times
-        self._buy_stamina_times = buy_stamina_times
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
         self._level_gift.init_data()
@@ -248,14 +242,6 @@ class PlayerCharacter(Character):
         self._pvp_times = value
 
     @property
-    def stamina(self):
-        return self._stamina
-
-    @stamina.setter
-    def stamina(self, value):
-        self._stamina = value
-
-    @property
     def mail_component(self):
         return self._mail
 
@@ -292,28 +278,13 @@ class PlayerCharacter(Character):
         self._feast = value
 
     @property
-    def get_stamina_times(self):
-        """邮件中获取赠送体力次数"""
-        return self._get_stamina_times
-
-    @get_stamina_times.setter
-    def get_stamina_times(self, value):
-        """邮件中获取赠送体力次数"""
-        self._get_stamina_times = value
-
-    @property
-    def buy_stamina_times(self):
-        """已经购买的体力次数"""
-        return self._buy_stamina_times
-
-    @buy_stamina_times.setter
-    def buy_stamina_times(self, value):
-        """已经购买的体力次数"""
-        self._buy_stamina_times = value
+    def stamina(self):
+        """体力组件"""
+        return self._stamina
 
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        character_info.update_multi(dict(level=self._level.level, exp=self.level.exp, stamina=self._stamina,
-                                         pvp_times=self._pvp_times, get_stamina_times=self._get_stamina_times,
+        character_info.update_multi(dict(level=self._level.level, exp=self.level.exp,
+                                         pvp_times=self._pvp_times,
                                          vip_level = self._vip.vip_level))
