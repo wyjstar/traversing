@@ -210,17 +210,24 @@ def exit_guild(dynamicid, data, **kwargs):
                 response.result = False
                 response.message = "此玩家不在公会"
                 return response.SerializeToString()
-            data = {
-                'info': {'g_id': info.get("g_id"),
-                         'position': 1,
-                         'contribution': info.get("contribution"),
-                         'all_contribution': info.get("all_contribution"),
-                         'k_num': info.get("k_num"),
-                         'worship': info.get("worship"),
-                         'worship_time': info.get("worship_time"),
-                         'exit_time': info.get("exit_time")}}
-            p_guild_data = tb_character_guild.getObj(tihuan_id)
-            p_guild_data.update_multi(data)
+
+            invitee_player = PlayersManager().get_player_by_id(tihuan_id)
+            if invitee_player:  # 在线
+                logout_guild_chat(invitee_player.dynamic_id)
+                invitee_player.guild.position = 1
+                invitee_player.guild.save_data()
+            else:
+                data = {
+                    'info': {'g_id': info.get("g_id"),
+                             'position': 1,
+                             'contribution': info.get("contribution"),
+                             'all_contribution': info.get("all_contribution"),
+                             'k_num': info.get("k_num"),
+                             'worship': info.get("worship"),
+                             'worship_time': info.get("worship_time"),
+                             'exit_time': info.get("exit_time")}}
+                p_guild_data = tb_character_guild.getObj(tihuan_id)
+                p_guild_data.update_multi(data)
 
             p_list1 = p_list.get(tihuan_position)
             p_list1.remove(tihuan_id)
@@ -228,7 +235,7 @@ def exit_guild(dynamicid, data, **kwargs):
             p_list.update({1: [tihuan_id], tihuan_position: p_list1})
 
             player.guild.g_id = 0
-            player.guild.exit_time = time.time()
+            player.guild.exit_time = int(time.time())
             player.guild.save_data()
 
             guild_obj.save_data()
@@ -419,17 +426,23 @@ def change_president(dynamicid, data, **kwargs):
                 response.result = False
                 response.message = "此玩家不在公会"
                 return response.SerializeToString()
-            data = {
-                'info': {'g_id': info.get("g_id"),
-                         'position': 1,
-                         'contribution': info.get("contribution"),
-                         'all_contribution': info.get("all_contribution"),
-                         'k_num': info.get("k_num"),
-                         'worship': info.get("worship"),
-                         'worship_time': info.get("worship_time"),
-                         'exit_time': info.get("exit_time")}}
-            p_guild_data = tb_character_guild.getObj(p_p_id)
-            p_guild_data.update_multi(data)
+            invitee_player = PlayersManager().get_player_by_id(p_p_id)
+            if invitee_player:  # 在线
+                logout_guild_chat(invitee_player.dynamic_id)
+                invitee_player.guild.position = 1
+                invitee_player.guild.save_data()
+            else:
+                data = {
+                    'info': {'g_id': info.get("g_id"),
+                             'position': 1,
+                             'contribution': info.get("contribution"),
+                             'all_contribution': info.get("all_contribution"),
+                             'k_num': info.get("k_num"),
+                             'worship': info.get("worship"),
+                             'worship_time': info.get("worship_time"),
+                             'exit_time': info.get("exit_time")}}
+                p_guild_data = tb_character_guild.getObj(p_p_id)
+                p_guild_data.update_multi(data)
 
             player.guild.position = 5
             player.guild.save_data()
@@ -497,9 +510,9 @@ def kick(dynamicid, data, **kwargs):
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
                     logout_guild_chat(invitee_player.dynamic_id)
-                    invitee_player.guild.g_id = player.guild.g_id
+                    invitee_player.guild.g_id = 0
                     invitee_player.guild.save_data()
-                    push_object(814, '', invitee_player.dynamic_id)
+                    push_object(814, args.SerializeToString(), [invitee_player.dynamic_id])
 
     response.result = True
     response.message = "踢人成功"
@@ -835,6 +848,7 @@ def get_apply_list(dynamicid, data, **kwargs):
     guild_obj.init_data(data1)
 
     guild_apply = guild_obj.apply
+
     for role_id in guild_apply:
         # TODO 获取玩家 战斗力，vip等级
         character_info = tb_character_info.getObjData(role_id)

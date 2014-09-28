@@ -27,7 +27,6 @@ class CharacterStageComponent(Component):
         self._act_stage_info = [0, 1]  # 活动关卡相关信息, {今日挑战次数，最后挑战日期}
 
     def init_data(self):
-        log.msg('cuick,AAAAAAAAA,01,INIT DATA,', logLevel=10)
         stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
         if stage_data:
             stages = stage_data.get('stage_info')
