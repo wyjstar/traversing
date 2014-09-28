@@ -20,7 +20,6 @@
         },
         "login": {
             "rootport": 20000,
-            "netport": 22009,
             "webport": 20097,
             "name": "login",
             "mem": true,
