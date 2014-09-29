@@ -96,7 +96,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     lord_data = tb_character_lord.getObjData(fid)
     f_unit = None
     if lord_data:
-        info = lord_data.get('info')
+        info = lord_data.get('attr_info').get('info')
         f_unit = BattleUnit.loads(info)
 
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num,
