@@ -331,12 +331,12 @@ def find_friend_request(dynamic_id, data, **kwargs):
         player_data = tb_character_info.getObjData(request.id_or_nickname)
         if player_data:
             response.id = player_data.get('id')
-            response.nickname = player_data.get('nickname')
+            response.nickname = unicode(player_data.get('nickname'), 'utf-8')
     else:
         nickname_utf8 = request.id_or_nickname.encode('utf-8')
         player_data = tb_nickname_mapping.getObjData(nickname_utf8)
         if player_data:
             response.id = player_data.get('id')
-            response.nickname = player_data.get('nickname')
+            response.nickname = unicode(player_data.get('nickname'), 'utf-8')
 
     return response.SerializePartialToString()
