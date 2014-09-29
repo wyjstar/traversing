@@ -178,7 +178,7 @@ def DeleteFromDB(tablename, props):
     except Exception, e:
         import traceback
         log.err(traceback.format_exc())
-        log.err(e)
+        log.err(e.message)
         log.err(sql)
     cursor.close()
     conn.close()
@@ -199,7 +199,7 @@ def InsertIntoDB(tablename, data):
         import traceback
         traceback.print_stack()
         log.err(traceback.format_exc())
-        log.err(e)
+        log.err(e.message)
         log.err(sql)
     cursor.close()
     conn.close()
@@ -219,7 +219,7 @@ def UpdateWithDict(tablename, props, prere):
     except Exception, e:
         import traceback
         traceback.print_stack()
-        log.err(e)
+        log.err(e.message)
         log.err(sql)
     cursor.close()
     conn.close()

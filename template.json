@@ -1,0 +1,135 @@
+{
+    "master": {
+        "roothost": "127.0.0.1",
+        "rootport": 20099,
+        "webport": 20098
+    },
+    "servers": {
+        "admin": {
+            "webport": 32001,
+            "name": "admin",
+            "app": "app.adminserver",
+            "log": "app/logs/admin.log"
+        },
+        "MA": {
+            "webport": 20100,
+            "name": "MA",
+            "db": true,
+            "app": "app.MAserver",
+            "log": "app/logs/MAserver.log"
+        },
+        "login": {
+            "rootport": 20000,
+            "webport": 20097,
+            "name": "login",
+            "mem": true,
+            "app": "app.loginserver",
+            "log": "app/logs/loginserver.log"
+        },
+        "transit": {
+            "rootport": 30002,
+            "name": "transit",
+            "app": "app.transitserver",
+            "log": "app/logs/transitserver.log"
+        },
+        "gate": {
+            "rootport": 30001,
+            "name": "gate",
+            "remoteport": [
+                {
+                    "roothost": "<=login_ip=>",
+                    "rootport": 30002,
+                    "rootname": "transit"
+                },
+                {
+                    "roothost": "<=login_ip=>",
+                    "rootport": 20000,
+                    "rootname": "login"
+                }
+            ],
+            "mem": true,
+            "db": true,
+            "app": "app.gateserver",
+            "log": "app/logs/gate.log",
+            "name": "<=server_name=>",
+            "front_ip": "<=front_ip=>",
+            "front_port": 31009,
+            "Ranking_configs": {
+                "label": "GuildLevel",
+                "redis_server": "127.0.0.1",
+                "redis_port": 6379,
+                "redis_db": 0,
+                "rank_len": 9999,
+                "eval_rank_func": "guild_eval"
+            }
+        },
+        "net": {
+            "netport": 31009,
+            "name": "net",
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.netserver",
+            "log": "app/logs/net.log"
+        },
+        "game": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                },
+                {
+                    "rootport": 30002,
+                    "rootname": "battle"
+                }
+            ],
+            "name": "game",
+            "mem": true,
+            "db": true,
+            "app": "app.game1server",
+            "reload":"app.game.doreload",
+            "log": "app/logs/game1.log"
+        },
+        "chat": {
+            "name": "chat",
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.chatserver",
+            "log": "app/logs/chatserver.log"
+        },
+        "dbfront": {
+            "name": "dbfront",
+            "db": true,
+            "mem": true,
+            "app": "app.dbfrontserver",
+            "log": "app/logs/dbfront.log"
+        },
+        "battle": {
+            "rootport": 30000,
+            "name": "battle",
+            "db": true,
+            "mem": true,
+            "app": "app.battleserver",
+            "log": "app/logs/battle.log"
+        }
+    },
+    "db": {
+        "host": "127.0.0.1",
+        "user": "test",
+        "passwd": "test",
+        "port": 8066,
+        "db": "db_traversing",
+        "charset": "utf8"
+    },
+    "memcached": {
+        "urls": ["127.0.0.1:6379"],
+        "hostname": "redis"
+    }
+}

@@ -81,11 +81,13 @@ class User(object):
                              'excellent_hero_last_pick_time': 0,
                              'fine_equipment_last_pick_time': 0,
                              'excellent_equipment_last_pick_time': 0,
-                             'stamina': 0,
+                             'stamina': 100,
                              'pvp_times': 0,
                              'get_stamina_times': 0,
+                             'buy_stamina_times': 0,
                              'create_time': int(time.time()),
                              'vip_level': 0,
+                             'buy_stamina_times': 0,
                              'last_login_time': int(time.time())}
                 character_obj = tb_character_info.new(character)
                 self._character = character

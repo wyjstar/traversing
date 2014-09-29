@@ -23,6 +23,10 @@ class CharacterVIPComponent(Component):
     def vip_level(self):
         return self._vip_level
 
+    @vip_level.setter
+    def vip_level(self, vip_level):
+        self._vip_level = vip_level
+
     @property
     def open_sweep(self):
         """解锁扫荡"""
@@ -81,7 +85,6 @@ class CharacterVIPComponent(Component):
     @property
     def equipment_strength_cli_times(self):
         """装备强化暴击次数"""
-        return {2:0.3, 4:0.1}
         return self._vip_content.equipmentStrengthCliTimes
 
     @property
@@ -95,6 +98,11 @@ class CharacterVIPComponent(Component):
         """可购买的礼包"""
         #todo: 礼包ID
         return self._vip_content.buyGifts
+
+    @property
+    def guild_worship_times(self):
+        """公会膜拜次数"""
+        return self._vip_content.guildWorshipTimes
 
 
     def update_vip(self):

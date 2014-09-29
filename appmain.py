@@ -50,8 +50,9 @@ if __name__ == "__main__":
     sersconf = config.get('servers', {})
     masterconf = config.get('master', {})
 
-    model_default_config = config.get('model_default', {})
-    model_config = config.get('models', {})
+    mconfig = json.load(open('models.json', 'r'))
+    model_default_config = mconfig.get('model_default', {})
+    model_config = mconfig.get('models', {})
 
     serconfig = sersconf.get(servername)
     ser = FFServer()

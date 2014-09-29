@@ -41,25 +41,23 @@ def enter_scene_601(dynamic_id, character_id, is_new_character):
     responsedata.excellent_hero = player.last_pick_time.excellent_hero
     responsedata.fine_equipment = player.last_pick_time.fine_equipment
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
-    responsedata.stamina = player.stamina
+
     responsedata.pvp_times = player.pvp_times
 
     responsedata.combat_power = player.line_up_component.combat_power
 
     if player.guild.g_id != 0:
         responsedata.guild_id = player.guild.g_id
-    # TODO vip_level
-    responsedata.vip_level = 1
+
+    responsedata.vip_level = player.vip_component.vip_level
+    # 体力
+    responsedata.stamina = player.stamina.stamina
+    responsedata.get_stamina_times = player.stamina.get_stamina_times
+    responsedata.buy_stamina_times = player.stamina.buy_stamina_times
+    responsedata.last_gain_stamina_time = player.stamina.last_gain_stamina_time
     responsedata.server_time = int(time.time())
 
     return responsedata.SerializeToString()
 
 
-def mock_player(player):
-    if player.base_info.id != 1:
-        PlayersManager().drop_player(player)
 
-    player1 = PlayersManager().get_player_by_id(1)
-    player1.dynamic_id = player.dynamic_id
-    player1.base_info.base_name = player.base_info.base_name
-    return player1

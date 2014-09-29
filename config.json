@@ -49,7 +49,7 @@
             "db": true,
             "app": "app.gateserver",
             "log": "app/logs/gate.log",
-            "name": "lucas",
+            "name": "60",
             "front_ip": "127.0.0.1",
             "front_port": 31009,
             "Ranking_configs": {
@@ -316,7 +316,4 @@
             }
         }
     }
-
-
-
 }
