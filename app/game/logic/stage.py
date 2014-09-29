@@ -121,6 +121,7 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
     settlement_drops = fight_cache_component.fighting_settlement(stage_id, result)
     data = gain(player, settlement_drops)
+    get_return(player, data, drops)
 
     if result:
         if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
@@ -139,10 +140,9 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
                     player.stage_component.act_stage_info = [1, str(time.time())]
             player.stage_component.update()
 
-    get_return(player, data, drops)
     res.message = u'成功返回'
-
     return response.SerializePartialToString()
+
 
 @have_player
 def get_warriors(dynamic_id, **kwargs):
