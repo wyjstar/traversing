@@ -139,6 +139,7 @@ config = ChipConfig()
 chip_config_mock = config.parser([hero_chip1, hero_chip2, hero_chip3, hero_chip4, equipment_chip1])
 # chip_config['mapping'] = chip_config_mock['mapping']
 # chip_config['chips'] = chip_config_mock['chips']
+print chip_config['mapping'], "chip++++++++++++"
 
 
 # ------------------------big_bag----------------------------

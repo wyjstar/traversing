@@ -51,8 +51,12 @@ class CharacterItemPackageComponent(Component):
         return self._items.values()
 
     def consume_item(self, item_no, item_num):
-        self._items.get(item_no).num -= item_num
 
+
+        item = self._items.get(item_no)
+        item.num -= item_num
+        if item.num == 0:
+            del self._items[item_no]
 
 
     def save_data(self):
