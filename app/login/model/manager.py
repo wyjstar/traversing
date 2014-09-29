@@ -23,6 +23,10 @@ class ServerManager(object):
         self._servers[time.time()] = server
 
     def get_server(self):
+        for t in self._servers.keys():
+            if time.time() - t > 180:
+                del self._servers[t]
+
         return self._servers.values()
 
 
