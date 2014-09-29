@@ -18,7 +18,11 @@ if __name__ == "__main__":
             fp.flush()
             fp.close()
 
+    config_file = 'config.json'
+    if os.path.exists('myconfig.json'):
+        config_file = 'myconfig.json'
+
     from gfirefly.master.master import Master
     master = Master()
-    master.config('config.json', 'appmain.py')
+    master.config(config_file, 'appmain.py')
     master.start()
