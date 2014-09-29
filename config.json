@@ -49,8 +49,8 @@
             "db": true,
             "app": "app.gateserver",
             "log": "app/logs/gate.log",
-            "name": "wzp",
-            "front_ip": "192.168.10.24",
+            "name": "60",
+            "front_ip": "127.0.0.1",
             "front_port": 31009,
             "Ranking_configs": {
                 "label": "GuildLevel",
@@ -166,7 +166,7 @@
                 "excellent_hero_last_pick_time": "simple",
                 "fine_equipment_last_pick_time": "simple",
                 "excellent_equipment_last_pick_time": "simple",
-                "stamina": "complex",
+                "stamina": "simple",
                 "pvp_times": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
@@ -316,7 +316,4 @@
             }
         }
     }
-
-
-
 }

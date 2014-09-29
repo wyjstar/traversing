@@ -56,6 +56,9 @@ def get_login_gift(dynamicid, activity_id, activity_type, response, **kwargs):
                     if i.get('id') == activity_id:
                         if i.get('parameterA') <= player.login_gift.continuous_day[0]:
                             player.login_gift.continuous_received.append(activity_id)
+                            gain_data = i['reward']
+                            return_data = gain(player, gain_data)
+                            get_return(player, return_data, response.gain)
                             res = True
                             err_no = 0
                         else:
