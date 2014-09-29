@@ -119,7 +119,7 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
         res.message = u"关卡id和战斗缓存id不同"
         return response.SerializeToString()
 
-    settlement_drops = fight_cache_component.fighting_settlement(stage_id, result)
+    settlement_drops = fight_cache_component.fighting_settlement(result)
     data = gain(player, settlement_drops)
     get_return(player, data, drops)
 

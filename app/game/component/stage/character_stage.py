@@ -64,13 +64,13 @@ class CharacterStageComponent(Component):
             self._stage_info[stage_id] = stage_obj
         return stage_obj
 
-    def get_stage_by_condition(self, stage_id):
-        """根据条件关卡编号取得开启关卡信息
-        """
-        condition_mapping = game_configs.stage_config.get('condition_mapping')
-        stage_ids = condition_mapping.get(stage_id, [])
-
-        return [self.get_stage(stage_id) for stage_id in stage_ids]
+    # def get_stage_by_condition(self, stage_id):
+    #     """根据条件关卡编号取得开启关卡信息
+    #     """
+    #     condition_mapping = game_configs.stage_config.get('condition_mapping')
+    #     stage_ids = condition_mapping.get(stage_id, [])
+    #
+    #     return [self.get_stage(stage_id) for stage_id in stage_ids]
 
     def get_stages(self):
         """取得全部关卡信息
@@ -108,16 +108,21 @@ class CharacterStageComponent(Component):
 
         stage.update(result)
         if result:  # win
-            conf = game_configs.stage_config.get('stages')
-            chapter_id = conf.get(stage_id).get('chapter')
-            chapter = self.get_chapter(chapter_id)
-            chapter.update(self.calculation_star(chapter_id))
+            if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
+                conf = game_configs.stage_config.get('stages')
+                chapter_id = conf.get(stage_id).get('chapter')
+                chapter = self.get_chapter(chapter_id)
+                chapter.update(self.calculation_star(chapter_id))
+                next_stages = game_configs.stage_config.get('condition_mapping')
+            elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+                next_stages = game_configs.special_stage_config.get('condition_mapping')
             # 开启下一关卡
-            stages = self.get_stage_by_condition(stage_id)
-            for stage in stages:
-                state = self.check_stage_state(stage.stage_id)
-                if state == -2:
-                    stage.state = -1  # 更新状态开启没打过
+            if next_stages.get(stage_id):
+                for stage in [self.get_stage(stage_id) for stage_id in next_stages.get(stage_id)]:
+                    state = self.check_stage_state(stage.stage_id)
+                    if state == -2:
+                        stage.state = -1  # 更新状态开启没打过
+
         return True
 
     def check_stage_state(self, stage_id):
