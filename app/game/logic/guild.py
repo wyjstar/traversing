@@ -487,7 +487,6 @@ def kick(dynamicid, data, **kwargs):
                 guild_obj.p_list = p_list
                 guild_obj.p_num -= 1
                 guild_obj.save_data()
-                # TODO 踢人。判断目标玩家再不在线，发消息，通知
                 character_guild = tb_character_guild.getObjData(p_id)
                 info = character_guild.get("info")
                 if info.get("g_id") == 0:
@@ -641,16 +640,8 @@ def worship(dynamicid, data, **kwargs):
         response.message = "公会ID错误"
         return response.SerializeToString()
 
-
     guild_obj = Guild()
     guild_obj.init_data(data1)
-
-    # TODO 查询每天可以膜拜的次数.----玩家vip查询
-    # 先判断是不是vip
-    if 0:
-        can_wopship = base_config.get('vip_worship_times') + base_config.get('worship_times')
-    else:
-        can_wopship = base_config.get('worship_times')
 
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
     worship_info = base_config.get('worship').get(unicode(w_type))
@@ -667,7 +658,7 @@ def worship(dynamicid, data, **kwargs):
             return response.SerializeToString()
 
     if (int(time.time())-player.guild.worship_time) < (60*60*24):
-        if can_wopship > player.guild.worship:
+        if player.vip_component.guild_worship_times > player.guild.worship:
             player.guild.worship += 1
             player.guild.contribution += worship_info[4]
             player.guild.all_contribution += worship_info[3]
@@ -850,7 +841,7 @@ def get_apply_list(dynamicid, data, **kwargs):
     guild_apply = guild_obj.apply
 
     for role_id in guild_apply:
-        # TODO 获取玩家 战斗力，vip等级
+        # TODO 获取玩家 战斗力
         character_info = tb_character_info.getObjData(role_id)
         if character_info:
             role_info = response.role_info.add()
@@ -860,7 +851,7 @@ def get_apply_list(dynamicid, data, **kwargs):
             else:
                 role_info.name = '无名'
             role_info.level = character_info['level']
-            role_info.vip_level = 1
+            role_info.vip_level = character_info['vip_level']
             role_info.fight_power = 1
 
     response.result = True
