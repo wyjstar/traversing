@@ -34,9 +34,6 @@ message GameLoginResponse{
      optional bytes guild_id = 20;
      optional float combat_power = 21;
 
-
-     //vip
-     optional int32 vip_level = 22;
      //stamina
      optional int32 get_stamina_times = 23; //通过邮件获取体力次数
      optional int32 buy_stamina_times = 24; //购买体力次数

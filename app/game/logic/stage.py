@@ -125,7 +125,7 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
     if result:
         if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
-            player.stamina -= game_configs.stage_config.get('stages').get(stage_id).vigor
+            player.stamina.stamina -= game_configs.stage_config.get('stages').get(stage_id).vigor
             player.save_data()
         else:
             if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡

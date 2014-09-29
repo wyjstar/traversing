@@ -23,7 +23,8 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
     result = is_afford(player, shop_item.consume)  # 校验
     if not result.get('result'):
         common_response.result = False
-        common_response.message = '消费不足！'
+        common_response.result_no = result.get('result_no')
+        common_response.message = u'消费不足！'
 
     consume_return_data = consume(player, shop_item.consume)  # 消耗
 

@@ -67,7 +67,7 @@ class PlayerCharacter(Character):
         self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
         self._vip = CharacterVIPComponent(self)  # VIP level
 
-        self._stamina = CharacterStaminaComponent()  # 体力
+        self._stamina = CharacterStaminaComponent(self)  # 体力
         self._pvp_times = 0  # pvp次数
         self._sign_in_days = []  # 签到日期
         self._continus_sign_in_days = 0  # 连续签到天数

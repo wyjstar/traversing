@@ -275,12 +275,12 @@ def get_player_friend_list(dynamic_id, **kwargs):
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
                 info = lord_data.get('info', {})
-                response_friend_add.hero_no = info.get('no', 0)
-                response_friend_add.power = lord_data.get('power', 0)
-                response_friend_add.hp = info.get('hp', 0)
-                response_friend_add.atk = info.get('atk', 0)
-                response_friend_add.physical_def = info.get('physical_def', 0)
-                response_friend_add.magic_def = info.get('magic_def', 0)
+                response_blacklist_add.hero_no = info.get('no', 0)
+                response_blacklist_add.power = lord_data.get('power', 0)
+                response_blacklist_add.hp = info.get('hp', 0)
+                response_blacklist_add.atk = info.get('atk', 0)
+                response_blacklist_add.physical_def = info.get('physical_def', 0)
+                response_blacklist_add.magic_def = info.get('magic_def', 0)
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 
@@ -296,12 +296,12 @@ def get_player_friend_list(dynamic_id, **kwargs):
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
                 info = lord_data.get('info', {})
-                response_friend_add.hero_no = info.get('no', 0)
-                response_friend_add.power = lord_data.get('power', 0)
-                response_friend_add.hp = info.get('hp', 0)
-                response_friend_add.atk = info.get('atk', 0)
-                response_friend_add.physical_def = info.get('physical_def', 0)
-                response_friend_add.magic_def = info.get('magic_def', 0)
+                response_applicant_list_add.hero_no = info.get('no', 0)
+                response_applicant_list_add.power = lord_data.get('power', 0)
+                response_applicant_list_add.hp = info.get('hp', 0)
+                response_applicant_list_add.atk = info.get('atk', 0)
+                response_applicant_list_add.physical_def = info.get('physical_def', 0)
+                response_applicant_list_add.magic_def = info.get('magic_def', 0)
         else:
             print 'get_player_friend_list', 'cant find player id:', pid
 

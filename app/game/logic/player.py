@@ -66,20 +66,20 @@ def buy_stamina(dynamic_id, **kwargs):
     response = CommonResponse()
 
     current_vip_level = player.vip_component.vip_level
-    current_buy_stamina_times = player.buy_stamina_times
+    current_buy_stamina_times = player.stamina.buy_stamina_times
     current_stamina = player.stamina.stamina
     current_gold = player.finance.gold
 
     available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
 
-    log.DEBUG("available_buy_stamina_times++++++++++++++++", available_buy_stamina_times)
+    log.DEBUG("available_buy_stamina_times++++++++++++++++", available_buy_stamina_times, current_buy_stamina_times)
     # 校验购买次数上限
     if current_buy_stamina_times >= available_buy_stamina_times:
         response.result = False
         response.result_no = 11
         return response.SerializePartialToString()
 
-    need_gold = base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
+    need_gold = base_config.get("price_buy_manual").get(str(current_buy_stamina_times+1))[1]
     log.DEBUG("need_gold++++++++++++++++", need_gold)
     # 校验金币是否不足
     if need_gold > current_gold:
@@ -91,7 +91,7 @@ def buy_stamina(dynamic_id, **kwargs):
     player.finance.gold -= need_gold
     player.finance.save_data()
 
-    player.buy_stamina_times += 1
+    player.stamina.buy_stamina_times += 1
     player.save_data()
 
     player.stamina.stamina += 120
@@ -108,14 +108,24 @@ def add_stamina(dynamic_id, **kwargs):
     response = CommonResponse()
 
     # 校验时间是否足够
-    current_time = time.time()
+    current_time = int(time.time())
     last_gain_stamina_time = player.stamina.stamina
 
     if current_time - last_gain_stamina_time < 270:
+        log.DEBUG("add stamina time not enough +++++++++++++++++++++++++++++++")
         response.result_no = 12
         response.result = False
         return response.SerializePartialToString()
 
+    max_stamina = player.stamina.max_of_stamina
+    if player.stamina.stamina >= max_stamina:
+        log.DEBUG("has reach max stamina +++++++++++++++++++++++++++++++")
+        response.result_no = 13
+        response.result = False
+        return response.SerializePartialToString()
     player.stamina.stamina += 1
+
     player.stamina.last_gain_stamina_time = current_time
-    player.stamina.stamina.save_data()
+    player.stamina.save_data()
+    response.result = True
+    return response.SerializePartialToString()

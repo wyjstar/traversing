@@ -63,20 +63,16 @@ def use_item(dynamic_id, pro_data, **kwargs):
             return response.SerializeToString()
         # 消耗key
         box_key.num -= func_args2 * item_num
-        if box_key.num == 0:
-            player.item_package.get_item
+        player.item_package.consume_item(box_key_no, item_num)
         player.item_package.save_data()
-    # 消耗道具
-    item.num -= item_num
-
-
-
 
     big_bag = BigBag(drop_id)
     for i in range(item_num):
         drop_item_group = big_bag.get_drop_items()
         return_data = gain(player, drop_item_group)
         get_return(player, return_data, response.gain)
+
+    player.item_package.consume_item(item_no, item_num)
 
     return response.SerializeToString()
 

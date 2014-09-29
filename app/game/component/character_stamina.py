@@ -22,7 +22,8 @@ class CharacterStaminaComponent(Component):
         self._last_gain_stamina_time = 0  # 上次获取体力时间
 
     def init_data(self):
-        stamina_data = tb_character_info.getObjData(self.owner.base_info.id).get('stamina')
+        data = tb_character_info.getObjData(self.owner.base_info.id)
+        stamina_data = data.get('stamina', None)
         if stamina_data:                  
             self._stamina = stamina_data.get('stamina')
             self._get_stamina_times = stamina_data.get('get_stamina_times')
@@ -30,7 +31,7 @@ class CharacterStaminaComponent(Component):
             self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
 
             # 初始化体力
-            current_time = time.time()
+            current_time = int(time.time())
             stamina_add = (current_time-self._last_gain_stamina_time) / self.peroid_of_stamina_recover
             left_stamina = (current_time-self._last_gain_stamina_time) % self.peroid_of_stamina_recover
 
@@ -41,12 +42,14 @@ class CharacterStaminaComponent(Component):
             self._last_gain_stamina_time = current_time - left_stamina
 
         else:
-            tb_character_info.update(self.owner.base_info.id, {'stamina': {
+            obj = tb_character_info.getObj(self.owner.base_info.id)
+            obj.update_multi(
+            {'stamina': {
                    'stamina': 120,
                    'get_stamina_times': 0,
                    'buy_stamina_times': 0,
                    'last_gain_stamina_time': 0,
-            }})                  
+            }})
 
     @property
     def peroid_of_stamina_recover(self):
