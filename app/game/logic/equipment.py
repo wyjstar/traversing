@@ -42,6 +42,10 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     print equipment_obj, "equipment_obj"
+
+    if enhance_type == 2 and not player.vip_component.equipment_strength_one_key:
+        return {'result': False, 'result_no': 403, 'message': u''}
+
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
 
@@ -57,6 +61,8 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
         equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
         print "max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
         return {'result': False, 'result_no': 402, 'message': u''}
+
+
 
     for i in xrange(0, enhance_num):
         result = __do_enhance(player, equipment_obj)

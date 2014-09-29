@@ -6,6 +6,7 @@ from app.game.component.Component import Component
 from app.game.core.hero import Hero
 from app.game.redis_mode import tb_character_hero, tb_character_heros
 import cPickle
+from gtwisted.utils import log
 
 
 class CharacterHerosComponent(Component):
@@ -73,9 +74,12 @@ class CharacterHerosComponent(Component):
         return hero
 
     def delete_hero(self, hero_no):
-        del self._heros[hero_no]
-        self.save_data()
-        tb_character_hero.deleteMode(self.get_hero_id(hero_no))
+        if self._heros.get(hero_no):
+            del self._heros[hero_no]
+            self.save_data()
+            tb_character_hero.deleteMode(self.get_hero_id(hero_no))
+        else:
+            log.DEBUG("don't find hero_no from self._heros")
 
     def delete_heros_by_nos(self, hero_no_list):
         for no in hero_no_list:
