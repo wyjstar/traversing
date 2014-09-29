@@ -3,6 +3,8 @@
 created by server on 14-7-17下午5:21.
 """
 import datetime
+from twisted.python import log
+from app.game.core.fight.battle_unit import BattleUnit
 
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
@@ -253,15 +255,16 @@ def get_player_friend_list(dynamic_id, **kwargs):
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
-                info = lord_data.get('info', {})
-                response_friend_add.hero_no = info.get('no', 0)
-                response_friend_add.power = lord_data.get('power', 0)
-                response_friend_add.hp = info.get('hp', 0)
-                response_friend_add.atk = info.get('atk', 0)
-                response_friend_add.physical_def = info.get('physical_def', 0)
-                response_friend_add.magic_def = info.get('magic_def', 0)
+                info = lord_data.get('attr_info', {})
+                battle_unit = BattleUnit.loads(info.get('info'))
+                response_friend_add.hero_no = battle_unit.no
+                response_friend_add.power = info.get('power', 0)
+                response_friend_add.hp = battle_unit.hp
+                response_friend_add.atk = battle_unit.atk
+                response_friend_add.physical_def = battle_unit.physical_def
+                response_friend_add.magic_def = battle_unit.magic_def
         else:
-            print 'get_player_friend_list', 'cant find player id:', pid
+            log.err('get_player_friend_list, cant find player id:%d' % pid)
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObjData(pid)
@@ -282,7 +285,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_blacklist_add.physical_def = info.get('physical_def', 0)
                 response_blacklist_add.magic_def = info.get('magic_def', 0)
         else:
-            print 'get_player_friend_list', 'cant find player id:', pid
+            log.err('get_player_friend_list, cant find player id:%d' % pid)
 
     for pid in player.friends.applicant_list:
         player_data = tb_character_info.getObjData(pid)
@@ -303,7 +306,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_applicant_list_add.physical_def = info.get('physical_def', 0)
                 response_applicant_list_add.magic_def = info.get('magic_def', 0)
         else:
-            print 'get_player_friend_list', 'cant find player id:', pid
+            log.err('get_player_friend_list, cant find player id:' % pid)
 
     return response.SerializePartialToString()
 
