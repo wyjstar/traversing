@@ -8,6 +8,7 @@ from shared.db_opear.configs_data.game_configs import soul_shop_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils.random_pick import random_multi_pick_without_repeat
+from gtwisted.utils import log
 
 
 @have_player
@@ -39,10 +40,40 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
 
 @have_player
 def get_shop_items(dynamic_id, **kwargs):
-    ids = get_shop_item_ids()
+
+    player = kwargs.get('player')
     shop = GetShopItemsResponse()
+    max_shop_refresh_times = player.vip_component.shop_refresh_times
+    prize = base_config.get('soulShopRefreshPrice').get(2)[0]
+
+
+    if max_shop_refresh_times <= player.soul_shop_refresh_times:
+        log.DEBUG("already reach refresh max!")
+        shop.res.result = False
+        shop.res.result_no = 501
+        return shop.SerializePartialToString()
+
+    if player.soul_shop_refresh_times != 0:
+        prize = 2 * prize
+
+    if player.finance.gold < prize:
+        log.DEBUG("gold not enough!")
+        shop.res.result = False
+        shop.res.result_no = 101
+        return shop.SerializePartialToString()
+
+
+    ids = get_shop_item_ids()
+    player.soul_shop_refresh_times += 1
+    player.save_data()
+
+    player.finance.gold -= prize
+    player.finance.save_data()
+
     for x in ids:
         shop.id.append(x)
+
+    shop.res.result = True
     return shop.SerializeToString()
 
 

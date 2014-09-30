@@ -84,6 +84,7 @@ class User(object):
                              'pvp_times': 0,
                              'create_time': int(time.time()),
                              'vip_level': 0,
+                             'soul_shop_refresh_times': 0,
                              'last_login_time': int(time.time())}
                 character_obj = tb_character_info.new(character)
                 self._character = character

@@ -69,8 +69,7 @@ class PlayerCharacter(Character):
 
         self._stamina = CharacterStaminaComponent(self)  # 体力
         self._pvp_times = 0  # pvp次数
-        self._sign_in_days = []  # 签到日期
-        self._continus_sign_in_days = 0  # 连续签到天数
+        self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
         self._mmode = None
 
         if status:
@@ -102,6 +101,7 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
         vip_level = character_info['vip_level']
+        soul_shop_refresh_times = character_info.get('soul_shop_refresh_times', 0)
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
@@ -123,6 +123,8 @@ class PlayerCharacter(Character):
         #------------初始化角色等级信息------------
         self._level.level = level
         self._level.exp = exp
+        self._soul_shop_refresh_times = soul_shop_refresh_times
+
 
         #------------初始化角色其他组件------------
         self._hero_component.init_heros()  # 初始化武将列表
@@ -282,9 +284,18 @@ class PlayerCharacter(Character):
         """体力组件"""
         return self._stamina
 
+    @property
+    def soul_shop_refresh_times(self):
+        return self._soul_shop_refresh_times
+
+    @soul_shop_refresh_times.setter
+    def soul_shop_refresh_times(self, value):
+        self._soul_shop_refresh_times = value
+
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
         character_info.update_multi(dict(level=self._level.level, exp=self.level.exp,
                                          pvp_times=self._pvp_times,
-                                         vip_level = self._vip.vip_level))
+                                         vip_level = self._vip.vip_level,
+                                         soul_shop_refresh_times=self._soul_shop_refresh_times))

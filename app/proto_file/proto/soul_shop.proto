@@ -7,7 +7,8 @@ message SoulShopRequest
 //获取武魂商城列表 command:507
 message GetShopItemsResponse
 {
-    repeated int32 id = 1;
+    required CommonResponse res = 1;
+    repeated int32 id = 2;
 }
 //武魂商城购买响应 command:506
 message SoulShopResponse
