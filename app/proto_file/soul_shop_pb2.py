@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='soul_shop.proto',
   package='',
-  serialized_pb='\n\x0fsoul_shop.proto\x1a\x0c\x63ommon.proto\"\x1d\n\x0fSoulShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"\"\n\x14GetShopItemsResponse\x12\n\n\x02id\x18\x01 \x03(\x05\"\x7f\n\x10SoulShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0fsoul_shop.proto\x1a\x0c\x63ommon.proto\"\x1d\n\x0fSoulShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"@\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\"\x7f\n\x10SoulShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -55,8 +55,15 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='GetShopItemsResponse.id', index=0,
-      number=1, type=5, cpp_type=1, label=3,
+      name='res', full_name='GetShopItemsResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='id', full_name='GetShopItemsResponse.id', index=1,
+      number=2, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -71,7 +78,7 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=64,
-  serialized_end=98,
+  serialized_end=128,
 )
 
 
@@ -112,10 +119,11 @@ _SOULSHOPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=100,
-  serialized_end=227,
+  serialized_start=130,
+  serialized_end=257,
 )
 
+_GETSHOPITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _SOULSHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _SOULSHOPRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _SOULSHOPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
