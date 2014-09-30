@@ -236,13 +236,12 @@ message GameLoginResponse{
      optional bytes guild_id = 20;
      optional float combat_power = 21;
 
-
-     //vip
-     optional int32 vip_level = 22;
      //stamina
      optional int32 get_stamina_times = 23; //通过邮件获取体力次数
      optional int32 buy_stamina_times = 24; //购买体力次数
      optional int32 last_gain_stamina_time = 25; //上次获得体力时间
+
+     optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数
 
 }
 
@@ -293,7 +292,8 @@ message SoulShopRequest
 //获取武魂商城列表 command:507
 message GetShopItemsResponse
 {
-    repeated int32 id = 1;
+    required CommonResponse res = 1;
+    repeated int32 id = 2;
 }
 //武魂商城购买响应 command:506
 message SoulShopResponse
