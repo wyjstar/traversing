@@ -35,7 +35,7 @@ class ChildsManager(object):
         '''
         key = child._id
         if self._childs.has_key(key):
-            raise "child node %s exists" % key
+            raise Exception("child node %s exists" % key)
         self._childs[key] = child
 
     def dropChild(self, child):
