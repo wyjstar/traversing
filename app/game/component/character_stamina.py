@@ -16,7 +16,7 @@ class CharacterStaminaComponent(Component):
 
     def __init__(self, owner):
         super(CharacterStaminaComponent, self).__init__(owner)
-        self._stamina = 0  # 体力
+        self._stamina = self.max_of_stamina  # 体力
         self._get_stamina_times = 0  # 通过邮件获取体力次数
         self._buy_stamina_times = 0  # 购买体力次数
         self._last_gain_stamina_time = 0  # 上次获取体力时间
@@ -45,7 +45,7 @@ class CharacterStaminaComponent(Component):
             obj = tb_character_info.getObj(self.owner.base_info.id)
             obj.update_multi(
             {'stamina': {
-                   'stamina': 120,
+                   'stamina': self.max_of_stamina,
                    'get_stamina_times': 0,
                    'buy_stamina_times': 0,
                    'last_gain_stamina_time': 0,

@@ -101,7 +101,7 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
         vip_level = character_info['vip_level']
-        soul_shop_refresh_times = character_info['soul_shop_refresh_times']
+        soul_shop_refresh_times = character_info.get('soul_shop_refresh_times', 0)
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
