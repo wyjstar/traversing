@@ -20,6 +20,7 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
     common_response = response.res
     shop_id = request.id
 
+    print "soul shop id:", shop_id
     shop_item = soul_shop_config.get(shop_id)
     result = is_afford(player, shop_item.consume)  # 校验
     if not result.get('result'):
@@ -44,7 +45,7 @@ def get_shop_items(dynamic_id, **kwargs):
     player = kwargs.get('player')
     shop = GetShopItemsResponse()
     max_shop_refresh_times = player.vip_component.shop_refresh_times
-    prize = base_config.get('soulShopRefreshPrice').get(2)[0]
+    prize = base_config.get('soulShopRefreshPrice').get('2')[0]
 
 
     if max_shop_refresh_times <= player.soul_shop_refresh_times:
@@ -70,6 +71,8 @@ def get_shop_items(dynamic_id, **kwargs):
     player.finance.gold -= prize
     player.finance.save_data()
 
+
+    print "soul ids:", ids
     for x in ids:
         shop.id.append(x)
 
