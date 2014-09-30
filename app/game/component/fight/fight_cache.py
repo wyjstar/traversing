@@ -271,11 +271,10 @@ class CharacterFightCacheComponent(Component):
 
         return red_units, blue_units, drop_num, monster_unpara
 
-    def fighting_settlement(self, stage_id, result):
+    def fighting_settlement(self, result):
         """战斗结算
+        stage_type: 1剧情关卡 2副本关卡 3活动关卡
         """
-
-        # TODO 根据result更新stage信息; 校验stage_id
         self.owner.stage_component.settlement(self._stage_id, result)
         self.owner.stage_component.update()
         drops = []

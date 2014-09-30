@@ -81,10 +81,11 @@ def stage_start_903(dynamic_id, pro_data):
     res = response.res
     res.result = result
     if stage_info.get('result_no'):
-        res.result_no = response.get('result_no')
+        res.result_no = stage_info.get('result_no')
 
     if not result:
-        return response.SerializePartialToString()
+        log.msg('进入关卡返回数据:', response)
+        return response.SerializePartialToString(), stage_id
 
     red_units = stage_info.get('red_units')
     blue_units = stage_info.get('blue_units')

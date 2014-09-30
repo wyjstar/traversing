@@ -82,8 +82,9 @@ class CommandService(Service):
         key = int(target.__name__.split('_')[-1])
         if key in self._targets:
             exist_target = self._targets.get(key)
-            raise "target [%d] Already exists, Conflict between the %s and %s"\
-                  % (key, exist_target.__name__, target.__name__)
+            str_err = "target [%d] Already exists, Conflict between the %s and %s" \
+                      % (key, exist_target.__name__, target.__name__)
+            raise Exception(str_err)
         self._targets[key] = target
 
     def unMapTarget(self, target):
