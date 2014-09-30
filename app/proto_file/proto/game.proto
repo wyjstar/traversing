@@ -39,4 +39,6 @@ message GameLoginResponse{
      optional int32 buy_stamina_times = 24; //购买体力次数
      optional int32 last_gain_stamina_time = 25; //上次获得体力时间
 
+     optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数
+
 }
