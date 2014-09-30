@@ -1,5 +1,5 @@
 
-¸H
+‚T
 traversing_one.proto"0
 LinkPB
 link_no (
@@ -13,7 +13,7 @@
 Skill
 
 id (
-buffs ("«
+buffs ("¡
 
 BattleUnit
 
@@ -34,6 +34,20 @@ rage_skill (2.Skill
 	cri_coeff (
 cri_ded_coeff (
 block (
+base_hp (
+base_atk (
+base_physical_def (
+base_magic_def (
+base_hit (
+
+base_dodge (
+base_cri (
+base_cri_coeff (
+base_cri_ded_coeff (
+
+base_block (
+level (
+break_level (
 is_boss (
 break_skill (2.Skill
 position (",
@@ -128,7 +142,7 @@ hero_chips (2.HeroChipPB)
 finance (2
 .FinancePB"!
 GameLoginRequest
-token (	"Ü
+token (	"•
 GameLoginResponse
 res (2.CommonResponse
 
@@ -151,7 +165,13 @@ high_stone
 stamina (
 	pvp_times (
 	vip_level (
-server_time ("0
+server_time (
+guild_id (
+combat_power (
+get_stamina_times (
+buy_stamina_times (
+last_gain_stamina_time (
+soul_shop_refresh_times ("0
 GetEquipmentsRequest
 type (
 
@@ -174,10 +194,11 @@ high_stone
 ids (	"
 SoulShopRequest
 
-id (""
-GetShopItemsResponse
+id ("@
+GetShopItemsResponse
+res (2.CommonResponse
 
-id ("
+id ("
 SoulShopResponse
 res (2.CommonResponse'
 consume (2.GameResourcesResponse$
@@ -188,23 +209,32 @@ target_ids ("#
 AddFriendResponse
 result ("+
 FindFriendRequest
-id_or_nickname (	"]
+id_or_nickname (	"¢
 FindFriendResponse
 
 id (
-nickname (	
+nickname (	
+hero_no (
+gift (
+power (
 
-ap (
-icon_id (
-gift ("
-GetPlayerFriendsRequest"_
-CharacterInfo
-	player_id (
-nickname (	
+hp (
+atk (
+physical_def (
+	magic_def	 ("
+GetPlayerFriendsRequest"ù
+CharacterInfo
 
-ap (
-icon_id (
-gift ("ò
+id (
+nickname (	
+hero_no (
+gift (
+power (
+
+hp (
+atk (
+physical_def (
+	magic_def	 ("ò
 GetPlayerFriendsResponse
 page_num (
 friends (2.CharacterInfo!
@@ -234,12 +264,13 @@ target_ids ("#
 id (
 nickname (	"4
 LoginToChatRequest
-owner (2.ChatObjectInfo"x
+owner (2.ChatObjectInfo"ä
 ChatConectingRequest
 owner (2.ChatObjectInfo
 channel (
 content (	
-other (2.ChatObjectInfo"/
+other (2.ChatObjectInfo
+guild_id (	"/
 ChatResponse
 result (
 message (	"W
@@ -258,28 +289,62 @@ target_ids ("#
 PlayerLoginRequest
 token (	"'
 CreatePlayerRequest
-nickname (	"Z
-AccountInfo
-type (
-	user_name (	
-password (	
-key (2.AccountKey"
+nickname (	"
 
 AccountKey
-key (	"L
+key (	"2
 AccountResponse
 result (
-message (	
-key (2.AccountKey"T
-AccountLoginRequest
-key (2.AccountKey
-	user_name (	
-password (	" 
+message (	"'
+AccountLoginRequest
+passport (	" 
 GetOnlineGift
 gift_id ("M
 GetOnlineGiftResponse
 result ($
-gain (2.GameResourcesResponse"$
+gain (2.GameResourcesResponse"n
+GetOnlineLevelGiftData
+online_time (
+received_online_gift_id (
+received_level_gift_id ("ª
+	RoundUnit
+
+id (
+
+hp (
+atk (
+physical_def (
+	magic_def (
+hit (
+dodge (
+cri (
+	cri_coeff	 (
+cri_ded_coeff
+ (
+block ("%
+Effect
+type (
+value ("ô
+Buff
+
+id (
+name (	
+targets (2
+.RoundUnit
+	executors (2
+.RoundUnit
+
+has_parent (
+unpara (
+effect (2.Effect"o
+Round
+camp (
+executor (2
+.RoundUnit
+skill_id (
+
+skill_type (
+buffs (2.Buff"$
 StageInfoRequest
 stage_id ("(
 ChapterInfoRequest
@@ -316,7 +381,9 @@ activation (
 ChangeHeroRequest
 slot_no (
 change_type (
-hero_no ("D
+hero_no ("&
+GetLineUpResponse
+	target_id ("D
 GetEatTimeResponse
 res (2.CommonResponse
 eat_time ("
@@ -325,12 +392,14 @@ activation (
 StageInfoResponse
 stage (2.Stage"7
 ChapterInfoResponse 
-stage_award (2.StageAward"}
+stage_award (2.StageAward"∫
 StageStartResponse
 res (2.CommonResponse
 drop_num (
 red (2.BattleUnit
-blue (2.BattleUnitGrop"^
+blue (2.BattleUnitGrop
+friend (2.BattleUnit
+monster_unpara (2.Skill"^
 StageSettlementResponse
 res (2.CommonResponse%
 drops (2.GameResourcesResponse",
@@ -414,7 +483,7 @@ activation (
 	result_no (
 message (
 
-spare_time ("!
+spare_time ("!
 EditorCallRequest
 call ("3
 DealApplyRequest
@@ -497,4 +566,21 @@ guild_rank (2
 awakening_lv (
 nobbing_effect (
 hero_no (
-set (2.SetEquipment
+set (2.SetEquipment"0
+	LoginInfo
+	login_day (
+is_new_p ("ô
+InitLoginGiftResponse
+cumulative_received (
+continuous_received ("
+cumulative_day (2
+.LoginInfo"
+continuous_day (2
+.LoginInfo"A
+GetLoginGiftRequest
+activity_id (
+activity_type ("_
+GetLoginGiftResponse
+result (
+	result_no ($
+gain (2.GameResourcesResponse
