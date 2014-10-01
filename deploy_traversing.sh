@@ -17,13 +17,17 @@ redis-cli -p 6379 INFO>/dev/null
 
 echo "create mysql db & table..."
 
-mysql_root_info="mysql -h127.0.0.1 -uroot -p123456 -P8066<./app/doc/databases/"
-. $mysql_root_info"db.sql"
-mysql_test_info="mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<./app/doc/databases/"
-. $mysql_test_info"traversing_master.sql"
-. $mysql_test_info"traversing.sql"
-. $mysql_test_info"account.sql"
-. $mysql_test_info"config_data.sql"
+echo "import db.sql..."
+mysql -uroot -p123456 -P8066<./app/doc/databases/db.sql
+
+echo "import traversing_master.sql..."
+mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<./app/doc/databases/traversing_master.sql
+echo "import traversing.sql..."
+mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<./app/doc/databases/traversing.sql
+echo "import account.sql..."
+mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<./app/doc/databases/account.sql
+echo "import config_data.sql..."
+mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<./app/doc/databases/config_data.sql
 
 echo "create mysql db & table success."
 
