@@ -52,7 +52,7 @@ do
     echo "kill -9 ${p_id}"
 done
 
-# eval "nohup python startmaster.py &"
+nohup python startmaster.py &
 
 
 echo "start traversing server success!"
