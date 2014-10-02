@@ -47,12 +47,12 @@ def get_shop_items(dynamic_id, **kwargs):
     max_shop_refresh_times = player.vip_component.shop_refresh_times
     prize = base_config.get('soulShopRefreshPrice').get('2')[0]
 
-
-    if max_shop_refresh_times <= player.soul_shop_refresh_times:
-        log.DEBUG("already reach refresh max!")
-        shop.res.result = False
-        shop.res.result_no = 501
-        return shop.SerializePartialToString()
+    # cancel vip temprory
+    # if max_shop_refresh_times <= player.soul_shop_refresh_times:
+    #     log.DEBUG("already reach refresh max!")
+    #     shop.res.result = False
+    #     shop.res.result_no = 501
+    #     return shop.SerializePartialToString()
 
     if player.soul_shop_refresh_times != 0:
         prize = 2 * prize

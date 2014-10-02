@@ -24,6 +24,7 @@ class CharacterStaminaComponent(Component):
     def init_data(self):
         data = tb_character_info.getObjData(self.owner.base_info.id)
         stamina_data = data.get('stamina', None)
+        print stamina_data, "stamina+++++++++++++++++"
         if stamina_data:                  
             self._stamina = stamina_data.get('stamina')
             self._get_stamina_times = stamina_data.get('get_stamina_times')

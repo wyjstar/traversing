@@ -151,7 +151,7 @@ if __name__ == '__main__':
     #     print k, '='*5, v
     #     for _ in v:
     #         print _
-    print base_config.get("price_buy_manual").get('1')[1]
+    print equipment_config
 
 
 
