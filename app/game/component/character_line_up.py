@@ -58,11 +58,11 @@ class CharacterLineUpComponent(Component):
         # 根据base_config获取卡牌位激活状态
         for i in range(1, 7):
             slot = self._line_up_slots[i]
-            if self.owner.level.level > game_configs.base_config.get("hero_position_open_level").get(i):
+            if self.owner.level.level >= game_configs.base_config.get("hero_position_open_level").get(i):
                 slot.activation = True
         for i in range(1, 7):
             slot = self._sub_slots[i]
-            if self.owner.level.level > game_configs.base_config.get("friend_position_open_level").get(i):
+            if self.owner.level.level >= game_configs.base_config.get("friend_position_open_level").get(i):
                 slot.activation = True
 
     @property
