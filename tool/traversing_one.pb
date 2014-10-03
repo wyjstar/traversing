@@ -1,5 +1,5 @@
 
-‚T
+ÛT
 traversing_one.proto"0
 LinkPB
 link_no (
@@ -130,7 +130,7 @@ hero_chips (2.HeroChipPB"D
 CommonResponse
 result (
 	result_no (
-message (	"“
+message (	"„
 GameResourcesResponse
 heros (2.HeroPB 
 
@@ -140,7 +140,8 @@ equipments (2.EquipmentPB
 hero_chips (2.HeroChipPB)
 equipment_chips (2.EquipmentChipPB
 finance (2
-.FinancePB"!
+.FinancePB
+stamina ("!
 GameLoginRequest
 token (	"•
 GameLoginResponse

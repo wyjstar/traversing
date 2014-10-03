@@ -200,6 +200,7 @@ message GameResourcesResponse
     repeated HeroChipPB hero_chips = 4;
     repeated EquipmentChipPB equipment_chips = 5;
     optional FinancePB finance = 6;
+    optional int32 stamina = 7;
 }
 
 // 游戏服登录 command：4
@@ -241,7 +242,7 @@ message GameLoginResponse{
      optional int32 buy_stamina_times = 24; //购买体力次数
      optional int32 last_gain_stamina_time = 25; //上次获得体力时间
 
-     optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数
+     optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数刷新次数
 
 }
 

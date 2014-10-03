@@ -9,6 +9,7 @@ from app.game.logic.item_group_helper import is_afford, consume, gain, get_retur
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils.random_pick import random_multi_pick_without_repeat
 from gtwisted.utils import log
+import time
 
 
 @have_player
@@ -31,7 +32,7 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
     consume_return_data = consume(player, shop_item.consume)  # 消耗
 
     return_data = gain(player, shop_item.gain)  # 获取
-    #extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
+    # extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
     get_return(player, consume_return_data, response.consume)
     get_return(player, return_data, response.gain)
     #get_return(player, extra_return_data, response)
@@ -40,44 +41,60 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
 
 
 @have_player
-def get_shop_items(dynamic_id, **kwargs):
-
+def refresh_shop_items(dynamic_id, **kwargs):
+    """刷新"""
     player = kwargs.get('player')
     shop = GetShopItemsResponse()
     max_shop_refresh_times = player.vip_component.shop_refresh_times
-    prize = base_config.get('soulShopRefreshPrice').get('2')[0]
+
 
     # cancel vip temprory
-    # if max_shop_refresh_times <= player.soul_shop_refresh_times:
-    #     log.DEBUG("already reach refresh max!")
+    # if max_shop_refresh_times <= player.soul_shop.refresh_times:
+    # log.DEBUG("already reach refresh max!")
     #     shop.res.result = False
     #     shop.res.result_no = 501
     #     return shop.SerializePartialToString()
 
-    if player.soul_shop_refresh_times != 0:
-        prize = 2 * prize
-
-    if player.finance.gold < prize:
+    price = player.soul_shop.price
+    if player.finance.gold < price:
         log.DEBUG("gold not enough!")
         shop.res.result = False
         shop.res.result_no = 101
         return shop.SerializePartialToString()
 
-
     ids = get_shop_item_ids()
-    player.soul_shop_refresh_times += 1
-    player.save_data()
+    player.soul_shop.refresh_times += 1
+    player.soul_shop.last_refresh_time = int(time.time())
+    player.soul_shop.save_data()
 
-    player.finance.gold -= prize
+    player.finance.gold -= price
     player.finance.save_data()
 
-
-    print "soul ids:", ids
+    log.DEBUG("soul ids:" + str(ids))
     for x in ids:
         shop.id.append(x)
 
     shop.res.result = True
     return shop.SerializeToString()
+
+@have_player
+def get_shop_items(dynamic_id, **kwargs):
+    """获取商品列表"""
+    player = kwargs.get('player')
+    shop = GetShopItemsResponse()
+    item_ids = player.soul_shop.item_ids
+    if len(item_ids) == 0:
+        item_ids = get_shop_item_ids()
+        player.soul_shop.item_ids = get_shop_item_ids()
+        player.soul_shop.save_data()
+
+    for x in item_ids:
+        shop.id.append(x)
+
+    shop.res.result = True
+    return shop.SerializePartialToString()
+
+
 
 
 def get_all_shop_items():

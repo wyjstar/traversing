@@ -64,30 +64,7 @@ class User(object):
     @property
     def character(self):
         character = self._character
-        if not character:
-            character = tb_character_info.getObjData(self.user_id)
-            if not character:
-                character = {'id': self.user_id,
-                             'nickname': '',
-                             'coin': 0,
-                             'gold': 0,
-                             'hero_soul': 0,
-                             'level': 0,
-                             'exp': 0,
-                             'junior_stone': 0,
-                             'middle_stone': 0,
-                             'high_stone': 0,
-                             'fine_hero_last_pick_time': 0,
-                             'excellent_hero_last_pick_time': 0,
-                             'fine_equipment_last_pick_time': 0,
-                             'excellent_equipment_last_pick_time': 0,
-                             'pvp_times': 0,
-                             'create_time': int(time.time()),
-                             'vip_level': 0,
-                             'soul_shop_refresh_times': 0,
-                             'last_login_time': int(time.time())}
-                character_obj = tb_character_info.new(character)
-                self._character = character
+
         return character
 
     @character.setter
@@ -96,14 +73,6 @@ class User(object):
         self._character = character
         pmmode = tb_character_info.getObj(self._character.get('id'))
         pmmode.update_multi(self._character)
-
-
-    def has_character(self):
-        if not self._character:
-            character = tb_character_info.getObjData(self.user_id)
-            if not character:
-                return False
-        return True
 
     @property
     def token(self):
