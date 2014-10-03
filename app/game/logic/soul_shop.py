@@ -36,6 +36,16 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
     get_return(player, consume_return_data, response.consume)
     get_return(player, return_data, response.gain)
     #get_return(player, extra_return_data, response)
+
+    try:
+        player.soul_shop.item_ids.remove(shop_id)
+        player.soul_shop.save_data()
+    except Exception:
+        log.DEBUG("can not find shop id:" + str(shop_id))
+        common_response.result = False
+        common_response.result_no = 501
+        return response.SerializeToString()
+
     common_response.result = True
     return response.SerializeToString()
 
@@ -71,8 +81,12 @@ def refresh_shop_items(dynamic_id, **kwargs):
     player.finance.save_data()
 
     log.DEBUG("soul ids:" + str(ids))
+
     for x in ids:
         shop.id.append(x)
+    # save soul shop item ids
+    player.soul_shop.item_ids = ids
+    player.soul_shop.save_data()
 
     shop.res.result = True
     return shop.SerializeToString()
@@ -82,6 +96,7 @@ def get_shop_items(dynamic_id, **kwargs):
     """获取商品列表"""
     player = kwargs.get('player')
     shop = GetShopItemsResponse()
+    log.DEBUG("get_shop_items1")
     item_ids = player.soul_shop.item_ids
     if len(item_ids) == 0:
         item_ids = get_shop_item_ids()
@@ -91,6 +106,7 @@ def get_shop_items(dynamic_id, **kwargs):
     for x in item_ids:
         shop.id.append(x)
 
+    log.DEBUG("get_shop_items2"+str(item_ids))
     shop.res.result = True
     return shop.SerializePartialToString()
 

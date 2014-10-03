@@ -35,6 +35,7 @@
                 "fine_equipment_last_pick_time": "simple",
                 "excellent_equipment_last_pick_time": "simple",
                 "stamina": "complex",
+                "soul_shop": "complex",
                 "pvp_times": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",

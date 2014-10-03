@@ -30,3 +30,7 @@ echo "import config_data.sql..."
 eval ${mysql_test}"config_data.sql"
 
 echo "create mysql db & table success."
+
+redis-cli flushdb
+
+echo "clear redis..."
