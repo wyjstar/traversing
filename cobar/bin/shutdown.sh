@@ -15,8 +15,8 @@
 # limitations under the License.
 ##
 
-set JAVA_HOME
-JAVA_HOME=/usr/java/jdk1.8.0_05
+#set JAVA_HOME
+#JAVA_HOME=/usr/java/jdk1.8.0_05
 #check JAVA_HOME & java
 noJavaHome=false
 if [ -z "$JAVA_HOME" ] ; then
