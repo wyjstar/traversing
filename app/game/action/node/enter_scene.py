@@ -6,22 +6,18 @@ from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
-from test.init_data.init_data import init
 import time
 from gtwisted.utils import log
 
 
 @remote_service_handle
-def enter_scene_601(dynamic_id, character_id, is_new_character):
+def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
         PlayersManager().add_player(player)
-    # player = mock_player(player)
-    if is_new_character:
-        print ("mock player info.....", is_new_character)
-        init(player)
+
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True
@@ -57,12 +53,15 @@ def enter_scene_601(dynamic_id, character_id, is_new_character):
     responsedata.buy_stamina_times = player.stamina.buy_stamina_times
     responsedata.last_gain_stamina_time = player.stamina.last_gain_stamina_time
     responsedata.server_time = int(time.time())
+    responsedata.soul_shop_refresh_times = player.soul_shop.refresh_times
+
     log.DEBUG("character info:----------------------")
     log.DEBUG("vip_level:", player.vip_component.vip_level)
     log.DEBUG("stamina:", player.stamina.stamina)
     log.DEBUG("coin:", player.finance.coin)
     log.DEBUG("gold:", player.finance.gold)
     log.DEBUG("hero_soul:", player.finance.hero_soul)
+    log.DEBUG("soul_shop_refresh_times:", player.soul_shop.refresh_times)
 
 
     return responsedata.SerializeToString()

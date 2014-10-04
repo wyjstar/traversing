@@ -27,7 +27,9 @@ from app.game.component.character_login_gift import CharacterLoginGiftComponent
 from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_vip import CharacterVIPComponent
 from app.game.component.character_stamina import CharacterStaminaComponent
-
+from app.game.component.character_soul_shop import CharacterSoulShopComponent
+import time
+from test.init_data.init_data import init
 
 
 class PlayerCharacter(Character):
@@ -68,22 +70,47 @@ class PlayerCharacter(Character):
         self._vip = CharacterVIPComponent(self)  # VIP level
 
         self._stamina = CharacterStaminaComponent(self)  # 体力
+        self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
-        self._mmode = None
 
         if status:
             self.__init_player_info()  # 初始化角色
+
 
     def __init_player_info(self):
         """初始化角色信息
         """
         pid = self.base_info.id
 
+        new_character = False
         character_info = tb_character_info.getObjData(pid)
         if not character_info:
-            log.msg("Init_player %s error!" + str(pid))
-            return
+            character_info = {'id': pid,
+                              'nickname': '',
+                              'coin': 0,
+                              'gold': 0,
+                              'hero_soul': 0,
+                              'level': 0,
+                              'exp': 0,
+                              'junior_stone': 0,
+                              'middle_stone': 0,
+                              'high_stone': 0,
+                              'fine_hero_last_pick_time': 0,
+                              'excellent_hero_last_pick_time': 0,
+                              'fine_equipment_last_pick_time': 0,
+                              'excellent_equipment_last_pick_time': 0,
+                              'pvp_times': 0,
+                              'create_time': int(time.time()),
+                              'vip_level': 0,
+                              'soul_shop': self._soul_shop.detail_data,
+                              'stamina': self._stamina.detail_data,
+                              'last_login_time': int(time.time())
+            }
+            tb_character_info.new(character_info)
+            new_character = True
+
+
         print 'character_id', pid
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
@@ -101,12 +128,11 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
         vip_level = character_info['vip_level']
-        soul_shop_refresh_times = character_info.get('soul_shop_refresh_times', 0)
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
 
-        #------------初始化角色货币信息------------
+        # ------------初始化角色货币信息------------
         self._finance.coin = coin
         self._finance.gold = gold
         self._finance.hero_soul = hero_soul
@@ -123,7 +149,6 @@ class PlayerCharacter(Character):
         #------------初始化角色等级信息------------
         self._level.level = level
         self._level.exp = exp
-        self._soul_shop_refresh_times = soul_shop_refresh_times
 
 
         #------------初始化角色其他组件------------
@@ -137,7 +162,7 @@ class PlayerCharacter(Character):
         self._friends.init_data()
         self._guild.init_data()
         self._stage.init_data()
-        self._stamina.init_data()
+
         self._pvp_times = pvp_times
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
@@ -145,6 +170,12 @@ class PlayerCharacter(Character):
         self._feast.init_feast()
         self._login_gift.init_data()
         self._vip.init_vip(vip_level)
+        self._stamina.init_stamina(character_info.get('stamina'))
+        self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
+
+        if new_character:
+            log.DEBUG("mock player info.....")
+            init(self)
 
     @property
     def character_type(self):
@@ -285,17 +316,12 @@ class PlayerCharacter(Character):
         return self._stamina
 
     @property
-    def soul_shop_refresh_times(self):
-        return self._soul_shop_refresh_times
-
-    @soul_shop_refresh_times.setter
-    def soul_shop_refresh_times(self, value):
-        self._soul_shop_refresh_times = value
+    def soul_shop(self):
+        return self._soul_shop
 
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
         character_info.update_multi(dict(level=self._level.level, exp=self.level.exp,
                                          pvp_times=self._pvp_times,
-                                         vip_level = self._vip.vip_level,
-                                         soul_shop_refresh_times=self._soul_shop_refresh_times))
+                                         vip_level=self._vip.vip_level))

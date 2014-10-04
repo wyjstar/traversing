@@ -12,6 +12,7 @@ from app.game.core.hero import Hero
 from app.proto_file.hero_pb2 import HeroPB
 from app.proto_file.player_pb2 import FinancePB
 from shared.utils.const import *
+from gtwisted.utils import log
 
 
 def is_afford(player, item_group):
@@ -171,6 +172,10 @@ def gain(player, item_group, result=None):
             chip = EquipmentChip(item_no, num)
             player.equipment_chip_component.add_chip(chip)
             player.equipment_chip_component.save_data()
+        elif type_id == const.STAMINA:
+            player.stamina.stamina += num
+            log.DEBUG(str(num)+" , stamina+++++++++++")
+            player.stamina.save_data()
         result.append([type_id, num, item_no])
     return result
 
@@ -186,9 +191,6 @@ def get_return(player, return_data, game_resources_response):
     finance_pb = game_resources_response.finance
     if not finance_pb:
         finance_pb = FinancePB()
-        # finance_pb.coin = 0
-        # finance_pb.gold = 0
-        # finance_pb.hero_soul = 0
         game_resources_response.finance = finance_pb
 
     for lst in return_data:
@@ -228,6 +230,9 @@ def get_return(player, return_data, game_resources_response):
             chip_pb = game_resources_response.equipment_chips.add()
             chip_pb.equipment_chip_no = item_no
             chip_pb.equipment_chip_num = item_num
+
+        elif const.STAMINA == item_type:
+            game_resources_response.stamina += item_num
 
     print game_resources_response
 

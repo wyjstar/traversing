@@ -9,6 +9,7 @@ from app.game.redis_mode import tb_character_info
 import cPickle
 import time
 from shared.db_opear.configs_data.game_configs import base_config
+from gtwisted.utils import log
 
 
 class CharacterStaminaComponent(Component):
@@ -21,10 +22,9 @@ class CharacterStaminaComponent(Component):
         self._buy_stamina_times = 0  # 购买体力次数
         self._last_gain_stamina_time = 0  # 上次获取体力时间
 
-    def init_data(self):
-        data = tb_character_info.getObjData(self.owner.base_info.id)
-        stamina_data = data.get('stamina', None)
-        if stamina_data:                  
+    def init_stamina(self, stamina_data):
+        log.DEBUG(str(stamina_data) + ", stamina+++++++++++++++++")
+        if stamina_data:
             self._stamina = stamina_data.get('stamina')
             self._get_stamina_times = stamina_data.get('get_stamina_times')
             self._buy_stamina_times = stamina_data.get('buy_stamina_times')
@@ -32,8 +32,11 @@ class CharacterStaminaComponent(Component):
 
             # 初始化体力
             current_time = int(time.time())
-            stamina_add = (current_time-self._last_gain_stamina_time) / self.peroid_of_stamina_recover
-            left_stamina = (current_time-self._last_gain_stamina_time) % self.peroid_of_stamina_recover
+            log.DEBUG("last_gain_stamina_time:" + str(self._last_gain_stamina_time))
+            log.DEBUG("peroid_of_stamina_recover:" + str(self.peroid_of_stamina_recover))
+
+            stamina_add = (current_time - self._last_gain_stamina_time) / self.peroid_of_stamina_recover
+            left_stamina = (current_time - self._last_gain_stamina_time) % self.peroid_of_stamina_recover
 
             if self._stamina < self.max_of_stamina:  # 如果原来的体力超出上限，则不添加体力
                 self._stamina += int(stamina_add)
@@ -41,15 +44,15 @@ class CharacterStaminaComponent(Component):
                     self._stamina = self.max_of_stamina
             self._last_gain_stamina_time = current_time - left_stamina
 
-        else:
-            obj = tb_character_info.getObj(self.owner.base_info.id)
-            obj.update_multi(
-            {'stamina': {
-                   'stamina': self.max_of_stamina,
-                   'get_stamina_times': 0,
-                   'buy_stamina_times': 0,
-                   'last_gain_stamina_time': 0,
-            }})
+    @property
+    def detail_data(self):
+        """stamina detail data"""
+        return  {
+            'stamina': self._stamina,
+            'get_stamina_times': self._get_stamina_times,
+            'buy_stamina_times': self._buy_stamina_times,
+            'last_gain_stamina_time': self._last_gain_stamina_time,
+        }
 
     @property
     def peroid_of_stamina_recover(self):
@@ -58,7 +61,7 @@ class CharacterStaminaComponent(Component):
     @property
     def max_of_stamina(self):
         return base_config.get('max_of_vigor', 120)
-    
+
     @property
     def stamina(self):
         """体力"""
@@ -97,15 +100,10 @@ class CharacterStaminaComponent(Component):
     @last_gain_stamina_time.setter
     def last_gain_stamina_time(self, value):
         """已经购买的体力次数"""
-        self._last_gain_stamina_time = value    
+        self._last_gain_stamina_time = value
 
     def save_data(self):
-        props = {'stamina':{
-            'stamina': self._stamina,
-            'get_stamina_times': self._get_stamina_times,
-            'buy_stamina_times': self._buy_stamina_times,
-            'last_gain_stamina_time': self._last_gain_stamina_time,              
-        }}
-
+        props = dict(stamina=self.detail_data)
         info = tb_character_info.getObj(self.owner.base_info.id)
+        log.DEBUG(str(props))
         info.update_multi(props)

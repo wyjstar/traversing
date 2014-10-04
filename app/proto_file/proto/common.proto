@@ -21,4 +21,5 @@ message GameResourcesResponse
     repeated HeroChipPB hero_chips = 4;
     repeated EquipmentChipPB equipment_chips = 5;
     optional FinancePB finance = 6;
+    optional int32 stamina = 7;
 }

@@ -4,6 +4,7 @@ created by server on 14-7-9上午11:42.
 """
 from app.game.logic.common.check import have_player
 from app.game.logic import item_group_helper
+from gtwisted.utils import log
 
 
 @have_player
@@ -44,9 +45,11 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     print equipment_obj, "equipment_obj"
 
     if enhance_type == 2 and not player.vip_component.equipment_strength_one_key:
+        log.DEBUG('enhance_equipment_vip_error! '+player.vip_component.equipment_strength_one_key)
         return {'result': False, 'result_no': 403, 'message': u''}
 
     if not equipment_obj:
+        log.DEBUG('enhance_equipment_no_equipment!')
         return {'result': False, 'result_no': 401, 'message': u''}
 
     enhance_record = []
@@ -59,7 +62,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
 
     if equipment_obj.attribute.strengthen_lv > 200 or \
         equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
-        print "max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
+        print "reach max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
         return {'result': False, 'result_no': 402, 'message': u''}
 
 

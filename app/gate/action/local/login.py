@@ -52,12 +52,7 @@ def __character_login(dynamic_id):
     if not user:
         return {'result': False}
 
-    is_new_character = False  # 是否为新用户
 
-    if not user.has_character():
-        print "new character....."
-        is_new_character = True
-    character_info = user.character
 
     # TODO 校验character_info 和  user 中id 是否相同
 
@@ -71,7 +66,7 @@ def __character_login(dynamic_id):
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
-    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id, is_new_character)
+    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
     v_character.node = now_node
 
     # pull message from transit
@@ -79,7 +74,7 @@ def __character_login(dynamic_id):
 
     SceneSerManager().add_client(now_node, dynamic_id)
 
-    return {'result': True, 'player_data': player_data, 'character_id': character_info.get('id')}
+    return {'result': True, 'player_data': player_data}
 
 
 

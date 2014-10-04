@@ -130,10 +130,10 @@ def send_message(**kwargs):
     message = []
     message.append(strdatetime())  # insert time
     message.append(1)  # game_server_id
-    for k, v in kwargs:
+    for k, v in kwargs.items():
         message.append(k)
     sendmsg = _format(message)
-    GlobalObject().logclient.gethandler().send_msg(sendmsg + '\n')
+    GlobalObject().logclient.send_msg(sendmsg + '\n')
 
 
 def _format(message):
