@@ -235,7 +235,13 @@ def getAllPkByFkInDB(tablename, pkname, props):
     sql = """Select `%s` from `%s` where %s""" % (pkname, tablename, props)
     conn = dbpool.connection()
     cursor = conn.cursor()
-    cursor.execute(sql)
+    try:
+        cursor.execute(sql)
+    except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
+        log.err(e.message)
+        log.err(sql)
     result = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -255,7 +261,13 @@ def GetOneRecordInfo(tablename, props):
     else:
         from MySQLdb.cursors import DictCursor
         cursor = conn.cursor(cursorclass=DictCursor)
-    cursor.execute(sql)
+    try:
+        cursor.execute(sql)
+    except Exception, e:
+        import traceback
+        log.err(traceback.format_exc())
+        log.err(e.message)
+        log.err(sql)
     result = cursor.fetchone()
     cursor.close()
     conn.close()

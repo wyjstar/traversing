@@ -45,7 +45,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     print equipment_obj, "equipment_obj"
 
     if enhance_type == 2 and not player.vip_component.equipment_strength_one_key:
-        log.DEBUG('enhance_equipment_vip_error! '+player.vip_component.equipment_strength_one_key)
+        log.DEBUG('enhance_equipment_vip_error!%d' % player.vip_component.equipment_strength_one_key)
         return {'result': False, 'result_no': 403, 'message': u''}
 
     if not equipment_obj:
