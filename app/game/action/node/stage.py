@@ -92,6 +92,8 @@ def stage_start_903(dynamic_id, pro_data):
     drop_num = stage_info.get('drop_num')
     monster_unpara = stage_info.get('monster_unpara')
     f_unit = stage_info.get('f_unit')
+    replace_unit = stage_info.get('replace_unit')
+    response.replace_index = stage_info.get('replace_index')
 
     response.drop_num = drop_num
     for red_unit in red_units:
@@ -116,6 +118,8 @@ def stage_start_903(dynamic_id, pro_data):
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
+    if replace_unit:
+        assemble(response.replace, replace_unit)
     log.msg('进入关卡返回数据:', response)
     return response.SerializePartialToString()
 
