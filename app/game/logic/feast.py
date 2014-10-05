@@ -16,7 +16,7 @@ def eat_feast(dynamicid, **kwargs):
     player = kwargs.get('player')
     last_eat_time = time.localtime(player.feast.last_eat_time).tm_hour*60*60 + \
         time.localtime(player.feast.last_eat_time).tm_min*60
-    eat_times = base_config.get(u'manual_give_time')
+    eat_times = base_config.get(u'time_vigor_activity')
     now = time.localtime().tm_hour*60*60 + time.localtime().tm_min*60
     for eat_time in eat_times:
         t1 = eat_time[0].split(':')
@@ -28,7 +28,7 @@ def eat_feast(dynamicid, **kwargs):
                 # 已经吃过
                 return 1
             # 吃
-            player.stamina.stamina += base_config.get(u'manual_give_value')
+            player.stamina.stamina += base_config.get(u'num_vigor_activity')
             player.stamina.save_data()
             player.feast.last_eat_time = int(time.time())
             player.save_data()
