@@ -176,10 +176,7 @@ def DeleteFromDB(tablename, props):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
-        import traceback
-        log.err(traceback.format_exc())
-        log.err(e.message)
-        log.err(sql)
+        log.err(e.message + sql)
     cursor.close()
     conn.close()
     return bool(count)
@@ -196,11 +193,8 @@ def InsertIntoDB(tablename, data):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
-        import traceback
-        traceback.print_stack()
-        log.err(traceback.format_exc())
-        log.err(e.message)
-        log.err(sql)
+        log.err(e)
+        print e
     cursor.close()
     conn.close()
     return bool(count)
@@ -217,10 +211,7 @@ def UpdateWithDict(tablename, props, prere):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
-        import traceback
-        traceback.print_stack()
-        log.err(e.message)
-        log.err(sql)
+        log.err(e.message + sql)
     cursor.close()
     conn.close()
     if (count >= 1):
@@ -238,10 +229,7 @@ def getAllPkByFkInDB(tablename, pkname, props):
     try:
         cursor.execute(sql)
     except Exception, e:
-        import traceback
-        log.err(traceback.format_exc())
-        log.err(e.message)
-        log.err(sql)
+        log.err(e.message + sql)
     result = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -264,10 +252,7 @@ def GetOneRecordInfo(tablename, props):
     try:
         cursor.execute(sql)
     except Exception, e:
-        import traceback
-        log.err(traceback.format_exc())
-        log.err(e.message)
-        log.err(sql)
+        log.err(e.message + sql)
     result = cursor.fetchone()
     cursor.close()
     conn.close()

@@ -165,6 +165,8 @@ Created on 2014年2月17日
 #     removeObserver = theLogPublisher.removeObserver
 #     msg = theLogPublisher.msg
 #     showwarning = theLogPublisher.showwarning
+import traceback
+
 
 def err(_stuff=None, _why=None, **kw):
     """
@@ -186,6 +188,8 @@ def err(_stuff=None, _why=None, **kw):
         occurred.
     @type _why: C{str}
     """
+    for _ in traceback.format_stack()[0:-1]:
+        msg(_)
     if isinstance(_stuff, Exception):
         msg(failure=_stuff, why=_why, isError=1, **kw)
     else:

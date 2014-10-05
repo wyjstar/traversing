@@ -221,11 +221,10 @@ CREATE TABLE `tb_guild_info` (
 
 DROP TABLE IF EXISTS `tb_guild_name`;
 CREATE TABLE `tb_guild_name` (
-  `id` int(11) NOT NULL,
-  `info` mediumblob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+  `g_name` VARCHAR(32) NOT NULL,
+  `g_id` VARCHAR(32) NOT NULL,
+  PRIMARY KEY (`g_name`)
+) ENGINE =InnoDB DEFAULT CHARSET =utf8;
 --
 -- Table structure for table `tb_mail_info`
 --

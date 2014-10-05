@@ -27,7 +27,7 @@ def send_message_1002(command_id, dynamic_id, request_proto):
     to_character_nickname = argument.other.nickname
     guild_id = argument.guild_id
 
-    info = GlobalObject().root.callChild('chat', command_id, character_id, dynamic_id, room_id, content, \
+    info = GlobalObject().root.callChildByName('chat', command_id, character_id, dynamic_id, room_id, content, \
                                          character_nickname, to_character_id, to_character_nickname, guild_id)
 
     # info = localservice.callTarget(command_id, character_id, dynamic_id, room_id, content, character_nickname, \

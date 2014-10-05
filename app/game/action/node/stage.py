@@ -192,12 +192,3 @@ def assemble(unit_add, unit):
 
     unit_add.position = unit.position
     unit_add.is_boss = unit.is_boss
-    
-
-
-
-
-
-
-
-

@@ -293,7 +293,6 @@ class CharacterFightCacheComponent(Component):
         return drops
 
     def __break_hero_units(self, red_units):
-        unit = None
         odds = self.__get_break_stage_odds()
 
         rand_odds = random.random()

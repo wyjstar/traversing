@@ -22,13 +22,13 @@ def _doChildConnect(name, transport):
         remote_host = remote_list.get("host", "")
         remote_name_host = remote_list.get("root_list", "")
         if name in remote_name_host:
-            GlobalObject().root.callChild(servername, "remote_connect", name, remote_host)
+            GlobalObject().root.callChildByName(servername, "remote_connect", name, remote_host)
     #查看当前是否有可供连接的root节点
     master_node_list = GlobalObject().remote_map.keys()
     for root_name in root_list:
         if root_name in master_node_list:
             root_host = GlobalObject().remote_map[root_name]['host']
-            GlobalObject().root.callChild(name, "remote_connect", root_name, root_host)
+            GlobalObject().root.callChildByName(name, "remote_connect", root_name, root_host)
 
 
 def _doChildLostConnect(childId):

@@ -37,7 +37,7 @@ def forwarding_test(key, dynamic_id, data):
     if local_service._targets.has_key(key):
         return local_service.callTarget(key, dynamic_id, data)
     else:
-        result = GlobalObject().root.callChild('game', key, dynamic_id, data)
+        result = GlobalObject().root.callChildByName('game', key, dynamic_id, data)
         return result
 
 
@@ -46,12 +46,12 @@ def push_object(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
     """
-    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", topic_id, msg, send_list)
+    GlobalObject().root.childsmanager.callChildByNameNotForResult("net", "pushObject", topic_id, msg, send_list)
 
 
 @rootserviceHandle
 def push_chat_message(send_list, msg):
-    GlobalObject().root.childsmanager.callChildNotForResult("net", "pushObject", 1000, msg, send_list)
+    GlobalObject().root.childsmanager.callChildByNameNotForResult("net", "pushObject", 1000, msg, send_list)
 
 
 @rootserviceHandle
@@ -69,22 +69,22 @@ def add_guild_to_rank(g_id, dengji):
 
 @rootserviceHandle
 def login_chat(dynamic_id, character_id, guild_id, nickname):
-    GlobalObject().root.callChild('chat', 1001, dynamic_id, character_id, nickname, guild_id)
+    GlobalObject().root.callChildByName('chat', 1001, dynamic_id, character_id, nickname, guild_id)
 
 
 @rootserviceHandle
 def login_guild_chat(dynamic_id, guild_id):
-    GlobalObject().root.callChild('chat', 1004, dynamic_id, guild_id)
+    GlobalObject().root.callChildByName('chat', 1004, dynamic_id, guild_id)
 
 
 @rootserviceHandle
 def logout_guild_chat(dynamic_id):
-    GlobalObject().root.callChild('chat', 1005, dynamic_id)
+    GlobalObject().root.callChildByName('chat', 1005, dynamic_id)
 
 
 @rootserviceHandle
 def del_guild_room(guild_id):
-    GlobalObject().root.callChild('chat', 1006, guild_id)
+    GlobalObject().root.callChildByName('chat', 1006, guild_id)
 
 
 @rootserviceHandle

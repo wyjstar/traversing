@@ -41,9 +41,9 @@ class SceneSerManager:
         self.init_scene()
         
     def init_scene(self):
-        for childname in GlobalObject().root.childsmanager._childs.keys():
-            if "game" in childname:
-                self.add_scene(childname)
+        for child in GlobalObject().root.childsmanager._childs.values():
+            if "game" in child.name:
+                self.add_scene(child.id)
         
     def add_scene(self, sceneid):
         """添加一个场景服务器"""
@@ -86,6 +86,6 @@ class SceneSerManager:
         """获取最佳的game服务器
         """
         serverlist = self._scenesers.values()
-        slist = sorted(serverlist,reverse=False,key = lambda sser:sser.get_client_count())
+        slist = sorted(serverlist, reverse=False, key=lambda ser: ser.get_client_count())
         if slist:
             return slist[0].id

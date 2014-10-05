@@ -1,3 +1,4 @@
+#!/bin/sh
  for i in *.sql
  do
     if [[ $i == delete* ]] || [[ $i == traversing_master* ]]
