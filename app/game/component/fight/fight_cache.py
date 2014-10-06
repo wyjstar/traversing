@@ -393,21 +393,3 @@ class CharacterFightCacheComponent(Component):
                                   level, break_level, is_boss)
 
         return battlt_unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
