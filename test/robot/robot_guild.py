@@ -26,16 +26,17 @@ class RobotGuild(Robot):
     def command_stage(self):
 
         argument1 = StageStartRequest()
-        argument1.stage_id = 700101
+        argument1.stage_id = 100101
+        # argument1.fid = 1120
         line_up = argument1.lineup.add()
         line_up.pos = 1
-        line_up.hero_id = 10029
+        line_up.hero_id = 10005
         line_up = argument1.lineup.add()
         line_up.pos = 2
-        line_up.hero_id = 10043
+        line_up.hero_id = 10029
         line_up = argument1.lineup.add()
         line_up.pos = 3
-        line_up.hero_id = 0
+        line_up.hero_id = 10043
         line_up = argument1.lineup.add()
         line_up.pos = 4
         line_up.hero_id = 0
@@ -54,10 +55,10 @@ class RobotGuild(Robot):
         argument.ParseFromString(message)
         print argument
 
-        argument1 = StageSettlementRequest()
-        argument1.stage_id = 700101
-        argument1.result = 1
-        self.send_message(argument1, 904)
+        # argument1 = StageSettlementRequest()
+        # argument1.stage_id = 700101
+        # argument1.result = 1
+        # self.send_message(argument1, 904)
 
     def drop_904(self, message):
         # 进入战斗
