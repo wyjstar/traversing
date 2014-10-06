@@ -98,6 +98,8 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     if lord_data:
         info = lord_data.get('attr_info').get('info')
         f_unit = BattleUnit.loads(info)
+    else:
+        log.msg('can not find friend id :%d' % fid)
 
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num,
             'monster_unpara': monster_unpara, 'f_unit': f_unit, 'result_no': result_no,
