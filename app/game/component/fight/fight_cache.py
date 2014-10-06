@@ -313,7 +313,7 @@ class CharacterFightCacheComponent(Component):
 
             red_unit = random.choice(replace)  # 选出可以替换的单位
 
-            log.msg('乱入被替换战斗单位属性: %s' % red_unit.__dict__, logLevel=10)
+            log.msg('乱入被替换战斗单位属性: %s' % red_unit, logLevel=10)
 
             break_config = self.__get_stage_break_config()
             hero_id = break_config.hero_id
@@ -332,7 +332,7 @@ class CharacterFightCacheComponent(Component):
             attr += equ_attr
             unit = self.__assemble_hero(hero_base_attr, attr, )
             unit.position = red_unit.position
-            log.msg('乱入替换战斗单位属性: %s' % unit.__dict__, logLevel=10)
+            log.msg('乱入替换战斗单位属性: %s' % unit, logLevel=10)
             index = 0
             if red_unit in red_units:
                 index = red_units.index(red_unit)
