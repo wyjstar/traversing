@@ -9,7 +9,7 @@ from gfirefly.server.globalobject import GlobalObject
 
 class SerializerMetaClass(type):
 
-    def __call__(cls, *args, **kwargs):
+    def __call__(cls, *args, **kwargs):  # @NoSelf
         result = cls.__new__(cls, *args, **kwargs)
         if isinstance(result, cls):
             type(result).__init__(result, *args, **kwargs)

@@ -9,16 +9,16 @@ from zope.interface import Interface
 
 
 class IDataPackProtoc(Interface):
-    def getHeadlength():
+    def getHeadlength():  # @NoSelf
         """获取数据包的长度
         """
         pass
 
-    def unpack():
+    def unpack():  # @NoSelf
         '''解包
         '''
 
-    def pack():
+    def pack():  # @NoSelf
         '''打包数据包
         '''
         

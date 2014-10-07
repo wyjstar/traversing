@@ -8,6 +8,7 @@ from gfirefly.dbentrust.madminanager import MAdminManager
 from shared.db_entrust.redis_client import redis_manager
 from shared.db_entrust.redis_mode import MAdmin
 from shared.db_entrust.redis_object import RedisObject
+from test.redis_my_test import tower_info  # @UnresolvedImport
 
 
 class Account(RedisObject):

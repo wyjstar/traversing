@@ -34,7 +34,7 @@ class FriendTest(unittest.TestCase):
 
         request = FriendCommon()
         response = CommonResponse()
-        friendlist = GetPlayerFriendsResponse()
+        friendlist = GetPlayerFriendsResponse()  # @UndefinedVariable
 
         print '==========get friend list=========='
         result = get_player_friend_list(self.player1.base_info.id)

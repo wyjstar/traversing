@@ -58,7 +58,7 @@ import shutil
 import doctest
 import tempfile
 from shared.utils.xreload import xreload
-from test.test_support import run_unittest
+from test.test_support import run_unittest  # @UnresolvedImport
 
 tempdir = None
 save_path = None

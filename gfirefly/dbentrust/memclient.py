@@ -36,7 +36,7 @@ class MemClient:
         '''
         self._hostname = hostname
         self._urls = urls
-        self.connection = memcache.Client(self._urls, debug=0)
+        self.connection = memcache.Client(self._urls, debug=0)  # @UndefinedVariable
         if not self.connection.set("__testkey__", 1):
             raise MemConnError()
 

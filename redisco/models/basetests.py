@@ -370,7 +370,7 @@ class ModelTestCase(RediscoTestCase):
 
     def test_custom_validation(self):
         class Ninja(models.Model):
-            def validator(field_name, age):
+            def validator(field_name, age):  # @NoSelf
                 if not age or age >= 10:
                     return ((field_name, 'must be below 10'),)
             age = models.IntegerField(required=True, validator=validator)
