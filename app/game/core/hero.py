@@ -169,7 +169,8 @@ class Hero(object):
         skill_ids = []
         for i in range(self._break_level + 1):
             skill_id = breakup_config.info.get('break%s' % (i + 1))
-            skill_ids.append(skill_id)
+            if skill_id != 0:
+                skill_ids.append(skill_id)
 
         return skill_ids
 
@@ -260,6 +261,8 @@ class Hero(object):
         skill_ids = self.break_skill_ids
         for skill in skill_ids:
             skill_config = game_configs.skill_config.get(skill)  # 技能配置
+            if not skill_config:
+                log.err('skill config can not find id:%d' % skill)
             group = skill_config.group  # buff组
             for buff_id in group:
                 buff_config = game_configs.skill_buff_config.get(buff_id)  # buff配置
