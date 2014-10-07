@@ -23,10 +23,11 @@ def pull_message(character_id):
         args += message.get('args')
         kw = message.get('kw')
 
-        for child in childs.keys():
-            result = GlobalObject().root.callChild(child, 100001, *args, **kw)
-            if type(result) is bool and result:
-                message_cache.delete(character_id, key)
-                count += 1
-                break
+        for child in childs.values():
+            if 'gate' in child.name:
+                result = GlobalObject().root.callChild(child.id, 100001, *args, **kw)
+                if type(result) is bool and result:
+                    message_cache.delete(character_id, key)
+                    count += 1
+                    break
     return True

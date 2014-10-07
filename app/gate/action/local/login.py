@@ -75,6 +75,3 @@ def __character_login(dynamic_id):
     SceneSerManager().add_client(now_node, dynamic_id)
 
     return {'result': True, 'player_data': player_data}
-
-
-
