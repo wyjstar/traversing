@@ -50,7 +50,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
             response.result_no = 1  # fail
             return response.SerializePartialToString()  # fail
 
-        push_object(1010, player.base_info.id, invitee_player.dynamic_id)
+        push_object(1010, player.base_info.id, [invitee_player.dynamic_id])
         invitee_player.friends.save_data()
     else:
         if not push_message(1050, target_id, player.base_info.id):
