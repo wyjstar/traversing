@@ -293,11 +293,14 @@ class CharacterFightCacheComponent(Component):
         return drops
 
     def __break_hero_units(self, red_units):
+        unit = None
+        index = 0
         odds = self.__get_break_stage_odds()
+        break_config = self.__get_stage_break_config()
 
         rand_odds = random.random()
 
-        if rand_odds <= odds:
+        if break_config and rand_odds <= odds:
             log.msg('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units), logLevel=10)
             replace = []  # 可以替换的英雄
             for red_unit in red_units:
@@ -315,7 +318,6 @@ class CharacterFightCacheComponent(Component):
 
             log.msg('乱入被替换战斗单位属性: %s' % red_unit, logLevel=10)
 
-            break_config = self.__get_stage_break_config()
             hero_id = break_config.hero_id
             level = red_unit.level  # 等级
             break_level = red_unit.break_level  # 突破等级
@@ -333,7 +335,6 @@ class CharacterFightCacheComponent(Component):
             unit = self.__assemble_hero(hero_base_attr, attr, )
             unit.position = red_unit.position
             log.msg('乱入替换战斗单位属性: %s' % unit, logLevel=10)
-            index = 0
             if red_unit in red_units:
                 index = red_units.index(red_unit)
                 # red_units[index] = unit
