@@ -151,7 +151,7 @@ if __name__ == '__main__':
     #     print k, '='*5, v
     #     for _ in v:
     #         print _
-    print equipment_config
+    print stage_config
 
 
 
