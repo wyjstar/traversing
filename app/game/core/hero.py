@@ -2,6 +2,7 @@
 """
 created by server on 14-6-25下午5:27.
 """
+from gtwisted.utils import log
 from app.game.core.fight.skill import Skill
 from app.game.core.fight.skill_helper import SkillHelper
 from shared.db_opear.configs_data import game_configs
@@ -163,6 +164,8 @@ class Hero(object):
         """根据突破等级取得突破技能ID
         """
         breakup_config = hero_breakup_config.get(self._hero_no)
+        if not breakup_config:
+            log.err('cant find breakup:%d' % self.hero_no)
         skill_ids = []
         for i in range(self._break_level + 1):
             skill_id = breakup_config.info.get('break%s' % (i + 1))

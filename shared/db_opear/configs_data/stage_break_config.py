@@ -15,7 +15,7 @@ class StageBreakConfig(object):
     def parser(self, config_value):
         for row in config_value:
             item = CommonItem(row)
-            if not item.is_open:  # 乱入开放
-                continue
-            self._open_break_stage[item.stage_id] = item
+            # if not item.is_open:  # 乱入开放
+            #     continue
+            self._open_break_stage[item.id] = item
         return self._open_break_stage

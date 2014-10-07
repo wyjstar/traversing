@@ -92,6 +92,8 @@ class CharacterFightCacheComponent(Component):
         stage = game_configs.stage_config.get('stages').get(self._stage_id, None)
         if stage:
             return game_configs.stage_break_config.get(stage.stage_break_id, None)
+        else:
+            log.err('stage break id is not exist:%d' % stage.stage_break_id)
         return None
 
     def __get_drop_num(self):
@@ -184,15 +186,15 @@ class CharacterFightCacheComponent(Component):
         stage_break_config = self.__get_stage_break_config()
 
         if not stage_break_config:
+            log.err('no stage break odds')
             return odds
 
         for i in range(1, 8):
-            print i
-            condition_config = getattr(stage_break_config, 'condition%s' % i)  # 乱入条件
-            odds_config = getattr(stage_break_config, 'odds%s' % i)  # 乱入几率
-            log.msg('乱入条件: %s' % condition_config, logLevel=10)
+            condition_config = getattr(stage_break_config, 'condition%d' % i)  # 乱入条件
+            odds_config = getattr(stage_break_config, 'odds%d' % i)  # 乱入几率
             if self.check_condition(condition_config):
                 odds += odds_config
+            log.msg('乱入条件: %s odds:%f' % (condition_config, odds))
 
         return odds
 
@@ -298,8 +300,8 @@ class CharacterFightCacheComponent(Component):
 
         rand_odds = random.random()
 
+        log.msg('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units), logLevel=10)
         if break_config and rand_odds <= odds:
-            log.msg('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units), logLevel=10)
             replace = []  # 可以替换的英雄
             for red_unit in red_units:
                 if not red_unit:
@@ -316,6 +318,8 @@ class CharacterFightCacheComponent(Component):
 
             log.msg('乱入被替换战斗单位属性: %s' % red_unit, logLevel=10)
 
+            old_hero_obj = self.owner.line_up_component.get_hero_obj(red_unit.no)
+
             hero_id = break_config.hero_id
             level = red_unit.level  # 等级
             break_level = red_unit.break_level  # 突破等级
@@ -323,7 +327,7 @@ class CharacterFightCacheComponent(Component):
             hero_obj.hero_no = hero_id
             hero_obj.level = level
             hero_obj.break_level = break_level
-            hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+            hero_base_attr = old_hero_obj.calculate_attr()  # 英雄基础属性，等级成长
             attr = CommonItem()
             hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
             attr += hero_break_attr
