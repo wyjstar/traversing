@@ -2,7 +2,6 @@
 """
 created by server on 14-7-17下午6:54.
 """
-import copy
 import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
@@ -28,7 +27,7 @@ class CharacterFightCacheComponent(Component):
         self._red_unit = []  # 红方战斗单位
         self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
 
-        self._not_replace= []  # 不能替换的英雄
+        self._not_replace = []  # 不能替换的英雄
 
     @property
     def red_unit(self):
@@ -89,10 +88,11 @@ class CharacterFightCacheComponent(Component):
         return monster_config
 
     def __get_stage_break_config(self):
-        """取得关卡乱入信息
-        """
-        stage_break_config = game_configs.stage_break_config.get(self._stage_id)
-        return stage_break_config
+        """取得关卡乱入信息"""
+        stage = game_configs.stage_config.get('stages').get(self._stage_id, None)
+        if stage:
+            return game_configs.stage_break_config.get(stage.stage_break_id, None)
+        return None
 
     def __get_drop_num(self):
         """取得关卡小怪掉落数量
@@ -293,8 +293,6 @@ class CharacterFightCacheComponent(Component):
         return drops
 
     def __break_hero_units(self, red_units):
-        unit = None
-        index = 0
         odds = self.__get_break_stage_odds()
         break_config = self.__get_stage_break_config()
 
@@ -338,7 +336,8 @@ class CharacterFightCacheComponent(Component):
             if red_unit in red_units:
                 index = red_units.index(red_unit)
                 # red_units[index] = unit
-        return unit, index
+                return unit, index
+        return None, 0
 
     def __assemble_hero(self, base_attr, attr):
         """组装英雄战斗单位
