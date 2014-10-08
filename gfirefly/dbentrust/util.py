@@ -40,7 +40,7 @@ def _smart(v):
 def _pairtext(k, v):
     if v is None:
         return "%s=null" % k
-    return "%s='%s'" % (k, escape_string(_smart(v)))
+    return "%s=\"%s\"" % (k, escape_string(_smart(v)))
 
 
 def _sqltext(data, delimiter=","):
