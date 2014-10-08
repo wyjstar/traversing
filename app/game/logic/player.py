@@ -20,13 +20,7 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     player = kwargs.get('player')
     response = CommonResponse()
 
-
-    print type(nickname), "nickname++++++++++++++++++++++++++++"
-    nickname = nickname.encode("utf-8")
-    print type(nickname), "nickname2++++++++++++++++++++++++++++"
-
-    # TODO 名字不合法 返回错误码
-    if trie_tree.check.replace_bad_word(nickname).encode("utf-8") != nickname:
+    if trie_tree.check.replace_bad_word(nickname) != nickname:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()
