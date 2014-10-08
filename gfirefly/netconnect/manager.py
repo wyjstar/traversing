@@ -107,11 +107,16 @@ class ConnectionManager:
         """主动推送消息
         """
         try:
-            for target in sendList:
-                conn = self.getConnectionByID(target)
-                if conn:
-                    conn.safeToWriteData(topicID, msg)
-                conn = self._queue_conns.get(target, None)
+            if isinstance(sendList, list):
+                for target in sendList:
+                    conn = self.getConnectionByID(target)
+                    if conn:
+                        conn.safeToWriteData(topicID, msg)
+                    conn = self._queue_conns.get(target, None)
+                    if conn:
+                        conn.safeToWriteData(topicID, msg)
+            else:
+                conn = self.getConnectionByID(sendList)
                 if conn:
                     conn.safeToWriteData(topicID, msg)
         except Exception, e:
