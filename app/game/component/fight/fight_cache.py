@@ -334,7 +334,7 @@ class CharacterFightCacheComponent(Component):
             slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
-            unit = self.__assemble_hero(hero_base_attr, attr, )
+            unit = self.__assemble_hero(hero_base_attr, attr, hero_id)
             unit.position = red_unit.position
             log.msg('乱入替换战斗单位属性: %s' % unit, logLevel=10)
             if red_unit in red_units:
@@ -343,7 +343,7 @@ class CharacterFightCacheComponent(Component):
                 return unit, index
         return None, 0
 
-    def __assemble_hero(self, base_attr, attr):
+    def __assemble_hero(self, base_attr, attr, hero_id):
         """组装英雄战斗单位
         """
         # base_attr: 英雄基础，等级 属性
@@ -355,7 +355,7 @@ class CharacterFightCacheComponent(Component):
         # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
         # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
 
-        no = base_attr.hero_no
+        no = hero_id
         quality = base_attr.quality
 
         normal_skill = base_attr.normal_skill
