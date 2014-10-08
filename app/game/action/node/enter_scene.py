@@ -22,7 +22,7 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata = GameLoginResponse()
     responsedata.res.result = True
     responsedata.id = player.base_info.id
-    responsedata.nickname = unicode(player.base_info.base_name, "utf-8")
+    responsedata.nickname = player.base_info.base_name
 
     responsedata.level = player.level.level
     responsedata.exp = player.level.exp

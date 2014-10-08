@@ -87,7 +87,7 @@ class PlayerCharacter(Character):
         character_info = tb_character_info.getObjData(pid)
         if not character_info:
             character_info = {'id': pid,
-                              'nickname': '',
+                              'nickname': u'',
                               'coin': 0,
                               'gold': 0,
                               'hero_soul': 0,
@@ -106,7 +106,7 @@ class PlayerCharacter(Character):
                               'soul_shop': self._soul_shop.detail_data,
                               'stamina': self._stamina.detail_data,
                               'last_login_time': int(time.time())
-            }
+                              }
             tb_character_info.new(character_info)
             new_character = True
 

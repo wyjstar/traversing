@@ -21,8 +21,7 @@ reactor = reactor
 
 
 def serverStop():
-    """停止服务进程
-    """
+    """停止服务进程"""
     log.msg('stop')
     if GlobalObject().stophandler:
         GlobalObject().stophandler()
@@ -31,8 +30,7 @@ def serverStop():
 
 
 class FFServer:
-    """抽象出的一个服务进程
-    """
+    """抽象出的一个服务进程"""
 
     def __init__(self):
         """
@@ -50,8 +48,7 @@ class FFServer:
     def config(self, config, servername=None, dbconfig=None,
                memconfig=None, masterconf=None, model_default_config=None,
                model_config=None):
-        '''配置服务器
-        '''
+        """配置服务器"""
         GlobalObject().json_config = config
         GlobalObject().json_model_config = model_default_config
         GlobalObject().json_model_config = model_config
@@ -132,8 +129,7 @@ class FFServer:
         import admin
 
     def remote_connect(self, rname, rhost):
-        """进行rpc的连接
-        """
+        """进行rpc的连接"""
         for cnf in self.remoteportlist:
             _rname = cnf.get('rootname')
             if rname == _rname:
@@ -149,8 +145,7 @@ class FFServer:
                 break
 
     def start(self):
-        '''启动服务器
-        '''
+        """启动服务器"""
         log.msg('%s start...' % self.servername)
         log.msg('%s pid: %s' % (self.servername, os.getpid()))
         reactor.run()

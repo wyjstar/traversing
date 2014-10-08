@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2013-5-8
 
 @author: lan (www.9miao.com)
-'''
+"""
 import MySQLdb
 
 from dbpool import dbpool
@@ -86,7 +86,7 @@ def FormatUpdateStr(props):
 
 
 def forEachUpdateProps(tablename, props, prere):
-    '''遍历所要修改的属性，以生成sql语句'''
+    """遍历所要修改的属性，以生成sql语句"""
     assert type(props) == dict
     pro = FormatUpdateStr(props)
     pre = FormatCondition(prere)
@@ -96,8 +96,7 @@ def forEachUpdateProps(tablename, props, prere):
 
 
 def EachQueryProps(props):
-    '''遍历字段列表生成sql语句
-    '''
+    """遍历字段列表生成sql语句"""
     sqlstr = ""
     if props == '*':
         return '*'
@@ -112,7 +111,7 @@ def EachQueryProps(props):
 
 
 def forEachQueryProps(sqlstr, props):
-    '''遍历所要查询属性，以生成sql语句'''
+    """遍历所要查询属性，以生成sql语句"""
     if props == '*':
         sqlstr += ' *'
     elif type(props) == type([0]):
@@ -165,8 +164,7 @@ def ReadDataFromDB(tablename):
 
 
 def DeleteFromDB(tablename, props):
-    '''从数据库中删除
-    '''
+    """从数据库中删除"""
     prers = FormatCondition(props)
     sql = """DELETE FROM %s WHERE %s ;""" % (tablename, prers)
     conn = dbpool.connection()
@@ -240,8 +238,7 @@ def getAllPkByFkInDB(tablename, pkname, props):
 
 
 def GetOneRecordInfo(tablename, props):
-    '''获取单条数据的信息
-    '''
+    """获取单条数据的信息"""
     # print 'GetOneRecordInfo:', props
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)

@@ -92,6 +92,8 @@ class HashRing(object):
         md5 is currently used because it mixes well.
         """
         m = md5()
+        if isinstance(key, unicode):
+            key = key.encode('utf-8')
         m.update(key)
         return long(m.hexdigest(), 16)
 

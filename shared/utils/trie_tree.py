@@ -90,7 +90,9 @@ class TrieCheck(object):
             i += 1
         return -1, None
 
-    def replace_bad_word(self,text,offset=0,mark='*'):
+    def replace_bad_word(self, text, offset=0, mark='*'):
+        if isinstance(text, unicode):
+            text = text.encode('utf-8')
         if not isinstance(text, str) or offset >= len(text):
             raise Exception("%s is not a string" % str(str))
         i = offset
