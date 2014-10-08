@@ -78,6 +78,7 @@ def refresh_shop_items(dynamic_id, **kwargs):
     player.soul_shop.save_data()
 
     player.finance.gold -= price
+    log.DEBUG("refresh price:"+str(price))
     player.finance.save_data()
 
     log.DEBUG("soul ids:" + str(ids))
