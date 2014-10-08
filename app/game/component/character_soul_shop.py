@@ -80,12 +80,13 @@ class CharacterSoulShopComponent(Component):
     @property
     def price(self):
         price = base_config.get('soulShopRefreshPrice').get('2')[0]
-        if self._refresh_times==0:
+        k = base_config.get('soulShopRefreshFactor')
+        free_times = base_config.get('soulShopFreeRefreshTimes')
+
+        if self._refresh_times < free_times:
             return 0
-        elif self._refresh_times==1:
-            return price
         else:
-            return price * 2
+            return price * pow(k, self._refresh_times - free_times)
 
     def save_data(self):
         props = dict(soul_shop=self.detail_data)
