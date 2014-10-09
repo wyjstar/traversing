@@ -41,7 +41,7 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
         player.soul_shop.item_ids.remove(shop_id)
         player.soul_shop.save_data()
     except Exception:
-        log.DEBUG("can not find shop id:" + str(shop_id))
+        log.DEBUG("can not find shop id:" + str(shop_id)+str(player.soul_shop.item_ids))
         common_response.result = False
         common_response.result_no = 501
         return response.SerializeToString()
@@ -100,9 +100,9 @@ def get_shop_items(dynamic_id, **kwargs):
     log.DEBUG("get_shop_items1")
     item_ids = player.soul_shop.item_ids
     if len(item_ids) == 0:
-        item_ids = get_shop_item_ids()
         player.soul_shop.item_ids = get_shop_item_ids()
         player.soul_shop.save_data()
+        item_ids = player.soul_shop.item_ids
 
     for x in item_ids:
         shop.id.append(x)
