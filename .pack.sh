@@ -11,7 +11,7 @@ temp_dir=/var/tmp/$package
 
 proj_dir=~/traversing
 
-[[ ! -d $proj_dir ]]&&proj_dir=~/develop/traversing
+#[[ ! -d $proj_dir ]]&&proj_dir=~/traversing
 echo -n "package: $package.tar.gz (Y/n):"
 read confirm
 if [ "$confirm" != "Y" ];then
@@ -64,14 +64,30 @@ echo "pack $package success"
 
 echo -n "tag: $tagname (Y/n):"
 read confirm
+if [ "$confirm" == "Y" ];then
+    cd $proj_dir
+    git tag $tagname
+    git push --tags
+
+    echo "tag $tagname success"
+fi
+
+echo -n "upload ftp (Y/n):"
+read confirm
+
 if [ "$confirm" != "Y" ];then
-    echo "abandoned tag"
     exit 0
 fi
 
-cd $proj_dir
-git tag $tagname
-git push --tags
+cd /var/tmp
 
-echo "tag $tagname success"
-exit 0
+ftp -n<<!
+open 192.168.1.90 21003
+user server server
+cd server
+put $package.tar.gz
+put $package.md5
+close
+bye
+!
+
