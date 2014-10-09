@@ -42,7 +42,7 @@ message GuildRank
 {
     required string g_id = 1;    //id
     required int32 rank = 2;    //排名
-    required bytes name = 3;    //名
+    required string name = 3;    //名
     required int32 level = 4;   //等级
     required bytes president = 5;   //会长
     required int32 p_num = 6;   //人数
