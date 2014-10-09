@@ -22,7 +22,7 @@ message GuildInfo
 message RoleInfo
 {
     required int32 p_id = 1;    //id
-    required bytes name = 2;    //名
+    required string name = 2;    //名
     required int32 level = 3;   //等级
     required int32 vip_level = 4;   //vip等级
     required int32 fight_power = 5;   //战斗力
@@ -31,7 +31,7 @@ message RoleInfo
 message RoleInfo1
 {
     required int32 p_id = 1;    //id
-    required bytes name = 2;    //名
+    required string name = 2;    //名
     required int32 level = 3;   //等级
     required int32 position = 4;   //职位
     required int32 all_contribution = 5;   //总贡献
@@ -44,7 +44,7 @@ message GuildRank
     required int32 rank = 2;    //排名
     required bytes name = 3;    //名
     required int32 level = 4;   //等级
-    required bytes president = 5;   //会长
+    required string president = 5;   //会长
     required int32 p_num = 6;   //人数
     required int32 record = 7;   //战绩
 }

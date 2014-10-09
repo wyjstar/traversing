@@ -153,8 +153,8 @@ class CharacterLineUpComponent(Component):
         heros = []
         for slot in self._line_up_slots.values():
             heros.append(slot.hero_slot.hero_obj)
-        for slot in self._sub_slots.values():
-            heros.append(slot.hero_slot.hero_obj)
+        # for slot in self._sub_slots.values():
+        #     heros.append(slot.hero_slot.hero_obj)
         return heros
 
     @property
