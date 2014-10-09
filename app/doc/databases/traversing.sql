@@ -95,7 +95,7 @@ CREATE TABLE `tb_character_hero_chip` (
 
 DROP TABLE IF EXISTS `tb_character_heros`;
 CREATE TABLE `tb_character_heros` (
-  `id` varchar(50) NOT NULL DEFAULT '',
+  `id` bigint(20) NOT NULL,
   `hero_ids` blob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
