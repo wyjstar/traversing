@@ -106,21 +106,34 @@ class ConnectionManager:
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息
         """
-        try:
-            if isinstance(sendList, list):
-                for target in sendList:
-                    conn = self.getConnectionByID(target)
-                    if conn:
-                        conn.safeToWriteData(topicID, msg)
-                    conn = self._queue_conns.get(target, None)
-                    if conn:
-                        conn.safeToWriteData(topicID, msg)
-            else:
-                conn = self.getConnectionByID(sendList)
+        # try:
+        #     if isinstance(sendList, list):
+        #         for target in sendList:
+        #             conn = self.getConnectionByID(target)
+        #             if conn:
+        #                 conn.safeToWriteData(topicID, msg)
+        #             conn = self._queue_conns.get(target, None)
+        #             if conn:
+        #                 conn.safeToWriteData(topicID, msg)
+        #     else:
+        #         conn = self.getConnectionByID(sendList)
+        #         if conn:
+        #             conn.safeToWriteData(topicID, msg)
+        # except Exception, e:
+        #     log.err(str(e))
+
+        if isinstance(sendList, list):
+            for target in sendList:
+                conn = self.getConnectionByID(target)
                 if conn:
                     conn.safeToWriteData(topicID, msg)
-        except Exception, e:
-            log.err(str(e))
+                conn = self._queue_conns.get(target, None)
+                if conn:
+                    conn.safeToWriteData(topicID, msg)
+        else:
+            conn = self.getConnectionByID(sendList)
+            if conn:
+                    conn.safeToWriteData(topicID, msg)
 
     def check_timeout(self):
         for k, v in self._connections.items():
