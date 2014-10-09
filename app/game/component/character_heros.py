@@ -109,12 +109,3 @@ class CharacterHerosComponent(Component):
             'property': hero_property
         }
         tb_character_hero.new(data)
-
-
-
-
-
-
-
-
-
