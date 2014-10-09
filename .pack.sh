@@ -11,6 +11,7 @@ temp_dir=/var/tmp/$package
 
 proj_dir=~/traversing
 
+cp md5.sh /var/tmp
 #[[ ! -d $proj_dir ]]&&proj_dir=~/traversing
 echo -n "package: $package.tar.gz (Y/n):"
 read confirm
@@ -54,9 +55,8 @@ cd ../
 echo "tar -czf $package.tar.gz $package"
 tar -czf $package.tar.gz $package
 rm -rf $package
-mv $package.tar.gz /share/
 
-cd /share
+cd /var/tmp
 echo "md5 $package.tar.gz"
 ./md5.sh $package.tar.gz > $package.md5
 
@@ -78,8 +78,6 @@ read confirm
 if [ "$confirm" != "Y" ];then
     exit 0
 fi
-
-cd /var/tmp
 
 ftp -n<<!
 open 192.168.1.90 21003
