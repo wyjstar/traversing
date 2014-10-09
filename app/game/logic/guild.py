@@ -706,7 +706,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
 
     # 得到公会排行
     ranks = get_guild_rank_from_gate()
-    rank_num = 1
+    rank_num = len(ranks)
     for rank in ranks:
         data1 = tb_guild_info.getObjData(rank[0])
         if data1 and rank != 0:
@@ -715,7 +715,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
             guild_rank = response.guild_rank.add()
             guild_rank.g_id = guild_obj.g_id
             guild_rank.rank = rank_num
-            rank_num += 1
+            rank_num -= 1
             guild_rank.name = guild_obj.name
             guild_rank.level = guild_obj.level
 
