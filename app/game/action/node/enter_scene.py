@@ -8,6 +8,7 @@ from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
 import time
 from gtwisted.utils import log
+from app.game.logic.player import init_player
 
 
 @remote_service_handle
@@ -16,6 +17,7 @@ def enter_scene_601(dynamic_id, character_id):
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
+        init_player(player)
         PlayersManager().add_player(player)
 
 
