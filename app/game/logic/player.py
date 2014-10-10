@@ -8,12 +8,23 @@ from app.game.action.root.netforwarding import login_chat
 from app.game.logic.common.check import have_player
 from app.game.redis_mode import tb_nickname_mapping, tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
-from gfirefly.server.globalobject import GlobalObject
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
 from gtwisted.utils import log
+from app.game.logic.soul_shop import init_soul_shop_items
+from test.init_data.init_data import init
 
+
+def init_player(player):
+    new_character = player.is_new_character()
+    if new_character:
+        player.create_character_data()
+    player.init_player_info()
+    if new_character:
+        log.DEBUG("mock player info.....")
+        init(player)
+        init_soul_shop_items(player)
 
 @have_player
 def nickname_create(dynamic_id, nickname, **kwargs):

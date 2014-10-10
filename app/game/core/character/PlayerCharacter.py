@@ -10,7 +10,6 @@ from app.game.component.level.character_level import CharacterLevelComponent
 from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
 from app.game.component.stage.character_stage import CharacterStageComponent
-from gtwisted.utils import log
 from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
@@ -29,7 +28,6 @@ from app.game.component.character_vip import CharacterVIPComponent
 from app.game.component.character_stamina import CharacterStaminaComponent
 from app.game.component.character_soul_shop import CharacterSoulShopComponent
 import time
-from test.init_data.init_data import init
 
 
 class PlayerCharacter(Character):
@@ -45,7 +43,6 @@ class PlayerCharacter(Character):
         self._character_type = const.PLAYER_TYPE  # 设置角色类型为玩家角色
         self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
         # --------角色的各个组件类------------
-        # TODO
 
         self._hero_component = CharacterHerosComponent(self)  # 武将列表
         self._finance = CharacterFinanceComponent(self)  # 金币
@@ -74,44 +71,12 @@ class PlayerCharacter(Character):
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
 
-        if status:
-            self.__init_player_info()  # 初始化角色
 
-
-    def __init_player_info(self):
+    def init_player_info(self):
         """初始化角色信息
         """
         pid = self.base_info.id
-
-        new_character = False
         character_info = tb_character_info.getObjData(pid)
-        if not character_info:
-            character_info = {'id': pid,
-                              'nickname': u'',
-                              'coin': 0,
-                              'gold': 0,
-                              'hero_soul': 0,
-                              'level': 0,
-                              'exp': 0,
-                              'junior_stone': 0,
-                              'middle_stone': 0,
-                              'high_stone': 0,
-                              'fine_hero_last_pick_time': 0,
-                              'excellent_hero_last_pick_time': 0,
-                              'fine_equipment_last_pick_time': 0,
-                              'excellent_equipment_last_pick_time': 0,
-                              'pvp_times': 0,
-                              'create_time': int(time.time()),
-                              'vip_level': 0,
-                              'soul_shop': self._soul_shop.detail_data,
-                              'stamina': self._stamina.detail_data,
-                              'last_login_time': int(time.time())
-                              }
-            tb_character_info.new(character_info)
-            new_character = True
-
-
-        print 'character_id', pid
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
         coin = character_info['coin']
@@ -173,9 +138,43 @@ class PlayerCharacter(Character):
         self._stamina.init_stamina(character_info.get('stamina'))
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
 
-        if new_character:
-            log.DEBUG("mock player info.....")
-            init(self)
+
+    def is_new_character(self):
+        """is new character or not"""
+        pid = self.base_info.id
+
+        character_info = tb_character_info.getObjData(pid)
+        if character_info:
+            return True
+        return False
+
+    def create_character_data(self):
+        """docstring for create_character_data"""
+        pid = self.base_info.id
+
+        character_info = {'id': pid,
+                              'nickname': u'',
+                              'coin': 0,
+                              'gold': 0,
+                              'hero_soul': 0,
+                              'level': 0,
+                              'exp': 0,
+                              'junior_stone': 0,
+                              'middle_stone': 0,
+                              'high_stone': 0,
+                              'fine_hero_last_pick_time': 0,
+                              'excellent_hero_last_pick_time': 0,
+                              'fine_equipment_last_pick_time': 0,
+                              'excellent_equipment_last_pick_time': 0,
+                              'pvp_times': 0,
+                              'create_time': int(time.time()),
+                              'vip_level': 0,
+                              'soul_shop': self._soul_shop.detail_data,
+                              'stamina': self._stamina.detail_data,
+                              'last_login_time': int(time.time())
+                              }
+        tb_character_info.new(character_info)
+
 
     @property
     def character_type(self):

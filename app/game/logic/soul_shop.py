@@ -99,10 +99,6 @@ def get_shop_items(dynamic_id, **kwargs):
     shop = GetShopItemsResponse()
     log.DEBUG("get_shop_items1")
     item_ids = player.soul_shop.item_ids
-    if len(item_ids) == 0:
-        player.soul_shop.item_ids = get_shop_item_ids()
-        player.soul_shop.save_data()
-        item_ids = player.soul_shop.item_ids
 
     for x in item_ids:
         shop.id.append(x)
@@ -111,7 +107,12 @@ def get_shop_items(dynamic_id, **kwargs):
     shop.res.result = True
     return shop.SerializePartialToString()
 
-
+def init_soul_shop_items(player):
+    """
+    init shop items when create character
+    """
+    player.soul_shop.item_ids = get_shop_item_ids()
+    player.soul_shop.save_data()
 
 
 def get_all_shop_items():

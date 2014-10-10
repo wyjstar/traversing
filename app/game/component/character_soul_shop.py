@@ -4,9 +4,7 @@ created by server on 14-10-3下午3:43.
 """
 
 from app.game.component.Component import Component
-from shared.db_opear.configs_data.game_configs import vip_config
 from app.game.redis_mode import tb_character_info
-import time
 from shared.db_opear.configs_data.game_configs import base_config
 from gtwisted.utils import log
 from datetime import datetime
