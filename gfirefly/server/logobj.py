@@ -31,7 +31,8 @@ def log_init(log_path):
 
     uh = DatagramHandler(const.const.TLOG_ADDR[0], const.const.TLOG_ADDR[1])
     uh.setLevel(logging.CRITICAL)
-    _logger.addHandler(uh)
+    uh.setFormatter('%(message)s')
+    # _logger.addHandler(uh)
 
 
 logger = logging.getLogger(logger_name)
