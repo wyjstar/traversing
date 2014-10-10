@@ -8,7 +8,7 @@ from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
     HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest, HeroSellRequest
 from app.proto_file.hero_response_pb2 import GetHerosResponse, HeroUpgradeResponse, \
     HeroBreakResponse, HeroComposeResponse
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import base_config, item_config, \
     hero_breakup_config, chip_config, hero_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
@@ -46,7 +46,7 @@ def hero_upgrade_with_item(dynamicid, data, **kwargs):
             response.res.message = u"经验药水道具不足！"
             return response.SerializeToString()
     else:
-        log.err('item package can not get item:%d' % exp_item_no)
+        logger.error('item package can not get item:%d' % exp_item_no)
     exp = item_config.get(exp_item_no).get('funcArg1')
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
@@ -195,5 +195,3 @@ def hero_sell(dynamicid, data, **kwargs):
 
     response.res.result = True
     return response
-
-

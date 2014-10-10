@@ -4,7 +4,7 @@ Created on 2011-1-3
 服务类
 @author: sean_lan
 '''
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class Service(object):
@@ -60,10 +60,10 @@ class Service(object):
         '''
         target = self.getTarget(targetKey)
         if not target:
-            log.err('the command ' + str(targetKey) + ' not Found on service')
+            logger.error('the command ' + str(targetKey) + ' not Found on service')
             return None
         if targetKey not in self.unDisplay:
-            log.msg("call method %s on service[%s]" % (target.__name__, self._name))
+            logger.info("call method %s on service[%s]" % (target.__name__, self._name))
         # if __debug__:
         #     print 'args;:', args
         #     print 'kw::', kw

@@ -6,7 +6,7 @@ created by server on 14-10-3下午3:43.
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import base_config
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from datetime import datetime
 from time import mktime
 
@@ -22,7 +22,7 @@ class CharacterSoulShopComponent(Component):
         self._item_ids = []  # 当前武魂商店商品
 
     def init_soul_shop(self, soul_shop_data):
-        log.DEBUG(str(soul_shop_data) + ", soul_shop_data+++++++++++++++++")
+        logger.debug(str(soul_shop_data) + ", soul_shop_data+++++++++++++++++")
         if soul_shop_data:
             self._refresh_times = soul_shop_data.get('refresh_times')
             self._last_refresh_time = soul_shop_data.get('last_refresh_time')

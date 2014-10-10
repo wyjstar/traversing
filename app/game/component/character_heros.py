@@ -5,8 +5,7 @@ created by server on 14-6-25下午7:00.
 from app.game.component.Component import Component
 from app.game.core.hero import Hero
 from app.game.redis_mode import tb_character_hero, tb_character_heros
-import cPickle
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class CharacterHerosComponent(Component):
@@ -79,7 +78,7 @@ class CharacterHerosComponent(Component):
             self.save_data()
             tb_character_hero.deleteMode(self.get_hero_id(hero_no))
         else:
-            log.DEBUG("don't find hero_no from self._heros")
+            logger.debug("don't find hero_no from self._heros")
 
     def delete_heros_by_nos(self, hero_no_list):
         for no in hero_no_list:
@@ -109,12 +108,3 @@ class CharacterHerosComponent(Component):
             'property': hero_property
         }
         tb_character_hero.new(data)
-
-
-
-
-
-
-
-
-

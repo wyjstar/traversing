@@ -6,7 +6,7 @@ Created on 2014年2月22日
 '''
 from gtwisted.core import reactor
 from gtwisted.core.rpc import PBClientProtocl,PBClientFactory
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 import sys
 
 
@@ -44,7 +44,7 @@ reactor.connectTCP('localhost', 10000, client)
 reactor.callLater(3, callRemote)
 # reactor.callLater(5, callRemote2)
 # reactor.callLater(1, printok)
-log.startLogging(sys.stdout)
+# log.startLogging(sys.stdout)
 reactor.run()
 
 

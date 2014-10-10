@@ -5,7 +5,7 @@ Created on 2012-3-19
 @author: Administrator
 """
 from gfirefly.utils.singleton import Singleton
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 
 
@@ -75,8 +75,8 @@ class SceneSerManager:
                 sceneser.drop_client(clientid)
             except Exception as e:
                 msg = "sceneId:%d-------clientId:%d" % (sceneid, clientid)
-                log.err(msg)
-                log.err(e.message)
+                logger.error(msg)
+                logger.error(e.message)
         
     def get_all_client_count(self):
         """获取公共场景中所有的客户端数量"""
