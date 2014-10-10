@@ -4,8 +4,7 @@ created by server on 14-6-27下午6:44.
 """
 from app.game.component.Component import Component
 from app.game.core.hero_chip import HeroChip
-from app.game.redis_mode import tb_character_hero_chip, tb_character_info
-from gtwisted.utils import log
+from app.game.redis_mode import tb_character_hero_chip
 
 
 class CharacterHeroChipsComponent(Component):

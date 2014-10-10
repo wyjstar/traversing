@@ -5,7 +5,7 @@ created by server on 14-7-16下午8:04.
 
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class CharacterLastPickTimeComponent(Component):

@@ -7,7 +7,7 @@ Created on 2011-10-3
 import sys
 from gtwisted.core import reactor
 
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from gfirefly.utils import services
 from gfirefly.netconnect.protoc import LiberateFactory
 

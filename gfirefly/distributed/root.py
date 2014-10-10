@@ -4,7 +4,7 @@ Created on 2013-8-14
 分布式根节点
 @author: lan (www.9miao.com)
 """
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from gtwisted.core import rpc
 from manager import ChildsManager
 from child import Child
@@ -13,7 +13,7 @@ from child import Child
 class BilateralBroker(rpc.PBServerProtocl):
     def connectionLost(self, reason):
         clientID = self.transport.sessionno
-        log.msg("node [%d] lose" % clientID)
+        logger.info("node [%d] lose" % clientID)
         self.factory.root.dropChildSessionId(clientID)
 
     def remote_takeProxy(self, name):
@@ -59,13 +59,13 @@ class PBRoot:
         """设置代理通道
         @param name: 根节点的名称
         """
-        log.msg('#1 node [%s] takeProxy ready' % name)
+        logger.info('>1 node [%s] takeProxy ready' % name)
         child = Child(self._index, name)
         self._index += 1
         self.childsmanager.addChild(child)
         child.setTransport(transport)
         self.doChildConnect(name, transport)
-        log.msg('#2 node [%s] takeProxy ready' % name)
+        logger.info('>2 node [%s] takeProxy ready' % name)
 
     @property
     def childsmanager(self):

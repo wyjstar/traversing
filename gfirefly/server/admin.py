@@ -6,7 +6,7 @@ Created on 2014-2-24
 '''
 from gfirefly.server.globalobject import GlobalObject, masterserviceHandle
 from gtwisted.core import reactor
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 reactor = reactor
 
@@ -15,7 +15,7 @@ reactor = reactor
 def serverStop():
     """供master调用的接口：关闭服务器
     """
-    log.msg('stop')
+    logger.info('stop')
     if GlobalObject().stophandler:
         GlobalObject().stophandler()
     reactor.callLater(0.5, reactor.stop)
@@ -26,7 +26,7 @@ def serverStop():
 def sreload():
     """供master调用的接口：热更新模块
     """
-    log.msg('reload')
+    logger.info('reload')
     if GlobalObject().reloadmodule:
         reload(GlobalObject().reloadmodule)
     return True
@@ -37,4 +37,3 @@ def remote_connect(rname, rhost):
     """供master调用的接口：进行远程的rpc连接
     """
     GlobalObject().remote_connect(rname, rhost)
-

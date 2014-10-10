@@ -5,7 +5,7 @@ Created on 2014-2-23
 @author: lan (www.9miao.com)
 '''
 from gtwisted.core import protocols, reactor
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from gfirefly.netconnect.manager import ConnectionManager
 from gfirefly.netconnect.datapack import DataPackProtoc
 
@@ -21,7 +21,7 @@ class LiberateProtocol(protocols.BaseProtocol):
         '''连接建立处理
         '''
         address = self.transport.getAddress()
-        log.msg('Client %d login in.[%s,%d]' % (self.transport.sessionno, \
+        logger.info('Client %d login in.[%s,%d]' % (self.transport.sessionno, \
                                                 address[0], address[1]))
         self.factory.connmanager.addConnection(self)
         self.factory.doConnectionMade(self)
@@ -30,7 +30,7 @@ class LiberateProtocol(protocols.BaseProtocol):
     def connectionLost(self, reason):
         '''连接断开处理
         '''
-        log.msg('Client %d login out.' % (self.transport.sessionno))
+        logger.info('Client %d login out.' % (self.transport.sessionno))
         self.factory.doConnectionLost(self)
         self.factory.connmanager.dropConnectionByID(self.transport.sessionno)
 
@@ -53,14 +53,14 @@ class LiberateProtocol(protocols.BaseProtocol):
         while self.buff.__len__() >= length:
             unpackdata = self.factory.dataprotocl.unpack(self.buff[:length])
             if not unpackdata.get('result'):
-                log.msg('illegal data package --')
+                logger.info('illegal data package --')
                 self.transport.connectionLost()
                 break
             command = unpackdata.get('command')
             rlength = unpackdata.get('length')
             request = self.buff[length:length + rlength]
             if request.__len__() < rlength:
-                log.msg('some data lose')
+                logger.info('some data lose')
                 break
             self.buff = self.buff[length + rlength:]
             response = self.factory.doDataReceived(self, command, request)
@@ -133,5 +133,3 @@ class LiberateFactory(protocols.ServerFactory):
         @param sendList: 推向的目标列表(客户端id 列表)
         '''
         self.connmanager.pushObject(topicID, msg, sendList)
-        
-

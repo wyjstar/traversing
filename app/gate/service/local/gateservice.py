@@ -3,7 +3,7 @@
 Created on 2013-8-14
 """
 from gfirefly.utils.services import CommandService
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class LocalService(CommandService):
@@ -15,10 +15,10 @@ class LocalService(CommandService):
         """
         target = self.getTarget(target_key)
         if not target:
-            log.err('the command %s not Found on service:[%s]' % (target_key, self._name))
+            logger.error('the command %s not Found on service:[%s]' % (target_key, self._name))
             return None
         if target_key not in self.unDisplay:
-            log.msg("call method %s on service:[%s]" % (target.__name__, self._name))
+            logger.info("call method %s on service:[%s]" % (target.__name__, self._name))
         response = target(target_key, *args, **kw)
         return response
 

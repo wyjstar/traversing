@@ -3,7 +3,7 @@
 created by server on 14-6-27下午8:06.
 """
 from shared.db_opear.configs_data.game_configs import chip_config
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class HeroChip(object):

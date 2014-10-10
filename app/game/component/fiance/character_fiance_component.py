@@ -4,7 +4,6 @@ created by server on 14-6-27下午6:49.
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from gtwisted.utils import log
 
 
 class CharacterFinanceComponent(Component):

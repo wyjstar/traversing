@@ -5,7 +5,7 @@ Created on 2013-8-7
 @author: lan (www.9miao.com)
 '''
 from gfirefly.server.globalobject import GlobalObject
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 def _doChildConnect(name, transport):
@@ -37,7 +37,7 @@ def _doChildLostConnect(childId):
     try:
         del GlobalObject().remote_map[childId]
     except Exception, e:
-        log.msg(str(e))
+        logger.info(str(e))
 
 
 GlobalObject().root.doChildConnect = _doChildConnect
