@@ -34,7 +34,6 @@
         },
         "gate": {
             "rootport": 30001,
-            "name": "gate",
             "remoteport": [
                 {
                     "roothost": "<=login_ip=>",
@@ -80,10 +79,6 @@
                 {
                     "rootport": 30001,
                     "rootname": "gate"
-                },
-                {
-                    "rootport": 30002,
-                    "rootname": "battle"
                 }
             ],
             "name": "game",
@@ -110,14 +105,6 @@
             "mem": true,
             "app": "app.dbfrontserver",
             "log": "app/logs/dbfront.log"
-        },
-        "battle": {
-            "rootport": 30000,
-            "name": "battle",
-            "db": true,
-            "mem": true,
-            "app": "app.battleserver",
-            "log": "app/logs/battle.log"
         }
     },
     "db": {

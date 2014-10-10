@@ -10,5 +10,5 @@ cobar/logs/
 .ropeproject/
 tags
 my.json
-myconfig.json
+config.json
 .*
