@@ -10,7 +10,7 @@ from app.game.component.level.character_level import CharacterLevelComponent
 from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
 from app.game.component.pack.character_item_package import CharacterItemPackageComponent
 from app.game.component.stage.character_stage import CharacterStageComponent
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
@@ -174,7 +174,7 @@ class PlayerCharacter(Character):
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
 
         if new_character:
-            log.DEBUG("mock player info.....")
+            logger.debug("mock player info.....")
             init(self)
 
     @property

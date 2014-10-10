@@ -9,7 +9,7 @@ import MySQLdb
 from dbpool import dbpool
 from MySQLdb.cursors import DictCursor
 from numbers import Number
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 import MySQLdb
 escape_string = MySQLdb.escape_string
@@ -174,8 +174,8 @@ def DeleteFromDB(tablename, props):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
-        log.err(e)
-        log.err(sql)
+        logger.error(e)
+        logger.error(sql)
     cursor.close()
     conn.close()
     return bool(count)
@@ -192,8 +192,8 @@ def InsertIntoDB(tablename, data):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
-        log.err(e)
-        log.err(sql)
+        logger.error(e)
+        logger.error(sql)
     cursor.close()
     conn.close()
     return bool(count)
@@ -210,8 +210,8 @@ def UpdateWithDict(tablename, props, prere):
         count = cursor.execute(sql)
         conn.commit()
     except Exception, e:
-        log.err(e)
-        log.err(sql)
+        logger.error(e)
+        logger.error(sql)
     cursor.close()
     conn.close()
     if (count >= 1):
@@ -229,8 +229,8 @@ def getAllPkByFkInDB(tablename, pkname, props):
     try:
         cursor.execute(sql)
     except Exception, e:
-        log.err(e)
-        log.err(sql)
+        logger.error(e)
+        logger.error(sql)
     result = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -252,8 +252,8 @@ def GetOneRecordInfo(tablename, props):
     try:
         cursor.execute(sql)
     except Exception, e:
-        log.err(e)
-        log.err(sql)
+        logger.error(e)
+        logger.error(sql)
     result = cursor.fetchone()
     cursor.close()
     conn.close()

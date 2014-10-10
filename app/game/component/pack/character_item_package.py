@@ -5,7 +5,7 @@ created by server on 14-7-2下午4:51.
 from app.game.component.Component import Component
 from app.game.core.pack.item import Item
 from app.game.redis_mode import tb_character_item_package
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class CharacterItemPackageComponent(Component):
@@ -68,7 +68,7 @@ class CharacterItemPackageComponent(Component):
             props[item_no] = item.num
 
         items_data = tb_character_item_package.getObj(self.owner.base_info.id)
-        log.DEBUG(str(props))
+        logger.debug(str(props))
         items_data.update('items', props)
 
 

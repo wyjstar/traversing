@@ -7,7 +7,7 @@ Created on 2011-10-17
 from gfirefly.utils import services
 from gfirefly.distributed.root import PBRoot, BilateralFactory
 from gtwisted.core import reactor
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 import sys
 
 reactor = reactor

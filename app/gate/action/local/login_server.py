@@ -10,6 +10,7 @@ from app.gate.core.users_manager import UsersManager
 from app.proto_file import account_pb2
 from app.gate.service.local.gateservice import local_service_handle
 from gfirefly.server.globalobject import GlobalObject
+from gfirefly.server.logobj import logger
 
 
 @local_service_handle
@@ -30,14 +31,14 @@ def server_login_2(command_id, dynamic_id, request_proto):
     account_response.result = False
 
     # 通知帐号服
-    print 'rpc account verify:', key
+    logger.info('rpc account verify:%s', key)
     result = GlobalObject().remote['login'].callRemote('account_verify', key)
     result = eval(result)
-    print 'verify result:', result
+    logger.info('verify result:%s', result)
 
     if result.get('result') is True:  # 登录成功
         uuid = result.get('uuid')
-        print 'login uuid:', uuid
+        logger.info('login uuid:%s', uuid)
         account_id = get_account_id(uuid)
         if account_id == 0:
             account_response.result = False

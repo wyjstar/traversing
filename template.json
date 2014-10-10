@@ -16,7 +16,7 @@
             "name": "MA",
             "db": true,
             "app": "app.MAserver",
-            "log": "app/logs/MAserver.log"
+            "log": "app/logs/MA.log"
         },
         "login": {
             "rootport": 20000,
@@ -24,13 +24,13 @@
             "name": "login",
             "mem": true,
             "app": "app.loginserver",
-            "log": "app/logs/loginserver.log"
+            "log": "app/logs/login.log"
         },
         "transit": {
             "rootport": 30002,
             "name": "transit",
             "app": "app.transitserver",
-            "log": "app/logs/transitserver.log"
+            "log": "app/logs/transit.log"
         },
         "gate": {
             "rootport": 30001,
@@ -97,14 +97,14 @@
                 }
             ],
             "app": "app.chatserver",
-            "log": "app/logs/chatserver.log"
+            "log": "app/logs/chat.log"
         },
         "dbfront": {
             "name": "dbfront",
             "db": true,
             "mem": true,
             "app": "app.dbfrontserver",
-            "log": "app/logs/dbfront.log"
+            "log": "app/logs/db.log"
         }
     },
     "db": {

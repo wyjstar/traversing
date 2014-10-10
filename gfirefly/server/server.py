@@ -15,7 +15,6 @@ from gfirefly.server.logobj import logger
 from gtwisted.core import reactor
 from gfirefly.utils import services
 import os
-import sys
 import affinity
 from shared.db_entrust.redis_client import redis_manager
 
@@ -69,6 +68,9 @@ class FFServer:
         mreload = config.get('reload')  # 重新加载模块名称
         self.servername = servername
 
+        if logpath:
+            log_init(logpath)  # 日志处理
+
         if netport:
             self.netfactory = LiberateFactory()
             netservice = services.CommandService("netservice")
@@ -93,7 +95,7 @@ class FFServer:
             self.remote[rname] = RemoteObject(self.servername)
 
         if hasdb and dbconfig:
-            logger.info(str(dbconfig))
+            # logger.info(str(dbconfig))
             dbpool.initPool(**dbconfig)
 
         # if hasmem and memconfig:
@@ -104,9 +106,6 @@ class FFServer:
         if hasmem and memconfig:
             connection_setting = memconfig.get('urls')
             redis_manager.connection_setup(connection_setting)
-
-        if logpath:
-            log_init(logpath)  # 日志处理
 
         if cpuid:
             affinity.set_process_affinity_mask(os.getpid(), cpuid)
@@ -147,6 +146,6 @@ class FFServer:
 
     def start(self):
         """启动服务器"""
-        logger.info('%s start...' % self.servername)
+        logger.info('%s start...', self.servername)
         logger.info('%s pid: %s' % (self.servername, os.getpid()))
         reactor.run()

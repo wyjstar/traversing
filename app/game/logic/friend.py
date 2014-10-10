@@ -15,6 +15,8 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.game.action.root.netforwarding import push_object
 from app.game.action.root.netforwarding import push_message
+from gfirefly.server.logobj import logger
+
 
 @have_player
 def add_friend_request(dynamic_id, data, **kwargs):
@@ -264,7 +266,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_friend_add.physical_def = battle_unit.physical_def
                 response_friend_add.magic_def = battle_unit.magic_def
         else:
-            log.err('get_player_friend_list, cant find player id:%d' % pid)
+            logger.error('get_player_friend_list, cant find player id:%d' % pid)
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObjData(pid)
@@ -285,7 +287,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_blacklist_add.physical_def = info.get('physical_def', 0)
                 response_blacklist_add.magic_def = info.get('magic_def', 0)
         else:
-            log.err('get_player_friend_list, cant find player id:%d' % pid)
+            logger.error('get_player_friend_list, cant find player id:%d' % pid)
 
     for pid in player.friends.applicant_list:
         player_data = tb_character_info.getObjData(pid)
@@ -306,7 +308,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_applicant_list_add.physical_def = info.get('physical_def', 0)
                 response_applicant_list_add.magic_def = info.get('magic_def', 0)
         else:
-            log.err('get_player_friend_list, cant find player id:' % pid)
+            logger.error('get_player_friend_list, cant find player id:' % pid)
 
     return response.SerializePartialToString()
 
