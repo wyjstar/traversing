@@ -15,6 +15,7 @@ from app.game.logic.item_group_helper import is_afford, consume, gain, get_retur
 from app.proto_file.hero_response_pb2 import HeroSacrificeResponse, HeroSellResponse
 from app.game.action.root.netforwarding import push_object
 from shared.utils import log_action
+from app.game.core.item import Item
 
 
 @have_player
@@ -136,6 +137,9 @@ def hero_sacrifice_oper(heros, player):
             exp_item_no = item_no
             exp_item_num = total_exp/exp
             break
+
+    player.item_package.add_item(Item(exp_item_no, exp_item_num))
+    player.item_package.save_data()
     item_pb = gain_response.items.add()
     item_pb.item_no = exp_item_no
     item_pb.item_num = exp_item_num
