@@ -9,12 +9,13 @@ from flask import Flask
 from gfirefly.distributed.root import PBRoot, BilateralFactory
 from gfirefly.distributed.node import RemoteObject
 from gfirefly.dbentrust.dbpool import dbpool
-from gfirefly.server.logobj import loogoo
 from gfirefly.server.globalobject import GlobalObject
-from gtwisted.utils import log
+from gfirefly.server.logobj import log_init
+from gfirefly.server.logobj import logger
 from gtwisted.core import reactor
 from gfirefly.utils import services
-import os, sys, affinity
+import os
+import affinity
 from shared.db_entrust.redis_client import redis_manager
 
 reactor = reactor
@@ -22,7 +23,7 @@ reactor = reactor
 
 def serverStop():
     """停止服务进程"""
-    log.msg('stop')
+    logger.info('stop')
     if GlobalObject().stophandler:
         GlobalObject().stophandler()
     reactor.callLater(0.5, reactor.stop)
@@ -67,6 +68,9 @@ class FFServer:
         mreload = config.get('reload')  # 重新加载模块名称
         self.servername = servername
 
+        if logpath:
+            log_init(logpath)  # 日志处理
+
         if netport:
             self.netfactory = LiberateFactory()
             netservice = services.CommandService("netservice")
@@ -91,7 +95,7 @@ class FFServer:
             self.remote[rname] = RemoteObject(self.servername)
 
         if hasdb and dbconfig:
-            log.msg(str(dbconfig))
+            # logger.info(str(dbconfig))
             dbpool.initPool(**dbconfig)
 
         # if hasmem and memconfig:
@@ -102,10 +106,6 @@ class FFServer:
         if hasmem and memconfig:
             connection_setting = memconfig.get('urls')
             redis_manager.connection_setup(connection_setting)
-
-        if logpath:
-            log.addObserver(loogoo(logpath))  # 日志处理
-        log.startLogging(sys.stdout)
 
         if cpuid:
             affinity.set_process_affinity_mask(os.getpid(), cpuid)
@@ -146,6 +146,6 @@ class FFServer:
 
     def start(self):
         """启动服务器"""
-        log.msg('%s start...' % self.servername)
-        log.msg('%s pid: %s' % (self.servername, os.getpid()))
+        logger.info('%s start...', self.servername)
+        logger.info('%s pid: %s' % (self.servername, os.getpid()))
         reactor.run()

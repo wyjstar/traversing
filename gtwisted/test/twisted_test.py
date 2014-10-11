@@ -30,11 +30,11 @@ class MyServerFactory(ServerFactory):
     def __init__(self):
         self.protocol = MyProtocol
     
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 ss = MyServerFactory()
 import sys
-log.startLogging(sys.stdout)
+# log.startLogging(sys.stdout)
 reactor.listenTCP(8080, ss)
-reactor.callLater(5, log.msg, "asdfasdf")
+reactor.callLater(5, logger.info, "asdfasdf")
 reactor.run()

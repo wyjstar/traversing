@@ -7,8 +7,8 @@ from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
 import time
-from gtwisted.utils import log
 from app.game.logic.player import init_player
+from gfirefly.server.logobj import logger
 
 
 @remote_service_handle
@@ -57,13 +57,13 @@ def enter_scene_601(dynamic_id, character_id):
     responsedata.server_time = int(time.time())
     responsedata.soul_shop_refresh_times = player.soul_shop.refresh_times
 
-    log.DEBUG("character info:----------------------")
-    log.DEBUG("vip_level:", player.vip_component.vip_level)
-    log.DEBUG("stamina:", player.stamina.stamina)
-    log.DEBUG("coin:", player.finance.coin)
-    log.DEBUG("gold:", player.finance.gold)
-    log.DEBUG("hero_soul:", player.finance.hero_soul)
-    log.DEBUG("soul_shop_refresh_times:", player.soul_shop.refresh_times)
+    logger.debug("character info:----------------------")
+    logger.debug("vip_level:", player.vip_component.vip_level)
+    logger.debug("stamina:", player.stamina.stamina)
+    logger.debug("coin:", player.finance.coin)
+    logger.debug("gold:", player.finance.gold)
+    logger.debug("hero_soul:", player.finance.hero_soul)
+    logger.debug("soul_shop_refresh_times:", player.soul_shop.refresh_times)
 
 
     return responsedata.SerializeToString()

@@ -37,7 +37,7 @@ class MyServerFactory(ServerFactory):
     protocol = MyProtocol
 
 
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 # def setAsyncResult(result):
 #     while True:
@@ -46,7 +46,7 @@ from gtwisted.utils import log
 ss = MyServerFactory()
 import sys
 
-log.startLogging(sys.stdout)
+# log.startLogging(sys.stdout)
 reactor.listenTCP(90, ss)
 # reactor.callLater(5, setAsyncResult,"okok")
 reactor.run()

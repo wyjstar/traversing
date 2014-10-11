@@ -9,6 +9,7 @@ from gfirefly.dbentrust.dbpool import dbpool
 from flask import request
 import time
 import uuid
+from gfirefly.server.logobj import logger
 
 account_login_cache = []
 USER_TABLE_NAME = 'tb_user'
@@ -41,7 +42,7 @@ def __user_register(account_name='', account_password=''):
 def user_register():
     user_name = request.args.get('name')
     user_pwd = request.args.get('pwd')
-    print 'register name:', user_name, ' pwd:', user_pwd
+    logger.info('register name:%s pwd:%s', user_name, user_pwd)
 
     return __user_register(account_name=user_name, account_password=user_pwd)
 
@@ -49,7 +50,7 @@ def user_register():
 def __user_login(account_name='', account_password=''):
     get_result = util.GetOneRecordInfo(USER_TABLE_NAME, dict(account_name=account_name,
                                                              account_password=account_password))
-    print get_result
+    logger.info(get_result)
     if get_result is None:
         return json.dumps(dict(result=False, message='account name or password error!'))
 
@@ -62,14 +63,14 @@ def __user_login(account_name='', account_password=''):
 def user_login():
     user_name = request.args.get('name')
     user_pwd = request.args.get('pwd')
-    print 'login name:', user_name, ' pwd:', user_pwd
+    logger.info('login name:%s, pwd:%s', user_name, user_pwd)
     return __user_login(account_name=user_name, account_password=user_pwd)
 
 
 @webserviceHandle('/verify')
 def user_verify():
     user_passport = request.args.get('passport')
-    print account_login_cache
+    logger.info(account_login_cache)
     if user_passport not in account_login_cache:
         return str({'result': False})
     account_login_cache.remove(user_passport)

@@ -4,7 +4,7 @@ Created on 2014-2-23
 
 @author: lan (www.9miao.com)
 '''
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 import struct
 
 
@@ -68,7 +68,7 @@ class DataPackProtoc:
         try:
             ud = struct.unpack('!sssss3I', dpack)
         except struct.error, de:
-            log.err(de)
+            logger.error(de)
             return {'result': False, 'command': 0, 'length': 0}
         HEAD_0 = ord(ud[0])
         HEAD_1 = ord(ud[1])

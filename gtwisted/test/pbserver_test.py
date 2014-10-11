@@ -7,7 +7,7 @@ Created on 2014年2月22日
 import sys
 from gtwisted.core import reactor
 from gtwisted.core.rpc import PBServerProtocl,PBServerFactory
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class MyPBServerProtocl(PBServerProtocl):
@@ -25,5 +25,5 @@ class MyPBServerFactory(PBServerFactory):
     protocol = MyPBServerProtocl
     
 reactor.listenTCP(10000, MyPBServerFactory())
-log.startLogging(sys.stdout)
+# log.startLogging(sys.stdout)
 reactor.run()

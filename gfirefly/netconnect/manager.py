@@ -5,7 +5,7 @@ Created on 2014-2-23
 @author: lan (www.9miao.com)
 '''
 
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from connection import Connection
 from shared.utils.const import const
 import collections
@@ -120,7 +120,7 @@ class ConnectionManager:
         #         if conn:
         #             conn.safeToWriteData(topicID, msg)
         # except Exception, e:
-        #     log.err(str(e))
+        #     logger.error(str(e))
 
         if isinstance(sendList, list):
             for target in sendList:

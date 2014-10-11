@@ -9,7 +9,7 @@ from app.game.redis_mode import tb_character_info
 import cPickle
 import time
 from shared.db_opear.configs_data.game_configs import base_config
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class CharacterStaminaComponent(Component):
@@ -23,7 +23,7 @@ class CharacterStaminaComponent(Component):
         self._last_gain_stamina_time = 0  # 上次获取体力时间
 
     def init_stamina(self, stamina_data):
-        log.DEBUG(str(stamina_data) + ", stamina+++++++++++++++++")
+        logger.debug(str(stamina_data) + ", stamina+++++++++++++++++")
         if stamina_data:
             self._stamina = stamina_data.get('stamina')
             self._get_stamina_times = stamina_data.get('get_stamina_times')
@@ -32,8 +32,8 @@ class CharacterStaminaComponent(Component):
 
             # 初始化体力
             current_time = int(time.time())
-            log.DEBUG("last_gain_stamina_time:" + str(self._last_gain_stamina_time))
-            log.DEBUG("peroid_of_stamina_recover:" + str(self.peroid_of_stamina_recover))
+            logger.debug("last_gain_stamina_time:" + str(self._last_gain_stamina_time))
+            logger.debug("peroid_of_stamina_recover:" + str(self.peroid_of_stamina_recover))
 
             stamina_add = (current_time - self._last_gain_stamina_time) / self.peroid_of_stamina_recover
             left_stamina = (current_time - self._last_gain_stamina_time) % self.peroid_of_stamina_recover
@@ -105,5 +105,5 @@ class CharacterStaminaComponent(Component):
     def save_data(self):
         props = dict(stamina=self.detail_data)
         info = tb_character_info.getObj(self.owner.base_info.id)
-        log.DEBUG(str(props))
+        logger.debug(str(props))
         info.update_multi(props)

@@ -1,14 +1,13 @@
 #coding:utf8
-'''
+"""
 Created on 2014年2月20日
 协议、工厂
 @author:  lan (www.9miao.com)
-'''
+"""
+from gfirefly.server.logobj import logger
 from gtwisted.core.base import Transport
 from gevent import Greenlet
-# import gevent
 from gevent.socket import create_connection
-from gtwisted.utils import log
 import socket
 
 
@@ -50,14 +49,15 @@ class BaseProtocol(Greenlet):
                 self.dataReceived(data)
         except Exception, e:
             if not isinstance(e, socket.error):
-                log.err()
+                logger.exception(e)
             self.connectionLost(reason=e)
         else:
             self.connectionLost(reason=None)
         finally:
             self.transport.close()
             self.kill()
-    
+
+
 class ServerFactory:
     
     protocol = BaseProtocol
@@ -78,10 +78,11 @@ class ServerFactory:
         """
         t = Transport(socket,address, self.sessionno)
         self.buildProtocol(t)
-        p = self.protocol(t,self)
+        p = self.protocol(t, self)
         p.start()
-        self.sessionno +=1
-        
+        self.sessionno += 1
+
+
 class ClientFactory:
     
     protocol = BaseProtocol
@@ -109,7 +110,3 @@ class ClientFactory:
         """
         """
         self._protocol.start()
-        
-        
-        
-    

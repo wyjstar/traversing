@@ -2,7 +2,7 @@
 """
 created by server on 14-6-25下午5:27.
 """
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from app.game.core.fight.skill import Skill
 from app.game.core.fight.skill_helper import SkillHelper
 from shared.db_opear.configs_data import game_configs
@@ -165,7 +165,7 @@ class Hero(object):
         """
         breakup_config = hero_breakup_config.get(self._hero_no)
         if not breakup_config:
-            log.err('cant find breakup:%d' % self.hero_no)
+            logger.error('cant find breakup:%d' % self.hero_no)
         skill_ids = []
         for i in range(self._break_level + 1):
             skill_id = breakup_config.info.get('break%s' % (i + 1))
@@ -262,7 +262,7 @@ class Hero(object):
         for skill in skill_ids:
             skill_config = game_configs.skill_config.get(skill)  # 技能配置
             if not skill_config:
-                log.err('skill config can not find id:%d' % skill)
+                logger.error('skill config can not find id:%d' % skill)
             group = skill_config.group  # buff组
             for buff_id in group:
                 buff_config = game_configs.skill_buff_config.get(buff_id)  # buff配置
@@ -282,9 +282,3 @@ class Hero(object):
                     buffs.append(buff_id)
                     continue
         return buffs
-
-
-
-
-
-

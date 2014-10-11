@@ -108,7 +108,7 @@ def join_guild(dynamicid, data, **kwargs):
 
     if m_exit_time != 1 and the_time < base_config.get('exit_time'):
         response.result = False
-        response.message = "退出公会办小时内不可加入公会"
+        response.message = "退出公会半小时内不可加入公会"
         response.spare_time = base_config.get('exit_time') - the_time
         return response.SerializeToString()
 

@@ -10,7 +10,7 @@ from app.game.core.drop_bag import BigBag
 from app.game.logic.item_group_helper import gain, get_return
 from app.game.logic.common.check import have_player
 from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 @have_player
@@ -23,7 +23,7 @@ def get_items(dynamic_id, **kwargs):
         _item = response.items.add()
         _item.item_no = item.item_no
         _item.item_num = item.num
-        log.DEBUG("get items:", item.item_no, item.num)
+        logger.debug("get items:", item.item_no, item.num)
     return response.SerializePartialToString()
 
 
@@ -75,10 +75,8 @@ def use_item(dynamic_id, pro_data, **kwargs):
         get_return(player, return_data, response.gain)
 
 
-    log.DEBUG("item_no:", item_no)
-    log.DEBUG("item_num:", item_num)
+    logger.debug("item_no:", item_no)
+    logger.debug("item_num:", item_num)
     player.item_package.consume_item(item_no, item_num)
 
     return response.SerializeToString()
-
-

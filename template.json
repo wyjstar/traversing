@@ -16,7 +16,7 @@
             "name": "MA",
             "db": true,
             "app": "app.MAserver",
-            "log": "app/logs/MAserver.log"
+            "log": "app/logs/MA.log"
         },
         "login": {
             "rootport": 20000,
@@ -24,17 +24,16 @@
             "name": "login",
             "mem": true,
             "app": "app.loginserver",
-            "log": "app/logs/loginserver.log"
+            "log": "app/logs/login.log"
         },
         "transit": {
             "rootport": 30002,
             "name": "transit",
             "app": "app.transitserver",
-            "log": "app/logs/transitserver.log"
+            "log": "app/logs/transit.log"
         },
         "gate": {
             "rootport": 30001,
-            "name": "gate",
             "remoteport": [
                 {
                     "roothost": "<=login_ip=>",
@@ -80,10 +79,6 @@
                 {
                     "rootport": 30001,
                     "rootname": "gate"
-                },
-                {
-                    "rootport": 30002,
-                    "rootname": "battle"
                 }
             ],
             "name": "game",
@@ -102,22 +97,14 @@
                 }
             ],
             "app": "app.chatserver",
-            "log": "app/logs/chatserver.log"
+            "log": "app/logs/chat.log"
         },
         "dbfront": {
             "name": "dbfront",
             "db": true,
             "mem": true,
             "app": "app.dbfrontserver",
-            "log": "app/logs/dbfront.log"
-        },
-        "battle": {
-            "rootport": 30000,
-            "name": "battle",
-            "db": true,
-            "mem": true,
-            "app": "app.battleserver",
-            "log": "app/logs/battle.log"
+            "log": "app/logs/db.log"
         }
     },
     "db": {

@@ -4,7 +4,7 @@ created by server on 14-6-19下午5:07.
 """
 from gfirefly.dbentrust.dbpool import dbpool
 import datetime
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 def get_character_by_userid(userid):
     """获取用户角色关系表所有信息
@@ -36,7 +36,7 @@ def create_character(userid, nickname):
     sql = "insert into `tb_character`(id, nickName, createdate) \
     values('%d','%s','%s')" % (userid, nickname, nowdatetime)
 
-    log.msg('sql', sql)
+    logger.info('sql', sql)
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = cursor.execute(sql)
