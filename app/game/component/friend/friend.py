@@ -78,14 +78,20 @@ class FriendComponent(Component):
 
     def add_friend(self, friend_id, is_active=True):
         if friend_id in self._friends:
+            if friend_id in self._applicants_list:
+                del(self._applicants_list[friend_id])
             return False
 
         if friend_id in self._blacklist:
+            if friend_id in self._applicants_list:
+                del(self._applicants_list[friend_id])
             return False
 
         if is_active:
             if not friend_id in self._applicants_list:
                 return False
+
+        if friend_id in self._applicants_list:
             del(self._applicants_list[friend_id])
 
         self._friends.append(friend_id)
