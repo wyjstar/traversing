@@ -2,6 +2,7 @@
 """
 created by server on 14-9-13下午2:19.
 """
+from gfirefly.server.logobj import logger
 
 
 class Check(object):
@@ -94,7 +95,7 @@ class TrieCheck(object):
         if isinstance(text, unicode):
             text = text.encode('utf-8')
         if not isinstance(text, str) or offset >= len(text):
-            raise Exception("%s is not a string" % str(str))
+            logger.error('error type %s, offset=%d', type(text), offset)
         i = offset
         text = unicode(text[offset:], 'utf-8')
         li = list(text)
