@@ -167,7 +167,7 @@ class Hero(object):
         if not breakup_config:
             log.err('cant find breakup:%d' % self.hero_no)
         skill_ids = []
-        for i in range(self._break_level + 1):
+        for i in range(self._break_level):
             skill_id = breakup_config.info.get('break%s' % (i + 1))
             if skill_id != 0:
                 skill_ids.append(skill_id)
