@@ -85,7 +85,7 @@ class Hero(object):
         temp_exp += exp
         while True:
             current_level_exp = hero_exp_config[level].get('exp', 0)
-            if current_level_exp < temp_exp:
+            if current_level_exp <= temp_exp:
                 level += 1
                 temp_exp -= current_level_exp
             else:
