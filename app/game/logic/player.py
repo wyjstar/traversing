@@ -3,6 +3,7 @@
 created by server on 14-7-21下午5:12.
 """
 import time
+import re
 from app.game.action.root.netforwarding import login_chat
 
 from app.game.logic.common.check import have_player
@@ -30,6 +31,13 @@ def init_player(player):
 def nickname_create(dynamic_id, nickname, **kwargs):
     player = kwargs.get('player')
     response = CommonResponse()
+
+    match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
+    if match:
+        response.result = False
+        response.result_no = 1
+        print 'not support emoji'
+        return response.SerializeToString()
 
     if trie_tree.check.replace_bad_word(nickname) != nickname:
         response.result = False

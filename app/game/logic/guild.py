@@ -2,6 +2,7 @@
 """
 created by server on 14-7-17下午5:37.
 """
+import re
 from app.game.core.PlayersManager import PlayersManager
 from app.game.logic.common.check import have_player
 from app.game.core.guild import Guild
@@ -43,6 +44,12 @@ def create_guild(dynamicid, data, **kwargs):
     if g_id != 0:
         response.result = False
         response.message = "您已加入公会"
+        return response.SerializeToString()
+
+    match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', unicode(g_name, "utf-8"))
+    if match:
+        response.result = False
+        response.message = "公会名不合法"
         return response.SerializeToString()
 
     if trie_tree.check.replace_bad_word(g_name).encode("utf-8") != g_name:
