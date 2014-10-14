@@ -23,7 +23,7 @@ def init_player(player):
         player.create_character_data()
     player.init_player_info()
     if new_character:
-        log.DEBUG("mock player info.....")
+        logger.debug("mock player info.....")
         init(player)
         init_soul_shop_items(player)
 

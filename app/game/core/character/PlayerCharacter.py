@@ -138,15 +138,15 @@ class PlayerCharacter(Character):
         self._stamina.init_stamina(character_info.get('stamina'))
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
 
-
     def is_new_character(self):
         """is new character or not"""
         pid = self.base_info.id
 
         character_info = tb_character_info.getObjData(pid)
+        print 'character info:', character_info
         if character_info:
-            return True
-        return False
+            return False
+        return True
 
     def create_character_data(self):
         """docstring for create_character_data"""
