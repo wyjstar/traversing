@@ -2,7 +2,6 @@
 """
 created by server on 14-7-16下午2:55.
 """
-
 from app.game.logic.common.check import have_player
 from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
     HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest, HeroSellRequest
@@ -13,9 +12,8 @@ from shared.db_opear.configs_data.game_configs import base_config, item_config, 
     hero_breakup_config, chip_config, hero_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
 from app.proto_file.hero_response_pb2 import HeroSacrificeResponse, HeroSellResponse
-from app.game.action.root.netforwarding import push_object
 from shared.utils import log_action
-from app.game.core.item import Item
+from app.game.core.pack.item import Item
 
 
 @have_player

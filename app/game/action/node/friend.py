@@ -53,6 +53,11 @@ def find_friend_request_1107(dynamic_id, data):
 
 
 @remote_service_handle
+def given_stamina_1108(dynamic_id, data):
+    return friend.given_stamina(dynamic_id, data)
+
+
+@remote_service_handle
 def add_friend_request_1050(dynamic_id, is_online, target_id):
     return friend.add_friend_request_remote(dynamic_id, is_online, target_id)
 
