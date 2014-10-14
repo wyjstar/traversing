@@ -21,13 +21,13 @@ class CharacterLevelGift(Component):
             if data:
                 self._received_gift_ids = data['received_gift_ids']
         else:
-            data = {'received_gift_ids': self._received_gift_ids}
+            data = dict(received_gift_ids=self._received_gift_ids)
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'level_gift': data})
 
     def save_data(self):
         activity = tb_character_activity.getObj(self.owner.base_info.id)
-        data = {'received_gift_ids': self._received_gift_ids}
+        data = dict(received_gift_ids=self._received_gift_ids)
         activity.update('level_gift', data)
 
     @property
