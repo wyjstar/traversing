@@ -3,7 +3,6 @@
 created by server on 14-7-17下午5:21.
 """
 import datetime
-from twisted.python import log
 from app.game.core.fight.battle_unit import BattleUnit
 
 from app.game.logic.common.check import have_player
@@ -67,7 +66,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
 def add_friend_request_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.add_applicant(target_id)
-    return True
+    return result
 
 
 @have_player
@@ -115,7 +114,7 @@ def become_friends(dynamic_id, data, **kwargs):
 def become_friends_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.add_friend(target_id, False)
-    return True
+    return result
 
 
 @have_player
@@ -185,7 +184,7 @@ def del_friend(dynamic_id, data, **kwargs):
 def del_friend_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.del_friend(target_id, False)
-    return True
+    return result
 
 
 @have_player
@@ -344,3 +343,25 @@ def find_friend_request(dynamic_id, data, **kwargs):
             response.nickname = player_data.get('nickname')
 
     return response.SerializePartialToString()
+
+
+@have_player
+def given_stamina(dynamic_id, data, **kwargs):
+    response = CommonResponse()
+    response.result = True
+    response.result_no = 0
+    request = friend_pb2.FriendCommon()
+    request.ParseFromString(data)
+
+    player = kwargs.get('player')
+
+    request = friend_pb2.FriendCommon()
+    request.ParseFromString(data)
+    target_id = request.target_ids[0]
+
+    if not player.given_stamina(target_id):
+        response.result = False
+        response.result_no = 1  # fail
+        return response.SerializePartialToString()  # fail
+
+    return response.SerializePartialToString()  # fail
