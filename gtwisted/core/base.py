@@ -8,6 +8,8 @@ from gevent.server import StreamServer,DatagramServer
 from gevent.pywsgi import WSGIServer
 from gevent import Greenlet
 import gevent
+from gfirefly.server.logobj import logger
+
 
 class DelayCall:
     """延迟调用对象
@@ -99,8 +101,8 @@ class BasePortListener(Greenlet):
     def _run(self):
         """启动监听器
         """
-        print '# 启动监听：', self.server_cls
-        ser = self.server_cls(self.getHost(),self.factory,backlog=100000)
+        logger.info('# 启动监听：%s', self.server_cls)
+        ser = self.server_cls(self.getHost(), self.factory, backlog=100000)
         ser.serve_forever()
     
 
