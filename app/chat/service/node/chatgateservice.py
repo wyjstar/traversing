@@ -4,7 +4,7 @@ created by server on 14-5-19下午8:51.
 '''
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.utils.services import CommandService
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class NodeServiceHandler(CommandService):
@@ -16,10 +16,10 @@ class NodeServiceHandler(CommandService):
         """
         target = self.getTarget(command_id)
         if not target:
-            log.err('the command %s not Found on service[%s]' % (str(command_id)), self._name)
+            logger.error('the command %s not Found on service[%s]' % (str(command_id)), self._name)
             return None
         if command_id not in self.unDisplay:
-            log.msg("call method %s on service[%s]" % (target.__name__, self._name))
+            logger.info("call method %s on service[%s]" % (target.__name__, self._name))
         response = target(command_id, *args, **kw)
         return response
 

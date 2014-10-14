@@ -4,7 +4,7 @@ Created on 2013-8-14
 
 @author: lan (www.9miao.com)
 """
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class ChildsManager(object):
@@ -46,7 +46,7 @@ class ChildsManager(object):
         try:
             del self._childs[key]
         except Exception, e:
-            log.msg(str(e))
+            logger.info(str(e))
 
     def dropChildByID(self, childId):
         """删除一个child 节点\n
@@ -55,7 +55,7 @@ class ChildsManager(object):
         try:
             del self._childs[childId]
         except Exception, e:
-            log.msg(str(e))
+            logger.info(str(e))
 
     def callChild(self, childId, *args, **kw):
         """调用子节点的接口\n
@@ -63,7 +63,7 @@ class ChildsManager(object):
         """
         child = self._childs.get(childId, None)
         if not child:
-            log.err("child %s doesn't exists" % childId)
+            logger.error("child %s doesn't exists" % childId)
             return
         return child.callbackChild(*args, **kw)
 
@@ -73,7 +73,7 @@ class ChildsManager(object):
         """
         child = self._childs.get(childId, None)
         if not child:
-            log.err("child %s doesn't exists" % childId)
+            logger.error("child %s doesn't exists" % childId)
             return
         child.callbackChildNotForResult(*args, **kw)
 
@@ -83,7 +83,7 @@ class ChildsManager(object):
         """
         child = self.getChildByName(childname)
         if not child:
-            log.err("child %s doesn't exists" % childname)
+            logger.error("child %s doesn't exists" % childname)
             return
         return child.callbackChild(*args, **kw)
 
@@ -93,7 +93,7 @@ class ChildsManager(object):
         """
         child = self.getChildByName(childname)
         if not child:
-            log.err("child %s doesn't exists" % childname)
+            logger.error("child %s doesn't exists" % childname)
             return
         child.callbackChildNotForResult(*args, **kw)
 

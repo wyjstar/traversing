@@ -8,7 +8,7 @@ from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from app.proto_file import stage_response_pb2
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 
 
@@ -99,7 +99,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
         info = lord_data.get('attr_info').get('info')
         f_unit = BattleUnit.loads(info)
     else:
-        log.msg('can not find friend id :%d' % fid)
+        logger.info('can not find friend id :%d' % fid)
 
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num,
             'monster_unpara': monster_unpara, 'f_unit': f_unit, 'result_no': result_no,
@@ -171,10 +171,5 @@ def get_warriors(dynamic_id, **kwargs):
 
                 for buff_id in group:
                     buffs.append(buff_id)
-    log.msg('warriors: %s' % response)
+    logger.info('warriors: %s' % response)
     return response.SerializePartialToString()
-
-
-
-
-

@@ -7,7 +7,7 @@ from app.game.core.stage.stage import Stage, StageAward
 from app.game.redis_mode import tb_character_stages
 from shared.db_opear.configs_data import game_configs
 import time
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class CharacterStageComponent(Component):

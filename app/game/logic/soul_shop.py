@@ -8,7 +8,7 @@ from shared.db_opear.configs_data.game_configs import soul_shop_config
 from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils.random_pick import random_multi_pick_without_repeat
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 import time
 
 
@@ -41,7 +41,7 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
         player.soul_shop.item_ids.remove(shop_id)
         player.soul_shop.save_data()
     except Exception:
-        log.DEBUG("can not find shop id:" + str(shop_id)+str(player.soul_shop.item_ids))
+        logger.debug("can not find shop id:" + str(shop_id)+str(player.soul_shop.item_ids))
         common_response.result = False
         common_response.result_no = 501
         return response.SerializeToString()
@@ -60,14 +60,14 @@ def refresh_shop_items(dynamic_id, **kwargs):
 
     # cancel vip temprory
     # if max_shop_refresh_times <= player.soul_shop.refresh_times:
-    # log.DEBUG("already reach refresh max!")
+    # logger.debug("already reach refresh max!")
     #     shop.res.result = False
     #     shop.res.result_no = 501
     #     return shop.SerializePartialToString()
 
     price = player.soul_shop.price
     if player.finance.gold < price:
-        log.DEBUG("gold not enough!")
+        logger.debug("gold not enough!")
         shop.res.result = False
         shop.res.result_no = 101
         return shop.SerializePartialToString()
@@ -78,10 +78,10 @@ def refresh_shop_items(dynamic_id, **kwargs):
     player.soul_shop.save_data()
 
     player.finance.gold -= price
-    log.DEBUG("refresh price:"+str(price))
+    logger.debug("refresh price:"+str(price))
     player.finance.save_data()
 
-    log.DEBUG("soul ids:" + str(ids))
+    logger.debug("soul ids:" + str(ids))
 
     for x in ids:
         shop.id.append(x)
@@ -97,21 +97,22 @@ def get_shop_items(dynamic_id, **kwargs):
     """获取商品列表"""
     player = kwargs.get('player')
     shop = GetShopItemsResponse()
-    log.DEBUG("get_shop_items1")
+    logger.debug("get_shop_items1")
     item_ids = player.soul_shop.item_ids
-    if len(item_ids) == 0:
-        player.soul_shop.item_ids = get_shop_item_ids()
-        player.soul_shop.save_data()
-        item_ids = player.soul_shop.item_ids
 
     for x in item_ids:
         shop.id.append(x)
 
-    log.DEBUG("get_shop_items2"+str(item_ids))
+    logger.debug("get_shop_items2"+str(item_ids))
     shop.res.result = True
     return shop.SerializePartialToString()
 
-
+def init_soul_shop_items(player):
+    """
+    init shop items when create character
+    """
+    player.soul_shop.item_ids = get_shop_item_ids()
+    player.soul_shop.save_data()
 
 
 def get_all_shop_items():
@@ -127,4 +128,3 @@ def get_shop_item_ids():
     items = get_all_shop_items()
     item_num = base_config.get('soulShopItemNum')
     return random_multi_pick_without_repeat(items, item_num)
-

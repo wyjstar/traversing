@@ -9,8 +9,7 @@ from gtwisted.core import reactor
 from gfirefly.utils import services
 from gfirefly.distributed.root import PBRoot, BilateralFactory
 from gfirefly.server.globalobject import GlobalObject
-from gtwisted.utils import log
-from gfirefly.server.logobj import loogoo
+from gfirefly.server.logobj import log_init
 from flask import Flask
 
 reactor = reactor
@@ -54,8 +53,7 @@ class Master:
         GlobalObject().root = self.root
         GlobalObject().webroot = self.webroot
         if masterlog:
-            log.addObserver(loogoo(masterlog))  #日志处理
-        log.startLogging(sys.stdout)
+            log_init(masterlog)  #日志处理
         import webapp
         import rootapp
 

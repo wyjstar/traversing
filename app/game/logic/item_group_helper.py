@@ -12,7 +12,7 @@ from app.game.core.hero import Hero
 from app.proto_file.hero_pb2 import HeroPB
 from app.proto_file.player_pb2 import FinancePB
 from shared.utils.const import *
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 def is_afford(player, item_group):
@@ -174,7 +174,7 @@ def gain(player, item_group, result=None):
             player.equipment_chip_component.save_data()
         elif type_id == const.STAMINA:
             player.stamina.stamina += num
-            log.DEBUG(str(num)+" , stamina+++++++++++")
+            logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
         result.append([type_id, num, item_no])
     return result
@@ -235,16 +235,3 @@ def get_return(player, return_data, game_resources_response):
             game_resources_response.stamina += item_num
 
     print game_resources_response
-
-
-
-
-
-
-
-
-
-
-
-
-

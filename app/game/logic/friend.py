@@ -3,7 +3,6 @@
 created by server on 14-7-17下午5:21.
 """
 import datetime
-from twisted.python import log
 from app.game.core.fight.battle_unit import BattleUnit
 
 from app.game.logic.common.check import have_player
@@ -15,6 +14,8 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.game.action.root.netforwarding import push_object
 from app.game.action.root.netforwarding import push_message
+from gfirefly.server.logobj import logger
+
 
 @have_player
 def add_friend_request(dynamic_id, data, **kwargs):
@@ -65,7 +66,7 @@ def add_friend_request(dynamic_id, data, **kwargs):
 def add_friend_request_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.add_applicant(target_id)
-    return True
+    return result
 
 
 @have_player
@@ -113,7 +114,7 @@ def become_friends(dynamic_id, data, **kwargs):
 def become_friends_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.add_friend(target_id, False)
-    return True
+    return result
 
 
 @have_player
@@ -183,7 +184,7 @@ def del_friend(dynamic_id, data, **kwargs):
 def del_friend_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
     result = player.friends.del_friend(target_id, False)
-    return True
+    return result
 
 
 @have_player
@@ -264,7 +265,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_friend_add.physical_def = battle_unit.physical_def
                 response_friend_add.magic_def = battle_unit.magic_def
         else:
-            log.err('get_player_friend_list, cant find player id:%d' % pid)
+            logger.error('get_player_friend_list, cant find player id:%d' % pid)
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObjData(pid)
@@ -285,7 +286,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_blacklist_add.physical_def = info.get('physical_def', 0)
                 response_blacklist_add.magic_def = info.get('magic_def', 0)
         else:
-            log.err('get_player_friend_list, cant find player id:%d' % pid)
+            logger.error('get_player_friend_list, cant find player id:%d' % pid)
 
     for pid in player.friends.applicant_list:
         player_data = tb_character_info.getObjData(pid)
@@ -306,7 +307,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
                 response_applicant_list_add.physical_def = info.get('physical_def', 0)
                 response_applicant_list_add.magic_def = info.get('magic_def', 0)
         else:
-            log.err('get_player_friend_list, cant find player id:' % pid)
+            logger.error('get_player_friend_list, cant find player id:' % pid)
 
     return response.SerializePartialToString()
 
@@ -342,3 +343,25 @@ def find_friend_request(dynamic_id, data, **kwargs):
             response.nickname = player_data.get('nickname')
 
     return response.SerializePartialToString()
+
+
+@have_player
+def given_stamina(dynamic_id, data, **kwargs):
+    response = CommonResponse()
+    response.result = True
+    response.result_no = 0
+    request = friend_pb2.FriendCommon()
+    request.ParseFromString(data)
+
+    player = kwargs.get('player')
+
+    request = friend_pb2.FriendCommon()
+    request.ParseFromString(data)
+    target_id = request.target_ids[0]
+
+    if not player.given_stamina(target_id):
+        response.result = False
+        response.result_no = 1  # fail
+        return response.SerializePartialToString()  # fail
+
+    return response.SerializePartialToString()  # fail

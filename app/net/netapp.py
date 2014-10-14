@@ -6,7 +6,7 @@ Created on 2013-8-14
 '''
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.utils.services import CommandService
-from gtwisted.utils import log
+from gfirefly.server.logobj import logger
 
 
 class NetCommandService(CommandService):
@@ -19,10 +19,10 @@ class NetCommandService(CommandService):
         '''
         target = self.getTarget(0)
         if not target:
-            log.err('the command '+str(targetKey)+' not Found on service')
+            logger.error('the command '+str(targetKey)+' not Found on service')
             return None
         if targetKey not in self.unDisplay:
-            log.msg("call method %s on service[single]" % target.__name__)
+            logger.info("call method %s on service[single]" % target.__name__)
         response = target(targetKey, *args, **kw)
         return response
 
@@ -41,7 +41,7 @@ GlobalObject().netfactory.addServiceChannel(netservice)
 def Forwarding_0(keyname, _conn, data):
     """消息转发，将客户端发送的消息请求转发给gateserver分配处理
     """
-    log.msg("forwarding_0++++++++++++++++++++++++++++++++++++")
+    logger.info("forwarding_0++++++++++++++++++++++++++++++++++++")
 
     if keyname == 100002:
         return data

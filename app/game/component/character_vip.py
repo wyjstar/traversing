@@ -26,6 +26,7 @@ class CharacterVIPComponent(Component):
     @vip_level.setter
     def vip_level(self, vip_level):
         self._vip_level = vip_level
+        self.update_vip()
 
     @property
     def open_sweep(self):
