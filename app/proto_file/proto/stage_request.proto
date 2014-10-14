@@ -24,5 +24,10 @@ message StageSettlementRequest{
 	required int32 result = 2;  //输赢
 }
 
+// 扫荡 command:907
+message StageSweepRequest{
+	required int32 stage_id = 1; //关卡编号
+	required int32 times = 2;  //扫荡次数
+}
 
 
