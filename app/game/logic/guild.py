@@ -46,6 +46,11 @@ def create_guild(dynamicid, data, **kwargs):
         response.message = "您已加入公会"
         return response.SerializeToString()
 
+    if not g_name:
+        response.result = False
+        response.message = "公会名不能为空"
+        return response.SerializeToString()
+
     match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', unicode(g_name, "utf-8"))
     if match:
         response.result = False
