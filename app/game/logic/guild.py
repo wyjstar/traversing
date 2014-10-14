@@ -244,12 +244,12 @@ def exit_guild(dynamicid, data, **kwargs):
             p_list1 = p_list.get(tihuan_position)
             p_list1.remove(tihuan_id)
 
-            p_list.update({1: [tihuan_id], tihuan_position: p_list1})
-
             player.guild.g_id = 0
             player.guild.exit_time = int(time.time())
             player.guild.save_data()
 
+            guild_obj.p_list.update({1: [tihuan_id], tihuan_position: p_list1})
+            guild_obj.p_num -= 1
             guild_obj.save_data()
 
             # 退出公会聊天
