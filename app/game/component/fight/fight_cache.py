@@ -158,7 +158,7 @@ class CharacterFightCacheComponent(Component):
                                           monster_config.dodge, monster_config.cri, monster_config.criCoeff,
                                           monster_config.criDedCoeff, monster_config.block, pos, level, break_level,
                                           is_boss)
-                logger.info('怪物ID：%s' % monster_config.id, logLevel=10)
+                logger.info('怪物ID：%s' % monster_config.id)
                 round_monsters.append(battle_unit)
             monsters.append(round_monsters)
 
@@ -301,7 +301,7 @@ class CharacterFightCacheComponent(Component):
 
         rand_odds = random.random()
 
-        logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units), logLevel=10)
+        logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units))
         if break_config and rand_odds <= odds:
             replace = []  # 可以替换的英雄
             for red_unit in red_units:
@@ -311,13 +311,13 @@ class CharacterFightCacheComponent(Component):
                 if hero_no in self._not_replace:
                     continue
                 replace.append(red_unit)
-            logger.info('乱入可以替换的战斗单位: %s' % replace, logLevel=10)
+            logger.info('乱入可以替换的战斗单位: %s' % replace)
             if not replace:
                 return None, 0
 
             red_unit = random.choice(replace)  # 选出可以替换的单位
 
-            logger.info('乱入被替换战斗单位属性: %s' % red_unit, logLevel=10)
+            logger.info('乱入被替换战斗单位属性: %s' % red_unit)
 
             old_hero_obj = self.owner.line_up_component.get_hero_obj(red_unit.no)
 
@@ -337,7 +337,7 @@ class CharacterFightCacheComponent(Component):
             attr += equ_attr
             unit = self.__assemble_hero(hero_base_attr, attr, hero_id)
             unit.position = red_unit.position
-            logger.info('乱入替换战斗单位属性: %s' % unit, logLevel=10)
+            logger.info('乱入替换战斗单位属性: %s' % unit)
             if red_unit in red_units:
                 index = red_units.index(red_unit)
                 # red_units[index] = unit
