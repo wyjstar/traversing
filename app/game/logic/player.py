@@ -36,7 +36,7 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     if match:
         response.result = False
         response.result_no = 1
-        print 'not support emoji'
+        logger.info('not support emoji')
         return response.SerializeToString()
 
     if trie_tree.check.replace_bad_word(nickname) != nickname:
@@ -45,10 +45,7 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    start_time = time.time()
     data = tb_nickname_mapping.getObjData(nickname)
-    end_time = time.time()
-    print 'command 5 :', end_time - start_time
     if data:
         response.result = False
         response.result_no = 1

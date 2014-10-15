@@ -3,6 +3,7 @@
 Created on 2013-8-6
 modify on 2014-10-8
 """
+import sys
 import logging
 from logging.handlers import DatagramHandler
 from shared.utils import const
@@ -24,7 +25,7 @@ def log_init(log_path):
     fh.setFormatter(formatter)
     _logger.addHandler(fh)
 
-    ch = logging.StreamHandler()
+    ch = logging.StreamHandler(sys.stdout)
     ch.setLevel(logging.DEBUG)
     ch.setFormatter(formatter)
     _logger.addHandler(ch)

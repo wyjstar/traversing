@@ -99,7 +99,7 @@ def hero_sacrifice(dynamicid, data, **kwargs):
     args.ParseFromString(data)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
     if len(heros) == 0:
-        print "hero %s is not exists." % str(args.hero_nos)
+        logger.error("hero %s is not exists." % str(args.hero_nos))
     response = hero_sacrifice_oper(heros, player)
     # remove hero
     player.hero_component.delete_heros_by_nos(args.hero_nos)
@@ -156,7 +156,7 @@ def hero_compose(dynamicid, data, **kwargs):
     hero_no = chip_config.get("chips").get(hero_chip_no).combineResult
     need_num = chip_config.get("chips").get(hero_chip_no).needNum
     if not hero_no or not need_num:
-        print ("chip_config数据不全!")
+        logger.error("chip_config数据不全!")
     hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
     # 服务器校验
     if hero_chip.num < need_num:

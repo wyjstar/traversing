@@ -143,7 +143,7 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
 
         character_info = tb_character_info.getObjData(pid)
-        print 'character info:', character_info
+        # print 'character info:', character_info
         if character_info:
             return False
         return True

@@ -234,4 +234,4 @@ def get_return(player, return_data, game_resources_response):
         elif const.STAMINA == item_type:
             game_resources_response.stamina += item_num
 
-    print game_resources_response
+    logger.debug(game_resources_response)
