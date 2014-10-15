@@ -12,6 +12,7 @@ import time
 from app.game.redis_mode import tb_character_guild
 from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank, push_object, del_guild_room
 from app.game.redis_mode import tb_character_info
+from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
@@ -732,7 +733,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
 
     # 得到公会排行
     ranks = get_guild_rank_from_gate()
-    rank_num = len(ranks)
+    rank_num = 1
     for rank in ranks:
         data1 = tb_guild_info.getObjData(rank[0])
         if data1 and rank != 0:
@@ -741,8 +742,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
             guild_rank = response.guild_rank.add()
             guild_rank.g_id = guild_obj.g_id
             guild_rank.rank = rank_num
-            rank_num -= 1
-            print guild_obj.name, type(guild_obj.name)
+            rank_num += 1
             guild_rank.name = guild_obj.name
             guild_rank.level = guild_obj.level
 
@@ -752,7 +752,8 @@ def get_guild_rank(dynamicid, data, **kwargs):
                 if player_data.get('nickname'):
                     guild_rank.president = player_data.get('nickname')
                 else:
-                    guild_rank.president = '无名'
+                    logger.info('guild rank ,president name is null')
+                    guild_rank.president = u'无名'
             else:
                 guild_rank.president = '错误'
 
@@ -796,7 +797,10 @@ def get_role_list(dynamicid, data, **kwargs):
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
 
-                    role_info.name = character_info['nickname']
+                    if character_info.get('nickname'):
+                        role_info.name = character_info['nickname']
+                    else:
+                        role_info.name = u'无名'
                     role_info.level = character_info['level']
 
                     role_info.position = guild_info.get("position")
@@ -877,7 +881,7 @@ def get_apply_list(dynamicid, data, **kwargs):
             if character_info['nickname']:
                 role_info.name = character_info['nickname']
             else:
-                role_info.name = '无名'
+                role_info.name = u'无名'
             role_info.level = character_info['level']
             role_info.vip_level = character_info['vip_level']
             role_info.fight_power = 1
