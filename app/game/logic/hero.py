@@ -132,7 +132,7 @@ def hero_sacrifice_oper(heros, player):
 
     keys = []
     try:
-        keys = sorted([int(item) for item in list(exp_items)])
+        keys = sorted([int(item) for item in list(exp_items)], reverse=True)
     except Exception:
         log.err("base_config sacrificeGainExp key must be int type:%s.", str(exp_items))
         return
