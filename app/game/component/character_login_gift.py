@@ -47,9 +47,15 @@ class CharacterLoginGiftComponent(Component):
                     continuous_login_config = activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
                     if data.get('continuous_day')[1] and (data.get('continuous_day')[0]+1) <= continuous_login_config.get('parameterB'):
                         # 新手连续登录活动
-                        self._continuous_day[0] = data.get('continuous_day')[0] + 1
-                        self._continuous_day[1] = 1
-                        self._continuous_received = data.get('continuous_received')
+                        # TODO  判断是不是昨天！！！！！！！！！！！！！！！！！！！！！！！
+                        if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday-1:
+                            self._continuous_day[0] = data.get('continuous_day')[0] + 1
+                            self._continuous_day[1] = 1
+                            self._continuous_received = data.get('continuous_received')
+                        else:  # 不是昨天
+                            self._continuous_day[0] = 1
+                            self._continuous_day[1] = 1
+                            self._continuous_received = data.get('continuous_received')
                     else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
                         self._continuous_day[0] = data.get('continuous_day')[0]
                         self._continuous_day[1] = 1
@@ -64,8 +70,7 @@ class CharacterLoginGiftComponent(Component):
                                                       'continuous_received': [],
                                                       'cumulative_received': [],
                                                       'continuous_day': [1, 1],
-                                                      'cumula'
-                                                      'tive_day': [1, 1]}})
+                                                      'cumulative_day': [1, 1]}})
 
     def save_data(self):
         sign_in_data = tb_character_activity.getObj(self.owner.base_info.id)
