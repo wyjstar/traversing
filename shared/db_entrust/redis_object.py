@@ -124,7 +124,8 @@ class RedisObject(Serializer):
         del nowdict['_client']
         keys = nowdict.keys()
         keys = [self.produceKey(key) for key in keys]
-        self._client.delete(keys)
+        for key in keys:
+            self._client.delete(key)
 
     def incr(self, key, delta):
         """自增
