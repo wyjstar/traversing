@@ -241,7 +241,4 @@ CREATE TABLE `tb_mail_info` (
 -- Table structure for table `tb_nickname_mapping`
 --
 
-DROP TABLE IF EXISTS `tb_nickname_mapping`;
-
-
 -- Dump completed on 2014-09-29 15:45:13
