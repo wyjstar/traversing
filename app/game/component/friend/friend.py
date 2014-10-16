@@ -19,7 +19,7 @@ class FriendComponent(Component):
         friend_data = tb_character_friend.getObjData(self.owner.base_info.id)
 
         if friend_data:
-            self._friends = friend_data.get('friends_given')
+            self._friends = friend_data.get('friends')
             if not self._friends:
                 self._friends = {}
             self._blacklist = friend_data.get('blacklist')
@@ -31,13 +31,13 @@ class FriendComponent(Component):
                 len(self._applicants_list)
         if count > 0:
             if friend_obj:
-                data = {'friends_given': self._friends,
+                data = {'friends': self._friends,
                         'blacklist': self._blacklist,
                         'applicants_list': self._applicants_list}
                 friend_obj.update_multi(data)
             else:
                 data = {'id': self.owner.base_info.id,
-                        'friends_given': self._friends,
+                        'friends': self._friends,
                         'blacklist': self._blacklist,
                         'applicants_list': self._applicants_list}
                 tb_character_friend.new(data)
