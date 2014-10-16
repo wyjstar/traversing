@@ -105,10 +105,10 @@ class CharacterHerosComponent(Component):
         hero_id = self.get_hero_id(hero.hero_no)
         hero = tb_character_hero.getObj(hero_id)
         if hero:
-            logger.error("hero no %s has existed!" % hero_id)
+            logger.error("error:hero no %s has existed!" % hero_id)
             return
         data = {
-            'id': self.get_hero_id(hero.hero_no),
+            'id': hero_id,
             'character_id': character_id,
             'property': hero_property
         }
