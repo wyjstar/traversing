@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2013-8-21
 
 @author: lan (www.9miao.com)
-'''
+"""
 import itertools
 import datetime
 
@@ -717,6 +717,3 @@ class SQLProducer:
 
 
 sqlproducer = SQLProducer()
-
-
-    

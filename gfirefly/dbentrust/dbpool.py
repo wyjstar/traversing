@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2013-5-8
 
 @author: lan (www.9miao.com)
-'''
+"""
 try:
     import pymysql as MySQLdb
     _pymysql = True
@@ -38,5 +38,3 @@ class DBPool(object):
 
 #数据库连接池对象
 dbpool = DBPool()
-
-
