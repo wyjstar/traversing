@@ -7,8 +7,9 @@ import re
 from app.game.action.root.netforwarding import login_chat
 
 from app.game.logic.common.check import have_player
-from app.game.redis_mode import tb_nickname_mapping, tb_character_info
+from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
+from gfirefly.dbentrust import util
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
@@ -45,16 +46,11 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    data = tb_nickname_mapping.getObjData(nickname)
-    if data:
+    sql_result = util.GetOneRecordInfo('tb_character_info', dict(nickname=nickname))
+    if sql_result:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()
-
-    player.base_info.base_name = nickname
-    nickname_data = dict(id=player.base_info.id, nickname=nickname)
-    nickname_mmode = tb_nickname_mapping.new(nickname_data)
-    nickname_mmode.insert()
 
     character_obj = tb_character_info.getObj(player.base_info.id)
     if not character_obj:
