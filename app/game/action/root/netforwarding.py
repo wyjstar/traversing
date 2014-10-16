@@ -60,9 +60,10 @@ def push_message(topic_id, character_id, *args, **kw):
         player = PlayersManager().get_player_by_id(character_id)
         if player:
             pargs = (player.dynamic_id, True) + args
-            get_gate_remote()._reference.callTarget(*pargs, **kw)
-        get_gate_remote().callRemote("push_message",
-                                     topic_id,
-                                     character_id,
-                                     args,
-                                     kw)
+            return get_gate_remote()._reference.callTarget(*pargs, **kw)
+        else:
+            return get_gate_remote().callRemote("push_message",
+                                         topic_id,
+                                         character_id,
+                                         args,
+                                         kw)
