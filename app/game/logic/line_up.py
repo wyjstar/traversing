@@ -28,7 +28,7 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     @param kwargs:
     @return:
     """
-    logger.debug("change hero: slot_no, hero_no, change_type", slot_no, hero_no, change_type)
+    logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d", slot_no, hero_no, change_type)
 
 
     player = kwargs.get('player')

@@ -143,7 +143,7 @@ def send_mail(dynamic_id, mail, **kwargs):
     mail['send_time'] = int(time.time())
     receive_id = mail['receive_id']
     # command:id 为收邮件的命令ID
-    netforwarding.push_message(1305, receive_id, mail)
+    return netforwarding.push_message(1305, receive_id, mail)
 
 
 @have_player
