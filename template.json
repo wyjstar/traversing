@@ -116,7 +116,7 @@
         "charset": "utf8"
     },
     "memcached": {
-        "urls": ["127.0.0.1:6379"],
-        "hostname": "redis"
+        "urls": ["127.0.0.1:11211"],
+        "hostname": "mem"
     }
 }

@@ -8,7 +8,7 @@ memcached 关系对象\n
 '''
 
 
-class MemObject:
+class MemObject(object):
     '''memcached 关系对象,可以将一个对象的属性值记录到memcached中。
     
     >>> class Mcharacter(MemObject):

@@ -53,6 +53,7 @@ def register_madmin():
     # 邮件表
     MAdminManager().registe(memmode.tb_mail_info)
 
+
 def check_mem_db(delta):
     """同步内存数据到数据库
     """
