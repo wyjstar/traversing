@@ -102,6 +102,11 @@ class CharacterHerosComponent(Component):
     def new_hero_data(self, hero):
         character_id = self.owner.base_info.id
         hero_property = hero.hero_proerty_dict()
+        hero_id = self.get_hero_id(hero.hero_no)
+        hero = tb_character_hero.getObj(hero_id)
+        if hero:
+            logger.error("hero no %s has existed!" % hero_id)
+            return
         data = {
             'id': self.get_hero_id(hero.hero_no),
             'character_id': character_id,
