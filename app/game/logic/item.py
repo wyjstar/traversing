@@ -23,7 +23,7 @@ def get_items(dynamic_id, **kwargs):
         _item = response.items.add()
         _item.item_no = item.item_no
         _item.item_num = item.num
-        logger.debug("get items:", item.item_no, item.num)
+        logger.debug("get items:%d  %d" % (item.item_no, item.num))
     return response.SerializePartialToString()
 
 
