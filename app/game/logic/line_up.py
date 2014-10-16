@@ -62,7 +62,7 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @param equipment_id: 装备ID
     @return:
     """
-    logger.debug("change equipment id %d %d %d", slot_no, no, equipment_id)
+    logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
     player = kwargs.get('player')
     response = line_up_pb2.LineUpResponse()
 
