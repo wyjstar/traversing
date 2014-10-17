@@ -154,9 +154,11 @@ if __name__ == '__main__':
     #     print k, '='*5, v
     #     for _ in v:
     #         print _
-    for k,v in mail_config.items():
-        print k, ' : ', v
-    print mail_config
+    # for k,v in mail_config.items():
+    #     print k, ' : ', v
+    # print mail_config
+    stamina = mail_config.get(1)
+    print stamina.get('title')
 
 
 

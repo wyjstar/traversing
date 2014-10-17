@@ -4,8 +4,11 @@ created by server on 14-7-17下午5:21.
 """
 
 import datetime
+from app.game.action.root import netforwarding
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_friend
+from gfirefly.server.logobj import logger
+from shared.db_opear.configs_data import mail_config
 
 
 class FriendComponent(Component):
@@ -151,10 +154,27 @@ class FriendComponent(Component):
 
         given_time_list = self._friends[target_id]
         given_times = len(given_time_list)
-        if given_times != 1:
+        if given_times >= 1:
             return False
 
-        # todo given stamina
-        given_time_list.append(datetime.datetime.now())
+        stamina_mail = mail_config.get(1)
+        if stamina_mail:
+            mail = dict(sender_id=self.owner.base_info.id,
+                        sender_name=self.owner.base_info.base_name,
+                        receive_id=target_id,
+                        title=mail_config.get('title'),
+                        content=mail_config.get('content'),
+                        mail_type=mail_config.get('type'),
+                        send_time=int(datetime.time.time()),
+                        prize=mail_config.get('rewards'))
 
-        return True
+            # command:id 为收邮件的命令ID
+            if netforwarding.push_message(1305, target_id, mail):
+                given_time_list.append(datetime.datetime.now())
+                return True
+            else:
+                logger.error('stamina mail push message fail')
+        else:
+            logger.error('can not find stamina mail!!!')
+
+        return False
