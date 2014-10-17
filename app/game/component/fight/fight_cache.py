@@ -298,11 +298,14 @@ class CharacterFightCacheComponent(Component):
     def __break_hero_units(self, red_units):
         odds = self.__get_break_stage_odds()
         break_config = self.__get_stage_break_config()
+        if not break_config:
+            logger.error('can not find stage break config')
+            return None, 0
 
         rand_odds = random.random()
 
         logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units))
-        if break_config and rand_odds <= odds:
+        if rand_odds <= odds:
             replace = []  # 可以替换的英雄
             for red_unit in red_units:
                 if not red_unit:
