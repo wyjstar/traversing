@@ -337,10 +337,10 @@ def find_friend_request(dynamic_id, data, **kwargs):
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')
     else:
-        sql_result = util.GetOneRecordInfo('tb_character_info', dict(nickname=nickname))
+        sql_result = util.GetOneRecordInfo('tb_character_info', dict(request.id_or_nickname))
         if sql_result:
-            response.id = player_data.get('id')
-            response.nickname = player_data.get('nickname')
+            response.id = sql_result.get('id')
+            response.nickname = sql_result.get('nickname')
 
     return response.SerializePartialToString()
 
