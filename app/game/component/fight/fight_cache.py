@@ -195,7 +195,7 @@ class CharacterFightCacheComponent(Component):
             odds_config = getattr(stage_break_config, 'odds%d' % i)  # 乱入几率
             if self.check_condition(condition_config):
                 odds += odds_config
-            logger.info('乱入条件: %s odds:%f' % (condition_config, odds))
+            logger.info('乱入条件: %s odds:%f not replace:%s' % (condition_config, odds, self._not_replace))
 
         return odds
 
@@ -234,6 +234,7 @@ class CharacterFightCacheComponent(Component):
 
     def check_hero(self, condition_param):
         hero_nos = self.owner.line_up_component.hero_nos
+        logger.info('hero nos:%s', hero_nos)
         if condition_param in hero_nos:
             self._not_replace.append(condition_param)
             return True
@@ -241,26 +242,36 @@ class CharacterFightCacheComponent(Component):
 
     def check_equ(self, condition_param):
         for slot in self.line_up_slots.values():
+            if slot.equipment_nos:
+                logger.info('slot equipment nos:%s', slot.equipment_nos)
             if condition_param in slot.equipment_nos:
                 return True
         return False
 
     def check_suit(self, condition_param):
         for slot in self.line_up_slots.values():
+            if slot.equ_suit:
+                logger.info('slot equ suit:%s', slot.equ_suit.keys())
             if condition_param in slot.equ_suit:
                 return True
         return False
 
     def check_link(self, condition_param):
         for slot in self.line_up_slots.values():
+            if slot.hero_slot.hero_no in self._not_replace:
+                continue
             if condition_param in slot.hero_slot.link:
                 link_config = game_configs.link_config.get(slot.hero_slot.hero_no)
                 for i in (1, 6):
                     link = getattr(link_config, 'link%s' % i)
+                    if link:
+                        logger.info('slot hero no%s, link:%s' % (slot.hero_slot.hero_no, link))
                     if condition_param == link:
                         trigger = getattr(link_config, 'trigger%s' % i)
-                        self._not_replace.extend(trigger)
-                return True
+                        if (set(trigger) & set(self.owner.line_up_component.hero_nos)) == set(trigger):
+                            self._not_replace.extend(slot.hero_slot.hero_no)
+                            self._not_replace.extend(trigger)
+                            return True
         return False
 
     def fighting_start(self):
@@ -296,6 +307,7 @@ class CharacterFightCacheComponent(Component):
         return drops
 
     def __break_hero_units(self, red_units):
+        self._not_replace = []
         odds = self.__get_break_stage_odds()
         break_config = self.__get_stage_break_config()
         if not break_config:
