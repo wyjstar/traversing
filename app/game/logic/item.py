@@ -75,8 +75,8 @@ def use_item(dynamic_id, pro_data, **kwargs):
         get_return(player, return_data, response.gain)
 
 
-    logger.debug("item_no:", item_no)
-    logger.debug("item_num:", item_num)
+    logger.debug("item_no:%s", item_no)
+    logger.debug("item_num:%s", item_num)
     player.item_package.consume_item(item_no, item_num)
 
     return response.SerializeToString()
