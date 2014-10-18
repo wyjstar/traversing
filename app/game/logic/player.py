@@ -7,8 +7,9 @@ import re
 from app.game.action.root.netforwarding import login_chat
 
 from app.game.logic.common.check import have_player
-from app.game.redis_mode import tb_nickname_mapping, tb_character_info
+from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
+from gfirefly.dbentrust import util
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
@@ -23,7 +24,7 @@ def init_player(player):
         player.create_character_data()
     player.init_player_info()
     if new_character:
-        log.DEBUG("mock player info.....")
+        logger.debug("mock player info.....")
         init(player)
         init_soul_shop_items(player)
 
@@ -36,7 +37,7 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     if match:
         response.result = False
         response.result_no = 1
-        print 'not support emoji'
+        logger.info('not support emoji')
         return response.SerializeToString()
 
     if trie_tree.check.replace_bad_word(nickname) != nickname:
@@ -45,19 +46,11 @@ def nickname_create(dynamic_id, nickname, **kwargs):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    start_time = time.time()
-    data = tb_nickname_mapping.getObjData(nickname)
-    end_time = time.time()
-    print 'command 5 :', end_time - start_time
-    if data:
+    sql_result = util.GetOneRecordInfo('tb_character_info', dict(nickname=nickname))
+    if sql_result:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()
-
-    player.base_info.base_name = nickname
-    nickname_data = dict(id=player.base_info.id, nickname=nickname)
-    nickname_mmode = tb_nickname_mapping.new(nickname_data)
-    nickname_mmode.insert()
 
     character_obj = tb_character_info.getObj(player.base_info.id)
     if not character_obj:

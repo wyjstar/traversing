@@ -59,6 +59,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     if state == -2:
         return {'result': False, 'result_no': 803}  # 803 未开启
 
+
     if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
         #星期限制
@@ -173,3 +174,12 @@ def get_warriors(dynamic_id, **kwargs):
                     buffs.append(buff_id)
     logger.info('warriors: %s' % response)
     return response.SerializePartialToString()
+
+
+@have_player
+def stage_sweep(dynamic_id, stage_id, times, **kwargs):
+    player = kwargs.get('player')
+    #
+    # settlement_drops = fight_cache_component.fighting_settlement(result)
+    # data = gain(player, settlement_drops)
+    # get_return(player, data, drops)

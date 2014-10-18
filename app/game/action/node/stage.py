@@ -2,7 +2,7 @@
 """
 created by server on 14-7-17下午6:21.
 """
-from app.game.logic.stage import get_chapter_info
+from app.game.logic.stage import get_chapter_info, stage_sweep
 from app.game.logic.stage import get_stage_info
 from app.game.logic.stage import fight_start
 from app.game.logic.stage import fight_settlement
@@ -120,7 +120,7 @@ def stage_start_903(dynamic_id, pro_data):
         assemble(friend, f_unit)
     if replace_unit:
         assemble(response.replace, replace_unit)
-    logger.info('进入关卡返回数据:', response)
+    # logger.debug('进入关卡返回数据:%s', response)
     return response.SerializePartialToString()
 
 
@@ -140,6 +140,17 @@ def get_warriors_906(dynamic_id, pro_data):
     """请求无双
     """
     return get_warriors(dynamic_id)
+
+
+@remote_service_handle
+def stage_sweep_907(dynamic_id, pro_data):
+    request = stage_request_pb2.StageSweepRequest()
+    request.ParseFromString(pro_data)
+    stage_id = request.stage_id
+    times = request.times
+    drops = stage_sweep(dynamic_id, stage_id, times)
+
+    return drops
 
 
 def assemble(unit_add, unit):

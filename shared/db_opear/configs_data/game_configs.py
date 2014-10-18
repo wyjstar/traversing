@@ -11,6 +11,7 @@ from shared.db_opear.configs_data.equipment.set_equipment_config import SetEquip
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.link_config import LinkConfig
+from shared.db_opear.configs_data.mail_config import MailConfig
 from shared.db_opear.configs_data.monster_config import MonsterConfig
 from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
@@ -99,6 +100,7 @@ activity_config = {}
 vip_config = {}
 stage_break_config = {}
 special_stage_config = {}
+mail_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -127,6 +129,7 @@ all_config_name = {
     'vip_config': VIPConfig(),
     'stage_break_config': StageBreakConfig(),
     'special_stage_config': SpecialStageConfig(),
+    'mail_config': MailConfig()
 }
 
 
@@ -151,7 +154,11 @@ if __name__ == '__main__':
     #     print k, '='*5, v
     #     for _ in v:
     #         print _
-    print stage_break_config.get(11, None)
+    # for k,v in mail_config.items():
+    #     print k, ' : ', v
+    # print mail_config
+    stamina = mail_config.get(1)
+    print stamina.get('title')
 
 
 

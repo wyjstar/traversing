@@ -42,7 +42,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     player = kwargs.get('player')
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
-    print equipment_obj, "equipment_obj"
+    # print equipment_obj, "equipment_obj"
 
     if enhance_type == 2 and not player.vip_component.equipment_strength_one_key:
         logger.debug('enhance_equipment_vip_error!%d' % player.vip_component.equipment_strength_one_key)
@@ -62,7 +62,7 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
 
     if equipment_obj.attribute.strengthen_lv > 200 or \
         equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
-        print "reach max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
+        # print "reach max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
         return {'result': False, 'result_no': 402, 'message': u''}
 
 
@@ -90,7 +90,7 @@ def __do_enhance(player, equipment_obj):
 
     before_lv, after_lv = equipment_obj.enhance(player)
 
-    print before_lv, after_lv, "before_lv, after_lv"
+    # print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
 
     return {'result': True, 'record':(before_lv, after_lv, enhance_cost)}
@@ -109,7 +109,7 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
 
     compose_num = chip.compose_num
     chip_num = chip.chip_num
-    print "chip_num", compose_num, chip_num
+    # print "chip_num", compose_num, chip_num
     # 碎片不足
     if chip_num < compose_num:
         return {'result': False, 'result_no': 102, 'message': u''}

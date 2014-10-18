@@ -43,13 +43,6 @@
                 "create_time": "simple"
             }
         },
-        "tb_nickname_mapping": {
-            "pkey_field": "nickname",
-            "def_attrs": {
-                "id": "simple",
-                "nickname": "simple"
-            }
-        },
         "tb_character_heros": {
             "pkey_field": "id",
             "def_attrs": {

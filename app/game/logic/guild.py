@@ -12,6 +12,7 @@ import time
 from app.game.redis_mode import tb_character_guild
 from app.game.action.root.netforwarding import get_guild_rank_from_gate, add_guild_to_rank, push_object, del_guild_room
 from app.game.redis_mode import tb_character_info
+from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
@@ -267,7 +268,6 @@ def exit_guild(dynamicid, data, **kwargs):
         logout_guild_chat(dynamicid)
         response.result = True
         return response.SerializeToString()
-
     response.result = False
     response.message = "您不在此公会"
     return response.SerializeToString()
@@ -356,16 +356,32 @@ def deal_apply(dynamicid, data, **kwargs):
                     guild_obj.apply.remove(p_id)
                     response.p_ids.append(p_id)
                 continue
-            data = {
-                'info': {'g_id': player.guild.g_id,
-                         'position': 5,
-                         'contribution': 0,
-                         'all_contribution': 0,
-                         'k_num': 0,
-                         'worship': 0,
-                         'worship_time': 1,
-                         'exit_time': 1}}
-            p_guild_data = tb_character_guild.getObj(p_id)
+            # 加入公会聊天室
+            invitee_player = PlayersManager().get_player_by_id(p_id)
+            if invitee_player:  # 在线
+                login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
+                invitee_player.guild.g_id = player.guild.g_id
+                invitee_player.guild.position = 5
+                invitee_player.guild.contribution = 0
+                invitee_player.guild.all_contribution = 0
+                invitee_player.guild.k_num = 0
+                invitee_player.guild.worship = 0
+                invitee_player.guild.worship_time = 1
+                invitee_player.guild.exit_time = 1
+                invitee_player.guild.save_data()
+            else:
+                data = {
+                    'info': {'g_id': player.guild.g_id,
+                             'position': 5,
+                             'contribution': 0,
+                             'all_contribution': 0,
+                             'k_num': 0,
+                             'worship': 0,
+                             'worship_time': 1,
+                             'exit_time': 1}}
+                p_guild_data = tb_character_guild.getObj(p_id)
+                p_guild_data.update_multi(data)
+
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(5):
@@ -375,14 +391,6 @@ def deal_apply(dynamicid, data, **kwargs):
                 else:
                     guild_obj.p_list.update({5: [p_id]})
                 guild_obj.p_num += 1
-            p_guild_data.update_multi(data)
-
-            # 加入公会聊天室
-            invitee_player = PlayersManager().get_player_by_id(p_id)
-            if invitee_player:  # 在线
-                login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
-                invitee_player.guild.g_id = player.guild.g_id
-                invitee_player.guild.save_data()
 
     elif res_type == 2:
         p_ids = args.p_ids
@@ -592,17 +600,23 @@ def promotion(dynamicid, data, **kwargs):
                 response.result = False
                 response.message = "未知错误"
                 return response.SerializeToString()
-            data = {
-                'info': {'g_id': info.get("g_id"),
-                         'position': m_position,
-                         'contribution': info.get("contribution"),
-                         'all_contribution': info.get("all_contribution"),
-                         'k_num': info.get("k_num"),
-                         'worship': info.get("worship"),
-                         'worship_time': info.get("worship_time"),
-                         'exit_time': info.get("exit_time")}}
-            p_guild_data = tb_character_guild.getObj(tihuan_id)
-            p_guild_data.update_multi(data)
+            invitee_player = PlayersManager().get_player_by_id(tihuan_id)
+            if invitee_player:  # 在线
+                logout_guild_chat(invitee_player.dynamic_id)
+                invitee_player.guild.position = m_position
+                invitee_player.guild.save_data()
+            else:
+                data = {
+                    'info': {'g_id': info.get("g_id"),
+                             'position': m_position,
+                             'contribution': info.get("contribution"),
+                             'all_contribution': info.get("all_contribution"),
+                             'k_num': info.get("k_num"),
+                             'worship': info.get("worship"),
+                             'worship_time': info.get("worship_time"),
+                             'exit_time': info.get("exit_time")}}
+                p_guild_data = tb_character_guild.getObj(tihuan_id)
+                p_guild_data.update_multi(data)
 
             p_list1 = p_list.get(m_position)
             p_list1.remove(m_p_id)
@@ -611,6 +625,7 @@ def promotion(dynamicid, data, **kwargs):
             p_list2.remove(tihuan_id)
             p_list2.append(m_p_id)
             response.p_id = tihuan_id
+
         else:  #此职位还没满
             p_list1 = p_list.get(m_position)
             p_list1.remove(m_p_id)
@@ -718,7 +733,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
 
     # 得到公会排行
     ranks = get_guild_rank_from_gate()
-    rank_num = len(ranks)
+    rank_num = 1
     for rank in ranks:
         data1 = tb_guild_info.getObjData(rank[0])
         if data1 and rank != 0:
@@ -727,7 +742,7 @@ def get_guild_rank(dynamicid, data, **kwargs):
             guild_rank = response.guild_rank.add()
             guild_rank.g_id = guild_obj.g_id
             guild_rank.rank = rank_num
-            rank_num -= 1
+            rank_num += 1
             guild_rank.name = guild_obj.name
             guild_rank.level = guild_obj.level
 
@@ -737,7 +752,8 @@ def get_guild_rank(dynamicid, data, **kwargs):
                 if player_data.get('nickname'):
                     guild_rank.president = player_data.get('nickname')
                 else:
-                    guild_rank.president = '无名'
+                    logger.info('guild rank ,president name is null')
+                    guild_rank.president = u'无名'
             else:
                 guild_rank.president = '错误'
 
@@ -781,7 +797,10 @@ def get_role_list(dynamicid, data, **kwargs):
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
 
-                    role_info.name = character_info['nickname']
+                    if character_info.get('nickname'):
+                        role_info.name = character_info['nickname']
+                    else:
+                        role_info.name = u'无名'
                     role_info.level = character_info['level']
 
                     role_info.position = guild_info.get("position")
@@ -810,6 +829,7 @@ def get_guild_info(dynamicid, data, **kwargs):
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
+
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
@@ -861,7 +881,7 @@ def get_apply_list(dynamicid, data, **kwargs):
             if character_info['nickname']:
                 role_info.name = character_info['nickname']
             else:
-                role_info.name = '无名'
+                role_info.name = u'无名'
             role_info.level = character_info['level']
             role_info.vip_level = character_info['vip_level']
             role_info.fight_power = 1

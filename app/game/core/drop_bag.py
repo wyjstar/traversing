@@ -4,6 +4,7 @@ created by server on 14-7-10上午11:32.
 """
 import random
 import copy
+from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import big_bag_config, small_bag_config
 from shared.db_opear.configs_data.common_item import CommonGroupItem
 from shared.utils.random_pick import *
@@ -14,7 +15,7 @@ class BigBag(object):
     def __init__(self, big_bag_config_id):
         self.big_bag = big_bag_config.get(big_bag_config_id)
         if not self.big_bag:
-            print "big_bag is None", big_bag_config_id, big_bag_config
+            logger.error("big_bag is None %s, %s", big_bag_config_id, big_bag_config)
 
     def get_drop_items(self):
         """获取大包内物品"""
@@ -30,8 +31,8 @@ class BigBag(object):
                     ids = random_multi_pick(items, small_bag_times)
                 for drop_id in ids:
                     drop_items.append(small_bag.get_drop_item(drop_id))
-        except Exception as ex:
-            print("config error!")
+        except Exception, e:
+            logger.exception(e)
         drop_item_group = []
         for drop_item in drop_items:
             drop_item_type = u'%s' % drop_item.item_type

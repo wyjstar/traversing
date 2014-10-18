@@ -9,8 +9,8 @@ from app.gate.core.virtual_character import VirtualCharacter
 from app.gate.core.virtual_character_manager import VCharacterManager
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import game_pb2
-from app.proto_file.common_pb2 import CommonResponse
-from app.proto_file.player_request_pb2 import CreatePlayerRequest
+from gfirefly.server.logobj import logger
+
 
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
@@ -48,10 +48,9 @@ def __character_login(dynamic_id):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 
-    print "user_id:",dynamic_id
+    logger.info("user_id:%d", dynamic_id)
     if not user:
         return {'result': False}
-
 
 
     # TODO 校验character_info 和  user 中id 是否相同

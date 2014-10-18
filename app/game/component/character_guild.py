@@ -41,6 +41,7 @@ class CharacterGuildComponent(Component):
                              'exit_time': self._exit_time}}
             tb_character_guild.new(data)
             return
+        character_guild = tb_character_guild.getObjData(p_id)
         info = character_guild.get("info")
         self._g_id = info.get("g_id")
         self._position = info.get("position")
@@ -50,15 +51,6 @@ class CharacterGuildComponent(Component):
         self._worship = info.get("worship")
         self._worship_time = info.get("worship_time")
         self._exit_time = info.get("exit_time")
-        data = {'id': p_id,
-                'info': {'g_id': self._g_id,
-                         'position': self._position,
-                         'contribution': self._contribution,
-                         'all_contribution': self._all_contribution,
-                         'k_num': self._k_num,
-                         'worship': self._worship,
-                         'worship_time': self._worship_time,
-                         'exit_time': self._exit_time}}
 
     def save_data(self):
         data = {

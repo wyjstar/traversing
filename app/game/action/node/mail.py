@@ -8,6 +8,7 @@ from app.game.logic.mail import get_mails, read_mail, delete_mail, \
 from app.proto_file.mailbox_pb2 import GetMailInfos, \
     ReadMailRequest, DeleteMailRequest, SendMailRequest
 from app.proto_file.common_pb2 import CommonResponse
+from gfirefly.server.logobj import logger
 
 
 @remote_service_handle
@@ -46,9 +47,9 @@ def send_mail_1304(dynamic_id, proto_data):
             'mail_type': mail.mail_type,
             'send_time': mail.send_time,
             'prize': mail.prize}
-    send_mail(dynamic_id, mail)
     response = CommonResponse()
-    response.result = True
+    response.result = send_mail(dynamic_id, mail)
+    logger.debug('send_mail_1304 %s', response.result)
     return response.SerializePartialToString()
 
 

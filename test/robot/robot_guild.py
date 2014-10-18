@@ -54,6 +54,7 @@ class RobotGuild(Robot):
         argument = StageStartResponse()
         argument.ParseFromString(message)
         print argument
+        self.on_command_finish()
 
         # argument1 = StageSettlementRequest()
         # argument1.stage_id = 700101

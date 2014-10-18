@@ -11,7 +11,7 @@ def init_line_up(player):
 
     slot = player.line_up_component.line_up_slots[1]
 
-    print '###1 init line up:', slot.__dict__
+    # print '###1 init line up:', slot.__dict__
 
     slot.activation = True
 
