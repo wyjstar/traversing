@@ -268,7 +268,9 @@ class CharacterFightCacheComponent(Component):
                         logger.info('slot hero no%s, link:%s' % (slot.hero_slot.hero_no, link))
                     if condition_param == link:
                         trigger = getattr(link_config, 'trigger%s' % i)
-                        if (set(trigger) & set(self.owner.line_up_component.hero_nos)) == set(trigger):
+                        set_trigger = set(trigger)
+                        set_hero_nos = set(self.owner.line_up_component.hero_nos)
+                        if (set_trigger & set_hero_nos) == set_trigger:
                             self._not_replace.extend(slot.hero_slot.hero_no)
                             self._not_replace.extend(trigger)
                             return True

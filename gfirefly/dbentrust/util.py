@@ -4,15 +4,14 @@ Created on 2013-5-8
 
 @author: lan (www.9miao.com)
 """
-import MySQLdb
+import pymysql
 
 from dbpool import dbpool
-from MySQLdb.cursors import DictCursor
+from pymysql.cursors import DictCursor
 from numbers import Number
 from gfirefly.server.logobj import logger
 
-import MySQLdb
-escape_string = MySQLdb.escape_string
+escape_string = pymysql.escape_string
 
 
 def force_str(text, encoding="utf-8", errors='strict'):
@@ -49,7 +48,7 @@ def _sqltext(data, delimiter=","):
 
 
 def forEachPlusInsertProps(tablename, props):
-    MySQLdb.escape_string
+    pymysql.escape_string
     assert type(props) == dict
     sqlstr = "INSERT INTO %s SET %s" % (tablename, _sqltext(props, ","))
     return sqlstr
