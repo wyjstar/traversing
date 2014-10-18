@@ -2,9 +2,6 @@
 """
 created by server on 14-6-5下午12:05.
 """
-import threading
-
-from MySQLdb.cursors import DictCursor
 from gfirefly.dbentrust.dbpool import dbpool
 
 

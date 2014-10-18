@@ -149,12 +149,7 @@ def ReadDataFromDB(tablename):
     """
     sql = """select * from %s""" % tablename
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -242,12 +237,7 @@ def GetOneRecordInfo(tablename, props):
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     try:
         cursor.execute(sql)
     except Exception, e:
@@ -269,12 +259,7 @@ def GetRecordList(tablename, pkname, pklist):
     pkliststr = "(%s)" % pkliststr[:-1]
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -285,12 +270,7 @@ def GetRecordList(tablename, pkname, pklist):
 def DBTest():
     sql = """SELECT * FROM tb_item WHERE characterId=1000001;"""
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
