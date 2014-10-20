@@ -113,6 +113,7 @@ class MMode(MemObject):
             props = self.get('data')
             pk = self.get('_pk')
             prere = {pk: props.get(pk)}
+            del(props[pk])
             util.UpdateWithDict(tablename, props, prere)
             result = True
         else:
@@ -326,4 +327,3 @@ class MAdmin(MemObject):
         setattr(mm, '_state', MMODE_STATE_NEW)
         mm.insert()
         return mm
-        
