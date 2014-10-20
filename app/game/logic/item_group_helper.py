@@ -176,7 +176,15 @@ def gain(player, item_group, result=None):
             player.stamina.stamina += num
             logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
-        result.append([type_id, num, item_no])
+        flag = 1
+        for i in result:
+            if i[0] == type_id and i[2] == item_no:
+                i[1] += 1
+                flag = 0
+                continue
+        if flag:
+            result.append([type_id, num, item_no])
+        # result.append([type_id, num, item_no])
     return result
 
 
