@@ -8,9 +8,10 @@ memcached 关系对象\n
 """
 
 import cPickle
+from serializer import Serializer
 
 
-class MemObject(object):
+class MemObject(Serializer):
     """memcached 关系对象,可以将一个对象的属性值记录到memcached中。
     
     >>> class Mcharacter(MemObject):
@@ -76,7 +77,7 @@ class MemObject(object):
             value = int(value)
 
         if value and key == 'data':
-            value = cPickle.loads(value)
+            value = self.loads(cPickle.loads(value))
         return value
 
     def get_multi(self, keys):
@@ -92,7 +93,8 @@ class MemObject(object):
             newdict['_state'] = int(newdict['_state'])
 
         if ('data' in newdict) and newdict['data']:
-            newdict['data'] = cPickle.loads(newdict['data'])
+            newdict['data'] = self.loads(cPickle.loads(newdict['data']))
+
         return newdict
 
     def update(self, key, values):
@@ -102,7 +104,7 @@ class MemObject(object):
             return False
         produce_key = self.produceKey(key)
         if values and key == 'data':
-            values = cPickle.dumps(values)
+            values = cPickle.dumps(self.dumps(values))
 
         return self._client.set(produce_key, values)
 
@@ -113,10 +115,12 @@ class MemObject(object):
             return False
 
         if ('data' in mapping) and mapping['data']:
-            mapping['data'] = cPickle.dumps(dict(mapping['data']))
+            mapping['data'] = cPickle.dumps(self.dumps(dict(mapping['data'])))
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in mapping.keys()],
                               mapping.values()))
+        print 'mapping', mapping
+        print 'newmapping', newmapping
         return self._client.set_multi(newmapping)
 
     def mdelete(self):
@@ -140,7 +144,7 @@ class MemObject(object):
         nowdict = dict(self.__dict__)
         del nowdict['_client']
         if ('data' in nowdict) and nowdict['data']:
-            nowdict['data'] = cPickle.dumps(dict(nowdict['data']))
+            nowdict['data'] = cPickle.dumps(self.dumps(dict(nowdict['data'])))
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
         self._client.set_multi(newmapping)

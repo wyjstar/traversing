@@ -61,18 +61,18 @@ class MMode(MemObject):
         return MemObject.update_multi(self, props)
 
     def update_multi(self, mapping):
-        ntime = time.time()
+        n_time = time.time()
         data = self.get_multi(['data', '_state'])
         data['data'].update(mapping)
         if data.get('_state') == MMODE_STATE_NEW:
-            props = {'data': data.get('data'), '_time': ntime}
+            props = {'data': data.get('data'), '_time': n_time}
         else:
-            props = {'_state': MMODE_STATE_UPDATE, 'data': data.get('data'), '_time': ntime}
+            props = {'_state': MMODE_STATE_UPDATE, 'data': data.get('data'), '_time': n_time}
         return MemObject.update_multi(self, props)
 
     def get(self, key):
-        ntime = time.time()
-        MemObject.update(self, "_time", ntime)
+        n_time = time.time()
+        MemObject.update(self, "_time", n_time)
         return MemObject.get(self, key)
 
     def get_multi(self, keys):
@@ -107,11 +107,13 @@ class MMode(MemObject):
             return
         elif state == MMODE_STATE_NEW:
             props = self.get('data')
+            props = self.dumps(props)
             pk = self.get('_pk')
             result = util.InsertIntoDB(tablename, props)
         elif state == MMODE_STATE_UPDATE:
             props = self.get('data')
             pk = self.get('_pk')
+            props = self.dumps(props)
             prere = {pk: props.get(pk)}
             del(props[pk])
             util.UpdateWithDict(tablename, props, prere)
@@ -119,6 +121,7 @@ class MMode(MemObject):
         else:
             pk = self.get('_pk')
             props = self.get('data')
+            props = self.dumps(props)
             prere = {pk: props.get(pk)}
             result = util.DeleteFromDB(tablename, prere)
         if result:
@@ -170,7 +173,8 @@ class MAdmin(MemObject):
         recordlist = util.ReadDataFromDB(mmname)
         for record in recordlist:
             pk = record[self._pk]
-            mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+            mm = MMode(self._name + ':%s' % pk, self._pk)
+            mm.loads(record)
             mm.insert()
 
     @property
@@ -209,7 +213,7 @@ class MAdmin(MemObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
-        mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+        mm.loads(record)
         mm.insert()
         return mm
 
@@ -227,7 +231,7 @@ class MAdmin(MemObject):
         record = util.GetOneRecordInfo(self._name, props)
         if not record:
             return None
-        mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+        mm.loads(record)
         mm.insert()
         return record
 
@@ -249,7 +253,8 @@ class MAdmin(MemObject):
             recordlist = util.GetRecordList(self._name, self._pk, _pklist)
             for record in recordlist:
                 pk = record[self._pk]
-                mm = MMode(self._name + ':%s' % pk, self._pk, data=record)
+                mm = MMode(self._name + ':%s' % pk, self._pk)
+                mm.loads(record)
                 mm.insert()
                 objlist.append(mm)
         return objlist
