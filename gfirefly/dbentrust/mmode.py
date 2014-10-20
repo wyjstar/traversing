@@ -231,7 +231,6 @@ class MAdmin(MemObject):
         mm.insert()
         return record
 
-
     def getObjList(self, pklist):
         '''根据主键列表获取mmode对象的列表.\n
         >>> m = madmin.getObjList([1,2,3,4,5])
