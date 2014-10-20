@@ -47,7 +47,6 @@
     <table name="tb_character_lord" dataNode="dn_traversing$0-3" rule="id_int_4" />
 
     <table name="tb_name_mapping" dataNode="dn_account" rule="account_name_str_8" />
-    <table name="account_sequence" dataNode="dn_sequence"/>
   </schema>
 
   <!-- 数据节点定义，数据节点由数据源和其他一些参数组织而成。-->
@@ -66,11 +65,6 @@
       <dataSourceRef>ds_shard_traversing[5]</dataSourceRef>
     </property>
   </dataNode>
-  <dataNode name="dn_sequence">
-    <property name="dataSource">
-      <dataSourceRef>ds_shard_traversing[13] </dataSourceRef>
-    </property>
-  </dataNode>
 
 
   <!-- 数据源定义，数据源是一个具体的后端数据连接的表示。-->
@@ -79,7 +73,6 @@
       <location>127.0.0.1:3306/traversing_master</location>
       <location>127.0.0.1:3306/traversing_$1-4</location>
       <location>127.0.0.1:3306/account_$0-7</location>
-      <location>127.0.0.1:3306/sequence</location>
     </property>
     <property name="user">root</property>
     <property name="password">123456</property>
