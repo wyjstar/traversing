@@ -4,32 +4,23 @@ Created on 2013-5-8
 
 @author: lan (www.9miao.com)
 """
-try:
-    import pymysql as MySQLdb
-    _pymysql = True
-except ImportError, e:
-    import MySQLdb
-    _pymysql = False
+import pymysql
 
 from DBUtils.PooledDB import PooledDB
 
 
-DBCS = {'mysql': MySQLdb, }
+DBCS = {'mysql': pymysql, }
 
 
 class DBPool(object):
-    """数据库连接池
-    """
-    def __init__(self):
-        self._pymysql = _pymysql
-
+    """数据库连接池 """
     def initPool(self, **kw):
         """根据连接配置初始化连接池配置信息.
         >>> aa = {'host':"localhost",'user':'root','passwd':'111','db':'test','port':3306,'charset':'utf8'}
         >>> dbpool.initPool(**aa)
         """
         self.config = kw
-        creator = DBCS.get(kw.get('engine', 'mysql'), MySQLdb)
+        creator = DBCS.get(kw.get('engine', 'mysql'), pymysql)
         self.pool = PooledDB(creator, 5, **kw)
 
     def connection(self):

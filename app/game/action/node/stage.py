@@ -120,7 +120,7 @@ def stage_start_903(dynamic_id, pro_data):
         assemble(friend, f_unit)
     if replace_unit:
         assemble(response.replace, replace_unit)
-    logger.info('进入关卡返回数据:%s', response)
+    # logger.debug('进入关卡返回数据:%s', response)
     return response.SerializePartialToString()
 
 

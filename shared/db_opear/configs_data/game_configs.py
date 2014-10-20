@@ -3,6 +3,7 @@
 created by server on 14-6-6上午11:05.
 """
 import cPickle
+from pymysql.cursors import DictCursor
 from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
@@ -55,13 +56,7 @@ def get_config_value(config_key):
     # print 'sql:', sql
     conn = dbpool.connection()
 
-
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
 
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -159,8 +154,3 @@ if __name__ == '__main__':
     # print mail_config
     stamina = mail_config.get(1)
     print stamina.get('title')
-
-
-
-
-
