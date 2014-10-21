@@ -83,6 +83,7 @@ ftp -n<<!
 open 192.168.1.90 21003
 user server server
 cd server
+bin
 put $package.tar.gz
 put $package.md5
 close
