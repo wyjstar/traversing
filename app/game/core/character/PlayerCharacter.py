@@ -153,26 +153,26 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
 
         character_info = {'id': pid,
-                              'nickname': u'',
-                              'coin': 0,
-                              'gold': 0,
-                              'hero_soul': 0,
-                              'level': 0,
-                              'exp': 0,
-                              'junior_stone': 0,
-                              'middle_stone': 0,
-                              'high_stone': 0,
-                              'fine_hero_last_pick_time': 0,
-                              'excellent_hero_last_pick_time': 0,
-                              'fine_equipment_last_pick_time': 0,
-                              'excellent_equipment_last_pick_time': 0,
-                              'pvp_times': 0,
-                              'create_time': int(time.time()),
-                              'vip_level': 0,
-                              'soul_shop': self._soul_shop.detail_data,
-                              'stamina': self._stamina.detail_data,
-                              'last_login_time': int(time.time())
-                              }
+                          'nickname': u'',
+                          'coin': 0,
+                          'gold': 0,
+                          'hero_soul': 0,
+                          'level': 0,
+                          'exp': 0,
+                          'junior_stone': 0,
+                          'middle_stone': 0,
+                          'high_stone': 0,
+                          'fine_hero_last_pick_time': 0,
+                          'excellent_hero_last_pick_time': 0,
+                          'fine_equipment_last_pick_time': 0,
+                          'excellent_equipment_last_pick_time': 0,
+                          'pvp_times': 0,
+                          'create_time': int(time.time()),
+                          'vip_level': 0,
+                          'soul_shop': self._soul_shop.detail_data,
+                          'stamina': self._stamina.detail_data,
+                          'last_login_time': int(time.time())
+                          }
         tb_character_info.new(character_info)
 
 
