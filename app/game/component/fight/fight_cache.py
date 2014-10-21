@@ -270,8 +270,8 @@ class CharacterFightCacheComponent(Component):
                         trigger = getattr(link_config, 'trigger%s' % i)
                         set_trigger = set(trigger)
                         set_hero_nos = set(self.owner.line_up_component.hero_nos)
-                        if (set_trigger & set_hero_nos) == set_trigger:
-                            self._not_replace.extend(slot.hero_slot.hero_no)
+                        if set_hero_nos.issuperset(set_trigger):
+                            self._not_replace.append(slot.hero_slot.hero_no)
                             self._not_replace.extend(trigger)
                             return True
         return False
