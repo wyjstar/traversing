@@ -41,7 +41,7 @@ echo "clear useless files"
 find ./ -name '.*' -exec rm -rf {} \;
 find ./ -name '~*' -exec rm -rf {} \;
 find ./ -name '*.log' -exec rm -rf {} \;
-find ./ -name '*.py' -exec rm -rf {} \;
+#find ./ -name '*.py' -exec rm -rf {} \;
 find ./ -name '*.zip' -exec rm -rf {} \;
 find ./ -name '*.xls' -exec rm -rf {} \;
 
