@@ -17,6 +17,7 @@ from shared.db_opear.configs_data.monster_config import MonsterConfig
 from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
+from shared.db_opear.configs_data.robot_born_config import RobotBornConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
 from shared.db_opear.configs_data.skill_config import SkillConfig
@@ -96,6 +97,7 @@ vip_config = {}
 stage_break_config = {}
 special_stage_config = {}
 mail_config = {}
+robot_born_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -124,7 +126,8 @@ all_config_name = {
     'vip_config': VIPConfig(),
     'stage_break_config': StageBreakConfig(),
     'special_stage_config': SpecialStageConfig(),
-    'mail_config': MailConfig()
+    'mail_config': MailConfig(),
+    'robot_born_config': RobotBornConfig()
 }
 
 
@@ -152,5 +155,5 @@ if __name__ == '__main__':
     # for k,v in mail_config.items():
     #     print k, ' : ', v
     # print mail_config
-    stamina = mail_config.get(1)
-    print stamina.get('title')
+    for k, v in robot_born_config.items():
+        print k, v
