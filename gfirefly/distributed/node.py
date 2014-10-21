@@ -74,7 +74,10 @@ class RemoteObject(object):
     def callRemote(self, commandId, *args, **kw):
         """默认远程调用，等待结果放回 """
         deferedRemote = self._factory.getRootObject(timeout=self._timeout)
-        return deferedRemote.callRemoteForResult('callTarget', commandId, *args, **kw)
+        if deferedRemote:
+            return deferedRemote.callRemoteForResult('callTarget', commandId, *args, **kw)
+        else:
+            return None
 
     def callRemoteForResult(self, commandId, *args, **kw):
         """远程调用，并等待结果放回 """

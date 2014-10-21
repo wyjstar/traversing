@@ -17,11 +17,14 @@ name = GlobalObject().json_config['name']
 
 
 def tick():
-    GlobalObject().remote['login'].callRemote('server_sync',
-                                              name, front_ip,
-                                              front_port,
-                                              'recommend')
+    result = GlobalObject().remote['login'].callRemote('server_sync',
+                                                       name, front_ip,
+                                                       front_port,
+                                                       'recommend')
 
-    reactor.callLater(60, tick)
+    if result is None:
+        reactor.callLater(1, tick)
+    else:
+        reactor.callLater(60, tick)
 
-reactor.callLater(3, tick)
+reactor.callLater(1, tick)
