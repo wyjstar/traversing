@@ -1,8 +1,7 @@
 #coding:utf8
 
-from dataloader import register_madmin, check_mem_db
+import dataloader
 
 
-def load_module():
-    register_madmin()
-    check_mem_db(30)
+dataloader.register_madmin()
+dataloader.check_mem_db(30)
