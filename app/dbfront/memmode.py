@@ -1,7 +1,6 @@
 #-*-coding:utf8-*-
 
-
-from shared.db_entrust.redis_mode import MAdmin
+from gfirefly.dbentrust.mmode import MAdmin
 
 tb_account = MAdmin('tb_account', 'id')  # 帐号表
 tb_account.insert()

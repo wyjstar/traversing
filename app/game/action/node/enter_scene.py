@@ -65,8 +65,4 @@ def enter_scene_601(dynamic_id, character_id):
     logger.debug("hero_soul:%d", player.finance.hero_soul)
     logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
 
-
     return responsedata.SerializeToString()
-
-
-

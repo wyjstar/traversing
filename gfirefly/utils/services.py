@@ -68,6 +68,7 @@ class Service(object):
             response = target(*args, **kw)
         except Exception, e:
             logger.exception(e)
+            return None
         return response
 
 

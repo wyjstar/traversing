@@ -4,6 +4,7 @@ Created on 2013-8-2
 
 @author: lan (www.9miao.com)
 """
+from gfirefly.dbentrust.memclient import mclient
 from gfirefly.netconnect.protoc import LiberateFactory
 from flask import Flask
 from gfirefly.distributed.root import PBRoot, BilateralFactory
@@ -98,14 +99,10 @@ class FFServer:
             # logger.info(str(dbconfig))
             dbpool.initPool(**dbconfig)
 
-        # if hasmem and memconfig:
-        #     urls = memconfig.get('urls')
-        #     hostname = str(memconfig.get('hostname'))
-        #     mclient.connect(urls, hostname)
-
         if hasmem and memconfig:
-            connection_setting = memconfig.get('urls')
-            redis_manager.connection_setup(connection_setting)
+            urls = memconfig.get('urls')
+            hostname = str(memconfig.get('hostname'))
+            mclient.connect(urls, hostname)
 
         if cpuid:
             affinity.set_process_affinity_mask(os.getpid(), cpuid)
