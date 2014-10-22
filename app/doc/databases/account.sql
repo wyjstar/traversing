@@ -17,7 +17,7 @@ CREATE TABLE `tb_account` (
   `create_time` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uuid` (`uuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1020 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tb_user`

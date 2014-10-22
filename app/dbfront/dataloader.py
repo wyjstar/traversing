@@ -11,7 +11,6 @@ reactor = reactor
 def register_madmin():
     """注册数据库与memcached对应
     """
-
     # 用户信息表
     MAdminManager().registe(memmode.tb_character_info)
     # 用户英雄信息
@@ -57,4 +56,3 @@ def check_mem_db(delta):
     """
     MAdminManager().checkAdmins()
     reactor.callLater(delta, check_mem_db, delta)
-

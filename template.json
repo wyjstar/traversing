@@ -8,14 +8,14 @@
         "admin": {
             "webport": 32001,
             "name": "admin",
-            "app": "app.adminserver",
+            "app": "app.admin",
             "log": "app/logs/admin.log"
         },
         "MA": {
             "webport": 20100,
             "name": "MA",
             "db": true,
-            "app": "app.MAserver",
+            "app": "app.MA",
             "log": "app/logs/MA.log"
         },
         "login": {
@@ -23,13 +23,13 @@
             "webport": 20097,
             "name": "login",
             "mem": true,
-            "app": "app.loginserver",
+            "app": "app.login",
             "log": "app/logs/login.log"
         },
         "transit": {
             "rootport": 30002,
             "name": "transit",
-            "app": "app.transitserver",
+            "app": "app.transit",
             "log": "app/logs/transit.log"
         },
         "gate": {
@@ -48,7 +48,7 @@
             ],
             "mem": true,
             "db": true,
-            "app": "app.gateserver",
+            "app": "app.gate",
             "log": "app/logs/gate.log",
             "name": "<=server_name=>",
             "front_ip": "<=front_ip=>",
@@ -71,7 +71,7 @@
                     "rootname": "gate"
                 }
             ],
-            "app": "app.netserver",
+            "app": "app.net",
             "log": "app/logs/net.log"
         },
         "game": {
@@ -84,7 +84,7 @@
             "name": "game",
             "mem": true,
             "db": true,
-            "app": "app.game1server",
+            "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log"
         },
@@ -96,14 +96,14 @@
                     "rootname": "gate"
                 }
             ],
-            "app": "app.chatserver",
+            "app": "app.chat",
             "log": "app/logs/chat.log"
         },
         "dbfront": {
             "name": "dbfront",
             "db": true,
             "mem": true,
-            "app": "app.dbfrontserver",
+            "app": "app.dbfront",
             "log": "app/logs/db.log"
         }
     },
