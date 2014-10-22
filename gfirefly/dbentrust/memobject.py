@@ -119,8 +119,6 @@ class MemObject(Serializer):
 
         newmapping = dict(zip([self.produceKey(keyname) for keyname in mapping.keys()],
                               mapping.values()))
-        print 'mapping', mapping
-        print 'newmapping', newmapping
         return self._client.set_multi(newmapping)
 
     def mdelete(self):
