@@ -285,7 +285,7 @@ class CharacterFightCacheComponent(Component):
         monster_unpara = self.__get_monster_unpara()
         replace_unit, replace_no = self.__break_hero_units(red_units)
 
-        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_index
+        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no
 
     def fighting_settlement(self, result):
         """战斗结算
