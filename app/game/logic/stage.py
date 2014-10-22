@@ -2,7 +2,9 @@
 """
 created by server on 14-7-18下午3:44.
 """
+import random
 import time
+from app.game.core.drop_bag import BigBag
 from app.game.core.fight.battle_unit import BattleUnit
 from app.game.logic.common.check import have_player
 from app.game.logic.item_group_helper import gain, get_return
@@ -59,7 +61,6 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     if state == -2:
         return {'result': False, 'result_no': 803}  # 803 未开启
 
-
     if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
         #星期限制
@@ -67,9 +68,8 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
             return {'result': False, 'result_no': 804}  # 804 今日不开启
         #次数限制
         if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and time.localtime(player.stage_component.elite_stage_info[0]).tm_mday >= \
-                game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes:
-            return {'result': False, 'result_no': 805}  # 805 次数已用完
+                and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timeExpend:
+            return {'result': False, 'result_no': 805}  # 805 次数不足
 
     elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
@@ -79,10 +79,10 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
         if open_time <= time.time() <= close_time:
             return {'result': False, 'result_no': 804}  # 806 不在活动时间内
         #次数限制
+
         if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and time.localtime(player.stage_component.act_stage_info[0]).tm_mday >= \
-                game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes:
-            return {'result': False, 'result_no': 805}  # 805 次数已用完
+                and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timeExpend:
+            return {'result': False, 'result_no': 805}  # 805 次数不足
 
     # 保存阵容
     player.line_up_component.line_up_order = line_up
@@ -133,15 +133,17 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
             player.stamina.save_data()
         else:
             if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+                conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
                 if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
-                    player.stage_component.elite_stage_info[0] += 1
+                    player.stage_component.elite_stage_info[0] += conf.timesExpend
                 else:
-                    player.stage_component.elite_stage_info = [1, str(time.time())]
+                    player.stage_component.elite_stage_info = [conf.timeExpend, str(time.time())]
             elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
+                conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
                 if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
-                    player.stage_component.act_stage_info[0] += 1
+                    player.stage_component.act_stage_info[0] += conf.timeExpend
                 else:
-                    player.stage_component.act_stage_info = [1, str(time.time())]
+                    player.stage_component.act_stage_info = [conf.timeExpend, str(time.time())]
             player.stage_component.update()
 
     res.message = u'成功返回'
@@ -178,8 +180,61 @@ def get_warriors(dynamic_id, **kwargs):
 
 @have_player
 def stage_sweep(dynamic_id, stage_id, times, **kwargs):
+    response = stage_response_pb2.StageSweepResponse()
+    drops = response.drops
+    res = response.res
+
     player = kwargs.get('player')
-    #
-    # settlement_drops = fight_cache_component.fighting_settlement(result)
-    # data = gain(player, settlement_drops)
-    # get_return(player, data, drops)
+
+    if times == 1:
+        if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
+            res.result = False
+            res.result_no = 803
+            return response.SerializePartialToString()
+    if times == 10:
+        if not game_configs.vip_config.get(player.vip_component.vip_level).openSweepTen:
+            res.result = False
+            res.result_no = 803
+            return response.SerializePartialToString()
+
+    if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday \
+            and game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes - player.stage_component.sweep_times[0] < times:
+        res.result = False
+        res.result_no = 805
+        return response.SerializePartialToString()
+
+    state = player.stage_component.check_stage_state(stage_id)
+    if state != 1:
+        res.result = False
+        res.result_no = 803
+        return response.SerializePartialToString()
+
+    # TODO 本关卡的次数够不够
+    stage_config = game_configs.stage_config.get('stages').get(stage_id)
+
+    drop = []
+    for _ in range(times):
+        low = stage_config.low
+        high = stage_config.high
+        drop_num = random.randint(low, high)
+
+        for __ in range(drop_num):
+            common_bag = BigBag(stage_config.commonDrop)
+            common_drop = common_bag.get_drop_items()
+            drop.extend(common_drop)
+
+        elite_bag = BigBag(stage_config.eliteDrop)
+        elite_drop = elite_bag.get_drop_items()
+        drop.extend(elite_drop)
+
+    data = gain(player, drop)
+    get_return(player, data, drops)
+
+    player.stage_component.sweep_times[0] += times
+    player.stage_component.sweep_times[0] = int(time.time())
+
+    player.stamina.stamina -= game_configs.stage_config.get('stages').get(stage_id).vigor
+    player.stamina.save_data()
+
+    res.result = True
+    return response.SerializePartialToString()

@@ -40,3 +40,9 @@ message FormationResponse{
 message UnparalleledResponse{
 	repeated Unparalleled unpar =  1; //无双信息
 }
+
+// 关卡扫荡返回 command:907
+message StageSweepResponse{
+    required CommonResponse res = 1;
+	optional GameResourcesResponse drops = 2;
+}

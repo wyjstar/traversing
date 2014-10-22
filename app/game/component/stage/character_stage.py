@@ -26,6 +26,8 @@ class CharacterStageComponent(Component):
         # self._act_stage = {}
         self._act_stage_info = [0, 1]  # 活动关卡相关信息, {今日挑战次数，最后挑战日期}
 
+        self._sweep_times = [0, 1]
+
     def init_data(self):
         stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
         if stage_data:
@@ -114,7 +116,8 @@ class CharacterStageComponent(Component):
                 chapter = self.get_chapter(chapter_id)
                 chapter.update(self.calculation_star(chapter_id))
                 next_stages = game_configs.stage_config.get('condition_mapping')
-            elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+            # elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+            else:
                 next_stages = game_configs.special_stage_config.get('condition_mapping')
             # 开启下一关卡
             if next_stages.get(stage_id):
@@ -157,6 +160,8 @@ class CharacterStageComponent(Component):
                  'elite_stage': self._elite_stage_info,
                  'act_stage': self._act_stage_info
                  }
+
+
         stage_obj = tb_character_stages.getObj(self.owner.base_info.id)
         stage_obj.update_multi(props)
 
@@ -176,6 +181,12 @@ class CharacterStageComponent(Component):
     def act_stage_info(self, act_stage_info):
         self._act_stage_info = act_stage_info
 
+    @property
+    def sweep_times(self):
+        return self._sweep_times
 
+    @sweep_times.setter
+    def sweep_times(self, sweep_times):
+        self._sweep_times = sweep_times
 
 
