@@ -93,7 +93,7 @@ def stage_start_903(dynamic_id, pro_data):
     monster_unpara = stage_info.get('monster_unpara')
     f_unit = stage_info.get('f_unit')
     replace_unit = stage_info.get('replace_unit')
-    response.replace_index = stage_info.get('replace_index')
+    response.replace_no = stage_info.get('replace_no')
 
     response.drop_num = drop_num
     for red_unit in red_units:

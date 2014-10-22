@@ -22,7 +22,7 @@ message StageStartResponse{
 	optional BattleUnit friend = 6; // 好友
 	optional Skill monster_unpara = 7; // 怪物无双
 	optional BattleUnit replace = 8; //
-	optional int32 replace_index = 9;
+	optional int32 replace_no = 9;
 }
 
 // 关卡结算返回 command:904
