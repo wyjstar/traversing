@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2013-5-8
 
 @author: lan (www.9miao.com)
-'''
+"""
 from memclient import mclient
 from memobject import MemObject
 import util
@@ -81,8 +81,8 @@ class MMode(MemObject):
         return MemObject.get_multi(self, keys)
 
     def delete(self):
-        '''删除对象
-        '''
+        """删除对象
+        """
         return MemObject.update(self, '_state', MMODE_STATE_DEL)
 
     def mdelete(self):
@@ -92,8 +92,8 @@ class MMode(MemObject):
         MemObject.mdelete(self)
 
     def IsEffective(self):
-        '''检测对象是否有效
-        '''
+        """检测对象是否有效
+        """
         if self.get('_state') == MMODE_STATE_DEL:
             return False
         return True
@@ -167,10 +167,20 @@ class MAdmin(MemObject):
         MemObject.insert(self)
 
     def load(self):
-        '''读取数据到数据库中
-        '''
+        """读取数据到数据库中
+        """
         mmname = self._name
         recordlist = util.ReadDataFromDB(mmname)
+        for record in recordlist:
+            pk = record[self._pk]
+            mm = MMode(self._name + ':%s' % pk, self._pk)
+            mm.loads(record)
+            mm.insert()
+
+    def loadByFK(self, fk):
+        mmname = self._name
+        prere = {self._fk: fk}
+        recordlist = util.ReadDataFromDB(mmname, prere)
         for record in recordlist:
             pk = record[self._pk]
             mm = MMode(self._name + ':%s' % pk, self._pk)
@@ -186,24 +196,24 @@ class MAdmin(MemObject):
         return info
 
     def getAllPkByFk(self, fk):
-        '''根据外键获取主键列表
-        '''
+        """根据外键获取主键列表
+        """
         name = '%s_fk:%s' % (self._name, fk)
         fkmm = MFKMode(name)
         pklist = fkmm.get('pklist')
         if pklist is not None:
             return pklist
-        props = {self._fk: fk}
-        dbkeylist = util.getAllPkByFkInDB(self._name, self._pk, props)
+        prere = {self._fk: fk}
+        dbkeylist = util.getAllPkByFkInDB(self._name, self._pk, prere)
         name = '%s_fk:%s' % (self._name, fk)
         fkmm = MFKMode(name, pklist=dbkeylist)
         fkmm.insert()
         return dbkeylist
 
     def getObj(self, pk):
-        '''根据主键，可以获得mmode对象的实例.\n
+        """根据主键，可以获得mmode对象的实例.\n
         >>> m = madmin.getObj(1)
-        '''
+        """
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
@@ -218,9 +228,9 @@ class MAdmin(MemObject):
         return mm
 
     def getObjData(self, pk):
-        '''根据主键，可以获得mmode对象的实例的数据.\n
+        """根据主键，可以获得mmode对象的实例的数据.\n
         >>> m = madmin.getObjData(1)
-        '''
+        """
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
@@ -236,9 +246,9 @@ class MAdmin(MemObject):
         return record
 
     def getObjList(self, pklist):
-        '''根据主键列表获取mmode对象的列表.\n
+        """根据主键列表获取mmode对象的列表.\n
         >>> m = madmin.getObjList([1,2,3,4,5])
-        '''
+        """
         _pklist = []
         objlist = []
         for pk in pklist:
@@ -260,9 +270,9 @@ class MAdmin(MemObject):
         return objlist
 
     def deleteMode(self, pk):
-        '''根据主键删除内存中的某条记录信息，\n这里只是修改内存中的记录状态_state为删除状态.\n
+        """根据主键删除内存中的某条记录信息，\n这里只是修改内存中的记录状态_state为删除状态.\n
         >>> m = madmin.deleteMode(1)
-        '''
+        """
         mm = self.getObj(pk)
         if mm:
             if self._fk:
