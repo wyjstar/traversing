@@ -77,7 +77,7 @@ class RemoteObject(object):
         if deferedRemote:
             return deferedRemote.callRemoteForResult('callTarget', commandId, *args, **kw)
         else:
-            return None
+            return False
 
     def callRemoteForResult(self, commandId, *args, **kw):
         """远程调用，并等待结果放回 """

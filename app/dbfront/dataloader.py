@@ -11,7 +11,6 @@ reactor = reactor
 def register_madmin():
     """注册数据库与memcached对应
     """
-
     # 用户信息表
     MAdminManager().registe(memmode.tb_character_info)
     # 用户英雄信息
@@ -51,9 +50,9 @@ def register_madmin():
     # 邮件表
     MAdminManager().registe(memmode.tb_mail_info)
 
+
 def check_mem_db(delta):
     """同步内存数据到数据库
     """
     MAdminManager().checkAdmins()
     reactor.callLater(delta, check_mem_db, delta)
-
