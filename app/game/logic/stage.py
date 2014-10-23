@@ -76,7 +76,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
         #时间限制
         open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
         close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
-        if open_time <= time.time() <= close_time:
+        if not open_time <= time.time() <= close_time:
             return {'result': False, 'result_no': 804}  # 806 不在活动时间内
         #次数限制
 

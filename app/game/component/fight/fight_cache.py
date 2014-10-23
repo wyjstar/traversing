@@ -176,7 +176,8 @@ class CharacterFightCacheComponent(Component):
         unpara = stage_config.warriorsSkill  # 无双编号
         if not unpara:
             return []
-        skill_config = self.__get_skill_config(unpara)
+        triggle3 = game_configs.warriors_config.triggle3
+        skill_config = self.__get_skill_config(triggle3)
         group = skill_config.group
         return [unpara] + group
 
