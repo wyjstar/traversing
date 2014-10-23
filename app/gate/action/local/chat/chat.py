@@ -34,5 +34,6 @@ def send_message_1002(command_id, dynamic_id, request_proto):
     #                                to_character_id, to_character_nickname)
     result = info.get('result', False)
     response.result = result
+    response.result.no = info.get('result_no')
     return response.SerializeToString()
 
