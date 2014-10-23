@@ -65,7 +65,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
         conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
         #星期限制
         if conf.weeklyControl[time.localtime().tm_wday]:
-            return {'result': False, 'result_no': 804}  # 804 今日不开启
+            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
         #次数限制
         if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday \
                 and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timeExpend:
@@ -77,7 +77,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
         open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
         close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
         if not open_time <= time.time() <= close_time:
-            return {'result': False, 'result_no': 804}  # 806 不在活动时间内
+            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
         #次数限制
 
         if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday \
