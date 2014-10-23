@@ -90,7 +90,7 @@ class CharacterFightCacheComponent(Component):
 
     def __get_stage_break_config(self):
         """取得关卡乱入信息"""
-        stage = game_configs.stage_config.get('stages').get(self._stage_id, None)
+        stage = self.__get_stage_config()
         if stage:
             return game_configs.stage_break_config.get(stage.stage_break_id, None)
         else:
@@ -176,7 +176,7 @@ class CharacterFightCacheComponent(Component):
         unpara = stage_config.warriorsSkill  # 无双编号
         if not unpara:
             return []
-        triggle3 = game_configs.warriors_config.triggle3
+        triggle3 = game_configs.warriors_config.get(unpara).triggle3
         skill_config = self.__get_skill_config(triggle3)
         group = skill_config.group
         return [unpara] + group
