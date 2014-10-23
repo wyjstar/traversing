@@ -41,8 +41,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_character_lord)
     # 关卡信息表
     MAdminManager().registe(memmode.tb_character_stages)
-    # 玩家邮件表
-    MAdminManager().registe(memmode.tb_character_mails)
     # 邮件表
     MAdminManager().registe(memmode.tb_mail_info)
 

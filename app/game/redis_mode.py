@@ -53,12 +53,8 @@ tb_character_friend.insert()
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 tb_character_stages.insert()
 
-# 玩家邮件表
-tb_character_mails = MAdmin('tb_character_mails', 'id')
-tb_character_mails.insert()
-
 # 邮件表
-tb_mail_info = MAdmin('tb_mail_info', 'id')
+tb_mail_info = MAdmin('tb_mail_info', 'id', fk='character_id')
 tb_mail_info.insert()
 
 # 玩家活动表

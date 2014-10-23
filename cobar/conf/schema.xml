@@ -27,10 +27,8 @@
     <table name="tb_account" dataNode="dn_account" rule="id_int_8" />
 
     <table name="tb_character_info" dataNode="dn_traversing$0-3" rule="id_int_4" />
-    <table name="tb_character_heros" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_equipment_chip" dataNode="dn_traversing$0-3" rule="id_int_4" />
-    <table name="tb_character_equipments" dataNode="dn_traversing$0-3" rule="id_int_4" />
-    <table name="tb_character_hero" dataNode="dn_traversing$0-3" rule="id_str_4" /> 
+    <table name="tb_character_hero" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_line_up" dataNode="dn_traversing$0-3" rule="id_int_4" /> 
     <table name="tb_character_hero_chip" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_item_package" dataNode="dn_traversing$0-3" rule="id_int_4" />
@@ -42,7 +40,6 @@
     <table name="tb_character_friend" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_character_activity" dataNode="dn_traversing$0-3" rule="id_int_4" />
 
-    <table name="tb_character_mails" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_mail_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_lord" dataNode="dn_traversing$0-3" rule="id_int_4" />
 

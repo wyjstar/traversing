@@ -55,13 +55,11 @@ class CharacterHerosComponent(Component):
         hero.hero_no = hero_no
         self._heros[hero_no] = hero
         self.new_hero_data(hero)
-        self.save_data()
         return hero
 
     def delete_hero(self, hero_no):
         if self._heros.get(hero_no):
             del self._heros[hero_no]
-            self.save_data()
             tb_character_hero.deleteMode(self.get_hero_id(hero_no))
         else:
             logger.debug("don't find hero_no from self._heros")
@@ -72,12 +70,6 @@ class CharacterHerosComponent(Component):
 
     def contain_hero(self, hero_no):
         return hero_no in self._heros
-
-    def save_data(self):
-        hero_ids = []
-        character_id = self.owner.base_info.id
-        for hero_no in self._heros.keys():
-            hero_ids.append(self.get_hero_id(hero_no))
 
     def get_hero_id(self, hero_no):
         character_id = self.owner.base_info.id
