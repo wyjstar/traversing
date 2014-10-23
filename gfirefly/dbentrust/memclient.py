@@ -113,5 +113,3 @@ class MemClient(object):
 
 
 mclient = MemClient()
-
-

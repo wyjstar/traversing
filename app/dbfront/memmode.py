@@ -9,10 +9,6 @@ tb_account.insert()
 tb_character_info = MAdmin('tb_character_info', 'id')
 tb_character_info.insert()
 
-# 用户英雄信息表
-tb_character_heros = MAdmin('tb_character_heros', 'id')
-tb_character_heros.insert()
-
 # 英雄信息表
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
@@ -28,10 +24,6 @@ tb_character_item_package.insert()
 # 用户阵容信息
 tb_character_line_up = MAdmin('tb_character_line_up', 'id')
 tb_character_line_up.insert()
-
-# 用户装备列表
-tb_character_equipments = MAdmin('tb_character_equipments', 'id')
-tb_character_equipments.insert()
 
 # 装备信息表
 tb_equipment_info = MAdmin('tb_equipment_info', 'id')
@@ -68,10 +60,6 @@ tb_character_lord.insert()
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 tb_character_stages.insert()
-
-# 玩家邮件表
-tb_character_mails = MAdmin('tb_character_mails', 'id')
-tb_character_mails.insert()
 
 # 邮件表
 tb_mail_info = MAdmin('tb_mail_info', 'id')

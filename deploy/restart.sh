@@ -1,7 +1,11 @@
+#!/bin/sh
+
+login_id=127.0.0.1
+login_id=210.14.148.9
 
 cd ..
 
-wget localhost:20098/stop
+curl localhost:20098/stop
 if [ $? -eq 0 ];then
     echo "server stop success!"
 else
@@ -28,13 +32,7 @@ cd ../../../
 
 echo "{
     \"server_name\": \"waiwang\",">my.json
-
-echo "plesae input login_id:"
-read login_id
 echo "    \"login_ip\": \"$login_id\",">>my.json
-
-echo "plesae input front_ip:"
-read front_ip
 echo "    \"front_ip\": \"$front_ip\"
 }">>my.json
 

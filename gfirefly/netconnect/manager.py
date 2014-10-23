@@ -4,13 +4,13 @@ Created on 2014-2-23
 连接管理器
 @author: lan (www.9miao.com)
 '''
+from gfirefly.server.globalobject import GlobalObject
 
 from gfirefly.server.logobj import logger
 from connection import Connection
 from shared.utils.const import const
 import collections
 import gevent
-
 
 
 class ConnectionManager:
@@ -103,37 +103,30 @@ class ConnectionManager:
         self._connections[tmp[0]] = tmp[1]
         return tmp[1]
 
-    def pushObject(self, topicID, msg, sendList):
-        """主动推送消息
-        """
-        # try:
-        #     if isinstance(sendList, list):
-        #         for target in sendList:
-        #             conn = self.getConnectionByID(target)
-        #             if conn:
-        #                 conn.safeToWriteData(topicID, msg)
-        #             conn = self._queue_conns.get(target, None)
-        #             if conn:
-        #                 conn.safeToWriteData(topicID, msg)
-        #     else:
-        #         conn = self.getConnectionByID(sendList)
-        #         if conn:
-        #             conn.safeToWriteData(topicID, msg)
-        # except Exception, e:
-        #     logger.error(str(e))
+    def __write_data(self, connection_id, topic_id, msg):
+        connection = self.getConnectionByID(connection_id)
+        if not connection:
+            connection = self._queue_conns.get(connection_id, None)
 
+        if not connection:
+            return
+
+        try:
+            connection.safeToWriteData(topic_id, msg)
+        except Exception, e:
+            logger.exception(e)
+            self.dropConnectionByID(connection_id)
+            dynamic_id = connection.transport.sessionno
+            if dynamic_id != 0:
+                GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
+
+    def pushObject(self, topicID, msg, sendList):
+        """主动推送消息"""
         if isinstance(sendList, list):
             for target in sendList:
-                conn = self.getConnectionByID(target)
-                if conn:
-                    conn.safeToWriteData(topicID, msg)
-                conn = self._queue_conns.get(target, None)
-                if conn:
-                    conn.safeToWriteData(topicID, msg)
+                self.__write_data(target, topicID, msg)
         else:
-            conn = self.getConnectionByID(sendList)
-            if conn:
-                    conn.safeToWriteData(topicID, msg)
+            self.__write_data(sendList, topicID, msg)
 
     def check_timeout(self):
         for k, v in self._connections.items():

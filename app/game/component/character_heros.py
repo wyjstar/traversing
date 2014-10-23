@@ -4,7 +4,7 @@ created by server on 14-6-25下午7:00.
 """
 from app.game.component.Component import Component
 from app.game.core.hero import Hero
-from app.game.redis_mode import tb_character_hero, tb_character_heros
+from app.game.redis_mode import tb_character_hero
 from gfirefly.server.logobj import logger
 
 
@@ -25,21 +25,7 @@ class CharacterHerosComponent(Component):
 
     def init_heros(self):
         pid = self.owner.base_info.id
-        character_heros = tb_character_heros.getObjData(pid)
-        if not character_heros:
-            # 没有武将列表数据
-            data = {
-                'id': pid,
-                'hero_ids': [],
-            }
-            tb_character_heros.new(data)
-            return
-
-        hero_ids = character_heros.get('hero_ids')
-        if not hero_ids:
-            return
-
-        heros = tb_character_hero.getObjList(hero_ids)
+        heros = tb_character_hero.getObjListByFk(pid)
 
         for hero_mmode in heros:
             data = hero_mmode.get('data')
@@ -69,13 +55,11 @@ class CharacterHerosComponent(Component):
         hero.hero_no = hero_no
         self._heros[hero_no] = hero
         self.new_hero_data(hero)
-        self.save_data()
         return hero
 
     def delete_hero(self, hero_no):
         if self._heros.get(hero_no):
             del self._heros[hero_no]
-            self.save_data()
             tb_character_hero.deleteMode(self.get_hero_id(hero_no))
         else:
             logger.debug("don't find hero_no from self._heros")
@@ -86,14 +70,6 @@ class CharacterHerosComponent(Component):
 
     def contain_hero(self, hero_no):
         return hero_no in self._heros
-
-    def save_data(self):
-        hero_ids = []
-        character_id = self.owner.base_info.id
-        for hero_no in self._heros.keys():
-            hero_ids.append(self.get_hero_id(hero_no))
-        character_heros = tb_character_heros.getObj(character_id)
-        character_heros.update('hero_ids', hero_ids)
 
     def get_hero_id(self, hero_no):
         character_id = self.owner.base_info.id

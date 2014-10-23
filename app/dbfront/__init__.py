@@ -4,4 +4,4 @@ import dataloader
 
 
 dataloader.register_madmin()
-dataloader.check_mem_db(30)
+dataloader.check_mem_db(10)

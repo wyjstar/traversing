@@ -175,7 +175,6 @@ class PlayerCharacter(Character):
                           }
         tb_character_info.new(character_info)
 
-
     @property
     def character_type(self):
         return self._character_type
