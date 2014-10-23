@@ -10,6 +10,9 @@ from dbpool import dbpool
 from pymysql.cursors import DictCursor
 from numbers import Number
 from gfirefly.server.logobj import logger
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 escape_string = pymysql.escape_string
 
