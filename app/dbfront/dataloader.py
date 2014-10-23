@@ -13,8 +13,6 @@ def register_madmin():
     """
     # 用户信息表
     MAdminManager().registe(memmode.tb_character_info)
-    # 用户英雄信息
-    MAdminManager().registe(memmode.tb_character_heros)
     # 英雄信息表
     MAdminManager().registe(memmode.tb_character_hero)
     # 用户英雄碎片信息表
@@ -27,8 +25,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_character_line_up)
     # 装备碎片表
     MAdminManager().registe(memmode.tb_character_equipment_chip)
-    # 用户装备列表
-    MAdminManager().registe(memmode.tb_character_equipments)
     # 装备信息表
     MAdminManager().registe(memmode.tb_equipment_info)
     # friend表

@@ -36,11 +36,6 @@ CREATE TABLE `tb_character_equipment_chip` (
 --
 
 DROP TABLE IF EXISTS `tb_character_equipments`;
-CREATE TABLE `tb_character_equipments` (
-  `id` bigint(20) NOT NULL,
-  `equipments` mediumblob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tb_character_friend`
@@ -94,11 +89,6 @@ CREATE TABLE `tb_character_hero_chip` (
 --
 
 DROP TABLE IF EXISTS `tb_character_heros`;
-CREATE TABLE `tb_character_heros` (
-  `id` bigint(20) NOT NULL,
-  `hero_ids` blob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tb_character_info`

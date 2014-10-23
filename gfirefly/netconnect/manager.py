@@ -1,4 +1,4 @@
- coding:utf8
+# coding:utf8
 '''
 Created on 2014-2-23
 连接管理器
@@ -11,7 +11,6 @@ from connection import Connection
 from shared.utils.const import const
 import collections
 import gevent
-
 
 
 class ConnectionManager:
