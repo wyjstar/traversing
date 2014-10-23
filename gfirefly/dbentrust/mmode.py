@@ -269,6 +269,25 @@ class MAdmin(MemObject):
                 objlist.append(mm)
         return objlist
 
+    def getObjListByFk(self, fk):
+        objlist = []
+        mmname = self._name
+        prere = {self._fk: fk}
+        recordlist = util.ReadDataFromDB(mmname, prere)
+        for record in recordlist:
+            pk = record[self._pk]
+            if isinstance(pk, unicode):
+                pk = pk.encode(encoding='utf-8')
+            mm = MMode(self._name + ':%s' % pk, self._pk)
+            if not mm.IsEffective():
+                continue
+            if not mm.get('data'):
+                mm.loads(record)
+                mm.insert()
+            objlist.append(mm)
+
+        return objlist
+
     def deleteMode(self, pk):
         """根据主键删除内存中的某条记录信息，\n这里只是修改内存中的记录状态_state为删除状态.\n
         >>> m = madmin.deleteMode(1)

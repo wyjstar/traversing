@@ -8,17 +8,12 @@ from gfirefly.dbentrust.mmode import MAdmin
 tb_character_info = MAdmin('tb_character_info', 'id')
 tb_character_info.insert()
 
-# 用户英雄信息表
-tb_character_heros = MAdmin('tb_character_heros', 'id')
-tb_character_heros.insert()
-
 # 英雄信息表
-tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
+tb_character_hero = MAdmin('tb_character_hero', 'id', fk='character_id')
 tb_character_hero.insert()
-tb_character_hero.load()
 
 # 用户英雄碎片信息表
-tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
+tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id')
 tb_character_hero_chip.insert()
 
 # 用户道具背包
