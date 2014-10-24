@@ -28,7 +28,16 @@ def get_stage_info(dynamic_id, stage_id, **kwargs):
         stages_obj = player.stage_component.get_stages()
         response.extend(stages_obj)
 
-    return response
+    if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
+        elite_stage_times = player.stage_component.elite_stage_info[0]
+    else:
+        elite_stage_times = 0
+
+    if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
+        act_stage_times = player.stage_component.act_stage_info[0]
+    else:
+        act_stage_times = 0
+    return response, elite_stage_times, act_stage_times
 
 
 @have_player
