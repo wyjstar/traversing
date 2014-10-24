@@ -737,7 +737,7 @@ message ChatConectingRequest{
 //返回结果
 message ChatResponse{
      required bool result = 1;
-     optional string message = 2;
+     optional int32 result_no = 2;
 }
 
 //推送聊天信息
