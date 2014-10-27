@@ -149,7 +149,7 @@ def stage_sweep_907(dynamic_id, pro_data):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     times = request.times
-    stage_sweep(dynamic_id, stage_id, times)
+    return stage_sweep(dynamic_id, stage_id, times)
 
 
 def assemble(unit_add, unit):

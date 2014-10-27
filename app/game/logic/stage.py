@@ -138,7 +138,8 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
     if result:
         if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
-            player.stamina.stamina -= game_configs.stage_config.get('stages').get(stage_id).vigor
+            conf = game_configs.stage_config.get('stages').get(stage_id)
+            player.stamina.stamina -= conf.vigor
             player.stamina.save_data()
         else:
             if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
@@ -154,6 +155,19 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
                 else:
                     player.stage_component.act_stage_info = [conf.timeExpend, str(time.time())]
             player.stage_component.update()
+
+    # 经验
+    for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+        print lineUpSlotComponent,
+        hero = lineUpSlotComponent.hero_slot.hero_obj
+        if hero:
+            hero.upgrade(conf.HeroExp)
+    # 玩家金钱
+    player.finance.coin += conf.currency
+    # 玩家经验
+    player.level.addexp(conf.playerExp)
+    player.save_data()
+
 
     res.message = u'成功返回'
     return response.SerializePartialToString()
