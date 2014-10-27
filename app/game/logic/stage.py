@@ -100,7 +100,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
 
-    red_units, blue_units, drop_num, monster_unpara,replace_units, replace_index = fight_cache_component.fighting_start()
+    red_units, blue_units, drop_num, monster_unpara,replace_units, replace_no = fight_cache_component.fighting_start()
 
     # 好友
     lord_data = tb_character_lord.getObjData(fid)
@@ -113,7 +113,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
 
     return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num,
             'monster_unpara': monster_unpara, 'f_unit': f_unit, 'result_no': result_no,
-            'replace_unit': replace_units, 'replace_index': replace_index}
+            'replace_unit': replace_units, 'replace_no': replace_no}
 
 
 @have_player

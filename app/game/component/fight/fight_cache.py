@@ -284,9 +284,9 @@ class CharacterFightCacheComponent(Component):
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
-        replace_unit, replace_index = self.__break_hero_units(red_units)
+        replace_unit, replace_no = self.__break_hero_units(red_units)
 
-        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_index
+        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no
 
     def fighting_settlement(self, result):
         """战斗结算
@@ -357,10 +357,10 @@ class CharacterFightCacheComponent(Component):
             unit = self.__assemble_hero(break_hero_base_attr, old_hero_base_attr, attr, hero_id)
             unit.position = red_unit.position
             logger.info('乱入替换战斗单位属性: %s' % unit)
-            if red_unit in red_units:
-                index = red_units.index(red_unit)
+            # if red_unit in red_units:
+                # index = red_units.index(red_unit)
                 # red_units[index] = unit
-                return unit, index
+            return unit, red_unit.no
         return None, 0
 
     def __assemble_hero(self, break_hero_base_attr, old_hero_base_attr, attr, hero_id):

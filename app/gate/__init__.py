@@ -32,3 +32,4 @@ def tick():
         reactor.callLater(60, tick)
 
 reactor.callLater(1, tick)
+init_guild_rank()

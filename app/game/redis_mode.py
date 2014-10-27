@@ -2,23 +2,18 @@
 """
 created by server on 14-6-10下午9:09.
 """
-from shared.db_entrust.redis_mode import MAdmin
+from gfirefly.dbentrust.mmode import MAdmin
 
 # 用户信息表
 tb_character_info = MAdmin('tb_character_info', 'id')
 tb_character_info.insert()
 
-# 用户英雄信息表
-tb_character_heros = MAdmin('tb_character_heros', 'id')
-tb_character_heros.insert()
-
 # 英雄信息表
-tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
+tb_character_hero = MAdmin('tb_character_hero', 'id', fk='character_id')
 tb_character_hero.insert()
-tb_character_hero.load()
 
 # 用户英雄碎片信息表
-tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
+tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id')
 tb_character_hero_chip.insert()
 
 # 用户道具背包
@@ -29,12 +24,8 @@ tb_character_item_package.insert()
 tb_character_line_up = MAdmin('tb_character_line_up', 'id')
 tb_character_line_up.insert()
 
-# 用户装备列表
-tb_character_equipments = MAdmin('tb_character_equipments', 'id')
-tb_character_equipments.insert()
-
 # 装备信息表
-tb_equipment_info = MAdmin('tb_equipment_info', 'id')
+tb_equipment_info = MAdmin('tb_equipment_info', 'id', fk='character_id')
 tb_equipment_info.insert()
 
 # 装备碎片表
@@ -62,12 +53,8 @@ tb_character_friend.insert()
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 tb_character_stages.insert()
 
-# 玩家邮件表
-tb_character_mails = MAdmin('tb_character_mails', 'id')
-tb_character_mails.insert()
-
 # 邮件表
-tb_mail_info = MAdmin('tb_mail_info', 'id')
+tb_mail_info = MAdmin('tb_mail_info', 'id', fk='character_id')
 tb_mail_info.insert()
 
 # 玩家活动表

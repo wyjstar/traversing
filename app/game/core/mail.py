@@ -11,8 +11,8 @@ class Mail(object):
     """
     邮件
     """
-    def __init__(self, mail_id='', character_id=0, sender_id=-1, sender_name='', title='',\
-                 content=u'', mail_type=1, is_readed=False,\
+    def __init__(self, mail_id='', character_id=0, sender_id=-1, sender_name='', title='',
+                 content=u'', mail_type=1, is_readed=False,
                  send_time=0, read_time=0, prize=0):
         """初始化邮件信息
         """

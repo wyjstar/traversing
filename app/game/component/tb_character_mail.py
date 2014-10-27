@@ -3,11 +3,9 @@
 created by server on 14-8-14下午3:48.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_mail_info, tb_character_mails
+from app.game.redis_mode import tb_mail_info
 from app.game.core.mail import Mail
-from shared.db_opear.configs_data.game_configs import BigBagsConfig
 from shared.utils.pyuuid import get_uuid
-import time
 
 
 class CharacterMailComponent(Component):
@@ -22,24 +20,13 @@ class CharacterMailComponent(Component):
 
     def init_data(self):
         pid = self.owner.base_info.id
-        character_mails = tb_character_mails.getObjData(pid)
-        if not character_mails:
-            # 没有邮件列表数据
-            data = {
-                'id': pid,
-                'mail_ids': [],
-            }
-            tb_character_mails.new(data)
-            return
-
-        mail_ids = character_mails.get('mail_ids')
-
-        if not mail_ids:
-            return
-        for mail_id in mail_ids:
+        mail_obj_list = tb_mail_info.getObjListByFk(pid)
+        for mail_obj in mail_obj_list:
+            mail_data = mail_obj.get('data')
+            mail_id = mail_data.get('id')
             mail = Mail(mail_id=mail_id)
             mail.init_data()
-            self._mails[mail_id] = mail
+            self._mails[mail.mail_id] = mail
 
     def new_mail_data(self, mail):
         character_id = self.owner.base_info.id
@@ -92,9 +79,11 @@ class CharacterMailComponent(Component):
     def delete_mail(self, mail_id):
         if not mail_id in self._mails:
             return
+        mail = self._mails[mail_id]
+        tb_mail_info.deleteMode(mail_id)
         del self._mails[mail_id]
-        self.save_data()
-        tb_character_mails.deleteMode(mail_id)
+        # self.save_data()
+        # tb_character_mails.deleteMode(mail_id)
 
     def delete_mails(self, mail_ids):
         """批量删除"""
@@ -102,9 +91,10 @@ class CharacterMailComponent(Component):
             self.delete_mail(mail_id)
 
     def save_data(self):
-        mail_ids = []
-        character_id = self.owner.base_info.id
-        for mail_id in self._mails.keys():
-            mail_ids.append(mail_id)
-        character_mails = tb_character_mails.getObj(character_id)
-        character_mails.update('mail_ids', mail_ids)
+        pass
+        # mail_ids = []
+        # character_id = self.owner.base_info.id
+        # for mail_id in self._mails.keys():
+        #     mail_ids.append(mail_id)
+        # character_mails = tb_character_mails.getObj(character_id)
+        # character_mails.update('mail_ids', mail_ids)

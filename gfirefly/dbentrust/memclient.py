@@ -15,7 +15,7 @@ class MemConnError(Exception):
         return "memcache connect error"
 
 
-class MemClient:
+class MemClient(object):
     """memcached 连接类，对通过它存储到memcached中的key，定义了新的key的生成规则，避免key的冲突。\n
     @param _hostname: str 这个连接的命名空间。新生成的key的规则会是  _hostname:key。\n
     @param _urls: []list memcached的连接的配置\n
@@ -113,5 +113,3 @@ class MemClient:
 
 
 mclient = MemClient()
-
-

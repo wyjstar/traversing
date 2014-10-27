@@ -10,6 +10,9 @@ from dbpool import dbpool
 from pymysql.cursors import DictCursor
 from numbers import Number
 from gfirefly.server.logobj import logger
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 escape_string = pymysql.escape_string
 
@@ -144,10 +147,14 @@ def GetTableIncrValue(tablename):
     return result
 
 
-def ReadDataFromDB(tablename):
+def ReadDataFromDB(tablename, prere=None):
     """
     """
-    sql = """select * from %s""" % tablename
+    if prere:
+        preres = FormatCondition(prere)
+        sql = """select * from %s where %s ;""" % (tablename, preres)
+    else:
+        sql = """select * from %s""" % tablename
     conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
@@ -213,11 +220,11 @@ def UpdateWithDict(tablename, props, prere):
     return False
 
 
-def getAllPkByFkInDB(tablename, pkname, props):
+def getAllPkByFkInDB(tablename, pkname, prere):
     """根据所有的外键获取主键ID
     """
-    props = FormatCondition(props)
-    sql = """Select `%s` from `%s` where %s""" % (pkname, tablename, props)
+    prere = FormatCondition(prere)
+    sql = """Select `%s` from `%s` where %s""" % (pkname, tablename, prere)
     conn = dbpool.connection()
     cursor = conn.cursor()
     try:
