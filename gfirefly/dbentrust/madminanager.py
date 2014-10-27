@@ -1,13 +1,13 @@
 # coding:utf8
-'''
+"""
 Created on 2013-5-22
 
 @author: lan (www.9miao.com)
-'''
+"""
 from gfirefly.utils.singleton import Singleton
 
 
-class MAdminManager:
+class MAdminManager(object):
     """一个单例管理器。作为所有madmin的管理者
     """
     __metaclass__ = Singleton

@@ -43,20 +43,6 @@
                 "create_time": "simple"
             }
         },
-        "tb_nickname_mapping": {
-            "pkey_field": "nickname",
-            "def_attrs": {
-                "id": "simple",
-                "nickname": "simple"
-            }
-        },
-        "tb_character_heros": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "hero_ids": "complex"
-            }
-        },
         "tb_character_hero": {
             "pkey_field": "id",
             "def_attrs": {
@@ -86,13 +72,6 @@
                 "line_up_slots": "complex",
                 "sub_slots": "complex",
                 "line_up_order": "complex"
-            }
-        },
-        "tb_character_equipments": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "equipments": "complex"
             }
         },
         "tb_equipment_info": {
@@ -150,13 +129,6 @@
             "def_attrs": {
                 "id": "simple",
                 "info": "complex"
-            }
-        },
-        "tb_character_mails": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "mail_ids": "complex"
             }
         },
         "tb_mail_info": {

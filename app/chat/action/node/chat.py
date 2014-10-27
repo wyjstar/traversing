@@ -2,6 +2,7 @@
 """
 created by server on 14-5-20下午8:33.
 """
+import time
 from app.chat.core.chater_manager import ChaterManager
 from app.chat.service.node.chatgateservice import nodeservice_handle
 from app.proto_file import chat_pb2
@@ -24,14 +25,18 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
     """
     chater = ChaterManager().getchater_by_id(character_id)
     ids = []
-    ids = ChaterManager().getall_dynamicid()
     if not chater:
         # TODO message 信息要补充
-        return {'result': False}
+        return {'result': False, 'result_no': 806}
     if content:
         content = trie_tree.check.replace_bad_word(content.encode("utf-8"))
 
     if room_id == 1:  # 世界聊天频道
+
+        last_time = chater.last_time
+        if int(time.time()) - last_time < 60:
+            return {'result': False, 'result_no': 806}  # 60秒内不可聊天
+
         ids = ChaterManager().getall_dynamicid()
         response = chat_pb2.chatMessageResponse()
         response.channel = room_id
@@ -39,6 +44,7 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.id = character_id
         owner.nickname = character_nickname
         response.content = content
+        chater.last_time = int(time.time())
         noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
 
     elif room_id == 3:  # 私聊频道

@@ -3,6 +3,7 @@
 created by server on 14-6-6上午11:05.
 """
 import cPickle
+from pymysql.cursors import DictCursor
 from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
@@ -11,10 +12,12 @@ from shared.db_opear.configs_data.equipment.set_equipment_config import SetEquip
 from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
 from shared.db_opear.configs_data.item_config import ItemsConfig
 from shared.db_opear.configs_data.link_config import LinkConfig
+from shared.db_opear.configs_data.mail_config import MailConfig
 from shared.db_opear.configs_data.monster_config import MonsterConfig
 from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
+from shared.db_opear.configs_data.robot_born_config import RobotBornConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
 from shared.db_opear.configs_data.skill_config import SkillConfig
@@ -54,13 +57,7 @@ def get_config_value(config_key):
     # print 'sql:', sql
     conn = dbpool.connection()
 
-
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
 
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -99,6 +96,8 @@ activity_config = {}
 vip_config = {}
 stage_break_config = {}
 special_stage_config = {}
+mail_config = {}
+robot_born_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -127,6 +126,8 @@ all_config_name = {
     'vip_config': VIPConfig(),
     'stage_break_config': StageBreakConfig(),
     'special_stage_config': SpecialStageConfig(),
+    'mail_config': MailConfig(),
+    'robot_born_config': RobotBornConfig()
 }
 
 
@@ -151,9 +152,8 @@ if __name__ == '__main__':
     #     print k, '='*5, v
     #     for _ in v:
     #         print _
-    print stage_break_config.get(11, None)
-
-
-
-
-
+    # for k,v in mail_config.items():
+    #     print k, ' : ', v
+    # print mail_config
+    for k, v in robot_born_config.items():
+        print k, v

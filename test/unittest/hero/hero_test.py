@@ -36,8 +36,8 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(hero.exp, 1, 'exp %d' % hero.exp)
 
         #redis
-        heros = tb_character_heros.getObjData(1)
-        length = len(heros.get('hero_ids'))
+        heros = tb_character_hero.getAllPkByFk(1)
+        length = len(heros)
         self.assertEqual(length, 7, 'len of hero_list error!%d_%d' % (length, 7))
 
         hero_id = self.player.hero_component.get_hero_id(10011)
@@ -56,8 +56,8 @@ class HeroTest(unittest.TestCase):
         self.assertEqual(hero, None)
 
         #redis
-        heros = tb_character_heros.getObjData(1)
-        length = len(heros.get('hero_ids'))
+        heros = tb_character_hero.getAllPkByFk(1)
+        length = len(heros)
         self.assertEqual(length, 5, 'len of hero_list error!%d_%d' % (length, 5))
 
     def test_get_all_exp(self):

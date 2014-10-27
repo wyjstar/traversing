@@ -1,2 +1,2 @@
 #!/bin/sh
-wget localhost:20098/stop
+curl 127.0.0.1:20098/stop

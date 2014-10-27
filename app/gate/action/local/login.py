@@ -66,6 +66,8 @@ def __character_login(dynamic_id):
 
     # game服登录
     player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    if not player_data:
+        return {'result': False}
     v_character.node = now_node
 
     # pull message from transit

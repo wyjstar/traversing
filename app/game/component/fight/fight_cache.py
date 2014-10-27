@@ -195,7 +195,7 @@ class CharacterFightCacheComponent(Component):
             odds_config = getattr(stage_break_config, 'odds%d' % i)  # 乱入几率
             if self.check_condition(condition_config):
                 odds += odds_config
-            logger.info('乱入条件: %s odds:%f' % (condition_config, odds))
+            logger.info('乱入条件: %s odds:%f not replace:%s' % (condition_config, odds, self._not_replace))
 
         return odds
 
@@ -234,6 +234,7 @@ class CharacterFightCacheComponent(Component):
 
     def check_hero(self, condition_param):
         hero_nos = self.owner.line_up_component.hero_nos
+        logger.info('hero nos:%s', hero_nos)
         if condition_param in hero_nos:
             self._not_replace.append(condition_param)
             return True
@@ -241,26 +242,38 @@ class CharacterFightCacheComponent(Component):
 
     def check_equ(self, condition_param):
         for slot in self.line_up_slots.values():
+            if slot.equipment_nos:
+                logger.info('slot equipment nos:%s', slot.equipment_nos)
             if condition_param in slot.equipment_nos:
                 return True
         return False
 
     def check_suit(self, condition_param):
         for slot in self.line_up_slots.values():
+            if slot.equ_suit:
+                logger.info('slot equ suit:%s', slot.equ_suit.keys())
             if condition_param in slot.equ_suit:
                 return True
         return False
 
     def check_link(self, condition_param):
         for slot in self.line_up_slots.values():
+            if slot.hero_slot.hero_no in self._not_replace:
+                continue
             if condition_param in slot.hero_slot.link:
                 link_config = game_configs.link_config.get(slot.hero_slot.hero_no)
                 for i in (1, 6):
                     link = getattr(link_config, 'link%s' % i)
+                    if link:
+                        logger.info('slot hero no%s, link:%s' % (slot.hero_slot.hero_no, link))
                     if condition_param == link:
                         trigger = getattr(link_config, 'trigger%s' % i)
-                        self._not_replace.extend(trigger)
-                return True
+                        set_trigger = set(trigger)
+                        set_hero_nos = set(self.owner.line_up_component.hero_nos)
+                        if set_hero_nos.issuperset(set_trigger):
+                            self._not_replace.append(slot.hero_slot.hero_no)
+                            self._not_replace.extend(trigger)
+                            return True
         return False
 
     def fighting_start(self):
@@ -270,9 +283,9 @@ class CharacterFightCacheComponent(Component):
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
-        replace_unit, replace_index = self.__break_hero_units(red_units)
+        replace_unit, replace_no = self.__break_hero_units(red_units)
 
-        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_index
+        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no
 
     def fighting_settlement(self, result):
         """战斗结算
@@ -296,13 +309,17 @@ class CharacterFightCacheComponent(Component):
         return drops
 
     def __break_hero_units(self, red_units):
+        self._not_replace = []
         odds = self.__get_break_stage_odds()
         break_config = self.__get_stage_break_config()
+        if not break_config:
+            logger.error('can not find stage break config')
+            return None, 0
 
         rand_odds = random.random()
 
         logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units))
-        if break_config and rand_odds <= odds:
+        if rand_odds <= odds:
             replace = []  # 可以替换的英雄
             for red_unit in red_units:
                 if not red_unit:
@@ -324,27 +341,28 @@ class CharacterFightCacheComponent(Component):
             hero_id = break_config.hero_id
             level = red_unit.level  # 等级
             break_level = red_unit.break_level  # 突破等级
-            hero_obj = Hero()  # 实例化一个替换英雄对象
-            hero_obj.hero_no = hero_id
-            hero_obj.level = level
-            hero_obj.break_level = break_level
-            hero_base_attr = old_hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+            break_hero_obj = Hero()  # 实例化一个替换英雄对象
+            break_hero_obj.hero_no = hero_id
+            break_hero_obj.level = level
+            break_hero_obj.break_level = break_level
+            break_hero_base_attr = break_hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+            old_hero_base_attr = old_hero_obj.calculate_attr()  # 英雄基础属性，等级成长
             attr = CommonItem()
-            hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
+            hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
             attr += hero_break_attr
             slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
-            unit = self.__assemble_hero(hero_base_attr, attr, hero_id)
+            unit = self.__assemble_hero(break_hero_base_attr, old_hero_base_attr, attr, hero_id)
             unit.position = red_unit.position
             logger.info('乱入替换战斗单位属性: %s' % unit)
-            if red_unit in red_units:
-                index = red_units.index(red_unit)
+            # if red_unit in red_units:
+                # index = red_units.index(red_unit)
                 # red_units[index] = unit
-                return unit, index
+            return unit, red_unit.no
         return None, 0
 
-    def __assemble_hero(self, base_attr, attr, hero_id):
+    def __assemble_hero(self, break_hero_base_attr, old_hero_base_attr, attr, hero_id):
         """组装英雄战斗单位
         """
         # base_attr: 英雄基础，等级 属性
@@ -357,36 +375,36 @@ class CharacterFightCacheComponent(Component):
         # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
 
         no = hero_id
-        quality = base_attr.quality
+        quality = break_hero_base_attr.quality
 
-        normal_skill = base_attr.normal_skill
-        rage_skill = base_attr.rage_skill
-        break_skills = base_attr.break_skills
+        normal_skill = break_hero_base_attr.normal_skill
+        rage_skill = break_hero_base_attr.rage_skill
+        break_skills = break_hero_base_attr.break_skills
 
-        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
-        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
-        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
-        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
-        hit = base_attr.hit + attr.hit
-        dodge = base_attr.dodge + attr.dodge
-        cri = base_attr.cri + attr.cri
-        cri_coeff = base_attr.cri_coeff + attr.cri_coeff
-        cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
-        block = base_attr.block + attr.block
+        hp = break_hero_base_attr.hp + break_hero_base_attr.hp * attr.hp_rate + attr.hp
+        atk = break_hero_base_attr.atk + break_hero_base_attr.atk * attr.atk_rate + attr.atk
+        physical_def = break_hero_base_attr.physical_def + break_hero_base_attr.physical_def * attr.physical_def_rate + attr.physical_def
+        magic_def = break_hero_base_attr.magic_def + break_hero_base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        hit = break_hero_base_attr.hit + attr.hit
+        dodge = break_hero_base_attr.dodge + attr.dodge
+        cri = break_hero_base_attr.cri + attr.cri
+        cri_coeff = break_hero_base_attr.cri_coeff + attr.cri_coeff
+        cri_ded_coeff = break_hero_base_attr.cri_ded_coeff + attr.cri_ded_coeff
+        block = break_hero_base_attr.block + attr.block
 
-        base_hp = base_attr.hp
-        base_atk = base_attr.atk
-        base_physical_def = base_attr.physical_def
-        base_magic_def = base_attr.magic_def
-        base_hit = base_attr.hit
-        base_dodge = base_attr.dodge
-        base_cri = base_attr.cri
-        base_cri_coeff = base_attr.cri_coeff
-        base_cri_ded_coeff = base_attr.cri_ded_coeff
-        base_block = base_attr.block
+        base_hp = break_hero_base_attr.hp
+        base_atk = break_hero_base_attr.atk
+        base_physical_def = break_hero_base_attr.physical_def
+        base_magic_def = break_hero_base_attr.magic_def
+        base_hit = break_hero_base_attr.hit
+        base_dodge = break_hero_base_attr.dodge
+        base_cri = break_hero_base_attr.cri
+        base_cri_coeff = break_hero_base_attr.cri_coeff
+        base_cri_ded_coeff = break_hero_base_attr.cri_ded_coeff
+        base_block = break_hero_base_attr.block
 
-        level = base_attr.level
-        break_level = base_attr.break_level
+        level = old_hero_base_attr.level
+        break_level = old_hero_base_attr.break_level
         is_boss = False
         position = 0
 

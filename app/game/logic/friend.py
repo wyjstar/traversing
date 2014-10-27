@@ -7,13 +7,13 @@ from app.game.core.fight.battle_unit import BattleUnit
 
 from app.game.logic.common.check import have_player
 from app.game.core.PlayersManager import PlayersManager
-from app.game.redis_mode import tb_nickname_mapping
 from app.game.redis_mode import tb_character_info
 from app.game.redis_mode import tb_character_lord
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.game.action.root.netforwarding import push_object
 from app.game.action.root.netforwarding import push_message
+from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 
 
@@ -337,10 +337,10 @@ def find_friend_request(dynamic_id, data, **kwargs):
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')
     else:
-        player_data = tb_nickname_mapping.getObjData(request.id_or_nickname)
-        if player_data:
-            response.id = player_data.get('id')
-            response.nickname = player_data.get('nickname')
+        sql_result = util.GetOneRecordInfo('tb_character_info', dict(nickname=request.id_or_nickname))
+        if sql_result:
+            response.id = sql_result.get('id')
+            response.nickname = sql_result.get('nickname')
 
     return response.SerializePartialToString()
 

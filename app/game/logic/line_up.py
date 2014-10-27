@@ -5,8 +5,9 @@ created by server on 14-7-15下午11:03.
 import cPickle
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.hero import Hero
-from app.game.redis_mode import tb_character_line_up, tb_character_heros, tb_character_hero, tb_character_equipments, \
-    tb_equipment_info
+from app.game.redis_mode import tb_character_line_up
+from app.game.redis_mode import tb_character_hero
+from app.game.redis_mode import tb_equipment_info
 from app.proto_file import line_up_pb2
 from app.game.logic.common.check import have_player, check_have_equipment
 from gfirefly.server.logobj import logger
@@ -28,7 +29,7 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     @param kwargs:
     @return:
     """
-    logger.debug("change hero: slot_no, hero_no, change_type", slot_no, hero_no, change_type)
+    logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d", slot_no, hero_no, change_type)
 
 
     player = kwargs.get('player')
@@ -62,7 +63,7 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @param equipment_id: 装备ID
     @return:
     """
-    logger.debug("change equipment id %d %d %d", slot_no, no, equipment_id)
+    logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
     player = kwargs.get('player')
     response = line_up_pb2.LineUpResponse()
 
@@ -174,19 +175,14 @@ def get_target_line_up_info(dynamic_id, target_id, **kwargs):
     else:
         response = line_up_pb2.LineUpResponse()
 
-        character_heros = tb_character_heros.getObjData(target_id)
         heros_obj = {}
-        if character_heros:
-            hero_ids = character_heros.get('hero_ids')
+        heros = tb_character_hero.getObjListByFk(target_id)
 
-            if hero_ids:
-                heros = tb_character_hero.getObjList(hero_ids)
-
-                for hero_mmode in heros:
-                    data = hero_mmode.get('data')
-                    hero = Hero(target_id)
-                    hero.init_data(data)
-                    heros_obj[hero.hero_no] = hero
+        for hero_mmode in heros:
+            data = hero_mmode.get('data')
+            hero = Hero(target_id)
+            hero.init_data(data)
+            heros_obj[hero.hero_no] = hero
 
         line_up_data = tb_character_line_up.getObjData(target_id)
 

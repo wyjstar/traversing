@@ -4,15 +4,17 @@ Created on 2013-5-8
 
 @author: lan (www.9miao.com)
 """
-import MySQLdb
+import pymysql
 
 from dbpool import dbpool
-from MySQLdb.cursors import DictCursor
+from pymysql.cursors import DictCursor
 from numbers import Number
 from gfirefly.server.logobj import logger
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
-import MySQLdb
-escape_string = MySQLdb.escape_string
+escape_string = pymysql.escape_string
 
 
 def force_str(text, encoding="utf-8", errors='strict'):
@@ -49,7 +51,7 @@ def _sqltext(data, delimiter=","):
 
 
 def forEachPlusInsertProps(tablename, props):
-    MySQLdb.escape_string
+    pymysql.escape_string
     assert type(props) == dict
     sqlstr = "INSERT INTO %s SET %s" % (tablename, _sqltext(props, ","))
     return sqlstr
@@ -145,17 +147,16 @@ def GetTableIncrValue(tablename):
     return result
 
 
-def ReadDataFromDB(tablename):
+def ReadDataFromDB(tablename, prere=None):
     """
     """
-    sql = """select * from %s""" % tablename
-    conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
+    if prere:
+        preres = FormatCondition(prere)
+        sql = """select * from %s where %s ;""" % (tablename, preres)
     else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+        sql = """select * from %s""" % tablename
+    conn = dbpool.connection()
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -219,11 +220,11 @@ def UpdateWithDict(tablename, props, prere):
     return False
 
 
-def getAllPkByFkInDB(tablename, pkname, props):
+def getAllPkByFkInDB(tablename, pkname, prere):
     """根据所有的外键获取主键ID
     """
-    props = FormatCondition(props)
-    sql = """Select `%s` from `%s` where %s""" % (pkname, tablename, props)
+    prere = FormatCondition(prere)
+    sql = """Select `%s` from `%s` where %s""" % (pkname, tablename, prere)
     conn = dbpool.connection()
     cursor = conn.cursor()
     try:
@@ -243,12 +244,7 @@ def GetOneRecordInfo(tablename, props):
     props = FormatCondition(props)
     sql = """Select * from `%s` where %s""" % (tablename, props)
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     try:
         cursor.execute(sql)
     except Exception, e:
@@ -270,12 +266,7 @@ def GetRecordList(tablename, pkname, pklist):
     pkliststr = "(%s)" % pkliststr[:-1]
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -286,12 +277,7 @@ def GetRecordList(tablename, pkname, pklist):
 def DBTest():
     sql = """SELECT * FROM tb_item WHERE characterId=1000001;"""
     conn = dbpool.connection()
-    if dbpool._pymysql:
-        from pymysql.cursors import DictCursor
-        cursor = conn.cursor(cursor=DictCursor)
-    else:
-        from MySQLdb.cursors import DictCursor
-        cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

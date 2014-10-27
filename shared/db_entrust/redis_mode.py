@@ -348,4 +348,3 @@ class MAdmin(RedisObject):
         setattr(mm, '_state', MMODE_STATE_NEW)
         mm.insert()
         return mm
-
