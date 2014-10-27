@@ -69,7 +69,7 @@ if __name__ == '__main__':
     player = PlayerCharacter(1, dynamic_id=1)
     player.create_character_data()
     for k, val in hero_config.items():
-        if val.toGet != 0:
+        if val.type != 0:
             hero1 = player.hero_component.add_hero(k)
             hero1.hero_no = k
             hero1.level = 1
