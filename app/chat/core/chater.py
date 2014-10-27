@@ -20,6 +20,7 @@ class Chater(object):
         self._room_id = 1  # 房间号ID
         self._island = True  # 是否在线  False表示离线,True表示在线
         self._guild_id = guild_id
+        self._last_time = 1
 
     @property
     def character_id(self):
@@ -68,3 +69,11 @@ class Chater(object):
     @guild_id.setter
     def guild_id(self, guild_id):
         self._guild_id = guild_id
+
+    @property
+    def last_time(self):
+        return self._last_time
+
+    @last_time.setter
+    def last_time(self, last_time):
+        self._last_time = last_time
