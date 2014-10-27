@@ -11,7 +11,7 @@ from shared.db_opear.configs_data.game_configs import hero_config
 def init_hero(player):
 
     for k, val in hero_config.items():
-        if val.toGet != 0:
+        if val.type == 0:
             hero1 = player.hero_component.add_hero(k)
             hero1.hero_no = k
             hero1.level = 1
