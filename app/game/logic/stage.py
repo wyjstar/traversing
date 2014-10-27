@@ -37,7 +37,12 @@ def get_stage_info(dynamic_id, stage_id, **kwargs):
         act_stage_times = player.stage_component.act_stage_info[0]
     else:
         act_stage_times = 0
-    return response, elite_stage_times, act_stage_times
+
+    if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday:
+        sweep_times = player.stage_component.sweep_times[0]
+    else:
+        sweep_times = 0
+    return response, elite_stage_times, act_stage_times, sweep_times
 
 
 @have_player
@@ -256,8 +261,19 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
     player.stage_component.sweep_times[0] += times
     player.stage_component.sweep_times[0] = int(time.time())
 
-    player.stamina.stamina -= game_configs.stage_config.get('stages').get(stage_id).vigor
+    player.stamina.stamina -= stage_config.vigor
     player.stamina.save_data()
+    # 经验
+    for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+        print lineUpSlotComponent,
+        hero = lineUpSlotComponent.hero_slot.hero_obj
+        if hero:
+            hero.upgrade(stage_config.HeroExp)
+    # 玩家金钱
+    player.finance.coin += stage_config.currency
+    # 玩家经验
+    player.level.addexp(stage_config.playerExp)
+    player.save_data()
 
     res.result = True
     return response.SerializePartialToString()
