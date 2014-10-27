@@ -164,10 +164,13 @@ def ReadDataFromDB(tablename, prere=None):
     return result
 
 
-def DeleteFromDB(tablename, props):
+def DeleteFromDB(tablename, props=None):
     """从数据库中删除"""
-    prers = FormatCondition(props)
-    sql = """DELETE FROM %s WHERE %s ;""" % (tablename, prers)
+    if props:
+        prers = FormatCondition(props)
+        sql = """DELETE FROM %s WHERE %s ;""" % (tablename, prers)
+    else:
+        sql = """DELETE FROM %s ;""" % tablename
     conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0

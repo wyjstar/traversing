@@ -222,8 +222,4 @@ CREATE TABLE `tb_mail_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Table structure for table `tb_nickname_mapping`
---
-
 -- Dump completed on 2014-09-29 15:45:13

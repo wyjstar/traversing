@@ -36,4 +36,17 @@ def log_init(log_path):
     # _logger.addHandler(uh)
 
 
+def log_init_only_out():
+    _logger = logging.getLogger(logger_name)
+
+    datefmt = '%Y-%m-%d %I:%M:%S %p'
+    fmt = '%(asctime)s-[%(levelname)s]: %(message)s'
+    formatter = logging.Formatter(fmt, datefmt)
+
+    ch = logging.StreamHandler(sys.stdout)
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(formatter)
+    _logger.addHandler(ch)
+
+
 logger = logging.getLogger(logger_name)

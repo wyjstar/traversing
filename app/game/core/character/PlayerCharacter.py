@@ -71,7 +71,6 @@ class PlayerCharacter(Character):
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
 
-
     def init_player_info(self):
         """初始化角色信息
         """
@@ -114,7 +113,6 @@ class PlayerCharacter(Character):
         #------------初始化角色等级信息------------
         self._level.level = level
         self._level.exp = exp
-
 
         #------------初始化角色其他组件------------
         self._hero_component.init_heros()  # 初始化武将列表

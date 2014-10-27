@@ -1,0 +1,28 @@
+import "stage.proto";
+import "common.proto";
+
+
+message RankItems{
+     required string nickname = 1;//角色昵称
+     required int32 rank = 2;
+     required int32 level = 3;
+}
+
+message TopRankResponse{
+    repeated RankItems rank_items = 1;
+}
+
+message PlayerRankResponse{
+    repeated RankItems rank_items = 1;
+}
+
+message PvpFightRequest{
+    required int32 challenge_rank = 1;
+}
+
+// 进入关卡战斗返回 command:1503
+message PvpFightResponse{
+    required CommonResponse res = 1;
+    repeated BattleUnit red = 2; //红方数据 自己
+    repeated BattleUnit blue = 3; //对方数据
+}
