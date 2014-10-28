@@ -1,13 +1,3 @@
-ALTER TABLE tb_character_info  ADD INDEX nickname(nickname);
-DROP TABLE IF EXISTS `tb_character_heros`;
-DROP TABLE IF EXISTS `tb_character_equipments`;
-DROP TABLE IF EXISTS `tb_character_mails`;
+ALTER TABLE tb_character_info ADD column pvp_count bigint(20) NOT NULL DEFAULT '0';
+ALTER TABLE tb_character_info ADD column pvp_score bigint(20) NOT NULL DEFAULT '0';
 
-DROP TABLE IF EXISTS `tb_pvp_rank`;
-CREATE TABLE `tb_pvp_rank` (
-  `id` bigint(20) NOT NULL,
-  `nickname` varchar(128) DEFAULT '',
-  `level` int(11) NOT NULL DEFAULT '1',
-  `units` blob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;

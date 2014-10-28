@@ -2,10 +2,8 @@
 """
 created by server on 14-7-16下午3:19.
 """
-from app.game.core.PlayersManager import PlayersManager
-from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import item_pb2
-from shared.db_opear.configs_data.game_configs import item_config, big_bag_config
+from shared.db_opear.configs_data.game_configs import item_config
 from app.game.core.drop_bag import BigBag
 from app.game.logic.item_group_helper import gain, get_return
 from app.game.logic.common.check import have_player

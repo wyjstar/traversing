@@ -3,12 +3,12 @@
 created by server on 14-7-21下午2:17.
 """
 
-from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from app.game.logic.player import nickname_create, buy_stamina, add_stamina
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def nickname_create_5(dynamic_id, request_proto):
     argument = CreatePlayerRequest()
     argument.ParseFromString(request_proto)
@@ -16,13 +16,13 @@ def nickname_create_5(dynamic_id, request_proto):
     return nickname_create(dynamic_id, nickname)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def buy_stamina_6(dynamic_id, request_proto):
     """购买体力"""
     return buy_stamina(dynamic_id)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def add_stamina_7(dynamic_id, request_proto):
     """按时增长体力"""
     return add_stamina(dynamic_id)
