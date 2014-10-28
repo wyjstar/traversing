@@ -21,7 +21,7 @@ def get_stages_901(dynamic_id, pro_data):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj = get_stage_info(dynamic_id, stage_id)
+    stages_obj, elite_stage_times, act_stage_times, sweep_times = get_stage_info(dynamic_id, stage_id)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -29,7 +29,9 @@ def get_stages_901(dynamic_id, pro_data):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
-
+    response.elite_stage_times = elite_stage_times
+    response.act_stage_times = act_stage_times
+    response.sweep_times = sweep_times
     return response.SerializePartialToString()
 
 
@@ -148,9 +150,7 @@ def stage_sweep_907(dynamic_id, pro_data):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     times = request.times
-    drops = stage_sweep(dynamic_id, stage_id, times)
-
-    return drops
+    return stage_sweep(dynamic_id, stage_id, times)
 
 
 def assemble(unit_add, unit):

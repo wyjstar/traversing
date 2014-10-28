@@ -18,6 +18,7 @@ from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
 from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
 from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
 from shared.db_opear.configs_data.rand_name_config import RandNameConfig
+from shared.db_opear.configs_data.player_exp_config import PlayerExpConfig
 from shared.db_opear.configs_data.robot_born_config import RobotBornConfig
 from shared.db_opear.configs_data.shop_config import ShopConfig
 from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
@@ -100,6 +101,7 @@ special_stage_config = {}
 mail_config = {}
 robot_born_config = {}
 rand_name_config = {}
+player_exp_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -129,8 +131,9 @@ all_config_name = {
     'stage_break_config': StageBreakConfig(),
     'special_stage_config': SpecialStageConfig(),
     'mail_config': MailConfig(),
+    'rand_name_config': RandNameConfig(),
     'robot_born_config': RobotBornConfig(),
-    'rand_name_config': RandNameConfig()
+    'player_exp_config': PlayerExpConfig()
 }
 
 
