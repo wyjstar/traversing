@@ -156,7 +156,7 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
             elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
                 conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
                 if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
-                    player.stage_component.act_stage_info[0] += conf.timeExpend
+                    player.stage_component.act_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.act_stage_info = [conf.timeExpend, str(time.time())]
             player.stage_component.update()
