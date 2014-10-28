@@ -2,8 +2,8 @@
 """
 created by server on 14-7-17下午4:36.
 """
+from app.game.logic import friend, mail
 from app.game.service.gatenoteservice import remote_service_handle
-from app.game.logic import friend
 
 
 @remote_service_handle
@@ -70,3 +70,11 @@ def become_friends_1051(dynamic_id, is_online, target_id):
 @remote_service_handle
 def delete_friend_1052(dynamic_id, is_online, target_id):
     return friend.del_friend_remote(dynamic_id, is_online, target_id)
+
+@remote_service_handle
+def friend_private_chat_1060(dynamic_id, data):
+    """ 发送好友单聊邮件
+    @author: jiang
+    """
+    chat_mail = friend.make_chat_mail(dynamic_id, data)
+    return mail.send_mail(dynamic_id, chat_mail)

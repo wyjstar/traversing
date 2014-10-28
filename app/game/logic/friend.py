@@ -3,16 +3,15 @@
 created by server on 14-7-17下午5:21.
 """
 import datetime
-from app.game.core.fight.battle_unit import BattleUnit
 
-from app.game.logic.common.check import have_player
+from app.game.action.root.netforwarding import push_message, push_object
+from app.game.component.mail.mail import MailComponent
 from app.game.core.PlayersManager import PlayersManager
-from app.game.redis_mode import tb_character_info
-from app.game.redis_mode import tb_character_lord
-from app.proto_file.common_pb2 import CommonResponse
+from app.game.core.fight.battle_unit import BattleUnit
+from app.game.logic.common.check import have_player
+from app.game.redis_mode import tb_character_info, tb_character_lord
 from app.proto_file import friend_pb2
-from app.game.action.root.netforwarding import push_object
-from app.game.action.root.netforwarding import push_message
+from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 
@@ -365,3 +364,23 @@ def given_stamina(dynamic_id, data, **kwargs):
         return response.SerializePartialToString()  # fail
 
     return response.SerializePartialToString()  # fail
+
+@have_player
+def make_chat_mail(dynamic_id, data, **kwargs):
+    """生成私聊邮件"""
+    request = friend_pb2.FriendPrivateChatRequest()
+    request.ParseFromString(data)
+    target_id = request.target_id
+    content = request.content
+    
+    player = kwargs.get('player')
+    
+    mail = {'sender_id': player.base_info.id,
+            'sender_name': player.base_info.nickname,
+            'receive_id': target_id,
+            'receive_name': 0,
+            'title': 0,
+            'content': content,
+            'mail_type': MailComponent.TYPE_MESSAGE,
+            'prize': 0}
+    return mail

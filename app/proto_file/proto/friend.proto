@@ -53,3 +53,14 @@ message GetPlayerFriendsResponse{
     repeated CharacterInfo blacklist = 3;
     repeated CharacterInfo applicant_list = 4;
 }
+
+// friend private chat
+message FriendPrivateChatRequest{
+	optional int32 target_uid = 1;
+	optional string content = 2;
+}
+
+message FriendPrivateChatResponse{
+	optional bool result = 1;
+}
+
