@@ -27,6 +27,12 @@ class CharacterStageComponent(Component):
         self._act_stage_info = [0, 1]  # 活动关卡相关信息, {今日挑战次数，最后挑战日期}
 
         self._sweep_times = [0, 1]
+        self._stage_up_time = 1
+
+    def update_stage_times(self):
+        self._stage_up_time = int(time.time())
+        for stage_id, stage in self._stage_info.items():
+            stage.attacks = 0
 
     def init_data(self):
         stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
@@ -40,6 +46,8 @@ class CharacterStageComponent(Component):
                 self._award_info[chapter_id] = StageAward.loads(stage_award)
             self._elite_stage_info = stage_data.get('elite_stage')
             self._act_stage_info = stage_data.get('act_stage')
+            self._sweep_times = stage_data.get('sweep_times')
+            self._stage_up_time = stage_data.get('stage_up_time')
 
         else:
             first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -54,7 +62,9 @@ class CharacterStageComponent(Component):
                                          [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
                                           self._award_info.iteritems()]),
                                      'elite_stage': [0, int(time.time())],
-                                     'act_stage': [0, int(time.time())]
+                                     'act_stage': [0, int(time.time())],
+                                     'sweep_times': [0, int(time.time())],
+                                     'stage_up_time': int(time.time())
                                      })
 
     def get_stage(self, stage_id):
@@ -158,7 +168,9 @@ class CharacterStageComponent(Component):
                  'award_info': dict(
                      [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),
                  'elite_stage': self._elite_stage_info,
-                 'act_stage': self._act_stage_info
+                 'act_stage': self._act_stage_info,
+                 'sweep_stage': self._sweep_times,
+                 'stage_up_time': self._stage_up_time
                  }
 
 
@@ -188,5 +200,13 @@ class CharacterStageComponent(Component):
     @sweep_times.setter
     def sweep_times(self, sweep_times):
         self._sweep_times = sweep_times
+
+    @property
+    def stage_up_time(self):
+        return self.stage_up_time
+
+    @stage_up_time.setter
+    def stage_up_time(self, stage_up_time):
+        self._stage_up_time = stage_up_time
 
 

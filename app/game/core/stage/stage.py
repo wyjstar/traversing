@@ -22,6 +22,10 @@ class Stage(object):
     def attacks(self):
         return self._attacks
 
+    @attacks.setter
+    def attacks(self, attacks):
+        self._attacks = attacks
+
     @property
     def state(self):
         return self._state

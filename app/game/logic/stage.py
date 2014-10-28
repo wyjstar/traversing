@@ -20,6 +20,11 @@ def get_stage_info(dynamic_id, stage_id, **kwargs):
     """
     player = kwargs.get('player')
 
+    if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
+        player.stage_component.stage_up_time = int(time.time())
+        player.stage_component.update_stage_times()
+        player.stage_component.update()
+
     response = []
     if stage_id:  # 根据关卡ID
         stage_obj = player.stage_component.get_stage(stage_id)
@@ -98,6 +103,16 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
                 and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timeExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
+    else:  # 普通关卡
+        if time.localtime(player.stage_component.stage_up_time).tm_mday == time.localtime().tm_mday:
+            if player.stage_component.get_stage(stage_id).attacks >= game_configs.stage_config.get('stages').\
+                    get(stage_id).limitTimes:
+                return {'result': False, 'result_no': 810}  # 810 本关卡攻击次数不足
+        else:
+            player.stage_component.stage_up_time = int(time.time())
+            player.stage_component.update_stage_times()
+            player.stage_component.update()
+
     # 保存阵容
     player.line_up_component.line_up_order = line_up
     player.line_up_component.save_data()
@@ -173,7 +188,6 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
     player.level.addexp(conf.playerExp)
     player.save_data()
 
-
     res.message = u'成功返回'
     return response.SerializePartialToString()
 
@@ -237,8 +251,12 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
         res.result_no = 803
         return response.SerializePartialToString()
 
-    # TODO 本关卡的次数够不够
     stage_config = game_configs.stage_config.get('stages').get(stage_id)
+
+    if player.stage_component.get_stage(stage_id).attacks + times > stage_config.limitTimes:
+        res.result = False
+        res.result_no = 810
+        return response.SerializePartialToString()
 
     drop = []
     for _ in range(times):
@@ -260,6 +278,8 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
 
     player.stage_component.sweep_times[0] += times
     player.stage_component.sweep_times[0] = int(time.time())
+    player.stage_component.get_stage(stage_id).attacks += times
+    player.stage_component.update()
 
     player.stamina.stamina -= stage_config.vigor
     player.stamina.save_data()
