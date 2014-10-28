@@ -59,7 +59,6 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     if state == -2:
         return {'result': False, 'result_no': 803}  # 803 未开启
 
-
     if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
         #星期限制

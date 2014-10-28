@@ -4,7 +4,6 @@ created by server on 14-7-4上午10:30.
 """
 
 
-
 def init_player(player):
     player.finance.coin = 3000000*100
     player.finance.hero_soul = 2000000
