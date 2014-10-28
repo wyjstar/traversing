@@ -7,13 +7,13 @@ from app.game.logic.stage import get_stage_info
 from app.game.logic.stage import fight_start
 from app.game.logic.stage import fight_settlement
 from app.game.logic.stage import get_warriors
-from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import stage_request_pb2
 from app.proto_file import stage_response_pb2
+from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_stages_901(dynamic_id, pro_data):
     """取得关卡信息
     """
@@ -35,7 +35,7 @@ def get_stages_901(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_chapter_902(dynamic_id, pro_data):
     """取得章节奖励信息
     """
@@ -58,7 +58,7 @@ def get_chapter_902(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def stage_start_903(dynamic_id, pro_data):
     """开始战斗
     """
@@ -126,7 +126,7 @@ def stage_start_903(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def fight_settlement_904(dynamic_id, pro_data):
     request = stage_request_pb2.StageSettlementRequest()
     request.ParseFromString(pro_data)
@@ -137,14 +137,14 @@ def fight_settlement_904(dynamic_id, pro_data):
     return drops
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_warriors_906(dynamic_id, pro_data):
     """请求无双
     """
     return get_warriors(dynamic_id)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def stage_sweep_907(dynamic_id, pro_data):
     request = stage_request_pb2.StageSweepRequest()
     request.ParseFromString(pro_data)

@@ -2,13 +2,12 @@
 """
 created by server on 14-8-12下午2:17.
 """
-from app.game.service.gatenoteservice import remote_service_handle
-from app.game.logic.feast import *
-from app.proto_file.feast_pb2 import *
-from app.proto_file.common_pb2 import CommonResponse
+from app.game.logic.feast import eat_feast, get_time
+from app.proto_file.feast_pb2 import EatFeastResponse, GetEatTimeResponse
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def feast_820(dynamic_id, pro_data):
     """美味酒席
     """
@@ -17,7 +16,7 @@ def feast_820(dynamic_id, pro_data):
     response.res = res
     return response.SerializeToString()
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_eat_time_821(dynamic_id, pro_data):
     """获取上次吃的时间
     """

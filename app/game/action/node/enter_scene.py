@@ -2,16 +2,16 @@
 """
 created by wzp on 14-6-19下午7: 51.
 """
-from app.game.service.gatenoteservice import remote_service_handle
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
 import time
 from app.game.logic.player import init_player
+from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def enter_scene_601(dynamic_id, character_id):
     """进入场景"""
     player = PlayersManager().get_player_by_id(character_id)

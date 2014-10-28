@@ -37,7 +37,6 @@ from shared.db_opear.configs_data.vip_config import VIPConfig
 from shared.db_opear.configs_data.special_stage_config import SpecialStageConfig
 
 
-
 def init():
     hostname = "127.0.0.1"  #  要连接的数据库主机名
     user = "test"  #  要连接的数据库用户名

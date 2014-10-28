@@ -3,17 +3,17 @@
 created by server on 14-7-14下午5:25.
 """
 from app.game.logic.line_up import get_line_up_info, change_hero, change_equipment, get_target_line_up_info
-from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import line_up_pb2
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_line_up_info_701(dynamic_id, pro_data):
     """取得阵容信息
     """
     return get_line_up_info(dynamic_id)
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_target_line_up_info_706(dynamic_id, pro_data):
     """取得目标玩家阵容信息
     """
@@ -22,7 +22,7 @@ def get_target_line_up_info_706(dynamic_id, pro_data):
     return get_target_line_up_info(dynamic_id, request.target_id)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def change_hero_702(dynamic_id, pro_data):
     """更换英雄
     """
@@ -34,7 +34,7 @@ def change_hero_702(dynamic_id, pro_data):
     return change_hero(dynamic_id, slot_no, hero_no, change_type)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def change_equipments_703(dynamic_id, pro_data):
     """更换装备
     """
@@ -116,8 +116,3 @@ def change_equipments_703(dynamic_id, pro_data):
 # def employ_705(dynamic_id, pro_data):
 #     """雇佣"""
 #
-
-
-
-
-

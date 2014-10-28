@@ -2,6 +2,12 @@
 """
 created by server on 14-6-19下午7:49.
 """
+from gfirefly.server.globalobject import GlobalObject
+from gfirefly.utils.services import CommandService
+
+if 'gate' in GlobalObject().remote:
+    GlobalObject().remote['gate']._reference.addService(CommandService("gateremote"))
+
 import enter_scene
 import logout
 import item
