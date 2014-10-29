@@ -98,7 +98,9 @@
                 "stage_info": "complex",
                 "award_info": "complex",
                 "elite_stage": "complex",
-                "act_stage": "complex"
+                "act_stage": "complex",
+                "sweep_times": "complex",
+                "stage_up_time": "simple"
             }
         },
         "tb_guild_info":{
