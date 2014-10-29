@@ -20,6 +20,7 @@ class DBPool(object):
         >>> dbpool.initPool(**aa)
         """
         self.config = kw
+        self.config['blocking'] = True
         creator = DBCS.get(kw.get('engine', 'mysql'), pymysql)
         self.pool = PooledDB(creator, 5, **kw)
 

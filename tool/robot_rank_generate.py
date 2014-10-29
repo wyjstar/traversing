@@ -83,7 +83,7 @@ if __name__ == '__main__':
     for rank in range(rank_length):
         for k, v in robot_born_config.items():
             rank_period = v.get('period')
-            if rank in range(rank_period[0], rank_period[1]):
+            if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
                 init_line_up(player, v, level)
