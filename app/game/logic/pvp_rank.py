@@ -71,5 +71,4 @@ def pvp_player_info_request(dynamic_id, data, player):
 
 @have_player
 def pvp_fight_request(dynamic_id, data, player):
-def pvp_fight_request(dynamic_id, data, player):
     pass

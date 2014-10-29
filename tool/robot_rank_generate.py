@@ -39,7 +39,7 @@ def init_line_up(player, robot_config, level):
         slot.hero_slot.activation = True
 
 
-if __name__ == '':
+if __name__ == '__main__':
     log_init_only_out()
 
     mconfig = json.load(open('../models.json', 'r'))
@@ -60,7 +60,7 @@ if __name__ == '':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.logic.line_up import line_up_info
 
-    rank_length = 30
+    rank_length = 3000
 
     nickname_set = set()
     while len(nickname_set) < rank_length:
@@ -83,7 +83,7 @@ if __name__ == '':
     for rank in range(rank_length):
         for k, v in robot_born_config.items():
             rank_period = v.get('period')
-            if rank in range(rank_period[0], rank_period[1]):
+            if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
                 init_line_up(player, v, level)
@@ -102,9 +102,10 @@ if __name__ == '':
 
     util.DeleteFromDB(PVP_TABLE_NAME)
     for _ in pvp_rank.values():
+        print _.get('id'), _.get('nickname'), _.get('character_id')
         util.InsertIntoDB(PVP_TABLE_NAME, _)
 
-if __name__ == '__main__':
+if __name__ == '':
     log_init_only_out()
 
     hostname = "127.0.0.1"
