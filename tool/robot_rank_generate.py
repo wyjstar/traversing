@@ -63,7 +63,7 @@ if __name__ == '__main__':
     rank_length = 3000
 
     nickname_set = set()
-    while len(nickname_set) < rank_length + 10:
+    while len(nickname_set) < rank_length:
         pre1 = random.choice(rand_name_config.get('pre1'))
         pre2 = random.choice(rand_name_config.get('pre2'))
         str = random.choice(rand_name_config.get('str'))
@@ -80,7 +80,7 @@ if __name__ == '__main__':
             hero1.exp = 0
 
     pvp_rank = {}
-    for rank in range(rank_length):
+    for rank in range(1, rank_length):
         for k, v in robot_born_config.items():
             rank_period = v.get('period')
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
