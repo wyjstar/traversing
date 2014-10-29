@@ -37,6 +37,7 @@ def init_line_up(player, robot_config, level):
         slot.activation = True
         slot.hero_slot.hero_no = hero_ids[index]
         slot.hero_slot.activation = True
+    return hero_ids
 
 
 if __name__ == '__main__':
@@ -60,10 +61,10 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.logic.line_up import line_up_info
 
-    rank_length = 3000
+    rank_length = 30
 
     nickname_set = set()
-    while len(nickname_set) < rank_length:
+    while len(nickname_set) < rank_length + 5:
         pre1 = random.choice(rand_name_config.get('pre1'))
         pre2 = random.choice(rand_name_config.get('pre2'))
         str = random.choice(rand_name_config.get('str'))
@@ -86,7 +87,7 @@ if __name__ == '__main__':
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
-                init_line_up(player, v, level)
+                hero_ids = init_line_up(player, v, level)
                 red_units = cPickle.dumps(player.fight_cache_component.red_unit, -1)
                 slots = line_up_info(player)
                 protobuf_slots = slots.SerializePartialToString()
@@ -95,6 +96,7 @@ if __name__ == '__main__':
                                  character_id=1,
                                  level=level,
                                  id=rank,
+                                 hero_ids=cPickle.dumps(hero_ids),
                                  ap=player.line_up_component.combat_power,
                                  units=red_units,
                                  slots=protobuf_slots)
