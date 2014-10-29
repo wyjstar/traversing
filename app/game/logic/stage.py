@@ -276,8 +276,12 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
     data = gain(player, drop)
     get_return(player, data, drops)
 
-    player.stage_component.sweep_times[0] += times
-    player.stage_component.sweep_times[0] = int(time.time())
+    if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday:
+        player.stage_component.sweep_times[0] += times
+    else:
+        player.stage_component.sweep_times[0] = times
+        player.stage_component.sweep_times[1] = int(time.time())
+
     player.stage_component.get_stage(stage_id).attacks += times
     player.stage_component.update()
 

@@ -214,7 +214,6 @@ class MAdmin(MemObject):
         """根据主键，可以获得mmode对象的实例.\n
         >>> m = madmin.getObj(1)
         """
-        pk = pk.encode('utf-8') if isinstance(pk, unicode) else pk
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
@@ -232,7 +231,6 @@ class MAdmin(MemObject):
         """根据主键，可以获得mmode对象的实例的数据.\n
         >>> m = madmin.getObjData(1)
         """
-        pk = pk.encode('utf-8') if isinstance(pk, unicode) else pk
         mm = MMode(self._name + ':%s' % pk, self._pk)
         if not mm.IsEffective():
             return None
