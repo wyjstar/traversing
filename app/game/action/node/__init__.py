@@ -29,3 +29,4 @@ import level_gift
 import feast
 import sign_in
 import login_gift
+import pvp_rank

@@ -3,6 +3,7 @@
 created by server on 14-9-2上午11:42.
 """
 from app.proto_file.feast_pb2 import EatFeastResponse
+from app.proto_file import pvp_rank_pb2
 from robot import Robot
 from app.proto_file import online_gift_pb2
 from app.proto_file import level_gift_pb2
@@ -53,6 +54,15 @@ class RobotActivity(Robot):
 
     def eat_feast_820(self, message):
         argument = EatFeastResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_pvp_top_rank(self):
+        self.send_message(None, 1501)
+
+    def pvp_rank_1501(self, message):
+        argument = pvp_rank_pb2.PlayerRankResponse()
         argument.ParseFromString(message)
         print argument
         self.on_command_finish()

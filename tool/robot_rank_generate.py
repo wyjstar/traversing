@@ -63,7 +63,7 @@ if __name__ == '__main__':
     rank_length = 3000
 
     nickname_set = set()
-    while len(nickname_set) < rank_length:
+    while len(nickname_set) < rank_length + 10:
         pre1 = random.choice(rand_name_config.get('pre1'))
         pre2 = random.choice(rand_name_config.get('pre2'))
         str = random.choice(rand_name_config.get('str'))
