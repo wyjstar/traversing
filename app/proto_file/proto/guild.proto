@@ -58,7 +58,7 @@ message CreateGuildRequest{
 
 // 加入公会 command：802
 message JoinGuildRequest{
-	required string g_id = 1;  //公会id
+	required bytes g_id = 1;  //公会id
 }
 message JoinGuildResponse{
 	required bool result = 1;  //处理结果 True：正确

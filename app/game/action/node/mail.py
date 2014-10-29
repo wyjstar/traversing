@@ -2,22 +2,22 @@
 """
 created by server on 14-8-14下午3:16.
 """
-from app.game.service.gatenoteservice import remote_service_handle
 from app.game.logic.mail import get_mails, read_mail, delete_mail, \
     receive_mail, send_mail
 from app.proto_file.mailbox_pb2 import GetMailInfos, \
     ReadMailRequest, DeleteMailRequest, SendMailRequest
 from app.proto_file.common_pb2 import CommonResponse
+from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_all_mail_info_1301(dynamic_id, proto_data):
     """获取所有邮件"""
     return get_mails(dynamic_id)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def read_mail_1302(dynamic_id, proto_data):
     """读邮件，更改邮件状态"""
     request = ReadMailRequest()
@@ -25,14 +25,14 @@ def read_mail_1302(dynamic_id, proto_data):
     return read_mail(dynamic_id, request.mail_ids, request.mail_type)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def delete_mail_1303(dynamic_id, proto_data):
     """删除邮件"""
     request = DeleteMailRequest()
     return delete_mail(dynamic_id, request.mail_ids)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def send_mail_1304(dynamic_id, proto_data):
     """发送邮件"""
     request = SendMailRequest()
@@ -53,13 +53,13 @@ def send_mail_1304(dynamic_id, proto_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def receive_mail_1305(dynamic_id, online, mail):
     """接收邮件"""
     receive_mail(dynamic_id, online, mail)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def receive_mail_from_client_1306(dynamic_id, receive_id, mail):
     """接收邮件"""
     return receive_mail_from_client_1306(dynamic_id, mail)

@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='pvp_rank.proto',
   package='',
-  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\":\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\"1\n\x0fTopRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\"4\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\")\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\"e\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit')
+  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"F\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\"4\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\")\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"e\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit')
 
 
 
@@ -48,31 +48,10 @@ _RANKITEMS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=45,
-  serialized_end=103,
-)
-
-
-_TOPRANKRESPONSE = _descriptor.Descriptor(
-  name='TopRankResponse',
-  full_name='TopRankResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
     _descriptor.FieldDescriptor(
-      name='rank_items', full_name='TopRankResponse.rank_items', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='ap', full_name='RankItems.ap', index=3,
+      number=4, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -85,8 +64,8 @@ _TOPRANKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=105,
-  serialized_end=154,
+  serialized_start=45,
+  serialized_end=115,
 )
 
 
@@ -113,8 +92,8 @@ _PLAYERRANKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=156,
-  serialized_end=208,
+  serialized_start=117,
+  serialized_end=169,
 )
 
 
@@ -141,8 +120,36 @@ _PVPFIGHTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=210,
-  serialized_end=251,
+  serialized_start=171,
+  serialized_end=212,
+)
+
+
+_PVPPLAYERINFOREQUEST = _descriptor.Descriptor(
+  name='PvpPlayerInfoRequest',
+  full_name='PvpPlayerInfoRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='player_rank', full_name='PvpPlayerInfoRequest.player_rank', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=214,
+  serialized_end=257,
 )
 
 
@@ -183,19 +190,18 @@ _PVPFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=253,
-  serialized_end=354,
+  serialized_start=259,
+  serialized_end=360,
 )
 
-_TOPRANKRESPONSE.fields_by_name['rank_items'].message_type = _RANKITEMS
 _PLAYERRANKRESPONSE.fields_by_name['rank_items'].message_type = _RANKITEMS
 _PVPFIGHTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _PVPFIGHTRESPONSE.fields_by_name['red'].message_type = stage_pb2._BATTLEUNIT
 _PVPFIGHTRESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNIT
 DESCRIPTOR.message_types_by_name['RankItems'] = _RANKITEMS
-DESCRIPTOR.message_types_by_name['TopRankResponse'] = _TOPRANKRESPONSE
 DESCRIPTOR.message_types_by_name['PlayerRankResponse'] = _PLAYERRANKRESPONSE
 DESCRIPTOR.message_types_by_name['PvpFightRequest'] = _PVPFIGHTREQUEST
+DESCRIPTOR.message_types_by_name['PvpPlayerInfoRequest'] = _PVPPLAYERINFOREQUEST
 DESCRIPTOR.message_types_by_name['PvpFightResponse'] = _PVPFIGHTRESPONSE
 
 class RankItems(_message.Message):
@@ -203,12 +209,6 @@ class RankItems(_message.Message):
   DESCRIPTOR = _RANKITEMS
 
   # @@protoc_insertion_point(class_scope:RankItems)
-
-class TopRankResponse(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _TOPRANKRESPONSE
-
-  # @@protoc_insertion_point(class_scope:TopRankResponse)
 
 class PlayerRankResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -221,6 +221,12 @@ class PvpFightRequest(_message.Message):
   DESCRIPTOR = _PVPFIGHTREQUEST
 
   # @@protoc_insertion_point(class_scope:PvpFightRequest)
+
+class PvpPlayerInfoRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PVPPLAYERINFOREQUEST
+
+  # @@protoc_insertion_point(class_scope:PvpPlayerInfoRequest)
 
 class PvpFightResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

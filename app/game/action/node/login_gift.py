@@ -2,12 +2,12 @@
 """
 created by server on 14-9-3下午5:28.
 """
-from app.game.service.gatenoteservice import remote_service_handle
 from app.game.logic.login_gift import *
 from app.proto_file.login_gift_pb2 import *
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def init_login_gift_825(dynamic_id, pro_data):
     """登录奖励
     """
@@ -29,7 +29,7 @@ def init_login_gift_825(dynamic_id, pro_data):
     return response.SerializeToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_login_gift_826(dynamic_id, pro_data):
     """领取登录奖励
     """

@@ -24,6 +24,10 @@ class CharacterFeastComponent(Component):
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'feast': 1})
 
+    def save_data(self):
+        sign_in_data = tb_character_activity.getObj(self.owner.base_info.id)
+        sign_in_data.update('feast', self._last_eat_time)
+
     @property
     def last_eat_time(self):
         return self._last_eat_time

@@ -241,11 +241,16 @@ def getAllPkByFkInDB(tablename, pkname, prere):
     return [key[0] for key in result]
 
 
-def GetOneRecordInfo(tablename, props):
+def GetOneRecordInfo(tablename, preres, props=None):
     """获取单条数据的信息"""
     # print 'GetOneRecordInfo:', props
-    props = FormatCondition(props)
-    sql = """Select * from `%s` where %s""" % (tablename, props)
+    preres = FormatCondition(preres)
+    if props:
+        caret = ','
+        props_format = caret.join(str(_) for _ in props)
+        sql = """Select %s from `%s` where %s""" % (props_format, tablename, preres)
+    else:
+        sql = """Select * from `%s` where %s""" % (tablename, preres)
     conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     try:
@@ -254,6 +259,28 @@ def GetOneRecordInfo(tablename, props):
         logger.exception(e)
         logger.error(sql)
     result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return result
+
+
+def GetSomeRecordInfo(tablename, preres, props=None):
+    """获取单条数据的信息"""
+    if props:
+        caret = ','
+        props_format = caret.join(str(_) for _ in props)
+        sql = """Select %s from `%s` where %s""" % (props_format, tablename, preres)
+    else:
+        sql = """Select * from `%s` where %s""" % (tablename, preres)
+    conn = dbpool.connection()
+    cursor = conn.cursor(cursor=DictCursor)
+    try:
+        print sql
+        cursor.execute(sql)
+    except Exception, e:
+        logger.exception(e)
+        logger.error(sql)
+    result = cursor.fetchall()
     cursor.close()
     conn.close()
     return result

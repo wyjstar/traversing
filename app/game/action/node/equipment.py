@@ -5,12 +5,12 @@ created by server on 14-7-9上午11:28.
 from app.game.logic import item_group_helper
 from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment, \
     awakening_equipment
-from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import equipment_request_pb2
 from app.proto_file import equipment_response_pb2
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_equipments_401(dynamic_id, pro_data):
     """请求装备信息
     @param dynamic_id:
@@ -39,7 +39,7 @@ def get_equipments_401(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def enhance_equipment_402(dynamic_id, pro_data):
     """强化装备
     @param dynamic_id:
@@ -78,7 +78,7 @@ def enhance_equipment_402(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def compose_equipment_403(dynamic_id, pro_data):
     """合成装备
     @param dynamic_id:
@@ -108,7 +108,7 @@ def compose_equipment_403(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def nobbing_equipment_404(dynamic_id, pro_data):
     """锤炼装备
     @param dynamic_id:
@@ -123,7 +123,7 @@ def nobbing_equipment_404(dynamic_id, pro_data):
     # nobbing_equipment(dynamic_id, equipment_id)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def melting_equipment_405(dynamic_id, pro_data):
     """熔炼装备
     @param dynamic_id:
@@ -144,7 +144,7 @@ def melting_equipment_405(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def awakening_equipment_406(dynamic_id, pro_data):
     """熔炼装备
     @param dynamic_id:
@@ -170,7 +170,3 @@ def awakening_equipment_406(dynamic_id, pro_data):
     item_group_helper.get_return(player, gain, response.cgr)
 
     return response.SerializePartialToString()
-
-
-
-

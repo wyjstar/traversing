@@ -3,6 +3,7 @@
 created by server on 14-7-8上午11:56.
 """
 from app.game.component.Component import Component
+from shared.db_opear.configs_data.game_configs import player_exp_config
 
 
 class CharacterLevelComponent(Component):
@@ -28,3 +29,9 @@ class CharacterLevelComponent(Component):
     @exp.setter
     def exp(self, exp):
         self._exp = exp
+
+    def addexp(self, exp):
+        self._exp += exp
+        if self._exp > player_exp_config.get(self._level):
+            self._exp -= player_exp_config.get(self._level)
+            self._level += 1

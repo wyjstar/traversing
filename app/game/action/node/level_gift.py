@@ -3,11 +3,11 @@
 created by sphinx on 
 """
 
-from app.game.service.gatenoteservice import remote_service_handle
 from app.game.logic import level_gift
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_level_gift_1131(dynamic_id, data):
     """get online gift"""
     return level_gift.get_level_gift(dynamic_id, data)

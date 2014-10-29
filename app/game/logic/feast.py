@@ -15,9 +15,9 @@ def eat_feast(dynamicid, **kwargs):
     # (tm_year=2014, tm_mon=9, tm_mday=1, tm_hour=18, tm_min=38, tm_sec=1, tm_wday=0, tm_yday=244, tm_isdst=0)
     player = kwargs.get('player')
     last_eat_time = time.localtime(player.feast.last_eat_time).tm_hour*60*60 + \
-        time.localtime(player.feast.last_eat_time).tm_min*60
+        time.localtime(player.feast.last_eat_time).tm_min*60 + time.localtime(player.feast.last_eat_time).tm_sec
     eat_times = base_config.get(u'time_vigor_activity')
-    now = time.localtime().tm_hour*60*60 + time.localtime().tm_min*60
+    now = time.localtime().tm_hour*60*60 + time.localtime().tm_min*60 + time.localtime().tm_sec
     for eat_time in eat_times:
         t1 = eat_time[0].split(':')
         time1 = int(t1[0])*60*60 + int(t1[1])*60
@@ -31,7 +31,7 @@ def eat_feast(dynamicid, **kwargs):
             player.stamina.stamina += base_config.get(u'num_vigor_activity')
             player.stamina.save_data()
             player.feast.last_eat_time = int(time.time())
-            player.save_data()
+            player.feast.save_data()
             return 2
     # 没到时间
     return 3
