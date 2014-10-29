@@ -99,7 +99,7 @@
                 "award_info": "complex",
                 "elite_stage": "complex",
                 "act_stage": "complex",
-                "sweep_times": "commplex",
+                "sweep_times": "complex",
                 "stage_up_time": "simple"
             }
         },

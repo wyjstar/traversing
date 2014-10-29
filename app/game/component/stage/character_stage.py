@@ -169,10 +169,9 @@ class CharacterStageComponent(Component):
                      [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),
                  'elite_stage': self._elite_stage_info,
                  'act_stage': self._act_stage_info,
-                 'sweep_stage': self._sweep_times,
+                 'sweep_times': self._sweep_times,
                  'stage_up_time': self._stage_up_time
                  }
-
 
         stage_obj = tb_character_stages.getObj(self.owner.base_info.id)
         stage_obj.update_multi(props)
@@ -203,7 +202,7 @@ class CharacterStageComponent(Component):
 
     @property
     def stage_up_time(self):
-        return self.stage_up_time
+        return self._stage_up_time
 
     @stage_up_time.setter
     def stage_up_time(self, stage_up_time):
