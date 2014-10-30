@@ -57,19 +57,21 @@ def pvp_top_rank_request(dynamic_id, data, **kwargs):
         rank_item.rank = record.get('id')
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
-        for id in hero_ids:
-            rank_item.hero_ids.append(id)
+        rank_item.hero_ids.extend([_ for _ in hero_ids])
     return response.SerializeToString()
 
 
 @have_player
 def pvp_player_info_request(dynamic_id, data, player):
     request = pvp_rank_pb2.PvpPlayerInfoRequest()
+    request.ParseFromString(data)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, dict(id=request.player_rank), ['slots'])
     if record:
-        return record.get('slots')
+        response = record.get('slots')
+        response = cPickle.loads(response)
+        return response.SerializeToString()
     else:
-        logger.error('can not find player rank:', request.player_rank)
+        logger.error('can not find player rank:%s', request.player_rank)
         return None
 
 

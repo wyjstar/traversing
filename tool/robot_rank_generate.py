@@ -89,8 +89,7 @@ if __name__ == '__main__':
                 level = random.randint(level_period[0], level_period[1])
                 hero_ids = init_line_up(player, v, level)
                 red_units = cPickle.dumps(player.fight_cache_component.red_unit, -1)
-                slots = line_up_info(player)
-                protobuf_slots = slots.SerializePartialToString()
+                slots = cPickle.dumps(line_up_info(player))
 
                 rank_item = dict(nickname=nickname_set.pop(),
                                  character_id=1,
@@ -99,7 +98,7 @@ if __name__ == '__main__':
                                  hero_ids=cPickle.dumps(hero_ids),
                                  ap=player.line_up_component.combat_power,
                                  units=red_units,
-                                 slots=protobuf_slots)
+                                 slots=slots)
                 pvp_rank[rank] = rank_item
 
     util.DeleteFromDB(PVP_TABLE_NAME)
