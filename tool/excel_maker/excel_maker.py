@@ -240,8 +240,7 @@ if __name__ == "__main__":
     cur = conn.cursor()
 
     content = []
-    py_file = open('./excel.py', 'w')
-    py_file.write('# -*- coding:utf-8 -*-\r')
+    py_dict = {}
     for file_name in os.listdir(root_path):
         if not file_name.endswith("xlsx"):
             continue
@@ -259,16 +258,15 @@ if __name__ == "__main__":
 
         config_value = cPickle.dumps(json_data)
         config_key = file_with_out_extension
+        py_dict[config_key] = json_data
         save_update_sql('./sql/', config_key, config_value)
-        py_file.write('%s="""%s"""\r' % (config_key, config_value))
 
         delete_sql = "delete from configs where config_key='%s';\n" % (config_key)
         insert_sql = "insert into configs values('%s',%s); \n" % (config_key, _escape(config_value))
         content.append(delete_sql)
         content.append(insert_sql)
 
-    py_file.close()
+    cPickle.dump(py_dict, open('../../shared/db_opear/configs_data/excel', 'w'))
     save_insert_all_sqls('./sql/', content)
     conn.commit()
     conn.close()
-    os.system('mv ./py/excel.py ../../shared/db_opear/config_data/')

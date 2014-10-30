@@ -3,8 +3,6 @@
 created by server on 14-6-6上午11:05.
 """
 import cPickle
-from pymysql.cursors import DictCursor
-from gfirefly.dbentrust.dbpool import dbpool
 from shared.db_opear.configs_data.chip_config import ChipConfig
 from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
 from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
@@ -36,42 +34,6 @@ from shared.db_opear.configs_data.guild_config import GuildConfig
 from shared.db_opear.configs_data.vip_config import VIPConfig
 from shared.db_opear.configs_data.special_stage_config import SpecialStageConfig
 
-
-def init():
-    pass
-    # hostname = "127.0.0.1"  #  要连接的数据库主机名
-    # user = "test"  #  要连接的数据库用户名
-    # password = "test"  #  要连接的数据库密码
-    # port = 8066  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
-    # dbname = "db_traversing"  #  要使用的数据库库名
-    # charset = "utf8"  #  要使用的数据库的编码
-    # ##firefly重新封装的连接数据库的方法，这一步就是初始化数据库连接池，这样你就可连接到你要使用的数据库了
-    # dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
-    #                 charset=charset)
-
-init()
-
-
-def get_config_value(config_key):
-    # """获取所有翻译信息
-    # """
-    # sql = "SELECT * FROM configs where config_key='%s';" % config_key
-    # # print 'sql:', sql
-    # conn = dbpool.connection()
-
-    # cursor = conn.cursor(cursor=DictCursor)
-
-    # cursor.execute(sql)
-    # result = cursor.fetchall()
-    # cursor.close()
-    # conn.close()
-    # if not result:
-    #     return None
-    # data = {}
-    # for item in result:
-    #     data[item['config_key']] = cPickle.loads(item['config_value'])
-    import tool.excel_maker.py.excel
-    return data
 
 base_config = {}
 hero_config = {}
@@ -138,29 +100,12 @@ all_config_name = {
 }
 
 
-class ConfigFactory(object):
-
-    @classmethod
-    def creat_config(cls, config_name, config_value):
-        return all_config_name[config_name].parser(config_value)
-
+module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
 for config_name in all_config_name.keys():
-        game_conf = get_config_value(config_name)
-
-        if not game_conf:
-            continue
-        objs = ConfigFactory.creat_config(config_name, game_conf[config_name])
-        exec(config_name + '=objs')
+    config_value = module.get(config_name)
+    objs = all_config_name[config_name].parser(config_value)
+    exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    init()
-    # print activity_config
-    # for k, v in equipment_config.items():
-    #     print k, '='*5, v
-    #     for _ in v:
-    #         print _
-    # for k,v in mail_config.items():
-    #     print k, ' : ', v
-    # print mail_config
     for k, v in robot_born_config.items():
         print k, v, len(v)
