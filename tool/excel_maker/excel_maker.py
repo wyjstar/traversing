@@ -142,9 +142,10 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
     nrows = table.nrows
     ncols = table.ncols
 
-    create_table_sql = "create table %s (id integer primary key, content text)" % objName
-    cur.execute("drop table if exists %s" % objName)
-    cur.execute(create_table_sql)
+    if cur:
+        create_table_sql = "create table %s (id integer primary key, content text)" % objName
+        cur.execute("drop table if exists %s" % objName)
+        cur.execute(create_table_sql)
 
     obj_list = []
     for rownum in range(nrows):
@@ -174,7 +175,8 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
             insert_data_sql = "insert into %s values(%d, '%s');" % (objName, obj.get('id'), json.dumps(obj))
 
         print "insert_data_sql:", insert_data_sql
-        cur.execute(insert_data_sql)
+        if cur:
+            cur.execute(insert_data_sql)
     #print 'obj_list:', json.dumps(obj_list)
     # print 'abc', json.dumps(obj_list, ensure_ascii=False)
 
@@ -247,7 +249,8 @@ if __name__ == "__main__":
         file_with_out_extension = os.path.splitext(file_name)[0]
         print file_path, file_with_out_extension
         #try:
-        ExcelToJson(file_path, file_with_out_extension, cur)
+        ExcelToJson(file_path, file_with_out_extension)
+        # ExcelToJson(file_path, file_with_out_extension, cur)
         #except:
         #    print 'table format error! table name:', file_name
         #    exit(0)
