@@ -241,7 +241,7 @@ if __name__ == "__main__":
 
     content = []
     py_file = open('./py/excel.py', 'w')
-    py_file.write('# -*- coding:utf-8 -*-\r\n')
+    py_file.write('# -*- coding:utf-8 -*-\r')
     for file_name in os.listdir(root_path):
         if not file_name.endswith("xlsx"):
             continue
@@ -260,7 +260,7 @@ if __name__ == "__main__":
         config_value = cPickle.dumps(json_data)
         config_key = file_with_out_extension
         save_update_sql('./sql/', config_key, config_value)
-        py_file.write('%s="""%s"""\r\n' % (config_key, config_value))
+        py_file.write('%s="""%s"""\r' % (config_key, config_value))
 
         delete_sql = "delete from configs where config_key='%s';\n" % (config_key)
         insert_sql = "insert into configs values('%s',%s); \n" % (config_key, _escape(config_value))
