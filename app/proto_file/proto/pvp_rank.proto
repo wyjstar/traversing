@@ -7,6 +7,7 @@ message RankItems{
      required int32 rank = 2;
      required int32 level = 3;
      required int32 ap = 4;
+     repeated int32 hero_ids = 5;
 }
 
 message PlayerRankResponse{
