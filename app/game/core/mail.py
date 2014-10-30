@@ -94,7 +94,7 @@ class Mail(object):
         mail_pb.mail_id = self._id
         mail_pb.sender_name = self._sender_name
         mail_pb.sender_id = self._sender_id
-        mail_pb.title = self._title
+        mail_pb.title = str(self._title)
         mail_pb.content = self._content
         mail_pb.mail_type = self._mail_type
         mail_pb.send_time = self._send_time

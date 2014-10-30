@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.21, for osx10.8 (x86_64)
 --
 -- Host: localhost    Database: traversing_1
 -- ------------------------------------------------------
--- Server version	5.6.19
+-- Server version	5.6.21
 
 
 --
@@ -30,12 +30,6 @@ CREATE TABLE `tb_character_equipment_chip` (
   `chips` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `tb_character_equipments`
---
-
-DROP TABLE IF EXISTS `tb_character_equipments`;
 
 --
 -- Table structure for table `tb_character_friend`
@@ -85,12 +79,6 @@ CREATE TABLE `tb_character_hero_chip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `tb_character_heros`
---
-
-DROP TABLE IF EXISTS `tb_character_heros`;
-
---
 -- Table structure for table `tb_character_info`
 --
 
@@ -117,7 +105,10 @@ CREATE TABLE `tb_character_info` (
   `last_login_time` int(11) DEFAULT NULL,
   `vip_level` int(11) NOT NULL DEFAULT '0',
   `create_time` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `pvp_count` bigint(20) NOT NULL DEFAULT '0',
+  `pvp_score` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -154,12 +145,6 @@ CREATE TABLE `tb_character_lord` (
   `attr_info` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `tb_character_mails`
---
-
-DROP TABLE IF EXISTS `tb_character_mails`;
 
 --
 -- Table structure for table `tb_character_stages`
@@ -206,10 +191,11 @@ CREATE TABLE `tb_guild_info` (
 
 DROP TABLE IF EXISTS `tb_guild_name`;
 CREATE TABLE `tb_guild_name` (
-  `g_name` VARCHAR(32) NOT NULL,
-  `g_id` VARCHAR(32) NOT NULL,
+  `g_name` varchar(32) NOT NULL,
+  `g_id` varchar(32) NOT NULL,
   PRIMARY KEY (`g_name`)
-) ENGINE =InnoDB DEFAULT CHARSET =utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Table structure for table `tb_mail_info`
 --
@@ -222,4 +208,21 @@ CREATE TABLE `tb_mail_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dump completed on 2014-09-29 15:45:13
+--
+-- Table structure for table `tb_pvp_rank`
+--
+
+DROP TABLE IF EXISTS `tb_pvp_rank`;
+CREATE TABLE `tb_pvp_rank` (
+  `id` bigint(20) NOT NULL,
+  `character_id` bigint(20) NOT NULL,
+  `nickname` varchar(128) DEFAULT '',
+  `level` int(11) NOT NULL DEFAULT '1',
+  `ap` int(11) NOT NULL,
+  `units` blob NOT NULL,
+  `slots` blob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- Dump completed on 2014-10-28 21:34:11

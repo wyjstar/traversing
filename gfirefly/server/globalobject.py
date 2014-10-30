@@ -92,4 +92,5 @@ class remoteserviceHandle:
     def __call__(self, target):
         """
         """
-        GlobalObject().remote[self.remotename]._reference._service.mapTarget(target)
+        if self.remotename in GlobalObject().remote:
+            GlobalObject().remote[self.remotename]._reference._service.mapTarget(target)

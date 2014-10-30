@@ -7,13 +7,13 @@ from app.game.logic.stage import get_stage_info
 from app.game.logic.stage import fight_start
 from app.game.logic.stage import fight_settlement
 from app.game.logic.stage import get_warriors
-from app.game.service.gatenoteservice import remote_service_handle
 from app.proto_file import stage_request_pb2
 from app.proto_file import stage_response_pb2
+from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_stages_901(dynamic_id, pro_data):
     """取得关卡信息
     """
@@ -21,7 +21,7 @@ def get_stages_901(dynamic_id, pro_data):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj = get_stage_info(dynamic_id, stage_id)
+    stages_obj, elite_stage_times, act_stage_times, sweep_times = get_stage_info(dynamic_id, stage_id)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -29,11 +29,13 @@ def get_stages_901(dynamic_id, pro_data):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
-
+    response.elite_stage_times = elite_stage_times
+    response.act_stage_times = act_stage_times
+    response.sweep_times = sweep_times
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_chapter_902(dynamic_id, pro_data):
     """取得章节奖励信息
     """
@@ -56,7 +58,7 @@ def get_chapter_902(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def stage_start_903(dynamic_id, pro_data):
     """开始战斗
     """
@@ -124,7 +126,7 @@ def stage_start_903(dynamic_id, pro_data):
     return response.SerializePartialToString()
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def fight_settlement_904(dynamic_id, pro_data):
     request = stage_request_pb2.StageSettlementRequest()
     request.ParseFromString(pro_data)
@@ -135,22 +137,20 @@ def fight_settlement_904(dynamic_id, pro_data):
     return drops
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def get_warriors_906(dynamic_id, pro_data):
     """请求无双
     """
     return get_warriors(dynamic_id)
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def stage_sweep_907(dynamic_id, pro_data):
     request = stage_request_pb2.StageSweepRequest()
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     times = request.times
-    drops = stage_sweep(dynamic_id, stage_id, times)
-
-    return drops
+    return stage_sweep(dynamic_id, stage_id, times)
 
 
 def assemble(unit_add, unit):

@@ -370,16 +370,18 @@ def make_chat_mail(dynamic_id, data, **kwargs):
     """生成私聊邮件"""
     request = friend_pb2.FriendPrivateChatRequest()
     request.ParseFromString(data)
-    target_id = request.target_id
+    target_id = request.target_uid
     content = request.content
     
     player = kwargs.get('player')
     
+    title = content[:10] + "..."
+    
     mail = {'sender_id': player.base_info.id,
-            'sender_name': player.base_info.nickname,
+            'sender_name': player.base_info.base_name,
             'receive_id': target_id,
-            'receive_name': 0,
-            'title': 0,
+            'receive_name': '0',
+            'title': title,
             'content': content,
             'mail_type': MailComponent.TYPE_MESSAGE,
             'prize': 0}

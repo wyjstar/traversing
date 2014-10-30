@@ -4,9 +4,7 @@ created by server on 14-9-28上午10:59.
 """
 
 from app.game.component.Component import Component
-from shared.db_opear.configs_data.game_configs import vip_config
 from app.game.redis_mode import tb_character_info
-import cPickle
 import time
 from shared.db_opear.configs_data.game_configs import base_config
 from gfirefly.server.logobj import logger

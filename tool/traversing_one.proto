@@ -151,6 +151,34 @@ message PlayerResponse
 
 
 
+
+message RankItems{
+     required string nickname = 1;//角色昵称
+     required int32 rank = 2;
+     required int32 level = 3;
+     required int32 ap = 4;
+}
+
+message PlayerRankResponse{
+    repeated RankItems rank_items = 1;
+}
+
+message PvpFightRequest{
+    required int32 challenge_rank = 1;
+}
+
+message PvpPlayerInfoRequest{
+    required int32 player_rank = 1;
+}
+
+// 进入关卡战斗返回 command:1503
+message PvpFightResponse{
+    required CommonResponse res = 1;
+    repeated BattleUnit red = 2; //红方数据 自己
+    repeated BattleUnit blue = 3; //对方数据
+}
+
+
 // add_friend_common 好友
 message FriendCommon{
 	repeated int32 target_ids = 1;  // invitee id
@@ -210,6 +238,9 @@ message GetPlayerFriendsResponse{
 //请求关卡信息返回 command:901
 message StageInfoResponse{
 	repeated Stage stage = 1;
+	required int32 elite_stage_times = 2;
+	required int32 act_stage_times = 3;
+	required int32 sweep_times = 4;
 
 }
 
@@ -244,6 +275,12 @@ message FormationResponse{
 // 请求无双信息：906
 message UnparalleledResponse{
 	repeated Unparalleled unpar =  1; //无双信息
+}
+
+// 关卡扫荡返回 command:907
+message StageSweepResponse{
+    required CommonResponse res = 1;
+	optional GameResourcesResponse drops = 2;
 }
 
 message Skill{

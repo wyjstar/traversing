@@ -60,7 +60,3 @@ message FriendPrivateChatRequest{
 	optional string content = 2;
 }
 
-message FriendPrivateChatResponse{
-	optional bool result = 1;
-}
-

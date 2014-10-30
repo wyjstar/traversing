@@ -34,7 +34,6 @@ def add_guild_to_rank(g_id, dengji):
     if get_gate_remote():
         get_gate_remote().callRemote("add_guild_to_rank", g_id, dengji)
 
-
 def login_chat(dynamic_id, character_id, guild_id, nickname):
     if get_gate_remote():
         get_gate_remote().callRemote("login_chat", dynamic_id, character_id, guild_id, nickname)

@@ -5,6 +5,9 @@ import "common.proto";
 //请求关卡信息返回 command:901
 message StageInfoResponse{
 	repeated Stage stage = 1;
+	required int32 elite_stage_times = 2;
+	required int32 act_stage_times = 3;
+	required int32 sweep_times = 4;
 
 }
 
@@ -39,4 +42,10 @@ message FormationResponse{
 // 请求无双信息：906
 message UnparalleledResponse{
 	repeated Unparalleled unpar =  1; //无双信息
+}
+
+// 关卡扫荡返回 command:907
+message StageSweepResponse{
+    required CommonResponse res = 1;
+	optional GameResourcesResponse drops = 2;
 }

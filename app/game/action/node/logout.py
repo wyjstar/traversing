@@ -3,10 +3,10 @@
 created by server on 14-7-8下午3:54.
 """
 from app.game.core.PlayersManager import PlayersManager
-from app.game.service.gatenoteservice import remote_service_handle
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
-@remote_service_handle
+@remoteserviceHandle('gate')
 def net_conn_lost_602(dynamic_id):
     """logout
     """

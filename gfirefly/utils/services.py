@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2011-1-3
 服务类
 @author: sean_lan
-'''
+"""
 from gfirefly.server.logobj import logger
 
 
@@ -25,7 +25,7 @@ class Service(object):
         return self._targets.itervalues()
 
     def addUnDisplayTarget(self, command):
-        '''Add a target unDisplay when client call it.'''
+        """Add a target unDisplay when client call it."""
         self.unDisplay.add(command)
 
     def mapTarget(self, target):
@@ -53,11 +53,11 @@ class Service(object):
         return target
 
     def callTarget(self, targetKey, *args, **kw):
-        '''call Target
+        """call Target
         @param conn: client connection
         @param targetKey: target ID
         @param data: client data
-        '''
+        """
         target = self.getTarget(targetKey)
         if not target:
             logger.error('the command ' + str(targetKey) + ' not Found on service')
