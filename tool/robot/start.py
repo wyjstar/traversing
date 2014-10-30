@@ -9,7 +9,6 @@ from robot_friend import RobotFriend
 from robot_guild import RobotGuild
 from robot_online_gift import RobotOnlineGift
 from robot_activity import RobotActivity
-from test.robot.robot_chat import RobotChat
 
 monkey.patch_os()
 
@@ -20,7 +19,6 @@ robot_type['2'] = RobotFriend
 robot_type['3'] = RobotGuild
 robot_type['4'] = RobotOnlineGift
 robot_type['5'] = RobotActivity
-robot_type['6'] = RobotChat
 robot_manager = RobotManager()
 
 

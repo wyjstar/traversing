@@ -6,6 +6,8 @@ from app.proto_file.feast_pb2 import EatFeastResponse
 from robot import Robot
 from app.proto_file import online_gift_pb2
 from app.proto_file import level_gift_pb2
+from app.proto_file import pvp_rank_pb2
+from app.proto_file import line_up_pb2
 
 
 class RobotActivity(Robot):
@@ -55,4 +57,16 @@ class RobotActivity(Robot):
         argument = EatFeastResponse()
         argument.ParseFromString(message)
         print argument
+        self.on_command_finish()
+
+    def command_pvp_player_info(self, rank):
+        request = pvp_rank_pb2.PvpPlayerInfoRequest()
+        request.player_rank = int(rank)
+        self.send_message(request, 1504)
+
+    def get_player_info_1504(self, message):
+        print message
+        response = line_up_pb2.LineUpResponse()
+        response.ParseFromString(message)
+        print response
         self.on_command_finish()

@@ -2,6 +2,7 @@
 """
 created by sphinx on 28/10/14.
 """
+import cPickle
 from app.game.logic.common.check import have_player
 from app.proto_file import pvp_rank_pb2
 from gfirefly.dbentrust import util
@@ -31,7 +32,7 @@ def pvp_player_rank_refresh_request(dynamic_id, data, player):
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     cur_rank = record.get('id')
 
-    columns = ['id', 'nickname', 'level', 'ap']
+    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
     prere = 'id>=%s and id<=%s' % (cur_rank - 9, cur_rank + 1)
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
     for record in records:
@@ -47,7 +48,7 @@ def pvp_player_rank_refresh_request(dynamic_id, data, player):
 def pvp_top_rank_request(dynamic_id, data, **kwargs):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    columns = ['id', 'nickname', 'level', 'ap']
+    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
     for record in records:
         rank_item = response.rank_items.add()
@@ -55,17 +56,22 @@ def pvp_top_rank_request(dynamic_id, data, **kwargs):
         rank_item.nickname = record.get('nickname')
         rank_item.rank = record.get('id')
         rank_item.ap = record.get('ap')
+        hero_ids = cPickle.loads(record.get('hero_ids'))
+        rank_item.hero_ids.extend([_ for _ in hero_ids])
     return response.SerializeToString()
 
 
 @have_player
 def pvp_player_info_request(dynamic_id, data, player):
     request = pvp_rank_pb2.PvpPlayerInfoRequest()
+    request.ParseFromString(data)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, dict(id=request.player_rank), ['slots'])
     if record:
-        return record.get('slots')
+        response = record.get('slots')
+        response = cPickle.loads(response)
+        return response.SerializeToString()
     else:
-        logger.error('can not find player rank:', request.player_rank)
+        logger.error('can not find player rank:%s', request.player_rank)
         return None
 
 

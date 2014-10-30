@@ -275,7 +275,6 @@ def GetSomeRecordInfo(tablename, preres, props=None):
     conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     try:
-        print sql
         cursor.execute(sql)
     except Exception, e:
         logger.exception(e)
@@ -289,7 +288,7 @@ def GetSomeRecordInfo(tablename, preres, props=None):
 def GetRecordList(tablename, pkname, pklist):
     """
     """
-    print pklist
+    # print pklist
     pkliststr = ""
     for pkid in pklist:
         pkliststr += "'%s'," % pkid
