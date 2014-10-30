@@ -167,13 +167,7 @@ def del_friend(dynamic_id, data, **kwargs):
         # save data
         player.friends.save_data()
 
-        friend_player = PlayersManager().get_player_by_id(target_id)
-        if friend_player:
-            if not friend_player.friends.del_friend(player.base_info.id):
-                response.result = False
-        else:
-            if not push_message(1052, target_id, player.base_info.id):
-                response.result = False
+        response.result = push_message(1052, target_id, player.base_info.id)
         response.result_no += 1
 
     return response.SerializePartialToString()
@@ -182,7 +176,8 @@ def del_friend(dynamic_id, data, **kwargs):
 @have_player
 def del_friend_remote(dynamic_id, is_online, target_id, **kwargs):
     player = kwargs.get('player')
-    result = player.friends.del_friend(target_id, False)
+    result = player.friends.del_friend(target_id)
+    player.friends.save_data()
     return result
 
 
