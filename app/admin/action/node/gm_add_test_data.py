@@ -5,6 +5,7 @@ created by sphinx on
 import json
 from gfirefly.server.globalobject import webserviceHandle
 from flask import request
+from app.admin.action.root.netforwarding import push_object
 
 
 @webserviceHandle('/gmtestdata:name')
@@ -19,9 +20,10 @@ def gm_add_test_data(account_name='hello world'):
 def gm_login():
     account_name = request.args.get('name')
     account_pwd = request.args.get('pwd')
-    print account_name, account_pwd
+    print account_name, account_pwd, 'aaaaaaaaaaaaaaa'
+    push_object(account_name)
 
-    return json.dumps(dict([(account_name, account_pwd), (account_name, account_pwd)]))
+    return json.dumps(dict([(account_name, account_pwd), (1, account_pwd)]))
 
 
 @webserviceHandle('/gm_post', methods=['post'])

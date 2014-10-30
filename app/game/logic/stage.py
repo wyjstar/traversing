@@ -80,27 +80,21 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     if state == -2:
         return {'result': False, 'result_no': 803}  # 803 未开启
 
+    conf = 0
     if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
-        #星期限制
-        if conf.weeklyControl[time.localtime().tm_wday]:
-            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
+
         #次数限制
         if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timeExpend:
+                and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
-        #时间限制
-        open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
-        close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
-        if not open_time <= time.time() <= close_time:
-            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
-        #次数限制
 
+        #次数限制
         if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timeExpend:
+                and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     else:  # 普通关卡
@@ -112,6 +106,18 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
             player.stage_component.stage_up_time = int(time.time())
             player.stage_component.update_stage_times()
             player.stage_component.update()
+
+    if conf:
+        #星期限制
+        if conf.weeklyControl:
+            if conf.weeklyControl[time.localtime().tm_wday]:
+                return {'result': False, 'result_no': 804}  # 804 不在活动时间内
+
+        #时间限制
+        open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
+        close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
+        if not open_time <= time.time() <= close_time:
+            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
     # 保存阵容
     player.line_up_component.line_up_order = line_up
@@ -167,13 +173,13 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
                 if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
                     player.stage_component.elite_stage_info[0] += conf.timesExpend
                 else:
-                    player.stage_component.elite_stage_info = [conf.timeExpend, str(time.time())]
+                    player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
             elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
                 conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
                 if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
                     player.stage_component.act_stage_info[0] += conf.timesExpend
                 else:
-                    player.stage_component.act_stage_info = [conf.timeExpend, str(time.time())]
+                    player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
             player.stage_component.update()
 
     # 经验
