@@ -240,7 +240,7 @@ if __name__ == "__main__":
     cur = conn.cursor()
 
     content = []
-    py_file = open('./py/excel.py', 'w')
+    py_file = open('./excel.py', 'w')
     py_file.write('# -*- coding:utf-8 -*-\r')
     for file_name in os.listdir(root_path):
         if not file_name.endswith("xlsx"):
@@ -271,3 +271,4 @@ if __name__ == "__main__":
     save_insert_all_sqls('./sql/', content)
     conn.commit()
     conn.close()
+    os.system('mv ./py/excel.py ../../shared/db_opear/config_data/')
