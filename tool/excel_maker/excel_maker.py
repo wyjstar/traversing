@@ -11,6 +11,7 @@ import json
 import cPickle
 import MySQLdb
 import sqlite3
+import traceback
 from lupa import LuaRuntime
 from collections import OrderedDict
 
@@ -255,7 +256,8 @@ if __name__ == "__main__":
             ExcelToJson(file_path, file_with_out_extension, cur)
         except Exception, e:
             print 'table format error! table name:', file_name
-            print 'message:', e.message
+            print traceback.print_exc()
+            print 'message:', e
             exit(0)
         with open('./json/%s.json' % (file_with_out_extension), 'r') as f:
             json_data = json.load(f)
@@ -273,5 +275,3 @@ if __name__ == "__main__":
     cPickle.dump(py_dict, open('../../shared/db_opear/configs_data/excel', 'w'))
     save_insert_all_sqls('./sql/', content)
     conn.commit()
-    conn.close()
-    print 'excel successful'
