@@ -43,7 +43,7 @@ def init_line_up(player, robot_config, level):
 if __name__ == '__main__':
     log_init_only_out()
 
-    mconfig = json.load(open('../models.json', 'r'))
+    mconfig = json.load(open('models.json', 'r'))
     model_default_config = mconfig.get('model_default', {})
     model_config = mconfig.get('models', {})
     GlobalObject().json_model_config = model_config
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.logic.line_up import line_up_info
 
-    rank_length = 30
+    rank_length = 300
 
     nickname_set = set()
     while len(nickname_set) < rank_length + 5:
@@ -81,7 +81,7 @@ if __name__ == '__main__':
             hero1.exp = 0
 
     pvp_rank = {}
-    for rank in range(1, rank_length):
+    for rank in range(1, rank_length+1):
         for k, v in robot_born_config.items():
             rank_period = v.get('period')
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
