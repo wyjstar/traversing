@@ -176,7 +176,10 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
 
         print "insert_data_sql:", insert_data_sql
         if cur:
-            cur.execute(insert_data_sql)
+            try:
+                cur.execute(insert_data_sql)
+            except Exception, e:
+                raise e
     #print 'obj_list:', json.dumps(obj_list)
     # print 'abc', json.dumps(obj_list, ensure_ascii=False)
 
@@ -247,12 +250,13 @@ if __name__ == "__main__":
         file_path = root_path + file_name
         file_with_out_extension = os.path.splitext(file_name)[0]
         print file_path, file_with_out_extension
-        #try:
-        ExcelToJson(file_path, file_with_out_extension)
-        # ExcelToJson(file_path, file_with_out_extension, cur)
-        #except:
-        #    print 'table format error! table name:', file_name
-        #    exit(0)
+        try:
+            ExcelToJson(file_path, file_with_out_extension)
+            ExcelToJson(file_path, file_with_out_extension, cur)
+        except Exception, e:
+            print 'table format error! table name:', file_name
+            print 'message:', e.message
+            exit(0)
         with open('./json/%s.json' % (file_with_out_extension), 'r') as f:
             json_data = json.load(f)
 
@@ -270,3 +274,4 @@ if __name__ == "__main__":
     save_insert_all_sqls('./sql/', content)
     conn.commit()
     conn.close()
+    print 'excel successful'
