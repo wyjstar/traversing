@@ -6,6 +6,12 @@
     },
     "servers": {
         "admin": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
             "webport": 32001,
             "name": "admin",
             "app": "app.admin",

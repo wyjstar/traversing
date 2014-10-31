@@ -62,6 +62,11 @@ def get_guild_rank():
 
 
 @rootserviceHandle
+def from_admin(msg):
+    print 'from admin,=========================', msg
+
+
+@rootserviceHandle
 def add_guild_to_rank(g_id, dengji):
     level_instance = Ranking.instance('GuildLevel')
     level_instance.add(g_id, level=dengji)  # 添加rank数据
