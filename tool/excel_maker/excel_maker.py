@@ -275,3 +275,4 @@ if __name__ == "__main__":
     cPickle.dump(py_dict, open('../../shared/db_opear/configs_data/excel', 'w'))
     save_insert_all_sqls('./sql/', content)
     conn.commit()
+    print 'excel make successful!!!!!'
