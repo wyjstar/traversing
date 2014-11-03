@@ -33,6 +33,7 @@ from shared.db_opear.configs_data.base_config import BaseConfig
 from shared.db_opear.configs_data.guild_config import GuildConfig
 from shared.db_opear.configs_data.vip_config import VIPConfig
 from shared.db_opear.configs_data.special_stage_config import SpecialStageConfig
+from shared.db_opear.configs_data.arena_fight_config import ArenaFightConfig
 
 
 base_config = {}
@@ -65,6 +66,8 @@ mail_config = {}
 robot_born_config = {}
 rand_name_config = {}
 player_exp_config = {}
+arena_fight_config = {}
+
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -96,7 +99,8 @@ all_config_name = {
     'mail_config': MailConfig(),
     'rand_name_config': RandNameConfig(),
     'robot_born_config': RobotBornConfig(),
-    'player_exp_config': PlayerExpConfig()
+    'player_exp_config': PlayerExpConfig(),
+    'arena_fight_config': ArenaFightConfig()
 }
 
 
@@ -107,5 +111,5 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in robot_born_config.items():
+    for k, v in arena_fight_config.items():
         print k, v, len(v)
