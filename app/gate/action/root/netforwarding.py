@@ -66,11 +66,11 @@ def get_guild_rank():
 def from_admin(msg):
     print 'from admin,=========================', msg
 
+
 @rootserviceHandle
-def from_admin_rpc(command, args):
+def from_admin_rpc(args):
     args = cPickle.loads(args)
     print args.get('args'), 'ssssss', args, 'sssssss'
-    print 'from admin rpc,========================', command
     return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
 
 
