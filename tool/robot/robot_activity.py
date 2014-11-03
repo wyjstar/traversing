@@ -99,3 +99,14 @@ class RobotActivity(Robot):
         for _ in response.rank_items:
             print _.nickname, _.rank
         self.on_command_finish()
+
+    def command_pvp_fight_player(self, rank):
+        request = pvp_rank_pb2.PvpFightRequest()
+        request.challenge_rank = int(rank)
+        self.send_message(request, 1505)
+
+    def get_fight_response_1505(self, message):
+        response = pvp_rank_pb2.PvpFightResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
