@@ -5,14 +5,14 @@ created by sphinx on
 import json
 from gfirefly.server.globalobject import webserviceHandle
 from flask import request
-from app.admin.action.root.netforwarding import push_object
+from app.admin.action.root.netforwarding import push_object, rpc_object
+from gfirefly.server.logobj import logger
+import cPickle
 
 
 @webserviceHandle('/gmtestdata:name')
 def gm_add_test_data(account_name='hello world'):
     # account_name = request.args.get('name')
-
-
     return account_name
 
 
@@ -28,12 +28,14 @@ def gm_login():
 
 @webserviceHandle('/gm_post', methods=['post'])
 def gm_post_test():
-    account_name = request.form['name']
-    account_pwd = request.form['pwd']
-    print account_name
-    print 'hello'
+    response = {}
+    command = request.form['command']
+    logger.info('gm2admin,target:%s', command)
+    res = rpc_object(command, cPickle.dumps(request.form))
 
-    aaa = {}
-    aaa["name"] = account_name
-    aaa["pwd"] = account_pwd
-    return json.dumps(aaa)
+    res = cPickle.loads(res)
+    response["result"] = res.get('result')
+    if res.get('data'):
+        response["data"] = res.get('data')
+
+    return json.dumps(response)

@@ -12,6 +12,7 @@ from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
 from gfirefly.utils.services import CommandService
 from shared.utils.ranking import Ranking
+import cPickle
 
 
 @rootserviceHandle
@@ -64,6 +65,12 @@ def get_guild_rank():
 @rootserviceHandle
 def from_admin(msg):
     print 'from admin,=========================', msg
+
+@rootserviceHandle
+def from_admin_rpc(command, args):
+    print cPickle.loads(args), 'sssssssssssssssssssssss'
+    print 'from admin rpc,========================', command
+    return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
 
 
 @rootserviceHandle

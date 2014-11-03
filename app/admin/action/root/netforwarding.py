@@ -11,12 +11,11 @@ def get_gate_remote():
 
 def push_object(msg):
     if get_gate_remote():
-        print 'bbbbbbbbbbbbbbbb', msg
         get_gate_remote().callRemote("from_admin", msg)
 
 
-def get_guild_rank_from_gate():
+def rpc_object(command, args):
     if get_gate_remote():
-        res = get_gate_remote().callRemoteForResult("get_guild_rank")
+        res = get_gate_remote().callRemoteForResult("from_admin_rpc", command, args)
         return res
 
