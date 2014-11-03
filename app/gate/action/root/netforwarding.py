@@ -68,7 +68,8 @@ def from_admin(msg):
 
 @rootserviceHandle
 def from_admin_rpc(command, args):
-    print cPickle.loads(args), 'sssssssssssssssssssssss'
+    args = cPickle.loads(args)
+    print args.get('args'), 'ssssss', args, 'sssssss'
     print 'from admin rpc,========================', command
     return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
 
