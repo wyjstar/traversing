@@ -64,7 +64,7 @@ def get_guild_rank():
 
 @rootserviceHandle
 def from_admin(msg):
-    print 'from admin,========================', msg
+    print 'from admin,=======================', msg
 
 
 @rootserviceHandle
