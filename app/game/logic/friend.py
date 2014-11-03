@@ -370,7 +370,11 @@ def make_chat_mail(dynamic_id, data, **kwargs):
     
     player = kwargs.get('player')
     
-    title = content[:10] + "..."
+    title_display_len = 10
+    if len(content) <= title_display_len:
+        title = content
+    else:
+        title = content[:title_display_len] + "..."
     
     mail = {'sender_id': player.base_info.id,
             'sender_name': player.base_info.base_name,

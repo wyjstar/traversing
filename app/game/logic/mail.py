@@ -125,16 +125,15 @@ def receive_mail(dynamic_id, online, mail, **kwargs):
     content = mail.get("content")
     send_time = mail.get("send_time")
     prize = mail.get("prize")
-    print "#add_mail"
     mail = player.mail_component.add_mail(sender_id, sender_name, title,
                                    content, mail_type, send_time, prize)
+    print "#receive_mail"
+    if not online:
+        print "#not online"
+        response = ReceiveMailResponse()
+        mail.update(response.mail)
+        netforwarding.push_object(1305, response.SerializePartialToString(), [player.dynamic_id])
     return True
-    # print "online", online
-#     if not online:
-#         print "#not online"
-#         response = ReceiveMailResponse()
-#         mail.update(response.mail)
-#         netforwarding.push_object(1305, response.SerializePartialToString(), [player.dynamic_id])
 
 
 @have_player

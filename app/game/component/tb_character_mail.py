@@ -58,7 +58,6 @@ class CharacterMailComponent(Component):
                     sender_id=sender_id, sender_name=sender_name,
                     title=title, content=content,
                     mail_type=mail_type, send_time=send_time, prize=prize)
-        print "#add_mail:", mail_id
         self._mails[mail_id] = mail
         self.new_mail_data(mail)
         self.save_data()
@@ -89,7 +88,6 @@ class CharacterMailComponent(Component):
     def delete_mails(self, mail_ids):
         """批量删除"""
         for mail_id in mail_ids:
-            print "#delete_mails:", mail_id
             self.delete_mail(mail_id)
 
     def save_data(self):

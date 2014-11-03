@@ -63,9 +63,13 @@ class Service(object):
             logger.error('the command ' + str(targetKey) + ' not Found on service')
             return None
         if targetKey not in self.unDisplay:
-            logger.info("call method %s on service[%s]" % (target.__name__, self._name))
+            print "$call method %s on service[%s]" % (target.__name__, self._name)
+#             logger.info("$call method %s on service[%s]" % (target.__name__, self._name))
+        print "#logger.after", target.__name__
         try:
+            print "#callTarget.function", target.__name__
             response = target(*args, **kw)
+            print "#callTarget.result", target.__name__, repr(response)
         except Exception, e:
             logger.exception(e)
             return None

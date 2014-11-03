@@ -57,6 +57,7 @@ def send_mail_1304(dynamic_id, proto_data):
 @remoteserviceHandle('gate')
 def receive_mail_1305(dynamic_id, online, mail):
     """接收邮件"""
+    print "#game.receive_mail_1305"
     return receive_mail(dynamic_id, online, mail)
 
 

@@ -33,6 +33,7 @@ class Mail(object):
         if mail_data:
             self._character_id = mail_data.get("character_id")
             mail_prop = mail_data.get("property")
+            self._title = mail_prop.get("title")
             self._sender_id = mail_prop.get("sender_id")
             self._sender_name = mail_prop.get("sender_name")
             self._mail_type = mail_prop.get("mail_type")
@@ -94,7 +95,7 @@ class Mail(object):
         mail_pb.mail_id = self._id
         mail_pb.sender_name = self._sender_name
         mail_pb.sender_id = self._sender_id
-        mail_pb.title = str(self._title)
+        mail_pb.title = self._title
         mail_pb.content = self._content
         mail_pb.mail_type = self._mail_type
         mail_pb.send_time = self._send_time
