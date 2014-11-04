@@ -23,6 +23,7 @@ def parse_input(battle_type):
 
 
     for i in range(len(all_lines)):
+        i = i-1
         if i == 0: continue
         eles = all_lines[i].split(',')
 

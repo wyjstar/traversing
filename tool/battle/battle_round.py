@@ -232,8 +232,8 @@ class BattleRound(object):
     @property
     def result(self):
         """docstring for win"""
-        if not self._blue_units: return -1
-        if not self._red_units: return 1
+        if not self._blue_units: return 1
+        if not self._red_units: return -1
         if self._blue_units and self._red_units:
             return 0
 
