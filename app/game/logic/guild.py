@@ -755,7 +755,8 @@ def get_guild_rank(dynamicid, data, **kwargs):
                     logger.info('guild rank ,president name is null')
                     guild_rank.president = u'无名'
             else:
-                guild_rank.president = '错误'
+                guild_rank.president = u'错误'
+                logger.error('guild rank, president player not fond')
 
             guild_rank.p_num = guild_obj.p_num
             guild_rank.record = guild_obj.record

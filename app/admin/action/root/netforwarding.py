@@ -14,8 +14,8 @@ def push_object(msg):
         get_gate_remote().callRemote("from_admin", msg)
 
 
-def rpc_object(command, args):
+def rpc_object(args):
     if get_gate_remote():
-        res = get_gate_remote().callRemoteForResult("from_admin_rpc", command, args)
+        res = get_gate_remote().callRemoteForResult("from_admin_rpc", args)
         return res
 

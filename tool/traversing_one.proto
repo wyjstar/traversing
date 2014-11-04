@@ -157,6 +157,7 @@ message RankItems{
      required int32 rank = 2;
      required int32 level = 3;
      required int32 ap = 4;
+     repeated int32 hero_ids = 5;
 }
 
 message PlayerRankResponse{
@@ -191,7 +192,7 @@ message AddFriendResponse{
 
 // find friend by friend's player id or nickname
 message FindFriendRequest{
-    optional string id_or_nickname = 1;
+    optional bytes id_or_nickname = 1;
 }
 
 //
@@ -784,6 +785,25 @@ message chatMessageResponse{
     required string content = 5;//消息内容
 }
 
+//商城购买请求 command:1510
+message ArenaShopRequest
+{
+    required int32 id = 1; // 对应shop配置表中商品编号
+}
+//获取商城列表 command:1511
+message GetShopItemsResponse
+{
+    required CommonResponse res = 1;
+    repeated int32 id = 2;
+}
+//商城购买响应 command:1512
+message ArenaShopResponse
+{
+    required CommonResponse res = 1;
+    required GameResourcesResponse consume = 2;
+    required GameResourcesResponse gain = 3;
+}
+
 //武魂商城购买请求 command:506
 message SoulShopRequest
 {
@@ -862,7 +882,7 @@ message CreateGuildRequest{
 
 // 加入公会 command：802
 message JoinGuildRequest{
-	required string g_id = 1;  //公会id
+	required bytes g_id = 1;  //公会id
 }
 message JoinGuildResponse{
 	required bool result = 1;  //处理结果 True：正确

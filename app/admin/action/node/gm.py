@@ -16,22 +16,15 @@ def gm_add_test_data(account_name='hello world'):
     return account_name
 
 
-@webserviceHandle('/gm_get')
-def gm_login():
-    account_name = request.args.get('name')
-    account_pwd = request.args.get('pwd')
-    print account_name, account_pwd, 'aaaaaaaaaaaaaaa'
-    push_object(account_name)
-
-    return json.dumps(dict([(account_name, account_pwd), (1, account_pwd)]))
-
-
-@webserviceHandle('/gm_post', methods=['post'])
-def gm_post_test():
+@webserviceHandle('/gm', methods=['post', 'get'])
+def gm():
     response = {}
-    command = request.form['command']
-    logger.info('gm2admin,target:%s', command)
-    res = rpc_object(command, cPickle.dumps(request.form))
+    if request.args:
+        t_dict = request.args
+    else:
+        t_dict = request.form
+    logger.info('gm2admin,command:%s', t_dict['command'])
+    res = rpc_object(cPickle.dumps(t_dict))
 
     res = cPickle.loads(res)
     response["result"] = res.get('result')
