@@ -133,12 +133,8 @@ if __name__ == '__main__':
     battle_type = 'pve'
     if len(sys.argv) > 1:
         battle_type = sys.argv[1]
+    process = parse_input(battle_type)
+    process.process()
 
-    while True:
-        process = parse_input(battle_type)
-        process.process()
-        result = raw_input("continue or not?")
-        if result == "n":
-            exit(0)
 
 
