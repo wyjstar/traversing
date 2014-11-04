@@ -120,7 +120,9 @@ def pvp_player_info_request(dynamic_id, data, player):
 def pvp_fight_request(dynamic_id, data, player):
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    before_player_rank = 0
     if record:
+        before_player_rank = record.get('id')
         refresh_rank_data(player, player.base_info.id)
 
     request = pvp_rank_pb2.PvpFightRequest()
@@ -133,6 +135,17 @@ def pvp_fight_request(dynamic_id, data, player):
     blue_units = cPickle.loads(blue_units)
     print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
+
+    # todo check battle
+    # if check_battle(red_units, blue_units)
+    #   pass
+    if random.randint(0, 1) == 1:
+        if before_player_rank != 0:
+            pass
+            # last_player_rank = record.get('id')
+        refresh_rank_data(player, request.challenge)
+    else:
+        pass
 
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
@@ -150,9 +163,10 @@ def pvp_fight_request(dynamic_id, data, player):
 
 
 def refresh_rank_data(player, character_id):
-    red_units = cPickle.dumps(player.fight_cache_component.red_unit, 2)
+    red_units = cPickle.dumps(player.fight_cache_component.red_unit)
     slots = cPickle.dumps(line_up_info(player))
-    rank_data = dict(hero_ids=1,
+    hero_nos = player.line_up_component.hero_nos
+    rank_data = dict(hero_ids=cPickle.dumps(hero_nos),
                      level=player.level,
                      ap=player.line_up_component.combat_power,
                      units=red_units,

@@ -30,3 +30,4 @@ import feast
 import sign_in
 import login_gift
 import pvp_rank
+import arena_shop

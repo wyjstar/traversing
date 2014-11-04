@@ -27,6 +27,7 @@ from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_vip import CharacterVIPComponent
 from app.game.component.character_stamina import CharacterStaminaComponent
 from app.game.component.character_soul_shop import CharacterSoulShopComponent
+from app.game.component.character_arena_shop import CharacterArenaShopComponent
 import time
 
 
@@ -68,6 +69,8 @@ class PlayerCharacter(Character):
 
         self._stamina = CharacterStaminaComponent(self)  # 体力
         self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
+        self._arena_shop = CharacterArenaShopComponent(self)
+
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
 
@@ -104,17 +107,17 @@ class PlayerCharacter(Character):
         self._finance.middle_stone = middle_stone
         self._finance.high_stone = high_stone
 
-        #------------初始化上次抽取信息------------
+        # ------------初始化上次抽取信息------------
         self._last_pick_time.fine_hero = fine_hero_last_pick_time
         self._last_pick_time.excellent_hero = excellent_hero_last_pick_time
         self._last_pick_time.fine_equipment = fine_equipment_last_pick_time
         self._last_pick_time.excellent_equipment = excellent_equipment_last_pick_time
 
-        #------------初始化角色等级信息------------
+        # ------------初始化角色等级信息------------
         self._level.level = level
         self._level.exp = exp
 
-        #------------初始化角色其他组件------------
+        # ------------初始化角色其他组件------------
         self._hero_component.init_heros()  # 初始化武将列表
         self._item_package.init_data()
         self._line_up.init_data()
@@ -135,6 +138,7 @@ class PlayerCharacter(Character):
         self._vip.init_vip(vip_level)
         self._stamina.init_stamina(character_info.get('stamina'))
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
+        self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
 
     def is_new_character(self):
         """is new character or not"""
@@ -315,9 +319,14 @@ class PlayerCharacter(Character):
     def soul_shop(self):
         return self._soul_shop
 
+    @property
+    def arena_shop(self):
+        return self._arena_shop
+
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        character_info.update_multi(dict(level=self._level.level, exp=self.level.exp,
+        character_info.update_multi(dict(level=self._level.level,
+                                         exp=self.level.exp,
                                          pvp_times=self._pvp_times,
                                          vip_level=self._vip.vip_level))
