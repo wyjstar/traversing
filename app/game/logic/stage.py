@@ -233,7 +233,7 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
     res = response.res
 
     player = kwargs.get('player')
-
+    need_money = 0
     if times == 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
             res.result = False
@@ -247,10 +247,11 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
 
     if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday \
             and game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes - player.stage_component.sweep_times[0] < times:
-        res.result = False
-        res.result_no = 805
-        return response.SerializePartialToString()
-
+        need_money = times-(game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes-player.stage_component.sweep_times[0])
+        if need_money > player.finance.gold:
+            res.result = False
+            res.result_no = 102
+            return response.SerializePartialToString()
     state = player.stage_component.check_stage_state(stage_id)
     if state != 1:
         res.result = False
@@ -301,6 +302,7 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
             hero.upgrade(stage_config.HeroExp)
     # 玩家金钱
     player.finance.coin += stage_config.currency
+    player.finance.gold -= need_money
     # 玩家经验
     player.level.addexp(stage_config.playerExp)
     player.save_data()
