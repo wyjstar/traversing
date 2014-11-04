@@ -192,7 +192,7 @@ message AddFriendResponse{
 
 // find friend by friend's player id or nickname
 message FindFriendRequest{
-    optional string id_or_nickname = 1;
+    optional bytes id_or_nickname = 1;
 }
 
 //
@@ -783,6 +783,25 @@ message chatMessageResponse{
     required int32 channel = 1;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
 	required ChatObjectInfo owner = 2;
     required string content = 5;//消息内容
+}
+
+//商城购买请求 command:1510
+message ArenaShopRequest
+{
+    required int32 id = 1; // 对应shop配置表中商品编号
+}
+//获取商城列表 command:1511
+message ArenaGetShopItemsResponse
+{
+    required CommonResponse res = 1;
+    repeated int32 id = 2;
+}
+//商城购买响应 command:1512
+message ArenaShopResponse
+{
+    required CommonResponse res = 1;
+    required GameResourcesResponse consume = 2;
+    required GameResourcesResponse gain = 3;
 }
 
 //武魂商城购买请求 command:506

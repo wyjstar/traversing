@@ -12,7 +12,7 @@ message AddFriendResponse{
 
 // find friend by friend's player id or nickname
 message FindFriendRequest{
-    optional string id_or_nickname = 1;
+    optional bytes id_or_nickname = 1;
 }
 
 //
