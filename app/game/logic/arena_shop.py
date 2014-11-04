@@ -55,7 +55,7 @@ def arena_shop(dynamic_id, pro_data, **kwargs):
 def refresh_shop_items(dynamic_id, **kwargs):
     """刷新"""
     player = kwargs.get('player')
-    shop = arena_shop_pb2.GetShopItemsResponse()
+    shop = arena_shop_pb2.ArenaGetShopItemsResponse()
     # max_shop_refresh_times = player.vip_component.shop_refresh_times
 
     # cancel vip temprory
@@ -97,7 +97,7 @@ def refresh_shop_items(dynamic_id, **kwargs):
 def get_shop_items(dynamic_id, **kwargs):
     """获取商品列表"""
     player = kwargs.get('player')
-    shop = arena_shop_pb2.GetShopItemsResponse()
+    shop = arena_shop_pb2.ArenaGetShopItemsResponse()
     logger.debug("get_shop_items1")
     item_ids = player.arena_shop.item_ids
 

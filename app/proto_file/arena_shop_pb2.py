@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='arena_shop.proto',
   package='',
-  serialized_pb='\n\x10\x61rena_shop.proto\x1a\x0c\x63ommon.proto\"\x1e\n\x10\x41renaShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"@\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\"\x80\x01\n\x11\x41renaShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x10\x61rena_shop.proto\x1a\x0c\x63ommon.proto\"\x1e\n\x10\x41renaShopRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"E\n\x19\x41renaGetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\"\x80\x01\n\x11\x41renaShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -47,22 +47,22 @@ _ARENASHOPREQUEST = _descriptor.Descriptor(
 )
 
 
-_GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
-  name='GetShopItemsResponse',
-  full_name='GetShopItemsResponse',
+_ARENAGETSHOPITEMSRESPONSE = _descriptor.Descriptor(
+  name='ArenaGetShopItemsResponse',
+  full_name='ArenaGetShopItemsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='res', full_name='GetShopItemsResponse.res', index=0,
+      name='res', full_name='ArenaGetShopItemsResponse.res', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='id', full_name='GetShopItemsResponse.id', index=1,
+      name='id', full_name='ArenaGetShopItemsResponse.id', index=1,
       number=2, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -78,7 +78,7 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=66,
-  serialized_end=130,
+  serialized_end=135,
 )
 
 
@@ -119,16 +119,16 @@ _ARENASHOPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=133,
-  serialized_end=261,
+  serialized_start=138,
+  serialized_end=266,
 )
 
-_GETSHOPITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_ARENAGETSHOPITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _ARENASHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _ARENASHOPRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _ARENASHOPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['ArenaShopRequest'] = _ARENASHOPREQUEST
-DESCRIPTOR.message_types_by_name['GetShopItemsResponse'] = _GETSHOPITEMSRESPONSE
+DESCRIPTOR.message_types_by_name['ArenaGetShopItemsResponse'] = _ARENAGETSHOPITEMSRESPONSE
 DESCRIPTOR.message_types_by_name['ArenaShopResponse'] = _ARENASHOPRESPONSE
 
 class ArenaShopRequest(_message.Message):
@@ -137,11 +137,11 @@ class ArenaShopRequest(_message.Message):
 
   # @@protoc_insertion_point(class_scope:ArenaShopRequest)
 
-class GetShopItemsResponse(_message.Message):
+class ArenaGetShopItemsResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _GETSHOPITEMSRESPONSE
+  DESCRIPTOR = _ARENAGETSHOPITEMSRESPONSE
 
-  # @@protoc_insertion_point(class_scope:GetShopItemsResponse)
+  # @@protoc_insertion_point(class_scope:ArenaGetShopItemsResponse)
 
 class ArenaShopResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
