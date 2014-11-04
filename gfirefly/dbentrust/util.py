@@ -188,6 +188,9 @@ def DeleteFromDB(tablename, props=None):
 def InsertIntoDB(tablename, data):
     """写入数据库
     """
+    for _ in data.values():
+        if _ == 'None':
+            raise Exception('None value')
     sql = forEachPlusInsertProps(tablename, data)
     conn = dbpool.connection()
     cursor = conn.cursor()

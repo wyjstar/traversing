@@ -108,3 +108,66 @@ class BattleUnit(object):
             return -1
         else:
             return 1
+
+    def __getstate__(self):
+        l = [self.no,
+             self.quality,
+             self.normal_skill,
+             self.rage_skill,
+             self.break_skills,
+             self.hp,
+             self.atk,
+             self.physical_def,
+             self.magic_def,
+             self.hit,
+             self.dodge,
+             self.cri,
+             self.cri_coeff,
+             self.cri_ded_coeff,
+             self.block,
+             self.base_hp,
+             self.base_atk,
+             self.base_physical_def,
+             self.base_magic_def,
+             self.base_hit,
+             self.base_dodge,
+             self.base_cri,
+             self.base_cri_coeff,
+             self.base_cri_ded_coeff,
+             self.base_block,
+             self.level,
+             self.break_level,
+             self.position,
+             self.is_boss]
+        return tuple(l)
+
+    def __setstate__(self, l):
+        self.no = l[0]
+        self.quality = l[1]
+        self.normal_skill = l[2]
+        self.rage_skill = l[3]
+        self.break_skills = l[4]
+        self.hp = l[5]
+        self.atk = l[6]
+        self.physical_def = l[7]
+        self.magic_def = l[8]
+        self.hit = l[9]
+        self.dodge = l[10]
+        self.cri = l[11]
+        self.cri_coeff = l[12]
+        self.cri_ded_coeff = l[13]
+        self.block = l[14]
+        self.base_hp = l[15]
+        self.base_atk = l[16]
+        self.base_physical_def = l[17]
+        self.base_magic_def = l[18]
+        self.base_hit = l[19]
+        self.base_dodge = l[20]
+        self.base_cri = l[21]
+        self.base_cri_coeff = l[22]
+        self.base_cri_ded_coeff = l[23]
+        self.base_block = l[24]
+        self.level = l[25]
+        self.break_level = l[26]
+        self.position = l[27]
+        self.is_boss = l[28]

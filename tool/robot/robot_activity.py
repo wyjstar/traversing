@@ -8,6 +8,7 @@ from app.proto_file import online_gift_pb2
 from app.proto_file import level_gift_pb2
 from app.proto_file import pvp_rank_pb2
 from app.proto_file import line_up_pb2
+from app.proto_file import soul_shop_pb2
 
 
 class RobotActivity(Robot):
@@ -65,8 +66,66 @@ class RobotActivity(Robot):
         self.send_message(request, 1504)
 
     def get_player_info_1504(self, message):
-        print message
         response = line_up_pb2.LineUpResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_pvp_top_rank(self):
+        self.send_message(None, 1501)
+
+    def command_pvp_player_rank(self):
+        self.send_message(None, 1502)
+
+    def command_pvp_player_rank_refresh(self):
+        self.send_message(None, 1503)
+
+    def get_player_info_1501(self, message):
+        response = pvp_rank_pb2.PlayerRankResponse()
+        response.ParseFromString(message)
+        for _ in response.rank_items:
+            print _.nickname, _.rank
+        self.on_command_finish()
+
+    def get_player_info_1502(self, message):
+        response = pvp_rank_pb2.PlayerRankResponse()
+        response.ParseFromString(message)
+        for _ in response.rank_items:
+            print _.nickname, _.rank
+        self.on_command_finish()
+
+    def get_player_info_1503(self, message):
+        response = pvp_rank_pb2.PlayerRankResponse()
+        response.ParseFromString(message)
+        for _ in response.rank_items:
+            print _.nickname, _.rank
+        self.on_command_finish()
+
+    def command_pvp_fight_player(self, rank):
+        request = pvp_rank_pb2.PvpFightRequest()
+        request.challenge_rank = int(rank)
+        self.send_message(request, 1505)
+
+    def get_fight_response_1505(self, message):
+        response = pvp_rank_pb2.PvpFightResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_arena_shop_refresh(self):
+        self.send_message(None, 1511)
+
+    def get_arena_shop_response_1511(self, message):
+        response = soul_shop_pb2.GetShopItemsResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_get_arena_shop(self):
+        self.send_message(None, 1512)
+
+    def get_arena_shop_response_1512(self, message):
+        response = soul_shop_pb2.GetShopItemsResponse()
         response.ParseFromString(message)
         print response
         self.on_command_finish()

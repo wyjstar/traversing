@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 created by sphinx.
 """
@@ -11,7 +11,9 @@ from gfirefly.dbentrust.dbpool import dbpool
 from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import log_init_only_out
-from shared.db_opear.configs_data.game_configs import robot_born_config, rand_name_config, hero_config
+from shared.db_opear.configs_data.game_configs import robot_born_config
+from shared.db_opear.configs_data.game_configs import rand_name_config
+from shared.db_opear.configs_data.game_configs import hero_config
 
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
@@ -43,7 +45,7 @@ def init_line_up(player, robot_config, level):
 if __name__ == '__main__':
     log_init_only_out()
 
-    mconfig = json.load(open('../models.json', 'r'))
+    mconfig = json.load(open('models.json', 'r'))
     model_default_config = mconfig.get('model_default', {})
     model_config = mconfig.get('models', {})
     GlobalObject().json_model_config = model_config
@@ -55,13 +57,14 @@ if __name__ == '__main__':
     port = 8066
     dbname = "db_traversing"
     charset = "utf8"
-    dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
-                    charset=charset)
+    dbpool.initPool(host=hostname, user=user,
+                    passwd=password, port=port,
+                    db=dbname, charset=charset)
     mclient.connect(["127.0.0.1:11211"], 'robot')
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.logic.line_up import line_up_info
 
-    rank_length = 30
+    rank_length = 300
 
     nickname_set = set()
     while len(nickname_set) < rank_length + 5:
@@ -81,14 +84,15 @@ if __name__ == '__main__':
             hero1.exp = 0
 
     pvp_rank = {}
-    for rank in range(1, rank_length):
+    for rank in range(1, rank_length+1):
         for k, v in robot_born_config.items():
             rank_period = v.get('period')
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
                 hero_ids = init_line_up(player, v, level)
-                red_units = cPickle.dumps(player.fight_cache_component.red_unit, -1)
+                red_units = player.fight_cache_component.red_unit
+                red_units = cPickle.dumps(red_units)
                 slots = cPickle.dumps(line_up_info(player))
 
                 rank_item = dict(nickname=nickname_set.pop(),
@@ -106,6 +110,15 @@ if __name__ == '__main__':
         print _.get('id'), _.get('nickname'), _.get('character_id')
         util.InsertIntoDB(PVP_TABLE_NAME, _)
 
+    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
+                                     'id=1',
+                                     ['id', 'nickname', 'level', 'units'])
+    for r in records:
+        u = r.get('units')
+        print 'before:', u
+        u = cPickle.loads(u)
+        print r.get('nickname'), r.get('level'), r.get('id'), r.get('units')
+
 if __name__ == '':
     log_init_only_out()
 
@@ -115,8 +128,14 @@ if __name__ == '':
     port = 8066
     dbname = "db_traversing"
     charset = "utf8"
-    dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
-                    charset=charset)
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', ['id', 'nickname', 'level', 'ap'])
+    dbpool.initPool(host=hostname, user=user,
+                    passwd=password, port=port,
+                    db=dbname, charset=charset)
+    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
+                                     'id=10',
+                                     ['id', 'nickname', 'level', 'units'])
     for r in records:
-        print r.get('nickname'), r.get('level'), r.get('id'), r.get('ap')
+        u = r.get('units')
+        print 'before:', u
+        u = cPickle.loads(u)
+        print r.get('nickname'), r.get('level'), r.get('id'), r.get('units')
