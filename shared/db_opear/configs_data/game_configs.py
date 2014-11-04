@@ -3,37 +3,38 @@
 created by server on 14-6-6上午11:05.
 """
 import cPickle
-from shared.db_opear.configs_data.chip_config import ChipConfig
-from shared.db_opear.configs_data.equipment.equipment_config import EquipmentConfig
-from shared.db_opear.configs_data.equipment.equipment_strengthen_config import EquipmentStrengthenConfig
-from shared.db_opear.configs_data.equipment.set_equipment_config import SetEquipmentConfig
-from shared.db_opear.configs_data.hero_breakup_config import HeroBreakupConfig
-from shared.db_opear.configs_data.item_config import ItemsConfig
-from shared.db_opear.configs_data.link_config import LinkConfig
-from shared.db_opear.configs_data.mail_config import MailConfig
-from shared.db_opear.configs_data.monster_config import MonsterConfig
-from shared.db_opear.configs_data.monster_group_config import MonsterGroupConfig
-from shared.db_opear.configs_data.pack.big_bag_config import BigBagsConfig
-from shared.db_opear.configs_data.pack.small_bag_config import SmallBagsConfig
-from shared.db_opear.configs_data.rand_name_config import RandNameConfig
-from shared.db_opear.configs_data.player_exp_config import PlayerExpConfig
-from shared.db_opear.configs_data.robot_born_config import RobotBornConfig
-from shared.db_opear.configs_data.shop_config import ShopConfig
-from shared.db_opear.configs_data.skill_buff_config import SkillBuffConfig
-from shared.db_opear.configs_data.skill_config import SkillConfig
-from shared.db_opear.configs_data.stage_break_config import StageBreakConfig
-from shared.db_opear.configs_data.stage_config import StageConfig
-from shared.db_opear.configs_data.soul_shop_config import SoulShopConfig
-from shared.db_opear.configs_data.sign_in_config import SignInConfig
-from shared.db_opear.configs_data.warriors_config import WarriorsConfig
-from shared.db_opear.configs_data.activity_config import ActivityConfig
-from shared.db_opear.configs_data.hero_config import HeroConfig
-from shared.db_opear.configs_data.hero_exp_config import HeroExpConfig
-from shared.db_opear.configs_data.base_config import BaseConfig
-from shared.db_opear.configs_data.guild_config import GuildConfig
-from shared.db_opear.configs_data.vip_config import VIPConfig
-from shared.db_opear.configs_data.special_stage_config import SpecialStageConfig
-from shared.db_opear.configs_data.arena_fight_config import ArenaFightConfig
+from chip_config import ChipConfig
+from equipment.equipment_config import EquipmentConfig
+from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
+from equipment.set_equipment_config import SetEquipmentConfig
+from hero_breakup_config import HeroBreakupConfig
+from item_config import ItemsConfig
+from link_config import LinkConfig
+from mail_config import MailConfig
+from monster_config import MonsterConfig
+from monster_group_config import MonsterGroupConfig
+from pack.big_bag_config import BigBagsConfig
+from pack.small_bag_config import SmallBagsConfig
+from rand_name_config import RandNameConfig
+from player_exp_config import PlayerExpConfig
+from robot_born_config import RobotBornConfig
+from shop_config import ShopConfig
+from skill_buff_config import SkillBuffConfig
+from skill_config import SkillConfig
+from stage_break_config import StageBreakConfig
+from stage_config import StageConfig
+from soul_shop_config import SoulShopConfig
+from arena_shop_config import ArenaShopConfig
+from sign_in_config import SignInConfig
+from warriors_config import WarriorsConfig
+from activity_config import ActivityConfig
+from hero_config import HeroConfig
+from hero_exp_config import HeroExpConfig
+from base_config import BaseConfig
+from guild_config import GuildConfig
+from vip_config import VIPConfig
+from special_stage_config import SpecialStageConfig
+from arena_fight_config import ArenaFightConfig
 
 
 base_config = {}
@@ -67,6 +68,7 @@ robot_born_config = {}
 rand_name_config = {}
 player_exp_config = {}
 arena_fight_config = {}
+arena_shop_config = {}
 
 
 all_config_name = {
@@ -100,7 +102,8 @@ all_config_name = {
     'rand_name_config': RandNameConfig(),
     'robot_born_config': RobotBornConfig(),
     'player_exp_config': PlayerExpConfig(),
-    'arena_fight_config': ArenaFightConfig()
+    'arena_fight_config': ArenaFightConfig(),
+    'arena_shop_config': ArenaShopConfig()
 }
 
 
@@ -111,5 +114,5 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in arena_fight_config.items():
+    for k, v in arena_shop_config.items():
         print k, v, len(v)
