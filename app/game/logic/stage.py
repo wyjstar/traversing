@@ -182,17 +182,17 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
                     player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
             player.stage_component.update()
 
-    # 经验
-    for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-        print lineUpSlotComponent,
-        hero = lineUpSlotComponent.hero_slot.hero_obj
-        if hero:
-            hero.upgrade(conf.HeroExp)
-    # 玩家金钱
-    player.finance.coin += conf.currency
-    # 玩家经验
-    player.level.addexp(conf.playerExp)
-    player.save_data()
+        # 经验
+        for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+            print lineUpSlotComponent,
+            hero = lineUpSlotComponent.hero_slot.hero_obj
+            if hero:
+                hero.upgrade(conf.HeroExp)
+        # 玩家金钱
+        player.finance.coin += conf.currency
+        # 玩家经验
+        player.level.addexp(conf.playerExp)
+        player.save_data()
 
     res.message = u'成功返回'
     return response.SerializePartialToString()

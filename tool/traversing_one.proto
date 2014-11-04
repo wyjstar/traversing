@@ -157,6 +157,7 @@ message RankItems{
      required int32 rank = 2;
      required int32 level = 3;
      required int32 ap = 4;
+     repeated int32 hero_ids = 5;
 }
 
 message PlayerRankResponse{
@@ -431,7 +432,7 @@ message ChangeHeroRequest{
 }
 
 // 查看目标玩家的阵容信息 706
-message GetLineUpResponse{
+message GetLineUpRequest{
 	required int32 target_id = 1; // 玩家ID
 }
 message LoginInfo
@@ -862,7 +863,7 @@ message CreateGuildRequest{
 
 // 加入公会 command：802
 message JoinGuildRequest{
-	required string g_id = 1;  //公会id
+	required bytes g_id = 1;  //公会id
 }
 message JoinGuildResponse{
 	required bool result = 1;  //处理结果 True：正确

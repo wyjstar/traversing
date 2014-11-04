@@ -173,10 +173,11 @@ def get_target_line_up_info(dynamic_id, target_id, **kwargs):
     if invitee_player:  # 在线
         response = line_up_info(invitee_player)
     else:
-        response = line_up_pb2.LineUpResponse()
+        response = line_up_pb2.GetLineUpRequest()
 
         heros_obj = {}
         heros = tb_character_hero.getObjListByFk(target_id)
+        hero_ids = tb_character_hero.getAllPkByFk(target_id)
 
         for hero_mmode in heros:
             data = hero_mmode.get('data')
