@@ -16,14 +16,14 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 
 
 @have_player
-def pvp_player_rank_request(dynamic_id, data, player):
+def pvp_player_rank_request(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
 
     if not record:
-        return pvp_player_rank_refresh_request(dynamic_id, data)
+        return pvp_player_rank_refresh_request(data)
 
     cur_rank = record.get('id')
     columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
@@ -41,7 +41,7 @@ def pvp_player_rank_request(dynamic_id, data, player):
 
 
 @have_player
-def pvp_player_rank_refresh_request(dynamic_id, data, player):
+def pvp_player_rank_refresh_request(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     prere = dict(character_id=player.base_info.id)
@@ -84,7 +84,7 @@ def pvp_player_rank_refresh_request(dynamic_id, data, player):
 
 
 @have_player
-def pvp_top_rank_request(dynamic_id, data, **kwargs):
+def pvp_top_rank_request(data, **kwargs):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
@@ -101,7 +101,7 @@ def pvp_top_rank_request(dynamic_id, data, **kwargs):
 
 
 @have_player
-def pvp_player_info_request(dynamic_id, data, player):
+def pvp_player_info_request(data, player):
     request = pvp_rank_pb2.PvpPlayerInfoRequest()
     request.ParseFromString(data)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME,
@@ -117,7 +117,7 @@ def pvp_player_info_request(dynamic_id, data, player):
 
 
 @have_player
-def pvp_fight_request(dynamic_id, data, player):
+def pvp_fight_request(data, player):
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     before_player_rank = 0

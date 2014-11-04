@@ -6,13 +6,15 @@ from app.game.logic.common.check import have_player
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import shop_config
-from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
+from app.game.logic.item_group_helper import is_afford
+from app.game.logic.item_group_helper import consume
+from app.game.logic.item_group_helper import gain
+from app.game.logic.item_group_helper import get_return
 import time
 
 
 @have_player
-def shop_oper(dynamic_id, pro_data, **kwargs):
-    player = kwargs.get('player')
+def shop_oper(pro_data, player):
     """商城所有操作"""
     request = ShopRequest()
     request.ParseFromString(pro_data)
@@ -41,8 +43,7 @@ def shop_oper(dynamic_id, pro_data, **kwargs):
 
 
 @have_player
-def shop_equipment_oper(dynamic_id, pro_data, **kwargs):
-    player = kwargs.get('player')
+def shop_equipment_oper(pro_data, player):
     """装备抽取"""
     request = ShopRequest()
     request.ParseFromString(pro_data)
@@ -123,5 +124,3 @@ def is_consume(player, shop_item):
         return False
 
     return True
-
-
