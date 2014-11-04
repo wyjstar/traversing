@@ -791,7 +791,7 @@ message ArenaShopRequest
     required int32 id = 1; // 对应shop配置表中商品编号
 }
 //获取商城列表 command:1511
-message GetShopItemsResponse
+message ArenaGetShopItemsResponse
 {
     required CommonResponse res = 1;
     repeated int32 id = 2;
