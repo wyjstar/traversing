@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from perform_skill import perform_skill
 
 
 class BuffManager(object):
