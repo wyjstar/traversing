@@ -81,14 +81,17 @@ def execute_skill_buff(attacker, target, skill_buff_info):
     actual_demage = 0                                                                                     # 实际伤害值
     actual_treat = 0                                                                                      # 实际治疗值
 
-    if skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2 and skill_buff_info.valueType == 1:
+    if (skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2) and skill_buff_info.valueType == 1:
         actual_demage = total_demage + skill_buff_info.valueEffect + skill_buff_info.levelEffectValue * attacker.level
+        print actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, type(skill_buff_info.valueType)
 
     elif skill_buff_info.effectId == 26 and skill_buff_info.valueType == 1:
         actual_treat = total_treat + skill_buff_info.valueEffect + skill_buff_info.levelEffectValue * attacker.level
 
-    elif skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2 and skill_buff_info.valueType == 2:
+    elif (skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2) and skill_buff_info.valueType == 2:
         actual_demage = total_demage * (skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
+        print actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, skill_buff_info.valueType
+        print skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level
 
     elif skill_buff_info.effectId == 26 and skill_buff_info.valueType == 2:
         actual_treat  = total_treat * (skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
