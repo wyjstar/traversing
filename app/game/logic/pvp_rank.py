@@ -118,15 +118,24 @@ def pvp_player_info_request(data, player):
 
 @have_player
 def pvp_fight_request(data, player):
+    request = pvp_rank_pb2.PvpFightRequest()
+    request.ParseFromString(data)
+
+    line_up = {}  # {hero_id:pos}
+    for line in request.lineup:
+        if not line.hero_id:
+            continue
+        line_up[line.hero_id] = line.pos
+
+    player.line_up_component.line_up_order = line_up
+    player.line_up_component.save_data()
+
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     before_player_rank = 0
     if record:
         before_player_rank = record.get('id')
         refresh_rank_data(player, player.base_info.id)
-
-    request = pvp_rank_pb2.PvpFightRequest()
-    request.ParseFromString(data)
 
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['units'])
@@ -159,6 +168,7 @@ def pvp_fight_request(data, player):
             continue
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
+    response.red_skill = request.skill
     return response.SerializeToString()
 
 
