@@ -28,9 +28,9 @@ def init_player(player):
         init(player)
         init_soul_shop_items(player)
 
+
 @have_player
-def nickname_create(dynamic_id, nickname, **kwargs):
-    player = kwargs.get('player')
+def nickname_create(nickname, player):
     response = CommonResponse()
 
     match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
@@ -59,16 +59,15 @@ def nickname_create(dynamic_id, nickname, **kwargs):
     character_obj.update('nickname', nickname)
 
     # 加入聊天
-    login_chat(dynamic_id, player.base_info.id, player.guild.g_id, nickname)
+    login_chat(player.base_info.id, player.guild.g_id, nickname)
 
     response.result = True
     return response.SerializeToString()
 
 
 @have_player
-def buy_stamina(dynamic_id, **kwargs):
+def buy_stamina(player):
     """购买体力"""
-    player = kwargs.get('player')
     response = CommonResponse()
 
     current_vip_level = player.vip_component.vip_level
@@ -108,9 +107,8 @@ def buy_stamina(dynamic_id, **kwargs):
 
 
 @have_player
-def add_stamina(dynamic_id, **kwargs):
+def add_stamina(player):
     """按时自动增长体力"""
-    player = kwargs.get('player')
     response = CommonResponse()
 
     # 校验时间是否足够
@@ -118,14 +116,14 @@ def add_stamina(dynamic_id, **kwargs):
     last_gain_stamina_time = player.stamina.stamina
 
     if current_time - last_gain_stamina_time < 270:
-        logger.debug("add stamina time not enough +++++++++++++++++++++++++++++++")
+        logger.debug("add stamina time not enough +++++++++++++++++++++")
         response.result_no = 12
         response.result = False
         return response.SerializePartialToString()
 
     max_stamina = player.stamina.max_of_stamina
     if player.stamina.stamina >= max_stamina:
-        logger.debug("has reach max stamina +++++++++++++++++++++++++++++++")
+        logger.debug("has reach max stamina ++++++++++++++++++++++")
         response.result_no = 13
         response.result = False
         return response.SerializePartialToString()

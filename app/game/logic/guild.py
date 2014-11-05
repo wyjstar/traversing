@@ -20,11 +20,10 @@ from shared.utils import trie_tree
 
 
 @have_player
-def create_guild(dynamicid, data, **kwargs):
+def create_guild(dynamicid, data, player):
     """
     创建公会
     """
-    player = kwargs.get('player')
     args = CreateGuildRequest()
     args.ParseFromString(data)
     g_name = args.name
@@ -105,11 +104,10 @@ def create_guild(dynamicid, data, **kwargs):
 
 
 @have_player
-def join_guild(dynamicid, data, **kwargs):
+def join_guild(dynamicid, data, player):
     """
     加入公会
     """
-    player = kwargs.get('player')
     p_id = player.base_info.id
     args = JoinGuildRequest()
     args.ParseFromString(data)
@@ -153,11 +151,10 @@ def join_guild(dynamicid, data, **kwargs):
 
 
 @have_player
-def exit_guild(dynamicid, data, **kwargs):
+def exit_guild(dynamicid, data, player):
     """
     退出公会
     """
-    player = kwargs.get('player')
     p_id = player.base_info.id
     response = GuildCommonResponse()
     m_g_id = player.guild.g_id
@@ -274,12 +271,10 @@ def exit_guild(dynamicid, data, **kwargs):
 
 
 @have_player
-def editor_call(dynamicid, data, **kwargs):
+def editor_call(dynamicid, data, player):
     """
-
     编辑公告
     """
-    player = kwargs.get('player')
     p_id = player.base_info.id
     args = EditorCallRequest()
     args.ParseFromString(data)
@@ -321,11 +316,10 @@ def editor_call(dynamicid, data, **kwargs):
 
 
 @have_player
-def deal_apply(dynamicid, data, **kwargs):
+def deal_apply(dynamicid, data, player):
     """
     处理加会申请
     """
-    player = kwargs.get('player')
     args = DealApplyRequest()
     args.ParseFromString(data)
     response = DealApplyResponse()
@@ -359,7 +353,7 @@ def deal_apply(dynamicid, data, **kwargs):
             # 加入公会聊天室
             invitee_player = PlayersManager().get_player_by_id(p_id)
             if invitee_player:  # 在线
-                login_guild_chat(invitee_player.dynamic_id, player.guild.g_id)
+                login_guild_chat(invitee_player.player.guild.g_id)
                 invitee_player.guild.g_id = player.guild.g_id
                 invitee_player.guild.position = 5
                 invitee_player.guild.contribution = 0
@@ -408,11 +402,10 @@ def deal_apply(dynamicid, data, **kwargs):
 
 
 @have_player
-def change_president(dynamicid, data, **kwargs):
+def change_president(dynamicid, data, player):
     """
     转让会长
     """
-    player = kwargs.get('player')
     p_id = player.base_info.id
     args = ChangePresidentRequest()
     args.ParseFromString(data)
@@ -480,11 +473,10 @@ def change_president(dynamicid, data, **kwargs):
 
 
 @have_player
-def kick(dynamicid, data, **kwargs):
+def kick(dynamicid, data, player):
     """
     踢出公会
     """
-    player = kwargs.get('player')
     args = KickRequest()
     args.ParseFromString(data)
     response = GuildCommonResponse()
@@ -539,11 +531,10 @@ def kick(dynamicid, data, **kwargs):
 
 
 @have_player
-def promotion(dynamicid, data, **kwargs):
+def promotion(dynamicid, data, player):
     """
     晋升
     """
-    player = kwargs.get('player')
     response = PromotionResponse()
     m_g_id = player.guild.g_id
     m_p_id = player.base_info.id
@@ -649,11 +640,10 @@ def promotion(dynamicid, data, **kwargs):
 
 
 @have_player
-def worship(dynamicid, data, **kwargs):
+def worship(dynamicid, data, player):
     """
     膜拜
     """
-    player = kwargs.get('player')
     args = WorshipRequest()
     args.ParseFromString(data)
     response = GuildCommonResponse()
@@ -725,7 +715,7 @@ def worship(dynamicid, data, **kwargs):
 
 
 @have_player
-def get_guild_rank(dynamicid, data, **kwargs):
+def get_guild_rank(dynamicid, data, player):
     """
     获取公会排行列表
     """
@@ -766,11 +756,10 @@ def get_guild_rank(dynamicid, data, **kwargs):
 
 
 @have_player
-def get_role_list(dynamicid, data, **kwargs):
+def get_role_list(dynamicid, data, player):
     """
     获取公会玩家列表
     """
-    response = GuildRoleListProto()
     player = kwargs.get('player')
     m_g_id = player.guild.g_id
     if m_g_id == 0:
@@ -813,12 +802,11 @@ def get_role_list(dynamicid, data, **kwargs):
 
 
 @have_player
-def get_guild_info(dynamicid, data, **kwargs):
+def get_guild_info(dynamicid, data, player):
     """
     获取公会信息
     """
     response = GuildInfoProto()
-    player = kwargs.get('player')
     m_g_id = player.guild.g_id
     if m_g_id == 0:
         response.result = False
@@ -830,7 +818,6 @@ def get_guild_info(dynamicid, data, **kwargs):
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
-
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
@@ -850,12 +837,11 @@ def get_guild_info(dynamicid, data, **kwargs):
 
 
 @have_player
-def get_apply_list(dynamicid, data, **kwargs):
+def get_apply_list(dynamicid, data, player):
     """
     获取申请列表
     """
     response = ApplyListProto()
-    player = kwargs.get('player')
     m_g_id = player.guild.g_id
     if m_g_id == 0:
         response.result = False

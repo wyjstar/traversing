@@ -16,14 +16,14 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 
 
 @have_player
-def pvp_player_rank_request(dynamic_id, data, player):
+def pvp_player_rank_request(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
 
     if not record:
-        return pvp_player_rank_refresh_request(dynamic_id, data)
+        return pvp_player_rank_refresh_request(data)
 
     cur_rank = record.get('id')
     columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
@@ -41,7 +41,7 @@ def pvp_player_rank_request(dynamic_id, data, player):
 
 
 @have_player
-def pvp_player_rank_refresh_request(dynamic_id, data, player):
+def pvp_player_rank_refresh_request(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     prere = dict(character_id=player.base_info.id)
@@ -84,7 +84,7 @@ def pvp_player_rank_refresh_request(dynamic_id, data, player):
 
 
 @have_player
-def pvp_top_rank_request(dynamic_id, data, **kwargs):
+def pvp_top_rank_request(data, **kwargs):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
@@ -101,7 +101,7 @@ def pvp_top_rank_request(dynamic_id, data, **kwargs):
 
 
 @have_player
-def pvp_player_info_request(dynamic_id, data, player):
+def pvp_player_info_request(data, player):
     request = pvp_rank_pb2.PvpPlayerInfoRequest()
     request.ParseFromString(data)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME,
@@ -117,16 +117,25 @@ def pvp_player_info_request(dynamic_id, data, player):
 
 
 @have_player
-def pvp_fight_request(dynamic_id, data, player):
+def pvp_fight_request(data, player):
+    request = pvp_rank_pb2.PvpFightRequest()
+    request.ParseFromString(data)
+
+    line_up = {}  # {hero_id:pos}
+    for line in request.lineup:
+        if not line.hero_id:
+            continue
+        line_up[line.hero_id] = line.pos
+
+    player.line_up_component.line_up_order = line_up
+    player.line_up_component.save_data()
+
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     before_player_rank = 0
     if record:
         before_player_rank = record.get('id')
         refresh_rank_data(player, player.base_info.id)
-
-    request = pvp_rank_pb2.PvpFightRequest()
-    request.ParseFromString(data)
 
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['units'])
@@ -159,6 +168,7 @@ def pvp_fight_request(dynamic_id, data, player):
             continue
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
+    response.red_skill = request.skill
     return response.SerializeToString()
 
 

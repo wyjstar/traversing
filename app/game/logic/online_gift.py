@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-created by sphinx on 
+created by sphinx on
 """
 from app.proto_file import online_gift_pb2
 from app.game.logic.common.check import have_player
@@ -9,12 +9,10 @@ from app.game.logic.item_group_helper import gain, get_return
 
 
 @have_player
-def get_online_gift(dynamic_id, data, **kwargs):
+def get_online_gift(data, player):
     request = online_gift_pb2.GetOnlineGift()
     request.ParseFromString(data)
     response = online_gift_pb2.GetOnlineGiftResponse()
-
-    player = kwargs.get('player')
 
     activity_online_gift = activity_config.get(4)
     online_minutes = player.online_gift.online_time  # / 60
@@ -45,10 +43,8 @@ def get_online_gift(dynamic_id, data, **kwargs):
 
 
 @have_player
-def get_online_and_level_gift_data(dynamic_id, data, **kwargs):
+def get_online_and_level_gift_data(data, player):
     response = online_gift_pb2.GetOnlineLevelGiftData()
-
-    player = kwargs.get('player')
 
     response.online_time = player.online_gift.online_time
     for _ in player.online_gift.received_gift_ids:

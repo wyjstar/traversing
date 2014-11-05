@@ -8,14 +8,12 @@ from gfirefly.server.logobj import logger
 
 
 @have_player
-def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
+def get_equipments_info(get_type, get_id, player):
     """
     @param get_type: 装备类型 -1：一件 0：全部 1：武器 2：头盔 3：衣服 4：项链 5：饰品 6：宝物
     @param get_id: 装备ID
     @return: 装备的详细信息 []
     """
-    player = kwargs.get('player')
-
     equipments = []
     if get_type == -1:
         obj = player.equipment_component.get_equipment(get_id)
@@ -30,7 +28,7 @@ def get_equipments_info(dynamic_id, get_type, get_id, **kwargs):
 
 
 @have_player
-def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwargs):
+def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
     """装备强化
     @param dynamic_id:  客户端动态ID
     @param equipment_id: 装备ID
@@ -39,7 +37,6 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
     @param kwargs:
     @return:
     """
-    player = kwargs.get('player')
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     # print equipment_obj, "equipment_obj"
@@ -64,8 +61,6 @@ def enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num, **kwa
         equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
         # print "reach max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
         return {'result': False, 'result_no': 402, 'message': u''}
-
-
 
     for i in xrange(0, enhance_num):
         result = __do_enhance(player, equipment_obj)
@@ -93,15 +88,13 @@ def __do_enhance(player, equipment_obj):
     # print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
 
-    return {'result': True, 'record':(before_lv, after_lv, enhance_cost)}
+    return {'result': True, 'record': (before_lv, after_lv, enhance_cost)}
 
 
 @have_player
-def compose_equipment(dynamic_id, chip_no, **kwargs):
+def compose_equipment(chip_no, player):
     """合成装备
     """
-    player = kwargs.get('player')
-
     chip = player.equipment_chip_component.get_chip(chip_no)
     # 没有碎片
     if not chip:
@@ -120,14 +113,12 @@ def compose_equipment(dynamic_id, chip_no, **kwargs):
 
 
 @have_player
-def nobbing_equipment(dynamic_id, equipment_id, **kwargs):
-    player = kwargs.get('player')
-
+def nobbing_equipment(equipment_id, player):
     pass
 
 
 @have_player
-def melting_equipment(dynamic_id, equipment_ids, response, **kwargs):
+def melting_equipment(equipment_ids, response, **kwargs):
     """熔炼
     @param dynamic_id:
     @param equipment_ids:
@@ -145,7 +136,7 @@ def melting_equipment(dynamic_id, equipment_ids, response, **kwargs):
 
 
 @have_player
-def awakening_equipment(dynamic_id, equipment_id, **kwargs):
+def awakening_equipment(equipment_id, player):
     """觉醒
     @param dynamic_id:
     @param equipment_id:
@@ -153,7 +144,6 @@ def awakening_equipment(dynamic_id, equipment_id, **kwargs):
     @return:
     """
     pass
-    # player = kwargs.get('player')
     # equipment_obj = player.equipment.get_by_id(equipment_id)
     # if not equipment_obj:
     #     return {'result': False, 'result_no': 401, 'message': u''}
@@ -162,18 +152,3 @@ def awakening_equipment(dynamic_id, equipment_id, **kwargs):
     # equipment_chip = player.equipment_chip_component.get_chip()
     #
     # return {'result': True, 'player': player}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

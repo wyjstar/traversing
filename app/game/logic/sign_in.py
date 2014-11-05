@@ -11,9 +11,8 @@ import datetime
 
 
 @have_player
-def get_sign_in(dynamic_id, **kwargs):
+def get_sign_in(player):
     """获取签到初始化信息"""
-    player = kwargs.get('player')
     response = GetSignInResponse()
     sign_in_component = player.sign_in_component
     [response.days.append(i) for i in sign_in_component.sign_in_days]
@@ -25,10 +24,9 @@ def get_sign_in(dynamic_id, **kwargs):
 
 
 @have_player
-def sign_in(dynamic_id, **kwargs):
+def sign_in(player):
     """签到"""
     print "sign_in++++++++++++++"
-    player = kwargs.get('player')
     response = SignInResponse()
 
     # 签到
@@ -46,7 +44,6 @@ def sign_in(dynamic_id, **kwargs):
     player.sign_in_component.sign_in(month, day)
     player.sign_in_component.save_data()
 
-
     # 获取奖励
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
         return
@@ -58,9 +55,8 @@ def sign_in(dynamic_id, **kwargs):
 
 
 @have_player
-def continuous_sign_in(dynamic_id, days, **kwargs):
+def continuous_sign_in(days, player):
     """连续签到"""
-    player = kwargs.get('player')
     response = ContinuousSignInResponse()
 
     sign_in_prize = base_config.get("signInPrize")
@@ -90,10 +86,9 @@ def continuous_sign_in(dynamic_id, days, **kwargs):
 
 
 @have_player
-def repair_sign_in(dynamic_id, day, **kwargs):
+def repair_sign_in(day, player):
     """补充签到"""
     print "repair_sign_in+++++++++++", day
-    player = kwargs.get('player')
     response = SignInResponse()
 
     sign_in_add = base_config.get("signInAdd")
