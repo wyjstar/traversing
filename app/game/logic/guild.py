@@ -17,6 +17,7 @@ from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
 from shared.utils import trie_tree
+from app.game.action.root.netforwarding import push_message
 
 
 @have_player
@@ -242,6 +243,11 @@ def exit_guild(dynamicid, data, **kwargs):
                 p_guild_data = tb_character_guild.getObj(tihuan_id)
                 p_guild_data.update_multi(data)
 
+            # if not push_message(1801, tihuan_id):
+            #     response.result = False
+            #     response.message = '系统错误'
+            #     return response.SerializePartialToString()  # fail
+
             p_list1 = p_list.get(tihuan_position)
             p_list1.remove(tihuan_id)
 
@@ -381,7 +387,6 @@ def deal_apply(dynamicid, data, **kwargs):
                              'exit_time': 1}}
                 p_guild_data = tb_character_guild.getObj(p_id)
                 p_guild_data.update_multi(data)
-
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(5):
@@ -438,7 +443,6 @@ def change_president(dynamicid, data, **kwargs):
             p_list.update({num: p_list1, 5: p_list5, 1: [p_p_id]})
             guild_obj.p_list = p_list
             guild_obj.save_data()
-            # 判断玩家再不在线，在线直接通知，不在线的话发邮件。通知其他玩家
 
             character_guild = tb_character_guild.getObjData(p_p_id)
             info = character_guild.get("info")
@@ -593,7 +597,6 @@ def promotion(dynamicid, data, **kwargs):
                 return response.SerializeToString()
 
             tihuan_id = new_list[-1][0]
-            # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
             character_guild = tb_character_guild.getObjData(tihuan_id)
             info = character_guild.get("info")
             if info.get("g_id") != player.guild.g_id:
@@ -752,11 +755,11 @@ def get_guild_rank(dynamicid, data, **kwargs):
                 if player_data.get('nickname'):
                     guild_rank.president = player_data.get('nickname')
                 else:
-                    logger.info('guild rank ,president name is null')
+                    logger.info('guild rank ,president name is null,id:%s', president_id)
                     guild_rank.president = u'无名'
             else:
                 guild_rank.president = u'错误'
-                logger.error('guild rank, president player not fond')
+                logger.error('guild rank, president player not fond,id:%s', president_id)
 
             guild_rank.p_num = guild_obj.p_num
             guild_rank.record = guild_obj.record
@@ -831,7 +834,6 @@ def get_guild_info(dynamicid, data, **kwargs):
         response.message = "公会ID错误"
         return response.SerializeToString()
 
-
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
@@ -889,3 +891,11 @@ def get_apply_list(dynamicid, data, **kwargs):
 
     response.result = True
     return response.SerializeToString()
+
+
+@have_player
+def be_change_president(dynamic_id, is_online, **kwargs ):
+    player = kwargs.get('player')
+    player.guild.position = 1
+    player.guild.save_data()
+    return True
