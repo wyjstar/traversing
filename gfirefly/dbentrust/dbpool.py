@@ -4,31 +4,47 @@ Created on 2013-5-8
 
 @author: lan (www.9miao.com)
 """
+import gevent
 import pymysql
 
-from DBUtils.PooledDB import PooledDB
 
-
-DBCS = {'mysql': pymysql, }
+def get_connection(func):
+    def wrapper(*args, **kwargs):
+        con = dbpool.get_connection()
+        ret = func(*args, conn=con)
+        dbpool.recollect_connection(con)
+        return ret
+    return wrapper
 
 
 class DBPool(object):
-    """数据库连接池 """
+    def __init__(self):
+        self.config = {}
+        self.idle_connections = []
+        self.max_conection_num = 16
+
     def initPool(self, **kw):
         """根据连接配置初始化连接池配置信息.
         >>> aa = {'host':"localhost",'user':'root','passwd':'111',
                 'db':'test','port':3306,'charset':'utf8'}
         >>> dbpool.initPool(**aa)
         """
-        self.config = kw
-        self.config['blocking'] = True
-        self.config['use_unicode'] = True
-        self.config['charset'] = 'utf8'
-        creator = DBCS.get(kw.get('engine', 'mysql'), pymysql)
-        self.pool = PooledDB(creator, 5, **kw)
+        config = kw
+        config['use_unicode'] = True
+        config['charset'] = 'utf8'
+        for i in range(self.max_conection_num):
+            con = pymysql.Connect(**config)
+            self.idle_connections.append(con)
 
-    def connection(self):
-        return self.pool.connection()
+    def get_connection(self):
+        while len(self.idle_connections) <= 0:
+            gevent.sleep(1)
+        con = self.idle_connections.pop()
+
+        return con
+
+    def recollect_connection(self, connection):
+        self.idle_connections.append(connection)
 
 
 # 数据库连接池对象
