@@ -5,7 +5,7 @@ from configs_data.game_configs import skill_buff_config
 from configs_data.game_configs import hero_config
 from configs_data.game_configs import base_config, hero_breakup_config
 from battle_buff import Buff, BuffManager
-from execute_skill_buff import perform_hit, execute_skill_buff
+from execute_skill_buff import perform_hit, execute_skill_buff, execute_mp
 from find_target_units import find_side, find_target_units
 import copy
 BEST_SKILL = 1
@@ -196,27 +196,34 @@ class BattleRound(object):
         """
         根据作用位置找到攻击目标，然后执行技能或者添加buff
         """
-        if DEBUG:
-            target_nos = []
-            for temp in target_units:
-                target_nos.append(temp.slot_no)
-            print "作用目标: %s, %s" % (skill_buff_info.effectPos, target_nos)
+        #if DEBUG:
+            #target_nos = []
+            #for temp in target_units:
+                #target_nos.append(temp.slot_no)
+            #print "技能或者buffID（%s），作用目标: %s, %s" % (skill_buff_info.id, skill_buff_info.effectPos, target_nos)
 
+        print "-" * 80
         result = []
         for target_unit in target_units:
             if skill_buff_info.effectId in [1, 2, 3, 26]:
                 is_block, is_cri = execute_skill_buff(attacker, target_unit, skill_buff_info)
-                if target_unit.hp <= 0:
+                if target_unit.hp <= 0: # 如果血量为0，则去掉该unit
                     target_side = find_side(skill_buff_info, army, enemy)
                     if target_unit.slot_no in target_side:
                         del target_side[target_unit.slot_no]
 
                 if skill_buff_info.skill_key:
                     result.append((is_block, target_unit))
+            elif skill_buff_info.effectId in [8, 9]:
+                execute_mp(target_unit, skill_buff_info)
             else:
                 buff = Buff(attacker, skill_buff_info, before_or_not)
                 target_unit.buff_manager.add(buff)
 
+        print "技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id)
+        if DEBUG:
+            for temp in target_units:
+                print temp
 
         # 触发反击
         for is_block, backer in result:
@@ -228,6 +235,8 @@ class BattleRound(object):
                         target_nos.append(temp.slot_no)
                     print "反击目标: %s" % (target_nos)
                 self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units)
+
+        print "-" * 80
 
     @property
     def result(self):
@@ -271,6 +280,10 @@ class BattleUnit(object):
     @property
     def mp(self):
         return self._skill.mp
+
+    @mp.setter
+    def mp(self, value):
+        self._skill.mp = value
 
     @property
     def buff_manager(self):
@@ -424,9 +437,9 @@ class BattleUnit(object):
     __nonzero__=__bool__
     def __repr__(self):
         return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
-命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp初始值(%s)") \
+                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp初始值(%s), buffs(%s)") \
                 %(self._slot_no, self._hero_name, self._hero_no, self._hp, self._atk, self._physical_def, self._magic_def,
-            self._hit, self._dodge, self._cri, self._cri_coeff, self._cri_ded_coeff, self._block, self._ductility, self._level, self._break_level, self._mp_base)
+            self._hit, self._dodge, self._cri, self._cri_coeff, self._cri_ded_coeff, self._block, self._ductility, self._level, self._break_level, self._mp_base, self.buff_manager)
 
 class HeroSkill(object):
     """docstring for HeroSkill"""
@@ -576,7 +589,10 @@ class HeroSkill(object):
 
     @mp.setter
     def mp(self, value):
-        self._mp = value
+        if value < 0:
+            self._mp = 0
+        elif value > self._mp_max:
+            self._mp = self._mp_max
 
 class BestSkill(object):
     """docstring for BestSkill"""

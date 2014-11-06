@@ -8,3 +8,4 @@ cobar/logs/
 my.json
 config.json
 tool/excel_maker/sql/
+tool/traversing_one.*
