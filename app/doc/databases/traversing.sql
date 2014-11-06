@@ -100,7 +100,6 @@ CREATE TABLE `tb_character_info` (
   `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `stamina` blob NOT NULL,
   `soul_shop` blob NOT NULL,
-  `arena_shop` blob NOT NULL,
   `pvp_times` int(11) DEFAULT NULL,
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
   `last_login_time` int(11) DEFAULT NULL,
@@ -108,6 +107,7 @@ CREATE TABLE `tb_character_info` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `pvp_count` bigint(20) NOT NULL DEFAULT '0',
   `pvp_score` bigint(20) NOT NULL DEFAULT '0',
+  `arena_shop` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
