@@ -8,21 +8,19 @@ from app.game.logic.item_group_helper import gain, get_return
 
 
 @have_player
-def init_login_gift(dynamicid, **kwargs):
+def init_login_gift(player):
     """
     获取登录活动信息
     """
-    player = kwargs.get('player')
     return player.login_gift.cumulative_received, player.login_gift.continuous_received,\
         player.login_gift.cumulative_day, player.login_gift.continuous_day
 
 
 @have_player
-def get_login_gift(dynamicid, activity_id, activity_type, response, **kwargs):
+def get_login_gift(activity_id, activity_type, response, player):
     """
     领取登录奖励
     """
-    player = kwargs.get('player')
     if activity_type == 1:  # 累积登录
         if player.login_gift.cumulative_received.count(activity_id) == 0:  # 未领取
             if player.login_gift.cumulative_day[1]:  # 是新手活动
@@ -48,7 +46,7 @@ def get_login_gift(dynamicid, activity_id, activity_type, response, **kwargs):
             res = False
             err_no = 801  # 已经领取过
     else:  # 连续登录奖励
-        if player.login_gift.continuous_received.count(activity_id) == 0:  # 未领取
+        if player.login_gift.continuous_received.count(activity_id) == 0: # 未领取
             if player.login_gift.continuous_day[1]:  # 是新手活动
                 res = False
                 err_no = 800
@@ -73,5 +71,3 @@ def get_login_gift(dynamicid, activity_id, activity_type, response, **kwargs):
             err_no = 801  # 已经领取过
     player.login_gift.save_data()
     return res, err_no
-
-

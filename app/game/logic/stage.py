@@ -15,11 +15,9 @@ from shared.db_opear.configs_data import game_configs
 
 
 @have_player
-def get_stage_info(dynamic_id, stage_id, **kwargs):
+def get_stage_info(stage_id, player):
     """取得关卡信息
     """
-    player = kwargs.get('player')
-
     if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
@@ -51,11 +49,9 @@ def get_stage_info(dynamic_id, stage_id, **kwargs):
 
 
 @have_player
-def get_chapter_info(dynamic_id, chapter_id, **kwargs):
+def get_chapter_info(chapter_id, player):
     """取得章节奖励信息
     """
-    player = kwargs.get('player')
-
     response = []
 
     if chapter_id:
@@ -69,10 +65,9 @@ def get_chapter_info(dynamic_id, chapter_id, **kwargs):
 
 
 @have_player
-def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
+def fight_start(stage_id, line_up, unparalleled, fid, player):
     """开始战斗
     """
-    player = kwargs.get('player')
     result_no = 0
 
     # 校验关卡是否开启
@@ -108,12 +103,12 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
             player.stage_component.update()
 
     if conf:
-        #星期限制
+        # 星期限制
         if conf.weeklyControl:
             if conf.weeklyControl[time.localtime().tm_wday]:
                 return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
-        #时间限制
+        # 时间限制
         open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
         close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
         if not open_time <= time.time() <= close_time:
@@ -143,9 +138,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
 
 
 @have_player
-def fight_settlement(dynamic_id, stage_id, result, **kwargs):
-    player = kwargs.get('player')
-
+def fight_settlement(stage_id, result, player):
     response = stage_response_pb2.StageSettlementResponse()
     drops = response.drops
     res = response.res
@@ -199,8 +192,7 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
 
 
 @have_player
-def get_warriors(dynamic_id, **kwargs):
-    player = kwargs.get('player')
+def get_warriors(player):
     response = stage_response_pb2.UnparalleledResponse()
 
     warriors = player.line_up_component.warriors
@@ -227,12 +219,11 @@ def get_warriors(dynamic_id, **kwargs):
 
 
 @have_player
-def stage_sweep(dynamic_id, stage_id, times, **kwargs):
+def stage_sweep(stage_id, times, player):
     response = stage_response_pb2.StageSweepResponse()
     drops = response.drops
     res = response.res
 
-    player = kwargs.get('player')
     need_money = 0
     if times == 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:

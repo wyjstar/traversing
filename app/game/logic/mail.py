@@ -13,9 +13,8 @@ from shared.db_opear.configs_data import data_helper
 
 
 @have_player
-def get_mails(dynamic_id, **kwargs):
+def get_mails(player):
     """获取所有邮件"""
-    player = kwargs.get('player')
     mails = player.mail_component.get_mails()
 
     response = GetMailInfos()
@@ -41,7 +40,7 @@ def is_expire_notice(mail):
 
 
 @have_player
-def read_mail(dynamic_id, mail_ids, mail_type, **kwargs):
+def read_mail(mail_ids, mail_type, **kwargs):
     """读取邮件"""
     player = kwargs.get('player')
     response = ReadMailResponse()
@@ -103,10 +102,8 @@ def get_prize(player, mail_ids, response):
 
 
 @have_player
-def delete_mail(dynamic_id, mail_ids, **kwargs):
+def delete_mail(mail_ids, player):
     """删除邮件"""
-    player = kwargs.get('player')
-
     player.mail_component.delete_mails(mail_ids)
     response = CommonResponse()
     response.result = True
@@ -114,9 +111,8 @@ def delete_mail(dynamic_id, mail_ids, **kwargs):
 
 
 @have_player
-def receive_mail(dynamic_id, online, mail, **kwargs):
+def receive_mail(online, mail, player):
     """在线/登录时，接收邮件"""
-    player = kwargs.get('player')
     mail_type = mail.get("mail_type")
     sender_id = mail.get("sender_id")
     sender_name = mail.get("sender_name")
@@ -137,9 +133,8 @@ def receive_mail(dynamic_id, online, mail, **kwargs):
 
 
 @have_player
-def send_mail(dynamic_id, mail, **kwargs):
+def send_mail(mail, player):
     """发送邮件， mail为json类型"""
-    player = kwargs.get('player')
     mail['send_time'] = int(time.time())
     receive_id = mail['receive_id']
     # command:id 为收邮件的命令ID
@@ -147,9 +142,8 @@ def send_mail(dynamic_id, mail, **kwargs):
 
 
 @have_player
-def receive_mail_from_client_1306(dynamic_id, proto_data, **kwargs):
+def receive_mail_from_client_1306(proto_data, player):
     """在线/登录时，接收邮件"""
-    player = kwargs.get('player')
     mail_type = proto_data.get("mail_type")
     sender_id = proto_data.get("sender_id")
     sender_name = proto_data.get("sender_name")
@@ -160,9 +154,3 @@ def receive_mail_from_client_1306(dynamic_id, proto_data, **kwargs):
 
     player.mail_component.add_mail(sender_id, sender_name, title,
                                    content, mail_type, send_time, bag)
-
-
-
-
-
-

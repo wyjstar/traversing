@@ -138,7 +138,6 @@ def mp_min_attack(value, attacker, target_units):
     return mp_units
 
 def self_attack(value, attacker, target_units):
-    print attacker, "attacker"
     return [attacker]
 
 
