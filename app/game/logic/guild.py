@@ -21,7 +21,7 @@ from app.game.action.root.netforwarding import push_message
 
 
 @have_player
-def create_guild(dynamicid, data, player):
+def create_guild(data, player):
     """
     创建公会
     """
@@ -98,14 +98,14 @@ def create_guild(dynamicid, data, player):
     player.finance.save_data()
 
     # 加入公会聊天
-    login_guild_chat(dynamicid, player.guild.g_id)
+    login_guild_chat(player.guild.g_id)
 
     response.result = True
     return response.SerializeToString()
 
 
 @have_player
-def join_guild(dynamicid, data, player):
+def join_guild(data, player):
     """
     加入公会
     """
@@ -152,11 +152,12 @@ def join_guild(dynamicid, data, player):
 
 
 @have_player
-def exit_guild(dynamicid, data, player):
+def exit_guild(data, player):
     """
     退出公会
     """
     p_id = player.base_info.id
+    dynamicid = player.dynamic_id
     response = GuildCommonResponse()
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -277,7 +278,7 @@ def exit_guild(dynamicid, data, player):
 
 
 @have_player
-def editor_call(dynamicid, data, player):
+def editor_call(data, player):
     """
     编辑公告
     """
@@ -322,7 +323,7 @@ def editor_call(dynamicid, data, player):
 
 
 @have_player
-def deal_apply(dynamicid, data, player):
+def deal_apply(data, player):
     """
     处理加会申请
     """
@@ -407,10 +408,11 @@ def deal_apply(dynamicid, data, player):
 
 
 @have_player
-def change_president(dynamicid, data, player):
+def change_president(data, player):
     """
     转让会长
     """
+    dynamicid = player.dynamic_id
     p_id = player.base_info.id
     args = ChangePresidentRequest()
     args.ParseFromString(data)
@@ -477,7 +479,7 @@ def change_president(dynamicid, data, player):
 
 
 @have_player
-def kick(dynamicid, data, player):
+def kick(data, player):
     """
     踢出公会
     """
@@ -535,7 +537,7 @@ def kick(dynamicid, data, player):
 
 
 @have_player
-def promotion(dynamicid, data, player):
+def promotion(data, player):
     """
     晋升
     """
@@ -643,7 +645,7 @@ def promotion(dynamicid, data, player):
 
 
 @have_player
-def worship(dynamicid, data, player):
+def worship(data, player):
     """
     膜拜
     """
@@ -718,7 +720,7 @@ def worship(dynamicid, data, player):
 
 
 @have_player
-def get_guild_rank(dynamicid, data, player):
+def get_guild_rank(data, player):
     """
     获取公会排行列表
     """
@@ -759,7 +761,7 @@ def get_guild_rank(dynamicid, data, player):
 
 
 @have_player
-def get_role_list(dynamicid, data, player):
+def get_role_list(data, player):
     """
     获取公会玩家列表
     """
@@ -805,7 +807,7 @@ def get_role_list(dynamicid, data, player):
 
 
 @have_player
-def get_guild_info(dynamicid, data, player):
+def get_guild_info(data, player):
     """
     获取公会信息
     """
@@ -840,7 +842,7 @@ def get_guild_info(dynamicid, data, player):
 
 
 @have_player
-def get_apply_list(dynamicid, data, player):
+def get_apply_list(data, player):
     """
     获取申请列表
     """
@@ -880,7 +882,7 @@ def get_apply_list(dynamicid, data, player):
     return response.SerializeToString()
 
 @have_player
-def be_change_president(dynamic_id, is_online, **kwargs ):
+def be_change_president(is_online, **kwargs ):
     player = kwargs.get('player')
     player.guild.position = 1
     player.guild.save_data()
