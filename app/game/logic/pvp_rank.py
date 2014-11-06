@@ -23,7 +23,7 @@ def pvp_player_rank_request(data, player):
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
 
     if not record:
-        return pvp_player_rank_refresh_request(data)
+        return pvp_player_rank_refresh_request(player.dynamic_id, data)
 
     cur_rank = record.get('id')
     columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
@@ -152,7 +152,7 @@ def pvp_fight_request(data, player):
         if before_player_rank != 0:
             pass
             # last_player_rank = record.get('id')
-        refresh_rank_data(player, request.challenge)
+        refresh_rank_data(player, request.challenge_rank)
     else:
         pass
 
