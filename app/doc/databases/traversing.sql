@@ -100,6 +100,7 @@ CREATE TABLE `tb_character_info` (
   `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `stamina` blob NOT NULL,
   `soul_shop` blob NOT NULL,
+  `arena_shop` blob NOT NULL,
   `pvp_times` int(11) DEFAULT NULL,
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
   `last_login_time` int(11) DEFAULT NULL,
@@ -157,6 +158,8 @@ CREATE TABLE `tb_character_stages` (
   `award_info` mediumblob,
   `elite_stage` mediumblob,
   `act_stage` mediumblob,
+  `sweep_times` mediumblob NOT NULL,
+  `stage_up_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -221,8 +224,9 @@ CREATE TABLE `tb_pvp_rank` (
   `ap` int(11) NOT NULL,
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
+  `hero_ids` tinyblob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- Dump completed on 2014-10-28 21:34:11
+-- Dump completed on 2014-11-06 21:29:40
