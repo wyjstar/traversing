@@ -57,9 +57,9 @@ def nickname_create(nickname, player):
         response.result_no = 2
         return response.SerializeToString()
     character_obj.update('nickname', nickname)
-
+    dynamic_id = player.dynamic_id
     # 加入聊天
-    login_chat(player.base_info.id, player.guild.g_id, nickname)
+    login_chat(dynamic_id, player.base_info.id, player.guild.g_id, nickname)
 
     response.result = True
     return response.SerializeToString()
