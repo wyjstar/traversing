@@ -140,19 +140,19 @@ def pvp_fight_request(data, player):
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['units'])
     blue_units = record.get('units')
-    print "blue_units:", blue_units
+    # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
-    print "blue_units:", blue_units
+    # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
-    # todo check battle
+    # todo check battl
     # if check_battle(red_units, blue_units)
     #   pass
     if random.randint(0, 1) == 1:
         if before_player_rank != 0:
             pass
             # last_player_rank = record.get('id')
-        refresh_rank_data(player, request.challenge_rank)
+        # refresh_rank_data(player, request.challenge_rank)
     else:
         pass
 
@@ -177,7 +177,7 @@ def refresh_rank_data(player, character_id):
     slots = cPickle.dumps(line_up_info(player))
     hero_nos = player.line_up_component.hero_nos
     rank_data = dict(hero_ids=cPickle.dumps(hero_nos),
-                     level=player.level,
+                     level=player.level.level,
                      ap=player.line_up_component.combat_power,
                      units=red_units,
                      slots=slots)
@@ -185,4 +185,4 @@ def refresh_rank_data(player, character_id):
     prere = dict(character_id=character_id)
     result = util.UpdateWithDict(PVP_TABLE_NAME, rank_data, prere)
     if not result:
-        raise Exception('update pvp data fail!!')
+        raise Exception('update pvp data fail!! character_id:%s' % character_id)

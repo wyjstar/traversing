@@ -882,8 +882,7 @@ def get_apply_list(data, player):
     return response.SerializeToString()
 
 @have_player
-def be_change_president(is_online, **kwargs ):
-    player = kwargs.get('player')
+def be_change_president(is_online, player):
     player.guild.position = 1
     player.guild.save_data()
     return True
