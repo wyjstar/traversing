@@ -9,8 +9,9 @@ message Skill{
 message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
 	optional int32 quality = 2;  //战斗单位品质
-	optional Skill normal_skill = 3;  //战斗单位普通技能
-	optional Skill rage_skill = 4;  //战斗单位怒气技能
+	optional int32 normal_skill = 3;  //战斗单位普通技能
+	optional int32 rage_skill = 4;  //战斗单位怒气技能
+
 
 	optional float hp = 5; // 战斗单位血量
 	optional float atk = 6; //战斗单位攻击
@@ -38,7 +39,7 @@ message BattleUnit{
 	optional int32 break_level = 29;
 
 	optional bool is_boss = 15; //是否是boss
-	repeated Skill break_skill = 16; //突破技能
+	repeated int32 break_skills = 16; //突破技能
 	optional int32 position = 17; //位置
 }
 
@@ -65,6 +66,6 @@ message LineUp{
 
 message Unparalleled{
 	required int32 id = 1; //无双ID
-	repeated Skill unpar = 2; // 无双技能
+	repeated int32 unpar = 2; // 无双技能
 	optional bool activate = 3; //是否激活
 }

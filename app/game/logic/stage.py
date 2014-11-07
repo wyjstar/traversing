@@ -69,7 +69,7 @@ def get_chapter_info(dynamic_id, chapter_id, **kwargs):
 
 
 @have_player
-def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
+def fight_start(dynamic_id, stage_id, line_up, unpar, fid, **kwargs):
     """开始战斗
     """
     player = kwargs.get('player')
@@ -113,8 +113,11 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
             player.stage_component.update_stage_times()
             player.stage_component.update()
 
+    if not player.line_up_component.can_unpar(unpar):
+        return {'result': False, 'result_no': 811}  # 811 无双不可用
     # 保存阵容
     player.line_up_component.line_up_order = line_up
+    player.line_up_component.unpar = unpar
     player.line_up_component.save_data()
 
     fight_cache_component = player.fight_cache_component

@@ -173,13 +173,14 @@ class CharacterFightCacheComponent(Component):
         """取得怪物无双
         """
         stage_config = self.__get_stage_config()  # 关卡配置
-        unpara = stage_config.warriorsSkill  # 无双编号
-        if not unpara:
-            return []
-        triggle3 = game_configs.warriors_config.get(unpara).triggle3
-        skill_config = self.__get_skill_config(triggle3)
-        group = skill_config.group
-        return [unpara] + group
+        unpara = stage_config.get("warriorsSkill")  # 无双编号
+        return unpara
+        # if not unpara:
+        #     return []
+        # triggle3 = game_configs.warriors_config.get(unpara).triggle3
+        # skill_config = self.__get_skill_config(triggle3)
+        # group = skill_config.group
+        # return [unpara] + group
 
     def __get_break_stage_odds(self):
         """取得乱入概率

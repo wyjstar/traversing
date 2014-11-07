@@ -43,8 +43,8 @@ class BattleUnit(object):
         """
         self.no = no  # 战斗单位ID
         self.quality = 0  # 战斗单位品质
-        self.normal_skill = []  # 战斗单位普通技能
-        self.rage_skill = []  # 战斗单位怒气技能
+        self.normal_skill = 0  # 战斗单位普通技能
+        self.rage_skill = 0  # 战斗单位怒气技能
         self.break_skills = []  # 战斗单位突破技能
         self.hp = 0  # 战斗单位血量
         self.atk = 0  # 战斗单位攻击

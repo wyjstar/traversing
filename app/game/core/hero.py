@@ -135,9 +135,9 @@ class Hero(object):
         cri_ded_coeff = item_config.criDedCoeff  # 暴击减免系数
         block = item_config.block  # 格挡率
 
-        normal_skill = self.normal_skill
-        rage_skill = self.rage_skill
-        break_skills = self.break_skills
+        normal_skill = self.normal_skill_id
+        rage_skill = self.rage_skill_id
+        break_skills = self.break_skill_ids
 
         return CommonItem(
             dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
@@ -202,7 +202,7 @@ class Hero(object):
         """
         normal_skill_id = self.normal_skill_id
         normal_skill_config = game_configs.skill_config.get(normal_skill_id)
-        normal_group = normal_skill_config.group[:]  # 取得一个拷贝
+        normal_group = normal_skill_config.group
         return normal_group
 
     @property
@@ -211,7 +211,7 @@ class Hero(object):
         """
         rage_skill_id = self.rage_skill_id
         rage_skill_config = game_configs.skill_config.get(rage_skill_id)
-        rage_group = rage_skill_config.group[:]  # 取得一个拷贝
+        rage_group = rage_skill_config.group
         return rage_group
 
     @property

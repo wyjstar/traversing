@@ -66,7 +66,7 @@ def stage_start_903(dynamic_id, pro_data):
     request.ParseFromString(pro_data)
 
     stage_id = request.stage_id  # 关卡编号
-    unparalleled = request.unparalleled  # 无双编号
+    unpar = request.unparalleled  # 无双编号
     fid = request.fid  # 好友ID
 
     line_up = {}  # {hero_id:pos}
@@ -75,11 +75,10 @@ def stage_start_903(dynamic_id, pro_data):
             continue
         line_up[line.hero_id] = line.pos
 
-    stage_info = fight_start(dynamic_id, stage_id, line_up, unparalleled, fid)
+    stage_info = fight_start(dynamic_id, stage_id, line_up, unpar, fid)
     result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()
-
     res = response.res
     res.result = result
     if stage_info.get('result_no'):
@@ -111,18 +110,19 @@ def stage_start_903(dynamic_id, pro_data):
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
 
-    unpara = response.monster_unpara
     if monster_unpara:
-        unpara.id = monster_unpara[0]
-        buffs = unpara.buffs
-        for buff in monster_unpara[1:]:
-            buffs.append(buff)
+        response.monster_unpar = monster_unpara
+
+    response.hero_unpar = unpar
+
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
     if replace_unit:
         assemble(response.replace, replace_unit)
     # logger.debug('进入关卡返回数据:%s', response)
+
+    logger.debug("进入关卡,无双(%s),怪物无双(%s)" % (unpar, monster_unpara))
     return response.SerializePartialToString()
 
 
@@ -157,28 +157,11 @@ def assemble(unit_add, unit):
     unit_add.no = unit.no
     unit_add.quality = unit.quality
 
-    normal_skill = unit_add.normal_skill
-    if unit.normal_skill:
-        normal_skill.id = unit.normal_skill[0]
-        buffs = normal_skill.buffs
-        for buff in unit.normal_skill[1:]:
-            buffs.append(buff)
+    unit_add.normal_skill = unit.normal_skill
+    unit_add.rage_skill = unit.rage_skill
 
-    rage_skill = unit_add.rage_skill
-    if unit.rage_skill:
-        rage_skill.id = unit.rage_skill[0]
-        buffs = rage_skill.buffs
-        for buff in unit.rage_skill[1:]:
-            buffs.append(buff)
-
-    if unit.break_skills:
-        for break_skill in unit.break_skills:
-            if break_skill:
-                break_skill_add = unit_add.break_skill.add()
-                break_skill_add.id = break_skill[0]
-                buffs = break_skill_add.buffs
-                for buff in break_skill[1:]:
-                    buffs.append(buff)
+    for skill_no in unit.break_skills:
+        unit_add.break_skills.append(skill_no)
 
     unit_add.hp = unit.hp
     unit_add.atk = unit.atk
@@ -207,3 +190,5 @@ def assemble(unit_add, unit):
 
     unit_add.position = unit.position
     unit_add.is_boss = unit.is_boss
+    logger.debug("组装战斗单元：武将编号（%d）,普通技能（%d）, 怒气技能（%d）, 突破技能（%s）" %
+                 (unit.no, unit.normal_skill, unit.rage_skill, str(unit.break_skills)))
