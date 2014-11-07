@@ -35,6 +35,7 @@ from guild_config import GuildConfig
 from vip_config import VIPConfig
 from special_stage_config import SpecialStageConfig
 from arena_fight_config import ArenaFightConfig
+from hero_breakup_attr_config import HeroBreakupAttrConfig
 
 
 base_config = {}
@@ -69,6 +70,7 @@ rand_name_config = {}
 player_exp_config = {}
 arena_fight_config = {}
 arena_shop_config = {}
+hero_breakup_attr_config = {}
 
 
 all_config_name = {
@@ -103,7 +105,8 @@ all_config_name = {
     'robot_born_config': RobotBornConfig(),
     'player_exp_config': PlayerExpConfig(),
     'arena_fight_config': ArenaFightConfig(),
-    'arena_shop_config': ArenaShopConfig()
+    'arena_shop_config': ArenaShopConfig(),
+    'hero_breakup_attr_config': HeroBreakupAttrConfig()
 }
 
 

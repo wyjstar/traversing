@@ -9,7 +9,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.game_configs import hero_config
 from shared.db_opear.configs_data.game_configs import hero_exp_config
-from shared.db_opear.configs_data.game_configs import hero_breakup_config
+from shared.db_opear.configs_data.game_configs import hero_breakup_config, hero_breakup_attr_config
 from shared.db_opear.configs_data.game_configs import link_config
 from app.game.redis_mode import tb_character_hero
 
@@ -116,10 +116,14 @@ class Hero(object):
         hero_pb.break_level = self._break_level
         hero_pb.exp = self._exp
 
+    @property
+    def hero_info(self):
+        return hero_config.get(self._hero_no)
+
     def calculate_attr(self):
         """根据属性和等级计算卡牌属性
         """
-        item_config = hero_config.get(self._hero_no)
+        item_config = self.hero_info
 
         hero_no = self._hero_no  # 英雄编号
         quality = item_config.quality  # 英雄品质
@@ -173,6 +177,17 @@ class Hero(object):
                 skill_ids.append(skill_id)
 
         return skill_ids
+
+    @property
+    def break_param(self):
+        """突破系数*基础"""
+        breakup_attr_info = hero_breakup_attr_config.get(self._hero_no)
+        param = breakup_attr_info.get("parameters%d" % self._break_level)
+
+        if param:
+            return param
+        return 0
+
 
     @property
     def hero_links(self):

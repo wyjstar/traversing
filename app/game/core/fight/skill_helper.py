@@ -83,7 +83,7 @@ class SkillHelper(object):
                 hp_up += buff.value_effect
                 continue
             if buff.effect_id == 4 and buff.value_type == 2:
-                hp_up_rate += buff.value_effect
+                hp_up_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 5 and buff.value_type == 1:
@@ -91,7 +91,7 @@ class SkillHelper(object):
                 continue
 
             if buff.effect_id == 5 and buff.value_type == 2:
-                hp_down_rate += buff.value_effect
+                hp_down_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 6 and buff.value_type == 1:
@@ -99,7 +99,7 @@ class SkillHelper(object):
                 continue
 
             if buff.effect_id == 6 and buff.value_type == 2:
-                atk_up_rate += buff.value_effect
+                atk_up_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 7 and buff.value_type == 1:
@@ -107,7 +107,7 @@ class SkillHelper(object):
                 continue
 
             if buff.effect_id == 7 and buff.value_type == 2:
-                atk_down_rate += buff.value_effect
+                atk_down_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 10 and buff.value_type == 1:
@@ -115,7 +115,7 @@ class SkillHelper(object):
                 continue
 
             if buff.effect_id == 10 and buff.value_type == 2:
-                physical_def_up_rate += buff.value_effect
+                physical_def_up_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 11 and buff.value_effect == 1:
@@ -123,15 +123,15 @@ class SkillHelper(object):
                 continue
 
             if buff.effect_id == 11 and buff.value_type == 2:
-                physical_def_down_rate += buff.value_effect
+                physical_def_down_rate += buff.value_effect / 100
                 continue
 
-            if buff.effect_id == 12 and buff.value_effect == 1:
+            if buff.effect_id == 12 and buff.value_type == 1:
                 magic_def_up += buff.value_effect
                 continue
 
             if buff.effect_id == 12 and buff.value_type == 2:
-                magic_def_up_rate += buff.value_effect
+                magic_def_up_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 13 and buff.value_type == 1:
@@ -139,7 +139,7 @@ class SkillHelper(object):
                 continue
 
             if buff.effect_id == 13 and buff.value_type == 2:
-                magic_def_down_rate += buff.value_effect
+                magic_def_down_rate += buff.value_effect / 100
                 continue
 
             if buff.effect_id == 14:
@@ -173,17 +173,17 @@ class SkillHelper(object):
                 block_down += buff.value_effect
 
         return CommonItem(
-            dict(hp=hp_up+hp_down,
-                 hp_rate=hp_up_rate+hp_down_rate,
-                 atk=atk_up+atk_down,
-                 atk_rate=atk_up_rate+atk_down_rate,
-                 physical_def=physical_def_up+physical_def_down,
-                 physical_def_rate=physical_def_up_rate+physical_def_down_rate,
-                 magic_def=magic_def_up+magic_def_down,
-                 magic_def_rate=magic_def_up_rate+magic_def_down_rate,
-                 hit=hit_up+hit_down,
-                 dodge=dodge_up+dodge_down,
-                 cri=cri_up+cri_down,
+            dict(hp=hp_up + hp_down,
+                 hp_rate=hp_up_rate - hp_down_rate,
+                 atk=atk_up - atk_down,
+                 atk_rate=atk_up_rate - atk_down_rate,
+                 physical_def=physical_def_up - physical_def_down,
+                 physical_def_rate=physical_def_up_rate - physical_def_down_rate,
+                 magic_def=magic_def_up - magic_def_down,
+                 magic_def_rate=magic_def_up_rate - magic_def_down_rate,
+                 hit=hit_up - hit_down,
+                 dodge=dodge_up - dodge_down,
+                 cri=cri_up - cri_down,
                  cri_coeff=cri_coeff,
                  cri_ded_coeff=cri_ded_coeff,
-                 block=block_up+block_down))
+                 block=block_up - block_down))
