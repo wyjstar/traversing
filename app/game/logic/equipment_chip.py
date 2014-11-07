@@ -8,8 +8,7 @@ from app.game.logic.common.check import have_player
 
 
 @have_player
-def get_equipment_chips(dynamic_id, **kwargs):
-    player = kwargs.get('player')
+def get_equipment_chips(player):
     response = GetEquipmentChipsResponse()
     for equipment_chip in player.equipment_chip_component.get_all():
         equipment_chip_pb = response.equipment_chips.add()

@@ -18,7 +18,7 @@ from gfirefly.server.logobj import logger
 
 
 @have_player
-def add_friend_request(dynamic_id, data, **kwargs):
+def add_friend_request(data, player):
     """
     add inviter id to invitee's applicants list
     :param dynamic_id:
@@ -38,7 +38,6 @@ def add_friend_request(dynamic_id, data, **kwargs):
 
     target_id = request.target_ids[0]
 
-    player = kwargs.get('player')
     if target_id == player.base_info.id:
         response.result = False  # cant invite oneself as friend
         response.result_no = 4  # fail
@@ -63,14 +62,13 @@ def add_friend_request(dynamic_id, data, **kwargs):
 
 
 @have_player
-def add_friend_request_remote(dynamic_id, is_online, target_id, **kwargs):
-    player = kwargs.get('player')
+def add_friend_request_remote(is_online, target_id, player):
     result = player.friends.add_applicant(target_id)
     return result
 
 
 @have_player
-def become_friends(dynamic_id, data, **kwargs):
+def become_friends(data, player):
     """
     :param dynamic_id:
     :param inviter_id:
@@ -82,8 +80,6 @@ def become_friends(dynamic_id, data, **kwargs):
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-
-    player = kwargs.get('player')
 
     for target_id in request.target_ids:
         if not player.friends.add_friend(target_id):
@@ -111,14 +107,13 @@ def become_friends(dynamic_id, data, **kwargs):
 
 
 @have_player
-def become_friends_remote(dynamic_id, is_online, target_id, **kwargs):
-    player = kwargs.get('player')
+def become_friends_remote(is_online, target_id, player):
     result = player.friends.add_friend(target_id, False)
     return result
 
 
 @have_player
-def refuse_invitation(dynamic_id, data, **kwargs):
+def refuse_invitation(data, player):
     """
 
     :param dynamic_id:
@@ -132,7 +127,6 @@ def refuse_invitation(dynamic_id, data, **kwargs):
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
-    player = kwargs.get('player')
 
     for target_id in request.target_ids:
         if not player.friends.del_applicant(target_id):
@@ -145,7 +139,7 @@ def refuse_invitation(dynamic_id, data, **kwargs):
 
 
 @have_player
-def del_friend(dynamic_id, data, **kwargs):
+def del_friend(data, player):
     """
 
     :param dynamic_id:
@@ -159,8 +153,6 @@ def del_friend(dynamic_id, data, **kwargs):
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
-    player = kwargs.get('player')
-
     for target_id in request.target_ids:
         if not player.friends.del_friend(target_id):
             response.result = False
@@ -168,27 +160,21 @@ def del_friend(dynamic_id, data, **kwargs):
         # save data
         player.friends.save_data()
 
-        friend_player = PlayersManager().get_player_by_id(target_id)
-        if friend_player:
-            if not friend_player.friends.del_friend(player.base_info.id):
-                response.result = False
-        else:
-            if not push_message(1052, target_id, player.base_info.id):
-                response.result = False
+        response.result = push_message(1052, target_id, player.base_info.id)
         response.result_no += 1
 
     return response.SerializePartialToString()
 
 
 @have_player
-def del_friend_remote(dynamic_id, is_online, target_id, **kwargs):
-    player = kwargs.get('player')
-    result = player.friends.del_friend(target_id, False)
+def del_friend_remote(is_online, target_id, player):
+    result = player.friends.del_friend(target_id)
+    player.friends.save_data()
     return result
 
 
 @have_player
-def add_player_to_blacklist(dynamic_id, data, **kwargs):
+def add_player_to_blacklist(data, player):
     """
 
     :param dynamic_id:
@@ -200,8 +186,6 @@ def add_player_to_blacklist(dynamic_id, data, **kwargs):
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-
-    player = kwargs.get('player')
 
     for target_id in request.target_ids:
         if not player.friends.add_blacklist(target_id):
@@ -214,7 +198,7 @@ def add_player_to_blacklist(dynamic_id, data, **kwargs):
 
 
 @have_player
-def del_player_from_blacklist(dynamic_id, data, **kwargs):
+def del_player_from_blacklist(data, player):
     """
 
     :param dynamic_id:
@@ -227,8 +211,6 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
-    player = kwargs.get('player')
-
     for target_id in request.target_ids:
         if not player.friends.del_blacklist(target_id):
             response.result = False
@@ -240,10 +222,9 @@ def del_player_from_blacklist(dynamic_id, data, **kwargs):
 
 
 @have_player
-def get_player_friend_list(dynamic_id, **kwargs):
+def get_player_friend_list(player):
 
     response = friend_pb2.GetPlayerFriendsResponse()
-    player = kwargs.get('player')
 
     for pid in player.friends.friends:
         player_data = tb_character_info.getObjData(pid)
@@ -313,7 +294,7 @@ def get_player_friend_list(dynamic_id, **kwargs):
 
 
 @have_player
-def find_friend_request(dynamic_id, data, **kwargs):
+def find_friend_request(data, **kwargs):
     """
 
     :param dynamic_id:
@@ -346,14 +327,12 @@ def find_friend_request(dynamic_id, data, **kwargs):
 
 
 @have_player
-def given_stamina(dynamic_id, data, **kwargs):
+def given_stamina(data, player):
     response = CommonResponse()
     response.result = True
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-
-    player = kwargs.get('player')
 
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)

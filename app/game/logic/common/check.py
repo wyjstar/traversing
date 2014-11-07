@@ -12,7 +12,7 @@ def have_player(func):
         player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
         if not player or not player.check_dynamic_id:
             return {'result': False, 'result_no': 1, 'message': u''}
-        ret = func(dynamic_id, *args, player=player)
+        ret = func(*args, player=player)
         return ret
     return wrapper
 

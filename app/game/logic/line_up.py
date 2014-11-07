@@ -14,14 +14,13 @@ from gfirefly.server.logobj import logger
 
 
 @have_player
-def get_line_up_info(dynamic_id, **kwargs):
-    player = kwargs.get('player')
+def get_line_up_info(player):
     response = line_up_info(player)
     return response.SerializePartialToString()
 
 
 @have_player
-def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
+def change_hero(slot_no, hero_no, change_type, player):
     """
     @param dynamic_id:
     @param slot_no:
@@ -31,8 +30,6 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
     """
     logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d", slot_no, hero_no, change_type)
 
-
-    player = kwargs.get('player')
     # 校验该武将是否已经上阵
     response = line_up_pb2.LineUpResponse()
     if hero_no in player.line_up_component.hero_nos:
@@ -55,7 +52,7 @@ def change_hero(dynamic_id, slot_no, hero_no, change_type, **kwargs):
 
 
 @have_player
-def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
+def change_equipment(slot_no, no, equipment_id, player):
     """
     @param dynamic_id: 动态ID
     @param slot_no: 阵容位置
@@ -64,7 +61,6 @@ def change_equipment(dynamic_id, slot_no, no, equipment_id, **kwargs):
     @return:
     """
     logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
-    player = kwargs.get('player')
     response = line_up_pb2.LineUpResponse()
 
     # 检验装备是否存在
@@ -167,16 +163,17 @@ def assembly_sub_slots(player, response):
 
 
 @have_player
-def get_target_line_up_info(dynamic_id, target_id, **kwargs):
+def get_target_line_up_info(target_id, player):
 
     invitee_player = PlayersManager().get_player_by_id(target_id)
     if invitee_player:  # 在线
         response = line_up_info(invitee_player)
     else:
-        response = line_up_pb2.LineUpResponse()
+        response = line_up_pb2.GetLineUpRequest()
 
         heros_obj = {}
         heros = tb_character_hero.getObjListByFk(target_id)
+        hero_ids = tb_character_hero.getAllPkByFk(target_id)
 
         for hero_mmode in heros:
             data = hero_mmode.get('data')
@@ -279,4 +276,3 @@ def get_target_line_up_info(dynamic_id, target_id, **kwargs):
                     hero.break_level = hero_obj.break_level
 
     return response.SerializePartialToString()
-
