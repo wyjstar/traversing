@@ -2,12 +2,15 @@
 """
 created by sphinx.
 """
+from gevent import monkey
+monkey.patch_all()
 import cPickle
 import copy
 import random
 import json
 from gfirefly.dbentrust import util
 from gfirefly.dbentrust.dbpool import dbpool
+from gfirefly.dbentrust.dbpool import get_connection
 from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import log_init_only_out
@@ -119,6 +122,43 @@ if __name__ == '__main__':
         u = cPickle.loads(u)
         print r.get('nickname'), r.get('level'), r.get('id'), r.get('units')
 
+
+def dbpool_get():
+    result = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<10',
+                                    ['id', 'nickname', 'level', 'units'])
+    print len(result)
+
+
+@get_connection
+def nopool_get(conn):
+    # hostname = "192.168.10.27"
+    # user = "test"
+    # password = "test"
+    # port = 8066
+    # dbname = "db_traversing"
+    # charset = "utf8"
+    # import pymysql
+    from pymysql.cursors import DictCursor
+    # con = pymysql.Connect(host=hostname, user=user,
+    #                       passwd=password, port=port,
+    #                       db=dbname, charset=charset)
+    # result = conn.query('select * from %s where id<10' % PVP_TABLE_NAME)
+    # print result
+    cursor = conn.cursor(cursor=DictCursor)
+    cursor.execute('select * from %s where id<10' % PVP_TABLE_NAME)
+    result = cursor.fetchall()
+    print len(result)
+    cursor.close()
+    # con.close()
+
+
+def test_db():
+    print 'begin get db'
+    for i in range(10):
+        dbpool_get()
+    print 'end get db'
+
+
 if __name__ == '':
     log_init_only_out()
 
@@ -135,7 +175,10 @@ if __name__ == '':
                                      'id=10',
                                      ['id', 'nickname', 'level', 'units'])
     for r in records:
-        u = r.get('units')
-        print 'before:', u
-        u = cPickle.loads(u)
-        print r.get('nickname'), r.get('level'), r.get('id'), r.get('units')
+        # u = cPickle.loads(u)
+        print r.get('nickname'), r.get('level'), r.get('id')  # r.get('units')
+
+    import gevent
+    thread1 = gevent.spawn(test_db)
+    thread2 = gevent.spawn(test_db)
+    gevent.joinall([thread1, thread2])

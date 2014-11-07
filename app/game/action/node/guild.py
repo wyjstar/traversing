@@ -95,3 +95,10 @@ def get_apply_list_813(dynamic_id, pro_data):
     """获取申请列表
     """
     return get_apply_list(dynamic_id, pro_data)
+
+
+@remoteserviceHandle('gate')
+def be_change_president_1801(dynamic_id, is_online):
+    """获取申请列表
+    """
+    return be_change_president(dynamic_id, is_online)

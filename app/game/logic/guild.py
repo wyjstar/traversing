@@ -17,10 +17,11 @@ from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.root.netforwarding import login_guild_chat, logout_guild_chat
 from shared.utils import trie_tree
+from app.game.action.root.netforwarding import push_message
 
 
 @have_player
-def create_guild(dynamicid, data, player):
+def create_guild(data, player):
     """
     创建公会
     """
@@ -97,14 +98,14 @@ def create_guild(dynamicid, data, player):
     player.finance.save_data()
 
     # 加入公会聊天
-    login_guild_chat(dynamicid, player.guild.g_id)
+    login_guild_chat(player.guild.g_id)
 
     response.result = True
     return response.SerializeToString()
 
 
 @have_player
-def join_guild(dynamicid, data, player):
+def join_guild(data, player):
     """
     加入公会
     """
@@ -151,11 +152,12 @@ def join_guild(dynamicid, data, player):
 
 
 @have_player
-def exit_guild(dynamicid, data, player):
+def exit_guild(data, player):
     """
     退出公会
     """
     p_id = player.base_info.id
+    dynamicid = player.dynamic_id
     response = GuildCommonResponse()
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(m_g_id)
@@ -239,6 +241,11 @@ def exit_guild(dynamicid, data, player):
                 p_guild_data = tb_character_guild.getObj(tihuan_id)
                 p_guild_data.update_multi(data)
 
+            # if not push_message(1801, tihuan_id):
+            #     response.result = False
+            #     response.message = '系统错误'
+            #     return response.SerializePartialToString()  # fail
+
             p_list1 = p_list.get(tihuan_position)
             p_list1.remove(tihuan_id)
 
@@ -271,7 +278,7 @@ def exit_guild(dynamicid, data, player):
 
 
 @have_player
-def editor_call(dynamicid, data, player):
+def editor_call(data, player):
     """
     编辑公告
     """
@@ -316,7 +323,7 @@ def editor_call(dynamicid, data, player):
 
 
 @have_player
-def deal_apply(dynamicid, data, player):
+def deal_apply(data, player):
     """
     处理加会申请
     """
@@ -375,7 +382,6 @@ def deal_apply(dynamicid, data, player):
                              'exit_time': 1}}
                 p_guild_data = tb_character_guild.getObj(p_id)
                 p_guild_data.update_multi(data)
-
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(5):
@@ -402,10 +408,11 @@ def deal_apply(dynamicid, data, player):
 
 
 @have_player
-def change_president(dynamicid, data, player):
+def change_president(data, player):
     """
     转让会长
     """
+    dynamicid = player.dynamic_id
     p_id = player.base_info.id
     args = ChangePresidentRequest()
     args.ParseFromString(data)
@@ -431,7 +438,6 @@ def change_president(dynamicid, data, player):
             p_list.update({num: p_list1, 5: p_list5, 1: [p_p_id]})
             guild_obj.p_list = p_list
             guild_obj.save_data()
-            # 判断玩家再不在线，在线直接通知，不在线的话发邮件。通知其他玩家
 
             character_guild = tb_character_guild.getObjData(p_p_id)
             info = character_guild.get("info")
@@ -473,7 +479,7 @@ def change_president(dynamicid, data, player):
 
 
 @have_player
-def kick(dynamicid, data, player):
+def kick(data, player):
     """
     踢出公会
     """
@@ -531,7 +537,7 @@ def kick(dynamicid, data, player):
 
 
 @have_player
-def promotion(dynamicid, data, player):
+def promotion(data, player):
     """
     晋升
     """
@@ -584,7 +590,6 @@ def promotion(dynamicid, data, player):
                 return response.SerializeToString()
 
             tihuan_id = new_list[-1][0]
-            # TODO 判断目标玩家再不在线，然后通知调换，修改数据，广播给公会其他人
             character_guild = tb_character_guild.getObjData(tihuan_id)
             info = character_guild.get("info")
             if info.get("g_id") != player.guild.g_id:
@@ -640,7 +645,7 @@ def promotion(dynamicid, data, player):
 
 
 @have_player
-def worship(dynamicid, data, player):
+def worship(data, player):
     """
     膜拜
     """
@@ -715,7 +720,7 @@ def worship(dynamicid, data, player):
 
 
 @have_player
-def get_guild_rank(dynamicid, data, player):
+def get_guild_rank(data, player):
     """
     获取公会排行列表
     """
@@ -742,11 +747,11 @@ def get_guild_rank(dynamicid, data, player):
                 if player_data.get('nickname'):
                     guild_rank.president = player_data.get('nickname')
                 else:
-                    logger.info('guild rank ,president name is null')
+                    logger.info('guild rank ,president name is null,id:%s', president_id)
                     guild_rank.president = u'无名'
             else:
                 guild_rank.president = u'错误'
-                logger.error('guild rank, president player not fond')
+                logger.error('guild rank, president player not fond,id:%s', president_id)
 
             guild_rank.p_num = guild_obj.p_num
             guild_rank.record = guild_obj.record
@@ -756,11 +761,11 @@ def get_guild_rank(dynamicid, data, player):
 
 
 @have_player
-def get_role_list(dynamicid, data, player):
+def get_role_list(data, player):
     """
     获取公会玩家列表
     """
-    player = kwargs.get('player')
+    response = GuildRoleListProto()
     m_g_id = player.guild.g_id
     if m_g_id == 0:
         response.result = False
@@ -802,7 +807,7 @@ def get_role_list(dynamicid, data, player):
 
 
 @have_player
-def get_guild_info(dynamicid, data, player):
+def get_guild_info(data, player):
     """
     获取公会信息
     """
@@ -837,7 +842,7 @@ def get_guild_info(dynamicid, data, player):
 
 
 @have_player
-def get_apply_list(dynamicid, data, player):
+def get_apply_list(data, player):
     """
     获取申请列表
     """
@@ -875,3 +880,9 @@ def get_apply_list(dynamicid, data, player):
 
     response.result = True
     return response.SerializeToString()
+
+@have_player
+def be_change_president(is_online, player):
+    player.guild.position = 1
+    player.guild.save_data()
+    return True

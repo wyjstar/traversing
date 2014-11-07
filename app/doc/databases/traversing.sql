@@ -107,6 +107,7 @@ CREATE TABLE `tb_character_info` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `pvp_count` bigint(20) NOT NULL DEFAULT '0',
   `pvp_score` bigint(20) NOT NULL DEFAULT '0',
+  `arena_shop` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -157,6 +158,8 @@ CREATE TABLE `tb_character_stages` (
   `award_info` mediumblob,
   `elite_stage` mediumblob,
   `act_stage` mediumblob,
+  `sweep_times` mediumblob NOT NULL,
+  `stage_up_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -221,8 +224,9 @@ CREATE TABLE `tb_pvp_rank` (
   `ap` int(11) NOT NULL,
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
+  `hero_ids` tinyblob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- Dump completed on 2014-10-28 21:34:11
+-- Dump completed on 2014-11-06 21:29:40
