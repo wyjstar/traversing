@@ -249,16 +249,17 @@ def create_table(table,  objName, cur):
 
         if field_name == '#' or not field_name:
             continue
-        create_table_info += "`%s` %s," % (field_name, get_type_in_sql(field_type))
+        field_type = get_type_in_sql(field_type)
+        if cols == 0:
+            field_type += " primary key"
+        create_table_info += "`%s` %s," % (field_name, field_type)
 
     create_table_sql = "create table %s (%s)" % (objName, create_table_info[:-1])
     cur.execute("drop table if exists %s" % objName)
-    #print create_table_sql
+    print create_table_sql
     cur.execute(create_table_sql)
 
-    add_primary_key = "alter table %s add primary key (%s)" % (objName, table.cell_type(1, 0))
-    print "add_primary_key:", add_primary_key
-    # cur.execute(add_primary_key)
+
 
 def create_table_prop(table, begin_cols, objName, cur):
     create_table_info = ""
@@ -277,9 +278,6 @@ def create_table_prop(table, begin_cols, objName, cur):
     print create_table_sql
     cur.execute(create_table_sql)
 
-    add_primary_key = "alter table %s add primary key (%s)" % (objName, table.cell_type(1, 0))
-    print "add_primary_key:", add_primary_key
-    cur.execute(add_primary_key)
 
 
 
