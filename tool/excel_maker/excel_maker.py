@@ -96,7 +96,7 @@ def ExcelToJson(ExcelFileName, SheetName, cur=None):
     if SheetName not in PROP_TABLE:
         table2jsn(table, jsonFileName, luaFileName, SheetName, cur)
     else:
-        table2jsn_prop(table, jsonFileName, luaFileName, SheetName)
+        table2jsn_prop(table, jsonFileName, luaFileName, SheetName, cur)
 
 
 def FloatToString(aFloat):
@@ -144,15 +144,13 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
     ncols = table.ncols
 
     if cur:
-        create_table_sql = "create table %s (id integer primary key, content text)" % objName
-        cur.execute("drop table if exists %s" % objName)
-        cur.execute(create_table_sql)
+        create_table(table, objName, cur)
 
     obj_list = []
     for rownum in range(nrows):
         if rownum == 0 or rownum == 1 or rownum == 2:
             continue
-
+        insert_content = ""
         print 'row:', rownum,
         obj = OrderedDict()
         for c in range(ncols):
@@ -163,17 +161,15 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
             if prop_name == '#' or not prop_name:
                 continue
 
-            obj[prop_name] = format_by_type(table.cell_value(2, c), table.cell_value(rownum, c))
+            prop_value = format_by_type(table.cell_value(2, c), table.cell_value(rownum, c))
+            obj[prop_name] = prop_value
+            insert_content += "'%s'," % prop_value
 
         obj_list.append(obj)
 
         print ''
-        insert_data_sql = ""
-        if objName == "hero_exp" or objName == "equipment_strengthen_config" or objName == "guild_config" \
-                or objName == "hero_exp_config" or objName == "player_exp_config":
-            insert_data_sql = "insert into %s values(%d, '%s');" % (objName, obj.get('level'), json.dumps(obj))
-        else:
-            insert_data_sql = "insert into %s values(%d, '%s');" % (objName, obj.get('id'), json.dumps(obj))
+        insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
+
 
         print "insert_data_sql:", insert_data_sql
         if cur:
@@ -194,9 +190,10 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
     return
 
 
-def table2jsn_prop(table, jsonFileName, luaFileName, objName):
+def table2jsn_prop(table, jsonFileName, luaFileName, objName, cur=None):
     """属性表格式，每行一个属性"""
     nrows = table.nrows
+
 
     obj = {}
     begin_cols = 0
@@ -205,6 +202,10 @@ def table2jsn_prop(table, jsonFileName, luaFileName, objName):
             begin_cols += 1
         else:
             break
+    if cur:
+        create_table_prop(table, begin_cols, objName, cur)
+
+    insert_content = ""
     for rownum in range(nrows):
         if rownum == 0 or rownum == 1 or rownum == 2:
             continue
@@ -212,8 +213,23 @@ def table2jsn_prop(table, jsonFileName, luaFileName, objName):
         prop_name = table.cell_value(rownum, 0 + begin_cols).encode("utf-8")
         prop_name = prop_name.strip()
 
-        obj[prop_name] = format_by_type(table.cell_value(rownum, 1 + begin_cols),
+        prop_value = format_by_type(table.cell_value(rownum, 1 + begin_cols),
                                         table.cell_value(rownum, 2 + begin_cols))
+        obj[prop_name] = prop_value
+        prop_value = str(prop_value).replace("'", "''")
+        insert_content += "'%s'," % prop_value
+
+    print ''
+    #insert_content = insert_content.replace("'", "''")
+    insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
+
+
+    print "insert_data_sql:", insert_data_sql
+    if cur:
+        try:
+            cur.execute(insert_data_sql)
+        except Exception, e:
+            raise e
     save_to_file(json.dumps(obj, ensure_ascii=False), luaFileName, objName, PROP_TABLE)
     # save_to_file("[{'id':1}]", path)
     with open(jsonFileName, mode='wb') as f:
@@ -222,6 +238,71 @@ def table2jsn_prop(table, jsonFileName, luaFileName, objName):
     # print "Create ", path, " OK"
     return
 
+def create_table(table,  objName, cur):
+    ncols = table.ncols
+
+    create_table_info = ""
+    for cols in range(ncols):
+        field_name = table.cell_value(1, cols).encode("utf-8")
+        field_name = field_name.strip()
+        field_type = table.cell_value(2, cols)
+
+        if field_name == '#' or not field_name:
+            continue
+        create_table_info += "`%s` %s," % (field_name, get_type_in_sql(field_type))
+
+    create_table_sql = "create table %s (%s)" % (objName, create_table_info[:-1])
+    cur.execute("drop table if exists %s" % objName)
+    #print create_table_sql
+    cur.execute(create_table_sql)
+
+    add_primary_key = "alter table %s add primary key (%s)" % (objName, table.cell_type(1, 0))
+    print "add_primary_key:", add_primary_key
+    # cur.execute(add_primary_key)
+
+def create_table_prop(table, begin_cols, objName, cur):
+    create_table_info = ""
+    for rownum in range(table.nrows):
+        if rownum == 0 or rownum == 1 or rownum == 2:
+            continue
+        prop_name = table.cell_value(rownum, 0 + begin_cols).encode("utf-8")
+        prop_name = prop_name.strip()
+
+        prop_type = table.cell_value(rownum, 1 + begin_cols)
+
+        create_table_info += "`%s` %s," % (prop_name, get_type_in_sql(prop_type))
+
+    create_table_sql = "create table %s (%s)" % (objName, create_table_info[:-1])
+    cur.execute("drop table if exists %s" % objName)
+    print create_table_sql
+    cur.execute(create_table_sql)
+
+    add_primary_key = "alter table %s add primary key (%s)" % (objName, table.cell_type(1, 0))
+    print "add_primary_key:", add_primary_key
+    cur.execute(add_primary_key)
+
+
+
+def get_type_in_sql(input_type):
+    input_type = input_type.lower()
+    if input_type == 'int':
+        return "integer"
+
+    if input_type == 'float':
+        return "real"
+
+    if input_type == 'dict':
+        return "text"
+
+    if input_type == 'list':
+        return "text"
+
+    if input_type == 'str':
+        return "text"
+
+    if input_type == 'eval':
+        return "text"
+    return "text"
 
 def save_update_sql(root_path, config_key, config_value):
     with open('%s%s.sql' % (root_path, 'update_' + config_key), 'w') as f:
@@ -252,7 +333,7 @@ if __name__ == "__main__":
         file_with_out_extension = os.path.splitext(file_name)[0]
         print file_path, file_with_out_extension
         try:
-            ExcelToJson(file_path, file_with_out_extension)
+            #ExcelToJson(file_path, file_with_out_extension)
             ExcelToJson(file_path, file_with_out_extension, cur)
         except Exception, e:
             print 'table format error! table name:', file_name
