@@ -9,8 +9,8 @@ message Skill{
 message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
 	optional int32 quality = 2;  //战斗单位品质
-	optional int32 normal_skill = 3;  //战斗单位普通技能
-	optional int32 rage_skill = 4;  //战斗单位怒气技能
+	repeated int32 normal_skill = 3;  //战斗单位普通技能
+	repeated int32 rage_skill = 4;  //战斗单位怒气技能
 
 
 	optional float hp = 5; // 战斗单位血量

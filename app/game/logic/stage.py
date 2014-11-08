@@ -65,11 +65,7 @@ def get_chapter_info(chapter_id, player):
 
 
 @have_player
-<<<<<<< HEAD
-def fight_start(dynamic_id, stage_id, line_up, unpar, fid, **kwargs):
-=======
 def fight_start(stage_id, line_up, unparalleled, fid, player):
->>>>>>> 2fe155e4647a2c078c9dc2b9f5b709a86e715156
     """开始战斗
     """
     result_no = 0
@@ -106,10 +102,10 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             player.stage_component.update_stage_times()
             player.stage_component.update()
 
-<<<<<<< HEAD
-    if not player.line_up_component.can_unpar(unpar):
+    logger.debug("unpara:%d" % unparalleled)
+    if unparalleled and player.line_up_component.can_unpar(unparalleled):
         return {'result': False, 'result_no': 811}  # 811 无双不可用
-=======
+
     if conf:
         # 星期限制
         if conf.weeklyControl:
@@ -122,10 +118,10 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         if not open_time <= time.time() <= close_time:
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
->>>>>>> 2fe155e4647a2c078c9dc2b9f5b709a86e715156
+
     # 保存阵容
     player.line_up_component.line_up_order = line_up
-    player.line_up_component.unpar = unpar
+    player.line_up_component.unpar = unparalleled
     player.line_up_component.save_data()
 
     fight_cache_component = player.fight_cache_component

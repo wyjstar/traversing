@@ -22,6 +22,7 @@ def get_heros(player):
     for hero in player.hero_component.get_heros():
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
+    logger.debug("heros%s" % player.hero_component.get_heros())
     return response.SerializePartialToString()
 
 

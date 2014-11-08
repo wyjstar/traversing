@@ -15,7 +15,7 @@ import player_response_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage.proto',
   package='',
-  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\xc1\x04\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x1c\n\x0cnormal_skill\x18\x03 \x01(\x0b\x32\x06.Skill\x12\x1a\n\nrage_skill\x18\x04 \x01(\x0b\x32\x06.Skill\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_def\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\x12\x0f\n\x07\x62\x61se_hp\x18\x12 \x01(\x02\x12\x10\n\x08\x62\x61se_atk\x18\x13 \x01(\x02\x12\x19\n\x11\x62\x61se_physical_def\x18\x14 \x01(\x02\x12\x16\n\x0e\x62\x61se_magic_def\x18\x15 \x01(\x02\x12\x10\n\x08\x62\x61se_hit\x18\x16 \x01(\x02\x12\x12\n\nbase_dodge\x18\x17 \x01(\x02\x12\x10\n\x08\x62\x61se_cri\x18\x18 \x01(\x02\x12\x16\n\x0e\x62\x61se_cri_coeff\x18\x19 \x01(\x02\x12\x1a\n\x12\x62\x61se_cri_ded_coeff\x18\x1a \x01(\x02\x12\x12\n\nbase_block\x18\x1b \x01(\x02\x12\r\n\x05level\x18\x1c \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x1d \x01(\x05\x12\x0f\n\x07is_boss\x18\x0f \x01(\x08\x12\x1b\n\x0b\x62reak_skill\x18\x10 \x03(\x0b\x32\x06.Skill\x12\x10\n\x08position\x18\x11 \x01(\x05\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"&\n\x06LineUp\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0f\n\x07hero_id\x18\x02 \x01(\x05\"C\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x15\n\x05unpar\x18\x02 \x03(\x0b\x32\x06.Skill\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08')
+  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\xaa\x04\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x14\n\x0cnormal_skill\x18\x03 \x03(\x05\x12\x12\n\nrage_skill\x18\x04 \x03(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_def\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\x12\x0f\n\x07\x62\x61se_hp\x18\x12 \x01(\x02\x12\x10\n\x08\x62\x61se_atk\x18\x13 \x01(\x02\x12\x19\n\x11\x62\x61se_physical_def\x18\x14 \x01(\x02\x12\x16\n\x0e\x62\x61se_magic_def\x18\x15 \x01(\x02\x12\x10\n\x08\x62\x61se_hit\x18\x16 \x01(\x02\x12\x12\n\nbase_dodge\x18\x17 \x01(\x02\x12\x10\n\x08\x62\x61se_cri\x18\x18 \x01(\x02\x12\x16\n\x0e\x62\x61se_cri_coeff\x18\x19 \x01(\x02\x12\x1a\n\x12\x62\x61se_cri_ded_coeff\x18\x1a \x01(\x02\x12\x12\n\nbase_block\x18\x1b \x01(\x02\x12\r\n\x05level\x18\x1c \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x1d \x01(\x05\x12\x0f\n\x07is_boss\x18\x0f \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x10 \x03(\x05\x12\x10\n\x08position\x18\x11 \x01(\x05\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"&\n\x06LineUp\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0f\n\x07hero_id\x18\x02 \x01(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08')
 
 
 
@@ -78,15 +78,15 @@ _BATTLEUNIT = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='normal_skill', full_name='BattleUnit.normal_skill', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=3, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='rage_skill', full_name='BattleUnit.rage_skill', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=4, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -252,8 +252,8 @@ _BATTLEUNIT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='break_skill', full_name='BattleUnit.break_skill', index=27,
-      number=16, type=11, cpp_type=10, label=3,
+      name='break_skills', full_name='BattleUnit.break_skills', index=27,
+      number=16, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -275,7 +275,7 @@ _BATTLEUNIT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=89,
-  serialized_end=666,
+  serialized_end=643,
 )
 
 
@@ -302,8 +302,8 @@ _BATTLEUNITGROP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=668,
-  serialized_end=712,
+  serialized_start=645,
+  serialized_end=689,
 )
 
 
@@ -344,8 +344,8 @@ _STAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=714,
-  serialized_end=771,
+  serialized_start=691,
+  serialized_end=748,
 )
 
 
@@ -386,8 +386,8 @@ _STAGEAWARD = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=773,
-  serialized_end=841,
+  serialized_start=750,
+  serialized_end=818,
 )
 
 
@@ -421,8 +421,8 @@ _LINEUP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=843,
-  serialized_end=881,
+  serialized_start=820,
+  serialized_end=858,
 )
 
 
@@ -442,7 +442,7 @@ _UNPARALLELED = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='unpar', full_name='Unparalleled.unpar', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      number=2, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -463,15 +463,11 @@ _UNPARALLELED = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=883,
-  serialized_end=950,
+  serialized_start=860,
+  serialized_end=919,
 )
 
-_BATTLEUNIT.fields_by_name['normal_skill'].message_type = _SKILL
-_BATTLEUNIT.fields_by_name['rage_skill'].message_type = _SKILL
-_BATTLEUNIT.fields_by_name['break_skill'].message_type = _SKILL
 _BATTLEUNITGROP.fields_by_name['group'].message_type = _BATTLEUNIT
-_UNPARALLELED.fields_by_name['unpar'].message_type = _SKILL
 DESCRIPTOR.message_types_by_name['Skill'] = _SKILL
 DESCRIPTOR.message_types_by_name['BattleUnit'] = _BATTLEUNIT
 DESCRIPTOR.message_types_by_name['BattleUnitGrop'] = _BATTLEUNITGROP

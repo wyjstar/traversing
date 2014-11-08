@@ -139,17 +139,13 @@ class CharacterFightCacheComponent(Component):
                 monster_config = self.__get_monster_config(monster_id)
                 monster_normal_config = game_configs.skill_config.get(monster_config.normalSkill)
                 monster_rage_config = game_configs.skill_config.get(monster_config.rageSkill)
-                # 取得怪物普通技能
-                normal_skill = [monster_config.normalSkill]
-                normal_skill.extend(monster_normal_config.group)
-                # 取得怪物怒气技能
-                rage_skill = [monster_config.rageSkill]
-                rage_skill.extend(monster_rage_config.group)
+
 
                 level = 1
                 break_level = 1
 
-                battle_unit = do_assemble(monster_config.id, monster_config.quality, normal_skill, rage_skill, None,
+                battle_unit = do_assemble(monster_config.id, monster_config.quality, monster_normal_config.group,
+                                          monster_rage_config.group, [],
                                           monster_config.hp, monster_config.atk, monster_config.physicalDef,
                                           monster_config.magicDef, monster_config.hit, monster_config.dodge,
                                           monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,

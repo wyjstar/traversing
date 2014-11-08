@@ -139,8 +139,8 @@ class Hero(object):
         cri_ded_coeff = item_config.criDedCoeff  # 暴击减免系数
         block = item_config.block  # 格挡率
 
-        normal_skill = self.normal_skill_id
-        rage_skill = self.rage_skill_id
+        normal_skill = self.group_by_normal
+        rage_skill = self.group_by_rage
         break_skills = self.break_skill_ids
 
         return CommonItem(
