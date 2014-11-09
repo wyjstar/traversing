@@ -44,6 +44,7 @@ class DBPool(object):
         return con
 
     def recollect_connection(self, connection):
+        connection.commit()
         self.idle_connections.append(connection)
 
 
