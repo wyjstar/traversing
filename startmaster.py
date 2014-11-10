@@ -7,7 +7,9 @@ from gevent import monkey
 monkey.patch_os()
 
 CONFIG_FILE = 'config.json'
-DEFAULT_JSON = dict(server_name='local', login_ip='127.0.0.1', front_ip='127.0.0.1')
+DEFAULT_JSON = dict(server_name='local',
+                    login_ip='127.0.0.1',
+                    front_ip='127.0.0.1')
 
 
 if __name__ == "__main__":

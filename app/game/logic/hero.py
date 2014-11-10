@@ -17,8 +17,7 @@ from app.game.core.pack.item import Item
 
 
 @have_player
-def get_heros(dynamic_id, **kwargs):
-    player = kwargs.get('player')
+def get_heros(player):
     response = GetHerosResponse()
     for hero in player.hero_component.get_heros():
         hero_pb = response.heros.add()
@@ -27,9 +26,7 @@ def get_heros(dynamic_id, **kwargs):
 
 
 @have_player
-def hero_upgrade_with_item(dynamicid, data, **kwargs):
-    player = kwargs.get('player')
-
+def hero_upgrade_with_item(data, player):
     args = HeroUpgradeWithItemRequest()
     args.ParseFromString(data)
     response = HeroUpgradeResponse()
@@ -58,8 +55,7 @@ def hero_upgrade_with_item(dynamicid, data, **kwargs):
 
 
 @have_player
-def hero_break(dynamicid, data, **kwargs):
-    player = kwargs.get('player')
+def hero_break(data, player):
     args = HeroBreakRequest()
     args.ParseFromString(data)
     hero_no = args.hero_no
@@ -93,8 +89,7 @@ def hero_break(dynamicid, data, **kwargs):
 
 
 @have_player
-def hero_sacrifice(dynamicid, data, **kwargs):
-    player = kwargs.get('player')
+def hero_sacrifice(data, player):
     args = HeroSacrificeRequest()
     args.ParseFromString(data)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
@@ -133,7 +128,7 @@ def hero_sacrifice_oper(heros, player):
     try:
         keys = sorted([int(item) for item in list(exp_items)], reverse=True)
     except Exception:
-        log.err("base_config sacrificeGainExp key must be int type:%s.", str(exp_items))
+        logger.error("base_config sacrificeGainExp key must be int type:%s.", str(exp_items))
         return
 
     for exp in keys:
@@ -156,9 +151,7 @@ def hero_sacrifice_oper(heros, player):
 
 
 @have_player
-def hero_compose(dynamicid, data, **kwargs):
-    player = kwargs.get('player')
-
+def hero_compose(data, player):
     args = HeroComposeRequest()
     args.ParseFromString(data)
     hero_chip_no = args.hero_chip_no
@@ -181,7 +174,7 @@ def hero_compose(dynamicid, data, **kwargs):
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
 
-    #tlog
+    # tlog
     log_action.hero_flow(player, hero.hero_no, 1, 1)
     log_action.chip_flow(player, hero_chip.chip_no, 1, 0, need_num, hero_chip.num, 1)
     # 3、返回
@@ -191,10 +184,8 @@ def hero_compose(dynamicid, data, **kwargs):
 
 
 @have_player
-def hero_sell(dynamicid, data, **kwargs):
+def hero_sell(data, player):
     """武将出售"""
-    player = kwargs.get('player')
-
     args = HeroSellRequest()
     args.ParseFromString(data)
     hero_nos = args.hero_nos

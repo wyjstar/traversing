@@ -13,12 +13,10 @@ from app.game.logic.item_group_helper import gain, get_return
 
 
 @have_player
-def get_level_gift(dynamic_id, data, **kwargs):
+def get_level_gift(data, player):
     request = level_gift_pb2.GetLevelGift()
     request.ParseFromString(data)
     response = level_gift_pb2.GetLevelGiftResponse()
-
-    player = kwargs.get('player')
 
     activity_level_gift = activity_config.get(3)
 

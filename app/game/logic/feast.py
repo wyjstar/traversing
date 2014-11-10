@@ -8,12 +8,11 @@ import time
 
 
 @have_player
-def eat_feast(dynamicid, **kwargs):
+def eat_feast(player):
     """
     吃
     """
     # (tm_year=2014, tm_mon=9, tm_mday=1, tm_hour=18, tm_min=38, tm_sec=1, tm_wday=0, tm_yday=244, tm_isdst=0)
-    player = kwargs.get('player')
     last_eat_time = time.localtime(player.feast.last_eat_time).tm_hour*60*60 + \
         time.localtime(player.feast.last_eat_time).tm_min*60 + time.localtime(player.feast.last_eat_time).tm_sec
     eat_times = base_config.get(u'time_vigor_activity')
@@ -38,11 +37,8 @@ def eat_feast(dynamicid, **kwargs):
 
 
 @have_player
-def get_time(dynamicid, **kwargs):
+def get_time(player):
     """
     获取上次吃大餐时间
     """
-    player = kwargs.get('player')
     return player.feast.last_eat_time
-
-

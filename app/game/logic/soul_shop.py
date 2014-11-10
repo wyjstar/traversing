@@ -13,8 +13,7 @@ import time
 
 
 @have_player
-def soul_shop(dynamic_id, pro_data, **kwargs):
-    player = kwargs.get('player')
+def soul_shop(pro_data, player):
     request = SoulShopRequest()
     request.ParseFromString(pro_data)
     response = SoulShopResponse()
@@ -51,12 +50,10 @@ def soul_shop(dynamic_id, pro_data, **kwargs):
 
 
 @have_player
-def refresh_shop_items(dynamic_id, **kwargs):
+def refresh_shop_items(player):
     """刷新"""
-    player = kwargs.get('player')
     shop = GetShopItemsResponse()
     max_shop_refresh_times = player.vip_component.shop_refresh_times
-
 
     # cancel vip temprory
     # if max_shop_refresh_times <= player.soul_shop.refresh_times:
@@ -92,10 +89,10 @@ def refresh_shop_items(dynamic_id, **kwargs):
     shop.res.result = True
     return shop.SerializeToString()
 
+
 @have_player
-def get_shop_items(dynamic_id, **kwargs):
+def get_shop_items(player):
     """获取商品列表"""
-    player = kwargs.get('player')
     shop = GetShopItemsResponse()
     logger.debug("get_shop_items1")
     item_ids = player.soul_shop.item_ids
@@ -106,6 +103,7 @@ def get_shop_items(dynamic_id, **kwargs):
     logger.debug("get_shop_items2"+str(item_ids))
     shop.res.result = True
     return shop.SerializePartialToString()
+
 
 def init_soul_shop_items(player):
     """

@@ -6,7 +6,7 @@ Created on 2013-5-8
 """
 import pymysql
 
-from dbpool import dbpool
+from dbpool import get_connection
 from pymysql.cursors import DictCursor
 from numbers import Number
 from gfirefly.server.logobj import logger
@@ -130,24 +130,23 @@ def forEachQueryProps(sqlstr, props):
     return sqlstr
 
 
-def GetTableIncrValue(tablename):
+@get_connection
+def GetTableIncrValue(tablename, conn=None):
     """
     """
-    database = dbpool.config.get('db')
     sql = """SELECT AUTO_INCREMENT FROM information_schema.`TABLES` \
-    WHERE TABLE_SCHEMA='%s' AND TABLE_NAME='%s';""" % (database, tablename)
-    conn = dbpool.connection()
+    WHERE TABLE_SCHEMA='%s' AND TABLE_NAME='%s';""" % ('traversing', tablename)
     cursor = conn.cursor()
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
-    conn.close()
     if result:
         return result[0]
     return result
 
 
-def ReadDataFromDB(tablename, prere=None):
+@get_connection
+def ReadDataFromDB(tablename, prere=None, conn=None):
     """
     """
     if prere:
@@ -155,23 +154,21 @@ def ReadDataFromDB(tablename, prere=None):
         sql = """select * from %s where %s ;""" % (tablename, preres)
     else:
         sql = """select * from %s""" % tablename
-    conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
-    conn.close()
     return result
 
 
-def DeleteFromDB(tablename, props=None):
+@get_connection
+def DeleteFromDB(tablename, props=None, conn=None):
     """从数据库中删除"""
     if props:
         prers = FormatCondition(props)
         sql = """DELETE FROM %s WHERE %s ;""" % (tablename, prers)
     else:
         sql = """DELETE FROM %s ;""" % tablename
-    conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
     try:
@@ -181,15 +178,17 @@ def DeleteFromDB(tablename, props=None):
         logger.exception(e)
         logger.error(sql)
     cursor.close()
-    conn.close()
     return bool(count)
 
 
-def InsertIntoDB(tablename, data):
+@get_connection
+def InsertIntoDB(tablename, data, conn=None):
     """写入数据库
     """
+    for _ in data.values():
+        if _ == 'None':
+            raise Exception('None value')
     sql = forEachPlusInsertProps(tablename, data)
-    conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
     try:
@@ -199,15 +198,14 @@ def InsertIntoDB(tablename, data):
         logger.exception(e)
         logger.error(sql)
     cursor.close()
-    conn.close()
     return bool(count)
 
 
-def UpdateWithDict(tablename, props, prere):
+@get_connection
+def UpdateWithDict(tablename, props, prere, conn=None):
     """更新记录
     """
     sql = forEachUpdateProps(tablename, props, prere)
-    conn = dbpool.connection()
     cursor = conn.cursor()
     count = 0
     try:
@@ -217,18 +215,17 @@ def UpdateWithDict(tablename, props, prere):
         logger.exception(e)
         logger.error(sql)
     cursor.close()
-    conn.close()
     if (count >= 1):
         return True
     return False
 
 
-def getAllPkByFkInDB(tablename, pkname, prere):
+@get_connection
+def getAllPkByFkInDB(tablename, pkname, prere, conn=None):
     """根据所有的外键获取主键ID
     """
     prere = FormatCondition(prere)
     sql = """Select `%s` from `%s` where %s""" % (pkname, tablename, prere)
-    conn = dbpool.connection()
     cursor = conn.cursor()
     try:
         cursor.execute(sql)
@@ -237,11 +234,11 @@ def getAllPkByFkInDB(tablename, pkname, prere):
         logger.error(sql)
     result = cursor.fetchall()
     cursor.close()
-    conn.close()
     return [key[0] for key in result]
 
 
-def GetOneRecordInfo(tablename, preres, props=None):
+@get_connection
+def GetOneRecordInfo(tablename, preres, props=None, conn=None):
     """获取单条数据的信息"""
     # print 'GetOneRecordInfo:', props
     preres = FormatCondition(preres)
@@ -251,7 +248,6 @@ def GetOneRecordInfo(tablename, preres, props=None):
         sql = """Select %s from `%s` where %s""" % (props_format, tablename, preres)
     else:
         sql = """Select * from `%s` where %s""" % (tablename, preres)
-    conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     try:
         cursor.execute(sql)
@@ -260,11 +256,11 @@ def GetOneRecordInfo(tablename, preres, props=None):
         logger.error(sql)
     result = cursor.fetchone()
     cursor.close()
-    conn.close()
     return result
 
 
-def GetSomeRecordInfo(tablename, preres, props=None):
+@get_connection
+def GetSomeRecordInfo(tablename, preres, props=None, conn=None):
     """获取单条数据的信息"""
     if props:
         caret = ','
@@ -272,46 +268,41 @@ def GetSomeRecordInfo(tablename, preres, props=None):
         sql = """Select %s from `%s` where %s""" % (props_format, tablename, preres)
     else:
         sql = """Select * from `%s` where %s""" % (tablename, preres)
-    conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     try:
-        print sql
         cursor.execute(sql)
     except Exception, e:
         logger.exception(e)
         logger.error(sql)
     result = cursor.fetchall()
     cursor.close()
-    conn.close()
     return result
 
 
-def GetRecordList(tablename, pkname, pklist):
+@get_connection
+def GetRecordList(tablename, pkname, pklist, conn=None):
     """
     """
-    print pklist
+    # print pklist
     pkliststr = ""
     for pkid in pklist:
         pkliststr += "'%s'," % pkid
     pkliststr = "(%s)" % pkliststr[:-1]
     sql = """SELECT * FROM `%s` WHERE `%s` IN %s;""" % (tablename, pkname, pkliststr)
-    conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
-    conn.close()
     return result
 
 
-def DBTest():
+@get_connection
+def DBTest(conn=None):
     sql = """SELECT * FROM tb_item WHERE characterId=1000001;"""
-    conn = dbpool.connection()
     cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
-    conn.close()
     return result
 
 
@@ -360,14 +351,14 @@ def getredisallkeys(key, mem):
 if __name__ == '__main__':
     import cPickle
 
-    dbpool.initPool(**{
-        "host": "127.0.0.1",
-        "user": "test",
-        "passwd": "test",
-        "port": 8066,
-        "db": "db_traversing",
-        "charset": "utf8"
-    })
+    # dbpool.initPool(**{
+    #     "host": "127.0.0.1",
+    #     "user": "test",
+    #     "passwd": "test",
+    #     "port": 8066,
+    #     "db": "db_traversing",
+    #     "charset": "utf8"
+    # })
 
     InsertIntoDB('tb_character_equipments', {'equipments': cPickle.dumps({123: 456}), 'id': 4})
     GetOneRecordInfo('tb_character_equipments', {'id': 4})

@@ -16,6 +16,8 @@ message PlayerRankResponse{
 
 message PvpFightRequest{
     required int32 challenge_rank = 1;
+    repeated LineUp lineup = 2; // 队形
+    optional int32 skill = 3; //无双技能ID
 }
 
 message PvpPlayerInfoRequest{
@@ -27,4 +29,6 @@ message PvpFightResponse{
     required CommonResponse res = 1;
     repeated BattleUnit red = 2; //红方数据 自己
     repeated BattleUnit blue = 3; //对方数据
+    optional int32 red_skill = 4;
+    optional int32 blue_skill = 5;
 }
