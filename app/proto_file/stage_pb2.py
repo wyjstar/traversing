@@ -15,7 +15,7 @@ import player_response_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage.proto',
   package='',
-  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\xaa\x04\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\x14\n\x0cnormal_skill\x18\x03 \x03(\x05\x12\x12\n\nrage_skill\x18\x04 \x03(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_def\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\x12\x0f\n\x07\x62\x61se_hp\x18\x12 \x01(\x02\x12\x10\n\x08\x62\x61se_atk\x18\x13 \x01(\x02\x12\x19\n\x11\x62\x61se_physical_def\x18\x14 \x01(\x02\x12\x16\n\x0e\x62\x61se_magic_def\x18\x15 \x01(\x02\x12\x10\n\x08\x62\x61se_hit\x18\x16 \x01(\x02\x12\x12\n\nbase_dodge\x18\x17 \x01(\x02\x12\x10\n\x08\x62\x61se_cri\x18\x18 \x01(\x02\x12\x16\n\x0e\x62\x61se_cri_coeff\x18\x19 \x01(\x02\x12\x1a\n\x12\x62\x61se_cri_ded_coeff\x18\x1a \x01(\x02\x12\x12\n\nbase_block\x18\x1b \x01(\x02\x12\r\n\x05level\x18\x1c \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x1d \x01(\x05\x12\x0f\n\x07is_boss\x18\x0f \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x10 \x03(\x05\x12\x10\n\x08position\x18\x11 \x01(\x05\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"&\n\x06LineUp\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0f\n\x07hero_id\x18\x02 \x01(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08')
+  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\x80\x04\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\n\n\x02hp\x18\x05 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x06 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x07 \x01(\x02\x12\x11\n\tmagic_def\x18\x08 \x01(\x02\x12\x0b\n\x03hit\x18\t \x01(\x02\x12\r\n\x05\x64odge\x18\n \x01(\x02\x12\x0b\n\x03\x63ri\x18\x0b \x01(\x02\x12\x11\n\tcri_coeff\x18\x0c \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\r \x01(\x02\x12\r\n\x05\x62lock\x18\x0e \x01(\x02\x12\x0f\n\x07\x62\x61se_hp\x18\x12 \x01(\x02\x12\x10\n\x08\x62\x61se_atk\x18\x13 \x01(\x02\x12\x19\n\x11\x62\x61se_physical_def\x18\x14 \x01(\x02\x12\x16\n\x0e\x62\x61se_magic_def\x18\x15 \x01(\x02\x12\x10\n\x08\x62\x61se_hit\x18\x16 \x01(\x02\x12\x12\n\nbase_dodge\x18\x17 \x01(\x02\x12\x10\n\x08\x62\x61se_cri\x18\x18 \x01(\x02\x12\x16\n\x0e\x62\x61se_cri_coeff\x18\x19 \x01(\x02\x12\x1a\n\x12\x62\x61se_cri_ded_coeff\x18\x1a \x01(\x02\x12\x12\n\nbase_block\x18\x1b \x01(\x02\x12\r\n\x05level\x18\x1c \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x1d \x01(\x05\x12\x0f\n\x07is_boss\x18\x0f \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x10 \x03(\x05\x12\x10\n\x08position\x18\x11 \x01(\x05\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"9\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\"&\n\x06LineUp\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0f\n\x07hero_id\x18\x02 \x01(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08')
 
 
 
@@ -77,189 +77,175 @@ _BATTLEUNIT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='normal_skill', full_name='BattleUnit.normal_skill', index=2,
-      number=3, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='rage_skill', full_name='BattleUnit.rage_skill', index=3,
-      number=4, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hp', full_name='BattleUnit.hp', index=4,
+      name='hp', full_name='BattleUnit.hp', index=2,
       number=5, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='atk', full_name='BattleUnit.atk', index=5,
+      name='atk', full_name='BattleUnit.atk', index=3,
       number=6, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='physical_def', full_name='BattleUnit.physical_def', index=6,
+      name='physical_def', full_name='BattleUnit.physical_def', index=4,
       number=7, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='magic_def', full_name='BattleUnit.magic_def', index=7,
+      name='magic_def', full_name='BattleUnit.magic_def', index=5,
       number=8, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hit', full_name='BattleUnit.hit', index=8,
+      name='hit', full_name='BattleUnit.hit', index=6,
       number=9, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='dodge', full_name='BattleUnit.dodge', index=9,
+      name='dodge', full_name='BattleUnit.dodge', index=7,
       number=10, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='cri', full_name='BattleUnit.cri', index=10,
+      name='cri', full_name='BattleUnit.cri', index=8,
       number=11, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='cri_coeff', full_name='BattleUnit.cri_coeff', index=11,
+      name='cri_coeff', full_name='BattleUnit.cri_coeff', index=9,
       number=12, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='cri_ded_coeff', full_name='BattleUnit.cri_ded_coeff', index=12,
+      name='cri_ded_coeff', full_name='BattleUnit.cri_ded_coeff', index=10,
       number=13, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='block', full_name='BattleUnit.block', index=13,
+      name='block', full_name='BattleUnit.block', index=11,
       number=14, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_hp', full_name='BattleUnit.base_hp', index=14,
+      name='base_hp', full_name='BattleUnit.base_hp', index=12,
       number=18, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_atk', full_name='BattleUnit.base_atk', index=15,
+      name='base_atk', full_name='BattleUnit.base_atk', index=13,
       number=19, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_physical_def', full_name='BattleUnit.base_physical_def', index=16,
+      name='base_physical_def', full_name='BattleUnit.base_physical_def', index=14,
       number=20, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_magic_def', full_name='BattleUnit.base_magic_def', index=17,
+      name='base_magic_def', full_name='BattleUnit.base_magic_def', index=15,
       number=21, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_hit', full_name='BattleUnit.base_hit', index=18,
+      name='base_hit', full_name='BattleUnit.base_hit', index=16,
       number=22, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_dodge', full_name='BattleUnit.base_dodge', index=19,
+      name='base_dodge', full_name='BattleUnit.base_dodge', index=17,
       number=23, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_cri', full_name='BattleUnit.base_cri', index=20,
+      name='base_cri', full_name='BattleUnit.base_cri', index=18,
       number=24, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_cri_coeff', full_name='BattleUnit.base_cri_coeff', index=21,
+      name='base_cri_coeff', full_name='BattleUnit.base_cri_coeff', index=19,
       number=25, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_cri_ded_coeff', full_name='BattleUnit.base_cri_ded_coeff', index=22,
+      name='base_cri_ded_coeff', full_name='BattleUnit.base_cri_ded_coeff', index=20,
       number=26, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='base_block', full_name='BattleUnit.base_block', index=23,
+      name='base_block', full_name='BattleUnit.base_block', index=21,
       number=27, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='level', full_name='BattleUnit.level', index=24,
+      name='level', full_name='BattleUnit.level', index=22,
       number=28, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='break_level', full_name='BattleUnit.break_level', index=25,
+      name='break_level', full_name='BattleUnit.break_level', index=23,
       number=29, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_boss', full_name='BattleUnit.is_boss', index=26,
+      name='is_boss', full_name='BattleUnit.is_boss', index=24,
       number=15, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='break_skills', full_name='BattleUnit.break_skills', index=27,
+      name='break_skills', full_name='BattleUnit.break_skills', index=25,
       number=16, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='position', full_name='BattleUnit.position', index=28,
+      name='position', full_name='BattleUnit.position', index=26,
       number=17, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -275,7 +261,7 @@ _BATTLEUNIT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=89,
-  serialized_end=643,
+  serialized_end=601,
 )
 
 
@@ -302,8 +288,8 @@ _BATTLEUNITGROP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=645,
-  serialized_end=689,
+  serialized_start=603,
+  serialized_end=647,
 )
 
 
@@ -344,8 +330,8 @@ _STAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=691,
-  serialized_end=748,
+  serialized_start=649,
+  serialized_end=706,
 )
 
 
@@ -386,8 +372,8 @@ _STAGEAWARD = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=750,
-  serialized_end=818,
+  serialized_start=708,
+  serialized_end=776,
 )
 
 
@@ -421,8 +407,8 @@ _LINEUP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=820,
-  serialized_end=858,
+  serialized_start=778,
+  serialized_end=816,
 )
 
 
@@ -463,8 +449,8 @@ _UNPARALLELED = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=860,
-  serialized_end=919,
+  serialized_start=818,
+  serialized_end=877,
 )
 
 _BATTLEUNITGROP.fields_by_name['group'].message_type = _BATTLEUNIT

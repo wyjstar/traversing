@@ -157,15 +157,6 @@ def assemble(unit_add, unit):
     unit_add.no = unit.no
     unit_add.quality = unit.quality
 
-    print "unit.normal_skill", type(unit.normal_skill), unit.normal_skill, unit.no
-
-
-    for skill_no in unit.normal_skill:
-        unit_add.normal_skill.append(skill_no)
-
-    for skill_no in unit.rage_skill:
-        unit_add.rage_skill.append(skill_no)
-
     for skill_no in unit.break_skills:
         unit_add.break_skills.append(skill_no)
 
