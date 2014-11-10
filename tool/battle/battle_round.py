@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
 from configs_data.game_configs import skill_config
 from configs_data.game_configs import skill_buff_config
@@ -8,12 +8,15 @@ from battle_buff import Buff, BuffManager
 from execute_skill_buff import perform_hit, execute_skill_buff, execute_mp
 from find_target_units import find_side, find_target_units
 import copy
+
 BEST_SKILL = 1
 FRIEND_SKILL = 2
 DEBUG = 1
 
+
 class BattleRound(object):
     """战斗回合 """
+
     def __init__(self):
         self._red_units = {}
         self._blue_units = {}
@@ -23,7 +26,7 @@ class BattleRound(object):
         self._client_data = None
 
     def init_round(self, red_units, red_best_skill, blue_units, blue_best_skill=None, friend_skill=None):
-        self._red_units = red_units # copy.deepcopy(red_units)
+        self._red_units = red_units  # copy.deepcopy(red_units)
         self._red_best_skill = red_best_skill
         self._blue_units = blue_units
         self._blue_best_skill = blue_best_skill
@@ -34,7 +37,7 @@ class BattleRound(object):
         """
         在战斗开始前，进行触发类别为2的突破技能buff。
         """
-        print "进入战场，添加的buff..."
+        print "    进入战场，添加的buff..."
         for temp in self._red_units.values():
             for skill_buff_info in temp.skill.begin_skill_buffs():
                 target_units = find_target_units(temp, self._red_units, self._blue_units, skill_buff_info)
@@ -43,7 +46,7 @@ class BattleRound(object):
                     target_nos = []
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
-                    print "作用目标: %s" % (target_nos)
+                    print "    作用目标: %s" % (target_nos)
 
         for temp in self._blue_units.values():
             for skill_buff_info in temp.skill.begin_skill_buffs():
@@ -53,7 +56,7 @@ class BattleRound(object):
                     target_nos = []
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
-                    print "作用目标: %s" % (target_nos)
+                    print "    作用目标: %s" % (target_nos)
 
     def perform_round_check(self, client_data):
         """perform a round battle and battle check."""
@@ -113,18 +116,18 @@ class BattleRound(object):
             blue_unit = self._blue_units.get(i)
             self.handle_mock_special_skill(self._red_best_skill)
             if red_unit:
-                print "-"*20 + "我方攻击" + "-"*20
+                print ("red_%d" % i) + "-" * 20 + "我方攻击" + "-" * 20
                 self.perform_one_skill(self._red_units, self._blue_units, red_unit.skill)
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
-                print ""
+                print "    "
             self.handle_mock_special_skill(self._blue_best_skill)
             if blue_unit:
-                print "-"*20 + "敌方攻击" + "-"*20
+                print ("blue_%d" % i) + "-" * 20 + "敌方攻击" + "-" * 20
                 self.perform_one_skill(self._blue_units, self._red_units, blue_unit.skill)
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
-                print ""
+                print "    "
 
         # 每回合结束后，减buff
         for unit in self._red_units.values():
@@ -141,9 +144,13 @@ class BattleRound(object):
     def perform_one_skill(self, army, enemy, skill):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
-        print "进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d)" % (attacker.slot_no, attacker.hero_no, skill.main_skill_buff.id)
+        print "    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
+              (attacker.slot_no, attacker.hero_no, skill.main_skill_buff.id, attacker.buff_manager)
 
-        main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff, None) # 主技能作用目标
+        if not attacker.can_attack:
+            print "    攻击者在buff中，无法攻击！"
+
+        main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff, None)  # 主技能作用目标
 
         # 1.计算命中
         # 规则：主技能作用多个目标，只要有一个命中的，则判定命中
@@ -152,15 +159,15 @@ class BattleRound(object):
             if perform_hit(skill.main_skill_buff, attacker.hit, target_unit.dodge):
                 is_hit = True
 
-        print "是否命中:", is_hit
+        print "    是否命中:", is_hit
         # 2.主技能释放前，触发的buff
-        print "1. 攻击前, 添加的buff"
+        print "    1. 攻击前, 添加的buff"
         for skill_buff_info in skill.before_skill_buffs(is_hit):
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
             self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, True)
 
         # 3.触发攻击技能
-        print "2. 攻击..."
+        print "    2. 攻击..."
         before_or_not = True
         for skill_buff_info in skill.attack_skill_buffs():
             if not is_hit and skill_buff_info.skill_key and skill_buff_info.effectId in (1, 2, 3):
@@ -174,7 +181,7 @@ class BattleRound(object):
         skill.set_mp()
 
         # 4.主技能释放后，触发的buff
-        print "3. 攻击后的buff..."
+        print "    3. 攻击后的buff..."
         for skill_buff_info in skill.after_skill_buffs(is_hit):
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
             self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, False)
@@ -197,17 +204,17 @@ class BattleRound(object):
         根据作用位置找到攻击目标，然后执行技能或者添加buff
         """
         #if DEBUG:
-            #target_nos = []
-            #for temp in target_units:
-                #target_nos.append(temp.slot_no)
-            #print "技能或者buffID（%s），作用目标: %s, %s" % (skill_buff_info.id, skill_buff_info.effectPos, target_nos)
+        #target_nos = []
+        #for temp in target_units:
+        #target_nos.append(temp.slot_no)
+        #print "    技能或者buffID（%s），作用目标: %s, %s" % (skill_buff_info.id, skill_buff_info.effectPos, target_nos)
 
         print "-" * 80
         result = []
         for target_unit in target_units:
             if skill_buff_info.effectId in [1, 2, 3, 26]:
                 is_block, is_cri = execute_skill_buff(attacker, target_unit, skill_buff_info)
-                if target_unit.hp <= 0: # 如果血量为0，则去掉该unit
+                if target_unit.hp <= 0:  # 如果血量为0，则去掉该unit
                     target_side = find_side(skill_buff_info, army, enemy)
                     if target_unit.slot_no in target_side:
                         del target_side[target_unit.slot_no]
@@ -220,10 +227,10 @@ class BattleRound(object):
                 buff = Buff(attacker, skill_buff_info, before_or_not)
                 target_unit.buff_manager.add(buff)
 
-        print "技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id)
+        print "    技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id)
         if DEBUG:
             for temp in target_units:
-                print temp
+                print "    ", temp
 
         # 触发反击
         for is_block, backer in result:
@@ -233,7 +240,7 @@ class BattleRound(object):
                     target_nos = []
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
-                    print "反击目标: %s" % (target_nos)
+                    print "    反击目标: %s" % (target_nos)
                 self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units)
 
         print "-" * 80
@@ -246,10 +253,12 @@ class BattleRound(object):
         if self._blue_units and self._red_units:
             return 0
 
+
 class BattleUnit(object):
     """战斗单元"""
 
-    def __init__(self, slot_no, hero_name='', hero_no=0, quality=0, hp=0, atk=0, physical_def=0, magic_def=0, hit=0, dodge=0, cri=0, cri_coeff=0, cri_ded_coeff=0, block=0, ductility=0, level=0, break_level=0, mp_base=0):
+    def __init__(self, slot_no, hero_name='', hero_no=0, quality=0, hp=0, atk=0, physical_def=0, magic_def=0, hit=0,
+                 dodge=0, cri=0, cri_coeff=0, cri_ded_coeff=0, block=0, ductility=0, level=0, break_level=0, mp_base=0):
         #print slot_no, hero_name, hero_no, quality, hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, level, break_level, mp_base
         self._slot_no = slot_no
         self._hero_name = hero_name
@@ -258,16 +267,16 @@ class BattleUnit(object):
         self._atk = float(atk)
         self._physical_def = float(physical_def)
         self._magic_def = float(magic_def)
-        self._hit = float(hit)                     # 命中率
-        self._dodge = float(dodge)                 # 闪避率
-        self._cri = float(cri)                     # 暴击率
-        self._cri_coeff = float(cri_coeff)         # 暴击伤害系数
-        self._cri_ded_coeff = float(cri_ded_coeff) # 暴击减免系数
-        self._block = float(block)                 # 格挡率
-        self._ductility = float(ductility)         # 韧性
-        self._level = int(level)                        # 等级
-        self._break_level = int(break_level)            # 突破等级
-        self._mp_base = int(mp_base)                    # 武将基础mp
+        self._hit = float(hit)  # 命中率
+        self._dodge = float(dodge)  # 闪避率
+        self._cri = float(cri)  # 暴击率
+        self._cri_coeff = float(cri_coeff)  # 暴击伤害系数
+        self._cri_ded_coeff = float(cri_ded_coeff)  # 暴击减免系数
+        self._block = float(block)  # 格挡率
+        self._ductility = float(ductility)  # 韧性
+        self._level = int(level)  # 等级
+        self._break_level = int(break_level)  # 突破等级
+        self._mp_base = int(mp_base)  # 武将基础mp
 
         self._skill = HeroSkill(self)
         self._buff_manager = BuffManager(self)
@@ -430,19 +439,24 @@ class BattleUnit(object):
         self._ductility = value
 
     def __bool__(self):
-        if self._hp>0:
+        if self._hp > 0:
             return True
         return False
 
-    __nonzero__=__bool__
+    __nonzero__ = __bool__
+
     def __repr__(self):
         return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
                 命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp初始值(%s), buffs(%s)") \
-                %(self._slot_no, self._hero_name, self._hero_no, self._hp, self._atk, self._physical_def, self._magic_def,
-            self._hit, self._dodge, self._cri, self._cri_coeff, self._cri_ded_coeff, self._block, self._ductility, self._level, self._break_level, self._mp_base, self.buff_manager)
+               % (
+        self._slot_no, self._hero_name, self._hero_no, self._hp, self._atk, self._physical_def, self._magic_def,
+        self._hit, self._dodge, self._cri, self._cri_coeff, self._cri_ded_coeff, self._block, self._ductility,
+        self._level, self._break_level, self._mp_base, self.buff_manager)
+
 
 class HeroSkill(object):
     """docstring for HeroSkill"""
+
     def __init__(self, unit):
         super(HeroSkill, self).__init__()
         mp_config = base_config.get('chushi_value_config')
@@ -459,15 +473,17 @@ class HeroSkill(object):
         self._break_skill_buffs = {}
         hero = hero_config.get(self._hero_no)
         skill_info = skill_config.get(hero.normalSkill, None)
-        self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = self.get_skill_buff(skill_info.get("group"))
+        self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = self.get_skill_buff(
+            skill_info.get("group"))
 
-        #print "normal skill:", skill_info.get("group"),self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff
+        #print "    normal skill:", skill_info.get("group"),self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff
 
         skill_info = skill_config.get(hero.rageSkill, None)
-        self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff = self.get_skill_buff(skill_info.get("group"))
+        self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff = self.get_skill_buff(
+            skill_info.get("group"))
         skill_info = skill_config.get(hero.rageSkill, None)
 
-        #print "mp skill:", skill_info, self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff
+        #print "    mp skill:", skill_info, self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff
         for id in self.hero_break_skill_buff_ids():
             skill_buff_info = skill_buff_config.get(id)
             trigger_type = skill_buff_info.triggerType
@@ -503,7 +519,7 @@ class HeroSkill(object):
         hero_break_info = hero_breakup_config.get(self._hero_no)
 
         for i in range(self._owner.break_level):
-            hero_break_skill_ids.append(hero_break_info.get_skill_id(i+1))
+            hero_break_skill_ids.append(hero_break_info.get_skill_id(i + 1))
 
         for skill_id in hero_break_skill_ids:
             skill_info = skill_config.get(skill_id, None)
@@ -594,8 +610,10 @@ class HeroSkill(object):
         elif value > self._mp_max:
             self._mp = self._mp_max
 
+
 class BestSkill(object):
     """docstring for BestSkill"""
+
     def __init__(self, mp, skill_no):
         super(BestSkill, self).__init__()
         best_mp_config = base_config.get('wushang_value_config')
@@ -608,7 +626,7 @@ class BestSkill(object):
         self._skill_buffs = []
         skill_info = skill_config.get(self._skill_no, None)
         if skill_info:
-            for buff_id in  skill_info.group:
+            for buff_id in skill_info.group:
                 self._skill_buffs.append(skill_buff_config.get(buff_id))
 
     def is_full(self):
@@ -650,6 +668,7 @@ class BestSkill(object):
 
 class FriendSkill(object):
     """docstring for FriendSkill"""
+
     def __init__(self, unit):
         super(FriendSkill, self).__init__()
         friend_mp_config = base_config.get('huoban_value_config')

@@ -24,8 +24,8 @@ def execute_skill_buff(attacker, target, skill_buff_info):
     """
     执行技能［1，2，3，26］
     """
-    print "攻方 no(%d), hero_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (attacker.slot_no, attacker.hero_no, attacker.hero_name, attacker.hp, attacker.mp, attacker.buff_manager)
-    print "守方 no(%d), hero_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (target.slot_no, target.hero_no, target.hero_name, target.hp, target.mp, target.buff_manager)
+    print "    攻方 no(%d), hero_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (attacker.slot_no, attacker.hero_no, attacker.hero_name, attacker.hp, attacker.mp, attacker.buff_manager)
+    print "    守方 no(%d), hero_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (target.slot_no, target.hero_no, target.hero_name, target.hp, target.mp, target.buff_manager)
 
     is_cri = False # 是否暴击
     is_block = False # 是否格挡
@@ -48,7 +48,7 @@ def execute_skill_buff(attacker, target, skill_buff_info):
     k4 = k3_k4[1]
 
     base_demage_value = (k1*k1/(k1+k3*k2))*k4              # 基础伤害值
-    cri_coeff = attacker.cri_coeff - target.cri_ded_coeff  # 暴击伤害系数
+    cri_coeff = (attacker.cri_coeff - target.cri_ded_coeff)/100  # 暴击伤害系数
     block_demage_coeff = base_config.get("a4")             # 格挡受伤比参数
                                                            #
     level_coeff = 1                                        # 等级压制系数
@@ -102,7 +102,7 @@ def execute_skill_buff(attacker, target, skill_buff_info):
         actual_demage = attacker.level*skill_buff_info.valueEffect/100
     target.hp -= actual_demage
     target.hp += actual_treat
-    print "技能ID（%d）,暴击（%s），格挡（%s），基础伤害值(%s)，暴击伤害系数(%s)，等级压制系数(%s)，伤害浮动系数(%s)，\
+    print "    技能ID（%d）,暴击（%s），格挡（%s），基础伤害值(%s)，暴击伤害系数(%s)，等级压制系数(%s)，伤害浮动系数(%s)，\
             总伤害值(%s)，总治疗值(%s)，攻方实际伤害值(%s)，攻方实际治疗值(%s)" \
     % (skill_buff_info.id, is_cri, is_block, base_demage_value, cri_coeff, level_coeff, demage_fluct_coeff,
             total_demage, total_treat, actual_demage, actual_treat)
