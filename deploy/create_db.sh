@@ -7,9 +7,6 @@ echo "start cobar for mysql..."
 eval $cobar_path"restart.sh"
 echo "start cobar success."
 
-#check redis port aviable....
-redis-cli -p 6379 INFO>/dev/null
-
 sleep 3
 
 echo "create mysql db & table..."
