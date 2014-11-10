@@ -14,7 +14,7 @@ sleep 3
 
 echo "create mysql db & table..."
 mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<../app/doc/databases/traversing.sql
-mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<../app/doc/databases/modify.sql
+#mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing<../app/doc/databases/modify.sql
 
 echo "create mysql db & table success."
 
