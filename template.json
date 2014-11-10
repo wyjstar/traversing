@@ -111,6 +111,11 @@
             "mem": true,
             "app": "app.dbfront",
             "log": "app/logs/db.log"
+        },
+        "world": {
+            "name": "world",
+            "app": "app.world",
+            "log": "app/logs/world.log"
         }
     },
     "db": {
