@@ -48,7 +48,7 @@ def execute_skill_buff(attacker, target, skill_buff_info):
     k4 = k3_k4[1]
 
     base_demage_value = (k1*k1/(k1+k3*k2))*k4              # 基础伤害值
-    cri_coeff = attacker.cri_coeff - target.cri_ded_coeff  # 暴击伤害系数
+    cri_coeff = (attacker.cri_coeff - target.cri_ded_coeff)/100  # 暴击伤害系数
     block_demage_coeff = base_config.get("a4")             # 格挡受伤比参数
                                                            #
     level_coeff = 1                                        # 等级压制系数
