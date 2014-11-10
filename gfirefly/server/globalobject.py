@@ -93,4 +93,6 @@ class remoteserviceHandle:
         """
         """
         if self.remotename in GlobalObject().remote:
-            GlobalObject().remote[self.remotename]._reference._service.mapTarget(target)
+            remote = GlobalObject().remote[self.remotename]
+            service = remote._reference._service
+            service.mapTarget(target)

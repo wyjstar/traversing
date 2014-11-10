@@ -58,15 +58,16 @@ def given_stamina_1108(dynamic_id, data):
 
 
 @remoteserviceHandle('gate')
-def add_friend_request_1050(dynamic_id, is_online, target_id):
-    return friend.add_friend_request_remote(dynamic_id, is_online, target_id)
+def add_friend_request_remote(dynamic_id, target_id, is_online):
+    print 'target_id:', target_id, 'ison:', is_online
+    return friend.add_friend_request_remote(dynamic_id, target_id, is_online)
 
 
 @remoteserviceHandle('gate')
-def become_friends_1051(dynamic_id, is_online, target_id):
-    return friend.become_friends_remote(dynamic_id, is_online, target_id)
+def become_friends_remote(dynamic_id, target_id, is_online):
+    return friend.become_friends_remote(dynamic_id, target_id, is_online)
 
 
 @remoteserviceHandle('gate')
-def delete_friend_1052(dynamic_id, is_online, target_id):
-    return friend.del_friend_remote(dynamic_id, is_online, target_id)
+def delete_friend_remote(dynamic_id, target_id, is_online):
+    return friend.del_friend_remote(dynamic_id, target_id, is_online)

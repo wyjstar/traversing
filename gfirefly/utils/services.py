@@ -4,16 +4,17 @@ Created on 2011-1-3
 服务类
 @author: sean_lan
 """
+import traceback
 from gfirefly.server.logobj import logger
 
 
 class Service(object):
-    """A remoting service 
-    
+    """A remoting service
+
     attributes:
     ============
      * name - string, service name.
-     * runstyle 
+     * runstyle
     """
 
     def __init__(self, name):
@@ -31,10 +32,11 @@ class Service(object):
     def mapTarget(self, target):
         """Add a target to the service."""
         key = target.__name__
-        if self._targets.has_key(key):
+        if key in self._targets:
             exist_target = self._targets.get(key)
-            raise "target [%d] Already exists, Conflict between the %s and %s"\
-                  % (key, exist_target.__name__, target.__name__)
+            e = Exception("target[%d] exists, Conflict between %s and %s" %
+                          (key, exist_target.__name__, target.__name__))
+            raise e
         self._targets[key] = target
 
     def unMapTarget(self, target):
@@ -60,37 +62,48 @@ class Service(object):
         """
         target = self.getTarget(targetKey)
         if not target:
-            logger.error('the command ' + str(targetKey) + ' not Found on service')
+            logger.error('command %s not Found on service' % str(targetKey))
             return None
         if targetKey not in self.unDisplay:
-            logger.info("call method %s on service[%s]" % (target.__name__, self._name))
+            logger.info("call method %s on service[%s]" %
+                        (target.__name__, self._name))
         try:
             response = target(*args, **kw)
         except Exception, e:
             logger.exception(e)
             return None
+        except:
+            logger.error(traceback.format_exc())
         return response
 
 
 class CommandService(Service):
-    """A remoting service 
+    """A remoting service
     According to Command ID search target
     """
 
     def mapTarget(self, target):
         """Add a target to the service.
         """
-        key = int(target.__name__.split('_')[-1])
-        if key in self._targets:
-            exist_target = self._targets.get(key)
-            str_err = "target [%d] Already exists, Conflict between the %s and %s" \
-                      % (key, exist_target.__name__, target.__name__)
-            raise Exception(str_err)
-        self._targets[key] = target
+        key = target.__name__.split('_')[-1]
+        if key.isdigit():
+            key = int(key)
+            if key in self._targets:
+                exist_target = self._targets.get(key)
+                str_err = "target [%d] Already exists, Conflict between the %s and %s" \
+                          % (key, exist_target.__name__, target.__name__)
+                raise Exception(str_err)
+            self._targets[key] = target
+        else:
+            Service.mapTarget(self, target)
 
     def unMapTarget(self, target):
         """Remove a target from the service.
         """
-        key = int(target.__name__.split('_')[-1])
-        if key in self._targets:
-            del self._targets[key]
+        key = target.__name__.split('_')[-1]
+        if key.isdigit():
+            key = int(target.__name__.split('_')[-1])
+            if key in self._targets:
+                del self._targets[key]
+        else:
+            Service.mapTarget(target)

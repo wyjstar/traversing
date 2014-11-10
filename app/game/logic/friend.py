@@ -43,27 +43,23 @@ def add_friend_request(data, player):
         response.result_no = 4  # fail
         return response.SerializePartialToString()  # fail
 
-    invitee_player = PlayersManager().get_player_by_id(target_id)
-    if invitee_player:
-        if not invitee_player.friends.add_applicant(player.base_info.id):
-            response.result = False
-            response.result_no = 1  # fail
-            return response.SerializePartialToString()  # fail
-
-        push_object(1010, player.base_info.id, [invitee_player.dynamic_id])
-        invitee_player.friends.save_data()
-    else:
-        if not push_message(1050, target_id, player.base_info.id):
-            response.result = False
-            response.result_no = 2
-            return response.SerializePartialToString()  # fail
+    if not push_message('add_friend_request_remote',
+                        target_id,
+                        player.base_info.id):
+        response.result = False
+        response.result_no = 2
+        return response.SerializePartialToString()  # fail
 
     return response.SerializePartialToString()
 
 
 @have_player
-def add_friend_request_remote(is_online, target_id, player):
+def add_friend_request_remote(target_id, is_online, player):
+    logger.debug('add friend request:%s, %s', is_online, target_id)
     result = player.friends.add_applicant(target_id)
+    player.friends.save_data()
+    if is_online:
+        push_object(1010, player.base_info.id, [player.dynamic_id])
     return result
 
 
@@ -89,26 +85,19 @@ def become_friends(data, player):
         # save data
         player.friends.save_data()
 
-        inviter_player = PlayersManager().get_player_by_id(target_id)
-        if inviter_player:
-            if not inviter_player.friends.add_friend(player.base_info.id,
-                                                     False):
-                response.result = False
-
-        # save data
-            inviter_player.friends.save_data()
-            player.friends.save_data()
-        else:
-            if not push_message(1051, target_id, player.base_info.id):
-                response.result = False
+        if not push_message('become_friends_remote',
+                            target_id,
+                            player.base_info.id):
+            response.result = False
 
         # response.result_no += 1
     return response.SerializePartialToString()
 
 
 @have_player
-def become_friends_remote(is_online, target_id, player):
+def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
+    player.friends.save_data()
     return result
 
 
@@ -126,7 +115,6 @@ def refuse_invitation(data, player):
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-
 
     for target_id in request.target_ids:
         if not player.friends.del_applicant(target_id):
@@ -160,14 +148,16 @@ def del_friend(data, player):
         # save data
         player.friends.save_data()
 
-        response.result = push_message(1052, target_id, player.base_info.id)
+        response.result = push_message('delete_friend_remote',
+                                       target_id,
+                                       player.base_info.id)
         response.result_no += 1
 
     return response.SerializePartialToString()
 
 
 @have_player
-def del_friend_remote(is_online, target_id, player):
+def delete_friend_remote(target_id, is_online, player):
     result = player.friends.del_friend(target_id)
     player.friends.save_data()
     return result
@@ -246,49 +236,52 @@ def get_player_friend_list(player):
                 response_friend_add.physical_def = battle_unit.physical_def
                 response_friend_add.magic_def = battle_unit.magic_def
         else:
-            logger.error('get_player_friend_list, cant find player id:%d' % pid)
+            logger.error('friend_list, cant find player id:%d' % pid)
+            player.friends.friends.remove(pid)
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObjData(pid)
         if player_data:
-            response_blacklist_add = response.blacklist.add()
-            response_blacklist_add.id = pid
-            response_blacklist_add.nickname = player_data.get('nickname')
-            response_blacklist_add.gift = datetime.datetime.now().day
+            blacklist_add = response.blacklist.add()
+            blacklist_add.id = pid
+            blacklist_add.nickname = player_data.get('nickname')
+            blacklist_add.gift = datetime.datetime.now().day
 
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
                 info = lord_data.get('info', {})
-                response_blacklist_add.hero_no = info.get('no', 0)
-                response_blacklist_add.power = lord_data.get('power', 0)
-                response_blacklist_add.hp = info.get('hp', 0)
-                response_blacklist_add.atk = info.get('atk', 0)
-                response_blacklist_add.physical_def = info.get('physical_def', 0)
-                response_blacklist_add.magic_def = info.get('magic_def', 0)
+                blacklist_add.hero_no = info.get('no', 0)
+                blacklist_add.power = lord_data.get('power', 0)
+                blacklist_add.hp = info.get('hp', 0)
+                blacklist_add.atk = info.get('atk', 0)
+                blacklist_add.physical_def = info.get('physical_def', 0)
+                blacklist_add.magic_def = info.get('magic_def', 0)
         else:
-            logger.error('get_player_friend_list, cant find player id:%d' % pid)
+            logger.error('black_list cant find player id:%d' % pid)
+            player.friends.blacklist.remove(pid)
 
     for pid in player.friends.applicant_list:
         player_data = tb_character_info.getObjData(pid)
         if player_data:
-            response_applicant_list_add = response.applicant_list.add()
-            response_applicant_list_add.id = pid
-            response_applicant_list_add.nickname = player_data.get('nickname')
-            response_applicant_list_add.gift = datetime.datetime.now().day
+            applicant_list_add = response.applicant_list.add()
+            applicant_list_add.id = pid
+            applicant_list_add.nickname = player_data.get('nickname')
+            applicant_list_add.gift = datetime.datetime.now().day
 
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
                 info = lord_data.get('info', {})
-                response_applicant_list_add.hero_no = info.get('no', 0)
-                response_applicant_list_add.power = lord_data.get('power', 0)
-                response_applicant_list_add.hp = info.get('hp', 0)
-                response_applicant_list_add.atk = info.get('atk', 0)
-                response_applicant_list_add.physical_def = info.get('physical_def', 0)
-                response_applicant_list_add.magic_def = info.get('magic_def', 0)
+                applicant_list_add.hero_no = info.get('no', 0)
+                applicant_list_add.power = lord_data.get('power', 0)
+                applicant_list_add.hp = info.get('hp', 0)
+                applicant_list_add.atk = info.get('atk', 0)
+                applicant_list_add.physical_def = info.get('physical_def', 0)
+                applicant_list_add.magic_def = info.get('magic_def', 0)
         else:
-            logger.error('get_player_friend_list, cant find player id:' % pid)
+            logger.error('applicant_list, cant find player id:%d' % pid)
+            player.friends.applicant_list.remove(pid)
 
     return response.SerializePartialToString()
 
@@ -318,7 +311,8 @@ def find_friend_request(data, **kwargs):
             response.id = player_data.get('id')
             response.nickname = player_data.get('nickname')
     else:
-        sql_result = util.GetOneRecordInfo('tb_character_info', dict(nickname=request.id_or_nickname))
+        prere = dict(nickname=request.id_or_nickname)
+        sql_result = util.GetOneRecordInfo('tb_character_info', prere)
         if sql_result:
             response.id = sql_result.get('id')
             response.nickname = sql_result.get('nickname')
