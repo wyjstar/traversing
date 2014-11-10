@@ -112,10 +112,10 @@
             "app": "app.dbfront",
             "log": "app/logs/db.log"
         },
-        "wrold": {
+        "world": {
             "name": "world",
-            "app": "app.wrold",
-            "log": "app/logs/wrold.log"
+            "app": "app.world",
+            "log": "app/logs/world.log"
         }
     },
     "db": {
