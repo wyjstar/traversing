@@ -20,15 +20,16 @@ class StageConfig(object):
         for row in config_value:
             item = CommonItem(row)
 
-            if item.type == 4:  # 活动
-                self._activity_stages[item.id] = item
-                continue
+            if item.sort == 1:
+                if item.type == 4:  # 活动
+                    self._activity_stages[item.id] = item
+                    continue
 
-            self._chapter_ids.add(item.chapter)
-            self._stages[item.id] = item
+                self._chapter_ids.add(item.chapter)
+                self._stages[item.id] = item
 
-            if not item.chaptersTab:  # 不是章节标签
-                self._condition_mapping.setdefault(item.condition, []).append(item.id)
+                if not item.chaptersTab:  # 不是章节标签
+                    self._condition_mapping.setdefault(item.condition, []).append(item.id)
 
         for stage_id, stage in self._stages.items():
             if stage.chapter == 1 and stage.section == 1 and stage.type == 1:  # 第一章第一节难度普通
