@@ -233,7 +233,7 @@ def table2jsn_prop(table, jsonFileName, luaFileName, objName, cur=None):
     save_to_file(json.dumps(obj, ensure_ascii=False), luaFileName, objName, PROP_TABLE)
     # save_to_file("[{'id':1}]", path)
     with open(jsonFileName, mode='wb') as f:
-        json.dump(obj, f)
+        json.dump(obj, f, ensure_ascii=False)
     #
     # print "Create ", path, " OK"
     return
