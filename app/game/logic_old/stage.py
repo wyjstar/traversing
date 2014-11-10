@@ -6,8 +6,8 @@ import random
 import time
 from app.game.core.drop_bag import BigBag
 from app.game.core.fight.battle_unit import BattleUnit
-from app.game.logic.common.check import have_player
-from app.game.logic.item_group_helper import gain, get_return
+from app.game.core.common.check import have_player
+from app.game.core.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from app.proto_file import stage_response_pb2
 from gfirefly.server.logobj import logger

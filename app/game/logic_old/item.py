@@ -5,8 +5,8 @@ created by server on 14-7-16下午3:19.
 from app.proto_file import item_pb2
 from shared.db_opear.configs_data.game_configs import item_config
 from app.game.core.drop_bag import BigBag
-from app.game.logic.item_group_helper import gain, get_return
-from app.game.logic.common.check import have_player
+from app.game.core.item_group_helper import gain, get_return
+from app.game.core.common.check import have_player
 from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
 from gfirefly.server.logobj import logger
 

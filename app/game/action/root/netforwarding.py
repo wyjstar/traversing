@@ -15,7 +15,10 @@ def push_object(topic_id, msg, send_list):
         send_list:
     """
     if get_gate_remote():
-        get_gate_remote().callRemote("push_object", topic_id, msg, send_list)
+        get_gate_remote().callRemote("push_object",
+                                     topic_id,
+                                     str(msg),
+                                     send_list)
 
 
 def send_mail(mail):
@@ -37,7 +40,10 @@ def add_guild_to_rank(g_id, dengji):
 
 def login_chat(dynamic_id, character_id, guild_id, nickname):
     if get_gate_remote():
-        get_gate_remote().callRemote("login_chat", dynamic_id, character_id, guild_id, nickname)
+        get_gate_remote().callRemote("login_chat",
+                                     dynamic_id,
+                                     character_id,
+                                     guild_id, nickname)
 
 
 def login_guild_chat(dynamic_id, guild_id):
@@ -55,15 +61,17 @@ def del_guild_room(guild_id):
         get_gate_remote().callRemote("del_guild_room", guild_id)
 
 
-def push_message(topic_id, character_id, *args, **kw):
+def push_message(key, character_id, *args, **kw):
     if get_gate_remote():
         player = PlayersManager().get_player_by_id(character_id)
         if player:
-            pargs = (topic_id, player.dynamic_id, True) + args
-            return get_gate_remote()._reference._service.callTarget(*pargs, **kw)
+            pargs = (key, player.dynamic_id) + args
+            kw['is_online'] = True
+            return get_gate_remote()._reference._service.callTarget(*pargs,
+                                                                    **kw)
         else:
             return get_gate_remote().callRemote("push_message",
-                                         topic_id,
-                                         character_id,
-                                         args,
-                                         kw)
+                                                key,
+                                                character_id,
+                                                args,
+                                                kw)

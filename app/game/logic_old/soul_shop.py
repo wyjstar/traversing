@@ -5,7 +5,7 @@ created by server on 14-7-16下午3:35.
 from app.game.logic.common.check import have_player
 from app.proto_file.soul_shop_pb2 import SoulShopRequest, GetShopItemsResponse, SoulShopResponse
 from shared.db_opear.configs_data.game_configs import soul_shop_config
-from app.game.logic.item_group_helper import is_afford, consume, gain, get_return
+from app.game.core.item_group_helper import is_afford, consume, gain, get_return
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils.random_pick import random_multi_pick_without_repeat
 from gfirefly.server.logobj import logger
