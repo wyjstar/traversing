@@ -12,8 +12,7 @@ from gfirefly.server.logobj import logger
 
 
 @have_player
-def get_items(dynamic_id, **kwargs):
-    player = kwargs.get('player')
+def get_items(player):
     items = player.item_package.get_all()
     # game_items = {1000:1, 1001:2}
     response = GetItemsResponse()
@@ -26,8 +25,7 @@ def get_items(dynamic_id, **kwargs):
 
 
 @have_player
-def use_item(dynamic_id, pro_data, **kwargs):
-    player = kwargs.get('player')
+def use_item(pro_data, player):
     item_pb = item_pb2.ItemPB()
     item_pb.ParseFromString(pro_data)
     item_no = item_pb.item_no
@@ -71,7 +69,6 @@ def use_item(dynamic_id, pro_data, **kwargs):
         drop_item_group = big_bag.get_drop_items()
         return_data = gain(player, drop_item_group)
         get_return(player, return_data, response.gain)
-
 
     logger.debug("item_no:%s", item_no)
     logger.debug("item_num:%s", item_num)

@@ -1,21 +1,18 @@
 # coding:utf8
 
+from gevent import monkey
+monkey.patch_os()
 import sys
 import json
 import code
 import signal
-import threading
 import traceback
 from gfirefly.server.server import FFServer
-from gevent import monkey
-monkey.patch_os()
 
 
 def dump_stacks(signal, frame):
-    id2name = dict([(th.ident, th.name) for th in threading.enumerate()])
     codes = []
     for threadId, stack in sys._current_frames().items():
-        codes.append("\n# Thread: %s(%d)" % (id2name.get(threadId, ""), threadId))
         for filename, lineno, name, line in traceback.extract_stack(stack):
             codes.append('File: "%s", line %d, in %s' % (filename, lineno, name))
             if line:
@@ -56,6 +53,11 @@ if __name__ == "__main__":
 
     serconfig = sersconf.get(servername)
     ser = FFServer()
-    ser.config(serconfig, servername=servername, dbconfig=dbconf, memconfig=memconf, masterconf=masterconf,
-               model_default_config=model_default_config, model_config=model_config)
+    ser.config(serconfig,
+               servername=servername,
+               dbconfig=dbconf,
+               memconfig=memconf,
+               masterconf=masterconf,
+               model_default_config=model_default_config,
+               model_config=model_config)
     ser.start()

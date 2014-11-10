@@ -16,7 +16,8 @@ class LineUpSlotComponent(Component):
     """阵容位置信息组件， 包括1个英雄格子，6个装备格子
     """
 
-    def __init__(self, owner, slot_no, activation=False, hero_no=0, equipment_ids={}.fromkeys([1, 2, 3, 4, 5, 6], None)):
+    def __init__(self, owner, slot_no, activation=False, hero_no=0,
+                 equipment_ids={}.fromkeys([1, 2, 3, 4, 5, 6], None)):
         """
         """
 
@@ -149,14 +150,14 @@ class LineUpSlotComponent(Component):
     def slot_attr(self):
         """
         """
-        hero_base_attr, attr = self.hero_attr()
+        hero_base_attr, attr, hero_obj = self.hero_attr()
 
         if not hero_base_attr:
             return None
 
         equ_attr = self.equ_attr()
         attr += equ_attr
-        red = self.__assemble_hero(hero_base_attr, attr)
+        red = self.__assemble_hero(hero_base_attr, attr, hero_obj)
         return red
 
     def hero_attr(self):
@@ -168,7 +169,7 @@ class LineUpSlotComponent(Component):
         hero_obj = self.hero_slot.hero_obj
 
         if not hero_obj:
-            return None, attr
+            return None, attr, hero_obj
 
         # hero_no, quality, hp, atk, physical_def, magic_def, hit
         # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
@@ -181,10 +182,13 @@ class LineUpSlotComponent(Component):
 
         attr = CommonItem()
         hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
+        print "武将：", hero_obj.hero_no
+        print "突破加成：", hero_break_attr
         attr += hero_break_attr
         hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
+        print "羁绊加成：", hero_link_attr
         attr += hero_link_attr
-        return hero_base_attr, attr
+        return hero_base_attr, attr, hero_obj
 
     def equ_attr(self):
         """
@@ -200,12 +204,17 @@ class LineUpSlotComponent(Component):
                 continue
             equipment_base_attr = equ_obj.calculate_attr()  # 装备基础属性，强化等级
             attr += equipment_base_attr
+        print "装备加成：", attr
+        suit_attr = CommonItem()
         equ_suit = self.equ_suit  # 装备套装技能属性
-        for equ_attr in equ_suit.values():
-            attr += equ_attr
+        for temp in equ_suit.values():
+            suit_attr += temp
+        print "套装加成：", suit_attr
+
+        attr += suit_attr
         return attr
 
-    def __assemble_hero(self, base_attr, attr):
+    def __assemble_hero(self, base_attr, attr, hero_obj):
         """组装英雄战斗单位
         """
         # base_attr: 英雄基础，等级 属性
@@ -224,10 +233,14 @@ class LineUpSlotComponent(Component):
         rage_skill = base_attr.rage_skill
         break_skills = base_attr.break_skills
 
-        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp
-        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk
-        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def
-        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def
+        print attr, "%%%%%%%%%%%%%%"
+
+        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp + hero_obj.break_param * hero_obj.hero_info.hp
+        print "base_attr.hp(%s), attr.hp_rate(%s), attr.hp(%s)" % (base_attr.hp, attr.hp_rate, attr.hp)
+
+        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk + hero_obj.break_param * hero_obj.hero_info.atk
+        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def + hero_obj.break_param * hero_obj.hero_info.physicalDef
+        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def + hero_obj.break_param * hero_obj.hero_info.magicDef
         hit = base_attr.hit + attr.hit
         dodge = base_attr.dodge + attr.dodge
         cri = base_attr.cri + attr.cri
@@ -274,7 +287,7 @@ class LineUpSlotComponent(Component):
             return 0
         return (((unit.atk + unit.physical_def + unit.magic_def) * unit.hp) ** game_configs.base_config.get(
             'zhandouli_xishu_a', 0.5)) * (unit.hit + unit.dodge) * (
-            1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * ((100 + unit.block * (
+                   1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * ((100 + unit.block * (
             1 - game_configs.base_config.get('a4', 0.7))) / 100 * game_configs.base_config.get(
             'zhandouli_xishu_b', 1))
 

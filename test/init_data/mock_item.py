@@ -16,8 +16,8 @@ def init_item(player):
     item5 = Item(20005, 50)
 
     # 经验
-    item6 = Item(10003, 15)
-    item9 = Item(10002, 15)
+    item6 = Item(10003, 1500)
+    item9 = Item(10002, 1500)
 
     # box
     item7 = Item(40001, 15)

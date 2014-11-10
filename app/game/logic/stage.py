@@ -15,11 +15,9 @@ from shared.db_opear.configs_data import game_configs
 
 
 @have_player
-def get_stage_info(dynamic_id, stage_id, **kwargs):
+def get_stage_info(stage_id, player):
     """取得关卡信息
     """
-    player = kwargs.get('player')
-
     if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
@@ -51,11 +49,9 @@ def get_stage_info(dynamic_id, stage_id, **kwargs):
 
 
 @have_player
-def get_chapter_info(dynamic_id, chapter_id, **kwargs):
+def get_chapter_info(chapter_id, player):
     """取得章节奖励信息
     """
-    player = kwargs.get('player')
-
     response = []
 
     if chapter_id:
@@ -69,10 +65,9 @@ def get_chapter_info(dynamic_id, chapter_id, **kwargs):
 
 
 @have_player
-def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
+def fight_start(stage_id, line_up, unparalleled, fid, player):
     """开始战斗
     """
-    player = kwargs.get('player')
     result_no = 0
 
     # 校验关卡是否开启
@@ -80,27 +75,21 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
     if state == -2:
         return {'result': False, 'result_no': 803}  # 803 未开启
 
+    conf = 0
     if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
-        #星期限制
-        if conf.weeklyControl[time.localtime().tm_wday]:
-            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
+
         #次数限制
         if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timeExpend:
+                and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
-        #时间限制
-        open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
-        close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
-        if not open_time <= time.time() <= close_time:
-            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
-        #次数限制
 
+        #次数限制
         if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timeExpend:
+                and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     else:  # 普通关卡
@@ -112,6 +101,18 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
             player.stage_component.stage_up_time = int(time.time())
             player.stage_component.update_stage_times()
             player.stage_component.update()
+
+    if conf:
+        # 星期限制
+        if conf.weeklyControl:
+            if conf.weeklyControl[time.localtime().tm_wday]:
+                return {'result': False, 'result_no': 804}  # 804 不在活动时间内
+
+        # 时间限制
+        open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
+        close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
+        if not open_time <= time.time() <= close_time:
+            return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
     # 保存阵容
     player.line_up_component.line_up_order = line_up
@@ -137,9 +138,7 @@ def fight_start(dynamic_id, stage_id, line_up, unparalleled, fid, **kwargs):
 
 
 @have_player
-def fight_settlement(dynamic_id, stage_id, result, **kwargs):
-    player = kwargs.get('player')
-
+def fight_settlement(stage_id, result, player):
     response = stage_response_pb2.StageSettlementResponse()
     drops = response.drops
     res = response.res
@@ -167,34 +166,33 @@ def fight_settlement(dynamic_id, stage_id, result, **kwargs):
                 if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
                     player.stage_component.elite_stage_info[0] += conf.timesExpend
                 else:
-                    player.stage_component.elite_stage_info = [conf.timeExpend, str(time.time())]
+                    player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
             elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
                 conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
                 if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
                     player.stage_component.act_stage_info[0] += conf.timesExpend
                 else:
-                    player.stage_component.act_stage_info = [conf.timeExpend, str(time.time())]
+                    player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
             player.stage_component.update()
 
-    # 经验
-    for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-        print lineUpSlotComponent,
-        hero = lineUpSlotComponent.hero_slot.hero_obj
-        if hero:
-            hero.upgrade(conf.HeroExp)
-    # 玩家金钱
-    player.finance.coin += conf.currency
-    # 玩家经验
-    player.level.addexp(conf.playerExp)
-    player.save_data()
+        # 经验
+        for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+            print lineUpSlotComponent,
+            hero = lineUpSlotComponent.hero_slot.hero_obj
+            if hero:
+                hero.upgrade(conf.HeroExp)
+        # 玩家金钱
+        player.finance.coin += conf.currency
+        # 玩家经验
+        player.level.addexp(conf.playerExp)
+        player.save_data()
 
     res.message = u'成功返回'
     return response.SerializePartialToString()
 
 
 @have_player
-def get_warriors(dynamic_id, **kwargs):
-    player = kwargs.get('player')
+def get_warriors(player):
     response = stage_response_pb2.UnparalleledResponse()
 
     warriors = player.line_up_component.warriors
@@ -221,13 +219,12 @@ def get_warriors(dynamic_id, **kwargs):
 
 
 @have_player
-def stage_sweep(dynamic_id, stage_id, times, **kwargs):
+def stage_sweep(stage_id, times, player):
     response = stage_response_pb2.StageSweepResponse()
     drops = response.drops
     res = response.res
 
-    player = kwargs.get('player')
-
+    need_money = 0
     if times == 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
             res.result = False
@@ -241,10 +238,11 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
 
     if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday \
             and game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes - player.stage_component.sweep_times[0] < times:
-        res.result = False
-        res.result_no = 805
-        return response.SerializePartialToString()
-
+        need_money = times-(game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes-player.stage_component.sweep_times[0])
+        if need_money > player.finance.gold:
+            res.result = False
+            res.result_no = 102
+            return response.SerializePartialToString()
     state = player.stage_component.check_stage_state(stage_id)
     if state != 1:
         res.result = False
@@ -295,6 +293,7 @@ def stage_sweep(dynamic_id, stage_id, times, **kwargs):
             hero.upgrade(stage_config.HeroExp)
     # 玩家金钱
     player.finance.coin += stage_config.currency
+    player.finance.gold -= need_money
     # 玩家经验
     player.level.addexp(stage_config.playerExp)
     player.save_data()

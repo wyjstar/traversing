@@ -21,13 +21,13 @@ class SpecialStageConfig(object):
         for row in config_value:
             item = CommonItem(row)
 
-            if item.type == 5:
+            if item.type == 6:
                 self._elite_stages[item.id] = item
                 if item.condition != 0:  # 开启条件不是0
                     self._condition_mapping.setdefault(item.condition, []).append(item.id)
                 else:
                     self._first_stage_id.append(item.id)
-            elif item.type == 6:
+            elif item.type == 5:
                 self._act_stages[item.id] = item
                 if item.condition != 0:  # 开启条件不是0
                     self._condition_mapping.setdefault(item.condition, []).append(item.id)

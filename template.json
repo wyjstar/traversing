@@ -6,6 +6,12 @@
     },
     "servers": {
         "admin": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
             "webport": 32001,
             "name": "admin",
             "app": "app.admin",
@@ -105,6 +111,11 @@
             "mem": true,
             "app": "app.dbfront",
             "log": "app/logs/db.log"
+        },
+        "world": {
+            "name": "world",
+            "app": "app.world",
+            "log": "app/logs/world.log"
         }
     },
     "db": {
