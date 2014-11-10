@@ -6,7 +6,7 @@ import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
-from app.game.logic.fight import do_assemble
+from app.game.core.fight import do_assemble
 
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs

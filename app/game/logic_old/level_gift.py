@@ -9,7 +9,7 @@ created by sphinx on
 from app.proto_file import level_gift_pb2
 from app.game.logic.common.check import have_player
 from shared.db_opear.configs_data.game_configs import activity_config
-from app.game.logic.item_group_helper import gain, get_return
+from app.game.core.item_group_helper import gain, get_return
 
 
 @have_player

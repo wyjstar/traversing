@@ -6,20 +6,19 @@ from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
 import time
-from app.game.logic.player import init_player
+from app.game.action.node.player import init_player
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
-def enter_scene_601(dynamic_id, character_id):
+def enter_scene(dynamic_id, character_id):
     """进入场景"""
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
         init_player(player)
         PlayersManager().add_player(player)
-
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True

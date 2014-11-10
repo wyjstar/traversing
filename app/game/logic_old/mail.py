@@ -5,7 +5,7 @@ created by server on 14-8-14下午6:32.
 from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailRequest, ReadMailResponse, ReceiveMailResponse
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.logic.common.check import have_player
-from app.game.logic.item_group_helper import gain, get_return
+from app.game.core.item_group_helper import gain, get_return
 from app.game.action.root import netforwarding
 import time
 from app.game.core.drop_bag import BigBag
