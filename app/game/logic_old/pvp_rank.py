@@ -121,6 +121,7 @@ def pvp_player_info_request(data, player):
 def pvp_fight_request(data, player):
     request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
+    logger.info('player:%s chanllenge %s', player.base_info.id, request.challenge_rank)
 
     line_up = {}  # {hero_id:pos}
     for line in request.lineup:

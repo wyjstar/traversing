@@ -65,7 +65,10 @@ def __character_login(dynamic_id):
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
-    player_data = GlobalObject().root.callChild(now_node, 601, dynamic_id, user.user_id)
+    player_data = GlobalObject().root.callChild(now_node,
+                                                'enter_scene',
+                                                dynamic_id,
+                                                user.user_id)
     if not player_data:
         return {'result': False}
     v_character.node = now_node

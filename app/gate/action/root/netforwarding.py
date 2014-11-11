@@ -14,19 +14,21 @@ from gfirefly.utils.services import CommandService
 from shared.utils.ranking import Ranking
 import cPickle
 
+groot = GlobalObject().root
+
 
 @rootserviceHandle
 def forwarding(key, dynamic_id, data):
     """
     """
 
-    if local_service._targets.has_key(key):
+    if key in local_service._targets:
         return local_service.callTarget(key, dynamic_id, data)
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         if not oldvcharacter:
             return
-        result = GlobalObject().root.callChild(oldvcharacter.node, key, dynamic_id, data)
+        result = groot.callChild(oldvcharacter.node, key, dynamic_id, data)
 
         return result
 
@@ -35,10 +37,10 @@ def forwarding(key, dynamic_id, data):
 def forwarding_test(key, dynamic_id, data):
     """
     """
-    if local_service._targets.has_key(key):
+    if key in local_service._targets:
         return local_service.callTarget(key, dynamic_id, data)
     else:
-        result = GlobalObject().root.callChildByName('game', key, dynamic_id, data)
+        result = groot.callChildByName('game', key, dynamic_id, data)
         return result
 
 
@@ -47,12 +49,20 @@ def push_object(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
     """
-    GlobalObject().root.childsmanager.callChildByNameNotForResult("net", "pushObject", topic_id, msg, send_list)
+    groot.childsmanager.callChildByNameNotForResult("net",
+                                                    "pushObject",
+                                                    topic_id,
+                                                    msg,
+                                                    send_list)
 
 
 @rootserviceHandle
 def push_chat_message(send_list, msg):
-    GlobalObject().root.childsmanager.callChildByNameNotForResult("net", "pushObject", 1000, msg, send_list)
+    groot.childsmanager.callChildByNameNotForResult("net",
+                                                    "pushObject",
+                                                    1000,
+                                                    msg,
+                                                    send_list)
 
 
 @rootserviceHandle
@@ -82,62 +92,57 @@ def add_guild_to_rank(g_id, dengji):
 
 @rootserviceHandle
 def login_chat(dynamic_id, character_id, guild_id, nickname):
-    GlobalObject().root.callChildByName('chat', 1001, dynamic_id, character_id, nickname, guild_id)
+    groot.callChildByName('chat', 1001, dynamic_id, character_id,
+                          nickname, guild_id)
 
 
 @rootserviceHandle
 def login_guild_chat(dynamic_id, guild_id):
-    GlobalObject().root.callChildByName('chat', 1004, dynamic_id, guild_id)
+    groot.callChildByName('chat', 1004, dynamic_id, guild_id)
 
 
 @rootserviceHandle
 def logout_guild_chat(dynamic_id):
-    GlobalObject().root.callChildByName('chat', 1005, dynamic_id)
+    groot.callChildByName('chat', 1005, dynamic_id)
 
 
 @rootserviceHandle
 def del_guild_room(guild_id):
-    GlobalObject().root.callChildByName('chat', 1006, guild_id)
+    groot.callChildByName('chat', 1006, guild_id)
 
 
 @rootserviceHandle
-def push_message(topic_id, character_id, args, kw):
+def push_message(key, character_id, args, kw):
     # print 'gate receive push message'
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
     if oldvcharacter:
-        return GlobalObject().root.callChild(oldvcharacter.node,
-                                             *(topic_id, oldvcharacter.dynamic_id, True) + args,
-                                             **kw)
+        args = (key, oldvcharacter.dynamic_id, True) + args
+        return groot.callChild(oldvcharacter.node, *args, **kw)
     else:
-        return GlobalObject().remote['transit'].callRemote("push_message", topic_id, character_id, args, kw)
+        return GlobalObject().remote['transit'].callRemote("push_message",
+                                                           key,
+                                                           character_id,
+                                                           args, kw)
 
 
-remoteservice = CommandService("transitremote")
+remoteservice = CommandService('transitremote')
 GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 
 @remoteserviceHandle('transit')
-def send_message_to_character_100001(topic_id, character_id, *args, **kw):
+def pull_message(key, character_id, *args, **kw):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
-        # print 'gate found character to pull message:', oldvcharacter.__dict__
+        print 'gate found character to pull message:', oldvcharacter.__dict__
+        kw['is_online'] = False
+        args = (key, oldvcharacter.dynamic_id) + args
         return GlobalObject().root.callChild(oldvcharacter.node,
-                                             *((topic_id, oldvcharacter.dynamic_id, False) + args),
+                                             *args,
                                              **kw)
-
-
-# @rootserviceHandle
-# def opera_player(pid, oprea_str):
-#     """
-#     """
-#     vcharacter = VCharacterManager().get_character_by_characterid(pid)
-#     if not vcharacter:
-#         node = "game1"
-#     else:
-#         node = vcharacter.node
-#     GlobalObject().root.callChildNotForResult(node, 99, pid, oprea_str)
+    else:
+        return False
 
 
 def save_playerinfo_in_db(dynamic_id):

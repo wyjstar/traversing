@@ -21,10 +21,10 @@ class MessageCache:
         self._redis = redis.StrictRedis()
         self._redis.pipeline()
 
-    def cache(self, topic_id, character_id, *args, **kw):
+    def cache(self, key, character_id, *args, **kw):
         unique_id = uuid.uuid4()
         key_name = str(character_id)
-        message = cPickle.dumps(dict(topic_id=topic_id,
+        message = cPickle.dumps(dict(topic_id=key,
                                      character_id=character_id,
                                      args=args,
                                      kw=kw,

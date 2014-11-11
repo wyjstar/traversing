@@ -3,10 +3,10 @@
 created by server on 14-8-25下午8:31.
 """
 from shared.db_opear.configs_data.game_configs import sign_in_config, base_config
-from app.game.logic.item_group_helper import gain, get_return
+from app.game.core.item_group_helper import gain, get_return
 from app.proto_file.sign_in_pb2 import SignInResponse, ContinuousSignInResponse, GetSignInResponse
 from app.game.core.drop_bag import BigBag
-from app.game.logic.common.check import have_player
+from app.game.core.common.check import have_player
 import datetime
 
 

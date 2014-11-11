@@ -5,7 +5,7 @@ created by server on 14-7-10下午3:17.
 import test.unittest.init_data.init_connection
 import unittest
 from app.game.core.PlayersManager import PlayersManager
-from app.game.logic.item_group_helper import *
+from app.game.core.item_group_helper import *
 from shared.db_opear.configs_data.data_helper import parse
 from shared.utils.const import *
 from app.proto_file.common_pb2 import GameResourcesResponse
