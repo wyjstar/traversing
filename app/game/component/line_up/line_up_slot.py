@@ -6,11 +6,7 @@ import cPickle
 from app.game.component.Component import Component
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.component.line_up.hero_slot import HeroSlotComponent
-<<<<<<< HEAD
 from app.battle.battle_unit import do_assemble
-=======
-from app.game.core.fight import do_assemble
->>>>>>> e80d4743bd379487e1b17a66964df648b1098577
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
