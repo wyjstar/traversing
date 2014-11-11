@@ -11,6 +11,7 @@ from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
+from app.battle.battle_process import BattlePVPProcess
 
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
@@ -100,12 +101,18 @@ def pvp_fight_request_1505(data, player):
         refresh_rank_data(player, player.base_info.id)
 
     prere = dict(id=request.challenge_rank)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['units'])
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['units', 'best_skill'])
     blue_units = record.get('units')
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
+
+
+    process = BattlePVPProcess(red_units, request.skill, blue_units, record.get('best_skill', 0))
+    fight_result = process.process()
+
+    logger.debug("fight result:%s" % fight_result)
 
     # todo check battl
     # if check_battle(red_units, blue_units)
@@ -120,17 +127,18 @@ def pvp_fight_request_1505(data, player):
 
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
-    for red_unit in red_units:
+    for slot_no, red_unit in red_units.items():
         if not red_unit:
             continue
         red_add = response.red.add()
         assemble(red_add, red_unit)
-    for blue_unit in blue_units:
+    for slot_no, blue_unit in blue_units.items():
         if not blue_unit:
             continue
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
     response.red_skill = request.skill
+    print "*"*80
     return response.SerializeToString()
 
 

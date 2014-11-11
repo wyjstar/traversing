@@ -35,6 +35,7 @@ class BattleRound(object):
         """
         print "    进入战场，添加的buff..."
         for temp in self._red_units.values():
+            print "temp.no", temp.unit_no
             for skill_buff_info in temp.skill.begin_skill_buffs():
                 target_units = find_target_units(temp, self._red_units, self._blue_units, skill_buff_info)
                 self.handle_skill_buff(temp, self._red_units, self._blue_units, skill_buff_info, target_units)
