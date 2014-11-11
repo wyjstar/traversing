@@ -43,7 +43,7 @@
     <table name="tb_mail_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_lord" dataNode="dn_traversing$0-3" rule="id_int_4" />
 
-    <table name="tb_pvp_rank" dataNode="dn_account" />
+    <table name="tb_pvp_rank" dataNode="dn_account" rule="id_int_8" />
   </schema>
 
   <!-- 数据节点定义，数据节点由数据源和其他一些参数组织而成。-->

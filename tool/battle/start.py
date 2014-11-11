@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from battle_process import BattlePVPProcess, BattlePVEProcess
-from battle_round import BattleUnit
-from battle_round import BestSkill, FriendSkill
-from configs_data.game_configs import monster_config, monster_group_config, stage_config, special_stage_config, language_config
+
+from app.battle.battle_process import BattlePVPProcess, BattlePVEProcess
+from app.battle.battle_unit import BattleUnit, do_assemble
+from app.battle.battle_skill import BestSkill, FriendSkill, HeroSkill, MonsterSkill
+from shared.db_opear.configs_data.game_configs import monster_config, \
+    monster_group_config, stage_config, special_stage_config, language_config, skill_config, hero_breakup_config
+from shared.db_opear.configs_data.game_configs import base_config
 import sys
 
 
@@ -28,24 +31,23 @@ def parse_input(battle_type):
         eles = all_lines[i].split(',')
 
         if i == 1 and eles[1]:
-            red_best_skill = BestSkill(0, eles[1])
+            red_best_skill = BestSkill(eles[1])
 
         if i >= 2 and i <= 7:
             if not eles[0]: continue
-            unit = BattleUnit(i-1, eles[1], eles[2], eles[3], eles[4], eles[5], eles[6], eles[7], eles[8], eles[9], eles[10], eles[11], eles[12], eles[13], eles[14]
-                    , eles[15], eles[16], eles[17])
+            unit = init_unit(i-1, eles)
             red_units[i-1] = unit
         if i == 8:
             if not eles[0]: continue
-            unit = BattleUnit(-1, eles[1], eles[2], eles[3], eles[4], eles[5], eles[6], eles[7], eles[8], eles[9], eles[10], eles[11], eles[12])
+            unit = init_unit(-1, eles, is_hero=True)
             friend_skill = FriendSkill(unit)
 
         if i == 10 and eles[1]:
-            blue_best_skill = BestSkill(0, eles[1])
+            blue_best_skill = BestSkill(eles[1])
 
         if i >= 11 and i <= 16 and battle_type == "pvp":
             if not eles[0]: continue
-            unit = BattleUnit(i-10, eles[1], eles[2], eles[3], eles[4], eles[5], eles[6], eles[7], eles[8], eles[9], eles[10], eles[11], eles[12])
+            unit = init_unit(i-10, eles)
             blue_units[i-10] = unit
             blue_groups.append(blue_units)
 
@@ -57,11 +59,57 @@ def parse_input(battle_type):
             if not stage_info: return
             blue_groups = get_monsters(stage_info)
 
-            # todo: consturct monster group
     if battle_type == "pvp":
         return BattlePVPProcess(red_units, red_best_skill, blue_units, blue_best_skill)
     elif battle_type == "pve":
         return BattlePVEProcess(red_units, red_best_skill, blue_groups, friend_skill)
+
+
+
+def init_unit(slot_no, eles, is_hero=True):
+
+    unit_name = eles[1]
+    unit_no = int(eles[2])
+    quality = int(eles[3])
+    hp = float(eles[4])
+    atk = float(eles[5])
+    physical_def = float(eles[6])
+    magic_def = float(eles[7])
+    hit = float(eles[8])
+    dodge = float(eles[9])
+    cri = float(eles[10])
+    cri_coeff = float(eles[11])
+    cri_def_coeff = float(eles[12])
+    block = float(eles[13])
+    ductility = float(eles[14])
+    level = int(eles[15])
+    break_level = int(eles[16])
+    init_mp = int(eles[17])
+
+    break_skill_buff_ids = []
+    if is_hero:
+        hero_break_skill_buff_ids(unit_no, break_level)
+
+    unit =  do_assemble(unit_no, quality, break_skill_buff_ids, hp, atk, physical_def, magic_def, hit, dodge, cri,
+                cri_coeff, cri_def_coeff, block, ductility, slot_no, level, is_hero=True, is_break_hero=False, unit_name=unit_name)
+    return unit
+
+
+def hero_break_skill_buff_ids(hero_no, break_level):
+    hero_break_skill_buff_ids = []
+    hero_break_skill_ids = []
+    hero_break_info = hero_breakup_config.get(hero_no)
+
+    for i in range(break_level):
+        hero_break_skill_ids.append(hero_break_info.get_skill_id(i + 1))
+
+    for skill_id in hero_break_skill_ids:
+        skill_info = skill_config.get(skill_id, None)
+        if skill_info:
+            hero_break_skill_buff_ids.extend(skill_info.get("group"))
+    return hero_break_skill_buff_ids
+
+
 
 def get_stage_info(stage):
     """
@@ -123,15 +171,18 @@ def get_monsters(stage_info):
             monster_id = monster_group_info.get("pos%d" % j)
             if not monster_id: continue
             monster_info = monster_config.get(monster_id)
-            unit = BattleUnit(j, "怪物"+str(j), monster_id, 0, monster_info.hp, monster_info.atk, monster_info.physicalDef, monster_info.magicDef, monster_info.hit,
-                     monster_info.dodge, monster_info.cri, monster_info.cri_coeff, monster_info.cri_ded_coeff, monster_info.block)
+            unit = BattleUnit()
+            eles = [j, "怪物"+str(j), monster_id, 0, monster_info.hp, monster_info.atk, monster_info.physicalDef, monster_info.magicDef, monster_info.hit,
+                     monster_info.dodge, monster_info.cri, monster_info.cri_coeff, monster_info.cri_ded_coeff, monster_info.block, monster_info.ductility,
+                    monster_info.monsterLv, 0, 0]
+            init_unit(j, eles, is_hero=False)
             blue_units[j] = unit
         blue_groups.append(blue_units)
 
     return blue_groups
 
 if __name__ == '__main__':
-    battle_type = 'pve'
+    battle_type = 'pvp'
     if len(sys.argv) > 1:
         battle_type = sys.argv[1]
     process = parse_input(battle_type)

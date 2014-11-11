@@ -36,6 +36,7 @@ from vip_config import VIPConfig
 from special_stage_config import SpecialStageConfig
 from arena_fight_config import ArenaFightConfig
 from hero_breakup_attr_config import HeroBreakupAttrConfig
+from language_config import LanguageConfig
 
 
 base_config = {}
@@ -71,6 +72,7 @@ player_exp_config = {}
 arena_fight_config = {}
 arena_shop_config = {}
 hero_breakup_attr_config = {}
+language_config = {}
 
 
 all_config_name = {
@@ -106,16 +108,17 @@ all_config_name = {
     'player_exp_config': PlayerExpConfig(),
     'arena_fight_config': ArenaFightConfig(),
     'arena_shop_config': ArenaShopConfig(),
-    'hero_breakup_attr_config': HeroBreakupAttrConfig()
+    'hero_breakup_attr_config': HeroBreakupAttrConfig(),
+    'language_config': LanguageConfig()
 }
 
 
-module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
+module = cPickle.load(open('/home/server/PycharmProjects/traversing/shared/db_opear/configs_data/excel', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)
     objs = all_config_name[config_name].parser(config_value)
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in arena_shop_config.items():
+    for k, v in language_config.items():
         print k, v, len(v)
