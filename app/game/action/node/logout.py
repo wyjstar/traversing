@@ -7,14 +7,9 @@ from gfirefly.server.globalobject import remoteserviceHandle
 
 
 @remoteserviceHandle('gate')
-def net_conn_lost_602(dynamic_id):
+def net_conn_lost_602(player):
     """logout
     """
-    player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
-
-    if not player:
-        return True
-
     player.online_gift.offline_player()
 
     # TODO 是否需要保存数据

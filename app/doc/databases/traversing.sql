@@ -222,6 +222,7 @@ CREATE TABLE `tb_pvp_rank` (
   `nickname` varchar(128) DEFAULT '',
   `level` int(11) NOT NULL DEFAULT '1',
   `ap` int(11) NOT NULL,
+  `best_skill` int(11) NOT NULL,
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
   `hero_ids` tinyblob NOT NULL,

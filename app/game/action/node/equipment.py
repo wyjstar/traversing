@@ -2,16 +2,15 @@
 """
 created by server on 14-7-9上午11:28.
 """
-from app.game.logic import item_group_helper
-from app.game.logic.equipment import get_equipments_info, enhance_equipment, compose_equipment, melting_equipment, \
-    awakening_equipment
+from app.game.core import item_group_helper
 from app.proto_file import equipment_request_pb2
 from app.proto_file import equipment_response_pb2
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
-def get_equipments_401(dynamic_id, pro_data):
+def get_equipments_401(pro_data, player):
     """请求装备信息
     @param dynamic_id:
     @param pro_data:
@@ -22,7 +21,7 @@ def get_equipments_401(dynamic_id, pro_data):
     get_type = request.type
     get_id = request.id
 
-    equipments = get_equipments_info(dynamic_id, get_type, get_id)
+    equipments = get_equipments_info(get_type, get_id, player)
 
     response = equipment_response_pb2.GetEquipmentResponse()
     res = response.res
@@ -40,7 +39,7 @@ def get_equipments_401(dynamic_id, pro_data):
 
 
 @remoteserviceHandle('gate')
-def enhance_equipment_402(dynamic_id, pro_data):
+def enhance_equipment_402(pro_data, player):
     """强化装备
     @param dynamic_id:
     @param pro_data:
@@ -52,7 +51,10 @@ def enhance_equipment_402(dynamic_id, pro_data):
     enhance_type = request.type
     enhance_num = request.num
 
-    enhance_info = enhance_equipment(dynamic_id, equipment_id, enhance_type, enhance_num)
+    enhance_info = enhance_equipment(equipment_id,
+                                     enhance_type,
+                                     enhance_num,
+                                     player)
 
     result = enhance_info.get('result')
     response = equipment_response_pb2.EnhanceEquipmentResponse()
@@ -79,7 +81,7 @@ def enhance_equipment_402(dynamic_id, pro_data):
 
 
 @remoteserviceHandle('gate')
-def compose_equipment_403(dynamic_id, pro_data):
+def compose_equipment_403(pro_data, player):
     """合成装备
     @param dynamic_id:
     @param pro_data:
@@ -88,7 +90,7 @@ def compose_equipment_403(dynamic_id, pro_data):
     request = equipment_request_pb2.ComposeEquipmentRequest()
     request.ParseFromString(pro_data)
     equipment_chip_no = request.no
-    data = compose_equipment(dynamic_id, equipment_chip_no)
+    data = compose_equipment(equipment_chip_no, player)
     result = data.get('result')
     response = equipment_response_pb2.ComposeEquipmentResponse()
     res = response.res
@@ -109,7 +111,7 @@ def compose_equipment_403(dynamic_id, pro_data):
 
 
 @remoteserviceHandle('gate')
-def nobbing_equipment_404(dynamic_id, pro_data):
+def nobbing_equipment_404(pro_data, player):
     """锤炼装备
     @param dynamic_id:
     @param pro_data:
@@ -124,7 +126,7 @@ def nobbing_equipment_404(dynamic_id, pro_data):
 
 
 @remoteserviceHandle('gate')
-def melting_equipment_405(dynamic_id, pro_data):
+def melting_equipment_405(pro_data, player):
     """熔炼装备
     @param dynamic_id:
     @param pro_data:
@@ -137,7 +139,7 @@ def melting_equipment_405(dynamic_id, pro_data):
     response = equipment_response_pb2.MeltingEquipmentResponse()
 
     for equipment_id in equipment_ids:
-        data = melting_equipment(dynamic_id, equipment_id, response)
+        data = melting_equipment(equipment_id, response, player)
         # result = data.get('result')
 
     response.res.result = True
@@ -145,7 +147,7 @@ def melting_equipment_405(dynamic_id, pro_data):
 
 
 @remoteserviceHandle('gate')
-def awakening_equipment_406(dynamic_id, pro_data):
+def awakening_equipment_406(pro_data, player):
     """熔炼装备
     @param dynamic_id:
     @param pro_data:
@@ -155,7 +157,7 @@ def awakening_equipment_406(dynamic_id, pro_data):
     request.ParseFromString()
 
     equipment_id = request.id
-    data = awakening_equipment(dynamic_id, equipment_id)
+    data = awakening_equipment(equipment_id, player)
 
     result = data.get('result')
     response = equipment_response_pb2.MeltingEquipmentResponse()
@@ -170,3 +172,130 @@ def awakening_equipment_406(dynamic_id, pro_data):
     item_group_helper.get_return(player, gain, response.cgr)
 
     return response.SerializePartialToString()
+
+
+def get_equipments_info(get_type, get_id, player):
+    """
+    @param get_type: 装备类型 -1：一件 0：全部 1：武器 2：头盔 3：衣服 4：项链 5：饰品 6：宝物
+    @param get_id: 装备ID
+    @return: 装备的详细信息 []
+    """
+    equipments = []
+    if get_type == -1:
+        obj = player.equipment_component.get_equipment(get_id)
+        if obj:
+            equipments.append(obj)
+    elif get_type == 0:
+        equipments.extend(player.equipment_component.get_all())
+    else:
+        equipments.extend(player.equipment_component.get_by_type(get_type))
+
+    return equipments
+
+
+def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
+    """装备强化
+    @param dynamic_id:  客户端动态ID
+    @param equipment_id: 装备ID
+    @param enhance_type: 强化类型
+    @param enhance_num: 强化次数
+    @param kwargs:
+    @return:
+    """
+
+    equipment_obj = player.equipment_component.get_equipment(equipment_id)
+    # print equipment_obj, "equipment_obj"
+
+    if enhance_type == 2 and not player.vip_component.equipment_strength_one_key:
+        logger.debug('enhance_equipment_vip_error!%d' % player.vip_component.equipment_strength_one_key)
+        return {'result': False, 'result_no': 403, 'message': u''}
+
+    if not equipment_obj:
+        logger.debug('enhance_equipment_no_equipment!')
+        return {'result': False, 'result_no': 401, 'message': u''}
+
+    enhance_record = []
+
+    curr_coin = player.finance.coin  # 用户金币
+    # curr_coin = 1000000
+    enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
+    if not enhance_cost or curr_coin < enhance_cost:
+        return {'result': False, 'result_no': 101, 'message': u''}
+
+    if equipment_obj.attribute.strengthen_lv > 200 or \
+        equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
+        # print "reach max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
+        return {'result': False, 'result_no': 402, 'message': u''}
+
+    for i in xrange(0, enhance_num):
+        result = __do_enhance(player, equipment_obj)
+        if not result.get('result'):
+            return result
+        enhance_record.append(result.get('record'))
+
+    # 保存
+    equipment_obj.save_data()
+    player.finance.save_data()
+
+    return {'result': True, 'enhance_record': enhance_record}
+
+
+def __do_enhance(player, equipment_obj):
+    """
+    @param player:  用户对象
+    @param equipment_obj: 装备对象
+    @return: {'before_lv':1, 'after_lv':2, 'cost_coin':21}
+    """
+    enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
+
+    before_lv, after_lv = equipment_obj.enhance(player)
+
+    # print before_lv, after_lv, "before_lv, after_lv"
+    player.finance.modify_single_attr('coin', enhance_cost, add=False)
+
+    return {'result': True, 'record': (before_lv, after_lv, enhance_cost)}
+
+
+def compose_equipment(chip_no, player):
+    """合成装备
+    """
+    chip = player.equipment_chip_component.get_chip(chip_no)
+    # 没有碎片
+    if not chip:
+        return {'result': False, 'result_no': 102, 'message': u''}
+
+    compose_num = chip.compose_num
+    chip_num = chip.chip_num
+    # print "chip_num", compose_num, chip_num
+    # 碎片不足
+    if chip_num < compose_num:
+        return {'result': False, 'result_no': 102, 'message': u''}
+    equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
+    chip.chip_num -= compose_num
+    player.equipment_chip_component.save_data()
+    return {'result': True, 'equipment_obj': equipment_obj}
+
+
+def melting_equipment(equipment_ids, response, player):
+    """熔炼
+    @param dynamic_id:
+    @param equipment_ids:
+    @param kwargs:
+    @return:
+    """
+    equipment_obj = player.equipment_component.get_equipment(equipment_ids)
+    if not equipment_obj:
+        return {'result': False, 'result_no': 401, 'message': u''}
+    melting_items = equipment_obj.melting_item
+    gain = item_group_helper.gain(player, melting_items)
+    item_group_helper.get_return(player, gain, response.cgr)
+
+
+def awakening_equipment(equipment_id, player):
+    """觉醒
+    @param dynamic_id:
+    @param equipment_id:
+    @param kwargs:
+    @return:
+    """
+    pass

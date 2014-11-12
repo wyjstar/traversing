@@ -254,17 +254,10 @@ class Hero(object):
         skills = []
         skill_ids = self.break_skill_ids
         for skill_id in skill_ids:
-            skill = [skill_id]
             skill_config = game_configs.skill_config.get(skill_id)  # 技能配置
             group = skill_config.group  # buff组
-            for buff_id in group[:]:
-                buff_config = game_configs.skill_buff_config.get(buff_id)  # buff配置
-                trigger_type = buff_config.triggerType  # 触发类别
-                if trigger_type == 1 or trigger_type == 6 or trigger_type == 7 or trigger_type == 8 or trigger_type \
-                        == 9 or trigger_type == 10:
-                    continue
-                skill.append(buff_id)
-            skills.append(skill)
+            skills.extend(group)
+
         return skills
 
     def __assemble_skills(self, buffs, mold=0):

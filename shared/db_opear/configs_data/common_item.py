@@ -20,6 +20,9 @@ class CommonItem(dict):
                 other[k] = v
         return other
 
+    def __getstate__(self):
+        return self.__dict__
+
 
 class CommonGroupItem():
     def __init__(self, item_no, max_num, min_num, item_type):
@@ -53,3 +56,5 @@ if __name__ == '__main__':
     print id(test_b)
     print id(test_c)
     print test_c.c
+    import cPickle
+    cPickle.dumps(test_a)

@@ -24,6 +24,7 @@ if __name__ == "__main__":
         for k, v in replace_items:
             str_template = str_template.replace('<=%s=>' % k, v)
             fp = open('config.json', 'w')
+
             fp.write(str_template)
             fp.flush()
             fp.close()
