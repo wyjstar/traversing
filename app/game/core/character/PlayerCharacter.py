@@ -71,7 +71,7 @@ class PlayerCharacter(Character):
         self._stamina = CharacterStaminaComponent(self)  # 体力
         self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
         self._arena_shop = CharacterArenaShopComponent(self)
-        self._brew = CharacterBrewComponent()
+        self._brew = CharacterBrewComponent(self)
 
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
