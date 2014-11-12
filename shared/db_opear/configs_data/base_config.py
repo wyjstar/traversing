@@ -7,6 +7,21 @@ created by server on 14-6-17下午5:29.
 class BaseConfig(object):
 
     def parser(self, config_value):
-        config_value['hero_position_open_level'] = {1:1,2:2,3:5,4:10,5:16,6:20}
-        config_value['friend_position_open_level'] = {1:20,2:30,3:40,4:50,5:60,6:70}
+        def convert_keystr2num(d):
+            for k in d.keys():
+                nk = None
+                v = d[k]
+                try:
+                    nk = eval(k)
+                except:
+                    pass
+                if nk is not None:
+                    del d[k]
+                    d[nk] = v
+                if isinstance(v, dict):
+                    convert_keystr2num(v)
+
+        for k, v in config_value.items():
+            if isinstance(v, dict):
+                convert_keystr2num(v)
         return config_value

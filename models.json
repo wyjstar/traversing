@@ -110,8 +110,8 @@
             "def_attrs": {
                 "id":"simple",
                 "info": "complex"
-		    }
-	    },
+            }
+        },
         "tb_character_friend":{
             "pkey_field": "id",
             "def_attrs": {
@@ -158,6 +158,14 @@
             "def_attrs": {
                 "id": "simple",
                 "attr_info": "complex"
+            }
+        },
+        "tb_character_brew": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "brew": "complex",
+                "hero_refine": "complex"
             }
         }
     }

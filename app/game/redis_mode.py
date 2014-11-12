@@ -68,3 +68,7 @@ tb_character_lord.insert()
 # 体力表
 tb_character_stamina = MAdmin('tb_character_stamina', 'id')
 tb_character_stamina.insert()
+
+# brew
+tb_character_brew = MAdmin('tb_character_brew', 'id')
+tb_character_brew.insert()

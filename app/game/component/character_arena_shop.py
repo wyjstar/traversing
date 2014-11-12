@@ -71,7 +71,7 @@ class CharacterArenaShopComponent(Component):
 
     @property
     def price(self):
-        price = base_config.get('arenaShopRefreshPrice').get('2')[0]
+        price = base_config.get('arenaShopRefreshPrice').get(2)[0]
         k = base_config.get('arenaShopRefreshFactor')
         free_times = base_config.get('arenaShopFreeRefreshTimes')
 
