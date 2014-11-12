@@ -180,12 +180,13 @@ class FriendComponent(Component):
         if stamina_mail:
             mail = dict(sender_id=self.owner.base_info.id,
                         sender_name=self.owner.base_info.base_name,
+                        sender_icon=self.owner.base_info.base_name,
                         receive_id=target_id,
-                        title=mail_config.get('title'),
-                        content=mail_config.get('content'),
-                        mail_type=mail_config.get('type'),
+                        title=stamina_mail.get('title'),
+                        content=stamina_mail.get('content'),
+                        mail_type=stamina_mail.get('type'),
                         send_time=int(time.time()),
-                        prize=mail_config.get('rewards'))
+                        prize=stamina_mail.get('rewards'))
 
             # command:id 为收邮件的命令ID
             if netforwarding.push_message(1305, target_id, mail):

@@ -353,10 +353,12 @@ def given_stamina(data, player):
     request.ParseFromString(data)
     target_id = request.target_ids[0]
 
-    if not player.friends.given_stamina(target_id):
+    success = player.friends.given_stamina(target_id)
+    if not success:
         response.result = False
         response.result_no = 1  # fail
         return response.SerializePartialToString()  # fail
+    player.friends.save_data()
     return response.SerializePartialToString()  # fail
 
 @have_player

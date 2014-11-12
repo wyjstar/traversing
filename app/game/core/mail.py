@@ -11,7 +11,7 @@ class Mail(object):
     """
     邮件
     """
-    def __init__(self, mail_id='', character_id=0, sender_id=-1, sender_name='', title='',
+    def __init__(self, mail_id='', character_id=0, sender_id=-1, sender_name='', sender_icon=0, title='',
                  content=u'', mail_type=1, is_readed=False,
                  send_time=0, read_time=0, prize=0):
         """初始化邮件信息
@@ -21,6 +21,7 @@ class Mail(object):
         self._title = title  # 邮件的主题
         self._sender_id = sender_id  # 发送人id
         self._sender_name = sender_name   # 发送者的昵称
+        self._sender_icon = sender_icon
         self._mail_type = mail_type  # 邮件的类型（1.赠送  2.领奖 3.公告 4.消息  ）
         self._content = content  # 邮件的内容
         self._is_readed = is_readed  # 是否已读
@@ -36,6 +37,7 @@ class Mail(object):
             self._title = mail_prop.get("title")
             self._sender_id = mail_prop.get("sender_id")
             self._sender_name = mail_prop.get("sender_name")
+            self._sender_icon = mail_prop.get("sender_icon")
             self._mail_type = mail_prop.get("mail_type")
             self._content = mail_prop.get("content")
             self._is_readed = mail_prop.get("is_readed")
@@ -66,6 +68,10 @@ class Mail(object):
     @property
     def sender_name(self):
         return self._sender_name
+    
+    @property
+    def sender_icon(self):
+        return self._sender_icon
 
     @property
     def send_time(self):
@@ -93,21 +99,32 @@ class Mail(object):
 
     def update(self, mail_pb):
         mail_pb.mail_id = self._id
-        mail_pb.sender_name = self._sender_name
         mail_pb.sender_id = self._sender_id
+        mail_pb.sender_name = self._sender_name
+        mail_pb.sender_icon = self._sender_icon
+        
+#         #TEMP
+#         if self._title is None:
+#             self._title = ""
+#         if self._content is None:
+#             self._content = ""
+#         if self._mail_type is None:
+#             self._mail_type = 1
+        
         mail_pb.title = self._title
         mail_pb.content = self._content
         mail_pb.mail_type = self._mail_type
         mail_pb.send_time = self._send_time
         mail_pb.is_readed = self._is_readed
-
+        
         mail_pb.prize = json.dumps(self._prize)
 
     def mail_proerty_dict(self):
         mail_property = {
             'mail_id': self._id,
-            'sender_name': self._sender_name,
             'sender_id': self._sender_id,
+            'sender_name': self._sender_name,
+            'sender_icon': self._sender_icon,
             'mail_type': self._mail_type,
             'title': self._title,
             'content': self._content,
@@ -120,3 +137,4 @@ class Mail(object):
     def save_data(self):
         mmode = tb_mail_info.getObj(self._id)
         mmode.update("property", self.mail_proerty_dict())
+        
