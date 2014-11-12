@@ -326,6 +326,10 @@ class PlayerCharacter(Character):
     def arena_shop(self):
         return self._arena_shop
 
+    @property
+    def brew(self):
+        return self._brew
+
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
