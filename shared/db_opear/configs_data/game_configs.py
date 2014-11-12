@@ -113,7 +113,7 @@ all_config_name = {
 }
 
 
-module = cPickle.load(open('/home/server/PycharmProjects/traversing/shared/db_opear/configs_data/excel', 'r'))
+module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)
     objs = all_config_name[config_name].parser(config_value)
