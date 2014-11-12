@@ -1,0 +1,9 @@
+import "common.proto";
+
+// travel 831
+message TravelRequest{
+	required bytes g_id = 1;
+}
+message TravelResponse{
+	required CommonResponse res = 1;
+}

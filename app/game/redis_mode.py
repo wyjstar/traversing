@@ -68,3 +68,7 @@ tb_character_lord.insert()
 # 体力表
 tb_character_stamina = MAdmin('tb_character_stamina', 'id')
 tb_character_stamina.insert()
+
+# 游历
+tb_character_travel = MAdmin('tb_character_travel', 'id')
+tb_character_travel.insert()
