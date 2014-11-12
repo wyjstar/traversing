@@ -100,18 +100,15 @@ def init_unit(slot_no, eles, is_hero=True):
 
 
 def hero_break_skill_buff_ids(hero_no, break_level):
-    hero_break_skill_buff_ids = []
-    hero_break_skill_ids = []
-    hero_break_info = hero_breakup_config.get(hero_no)
+        hero_break_skill_buff_ids = []
+        hero_break_info = hero_breakup_config.get(hero_no)
 
-    for i in range(break_level):
-        hero_break_skill_ids.append(hero_break_info.get_skill_id(i + 1))
-
-    for skill_id in hero_break_skill_ids:
-        skill_info = skill_config.get(skill_id, None)
-        if skill_info:
-            hero_break_skill_buff_ids.extend(skill_info.get("group"))
-    return hero_break_skill_buff_ids
+        for i in range(break_level):
+            skill_id = hero_break_info.get_skill_id(i + 1)
+            skill_info = skill_config.get(skill_id, None)
+            if skill_info:
+                hero_break_skill_buff_ids.extend(skill_info.get("group"))
+        return hero_break_skill_buff_ids
 
 
 

@@ -139,12 +139,6 @@ class CharacterFightCacheComponent(Component):
                 monster_config = self.__get_monster_config(monster_id)
                 monster_normal_config = game_configs.skill_config.get(monster_config.normalSkill)
                 monster_rage_config = game_configs.skill_config.get(monster_config.rageSkill)
-                # 取得怪物普通技能
-                normal_skill = [monster_config.normalSkill]
-                normal_skill.extend(monster_normal_config.group)
-                # 取得怪物怒气技能
-                rage_skill = [monster_config.rageSkill]
-                rage_skill.extend(monster_rage_config.group)
 
                 battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
                                           monster_config.hp, monster_config.atk, monster_config.physicalDef,
@@ -167,13 +161,14 @@ class CharacterFightCacheComponent(Component):
         """取得怪物无双
         """
         stage_config = self.__get_stage_config()  # 关卡配置
-        unpara = stage_config.warriorsSkill  # 无双编号
-        if not unpara:
-            return []
-        triggle3 = game_configs.warriors_config.get(unpara).triggle3
-        skill_config = self.__get_skill_config(triggle3)
-        group = skill_config.group
-        return [unpara] + group
+        unpara = stage_config.get("warriorsSkill")  # 无双编号
+        return unpara
+        # if not unpara:
+        #     return []
+        # triggle3 = game_configs.warriors_config.get(unpara).triggle3
+        # skill_config = self.__get_skill_config(triggle3)
+        # group = skill_config.group
+        # return [unpara] + group
 
     def __get_break_stage_odds(self):
         """取得乱入概率

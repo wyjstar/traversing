@@ -229,9 +229,8 @@ class LineUpSlotComponent(Component):
         no = base_attr.hero_no
         quality = base_attr.quality
 
-        normal_skill = base_attr.normal_skill
-        rage_skill = base_attr.rage_skill
-        break_skills = base_attr.break_skills
+
+        break_skills = hero_obj.break_skill_buff_ids
 
         print attr, "%%%%%%%%%%%%%%"
 
