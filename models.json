@@ -115,6 +115,7 @@
             "pkey_field": "id",
             "def_attrs": {
                 "id":"simple",
+                "open_receive":"simple",
                 "friends": "complex",
                 "blacklist": "complex",
                 "applicants_list": "complex"

@@ -86,3 +86,18 @@ def friend_private_chat_1060(dynamic_id, data):
     result = mail.send_mail(dynamic_id, chat_mail)
     response.result = result
     return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def open_friend_receive_1061(dynamic_id, data):
+    """ 开启好友活力赠送
+    @author: jiang
+    """
+    return friend.open_friend_receive(dynamic_id, data)
+
+@remoteserviceHandle('gate')
+def close_friend_receive_1062(dynamic_id, data):
+    """ 关闭好友活力赠送
+    @author: jiang
+    """
+    return friend.close_friend_receive(dynamic_id, data)
+

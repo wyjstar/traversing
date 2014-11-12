@@ -23,7 +23,6 @@ class NetCommandService(CommandService):
             return None
         if targetKey not in self.unDisplay:
             logger.info("call method %s on service[single]" % target.__name__)
-        print "#net"
         response = target(targetKey, *args, **kw)
         return response
 

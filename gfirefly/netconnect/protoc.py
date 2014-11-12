@@ -48,7 +48,7 @@ class LiberateProtocol(protocols.BaseProtocol):
         '''数据到达处理
         @param data: str 客户端传送过来的数据
         '''
-        length = self.factory.dataprotocl.getHeadlength()  #获取协议头的长度
+        length = self.factory.dataprotocl.getHeadlength()  # 获取协议头的长度
         self.buff += data
         while self.buff.__len__() >= length:
             unpackdata = self.factory.dataprotocl.unpack(self.buff[:length])
@@ -132,4 +132,6 @@ class LiberateFactory(protocols.ServerFactory):
         @param msg: 消息的类容，protobuf结构类型
         @param sendList: 推向的目标列表(客户端id 列表)
         '''
+        print "#@pushObject:", topicID, repr(msg), sendList
+        logger.info("pushObject: %s to %s" % (topicID, sendList))
         self.connmanager.pushObject(topicID, msg, sendList)

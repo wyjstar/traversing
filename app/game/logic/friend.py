@@ -48,8 +48,11 @@ def add_friend_request(data, player):
             response.result = False
             response.result_no = 1  # fail
             return response.SerializePartialToString()  # fail
-
-        push_object(1010, player.base_info.id, [invitee_player.dynamic_id])
+        
+        response_another = CommonResponse()
+        response_another.result = True
+        
+        push_object(1110, response_another.SerializePartialToString(), [invitee_player.dynamic_id])
         invitee_player.friends.save_data()
     else:
         if not push_message(1050, target_id, player.base_info.id):
@@ -94,7 +97,7 @@ def become_friends(data, player):
                                                      False):
                 response.result = False
 
-        # save data
+            # save data
             inviter_player.friends.save_data()
             player.friends.save_data()
         else:
@@ -224,14 +227,15 @@ def del_player_from_blacklist(data, player):
 def get_player_friend_list(player):
 
     response = friend_pb2.GetPlayerFriendsResponse()
+    response.open_receive = player.friends._open_receive
 
-    for pid in player.friends.friends:
+    for pid in player.friends.friends + [player.base_info.id]:
         player_data = tb_character_info.getObjData(pid)
         if player_data:
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
             response_friend_add.nickname = player_data.get('nickname')
-            response_friend_add.gift = datetime.datetime.now().day
+            response_friend_add.gift = player.friends.last_present_times(pid)
 
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
@@ -239,7 +243,7 @@ def get_player_friend_list(player):
                 info = lord_data.get('attr_info', {})
                 battle_unit = BattleUnit.loads(info.get('info'))
                 response_friend_add.hero_no = battle_unit.no
-                response_friend_add.power = info.get('power', 0)
+                response_friend_add.power = int(info.get('power', 0))
                 response_friend_add.hp = battle_unit.hp
                 response_friend_add.atk = battle_unit.atk
                 response_friend_add.physical_def = battle_unit.physical_def
@@ -253,14 +257,14 @@ def get_player_friend_list(player):
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
             response_blacklist_add.nickname = player_data.get('nickname')
-            response_blacklist_add.gift = datetime.datetime.now().day
+            response_blacklist_add.gift = 0
 
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
                 info = lord_data.get('info', {})
                 response_blacklist_add.hero_no = info.get('no', 0)
-                response_blacklist_add.power = lord_data.get('power', 0)
+                response_blacklist_add.power = int(lord_data.get('power', 0))
                 response_blacklist_add.hp = info.get('hp', 0)
                 response_blacklist_add.atk = info.get('atk', 0)
                 response_blacklist_add.physical_def = info.get('physical_def', 0)
@@ -274,14 +278,14 @@ def get_player_friend_list(player):
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
             response_applicant_list_add.nickname = player_data.get('nickname')
-            response_applicant_list_add.gift = datetime.datetime.now().day
+            response_applicant_list_add.gift = 0
 
             # 添加好友主将的属性
             lord_data = tb_character_lord.getObjData(pid)
             if lord_data:
                 info = lord_data.get('info', {})
                 response_applicant_list_add.hero_no = info.get('no', 0)
-                response_applicant_list_add.power = lord_data.get('power', 0)
+                response_applicant_list_add.power = int(lord_data.get('power', 0))
                 response_applicant_list_add.hp = info.get('hp', 0)
                 response_applicant_list_add.atk = info.get('atk', 0)
                 response_applicant_list_add.physical_def = info.get('physical_def', 0)
@@ -324,6 +328,21 @@ def find_friend_request(data, **kwargs):
 
     return response.SerializePartialToString()
 
+@have_player
+def open_friend_receive(data, player):
+    response = CommonResponse()
+    player.friends.open_receive()
+    player.friends.save_data()
+    response.result = True
+    return response.SerializePartialToString()
+
+@have_player
+def close_friend_receive(data, player):
+    response = CommonResponse()
+    player.friends.close_receive()
+    player.friends.save_data()
+    response.result = True
+    return response.SerializePartialToString()
 
 @have_player
 def given_stamina(data, player):
@@ -332,16 +351,12 @@ def given_stamina(data, player):
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-
-    request = friend_pb2.FriendCommon()
-    request.ParseFromString(data)
     target_id = request.target_ids[0]
 
-    if not player.given_stamina(target_id):
+    if not player.friends.given_stamina(target_id):
         response.result = False
         response.result_no = 1  # fail
         return response.SerializePartialToString()  # fail
-
     return response.SerializePartialToString()  # fail
 
 @have_player

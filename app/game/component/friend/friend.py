@@ -4,16 +4,19 @@ created by server on 14-7-17下午5:21.
 """
 
 import datetime
+import time
+
 from app.game.action.root import netforwarding
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_friend
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data import mail_config
+from shared.db_opear.configs_data.game_configs import mail_config
 
 
 class FriendComponent(Component):
     def __init__(self, owner):
         super(FriendComponent, self).__init__(owner)
+        self._open_receive = True  # 开启接收活力
         self._friends = {}
         self._blacklist = []
         self._applicants_list = {}
@@ -25,6 +28,7 @@ class FriendComponent(Component):
             self._friends = friend_data.get('friends')
             if not self._friends:
                 self._friends = {}
+            self._open_receive = friend_data.get('open_receive', True)
             self._blacklist = friend_data.get('blacklist')
             self._applicants_list = friend_data.get('applicants_list')
 
@@ -34,12 +38,14 @@ class FriendComponent(Component):
                 len(self._applicants_list)
         if count > 0:
             if friend_obj:
-                data = {'friends': self._friends,
+                data = {'open_receive': self._open_receive,
+                        'friends': self._friends,
                         'blacklist': self._blacklist,
                         'applicants_list': self._applicants_list}
                 friend_obj.update_multi(data)
             else:
                 data = {'id': self.owner.base_info.id,
+                        'open_receive': self._open_receive,
                         'friends': self._friends,
                         'blacklist': self._blacklist,
                         'applicants_list': self._applicants_list}
@@ -147,7 +153,20 @@ class FriendComponent(Component):
 
         del (self._applicants_list[target_id])
         return True
+    
+    def open_receive(self):
+        self._open_receive = True
+        
+    def close_receive(self):
+        self._open_receive = False
 
+    def last_present_times(self, target_id):
+        given_time_list = self._friends.get(target_id)
+        if given_time_list is None:
+            return 0
+        given_times = len(given_time_list)
+        return max(1 - given_times, 0)
+    
     def given_stamina(self, target_id):
         if target_id not in self._friends.keys():
             return False
@@ -165,7 +184,7 @@ class FriendComponent(Component):
                         title=mail_config.get('title'),
                         content=mail_config.get('content'),
                         mail_type=mail_config.get('type'),
-                        send_time=int(datetime.time.time()),
+                        send_time=int(time.time()),
                         prize=mail_config.get('rewards'))
 
             # command:id 为收邮件的命令ID
