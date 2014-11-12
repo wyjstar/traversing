@@ -13,7 +13,7 @@ import sys
 def parse_input(battle_type):
     """docstring for parse_input"""
     all_lines = []
-    with open("input.csv") as f:
+    with open("tool/battle/input.csv") as f:
         all_lines = f.readlines()
 
     red_units = {}
