@@ -6,7 +6,7 @@ import cPickle
 from app.game.component.Component import Component
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.component.line_up.hero_slot import HeroSlotComponent
-from app.game.core.fight import do_assemble
+from app.battle.battle_unit import do_assemble
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
@@ -248,17 +248,6 @@ class LineUpSlotComponent(Component):
         cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
         block = base_attr.block + attr.block
 
-        base_hp = base_attr.hp
-        base_atk = base_attr.atk
-        base_physical_def = base_attr.physical_def
-        base_magic_def = base_attr.magic_def
-        base_hit = base_attr.hit
-        base_dodge = base_attr.dodge
-        base_cri = base_attr.cri
-        base_cri_coeff = base_attr.cri_coeff
-        base_cri_ded_coeff = base_attr.cri_ded_coeff
-        base_block = base_attr.block
-
         level = base_attr.level
         break_level = base_attr.break_level
 
@@ -267,13 +256,12 @@ class LineUpSlotComponent(Component):
         line_up_order = self.owner.line_up_order
         position = line_up_order.index(self._slot_no)
         position += 1
-
-        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills,
-                                  base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
-                                  base_cri_coeff, base_cri_ded_coeff, base_block,
+        ductility = 0
+        print no, "hero_no"
+        battlt_unit = do_assemble(no, quality, break_skills,
                                   hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
-                                  position,
-                                  level, break_level, is_boss)
+                                  ductility, position,
+                                  level, is_boss)
 
         return battlt_unit
 
