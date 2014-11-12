@@ -151,12 +151,14 @@ class HeroSkill(UnitSkill):
     @break_skill_ids.setter
     def break_skill_ids(self, value):
         self._break_skill_ids = value
+        print self._break_skill_ids, type(self._break_skill_ids), "*"*60
         for id in self._break_skill_ids:
             skill_buff_info = skill_buff_config.get(id)
             trigger_type = skill_buff_info.triggerType
             if trigger_type not in self._break_skill_buffs:
                 self._break_skill_buffs[trigger_type] = []
             self._break_skill_buffs[trigger_type].append(skill_buff_info)
+
 
 
 class MonsterSkill(UnitSkill):

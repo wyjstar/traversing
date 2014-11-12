@@ -26,8 +26,7 @@ class CharacterLineUpComponent(Component):
         self._sub_slots = dict([(slot_no, LineUpSlotComponent(self, slot_no)) for slot_no in range(1, 7)])  # 卡牌位替补
 
         self._line_up_order = []
-        # self._employee = None
-        # self._unique = 0  # 无双
+        self._unpar = 0  # 无双
 
     def init_data(self):
         line_up_data = tb_character_line_up.getObjData(self.character_id)
@@ -50,7 +49,8 @@ class CharacterLineUpComponent(Component):
                                                              slot_no in self._line_up_slots.keys()]),
                                       'sub_slots': dict([(slot_no, LineUpSlotComponent(self, slot_no).dumps()) for
                                                          slot_no in self._sub_slots.keys()]),
-                                      'line_up_order': self._line_up_order})
+                                      'line_up_order': self._line_up_order,
+                                      'unpar': self._unpar})
 
         self.update_slot_activation()
 
@@ -120,6 +120,11 @@ class CharacterLineUpComponent(Component):
 
         slot_obj.change_hero(hero_no)
 
+        # 如果无双条件不满足，则无双设为空
+        if not self.can_unpar(self._unpar):
+            self._unpar = 0
+
+
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
         @param slot_no: 阵容位置
@@ -177,7 +182,8 @@ class CharacterLineUpComponent(Component):
         props = {
             'line_up_slots': dict([(slot_no, slot.dumps()) for slot_no, slot in self._line_up_slots.items()]),
             'sub_slots': dict([(slot_no, sub_slot.dumps()) for slot_no, sub_slot in self._sub_slots.items()]),
-            'line_up_order': self._line_up_order}
+            'line_up_order': self._line_up_order,
+            'unpar': self._unpar}
 
         line_up_obj = tb_character_line_up.getObj(self.character_id)
         line_up_obj.update_multi(props)
@@ -228,6 +234,33 @@ class CharacterLineUpComponent(Component):
             if hero_no == slot.hero_slot.hero_no:
                 return slot
         return None
+
+    @property
+    def unpar(self):
+        return self._unpar
+
+    @unpar.setter
+    def unpar(self, value):
+        self._unpar = value
+
+    def can_unpar(self, unpar_no):
+        warriors_config = game_configs.warriors_config
+        hero_nos = set(self.hero_nos)  # 阵容英雄编号
+        warrior = warriors_config.get(unpar_no)
+        if not warrior: return False
+
+        conditions = set()
+        for i in range(1, 7):
+            condition = getattr(warrior, 'condition%s' % i, None)
+            if condition:
+                conditions.add(condition)
+
+        length = len(conditions)  # 无双需求英雄数量
+        condition_intersection = hero_nos.intersection(conditions)  # 交集
+
+        if length == len(condition_intersection):  # 激活的无双
+            return True
+        return False
 
 
 

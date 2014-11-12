@@ -100,25 +100,25 @@ def stage_start_903(pro_data, player):
     response.replace_no = stage_info.get('replace_no')
 
     response.drop_num = drop_num
-    for red_unit in red_units:
+    for slot_no, red_unit in red_units.items():
         if not red_unit:
             continue
         red_add = response.red.add()
         assemble(red_add, red_unit)
+
     for blue_group in blue_units:
         blue_group_add = response.blue.add()
-        for blue_unit in blue_group:
+        for slot_no, blue_unit in blue_group.items():
             if not blue_unit:
                 continue
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
 
-    unpara = response.monster_unpara
     if monster_unpara:
-        unpara.id = monster_unpara[0]
-        buffs = unpara.buffs
-        for buff in monster_unpara[1:]:
-            buffs.append(buff)
+        response.monster_unpar = monster_unpara
+
+    response.hero_unpar = unparalleled
+
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
@@ -193,6 +193,8 @@ def assemble(unit_add, unit):
     #     buffs = rage_skill.buffs
     #     for buff in unit.rage_skill[1:]:
     #         buffs.append(buff)
+    for skill_no in unit.skill.break_skill_ids:
+        unit_add.break_skills.append(skill_no)
 
     # if unit.skill.break_skill_ids:
     #     for break_skill_id in unit.skill.break_skill_ids:

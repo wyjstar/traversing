@@ -1,4 +1,3 @@
-
 //羁绊信息
 message LinkPB{
 	required int32 link_no = 1;  // 羁绊编号

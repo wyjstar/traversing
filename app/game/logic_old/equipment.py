@@ -24,6 +24,8 @@ def get_equipments_info(get_type, get_id, player):
     else:
         equipments.extend(player.equipment_component.get_by_type(get_type))
 
+    logger.debug("equipment%s" % player.equipment_component.get_all())
+
     return equipments
 
 

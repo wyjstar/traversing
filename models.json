@@ -72,7 +72,8 @@
                 "id":"simple",
                 "line_up_slots": "complex",
                 "sub_slots": "complex",
-                "line_up_order": "complex"
+                "line_up_order": "complex",
+                "unpar": "simple"
             }
         },
         "tb_equipment_info": {
