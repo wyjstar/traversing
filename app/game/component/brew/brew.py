@@ -58,11 +58,20 @@ class CharacterBrewComponent(Component):
             return False
         critical = critical[brew_type]
         rand = random.random()
-        for critical_num, rand_range in critical:
+        for critical_num, rand_range in critical.items():
             if rand < rand_range:
-                self._nectar_today *= critical_num
+                self._nectar_today = int(critical_num * self._nectar_today)
                 break
         self._nectar += self._nectar_today
+        self._brew_times -= 1
+        logger.info('brew type:%s, rand:%s nectar:%s nectar today:%s time:%s',
+                    brew_type,
+                    rand,
+                    self._nectar_today,
+                    self.nectar,
+                    self.brew_times)
+
+        self.save_data()
 
         return True
 

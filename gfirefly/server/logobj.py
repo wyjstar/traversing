@@ -15,6 +15,7 @@ from shared.utils import const
 DEBUG_CAL = 9
 logging.addLevelName(DEBUG_CAL, "DEBUG_CAL")
 
+
 def debug_cal(message, *args, **kws):
     if logger.isEnabledFor(DEBUG_CAL):
         logger._log(DEBUG_CAL, message, args, **kws)
@@ -75,13 +76,11 @@ def log_init(log_path):
     ch.setFormatter(MyFormatter(fmt, datefmt))
     _logger.addHandler(ch)
 
-
     uh = DatagramHandler(const.const.TLOG_ADDR[0], const.const.TLOG_ADDR[1])
     uh.setLevel(logging.CRITICAL)
     uh.setFormatter('%(message)s')
     # _logger.addHandler(uh)
-    log_init_debug_cal()
-
+    # log_init_debug_cal()
 
 
 def log_init_debug_cal():
