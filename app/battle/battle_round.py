@@ -3,6 +3,7 @@
 from battle_buff import Buff
 from execute_skill_buff import perform_hit, execute_skill_buff, execute_mp
 from find_target_units import find_side, find_target_units
+from gfirefly.server.logobj import logger
 import copy
 
 BEST_SKILL = 1
@@ -33,9 +34,8 @@ class BattleRound(object):
         """
         在战斗开始前，进行触发类别为2的突破技能buff。
         """
-        print "    进入战场，添加的buff..."
+        logger.debug_cal("    进入战场，添加的buff...")
         for temp in self._red_units.values():
-            print "temp.no", temp.unit_no
             for skill_buff_info in temp.skill.begin_skill_buffs():
                 target_units = find_target_units(temp, self._red_units, self._blue_units, skill_buff_info)
                 self.handle_skill_buff(temp, self._red_units, self._blue_units, skill_buff_info, target_units)
@@ -43,7 +43,7 @@ class BattleRound(object):
                     target_nos = []
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
-                    print "    作用目标: %s" % (target_nos)
+                    logger.debug_cal("    作用目标: %s" % (target_nos))
 
         for temp in self._blue_units.values():
             for skill_buff_info in temp.skill.begin_skill_buffs():
@@ -53,7 +53,7 @@ class BattleRound(object):
                     target_nos = []
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
-                    print "    作用目标: %s" % (target_nos)
+                    logger.debug_cal("    作用目标: %s" % (target_nos))
 
     def perform_round_check(self, client_data):
         """perform a round battle and battle check."""
@@ -106,25 +106,25 @@ class BattleRound(object):
 
     def perform_round(self):
         """
-        perform mock battle, print battle process.
+        perform mock battle, logger.debug_cal(battle process.)
         """
         for i in range(1, 7):
             red_unit = self._red_units.get(i)
             blue_unit = self._blue_units.get(i)
             self.handle_mock_special_skill(self._red_best_skill)
             if red_unit:
-                print ("red_%d" % i) + "-" * 20 + "我方攻击" + "-" * 20
+                logger.debug_cal(("red_%d" % i) + "-" * 20 + "我方攻击" + "-" * 20)
                 self.perform_one_skill(self._red_units, self._blue_units, red_unit.skill)
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
-                print "    "
+                logger.debug_cal("    ")
             self.handle_mock_special_skill(self._blue_best_skill)
             if blue_unit:
-                print ("blue_%d" % i) + "-" * 20 + "敌方攻击" + "-" * 20
+                logger.debug_cal(("blue_%d" % i) + "-" * 20 + "敌方攻击" + "-" * 20)
                 self.perform_one_skill(self._blue_units, self._red_units, blue_unit.skill)
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
-                print "    "
+                logger.debug_cal("    ")
 
         # 每回合结束后，减buff
         for unit in self._red_units.values():
@@ -141,11 +141,11 @@ class BattleRound(object):
     def perform_one_skill(self, army, enemy, skill):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
-        print "    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
-              (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager)
+        logger.debug_cal("    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
+              (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))
 
         if not attacker.can_attack:
-            print "    攻击者在buff中，无法攻击！"
+            logger.debug_cal("    攻击者在buff中，无法攻击！")
 
         main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff, None)  # 主技能作用目标
 
@@ -156,15 +156,15 @@ class BattleRound(object):
             if perform_hit(skill.main_skill_buff, attacker.hit, target_unit.dodge):
                 is_hit = True
 
-        print "    是否命中:", is_hit
+        logger.debug_cal("    是否命中:%s" % is_hit)
         # 2.主技能释放前，触发的buff
-        print "    1. 攻击前, 添加的buff"
+        logger.debug_cal("    1. 攻击前, 添加的buff")
         for skill_buff_info in skill.before_skill_buffs(is_hit):
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
             self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, True)
 
         # 3.触发攻击技能
-        print "    2. 攻击..."
+        logger.debug_cal("    2. 攻击...")
         before_or_not = True
         for skill_buff_info in skill.attack_skill_buffs():
             if not is_hit and skill_buff_info.skill_key and skill_buff_info.effectId in (1, 2, 3):
@@ -178,7 +178,7 @@ class BattleRound(object):
         skill.set_mp()
 
         # 4.主技能释放后，触发的buff
-        print "    3. 攻击后的buff..."
+        logger.debug_cal("    3. 攻击后的buff...")
         for skill_buff_info in skill.after_skill_buffs(is_hit):
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
             self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, False)
@@ -204,9 +204,9 @@ class BattleRound(object):
         #target_nos = []
         #for temp in target_units:
         #target_nos.append(temp.slot_no)
-        #print "    技能或者buffID（%s），作用目标: %s, %s" % (skill_buff_info.id, skill_buff_info.effectPos, target_nos)
+        #logger.debug_cal("    技能或者buffID（%s），作用目标: %s, %s" % (skill_buff_info.id, skill_buff_info.effectPos, target_nos))
 
-        print "-" * 80
+        logger.debug_cal("-" * 80)
         result = []
         for target_unit in target_units:
             if skill_buff_info.effectId in [1, 2, 3, 26]:
@@ -224,10 +224,10 @@ class BattleRound(object):
                 buff = Buff(attacker, skill_buff_info, before_or_not)
                 target_unit.buff_manager.add(buff)
 
-        print "    技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id)
+        logger.debug_cal("    技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id))
         if DEBUG:
             for temp in target_units:
-                print "    ", temp
+                logger.debug_cal("    %s" % temp)
 
         # 触发反击
         for is_block, backer in result:
@@ -237,10 +237,10 @@ class BattleRound(object):
                     target_nos = []
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
-                    print "    反击目标: %s" % (target_nos)
+                    logger.debug_cal("    反击目标: %s" % (target_nos))
                 self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units)
 
-        print "-" * 80
+        logger.debug_cal("-" * 80)
 
     @property
     def result(self):

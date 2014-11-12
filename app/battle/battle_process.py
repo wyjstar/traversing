@@ -15,32 +15,32 @@ class BattlePVPProcess(object):
 
         self._red_best_skill = BestSkill(red_best_skill_no)
         self._blue_best_skill = BestSkill(blue_best_skill_no)
-        logger.debug("我方阵容:")
+        logger.debug_cal("我方阵容:")
         for k, v in self._red_units.items():
-            print k, v
-        logger.debug("-" * 80)
-        print "敌方阵容:"
+            logger.debug_cal("%d %s" % (k, v))
+        logger.debug_cal("-" * 80)
+        logger.debug_cal("敌方阵容:")
         for k, v in self._blue_units.items():
-            print k, v
-        logger.debug("-" * 80)
+            logger.debug_cal("%d %s" % (k, v))
+        logger.debug_cal("-" * 80)
 
     def process(self):
         """docstring for process"""
         battle_round = BattleRound()
         battle_round.init_round(self._red_units, self._red_best_skill, self._blue_units, self._blue_best_skill)
-        logger.debug("开始战斗...")
+        logger.debug_cal("开始战斗...")
 
         for i in range(base_config.get("max_times_fight")):
             i = i + 1
-            print "第%d回合......" % i
+            logger.debug_cal("第%d回合......" % i)
             battle_round.perform_round()
             result = battle_round.result
             if result == 0: continue
             if result == 1:
-                logger.debug("我赢了。")
+                logger.debug_cal("我赢了。")
                 return True
             if result == -1:
-                logger.debug("我输了。")
+                logger.debug_cal("我输了。")
                 return False
         return False
 
@@ -54,16 +54,16 @@ class BattlePVEProcess(object):
         self._blue_groups = blue_groups
         self._red_best_skill = red_best_skill
         self._friend_skill = friend_skill
-        print "我方阵容:"
+        logger.debug_cal("我方阵容:")
         for k, v in self._red_units.items():
-            print k, v
-        print "-" * 80
-        print "敌方阵容:"
+            logger.debug_cal(k, v)
+        logger.debug_cal("-" * 80)
+        logger.debug_cal("敌方阵容:")
         for item in blue_groups:
             for k, v in item.items():
-                print k, v
-            print 'next group:'
-        print "-" * 80
+                logger.debug_cal(k, v)
+            logger.debug_cal('next group:')
+        logger.debug_cal("-" * 80)
 
     def process(self):
         """docstring for process"""
@@ -79,10 +79,10 @@ class BattlePVEProcess(object):
                                         friend_skill=self._friend_skill)
                 continue
             if result == 1:
-                print "I finally win the battle."
+                logger.debug_cal("I finally win the battle.")
                 break
             if result == -1:
-                print "I finally lose the battle."
+                logger.debug_cal("I finally lose the battle.")
                 break
 
 

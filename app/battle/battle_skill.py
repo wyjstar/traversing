@@ -7,8 +7,7 @@ from shared.db_opear.configs_data.game_configs import skill_config
 from shared.db_opear.configs_data.game_configs import skill_buff_config
 from shared.db_opear.configs_data.game_configs import hero_config, monster_config
 from shared.db_opear.configs_data.game_configs import base_config, hero_breakup_config
-from shared.db_opear.configs_data.common_item import CommonItem
-
+from gfirefly.server.logobj import logger
 
 class UnitSkill(object):
     """docstring for UnitSkill"""
@@ -25,7 +24,6 @@ class UnitSkill(object):
         self._attack_mp_skill_buffs = []
         self._has_skill_buff = False
         temp_unit = unit_config.get(self._unit_no)
-        print self._unit_no, type(temp_unit), type(unit_config)
         skill_info = skill_config.get(temp_unit.normalSkill, None)
         self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = \
             self.get_skill_buff(skill_info.get("group"))
@@ -153,7 +151,6 @@ class HeroSkill(UnitSkill):
     @break_skill_ids.setter
     def break_skill_ids(self, value):
         self._break_skill_ids = value
-        print "self._break_skill_ids", self._break_skill_ids
         for id in self._break_skill_ids:
             skill_buff_info = skill_buff_config.get(id)
             trigger_type = skill_buff_info.triggerType

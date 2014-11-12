@@ -3,7 +3,7 @@
 
 import random
 from shared.db_opear.configs_data.game_configs import base_config
-
+from gfirefly.server.logobj import logger
 
 
 skill_types = {}
@@ -24,8 +24,8 @@ def execute_skill_buff(attacker, target, skill_buff_info):
     """
     执行技能［1，2，3，26］
     """
-    print "    攻方 no(%d), unit_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (attacker.slot_no, attacker.unit_no, attacker.unit_name, attacker.hp, attacker.mp, attacker.buff_manager)
-    print "    守方 no(%d), unit_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (target.slot_no, target.unit_no, target.unit_name, target.hp, target.mp, target.buff_manager)
+    logger.debug_cal("    攻方 no(%d), unit_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (attacker.slot_no, attacker.unit_no, attacker.unit_name, attacker.hp, attacker.mp, attacker.buff_manager))
+    logger.debug_cal("    守方 no(%d), unit_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (target.slot_no, target.unit_no, target.unit_name, target.hp, target.mp, target.buff_manager))
 
     is_cri = False # 是否暴击
     is_block = False # 是否格挡
@@ -82,15 +82,15 @@ def execute_skill_buff(attacker, target, skill_buff_info):
 
     if (skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2) and skill_buff_info.valueType == 1:
         actual_demage = total_demage + skill_buff_info.valueEffect + skill_buff_info.levelEffectValue * attacker.level
-        #print actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, type(skill_buff_info.valueType)
+        #logger.debug_cal(actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, type(skill_buff_info.valueType))
 
     elif skill_buff_info.effectId == 26 and skill_buff_info.valueType == 1:
         actual_treat = total_treat + skill_buff_info.valueEffect + skill_buff_info.levelEffectValue * attacker.level
 
     elif (skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2) and skill_buff_info.valueType == 2:
         actual_demage = total_demage * (skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
-        #print actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, skill_buff_info.valueType
-        #print skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level
+        #logger.debug_cal(actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, skill_buff_info.valueType)
+        #logger.debug_cal(skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
 
     elif skill_buff_info.effectId == 26 and skill_buff_info.valueType == 2:
         actual_treat  = total_treat * (skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
@@ -102,10 +102,10 @@ def execute_skill_buff(attacker, target, skill_buff_info):
         actual_demage = attacker.level*skill_buff_info.valueEffect/100
     target.hp -= actual_demage
     target.hp += actual_treat
-    print "    技能ID（%d）,暴击（%s），格挡（%s），基础伤害值(%s)，暴击伤害系数(%s)，等级压制系数(%s)，伤害浮动系数(%s)，\
+    logger.debug_cal("    技能ID（%d）,暴击（%s），格挡（%s），基础伤害值(%s)，暴击伤害系数(%s)，等级压制系数(%s)，伤害浮动系数(%s)，\
             总伤害值(%s)，总治疗值(%s)，攻方实际伤害值(%s)，攻方实际治疗值(%s)" \
     % (skill_buff_info.id, is_cri, is_block, base_demage_value, cri_coeff, level_coeff, demage_fluct_coeff,
-            total_demage, total_treat, actual_demage, actual_treat)
+            total_demage, total_treat, actual_demage, actual_treat))
     return is_block, is_cri
 
 def get_random_int(start, end):

@@ -3,7 +3,7 @@
 """
 通过技能的作用位置，找到作用对象。
 """
-
+from gfirefly.server.logobj import logger
 import random
 
 def single_attack(value, attacker, target_units):
@@ -27,8 +27,6 @@ def all_attack(value, attacker, target_units):
 def front_attack(value, attacker, target_units):
     front_units = []
     target_keys = target_units.keys()
-
-    print target_keys, "target_keys"
 
     for i in [1,2,3]:
         if i in target_keys:
