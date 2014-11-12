@@ -14,7 +14,7 @@ from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
 from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
-from app.game.component.fiance.character_fiance_component import CharacterFinanceComponent
+from app.game.component.finance.finance import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
 from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
 from app.game.component.friend.friend import FriendComponent
@@ -28,6 +28,7 @@ from app.game.component.character_vip import CharacterVIPComponent
 from app.game.component.character_stamina import CharacterStaminaComponent
 from app.game.component.character_soul_shop import CharacterSoulShopComponent
 from app.game.component.character_arena_shop import CharacterArenaShopComponent
+from app.game.component.brew.brew import CharacterBrewComponent
 import time
 
 
@@ -70,6 +71,7 @@ class PlayerCharacter(Character):
         self._stamina = CharacterStaminaComponent(self)  # 体力
         self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
         self._arena_shop = CharacterArenaShopComponent(self)
+        self._brew = CharacterBrewComponent()
 
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
@@ -139,6 +141,7 @@ class PlayerCharacter(Character):
         self._stamina.init_stamina(character_info.get('stamina'))
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
         self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
+        self._brew.init_data()
 
     def is_new_character(self):
         """is new character or not"""

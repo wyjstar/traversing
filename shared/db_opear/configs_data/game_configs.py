@@ -120,5 +120,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in language_config.items():
-        print k, v, len(v)
+    a = base_config.get('cookingWineOutputCrit')
+    for c, b in a.items():
+        print c, b, type(c)
+    print base_config

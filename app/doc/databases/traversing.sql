@@ -230,4 +230,12 @@ CREATE TABLE `tb_pvp_rank` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `tb_character_brew`;
+CREATE TABLE `tb_character_brew` (
+  `id` bigint(20) NOT NULL,
+  `brew` mediumblob,
+  `hero_refine` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- Dump completed on 2014-11-06 21:29:40
