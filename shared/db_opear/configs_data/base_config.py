@@ -24,4 +24,11 @@ class BaseConfig(object):
         for k, v in config_value.items():
             if isinstance(v, dict):
                 convert_keystr2num(v)
+
+        cw = config_value.get('cookingWineOutputCrit')
+        for d in cw.values():
+            count = 0
+            for k, v in d.items():
+                count += v
+                d[k] = count
         return config_value

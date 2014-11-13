@@ -3,10 +3,12 @@
 created by lucas on 14-11-11下午4:05.
 """
 import random
+import time
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_brew
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data.game_configs import vip_config
 
 # base_config.get('cookingWineOpenLevel')
 # base_config.get('cookingWineOutput')
@@ -16,10 +18,10 @@ from shared.db_opear.configs_data.game_configs import base_config
 class CharacterBrewComponent(Component):
     def __init__(self, owner):
         super(CharacterBrewComponent, self).__init__(owner)
-        self._brew_times = 0
         self._brew_date = 0
         self._nectar = 0
-        self._nectar_today = base_config.get('cookingWineOutput')
+        self._nectar_today = 0
+        self._brew_times = 0
 
     def init_data(self):
         brew_data = tb_character_brew.getObjData(self.owner.base_info.id)
@@ -34,7 +36,7 @@ class CharacterBrewComponent(Component):
             brew = dict(brew_times=self._brew_times,
                         brew_data=self._brew_date,
                         nectar=self._nectar)
-            data = dict(brew=brew, hero_refine='')
+            data = dict(id=self.owner.base_info.id, brew=brew, hero_refine='')
             tb_character_brew.new(data)
 
     def save_data(self):
@@ -56,20 +58,38 @@ class CharacterBrewComponent(Component):
         critical = base_config.get('cookingWineOutputCrit')
         if brew_type not in critical:
             return False
+
+        tm = time.localtime(self._brew_date)
+        local_tm = time.localtime()
+        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+            self._brew_date = time.time()
+
+            vip_level = self.owner.vip_component.vip_level
+            self._brew_times = vip_config.get(vip_level).get('cookingTimes')
+            self._nectar_today = base_config.get('cookingWineOutput')
+
+        if self.brew_times <= 0:
+            logger.error('there is no times to brew:%s', self.brew_times)
+            return False
+
         critical = critical[brew_type]
         rand = random.random()
         for critical_num, rand_range in critical.items():
             if rand < rand_range:
                 self._nectar_today = int(critical_num * self._nectar_today)
                 break
+            else:
+                rand -= rand_range
         self._nectar += self._nectar_today
         self._brew_times -= 1
-        logger.info('brew type:%s, rand:%s nectar:%s nectar today:%s time:%s',
+        logger.info('brew type:%s, rand:%s nectar:%s nectar\
+today:%s time:%s cri:%s',
                     brew_type,
                     rand,
                     self._nectar_today,
                     self.nectar,
-                    self.brew_times)
+                    self.brew_times,
+                    critical_num)
 
         self.save_data()
 
