@@ -146,12 +146,12 @@ class HeroSkill(UnitSkill):
 
     @property
     def break_skill_ids(self):
+        """break skill buff ids"""
         return self._break_skill_ids
 
     @break_skill_ids.setter
     def break_skill_ids(self, value):
         self._break_skill_ids = value
-        print self._break_skill_ids, type(self._break_skill_ids), "*"*60
         for id in self._break_skill_ids:
             skill_buff_info = skill_buff_config.get(id)
             trigger_type = skill_buff_info.triggerType

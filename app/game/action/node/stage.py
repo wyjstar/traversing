@@ -71,6 +71,9 @@ def stage_start_903(pro_data, player):
     unparalleled = request.unparalleled  # 无双编号
     fid = request.fid  # 好友ID
 
+    logger.debug("unparalleled,%s" % unparalleled)
+    logger.debug("fid,%s" % fid)
+
     line_up = {}  # {hero_id:pos}
     for line in request.lineup:
         if not line.hero_id:
