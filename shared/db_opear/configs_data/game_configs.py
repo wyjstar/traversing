@@ -111,7 +111,7 @@ all_config_name = {
     'arena_fight_config': ArenaFightConfig(),
     'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
-    'travel_event_config': TravelEventConfig()
+    'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig()
 }
 
