@@ -239,4 +239,12 @@ CREATE TABLE `tb_character_brew` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dump completed on 2014-11-06 21:29:40
+
+DROP TABLE IF EXISTS `tb_character_travel`;
+CREATE TABLE `tb_character_travel` (
+  `id` bigint(20) NOT NULL,
+  `chapters` mediumblob,
+  `shoes` int(11),
+  `chest_time` bigint(20),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

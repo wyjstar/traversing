@@ -160,6 +160,16 @@
                 "attr_info": "complex"
             }
         },
+        
+        "tb_character_travel": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "chapters": "complex",
+                "shoes": "simple",
+                "chest_time": "simple"
+            }
+        },
         "tb_character_brew": {
             "pkey_field": "id",
             "def_attrs": {

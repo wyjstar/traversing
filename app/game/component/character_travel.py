@@ -30,6 +30,7 @@ class CharacterTravelComponent(Component):
                                      'chapters': {},
                                      'shoes': 0,
                                      'chest_time': 1})
+            print 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 
     def save(self):
         data_obj = tb_character_travel.getObj(self.owner.base_info.id)

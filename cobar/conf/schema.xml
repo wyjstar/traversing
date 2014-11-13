@@ -33,6 +33,7 @@
     <table name="tb_character_hero_chip" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_item_package" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_character_stages" dataNode="dn_traversing$0-3" rule="id_int_4" />
+    <table name="tb_character_travel" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_equipment_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_guild_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_guild_name" dataNode="dn_traversing$0-3" rule="g_name_str_4" />
