@@ -6,7 +6,7 @@ import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
-from app.game.core.fight import do_assemble
+from app.battle.battle_unit import do_assemble
 
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
@@ -34,10 +34,11 @@ class CharacterFightCacheComponent(Component):
     def red_unit(self):
         """初始创建红方单位
         """
-        red_unit = []
+        red_unit = {}
         for no, slot in self.line_up_slots.items():
             red = slot.slot_attr
-            red_unit.append(red)
+            if red:
+                red_unit[no] = red
         self._red_unit = red_unit
         return self._red_unit
 
@@ -123,7 +124,7 @@ class CharacterFightCacheComponent(Component):
         monsters = []
         for i in range(3):
             monster_group_config = self.__get_monster_group_config(getattr(stage_config, 'round%s' % (i + 1)))
-            round_monsters = []
+            round_monsters = {}
 
             boss_position = monster_group_config.bossPosition
 
@@ -131,7 +132,6 @@ class CharacterFightCacheComponent(Component):
                 pos = j + 1
                 monster_id = getattr(monster_group_config, 'pos%s' % pos)
                 if not monster_id:
-                    round_monsters.append(None)
                     continue
                 is_boss = False
                 if j + 1 == boss_position:
@@ -139,27 +139,15 @@ class CharacterFightCacheComponent(Component):
                 monster_config = self.__get_monster_config(monster_id)
                 monster_normal_config = game_configs.skill_config.get(monster_config.normalSkill)
                 monster_rage_config = game_configs.skill_config.get(monster_config.rageSkill)
-                # 取得怪物普通技能
-                normal_skill = [monster_config.normalSkill]
-                normal_skill.extend(monster_normal_config.group)
-                # 取得怪物怒气技能
-                rage_skill = [monster_config.rageSkill]
-                rage_skill.extend(monster_rage_config.group)
 
-                level = 1
-                break_level = 1
-
-                battle_unit = do_assemble(monster_config.id, monster_config.quality, normal_skill, rage_skill, None,
+                battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
                                           monster_config.hp, monster_config.atk, monster_config.physicalDef,
                                           monster_config.magicDef, monster_config.hit, monster_config.dodge,
                                           monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
-                                          monster_config.block, monster_config.hp, monster_config.atk,
-                                          monster_config.physicalDef, monster_config.magicDef, monster_config.hit,
-                                          monster_config.dodge, monster_config.cri, monster_config.criCoeff,
-                                          monster_config.criDedCoeff, monster_config.block, pos, level, break_level,
-                                          is_boss)
+                                          monster_config.block, monster_config.ductility, pos, monster_config.monsterLv,
+                                          is_boss, is_hero=False)
                 logger.info('怪物ID：%s' % monster_config.id)
-                round_monsters.append(battle_unit)
+                round_monsters[pos] = battle_unit
             monsters.append(round_monsters)
 
         # 保存关卡怪物信息, 掉落信息
@@ -173,13 +161,14 @@ class CharacterFightCacheComponent(Component):
         """取得怪物无双
         """
         stage_config = self.__get_stage_config()  # 关卡配置
-        unpara = stage_config.warriorsSkill  # 无双编号
-        if not unpara:
-            return []
-        triggle3 = game_configs.warriors_config.get(unpara).triggle3
-        skill_config = self.__get_skill_config(triggle3)
-        group = skill_config.group
-        return [unpara] + group
+        unpara = stage_config.get("warriorsSkill")  # 无双编号
+        return unpara
+        # if not unpara:
+        #     return []
+        # triggle3 = game_configs.warriors_config.get(unpara).triggle3
+        # skill_config = self.__get_skill_config(triggle3)
+        # group = skill_config.group
+        # return [unpara] + group
 
     def __get_break_stage_odds(self):
         """取得乱入概率
@@ -288,6 +277,8 @@ class CharacterFightCacheComponent(Component):
 
         return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no
 
+
+
     def fighting_settlement(self, result):
         """战斗结算
         stage_type: 1剧情关卡 2副本关卡 3活动关卡
@@ -354,16 +345,16 @@ class CharacterFightCacheComponent(Component):
             slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
-            unit = self.__assemble_hero(break_hero_base_attr, old_hero_base_attr, attr, hero_id)
+            unit = self.__assemble_break_hero(break_hero_base_attr, old_hero_base_attr, attr, hero_id, is_break_hero=True)
             unit.position = red_unit.position
             logger.info('乱入替换战斗单位属性: %s' % unit)
             # if red_unit in red_units:
-                # index = red_units.index(red_unit)
-                # red_units[index] = unit
+            # index = red_units.index(red_unit)
+            # red_units[index] = unit
             return unit, red_unit.no
         return None, 0
 
-    def __assemble_hero(self, break_hero_base_attr, old_hero_base_attr, attr, hero_id):
+    def __assemble_break_hero(self, break_hero_base_attr, old_hero_base_attr, attr, hero_id, is_break_hero=False):
         """组装英雄战斗单位
         """
         # base_attr: 英雄基础，等级 属性
@@ -378,8 +369,8 @@ class CharacterFightCacheComponent(Component):
         no = hero_id
         quality = break_hero_base_attr.quality
 
-        normal_skill = break_hero_base_attr.normal_skill
-        rage_skill = break_hero_base_attr.rage_skill
+        # normal_skill = break_hero_base_attr.normal_skill
+        #rage_skill = break_hero_base_attr.rage_skill
         break_skills = break_hero_base_attr.break_skills
 
         hp = break_hero_base_attr.hp + break_hero_base_attr.hp * attr.hp_rate + attr.hp
@@ -392,28 +383,16 @@ class CharacterFightCacheComponent(Component):
         cri_coeff = break_hero_base_attr.cri_coeff + attr.cri_coeff
         cri_ded_coeff = break_hero_base_attr.cri_ded_coeff + attr.cri_ded_coeff
         block = break_hero_base_attr.block + attr.block
-
-        base_hp = break_hero_base_attr.hp
-        base_atk = break_hero_base_attr.atk
-        base_physical_def = break_hero_base_attr.physical_def
-        base_magic_def = break_hero_base_attr.magic_def
-        base_hit = break_hero_base_attr.hit
-        base_dodge = break_hero_base_attr.dodge
-        base_cri = break_hero_base_attr.cri
-        base_cri_coeff = break_hero_base_attr.cri_coeff
-        base_cri_ded_coeff = break_hero_base_attr.cri_ded_coeff
-        base_block = break_hero_base_attr.block
+        ductility = 0#break_hero_base_attr.ductility + attr.ductility
 
         level = old_hero_base_attr.level
         break_level = old_hero_base_attr.break_level
         is_boss = False
         position = 0
 
-        battlt_unit = do_assemble(no, quality, normal_skill, rage_skill, break_skills,
-                                  base_hp, base_atk, base_physical_def, base_magic_def, base_hit, base_dodge, base_cri,
-                                  base_cri_coeff, base_cri_ded_coeff, base_block,
-                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
+        battlt_unit = do_assemble(no, quality, break_skills,
+                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility,
                                   position,
-                                  level, break_level, is_boss)
+                                  level, break_level, is_boss, is_break_hero=True)
 
         return battlt_unit

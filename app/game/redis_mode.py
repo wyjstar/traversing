@@ -72,3 +72,7 @@ tb_character_stamina.insert()
 # 游历
 tb_character_travel = MAdmin('tb_character_travel', 'id')
 tb_character_travel.insert()
+
+# brew
+tb_character_brew = MAdmin('tb_character_brew', 'id')
+tb_character_brew.insert()

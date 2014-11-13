@@ -11,6 +11,7 @@ from app.game.action.node.stage import assemble
 from gfirefly.server.logobj import logger
 from app.game.logic.line_up import line_up_info
 from shared.db_opear.configs_data.game_configs import arena_fight_config
+from app.battle.battle_process import BattlePVPProcess
 
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
@@ -139,12 +140,16 @@ def pvp_fight_request(data, player):
         refresh_rank_data(player, player.base_info.id)
 
     prere = dict(id=request.challenge_rank)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['units'])
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['best_skill', 'units'])
     blue_units = record.get('units')
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
+
+
+    battle_process = BattlePVPProcess(red_units, request.skill, blue_units, record.get('best_skill'))
+    fight_result = battle_process.process()
 
     # todo check battl
     # if check_battle(red_units, blue_units)
@@ -156,6 +161,7 @@ def pvp_fight_request(data, player):
         # refresh_rank_data(player, request.challenge_rank)
     else:
         pass
+
 
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
@@ -170,6 +176,7 @@ def pvp_fight_request(data, player):
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
     response.red_skill = request.skill
+    response.fight_result = fight_result
     return response.SerializeToString()
 
 

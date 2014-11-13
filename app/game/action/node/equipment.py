@@ -139,8 +139,7 @@ def melting_equipment_405(pro_data, player):
     response = equipment_response_pb2.MeltingEquipmentResponse()
 
     for equipment_id in equipment_ids:
-        data = melting_equipment(equipment_id, response, player)
-        # result = data.get('result')
+        melting_equipment(equipment_id, response, player)
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -224,7 +223,6 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
 
     if equipment_obj.attribute.strengthen_lv > 200 or \
         equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
-        # print "reach max+++++++++++++", equipment_obj.attribute.strengthen_lv, player.level.level * equipment_obj.strength_max
         return {'result': False, 'result_no': 402, 'message': u''}
 
     for i in xrange(0, enhance_num):
@@ -233,6 +231,7 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
             return result
         enhance_record.append(result.get('record'))
 
+    equipment_obj.enhance_record.enhance_record.extend(enhance_record)
     # 保存
     equipment_obj.save_data()
     player.finance.save_data()
@@ -252,6 +251,8 @@ def __do_enhance(player, equipment_obj):
 
     # print before_lv, after_lv, "before_lv, after_lv"
     player.finance.modify_single_attr('coin', enhance_cost, add=False)
+
+
 
     return {'result': True, 'record': (before_lv, after_lv, enhance_cost)}
 
@@ -288,7 +289,15 @@ def melting_equipment(equipment_ids, response, player):
         return {'result': False, 'result_no': 401, 'message': u''}
     melting_items = equipment_obj.melting_item
     gain = item_group_helper.gain(player, melting_items)
+
     item_group_helper.get_return(player, gain, response.cgr)
+
+    # 添加强化金币
+    strength_coin = 0
+    for record in equipment_obj.enhance_record.enhance_record:
+        strength_coin += record[2]
+
+    response.cgr.finance.coin += strength_coin
 
 
 def awakening_equipment(equipment_id, player):

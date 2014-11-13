@@ -133,6 +133,7 @@ CREATE TABLE `tb_character_line_up` (
   `line_up_slots` mediumblob,
   `sub_slots` mediumblob,
   `line_up_order` mediumblob,
+  `unpar` int(20),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -222,11 +223,20 @@ CREATE TABLE `tb_pvp_rank` (
   `nickname` varchar(128) DEFAULT '',
   `level` int(11) NOT NULL DEFAULT '1',
   `ap` int(11) NOT NULL,
+  `best_skill` int(11) NOT NULL,
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
   `hero_ids` tinyblob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS `tb_character_brew`;
+CREATE TABLE `tb_character_brew` (
+  `id` bigint(20) NOT NULL,
+  `brew` mediumblob,
+  `hero_refine` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dump completed on 2014-11-06 21:29:40

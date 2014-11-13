@@ -23,35 +23,31 @@ class FriendComponent(Component):
 
         if friend_data:
             self._friends = friend_data.get('friends')
-            if not self._friends:
-                self._friends = {}
             self._blacklist = friend_data.get('blacklist')
             self._applicants_list = friend_data.get('applicants_list')
+        else:
+            data = dict(id=self.owner.base_info.id,
+                        friends=self._friends,
+                        blacklist=self._blacklist,
+                        applicants_list=self._applicants_list)
+            tb_character_friend.new(data)
 
     def save_data(self):
         friend_obj = tb_character_friend.getObj(self.owner.base_info.id)
-        count = len(self._friends) + len(self._blacklist) + \
-                len(self._applicants_list)
-        if count > 0:
-            if friend_obj:
-                data = {'friends': self._friends,
-                        'blacklist': self._blacklist,
-                        'applicants_list': self._applicants_list}
-                friend_obj.update_multi(data)
-            else:
-                data = {'id': self.owner.base_info.id,
-                        'friends': self._friends,
-                        'blacklist': self._blacklist,
-                        'applicants_list': self._applicants_list}
-                tb_character_friend.new(data)
-        elif friend_obj:
-            tb_character_friend.deleteMode(self.owner.base_info.id)
+        if friend_obj:
+            data = {'friends': self._friends,
+                    'blacklist': self._blacklist,
+                    'applicants_list': self._applicants_list}
+            friend_obj.update_multi(data)
+        else:
+            logger.error('cant find friendinfo:%s', self.owner.base_info.id)
 
     @property
     def friends(self):
         date_now = datetime.datetime.now().date()
         for k in self._friends.keys():
-            self._friends[k] = filter(lambda t: t.date() == date_now, self._friends[k])
+            self._friends[k] = filter(lambda t: t.date() == date_now,
+                                      self._friends[k])
 
         return self._friends.keys()
 

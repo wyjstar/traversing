@@ -73,13 +73,13 @@ def send_mail_1304(proto_data, player):
     mail['send_time'] = int(time.time())
     receive_id = mail['receive_id']
     # command:id 为收邮件的命令ID
-    response.result = netforwarding.push_message(1305, receive_id, mail)
+    response.result = netforwarding.push_message('receive_mail_remote', receive_id, mail)
     logger.debug('send_mail_1304 %s', response.result)
     return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
-def receive_mail_1305(online, mail, player):
+def receive_mail_remote(mail, is_online, player):
     """接收邮件"""
     mail_type = mail.get("mail_type")
     sender_id = mail.get("sender_id")
@@ -147,7 +147,7 @@ def read_mail(mail_ids, mail_type, player):
                            'mail_type': mail_type,
                            'send_time': int(time.time()),
                            'prize': 0}
-            netforwarding.push_message(1305, mail.sender_id, mail_return)
+            netforwarding.push_message('receive_mail_remote', mail.sender_id, mail_return)
         player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 2:

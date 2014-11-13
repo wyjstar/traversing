@@ -139,9 +139,9 @@ class Hero(object):
         cri_ded_coeff = item_config.criDedCoeff  # 暴击减免系数
         block = item_config.block  # 格挡率
 
-        normal_skill = self.normal_skill
-        rage_skill = self.rage_skill
-        break_skills = self.break_skills
+        normal_skill = self.group_by_normal
+        rage_skill = self.group_by_rage
+        break_skills = self.break_skill_ids
 
         return CommonItem(
             dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
@@ -173,8 +173,7 @@ class Hero(object):
         skill_ids = []
         for i in range(self._break_level):
             skill_id = breakup_config.info.get('break%s' % (i + 1))
-            if skill_id != 0:
-                skill_ids.append(skill_id)
+            skill_ids.append(skill_id)
 
         return skill_ids
 
@@ -217,7 +216,7 @@ class Hero(object):
         """
         normal_skill_id = self.normal_skill_id
         normal_skill_config = game_configs.skill_config.get(normal_skill_id)
-        normal_group = normal_skill_config.group[:]  # 取得一个拷贝
+        normal_group = normal_skill_config.group
         return normal_group
 
     @property
@@ -226,7 +225,7 @@ class Hero(object):
         """
         rage_skill_id = self.rage_skill_id
         rage_skill_config = game_configs.skill_config.get(rage_skill_id)
-        rage_group = rage_skill_config.group[:]  # 取得一个拷贝
+        rage_group = rage_skill_config.group
         return rage_group
 
     @property
@@ -248,23 +247,16 @@ class Hero(object):
         return [rage_id] + rage_group
 
     @property
-    def break_skills(self):
+    def break_skill_buff_ids(self):
         """突破技能ID，buff组
         """
         skills = []
         skill_ids = self.break_skill_ids
         for skill_id in skill_ids:
-            skill = [skill_id]
             skill_config = game_configs.skill_config.get(skill_id)  # 技能配置
             group = skill_config.group  # buff组
-            for buff_id in group[:]:
-                buff_config = game_configs.skill_buff_config.get(buff_id)  # buff配置
-                trigger_type = buff_config.triggerType  # 触发类别
-                if trigger_type == 1 or trigger_type == 6 or trigger_type == 7 or trigger_type == 8 or trigger_type \
-                        == 9 or trigger_type == 10:
-                    continue
-                skill.append(buff_id)
-            skills.append(skill)
+            skills.extend(group)
+
         return skills
 
     def __assemble_skills(self, buffs, mold=0):

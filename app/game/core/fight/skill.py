@@ -14,6 +14,7 @@ class Skill(object):
         self._buffs = []
 
     def __get_group(self):
+        print self._skill_no, "*"*60
         skill_config = game_configs.skill_config.get(self._skill_no)
         return skill_config.group
 

@@ -71,6 +71,9 @@ def stage_start_903(pro_data, player):
     unparalleled = request.unparalleled  # 无双编号
     fid = request.fid  # 好友ID
 
+    logger.debug("unparalleled,%s" % unparalleled)
+    logger.debug("fid,%s" % fid)
+
     line_up = {}  # {hero_id:pos}
     for line in request.lineup:
         if not line.hero_id:
@@ -100,25 +103,25 @@ def stage_start_903(pro_data, player):
     response.replace_no = stage_info.get('replace_no')
 
     response.drop_num = drop_num
-    for red_unit in red_units:
+    for slot_no, red_unit in red_units.items():
         if not red_unit:
             continue
         red_add = response.red.add()
         assemble(red_add, red_unit)
+
     for blue_group in blue_units:
         blue_group_add = response.blue.add()
-        for blue_unit in blue_group:
+        for slot_no, blue_unit in blue_group.items():
             if not blue_unit:
                 continue
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
 
-    unpara = response.monster_unpara
     if monster_unpara:
-        unpara.id = monster_unpara[0]
-        buffs = unpara.buffs
-        for buff in monster_unpara[1:]:
-            buffs.append(buff)
+        response.monster_unpar = monster_unpara
+
+    response.hero_unpar = unparalleled
+
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
@@ -177,31 +180,28 @@ def stage_sweep_907(pro_data, player):
 
 
 def assemble(unit_add, unit):
-    unit_add.no = unit.no
+    unit_add.no = unit.unit_no
     unit_add.quality = unit.quality
 
-    normal_skill = unit_add.normal_skill
-    if unit.normal_skill:
-        normal_skill.id = unit.normal_skill[0]
-        buffs = normal_skill.buffs
-        for buff in unit.normal_skill[1:]:
-            buffs.append(buff)
+    # normal_skill = unit_add.normal_skill
+    # if unit.normal_skill:
+    #     normal_skill.id = unit.normal_skill[0]
+    #     buffs = normal_skill.buffs
+    #     for buff in unit.normal_skill[1:]:
+    #         buffs.append(buff)
+    #
+    # rage_skill = unit_add.rage_skill
+    # if unit.rage_skill:
+    #     rage_skill.id = unit.rage_skill[0]
+    #     buffs = rage_skill.buffs
+    #     for buff in unit.rage_skill[1:]:
+    #         buffs.append(buff)
+    for skill_no in unit.skill.break_skill_ids:
+        unit_add.break_skills.append(skill_no)
 
-    rage_skill = unit_add.rage_skill
-    if unit.rage_skill:
-        rage_skill.id = unit.rage_skill[0]
-        buffs = rage_skill.buffs
-        for buff in unit.rage_skill[1:]:
-            buffs.append(buff)
-
-    if unit.break_skills:
-        for break_skill in unit.break_skills:
-            if break_skill:
-                break_skill_add = unit_add.break_skill.add()
-                break_skill_add.id = break_skill[0]
-                buffs = break_skill_add.buffs
-                for buff in break_skill[1:]:
-                    buffs.append(buff)
+    # if unit.skill.break_skill_ids:
+    #     for break_skill_id in unit.skill.break_skill_ids:
+    #         unit_add.break_skill.add(break_skill_id)
 
     unit_add.hp = unit.hp
     unit_add.atk = unit.atk
@@ -214,22 +214,22 @@ def assemble(unit_add, unit):
     unit_add.cri_ded_coeff = unit.cri_ded_coeff
     unit_add.block = unit.block
 
-    unit_add.base_hp = unit.base_hp
-    unit_add.base_atk = unit.base_atk
-    unit_add.base_physical_def = unit.base_physical_def
-    unit_add.base_magic_def = unit.base_magic_def
-    unit_add.base_hit = unit.base_hit
-    unit_add.base_dodge = unit.base_dodge
-    unit_add.base_cri = unit.base_cri
-    unit_add.base_cri_coeff = unit.base_cri_coeff
-    unit_add.base_cri_ded_coeff = unit.base_cri_ded_coeff
-    unit_add.base_block = unit.base_block
+    # unit_add.base_hp = unit.base_hp
+    # unit_add.base_atk = unit.base_atk
+    # unit_add.base_physical_def = unit.base_physical_def
+    # unit_add.base_magic_def = unit.base_magic_def
+    # unit_add.base_hit = unit.base_hit
+    # unit_add.base_dodge = unit.base_dodge
+    # unit_add.base_cri = unit.base_cri
+    # unit_add.base_cri_coeff = unit.base_cri_coeff
+    # unit_add.base_cri_ded_coeff = unit.base_cri_ded_coeff
+    # unit_add.base_block = unit.base_block
 
     unit_add.level = unit.level
     unit_add.break_level = unit.break_level
 
-    unit_add.position = unit.position
-    unit_add.is_boss = unit.is_boss
+    unit_add.position = unit.slot_no
+    #unit_add.is_boss = unit.is_boss
 
 
 def get_stage_info(stage_id, player):

@@ -53,7 +53,7 @@ def arene_shop_1510(pro_data, player):
 
 
 @remoteserviceHandle('gate')
-def refresh_shop_items_1511(player):
+def refresh_shop_items_1511(data, player):
     """刷新商品列表"""
     shop = arena_shop_pb2.ArenaGetShopItemsResponse()
     # max_shop_refresh_times = player.vip_component.shop_refresh_times

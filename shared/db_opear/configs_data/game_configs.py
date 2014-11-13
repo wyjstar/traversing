@@ -37,6 +37,7 @@ from special_stage_config import SpecialStageConfig
 from arena_fight_config import ArenaFightConfig
 from hero_breakup_attr_config import HeroBreakupAttrConfig
 from travel_event_config import TravelEventConfig
+from language_config import LanguageConfig
 
 
 base_config = {}
@@ -73,6 +74,7 @@ arena_fight_config = {}
 arena_shop_config = {}
 hero_breakup_attr_config = {}
 travel_event_config = {}
+language_config = {}
 
 
 all_config_name = {
@@ -110,6 +112,7 @@ all_config_name = {
     'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig()
+    'language_config': LanguageConfig()
 }
 
 
@@ -120,5 +123,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in arena_shop_config.items():
-        print k, v, len(v)
+    a = base_config.get('cookingWineOutputCrit')
+    for c, b in a.items():
+        print c, b, type(c)
+    print base_config

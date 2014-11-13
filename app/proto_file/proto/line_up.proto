@@ -24,7 +24,8 @@ message LineUpSlot{
 message LineUpResponse{
 	repeated LineUpSlot slot = 1;
 	repeated LineUpSlot sub = 2;
-	optional CommonResponse res = 3;
+	required int32 unpar = 3;
+	optional CommonResponse res = 4;
 }
 
 // 更换装备 703

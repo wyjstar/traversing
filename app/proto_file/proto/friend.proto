@@ -2,7 +2,7 @@ import "common.proto";
 
 // add_friend_common 好友
 message FriendCommon{
-	repeated int32 target_ids = 1;  // invitee id
+    repeated int32 target_ids = 1;  // invitee id
 }
 
 // add friend response

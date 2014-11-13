@@ -102,6 +102,10 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             player.stage_component.update_stage_times()
             player.stage_component.update()
 
+    logger.debug("unpara:%d" % unparalleled)
+    if unparalleled and player.line_up_component.can_unpar(unparalleled):
+        return {'result': False, 'result_no': 811}  # 811 无双不可用
+
     if conf:
         # 星期限制
         if conf.weeklyControl:
@@ -114,8 +118,10 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         if not open_time <= time.time() <= close_time:
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
+
     # 保存阵容
     player.line_up_component.line_up_order = line_up
+    player.line_up_component.unpar = unparalleled
     player.line_up_component.save_data()
 
     fight_cache_component = player.fight_cache_component
