@@ -120,7 +120,5 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    a = base_config.get('cookingWineOutputCrit')
-    for c, b in a.items():
-        print c, b, type(c)
-    print base_config
+    a = vip_config.get(0)
+    print a.get('cookingTimes')
