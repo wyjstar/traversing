@@ -19,6 +19,7 @@ class SerializerMetaClass(type):
             model_default_config = GlobalObject().json_model_default_config
             model_config = GlobalObject().json_model_config
 
+
             if model_default_config:
                 for attr in model_default_config:
                     setattr(result, ('_%s' % attr), model_default_config[attr])
@@ -63,6 +64,7 @@ class Serializer(object):
                     pass
                 elif columns[attr] == "complex":
                     data[attr] = val if shallow else cPickle.dumps(val)
+                    #print attr, val, cPickle.dumps(val), "-"*60
                 else:
                     dumps_func = getattr(self, columns[attr] + "_dumps")
                     data[attr] = dumps_func(val)

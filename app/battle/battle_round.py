@@ -70,7 +70,7 @@ class BattleRound(object):
 
             if red_unit:
                 self.perform_one_skill(self._red_units, self._blue_units, red_unit.skill)
-                #check
+                # check
                 self._client_data.move_to_next()
             client_skill_result = self._client_data.current()
             if not client_skill_result: return
@@ -78,7 +78,7 @@ class BattleRound(object):
 
             if blue_unit and not special_skill_types.contains(FRIEND_SKILL):
                 self.perform_one_skill(self._blue_units, self._red_units, blue_unit.skill)
-                #check
+                # check
                 self._client_data.move_to_next()
 
     def handle_special_skill(self, skill_types):
@@ -92,13 +92,13 @@ class BattleRound(object):
 
             if client_skill_result.skill_type == BEST_SKILL:
                 self.perform_one_skill(self._red_units, self._blue_units, self._best_skill)
-                #check
+                # check
                 skill_types.append(BEST_SKILL)
                 self._client_data.move_to_next()
 
             elif client_skill_result.skill_type == FRIEND_SKILL:
                 self.perform_one_skill(self._red_units, self._blue_units, self._friend_skill)
-                #check
+                # check
                 self._client_data.move_to_next()
                 skill_types.append(FRIEND_SKILL)
             else:
@@ -109,8 +109,8 @@ class BattleRound(object):
         perform mock battle, logger.debug_cal(battle process.)
         """
         for i in range(1, 7):
-            red_unit = self._red_units.get(i)
-            blue_unit = self._blue_units.get(i)
+            red_unit = self.get_next_unit(i, self._red_units)
+            blue_unit = self.get_next_unit(i, self._blue_units)
             self.handle_mock_special_skill(self._red_best_skill)
             if red_unit:
                 logger.debug_cal(("red_%d" % i) + "-" * 20 + "我方攻击" + "-" * 20)
@@ -132,6 +132,14 @@ class BattleRound(object):
         for unit in self._blue_units.values():
             unit.buff_manager.remove()
 
+    def get_next_unit(self, i, units):
+        temp = None
+
+        while (not temp) and (i < 7):
+            temp = units.get(i)
+            i += 1
+        return temp
+
     def handle_mock_special_skill(self, best_skill):
         if best_skill and best_skill.is_full:
             self.perform_best_skill(self._red_units, self._blue_units, best_skill)
@@ -142,7 +150,7 @@ class BattleRound(object):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
         logger.debug_cal("    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
-              (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))
+                         (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))
 
         if not attacker.can_attack:
             logger.debug_cal("    攻击者在buff中，无法攻击！")
@@ -172,7 +180,11 @@ class BattleRound(object):
                 break
             if skill_buff_info.skill_key:
                 before_or_not = False
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, main_target_units, before_or_not)
+                self.handle_skill_buff(attacker, army, enemy, skill_buff_info, main_target_units, before_or_not)
+                continue
+            target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
+            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, False)
+
 
         # 在攻击技能触发完成后，处理mp
         skill.set_mp()
@@ -200,7 +212,7 @@ class BattleRound(object):
         """
         根据作用位置找到攻击目标，然后执行技能或者添加buff
         """
-        #if DEBUG:
+        # if DEBUG:
         #target_nos = []
         #for temp in target_units:
         #target_nos.append(temp.slot_no)
