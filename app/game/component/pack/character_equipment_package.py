@@ -16,7 +16,6 @@ class CharacterEquipmentPackageComponent(Component):
         super(CharacterEquipmentPackageComponent, self).__init__(owner)
         self._equipments_obj = {}  # {装备ID：装备obj}
 
-        # self._equipments_chip = {}  # 装备碎片 {装备No: 装备num}
 
     @property
     def equipments_obj(self):
@@ -33,8 +32,8 @@ class CharacterEquipmentPackageComponent(Component):
             equipment_no = equipment_info.get('equipment_no')  # 装备编号
             strengthen_lv = equipment_info.get('slv')  # 装备强化等级
             awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
-            enhance_info = equipment_info.get('enhance_info')  # 装备强化花费记录
-            nobbing_effect = equipment_info.get('nobbing_effect')  # 装备锤炼效果
+            enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
+            nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
             equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv,
                                       awakening_lv, enhance_info, nobbing_effect)
             self._equipments_obj[equipment_id] = equipment_obj

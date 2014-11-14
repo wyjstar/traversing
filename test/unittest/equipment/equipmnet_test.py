@@ -16,11 +16,15 @@ class EquipmentTest(unittest.TestCase):
         self.player = PlayersManager().get_player_by_id(1)
 
     def test_add_equipment(self):
-        equipment = self.player.equipment_component.add_equipment(110003)
+        equipment = self.player.equipment_component.add_equipment(100001)
         equipment.base_info.base_name = 'e3'
         equipment.attribute.strengthen_lv = 3
         equipment.attribute.awakening_lv = 4
+        equipment.enhance_record.enhance_record.append((1,2,1000))
         equipment.save_data()
+
+
+        data = tb_equipment_info.getObjData(equipment.base_info.id)
 
         equipment = self.player.equipment_component.get_equipment(equipment.base_info.id)
         name = equipment.base_info.base_name

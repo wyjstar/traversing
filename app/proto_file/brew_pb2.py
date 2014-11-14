@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='brew.proto',
   package='',
-  serialized_pb='\n\nbrew.proto\x1a\x0c\x63ommon.proto\"2\n\x08\x42rewInfo\x12\x12\n\nbrew_times\x18\x01 \x01(\x05\x12\x12\n\nnectar_num\x18\x02 \x01(\x05\"\x1b\n\x06\x44oBrew\x12\x11\n\tbrew_type\x18\x01 \x01(\x05')
+  serialized_pb='\n\nbrew.proto\x1a\x0c\x63ommon.proto\"P\n\x08\x42rewInfo\x12\x12\n\nbrew_times\x18\x01 \x01(\x05\x12\x12\n\nnectar_num\x18\x02 \x01(\x05\x12\x1c\n\x03res\x18\x03 \x01(\x0b\x32\x0f.CommonResponse\"\x1b\n\x06\x44oBrew\x12\x11\n\tbrew_type\x18\x01 \x01(\x05')
 
 
 
@@ -40,6 +40,13 @@ _BREWINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='BrewInfo.res', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -50,7 +57,7 @@ _BREWINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=28,
-  serialized_end=78,
+  serialized_end=108,
 )
 
 
@@ -77,10 +84,11 @@ _DOBREW = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=80,
-  serialized_end=107,
+  serialized_start=110,
+  serialized_end=137,
 )
 
+_BREWINFO.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['BrewInfo'] = _BREWINFO
 DESCRIPTOR.message_types_by_name['DoBrew'] = _DOBREW
 
