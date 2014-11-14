@@ -26,6 +26,8 @@ class CharacterStaminaComponent(Component):
         if stamina_data:
             self._stamina = stamina_data.get('stamina')
             self._open_receive = stamina_data.get('open_receive')
+            if not self._open_receive is None:
+                self._open_receive = 1
             self._get_stamina_times = stamina_data.get('get_stamina_times')
             self._buy_stamina_times = stamina_data.get('buy_stamina_times')
             self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
