@@ -102,15 +102,6 @@ class Mail(object):
         mail_pb.sender_id = self._sender_id
         mail_pb.sender_name = self._sender_name
         mail_pb.sender_icon = self._sender_icon
-        
-#         #TEMP
-#         if self._title is None:
-#             self._title = ""
-#         if self._content is None:
-#             self._content = ""
-#         if self._mail_type is None:
-#             self._mail_type = 1
-        
         mail_pb.title = self._title
         mail_pb.content = self._content
         mail_pb.mail_type = self._mail_type

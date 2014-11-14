@@ -16,7 +16,6 @@ from shared.db_opear.configs_data.game_configs import mail_config
 class FriendComponent(Component):
     def __init__(self, owner):
         super(FriendComponent, self).__init__(owner)
-        self._open_receive = True  # 开启接收活力
         self._friends = {}
         self._blacklist = []
         self._applicants_list = {}
@@ -28,7 +27,6 @@ class FriendComponent(Component):
             self._friends = friend_data.get('friends')
             if not self._friends:
                 self._friends = {}
-            self._open_receive = friend_data.get('open_receive', True)
             self._blacklist = friend_data.get('blacklist')
             self._applicants_list = friend_data.get('applicants_list')
 
@@ -38,14 +36,12 @@ class FriendComponent(Component):
                 len(self._applicants_list)
         if count > 0:
             if friend_obj:
-                data = {'open_receive': self._open_receive,
-                        'friends': self._friends,
+                data = {'friends': self._friends,
                         'blacklist': self._blacklist,
                         'applicants_list': self._applicants_list}
                 friend_obj.update_multi(data)
             else:
                 data = {'id': self.owner.base_info.id,
-                        'open_receive': self._open_receive,
                         'friends': self._friends,
                         'blacklist': self._blacklist,
                         'applicants_list': self._applicants_list}
@@ -153,12 +149,6 @@ class FriendComponent(Component):
 
         del (self._applicants_list[target_id])
         return True
-    
-    def open_receive(self):
-        self._open_receive = True
-        
-    def close_receive(self):
-        self._open_receive = False
 
     def last_present_times(self, target_id):
         given_time_list = self._friends.get(target_id)
@@ -180,7 +170,7 @@ class FriendComponent(Component):
         if stamina_mail:
             mail = dict(sender_id=self.owner.base_info.id,
                         sender_name=self.owner.base_info.base_name,
-                        sender_icon=self.owner.base_info.base_name,
+                        sender_icon=self.owner.line_up_component.lead_hero_no,
                         receive_id=target_id,
                         title=stamina_mail.get('title'),
                         content=stamina_mail.get('content'),
