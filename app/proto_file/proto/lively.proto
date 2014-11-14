@@ -1,0 +1,27 @@
+import "item.proto";
+//任务
+message Task
+{
+	required int32 tid = 1; //任务ID
+	required int32 current = 2; //任务当前值
+	required int32 target = 3;//任务目标值
+}
+
+//更新任务列表
+message TaskUpdate
+{
+	repeated Task tasks = 1; //任务列表
+}
+
+//请求领取奖励
+message rewardRequest
+{
+	required int32 tid = 1; //任务ID
+}
+
+//领奖返回
+message rewardResponse
+{
+	required int32 tid = 1; //任务ID
+	repeated ItemPB items = 2; //奖励道具列表
+}

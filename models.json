@@ -167,6 +167,15 @@
                 "brew": "complex",
                 "hero_refine": "complex"
             }
+        },
+        "tb_character_lively":{
+        	"pkey_field": "id",
+        	"def_attrs": {
+        		"id": "simple",
+        		"lively": "complex",
+        		"lasttime": "simple",
+        		"event_map": "complex",
+        	}
         }
     }
 }

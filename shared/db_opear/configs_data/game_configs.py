@@ -37,6 +37,7 @@ from special_stage_config import SpecialStageConfig
 from arena_fight_config import ArenaFightConfig
 from hero_breakup_attr_config import HeroBreakupAttrConfig
 from language_config import LanguageConfig
+from achievement_config import AchievementConfig
 
 
 base_config = {}
@@ -73,6 +74,7 @@ arena_fight_config = {}
 arena_shop_config = {}
 hero_breakup_attr_config = {}
 language_config = {}
+achievement_config = {}
 
 
 all_config_name = {
@@ -109,7 +111,8 @@ all_config_name = {
     'arena_fight_config': ArenaFightConfig(),
     'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
-    'language_config': LanguageConfig()
+    'language_config': LanguageConfig(),
+    'achievement_config':AchievementConfig(),
 }
 
 
