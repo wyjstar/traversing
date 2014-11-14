@@ -29,17 +29,21 @@ class DBPool(object):
                 'db':'test','port':3306,'charset':'utf8'}
         >>> dbpool.initPool(**aa)
         """
-        config = kw
-        config['use_unicode'] = True
-        config['charset'] = 'utf8'
+        self.config = kw
+        self.config['use_unicode'] = True
+        self.config['charset'] = 'utf8'
         for i in range(self.max_conection_num):
-            con = pymysql.Connect(**config)
+            con = pymysql.Connect(**self.config)
             self.idle_connections.append(con)
 
     def get_connection(self):
         while len(self.idle_connections) <= 0:
             gevent.sleep(1)
         con = self.idle_connections.pop()
+        try:
+            con.ping()
+        except:
+            con = pymysql.Connect(**self.config)
 
         return con
 

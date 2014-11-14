@@ -79,7 +79,6 @@ class CharacterMailComponent(Component):
     def delete_mail(self, mail_id):
         if not mail_id in self._mails:
             return
-        mail = self._mails[mail_id]
         tb_mail_info.deleteMode(mail_id)
         del self._mails[mail_id]
         # self.save_data()

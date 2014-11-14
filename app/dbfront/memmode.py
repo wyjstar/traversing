@@ -1,4 +1,4 @@
-#-*-coding:utf8-*-
+# -*-coding:utf8-*-
 
 from gfirefly.dbentrust.mmode import MAdmin
 
@@ -64,3 +64,7 @@ tb_character_stages.insert()
 # 邮件表
 tb_mail_info = MAdmin('tb_mail_info', 'id')
 tb_mail_info.insert()
+
+# brew
+tb_character_brew = MAdmin('tb_character_brew', 'id')
+tb_character_brew.insert()

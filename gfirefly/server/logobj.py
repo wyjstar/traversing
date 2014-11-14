@@ -9,6 +9,17 @@ from logging import Formatter
 from logging.handlers import DatagramHandler
 from shared.utils import const
 
+
+# 自定义log等级9,用于输出计算过程
+
+DEBUG_CAL = 9
+logging.addLevelName(DEBUG_CAL, "DEBUG_CAL")
+
+
+def debug_cal(message, *args, **kws):
+    if logger.isEnabledFor(DEBUG_CAL):
+        logger._log(DEBUG_CAL, message, args, **kws)
+
 logger_name = 's'
 
 RED = '\033[31m'
@@ -54,7 +65,7 @@ def log_init(log_path):
     datefmt = '%Y-%m-%d %I:%M:%S %p'
     fmt = '%(asctime)s-[%(levelname)s]-[' + file_name + ']: %(message)s'
 
-    _logger.setLevel(logging.DEBUG)
+    _logger.setLevel(DEBUG_CAL)
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.INFO)
     fh.setFormatter(Formatter(fmt, datefmt))
@@ -69,6 +80,17 @@ def log_init(log_path):
     uh.setLevel(logging.CRITICAL)
     uh.setFormatter('%(message)s')
     # _logger.addHandler(uh)
+    # log_init_debug_cal()
+
+
+def log_init_debug_cal():
+
+    _logger = logging.getLogger(logger_name)
+    _logger.debug_cal = debug_cal
+
+    cah = logging.FileHandler("tool/battle/output", mode="w")
+    cah.setLevel(DEBUG_CAL)
+    _logger.addHandler(cah)
 
 
 def log_init_only_out():
@@ -85,3 +107,7 @@ def log_init_only_out():
 
 
 logger = logging.getLogger(logger_name)
+
+
+
+

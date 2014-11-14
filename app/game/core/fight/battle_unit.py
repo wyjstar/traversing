@@ -36,6 +36,7 @@ class BattleUnit(object):
                  'level',
                  'break_level',
                  'position',
+                 'ductility',
                  'is_boss']
 
     def __init__(self, no):
@@ -43,8 +44,8 @@ class BattleUnit(object):
         """
         self.no = no  # 战斗单位ID
         self.quality = 0  # 战斗单位品质
-        self.normal_skill = []  # 战斗单位普通技能
-        self.rage_skill = []  # 战斗单位怒气技能
+        self.normal_skill = 0  # 战斗单位普通技能
+        self.rage_skill = 0  # 战斗单位怒气技能
         self.break_skills = []  # 战斗单位突破技能
         self.hp = 0  # 战斗单位血量
         self.atk = 0  # 战斗单位攻击
@@ -70,6 +71,7 @@ class BattleUnit(object):
         self.break_level = 0  # 突破等级
         self.position = 0  # 战斗单位位置
         self.is_boss = False  # 是否是boss bool
+        self.ductility = 0
 
     @property
     def info(self):

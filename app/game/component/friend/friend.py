@@ -25,35 +25,31 @@ class FriendComponent(Component):
 
         if friend_data:
             self._friends = friend_data.get('friends')
-            if not self._friends:
-                self._friends = {}
             self._blacklist = friend_data.get('blacklist')
             self._applicants_list = friend_data.get('applicants_list')
+        else:
+            data = dict(id=self.owner.base_info.id,
+                        friends=self._friends,
+                        blacklist=self._blacklist,
+                        applicants_list=self._applicants_list)
+            tb_character_friend.new(data)
 
     def save_data(self):
         friend_obj = tb_character_friend.getObj(self.owner.base_info.id)
-        count = len(self._friends) + len(self._blacklist) + \
-                len(self._applicants_list)
-        if count > 0:
-            if friend_obj:
-                data = {'friends': self._friends,
-                        'blacklist': self._blacklist,
-                        'applicants_list': self._applicants_list}
-                friend_obj.update_multi(data)
-            else:
-                data = {'id': self.owner.base_info.id,
-                        'friends': self._friends,
-                        'blacklist': self._blacklist,
-                        'applicants_list': self._applicants_list}
-                tb_character_friend.new(data)
-        elif friend_obj:
-            tb_character_friend.deleteMode(self.owner.base_info.id)
+        if friend_obj:
+            data = {'friends': self._friends,
+                    'blacklist': self._blacklist,
+                    'applicants_list': self._applicants_list}
+            friend_obj.update_multi(data)
+        else:
+            logger.error('cant find friendinfo:%s', self.owner.base_info.id)
 
     @property
     def friends(self):
         date_now = datetime.datetime.now().date()
         for k in self._friends.keys():
-            self._friends[k] = filter(lambda t: t.date() == date_now, self._friends[k])
+            self._friends[k] = filter(lambda t: t.date() == date_now,
+                                      self._friends[k])
 
         return self._friends.keys()
 
@@ -157,7 +153,7 @@ class FriendComponent(Component):
         given_times = len(given_time_list)
         return max(1 - given_times, 0)
     
-    def given_stamina(self, target_id):
+    def given_stamina(self, target_id, if_present=True):
         if target_id not in self._friends.keys():
             return False
 
@@ -165,7 +161,11 @@ class FriendComponent(Component):
         given_times = len(given_time_list)
         if given_times >= 1:
             return False
-
+        
+        given_time_list.append(datetime.datetime.now())
+        if not if_present:
+            return True
+        
         stamina_mail = mail_config.get(1)
         if stamina_mail:
             mail = dict(sender_id=self.owner.base_info.id,
@@ -179,8 +179,7 @@ class FriendComponent(Component):
                         prize=stamina_mail.get('rewards'))
 
             # command:id 为收邮件的命令ID
-            if netforwarding.push_message(1305, target_id, mail):
-                given_time_list.append(datetime.datetime.now())
+            if netforwarding.push_message('receive_mail_remote', target_id, mail):
                 return True
             else:
                 logger.error('stamina mail push message fail')

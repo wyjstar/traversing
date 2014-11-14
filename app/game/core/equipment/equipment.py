@@ -10,6 +10,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
 from shared.db_opear.configs_data.game_configs import base_config
+from shared.utils.const import const
 
 
 class Equipment(object):
@@ -17,10 +18,11 @@ class Equipment(object):
     """
 
     def __init__(self, equipment_id, equipment_name, equipment_no, \
-                 strengthen_lv=1, awakening_lv=1, enhance_record={}, nobbing_effect={}):
+                 strengthen_lv=1, awakening_lv=1, enhance_record=[], nobbing_effect={}):
         self._base_info = EquipmentBaseInfoComponent(self, equipment_id, equipment_name, equipment_no)
         self._attribute = EquipmentAttributeComponent(self, strengthen_lv, awakening_lv, nobbing_effect)
         self._record = EquipmentEnhanceComponent(self, enhance_record)
+        print "enhance_record", enhance_record
 
     def add_data(self, character_id):
         data = {'id': self._base_info.id, \
@@ -34,6 +36,7 @@ class Equipment(object):
         tb_equipment_info.new(data)
 
     def save_data(self):
+        print "save enhance_info:","-"*80, self._record.enhance_record
         data = {
             'equipment_info': {'equipment_no': self._base_info.equipment_no, \
                                'slv': self._attribute.strengthen_lv, \
@@ -63,9 +66,9 @@ class Equipment(object):
         """
         before_lv = self._attribute.strengthen_lv
         enhance_lv = 1
-        extra_enhance = self.get_extra_enhance_times(player)*enhance_lv
+        extra_enhance = self.get_extra_enhance_times(player) * enhance_lv
 
-        self._attribute.modify_single_attr('strengthen_lv', enhance_lv, add=True)
+        self._attribute.modify_single_attr('strengthen_lv', extra_enhance, add=True)
         after_lv = self._attribute.strengthen_lv
 
         return before_lv, after_lv
@@ -91,6 +94,8 @@ class Equipment(object):
         """
         equipment_no = self._base_info.equipment_no
         equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
+
+
         return equ_config_obj.gain
 
     @property

@@ -2,7 +2,7 @@ import "common.proto";
 
 // add_friend_common 好友
 message FriendCommon{
-	repeated int32 target_ids = 1;  // invitee id
+    repeated int32 target_ids = 1;  // invitee id
 }
 
 // add friend response
@@ -48,7 +48,7 @@ message CharacterInfo{
 
 // player friend items
 message GetPlayerFriendsResponse{
-	optional bool open_receive = 1;
+	optional int32 open_receive = 1;
     optional int32 page_num = 2;
     repeated CharacterInfo friends = 3;
     repeated CharacterInfo blacklist = 4;

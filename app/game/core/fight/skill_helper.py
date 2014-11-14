@@ -41,7 +41,7 @@ class SkillHelper(object):
         return None
 
     def parse_buffs(self):
-        """解析buffs
+        """解析buffs, 汇总buff加成。
         """
         hp_up = 0.0  # HP上限增加
         hp_up_rate = 0.0  # HP上限增加率

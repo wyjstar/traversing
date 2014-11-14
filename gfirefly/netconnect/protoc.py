@@ -132,6 +132,5 @@ class LiberateFactory(protocols.ServerFactory):
         @param msg: 消息的类容，protobuf结构类型
         @param sendList: 推向的目标列表(客户端id 列表)
         '''
-        print "#@pushObject:", topicID, repr(msg), sendList
         logger.info("pushObject: %s to %s" % (topicID, sendList))
         self.connmanager.pushObject(topicID, msg, sendList)

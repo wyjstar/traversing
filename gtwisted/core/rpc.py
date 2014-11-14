@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 '''
 Created on 2014年2月22日
 这里定义了两个服务之间进行接口调用的过程
@@ -19,6 +19,7 @@ ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
 DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
 RPC_DATA_MAX_LENGTH = 2147483647  # rpc数据包允许的最大长度
 
+
 class RemoteObject:
     """远程调用对象
     """
@@ -27,7 +28,7 @@ class RemoteObject:
         """
         self.broker = broker
         self.timeout = timeout
-        
+
     def callRemoteForResult(self, _name, *args, **kw):
         """执行远程调用,并等待结果
         @param _name: 调用的远程方法的名称
@@ -35,10 +36,10 @@ class RemoteObject:
         @param args: 远程方法需要的参数
         @param kw: 远程方法需要的默认参数
         """
-        _key,result = AsyncResultFactory().createAsyncResult()
+        _key, result = AsyncResultFactory().createAsyncResult()
         self.broker._sendMessage(_key, _name, args, kw)
         return result.get(timeout=Timeout(self.timeout))
-        
+
     def callRemoteNotForResult(self, _name, *args, **kw):
         """执行远程调用，不需要等待结果
         @param _name: 调用的远程方法的名称
@@ -47,20 +48,20 @@ class RemoteObject:
         """
         self.broker._sendMessage('', _name, args, kw)
 
-        
+
 class PBProtocl(BaseProtocol):
     """RPC协议处理
     """
-    
+
     def __init__(self, transport, factory):
         BaseProtocol.__init__(self, transport, factory)
         self.buff = ""
-    
+
     def getRootObject(self, timeout=DEFAULT_TIMEOUT):
         """获取远程调用对象
         """
         return RemoteObject(self, timeout=timeout)
-    
+
     def _sendMessage(self, _key, _name, args, kw):
         """发送远程请求
         """
@@ -68,9 +69,9 @@ class PBProtocl(BaseProtocol):
             _msgtype = ASK_SIGNAL
         else:
             _msgtype = NOTICE_SIGNAL
-        request = marshal.dumps({'_msgtype':_msgtype,'_key':_key,'_name':_name,'_args':args,'_kw':kw})
+        request = marshal.dumps(dict(_msgtype=_msgtype, _key=_key, _name=_name, _args=args, _kw=kw))
         self.writeData(request)
-        
+
     def writeData(self, data):
         """发送数据的统一接口
         """
@@ -78,7 +79,7 @@ class PBProtocl(BaseProtocol):
         if _length > RPC_DATA_MAX_LENGTH:
             raise RPCDataTooLongError
         self.transport.sendall(struct.pack("!i", _length)+data)
-        
+
     def dataReceived(self, data):
         """数据到达时的处理
         """
@@ -92,18 +93,18 @@ class PBProtocl(BaseProtocol):
                 self.buff = self.buff[4+data_length:]
                 gevent.spawn(self.msgResolve, request)
 #                 self.msgResolve(request)
-    
-    def msgResolve(self,data):
+
+    def msgResolve(self, data):
         """消息解析
         """
         request = marshal.loads(data)
         _msgtype = request['_msgtype']
-        if _msgtype==ASK_SIGNAL or _msgtype==NOTICE_SIGNAL:
+        if _msgtype == ASK_SIGNAL or _msgtype == NOTICE_SIGNAL:
             self.askReceived(request)
-        elif _msgtype==ANSWER_SIGNAL:
+        elif _msgtype == ANSWER_SIGNAL:
             self.answerReceived(request)
-            
-    def askReceived(self,request):
+
+    def askReceived(self, request):
         """远程调用请求到达时的处理
         """
         _key = request['_key']
@@ -113,22 +114,22 @@ class PBProtocl(BaseProtocol):
         method = self.getRemoteMethod(_name)
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
-            response = {'_msgtype':ANSWER_SIGNAL,'_key':_key,'result':result}
+            response = {'_msgtype': ANSWER_SIGNAL, '_key': _key, 'result': result}
             _response = marshal.dumps(response)
             self.writeData(_response)
-        
-    def getRemoteMethod(self,_name):
+
+    def getRemoteMethod(self, _name):
         """获取远程调用的方法对象
         """
-        method = getattr(self, "remote_%s"%_name)
+        method = getattr(self, "remote_%s" % _name)
         return method
-        
-    def callRemoteMethod(self,method,_args,_kw):
+
+    def callRemoteMethod(self, method, _args, _kw):
         """调用远程方法
         """
-        return method(*_args,**_kw)
-        
-    def answerReceived(self,request):
+        return method(*_args, **_kw)
+
+    def answerReceived(self, request):
         """请求的结果返回后的处理
         """
         _key = request['_key']
@@ -137,25 +138,21 @@ class PBProtocl(BaseProtocol):
 
 
 class PBServerProtocl(PBProtocl):
-    
     pass
+
 
 class PBServerFactory(ServerFactory):
-    
     protocol = PBServerProtocl
-        
-class PBClientProtocl(PBProtocl):
-    
-    pass
 
+
+class PBClientProtocl(PBProtocl):
+    pass
 
 
 class PBClientFactory(ClientFactory):
-    
     protocol = PBClientProtocl
-    
-    def getRootObject(self,timeout=DEFAULT_TIMEOUT):
+
+    def getRootObject(self, timeout=DEFAULT_TIMEOUT):
         """获取远程调用对象
         """
-        return RemoteObject(self._protocol,timeout=timeout)
-    
+        return RemoteObject(self._protocol, timeout=timeout)

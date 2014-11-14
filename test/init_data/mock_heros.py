@@ -17,6 +17,7 @@ def init_hero(player):
             hero1.level = 1
             hero1.break_level = 1
             hero1.exp = 0
+            hero1.save_data()
 
     return
     hero1 = player.hero_component.add_hero(10044)
