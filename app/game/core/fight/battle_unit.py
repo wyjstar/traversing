@@ -36,6 +36,7 @@ class BattleUnit(object):
                  'level',
                  'break_level',
                  'position',
+                 'ductility',
                  'is_boss']
 
     def __init__(self, no):
@@ -70,6 +71,7 @@ class BattleUnit(object):
         self.break_level = 0  # 突破等级
         self.position = 0  # 战斗单位位置
         self.is_boss = False  # 是否是boss bool
+        self.ductility = 0
 
     @property
     def info(self):

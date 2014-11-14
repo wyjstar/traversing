@@ -4,11 +4,13 @@ created by server on 14-7-17下午5:21.
 """
 
 import datetime
+import time
+
 from app.game.action.root import netforwarding
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_friend
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data import mail_config
+from shared.db_opear.configs_data.game_configs import mail_config
 
 
 class FriendComponent(Component):
@@ -144,7 +146,14 @@ class FriendComponent(Component):
         del (self._applicants_list[target_id])
         return True
 
-    def given_stamina(self, target_id):
+    def last_present_times(self, target_id):
+        given_time_list = self._friends.get(target_id)
+        if given_time_list is None:
+            return 0
+        given_times = len(given_time_list)
+        return max(1 - given_times, 0)
+    
+    def given_stamina(self, target_id, if_present=True):
         if target_id not in self._friends.keys():
             return False
 
@@ -152,21 +161,25 @@ class FriendComponent(Component):
         given_times = len(given_time_list)
         if given_times >= 1:
             return False
-
+        
+        given_time_list.append(datetime.datetime.now())
+        if not if_present:
+            return True
+        
         stamina_mail = mail_config.get(1)
         if stamina_mail:
             mail = dict(sender_id=self.owner.base_info.id,
                         sender_name=self.owner.base_info.base_name,
+                        sender_icon=self.owner.line_up_component.lead_hero_no,
                         receive_id=target_id,
-                        title=mail_config.get('title'),
-                        content=mail_config.get('content'),
-                        mail_type=mail_config.get('type'),
-                        send_time=int(datetime.time.time()),
-                        prize=mail_config.get('rewards'))
+                        title=stamina_mail.get('title'),
+                        content=stamina_mail.get('content'),
+                        mail_type=stamina_mail.get('type'),
+                        send_time=int(time.time()),
+                        prize=stamina_mail.get('rewards'))
 
             # command:id 为收邮件的命令ID
-            if netforwarding.push_message(1305, target_id, mail):
-                given_time_list.append(datetime.datetime.now())
+            if netforwarding.push_message('receive_mail_remote', target_id, mail):
                 return True
             else:
                 logger.error('stamina mail push message fail')
