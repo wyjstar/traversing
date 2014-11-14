@@ -64,7 +64,6 @@ class Serializer(object):
                     pass
                 elif columns[attr] == "complex":
                     data[attr] = val if shallow else cPickle.dumps(val)
-                    #print attr, val, cPickle.dumps(val), "-"*60
                 else:
                     dumps_func = getattr(self, columns[attr] + "_dumps")
                     data[attr] = dumps_func(val)

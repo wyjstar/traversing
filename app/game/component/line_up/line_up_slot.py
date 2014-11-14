@@ -102,7 +102,6 @@ class LineUpSlotComponent(Component):
         """
         equ_obj = self.get_equipment_obj(equipment_id)
         equipment_type = equ_obj.attribute.equipment_type
-        # print equipment_type, no, "check_equipment_pos+++++++++++++++++++++++++++"
         if no == equipment_type:
             return True
         return False
@@ -182,11 +181,8 @@ class LineUpSlotComponent(Component):
 
         attr = CommonItem()
         hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
-        print "武将：", hero_obj.hero_no
-        print "突破加成：", hero_break_attr
         attr += hero_break_attr
         hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
-        print "羁绊加成：", hero_link_attr
         attr += hero_link_attr
         return hero_base_attr, attr, hero_obj
 
@@ -204,12 +200,10 @@ class LineUpSlotComponent(Component):
                 continue
             equipment_base_attr = equ_obj.calculate_attr()  # 装备基础属性，强化等级
             attr += equipment_base_attr
-        print "装备加成：", attr
         suit_attr = CommonItem()
         equ_suit = self.equ_suit  # 装备套装技能属性
         for temp in equ_suit.values():
             suit_attr += temp
-        print "套装加成：", suit_attr
 
         attr += suit_attr
         return attr
@@ -232,10 +226,8 @@ class LineUpSlotComponent(Component):
 
         break_skills = hero_obj.break_skill_buff_ids
 
-        print attr, "%%%%%%%%%%%%%%"
 
         hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp + hero_obj.break_param * hero_obj.hero_info.hp
-        print "base_attr.hp(%s), attr.hp_rate(%s), attr.hp(%s)" % (base_attr.hp, attr.hp_rate, attr.hp)
 
         atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk + hero_obj.break_param * hero_obj.hero_info.atk
         physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def + hero_obj.break_param * hero_obj.hero_info.physicalDef
@@ -256,7 +248,6 @@ class LineUpSlotComponent(Component):
         position = line_up_order.index(self._slot_no)
         position += 1
         ductility = 0
-        print no, "hero_no"
         battlt_unit = do_assemble(no, quality, break_skills,
                                   hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
                                   ductility, position,

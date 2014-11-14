@@ -16,7 +16,6 @@ class CharacterEquipmentPackageComponent(Component):
         super(CharacterEquipmentPackageComponent, self).__init__(owner)
         self._equipments_obj = {}  # {装备ID：装备obj}
 
-        # self._equipments_chip = {}  # 装备碎片 {装备No: 装备num}
 
     @property
     def equipments_obj(self):
@@ -25,7 +24,6 @@ class CharacterEquipmentPackageComponent(Component):
     def init_data(self):
         equipment_datas = tb_equipment_info.getObjListByFk(self.owner.base_info.id)
 
-        print "-"*80, len(equipment_datas)
         for equipment_obj in equipment_datas:
             equipment_data = equipment_obj.get('data')
             equipment_info = equipment_data.get('equipment_info')
@@ -36,7 +34,6 @@ class CharacterEquipmentPackageComponent(Component):
             awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
-            print "strengthen_lv", strengthen_lv
             equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv,
                                       awakening_lv, enhance_info, nobbing_effect)
             self._equipments_obj[equipment_id] = equipment_obj
