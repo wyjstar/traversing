@@ -80,15 +80,15 @@ class CharacterBrewComponent(Component):
             return False
 
         brew_prices = base_config.get('cookingWinePrice')
-        if self._brew_step not in brew_prices:
-            logger.error('base config error step:%s', self._brew_step)
+        if brew_type not in brew_prices:
+            logger.error('base config error step:%s', brew_type)
             return False
 
         if not self.owner.finance.consume_gold(
-                brew_prices[brew_type][self._brew_step]):
+                brew_prices[brew_type][self._brew_step - 1]):
             logger.error('not enough gold to do brew:%s:%s',
                          self.owner.finance.gold,
-                         brew_prices[brew_type][self._brew_step])
+                         brew_prices[brew_type][self._brew_step - 1])
             return False
 
         self._brew_step += 1
@@ -121,6 +121,7 @@ cur:%s time:%s cri:%s',
         self._nectar_cur = base_config.get('cookingWineOutput')
         self._brew_step = 1
         self._brew_times -= 1
+        self.save_data()
         return True
 
     def check_time(self):
