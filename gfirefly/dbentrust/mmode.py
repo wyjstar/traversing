@@ -9,10 +9,10 @@ from memobject import MemObject
 import util
 import time
 
-MMODE_STATE_ORI = 0  #未变更
-MMODE_STATE_NEW = 1  #创建
-MMODE_STATE_UPDATE = 2  #更新
-MMODE_STATE_DEL = 3  #删除
+MMODE_STATE_ORI = 0  # 未变更
+MMODE_STATE_NEW = 1  # 创建
+MMODE_STATE_UPDATE = 2  # 更新
+MMODE_STATE_DEL = 3  # 删除
 
 TIMEOUT = 1800
 
@@ -45,7 +45,7 @@ class MMode(MemObject):
         """
         """
         MemObject.__init__(self, name, mclient)
-        self._state = MMODE_STATE_ORI  #对象的状态 0未变更  1新建 2更新 3删除
+        self._state = MMODE_STATE_ORI  # 对象的状态 0未变更  1新建 2更新 3删除
         self._pk = pk
         self.data = data
         self._time = time.time()
@@ -359,6 +359,10 @@ class MAdmin(MemObject):
                 pklist = self.getAllPkByFk(fk)
             pklist.append(pk)
             fkmm.update('pklist', pklist)
-        setattr(mm, '_state', MMODE_STATE_NEW)
+        old_state = getattr(mm, '_state')
+        if old_state == MMODE_STATE_DEL:
+            setattr(mm, '_state', MMODE_STATE_UPDATE)
+        else:
+            setattr(mm, '_state', MMODE_STATE_NEW)
         mm.insert()
         return mm

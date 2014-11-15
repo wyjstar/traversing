@@ -15,6 +15,7 @@ class CharacterStaminaComponent(Component):
 
     def __init__(self, owner):
         super(CharacterStaminaComponent, self).__init__(owner)
+        self._open_receive = 1  # 开启接收活力
         self._stamina = self.max_of_stamina  # 体力
         self._get_stamina_times = 0  # 通过邮件获取体力次数
         self._buy_stamina_times = 0  # 购买体力次数
@@ -24,6 +25,9 @@ class CharacterStaminaComponent(Component):
         logger.debug(str(stamina_data) + ", stamina+++++++++++++++++")
         if stamina_data:
             self._stamina = stamina_data.get('stamina')
+            self._open_receive = stamina_data.get('open_receive')
+            if self._open_receive is None:
+                self._open_receive = 1
             self._get_stamina_times = stamina_data.get('get_stamina_times')
             self._buy_stamina_times = stamina_data.get('buy_stamina_times')
             self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
@@ -47,6 +51,7 @@ class CharacterStaminaComponent(Component):
         """stamina detail data"""
         return  {
             'stamina': self._stamina,
+            'open_receive': self._open_receive,
             'get_stamina_times': self._get_stamina_times,
             'buy_stamina_times': self._buy_stamina_times,
             'last_gain_stamina_time': self._last_gain_stamina_time,
@@ -69,6 +74,20 @@ class CharacterStaminaComponent(Component):
     def stamina(self, value):
         """体力"""
         self._stamina = value
+    
+    def open_receive(self):
+        self._open_receive = 1
+        
+    def close_receive(self):
+        self._open_receive = 0
+        
+    def add_stamina(self, value):
+        """ 添加体力
+        """
+        if not self._open_receive:
+            return
+        self._stamina += value
+        self._stamina = min(self._stamina, self.max_of_stamina)
 
     @property
     def get_stamina_times(self):

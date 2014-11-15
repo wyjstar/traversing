@@ -37,7 +37,6 @@ def add_guild_to_rank(g_id, dengji):
     if get_gate_remote():
         get_gate_remote().callRemote("add_guild_to_rank", g_id, dengji)
 
-
 def login_chat(dynamic_id, character_id, guild_id, nickname):
     if get_gate_remote():
         get_gate_remote().callRemote("login_chat",
@@ -68,7 +67,7 @@ def push_message(key, character_id, *args, **kw):
             pargs = (key, player.dynamic_id) + args
             kw['is_online'] = True
             return get_gate_remote()._reference._service.callTarget(*pargs,
-                                                                    **kw)
+                                           **kw)
         else:
             return get_gate_remote().callRemote("push_message",
                                                 key,
