@@ -224,6 +224,29 @@ class BattleUnit(object):
     def dumps(self):
         return cPickle.dumps(self.info)
 
+    @classmethod
+    def loads(cls, data):
+        info = cPickle.loads(data)
+        no = info['unit_no']
+        unit = cls(no)
+        unit.set_attrs(**info)
+        return unit
+
+    def set_attrs(self, **kwargs):
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+
+    def __cmp__(self, other):
+        if self is not None and other is not None:
+            return cmp(self.unit_no, other.unit_no)
+
+        if self is None and other is None:
+            return 0
+        elif other is None:
+            return -1
+        else:
+            return 1
+
 
 def do_assemble(no, quality, break_skills, hp,
                 atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position, level,

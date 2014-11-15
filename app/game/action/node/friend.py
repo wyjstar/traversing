@@ -3,7 +3,7 @@
 created by server on 14-7-17下午4:36.
 """
 import datetime
-from app.game.core.fight.battle_unit import BattleUnit
+from app.battle.battle_unit import BattleUnit
 from app.game.redis_mode import tb_character_info
 from app.game.redis_mode import tb_character_lord
 from app.proto_file.common_pb2 import CommonResponse
@@ -170,7 +170,7 @@ def get_player_friend_list_1106(data, player):
             if lord_data:
                 info = lord_data.get('attr_info', {})
                 battle_unit = BattleUnit.loads(info.get('info'))
-                response_friend_add.hero_no = battle_unit.no
+                response_friend_add.hero_no = battle_unit.unit_no
                 response_friend_add.power = info.get('power', 0)
                 response_friend_add.hp = battle_unit.hp
                 response_friend_add.atk = battle_unit.atk

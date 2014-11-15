@@ -78,6 +78,9 @@ class SkillHelper(object):
         block_up = 0.0  # 格挡率增加
         block_down = 0.0  # 格挡率减少
 
+        ductility_up = 0.0  # 韧性增加
+        ductility_down = 0.0  # 韧性减小
+
         for buff in self._buffs:
             if buff.effect_id == 4 and buff.value_type == 1:
                 hp_up += buff.value_effect
@@ -172,6 +175,12 @@ class SkillHelper(object):
             if buff.effect_id == 23:
                 block_down += buff.value_effect
 
+            if buff.effect_id == 28:
+                ductility_up += buff.value_effect
+
+            if buff.effect_id == 29:
+                ductility_down += buff.value_effect
+
         return CommonItem(
             dict(hp=hp_up + hp_down,
                  hp_rate=hp_up_rate - hp_down_rate,
@@ -186,4 +195,5 @@ class SkillHelper(object):
                  cri=cri_up - cri_down,
                  cri_coeff=cri_coeff,
                  cri_ded_coeff=cri_ded_coeff,
-                 block=block_up - block_down))
+                 block=block_up - block_down,
+                 ductility=ductility_up-ductility_down))

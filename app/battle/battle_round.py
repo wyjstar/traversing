@@ -126,11 +126,6 @@ class BattleRound(object):
                 self._blue_best_skill.add_mp()
                 logger.debug_cal("    ")
 
-        # 每回合结束后，减buff
-        for unit in self._red_units.values():
-            unit.buff_manager.remove()
-        for unit in self._blue_units.values():
-            unit.buff_manager.remove()
 
     def get_next_unit(self, i, units):
         temp = None
@@ -212,15 +207,11 @@ class BattleRound(object):
         """
         根据作用位置找到攻击目标，然后执行技能或者添加buff
         """
-        # if DEBUG:
-        #target_nos = []
-        #for temp in target_units:
-        #target_nos.append(temp.slot_no)
-        #logger.debug_cal("    技能或者buffID（%s），作用目标: %s, %s" % (skill_buff_info.id, skill_buff_info.effectPos, target_nos))
 
         logger.debug_cal("-" * 80)
         result = []
         for target_unit in target_units:
+            if target_unit.hp <= 0: continue
             if skill_buff_info.effectId in [1, 2, 3, 26]:
                 is_block, is_cri = execute_skill_buff(attacker, target_unit, skill_buff_info)
                 if target_unit.hp <= 0:  # 如果血量为0，则去掉该unit
@@ -239,7 +230,8 @@ class BattleRound(object):
         logger.debug_cal("    技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id))
         if DEBUG:
             for temp in target_units:
-                logger.debug_cal("    %s" % temp)
+                if temp.hp > 0:
+                    logger.debug_cal("    %s" % temp)
 
         # 触发反击
         for is_block, backer in result:
