@@ -162,7 +162,7 @@ def _with_battle_info(response, pid):
     if lord_data:
         info = lord_data.get('attr_info', {})
         battle_unit = BattleUnit.loads(info.get('info'))
-        response.hero_no = battle_unit.no
+        response.hero_no = battle_unit.unit_no
         response.power = int(info.get('power', 0))
         response.hp = battle_unit.hp
         response.atk = battle_unit.atk

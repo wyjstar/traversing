@@ -215,7 +215,7 @@ class BattleUnit(object):
 
     @property
     def info(self):
-        return dict(no=self.unit_no,
+        return dict(unit_no=self.unit_no,
                     break_skills=self.skill.break_skill_ids, hp=self.hp, atk=self.atk, physical_def=self.physical_def,
                     magic_def=self.magic_def, hit=self.hit, dodge=self.dodge, cri=self.cri,
                     cri_coeff=self.cri_coeff, cri_ded_coeff=self.cri_ded_coeff, block=self.block, ductility=self.ductility,
@@ -227,8 +227,8 @@ class BattleUnit(object):
     @classmethod
     def loads(cls, data):
         info = cPickle.loads(data)
-        no = info['unit_no']
-        unit = cls(no)
+        print info, "*"*80
+        unit = cls()
         unit.set_attrs(**info)
         return unit
 
