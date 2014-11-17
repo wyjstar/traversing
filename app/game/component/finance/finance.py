@@ -116,7 +116,10 @@ class CharacterFinanceComponent(Component):
         self._gold += num
 
     def consume_gold(self, num):
+        if num > self._gold:
+            return False
         self._gold -= num
+        return True
 
     def add_hero_soul(self, num):
         self._hero_soul += num

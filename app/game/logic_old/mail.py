@@ -2,14 +2,15 @@
 """
 created by server on 14-8-14下午6:32.
 """
-from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailRequest, ReadMailResponse, ReceiveMailResponse
+
+from app.proto_file.mailbox_pb2 import GetMailInfos, ReadMailResponse, ReceiveMailResponse
 from app.proto_file.common_pb2 import CommonResponse
-from app.game.logic.common.check import have_player
 from app.game.core.item_group_helper import gain, get_return
 from app.game.action.root import netforwarding
-import time
-from app.game.core.drop_bag import BigBag
 from shared.db_opear.configs_data import data_helper
+from app.game.component.mail.mail import MailComponent
+from app.game.core.check import have_player
+import time
 
 
 @have_player
@@ -29,6 +30,7 @@ def get_mails(player):
 
     # 删除过期公告
     player.mail_component.delete_mails(expire_ids)
+    player.mail_component.save_data()
     return response.SerializePartialToString()
 
 
@@ -44,35 +46,37 @@ def read_mail(mail_ids, mail_type, **kwargs):
     """读取邮件"""
     player = kwargs.get('player')
     response = ReadMailResponse()
-    if mail_type == 1:
+    if mail_type == MailComponent.TYPE_PRESENT:
         # 领取赠送体力
         result = check_gives(mail_ids, player)
         if not result.get('result'):
             response.res.result = False
             response.res.result_no = result.get('result_no')
             return response.SerializePartialToString()
-        for mail_id in mail_ids:
-            player.stamina += 2
-            # 发送反馈体力
-            mail = player.mail_component.get_mail(mail_id)
-            mail_return = {'sender_id': player.base_info.id,
-                           'sender_name': player.base_info.base_name,
-                           'receive_id': mail.sender_id,
-                           'receive_name': mail.sender_name,
-                           'title': mail.title,
-                           'content': mail.content,
-                           'mail_type': mail_type,
-                           'send_time': int(time.time()),
-                           'prize': 0}
-            netforwarding.push_message(1305, mail.sender_id, mail_return)
+#         for mail_id in mail_ids:
+#             # 发送反馈体力
+#             mail = player.mail_component.get_mail(mail_id)
+#             mail_return = {'sender_id': player.base_info.id,
+#                            'sender_name': player.base_info.base_name,
+#                            'sender_icon': player.line_up_component.lead_hero_no,
+#                            'receive_id': mail.sender_id,
+#                            'receive_name': mail.sender_name,
+#                            'title': mail.title,
+#                            'content': mail.content,
+#                            'mail_type': mail_type,
+#                            'send_time': int(time.time()),
+#                            'prize': 0}
+#             netforwarding.push_message(1305, mail.sender_id, mail_return)
+        player.stamina.add_stamina(len(mail_ids)*2)
+        player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
 
-    elif mail_type == 2:
+    elif mail_type == MailComponent.TYPE_AWARD:
         # 领取奖励
         get_prize(player, mail_ids, response)
         player.mail_component.delete_mails(mail_ids)
 
-    elif mail_type == 3 or mail_type == 4:
+    elif mail_type == MailComponent.TYPE_ANNOUCEMENT or mail_type == MailComponent.TYPE_MESSAGE:
         # 公告
         for mail_id in mail_ids:
             mail = player.mail_component.get_mail(mail_id)
@@ -84,7 +88,7 @@ def read_mail(mail_ids, mail_type, **kwargs):
 
 
 def check_gives(mail_ids, player):
-    if len(mail_ids) + player.get_stamina_times > 15:
+    if len(mail_ids) + player.stamina.get_stamina_times > 15:
         # 一天领取邮件不超过15个
         return {'result': False, 'result_no': 1302}
 
@@ -116,20 +120,20 @@ def receive_mail(online, mail, player):
     mail_type = mail.get("mail_type")
     sender_id = mail.get("sender_id")
     sender_name = mail.get("sender_name")
+    sender_icon = mail.get("sender_icon")
     title = mail.get("title")
     content = mail.get("content")
     send_time = mail.get("send_time")
     prize = mail.get("prize")
-
     mail = player.mail_component.add_mail(sender_id, sender_name, title,
-                                   content, mail_type, send_time, prize)
-
-    # print "online", online
+                                   content, mail_type, send_time, prize, sender_icon=sender_icon)
+    print "#receive_mail"
     if not online:
-
+        print "#not online"
         response = ReceiveMailResponse()
         mail.update(response.mail)
         netforwarding.push_object(1305, response.SerializePartialToString(), [player.dynamic_id])
+    return True
 
 
 @have_player

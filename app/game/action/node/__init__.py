@@ -21,10 +21,10 @@ class GameCommandService(CommandService):
                         (target.__name__, self._name))
         try:
             dynamic_id = args[0]
-            logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
+            # logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
             if targetKey != 'enter_scene':
                 _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
-                print 'find player:', _player
+                # print 'find player:', _player
                 if not _player:
                     return {'result': False, 'result_no': 1, 'message': u''}
                 args = args[1:]
@@ -68,3 +68,4 @@ import sign_in
 import login_gift
 import pvp_rank
 import arena_shop
+import brew

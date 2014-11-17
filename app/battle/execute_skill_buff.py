@@ -29,12 +29,22 @@ def execute_skill_buff(attacker, target, skill_buff_info):
 
     is_cri = False # 是否暴击
     is_block = False # 是否格挡
+    is_trigger = False # 是否trigger
+
+    if get_random_int(1, 100) <= skill_buff_info.triggerRate:
+        is_trigger = True
+
+    if not is_trigger:
+        logger.debug_cal("    技能未触发。")
+        return is_block, is_cri
 
     if get_random_int(1, 100) < attacker.cri - target.ductility:
         is_cri = True
 
     if get_random_int(1, 100) < attacker.block:
         is_block = True
+
+
 
     k1 = attacker.atk # 攻方总实际攻击力
     k2 = 0            # 守方总物理或者魔法防御
@@ -75,7 +85,7 @@ def execute_skill_buff(attacker, target, skill_buff_info):
         block_demage_coeff = 1
 
     total_demage = base_demage_value * cri_coeff * block_demage_coeff * level_coeff * demage_fluct_coeff  # 总伤害值
-    total_treat = base_demage_value * cri_coeff                                                           # 总治疗值
+    total_treat = attacker.hp * cri_coeff                                                           # 总治疗值
                                                                                                           #
     actual_demage = 0                                                                                     # 实际伤害值
     actual_treat = 0                                                                                      # 实际治疗值
@@ -116,6 +126,7 @@ def execute_mp(target, skill_buff_info):
         target.mp += skill_buff_info.valueEffect
     elif skill_buff_info.effectId == 9:
         target.mp -= skill_buff_info.valueEffect
+
 
 
 

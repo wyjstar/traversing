@@ -1,0 +1,12 @@
+# 脚本说明
+# Author:jiang
+
+# 协议脚本
+protoc.sh	#编译protobuf文件
+
+# 数据库脚本
+flushdb.sh	#重建数据库（执行以下三个脚本）
+db_create.sh	#重新建表
+db_modify.sh	#更新表结构
+db_insert.sh	#插入数据
+

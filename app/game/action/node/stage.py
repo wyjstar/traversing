@@ -9,7 +9,7 @@ from app.proto_file import stage_response_pb2
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from app.game.core.drop_bag import BigBag
-from app.game.core.fight.battle_unit import BattleUnit
+from app.battle.battle_unit import BattleUnit
 from app.game.core.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs

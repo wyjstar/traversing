@@ -19,6 +19,7 @@ class SerializerMetaClass(type):
             model_default_config = GlobalObject().json_model_default_config
             model_config = GlobalObject().json_model_config
 
+
             if model_default_config:
                 for attr in model_default_config:
                     setattr(result, ('_%s' % attr), model_default_config[attr])
