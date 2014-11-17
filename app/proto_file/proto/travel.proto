@@ -1,5 +1,9 @@
 import "common.proto";
 
+message Chapter{
+    repeated Travel travel = 1;
+}
+
 message Travel{
     required int32 event_id = 1;
     optional int32 time = 2;
@@ -25,7 +29,7 @@ message TravelResponse{
 
 // travel_init 830
 message TravelInitResponse{
-    repeated Travel travel = 1;
+    repeated Chapter chapter = 1;
     required Shoes shoes = 2;
     required int32 chest_time = 3;
 }

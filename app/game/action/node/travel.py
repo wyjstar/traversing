@@ -80,11 +80,13 @@ def travel_init_830(data, player):
     """init travel"""
     response = TraverInitResponse()
 
-    for tra in player.travel_component.travel:
-        res_travel = response.travel.add()
-        res_travel.event_id = tra[0]
-        if travel_event_config.get('events').get(tra[0]).type == 1:
-            res_travel.time = tra[1]
+    for (character_id, item) in player.travel_component.travel:
+        chapter = response.chapter.add()
+        for tra in item:
+            res_travel = chapter.travel.add()
+            res_travel.event_id = tra[0]
+            if travel_event_config.get('events').get(tra[0]).type == 1:
+                res_travel.time = tra[1]
 
     res_shose = response.shoes
     res_shose.shoe1 = player.travel_component.shoes[0]
