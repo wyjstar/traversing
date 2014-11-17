@@ -312,10 +312,10 @@ class CharacterFightCacheComponent(Component):
         logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units))
         if rand_odds <= odds:
             replace = []  # 可以替换的英雄
-            for red_unit in red_units:
+            for k, red_unit in red_units.items():
                 if not red_unit:
                     continue
-                hero_no = red_unit.no  # 英雄编号
+                hero_no = red_unit.unit_no  # 英雄编号
                 if hero_no in self._not_replace:
                     continue
                 replace.append(red_unit)
@@ -327,10 +327,9 @@ class CharacterFightCacheComponent(Component):
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
 
+            old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.slot_no)
 
-            old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.position)
-
-            break_line_up_slot = copy.deepcopy(old_line_up_slot)
+            break_line_up_slot = copy.copy(old_line_up_slot)
 
             hero_no = break_config.hero_id
             level = red_unit.level  # 等级
@@ -338,11 +337,10 @@ class CharacterFightCacheComponent(Component):
             break_hero_obj.hero_no = hero_no
             break_hero_obj.level = level
 
-
             attr = CommonItem()
             hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
             attr += hero_break_attr
-            slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
+            slot_obj = self.owner.line_up_component.get_slot_by_hero(red_unit.unit_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
 
