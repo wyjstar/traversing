@@ -121,6 +121,7 @@ cur:%s time:%s cri:%s',
         self._nectar_cur = base_config.get('cookingWineOutput')
         self._brew_step = 1
         self._brew_times -= 1
+        self.save_data()
         return True
 
     def check_time(self):
