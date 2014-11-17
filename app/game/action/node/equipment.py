@@ -231,7 +231,9 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
             return result
         enhance_record.append(result.get('record'))
 
+    print equipment_obj.enhance_record
     equipment_obj.enhance_record.enhance_record.extend(enhance_record)
+
     # 保存
     equipment_obj.save_data()
     player.finance.save_data()

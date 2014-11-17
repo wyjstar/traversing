@@ -2,13 +2,11 @@
 """
 created by server on 14-7-7下午8:30.
 """
-
+import shared.db_opear.configs_data.game_configs
 
 def init():
     """reinit all data , every test case """
-    import test.unittest.init_data.mock_config
-    from test.unittest.init_data.mock_redis import init_redis
-    init_redis()
+
     from test.unittest.init_data.mock_player import init_player
     init_player()
     from test.unittest.init_data.mock_heros import init_hero
@@ -22,7 +20,7 @@ def init():
     from test.unittest.init_data.mock_equipment_chip import init_equipment_chip
     init_equipment_chip()
     from test.unittest.init_data.mock_line_up import init_line_up
-    init_line_up()
+    #init_line_up()
     from test.unittest.init_data.mock_mails import init_mail
-    init_mail()
+    #init_mail()
 

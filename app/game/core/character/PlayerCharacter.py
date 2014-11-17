@@ -4,11 +4,14 @@ created by server on 14-6-4下午3:04.
 """
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.character_online_gift import CharacterOnlineGift
-from app.game.component.equipment.character_equipment_chip import CharacterEquipmentChipComponent
+from app.game.component.equipment.character_equipment_chip\
+    import CharacterEquipmentChipComponent
 from app.game.component.fight.fight_cache import CharacterFightCacheComponent
 from app.game.component.level.character_level import CharacterLevelComponent
-from app.game.component.pack.character_equipment_package import CharacterEquipmentPackageComponent
-from app.game.component.pack.character_item_package import CharacterItemPackageComponent
+from app.game.component.pack.character_equipment_package\
+    import CharacterEquipmentPackageComponent
+from app.game.component.pack.character_item_package\
+    import CharacterItemPackageComponent
 from app.game.component.stage.character_stage import CharacterStageComponent
 from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
@@ -16,7 +19,8 @@ from shared.utils.const import const
 from app.game.component.character_heros import CharacterHerosComponent
 from app.game.component.finance.finance import CharacterFinanceComponent
 from app.game.component.character_hero_chips import CharacterHeroChipsComponent
-from app.game.component.character_last_pick_time import CharacterLastPickTimeComponent
+from app.game.component.character_last_pick_time\
+    import CharacterLastPickTimeComponent
 from app.game.component.friend.friend import FriendComponent
 from app.game.component.character_guild import CharacterGuildComponent
 from app.game.component.tb_character_mail import CharacterMailComponent
@@ -95,9 +99,12 @@ class PlayerCharacter(Character):
         middle_stone = character_info['middle_stone']
         high_stone = character_info['high_stone']
         fine_hero_last_pick_time = character_info['fine_hero_last_pick_time']
-        excellent_hero_last_pick_time = character_info['excellent_hero_last_pick_time']
-        fine_equipment_last_pick_time = character_info['fine_equipment_last_pick_time']
-        excellent_equipment_last_pick_time = character_info['excellent_equipment_last_pick_time']
+        excellent_hero_last_pick_time =\
+            character_info['excellent_hero_last_pick_time']
+        fine_equipment_last_pick_time =\
+            character_info['fine_equipment_last_pick_time']
+        excellent_equipment_last_pick_time =\
+            character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
         vip_level = character_info['vip_level']
 
@@ -116,7 +123,8 @@ class PlayerCharacter(Character):
         self._last_pick_time.fine_hero = fine_hero_last_pick_time
         self._last_pick_time.excellent_hero = excellent_hero_last_pick_time
         self._last_pick_time.fine_equipment = fine_equipment_last_pick_time
-        self._last_pick_time.excellent_equipment = excellent_equipment_last_pick_time
+        self._last_pick_time.excellent_equipment =\
+            excellent_equipment_last_pick_time
 
         # ------------初始化角色等级信息------------
         self._level.level = level
@@ -333,6 +341,10 @@ class PlayerCharacter(Character):
     @property
     def arena_shop(self):
         return self._arena_shop
+
+    @property
+    def brew(self):
+        return self._brew
 
     def save_data(self):
         pid = self.base_info.id

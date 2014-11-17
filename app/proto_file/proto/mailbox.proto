@@ -6,14 +6,15 @@ message Mail_PB
     required string mail_id = 1; // ID
     optional int32 sender_id = 2; //发件人ID
     optional string sender_name = 3; //发件人
-    optional int32 receive_id = 4; //收件人ID
-    optional string receive_name = 5; //收件人
-    optional string title = 6; //标题
-    optional string content = 7; //邮件内容
-    required int32 mail_type = 8; //邮件类型
-    optional int32 send_time = 9; //发件时间
-    optional bool is_readed = 10; //是否已读
-    optional string prize = 11; //奖品
+    optional int32 sender_icon = 4; //发件人Icon
+    optional int32 receive_id = 5; //收件人ID
+    optional string receive_name = 6; //收件人
+    optional string title = 7; //标题
+    optional string content = 8; //邮件内容
+    required int32 mail_type = 9; //邮件类型
+    optional int32 send_time = 10; //发件时间
+    optional bool is_readed = 11; //是否已读
+    optional string prize = 12; //奖品
 }
 
 //汇总邮箱信息, command : 1301

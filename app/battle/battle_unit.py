@@ -145,6 +145,7 @@ class BattleUnit(object):
 
     @property
     def cri(self):
+
         return self._buff_manager.get_buffed_cri(self._cri)
 
     @cri.setter
@@ -195,9 +196,9 @@ class BattleUnit(object):
         return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
                 命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp初始值(%s), buffs(%s)") \
                % (
-        self._slot_no, self._unit_name, self._unit_no, self._hp, self._atk, self._physical_def, self._magic_def,
-        self._hit, self._dodge, self._cri, self._cri_coeff, self._cri_ded_coeff, self._block, self._ductility,
-        self._level, self._break_level, self._mp_base, self.buff_manager)
+        self._slot_no, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
+        self.hit, self.dodge, self.cri, self.cri_coeff, self.cri_ded_coeff, self.block, self.ductility,
+        self.level, self.break_level, self._mp_base, self.buff_manager)
 
     @property
     def hp_max(self):
@@ -214,7 +215,7 @@ class BattleUnit(object):
 
     @property
     def info(self):
-        return dict(no=self.unit_no,
+        return dict(unit_no=self.unit_no,
                     break_skills=self.skill.break_skill_ids, hp=self.hp, atk=self.atk, physical_def=self.physical_def,
                     magic_def=self.magic_def, hit=self.hit, dodge=self.dodge, cri=self.cri,
                     cri_coeff=self.cri_coeff, cri_ded_coeff=self.cri_ded_coeff, block=self.block, ductility=self.ductility,
@@ -222,6 +223,29 @@ class BattleUnit(object):
 
     def dumps(self):
         return cPickle.dumps(self.info)
+
+    @classmethod
+    def loads(cls, data):
+        info = cPickle.loads(data)
+        print info, "*"*80
+        unit = cls()
+        unit.set_attrs(**info)
+        return unit
+
+    def set_attrs(self, **kwargs):
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+
+    def __cmp__(self, other):
+        if self is not None and other is not None:
+            return cmp(self.unit_no, other.unit_no)
+
+        if self is None and other is None:
+            return 0
+        elif other is None:
+            return -1
+        else:
+            return 1
 
 
 def do_assemble(no, quality, break_skills, hp,

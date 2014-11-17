@@ -64,6 +64,18 @@ class CharacterLineUpComponent(Component):
             slot = self._sub_slots[i]
             if self.owner.level.level >= game_configs.base_config.get("friend_position_open_level").get(i):
                 slot.activation = True
+                
+    @property
+    def lead_hero_no(self):
+        """主力英雄编号
+        """
+        slot = self._line_up_slots.get(1)
+        if not slot:
+            return 0
+        hero_no = slot.hero_slot.hero_no
+        if not hero_no:
+            return 0
+        return hero_no
 
     @property
     def line_up_slots(self):

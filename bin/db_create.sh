@@ -10,8 +10,5 @@ echo "rebuild traversing database"
 eval "$cobar_connect < $databases_dir/traversing.sql"
 eval "$cobar_connect < $databases_dir/traversing_master.sql"
 
-echo "insert data"
-eval "$cobar_connect < $databases_dir/insert_all.sql"
-
 echo "done"
 exit 0
