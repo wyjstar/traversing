@@ -114,13 +114,15 @@ cur:%s time:%s cri:%s',
 
     def taken_brew(self):
         self.check_time()
-        if self._brew_times <= 0:
+        vip_level = self.owner.vip_component.vip_level
+        brew_times_max = vip_config.get(vip_level).get('cookingTimes')
+        if self._brew_times >= brew_times_max:
             logger.error('not enough times to taken brew:%s', self._brew_times)
             return False
         self._nectar += self._nectar_cur
         self._nectar_cur = base_config.get('cookingWineOutput')
         self._brew_step = 1
-        self._brew_times -= 1
+        self._brew_times += 1
         self.save_data()
         return True
 
@@ -129,8 +131,8 @@ cur:%s time:%s cri:%s',
         local_tm = time.localtime()
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._brew_date = time.time()
-            vip_level = self.owner.vip_component.vip_level
-            self._brew_times = vip_config.get(vip_level).get('cookingTimes')
+            # vip_level = self.owner.vip_component.vip_level
+            self._brew_times = 0
         # logger.debug('brew times vip:%s :%s', vip_level, self._brew_times)
             self._nectar_cur = base_config.get('cookingWineOutput')
             self._brew_step = 1
