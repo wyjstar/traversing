@@ -215,7 +215,7 @@ class BattleUnit(object):
 
     @property
     def info(self):
-        return dict(no=self.unit_no,
+        return dict(unit_no=self.unit_no,
                     break_skills=self.skill.break_skill_ids, hp=self.hp, atk=self.atk, physical_def=self.physical_def,
                     magic_def=self.magic_def, hit=self.hit, dodge=self.dodge, cri=self.cri,
                     cri_coeff=self.cri_coeff, cri_ded_coeff=self.cri_ded_coeff, block=self.block, ductility=self.ductility,
@@ -223,6 +223,29 @@ class BattleUnit(object):
 
     def dumps(self):
         return cPickle.dumps(self.info)
+
+    @classmethod
+    def loads(cls, data):
+        info = cPickle.loads(data)
+        print info, "*"*80
+        unit = cls()
+        unit.set_attrs(**info)
+        return unit
+
+    def set_attrs(self, **kwargs):
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+
+    def __cmp__(self, other):
+        if self is not None and other is not None:
+            return cmp(self.unit_no, other.unit_no)
+
+        if self is None and other is None:
+            return 0
+        elif other is None:
+            return -1
+        else:
+            return 1
 
 
 def do_assemble(no, quality, break_skills, hp,

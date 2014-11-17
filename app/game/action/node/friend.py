@@ -4,7 +4,7 @@ created by server on 14-7-17下午4:36.
 """
 
 import datetime
-from app.game.core.fight.battle_unit import BattleUnit
+from app.battle.battle_unit import BattleUnit
 from app.game.redis_mode import tb_character_info
 from app.game.redis_mode import tb_character_lord
 from app.proto_file.common_pb2 import CommonResponse
@@ -162,7 +162,7 @@ def _with_battle_info(response, pid):
     if lord_data:
         info = lord_data.get('attr_info', {})
         battle_unit = BattleUnit.loads(info.get('info'))
-        response.hero_no = battle_unit.no
+        response.hero_no = battle_unit.unit_no
         response.power = int(info.get('power', 0))
         response.hp = battle_unit.hp
         response.atk = battle_unit.atk
