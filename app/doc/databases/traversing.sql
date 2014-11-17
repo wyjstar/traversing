@@ -242,7 +242,8 @@ CREATE TABLE `tb_character_brew` (
 DROP TABLE IF EXISTS `tb_character_lively`;
 CREATE TABLE `tb_character_lively` (
   `id` bigint(20) NOT NULL,
-  `lively` mediumblob,
+  `lively` int(11) NOT NULL,
+  `tasks` mediumblob,
   `event_map` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

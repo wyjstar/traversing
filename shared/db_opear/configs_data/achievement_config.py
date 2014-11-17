@@ -17,5 +17,6 @@ class AchievementConfig(object):
     def parser(self, config_value):
         for row in config_value:
             item = CommonItem(row)
-            self._items[item.id] = item
+            if item.sort == TaskType.LIVELY or item.sort == TaskType.LIVELY_REWARD:
+                self._items[item.id] = item
         return self._items

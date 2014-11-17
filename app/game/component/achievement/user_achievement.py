@@ -2,8 +2,9 @@
 from app.game.component.Component import Component
 from shared.db_opear.configs_data.game_configs import achievement_config
 from shared.db_opear.configs_data.achievement_config import TaskType
-from app.game.redis_mode import tb_character_lively
+from app.game.redis_mode import tb_character_tasks
 from gfirefly.server.logobj import logger
+import random
         
 class TaskStatus:
     RUNNING = 1
@@ -36,6 +37,18 @@ class EventType:
     BOSS=23# 攻打世界BOSS 完成次数
     LIVELY=24# 达到指定活跃度值 活跃度值
     
+class CountEvent:
+    events = [EventType.STAGE_1, EventType.STAGE_2, EventType.SPORTS, EventType.PRESENT, \
+              EventType.STAGE_3, EventType.WINE, EventType.MAGIC, EventType.WORD, EventType.TRAVEL, \
+              EventType.BOSS, EventType.LIVELY]
+    @classmethod
+    def create_event(cls, eventid, count, ifadd=False):
+        return {'eventid':eventid, 'count':count, 'ifadd':ifadd}
+    
+class JudeEvent:
+    AND = 1
+    OR = 2
+    
 class TaskEvents(object):
     def __init__(self):
         self._taskid = 0
@@ -46,20 +59,60 @@ class TaskEvents(object):
         self._event.append(event)
         
     def check(self, data):
-        if self._status == TaskStatus.FINISHED:
-            return
+        if self._status != TaskStatus.RUNNING:
+            return []
+        task = achievement_config.get(self._task_id)
+        jude = True if task.compositon == JudeEvent.AND else False
         for event in self._events:
-            event.check(data)
+            ret = event.check(data)
+            if task.compositon == JudeEvent.AND:
+                jude = ret and jude
+            else:
+                jude = jude or ret
+        if jude:
+            self._status = TaskStatus.COMPLETE
+            return [self._taskid, self._events[0]._current, self._events[0]._current, self._status]
+        else:
+            return [self._taskid, self._events[0]._current, task.conditon[self._events[0]._seq][1], self._status]
+        
+    def check_count(self, data, event):
+        """
+        任务的条件类型是次数的检查
+        """
+        task_id = self._taskid
+        task = achievement_config.get(task_id)
+        one_cond = task.condition.get(event._seq)
+        if event._eventid != one_cond[0]:
+            return True if event._event_status != TaskStatus.Running else False
+        if event._current >= one_cond[1]:
+            return True
+        ifadd = data.get('ifadd')
+        adddata = data.get('count')
+        if event._eventid in CountEvent.events:
+            if ifadd:
+                event._current += adddata
+            else:
+                if adddata > event._current:
+                    event._current = adddata
+        if event._current >= one_cond[1]:
+            event._event_status = TaskStatus.COMPLETE
+            return True
     
     def status(self):
-        ret_status = [self._taskid, 0, 0]
-        return ret_status
+        task = achievement_config.get(self._task_id)
+        if not task:
+            return []
+        if self._status != TaskStatus.RUNNING:
+            return [self._taskid, self._events[0]._current, self._events[0]._current, self._status]
+        else:
+            return [self._taskid, self._events[0]._current, task.conditon[self._events[0]._seq][1], self._status]
     
 class TaskEvent(object):
     def __init__(self):
         self._eventid = 0
         self._seq = -1
         self._current = 0
+        self._event_status = 0
     
     def check(self, data):
         pass
@@ -86,11 +139,11 @@ class SubEvent3(TaskEvent):
     
 class SubEvent4(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent5(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
 
 class SubEvent6(TaskEvent):
     def check(self, data):
@@ -122,7 +175,7 @@ class SubEvent12(TaskEvent):
     
 class SubEvent13(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent14(TaskEvent):
     def check(self, data):
@@ -130,7 +183,7 @@ class SubEvent14(TaskEvent):
 
 class SubEvent15(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
 
 class SubEvent16(TaskEvent):
     def check(self, data):
@@ -142,60 +195,62 @@ class SubEvent17(TaskEvent):
     
 class SubEvent18(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent19(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent20(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent21(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent22(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent23(TaskEvent):
     def check(self, data):
-        pass
+        self.check_count(data, self._eventid, self._seq, self._current)
     
 class SubEvent24(TaskEvent):
     def check(self, data):
-        pass
-    
-
+        self.check_count(data, self._eventid, self._seq, self._current)
 
 class UserAchievement(Component):
     def __init__(self, owner=None):
         Component.__init__(self, owner)
-        self._lively = {}
+        self._tasks = {}
+        self._lively = 0
         self._lasttime = 0
         self._event_task_map = {}
         self._update = False
         
     def init_data(self):
-        live_data = tb_character_lively.getObjData(self.owner.base_info.id)
+        live_data = tb_character_tasks.getObjData(self.owner.base_info.id)
 
         if live_data:
+            self._tasks = live_data.get('tasks')
             self._lively = live_data.get('lively')
             self._lasttime = live_data.get('lasttime')
             self._event_task_map = live_data.get('event_map')
         else:
             data = dict(id=self.owner.base_info.id,
+                        tasks=self._tasks,
                         lively=self._lively,
                         lasttime=self._lasttime,
                         event_map=self._event_task_map)
-            tb_character_lively.new(data)
+            tb_character_tasks.new(data)
             
     def save_data(self):
-        lively_obj = tb_character_lively.getObj(self.owner.base_info.id)
+        lively_obj = tb_character_tasks.getObj(self.owner.base_info.id)
         if lively_obj:
-            data = {'lively': self._lively,
+            data = {'tasks': self._tasks,
+                    'lively':self._lively,
                     'lasttime': self._lasttime,
                     'event_map': self._event_task_map}
             lively_obj.update_multi(data)
@@ -205,7 +260,7 @@ class UserAchievement(Component):
     def routine(self):
         for task_id in achievement_config.keys():
             task = achievement_config[task_id]
-            if task.sort == TaskType.LIVELY or task.sort == TaskType.LIVELY_REWARD and task_id not in self._lively:
+            if task_id not in self._tasks:
                 task_event = TaskEvents()
                 for seq in task.condition.keys():
                     cond = task.condition[seq]
@@ -218,25 +273,44 @@ class UserAchievement(Component):
                         if task_id not in self._event_task_map[etype]:
                             self._event_task_map[etype].append(task_id)
                     
-                self._lively[task_id] = task_event
+                self._tasks[task_id] = task_event
                 self._update = True
-        for task_id in self._lively.keys():
+        for task_id in self._tasks.keys():
             if task_id not in achievement_config:
-                del self._lively[task_id]
+                del self._tasks[task_id]
                 self._update = True
                 
-    def check_lively(self, event):
+    def lively_count(self):
+        """
+        统计活跃度获得
+        """
+        for task_id in self._tasks:
+            task = achievement_config.get(task_id)
+            if task and task.sort == TaskType.LIVELY:
+                if self._tasks[task_id]._status == TaskStatus.COMPLETE:
+                    self._lively += random.randint(task.reward[17][0], task.reward[17][1])
+                    self._tasks[task_id]._status = TaskStatus.FINISHED
+                    self._update = True
+        return self._lively
+    
+    def check_inter(self, event):
+        """
+        任务检查借口,event根据CountEvent.create_event创建
+        """
+        status_change = self.check_task(event)
+        lively = self.lively_count()
+        lively_event = CountEvent.create_event(EventType.LIVELY, lively, ifadd=False)
+        lively_change = self.check_task(lively_event)
+        return status_change + lively_change
+                
+    def check_task(self, event):
         eid = event['eventid']
         status = []
         if eid in self._event_task_map:
             for task_id in self._event_task_map[eid]:
-                if task_id in self._lively:
-                    self._lively[task_id].check(event)
-                    status.append(self._lively[task_id].status())
-        for st in status:
-            create_event = {'eventid':EventType.LIVELY}
-            reward_status = self.check_lively(create_event)
-        status += reward_status 
+                if task_id in self._tasks:
+                    status.append(self._tasks[task_id].check(event))
+#                     status.append(self._tasks[task_id].status())
         return status
     
     def status(self):
@@ -244,14 +318,20 @@ class UserAchievement(Component):
         查询状态,首次登陆
         """
         ret_status = []
-        for tid in self._lively:
-            ret_status.append(self._lively[tid].status())
+        for tid in self._tasks:
+            ret_status.append(self._tasks[tid].status())
         return ret_status
     
-    def reward(self):
+    def reward(self, task_id):
         """
         领取任务奖励
         判断是否能领奖
         """
-        pass
+        if task_id in self._tasks and task_id in achievement_config:
+            if self._tasks[task_id]._status == TaskStatus.COMPLETE:
+                self._tasks[task_id]._status = TaskStatus.COMPLETE
+                return 0
+            else:
+                return self._tasks[task_id]._status
+        return -1
     

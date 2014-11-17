@@ -74,5 +74,5 @@ tb_character_brew = MAdmin('tb_character_brew', 'id')
 tb_character_brew.insert()
 
 #活跃度
-tb_character_lively = MAdmin('tb_character_lively', 'id')
-tb_character_lively.insert()
+tb_character_tasks = MAdmin('tb_character_lively', 'id')
+tb_character_tasks.insert()

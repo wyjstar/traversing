@@ -5,6 +5,7 @@ message Task
 	required int32 tid = 1; //任务ID
 	required int32 current = 2; //任务当前值
 	required int32 target = 3;//任务目标值
+	required int32 status = 4;//当前状态
 }
 
 //更新任务列表

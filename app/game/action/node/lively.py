@@ -14,6 +14,7 @@ def query_status(data, player):
         ts.tid = status[0]
         ts.current = status[1]
         ts.target = status[2]
+        ts.status = status[3]
     return response.SerializePartialToString()
 
 def add_items(task_id):
@@ -23,7 +24,7 @@ def add_items(task_id):
     add_items = []
     if task_id in achievement_config:
         task = achievement_config[task_id]
-
+        task.reward
     return add_items
 
 @remoteserviceHandle('gate')
@@ -43,6 +44,8 @@ def draw_reward(data, player):
         common = CommonResponse
         common.result = False
         common.result_no = status
-        common.message = "领奖错误"
+        common.message = "未完成" if status == 1  else "已领取"
+        if status == -1:
+            common.message = "任务不存在"
         return common.SerializePartialToString()
 
