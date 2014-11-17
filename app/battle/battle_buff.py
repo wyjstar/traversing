@@ -25,6 +25,9 @@ class BuffManager(object):
             temp = []
             for buff in value:
                 # logger.debug_cal(str(buff.skill_buff_info.id)+"*"*60+str(buff.continue_num))
+                if buff.continue_num == 0:
+                    logger.debug_call("去掉了buff(%s)" % buff.skill_buff_info.id)
+                    continue
                 buff.continue_num -= 1
                 if buff.continue_num > 0:
                     temp.append(buff)

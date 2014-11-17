@@ -11,6 +11,7 @@ from app.battle.battle_unit import do_assemble
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
+import copy
 
 
 class CharacterFightCacheComponent(Component):
@@ -277,8 +278,6 @@ class CharacterFightCacheComponent(Component):
 
         return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no
 
-
-
     def fighting_settlement(self, result):
         """战斗结算
         stage_type: 1剧情关卡 2副本关卡 3活动关卡
@@ -328,71 +327,29 @@ class CharacterFightCacheComponent(Component):
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
 
-            old_hero_obj = self.owner.line_up_component.get_hero_obj(red_unit.no)
 
-            hero_id = break_config.hero_id
+            old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.position)
+
+            break_line_up_slot = copy.deepcopy(old_line_up_slot)
+
+            hero_no = break_config.hero_id
             level = red_unit.level  # 等级
-            break_level = red_unit.break_level  # 突破等级
             break_hero_obj = Hero()  # 实例化一个替换英雄对象
-            break_hero_obj.hero_no = hero_id
+            break_hero_obj.hero_no = hero_no
             break_hero_obj.level = level
-            break_hero_obj.break_level = break_level
-            break_hero_base_attr = break_hero_obj.calculate_attr()  # 英雄基础属性，等级成长
-            old_hero_base_attr = old_hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+
+
             attr = CommonItem()
             hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
             attr += hero_break_attr
             slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
-            unit = self.__assemble_break_hero(break_hero_base_attr, old_hero_base_attr, attr, hero_id, is_break_hero=True)
-            unit.position = red_unit.position
+
+            unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
             logger.info('乱入替换战斗单位属性: %s' % unit)
-            # if red_unit in red_units:
-            # index = red_units.index(red_unit)
-            # red_units[index] = unit
+
             return unit, red_unit.no
         return None, 0
 
-    def __assemble_break_hero(self, break_hero_base_attr, old_hero_base_attr, attr, hero_id, is_break_hero=False):
-        """组装英雄战斗单位
-        """
-        # base_attr: 英雄基础，等级 属性
-        # hero_no, quality, hp, atk, physical_def, magic_def, hit
-        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
-        # rage_skill, break_skills
 
-        # attr: 属性
-        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
-        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
-
-        no = hero_id
-        quality = break_hero_base_attr.quality
-
-        # normal_skill = break_hero_base_attr.normal_skill
-        #rage_skill = break_hero_base_attr.rage_skill
-        break_skills = break_hero_base_attr.break_skills
-
-        hp = break_hero_base_attr.hp + break_hero_base_attr.hp * attr.hp_rate + attr.hp
-        atk = break_hero_base_attr.atk + break_hero_base_attr.atk * attr.atk_rate + attr.atk
-        physical_def = break_hero_base_attr.physical_def + break_hero_base_attr.physical_def * attr.physical_def_rate + attr.physical_def
-        magic_def = break_hero_base_attr.magic_def + break_hero_base_attr.magic_def * attr.magic_def_rate + attr.magic_def
-        hit = break_hero_base_attr.hit + attr.hit
-        dodge = break_hero_base_attr.dodge + attr.dodge
-        cri = break_hero_base_attr.cri + attr.cri
-        cri_coeff = break_hero_base_attr.cri_coeff + attr.cri_coeff
-        cri_ded_coeff = break_hero_base_attr.cri_ded_coeff + attr.cri_ded_coeff
-        block = break_hero_base_attr.block + attr.block
-        ductility = 0#break_hero_base_attr.ductility + attr.ductility
-
-        level = old_hero_base_attr.level
-        break_level = old_hero_base_attr.break_level
-        is_boss = False
-        position = 0
-
-        battlt_unit = do_assemble(no, quality, break_skills,
-                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility,
-                                  position,
-                                  level, break_level, is_boss, is_break_hero=True)
-
-        return battlt_unit

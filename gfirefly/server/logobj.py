@@ -80,7 +80,7 @@ def log_init(log_path):
     uh.setLevel(logging.CRITICAL)
     uh.setFormatter('%(message)s')
     # _logger.addHandler(uh)
-    # log_init_debug_cal()
+    log_init_debug_cal()
 
 
 def log_init_debug_cal():
