@@ -13,6 +13,10 @@ from app.game.core.fight.battle_unit import BattleUnit
 from app.game.core.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.proto_file.lively_pb2 import TaskUpdate
+from app.game.action.root.netforwarding import push_object
 
 
 @remoteserviceHandle('gate')
@@ -369,11 +373,14 @@ def fight_settlement(stage_id, result, player):
     data = gain(player, settlement_drops)
     get_return(player, data, drops)
 
+    lively_event = {}
+    task_status = []
     if result:
         if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
             conf = game_configs.stage_config.get('stages').get(stage_id)
             player.stamina.stamina -= conf.vigor
             player.stamina.save_data()
+            lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         else:
             if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
                 conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
@@ -381,14 +388,18 @@ def fight_settlement(stage_id, result, player):
                     player.stage_component.elite_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
+                lively_event = CountEvent.create_event(EventType.STAGE_2, 1, ifadd=True)
             elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
                 conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
                 if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
                     player.stage_component.act_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
+                lively_event = CountEvent.create_event(EventType.STAGE_3, 1, ifadd=True)
             player.stage_component.update()
 
+            task_status = player.tasks.check_inter(lively_event)
+            player.tasks.save_data()
         # 经验
         for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
             print lineUpSlotComponent,
@@ -400,6 +411,16 @@ def fight_settlement(stage_id, result, player):
         # 玩家经验
         player.level.addexp(conf.playerExp)
         player.save_data()
+    if task_status:
+        response = TaskUpdate()
+        for status in task_status:
+            ts = response.tasks.add()
+            ts.tid = status[0]
+            ts.current = status[1]
+            ts.target = status[2]
+            ts.status = status[3]
+        response.SerializePartialToString()
+        push_object(1234, response.SerializeToString(), [player.dynamic_id])
 
     res.message = u'成功返回'
     return response.SerializePartialToString()

@@ -74,7 +74,7 @@ class PlayerCharacter(Character):
         self._arena_shop = CharacterArenaShopComponent(self)
         self._brew = CharacterBrewComponent(self)
         
-        self._lively = UserAchievement(self)
+        self._tasks = UserAchievement(self)
 
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
@@ -333,11 +333,11 @@ class PlayerCharacter(Character):
         return self._arena_shop
     
     @property
-    def lively(self):
+    def tasks(self):
         """
         活跃度
         """
-        return self._lively
+        return self._tasks
 
     def save_data(self):
         pid = self.base_info.id
