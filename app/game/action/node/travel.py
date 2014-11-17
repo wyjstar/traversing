@@ -2,83 +2,54 @@
 """
 created by server on 14-7-17上午11:07.
 """
+from gfirefly.server.globalobject import remoteserviceHandle
+from app.proto_file.travel_pb2 import TravelResponse
+from shared.db_opear.configs_data.game_configs import travel_event_config, \
+    base_config
+import random
+from gfirefly.server.logobj import logger
+import time
+
+
 @remoteserviceHandle('gate')
-def create_guild_801(data, player):
-    """创建公会 """
-    args = CreateGuildRequest()
-    args.ParseFromString(data)
-    g_name = args.name
-    response = GuildCommonResponse()
-    p_id = player.base_info.id
-    g_id = player.guild.g_id
+def travel_831(data, player):
+    """游历"""
+    # args = TravelRequest()
+    # args.ParseFromString(data)
+    response = TravelResponse()
 
-    if base_config.get('create_level') > player.level.level:
+    if base_config.get('travelOpenLevel') > player.level.level:
         response.result = False
-        response.message = "等级不够"
+        response.result_no = 811  # 等级不够
         return response.SerializeToString()
 
-    if base_config.get('create_money') > player.finance.gold:
-        response.result = False
-        response.message = "元宝不足"
-        return response.SerializeToString()
+    travel_event_id = get_travel_event_id()
+    event_info = travel_event_config.get('events').get(travel_event_id)
+    if not event_info:
+        logger.error('get travel event config error')
 
-    if g_id != 0:
-        response.result = False
-        response.message = "您已加入公会"
-        return response.SerializeToString()
+    response.event_type = event_type
 
-    if not g_name:
-        response.result = False
-        response.message = "公会名不能为空"
-        return response.SerializeToString()
+    if event_info.type == 1:
+        response.duration = event_info.parameter.items[0][0] * 60
+        response.time = int(time.time())
+    elif event_info.type == 2:
+        response.stage_id = event_info.parameter.items[0][0]
+    elif event_info.type == 3:
+        response.question = event_info.parameter.items
+    elif event_info.type == 4:
+        pass
+    else:
+        logger.error('travel event dont find')
 
-    match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', unicode(g_name, "utf-8"))
-    if match:
-        response.result = False
-        response.message = "公会名不合法"
-        return response.SerializeToString()
 
-    if trie_tree.check.replace_bad_word(g_name).encode("utf-8") != g_name:
-        response.result = False
-        response.message = "公会名不合法"
-        return response.SerializeToString()
-
-    if len(g_name) > 18:
-        response.result = False
-        response.message = "名称超过字数限制"
-        return response.SerializeToString()
-
-    # 判断有没有重名
-    guild_name_data = tb_guild_name.getObjData(g_name)
-    if guild_name_data:
-        response.result = False
-        response.message = "此名已存在"
-        return response.SerializeToString()
-
-    # 创建公会
-    guild_obj = Guild()
-    guild_obj.create_guild(p_id, g_name)
-
-    add_guild_to_rank(guild_obj.g_id, 1)
-
-    data = {'g_name': g_name,
-            'g_id': guild_obj.g_id}
-    tb_guild_name.new(data)
-
-    player.guild.g_id = guild_obj.g_id
-    player.guild.worship = 0
-    player.guild.worship_time = 1
-    player.guild.contribution = 0
-    player.guild.all_contribution = 0
-    player.guild.k_num = 0
-    player.guild.position = 1
-    player.guild.save_data()
-    guild_obj.save_data()
-    player.finance.gold -= base_config.get('create_money')
-    player.finance.save_data()
-
-    # 加入公会聊天
-    login_guild_chat(player.guild.g_id)
-
-    response.result = True
-    return response.SerializeToString()
+def get_travel_event_id():
+    travel_event_id = None
+    x = random.randint(0, travel_event_config.get('weight')[-1][1])
+    flag = 0
+    for [event_id, weight] in travel_event_config.get('weight'):
+        if flag <= x < weight:
+            travel_event_id = event_id
+            break
+        flag == weight
+    return travel_event_id

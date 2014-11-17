@@ -2,8 +2,13 @@ import "common.proto";
 
 // travel 831
 message TravelRequest{
-	required bytes g_id = 1;
+    required bytes g_id = 1;
 }
 message TravelResponse{
-	required CommonResponse res = 1;
+    required CommonResponse res = 1;
+    required int32 event_type = 2;
+    optional int32 time = 3;
+    optional int32 duration = 4;
+    optional int32 stage_id = 5;
+    optional int32 question_id = 6;
 }

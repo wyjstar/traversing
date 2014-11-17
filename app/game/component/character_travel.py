@@ -16,6 +16,7 @@ class CharacterTravelComponent(Component):
     def __init__(self, owner):
         super(CharacterTravelComponent, self).__init__(owner)
         self._chapters = {}  # 游历章节
+        self._travel_item = {}  # 获得的风物志
         self._shoes = 0  # 剩余鞋子
         self._chest_time = 1  # 上次领取宝箱时间
 
@@ -34,8 +35,5 @@ class CharacterTravelComponent(Component):
     def save(self):
         data_obj = tb_character_travel.getObj(self.owner.base_info.id)
         data_obj.update({'chapters': self._chapters,
-                        'shoes': self._shoes,
-                        'chest_time': self._chest_time})
-
-
-
+                         'shoes': self._shoes,
+                         'chest_time': self._chest_time})

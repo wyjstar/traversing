@@ -11,13 +11,15 @@ class TravelEventConfig(object):
 
     def __init__(self):
         self._events = {}
-        self._weight = 0
+        self._weight = []
 
     def parser(self, config_value):
+        weights = 0
         for row in config_value:
             item = CommonItem(row)
-            self._weight += item.weight
+            self._weight.append([item.id, weights+item.weight])
             self._events[item.id] = item
+            weights += item.weight
 
         return {'events': self._events, 'weight': self._weight}
 
