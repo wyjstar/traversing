@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='travel.proto',
   package='',
-  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\"\x1d\n\rTravelRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\x0c\"w\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nevent_type\x18\x02 \x02(\x05\x12\x0c\n\x04time\x18\x03 \x01(\x05\x12\x10\n\x08stage_id\x18\x04 \x01(\x05\x12\x13\n\x0bquestion_id\x18\x05 \x01(\x05')
+  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x0c\"N\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\x12\x0c\n\x04time\x18\x03 \x01(\x05\"2\n\x12TravelInitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -27,7 +27,7 @@ _TRAVELREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='g_id', full_name='TravelRequest.g_id', index=0,
+      name='stage_id', full_name='TravelRequest.stage_id', index=0,
       number=1, type=12, cpp_type=9, label=2,
       has_default_value=False, default_value="",
       message_type=None, enum_type=None, containing_type=None,
@@ -43,7 +43,7 @@ _TRAVELREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=30,
-  serialized_end=59,
+  serialized_end=63,
 )
 
 
@@ -62,7 +62,7 @@ _TRAVELRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='event_type', full_name='TravelResponse.event_type', index=1,
+      name='event_id', full_name='TravelResponse.event_id', index=1,
       number=2, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -71,20 +71,6 @@ _TRAVELRESPONSE = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='time', full_name='TravelResponse.time', index=2,
       number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='stage_id', full_name='TravelResponse.stage_id', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='question_id', full_name='TravelResponse.question_id', index=4,
-      number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -98,13 +84,43 @@ _TRAVELRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=61,
-  serialized_end=180,
+  serialized_start=65,
+  serialized_end=143,
+)
+
+
+_TRAVELINITRESPONSE = _descriptor.Descriptor(
+  name='TravelInitResponse',
+  full_name='TravelInitResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='TravelInitResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=145,
+  serialized_end=195,
 )
 
 _TRAVELRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_TRAVELINITRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['TravelRequest'] = _TRAVELREQUEST
 DESCRIPTOR.message_types_by_name['TravelResponse'] = _TRAVELRESPONSE
+DESCRIPTOR.message_types_by_name['TravelInitResponse'] = _TRAVELINITRESPONSE
 
 class TravelRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -117,6 +133,12 @@ class TravelResponse(_message.Message):
   DESCRIPTOR = _TRAVELRESPONSE
 
   # @@protoc_insertion_point(class_scope:TravelResponse)
+
+class TravelInitResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _TRAVELINITRESPONSE
+
+  # @@protoc_insertion_point(class_scope:TravelInitResponse)
 
 
 # @@protoc_insertion_point(module_scope)

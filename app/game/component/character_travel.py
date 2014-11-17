@@ -17,7 +17,7 @@ class CharacterTravelComponent(Component):
         super(CharacterTravelComponent, self).__init__(owner)
         self._travel = {}  # 游历缓存
         self._travel_item = {}  # 获得的风物志
-        self._shoes = 0  # 剩余鞋子
+        self._shoes = [0, 0, 0, 0, 0]  # 剩余鞋子[1,2,3,正在消耗，已消耗个数]
         self._chest_time = 1  # 上次领取宝箱时间
 
     def init_data(self):
@@ -37,3 +37,27 @@ class CharacterTravelComponent(Component):
         data_obj.update({'chapters': self._chapters,
                          'shoes': self._shoes,
                          'chest_time': self._chest_time})
+
+    @property
+    def shoes(self):
+        return self._shoes
+
+    @shoes.setter
+    def shoes(self, shoes):
+        self._shoes = shoes
+
+    @property
+    def travel(self):
+        return self._travel
+
+    @travel.setter
+    def travel(self, travel):
+        self._travel = travel
+
+    @property
+    def chest_time(self):
+        return self._chest_time
+
+    @chest_time.setter
+    def chest_time(self, value):
+        self._travel = value

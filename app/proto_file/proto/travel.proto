@@ -1,5 +1,18 @@
 import "common.proto";
 
+message Travel{
+    required int32 event_id = 1;
+    optional int32 time = 2;
+}
+
+message Shoes{
+    required int32 shoe1 = 1;
+    required int32 shoe2 = 2;
+    required int32 shoe3 = 3;
+    required int32 use_type = 4;
+    required int32 use_no = 5;
+}
+
 // travel 831
 message TravelRequest{
     required bytes stage_id = 1;
@@ -12,5 +25,7 @@ message TravelResponse{
 
 // travel_init 830
 message TravelInitResponse{
-    required CommonResponse res = 1;
+    repeated Travel travel = 1;
+    required Shoes shoes = 2;
+    required int32 chest_time = 3;
 }

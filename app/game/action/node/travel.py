@@ -3,7 +3,7 @@
 created by server on 14-7-17上午11:07.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file.travel_pb2 import TravelResponse
+from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, TraverInitResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
     base_config
 import random
@@ -24,6 +24,12 @@ def travel_831(data, player):
         response.res.result_no = 811  # 等级不够
         return response.SerializeToString()
 
+    shoes = player.travel_component.shoes
+    if shoes[0] + shoes[1] + shoes[2] == 0:
+        response.res.result = False
+        response.res.result_no = 812  # 鞋子不足
+        return response.SerializeToString()
+
     travel_event_id = get_travel_event_id()
     event_info = travel_event_config.get('events').get(travel_event_id)
     if not event_info:
@@ -34,11 +40,56 @@ def travel_831(data, player):
 
     response.event_id = travel_event_id
 
+    travel_cache = player.travel_component.travel
+    if not travel_cache.get(stage_id):
+        travel_cache[stage_id] = []
+
     # 等待 战斗 答题 领取
     if event_info.type == 1:
-        response.time = int(time.time()
+        response.time = int(time.time())
+        travel_cache.get(stage_id).append([travel_event_id, int(time.time())])
+    elif event_info.type == 2 or event_info.type == 3:
+        travel_cache.get(stage_id).append([travel_event_id])
+    elif event_info.type == 4:
+        # 直接获取奖励
+        pass
+        # TODO 直接领取奖励
 
+    if base_config.get("travelShoe"+str(shoes[3]))[1] == shoes[4] + 1:
+        shoes[shoes[3]-1] -= 1
+        shoes[4] = 0
+        shoes[3] = 0
+        for i in [2, 1, 0]:
+            if shoes[i]:
+                shoes[3] = i
+                break
+    else:
+        shoes[4] += 1
+    player.travel_component.save()
+
+    response.res.result = True
     return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def travel_init_830(data, player):
+    """init travel"""
+    response = TraverInitResponse()
+
+    for tra in player.travel_component.travel:
+        res_travel = response.travel.add()
+        res_travel.event_id = tra[0]
+        if travel_event_config.get('events').get(tra[0]).type == 1:
+            res_travel.time = tra[1]
+
+    res_shose = response.shoes
+    res_shose.shoe1 = player.travel_component.shoes[0]
+    res_shose.shoe2 = player.travel_component.shoes[1]
+    res_shose.shoe3 = player.travel_component.shoes[2]
+    res_shose.use_type = player.travel_component.shoes[3]
+    res_shose.use_no = player.travel_component.shoes[4]
+
+    response.chest_time = player.travel_component.chest_time
 
 
 def get_travel_event_id():
