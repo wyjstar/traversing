@@ -7,8 +7,9 @@ init db connection and redis connection
 from gfirefly.dbentrust.dbpool import dbpool
 import json
 from gfirefly.server.globalobject import GlobalObject
-from test.unittest.settings import config_json_path
-from shared.db_entrust.redis_client import RedisManager, redis_manager
+from test.unittest.settings import config_model_path, config_path
+# from gfirefly.dbentrust.madminanager import
+from gfirefly.dbentrust.memclient import mclient
 
 
 def init():
@@ -23,6 +24,15 @@ def init():
 init()  # init pool
 
 
-config = json.load(open(config_json_path, 'r'))
-GlobalObject().json_model_config = config.get("models")
-redis_manager.connection_setup(config.get("memcached").get("urls"))
+model_config = json.load(open(config_model_path, 'r'))
+GlobalObject().json_model_config = model_config.get("models")
+
+config = json.load(open(config_path, 'r'))
+GlobalObject().json_config = config
+
+
+memconfig = config.get("memcached")
+urls = memconfig.get('urls')
+hostname = str(memconfig.get('hostname'))
+mclient.connect(urls, hostname)
+# redis_manager.connection_setup(config.get("memcached").get("urls"))

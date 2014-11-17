@@ -84,22 +84,22 @@ def receive_mail_remote(mail, is_online, player):
     mail_type = mail.get("mail_type")
     sender_id = mail.get("sender_id")
     sender_name = mail.get("sender_name")
+    sender_icon = mail.get("sender_icon")
     title = mail.get("title")
     content = mail.get("content")
     send_time = mail.get("send_time")
     prize = mail.get("prize")
-
     mail = player.mail_component.add_mail(sender_id, sender_name, title,
-                                          content, mail_type, send_time, prize)
+                                          content, mail_type, send_time, prize, 
+                                          sender_icon=sender_icon)
 
-    # print "online", online
-    if not online:
-
+    if is_online:
         response = ReceiveMailResponse()
         mail.update(response.mail)
         netforwarding.push_object(1305,
                                   response.SerializePartialToString(),
                                   [player.dynamic_id])
+    return True
 
 
 @remoteserviceHandle('gate')
@@ -134,20 +134,21 @@ def read_mail(mail_ids, mail_type, player):
             response.res.result = False
             response.res.result_no = result.get('result_no')
             return response.SerializePartialToString()
-        for mail_id in mail_ids:
-            player.stamina += 2
-            # 发送反馈体力
-            mail = player.mail_component.get_mail(mail_id)
-            mail_return = {'sender_id': player.base_info.id,
-                           'sender_name': player.base_info.base_name,
-                           'receive_id': mail.sender_id,
-                           'receive_name': mail.sender_name,
-                           'title': mail.title,
-                           'content': mail.content,
-                           'mail_type': mail_type,
-                           'send_time': int(time.time()),
-                           'prize': 0}
-            netforwarding.push_message('receive_mail_remote', mail.sender_id, mail_return)
+#         for mail_id in mail_ids:
+#             # 发送反馈体力
+#             mail = player.mail_component.get_mail(mail_id)
+#             mail_return = {'sender_id': player.base_info.id,
+#                            'sender_name': player.base_info.base_name,
+#                            'receive_id': mail.sender_id,
+#                            'receive_name': mail.sender_name,
+#                            'title': mail.title,
+#                            'content': mail.content,
+#                            'mail_type': mail_type,
+#                            'send_time': int(time.time()),
+#                            'prize': 0}
+#             netforwarding.push_message('receive_mail_remote', mail.sender_id, mail_return)
+        player.stamina.add_stamina(len(mail_ids)*2)
+        player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 2:
@@ -167,7 +168,7 @@ def read_mail(mail_ids, mail_type, player):
 
 
 def check_gives(mail_ids, player):
-    if len(mail_ids) + player.get_stamina_times > 15:
+    if len(mail_ids) + player.stamina.get_stamina_times > 15:
         # 一天领取邮件不超过15个
         return {'result': False, 'result_no': 1302}
 

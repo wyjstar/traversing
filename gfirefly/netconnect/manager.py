@@ -114,6 +114,7 @@ class ConnectionManager:
         try:
             connection.safeToWriteData(topic_id, msg)
         except Exception, e:
+            e = "%s, %s:%s" % (e, topic_id, msg)
             logger.exception(e)
             self.dropConnectionByID(connection_id)
             dynamic_id = connection.transport.sessionno

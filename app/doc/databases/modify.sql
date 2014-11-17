@@ -4,4 +4,3 @@ ALTER TABLE tb_character_stages ADD column sweep_times mediumblob NOT NULL;
 ALTER TABLE tb_character_stages ADD column stage_up_time bigint(20) NOT NULL;
 ALTER TABLE tb_pvp_rank ADD column hero_ids tinyblob NOT NULL;
 ALTER TABLE tb_character_line_up ADD column unpar int(20) NOT NULL;
-
