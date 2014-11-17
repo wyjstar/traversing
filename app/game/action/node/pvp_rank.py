@@ -12,6 +12,10 @@ from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
 from app.battle.battle_process import BattlePVPProcess
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.proto_file.lively_pb2 import TaskUpdate
+from app.game.action.root.netforwarding import push_object
 
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
@@ -139,6 +143,20 @@ def pvp_fight_request_1505(data, player):
         assemble(blue_add, blue_unit)
     response.red_skill = request.skill
     print "*"*80
+    
+    lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
+    task_status = player.tasks.check_inter(lively_event)
+    player.tasks.save_data()
+    if task_status:
+        response = TaskUpdate()
+        for status in task_status:
+            ts = response.tasks.add()
+            ts.tid = status[0]
+            ts.current = status[1]
+            ts.target = status[2]
+            ts.status = status[3]
+        response.SerializePartialToString()
+        push_object(1234, response.SerializeToString(), [player.dynamic_id])
     return response.SerializeToString()
 
 

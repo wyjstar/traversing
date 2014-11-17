@@ -50,3 +50,6 @@ def draw_reward_1235(data, player):
             common.message = "任务不存在"
         return common.SerializePartialToString()
 
+@remoteserviceHandle('gate')
+def lively_test_1236(data, player):
+    pass

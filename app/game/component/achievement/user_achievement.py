@@ -297,6 +297,8 @@ class UserAchievement(Component):
         """
         任务检查借口,event根据CountEvent.create_event创建
         """
+        if not event:
+            return []
         status_change = self.check_task(event)
         lively = self.lively_count()
         lively_event = CountEvent.create_event(EventType.LIVELY, lively, ifadd=False)
