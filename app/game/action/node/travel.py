@@ -14,33 +14,31 @@ import time
 @remoteserviceHandle('gate')
 def travel_831(data, player):
     """游历"""
-    # args = TravelRequest()
-    # args.ParseFromString(data)
+    args = TravelRequest()
+    args.ParseFromString(data)
+    stage_id = args.stage_id
     response = TravelResponse()
 
     if base_config.get('travelOpenLevel') > player.level.level:
-        response.result = False
-        response.result_no = 811  # 等级不够
+        response.res.result = False
+        response.res.result_no = 811  # 等级不够
         return response.SerializeToString()
 
     travel_event_id = get_travel_event_id()
     event_info = travel_event_config.get('events').get(travel_event_id)
     if not event_info:
         logger.error('get travel event config error')
+        response.res.result = False
+        response.res.result_no = 800  # 未知错误
+        return response.SerializeToString()
 
-    response.event_type = event_type
+    response.event_id = travel_event_id
 
+    # 等待 战斗 答题 领取
     if event_info.type == 1:
-        response.duration = event_info.parameter.items[0][0] * 60
-        response.time = int(time.time())
-    elif event_info.type == 2:
-        response.stage_id = event_info.parameter.items[0][0]
-    elif event_info.type == 3:
-        response.question = event_info.parameter.items
-    elif event_info.type == 4:
-        pass
-    else:
-        logger.error('travel event dont find')
+        response.time = int(time.time()
+
+    return response.SerializeToString()
 
 
 def get_travel_event_id():

@@ -15,7 +15,7 @@ class CharacterTravelComponent(Component):
 
     def __init__(self, owner):
         super(CharacterTravelComponent, self).__init__(owner)
-        self._chapters = {}  # 游历章节
+        self._travel = {}  # 游历缓存
         self._travel_item = {}  # 获得的风物志
         self._shoes = 0  # 剩余鞋子
         self._chest_time = 1  # 上次领取宝箱时间
