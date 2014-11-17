@@ -3,7 +3,8 @@
 created by server on 14-7-17上午11:07.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, TraverInitResponse
+from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
+    TraverInitResponse, BuyShoesRequest, BuyShoesResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
     base_config
 import random
@@ -55,16 +56,19 @@ def travel_831(data, player):
         pass
         # TODO 直接领取奖励
 
-    if base_config.get("travelShoe"+str(shoes[3]))[1] == shoes[4] + 1:
-        shoes[shoes[3]-1] -= 1
-        shoes[4] = 0
-        shoes[3] = 0
-        for i in [2, 1, 0]:
-            if shoes[i]:
-                shoes[3] = i
+    if shoes[3] == 0:
+        for i in[2, 1, 0]:
+            if shoes[i] != 0:
+                shoes[3] = i + 1
+                shoes[4] = 1
                 break
     else:
-        shoes[4] += 1
+        if base_config.get("travelShoe"+str(shoes[3]))[1] == shoes[4] + 1:
+            shoes[shoes[3]-1] -= 1
+            shoes[4] = 0
+            shoes[3] = 0
+        else:
+            shoes[4] += 1
     player.travel_component.save()
 
     response.res.result = True
@@ -90,6 +94,28 @@ def travel_init_830(data, player):
     res_shose.use_no = player.travel_component.shoes[4]
 
     response.chest_time = player.travel_component.chest_time
+
+
+@remoteserviceHandle('gate')
+def buy_shoes_832(data, player):
+    """buy_shoes"""
+    args = BuyShoesRequest()
+    args.ParseFromString(data)
+    response = BuyShoesResponse()
+    if player.finance.gold < base_config.get("travelShoe"+str(args.shoes_type))[2] \
+            * args.no:
+        response.res.result = False
+        response.res.result_no = 102  # 充值币不足
+        return response.SerializeToString()
+
+    player.travel_component.shoes[args.shoes_type-1] += args.no
+    player.finance.gold -= base_config.get("travelShoe"+str(args.shoes_type))[2] \
+        * args.no
+    player.travel_component.save()
+    player.finance.save_data()
+
+    response.res.result = True
+    return response.SerializeToString()
 
 
 def get_travel_event_id():

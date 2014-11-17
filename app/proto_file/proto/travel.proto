@@ -29,3 +29,12 @@ message TravelInitResponse{
     required Shoes shoes = 2;
     required int32 chest_time = 3;
 }
+
+// buy shoes 832
+message BuyShoesRequest{
+    required int32 shoes_type = 1;
+}
+
+message BuyShoesResponse{
+    required CommonResponse =1;
+}

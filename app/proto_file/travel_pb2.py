@@ -14,9 +14,100 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='travel.proto',
   package='',
-  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x0c\"N\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\x12\x0c\n\x04time\x18\x03 \x01(\x05\"2\n\x12TravelInitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\"(\n\x06Travel\x12\x10\n\x08\x65vent_id\x18\x01 \x02(\x05\x12\x0c\n\x04time\x18\x02 \x01(\x05\"V\n\x05Shoes\x12\r\n\x05shoe1\x18\x01 \x02(\x05\x12\r\n\x05shoe2\x18\x02 \x02(\x05\x12\r\n\x05shoe3\x18\x03 \x02(\x05\x12\x10\n\x08use_type\x18\x04 \x02(\x05\x12\x0e\n\x06use_no\x18\x05 \x02(\x05\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x0c\"N\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\x12\x0c\n\x04time\x18\x03 \x01(\x05\"X\n\x12TravelInitResponse\x12\x17\n\x06travel\x18\x01 \x03(\x0b\x32\x07.Travel\x12\x15\n\x05shoes\x18\x02 \x02(\x0b\x32\x06.Shoes\x12\x12\n\nchest_time\x18\x03 \x02(\x05')
 
 
+
+
+_TRAVEL = _descriptor.Descriptor(
+  name='Travel',
+  full_name='Travel',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='event_id', full_name='Travel.event_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='time', full_name='Travel.time', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=30,
+  serialized_end=70,
+)
+
+
+_SHOES = _descriptor.Descriptor(
+  name='Shoes',
+  full_name='Shoes',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='shoe1', full_name='Shoes.shoe1', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='shoe2', full_name='Shoes.shoe2', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='shoe3', full_name='Shoes.shoe3', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='use_type', full_name='Shoes.use_type', index=3,
+      number=4, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='use_no', full_name='Shoes.use_no', index=4,
+      number=5, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=72,
+  serialized_end=158,
+)
 
 
 _TRAVELREQUEST = _descriptor.Descriptor(
@@ -42,8 +133,8 @@ _TRAVELREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=30,
-  serialized_end=63,
+  serialized_start=160,
+  serialized_end=193,
 )
 
 
@@ -84,8 +175,8 @@ _TRAVELRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=65,
-  serialized_end=143,
+  serialized_start=195,
+  serialized_end=273,
 )
 
 
@@ -97,9 +188,23 @@ _TRAVELINITRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='res', full_name='TravelInitResponse.res', index=0,
-      number=1, type=11, cpp_type=10, label=2,
+      name='travel', full_name='TravelInitResponse.travel', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='shoes', full_name='TravelInitResponse.shoes', index=1,
+      number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='chest_time', full_name='TravelInitResponse.chest_time', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -112,15 +217,30 @@ _TRAVELINITRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=145,
-  serialized_end=195,
+  serialized_start=275,
+  serialized_end=363,
 )
 
 _TRAVELRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_TRAVELINITRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_TRAVELINITRESPONSE.fields_by_name['travel'].message_type = _TRAVEL
+_TRAVELINITRESPONSE.fields_by_name['shoes'].message_type = _SHOES
+DESCRIPTOR.message_types_by_name['Travel'] = _TRAVEL
+DESCRIPTOR.message_types_by_name['Shoes'] = _SHOES
 DESCRIPTOR.message_types_by_name['TravelRequest'] = _TRAVELREQUEST
 DESCRIPTOR.message_types_by_name['TravelResponse'] = _TRAVELRESPONSE
 DESCRIPTOR.message_types_by_name['TravelInitResponse'] = _TRAVELINITRESPONSE
+
+class Travel(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _TRAVEL
+
+  # @@protoc_insertion_point(class_scope:Travel)
+
+class Shoes(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SHOES
+
+  # @@protoc_insertion_point(class_scope:Shoes)
 
 class TravelRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
