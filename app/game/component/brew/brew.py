@@ -62,6 +62,9 @@ class CharacterBrewComponent(Component):
             logger.error('cant find brewdata:%s', self.owner.base_info.id)
 
     def do_brew(self, brew_type):
+        vip_level = self.owner.vip_component.vip_level
+        brew_times_max = vip_config.get(vip_level).get('cookingTimes')
+
         self.check_time()
         if self._brew_step > MAX_STEPS:
             return False
@@ -75,7 +78,7 @@ class CharacterBrewComponent(Component):
             logger.error('base config error type:%s', brew_type)
             return False
 
-        if self.brew_times <= 0:
+        if self.brew_times >= brew_times_max:
             logger.error('there is no times to brew:%s', self.brew_times)
             return False
 

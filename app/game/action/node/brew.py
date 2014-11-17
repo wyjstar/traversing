@@ -14,6 +14,7 @@ def get_brew_info_1600(data, player):
     response.brew_step = player.brew.brew_step
     response.nectar_num = player.brew.nectar
     response.nectar_cur = player.brew.nectar_cur
+    response.gold = player.finance.gold
     return response.SerializePartialToString()
 
 
@@ -28,6 +29,7 @@ def do_brew_1601(data, player):
         response.brew_step = player.brew.brew_step
         response.nectar_num = player.brew.nectar
         response.nectar_cur = player.brew.nectar_cur
+        response.gold = player.finance.gold
     return response.SerializePartialToString()
 
 
@@ -40,4 +42,5 @@ def taken_brew_1602(data, player):
         response.brew_step = player.brew.brew_step
         response.nectar_num = player.brew.nectar
         response.nectar_cur = player.brew.nectar_cur
+        response.gold = player.finance.gold
     return response.SerializePartialToString()
