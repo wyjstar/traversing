@@ -291,7 +291,7 @@ def do_assemble(no, quality, break_skills, hp,
 
 
     battle_unit.level = level
-    # battle_unit.is_boss = is_boss
+
     battle_unit.slot_no = position
 
     # init skill
@@ -306,5 +306,12 @@ def do_assemble(no, quality, break_skills, hp,
 
     battle_unit.skill.break_skill_ids = break_skills
     return battle_unit
+
+
+#import copy
+
+
+#unit = do_assemble(10001, 1, [], 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1)
+#copy.deepcopy(unit)
 
 

@@ -23,9 +23,9 @@ class BattleRound(object):
         self._client_data = None
 
     def init_round(self, red_units, red_best_skill, blue_units, blue_best_skill=None, friend_skill=None):
-        self._red_units = red_units  # copy.deepcopy(red_units)
+        self._red_units = copy.deepcopy(red_units)  # copy.deepcopy(red_units)
         self._red_best_skill = red_best_skill
-        self._blue_units = blue_units
+        self._blue_units = copy.deepcopy(blue_units)
         self._blue_best_skill = blue_best_skill
         self._friend_skill = friend_skill
         self.enter_battle()

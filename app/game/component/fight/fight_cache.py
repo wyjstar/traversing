@@ -329,7 +329,7 @@ class CharacterFightCacheComponent(Component):
 
             old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.slot_no)
 
-            break_line_up_slot = copy.copy(old_line_up_slot)
+            break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
             hero_no = break_config.hero_id
             level = red_unit.level  # 等级
@@ -347,7 +347,7 @@ class CharacterFightCacheComponent(Component):
             unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
-            return unit, red_unit.no
+            return unit, red_unit.unit_no
         return None, 0
 
 

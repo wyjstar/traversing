@@ -7,8 +7,12 @@ import random
 
 class CommonItem(dict):
     """通用类"""
+
     def __getattr__(self, item):
-        return self.get(item)
+        try:
+            return self.__getitem__(item)
+        except KeyError:
+            raise AttributeError(item)
 
     def __add__(self, other):
         """重载加法运算
@@ -48,13 +52,18 @@ if __name__ == '__main__':
     a = {'a':1, 'b':2}
     b = {'c':3, 'b':2}
 
-    test_a = CommonItem()
+    test_a = CommonItem(b)
+    import copy
+    copy.deepcopy(test_a)
+
     test_b = CommonItem(b)
 
     test_c = test_a + test_b
     print id(test_a)
     print id(test_b)
-    print id(test_c)
+    print test_c
     print test_c.c
     import cPickle
     cPickle.dumps(test_a)
+
+
