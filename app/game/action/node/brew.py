@@ -11,7 +11,10 @@ from app.proto_file import brew_pb2
 def get_brew_info_1600(data, player):
     response = brew_pb2.BrewInfo()
     response.brew_times = player.brew.brew_times
+    response.brew_step = player.brew.brew_step
     response.nectar_num = player.brew.nectar
+    response.nectar_cur = player.brew.nectar_cur
+    response.gold = player.finance.gold
     return response.SerializePartialToString()
 
 
@@ -23,5 +26,21 @@ def do_brew_1601(data, player):
     response.res.result = player.brew.do_brew(request.brew_type)
     if response.res.result:
         response.brew_times = player.brew.brew_times
+        response.brew_step = player.brew.brew_step
         response.nectar_num = player.brew.nectar
+        response.nectar_cur = player.brew.nectar_cur
+        response.gold = player.finance.gold
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def taken_brew_1602(data, player):
+    response = brew_pb2.BrewInfo()
+    response.res.result = player.brew.taken_brew()
+    if response.res.result:
+        response.brew_times = player.brew.brew_times
+        response.brew_step = player.brew.brew_step
+        response.nectar_num = player.brew.nectar
+        response.nectar_cur = player.brew.nectar_cur
+        response.gold = player.finance.gold
     return response.SerializePartialToString()

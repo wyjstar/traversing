@@ -1,13 +1,16 @@
 # -*- coding:utf-8 -*-
 """
-created by sphinx on 
+created by sphinx on
 """
 import json
 from gfirefly.server.globalobject import webserviceHandle
 from flask import request
-from app.admin.action.root.netforwarding import push_object, rpc_object
 from gfirefly.server.logobj import logger
+from gfirefly.server.globalobject import GlobalObject
 import cPickle
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @webserviceHandle('/gmtestdata:name')
@@ -24,7 +27,7 @@ def gm():
     else:
         t_dict = request.form
     logger.info('gm2admin,command:%s', t_dict['command'])
-    res = rpc_object(cPickle.dumps(t_dict))
+    res = remote_gate.from_admin_rpc_remote(cPickle.dumps(t_dict))
 
     res = cPickle.loads(res)
     response["result"] = res.get('result')

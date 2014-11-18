@@ -18,7 +18,7 @@ groot = GlobalObject().root
 
 
 @rootserviceHandle
-def forwarding(key, dynamic_id, data):
+def forwarding_remote(key, dynamic_id, data):
     """
     """
 
@@ -45,19 +45,19 @@ def forwarding_test(key, dynamic_id, data):
 
 
 @rootserviceHandle
-def push_object(topic_id, msg, send_list):
+def push_object_remote(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
     """
     groot.childsmanager.callChildByNameNotForResult("net",
                                                     "pushObject",
                                                     topic_id,
-                                                    msg,
+                                                    str(msg),
                                                     send_list)
 
 
 @rootserviceHandle
-def push_chat_message(send_list, msg):
+def push_chat_message_remote_noresult(send_list, msg):
     groot.childsmanager.callChildByNameNotForResult("net",
                                                     "pushObject",
                                                     1000,
@@ -66,53 +66,53 @@ def push_chat_message(send_list, msg):
 
 
 @rootserviceHandle
-def get_guild_rank():
+def get_guild_rank_remote():
     level_instance = Ranking.instance('GuildLevel')
     data = level_instance.get("GuildLevel", 9999)  # 获取排行最高的公会列表(999条)
     return data
 
 
 @rootserviceHandle
-def from_admin(msg):
+def from_admin_remote(msg):
     print 'from admin,=======================', msg
 
 
 @rootserviceHandle
-def from_admin_rpc(args):
+def from_admin_rpc_remote(args):
     args = cPickle.loads(args)
     print args.get('args'), 'ssssss', args, 'sssssss'
     return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
 
 
 @rootserviceHandle
-def add_guild_to_rank(g_id, dengji):
+def add_guild_to_rank_remote(g_id, dengji):
     level_instance = Ranking.instance('GuildLevel')
     level_instance.add(g_id, level=dengji)  # 添加rank数据
 
 
 @rootserviceHandle
-def login_chat(dynamic_id, character_id, guild_id, nickname):
+def login_chat_remote(dynamic_id, character_id, guild_id, nickname):
     groot.callChildByName('chat', 1001, dynamic_id, character_id,
                           nickname, guild_id)
 
 
 @rootserviceHandle
-def login_guild_chat(dynamic_id, guild_id):
+def login_guild_chat_remote(dynamic_id, guild_id):
     groot.callChildByName('chat', 1004, dynamic_id, guild_id)
 
 
 @rootserviceHandle
-def logout_guild_chat(dynamic_id):
+def logout_guild_chat_remote(dynamic_id):
     groot.callChildByName('chat', 1005, dynamic_id)
 
 
 @rootserviceHandle
-def del_guild_room(guild_id):
+def del_guild_room_remote(guild_id):
     groot.callChildByName('chat', 1006, guild_id)
 
 
 @rootserviceHandle
-def push_message(key, character_id, args, kw):
+def push_message_remote(key, character_id, args, kw):
     # print 'gate receive push message'
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
@@ -121,10 +121,10 @@ def push_message(key, character_id, args, kw):
         args = (key, oldvcharacter.dynamic_id, True) + args
         return groot.callChild(oldvcharacter.node, *args, **kw)
     else:
-        return GlobalObject().remote['transit'].callRemote("push_message",
-                                                           key,
-                                                           character_id,
-                                                           args, kw)
+        remote_transit = GlobalObject().remote['transit']
+        return remote_transit.push_message_remote(key,
+                                                  character_id,
+                                                  args, kw)
 
 
 remoteservice = CommandService('transitremote')
@@ -165,7 +165,7 @@ def drop_client(dynamic_id, vcharacter):
 
 
 @rootserviceHandle
-def net_conn_lost(dynamic_id):
+def net_conn_lost_remote_noresult(dynamic_id):
     """客户端断开连接时的处理
     @param dynamic_id: int 客户端的动态ID
     """

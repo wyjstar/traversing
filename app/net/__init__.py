@@ -17,7 +17,7 @@ def conn_made(conn):
 def conn_lost(conn):
     dynamic_id = conn.transport.sessionno
     if dynamic_id != 0:
-        GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
+        GlobalObject().remote['gate'].net_conn_lost_remote_noresult(dynamic_id)
 
     # pop queue conn to normal conn, when conn lost
     conn = GlobalObject().netfactory.connmanager.pop_queue()

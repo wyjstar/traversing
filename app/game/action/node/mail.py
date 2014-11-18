@@ -6,12 +6,16 @@ from app.proto_file.mailbox_pb2 import GetMailInfos, \
     ReadMailRequest, DeleteMailRequest, SendMailRequest
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
 from app.game.core.item_group_helper import gain, get_return
 from app.game.action.root import netforwarding
 import time
 from shared.db_opear.configs_data import data_helper
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -90,15 +94,15 @@ def receive_mail_remote(mail, is_online, player):
     send_time = mail.get("send_time")
     prize = mail.get("prize")
     mail = player.mail_component.add_mail(sender_id, sender_name, title,
-                                          content, mail_type, send_time, prize, 
+                                          content, mail_type, send_time, prize,
                                           sender_icon=sender_icon)
 
     if is_online:
         response = ReceiveMailResponse()
         mail.update(response.mail)
-        netforwarding.push_object(1305,
-                                  response.SerializePartialToString(),
-                                  [player.dynamic_id])
+        remote_gate.push_object_remote(1305,
+                                       response.SerializePartialToString(),
+                                       [player.dynamic_id])
     return True
 
 
