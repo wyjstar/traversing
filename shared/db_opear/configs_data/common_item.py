@@ -12,6 +12,7 @@ class CommonItem(dict):
         try:
             return self.__getitem__(item)
         except KeyError:
+            print "Key %s is not exists!" % item
             raise AttributeError(item)
 
     def __add__(self, other):

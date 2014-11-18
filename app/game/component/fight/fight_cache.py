@@ -93,10 +93,10 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_break_config(self):
         """取得关卡乱入信息"""
         stage = self.__get_stage_config()
-        if stage:
+        print stage,
+        if stage and "stage_break_id" in stage:
             return game_configs.stage_break_config.get(stage.stage_break_id, None)
-        else:
-            logger.error('stage break id is not exist:%d' % stage.stage_break_id)
+
         return None
 
     def __get_drop_num(self):

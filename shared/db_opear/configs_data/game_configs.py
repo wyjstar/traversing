@@ -120,5 +120,8 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    a = vip_config.get(0)
-    print a.get('cookingTimes')
+    for key, item in item_config.items():
+
+        print "-"*60
+        if "quality" in item:
+            print item.get("quality1", None)
