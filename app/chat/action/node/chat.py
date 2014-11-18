@@ -45,7 +45,7 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.nickname = character_nickname
         response.content = content
         chater.last_time = int(time.time())
-        noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
+        noderemote.push_chat_message_remote_noresult(ids, response.SerializeToString())
 
     elif room_id == 3:  # 私聊频道
         other_chater = ChaterManager().getchater_by_id(to_character_id)
@@ -57,7 +57,7 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.id = character_id
         owner.nickname = character_nickname
         response.content = content
-        noderemote.callRemoteNotForResult('push_chat_message', [other_chater.dynamic_id], response.SerializeToString())
+        noderemote.push_chat_message_remote_noresult([other_chater.dynamic_id], response.SerializeToString())
 
     elif room_id == 2:  # 公会频道
         ids = ChaterManager().get_guild_dynamicid(guild_id)
@@ -69,6 +69,6 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.id = character_id
         owner.nickname = character_nickname
         response.content = content
-        noderemote.callRemoteNotForResult('push_chat_message', ids, response.SerializeToString())
+        noderemote.push_chat_message_remote_noresult(ids, response.SerializeToString())
 
     return {'result': True}

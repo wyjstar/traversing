@@ -32,7 +32,7 @@ def server_login_2(command_id, dynamic_id, request_proto):
 
     # 通知帐号服
     logger.info('rpc account verify:%s', key)
-    result = GlobalObject().remote['login'].callRemote('account_verify', key)
+    result = GlobalObject().remote['login'].account_verify_remote(key)
     result = eval(result)
     logger.info('verify result:%s', result)
 
@@ -43,11 +43,13 @@ def server_login_2(command_id, dynamic_id, request_proto):
         if account_id == 0:
             account_response.result = False
         else:
-            account_response.result = __manage_user(uuid, account_id, '', '', dynamic_id)
+            account_response.result = __manage_user(uuid,
+                                                    account_id,
+                                                    dynamic_id)
     return account_response.SerializeToString()
 
 
-def __manage_user(token, account_id, user_name, password, dynamic_id):
+def __manage_user(token, account_id, dynamic_id):
     """管理用户 """
     user = UsersManager().get_by_id(account_id)
     if user and user.dynamic_id != dynamic_id:
@@ -57,7 +59,7 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
             return False
         # user.dynamic_id = dynamic_id
     else:
-        user = User(token, account_id, user_name, password, dynamic_id)
+        user = User(token, account_id, '', '', dynamic_id)
         print 'add user:', user
         UsersManager().add_user(user)
     # print 'user mana:', UsersManager()._users

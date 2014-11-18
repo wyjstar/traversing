@@ -9,13 +9,13 @@ groot = GlobalObject().root
 
 
 @rootserviceHandle
-def push_message(key, character_id, args, kw):
+def push_message_remote(key, character_id, args, kw):
     message_cache.cache(key, character_id, *args, **kw)
     return True
 
 
 @rootserviceHandle
-def pull_message(character_id):
+def pull_message_remote(character_id):
     count = 0
     for key, message in message_cache.get(character_id):
         childs = groot.childsmanager.childs
