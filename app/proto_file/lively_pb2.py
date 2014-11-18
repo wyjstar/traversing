@@ -14,7 +14,7 @@ import item_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='lively.proto',
   package='',
-  serialized_pb='\n\x0clively.proto\x1a\nitem.proto\"4\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x02(\x05\x12\x0e\n\x06target\x18\x03 \x02(\x05\"\"\n\nTaskUpdate\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\"\x1c\n\rrewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"5\n\x0erewardResponse\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x16\n\x05items\x18\x02 \x03(\x0b\x32\x07.ItemPB')
+  serialized_pb='\n\x0clively.proto\x1a\nitem.proto\"D\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x02(\x05\x12\x0e\n\x06target\x18\x03 \x02(\x05\x12\x0e\n\x06status\x18\x04 \x02(\x05\"\"\n\nTaskUpdate\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\"\x1c\n\rrewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"5\n\x0erewardResponse\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x16\n\x05items\x18\x02 \x03(\x0b\x32\x07.ItemPB\"\x16\n\tTaskDebug\x12\t\n\x01p\x18\x01 \x02(\t')
 
 
 
@@ -47,6 +47,13 @@ _TASK = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='Task.status', index=3,
+      number=4, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -57,7 +64,7 @@ _TASK = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=28,
-  serialized_end=80,
+  serialized_end=96,
 )
 
 
@@ -84,8 +91,8 @@ _TASKUPDATE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=82,
-  serialized_end=116,
+  serialized_start=98,
+  serialized_end=132,
 )
 
 
@@ -112,8 +119,8 @@ _REWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=118,
-  serialized_end=146,
+  serialized_start=134,
+  serialized_end=162,
 )
 
 
@@ -147,8 +154,36 @@ _REWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=148,
-  serialized_end=201,
+  serialized_start=164,
+  serialized_end=217,
+)
+
+
+_TASKDEBUG = _descriptor.Descriptor(
+  name='TaskDebug',
+  full_name='TaskDebug',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='p', full_name='TaskDebug.p', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=219,
+  serialized_end=241,
 )
 
 _TASKUPDATE.fields_by_name['tasks'].message_type = _TASK
@@ -157,6 +192,7 @@ DESCRIPTOR.message_types_by_name['Task'] = _TASK
 DESCRIPTOR.message_types_by_name['TaskUpdate'] = _TASKUPDATE
 DESCRIPTOR.message_types_by_name['rewardRequest'] = _REWARDREQUEST
 DESCRIPTOR.message_types_by_name['rewardResponse'] = _REWARDRESPONSE
+DESCRIPTOR.message_types_by_name['TaskDebug'] = _TASKDEBUG
 
 class Task(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -181,6 +217,12 @@ class rewardResponse(_message.Message):
   DESCRIPTOR = _REWARDRESPONSE
 
   # @@protoc_insertion_point(class_scope:rewardResponse)
+
+class TaskDebug(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _TASKDEBUG
+
+  # @@protoc_insertion_point(class_scope:TaskDebug)
 
 
 # @@protoc_insertion_point(module_scope)

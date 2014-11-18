@@ -26,3 +26,8 @@ message rewardResponse
 	required int32 tid = 1; //任务ID
 	repeated ItemPB items = 2; //奖励道具列表
 }
+
+message TaskDebug
+{
+	required string p=1;
+}

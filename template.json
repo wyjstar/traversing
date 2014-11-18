@@ -122,7 +122,7 @@
         "host": "127.0.0.1",
         "user": "test",
         "passwd": "test",
-        "port": 8066,
+        "port": 3306,
         "db": "db_traversing",
         "charset": "utf8"
     },

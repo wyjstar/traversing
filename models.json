@@ -172,9 +172,9 @@
         	"pkey_field": "id",
         	"def_attrs": {
         		"id": "simple",
-        		"lively": "complex",
-        		"lasttime": "simple",
-        		"event_map": "complex",
+        		"tasks": "complex",
+        		"lively": "simple",
+        		"event_map": "complex"
         	}
         }
     }

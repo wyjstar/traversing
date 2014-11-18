@@ -1,0 +1,21 @@
+game start...
+game pid: 52553
+call method remote_connect on service[proxy]
+d: 52550
+call method remote_connect on servicelogin Client 1 login in.[127.0.0.1,56745]
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+Client 1 login out.
+ False}
+all method server_login_2 on service:[gate_local_service]
+rpc account verify:asdfghjkasdfghjkasdfghjkasdfghjk
+verify result:{'result': False}
+call method forwarding on service[rootservice]
+call method character_login_4 on service:[gate_local_service]
+user_id:1
+call method forwarding on service[rootservice]
+call method net_conn_lost on service[rootservice]

@@ -35,11 +35,11 @@ def server_login_2(command_id, dynamic_id, request_proto):
     result = GlobalObject().remote['login'].callRemote('account_verify', key)
     result = eval(result)
     logger.info('verify result:%s', result)
-
     if result.get('result') is True:  # 登录成功
         uuid = result.get('uuid')
         logger.info('login uuid:%s', uuid)
         account_id = get_account_id(uuid)
+        print account_id
         if account_id == 0:
             account_response.result = False
         else:
@@ -58,7 +58,6 @@ def __manage_user(token, account_id, user_name, password, dynamic_id):
         # user.dynamic_id = dynamic_id
     else:
         user = User(token, account_id, user_name, password, dynamic_id)
-        print 'add user:', user
         UsersManager().add_user(user)
     # print 'user mana:', UsersManager()._users
     return True

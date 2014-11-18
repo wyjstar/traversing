@@ -115,7 +115,6 @@ all_config_name = {
     'achievement_config':AchievementConfig(),
 }
 
-
 module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)

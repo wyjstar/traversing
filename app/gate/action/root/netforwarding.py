@@ -21,7 +21,6 @@ groot = GlobalObject().root
 def forwarding(key, dynamic_id, data):
     """
     """
-
     if key in local_service._targets:
         return local_service.callTarget(key, dynamic_id, data)
     else:

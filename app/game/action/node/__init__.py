@@ -69,3 +69,4 @@ import login_gift
 import pvp_rank
 import arena_shop
 import brew
+import lively
