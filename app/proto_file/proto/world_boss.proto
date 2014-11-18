@@ -1,0 +1,53 @@
+import "common.proto"
+import "stage.proto"
+//获取战斗开始前的所有信息， command:1701
+//无请求协议
+message PvbRankItem{
+    required string nickname = 1; //玩家昵称
+    required int32 rank_no = 2;//排名
+    required int32 level = 3;//等级
+    required int32 first_hero_no = 4;//第一位武将id，用来显示玩家头像
+    required int32 demage_hp = 5; //伤害血量
+}
+
+message GetBeforePvbFightResponse{
+    required int32 high_hero = 1;            // 高级武将1个
+    repeated int32 middle_hero = 2;          // 中级武将2个
+    repeated int32 low_hero = 3;             // 低级武将3个
+    required int32 skill_no = 4;             // 未遇到奇遇, 则为0
+    repeated PvbRankItem rank_items = 5;     // 伤害排名前十的玩家
+    optional PvbRankItem last_shot_item = 6; // 最后击杀boss的玩家，如果没有击杀boss，则为空
+}
+
+//请求pvb玩家信息, command:1702
+message PvbPlayerInfoRequest{
+    required int32 rank_no = 1;// 排名
+}
+
+//鼓舞， command:1703
+message EncourageHerosRequest{
+    required int32 finance_type = 1;  //1:金币，2:元宝
+    required int32 finance_num = 2;   //金币或者元宝数量
+}
+
+message EncourageHerosResponse{
+    required CommonResponse res = 1;
+}
+
+//使用元宝复活, command:1704
+//无请求协议
+message RebornResponse{
+    required CommonResponse res = 1;
+}
+
+//开始战斗, command:1705
+//无请求协议
+message PvbFightResponse{
+    required CommonResponse res = 1;
+    repeated BattleUnit red = 2;
+    repeated BattleUnit blue = 3;
+    optional int32 red_best_skill = 4;
+    optional bool fight_result = 5;
+}
+
+//todo:战斗奖励，在整个战斗结束时使用邮件推送
