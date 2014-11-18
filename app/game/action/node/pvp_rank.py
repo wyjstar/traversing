@@ -15,8 +15,9 @@ from app.battle.battle_process import BattlePVPProcess
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.proto_file.lively_pb2 import TaskUpdate
-from app.game.action.root.netforwarding import push_object
+from gfirefly.server.globalobject import GlobalObject
 
+remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
 
@@ -156,7 +157,7 @@ def pvp_fight_request_1505(data, player):
             ts.target = status[2]
             ts.status = status[3]
         response.SerializePartialToString()
-        push_object(1234, response.SerializeToString(), [player.dynamic_id])
+        remote_gate.push_object_remote(1234, response.SerializeToString(), [player.dynamic_id])
     return response.SerializeToString()
 
 

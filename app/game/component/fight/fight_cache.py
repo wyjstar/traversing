@@ -93,10 +93,10 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_break_config(self):
         """取得关卡乱入信息"""
         stage = self.__get_stage_config()
-        if stage:
+        print stage,
+        if stage and "stage_break_id" in stage:
             return game_configs.stage_break_config.get(stage.stage_break_id, None)
-        else:
-            logger.error('stage break id is not exist:%d' % stage.stage_break_id)
+
         return None
 
     def __get_drop_num(self):
@@ -312,10 +312,10 @@ class CharacterFightCacheComponent(Component):
         logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units))
         if rand_odds <= odds:
             replace = []  # 可以替换的英雄
-            for red_unit in red_units:
+            for k, red_unit in red_units.items():
                 if not red_unit:
                     continue
-                hero_no = red_unit.no  # 英雄编号
+                hero_no = red_unit.unit_no  # 英雄编号
                 if hero_no in self._not_replace:
                     continue
                 replace.append(red_unit)
@@ -327,8 +327,7 @@ class CharacterFightCacheComponent(Component):
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
 
-
-            old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.position)
+            old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.slot_no)
 
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
@@ -338,18 +337,17 @@ class CharacterFightCacheComponent(Component):
             break_hero_obj.hero_no = hero_no
             break_hero_obj.level = level
 
-
             attr = CommonItem()
             hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
             attr += hero_break_attr
-            slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_no)  # 格子对象
+            slot_obj = self.owner.line_up_component.get_slot_by_hero(red_unit.unit_no)  # 格子对象
             equ_attr = slot_obj.equ_attr()
             attr += equ_attr
 
             unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
-            return unit, red_unit.no
+            return unit, red_unit.unit_no
         return None, 0
 
 

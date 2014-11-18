@@ -16,8 +16,9 @@ from shared.db_opear.configs_data import game_configs
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.proto_file.lively_pb2 import TaskUpdate
-from app.game.action.root.netforwarding import push_object
+from gfirefly.server.globalobject import GlobalObject
 
+remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def get_stages_901(pro_data, player):
@@ -420,7 +421,7 @@ def fight_settlement(stage_id, result, player):
             ts.target = status[2]
             ts.status = status[3]
         response.SerializePartialToString()
-        push_object(1234, response.SerializeToString(), [player.dynamic_id])
+        remote_gate.push_object_remote(1234, response.SerializeToString(), [player.dynamic_id])
 
     res.message = u'成功返回'
     return response.SerializePartialToString()

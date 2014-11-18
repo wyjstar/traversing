@@ -9,17 +9,20 @@ from app.game.redis_mode import tb_character_info
 from app.game.redis_mode import tb_character_lord
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
-from app.game.action.root.netforwarding import push_object
 from app.game.action.root.netforwarding import push_message
 from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
 from app.game.component.mail.mail import MailComponent
 import time
 from app.game.action.root import netforwarding
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.proto_file.lively_pb2 import TaskUpdate
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -159,6 +162,7 @@ def del_black_list_1105(data, player):
     player.friends.save_data()
     return response.SerializePartialToString()
 
+
 def _with_battle_info(response, pid):
     # 添加好友主将的属性
     lord_data = tb_character_lord.getObjData(pid)
@@ -171,6 +175,7 @@ def _with_battle_info(response, pid):
         response.atk = battle_unit.atk
         response.physical_def = battle_unit.physical_def
         response.magic_def = battle_unit.magic_def
+
 
 @remoteserviceHandle('gate')
 def get_player_friend_list_1106(data, player):
@@ -260,7 +265,7 @@ def given_stamina_1108(data, player):
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
     target_id = request.target_ids[0]
-    
+
     player_data = tb_character_info.getObjData(target_id)
     open_receive = player_data.get('stamina').get('open_receive')
 
@@ -284,7 +289,7 @@ def given_stamina_1108(data, player):
             ts.target = status[2]
             ts.status = status[3]
         response.SerializePartialToString()
-        push_object(1234, response.SerializeToString(), [player.dynamic_id])
+        remote_gate.push_object_remote(1234, response.SerializeToString(), [player.dynamic_id])
     return response.SerializePartialToString()  # fail
 
 
@@ -295,7 +300,9 @@ def add_friend_request_remote(target_id, is_online, player):
     result = player.friends.add_applicant(target_id)
     player.friends.save_data()
     if is_online:
-        push_object(1110, player.base_info.id, [player.dynamic_id])
+        remote_gate.push_object_remote(1110,
+                                       player.base_info.id,
+                                       [player.dynamic_id])
     return result
 
 
@@ -304,6 +311,7 @@ def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
     player.friends.save_data()
     return result
+
 
 @remoteserviceHandle('gate')
 def friend_private_chat_1060(data, player):
@@ -315,13 +323,13 @@ def friend_private_chat_1060(data, player):
     request.ParseFromString(data)
     target_id = request.target_uid
     content = request.content
-    
+
     title_display_len = 10
     if len(content) <= title_display_len:
         title = content
     else:
         title = content[:title_display_len] + "..."
-    
+
     mail = {'sender_id': player.base_info.id,
             'sender_name': player.base_info.base_name,
             'sender_icon': player.line_up_component.lead_hero_no,
@@ -331,11 +339,11 @@ def friend_private_chat_1060(data, player):
             'content': content,
             'mail_type': MailComponent.TYPE_MESSAGE,
             'prize': 0}
-    
+
     if not mail:
         response.result = False
         return response.SerializePartialToString()
-    
+
     mail['send_time'] = int(time.time())
     receive_id = mail['receive_id']
     # command:id 为收邮件的命令ID
@@ -343,6 +351,7 @@ def friend_private_chat_1060(data, player):
 
     response.result = True
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def open_friend_receive_1061(data, player):
@@ -355,6 +364,7 @@ def open_friend_receive_1061(data, player):
     response.result = True
     return response.SerializePartialToString()
 
+
 @remoteserviceHandle('gate')
 def close_friend_receive_1062(data, player):
     """ 关闭好友活力赠送
@@ -365,6 +375,7 @@ def close_friend_receive_1062(data, player):
     player.stamina.save_data()
     response.result = True
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def delete_friend_remote(target_id, is_online, player):

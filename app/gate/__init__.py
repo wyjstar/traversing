@@ -22,10 +22,9 @@ def init_guild_rank():
 
 
 def tick():
-    result = GlobalObject().remote['login'].callRemote('server_sync',
-                                                       name, front_ip,
-                                                       front_port,
-                                                       'recommend')
+    result = GlobalObject().remote['login'].server_sync_remote(name, front_ip,
+                                                               front_port,
+                                                               'recommend')
     if result is False:
         reactor.callLater(1, tick)
     else:
