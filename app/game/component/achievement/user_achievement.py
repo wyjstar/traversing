@@ -276,12 +276,10 @@ class UserAchievement(Component):
                 for seq in task.condition.keys():
                     cond = task.condition[seq]
                     etype = cond[0]
-                    print 'etype', etype
                     one_event = TaskEvent.create(etype, seq)
                     task_event.add_event(one_event)
                     if etype not in self._event_task_map:
                         self._event_task_map[etype] = [task_id]
-                        print 'map', task_id, etype
                     else:
                         if task_id not in self._event_task_map[etype]:
                             self._event_task_map[etype].append(task_id)
@@ -289,9 +287,7 @@ class UserAchievement(Component):
                 self._tasks[task_id] = task_event
                 self._update = True
                 
-        print '1'
         for task_id in self._tasks.keys():
-            print '2'
             if task_id not in achievement_config:
                 del self._tasks[task_id]
                 self._update = True
@@ -300,7 +296,7 @@ class UserAchievement(Component):
         s = datetime.date.today()
         today_ts = int(time.mktime(s.timetuple()))
         now = time.time()
-        if now >= today_ts  + 24*60*60:
+        if now >= today_ts  + 24*60*60 or len(self._tasks == 0):
             print 'can refresh'
             self._reset()
             self.routine()
