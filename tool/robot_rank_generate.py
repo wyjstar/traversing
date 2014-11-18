@@ -14,9 +14,13 @@ from gfirefly.dbentrust.dbpool import get_connection
 from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import log_init_only_out
+from gfirefly.distributed.node import RemoteObject
 from shared.db_opear.configs_data.game_configs import robot_born_config
 from shared.db_opear.configs_data.game_configs import rand_name_config
 from shared.db_opear.configs_data.game_configs import hero_config
+
+
+GlobalObject().remote['gate'] = RemoteObject('gate')
 
 PVP_TABLE_NAME = 'tb_pvp_rank'
 

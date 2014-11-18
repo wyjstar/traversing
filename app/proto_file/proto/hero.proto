@@ -11,5 +11,6 @@ message HeroPB
     optional int32 level = 2;
     optional int32 exp = 3;
     optional int32 break_level = 4;
-    repeated LinkPB links = 5;
+    optional int32 refine = 5;
+    repeated LinkPB links = 6;
 }

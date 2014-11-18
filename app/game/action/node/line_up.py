@@ -138,6 +138,7 @@ def get_target_line_up_info_706(pro_data, player):
                     hero.level = hero_obj.level
                     hero.exp = hero_obj.exp
                     hero.break_level = hero_obj.break_level
+                    hero.refine = hero_obj.refine
 
     return response.SerializePartialToString()
 
