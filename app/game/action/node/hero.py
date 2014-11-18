@@ -4,15 +4,14 @@ created by wzp on 14-6-27下午2:05.
 """
 
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file.hero_request_pb2 import HeroUpgradeWithItemRequest,\
-    HeroBreakRequest, HeroSacrificeRequest, HeroComposeRequest, HeroSellRequest
-from app.proto_file.hero_response_pb2 import GetHerosResponse, HeroUpgradeResponse, \
-    HeroBreakResponse, HeroComposeResponse
+from app.proto_file import hero_request_pb2
+from app.proto_file import hero_response_pb2
+from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import base_config, item_config, \
+from shared.db_opear.configs_data.game_configs import base_config, item_config,\
     hero_breakup_config, chip_config, hero_config
-from app.game.core.item_group_helper import is_afford, consume, gain, get_return
-from app.proto_file.hero_response_pb2 import HeroSacrificeResponse, HeroSellResponse
+from app.game.core.item_group_helper \
+    import is_afford, consume, gain, get_return
 from shared.utils import log_action
 from app.game.core.pack.item import Item
 
@@ -20,7 +19,7 @@ from app.game.core.pack.item import Item
 @remoteserviceHandle('gate')
 def get_heros_101(pro_data, player):
     """取得武将列表 """
-    response = GetHerosResponse()
+    response = hero_response_pb2.GetHerosResponse()
     for hero in player.hero_component.get_heros():
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
@@ -30,9 +29,9 @@ def get_heros_101(pro_data, player):
 @remoteserviceHandle('gate')
 def hero_upgrade_with_item_103(data, player):
     """武将升级，使用经验药水"""
-    args = HeroUpgradeWithItemRequest()
+    args = hero_request_pb2.HeroUpgradeWithItemRequest()
     args.ParseFromString(data)
-    response = HeroUpgradeResponse()
+    response = hero_response_pb2.HeroUpgradeResponse()
     hero_no = args.hero_no
     exp_item_no = args.exp_item_no
     exp_item_num = args.exp_item_num
@@ -60,11 +59,11 @@ def hero_upgrade_with_item_103(data, player):
 @remoteserviceHandle('gate')
 def hero_break_104(data, player):
     """武将突破"""
-    args = HeroBreakRequest()
+    args = hero_request_pb2.HeroBreakRequest()
     args.ParseFromString(data)
     hero_no = args.hero_no
     hero = player.hero_component.get_hero(hero_no)
-    response = HeroBreakResponse()
+    response = hero_response_pb2.HeroBreakResponse()
 
     # 验证武将是否突破到上限
     if hero.break_level == hero_config.get(hero_no).breakLimit:
@@ -72,7 +71,8 @@ def hero_break_104(data, player):
         response.res.result_no = 201
         return response.SerializeToString()
 
-    item_group = hero_breakup_config.get(hero.hero_no).get_consume(hero.break_level)
+    _hero_breakup = hero_breakup_config.get(hero.hero_no)
+    item_group = _hero_breakup.get_consume(hero.break_level)
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):
@@ -95,7 +95,7 @@ def hero_break_104(data, player):
 @remoteserviceHandle('gate')
 def hero_sacrifice_105(data, player):
     """武将献祭"""
-    args = HeroSacrificeRequest()
+    args = hero_request_pb2.HeroSacrificeRequest()
     args.ParseFromString(data)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
     if len(heros) == 0:
@@ -109,10 +109,10 @@ def hero_sacrifice_105(data, player):
 @remoteserviceHandle('gate')
 def hero_compose_106(data, player):
     """武将合成"""
-    args = HeroComposeRequest()
+    args = hero_request_pb2.HeroComposeRequest()
     args.ParseFromString(data)
     hero_chip_no = args.hero_chip_no
-    response = HeroComposeResponse()
+    response = hero_response_pb2.HeroComposeResponse()
     hero_no = chip_config.get("chips").get(hero_chip_no).combineResult
     need_num = chip_config.get("chips").get(hero_chip_no).needNum
     if not hero_no or not need_num:
@@ -133,7 +133,8 @@ def hero_compose_106(data, player):
 
     # tlog
     log_action.hero_flow(player, hero.hero_no, 1, 1)
-    log_action.chip_flow(player, hero_chip.chip_no, 1, 0, need_num, hero_chip.num, 1)
+    log_action.chip_flow(player, hero_chip.chip_no, 1, 0,
+                         need_num, hero_chip.num, 1)
     # 3、返回
     response.res.result = True
     hero.update_pb(response.hero)
@@ -143,11 +144,11 @@ def hero_compose_106(data, player):
 @remoteserviceHandle('gate')
 def hero_sell_107(data, player):
     """武将出售"""
-    args = HeroSellRequest()
+    args = hero_request_pb2.HeroSellRequest()
     args.ParseFromString(data)
     hero_nos = args.hero_nos
 
-    response = HeroSellResponse()
+    response = hero_response_pb2.HeroSellResponse()
     for hero_no in hero_nos:
         sell_gain = hero_config.get(hero_no).sellGain
         return_data = gain(player, sell_gain)
@@ -155,6 +156,18 @@ def hero_sell_107(data, player):
 
     response.res.result = True
     return response
+
+
+@remoteserviceHandle('gate')
+def hero_refine_108(data, player):
+    request = hero_request_pb2.HeroRefineRequest()
+    request.ParseFromString(data)
+    hero_no = request.hero_no
+    hero = player.hero_component.get_hero(hero_no)
+    hero.refine = request.refine
+    response = CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
 
 
 def hero_sacrifice_oper(heros, player):
@@ -167,7 +180,7 @@ def hero_sacrifice_oper(heros, player):
     exp_item_no = 0
     exp_item_num = 0
 
-    response = HeroSacrificeResponse()
+    response = hero_response_pb2.HeroSacrificeResponse()
     gain_response = response.gain
     for hero in heros:
         sacrifice_gain = hero_config.get(hero.hero_no).sacrificeGain
@@ -184,7 +197,8 @@ def hero_sacrifice_oper(heros, player):
     try:
         keys = sorted([int(item) for item in list(exp_items)], reverse=True)
     except Exception:
-        logger.error("base_config sacrificeGainExp key must be int type:%s.", str(exp_items))
+        logger.error("base_config sacrificeGainExp key must be int type:%s.",
+                     str(exp_items))
         return
 
     for exp in keys:
