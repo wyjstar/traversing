@@ -138,19 +138,7 @@ def read_mail(mail_ids, mail_type, player):
             response.res.result = False
             response.res.result_no = result.get('result_no')
             return response.SerializePartialToString()
-#         for mail_id in mail_ids:
-#             # 发送反馈体力
-#             mail = player.mail_component.get_mail(mail_id)
-#             mail_return = {'sender_id': player.base_info.id,
-#                            'sender_name': player.base_info.base_name,
-#                            'receive_id': mail.sender_id,
-#                            'receive_name': mail.sender_name,
-#                            'title': mail.title,
-#                            'content': mail.content,
-#                            'mail_type': mail_type,
-#                            'send_time': int(time.time()),
-#                            'prize': 0}
-#             netforwarding.push_message('receive_mail_remote', mail.sender_id, mail_return)
+        
         player.stamina.add_stamina(len(mail_ids)*2)
         player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
@@ -161,11 +149,8 @@ def read_mail(mail_ids, mail_type, player):
         player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 3 or mail_type == 4:
-        # 公告
-        for mail_id in mail_ids:
-            mail = player.mail_component.get_mail(mail_id)
-            mail.is_readed = True
-            mail.read_time = int(time.time())
+        # 公告&私信
+        player.mail_component.delete_mails(mail_ids)
 
     response.res.result = True
     return response.SerializePartialToString()
