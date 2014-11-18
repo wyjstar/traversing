@@ -65,7 +65,7 @@ if __name__ == '__main__':
                     db=dbname, charset=charset)
     mclient.connect(["127.0.0.1:11211"], 'robot')
     from app.game.core.character.PlayerCharacter import PlayerCharacter
-    from app.game.logic.line_up import line_up_info
+    from app.game.action.node.line_up import line_up_info
 
     rank_length = 300
 
