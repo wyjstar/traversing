@@ -4,7 +4,6 @@ created by server on 14-7-21下午2:17.
 """
 import time
 import re
-from app.game.action.root.netforwarding import login_chat
 from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.dbentrust import util
@@ -16,6 +15,10 @@ from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -38,7 +41,8 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    sql_result = util.GetOneRecordInfo('tb_character_info', dict(nickname=nickname))
+    sql_result = util.GetOneRecordInfo('tb_character_info',
+                                       dict(nickname=nickname))
     if sql_result:
         response.result = False
         response.result_no = 1
@@ -51,7 +55,10 @@ def nickname_create_5(request_proto, player):
     character_obj.update('nickname', nickname)
 
     # 加入聊天
-    login_chat(player.dynamic_id, player.base_info.id, player.guild.g_id, nickname)
+    remote_gate.login_chat_remote(player.dynamic_id,
+                                  player.base_info.id,
+                                  player.guild.g_id,
+                                  nickname)
 
     response.result = True
     return response.SerializeToString()
@@ -69,7 +76,8 @@ def buy_stamina_6(request_proto, player):
 
     available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
 
-    logger.debug("available_buy_stamina_times++++++++++++++++", available_buy_stamina_times, current_buy_stamina_times)
+    logger.debug("available_buy_stamina_times:", available_buy_stamina_times,
+                 current_buy_stamina_times)
     # 校验购买次数上限
     if current_buy_stamina_times >= available_buy_stamina_times:
         response.result = False
