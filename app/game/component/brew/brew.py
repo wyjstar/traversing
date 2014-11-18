@@ -140,6 +140,12 @@ cur:%s time:%s cri:%s',
             self._nectar_cur = base_config.get('cookingWineOutput')
             self._brew_step = 1
 
+    def consume(self, value):
+        if self._nectar >= value:
+            self._nectar -= value
+            return True
+        return False
+
     @property
     def nectar(self):
         return self._nectar

@@ -187,6 +187,10 @@ class LineUpSlotComponent(Component):
         attr += hero_break_attr
         hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
         attr += hero_link_attr
+
+        _refine_attr = game_configs.seal_config.get(hero_obj.refine)
+        attr += _refine_attr
+
         return hero_base_attr, attr, hero_obj
 
     def equ_attr(self):

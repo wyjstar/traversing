@@ -8,8 +8,7 @@ from app.proto_file import hero_request_pb2
 from app.proto_file import hero_response_pb2
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import base_config, item_config,\
-    hero_breakup_config, chip_config, hero_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper \
     import is_afford, consume, gain, get_return
 from shared.utils import log_action
@@ -45,7 +44,7 @@ def hero_upgrade_with_item_103(data, player):
             return response.SerializeToString()
     else:
         logger.error('item package can not get item:%d' % exp_item_no)
-    exp = item_config.get(exp_item_no).get('funcArg1')
+    exp = game_configs.item_config.get(exp_item_no).get('funcArg1')
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num)
     player.item_package.consume_item(exp_item_no, exp_item_num)
@@ -66,12 +65,12 @@ def hero_break_104(data, player):
     response = hero_response_pb2.HeroBreakResponse()
 
     # 验证武将是否突破到上限
-    if hero.break_level == hero_config.get(hero_no).breakLimit:
+    if hero.break_level == game_configs.hero_config.get(hero_no).breakLimit:
         response.res.result = False
         response.res.result_no = 201
         return response.SerializeToString()
 
-    _hero_breakup = hero_breakup_config.get(hero.hero_no)
+    _hero_breakup = game_configs.hero_breakup_config.get(hero.hero_no)
     item_group = _hero_breakup.get_consume(hero.break_level)
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
@@ -113,8 +112,8 @@ def hero_compose_106(data, player):
     args.ParseFromString(data)
     hero_chip_no = args.hero_chip_no
     response = hero_response_pb2.HeroComposeResponse()
-    hero_no = chip_config.get("chips").get(hero_chip_no).combineResult
-    need_num = chip_config.get("chips").get(hero_chip_no).needNum
+    hero_no = game_configs.chip_config.get("chips").get(hero_chip_no).combineResult
+    need_num = game_configs.chip_config.get("chips").get(hero_chip_no).needNum
     if not hero_no or not need_num:
         logger.error("chip_config数据不全!")
     hero_chip = player.hero_chip_component.get_chip(hero_chip_no)
@@ -150,7 +149,7 @@ def hero_sell_107(data, player):
 
     response = hero_response_pb2.HeroSellResponse()
     for hero_no in hero_nos:
-        sell_gain = hero_config.get(hero_no).sellGain
+        sell_gain = game_configs.hero_config.get(hero_no).sellGain
         return_data = gain(player, sell_gain)
         get_return(player, return_data, response.gain)
 
@@ -159,14 +158,17 @@ def hero_sell_107(data, player):
 
 
 @remoteserviceHandle('gate')
-def hero_refine_108(data, player):
+def hero_refine_118(data, player):
     request = hero_request_pb2.HeroRefineRequest()
     request.ParseFromString(data)
-    hero_no = request.hero_no
-    hero = player.hero_component.get_hero(hero_no)
-    hero.refine = request.refine
     response = CommonResponse()
-    response.result = True
+    response.result = False
+
+    hero = player.hero_component.get_hero(request.hero_no)
+    _refine_item = game_configs.seal_config.get(request.refine, None)
+    if hero and _refine_item and player.brew.consume(_refine_item.expend):
+        response.result = True
+        hero.refine = request.refine
     return response.SerializePartialToString()
 
 
@@ -183,7 +185,7 @@ def hero_sacrifice_oper(heros, player):
     response = hero_response_pb2.HeroSacrificeResponse()
     gain_response = response.gain
     for hero in heros:
-        sacrifice_gain = hero_config.get(hero.hero_no).sacrificeGain
+        sacrifice_gain = game_configs.hero_config.get(hero.hero_no).sacrificeGain
         return_data = gain(player, sacrifice_gain)
         get_return(player, return_data, gain_response)
         # 经验
@@ -191,7 +193,7 @@ def hero_sacrifice_oper(heros, player):
         total_exp += exp
 
     # baseconfig {1000000: 'item_id'}
-    exp_items = base_config.get("sacrificeGainExp")
+    exp_items = game_configs.base_config.get("sacrificeGainExp")
 
     keys = []
     try:
@@ -204,7 +206,7 @@ def hero_sacrifice_oper(heros, player):
     for exp in keys:
         exp = unicode(exp)
         item_no = exp_items.get(exp)
-        config = item_config.get(item_no)
+        config = game_configs.item_config.get(item_no)
         exp = config.get("funcArg1")
         if total_exp/exp > 0:
             exp_item_no = item_no
