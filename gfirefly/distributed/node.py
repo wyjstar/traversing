@@ -47,13 +47,20 @@ class RemoteObject(object):
                 self._handle = handle
 
             def __call__(self, *arg, **kw):
-                return self._handle(self._fun, *arg, **kw)
+                if not self._handle:
+                    return False
+                return self._handle('callTarget', self._fun, *arg, **kw)
+
+        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
+        if not deferedRemote:
+            return RpcFunctionWrapper(fun, None)
 
         if fun.endswith('remote'):
-            return RpcFunctionWrapper(fun, self.call_remote_for_result)
+            return RpcFunctionWrapper(fun, deferedRemote.callRemoteForResult)
 
         if fun.endswith('remote_noresult'):
-            return RpcFunctionWrapper(fun, self.call_remote_not_for_result)
+            return RpcFunctionWrapper(fun,
+                                      deferedRemote.callRemoteNotForResult)
 
         raise Exception('error rpc name, must endwith <remote>:%s' % fun)
         return None
@@ -88,21 +95,3 @@ class RemoteObject(object):
         self._factory._protocol.setProxyReference(self._reference)
         deferedRemote = self._factory.getRootObject(timeout=self._timeout)
         deferedRemote.callRemoteNotForResult('takeProxy', self._name)
-
-    def call_remote_for_result(self, commandId, *args, **kw):
-        """远程调用，并等待结果放回 """
-        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
-        if not deferedRemote:
-            return False
-        return deferedRemote.callRemoteForResult('callTarget',
-                                                 commandId,
-                                                 *args, **kw)
-
-    def call_remote_not_for_result(self, commandId, *args, **kw):
-        """远程调用,不需要结果放回 """
-        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
-        if not deferedRemote:
-            return False
-        return deferedRemote.callRemoteNotForResult('callTarget',
-                                                    commandId,
-                                                    *args, **kw)

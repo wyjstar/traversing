@@ -14,7 +14,6 @@ from shared.db_opear.configs_data.game_configs import vip_config
 # base_config.get('cookingWineOutput')
 # base_config.get('cookingWineOutputCrit')
 # base_config.get('cookingWinePrice')
-MAX_STEPS = 4
 
 
 class CharacterBrewComponent(Component):
@@ -64,6 +63,8 @@ class CharacterBrewComponent(Component):
     def do_brew(self, brew_type):
         vip_level = self.owner.vip_component.vip_level
         brew_times_max = vip_config.get(vip_level).get('cookingTimes')
+
+        MAX_STEPS = len(base_config.get('cookingWinePrice')[brew_type])
 
         self.check_time()
         if self._brew_step > MAX_STEPS:

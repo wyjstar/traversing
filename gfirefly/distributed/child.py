@@ -23,6 +23,30 @@ class Child(object):
     def id(self):
         return self._id
 
+    def __getattr__(self, fun):
+        class RpcFunctionWrapper:
+            def __init__(self, fun, handle):
+                self._fun = fun
+                self._handle = handle
+
+            def __call__(self, *arg, **kw):
+                if not self._handle:
+                    return False
+                return self._handle('callChild', self._fun, *arg, **kw)
+
+        remote = self._transport.getRootObject()
+        if not remote:
+            return RpcFunctionWrapper(fun, None)
+
+        if fun.endswith('remote'):
+            return RpcFunctionWrapper(fun, remote.callRemoteForResult)
+
+        if fun.endswith('remote_noresult'):
+            return RpcFunctionWrapper(fun, remote.callRemoteNotForResult)
+
+        raise Exception('error rpc child, must endwith <remote>:%s' % fun)
+        return None
+
     def setTransport(self, transport):
         """设置子节点的通道"""
         self._transport = transport

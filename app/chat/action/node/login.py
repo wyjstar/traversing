@@ -13,6 +13,7 @@ def login_chat_1001(command_id, dynamic_id, character_id, character_nickname, gu
     @param dynamic_id: int 客户端的id
     @param character_id: int角色的id
     """
+    # print 'user login chat     '*12
     character = ChaterManager().addchater_by_id(character_id)
     if character:
         ChaterManager().update_onland(character_id, dynamic_id, guild_id)
