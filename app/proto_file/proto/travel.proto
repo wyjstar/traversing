@@ -36,7 +36,12 @@ message TravelInitResponse{
 
 // buy shoes 832
 message BuyShoesRequest{
+    repeated ShoesInfo shoes_infos = 1;
+}
+
+message ShoesInfo{
     required int32 shoes_type = 1;
+    required int32 shoes_no = 2;
 }
 
 message BuyShoesResponse{

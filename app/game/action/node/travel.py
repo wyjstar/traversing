@@ -104,15 +104,23 @@ def buy_shoes_832(data, player):
     args = BuyShoesRequest()
     args.ParseFromString(data)
     response = BuyShoesResponse()
-    if player.finance.gold < base_config.get("travelShoe"+str(args.shoes_type))[2] \
-            * args.no:
+
+    need_good = 0
+    for shoes_info in args.shoes_infos:
+        need_good += base_config.get("travelShoe"+str(shoes_info.shoes_type))[2] \
+            * shoes_info.shoes_no
+
+    if player.finance.gold < need_good:
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    player.travel_component.shoes[args.shoes_type-1] += args.no
-    player.finance.gold -= base_config.get("travelShoe"+str(args.shoes_type))[2] \
-        * args.no
+    for shoes_info in args.shoes_infos:
+        player.travel_component.shoes[shoes_info.shoes_type-1] += \
+            shoes_info.shoes_no
+
+    player.finance.gold -= need_good
+
     player.travel_component.save()
     player.finance.save_data()
 
