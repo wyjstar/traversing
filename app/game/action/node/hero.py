@@ -177,14 +177,10 @@ def hero_refine_118(data, player):
         logger.error('cant afford refine:%s', _refine_item.expend)
         return response.SerializePartialToString()
 
-    if _refine_item.get('next') != request.refine:
-        logger.error('refine id error:cur-%s:next-%s',
-                     request.refine,
-                     _refine_item.get('next'))
-        return response.SerializePartialToString()
-
     response.result = True
     hero.refine = request.refine
+    player.brew.save_data()
+    hero.save_data()
     return response.SerializePartialToString()
 
 
