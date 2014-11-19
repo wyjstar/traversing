@@ -165,10 +165,20 @@ def hero_refine_118(data, player):
     response.result = False
 
     hero = player.hero_component.get_hero(request.hero_no)
-    _refine_item = game_configs.seal_config.get(request.refine, None)
-    if hero and _refine_item and player.brew.consume(_refine_item.expend):
-        response.result = True
-        hero.refine = request.refine
+    _refine_item = game_configs.seal_config.get(request.refine)
+    if not hero:
+        logger.error('cant find hero:%s', request.hero_no)
+        return response.SerializePartialToString()
+    if not _refine_item:
+        logger.error('cant find refine item:%s', request.refine)
+        return response.SerializePartialToString()
+
+    if not player.brew.consume(_refine_item.expend):
+        logger.error('cant afford refine:%s', _refine_item.expend)
+        return response.SerializePartialToString()
+
+    response.result = True
+    hero.refine = request.refine
     return response.SerializePartialToString()
 
 
