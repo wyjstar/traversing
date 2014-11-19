@@ -30,10 +30,19 @@ class BattleUnit(object):
         self._level = 0.0  # 等级
         self._break_level = 0  # 突破等级
         self._mp_base = 0  # 武将基础mp
+        self._quality = 0  # 武将品质
         self._skill = None
 
         self._buff_manager = BuffManager(self)
 
+
+    @property
+    def quality(self):
+        return self._quality
+
+    @quality.setter
+    def quality(self, value):
+        self._quality = value
 
     @property
     def can_attack(self):
@@ -196,9 +205,9 @@ class BattleUnit(object):
         return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
                 命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp初始值(%s), buffs(%s)") \
                % (
-        self._slot_no, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
-        self.hit, self.dodge, self.cri, self.cri_coeff, self.cri_ded_coeff, self.block, self.ductility,
-        self.level, self.break_level, self._mp_base, self.buff_manager)
+            self._slot_no, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
+            self.hit, self.dodge, self.cri, self.cri_coeff, self.cri_ded_coeff, self.block, self.ductility,
+            self.level, self.break_level, self._mp_base, self.buff_manager)
 
     @property
     def hp_max(self):
@@ -215,11 +224,14 @@ class BattleUnit(object):
 
     @property
     def info(self):
-        return dict(unit_no=self.unit_no,
-                    break_skills=self.skill.break_skill_ids, hp=self.hp, atk=self.atk, physical_def=self.physical_def,
-                    magic_def=self.magic_def, hit=self.hit, dodge=self.dodge, cri=self.cri,
-                    cri_coeff=self.cri_coeff, cri_ded_coeff=self.cri_ded_coeff, block=self.block, ductility=self.ductility,
-                    level=self.level)
+        return dict(unit_no=self.unit_no, quality=self._quality,
+                    break_skills=self.skill.break_skill_ids, hp=self._hp, atk=self._atk,
+                    physical_def=self._physical_def,
+                    magic_def=self._magic_def, hit=self._hit, dodge=self._dodge, cri=self._cri,
+                    cri_coeff=self._cri_coeff, cri_ded_coeff=self._cri_ded_coeff, block=self._block,
+                    ductility=self._ductility,
+                    level=self._level,
+                    skill=self._skill)
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -227,7 +239,6 @@ class BattleUnit(object):
     @classmethod
     def loads(cls, data):
         info = cPickle.loads(data)
-        print info, "*"*80
         unit = cls()
         unit.set_attrs(**info)
         return unit
@@ -249,7 +260,8 @@ class BattleUnit(object):
 
 
 def do_assemble(no, quality, break_skills, hp,
-                atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position, level,
+                atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position,
+                level,
                 is_boss=False, is_hero=True, is_break_hero=False, unit_name=""):
     """组装战斗单位
     @param no: 编号
@@ -272,7 +284,6 @@ def do_assemble(no, quality, break_skills, hp,
     """
     battle_unit = BattleUnit()
 
-
     battle_unit.unit_no = no
     battle_unit.unit_name = unit_name
     battle_unit.quality = quality
@@ -288,7 +299,6 @@ def do_assemble(no, quality, break_skills, hp,
     battle_unit.cri_coeff = cri_coeff
     battle_unit.cri_ded_coeff = cri_ded_coeff
     battle_unit.block = block
-
 
     battle_unit.level = level
 
@@ -308,10 +318,10 @@ def do_assemble(no, quality, break_skills, hp,
     return battle_unit
 
 
-#import copy
+# import copy
 
 
-#unit = do_assemble(10001, 1, [], 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1)
+# unit = do_assemble(10001, 1, [], 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1)
 #copy.deepcopy(unit)
 
 

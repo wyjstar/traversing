@@ -1,5 +1,5 @@
-import "common.proto"
-import "stage.proto"
+import "common.proto";
+import "stage.proto";
 //获取战斗开始前的所有信息， command:1701
 //无请求协议
 message PvbRankItem{
