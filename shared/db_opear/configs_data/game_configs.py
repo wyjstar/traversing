@@ -123,4 +123,5 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print seal_config.get(1001001).expend
+    for k, v in seal_config.items():
+        print v
