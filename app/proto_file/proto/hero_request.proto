@@ -30,3 +30,10 @@ message HeroSellRequest
 {
     repeated int32 hero_nos = 1;
 }
+
+//hero refine
+message HeroRefineRequest
+{
+    required int32 hero_no= 1;
+    required int32 refine = 2;
+}

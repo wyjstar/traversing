@@ -241,6 +241,7 @@ def line_up_info(player):
     response = line_up_pb2.LineUpResponse()
     assembly_slots(player, response)
     assembly_sub_slots(player, response)
+    response.unpar = player.line_up_component.unpar
 
     return response
 
