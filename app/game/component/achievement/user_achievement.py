@@ -65,11 +65,11 @@ class TaskEvents(object):
             return []
         data['taskid'] = self._taskid
         task = achievement_config.get(self._taskid)
-        jude = True if task.compositon == JudeEvent.AND else False
+        jude = True if task.composition == JudeEvent.AND else False
         for event in self._events:
             ret = event.check(data)
             print 'ret', ret
-            if task.compositon == JudeEvent.AND:
+            if task.composition == JudeEvent.AND:
                 jude = ret and jude
             else:
                 jude = jude or ret

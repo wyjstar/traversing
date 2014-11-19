@@ -399,8 +399,8 @@ def fight_settlement(stage_id, result, player):
                 lively_event = CountEvent.create_event(EventType.STAGE_3, 1, ifadd=True)
             player.stage_component.update()
 
-            task_status = player.tasks.check_inter(lively_event)
-            player.tasks.save_data()
+        task_status = player.tasks.check_inter(lively_event)
+        player.tasks.save_data()
         # 经验
         for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
             print lineUpSlotComponent,
@@ -421,7 +421,7 @@ def fight_settlement(stage_id, result, player):
             ts.target = status[2]
             ts.status = status[3]
         response.SerializePartialToString()
-        remote_gate.push_object_remote(1234, response.SerializeToString(), [player.dynamic_id])
+        #remote_gate.push_object_remote(1234, response.SerializeToString(), [player.dynamic_id])
 
     res.message = u'成功返回'
     return response.SerializePartialToString()
