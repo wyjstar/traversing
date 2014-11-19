@@ -27,9 +27,7 @@ def pull_message_remote(character_id):
 
         for child in childs.values():
             if 'gate' in child.name:
-                result = groot.callChild(child.id,
-                                         'pull_message',
-                                         *args, **kw)
+                result = child.pull_message_remote(*args, **kw)
                 if type(result) is bool and result:
                     message_cache.delete(character_id, key)
                     count += 1

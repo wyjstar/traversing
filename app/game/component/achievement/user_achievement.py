@@ -336,6 +336,8 @@ class UserAchievement(Component):
                 if task_id in self._tasks:
                     status.append(self._tasks[task_id].check(event))
 #                     status.append(self._tasks[task_id].status())
+
+        print self.__dict__
         return status
     
     def task_status(self):

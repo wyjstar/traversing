@@ -91,6 +91,7 @@ def add_guild_to_rank_remote(g_id, dengji):
 
 @rootserviceHandle
 def login_chat_remote(dynamic_id, character_id, guild_id, nickname):
+    # groot.childsmanager.getChildByName('chat')
     groot.callChildByName('chat', 1001, dynamic_id, character_id,
                           nickname, guild_id)
 
@@ -131,7 +132,7 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 
 @remoteserviceHandle('transit')
-def pull_message(key, character_id, *args, **kw):
+def pull_message_remote(key, character_id, *args, **kw):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
         print 'gate found character to pull message:', oldvcharacter.__dict__

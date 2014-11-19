@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file.lively_pb2 import TaskUpdate, rewardRequest, rewardResponse,\
-    TaskDebug
+from app.proto_file.lively_pb2 import TaskUpdate, rewardRequest, rewardResponse
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import achievement_config
 from app.game.core import item_group_helper
@@ -17,6 +16,7 @@ def query_status_1234(data, player):
     response = TaskUpdate()
     for status in task_status:
         ts = response.tasks.add()
+        print 'query_status_1234', status
         ts.tid = status[0]
         ts.current = status[1]
         ts.target = status[2]
@@ -70,7 +70,6 @@ def lively_test_1236(data, player):
     event_8 = CountEvent.create_event(EventType.WORD, 1, ifadd = True)
     event_9 = CountEvent.create_event(EventType.TRAVEL, 1, ifadd = True)
     event_10 = CountEvent.create_event(EventType.BOSS, 1, ifadd = True)
-    player.tasks.check_inter(event_1)
     
     player.tasks.check_inter(event_1)
     player.tasks.check_inter(event_2)
