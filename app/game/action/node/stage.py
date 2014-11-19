@@ -420,8 +420,7 @@ def fight_settlement(stage_id, result, player):
             ts.current = status[1]
             ts.target = status[2]
             ts.status = status[3]
-        task_response.SerializePartialToString()
-        #remote_gate.push_object_remote(1234, task_response.SerializeToString(), [player.dynamic_id])
+        #remote_gate.push_object_remote(1234, task_response.SerializePartialToString(), [player.dynamic_id])
 
     res.message = u'成功返回'
     return response.SerializePartialToString()

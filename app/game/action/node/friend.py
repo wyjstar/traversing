@@ -288,7 +288,7 @@ def given_stamina_1108(data, player):
             ts.current = status[1]
             ts.target = status[2]
             ts.status = status[3]
-        remote_gate.push_object_remote(1234, task_response.SerializeToString(), [player.dynamic_id])
+        remote_gate.push_object_remote(1234, task_response.SerializePartialToString(), [player.dynamic_id])
     return response.SerializePartialToString()  # fail
 
 
