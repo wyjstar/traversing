@@ -165,7 +165,9 @@ def _with_battle_info(response, pid):
     lord_data = tb_character_lord.getObjData(pid)
     if lord_data:
         info = lord_data.get('attr_info', {})
+        print "info", info
         battle_unit = BattleUnit.loads(info.get('info'))
+        print "battle_unit.__dict__", battle_unit.__dict__
         response.hero_no = battle_unit.no
         response.power = int(info.get('power', 0))
         response.hp = battle_unit.hp
@@ -238,15 +240,17 @@ def find_friend_request_1107(data, player):
 
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObjData(request.id_or_nickname)
-        if player_data:
-            response.id = player_data.get('id')
-            response.nickname = player_data.get('nickname')
+
     else:
         prere = dict(nickname=request.id_or_nickname)
-        sql_result = util.GetOneRecordInfo('tb_character_info', prere)
-        if sql_result:
-            response.id = sql_result.get('id')
-            response.nickname = sql_result.get('nickname')
+        player_data = util.GetOneRecordInfo('tb_character_info', prere)
+        
+    if player_data:
+        response.id = player_data.get('id')
+        response.nickname = player_data.get('nickname')
+        
+        # 添加好友主将的属性
+        _with_battle_info(response, player_data.get('id'))
 
     return response.SerializePartialToString()
 
