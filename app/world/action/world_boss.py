@@ -4,10 +4,11 @@
 created by wzp.
 """
 from gfirefly.server.globalobject import rootserviceHandle
+from app.proto_file import world_boss_pb2
 
 
 @rootserviceHandle
-def get_before_fight_info_remote():
+def pvb_get_before_fight_info():
     """
     获取世界boss开战前的信息：
     1. 幸运武将
@@ -15,8 +16,12 @@ def get_before_fight_info_remote():
     3. 伤害排名前十的玩家
     4. 最后击杀boss的玩家
     """
+    print "*-$"*80
+    response = world_boss_pb2.PvbGetBeforeFightResponse()
+    response.high_hero = 10003
+    response.skill_no = 10002
+    return response.SerializeToString()
 
-    pass
 
 
 

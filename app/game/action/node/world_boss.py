@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
+#from app.proto_file import world_boss_pb2
 
-@remoteserviceHandle
+remote_gate = GlobalObject().remote['gate']
+
+@remoteserviceHandle('gate')
 def get_before_fight_1701(data, player):
     """
     获取世界boss开战前的信息：
@@ -12,10 +15,16 @@ def get_before_fight_1701(data, player):
     3. 伤害排名前十的玩家
     4. 最后击杀boss的玩家
     """
+    print "game:get_before_fight_1701"
+    return remote_gate.call_remote_for_result("world_forwarding", "pvb_get_before_fight_info")
+    #response = world_boss_pb2.PvbGetBeforeFightResponse()
+    #response.high_hero = 10001
+    #response.skill_no = 10002
+    #return response.SerializeToString()
 
-    pass
 
-@remoteserviceHandle
+
+@remoteserviceHandle('gate')
 def get_player_info_1702(data, player):
     """
     根据玩家排名，查看排行榜内的玩家信息。
@@ -23,7 +32,7 @@ def get_player_info_1702(data, player):
     pass
 
 
-@remoteserviceHandle
+@remoteserviceHandle('gate')
 def encourage_heros_1703(data, player):
     """
     使用金币或者元宝鼓舞士气。
@@ -34,7 +43,7 @@ def encourage_heros_1703(data, player):
     # 4. 更新战斗力
     pass
 
-@remoteserviceHandle
+@remoteserviceHandle('gate')
 def pvb_reborn_1704(data, player):
     """
     使用元宝复活。
