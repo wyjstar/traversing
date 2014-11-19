@@ -126,6 +126,7 @@ class Hero(object):
         hero_pb.level = self._level
         hero_pb.break_level = self._break_level
         hero_pb.exp = self._exp
+        hero_pb.refine = self._refine
 
     @property
     def hero_info(self):
