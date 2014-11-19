@@ -296,7 +296,7 @@ class UserAchievement(Component):
         s = datetime.date.today()
         today_ts = int(time.mktime(s.timetuple()))
         now = time.time()
-        if now >= today_ts  + 24*60*60 or len(self._tasks == 0):
+        if now >= today_ts  + 24*60*60 or len(self._tasks) == 0:
             print 'can refresh'
             self._reset()
             self.routine()
