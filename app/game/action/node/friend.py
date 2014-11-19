@@ -165,10 +165,8 @@ def _with_battle_info(response, pid):
     lord_data = tb_character_lord.getObjData(pid)
     if lord_data:
         info = lord_data.get('attr_info', {})
-        print "info", info
         battle_unit = BattleUnit.loads(info.get('info'))
-        print "battle_unit.__dict__", battle_unit.__dict__
-        response.hero_no = battle_unit.no
+        response.hero_no = battle_unit.unit_no
         response.power = int(info.get('power', 0))
         response.hp = battle_unit.hp
         response.atk = battle_unit.atk
