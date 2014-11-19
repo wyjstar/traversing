@@ -413,15 +413,15 @@ def fight_settlement(stage_id, result, player):
         player.level.addexp(conf.playerExp)
         player.save_data()
     if task_status:
-        response = TaskUpdate()
+        task_response = TaskUpdate()
         for status in task_status:
-            ts = response.tasks.add()
+            ts = task_response.tasks.add()
             ts.tid = status[0]
             ts.current = status[1]
             ts.target = status[2]
             ts.status = status[3]
-        response.SerializePartialToString()
-        #remote_gate.push_object_remote(1234, response.SerializeToString(), [player.dynamic_id])
+        task_response.SerializePartialToString()
+        #remote_gate.push_object_remote(1234, task_response.SerializeToString(), [player.dynamic_id])
 
     res.message = u'成功返回'
     return response.SerializePartialToString()
