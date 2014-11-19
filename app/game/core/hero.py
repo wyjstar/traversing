@@ -45,7 +45,7 @@ class Hero(object):
         return self._refine
 
     @refine.setter
-    def define(self, value):
+    def refine(self, value):
         self._refine = value
 
     @property
