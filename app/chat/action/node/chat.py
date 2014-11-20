@@ -11,7 +11,7 @@ from shared.utils import trie_tree
 
 
 @nodeservice_handle
-def send_message_1002(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
+def send_message_1002(character_id, dynamic_id, room_id, content, character_nickname, \
                       to_character_id, to_character_nickname, guild_id):
     """发送信息
     @param character_nickname: 角色昵称
@@ -21,7 +21,6 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
     @param character_id: int角色的id
     @param room_id: int 聊天频道
     @param content: str 聊天内容
-    @param command_id: 协议编号
     """
     chater = ChaterManager().getchater_by_id(character_id)
     ids = []
@@ -45,7 +44,7 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.nickname = character_nickname
         response.content = content
         chater.last_time = int(time.time())
-        noderemote.push_chat_message_remote_noresult(ids, response.SerializeToString())
+        noderemote.push_object_remote(1000, response.SerializeToString(), ids)
 
     elif room_id == 3:  # 私聊频道
         other_chater = ChaterManager().getchater_by_id(to_character_id)
@@ -57,7 +56,8 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.id = character_id
         owner.nickname = character_nickname
         response.content = content
-        noderemote.push_chat_message_remote_noresult([other_chater.dynamic_id], response.SerializeToString())
+        noderemote.push_object_remote(1000, response.SerializeToString(),
+                                      [other_chater.dynamic_id])
 
     elif room_id == 2:  # 公会频道
         ids = ChaterManager().get_guild_dynamicid(guild_id)
@@ -69,6 +69,6 @@ def send_message_1002(command_id, character_id, dynamic_id, room_id, content, ch
         owner.id = character_id
         owner.nickname = character_nickname
         response.content = content
-        noderemote.push_chat_message_remote_noresult(ids, response.SerializeToString())
+        noderemote.push_object_remote(1000, response.SerializeToString(), ids)
 
     return {'result': True}

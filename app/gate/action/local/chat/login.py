@@ -18,10 +18,9 @@ def login_chat_1001(command_id, dynamic_id, request_proto):
     character_id = argument.owner.id
     character_nickname = argument.owner.nickname
 
-    result = GlobalObject().root.callChildByName('chat', command_id,
-                                                 character_id,
-                                                 dynamic_id,
-                                                 character_nickname)
+    result = GlobalObject().childsmanager.child('chat').login_chat_remote(character_id,
+                                                                          dynamic_id,
+                                                                          character_nickname)
     response.result = result
     return response.SerializeToString()
 
