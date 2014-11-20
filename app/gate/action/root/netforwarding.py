@@ -42,7 +42,7 @@ def push_object_remote(topic_id, msg, send_list):
 
 
 @rootserviceHandle
-def get_guild_rank():
+def get_guild_rank_remote():
     level_instance = Ranking.instance('GuildLevel')
     data = level_instance.get("GuildLevel", 9999)  # 获取排行最高的公会列表(999条)
     return data
@@ -61,7 +61,7 @@ def from_admin_rpc(args):
 
 
 @rootserviceHandle
-def add_guild_to_rank(g_id, dengji):
+def add_guild_to_rank_remote(g_id, dengji):
     level_instance = Ranking.instance('GuildLevel')
     level_instance.add(g_id, level=dengji)  # 添加rank数据
 
@@ -90,7 +90,7 @@ def del_guild_room_remote(guild_id):
 
 
 @rootserviceHandle
-def push_message(key, character_id, args, kw):
+def push_message_remote(key, character_id, args, kw):
     # print 'gate receive push message'
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
@@ -111,7 +111,7 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 
 @remoteserviceHandle('transit')
-def pull_message(key, character_id, *args, **kw):
+def pull_message_remote(key, character_id, *args, **kw):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
         print 'gate found character to pull message:', oldvcharacter.__dict__
@@ -143,7 +143,7 @@ def drop_client(dynamic_id, vcharacter):
 
 
 @rootserviceHandle
-def net_conn_lost(dynamic_id):
+def net_conn_lost_remote_noresult(dynamic_id):
     """客户端断开连接时的处理
     @param dynamic_id: int 客户端的动态ID
     """
