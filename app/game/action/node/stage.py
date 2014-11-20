@@ -137,9 +137,9 @@ def fight_settlement_904(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     result = request.result
-    drops = fight_settlement(stage_id, result, player)
+    res = fight_settlement(stage_id, result, player)
 
-    return drops
+    return res
 
 
 @remoteserviceHandle('gate')
@@ -284,6 +284,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     """开始战斗
     """
     result_no = 0
+    is_travel_event = 0
 
     # 校验关卡是否开启
     state = player.stage_component.check_stage_state(stage_id)
@@ -308,14 +309,17 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     else:  # 普通关卡
-        if time.localtime(player.stage_component.stage_up_time).tm_mday == time.localtime().tm_mday:
-            if player.stage_component.get_stage(stage_id).attacks >= game_configs.stage_config.get('stages').\
-                    get(stage_id).limitTimes:
-                return {'result': False, 'result_no': 810}  # 810 本关卡攻击次数不足
+        stage_conf = game_configs.get('stages').get(stage_id)
+        if not stage_conf.sort == 10:  # 游历战斗事件
+            if time.localtime(player.stage_component.stage_up_time).tm_mday == time.localtime().tm_mday:
+                if player.stage_component.get_stage(stage_id).attacks >= stage_conf.get(stage_id).limitTimes:
+                    return {'result': False, 'result_no': 810}  # 810 本关卡攻击次数不足
+            else:
+                player.stage_component.stage_up_time = int(time.time())
+                player.stage_component.update_stage_times()
+                player.stage_component.update()
         else:
-            player.stage_component.stage_up_time = int(time.time())
-            player.stage_component.update_stage_times()
-            player.stage_component.update()
+            is_travel_event = 1
 
     if conf:
         # 星期限制
@@ -335,6 +339,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage_id
+
+    if is_travel_event:
+        drop_num = 0
 
     red_units, blue_units, drop_num, monster_unpara,replace_units, replace_no = fight_cache_component.fighting_start()
 
@@ -365,15 +372,45 @@ def fight_settlement(stage_id, result, player):
         res.message = u"关卡id和战斗缓存id不同"
         return response.SerializeToString()
 
-    settlement_drops = fight_cache_component.fighting_settlement(result)
-    data = gain(player, settlement_drops)
-    get_return(player, data, drops)
+    is_travel_event = 0
 
     if result:
         if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
             conf = game_configs.stage_config.get('stages').get(stage_id)
-            player.stamina.stamina -= conf.vigor
-            player.stamina.save_data()
+            if conf.sort == 10:
+                # travel event
+                is_travel_event = 1
+
+                if player.travel_component.fight_cache[0] and player.travel_component.fight_cache[1]:
+                    if player.travel_component.travel.get(player.travel_component.fight_cache[0]):
+                        stage_cache = player.travel_component.travel.get(player.travel_component.fight_cache[0])
+                    else:
+                        logger.error("travel stage id not found")
+                        response.res.result = False
+                        response.res.result_no = 800
+                        return response.SerializeToString()
+
+                    event_cache = 0
+                    for event in stage_cache:
+                        if event[0] == player.travel_component.fight_cache[1]:
+                            event_cache = event
+                            break
+
+                    if not event_cache:
+                        logger.error("travel ：event id not found")
+                        response.res.result = False
+                        response.res.result_no = 813
+                        return response.SerializeToString()
+
+                if stage_id == game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]).parameter[0][0]:
+
+                    gain(player, event_cache[1])
+                    stage_cache.remove(event_cache)
+                    player.travel_component.fight_cache = [0, 0]
+                    player.travel_component.save()
+            else:
+                player.stamina.stamina -= conf.vigor
+                player.stamina.save_data()
         else:
             if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
                 conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
@@ -389,17 +426,23 @@ def fight_settlement(stage_id, result, player):
                     player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
             player.stage_component.update()
 
-        # 经验
-        for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-            print lineUpSlotComponent,
-            hero = lineUpSlotComponent.hero_slot.hero_obj
-            if hero:
-                hero.upgrade(conf.HeroExp)
-        # 玩家金钱
-        player.finance.coin += conf.currency
-        # 玩家经验
-        player.level.addexp(conf.playerExp)
-        player.save_data()
+        if not is_travel_event:
+            # 经验
+            for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+                print lineUpSlotComponent,
+                hero = lineUpSlotComponent.hero_slot.hero_obj
+                if hero:
+                    hero.upgrade(conf.HeroExp)
+            # 玩家金钱
+            player.finance.coin += conf.currency
+            # 玩家经验
+            player.level.addexp(conf.playerExp)
+            player.save_data()
+
+    if not is_travel_event:
+        settlement_drops = fight_cache_component.fighting_settlement(result)
+        data = gain(player, settlement_drops)
+        get_return(player, data, drops)
 
     res.message = u'成功返回'
     return response.SerializePartialToString()
