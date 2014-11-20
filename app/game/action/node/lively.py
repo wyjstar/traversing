@@ -7,7 +7,7 @@ from shared.db_opear.configs_data.game_configs import achievement_config
 from app.game.core import item_group_helper
 from shared.db_opear.configs_data import data_helper
 from app.game.core.lively import task_status
-from app.game import GlobalObject
+from gfirefly.server.globalobject import GlobalObject
 remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
