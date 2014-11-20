@@ -28,6 +28,7 @@ class Hero(object):
         self._level = 1
         self._exp = 0
         self._break_level = 0
+        self._refine = 0
         self._character_id = character_id
 
     def init_data(self, data):
@@ -37,6 +38,15 @@ class Hero(object):
         self._level = hero_property.get("level")
         self._exp = hero_property.get("exp")
         self._break_level = hero_property.get("break_level")
+        self._refine = hero_property.get("refine")
+
+    @property
+    def refine(self):
+        return self._refine
+
+    @refine.setter
+    def refine(self, value):
+        self._refine = value
 
     @property
     def hero_no(self):
@@ -106,7 +116,8 @@ class Hero(object):
             'hero_no': self._hero_no,
             'level': self._level,
             'exp': self._exp,
-            'break_level': self._break_level
+            'break_level': self._break_level,
+            'refine': self._refine
         }
         return hero_property
 
@@ -115,6 +126,7 @@ class Hero(object):
         hero_pb.level = self._level
         hero_pb.break_level = self._break_level
         hero_pb.exp = self._exp
+        hero_pb.refine = self._refine
 
     @property
     def hero_info(self):
@@ -145,10 +157,13 @@ class Hero(object):
         break_skills = self.break_skill_ids
 
         return CommonItem(
-            dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill, rage_skill=rage_skill, hp=hp, atk=atk,
+            dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill,
+                 rage_skill=rage_skill, hp=hp, atk=atk,
                  physical_def=physical_def, magic_def=magic_def,
-                 hit=hit, dodge=dodge, cri=cri, cri_coeff=cri_coeff, cri_ded_coeff=cri_ded_coeff, block=block,
-                 break_skills=break_skills, level=self._level, break_level=self._break_level, ductility=ductility))
+                 hit=hit, dodge=dodge, cri=cri, cri_coeff=cri_coeff,
+                 cri_ded_coeff=cri_ded_coeff, block=block,
+                 break_skills=break_skills, level=self._level,
+                 break_level=self._break_level, ductility=ductility))
 
     def break_attr(self):
         """突破技能带来的属性加成

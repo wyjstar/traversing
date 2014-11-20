@@ -87,7 +87,7 @@ class EchoFactory(protocol.ClientFactory):
 def main():
 
     HOST = 'localhost'
-    PORT = 11009
+    PORT = 31009
 
     f = EchoFactory()
     reactor.connectTCP(HOST, PORT, f)

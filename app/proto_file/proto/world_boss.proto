@@ -1,5 +1,5 @@
-import "common.proto"
-import "stage.proto"
+import "common.proto";
+import "stage.proto";
 //获取战斗开始前的所有信息， command:1701
 //无请求协议
 message PvbRankItem{
@@ -10,7 +10,7 @@ message PvbRankItem{
     required int32 demage_hp = 5; //伤害血量
 }
 
-message GetBeforePvbFightResponse{
+message PvbGetBeforeFightResponse{
     required int32 high_hero = 1;            // 高级武将1个
     repeated int32 middle_hero = 2;          // 中级武将2个
     repeated int32 low_hero = 3;             // 低级武将3个

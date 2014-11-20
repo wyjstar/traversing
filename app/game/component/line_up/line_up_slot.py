@@ -10,6 +10,7 @@ from app.battle.battle_unit import do_assemble
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
+from gfirefly.server.logobj import logger
 
 
 class LineUpSlotComponent(Component):
@@ -161,7 +162,6 @@ class LineUpSlotComponent(Component):
         attr += equ_attr
         return self.__assemble_hero(hero_obj, attr)
 
-
     def hero_attr(self):
         """
         英雄属性：包括突破和羁绊
@@ -187,6 +187,14 @@ class LineUpSlotComponent(Component):
         attr += hero_break_attr
         hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
         attr += hero_link_attr
+
+        if hero_obj.refine != 0:
+            _refine_attr = game_configs.seal_config.get(hero_obj.refine)
+            if _refine_attr:
+                attr += _refine_attr
+            else:
+                logger.error('cant find refine config:%s', hero_obj.refine)
+
         return hero_base_attr, attr, hero_obj
 
     def equ_attr(self):

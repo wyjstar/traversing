@@ -6,12 +6,16 @@ from app.proto_file.mailbox_pb2 import GetMailInfos, \
     ReadMailRequest, DeleteMailRequest, SendMailRequest
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
 from app.game.core.item_group_helper import gain, get_return
 from app.game.action.root import netforwarding
 import time
 from shared.db_opear.configs_data import data_helper
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -90,15 +94,15 @@ def receive_mail_remote(mail, is_online, player):
     send_time = mail.get("send_time")
     prize = mail.get("prize")
     mail = player.mail_component.add_mail(sender_id, sender_name, title,
-                                          content, mail_type, send_time, prize, 
+                                          content, mail_type, send_time, prize,
                                           sender_icon=sender_icon)
 
     if is_online:
         response = ReceiveMailResponse()
         mail.update(response.mail)
-        netforwarding.push_object(1305,
-                                  response.SerializePartialToString(),
-                                  [player.dynamic_id])
+        remote_gate.push_object_remote(1305,
+                                       response.SerializePartialToString(),
+                                       [player.dynamic_id])
     return True
 
 
@@ -134,19 +138,7 @@ def read_mail(mail_ids, mail_type, player):
             response.res.result = False
             response.res.result_no = result.get('result_no')
             return response.SerializePartialToString()
-#         for mail_id in mail_ids:
-#             # 发送反馈体力
-#             mail = player.mail_component.get_mail(mail_id)
-#             mail_return = {'sender_id': player.base_info.id,
-#                            'sender_name': player.base_info.base_name,
-#                            'receive_id': mail.sender_id,
-#                            'receive_name': mail.sender_name,
-#                            'title': mail.title,
-#                            'content': mail.content,
-#                            'mail_type': mail_type,
-#                            'send_time': int(time.time()),
-#                            'prize': 0}
-#             netforwarding.push_message('receive_mail_remote', mail.sender_id, mail_return)
+        
         player.stamina.add_stamina(len(mail_ids)*2)
         player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
@@ -157,11 +149,8 @@ def read_mail(mail_ids, mail_type, player):
         player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 3 or mail_type == 4:
-        # 公告
-        for mail_id in mail_ids:
-            mail = player.mail_component.get_mail(mail_id)
-            mail.is_readed = True
-            mail.read_time = int(time.time())
+        # 公告&私信
+        player.mail_component.delete_mails(mail_ids)
 
     response.res.result = True
     return response.SerializePartialToString()

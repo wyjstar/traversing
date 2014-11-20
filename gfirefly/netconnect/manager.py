@@ -119,7 +119,8 @@ class ConnectionManager:
             self.dropConnectionByID(connection_id)
             dynamic_id = connection.transport.sessionno
             if dynamic_id != 0:
-                GlobalObject().remote['gate'].callRemoteNotForResult("net_conn_lost", dynamic_id)
+                remote_gate = GlobalObject().remote['gate']
+                remote_gate.net_conn_lost_remote_noresult(dynamic_id)
 
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息"""

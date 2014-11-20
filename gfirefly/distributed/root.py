@@ -49,6 +49,9 @@ class PBRoot:
         self.service = None
         self.childsmanager = dnsmanager
 
+    def child(self, key):
+        return self.childsmanager.child(key)
+
     def addServiceChannel(self, service):
         """添加服务通道
         @param service: Service Object(In bilateral.services)
@@ -105,17 +108,3 @@ class PBRoot:
     def doChildLostConnect(self, childId):
         """当node节点连接时的处理"""
         pass
-
-    def callChild(self, key, *args, **kw):
-        """调用子节点的接口
-        @param childId: int 子节点的id
-        return Defered Object
-        """
-        return self.childsmanager.callChild(key, *args, **kw)
-
-    def callChildByName(self, childname, *args, **kw):
-        """调用子节点的接口
-        @param childId: int 子节点的id
-        return Defered Object
-        """
-        return self.childsmanager.callChildByName(childname, *args, **kw)

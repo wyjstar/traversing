@@ -28,7 +28,12 @@ class BattleRound(object):
         self._blue_units = copy.deepcopy(blue_units)
         self._blue_best_skill = blue_best_skill
         self._friend_skill = friend_skill
+
+        if len(self._blue_units) == 0:
+            logger.debug_cal("敌方人数为0！")
+            return False
         self.enter_battle()
+        return True
 
     def enter_battle(self):
         """
@@ -126,7 +131,6 @@ class BattleRound(object):
                 self._blue_best_skill.add_mp()
                 logger.debug_cal("    ")
 
-
     def get_next_unit(self, i, units):
         temp = None
 
@@ -144,6 +148,8 @@ class BattleRound(object):
     def perform_one_skill(self, army, enemy, skill):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
+        print attacker.slot_no, attacker.unit_no, skill.main_skill_buff
+
         logger.debug_cal("    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
                          (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))
 
