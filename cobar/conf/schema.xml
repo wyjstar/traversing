@@ -43,6 +43,7 @@
     <table name="tb_mail_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_lord" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_character_brew" dataNode="dn_traversing$0-3" rule="id_int_4" />
+    <table name="tb_character_lively" dataNode="dn_traversing$0-3" rule="id_int_4" />
 
     <table name="tb_pvp_rank" dataNode="dn_account" />
   </schema>
