@@ -176,6 +176,22 @@ def gain(player, item_group, result=None):
             player.stamina.stamina += num
             logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
+        elif type_id == const.TRAVEL_ITEM:
+            stage_id = game_configs.travel_item_config.get(item_no).stageId
+            flag1 = 1
+            flag2 = 0
+            stage_item_info = player.travel_component.travel_item.get(stage_id)
+            for [travel_item_id, travel_item_num] in stage_item_info:
+                if travel_item_id == item_no:
+                    stage_item_info[flag2] = \
+                        [travel_item_id, travel_item_num + item_num]
+                    flag1 = 0
+                    break
+                flag2 += 1
+            if flag1:
+                stage_item_info.append([item_no, item_num])
+            player.travel_component.save()
+
         flag = 1
         for i in result:
             if i[0] == type_id and i[2] == item_no:
@@ -241,5 +257,10 @@ def get_return(player, return_data, game_resources_response):
 
         elif const.STAMINA == item_type:
             game_resources_response.stamina += item_num
+
+        elif const.TRAVEL_ITEM == item_type:
+            travel_item = game_resources_response.travel_item.add()
+            travel_item.id = item_no
+            travel_item.num = item_num
 
     logger.debug('return resource:%s', game_resources_response)
