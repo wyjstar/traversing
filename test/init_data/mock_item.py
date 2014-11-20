@@ -9,20 +9,20 @@ from app.game.redis_mode import tb_character_item_package
 
 def init_item(player):
     # 突破丹
-    item1 = Item(20001, 10)
-    item2 = Item(20002, 20)
-    item3 = Item(20003, 30)
-    item4 = Item(20004, 40)
-    item5 = Item(20005, 50)
+    item1 = Item(20001, 1000)
+    item2 = Item(20002, 2000)
+    item3 = Item(20003, 3000)
+    item4 = Item(20004, 4000)
+    item5 = Item(20005, 5000)
 
     # 经验
     item6 = Item(10003, 1500)
     item9 = Item(10002, 1500)
 
     # box
-    item7 = Item(40001, 15)
+    item7 = Item(40001, 1500)
     # key
-    item8 = Item(40002, 15)
+    item8 = Item(40002, 1500)
 
 
 
