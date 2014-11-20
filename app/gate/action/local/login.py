@@ -61,7 +61,7 @@ def __character_login(dynamic_id):
     else:
         v_character = VirtualCharacter(user.user_id, dynamic_id)
         VCharacterManager().add_character(v_character)
-
+    
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录

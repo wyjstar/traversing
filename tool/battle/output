@@ -1,0 +1,53 @@
+game start...
+game pid: 53103
+call method remote_connect on service[proxy]
+call method login_chat_1001 on service[nodeservice]
+mina': 120, 'buy_stamina_times': 0, 'open_receive': 1, 'get_stamina_times': 0, 'last_gain_stamina_time': 0}, stamina+++++++++++++++++
+last_gain_stamina_time:0
+peroid_of_stamina_recover:300
+{'last_refresh_time': 0, 'refresh_timecall method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0+++++++++++++++++++++++++++++++++++cacall method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+call method Forwarding_0 on service[single]
+forwardcall method forwarding on service[rootservcall call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method forwarding on service[rootservice]
+call method net_conn_lost on service[rootservice]
+2], [300, 300, 1], [301, 310, 1]]call method Forwarding_0 on service[single]
+forwarding_call method pvp_top_rank_request_1501 call method Forwarding_call method refresh_shop_items_1511 on service[gateremote]
+refresh pricall method Forwardcall method query_status_1234 on service[gateremote]
+object of type 'bool'call method Forwarding_0 on service[single]
+forwarding_0++++++++++++++++++++++++++++++++++++
+Client 1 login out.
+it__.py", line 32, in callTarget
+    response = target(*args, **kw)
+  File "/Users/hack/develop/traversing/app/game/action/node/lively.py", line 15, in query_status_1234
+    task_status = player.tasks.task_status()
+  File "/Users/hack/develop/traversing/app/game/component/achievement/user_achievement.py", line 345, in task_status
+    self._refresh()
+  File "/Users/hack/develop/traversing/app/game/component/achievement/user_achievement.py", line 299, in _refresh
+    if now >= today_ts  + 24*60*60 or len(self._tasks == 0):
+TypeError: object of type 'bool' has no len()
+call method get_player_friend_list_1106 on service[gateremote]
+call method net_conn_lost_602 on service[gateremote]

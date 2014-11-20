@@ -19,7 +19,6 @@ class LocalService(CommandService):
             return None
         if target_key not in self.unDisplay:
             logger.info("call method %s on service:[%s]" % (target.__name__, self._name))
-        print "gate.callTarget local"
         response = target(target_key, *args, **kw)
         return response
 

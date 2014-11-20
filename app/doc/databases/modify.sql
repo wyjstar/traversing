@@ -4,3 +4,11 @@ ALTER TABLE tb_character_stages ADD column sweep_times mediumblob NOT NULL;
 ALTER TABLE tb_character_stages ADD column stage_up_time bigint(20) NOT NULL;
 ALTER TABLE tb_pvp_rank ADD column hero_ids tinyblob NOT NULL;
 ALTER TABLE tb_character_line_up ADD column unpar int(20) NOT NULL;
+DROP TABLE IF EXISTS `tb_character_lively`;
+CREATE TABLE `tb_character_lively` (
+  `id` bigint(20) NOT NULL,
+  `lively` int(11) NOT NULL,
+  `tasks` mediumblob,
+  `event_map` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
