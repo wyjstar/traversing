@@ -7,6 +7,7 @@ from gfirefly.server.logobj import logger
 import random
 import datetime
 import time
+import cPickle
         
 class TaskStatus:
     RUNNING = 1
@@ -68,13 +69,10 @@ class TaskEvents(object):
         jude = True if task.composition == JudeEvent.AND else False
         for event in self._events:
             ret = event.check(data)
-            print 'ret', ret
             if task.composition == JudeEvent.AND:
                 jude = ret and jude
             else:
                 jude = jude or ret
-            
-        print 'jude', jude
         if jude:
             self._status = TaskStatus.COMPLETE
             return [self._taskid, task.condition[self._events[0]._seq][1], task.condition[self._events[0]._seq][1], self._status]
@@ -242,12 +240,17 @@ class UserAchievement(Component):
         live_data = tb_character_tasks.getObjData(self.owner.base_info.id)
 
         if live_data:
-            self._tasks = live_data.get('tasks')
+            tasks = live_data.get('tasks')
+            all_tasks = tasks.get('1')
+            if all_tasks:
+                self._tasks = cPickle.loads(all_tasks)
+            else:
+                self._tasks = {}
             self._lively = live_data.get('lively')
             self._event_task_map = live_data.get('event_map')
         else:
             data = dict(id=self.owner.base_info.id,
-                        tasks=self._tasks,
+                        tasks={'1',cPickle.dumps(self._tasks)},
                         lively=self._lively,
                         event_map=self._event_task_map)
             tb_character_tasks.new(data)
@@ -255,7 +258,7 @@ class UserAchievement(Component):
     def save_data(self):
         lively_obj = tb_character_tasks.getObj(self.owner.base_info.id)
         if lively_obj:
-            data = {'tasks': self._tasks,
+            data = {'tasks': {'1':cPickle.dumps(self._tasks)},
                     'lively':self._lively,
                     'event_map': self._event_task_map}
             lively_obj.update_multi(data)
@@ -297,7 +300,6 @@ class UserAchievement(Component):
         today_ts = int(time.mktime(s.timetuple()))
         now = time.time()
         if now >= today_ts  + 24*60*60 or len(self._tasks) == 0:
-            print 'can refresh'
             self._reset()
             self.routine()
                 
