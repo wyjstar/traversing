@@ -28,19 +28,9 @@ def forwarding_remote(key, dynamic_id, data):
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         if not oldvcharacter:
             return
-        result = groot.callChild(oldvcharacter.node, key, dynamic_id, data)
+        child_node = GlobalObject().child(oldvcharacter.node)
+        result = child_node.callbackChild(key, dynamic_id, data)
 
-        return result
-
-
-@rootserviceHandle
-def forwarding_test(key, dynamic_id, data):
-    """
-    """
-    if key in local_service._targets:
-        return local_service.callTarget(key, dynamic_id, data)
-    else:
-        result = groot.callChildByName('game', key, dynamic_id, data)
         return result
 
 
@@ -49,20 +39,7 @@ def push_object_remote(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
     """
-    groot.childsmanager.callChildByNameNotForResult("net",
-                                                    "pushObject",
-                                                    topic_id,
-                                                    str(msg),
-                                                    send_list)
-
-
-@rootserviceHandle
-def push_chat_message_remote_noresult(send_list, msg):
-    groot.childsmanager.callChildByNameNotForResult("net",
-                                                    "pushObject",
-                                                    1000,
-                                                    msg,
-                                                    send_list)
+    groot.child('net').push_object_remote(topic_id, str(msg), send_list)
 
 
 @rootserviceHandle
@@ -92,24 +69,25 @@ def add_guild_to_rank_remote(g_id, dengji):
 
 @rootserviceHandle
 def login_chat_remote(dynamic_id, character_id, guild_id, nickname):
-    # groot.childsmanager.getChildByName('chat')
-    groot.callChildByName('chat', 1001, dynamic_id, character_id,
-                          nickname, guild_id)
+    return groot.child('chat').login_chat_remote(dynamic_id,
+                                                 character_id,
+                                                 nickname,
+                                                 guild_id)
 
 
 @rootserviceHandle
 def login_guild_chat_remote(dynamic_id, guild_id):
-    groot.callChildByName('chat', 1004, dynamic_id, guild_id)
+    return groot.child('chat').login_guild_chat_remote(dynamic_id, guild_id)
 
 
 @rootserviceHandle
 def logout_guild_chat_remote(dynamic_id):
-    groot.callChildByName('chat', 1005, dynamic_id)
+    return groot.child('chat').logout_guild_chat_remote(dynamic_id)
 
 
 @rootserviceHandle
 def del_guild_room_remote(guild_id):
-    groot.callChildByName('chat', 1006, guild_id)
+    return groot.child('chat').del_guild_room_remote(guild_id)
 
 
 @rootserviceHandle
@@ -120,7 +98,8 @@ def push_message_remote(key, character_id, args, kw):
     # print VCharacterManager().character_client
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id, True) + args
-        return groot.callChild(oldvcharacter.node, *args, **kw)
+        child_node = groot.child(oldvcharacter.node)
+        return child_node.callbackChild(*args, **kw)
     else:
         remote_transit = GlobalObject().remote['transit']
         return remote_transit.push_message_remote(key,
@@ -139,9 +118,8 @@ def pull_message_remote(key, character_id, *args, **kw):
         print 'gate found character to pull message:', oldvcharacter.__dict__
         kw['is_online'] = False
         args = (key, oldvcharacter.dynamic_id) + args
-        return GlobalObject().root.callChild(oldvcharacter.node,
-                                             *args,
-                                             **kw)
+        child_node = groot.child(oldvcharacter.node)
+        return child_node.callbackChild(*args, **kw)
     else:
         return False
 
@@ -150,8 +128,8 @@ def save_playerinfo_in_db(dynamic_id):
     """
     """
     vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
-    node = vcharacter.node
-    result = GlobalObject().root.callChild(node, 602, dynamic_id)
+    child_node = groot.child(vcharacter.node)
+    result = child_node.net_conn_lost_remote(dynamic_id)
     return result
 
 
