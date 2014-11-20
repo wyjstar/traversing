@@ -2,7 +2,7 @@
 """
 created by server on 14-7-9下午3:28.
 """
-from shared.db_opear.configs_data.common_item import CommonGroupItem, CommonItem
+from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.data_helper import parse
 
 
@@ -21,12 +21,3 @@ class ShopConfig(object):
             self._items[item.id] = item
 
         return self._items
-
-
-
-
-
-
-
-
-

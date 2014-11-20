@@ -50,6 +50,11 @@
                     "roothost": "<=login_ip=>",
                     "rootport": 20000,
                     "rootname": "login"
+                },
+                {
+                    "roothost": "<=login_ip=>",
+                    "rootport": 30004,
+                    "rootname": "world"
                 }
             ],
             "mem": true,
@@ -113,6 +118,7 @@
             "log": "app/logs/db.log"
         },
         "world": {
+            "rootport": 30004,
             "name": "world",
             "app": "app.world",
             "log": "app/logs/world.log"

@@ -9,18 +9,16 @@ from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info, tb_guild_name
 from app.game.redis_mode import tb_character_guild
-from app.game.action.root.netforwarding import get_guild_rank_from_gate
-from app.game.action.root.netforwarding import add_guild_to_rank
-from app.game.action.root.netforwarding import push_object
-from app.game.action.root.netforwarding import del_guild_room
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data.game_configs import guild_config
 from shared.db_opear.configs_data.game_configs import base_config
-from app.game.action.root.netforwarding import login_guild_chat
-from app.game.action.root.netforwarding import logout_guild_chat
 from shared.utils import trie_tree
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -80,7 +78,7 @@ def create_guild_801(data, player):
     guild_obj = Guild()
     guild_obj.create_guild(p_id, g_name)
 
-    add_guild_to_rank(guild_obj.g_id, 1)
+    remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
 
     data = {'g_name': g_name,
             'g_id': guild_obj.g_id}
@@ -99,7 +97,7 @@ def create_guild_801(data, player):
     player.finance.save_data()
 
     # 加入公会聊天
-    login_guild_chat(player.dynamic_id, player.guild.g_id)
+    remote_gate.login_guild_chat_remote(player.dynamic_id, player.guild.g_id)
 
     response.result = True
     return response.SerializeToString()
@@ -182,7 +180,7 @@ def exit_guild_803(data, player):
             tb_guild_name.deleteMode(guild_obj.name)
 
         # 解散公会，删除公会聊天室
-        del_guild_room(player.guild.g_id)
+        remote_gate.del_guild_room_remote(player.guild.g_id)
 
         player.guild.g_id = 0
         player.guild.exit_time = int(time.time())
@@ -222,7 +220,7 @@ def exit_guild_803(data, player):
 
             invitee_player = PlayersManager().get_player_by_id(tihuan_id)
             if invitee_player:  # 在线
-                logout_guild_chat(invitee_player.dynamic_id)
+                remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                 invitee_player.guild.position = 1
                 invitee_player.guild.save_data()
             else:
@@ -255,7 +253,7 @@ def exit_guild_803(data, player):
             guild_obj.save_data()
 
             # 退出公会聊天
-            logout_guild_chat(dynamicid)
+            remote_gate.logout_guild_chat_remote(dynamicid)
 
             response.result = True
             response.message = "公会已转让，自己退出公会"
@@ -266,7 +264,7 @@ def exit_guild_803(data, player):
         guild_obj.exit_guild(p_id, position)
         guild_obj.save_data()
         # 退出公会聊天
-        logout_guild_chat(dynamicid)
+        remote_gate.logout_guild_chat_remote(dynamicid)
         response.result = True
         return response.SerializeToString()
     response.result = False
@@ -438,7 +436,7 @@ def change_president_806(data, player):
                 return response.SerializeToString()
             invitee_player = PlayersManager().get_player_by_id(p_p_id)
             if invitee_player:  # 在线
-                logout_guild_chat(invitee_player.dynamic_id)
+                remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                 invitee_player.guild.position = 1
                 invitee_player.guild.save_data()
             else:
@@ -458,7 +456,7 @@ def change_president_806(data, player):
             player.guild.save_data()
 
             # 退出公会聊天
-            logout_guild_chat(dynamicid)
+            remote_gate.logout_guild_chat_remote(dynamicid)
 
             response.result = True
             response.message = "转让成功"
@@ -515,10 +513,12 @@ def kick_807(data, player):
                 # 踢出公会聊天室
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
-                    logout_guild_chat(invitee_player.dynamic_id)
+                    remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                     invitee_player.guild.g_id = 0
                     invitee_player.guild.save_data()
-                    push_object(814, args.SerializeToString(), [invitee_player.dynamic_id])
+                    remote_gate.push_object_remote(814,
+                                                   args.SerializeToString(),
+                                                   [invitee_player.dynamic_id])
 
     response.result = True
     response.message = "踢人成功"
@@ -585,7 +585,7 @@ def promotion_808(data, player):
                 return response.SerializeToString()
             invitee_player = PlayersManager().get_player_by_id(tihuan_id)
             if invitee_player:  # 在线
-                logout_guild_chat(invitee_player.dynamic_id)
+                remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                 invitee_player.guild.position = m_position
                 invitee_player.guild.save_data()
             else:
@@ -688,7 +688,7 @@ def worship_809(data, player):
     if guild_obj.exp >= guild_config.get(guild_obj.level).exp:
         guild_obj.exp -= guild_config.get(guild_obj.level).exp
         guild_obj.level += 1
-        add_guild_to_rank(guild_obj.g_id, guild_obj.level + (guild_obj.fund * 100))
+        remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level + (guild_obj.fund * 100))
 
     player.guild.save_data()
     guild_obj.save_data()
@@ -710,7 +710,7 @@ def get_guild_rank_810(data, player):
     response = GuildRankProto()
 
     # 得到公会排行
-    ranks = get_guild_rank_from_gate()
+    ranks = remote_gate.get_guild_rank_remote()
     rank_num = 1
     for rank in ranks:
         data1 = tb_guild_info.getObjData(rank[0])

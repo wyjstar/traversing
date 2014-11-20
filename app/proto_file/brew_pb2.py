@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='brew.proto',
   package='',
-  serialized_pb='\n\nbrew.proto\x1a\x0c\x63ommon.proto\"w\n\x08\x42rewInfo\x12\x12\n\nbrew_times\x18\x01 \x01(\x05\x12\x11\n\tbrew_step\x18\x02 \x01(\x05\x12\x12\n\nnectar_num\x18\x03 \x01(\x05\x12\x12\n\nnectar_cur\x18\x04 \x01(\x05\x12\x1c\n\x03res\x18\x05 \x01(\x0b\x32\x0f.CommonResponse\"\x1b\n\x06\x44oBrew\x12\x11\n\tbrew_type\x18\x01 \x01(\x05')
+  serialized_pb='\n\nbrew.proto\x1a\x0c\x63ommon.proto\"\x85\x01\n\x08\x42rewInfo\x12\x12\n\nbrew_times\x18\x01 \x01(\x05\x12\x11\n\tbrew_step\x18\x02 \x01(\x05\x12\x12\n\nnectar_num\x18\x03 \x01(\x05\x12\x12\n\nnectar_cur\x18\x04 \x01(\x05\x12\x0c\n\x04gold\x18\x05 \x01(\x05\x12\x1c\n\x03res\x18\x06 \x01(\x0b\x32\x0f.CommonResponse\"\x1b\n\x06\x44oBrew\x12\x11\n\tbrew_type\x18\x01 \x01(\x05')
 
 
 
@@ -55,8 +55,15 @@ _BREWINFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='res', full_name='BrewInfo.res', index=4,
-      number=5, type=11, cpp_type=10, label=1,
+      name='gold', full_name='BrewInfo.gold', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='BrewInfo.res', index=5,
+      number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -70,8 +77,8 @@ _BREWINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=28,
-  serialized_end=147,
+  serialized_start=29,
+  serialized_end=162,
 )
 
 
@@ -98,8 +105,8 @@ _DOBREW = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=149,
-  serialized_end=176,
+  serialized_start=164,
+  serialized_end=191,
 )
 
 _BREWINFO.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

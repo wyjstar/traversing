@@ -25,7 +25,7 @@ def get_line_up_info_701(pro_data, player):
 def get_target_line_up_info_706(pro_data, player):
     """取得目标玩家阵容信息
     """
-    request = line_up_pb2.GetLineUpResponse()
+    request = line_up_pb2.GetLineUpRequest()
     request.ParseFromString(pro_data)
     target_id = request.target_id
 
@@ -33,7 +33,7 @@ def get_target_line_up_info_706(pro_data, player):
     if invitee_player:  # 在线
         response = line_up_info(invitee_player)
     else:
-        response = line_up_pb2.GetLineUpRequest()
+        response = line_up_pb2.LineUpResponse()
 
         heros_obj = {}
         heros = tb_character_hero.getObjListByFk(target_id)
@@ -138,6 +138,7 @@ def get_target_line_up_info_706(pro_data, player):
                     hero.level = hero_obj.level
                     hero.exp = hero_obj.exp
                     hero.break_level = hero_obj.break_level
+                    hero.refine = hero_obj.refine
 
     return response.SerializePartialToString()
 
@@ -240,6 +241,7 @@ def line_up_info(player):
     response = line_up_pb2.LineUpResponse()
     assembly_slots(player, response)
     assembly_sub_slots(player, response)
+    response.unpar = player.line_up_component.unpar
 
     return response
 

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero.proto',
   package='',
-  serialized_pb='\n\nhero.proto\"0\n\x06LinkPB\x12\x0f\n\x07link_no\x18\x01 \x02(\x05\x12\x15\n\ris_activation\x18\x02 \x01(\x08\"b\n\x06HeroPB\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x04 \x01(\x05\x12\x16\n\x05links\x18\x05 \x03(\x0b\x32\x07.LinkPB')
+  serialized_pb='\n\nhero.proto\"0\n\x06LinkPB\x12\x0f\n\x07link_no\x18\x01 \x02(\x05\x12\x15\n\ris_activation\x18\x02 \x01(\x08\"r\n\x06HeroPB\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x04 \x01(\x05\x12\x0e\n\x06refine\x18\x05 \x01(\x05\x12\x16\n\x05links\x18\x06 \x03(\x0b\x32\x07.LinkPB')
 
 
 
@@ -89,8 +89,15 @@ _HEROPB = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='links', full_name='HeroPB.links', index=4,
-      number=5, type=11, cpp_type=10, label=3,
+      name='refine', full_name='HeroPB.refine', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='links', full_name='HeroPB.links', index=5,
+      number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -105,7 +112,7 @@ _HEROPB = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=64,
-  serialized_end=162,
+  serialized_end=178,
 )
 
 _HEROPB.fields_by_name['links'].message_type = _LINKPB
