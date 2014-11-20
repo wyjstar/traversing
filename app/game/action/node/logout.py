@@ -7,7 +7,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 
 
 @remoteserviceHandle('gate')
-def net_conn_lost_602(player):
+def net_conn_lost_remote(player):
     """logout
     """
     player.online_gift.offline_player()

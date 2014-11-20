@@ -12,7 +12,7 @@ from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
-def enter_scene(dynamic_id, character_id):
+def enter_scene_remote(dynamic_id, character_id):
     """进入场景"""
     player = PlayersManager().get_player_by_id(character_id)
     if not player:

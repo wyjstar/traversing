@@ -17,6 +17,9 @@ from gfirefly.server.globalobject import GlobalObject
 from app.game.component.mail.mail import MailComponent
 import time
 from app.game.action.root import netforwarding
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -238,15 +241,17 @@ def find_friend_request_1107(data, player):
 
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObjData(request.id_or_nickname)
-        if player_data:
-            response.id = player_data.get('id')
-            response.nickname = player_data.get('nickname')
+
     else:
         prere = dict(nickname=request.id_or_nickname)
-        sql_result = util.GetOneRecordInfo('tb_character_info', prere)
-        if sql_result:
-            response.id = sql_result.get('id')
-            response.nickname = sql_result.get('nickname')
+        player_data = util.GetOneRecordInfo('tb_character_info', prere)
+        
+    if player_data:
+        response.id = player_data.get('id')
+        response.nickname = player_data.get('nickname')
+        
+        # 添加好友主将的属性
+        _with_battle_info(response, player_data.get('id'))
 
     return response.SerializePartialToString()
 
@@ -270,8 +275,14 @@ def given_stamina_1108(data, player):
         response.result = False
         response.result_no = 1  # fail
         return response.SerializePartialToString()  # fail
-
+    
     player.friends.save_data()
+    
+    lively_event = CountEvent.create_event(EventType.PRESENT, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
     return response.SerializePartialToString()  # fail
 
 

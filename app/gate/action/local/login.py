@@ -14,10 +14,7 @@ from gfirefly.server.logobj import logger
 
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
-    """角色登录
-    @return:
-    """
-
+    """角色登录 """
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
 
@@ -38,9 +35,12 @@ def character_login_4(key, dynamic_id, request_proto):
         guild_id = 0
     nickname = response.nickname
     if nickname:
-        #TODO 起名时候
+        # TODO 起名时候
         # 聊天室登录
-        GlobalObject().root.callChildByName('chat', 1001, dynamic_id, response.id, nickname, guild_id)
+        GlobalObject().child('chat').login_chat_remote(dynamic_id,
+                                                       response.id,
+                                                       nickname,
+                                                       guild_id)
     return response.SerializePartialToString()
 
 
@@ -52,23 +52,18 @@ def __character_login(dynamic_id):
     if not user:
         return {'result': False}
 
-
-    # TODO 校验character_info 和  user 中id 是否相同
-
     v_character = VCharacterManager().get_by_id(user.user_id)
     if v_character:
         v_character.dynamic_id = dynamic_id
     else:
         v_character = VirtualCharacter(user.user_id, dynamic_id)
         VCharacterManager().add_character(v_character)
-
+    
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
-    player_data = GlobalObject().root.callChild(now_node,
-                                                'enter_scene',
-                                                dynamic_id,
-                                                user.user_id)
+    child_node = GlobalObject().child(now_node)
+    player_data = child_node.enter_scene_remote(dynamic_id, user.user_id)
     if not player_data:
         return {'result': False}
     v_character.node = now_node
