@@ -9,6 +9,7 @@ import time
 from app.game.action.node.player import init_player
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
+# from gfirefly.server.globalobject import GlobalObject
 
 
 @remoteserviceHandle('gate')
@@ -64,4 +65,5 @@ def enter_scene_remote(dynamic_id, character_id):
     logger.debug("hero_soul:%d", player.finance.hero_soul)
     logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
 
+    # GlobalObject().remote['gate']['world'].on_test_remote('43432', 4324)
     return responsedata.SerializeToString()
