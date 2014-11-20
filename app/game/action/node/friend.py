@@ -19,7 +19,7 @@ import time
 from app.game.action.root import netforwarding
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
-from app.proto_file.lively_pb2 import TaskUpdate
+from app.game.core.lively import task_status
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -274,21 +274,13 @@ def given_stamina_1108(data, player):
         response.result_no = 1  # fail
         return response.SerializePartialToString()  # fail
     
-    player.tasks.save_data()
     player.friends.save_data()
     
     lively_event = CountEvent.create_event(EventType.PRESENT, 1, ifadd=True)
-    task_status = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    if task_status:
-        task_response = TaskUpdate()
-        for status in task_status:
-            ts = response.tasks.add()
-            ts.tid = status[0]
-            ts.current = status[1]
-            ts.target = status[2]
-            ts.status = status[3]
-        remote_gate.push_object_remote(1234, task_response.SerializePartialToString(), [player.dynamic_id])
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
     return response.SerializePartialToString()  # fail
 
 

@@ -38,14 +38,16 @@ def add_items(player, task_id):
 def draw_reward_1235(data, player):
     request = rewardRequest()
     request.ParseFromString(data)
-    status = player.lively.reward(request.task_id)
+    status = player.tasks.reward(request.tid)
+    player.tasks.save_data()
     if status == 0:
-        items = add_items(player, request.task_id)
+        items = add_items(player, request.tid)
         response = rewardResponse()
+        response.tid = request.tid
         for item in items:
             add_item = response.items.add()
-            add_item.item_no = item.item_no
-            add_item.item_num = item.item_num
+            add_item.item_no = item[2]
+            add_item.item_num = item[1]
         return response.SerializePartialToString()
     else:
         common = CommonResponse

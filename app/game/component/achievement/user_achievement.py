@@ -77,7 +77,7 @@ class TaskEvents(object):
         print 'jude', jude
         if jude:
             self._status = TaskStatus.COMPLETE
-            return [self._taskid, self._events[0]._current, self._events[0]._current, self._status]
+            return [self._taskid, task.condition[self._events[0]._seq][1], task.condition[self._events[0]._seq][1], self._status]
         else:
             return [self._taskid, self._events[0]._current, task.condition[self._events[0]._seq][1], self._status]
         
@@ -86,7 +86,7 @@ class TaskEvents(object):
         if not task:
             return []
         if self._status != TaskStatus.RUNNING:
-            return [self._taskid, self._events[0]._current, self._events[0]._current, self._status]
+            return [self._taskid, task.condition[self._events[0]._seq][1], task.condition[self._events[0]._seq][1], self._status]
         else:
             return [self._taskid, self._events[0]._current, task.condition[self._events[0]._seq][1], self._status]
     
@@ -334,10 +334,9 @@ class UserAchievement(Component):
         if eid in self._event_task_map:
             for task_id in self._event_task_map[eid]:
                 if task_id in self._tasks:
-                    status.append(self._tasks[task_id].check(event))
-#                     status.append(self._tasks[task_id].status())
-
-        print self.__dict__
+                    task_status = self._tasks[task_id].check(event)
+                    if task_status:
+                        status.append(task_status)
         return status
     
     def task_status(self):
@@ -360,7 +359,7 @@ class UserAchievement(Component):
         """
         if task_id in self._tasks and task_id in achievement_config:
             if self._tasks[task_id]._status == TaskStatus.COMPLETE:
-                self._tasks[task_id]._status = TaskStatus.COMPLETE
+                self._tasks[task_id]._status = TaskStatus.FINISHED
                 return 0
             else:
                 return self._tasks[task_id]._status
