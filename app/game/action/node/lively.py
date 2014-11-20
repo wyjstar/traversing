@@ -6,6 +6,9 @@ from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import achievement_config
 from app.game.core import item_group_helper
 from shared.db_opear.configs_data import data_helper
+from app.game.core.lively import task_status
+from app.game import GlobalObject
+remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def query_status_1234(data, player):
@@ -46,6 +49,8 @@ def draw_reward_1235(data, player):
             add_item = response.items.add()
             add_item.item_no = item[2]
             add_item.item_num = item[1]
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
         return response.SerializePartialToString()
     else:
         common = CommonResponse
