@@ -4,6 +4,7 @@ import "item.proto";
 import "hero_chip.proto";
 import "equipment_chip.proto";
 import "player.proto";
+import "travel.proto";
 
 message CommonResponse
 {
@@ -22,4 +23,5 @@ message GameResourcesResponse
     repeated EquipmentChipPB equipment_chips = 5;
     optional FinancePB finance = 6;
     optional int32 stamina = 7;
+    repeated TravelItem travel_item= 8;
 }

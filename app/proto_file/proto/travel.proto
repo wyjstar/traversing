@@ -2,11 +2,13 @@ import "common.proto";
 
 message Chapter{
     repeated Travel travel = 1;
+    required int32 stage_id =2;
 }
 
 message Travel{
     required int32 event_id = 1;
-    optional int32 time = 2;
+    optional GameResourcesResponse drops = 2;
+    optional int32 time = 3;
 }
 
 message Shoes{
@@ -25,6 +27,7 @@ message TravelResponse{
     required CommonResponse res = 1;
     required int32 event_id = 2;
     optional int32 time = 3;
+    optional GameResourcesResponse drops = 4;
 }
 
 // travel_init 830
@@ -32,6 +35,17 @@ message TravelInitResponse{
     repeated Chapter chapter = 1;
     required Shoes shoes = 2;
     required int32 chest_time = 3;
+    repeated TravelItemChapter travel_item_chatper = 4;
+}
+
+message TravelItemChapter{
+    required int32 stage_id = 1;
+    repeated TravelItem travel_item = 2;
+}
+
+message TravelItem{
+    required int32 id = 1;
+    required int32 num = 2;
 }
 
 // buy shoes 832
@@ -45,5 +59,35 @@ message ShoesInfo{
 }
 
 message BuyShoesResponse{
-    required CommonResponse =1;
+    required CommonResponse res =1;
+}
+
+// travel_settle 833
+message TravelSettleRequest{
+    required int32 stage_id = 1;
+    required int32 event_id =2;
+}
+
+message TravelSettleResponse{
+    required CommonResponse res = 1;
+}
+
+// 834
+message WaitEventStartRequest{
+    required int32 stage_id = 1;
+    required int32 event_id = 2;
+}
+message WaitEventStartResponse{
+    required CommonResponse res = 1;
+    required int32 time = 2;
+}
+
+// 835
+message NoWaitRequest{
+    required int32 stage_id = 1;
+    required int32 event_id = 2;
+}
+message NoWaitResponse{
+    required CommonResponse res = 1;
+    required int32 time = 2;
 }
