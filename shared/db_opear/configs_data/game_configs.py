@@ -38,6 +38,7 @@ from arena_fight_config import ArenaFightConfig
 from hero_breakup_attr_config import HeroBreakupAttrConfig
 from travel_event_config import TravelEventConfig
 from language_config import LanguageConfig
+from seal_config import SealConfig
 
 
 base_config = {}
@@ -75,6 +76,7 @@ arena_shop_config = {}
 hero_breakup_attr_config = {}
 travel_event_config = {}
 language_config = {}
+seal_config = {}
 
 
 all_config_name = {
@@ -112,7 +114,8 @@ all_config_name = {
     'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig(),
-    'language_config': LanguageConfig()
+    'language_config': LanguageConfig(),
+    'seal_config': SealConfig()
 }
 
 
@@ -123,5 +126,5 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    a = vip_config.get(0)
-    print a.get('cookingTimes')
+    for k, v in seal_config.items():
+        print v

@@ -8,7 +8,7 @@ from gfirefly.server.logobj import logger
 
 
 @rootserviceHandle
-def account_verify(key):
+def account_verify_remote(key):
     response = {'result': False}
     logger.info('account verify:%s', key)
     if key in account_cache:
@@ -22,6 +22,6 @@ def account_verify(key):
 
 
 @rootserviceHandle
-def server_sync(name, ip, port, status):
+def server_sync_remote(name, ip, port, status):
     server_manager.sync_server(name, ip, port, status)
     logger.info(server_manager.get_server())

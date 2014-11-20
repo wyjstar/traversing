@@ -16,7 +16,7 @@ class MyPBServerProtocl(PBServerProtocl):
         print a,b
         dd = self.getRootObject()
         ss = dd.callRemoteForResult('getResult',9,9)
-        print 'clinet result',ss
+        print 'client result',ss
         print "11111111111"
         return a+b
         

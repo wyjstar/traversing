@@ -9,13 +9,13 @@ groot = GlobalObject().root
 
 
 @rootserviceHandle
-def push_message(key, character_id, args, kw):
+def push_message_remote(key, character_id, args, kw):
     message_cache.cache(key, character_id, *args, **kw)
     return True
 
 
 @rootserviceHandle
-def pull_message(character_id):
+def pull_message_remote(character_id):
     count = 0
     for key, message in message_cache.get(character_id):
         childs = groot.childsmanager.childs
@@ -27,9 +27,7 @@ def pull_message(character_id):
 
         for child in childs.values():
             if 'gate' in child.name:
-                result = groot.callChild(child.id,
-                                         'pull_message',
-                                         *args, **kw)
+                result = child.pull_message_remote(*args, **kw)
                 if type(result) is bool and result:
                     message_cache.delete(character_id, key)
                     count += 1

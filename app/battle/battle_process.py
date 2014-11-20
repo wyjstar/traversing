@@ -27,7 +27,8 @@ class BattlePVPProcess(object):
     def process(self):
         """docstring for process"""
         battle_round = BattleRound()
-        battle_round.init_round(self._red_units, self._red_best_skill, self._blue_units, self._blue_best_skill)
+        if not battle_round.init_round(self._red_units, self._red_best_skill, self._blue_units, self._blue_best_skill):
+            return True
         logger.debug_cal("开始战斗...")
 
         for i in range(base_config.get("max_times_fight")):

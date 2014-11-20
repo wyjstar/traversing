@@ -24,7 +24,7 @@ def __user_register(account_name='', account_password=''):
     # sql_result = select_execute(USER_TABLE_NAME, dict(account_name=account_name))
     sql_result = util.GetOneRecordInfo(USER_TABLE_NAME, dict(account_name=account_name))
     if sql_result:
-        return json.dumps(dict(result=False, message='account name is exist'))
+        return json.dumps(dict(result=False, result_no=1, message='account name is exist'))
 
     user_data = dict(id=get_uuid(),
                      account_name=account_name,
@@ -34,8 +34,8 @@ def __user_register(account_name='', account_password=''):
 
     insert_result = util.InsertIntoDB(USER_TABLE_NAME, user_data)
     if insert_result:
-        return json.dumps(dict(result=True, passport=user_data.get('uuid')))
-    return json.dumps(dict(result=False, message='error'))
+        return json.dumps(dict(result=True, result_no=0, passport=user_data.get('uuid')))
+    return json.dumps(dict(result=False, result_no=-1, message='error'))
 
 
 @webserviceHandle('/register')

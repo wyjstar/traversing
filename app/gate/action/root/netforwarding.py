@@ -18,7 +18,7 @@ groot = GlobalObject().root
 
 
 @rootserviceHandle
-def forwarding(key, dynamic_id, data):
+def forwarding_remote(key, dynamic_id, data):
     """
     """
 

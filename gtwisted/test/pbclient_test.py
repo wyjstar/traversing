@@ -14,7 +14,7 @@ class MyPBClientProtocl(PBClientProtocl):
     
     def remote_getResult(self,a,b):
         
-        return a+b
+        return a+b-10
     
     def remote_printok(self):
         print "Hello World!"

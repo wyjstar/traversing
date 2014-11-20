@@ -40,6 +40,31 @@ class RemoteObject(object):
         self._addr = None
         self._timeout = timeout
 
+    def __getattr__(self, fun):
+        class RpcFunctionWrapper:
+            def __init__(self, fun, handle):
+                self._fun = fun
+                self._handle = handle
+
+            def __call__(self, *arg, **kw):
+                if not self._handle:
+                    return False
+                return self._handle('callTarget', self._fun, *arg, **kw)
+
+        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
+        if not deferedRemote:
+            return RpcFunctionWrapper(fun, None)
+
+        if fun.endswith('remote'):
+            return RpcFunctionWrapper(fun, deferedRemote.callRemoteForResult)
+
+        if fun.endswith('remote_noresult'):
+            return RpcFunctionWrapper(fun,
+                                      deferedRemote.callRemoteNotForResult)
+
+        raise Exception('error rpc name, must endwith <remote>:%s' % fun)
+        return None
+
     def setName(self, name):
         """设置节点的名称"""
         self._name = name
@@ -70,21 +95,3 @@ class RemoteObject(object):
         self._factory._protocol.setProxyReference(self._reference)
         deferedRemote = self._factory.getRootObject(timeout=self._timeout)
         deferedRemote.callRemoteNotForResult('takeProxy', self._name)
-
-    def callRemote(self, commandId, *args, **kw):
-        """默认远程调用，等待结果放回 """
-        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
-        if deferedRemote:
-            return deferedRemote.callRemoteForResult('callTarget', commandId, *args, **kw)
-        else:
-            return False
-
-    def callRemoteForResult(self, commandId, *args, **kw):
-        """远程调用，并等待结果放回 """
-        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
-        return deferedRemote.callRemoteForResult('callTarget', commandId, *args, **kw)
-
-    def callRemoteNotForResult(self, commandId, *args, **kw):
-        """远程调用,不需要结果放回 """
-        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
-        return deferedRemote.callRemoteNotForResult('callTarget', commandId, *args, **kw)
