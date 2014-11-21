@@ -323,7 +323,7 @@ class PlayerCharacter(Character):
 
     @property
     def travel_component(self):
-        return self._trave
+        return self._travel
 
     @feast.setter
     def feast(self, value):

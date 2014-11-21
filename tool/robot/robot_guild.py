@@ -7,9 +7,22 @@ from app.proto_file.equipment_request_pb2 import EnhanceEquipmentRequest
 from app.proto_file.equipment_response_pb2 import EnhanceEquipmentResponse
 from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
+from app.proto_file.travel_pb2 import *
 
 
 class RobotGuild(Robot):
+
+    def command_travel_init(self):
+        argument1 = Travel()
+        argument1.event_id = 1
+        self.send_message(argument1, 830)
+
+    def travel_init_830(self, message):
+        argument = TravelInitResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_enhance_equipment(self):
         argument1 = EnhanceEquipmentRequest()
         argument1.id = u"0004"

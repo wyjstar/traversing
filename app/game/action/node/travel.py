@@ -6,15 +6,19 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.drop_bag import BigBag
 from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
-    TraverInitResponse, BuyShoesRequest, BuyShoesResponse, \
+    TravelInitResponse, BuyShoesRequest, BuyShoesResponse, \
     TravelSettleRequest, TravelSettleResponse, \
     EventStartRequest, EventStartResponse, \
     NoWaitRequest, NoWaitResponse, OpenChestResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
-    base_config, stage_config, base_config
+    base_config, stage_config
 import random
 from gfirefly.server.logobj import logger
 import time
+# from gfirefly.server.globalobject import GlobalObject
+
+
+# remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -111,7 +115,7 @@ def travel_831(data, player):
 @remoteserviceHandle('gate')
 def travel_init_830(data, player):
     """init travel"""
-    response = TraverInitResponse()
+    response = TravelInitResponse()
 
     for (stage_id, item) in player.travel_component.travel:
         chapter = response.chapter.add()
