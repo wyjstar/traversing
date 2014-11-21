@@ -17,6 +17,9 @@ from gfirefly.server.globalobject import GlobalObject
 from app.game.component.mail.mail import MailComponent
 import time
 from app.game.action.root import netforwarding
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -272,8 +275,14 @@ def given_stamina_1108(data, player):
         response.result = False
         response.result_no = 1  # fail
         return response.SerializePartialToString()  # fail
-
+    
     player.friends.save_data()
+    
+    lively_event = CountEvent.create_event(EventType.PRESENT, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
     return response.SerializePartialToString()  # fail
 
 

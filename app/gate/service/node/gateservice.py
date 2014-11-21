@@ -20,7 +20,6 @@ class NodeServiceHandler(CommandService):
             return None
         if command_id not in self.unDisplay:
             logger.info("call method %s on service[%s]" % (target.__name__, self._name))
-        print "gate.callTarget"
         response = target(command_id, *args, **kw)
         return response
 

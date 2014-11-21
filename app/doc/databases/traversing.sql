@@ -248,3 +248,13 @@ CREATE TABLE `tb_character_travel` (
   `chest_time` bigint(20),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `tb_character_lively`;
+CREATE TABLE `tb_character_lively` (
+  `id` bigint(20) NOT NULL,
+  `lively` int(11) NOT NULL,
+  `tasks` mediumblob,
+  `event_map` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

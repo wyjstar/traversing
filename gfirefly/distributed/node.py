@@ -65,6 +65,39 @@ class RemoteObject(object):
         raise Exception('error rpc name, must endwith <remote>:%s' % fun)
         return None
 
+    def __getitem__(self, node):
+        class NodeWrapper:
+            def __init__(self, node, handle):
+                self._handle = handle
+                self._node = node
+
+            def __getattr__(self, fun):
+                class RpcFunctionWrapper:
+                    def __init__(self, node, fun, handle):
+                        self._fun = fun
+                        self._node = node
+                        self._handle = handle
+
+                    def __call__(self, *arg, **kw):
+                        if not self._handle:
+                            return False
+                        return self._handle('transit',
+                                            self._node,
+                                            self._fun, *arg, **kw)
+
+                if fun.endswith('remote'):
+                    return RpcFunctionWrapper(self._node,
+                                              fun,
+                                              self._handle.callRemoteForResult)
+
+                if fun.endswith('remote_noresult'):
+                    return RpcFunctionWrapper(self._node,
+                                              fun,
+                                              self._handle.callRemoteNotForResult)
+
+        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
+        return NodeWrapper(node, deferedRemote)
+
     def setName(self, name):
         """设置节点的名称"""
         self._name = name

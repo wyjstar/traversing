@@ -39,6 +39,9 @@ class GlobalObject:
         self.remote = remote
         self.db = db
 
+    def child(self, key):
+        return self.root.childsmanager.child(key)
+
 
 def masterserviceHandle(target):
     """供master调用的接口描述符

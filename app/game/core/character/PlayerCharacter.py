@@ -35,6 +35,7 @@ from app.game.component.character_arena_shop import CharacterArenaShopComponent
 from app.game.component.brew.brew import CharacterBrewComponent
 from app.game.component.character_travel import CharacterTravelComponent
 import time
+from app.game.component.achievement.user_achievement import UserAchievement
 
 
 class PlayerCharacter(Character):
@@ -77,6 +78,8 @@ class PlayerCharacter(Character):
         self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
         self._arena_shop = CharacterArenaShopComponent(self)
         self._brew = CharacterBrewComponent(self)
+        
+        self._tasks = UserAchievement(self)
 
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
@@ -154,6 +157,8 @@ class PlayerCharacter(Character):
         self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
         self._brew.init_data()
         self._travel.init_data()
+        #活跃度
+        self._tasks.init_data()
 
     def is_new_character(self):
         """is new character or not"""
@@ -341,6 +346,13 @@ class PlayerCharacter(Character):
     @property
     def arena_shop(self):
         return self._arena_shop
+    
+    @property
+    def tasks(self):
+        """
+        活跃度
+        """
+        return self._tasks
 
     @property
     def brew(self):

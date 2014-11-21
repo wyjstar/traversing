@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 created by server on 14-5-20下午8:33.
 """
@@ -27,14 +27,17 @@ def send_message_1002(command_id, dynamic_id, request_proto):
     to_character_nickname = argument.other.nickname
     guild_id = argument.guild_id
 
-    info = GlobalObject().root.callChildByName('chat', command_id, character_id, dynamic_id, room_id, content, \
-                                         character_nickname, to_character_id, to_character_nickname, guild_id)
+    child_chat = GlobalObject().root.childsmanager.child('chat')
+    info = child_chat.callbackChild(command_id, character_id, dynamic_id,
+                                    room_id, content, character_nickname,
+                                    to_character_id, to_character_nickname,
+                                    guild_id)
 
-    # info = localservice.callTarget(command_id, character_id, dynamic_id, room_id, content, character_nickname, \
+    # info = localservice.callTarget(command_id, character_id, dynamic_id,
+    # room_id, content, character_nickname, \
     #                                to_character_id, to_character_nickname)
     result = info.get('result', False)
     response.result = result
     if info.get('result_no'):
         response.result_no = info.get('result_no')
     return response.SerializeToString()
-

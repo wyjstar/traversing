@@ -38,6 +38,7 @@ from arena_fight_config import ArenaFightConfig
 from hero_breakup_attr_config import HeroBreakupAttrConfig
 from travel_event_config import TravelEventConfig
 from language_config import LanguageConfig
+from achievement_config import AchievementConfig
 from seal_config import SealConfig
 
 
@@ -76,6 +77,7 @@ arena_shop_config = {}
 hero_breakup_attr_config = {}
 travel_event_config = {}
 language_config = {}
+achievement_config = {}
 seal_config = {}
 
 
@@ -115,9 +117,9 @@ all_config_name = {
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),
+    'achievement_config':AchievementConfig(),
     'seal_config': SealConfig()
 }
-
 
 module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
 for config_name in all_config_name.keys():

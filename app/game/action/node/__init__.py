@@ -22,7 +22,7 @@ class GameCommandService(CommandService):
         try:
             dynamic_id = args[0]
             # logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
-            if targetKey != 'enter_scene':
+            if targetKey != 'enter_scene_remote':
                 _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
                 # print 'find player:', _player
                 if not _player:
@@ -70,3 +70,4 @@ import pvp_rank
 import arena_shop
 import brew
 import world_boss
+import lively

@@ -2,69 +2,74 @@
 
 from gfirefly.dbentrust.mmode import MAdmin
 
-tb_account = MAdmin('tb_account', 'id')  # 帐号表
+tb_account = MAdmin('tb_account', 'id')  # 甯���疯〃
 tb_account.insert()
 
-# 用户信息表
+# ��ㄦ�蜂俊���琛�
 tb_character_info = MAdmin('tb_character_info', 'id')
 tb_character_info.insert()
 
-# 英雄信息表
+# ��遍��淇℃��琛�
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
 
-# 用户英雄碎片信息表
+# ��ㄦ�疯�遍��纰����淇℃��琛�
 tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
 tb_character_hero_chip.insert()
 
-# 用户道具背包
+# ��ㄦ�烽����疯�����
 tb_character_item_package = MAdmin('tb_character_item_package', 'id')
 tb_character_item_package.insert()
 
-# 用户阵容信息
+# ��ㄦ�烽�靛�逛俊���
 tb_character_line_up = MAdmin('tb_character_line_up', 'id')
 tb_character_line_up.insert()
 
-# 装备信息表
+# 瑁�澶�淇℃��琛�
 tb_equipment_info = MAdmin('tb_equipment_info', 'id')
 tb_equipment_info.insert()
 
-# 装备碎片表
+# 瑁�澶�纰����琛�
 tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
 tb_character_equipment_chip.insert()
 
-# friend表
+# friend琛�
 tb_character_friend = MAdmin('tb_character_friend', 'id')
 tb_character_friend.insert()
 
-# 公会信息表
+# ���浼�淇℃��琛�
 tb_guild_info = MAdmin('tb_guild_info', 'id')
 tb_guild_info.insert()
 
-# 玩家公会表
+# ��╁�跺��浼�琛�
 tb_character_guild = MAdmin('tb_character_guild', 'id')
 tb_character_guild.insert()
 
-# 公会名表
+# ���浼����琛�
 tb_guild_name = MAdmin('tb_guild_name', 'id')
 tb_guild_name.insert()
 
-# 玩家活动表
+# ��╁�舵椿��ㄨ〃
 tb_character_activity = MAdmin('tb_character_activity', 'id')
 tb_character_activity.insert()
 
-# 主将信息表
+# 涓诲��淇℃��琛�
 tb_character_lord = MAdmin('tb_character_lord', 'id')
 tb_character_lord.insert()
 
-# 关卡信息表
+# ��冲�′俊���琛�
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 tb_character_stages.insert()
 
-# 邮件表
+# ���浠惰〃
 tb_mail_info = MAdmin('tb_mail_info', 'id')
 tb_mail_info.insert()
 
 # brew
 tb_character_brew = MAdmin('tb_character_brew', 'id')
 tb_character_brew.insert()
+
+
+#活跃度
+tb_character_tasks = MAdmin('tb_character_lively', 'id')
+tb_character_tasks.insert()

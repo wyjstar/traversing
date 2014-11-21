@@ -174,7 +174,9 @@ def hero_refine_118(data, player):
         return response.SerializePartialToString()
 
     if not player.brew.consume(_refine_item.expend):
-        logger.error('cant afford refine:%s', _refine_item.expend)
+        logger.error('cant afford refine:%s:cur%s',
+                     _refine_item.expend,
+                     player.brew.nectar)
         return response.SerializePartialToString()
 
     response.result = True
