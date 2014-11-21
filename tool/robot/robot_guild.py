@@ -12,6 +12,17 @@ from app.proto_file.travel_pb2 import *
 
 class RobotGuild(Robot):
 
+    def command_travel(self):
+        argument1 = TravelRequest()
+        argument1.stage_id = 900001
+        self.send_message(argument1, 831)
+
+    def travel_831(self, message):
+        argument = TravelResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_travel_init(self):
         argument1 = Travel()
         argument1.event_id = 1
