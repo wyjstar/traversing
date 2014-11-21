@@ -8,10 +8,10 @@ from app.game.core.drop_bag import BigBag
 from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     TraverInitResponse, BuyShoesRequest, BuyShoesResponse, \
     TravelSettleRequest, TravelSettleResponse, \
-    WaitEventStartRequest, WaitEventStartResponse, \
-    NoWaitRequest, NoWaitResponse
+    EventStartRequest, EventStartResponse, \
+    NoWaitRequest, NoWaitResponse, OpenChestResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
-    base_config, stage_config
+    base_config, stage_config, base_config
 import random
 from gfirefly.server.logobj import logger
 import time
@@ -141,6 +141,8 @@ def travel_init_830(data, player):
             travel_item.id = travel_item_id
             travel_item.num = num
 
+    return response.SerializeToString()
+
 
 @remoteserviceHandle('gate')
 def buy_shoes_832(data, player):
@@ -167,6 +169,34 @@ def buy_shoes_832(data, player):
 
     player.travel_component.save()
     player.finance.save_data()
+
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def open_chest_836(data, player):
+
+    response = OpenChestResponse()
+
+    chest_time = player.travel_component.chest_time
+
+    if time.localtime(chest_time).tm_year == time.localtime().tm_year \
+            and time.localtime(chest_time).tm_yday == time.localtime().tm_yday:
+        response.res.result = False
+        response.res.result_no = 816
+        return response.SerializeToString()
+
+    res_drops = response.drops
+    drops = []
+    common_bag = BigBag(base_config.get('travelChest'))
+    common_drop = common_bag.get_drop_items()
+    drops.extend(common_drop)
+
+    drop_data = gain(player, drops)
+    get_return(player, drop_data, res_drops)
+
+    player.travel_component.save()
 
     response.res.result = True
     return response.SerializeToString()
@@ -203,25 +233,37 @@ def travel_settle_833(data, player):
         return response.SerializeToString()
 
     event_info = travel_event_config.get('events').get(args.event_id)
-    flag = 0
     if event_info.type == 1:
         if int(time.time()) - event_cache[1] < \
                 event_info.parameter.items[0][0]:
-            flag = 1
+            response.res.result = False
+            response.res.result_no = 814
+            return response.SerializeToString()
     elif event_info.type == 3:
-        pass
-        # TODO 写接口
+        if not event_info.parameter.get(args.answer):
+            response.res.result = False
+            response.res.result_no = 815
+            return response.SerializeToString()
+
+    # 结算
+    gain(player, event_cache[1])
+
+    stage_cache.remove(event_cache)
+    player.travel_component.save()
+
+    response.res.result = True
+    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
-def wait_event_start_834(data, player):
+def event_start_834(data, player):
     """ wait event"""
-    args = WaitEventStartRequest()
+    args = EventStartRequest()
     args.ParseFromString(data)
     stage_id = args.stage_id
     event_id = args.event_id
 
-    response = WaitEventStartResponse()
+    response = EventStartResponse()
 
     if player.travel_component.travel.get(stage_id):
         stage_cache = player.travel_component.travel.get(stage_id)
@@ -242,12 +284,16 @@ def wait_event_start_834(data, player):
         response.res.result = False
         response.res.result_no = 813
         return response.SerializeToString()
-    start_time = int(time.time())
-    response.time = start_time
-    travel_event_id = event_cache[0]
-    drop_data = event_cache[1]
-    event_cache = [travel_event_id, drop_data, start_time]
-    player.travel_component.save()
+    event_info = travel_event_config.get('events').get(args.event_id)
+    if event_info.type == 1:
+        start_time = int(time.time())
+        response.time = start_time
+        travel_event_id = event_cache[0]
+        drop_data = event_cache[1]
+        event_cache = [travel_event_id, drop_data, start_time]
+        player.travel_component.save()
+    elif event_info.type == 2:
+        player.travel_component.fight_cache = [stage_id, event_id]
 
     response.res.result = True
     return response.SerializeToString()
@@ -272,12 +318,10 @@ def no_wait_835(data, player):
         return response.SerializeToString()
 
     event_cache = 0
-    flag = 0
     for event in stage_cache:
         if event[0] == event_id:
             event_cache = event
             break
-        flag += 1
 
     if not event_cache:
         logger.error("travel ：event id not found")

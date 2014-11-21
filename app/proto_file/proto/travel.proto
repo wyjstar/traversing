@@ -26,8 +26,7 @@ message TravelRequest{
 message TravelResponse{
     required CommonResponse res = 1;
     required int32 event_id = 2;
-    optional int32 time = 3;
-    optional GameResourcesResponse drops = 4;
+    optional GameResourcesResponse drops = 3;
 }
 
 // travel_init 830
@@ -66,6 +65,7 @@ message BuyShoesResponse{
 message TravelSettleRequest{
     required int32 stage_id = 1;
     required int32 event_id =2;
+    optional int32 answer = 3;
 }
 
 message TravelSettleResponse{
@@ -73,13 +73,13 @@ message TravelSettleResponse{
 }
 
 // 834
-message WaitEventStartRequest{
+message EventStartRequest{
     required int32 stage_id = 1;
     required int32 event_id = 2;
 }
-message WaitEventStartResponse{
+message EventStartResponse{
     required CommonResponse res = 1;
-    required int32 time = 2;
+    optional int32 time = 2;
 }
 
 // 835
@@ -90,4 +90,9 @@ message NoWaitRequest{
 message NoWaitResponse{
     required CommonResponse res = 1;
     required int32 time = 2;
+}
+
+// 836
+message OpenChestResponse{
+    required CommonResponse res = 1;
 }

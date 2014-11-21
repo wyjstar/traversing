@@ -243,8 +243,10 @@ CREATE TABLE `tb_character_brew` (
 DROP TABLE IF EXISTS `tb_character_travel`;
 CREATE TABLE `tb_character_travel` (
   `id` bigint(20) NOT NULL,
-  `chapters` mediumblob,
-  `shoes` int(11),
+  `travel` mediumblob,
+  `travel_item` mediumblob,
+  `shoes` mediumblob,
+  `fight_cache` mediumblob,
   `chest_time` bigint(20),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

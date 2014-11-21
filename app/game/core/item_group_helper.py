@@ -191,6 +191,17 @@ def gain(player, item_group, result=None):
             if flag1:
                 stage_item_info.append([item_no, item_num])
             player.travel_component.save()
+        elif type_id == u'108':
+            shoes = player.travel_component.shoes
+            if item_no == 110201:
+                shoes[0] += item_num
+            elif item_no == 110202:
+                shoes[1] += item_num
+            elif item_no == 110203:
+                shoes[2] += item_num
+
+            player.travel_component.save()
+
 
         flag = 1
         for i in result:
