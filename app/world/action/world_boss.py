@@ -16,7 +16,6 @@ def pvb_get_before_fight_info():
     3. 伤害排名前十的玩家
     4. 最后击杀boss的玩家
     """
-    print "*-$"*80
     response = world_boss_pb2.PvbGetBeforeFightResponse()
     response.high_hero = 10003
     response.skill_no = 10002
