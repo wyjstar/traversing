@@ -117,11 +117,11 @@ all_config_name = {
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),
-    'achievement_config':AchievementConfig(),
+    'achievement_config': AchievementConfig(),
     'seal_config': SealConfig()
 }
 
-module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
+module = cPickle.load(open('config/excel_cpickle', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)
     objs = all_config_name[config_name].parser(config_value)
