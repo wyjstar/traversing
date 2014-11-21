@@ -17,6 +17,8 @@ from collections import OrderedDict
 
 PROP_TABLE = ['base_config']
 
+ROOT_PATH = '../../traversingConfig'
+
 
 conn = MySQLdb.connect(host="127.0.0.1", user="root", passwd="123456", port=3306, db="traversing_master", charset="utf8")
 
@@ -90,8 +92,8 @@ def ExcelToJson(ExcelFileName, SheetName, cur=None):
     data = xlrd.open_workbook(ExcelFileName)
     table = data.sheet_by_name(SheetName)
     objName = ExcelFileName[:len(ExcelFileName) - 5]
-    luaFileName = './lua/' + SheetName + ".lua"
-    jsonFileName = './json/' + SheetName + ".json"
+    luaFileName = ROOT_PATH + '/lua/' + SheetName + ".lua"
+    jsonFileName = ROOT_PATH + '/json/' + SheetName + ".json"
 
     if SheetName not in PROP_TABLE:
         table2jsn(table, jsonFileName, luaFileName, SheetName, cur)
@@ -318,8 +320,8 @@ def save_insert_all_sqls(root_path, content):
 
 
 if __name__ == "__main__":
-    root_path = "./excel/"
-    conn = sqlite3.connect("./db/config.db")
+    root_path = ROOT_PATH + "/excel/"
+    conn = sqlite3.connect(ROOT_PATH + "/config.db")
     cur = conn.cursor()
 
     content = []
@@ -338,21 +340,21 @@ if __name__ == "__main__":
             print traceback.print_exc()
             print 'message:', e
             exit(0)
-        with open('./json/%s.json' % (file_with_out_extension), 'r') as f:
+        with open(ROOT_PATH + '/json/%s.json' % (file_with_out_extension), 'r') as f:
             json_data = json.load(f)
 
         config_value = cPickle.dumps(json_data)
         config_key = file_with_out_extension
         py_dict[config_key] = json_data
-        save_update_sql('./sql/', config_key, config_value)
+        save_update_sql(ROOT_PATH + '/sql/', config_key, config_value)
 
         delete_sql = "delete from configs where config_key='%s';\n" % (config_key)
         insert_sql = "insert into configs values('%s',%s); \n" % (config_key, _escape(config_value))
         content.append(delete_sql)
         content.append(insert_sql)
 
-    cPickle.dump(py_dict, open('../../shared/db_opear/configs_data/excel', 'w'))
-    save_insert_all_sqls('./sql/', content)
+    cPickle.dump(py_dict, open(ROOT_PATH + '/excel_cpickle', 'w'))
+    save_insert_all_sqls(ROOT_PATH + '/sql/', content)
     conn.commit()
     conn.close()
     print 'excel make successful!!!!!'
