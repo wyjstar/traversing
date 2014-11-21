@@ -5,6 +5,7 @@ Created on 2013-8-14
 @author: lan (www.9miao.com)
 """
 from gfirefly.server.logobj import logger
+from gfirefly.server.globalobject import GlobalObject
 from gtwisted.core import rpc
 from manager import ChildsManager
 from child import Child
@@ -21,6 +22,10 @@ class BilateralBroker(rpc.PBServerProtocl):
         @param name: 根节点的名称
         """
         self.factory.root.remote_takeProxy(name, self)
+
+    def remote_transit(self, node, command, *arg, **kw):
+        _node = GlobalObject().remote[node]
+        return _node.__getattr__(command)(*arg, **kw)
 
     def remote_callTarget(self, command, *args, **kw):
         """远程调用方法
@@ -48,6 +53,9 @@ class PBRoot:
         self._index = 1
         self.service = None
         self.childsmanager = dnsmanager
+
+    def child(self, key):
+        return self.childsmanager.child(key)
 
     def addServiceChannel(self, service):
         """添加服务通道
@@ -105,17 +113,3 @@ class PBRoot:
     def doChildLostConnect(self, childId):
         """当node节点连接时的处理"""
         pass
-
-    def callChild(self, key, *args, **kw):
-        """调用子节点的接口
-        @param childId: int 子节点的id
-        return Defered Object
-        """
-        return self.childsmanager.callChild(key, *args, **kw)
-
-    def callChildByName(self, childname, *args, **kw):
-        """调用子节点的接口
-        @param childId: int 子节点的id
-        return Defered Object
-        """
-        return self.childsmanager.callChildByName(childname, *args, **kw)

@@ -13,7 +13,12 @@ from app.battle.battle_unit import BattleUnit
 from app.game.core.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from gfirefly.server.globalobject import GlobalObject
+from app.game.core.lively import task_status
 
+remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def get_stages_901(pro_data, player):
@@ -176,6 +181,20 @@ def stage_sweep_907(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     times = request.times
+    lively_event = {}
+    if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
+        lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
+    elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+        lively_event = CountEvent.create_event(EventType.STAGE_2, times, ifadd=True)
+    elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
+        lively_event = CountEvent.create_event(EventType.STAGE_3, times, ifadd=True)
+    
+    tstatus = player.tasks.check_inter(lively_event)
+    player.tasks.save_data()
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+        
     return stage_sweep(stage_id, times, player)
 
 
@@ -369,11 +388,13 @@ def fight_settlement(stage_id, result, player):
     data = gain(player, settlement_drops)
     get_return(player, data, drops)
 
+    lively_event = {}
     if result:
         if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
             conf = game_configs.stage_config.get('stages').get(stage_id)
             player.stamina.stamina -= conf.vigor
             player.stamina.save_data()
+            lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         else:
             if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
                 conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
@@ -381,14 +402,17 @@ def fight_settlement(stage_id, result, player):
                     player.stage_component.elite_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
+                lively_event = CountEvent.create_event(EventType.STAGE_2, 1, ifadd=True)
             elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
                 conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
                 if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
                     player.stage_component.act_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
+                lively_event = CountEvent.create_event(EventType.STAGE_3, 1, ifadd=True)
             player.stage_component.update()
 
+        
         # 经验
         for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
             print lineUpSlotComponent,
@@ -400,6 +424,11 @@ def fight_settlement(stage_id, result, player):
         # 玩家经验
         player.level.addexp(conf.playerExp)
         player.save_data()
+    
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     res.message = u'成功返回'
     return response.SerializePartialToString()

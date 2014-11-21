@@ -18,29 +18,29 @@ class ChildsManager(object):
     def childs(self):
         return self._childs
 
-    def getChildById(self, childId):
-        """根据节点的ID获取节点实例"""
-        return self._childs.get(childId)
-
-    def getChildByName(self, childname):
-        """根据节点的名称获取节点实例"""
-        for key, child in self._childs.items():
-            if child.name == childname:
-                return self._childs[key]
-        return None
+    def child(self, key):
+        if isinstance(key, int):
+            return self._childs.get(key)
+        elif isinstance(key, str):
+            for k, child in self._childs.items():
+                if child.name == key:
+                    return self._childs[k]
+            raise Exception("child key error name:%s" % key)
+        else:
+            raise Exception("child key error type:%s" % type(key))
 
     def addChild(self, child):
         """添加一个child节点\n
         @param child: Child object
         """
         key = child._id
-        if self._childs.has_key(key):
+        if key in self._childs:
             raise Exception("child node %s exists" % key)
         self._childs[key] = child
 
     def dropChild(self, child):
         """删除一个child 节点\n
-        @param child: Child Object 
+        @param child: Child Object
         """
         key = child._id
         try:
@@ -50,7 +50,7 @@ class ChildsManager(object):
 
     def dropChildByID(self, childId):
         """删除一个child 节点\n
-        @param childId: Child ID 
+        @param childId: Child ID
         """
         try:
             del self._childs[childId]
@@ -81,7 +81,7 @@ class ChildsManager(object):
         """调用子节点的接口\n
         @param childname: str 子节点的名称
         """
-        child = self.getChildByName(childname)
+        child = self.child(childname)
         if not child:
             logger.error("child %s doesn't exists" % childname)
             return
@@ -91,7 +91,7 @@ class ChildsManager(object):
         """调用子节点的接口\n
         @param childId: int 子节点的id
         """
-        child = self.getChildByName(childname)
+        child = self.child(childname)
         if not child:
             logger.error("child %s doesn't exists" % childname)
             return
