@@ -91,3 +91,8 @@ message NoWaitResponse{
     required CommonResponse res = 1;
     required int32 time = 2;
 }
+
+// 836
+message OpenChestResponse{
+    required CommonResponse res = 1;
+}

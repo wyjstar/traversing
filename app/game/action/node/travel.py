@@ -9,9 +9,9 @@ from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     TraverInitResponse, BuyShoesRequest, BuyShoesResponse, \
     TravelSettleRequest, TravelSettleResponse, \
     EventStartRequest, EventStartResponse, \
-    NoWaitRequest, NoWaitResponse
+    NoWaitRequest, NoWaitResponse, OpenChestResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
-    base_config, stage_config
+    base_config, stage_config, base_config
 import random
 from gfirefly.server.logobj import logger
 import time
@@ -169,6 +169,34 @@ def buy_shoes_832(data, player):
 
     player.travel_component.save()
     player.finance.save_data()
+
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def open_chest_836(data, player):
+
+    response = OpenChestResponse()
+
+    chest_time = player.travel_component.chest_time
+
+    if time.localtime(chest_time).tm_year == time.localtime().tm_year \
+            and time.localtime(chest_time).tm_yday == time.localtime().tm_yday:
+        response.res.result = False
+        response.res.result_no = 816
+        return response.SerializeToString()
+
+    res_drops = response.drops
+    drops = []
+    common_bag = BigBag(base_config.get('travelChest'))
+    common_drop = common_bag.get_drop_items()
+    drops.extend(common_drop)
+
+    drop_data = gain(player, drops)
+    get_return(player, drop_data, res_drops)
+
+    player.travel_component.save()
 
     response.res.result = True
     return response.SerializeToString()

@@ -28,9 +28,10 @@ class TravelEventConfig(object):
                 if isinstance(v, dict):
                     convert_keystr2num(v)
 
-        for k, v in config_value.items():
-            if isinstance(v, dict):
-                convert_keystr2num(v)
+        for item in config_value:
+            for k, v in item.items():
+                if isinstance(v, dict):
+                    convert_keystr2num(v)
 
         weights = 0
         for row in config_value:
@@ -40,4 +41,3 @@ class TravelEventConfig(object):
             weights += item.weight
 
         return {'events': self._events, 'weight': self._weight}
-
