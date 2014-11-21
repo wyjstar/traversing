@@ -118,7 +118,7 @@ def travel_init_830(data, player):
     """init travel"""
     response = TravelInitResponse()
 
-    for (stage_id, item) in player.travel_component.travel:
+    for (stage_id, item) in player.travel_component.travel.items():
         chapter = response.chapter.add()
         chapter.stage_id = stage_id
         for tra in item:
