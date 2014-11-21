@@ -4,16 +4,15 @@ import "stage.proto";
 //无请求协议
 message PvbRankItem{
     required string nickname = 1; //玩家昵称
-    required int32 rank_no = 2;//排名
-    required int32 level = 3;//等级
-    required int32 first_hero_no = 4;//第一位武将id，用来显示玩家头像
-    required int32 demage_hp = 5; //伤害血量
+    required int32 level = 2;//等级
+    required int32 first_hero_no = 3;//第一位武将id，用来显示玩家头像
+    required int32 demage_hp = 4; //伤害血量
 }
 
 message PvbGetBeforeFightResponse{
-    required int32 high_hero = 1;            // 高级武将1个
-    repeated int32 middle_hero = 2;          // 中级武将2个
-    repeated int32 low_hero = 3;             // 低级武将3个
+    repeated int32 lucky_high_heros = 1;            // 高级武将1个
+    repeated int32 lucky_middle_heros = 2;          // 中级武将2个
+    repeated int32 lucky_low_heros = 3;             // 低级武将3个
     required int32 skill_no = 4;             // 未遇到奇遇, 则为0
     repeated PvbRankItem rank_items = 5;     // 伤害排名前十的玩家
     optional PvbRankItem last_shot_item = 6; // 最后击杀boss的玩家，如果没有击杀boss，则为空
@@ -41,13 +40,14 @@ message RebornResponse{
 }
 
 //开始战斗, command:1705
-//无请求协议
+//请求协议：StageStartRequest
 message PvbFightResponse{
     required CommonResponse res = 1;
     repeated BattleUnit red = 2;
     repeated BattleUnit blue = 3;
-    optional int32 red_best_skill = 4;
-    optional bool fight_result = 5;
+    required int32 red_best_skill = 4;
+    required bool fight_result = 5;
+    required int32 hp_left = 6;
 }
 
 //todo:战斗奖励，在整个战斗结束时使用邮件推送
