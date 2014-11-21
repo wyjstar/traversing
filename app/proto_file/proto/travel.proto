@@ -1,4 +1,5 @@
 import "common.proto";
+import "travel_item.proto";
 
 message Chapter{
     repeated Travel travel = 1;
@@ -40,11 +41,6 @@ message TravelInitResponse{
 message TravelItemChapter{
     required int32 stage_id = 1;
     repeated TravelItem travel_item = 2;
-}
-
-message TravelItem{
-    required int32 id = 1;
-    required int32 num = 2;
 }
 
 // buy shoes 832

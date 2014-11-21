@@ -4,8 +4,7 @@ import "item.proto";
 import "hero_chip.proto";
 import "equipment_chip.proto";
 import "player.proto";
-import "travel.proto";
-
+import "travel_item.proto";
 message CommonResponse
 {
     required bool result = 1;  //处理结果 True：正确
