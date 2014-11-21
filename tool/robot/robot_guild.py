@@ -12,6 +12,17 @@ from app.proto_file.travel_pb2 import *
 
 class RobotGuild(Robot):
 
+    def command_open_chest(self):
+        argument1 = TravelRequest()
+        argument1.stage_id = 900001
+        self.send_message(argument1, 836)
+
+    def open_chest_836(self, message):
+        argument = OpenChestResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_travel(self):
         argument1 = TravelRequest()
         argument1.stage_id = 900001
