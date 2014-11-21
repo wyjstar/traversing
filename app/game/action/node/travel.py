@@ -138,14 +138,13 @@ def travel_init_830(data, player):
 
     response.chest_time = player.travel_component.chest_time
 
-    for (stage_id, item) in player.travel_component.travel_item:
+    for (stage_id, item) in player.travel_component.travel_item.items():
         travel_item_chapter = response.travel_item_chapter.add()
         travel_item_chapter.stage_id = stage_id
         for [travel_item_id, num] in item:
             travel_item = travel_item_chapter.travel_item.add()
             travel_item.id = travel_item_id
             travel_item.num = num
-
     return response.SerializeToString()
 
 

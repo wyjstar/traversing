@@ -35,7 +35,7 @@ message TravelInitResponse{
     repeated Chapter chapter = 1;
     required Shoes shoes = 2;
     required int32 chest_time = 3;
-    repeated TravelItemChapter travel_item_chatper = 4;
+    repeated TravelItemChapter travel_item_chapter = 4;
 }
 
 message TravelItemChapter{
