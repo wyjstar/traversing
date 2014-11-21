@@ -13,7 +13,7 @@ def init_equipment_chip(player):
 
     for k, val in chip_config.get('chips').items():
         if val.get('type') == 1: continue
-        equipment_chip = EquipmentChip(int(k), 100)
+        equipment_chip = EquipmentChip(int(k), 1000)
         player.equipment_chip_component.add_chip(equipment_chip)
 
     return

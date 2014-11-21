@@ -35,11 +35,11 @@ def server_login_2(command_id, dynamic_id, request_proto):
     result = GlobalObject().remote['login'].account_verify_remote(key)
     result = eval(result)
     logger.info('verify result:%s', result)
-
     if result.get('result') is True:  # 登录成功
         uuid = result.get('uuid')
         logger.info('login uuid:%s', uuid)
         account_id = get_account_id(uuid)
+        print account_id
         if account_id == 0:
             account_response.result = False
         else:

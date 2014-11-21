@@ -10,7 +10,7 @@ from shared.db_opear.configs_data.game_configs import chip_config
 def init_hero_chip(player):
     for k, val in chip_config.get('chips').items():
         if val.get('type') == 2: continue
-        chip = HeroChip(int(k), 400)
+        chip = HeroChip(int(k), 4000)
         player.hero_chip_component.add_chip(chip)
     return
 

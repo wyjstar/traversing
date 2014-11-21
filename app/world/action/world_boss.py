@@ -23,6 +23,10 @@ def pvb_get_before_fight_info():
     return response.SerializeToString()
 
 
+@rootserviceHandle
+def on_test_remote(a, b):
+    print 'on_test_remote', a, b
+    return True
 
 
 
