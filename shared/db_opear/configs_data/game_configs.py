@@ -125,5 +125,6 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in seal_config.items():
-        print v
+    print hero_config.get(10042)
+    print hero_config.get(10042).get('sacrificeGain').__dict__
+    print hero_config.get(10042).get('sellGain').__dict__

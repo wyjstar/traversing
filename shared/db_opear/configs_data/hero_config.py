@@ -14,10 +14,23 @@ class HeroConfig(object):
 
     def parser(self, config_value):
         """解析config到HeroConfig"""
-        heros = {}
+        def convert_keystr2num(d):
+            for k in d.keys():
+                nk = None
+                v = d[k]
+                try:
+                    nk = eval(k)
+                except:
+                    pass
+                if nk is not None:
+                    del d[k]
+                    d[nk] = v
+                if isinstance(v, dict):
+                    convert_keystr2num(v)
+
         for row in config_value:
+            convert_keystr2num(row.get('awake'))
             row["sacrificeGain"] = parse(row.get("sacrificeGain"))
             row["sellGain"] = parse(row.get("sellGain"))
             self.heros[row.get('id')] = CommonItem(row)
         return self.heros
-
