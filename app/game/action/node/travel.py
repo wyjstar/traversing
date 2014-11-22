@@ -145,6 +145,8 @@ def travel_init_830(data, player):
             travel_item = travel_item_chapter.travel_item.add()
             travel_item.id = travel_item_id
             travel_item.num = num
+    logger.debug(player.travel_component.travel)
+    logger.debug(player.travel_component.travel_item)
     return response.SerializeToString()
 
 
@@ -199,6 +201,8 @@ def open_chest_836(data, player):
 
     drop_data = gain(player, drops)
     get_return(player, drop_data, res_drops)
+
+    player.travel_component.chest_time = int(time.time())
 
     player.travel_component.save()
 

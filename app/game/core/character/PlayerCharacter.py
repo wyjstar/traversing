@@ -157,8 +157,8 @@ class PlayerCharacter(Character):
         self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
         self._brew.init_data()
         self._travel.init_data()
-        #活跃度
-        self._tasks.init_data()
+        # 活跃度
+        # self._tasks.init_data()
 
     def is_new_character(self):
         """is new character or not"""

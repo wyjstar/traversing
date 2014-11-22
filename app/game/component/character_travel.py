@@ -19,8 +19,6 @@ class CharacterTravelComponent(Component):
         self._shoes = [0, 0, 0, 0, 0]  # 剩余鞋子[1,2,3,正在消耗，已消耗个数]
         self._chest_time = 1  # 上次领取宝箱时间
         self._fight_cache = [0, 0]
-        for travel_stage_id in game_configs.stage_config.get('travel_stages'):
-            self._travel_item[travel_stage_id] = []
 
     def init_data(self):
         travel_data = tb_character_travel.getObjData(self.owner.base_info.id)
@@ -31,7 +29,8 @@ class CharacterTravelComponent(Component):
             self._chest_time = travel_data.get('chest_time')
             self._fight_cache = travel_data.get('fight_cache')
         else:
-            for travel_stage_id in game_configs.stage_config.get('travel_stages'):
+            for travel_stage_id in game_configs.stage_config. \
+                    get('travel_stages'):
                 self._travel_item[travel_stage_id] = []
             tb_character_travel.new({'id': self.owner.base_info.id,
                                      'travel': self._travel,
@@ -42,11 +41,11 @@ class CharacterTravelComponent(Component):
 
     def save(self):
         data_obj = tb_character_travel.getObj(self.owner.base_info.id)
-        data_obj.update({'travel': self._travel,
-                         'travel_item': self._travel_item,
-                         'shoes': self._shoes,
-                         'chest_time': self._chest_time,
-                         'fight_cache': self._fight_cache})
+        data_obj.update_multi({'travel': self._travel,
+                               'travel_item': self._travel_item,
+                               'shoes': self._shoes,
+                               'chest_time': self._chest_time,
+                               'fight_cache': self._fight_cache})
 
     @property
     def shoes(self):

@@ -91,4 +91,5 @@ message NoWaitResponse{
 // 836
 message OpenChestResponse{
     required CommonResponse res = 1;
+    optional GameResourcesResponse drops = 2;
 }
