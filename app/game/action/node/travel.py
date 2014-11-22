@@ -187,9 +187,6 @@ def open_chest_836(data, player):
 
     chest_time = player.travel_component.chest_time
 
-    print 'chest_time', chest_time
-    print 'use id :', player.base_info.id
-
     if time.localtime(chest_time).tm_year == time.localtime().tm_year \
             and time.localtime(chest_time).tm_yday == time.localtime().tm_yday:
         response.res.result = False
@@ -201,7 +198,6 @@ def open_chest_836(data, player):
     common_bag = BigBag(base_config.get('travelChest'))
     common_drop = common_bag.get_drop_items()
     drops.extend(common_drop)
-
     drop_data = gain(player, drops)
     get_return(player, drop_data, res_drops)
 
@@ -210,8 +206,6 @@ def open_chest_836(data, player):
     player.travel_component.save()
 
     logger.debug(response)
-    logger.debug(player.travel_component.chest_time)
-    logger.debug(int(time.time()))
     response.res.result = True
     return response.SerializeToString()
 

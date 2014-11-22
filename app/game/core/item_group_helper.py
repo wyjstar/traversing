@@ -193,12 +193,12 @@ def gain(player, item_group, result=None):
             player.travel_component.save()
         elif type_id == u'108':
             shoes = player.travel_component.shoes
-            if item_no == 110201:
-                shoes[0] += item_num
-            elif item_no == 110202:
-                shoes[1] += item_num
-            elif item_no == 110203:
-                shoes[2] += item_num
+            if item_no == 18:
+                shoes[0] += num
+            elif item_no == 19:
+                shoes[1] += num
+            elif item_no == 20:
+                shoes[2] += num
 
             player.travel_component.save()
 
@@ -273,5 +273,16 @@ def get_return(player, return_data, game_resources_response):
             travel_item = game_resources_response.travel_item.add()
             travel_item.id = item_no
             travel_item.num = item_num
+
+        elif u'108' == item_type:
+            travel_item = game_resources_response.shoes_info.add()
+            if item_no == 18:
+                shoes_type = 1
+            elif item_no == 19:
+                shoes_type = 2
+            elif item_no == 20:
+                shoes_type = 3
+            travel_item.shoes_type = shoes_type
+            travel_item.shoes_no = item_num
 
     logger.debug('return resource:%s', game_resources_response)
