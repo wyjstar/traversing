@@ -22,6 +22,7 @@ class CharacterTravelComponent(Component):
 
     def init_data(self):
         travel_data = tb_character_travel.getObjData(self.owner.base_info.id)
+        print '!!!!!!!!!!!!!!!!!!!', travel_data
         if travel_data:
             self._travel = travel_data.get('travel')
             self._travel_item = travel_data.get('travel_item')
@@ -46,6 +47,7 @@ class CharacterTravelComponent(Component):
                                'shoes': self._shoes,
                                'chest_time': self._chest_time,
                                'fight_cache': self._fight_cache})
+        print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2', tb_character_travel.getObjData(self.owner.base_info.id)
 
     @property
     def shoes(self):
@@ -69,7 +71,7 @@ class CharacterTravelComponent(Component):
 
     @chest_time.setter
     def chest_time(self, value):
-        self._travel = value
+        self._chest_time = value
 
     @property
     def travel_item(self):
