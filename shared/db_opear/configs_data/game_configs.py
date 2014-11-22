@@ -128,4 +128,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print base_config
+    print stage_config.get("stages").get(900001)

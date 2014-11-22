@@ -34,6 +34,7 @@ class StageConfig(object):
 
             if item.sort == 9:
                 self._travel_stages.append(item.id)
+                self._stages[item.id] = item
 
         for stage_id, stage in self._stages.items():
             if stage.chapter == 1 and stage.section == 1 and stage.type == 1:  # 第一章第一节难度普通

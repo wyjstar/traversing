@@ -28,6 +28,10 @@ class CharacterTravelComponent(Component):
             self._shoes = travel_data.get('shoes')
             self._chest_time = travel_data.get('chest_time')
             self._fight_cache = travel_data.get('fight_cache')
+            for travel_stage_id in game_configs.stage_config. \
+                    get('travel_stages'):
+                if not self._travel_item.get(travel_stage_id):
+                    self._travel_item[travel_stage_id] = []
         else:
             for travel_stage_id in game_configs.stage_config. \
                     get('travel_stages'):
