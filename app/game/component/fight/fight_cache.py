@@ -361,11 +361,11 @@ class CharacterFightCacheComponent(Component):
                 continue
             if not hero_item.get('awake'):
                 continue
+            old_line_up_slot = self.line_up_slots.get(red.slot_no)
+            ap = old_line_up_slot.combat_power()
             for no, prob in hero_item.get('awake').items():
-                old_line_up_slot = self.line_up_slots.get(red.slot_no)
-                ap = old_line_up_slot.combat_power()
                 if ap > no and _rand < prob:
-                    logger.info('hit:%s, %s', no, prob)
+                    logger.info('hit:%s, %s,ap:%s, no:%s', _rand, prob, ap, no)
 
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
@@ -382,7 +382,8 @@ class CharacterFightCacheComponent(Component):
                     equ_attr = slot_obj.equ_attr()
                     attr += equ_attr
 
-                    unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
+                    unit = break_line_up_slot.get_battle_unit(break_hero_obj,
+                                                              attr)
                     awake_units.append(unit)
                     awake_nos.append(red.unit_no)
                     break
