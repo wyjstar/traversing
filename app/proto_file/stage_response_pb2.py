@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_response.proto',
   package='',
-  serialized_pb='\n\x14stage_response.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"s\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\x12\x19\n\x11\x65lite_stage_times\x18\x02 \x02(\x05\x12\x17\n\x0f\x61\x63t_stage_times\x18\x03 \x02(\x05\x12\x13\n\x0bsweep_times\x18\x04 \x02(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"\xf7\x01\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\x1b\n\x06\x66riend\x18\x06 \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nhero_unpar\x18\x07 \x01(\x05\x12\x15\n\rmonster_unpar\x18\x08 \x01(\x05\x12\x1c\n\x07replace\x18\t \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nreplace_no\x18\n \x01(\x05\"^\n\x17StageSettlementResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\",\n\x11\x46ormationResponse\x12\x17\n\x06lineup\x18\x01 \x03(\x0b\x32\x07.LineUp\"4\n\x14UnparalleledResponse\x12\x1c\n\x05unpar\x18\x01 \x03(\x0b\x32\r.Unparalleled\"Y\n\x12StageSweepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x14stage_response.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"s\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\x12\x19\n\x11\x65lite_stage_times\x18\x02 \x02(\x05\x12\x17\n\x0f\x61\x63t_stage_times\x18\x03 \x02(\x05\x12\x13\n\x0bsweep_times\x18\x04 \x02(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"\xa5\x02\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\x1b\n\x06\x66riend\x18\x06 \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nhero_unpar\x18\x07 \x01(\x05\x12\x15\n\rmonster_unpar\x18\x08 \x01(\x05\x12\x1c\n\x07replace\x18\t \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nreplace_no\x18\n \x01(\x05\x12\x1a\n\x05\x61wake\x18\x0b \x03(\x0b\x32\x0b.BattleUnit\x12\x10\n\x08\x61wake_no\x18\x0c \x03(\x05\"^\n\x17StageSettlementResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\",\n\x11\x46ormationResponse\x12\x17\n\x06lineup\x18\x01 \x03(\x0b\x32\x07.LineUp\"4\n\x14UnparalleledResponse\x12\x1c\n\x05unpar\x18\x01 \x03(\x0b\x32\r.Unparalleled\"Y\n\x12StageSweepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -167,6 +167,20 @@ _STAGESTARTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='awake', full_name='StageStartResponse.awake', index=9,
+      number=11, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='awake_no', full_name='StageStartResponse.awake_no', index=10,
+      number=12, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -177,7 +191,7 @@ _STAGESTARTRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=226,
-  serialized_end=473,
+  serialized_end=519,
 )
 
 
@@ -211,8 +225,8 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=475,
-  serialized_end=569,
+  serialized_start=521,
+  serialized_end=615,
 )
 
 
@@ -239,8 +253,8 @@ _FORMATIONRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=571,
-  serialized_end=615,
+  serialized_start=617,
+  serialized_end=661,
 )
 
 
@@ -267,8 +281,8 @@ _UNPARALLELEDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=617,
-  serialized_end=669,
+  serialized_start=663,
+  serialized_end=715,
 )
 
 
@@ -302,8 +316,8 @@ _STAGESWEEPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=671,
-  serialized_end=760,
+  serialized_start=717,
+  serialized_end=806,
 )
 
 _STAGEINFORESPONSE.fields_by_name['stage'].message_type = stage_pb2._STAGE
@@ -313,6 +327,7 @@ _STAGESTARTRESPONSE.fields_by_name['red'].message_type = stage_pb2._BATTLEUNIT
 _STAGESTARTRESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNITGROP
 _STAGESTARTRESPONSE.fields_by_name['friend'].message_type = stage_pb2._BATTLEUNIT
 _STAGESTARTRESPONSE.fields_by_name['replace'].message_type = stage_pb2._BATTLEUNIT
+_STAGESTARTRESPONSE.fields_by_name['awake'].message_type = stage_pb2._BATTLEUNIT
 _STAGESETTLEMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _STAGESETTLEMENTRESPONSE.fields_by_name['drops'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _FORMATIONRESPONSE.fields_by_name['lineup'].message_type = stage_pb2._LINEUP

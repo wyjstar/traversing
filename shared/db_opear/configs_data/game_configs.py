@@ -114,16 +114,17 @@ all_config_name = {
     'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'language_config': LanguageConfig(),
-    'achievement_config':AchievementConfig(),
+    'achievement_config': AchievementConfig(),
     'seal_config': SealConfig()
 }
 
-module = cPickle.load(open('shared/db_opear/configs_data/excel', 'r'))
+module = cPickle.load(open('config/excel_cpickle', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)
     objs = all_config_name[config_name].parser(config_value)
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in seal_config.items():
-        print v
+    print hero_config.get(10042)
+    print hero_config.get(10042).get('sacrificeGain').__dict__
+    print hero_config.get(10042).get('sellGain').__dict__

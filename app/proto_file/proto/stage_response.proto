@@ -27,6 +27,8 @@ message StageStartResponse{
 	optional int32 monster_unpar = 8; // 怪物无双
 	optional BattleUnit replace = 9; // 乱入
 	optional int32 replace_no = 10;
+	repeated BattleUnit awake = 11; //
+	repeated int32 awake_no = 12;
 }
 
 // 关卡结算返回 command:904
