@@ -40,8 +40,10 @@ from travel_event_config import TravelEventConfig
 from language_config import LanguageConfig
 from achievement_config import AchievementConfig
 from seal_config import SealConfig
+from travel_item_config import TravelItemConfig
 
 
+travel_item_config = {}
 base_config = {}
 hero_config = {}
 hero_exp_config = {}
@@ -118,6 +120,7 @@ all_config_name = {
     'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),
     'achievement_config': AchievementConfig(),
+    'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig()
 }
 
@@ -128,4 +131,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print stage_config.get("stages").get(900001)
+    print travel_item_config

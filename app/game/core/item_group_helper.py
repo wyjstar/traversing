@@ -6,7 +6,7 @@ created by server on 14-7-9下午5:11.
 from app.game.core.hero_chip import HeroChip
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.pack.item import Item
-from shared.db_opear.configs_data.game_configs import chip_config
+from shared.db_opear.configs_data.game_configs import chip_config, travel_item_config
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
 from app.proto_file.hero_pb2 import HeroPB
@@ -177,7 +177,7 @@ def gain(player, item_group, result=None):
             logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
         elif type_id == const.TRAVEL_ITEM:
-            stage_id = game_configs.travel_item_config.get(item_no).stageId
+            stage_id = travel_item_config.get(item_no).stageId
             flag1 = 1
             flag2 = 0
             stage_item_info = player.travel_component.travel_item.get(stage_id)
