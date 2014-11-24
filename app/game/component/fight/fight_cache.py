@@ -7,7 +7,6 @@ from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
 from app.battle.battle_unit import do_assemble
-
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
@@ -93,7 +92,7 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_break_config(self):
         """取得关卡乱入信息"""
         stage = self.__get_stage_config()
-        print stage,
+        # print stage,
         if stage and "stage_break_id" in stage:
             return game_configs.stage_break_config.get(stage.stage_break_id, None)
 
@@ -275,8 +274,9 @@ class CharacterFightCacheComponent(Component):
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
         replace_unit, replace_no = self.__break_hero_units(red_units)
+        awake_units, awake_nos = self.__awake_hero_units(red_units)
 
-        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no
+        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no, awake_units, awake_nos
 
     def fighting_settlement(self, result):
         """战斗结算
@@ -327,7 +327,7 @@ class CharacterFightCacheComponent(Component):
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
 
-            old_line_up_slot = self.owner.line_up_component.line_up_slots.get(red_unit.slot_no)
+            old_line_up_slot = self.line_up_slots.get(red_unit.slot_no)
 
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
@@ -350,4 +350,42 @@ class CharacterFightCacheComponent(Component):
             return unit, red_unit.unit_no
         return None, 0
 
+    def __awake_hero_units(self, red_units):
+        awake_nos = []
+        awake_units = []
 
+        for no, red in red_units.items():
+            hero_item = game_configs.hero_config.get(red.unit_no)
+            _rand = random.random()
+            if not hero_item:
+                continue
+            if not hero_item.get('awake'):
+                continue
+            old_line_up_slot = self.line_up_slots.get(red.slot_no)
+            ap = old_line_up_slot.combat_power()
+            for no, prob in hero_item.get('awake').items():
+                if ap > no and _rand < prob:
+                    logger.info('hit:%s, %s,ap:%s, no:%s', _rand, prob, ap, no)
+
+                    break_line_up_slot = copy.deepcopy(old_line_up_slot)
+
+                    hero_no = hero_item.get('awakeHeroID')
+                    level = red.level  # 等级
+                    break_hero_obj = Hero()  # 实例化一个替换英雄对象
+                    break_hero_obj.hero_no = hero_no
+                    break_hero_obj.level = level
+
+                    attr = CommonItem()
+                    hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
+                    attr += hero_break_attr
+                    slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_item.get('id'))  # 格子对象
+                    equ_attr = slot_obj.equ_attr()
+                    attr += equ_attr
+
+                    unit = break_line_up_slot.get_battle_unit(break_hero_obj,
+                                                              attr)
+                    awake_units.append(unit)
+                    awake_nos.append(red.unit_no)
+                    break
+
+        return awake_units, awake_nos

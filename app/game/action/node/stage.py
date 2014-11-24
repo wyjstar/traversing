@@ -6,19 +6,23 @@ import random
 import time
 from app.proto_file import stage_request_pb2
 from app.proto_file import stage_response_pb2
-from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
-from app.game.core.drop_bag import BigBag
+from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
+from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.game_configs import special_stage_config
+from shared.db_opear.configs_data.game_configs import vip_config
 from app.battle.battle_unit import BattleUnit
+from app.game.core.drop_bag import BigBag
+from app.game.core.lively import task_status
 from app.game.core.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
-from shared.db_opear.configs_data import game_configs
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
-from gfirefly.server.globalobject import GlobalObject
-from app.game.core.lively import task_status
+from app.game.component.achievement.user_achievement import EventType
+from app.game.component.achievement.user_achievement import CountEvent
+
 
 remote_gate = GlobalObject().remote['gate']
+
 
 @remoteserviceHandle('gate')
 def get_stages_901(pro_data, player):
@@ -106,6 +110,8 @@ def stage_start_903(pro_data, player):
     f_unit = stage_info.get('f_unit')
     replace_unit = stage_info.get('replace_unit')
     response.replace_no = stage_info.get('replace_no')
+    awake_units = stage_info.get('awake_units')
+    awake_nos = stage_info.get('awake_nos')
 
     response.drop_num = drop_num
     for slot_no, red_unit in red_units.items():
@@ -132,7 +138,14 @@ def stage_start_903(pro_data, player):
         assemble(friend, f_unit)
     if replace_unit:
         assemble(response.replace, replace_unit)
+    if awake_units:
+        for awake in awake_units:
+            awake_add = response.awake.add()
+            assemble(awake_add, awake)
+        for no in awake_nos:
+            response.awake_no.append(no)
     # logger.debug('进入关卡返回数据:%s', response)
+    # print response
     return response.SerializePartialToString()
 
 
@@ -184,9 +197,9 @@ def stage_sweep_907(pro_data, player):
     lively_event = {}
     if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
         lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
-    elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+    elif special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         lively_event = CountEvent.create_event(EventType.STAGE_2, times, ifadd=True)
-    elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
+    elif special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         lively_event = CountEvent.create_event(EventType.STAGE_3, times, ifadd=True)
     
     tstatus = player.tasks.check_inter(lively_event)
@@ -248,7 +261,7 @@ def assemble(unit_add, unit):
     unit_add.break_level = unit.break_level
 
     unit_add.position = unit.slot_no
-    #unit_add.is_boss = unit.is_boss
+    # unit_add.is_boss = unit.is_boss
 
 
 def get_stage_info(stage_id, player):
@@ -311,20 +324,22 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         return {'result': False, 'result_no': 803}  # 803 未开启
 
     conf = 0
-    if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
-        conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
+    if special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+        conf = special_stage_config.get('elite_stages').get(stage_id)
 
-        #次数限制
-        if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and game_configs.vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
+        # 次数限制
+        tm_time = time.localtime(player.stage_component.elite_stage_info[1])
+        if tm_time.tm_mday == time.localtime().tm_mday \
+            and vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
-    elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
-        conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
+    elif special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
+        conf = special_stage_config.get('act_stages').get(stage_id)
 
-        #次数限制
-        if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday \
-                and game_configs.vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
+        # 次数限制
+        tm_time = time.localtime(player.stage_component.act_stage_info[1])
+        if tm_time.tm_mday == time.localtime().tm_mday \
+            and vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     else:  # 普通关卡
@@ -362,7 +377,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     if is_travel_event:
         drop_num = 0
 
-    red_units, blue_units, drop_num, monster_unpara,replace_units, replace_no = fight_cache_component.fighting_start()
+    red_units, blue_units, drop_num, monster_unpara, replace_units, replace_no, awake_units, awake_nos = fight_cache_component.fighting_start()
 
     # 好友
     lord_data = tb_character_lord.getObjData(fid)
@@ -373,9 +388,17 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     else:
         logger.info('can not find friend id :%d' % fid)
 
-    return {'result': True, 'red_units': red_units, 'blue_units': blue_units, 'drop_num': drop_num,
-            'monster_unpara': monster_unpara, 'f_unit': f_unit, 'result_no': result_no,
-            'replace_unit': replace_units, 'replace_no': replace_no}
+    return dict(result=True,
+                red_units=red_units,
+                blue_units=blue_units,
+                drop_num=drop_num,
+                monster_unpara=monster_unpara,
+                f_unit=f_unit,
+                result_no=result_no,
+                replace_unit=replace_units,
+                replace_no=replace_no,
+                awake_units=awake_units,
+                awake_nos=awake_nos)
 
 
 def fight_settlement(stage_id, result, player):
@@ -433,16 +456,18 @@ def fight_settlement(stage_id, result, player):
                 player.stamina.save_data()
                 lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         else:
-            if game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
-                conf = game_configs.special_stage_config.get('elite_stages').get(stage_id)
-                if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
+            tm_time = time.localtime(player.stage_component.elite_stage_info[1])
+            if special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+                conf = special_stage_config.get('elite_stages').get(stage_id)
+                if tm_time.tm_mday == time.localtime().tm_mday:
                     player.stage_component.elite_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
                 lively_event = CountEvent.create_event(EventType.STAGE_2, 1, ifadd=True)
-            elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
-                conf = game_configs.special_stage_config.get('act_stages').get(stage_id)
-                if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
+            elif special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
+                conf = special_stage_config.get('act_stages').get(stage_id)
+                tm_time = time.localtime(player.stage_component.act_stage_info[1])
+                if tm_time.tm_mday == time.localtime().tm_mday:
                     player.stage_component.act_stage_info[0] += conf.timesExpend
                 else:
                     player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
