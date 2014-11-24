@@ -5,7 +5,6 @@ from gfirefly.server.logobj import logger
 from gtwisted.core import reactor
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.ranking import Ranking
-from gfirefly.dbentrust.redis_client import redis_client
 
 
 front_ip = GlobalObject().json_config['front_ip']
@@ -26,5 +25,5 @@ def tick():
 
 reactor.callLater(1, tick)
 # 初始化工会排行
-Ranking.init('GuildLevel', 9999, redis_client.conn)
+Ranking.init('GuildLevel', 9999)
 

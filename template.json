@@ -121,6 +121,7 @@
             "rootport": 30004,
             "name": "world",
             "app": "app.world",
+            "redis": true,
             "log": "app/logs/world.log"
         }
     },

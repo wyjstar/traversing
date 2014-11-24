@@ -28,6 +28,7 @@ from app.game.component.character_sign_in import CharacterSignInComponent
 from app.game.component.character_feast import CharacterFeastComponent
 from app.game.component.character_login_gift import CharacterLoginGiftComponent
 from app.game.component.character_level_gift import CharacterLevelGift
+from app.game.component.character_world_boss import CharacterWorldBoss
 from app.game.component.character_vip import CharacterVIPComponent
 from app.game.component.character_stamina import CharacterStaminaComponent
 from app.game.component.character_soul_shop import CharacterSoulShopComponent
@@ -71,17 +72,19 @@ class PlayerCharacter(Character):
         self._online_gift = CharacterOnlineGift(self)  # online gift
         self._level_gift = CharacterLevelGift(self)  # level gift
         self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
+        self._world_boss = CharacterWorldBoss(self)  # world boss
         self._vip = CharacterVIPComponent(self)  # VIP level
 
         self._stamina = CharacterStaminaComponent(self)  # 体力
         self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
         self._arena_shop = CharacterArenaShopComponent(self)
         self._brew = CharacterBrewComponent(self)
-        
+
         self._tasks = UserAchievement(self)
 
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
+
 
     def init_player_info(self):
         """初始化角色信息
@@ -148,14 +151,15 @@ class PlayerCharacter(Character):
         self._level_gift.init_data()
         self._feast.init_feast()
         self._login_gift.init_data()
+        self._world_boss.init_data()
         self._vip.init_vip(vip_level)
         self._stamina.init_stamina(character_info.get('stamina'))
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
         self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
         self._brew.init_data()
-        
+
         #活跃度
-        self._tasks.init_data()
+        #self._tasks.init_data()
 
     def is_new_character(self):
         """is new character or not"""
@@ -320,6 +324,14 @@ class PlayerCharacter(Character):
         self._login_gift = value
 
     @property
+    def world_boss(self):
+        return self._world_boss
+
+    @world_boss.setter
+    def world_boss(self, value):
+        self._world_boss = value
+
+    @property
     def feast(self):
         return self._feast
 
@@ -339,7 +351,7 @@ class PlayerCharacter(Character):
     @property
     def arena_shop(self):
         return self._arena_shop
-    
+
     @property
     def tasks(self):
         """

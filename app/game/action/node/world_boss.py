@@ -5,7 +5,10 @@ from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
 from app.proto_file import stage_request_pb2
 from app.game.action.node.stage import assemble, fight_start
 from gfirefly.server.logobj import logger
-from app.proto_file.world_boss_pb2 import PvbFightResponse
+from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest
+from app.proto_file.common_pb2 import CommonResponse
+from shared.db_opear.configs_data.game_configs import base_config
+from app.game.action.node.line_up import line_up_info
 
 #from app.proto_file import world_boss_pb2
 
@@ -15,12 +18,23 @@ remote_gate = GlobalObject().remote['gate']
 def get_before_fight_1701(data, player):
     """
     获取世界boss开战前的信息：
+    1. 关卡id
+    2. 是否开启
+    未开启:
     1. 幸运武将
     2. 奇遇
     3. 伤害排名前十的玩家
     4. 最后击杀boss的玩家
+    已开启:
+    1. 剩余血量
+    2. 鼓舞次数
     """
-    return remote_gate['world'].pvb_get_before_fight_info_remote()
+    world_data =  remote_gate['world'].pvb_get_before_fight_info_remote()
+    response = PvbBeforeInfoResponse()
+    response.ParseFromString(world_data)
+    player.world_boss.stage_id = response.stage_id
+    response.encourage_coin_num, response.encourage_gold_num = player.world_boss.get_encourage_num()
+    return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
@@ -37,19 +51,65 @@ def encourage_heros_1703(data, player):
     使用金币或者元宝鼓舞士气。
     """
     # 1. 校验金币或者元宝
-    # 2. 校验CD
     # 3. 减少金币
     # 4. 更新战斗力
-    pass
+    response = CommonResponse()
+
+    request = EncourageHerosRequest()
+    request.ParseFromString(data)
+
+    if request.finance_type == 1:
+        # 金币鼓舞
+        goldcoin_inspire_price = base_config.get("goldcoin_inspire_price")
+        goldcoin_inspire_price_multiple = base_config.get("goldcoin_inspire_price_multiple")
+        coin = player.finance.coin
+        need_coin = goldcoin_inspire_price*(pow(goldcoin_inspire_price_multiple, player.world_boss.encourage_coin_num))
+        if coin < need_coin:
+            response.result = False
+            response.result_no = 101
+            return response.SerializePartialToString()
+
+        player.finance.coin -= need_coin
+        player.finance.save_data()
+        player.world_boss.encourage_coin_num += 1
+
+    if request.finance_type == 2:
+        # 钻石鼓舞
+        money_inspire_price = base_config.get("money_inspire_price")
+        #money_inspire_price_multiple = base_config.get("money_inspire_price_multiple")
+        gold = player.finance.gold
+        need_gold = money_inspire_price
+        if gold < need_gold:
+            response.result = False
+            response.result_no = 102
+            return response.SerializePartialToString()
+        player.finance.gold -= need_gold
+        player.finance.save_data()
+        player.world_boss.encourage_gold_num += 1
+
+    player.world_boss.save_data()
+    response.result = True
+    return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def pvb_reborn_1704(data, player):
     """
     使用元宝复活。
     """
+    response = CommonResponse()
     # 1. 校验元宝
-    pass
+    gold = player.finance.gold
+    money_relive_price = base_config.get('money_relive_price')
+    need_gold = money_relive_price
+    if gold < need_gold:
+        response.result = False
+        response.result_no = 102
+        return response.SerializePartialToString()
 
+    player.finance.gold -= need_gold
+    player.finance.save_data()
+    return response.CommonResponse()
 
 @remoteserviceHandle('gate')
 def pvb_fight_start_1705(pro_data, player):
@@ -102,10 +162,14 @@ def pvb_fight_start_1705(pro_data, player):
 
     response.red_best_skill = unparalleled
     # mock fight.
-    result = remote_gate['world'].pvb_fight_remote(red_units,
-            unparalleled, blue_units)
-    response.fight_result = result['result']
-    response.hp_left = result['hp_result']
+    player_info = {}
+    player_info["player_id"] = player.base_info.id
+    player_info["nickname"] = player.base_info.nickname
+    player_info["level"] = player.level.level
+    player_info["line_up_info"] = line_up_info(player).SerializePartialToString()
 
+    result = remote_gate['world'].pvb_fight_remote(red_units,
+            unparalleled, blue_units, player_info)
+    response.fight_result = result
     return response.SerializePartialToString()
 
