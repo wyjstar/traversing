@@ -252,7 +252,7 @@ class UserAchievement(Component):
             self._last_day = live_data.get('last_day', '')
         else:
             data = dict(id=self.owner.base_info.id,
-                        tasks={'1',cPickle.dumps(self._tasks)},
+                        tasks={'1':cPickle.dumps(self._tasks)},
                         lively=self._lively,
                         event_map=self._event_task_map,
                         last_day=self._last_day)
