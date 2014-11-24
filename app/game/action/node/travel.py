@@ -127,7 +127,8 @@ def travel_init_830(data, player):
             res_drops = res_travel.drops
             get_return(player, tra[1], res_drops)
             if travel_event_config.get('events').get(tra[0]).type == 1:
-                res_travel.time = tra[2]
+                if len(tra) == 3:
+                    res_travel.time = tra[2]
 
     res_shose = response.shoes
     res_shose.shoe1 = player.travel_component.shoes[0]
