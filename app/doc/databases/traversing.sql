@@ -245,6 +245,7 @@ CREATE TABLE `tb_character_lively` (
   `lively` int(11) NOT NULL,
   `tasks` mediumblob,
   `event_map` mediumblob,
+  `last_day` varchar(8),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- Dump completed on 2014-11-06 21:29:40

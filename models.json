@@ -174,7 +174,8 @@
         		"id": "simple",
         		"tasks": "complex",
         		"lively": "simple",
-        		"event_map": "complex"
+        		"event_map": "complex",
+                "last_day":"simple"
         	}
         }
     }

@@ -12,3 +12,5 @@ CREATE TABLE `tb_character_lively` (
   `event_map` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE tb_character_lively ADD column last_day varchar(8);
