@@ -125,7 +125,13 @@ class CharacterFightCacheComponent(Component):
 
         monsters = []
         for i in range(3):
-            monster_group_config = self.__get_monster_group_config(getattr(stage_config, 'round%s' % (i + 1)))
+            logger.debug("stage_id %s" % self._stage_id)
+            logger.debug("stage_group_id %s" % getattr(stage_config, 'round%s' % (i + 1)))
+            print stage_config
+            monster_group_id = getattr(stage_config, 'round%s' %(i+1))
+            if not monster_group_id:
+                continue
+            monster_group_config = self.__get_monster_group_config(monster_group_id)
             round_monsters = {}
 
             boss_position = monster_group_config.bossPosition

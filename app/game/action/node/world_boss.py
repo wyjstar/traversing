@@ -120,6 +120,7 @@ def pvb_reborn_1704(data, player):
 def pvb_fight_start_1705(pro_data, player):
     """开始战斗
     """
+    logger.debug("fight start..")
     request = stage_request_pb2.StageStartRequest()
     request.ParseFromString(pro_data)
 
@@ -181,5 +182,7 @@ def pvb_fight_start_1705(pro_data, player):
     # 玩家战斗次数
     player.world_boss.fight_times += 1
     player.world_boss.save_data()
+    logger.debug("fight end..")
+
     return response.SerializePartialToString()
 
