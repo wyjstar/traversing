@@ -2,57 +2,7 @@
 """
 created by server on 14-7-30下午5:16.
 """
-import array
 import math
-
-import random
-
-# def bsd_rand(seed):
-#     def rand():
-#         rand.seed = (1103515245 * rand.seed + 12345) & 0x7fffffff
-#         print type(rand)
-#         return rand.seed
-#
-#     rand.seed = seed
-#     return rand
-
-
-# class Samples:
-#     def __init__(self):
-#         pass
-#
-#     def rand(self, num, seed=10):
-#         m = math.pow(2, 32)
-#         a = 214013
-#         c = 2531011
-#         i = 1
-#         x_list = [0.]*num
-#         print x_list
-#         x = array.array.fromlist(x_list)
-#         print x
-#         x[0] = seed
-#         while i < num:
-#             x[i] = (a * x[i - 1] + c) % m
-#             i += 1
-#         return x
-
-
-import math
-
-
-def ran():
-    X1 = 0.0
-    X2 = 1.0
-    A1 = 727595.0
-    A2 = 798406.0
-    D20 = 1048576.0
-    D40 = 1099511627776.0
-    U = X2 * A2
-    V = (X1 * A2 + X2 * A1) % D20
-    V = (V * D20 + U) % D40
-    X1 = math.floor(V/D20)
-    X2 = V - X1 * D20
-    return V/D40
 
 
 def bsd_rand(X1, X2):
@@ -78,7 +28,7 @@ def bsd_rand(X1, X2):
 
 
 if __name__ == '__main__':
-    rand_test = bsd_rand(0.0, 1.0)
+    rand_test = bsd_rand(2.0, 3.0)
     for i in range(10):
         print rand_test()
 
