@@ -236,11 +236,11 @@ def travel_settle_833(data, player):
             response.res.result = False
             response.res.result_no = 814
             return response.SerializeToString()
-    elif event_info.type == 3:
-        if not event_info.parameter.get(args.answer):
-            response.res.result = False
-            response.res.result_no = 815
-            return response.SerializeToString()
+    # elif event_info.type == 3:
+    #     if not event_info.parameter.get(args.answer):
+    #         response.res.result = False
+    #         response.res.result_no = 815
+    #         return response.SerializeToString()
 
     # 结算
     gain(player, get_drop_data(event_cache[1]))
