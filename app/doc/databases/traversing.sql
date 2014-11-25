@@ -133,7 +133,7 @@ CREATE TABLE `tb_character_line_up` (
   `line_up_slots` mediumblob,
   `sub_slots` mediumblob,
   `line_up_order` mediumblob,
-  `unpar` int(20),
+  `unpars` tinyblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
