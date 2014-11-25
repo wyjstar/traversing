@@ -32,9 +32,9 @@ def get_before_fight_1701(data, player):
     world_data =  remote_gate['world'].pvb_get_before_fight_info_remote(player.base_info.id)
     response = PvbBeforeInfoResponse()
     response.ParseFromString(world_data)
+    player.world_boss.stage_id = response.stage_id
     player.world_boss.reset_info() # 重设信息
 
-    player.world_boss.stage_id = response.stage_id
     player.world_boss.save_data()
     response.encourage_coin_num = player.world_boss.encourage_coin_num
     response.encourage_gold_num = player.world_boss.encourage_gold_num

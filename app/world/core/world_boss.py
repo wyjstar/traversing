@@ -24,8 +24,9 @@ class WorldBoss(object):
         self._last_shot_item = {}     # 最后击杀
         self._stage_id_am = 0         # 关卡id am
         self._stage_id_pm = 0         # 关卡id pm
-        self._stage_id = 0         # 关卡id
+        self._stage_id = 0            # 关卡id
         self._hp =0                   # 剩余血量
+        self._state = 0               # boss状态：用于boss到期, 重置状态
 
         self.init_data()
         reactor.callLater(1, self.loop_update)
@@ -41,6 +42,7 @@ class WorldBoss(object):
         """docstring for init_data"""
         str_data = redis_client.get("world_boss_data")
         if not str_data:
+            logger.debug("init data...")
             self.update_boss()
             return
         world_boss_data = cPickle.loads(str_data)
@@ -51,6 +53,8 @@ class WorldBoss(object):
         self._debuff_skill_no = world_boss_data.get("debuff_skill_no")
         self._last_shot_item = world_boss_data.get("last_shot_item")
         self._stage_id = world_boss_data.get("stage_id")
+        self._stage_id_am = world_boss_data.get("stage_id_am")
+        self._stage_id_pm = world_boss_data.get("stage_id_pm")
         self._hp = world_boss_data.get("hp")
 
     @property
@@ -72,7 +76,10 @@ class WorldBoss(object):
                 lucky_low_heros=self._lucky_low_heros,
                 debuff_skill_no=self._debuff_skill_no,
                 last_shot_item=self._last_shot_item,
-                stage_id=self._stage_id)
+                stage_id=self._stage_id,
+                stage_id_am=self._stage_id_am,
+                stage_id_pm=self._stage_id_pm
+                )
         str_data = cPickle.dumps(world_boss_data)
         redis_client.set("world_boss_data", str_data)
 
@@ -105,17 +112,21 @@ class WorldBoss(object):
         return self.in_the_time_period()
 
     def loop_update(self):
-        self.update_boss()
-        reactor.callLater(1, self.loop_update)
+        if self._stage_id and self.in_the_time_period() and self._state == 0:
+            self._state = 1
 
+        if self._stage_id and self._state == 1 and self._hp<=0 and self.in_the_time_period():
+            self._state = 2
+
+        if self._stage_id and self._state!=0 and (not self.in_the_time_period()):
+            self.update_boss()
+            self._state = 0
+        reactor.callLater(1, self.loop_update)
 
     def update_boss(self):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        if not (self._hp<=0 or self.in_the_time_period()):
-            return
-
         # 初始化幸运武将
         lucky_hero_1_num = base_config.get("lucky_hero_1_num")
         lucky_hero_2_num = base_config.get("lucky_hero_2_num")
