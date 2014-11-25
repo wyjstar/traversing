@@ -71,19 +71,7 @@ def travel_831(data, player):
     common_drop = common_bag.get_drop_items()
     drops.extend(common_drop)
 
-    drop_data = []
-    for group_item in drops:
-        type_id = group_item.item_type
-        num = group_item.num
-        item_no = group_item.item_no
-        flag = 1
-        for i in drop_data:
-            if i[0] == type_id and i[2] == item_no:
-                i[1] += 1
-                flag = 0
-                continue
-        if flag:
-            drop_data.append([type_id, num, item_no])
+    drop_data = get_drop_data(drops)
 
     get_return(player, drop_data, res_drops)
 
@@ -91,7 +79,7 @@ def travel_831(data, player):
     if event_info.type == 4:
         gain(player, drops)
     else:
-        travel_cache.get(stage_id).append([travel_event_id, drop_data])
+        travel_cache.get(stage_id).append([travel_event_id, drops])
 
     if shoes[3] == 0:
         for i in[2, 1, 0]:
@@ -125,7 +113,8 @@ def travel_init_830(data, player):
             res_travel = chapter.travel.add()
             res_travel.event_id = tra[0]
             res_drops = res_travel.drops
-            get_return(player, tra[1], res_drops)
+            drop_data = get_drop_data(tra[1])
+            get_return(player, drop_data, res_drops)
             if travel_event_config.get('events').get(tra[0]).type == 1:
                 if len(tra) == 3:
                     res_travel.time = tra[2]
@@ -146,8 +135,7 @@ def travel_init_830(data, player):
             travel_item = travel_item_chapter.travel_item.add()
             travel_item.id = travel_item_id
             travel_item.num = num
-    logger.debug(player.travel_component.travel)
-    logger.debug(player.travel_component.travel_item)
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -255,7 +243,7 @@ def travel_settle_833(data, player):
             return response.SerializeToString()
 
     # 结算
-    gain(player, event_cache[1])
+    gain(player, get_drop_data(event_cache[1]))
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
@@ -344,7 +332,7 @@ def no_wait_835(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    gain(player, event_cache[1])
+    gain(player, get_drop_data(event_cache[1]))
     player.finance.gold -= event_info.price
     player.finance.save_data()
 
@@ -365,3 +353,20 @@ def get_travel_event_id():
             break
         flag == weight
     return travel_event_id
+
+
+def get_drop_data(drops):
+    drop_data = []
+    for group_item in drops:
+        type_id = group_item.item_type
+        num = group_item.num
+        item_no = group_item.item_no
+        flag = 1
+        for i in drop_data:
+            if i[0] == type_id and i[2] == item_no:
+                i[1] += 1
+                flag = 0
+                continue
+        if flag:
+            drop_data.append([type_id, num, item_no])
+    return drop_data
