@@ -57,7 +57,6 @@ message BuyShoesResponse{
 message TravelSettleRequest{
     required int32 stage_id = 1;
     required int32 event_id =2;
-    optional int32 answer = 3;
 }
 
 message TravelSettleResponse{
