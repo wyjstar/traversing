@@ -322,6 +322,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             game_configs.stage_config.get('stages').get(stage_id).sort == 10:
         pass
     else:
+        logger.debug(game_configs.stage_config.get('stages').get(stage_id))
         state = player.stage_component.check_stage_state(stage_id)
         if state == -2:
             return {'result': False, 'result_no': 803}  # 803 未开启
@@ -455,10 +456,11 @@ def fight_settlement(stage_id, result, player):
                     player.travel_component.save()
 
                 else:
+                    # TODO
                     logger.error('stageid != travel fight cache stage id ')
-                    response.res.result = False
-                    response.res.result_no = 817
-                    return response.SerializeToString()
+                    # response.res.result = False
+                    # response.res.result_no = 817
+                    # return response.SerializeToString()
             else:
                 player.stamina.stamina -= conf.vigor
                 player.stamina.save_data()

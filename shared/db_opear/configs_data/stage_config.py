@@ -21,7 +21,7 @@ class StageConfig(object):
         for row in config_value:
             item = CommonItem(row)
 
-            if item.sort == 1:
+            if item.sort == 1 or item.sort == 10:
                 if item.type == 4:  # 活动
                     self._activity_stages[item.id] = item
                     continue
