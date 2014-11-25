@@ -121,6 +121,7 @@
             "rootport": 30004,
             "name": "world",
             "app": "app.world",
+            "redis": true,
             "log": "app/logs/world.log"
         }
     },
@@ -135,5 +136,11 @@
     "memcached": {
         "urls": ["127.0.0.1:11211"],
         "hostname": "mem"
+    },
+    "redis":{
+         "host": "127.0.0.1",
+         "port": 6379,
+         "db": 0
     }
+
 }

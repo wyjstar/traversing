@@ -44,7 +44,7 @@ def push_object_remote(topic_id, msg, send_list):
 @rootserviceHandle
 def get_guild_rank_remote():
     level_instance = Ranking.instance('GuildLevel')
-    data = level_instance.get("GuildLevel", 9999)  # 获取排行最高的公会列表(999条)
+    data = level_instance.get(9999)  # 获取排行最高的公会列表(999条)
     return data
 
 
@@ -63,7 +63,7 @@ def from_admin_rpc(args):
 @rootserviceHandle
 def add_guild_to_rank_remote(g_id, dengji):
     level_instance = Ranking.instance('GuildLevel')
-    level_instance.add(g_id, level=dengji)  # 添加rank数据
+    level_instance.add(g_id, dengji)  # 添加rank数据
 
 
 @rootserviceHandle

@@ -44,6 +44,7 @@ if __name__ == "__main__":
         raise ValueError
     dbconf = config.get('db')
     memconf = config.get('memcached')
+    redis_conf = config.get('redis')
     sersconf = config.get('servers', {})
     masterconf = config.get('master', {})
 
@@ -57,6 +58,7 @@ if __name__ == "__main__":
                servername=servername,
                dbconfig=dbconf,
                memconfig=memconf,
+               redis_config=redis_conf,
                masterconf=masterconf,
                model_default_config=model_default_config,
                model_config=model_config)

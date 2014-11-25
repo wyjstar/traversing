@@ -5,6 +5,7 @@ Created on 2013-8-2
 @author: lan (www.9miao.com)
 """
 from gfirefly.dbentrust.memclient import mclient
+from gfirefly.dbentrust.redis_client import redis_client
 from gfirefly.netconnect.protoc import LiberateFactory
 from flask import Flask
 from gfirefly.distributed.root import PBRoot, BilateralFactory
@@ -17,7 +18,6 @@ from gtwisted.core import reactor
 from gfirefly.utils import services
 import os
 import affinity
-from shared.db_entrust.redis_client import redis_manager
 
 reactor = reactor
 
@@ -48,7 +48,7 @@ class FFServer:
         self.remoteportlist = []
 
     def config(self, config, servername=None, dbconfig=None,
-               memconfig=None, masterconf=None, model_default_config=None,
+               memconfig=None, redis_config=None, masterconf=None, model_default_config=None,
                model_config=None):
         """配置服务器"""
         GlobalObject().json_config = config
@@ -63,7 +63,7 @@ class FFServer:
         logpath = config.get('log')  # 日志
         hasdb = config.get('db')  # 数据库连接
         hasmem = config.get('mem')  # memcached连接
-        # hasredis = config.get('redis')
+        hasredis = config.get('redis') # redis连接
         app = config.get('app')  # 入口模块名称
         cpuid = config.get('cpu')  # 绑定cpu
         mreload = config.get('reload')  # 重新加载模块名称
@@ -103,6 +103,12 @@ class FFServer:
             urls = memconfig.get('urls')
             hostname = str(memconfig.get('hostname'))
             mclient.connect(urls, hostname)
+
+        if hasredis and redis_config:
+            host = redis_config.get("host")
+            port = redis_config.get("port")
+            db = redis_config.get("db", 0)
+            redis_client.connect(host, port, db)
 
         if cpuid:
             affinity.set_process_affinity_mask(os.getpid(), cpuid)

@@ -17,6 +17,7 @@ CREATE TABLE `tb_character_activity` (
   `level_gift` blob,
   `feast` int(11) DEFAULT '0',
   `login_gift` blob,
+  `world_boss` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

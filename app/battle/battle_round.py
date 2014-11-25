@@ -130,6 +130,7 @@ class BattleRound(object):
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
                 logger.debug_cal("    ")
+        return self._red_units, self._blue_units
 
     def get_next_unit(self, i, units):
         temp = None

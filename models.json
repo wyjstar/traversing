@@ -150,7 +150,8 @@
                 "sign_in": "simple",
                 "online_gift": "complex",
                 "feast": "simple",
-                "login_gift": "complex"
+                "login_gift": "complex",
+                "world_boss": "complex"
             }
         },
         "tb_character_lord": {

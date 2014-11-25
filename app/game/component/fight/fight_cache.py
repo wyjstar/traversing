@@ -71,6 +71,8 @@ class CharacterFightCacheComponent(Component):
             return game_configs.special_stage_config.get('elite_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('act_stages').get(self._stage_id):
             return game_configs.special_stage_config.get('act_stages').get(self._stage_id)
+        if game_configs.special_stage_config.get('boss_stages').get(self._stage_id):
+            return game_configs.special_stage_config.get('boss_stages').get(self._stage_id)
 
     def __get_skill_config(self, skill_id):
         """取得技能BUFF配置
@@ -137,8 +139,6 @@ class CharacterFightCacheComponent(Component):
                 if j + 1 == boss_position:
                     is_boss = True
                 monster_config = self.__get_monster_config(monster_id)
-                monster_normal_config = game_configs.skill_config.get(monster_config.normalSkill)
-                monster_rage_config = game_configs.skill_config.get(monster_config.rageSkill)
 
                 battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
                                           monster_config.hp, monster_config.atk, monster_config.physicalDef,
