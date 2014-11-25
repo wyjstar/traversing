@@ -101,7 +101,7 @@ def stage_start_903(pro_data, player):
 
     if not result:
         logger.info('进入关卡返回数据:%s', response)
-        return response.SerializePartialToString(), stage_id
+        return response.SerializePartialToString()
 
     red_units = stage_info.get('red_units')
     blue_units = stage_info.get('blue_units')
@@ -145,7 +145,6 @@ def stage_start_903(pro_data, player):
         for no in awake_nos:
             response.awake_no.append(no)
     # logger.debug('进入关卡返回数据:%s', response)
-    # print response
     return response.SerializePartialToString()
 
 
@@ -319,9 +318,13 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     is_travel_event = 0
 
     # 校验关卡是否开启
-    state = player.stage_component.check_stage_state(stage_id)
-    if state == -2:
-        return {'result': False, 'result_no': 803}  # 803 未开启
+    if game_configs.stage_config.get('stages').get(stage_id) and \
+            game_configs.stage_config.get('stages').get(stage_id).sort == 10:
+        pass
+    else:
+        state = player.stage_component.check_stage_state(stage_id)
+        if state == -2:
+            return {'result': False, 'result_no': 803}  # 803 未开启
 
     conf = 0
     if special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
@@ -343,10 +346,10 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             return {'result': False, 'result_no': 805}  # 805 次数不足
 
     else:  # 普通关卡
-        stage_conf = game_configs.get('stages').get(stage_id)
+        stage_conf = game_configs.stage_config.get('stages').get(stage_id)
         if not stage_conf.sort == 10:  # 游历战斗事件
             if time.localtime(player.stage_component.stage_up_time).tm_mday == time.localtime().tm_mday:
-                if player.stage_component.get_stage(stage_id).attacks >= stage_conf.get(stage_id).limitTimes:
+                if player.stage_component.get_stage(stage_id).attacks >= stage_conf.limitTimes:
                     return {'result': False, 'result_no': 810}  # 810 本关卡攻击次数不足
             else:
                 player.stage_component.stage_up_time = int(time.time())
@@ -405,7 +408,6 @@ def fight_settlement(stage_id, result, player):
     response = stage_response_pb2.StageSettlementResponse()
     drops = response.drops
     res = response.res
-    res.result = True
 
     # 校验是否保存关卡
     fight_cache_component = player.fight_cache_component
@@ -451,6 +453,12 @@ def fight_settlement(stage_id, result, player):
                     stage_cache.remove(event_cache)
                     player.travel_component.fight_cache = [0, 0]
                     player.travel_component.save()
+
+                else:
+                    logger.error('stageid != travel fight cache stage id ')
+                    response.res.result = False
+                    response.res.result_no = 817
+                    return response.SerializeToString()
             else:
                 player.stamina.stamina -= conf.vigor
                 player.stamina.save_data()
@@ -497,7 +505,7 @@ def fight_settlement(stage_id, result, player):
             task_data = task_status(player)
             remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
-    res.message = u'成功返回'
+    res.result = True
     return response.SerializePartialToString()
 
 

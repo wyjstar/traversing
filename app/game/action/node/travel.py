@@ -243,7 +243,7 @@ def travel_settle_833(data, player):
     #         return response.SerializeToString()
 
     # 结算
-    gain(player, get_drop_data(event_cache[1]))
+    gain(player, event_cache[1])
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
@@ -332,7 +332,7 @@ def no_wait_835(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    gain(player, get_drop_data(event_cache[1]))
+    gain(player, event_cache[1])
     player.finance.gold -= event_info.price
     player.finance.save_data()
 
