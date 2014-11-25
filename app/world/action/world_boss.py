@@ -10,7 +10,7 @@ from app.battle.battle_process import BattlePVBProcess
 
 
 @rootserviceHandle
-def pvb_get_before_fight_info_remote():
+def pvb_get_before_fight_info_remote(player_id):
     """
     获取世界boss开战前的信息：
     1. 幸运武将
@@ -43,6 +43,12 @@ def pvb_get_before_fight_info_remote():
     response.open_or_not = world_boss.open_or_not
     # 剩余血量
     response.hp_left = int(world_boss.hp)
+    # 伤害
+    response.demage_hp = world_boss.get_demage_hp(player_id)
+    # 名次
+    response.rank_no = world_boss.get_rank_no(player_id)
+
+
     return response.SerializeToString()
 
 def update_rank_items(rank_item_pb, rank_item):

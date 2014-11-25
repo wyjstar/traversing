@@ -15,7 +15,7 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='world_boss.proto',
   package='',
-  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"X\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x15\n\rfirst_hero_no\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\"\xb7\x02\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x18\n\x10lucky_high_heros\x18\x02 \x03(\x05\x12\x1a\n\x12lucky_middle_heros\x18\x03 \x03(\x05\x12\x17\n\x0flucky_low_heros\x18\x04 \x03(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\n \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0b \x01(\x05\"\'\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\"B\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\"\x93\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x02(\x05\x12\x14\n\x0c\x66ight_result\x18\x05 \x02(\x08')
+  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"X\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x15\n\rfirst_hero_no\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\"\x8d\x03\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x18\n\x10lucky_high_heros\x18\x02 \x03(\x05\x12\x1a\n\x12lucky_middle_heros\x18\x03 \x03(\x05\x12\x17\n\x0flucky_low_heros\x18\x04 \x03(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x1b\n\x13last_fight_end_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\"\'\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\"B\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\"\x93\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x02(\x05\x12\x14\n\x0c\x66ight_result\x18\x05 \x02(\x08')
 
 
 
@@ -140,15 +140,43 @@ _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='encourage_coin_num', full_name='PvbBeforeInfoResponse.encourage_coin_num', index=9,
+      name='demage_hp', full_name='PvbBeforeInfoResponse.demage_hp', index=9,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='encourage_gold_num', full_name='PvbBeforeInfoResponse.encourage_gold_num', index=10,
+      name='rank_no', full_name='PvbBeforeInfoResponse.rank_no', index=10,
       number=11, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='fight_times', full_name='PvbBeforeInfoResponse.fight_times', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='last_fight_end_time', full_name='PvbBeforeInfoResponse.last_fight_end_time', index=12,
+      number=13, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='encourage_coin_num', full_name='PvbBeforeInfoResponse.encourage_coin_num', index=13,
+      number=14, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='encourage_gold_num', full_name='PvbBeforeInfoResponse.encourage_gold_num', index=14,
+      number=15, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -163,7 +191,7 @@ _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=138,
-  serialized_end=449,
+  serialized_end=535,
 )
 
 
@@ -190,8 +218,8 @@ _PVBPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=451,
-  serialized_end=490,
+  serialized_start=537,
+  serialized_end=576,
 )
 
 
@@ -225,8 +253,8 @@ _ENCOURAGEHEROSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=492,
-  serialized_end=558,
+  serialized_start=578,
+  serialized_end=644,
 )
 
 
@@ -281,8 +309,8 @@ _PVBFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=561,
-  serialized_end=708,
+  serialized_start=647,
+  serialized_end=794,
 )
 
 _PVBBEFOREINFORESPONSE.fields_by_name['rank_items'].message_type = _PVBRANKITEM

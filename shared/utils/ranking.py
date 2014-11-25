@@ -60,13 +60,20 @@ class Ranking:
         """
         获取某个key的名次
         """
-        return self.redis.zrank(self.label, key) + 1
+        rank_no = self.redis.zrank(self.label, key)
+        if not rank_no:
+            return 0
+        return rank_no + 1
+
 
     def get_value(self, key):
         """
         获取某个key的值
         """
-        return self.redis.zscore(self.label, key)
+        value = self.redis.zscore(self.label, key)
+        if not value:
+            return 0
+        return value
 
     def incr_value(self, key, value):
         """

@@ -29,11 +29,16 @@ def get_before_fight_1701(data, player):
     1. 剩余血量
     2. 鼓舞次数
     """
-    world_data =  remote_gate['world'].pvb_get_before_fight_info_remote()
+    world_data =  remote_gate['world'].pvb_get_before_fight_info_remote(player.base_info.id)
     response = PvbBeforeInfoResponse()
     response.ParseFromString(world_data)
+    player.world_boss.reset_info() # 重设信息
+
     player.world_boss.stage_id = response.stage_id
-    response.encourage_coin_num, response.encourage_gold_num = player.world_boss.get_encourage_num()
+    player.world_boss.save_data()
+    response.encourage_coin_num = player.world_boss.encourage_coin_num
+    response.encourage_gold_num = player.world_boss.encourage_gold_num
+    response.fight_times = player.world_boss.fight_times
     return response.SerializePartialToString()
 
 
@@ -171,5 +176,10 @@ def pvb_fight_start_1705(pro_data, player):
     result = remote_gate['world'].pvb_fight_remote(red_units,
             unparalleled, blue_units, player_info)
     response.fight_result = result
+
+
+    # 玩家战斗次数
+    player.world_boss.fight_times += 1
+    player.world_boss.save_data()
     return response.SerializePartialToString()
 

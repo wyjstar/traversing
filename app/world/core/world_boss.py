@@ -191,7 +191,6 @@ class WorldBoss(object):
     def current_stage_info(self):
         return special_stage_config.get("boss_stages").get(self._stage_id)
 
-
     def add_rank_item(self, player_info):
         """
         每次战斗结束, 添加排名
@@ -211,7 +210,7 @@ class WorldBoss(object):
         """
         返回伤害最大前十名
         """
-        instance = Ranking.instance("WorldBossDemage")
+        instance = self.get_rank_instance()
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
             player_info = redis_client.get(player_id)
@@ -224,10 +223,22 @@ class WorldBoss(object):
         """
         rank no
         """
-        instance = Ranking.instance("WorldBossDemage")
+        instance = self.get_rank_instance()
         player_id = instance.get(no, no)[0][0]
 
         player_info = redis_client.get(player_id)
         return player_info
+
+    def get_demage_hp(self, player_id):
+        demage_hp = self.get_rank_instance().get_value(player_id)
+        return demage_hp
+
+    def get_rank_no(self, player_id):
+        rank_no = self.get_rank_instance().get_rank_no(player_id)
+        return rank_no
+
+    def get_rank_instance(self):
+        return Ranking.instance("WorldBossDemage")
+
 
 world_boss = WorldBoss()
