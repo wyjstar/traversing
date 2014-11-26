@@ -124,6 +124,13 @@ def pvb_reborn_1704(data, player):
         response.result_no = 102
         return response.SerializePartialToString()
 
+    #2. 校验CD
+    current_time = get_current_timestamp()
+    if current_time - player.world_boss.last_fight_time > base_config.get("free_relive_time"):
+        response.result = False
+        response.result_no = 1701
+        return response.SerializePartialToString()
+
     player.finance.gold -= need_gold
     player.finance.save_data()
     return response.CommonResponse()
