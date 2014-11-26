@@ -174,8 +174,8 @@ def unpar_upgrade_705(pro_data, player):
     request.ParseFromString(pro_data)
     response = CommonResponse()
     __line_up = player.line_up_component
-    response.result = __line_up.unpar_upgrade(request.unpar_id,
-                                              request.unpar_level)
+    response.result = __line_up.unpar_upgrade(request.skill_id,
+                                              request.skill_level)
     return response.SerializePartialToString()
 
 
