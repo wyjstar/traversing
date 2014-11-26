@@ -448,7 +448,8 @@ def fight_settlement(stage_id, result, player):
                         response.res.result_no = 813
                         return response.SerializeToString()
 
-                if stage_id == game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]).parameter[0][0]:
+                if player.travel_component.fight_cache[1] and game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]) and \
+                        stage_id == game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]).parameter[0][0]:
 
                     gain(player, event_cache[1])
                     stage_cache.remove(event_cache)
