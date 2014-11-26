@@ -84,7 +84,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info)
     return result
 
 @rootserviceHandle
-def get_player_info_remote(no):
+def pvb_player_info_remote(no):
     """
     获取玩家阵容信息
     no为玩家排名

@@ -249,7 +249,7 @@ class BattleRound(object):
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
                     logger.debug_cal("    反击目标: %s" % (target_nos))
-                self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units)
+                self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units, True)
 
         logger.debug_cal("-" * 80)
 

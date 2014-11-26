@@ -54,7 +54,7 @@ def get_player_info_1702(data, player):
     根据玩家排名，查看排行榜内的玩家信息。
     """
     request = PvbPlayerInfoRequest()
-    request.ParseToString(data)
+    request.ParseFromString(data)
     line_up_info = remote_gate['world'].pvb_player_info_remote(request.rank_no)
     return line_up_info
 

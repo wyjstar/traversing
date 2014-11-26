@@ -242,7 +242,8 @@ class WorldBoss(object):
         instance = self.get_rank_instance()
         player_id = instance.get(no, no)[0][0]
 
-        player_info = redis_client.get(player_id)
+        player_info = cPickle.loads(redis_client.get(player_id))
+
         return player_info
 
     def get_demage_hp(self, player_id):
