@@ -5,6 +5,11 @@ created by server on 14-7-25下午5:52.
 
 root_path = "../app/proto_file/proto/"
 import os
+try:
+    os.remove("traversing_one.proto")
+    os.remove("traversing_one.pb")
+except:
+    pass
 
 result_file = open("traversing_one.proto", "w")
 for file_name in os.listdir(root_path):
@@ -19,3 +24,5 @@ for file_name in os.listdir(root_path):
 
         result_file.write("\n")
 result_file.close()
+
+os.system("protoc -o traversing_one.pb traversing_one.proto")

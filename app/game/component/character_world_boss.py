@@ -17,7 +17,7 @@ class CharacterWorldBoss(Component):
         self._encourage_gold_num = 0   # 钻石鼓舞
         self._last_request_time = 0    # 上次请求时间
         self._fight_times = 0          # 战斗次数
-        self._last_fight_end_times = 0 # 上次战斗结束时间
+        self._last_fight_time = 0 # 上次战斗结束时间
         self._stage_id = 0             # 当前关卡
 
     def init_data(self):
@@ -30,10 +30,14 @@ class CharacterWorldBoss(Component):
                 self._encourage_coin_num = data.get('encourage_coin_num', 0)
                 self._encourage_gold_num = data.get('encourage_gold_num', 0)
                 self._last_request_time = data.get('last_request_time', 0)
+                self._last_fight_time = data.get('last_fight_time', 0)
+                self._fight_times = data.get('fight_times', 0)
+                self._stage_id = data.get('stage_id', 0)
         else:
             data = {'encourage_coin_num': self._encourage_coin_num,
                     'encourage_gold_num': self._encourage_gold_num,
                     'last_request_time': self._last_request_time,
+                    'last_fight_time': self._last_fight_time,
                     'fight_times': self._fight_times,
                     'stage_id': self._stage_id}
             tb_character_activity.new({'id': self.owner.base_info.id,
@@ -45,6 +49,7 @@ class CharacterWorldBoss(Component):
         data = {'encourage_coin_num': self._encourage_coin_num,
                     'encourage_gold_num': self._encourage_gold_num,
                     'last_request_time': self._last_request_time,
+                    'last_fight_time': self._last_fight_time,
                     'fight_times': self._fight_times,
                     'stage_id': self._stage_id}
         activity.update('world_boss', data)
@@ -59,6 +64,8 @@ class CharacterWorldBoss(Component):
             self._encourage_coin_num = 0
             self._encourage_gold_num = 0
             self._fight_times = 0
+            self._last_fight_time = 0
+            self._stage_id = 0
             self._last_request_time = get_current_timestamp()
             self.save_data()
 
@@ -93,4 +100,12 @@ class CharacterWorldBoss(Component):
     @fight_times.setter
     def fight_times(self, value):
         self._fight_times = value
+
+    @property
+    def last_fight_time(self):
+        return self._last_fight_time
+
+    @last_fight_time.setter
+    def last_fight_time(self, value):
+        self._last_fight_time = value
 

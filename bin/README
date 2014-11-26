@@ -4,11 +4,9 @@
 # 协议脚本
 protoc.sh	#编译protobuf文件
 
-# 数据脚本
-flushall.sh	#重建数据（执行以下5个脚本）
-_db_create.sh	#重新建表
-_db_modify.sh	#更新表结构
-_db_insert.sh	#插入数据
-_mc_restart.sh	#重启memcached
-_rd_flushall.sh	#清空redis
+# 数据库脚本
+flushdb.sh	#重建数据库（执行以下三个脚本）
+db_create.sh	#重新建表
+db_modify.sh	#更新表结构
+db_insert.sh	#插入数据
 

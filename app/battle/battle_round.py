@@ -37,7 +37,7 @@ class BattleRound(object):
 
     def enter_battle(self):
         """
-        在战斗开始前，进行触发类别为2的突破技能buff。
+        在战斗开始前，进行触发类别为2的突破技能buff
         """
         logger.debug_cal("    进入战场，添加的buff...")
         for temp in self._red_units.values():

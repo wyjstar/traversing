@@ -25,12 +25,12 @@ class UnitSkill(object):
         self._has_skill_buff = False
         temp_unit = unit_config.get(self._unit_no)
         skill_info = skill_config.get(temp_unit.normalSkill, None)
-        logger.debug("skill_info:%s", skill_info)
+        logger.debug("skill_info%s" % skill_info)
         self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = \
             self.get_skill_buff(skill_info.get("group"))
 
         skill_info = skill_config.get(temp_unit.rageSkill, None)
-        logger.debug("skill_info:%s", skill_info)
+        logger.debug("skill_info%s" % skill_info)
         self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff = self.get_skill_buff(
             skill_info.get("group"))
 
@@ -168,6 +168,17 @@ class MonsterSkill(UnitSkill):
     def __init__(self, unit, mp_config):
         super(MonsterSkill, self).__init__(unit, monster_config, mp_config)
 
+    def before_skill_buffs(self, is_hit):
+        return []
+
+    def after_skill_buffs(self, is_hit):
+        return []
+
+    def back_skill_buffs(self, is_hit, is_block):
+        return []
+
+    def begin_skill_buffs(self):
+        return []
 
 class BestSkill(object):
     """docstring for BestSkill"""
@@ -224,6 +235,33 @@ class BestSkill(object):
                 self._mp = self._mp_max_3
 
 
+class BestSkillNone(object):
+    """docstring for BestSkill"""
+
+    def __init__(self):
+        super(BestSkillNone, self).__init__()
+
+    def is_full(self):
+        return False
+
+    def is_can(self):
+        return False
+
+    @property
+    def skill_buffs(self):
+        """docstring for skill_buff_ids"""
+        return []
+
+    def reset_mp(self):
+        #释放技能后，减少怒气
+        pass
+
+    def add_mp(self):
+        pass
+
+
+
+
 class FriendSkill(object):
     """docstring for FriendSkill"""
 
@@ -247,10 +285,10 @@ class FriendSkill(object):
         return self._unit.skill_buff_ids
 
     def before_skill_buffs(self, is_hit):
-        return self._unit.skill.before_skill_buffs(is_hit)
+        return []
 
     def after_skill_buffs(self, is_hit):
-        return self._unit.skill.after_skill_buffs(is_hit)
+        return []
 
     def attack_skill_buffs(self):
         """docstring for attack_skill_buffs"""
@@ -268,3 +306,28 @@ class FriendSkill(object):
             self._mp += self._mp_step
         if self._mp > self._mp_max:
             self._mp = self._mp_max
+
+
+class FriendSkillNone(object):
+    """docstring for FriendSkill"""
+
+    def __init__(self):
+        super(FriendSkillNone, self).__init__()
+
+    def is_full(self):
+        return False
+
+
+    def attack_skill_buffs(self):
+        """docstring for attack_skill_buffs"""
+        return []
+
+    def reset_mp(self):
+        """
+        reset mp
+        """
+        pass
+
+    def add_mp(self):
+        """docstring for add_mp"""
+        pass

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from battle_round import BattleRound
 from shared.db_opear.configs_data.game_configs import base_config
-from battle_skill import BestSkill
+from battle_skill import BestSkill, BestSkillNone
 from gfirefly.server.logobj import logger
 
 
@@ -13,8 +13,8 @@ class BattlePVPProcess(object):
         self._red_units = red_units
         self._blue_units = blue_units
 
-        self._red_best_skill = BestSkill(red_best_skill_no)
-        self._blue_best_skill = BestSkill(blue_best_skill_no)
+        self._red_best_skill = BestSkill(red_best_skill_no) if red_best_skill_no else BestSkillNone()
+        self._blue_best_skill = BestSkill(blue_best_skill_no) if blue_best_skill_no else BestSkillNone()
         logger.debug_cal("我方阵容:")
         for k, v in self._red_units.items():
             logger.debug_cal("%d %s" % (k, v))
@@ -93,7 +93,8 @@ class BattlePVBProcess(object):
         self._red_units = red_units
         self._blue_units = blue_units
 
-        self._red_best_skill = BestSkill(red_best_skill_no)
+        self._red_best_skill = BestSkill(red_best_skill_no) if red_best_skill_no else BestSkillNone()
+        self._blue_best_skill = BestSkillNone()
         logger.debug_cal("我方阵容:")
         for k, v in self._red_units.items():
             logger.debug_cal("%d %s" % (k, v))
@@ -106,7 +107,7 @@ class BattlePVBProcess(object):
     def process(self):
         """docstring for process"""
         battle_round = BattleRound()
-        if not battle_round.init_round(self._red_units, self._red_best_skill, self._blue_units):
+        if not battle_round.init_round(self._red_units, self._red_best_skill, self._blue_units, self._blue_best_skill):
             return True
         logger.debug_cal("开始战斗...")
 

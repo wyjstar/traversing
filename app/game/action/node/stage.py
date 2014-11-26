@@ -201,13 +201,13 @@ def stage_sweep_907(pro_data, player):
         lively_event = CountEvent.create_event(EventType.STAGE_2, times, ifadd=True)
     elif special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         lively_event = CountEvent.create_event(EventType.STAGE_3, times, ifadd=True)
-    
+
     tstatus = player.tasks.check_inter(lively_event)
     player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
-        
+
     return stage_sweep(stage_id, times, player)
 
 
@@ -318,9 +318,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     result_no = 0
 
     # 校验关卡是否开启
-    state = player.stage_component.check_stage_state(stage_id)
-    if state == -2:
-        return {'result': False, 'result_no': 803}  # 803 未开启
+    #state = player.stage_component.check_stage_state(stage_id)
+    #if state == -2:
+        #return {'result': False, 'result_no': 803}  # 803 未开启
 
     conf = 0
     if special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
@@ -340,6 +340,8 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         if tm_time.tm_mday == time.localtime().tm_mday \
             and vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
+    elif special_stage_config.get('boss_stages').get(stage_id):  # boss关卡
+        pass
 
     else:  # 普通关卡
         if time.localtime(player.stage_component.stage_up_time).tm_mday == time.localtime().tm_mday:

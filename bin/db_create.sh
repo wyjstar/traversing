@@ -3,12 +3,12 @@
 databases_dir="app/doc/databases"
 cobar_connect="mysql -h127.0.0.1 -utest -ptest -P8066 -Ddb_traversing"
 
-echo "> recreate acccount"
+echo "rebuild acccount database"
 eval "$cobar_connect < $databases_dir/account.sql"
 
-echo "> recreate traversing"
+echo "rebuild traversing database"
 eval "$cobar_connect < $databases_dir/traversing.sql"
-echo "> recreate traversing_master"
 eval "$cobar_connect < $databases_dir/traversing_master.sql"
 
+echo "done"
 exit 0
