@@ -13,6 +13,13 @@ from robot_world_boss import RobotWorldBoss
 
 monkey.patch_os()
 
+RED = '\033[31m'
+GREEN = '\033[32m'
+YELLOW = '\033[33m'
+MAGENTA = '\033[35m'
+OCEAN = '\033[36m'
+RESET = '\033[0m'
+
 robot_type = {}
 robot_type['1'] = Robot
 robot_type['2'] = RobotFriend
@@ -24,16 +31,16 @@ robot_manager = RobotManager()
 
 
 def enter_command(e):
-    print '='*68
-    print '1.add robot'
-    print '2.robot action'
-    print '3.quit'
-    print 'please input command id:',
+    print MAGENTA + '='*68
+    print MAGENTA + '1.add robot'
+    print MAGENTA + '2.robot action'
+    print MAGENTA + '3.quit'
+    print MAGENTA + 'please input command id:',
 
     select = raw_input()
     while select not in ['1', '2', '3']:
         print select
-        print 'error input! please input command id:',
+        print RED + 'error input! please input command id:',
         select = raw_input()
 
     if select == '1':
@@ -45,22 +52,22 @@ def enter_command(e):
 
 
 def enter_addrobot(e):
-    print '='*68
+    print MAGENTA + '='*68
     keys = robot_type.keys()
     keys.sort()
     for k in keys:
-        print "%s:%s" % (k, robot_type[k])
+        print YELLOW + "%s:%s" % (k, robot_type[k])
 
-    print 'please input type id:',
+    print YELLOW + 'please input type id:',
     select = raw_input()
     while select not in robot_type:
-        print 'error! please input type id again:',
+        print RED + 'error! please input type id again:',
         select = raw_input()
 
-    print 'please input number wanna robot create:',
+    print YELLOW + 'please input number wanna robot create:',
     number = raw_input()
     while not number.isdigit():
-        print 'error! please input number wanna robot create again:',
+        print RED + 'error! please input number wanna robot create again:',
         number = raw_input()
 
     robot_manager.add_robot(robot_type[select], number)
@@ -72,23 +79,23 @@ def on_addrobot():
 
 
 def enter_robotaction(e):
-    print '='*68
-    print "please input robot id[0-%d]:" % (robot_manager.count - 1),
+    print OCEAN + '='*68
+    print YELLOW + "please input robot id[0-%d]:" % (robot_manager.count - 1),
     robot_id = raw_input()
     while not robot_id.isdigit() or int(robot_id) > robot_manager.count:
-        print 'error! please input robot id again:',
+        print RED + 'error! please input robot id again:',
         robot_id = raw_input()
 
     commands, command_args = robot_manager.get_robot_command(robot_id)
     for _ in range(len(commands)):
-        print "%d.%s %s" % (_, commands[_], command_args[_])
+        print YELLOW + "%d.%s %s" % (_, commands[_], command_args[_])
 
-    print 'please input command id:',
+    print YELLOW + 'please input command id:',
     command = raw_input()
     cid = command.split(' ')[0]
     args = command.split(' ')[1:]
     while not cid.isdigit() or int(cid) > len(commands):
-        print 'error! please input command id again:',
+        print RED + 'error! please input command id again:',
         command = raw_input()
         cid = command.split(' ')[0]
         args = command.split(' ')[1:]

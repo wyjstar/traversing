@@ -20,12 +20,22 @@ message LineUpSlot{
 
 // 取得阵容 701
 
+message Unpar{
+	required unpar_id = 1;
+	required unpar_level = 2;
+}
+
 //所有返回
 message LineUpResponse{
 	repeated LineUpSlot slot = 1;
 	repeated LineUpSlot sub = 2;
-	required int32 unpar = 3;
+	repeated Unpar unpars = 3;
 	optional CommonResponse res = 4;
+}
+
+message LineUpUnparUpgrade{
+	required int32 skill_id = 1;
+	required int32 skill_level = 2;
 }
 
 // 更换装备 703
