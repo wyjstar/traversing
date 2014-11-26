@@ -365,6 +365,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         if not open_time <= time.time() <= close_time:
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
+
+    print "*"*80
+    print line_up
     # 保存阵容
     player.line_up_component.line_up_order = line_up
     player.line_up_component.save_data()

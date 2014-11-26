@@ -243,6 +243,7 @@ class LineUpSlotComponent(Component):
         is_boss = False
 
         line_up_order = self.owner.line_up_order
+        print line_up_order
         position = line_up_order.index(self._slot_no)
         position += 1
         battlt_unit = do_assemble(hero_no, quality, break_skill_buff_ids,

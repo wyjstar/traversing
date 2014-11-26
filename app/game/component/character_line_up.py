@@ -169,9 +169,12 @@ class CharacterLineUpComponent(Component):
             if not hero_no:
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
-            new_line_up_order[pos],
-            new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1],
-            new_line_up_order[pos]
+
+            print new_pos, pos
+            print "-"*80
+            new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1],new_line_up_order[pos]
+
+
         self._line_up_order = new_line_up_order
 
     @property

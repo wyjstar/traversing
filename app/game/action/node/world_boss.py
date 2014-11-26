@@ -40,6 +40,10 @@ def get_before_fight_1701(data, player):
     player.world_boss.save_data()
     response.encourage_coin_num = player.world_boss.encourage_coin_num
     response.encourage_gold_num = player.world_boss.encourage_gold_num
+    logger.debug("encourage_coin_num %s" % player.world_boss.encourage_coin_num)
+    logger.debug("encourage_gold_num %s" % player.world_boss.encourage_gold_num)
+    print response
+    print "*"*80
     response.fight_times = player.world_boss.fight_times
     return response.SerializePartialToString()
 
@@ -74,6 +78,8 @@ def encourage_heros_1703(data, player):
         if coin < need_coin:
             response.result = False
             response.result_no = 101
+            logger.debug("*"*80)
+            print response
             return response.SerializePartialToString()
 
         player.finance.coin -= need_coin
@@ -89,6 +95,8 @@ def encourage_heros_1703(data, player):
         if gold < need_gold:
             response.result = False
             response.result_no = 102
+            logger.debug("*"*80)
+            print response
             return response.SerializePartialToString()
         player.finance.gold -= need_gold
         player.finance.save_data()
@@ -96,6 +104,8 @@ def encourage_heros_1703(data, player):
 
     player.world_boss.save_data()
     response.result = True
+    logger.debug("encourage_coin_num %s" % player.world_boss.encourage_coin_num)
+    logger.debug("encourage_gold_num %s" % player.world_boss.encourage_gold_num)
     return response.SerializePartialToString()
 
 
