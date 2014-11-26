@@ -131,7 +131,7 @@ def stage_start_903(pro_data, player):
     if monster_unpara:
         response.monster_unpar = monster_unpara
 
-    response.hero_unpar = unparalleled
+    response.hero_unpar = player.line_up_component.get_skill_id_by_unpar(unparalleled)
 
     if f_unit:
         friend = response.friend

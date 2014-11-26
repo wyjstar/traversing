@@ -119,6 +119,14 @@ class CharacterLineUpComponent(Component):
 
         return True
 
+    def get_skill_id_by_unpar(self, unpar):
+        if unpar in self._unpars:
+            return 0
+        item = warriors_config.get(unpar)
+        if not item:
+            logger.error('can not find warrior:%s', unpar)
+        return item.skill_ids[self._unpars[unpar]]
+
     @property
     def lead_hero_no(self):
         """主力英雄编号
@@ -195,7 +203,8 @@ class CharacterLineUpComponent(Component):
                 conditions = item.get('conditions')
                 if conditions and hero_nos.issuperset(conditions):
                     self._unpars[skill_id] = 1
-        logger.warning('unpars:%s', self._unpars)
+        # logger.warning('unpars:%s', str(self._unpars))
+        print '=======>>>>>>>>>', self._unpars
 
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
