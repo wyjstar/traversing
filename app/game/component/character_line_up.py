@@ -122,9 +122,11 @@ class CharacterLineUpComponent(Component):
     def get_skill_id_by_unpar(self, unpar):
         if unpar in self._unpars:
             return 0
+
         item = warriors_config.get(unpar)
         if not item:
             logger.error('can not find warrior:%s', unpar)
+            return 0
         return item.skill_ids[self._unpars[unpar]]
 
     @property
@@ -170,9 +172,7 @@ class CharacterLineUpComponent(Component):
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
 
-            print new_pos, pos
-            print "-"*80
-            new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1],new_line_up_order[pos]
+            new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
 
 
         self._line_up_order = new_line_up_order
@@ -207,7 +207,6 @@ class CharacterLineUpComponent(Component):
                 if conditions and hero_nos.issuperset(conditions):
                     self._unpars[skill_id] = 1
         # logger.warning('unpars:%s', str(self._unpars))
-        print '=======>>>>>>>>>', self._unpars
 
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
