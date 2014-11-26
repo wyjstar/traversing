@@ -5,7 +5,7 @@ from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
 from app.proto_file import stage_request_pb2
 from app.game.action.node.stage import assemble, fight_start
 from gfirefly.server.logobj import logger
-from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest
+from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, PvbPlayerInfoRequest
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.node.line_up import line_up_info
@@ -49,7 +49,10 @@ def get_player_info_1702(data, player):
     """
     根据玩家排名，查看排行榜内的玩家信息。
     """
-    pass
+    request = PvbPlayerInfoRequest()
+    request.ParseToString(data)
+    line_up_info = remote_gate['world'].pvb_player_info_remote(request.rank_no)
+    return line_up_info
 
 
 @remoteserviceHandle('gate')
