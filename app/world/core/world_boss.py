@@ -69,6 +69,10 @@ class WorldBoss(object):
     def hp(self):
         return self._hp
 
+    @hp.setter
+    def hp(self, value):
+        self._hp = value
+
     def save_data(self):
         world_boss_data = dict(hp=self._hp,
                 lucky_high_heros=self._lucky_high_heros,
@@ -224,7 +228,8 @@ class WorldBoss(object):
         instance = self.get_rank_instance()
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
-            player_info = redis_client.get(player_id)
+            player_info = cPickle.loads(redis_client.get(player_id))
+
             player_info["demage_hp"] = demage_hp
             rank_items.append(player_info)
 

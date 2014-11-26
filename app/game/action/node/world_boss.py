@@ -9,6 +9,8 @@ from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoRespons
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.node.line_up import line_up_info
+import cPickle
+from shared.utils.date_util import get_current_timestamp
 
 #from app.proto_file import world_boss_pb2
 
@@ -152,35 +154,38 @@ def pvb_fight_start_1705(pro_data, player):
     red_units = stage_info.get('red_units')
     blue_units = stage_info.get('blue_units')
 
+    logger.debug("--"*40)
+    print red_units
+    print blue_units
     for slot_no, red_unit in red_units.items():
-        if not red_unit:
-            continue
         red_add = response.red.add()
         assemble(red_add, red_unit)
 
-    for blue_group in blue_units:
-        blue_group_add = response.blue.add()
-        for slot_no, blue_unit in blue_group.items():
-            if not blue_unit:
-                continue
-            blue_add = blue_group_add.group.add()
-            assemble(blue_add, blue_unit)
+    blue_units = blue_units[0]
+    for no, blue_unit in blue_units.items():
+        blue_add = response.blue.add()
+        assemble(blue_add, blue_unit)
 
     response.red_best_skill = unparalleled
     # mock fight.
     player_info = {}
     player_info["player_id"] = player.base_info.id
-    player_info["nickname"] = player.base_info.nickname
+    player_info["nickname"] = player.base_info.base_name
     player_info["level"] = player.level.level
     player_info["line_up_info"] = line_up_info(player).SerializePartialToString()
 
-    result = remote_gate['world'].pvb_fight_remote(red_units,
-            unparalleled, blue_units, player_info)
+    str_red_units = cPickle.dumps(red_units)
+    str_blue_units = cPickle.dumps(blue_units)
+    logger.debug("--"*40)
+    print red_units
+    print blue_units
+    result = remote_gate['world'].pvb_fight_remote(str_red_units,
+            unparalleled, str_blue_units, player_info)
     response.fight_result = result
 
-
-    # 玩家战斗次数
+    # 玩家信息更新
     player.world_boss.fight_times += 1
+    player.world_boss.last_fight_time = get_current_timestamp()
     player.world_boss.save_data()
     logger.debug("fight end..")
 

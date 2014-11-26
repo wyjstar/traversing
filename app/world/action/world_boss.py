@@ -7,6 +7,7 @@ from gfirefly.server.globalobject import rootserviceHandle
 from app.proto_file import world_boss_pb2
 from app.world.core.world_boss import world_boss
 from app.battle.battle_process import BattlePVBProcess
+import cPickle
 
 
 @rootserviceHandle
@@ -55,22 +56,24 @@ def update_rank_items(rank_item_pb, rank_item):
     rank_item_pb.nickname = rank_item.get("nickname", "")
     rank_item_pb.level = rank_item.get("level", 0)
     rank_item_pb.first_hero_no = rank_item.get("first_hero_no", 0)
-    rank_item_pb.demage_hp = rank_item.get("demage_hp", 0)
+    rank_item_pb.demage_hp = int(rank_item.get("demage_hp", 0))
 
 @rootserviceHandle
-def pvb_fight_remote(red_units, red_best_skill, blue_units, player_info):
+def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info):
+    red_units = cPickle.loads(str_red_units)
+    blue_units = cPickle.loads(str_blue_units)
     process = BattlePVBProcess(red_units, red_best_skill, blue_units)
     result, hp_left = process.process()
 
     # 保存worldboss数据
     world_boss.hp = hp_left
-    world_boss.open_or_not = (not result)
 
     # 保存排行和玩家信息
     demage_hp = blue_units.get(5).hp - hp_left # 伤害血量
     first_hero_no = red_units.values()[0].unit_no # 第一个武将no，用于显示头像
     player_info["first_hero_no"] = first_hero_no
-    world_boss.add_rank_item(player_info, demage_hp)
+    player_info["demage_hp"] = demage_hp
+    world_boss.add_rank_item(player_info)
 
     # 如果赢了，保存最后击杀
     if result:

@@ -52,7 +52,7 @@
                     "rootname": "login"
                 },
                 {
-                    "roothost": "<=login_ip=>",
+                    "roothost": "127.0.0.1",
                     "rootport": 30004,
                     "rootname": "world"
                 }
