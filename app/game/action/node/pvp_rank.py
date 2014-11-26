@@ -143,8 +143,7 @@ def pvp_fight_request_1505(data, player):
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
     response.red_skill = request.skill
-    print "*"*80
-    
+
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:
