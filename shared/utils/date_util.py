@@ -41,7 +41,6 @@ def str_time_period_to_timestamp(str_time_period):
 
     time1s = time1.split(':')
     time2s = time2.split(':')
-    print time2s
 
     return (get_current_day_timestamp(hour=int(time1s[0]), minute=int(time1s[1])),
     get_current_day_timestamp(hour=int(time2s[0]), minute=int(time2s[1])))
