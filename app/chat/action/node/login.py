@@ -13,7 +13,6 @@ def login_chat_remote(dynamic_id, character_id, character_nickname, guild_id):
     @param dynamic_id: int 客户端的id
     @param character_id: int角色的id
     """
-    print 'user login chat     '*12
     character = ChaterManager().addchater_by_id(character_id)
     if character:
         ChaterManager().update_onland(character_id, dynamic_id, guild_id)
@@ -39,7 +38,9 @@ def logout_chat_1003(dynamic_id):
     if character:
         ChatRoomManager().leave_room(dynamic_id, character.room_id)
         ChatRoomManager().leave_room(dynamic_id, character.guild_id)
-        ChaterManager().update_outland(character.character_id, dynamic_id, character.guild_id)
+        ChaterManager().update_outland(character.character_id,
+                                       dynamic_id,
+                                       character.guild_id)
 
     return True
 

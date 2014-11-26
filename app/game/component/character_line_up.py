@@ -120,7 +120,7 @@ class CharacterLineUpComponent(Component):
         return True
 
     def get_skill_id_by_unpar(self, unpar):
-        if unpar in self._unpars:
+        if unpar not in self._unpars:
             return 0
 
         item = warriors_config.get(unpar)
