@@ -457,11 +457,10 @@ def fight_settlement(stage_id, result, player):
                     player.travel_component.save()
 
                 else:
-                    # TODO
                     logger.error('stageid != travel fight cache stage id ')
-                    # response.res.result = False
-                    # response.res.result_no = 817
-                    # return response.SerializeToString()
+                    response.res.result = False
+                    response.res.result_no = 817
+                    return response.SerializeToString()
             else:
                 player.stamina.stamina -= conf.vigor
                 player.stamina.save_data()
