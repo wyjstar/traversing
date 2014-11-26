@@ -111,11 +111,18 @@ class CharacterLineUpComponent(Component):
             logger.error('expands, %s', skill_upgrade_level)
             return False
 
+        if skill_upgrade_level not in expends:
+            logger.error('expands, %s', skill_upgrade_level)
+            return False
+
         spirit, gold = expends.get(skill_upgrade_level)
         if self.owner.finance.gold < gold:
             return False
 
+        self._unpars[skill_id] = skill_upgrade_level
         self.owner.finance.consume_gold(gold)
+        self.owner.finance.save_data()
+        self.save_data()
 
         return True
 
