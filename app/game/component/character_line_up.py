@@ -115,7 +115,7 @@ class CharacterLineUpComponent(Component):
         if self.owner.finance.gold < gold:
             return False
 
-        self.owner.consume_gold(gold)
+        self.owner.finance.consume_gold(gold)
 
         return True
 
