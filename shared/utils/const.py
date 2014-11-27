@@ -36,7 +36,7 @@ const.ITEM_EQUIP = 102  # 装备类型
 
 const.LINE_UP_INDEX = [1, 2, 3, 4, 5, 6]  # 阵容编号
 
-const.TRAVEL_ITEM = u'107'
+const.TRAVEL_ITEM = u'109'
 const.COIN = u'1'
 const.GOLD = u'2'
 const.HERO_SOUL = u'3'
