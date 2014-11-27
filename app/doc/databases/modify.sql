@@ -13,3 +13,20 @@ CREATE TABLE `tb_character_lively` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE tb_character_lively ADD column last_day varchar(8);
+DROP TABLE IF EXISTS `tb_character_stone`;
+CREATE TABLE `tb_character_stone` (
+  `id` bigint(20) NOT NULL,
+  `stones` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tb_character_mine`;
+CREATE TABLE `tb_character_mine` (
+  `id` bigint(20) NOT NULL,
+  `reset_day` varchar(8) NOT NULL,
+  `reset_times` int(11) NOT NULL,
+  `day_before` varchar(8) NOT NULL,
+  `lively` int(11) NOT NULL,
+  `mine` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
