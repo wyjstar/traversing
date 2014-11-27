@@ -351,7 +351,8 @@ def deal_apply_805(data, player):
             # 加入公会聊天室
             invitee_player = PlayersManager().get_player_by_id(p_id)
             if invitee_player:  # 在线
-                login_guild_chat(invitee_player.dynamic_id, invitee_player.guild.g_id)
+                remote_gate.login_guild_chat_remote(invitee_player.dynamic_id,
+                                                    invitee_player.guild.g_id)
                 invitee_player.guild.g_id = player.guild.g_id
                 invitee_player.guild.position = 5
                 invitee_player.guild.contribution = 0
