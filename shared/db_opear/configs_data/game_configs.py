@@ -131,4 +131,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print stage_config.get("stages")
+    print travel_event_config.get('events').get(10001).items[0]

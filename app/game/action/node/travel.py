@@ -54,7 +54,7 @@ def travel_831(data, player):
         else:
             travel_cache[stage_id] = []
             break
-
+    travel_event_id = 20001
     event_info = travel_event_config.get('events').get(travel_event_id)
     if not event_info:
         logger.error('get travel event config error')
@@ -194,7 +194,6 @@ def open_chest_836(data, player):
 
     player.travel_component.save()
 
-    logger.debug(response)
     response.res.result = True
     return response.SerializeToString()
 
@@ -231,8 +230,8 @@ def travel_settle_833(data, player):
 
     event_info = travel_event_config.get('events').get(args.event_id)
     if event_info.type == 1:
-        if int(time.time()) - event_cache[1] < \
-                event_info.parameter.items[0][0]:
+        if int(time.time()) - event_cache[2] < \
+                event_info.parameter.items()[0][0]:
             response.res.result = False
             response.res.result_no = 814
             return response.SerializeToString()
@@ -271,10 +270,12 @@ def event_start_834(data, player):
         return response.SerializeToString()
 
     event_cache = 0
+    flag = 0
     for event in stage_cache:
         if event[0] == event_id:
             event_cache = event
             break
+        flag += 1
 
     if not event_cache:
         logger.error("travel ：event id not found")
@@ -287,7 +288,8 @@ def event_start_834(data, player):
         response.time = start_time
         travel_event_id = event_cache[0]
         drop_data = event_cache[1]
-        event_cache = [travel_event_id, drop_data, start_time]
+        stage_cache[flag] = [travel_event_id, drop_data, start_time]
+
         player.travel_component.save()
     elif event_info.type == 2:
         player.travel_component.fight_cache = [stage_id, event_id]
@@ -321,7 +323,7 @@ def no_wait_835(data, player):
             break
 
     if not event_cache:
-        logger.error("travel ：event id not found")
+        logger.error("travel ：event id not found:%s", event_id)
         response.res.result = False
         response.res.result_no = 813
         return response.SerializeToString()
