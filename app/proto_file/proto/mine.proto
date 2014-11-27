@@ -1,0 +1,126 @@
+import "item.proto";
+import "common.proto";
+import "arena_shop.proto";
+
+//1241,1243,1245,1246,1248,1247, 1249
+message positionRequest
+{
+	required int32 position = 1; //探索位置
+}
+
+//矿点信息
+message mineData
+{
+	required int32 position = 1;//地图位置, 0玩家自己的初始矿
+	required int32 type = 2; //矿点类型 1玩家初始矿，2野外矿，3神秘商人，4巨龙宝箱，5副本
+	required int32 status = 3;//矿点状态1生产中，2可收获，3已枯竭，4空闲，5已领取，6副本已进入
+	optional string nickname = 4;//昵称
+	optional int32 last_time = 5;//倒计时
+}
+
+//更新矿点信息1240返回
+message mineUpdate
+{
+	required int32 last_times = 1; //今日剩余重置次数
+	repeated mineData mine = 2;//所有位置信息
+}
+
+//1241返回
+message searchResponse
+{
+	required CommonResponse res = 1;
+	required int32 position = 2;
+	repeated mineData mine = 3;//所有位置信息
+}
+
+//1242请求 地图重置
+message resetMap
+{
+	required int32 free = 1;//重置地图，1免费，2自费
+}
+
+//1242返回
+message resetResponse
+{
+	required CommonResponse res = 1;
+	required GameResourcesResponse consume = 2;
+	repeated mineData mine = 3;//所有位置信息
+}
+
+//符文石数据
+message stoneData
+{
+	required int32 stone_id = 1;
+	required int32 stone_num = 2;
+}
+//驻守数据
+message heroData
+{
+
+}
+
+//查看矿点详细信息返回1243
+message mineDetail
+{
+	required int32 position = 1;//位置
+	required CommonResponse res = 2;//通用返回
+	required mineData mine = 3;
+	repeated stoneData stones = 4;//符文石数据
+	required int32 increase = 5;//增产剩余时间，单位：秒
+	repeated heroData heros = 6;//驻守英雄信息
+}
+
+//1245返回
+message drawStones
+{
+	required int32 position = 1;
+	required CommonResponse res = 2;//通用返回
+	repeated stoneData stones = 3;
+}
+
+//神秘商人兑换1247请求，查看矿点兑换列表
+//message shopRequest
+//{
+//	required int32 position = 1; //位置
+//}
+
+//密境神秘商人商品状态
+message shopInfo
+{
+	required int32 shop_id = 1;//兑换商品id
+	required int32 status = 2;//商品状态0进行中，1已兑换
+}
+
+//神秘商人兑换请求1247的返回
+message shopStatus
+{
+	required int32 position = 1; //位置
+	repeated shopInfo shop = 2; //本矿点出售商品信息
+	required CommonResponse res = 3;
+}
+
+//密境神秘商人兑换请求1248请求
+message exchangeRequest
+{
+	required int32 position = 1;//位置
+	required int32 shop_id = 2;//兑换的商品id
+}
+//1248返回
+message exchangeResponse
+{
+	required int32 position = 1;//位置
+	required int32 shop_id = 2;//兑换商品id
+    required CommonResponse res = 3;
+    required GameResourcesResponse consume = 4;
+    required GameResourcesResponse gain = 5;
+}
+//1249 返回使用item_response.ItemUseResponse
+
+//增产返回1250
+message IncreaseResponse
+{
+	required int32 position = 1;//位置
+	required int32 last_time = 2;//增产剩余时间，单位：秒
+	required GameResourcesResponse consume = 3;
+	required CommonResponse res = 4;
+}

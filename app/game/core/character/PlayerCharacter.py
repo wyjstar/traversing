@@ -37,6 +37,8 @@ from app.game.component.brew.brew import CharacterBrewComponent
 from app.game.component.character_travel import CharacterTravelComponent
 import time
 from app.game.component.achievement.user_achievement import UserAchievement
+from app.game.component.mine.user_mine import UserMine
+from app.game.component.stone.user_stone import UserStone
 
 
 class PlayerCharacter(Character):
@@ -82,6 +84,8 @@ class PlayerCharacter(Character):
         self._brew = CharacterBrewComponent(self)
 
         self._tasks = UserAchievement(self)
+        self._mine = UserMine(self)
+        self._stone = UserStone(self)
 
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
@@ -368,6 +372,14 @@ class PlayerCharacter(Character):
     @property
     def brew(self):
         return self._brew
+    
+    @property
+    def mine(self):
+        return self._mine
+    
+    @property
+    def stone(self):
+        return self._stone
 
     def save_data(self):
         pid = self.base_info.id
