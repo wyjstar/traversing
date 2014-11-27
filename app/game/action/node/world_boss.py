@@ -42,9 +42,11 @@ def get_before_fight_1701(data, player):
     response.encourage_gold_num = player.world_boss.encourage_gold_num
     logger.debug("encourage_coin_num %s" % player.world_boss.encourage_coin_num)
     logger.debug("encourage_gold_num %s" % player.world_boss.encourage_gold_num)
+    response.fight_times = player.world_boss.fight_times
+    response.last_fight_time = int(player.world_boss.last_fight_time)
     print response
     print "*"*80
-    response.fight_times = player.world_boss.fight_times
+
     return response.SerializePartialToString()
 
 

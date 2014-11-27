@@ -58,6 +58,7 @@
                 }
             ],
             "mem": true,
+            "redis": true,
             "db": true,
             "app": "app.gate",
             "log": "app/logs/gate.log",
