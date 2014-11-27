@@ -279,10 +279,10 @@ class CharacterFightCacheComponent(Component):
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
-        replace_unit, replace_no = self.__break_hero_units(red_units)
-        awake_units, awake_nos = self.__awake_hero_units(red_units)
+        self.__break_hero_units(red_units)
+        self.__awake_hero_units(red_units)
 
-        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no, awake_units, awake_nos
+        return red_units, blue_units, drop_num, monster_unpara
 
     def fighting_settlement(self, result):
         """战斗结算
@@ -311,7 +311,7 @@ class CharacterFightCacheComponent(Component):
         break_config = self.__get_stage_break_config()
         if not break_config:
             logger.error('can not find stage break config')
-            return None, 0
+            return
 
         rand_odds = random.random()
 
@@ -327,7 +327,7 @@ class CharacterFightCacheComponent(Component):
                 replace.append(red_unit)
             logger.info('乱入可以替换的战斗单位: %s' % replace)
             if not replace:
-                return None, 0
+                return
 
             red_unit = random.choice(replace)  # 选出可以替换的单位
 
@@ -353,13 +353,10 @@ class CharacterFightCacheComponent(Component):
             unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
-            return unit, red_unit.unit_no
-        return None, 0
+            unit.is_break = True
+            red_units[red_units.index(red_unit)] = unit
 
     def __awake_hero_units(self, red_units):
-        awake_nos = []
-        awake_units = []
-
         for no, red in red_units.items():
             hero_item = game_configs.hero_config.get(red.unit_no)
             _rand = random.random()
@@ -390,8 +387,6 @@ class CharacterFightCacheComponent(Component):
 
                     unit = break_line_up_slot.get_battle_unit(break_hero_obj,
                                                               attr)
-                    awake_units.append(unit)
-                    awake_nos.append(red.unit_no)
+                    unit.is_awake = True
+                    red_units[no] = unit
                     break
-
-        return awake_units, awake_nos
