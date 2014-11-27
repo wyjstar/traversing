@@ -190,6 +190,24 @@
         		"event_map": "complex",
                 "last_day":"simple"
         	}
+        },
+        "tb_character_mine":{
+            "pkey_field": "id",
+            "def_attrs":{
+                "id":"simple",
+                "reset_day":"simple",
+                "reset_times":"simple",
+                "day_before":"simple",
+                "lively":"simple",
+                "mine":"complex"
+            }
+        },
+        "tb_character_stone":{
+            "pkey_field": "id",
+            "def_attrs":{
+                "id":"simple",
+                "stones":"complex"
+            }
         }
     }
 }
