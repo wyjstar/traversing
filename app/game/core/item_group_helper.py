@@ -6,7 +6,7 @@ created by server on 14-7-9下午5:11.
 from app.game.core.hero_chip import HeroChip
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.pack.item import Item
-from shared.db_opear.configs_data.game_configs import chip_config
+from shared.db_opear.configs_data.game_configs import chip_config, travel_item_config
 from app.game.core.drop_bag import BigBag
 from app.game.core.hero import Hero
 from app.proto_file.hero_pb2 import HeroPB
@@ -176,6 +176,33 @@ def gain(player, item_group, result=None):
             player.stamina.stamina += num
             logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
+        elif type_id == const.TRAVEL_ITEM:
+            stage_id = travel_item_config.get(item_no).stageId
+            flag1 = 1
+            flag2 = 0
+            stage_item_info = player.travel_component.travel_item.get(stage_id)
+            for [travel_item_id, travel_item_num] in stage_item_info:
+                if travel_item_id == item_no:
+                    stage_item_info[flag2] = \
+                        [travel_item_id, travel_item_num + num]
+                    flag1 = 0
+                    break
+                flag2 += 1
+            if flag1:
+                stage_item_info.append([item_no, num])
+            player.travel_component.save()
+        elif type_id == u'108':
+            shoes = player.travel_component.shoes
+            if item_no == 18:
+                shoes[0] += num
+            elif item_no == 19:
+                shoes[1] += num
+            elif item_no == 20:
+                shoes[2] += num
+
+            player.travel_component.save()
+
+
         flag = 1
         for i in result:
             if i[0] == type_id and i[2] == item_no:
@@ -241,5 +268,21 @@ def get_return(player, return_data, game_resources_response):
 
         elif const.STAMINA == item_type:
             game_resources_response.stamina += item_num
+
+        elif const.TRAVEL_ITEM == item_type:
+            travel_item = game_resources_response.travel_item.add()
+            travel_item.id = item_no
+            travel_item.num = item_num
+
+        elif u'108' == item_type:
+            travel_item = game_resources_response.shoes_info.add()
+            if item_no == 18:
+                shoes_type = 1
+            elif item_no == 19:
+                shoes_type = 2
+            elif item_no == 20:
+                shoes_type = 3
+            travel_item.shoes_type = shoes_type
+            travel_item.shoes_no = item_num
 
     logger.debug('return resource:%s', game_resources_response)

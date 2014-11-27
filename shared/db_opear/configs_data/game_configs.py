@@ -36,11 +36,14 @@ from vip_config import VIPConfig
 from special_stage_config import SpecialStageConfig
 from arena_fight_config import ArenaFightConfig
 from hero_breakup_attr_config import HeroBreakupAttrConfig
+from travel_event_config import TravelEventConfig
 from language_config import LanguageConfig
 from achievement_config import AchievementConfig
 from seal_config import SealConfig
+from travel_item_config import TravelItemConfig
 
 
+travel_item_config = {}
 base_config = {}
 hero_config = {}
 hero_exp_config = {}
@@ -74,6 +77,7 @@ player_exp_config = {}
 arena_fight_config = {}
 arena_shop_config = {}
 hero_breakup_attr_config = {}
+travel_event_config = {}
 language_config = {}
 achievement_config = {}
 seal_config = {}
@@ -113,8 +117,10 @@ all_config_name = {
     'arena_fight_config': ArenaFightConfig(),
     'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
+    'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),
     'achievement_config': AchievementConfig(),
+    'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig()
 }
 

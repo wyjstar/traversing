@@ -34,6 +34,7 @@ from app.game.component.character_stamina import CharacterStaminaComponent
 from app.game.component.character_soul_shop import CharacterSoulShopComponent
 from app.game.component.character_arena_shop import CharacterArenaShopComponent
 from app.game.component.brew.brew import CharacterBrewComponent
+from app.game.component.character_travel import CharacterTravelComponent
 import time
 from app.game.component.achievement.user_achievement import UserAchievement
 
@@ -85,6 +86,7 @@ class PlayerCharacter(Character):
         self._pvp_times = 0  # pvp次数
         self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
 
+        self._travel = CharacterTravelComponent(self)
 
     def init_player_info(self):
         """初始化角色信息
@@ -157,9 +159,9 @@ class PlayerCharacter(Character):
         self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
         self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
         self._brew.init_data()
-
-        #活跃度
-        #self._tasks.init_data()
+        self._travel.init_data()
+        # 活跃度
+        # self._tasks.init_data()
 
     def is_new_character(self):
         """is new character or not"""
@@ -334,6 +336,10 @@ class PlayerCharacter(Character):
     @property
     def feast(self):
         return self._feast
+
+    @property
+    def travel_component(self):
+        return self._travel
 
     @feast.setter
     def feast(self, value):

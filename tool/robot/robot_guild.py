@@ -7,9 +7,59 @@ from app.proto_file.equipment_request_pb2 import EnhanceEquipmentRequest
 from app.proto_file.equipment_response_pb2 import EnhanceEquipmentResponse
 from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
+from app.proto_file.travel_pb2 import *
+from app.proto_file.travel_shoes_pb2 import *
 
 
 class RobotGuild(Robot):
+
+    def command_buy_shoes(self):
+        argument1 = BuyShoesRequest()
+        for i in [1, 2, 3]:
+            shoes_info = argument1.shoes_infos.add()
+            shoes_info.shoes_type = i
+            shoes_info.shoes_no = i
+        self.send_message(argument1, 832)
+
+    def buy_shoes_832(self, message):
+        argument = BuyShoesResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_open_chest(self):
+        argument1 = TravelRequest()
+        argument1.stage_id = 900001
+        self.send_message(argument1, 836)
+
+    def open_chest_836(self, message):
+        argument = OpenChestResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_travel(self):
+        argument1 = TravelRequest()
+        argument1.stage_id = 900001
+        self.send_message(argument1, 831)
+
+    def travel_831(self, message):
+        argument = TravelResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_travel_init(self):
+        argument1 = Travel()
+        argument1.event_id = 1
+        self.send_message(argument1, 830)
+
+    def travel_init_830(self, message):
+        argument = TravelInitResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_enhance_equipment(self):
         argument1 = EnhanceEquipmentRequest()
         argument1.id = u"0004"

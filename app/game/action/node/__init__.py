@@ -70,4 +70,5 @@ import pvp_rank
 import arena_shop
 import brew
 import world_boss
+import travel
 import lively
