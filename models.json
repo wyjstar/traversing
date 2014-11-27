@@ -161,6 +161,18 @@
                 "attr_info": "complex"
             }
         },
+        
+        "tb_character_travel": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "travel": "complex",
+                "shoes": "simple",
+                "chest_time": "simple",
+                "travel_item": "complex",
+                "fight_cache": "complex"
+            }
+        },
         "tb_character_brew": {
             "pkey_field": "id",
             "def_attrs": {

@@ -240,6 +240,19 @@ CREATE TABLE `tb_character_brew` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS `tb_character_travel`;
+CREATE TABLE `tb_character_travel` (
+  `id` bigint(20) NOT NULL,
+  `travel` mediumblob,
+  `travel_item` mediumblob,
+  `shoes` mediumblob,
+  `fight_cache` mediumblob,
+  `chest_time` bigint(20),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `tb_character_lively`;
 CREATE TABLE `tb_character_lively` (
   `id` bigint(20) NOT NULL,
@@ -249,4 +262,3 @@ CREATE TABLE `tb_character_lively` (
   `last_day` varchar(8),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- Dump completed on 2014-11-06 21:29:40
