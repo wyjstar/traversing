@@ -54,7 +54,6 @@ def travel_831(data, player):
         else:
             travel_cache[stage_id] = []
             break
-    travel_event_id = 20001
     event_info = travel_event_config.get('events').get(travel_event_id)
     if not event_info:
         logger.error('get travel event config error')
