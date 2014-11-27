@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from gfirefly.server.logobj import logger
+from execute_skill_buff import execute_demage, execute_pure_demage, execute_mp, execute_treat, check_block
 
 class BuffManager(object):
     """docstring for BattleBuffManager"""
@@ -8,29 +9,41 @@ class BuffManager(object):
         super(BuffManager, self).__init__()
         self._owner = owner
         self._buffs = {}
-        self._skills = {}
 
     def add(self, buff):
         """
         add a buff.
         """
+        buff.perform_buff(self._owner)
+        if buff.continue_num == 0:
+            return
+        logger.debug_cal("添加buff: %s" % buff.skill_buff_info.id)
         effect_id = buff.skill_buff_info.effectId
         if effect_id not in self._buffs:
             self._buffs[effect_id] = []
-        self._buffs[effect_id].append(buff)
+            self._buffs[effect_id].append(buff)
+
+        elif buff.skill_buff_info.overlay:
+            self._buffs[effect_id].append(buff)
+        elif not buff.skill_buff_info.overlay:
+            if self._buffs[effect_id]:
+                temp = self._buffs[effect_id][0]
+                if temp.skill_buff_info.replace <= buff.skill_buff_info.replace:
+                    self._buffs[effect_id]=[buff]
+            else:
+                self._buffs[effect_id].append(buff)
 
     def remove(self):
         """docstring for remove"""
         for k, value in self._buffs.items():
             temp = []
             for buff in value:
-                # logger.debug_cal(str(buff.skill_buff_info.id)+"*"*60+str(buff.continue_num))
-                if buff.continue_num == 0:
-                    logger.debug_call("去掉了buff(%s)" % buff.skill_buff_info.id)
-                    continue
+                buff.perform_buff(self._owner)
                 buff.continue_num -= 1
                 if buff.continue_num > 0:
                     temp.append(buff)
+                else:
+                    logger.debug_cal("去除buff %s", buff.skill_buff_info.id)
             self._buffs[k] = temp
 
     def get_buffed_dodge(self, dodge):
@@ -187,6 +200,7 @@ class BuffManager(object):
     def get_buff_value(self, buff_info):
         return buff_info.skill_buff_info.valueEffect + buff_info.skill_buff_info.levelEffectValue * self._owner.level
 
+
     def __repr__(self):
         temp = []
         for k, v in self._buffs.items():
@@ -196,18 +210,15 @@ class BuffManager(object):
 
 class Buff(object):
     """docstring for Buff"""
-    def __init__(self, attacker, skill_buff_info, before_or_not):
+    def __init__(self, attacker, skill_buff_info, is_block=False):
         """
         before_or_not: 在主技能释放前，添加的buff为True，在此回合有效
         """
         super(Buff, self).__init__()
         self._skill_buff_info = skill_buff_info
         self._attacker = attacker
-        if not before_or_not:
-            self._continue_num = skill_buff_info.get("continue") + 1
-        else:
-            self._continue_num = skill_buff_info.get("continue")
-
+        self._continue_num = skill_buff_info.get("continue")
+        self._is_block = is_block
 
     @property
     def continue_num(self):
@@ -223,3 +234,21 @@ class Buff(object):
 
     def __repr__(self):
         return ("Buff_ID(%d), 持续回合(%d)" % (self._skill_buff_info.id, self._continue_num))
+
+    def perform_buff(self, owner):
+        effect_id = self._skill_buff_info.effectId
+        if effect_id in [1,2]:
+            block_or_not = False
+            if self._skill_buff_info.skill_key == 1:
+                block_or_not = self._is_block
+            else:
+                block_or_not = check_block(self._attacker, owner, self._skill_buff_info)
+
+            execute_demage(self._attacker, owner, self._skill_buff_info, block_or_not)
+        elif effect_id in [3]:
+            execute_pure_demage(self._attacker, owner, self._skill_buff_info)
+        elif effect_id in [8, 9]:
+            execute_mp(owner, self._skill_buff_info)
+        elif effect_id in [26]:
+            execute_treat(self._attacker, owner, self._skill_buff_info)
+

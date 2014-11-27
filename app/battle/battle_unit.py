@@ -2,9 +2,9 @@
 """
 created by server on 14-11-10下午3:31.
 """
-from battle_skill import HeroSkill, UnitSkill, FriendSkill, MonsterSkill
+from battle_skill import HeroSkill, MonsterSkill
 from battle_buff import BuffManager
-from shared.db_opear.configs_data.game_configs import base_config, hero_config
+from shared.db_opear.configs_data.game_configs import base_config
 import cPickle
 
 
@@ -20,21 +20,29 @@ class BattleUnit(object):
         self._atk = 0.0
         self._physical_def = 0.0
         self._magic_def = 0.0
-        self._hit = 0.0  # 命中率
-        self._dodge = 0.0  # 闪避率
-        self._cri = 0.0  # 暴击率
-        self._cri_coeff = 0.0  # 暴击伤害系数
-        self._cri_ded_coeff = 0.0  # 暴击减免系数
-        self._block = 0.0  # 格挡率
-        self._ductility = 0.0  # 韧性
-        self._level = 0.0  # 等级
-        self._break_level = 0  # 突破等级
-        self._mp_base = 0  # 武将基础mp
-        self._quality = 0  # 武将品质
+        self._hit = 0.0           # 命中率
+        self._dodge = 0.0         # 闪避率
+        self._cri = 0.0           # 暴击率
+        self._cri_coeff = 0.0     # 暴击伤害系数
+        self._cri_ded_coeff = 0.0 # 暴击减免系数
+        self._block = 0.0         # 格挡率
+        self._ductility = 0.0     # 韧性
+        self._level = 0.0         # 等级
+        self._break_level = 0     # 突破等级
+        self._mp_base = 0         # 武将基础mp
+        self._quality = 0         # 武将品质
+        self._is_boss = 0         # 是否为boss
         self._skill = None
 
         self._buff_manager = BuffManager(self)
 
+    @property
+    def is_boss(self):
+        return self._is_boss
+
+    @is_boss.setter
+    def is_boss(self, value):
+        self._is_boss = value
 
     @property
     def quality(self):
@@ -118,7 +126,10 @@ class BattleUnit(object):
 
     @hp.setter
     def hp(self, value):
-        self._hp = value
+        if self._hp + value < self._hp_max:
+            self._hp = value
+        else:
+            self._hp=self._hp_max
 
     @property
     def hit(self):
@@ -231,6 +242,7 @@ class BattleUnit(object):
                     cri_coeff=self._cri_coeff, cri_ded_coeff=self._cri_ded_coeff, block=self._block,
                     ductility=self._ductility,
                     level=self._level,
+                    is_boss=self._is_boss,
                     skill=self._skill)
 
     def dumps(self):
@@ -301,6 +313,7 @@ def do_assemble(no, quality, break_skills, hp,
     battle_unit.block = block
 
     battle_unit.level = level
+    battle_unit.is_boss = is_boss
 
     battle_unit.slot_no = position
 

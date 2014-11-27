@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 from battle_buff import Buff
-from execute_skill_buff import perform_hit, execute_skill_buff, execute_mp
+from execute_skill_buff import check_hit, check_block
 from find_target_units import find_side, find_target_units
 from gfirefly.server.logobj import logger
 import copy
@@ -130,7 +130,21 @@ class BattleRound(object):
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
                 logger.debug_cal("    ")
+
+        self.remove_buff(self._red_units)
+        self.remove_buff(self._blue_units)
+
         return self._red_units, self._blue_units
+
+    def remove_buff(self, units):
+        """docstring for remove_buff"""
+        deads = []
+        for k, temp in units.items():
+            temp.buff_manager.remove()
+            if temp.hp <= 0:
+                deads.append(k)
+        for k in deads:
+            units.pop(k)
 
     def get_next_unit(self, i, units):
         temp = None
@@ -149,7 +163,7 @@ class BattleRound(object):
     def perform_one_skill(self, army, enemy, skill):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
-        print attacker.slot_no, attacker.unit_no, skill.main_skill_buff
+        #print attacker.slot_no, attacker.unit_no, skill.main_skill_buff
 
         logger.debug_cal("    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
                          (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))
@@ -159,33 +173,36 @@ class BattleRound(object):
 
         main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff, None)  # 主技能作用目标
 
-        # 1.计算命中
+        # 1.计算命中, 格挡
         # 规则：主技能作用多个目标，只要有一个命中的，则判定命中
-        is_hit = False
-        for target_unit in main_target_units:
-            if perform_hit(skill.main_skill_buff, attacker.hit, target_unit.dodge):
-                is_hit = True
+        is_main_hit = False
+        main_target_unit_infos = []
 
-        logger.debug_cal("    是否命中:%s" % is_hit)
+        for target_unit in main_target_units:
+            if check_hit(skill.main_skill_buff, attacker.hit, target_unit.dodge):
+                is_main_hit = True
+            block_or_not = check_block(attacker, target_unit, skill.main_skill_buff)
+            main_target_unit_infos.append((target_unit, block_or_not))
+
+
+        logger.debug_cal("    是否命中:%s" % is_main_hit)
         # 2.主技能释放前，触发的buff
         logger.debug_cal("    1. 攻击前, 添加的buff")
-        for skill_buff_info in skill.before_skill_buffs(is_hit):
+        for skill_buff_info in skill.before_skill_buffs(is_main_hit):
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, True)
+            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units)
 
         # 3.触发攻击技能
         logger.debug_cal("    2. 攻击...")
-        before_or_not = True
         for skill_buff_info in skill.attack_skill_buffs():
-            if not is_hit and skill_buff_info.skill_key and skill_buff_info.effectId in (1, 2, 3):
+            if not is_main_hit and skill_buff_info.skill_key and skill_buff_info.effectId in (1, 2, 3):
                 # 当攻击主技能没有命中，则退出
                 break
             if skill_buff_info.skill_key:
-                before_or_not = False
-                self.handle_skill_buff(attacker, army, enemy, skill_buff_info, main_target_units, before_or_not)
+                self.handle_skill_buff(attacker, army, enemy, skill_buff_info, main_target_units)
                 continue
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, False)
+            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units)
 
 
         # 在攻击技能触发完成后，处理mp
@@ -193,9 +210,20 @@ class BattleRound(object):
 
         # 4.主技能释放后，触发的buff
         logger.debug_cal("    3. 攻击后的buff...")
-        for skill_buff_info in skill.after_skill_buffs(is_hit):
+        for skill_buff_info in skill.after_skill_buffs(is_main_hit):
             target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units, False)
+            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units)
+
+        # 5. 反击
+        for backer, is_block in main_target_unit_infos:
+            for skill_buff_info in backer.skill.back_skill_buffs(is_main_hit, is_block):
+                target_units = find_target_units(backer, army, enemy, skill_buff_info, None, attacker)
+                target_nos = []
+                for temp in target_units:
+                    target_nos.append(temp.slot_no)
+                logger.debug_cal("    反击目标: %s" % (target_nos))
+                buff = Buff(attacker, skill_buff_info, is_block)
+                target_unit.buff_manager.add(buff)
 
 
     def perform_best_skill(self, army, enemy, skill):
@@ -210,46 +238,26 @@ class BattleRound(object):
         self.perform_one_skill(None, army, enemy, skill)
         skill.reset_mp()
 
-    def handle_skill_buff(self, attacker, army, enemy, skill_buff_info, target_units, before_or_not):
+    def handle_skill_buff(self, attacker, army, enemy, skill_buff_info, target_units):
         """
         根据作用位置找到攻击目标，然后执行技能或者添加buff
         """
-
         logger.debug_cal("-" * 80)
-        result = []
         for target_unit in target_units:
-            if target_unit.hp <= 0: continue
-            if skill_buff_info.effectId in [1, 2, 3, 26]:
-                is_block, is_cri = execute_skill_buff(attacker, target_unit, skill_buff_info)
-                if target_unit.hp <= 0:  # 如果血量为0，则去掉该unit
-                    target_side = find_side(skill_buff_info, army, enemy)
-                    if target_unit.slot_no in target_side:
-                        del target_side[target_unit.slot_no]
+            buff = Buff(attacker, skill_buff_info)
+            target_unit.buff_manager.add(buff)
 
-                if skill_buff_info.skill_key:
-                    result.append((is_block, target_unit))
-            elif skill_buff_info.effectId in [8, 9]:
-                execute_mp(target_unit, skill_buff_info)
-            else:
-                buff = Buff(attacker, skill_buff_info, before_or_not)
-                target_unit.buff_manager.add(buff)
+            if target_unit.hp <= 0:  # 如果血量为0，则去掉该unit
+                target_side = find_side(skill_buff_info, army, enemy)
+                if target_unit.slot_no in target_side:
+                    del target_side[target_unit.slot_no]
 
         logger.debug_cal("    技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id))
-        if DEBUG:
-            for temp in target_units:
-                if temp.hp > 0:
-                    logger.debug_cal("    %s" % temp)
 
-        # 触发反击
-        for is_block, backer in result:
-            for skill_buff_info in backer.skill.back_skill_buffs(True, is_block):
-                target_units = find_target_units(backer, army, enemy, skill_buff_info, None, attacker)
-                if DEBUG:
-                    target_nos = []
-                    for temp in target_units:
-                        target_nos.append(temp.slot_no)
-                    logger.debug_cal("    反击目标: %s" % (target_nos))
-                self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units, True)
+        for temp in target_units:
+            if temp.hp > 0:
+                logger.debug_cal("    %s" % temp)
+
 
         logger.debug_cal("-" * 80)
 
