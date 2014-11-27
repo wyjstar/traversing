@@ -17,6 +17,7 @@ CREATE TABLE `tb_character_activity` (
   `level_gift` blob,
   `feast` int(11) DEFAULT '0',
   `login_gift` blob,
+  `world_boss` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -133,7 +134,7 @@ CREATE TABLE `tb_character_line_up` (
   `line_up_slots` mediumblob,
   `sub_slots` mediumblob,
   `line_up_order` mediumblob,
-  `unpar` int(20),
+  `unpars` tinyblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -258,5 +259,6 @@ CREATE TABLE `tb_character_lively` (
   `lively` int(11) NOT NULL,
   `tasks` mediumblob,
   `event_map` mediumblob,
+  `last_day` varchar(8),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

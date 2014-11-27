@@ -12,6 +12,7 @@ from app.game.redis_mode import tb_character_hero
 from app.game.redis_mode import tb_equipment_info
 from app.game.core.check import check_have_equipment
 from gfirefly.server.logobj import logger
+from app.proto_file.common_pb2 import CommonResponse
 
 
 @remoteserviceHandle('gate')
@@ -167,6 +168,17 @@ def change_equipments_703(pro_data, player):
     return change_equipment(slot_no, no, equipment_id, player)
 
 
+@remoteserviceHandle('gate')
+def unpar_upgrade_705(pro_data, player):
+    request = line_up_pb2.LineUpUnparUpgrade()
+    request.ParseFromString(pro_data)
+    response = CommonResponse()
+    __line_up = player.line_up_component
+    response.result = __line_up.unpar_upgrade(request.skill_id,
+                                              request.skill_level)
+    return response.SerializePartialToString()
+
+
 def change_hero(slot_no, hero_no, change_type, player):
     """
     @param dynamic_id:
@@ -175,7 +187,8 @@ def change_hero(slot_no, hero_no, change_type, player):
     @param kwargs:
     @return:
     """
-    logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d", slot_no, hero_no, change_type)
+    logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d",
+                 slot_no, hero_no, change_type)
 
     # 校验该武将是否已经上阵
     response = line_up_pb2.LineUpResponse()
@@ -241,7 +254,10 @@ def line_up_info(player):
     response = line_up_pb2.LineUpResponse()
     assembly_slots(player, response)
     assembly_sub_slots(player, response)
-    response.unpar = player.line_up_component.unpar
+    for k, v in player.line_up_component.unpars.items():
+        add_unpar = response.unpars.add()
+        add_unpar.unpar_id = k
+        add_unpar.unpar_level = v
 
     return response
 

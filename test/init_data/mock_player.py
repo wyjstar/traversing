@@ -10,7 +10,7 @@ def init_player(player):
     player.finance.gold = 1000000*100
     player.finance.save_data()
 
-    player.level.level = 50
+    player.level.level = 60
     player.level.exp = 0
     player.vip_component.vip_level = 0
     player.line_up_component.update_slot_activation()

@@ -131,7 +131,7 @@ def stage_start_903(pro_data, player):
     if monster_unpara:
         response.monster_unpar = monster_unpara
 
-    response.hero_unpar = unparalleled
+    response.hero_unpar = player.line_up_component.get_skill_id_by_unpar(unparalleled)
 
     if f_unit:
         friend = response.friend
@@ -200,13 +200,13 @@ def stage_sweep_907(pro_data, player):
         lively_event = CountEvent.create_event(EventType.STAGE_2, times, ifadd=True)
     elif special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         lively_event = CountEvent.create_event(EventType.STAGE_3, times, ifadd=True)
-    
+
     tstatus = player.tasks.check_inter(lively_event)
     player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
-        
+
     return stage_sweep(stage_id, times, player)
 
 
@@ -318,14 +318,14 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     is_travel_event = 0
 
     # 校验关卡是否开启
-    if game_configs.stage_config.get('stages').get(stage_id) and \
-            game_configs.stage_config.get('stages').get(stage_id).sort == 10:
-        pass
-    else:
-        logger.debug(game_configs.stage_config.get('stages').get(stage_id))
-        state = player.stage_component.check_stage_state(stage_id)
-        if state == -2:
-            return {'result': False, 'result_no': 803}  # 803 未开启
+    # if game_configs.stage_config.get('stages').get(stage_id) and \
+    #         game_configs.stage_config.get('stages').get(stage_id).sort == 10:
+    #     pass
+    # else:
+    #     logger.debug(game_configs.stage_config.get('stages').get(stage_id))
+    #     state = player.stage_component.check_stage_state(stage_id)
+    #     if state == -2:
+    #         return {'result': False, 'result_no': 803}  # 803 未开启
 
     conf = 0
     if special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
@@ -345,6 +345,8 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         if tm_time.tm_mday == time.localtime().tm_mday \
             and vip_config.get(player.vip_component.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
             return {'result': False, 'result_no': 805}  # 805 次数不足
+    elif special_stage_config.get('boss_stages').get(stage_id):  # boss关卡
+        pass
 
     else:  # 普通关卡
         stage_conf = game_configs.stage_config.get('stages').get(stage_id)
@@ -371,6 +373,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
         if not open_time <= time.time() <= close_time:
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
+
+    print "*"*80
+    print line_up
     # 保存阵容
     player.line_up_component.line_up_order = line_up
     player.line_up_component.save_data()

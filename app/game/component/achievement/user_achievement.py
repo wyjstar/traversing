@@ -234,6 +234,7 @@ class UserAchievement(Component):
         self._tasks = {}
         self._lively = 0
         self._event_task_map = {}
+        self._last_day = ''
         self._update = False
     
     def init_data(self):
@@ -248,11 +249,13 @@ class UserAchievement(Component):
                 self._tasks = {}
             self._lively = live_data.get('lively')
             self._event_task_map = live_data.get('event_map')
+            self._last_day = live_data.get('last_day', '')
         else:
             data = dict(id=self.owner.base_info.id,
-                        tasks={'1',cPickle.dumps(self._tasks)},
+                        tasks={'1':cPickle.dumps(self._tasks)},
                         lively=self._lively,
-                        event_map=self._event_task_map)
+                        event_map=self._event_task_map,
+                        last_day=self._last_day)
             tb_character_tasks.new(data)
             
     def save_data(self):
@@ -260,7 +263,8 @@ class UserAchievement(Component):
         if lively_obj:
             data = {'tasks': {'1':cPickle.dumps(self._tasks)},
                     'lively':self._lively,
-                    'event_map': self._event_task_map}
+                    'event_map': self._event_task_map,
+                    'last_day':self._last_day}
             lively_obj.update_multi(data)
         else:
             logger.error('cant find achievement:%s', self.owner.base_info.id)
@@ -269,6 +273,7 @@ class UserAchievement(Component):
         self._tasks = {}
         self._lively = 0
         self._event_task_map = {}
+        self._last_day = time.strftime("%Y%m%d", time.localtime(time.time()))
         self._update = True
         
     def routine(self):
@@ -296,10 +301,8 @@ class UserAchievement(Component):
                 self._update = True
                 
     def _refresh(self):
-        s = datetime.date.today()
-        today_ts = int(time.mktime(s.timetuple()))
-        now = time.time()
-        if now >= today_ts  + 24*60*60 or len(self._tasks) == 0:
+        now = time.strftime("%Y%m%d", time.localtime(time.time()))
+        if now != self._last_day or len(self._tasks) == 0:
             self._reset()
             self.routine()
                 

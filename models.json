@@ -73,7 +73,7 @@
                 "line_up_slots": "complex",
                 "sub_slots": "complex",
                 "line_up_order": "complex",
-                "unpar": "simple"
+                "unpars": "complex"
             }
         },
         "tb_equipment_info": {
@@ -150,7 +150,8 @@
                 "sign_in": "simple",
                 "online_gift": "complex",
                 "feast": "simple",
-                "login_gift": "complex"
+                "login_gift": "complex",
+                "world_boss": "complex"
             }
         },
         "tb_character_lord": {
@@ -186,7 +187,8 @@
         		"id": "simple",
         		"tasks": "complex",
         		"lively": "simple",
-        		"event_map": "complex"
+        		"event_map": "complex",
+                "last_day":"simple"
         	}
         }
     }

@@ -1,53 +1,66 @@
 import "common.proto";
 import "stage.proto";
-//获取战斗开始前的所有信息， command:1701
+//获取boss开始前的所有信息， command:1701
 //无请求协议
 message PvbRankItem{
     required string nickname = 1; //玩家昵称
-    required int32 rank_no = 2;//排名
-    required int32 level = 3;//等级
-    required int32 first_hero_no = 4;//第一位武将id，用来显示玩家头像
-    required int32 demage_hp = 5; //伤害血量
+    required int32 level = 2;//等级
+    required int32 first_hero_no = 3;//第一位武将id，用来显示玩家头像
+    required int32 demage_hp = 4; //伤害血量
 }
 
-message PvbGetBeforeFightResponse{
-    required int32 high_hero = 1;            // 高级武将1个
-    repeated int32 middle_hero = 2;          // 中级武将2个
-    repeated int32 low_hero = 3;             // 低级武将3个
-    required int32 skill_no = 4;             // 未遇到奇遇, 则为0
-    repeated PvbRankItem rank_items = 5;     // 伤害排名前十的玩家
-    optional PvbRankItem last_shot_item = 6; // 最后击杀boss的玩家，如果没有击杀boss，则为空
+message PvbBeforeInfoResponse{
+    required int32 stage_id = 1;
+    repeated int32 lucky_high_heros = 2;        // 高级武将1个
+    repeated int32 lucky_middle_heros = 3;      // 中级武将2个
+    repeated int32 lucky_low_heros = 4;         // 低级武将3个
+    optional int32 debuff_skill_no = 5;         // 未遇到奇遇, 则为0
+    repeated PvbRankItem rank_items = 6;        // 伤害排名前十的玩家
+    optional PvbRankItem last_shot_item = 7;    // 最后击杀boss的玩家，如果没有击杀boss，则为空
+                                                //
+    optional bool open_or_not = 8;              // 是否开启, no:上面参数有效，yes：下面参数有效
+                                                //
+    optional int32 hp_left = 9;                 // 剩余血量
+    optional int32 demage_hp = 10;              // 伤害
+    optional int32 rank_no = 11;                // 名次
+    optional int32 fight_times = 12;            // 战斗次数
+    optional int32 last_fight_time= 13;         // 上次战斗结束时间
+    optional int32 encourage_coin_num = 14;     // 金币鼓舞次数
+    optional int32 encourage_gold_num = 15;     // 元宝鼓舞次数
 }
 
 //请求pvb玩家信息, command:1702
+//响应协议
 message PvbPlayerInfoRequest{
     required int32 rank_no = 1;// 排名
 }
 
 //鼓舞， command:1703
+//响应协议CommonResponse
 message EncourageHerosRequest{
     required int32 finance_type = 1;  //1:金币，2:元宝
     required int32 finance_num = 2;   //金币或者元宝数量
 }
 
-message EncourageHerosResponse{
-    required CommonResponse res = 1;
-}
 
 //使用元宝复活, command:1704
 //无请求协议
-message RebornResponse{
-    required CommonResponse res = 1;
-}
+//响应协议CommonResponse
 
-//开始战斗, command:1705
-//无请求协议
+
+//开始战斗, command:1706
+//请求协议：StageStartRequest
 message PvbFightResponse{
     required CommonResponse res = 1;
     repeated BattleUnit red = 2;
     repeated BattleUnit blue = 3;
-    optional int32 red_best_skill = 4;
-    optional bool fight_result = 5;
+    required int32 red_best_skill = 4;
+    required bool fight_result = 5;
 }
+
+//战斗结算，command:1707
+//请求协议: 
+//响应协议PvbBeforeInfoResponse
+
 
 //todo:战斗奖励，在整个战斗结束时使用邮件推送

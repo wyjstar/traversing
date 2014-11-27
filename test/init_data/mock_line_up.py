@@ -15,7 +15,7 @@ def init_line_up(player):
 
     slot.activation = True
 
-    slot.hero_slot.hero_no = 10005
+    slot.hero_slot.hero_no = 10046
     slot.hero_slot.activation = True
 
 

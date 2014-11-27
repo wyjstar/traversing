@@ -71,6 +71,8 @@ class CharacterFightCacheComponent(Component):
             return game_configs.special_stage_config.get('elite_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('act_stages').get(self._stage_id):
             return game_configs.special_stage_config.get('act_stages').get(self._stage_id)
+        if game_configs.special_stage_config.get('boss_stages').get(self._stage_id):
+            return game_configs.special_stage_config.get('boss_stages').get(self._stage_id)
 
     def __get_skill_config(self, skill_id):
         """取得技能BUFF配置
@@ -123,33 +125,36 @@ class CharacterFightCacheComponent(Component):
 
         monsters = []
         for i in range(3):
-            monster_group_config = self.__get_monster_group_config(getattr(stage_config, 'round%s' % (i + 1)))
-            if monster_group_config:
-                round_monsters = {}
+            logger.debug("stage_id %s" % self._stage_id)
+            logger.debug("stage_group_id %s" % getattr(stage_config, 'round%s' % (i + 1)))
+            print stage_config
+            monster_group_id = getattr(stage_config, 'round%s' %(i+1))
+            if not monster_group_id:
+                continue
+            monster_group_config = self.__get_monster_group_config(monster_group_id)
+            round_monsters = {}
 
-                boss_position = monster_group_config.bossPosition
+            boss_position = monster_group_config.bossPosition
 
-                for j in range(6):
-                    pos = j + 1
-                    monster_id = getattr(monster_group_config, 'pos%s' % pos)
-                    if not monster_id:
-                        continue
-                    is_boss = False
-                    if j + 1 == boss_position:
-                        is_boss = True
-                    monster_config = self.__get_monster_config(monster_id)
-                    monster_normal_config = game_configs.skill_config.get(monster_config.normalSkill)
-                    monster_rage_config = game_configs.skill_config.get(monster_config.rageSkill)
+            for j in range(6):
+                pos = j + 1
+                monster_id = getattr(monster_group_config, 'pos%s' % pos)
+                if not monster_id:
+                    continue
+                is_boss = False
+                if j + 1 == boss_position:
+                    is_boss = True
+                monster_config = self.__get_monster_config(monster_id)
 
-                    battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
-                                              monster_config.hp, monster_config.atk, monster_config.physicalDef,
-                                              monster_config.magicDef, monster_config.hit, monster_config.dodge,
-                                              monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
-                                              monster_config.block, monster_config.ductility, pos, monster_config.monsterLv,
-                                              is_boss, is_hero=False)
-                    logger.info('怪物ID：%s' % monster_config.id)
-                    round_monsters[pos] = battle_unit
-                monsters.append(round_monsters)
+                battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
+                                          monster_config.hp, monster_config.atk, monster_config.physicalDef,
+                                          monster_config.magicDef, monster_config.hit, monster_config.dodge,
+                                          monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
+                                          monster_config.block, monster_config.ductility, pos, monster_config.monsterLv,
+                                          is_boss, is_hero=False)
+                logger.info('怪物ID：%s' % monster_config.id)
+                round_monsters[pos] = battle_unit
+            monsters.append(round_monsters)
 
         # 保存关卡怪物信息, 掉落信息
         self._blue_unit = monsters

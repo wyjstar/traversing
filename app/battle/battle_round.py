@@ -37,7 +37,7 @@ class BattleRound(object):
 
     def enter_battle(self):
         """
-        在战斗开始前，进行触发类别为2的突破技能buff。
+        在战斗开始前，进行触发类别为2的突破技能buff
         """
         logger.debug_cal("    进入战场，添加的buff...")
         for temp in self._red_units.values():
@@ -130,6 +130,7 @@ class BattleRound(object):
                 self._red_best_skill.add_mp()
                 self._blue_best_skill.add_mp()
                 logger.debug_cal("    ")
+        return self._red_units, self._blue_units
 
     def get_next_unit(self, i, units):
         temp = None
@@ -248,7 +249,7 @@ class BattleRound(object):
                     for temp in target_units:
                         target_nos.append(temp.slot_no)
                     logger.debug_cal("    反击目标: %s" % (target_nos))
-                self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units)
+                self.handle_skill_buff(backer, army, enemy, skill_buff_info, target_units, True)
 
         logger.debug_cal("-" * 80)
 

@@ -218,7 +218,6 @@ def hero_sacrifice_oper(heros, player):
         return
 
     for exp in keys:
-        exp = unicode(exp)
         item_no = exp_items.get(exp)
         config = game_configs.item_config.get(item_no)
         exp = config.get("funcArg1")
