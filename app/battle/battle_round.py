@@ -229,8 +229,8 @@ class BattleRound(object):
     def perform_best_skill(self, army, enemy, skill):
         """执行技能：无双"""
         for skill_buff_info in skill.skill_buffs:
-            target_units = find_target_units(None, army, enemy, skill_buff_info)
-            self.handle_skill_buff(None, army, enemy, skill_buff_info, target_units)
+            target_units = find_target_units(None, army, enemy, skill_buff_info, None)
+            # self.handle_skill_buff(None, army, enemy, skill_buff_info, target_units)
         skill.reset_mp()
 
     def perform_friend_skill(self, army, enemy, skill):
