@@ -77,7 +77,7 @@ class CharacterSoulShopComponent(Component):
 
     @property
     def price(self):
-        price = base_config.get('soulShopRefreshPrice').get('2')[0]
+        price = base_config.get('soulShopRefreshPrice').get(2)[0]
         k = base_config.get('soulShopRefreshFactor')
         free_times = base_config.get('soulShopFreeRefreshTimes')
 
