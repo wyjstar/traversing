@@ -201,6 +201,10 @@ def pvb_fight_start_1705(pro_data, player):
         assemble(blue_add, blue_unit)
 
     response.red_best_skill = unparalleled
+    if unparalleled in player.line_up_component.unpars:
+        response.red_best_skill_level = player.line_up_component.unpars[unparalleled]
+
+
     # mock fight.
     player_info = {}
     player_info["player_id"] = player.base_info.id
