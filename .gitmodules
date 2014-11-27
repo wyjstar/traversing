@@ -1,6 +1,4 @@
-[submodule "traversingConfig"]
-	path = traversingConfig
-	url = server@192.168.1.62:traversingConfig/.git
 [submodule "config"]
 	path = config
-	url = server@192.168.1.62:traversingConfig/.git
+	url = server@192.168.1.62:/home/server/traversingConfig/.git
+    

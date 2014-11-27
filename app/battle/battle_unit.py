@@ -126,7 +126,10 @@ class BattleUnit(object):
 
     @hp.setter
     def hp(self, value):
-        self._hp = value
+        if self._hp + value < self._hp_max:
+            self._hp = value
+        else:
+            self._hp=self._hp_max
 
     @property
     def hit(self):
