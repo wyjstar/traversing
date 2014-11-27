@@ -128,7 +128,6 @@ class CharacterLineUpComponent(Component):
 
     def get_skill_id_by_unpar(self, unpar):
         if unpar not in self._unpars:
-            logger.error('donot open:%s', unpar)
             return 0
 
         item = warriors_config.get(unpar)

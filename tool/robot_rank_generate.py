@@ -108,6 +108,8 @@ if __name__ == '__main__':
                                  level=level,
                                  id=rank,
                                  best_skill=0,
+                                 unpar_skill=0,
+                                 unpar_skill_level=0,
                                  hero_ids=cPickle.dumps(hero_ids),
                                  ap=player.line_up_component.combat_power,
                                  units=red_units,
