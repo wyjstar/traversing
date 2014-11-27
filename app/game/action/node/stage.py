@@ -133,7 +133,7 @@ def stage_start_903(pro_data, player):
 
     response.hero_unpar = unparalleled
     if unparalleled in player.line_up_component.unpars:
-        response.hero_unpar_level = player.line_up_component[unparalleled]
+        response.hero_unpar_level = player.line_up_component.unpars[unparalleled]
 
     if f_unit:
         friend = response.friend
