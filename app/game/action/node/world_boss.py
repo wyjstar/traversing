@@ -1,20 +1,22 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
 from app.proto_file import stage_request_pb2
 from app.game.action.node.stage import assemble, fight_start
 from gfirefly.server.logobj import logger
-from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, PvbPlayerInfoRequest
+from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, \
+    PvbPlayerInfoRequest
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
 
-#from app.proto_file import world_boss_pb2
+# from app.proto_file import world_boss_pb2
 
 remote_gate = GlobalObject().remote['gate']
+
 
 @remoteserviceHandle('gate')
 def get_before_fight_1701(data, player):
@@ -31,11 +33,11 @@ def get_before_fight_1701(data, player):
     1. 剩余血量
     2. 鼓舞次数
     """
-    world_data =  remote_gate['world'].pvb_get_before_fight_info_remote(player.base_info.id)
+    world_data = remote_gate['world'].pvb_get_before_fight_info_remote(player.base_info.id)
     response = PvbBeforeInfoResponse()
     response.ParseFromString(world_data)
     player.world_boss.stage_id = response.stage_id
-    player.world_boss.reset_info() # 重设信息
+    player.world_boss.reset_info()  # 重设信息
 
     player.world_boss.save_data()
     response.encourage_coin_num = player.world_boss.encourage_coin_num
@@ -45,7 +47,7 @@ def get_before_fight_1701(data, player):
     response.fight_times = player.world_boss.fight_times
     response.last_fight_time = int(player.world_boss.last_fight_time)
     print response
-    print "*"*80
+    print "*" * 80
 
     return response.SerializePartialToString()
 
@@ -79,11 +81,12 @@ def encourage_heros_1703(data, player):
         goldcoin_inspire_price = base_config.get("goldcoin_inspire_price")
         goldcoin_inspire_price_multiple = base_config.get("goldcoin_inspire_price_multiple")
         coin = player.finance.coin
-        need_coin = goldcoin_inspire_price*(pow(goldcoin_inspire_price_multiple, player.world_boss.encourage_coin_num))
+        need_coin = goldcoin_inspire_price * (
+            pow(goldcoin_inspire_price_multiple, player.world_boss.encourage_coin_num))
         if coin < need_coin:
             response.result = False
             response.result_no = 101
-            logger.debug("*"*80)
+            logger.debug("*" * 80)
             print response
             return response.SerializePartialToString()
 
@@ -100,7 +103,7 @@ def encourage_heros_1703(data, player):
         if gold < need_gold:
             response.result = False
             response.result_no = 102
-            logger.debug("*"*80)
+            logger.debug("*" * 80)
             print response
             return response.SerializePartialToString()
         player.finance.gold -= need_gold
@@ -140,6 +143,7 @@ def pvb_reborn_1704(data, player):
     player.finance.save_data()
     return response.CommonResponse()
 
+
 @remoteserviceHandle('gate')
 def pvb_fight_start_1705(pro_data, player):
     """开始战斗
@@ -176,7 +180,15 @@ def pvb_fight_start_1705(pro_data, player):
     red_units = stage_info.get('red_units')
     blue_units = stage_info.get('blue_units')
 
-    logger.debug("--"*40)
+    logger.debug("--" * 40)
+
+    # 根据鼓舞次数，增加ATK百分比
+    atk_rate = player.world_boss.encourage_coin_num * base_config.get("worldbossInspireAtk", 0) + \
+               player.world_boss.encourage_gold_num * base_config.get("worldbossInspireAtkMoney", 0)
+
+    for slot_no, red_unit in red_units.items():
+        red_unit.atk *= (1 + atk_rate)
+
     print red_units
     print blue_units
     for slot_no, red_unit in red_units.items():
@@ -198,11 +210,11 @@ def pvb_fight_start_1705(pro_data, player):
 
     str_red_units = cPickle.dumps(red_units)
     str_blue_units = cPickle.dumps(blue_units)
-    logger.debug("--"*40)
+    logger.debug("--" * 40)
     print red_units
     print blue_units
     result = remote_gate['world'].pvb_fight_remote(str_red_units,
-            unparalleled, str_blue_units, player_info)
+                                                   unparalleled, str_blue_units, player_info)
     response.fight_result = result
 
     # 玩家信息更新
