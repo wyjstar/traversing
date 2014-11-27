@@ -88,5 +88,6 @@ class CharacterSoulShopComponent(Component):
 
     def save_data(self):
         props = dict(soul_shop=self.detail_data)
+        print "detail_data", self.detail_data
         info = tb_character_info.getObj(self.owner.base_info.id)
         info.update_multi(props)

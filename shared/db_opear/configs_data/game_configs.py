@@ -131,4 +131,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print warriors_config.get(10001)
+    print soul_shop_config

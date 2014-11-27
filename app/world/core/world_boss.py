@@ -228,6 +228,9 @@ class WorldBoss(object):
         instance = self.get_rank_instance()
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
+            print player_id, demage_hp
+            print "-"*80
+            continue
             player_info = cPickle.loads(redis_client.get(player_id))
 
             player_info["demage_hp"] = demage_hp
