@@ -354,6 +354,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
 
     red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
+    print "*"*80
+    print red_units
+    print blue_units
     # 好友
     lord_data = tb_character_lord.getObjData(fid)
     f_unit = None
