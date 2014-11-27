@@ -114,6 +114,10 @@ def pvp_fight_request_1505(data, player):
         refresh_rank_data(player, before_player_rank,
                           __skill, __skill_level)
 
+    if before_player_rank == request.challenge_rank:
+        logger.error('cant not fight self')
+        return False
+
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
                                    ['character_id',
@@ -121,6 +125,8 @@ def pvp_fight_request_1505(data, player):
                                     'level',
                                     'ap',
                                     'best_skill',
+                                    'unpar_skill',
+                                    'unpar_skill_level',
                                     'units',
                                     'slots',
                                     'hero_ids'])
@@ -167,8 +173,8 @@ def pvp_fight_request_1505(data, player):
         assemble(blue_add, blue_unit)
     response.red_skill = __skill
     response.red_skill_level = __skill_level
-    response.blue_skill = record.get('best_skill')
-    response.blue_skill_level = 0
+    response.blue_skill = record.get('unpar_skill')
+    response.blue_skill_level = record.get('unpar_skill_level')
 
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
@@ -224,10 +230,13 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
     red_units = cPickle.dumps(player.fight_cache_component.red_unit)
     slots = cPickle.dumps(line_up_info(player))
     hero_nos = player.line_up_component.hero_nos
+    best_skill = player.line_up_component.get_skill_id_by_unpar(skill)
     rank_data = dict(hero_ids=cPickle.dumps(hero_nos),
                      level=player.level.level,
                      nickname=player.base_info.base_name,
-                     best_skill=skill,
+                     best_skill=best_skill,
+                     unpar_skill=skill,
+                     unpar_skill_level=skill_level,
                      ap=player.line_up_component.combat_power,
                      character_id=player.base_info.id,
                      units=red_units,
