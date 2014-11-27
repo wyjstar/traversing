@@ -17,7 +17,7 @@ from collections import OrderedDict
 
 PROP_TABLE = ['base_config']
 
-ROOT_PATH = '../../traversingConfig'
+ROOT_PATH = '../../../traversingConfig'
 
 
 conn = MySQLdb.connect(host="127.0.0.1", user="root", passwd="123456", port=3306, db="traversing_master", charset="utf8")
@@ -346,7 +346,7 @@ if __name__ == "__main__":
         config_value = cPickle.dumps(json_data)
         config_key = file_with_out_extension
         py_dict[config_key] = json_data
-        save_update_sql(ROOT_PATH + '/sql/', config_key, config_value)
+        # save_update_sql(ROOT_PATH + '/sql/', config_key, config_value)
 
         delete_sql = "delete from configs where config_key='%s';\n" % (config_key)
         insert_sql = "insert into configs values('%s',%s); \n" % (config_key, _escape(config_value))
@@ -354,7 +354,7 @@ if __name__ == "__main__":
         content.append(insert_sql)
 
     cPickle.dump(py_dict, open(ROOT_PATH + '/excel_cpickle', 'w'))
-    save_insert_all_sqls(ROOT_PATH + '/sql/', content)
+    # save_insert_all_sqls(ROOT_PATH + '/sql/', content)
     conn.commit()
     conn.close()
     print 'excel make successful!!!!!'

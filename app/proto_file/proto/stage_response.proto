@@ -24,11 +24,12 @@ message StageStartResponse{
 	repeated BattleUnitGrop blue = 5; //对方数据
 	optional BattleUnit friend = 6; // 好友
 	optional int32 hero_unpar = 7; // 无双
-	optional int32 monster_unpar = 8; // 怪物无双
-	optional BattleUnit replace = 9; // 乱入
-	optional int32 replace_no = 10;
-	repeated BattleUnit awake = 11; //
-	repeated int32 awake_no = 12;
+	optional int32 hero_unpar_level = 8; // 无双
+	optional int32 monster_unpar = 9; // 怪物无双
+	optional BattleUnit replace = 10; // 乱入
+	optional int32 replace_no = 11;
+	repeated BattleUnit awake = 12; //
+	repeated int32 awake_no = 13;
 }
 
 // 关卡结算返回 command:904
