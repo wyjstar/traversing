@@ -25,12 +25,10 @@ class UnitSkill(object):
         self._has_skill_buff = False
         temp_unit = unit_config.get(self._unit_no)
         skill_info = skill_config.get(temp_unit.normalSkill, None)
-        logger.debug("skill_info%s" % skill_info)
         self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = \
             self.get_skill_buff(skill_info.get("group"))
 
         skill_info = skill_config.get(temp_unit.rageSkill, None)
-        logger.debug("skill_info%s" % skill_info)
         self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff = self.get_skill_buff(
             skill_info.get("group"))
 

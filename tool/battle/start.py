@@ -68,8 +68,6 @@ def parse_input(battle_type):
     elif battle_type == "pve":
         return BattlePVEProcess(red_units, red_best_skill, blue_groups, friend_skill)
 
-
-
 def init_unit(slot_no, eles, is_hero=True):
 
     unit_name = eles[1]
@@ -109,8 +107,6 @@ def hero_break_skill_buff_ids(hero_no, break_level):
             if skill_info:
                 hero_break_skill_buff_ids.extend(skill_info.get("group"))
         return hero_break_skill_buff_ids
-
-
 
 def get_stage_info(stage):
     """
