@@ -25,10 +25,11 @@ class WorldBoss(object):
         self._stage_id_am = 0         # 关卡id am
         self._stage_id_pm = 0         # 关卡id pm
         self._stage_id = 0            # 关卡id
-        self._hp =0                   # 剩余血量
+        self._hp = 0                   # 剩余血量
         self._state = 0               # boss状态：用于boss到期, 重置状态
 
         self.init_data()
+        self.init_time()
         reactor.callLater(1, self.loop_update)
 
     def get_hp(self):
@@ -56,6 +57,17 @@ class WorldBoss(object):
         self._stage_id_am = world_boss_data.get("stage_id_am")
         self._stage_id_pm = world_boss_data.get("stage_id_pm")
         self._hp = world_boss_data.get("hp")
+
+    def init_time(self):
+        am_period = self.get_stage_period(self._stage_id_am)
+        pm_period = self.get_stage_period(self._stage_id_pm)
+
+        current = get_current_timestamp()
+        if current < am_period[1] and current > pm_period[1]:
+            self._stage_id = self._stage_id_am
+        elif current > am_period[1] and current < pm_period[1]:
+            self._stage_id = self._stage_id_pm
+
 
     @property
     def stage_id(self):
@@ -126,11 +138,6 @@ class WorldBoss(object):
             self.update_boss()
             self._state = 0
 
-        current_time = get_current_timestamp()
-        if self.get_am_period()[0] < current_time and self.get_pm_period()[0] > current_time:
-            self._stage_id = self._stage_id_pm
-        elif self.get_pm_period()[0] < current_time:
-            self._stage_id = self._stage_id_am
 
         reactor.callLater(1, self.loop_update)
 
@@ -159,6 +166,9 @@ class WorldBoss(object):
 
         self.set_next_stage(self._hp<=0)
         self._hp = self.get_hp() # 重置血量
+        instance = self.get_rank_instance()
+        instance.clear_rank() # 重置排行
+        #todo: 重置玩家信息
         self.save_data()
 
         # todo:对前十名发放奖励
@@ -203,28 +213,19 @@ class WorldBoss(object):
                 self._stage_id_pm = current_stage_id + 100
         current_time = get_current_timestamp()
 
-        if self.get_am_period()[0] < current_time and self.get_pm_period()[0] > current_time:
+        if current_stage_id == self._stage_id_am:
             self._stage_id = self._stage_id_pm
-        elif self.get_pm_period()[0] < current_time:
+        else:
             self._stage_id = self._stage_id_am
 
-        if current_stage_id%10==1: # am
-            self._stage_id = self._stage_id_am
-        else: #pm
-            self._stage_id = self._stage_id_pm
+
         logger.debug("current_stage_id3%s" % self._stage_id)
         logger.debug("current_stage_id_am%s" % self._stage_id_am)
         logger.debug("current_stage_id_pm%s" % self._stage_id_pm)
 
-    def get_am_period(self):
+    def get_stage_period(self, stage_id):
         """docstring for get_am_period"""
-        stage_info = self.get_stage_info(self._stage_id_am)
-        time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
-        return time_start, time_end
-
-    def get_pm_period(self):
-        """docstring for get_pm_period"""
-        stage_info = self.get_stage_info(self._stage_id_pm)
+        stage_info = self.get_stage_info(stage_id)
         time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
         return time_start, time_end
 

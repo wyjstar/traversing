@@ -62,7 +62,7 @@ def update_rank_items(rank_item_pb, rank_item):
 def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info):
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
-    process = BattlePVBProcess(red_units, red_best_skill, blue_units)
+    process = BattlePVBProcess(red_units, player_info.get("level"), red_best_skill,  blue_units)
     result, hp_left = process.process()
 
     # 保存worldboss数据
