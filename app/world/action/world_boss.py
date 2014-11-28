@@ -45,7 +45,7 @@ def pvb_get_before_fight_info_remote(player_id):
     # 剩余血量
     response.hp_left = int(world_boss.hp)
     # 伤害
-    response.demage_hp = world_boss.get_demage_hp(player_id)
+    response.demage_hp = int(world_boss.get_demage_hp(player_id))
     # 名次
     response.rank_no = world_boss.get_rank_no(player_id)
 
