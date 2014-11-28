@@ -126,7 +126,7 @@ class BattleUnit(object):
 
     @hp.setter
     def hp(self, value):
-        if self._hp + value < self._hp_max:
+        if value < self._hp_max:
             self._hp = value
         else:
             self._hp=self._hp_max
@@ -300,6 +300,7 @@ def do_assemble(no, quality, break_skills, hp,
     battle_unit.unit_name = unit_name
     battle_unit.quality = quality
 
+    battle_unit.hp_max = hp
     battle_unit.hp = hp
     battle_unit.hp_max = hp
     battle_unit.atk = atk

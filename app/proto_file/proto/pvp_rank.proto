@@ -30,6 +30,8 @@ message PvpFightResponse{
     repeated BattleUnit red = 2; //红方数据 自己
     repeated BattleUnit blue = 3; //对方数据
     optional int32 red_skill = 4; //我方无双
-    optional int32 blue_skill = 5; // 敌方无双
-    optional bool fight_result = 6; // 战斗结果
+    optional int32 red_skill_level = 5; //我方无双
+    optional int32 blue_skill = 6; // 敌方无双
+    optional int32 blue_skill_level = 7; // 敌方无双
+    optional bool fight_result = 8; // 战斗结果
 }

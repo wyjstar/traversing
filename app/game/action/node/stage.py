@@ -133,7 +133,7 @@ def stage_start_903(pro_data, player):
 
     response.hero_unpar = unparalleled
     if unparalleled in player.line_up_component.unpars:
-        response.hero_unpar_level = player.line_up_component[unparalleled]
+        response.hero_unpar_level = player.line_up_component.unpars[unparalleled]
 
     if f_unit:
         friend = response.friend
@@ -348,8 +348,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
 
-    print "*"*80
-    print line_up
+
     # 保存阵容
     player.line_up_component.line_up_order = line_up
     player.line_up_component.save_data()
@@ -362,6 +361,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
 
     red_units, blue_units, drop_num, monster_unpara, replace_units, replace_no, awake_units, awake_nos = fight_cache_component.fighting_start()
 
+    print "*"*80
+    print red_units
+    print blue_units
     # 好友
     lord_data = tb_character_lord.getObjData(fid)
     f_unit = None

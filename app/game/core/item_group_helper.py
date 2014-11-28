@@ -191,7 +191,7 @@ def gain(player, item_group, result=None):
             if flag1:
                 stage_item_info.append([item_no, num])
             player.travel_component.save()
-        elif type_id == u'108':
+        elif type_id == u'107':
             shoes = player.travel_component.shoes
             if item_no == 18:
                 shoes[0] += num
@@ -274,7 +274,7 @@ def get_return(player, return_data, game_resources_response):
             travel_item.id = item_no
             travel_item.num = item_num
 
-        elif u'108' == item_type:
+        elif u'107' == item_type:
             travel_item = game_resources_response.shoes_info.add()
             if item_no == 18:
                 shoes_type = 1
