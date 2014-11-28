@@ -127,7 +127,9 @@ def pvb_reborn_1704(data, player):
     gold = player.finance.gold
     money_relive_price = base_config.get('money_relive_price')
     need_gold = money_relive_price
+    print need_gold, gold, "*"*80
     if gold < need_gold:
+        logger.debug("reborn error: %s" % 102)
         response.result = False
         response.result_no = 102
         return response.SerializePartialToString()
@@ -135,13 +137,16 @@ def pvb_reborn_1704(data, player):
     #2. 校验CD
     current_time = get_current_timestamp()
     if current_time - player.world_boss.last_fight_time > base_config.get("free_relive_time"):
+        logger.debug("reborn error: %s" % 1701)
         response.result = False
         response.result_no = 1701
         return response.SerializePartialToString()
 
     player.finance.gold -= need_gold
     player.finance.save_data()
-    return response.CommonResponse()
+    response.result = True
+    print response
+    return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
@@ -225,6 +230,8 @@ def pvb_fight_start_1705(pro_data, player):
     player.world_boss.fight_times += 1
     player.world_boss.last_fight_time = get_current_timestamp()
     player.world_boss.save_data()
+
+    print response
     logger.debug("fight end..")
 
     return response.SerializePartialToString()

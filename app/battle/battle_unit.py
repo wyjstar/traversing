@@ -300,6 +300,7 @@ def do_assemble(no, quality, break_skills, hp,
     battle_unit.unit_name = unit_name
     battle_unit.quality = quality
 
+    battle_unit.hp_max = hp
     battle_unit.hp = hp
     battle_unit.hp_max = hp
     battle_unit.atk = atk

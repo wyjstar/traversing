@@ -132,6 +132,7 @@ class CharacterFightCacheComponent(Component):
             if not monster_group_id:
                 continue
             monster_group_config = self.__get_monster_group_config(monster_group_id)
+
             round_monsters = {}
 
             boss_position = monster_group_config.bossPosition
