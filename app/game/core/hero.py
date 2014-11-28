@@ -240,6 +240,8 @@ class Hero(object):
         """根据怒气技能ID获得技能buff组
         """
         rage_skill_id = self.rage_skill_id
+
+        print rage_skill_id, self._hero_no, "*-"*80
         rage_skill_config = game_configs.skill_config.get(rage_skill_id)
         rage_group = rage_skill_config.group
         return rage_group
