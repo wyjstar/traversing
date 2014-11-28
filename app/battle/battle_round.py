@@ -114,8 +114,8 @@ class BattleRound(object):
         perform mock battle, logger.debug_cal(battle process.)
         """
         for i in range(1, 7):
-            red_unit = self.get_next_unit(i, self._red_units)
-            blue_unit = self.get_next_unit(i, self._blue_units)
+            red_unit = self._red_units.get(i)
+            blue_unit = self._blue_units.get(i)
             self.handle_mock_special_skill(self._red_best_skill)
             if red_unit:
                 logger.debug_cal(("red_%d" % i) + "-" * 20 + "我方攻击" + "-" * 20)
@@ -133,7 +133,6 @@ class BattleRound(object):
 
         self.remove_buff(self._red_units)
         self.remove_buff(self._blue_units)
-
         return self._red_units, self._blue_units
 
     def remove_buff(self, units):
@@ -163,7 +162,6 @@ class BattleRound(object):
     def perform_one_skill(self, army, enemy, skill):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
-        #print attacker.slot_no, attacker.unit_no, skill.main_skill_buff
 
         logger.debug_cal("    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
                          (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))

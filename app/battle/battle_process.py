@@ -111,6 +111,7 @@ class BattlePVBProcess(object):
             return True
         logger.debug_cal("开始战斗...")
 
+        blue_units = None
         for i in range(base_config.get("max_times_fight")):
             i = i + 1
             logger.debug_cal("第%d回合......" % i)
@@ -119,10 +120,11 @@ class BattlePVBProcess(object):
             if result == 0: continue
             if result == 1:
                 logger.debug_cal("我赢了。")
-                return True, self._blue_units.get(5).hp
+                return True, blue_units.get(5).hp
             if result == -1:
                 logger.debug_cal("我输了。")
-                return False, self._blue_units.get(5).hp
-        return False, self._blue_units.get(5).hp
+                return False, blue_units.get(5).hp
+        logger.debug_cal("我输了。")
+        return False, blue_units.get(5).hp
 
 
