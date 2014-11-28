@@ -9,6 +9,7 @@ from app.game.component.line_up.hero_slot import HeroSlotComponent
 from app.battle.battle_unit import do_assemble
 from app.game.redis_mode import tb_character_lord
 from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.game_configs import formula_config
 from shared.db_opear.configs_data.common_item import CommonItem
 from gfirefly.server.logobj import logger
 
@@ -261,11 +262,23 @@ class LineUpSlotComponent(Component):
         unit = self.slot_attr
         if not unit:
             return 0
-        return (((unit.atk + unit.physical_def + unit.magic_def) * unit.hp) ** game_configs.base_config.get(
-            'zhandouli_xishu_a', 0.5)) * (unit.hit + unit.dodge) * (
-                   1 + unit.cri * (unit.cri_coeff + unit.cri_ded_coeff - 100) / 10000) * ((100 + unit.block * (
-            1 - game_configs.base_config.get('a4', 0.7))) / 100 * game_configs.base_config.get(
-            'zhandouli_xishu_b', 1))
+        if 'fightValue' not in formula_config:
+            logger.error('can not find fightValue')
+            return 0
+        formula = formula_config.get('fightValue').formula
+        allVars = dict(atk=unit.atk,
+                       physicalDef=unit.physical_def,
+                       magicDef=unit.magic_def,
+                       hp=unit.hp,
+                       hit=unit.hit,
+                       dodge=unit.dodge,
+                       cri=unit.cri,
+                       criCoeff=unit.cri_coeff,
+                       criDedCoeff=unit.cri_ded_coeff,
+                       block=unit.block,
+                       ductility=unit.ductility)
+        result = eval(formula, allVars, allVars)
+        return result
 
     def update_lord_info(self):
         """
