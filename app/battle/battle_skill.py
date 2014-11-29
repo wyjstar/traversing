@@ -7,7 +7,7 @@ from shared.db_opear.configs_data.game_configs import skill_config
 from shared.db_opear.configs_data.game_configs import skill_buff_config
 from shared.db_opear.configs_data.game_configs import hero_config, monster_config
 from shared.db_opear.configs_data.game_configs import base_config
-from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger_cal
 
 class UnitSkill(object):
     """docstring for UnitSkill"""
@@ -79,10 +79,10 @@ class UnitSkill(object):
         """
         if self.is_full:
             self._mp = self._owner._mp_base
-            logger.debug_cal("重置 mp: %s" % self._mp)
+            logger_cal.debug("重置 mp: %s" % self._mp)
         else:
             self._mp += self._mp_step
-            logger.debug_cal("添加 mp：%s" % self._mp_step)
+            logger_cal.debug("添加 mp：%s" % self._mp_step)
 
     @property
     def owner(self):

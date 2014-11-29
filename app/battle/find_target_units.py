@@ -3,7 +3,7 @@
 """
 通过技能的作用位置，找到作用对象。
 """
-from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger_cal
 import random
 
 def single_attack(value, attacker, target_units):
