@@ -167,7 +167,7 @@ class BattleRound(object):
         if not attacker.can_attack:
             logger.debug_cal("    攻击者在buff中，无法攻击！")
 
-        main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff, None)  # 主技能作用目标
+        main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff)  # 主技能作用目标
 
         # 1.计算命中, 格挡
         # 规则：主技能作用多个目标，只要有一个命中的，则判定命中
