@@ -123,4 +123,5 @@ message SettleAutoRequest{
 
 message SettleAutoResponse{
     required CommonResponse res = 1;
+    repeated AutoTravel auto_travel = 2;
 }

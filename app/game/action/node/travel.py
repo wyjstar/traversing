@@ -234,16 +234,11 @@ def travel_settle_833(data, player):
 
     event_info = travel_event_config.get('events').get(args.event_id)
     if event_info.type == 1:
-        if int(time.time()) - event_cache[1] < \
+        if int(time.time()) - event_cache[2] < \
                 event_info.parameter.items[0][0]:
             response.res.result = False
             response.res.result_no = 814
             return response.SerializeToString()
-    # elif event_info.type == 3:
-    #     if not event_info.parameter.get(args.answer):
-    #         response.res.result = False
-    #         response.res.result_no = 815
-    #         return response.SerializeToString()
 
     # 结算
     gain(player, event_cache[1])
@@ -399,11 +394,54 @@ def auto_travel_838(data, player):
         logger.error('auto stage info is None')
         response.res.result = False
         response.res.result_no = 817
+        return response.SerializeToString()
 
-    flag = 0
-    for auto_travel_info in stage_info:
-        if auto_travel_info.get('start_time') == start_time:
-            pass
+    auto_travel_info = {}
+    for i in stage_info:
+        if i.get('start_time') == start_time:
+            auto_travel_info = i
+    if not auto_travel_info:
+        logger.error('auto travel, this start time not find')
+        response.res.result = False
+        response.res.result_no = 818
+        return response.SerializeToString()
+
+    if base_config.get('autoTravel').get(auto_travel_info.get('continued_time')) != auto_travel_info.get('already_times'):
+        logger.error('auto travel dont finish')
+        response.res.result = False
+        response.res.result_no = 819
+        return response.SerializeToString()
+
+    del_list = []
+
+    for event_info in auto_travel_info.get('events'):
+        if event_id:
+            if event_info[0] != event_id:
+                continue
+
+        event_conf = travel_event_config.get('events').get(event_id)
+        if event_conf.type == 1:
+            if int(time.time()) - event_info[2] < \
+                    event_conf.parameter.items[0][0]:
+                continue
+
+        # 结算
+        gain(player, event_info[1])
+
+        del_list.append(event_info)
+
+    for del_event in del_list:
+        auto_travel_info.get('events').remove(del_event)
+
+    if len(auto_travel_info.get('events')) == 0:
+        stage_info.remove(auto_travel_info)
+
+    player.travel_component.save()
+
+    deal_auto_response(response, player)
+
+    response.res.result = True
+    response.SerializeToString()
 
 
 def deal_auto_response(response, player):
