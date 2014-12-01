@@ -363,10 +363,8 @@ def auto_travel_837(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    if player.travel_component.auto.get(stage_id):
-        response.res.result = False
-        response.res.result_no = 818
-        return response.SerializeToString()
+    if not player.travel_component.auto.get(stage_id):
+        player.travel_component.auto[stage_id] = []
 
     info = {
         'start_time': int(time.time()),
@@ -399,7 +397,12 @@ def auto_travel_838(data, player):
     if not stage_info:
         logger.error('auto stage info is None')
         response.res.result = False
-        response.res.result_no = 819
+        response.res.result_no = 817
+
+    flag = 0
+    for auto_travel_info in stage_info:
+        if auto_travel_info.get('start_time') == start_time:
+            pass
 
 
 def deal_auto_response(response, player):
