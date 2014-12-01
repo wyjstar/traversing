@@ -10,7 +10,8 @@ from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     TravelSettleRequest, TravelSettleResponse, \
     EventStartRequest, EventStartResponse, \
     NoWaitRequest, NoWaitResponse, OpenChestResponse, \
-    AutoTravelRequest, AutoTravelResponse
+    AutoTravelRequest, AutoTravelResponse, \
+    SettleAutoRequest, SettleAutoResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
     base_config, stage_config
 import random
@@ -380,6 +381,25 @@ def auto_travel_837(data, player):
 
     response.res.result = True
     return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def auto_travel_838(data, player):
+
+    args = SettleAutoRequest()
+    args.ParseFromString(data)
+    stage_id = args.stage_id
+    start_time = args.start_time
+    event_id = args.event_id
+
+    response = SettleAutoResponse()
+
+    auto_info = player.travel_component.auto
+    stage_info = auto_info.get(stage_id)
+    if not stage_info:
+        logger.error('auto stage info is None')
+        response.res.result = False
+        response.res.result_no = 819
 
 
 def deal_auto_response(response, player):

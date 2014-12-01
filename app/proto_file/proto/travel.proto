@@ -113,3 +113,14 @@ message StageTravel{
     required int32 stage_id = 1;
     repeated AutoTravel auto_travel = 2;
 }
+
+// 838
+message SettleAutoRequest{
+    required int32 stage_id = 1;
+    required int32 start_time = 2;
+    required int32 event_id = 3;  // 1:all
+}
+
+message SettleAutoResponse{
+    required CommonResponse res = 1;
+}
