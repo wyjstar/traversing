@@ -378,6 +378,7 @@ def auto_travel_837(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
+    logger.debug(response)
     return response.SerializeToString()
 
 
