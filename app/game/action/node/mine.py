@@ -128,9 +128,9 @@ def query_1243(data, player):
             one_type.stone_id = sid
             one_type.stone_num = num
         response.increase = last_increase
-        for hero in heros:
+        for hero_id in heros:
             one_hero = response.heros.add()
-            one_hero = hero
+            one_hero.hid = hero_id
     else:
         response.res.result = False
         response.res.result_no = ret
@@ -152,7 +152,8 @@ def add_stones(player, stones, response):
         one_type = response.stones.add()
         one_type.stone_id = stone_id
         one_type.stone_num = num
-
+    player.stone.save_data()
+    
 @remoteserviceHandle('gate')
 def harvest_1245(data, player):
     """
@@ -166,6 +167,11 @@ def harvest_1245(data, player):
     response = add_stones(player, stones, response)
     return response
 
+
+def battle(player, position):
+    ret  = True
+    return ret
+
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
     """
@@ -173,6 +179,13 @@ def battle_1246(data, player):
     """
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
+    ret = battle(player, request.position)
+    if ret == True:
+        settle = player.mine.settle(request.position)
+    else:
+        pass
+    
+    
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):

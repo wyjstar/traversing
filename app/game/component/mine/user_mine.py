@@ -12,6 +12,7 @@ import time
 from app.game.redis_mode import tb_character_mine
 import cPickle
 from gfirefly.server.logobj import logger
+from monster_mine import MineOpt
 
 
 def random_pick(odds_dict, num_top=1):
@@ -237,6 +238,7 @@ class MonsterField(Mine):
     def __init__(self):
         self._mine_id = 0
         self._monster = []
+        self._seq = 0
     
     @classmethod
     def create(cls, uid, nickname):
@@ -249,6 +251,7 @@ class MonsterField(Mine):
         monster_mine._nickname = "野怪"
         monster_mine._last_harvest = 0
         monster_mine._monster = ConfigData.mine(monster_mine._mine_id).monster
+        monster_mine._seq = 'uid.%s' % time.time()
         return monster_mine
     
     def mine_info(self):
@@ -256,6 +259,9 @@ class MonsterField(Mine):
         
     def detail_info(self):
         pass
+    
+    def settle(self):
+        MineOpt.add_mine(self._tid, self._seq, self)
     
 class Chest(Mine):
     """
@@ -581,3 +587,6 @@ class UserMine(Component):
         last_time = self._mine[0].acc_mine()
         self._update = True
         return last_time
+    
+    def settle(self, position):
+        self._mine[position].setttle()
