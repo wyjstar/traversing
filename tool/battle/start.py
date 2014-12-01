@@ -3,10 +3,10 @@
 
 from app.battle.battle_process import BattlePVPProcess, BattlePVEProcess
 from app.battle.battle_unit import BattleUnit, do_assemble
-from app.battle.battle_skill import BestSkill, FriendSkill, HeroSkill, MonsterSkill
+from app.battle.battle_skill import FriendSkill
 from shared.db_opear.configs_data.game_configs import monster_config, \
     monster_group_config, stage_config, special_stage_config, language_config, skill_config, hero_breakup_config
-from shared.db_opear.configs_data.game_configs import base_config
+#from shared.db_opear.configs_data.game_configs import base_config
 import sys
 from gfirefly.server.logobj import logger, log_init_debug_cal
 
@@ -24,8 +24,10 @@ def parse_input(battle_type):
     blue_groups = []
     blue_units = {} # pvp
     stage = () #pve
-    red_best_skill = None
-    blue_best_skill = None
+    red_best_skill_no = 0
+    red_player_level = 0
+    blue_best_skill_no = 0
+    blue_player_level = 0
     friend_skill = None
 
 
@@ -35,7 +37,8 @@ def parse_input(battle_type):
         eles = all_lines[i].split(',')
 
         if i == 1 and eles[1]:
-            red_best_skill = BestSkill(eles[1])
+            red_best_skill_no = int(eles[1])
+            red_player_level = int(eles[2])
 
         if i >= 2 and i <= 7:
             if not eles[0]: continue
@@ -47,7 +50,8 @@ def parse_input(battle_type):
             friend_skill = FriendSkill(unit)
 
         if i == 10 and eles[1]:
-            blue_best_skill = BestSkill(eles[1])
+            blue_best_skill_no = int(eles[1])
+            blue_player_level = int(eles[2])
 
         if i >= 11 and i <= 16 and battle_type == "pvp":
             if not eles[0]: continue
@@ -64,9 +68,9 @@ def parse_input(battle_type):
             blue_groups = get_monsters(stage_info)
 
     if battle_type == "pvp":
-        return BattlePVPProcess(red_units, red_best_skill, blue_units, blue_best_skill)
+        return BattlePVPProcess(red_units, red_best_skill_no, red_player_level, blue_units, blue_best_skill_no, blue_player_level)
     elif battle_type == "pve":
-        return BattlePVEProcess(red_units, red_best_skill, blue_groups, friend_skill)
+        return BattlePVEProcess(red_units, red_best_skill_no, red_player_level,  blue_groups, blue_player_level, friend_skill)
 
 def init_unit(slot_no, eles, is_hero=True):
 
@@ -86,7 +90,7 @@ def init_unit(slot_no, eles, is_hero=True):
     ductility = float(eles[14])
     level = int(eles[15])
     break_level = int(eles[16])
-    init_mp = int(eles[17])
+    #init_mp = int(eles[17])
 
     break_skill_buff_ids = []
     if is_hero:
