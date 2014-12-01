@@ -126,8 +126,10 @@ def query_1243(data, player):
     ret, msg, last_increase, stones, heros = detail_info
     if ret == 0:
         response.res.result = True
+        print type(stones), stones
         for sid, num in stones.items():
             one_type = response.stones.add()
+            print type(sid), type(one_type.stone_id)
             one_type.stone_id = sid
             one_type.stone_num = num
         response.increase = last_increase

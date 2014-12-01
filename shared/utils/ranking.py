@@ -82,6 +82,10 @@ class Ranking:
         return self.redis.zincrby(self.label, key, value)
 
 
+    def clear_rank(self):
+        self.redis.zremrangebyrank(self.label, 0, -1)
+
+
 def testcase1():
     redis_client.connect("127.0.0.1", "6379", 0)
 

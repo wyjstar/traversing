@@ -12,6 +12,9 @@ from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
 
 # from app.proto_file import world_boss_pb2
 
@@ -127,7 +130,9 @@ def pvb_reborn_1704(data, player):
     gold = player.finance.gold
     money_relive_price = base_config.get('money_relive_price')
     need_gold = money_relive_price
+    print need_gold, gold, "*"*80
     if gold < need_gold:
+        logger.debug("reborn error: %s" % 102)
         response.result = False
         response.result_no = 102
         return response.SerializePartialToString()
@@ -135,13 +140,16 @@ def pvb_reborn_1704(data, player):
     #2. 校验CD
     current_time = get_current_timestamp()
     if current_time - player.world_boss.last_fight_time > base_config.get("free_relive_time"):
+        logger.debug("reborn error: %s" % 1701)
         response.result = False
         response.result_no = 1701
         return response.SerializePartialToString()
 
     player.finance.gold -= need_gold
     player.finance.save_data()
-    return response.CommonResponse()
+    response.result = True
+    print response
+    return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
@@ -201,6 +209,10 @@ def pvb_fight_start_1705(pro_data, player):
         assemble(blue_add, blue_unit)
 
     response.red_best_skill = unparalleled
+    if unparalleled in player.line_up_component.unpars:
+        response.red_best_skill_level = player.line_up_component.unpars[unparalleled]
+
+
     # mock fight.
     player_info = {}
     player_info["player_id"] = player.base_info.id
@@ -221,7 +233,15 @@ def pvb_fight_start_1705(pro_data, player):
     player.world_boss.fight_times += 1
     player.world_boss.last_fight_time = get_current_timestamp()
     player.world_boss.save_data()
+
+    print response
     logger.debug("fight end..")
+    
+    lively_event = CountEvent.create_event(EventType.WINE, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     return response.SerializePartialToString()
 

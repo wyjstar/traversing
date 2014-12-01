@@ -84,7 +84,7 @@ def buy_stamina_6(request_proto, player):
         response.result_no = 11
         return response.SerializePartialToString()
 
-    need_gold = base_config.get("price_buy_manual").get(str(current_buy_stamina_times+1))[1]
+    need_gold = base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
     logger.debug("need_gold++++++++++++++++", need_gold)
     # 校验金币是否不足
     if need_gold > current_gold:

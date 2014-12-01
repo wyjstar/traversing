@@ -3,9 +3,13 @@
 *.DS_Store
 *.swp
 *~
+go/
+igo
 app/logs/
 cobar/logs/
 my.json
 config.json
 tool/excel_maker/sql/
 tool/traversing_one.*
+input.csv
+output

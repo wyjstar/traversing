@@ -55,7 +55,8 @@ message PvbFightResponse{
     repeated BattleUnit red = 2;
     repeated BattleUnit blue = 3;
     required int32 red_best_skill = 4;
-    required bool fight_result = 5;
+    required int32 red_best_skill_level = 5;
+    required bool fight_result = 6;
 }
 
 //战斗结算，command:1707

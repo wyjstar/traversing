@@ -88,6 +88,14 @@ def pvp_player_info_request_1504(data, player):
 def pvp_fight_request_1505(data, player):
     request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
+    __skill = request.skill
+    __best_skill = player.line_up_component.get_skill_id_by_unpar(__skill)
+    __skill_level = 0
+    if __skill in player.line_up_component.unpars:
+        __skill_level = player.line_up_component.unpars[request.skill]
+    else:
+        logger.error('error skill level:%s,%s', request.skill,
+                     player.line_up_component.unpars.keys())
 
     line_up = {}  # {hero_id:pos}
     for line in request.lineup:
@@ -103,7 +111,12 @@ def pvp_fight_request_1505(data, player):
     before_player_rank = 0
     if record:
         before_player_rank = record.get('id')
-        refresh_rank_data(player, before_player_rank)
+        refresh_rank_data(player, before_player_rank,
+                          __skill, __skill_level)
+
+    if before_player_rank == request.challenge_rank:
+        logger.error('cant not fight self')
+        return False
 
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
@@ -112,6 +125,8 @@ def pvp_fight_request_1505(data, player):
                                     'level',
                                     'ap',
                                     'best_skill',
+                                    'unpar_skill',
+                                    'unpar_skill_level',
                                     'units',
                                     'slots',
                                     'hero_ids'])
@@ -121,22 +136,28 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
-    process = BattlePVPProcess(red_units,
-                               request.skill,
-                               blue_units,
-                               record.get('best_skill', 0))
+    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
+                               record.get('best_skill', 0), record.get('level', 1))
     fight_result = process.process()
 
     logger.debug("fight result:%s" % fight_result)
 
     if fight_result:
+        logger.debug("fight result:True:%s:%s",
+                     before_player_rank,
+                     request.challenge_rank)
         if before_player_rank != 0:
-            prere = dict(id=before_player_rank)
-            result = util.UpdateWithDict(PVP_TABLE_NAME, record, prere)
-            logger.info('update result:', result)
-        refresh_rank_data(player, request.challenge_rank)
+            if request.challenge_rank < before_player_rank:
+                prere = dict(id=before_player_rank)
+                result = util.UpdateWithDict(PVP_TABLE_NAME, record, prere)
+                logger.info('update result:%s', result)
+                refresh_rank_data(player, request.challenge_rank,
+                                  __skill, __skill_level)
+        else:
+            refresh_rank_data(player, request.challenge_rank,
+                              __skill, __skill_level)
     else:
-        pass
+        logger.debug("fight result:False")
 
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
@@ -150,7 +171,10 @@ def pvp_fight_request_1505(data, player):
             continue
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
-    response.red_skill = request.skill
+    response.red_skill = __skill
+    response.red_skill_level = __skill_level
+    response.blue_skill = record.get('unpar_skill')
+    response.blue_skill_level = record.get('unpar_skill_level')
 
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
@@ -202,12 +226,17 @@ def pvp_player_rank_refresh_request(data, player):
     return response.SerializeToString()
 
 
-def refresh_rank_data(player, rank_id):
+def refresh_rank_data(player, rank_id, skill, skill_level):
     red_units = cPickle.dumps(player.fight_cache_component.red_unit)
     slots = cPickle.dumps(line_up_info(player))
     hero_nos = player.line_up_component.hero_nos
+    best_skill = player.line_up_component.get_skill_id_by_unpar(skill)
     rank_data = dict(hero_ids=cPickle.dumps(hero_nos),
                      level=player.level.level,
+                     nickname=player.base_info.base_name,
+                     best_skill=best_skill,
+                     unpar_skill=skill,
+                     unpar_skill_level=skill_level,
                      ap=player.line_up_component.combat_power,
                      character_id=player.base_info.id,
                      units=red_units,

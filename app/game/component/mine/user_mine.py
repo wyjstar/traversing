@@ -22,6 +22,7 @@ def random_pick(odds_dict, num_top=1):
     for item, item_odds in odds_dict.items():
         if item_odds == 0:
             continue
+        odds_cur += item_odds
         if x <= odds_cur:
             pick_result = item
             break
@@ -89,7 +90,6 @@ class Mine(object):
         info['type'] = self._type
         info['status'] = self._status
         info['nickname'] = self._nickname
-        print 'info', info
         return info
         
     def can_reset(self, uid):
@@ -131,7 +131,7 @@ class UserSelf(Mine):
         
     def gen_stone(self, num, odds_dict, limit):
         #发放符文石
-        now_data = sum(self._stone.values())
+        now_data = sum(self._stones.values())
         if now_data >= limit:
             return
         for _ in range(0, num):
@@ -173,7 +173,6 @@ class UserSelf(Mine):
     def get_cur(self, now):
         #结算到当前的产出
         mine = ConfigData.mine(self._mine_id)
-        print 'get_cur', mine, self._mine_id
         if sum(self._stones.values()) >= mine.outputLimited:
             return self._stones
         normal = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest)
@@ -511,8 +510,7 @@ class UserMine(Component):
         查询所有矿点信息
         """
         mine_infos = []
-        print self._mine.keys()
-        self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
+        #self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
         for pos in self._mine.keys():
             mine_info = self._mine[pos].mine_info()
             mine_info['position'] = pos

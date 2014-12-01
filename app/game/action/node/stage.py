@@ -133,7 +133,7 @@ def stage_start_903(pro_data, player):
 
     response.hero_unpar = unparalleled
     if unparalleled in player.line_up_component.unpars:
-        response.hero_unpar_level = player.line_up_component[unparalleled]
+        response.hero_unpar_level = player.line_up_component.unpars[unparalleled]
 
     if f_unit:
         friend = response.friend
@@ -216,25 +216,8 @@ def assemble(unit_add, unit):
     unit_add.no = unit.unit_no
     unit_add.quality = unit.quality
 
-    # normal_skill = unit_add.normal_skill
-    # if unit.normal_skill:
-    #     normal_skill.id = unit.normal_skill[0]
-    #     buffs = normal_skill.buffs
-    #     for buff in unit.normal_skill[1:]:
-    #         buffs.append(buff)
-    #
-    # rage_skill = unit_add.rage_skill
-    # if unit.rage_skill:
-    #     rage_skill.id = unit.rage_skill[0]
-    #     buffs = rage_skill.buffs
-    #     for buff in unit.rage_skill[1:]:
-    #         buffs.append(buff)
     for skill_no in unit.skill.break_skill_ids:
         unit_add.break_skills.append(skill_no)
-
-    # if unit.skill.break_skill_ids:
-    #     for break_skill_id in unit.skill.break_skill_ids:
-    #         unit_add.break_skill.add(break_skill_id)
 
     unit_add.hp = unit.hp
     unit_add.atk = unit.atk
@@ -247,22 +230,11 @@ def assemble(unit_add, unit):
     unit_add.cri_ded_coeff = unit.cri_ded_coeff
     unit_add.block = unit.block
 
-    # unit_add.base_hp = unit.base_hp
-    # unit_add.base_atk = unit.base_atk
-    # unit_add.base_physical_def = unit.base_physical_def
-    # unit_add.base_magic_def = unit.base_magic_def
-    # unit_add.base_hit = unit.base_hit
-    # unit_add.base_dodge = unit.base_dodge
-    # unit_add.base_cri = unit.base_cri
-    # unit_add.base_cri_coeff = unit.base_cri_coeff
-    # unit_add.base_cri_ded_coeff = unit.base_cri_ded_coeff
-    # unit_add.base_block = unit.base_block
-
     unit_add.level = unit.level
     unit_add.break_level = unit.break_level
 
     unit_add.position = unit.slot_no
-    # unit_add.is_boss = unit.is_boss
+    unit_add.is_boss = unit.is_boss
 
 
 def get_stage_info(stage_id, player):
@@ -366,18 +338,24 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     if conf:
         # 星期限制
         if conf.weeklyControl:
-            if conf.weeklyControl[time.localtime().tm_wday]:
+            if time.localtime().tm_wday == 6:
+                wday = 7
+            else:
+                wday = time.localtime().tm_wday + 1
+
+            if not conf.weeklyControl[time.localtime().tm_wday]:
+                logger.error('week error,804:%s', time.localtime().tm_wday)
                 return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
         # 时间限制
         open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
         close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
         if not open_time <= time.time() <= close_time:
+            logger.error('time error,804,:%s', time.time())
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
 
-    print "*"*80
-    print line_up
+
     # 保存阵容
     player.line_up_component.line_up_order = line_up
     player.line_up_component.save_data()
@@ -390,6 +368,9 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
 
     red_units, blue_units, drop_num, monster_unpara, replace_units, replace_no, awake_units, awake_nos = fight_cache_component.fighting_start()
 
+    print "*"*80
+    print red_units
+    print blue_units
     # 好友
     lord_data = tb_character_lord.getObjData(fid)
     f_unit = None
