@@ -56,9 +56,12 @@ class UnitSkill(object):
     @property
     def main_skill_buff(self):
         """普通技能或者怒气技能中的主技能"""
-        if self.is_full:
+        if self.is_mp_skill():
             return self._main_mp_skill_buff
         return self._main_normal_skill_buff
+
+    def is_mp_skill(self):
+        return self.is_full and (not self._owner.buff_manager.is_slient())
 
     def attack_skill_buffs(self):
         """普通技能或者怒气技能中除主技能外的技能"""
@@ -73,16 +76,19 @@ class UnitSkill(object):
             return self._has_mp_treat_skill_buff
         return self._has_normal_treat_skill_buff
 
-    def set_mp(self):
+    def set_mp(self, is_mp_skill):
         """
         攻击结束后，修改怒气值。
         """
-        if self.is_full:
-            self._mp = self._owner._mp_base
-            logger_cal.debug("重置 mp: %s" % self._mp)
-        else:
+        if not is_mp_skill:
             self._mp += self._mp_step
             logger_cal.debug("正常添加 mp：%s" % self._mp_step)
+            if self._mp > self._mp_max:
+                self._mp = self._mp_max
+
+        else:
+            self._mp = self._owner._mp_base
+            logger_cal.debug("重置 mp: %s" % self._mp)
 
     @property
     def owner(self):
@@ -98,10 +104,17 @@ class UnitSkill(object):
             self._mp = 0
         elif value > self._mp_max:
             self._mp = self._mp_max
+        else:
+            self._mp = value
 
 class HeroSkill(UnitSkill):
     """武将技能"""
-    def __init__(self, unit, mp_config):
+    def __init__(self, unit):
+        mp_config = base_config.get('chushi_value_config')
+        if unit.is_break:
+            mp_config = base_config.get('stage_break_angry_value')
+        elif unit.is_awake:
+            mp_config = base_config.get('angryValueAwakeHero')
         super(HeroSkill, self).__init__(unit, hero_config, mp_config)
         self._break_skill_ids = []
         self._break_skill_buffs = {}
@@ -161,11 +174,10 @@ class HeroSkill(UnitSkill):
                 self._break_skill_buffs[trigger_type] = []
             self._break_skill_buffs[trigger_type].append(skill_buff_info)
 
-
-
 class MonsterSkill(UnitSkill):
     """怪物技能"""
-    def __init__(self, unit, mp_config):
+    def __init__(self, unit):
+        mp_config = base_config.get('chushi_value_config')
         super(MonsterSkill, self).__init__(unit, monster_config, mp_config)
 
     def before_skill_buffs(self, is_hit):
@@ -242,7 +254,6 @@ class BestSkill(object):
     @player_level.setter
     def player_level(self, value):
         self._player_level = value
-
 
 class BestSkillNone(object):
     """docstring for BestSkill"""
