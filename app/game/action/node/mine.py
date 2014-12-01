@@ -14,15 +14,15 @@ from shared.db_opear.configs_data.common_item import CommonGroupItem
 from shared.utils.const import const
 remote_gate = GlobalObject().remote['gate']
 
-def mine_status(player):
+def mine_status(player, response):
     """
     所有矿点状态
     """
-    respone = mine_pb2.mineUpdate()
-    respone.last_times = player.mine.reset_times
+    response.last_times = player.mine.reset_times
     mine_status = player.mine.mine_status()
+    player.mine.save_data()
     for mstatus in mine_status:
-        one_mine = respone.mine.add()
+        one_mine = response.mine.add()
         position = mstatus.get('position', None)
         if position != None:
             one_mine.position = position
@@ -38,16 +38,16 @@ def mine_status(player):
         last_time = mstatus.get('last_time', None)
         if last_time != None:
             one_mine.last_time = last_time
-    return respone
+    return response
 
 @remoteserviceHandle('gate')
 def query_1240(data, player):
     """
     查询所有矿点信息
     """
-    print 'query_1240'
-    response = mine_status(player)
-    print 'response', response
+    response = mine_pb2.mineUpdate()
+    mine_status(player, response)
+    print '1240-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -56,19 +56,19 @@ def search_1241(data, player):
     搜索矿点,ok
     """
     request = mine_pb2.positionRequest()
-    request.ParseFromString(data)
+    #request.ParseFromString(data)
+    request.position = 9
     response = mine_pb2.searchResponse()
     response.position = request.position
     if player.mine.can_search(request.position):
         player.mine.search_mine(request.position)
-        player.mine.save_data()
-        respone = mine_status(player)
+        mine_status(player, response.mine)
         response.res.result = True
-        response.mine = respone
     else:
         response.res.result = False
         response.res.result_no = 12410
-        response.res.message = "此处已探索"
+        response.res.message = u"此处已探索"
+    print '1241-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -82,9 +82,8 @@ def reset_1242(data, player):
     if request.free == 1:
         if player.mine.can_reset_free():
             player.mine.reset_map()
-            mines = mine_status(player)
+            mine_status(player, response.mine)
             response.res.result = True
-            response.mine = mines
         else:
             response.res.result = False
             response.res.result_no = 12420
@@ -106,10 +105,9 @@ def reset_1242(data, player):
                 consume_return_data = item_group_helper.consume(player, [price])  # 消耗
                 item_group_helper.get_return(player, consume_return_data, response.consume)
                 player.mine.reset_map()
-                mines = mine_status(player)
+                mine_status(player, response.mine)
                 response.res.result = True
-                response.mine = mines
-        
+    print '1242-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -126,10 +124,8 @@ def query_1243(data, player):
     ret, msg, last_increase, stones, heros = detail_info
     if ret == 0:
         response.res.result = True
-        print type(stones), stones
         for sid, num in stones.items():
             one_type = response.stones.add()
-            print type(sid), type(one_type.stone_id)
             one_type.stone_id = sid
             one_type.stone_num = num
         response.increase = last_increase
@@ -140,7 +136,7 @@ def query_1243(data, player):
         response.res.result = False
         response.res.result_no = ret
         response.res.message = msg
-
+    print '1243-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -165,12 +161,19 @@ def harvest_1245(data, player):
     收获符文石,待测试
     """
     request = mine_pb2.positionRequest()
-    request.ParseFromString(data)
+    #request.ParseFromString(data)
+    request.position = 0
     response = mine_pb2.drawStones()
     response.position = request.position
     stones = player.mine.harvest(request.position)
-    response = add_stones(player, stones, response)
-    return response
+    if stones:
+        add_stones(player, stones, response)
+    else:
+        response.res.result = False
+        response.res.result_no = 12450
+        response.res.message = u"没有可以领取的符文石"
+    print '1245-response', response
+    return response.SerializePartialToString()
 
 
 def battle(player, position):

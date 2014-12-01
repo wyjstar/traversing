@@ -30,7 +30,7 @@ message searchResponse
 {
 	required CommonResponse res = 1;
 	required int32 position = 2;
-	repeated mineData mine = 3;//所有位置信息
+	required mineUpdate mine = 3;//所有位置信息
 }
 
 //1242请求 地图重置
@@ -44,7 +44,7 @@ message resetResponse
 {
 	required CommonResponse res = 1;
 	required GameResourcesResponse consume = 2;
-	repeated mineData mine = 3;//所有位置信息
+	required mineUpdate mine = 3;//所有位置信息
 }
 
 //符文石数据

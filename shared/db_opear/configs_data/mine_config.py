@@ -11,7 +11,6 @@ class MineConfig(object):
         self._items = {}
 
     def parser(self, config_value):
-        print config_value
         for row in config_value:
             item = CommonItem(row)
             self._items[item.id] = item

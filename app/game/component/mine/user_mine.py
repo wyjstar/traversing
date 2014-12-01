@@ -44,7 +44,7 @@ class MineType:
     @classmethod
     def create(cls, stype, uid, nickname):
         if stype in cls._create:
-            mine = eval(cls._create[stype])(uid, nickname)
+            mine = eval(cls._create[stype]).create(uid, nickname)
             return mine
         return None
     
@@ -126,16 +126,19 @@ class UserSelf(Mine):
         user_mine._mine_id = ConfigData.mine_ids(MineType.PLAYER_FIELD).keys()[0]
         user_mine._status = 1
         user_mine._nickname = nickname
-        user_mine._last_harvest = time.time()
+        user_mine._normal_harvest = time.time()
+        user_mine._special_harvest = time.time()
         return user_mine
         
     def gen_stone(self, num, odds_dict, limit):
         #发放符文石
+        print 'num', num
         now_data = sum(self._stones.values())
         if now_data >= limit:
             return
         for _ in range(0, num):
             stone_id = random_pick(odds_dict, sum(odds_dict.values()))
+            stone_id = int(stone_id)
             if stone_id not in self._stones:
                 self._stones[stone_id] = 1
             else:
@@ -154,6 +157,7 @@ class UserSelf(Mine):
             dat = self.dat(now, harvest, dur)
             harvest += dat*(dur*60)
             num = dat*per
+            print 'compute_1'
         else:
             if now <= self._increase:
                 #增产还未结束，从上次结算到当前都在增产
@@ -162,12 +166,14 @@ class UserSelf(Mine):
                 dat = self.dat(now, harvest, dur)
                 harvest += dat*(dur*60)
                 num = int(dat * per * ratio)
+                print 'compute_2'
             else:
                 incr_dat = self.dat(self._increase, harvest, dur)
                 dat1 = int(incr_dat * per * ratio) #增产部分
                 nor_dat = self.dat(now, self._increase, dur)
                 dat2 = (nor_dat*per) #未增产部分
                 num = dat1+dat2
+                print 'compute_3'
         return num
     
     def get_cur(self, now):
@@ -180,7 +186,8 @@ class UserSelf(Mine):
         
         special = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._special_harvest)
         self.gen_stone(special, mine.randomStoneId, mine.outputLimited)
-        
+        print 'self._normal_harvest', self._normal_harvest
+        print 'self._special_harvest', self._special_harvest
         return self._stones
     
     def draw_stones(self):
@@ -376,13 +383,13 @@ class UserMine(Component):
         mine_data = tb_character_mine.getObjData(self.owner.base_info.id)
 
         if mine_data:
+            print 'init_data', mine_data
             mine = mine_data.get('mine')
             all_mine = mine.get('1')
             if all_mine:
                 self._mine = cPickle.loads(all_mine)
             else:
                 self._mine = {}
-            if 0 not in self._mine:
                 self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
             self._reset_day = mine_data.get('reset_day', '')
             self._reset_times = mine_data.get('reset_times')
@@ -399,6 +406,7 @@ class UserMine(Component):
             
     def save_data(self):
         mine_obj = tb_character_mine.getObj(self.owner.base_info.id)
+        print mine_obj
         if mine_obj:
             data = {'mine': {'1':cPickle.dumps(self._mine)},
                     'reset_day':self._reset_day,
@@ -496,8 +504,12 @@ class UserMine(Component):
             num = get_num()
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
+        
+        stype = 4
+        print 'stype', stype
         if stype == MineType.PLAYER_FIELD:
-            mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively)
+            sword = 0
+            mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
         else:
             mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name)
         if not mine:
@@ -510,7 +522,7 @@ class UserMine(Component):
         查询所有矿点信息
         """
         mine_infos = []
-        #self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
+        self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
         for pos in self._mine.keys():
             mine_info = self._mine[pos].mine_info()
             mine_info['position'] = pos
@@ -521,8 +533,11 @@ class UserMine(Component):
         """
         收获
         """
+        print 'harvest', position
         if position in self._mine:
+            print '1111'
             stones = self._mine[position].draw_stones()
+            print stones
             if stones:
                 self._update = True
                 return stones
@@ -583,3 +598,4 @@ class UserMine(Component):
     
     def settle(self, position):
         self._mine[position].setttle()
+        
