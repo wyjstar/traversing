@@ -1,9 +1,10 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 from battle_round import BattleRound
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data.game_configs import base_config, skill_config, skill_buff_config
 from battle_skill import BestSkill, BestSkillNone, FriendSkillNone
 from gfirefly.server.logobj import logger
+from battle_buff import Buff
 
 
 class BattlePVPProcess(object):
@@ -90,9 +91,21 @@ class BattlePVEProcess(object):
 
 class BattlePVBProcess(object):
     """世界boss"""
-    def __init__(self, red_units, red_player_level, red_best_skill_no, blue_units):
+    def __init__(self, red_units, red_player_level, red_best_skill_no, blue_units, debuff_no=0):
         self._red_units = red_units
         self._blue_units = blue_units
+
+        # add debuff
+        skill_info = skill_config.get(debuff_no)
+        if skill_info:
+            for k, v in blue_units.items():
+                for temp in skill_info.group:
+                    skill_buff_info = skill_buff_config.get(temp)
+                    if not skill_buff_info:
+                        continue
+
+                    buff = Buff(None, skill_buff_info)
+                    v.buff_manager.add(buff)
 
         self._red_best_skill = BestSkill(red_best_skill_no, red_player_level) if red_best_skill_no else BestSkillNone()
         self._blue_best_skill = BestSkillNone()
