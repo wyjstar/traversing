@@ -3,6 +3,8 @@
 *.DS_Store
 *.swp
 *~
+go/
+igo
 app/logs/
 cobar/logs/
 my.json
