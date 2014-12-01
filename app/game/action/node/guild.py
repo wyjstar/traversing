@@ -351,7 +351,8 @@ def deal_apply_805(data, player):
             # 加入公会聊天室
             invitee_player = PlayersManager().get_player_by_id(p_id)
             if invitee_player:  # 在线
-                login_guild_chat(invitee_player.dynamic_id, invitee_player.guild.g_id)
+                remote_gate.login_guild_chat_remote(invitee_player.dynamic_id,
+                                                    invitee_player.guild.g_id)
                 invitee_player.guild.g_id = player.guild.g_id
                 invitee_player.guild.position = 5
                 invitee_player.guild.contribution = 0
@@ -651,7 +652,7 @@ def worship_809(data, player):
     guild_obj.init_data(data1)
 
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
-    worship_info = base_config.get('worship').get(unicode(w_type))
+    worship_info = base_config.get('worship').get(w_type)
 
     if worship_info[1] == 1:  # 1金币  2元宝
         if worship_info[2] > player.finance.coin:

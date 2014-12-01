@@ -22,7 +22,7 @@ class BattleRound(object):
         self._friend_skill = None
         self._client_data = None
 
-    def init_round(self, red_units, red_best_skill, blue_units, blue_best_skill=None, friend_skill=None):
+    def init_round(self, red_units, red_best_skill, blue_units, blue_best_skill, friend_skill):
         self._red_units = copy.deepcopy(red_units)  # copy.deepcopy(red_units)
         self._red_best_skill = red_best_skill
         self._blue_units = copy.deepcopy(blue_units)
@@ -114,8 +114,8 @@ class BattleRound(object):
         perform mock battle, logger.debug_cal(battle process.)
         """
         for i in range(1, 7):
-            red_unit = self.get_next_unit(i, self._red_units)
-            blue_unit = self.get_next_unit(i, self._blue_units)
+            red_unit = self._red_units.get(i)
+            blue_unit = self._blue_units.get(i)
             self.handle_mock_special_skill(self._red_best_skill)
             if red_unit:
                 logger.debug_cal(("red_%d" % i) + "-" * 20 + "我方攻击" + "-" * 20)
@@ -133,7 +133,6 @@ class BattleRound(object):
 
         self.remove_buff(self._red_units)
         self.remove_buff(self._blue_units)
-
         return self._red_units, self._blue_units
 
     def remove_buff(self, units):
@@ -155,15 +154,12 @@ class BattleRound(object):
         return temp
 
     def handle_mock_special_skill(self, best_skill):
-        if best_skill and best_skill.is_full:
-            self.perform_best_skill(self._red_units, self._blue_units, best_skill)
-        if self._friend_skill and self._friend_skill.is_full:
-            self.perform_friend_skill(self._red_units, self._blue_units, self._friend_skill)
+        self.perform_best_skill(self._red_units, self._blue_units, best_skill)
+        self.perform_friend_skill(self._red_units, self._blue_units, self._friend_skill)
 
     def perform_one_skill(self, army, enemy, skill):
         """执行技能：普通技能或者怒气技能"""
         attacker = skill.owner
-        #print attacker.slot_no, attacker.unit_no, skill.main_skill_buff
 
         logger.debug_cal("    进行攻击: 攻击者位置(%d), 攻击者(%d), 主技能ID(%d), buff(%s)" % \
                          (attacker.slot_no, attacker.unit_no, skill.main_skill_buff.id, attacker.buff_manager))
@@ -225,17 +221,24 @@ class BattleRound(object):
                 buff = Buff(attacker, skill_buff_info, is_block)
                 target_unit.buff_manager.add(buff)
 
-
     def perform_best_skill(self, army, enemy, skill):
         """执行技能：无双"""
+        if not skill.is_full():
+            return
         for skill_buff_info in skill.skill_buffs:
-            target_units = find_target_units(None, army, enemy, skill_buff_info)
-            self.handle_skill_buff(None, army, enemy, skill_buff_info, target_units)
+            target_units = find_target_units(None, army, enemy, skill_buff_info, None)
+            demage_hp = skill.player_level * skill_buff_info.levelEffectValue
+            for target_unit in target_units:
+                target_unit.hp -= demage_hp
+            logger.debug_cal("无双的伤害值为 %s" % demage_hp)
+
         skill.reset_mp()
 
     def perform_friend_skill(self, army, enemy, skill):
         """执行技能：小伙伴"""
-        self.perform_one_skill(None, army, enemy, skill)
+        if not skill.is_full():
+            return
+        self.perform_one_skill(army, enemy, skill)
         skill.reset_mp()
 
     def handle_skill_buff(self, attacker, army, enemy, skill_buff_info, target_units):

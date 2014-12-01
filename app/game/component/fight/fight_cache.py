@@ -132,6 +132,7 @@ class CharacterFightCacheComponent(Component):
             if not monster_group_id:
                 continue
             monster_group_config = self.__get_monster_group_config(monster_group_id)
+
             round_monsters = {}
 
             boss_position = monster_group_config.bossPosition
@@ -280,7 +281,7 @@ class CharacterFightCacheComponent(Component):
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
         self.__break_hero_units(red_units)
-        self.__awake_hero_units(red_units)
+        self.awake_hero_units(red_units)
 
         return red_units, blue_units, drop_num, monster_unpara
 
@@ -356,7 +357,7 @@ class CharacterFightCacheComponent(Component):
             unit.is_break = True
             red_units[red_units.index(red_unit)] = unit
 
-    def __awake_hero_units(self, red_units):
+    def awake_hero_units(self, red_units):
         for no, red in red_units.items():
             hero_item = game_configs.hero_config.get(red.unit_no)
             _rand = random.random()

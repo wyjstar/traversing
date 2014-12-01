@@ -37,8 +37,8 @@ def use_item_302(pro_data, player):
         return
     item_func = item_config_item.func
     drop_id = item_config_item.dropId
-    func_args1 = item_config_item.funcArgs1
-    func_args2 = item_config_item.funcArgs2
+    func_args1 = item_config_item.funcArg1
+    func_args2 = item_config_item.funcArg2
 
     response = ItemUseResponse()
     common_response = response.res  # = common_response

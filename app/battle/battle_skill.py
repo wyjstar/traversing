@@ -6,8 +6,8 @@ created by server on 14-11-10下午3:43.
 from shared.db_opear.configs_data.game_configs import skill_config
 from shared.db_opear.configs_data.game_configs import skill_buff_config
 from shared.db_opear.configs_data.game_configs import hero_config, monster_config
-from shared.db_opear.configs_data.game_configs import base_config, hero_breakup_config
-from gfirefly.server.logobj import logger
+from shared.db_opear.configs_data.game_configs import base_config
+#from gfirefly.server.logobj import logger
 
 class UnitSkill(object):
     """docstring for UnitSkill"""
@@ -25,12 +25,10 @@ class UnitSkill(object):
         self._has_skill_buff = False
         temp_unit = unit_config.get(self._unit_no)
         skill_info = skill_config.get(temp_unit.normalSkill, None)
-        logger.debug("skill_info%s" % skill_info)
         self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = \
             self.get_skill_buff(skill_info.get("group"))
 
         skill_info = skill_config.get(temp_unit.rageSkill, None)
-        logger.debug("skill_info%s" % skill_info)
         self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff = self.get_skill_buff(
             skill_info.get("group"))
 
@@ -183,7 +181,7 @@ class MonsterSkill(UnitSkill):
 class BestSkill(object):
     """docstring for BestSkill"""
 
-    def __init__(self, skill_no):
+    def __init__(self, skill_no, player_level):
         super(BestSkill, self).__init__()
         best_mp_config = base_config.get('wushang_value_config')
         self._mp = best_mp_config[0]
@@ -193,6 +191,7 @@ class BestSkill(object):
         self._mp_max_2 = best_mp_config[3]
         self._mp_max_3 = best_mp_config[4]
         self._skill_buffs = []
+        self._player_level = player_level
         skill_info = skill_config.get(self._skill_no, None)
         if skill_info:
             for buff_id in skill_info.group:
@@ -234,6 +233,14 @@ class BestSkill(object):
             if self._mp > self._mp_max_3:
                 self._mp = self._mp_max_3
 
+    @property
+    def player_level(self):
+        return self._player_level
+
+    @player_level.setter
+    def player_level(self, value):
+        self._player_level = value
+
 
 class BestSkillNone(object):
     """docstring for BestSkill"""
@@ -258,9 +265,6 @@ class BestSkillNone(object):
 
     def add_mp(self):
         pass
-
-
-
 
 class FriendSkill(object):
     """docstring for FriendSkill"""
@@ -307,7 +311,6 @@ class FriendSkill(object):
         if self._mp > self._mp_max:
             self._mp = self._mp_max
 
-
 class FriendSkillNone(object):
     """docstring for FriendSkill"""
 
@@ -316,7 +319,6 @@ class FriendSkillNone(object):
 
     def is_full(self):
         return False
-
 
     def attack_skill_buffs(self):
         """docstring for attack_skill_buffs"""

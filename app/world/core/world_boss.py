@@ -25,10 +25,11 @@ class WorldBoss(object):
         self._stage_id_am = 0         # 关卡id am
         self._stage_id_pm = 0         # 关卡id pm
         self._stage_id = 0            # 关卡id
-        self._hp =0                   # 剩余血量
+        self._hp = 0                   # 剩余血量
         self._state = 0               # boss状态：用于boss到期, 重置状态
 
         self.init_data()
+        self.init_time()
         reactor.callLater(1, self.loop_update)
 
     def get_hp(self):
@@ -56,6 +57,17 @@ class WorldBoss(object):
         self._stage_id_am = world_boss_data.get("stage_id_am")
         self._stage_id_pm = world_boss_data.get("stage_id_pm")
         self._hp = world_boss_data.get("hp")
+
+    def init_time(self):
+        am_period = self.get_stage_period(self._stage_id_am)
+        pm_period = self.get_stage_period(self._stage_id_pm)
+
+        current = get_current_timestamp()
+        if current < am_period[1] and current > pm_period[1]:
+            self._stage_id = self._stage_id_am
+        elif current > am_period[1] and current < pm_period[1]:
+            self._stage_id = self._stage_id_pm
+
 
     @property
     def stage_id(self):
@@ -125,6 +137,8 @@ class WorldBoss(object):
         if self._stage_id and self._state!=0 and (not self.in_the_time_period()):
             self.update_boss()
             self._state = 0
+
+
         reactor.callLater(1, self.loop_update)
 
     def update_boss(self):
@@ -152,13 +166,16 @@ class WorldBoss(object):
 
         self.set_next_stage(self._hp<=0)
         self._hp = self.get_hp() # 重置血量
+        instance = self.get_rank_instance()
+        instance.clear_rank() # 重置排行
+        #todo: 重置玩家信息
         self.save_data()
 
         # todo:对前十名发放奖励
 
 
     def in_the_time_period(self):
-        stage_info = special_stage_config.get("boss_stages").get(self._stage_id)
+        stage_info = self.current_stage_info()
         time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
         current = get_current_timestamp()
         return time_start<=current and time_end>=current
@@ -178,7 +195,8 @@ class WorldBoss(object):
         return all_high_heros, all_middle_heros, all_low_heros
 
     def set_next_stage(self, kill_or_not=False):
-        """根据id规则确定下一个关卡
+        """
+        根据id规则确定下一个关卡
         如果boss未被击杀则不升级
         """
         logger.debug("current_stage_id1%s" % self._stage_id)
@@ -188,23 +206,34 @@ class WorldBoss(object):
             self._stage_id_pm = 800102
             self._stage_id = 800101
             return
-        if kill_or_not:
-            if current_stage_id%10==1: # am
-                self._stage_id_am = current_stage_id + 1
+        if kill_or_not: #如果boss被击杀，则升级boss
+            if current_stage_id == self._stage_id_am: # am
+                self._stage_id_am = current_stage_id + 100
             else: # pm
-                self._stage_id_pm = current_stage_id + 100 -1
+                self._stage_id_pm = current_stage_id + 100
+        current_time = get_current_timestamp()
 
-        if current_stage_id%10==1: # am
-            self._stage_id = self._stage_id_am
-        else: #pm
+        if current_stage_id == self._stage_id_am:
             self._stage_id = self._stage_id_pm
+        else:
+            self._stage_id = self._stage_id_am
+
+
         logger.debug("current_stage_id3%s" % self._stage_id)
         logger.debug("current_stage_id_am%s" % self._stage_id_am)
         logger.debug("current_stage_id_pm%s" % self._stage_id_pm)
 
+    def get_stage_period(self, stage_id):
+        """docstring for get_am_period"""
+        stage_info = self.get_stage_info(stage_id)
+        time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
+        return time_start, time_end
 
     def current_stage_info(self):
         return special_stage_config.get("boss_stages").get(self._stage_id)
+
+    def get_stage_info(self, stage_id):
+        return special_stage_config.get("boss_stages").get(stage_id)
 
     def add_rank_item(self, player_info):
         """
