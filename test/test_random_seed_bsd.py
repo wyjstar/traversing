@@ -23,13 +23,15 @@ def bsd_rand(X1, X2):
     return rand
 
 
-
-
-
-
 if __name__ == '__main__':
     rand_test = bsd_rand(2.0, 3.0)
-    for i in range(10):
-        print rand_test()
+    map_rand = {}
+    for i in range(10000):
+        r = int(rand_test() * 100)
+        if r in map_rand:
+            map_rand[r] += 1
+        else:
+            map_rand[r] = 1
 
-    print 4.0 * 798406.0
+    for k, v in map_rand.items():
+        print k, v
