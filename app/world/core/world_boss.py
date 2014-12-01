@@ -144,7 +144,7 @@ class WorldBoss(object):
         if self._stage_id and self._state == 1 and (not self.in_the_time_period()):
             self.update_boss()
             self._state = 0
-
+        print "-"*80, self._stage_id
         reactor.callLater(1, self.loop_update)
 
     def update_boss(self):

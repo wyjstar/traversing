@@ -86,6 +86,8 @@ class BattleRound(object):
                 # check
                 self._client_data.move_to_next()
 
+
+
     def handle_special_skill(self, skill_types):
         """
         handle best skill and friend skill.
@@ -136,6 +138,7 @@ class BattleRound(object):
 
         self.remove_buff(self._red_units)
         self.remove_buff(self._blue_units)
+        self._blue_units = {}
         return self._red_units, self._blue_units
 
     def remove_buff(self, units):
