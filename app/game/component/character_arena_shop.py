@@ -21,7 +21,6 @@ class CharacterArenaShopComponent(Component):
         self._item_ids = []  # 当前商店商品
 
     def init_arena_shop(self, arena_shop_data):
-        logger.debug(str(arena_shop_data) + ", arena_shop_data++++++++++++")
         if arena_shop_data:
             self._refresh_times = arena_shop_data.get('refresh_times')
             self._last_refresh_time = arena_shop_data.get('last_refresh_time')

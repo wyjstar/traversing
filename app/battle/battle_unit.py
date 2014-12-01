@@ -265,7 +265,10 @@ class BattleUnit(object):
                     ductility=self._ductility,
                     level=self._level,
                     is_boss=self._is_boss,
-                    skill=self._skill)
+                    skill=self._skill,
+                    is_awake=False,
+                    origin_no=0,
+                    is_break=False)
 
     def dumps(self):
         return cPickle.dumps(self.info)

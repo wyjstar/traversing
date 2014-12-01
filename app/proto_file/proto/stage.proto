@@ -21,7 +21,6 @@ message BattleUnit{
 	optional float cri_ded_coeff = 11;  // 战斗单位暴伤减免系数
 	optional float block = 12;          // 战斗单位格挡率
     optional float ductility = 13;      // 韧性
-	optional float mp = 14;             // 战斗单位怒气
                                         //
 	optional int32 level = 23;          // 等级
 	optional int32 break_level = 24;    // 突破等级

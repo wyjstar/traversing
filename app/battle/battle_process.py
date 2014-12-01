@@ -135,7 +135,7 @@ class BattlePVBProcess(object):
             if result == 0: continue
             if result == 1:
                 logger_cal.debug("我赢了。")
-                return True, blue_units.get(5).hp
+                return True, 0
             if result == -1:
                 logger_cal.debug("我输了。")
                 return False, blue_units.get(5).hp

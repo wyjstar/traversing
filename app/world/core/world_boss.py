@@ -139,13 +139,18 @@ class WorldBoss(object):
 
     def loop_update(self):
         if self._stage_id and self.in_the_time_period() and self._state == 0:
+            self.start_boss()
             self._state = 1
 
         if self._stage_id and self._state == 1 and (not self.in_the_time_period()):
             self.update_boss()
             self._state = 0
-        print "-"*80, self._stage_id
         reactor.callLater(1, self.loop_update)
+
+    def start_boss(self):
+        instance = self.get_rank_instance()
+        instance.clear_rank() # 重置排行
+        self._last_shot_item = {} # 重置最后击杀
 
     def update_boss(self):
         """
@@ -172,10 +177,10 @@ class WorldBoss(object):
 
         self.set_next_stage(self._hp<=0)
         self._hp = self.get_hp() # 重置血量
-        instance = self.get_rank_instance()
-        instance.clear_rank() # 重置排行
+
+
         #todo: 重置玩家信息
-        self._last_shot_item = {}
+
         self.save_data()
 
         # todo:对前十名发放奖励
@@ -266,9 +271,6 @@ class WorldBoss(object):
         instance = self.get_rank_instance()
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
-            print player_id, demage_hp
-            print "-"*80
-            continue
             player_info = cPickle.loads(redis_client.get(player_id))
 
             player_info["demage_hp"] = demage_hp

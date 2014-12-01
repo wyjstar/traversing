@@ -22,7 +22,6 @@ class CharacterStaminaComponent(Component):
         self._last_gain_stamina_time = 0  # 上次获取体力时间
 
     def init_stamina(self, stamina_data):
-        logger.debug(str(stamina_data) + ", stamina+++++++++++++++++")
         if stamina_data:
             self._stamina = stamina_data.get('stamina')
             self._open_receive = stamina_data.get('open_receive')
