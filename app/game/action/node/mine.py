@@ -45,7 +45,9 @@ def query_1240(data, player):
     """
     查询所有矿点信息
     """
+    print 'query_1240'
     response = mine_status(player)
+    print 'response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -116,10 +118,11 @@ def query_1243(data, player):
     查看矿点详细信息
     """
     request = mine_pb2.positionRequest()
-    request.ParseFromString(data)
+    #request.ParseFromString(data)
     response = mine_pb2.mineDetail()
-    response.position = request.positon
-    detail_info = player.mine.detail_info(request.positon)
+    request.position = 0
+    response.position = request.position
+    detail_info = player.mine.detail_info(request.position)
     ret, msg, last_increase, stones, heros = detail_info
     if ret == 0:
         response.res.result = True

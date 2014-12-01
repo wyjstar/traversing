@@ -89,6 +89,7 @@ class Mine(object):
         info['type'] = self._type
         info['status'] = self._status
         info['nickname'] = self._nickname
+        print 'info', info
         return info
         
     def can_reset(self, uid):
@@ -122,10 +123,11 @@ class UserSelf(Mine):
         user_mine = cls()
         user_mine._tid = uid
         user_mine._type = MineType.PLAYER_FIELD
-        user_mine._mine_id = ConfigData.mine_ids(MineType.PLAYER_FIELD)[0]
+        user_mine._mine_id = ConfigData.mine_ids(MineType.PLAYER_FIELD).keys()[0]
         user_mine._status = 1
         user_mine._nickname = nickname
         user_mine._last_harvest = time.time()
+        return user_mine
         
     def gen_stone(self, num, odds_dict, limit):
         #发放符文石
@@ -171,6 +173,7 @@ class UserSelf(Mine):
     def get_cur(self, now):
         #结算到当前的产出
         mine = ConfigData.mine(self._mine_id)
+        print 'get_cur', mine, self._mine_id
         if sum(self._stones.values()) >= mine.outputLimited:
             return self._stones
         normal = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest)
@@ -188,12 +191,7 @@ class UserSelf(Mine):
         return stones
     
     def mine_info(self):
-#         info = {}
-#         info['type'] = self._type
-#         info['status'] = self._status
-#         info['nickname'] = self._nickname
-#         return info
-        pass
+        return Mine.mine_info(self)
         
     def detail_info(self):
         now = time.time()
@@ -278,14 +276,10 @@ class Chest(Mine):
         user_mine._type = MineType.CHEST
         user_mine._status = 1
         user_mine._nickname = nickname
+        return user_mine
         
     def mine_info(self):
-        pass
-#         info = {}
-#         info['type'] = self._type
-#         info['status'] = self._status
-#         info['nickname'] = self._nickname
-#         return info
+        return Mine.mine_info(self)
     
     def draw_stones(self):
         if self._status == 1:
@@ -318,9 +312,10 @@ class Shop(Mine):
         user_mine._type = MineType.SHOP
         user_mine._status = 1
         user_mine._nickname = nickname
+        return user_mine
     
     def mine_info(self):
-        pass
+        return Mine.mine_info(self)
     
     def detail_info(self):
         return self._shops
@@ -349,14 +344,10 @@ class Copy(Mine):
         user_mine._type = MineType.COPY
         user_mine._status = 1
         user_mine._nickname = nickname
+        return user_mine
     
     def mine_info(self):
-        pass
-#         info = {}
-#         info['type'] = self._type
-#         info['status'] = self._status
-#         info['nickname'] = self._nickname
-#         return info
+        return Mine.mine_info(self)
     
     def detail_info(self):
         info = {}
@@ -392,6 +383,7 @@ class UserMine(Component):
                 self._mine = cPickle.loads(all_mine)
             else:
                 self._mine = {}
+            if 0 not in self._mine:
                 self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
             self._reset_day = mine_data.get('reset_day', '')
             self._reset_times = mine_data.get('reset_times')
@@ -519,6 +511,8 @@ class UserMine(Component):
         查询所有矿点信息
         """
         mine_infos = []
+        print self._mine.keys()
+        self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
         for pos in self._mine.keys():
             mine_info = self._mine[pos].mine_info()
             mine_info['position'] = pos
