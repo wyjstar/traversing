@@ -414,7 +414,7 @@ def deal_auto_response(response, player):
             auto_travel.start_time = auto_info.get('start_time')
             auto_travel.continued_time = auto_info.get('continued_time')
             auto_travel.already_times = auto_info.get('already_times')
-            for tra in auto_travel.get('events'):
+            for tra in auto_info.get('events'):
 
                 res_travel = auto_travel.travel.add()
                 res_travel.event_id = tra[0]
