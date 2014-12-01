@@ -228,8 +228,9 @@ class PlayerField(Mine):
         pass
     
     @classmethod
-    def create(cls, uid, nickname, level=1, lively=True):
+    def create(cls, uid, nickname, level=1):
         pass
+    
     
 class MonsterField(Mine):
     """

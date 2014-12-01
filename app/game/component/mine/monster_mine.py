@@ -42,6 +42,9 @@ class MineOpt(object):
         
     @classmethod
     def update(cls, label, k, v):
+        """
+        label : "user_level","sword",玩家等级，团队战力
+        """
         old_score = cls.redis.zget(label, k)
         if old_score:
             if old_score >= v:
@@ -50,6 +53,9 @@ class MineOpt(object):
 
     @classmethod
     def rand_user(cls, label, k, front, back):
+        """
+        label : "user_level","sword",玩家等级，团队战力
+        """
         ret = cls.redis.znear(label, k, front, back)
         return ret
     
