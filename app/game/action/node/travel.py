@@ -15,10 +15,13 @@ from shared.db_opear.configs_data.game_configs import travel_event_config, \
 import random
 from gfirefly.server.logobj import logger
 import time
-# from gfirefly.server.globalobject import GlobalObject
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
+from gfirefly.server.globalobject import GlobalObject
 
 
-# remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -245,6 +248,11 @@ def travel_settle_833(data, player):
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
+    lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     response.res.result = True
     return response.SerializeToString()
