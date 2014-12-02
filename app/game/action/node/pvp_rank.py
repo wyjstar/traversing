@@ -16,7 +16,6 @@ from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
-from app.game.component.fight.fight_cache import awake_hero_units
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -136,8 +135,8 @@ def pvp_fight_request_1505(data, player):
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
-    awake_hero_units(blue_units)
-    awake_hero_units(red_units)
+    player.fight_cache_component.awake_hero_units(blue_units)
+    player.fight_cache_component.awake_hero_units(red_units)
 
     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
                                record.get('best_skill', 0), record.get('level', 1))

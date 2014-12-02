@@ -228,8 +228,10 @@ def assemble(unit_add, unit):
     unit_add.is_break = False
     if hasattr(unit, 'is_awake'):
         unit_add.is_awake = unit.is_awake
+        unit_add.origin_no = unit.origin_no
     if hasattr(unit, 'is_break'):
         unit_add.is_break = unit.is_break
+        unit_add.origin_no = unit.origin_no
 
 
 def get_stage_info(stage_id, player):

@@ -41,6 +41,7 @@ message BattleUnit{
 
 	optional bool is_break = 28;
 	optional bool is_awake = 29;
+	optional int32 origin_no = 30;
 }
 
 message BattleUnitGrop{

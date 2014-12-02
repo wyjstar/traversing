@@ -355,6 +355,7 @@ class CharacterFightCacheComponent(Component):
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
             unit.is_break = True
+            unit.origin_no = red_unit.unit_no
             red_units[red_units.index(red_unit)] = unit
 
     def awake_hero_units(self, red_units):
@@ -367,9 +368,9 @@ class CharacterFightCacheComponent(Component):
                 continue
             old_line_up_slot = self.line_up_slots.get(red.slot_no)
             ap = old_line_up_slot.combat_power()
-            for no, prob in hero_item.get('awake').items():
-                if ap > no and _rand < prob:
-                    logger.info('hit:%s, %s,ap:%s, no:%s', _rand, prob, ap, no)
+            for upAp, prob in hero_item.get('awake').items():
+                if ap > upAp and _rand < prob:
+                    logger.info('hit:%s, %s,ap:%s, upAp:%s', _rand, prob, ap, upAp)
 
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
@@ -389,5 +390,6 @@ class CharacterFightCacheComponent(Component):
                     unit = break_line_up_slot.get_battle_unit(break_hero_obj,
                                                               attr)
                     unit.is_awake = True
+                    unit.origin_no = red.unit_no
                     red_units[no] = unit
                     break
