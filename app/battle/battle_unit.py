@@ -214,11 +214,11 @@ class BattleUnit(object):
 
     def __repr__(self):
         return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
-                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp初始值(%s), buffs(%s)") \
+                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp(%s), buffs(%s)") \
                % (
             self._slot_no, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
             self.hit, self.dodge, self.cri, self.cri_coeff, self.cri_ded_coeff, self.block, self.ductility,
-            self.level, self.break_level, self._mp_base, self.buff_manager)
+            self.level, self.break_level, self._skill.mp, self.buff_manager)
 
     @property
     def hp_max(self):

@@ -4,6 +4,7 @@
 import random
 from shared.db_opear.configs_data.game_configs import base_config
 from gfirefly.server.logobj import logger
+from random_with_seed import get_random_int
 
 
 skill_types = {}
@@ -15,13 +16,13 @@ def check_hit(skill_buff_info, hit, dodge):
     dodge: 守方闪避率
     """
     if skill_buff_info.effectId in [1, 2, 3]:
-        if get_random_int(1, 100) < hit - dodge:
+        if get_random_int(1, 99) < hit - dodge:
             return True
     return False
 
 def check_block(attacker, target, skill_buff_info):
     is_block = False # 是否格挡
-    if get_random_int(1, 100) < attacker.block:
+    if get_random_int(1, 99) < attacker.block:
         is_block = True
     return is_block
 
@@ -34,15 +35,7 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
     logger.debug_cal("    守方 no(%d), unit_no(%d), name(%s), hp(%f), mp(%f), buff(%s)" % (target.slot_no, target.unit_no, target.unit_name, target.hp, target.mp, target.buff_manager))
 
     is_cri = False # 是否暴击
-    is_trigger = False # 是否trigger
-
-    if get_random_int(1, 100) <= skill_buff_info.triggerRate:
-        is_trigger = True
-
-    if not is_trigger:
-        logger.debug_cal("    技能未触发。")
-
-    if get_random_int(1, 100) < attacker.cri - target.ductility:
+    if get_random_int(1, 99) < attacker.cri - target.ductility:
         is_cri = True
     cri_coeff = (attacker.cri_coeff - target.cri_ded_coeff)/100  # 暴击伤害系数
 
@@ -101,9 +94,6 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
     % (skill_buff_info.id, is_cri, is_block, base_demage_value, cri_coeff, level_coeff, demage_fluct_coeff,
             total_demage, actual_demage))
     target.hp = target.hp - actual_demage
-
-def get_random_int(start, end):
-    return random.randint(start, end)
 
 def execute_mp(target, skill_buff_info):
     """
