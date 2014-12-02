@@ -178,6 +178,8 @@ def harvest_1245(data, player):
 
 def battle(player, position):
     ret  = True
+    red = None
+    blud = player.mine.get_blue(position)
     return ret
 
 @remoteserviceHandle('gate')

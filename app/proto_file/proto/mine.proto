@@ -12,7 +12,7 @@ message positionRequest
 message mineData
 {
 	required int32 position = 1;//地图位置, 0玩家自己的初始矿
-	required int32 type = 2; //矿点类型 1玩家初始矿，2野外矿，3神秘商人，4巨龙宝箱，5副本
+	required int32 type = 2; //矿点类型 1玩家占领的野怪矿，2野外矿，3神秘商人，4巨龙宝箱，5副本
 	required int32 status = 3;//矿点状态1生产中，2可收获，3已枯竭，4空闲，5已领取，6副本已进入
 	optional string nickname = 4;//昵称
 	optional int32 last_time = 5;//倒计时

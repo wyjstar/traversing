@@ -16,29 +16,38 @@ class MineOpt(object):
     def add_mine(cls, uid, mid, data):
         v = cPickle.dumps(data)
         label = 'mine.%s' % uid
+        
+        cls.redis.hset(label, mid, 1)
+        label = 'mine'
         cls.redis.hset(label, mid, v)
         
     @classmethod
-    def rem_mine(cls, uid, mid):
-        label = 'mine.%s' % uid
+    def rem_mine(cls, mid):
+        label = 'mine'
         cls.redis.hdel(label, mid)
         
     @classmethod
-    def get_mine(cls, uid, mid):
-        label = 'mine.%s' % uid
+    def get_mine(cls, mid):
+        label = 'mine'
         ret = cls.redis.hget(label, mid)
         return cPickle.loads(ret)
     
     @classmethod
-    def lock(cls, uid):
+    def get_user_mines(cls, uid):
+        label = 'mine.%s' % uid
+        mids = cls.redis.hkeys(label)
+        return mids
+    
+    @classmethod
+    def lock(cls, tid):
         label = 'mine.lock'
-        val = cls.redis.zincrby(label, uid, 1)
+        val = cls.redis.zincrby(label, tid, 1)
         return val
     
     @classmethod
-    def unlock(cls, uid):
+    def unlock(cls, tid):
         label = 'mine.lock'
-        cls.redis.zadd(label, uid, 0)
+        cls.redis.zadd(label, tid, 0)
         
     @classmethod
     def update(cls, label, k, v):
@@ -58,4 +67,10 @@ class MineOpt(object):
         """
         ret = cls.redis.znear(label, k, front, back)
         return ret
-    
+    @classmethod
+    def get_user(cls, label, k):
+        """
+        label : "user_level","sword",玩家等级，团队战力
+        """
+        ret = cls.redis.zget(label, k)
+        return ret

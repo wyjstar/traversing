@@ -43,7 +43,7 @@ from seal_config import SealConfig
 from travel_item_config import TravelItemConfig
 from mine_config import MineConfig
 from formula_config import FormulaConfig
-
+from mine_match_config import MineMatchConfig
 
 travel_item_config = {}
 base_config = {}
@@ -85,7 +85,7 @@ achievement_config = {}
 seal_config = {}
 mine_config = {}
 formula_config = {}
-
+mine_match_config = {}
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -127,7 +127,8 @@ all_config_name = {
     'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig(),
     'mine_config':MineConfig(),
-    'formula_config': FormulaConfig()
+    'formula_config': FormulaConfig(),
+    'mine_match_config':MineMatchConfig()
 }
 
 module = cPickle.load(open('config/excel_cpickle', 'r'))

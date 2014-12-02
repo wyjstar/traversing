@@ -6,7 +6,7 @@ Created on 2014-11-24
 '''
 import random
 from shared.db_opear.configs_data.game_configs import base_config, mine_config,\
-    shop_config
+    shop_config, mine_match_config
 from app.game.component.Component import Component
 import time
 from app.game.redis_mode import tb_character_mine
@@ -29,13 +29,12 @@ def random_pick(odds_dict, num_top=1):
     return pick_result
 
 class MineType:
-    PLAYER_SELF = 0
     PLAYER_FIELD = 1
     MONSTER_FIELD = 2
     CHEST = 3
     SHOP = 4
     COPY = 5
-    _create = {PLAYER_SELF:"UserSelf",
+    _create = {
                PLAYER_FIELD:"PlayerField",
                MONSTER_FIELD:"MonsterField",
                CHEST:"Chest",
@@ -114,7 +113,9 @@ class UserSelf(Mine):
     def __init__(self):
         self._mine_id = 0 #玩家矿和野外矿id
         self._normal_harvest = 0 #普通符文石最后一次收获时间
+        self._normal_end = -1 #普通符文石生产结束时间－1不限
         self._special_harvest = 0 # 特殊符文石最后一次收获时间
+        self._special_end = -1 #特殊符文石生产结束时间－1 不限
         self._increase = 0 #增产时间
         self._stones = {} #当前产出符文石数量
     
@@ -150,8 +151,10 @@ class UserSelf(Mine):
     def dat(self, end, start, dur):
         return int((end-start) / (dur*60))
         
-    def compute(self, dur, per, now, harvest):
+    def compute(self, dur, per, now, harvest, harvest_end):
         num = 0 #产量
+        if now > harvest_end and harvest_end != -1:
+            now = harvest_end
         if harvest >= self._increase:
             #没有增产
             dat = self.dat(now, harvest, dur)
@@ -181,13 +184,11 @@ class UserSelf(Mine):
         mine = ConfigData.mine(self._mine_id)
         if sum(self._stones.values()) >= mine.outputLimited:
             return self._stones
-        normal = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest)
+        normal = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest, self._normal_end)
         self.gen_stone(normal, mine.group1, mine.outputLimited)
         
-        special = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._special_harvest)
+        special = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._special_harvest, self._special_end)
         self.gen_stone(special, mine.randomStoneId, mine.outputLimited)
-        print 'self._normal_harvest', self._normal_harvest
-        print 'self._special_harvest', self._special_harvest
         return self._stones
     
     def draw_stones(self):
@@ -224,17 +225,76 @@ class UserSelf(Mine):
             self._increase += mine.increasTime * 60
             return self._increase - now
     
-class PlayerField(Mine):
+class PlayerField(UserSelf):
     """
     玩家占领的野外矿
     """
     def __init__(self):
-        pass
+        self._seq = 0
+        self._monster = []
     
     @classmethod
-    def create(cls, uid, nickname, level=1):
-        pass
+    def create(cls, uid, nickname, level, lively, sword):
+        item = None
+        for _,v in mine_match_config.keys():
+            if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
+                item = v
+        rule_id = random_pick(item.proRule, sum(item.proRule.values()))
+        rule = item.Rule[rule_id]
+        if len(rule) < 8:
+            return MonsterField.create(uid, nickname)
+        else:
+            isplayer, _, lowlevel, highlevel, minus, add, lowswordrate, highswordrate = rule
+            if isplayer == 0:
+                return MonsterField.create(uid, nickname)
+            else:
+                front = level - minus if level - minus >= lowlevel else lowlevel
+                back = level + add if level + add <= highlevel else highlevel
+                uids = MineOpt.rand_user("user_level", uid, front, back) #取玩家等级附近的玩家
+                match_users = []
+                for one_user in uids: #取战力匹配的玩家
+                    user_sword = MineOpt.get_user("sword", one_user)
+                    if user_sword < sword * lowswordrate or user_sword > highswordrate * sword:
+                        continue
+                    match_users.append(one_user)
+                if not match_users:#没有匹配的玩家生成野怪矿
+                    return  MonsterField.create(uid, nickname)
+                match_mine = None
+                for one_user in match_users:#随机玩家占领的野怪矿
+                    mids = MineOpt.get_user_mines(one_user)
+                    if mids:
+                        mid = random.sample(mids,1)
+                        if not mid:
+                            continue
+                        match_mine = MineOpt.get_mine(one_user, mid)
+                        if not match_mine:
+                            continue
+                if not match_mine:#没有随到玩家占领的野怪矿，生成野怪矿
+                    return MonsterField.create(uid, nickname)
+                
+    def start_battle(self):
+        lock = MineOpt.lock(self._seq)
+        if lock == 1:
+            return True
+        return False
     
+    def settle(self):
+        MineOpt.add_mine(self._tid, self._seq, self)
+        MineOpt.unlock(self._seq)
+        
+    def upt(self):
+        mine = MineOpt.get_mine(self._seq)
+    
+    def mine_info(self):
+        self._upt()
+        return UserSelf.mine_info(self)
+    
+    def detail_info(self):
+        self.upt()
+        return UserSelf.detail_info(self)
+    
+    def get_bule(self):
+        return self._type, None
     
 class MonsterField(Mine):
     """
@@ -266,7 +326,19 @@ class MonsterField(Mine):
         pass
     
     def settle(self):
-        MineOpt.add_mine(self._tid, self._seq, self)
+        mine = ConfigData.mine(self._mine_id)
+        player_field = PlayerField()
+        player_field._mine_id = self._mine_id #玩家矿和野外矿id
+        self._normal_harvest = time.time() #普通符文石最后一次收获时间
+        self._normal_end = self._normal_harvest + mine.timeLimited1 * 60 #普通符文石生产结束时间－1不限
+        self._special_harvest = time.time() # 特殊符文石最后一次收获时间
+        self._special_end = self._special_harvest + mine.timeLimitedR * 60 #特殊符文石生产结束时间－1 不限
+        self._increase = 0 #增产时间
+        self._stones = {} #当前产出符文石数量
+        MineOpt.add_mine(self._tid, self._seq, player_field)
+        
+    def get_bule(self):
+        return self._type, self._monster
     
 class Chest(Mine):
     """
@@ -598,4 +670,9 @@ class UserMine(Component):
     
     def settle(self, position):
         self._mine[position].setttle()
+        
+    def get_blue(self, position):
+        if position in self._mine:
+            self._mine[position].get_blue()
+        return -1, None
         
