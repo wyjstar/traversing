@@ -237,7 +237,7 @@ def pvb_fight_start_1705(pro_data, player):
     print response
     logger.debug("fight end..")
     
-    lively_event = CountEvent.create_event(EventType.WINE, 1, ifadd=True)
+    lively_event = CountEvent.create_event(EventType.BOSS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:
         task_data = task_status(player)
