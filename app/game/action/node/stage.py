@@ -335,13 +335,20 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     if conf:
         # 星期限制
         if conf.weeklyControl:
-            if conf.weeklyControl[time.localtime().tm_wday]:
+            if time.localtime().tm_wday == 6:
+                wday = 7
+            else:
+                wday = time.localtime().tm_wday + 1
+
+            if not conf.weeklyControl[wday]:
+                logger.error('week error,804:%s', time.localtime().tm_wday)
                 return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
         # 时间限制
         open_time = time.mktime(time.strptime(conf.open_time, '%Y-%m-%d %H:%M'))
         close_time = time.mktime(time.strptime(conf.close_time, '%Y-%m-%d %H:%M'))
         if not open_time <= time.time() <= close_time:
+            logger.error('time error,804,:%s', time.time())
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
     # 保存阵容
