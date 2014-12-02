@@ -68,7 +68,7 @@ def travel_831(data, player):
 
     res_drops = response.drops
 
-    drops = get_drops()
+    drops = get_drops(stage_id)
     drop_data = get_drop_data(drops)
 
     get_return(player, drop_data, res_drops)
