@@ -356,7 +356,7 @@ class CharacterFightCacheComponent(Component):
 
             unit.is_break = True
             unit.origin_no = red_unit.unit_no
-            red_units[red_units.index(red_unit)] = unit
+            red_units[red_unit.slot_no] = unit
 
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
