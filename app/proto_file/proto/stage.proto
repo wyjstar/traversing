@@ -10,34 +10,38 @@ message BattleUnit{
 	required int32 no = 1;  //战斗单位ID
 	optional int32 quality = 2;  //战斗单位品质
 
-	optional float hp = 5; // 战斗单位血量
-	optional float atk = 6; //战斗单位攻击
-	optional float physical_def = 7;//战斗单位物理防御
-	optional float magic_def = 8;  //战斗单位魔法防御
-	optional float hit = 9; //战斗单位命中率
-	optional float dodge = 10;  //战斗单位闪避率
-	optional float cri = 11;  //战斗单位暴击率
-	optional float cri_coeff = 12; //战斗单位暴击伤害系数
-	optional float cri_ded_coeff = 13;  //战斗单位暴伤减免系数
-	optional float block = 14;  //战斗单位格挡率
+	optional float hp = 3; // 战斗单位血量
+	optional float atk = 4; //战斗单位攻击
+	optional float physical_def = 5;//战斗单位物理防御
+	optional float magic_def = 6;  //战斗单位魔法防御
+	optional float hit = 7; //战斗单位命中率
+	optional float dodge = 8;  //战斗单位闪避率
+	optional float cri = 9;  //战斗单位暴击率
+	optional float cri_coeff = 10; //战斗单位暴击伤害系数
+	optional float cri_ded_coeff = 11;  //战斗单位暴伤减免系数
+	optional float block = 12;  //战斗单位格挡率
 
-	optional float base_hp = 18; // 战斗单位基础血量
-	optional float base_atk = 19; //战斗单位基础攻击
-	optional float base_physical_def = 20;//战斗单位基础物理防御
-	optional float base_magic_def = 21;  //战斗单位基础魔法防御
-	optional float base_hit = 22; //战斗单位基础命中率
-	optional float base_dodge = 23;  //战斗单位基础闪避率
-	optional float base_cri = 24;  //战斗单位基础暴击率
-	optional float base_cri_coeff = 25; //战斗单位基础暴击伤害系数
-	optional float base_cri_ded_coeff = 26;  //战斗单位基础暴伤减免系数
-	optional float base_block = 27;  //战斗单位基础格挡率
+	optional float base_hp = 13; // 战斗单位基础血量
+	optional float base_atk = 14; //战斗单位基础攻击
+	optional float base_physical_def = 15;//战斗单位基础物理防御
+	optional float base_magic_def = 16;  //战斗单位基础魔法防御
+	optional float base_hit = 17; //战斗单位基础命中率
+	optional float base_dodge = 18;  //战斗单位基础闪避率
+	optional float base_cri = 19;  //战斗单位基础暴击率
+	optional float base_cri_coeff = 20; //战斗单位基础暴击伤害系数
+	optional float base_cri_ded_coeff = 21;  //战斗单位基础暴伤减免系数
+	optional float base_block = 22;  //战斗单位基础格挡率
 
-	optional int32 level = 28;
-	optional int32 break_level = 29;
+	optional int32 level = 23;
+	optional int32 break_level = 24;
 
-	optional bool is_boss = 15; //是否是boss
-	repeated int32 break_skills = 16; //突破技能
-	optional int32 position = 17; //位置
+	optional bool is_boss = 25; //是否是boss
+	repeated int32 break_skills = 26; //突破技能
+	optional int32 position = 27; //位置
+
+	optional bool is_break = 28;
+	optional bool is_awake = 29;
+	optional int32 origin_no = 30;
 }
 
 message BattleUnitGrop{
