@@ -343,7 +343,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             else:
                 wday = time.localtime().tm_wday + 1
 
-            if not conf.weeklyControl[time.localtime().tm_wday]:
+            if not conf.weeklyControl[wday]:
                 logger.error('week error,804:%s', time.localtime().tm_wday)
                 return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
