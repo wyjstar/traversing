@@ -368,9 +368,11 @@ def auto_travel_837(data, player):
         'already_times': 0}
     player.travel_component.auto[stage_id].append(info)
 
-    update_auto(player)
+    # update_auto(player)
+    player.finance.gold -= auto_travel_config[1]
+    player.finance.save_data()
 
-    deal_auto_response(response, player)
+    # deal_auto_response(response, player)
 
     response.res.result = True
     logger.debug(response)
@@ -378,7 +380,7 @@ def auto_travel_837(data, player):
 
 
 @remoteserviceHandle('gate')
-def auto_travel_838(data, player):
+def settle_auto_838(data, player):
 
     args = SettleAutoRequest()
     args.ParseFromString(data)
@@ -470,7 +472,7 @@ def update_auto(player):
         for one_auto in item:
             auto_travel_config = base_config.get('autoTravel').get(one_auto.get('continued_time'))
             timeA = int(time.time()) - one_auto.get('start_time')
-            if timeA > one_auto.get('continued_time'):
+            if timeA > one_auto.get('continued_time') * 60:
                 cishu = auto_travel_config[0]
             else:
                 cishu = timeA / (one_auto.get('continued_time') * 60 / auto_travel_config[0])
@@ -489,10 +491,12 @@ def update_auto(player):
                     # 掉落
                     drops = get_drops(stage_id)
                     if travel_event_config.get('events').get(travel_event_id).type == 1:
-                        one_auto.get('events').append([travel_event_id, drops, int(time.time())])
+                        the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1)
+
+                        one_auto.get('events').append([travel_event_id, drops, the_time])
                     else:
                         one_auto.get('events').append([travel_event_id, drops])
-                    one_auto['already_times'] = one_auto.get('already_times') + 1
+                    one_auto['already_times'] += 1
 
     player.travel_component.save()
 
