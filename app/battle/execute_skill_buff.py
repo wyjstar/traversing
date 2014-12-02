@@ -85,10 +85,9 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
         #logger.debug_cal(actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, type(skill_buff_info.valueType))
 
     elif (skill_buff_info.effectId == 1 or skill_buff_info.effectId == 2) and skill_buff_info.valueType == 2:
-        actual_demage = total_demage * (skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
+        actual_demage = total_demage * skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue * attacker.level
         #logger.debug_cal(actual_demage, total_demage, skill_buff_info.valueEffect, skill_buff_info.levelEffectValue, attacker.level, skill_buff_info.valueType)
         #logger.debug_cal(skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
-
 
     logger.debug_cal("    技能ID（%d）,暴击（%s），格挡（%s），基础伤害值(%s)，暴击伤害系数(%s)，等级压制系数(%s)，伤害浮动系数(%s)，总伤害值(%s)，攻方实际伤害值(%s)" \
     % (skill_buff_info.id, is_cri, is_block, base_demage_value, cri_coeff, level_coeff, demage_fluct_coeff,
@@ -131,7 +130,7 @@ def execute_treat(attacker, target, skill_buff_info):
     if skill_buff_info.effectId == 26 and skill_buff_info.valueType == 1:
         actual_treat = total_treat + skill_buff_info.valueEffect + skill_buff_info.levelEffectValue * attacker.level
     elif skill_buff_info.effectId == 26 and skill_buff_info.valueType == 2:
-        actual_treat  = total_treat * (skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue/100 * attacker.level)
+        actual_treat  = total_treat * skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue* attacker.level
     logger.debug_cal("治疗值 %s", actual_treat)
     target.hp += actual_treat
 

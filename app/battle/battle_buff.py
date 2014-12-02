@@ -207,8 +207,11 @@ class BuffManager(object):
             return False
         return temp
 
-    def get_buff_value(self, buff_info):
-        return buff_info.skill_buff_info.valueEffect + buff_info.skill_buff_info.levelEffectValue * self._owner.level
+    def get_buff_value(self, buff_info, value):
+        if buff_info.valueType == 1:
+            return buff_info.skill_buff_info.valueEffect + buff_info.skill_buff_info.levelEffectValue * self._owner.level
+        else:
+            return value * buff_info.skill_buff_info.valueEffect / 100 + buff_info.skill_buff_info.levelEffectValue * self._owner.level
 
 
     def __repr__(self):
