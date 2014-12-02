@@ -124,7 +124,7 @@ target_types = {
         10: mp_min_attack,     # 怒气最小攻击
         11: self_attack}       # 自己
 
-def find_target_units(attacker, army, enemy, skill_buff_info, main_target_units, target=None):
+def find_target_units(attacker, army, enemy, skill_buff_info, main_target_units=None, target=None):
     """
     根据作用位置找到作用武将。
     """
