@@ -283,9 +283,12 @@ def event_start_834(data, player):
     if event_info.type == 1:
         start_time = int(time.time())
         response.time = start_time
-        travel_event_id = event_cache[0]
-        drop_data = event_cache[1]
-        event_cache = [travel_event_id, drop_data, start_time]
+
+        # travel_event_id = event_cache[0]
+        # drop_data = event_cache[1]
+        # event_cache = [travel_event_id, drop_data, start_time]
+        event_cache.append(start_time)
+
         player.travel_component.save()
     elif event_info.type == 2:
         player.travel_component.fight_cache = [stage_id, event_id]
@@ -358,8 +361,23 @@ def auto_travel_837(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    if not player.travel_component.auto.get(stage_id):
+    # TODO 验证 有没有没有完成的自动游历
+    flag = 0
+    if player.travel_component.auto.get(stage_id):
+        for auto_travel in player.travel_component.auto.get(stage_id):
+            if base_config.get('autoTravel').get(auto_travel.get('continued_time')) != auto_travel.get('already_times'):
+                flag = 1
+            else:
+                for auto_travel_event in auto_travel.get('events'):
+                    if len(auto_travel_event) < 3:
+                        flag = 1
+    else:
         player.travel_component.auto[stage_id] = []
+
+    if flag:
+        response.res.result = False
+        response.res.result_no = 819
+        return response.SerializeToString()
 
     info = {
         'start_time': int(time.time()),
@@ -387,8 +405,22 @@ def settle_auto_838(data, player):
     stage_id = args.stage_id
     start_time = args.start_time
     event_id = args.event_id
+    settle_type = args.settle_type
 
     response = SettleAutoResponse()
+
+    if settle_type:
+        if not event_id:
+            logger.error('travel seetle type and event id dont matching')
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+        else:
+            event_conf = travel_event_config.get('events').get(event_id)
+            if player.finance.gold < event_conf.price:
+                response.res.result = False
+                response.res.result_no = 102  # 充值币不足
+                return response.SerializeToString()
 
     auto_info = player.travel_component.auto
     stage_info = auto_info.get(stage_id)
@@ -421,8 +453,8 @@ def settle_auto_838(data, player):
             if event_info[0] != event_id:
                 continue
 
-        event_conf = travel_event_config.get('events').get(event_id)
-        if event_conf.type == 1:
+        event_conf = travel_event_config.get('events').get(event_info[0])
+        if event_conf.type == 1 and not settle_type:
             if int(time.time()) - event_info[2] < \
                     event_conf.parameter.items[0][0]:
                 continue
@@ -439,6 +471,9 @@ def settle_auto_838(data, player):
         stage_info.remove(auto_travel_info)
 
     player.travel_component.save()
+    if settle_type:
+        player.finance.gold -= travel_event_config.get('events').get(event_id).price
+        player.finance.save_data()
 
     deal_auto_response(response, player)
 
