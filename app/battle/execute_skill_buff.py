@@ -100,6 +100,7 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
     logger.debug_cal("    技能ID（%d）,暴击（%s），格挡（%s），基础伤害值(%s)，暴击伤害系数(%s)，等级压制系数(%s)，伤害浮动系数(%s)，总伤害值(%s)，攻方实际伤害值(%s)" \
     % (skill_buff_info.id, is_cri, is_block, base_demage_value, cri_coeff, level_coeff, demage_fluct_coeff,
             total_demage, actual_demage))
+    target.hp = target.hp - actual_demage
 
 def get_random_int(start, end):
     return random.randint(start, end)

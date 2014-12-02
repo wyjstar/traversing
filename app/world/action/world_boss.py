@@ -45,7 +45,7 @@ def pvb_get_before_fight_info_remote(player_id):
     # 剩余血量
     response.hp_left = int(world_boss.hp)
     # 伤害
-    response.demage_hp = world_boss.get_demage_hp(player_id)
+    response.demage_hp = int(world_boss.get_demage_hp(player_id))
     # 名次
     response.rank_no = world_boss.get_rank_no(player_id)
 
@@ -62,7 +62,7 @@ def update_rank_items(rank_item_pb, rank_item):
 def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info):
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
-    process = BattlePVBProcess(red_units, red_best_skill, blue_units)
+    process = BattlePVBProcess(red_units, player_info.get("level"), red_best_skill,  blue_units, world_boss.debuff_skill_no)
     result, hp_left = process.process()
 
     # 保存worldboss数据

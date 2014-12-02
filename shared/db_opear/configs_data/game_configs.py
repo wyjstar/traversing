@@ -41,6 +41,7 @@ from language_config import LanguageConfig
 from achievement_config import AchievementConfig
 from seal_config import SealConfig
 from travel_item_config import TravelItemConfig
+from formula_config import FormulaConfig
 
 
 travel_item_config = {}
@@ -81,6 +82,7 @@ travel_event_config = {}
 language_config = {}
 achievement_config = {}
 seal_config = {}
+formula_config = {}
 
 
 all_config_name = {
@@ -121,7 +123,8 @@ all_config_name = {
     'language_config': LanguageConfig(),
     'achievement_config': AchievementConfig(),
     'travel_item_config': TravelItemConfig(),
-    'seal_config': SealConfig()
+    'seal_config': SealConfig(),
+    'formula_config': FormulaConfig()
 }
 
 module = cPickle.load(open('config/excel_cpickle', 'r'))

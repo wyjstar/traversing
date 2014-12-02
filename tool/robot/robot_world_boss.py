@@ -43,7 +43,7 @@ class RobotWorldBoss(Robot):
         # argument1.fid = 1120
         line_up = argument1.lineup.add()
         line_up.pos = 1
-        line_up.hero_id = 10005
+        line_up.hero_id = 10046
         line_up = argument1.lineup.add()
         line_up.pos = 2
         line_up.hero_id = 10029

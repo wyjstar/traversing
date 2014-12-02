@@ -136,8 +136,8 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
-    process = BattlePVPProcess(red_units, __best_skill, blue_units,
-                               record.get('best_skill', 0))
+    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
+                               record.get('best_skill', 0), record.get('level', 1))
     fight_result = process.process()
 
     logger.debug("fight result:%s" % fight_result)

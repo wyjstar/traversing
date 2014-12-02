@@ -27,7 +27,7 @@ fi
 echo "mkdir $temp_dir"
 mkdir $temp_dir
 
-for dir in gfirefly gtwisted shared app cobar deploy tool appmain.py models.json mgc.config template.json startmaster.py; do
+for dir in gfirefly gtwisted config test shared app cobar deploy tool appmain.py models.json mgc.config template.json startmaster.py; do
     echo "cp -rf $dir $temp_dir"
     cp $dir -rf $temp_dir
 done

@@ -184,7 +184,7 @@ class CharacterFightCacheComponent(Component):
         stage_break_config = self.__get_stage_break_config()
 
         if not stage_break_config:
-            logger.error('no stage break odds')
+            logger.info('no stage break odds')
             return odds
 
         for i in range(1, 8):
@@ -311,7 +311,7 @@ class CharacterFightCacheComponent(Component):
         odds = self.__get_break_stage_odds()
         break_config = self.__get_stage_break_config()
         if not break_config:
-            logger.error('can not find stage break config')
+            logger.info('can not find stage break config')
             return None, 0
 
         rand_odds = random.random()
