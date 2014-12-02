@@ -99,9 +99,11 @@ def execute_mp(target, skill_buff_info):
     mp: 8,9
     """
     if skill_buff_info.effectId == 8:
+        logger_cal.debug("mp 增加%s" % skill_buff_info.valueEffect)
         target.mp += skill_buff_info.valueEffect
     elif skill_buff_info.effectId == 9:
         target.mp -= skill_buff_info.valueEffect
+        logger_cal.debug("mp 减少%s" % skill_buff_info.valueEffect)
 
 def execute_pure_demage(attacker, target, skill_buff_info):
     """
@@ -111,7 +113,7 @@ def execute_pure_demage(attacker, target, skill_buff_info):
     if skill_buff_info.valueType == 2:
         actual_demage = attacker.atk*skill_buff_info.valueEffect/100
     elif skill_buff_info.valueType == 1:
-        actual_demage = attacker.level*skill_buff_info.valueEffect/100
+        actual_demage = attacker.level*skill_buff_info.levelEffectValue
     logger_cal.debug("纯伤害 %s", actual_demage)
     target.hp -= actual_demage
 

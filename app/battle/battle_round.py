@@ -113,6 +113,9 @@ class BattleRound(object):
         """
         perform mock battle, logger_cal.debug(battle process.)
         """
+        logger_cal.debug("回合开始前，执行buff")
+        self.perform_buff(self._red_units)
+        self.perform_buff(self._blue_units)
         for i in range(1, 7):
             red_unit = self._red_units.get(i)
             blue_unit = self._blue_units.get(i)
@@ -145,13 +148,10 @@ class BattleRound(object):
         for k in deads:
             units.pop(k)
 
-    def get_next_unit(self, i, units):
-        temp = None
-
-        while (not temp) and (i < 7):
-            temp = units.get(i)
-            i += 1
-        return temp
+    def perform_buff(self, units):
+        for k, temp in units.items():
+            logger_cal.debug("武将: %s" % temp.unit_no)
+            temp.buff_manager.perform_buff()
 
     def handle_mock_special_skill(self, best_skill):
         self.perform_best_skill(self._red_units, self._blue_units, best_skill)

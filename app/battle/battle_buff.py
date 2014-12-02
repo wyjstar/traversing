@@ -38,6 +38,14 @@ class BuffManager(object):
             else:
                 self._buffs[effect_id].append(buff)
 
+    def perform_buff(self):
+        """
+        在回合开始时，使buff生效
+        """
+        for buffs in self._buffs.values():
+            for buff in buffs:
+                buff.perform_buff(self._owner)
+
     def is_trigger(self, buff_info):
         random_int = get_random_int(1, 99)
         if random_int >= buff_info.triggerRate:
@@ -50,7 +58,6 @@ class BuffManager(object):
         for k, value in self._buffs.items():
             temp = []
             for buff in value:
-                buff.perform_buff(self._owner)
                 buff.continue_num -= 1
                 if buff.continue_num > 0:
                     temp.append(buff)
@@ -253,6 +260,9 @@ class Buff(object):
 
     def perform_buff(self, owner):
         effect_id = self._skill_buff_info.effectId
+        if effect_id in [1, 2, 3, 8, 9, 26]:
+            logger_cal.debug("执行buff %s" % self._skill_buff_info.id)
+
         if effect_id in [1, 2]:
             block_or_not = False
             if self._skill_buff_info.skill_key == 1:
@@ -267,4 +277,5 @@ class Buff(object):
             execute_mp(owner, self._skill_buff_info)
         elif effect_id in [26]:
             execute_treat(self._attacker, owner, self._skill_buff_info)
+
 

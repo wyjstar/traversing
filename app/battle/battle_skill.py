@@ -82,7 +82,7 @@ class UnitSkill(object):
             logger_cal.debug("重置 mp: %s" % self._mp)
         else:
             self._mp += self._mp_step
-            logger_cal.debug("添加 mp：%s" % self._mp_step)
+            logger_cal.debug("正常添加 mp：%s" % self._mp_step)
 
     @property
     def owner(self):
