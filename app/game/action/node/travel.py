@@ -132,7 +132,6 @@ def travel_init_830(data, player):
     update_auto(player, 1)
     deal_auto_response(response, player)
 
-    logger.debug(response)
     response.res.result = True
     return response.SerializeToString()
 
@@ -192,7 +191,6 @@ def open_chest_836(data, player):
 
     player.travel_component.save()
 
-    logger.debug(response)
     response.res.result = True
     return response.SerializeToString()
 
@@ -383,7 +381,6 @@ def auto_travel_837(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
-    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -468,7 +465,6 @@ def settle_auto_838(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
-    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -522,7 +518,7 @@ def fast_finish_auto_839(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
-    response.SerializeToString()
+    return response.SerializeToString()
 
 
 def deal_auto_response(response, player):
