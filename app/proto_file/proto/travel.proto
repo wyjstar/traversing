@@ -118,15 +118,20 @@ message SettleAutoRequest{
     required int32 stage_id = 1;
     required int32 start_time = 2;
     required int32 event_id = 3;  // 0:all
-    required int32 settle_type =4;
+    required int32 settle_type =4; // 0 普通 1,等待时间事件的快速完成
 }
 
 message SettleAutoResponse{
     required CommonResponse res = 1;
-    repeated AutoTravel auto_travel = 2;  // 0 普通 1,等待时间事件的快速完成
+    repeated StageTravel stage_travel = 2;
 }
 
 //839
-message AutoNoWaitRequest{
-    required int32 stage_id
+message FastFinishAutoRequest{
+    required int32 stage_id = 1;
+    required int32 start_time = 2;
+}
+message FastFinishAutoResponse{
+    required CommonResponse res = 1;
+    repeated StageTravel stage_travel = 2;
 }
