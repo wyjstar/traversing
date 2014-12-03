@@ -58,3 +58,4 @@
 817: auto stage info is none
 818: auto travel, this start time not find
 819: auto travel, dont finish
+820: auto travel, already finish
