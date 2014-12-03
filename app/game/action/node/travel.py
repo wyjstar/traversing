@@ -235,7 +235,7 @@ def travel_settle_833(data, player):
     event_info = travel_event_config.get('events').get(args.event_id)
     if event_info.type == 1:
         if int(time.time()) - event_cache[2] < \
-                event_info.parameter.items[0][0]:
+                event_info.parameter.items()[0][0]:
             response.res.result = False
             response.res.result_no = 814
             return response.SerializeToString()
