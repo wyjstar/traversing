@@ -17,10 +17,6 @@ from shared.db_opear.configs_data.game_configs import travel_event_config, \
 import random
 from gfirefly.server.logobj import logger
 import time
-# from gfirefly.server.globalobject import GlobalObject
-
-
-# remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -284,9 +280,6 @@ def event_start_834(data, player):
         start_time = int(time.time())
         response.time = start_time
 
-        # travel_event_id = event_cache[0]
-        # drop_data = event_cache[1]
-        # event_cache = [travel_event_id, drop_data, start_time]
         event_cache.append(start_time)
 
         player.travel_component.save()
@@ -386,11 +379,8 @@ def auto_travel_837(data, player):
         'already_times': 0}
     player.travel_component.auto[stage_id].append(info)
 
-    # update_auto(player)
     player.finance.gold -= auto_travel_config[1]
     player.finance.save_data()
-
-    # deal_auto_response(response, player)
 
     response.res.result = True
     logger.debug(response)
