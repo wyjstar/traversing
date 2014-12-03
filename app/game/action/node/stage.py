@@ -108,10 +108,6 @@ def stage_start_903(pro_data, player):
     drop_num = stage_info.get('drop_num')
     monster_unpara = stage_info.get('monster_unpara')
     f_unit = stage_info.get('f_unit')
-    replace_unit = stage_info.get('replace_unit')
-    response.replace_no = stage_info.get('replace_no')
-    awake_units = stage_info.get('awake_units')
-    awake_nos = stage_info.get('awake_nos')
 
     response.drop_num = drop_num
     for slot_no, red_unit in red_units.items():
@@ -133,20 +129,13 @@ def stage_start_903(pro_data, player):
 
     response.hero_unpar = unparalleled
     if unparalleled in player.line_up_component.unpars:
-        response.hero_unpar_level = player.line_up_component.unpars[unparalleled]
+        unpar_level = player.line_up_component.unpars[unparalleled]
+        response.hero_unpar_level = unpar_level
 
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
-    if replace_unit:
-        assemble(response.replace, replace_unit)
-    if awake_units:
-        for awake in awake_units:
-            awake_add = response.awake.add()
-            assemble(awake_add, awake)
-        for no in awake_nos:
-            response.awake_no.append(no)
-    # logger.debug('进入关卡返回数据:%s', response)
+    logger.debug('进入关卡返回数据:%s', response)
     return response.SerializePartialToString()
 
 
@@ -235,6 +224,14 @@ def assemble(unit_add, unit):
 
     unit_add.position = unit.slot_no
     unit_add.is_boss = unit.is_boss
+    unit_add.is_awake = False
+    unit_add.is_break = False
+    if hasattr(unit, 'is_awake'):
+        unit_add.is_awake = unit.is_awake
+        unit_add.origin_no = unit.origin_no
+    if hasattr(unit, 'is_break'):
+        unit_add.is_break = unit.is_break
+        unit_add.origin_no = unit.origin_no
 
 
 def get_stage_info(stage_id, player):
@@ -354,8 +351,6 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
             logger.error('time error,804,:%s', time.time())
             return {'result': False, 'result_no': 804}  # 804 不在活动时间内
 
-
-
     # 保存阵容
     player.line_up_component.line_up_order = line_up
     player.line_up_component.save_data()
@@ -366,7 +361,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
     if is_travel_event:
         drop_num = 0
 
-    red_units, blue_units, drop_num, monster_unpara, replace_units, replace_no, awake_units, awake_nos = fight_cache_component.fighting_start()
+    red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     print "*"*80
     print red_units
@@ -386,11 +381,7 @@ def fight_start(stage_id, line_up, unparalleled, fid, player):
                 drop_num=drop_num,
                 monster_unpara=monster_unpara,
                 f_unit=f_unit,
-                result_no=result_no,
-                replace_unit=replace_units,
-                replace_no=replace_no,
-                awake_units=awake_units,
-                awake_nos=awake_nos)
+                result_no=result_no)
 
 
 def fight_settlement(stage_id, result, player):
