@@ -16,7 +16,7 @@ import travel_shoes_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='travel.proto',
   package='',
-  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\x1a\x11travel_item.proto\x1a\x12travel_shoes.proto\"4\n\x07\x43hapter\x12\x17\n\x06travel\x18\x01 \x03(\x0b\x32\x07.Travel\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"O\n\x06Travel\x12\x10\n\x08\x65vent_id\x18\x01 \x02(\x05\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0c\n\x04time\x18\x03 \x01(\x05\"V\n\x05Shoes\x12\r\n\x05shoe1\x18\x01 \x02(\x05\x12\r\n\x05shoe2\x18\x02 \x02(\x05\x12\r\n\x05shoe3\x18\x03 \x02(\x05\x12\x10\n\x08use_type\x18\x04 \x02(\x05\x12\x0e\n\x06use_no\x18\x05 \x02(\x05\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"g\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x01(\x05\x12%\n\x05\x64rops\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\xcd\x01\n\x12TravelInitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x07\x63hapter\x18\x02 \x03(\x0b\x32\x08.Chapter\x12\x15\n\x05shoes\x18\x03 \x02(\x0b\x32\x06.Shoes\x12\x12\n\nchest_time\x18\x04 \x02(\x05\x12/\n\x13travel_item_chapter\x18\x05 \x03(\x0b\x32\x12.TravelItemChapter\x12\"\n\x0cstage_travel\x18\x06 \x03(\x0b\x32\x0c.StageTravel\"G\n\x11TravelItemChapter\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0btravel_item\x18\x02 \x03(\x0b\x32\x0b.TravelItem\"2\n\x0f\x42uyShoesRequest\x12\x1f\n\x0bshoes_infos\x18\x01 \x03(\x0b\x32\n.ShoesInfo\"0\n\x10\x42uyShoesResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"9\n\x13TravelSettleRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"4\n\x14TravelSettleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"7\n\x11\x45ventStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"@\n\x12\x45ventStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"3\n\rNoWaitRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"<\n\x0eNoWaitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"X\n\x11OpenChestResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"4\n\x11\x41utoTravelRequest\x12\r\n\x05ttime\x18\x01 \x02(\x05\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"V\n\x12\x41utoTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel\"h\n\nAutoTravel\x12\x12\n\nstart_time\x18\x01 \x02(\x05\x12\x16\n\x0e\x63ontinued_time\x18\x02 \x02(\x05\x12\x17\n\x06travel\x18\x03 \x03(\x0b\x32\x07.Travel\x12\x15\n\ralready_times\x18\x04 \x02(\x05\"A\n\x0bStageTravel\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0b\x61uto_travel\x18\x02 \x03(\x0b\x32\x0b.AutoTravel\"K\n\x11SettleAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x03 \x02(\x05\"2\n\x12SettleAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\x1a\x11travel_item.proto\x1a\x12travel_shoes.proto\"4\n\x07\x43hapter\x12\x17\n\x06travel\x18\x01 \x03(\x0b\x32\x07.Travel\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"O\n\x06Travel\x12\x10\n\x08\x65vent_id\x18\x01 \x02(\x05\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0c\n\x04time\x18\x03 \x01(\x05\"V\n\x05Shoes\x12\r\n\x05shoe1\x18\x01 \x02(\x05\x12\r\n\x05shoe2\x18\x02 \x02(\x05\x12\r\n\x05shoe3\x18\x03 \x02(\x05\x12\x10\n\x08use_type\x18\x04 \x02(\x05\x12\x0e\n\x06use_no\x18\x05 \x02(\x05\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"g\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x01(\x05\x12%\n\x05\x64rops\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\xcd\x01\n\x12TravelInitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x07\x63hapter\x18\x02 \x03(\x0b\x32\x08.Chapter\x12\x15\n\x05shoes\x18\x03 \x02(\x0b\x32\x06.Shoes\x12\x12\n\nchest_time\x18\x04 \x02(\x05\x12/\n\x13travel_item_chapter\x18\x05 \x03(\x0b\x32\x12.TravelItemChapter\x12\"\n\x0cstage_travel\x18\x06 \x03(\x0b\x32\x0c.StageTravel\"G\n\x11TravelItemChapter\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0btravel_item\x18\x02 \x03(\x0b\x32\x0b.TravelItem\"2\n\x0f\x42uyShoesRequest\x12\x1f\n\x0bshoes_infos\x18\x01 \x03(\x0b\x32\n.ShoesInfo\"0\n\x10\x42uyShoesResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"9\n\x13TravelSettleRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"4\n\x14TravelSettleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"7\n\x11\x45ventStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"@\n\x12\x45ventStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"3\n\rNoWaitRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"<\n\x0eNoWaitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"X\n\x11OpenChestResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"4\n\x11\x41utoTravelRequest\x12\r\n\x05ttime\x18\x01 \x02(\x05\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"2\n\x12\x41utoTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"h\n\nAutoTravel\x12\x12\n\nstart_time\x18\x01 \x02(\x05\x12\x16\n\x0e\x63ontinued_time\x18\x02 \x02(\x05\x12\x17\n\x06travel\x18\x03 \x03(\x0b\x32\x07.Travel\x12\x15\n\ralready_times\x18\x04 \x02(\x05\"A\n\x0bStageTravel\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0b\x61uto_travel\x18\x02 \x03(\x0b\x32\x0b.AutoTravel\"`\n\x11SettleAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x03 \x02(\x05\x12\x13\n\x0bsettle_type\x18\x04 \x02(\x05\"V\n\x12SettleAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel\"=\n\x15\x46\x61stFinishAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\"Z\n\x16\x46\x61stFinishAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel')
 
 
 
@@ -665,13 +665,6 @@ _AUTOTRAVELRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='stage_travel', full_name='AutoTravelResponse.stage_travel', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -682,7 +675,7 @@ _AUTOTRAVELRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=1310,
-  serialized_end=1396,
+  serialized_end=1360,
 )
 
 
@@ -730,8 +723,8 @@ _AUTOTRAVEL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1398,
-  serialized_end=1502,
+  serialized_start=1362,
+  serialized_end=1466,
 )
 
 
@@ -765,8 +758,8 @@ _STAGETRAVEL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1504,
-  serialized_end=1569,
+  serialized_start=1468,
+  serialized_end=1533,
 )
 
 
@@ -798,6 +791,13 @@ _SETTLEAUTOREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='settle_type', full_name='SettleAutoRequest.settle_type', index=3,
+      number=4, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -807,8 +807,8 @@ _SETTLEAUTOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1571,
-  serialized_end=1646,
+  serialized_start=1535,
+  serialized_end=1631,
 )
 
 
@@ -826,6 +826,13 @@ _SETTLEAUTORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='stage_travel', full_name='SettleAutoResponse.stage_travel', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -835,8 +842,78 @@ _SETTLEAUTORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1648,
-  serialized_end=1698,
+  serialized_start=1633,
+  serialized_end=1719,
+)
+
+
+_FASTFINISHAUTOREQUEST = _descriptor.Descriptor(
+  name='FastFinishAutoRequest',
+  full_name='FastFinishAutoRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='stage_id', full_name='FastFinishAutoRequest.stage_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='start_time', full_name='FastFinishAutoRequest.start_time', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1721,
+  serialized_end=1782,
+)
+
+
+_FASTFINISHAUTORESPONSE = _descriptor.Descriptor(
+  name='FastFinishAutoResponse',
+  full_name='FastFinishAutoResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='FastFinishAutoResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='stage_travel', full_name='FastFinishAutoResponse.stage_travel', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1784,
+  serialized_end=1874,
 )
 
 _CHAPTER.fields_by_name['travel'].message_type = _TRAVEL
@@ -857,10 +934,12 @@ _NOWAITRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _OPENCHESTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _OPENCHESTRESPONSE.fields_by_name['drops'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _AUTOTRAVELRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_AUTOTRAVELRESPONSE.fields_by_name['stage_travel'].message_type = _STAGETRAVEL
 _AUTOTRAVEL.fields_by_name['travel'].message_type = _TRAVEL
 _STAGETRAVEL.fields_by_name['auto_travel'].message_type = _AUTOTRAVEL
 _SETTLEAUTORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_SETTLEAUTORESPONSE.fields_by_name['stage_travel'].message_type = _STAGETRAVEL
+_FASTFINISHAUTORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_FASTFINISHAUTORESPONSE.fields_by_name['stage_travel'].message_type = _STAGETRAVEL
 DESCRIPTOR.message_types_by_name['Chapter'] = _CHAPTER
 DESCRIPTOR.message_types_by_name['Travel'] = _TRAVEL
 DESCRIPTOR.message_types_by_name['Shoes'] = _SHOES
@@ -883,6 +962,8 @@ DESCRIPTOR.message_types_by_name['AutoTravel'] = _AUTOTRAVEL
 DESCRIPTOR.message_types_by_name['StageTravel'] = _STAGETRAVEL
 DESCRIPTOR.message_types_by_name['SettleAutoRequest'] = _SETTLEAUTOREQUEST
 DESCRIPTOR.message_types_by_name['SettleAutoResponse'] = _SETTLEAUTORESPONSE
+DESCRIPTOR.message_types_by_name['FastFinishAutoRequest'] = _FASTFINISHAUTOREQUEST
+DESCRIPTOR.message_types_by_name['FastFinishAutoResponse'] = _FASTFINISHAUTORESPONSE
 
 class Chapter(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -1015,6 +1096,18 @@ class SettleAutoResponse(_message.Message):
   DESCRIPTOR = _SETTLEAUTORESPONSE
 
   # @@protoc_insertion_point(class_scope:SettleAutoResponse)
+
+class FastFinishAutoRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FASTFINISHAUTOREQUEST
+
+  # @@protoc_insertion_point(class_scope:FastFinishAutoRequest)
+
+class FastFinishAutoResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FASTFINISHAUTORESPONSE
+
+  # @@protoc_insertion_point(class_scope:FastFinishAutoResponse)
 
 
 # @@protoc_insertion_point(module_scope)
