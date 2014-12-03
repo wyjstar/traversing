@@ -8,6 +8,7 @@ from app.proto_file import world_boss_pb2
 from app.world.core.world_boss import world_boss
 from app.battle.battle_process import BattlePVBProcess
 import cPickle
+from shared.utils.date_util import get_current_timestamp
 
 
 @rootserviceHandle
@@ -78,7 +79,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info)
     # 如果赢了，保存最后击杀
     if result:
         world_boss.last_shot_item = player_info
-        world_boss.update_boss()
+        world_boss.boss_dead_time = get_current_timestamp()
 
     world_boss.save_data()
     return result

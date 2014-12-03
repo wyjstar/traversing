@@ -8,11 +8,6 @@ from shared.db_opear.configs_data.game_configs import monster_config, \
     monster_group_config, stage_config, special_stage_config, language_config, skill_config, hero_breakup_config
 #from shared.db_opear.configs_data.game_configs import base_config
 import sys
-from gfirefly.server.logobj import logger, log_init_debug_cal
-
-def set_log():
-    logger.setLevel(9)
-    log_init_debug_cal()
 
 def parse_input(battle_type):
     """docstring for parse_input"""
