@@ -99,6 +99,7 @@ message AutoTravelRequest{
 
 message AutoTravelResponse{
     required CommonResponse res = 1;
+    repeated StageTravel stage_travel = 2;
 }
 
 message AutoTravel{
