@@ -6,13 +6,15 @@ created by server on 14-7-9下午5:11.
 from app.game.core.hero_chip import HeroChip
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.pack.item import Item
-from shared.db_opear.configs_data.game_configs import chip_config, travel_item_config
+from shared.db_opear.configs_data.game_configs import travel_item_config
+from shared.db_opear.configs_data.game_configs import chip_config
 from app.game.core.drop_bag import BigBag
-from app.game.core.hero import Hero
-from app.proto_file.hero_pb2 import HeroPB
+# from app.game.core.hero import Hero
+# from app.proto_file.hero_pb2 import HeroPB
 from app.proto_file.player_pb2 import FinancePB
-from shared.utils.const import *
+from shared.utils.const import const
 from gfirefly.server.logobj import logger
+import time
 
 
 def is_afford(player, item_group):
@@ -47,6 +49,48 @@ def is_afford(player, item_group):
                 return {'result': False, 'result_no': 106}
 
     return {'result': True}
+
+
+def is_consume(player, shop_item):
+    """判断是否免费抽取"""
+    free_period = shop_item.freePeriod
+    shop_item_type = shop_item.type
+    if free_period == -1:
+        return True
+
+    last_pick_time = 0
+    if shop_item_type == 1 and free_period > 0:
+        # 单抽良将
+        last_pick_time = player.last_pick_time.fine_hero
+    elif shop_item_type == 5 and free_period > 0:
+        # 单抽神将
+        last_pick_time = player.last_pick_time.excellent_hero
+    elif shop_item_type == 2:
+        # 单抽良装
+        last_pick_time = player.last_pick_time.fine_equipment
+    elif shop_item_type == 6:
+        # 单抽神装
+        last_pick_time = player.last_pick_time.excellent_equipment
+
+    if last_pick_time + free_period*60*60 <= int(time.time()):
+        # 抽取后重置时间
+        if shop_item_type == 1:
+            # 单抽良将
+            player.last_pick_time.fine_hero = int(time.time())
+        elif shop_item_type == 5:
+            # 单抽神将
+            player.last_pick_time.excellent_hero = int(time.time())
+        elif shop_item_type == 2:
+            # 单抽良装
+            player.last_pick_time.fine_equipment = int(time.time())
+        elif shop_item_type == 6:
+            # 单抽神装
+            player.last_pick_time.excellent_equipment = int(time.time())
+
+        player.last_pick_time.save_data()
+        return False
+
+    return True
 
 
 def consume(player, item_group):
@@ -201,7 +245,6 @@ def gain(player, item_group, result=None):
                 shoes[2] += num
 
             player.travel_component.save()
-
 
         flag = 1
         for i in result:

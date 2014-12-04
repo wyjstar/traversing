@@ -6,10 +6,10 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from shared.db_opear.configs_data.game_configs import shop_config
 from app.game.core.item_group_helper import is_afford
+from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
-import time
 
 
 @remoteserviceHandle('gate')
@@ -109,45 +109,3 @@ def shop_equipment_oper(pro_data, player):
 
     response.res.result = True
     return response.SerializeToString()
-
-
-def is_consume(player, shop_item):
-    """判断是否免费抽取"""
-    free_period = shop_item.freePeriod
-    shop_item_type = shop_item.type
-    if free_period == -1:
-        return True
-
-    last_pick_time = 0
-    if shop_item_type == 1 and free_period > 0:
-        # 单抽良将
-        last_pick_time = player.last_pick_time.fine_hero
-    elif shop_item_type == 5 and free_period > 0:
-        # 单抽神将
-        last_pick_time = player.last_pick_time.excellent_hero
-    elif shop_item_type == 2:
-        # 单抽良装
-        last_pick_time = player.last_pick_time.fine_equipment
-    elif shop_item_type == 6:
-        # 单抽神装
-        last_pick_time = player.last_pick_time.excellent_equipment
-
-    if last_pick_time + free_period*60*60 <= int(time.time()):
-        # 抽取后重置时间
-        if shop_item_type == 1:
-            # 单抽良将
-            player.last_pick_time.fine_hero = int(time.time())
-        elif shop_item_type == 5:
-            # 单抽神将
-            player.last_pick_time.excellent_hero = int(time.time())
-        elif shop_item_type == 2:
-            # 单抽良装
-            player.last_pick_time.fine_equipment = int(time.time())
-        elif shop_item_type == 6:
-            # 单抽神装
-            player.last_pick_time.excellent_equipment = int(time.time())
-
-        player.last_pick_time.save_data()
-        return False
-
-    return True

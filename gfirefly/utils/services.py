@@ -5,6 +5,7 @@ Created on 2011-1-3
 @author: sean_lan
 """
 import traceback
+import time
 from gfirefly.server.logobj import logger
 
 
@@ -64,9 +65,10 @@ class Service(object):
         if not target:
             logger.error('command %s not Found on service' % str(targetKey))
             return None
-        if targetKey not in self.unDisplay:
-            logger.info("call method %s on service[%s]" %
-                        (target.__name__, self._name))
+        # if targetKey not in self.unDisplay:
+        #     logger.info("call method %s on service[%s]" %
+        #                 (target.__name__, self._name))
+        t = time.time()
         try:
             response = target(*args, **kw)
         except Exception, e:
@@ -74,6 +76,8 @@ class Service(object):
             return None
         except:
             logger.error(traceback.format_exc())
+        logger.info("call method %s on service[%s]:%f",
+                    target.__name__, self._name, time.time() - t)
         return response
 
 
