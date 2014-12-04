@@ -355,7 +355,6 @@ def auto_travel_837(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    # TODO 验证 有没有没有完成的自动游历
     flag = 0
     if player.travel_component.auto.get(stage_id):
         for auto_travel in player.travel_component.auto.get(stage_id):
@@ -430,12 +429,12 @@ def settle_auto_838(data, player):
         response.res.result = False
         response.res.result_no = 818
         return response.SerializeToString()
-
-    if base_config.get('autoTravel').get(auto_travel_info.get('continued_time')) != auto_travel_info.get('already_times'):
-        logger.error('auto travel dont finish')
-        response.res.result = False
-        response.res.result_no = 819
-        return response.SerializeToString()
+    if not event_id:
+        if base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] != auto_travel_info.get('already_times'):
+            logger.error('auto travel dont finish')
+            response.res.result = False
+            response.res.result_no = 819
+            return response.SerializeToString()
 
     del_list = []
 
@@ -447,7 +446,7 @@ def settle_auto_838(data, player):
         event_conf = travel_event_config.get('events').get(event_info[0])
         if event_conf.type == 1 and not settle_type:
             if int(time.time()) - event_info[2] < \
-                    event_conf.parameter.items[0][0]:
+                    event_conf.parameter.items()[0][0]:
                 continue
 
         # 结算
@@ -458,7 +457,7 @@ def settle_auto_838(data, player):
     for del_event in del_list:
         auto_travel_info.get('events').remove(del_event)
 
-    if len(auto_travel_info.get('events')) == 0:
+    if len(auto_travel_info.get('events')) == 0 and base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] == auto_travel_info.get('already_times'):
         stage_info.remove(auto_travel_info)
 
     player.travel_component.save()
@@ -469,6 +468,7 @@ def settle_auto_838(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
+    logger.debug(response)
     response.SerializeToString()
 
 
@@ -508,7 +508,7 @@ def fast_finish_auto_839(data, player):
         response.res.result_no = 820
         return response.SerializeToString()
 
-    need_good = int((time.time() - start_time * 60) * base_config.get('autoTravelGetPrice'))
+    need_good = int((auto_travel_info.get('continued_time') * 60 - (time.time() - start_time)) / 60 * base_config.get('autoTravelGetPrice'))
     if player.finance.gold < need_good:
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
@@ -571,7 +571,7 @@ def update_auto(player, up_type):
                     # 掉落
                     drops = get_drops(stage_id)
                     if travel_event_config.get('events').get(travel_event_id).type == 1:
-                        the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1)
+                        the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1) + one_auto.get('start_time')
 
                         one_auto.get('events').append([travel_event_id, drops, the_time])
                     else:
