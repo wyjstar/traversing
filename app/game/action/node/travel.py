@@ -469,7 +469,7 @@ def settle_auto_838(data, player):
 
     response.res.result = True
     logger.debug(response)
-    response.SerializeToString()
+    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
