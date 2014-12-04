@@ -9,16 +9,15 @@ from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     TravelInitResponse, BuyShoesRequest, BuyShoesResponse, \
     TravelSettleRequest, TravelSettleResponse, \
     EventStartRequest, EventStartResponse, \
-    NoWaitRequest, NoWaitResponse, OpenChestResponse
+    NoWaitRequest, NoWaitResponse, OpenChestResponse, \
+    AutoTravelRequest, AutoTravelResponse, \
+    SettleAutoRequest, SettleAutoResponse, \
+    FastFinishAutoRequest, FastFinishAutoResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
     base_config, stage_config
 import random
 from gfirefly.server.logobj import logger
 import time
-# from gfirefly.server.globalobject import GlobalObject
-
-
-# remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -42,18 +41,17 @@ def travel_831(data, player):
 
     travel_cache = player.travel_component.travel
 
-    while(True):
-        travel_event_id = get_travel_event_id()
-        flag = 1
-        if travel_cache.get(stage_id):
-            for event in travel_cache.get(stage_id):
-                if travel_event_id == event[0]:
-                    flag = 0
-            if flag:
-                break
-        else:
-            travel_cache[stage_id] = []
-            break
+    travel_event_id = get_travel_event_id()
+    flag = 10
+    if travel_cache.get(stage_id):
+        for event in travel_cache.get(stage_id):
+            if travel_event_id == event[0]%100000:
+                flag += 1
+    else:
+        travel_cache[stage_id] = []
+
+    res_travel_event_id = flag * 100000 + travel_event_id
+
     event_info = travel_event_config.get('events').get(travel_event_id)
     if not event_info:
         logger.error('get travel event config error')
@@ -61,15 +59,11 @@ def travel_831(data, player):
         response.res.result_no = 800  # 未知错误
         return response.SerializeToString()
 
-    response.event_id = travel_event_id
+    response.event_id = res_travel_event_id
 
     res_drops = response.drops
-    drops = []
-    stage_info = stage_config.get('stages').get(stage_id)
-    common_bag = BigBag(stage_info.commonDrop)
-    common_drop = common_bag.get_drop_items()
-    drops.extend(common_drop)
 
+    drops = get_drops(stage_id)
     drop_data = get_drop_data(drops)
 
     get_return(player, drop_data, res_drops)
@@ -78,7 +72,7 @@ def travel_831(data, player):
     if event_info.type == 4:
         gain(player, drops)
     else:
-        travel_cache.get(stage_id).append([travel_event_id, drops])
+        travel_cache.get(stage_id).append([res_travel_event_id, drops])
 
     if shoes[3] == 0:
         for i in[2, 1, 0]:
@@ -114,7 +108,7 @@ def travel_init_830(data, player):
             res_drops = res_travel.drops
             drop_data = get_drop_data(tra[1])
             get_return(player, drop_data, res_drops)
-            if travel_event_config.get('events').get(tra[0]).type == 1:
+            if travel_event_config.get('events').get(tra[0]%100000).type == 1:
                 if len(tra) == 3:
                     res_travel.time = tra[2]
 
@@ -134,7 +128,12 @@ def travel_init_830(data, player):
             travel_item = travel_item_chapter.travel_item.add()
             travel_item.id = travel_item_id
             travel_item.num = num
+
+    update_auto(player, 1)
+    deal_auto_response(response, player)
+
     logger.debug(response)
+    response.res.result = True
     return response.SerializeToString()
 
 
@@ -193,6 +192,7 @@ def open_chest_836(data, player):
 
     player.travel_component.save()
 
+    logger.debug(response)
     response.res.result = True
     return response.SerializeToString()
 
@@ -227,18 +227,13 @@ def travel_settle_833(data, player):
         response.res.result_no = 813
         return response.SerializeToString()
 
-    event_info = travel_event_config.get('events').get(args.event_id)
+    event_info = travel_event_config.get('events').get(args.event_id%100000)
     if event_info.type == 1:
         if int(time.time()) - event_cache[2] < \
                 event_info.parameter.items()[0][0]:
             response.res.result = False
             response.res.result_no = 814
             return response.SerializeToString()
-    # elif event_info.type == 3:
-    #     if not event_info.parameter.get(args.answer):
-    #         response.res.result = False
-    #         response.res.result_no = 815
-    #         return response.SerializeToString()
 
     # 结算
     gain(player, event_cache[1])
@@ -269,25 +264,22 @@ def event_start_834(data, player):
         return response.SerializeToString()
 
     event_cache = 0
-    flag = 0
     for event in stage_cache:
         if event[0] == event_id:
             event_cache = event
             break
-        flag += 1
 
     if not event_cache:
         logger.error("travel ：event id not found")
         response.res.result = False
         response.res.result_no = 813
         return response.SerializeToString()
-    event_info = travel_event_config.get('events').get(args.event_id)
+    event_info = travel_event_config.get('events').get(args.event_id%100000)
     if event_info.type == 1:
         start_time = int(time.time())
         response.time = start_time
-        travel_event_id = event_cache[0]
-        drop_data = event_cache[1]
-        stage_cache[flag] = [travel_event_id, drop_data, start_time]
+
+        event_cache.append(start_time)
 
         player.travel_component.save()
     elif event_info.type == 2:
@@ -322,12 +314,12 @@ def no_wait_835(data, player):
             break
 
     if not event_cache:
-        logger.error("travel ：event id not found:%s", event_id)
+        logger.error("travel ：event id not found")
         response.res.result = False
         response.res.result_no = 813
         return response.SerializeToString()
 
-    event_info = travel_event_config.get('events').get(event_id)
+    event_info = travel_event_config.get('events').get(event_id%100000)
     if player.finance.gold < event_info.price:
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
@@ -342,6 +334,250 @@ def no_wait_835(data, player):
 
     response.res.result = True
     return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def auto_travel_837(data, player):
+
+    args = AutoTravelRequest()
+    args.ParseFromString(data)
+    stage_id = args.stage_id
+    ttime = args.ttime
+
+    response = AutoTravelResponse()
+
+    auto_travel_config = base_config.get('autoTravel').get(ttime)
+
+    if player.finance.gold < auto_travel_config[1]:
+        response.res.result = False
+        response.res.result_no = 102  # 充值币不足
+        return response.SerializeToString()
+
+    flag = 0
+    if player.travel_component.auto.get(stage_id):
+        for auto_travel in player.travel_component.auto.get(stage_id):
+            if base_config.get('autoTravel').get(auto_travel.get('continued_time')) != auto_travel.get('already_times'):
+                flag = 1
+            else:
+                for auto_travel_event in auto_travel.get('events'):
+                    if len(auto_travel_event) < 3:
+                        flag = 1
+    else:
+        player.travel_component.auto[stage_id] = []
+
+    if flag:
+        response.res.result = False
+        response.res.result_no = 819
+        return response.SerializeToString()
+
+    info = {
+        'start_time': int(time.time()),
+        'continued_time': ttime,
+        'events': [],
+        'already_times': 0}
+    player.travel_component.auto[stage_id].append(info)
+
+    player.finance.gold -= auto_travel_config[1]
+    player.finance.save_data()
+
+    deal_auto_response(response, player)
+
+    response.res.result = True
+    logger.debug(response)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def settle_auto_838(data, player):
+
+    args = SettleAutoRequest()
+    args.ParseFromString(data)
+    stage_id = args.stage_id
+    start_time = args.start_time
+    event_id = args.event_id
+    settle_type = args.settle_type
+
+    response = SettleAutoResponse()
+
+    if settle_type:
+        if not event_id:
+            logger.error('travel seetle type and event id dont matching')
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+        else:
+            event_conf = travel_event_config.get('events').get(event_id%100000)
+            if player.finance.gold < event_conf.price:
+                response.res.result = False
+                response.res.result_no = 102  # 充值币不足
+                return response.SerializeToString()
+
+    auto_info = player.travel_component.auto
+    stage_info = auto_info.get(stage_id)
+    if not stage_info:
+        logger.error('auto stage info is None')
+        response.res.result = False
+        response.res.result_no = 817
+        return response.SerializeToString()
+
+    auto_travel_info = {}
+    for i in stage_info:
+        if i.get('start_time') == start_time:
+            auto_travel_info = i
+    if not auto_travel_info:
+        logger.error('auto travel, this start time not find')
+        response.res.result = False
+        response.res.result_no = 818
+        return response.SerializeToString()
+    if not event_id:
+        if base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] != auto_travel_info.get('already_times'):
+            logger.error('auto travel dont finish')
+            response.res.result = False
+            response.res.result_no = 819
+            return response.SerializeToString()
+
+    del_list = []
+
+    for event_info in auto_travel_info.get('events'):
+        if event_id:
+            if event_info[0] != event_id:
+                continue
+
+        event_conf = travel_event_config.get('events').get(event_info[0]%100000)
+        if event_conf.type == 1 and not settle_type:
+            if int(time.time()) - event_info[2] < \
+                    event_conf.parameter.items()[0][0]:
+                continue
+
+        # 结算
+        gain(player, event_info[1])
+
+        del_list.append(event_info)
+
+    for del_event in del_list:
+        auto_travel_info.get('events').remove(del_event)
+
+    if len(auto_travel_info.get('events')) == 0 and base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] == auto_travel_info.get('already_times'):
+        stage_info.remove(auto_travel_info)
+
+    player.travel_component.save()
+    if settle_type:
+        player.finance.gold -= travel_event_config.get('events').get(event_id%100000).price
+        player.finance.save_data()
+
+    deal_auto_response(response, player)
+
+    response.res.result = True
+    logger.debug(response)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def fast_finish_auto_839(data, player):
+
+    args = FastFinishAutoRequest()
+    args.ParseFromString(data)
+    start_time = args.start_time
+    stage_id = args.stage_id
+
+    response = FastFinishAutoResponse()
+
+    auto_info = player.travel_component.auto
+    stage_info = auto_info.get(stage_id)
+    if not stage_info:
+        logger.error('auto stage info is None')
+        response.res.result = False
+        response.res.result_no = 817
+        return response.SerializeToString()
+
+    auto_travel_info = {}
+    for i in stage_info:
+        if i.get('start_time') == start_time:
+            auto_travel_info = i
+    if not auto_travel_info:
+        logger.error('auto travel, this start time not find')
+        response.res.result = False
+        response.res.result_no = 818
+        return response.SerializeToString()
+
+    update_auto(player, 1)
+
+    if base_config.get('autoTravel').get(auto_travel_info.get('continued_time')) == auto_travel_info.get('already_times'):
+        logger.error('auto travel dont finish')
+        response.res.result = False
+        response.res.result_no = 820
+        return response.SerializeToString()
+
+    need_good = int((auto_travel_info.get('continued_time') * 60 - (time.time() - start_time)) / 60 * base_config.get('autoTravelGetPrice'))
+    if player.finance.gold < need_good:
+        response.res.result = False
+        response.res.result_no = 102  # 充值币不足
+        return response.SerializeToString()
+
+    update_auto(player, 2)
+
+    player.finance.gold -= need_good
+    player.finance.save_data()
+
+    deal_auto_response(response, player)
+
+    response.res.result = True
+    response.SerializeToString()
+
+
+def deal_auto_response(response, player):
+    for (stage_id, item) in player.travel_component.auto.items():
+        stage_travel = response.stage_travel.add()
+        stage_travel.stage_id = stage_id
+        for auto_info in item:
+            auto_travel = stage_travel.auto_travel.add()
+            auto_travel.start_time = auto_info.get('start_time')
+            auto_travel.continued_time = auto_info.get('continued_time')
+            auto_travel.already_times = auto_info.get('already_times')
+            for tra in auto_info.get('events'):
+
+                res_travel = auto_travel.travel.add()
+                res_travel.event_id = tra[0]
+                res_drops = res_travel.drops
+                drop_data = get_drop_data(tra[1])
+                get_return(player, drop_data, res_drops)
+                if travel_event_config.get('events').get(tra[0]%100000).type == 1:
+                    if len(tra) == 3:
+                        res_travel.time = tra[2]
+
+
+def update_auto(player, up_type):
+    # 1 普通 2,立刻
+    for (stage_id, item) in player.travel_component.auto.items():
+        for one_auto in item:
+            auto_travel_config = base_config.get('autoTravel').get(one_auto.get('continued_time'))
+            timeA = int(time.time()) - one_auto.get('start_time')
+            if timeA > one_auto.get('continued_time') * 60 or up_type == 2:
+                cishu = auto_travel_config[0]
+            else:
+                cishu = timeA / (one_auto.get('continued_time') * 60 / auto_travel_config[0])
+            need_times = cishu - one_auto.get('already_times')
+            if need_times > 0:
+                for _ in range(need_times):
+
+                    travel_event_id = get_travel_event_id()
+                    flag = 10
+                    for event in one_auto.get('events'):
+                        if travel_event_id == event[0]%100000:
+                            flag += 1
+                    res_travel_event_id = flag * 100000 + travel_event_id
+
+                    # 掉落
+                    drops = get_drops(stage_id)
+                    if travel_event_config.get('events').get(travel_event_id).type == 1:
+                        the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1) + one_auto.get('start_time')
+
+                        one_auto.get('events').append([res_travel_event_id, drops, the_time])
+                    else:
+                        one_auto.get('events').append([res_travel_event_id, drops])
+                    one_auto['already_times'] += 1
+
+    player.travel_component.save()
 
 
 def get_travel_event_id():
@@ -371,3 +607,13 @@ def get_drop_data(drops):
         if flag:
             drop_data.append([type_id, num, item_no])
     return drop_data
+
+
+def get_drops(stage_id):
+    drops = []
+    stage_info = stage_config.get('stages').get(stage_id)
+    common_bag = BigBag(stage_info.commonDrop)
+    common_drop = common_bag.get_drop_items()
+    drops.extend(common_drop)
+
+    return drops
