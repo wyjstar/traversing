@@ -153,6 +153,16 @@ def pvb_reborn_1704(data, player):
 def pvb_fight_start_1705(pro_data, player):
     """开始战斗
     """
+    get_fight_start_info(pro_data, player)
+
+@remoteserviceHandle('gate')
+def pvb_fight_end_1706(pro_data, player):
+    """战斗结束
+    """
+    get_fight_start_info(pro_data, player)
+
+@remoteserviceHandle('gate')
+def get_fight_start_info(pro_data, player):
     logger.debug("fight start..")
     request = stage_request_pb2.StageStartRequest()
     request.ParseFromString(pro_data)

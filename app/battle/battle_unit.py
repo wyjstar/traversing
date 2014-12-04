@@ -4,7 +4,6 @@ created by server on 14-11-10下午3:31.
 """
 from battle_skill import HeroSkill, MonsterSkill
 from battle_buff import BuffManager
-from shared.db_opear.configs_data.game_configs import base_config
 import cPickle
 
 
@@ -32,9 +31,36 @@ class BattleUnit(object):
         self._mp_base = 0         # 武将基础mp
         self._quality = 0         # 武将品质
         self._is_boss = 0         # 是否为boss
-        self._skill = None
+        self._skill = None        # 技能
+        self._is_break = False    # 是否为突破
+        self._is_awake = False    # 是否觉醒
+        self._origin_no = 0       # 突破或者觉醒武将的原始no
 
         self._buff_manager = BuffManager(self)
+
+    @property
+    def origin_no(self):
+        return self._origin_no
+
+    @origin_no.setter
+    def origin_no(self, value):
+        self._origin_no = value
+
+    @property
+    def is_break(self):
+        return self._is_break
+
+    @is_break.setter
+    def is_break(self, value):
+        self._is_break = value
+
+    @property
+    def is_awake(self):
+        return self._is_awake
+
+    @is_awake.setter
+    def is_awake(self, value):
+        self._is_awake = value
 
     @property
     def is_boss(self):
@@ -51,10 +77,6 @@ class BattleUnit(object):
     @quality.setter
     def quality(self, value):
         self._quality = value
-
-    @property
-    def can_attack(self):
-        return self._buff_manager.can_attack()
 
     @property
     def mp(self):
@@ -214,11 +236,11 @@ class BattleUnit(object):
 
     def __repr__(self):
         return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
-                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp(%s), buffs(%s)") \
+                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp(%s), buffs(%s), hp_percent(%s)") \
                % (
             self._slot_no, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
             self.hit, self.dodge, self.cri, self.cri_coeff, self.cri_ded_coeff, self.block, self.ductility,
-            self.level, self.break_level, self._skill.mp, self.buff_manager)
+            self.level, self.break_level, self._skill.mp, self.buff_manager, self.hp_percent)
 
     @property
     def hp_max(self):
@@ -318,15 +340,10 @@ def do_assemble(no, quality, break_skills, hp,
 
     battle_unit.slot_no = position
 
-    # init skill
-    mp_config = base_config.get('chushi_value_config')
     if is_hero:
-        battle_unit.skill = HeroSkill(battle_unit, mp_config)
-        if is_break_hero:
-            mp_config = base_config.get('stage_break_angry_value')
-            battle_unit.skill = HeroSkill(battle_unit, mp_config)
+        battle_unit.skill = HeroSkill(battle_unit)
     else:
-        battle_unit.skill = MonsterSkill(battle_unit, mp_config)
+        battle_unit.skill = MonsterSkill(battle_unit)
 
     battle_unit.skill.break_skill_ids = break_skills
     return battle_unit

@@ -201,7 +201,7 @@ class BuffManager(object):
             ductility -= self.get_buff_value(ductility, buff_info.skill_buff_info)
         return ductility
 
-    def can_attack(self):
+    def is_dizzy(self):
         """
         can atk or not.
         """
@@ -210,11 +210,16 @@ class BuffManager(object):
 
         for buff_info in temp_buffs:
             return False
+        return temp
+
+    def is_slient(self):
+        """docstring for is_slient"""
         temp_buffs = self._buffs.get(25, [])
 
         for buff_info in temp_buffs:
-            return False
-        return temp
+            return True
+        return False
+
 
     def get_buff_value(self, value, buff_info):
         if buff_info.valueType == 1:

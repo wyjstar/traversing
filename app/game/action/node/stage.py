@@ -224,14 +224,11 @@ def assemble(unit_add, unit):
 
     unit_add.position = unit.slot_no
     unit_add.is_boss = unit.is_boss
-    unit_add.is_awake = False
-    unit_add.is_break = False
-    if hasattr(unit, 'is_awake'):
-        unit_add.is_awake = unit.is_awake
-        unit_add.origin_no = unit.origin_no
-    if hasattr(unit, 'is_break'):
-        unit_add.is_break = unit.is_break
-        unit_add.origin_no = unit.origin_no
+
+    unit_add.is_awake = unit.is_awake
+    unit_add.origin_no = unit.origin_no
+    unit_add.is_break = unit.is_break
+    unit_add.origin_no = unit.origin_no
 
 
 def get_stage_info(stage_id, player):

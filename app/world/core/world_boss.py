@@ -175,6 +175,7 @@ class WorldBoss(object):
         instance = self.get_rank_instance()
         instance.clear_rank() # 重置排行
         #todo: 重置玩家信息
+        self._last_shot_item = {}
         self.save_data()
 
         # todo:对前十名发放奖励

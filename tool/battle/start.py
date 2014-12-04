@@ -178,7 +178,6 @@ def get_monsters(stage_info):
     return blue_groups
 
 if __name__ == '__main__':
-    set_log()
 
     battle_type = 'pvp'
     if len(sys.argv) > 1:
