@@ -518,7 +518,7 @@ def fast_finish_auto_839(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
-    response.SerializeToString()
+    return response.SerializeToString()
 
 
 def deal_auto_response(response, player):
