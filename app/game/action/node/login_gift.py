@@ -6,6 +6,7 @@ from app.proto_file.login_gift_pb2 import *
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import activity_config
 from app.game.core.item_group_helper import gain, get_return
+from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
