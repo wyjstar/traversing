@@ -71,7 +71,12 @@ def get_chapter_902(pro_data, player):
 
 @remoteserviceHandle('gate')
 def stage_start_903(pro_data, player):
-    """开始战斗
+    return stage_start(pro_data, player)
+
+def stage_start(pro_data, player):
+    """pve开始战斗:
+    1. pve
+    2. 秘境中，怪物驻守的野外矿
     """
     request = stage_request_pb2.StageStartRequest()
     request.ParseFromString(pro_data)
