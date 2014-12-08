@@ -48,6 +48,8 @@ tb_guild_name.insert()
 tb_character_friend = MAdmin('tb_character_friend', 'id')
 tb_character_friend.insert()
 
+tb_character_shop = MAdmin('tb_character_shop', 'id')
+tb_character_shop.insert()
 
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
@@ -77,6 +79,6 @@ tb_character_travel.insert()
 tb_character_brew = MAdmin('tb_character_brew', 'id')
 tb_character_brew.insert()
 
-#活跃度
+# 活跃度
 tb_character_tasks = MAdmin('tb_character_lively', 'id')
 tb_character_tasks.insert()

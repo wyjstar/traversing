@@ -19,6 +19,7 @@ from rand_name_config import RandNameConfig
 from player_exp_config import PlayerExpConfig
 from robot_born_config import RobotBornConfig
 from shop_config import ShopConfig
+from shop_type_config import ShopTypeConfig
 from skill_buff_config import SkillBuffConfig
 from skill_config import SkillConfig
 from stage_break_config import StageBreakConfig
@@ -57,6 +58,7 @@ equipment_config = {}  # 装备配置
 equipment_strengthen_config = {}  # 装备强化等级消耗金币路线
 set_equipment_config = {}
 shop_config = {}
+shop_type_config = {}
 soul_shop_config = {}
 link_config = {}
 stage_config = {}
@@ -98,6 +100,7 @@ all_config_name = {
     'set_equipment_config': SetEquipmentConfig(),
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
+    'shop_type_config': ShopTypeConfig(),
     'link_config': LinkConfig(),
     'stage_config': StageConfig(),
     'monster_config': MonsterConfig(),
@@ -134,4 +137,6 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print soul_shop_config
+    for k, v in shop_config.items():
+        print k, v
+        print

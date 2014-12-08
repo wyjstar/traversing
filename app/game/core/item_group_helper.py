@@ -17,42 +17,46 @@ from gfirefly.server.logobj import logger
 import time
 
 
-def is_afford(player, item_group):
+def is_afford(player, group_item):
     """消耗是否足够。"""
-    for group_item in item_group:
-        type_id = group_item.item_type
-        num = group_item.num
-        item_no = group_item.item_no
-        if type_id == const.COIN and player.finance.coin < num:
-            return {'result': False, 'result_no': 101}
-        elif type_id == const.GOLD and player.finance.gold < num:
-            return {'result': False, 'result_no': 102}
-        elif type_id == const.HERO_SOUL and player.finance.hero_soul < num:
-            return {'result': False, 'result_no': 103}
-        elif type_id == const.JUNIOR_STONE and player.finance.junior_stone < num:
-            return {'result': False, 'result_no': 107}
-        elif type_id == const.MIDDLE_STONE and player.finance.middle_stone < num:
-            return {'result': False, 'result_no': 108}
-        elif type_id == const.HIGH_STONE and player.finance.high_stone < num:
-            return {'result': False, 'result_no': 109}
-        elif type_id == const.HERO_CHIP:
-            hero_chip = player.hero_chip_component.get_chip(item_no)
-            if not hero_chip or hero_chip.num < num:
-                return {'result': False, 'result_no': 104}
-        elif type_id == const.EQUIPMENT_CHIP:
-            equipment_chip = player.equipment_chip_component.get_chip(item_no)
-            if not equipment_chip or equipment_chip.chip_num < num:
-                return {'result': False, 'result_no': 105}
-        elif type_id == const.ITEM:
-            item = player.item_package.get_item(item_no)
-            if not item or item.num < num:
-                return {'result': False, 'result_no': 106}
+
+    if not is_consume(player, group_item):
+        return {'result': False, 'result_no': 11}
+
+    consume = group_item.consume
+    type_id = consume.keys()[0]
+    num, _, item_no = consume.values()[0]
+    if type_id == const.COIN and player.finance.coin < num:
+        return {'result': False, 'result_no': 101}
+    elif type_id == const.GOLD and player.finance.gold < num:
+        return {'result': False, 'result_no': 102}
+    elif type_id == const.HERO_SOUL and player.finance.hero_soul < num:
+        return {'result': False, 'result_no': 103}
+    elif type_id == const.JUNIOR_STONE and player.finance.junior_stone < num:
+        return {'result': False, 'result_no': 107}
+    elif type_id == const.MIDDLE_STONE and player.finance.middle_stone < num:
+        return {'result': False, 'result_no': 108}
+    elif type_id == const.HIGH_STONE and player.finance.high_stone < num:
+        return {'result': False, 'result_no': 109}
+    elif type_id == const.HERO_CHIP:
+        hero_chip = player.hero_chip_component.get_chip(item_no)
+        if not hero_chip or hero_chip.num < num:
+            return {'result': False, 'result_no': 104}
+    elif type_id == const.EQUIPMENT_CHIP:
+        equipment_chip = player.equipment_chip_component.get_chip(item_no)
+        if not equipment_chip or equipment_chip.chip_num < num:
+            return {'result': False, 'result_no': 105}
+    elif type_id == const.ITEM:
+        item = player.item_package.get_item(item_no)
+        if not item or item.num < num:
+            return {'result': False, 'result_no': 106}
 
     return {'result': True}
 
 
 def is_consume(player, shop_item):
     """判断是否免费抽取"""
+    print shop_item
     free_period = shop_item.freePeriod
     shop_item_type = shop_item.type
     if free_period == -1:
@@ -93,168 +97,164 @@ def is_consume(player, shop_item):
     return True
 
 
-def consume(player, item_group):
+def consume(player, consume):
     """消耗"""
     result = []
-    for group_item in item_group:
-        type_id = group_item.item_type
-        num = group_item.num
-        item_no = group_item.item_no
-        if type_id == const.COIN:
-            player.finance.coin -= num
-            player.finance.save_data()
+    type_id = consume.keys()[0]
+    num, _, item_no = consume.values()[0]
+    if type_id == const.COIN:
+        player.finance.coin -= num
+        player.finance.save_data()
 
-        elif type_id == const.GOLD:
-            player.finance.gold -= num
-            player.finance.save_data()
+    elif type_id == const.GOLD:
+        player.finance.gold -= num
+        player.finance.save_data()
 
-        elif type_id == const.HERO_SOUL:
-            player.finance.hero_soul -= num
-            player.finance.save_data()
+    elif type_id == const.HERO_SOUL:
+        player.finance.hero_soul -= num
+        player.finance.save_data()
 
-        elif type_id == const.JUNIOR_STONE:
-            player.finance.junior_stone -= num
-            player.finance.save_data()
+    elif type_id == const.JUNIOR_STONE:
+        player.finance.junior_stone -= num
+        player.finance.save_data()
 
-        elif type_id == const.MIDDLE_STONE:
-            player.finance.middle_stone -= num
-            player.finance.save_data()
+    elif type_id == const.MIDDLE_STONE:
+        player.finance.middle_stone -= num
+        player.finance.save_data()
 
-        elif type_id == const.HIGH_STONE:
-            player.finance.high_stone -= num
-            player.finance.save_data()
+    elif type_id == const.HIGH_STONE:
+        player.finance.high_stone -= num
+        player.finance.save_data()
 
-        elif type_id == const.HERO_CHIP:
-            hero_chip = player.hero_chip_component.get_chip(item_no)
-            hero_chip.num -= num
-            player.hero_chip_component.save_data()
+    elif type_id == const.HERO_CHIP:
+        hero_chip = player.hero_chip_component.get_chip(item_no)
+        hero_chip.num -= num
+        player.hero_chip_component.save_data()
 
-        elif type_id == const.EQUIPMENT_CHIP:
-            equipment_chip = player.equipment_chip_component.get_chip(item_no)
-            equipment_chip.chip_num -= num
-            player.equipment_chip_component.save_data()
+    elif type_id == const.EQUIPMENT_CHIP:
+        equipment_chip = player.equipment_chip_component.get_chip(item_no)
+        equipment_chip.chip_num -= num
+        player.equipment_chip_component.save_data()
 
-        elif type_id == const.ITEM:
-            item = player.item_package.get_item(item_no)
-            item.num -= num
-            player.item_package.save_data()
-        result.append([type_id, num, item_no])
+    elif type_id == const.ITEM:
+        item = player.item_package.get_item(item_no)
+        item.num -= num
+        player.item_package.save_data()
+    result.append([type_id, num, item_no])
     return result
 
 
-def gain(player, item_group, result=None):
+def gain(player, group_item, result=None):
     """获取
     @param item_group: [obj,obj]
     """
     if result is None:
         result = []
 
-    for group_item in item_group:
-        type_id = group_item.item_type
-        num = group_item.num
-        item_no = group_item.item_no
-        if type_id == const.COIN:
-            player.finance.coin += num
-            player.finance.save_data()
+    type_id = group_item.keys()[0]
+    num, _, item_no = group_item.values()[0]
+    if type_id == const.COIN:
+        player.finance.coin += num
+        player.finance.save_data()
 
-        elif type_id == const.GOLD:
-            player.finance.gold += num
-            player.finance.save_data()
+    elif type_id == const.GOLD:
+        player.finance.gold += num
+        player.finance.save_data()
 
-        elif type_id == const.HERO_SOUL:
-            player.finance.hero_soul += num
-            player.finance.save_data()
+    elif type_id == const.HERO_SOUL:
+        player.finance.hero_soul += num
+        player.finance.save_data()
 
-        elif type_id == const.JUNIOR_STONE:
-            player.finance.junior_stone += num
-            player.finance.save_data()
-        elif type_id == const.MIDDLE_STONE:
-            player.finance.middle_stone += num
-            player.finance.save_data()
-        elif type_id == const.HIGH_STONE:
-            player.finance.high_stone += num
-            player.finance.save_data()
+    elif type_id == const.JUNIOR_STONE:
+        player.finance.junior_stone += num
+        player.finance.save_data()
+    elif type_id == const.MIDDLE_STONE:
+        player.finance.middle_stone += num
+        player.finance.save_data()
+    elif type_id == const.HIGH_STONE:
+        player.finance.high_stone += num
+        player.finance.save_data()
 
-        elif type_id == const.HERO_CHIP:
-            hero_chip = HeroChip(item_no, num)
+    elif type_id == const.HERO_CHIP:
+        hero_chip = HeroChip(item_no, num)
+        player.hero_chip_component.add_chip(hero_chip)
+        player.hero_chip_component.save_data()
+
+    elif type_id == const.ITEM:
+        item = Item(item_no, num)
+        player.item_package.add_item(item)
+        player.item_package.save_data()
+
+    elif type_id == const.HERO:
+        if player.hero_component.contain_hero(item_no):
+            # 已经存在该武将，自动转换为武将碎片
+            # 获取hero对应的hero_chip_no, hero_chip_num
+            hero_chip_config_item = chip_config.get("mapping").get(item_no)
+            hero_chip_no = hero_chip_config_item.id
+            hero_chip_num = hero_chip_config_item.needNum
+
+            hero_chip = HeroChip(hero_chip_no, hero_chip_num)
             player.hero_chip_component.add_chip(hero_chip)
             player.hero_chip_component.save_data()
+            type_id = const.HERO_CHIP
+            item_no = hero_chip_no
+            num = hero_chip_num
+        else:
+            player.hero_component.add_hero(item_no)
 
-        elif type_id == const.ITEM:
-            item = Item(item_no, num)
-            player.item_package.add_item(item)
-            player.item_package.save_data()
+    elif type_id == const.BIG_BAG:
+        big_bag = BigBag(item_no)
+        for i in range(num):
+            gain(player, big_bag.get_drop_items(), result)
+        return result
 
-        elif type_id == const.HERO:
-            if player.hero_component.contain_hero(item_no):
-                # 已经存在该武将，自动转换为武将碎片
-                # 获取hero对应的hero_chip_no, hero_chip_num
-                hero_chip_config_item = chip_config.get("mapping").get(item_no)
-                hero_chip_no = hero_chip_config_item.id
-                hero_chip_num = hero_chip_config_item.needNum
+    elif type_id == const.EQUIPMENT:
+        equipment = player.equipment_component.add_equipment(item_no)
+        item_no = equipment.base_info.id
 
-                hero_chip = HeroChip(hero_chip_no, hero_chip_num)
-                player.hero_chip_component.add_chip(hero_chip)
-                player.hero_chip_component.save_data()
-                type_id = const.HERO_CHIP
-                item_no = hero_chip_no
-                num = hero_chip_num
-            else:
-                player.hero_component.add_hero(item_no)
+    elif type_id == const.EQUIPMENT_CHIP:
+        chip = EquipmentChip(item_no, num)
+        player.equipment_chip_component.add_chip(chip)
+        player.equipment_chip_component.save_data()
+    elif type_id == const.STAMINA:
+        player.stamina.stamina += num
+        logger.debug(str(num)+" , stamina+++++++++++")
+        player.stamina.save_data()
+    elif type_id == const.TRAVEL_ITEM:
+        stage_id = travel_item_config.get(item_no).stageId
+        flag1 = 1
+        flag2 = 0
+        stage_item_info = player.travel_component.travel_item.get(stage_id)
+        for [travel_item_id, travel_item_num] in stage_item_info:
+            if travel_item_id == item_no:
+                stage_item_info[flag2] = \
+                    [travel_item_id, travel_item_num + num]
+                flag1 = 0
+                break
+            flag2 += 1
+        if flag1:
+            stage_item_info.append([item_no, num])
+        player.travel_component.save()
+    elif type_id == u'107':
+        shoes = player.travel_component.shoes
+        if item_no == 18:
+            shoes[0] += num
+        elif item_no == 19:
+            shoes[1] += num
+        elif item_no == 20:
+            shoes[2] += num
 
-        elif type_id == const.BIG_BAG:
-            big_bag = BigBag(item_no)
-            for i in range(num):
-                gain(player, big_bag.get_drop_items(), result)
-            return result
+        player.travel_component.save()
 
-        elif type_id == const.EQUIPMENT:
-            equipment = player.equipment_component.add_equipment(item_no)
-            item_no = equipment.base_info.id
-
-        elif type_id == const.EQUIPMENT_CHIP:
-            chip = EquipmentChip(item_no, num)
-            player.equipment_chip_component.add_chip(chip)
-            player.equipment_chip_component.save_data()
-        elif type_id == const.STAMINA:
-            player.stamina.stamina += num
-            logger.debug(str(num)+" , stamina+++++++++++")
-            player.stamina.save_data()
-        elif type_id == const.TRAVEL_ITEM:
-            stage_id = travel_item_config.get(item_no).stageId
-            flag1 = 1
-            flag2 = 0
-            stage_item_info = player.travel_component.travel_item.get(stage_id)
-            for [travel_item_id, travel_item_num] in stage_item_info:
-                if travel_item_id == item_no:
-                    stage_item_info[flag2] = \
-                        [travel_item_id, travel_item_num + num]
-                    flag1 = 0
-                    break
-                flag2 += 1
-            if flag1:
-                stage_item_info.append([item_no, num])
-            player.travel_component.save()
-        elif type_id == u'107':
-            shoes = player.travel_component.shoes
-            if item_no == 18:
-                shoes[0] += num
-            elif item_no == 19:
-                shoes[1] += num
-            elif item_no == 20:
-                shoes[2] += num
-
-            player.travel_component.save()
-
-        flag = 1
-        for i in result:
-            if i[0] == type_id and i[2] == item_no:
-                i[1] += 1
-                flag = 0
-                continue
-        if flag:
-            result.append([type_id, num, item_no])
-        # result.append([type_id, num, item_no])
+    flag = 1
+    for i in result:
+        if i[0] == type_id and i[2] == item_no:
+            i[1] += 1
+            flag = 0
+            continue
+    if flag:
+        result.append([type_id, num, item_no])
+    # result.append([type_id, num, item_no])
     return result
 
 

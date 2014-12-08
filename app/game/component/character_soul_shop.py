@@ -4,37 +4,41 @@ created by server on 14-10-3下午3:43.
 """
 
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_shop
 from shared.db_opear.configs_data.game_configs import base_config
 from gfirefly.server.logobj import logger
 from datetime import datetime
 from time import mktime
 
 
+class ShopData(object):
+    refresh_times = 0
+    last_refresh_time = 0
+    item_ids = []
 
-class CharacterSoulShopComponent(Component):
+
+class CharacterShopComponent(Component):
     """武魂商店组件"""
 
     def __init__(self, owner):
-        super(CharacterSoulShopComponent, self).__init__(owner)
-        self._refresh_times = 0  # 武魂商店刷新次数
-        self._last_refresh_time = 0  # 上次刷新时间
-        self._item_ids = []  # 当前武魂商店商品
+        super(CharacterShopComponent, self).__init__(owner)
+        self._shop_data = {}
 
-    def init_soul_shop(self, soul_shop_data):
-        logger.debug(str(soul_shop_data) + ", soul_shop_data+++++++++++++++++")
-        if soul_shop_data:
-            self._refresh_times = soul_shop_data.get('refresh_times')
-            self._last_refresh_time = soul_shop_data.get('last_refresh_time')
-            self._item_ids = soul_shop_data.get('item_ids')
+    def init_shop(self):
+        shop_data = tb_character_shop.getObjData(self.owner.base_info.id)
+        if shop_data:
+            self._shop_data = shop_data.get('shop')
 
             # 初始化刷新次数
-            current_date_time = int(mktime(datetime.now().date().timetuple()))
-            if current_date_time >= self._last_refresh_time:
-                self._refresh_times = 0
+            for k, v in self._shop_data:
+                current_date_time = int(mktime(datetime.now().date().timetuple()))
+                if current_date_time >= v.last_refresh_time:
+                    v.refresh_times = 0
 
-
-
+    def save_data(self):
+        props = dict(id=self.owner.base_info.id, shop=self._shop_data)
+        shop = tb_character_shop.getObj(self.owner.base_info.id)
+        shop.update_multi(props)
 
     @property
     def detail_data(self):
@@ -45,35 +49,8 @@ class CharacterSoulShopComponent(Component):
             'item_ids': self._item_ids
         }
 
-    @property
-    def refresh_times(self):
-        """刷新次数"""
-        return self._refresh_times
-
-    @refresh_times.setter
-    def refresh_times(self, value):
-        """体力"""
-        self._refresh_times = value
-
-    @property
-    def last_refresh_time(self):
-        """上次刷新时间"""
-        return self._last_refresh_time
-
-    @last_refresh_time.setter
-    def last_refresh_time(self, value):
-        """上次刷新时间"""
-        self._last_refresh_time = value
-
-    @property
-    def item_ids(self):
-        """商品id"""
-        return self._item_ids
-
-    @item_ids.setter
-    def item_ids(self, value):
-        """商品id"""
-        self._item_ids = value
+    def get_shop_data(self, t):
+        return self._shop_data[t]
 
     @property
     def price(self):
@@ -85,9 +62,3 @@ class CharacterSoulShopComponent(Component):
             return 0
         else:
             return price * pow(k, self._refresh_times - free_times)
-
-    def save_data(self):
-        props = dict(soul_shop=self.detail_data)
-        print "detail_data", self.detail_data
-        info = tb_character_info.getObj(self.owner.base_info.id)
-        info.update_multi(props)
