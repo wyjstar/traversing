@@ -16,6 +16,7 @@ from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
+from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -84,31 +85,9 @@ def pvp_player_info_request_1504(data, player):
         return None
 
 
-def pvp_fight_start(data, player):
-    """docstring for pvp_fight_start"""
-    request = pvp_rank_pb2.PvpFightRequest()
-    request.ParseFromString(data)
-    __skill = request.skill
-    __best_skill = player.line_up_component.get_skill_id_by_unpar(__skill)
-    __skill_level = 0
-    if __skill in player.line_up_component.unpars:
-        __skill_level = player.line_up_component.unpars[request.skill]
-    else:
-        logger.error('error skill level:%s,%s', request.skill,
-                     player.line_up_component.unpars.keys())
-
-    line_up = {}  # {hero_id:pos}
-    for line in request.lineup:
-        if not line.hero_id:
-            continue
-        line_up[line.hero_id] = line.pos
-
-    player.line_up_component.line_up_order = line_up
-    player.line_up_component.save_data()
-    return request, __skill, __best_skill, __skill_level
-
 def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level):
     """docstring for pvp_fight_assemble_data"""
+    # assemble pvp response
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
     for slot_no, red_unit in red_units.items():
@@ -135,7 +114,12 @@ def pvp_fight_request_1505(data, player):
     """
     pvp战斗开始
     """
-    request, __skill, __best_skill, __skill_level = pvp_fight_start(data, player)
+    request = pvp_rank_pb2.PvpFightRequest()
+    request.ParseFromString(data)
+    __skill = request.skill
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    save_line_up_order(request.lineup, player)
+
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     before_player_rank = 0
@@ -195,7 +179,13 @@ def pvp_fight_request_1505(data, player):
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
-    return pvp_fight_assemble_data(red_units, blue_units, __best_skill, __skill_level, record.get("unpar_skill"), record.get("unpar_skill_level"))
+
+    response = pvp_rank_pb2.PvpFightResponse()
+    response.res.result = True
+    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
+            record.get("unpar_skill"), record.get("unpar_skill_level"), response)
+
+    return response.SerializeToString()
 
 
 def pvp_player_rank_refresh_request(data, player):

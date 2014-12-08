@@ -16,8 +16,10 @@ from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 import cPickle
-from app.game.action.node.pvp_rank import pvp_fight_start
-from app.game.action.node.stage import stage_start
+from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
+from app.proto_file import pvp_rank_pb2
+from app.battle.battle_process import BattlePVPProcess
+from gfirefly.server.logobj import logger
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -185,8 +187,6 @@ def guard_1244(data, player):
     print "*"*80, "battle units"
     print battle_units
 
-
-
 def add_stones(player, stones, response):
     response.res.result = True
     for stone_id, num in stones.items():
@@ -215,7 +215,6 @@ def harvest_1245(data, player):
         response.res.message = u"没有可以领取的符文石"
     print '1245-response', response
     return response.SerializePartialToString()
-
 
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
@@ -349,6 +348,29 @@ def acc_mine_1250(data, player):
 @remoteserviceHandle('gate')
 def battle_1251(data, player):
     """
-    攻占玩家驻守的矿点
+    攻占玩家驻守的矿点:pvp
     """
-    return pvp_fight_start(data, player)
+    request = pvp_rank_pb2.PvpFightRequest()
+    request.ParseFromString(data)
+    __skill = request.skill
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    save_line_up_order(request.lineup, player)
+
+    record = {}
+    #todo: 获取蓝方数据
+    blue_units = record.get('units')
+    # print "blue_units:", blue_units
+    blue_units = cPickle.loads(blue_units)
+    # print "blue_units:", blue_units
+    red_units = player.fight_cache_component.red_unit
+    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
+                               record.get('best_skill', 0), record.get('level', 1))
+    fight_result = process.process()
+
+    logger.debug("fight result:%s" % fight_result)
+
+    response = pvp_rank_pb2.PvpFightResponse()
+    response.res.result = True
+    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
+            record.get("unpar_skill"), record.get("unpar_skill_level"), response)
+    return response.SerializeToString()

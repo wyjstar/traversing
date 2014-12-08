@@ -136,6 +136,17 @@ class CharacterLineUpComponent(Component):
             return 0
         return item.skill_ids[self._unpars[unpar]]
 
+    def get_skill_info_by_unpar(self, unpar):
+        if unpar not in self._unpars:
+            return (0, 0)
+
+        item = warriors_config.get(unpar)
+        if not item:
+            logger.error('can not find warrior:%s', unpar)
+            return (0, 0)
+        upar_level = self._unpars[unpar]
+        return item.skill_ids[upar_level], upar_level
+
     @property
     def lead_hero_no(self):
         """主力英雄编号
