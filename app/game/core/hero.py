@@ -241,7 +241,6 @@ class Hero(object):
         """
         rage_skill_id = self.rage_skill_id
 
-        print rage_skill_id, self._hero_no, "*-"*80
         rage_skill_config = game_configs.skill_config.get(rage_skill_id)
         rage_group = rage_skill_config.group
         return rage_group

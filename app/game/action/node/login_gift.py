@@ -6,6 +6,7 @@ from app.proto_file.login_gift_pb2 import *
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import activity_config
 from app.game.core.item_group_helper import gain, get_return
+from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
@@ -58,11 +59,10 @@ def get_login_gift(activity_id, activity_type, response, player):
     """
     领取登录奖励
     """
+    flag = 1
     if activity_type == 1:  # 累积登录
         if player.login_gift.cumulative_received.count(activity_id) == 0:  # 未领取
             if player.login_gift.cumulative_day[1]:  # 是新手活动
-                res = False
-                err_no = 800
                 for i in activity_config.get(1):
                     if i.get('id') == activity_id:
                         if i.get('parameterA') <= player.login_gift.cumulative_day[0]:
@@ -72,11 +72,17 @@ def get_login_gift(activity_id, activity_type, response, player):
                             get_return(player, return_data, response.gain)
                             res = True
                             err_no = 0
+                            flag = 0
                         else:
                             res = False
                             err_no = 802  # 条件没有达到
+                if flag:
+                    logger.error('get login gift activity_id non find ,activity id:%s', activity_id)
+                    res = False
+                    err_no = 800
 
             else:  # 未知错误,不是新手活动的情况，目前代码不应该走这里
+                logger.error('get login gift 不是新手活动，activity type:%s', activity_type)
                 res = False
                 err_no = 800
         else:
@@ -85,8 +91,6 @@ def get_login_gift(activity_id, activity_type, response, player):
     else:  # 连续登录奖励
         if player.login_gift.continuous_received.count(activity_id) == 0: # 未领取
             if player.login_gift.continuous_day[1]:  # 是新手活动
-                res = False
-                err_no = 800
                 for i in activity_config.get(2):
                     if i.get('id') == activity_id:
                         if i.get('parameterA') <= player.login_gift.continuous_day[0]:
@@ -96,11 +100,17 @@ def get_login_gift(activity_id, activity_type, response, player):
                             get_return(player, return_data, response.gain)
                             res = True
                             err_no = 0
+                            flag = 0
                         else:
                             res = False
                             err_no = 802  # 条件没有达到
+                if flag:
+                    logger.error('get login gift activity_id non find ,activity id:%s', activity_id)
+                    res = False
+                    err_no = 800
 
             else:  # 未知错误,不是新手活动的情况，目前代码不应该走这里
+                logger.error('get login gift 不是新手活动，activity type:%s', activity_type)
                 res = False
                 err_no = 800
         else:
