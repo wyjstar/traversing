@@ -366,7 +366,7 @@ def auto_travel_837(data, player):
     flag = 0
     if player.travel_component.auto.get(stage_id):
         for auto_travel in player.travel_component.auto.get(stage_id):
-            if base_config.get('autoTravel').get(auto_travel.get('continued_time')) != auto_travel.get('already_times'):
+            if base_config.get('autoTravel').get(auto_travel.get('continued_time'))[0] != auto_travel.get('already_times'):
                 flag = 1
             else:
                 for auto_travel_event in auto_travel.get('events'):
@@ -596,7 +596,7 @@ def get_travel_event_id():
         if flag <= x < weight:
             travel_event_id = event_id
             break
-        flag == weight
+        flag = weight
     return travel_event_id
 
 
