@@ -7,6 +7,7 @@ from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
 from app.proto_file.shop_pb2 import GetShopItemsResponse
 from shared.db_opear.configs_data.game_configs import shop_config
+from shared.db_opear.configs_data.game_configs import shop_type_config
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
@@ -53,7 +54,18 @@ def shop_oper(pro_data, player):
         response.res.result = False
         response.res.result_no = result.get('result_no')
         response.res.message = u'消费不足！'
-    return_data = consume(player, shop_item.consume)  # 消耗
+        return response.SerializeToString()
+
+    player_type_shop = player.get_shop_data(shop_item.get('type'))
+    if not player_type_shop:
+        response.res.result = False
+        logger.error('no type shop:%s', shop_item.get('type'))
+        return response.SerializeToString()
+
+    shop_type_item = shop_type_config.get(shop_item.get('type'))
+    # 消耗
+    return_data = consume(player, shop_item.consume,
+                          player_type_shop, shop_type_item)
     get_return(player, return_data, response.consume)
 
     return_data = gain(player, shop_item.gain)  # 获取
@@ -128,6 +140,7 @@ def shop_buy_505(pro_data, player):
 
     if shop_id in shop['item_ids']:
         shop['item_ids'].remove(shop_id)
+        shop['buyed_item_ids'].append(shop_id)
         player.shop.save_data()
     else:
         logger.debug("can not find shop id:%d:%d", shop_id, shop['item_ids'])
@@ -201,7 +214,10 @@ def get_shop_items_508(pro_data, player):
 
     for x in shopdata['item_ids']:
         response.id.append(x)
+    for x in shopdata['buyed_item_ids']:
+        response.buyed_id.append(x)
 
     logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
+    response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
     return response.SerializePartialToString()

@@ -97,17 +97,21 @@ def is_consume(player, shop_item):
     return True
 
 
-def consume(player, consume):
+def consume(player, consume, shop=None, luck_config=None):
     """消耗"""
     result = []
     type_id = consume.keys()[0]
     num, _, item_no = consume.values()[0]
     if type_id == const.COIN:
         player.finance.coin -= num
+        if shop and luck_config:
+            shop.luck_num += num * luck_config.get(type_id)
         player.finance.save_data()
 
     elif type_id == const.GOLD:
         player.finance.gold -= num
+        if shop and luck_config:
+            shop.luck_num += num * luck_config.get(type_id)
         player.finance.save_data()
 
     elif type_id == const.HERO_SOUL:

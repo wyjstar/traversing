@@ -36,15 +36,16 @@ class CharacterShopComponent(Component):
                 luck_day = localtime(v['luck_time']).tm_yday
                 if current_day != luck_day:
                     v['luck_time'] = time.time()
-                    v['luck_num'] = 0
+                    v['luck_num'] = 0.0
         else:
             for t, item in shop_type_config.items():
                 if item.itemNum > 0:
                     data = {}
                     data['item_ids'] = self.get_shop_item_ids(t, 0)
+                    data['buyed_item_ids'] = []
                     data['refresh_times'] = time.time()
                     data['last_refresh_time'] = time.time()
-                    data['luck_num'] = 0
+                    data['luck_num'] = 0.0
                     data['luck_time'] = time.time()
                     self._shop_data[t] = data
             data = dict(id=self.owner.base_info.id, shop=self._shop_data)
