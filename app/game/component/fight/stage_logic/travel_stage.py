@@ -15,9 +15,9 @@ class TravelStageLogic(base_stage.BaseStage):
         """校验关卡是否开启"""
         return {'result': True}
 
-    def get_stage_config(self, stage_id):
+    def get_stage_config(self):
         """docstring for stage_config"""
-        return stage_util.get_stage_config(stage_config, "travel_fight_stages", stage_id)
+        return stage_util.get_stage_config(stage_config, "travel_fight_stages", self._stage_id)
 
 
     def settle(self, result, response):
@@ -26,7 +26,7 @@ class TravelStageLogic(base_stage.BaseStage):
         """
         player = self._player
         stage_id = self._stage_id
-        #conf = self.get_stage_config(stage_id)
+        #conf = self.get_stage_config()
         if player.travel_component.fight_cache[0] and player.travel_component.fight_cache[1]:
             if player.travel_component.travel.get(player.travel_component.fight_cache[0]):
                 stage_cache = player.travel_component.travel.get(player.travel_component.fight_cache[0])

@@ -50,7 +50,7 @@ class CommonGroupItem():
 
     def __repr__(self):
         """docstring for __repr__fname"""
-        return "%s %s %s %s" % self._max_num, self._min_num, self._item_no, self._item_type
+        return "%s %s %s %s" % (self._max_num, self._min_num, self._item_no, self._item_type)
 
 
 if __name__ == '__main__':

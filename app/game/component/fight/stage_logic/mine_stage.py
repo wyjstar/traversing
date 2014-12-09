@@ -16,12 +16,12 @@ class MineStageLogic(base_stage.BaseStage):
         """校验关卡是否开启"""
         return {'result': True}
 
-    def get_stage_config(self, stage_id):
+    def get_stage_config(self):
         """get_stage_config"""
-        return stage_util.get_stage_config(special_stage_config, "elite_stages", stage_id)
+        return stage_util.get_stage_config(special_stage_config, "elite_stages", self._stage_id)
 
     def settle(self, result, response):
         """docstring for 结算"""
         player = self._player
         stage_id = self._stage_id
-        conf = self.get_stage_config(stage_id)
+        conf = self.get_stage_config()

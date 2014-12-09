@@ -16,7 +16,7 @@ class EliteStageLogic(base_stage.BaseStage):
     def check(self):
         """校验关卡是否开启"""
         player = self._player
-        conf = self._get_stage_config(self._stage_id)
+        conf = self.get_stage_config()
         tm_time = time.localtime(player.stage_component.elite_stage_info[1])
         if tm_time.tm_mday == time.localtime().tm_mday \
             and vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
@@ -24,15 +24,15 @@ class EliteStageLogic(base_stage.BaseStage):
             return {'result': False, 'result_no': 805}  # 805 次数不足
         return {'result': True}
 
-    def get_stage_config(self, stage_id):
+    def get_stage_config(self):
         """get_stage_config"""
-        return stage_util.get_stage_config(special_stage_config, "elite_stages", stage_id)
+        return stage_util.get_stage_config(special_stage_config, "elite_stages", self._stage_id)
 
     def settle(self, result, response):
         """docstring for 结算"""
         player = self._player
         stage_id = self._stage_id
-        conf = self.get_stage_config(stage_id)
+        conf = self.get_stage_config()
         tm_time = time.localtime(player.stage_component.elite_stage_info[1])
         if tm_time.tm_mday == time.localtime().tm_mday:
             player.stage_component.elite_stage_info[0] += conf.timesExpend

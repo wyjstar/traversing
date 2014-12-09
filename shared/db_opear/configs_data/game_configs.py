@@ -134,4 +134,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print soul_shop_config
+    print stage_config.get("stages").get(100101)

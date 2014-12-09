@@ -17,7 +17,7 @@ class StageLogic(base_stage.BaseStage):
         """校验关卡是否开启"""
         player = self._player
         stage_id = self._stage_id
-        conf = self.get_stage_config(self._stage_id)
+        conf = self.get_stage_config()
 
         state = player.stage_component.check_stage_state(self._stage_id)
         if state == -2:
@@ -38,8 +38,8 @@ class StageLogic(base_stage.BaseStage):
         战斗结算
         """
         player = self._player
-        stage_id = self._stage_it
-        conf = self.get_stage_config(stage_id)
+        stage_id = self._stage_id
+        conf = self.get_stage_config()
 
         # todo: 更新战斗次数
         # 体力

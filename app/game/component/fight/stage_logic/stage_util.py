@@ -13,8 +13,9 @@ def get_stage_config(stage_config, stage_type, stage_id):
     stage_type: travel_stages,travel_fight_stages,mine_stages, stages,
                 elite_stages,act_stages,boss_stages
     """
+    print type(stage_id), stage_id
     stage_info = stage_config.get(stage_type).get(stage_id)
-    assert stage_info==None, ("can not find stage info by stage id %s in %s" % (stage_id, stage_config.__class__))
+    assert stage_info!=None, ("can not find stage info by stage id %s in %s" % (stage_id, type(stage_config)))
     return stage_info
 
 def settle(player, result, response, lively_event, conf):
