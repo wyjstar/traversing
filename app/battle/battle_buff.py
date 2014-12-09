@@ -1,10 +1,13 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
-from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger_cal
 from execute_skill_buff import execute_demage, execute_pure_demage, execute_mp, execute_treat, check_block
+from random_with_seed import get_random_int
+
 
 class BuffManager(object):
     """docstring for BattleBuffManager"""
+
     def __init__(self, owner):
         super(BuffManager, self).__init__()
         self._owner = owner
@@ -14,10 +17,12 @@ class BuffManager(object):
         """
         add a buff.
         """
+        if not self.is_trigger(buff.skill_buff_info):
+            return
         buff.perform_buff(self._owner)
         if buff.continue_num == 0:
             return
-        logger.debug_cal("添加buff: %s" % buff.skill_buff_info.id)
+        logger_cal.debug("添加buff: %s" % buff.skill_buff_info.id)
         effect_id = buff.skill_buff_info.effectId
         if effect_id not in self._buffs:
             self._buffs[effect_id] = []
@@ -29,21 +34,35 @@ class BuffManager(object):
             if self._buffs[effect_id]:
                 temp = self._buffs[effect_id][0]
                 if temp.skill_buff_info.replace <= buff.skill_buff_info.replace:
-                    self._buffs[effect_id]=[buff]
+                    self._buffs[effect_id] = [buff]
             else:
                 self._buffs[effect_id].append(buff)
+
+    def perform_buff(self):
+        """
+        在回合开始时，使buff生效
+        """
+        for buffs in self._buffs.values():
+            for buff in buffs:
+                buff.perform_buff(self._owner)
+
+    def is_trigger(self, buff_info):
+        random_int = get_random_int(1, 99)
+        if random_int >= buff_info.triggerRate:
+            logger_cal.debug("技能: %s, 未触发,not trigger" % buff_info.id)
+            return False
+        return True
 
     def remove(self):
         """docstring for remove"""
         for k, value in self._buffs.items():
             temp = []
             for buff in value:
-                buff.perform_buff(self._owner)
                 buff.continue_num -= 1
                 if buff.continue_num > 0:
                     temp.append(buff)
                 else:
-                    logger.debug_cal("去除buff %s", buff.skill_buff_info.id)
+                    logger_cal.debug("去除buff %s", buff.skill_buff_info.id)
             self._buffs[k] = temp
 
     def get_buffed_dodge(self, dodge):
@@ -53,11 +72,11 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(16, [])
 
         for buff_info in temp_buffs:
-            dodge += self.get_buff_value(buff_info)
+            dodge += self.get_buff_value(dodge, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(17, [])
 
         for buff_info in temp_buffs:
-            dodge -= self.get_buff_value(buff_info)
+            dodge -= self.get_buff_value(dodge, buff_info.skill_buff_info)
         return dodge
 
     def get_buffed_atk(self, atk):
@@ -67,11 +86,11 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(6, [])
 
         for buff_info in temp_buffs:
-            atk += self.get_buff_value(buff_info)
+            atk += self.get_buff_value(atk, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(7, [])
 
         for buff_info in temp_buffs:
-            atk -= self.get_buff_value(buff_info)
+            atk -= self.get_buff_value(atk, buff_info.skill_buff_info)
         return atk
 
     def get_buffed_physical_def(self, physical_def):
@@ -81,11 +100,11 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(10, [])
 
         for buff_info in temp_buffs:
-            physical_def += self.get_buff_value(buff_info)
+            physical_def += self.get_buff_value(physical_def, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(11, [])
 
         for buff_info in temp_buffs:
-            physical_def -= self.get_buff_value(buff_info)
+            physical_def -= self.get_buff_value(physical_def, buff_info.skill_buff_info)
         return physical_def
 
     def get_buffed_magic_def(self, magic_def):
@@ -95,11 +114,11 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(12, [])
 
         for buff_info in temp_buffs:
-            magic_def += self.get_buff_value(buff_info)
+            magic_def += self.get_buff_value(magic_def, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(13, [])
 
         for buff_info in temp_buffs:
-            magic_def -= self.get_buff_value(buff_info)
+            magic_def -= self.get_buff_value(magic_def, buff_info.skill_buff_info)
         return magic_def
 
     def get_buffed_hit(self, hit):
@@ -109,11 +128,11 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(14, [])
 
         for buff_info in temp_buffs:
-            hit += self.get_buff_value(buff_info)
+            hit += self.get_buff_value(hit, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(15, [])
 
         for buff_info in temp_buffs:
-            hit -= self.get_buff_value(buff_info)
+            hit -= self.get_buff_value(hit, buff_info.skill_buff_info)
         return hit
 
     def get_buffed_cri(self, cri):
@@ -123,13 +142,13 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(18, [])
 
         for buff_info in temp_buffs:
-            cri += self.get_buff_value(buff_info)
+            cri += self.get_buff_value(cri, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(19, [])
 
         for buff_info in temp_buffs:
-            cri -= self.get_buff_value(buff_info)
+            cri -= self.get_buff_value(cri, buff_info.skill_buff_info)
 
-        #logger.debug_cal(str(cri)+"*"*60+("%s" % self._buffs))
+        #logger_cal.debug(str(cri)+"*"*60+("%s" % self._buffs))
         return cri
 
     def get_buffed_cri_coeff(self, cri_coeff):
@@ -139,7 +158,7 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(20, [])
 
         for buff_info in temp_buffs:
-            cri_coeff += self.get_buff_value(buff_info)
+            cri_coeff += self.get_buff_value(cri_coeff, buff_info.skill_buff_info)
 
         return cri_coeff
 
@@ -150,7 +169,7 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(21, [])
 
         for buff_info in temp_buffs:
-            cri_ded_coeff += self.get_buff_value(buff_info)
+            cri_ded_coeff += self.get_buff_value(cri_ded_coeff, buff_info.skill_buff_info)
 
         return cri_ded_coeff
 
@@ -161,11 +180,11 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(22, [])
 
         for buff_info in temp_buffs:
-            block += self.get_buff_value(buff_info)
+            block += self.get_buff_value(block, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(23, [])
 
         for buff_info in temp_buffs:
-            block -= self.get_buff_value(buff_info)
+            block -= self.get_buff_value(block, buff_info.skill_buff_info)
         return block
 
     def get_buffed_ductility(self, ductility):
@@ -175,14 +194,14 @@ class BuffManager(object):
         temp_buffs = self._buffs.get(28, [])
 
         for buff_info in temp_buffs:
-            ductility += self.get_buff_value(buff_info)
+            ductility += self.get_buff_value(ductility, buff_info.skill_buff_info)
         temp_buffs = self._buffs.get(29, [])
 
         for buff_info in temp_buffs:
-            ductility -= self.get_buff_value(buff_info)
+            ductility -= self.get_buff_value(ductility, buff_info.skill_buff_info)
         return ductility
 
-    def can_attack(self):
+    def is_dizzy(self):
         """
         can atk or not.
         """
@@ -191,14 +210,22 @@ class BuffManager(object):
 
         for buff_info in temp_buffs:
             return False
+        return temp
+
+    def is_slient(self):
+        """docstring for is_slient"""
         temp_buffs = self._buffs.get(25, [])
 
         for buff_info in temp_buffs:
-            return False
-        return temp
+            return True
+        return False
 
-    def get_buff_value(self, buff_info):
-        return buff_info.skill_buff_info.valueEffect + buff_info.skill_buff_info.levelEffectValue * self._owner.level
+
+    def get_buff_value(self, value, buff_info):
+        if buff_info.valueType == 1:
+            return buff_info.valueEffect + buff_info.levelEffectValue * self._owner.level
+        else:
+            return value * buff_info.valueEffect / 100 + buff_info.levelEffectValue * self._owner.level
 
 
     def __repr__(self):
@@ -210,6 +237,7 @@ class BuffManager(object):
 
 class Buff(object):
     """docstring for Buff"""
+
     def __init__(self, attacker, skill_buff_info, is_block=False):
         """
         before_or_not: 在主技能释放前，添加的buff为True，在此回合有效
@@ -237,7 +265,10 @@ class Buff(object):
 
     def perform_buff(self, owner):
         effect_id = self._skill_buff_info.effectId
-        if effect_id in [1,2]:
+        if effect_id in [1, 2, 3, 8, 9, 26]:
+            logger_cal.debug("执行buff %s" % self._skill_buff_info.id)
+
+        if effect_id in [1, 2]:
             block_or_not = False
             if self._skill_buff_info.skill_key == 1:
                 block_or_not = self._is_block
@@ -251,4 +282,5 @@ class Buff(object):
             execute_mp(owner, self._skill_buff_info)
         elif effect_id in [26]:
             execute_treat(self._attacker, owner, self._skill_buff_info)
+
 

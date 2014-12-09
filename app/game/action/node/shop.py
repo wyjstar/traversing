@@ -128,7 +128,7 @@ def shop_buy_505(pro_data, player):
 
     if shop_id in shop['item_ids']:
         shop['item_ids'].remove(shop_id)
-         player.shop.save_data()
+        player.shop.save_data()
     else:
         logger.debug("can not find shop id:%d:%d", shop_id, shop['item_ids'])
         common_response.result = False

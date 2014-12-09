@@ -80,16 +80,14 @@ def log_init(log_path):
     uh.setLevel(logging.CRITICAL)
     uh.setFormatter('%(message)s')
     # _logger.addHandler(uh)
-    _logger.debug_cal = debug_cal
+
 
 
 def log_init_debug_cal():
-
-    _logger = logging.getLogger(logger_name)
-    _logger.debug_cal = debug_cal
-
+    _logger = logging.getLogger(logger_name+"_cal")
+    _logger.setLevel(logging.DEBUG)
     cah = logging.FileHandler("tool/battle/output", mode="w")
-    cah.setLevel(DEBUG_CAL)
+    cah.setLevel(logging.DEBUG)
     _logger.addHandler(cah)
 
 
@@ -107,7 +105,12 @@ def log_init_only_out():
 
 
 logger = logging.getLogger(logger_name)
-
-
+logger_cal = logging.getLogger(logger_name+"_cal")
+# logger_cal.setLevel(logging.DEBUG)
+# log_init_debug_cal()
+#
+#
+# if __name__ == "__main__":
+#     logger_cal.debug("test")
 
 

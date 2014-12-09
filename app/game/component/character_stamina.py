@@ -8,6 +8,7 @@ from app.game.redis_mode import tb_character_info
 import time
 from shared.db_opear.configs_data.game_configs import base_config
 from gfirefly.server.logobj import logger
+import datetime
 
 
 class CharacterStaminaComponent(Component):
@@ -20,9 +21,9 @@ class CharacterStaminaComponent(Component):
         self._get_stamina_times = 0  # 通过邮件获取体力次数
         self._buy_stamina_times = 0  # 购买体力次数
         self._last_gain_stamina_time = 0  # 上次获取体力时间
+        self._last_mail_day = '' #上次通过邮件获取的体力的日期-周期
 
     def init_stamina(self, stamina_data):
-        logger.debug(str(stamina_data) + ", stamina+++++++++++++++++")
         if stamina_data:
             self._stamina = stamina_data.get('stamina')
             self._open_receive = stamina_data.get('open_receive')
@@ -31,6 +32,7 @@ class CharacterStaminaComponent(Component):
             self._get_stamina_times = stamina_data.get('get_stamina_times')
             self._buy_stamina_times = stamina_data.get('buy_stamina_times')
             self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
+            self._last_mail_day = stamina_data.get('last_mail_day', '')
 
             # 初始化体力
             current_time = int(time.time())
@@ -55,6 +57,7 @@ class CharacterStaminaComponent(Component):
             'get_stamina_times': self._get_stamina_times,
             'buy_stamina_times': self._buy_stamina_times,
             'last_gain_stamina_time': self._last_gain_stamina_time,
+            'last_mail_day':self._last_mail_day,
         }
 
     @property
@@ -92,6 +95,11 @@ class CharacterStaminaComponent(Component):
     @property
     def get_stamina_times(self):
         """邮件中获取赠送体力次数"""
+        date_now = datetime.datetime.now().date()
+        if self._last_mail_day != date_now:
+            self._last_mail_day = date_now
+            self._get_stamina_times = 0
+            
         return self._get_stamina_times
 
     @get_stamina_times.setter
