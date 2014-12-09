@@ -133,6 +133,7 @@ message MineGuardRequest
 {
     required int32 pos = 1;                    // 矿在地图上的位置
     repeated MineLineUpSlot line_up_slots = 2; // 阵容
+    optional int32 best_skill_id = 3;          // 无双id
 }
 //秘境相关，卡牌位
 message MineLineUpSlot
@@ -148,9 +149,14 @@ message MineEquipmentSlot
     required int32 equipment_id = 2; // 装备ID
 }
 
-//秘境相关，pve战斗开始, command:1246
+//秘境相关，pve战斗开始, command:903
 //请求 StageStartRequest
 //返回 StageStartResponse
+
 //秘境相关，pvp战斗开始, command:1251
 //请求 PvpFightRequest
 //返回 PvpFightResponse
+
+//秘境相关， 战斗结算, command: 1252
+//请求 
+//返回 CommonResponse 或者自己定义协议

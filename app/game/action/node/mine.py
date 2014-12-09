@@ -156,6 +156,8 @@ def guard_1244(data, player):
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
     pos = request.pos  # 矿在地图上所在位置
+    __skill = request.best_skill_id
+    __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
     #构造阵容组件
     character_line_up = CharacterLineUpComponent(player)
@@ -176,16 +178,16 @@ def guard_1244(data, player):
 
     info = {}
     info["battle_units"] = battle_units
-    info["best_skill"] = 10001
-    info["best_skill_level"] = 2
+    info["best_skill_id"] = __skill
+    info["best_skill_no"] = __best_skill_no
+    info["best_skill_level"] = __skill_level
     info["level"] = player.level.level
     info["nickname"] = player.base_info.nickname
     info["character_id"] = player.base_info.id
 
 
     str_line_up_data = cPickle.dumps(info) #序列化的阵容信息
-    print "*"*80, "battle units"
-    print battle_units
+    # todo: 保存信息
 
 def add_stones(player, stones, response):
     response.res.result = True
@@ -220,8 +222,33 @@ def harvest_1245(data, player):
 def battle_1246(data, player):
     """
     攻占怪物驻守的矿点
+    1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
+    2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
     """
-    return stage_start(data, player)
+    request = pvp_rank_pb2.PvpFightRequest()
+    request.ParseFromString(data)
+    __skill = request.skill
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    save_line_up_order(request.lineup, player)
+
+    record = {}
+    #todo: 获取驻守数据
+    blue_units = record.get('units')
+    # print "blue_units:", blue_units
+    blue_units = cPickle.loads(blue_units)
+    # print "blue_units:", blue_units
+    red_units = player.fight_cache_component.red_unit
+    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
+                               record.get('best_skill_no', 0), record.get('level', 1))
+    fight_result = process.process()
+
+    logger.debug("fight result:%s" % fight_result)
+
+    response = pvp_rank_pb2.PvpFightResponse()
+    response.res.result = True
+    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
+            record.get("best_skill_id"), record.get("best_skill_level"), response)
+    return response.SerializeToString()
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):
@@ -343,34 +370,3 @@ def acc_mine_1250(data, player):
     response.position = 0
     response.last_time = last_time
     return response.SerializePartialToString()
-
-
-@remoteserviceHandle('gate')
-def battle_1251(data, player):
-    """
-    攻占玩家驻守的矿点:pvp
-    """
-    request = pvp_rank_pb2.PvpFightRequest()
-    request.ParseFromString(data)
-    __skill = request.skill
-    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(request.lineup, player)
-
-    record = {}
-    #todo: 获取蓝方数据
-    blue_units = record.get('units')
-    # print "blue_units:", blue_units
-    blue_units = cPickle.loads(blue_units)
-    # print "blue_units:", blue_units
-    red_units = player.fight_cache_component.red_unit
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-                               record.get('best_skill', 0), record.get('level', 1))
-    fight_result = process.process()
-
-    logger.debug("fight result:%s" % fight_result)
-
-    response = pvp_rank_pb2.PvpFightResponse()
-    response.res.result = True
-    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
-            record.get("unpar_skill"), record.get("unpar_skill_level"), response)
-    return response.SerializeToString()
