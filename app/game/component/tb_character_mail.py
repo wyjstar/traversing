@@ -6,6 +6,7 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_mail_info
 from app.game.core.mail import Mail
 from shared.utils.pyuuid import get_uuid
+from shared.db_opear.configs_data.game_configs import base_config
 
 
 class CharacterMailComponent(Component):
@@ -48,7 +49,7 @@ class CharacterMailComponent(Component):
         """添加邮件"""
         if mail_type == 1:  # 领取体力邮件不能超过15个
             mails = self.get_mails_by_type(1)
-            if len(mails) == 15:
+            if len(mails) >= 30:#base_config['times_save_vigor']:
                 return
 
         mail_id = get_uuid()
