@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from shared.db_opear.configs_data.game_configs import stage_config
-from shared.db_opear.config_data import game_configs
+from shared.db_opear.configs_data import game_configs
 from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain

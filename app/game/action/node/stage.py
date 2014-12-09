@@ -19,7 +19,7 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.redis_mode import tb_character_lord
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
-from app.game.component.fight import stage_util
+from app.game.component.fight.stage_factory import get_stage_by_stage_type
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -90,7 +90,7 @@ def stage_start_903(pro_data, player):
             continue
         line_up[line.hero_id] = line.pos
 
-    stage = stage_util.get_stage_by_stage_type(request.stage_type, stage_id, player)
+    stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     stage_info = fight_start(stage, line_up, unparalleled, fid, player)
     result = stage_info.get('result')
 
@@ -147,7 +147,7 @@ def fight_settlement_904(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     result = request.result
-    stage = stage_util.get_stage_by_stage_type(request.stage_type, stage_id, player)
+    stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
 
     return res

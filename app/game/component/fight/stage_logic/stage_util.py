@@ -3,11 +3,7 @@
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
-from app.game.component.fight.stage import StageLogic
-from app.game.component.fight.elite_stage import EliteStageLogic
-from app.game.component.fight.act_stage import ActStageLogic
-from app.game.component.fight.travel_stage import TravelStageLogic
-from app.game.component.fight.mine_stage import MineStageLogic
+
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -48,23 +44,4 @@ def settle(player, result, response, lively_event, conf):
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
 
-# 关卡类型:1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
-COMMON_STAGE = 1
-ELITE_STAGE = 2
-ACT_STAGE = 3
-TRAVEL_STAGE = 4
-MINE_STAGE = 5
 
-def get_stage_by_stage_type(stage_type, stage_id, player):
-    """根据关卡类型返回对应的关卡对象"""
-    if stage_type == COMMON_STAGE:
-        return StageLogic(player, stage_id)
-    elif stage_type == ELITE_STAGE:
-        return EliteStageLogic(player, stage_id)
-    elif stage_type == ACT_STAGE:
-        return ActStageLogic(player, stage_id)
-    elif stage_type == TRAVEL_STAGE:
-        return TravelStageLogic(player, stage_id)
-    elif stage_type == MINE_STAGE:
-        return MineStageLogic(player, stage_id)
-    assert False, "stage type %s not defined." % stage_type
