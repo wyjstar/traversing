@@ -56,7 +56,6 @@ def is_afford(player, group_item):
 
 def is_consume(player, shop_item):
     """判断是否免费抽取"""
-    print shop_item
     free_period = shop_item.freePeriod
     shop_item_type = shop_item.type
     if free_period == -1:
@@ -102,16 +101,17 @@ def consume(player, consume, shop=None, luck_config=None):
     result = []
     type_id = consume.keys()[0]
     num, _, item_no = consume.values()[0]
+    luckValue = luck_config.luckyValue
     if type_id == const.COIN:
         player.finance.coin -= num
-        if shop and luck_config:
-            shop.luck_num += num * luck_config.get(type_id)
+        if shop and luckValue:
+            shop['luck_num'] += num * luckValue.get(type_id)
         player.finance.save_data()
 
     elif type_id == const.GOLD:
         player.finance.gold -= num
-        if shop and luck_config:
-            shop.luck_num += num * luck_config.get(type_id)
+        if shop and luckValue:
+            shop['luck_num'] += num * luckValue.get(type_id)
         player.finance.save_data()
 
     elif type_id == const.HERO_SOUL:

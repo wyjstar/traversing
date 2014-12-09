@@ -39,15 +39,15 @@ class CharacterShopComponent(Component):
                     v['luck_num'] = 0.0
         else:
             for t, item in shop_type_config.items():
+                data = {}
+                data['buyed_item_ids'] = []
+                data['refresh_times'] = time.time()
+                data['last_refresh_time'] = time.time()
+                data['luck_num'] = 0.0
+                data['luck_time'] = time.time()
                 if item.itemNum > 0:
-                    data = {}
                     data['item_ids'] = self.get_shop_item_ids(t, 0)
-                    data['buyed_item_ids'] = []
-                    data['refresh_times'] = time.time()
-                    data['last_refresh_time'] = time.time()
-                    data['luck_num'] = 0.0
-                    data['luck_time'] = time.time()
-                    self._shop_data[t] = data
+                self._shop_data[t] = data
             data = dict(id=self.owner.base_info.id, shop=self._shop_data)
             print data
             tb_character_shop.new(data)
@@ -67,7 +67,17 @@ class CharacterShopComponent(Component):
         if t not in self._shop_data:
             logger.error('err shop type:%s', t)
             return None
-        return self._shop_data[t]
+
+        v = self._shop_data[t]
+        current_date_time = int(time.time())
+        if current_date_time >= v['last_refresh_time']:
+            v['refresh_times'] = 0
+        current_day = localtime(current_date_time).tm_yday
+        luck_day = localtime(v['luck_time']).tm_yday
+        if current_day != luck_day:
+            v['luck_time'] = time.time()
+            v['luck_num'] = 0.0
+        return v
 
     def refresh_price(self, shop_type):
         shop_item = shop_type_config.get(shop_type)
