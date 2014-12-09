@@ -578,7 +578,10 @@ def update_auto(player, up_type):
                     # 掉落
                     drops = get_drops(stage_id)
                     if travel_event_config.get('events').get(travel_event_id).type == 1:
-                        the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1) + one_auto.get('start_time')
+                        if up_type == 2:
+                            the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1) + one_auto.get('start_time')
+                        else:
+                            the_time = int(time.time())
 
                         one_auto.get('events').append([res_travel_event_id, drops, the_time])
                     else:
