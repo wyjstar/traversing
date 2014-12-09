@@ -3,7 +3,7 @@
 """
 通过技能的作用位置，找到作用对象。
 """
-from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger_cal
 import random
 
 def single_attack(value, attacker, target_units):
@@ -88,56 +88,32 @@ def get_random_int(start, end):
 def hp_max_attack(value, attacker, target_units):
     target_units_lst = target_units.values()
     target_units_lst = sorted(target_units_lst, key=lambda unit: unit.hp_percent, reverse=True)
-    hp_units = []
-
-    for i in range(len(target_units)):
-        unit = target_units_lst[i]
-        if bool(unit):
-            hp_units.append(unit)
-        if len(hp_units) == value:
-            return hp_units
-    return hp_units
+    logger_cal.debug("hp百分比最多：")
+    logger_cal.debug("%s" % target_units_lst)
+    return target_units_lst[:value]
 
 def hp_min_attack(value, attacker, target_units):
     target_units_lst = target_units.values()
     target_units_lst = sorted(target_units_lst, key=lambda unit: unit.hp_percent)
-    hp_units = []
-
-    for i in range(len(target_units)):
-        unit = target_units_lst[i]
-        if bool(unit):
-            hp_units.append(unit)
-        if len(hp_units) == value:
-            return hp_units
-    return hp_units
+    logger_cal.debug("hp百分比最少：")
+    logger_cal.debug("%s" % target_units_lst)
+    return target_units_lst[:value]
 
 
 def mp_max_attack(value, attacker, target_units):
     target_units_lst = target_units.values()
     target_units_lst = sorted(target_units_lst, key=lambda unit: unit.mp, reverse=True)
-    mp_units = []
-
-    for i in range(len(target_units)):
-        unit = target_units_lst[i]
-        if bool(unit):
-            mp_units.append(unit)
-        if len(mp_units) == value:
-            return mp_units
-    return mp_units
+    logger_cal.debug("mp最多：")
+    logger_cal.debug("%s" % target_units_lst)
+    return target_units_lst[:value]
 
 
 def mp_min_attack(value, attacker, target_units):
     target_units_lst = target_units.values()
     target_units_lst = sorted(target_units_lst, key=lambda unit: unit.mp)
-    mp_units = []
-
-    for i in range(len(target_units)):
-        unit = target_units_lst[i]
-        if bool(unit):
-            mp_units.append(unit)
-        if len(mp_units) == value:
-            return mp_units
-    return mp_units
+    logger_cal.debug("mp最少：")
+    logger_cal.debug("%s" % target_units_lst)
+    return target_units_lst[:value]
 
 def self_attack(value, attacker, target_units):
     return [attacker]
@@ -150,13 +126,13 @@ target_types = {
         4: back_attack,        # 后排攻击
         5: vertical_attack,    # 竖排攻击
         6: random_attack,      # 随机攻击
-        7: hp_max_attack,      # 血量百分比最大攻击
-        8: hp_min_attack,      # 血量百分比最小攻击
-        9: mp_max_attack,      # 怒气最大攻击
-        10: mp_min_attack,     # 怒气最小攻击
+        7: hp_min_attack,      # 血量百分比最大攻击
+        8: hp_max_attack,      # 血量百分比最小攻击
+        9: mp_min_attack,      # 怒气最大攻击
+        10: mp_max_attack,     # 怒气最小攻击
         11: self_attack}       # 自己
 
-def find_target_units(attacker, army, enemy, skill_buff_info, main_target_units, target=None):
+def find_target_units(attacker, army, enemy, skill_buff_info, main_target_units=None, target=None):
     """
     根据作用位置找到作用武将。
     """

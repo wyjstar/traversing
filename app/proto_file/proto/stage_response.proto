@@ -30,6 +30,8 @@ message StageStartResponse{
 	optional int32 replace_no = 11;
 	repeated BattleUnit awake = 12; //
 	repeated int32 awake_no = 13;
+	optional int32 seed1= 14;
+	optional int32 seed2= 15;
 }
 
 // 关卡结算返回 command:904

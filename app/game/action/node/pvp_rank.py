@@ -149,6 +149,8 @@ def pvp_fight_request_1505(data, player):
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
+    player.fight_cache_component.awake_hero_units(blue_units)
+    player.fight_cache_component.awake_hero_units(red_units)
 
     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
                                record.get('best_skill', 0), record.get('level', 1))

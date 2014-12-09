@@ -16,6 +16,8 @@ class StageConfig(object):
         self._condition_mapping = {}  # 开启条件 {'开启条件关卡编号'：['开启关卡编号']}
         self._activity_stages = {}  # 活动关卡
         self._travel_stages= []
+        self._travel_fight_stages = {} # 战斗事件关卡
+        self._mine_stages = {} # 秘境矿
 
     def parser(self, config_value):
         for row in config_value:
@@ -33,11 +35,14 @@ class StageConfig(object):
                     self._condition_mapping.setdefault(item.condition, []).append(item.id)
 
             if item.sort == 10:
-                self._stages[item.id] = item
+                self._travel_fight_stages[item.id] = item
 
             if item.sort == 9:
                 self._travel_stages.append(item.id)
                 self._stages[item.id] = item
+
+            if item.sort == 8:
+                self._mine_stages[item.id] = item
 
         for stage_id, stage in self._stages.items():
             if stage.chapter == 1 and stage.section == 1 and stage.type == 1:  # 第一章第一节难度普通
@@ -45,4 +50,5 @@ class StageConfig(object):
 
         return {'stages': self._stages, 'first_stage_id': self._first_stage_id, 'chapter_ids': list(self._chapter_ids),
                 'condition_mapping': self._condition_mapping, 'activity_stages': self._activity_stages,
-                'travel_stages': self._travel_stages}
+                'travel_stages': self._travel_stages, 'travel_fight_stages': self._travel_fight_stages,
+                'mine_stages': self._mine_stages}

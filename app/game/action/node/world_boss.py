@@ -23,6 +23,15 @@ remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def get_before_fight_1701(data, player):
+    return get_fight_info(player)
+
+
+@remoteserviceHandle('gate')
+def get_after_fight_1706(data, player):
+    return get_fight_info(player)
+
+
+def get_fight_info(player):
     """
     获取世界boss开战前的信息：
     1. 关卡id
@@ -244,4 +253,8 @@ def pvb_fight_start_1705(pro_data, player):
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     return response.SerializePartialToString()
+
+
+
+
 

@@ -1,8 +1,12 @@
-# -*- coding:utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """
-created by server on 14-7-30下午5:16.
+get random with seed.
 """
+
 import math
+import random
 
 
 def bsd_rand(X1, X2):
@@ -22,16 +26,20 @@ def bsd_rand(X1, X2):
     rand.X2 = X2
     return rand
 
+rand = None
+def init(X1, X2):
+    global rand
+    rand = bsd_rand(X1, X2)
+
+def get_random_int(start, end):
+    """docstring for get_random_int"""
+    return random.randint(start, end)
+
+
 
 if __name__ == '__main__':
-    rand_test = bsd_rand(2.0, 3.0)
-    map_rand = {}
-    for i in range(10000):
-        r = int(rand_test() * 100)
-        if r in map_rand:
-            map_rand[r] += 1
-        else:
-            map_rand[r] = 1
+    init(1.0, 2.0)
+    print rand()
 
-    for k, v in map_rand.items():
-        print k, v
+
+
