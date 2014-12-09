@@ -36,21 +36,21 @@ const.ITEM_EQUIP = 102  # 装备类型
 
 const.LINE_UP_INDEX = [1, 2, 3, 4, 5, 6]  # 阵容编号
 
-const.COIN = 1
-const.GOLD = 2
-const.HERO_SOUL = 3
-const.JUNIOR_STONE = 4
-const.MIDDLE_STONE = 5
-const.HIGH_STONE = 6
-const.STAMINA = 7
-const.PVP = 8
-const.HERO = 101
-const.HERO_CHIP = 103
-const.EQUIPMENT = 102
-const.EQUIPMENT_CHIP = 104
-const.ITEM = 105
-const.BIG_BAG = 106
-const.TRAVEL_ITEM = 109
+const.COIN = '1'
+const.GOLD = '2'
+const.HERO_SOUL = '3'
+const.JUNIOR_STONE = '4'
+const.MIDDLE_STONE = '5'
+const.HIGH_STONE = '6'
+const.STAMINA = '7'
+const.PVP = '8'
+const.HERO = '101'
+const.HERO_CHIP = '103'
+const.EQUIPMENT = '102'
+const.EQUIPMENT_CHIP = '104'
+const.ITEM = '105'
+const.BIG_BAG = '106'
+const.TRAVEL_ITEM = '109'
 # 1：金币
 # 2：充值币
 # 3：武魂

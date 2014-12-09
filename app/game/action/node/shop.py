@@ -9,7 +9,7 @@ from app.proto_file.shop_pb2 import GetShopItemsResponse
 from shared.db_opear.configs_data.game_configs import shop_config
 from shared.db_opear.configs_data.game_configs import shop_type_config
 from app.game.core.item_group_helper import is_afford
-from app.game.core.item_group_helper import is_consume
+# from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
@@ -49,7 +49,7 @@ def shop_oper(pro_data, player):
     shop_id = request.id
     shop_item = shop_config.get(shop_id)
 
-    result = is_afford(player, shop_item)  # 校验
+    result = is_afford(player, shop_item.consume)  # 校验
     if not result.get('result'):
         response.res.result = False
         response.res.result_no = result.get('result_no')
@@ -88,7 +88,7 @@ def shop_equipment_oper(pro_data, player):
     shop_num = request.num
     shop_item = shop_config.get(shop_id)
 
-    if shop_num == 1 and not is_consume(player, shop_item):
+    if shop_num == 1: #  and not is_consume(player, shop_item):
         # 免费抽取
         return_data = gain(player, shop_item.gain)  # 获取
         extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
@@ -98,7 +98,7 @@ def shop_equipment_oper(pro_data, player):
     # 多装备抽取
     elif shop_num >= 1:
         for i in range(shop_num):
-            result = is_afford(player, shop_item)  # 校验
+            result = is_afford(player, shop_item.consume)  # 校验
             if not result.get('result'):
                 response.res.result = False
                 response.res.result_no = 101
@@ -148,7 +148,7 @@ def shop_buy_505(pro_data, player):
         common_response.result_no = 501
         return response.SerializeToString()
 
-    result = is_afford(player, shop_item)  # 校验
+    result = is_afford(player, shop_item.consume)  # 校验
     if not result.get('result'):
         common_response.result = False
         common_response.result_no = result.get('result_no')
