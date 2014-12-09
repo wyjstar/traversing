@@ -49,14 +49,14 @@ def shop_oper(pro_data, player):
     shop_id = request.id
     shop_item = shop_config.get(shop_id)
 
-    result = is_afford(player, shop_item.consume)  # 校验
+    result = is_afford(player, shop_item)  # 校验
     if not result.get('result'):
         response.res.result = False
         response.res.result_no = result.get('result_no')
         response.res.message = u'消费不足！'
         return response.SerializeToString()
 
-    player_type_shop = player.get_shop_data(shop_item.get('type'))
+    player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
     if not player_type_shop:
         response.res.result = False
         logger.error('no type shop:%s', shop_item.get('type'))
@@ -98,7 +98,7 @@ def shop_equipment_oper(pro_data, player):
     # 多装备抽取
     elif shop_num >= 1:
         for i in range(shop_num):
-            result = is_afford(player, shop_item.consume)  # 校验
+            result = is_afford(player, shop_item)  # 校验
             if not result.get('result'):
                 response.res.result = False
                 response.res.result_no = 101

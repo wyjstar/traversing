@@ -14,7 +14,7 @@ import time
 
 
 @remoteserviceHandle('gate')
-def arene_shop_1510(pro_data, player):
+def arene_shop_1510_(pro_data, player):
     """武魂商店"""
     request = arena_shop_pb2.ArenaShopRequest()
     request.ParseFromString(pro_data)
@@ -53,7 +53,7 @@ def arene_shop_1510(pro_data, player):
 
 
 @remoteserviceHandle('gate')
-def refresh_shop_items_1511(data, player):
+def refresh_shop_items_1511_(data, player):
     """刷新商品列表"""
     shop = arena_shop_pb2.ArenaGetShopItemsResponse()
     # max_shop_refresh_times = player.vip_component.shop_refresh_times
@@ -94,7 +94,7 @@ def refresh_shop_items_1511(data, player):
 
 
 @remoteserviceHandle('gate')
-def get_shop_items_1512(player):
+def get_shop_items_1512_(player):
     """获取商品列表"""
     shop = arena_shop_pb2.ArenaGetShopItemsResponse()
     logger.debug("get_shop_items1")
