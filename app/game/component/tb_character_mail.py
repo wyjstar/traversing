@@ -49,7 +49,7 @@ class CharacterMailComponent(Component):
         """添加邮件"""
         if mail_type == 1:  # 领取体力邮件不能超过15个
             mails = self.get_mails_by_type(1)
-            if len(mails) >= 30:#base_config['times_save_vigor']:
+            if len(mails) >= base_config['times_save_vigor']:
                 return
 
         mail_id = get_uuid()
