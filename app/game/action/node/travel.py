@@ -590,10 +590,10 @@ def update_auto(player, up_type):
 
 def get_travel_event_id():
     travel_event_id = None
-    x = random.randint(0, travel_event_config.get('weight')[-1][1])
+    x = random.randint(1, travel_event_config.get('weight')[-1][1])
     flag = 0
     for [event_id, weight] in travel_event_config.get('weight'):
-        if flag <= x < weight:
+        if flag < x <= weight:
             travel_event_id = event_id
             break
         flag = weight
