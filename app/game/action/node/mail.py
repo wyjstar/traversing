@@ -142,13 +142,15 @@ def read_mail(mail_ids, mail_type, player):
             return response.SerializePartialToString()
         
         
-        player.stamina.add_stamina(len(mail_ids)*2)
+        #player.stamina.add_stamina(len(mail_ids)*2)
+        get_prize(player, mail_ids, response)
         last_times = player.stamina.get_stamina_times
         player.stamina.get_stamina_times = last_times + len(mail_ids)
         player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
         response.target = base_config['times_get_vigor_from_friend']
         response.current = player.stamina.get_stamina_times
+        response.mail_type = mail_type
 
     elif mail_type == 2:
         # 领取奖励
@@ -160,6 +162,7 @@ def read_mail(mail_ids, mail_type, player):
         player.mail_component.delete_mails(mail_ids)
 
     response.res.result = True
+    print response
     return response.SerializePartialToString()
 
 

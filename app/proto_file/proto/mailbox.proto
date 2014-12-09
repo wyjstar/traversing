@@ -39,6 +39,7 @@ message ReadMailResponse
     optional GameResourcesResponse gain = 2;
     optional int32 target = 3;
     optional int32 current = 4;
+    optional int32 mail_type = 5;
 }
 
 //删除邮件, command : 1303
