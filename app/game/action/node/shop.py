@@ -4,12 +4,16 @@ created by server on 14-7-9下午2:39.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
+from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
+from app.proto_file.shop_pb2 import GetShopItemsResponse
 from shared.db_opear.configs_data.game_configs import shop_config
+from shared.db_opear.configs_data.game_configs import shop_type_config
 from app.game.core.item_group_helper import is_afford
+# from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
-import time
+from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
@@ -36,12 +40,6 @@ def buy_gift_pack_504(pro_data, player):
     return shop_oper(pro_data, player)
 
 
-@remoteserviceHandle('gate')
-def get_shop_items_505(pro_data, player):
-    """获取商品列表"""
-    pass
-
-
 def shop_oper(pro_data, player):
     """商城所有操作"""
     request = ShopRequest()
@@ -51,15 +49,25 @@ def shop_oper(pro_data, player):
     shop_id = request.id
     shop_item = shop_config.get(shop_id)
 
-    if is_consume(player, shop_item):
-        # 判断是否消耗
-        result = is_afford(player, shop_item.consume)  # 校验
-        if not result.get('result'):
-            response.res.result = False
-            response.res.result_no = result.get('result_no')
-            response.res.message = u'消费不足！'
-        return_data = consume(player, shop_item.consume)  # 消耗
-        get_return(player, return_data, response.consume)
+    result = is_afford(player, shop_item.consume)  # 校验
+    if not result.get('result'):
+        response.res.result = False
+        response.res.result_no = result.get('result_no')
+        response.res.message = u'消费不足！'
+        return response.SerializeToString()
+
+    player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
+    if not player_type_shop:
+        response.res.result = False
+        logger.error('no type shop:%s', shop_item.get('type'))
+        return response.SerializeToString()
+
+    shop_type_item = shop_type_config.get(shop_item.get('type'))
+    # 消耗
+    return_data = consume(player, shop_item.consume,
+                          player_type_shop, shop_type_item)
+    get_return(player, return_data, response.consume)
+
     return_data = gain(player, shop_item.gain)  # 获取
     extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
 
@@ -80,7 +88,7 @@ def shop_equipment_oper(pro_data, player):
     shop_num = request.num
     shop_item = shop_config.get(shop_id)
 
-    if shop_num == 1 and not is_consume(player, shop_item):
+    if shop_num == 1: #  and not is_consume(player, shop_item):
         # 免费抽取
         return_data = gain(player, shop_item.gain)  # 获取
         extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
@@ -111,43 +119,107 @@ def shop_equipment_oper(pro_data, player):
     return response.SerializeToString()
 
 
-def is_consume(player, shop_item):
-    """判断是否免费抽取"""
-    free_period = shop_item.freePeriod
-    shop_item_type = shop_item.type
-    if free_period == -1:
-        return True
+@remoteserviceHandle('gate')
+def shop_buy_505(pro_data, player):
+    """商店"""
+    request = ShopRequest()
+    request.ParseFromString(pro_data)
+    response = ShopResponse()
+    common_response = response.res
+    shop_id = request.id
 
-    last_pick_time = 0
-    if shop_item_type == 1 and free_period > 0:
-        # 单抽良将
-        last_pick_time = player.last_pick_time.fine_hero
-    elif shop_item_type == 5 and free_period > 0:
-        # 单抽神将
-        last_pick_time = player.last_pick_time.excellent_hero
-    elif shop_item_type == 2:
-        # 单抽良装
-        last_pick_time = player.last_pick_time.fine_equipment
-    elif shop_item_type == 6:
-        # 单抽神装
-        last_pick_time = player.last_pick_time.excellent_equipment
+    logger.info("shop id:%s", shop_id)
+    shop_item = shop_config.get(shop_id)
+    if not shop_item:
+        common_response.result = False
+        common_response.result_no = 911
+        logger.info('error shop id:%s', shop_id)
+        return response.SerializeToString()
 
-    if last_pick_time + free_period*60*60 <= int(time.time()):
-        # 抽取后重置时间
-        if shop_item_type == 1:
-            # 单抽良将
-            player.last_pick_time.fine_hero = int(time.time())
-        elif shop_item_type == 5:
-            # 单抽神将
-            player.last_pick_time.excellent_hero = int(time.time())
-        elif shop_item_type == 2:
-            # 单抽良装
-            player.last_pick_time.fine_equipment = int(time.time())
-        elif shop_item_type == 6:
-            # 单抽神装
-            player.last_pick_time.excellent_equipment = int(time.time())
+    shop = player.shop.get_shop_data(shop_item.get('type'))
 
-        player.last_pick_time.save_data()
-        return False
+    if shop_id in shop['item_ids']:
+        shop['item_ids'].remove(shop_id)
+        shop['buyed_item_ids'].append(shop_id)
+        player.shop.save_data()
+    else:
+        logger.debug("can not find shop id:%d:%d", shop_id, shop['item_ids'])
+        common_response.result = False
+        common_response.result_no = 501
+        return response.SerializeToString()
 
-    return True
+    result = is_afford(player, shop_item.consume)  # 校验
+    if not result.get('result'):
+        common_response.result = False
+        common_response.result_no = result.get('result_no')
+        common_response.message = u'消费不足！'
+        logger.info('not enough money')
+        return response.SerializeToString()
+
+    shop_type_item = shop_type_config.get(shop_item.get('type'))
+    consume_return_data = consume(player, shop_item.consume,
+                                  shop, shop_type_item)  # 消耗
+
+    return_data = gain(player, shop_item.gain)  # 获取
+    get_return(player, consume_return_data, response.consume)
+    get_return(player, return_data, response.gain)
+
+    common_response.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def refresh_shop_items_507(pro_data, player):
+    """刷新商品列表"""
+    request = RefreshShopItems()
+    request.ParseFromString(pro_data)
+    shop_type = request.shop_type
+
+    response = GetShopItemsResponse()
+    # max_shop_refresh_times = player.vip_component.shop_refresh_times
+
+    # cancel vip temprory
+    # if max_shop_refresh_times <= player.soul_shop.refresh_times:
+    # logger.debug("already reach refresh max!")
+    #     response.res.result = False
+    #     response.res.result_no = 501
+    #     return response.SerializePartialToString()
+
+    price = player.shop.price
+    if player.finance.gold < price:
+        logger.debug("gold not enough!")
+        response.res.result = False
+        response.res.result_no = 101
+        return response.SerializePartialToString()
+
+    response.res.result = player.shop.refresh_items(shop_type)
+    if response.res.result:
+        player.finance.gold -= price
+        logger.debug("refresh price:" + str(price))
+
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_shop_items_508(pro_data, player):
+    """获取商品列表"""
+    request = GetShopItems()
+    request.ParseFromString(pro_data)
+    shop_type = request.shop_type
+
+    response = GetShopItemsResponse()
+    shopdata = player.shop.get_shop_data(shop_type)
+
+    if not shopdata:
+        response.res.result = False
+        return response.SerializePartialToString()
+
+    for x in shopdata['item_ids']:
+        response.id.append(x)
+    for x in shopdata['buyed_item_ids']:
+        response.buyed_id.append(x)
+
+    logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
+    response.luck_num = int(shopdata['luck_num'])
+    response.res.result = True
+    return response.SerializePartialToString()

@@ -36,20 +36,21 @@ const.ITEM_EQUIP = 102  # 装备类型
 
 const.LINE_UP_INDEX = [1, 2, 3, 4, 5, 6]  # 阵容编号
 
-const.TRAVEL_ITEM = u'109'
-const.COIN = u'1'
-const.GOLD = u'2'
-const.HERO_SOUL = u'3'
-const.JUNIOR_STONE = u'4'
-const.MIDDLE_STONE = u'5'
-const.HIGH_STONE = u'6'
-const.STAMINA = u'7'
-const.HERO = u'101'
-const.HERO_CHIP = u'103'
-const.EQUIPMENT = u'102'
-const.EQUIPMENT_CHIP = u'104'
-const.ITEM = u'105'
-const.BIG_BAG = u'106'
+const.COIN = '1'
+const.GOLD = '2'
+const.HERO_SOUL = '3'
+const.JUNIOR_STONE = '4'
+const.MIDDLE_STONE = '5'
+const.HIGH_STONE = '6'
+const.STAMINA = '7'
+const.PVP = '8'
+const.HERO = '101'
+const.HERO_CHIP = '103'
+const.EQUIPMENT = '102'
+const.EQUIPMENT_CHIP = '104'
+const.ITEM = '105'
+const.BIG_BAG = '106'
+const.TRAVEL_ITEM = '109'
 # 1：金币
 # 2：充值币
 # 3：武魂
@@ -72,4 +73,3 @@ const.BIG_BAG = u'106'
 const.MAX_CONNECTION = 2000
 const.TIME_OUT = 60 * 1000  # 秒
 const.TLOG_ADDR = ('192.168.10.25', 6667)
-

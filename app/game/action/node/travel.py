@@ -18,6 +18,13 @@ from shared.db_opear.configs_data.game_configs import travel_event_config, \
 import random
 from gfirefly.server.logobj import logger
 import time
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
+from gfirefly.server.globalobject import GlobalObject
+
+
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -238,6 +245,11 @@ def travel_settle_833(data, player):
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
+    lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     response.res.result = True
     return response.SerializeToString()
@@ -354,7 +366,7 @@ def auto_travel_837(data, player):
     flag = 0
     if player.travel_component.auto.get(stage_id):
         for auto_travel in player.travel_component.auto.get(stage_id):
-            if base_config.get('autoTravel').get(auto_travel.get('continued_time')) != auto_travel.get('already_times'):
+            if base_config.get('autoTravel').get(auto_travel.get('continued_time'))[0] != auto_travel.get('already_times'):
                 flag = 1
             else:
                 for auto_travel_event in auto_travel.get('events'):
@@ -578,13 +590,13 @@ def update_auto(player, up_type):
 
 def get_travel_event_id():
     travel_event_id = None
-    x = random.randint(0, travel_event_config.get('weight')[-1][1])
+    x = random.randint(1, travel_event_config.get('weight')[-1][1])
     flag = 0
     for [event_id, weight] in travel_event_config.get('weight'):
-        if flag <= x < weight:
+        if flag < x <= weight:
             travel_event_id = event_id
             break
-        flag == weight
+        flag = weight
     return travel_event_id
 
 

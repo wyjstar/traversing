@@ -12,6 +12,9 @@ from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
 
 # from app.proto_file import world_boss_pb2
 
@@ -242,6 +245,12 @@ def pvb_fight_start_1705(pro_data, player):
 
     print response
     logger.debug("fight end..")
+    
+    lively_event = CountEvent.create_event(EventType.BOSS, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     return response.SerializePartialToString()
 

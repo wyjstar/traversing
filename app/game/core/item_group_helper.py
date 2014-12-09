@@ -8,10 +8,8 @@ from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.game_configs import chip_config, travel_item_config
 from app.game.core.drop_bag import BigBag
-from app.game.core.hero import Hero
-from app.proto_file.hero_pb2 import HeroPB
 from app.proto_file.player_pb2 import FinancePB
-from shared.utils.const import *
+from shared.utils.const import const
 from gfirefly.server.logobj import logger
 
 
@@ -49,19 +47,24 @@ def is_afford(player, item_group):
     return {'result': True}
 
 
-def consume(player, item_group):
+def consume(player, item_group, shop=None, luck_config=None):
     """消耗"""
     result = []
+    luckValue = luck_config.luckyValue
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
         item_no = group_item.item_no
         if type_id == const.COIN:
             player.finance.coin -= num
+            if shop and luckValue:
+                shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
 
         elif type_id == const.GOLD:
             player.finance.gold -= num
+            if shop and luckValue:
+                shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
 
         elif type_id == const.HERO_SOUL:
@@ -201,7 +204,6 @@ def gain(player, item_group, result=None):
                 shoes[2] += num
 
             player.travel_component.save()
-
 
         flag = 1
         for i in result:
