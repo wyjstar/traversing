@@ -143,7 +143,7 @@ def shop_buy_505(pro_data, player):
         shop['buyed_item_ids'].append(shop_id)
         player.shop.save_data()
     else:
-        logger.debug("can not find shop id:%d:%d", shop_id, shop['item_ids'])
+        logger.debug("can not find shop id:%s:%s", shop_id, shop['item_ids'])
         common_response.result = False
         common_response.result_no = 501
         return response.SerializeToString()
