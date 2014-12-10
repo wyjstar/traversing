@@ -250,7 +250,7 @@ class LineUpSlotComponent(Component):
         battlt_unit = do_assemble(hero_no, quality, break_skill_buff_ids,
                                   hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
                                   ductility, position,
-                                  hero_obj.level, is_boss)
+                                  hero_obj.level, hero_obj.break_level, is_boss)
 
         return battlt_unit
 
