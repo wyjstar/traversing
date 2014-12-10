@@ -380,7 +380,7 @@ class CharacterFightCacheComponent(Component):
                     break_hero_obj = Hero()  # 实例化一个替换英雄对象
                     break_hero_obj.hero_no = hero_no
                     break_hero_obj.level = level
-                    break_hero_obj.break_level = break_level
+                    break_hero_obj.break_level = red.break_level
 
                     attr = CommonItem()
                     hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
