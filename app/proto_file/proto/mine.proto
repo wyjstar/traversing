@@ -1,126 +1,162 @@
 import "item.proto";
 import "common.proto";
 import "arena_shop.proto";
+import "stage.proto";
 
 //1241,1243,1245,1246,1248,1247, 1249
 message positionRequest
 {
-	required int32 position = 1; //Ì½Ë÷Î»ÖÃ
+	required int32 position = 1; //æ¢ç´¢ä½ç½®
 }
 
-//¿óµãĞÅÏ¢
+//çŸ¿ç‚¹ä¿¡æ¯
 message mineData
 {
-	required int32 position = 1;//µØÍ¼Î»ÖÃ, 0Íæ¼Ò×Ô¼ºµÄ³õÊ¼¿ó
-	required int32 type = 2; //¿óµãÀàĞÍ 1Íæ¼ÒÕ¼ÁìµÄÒ°¹Ö¿ó£¬2Ò°Íâ¿ó£¬3ÉñÃØÉÌÈË£¬4¾ŞÁú±¦Ïä£¬5¸±±¾
-	required int32 status = 3;//¿óµã×´Ì¬1Éú²úÖĞ£¬2¿ÉÊÕ»ñ£¬3ÒÑ¿İ½ß£¬4¿ÕÏĞ£¬5ÒÑÁìÈ¡£¬6¸±±¾ÒÑ½øÈë
-	optional string nickname = 4;//êÇ³Æ
-	optional int32 last_time = 5;//µ¹¼ÆÊ±
+	required int32 position = 1;//åœ°å›¾ä½ç½®, 0ç©å®¶è‡ªå·±çš„åˆå§‹çŸ¿
+	required int32 type = 2; //çŸ¿ç‚¹ç±»å‹ 1ç©å®¶å é¢†çš„é‡æ€ªçŸ¿ï¼Œ2é‡å¤–çŸ¿ï¼Œ3ç¥ç§˜å•†äººï¼Œ4å·¨é¾™å®ç®±ï¼Œ5å‰¯æœ¬
+	required int32 status = 3;//çŸ¿ç‚¹çŠ¶æ€1ç”Ÿäº§ä¸­ï¼Œ2å¯æ”¶è·ï¼Œ3å·²æ¯ç«­ï¼Œ4ç©ºé—²ï¼Œ5å·²é¢†å–ï¼Œ6å‰¯æœ¬å·²è¿›å…¥
+	optional string nickname = 4;//æ˜µç§°
+	optional int32 last_time = 5;//å€’è®¡æ—¶
 }
 
-//¸üĞÂ¿óµãĞÅÏ¢1240·µ»Ø
+//æ›´æ–°çŸ¿ç‚¹ä¿¡æ¯1240è¿”å›
 message mineUpdate
 {
-	required int32 last_times = 1; //½ñÈÕÊ£ÓàÖØÖÃ´ÎÊı
-	repeated mineData mine = 2;//ËùÓĞÎ»ÖÃĞÅÏ¢
+	required int32 last_times = 1; //ä»Šæ—¥å‰©ä½™é‡ç½®æ¬¡æ•°
+	repeated mineData mine = 2;//æ‰€æœ‰ä½ç½®ä¿¡æ¯
 }
 
-//1241·µ»Ø
+//1241è¿”å›
 message searchResponse
 {
 	required CommonResponse res = 1;
 	required int32 position = 2;
-	required mineUpdate mine = 3;//ËùÓĞÎ»ÖÃĞÅÏ¢
+	required mineUpdate mine = 3;//æ‰€æœ‰ä½ç½®ä¿¡æ¯
 }
 
-//1242ÇëÇó µØÍ¼ÖØÖÃ
+//1242è¯·æ±‚ åœ°å›¾é‡ç½®
 message resetMap
 {
-	required int32 free = 1;//ÖØÖÃµØÍ¼£¬1Ãâ·Ñ£¬2×Ô·Ñ
+	required int32 free = 1;//é‡ç½®åœ°å›¾ï¼Œ1å…è´¹ï¼Œ2è‡ªè´¹
 }
 
-//1242·µ»Ø
+//1242è¿”å›
 message resetResponse
 {
 	required CommonResponse res = 1;
 	required GameResourcesResponse consume = 2;
-	required mineUpdate mine = 3;//ËùÓĞÎ»ÖÃĞÅÏ¢
+	required mineUpdate mine = 3;//æ‰€æœ‰ä½ç½®ä¿¡æ¯
 }
 
-//·ûÎÄÊ¯Êı¾İ
+//ç¬¦æ–‡çŸ³æ•°æ®
 message stoneData
 {
 	required int32 stone_id = 1;
 	required int32 stone_num = 2;
 }
-//×¤ÊØÊı¾İ
+//é©»å®ˆæ•°æ®
 message heroData
 {
 	required int32 hero_id = 1;
 }
 
-//²é¿´¿óµãÏêÏ¸ĞÅÏ¢·µ»Ø1243
+//æŸ¥çœ‹çŸ¿ç‚¹è¯¦ç»†ä¿¡æ¯è¿”å›1243
 message mineDetail
 {
-	required int32 position = 1;//Î»ÖÃ
-	required CommonResponse res = 2;//Í¨ÓÃ·µ»Ø
+	required int32 position = 1;//ä½ç½®
+	required CommonResponse res = 2;//é€šç”¨è¿”å›
 	required mineData mine = 3;
-	repeated stoneData stones = 4;//·ûÎÄÊ¯Êı¾İ
-	required int32 increase = 5;//Ôö²úÊ£ÓàÊ±¼ä£¬µ¥Î»£ºÃë
-	repeated heroData heros = 6;//×¤ÊØÓ¢ĞÛĞÅÏ¢
+	repeated stoneData stones = 4;//ç¬¦æ–‡çŸ³æ•°æ®
+	required int32 increase = 5;//å¢äº§å‰©ä½™æ—¶é—´ï¼Œå•ä½ï¼šç§’
+	repeated heroData heros = 6;//é©»å®ˆè‹±é›„ä¿¡æ¯
 }
 
-//1245·µ»Ø
+//1245è¿”å›
 message drawStones
 {
 	required int32 position = 1;
-	required CommonResponse res = 2;//Í¨ÓÃ·µ»Ø
+	required CommonResponse res = 2;//é€šç”¨è¿”å›
 	repeated stoneData stones = 3;
 }
 
-//ÉñÃØÉÌÈË¶Ò»»1247ÇëÇó£¬²é¿´¿óµã¶Ò»»ÁĞ±í
+//ç¥ç§˜å•†äººå…‘æ¢1247è¯·æ±‚ï¼ŒæŸ¥çœ‹çŸ¿ç‚¹å…‘æ¢åˆ—è¡¨
 //message shopRequest
 //{
-//	required int32 position = 1; //Î»ÖÃ
+//	required int32 position = 1; //ä½ç½®
 //}
 
-//ÃÜ¾³ÉñÃØÉÌÈËÉÌÆ·×´Ì¬
+//å¯†å¢ƒç¥ç§˜å•†äººå•†å“çŠ¶æ€
 message shopInfo
 {
-	required int32 shop_id = 1;//¶Ò»»ÉÌÆ·id
-	required int32 status = 2;//ÉÌÆ·×´Ì¬0½øĞĞÖĞ£¬1ÒÑ¶Ò»»
+	required int32 shop_id = 1;//å…‘æ¢å•†å“id
+	required int32 status = 2;//å•†å“çŠ¶æ€0è¿›è¡Œä¸­ï¼Œ1å·²å…‘æ¢
 }
 
-//ÉñÃØÉÌÈË¶Ò»»ÇëÇó1247µÄ·µ»Ø
+//ç¥ç§˜å•†äººå…‘æ¢è¯·æ±‚1247çš„è¿”å›
 message shopStatus
 {
-	required int32 position = 1; //Î»ÖÃ
-	repeated shopInfo shop = 2; //±¾¿óµã³öÊÛÉÌÆ·ĞÅÏ¢
+	required int32 position = 1; //ä½ç½®
+	repeated shopInfo shop = 2; //æœ¬çŸ¿ç‚¹å‡ºå”®å•†å“ä¿¡æ¯
 	required CommonResponse res = 3;
 }
 
-//ÃÜ¾³ÉñÃØÉÌÈË¶Ò»»ÇëÇó1248ÇëÇó
+//å¯†å¢ƒç¥ç§˜å•†äººå…‘æ¢è¯·æ±‚1248è¯·æ±‚
 message exchangeRequest
 {
-	required int32 position = 1;//Î»ÖÃ
-	required int32 shop_id = 2;//¶Ò»»µÄÉÌÆ·id
+	required int32 position = 1;//ä½ç½®
+	required int32 shop_id = 2;//å…‘æ¢çš„å•†å“id
 }
-//1248·µ»Ø
+//1248è¿”å›
 message exchangeResponse
 {
-	required int32 position = 1;//Î»ÖÃ
-	required int32 shop_id = 2;//¶Ò»»ÉÌÆ·id
+	required int32 position = 1;//ä½ç½®
+	required int32 shop_id = 2;//å…‘æ¢å•†å“id
     required CommonResponse res = 3;
     required GameResourcesResponse consume = 4;
     required GameResourcesResponse gain = 5;
 }
-//1249 ·µ»ØÊ¹ÓÃitem_response.ItemUseResponse
+//1249 è¿”å›ä½¿ç”¨item_response.ItemUseResponse
 
-//Ôö²ú·µ»Ø1250
+//å¢äº§è¿”å›1250
 message IncreaseResponse
 {
-	required int32 position = 1;//Î»ÖÃ
-	required int32 last_time = 2;//Ôö²úÊ£ÓàÊ±¼ä£¬µ¥Î»£ºÃë
+	required int32 position = 1;//ä½ç½®
+	required int32 last_time = 2;//å¢äº§å‰©ä½™æ—¶é—´ï¼Œå•ä½ï¼šç§’
 	required GameResourcesResponse consume = 3;
 	required CommonResponse res = 4;
 }
+
+
+// ç§˜å¢ƒç›¸å…³, é©»å®ˆçŸ¿è¯·æ±‚command:1244
+// è¿”å›CommonResponse
+message MineGuardRequest
+{
+    required int32 pos = 1;                    // çŸ¿åœ¨åœ°å›¾ä¸Šçš„ä½ç½®
+    repeated MineLineUpSlot line_up_slots = 2; // é˜µå®¹
+    optional int32 best_skill_id = 3;          // æ— åŒid
+}
+//ç§˜å¢ƒç›¸å…³ï¼Œå¡ç‰Œä½
+message MineLineUpSlot
+{
+    required int32 slot_no = 1;                    // é˜µå®¹ä½ç½®
+    required int32 hero_no  = 2;                   // æ­¦å°†ç¼–å·
+    repeated MineEquipmentSlot equipment_slots = 3; // è£…å¤‡
+}
+//ç§˜å¢ƒç›¸å…³ï¼Œè£…å¤‡
+message MineEquipmentSlot
+{
+    required int32 slot_no = 1;      // è£…å¤‡ä½ç½®
+    required int32 equipment_id = 2; // è£…å¤‡ID
+}
+
+//ç§˜å¢ƒç›¸å…³ï¼Œpveæˆ˜æ–—å¼€å§‹, command:903
+//è¯·æ±‚ StageStartRequest
+//è¿”å› StageStartResponse
+
+//ç§˜å¢ƒç›¸å…³ï¼Œpvpæˆ˜æ–—å¼€å§‹, command:1251
+//è¯·æ±‚ PvpFightRequest
+//è¿”å› PvpFightResponse
+
+//ç§˜å¢ƒç›¸å…³ï¼Œ æˆ˜æ–—ç»“ç®—, command: 1252
+//è¯·æ±‚ 
+//è¿”å› CommonResponse æˆ–è€…è‡ªå·±å®šä¹‰åè®®

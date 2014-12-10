@@ -12,6 +12,15 @@ from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
 from shared.db_opear.configs_data.common_item import CommonGroupItem
 from shared.utils.const import const
+from app.game.component.character_line_up import CharacterLineUpComponent
+from app.game.component.line_up.line_up_slot import LineUpSlotComponent
+from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
+import cPickle
+from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
+from app.proto_file import pvp_rank_pb2
+from app.battle.battle_process import BattlePVPProcess
+from gfirefly.server.logobj import logger
+
 remote_gate = GlobalObject().remote['gate']
 
 def mine_status(player, response):
@@ -144,7 +153,41 @@ def guard_1244(data, player):
     """
     驻守矿点
     """
-    pass
+    request = mine_pb2.MineGuardRequest()
+    request.ParseFromString(data)
+    pos = request.pos  # 矿在地图上所在位置
+    __skill = request.best_skill_id
+    __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+
+    #构造阵容组件
+    character_line_up = CharacterLineUpComponent(player)
+    for slot in request.line_up_slots:
+        line_up_slot = LineUpSlotComponent(player, slot.slot_no, activation=True, hero_no=slot.hero_no)
+
+        for equipment_slot in slot.equipment_slots:
+            equipment_slot = EquipmentSlotComponent(equipment_slot.slot_no, activation=True, equipment_id=slot.equipment_id)
+            line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
+
+        character_line_up.line_up_slots[slot.slot_no] = line_up_slot
+
+    battle_units = {} #需要保存的阵容信息
+    for no, slot in character_line_up.line_up_slots.items():
+        unit = slot.slot_attr
+        if unit:
+            battle_units[no] = unit
+
+    info = {}
+    info["battle_units"] = battle_units
+    info["best_skill_id"] = __skill
+    info["best_skill_no"] = __best_skill_no
+    info["best_skill_level"] = __skill_level
+    info["level"] = player.level.level
+    info["nickname"] = player.base_info.nickname
+    info["character_id"] = player.base_info.id
+
+
+    str_line_up_data = cPickle.dumps(info) #序列化的阵容信息
+    # todo: 保存信息
 
 def add_stones(player, stones, response):
     response.res.result = True
@@ -154,7 +197,7 @@ def add_stones(player, stones, response):
         one_type.stone_id = stone_id
         one_type.stone_num = num
     player.stone.save_data()
-    
+
 @remoteserviceHandle('gate')
 def harvest_1245(data, player):
     """
@@ -175,27 +218,37 @@ def harvest_1245(data, player):
     print '1245-response', response
     return response.SerializePartialToString()
 
-
-def battle(player, position):
-    ret  = True
-    red = None
-    blud = player.mine.get_blue(position)
-    return ret
-
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
     """
-    攻占矿点
+    攻占怪物驻守的矿点
+    1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
+    2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
     """
-    request = mine_pb2.positionRequest()
+    request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
-    ret = battle(player, request.position)
-    if ret == True:
-        settle = player.mine.settle(request.position)
-    else:
-        pass
-    
-    
+    __skill = request.skill
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    save_line_up_order(request.lineup, player)
+
+    record = {}
+    #todo: 获取驻守数据
+    blue_units = record.get('units')
+    # print "blue_units:", blue_units
+    blue_units = cPickle.loads(blue_units)
+    # print "blue_units:", blue_units
+    red_units = player.fight_cache_component.red_unit
+    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
+                               record.get('best_skill_no', 0), record.get('level', 1))
+    fight_result = process.process()
+
+    logger.debug("fight result:%s" % fight_result)
+
+    response = pvp_rank_pb2.PvpFightResponse()
+    response.res.result = True
+    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
+            record.get("best_skill_id"), record.get("best_skill_level"), response)
+    return response.SerializeToString()
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):
@@ -258,21 +311,21 @@ def exchange_1248(data, player):
     # get_return(player, extra_return_data, response)
     player.mine.buy_shop(request.position, request.shop_id)
     player.mine.save_data()
-    
+
     return response.SerializePartialToString()
 
 def add_items(player, response, drop_ids):
     """
     添加道具给玩家
     """
-    
+
     for drop_id in drop_ids:
         big_bag = BigBag(drop_id)
         drop_item_group = big_bag.get_drop_items()
         return_data = item_group_helper.gain(player, drop_item_group)
         item_group_helper.get_return(player, return_data, response.gain)
     return response
-    
+
 @remoteserviceHandle('gate')
 def reward_1249(data, player):
     """
@@ -313,7 +366,7 @@ def acc_mine_1250(data, player):
     item_group_helper.get_return(player, consume_return_data, response.consume)
     last_time = player.mine.acc_mine()
     player.mine.save_data()
-    
+
     response.position = 0
     response.last_time = last_time
     return response.SerializePartialToString()

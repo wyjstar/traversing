@@ -12,7 +12,6 @@ class CommonItem(dict):
         try:
             return self.__getitem__(item)
         except KeyError:
-            print "Key %s is not exists!" % item
             raise AttributeError(item)
 
     def __add__(self, other):
@@ -48,6 +47,11 @@ class CommonGroupItem():
     @property
     def item_type(self):
         return self._item_type
+
+    def __repr__(self):
+        """docstring for __repr__fname"""
+        return "%s %s %s %s" % (self._max_num, self._min_num, self._item_no, self._item_type)
+
 
 if __name__ == '__main__':
     a = {'a':1, 'b':2}

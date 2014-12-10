@@ -374,11 +374,11 @@ class PlayerCharacter(Character):
     @property
     def brew(self):
         return self._brew
-    
+
     @property
     def mine(self):
         return self._mine
-    
+
     @property
     def stone(self):
         return self._stone

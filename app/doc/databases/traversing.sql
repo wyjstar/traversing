@@ -251,6 +251,7 @@ CREATE TABLE `tb_character_travel` (
   `shoes` mediumblob,
   `fight_cache` mediumblob,
   `chest_time` bigint(20),
+  `auto` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

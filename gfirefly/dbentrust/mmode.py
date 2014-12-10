@@ -6,6 +6,7 @@ Created on 2013-5-8
 """
 from memclient import mclient
 from memobject import MemObject
+from gtwisted.core import reactor
 import util
 import time
 
@@ -135,7 +136,7 @@ class MMode(MemObject):
         if ntime - objtime >= timeout and timeout:
             self.mdelete()
         else:
-            self.syncDB()
+            reactor.callLater(0, self.syncDB)
 
 
 class MFKMode(MemObject):

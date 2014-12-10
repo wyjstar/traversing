@@ -25,8 +25,9 @@ class WorldBoss(object):
         self._stage_id_am = 0         # 关卡id am
         self._stage_id_pm = 0         # 关卡id pm
         self._stage_id = 0            # 关卡id
-        self._hp = 0                   # 剩余血量
+        self._hp = 0                  # 剩余血量
         self._state = 0               # boss状态：用于boss到期, 重置状态
+        self._boss_dead_time = 0      # boss被打死的时间
 
         self.init_data()
         self.init_time()
@@ -56,6 +57,7 @@ class WorldBoss(object):
         self._stage_id = world_boss_data.get("stage_id")
         self._stage_id_am = world_boss_data.get("stage_id_am")
         self._stage_id_pm = world_boss_data.get("stage_id_pm")
+        self._boss_dead_time = world_boss_data.get("boss_dead_time")
         self._hp = world_boss_data.get("hp")
 
     def init_time(self):
@@ -68,6 +70,13 @@ class WorldBoss(object):
         elif current > am_period[1] and current < pm_period[1]:
             self._stage_id = self._stage_id_pm
 
+    @property
+    def boss_dead_time(self):
+        return self._boss_dead_time
+
+    @boss_dead_time.setter
+    def boss_dead_time(self, value):
+        self._boss_dead_time = value
 
     @property
     def stage_id(self):
@@ -94,7 +103,8 @@ class WorldBoss(object):
                 last_shot_item=self._last_shot_item,
                 stage_id=self._stage_id,
                 stage_id_am=self._stage_id_am,
-                stage_id_pm=self._stage_id_pm
+                stage_id_pm=self._stage_id_pm,
+                boss_dead_time=self._boss_dead_time
                 )
         str_data = cPickle.dumps(world_boss_data)
         redis_client.set("world_boss_data", str_data)
@@ -129,17 +139,18 @@ class WorldBoss(object):
 
     def loop_update(self):
         if self._stage_id and self.in_the_time_period() and self._state == 0:
+            self.start_boss()
             self._state = 1
 
-        if self._stage_id and self._state == 1 and self._hp<=0 and self.in_the_time_period():
-            self._state = 2
-
-        if self._stage_id and self._state!=0 and (not self.in_the_time_period()):
+        if self._stage_id and self._state == 1 and (not self.in_the_time_period()):
             self.update_boss()
             self._state = 0
-
-
         reactor.callLater(1, self.loop_update)
+
+    def start_boss(self):
+        instance = self.get_rank_instance()
+        instance.clear_rank() # 重置排行
+        self._last_shot_item = {} # 重置最后击杀
 
     def update_boss(self):
         """
@@ -166,9 +177,10 @@ class WorldBoss(object):
 
         self.set_next_stage(self._hp<=0)
         self._hp = self.get_hp() # 重置血量
-        instance = self.get_rank_instance()
-        instance.clear_rank() # 重置排行
+
+
         #todo: 重置玩家信息
+
         self.save_data()
 
         # todo:对前十名发放奖励
@@ -178,6 +190,8 @@ class WorldBoss(object):
         stage_info = self.current_stage_info()
         time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
         current = get_current_timestamp()
+        if self._boss_dead_time > time_start:
+            return time_start<=current and self._boss_dead_time>=current
         return time_start<=current and time_end>=current
 
     def get_hero_category(self):
@@ -257,9 +271,6 @@ class WorldBoss(object):
         instance = self.get_rank_instance()
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
-            print player_id, demage_hp
-            print "-"*80
-            continue
             player_info = cPickle.loads(redis_client.get(player_id))
 
             player_info["demage_hp"] = demage_hp

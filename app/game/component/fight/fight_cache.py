@@ -280,10 +280,10 @@ class CharacterFightCacheComponent(Component):
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
-        replace_unit, replace_no = self.__break_hero_units(red_units)
-        awake_units, awake_nos = self.__awake_hero_units(red_units)
+        self.__break_hero_units(red_units)
+        self.awake_hero_units(red_units)
 
-        return red_units, blue_units, drop_num, monster_unpara, replace_unit, replace_no, awake_units, awake_nos
+        return red_units, blue_units, drop_num, monster_unpara
 
     def fighting_settlement(self, result):
         """战斗结算
@@ -311,8 +311,8 @@ class CharacterFightCacheComponent(Component):
         odds = self.__get_break_stage_odds()
         break_config = self.__get_stage_break_config()
         if not break_config:
-            logger.info('can not find stage break config')
-            return None, 0
+            logger.error('can not find stage break config')
+            return
 
         rand_odds = random.random()
 
@@ -328,7 +328,7 @@ class CharacterFightCacheComponent(Component):
                 replace.append(red_unit)
             logger.info('乱入可以替换的战斗单位: %s' % replace)
             if not replace:
-                return None, 0
+                return
 
             red_unit = random.choice(replace)  # 选出可以替换的单位
 
@@ -354,13 +354,11 @@ class CharacterFightCacheComponent(Component):
             unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
-            return unit, red_unit.unit_no
-        return None, 0
+            unit.is_break = True
+            unit.origin_no = red_unit.unit_no
+            red_units[red_unit.slot_no] = unit
 
-    def __awake_hero_units(self, red_units):
-        awake_nos = []
-        awake_units = []
-
+    def awake_hero_units(self, red_units):
         for no, red in red_units.items():
             hero_item = game_configs.hero_config.get(red.unit_no)
             _rand = random.random()
@@ -370,9 +368,9 @@ class CharacterFightCacheComponent(Component):
                 continue
             old_line_up_slot = self.line_up_slots.get(red.slot_no)
             ap = old_line_up_slot.combat_power()
-            for no, prob in hero_item.get('awake').items():
-                if ap > no and _rand < prob:
-                    logger.info('hit:%s, %s,ap:%s, no:%s', _rand, prob, ap, no)
+            for upAp, prob in hero_item.get('awake').items():
+                if ap > upAp and _rand < prob:
+                    logger.info('hit:%s, %s,ap:%s, upAp:%s', _rand, prob, ap, upAp)
 
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
@@ -391,8 +389,7 @@ class CharacterFightCacheComponent(Component):
 
                     unit = break_line_up_slot.get_battle_unit(break_hero_obj,
                                                               attr)
-                    awake_units.append(unit)
-                    awake_nos.append(red.unit_no)
+                    unit.is_awake = True
+                    unit.origin_no = red.unit_no
+                    red_units[no] = unit
                     break
-
-        return awake_units, awake_nos
