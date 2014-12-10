@@ -140,3 +140,4 @@ if __name__ == '__main__':
     for k, v in shop_config.items():
         print k, v
         print
+

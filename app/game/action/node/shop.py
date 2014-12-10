@@ -156,7 +156,9 @@ def shop_buy_505(pro_data, player):
         logger.info('not enough money')
         return response.SerializeToString()
 
-    consume_return_data = consume(player, shop_item.consume)  # 消耗
+    shop_type_item = shop_type_config.get(shop_item.get('type'))
+    consume_return_data = consume(player, shop_item.consume,
+                                  shop, shop_type_item)  # 消耗
 
     return_data = gain(player, shop_item.gain)  # 获取
     get_return(player, consume_return_data, response.consume)

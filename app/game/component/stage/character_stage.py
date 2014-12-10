@@ -138,6 +138,7 @@ class CharacterStageComponent(Component):
 
         return True
 
+
     def check_stage_state(self, stage_id):
         """校验当前关卡是否已经通关
         """
