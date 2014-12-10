@@ -31,5 +31,5 @@ message GetShopItemsResponse
     required CommonResponse res = 1;
     repeated int32 id = 2;
     repeated int32 buyed_id = 3;
-	optional int32 luck_num = 4;
+    optional int32 luck_num = 4;
 }
