@@ -59,3 +59,5 @@
 818: auto travel, this start time not find
 819: auto travel, dont finish
 820: auto travel, already finish
+
+821: 符文镶嵌位置已经有符文
