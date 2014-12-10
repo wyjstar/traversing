@@ -185,17 +185,22 @@ def refresh_shop_items_507(pro_data, player):
     #     response.res.result_no = 501
     #     return response.SerializePartialToString()
 
-    price = player.shop.price
-    if player.finance.gold < price:
+    response.res.result = player.shop.refresh_price(shop_type)
+    if not response.res.result:
         logger.debug("gold not enough!")
         response.res.result = False
         response.res.result_no = 101
         return response.SerializePartialToString()
 
-    response.res.result = player.shop.refresh_items(shop_type)
-    if response.res.result:
-        player.finance.gold -= price
-        logger.debug("refresh price:" + str(price))
+    shopdata = player.shop.get_shop_data(shop_type)
+    if not shopdata:
+        response.res.result = False
+        return response.SerializePartialToString()
+
+    for x in shopdata['item_ids']:
+        response.id.append(x)
+    for x in shopdata['buyed_item_ids']:
+        response.buyed_id.append(x)
 
     return response.SerializeToString()
 

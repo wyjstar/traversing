@@ -41,7 +41,7 @@ class CharacterShopComponent(Component):
             for t, item in shop_type_config.items():
                 data = {}
                 data['buyed_item_ids'] = []
-                data['refresh_times'] = time.time()
+                data['refresh_times'] = 0
                 data['last_refresh_time'] = time.time()
                 data['luck_num'] = 0.0
                 data['luck_time'] = time.time()
@@ -83,15 +83,29 @@ class CharacterShopComponent(Component):
         shop_item = shop_type_config.get(shop_type)
         if not shop_item:
             raise Exception('error shop type:%s' % shop_type)
-        price = shop_item.get('refreshPrice').get(2)[0]
-        # k = shop_item.get('soulShopRefreshFactor')
+        price = 0
         free_times = shop_item.get('freeRefreshTimes')
 
-        if self._refresh_times < free_times:
-            return 0
-        else:
-            return price
-            # return price * pow(k, self._refresh_times - free_times)
+        __shop_data = self._shop_data[shop_type]
+        if __shop_data['refresh_times'] >= free_times:
+            refreshprice = shop_item.get('refreshPrice')
+            if not refreshprice:
+                logger.error('no refresh price:shop type:%s', shop_type)
+                return False
+            ctype, price = refreshprice.items()[0]
+            print ctype, price
+
+        result = self.owner.finance.consume_gold(price)
+        self.owner.finance.save_data()
+        __shop_data['refresh_times'] += 1
+        __shop_data['last_refresh_time'] = time.time()
+        __shop_data['buyed_item_ids'] = []
+        # data['last_refresh_time'] = time.time()
+        if shop_item.itemNum > 0:
+            __shop_data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
+        self.save_data()
+
+        return result
 
     def refresh_items(self, type_shop):
         if type_shop in self._shop_data:
