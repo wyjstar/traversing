@@ -44,6 +44,13 @@
                 "create_time": "simple"
             }
         },
+        "tb_character_shop": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "shop": "complex"
+            }
+        },
         "tb_character_hero": {
             "pkey_field": "id",
             "def_attrs": {

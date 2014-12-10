@@ -30,3 +30,4 @@ CREATE TABLE `tb_character_mine` (
   `mine` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

@@ -4,6 +4,7 @@ Created on 2013-8-14
 """
 from gfirefly.utils.services import CommandService
 from gfirefly.server.logobj import logger
+import time
 
 
 class LocalService(CommandService):
@@ -17,9 +18,12 @@ class LocalService(CommandService):
         if not target:
             logger.error('the command %s not Found on service:[%s]' % (target_key, self._name))
             return None
-        if target_key not in self.unDisplay:
-            logger.info("call method %s on service:[%s]" % (target.__name__, self._name))
+        # if target_key not in self.unDisplay:
+        #     logger.info("call method %s on service:[%s]" % (target.__name__, self._name))
+        t = time.time()
         response = target(target_key, *args, **kw)
+        logger.info("call method %s on service:[%s]:%f",
+                    target.__name__, self._name, time.time() - t)
         return response
 
 

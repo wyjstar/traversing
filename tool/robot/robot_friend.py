@@ -5,6 +5,7 @@ created by server on 14-8-22下午2:45.
 
 from robot import Robot
 from app.proto_file import friend_pb2
+from app.proto_file import shop_pb2
 from app.proto_file.common_pb2 import CommonResponse
 
 
@@ -76,4 +77,26 @@ class RobotFriend(Robot):
         response.ParseFromString(message)
         str_format = 'accept friend result:%s result_no:%s'
         print str_format % (response.result, response.result_no)
+        self.on_command_finish()
+
+    def command_get_shop_items(self, stype):
+        request = shop_pb2.GetShopItems()
+        request.shop_type = int(stype)
+        self.send_message(request, 508)
+
+    def get_accept_friend_508(self, message):
+        response = shop_pb2.GetShopItemsResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_buy_shop_items(self, item_id):
+        request = shop_pb2.ShopRequest()
+        request.id = int(item_id)
+        self.send_message(request, 505)
+
+    def buy_shop_items_505(self, message):
+        response = shop_pb2.ShopResponse()
+        response.ParseFromString(message)
+        print response
         self.on_command_finish()

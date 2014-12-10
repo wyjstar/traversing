@@ -153,7 +153,7 @@ def fight_settlement_904(pro_data, player):
     return res
 
 
-@remoteserviceHandle('gate')
+# @remoteserviceHandle('gate')
 def get_warriors_906(pro_data, player):
     """请求无双 """
     response = stage_response_pb2.UnparalleledResponse()

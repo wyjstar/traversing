@@ -5,6 +5,7 @@ created by server on 14-6-5下午4:52.
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.utils.services import CommandService
 from gfirefly.server.logobj import logger
+import time
 
 
 class NodeServiceHandler(CommandService):
@@ -18,9 +19,12 @@ class NodeServiceHandler(CommandService):
         if not target:
             logger.error('the command %s not Found on service[%s]' % (str(command_id)), self._name)
             return None
-        if command_id not in self.unDisplay:
-            logger.info("call method %s on service[%s]" % (target.__name__, self._name))
+        # if command_id not in self.unDisplay:
+        #    logger.info("call method %s on service[%s]" % (target.__name__, self._name))
+        t = time.time()
         response = target(command_id, *args, **kw)
+        logger.info("call method %s on service[%s]:%f",
+                    target.__name__, self._name, time.time() - t)
         return response
 
 

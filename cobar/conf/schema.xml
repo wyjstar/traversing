@@ -40,6 +40,7 @@
     <table name="tb_character_guild" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_friend" dataNode="dn_traversing$0-3" rule="id_int_4" />
     <table name="tb_character_activity" dataNode="dn_traversing$0-3" rule="id_int_4" />
+    <table name="tb_character_shop" dataNode="dn_traversing$0-3" rule="id_int_4" />
 
     <table name="tb_mail_info" dataNode="dn_traversing$0-3" rule="id_str_4" />
     <table name="tb_character_lord" dataNode="dn_traversing$0-3" rule="id_int_4" />

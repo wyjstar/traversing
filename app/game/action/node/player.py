@@ -10,7 +10,6 @@ from gfirefly.dbentrust import util
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
-from app.game.action.node.soul_shop import init_soul_shop_items
 from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
@@ -143,4 +142,3 @@ def init_player(player):
     if new_character:
         logger.debug("mock player info.....")
         init(player)
-        init_soul_shop_items(player)
