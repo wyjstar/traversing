@@ -18,9 +18,9 @@ class Equipment(object):
     """
 
     def __init__(self, equipment_id, equipment_name, equipment_no, \
-                 strengthen_lv=1, awakening_lv=1, enhance_record=[], nobbing_effect={}):
+                 strengthen_lv=1, awakening_lv=1, enhance_record=[], nobbing_effect={}, is_guard=False):
         self._base_info = EquipmentBaseInfoComponent(self, equipment_id, equipment_name, equipment_no)
-        self._attribute = EquipmentAttributeComponent(self, strengthen_lv, awakening_lv, nobbing_effect)
+        self._attribute = EquipmentAttributeComponent(self, strengthen_lv, awakening_lv, nobbing_effect, is_guard)
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
     def add_data(self, character_id):
@@ -28,7 +28,8 @@ class Equipment(object):
                 'character_id': character_id, \
                 'equipment_info': {'equipment_no': self._base_info.equipment_no, \
                                    'slv': self._attribute.strengthen_lv, \
-                                   'alv': self._attribute.awakening_lv}, \
+                                   'alv': self._attribute.awakening_lv, \
+                                   'is_guard': self._attribute.is_guard},
                 'enhance_info': self._record.enhance_record, \
                 'nobbing_effect': self._attribute.nobbing_effect}
 
@@ -38,7 +39,8 @@ class Equipment(object):
         data = {
             'equipment_info': {'equipment_no': self._base_info.equipment_no, \
                                'slv': self._attribute.strengthen_lv, \
-                               'alv': self._attribute.awakening_lv}, \
+                               'alv': self._attribute.awakening_lv, \
+                               'is_guard': self._attribute.is_guard},
             'enhance_info': self._record.enhance_record, \
             'nobbing_effect': self._attribute.nobbing_effect
         }

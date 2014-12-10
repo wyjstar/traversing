@@ -89,3 +89,12 @@ class CharacterHerosComponent(Component):
             'property': hero_property
         }
         tb_character_hero.new(data)
+
+    def is_guard(self, hero_no):
+        """
+        是否在驻守中, 秘境相关
+        """
+        hero = self._heros.get(hero_no)
+        assert hero!=None, ("hero %s not exists!" % hero_no)
+        return hero.is_guard
+

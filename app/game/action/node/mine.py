@@ -20,6 +20,7 @@ from app.game.action.node._fight_start_logic import save_line_up_order, pvp_asse
 from app.proto_file import pvp_rank_pb2
 from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
+from app.game.action.node.line_up import line_up_info
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -184,7 +185,7 @@ def guard_1244(data, player):
     info["level"] = player.level.level
     info["nickname"] = player.base_info.nickname
     info["character_id"] = player.base_info.id
-
+    info["line_up"] = line_up_info(player).SerializePartialToString()
 
     str_line_up_data = cPickle.dumps(info) #序列化的阵容信息
     # todo: 保存信息
@@ -370,3 +371,15 @@ def acc_mine_1250(data, player):
     response.position = 0
     response.last_time = last_time
     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def mine_show_player_info_1253(data, player):
+    """展示玩家信息"""
+    # todo:获取保存的
+    request = mine_pb2.MinePlayerInfoRequest()
+    request.ParseFromString(data)
+    pos = request.pos # 矿在地图的位置
+    info = {}
+    # todo: 找到保存的数据
+    return info.get("line_up", "")

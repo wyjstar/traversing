@@ -22,7 +22,8 @@ class Hero(object):
         :field _level: 等级
         :field _break_level: 突破等级
         :field _exp: 当前等级的经验
-        :field _equipmentids: 装备IDs
+        :field _refine: 炼体
+        :field _is_guard: 是否驻守，秘境相关
         """
         self._hero_no = 0
         self._level = 1
@@ -30,6 +31,7 @@ class Hero(object):
         self._break_level = 0
         self._refine = 0
         self._character_id = character_id
+        self._is_guard = False
 
     def init_data(self, data):
         self._character_id = data.get("character_id")
@@ -39,6 +41,7 @@ class Hero(object):
         self._exp = hero_property.get("exp")
         self._break_level = hero_property.get("break_level")
         self._refine = hero_property.get("refine")
+        self._is_guard = hero_property.get("is_guard")
 
     @property
     def refine(self):
@@ -117,7 +120,8 @@ class Hero(object):
             'level': self._level,
             'exp': self._exp,
             'break_level': self._break_level,
-            'refine': self._refine
+            'refine': self._refine,
+            'is_guard': self._is_guard
         }
         return hero_property
 
@@ -262,6 +266,17 @@ class Hero(object):
         rage_group = self.group_by_rage  # 怒气技能buff组
         rage_group = self.__assemble_skills(rage_group)
         return [rage_id] + rage_group
+
+    @property
+    def is_guard(self):
+        """
+        是否驻守，秘境相关
+        """
+        return self._is_guard
+
+    @is_guard.setter
+    def is_guard(self, value):
+        self._is_guard = value
 
     @property
     def break_skill_buff_ids(self):

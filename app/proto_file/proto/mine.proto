@@ -160,3 +160,9 @@ message MineEquipmentSlot
 //秘境相关， 战斗结算, command: 1252
 //请求 
 //返回 CommonResponse 或者自己定义协议
+
+//请求玩家信息, command:1253
+//响应协议
+message MinePlayerInfoRequest{
+    required int32 pos = 1;                    // 矿在地图上的位置
+}
