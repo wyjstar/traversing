@@ -6,7 +6,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.runt_pb2 import RuntSetRequest, RuntSetResponse, \
     RuntPickRequest, RuntPickResponse, InitRuntResponse, RefreshRuntResponse, \
     RefiningRuntRequest, RefiningRuntResponse, BuildRuntResponse
-from shared.db_opear.configs_data.game_configs import stone_config
+from shared.db_opear.configs_data.game_configs import stone_config, base_config
 from gfirefly.server.logobj import logger
 import random
 import time
@@ -123,10 +123,28 @@ def refresh_runt_844(data, player):
     """打造刷新"""
     response = RefreshRuntResponse()
 
+    if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
+            and time.localtime(player.refresh_times).tm_yday == time.localtime().tm_yday:
+        if base_config.get('totemRefreshFreeTimes') > player.runt.refresh_times[0]:
+            player.runt.refresh_times[0] += 1
+        else:
+            if player.finance.gold > base_config.get('totemRefreshPrice'):
+                player.finance.gold -= base_config.get('totemRefreshPrice')
+            else:
+                response.res.result = False
+                response.res.result_no = 102  # 充值币不足
+                return response.SerializeToString()
+
+    else:
+        player.runt.refresh_times = [1, int(time.time())]
+
     while True:
         new_refresh_id = player.runt.build_refresh()
         if not player.runt.refresh_id == new_refresh_id:
             break
+
+    player.finance.save_data()
+    player.runt.save()
 
     response.refresh_id = new_refresh_id
 
