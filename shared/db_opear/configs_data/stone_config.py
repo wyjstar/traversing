@@ -18,7 +18,8 @@ class StoneConfig(object):
         weights = 0
         for row in config_value:
             item = CommonItem(row)
-            self._weight.append([item.id, weights+item.weight])
+            if item.weight:
+                self._weight.append([item.id, weights+item.weight])
             self._stones[item.id] = item
             weights += item.weight
 
