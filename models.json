@@ -167,7 +167,7 @@
             "def_attrs": {
                 "id": "simple",
                 "travel": "complex",
-                "shoes": "simple",
+                "shoes": "complex",
                 "chest_time": "simple",
                 "travel_item": "complex",
                 "fight_cache": "complex"
@@ -190,6 +190,17 @@
         		"event_map": "complex",
                 "last_day":"simple"
         	}
+        },
+        "tb_character_runt": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "m_runt": "complex",
+                "stone1": "simple",
+                "stone2": "simple",
+                "refresh_id": "simple",
+                "refresh_times": "complex"
+            }
         }
     }
 }
