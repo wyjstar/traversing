@@ -50,7 +50,8 @@ def is_afford(player, item_group):
 def consume(player, item_group, shop=None, luck_config=None):
     """消耗"""
     result = []
-    luckValue = luck_config.luckyValue
+    if luck_config:
+        luckValue = luck_config.luckyValue
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num

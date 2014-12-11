@@ -7,7 +7,8 @@ Created on 2014-11-24
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import mine_pb2, item_response_pb2
 from gfirefly.server.globalobject import GlobalObject
-from shared.db_opear.configs_data.game_configs import shop_config, base_config
+from shared.db_opear.configs_data.game_configs import shop_config, base_config,\
+    mine_config
 from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
 from shared.db_opear.configs_data.common_item import CommonGroupItem
@@ -49,6 +50,23 @@ def mine_status(player, response):
             one_mine.last_time = last_time
     return response
 
+def one_mine_info(mstatus, one_mine):
+        position = mstatus.get('position', None)
+        if position != None:
+            one_mine.position = position
+        mtype = mstatus.get('type', None)
+        if mtype != None:
+            one_mine.type = mtype
+        status = mstatus.get('status', None)
+        if status != None:
+            one_mine.status = status
+        nickname = mstatus.get('nickname', None)
+        if nickname != None:
+            one_mine.nickname = nickname
+        last_time = mstatus.get('last_time', None)
+        if last_time != None:
+            one_mine.last_time = last_time
+
 @remoteserviceHandle('gate')
 def query_1240(data, player):
     """
@@ -64,20 +82,25 @@ def search_1241(data, player):
     """
     搜索矿点,ok
     """
-    request = mine_pb2.positionRequest()
-    #request.ParseFromString(data)
-    request.position = 9
-    response = mine_pb2.searchResponse()
-    response.position = request.position
-    if player.mine.can_search(request.position):
-        player.mine.search_mine(request.position)
-        mine_status(player, response.mine)
-        response.res.result = True
-    else:
-        response.res.result = False
-        response.res.result_no = 12410
-        response.res.message = u"此处已探索"
-    print '1241-response', response
+    print 'search_1241'
+    try:
+        request = mine_pb2.positionRequest()
+        request.ParseFromString(data)
+        response = mine_pb2.searchResponse()
+        response.position = request.position
+        print 'response.position', response.position
+        if player.mine.can_search(request.position):
+            player.mine.search_mine(request.position)
+            one_mine = player.mine.mine_info(request.position)
+            one_mine_info(one_mine, response.mine)
+            response.res.result = True
+        else:
+            response.res.result = False
+            response.res.result_no = 12410
+            response.res.message = u"超出探索范围"
+        print '1241-response', response
+    except Exception, e:
+        print 'search', e
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -127,24 +150,40 @@ def query_1243(data, player):
     request = mine_pb2.positionRequest()
     #request.ParseFromString(data)
     response = mine_pb2.mineDetail()
-    request.position = 0
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, msg, last_increase, stones, heros = detail_info
+    ret, msg, last_increase, limit, normal, lucky, heros = detail_info
     if ret == 0:
         response.res.result = True
-        for sid, num in stones.items():
-            one_type = response.stones.add()
+        mstatus = player.mine.mine_info(0)
+        one_mine_info(mstatus, response.mine)
+        response.limit = limit
+        for sid, num in normal.items():
+            one_type = response.normal.add()
             one_type.stone_id = sid
             one_type.stone_num = num
-        response.increase = last_increase
+            
+        for sid, num in lucky.items():
+            one_type = response.lucky.add()
+            one_type.stone_id = sid
+            one_type.stone_num = num
+        
+        response.increase = int(last_increase)
         for hero_id in heros:
             one_hero = response.heros.add()
             one_hero.hid = hero_id
+        
+        mid = player.mine.mid(request.position)
+        main_mine = mine_config.get(mid)
+       
+        response.genUnit = int( (60 / main_mine.timeGroup1) * main_mine.outputGroup1)
+        response.rate = main_mine.increase
+        response.incrcost = main_mine.increasePrice
     else:
         response.res.result = False
         response.res.result_no = ret
         response.res.message = msg
+    print '11111111111'
     print '1243-response', response
     return response.SerializePartialToString()
 
@@ -209,6 +248,7 @@ def harvest_1245(data, player):
     response = mine_pb2.drawStones()
     response.position = request.position
     stones = player.mine.harvest(request.position)
+    print 'stones', stones
     if stones:
         add_stones(player, stones, response)
     else:
@@ -362,11 +402,12 @@ def acc_mine_1250(data, player):
         return response.SerializePartialToString()
     else:
         response.res.result = True
+    print 'price', price
     consume_return_data = item_group_helper.consume(player, [price])  # 消耗
     item_group_helper.get_return(player, consume_return_data, response.consume)
     last_time = player.mine.acc_mine()
     player.mine.save_data()
 
     response.position = 0
-    response.last_time = last_time
+    response.last_time = int(last_time)
     return response.SerializePartialToString()

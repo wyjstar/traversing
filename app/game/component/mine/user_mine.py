@@ -68,9 +68,10 @@ class ConfigData(object):
     @classmethod
     def shopid_odds(cls, stype=7):
         sids = {}
-        for sid in shop_config.keys():
-            if shop_config[sid].type == stype:
-                sids[sid]  = shop_config[sid].weight
+        doors = shop_config.get(7)
+        for one in doors:
+            if one.type == stype:
+                sids[one.id]  = one.weight
         return sids
 
 class Mine(object):
@@ -117,8 +118,8 @@ class UserSelf(Mine):
         self._special_harvest = 0 # 特殊符文石最后一次收获时间
         self._special_end = -1 #特殊符文石生产结束时间－1 不限
         self._increase = 0 #增产时间
-        self._stones = {} #当前产出符文石数量
-    
+        self._normal = {} #符文石
+        self._lucky = {} #幸运石
     @classmethod
     def create(cls, uid, nickname):
         user_mine = cls()
@@ -131,19 +132,18 @@ class UserSelf(Mine):
         user_mine._special_harvest = time.time()
         return user_mine
         
-    def gen_stone(self, num, odds_dict, limit):
+    def gen_stone(self, num, odds_dict, limit, store):
         #发放符文石
-        print 'num', num
-        now_data = sum(self._stones.values())
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
         if now_data >= limit:
             return
         for _ in range(0, num):
             stone_id = random_pick(odds_dict, sum(odds_dict.values()))
             stone_id = int(stone_id)
-            if stone_id not in self._stones:
-                self._stones[stone_id] = 1
+            if stone_id not in store:
+                store[stone_id] = 1
             else:
-                self._stones[stone_id] += 1
+                store[stone_id] += 1
             now_data += 1
             if now_data >= limit:
                 break
@@ -160,7 +160,6 @@ class UserSelf(Mine):
             dat = self.dat(now, harvest, dur)
             harvest += dat*(dur*60)
             num = dat*per
-            print 'compute_1'
         else:
             if now <= self._increase:
                 #增产还未结束，从上次结算到当前都在增产
@@ -169,32 +168,37 @@ class UserSelf(Mine):
                 dat = self.dat(now, harvest, dur)
                 harvest += dat*(dur*60)
                 num = int(dat * per * ratio)
-                print 'compute_2'
             else:
                 incr_dat = self.dat(self._increase, harvest, dur)
                 dat1 = int(incr_dat * per * ratio) #增产部分
                 nor_dat = self.dat(now, self._increase, dur)
                 dat2 = (nor_dat*per) #未增产部分
                 num = dat1+dat2
-                print 'compute_3'
         return num
     
     def get_cur(self, now):
         #结算到当前的产出
         mine = ConfigData.mine(self._mine_id)
-        if sum(self._stones.values()) >= mine.outputLimited:
-            return self._stones
+        if sum(self._normal.values()) + sum(self._lucky.values()) >= mine.outputLimited:
+            return 
         normal = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest, self._normal_end)
-        self.gen_stone(normal, mine.group1, mine.outputLimited)
+        self.gen_stone(normal, mine.group1, mine.outputLimited, self._normal)
         
         special = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._special_harvest, self._special_end)
-        self.gen_stone(special, mine.randomStoneId, mine.outputLimited)
-        return self._stones
+        self.gen_stone(special, mine.randomStoneId, mine.outputLimited, self._lucky)
+        
     
     def draw_stones(self):
         #领取产出
-        stones = self._stones.copy()
-        self._stones = {}
+        stones = {}
+        for k, v in self._normal.items():
+            stones[k] = v
+        for k, v in self._lucky.items():
+            stones[k] = v
+            
+        stones[110101] = 2
+        stones[110301] = 3
+        stones[120101] = 4
         return stones
     
     def mine_info(self):
@@ -206,8 +210,9 @@ class UserSelf(Mine):
         if now >= self._increase:
             last_increase =  0
         else:
-            last_increase = self._increase - now
-        return 0, '', last_increase, self._stones, []  # ret, msg, last_increase, stones, heros
+            last_increase = self._increase
+        mine = ConfigData.mine(self._mine_id)
+        return 0, '', last_increase, mine.outputLimited, self._normal, self._lucky, []  # ret, msg, last_increase, limit, normal, lucky, heros
     
     def price(self):
         mine = ConfigData.mine(self._mine_id)
@@ -220,10 +225,9 @@ class UserSelf(Mine):
         mine = ConfigData.mine(self._mine_id)
         if self._increase < now:
             self._increase = now + mine.increasTime * 60
-            return mine.increasTime * 60
         else:
             self._increase += mine.increasTime * 60
-            return self._increase - now
+        return self._increase
     
 class PlayerField(UserSelf):
     """
@@ -453,9 +457,7 @@ class UserMine(Component):
         
     def init_data(self):
         mine_data = tb_character_mine.getObjData(self.owner.base_info.id)
-
         if mine_data:
-            print 'init_data', mine_data
             mine = mine_data.get('mine')
             all_mine = mine.get('1')
             if all_mine:
@@ -524,7 +526,7 @@ class UserMine(Component):
         能否探索
         """
         num = base_config['warFogStrongpointNum']
-        if len(self._mine) >= num or position in self._mine:
+        if len(self._mine) >= num + 1:
             return False
         return True
     
@@ -564,6 +566,8 @@ class UserMine(Component):
                 self._update = True
     
     def search_mine(self, position):
+        if position in self._mine:
+            return self._mine[position]
         odds = base_config['warFogStrongpointOdds']
         odds1 = base_config['warFogStrongpointOdds2']
         lively = False
@@ -601,6 +605,11 @@ class UserMine(Component):
             mine_infos.append(mine_info)
         return mine_infos
     
+    def mine_info(self, position):
+        info = self._mine[position].mine_info()
+        info['position'] = position
+        return info
+    
     def harvest(self, position):
         """
         收获
@@ -613,7 +622,7 @@ class UserMine(Component):
             if stones:
                 self._update = True
                 return stones
-        return None
+        return {}
     
     def shop_info(self, position):
         """
@@ -655,7 +664,7 @@ class UserMine(Component):
             detail_data =  self._mine[position].detail_info()
             self._update = True
             return detail_data
-        return 12430, u"矿点不存在", 0, {}, []
+        return 12430, u"矿点不存在", 0, 0, {}, {}, []
     
     def price(self, position):
         return self._mine[position].price()
@@ -675,4 +684,6 @@ class UserMine(Component):
         if position in self._mine:
             self._mine[position].get_blue()
         return -1, None
-        
+    
+    def mid(self, position):
+        return self._mine[position]._mine_id

@@ -16,7 +16,7 @@ message mineData
 	required int32 type = 2; //矿点类型 1玩家占领的野怪矿，2野外矿，3神秘商人，4巨龙宝箱，5副本
 	required int32 status = 3;//矿点状态1生产中，2可收获，3已枯竭，4空闲，5已领取，6副本已进入
 	optional string nickname = 4;//昵称
-	optional int32 last_time = 5;//倒计时
+	optional int32 last_time = 5;//生产结束时间点
 }
 
 //更新矿点信息1240返回
@@ -31,7 +31,7 @@ message searchResponse
 {
 	required CommonResponse res = 1;
 	required int32 position = 2;
-	required mineUpdate mine = 3;//所有位置信息
+	required mineData mine = 3;//矿点信息
 }
 
 //1242请求 地图重置
@@ -66,9 +66,14 @@ message mineDetail
 	required int32 position = 1;//位置
 	required CommonResponse res = 2;//通用返回
 	required mineData mine = 3;
-	repeated stoneData stones = 4;//符文石数据
-	required int32 increase = 5;//增产剩余时间，单位：秒
-	repeated heroData heros = 6;//驻守英雄信息
+	required int32 limit = 4;
+	repeated stoneData normal = 5;//符文石数据
+	repeated stoneData lucky = 6;//符文石数据
+	required int32 increase = 7;//增产剩余时间，单位：秒
+	repeated heroData heros = 8;//驻守英雄信息
+	optional int32 genUnit = 9;//单位产出:个数/小时
+	optional float rate = 10;//增产百分比
+	optional int32 incrcost = 11;//增产花费
 }
 
 //1245返回

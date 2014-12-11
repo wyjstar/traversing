@@ -161,7 +161,7 @@ class PlayerCharacter(Character):
         self._brew.init_data()
         self._travel.init_data()
         # 活跃度
-        # self._tasks.init_data()
+        self._tasks.init_data()
         self._mine.init_data()
         self._stone.init_data()
 
