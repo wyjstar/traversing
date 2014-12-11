@@ -31,6 +31,8 @@ def is_afford(player, item_group):
             return {'result': False, 'result_no': 108}
         elif type_id == const.HIGH_STONE and player.finance.high_stone < num:
             return {'result': False, 'result_no': 109}
+        elif type_id == const.PVP and player.finance.pvp_score < num:
+            return {'result': False, 'result_no': 110}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             if not hero_chip or hero_chip.num < num:
@@ -83,6 +85,10 @@ def consume(player, item_group, shop=None, luck_config=None):
 
         elif type_id == const.HIGH_STONE:
             player.finance.high_stone -= num
+            player.finance.save_data()
+
+        elif type_id == const.PVP:
+            player.finance.pvp_score -= num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
