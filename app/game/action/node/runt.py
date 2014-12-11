@@ -120,6 +120,7 @@ def init_runt_843(data, player):
     response.stone2 = player.runt.stone2
     response.refresh_id = player.runt.refresh_id
 
+    logger.debug(response)
     return response.SerializeToString()
 
 
