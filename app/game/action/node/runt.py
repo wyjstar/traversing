@@ -94,7 +94,7 @@ def runt_pick_842(data, player):
 
 @remoteserviceHandle('gate')
 def init_runt_843(data, player):
-    """符文背包"""
+    """初始化"""
     response = InitRuntResponse()
 
     my_runt = player.runt.m_runt
@@ -103,6 +103,12 @@ def init_runt_843(data, player):
         mrunt = response.runt.add()
         mrunt.runt_id = runt_id
         mrunt.num = num
+
+    if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
+            and time.localtime(player.refresh_times).tm_yday == time.localtime().tm_yday:
+        response.refresh_times = player.runt.refresh_times
+    else:
+        response.refresh_times = 0
 
     response.stone1 = player.runt.stone1
     response.stone2 = player.runt.stone2

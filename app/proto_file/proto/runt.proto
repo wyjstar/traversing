@@ -29,6 +29,7 @@ message InitRuntResponse{
     required int32 stone1 = 2;
     required int32 stone2 = 3;
     required int32 refresh_id = 4;
+    required int32 refresh_times = 5;
 }
 
 message Runt1{
