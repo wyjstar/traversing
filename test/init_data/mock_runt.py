@@ -9,3 +9,4 @@ from shared.db_opear.configs_data.game_configs import stone_config
 def init_runt(player):
     for k, val in stone_config.get('stones').items():
         player.runt.add_runt(k, 10)
+    player.runt.save()
