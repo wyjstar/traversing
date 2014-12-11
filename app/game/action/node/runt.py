@@ -15,16 +15,21 @@ import time
 @remoteserviceHandle('gate')
 def runt_set_841(data, player):
     """镶嵌符文"""
-    args = RunSetRequest()
+    args = RuntSetRequest()
     args.ParseFromString(data)
     hero_no = args.hero_no
     runt_type = args.runt_type
     runt_po = args.runt_po
     runt_id = args.runt_id
 
-    response = RunSetResponse()
+    response = RuntSetResponse()
 
     hero = player.hero_component.get_hero(hero_no)
+
+    if runt_po > base_config.get('totemSpaceNum'+str(runt_type)):
+        response.res.result = False
+        response.res.result_no = 827
+        return response.SerializeToString()
 
     if hero.runt.get(runt_type):
         if hero.runt.get(runt_type).get(runt_po):
@@ -51,13 +56,13 @@ def runt_set_841(data, player):
 @remoteserviceHandle('gate')
 def runt_pick_842(data, player):
     """摘除符文"""
-    args = RunPickRequest()
+    args = RuntPickRequest()
     args.ParseFromString(data)
     hero_no = args.hero_no
     runt_type = args.runt_type
     runt_po = args.runt_po
 
-    response = RunPickResponse()
+    response = RuntPickResponse()
 
     hero = player.hero_component.get_hero(hero_no)
 
