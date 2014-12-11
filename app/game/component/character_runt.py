@@ -33,7 +33,7 @@ class CharacterRuntComponent(Component):
                                    'm_runt': self._m_runt,
                                    'stone1': self._stone1,
                                    'stone2': self._stone2,
-                                   'refresh_id': self.build_reviwfres(),
+                                   'refresh_id': self.build_refresh(),
                                    'refresh_times': self._refresh_times})
 
     def save(self):

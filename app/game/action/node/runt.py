@@ -3,12 +3,13 @@
 created by server on 14-7-17上午11:07.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file.runt_pb2 import RunSetRequest, RunSetResponse, \
-    RunPickRequest, RunPickResponse, InitRuntResponse, RefreshRuntResponse, \
-    RefiningRuntRequest, RefiningRuntResponse, BuildRuntResponde
+from app.proto_file.runt_pb2 import RuntSetRequest, RuntSetResponse, \
+    RuntPickRequest, RuntPickResponse, InitRuntResponse, RefreshRuntResponse, \
+    RefiningRuntRequest, RefiningRuntResponse, BuildRuntResponse
 from shared.db_opear.configs_data.game_configs import stone_config
 from gfirefly.server.logobj import logger
 import random
+import time
 
 
 @remoteserviceHandle('gate')
@@ -114,7 +115,6 @@ def init_runt_843(data, player):
     response.stone2 = player.runt.stone2
     response.refresh_id = player.runt.refresh_id
 
-    response.res.result = True
     return response.SerializeToString()
 
 
@@ -186,7 +186,7 @@ def refining_runt_845(data, player):
 @remoteserviceHandle('gate')
 def build_runt_846(data, player):
     """打造刷新"""
-    response = BuildRuntResponde()
+    response = BuildRuntResponse()
 
     runt_id = player.runt.refresh_id
     runt_conf = stone_config.get('stones').get(runt_id)

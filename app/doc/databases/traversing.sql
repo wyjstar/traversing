@@ -272,7 +272,7 @@ CREATE TABLE `tb_character_lively` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `tb_character_travel`;
+DROP TABLE IF EXISTS `tb_character_runt`;
 CREATE TABLE `tb_character_runt` (
   `id` bigint(20) NOT NULL,
   `m_runt` mediumblob,
