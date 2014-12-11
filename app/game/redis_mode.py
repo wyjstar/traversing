@@ -82,3 +82,7 @@ tb_character_brew.insert()
 # 活跃度
 tb_character_tasks = MAdmin('tb_character_lively', 'id')
 tb_character_tasks.insert()
+
+# 符文
+tb_character_runt = MAdmin('tb_character_runt', 'id')
+tb_character_runt.insert()

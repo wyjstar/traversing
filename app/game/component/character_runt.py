@@ -18,6 +18,7 @@ class CharacterRuntComponent(Component):
         self._stone1 = 0  # 晶石
         self._stone2 = 0  # 原石
         self._refresh_id = 0  # 刷新石头id
+        self._refresh_times = [0, 1]  # 已经使用次数，上次使用时间
 
     def init_data(self):
         runt_data = tb_character_runt.getObjData(self.owner.base_info.id)
@@ -26,19 +27,22 @@ class CharacterRuntComponent(Component):
             self._stone1 = runt_data.get('stone1')
             self._stone2 = runt_data.get('stone2')
             self._refresh_id = runt_data.get('refresh_id')
+            self._refresh_times = runt_data.get('refresh_times')
         else:
             tb_character_runt.new({'id': self.owner.base_info.id,
                                    'm_runt': self._m_runt,
                                    'stone1': self._stone1,
                                    'stone2': self._stone2,
-                                   'refresh_id': self.build_refres()})
+                                   'refresh_id': self.build_reviwfres(),
+                                   'refresh_times': self._refresh_times})
 
     def save(self):
         data_obj = tb_character_runt.getObj(self.owner.base_info.id)
         data_obj.update_multi({'m_runt': self._m_runt,
                                'stone1': self._stone1,
                                'stone2': self._stone2,
-                               'refresh_id': self._refresh_id})
+                               'refresh_id': self._refresh_id,
+                               'refresh_times': self._refresh_times})
 
     def build_refresh(self):
         refresh_id = None
@@ -100,3 +104,11 @@ class CharacterRuntComponent(Component):
     @refresh_id.setter
     def refresh_id(self, value):
         self._refresh_id = value
+
+    @property
+    def refresh_times(self):
+        return self._refresh_times
+
+    @refresh_times.setter
+    def refresh_times(self, value):
+        self._refresh_times = value
