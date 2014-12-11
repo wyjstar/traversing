@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='runt.proto',
   package='',
-  serialized_pb='\n\nrunt.proto\x1a\x0c\x63ommon.proto\"U\n\rRunSetRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x02(\x05\x12\x0f\n\x07runt_id\x18\x04 \x02(\x05\".\n\x0eRunSetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"F\n\x0fRuntPickRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x01(\x05\"0\n\x10RuntPickResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\\\n\x10InitRuntResponse\x12\x14\n\x04runt\x18\x01 \x03(\x0b\x32\x06.Runt1\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x12\n\nrefresh_id\x18\x04 \x02(\x05\"%\n\x05Runt1\x12\x0f\n\x07runt_id\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05\"G\n\x13RefreshRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nrefresh_id\x18\x02 \x02(\x05\"+\n\x13RefiningRuntRequest\x12\x14\n\x04runt\x18\x01 \x03(\x0b\x32\x06.Runt1\"j\n\x14RefiningRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x14\n\x04runt\x18\x04 \x03(\x0b\x32\x06.Runt1\"1\n\x11\x42uildRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\nrunt.proto\x1a\x0c\x63ommon.proto\"U\n\rRunSetRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x02(\x05\x12\x0f\n\x07runt_id\x18\x04 \x02(\x05\".\n\x0eRunSetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"F\n\x0fRuntPickRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x01(\x05\"0\n\x10RuntPickResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"s\n\x10InitRuntResponse\x12\x14\n\x04runt\x18\x01 \x03(\x0b\x32\x06.Runt1\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x12\n\nrefresh_id\x18\x04 \x02(\x05\x12\x15\n\rrefresh_times\x18\x05 \x02(\x05\"%\n\x05Runt1\x12\x0f\n\x07runt_id\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05\"G\n\x13RefreshRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nrefresh_id\x18\x02 \x02(\x05\"+\n\x13RefiningRuntRequest\x12\x14\n\x04runt\x18\x01 \x03(\x0b\x32\x06.Runt1\"j\n\x14RefiningRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x14\n\x04runt\x18\x04 \x03(\x0b\x32\x06.Runt1\"1\n\x11\x42uildRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -201,6 +201,13 @@ _INITRUNTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='refresh_times', full_name='InitRuntResponse.refresh_times', index=4,
+      number=5, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -211,7 +218,7 @@ _INITRUNTRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=285,
-  serialized_end=377,
+  serialized_end=400,
 )
 
 
@@ -245,8 +252,8 @@ _RUNT1 = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=379,
-  serialized_end=416,
+  serialized_start=402,
+  serialized_end=439,
 )
 
 
@@ -280,8 +287,8 @@ _REFRESHRUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=418,
-  serialized_end=489,
+  serialized_start=441,
+  serialized_end=512,
 )
 
 
@@ -308,8 +315,8 @@ _REFININGRUNTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=491,
-  serialized_end=534,
+  serialized_start=514,
+  serialized_end=557,
 )
 
 
@@ -357,8 +364,8 @@ _REFININGRUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=536,
-  serialized_end=642,
+  serialized_start=559,
+  serialized_end=665,
 )
 
 
@@ -385,8 +392,8 @@ _BUILDRUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=644,
-  serialized_end=693,
+  serialized_start=667,
+  serialized_end=716,
 )
 
 _RUNSETRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
