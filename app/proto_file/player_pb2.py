@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player.proto',
   package='',
-  serialized_pb='\n\x0cplayer.proto\"z\n\tFinancePB\x12\x0c\n\x04\x63oin\x18\x01 \x01(\x05\x12\x0c\n\x04gold\x18\x02 \x01(\x05\x12\x11\n\thero_soul\x18\x03 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x04 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\x05 \x01(\x05\x12\x12\n\nhigh_stone\x18\x06 \x01(\x05')
+  serialized_pb='\n\x0cplayer.proto\"\x8d\x01\n\tFinancePB\x12\x0c\n\x04\x63oin\x18\x01 \x01(\x05\x12\x0c\n\x04gold\x18\x02 \x01(\x05\x12\x11\n\thero_soul\x18\x03 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x04 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\x05 \x01(\x05\x12\x12\n\nhigh_stone\x18\x06 \x01(\x05\x12\x11\n\tpvp_store\x18\x07 \x01(\x05')
 
 
 
@@ -67,6 +67,13 @@ _FINANCEPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='pvp_store', full_name='FinancePB.pvp_store', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -76,8 +83,8 @@ _FINANCEPB = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=16,
-  serialized_end=138,
+  serialized_start=17,
+  serialized_end=158,
 )
 
 DESCRIPTOR.message_types_by_name['FinancePB'] = _FINANCEPB

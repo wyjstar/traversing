@@ -142,6 +142,10 @@ def gain(player, item_group, result=None):
             player.finance.high_stone += num
             player.finance.save_data()
 
+        elif type_id == const.PVP:
+            player.finance.pvp_score += num
+            player.finance.save_data()
+
         elif type_id == const.HERO_CHIP:
             hero_chip = HeroChip(item_no, num)
             player.hero_chip_component.add_chip(hero_chip)
@@ -255,6 +259,8 @@ def get_return(player, return_data, game_resources_response):
             finance_pb.middle_stone += item_num
         elif const.HIGH_STONE == item_type:
             finance_pb.high_stone += item_num
+        elif const.PVP == item_type:
+            finance_pb.pvp_store += item_num
         elif const.HERO_CHIP == item_type:
             hero_chip_pb = game_resources_response.hero_chips.add()
             hero_chip_pb.hero_chip_no = item_no
