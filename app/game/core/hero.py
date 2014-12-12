@@ -144,7 +144,7 @@ class Hero(object):
             for (runt_po, runt_no) in item.items():
                 runt_pb = runt_type_pb.runt.add()
                 runt_pb.runt_po = runt_po
-                runt_pb.runt_no = runt_no
+                runt_pb.runt_id = runt_no
 
     @property
     def hero_info(self):

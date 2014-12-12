@@ -41,7 +41,7 @@ def runt_set_841(data, player):
 
     hero.runt.get(runt_type)[runt_po] = runt_id
 
-    if player.runt.reduce_runt(runt_id, 1):
+    if not player.runt.reduce_runt(runt_id, 1):
         response.res.result = False
         response.res.result_no = 825
         return response.SerializeToString()
@@ -95,6 +95,7 @@ def runt_pick_842(data, player):
     player.finance.save_data()
 
     response.res.result = True
+    print response
     return response.SerializeToString()
 
 

@@ -14,7 +14,7 @@ from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     SettleAutoRequest, SettleAutoResponse, \
     FastFinishAutoRequest, FastFinishAutoResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
-    base_config, stage_config
+    base_config, stage_config, vip_config
 import random
 from gfirefly.server.logobj import logger
 import time
