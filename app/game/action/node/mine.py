@@ -106,6 +106,8 @@ def search_1241(data, player):
         print '1241-response', response
     except Exception, e:
         print 'search', e
+        
+    player.mine.save_data()
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -147,7 +149,7 @@ def reset_1242(data, player):
                 mine_status(player, response.mine)
                 response.res.result = True
     player.mine.save_data()
-    print '1242-response', response
+    #print '1242-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -168,7 +170,6 @@ def query_1243(data, player):
         response.limit = limit
         for sid, num in normal.items():
             one_type = response.normal.add()
-            print type(one_type.stone_id), type(sid), type(num)
             one_type.stone_id = int(sid)
             one_type.stone_num = num
             
@@ -192,7 +193,6 @@ def query_1243(data, player):
         response.res.message = msg
         
     player.mine.save_data()
-    print '11111111111'
     print '1243-response', response
     return response.SerializePartialToString()
 
@@ -216,11 +216,6 @@ def guard_1244(data, player):
     request.ParseFromString(data)
     pos = request.pos  # 矿在地图上所在位置
     response = common_pb2.CommonResponse()
-    resule_code = check_guard(player, pos)
-    if resule_code:
-        response.res.result = False
-        response.res.result_no = resule_code
-        return response.SerializePartialToString()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
@@ -262,10 +257,11 @@ def guard_1244(data, player):
     result_code = save_guard(player, request.pos, info)
     if result_code:
         response.res.result = False
-        response.res.result_no = resule_code
+        response.res.result_no = result_code
         return response.SerializePartialToString()
     
     response.res.result = True
+    player.mine.save_data()
     return response.SerializePartialToString()
 
 def add_stones(player, stones, response):
@@ -275,7 +271,7 @@ def add_stones(player, stones, response):
         one_type = response.stones.add()
         one_type.stone_id = stone_id
         one_type.stone_num = num
-    player.stone.save_data()
+    #player.stone.save_data()
 
 @remoteserviceHandle('gate')
 def harvest_1245(data, player):
@@ -295,6 +291,8 @@ def harvest_1245(data, player):
         response.res.result = False
         response.res.result_no = 12450
         response.res.message = u"没有可以领取的符文石"
+        
+    player.mine.save_data()
     print '1245-response', response
     return response.SerializePartialToString()
 
@@ -343,6 +341,8 @@ def battle_1246(data, player):
     battleresponse.res.result = True
     pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
             record.get("best_skill_id"), record.get("best_skill_level"), battleresponse)
+    
+    player.mine.save_data()
     return response.SerializeToString()
 
 @remoteserviceHandle('gate')
