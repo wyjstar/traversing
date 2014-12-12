@@ -216,11 +216,10 @@ class UserSelf(Mine):
         stones = {}
         for k, v in self._normal.items():
             stones[k] = v
+            self._normal[k] = 0
         for k, v in self._lucky.items():
             stones[k] = v
-            
-        self._normal = {}
-        self._lucky = {}
+            self._lucky[k] = 0
 
         return stones
     
@@ -264,11 +263,27 @@ class PlayerField(UserSelf):
         self._mine_id = 0 #玩家矿和野外矿id
         self._normal_harvest = 0 #普通符文石最后一次收获时间
         self._normal_end = -1 #普通符文石生产结束时间－1不限
-        self._special_harvest = 0 # 特殊符文石最后一次收获时间
-        self._special_end = -1 #特殊符文石生产结束时间－1 不限
+        self._lucky_harvest = 0 # 特殊符文石最后一次收获时间
+        self._lucky_end = -1 #特殊符文石生产结束时间－1 不限
         self._increase = 0 #增产时间
         self._normal = {} #符文石
         self._lucky = {} #幸运石
+        
+    def save_info(self, lineup):
+        info = {
+                'seq':self._seq,
+                'type':self._type,
+                'status':self._status,
+                'nickname':self._nickname,
+                'lineup':lineup,
+                'guard_time':self._guard_time,
+                'mine_id':self._mine_id,
+                'normal_harvest':self._normal_harvest,
+                'lucky_harvest':self._lucky_harvest,
+                'normal_end':self._normal_end,
+                'lucky_end':self._lucky_end,
+                }
+        return info
     
     @classmethod
     def create(cls, uid, nickname, level, lively, sword):
@@ -332,6 +347,15 @@ class PlayerField(UserSelf):
     
     def get_bule(self):
         return self._type, None
+    
+    def guard(self, nickname, info):
+        lock = MineOpt.lock(self._seq)
+        if lock > 1:
+            return 12440 #战斗中
+        self._upt()
+        if self._nickname != nickname:
+            return 12441#非自己的矿
+        
     
 class MonsterField(Mine):
     """
@@ -740,3 +764,11 @@ class UserMine(Component):
     
     def mid(self, position):
         return self._mine[position]._mine_id
+    
+    def save_guard(self, position, info):
+        """
+        驻守
+        """
+        if position in self._mine:
+            result_code = self._mine[position].guard(info)
+            return result_code
