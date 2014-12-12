@@ -5,7 +5,7 @@ Created on 2014-11-24
 @author: hack
 '''
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file import mine_pb2, item_response_pb2, common_pb2
+from app.proto_file import mine_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data.game_configs import shop_config, base_config,\
     mine_config
@@ -214,7 +214,6 @@ def guard_1244(data, player):
     """
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
-    pos = request.pos  # 矿在地图上所在位置
     response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
