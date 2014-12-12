@@ -2,7 +2,9 @@ import "item.proto";
 import "common.proto";
 import "arena_shop.proto";
 import "stage.proto";
+import "line_up.proto";
 import "pvp_rank.proto";
+import "item_response.proto";
 
 //1241,1243,1245,1246,1248,1247, 1249
 message positionRequest
@@ -58,11 +60,6 @@ message stoneData
 	required int32 stone_id = 1;
 	required int32 stone_num = 2;
 }
-//驻守数据
-message heroData
-{
-	required int32 hero_id = 1;
-}
 
 //查看矿点详细信息返回1243
 message mineDetail
@@ -74,7 +71,7 @@ message mineDetail
 	repeated stoneData normal = 5;//符文石数据
 	repeated stoneData lucky = 6;//符文石数据
 	required int32 increase = 7;//增产剩余时间，单位：秒
-	required LineUpResponse lineup = 8;//驻守英雄信息
+	optional LineUpResponse lineup = 8;//驻守英雄信息
 	optional int32 genUnit = 9;//单位产出:个数/小时
 	optional float rate = 10;//增产百分比
 	optional int32 incrcost = 11;//增产花费
@@ -140,6 +137,11 @@ message exchangeResponse
     required GameResourcesResponse gain = 5;
 }
 //1249 返回使用item_response.ItemUseResponse
+message boxReward
+{
+	required int32 position = 1;//位置
+	required ItemUseResponse data = 2; 
+}
 
 //增产返回1250
 message IncreaseResponse

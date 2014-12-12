@@ -77,6 +77,7 @@ def query_1240(data, player):
     """
     response = mine_pb2.mineUpdate()
     mine_status(player, response)
+    player.mine.save_data()
     print '1240-response', response
     return response.SerializePartialToString()
 
@@ -145,6 +146,7 @@ def reset_1242(data, player):
                 player.mine.reset_map()
                 mine_status(player, response.mine)
                 response.res.result = True
+    player.mine.save_data()
     print '1242-response', response
     return response.SerializePartialToString()
 
@@ -154,11 +156,11 @@ def query_1243(data, player):
     查看矿点详细信息
     """
     request = mine_pb2.positionRequest()
-    #request.ParseFromString(data)
+    request.ParseFromString(data)
     response = mine_pb2.mineDetail()
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, msg, last_increase, limit, normal, lucky, heros = detail_info
+    ret, msg, last_increase, limit, normal, lucky, lineup = detail_info
     if ret == 0:
         response.res.result = True
         mstatus = player.mine.mine_info(0)
@@ -166,18 +168,17 @@ def query_1243(data, player):
         response.limit = limit
         for sid, num in normal.items():
             one_type = response.normal.add()
-            one_type.stone_id = sid
+            print type(one_type.stone_id), type(sid), type(num)
+            one_type.stone_id = int(sid)
             one_type.stone_num = num
             
         for sid, num in lucky.items():
             one_type = response.lucky.add()
-            one_type.stone_id = sid
+            one_type.stone_id = int(sid)
             one_type.stone_num = num
         
         response.increase = int(last_increase)
-        for hero_id in heros:
-            one_hero = response.heros.add()
-            one_hero.hid = hero_id
+        response.lineup.ParseFromString(lineup)
         
         mid = player.mine.mid(request.position)
         main_mine = mine_config.get(mid)
@@ -189,6 +190,8 @@ def query_1243(data, player):
         response.res.result = False
         response.res.result_no = ret
         response.res.message = msg
+        
+    player.mine.save_data()
     print '11111111111'
     print '1243-response', response
     return response.SerializePartialToString()
@@ -197,17 +200,12 @@ def save_guard(player, position, info):
     """
     驻守矿点
     """
-    pass
+    result_code = player.mine.save_guard(position, info)
+    return result_code
     
 def get_guard(player, position):
-    info = {}
+    info = player.mine.get_guard(position)
     return info
-
-def check_guard(player, position):
-    """
-    检查驻守矿点信息
-    """
-    pass
     
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
@@ -365,7 +363,7 @@ def query_shop_1247(data, player):
     else:
         response.res.result = False
         response.res.message = u"商人不存在"
-        
+    player.mine.save_data()
     print 'query_shop_1247-response', response
     return response.SerializePartialToString()
 
@@ -432,15 +430,17 @@ def reward_1249(data, player):
     """
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
-    response = item_response_pb2.ItemUseResponse()
+    response = mine_pb2.boxReward()
+    response.position = request.position
+    items = response.data
     if not player.mine.reward(request.position):
-        response.res.result = False
-        response.res.result_no = 12490
-        response.res.message = u"已领取"
-        return response.SerializePartialToString()
+        items.res.result = False
+        items.res.result_no = 12490
+        items.res.message = u"已领取"
+        return items.SerializePartialToString()
     player.mine.save_data()
     drop_id = base_config['warFogChest']
-    add_items(player, response, [drop_id])
+    add_items(player, items, [drop_id])
     print 'reward_1249-response', response
     return response.SerializePartialToString()
 
