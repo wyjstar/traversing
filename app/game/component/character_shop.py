@@ -122,7 +122,7 @@ class CharacterShopComponent(Component):
             elif item.weight == -2:
                 weights = sorted(item.get('weightGroup'), reverse=True)
                 for w in weights:
-                    if luck_num > w:
+                    if luck_num >= w:
                         items[item.id] = item.get('weightGroup')[w]
                         break
                 else:
