@@ -271,7 +271,7 @@ def guard_1244(data, player):
 def add_stones(player, stones, response):
     response.res.result = True
     for stone_id, num in stones.items():
-        player.stone.add_stones(stone_id, num)
+        #player.stone.add_stones(stone_id, num)
         one_type = response.stones.add()
         one_type.stone_id = stone_id
         one_type.stone_num = num
