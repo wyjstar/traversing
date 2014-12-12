@@ -5,7 +5,7 @@ Created on 2014-11-24
 @author: hack
 '''
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file import mine_pb2, item_response_pb2
+from app.proto_file import mine_pb2, item_response_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data.game_configs import shop_config, base_config,\
     mine_config
@@ -18,7 +18,6 @@ from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 import cPickle
 from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
-from app.proto_file import pvp_rank_pb2
 from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
 from app.game.action.node.line_up import line_up_info
@@ -194,6 +193,22 @@ def query_1243(data, player):
     print '1243-response', response
     return response.SerializePartialToString()
 
+def save_guard(player, position, info):
+    """
+    驻守矿点
+    """
+    pass
+    
+def get_guard(player, position):
+    info = {}
+    return info
+
+def check_guard(player, position):
+    """
+    检查驻守矿点信息
+    """
+    pass
+    
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
     """
@@ -202,6 +217,12 @@ def guard_1244(data, player):
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
     pos = request.pos  # 矿在地图上所在位置
+    response = common_pb2.CommonResponse()
+    resule_code = check_guard(player, pos)
+    if resule_code:
+        response.res.result = False
+        response.res.result_no = resule_code
+        return response.SerializePartialToString()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
@@ -213,8 +234,16 @@ def guard_1244(data, player):
         for equipment_slot in slot.equipment_slots:
             equipment_slot = EquipmentSlotComponent(equipment_slot.slot_no, activation=True, equipment_id=slot.equipment_id)
             line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
+            # 标记装备已驻守
+            equip = player.equipment_component.get_equipment(slot.equipment_id)
+            equip.is_guard = True
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
+        
+        # 标记武将已驻守
+        hero = player.hero_component.get_hero(slot.hero_no)
+        hero.is_guard = True
+        
 
     battle_units = {} #需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
@@ -232,8 +261,14 @@ def guard_1244(data, player):
     info["character_id"] = player.base_info.id
     info["line_up"] = line_up_info(player).SerializePartialToString()
 
-    str_line_up_data = cPickle.dumps(info) #序列化的阵容信息
-    # todo: 保存信息
+    result_code = save_guard(player, request.pos, info)
+    if result_code:
+        response.res.result = False
+        response.res.result_no = resule_code
+        return response.SerializePartialToString()
+    
+    response.res.result = True
+    return response.SerializePartialToString()
 
 def add_stones(player, stones, response):
     response.res.result = True
@@ -265,6 +300,15 @@ def harvest_1245(data, player):
     print '1245-response', response
     return response.SerializePartialToString()
 
+
+def process_mine_result(player, position, gain):
+    """
+    玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
+    @param gain: true or false 
+    """
+    pass
+
+
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
     """
@@ -272,11 +316,12 @@ def battle_1246(data, player):
     1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
     2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
     """
-    request = pvp_rank_pb2.PvpFightRequest()
+    request = mine_pb2.battleRequest()
     request.ParseFromString(data)
-    __skill = request.skill
+    pvp_data = request.data
+    __skill = pvp_data.skill
     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(request.lineup, player)
+    save_line_up_order(pvp_data.lineup, player)
 
     record = {}
     #todo: 获取驻守数据
@@ -288,13 +333,18 @@ def battle_1246(data, player):
     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
                                record.get('best_skill_no', 0), record.get('level', 1))
     fight_result = process.process()
+    
+    response = mine_pb2.battleResponse()
+    if fight_result:
+        process_mine_result(player, request.position, response.gain)
 
     logger.debug("fight result:%s" % fight_result)
 
-    response = pvp_rank_pb2.PvpFightResponse()
-    response.res.result = True
+    
+    battleresponse = response.data
+    battleresponse.res.result = True
     pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
-            record.get("best_skill_id"), record.get("best_skill_level"), response)
+            record.get("best_skill_id"), record.get("best_skill_level"), battleresponse)
     return response.SerializeToString()
 
 @remoteserviceHandle('gate')
@@ -421,15 +471,3 @@ def acc_mine_1250(data, player):
     response.position = 0
     response.last_time = int(last_time)
     return response.SerializePartialToString()
-
-
-@remoteserviceHandle('gate')
-def mine_show_player_info_1253(data, player):
-    """展示玩家信息"""
-    # todo:获取保存的
-    request = mine_pb2.MinePlayerInfoRequest()
-    request.ParseFromString(data)
-    pos = request.pos # 矿在地图的位置
-    info = {}
-    # todo: 找到保存的数据
-    return info.get("line_up", "")

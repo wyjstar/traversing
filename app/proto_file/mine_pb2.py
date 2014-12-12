@@ -12,12 +12,13 @@ import item_pb2
 import common_pb2
 import arena_shop_pb2
 import stage_pb2
+import pvp_rank_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='mine.proto',
   package='',
-  serialized_pb='\n\nmine.proto\x1a\nitem.proto\x1a\x0c\x63ommon.proto\x1a\x10\x61rena_shop.proto\x1a\x0bstage.proto\"#\n\x0fpositionRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\"_\n\x08mineData\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0c\n\x04type\x18\x02 \x02(\x05\x12\x0e\n\x06status\x18\x03 \x02(\x05\x12\x10\n\x08nickname\x18\x04 \x01(\t\x12\x11\n\tlast_time\x18\x05 \x01(\x05\"c\n\nmineUpdate\x12\x13\n\x0breset_today\x18\x01 \x02(\x05\x12\x12\n\nreset_free\x18\x02 \x02(\x05\x12\x13\n\x0breset_count\x18\x03 \x02(\x05\x12\x17\n\x04mine\x18\x04 \x03(\x0b\x32\t.mineData\"Y\n\x0esearchResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08position\x18\x02 \x02(\x05\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\"\x18\n\x08resetMap\x12\x0c\n\x04\x66ree\x18\x01 \x02(\x05\"\x7f\n\rresetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x19\n\x04mine\x18\x03 \x02(\x0b\x32\x0b.mineUpdate\x12\x0c\n\x04\x66ree\x18\x04 \x02(\x05\"0\n\tstoneData\x12\x10\n\x08stone_id\x18\x01 \x02(\x05\x12\x11\n\tstone_num\x18\x02 \x02(\x05\"\x1b\n\x08heroData\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05\"\xf8\x01\n\nmineDetail\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\x12\r\n\x05limit\x18\x04 \x02(\x05\x12\x1a\n\x06normal\x18\x05 \x03(\x0b\x32\n.stoneData\x12\x19\n\x05lucky\x18\x06 \x03(\x0b\x32\n.stoneData\x12\x10\n\x08increase\x18\x07 \x02(\x05\x12\x18\n\x05heros\x18\x08 \x03(\x0b\x32\t.heroData\x12\x0f\n\x07genUnit\x18\t \x01(\x05\x12\x0c\n\x04rate\x18\n \x01(\x02\x12\x10\n\x08incrcost\x18\x0b \x01(\x05\"X\n\ndrawStones\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12\x1a\n\x06stones\x18\x03 \x03(\x0b\x32\n.stoneData\"+\n\x08shopInfo\x12\x0f\n\x07shop_id\x18\x01 \x02(\x05\x12\x0e\n\x06status\x18\x02 \x02(\x05\"U\n\nshopStatus\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x17\n\x04shop\x18\x02 \x03(\x0b\x32\t.shopInfo\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"4\n\x0f\x65xchangeRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\"\xa2\x01\n\x10\x65xchangeResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x04 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x05 \x02(\x0b\x32\x16.GameResourcesResponse\"~\n\x10IncreaseResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x11\n\tlast_time\x18\x02 \x02(\x05\x12\'\n\x07\x63onsume\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x04 \x02(\x0b\x32\x0f.CommonResponse\"^\n\x10MineGuardRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12&\n\rline_up_slots\x18\x02 \x03(\x0b\x32\x0f.MineLineUpSlot\x12\x15\n\rbest_skill_id\x18\x03 \x01(\x05\"_\n\x0eMineLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12+\n\x0f\x65quipment_slots\x18\x03 \x03(\x0b\x32\x12.MineEquipmentSlot\":\n\x11MineEquipmentSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x02(\x05\"$\n\x15MinePlayerInfoRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05')
+  serialized_pb='\n\nmine.proto\x1a\nitem.proto\x1a\x0c\x63ommon.proto\x1a\x10\x61rena_shop.proto\x1a\x0bstage.proto\x1a\x0epvp_rank.proto\"#\n\x0fpositionRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\"_\n\x08mineData\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0c\n\x04type\x18\x02 \x02(\x05\x12\x0e\n\x06status\x18\x03 \x02(\x05\x12\x10\n\x08nickname\x18\x04 \x01(\t\x12\x11\n\tlast_time\x18\x05 \x01(\x05\"c\n\nmineUpdate\x12\x13\n\x0breset_today\x18\x01 \x02(\x05\x12\x12\n\nreset_free\x18\x02 \x02(\x05\x12\x13\n\x0breset_count\x18\x03 \x02(\x05\x12\x17\n\x04mine\x18\x04 \x03(\x0b\x32\t.mineData\"Y\n\x0esearchResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08position\x18\x02 \x02(\x05\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\"\x18\n\x08resetMap\x12\x0c\n\x04\x66ree\x18\x01 \x02(\x05\"\x7f\n\rresetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x19\n\x04mine\x18\x03 \x02(\x0b\x32\x0b.mineUpdate\x12\x0c\n\x04\x66ree\x18\x04 \x02(\x05\"0\n\tstoneData\x12\x10\n\x08stone_id\x18\x01 \x02(\x05\x12\x11\n\tstone_num\x18\x02 \x02(\x05\"\x1b\n\x08heroData\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05\"\xf8\x01\n\nmineDetail\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\x12\r\n\x05limit\x18\x04 \x02(\x05\x12\x1a\n\x06normal\x18\x05 \x03(\x0b\x32\n.stoneData\x12\x19\n\x05lucky\x18\x06 \x03(\x0b\x32\n.stoneData\x12\x10\n\x08increase\x18\x07 \x02(\x05\x12\x18\n\x05heros\x18\x08 \x03(\x0b\x32\t.heroData\x12\x0f\n\x07genUnit\x18\t \x01(\x05\x12\x0c\n\x04rate\x18\n \x01(\x02\x12\x10\n\x08incrcost\x18\x0b \x01(\x05\"X\n\ndrawStones\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12\x1a\n\x06stones\x18\x03 \x03(\x0b\x32\n.stoneData\"A\n\rbattleRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1e\n\x04\x64\x61ta\x18\x02 \x02(\x0b\x32\x10.PvpFightRequest\"i\n\x0e\x62\x61ttleResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1f\n\x04\x64\x61ta\x18\x02 \x02(\x0b\x32\x11.PvpFightResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse\"+\n\x08shopInfo\x12\x0f\n\x07shop_id\x18\x01 \x02(\x05\x12\x0e\n\x06status\x18\x02 \x02(\x05\"U\n\nshopStatus\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x17\n\x04shop\x18\x02 \x03(\x0b\x32\t.shopInfo\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"4\n\x0f\x65xchangeRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\"\xa2\x01\n\x10\x65xchangeResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x04 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x05 \x02(\x0b\x32\x16.GameResourcesResponse\"~\n\x10IncreaseResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x11\n\tlast_time\x18\x02 \x02(\x05\x12\'\n\x07\x63onsume\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x04 \x02(\x0b\x32\x0f.CommonResponse\"^\n\x10MineGuardRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12&\n\rline_up_slots\x18\x02 \x03(\x0b\x32\x0f.MineLineUpSlot\x12\x15\n\rbest_skill_id\x18\x03 \x01(\x05\"_\n\x0eMineLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12+\n\x0f\x65quipment_slots\x18\x03 \x03(\x0b\x32\x12.MineEquipmentSlot\":\n\x11MineEquipmentSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x02(\x05\"$\n\x15MinePlayerInfoRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05')
 
 
 
@@ -45,8 +46,8 @@ _POSITIONREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=71,
-  serialized_end=106,
+  serialized_start=87,
+  serialized_end=122,
 )
 
 
@@ -101,8 +102,8 @@ _MINEDATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=108,
-  serialized_end=203,
+  serialized_start=124,
+  serialized_end=219,
 )
 
 
@@ -150,8 +151,8 @@ _MINEUPDATE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=205,
-  serialized_end=304,
+  serialized_start=221,
+  serialized_end=320,
 )
 
 
@@ -192,8 +193,8 @@ _SEARCHRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=306,
-  serialized_end=395,
+  serialized_start=322,
+  serialized_end=411,
 )
 
 
@@ -220,8 +221,8 @@ _RESETMAP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=397,
-  serialized_end=421,
+  serialized_start=413,
+  serialized_end=437,
 )
 
 
@@ -269,8 +270,8 @@ _RESETRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=423,
-  serialized_end=550,
+  serialized_start=439,
+  serialized_end=566,
 )
 
 
@@ -304,8 +305,8 @@ _STONEDATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=552,
-  serialized_end=600,
+  serialized_start=568,
+  serialized_end=616,
 )
 
 
@@ -332,8 +333,8 @@ _HERODATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=602,
-  serialized_end=629,
+  serialized_start=618,
+  serialized_end=645,
 )
 
 
@@ -430,8 +431,8 @@ _MINEDETAIL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=632,
-  serialized_end=880,
+  serialized_start=648,
+  serialized_end=896,
 )
 
 
@@ -472,8 +473,85 @@ _DRAWSTONES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=882,
-  serialized_end=970,
+  serialized_start=898,
+  serialized_end=986,
+)
+
+
+_BATTLEREQUEST = _descriptor.Descriptor(
+  name='battleRequest',
+  full_name='battleRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='position', full_name='battleRequest.position', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='battleRequest.data', index=1,
+      number=2, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=988,
+  serialized_end=1053,
+)
+
+
+_BATTLERESPONSE = _descriptor.Descriptor(
+  name='battleResponse',
+  full_name='battleResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='position', full_name='battleResponse.position', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='battleResponse.data', index=1,
+      number=2, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='battleResponse.gain', index=2,
+      number=3, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1055,
+  serialized_end=1160,
 )
 
 
@@ -507,8 +585,8 @@ _SHOPINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=972,
-  serialized_end=1015,
+  serialized_start=1162,
+  serialized_end=1205,
 )
 
 
@@ -549,8 +627,8 @@ _SHOPSTATUS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1017,
-  serialized_end=1102,
+  serialized_start=1207,
+  serialized_end=1292,
 )
 
 
@@ -584,8 +662,8 @@ _EXCHANGEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1104,
-  serialized_end=1156,
+  serialized_start=1294,
+  serialized_end=1346,
 )
 
 
@@ -640,8 +718,8 @@ _EXCHANGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1159,
-  serialized_end=1321,
+  serialized_start=1349,
+  serialized_end=1511,
 )
 
 
@@ -689,8 +767,8 @@ _INCREASERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1323,
-  serialized_end=1449,
+  serialized_start=1513,
+  serialized_end=1639,
 )
 
 
@@ -731,8 +809,8 @@ _MINEGUARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1451,
-  serialized_end=1545,
+  serialized_start=1641,
+  serialized_end=1735,
 )
 
 
@@ -773,8 +851,8 @@ _MINELINEUPSLOT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1547,
-  serialized_end=1642,
+  serialized_start=1737,
+  serialized_end=1832,
 )
 
 
@@ -808,8 +886,8 @@ _MINEEQUIPMENTSLOT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1644,
-  serialized_end=1702,
+  serialized_start=1834,
+  serialized_end=1892,
 )
 
 
@@ -836,8 +914,8 @@ _MINEPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1704,
-  serialized_end=1740,
+  serialized_start=1894,
+  serialized_end=1930,
 )
 
 _MINEUPDATE.fields_by_name['mine'].message_type = _MINEDATA
@@ -853,6 +931,9 @@ _MINEDETAIL.fields_by_name['lucky'].message_type = _STONEDATA
 _MINEDETAIL.fields_by_name['heros'].message_type = _HERODATA
 _DRAWSTONES.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _DRAWSTONES.fields_by_name['stones'].message_type = _STONEDATA
+_BATTLEREQUEST.fields_by_name['data'].message_type = pvp_rank_pb2._PVPFIGHTREQUEST
+_BATTLERESPONSE.fields_by_name['data'].message_type = pvp_rank_pb2._PVPFIGHTRESPONSE
+_BATTLERESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _SHOPSTATUS.fields_by_name['shop'].message_type = _SHOPINFO
 _SHOPSTATUS.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _EXCHANGERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -872,6 +953,8 @@ DESCRIPTOR.message_types_by_name['stoneData'] = _STONEDATA
 DESCRIPTOR.message_types_by_name['heroData'] = _HERODATA
 DESCRIPTOR.message_types_by_name['mineDetail'] = _MINEDETAIL
 DESCRIPTOR.message_types_by_name['drawStones'] = _DRAWSTONES
+DESCRIPTOR.message_types_by_name['battleRequest'] = _BATTLEREQUEST
+DESCRIPTOR.message_types_by_name['battleResponse'] = _BATTLERESPONSE
 DESCRIPTOR.message_types_by_name['shopInfo'] = _SHOPINFO
 DESCRIPTOR.message_types_by_name['shopStatus'] = _SHOPSTATUS
 DESCRIPTOR.message_types_by_name['exchangeRequest'] = _EXCHANGEREQUEST
@@ -941,6 +1024,18 @@ class drawStones(_message.Message):
   DESCRIPTOR = _DRAWSTONES
 
   # @@protoc_insertion_point(class_scope:drawStones)
+
+class battleRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _BATTLEREQUEST
+
+  # @@protoc_insertion_point(class_scope:battleRequest)
+
+class battleResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _BATTLERESPONSE
+
+  # @@protoc_insertion_point(class_scope:battleResponse)
 
 class shopInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

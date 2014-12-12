@@ -2,6 +2,7 @@ import "item.proto";
 import "common.proto";
 import "arena_shop.proto";
 import "stage.proto";
+import "pvp_rank.proto";
 
 //1241,1243,1245,1246,1248,1247, 1249
 message positionRequest
@@ -73,7 +74,7 @@ message mineDetail
 	repeated stoneData normal = 5;//符文石数据
 	repeated stoneData lucky = 6;//符文石数据
 	required int32 increase = 7;//增产剩余时间，单位：秒
-	repeated heroData heros = 8;//驻守英雄信息
+	required LineUpResponse lineup = 8;//驻守英雄信息
 	optional int32 genUnit = 9;//单位产出:个数/小时
 	optional float rate = 10;//增产百分比
 	optional int32 incrcost = 11;//增产花费
@@ -85,6 +86,21 @@ message drawStones
 	required int32 position = 1;
 	required CommonResponse res = 2;//通用返回
 	repeated stoneData stones = 3;
+}
+
+//1246请求
+message battleRequest
+{
+	required int32 position = 1; //位置
+	required PvpFightRequest data = 2; //战斗请求数据
+}
+
+//1246返回
+message battleResponse
+{
+	required int32 position = 1; //位置
+	required PvpFightResponse  data = 2;//战斗结果
+	required GameResourcesResponse gain = 3; //奖励
 }
 
 //神秘商人兑换1247请求，查看矿点兑换列表
@@ -168,9 +184,3 @@ message MineEquipmentSlot
 //秘境相关， 战斗结算, command: 1252
 //请求 
 //返回 CommonResponse 或者自己定义协议
-
-//请求玩家信息, command:1253
-//响应协议
-message MinePlayerInfoRequest{
-    required int32 pos = 1;                    // 矿在地图上的位置
-}
