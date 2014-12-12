@@ -21,6 +21,7 @@ from app.proto_file import pvp_rank_pb2
 from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
 from app.game.action.node.line_up import line_up_info
+from app.game.action.node._fight_start_logic import pve_process, pvp_process, pve_assemble_response
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -372,14 +373,66 @@ def acc_mine_1250(data, player):
     response.last_time = last_time
     return response.SerializePartialToString()
 
-
 @remoteserviceHandle('gate')
-def mine_show_player_info_1253(data, player):
-    """展示玩家信息"""
-    # todo:获取保存的
-    request = mine_pb2.MinePlayerInfoRequest()
-    request.ParseFromString(data)
-    pos = request.pos # 矿在地图的位置
-    info = {}
-    # todo: 找到保存的数据
-    return info.get("line_up", "")
+def battle_1253(data, player):
+    """docstring for battle"""
+    request = mine_pb2.MineBattleStart()
+    pos = request.pos                    # 矿所在位置
+    line_up = request.line_up            # 阵容顺序
+    red_best_skill_id = request.unparalleled # 无双编号
+    fid = request.fid                    # 好友ID
+
+
+    mine_info = get_mine_info(pos)
+    response = mine_pb2.MineBattleResponse()
+
+    mine_type = mine_info.get("mine_type") # 根据矿所在位置判断pve or pvp
+    if mine_type == 0:
+        # pve
+        stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
+        stage_type = 5                              # 关卡类型
+        stage_info = pve_process(stage_id, stage_type, line_up, red_best_skill_id, fid, player)
+        result = stage_info.get('result')
+        response.res.result = result
+        if not result:
+            logger.info('进入关卡返回数据:%s', response)
+            response.res.result_no = stage_info.get('result_no')
+            return response.SerializePartialToString()
+        red_units = stage_info.get('red_units')
+        blue_units = stage_info.get('blue_units')
+        blue_skill = stage_info.get('monster_unpara')
+        f_unit = stage_info.get('f_unit')
+        pve_assemble_response(player, red_units, blue_units, red_best_skill_id, blue_skill, f_unit, response)
+
+    elif mine_type == 1:
+        # pvp
+        red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+        red_units = player.fight_cache_component.red_unit
+        info = get_save_guard(pos)
+        blue_units = info.get("battle_units")
+
+        fight_result = pvp_process(player, red_units, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
+        if fight_result:
+            # 返回秘境的结果
+            pass
+
+        pvp_assemble_response(red_units, blue_units, red_best_skill_id, red_best_skill_level,
+            info.get("best_skill_id"), info.get("best_skill_level"), response)
+
+    return response.SerializePartialToString()
+
+
+def get_mine_info(pos):
+    """根据pos获取关卡info.
+    矿的类型：mine type 0/1
+    如果野怪驻守的矿：关卡id
+    玩家驻守的矿：
+    """
+    pass
+
+def get_save_guard(pos):
+    """
+    获取保存的驻守信息
+    """
+    pass
+

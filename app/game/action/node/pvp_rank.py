@@ -17,6 +17,7 @@ from app.game.component.achievement.user_achievement import CountEvent,\
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
+from app.game.action.node._fight_start_logic import pvp_process
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -118,7 +119,6 @@ def pvp_fight_request_1505(data, player):
     request.ParseFromString(data)
     __skill = request.skill
     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(request.lineup, player)
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
@@ -149,12 +149,8 @@ def pvp_fight_request_1505(data, player):
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
-    player.fight_cache_component.awake_hero_units(blue_units)
-    player.fight_cache_component.awake_hero_units(red_units)
 
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-                               record.get('best_skill', 0), record.get('level', 1))
-    fight_result = process.process()
+    fight_result = pvp_process(player, red_units, blue_units, __skill, record.get("best_skill"), record.get("level"))
 
     logger.debug("fight result:%s" % fight_result)
 
