@@ -24,8 +24,6 @@ from skill_buff_config import SkillBuffConfig
 from skill_config import SkillConfig
 from stage_break_config import StageBreakConfig
 from stage_config import StageConfig
-from soul_shop_config import SoulShopConfig
-from arena_shop_config import ArenaShopConfig
 from sign_in_config import SignInConfig
 from warriors_config import WarriorsConfig
 from activity_config import ActivityConfig
@@ -59,7 +57,6 @@ equipment_strengthen_config = {}  # 装备强化等级消耗金币路线
 set_equipment_config = {}
 shop_config = {}
 shop_type_config = {}
-soul_shop_config = {}
 link_config = {}
 stage_config = {}
 monster_config = {}
@@ -78,7 +75,6 @@ robot_born_config = {}
 rand_name_config = {}
 player_exp_config = {}
 arena_fight_config = {}
-arena_shop_config = {}
 hero_breakup_attr_config = {}
 travel_event_config = {}
 language_config = {}
@@ -108,7 +104,6 @@ all_config_name = {
     'skill_config': SkillConfig(),
     'skill_buff_config': SkillBuffConfig(),
     'guild_config': GuildConfig(),
-    'soul_shop_config': SoulShopConfig(),
     'sign_in_config': SignInConfig(),
     'warriors_config': WarriorsConfig(),
     'activity_config': ActivityConfig(),
@@ -120,7 +115,6 @@ all_config_name = {
     'robot_born_config': RobotBornConfig(),
     'player_exp_config': PlayerExpConfig(),
     'arena_fight_config': ArenaFightConfig(),
-    'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),
