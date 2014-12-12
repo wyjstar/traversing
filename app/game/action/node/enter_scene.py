@@ -35,7 +35,7 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.junior_stone = player.finance.junior_stone
     responsedata.middle_stone = player.finance.middle_stone
     responsedata.high_stone = player.finance.high_stone
-    responsedata.pvp_store = player.finance.pvp_store
+    responsedata.pvp_store = player.finance.pvp_score
 
     responsedata.fine_hero = player.last_pick_time.fine_hero
     responsedata.excellent_hero = player.last_pick_time.excellent_hero

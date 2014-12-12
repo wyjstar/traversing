@@ -260,7 +260,7 @@ def get_return(player, return_data, game_resources_response):
         elif const.HIGH_STONE == item_type:
             finance_pb.high_stone += item_num
         elif const.PVP == item_type:
-            finance_pb.pvp_store += item_num
+            finance_pb.pvp_score += item_num
         elif const.HERO_CHIP == item_type:
             hero_chip_pb = game_resources_response.hero_chips.add()
             hero_chip_pb.hero_chip_no = item_no
