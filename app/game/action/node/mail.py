@@ -13,6 +13,7 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.action.root import netforwarding
 import time
 from shared.db_opear.configs_data import data_helper
+from shared.db_opear.configs_data.game_configs import base_config
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -32,7 +33,8 @@ def get_all_mail_info_1301(proto_data, player):
             continue
         mail_pb = response.mails.add()
         mail.update(mail_pb)
-
+    response.target =  base_config['times_get_vigor_from_friend']
+    response.current = player.stamina.get_stamina_times
     # 删除过期公告
     player.mail_component.delete_mails(expire_ids)
     return response.SerializePartialToString()
@@ -139,9 +141,16 @@ def read_mail(mail_ids, mail_type, player):
             response.res.result_no = result.get('result_no')
             return response.SerializePartialToString()
         
-        player.stamina.add_stamina(len(mail_ids)*2)
+        
+        #player.stamina.add_stamina(len(mail_ids)*2)
+        get_prize(player, mail_ids, response)
+        last_times = player.stamina.get_stamina_times
+        player.stamina.get_stamina_times = last_times + len(mail_ids)
         player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
+        response.target = base_config['times_get_vigor_from_friend']
+        response.current = player.stamina.get_stamina_times
+        response.mail_type = mail_type
 
     elif mail_type == 2:
         # 领取奖励
@@ -153,11 +162,12 @@ def read_mail(mail_ids, mail_type, player):
         player.mail_component.delete_mails(mail_ids)
 
     response.res.result = True
+    print response
     return response.SerializePartialToString()
 
 
 def check_gives(mail_ids, player):
-    if len(mail_ids) + player.stamina.get_stamina_times > 15:
+    if len(mail_ids) + player.stamina.get_stamina_times > base_config['times_get_vigor_from_friend']:
         # 一天领取邮件不超过15个
         return {'result': False, 'result_no': 1302}
 

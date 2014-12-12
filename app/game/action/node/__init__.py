@@ -7,6 +7,7 @@ from gfirefly.utils.services import CommandService
 from gfirefly.server.logobj import logger
 from app.game.core.PlayersManager import PlayersManager
 import traceback
+import time
 
 
 class GameCommandService(CommandService):
@@ -16,9 +17,11 @@ class GameCommandService(CommandService):
             logger.error('command %s not Found on service' % str(targetKey))
             print self._targets
             return None
-        if targetKey not in self.unDisplay:
-            logger.info("call method %s on service[%s]" %
-                        (target.__name__, self._name))
+        # if targetKey not in self.unDisplay:
+        #     logger.info("call method %s on service[%s]" %
+        #                 (target.__name__, self._name))
+
+        t = time.time()
         try:
             dynamic_id = args[0]
             # logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
@@ -38,6 +41,8 @@ class GameCommandService(CommandService):
             return None
         except:
             logger.error(traceback.format_exc())
+        logger.info("call method %s on service[%s]:%f",
+                    target.__name__, self._name, time.time() - t)
         return response
 
 

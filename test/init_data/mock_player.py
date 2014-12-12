@@ -12,7 +12,7 @@ def init_player(player):
 
     player.level.level = 60
     player.level.exp = 0
-    player.vip_component.vip_level = 0
+    player.vip_component.vip_level = 10
     player.line_up_component.update_slot_activation()
     player.last_pick_time.fine_hero = 0
     player.last_pick_time.excellent_hero = 0

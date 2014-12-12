@@ -3,6 +3,7 @@
 created by server on 14-7-9下午3:28.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.data_helper import convert_keystr2num
 from shared.db_opear.configs_data.data_helper import parse
 
 
@@ -14,10 +15,17 @@ class ShopConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
+            convert_keystr2num(row.get("weightGroup"))
             row["consume"] = parse(row.get("consume"))
             row["gain"] = parse(row.get("gain"))
             row["extraGain"] = parse(row.get("extraGain"))
             item = CommonItem(row)
             self._items[item.id] = item
+
+            if item.type not in self._items:
+                self._items[item.type] = []
+
+            type_shop = self._items[item.type]
+            type_shop.append(item)
 
         return self._items

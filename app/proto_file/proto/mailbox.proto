@@ -21,6 +21,8 @@ message Mail_PB
 message GetMailInfos
 {
     repeated Mail_PB mails = 1;
+    optional int32 target = 2;
+    optional int32 current = 3;
 }
 
 //读邮件, command : 1302
@@ -35,6 +37,9 @@ message ReadMailResponse
 {
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
+    optional int32 target = 3;
+    optional int32 current = 4;
+    optional int32 mail_type = 5;
 }
 
 //删除邮件, command : 1303

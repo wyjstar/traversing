@@ -92,7 +92,7 @@ def init_unit(slot_no, eles, is_hero=True):
         hero_break_skill_buff_ids(unit_no, break_level)
 
     unit =  do_assemble(unit_no, quality, break_skill_buff_ids, hp, atk, physical_def, magic_def, hit, dodge, cri,
-                cri_coeff, cri_def_coeff, block, ductility, slot_no, level, is_hero=True, is_break_hero=False, unit_name=unit_name)
+                cri_coeff, cri_def_coeff, block, ductility, slot_no, level, break_level, is_hero=True, is_break_hero=False, unit_name=unit_name)
     return unit
 
 

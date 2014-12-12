@@ -15,3 +15,18 @@ def parse(data):
         obj_id = lst[2]
         item_group.append(CommonGroupItem(obj_id, max_num, min_num, typeid))
     return item_group
+
+
+def convert_keystr2num(d):
+    for k in d.keys():
+        nk = None
+        v = d[k]
+        try:
+            nk = eval(k)
+        except:
+            pass
+        if nk is not None:
+            del d[k]
+            d[nk] = v
+        if isinstance(v, dict):
+            convert_keystr2num(v)

@@ -31,8 +31,7 @@ from app.game.component.character_level_gift import CharacterLevelGift
 from app.game.component.character_world_boss import CharacterWorldBoss
 from app.game.component.character_vip import CharacterVIPComponent
 from app.game.component.character_stamina import CharacterStaminaComponent
-from app.game.component.character_soul_shop import CharacterSoulShopComponent
-from app.game.component.character_arena_shop import CharacterArenaShopComponent
+from app.game.component.character_shop import CharacterShopComponent
 from app.game.component.brew.brew import CharacterBrewComponent
 from app.game.component.character_travel import CharacterTravelComponent
 import time
@@ -79,8 +78,7 @@ class PlayerCharacter(Character):
         self._vip = CharacterVIPComponent(self)  # VIP level
 
         self._stamina = CharacterStaminaComponent(self)  # 体力
-        self._soul_shop = CharacterSoulShopComponent(self)  # 武魂商店
-        self._arena_shop = CharacterArenaShopComponent(self)
+        self._shop = CharacterShopComponent(self)  # 商店
         self._brew = CharacterBrewComponent(self)
 
         self._tasks = UserAchievement(self)
@@ -88,7 +86,6 @@ class PlayerCharacter(Character):
         self._stone = UserStone(self)
 
         self._pvp_times = 0  # pvp次数
-        self._soul_shop_refresh_times = 0  # 武魂商店刷新次数
 
         self._travel = CharacterTravelComponent(self)
 
@@ -160,8 +157,7 @@ class PlayerCharacter(Character):
         self._world_boss.init_data()
         self._vip.init_vip(vip_level)
         self._stamina.init_stamina(character_info.get('stamina'))
-        self._soul_shop.init_soul_shop(character_info.get('soul_shop'))
-        self._arena_shop.init_arena_shop(character_info.get('arena_shop'))
+        self._shop.init_data()
         self._brew.init_data()
         self._travel.init_data()
         # 活跃度
@@ -200,7 +196,6 @@ class PlayerCharacter(Character):
                           'pvp_times': 0,
                           'create_time': int(time.time()),
                           'vip_level': 0,
-                          'soul_shop': self._soul_shop.detail_data,
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time())
                           }
@@ -357,12 +352,8 @@ class PlayerCharacter(Character):
         return self._stamina
 
     @property
-    def soul_shop(self):
-        return self._soul_shop
-
-    @property
-    def arena_shop(self):
-        return self._arena_shop
+    def shop(self):
+        return self._shop
 
     @property
     def tasks(self):

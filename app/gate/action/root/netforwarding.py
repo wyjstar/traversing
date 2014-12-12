@@ -106,10 +106,8 @@ def push_message_remote(key, character_id, args, kw):
         child_node = groot.child(oldvcharacter.node)
         return child_node.callbackChild(*args, **kw)
     else:
-        return GlobalObject().remote['transit'].callRemote("push_message",
-                                                           key,
-                                                           character_id,
-                                                           args, kw)
+        transit_remote = GlobalObject().remote['transit']
+        return transit_remote.push_message_remote(key, character_id, args, kw)
 
 
 remoteservice = CommandService('transitremote')
