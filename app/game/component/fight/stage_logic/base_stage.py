@@ -12,3 +12,6 @@ class BaseStage(object):
     def stage_id(self):
         return self._stage_id
 
+
+    def check(self):
+        return {'result': True}

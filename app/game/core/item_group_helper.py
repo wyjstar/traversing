@@ -31,6 +31,8 @@ def is_afford(player, item_group):
             return {'result': False, 'result_no': 108}
         elif type_id == const.HIGH_STONE and player.finance.high_stone < num:
             return {'result': False, 'result_no': 109}
+        elif type_id == const.PVP and player.finance.pvp_score < num:
+            return {'result': False, 'result_no': 110}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             if not hero_chip or hero_chip.num < num:
@@ -50,7 +52,9 @@ def is_afford(player, item_group):
 def consume(player, item_group, shop=None, luck_config=None):
     """消耗"""
     result = []
-    luckValue = luck_config.luckyValue
+    luckValue = None
+    if luck_config:
+        luckValue = luck_config.luckyValue
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
@@ -81,6 +85,10 @@ def consume(player, item_group, shop=None, luck_config=None):
 
         elif type_id == const.HIGH_STONE:
             player.finance.high_stone -= num
+            player.finance.save_data()
+
+        elif type_id == const.PVP:
+            player.finance.pvp_score -= num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
@@ -132,6 +140,10 @@ def gain(player, item_group, result=None):
             player.finance.save_data()
         elif type_id == const.HIGH_STONE:
             player.finance.high_stone += num
+            player.finance.save_data()
+
+        elif type_id == const.PVP:
+            player.finance.pvp_score += num
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
@@ -247,6 +259,8 @@ def get_return(player, return_data, game_resources_response):
             finance_pb.middle_stone += item_num
         elif const.HIGH_STONE == item_type:
             finance_pb.high_stone += item_num
+        elif const.PVP == item_type:
+            finance_pb.pvp_score += item_num
         elif const.HERO_CHIP == item_type:
             hero_chip_pb = game_resources_response.hero_chips.add()
             hero_chip_pb.hero_chip_no = item_no

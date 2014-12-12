@@ -36,6 +36,7 @@ from app.game.component.brew.brew import CharacterBrewComponent
 from app.game.component.character_travel import CharacterTravelComponent
 import time
 from app.game.component.achievement.user_achievement import UserAchievement
+from app.game.component.character_runt import CharacterRuntComponent
 
 
 class PlayerCharacter(Character):
@@ -84,6 +85,7 @@ class PlayerCharacter(Character):
         self._pvp_times = 0  # pvp次数
 
         self._travel = CharacterTravelComponent(self)
+        self._runt = CharacterRuntComponent(self)
 
     def init_player_info(self):
         """初始化角色信息
@@ -92,14 +94,8 @@ class PlayerCharacter(Character):
         character_info = tb_character_info.getObjData(pid)
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
-        coin = character_info['coin']
-        gold = character_info['gold']
-        hero_soul = character_info['hero_soul']
         level = character_info['level']
         exp = character_info['exp']
-        junior_stone = character_info['junior_stone']
-        middle_stone = character_info['middle_stone']
-        high_stone = character_info['high_stone']
         fine_hero_last_pick_time = character_info['fine_hero_last_pick_time']
         excellent_hero_last_pick_time =\
             character_info['excellent_hero_last_pick_time']
@@ -114,12 +110,7 @@ class PlayerCharacter(Character):
         self.base_info.base_name = nickname  # 角色昵称
 
         # ------------初始化角色货币信息------------
-        self._finance.coin = coin
-        self._finance.gold = gold
-        self._finance.hero_soul = hero_soul
-        self._finance.junior_stone = junior_stone
-        self._finance.middle_stone = middle_stone
-        self._finance.high_stone = high_stone
+        self._finance.init_data(character_info)
 
         # ------------初始化上次抽取信息------------
         self._last_pick_time.fine_hero = fine_hero_last_pick_time
@@ -158,6 +149,7 @@ class PlayerCharacter(Character):
         self._travel.init_data()
         # 活跃度
         self._tasks.init_data()
+        self._runt.init_data()
 
     def is_new_character(self):
         """is new character or not"""
@@ -188,6 +180,8 @@ class PlayerCharacter(Character):
                           'fine_equipment_last_pick_time': 0,
                           'excellent_equipment_last_pick_time': 0,
                           'pvp_times': 0,
+                          'pvp_score': 0,
+                          'pvp_count': 0,
                           'create_time': int(time.time()),
                           'vip_level': 0,
                           'stamina': self._stamina.detail_data,
@@ -359,6 +353,10 @@ class PlayerCharacter(Character):
     @property
     def brew(self):
         return self._brew
+
+    @property
+    def runt(self):
+        return self._runt
 
     def save_data(self):
         pid = self.base_info.id

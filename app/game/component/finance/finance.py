@@ -18,6 +18,29 @@ class CharacterFinanceComponent(Component):
         self._junior_stone = 0  # 低级熔炼石头
         self._middle_stone = 0  # 中级熔炼石头
         self._high_stone = 0  # 高级熔炼石头
+        self._pvp_score = 0
+
+    def init_data(self, data):
+        self._coin = data['coin']
+        self._gold = data['gold']
+        self._hero_soul = data['hero_soul']
+        self._junior_stone = data['junior_stone']
+        self._middle_stone = data['middle_stone']
+        self._high_stone = data['high_stone']
+        self._pvp_score = data['pvp_score']
+
+    def save_data(self):
+        """保存数据
+        """
+        props = {'coin': self._coin,
+                 'gold': self._gold,
+                 'hero_soul': self._hero_soul,
+                 'junior_stone': self._junior_stone,
+                 'middle_stone': self._middle_stone,
+                 'high_stone': self._high_stone,
+                 'pvp_score': self._pvp_score}
+        character_obj = tb_character_info.getObj(self.owner.base_info.id)
+        character_obj.update_multi(props)
 
     @property
     def junior_stone(self):
@@ -67,6 +90,14 @@ class CharacterFinanceComponent(Component):
     def gold(self, gold):
         self._gold = gold
 
+    @property
+    def pvp_score(self):
+        return self._pvp_score
+
+    @pvp_score.setter
+    def pvp_score(self, value):
+        self._pvp_score = value
+
     def modify_single_attr(self, attr_name='', num=0, add=True):
         """修改单个属性的值
         @param attr_name:  属性名称 str
@@ -88,18 +119,6 @@ class CharacterFinanceComponent(Component):
             num = info.get('num', 0)
             add = info.get('add', True)
             self.modify_single_attr(attr_name, num, add)
-
-    def save_data(self):
-        """保存数据
-        """
-        props = {'coin': self._coin,
-                 'gold': self._gold,
-                 'hero_soul': self._hero_soul,
-                 'junior_stone': self._junior_stone,
-                 'middle_stone': self._middle_stone,
-                 'high_stone': self._high_stone}
-        character_obj = tb_character_info.getObj(self.owner.base_info.id)
-        character_obj.update_multi(props)
 
     def is_afford(self, coin):
         if self._coin < coin:

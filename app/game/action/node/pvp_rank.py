@@ -44,6 +44,10 @@ def pvp_player_rank_request_1502(data, player):
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    response.player_rank = record.get('id') if record else -1
+
+    prere = dict(character_id=player.base_info.id)
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
 
     if not record:
         return pvp_player_rank_refresh_request(data, player)
@@ -135,11 +139,12 @@ def pvp_fight_request_1505(data, player):
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
-    player.fight_cache_component.awake_hero_units(blue_units)
+    # player.fight_cache_component.awake_hero_units(blue_units)
     player.fight_cache_component.awake_hero_units(red_units)
 
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-                               record.get('best_skill', 0), record.get('level', 1))
+    process = BattlePVPProcess(red_units, __best_skill, player.level.level,
+                               blue_units, record.get('best_skill', 0),
+                               record.get('level', 1))
     fight_result = process.process()
 
     logger.debug("fight result:%s" % fight_result)
@@ -191,10 +196,8 @@ def pvp_player_rank_refresh_request(data, player):
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
-    if not record:
-        cur_rank = 300
-    else:
-        cur_rank = record.get('id')
+    response.player_rank = record.get('id') if record else -1
+    cur_rank = record.get('id') if record else 300
 
     ranks = []
     for v in arena_fight_config.values():

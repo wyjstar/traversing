@@ -81,6 +81,7 @@ class Master:
             for sername in sersconf.keys():
                 # cmds = "kernprof -o app/logs/%s.lprof -l -b %s %s %s " % (sername, self.mainpath, sername, self.configpath)
                 cmds = 'python %s %s %s' % (self.mainpath, sername, self.configpath)
+                # cmds = 'python -m profile %s %s %s' % (self.mainpath, sername, self.configpath)
                 # print 'mutiple', cmds
                 subprocess.Popen(cmds, shell=True)
             reactor.run()

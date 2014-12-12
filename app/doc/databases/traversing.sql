@@ -270,3 +270,15 @@ CREATE TABLE `tb_character_lively` (
   `last_day` varchar(8),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `tb_character_runt`;
+CREATE TABLE `tb_character_runt` (
+  `id` bigint(20) NOT NULL,
+  `m_runt` mediumblob,
+  `stone1` int(11),
+  `stone2` int(11),
+  `refresh_id` bigint(20),
+  `refresh_times` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

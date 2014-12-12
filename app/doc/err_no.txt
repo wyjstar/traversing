@@ -41,7 +41,7 @@
 800: 未知错误
 801: 已经领取过 （登录奖励）
 802: 条件没有达到
-803: 未开启
+803: 未开启BuildRuntResponde
 804: 今日不开启
 805: 次数已用完
 806: 60s内不可聊天
@@ -59,3 +59,10 @@
 818: auto travel, this start time not find
 819: auto travel, dont finish
 820: auto travel, already finish
+822: vip level 不够
+821: 符文镶嵌位置已经有符文
+823: 符文不存在
+824: 符文背包已满
+825: 符文数量不足
+826: 材料不足
+827: 镶嵌位置有错
