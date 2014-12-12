@@ -5,4 +5,5 @@ message FinancePB{
     optional int32 junior_stone = 4;
     optional int32 middle_stone = 5;
     optional int32 high_stone = 6;
+	optional int32 pvp_store = 7;
 }

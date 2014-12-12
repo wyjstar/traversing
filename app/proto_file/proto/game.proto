@@ -7,38 +7,39 @@ message GameLoginRequest{
 
 //返回结果
 message GameLoginResponse{
-     required CommonResponse res = 1;
-     optional int32 id = 17;
-     optional string nickname = 2;
-     //等级
-     optional int32 level = 3;
-     optional int32 exp = 4;
-     //金币
-     optional int32 coin = 5;
-     optional int32 gold = 6;
-     optional int32 hero_soul = 7;
-     optional int32 junior_stone = 8;
-     optional int32 middle_stone = 9;
-     optional int32 high_stone = 10;
-     //抽取时间
-     optional int32 fine_hero = 11;
-     optional int32 excellent_hero = 12;
-     optional int32 fine_equipment = 13;
-     optional int32 excellent_equipment = 14;
+    required CommonResponse res = 1;
+    optional int32 id = 2;
+    optional string nickname = 3;
+    //等级
+    optional int32 level = 4;
+    optional int32 exp = 5;
+    //金币
+    optional int32 coin = 6;
+    optional int32 gold = 7;
+    optional int32 hero_soul = 8;
+    optional int32 junior_stone = 9;
+    optional int32 middle_stone = 10;
+    optional int32 high_stone = 11;
+	optional int32 pvp_store = 12;
+    //抽取时间
+    optional int32 fine_hero = 13;
+    optional int32 excellent_hero = 14;
+    optional int32 fine_equipment = 15;
+    optional int32 excellent_equipment = 16;
 
-     //other
-     optional int32 stamina = 15;
-     optional int32 pvp_times = 16;
-     optional int32 vip_level = 18;
-     optional int32 server_time = 19;
-     optional bytes guild_id = 20;
-     optional float combat_power = 21;
+    //other
+    optional int32 stamina = 17;
+    optional int32 pvp_times = 18;
+    optional int32 vip_level = 19;
+    optional int32 server_time = 20;
+    optional bytes guild_id = 21;
+    optional float combat_power = 22;
 
-     //stamina
-     optional int32 get_stamina_times = 23; //通过邮件获取体力次数
-     optional int32 buy_stamina_times = 24; //购买体力次数
-     optional int32 last_gain_stamina_time = 25; //上次获得体力时间
+    //stamina
+    optional int32 get_stamina_times = 23; //通过邮件获取体力次数
+    optional int32 buy_stamina_times = 24; //购买体力次数
+    optional int32 last_gain_stamina_time = 25; //上次获得体力时间
 
-     optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数刷新次数
+    optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数刷新次数
 
 }
