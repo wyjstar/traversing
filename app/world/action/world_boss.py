@@ -97,4 +97,8 @@ def pvb_player_info_remote(no):
     return world_boss.get_rank_item_by_rankno(no).get("line_up_info")
 
 
+@rootserviceHandle
+def pvb_get_boss_num():
 
+
+    pass

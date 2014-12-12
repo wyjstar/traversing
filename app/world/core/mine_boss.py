@@ -38,6 +38,12 @@ class MineBossManager(object):
     def remove(self, boss_id):
         boss_name, boss_demage_name = self.get_boss_name(boss_id)
 
+    def get_boss_num(self):
+        """
+        获取boss数量
+        """
+        return len(self._bosses)
+
 
 
 class MineBoss(BaseBoss):
