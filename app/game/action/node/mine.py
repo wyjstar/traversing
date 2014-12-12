@@ -436,3 +436,11 @@ def get_save_guard(pos):
     """
     pass
 
+
+def trigger_mine_boss():
+    """
+    触发秘境boss
+    """
+    #1.判断是否达到上限
+
+    pass

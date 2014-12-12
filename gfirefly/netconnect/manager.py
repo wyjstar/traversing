@@ -103,15 +103,17 @@ class ConnectionManager:
         self._connections[tmp[0]] = tmp[1]
         return tmp[1]
 
-    def __write_data(self, connection_id, topic_id, msg):
+    def _write_data(self, connection_id, topic_id, msg):
         connection = self.getConnectionByID(connection_id)
         if not connection:
-            connection = self._queue_conns.get(connection_id, None)
-
-        if not connection:
             return
+        self.__write_data(connection, topic_id, msg)
 
+
+    def __write_data(self, connection, topic_id, msg):
+        connection_id = connection.dynamic_id
         try:
+
             connection.safeToWriteData(topic_id, msg)
         except Exception, e:
             e = "%s, %s:%s" % (e, topic_id, msg)
@@ -129,6 +131,15 @@ class ConnectionManager:
                 self.__write_data(target, topicID, msg)
         else:
             self.__write_data(sendList, topicID, msg)
+
+    def pushAllObject(self, topic_id, msg):
+        """
+        向所有连接推送消息。
+        """
+        for connection in self._connections.values():
+            if not connection: continue
+            self.__write_data(topic_id, msg)
+
 
     def check_timeout(self):
         for k, v in self._connections.items():

@@ -40,6 +40,12 @@ def push_object_remote(topic_id, msg, send_list):
     """
     groot.child('net').push_object_remote(topic_id, str(msg), send_list)
 
+@rootserviceHandle
+def push_all_object_remote(topic_id, msg, send_list):
+    """ send msg to all client
+        send_list:
+    """
+    groot.child('net').push_all_object_remote(topic_id, str(msg), send_list)
 
 @rootserviceHandle
 def get_guild_rank_remote():
