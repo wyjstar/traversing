@@ -42,8 +42,10 @@ from achievement_config import AchievementConfig
 from seal_config import SealConfig
 from travel_item_config import TravelItemConfig
 from formula_config import FormulaConfig
+from stone_config import StoneConfig
 
 
+stone_config = {}
 travel_item_config = {}
 base_config = {}
 hero_config = {}
@@ -124,6 +126,7 @@ all_config_name = {
     'achievement_config': AchievementConfig(),
     'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig(),
+    'stone_config': StoneConfig(),
     'formula_config': FormulaConfig()
 }
 
@@ -134,4 +137,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print equipment_attribute_config.get(10021)
+    print stone_config

@@ -36,6 +36,7 @@ from app.game.component.brew.brew import CharacterBrewComponent
 from app.game.component.character_travel import CharacterTravelComponent
 import time
 from app.game.component.achievement.user_achievement import UserAchievement
+from app.game.component.character_runt import CharacterRuntComponent
 
 
 class PlayerCharacter(Character):
@@ -84,6 +85,7 @@ class PlayerCharacter(Character):
         self._pvp_times = 0  # pvp次数
 
         self._travel = CharacterTravelComponent(self)
+        self._runt = CharacterRuntComponent(self)
 
     def init_player_info(self):
         """初始化角色信息
@@ -147,6 +149,7 @@ class PlayerCharacter(Character):
         self._travel.init_data()
         # 活跃度
         self._tasks.init_data()
+        self._runt.init_data()
 
     def is_new_character(self):
         """is new character or not"""
@@ -350,6 +353,10 @@ class PlayerCharacter(Character):
     @property
     def brew(self):
         return self._brew
+
+    @property
+    def runt(self):
+        return self._runt
 
     def save_data(self):
         pid = self.base_info.id

@@ -276,10 +276,7 @@ def assembly_slots(player, response):
         hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
             hero = add_slot.hero
-            hero.hero_no = hero_obj.hero_no
-            hero.level = hero_obj.level
-            hero.exp = hero_obj.exp
-            hero.break_level = hero_obj.break_level
+            hero_obj.update_pb(hero)
             link_info = slot.hero_slot.link
             for key, value in link_info.items():
                 add_link = hero.links.add()
