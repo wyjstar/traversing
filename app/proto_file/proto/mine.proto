@@ -22,8 +22,10 @@ message mineData
 //更新矿点信息1240返回
 message mineUpdate
 {
-	required int32 last_times = 1; //今日剩余重置次数
-	repeated mineData mine = 2;//所有位置信息
+	required int32 reset_today = 1; //今日已重置次数
+	required int32 reset_free = 2; //可免费次数
+	required int32 reset_count = 3; //可刷新总次数
+	repeated mineData mine = 4;//所有位置信息
 }
 
 //1241返回
@@ -46,6 +48,7 @@ message resetResponse
 	required CommonResponse res = 1;
 	required GameResourcesResponse consume = 2;
 	required mineUpdate mine = 3;//所有位置信息
+	required int32 free = 4;//重置地图，1免费，2自费
 }
 
 //符文石数据
@@ -165,3 +168,9 @@ message MineEquipmentSlot
 //秘境相关， 战斗结算, command: 1252
 //请求 
 //返回 CommonResponse 或者自己定义协议
+
+//请求玩家信息, command:1253
+//响应协议
+message MinePlayerInfoRequest{
+    required int32 pos = 1;                    // 矿在地图上的位置
+}

@@ -21,6 +21,7 @@ from app.game.action.node._fight_start_logic import save_line_up_order, pvp_asse
 from app.proto_file import pvp_rank_pb2
 from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
+from app.game.action.node.line_up import line_up_info
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -28,7 +29,10 @@ def mine_status(player, response):
     """
     所有矿点状态
     """
-    response.last_times = player.mine.reset_times
+    reset_today, reset_free, reset_count = player.mine.reset_times
+    response.reset_today = reset_today
+    response.reset_free = reset_free
+    response.reset_count = reset_count
     mine_status = player.mine.mine_status()
     player.mine.save_data()
     for mstatus in mine_status:
@@ -91,6 +95,7 @@ def search_1241(data, player):
         print 'response.position', response.position
         if player.mine.can_search(request.position):
             player.mine.search_mine(request.position)
+            player.mine.save_data()
             one_mine = player.mine.mine_info(request.position)
             one_mine_info(one_mine, response.mine)
             response.res.result = True
@@ -111,6 +116,8 @@ def reset_1242(data, player):
     request  = mine_pb2.resetMap()
     request.ParseFromString(data)
     response  = mine_pb2.resetResponse()
+    response.free = request.free
+    print '1242-request', request
     if request.free == 1:
         if player.mine.can_reset_free():
             player.mine.reset_map()
@@ -223,7 +230,7 @@ def guard_1244(data, player):
     info["level"] = player.level.level
     info["nickname"] = player.base_info.nickname
     info["character_id"] = player.base_info.id
-
+    info["line_up"] = line_up_info(player).SerializePartialToString()
 
     str_line_up_data = cPickle.dumps(info) #序列化的阵容信息
     # todo: 保存信息
@@ -307,7 +314,9 @@ def query_shop_1247(data, player):
             one_shop.status = status
     else:
         response.res.result = False
-        response.res.message = "商人不存在"
+        response.res.message = u"商人不存在"
+        
+    print 'query_shop_1247-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -382,6 +391,7 @@ def reward_1249(data, player):
     player.mine.save_data()
     drop_id = base_config['warFogChest']
     add_items(player, response, [drop_id])
+    print 'reward_1249-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -411,3 +421,15 @@ def acc_mine_1250(data, player):
     response.position = 0
     response.last_time = int(last_time)
     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def mine_show_player_info_1253(data, player):
+    """展示玩家信息"""
+    # todo:获取保存的
+    request = mine_pb2.MinePlayerInfoRequest()
+    request.ParseFromString(data)
+    pos = request.pos # 矿在地图的位置
+    info = {}
+    # todo: 找到保存的数据
+    return info.get("line_up", "")

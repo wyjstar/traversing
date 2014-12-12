@@ -31,8 +31,8 @@ def random_pick(odds_dict, num_top=1):
 class MineType:
     PLAYER_FIELD = 1
     MONSTER_FIELD = 2
-    CHEST = 3
-    SHOP = 4
+    SHOP = 3
+    CHEST = 4
     COPY = 5
     _create = {
                PLAYER_FIELD:"PlayerField",
@@ -44,6 +44,7 @@ class MineType:
     def create(cls, stype, uid, nickname):
         if stype in cls._create:
             mine = eval(cls._create[stype]).create(uid, nickname)
+            print 'MineType.create', stype, uid, nickname, type(mine)
             return mine
         return None
     
@@ -311,20 +312,24 @@ class MonsterField(Mine):
     
     @classmethod
     def create(cls, uid, nickname):
+        print 'MonsterField'
         monster_mine = cls()
         mine_ids = ConfigData.mine_ids(2)
+        print 'mine_ids', mine_ids
         monster_mine._mine_id = random_pick(mine_ids, sum(mine_ids.values()))
-        monster_mine._tid = uid
+        monster_mine._tid = -1
         monster_mine._type = MineType.MONSTER_FIELD
         monster_mine._status = 1
-        monster_mine._nickname = "野怪"
+        monster_mine._nickname = u"野怪"
         monster_mine._last_harvest = 0
-        monster_mine._monster = ConfigData.mine(monster_mine._mine_id).monster
+        print 'create'
+        #monster_mine._monster = ConfigData.mine(monster_mine._mine_id).monster
         monster_mine._seq = 'uid.%s' % time.time()
+        print 'ret', monster_mine.__dict__
         return monster_mine
     
     def mine_info(self):
-        pass
+        return Mine.mine_info(self)
         
     def detail_info(self):
         pass
@@ -364,6 +369,8 @@ class Chest(Mine):
         return Mine.mine_info(self)
     
     def draw_stones(self):
+        print 'Chest.draw_stones'
+        print 'self._status', self._status
         if self._status == 1:
             self._status = 5
             return True
@@ -480,7 +487,7 @@ class UserMine(Component):
             
     def save_data(self):
         mine_obj = tb_character_mine.getObj(self.owner.base_info.id)
-        print mine_obj
+        print 'save_data', mine_obj
         if mine_obj:
             data = {'mine': {'1':cPickle.dumps(self._mine)},
                     'reset_day':self._reset_day,
@@ -511,7 +518,7 @@ class UserMine(Component):
         self._reset_everyday()
         vip_add = self.owner.vip_component.war_refresh_times
         free_everyday = base_config['totemRefreshFreeTimes']
-        return vip_add + free_everyday - self._reset_times
+        return self._reset_times, free_everyday, vip_add+free_everyday
     
     def add_lively(self, times):
         """
@@ -564,6 +571,7 @@ class UserMine(Component):
             if self._mine[pos].can_reset(self.owner.base_info.id):
                 del self._mine[pos]
                 self._update = True
+        self._reset_times += 1       
     
     def search_mine(self, position):
         if position in self._mine:
@@ -581,8 +589,10 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
         
+        print 'stype', 3
+        if stype == 1:
+            stype = 2
         stype = 4
-        print 'stype', stype
         if stype == MineType.PLAYER_FIELD:
             sword = 0
             mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
@@ -591,6 +601,8 @@ class UserMine(Component):
         if not mine:
             mine = MineType.create(MineType.MONSTER_FIELD, self.owner.base_info.id, self.owner.base_info.base_name)
         self._mine[position] = mine
+        print 'search_mine', position, mine.__dict__
+        self._update = True
         return mine
     
     def mine_status(self):
@@ -651,10 +663,15 @@ class UserMine(Component):
         
     def reward(self, position):
         #领取宝箱奖励
+        print 'reward', position, self._mine.keys()
         if position in self._mine:
+            print 'self._mine[position]', self._mine[position].__dict__
             if self._mine[position].draw_stones():
                 self._update = True
+                print 'reward123'
                 return True
+        print 'reward123123'
+            
             
     def detail_info(self, position):
         """
