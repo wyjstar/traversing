@@ -298,7 +298,7 @@ class BattleUnit(object):
 
 def do_assemble(no, quality, break_skills, hp,
                 atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position,
-                level,
+                level, break_level,
                 is_boss=False, is_hero=True, is_break_hero=False, unit_name=""):
     """组装战斗单位
     @param no: 编号
@@ -337,6 +337,7 @@ def do_assemble(no, quality, break_skills, hp,
     battle_unit.cri_coeff = cri_coeff
     battle_unit.cri_ded_coeff = cri_ded_coeff
     battle_unit.block = block
+    battle_unit.break_level = break_level
 
     battle_unit.level = level
     battle_unit.is_boss = is_boss

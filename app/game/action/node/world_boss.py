@@ -15,6 +15,7 @@ from shared.utils.date_util import get_current_timestamp
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.game.core.lively import task_status
+from app.game.component.fight.stage_logic import base_stage
 
 # from app.proto_file import world_boss_pb2
 
@@ -180,7 +181,8 @@ def pvb_fight_start_1705(pro_data, player):
             continue
         line_up[line.hero_id] = line.pos
 
-    stage_info = fight_start(stage_id, line_up, unparalleled, 0, player)
+    stage = base_stage.BaseStage(player, stage_id)
+    stage_info = fight_start(stage, line_up, unparalleled, 0, player)
     result = stage_info.get('result')
 
     response = PvbFightResponse()

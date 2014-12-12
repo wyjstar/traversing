@@ -95,7 +95,6 @@ def runt_pick_842(data, player):
     player.finance.save_data()
 
     response.res.result = True
-    print response
     return response.SerializeToString()
 
 
@@ -164,14 +163,16 @@ def refining_runt_845(data, player):
     """符文炼化"""
     args = RefiningRuntRequest()
     args.ParseFromString(data)
-    runts = args.hero_no
+    runts = args.runt
 
     response = RefiningRuntResponse()
 
     stone1 = 0
     stone2 = 0
     runt = {}
-    for (runt_id, num) in runts.items():
+    for runt_pb in runts:
+        runt_id = runt_pb.runt_id
+        num = runt_pb.num
         if not player.runt.add_runt(runt_id, num):
             response.res.result = False
             response.res.result_no = 824

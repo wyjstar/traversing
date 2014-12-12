@@ -151,7 +151,7 @@ class CharacterFightCacheComponent(Component):
                                           monster_config.hp, monster_config.atk, monster_config.physicalDef,
                                           monster_config.magicDef, monster_config.hit, monster_config.dodge,
                                           monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
-                                          monster_config.block, monster_config.ductility, pos, monster_config.monsterLv,
+                                          monster_config.block, monster_config.ductility, pos, monster_config.monsterLv, 0,
                                           is_boss, is_hero=False)
                 logger.info('怪物ID：%s' % monster_config.id)
                 round_monsters[pos] = battle_unit
@@ -343,6 +343,7 @@ class CharacterFightCacheComponent(Component):
             break_hero_obj = Hero()  # 实例化一个替换英雄对象
             break_hero_obj.hero_no = hero_no
             break_hero_obj.level = level
+            break_hero_obj.break_level = red_unit.break_level
 
             attr = CommonItem()
             hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
@@ -379,6 +380,7 @@ class CharacterFightCacheComponent(Component):
                     break_hero_obj = Hero()  # 实例化一个替换英雄对象
                     break_hero_obj.hero_no = hero_no
                     break_hero_obj.level = level
+                    break_hero_obj.break_level = red.break_level
 
                     attr = CommonItem()
                     hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性

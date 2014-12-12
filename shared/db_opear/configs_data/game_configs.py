@@ -7,6 +7,7 @@ from chip_config import ChipConfig
 from equipment.equipment_config import EquipmentConfig
 from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 from equipment.set_equipment_config import SetEquipmentConfig
+from equipment.equipment_attribute_config import EquipmentAttributeConfig
 from hero_breakup_config import HeroBreakupConfig
 from item_config import ItemsConfig
 from link_config import LinkConfig
@@ -24,8 +25,6 @@ from skill_buff_config import SkillBuffConfig
 from skill_config import SkillConfig
 from stage_break_config import StageBreakConfig
 from stage_config import StageConfig
-from soul_shop_config import SoulShopConfig
-from arena_shop_config import ArenaShopConfig
 from sign_in_config import SignInConfig
 from warriors_config import WarriorsConfig
 from activity_config import ActivityConfig
@@ -59,9 +58,9 @@ big_bag_config = {}
 equipment_config = {}  # 装备配置
 equipment_strengthen_config = {}  # 装备强化等级消耗金币路线
 set_equipment_config = {}
+equipment_attribute_config = {}
 shop_config = {}
 shop_type_config = {}
-soul_shop_config = {}
 link_config = {}
 stage_config = {}
 monster_config = {}
@@ -80,7 +79,6 @@ robot_born_config = {}
 rand_name_config = {}
 player_exp_config = {}
 arena_fight_config = {}
-arena_shop_config = {}
 hero_breakup_attr_config = {}
 travel_event_config = {}
 language_config = {}
@@ -100,6 +98,7 @@ all_config_name = {
     'equipment_config': EquipmentConfig(),
     'equipment_strengthen_config': EquipmentStrengthenConfig(),
     'set_equipment_config': SetEquipmentConfig(),
+    'equipment_attribute_config': EquipmentAttributeConfig(),
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
     'shop_type_config': ShopTypeConfig(),
@@ -110,7 +109,6 @@ all_config_name = {
     'skill_config': SkillConfig(),
     'skill_buff_config': SkillBuffConfig(),
     'guild_config': GuildConfig(),
-    'soul_shop_config': SoulShopConfig(),
     'sign_in_config': SignInConfig(),
     'warriors_config': WarriorsConfig(),
     'activity_config': ActivityConfig(),
@@ -122,7 +120,6 @@ all_config_name = {
     'robot_born_config': RobotBornConfig(),
     'player_exp_config': PlayerExpConfig(),
     'arena_fight_config': ArenaFightConfig(),
-    'arena_shop_config': ArenaShopConfig(),
     'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),

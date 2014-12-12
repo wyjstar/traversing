@@ -61,7 +61,6 @@ import stage
 import hero
 import guild
 import shop
-import soul_shop
 import hero_chip
 import friend
 import mail
@@ -72,7 +71,6 @@ import feast
 import sign_in
 import login_gift
 import pvp_rank
-import arena_shop
 import brew
 import world_boss
 import travel
