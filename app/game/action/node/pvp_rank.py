@@ -44,6 +44,10 @@ def pvp_player_rank_request_1502(data, player):
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    response.player_rank = record.get('id') if record else -1
+
+    prere = dict(character_id=player.base_info.id)
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
 
     if not record:
         return pvp_player_rank_refresh_request(data, player)
@@ -192,10 +196,8 @@ def pvp_player_rank_refresh_request(data, player):
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
-    if not record:
-        cur_rank = 300
-    else:
-        cur_rank = record.get('id')
+    response.player_rank = record.get('id') if record else -1
+    cur_rank = record.get('id') if record else 300
 
     ranks = []
     for v in arena_fight_config.values():

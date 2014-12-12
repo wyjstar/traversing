@@ -7,6 +7,7 @@ from chip_config import ChipConfig
 from equipment.equipment_config import EquipmentConfig
 from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 from equipment.set_equipment_config import SetEquipmentConfig
+from equipment.equipment_attribute_config import EquipmentAttributeConfig
 from hero_breakup_config import HeroBreakupConfig
 from item_config import ItemsConfig
 from link_config import LinkConfig
@@ -55,6 +56,7 @@ big_bag_config = {}
 equipment_config = {}  # 装备配置
 equipment_strengthen_config = {}  # 装备强化等级消耗金币路线
 set_equipment_config = {}
+equipment_attribute_config = {}
 shop_config = {}
 shop_type_config = {}
 link_config = {}
@@ -94,6 +96,7 @@ all_config_name = {
     'equipment_config': EquipmentConfig(),
     'equipment_strengthen_config': EquipmentStrengthenConfig(),
     'set_equipment_config': SetEquipmentConfig(),
+    'equipment_attribute_config': EquipmentAttributeConfig(),
     'chip_config': ChipConfig(),
     'shop_config': ShopConfig(),
     'shop_type_config': ShopTypeConfig(),
@@ -131,7 +134,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in shop_config.items():
-        print k, v
-        print
-
+    print equipment_attribute_config.get(10021)
