@@ -66,11 +66,6 @@ def runt_pick_842(data, player):
 
     hero = player.hero_component.get_hero(hero_no)
 
-    if not hero.runt.get(runt_type) or not hero.runt.get(runt_type).get(runt_po):
-        response.res.result = False
-        response.res.result_no = 823  # 符文不存在
-        return response.SerializeToString()
-
     if runt_type:
         if not hero.runt.get(runt_type) or not hero.runt.get(runt_type).get(runt_po):
             response.res.result = False
@@ -222,13 +217,18 @@ def refining_runt_845(data, player):
 
 @remoteserviceHandle('gate')
 def build_runt_846(data, player):
-    """打造刷新"""
+    """打造"""
     response = BuildRuntResponse()
 
     runt_id = player.runt.refresh_id
+    if not runt_id:
+        response.res.result = False
+        response.res.result_no = 828
+        return response.SerializeToString()
+
     runt_conf = stone_config.get('stones').get(runt_id)
     [need_stone1, need_stone2, need_coin] = runt_conf.price
-    if player.runt.stone1 < need_stone1 or player.runt.stone2 < need_coin or player.finance.coin < need_coin:
+    if player.runt.stone1 < need_stone1 or player.runt.stone2 < need_stone2 or player.finance.coin < need_coin:
         response.res.result = False
         response.res.result_no = 826
         return response.SerializeToString()
@@ -241,6 +241,13 @@ def build_runt_846(data, player):
         response.res.result = False
         response.res.result_no = 824
         return response.SerializeToString()
+
+    while True:
+        new_refresh_id = player.runt.build_refresh()
+        if not player.runt.refresh_id == new_refresh_id:
+            break
+
+    response.refresh_id = new_refresh_id
 
     player.runt.save()
     player.finance.save_data()

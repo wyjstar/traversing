@@ -40,7 +40,7 @@ message Runt1{
 // 844 打造刷新
 message RefreshRuntResponse{
     required CommonResponse res = 1;
-    required int32 refresh_id = 2;
+    optional int32 refresh_id = 2;
 }
 
 // 845 炼化
@@ -58,4 +58,5 @@ message RefiningRuntResponse{
 // 846 BuildRuntRequest
 message BuildRuntResponse{
     required CommonResponse res = 1;
+    optional int32 refresh_id = 2;
 }

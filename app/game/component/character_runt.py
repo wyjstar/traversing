@@ -29,7 +29,6 @@ class CharacterRuntComponent(Component):
             self._refresh_id = runt_data.get('refresh_id')
             self._refresh_times = runt_data.get('refresh_times')
         else:
-            self._refresh_id = self.build_refresh()
             tb_character_runt.new({'id': self.owner.base_info.id,
                                    'm_runt': self._m_runt,
                                    'stone1': self._stone1,
