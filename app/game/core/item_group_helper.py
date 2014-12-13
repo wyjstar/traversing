@@ -33,6 +33,9 @@ def is_afford(player, item_group):
             return {'result': False, 'result_no': 109}
         elif type_id == const.PVP and player.finance.pvp_score < num:
             return {'result': False, 'result_no': 110}
+        elif type_id == const.RESOURCE:
+            if player.finance[item_no] < num:
+                return {'result': False, 'result_no': item_no}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             if not hero_chip or hero_chip.num < num:
@@ -105,6 +108,11 @@ def consume(player, item_group, shop=None, luck_config=None):
             item = player.item_package.get_item(item_no)
             item.num -= num
             player.item_package.save_data()
+
+        elif type_id == const.RESOURCE:
+            player.finance[item_no] -= num
+            player.finance.save_data()
+
         result.append([type_id, num, item_no])
     return result
 
@@ -122,6 +130,10 @@ def gain(player, item_group, result=None):
         item_no = group_item.item_no
         if type_id == const.COIN:
             player.finance.coin += num
+            player.finance.save_data()
+
+        elif type_id == const.RESOURCE:
+            player.finance[item_no] += num
             player.finance.save_data()
 
         elif type_id == const.GOLD:

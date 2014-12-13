@@ -6,4 +6,5 @@ message FinancePB{
     optional int32 middle_stone = 5;
     optional int32 high_stone = 6;
     optional int32 pvp_score = 7;
+	repeated int32 finances = 8;
 }

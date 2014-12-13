@@ -30,11 +30,10 @@ class CommonItem(dict):
 
 class CommonGroupItem():
     def __init__(self, item_no, max_num, min_num, item_type):
-
-        self._max_num = max_num
-        self._min_num = min_num
-        self._item_no = item_no
-        self._item_type = item_type
+        self._max_num = int(max_num)
+        self._min_num = int(min_num)
+        self._item_no = int(item_no)
+        self._item_type = int(item_type)
 
     @property
     def item_no(self):
