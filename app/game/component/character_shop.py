@@ -23,9 +23,9 @@ class CharacterShopComponent(Component):
     def init_data(self):
         shop_data = tb_character_shop.getObjData(self.owner.base_info.id)
         if shop_data:
-            print shop_data
+            # print shop_data
             self._shop_data = shop_data.get('shop')
-            print self._shop_data
+            # print self._shop_data
             self.check_time()
         else:
             for t, item in shop_type_config.items():
@@ -39,11 +39,11 @@ class CharacterShopComponent(Component):
                     data['item_ids'] = self.get_shop_item_ids(t, 0)
                 self._shop_data[t] = data
             data = dict(id=self.owner.base_info.id, shop=self._shop_data)
-            print data
+            # print data
             tb_character_shop.new(data)
 
-        for k, v in self._shop_data.items():
-            print k, v.items()
+        # for k, v in self._shop_data.items():
+        #     print k, v.items()
 
     def save_data(self):
         shop = tb_character_shop.getObj(self.owner.base_info.id)
@@ -88,7 +88,7 @@ class CharacterShopComponent(Component):
                 logger.error('no refresh price:shop type:%s', shop_type)
                 return False
             ctype, price = refreshprice.items()[0]
-            print ctype, price
+            # print ctype, price
 
         result = self.owner.finance.consume_gold(price)
         self.owner.finance.save_data()
