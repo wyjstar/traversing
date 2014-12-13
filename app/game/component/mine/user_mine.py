@@ -149,6 +149,7 @@ class UserSelf(Mine):
             return
         for _ in range(0, num):
             stone_id = random_pick(odds_dict, sum(odds_dict.values()))
+            print 'stone_id', stone_id
             stone_id = int(stone_id)
             if stone_id == 0:
                 continue
@@ -202,13 +203,12 @@ class UserSelf(Mine):
         now_data =  sum(self._normal.values()) + sum(self._lucky.values())
         if now_data  >= mine.outputLimited:
             return
-        print 'self._normal_harvest,', self._normal_harvest
         normal, harvest = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest, self._normal_end)
         self._normal_harvest = harvest
         self.gen_stone(normal, mine.group1, mine.outputLimited, self._normal)
-        print 'self._normal_harvest,', self._normal_harvest
         special, harvest = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._special_harvest, self._special_end)
         self._special_harvest = harvest
+        print 'get_cur', special
         self.gen_stone(special, mine.randomStoneId, mine.outputLimited, self._lucky)
         
     def draw_stones(self):
