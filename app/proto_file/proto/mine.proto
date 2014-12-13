@@ -20,6 +20,7 @@ message mineData
 	required int32 status = 3;//矿点状态1生产中，2可收获，3已枯竭，4空闲，5已领取，6副本已进入
 	optional string nickname = 4;//昵称
 	optional int32 last_time = 5;//生产结束时间点
+	optional int32 gen_time = 6;//生产时间
 }
 
 //更新矿点信息1240返回
@@ -75,6 +76,8 @@ message mineDetail
 	optional int32 genUnit = 9;//单位产出:个数/小时
 	optional float rate = 10;//增产百分比
 	optional int32 incrcost = 11;//增产花费
+	optional int32 stage_id = 12; //关卡id
+	optional int32 guard_time = 13;//保护时间
 }
 
 //1245返回
@@ -97,7 +100,8 @@ message battleResponse
 {
 	required int32 position = 1; //位置
 	required PvpFightResponse  data = 2;//战斗结果
-	required GameResourcesResponse gain = 3; //奖励
+	repeated stoneData normal = 3;//符文石数据
+	repeated stoneData lucky = 4;//符文石数据
 }
 
 //神秘商人兑换1247请求，查看矿点兑换列表

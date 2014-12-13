@@ -51,6 +51,9 @@ def mine_status(player, response):
         last_time = mstatus.get('last_time', None)
         if last_time != None:
             one_mine.last_time = last_time
+        gen_time = mstatus.get('gen_time', None)
+        if gen_time != None:
+            one_mine.gen_time = int(gen_time)
     return response
 
 def one_mine_info(mstatus, one_mine):
@@ -69,6 +72,9 @@ def one_mine_info(mstatus, one_mine):
         last_time = mstatus.get('last_time', None)
         if last_time != None:
             one_mine.last_time = last_time
+        gen_time = mstatus.get('gen_time', None)
+        if gen_time != None:
+            one_mine.gen_time = int(gen_time)
 
 @remoteserviceHandle('gate')
 def query_1240(data, player):
@@ -162,10 +168,10 @@ def query_1243(data, player):
     response = mine_pb2.mineDetail()
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, msg, last_increase, limit, normal, lucky, lineup = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
     if ret == 0:
         response.res.result = True
-        mstatus = player.mine.mine_info(0)
+        mstatus = player.mine.mine_info(request.position)
         one_mine_info(mstatus, response.mine)
         response.limit = limit
         for sid, num in normal.items():
@@ -179,7 +185,10 @@ def query_1243(data, player):
             one_type.stone_num = num
         
         response.increase = int(last_increase)
-        response.lineup.ParseFromString(lineup)
+        if stype == 2:
+            response.stage_id = int(lineup)
+        if stype == 1:
+            response.lineup.ParseFromString(lineup)
         
         mid = player.mine.mid(request.position)
         main_mine = mine_config.get(mid)
@@ -187,10 +196,10 @@ def query_1243(data, player):
         response.genUnit = int( (60 / main_mine.timeGroup1) * main_mine.outputGroup1)
         response.rate = main_mine.increase
         response.incrcost = main_mine.increasePrice
+        response.guard_time = guard_time
     else:
         response.res.result = False
         response.res.result_no = ret
-        response.res.message = msg
         
     player.mine.save_data()
     print '1243-response', response
@@ -296,14 +305,22 @@ def harvest_1245(data, player):
     return response.SerializePartialToString()
 
 
-def process_mine_result(player, position, gain):
+def process_mine_result(player, position, response, result):
     """
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
     @param gain: true or false 
     """
-    pass
-
-
+    if result == True:
+        player.mine.settle(position)
+        detail_info = player.mine.detail_info(position)
+        _, _, _, _, normal, lucky, _, _ = detail_info
+        for k, v in normal.items():
+            normal = response.normal.add()
+            normal[k] = v
+        for k, v in lucky.items():
+            luck = response.lucky.add()
+            luck[k] = v
+        
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
     """
@@ -330,8 +347,8 @@ def battle_1246(data, player):
     fight_result = process.process()
     
     response = mine_pb2.battleResponse()
-    if fight_result:
-        process_mine_result(player, request.position, response.gain)
+
+    process_mine_result(player, request.position, response.gain, fight_result)
 
     logger.debug("fight result:%s" % fight_result)
 
