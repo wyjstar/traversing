@@ -8,6 +8,23 @@ from shared.utils.const import const
 from gfirefly.server.logobj import logger
 
 
+# const.COIN = 1
+# const.GOLD = 2
+# const.HERO_SOUL = 3
+# const.JUNIOR_STONE = 4
+# const.MIDDLE_STONE = 5
+# const.HIGH_STONE = 6
+# const.STAMINA = 7
+# const.PVP = 8
+# const.GUILD = 9
+# const.GUILD2 = 11
+# const.TEAM_EXPERIENCE = 12
+# const.NECTAR = 13
+# const.STONE1 = 14
+# const.STONE2 = 15
+# const.EQUIPMENT_ELITE = 21
+# const.RESOURCE_MAX = 23
+
 class CharacterFinanceComponent(Component):
     """货币"""
 
