@@ -33,14 +33,13 @@ class Equipment(object):
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
     def add_data(self, character_id):
-        _equipment_info = dict(equipment_no=self._base_info.equipment_no,
-                               slv=self._attribute.strengthen_lv,
-                               alv=self._attribute.awakening_lv,
-                               main_attr=self._attribute.main_attr,
-                               minor_attr=self._attribute.minor_attr),
         data = dict(id=self._base_info.id,
                     character_id=character_id,
-                    equipment_info=_equipment_info,
+                    equipment_info=dict(equipment_no=self._base_info.equipment_no,
+                                        slv=self._attribute.strengthen_lv,
+                                        alv=self._attribute.awakening_lv,
+                                        main_attr=self._attribute.main_attr,
+                                        minor_attr=self._attribute.minor_attr),
                     enhance_info=self._record.enhance_record,
                     nobbing_effect=self._attribute.nobbing_effect)
 
