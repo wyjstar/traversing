@@ -111,8 +111,8 @@ def init_runt_843(data, player):
         mrunt.num = num
 
     if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
-            and time.localtime(player.refresh_times).tm_yday == time.localtime().tm_yday:
-        response.refresh_times = player.runt.refresh_times
+            and time.localtime(player.runt.refresh_times[1]).tm_yday == time.localtime().tm_yday:
+        response.refresh_times = player.runt.refresh_times[0]
     else:
         response.refresh_times = 0
 
@@ -130,7 +130,7 @@ def refresh_runt_844(data, player):
     response = RefreshRuntResponse()
 
     if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
-            and time.localtime(player.refresh_times).tm_yday == time.localtime().tm_yday:
+            and time.localtime(player.runt.refresh_times[1]).tm_yday == time.localtime().tm_yday:
         if base_config.get('totemRefreshFreeTimes') > player.runt.refresh_times[0]:
             player.runt.refresh_times[0] += 1
         else:
