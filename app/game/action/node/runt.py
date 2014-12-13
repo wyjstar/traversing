@@ -71,21 +71,32 @@ def runt_pick_842(data, player):
         response.res.result_no = 823  # 符文不存在
         return response.SerializeToString()
 
-    runt_id = hero.runt.get(runt_type).get(runt_po)
+    if runt_type:
+        if not hero.runt.get(runt_type) or not hero.runt.get(runt_type).get(runt_po):
+            response.res.result = False
+            response.res.result_no = 823  # 符文不存在
+            return response.SerializeToString()
+        runt_id = hero.runt.get(runt_type).get(runt_po)
 
-    runt_conf = stone_config.get('stones').get(runt_id)
-    need_gold = runt_conf.PickPrice
+        need_gold = stone_config.get('stones').get(runt_id).PickPrice
+
+        if not player.runt.add_runt(runt_id, 1):
+            response.res.result = False
+            response.res.result_no = 824
+            return response.SerializeToString()
+
+        del hero.runt[runt_type][runt_po]
+    else:
+        need_gold = 0
+        for (_, item) in hero.runt.items():
+            for (_, the_runt_id) in item.items():
+                need_gold += stone_config.get('stones').get(the_runt_id).PickPrice
+                player.runt.add_runt(the_runt_id, 1)
+        hero.runt = {}
 
     if player.finance.gold < need_gold:
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
-        return response.SerializeToString()
-
-    del hero.runt[runt_type][runt_po]
-
-    if not player.runt.add_runt(runt_id, 1):
-        response.res.result = False
-        response.res.result_no = 824
         return response.SerializeToString()
 
     hero.save_data()
