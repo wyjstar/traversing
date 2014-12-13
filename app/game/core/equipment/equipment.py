@@ -10,12 +10,69 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
 from shared.db_opear.configs_data.game_configs import base_config
-from shared.utils.const import const
+from gfirefly.server.logobj import logger
+# from shared.utils.const import const
+import random
+import copy
+
+
+EQUIP_ATTR_CONFIG = game_configs.equipment_attribute_config
+
+
+def init_equipment_attr(equipment_no, is_special=False):
+    mainAttr, minorAttr = {}, {}
+    equipment_item = game_configs.equipment_config.get(equipment_no)
+    if not equipment_item:
+        logger.error('error equipment no:%s', equipment_no)
+        return mainAttr, minorAttr
+
+    equip_attr_id = equipment_item.specialAttr if is_special else equipment_item.attr
+    equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
+    if not equipment_attr_item:
+        logger.error('error equipment attr no:%s:%s', equip_attr_id, equipment_no)
+        return mainAttr, minorAttr
+
+    main_num = equipment_attr_item.get('mainAttrNum')
+    minor_num_min, minor_num_min = equipment_attr_item.get('minorAttrNum')
+    minor_num = random.randint(minor_num_min, minor_num_min)
+
+    main_pool = copy.copy(equipment_attr_item.get('mainAttr'))
+    minor_pool = copy.copy(equipment_attr_item.get('minorAttr'))
+
+    for _ in range(main_num):
+        at, avt, av, ai = rand_pick_attr(main_pool)
+        mainAttr[at] = [avt, av, ai]
+    for _ in range(minor_num):
+        at, avt, av, ai = rand_pick_attr(minor_pool)
+        minorAttr[at] = [avt, av, ai]
+
+    return mainAttr, minorAttr
+
+
+def rand_pick_attr(attr):
+    attrType, attrValueType, attrValue, attrIncrement = -1, -1, -1, 0
+    rand_pool = {}
+    for at, v in attr.items():
+        rand_pool[at] = int(v[0] * 100)
+    rand = random.randint(0, sum(rand_pool.values()))
+
+    for k, v in rand_pool.items():
+        if v >= rand:
+            attrType = k
+            if len(attr[k]) == 5:
+                _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
+            else:
+                _, attrValueType, valueMin, valueMax = attr[k]
+            attrValue = random.randint(valueMin, valueMax)
+            del attr[k]
+            break
+        else:
+            rand -= v
+    return attrType, attrValueType, attrValue, attrIncrement
 
 
 class Equipment(object):
-    """装备
-    """
+    """装备 """
 
     def __init__(self, equipment_id, equipment_name, equipment_no,
                  strengthen_lv=1, awakening_lv=1, enhance_record=[],
@@ -33,13 +90,15 @@ class Equipment(object):
         self._record = EquipmentEnhanceComponent(self, enhance_record)
 
     def add_data(self, character_id):
+        no = self._base_info.equipment_no
+        mainAttr, minorAttr = init_equipment_attr(no)
         data = dict(id=self._base_info.id,
                     character_id=character_id,
                     equipment_info=dict(equipment_no=self._base_info.equipment_no,
                                         slv=self._attribute.strengthen_lv,
                                         alv=self._attribute.awakening_lv,
-                                        main_attr=self._attribute.main_attr,
-                                        minor_attr=self._attribute.minor_attr),
+                                        main_attr=mainAttr,
+                                        minor_attr=minorAttr),
                     enhance_info=self._record.enhance_record,
                     nobbing_effect=self._attribute.nobbing_effect)
 
@@ -118,7 +177,8 @@ class Equipment(object):
         """套装信息
         """
         equipment_no = self._base_info.equipment_no
-        equ_conf_obj = game_configs.equipment_config.get(equipment_no, None)  # 装备配置
+        # 装备配置
+        equ_conf_obj = game_configs.equipment_config.get(equipment_no, None)
         if not equ_conf_obj:
             return None
         suit_no = equ_conf_obj.suitNo
