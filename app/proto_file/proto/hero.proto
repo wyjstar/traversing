@@ -22,6 +22,7 @@ message HeroPB
     optional int32 exp = 3;
     optional int32 break_level = 4;
     optional int32 refine = 5;
-    repeated LinkPB links = 6;
-    repeated RuntType runt_type = 7;
+    optional bool is_guard = 6;
+    repeated LinkPB links = 7;
+    repeated RuntType runt_type = 8;
 }

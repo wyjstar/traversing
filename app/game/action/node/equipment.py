@@ -36,6 +36,12 @@ def get_equipments_401(pro_data, player):
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
 
+        for before_lv, after_lv, enhance_cost in obj.enhance_record:
+            data_format = response.data.add()
+            data_format.before_lv = before_lv
+            data_format.after_lv = after_lv
+            data_format.cost_coin = enhance_cost
+
     return response.SerializePartialToString()
 
 
