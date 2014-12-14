@@ -241,7 +241,10 @@ class Equipment(object):
                     9: 'criDedCoeff',
                     10: 'block',
                     11: 'ductility'}
-        varNames2 = {1: 'growHp', 2: 'growAtk', 3: 'growPdef', 4: 'growMdef'}
+        varNames2 = {1: 'growHp',
+                     2: 'growAtk',
+                     3: 'growPdef',
+                     4: 'growMdef'}
         varNames3 = {1: 'hp_rate',
                      2: 'atk_rate',
                      3: 'physical_def_rate',
@@ -307,10 +310,10 @@ class Equipment(object):
                 raise Exception('cant find formula by name:%s' % k)
             result[k] = eval(formula.formula, allVars, allVars)
 
-        # print 'result:'*4, result
-        # print
-        # print 'allVars:', allVars.items()
-        # print
+        # print 'result:'*4, self._base_info.equipment_no, result
+        # print '-'*32
+        # print 'allVars:', allVars
+        # print '='*32
 
         return CommonItem(result)
 
