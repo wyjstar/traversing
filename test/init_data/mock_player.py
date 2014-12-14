@@ -7,6 +7,7 @@ from shared.utils.const import const
 
 def init_player(player):
     player.finance[const.COIN] = 10000000
+    player.finance[const.GOLD] = 10000000
     player.finance[const.HERO_SOUL] = 10000000
     player.finance[const.EQUIPMENT_ELITE] = 10000000
     player.finance[const.PVP] = 10000000

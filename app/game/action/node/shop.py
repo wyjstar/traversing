@@ -46,7 +46,7 @@ def shop_oper(pro_data, player):
     request.ParseFromString(pro_data)
     response = ShopResponse()
 
-    shop_id = request.id
+    shop_id = request.ids[0]
     shop_item = shop_config.get(shop_id)
 
     result = is_afford(player, shop_item.consume)  # 校验
@@ -84,7 +84,7 @@ def shop_equipment_oper(pro_data, player):
     request.ParseFromString(pro_data)
     response = ShopResponse()
 
-    shop_id = request.id
+    shop_id = request.ids[0]
     shop_num = request.num
     shop_item = shop_config.get(shop_id)
 
