@@ -3,7 +3,7 @@
 """
 created by wzp.
 """
-from shared.db_opear.configs_data.game_configs import special_stage_config, base_config, hero_config, monster_group_config, monster_config
+from shared.db_opear.configs_data.game_configs import special_stage_config, hero_config, monster_group_config, monster_config
 from gfirefly.dbentrust.redis_client import redis_client
 import random
 from shared.utils.random_pick import random_pick_with_percent
@@ -26,6 +26,7 @@ class BaseBoss(object):
 
         self._rank_instance = rank_instance # 排名
         self._config_name = config_name # worldboss:boss_stages, mineboss:mine_boss_stages
+
 
     def init_base_data(self, boss_data):
         """docstring for init_base_data"""
@@ -106,14 +107,14 @@ class BaseBoss(object):
         self._rank_instance.clear_rank() # 重置排行
         self._last_shot_item = {} # 重置最后击杀
 
-    def update_base_boss(self):
+    def update_base_boss(self, base_config_info):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
         # 初始化幸运武将
-        lucky_hero_1_num = base_config.get("lucky_hero_1_num")
-        lucky_hero_2_num = base_config.get("lucky_hero_2_num")
-        lucky_hero_3_num = base_config.get("lucky_hero_3_num")
+        lucky_hero_1_num = base_config_info.get("lucky_hero_1_num")
+        lucky_hero_2_num = base_config_info.get("lucky_hero_2_num")
+        lucky_hero_3_num = base_config_info.get("lucky_hero_3_num")
         all_high_heros, all_middle_heros, all_low_heros = self.get_hero_category()
         self._lucky_high_heros =  random.sample(all_high_heros, lucky_hero_1_num)
 
@@ -126,7 +127,7 @@ class BaseBoss(object):
         self._lucky_low_heros =  random.sample(all_low_heros, lucky_hero_3_num)
 
         # 初始化奇遇
-        debuff_skill = base_config.get("debuff_skill")
+        debuff_skill = base_config_info.get("debuff_skill")
         self._debuff_skill_no = random_pick_with_percent(debuff_skill)
 
         self.set_next_stage(self._hp<=0)
@@ -235,6 +236,9 @@ class BaseBoss(object):
 
     def current_stage_info(self):
         return special_stage_config.get(self._config_name).get(self._stage_id)
+
+    def get_stage_info(self, stage_id):
+        return special_stage_config.get(self._config_name).get(stage_id)
 
     def get_hp(self):
         stage_info = self.current_stage_info()

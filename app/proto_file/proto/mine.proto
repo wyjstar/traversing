@@ -161,15 +161,15 @@ message MineBattleRequest
 // 秘境相关，战斗响应，command:1253
 message MineBattleResponse{
 	required CommonResponse res = 1;
-	repeated BattleUnit red = 4;         // 红方数据 自己
-	repeated BattleUnitGrop blue = 5;    // 对方数据
-	optional BattleUnit friend = 6;      // 好友
-	optional int32 hero_unpar = 7;       // 无双
-	optional int32 hero_unpar_level = 8; // 无双
-	repeated BattleUnit awake = 12;      // 觉醒
-	repeated int32 awake_no = 13;        //
-	optional int32 seed1= 14;
-	optional int32 seed2= 15;
+	repeated BattleUnit red = 2;         // 红方数据 自己
+	repeated BattleUnit blue = 3;    // 对方数据
+	optional int32 red_best_skill_id = 4;       // 无双
+	optional int32 red_best_skill_level = 5; // 无双
+	optional int32 blue_best_skill_id = 6;       // 无双
+	optional int32 blue_best_skill_level = 7; // 无双
+	repeated int32 awake_no = 8;        //
+	optional int32 seed1= 9;
+	optional int32 seed2= 10;
 }
 
 //返回 StageStartResponse
@@ -187,5 +187,4 @@ message MineBattleResponse{
 message MinePlayerInfoRequest{
     required int32 pos = 1;                    // 矿在地图上的位置
 }
-
 

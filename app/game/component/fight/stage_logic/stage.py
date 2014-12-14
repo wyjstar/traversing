@@ -8,7 +8,7 @@ from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 
 
-class StageLogic(base_stage.BaseStage):
+class StageLogic(base_stage.BaseStageLogic):
     """docstring for 普通关卡"""
     def __init__(self, player, stage_id):
         super(StageLogic, self).__init__(player, stage_id)

@@ -189,6 +189,7 @@ class CharacterLineUpComponent(Component):
             if not hero_no:
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
+            logger.debug("line up %s , hero_no %s" % (new_pos, hero_no))
 
             new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
 

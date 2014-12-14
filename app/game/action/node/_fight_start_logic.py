@@ -3,7 +3,6 @@
 """
 重用开始战斗相关代码。
 """
-from app.game.action.node.stage import assemble
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
 from app.game.redis_mode import tb_character_lord
 from gfirefly.server.logobj import logger
@@ -24,17 +23,17 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
 
 def save_line_up_order(line_up, player):
     """docstring for save_line_up_order"""
-    line_up = {}  # {hero_id:pos}
+    line_up_info = {}  # {hero_id:pos}
     for line in line_up:
         if not line.hero_id:
             continue
-        line_up[line.hero_id] = line.pos
+        line_up_info[line.hero_id] = line.pos
 
-    player.line_up_component.line_up_order = line_up
+    player.line_up_component.line_up_order = line_up_info
     player.line_up_component.save_data()
 
 
-def pvp_assemble_response(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, response):
+def pvp_assemble_units(red_units, blue_units, response):
     """assemble pvp response"""
     for slot_no, red_unit in red_units.items():
         if not red_unit:
@@ -46,40 +45,29 @@ def pvp_assemble_response(red_units, blue_units, red_skill, red_skill_level, blu
             continue
         blue_add = response.blue.add()
         assemble(blue_add, blue_unit)
-    response.red_skill = red_skill
-    response.red_skill_level = red_skill_level
-    response.blue_skill = blue_skill
-    response.blue_skill_level = blue_skill_level
 
 
-def pve_process(stage_id, stage_type, line_up, best_skill_id, fid, player):
+def pve_process(stage_id, stage_type, line_up, fid, player):
     """docstring for pve_process
     line_up: line up order
     best_skill_id: unpar
     fid: friend id.
     """
-    line_up = {}  # {hero_id:pos}
-    for line in line_up:
-        if not line.hero_id:
-            continue
-        line_up[line.hero_id] = line.pos
+    save_line_up_order(line_up, player)
 
     stage = get_stage_by_stage_type(stage_type, stage_id, player)
-    stage_info = fight_start(stage, line_up, best_skill_id, fid, player)
+
+    stage_info = fight_start(stage, fid, player)
     return stage_info
 
 
-def fight_start(stage, line_up, unparalleled, fid, player):
+def fight_start(stage, fid, player):
     """开始战斗
     """
     # 校验信息：是否开启，是否达到次数上限等
     res = stage.check()
     if not res.get('result'):
         return res
-
-    # 保存阵容
-    player.line_up_component.line_up_order = line_up
-    player.line_up_component.save_data()
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage.stage_id
@@ -102,7 +90,7 @@ def fight_start(stage, line_up, unparalleled, fid, player):
                 f_unit=f_unit,
                 result_no=0)
 
-def pve_assemble_response(player, red_units, blue_units, red_skill, red_skill_level, blue_skill, f_unit, response):
+def pve_assemble_units(red_units, blue_groups, response):
     """docstring for pve_assemble_response"""
     for slot_no, red_unit in red_units.items():
         if not red_unit:
@@ -110,7 +98,7 @@ def pve_assemble_response(player, red_units, blue_units, red_skill, red_skill_le
         red_add = response.red.add()
         assemble(red_add, red_unit)
 
-    for blue_group in blue_units:
+    for blue_group in blue_groups:
         blue_group_add = response.blue.add()
         for slot_no, blue_unit in blue_group.items():
             if not blue_unit:
@@ -118,16 +106,45 @@ def pve_assemble_response(player, red_units, blue_units, red_skill, red_skill_le
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
 
-    if blue_skill:
-        response.monster_unpar = blue_skill
+    #if blue_skill:
+        #response.monster_unpar = blue_skill
 
-    response.hero_unpar = red_skill
-    if red_skill in player.line_up_component.unpars:
-        unpar_level = player.line_up_component.unpars[red_skill]
-        response.hero_unpar_level = unpar_level
+    #response.hero_unpar = red_skill
+    #if red_skill in player.line_up_component.unpars:
+        #unpar_level = player.line_up_component.unpars[red_skill]
+        #response.hero_unpar_level = unpar_level
 
+def pve_assemble_friend(f_unit, response):
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
     logger.debug('进入关卡返回数据:%s', response)
 
+def assemble(unit_add, unit):
+    unit_add.no = unit.unit_no
+    unit_add.quality = unit.quality
+
+    for skill_no in unit.skill.break_skill_ids:
+        unit_add.break_skills.append(skill_no)
+
+    unit_add.hp = unit.hp
+    unit_add.atk = unit.atk
+    unit_add.physical_def = unit.physical_def
+    unit_add.magic_def = unit.magic_def
+    unit_add.hit = unit.hit
+    unit_add.dodge = unit.dodge
+    unit_add.cri = unit.cri
+    unit_add.cri_coeff = unit.cri_coeff
+    unit_add.cri_ded_coeff = unit.cri_ded_coeff
+    unit_add.block = unit.block
+
+    unit_add.level = unit.level
+    unit_add.break_level = unit.break_level
+
+    unit_add.position = unit.slot_no
+    unit_add.is_boss = unit.is_boss
+
+    unit_add.is_awake = unit.is_awake
+    unit_add.origin_no = unit.origin_no
+    unit_add.is_break = unit.is_break
+    unit_add.origin_no = unit.origin_no

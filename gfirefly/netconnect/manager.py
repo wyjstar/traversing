@@ -128,9 +128,9 @@ class ConnectionManager:
         """主动推送消息"""
         if isinstance(sendList, list):
             for target in sendList:
-                self.__write_data(target, topicID, msg)
+                self._write_data(target, topicID, msg)
         else:
-            self.__write_data(sendList, topicID, msg)
+            self._write_data(sendList, topicID, msg)
 
     def pushAllObject(self, topic_id, msg):
         """
@@ -138,7 +138,7 @@ class ConnectionManager:
         """
         for connection in self._connections.values():
             if not connection: continue
-            self.__write_data(topic_id, msg)
+            self.__write_data(connection, topic_id, msg)
 
 
     def check_timeout(self):

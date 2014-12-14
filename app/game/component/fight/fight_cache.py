@@ -71,8 +71,10 @@ class CharacterFightCacheComponent(Component):
             return game_configs.special_stage_config.get('elite_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('act_stages').get(self._stage_id):
             return game_configs.special_stage_config.get('act_stages').get(self._stage_id)
-        if game_configs.special_stage_config.get('boss_stages').get(self._stage_id):
-            return game_configs.special_stage_config.get('boss_stages').get(self._stage_id)
+        if game_configs.special_stage_config.get('world_boss_stages').get(self._stage_id):
+            return game_configs.special_stage_config.get('world_boss_stages').get(self._stage_id)
+        if game_configs.special_stage_config.get('mine_boss_stages').get(self._stage_id):
+            return game_configs.special_stage_config.get('mine_boss_stages').get(self._stage_id)
 
     def __get_skill_config(self, skill_id):
         """取得技能BUFF配置

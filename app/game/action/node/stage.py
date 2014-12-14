@@ -11,15 +11,13 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.game_configs import special_stage_config
-from shared.db_opear.configs_data.game_configs import vip_config
-from app.battle.battle_unit import BattleUnit
 from app.game.core.drop_bag import BigBag
 from app.game.core.lively import task_status
 from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process, pve_assemble_response
+from app.game.action.node._fight_start_logic import pve_process, pve_assemble_units, pve_assemble_friend
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -79,14 +77,14 @@ def stage_start_903(pro_data, player):
 
     stage_id = request.stage_id          # 关卡编号
     stage_type = request.stage_type      # 关卡类型
-    line_up = request.line_up            # 阵容顺序
-    best_skill_id = request.unparalleled # 无双编号
+    line_up = request.lineup            # 阵容顺序
+    red_best_skill_id = request.unparalleled # 无双编号
     fid = request.fid                    # 好友ID
 
-    logger.debug("best_skill_id,%s" % best_skill_id)
+    logger.debug("red_best_skill_id,%s" % red_best_skill_id)
     logger.debug("fid,%s" % fid)
 
-    stage_info = pve_process(stage_id, stage_type, line_up, best_skill_id, fid, player)
+    stage_info = pve_process(stage_id, stage_type, line_up, fid, player)
     result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()
@@ -99,12 +97,19 @@ def stage_start_903(pro_data, player):
         return response.SerializePartialToString()
 
     red_units = stage_info.get('red_units')
-    blue_units = stage_info.get('blue_units')
+    blue_groups = stage_info.get('blue_units')
     drop_num = stage_info.get('drop_num')
     blue_skill = stage_info.get('monster_unpara')
     f_unit = stage_info.get('f_unit')
 
-    pve_assemble_response(player, red_units, blue_units, best_skill_id, blue_skill, f_unit, response)
+    pve_assemble_units(red_units, blue_groups, response)
+    pve_assemble_friend(f_unit, response)
+    if blue_skill:
+        response.monster_unpar = blue_skill
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+    response.hero_unpar = red_best_skill_id
+    response.hero_unpar_level = red_best_skill_level
+
     response.drop_num = drop_num
     return response.SerializePartialToString()
 
@@ -172,34 +177,6 @@ def stage_sweep_907(pro_data, player):
     return stage_sweep(stage_id, times, player)
 
 
-def assemble(unit_add, unit):
-    unit_add.no = unit.unit_no
-    unit_add.quality = unit.quality
-
-    for skill_no in unit.skill.break_skill_ids:
-        unit_add.break_skills.append(skill_no)
-
-    unit_add.hp = unit.hp
-    unit_add.atk = unit.atk
-    unit_add.physical_def = unit.physical_def
-    unit_add.magic_def = unit.magic_def
-    unit_add.hit = unit.hit
-    unit_add.dodge = unit.dodge
-    unit_add.cri = unit.cri
-    unit_add.cri_coeff = unit.cri_coeff
-    unit_add.cri_ded_coeff = unit.cri_ded_coeff
-    unit_add.block = unit.block
-
-    unit_add.level = unit.level
-    unit_add.break_level = unit.break_level
-
-    unit_add.position = unit.slot_no
-    unit_add.is_boss = unit.is_boss
-
-    unit_add.is_awake = unit.is_awake
-    unit_add.origin_no = unit.origin_no
-    unit_add.is_break = unit.is_break
-    unit_add.origin_no = unit.origin_no
 
 
 def get_stage_info(stage_id, player):

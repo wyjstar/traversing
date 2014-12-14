@@ -134,3 +134,11 @@ class LiberateFactory(protocols.ServerFactory):
         '''
         logger.info("pushObject: %s to %s" % (topicID, sendList))
         self.connmanager.pushObject(topicID, msg, sendList)
+
+    def pushAllObject(self, topicID, msg):
+        '''服务端向所有连接客户端推消息
+        @param topicID: int 消息的主题id号
+        @param msg: 消息的类容，protobuf结构类型
+        '''
+        logger.info("pushAllObject:topic_id: %s" % topicID)
+        self.connmanager.pushAllObject(topicID, msg)

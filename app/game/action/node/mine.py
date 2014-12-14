@@ -5,7 +5,7 @@ Created on 2014-11-24
 @author: hack
 '''
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file import mine_pb2, item_response_pb2
+from app.proto_file import mine_pb2, item_response_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data.game_configs import shop_config, base_config
 from app.game.core import item_group_helper
@@ -16,12 +16,12 @@ from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 import cPickle
-from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
+from app.game.action.node._fight_start_logic import save_line_up_order
 from app.proto_file import pvp_rank_pb2
 from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
 from app.game.action.node.line_up import line_up_info
-from app.game.action.node._fight_start_logic import pve_process, pvp_process, pve_assemble_response
+from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -188,7 +188,6 @@ def guard_1244(data, player):
     info["character_id"] = player.base_info.id
     info["line_up"] = line_up_info(player).SerializePartialToString()
 
-    str_line_up_data = cPickle.dumps(info) #序列化的阵容信息
     # todo: 保存信息
 
 def add_stones(player, stones, response):
@@ -248,8 +247,6 @@ def battle_1246(data, player):
 
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
-    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
-            record.get("best_skill_id"), record.get("best_skill_level"), response)
     return response.SerializeToString()
 
 @remoteserviceHandle('gate')
@@ -380,8 +377,9 @@ def battle_1253(data, player):
     pos = request.pos                    # 矿所在位置
     line_up = request.line_up            # 阵容顺序
     red_best_skill_id = request.unparalleled # 无双编号
-    fid = request.fid                    # 好友ID
-
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+    blue_best_skill_id = 0
+    blue_best_skill_level = 0
 
     mine_info = get_mine_info(pos)
     response = mine_pb2.MineBattleResponse()
@@ -391,7 +389,7 @@ def battle_1253(data, player):
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
         stage_type = 5                              # 关卡类型
-        stage_info = pve_process(stage_id, stage_type, line_up, red_best_skill_id, fid, player)
+        stage_info = pve_process(stage_id, stage_type, line_up, red_best_skill_id, 0, player)
         result = stage_info.get('result')
         response.res.result = result
         if not result:
@@ -400,9 +398,7 @@ def battle_1253(data, player):
             return response.SerializePartialToString()
         red_units = stage_info.get('red_units')
         blue_units = stage_info.get('blue_units')
-        blue_skill = stage_info.get('monster_unpara')
-        f_unit = stage_info.get('f_unit')
-        pve_assemble_response(player, red_units, blue_units, red_best_skill_id, blue_skill, f_unit, response)
+        blue_units = blue_units[0]
 
     elif mine_type == 1:
         # pvp
@@ -416,9 +412,16 @@ def battle_1253(data, player):
             # 返回秘境的结果
             pass
 
-        pvp_assemble_response(red_units, blue_units, red_best_skill_id, red_best_skill_level,
-            info.get("best_skill_id"), info.get("best_skill_level"), response)
+        blue_best_skill_id = info.get("best_skill_id")
+        blue_best_skill_level = info.get("best_skill_level")
 
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+    response.red_best_skill_id = red_best_skill_id
+    response.red_best_skill_level = red_best_skill_level
+    response.blue_best_skill_id = blue_best_skill_id
+    response.blue_best_skill_level = blue_best_skill_level
+    pvp_assemble_units(red_units, blue_units, response)
+    response.res.result = True
     return response.SerializePartialToString()
 
 
@@ -436,11 +439,35 @@ def get_save_guard(pos):
     """
     pass
 
-
 def trigger_mine_boss():
     """
     触发秘境boss
+    return {"result":True, "boss_id": boss_id}
     """
-    #1.判断是否达到上限
+    boss_num = remote_gate['world'].get_boss_num()
+    max_boss_num = base_config.get("warFogBossCriServer")
+    if boss_num >= max_boss_num:
+        return False
 
-    pass
+    result = remote_gate['world'].trigger_mine_boss()
+    return result
+
+
+@remoteserviceHandle('gate')
+def trigger_mine_boss_1259(data, player):
+    """
+    触发秘境boss
+    return {"result":True, "boss_id": boss_id}
+    """
+    boss_num = remote_gate['world'].mine_get_boss_num_remote()
+    logger.debug("mine boss num: %s" % boss_num)
+    max_boss_num = base_config.get("warFogBossCriServer")
+    if boss_num >= max_boss_num:
+        assert False, "mine boss reach max!"
+
+    result = remote_gate['world'].trigger_mine_boss_remote()
+    assert result, "trigger boss error!"
+
+    response = common_pb2.CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
