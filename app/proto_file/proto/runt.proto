@@ -41,7 +41,7 @@ message Runt1{
 
 message RuntAttr{
     required int32 attr_value_type = 1;
-    required int32 attr_value = 2;
+    required float attr_value = 2;
     required int32 attr_increment = 3;
 }
 

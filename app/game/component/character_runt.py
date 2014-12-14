@@ -112,7 +112,7 @@ class CharacterRuntComponent(Component):
                     _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
                 else:
                     _, attrValueType, valueMin, valueMax = attr[k]
-                attrValue = random.randint(valueMin, valueMax)
+                attrValue = valueMin + random.random() * (valueMax - valueMin)
                 del attr[k]
                 break
             else:
