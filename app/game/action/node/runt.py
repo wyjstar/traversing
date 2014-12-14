@@ -116,14 +116,16 @@ def init_runt_843(data, player):
         mrunt.runt_no = runt_no
         [runt_id, main_attr, minor_attr] = runt_info
         mrunt.runt_id = runt_id
-        for (attr_value_type, attr_value, attr_increment) in main_attr.items():
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
             main_attr_pb = mrunt.main_attr.add()
+            main_attr_pb.attr_type = attr_type
             main_attr_pb.attr_value_type = attr_value_type
             main_attr_pb.attr_value = attr_value
             main_attr_pb.attr_increment = attr_increment
 
-        for (attr_value_type, attr_value, attr_increment) in minor_attr.items():
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
             minor_attr_pb = mrunt.minor_attr.add()
+            minor_attr_pb.attr_type = attr_type
             minor_attr_pb.attr_value_type = attr_value_type
             minor_attr_pb.attr_value = attr_value
             minor_attr_pb.attr_increment = attr_increment
