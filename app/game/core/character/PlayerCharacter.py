@@ -185,7 +185,8 @@ class PlayerCharacter(Character):
                           'create_time': int(time.time()),
                           'vip_level': 0,
                           'stamina': self._stamina.detail_data,
-                          'last_login_time': int(time.time())
+                          'last_login_time': int(time.time()),
+                          'finances': []
                           }
         tb_character_info.new(character_info)
 

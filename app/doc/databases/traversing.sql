@@ -107,6 +107,7 @@ CREATE TABLE `tb_character_info` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `pvp_count` bigint(20) NOT NULL DEFAULT '0',
   `pvp_score` bigint(20) NOT NULL DEFAULT '0',
+  `finances` tinyblob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

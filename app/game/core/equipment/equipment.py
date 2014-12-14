@@ -46,6 +46,9 @@ def init_equipment_attr(equipment_no, is_special=False):
         at, avt, av, ai = rand_pick_attr(minor_pool)
         minorAttr[at] = [avt, av, ai]
 
+    assert main_num == len(mainAttr)
+    assert minor_num == len(minorAttr)
+
     return mainAttr, minorAttr
 
 
@@ -92,6 +95,8 @@ class Equipment(object):
     def add_data(self, character_id):
         no = self._base_info.equipment_no
         mainAttr, minorAttr = init_equipment_attr(no)
+        self._attribute.main_attr = mainAttr
+        self._attribute.minor_attr = minorAttr
         data = dict(id=self._base_info.id,
                     character_id=character_id,
                     equipment_info=dict(equipment_no=self._base_info.equipment_no,
