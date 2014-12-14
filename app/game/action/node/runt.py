@@ -111,10 +111,23 @@ def init_runt_843(data, player):
 
     my_runt = player.runt.m_runt
 
-    for (runt_id, num) in my_runt.items():
+    for (runt_no, runt_info) in my_runt.items():
         mrunt = response.runt.add()
+        mrunt.runt_no = runt_no
+        [runt_id, main_attr, minor_attr] = runt_info
         mrunt.runt_id = runt_id
-        mrunt.num = num
+        for (attr_value_type, attr_value, attr_increment) in main_attr.items():
+            main_attr_pb = mrunt.main_attr.add()
+            main_attr_pb.attr_value_type = attr_value_type
+            main_attr_pb.attr_value = attr_value
+            main_attr_pb.attr_increment = attr_increment
+
+        for (attr_value_type, attr_value, attr_increment) in minor_attr.items():
+            minor_attr_pb = mrunt.minor_attr.add()
+            minor_attr_pb.attr_value_type = attr_value_type
+            minor_attr_pb.attr_value = attr_value
+            minor_attr_pb.attr_increment = attr_increment
+
 
     if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
             and time.localtime(player.runt.refresh_times[1]).tm_yday == time.localtime().tm_yday:
