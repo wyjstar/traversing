@@ -256,7 +256,7 @@ def __do_enhance(player, equipment_obj):
     """
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
     player.finance.consume(const.COIN, enhance_cost)
-    player.finance.save_data(0)
+    player.finance.save_data()
 
     before_lv, after_lv = equipment_obj.enhance(player)
 

@@ -53,13 +53,13 @@ class CharacterFinanceComponent(Component):
         character_obj.update_multi(props)
 
     def __getitem__(self, res_type):
-        if res_type > len(self._finances):
+        if res_type >= len(self._finances):
             logger.error('get error resource type:%s', res_type)
             return None
         return self._finances[res_type]
 
     def __setitem__(self, res_type, value):
-        if res_type > len(self._finances):
+        if res_type >= len(self._finances):
             logger.error('set error resource type:%s', res_type)
             return
         self._finances[res_type] = value
@@ -121,7 +121,7 @@ class CharacterFinanceComponent(Component):
         self._finances[const.PVP] = value
 
     def is_afford(self, fType, value):
-        if fType not in self._finances:
+        if fType >= len(self._finances):
             logger.error('afford error finance type:%s', fType)
             return False
         if self._finances[fType] < value:
@@ -129,7 +129,7 @@ class CharacterFinanceComponent(Component):
         return True
 
     def consume(self, fType, num):
-        if fType not in self._finances:
+        if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
         if num < self._finances[fType]:
