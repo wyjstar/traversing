@@ -14,7 +14,7 @@ class CharacterRuntComponent(Component):
 
     def __init__(self, owner):
         super(CharacterRuntComponent, self).__init__(owner)
-        self._m_runt = {}  # {id, num}
+        self._m_runt = {}  # {id, num} -> {runt_no, {runt_id, mainAtrr, minorAtrr,}}
         self._stone1 = 0  # 晶石
         self._stone2 = 0  # 原石
         self._refresh_id = 0  # 刷新石头id
