@@ -29,13 +29,19 @@ class CharacterEquipmentPackageComponent(Component):
             equipment_info = equipment_data.get('equipment_info')
             equipment_id = equipment_data.get('id')
 
+            print equipment_info
             equipment_no = equipment_info.get('equipment_no')  # 装备编号
             strengthen_lv = equipment_info.get('slv')  # 装备强化等级
             awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
+            main_attr = equipment_info.get('main_attr', {})
+            minor_attr = equipment_info.get('minor_attr', {})
+
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
-            equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv,
-                                      awakening_lv, enhance_info, nobbing_effect)
+            equipment_obj = Equipment(equipment_id, '', equipment_no,
+                                      strengthen_lv, awakening_lv,
+                                      enhance_info, nobbing_effect,
+                                      main_attr, minor_attr)
             self._equipments_obj[equipment_id] = equipment_obj
 
     def add_equipment(self, equipment_no):
