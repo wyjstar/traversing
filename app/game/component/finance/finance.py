@@ -4,7 +4,26 @@ created by server on 14-6-27下午6:49.
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
+from shared.utils.const import const
+from gfirefly.server.logobj import logger
 
+
+# const.COIN = 1
+# const.GOLD = 2
+# const.HERO_SOUL = 3
+# const.JUNIOR_STONE = 4
+# const.MIDDLE_STONE = 5
+# const.HIGH_STONE = 6
+# const.STAMINA = 7
+# const.PVP = 8
+# const.GUILD = 9
+# const.GUILD2 = 11
+# const.TEAM_EXPERIENCE = 12
+# const.NECTAR = 13
+# const.STONE1 = 14
+# const.STONE2 = 15
+# const.EQUIPMENT_ELITE = 21
+# const.RESOURCE_MAX = 23
 
 class CharacterFinanceComponent(Component):
     """货币"""
@@ -19,6 +38,7 @@ class CharacterFinanceComponent(Component):
         self._middle_stone = 0  # 中级熔炼石头
         self._high_stone = 0  # 高级熔炼石头
         self._pvp_score = 0
+        self._finances = []
 
     def init_data(self, data):
         self._coin = data['coin']
@@ -28,6 +48,9 @@ class CharacterFinanceComponent(Component):
         self._middle_stone = data['middle_stone']
         self._high_stone = data['high_stone']
         self._pvp_score = data['pvp_score']
+        self._finances = data['finances']
+        for _ in range(const.RESOURCE_MAX - len(self._finances)):
+            self._finances.append(0)
 
     def save_data(self):
         """保存数据
@@ -38,9 +61,22 @@ class CharacterFinanceComponent(Component):
                  'junior_stone': self._junior_stone,
                  'middle_stone': self._middle_stone,
                  'high_stone': self._high_stone,
-                 'pvp_score': self._pvp_score}
+                 'pvp_score': self._pvp_score,
+                 'finances': self._finances}
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
         character_obj.update_multi(props)
+
+    def __getitem__(self, res_type):
+        if res_type > len(self._finances):
+            logger.error('get error resource type:%s', res_type)
+            return None
+        return self._finances[res_type]
+
+    def __setitem__(self, res_type, value):
+        if res_type > len(self._finances):
+            logger.error('set error resource type:%s', res_type)
+            return
+        self._finances[res_type] = value
 
     @property
     def junior_stone(self):
@@ -92,11 +128,11 @@ class CharacterFinanceComponent(Component):
 
     @property
     def pvp_score(self):
-        return self._pvp_score
+        return self._finances[const.PVP]
 
     @pvp_score.setter
     def pvp_score(self, value):
-        self._pvp_score = value
+        self._finances[const.PVP] = value
 
     def modify_single_attr(self, attr_name='', num=0, add=True):
         """修改单个属性的值

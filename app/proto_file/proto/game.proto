@@ -20,7 +20,8 @@ message GameLoginResponse{
     optional int32 junior_stone = 9;
     optional int32 middle_stone = 10;
     optional int32 high_stone = 11;
-	optional int32 pvp_store = 12;
+	optional int32 pvp_score = 12;
+	repeated int32 finances = 27;
     //抽取时间
     optional int32 fine_hero = 13;
     optional int32 excellent_hero = 14;
