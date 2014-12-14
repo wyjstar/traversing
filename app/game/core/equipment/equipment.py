@@ -234,3 +234,11 @@ class Equipment(object):
     @property
     def enhance_record(self):
         return self._record
+
+    @property
+    def equipment_config_info(self):
+        equipment_no = self._base_info.equipment_no
+        equ_config_obj = game_configs.equipment_config.get(equipment_no)
+        assert equ_config_obj!=None, "equipment id: %s can not find config info" % equipment_no
+        return equ_config_obj
+
