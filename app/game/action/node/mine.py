@@ -7,7 +7,8 @@ Created on 2014-11-24
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import mine_pb2, item_response_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
-from shared.db_opear.configs_data.game_configs import shop_config, base_config
+from shared.db_opear.configs_data.game_configs import shop_config, base_config,\
+    mine_config
 from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
 from shared.db_opear.configs_data.common_item import CommonGroupItem
@@ -16,7 +17,6 @@ from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 import cPickle
-from app.game.action.node._fight_start_logic import save_line_up_order
 from app.proto_file import pvp_rank_pb2
 from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
@@ -29,7 +29,10 @@ def mine_status(player, response):
     """
     所有矿点状态
     """
-    response.last_times = player.mine.reset_times
+    reset_today, reset_free, reset_count = player.mine.reset_times
+    response.reset_today = reset_today
+    response.reset_free = reset_free
+    response.reset_count = reset_count
     mine_status = player.mine.mine_status()
     player.mine.save_data()
     for mstatus in mine_status:
@@ -49,7 +52,30 @@ def mine_status(player, response):
         last_time = mstatus.get('last_time', None)
         if last_time != None:
             one_mine.last_time = last_time
+        gen_time = mstatus.get('gen_time', None)
+        if gen_time != None:
+            one_mine.gen_time = int(gen_time)
     return response
+
+def one_mine_info(mstatus, one_mine):
+        position = mstatus.get('position', None)
+        if position != None:
+            one_mine.position = position
+        mtype = mstatus.get('type', None)
+        if mtype != None:
+            one_mine.type = mtype
+        status = mstatus.get('status', None)
+        if status != None:
+            one_mine.status = status
+        nickname = mstatus.get('nickname', None)
+        if nickname != None:
+            one_mine.nickname = nickname
+        last_time = mstatus.get('last_time', None)
+        if last_time != None:
+            one_mine.last_time = last_time
+        gen_time = mstatus.get('gen_time', None)
+        if gen_time != None:
+            one_mine.gen_time = int(gen_time)
 
 @remoteserviceHandle('gate')
 def query_1240(data, player):
@@ -58,6 +84,7 @@ def query_1240(data, player):
     """
     response = mine_pb2.mineUpdate()
     mine_status(player, response)
+    player.mine.save_data()
     print '1240-response', response
     return response.SerializePartialToString()
 
@@ -66,20 +93,28 @@ def search_1241(data, player):
     """
     搜索矿点,ok
     """
-    request = mine_pb2.positionRequest()
-    #request.ParseFromString(data)
-    request.position = 9
-    response = mine_pb2.searchResponse()
-    response.position = request.position
-    if player.mine.can_search(request.position):
-        player.mine.search_mine(request.position)
-        mine_status(player, response.mine)
-        response.res.result = True
-    else:
-        response.res.result = False
-        response.res.result_no = 12410
-        response.res.message = u"此处已探索"
-    print '1241-response', response
+    print 'search_1241'
+    try:
+        request = mine_pb2.positionRequest()
+        request.ParseFromString(data)
+        response = mine_pb2.searchResponse()
+        response.position = request.position
+        print 'response.position', response.position
+        if player.mine.can_search(request.position):
+            player.mine.search_mine(request.position)
+            player.mine.save_data()
+            one_mine = player.mine.mine_info(request.position)
+            one_mine_info(one_mine, response.mine)
+            response.res.result = True
+        else:
+            response.res.result = False
+            response.res.result_no = 12410
+            response.res.message = u"超出探索范围"
+        print '1241-response', response
+    except Exception, e:
+        print 'search', e
+        
+    player.mine.save_data()
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -90,6 +125,8 @@ def reset_1242(data, player):
     request  = mine_pb2.resetMap()
     request.ParseFromString(data)
     response  = mine_pb2.resetResponse()
+    response.free = request.free
+    print '1242-request', request
     if request.free == 1:
         if player.mine.can_reset_free():
             player.mine.reset_map()
@@ -118,7 +155,8 @@ def reset_1242(data, player):
                 player.mine.reset_map()
                 mine_status(player, response.mine)
                 response.res.result = True
-    print '1242-response', response
+    player.mine.save_data()
+    #print '1242-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -127,29 +165,58 @@ def query_1243(data, player):
     查看矿点详细信息
     """
     request = mine_pb2.positionRequest()
-    #request.ParseFromString(data)
+    request.ParseFromString(data)
     response = mine_pb2.mineDetail()
-    request.position = 0
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, msg, last_increase, stones, heros = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
     if ret == 0:
         response.res.result = True
-        for sid, num in stones.items():
-            one_type = response.stones.add()
-            one_type.stone_id = sid
+        mstatus = player.mine.mine_info(request.position)
+        one_mine_info(mstatus, response.mine)
+        response.limit = limit
+        for sid, num in normal.items():
+            one_type = response.normal.add()
+            one_type.stone_id = int(sid)
             one_type.stone_num = num
-        response.increase = last_increase
-        for hero_id in heros:
-            one_hero = response.heros.add()
-            one_hero.hid = hero_id
+            
+        for sid, num in lucky.items():
+            one_type = response.lucky.add()
+            one_type.stone_id = int(sid)
+            one_type.stone_num = num
+        
+        response.increase = int(last_increase)
+        if stype == 2:
+            response.stage_id = int(lineup)
+        if stype == 1:
+            response.lineup.ParseFromString(lineup)
+        
+        mid = player.mine.mid(request.position)
+        main_mine = mine_config.get(mid)
+       
+        response.genUnit = int( (60 / main_mine.timeGroup1) * main_mine.outputGroup1)
+        response.rate = main_mine.increase
+        response.incrcost = main_mine.increasePrice
+        response.guard_time = guard_time
     else:
         response.res.result = False
         response.res.result_no = ret
-        response.res.message = msg
+        
+    player.mine.save_data()
     print '1243-response', response
     return response.SerializePartialToString()
 
+def save_guard(player, position, info):
+    """
+    驻守矿点
+    """
+    result_code = player.mine.save_guard(position, info)
+    return result_code
+    
+def get_guard(player, position):
+    info = player.mine.get_guard(position)
+    return info
+    
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
     """
@@ -157,7 +224,7 @@ def guard_1244(data, player):
     """
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
-    pos = request.pos  # 矿在地图上所在位置
+    response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
@@ -169,8 +236,16 @@ def guard_1244(data, player):
         for equipment_slot in slot.equipment_slots:
             equipment_slot = EquipmentSlotComponent(equipment_slot.slot_no, activation=True, equipment_id=slot.equipment_id)
             line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
+            # 标记装备已驻守
+            equip = player.equipment_component.get_equipment(slot.equipment_id)
+            equip.is_guard = True
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
+        
+        # 标记武将已驻守
+        hero = player.hero_component.get_hero(slot.hero_no)
+        hero.is_guard = True
+        
 
     battle_units = {} #需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
@@ -188,16 +263,25 @@ def guard_1244(data, player):
     info["character_id"] = player.base_info.id
     info["line_up"] = line_up_info(player).SerializePartialToString()
 
-    # todo: 保存信息
+    result_code = save_guard(player, request.pos, info)
+    if result_code:
+        response.res.result = False
+        response.res.result_no = result_code
+        return response.SerializePartialToString()
+    
+    response.res.result = True
+    player.mine.save_data()
+    return response.SerializePartialToString()
+
 
 def add_stones(player, stones, response):
     response.res.result = True
     for stone_id, num in stones.items():
-        player.stone.add_stones(stone_id, num)
+        #player.stone.add_stones(stone_id, num)
         one_type = response.stones.add()
         one_type.stone_id = stone_id
         one_type.stone_num = num
-    player.stone.save_data()
+    #player.stone.save_data()
 
 @remoteserviceHandle('gate')
 def harvest_1245(data, player):
@@ -210,15 +294,35 @@ def harvest_1245(data, player):
     response = mine_pb2.drawStones()
     response.position = request.position
     stones = player.mine.harvest(request.position)
+    print 'stones', stones
     if stones:
         add_stones(player, stones, response)
     else:
         response.res.result = False
         response.res.result_no = 12450
         response.res.message = u"没有可以领取的符文石"
+        
+    player.mine.save_data()
     print '1245-response', response
     return response.SerializePartialToString()
 
+
+def process_mine_result(player, position, response, result):
+    """
+    玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
+    @param gain: true or false 
+    """
+    if result == True:
+        player.mine.settle(position)
+        detail_info = player.mine.detail_info(position)
+        _, _, _, _, normal, lucky, _, _ = detail_info
+        for k, v in normal.items():
+            normal = response.normal.add()
+            normal[k] = v
+        for k, v in lucky.items():
+            luck = response.lucky.add()
+            luck[k] = v
+        
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
     """
@@ -226,11 +330,12 @@ def battle_1246(data, player):
     1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
     2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
     """
-    request = pvp_rank_pb2.PvpFightRequest()
+    request = mine_pb2.battleRequest()
     request.ParseFromString(data)
-    __skill = request.skill
+    pvp_data = request.data
+    __skill = pvp_data.skill
     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(request.lineup, player)
+    save_line_up_order(pvp_data.lineup, player)
 
     record = {}
     #todo: 获取驻守数据
@@ -242,11 +347,24 @@ def battle_1246(data, player):
     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
                                record.get('best_skill_no', 0), record.get('level', 1))
     fight_result = process.process()
+    
+    response = mine_pb2.battleResponse()
+
+    process_mine_result(player, request.position, response.gain, fight_result)
 
     logger.debug("fight result:%s" % fight_result)
 
+
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
+
+    
+    battleresponse = response.data
+    battleresponse.res.result = True
+
+    
+    player.mine.save_data()
+
     return response.SerializeToString()
 
 @remoteserviceHandle('gate')
@@ -266,7 +384,9 @@ def query_shop_1247(data, player):
             one_shop.status = status
     else:
         response.res.result = False
-        response.res.message = "商人不存在"
+        response.res.message = u"商人不存在"
+    player.mine.save_data()
+    print 'query_shop_1247-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -332,15 +452,18 @@ def reward_1249(data, player):
     """
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
-    response = item_response_pb2.ItemUseResponse()
+    response = mine_pb2.boxReward()
+    response.position = request.position
+    items = response.data
     if not player.mine.reward(request.position):
-        response.res.result = False
-        response.res.result_no = 12490
-        response.res.message = u"已领取"
-        return response.SerializePartialToString()
+        items.res.result = False
+        items.res.result_no = 12490
+        items.res.message = u"已领取"
+        return items.SerializePartialToString()
     player.mine.save_data()
     drop_id = base_config['warFogChest']
-    add_items(player, response, [drop_id])
+    add_items(player, items, [drop_id])
+    print 'reward_1249-response', response
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -361,14 +484,16 @@ def acc_mine_1250(data, player):
         return response.SerializePartialToString()
     else:
         response.res.result = True
+    print 'price', price
     consume_return_data = item_group_helper.consume(player, [price])  # 消耗
     item_group_helper.get_return(player, consume_return_data, response.consume)
     last_time = player.mine.acc_mine()
     player.mine.save_data()
 
     response.position = 0
-    response.last_time = last_time
+    response.last_time = int(last_time)
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def battle_1253(data, player):
@@ -456,7 +581,7 @@ def trigger_mine_boss():
 @remoteserviceHandle('gate')
 def trigger_mine_boss_1259(data, player):
     """
-    触发秘境boss
+    仅供测试，触发秘境boss
     return {"result":True, "boss_id": boss_id}
     """
     boss_num = remote_gate['world'].mine_get_boss_num_remote()
@@ -471,3 +596,4 @@ def trigger_mine_boss_1259(data, player):
     response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
+

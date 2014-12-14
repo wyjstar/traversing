@@ -50,6 +50,7 @@ def is_afford(player, item_group):
 def consume(player, item_group, shop=None, luck_config=None):
     """消耗"""
     result = []
+
     luckValue = None
     if luck_config:
         luckValue = luck_config.luckyValue

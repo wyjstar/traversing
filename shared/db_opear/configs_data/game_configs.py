@@ -141,6 +141,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for k, v in special_stage_config.get("world_boss_stages").items():
+    print stage_config.get("stages").get(100101)
+    for k, v in shop_config.items():
         print k, v
 
