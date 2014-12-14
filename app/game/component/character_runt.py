@@ -7,6 +7,7 @@ from app.game.redis_mode import tb_character_runt
 from shared.db_opear.configs_data import game_configs
 import random
 from shared.utils.pyuuid import get_uuid
+import copy
 
 
 class CharacterRuntComponent(Component):
@@ -79,7 +80,7 @@ class CharacterRuntComponent(Component):
         return 1
 
     def get_attr(self, runt_id):
-        conf = stone_config.get('stones').get(runt_id)
+        conf = game_configs.stone_config.get('stones').get(runt_id)
         mainAttr, minorAttr = {}, {}
 
         main_num = conf.minorAttrNum
@@ -89,15 +90,15 @@ class CharacterRuntComponent(Component):
         minor_pool = copy.copy(conf.minorAttr)
 
         for _ in range(main_num):
-            at, avt, av, ai = rand_pick_attr(main_pool)
+            at, avt, av, ai = self.rand_pick_attr(main_pool)
             mainAttr[at] = [avt, av, ai]
         for _ in range(minor_num):
-            at, avt, av, ai = rand_pick_attr(minor_pool)
+            at, avt, av, ai = self.rand_pick_attr(minor_pool)
             minorAttr[at] = [avt, av, ai]
 
         return mainAttr, minorAttr
 
-    def rand_pick_attr(attr):
+    def rand_pick_attr(self, attr):
         attrType, attrValueType, attrValue, attrIncrement = -1, -1, -1, 0
         rand_pool = {}
         for at, v in attr.items():
