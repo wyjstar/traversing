@@ -27,7 +27,7 @@ message EquipmentPB{
 
 message EquAttr{
     required int32 attr_value_type = 1;
-    required int32 attr_value = 2;
+    required float attr_value = 2;
     required float attr_increment = 3;
     required int32 attr_type = 4;
 }
