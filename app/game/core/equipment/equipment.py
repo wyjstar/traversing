@@ -264,7 +264,19 @@ class Equipment(object):
                        growMdef=0,
                        equLevel=0)
 
-        for k, v in self._attribute.items():
+        for k, v in self._attribute.main_attr.items():
+            assert varNames[k] in allVars
+            avt, av, ai = v
+            if avt == 1:
+                allVars[varNames[k]] += av
+                if k in varNames2:
+                    allVars[varNames2[k]] += ai
+            elif avt == 2:
+                if varNames3[k] in result:
+                    result[varNames3[k]] += av
+                else:
+                    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
+        for k, v in self._attribute.minor_attr.items():
             assert varNames[k] in allVars
             avt, av, ai = v
             if avt == 1:
@@ -290,15 +302,15 @@ class Equipment(object):
                         ductility='ductilityEqu')
 
         for k, v in formulas.items():
-            formula = formula_config.get(k)
+            formula = formula_config.get(v)
             if not formula:
                 raise Exception('cant find formula by name:%s' % k)
-            result[k] = eval(formula, allVars, allVars)
+            result[k] = eval(formula.formula, allVars, allVars)
 
-        print 'result:'*4, result
-        print
-        print allVars
-        print
+        # print 'result:'*4, result
+        # print
+        # print 'allVars:', allVars.items()
+        # print
 
         return CommonItem(result)
 
