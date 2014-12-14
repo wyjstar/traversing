@@ -1,0 +1,33 @@
+import "common.proto";
+//炼体传承 command:151 
+//修改属性：武将level，炼体id和金钱
+//请求
+message InheritRefineRequest
+{
+    required int32 origin = 1; //材料
+    required int32 target = 2; //传承目标
+}
+//响应
+//CommonResponse
+
+//装备传承 command:152 
+//修改属性：装备level，装备强化过程和金钱
+//请求
+message InheritEquipmentRequest
+{
+    required string origin = 1; //材料
+    required string target = 2; //传承目标
+}
+//响应
+//CommonResponse
+
+//无双传承 command:153 
+//修改属性：无双level，和金钱
+//请求
+message InheritUnparaRequest
+{
+    required int32 origin = 1; //材料
+    required int32 target = 2; //传承目标
+}
+//响应
+//CommonResponse

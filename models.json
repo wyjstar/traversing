@@ -35,8 +35,7 @@
                 "fine_equipment_last_pick_time": "simple",
                 "excellent_equipment_last_pick_time": "simple",
                 "stamina": "complex",
-                "soul_shop": "complex",
-                "arena_shop": "complex",
+                "finances": "complex",
                 "pvp_times": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
@@ -174,7 +173,7 @@
             "def_attrs": {
                 "id": "simple",
                 "travel": "complex",
-                "shoes": "simple",
+                "shoes": "complex",
                 "chest_time": "simple",
                 "travel_item": "complex",
                 "fight_cache": "complex"
@@ -214,6 +213,17 @@
             "def_attrs":{
                 "id":"simple",
                 "stones":"complex"
+            }
+        },
+        "tb_character_runt": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "m_runt": "complex",
+                "stone1": "simple",
+                "stone2": "simple",
+                "refresh_id": "simple",
+                "refresh_times": "complex"
             }
         }
     }

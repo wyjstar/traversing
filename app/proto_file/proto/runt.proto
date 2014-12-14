@@ -1,0 +1,61 @@
+import "common.proto";
+
+//841 set
+message RuntSetRequest{
+    required int32 hero_no = 1;
+    required int32 runt_type = 2;
+    required int32 runt_po = 3;
+    required int32 runt_id = 4;
+}
+
+message RuntSetResponse{
+    required CommonResponse res = 1;
+}
+
+//842
+message RuntPickRequest{
+    required int32 hero_no = 1;
+    required int32 runt_type = 2;
+    optional int32 runt_po = 3;
+}
+
+message RuntPickResponse{
+    required CommonResponse res = 1;
+}
+
+// 843
+message InitRuntResponse{
+    repeated Runt1 runt = 1;
+    required int32 stone1 = 2;
+    required int32 stone2 = 3;
+    required int32 refresh_id = 4;
+    required int32 refresh_times = 5;
+}
+
+message Runt1{
+    required int32 runt_id = 1;
+    required int32 num = 2;
+}
+
+// 844 打造刷新
+message RefreshRuntResponse{
+    required CommonResponse res = 1;
+    required int32 refresh_id = 2;
+}
+
+// 845 炼化
+message RefiningRuntRequest{
+    repeated Runt1 runt = 1;
+}
+
+message RefiningRuntResponse{
+    required CommonResponse res = 1;
+    required int32 stone1 = 2;
+    required int32 stone2 = 3;
+    repeated Runt1 runt = 4;
+}
+
+// 846 BuildRuntRequest
+message BuildRuntResponse{
+    required CommonResponse res = 1;
+}

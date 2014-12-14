@@ -23,20 +23,10 @@ class CharacterShopComponent(Component):
     def init_data(self):
         shop_data = tb_character_shop.getObjData(self.owner.base_info.id)
         if shop_data:
-            print shop_data
+            # print shop_data
             self._shop_data = shop_data.get('shop')
-            print self._shop_data
-
-            # 初始化刷新次数
-            for k, v in self._shop_data.items():
-                current_date_time = int(time.time())
-                if current_date_time >= v['last_refresh_time']:
-                    v['refresh_times'] = 0
-                current_day = localtime(current_date_time).tm_yday
-                luck_day = localtime(v['luck_time']).tm_yday
-                if current_day != luck_day:
-                    v['luck_time'] = time.time()
-                    v['luck_num'] = 0.0
+            # print self._shop_data
+            self.check_time()
         else:
             for t, item in shop_type_config.items():
                 data = {}
@@ -49,11 +39,11 @@ class CharacterShopComponent(Component):
                     data['item_ids'] = self.get_shop_item_ids(t, 0)
                 self._shop_data[t] = data
             data = dict(id=self.owner.base_info.id, shop=self._shop_data)
-            print data
+            # print data
             tb_character_shop.new(data)
 
-        for k, v in self._shop_data.items():
-            print k, v.items()
+        # for k, v in self._shop_data.items():
+        #     print k, v.items()
 
     def save_data(self):
         shop = tb_character_shop.getObj(self.owner.base_info.id)
@@ -63,21 +53,26 @@ class CharacterShopComponent(Component):
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
 
+    def check_time(self):
+        current_date_time = time.time()
+        current_day = localtime(current_date_time).tm_yday
+        for k, v in self._shop_data.items():
+            refresh_day = localtime(v['last_refresh_time']).tm_yday
+            if current_day != refresh_day:
+                v['refresh_times'] = 0
+
+            luck_day = localtime(v['luck_time']).tm_yday
+            if current_day != luck_day:
+                v['luck_time'] = time.time()
+                v['luck_num'] = 0.0
+
     def get_shop_data(self, t):
         if t not in self._shop_data:
             logger.error('err shop type:%s', t)
             return None
 
-        v = self._shop_data[t]
-        current_date_time = int(time.time())
-        if current_date_time >= v['last_refresh_time']:
-            v['refresh_times'] = 0
-        current_day = localtime(current_date_time).tm_yday
-        luck_day = localtime(v['luck_time']).tm_yday
-        if current_day != luck_day:
-            v['luck_time'] = time.time()
-            v['luck_num'] = 0.0
-        return v
+        self.check_time()
+        return self._shop_data[t]
 
     def refresh_price(self, shop_type):
         shop_item = shop_type_config.get(shop_type)
@@ -93,7 +88,7 @@ class CharacterShopComponent(Component):
                 logger.error('no refresh price:shop type:%s', shop_type)
                 return False
             ctype, price = refreshprice.items()[0]
-            print ctype, price
+            # print ctype, price
 
         result = self.owner.finance.consume_gold(price)
         self.owner.finance.save_data()
@@ -102,7 +97,7 @@ class CharacterShopComponent(Component):
         __shop_data['buyed_item_ids'] = []
         # data['last_refresh_time'] = time.time()
         if shop_item.itemNum > 0:
-            __shop_data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
+            __shop_data['item_ids'] = self.get_shop_item_ids(shop_type, shop_item.itemNum)
         self.save_data()
 
         return result
@@ -125,7 +120,13 @@ class CharacterShopComponent(Component):
             if item.weight == -1:
                 continue
             elif item.weight == -2:
-                items[item.id] = item.get('weightGroup')[luck_num]
+                weights = sorted(item.get('weightGroup'), reverse=True)
+                for w in weights:
+                    if luck_num >= w:
+                        items[item.id] = item.get('weightGroup')[w]
+                        break
+                else:
+                    logger.error('error luck_num:%s:%s', luck_num, item.get('weightGroup'))
             else:
                 items[item.id] = item.weight
 

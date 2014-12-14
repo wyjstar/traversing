@@ -7,6 +7,7 @@ from app.proto_file import equipment_request_pb2
 from app.proto_file import equipment_response_pb2
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -34,6 +35,12 @@ def get_equipments_401(pro_data, player):
         equipment_add.no = obj.base_info.equipment_no
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
+
+        for before_lv, after_lv, enhance_cost in obj.enhance_record:
+            data_format = response.data.add()
+            data_format.before_lv = before_lv
+            data_format.after_lv = after_lv
+            data_format.cost_coin = enhance_cost
 
     return response.SerializePartialToString()
 
@@ -248,13 +255,10 @@ def __do_enhance(player, equipment_obj):
     @return: {'before_lv':1, 'after_lv':2, 'cost_coin':21}
     """
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
+    player.finance.consume(const.COIN, enhance_cost)
+    player.finance.save_data()
 
     before_lv, after_lv = equipment_obj.enhance(player)
-
-    # print before_lv, after_lv, "before_lv, after_lv"
-    player.finance.modify_single_attr('coin', enhance_cost, add=False)
-
-
 
     return {'result': True, 'record': (before_lv, after_lv, enhance_cost)}
 

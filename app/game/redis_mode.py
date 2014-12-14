@@ -88,3 +88,6 @@ tb_character_mine.insert()
 
 tb_character_stone = MAdmin('tb_character_stone', 'id')
 tb_character_stone.insert()
+# 符文
+tb_character_runt = MAdmin('tb_character_runt', 'id')
+tb_character_runt.insert()

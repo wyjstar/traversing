@@ -10,13 +10,76 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
 from shared.db_opear.configs_data.game_configs import base_config
-from shared.utils.const import const
+from shared.db_opear.configs_data.game_configs import formula_config
+from gfirefly.server.logobj import logger
+# from shared.utils.const import const
+import random
+import copy
+
+
+EQUIP_ATTR_CONFIG = game_configs.equipment_attribute_config
+
+
+def init_equipment_attr(equipment_no, is_special=False):
+    mainAttr, minorAttr = {}, {}
+    equipment_item = game_configs.equipment_config.get(equipment_no)
+    if not equipment_item:
+        logger.error('error equipment no:%s', equipment_no)
+        return mainAttr, minorAttr
+
+    equip_attr_id = equipment_item.specialAttr if is_special else equipment_item.attr
+    equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
+    if not equipment_attr_item:
+        logger.error('error equipment attr no:%s:%s',
+                     equip_attr_id, equipment_no)
+        return mainAttr, minorAttr
+
+    main_num = equipment_attr_item.get('mainAttrNum')
+    minor_num_min, minor_num_min = equipment_attr_item.get('minorAttrNum')
+    minor_num = random.randint(minor_num_min, minor_num_min)
+
+    main_pool = copy.copy(equipment_attr_item.get('mainAttr'))
+    minor_pool = copy.copy(equipment_attr_item.get('minorAttr'))
+
+    for _ in range(main_num):
+        at, avt, av, ai = rand_pick_attr(main_pool)
+        mainAttr[at] = [avt, av, ai]
+    for _ in range(minor_num):
+        at, avt, av, ai = rand_pick_attr(minor_pool)
+        minorAttr[at] = [avt, av, ai]
+
+    assert main_num == len(mainAttr)
+    assert minor_num == len(minorAttr)
+
+    return mainAttr, minorAttr
+
+
+def rand_pick_attr(attr):
+    attrType, attrValueType, attrValue, attrIncrement = -1, -1, -1, 0
+    rand_pool = {}
+    for at, v in attr.items():
+        rand_pool[at] = int(v[0] * 100)
+    rand = random.randint(0, sum(rand_pool.values()))
+
+    for k, v in rand_pool.items():
+        if v >= rand:
+            attrType = k
+            if len(attr[k]) == 5:
+                _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
+            else:
+                _, attrValueType, valueMin, valueMax = attr[k]
+            attrValue = random.randint(valueMin, valueMax)
+            del attr[k]
+            break
+        else:
+            rand -= v
+    return attrType, attrValueType, attrValue, attrIncrement
 
 
 class Equipment(object):
-    """装备
-    """
+    """装备 """
 
+<<<<<<< HEAD
     def __init__(self, equipment_id, equipment_name, equipment_no, \
                  strengthen_lv=1, awakening_lv=1, enhance_record=[], nobbing_effect={}, is_guard=False):
         self._base_info = EquipmentBaseInfoComponent(self, equipment_id, equipment_name, equipment_no)
@@ -32,16 +95,56 @@ class Equipment(object):
                                    'is_guard': self._attribute.is_guard},
                 'enhance_info': self._record.enhance_record, \
                 'nobbing_effect': self._attribute.nobbing_effect}
+=======
+    def __init__(self, equipment_id, equipment_name, equipment_no,
+                 strengthen_lv=1, awakening_lv=1, enhance_record=[],
+                 nobbing_effect={}, main_attr={}, minor_attr={}):
+        self._base_info = EquipmentBaseInfoComponent(self,
+                                                     equipment_id,
+                                                     equipment_name,
+                                                     equipment_no)
+        self._attribute = EquipmentAttributeComponent(self,
+                                                      strengthen_lv,
+                                                      awakening_lv,
+                                                      nobbing_effect,
+                                                      main_attr,
+                                                      minor_attr)
+        self._record = EquipmentEnhanceComponent(self, enhance_record)
+
+    def add_data(self, character_id):
+        no = self._base_info.equipment_no
+        mainAttr, minorAttr = init_equipment_attr(no)
+        self._attribute.main_attr = mainAttr
+        self._attribute.minor_attr = minorAttr
+        data = dict(id=self._base_info.id,
+                    character_id=character_id,
+                    equipment_info=dict(equipment_no=no,
+                                        slv=self._attribute.strengthen_lv,
+                                        alv=self._attribute.awakening_lv,
+                                        main_attr=mainAttr,
+                                        minor_attr=minorAttr),
+                    enhance_info=self._record.enhance_record,
+                    nobbing_effect=self._attribute.nobbing_effect)
+>>>>>>> inheritance
 
         tb_equipment_info.new(data)
 
     def save_data(self):
         data = {
+<<<<<<< HEAD
             'equipment_info': {'equipment_no': self._base_info.equipment_no, \
                                'slv': self._attribute.strengthen_lv, \
                                'alv': self._attribute.awakening_lv, \
                                'is_guard': self._attribute.is_guard},
             'enhance_info': self._record.enhance_record, \
+=======
+            'equipment_info': {'equipment_no': self._base_info.equipment_no,
+                               'slv': self._attribute.strengthen_lv,
+                               'alv': self._attribute.awakening_lv,
+                               'main_attr': self._attribute.main_attr,
+                               'minor_attr': self._attribute.minor_attr},
+            'enhance_info': self._record.enhance_record,
+>>>>>>> inheritance
             'nobbing_effect': self._attribute.nobbing_effect
         }
 
@@ -51,7 +154,6 @@ class Equipment(object):
     def delete(self):
         items_data = tb_equipment_info.getObj(self._base_info.id)
         items_data.delete()
-
 
     @property
     def base_info(self):
@@ -94,8 +196,6 @@ class Equipment(object):
         """
         equipment_no = self._base_info.equipment_no
         equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
-
-
         return equ_config_obj.gain
 
     @property
@@ -110,7 +210,8 @@ class Equipment(object):
         """套装信息
         """
         equipment_no = self._base_info.equipment_no
-        equ_conf_obj = game_configs.equipment_config.get(equipment_no, None)  # 装备配置
+        # 装备配置
+        equ_conf_obj = game_configs.equipment_config.get(equipment_no, None)
         if not equ_conf_obj:
             return None
         suit_no = equ_conf_obj.suitNo
@@ -126,32 +227,121 @@ class Equipment(object):
         equipment_pb.hero_no = 0
 
     def calculate_attr(self):
-        """根据属性和强化等级计算装备属性
-        """
-        equipment_no = self._base_info.equipment_no
-        equ_config_obj = game_configs.equipment_config.get(equipment_no)
+        """根据属性和强化等级计算装备属性"""
+        # hpEqu             装备加生命值    中间值  1   baseHp+growHp*equLevel
+        # atkEqu            装备加攻击力    中间值  1   baseAtk+growAtk*equLevel
+        # physicalDefEqu    装备加物防  中间值  1   basePdef+growPdef*equLevel
+        # magicDefEqu       装备加魔防  中间值  1   baseMdef+growMdef*equLevel
+        # hitEqu            装备加命中  中间值  1   hit
+        # dodgeEqu          装备加闪避  中间值  1   dodge
+        # criEqu            装备加暴击  中间值  1   cri
+        # criCoeffEqu       装备加暴伤  中间值  1   criCoeff
+        # criDedCoeffEqu    装备加暴免  中间值  1   criDedCoeff
+        # blockEqu          装备加格挡  中间值  1   block
+        # ductilityEqu      装备加韧性  中间值  1   ductility
 
-        atk = equ_config_obj.baseAtk + equ_config_obj.growAtk * self._attribute.strengthen_lv  # 攻击
-        hp = equ_config_obj.baseHp + equ_config_obj.growHp * self._attribute.strengthen_lv  # 血量
-        physical_def = equ_config_obj.basePdef + equ_config_obj.growPdef * self._attribute.strengthen_lv  # 物理防御
-        magic_def = equ_config_obj.baseMdef + equ_config_obj.growMdef * self._attribute.strengthen_lv  # 魔法防御
-        hit = equ_config_obj.hit  # 命中率
-        dodge = equ_config_obj.dodge  # 闪避率
-        cri = equ_config_obj.cri  # 暴击率
-        cri_coeff = equ_config_obj.criCoeff  # 暴击伤害系数
-        cri_ded_coeff = equ_config_obj.criDedCoeff  # 暴击减免系数
-        block = equ_config_obj.block  # 格挡率
+        # 1：加生命值上限
+        # 2：加攻击力
+        # 3：加物理防御
+        # 4：加魔法防御
+        # 5：加命中率
+        # 6：加闪避率
+        # 7：暴击率
+        # 8：加暴击伤害
+        # 9：加暴伤减免
+        # 10：加格挡率
+        # 11：加韧性
 
-        return CommonItem(dict(atk=atk,
-                               hp=hp,
-                               physical_def=physical_def,
-                               magic_def=magic_def,
-                               hit=hit,
-                               dodge=dodge,
-                               cri=cri,
-                               cri_coeff=cri_coeff,
-                               cri_ded_coeff=cri_ded_coeff,
-                               block=block))
+        result = {'hp_rate': 0,
+                  'atk_rate': 0,
+                  'physical_def_rate': 0,
+                  'magic_def_rate': 0}
+        varNames = {1: 'baseHp',
+                    2: 'baseAtk',
+                    3: 'basePdef',
+                    4: 'baseMdef',
+                    5: 'hit',
+                    6: 'dodge',
+                    7: 'cri',
+                    8: 'criCoeff',
+                    9: 'criDedCoeff',
+                    10: 'block',
+                    11: 'ductility'}
+        varNames2 = {1: 'growHp',
+                     2: 'growAtk',
+                     3: 'growPdef',
+                     4: 'growMdef'}
+        varNames3 = {1: 'hp_rate',
+                     2: 'atk_rate',
+                     3: 'physical_def_rate',
+                     4: 'magic_def_rate'}
+
+        allVars = dict(baseHp=0,
+                       baseAtk=0,
+                       basePdef=0,
+                       baseMdef=0,
+                       hit=0,
+                       dodge=0,
+                       cri=0,
+                       criCoeff=0,
+                       criDedCoeff=0,
+                       block=0,
+                       ductility=0,
+                       growHp=0,
+                       growAtk=0,
+                       growPdef=0,
+                       growMdef=0,
+                       equLevel=0)
+
+        for k, v in self._attribute.main_attr.items():
+            assert varNames[k] in allVars
+            avt, av, ai = v
+            if avt == 1:
+                allVars[varNames[k]] += av
+                if k in varNames2:
+                    allVars[varNames2[k]] += ai
+            elif avt == 2:
+                if varNames3[k] in result:
+                    result[varNames3[k]] += av
+                else:
+                    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
+        for k, v in self._attribute.minor_attr.items():
+            assert varNames[k] in allVars
+            avt, av, ai = v
+            if avt == 1:
+                allVars[varNames[k]] += av
+                if k in varNames2:
+                    allVars[varNames2[k]] += ai
+            elif avt == 2:
+                if varNames3[k] in result:
+                    result[varNames3[k]] += av
+                else:
+                    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
+
+        formulas = dict(hp='hpEqu',
+                        atk='atkEqu',
+                        physical_def='physicalDefEqu',
+                        magic_def='magicDefEqu',
+                        hit='hitEqu',
+                        dodge='dodgeEqu',
+                        cri='criEqu',
+                        cri_coeff='criCoeffEqu',
+                        cri_ded_coeff='criDedCoeffEqu',
+                        block='blockEqu',
+                        ductility='ductilityEqu')
+
+        for k, v in formulas.items():
+            formula = formula_config.get(v)
+            if not formula:
+                raise Exception('cant find formula by name:%s' % k)
+            result[k] = eval(formula.formula, allVars, allVars)
+
+        # print 'result:'*4, self._base_info.equipment_no, result
+        # print '-'*32
+        # print 'allVars:', allVars
+        # print '='*32
+
+        return CommonItem(result)
 
     @property
     def strength_max(self):
@@ -161,3 +351,11 @@ class Equipment(object):
     @property
     def enhance_record(self):
         return self._record
+
+    @property
+    def equipment_config_info(self):
+        equipment_no = self._base_info.equipment_no
+        equ_config_obj = game_configs.equipment_config.get(equipment_no)
+        assert equ_config_obj!=None, "equipment id: %s can not find config info" % equipment_no
+        return equ_config_obj
+

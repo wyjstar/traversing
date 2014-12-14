@@ -14,9 +14,9 @@ message GetShopItems
 //商城请求 command:501/502/503/504
 message ShopRequest
 {
-    required int32 id = 1; // 对应shop配置表中商品编号
-    optional int32 num = 2; // 抽取次数
+    repeated int32 ids = 1; // 对应shop配置表中商品编号
 }
+
 //商城返回 command:501/502/503/504
 message ShopResponse
 {

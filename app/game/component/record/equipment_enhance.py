@@ -16,3 +16,7 @@ class EquipmentEnhanceComponent(Component):
     @property
     def enhance_record(self):
         return self._enhance_record
+
+    @enhance_record.setter
+    def enhance_record(self, value):
+        self._enhance_record = value

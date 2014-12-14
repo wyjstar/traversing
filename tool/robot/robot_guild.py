@@ -9,9 +9,25 @@ from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
 from app.proto_file.travel_pb2 import *
 from app.proto_file.travel_shoes_pb2 import *
+from app.proto_file.runt_pb2 import *
 
 
 class RobotGuild(Robot):
+
+    def command_init_runt(self):
+        argument1 = BuyShoesRequest()
+        for i in [1, 2, 3]:
+            shoes_info = argument1.shoes_infos.add()
+            shoes_info.shoes_type = i
+            shoes_info.shoes_no = i
+        self.send_message(argument1, 843)
+
+    def init_runt_843(self, message):
+        argument = InitRuntResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
 
     def command_buy_shoes(self):
         argument1 = BuyShoesRequest()
