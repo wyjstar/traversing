@@ -1,6 +1,6 @@
 import "item.proto";
 import "common.proto";
-import "arena_shop.proto";
+//import "arena_shop.proto";
 import "stage.proto";
 import "line_up.proto";
 import "pvp_rank.proto";

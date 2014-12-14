@@ -10,7 +10,7 @@ class EquipmentAttributeComponent(Component):
     """装备属性
     """
 
-    def __init__(self, owner, strengthen_lv, awakening_lv, nobbing_effect,
+    def __init__(self, owner, strengthen_lv, awakening_lv, nobbing_effect, is_guard,
                  main_attr, minor_attr):
         super(EquipmentAttributeComponent, self).__init__(owner)
 
