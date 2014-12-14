@@ -62,6 +62,7 @@ def inherit_equipment_152(pro_data, player):
 
     origin = player.equipment_component.get_equipment(origin_id)
     target = player.equipment_component.get_equipment(target_id)
+    print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
     if not origin or (not target):
         logger.error("equip %s or %s not exists" % (origin_id, target_id))
@@ -79,12 +80,15 @@ def inherit_equipment_152(pro_data, player):
         return response.SerializeToString()
 
     target.attribute.strengthen_lv = origin.attribute.strengthen_lv
-    origin.attribute.strength_lv = 1
+    target.save_data()
+
+    origin.attribute.strengthen_lv = 1
+    origin.save_data()
     # 传承强化过程
     target.enhance_record.enhance_record = origin.enhance_record.enhance_record
     origin.enhance_record.enhance_record = []
-    target.save_data()
-    origin.save_data()
+
+    print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
     player.finance.gold -= base_config.get("equInheritPrice")
     player.finance.save_data()
