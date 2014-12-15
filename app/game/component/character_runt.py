@@ -88,7 +88,7 @@ class CharacterRuntComponent(Component):
         conf = game_configs.stone_config.get('stones').get(runt_id)
         mainAttr, minorAttr = {}, {}
 
-        main_num = conf.minorAttrNum
+        main_num = conf.mainAttrNum
         minor_num = conf.minorAttrNum
 
         main_pool = copy.copy(conf.mainAttr)
