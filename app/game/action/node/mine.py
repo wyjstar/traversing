@@ -102,7 +102,7 @@ def search_1241(data, player):
         response.position = request.position
         print 'response.position', response.position
         if player.mine.can_search(request.position):
-            player.mine.search_mine(request.position)
+            player.mine.search_mine(request.position, trigger_mine_boss)
             player.mine.save_data()
             one_mine = player.mine.mine_info(request.position)
             one_mine_info(one_mine, response.mine)

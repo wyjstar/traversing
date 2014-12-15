@@ -820,7 +820,7 @@ class UserMine(Component):
                 self._update = True
         self._reset_times += 1       
     
-    def search_mine(self, position):
+    def search_mine(self, position, func):
         if position in self._mine:
             return self._mine[position]
         odds = base_config['warFogStrongpointOdds']
@@ -836,15 +836,16 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
         
-        print 'stype', 3
-        if stype == 1:
-            stype = 2
-        stype = 2
+        if stype == MineType.COPY:
+            result = func()
+            if not result:
+                stype = MineType.MONSTER_FIELD
         if stype == MineType.PLAYER_FIELD:
             sword = 0
             mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
         else:
             mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name)
+            
         if not mine:
             mine = MineType.create(MineType.MONSTER_FIELD, self.owner.base_info.id, self.owner.base_info.base_name)
         self._mine[position] = mine
