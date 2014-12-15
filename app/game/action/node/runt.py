@@ -91,7 +91,7 @@ def runt_pick_842(data, player):
         need_gold = 0
         for (_, runt_info) in hero.runt[runt_type].items():
             need_gold += stone_config.get('stones').get(runt_info[1]).PickPrice
-            player.runt.pick_runt(runt_info):
+            player.runt.pick_runt(runt_info)
         del hero.runt[runt_type]
 
     if player.finance.gold < need_gold:
