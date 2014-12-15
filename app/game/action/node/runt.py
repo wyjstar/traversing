@@ -189,7 +189,7 @@ def refining_runt_845(data, player):
     """符文炼化"""
     args = RefiningRuntRequest()
     args.ParseFromString(data)
-    runts = args.runt
+    runts = args.runt_no
 
     response = RefiningRuntResponse()
 
