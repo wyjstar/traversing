@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-created by sphinx on 
+created by sphinx on
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_activity
@@ -18,8 +18,11 @@ class CharacterLevelGift(Component):
 
         if activity:
             data = activity.get('level_gift')
-            if data:
-                self._received_gift_ids = []#data['received_gift_ids']
+            if data and data != 'None':
+                self._received_gift_ids = data['received_gift_ids']
+            else:
+                self.received_gift_ids = []
+                self.save_data()
         else:
             data = dict(received_gift_ids=self._received_gift_ids)
             tb_character_activity.new({'id': self.owner.base_info.id,

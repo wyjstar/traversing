@@ -10,6 +10,7 @@ from test.init_data.mock_item import init_item
 from test.init_data.mock_player import init_player
 from test.init_data.mock_line_up import init_line_up
 from test.init_data.mock_mails import init_mail
+from test.init_data.mock_runt import init_runt
 
 
 def init(player):
@@ -20,3 +21,4 @@ def init(player):
     init_equipment_chip(player)
     init_item(player)
     init_line_up(player)
+    init_runt(player)

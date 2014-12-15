@@ -32,6 +32,7 @@ class Hero(object):
         self._refine = 0
         self._character_id = character_id
         self._is_guard = False
+        self._runt = {}
 
     def init_data(self, data):
         self._character_id = data.get("character_id")
@@ -42,6 +43,15 @@ class Hero(object):
         self._break_level = hero_property.get("break_level")
         self._refine = hero_property.get("refine")
         self._is_guard = hero_property.get("is_guard")
+        self._runt = hero_property.get("runt")
+
+    @property
+    def runt(self):
+        return self._runt
+
+    @runt.setter
+    def runt(self, value):
+        self._runt = value
 
     @property
     def refine(self):
@@ -122,6 +132,7 @@ class Hero(object):
             'break_level': self._break_level,
             'refine': self._refine,
             'is_guard': self._is_guard
+            'runt': self._runt
         }
         return hero_property
 
@@ -131,6 +142,14 @@ class Hero(object):
         hero_pb.break_level = self._break_level
         hero_pb.exp = self._exp
         hero_pb.refine = self._refine
+        hero_pb.is_guard = self._is_guard
+        for (runt_type, item) in self._runt.items():
+            runt_type_pb = hero_pb.runt_type.add()
+            runt_type_pb.runt_type = runt_type
+            for (runt_po, runt_no) in item.items():
+                runt_pb = runt_type_pb.runt.add()
+                runt_pb.runt_po = runt_po
+                runt_pb.runt_id = runt_no
 
     @property
     def hero_info(self):
@@ -206,7 +225,6 @@ class Hero(object):
         if param:
             return param
         return 0
-
 
     @property
     def hero_links(self):

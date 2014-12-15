@@ -29,6 +29,7 @@ CREATE TABLE `tb_character_mine` (
   `lively` int(11) NOT NULL,
   `mine` mediumblob,
   PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tb_character_shop`;
@@ -36,4 +37,5 @@ CREATE TABLE `tb_character_shop` (
   `id` bigint(20) NOT NULL,
   `shop` blob NOT NULL,
   PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

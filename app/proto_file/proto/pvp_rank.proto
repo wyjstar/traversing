@@ -3,15 +3,16 @@ import "common.proto";
 
 
 message RankItems{
-     required string nickname = 1;//角色昵称
-     required int32 rank = 2;
-     required int32 level = 3;
-     required int32 ap = 4;
-     repeated int32 hero_ids = 5;
+    required string nickname = 1;//角色昵称
+    required int32 rank = 2;
+    required int32 level = 3;
+    required int32 ap = 4;
+    repeated int32 hero_ids = 5;
 }
 
 message PlayerRankResponse{
     repeated RankItems rank_items = 1;
+	optional int32 player_rank = 2;
 }
 
 message PvpFightRequest{

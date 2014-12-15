@@ -14,7 +14,7 @@ from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     SettleAutoRequest, SettleAutoResponse, \
     FastFinishAutoRequest, FastFinishAutoResponse
 from shared.db_opear.configs_data.game_configs import travel_event_config, \
-    base_config, stage_config
+    base_config, stage_config, vip_config
 import random
 from gfirefly.server.logobj import logger
 import time
@@ -140,6 +140,7 @@ def travel_init_830(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -516,15 +517,14 @@ def fast_finish_auto_839(data, player):
         response.res.result_no = 820
         return response.SerializeToString()
 
-    need_good = int((auto_travel_info.get('continued_time') * 60 - (time.time() - start_time)) / 60 * base_config.get('autoTravelGetPrice'))
-    if player.finance.gold < need_good:
+    if not vip_config.get(player.vip_component.vip_level).autoTravelGet:
+        logger.error('auto travel dont finish')
         response.res.result = False
-        response.res.result_no = 102  # 充值币不足
+        response.res.result_no = 822
         return response.SerializeToString()
 
     update_auto(player, 2)
 
-    player.finance.gold -= need_good
     player.finance.save_data()
 
     deal_auto_response(response, player)
@@ -578,7 +578,10 @@ def update_auto(player, up_type):
                     # 掉落
                     drops = get_drops(stage_id)
                     if travel_event_config.get('events').get(travel_event_id).type == 1:
-                        the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1) + one_auto.get('start_time')
+                        if up_type == 1:
+                            the_time = (one_auto.get('continued_time') * 60 / auto_travel_config[0]) * (one_auto.get('already_times') + 1) + one_auto.get('start_time')
+                        else:
+                            the_time = int(time.time())
 
                         one_auto.get('events').append([res_travel_event_id, drops, the_time])
                     else:

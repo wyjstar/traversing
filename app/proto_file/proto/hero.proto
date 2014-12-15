@@ -4,6 +4,16 @@ message LinkPB{
 	optional bool is_activation = 2;  // 是否激活
 }
 
+message RuntType{
+    required int32 runt_type = 1;
+    repeated Runt runt = 2;
+}
+
+message Runt{
+    required int32 runt_po = 1;
+    required int32 runt_id = 2;
+}
+
 //武将信息
 message HeroPB
 {
@@ -12,5 +22,7 @@ message HeroPB
     optional int32 exp = 3;
     optional int32 break_level = 4;
     optional int32 refine = 5;
-    repeated LinkPB links = 6;
+    optional bool is_guard = 6;
+    repeated LinkPB links = 7;
+    repeated RuntType runt_type = 8;
 }

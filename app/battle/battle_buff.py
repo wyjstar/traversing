@@ -19,24 +19,30 @@ class BuffManager(object):
         """
         if not self.is_trigger(buff.skill_buff_info):
             return
-        buff.perform_buff(self._owner)
-        if buff.continue_num == 0:
-            return
         logger_cal.debug("添加buff: %s" % buff.skill_buff_info.id)
         effect_id = buff.skill_buff_info.effectId
         if effect_id not in self._buffs:
             self._buffs[effect_id] = []
-            self._buffs[effect_id].append(buff)
+            buff.perform_buff(self._owner) # perform buff
+            if buff.continue_num > 0:
+                self._buffs[effect_id].append(buff)
+
 
         elif buff.skill_buff_info.overlay:
-            self._buffs[effect_id].append(buff)
+            buff.perform_buff(self._owner) # perform buff
+            if buff.continue_num > 0:
+                self._buffs[effect_id].append(buff)
         elif not buff.skill_buff_info.overlay:
             if self._buffs[effect_id]:
                 temp = self._buffs[effect_id][0]
                 if temp.skill_buff_info.replace <= buff.skill_buff_info.replace:
-                    self._buffs[effect_id] = [buff]
+                    buff.perform_buff(self._owner) # perform buff
+                    if buff.continue_num > 0:
+                        self._buffs[effect_id] = [buff]
             else:
-                self._buffs[effect_id].append(buff)
+                buff.perform_buff(self._owner) # perform buff
+                if buff.continue_num > 0:
+                    self._buffs[effect_id].append(buff)
 
     def perform_buff(self):
         """
@@ -267,6 +273,7 @@ class Buff(object):
         effect_id = self._skill_buff_info.effectId
         if effect_id in [1, 2, 3, 8, 9, 26]:
             logger_cal.debug("执行buff %s" % self._skill_buff_info.id)
+            self._continue_num -= 1
 
         if effect_id in [1, 2]:
             block_or_not = False

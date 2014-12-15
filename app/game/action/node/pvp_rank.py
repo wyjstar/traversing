@@ -5,18 +5,18 @@ created by sphinx on 27/10/14.
 import cPickle
 import random
 from app.proto_file import pvp_rank_pb2
-from app.game.action.node.stage import assemble
+from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
 from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
-from app.battle.battle_process import BattlePVPProcess
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
-from app.game.action.node._fight_start_logic import save_line_up_order, pvp_assemble_response
+from app.game.action.node._fight_start_logic import pvp_assemble_units
+from app.game.action.node._fight_start_logic import pvp_process
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -42,6 +42,10 @@ def pvp_top_rank_request_1501(data, player):
 @remoteserviceHandle('gate')
 def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
+
+    prere = dict(character_id=player.base_info.id)
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    response.player_rank = record.get('id') if record else -1
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
@@ -116,9 +120,9 @@ def pvp_fight_request_1505(data, player):
     """
     request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
+    line_up = request.lineup
     __skill = request.skill
     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(request.lineup, player)
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
@@ -149,12 +153,8 @@ def pvp_fight_request_1505(data, player):
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
-    player.fight_cache_component.awake_hero_units(blue_units)
-    player.fight_cache_component.awake_hero_units(red_units)
 
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-                               record.get('best_skill', 0), record.get('level', 1))
-    fight_result = process.process()
+    fight_result = pvp_process(player, line_up,red_units, blue_units, __best_skill, record.get("best_skill"), record.get("level"))
 
     logger.debug("fight result:%s" % fight_result)
 
@@ -184,8 +184,12 @@ def pvp_fight_request_1505(data, player):
 
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
-    pvp_assemble_response(red_units, blue_units, __best_skill, __skill_level,
-            record.get("unpar_skill"), record.get("unpar_skill_level"), response)
+    pvp_assemble_units(red_units, blue_units, response)
+    response.fight_result = fight_result
+    response.red_skill = __skill
+    response.red_skill_level = __skill_level
+    response.blue_skill = record.get("unpar_skill")
+    response.blue_skill_level = record.get("unpar_skill_level")
 
     return response.SerializeToString()
 
@@ -195,10 +199,8 @@ def pvp_player_rank_refresh_request(data, player):
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
-    if not record:
-        cur_rank = 300
-    else:
-        cur_rank = record.get('id')
+    response.player_rank = record.get('id') if record else -1
+    cur_rank = record.get('id') if record else 300
 
     ranks = []
     for v in arena_fight_config.values():

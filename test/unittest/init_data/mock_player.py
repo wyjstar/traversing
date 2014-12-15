@@ -13,20 +13,15 @@ def init_player():
     if not character_obj:
         character = {'id': 1,
                      'nickname': '',
-                     'coin': 0,
-                     'gold': 0,
-                     'hero_soul': 0,
                      'level': 200,
                      'exp': 0,
-                     'junior_stone': 0,
-                     'middle_stone': 0,
-                     'high_stone': 0,
                      'fine_hero_last_pick_time': 0,
                      'excellent_hero_last_pick_time': 0,
                      'fine_equipment_last_pick_time': 0,
                      'excellent_equipment_last_pick_time': 0,
                      'stamina': 100,
                      'pvp_times': 0,
+                     'finances': [],
                      'vip_level': 0,
                      'get_stamina_times': 0}
         tb_character_info.new(character)
@@ -50,20 +45,15 @@ def init_player():
     if not character_obj:
         character = {'id': 2,
                      'nickname': '',
-                     'coin': 0,
-                     'gold': 0,
-                     'hero_soul': 0,
                      'level': 0,
                      'exp': 0,
-                     'junior_stone': 0,
-                     'middle_stone': 0,
-                     'high_stone': 0,
                      'fine_hero_last_pick_time': 0,
                      'excellent_hero_last_pick_time': 0,
                      'fine_equipment_last_pick_time': 0,
                      'excellent_equipment_last_pick_time': 0,
                      'stamina': 100,
                      'pvp_times': 0,
+                     'finances': [],
                      'vip_level': 0,
                      'get_stamina_times': 0}
         tb_character_info.new(character)

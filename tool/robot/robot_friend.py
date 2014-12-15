@@ -100,3 +100,14 @@ class RobotFriend(Robot):
         response.ParseFromString(message)
         print response
         self.on_command_finish()
+
+    def command_refresh_shop(self, shop_type):
+        request = shop_pb2.RefreshShopItems()
+        request.shop_type = int(shop_type)
+        self.send_message(request, 507)
+
+    def anonyous_507(self, message):
+        response = shop_pb2.GetShopItemsResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()

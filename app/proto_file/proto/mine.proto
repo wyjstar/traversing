@@ -1,6 +1,6 @@
 import "item.proto";
 import "common.proto";
-import "arena_shop.proto";
+//import "arena_shop.proto";
 import "stage.proto";
 import "line_up.proto";
 import "pvp_rank.proto";
@@ -179,8 +179,29 @@ message MineEquipmentSlot
     required int32 equipment_id = 2; // 装备ID
 }
 
-//秘境相关，pve战斗开始, command:903
-//请求 StageStartRequest
+//秘境相关，战斗开始, command:1253
+message MineBattleRequest
+{
+	required int32 pos = 1;          // 矿位置
+	repeated LineUp lineup = 2;      // 队形
+	optional int32 unparalleled = 3; // 无双技能ID
+	optional int32 fid = 4;          // 好友ID
+}
+
+// 秘境相关，战斗响应，command:1253
+message MineBattleResponse{
+	required CommonResponse res = 1;
+	repeated BattleUnit red = 2;         // 红方数据 自己
+	repeated BattleUnit blue = 3;    // 对方数据
+	optional int32 red_best_skill_id = 4;       // 无双
+	optional int32 red_best_skill_level = 5; // 无双
+	optional int32 blue_best_skill_id = 6;       // 无双
+	optional int32 blue_best_skill_level = 7; // 无双
+	repeated int32 awake_no = 8;        //
+	optional int32 seed1= 9;
+	optional int32 seed2= 10;
+}
+
 //返回 StageStartResponse
 
 //秘境相关，pvp战斗开始, command:1251
@@ -190,3 +211,10 @@ message MineEquipmentSlot
 //秘境相关， 战斗结算, command: 1252
 //请求 
 //返回 CommonResponse 或者自己定义协议
+
+
+//请求玩家信息, command:1253
+//响应协议
+message MinePlayerInfoRequest{
+    required int32 pos = 1;                    // 矿在地图上的位置
+}

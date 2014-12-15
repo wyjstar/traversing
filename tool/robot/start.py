@@ -10,6 +10,9 @@ from robot_guild import RobotGuild
 from robot_online_gift import RobotOnlineGift
 from robot_activity import RobotActivity
 from robot_world_boss import RobotWorldBoss
+from robot_stage import RobotStage
+from robot_pvp import RobotPvp
+from robot_mine import RobotMine
 
 monkey.patch_os()
 
@@ -27,6 +30,9 @@ robot_type['3'] = RobotGuild
 robot_type['4'] = RobotOnlineGift
 robot_type['5'] = RobotActivity
 robot_type['6'] = RobotWorldBoss
+robot_type['7'] = RobotStage
+robot_type['8'] = RobotPvp
+robot_type['9'] = RobotMine
 robot_manager = RobotManager()
 
 

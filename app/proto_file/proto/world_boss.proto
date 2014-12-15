@@ -1,7 +1,10 @@
 import "common.proto";
 import "stage.proto";
-//获取boss开始前的所有信息， command:1701
-//无请求协议
+//获取boss开始前的所有信息， command:1701,1704
+message PvbRequest
+{
+    required string boss_id = 1; //boss id
+}
 message PvbRankItem{
     required string nickname = 1; //玩家昵称
     required int32 level = 2;//等级
@@ -33,6 +36,7 @@ message PvbBeforeInfoResponse{
 //响应协议
 message PvbPlayerInfoRequest{
     required int32 rank_no = 1;// 排名
+    optional string boss_id = 2; // boss_id
 }
 
 //鼓舞， command:1703
@@ -40,16 +44,23 @@ message PvbPlayerInfoRequest{
 message EncourageHerosRequest{
     required int32 finance_type = 1;  //1:金币，2:元宝
     required int32 finance_num = 2;   //金币或者元宝数量
+    optional string boss_id = 3; // boss_id
 }
 
 
 //使用元宝复活, command:1704
-//无请求协议
+//请求协议: PvbRequest
 //响应协议CommonResponse
 
 
 //开始战斗, command:1705
-//请求协议：StageStartRequest
+message PvbStartRequest
+{
+	required string boss_id = 1;     //boss id
+	repeated LineUp lineup = 3;      // 队形
+	optional int32 unparalleled = 4; // 无双技能ID
+	optional int32 fid = 5;          // 好友ID
+}
 message PvbFightResponse{
     required CommonResponse res = 1;
     repeated BattleUnit red = 2;
@@ -62,8 +73,16 @@ message PvbFightResponse{
 }
 
 //战斗结算，command:1706
-//请求协议: 
+//请求协议: PvbRequest 
 //响应协议PvbBeforeInfoResponse
 
 
 //todo:战斗奖励，在整个战斗结束时使用邮件推送
+
+//秘境boss触发, 向全服推送的消息 1707
+message MineBossResponse
+{
+    required CommonResponse res = 1; 
+    required string boss_id = 2; //boss id
+    required int32 stage_id = 3; //关卡id
+}
