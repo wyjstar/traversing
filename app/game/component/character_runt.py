@@ -93,6 +93,7 @@ class CharacterRuntComponent(Component):
 
         main_pool = copy.copy(conf.mainAttr)
         minor_pool = copy.copy(conf.minorAttr)
+        print main_num, minor_num, 'num,num,num,################################'
 
         for _ in range(main_num):
             at, avt, av, ai = self.rand_pick_attr(main_pool)
