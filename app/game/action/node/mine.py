@@ -518,19 +518,22 @@ def process_mine_result(player, position, response, result):
 def battle_1253(data, player):
     """docstring for battle"""
     request = mine_pb2.MineBattleRequest()
+    request.ParseFromString(data)
     pos = request.pos                    # 矿所在位置
-    line_up = request.line_up            # 阵容顺序
+    line_up = request.lineup            # 阵容顺序
     red_best_skill_id = request.unparalleled # 无双编号
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     blue_best_skill_id = 0
     blue_best_skill_level = 0
     red_units = {}
     blue_units = {}
 
+    logger.debug("%s pos" % pos)
+
     mine_info = get_mine_info(player, pos)
     response = mine_pb2.MineBattleResponse()
 
     mine_type = mine_info.get("mine_type") # 根据矿所在位置判断pve or pvp
+    print mine_type, "*"*80
     if mine_type == 0:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
@@ -547,6 +550,8 @@ def battle_1253(data, player):
         blue_units = blue_units[0]
         process_mine_result(player, pos, response, result)
 
+        print red_units, blue_units
+
     elif mine_type == 1:
         # pvp
         red_units = player.fight_cache_component.red_unit
@@ -562,13 +567,15 @@ def battle_1253(data, player):
         blue_best_skill_id = info.get("best_skill_id")
         blue_best_skill_level = info.get("best_skill_level")
 
+        print red_units, blue_units
+
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     response.red_best_skill_id = red_best_skill_id
     response.red_best_skill_level = red_best_skill_level
     response.blue_best_skill_id = blue_best_skill_id
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
-    response.res.result = True
+    print response, red_units, blue_units
     return response.SerializePartialToString()
 
 

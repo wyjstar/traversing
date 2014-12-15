@@ -37,10 +37,10 @@ class CharacterEquipmentPackageComponent(Component):
 
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
-            is_guard = equipment_data.get('is_guard')  # 装备锤炼效果
+            is_guard = equipment_data.get('is_guard')  # guard
             equipment_obj = Equipment(equipment_id, '', equipment_no,
                                       strengthen_lv, awakening_lv,
-                                      enhance_info, nobbing_effect,
+                                      enhance_info, nobbing_effect, is_guard,
                                       main_attr, minor_attr)
             self._equipments_obj[equipment_id] = equipment_obj
 
