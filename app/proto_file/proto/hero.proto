@@ -10,9 +10,13 @@ message RuntType{
 }
 
 message Runt{
-    required int32 runt_po = 1;
-    required int32 runt_id = 2;
+    required bytes runt_no = 1;
+    repeated RuntAttr1 main_attr = 2;
+    repeated RuntAttr1 minor_attr = 3;
+    required int32 runt_id = 4;
+    required int32 runt_po = 5;
 }
+
 
 //武将信息
 message HeroPB
@@ -24,4 +28,11 @@ message HeroPB
     optional int32 refine = 5;
     repeated LinkPB links = 6;
     repeated RuntType runt_type = 7;
+}
+
+message RuntAttr1{
+    required int32 attr_value_type = 1;
+    required float attr_value = 2;
+    required int32 attr_increment = 3;
+    required int32 attr_type = 4;
 }

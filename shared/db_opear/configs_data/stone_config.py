@@ -3,6 +3,7 @@
 created by server on 14-7-16下午5:48.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data import data_helper
 
 
 class StoneConfig(object):
@@ -17,6 +18,8 @@ class StoneConfig(object):
 
         weights = 0
         for row in config_value:
+            data_helper.convert_keystr2num(row.get('mainAttr'))
+            data_helper.convert_keystr2num(row.get('minorAttr'))
             item = CommonItem(row)
             if item.weight:
                 self._weight.append([item.id, weights+item.weight])

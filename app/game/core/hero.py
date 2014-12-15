@@ -141,10 +141,26 @@ class Hero(object):
         for (runt_type, item) in self._runt.items():
             runt_type_pb = hero_pb.runt_type.add()
             runt_type_pb.runt_type = runt_type
-            for (runt_po, runt_no) in item.items():
+            for (runt_po, runt_info) in item.items():
                 runt_pb = runt_type_pb.runt.add()
                 runt_pb.runt_po = runt_po
-                runt_pb.runt_id = runt_no
+
+                [runt_no, runt_id, main_attr, minor_attr] = runt_info
+                runt_pb.runt_id = runt_id
+                for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
+                    main_attr_pb = runt_pb.main_attr.add()
+                    main_attr_pb.attr_type = attr_type
+                    main_attr_pb.attr_value_type = attr_value_type
+                    main_attr_pb.attr_value = attr_value
+                    main_attr_pb.attr_increment = attr_increment
+
+                for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
+                    minor_attr_pb = runt_pb.minor_attr.add()
+                    minor_attr_pb.attr_type = attr_type
+                    minor_attr_pb.attr_value_type = attr_value_type
+                    minor_attr_pb.attr_value = attr_value
+                    minor_attr_pb.attr_increment = attr_increment
+
 
     @property
     def hero_info(self):
