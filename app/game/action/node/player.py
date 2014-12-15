@@ -153,7 +153,7 @@ def new_guide_step_1802(data, player):
     logger.info('newbee:%s step:%s',
                 player.base_info.base_name,
                 request.step_id)
-    player.newbee_guide_id = request.backID
+    player.newbee_guide_id = new_guide_item.get('backID')
     player.save_data()
     response.res.result = True
 
@@ -171,4 +171,4 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        init(player)
+        # init(player)
