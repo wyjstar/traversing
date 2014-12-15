@@ -211,12 +211,11 @@ message MineBattleResponse{
 //返回 PvpFightResponse
 
 //秘境相关， 战斗结算, command: 1252
-//请求 
+//请求
+message MineSettleRequest
+{
+    required int32 pos = 1;  //矿位置
+    optional bool result = 2; //战斗结果
+}
 //返回 CommonResponse 或者自己定义协议
 
-
-//请求玩家信息, command:1253
-//响应协议
-message MinePlayerInfoRequest{
-    required int32 pos = 1;                    // 矿在地图上的位置
-}

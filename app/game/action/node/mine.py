@@ -523,6 +523,21 @@ def process_mine_result(player, position, response, result):
         if sum(count.values()) > 0:
             response.result = netforwarding.push_message('receive_mail_remote', target, mail)
 
+
+
+@remoteserviceHandle('gate')
+def settle_1252(data, player):
+    request = mine_pb2.MineSettleRequest()
+    request.ParseFromString(data)
+    pos = request.pos
+    result = request.result
+    #todo: check result
+    #todo: set settle time to calculate acc_mine
+    response = common_pb2.CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
+
+
 @remoteserviceHandle('gate')
 def battle_1253(data, player):
     """docstring for battle"""
