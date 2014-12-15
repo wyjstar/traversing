@@ -74,3 +74,4 @@ class MineOpt(object):
         """
         ret = cls.redis.zget(label, k)
         return ret
+    
