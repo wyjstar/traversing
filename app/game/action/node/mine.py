@@ -235,7 +235,7 @@ def guard_1244(data, player):
             line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
             # 标记装备已驻守
             equip = player.equipment_component.get_equipment(slot.equipment_id)
-            equip.is_guard = True
+            equip.attribute.is_guard = True
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
 
