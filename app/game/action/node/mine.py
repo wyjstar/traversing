@@ -113,7 +113,7 @@ def search_1241(data, player):
         print '1241-response', response
     except Exception, e:
         print 'search', e
-        
+
     player.mine.save_data()
     return response.SerializePartialToString()
 
@@ -179,21 +179,21 @@ def query_1243(data, player):
             one_type = response.normal.add()
             one_type.stone_id = int(sid)
             one_type.stone_num = num
-            
+
         for sid, num in lucky.items():
             one_type = response.lucky.add()
             one_type.stone_id = int(sid)
             one_type.stone_num = num
-        
+
         response.increase = int(last_increase)
         if stype == 2:
             response.stage_id = int(lineup)
         if stype == 1:
             response.lineup.ParseFromString(lineup)
-        
+
         mid = player.mine.mid(request.position)
         main_mine = mine_config.get(mid)
-       
+
         response.genUnit = int( (60 / main_mine.timeGroup1) * main_mine.outputGroup1)
         response.rate = main_mine.increase
         response.incrcost = main_mine.increasePrice
@@ -201,7 +201,7 @@ def query_1243(data, player):
     else:
         response.res.result = False
         response.res.result_no = ret
-        
+
     player.mine.save_data()
     print '1243-response', response
     return response.SerializePartialToString()
@@ -212,11 +212,11 @@ def save_guard(player, position, info):
     """
     result_code = player.mine.save_guard(position, info)
     return result_code
-    
+
 def get_guard(player, position):
     info = player.mine.get_guard(position)
     return info
-    
+
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
     """
@@ -241,11 +241,11 @@ def guard_1244(data, player):
             equip.is_guard = True
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
-        
+
         # 标记武将已驻守
         hero = player.hero_component.get_hero(slot.hero_no)
         hero.is_guard = True
-        
+
 
     battle_units = {} #需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
@@ -268,7 +268,7 @@ def guard_1244(data, player):
         response.res.result = False
         response.res.result_no = result_code
         return response.SerializePartialToString()
-    
+
     response.res.result = True
     player.mine.save_data()
     return response.SerializePartialToString()
@@ -301,7 +301,7 @@ def harvest_1245(data, player):
         response.res.result = False
         response.res.result_no = 12450
         response.res.message = u"没有可以领取的符文石"
-        
+
     player.mine.save_data()
     print '1245-response', response
     return response.SerializePartialToString()
@@ -310,7 +310,7 @@ def harvest_1245(data, player):
 def process_mine_result(player, position, response, result):
     """
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
-    @param gain: true or false 
+    @param gain: true or false
     """
     if result == True:
         player.mine.settle(position)
@@ -322,7 +322,7 @@ def process_mine_result(player, position, response, result):
         for k, v in lucky.items():
             luck = response.lucky.add()
             luck[k] = v
-        
+
 @remoteserviceHandle('gate')
 def battle_1246(data, player):
     """
@@ -347,7 +347,7 @@ def battle_1246(data, player):
     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
                                record.get('best_skill_no', 0), record.get('level', 1))
     fight_result = process.process()
-    
+
     response = mine_pb2.battleResponse()
 
     process_mine_result(player, request.position, response.gain, fight_result)
@@ -358,11 +358,11 @@ def battle_1246(data, player):
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
 
-    
+
     battleresponse = response.data
     battleresponse.res.result = True
 
-    
+
     player.mine.save_data()
 
     return response.SerializeToString()
@@ -498,7 +498,7 @@ def acc_mine_1250(data, player):
 @remoteserviceHandle('gate')
 def battle_1253(data, player):
     """docstring for battle"""
-    request = mine_pb2.MineBattleStart()
+    request = mine_pb2.MineBattleRequest()
     pos = request.pos                    # 矿所在位置
     line_up = request.line_up            # 阵容顺序
     red_best_skill_id = request.unparalleled # 无双编号
