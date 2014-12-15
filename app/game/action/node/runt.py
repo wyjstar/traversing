@@ -20,7 +20,7 @@ def runt_set_841(data, player):
     hero_no = args.hero_no
     runt_type = args.runt_type
     runt_po = args.runt_po
-    runt_id = args.runt_id
+    runt_no = args.runt_no
 
     response = RuntSetResponse()
 
@@ -39,11 +39,17 @@ def runt_set_841(data, player):
     else:
         hero.runt[runt_type] = {}
 
-    hero.runt.get(runt_type)[runt_po] = runt_id
-
-    if not player.runt.reduce_runt(runt_id, 1):
+    runt_info = player.runt.m_runt.get(runt_no)
+    if not runt_info:
         response.res.result = False
         response.res.result_no = 825
+        return response.SerializeToString()
+
+    hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
+
+    if not player.runt.reduce_runt(runt_no):
+        response.res.result = False
+        response.res.result_no = 800
         return response.SerializeToString()
 
     hero.save_data()
@@ -66,16 +72,16 @@ def runt_pick_842(data, player):
 
     hero = player.hero_component.get_hero(hero_no)
 
-    if runt_type:
+    if runt_po:
         if not hero.runt.get(runt_type) or not hero.runt.get(runt_type).get(runt_po):
             response.res.result = False
             response.res.result_no = 823  # 符文不存在
             return response.SerializeToString()
-        runt_id = hero.runt.get(runt_type).get(runt_po)
+        runt_info = hero.runt.get(runt_type).get(runt_po)
 
-        need_gold = stone_config.get('stones').get(runt_id).PickPrice
+        need_gold = stone_config.get('stones').get(runt_info[1]).PickPrice
 
-        if not player.runt.add_runt(runt_id, 1):
+        if not player.runt.pick_runt(runt_info):
             response.res.result = False
             response.res.result_no = 824
             return response.SerializeToString()
@@ -83,11 +89,10 @@ def runt_pick_842(data, player):
         del hero.runt[runt_type][runt_po]
     else:
         need_gold = 0
-        for (_, item) in hero.runt.items():
-            for (_, the_runt_id) in item.items():
-                need_gold += stone_config.get('stones').get(the_runt_id).PickPrice
-                player.runt.add_runt(the_runt_id, 1)
-        hero.runt = {}
+        for (_, runt_info) in hero.runt[runt_type].items():
+            need_gold += stone_config.get('stones').get(runt_info[1]).PickPrice
+            player.runt.pick_runt(runt_info):
+        del hero.runt[runt_type]
 
     if player.finance.gold < need_gold:
         response.res.result = False
@@ -190,38 +195,43 @@ def refining_runt_845(data, player):
 
     stone1 = 0
     stone2 = 0
-    runt = {}
-    for runt_pb in runts:
-        runt_id = runt_pb.runt_id
-        num = runt_pb.num
-        if not player.runt.add_runt(runt_id, num):
-            response.res.result = False
-            response.res.result_no = 824
-            return response.SerializeToString()
+    runt = []
+    for runt_no in runts:
+        runt_info = player.runt.m_runt.get(runt_no)
 
-        runt_conf = stone_config.get('stones').get(runt_id)
+        runt_conf = stone_config.get('stones').get(runt_info[1])
         stone1 += runt_conf.stone1
         stone2 += runt_conf.stone2
         if random.random() < runt_conf.biggerStoneCri:
             get_runt_id = runt_conf.getbiggerStoneID[random.randint(0, len(runt_conf.biggerStoneId)-1)]
-            if runt.get(get_runt_id):
-                runt[get_runt_id] += runt_conf.biggerStoneNum
-
-    for (runt_id, num) in runt.items():
-        if not player.runt.add_runt(runt_id, num):
-            response.res.result = False
-            response.res.result_no = 824
-            return response.SerializeToString()
+            new_runt_no = player.runt.add_runt(runt_id)
+            if new_runt_no:
+                runt.append(new_runt_no)
 
     player.runt.stone1 += stone1
     player.runt.stone2 += stone2
 
     player.runt.save()
 
-    for (runt_id, num) in runt.items():
-        res_runt = response.runt.add()
-        res_runt.runt_id = runt_id
-        res_runt.num = num
+    for runt_no in runt:
+        runt_info = player.runt.m_runt.get(runt_no)
+        mrunt = response.runt.add()
+        mrunt.runt_no = runt_no
+        [runt_id, main_attr, minor_attr] = runt_info
+        mrunt.runt_id = runt_id
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
+            main_attr_pb = mrunt.main_attr.add()
+            main_attr_pb.attr_type = attr_type
+            main_attr_pb.attr_value_type = attr_value_type
+            main_attr_pb.attr_value = attr_value
+            main_attr_pb.attr_increment = attr_increment
+
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
+            minor_attr_pb = mrunt.minor_attr.add()
+            minor_attr_pb.attr_type = attr_type
+            minor_attr_pb.attr_value_type = attr_value_type
+            minor_attr_pb.attr_value = attr_value
+            minor_attr_pb.attr_increment = attr_increment
 
     response.stone1 = stone1
     response.stone2 = stone2
@@ -252,7 +262,8 @@ def build_runt_846(data, player):
     player.runt.stone2 -= need_stone2
     player.finance.coin -= need_coin
 
-    if not player.runt.add_runt(runt_id, 1):
+    runt_no = player.runt.add_runt(runt_id)
+    if not runt_no:
         response.res.result = False
         response.res.result_no = 824
         return response.SerializeToString()
@@ -263,6 +274,24 @@ def build_runt_846(data, player):
             break
 
     response.refresh_id = new_refresh_id
+    runt_info = player.runt.m_runt.get(runt_no)
+    mrunt = response.runt.add()
+    mrunt.runt_no = runt_no
+    [runt_id, main_attr, minor_attr] = runt_info
+    mrunt.runt_id = runt_id
+    for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
+        main_attr_pb = mrunt.main_attr.add()
+        main_attr_pb.attr_type = attr_type
+        main_attr_pb.attr_value_type = attr_value_type
+        main_attr_pb.attr_value = attr_value
+        main_attr_pb.attr_increment = attr_increment
+
+    for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
+        minor_attr_pb = mrunt.minor_attr.add()
+        minor_attr_pb.attr_type = attr_type
+        minor_attr_pb.attr_value_type = attr_value_type
+        minor_attr_pb.attr_value = attr_value
+        minor_attr_pb.attr_increment = attr_increment
 
     player.runt.save()
     player.finance.save_data()

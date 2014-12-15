@@ -54,7 +54,7 @@ message RefreshRuntResponse{
 
 // 845 炼化
 message RefiningRuntRequest{
-    repeated Runt1 runt = 1;
+    repeated int32 runt_no = 1;
 }
 
 message RefiningRuntResponse{
@@ -68,4 +68,5 @@ message RefiningRuntResponse{
 message BuildRuntResponse{
     required CommonResponse res = 1;
     optional int32 refresh_id = 2;
+    optional Runt1 runt = 3;
 }
