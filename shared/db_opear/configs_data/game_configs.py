@@ -130,7 +130,7 @@ all_config_name = {
     'seal_config': SealConfig(),
     'mine_config':MineConfig(),
     'formula_config': FormulaConfig(),
-    'mine_match_config':MineMatchConfig()
+    'mine_match_config':MineMatchConfig(),
     'stone_config': StoneConfig(),
     'formula_config': FormulaConfig()
 }

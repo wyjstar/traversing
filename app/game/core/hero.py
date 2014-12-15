@@ -131,7 +131,7 @@ class Hero(object):
             'exp': self._exp,
             'break_level': self._break_level,
             'refine': self._refine,
-            'is_guard': self._is_guard
+            'is_guard': self._is_guard,
             'runt': self._runt
         }
         return hero_property
