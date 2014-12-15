@@ -7,6 +7,7 @@ from app.proto_file import equipment_request_pb2
 from app.proto_file import equipment_response_pb2
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -248,13 +249,10 @@ def __do_enhance(player, equipment_obj):
     @return: {'before_lv':1, 'after_lv':2, 'cost_coin':21}
     """
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
+    player.finance.consume(const.COIN, enhance_cost)
+    player.finance.save_data(0)
 
     before_lv, after_lv = equipment_obj.enhance(player)
-
-    # print before_lv, after_lv, "before_lv, after_lv"
-    player.finance.modify_single_attr('coin', enhance_cost, add=False)
-
-
 
     return {'result': True, 'record': (before_lv, after_lv, enhance_cost)}
 

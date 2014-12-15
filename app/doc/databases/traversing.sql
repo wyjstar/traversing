@@ -87,14 +87,8 @@ DROP TABLE IF EXISTS `tb_character_info`;
 CREATE TABLE `tb_character_info` (
   `id` bigint(20) NOT NULL,
   `nickname` varchar(128) DEFAULT '',
-  `coin` bigint(20) NOT NULL DEFAULT '0',
-  `gold` bigint(20) NOT NULL DEFAULT '0',
-  `hero_soul` bigint(20) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '1',
   `exp` int(11) NOT NULL DEFAULT '0',
-  `junior_stone` int(11) NOT NULL DEFAULT '0',
-  `middle_stone` int(11) NOT NULL DEFAULT '0',
-  `high_stone` int(11) NOT NULL DEFAULT '0',
   `fine_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `excellent_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `fine_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
@@ -106,7 +100,6 @@ CREATE TABLE `tb_character_info` (
   `vip_level` int(11) NOT NULL DEFAULT '0',
   `create_time` int(11) NOT NULL DEFAULT '0',
   `pvp_count` bigint(20) NOT NULL DEFAULT '0',
-  `pvp_score` bigint(20) NOT NULL DEFAULT '0',
   `finances` tinyblob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
