@@ -93,15 +93,12 @@ class CharacterRuntComponent(Component):
 
         main_pool = copy.copy(conf.mainAttr)
         minor_pool = copy.copy(conf.minorAttr)
-        print main_num, minor_num, 'num,num,num,################################'
 
         for _ in range(main_num):
             at, avt, av, ai = self.rand_pick_attr(main_pool)
-            print '&^&^&^&^&^&^&^&^&^&^', at, avt, av, ai
             mainAttr[at] = [avt, av, ai]
         for _ in range(minor_num):
             at, avt, av, ai = self.rand_pick_attr(minor_pool)
-            print '&^&^&^&^&^&^&^&^&^&^', at, avt, av, ai
             minorAttr[at] = [avt, av, ai]
 
         return mainAttr, minorAttr
@@ -132,9 +129,6 @@ class CharacterRuntComponent(Component):
                 break
             else:
                 rand -= v
-        if len(attr) == alen:
-            print rand_pool, r
-            print '='*54
         return attrType, attrValueType, attrValue, attrIncrement
 
     @property
