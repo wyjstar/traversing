@@ -80,8 +80,8 @@ class Mine(object):
     """
     生成矿点
     """
-    def __init__(self, tid=None):
-        self._tid = tid
+    def __init__(self):
+        self._tid = 0
         self._type = 1 #矿点类型 0玩家初始矿，1玩家占领的野怪矿，2野外矿，3神秘商人，4巨龙宝箱，5副本
         self._status = 1 #矿点状态1生产中，2可收获，3已枯竭，4空闲，5已领取，6副本已进入
         self._nickname = '' #昵称
@@ -189,6 +189,7 @@ class UserSelf(Mine):
     玩家矿
     """
     def __init__(self):
+        Mine.__init__(self)
         self._mine_id = 0 #玩家矿和野外矿id
         self._normal_harvest = 0 #普通符文石最后一次收获时间
         self._normal_end = -1 #普通符文石生产结束时间－1不限
@@ -356,6 +357,7 @@ class PlayerField(Mine):
     玩家占领的野外矿
     """
     def __init__(self):
+        Mine.__init__(self)
         self._seq = 0
         self._lineup = None
         self._guard_time = 0 #保护时间
@@ -392,7 +394,7 @@ class PlayerField(Mine):
         self._nickname = info.get('nickname')
         self._lineup = info.get('lineup')
         self._guard_time = info.get('guard_time')
-        self._mine_id = info.get('mind_id')
+        self._mine_id = info.get('mine_id')
         self._normal_harvest = info.get('normal_harvest')
         self._luck_harvest = info.get('luck_harvest')
         self._normal_end = info.get('normal_end')
@@ -400,6 +402,7 @@ class PlayerField(Mine):
         self._normal = {}
         self._lucky = {}
         mine = ConfigData.mine(self._mine_id)
+        print 'update_info', self._mine_id
         for nor_id in mine.group1.keys():
             if int(nor_id) == 0:
                 continue
@@ -530,6 +533,7 @@ class MonsterField(Mine):
     野外矿
     """
     def __init__(self):
+        Mine.__init__(self)
         self._mine_id = 0
         self._seq = 0
         self._gen_time = 0
@@ -578,11 +582,13 @@ class MonsterField(Mine):
     def settle(self, uid=None, nickname=None):
         mine = ConfigData.mine(self._mine_id)
         player_field = PlayerField()
+        player_field._seq = self._seq
         player_field._mine_id = self._mine_id #玩家矿和野外矿id
+        print 'player_field._mine_id', player_field._mine_id
         player_field._normal_harvest = time.time() #普通符文石最后一次收获时间
-        player_field._normal_end = self._normal_harvest + mine.timeLimited1 * 60 #普通符文石生产结束时间－1不限
+        player_field._normal_end = player_field._normal_harvest + mine.timeLimited1 * 60 #普通符文石生产结束时间－1不限
         player_field._lucky_harvest = time.time() # 特殊符文石最后一次收获时间
-        player_field._luck_end = self._lucky_harvest + mine.timeLimitedR * 60 #特殊符文石生产结束时间－1 不限
+        player_field._luck_end = player_field._lucky_harvest + mine.timeLimitedR * 60 #特殊符文石生产结束时间－1 不限
         player_field._guard_time = time.time() + mine.protectTimeFree#读取数值表配置－刚占领的野怪矿保护时间
         player_field._tid = uid
         player_field._nickname = nickname
@@ -596,6 +602,7 @@ class Chest(Mine):
     宝箱
     """
     def __init__(self):
+        Mine.__init__(self)
         self._gen_time = 0
     
     
@@ -629,6 +636,7 @@ class Shop(Mine):
     神秘商店
     """
     def __init__(self):
+        Mine.__init__(self)
         self._gen_time = 0
         self._shops = {}
         num = base_config['warFogShopItemNum']
@@ -668,6 +676,7 @@ class Copy(Mine):
     秘境副本
     """
     def __init__(self):
+        Mine.__init__(self)
         self._gen_time = 0
     
     @classmethod

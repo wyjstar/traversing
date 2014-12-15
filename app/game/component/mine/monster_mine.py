@@ -19,6 +19,7 @@ class MineOpt(object):
         
         cls.rank.hset(label, mid, 1)
         label = 'mine'
+        print 'add_mine------', label, mid, v
         cls.rank.hset(label, mid, v)
         
     @classmethod
@@ -30,6 +31,7 @@ class MineOpt(object):
     def get_mine(cls, mid):
         label = 'mine'
         ret = cls.rank.hget(label, mid)
+        print 'get_mine------', label, mid, ret
         return cPickle.loads(ret)
     
     @classmethod
