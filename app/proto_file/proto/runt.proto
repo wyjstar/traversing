@@ -5,7 +5,7 @@ message RuntSetRequest{
     required int32 hero_no = 1;
     required int32 runt_type = 2;
     required int32 runt_po = 3;
-    required int32 runt_no = 4;
+    required bytes runt_no = 4;
 }
 
 message RuntSetResponse{
@@ -54,7 +54,7 @@ message RefreshRuntResponse{
 
 // 845 炼化
 message RefiningRuntRequest{
-    repeated int32 runt_no = 1;
+    repeated bytes runt_no = 1;
 }
 
 message RefiningRuntResponse{
