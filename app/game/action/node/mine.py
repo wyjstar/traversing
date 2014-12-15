@@ -558,7 +558,7 @@ def battle_1253(data, player):
         info = get_save_guard(player, pos)
         blue_units = info.get("battle_units")
 
-        fight_result = pvp_process(player, line_up, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
+        fight_result = pvp_process(player, line_up, red_units, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
         if fight_result:
             # 返回秘境的结果
             pass
