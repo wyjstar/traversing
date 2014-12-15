@@ -350,6 +350,7 @@ def harvest_1245(data, player):
 # 
 #     return response.SerializeToString()
 
+
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):
     """
@@ -523,6 +524,8 @@ def battle_1253(data, player):
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     blue_best_skill_id = 0
     blue_best_skill_level = 0
+    red_units = {}
+    blue_units = {}
 
     mine_info = get_mine_info(player, pos)
     response = mine_pb2.MineBattleResponse()
@@ -546,12 +549,11 @@ def battle_1253(data, player):
 
     elif mine_type == 1:
         # pvp
-        red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
         red_units = player.fight_cache_component.red_unit
         info = get_save_guard(player, pos)
         blue_units = info.get("battle_units")
 
-        fight_result = pvp_process(player, red_units, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
+        fight_result = pvp_process(player, line_up, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
         if fight_result:
             # 返回秘境的结果
             pass
@@ -585,6 +587,7 @@ def get_save_guard(player, pos):
     """
     info = player.mine.get_guard_info(pos)
     return info
+
 
 def trigger_mine_boss():
     """
