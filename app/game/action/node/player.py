@@ -149,16 +149,11 @@ def new_guide_step_1802(data, player):
         logger.error('error newbee id:%s', request.step_id)
         response.res.result = False
         return response.SerializePartialToString()
-    if new_guide_item.get('triggerValue') != player.newbee_guide_id:
-        logger.error('error newbee id:%s:%s', request.step_id,
-                     player.newbee_guide_id)
-        response.res.result = False
-        return response.SerializePartialToString()
 
     logger.info('newbee:%s step:%s',
                 player.base_info.base_name,
                 request.step_id)
-    player.newbee_guide_id = request.step_id
+    player.newbee_guide_id = request.backID
     player.save_data()
     response.res.result = True
 
