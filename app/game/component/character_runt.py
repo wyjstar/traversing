@@ -121,7 +121,7 @@ class CharacterRuntComponent(Component):
                 else:
                     _, attrValueType, valueMin, valueMax = attr[k]
                 attrValue1 = valueMin + random.random() * (valueMax - valueMin)
-                if isinstance(attrValue1, int):
+                if isinstance(valueMax, int):
                     attrValue = int(attrValue1)
                 else:
                     attrValue = round(attrValue1, 1)
