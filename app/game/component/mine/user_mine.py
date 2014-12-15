@@ -111,6 +111,80 @@ class Mine(object):
     def create(cls, uid, nickname):
         pass
     
+
+def gen_stone(num, odds_dict, limit, store, now_data):
+    #发放符文石
+    if now_data >= limit:
+        return
+    for _ in range(0, num):
+        stone_id = random_pick(odds_dict, sum(odds_dict.values()))
+        print 'stone_id', stone_id
+        stone_id = int(stone_id)
+        if stone_id == 0:
+            continue
+        if stone_id not in store:
+            store[stone_id] = 1
+        else:
+            store[stone_id] += 1
+        now_data += 1
+        if now_data >= limit:
+            break
+    return store
+        
+def dat(end, start, dur):
+    return int((end-start) / (dur*60))
+    
+def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
+    num = 0 #产量
+    start = 0
+    print 'before', start
+    
+    if now > harvest_end and harvest_end != -1:
+        now = harvest_end
+    if harvest >= increase:
+        #没有增产
+        dat = dat(now, harvest, dur)
+        print 'dat1', dat
+        #harvest += dat*(dur*60)
+        start = harvest + dat*(dur*60)
+        num = dat*per
+    else:
+        if now <= increase:
+            #增产还未结束，从上次结算到当前都在增产
+            mine = ConfigData.mine(mine_id)
+            ratio = mine.increase #增产比例
+            dat = dat(now, harvest, dur)
+            print 'dat2', dat
+            #harvest += dat*(dur*60)
+            start = harvest + dat*(dur*60)
+            num = int(dat * per * ratio)
+        else:
+            incr_dat = dat(increase, harvest, dur)
+            print 'dat3', dat
+            dat1 = int(incr_dat * per * ratio) #增产部分
+            nor_dat = dat(now, increase, dur)
+            print 'dat4', dat
+            dat2 = (nor_dat*per) #未增产部分
+            num = dat1+dat2
+            #harvest += int(num * (dur*60))
+            start = harvest + int(num * (dur*60))
+        
+    print 'after', start, num
+    return num, start
+
+def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
+    #结算到当前的产出
+    mine = ConfigData.mine(mine_id)
+    if now_data  >= mine.outputLimited:
+        return
+    if stype == 1:
+        num, last = compute(mine_id, increase, mine.timeGroup1, mine.outputGroup1, now, start, end)
+        stone = gen_stone(num, mine.group1, mine.outputLimited, harvest, now_data)
+    else:
+        num, last = compute(mine_id, increase, mine.timeGroupR, mine.outputGroupR, now, start, end)
+        stone = gen_stone(num, mine.randomStoneId, mine.outputLimited, harvest, now_data)
+    return last, stone
+    
 class UserSelf(Mine):
     """
     玩家矿
@@ -147,74 +221,85 @@ class UserSelf(Mine):
             user_mine._lucky[int(sp_id)] = 0
         return user_mine
         
-    def gen_stone(self, num, odds_dict, limit, store):
-        #发放符文石
-        now_data = sum(self._normal.values()) + sum(self._lucky.values())
-        if now_data >= limit:
-            return
-        for _ in range(0, num):
-            stone_id = random_pick(odds_dict, sum(odds_dict.values()))
-            print 'stone_id', stone_id
-            stone_id = int(stone_id)
-            if stone_id == 0:
-                continue
-            if stone_id not in store:
-                store[stone_id] = 1
-            else:
-                store[stone_id] += 1
-            now_data += 1
-            if now_data >= limit:
-                break
-            
-    def dat(self, end, start, dur):
-        return int((end-start) / (dur*60))
-        
-    def compute(self, dur, per, now, harvest, harvest_end):
-        num = 0 #产量
-        print 'before', harvest
-        if now > harvest_end and harvest_end != -1:
-            now = harvest_end
-        if harvest >= self._increase:
-            #没有增产
-            dat = self.dat(now, harvest, dur)
-            print 'dat1', dat
-            harvest += dat*(dur*60)
-            num = dat*per
-        else:
-            if now <= self._increase:
-                #增产还未结束，从上次结算到当前都在增产
-                mine = ConfigData.mine(self._mine_id)
-                ratio = mine.increase #增产比例
-                dat = self.dat(now, harvest, dur)
-                print 'dat2', dat
-                harvest += dat*(dur*60)
-                num = int(dat * per * ratio)
-            else:
-                incr_dat = self.dat(self._increase, harvest, dur)
-                print 'dat3', dat
-                dat1 = int(incr_dat * per * ratio) #增产部分
-                nor_dat = self.dat(now, self._increase, dur)
-                print 'dat4', dat
-                dat2 = (nor_dat*per) #未增产部分
-                num = dat1+dat2
-                harvest += int(num * (dur*60))
-            
-        print 'after', harvest, num
-        return num, harvest
+#     def gen_stone(self, num, odds_dict, limit, store, now_data):
+#         #发放符文石
+#         if now_data >= limit:
+#             return
+#         for _ in range(0, num):
+#             stone_id = random_pick(odds_dict, sum(odds_dict.values()))
+#             print 'stone_id', stone_id
+#             stone_id = int(stone_id)
+#             if stone_id == 0:
+#                 continue
+#             if stone_id not in store:
+#                 store[stone_id] = 1
+#             else:
+#                 store[stone_id] += 1
+#             now_data += 1
+#             if now_data >= limit:
+#                 break
+#             
+#     def dat(self, end, start, dur):
+#         return int((end-start) / (dur*60))
+#         
+#     def compute(self, mine_id, increase, dur, per, now, harvest, harvest_end):
+#         num = 0 #产量
+#         print 'before', harvest
+#         if now > harvest_end and harvest_end != -1:
+#             now = harvest_end
+#         if harvest >= increase:
+#             #没有增产
+#             dat = self.dat(now, harvest, dur)
+#             print 'dat1', dat
+#             harvest += dat*(dur*60)
+#             num = dat*per
+#         else:
+#             if now <= increase:
+#                 #增产还未结束，从上次结算到当前都在增产
+#                 mine = ConfigData.mine(mine_id)
+#                 ratio = mine.increase #增产比例
+#                 dat = self.dat(now, harvest, dur)
+#                 print 'dat2', dat
+#                 harvest += dat*(dur*60)
+#                 num = int(dat * per * ratio)
+#             else:
+#                 incr_dat = self.dat(increase, harvest, dur)
+#                 print 'dat3', dat
+#                 dat1 = int(incr_dat * per * ratio) #增产部分
+#                 nor_dat = self.dat(now, increase, dur)
+#                 print 'dat4', dat
+#                 dat2 = (nor_dat*per) #未增产部分
+#                 num = dat1+dat2
+#                 harvest += int(num * (dur*60))
+#             
+#         print 'after', harvest, num
+#         return num, harvest
     
-    def get_cur(self, now):
-        #结算到当前的产出
-        mine = ConfigData.mine(self._mine_id)
-        now_data =  sum(self._normal.values()) + sum(self._lucky.values())
-        if now_data  >= mine.outputLimited:
-            return
-        normal, harvest = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest, self._normal_end)
-        self._normal_harvest = harvest
-        self.gen_stone(normal, mine.group1, mine.outputLimited, self._normal)
-        special, harvest = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._lucky_harvest, self._luck_end)
-        self._lucky_harvest = harvest
-        print 'get_cur', special
-        self.gen_stone(special, mine.randomStoneId, mine.outputLimited, self._lucky)
+#     def get_cur(self, mine_id, now_data, harvest, start, end, now, increase, stype):
+#         #结算到当前的产出
+#         mine = ConfigData.mine(mine_id)
+#         if now_data  >= mine.outputLimited:
+#             return
+#         if stype == 1:
+#             num, harvest = self.compute(mine_id, increase, mine.timeGroup1, mine.outputGroup1, now, start, end)
+#             self.gen_stone(num, mine.group1, mine.outputLimited, harvest, now_data)
+#         else:
+#             num, harvest = self.compute(mine_id, increase, mine.timeGroupR, mine.outputGroupR, now, start, end)
+#             self._lucky_harvest = harvest
+#             self.gen_stone(num, mine.randomStoneId, mine.outputLimited, harvest, now_data)
+#     
+#     def get_cur1(self, now):
+#         #结算到当前的产出
+#         mine = ConfigData.mine(self._mine_id)
+#         now_data =  sum(self._normal.values()) + sum(self._lucky.values())
+#         if now_data  >= mine.outputLimited:
+#             return
+#         normal, harvest = self.compute(mine.timeGroup1, mine.outputGroup1, now, self._normal_harvest, self._normal_end)
+#         self._normal_harvest = harvest
+#         self.gen_stone(normal, mine.group1, mine.outputLimited, self._normal)
+#         special, harvest = self.compute(mine.timeGroupR, mine.outputGroupR, now, self._lucky_harvest, self._luck_end)
+#         self._lucky_harvest = harvest
+#         self.gen_stone(special, mine.randomStoneId, mine.outputLimited, self._lucky)
         
     def draw_stones(self):
         #领取产出
@@ -230,10 +315,20 @@ class UserSelf(Mine):
     
     def mine_info(self):
         return Mine.mine_info(self)
+    
+    def get_cur_data(self, now):
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
+        last, stone = get_cur(self._mine_id, now_data, self._normal, self._normal_harvest, self._normal_end, now, self._increase, 1)
+        self._normal_harvest = last
+        self._normal = stone
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
+        last, stone = get_cur(self._mine_id, now_data, self._lucky, self._lucky_harvest, self._luck_end, now, self._increase, 2)
+        self._lucky_harvest = last
+        self._lucky = stone
         
     def detail_info(self):
         now = time.time()
-        self.get_cur(now)
+        self.get_cur_data(now)
         if now >= self._increase:
             last_increase =  0
         else:
@@ -249,7 +344,7 @@ class UserSelf(Mine):
     def acc_mine(self):
         #增产
         now = time.time()
-        self.get_cur(now) #本次增产前结算之前的产出
+        self.get_cur_data(now) #本次增产前结算之前的产出
         mine = ConfigData.mine(self._mine_id)
         if self._increase < now:
             self._increase = now + mine.increasTime * 60
@@ -305,6 +400,15 @@ class PlayerField(Mine):
         self._lucky_end = info.get('_lucky_end')
         self._normal = {}
         self._lucky = {}
+        mine = ConfigData.mine(self._mine_id)
+        for nor_id in mine.group1.keys():
+            if int(nor_id) == 0:
+                continue
+            self._normal[int(nor_id)] = 0
+        for sp_id in mine.randomStoneId.keys():
+            if int(sp_id) == 0:
+                continue
+            self._lucky[int(sp_id)] = 0
     
     @classmethod
     def create(cls, uid, nickname, level, lively, sword):
@@ -351,17 +455,29 @@ class PlayerField(Mine):
             return True
         return False
     
-    def settle(self, uid, nickname):
+    def settle(self, uid=None, nickname=None):
         self._tid = uid
         self._nickname = nickname
         data = self.save_info()
         MineOpt.add_mine(self._tid, self._seq, cPickle.dumps(data))
         MineOpt.unlock(self._seq)
         
+    def get_cur_data(self, now):
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
+        last, stone = get_cur(self._mine_id, now_data, self._normal, self._normal_harvest, self._normal_end, now, self._increase, 1)
+        self._normal_harvest = last
+        self._normal = stone
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
+        last, stone = get_cur(self._mine_id, now_data, self._lucky, self._lucky_harvest, self._luck_end, now, self._increase, 2)
+        self._lucky_harvest = last
+        self._lucky = stone
+        
     def update_mine(self):
         mine = MineOpt.get_mine(self._seq)
         data = cPickle.loads(mine)
         self.update_info(data)
+        now = time.time()
+        self.get_cur_data(now)
     
     def mine_info(self):
         self.update_mine()
@@ -372,15 +488,15 @@ class PlayerField(Mine):
         查看玩家占领的野怪矿详情
         """
         self.update_mine()
-        now = time.time()
-        self.get_cur(now)
-        if now >= self._increase:
-            last_increase =  0
-        else:
-            last_increase = self._increase
-        mine = ConfigData.mine(self._mine_id)
+#         now = time.time()
+#         self.get_cur(now)
+#         if now >= self._increase:
+#             last_increase =  0
+#         else:
+#             last_increase = self._increase
+#         mine = ConfigData.mine(self._mine_id)
         print 'detail_info', self._normal, self._lucky
-        return 0, 1, last_increase, -1, self._normal, self._lucky, None, self._guard_time  # ret, msg, last_increase, limit, normal, lucky, heros
+        return 0, 1, 0, -1, self._normal, self._lucky, None, self._guard_time  # ret, msg, last_increase, limit, normal, lucky, heros
     
     def guard(self, nickname, info):
         """
@@ -441,7 +557,7 @@ class MonsterField(Mine):
         stage_id = random.sample(mine.monster, 1)[0]
         return 0, mine.type, 0, -1, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
     
-    def settle(self):
+    def settle(self, uid=None, nickname=None):
         mine = ConfigData.mine(self._mine_id)
         player_field = PlayerField()
         player_field._mine_id = self._mine_id #玩家矿和野外矿id
@@ -450,6 +566,8 @@ class MonsterField(Mine):
         player_field._lucky_harvest = time.time() # 特殊符文石最后一次收获时间
         player_field._luck_end = self._lucky_harvest + mine.timeLimitedR * 60 #特殊符文石生产结束时间－1 不限
         player_field._guard_time = time.time() + mine.protectTimeFree#读取数值表配置－刚占领的野怪矿保护时间
+        player_field._tid = uid
+        player_field._nickname = nickname
         data = player_field.save_info()
         MineOpt.add_mine(self._tid, self._seq, cPickle.dumps(data))
         return player_field
@@ -806,7 +924,7 @@ class UserMine(Component):
         return last_time
     
     def settle(self, position):
-        mine = self._mine[position].setttle()
+        mine = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
         self._mine[position] = mine #更改本地信息
         self._update = True
         
@@ -823,7 +941,7 @@ class UserMine(Component):
         驻守
         """
         if position in self._mine:
-            result_code = self._mine[position].guard(info)
+            result_code = self._mine[position].guard(self.owner.base_info.base_name, info)
             return result_code
         
     def start(self, position):
