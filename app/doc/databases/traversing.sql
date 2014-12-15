@@ -280,6 +280,8 @@ CREATE TABLE `tb_character_mine` (
   `day_before` varchar(8) NOT NULL,
   `lively` int(11) NOT NULL,
   `mine` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tb_character_runt`;
 CREATE TABLE `tb_character_runt` (

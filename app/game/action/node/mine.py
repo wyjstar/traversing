@@ -22,6 +22,7 @@ from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
+from app.game.action.root import netforwarding
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -213,10 +214,6 @@ def save_guard(player, position, info):
     result_code = player.mine.save_guard(position, info)
     return result_code
 
-def get_guard(player, position):
-    info = player.mine.get_guard(position)
-    return info
-
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
     """
@@ -307,65 +304,51 @@ def harvest_1245(data, player):
     return response.SerializePartialToString()
 
 
-def process_mine_result(player, position, response, result):
-    """
-    玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
-    @param gain: true or false
-    """
-    if result == True:
-        player.mine.settle(position)
-        detail_info = player.mine.detail_info(position)
-        _, _, _, _, normal, lucky, _, _ = detail_info
-        for k, v in normal.items():
-            normal = response.normal.add()
-            normal[k] = v
-        for k, v in lucky.items():
-            luck = response.lucky.add()
-            luck[k] = v
-
-@remoteserviceHandle('gate')
-def battle_1246(data, player):
-    """
-    攻占怪物驻守的矿点
-    1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
-    2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
-    """
-    request = mine_pb2.battleRequest()
-    request.ParseFromString(data)
-    pvp_data = request.data
-    __skill = pvp_data.skill
-    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(pvp_data.lineup, player)
-
-    record = {}
-    #todo: 获取驻守数据
-    blue_units = record.get('units')
-    # print "blue_units:", blue_units
-    blue_units = cPickle.loads(blue_units)
-    # print "blue_units:", blue_units
-    red_units = player.fight_cache_component.red_unit
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-                               record.get('best_skill_no', 0), record.get('level', 1))
-    fight_result = process.process()
-
-    response = mine_pb2.battleResponse()
-
-    process_mine_result(player, request.position, response.gain, fight_result)
-
-    logger.debug("fight result:%s" % fight_result)
 
 
-    response = pvp_rank_pb2.PvpFightResponse()
-    response.res.result = True
-
-
-    battleresponse = response.data
-    battleresponse.res.result = True
-
-
-    player.mine.save_data()
-
-    return response.SerializeToString()
+# @remoteserviceHandle('gate')
+# def battle_1246(data, player):
+#     """
+#     攻占怪物驻守的矿点
+#     1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
+#     2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
+#     """
+#     request = mine_pb2.battleRequest()
+#     request.ParseFromString(data)
+#     pvp_data = request.data
+#     __skill = pvp_data.skill
+#     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+#     save_line_up_order(pvp_data.lineup, player)
+# 
+#     record = {}
+#     #todo: 获取驻守数据
+#     blue_units = record.get('units')
+#     # print "blue_units:", blue_units
+#     blue_units = cPickle.loads(blue_units)
+#     # print "blue_units:", blue_units
+#     red_units = player.fight_cache_component.red_unit
+#     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
+#                                record.get('best_skill_no', 0), record.get('level', 1))
+#     fight_result = process.process()
+# 
+#     response = mine_pb2.battleResponse()
+# 
+#     process_mine_result(player, request.position, response.gain, fight_result)
+# 
+#     logger.debug("fight result:%s" % fight_result)
+# 
+# 
+#     response = pvp_rank_pb2.PvpFightResponse()
+#     response.res.result = True
+# 
+# 
+#     battleresponse = response.data
+#     battleresponse.res.result = True
+# 
+# 
+#     player.mine.save_data()
+# 
+#     return response.SerializeToString()
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):
@@ -495,6 +478,41 @@ def acc_mine_1250(data, player):
     return response.SerializePartialToString()
 
 
+def process_mine_result(player, position, response, result):
+    """
+    玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
+    @param gain: true or false
+    """
+    if result == True:
+        target = player.mine.settle(position)
+        detail_info = player.mine.detail_info(position)
+        _, _, _, _, normal, lucky, _, _ = detail_info
+        warFogLootRatio = base_config['warFogLootRatio']
+        for k, v in normal.items():
+            normal = response.normal.add()
+            normal[k] = int(v *warFogLootRatio)
+        for k, v in lucky.items():
+            luck = response.lucky.add()
+            luck[k] = int(v*warFogLootRatio)
+        
+        """
+            required string mail_id = 1; // ID
+            optional int32 sender_id = 2; //发件人ID
+            optional string sender_name = 3; //发件人
+            optional int32 sender_icon = 4; //发件人Icon
+            optional int32 receive_id = 5; //收件人ID
+            optional string receive_name = 6; //收件人
+            optional string title = 7; //标题
+            optional string content = 8; //邮件内容
+            required int32 mail_type = 9; //邮件类型
+            optional int32 send_time = 10; //发件时间
+            optional bool is_readed = 11; //是否已读
+            optional string prize = 12; //奖品
+        """
+        mail = {}
+        # command:id 为收邮件的命令ID
+        response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+
 @remoteserviceHandle('gate')
 def battle_1253(data, player):
     """docstring for battle"""
@@ -506,7 +524,7 @@ def battle_1253(data, player):
     blue_best_skill_id = 0
     blue_best_skill_level = 0
 
-    mine_info = get_mine_info(pos)
+    mine_info = get_mine_info(player, pos)
     response = mine_pb2.MineBattleResponse()
 
     mine_type = mine_info.get("mine_type") # 根据矿所在位置判断pve or pvp
@@ -524,18 +542,20 @@ def battle_1253(data, player):
         red_units = stage_info.get('red_units')
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
+        process_mine_result(player, pos, response, result)
 
     elif mine_type == 1:
         # pvp
         red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
         red_units = player.fight_cache_component.red_unit
-        info = get_save_guard(pos)
+        info = get_save_guard(player, pos)
         blue_units = info.get("battle_units")
 
         fight_result = pvp_process(player, red_units, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
         if fight_result:
             # 返回秘境的结果
             pass
+        process_mine_result(player, pos, response, fight_result)
 
         blue_best_skill_id = info.get("best_skill_id")
         blue_best_skill_level = info.get("best_skill_level")
@@ -550,19 +570,21 @@ def battle_1253(data, player):
     return response.SerializePartialToString()
 
 
-def get_mine_info(pos):
+def get_mine_info(player, pos):
     """根据pos获取关卡info.
     矿的类型：mine type 0/1
     如果野怪驻守的矿：关卡id
     玩家驻守的矿：
     """
-    pass
+    mine_info  = player.mine.get_info(pos)
+    return mine_info
 
-def get_save_guard(pos):
+def get_save_guard(player, pos):
     """
     获取保存的驻守信息
     """
-    pass
+    info = player.mine.get_guard_info(pos)
+    return info
 
 def trigger_mine_boss():
     """

@@ -456,11 +456,13 @@ class PlayerField(Mine):
         return False
     
     def settle(self, uid=None, nickname=None):
+        tid = self._tid
         self._tid = uid
         self._nickname = nickname
         data = self.save_info()
         MineOpt.add_mine(self._tid, self._seq, cPickle.dumps(data))
         MineOpt.unlock(self._seq)
+        return self, tid
         
     def get_cur_data(self, now):
         now_data = sum(self._normal.values()) + sum(self._lucky.values())
@@ -514,6 +516,15 @@ class PlayerField(Mine):
             MineOpt.add_mine(self._tid, self._seq, cPickle.dumps(data))
             MineOpt.unlock(self._seq)
             return 0
+        
+    def mine_data(self):
+        info = {}
+        info['mine_type'] = 1
+        return info
+    
+    def guard_info(self):
+        self.update_mine()
+        return self._lineup
     
 class MonsterField(Mine):
     """
@@ -523,6 +534,7 @@ class MonsterField(Mine):
         self._mine_id = 0
         self._seq = 0
         self._gen_time = 0
+        self._stage_id = 0
     
     @classmethod
     def create(cls, uid, nickname):
@@ -541,6 +553,12 @@ class MonsterField(Mine):
     
     def mine_info(self):
         return Mine.mine_info(self)
+    
+    def mine_data(self):
+        info = {}
+        info['mine_type'] = 0
+        info['mine_type'] = self._stage_id
+        return info
         
     def detail_info(self):
         mine = ConfigData.mine(self._mine_id)
@@ -555,6 +573,7 @@ class MonsterField(Mine):
                 continue
             lucky[int(sp_id)] = 0
         stage_id = random.sample(mine.monster, 1)[0]
+        self._stage_id = stage_id
         return 0, mine.type, 0, -1, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
     
     def settle(self, uid=None, nickname=None):
@@ -570,7 +589,8 @@ class MonsterField(Mine):
         player_field._nickname = nickname
         data = player_field.save_info()
         MineOpt.add_mine(self._tid, self._seq, cPickle.dumps(data))
-        return player_field
+        src_id = 0
+        return player_field, src_id
     
 class Chest(Mine):
     """
@@ -924,9 +944,10 @@ class UserMine(Component):
         return last_time
     
     def settle(self, position):
-        mine = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
+        mine, tid = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
         self._mine[position] = mine #更改本地信息
         self._update = True
+        return tid
         
     def get_blue(self, position):
         if position in self._mine:
@@ -950,3 +971,16 @@ class UserMine(Component):
         false:can not
         """
         return self._mine[position].start_battle()
+    
+    def get_info(self, pos):
+        """
+        mine_type, 0 pve, 1 pvp
+        stage_id
+        """
+        if pos in self._mine:
+            return self._mine[pos].mine_data()
+        return {}
+    
+    def get_guard_info(self, pos):
+        if pos in self._mine:
+            return self._mine[pos].guard_info()

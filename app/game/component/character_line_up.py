@@ -9,6 +9,7 @@ from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import warriors_config
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
+from app.game.component.mine.monster_mine import MineOpt
 
 
 class CharacterLineUpComponent(Component):
@@ -318,6 +319,8 @@ class CharacterLineUpComponent(Component):
         for slot in self._line_up_slots.values():
             each_power = slot.combat_power()
             _power += each_power
+            
+        MineOpt.update('sword', self.owner.base_info.id, _power)
         return _power
 
     def get_slot_by_hero(self, hero_no):

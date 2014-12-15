@@ -4,6 +4,7 @@ created by server on 14-7-8上午11:56.
 """
 from app.game.component.Component import Component
 from shared.db_opear.configs_data.game_configs import player_exp_config
+from app.game.component.mine.monster_mine import MineOpt
 
 
 class CharacterLevelComponent(Component):
@@ -35,3 +36,4 @@ class CharacterLevelComponent(Component):
         if self._exp > player_exp_config.get(self._level):
             self._exp -= player_exp_config.get(self._level)
             self._level += 1
+            MineOpt.update('user_level', self.owner.base_info.id, self._level)
