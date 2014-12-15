@@ -515,7 +515,7 @@ def process_mine_result(player, position, response, result):
         mail = {}
         
         # command:id 为收邮件的命令ID
-        if sum(response.normal.values()) + sum(response.lucky.values()) > 0:
+        if sum(normal.values()) + sum(lucky.values()) > 0:
             response.result = netforwarding.push_message('receive_mail_remote', target, mail)
 
 @remoteserviceHandle('gate')
