@@ -534,11 +534,12 @@ def battle_1253(data, player):
 
     mine_type = mine_info.get("mine_type") # 根据矿所在位置判断pve or pvp
     print mine_type, "*"*80
+    print request
     if mine_type == 0:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
         stage_type = 5                              # 关卡类型
-        stage_info = pve_process(stage_id, stage_type, line_up, red_best_skill_id, 0, player)
+        stage_info = pve_process(stage_id, stage_type, line_up, 0, player)
         result = stage_info.get('result')
         response.res.result = result
         if not result:

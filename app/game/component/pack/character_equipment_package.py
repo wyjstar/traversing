@@ -34,10 +34,11 @@ class CharacterEquipmentPackageComponent(Component):
             awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
             main_attr = equipment_info.get('main_attr', {})
             minor_attr = equipment_info.get('minor_attr', {})
+            is_guard = equipment_info.get('is_guard')  # guard
 
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
-            is_guard = equipment_data.get('is_guard')  # guard
+
             equipment_obj = Equipment(equipment_id, '', equipment_no,
                                       strengthen_lv, awakening_lv,
                                       enhance_info, nobbing_effect, is_guard,
