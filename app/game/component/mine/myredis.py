@@ -9,7 +9,7 @@ from gfirefly.dbentrust.redis_client import redis_client
 
 class Ranking(object):
     def __init__(self):
-        self.redis = redis_client
+        self.redis = redis_client.conn
         
     @classmethod
     def instance(cls):
@@ -49,7 +49,7 @@ class Ranking(object):
 
     def zget(self, label, k):
         try:
-            score = self.redis.zget(label, k)
+            score = self.redis.zscore(label, k)
         except Exception, e:
             logger.error('redis zget error : %s' % e)
         return score
