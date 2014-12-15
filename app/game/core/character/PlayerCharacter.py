@@ -368,6 +368,8 @@ class PlayerCharacter(Character):
     @property
     def stone(self):
         return self._stone
+
+    @property
     def runt(self):
         return self._runt
 

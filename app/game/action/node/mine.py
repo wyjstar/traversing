@@ -323,49 +323,6 @@ def process_mine_result(player, position, response, result):
             luck = response.lucky.add()
             luck[k] = v
 
-@remoteserviceHandle('gate')
-def battle_1246(data, player):
-    """
-    攻占怪物驻守的矿点
-    1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
-    2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
-    """
-    request = mine_pb2.battleRequest()
-    request.ParseFromString(data)
-    pvp_data = request.data
-    __skill = pvp_data.skill
-    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-    save_line_up_order(pvp_data.lineup, player)
-
-    record = {}
-    #todo: 获取驻守数据
-    blue_units = record.get('units')
-    # print "blue_units:", blue_units
-    blue_units = cPickle.loads(blue_units)
-    # print "blue_units:", blue_units
-    red_units = player.fight_cache_component.red_unit
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-                               record.get('best_skill_no', 0), record.get('level', 1))
-    fight_result = process.process()
-
-    response = mine_pb2.battleResponse()
-
-    process_mine_result(player, request.position, response.gain, fight_result)
-
-    logger.debug("fight result:%s" % fight_result)
-
-
-    response = pvp_rank_pb2.PvpFightResponse()
-    response.res.result = True
-
-
-    battleresponse = response.data
-    battleresponse.res.result = True
-
-
-    player.mine.save_data()
-
-    return response.SerializeToString()
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):
@@ -505,6 +462,8 @@ def battle_1253(data, player):
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     blue_best_skill_id = 0
     blue_best_skill_level = 0
+    red_units = {}
+    blue_units = {}
 
     mine_info = get_mine_info(pos)
     response = mine_pb2.MineBattleResponse()
@@ -527,12 +486,11 @@ def battle_1253(data, player):
 
     elif mine_type == 1:
         # pvp
-        red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
         red_units = player.fight_cache_component.red_unit
         info = get_save_guard(pos)
         blue_units = info.get("battle_units")
 
-        fight_result = pvp_process(player, red_units, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
+        fight_result = pvp_process(player, line_up, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
         if fight_result:
             # 返回秘境的结果
             pass
@@ -563,6 +521,7 @@ def get_save_guard(pos):
     获取保存的驻守信息
     """
     pass
+
 
 def trigger_mine_boss():
     """

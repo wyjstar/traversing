@@ -279,7 +279,8 @@ CREATE TABLE `tb_character_mine` (
   `reset_times` int(11) NOT NULL,
   `day_before` varchar(8) NOT NULL,
   `lively` int(11) NOT NULL,
-  `mine` mediumblob,
+  `mine` mediumblob
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tb_character_runt`;
 CREATE TABLE `tb_character_runt` (
