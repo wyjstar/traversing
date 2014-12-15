@@ -32,6 +32,6 @@ class CharacterLevelComponent(Component):
 
     def addexp(self, exp):
         self._exp += exp
-        if self._exp > player_exp_config.get(self._level):
-            self._exp -= player_exp_config.get(self._level)
+        if self._exp > player_exp_config.get(self._level).get('exp'):
+            self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
