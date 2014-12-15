@@ -176,7 +176,7 @@ message MineLineUpSlot
 message MineEquipmentSlot
 {
     required int32 slot_no = 1;      // 装备位置
-    required int32 equipment_id = 2; // 装备ID
+    required string equipment_id = 2; // 装备ID
 }
 
 //秘境相关，战斗开始, command:1253
