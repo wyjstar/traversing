@@ -228,7 +228,7 @@ def guard_1244(data, player):
     #构造阵容组件
     character_line_up = CharacterLineUpComponent(player)
     for slot in request.line_up_slots:
-        line_up_slot = LineUpSlotComponent(player, slot.slot_no, activation=True, hero_no=slot.hero_no)
+        line_up_slot = LineUpSlotComponent(character_line_up, slot.slot_no, activation=True, hero_no=slot.hero_no)
 
         for equipment_slot in slot.equipment_slots:
             equipment_slot = EquipmentSlotComponent(equipment_slot.slot_no, activation=True, equipment_id=slot.equipment_id)
@@ -256,7 +256,7 @@ def guard_1244(data, player):
     info["best_skill_no"] = __best_skill_no
     info["best_skill_level"] = __skill_level
     info["level"] = player.level.level
-    info["nickname"] = player.base_info.nickname
+    info["nickname"] = player.base_info.base_name
     info["character_id"] = player.base_info.id
     info["line_up"] = line_up_info(player).SerializePartialToString()
 
