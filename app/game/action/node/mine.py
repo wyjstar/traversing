@@ -489,14 +489,19 @@ def process_mine_result(player, position, response, result):
         detail_info = player.mine.detail_info(position)
         _, _, _, _, normal, lucky, _, _ = detail_info
         warFogLootRatio = base_config['warFogLootRatio']
+        count = {}
         for k, v in normal.items():
-            normal = response.normal.add()
-            normal.stone_id = k
-            normal.stone_num = int(v *warFogLootRatio)
+            if v > 0:
+                normal = response.normal.add()
+                normal.stone_id = k
+                normal.stone_num = int(v *warFogLootRatio)
+                count[k] = v
         for k, v in lucky.items():
-            luck = response.lucky.add()
-            luck.stone_id = k
-            luck.stone_num = int(v*warFogLootRatio)
+            if v > 0:
+                luck = response.lucky.add()
+                luck.stone_id = k
+                luck.stone_num = int(v*warFogLootRatio)
+                count[k] = v
         
         """
             required string mail_id = 1; // ID
@@ -515,7 +520,7 @@ def process_mine_result(player, position, response, result):
         mail = {}
         
         # command:id 为收邮件的命令ID
-        if sum(normal.values()) + sum(lucky.values()) > 0:
+        if sum(count.values()) > 0:
             response.result = netforwarding.push_message('receive_mail_remote', target, mail)
 
 @remoteserviceHandle('gate')
