@@ -124,7 +124,7 @@ class CharacterRuntComponent(Component):
                 if isinstance(attrValue1, int):
                     attrValue = int(attrValue1)
                 else:
-                    attrValue = round(attrValue, 1)
+                    attrValue = round(attrValue1, 1)
 
                 del attr[k]
                 break
