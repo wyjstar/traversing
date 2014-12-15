@@ -83,6 +83,7 @@ class PlayerCharacter(Character):
         self._tasks = UserAchievement(self)
 
         self._pvp_times = 0  # pvp次数
+        self._newbee_guide_id = 0
 
         self._travel = CharacterTravelComponent(self)
         self._runt = CharacterRuntComponent(self)
@@ -108,6 +109,7 @@ class PlayerCharacter(Character):
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
+        self._newbee_guide_step = character_info['newbee_guide_id']
 
         # ------------初始化角色货币信息------------
         self._finance.init_data(character_info)
@@ -167,20 +169,14 @@ class PlayerCharacter(Character):
 
         character_info = {'id': pid,
                           'nickname': u'',
-                          # 'coin': 0,
-                          # 'gold': 0,
-                          # 'hero_soul': 0,
                           'level': 0,
                           'exp': 0,
-                          # 'junior_stone': 0,
-                          # 'middle_stone': 0,
-                          # 'high_stone': 0,
                           'fine_hero_last_pick_time': 0,
                           'excellent_hero_last_pick_time': 0,
                           'fine_equipment_last_pick_time': 0,
                           'excellent_equipment_last_pick_time': 0,
                           'pvp_times': 0,
-                          # 'pvp_score': 0,
+                          'newbee_guide_id': 0,
                           'pvp_count': 0,
                           'create_time': int(time.time()),
                           'vip_level': 0,
@@ -201,6 +197,14 @@ class PlayerCharacter(Character):
     @dynamic_id.setter
     def dynamic_id(self, value):
         self._dynamic_id = value
+
+    @property
+    def newbee_guide_id(self):
+        return self._newbee_guide_id
+
+    @newbee_guide_id.setter
+    def newbee_guide_id(self, value):
+        self._newbee_guide_id = value
 
     @property
     def hero_component(self):
@@ -365,4 +369,5 @@ class PlayerCharacter(Character):
         character_info.update_multi(dict(level=self._level.level,
                                          exp=self.level.exp,
                                          pvp_times=self._pvp_times,
+                                         newbee_guide_id=self._newbee_guide_id,
                                          vip_level=self._vip.vip_level))
