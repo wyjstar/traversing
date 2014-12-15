@@ -556,7 +556,7 @@ class MonsterField(Mine):
     def mine_data(self):
         info = {}
         info['mine_type'] = 0
-        info['mine_type'] = self._stage_id
+        info['stage_id'] = self._stage_id
         return info
         
     def detail_info(self):
