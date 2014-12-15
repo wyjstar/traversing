@@ -92,12 +92,17 @@ class Ranking(object):
     def znear(self, label, k, front, back):
         
         try:
+            print 'znear1', label, k, type(label), type(k)
             index = self.redis.zrevrank(label, k)
+            print 'znear3', index
+            if index == None:
+                index = 20
             _min = index - front
             _max = index + back
             if index < front:
                 _min = 0
                 _max = front + back
+            print 'znear2', label, _min, type(_min), _max, type(_max)
             _range = self.redis.zrevrange(label, _min, _max)
         except Exception, e:
             logger.error('redis zrevrange error : %s' % e)

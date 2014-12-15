@@ -95,25 +95,25 @@ def search_1241(data, player):
     搜索矿点,ok
     """
     print 'search_1241'
-    try:
-        request = mine_pb2.positionRequest()
-        request.ParseFromString(data)
-        response = mine_pb2.searchResponse()
-        response.position = request.position
-        print 'response.position', response.position
-        if player.mine.can_search(request.position):
-            player.mine.search_mine(request.position, trigger_mine_boss)
-            player.mine.save_data()
-            one_mine = player.mine.mine_info(request.position)
-            one_mine_info(one_mine, response.mine)
-            response.res.result = True
-        else:
-            response.res.result = False
-            response.res.result_no = 12410
-            response.res.message = u"超出探索范围"
-        print '1241-response', response
-    except Exception, e:
-        print 'search', e
+#     try:
+    request = mine_pb2.positionRequest()
+    request.ParseFromString(data)
+    response = mine_pb2.searchResponse()
+    response.position = request.position
+    print 'response.position', response.position
+    if player.mine.can_search(request.position):
+        player.mine.search_mine(request.position, trigger_mine_boss)
+        player.mine.save_data()
+        one_mine = player.mine.mine_info(request.position)
+        one_mine_info(one_mine, response.mine)
+        response.res.result = True
+    else:
+        response.res.result = False
+        response.res.result_no = 12410
+        response.res.message = u"超出探索范围"
+    print '1241-response', response
+#     except Exception, e:
+#         print 'search', e
 
     player.mine.save_data()
     return response.SerializePartialToString()
