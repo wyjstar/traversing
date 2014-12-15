@@ -146,7 +146,6 @@ def init_runt_843(data, player):
     response.stone2 = player.runt.stone2
     response.refresh_id = player.runt.refresh_id
 
-    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -175,6 +174,7 @@ def refresh_runt_844(data, player):
         if not player.runt.refresh_id == new_refresh_id:
             break
 
+    player.runt.refresh_id = new_refresh_id
     player.finance.save_data()
     player.runt.save()
 
@@ -199,12 +199,13 @@ def refining_runt_845(data, player):
     for runt_no in runts:
         runt_info = player.runt.m_runt.get(runt_no)
 
-        runt_conf = stone_config.get('stones').get(runt_info[1])
+        runt_conf = stone_config.get('stones').get(runt_info[0])
         stone1 += runt_conf.stone1
         stone2 += runt_conf.stone2
-        if random.random() < runt_conf.biggerStoneCri:
-            get_runt_id = runt_conf.getbiggerStoneID[random.randint(0, len(runt_conf.biggerStoneId)-1)]
-            new_runt_no = player.runt.add_runt(runt_id)
+        # if random.random() <= runt_conf.biggerStoneCri:
+        if True:
+            get_runt_id = runt_conf.biggerStoneId[random.randint(0, len(runt_conf.biggerStoneId)-1)]
+            new_runt_no = player.runt.add_runt(get_runt_id)
             if new_runt_no:
                 runt.append(new_runt_no)
 
@@ -274,8 +275,9 @@ def build_runt_846(data, player):
             break
 
     response.refresh_id = new_refresh_id
+    player.runt.refresh_id = new_refresh_id
     runt_info = player.runt.m_runt.get(runt_no)
-    mrunt = response.runt.add()
+    mrunt = response.runt
     mrunt.runt_no = runt_no
     [runt_id, main_attr, minor_attr] = runt_info
     mrunt.runt_id = runt_id
