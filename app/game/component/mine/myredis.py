@@ -9,7 +9,7 @@ from gfirefly.dbentrust.redis_client import redis_client
 
 class Ranking(object):
     def __init__(self):
-        self.redis = redis_client
+        self.redis = redis_client.conn
         
     @classmethod
     def instance(cls):
@@ -49,7 +49,7 @@ class Ranking(object):
 
     def zget(self, label, k):
         try:
-            score = self.redis.zget(label, k)
+            score = self.redis.zscore(label, k)
         except Exception, e:
             logger.error('redis zget error : %s' % e)
         return score
@@ -92,12 +92,17 @@ class Ranking(object):
     def znear(self, label, k, front, back):
         
         try:
+            print 'znear1', label, k, type(label), type(k)
             index = self.redis.zrevrank(label, k)
+            print 'znear3', index
+            if index == None:
+                index = 20
             _min = index - front
             _max = index + back
             if index < front:
                 _min = 0
                 _max = front + back
+            print 'znear2', label, _min, type(_min), _max, type(_max)
             _range = self.redis.zrevrange(label, _min, _max)
         except Exception, e:
             logger.error('redis zrevrange error : %s' % e)

@@ -8,7 +8,7 @@ import cPickle
 from myredis import Ranking
 
 class MineOpt(object):
-    redis = Ranking.instance()
+    rank = Ranking()
     def __init__(self):
         pass
     
@@ -17,61 +17,61 @@ class MineOpt(object):
         v = cPickle.dumps(data)
         label = 'mine.%s' % uid
         
-        cls.redis.hset(label, mid, 1)
+        cls.rank.hset(label, mid, 1)
         label = 'mine'
-        cls.redis.hset(label, mid, v)
+        cls.rank.hset(label, mid, v)
         
     @classmethod
     def rem_mine(cls, mid):
         label = 'mine'
-        cls.redis.hdel(label, mid)
+        cls.rank.hdel(label, mid)
         
     @classmethod
     def get_mine(cls, mid):
         label = 'mine'
-        ret = cls.redis.hget(label, mid)
+        ret = cls.rank.hget(label, mid)
         return cPickle.loads(ret)
     
     @classmethod
     def get_user_mines(cls, uid):
         label = 'mine.%s' % uid
-        mids = cls.redis.hkeys(label)
+        mids = cls.rank.hkeys(label)
         return mids
     
     @classmethod
     def lock(cls, tid):
         label = 'mine.lock'
-        val = cls.redis.zincrby(label, tid, 1)
+        val = cls.rank.zincrby(label, tid, 1)
         return val
     
     @classmethod
     def unlock(cls, tid):
         label = 'mine.lock'
-        cls.redis.zadd(label, tid, 0)
+        cls.rank.zadd(label, tid, 0)
         
     @classmethod
     def update(cls, label, k, v):
         """
         label : "user_level","sword",玩家等级，团队战力
         """
-        old_score = cls.redis.zget(label, k)
+        old_score = cls.rank.zget(label, k)
         if old_score:
             if old_score >= v:
                 return
-        cls.redis.zadd(label, k, v)
+        cls.rank.zadd(label, k, v)
 
     @classmethod
     def rand_user(cls, label, k, front, back):
         """
         label : "user_level","sword",玩家等级，团队战力
         """
-        ret = cls.redis.znear(label, k, front, back)
+        ret = cls.rank.znear(label, k, front, back)
         return ret
     @classmethod
     def get_user(cls, label, k):
         """
         label : "user_level","sword",玩家等级，团队战力
         """
-        ret = cls.redis.zget(label, k)
+        ret = cls.rank.zget(label, k)
         return ret
     

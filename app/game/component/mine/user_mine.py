@@ -110,7 +110,6 @@ class Mine(object):
     @classmethod
     def create(cls, uid, nickname):
         pass
-    
 
 def gen_stone(num, odds_dict, limit, store, now_data):
     #发放符文石
@@ -143,27 +142,27 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
         now = harvest_end
     if harvest >= increase:
         #没有增产
-        dat = dat(now, harvest, dur)
-        print 'dat1', dat
+        data = dat(now, harvest, dur)
+        print 'dat1', data
         #harvest += dat*(dur*60)
-        start = harvest + dat*(dur*60)
-        num = dat*per
+        start = harvest + data*(dur*60)
+        num = data*per
     else:
         if now <= increase:
             #增产还未结束，从上次结算到当前都在增产
             mine = ConfigData.mine(mine_id)
             ratio = mine.increase #增产比例
-            dat = dat(now, harvest, dur)
-            print 'dat2', dat
+            data = dat(now, harvest, dur)
+            print 'dat2', data
             #harvest += dat*(dur*60)
-            start = harvest + dat*(dur*60)
-            num = int(dat * per * ratio)
+            start = harvest + data*(dur*60)
+            num = int(data * per * ratio)
         else:
             incr_dat = dat(increase, harvest, dur)
-            print 'dat3', dat
+            print 'dat3', data
             dat1 = int(incr_dat * per * ratio) #增产部分
             nor_dat = dat(now, increase, dur)
-            print 'dat4', dat
+            print 'dat4', data
             dat2 = (nor_dat*per) #未增产部分
             num = dat1+dat2
             #harvest += int(num * (dur*60))
@@ -413,7 +412,7 @@ class PlayerField(Mine):
     @classmethod
     def create(cls, uid, nickname, level, lively, sword):
         item = None
-        for _,v in mine_match_config.keys():
+        for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
                 item = v
         rule_id = random_pick(item.proRule, sum(item.proRule.values()))
@@ -597,7 +596,8 @@ class Chest(Mine):
     宝箱
     """
     def __init__(self):
-        pass
+        self._gen_time = 0
+    
     
     @classmethod
     def create(cls, uid, nickname):
@@ -629,6 +629,7 @@ class Shop(Mine):
     神秘商店
     """
     def __init__(self):
+        self._gen_time = 0
         self._shops = {}
         num = base_config['warFogShopItemNum']
         shopids = ConfigData.shopid_odds()
@@ -667,7 +668,7 @@ class Copy(Mine):
     秘境副本
     """
     def __init__(self):
-        pass
+        self._gen_time = 0
     
     @classmethod
     def create(cls, uid, nickname):
@@ -836,15 +837,24 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
         
+        print 'stype', stype
         if stype == MineType.COPY:
+            print '123'
             result = func()
+            print '123', result
             if not result:
                 stype = MineType.MONSTER_FIELD
         if stype == MineType.PLAYER_FIELD:
             sword = 0
-            mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
-        else:
-            mine = MineType.create(stype, self.owner.base_info.id, self.owner.base_info.base_name)
+            mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
+        if stype == MineType.MONSTER_FIELD:
+            mine = MonsterField.create(self.owner.base_info.id, self.owner.base_info.base_name)
+        if stype == MineType.CHEST:
+            mine = Chest.create(self.owner.base_info.id, self.owner.base_info.base_name)
+        if stype == MineType.SHOP:
+            mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
+        if stype == MineType.COPY:
+            mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
             
         if not mine:
             mine = MineType.create(MineType.MONSTER_FIELD, self.owner.base_info.id, self.owner.base_info.base_name)
