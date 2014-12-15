@@ -171,4 +171,4 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        # init(player)
+        init(player)
