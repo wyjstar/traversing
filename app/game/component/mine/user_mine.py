@@ -142,27 +142,27 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
         now = harvest_end
     if harvest >= increase:
         #没有增产
-        dat = dat(now, harvest, dur)
-        print 'dat1', dat
+        data = dat(now, harvest, dur)
+        print 'dat1', data
         #harvest += dat*(dur*60)
-        start = harvest + dat*(dur*60)
-        num = dat*per
+        start = harvest + data*(dur*60)
+        num = data*per
     else:
         if now <= increase:
             #增产还未结束，从上次结算到当前都在增产
             mine = ConfigData.mine(mine_id)
             ratio = mine.increase #增产比例
-            dat = dat(now, harvest, dur)
-            print 'dat2', dat
+            data = dat(now, harvest, dur)
+            print 'dat2', data
             #harvest += dat*(dur*60)
-            start = harvest + dat*(dur*60)
-            num = int(dat * per * ratio)
+            start = harvest + data*(dur*60)
+            num = int(data * per * ratio)
         else:
             incr_dat = dat(increase, harvest, dur)
-            print 'dat3', dat
+            print 'dat3', data
             dat1 = int(incr_dat * per * ratio) #增产部分
             nor_dat = dat(now, increase, dur)
-            print 'dat4', dat
+            print 'dat4', data
             dat2 = (nor_dat*per) #未增产部分
             num = dat1+dat2
             #harvest += int(num * (dur*60))
