@@ -43,6 +43,7 @@ from seal_config import SealConfig
 from travel_item_config import TravelItemConfig
 from formula_config import FormulaConfig
 from stone_config import StoneConfig
+from newbee_guide_config import NewbeeGuideConfig
 
 
 stone_config = {}
@@ -85,6 +86,7 @@ language_config = {}
 achievement_config = {}
 seal_config = {}
 formula_config = {}
+newbee_guide_config = {}
 
 
 all_config_name = {
@@ -127,7 +129,8 @@ all_config_name = {
     'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig(),
     'stone_config': StoneConfig(),
-    'formula_config': FormulaConfig()
+    'formula_config': FormulaConfig(),
+    'newbee_guide_config': NewbeeGuideConfig()
 }
 
 module = cPickle.load(open('config/excel_cpickle', 'r'))
@@ -137,4 +140,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print stone_config
+    print newbee_guide_config.get(4)

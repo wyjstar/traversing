@@ -10,11 +10,15 @@ from gfirefly.dbentrust import util
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
+from shared.db_opear.configs_data.game_configs import newbee_guide_config
 from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
+from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest
+from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
+from app.game.core.item_group_helper import gain, get_return
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -70,7 +74,7 @@ def buy_stamina_6(request_proto, player):
 
     current_vip_level = player.vip_component.vip_level
     current_buy_stamina_times = player.stamina.buy_stamina_times
-    current_stamina = player.stamina.stamina
+    # current_stamina = player.stamina.stamina
     current_gold = player.finance.gold
 
     available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
@@ -134,6 +138,32 @@ def add_stamina_7(request_proto, player):
     return response.SerializePartialToString()
 
 
+@remoteserviceHandle('gate')
+def new_guide_step_1802(data, player):
+    request = NewbeeGuideStepRequest()
+    request.ParseFromString(data)
+    response = NewbeeGuideStepResponse()
+
+    new_guide_item = newbee_guide_config.get(request.step_id)
+    if not new_guide_item:
+        logger.error('error newbee id:%s', request.step_id)
+        response.res.result = False
+        return response.SerializePartialToString()
+
+    logger.info('newbee:%s step:%s',
+                player.base_info.base_name,
+                request.step_id)
+    player.newbee_guide_id = request.backID
+    player.save_data()
+    response.res.result = True
+
+    gain_data = new_guide_item.get('rewards')
+    return_data = gain(player, gain_data)
+    get_return(player, return_data, response.gain)
+
+    return response.SerializePartialToString()
+
+
 def init_player(player):
     new_character = player.is_new_character()
     if new_character:
@@ -141,4 +171,4 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        init(player)
+        # init(player)
