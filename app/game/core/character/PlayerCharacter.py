@@ -109,7 +109,7 @@ class PlayerCharacter(Character):
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
-        self._newbee_guide_step = character_info['newbee_guide_id']
+        self._newbee_guide_id = character_info['newbee_guide_id']
 
         # ------------初始化角色货币信息------------
         self._finance.init_data(character_info)

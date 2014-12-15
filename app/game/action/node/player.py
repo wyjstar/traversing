@@ -150,12 +150,13 @@ def new_guide_step_1802(data, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-    logger.info('newbee:%s step:%s',
-                player.base_info.base_name,
-                request.step_id)
     player.newbee_guide_id = new_guide_item.get('backID')
     player.save_data()
     response.res.result = True
+
+    logger.info('newbee:%s step:%s',
+                player.base_info.id,
+                player.newbee_guide_id)
 
     gain_data = new_guide_item.get('rewards')
     return_data = gain(player, gain_data)
