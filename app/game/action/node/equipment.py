@@ -35,7 +35,7 @@ def get_equipments_401(pro_data, player):
         equipment_add.no = obj.base_info.equipment_no
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
-        equipment_add.is_guard = obj.is_guard
+        equipment_add.is_guard = obj.attribute.is_guard
 
         for before_lv, after_lv, enhance_cost in obj.enhance_record:
             data_format = response.data.add()
