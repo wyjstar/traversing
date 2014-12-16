@@ -28,7 +28,7 @@ def settle(player, result, response, lively_event, conf):
         print lineUpSlotComponent,
         hero = lineUpSlotComponent.hero_slot.hero_obj
         if hero:
-            hero.upgrade(conf.HeroExp)
+            hero.upgrade(conf.HeroExp, player.level.level)
     player.finance.coin += conf.currency
     player.level.addexp(conf.playerExp)
     player.save_data()
