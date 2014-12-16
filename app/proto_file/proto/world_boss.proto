@@ -56,10 +56,11 @@ message EncourageHerosRequest{
 //开始战斗, command:1705
 message PvbStartRequest
 {
-	required string boss_id = 1;     //boss id
-	repeated LineUp lineup = 3;      // 队形
-	optional int32 unparalleled = 4; // 无双技能ID
-	optional int32 fid = 5;          // 好友ID
+	optional string boss_id = 4;     //boss id
+	repeated LineUp lineup = 1;      // 队形
+	optional int32 unparalleled = 2; // 无双技能ID
+	optional int32 fid = 3;          // 好友ID
+
 }
 message PvbFightResponse{
     required CommonResponse res = 1;

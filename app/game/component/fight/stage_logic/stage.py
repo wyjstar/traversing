@@ -50,6 +50,3 @@ class StageLogic(base_stage.BaseStageLogic):
         lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         # 结算
         stage_util.settle(player, result, response, lively_event, conf)
-        # update 相关信息
-        player.line_up_component.update_slot_activation()
-        player.line_up_component.save_data()

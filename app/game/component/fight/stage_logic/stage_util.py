@@ -33,6 +33,10 @@ def settle(player, result, response, lively_event, conf):
     player.level.addexp(conf.playerExp)
     player.save_data()
 
+    # 更新等级相关属性
+    player.line_up_component.update_slot_activation()
+    player.line_up_component.save_data()
+
     # 构造掉落
     settlement_drops = player.fight_cache_component.fighting_settlement(result)
     data = gain(player, settlement_drops)
@@ -43,6 +47,8 @@ def settle(player, result, response, lively_event, conf):
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+
+
 
 
 
