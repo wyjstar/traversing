@@ -359,7 +359,7 @@ class PlayerField(Mine):
                         mid = random.sample(mids,1)
                         if not mid:
                             continue
-                        match_mine = MineOpt.get_mine(one_user, mid)
+                        match_mine = MineOpt.get_mine(mid[0])
                         if not match_mine:
                             continue
                 if not match_mine:#没有随到玩家占领的野怪矿，生成野怪矿
@@ -414,7 +414,7 @@ class PlayerField(Mine):
 #         else:
 #             last_increase = self._increase
 #         mine = ConfigData.mine(self._mine_id)
-        print 'detail_info', self._normal, self._lucky, self._guard_time
+        print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
         return 0, 1, 0, -1, self._normal, self._lucky, self._lineup, self._guard_time  # ret, msg, last_increase, limit, normal, lucky, heros
     
     def guard(self, nickname, info):
