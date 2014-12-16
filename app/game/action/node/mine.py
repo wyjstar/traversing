@@ -5,7 +5,7 @@ Created on 2014-11-24
 @author: hack
 '''
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file import mine_pb2, item_response_pb2, common_pb2
+from app.proto_file import mine_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data.game_configs import shop_config, base_config,\
     mine_config
@@ -16,9 +16,6 @@ from shared.utils.const import const
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
-import cPickle
-from app.proto_file import pvp_rank_pb2
-from app.battle.battle_process import BattlePVPProcess
 from gfirefly.server.logobj import logger
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
@@ -190,7 +187,8 @@ def query_1243(data, player):
         if stype == 2:
             response.stage_id = int(lineup)
         if stype == 1:
-            response.lineup.ParseFromString(lineup)
+            if lineup != None:
+                response.lineup.ParseFromString(lineup)
 
         mid = player.mine.mid(request.position)
         main_mine = mine_config.get(mid)
@@ -198,7 +196,7 @@ def query_1243(data, player):
         response.genUnit = int( (60 / main_mine.timeGroup1) * main_mine.outputGroup1)
         response.rate = main_mine.increase
         response.incrcost = main_mine.increasePrice
-        response.guard_time = guard_time
+        response.guard_time = int(guard_time)
     else:
         response.res.result = False
         response.res.result_no = ret
@@ -302,54 +300,6 @@ def harvest_1245(data, player):
     player.mine.save_data()
     print '1245-response', response
     return response.SerializePartialToString()
-
-
-
-
-# @remoteserviceHandle('gate')
-# def battle_1246(data, player):
-#     """
-#     攻占怪物驻守的矿点
-#     1. 如果矿点为怪物驻守 则发送903协议， 走pve逻辑
-#     2. 如果矿点为玩家驻守 则发送1246协议， 走pvp逻辑
-#     """
-#     request = mine_pb2.battleRequest()
-#     request.ParseFromString(data)
-#     pvp_data = request.data
-#     __skill = pvp_data.skill
-#     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-#     save_line_up_order(pvp_data.lineup, player)
-# 
-#     record = {}
-#     #todo: 获取驻守数据
-#     blue_units = record.get('units')
-#     # print "blue_units:", blue_units
-#     blue_units = cPickle.loads(blue_units)
-#     # print "blue_units:", blue_units
-#     red_units = player.fight_cache_component.red_unit
-#     process = BattlePVPProcess(red_units, __best_skill, player.level.level, blue_units,
-#                                record.get('best_skill_no', 0), record.get('level', 1))
-#     fight_result = process.process()
-# 
-#     response = mine_pb2.battleResponse()
-# 
-#     process_mine_result(player, request.position, response.gain, fight_result)
-# 
-#     logger.debug("fight result:%s" % fight_result)
-# 
-# 
-#     response = pvp_rank_pb2.PvpFightResponse()
-#     response.res.result = True
-# 
-# 
-#     battleresponse = response.data
-#     battleresponse.res.result = True
-# 
-# 
-#     player.mine.save_data()
-# 
-#     return response.SerializeToString()
-
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):

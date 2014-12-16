@@ -401,6 +401,7 @@ class PlayerField(Mine):
         self._lucky_end = info.get('_lucky_end')
         self._normal = {}
         self._lucky = {}
+        self._last_time = self._normal_end
         mine = ConfigData.mine(self._mine_id)
         print 'update_info', self._mine_id
         for nor_id in mine.group1.keys():
@@ -499,7 +500,7 @@ class PlayerField(Mine):
 #         else:
 #             last_increase = self._increase
 #         mine = ConfigData.mine(self._mine_id)
-        print 'detail_info', self._normal, self._lucky
+        print 'detail_info', self._normal, self._lucky, self._guard_time
         return 0, 1, 0, -1, self._normal, self._lucky, None, self._guard_time  # ret, msg, last_increase, limit, normal, lucky, heros
     
     def guard(self, nickname, info):
@@ -509,7 +510,7 @@ class PlayerField(Mine):
         lock = MineOpt.lock(self._seq)
         if lock > 1:
             return 12440 #战斗中
-        self._upt()
+        self.update_mine()
         if self._nickname != nickname:
             MineOpt.unlock(self._seq)
             return 12441#非自己的矿
@@ -589,7 +590,8 @@ class MonsterField(Mine):
         player_field._normal_end = player_field._normal_harvest + mine.timeLimited1 * 60 #普通符文石生产结束时间－1不限
         player_field._lucky_harvest = time.time() # 特殊符文石最后一次收获时间
         player_field._luck_end = player_field._lucky_harvest + mine.timeLimitedR * 60 #特殊符文石生产结束时间－1 不限
-        player_field._guard_time = time.time() + mine.protectTimeFree#读取数值表配置－刚占领的野怪矿保护时间
+        player_field._guard_time = time.time() + mine.protectTimeFree*60#读取数值表配置－刚占领的野怪矿保护时间
+        player_field._last_time = player_field._luck_end
         player_field._tid = uid
         player_field._nickname = nickname
         data = player_field.save_info()
