@@ -287,10 +287,10 @@ CREATE TABLE `tb_character_mine` (
 DROP TABLE IF EXISTS `tb_character_runt`;
 CREATE TABLE `tb_character_runt` (
   `id` bigint(20) NOT NULL,
-  `m_runt` blob,
+  `m_runt` mediumblob,
   `stone1` int(11),
   `stone2` int(11),
-  `refresh_id` bigint(20),
+  `refresh_runt` blob,
   `refresh_times` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
