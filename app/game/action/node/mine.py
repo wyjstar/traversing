@@ -49,7 +49,7 @@ def mine_status(player, response):
             one_mine.nickname = nickname
         last_time = mstatus.get('last_time', None)
         if last_time != None:
-            one_mine.last_time = last_time
+            one_mine.last_time = int(last_time)
         gen_time = mstatus.get('gen_time', None)
         if gen_time != None:
             one_mine.gen_time = int(gen_time)
@@ -70,7 +70,7 @@ def one_mine_info(mstatus, one_mine):
             one_mine.nickname = nickname
         last_time = mstatus.get('last_time', None)
         if last_time != None:
-            one_mine.last_time = last_time
+            one_mine.last_time = int(last_time)
         gen_time = mstatus.get('gen_time', None)
         if gen_time != None:
             one_mine.gen_time = int(gen_time)
@@ -188,7 +188,7 @@ def query_1243(data, player):
             response.stage_id = int(lineup)
         if stype == 1:
             if lineup != None:
-                response.lineup.ParseFromString(lineup)
+                response.lineup.ParseFromString(lineup.get('line_up'))
 
         mid = player.mine.mid(request.position)
         main_mine = mine_config.get(mid)
@@ -260,11 +260,11 @@ def guard_1244(data, player):
 
     result_code = save_guard(player, request.pos, info)
     if result_code:
-        response.res.result = False
-        response.res.result_no = result_code
+        response.result = False
+        response.result_no = result_code
         return response.SerializePartialToString()
 
-    response.res.result = True
+    response.result = True
     player.mine.save_data()
     return response.SerializePartialToString()
 
@@ -429,49 +429,51 @@ def acc_mine_1250(data, player):
     return response.SerializePartialToString()
 
 
-def process_mine_result(player, position, response, result):
+def process_mine_result(player, position, result, response, stype):
     """
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
     @param gain: true or false
     """
+    print 'process_mine_result', position, response, result, stype
     if result == True:
         target = player.mine.settle(position)
-        detail_info = player.mine.detail_info(position)
-        _, _, _, _, normal, lucky, _, _ = detail_info
-        warFogLootRatio = base_config['warFogLootRatio']
-        count = {}
-        for k, v in normal.items():
-            if v > 0:
-                normal = response.normal.add()
-                normal.stone_id = k
-                normal.stone_num = int(v *warFogLootRatio)
-                count[k] = v
-        for k, v in lucky.items():
-            if v > 0:
-                luck = response.lucky.add()
-                luck.stone_id = k
-                luck.stone_num = int(v*warFogLootRatio)
-                count[k] = v
+        if stype == 1:
+            detail_info = player.mine.detail_info(position)
+            _, _, _, _, normal, lucky, _, _ = detail_info
+            warFogLootRatio = base_config['warFogLootRatio']
+            count = {}
+            for k, v in normal.items():
+                if v > 0:
+                    normal = response.normal.add()
+                    normal.stone_id = k
+                    normal.stone_num = int(v *warFogLootRatio)
+                    count[k] = v
+            for k, v in lucky.items():
+                if v > 0:
+                    luck = response.lucky.add()
+                    luck.stone_id = k
+                    luck.stone_num = int(v*warFogLootRatio)
+                    count[k] = v
         
-        """
-            required string mail_id = 1; // ID
-            optional int32 sender_id = 2; //发件人ID
-            optional string sender_name = 3; //发件人
-            optional int32 sender_icon = 4; //发件人Icon
-            optional int32 receive_id = 5; //收件人ID
-            optional string receive_name = 6; //收件人
-            optional string title = 7; //标题
-            optional string content = 8; //邮件内容
-            required int32 mail_type = 9; //邮件类型
-            optional int32 send_time = 10; //发件时间
-            optional bool is_readed = 11; //是否已读
-            optional string prize = 12; //奖品
-        """
-        mail = {}
-        
-        # command:id 为收邮件的命令ID
-        if sum(count.values()) > 0:
-            response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+            """
+                required string mail_id = 1; // ID
+                optional int32 sender_id = 2; //发件人ID
+                optional string sender_name = 3; //发件人
+                optional int32 sender_icon = 4; //发件人Icon
+                optional int32 receive_id = 5; //收件人ID
+                optional string receive_name = 6; //收件人
+                optional string title = 7; //标题
+                optional string content = 8; //邮件内容
+                required int32 mail_type = 9; //邮件类型
+                optional int32 send_time = 10; //发件时间
+                optional bool is_readed = 11; //是否已读
+                optional string prize = 12; //奖品
+            """
+            mail = {}
+            
+            # command:id 为收邮件的命令ID
+            if sum(count.values()) > 0:
+                response.result = netforwarding.push_message('receive_mail_remote', target, mail)
 
 
 
@@ -483,6 +485,7 @@ def settle_1252(data, player):
     result = request.result
     #todo: check result
     #todo: set settle time to calculate acc_mine
+    process_mine_result(player, pos, result, None, 0)
     response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
@@ -523,7 +526,7 @@ def battle_1253(data, player):
         red_units = stage_info.get('red_units')
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
-        process_mine_result(player, pos, response, result)
+        
 
         print red_units, blue_units
 
@@ -537,7 +540,7 @@ def battle_1253(data, player):
         if fight_result:
             # 返回秘境的结果
             pass
-        process_mine_result(player, pos, response, fight_result)
+        process_mine_result(player, pos, response, fight_result, mine_type)
 
         blue_best_skill_id = info.get("best_skill_id")
         blue_best_skill_level = info.get("best_skill_level")
@@ -551,6 +554,7 @@ def battle_1253(data, player):
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     print response, red_units, blue_units
+    response.res.result = True
     return response.SerializePartialToString()
 
 
@@ -568,6 +572,8 @@ def get_save_guard(player, pos):
     获取保存的驻守信息
     """
     info = player.mine.get_guard_info(pos)
+    if info == None:
+        return {}
     return info
 
 

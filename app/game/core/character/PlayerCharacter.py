@@ -39,6 +39,7 @@ from app.game.component.achievement.user_achievement import UserAchievement
 from app.game.component.mine.user_mine import UserMine
 from app.game.component.stone.user_stone import UserStone
 from app.game.component.character_runt import CharacterRuntComponent
+from shared.db_opear.configs_data.game_configs import base_config
 
 
 class PlayerCharacter(Character):
@@ -173,6 +174,9 @@ class PlayerCharacter(Character):
         """docstring for create_character_data"""
         pid = self.base_info.id
 
+        finances = [0] * const.RESOURCE_MAX
+        finances[const.COIN] = base_config.get('coin_for_InitUser')
+        finances[const.GOLD] = base_config.get('money_for_InitUser')
         character_info = {'id': pid,
                           'nickname': u'',
                           'level': 1,
@@ -185,10 +189,11 @@ class PlayerCharacter(Character):
                           'newbee_guide_id': 0,
                           'pvp_count': 0,
                           'create_time': int(time.time()),
-                          'vip_level': 0,
+                          'vip_level': base_config.get('initialVipLevel'),
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time()),
-                          'finances': []
+                          'finances': finances
+
                           }
         tb_character_info.new(character_info)
 
