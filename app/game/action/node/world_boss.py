@@ -195,8 +195,10 @@ def pvb_fight_start_1705(pro_data, player):
     boss = player.world_boss.get_boss(boss_id)
     base_config = boss.get_base_config()
 
+
+
     stage_id = boss.stage_id
-    logger.debug("best_skill_id,%s" % best_skill_id)
+    logger.debug("stage_id,%s" % stage_id)
     WORLD_BOSS = 5
     stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player)
     result = stage_info.get('result')
