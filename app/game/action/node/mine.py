@@ -33,9 +33,6 @@ def mine_status(player, response):
     response.reset_free = reset_free
     response.reset_count = reset_count
     mine_status = player.mine.mine_status()
-
-    print "*"*80
-    print mine_status
     player.mine.save_data()
     for mstatus in mine_status:
         one_mine = response.mine.add()
@@ -286,12 +283,19 @@ def guard_1244(data, player):
 
 def add_stones(player, stones, response):
     response.res.result = True
+
     for stone_id, num in stones.items():
-        #player.stone.add_stones(stone_id, num)
-        one_type = response.stones.add()
-        one_type.stone_id = stone_id
-        one_type.stone_num = num
-    #player.stone.save_data()
+        for _ in range(num):
+            runt_no = player.runt.add_runt(stone_id)
+            if not runt_no:
+                return 0
+            else:
+                runt_info = player.runt.m_runt.get(runt_no)
+                runt_pb = response.runt.add()
+                [runt_id, main_attr, minor_attr] = runt_info
+                player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
+    return 1
+
 
 @remoteserviceHandle('gate')
 def harvest_1245(data, player):
@@ -306,7 +310,11 @@ def harvest_1245(data, player):
     stones = player.mine.harvest(request.position)
     print 'stones', stones
     if stones:
-        add_stones(player, stones, response)
+        if not add_stones(player, stones, response):
+            response.res.result = False
+            response.res.result_no = 824
+            return response.SerializePartialToString()
+
     else:
         response.res.result = False
         response.res.result_no = 12450
@@ -315,6 +323,7 @@ def harvest_1245(data, player):
     player.mine.save_data()
     print '1245-response', response
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def query_shop_1247(data, player):
