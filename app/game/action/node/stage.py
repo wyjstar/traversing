@@ -92,7 +92,7 @@ def stage_start_903(pro_data, player):
     res.result = result
 
     if not result:
-        logger.info('进入关卡返回数据:%s', response)
+        # logger.info('进入关卡返回数据:%s', response)
         res.result_no = stage_info.get('result_no')
         return response.SerializePartialToString()
 
