@@ -28,7 +28,7 @@ class CharacterRuntComponent(Component):
             self._m_runt = runt_data.get('m_runt')
             self._stone1 = runt_data.get('stone1')
             self._stone2 = runt_data.get('stone2')
-            self._refresh_id = runt_data.get('refresh_runt')
+            self._refresh_runt = runt_data.get('refresh_runt')
             self._refresh_times = runt_data.get('refresh_times')
         else:
             tb_character_runt.new({'id': self.owner.base_info.id,
@@ -129,9 +129,9 @@ class CharacterRuntComponent(Component):
                 rand -= v
         return attrType, attrValueType, attrValue, attrIncrement
 
-    def deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb):
-        runt_pb.no = runt_no
-        runt_pb.id = runt_id
+    def deal_runt_pb(self, runt_no, runt_id, main_attr, minor_attr, runt_pb):
+        runt_pb.runt_no = runt_no
+        runt_pb.runt_id = runt_id
         for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
             main_attr_pb = runt_pb.main_attr.add()
             main_attr_pb.attr_type = attr_type

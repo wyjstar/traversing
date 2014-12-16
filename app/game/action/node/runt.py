@@ -10,7 +10,7 @@ from shared.db_opear.configs_data.game_configs import stone_config, base_config
 from gfirefly.server.logobj import logger
 import random
 import time
-import shared.utils.pyuuid import get_uuid
+from shared.utils.pyuuid import get_uuid
 
 
 @remoteserviceHandle('gate')
@@ -132,9 +132,11 @@ def init_runt_843(data, player):
     response.stone1 = player.runt.stone1
     response.stone2 = player.runt.stone2
 
-    [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
-    player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, response.refresh_runt)
+    if player.runt.refresh_runt:
+        [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
+        player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, response.refresh_runt)
 
+    print response
     return response.SerializeToString()
 
 
@@ -163,6 +165,8 @@ def refresh_runt_844(data, player):
         if player.runt.refresh_runt:
             if not player.runt.refresh_runt[1] == new_refresh_id:
                 break
+        else:
+            break
 
     runt_no = get_uuid()
     mainAttr, minorAttr = player.runt.get_attr(new_refresh_id)
@@ -211,7 +215,6 @@ def refining_runt_845(data, player):
         runt_pb = response.runt.add()
         [runt_id, main_attr, minor_attr] = runt_info
 
-        [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
         player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
 
     response.stone1 = stone1
@@ -232,7 +235,7 @@ def build_runt_846(data, player):
         response.res.result_no = 828
         return response.SerializeToString()
 
-    runt_conf = stone_config.get('stones').get(runt_id)
+    runt_conf = stone_config.get('stones').get(refresh_runt[1])
     [need_stone1, need_stone2, need_coin] = runt_conf.price
     if player.runt.stone1 < need_stone1 or player.runt.stone2 < need_stone2 or player.finance.coin < need_coin:
         response.res.result = False
@@ -243,16 +246,13 @@ def build_runt_846(data, player):
     player.runt.stone2 -= need_stone2
     player.finance.coin -= need_coin
 
-    runt_no = player.runt.add_runt(runt_id)
-    if not runt_no:
+    if len(player.runt.m_runt) + 1 >= base_config.get('totemStash'):
         response.res.result = False
         response.res.result_no = 824
         return response.SerializeToString()
 
-    [runt_id, main_attr, minor_attr] = player.runt.m_runt.get(runt_no)
-
     [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
-    player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, response.refresh_runt)
+    player.runt.m_runt[runt_no] = [runt_id, main_attr, minor_attr]
 
     while True:
         new_refresh_id = player.runt.build_refresh()
@@ -268,4 +268,5 @@ def build_runt_846(data, player):
     player.finance.save_data()
 
     response.res.result = True
+    print response
     return response.SerializeToString()
