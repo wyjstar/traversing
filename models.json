@@ -152,7 +152,8 @@
                 "online_gift": "complex",
                 "feast": "simple",
                 "login_gift": "complex",
-                "world_boss": "complex"
+                "world_boss": "complex",
+                "level_gift": "complex"
             }
         },
         "tb_character_lord": {

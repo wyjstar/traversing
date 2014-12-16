@@ -340,6 +340,7 @@ class PlayerField(Mine):
 #         print 'match_mine', match_mine['seq']
 #         mine.update_info(match_mine)
 #         return mine
+        print lively, level, "lively, level*"*80
         item = None
         for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:

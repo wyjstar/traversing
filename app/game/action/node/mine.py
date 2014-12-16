@@ -17,9 +17,10 @@ from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from gfirefly.server.logobj import logger
-from app.game.action.node.line_up import line_up_info
+from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
 from app.game.action.root import netforwarding
+from app.proto_file import line_up_pb2
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -219,6 +220,7 @@ def guard_1244(data, player):
     """
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
+    print request
     response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
@@ -248,6 +250,12 @@ def guard_1244(data, player):
         if unit:
             battle_units[no] = unit
 
+    line_up_response = line_up_pb2.LineUpResponse()
+    line_up_info_detail(character_line_up.line_up_slots, {}, line_up_response)
+    add_unpar = line_up_response.unpars.add()
+    add_unpar.unpar_id = __skill
+    add_unpar.unpar_level = __skill_level
+
     info = {}
     info["battle_units"] = battle_units
     info["best_skill_id"] = __skill
@@ -256,13 +264,15 @@ def guard_1244(data, player):
     info["level"] = player.level.level
     info["nickname"] = player.base_info.base_name
     info["character_id"] = player.base_info.id
-    info["line_up"] = line_up_info(player).SerializePartialToString()
+    info["line_up"] = line_up_response.SerializePartialToString()
 
     result_code = save_guard(player, request.pos, info)
     if result_code:
         response.result = False
         response.result_no = result_code
         return response.SerializePartialToString()
+
+
 
     response.result = True
     player.mine.save_data()
