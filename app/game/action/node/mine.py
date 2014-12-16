@@ -32,6 +32,9 @@ def mine_status(player, response):
     response.reset_free = reset_free
     response.reset_count = reset_count
     mine_status = player.mine.mine_status()
+
+    print "*"*80
+    print mine_status
     player.mine.save_data()
     for mstatus in mine_status:
         one_mine = response.mine.add()
