@@ -569,6 +569,8 @@ def get_save_guard(player, pos):
     获取保存的驻守信息
     """
     info = player.mine.get_guard_info(pos)
+    if info == None:
+        return {}
     return info
 
 
