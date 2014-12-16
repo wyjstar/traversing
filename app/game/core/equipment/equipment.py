@@ -68,7 +68,7 @@ def rand_pick_attr(attr):
                 _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
             else:
                 _, attrValueType, valueMin, valueMax = attr[k]
-            attrValue = valueMin + random.random() * (valueMax - valueMin)
+            attrValue = int(valueMin + random.random() * (valueMax - valueMin))
             del attr[k]
             break
         else:

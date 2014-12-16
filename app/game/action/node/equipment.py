@@ -40,7 +40,7 @@ def get_equipments_401(pro_data, player):
             main_attr_pb.attr_type = attr_type
             main_attr_pb.attr_value_type = attr_value_type
             main_attr_pb.attr_value = attr_value
-            main_attr_pb. attr_increment = attr_increment
+            main_attr_pb.attr_increment = attr_increment
 
         for (attr_type, [attr_value_type, attr_value, attr_increment]) in obj.attribute.minor_attr.items():
             minor_attr_pb = equipment_add.minor_attr.add()

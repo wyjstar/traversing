@@ -132,7 +132,7 @@ class CharacterFinanceComponent(Component):
         if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
-        if num < self._finances[fType]:
+        if num > self._finances[fType]:
             logger.error('not enough finance:%s:%s:%s',
                          fType, self._finances[fType], num)
             return False

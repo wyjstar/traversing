@@ -147,6 +147,7 @@ class Hero(object):
 
                 [runt_no, runt_id, main_attr, minor_attr] = runt_info
                 runt_pb.runt_id = runt_id
+                runt_pb.runt_no = runt_no
                 for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
                     main_attr_pb = runt_pb.main_attr.add()
                     main_attr_pb.attr_type = attr_type

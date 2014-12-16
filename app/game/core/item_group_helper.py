@@ -133,8 +133,21 @@ def gain(player, item_group, result=None):
             player.finance.save_data()
 
         elif type_id == const.RESOURCE:
-            player.finance[item_no] += num
-            player.finance.save_data()
+            if item_no == 18:
+                shoes = player.travel_component.shoes
+                shoes[0] += num
+                player.travel_component.save()
+            elif item_no == 19:
+                shoes = player.travel_component.shoes
+                shoes[1] += num
+                player.travel_component.save()
+            elif item_no == 20:
+                shoes = player.travel_component.shoes
+                shoes[2] += num
+                player.travel_component.save()
+            else:
+                player.finance[item_no] += num
+                player.finance.save_data()
 
         elif type_id == const.GOLD:
             player.finance.gold += num
@@ -218,16 +231,6 @@ def gain(player, item_group, result=None):
             if flag1:
                 stage_item_info.append([item_no, num])
             player.travel_component.save()
-        elif type_id == u'107':
-            shoes = player.travel_component.shoes
-            if item_no == 18:
-                shoes[0] += num
-            elif item_no == 19:
-                shoes[1] += num
-            elif item_no == 20:
-                shoes[2] += num
-
-            player.travel_component.save()
 
         flag = 1
         for i in result:
@@ -302,15 +305,32 @@ def get_return(player, return_data, game_resources_response):
             travel_item.id = item_no
             travel_item.num = item_num
 
-        elif u'107' == item_type:
-            travel_item = game_resources_response.shoes_info.add()
+        elif 107 == item_type:
             if item_no == 18:
+                travel_item = game_resources_response.shoes_info.add()
                 shoes_type = 1
+                travel_item.shoes_type = shoes_type
+                travel_item.shoes_no = item_num
             elif item_no == 19:
+                travel_item = game_resources_response.shoes_info.add()
                 shoes_type = 2
+                travel_item.shoes_type = shoes_type
+                travel_item.shoes_no = item_num
             elif item_no == 20:
+                travel_item = game_resources_response.shoes_info.add()
                 shoes_type = 3
-            travel_item.shoes_type = shoes_type
-            travel_item.shoes_no = item_num
+                travel_item.shoes_type = shoes_type
+                travel_item.shoes_no = item_num
+            else:
+                for finance_changes in game_resources_response.finance.finance_changes:
+                    if finance_changes.item_type == item_type:
+                        finance_changes.item_num += item_num
+                        break
+                else:
+                    change = game_resources_response.finance.finance_changes.add()
+                    change.item_type = item_type
+                    change.item_num = item_num
+                    change.item_no = item_no
+
 
     logger.debug('return resource:%s', game_resources_response)
