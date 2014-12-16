@@ -260,11 +260,11 @@ def guard_1244(data, player):
 
     result_code = save_guard(player, request.pos, info)
     if result_code:
-        response.res.result = False
-        response.res.result_no = result_code
+        response.result = False
+        response.result_no = result_code
         return response.SerializePartialToString()
 
-    response.res.result = True
+    response.result = True
     player.mine.save_data()
     return response.SerializePartialToString()
 
