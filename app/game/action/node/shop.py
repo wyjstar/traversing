@@ -54,6 +54,7 @@ def shop_oper(pro_data, player):
         response.res.result = False
         response.res.result_no = result.get('result_no')
         response.res.message = u'消费不足！'
+        logger.error('no enough money:%s', shop_item.consume)
         return response.SerializeToString()
 
     player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
