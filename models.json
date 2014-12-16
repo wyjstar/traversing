@@ -217,7 +217,7 @@
                 "m_runt": "complex",
                 "stone1": "simple",
                 "stone2": "simple",
-                "refresh_id": "simple",
+                "refresh_runt": "complex",
                 "refresh_times": "complex"
             }
         }

@@ -19,7 +19,7 @@ class CharacterRuntComponent(Component):
         self._m_runt = {}  # {id, num} -> {runt_no: [runt_id, mainAtrr{}, minorAtrr{},]}
         self._stone1 = 0  # 晶石
         self._stone2 = 0  # 原石
-        self._refresh_id = 0  # 刷新石头id
+        self._refresh_runt = []  # 刷新石头id [runt_no, runt_id, mainAtrr, minorAtrr]
         self._refresh_times = [0, 1]  # 已经使用次数，上次使用时间
 
     def init_data(self):
@@ -28,14 +28,14 @@ class CharacterRuntComponent(Component):
             self._m_runt = runt_data.get('m_runt')
             self._stone1 = runt_data.get('stone1')
             self._stone2 = runt_data.get('stone2')
-            self._refresh_id = runt_data.get('refresh_id')
+            self._refresh_id = runt_data.get('refresh_runt')
             self._refresh_times = runt_data.get('refresh_times')
         else:
             tb_character_runt.new({'id': self.owner.base_info.id,
                                    'm_runt': self._m_runt,
                                    'stone1': self._stone1,
                                    'stone2': self._stone2,
-                                   'refresh_id': self._refresh_id,
+                                   'refresh_runt': self._refresh_runt,
                                    'refresh_times': self._refresh_times})
 
     def save(self):
@@ -43,7 +43,7 @@ class CharacterRuntComponent(Component):
         data_obj.update_multi({'m_runt': self._m_runt,
                                'stone1': self._stone1,
                                'stone2': self._stone2,
-                               'refresh_id': self._refresh_id,
+                               'refresh_runt': self._refresh_runt,
                                'refresh_times': self._refresh_times})
 
     def build_refresh(self):
@@ -109,8 +109,6 @@ class CharacterRuntComponent(Component):
         for at, v in attr.items():
             rand_pool[at] = int(v[0] * 100)
         rand = random.randint(0, sum(rand_pool.values()))
-        r = rand
-        alen = len(attr)
 
         for k, v in rand_pool.items():
             if v >= rand:
@@ -130,6 +128,23 @@ class CharacterRuntComponent(Component):
             else:
                 rand -= v
         return attrType, attrValueType, attrValue, attrIncrement
+
+    def deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb):
+        runt_pb.no = runt_no
+        runt_pb.id = runt_id
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
+            main_attr_pb = runt_pb.main_attr.add()
+            main_attr_pb.attr_type = attr_type
+            main_attr_pb.attr_value_type = attr_value_type
+            main_attr_pb.attr_value = attr_value
+            main_attr_pb.attr_increment = attr_increment
+
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
+            minor_attr_pb = runt_pb.minor_attr.add()
+            minor_attr_pb.attr_type = attr_type
+            minor_attr_pb.attr_value_type = attr_value_type
+            minor_attr_pb.attr_value = attr_value
+            minor_attr_pb.attr_increment = attr_increment
 
     @property
     def m_runt(self):
@@ -156,12 +171,12 @@ class CharacterRuntComponent(Component):
         self._stone2 = value
 
     @property
-    def refresh_id(self):
-        return self._refresh_id
+    def refresh_runt(self):
+        return self._refresh_runt
 
-    @refresh_id.setter
-    def refresh_id(self, value):
-        self._refresh_id = value
+    @refresh_runt.setter
+    def refresh_runt(self, value):
+        self._refresh_runt = value
 
     @property
     def refresh_times(self):
