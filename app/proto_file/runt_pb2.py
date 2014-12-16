@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='runt.proto',
   package='',
-  serialized_pb='\n\nrunt.proto\x1a\x0c\x63ommon.proto\"V\n\x0eRuntSetRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x02(\x05\x12\x0f\n\x07runt_no\x18\x04 \x02(\x0c\"/\n\x0fRuntSetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"F\n\x0fRuntPickRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x01(\x05\"0\n\x10RuntPickResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"s\n\x10InitRuntResponse\x12\x14\n\x04runt\x18\x01 \x03(\x0b\x32\x06.Runt1\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x12\n\nrefresh_id\x18\x04 \x02(\x05\x12\x15\n\rrefresh_times\x18\x05 \x02(\x05\"f\n\x05Runt1\x12\x0f\n\x07runt_no\x18\x01 \x02(\x0c\x12\x1c\n\tmain_attr\x18\x02 \x03(\x0b\x32\t.RuntAttr\x12\x1d\n\nminor_attr\x18\x03 \x03(\x0b\x32\t.RuntAttr\x12\x0f\n\x07runt_id\x18\x04 \x02(\x05\"b\n\x08RuntAttr\x12\x17\n\x0f\x61ttr_value_type\x18\x01 \x02(\x05\x12\x12\n\nattr_value\x18\x02 \x02(\x02\x12\x16\n\x0e\x61ttr_increment\x18\x03 \x02(\x05\x12\x11\n\tattr_type\x18\x04 \x02(\x05\"G\n\x13RefreshRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nrefresh_id\x18\x02 \x01(\x05\"&\n\x13RefiningRuntRequest\x12\x0f\n\x07runt_no\x18\x01 \x03(\x0c\"j\n\x14RefiningRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x14\n\x04runt\x18\x04 \x03(\x0b\x32\x06.Runt1\"[\n\x11\x42uildRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nrefresh_id\x18\x02 \x01(\x05\x12\x14\n\x04runt\x18\x03 \x01(\x0b\x32\x06.Runt1')
+  serialized_pb='\n\nrunt.proto\x1a\x0c\x63ommon.proto\"V\n\x0eRuntSetRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x02(\x05\x12\x0f\n\x07runt_no\x18\x04 \x02(\x0c\"/\n\x0fRuntSetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"F\n\x0fRuntPickRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x11\n\trunt_type\x18\x02 \x02(\x05\x12\x0f\n\x07runt_po\x18\x03 \x01(\x05\"0\n\x10RuntPickResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"}\n\x10InitRuntResponse\x12\x14\n\x04runt\x18\x01 \x03(\x0b\x32\x06.Runt1\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x1c\n\x0crefresh_runt\x18\x04 \x01(\x0b\x32\x06.Runt1\x12\x15\n\rrefresh_times\x18\x05 \x02(\x05\"f\n\x05Runt1\x12\x0f\n\x07runt_no\x18\x01 \x02(\x0c\x12\x1c\n\tmain_attr\x18\x02 \x03(\x0b\x32\t.RuntAttr\x12\x1d\n\nminor_attr\x18\x03 \x03(\x0b\x32\t.RuntAttr\x12\x0f\n\x07runt_id\x18\x04 \x02(\x05\"b\n\x08RuntAttr\x12\x17\n\x0f\x61ttr_value_type\x18\x01 \x02(\x05\x12\x12\n\nattr_value\x18\x02 \x02(\x02\x12\x16\n\x0e\x61ttr_increment\x18\x03 \x02(\x05\x12\x11\n\tattr_type\x18\x04 \x02(\x05\"Q\n\x13RefreshRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1c\n\x0crefresh_runt\x18\x02 \x01(\x0b\x32\x06.Runt1\"&\n\x13RefiningRuntRequest\x12\x0f\n\x07runt_no\x18\x01 \x03(\x0c\"j\n\x14RefiningRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0e\n\x06stone1\x18\x02 \x02(\x05\x12\x0e\n\x06stone2\x18\x03 \x02(\x05\x12\x14\n\x04runt\x18\x04 \x03(\x0b\x32\x06.Runt1\"O\n\x11\x42uildRuntResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1c\n\x0crefresh_runt\x18\x02 \x01(\x0b\x32\x06.Runt1')
 
 
 
@@ -195,9 +195,9 @@ _INITRUNTRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='refresh_id', full_name='InitRuntResponse.refresh_id', index=3,
-      number=4, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      name='refresh_runt', full_name='InitRuntResponse.refresh_runt', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -218,7 +218,7 @@ _INITRUNTRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=287,
-  serialized_end=402,
+  serialized_end=412,
 )
 
 
@@ -266,8 +266,8 @@ _RUNT1 = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=404,
-  serialized_end=506,
+  serialized_start=414,
+  serialized_end=516,
 )
 
 
@@ -315,8 +315,8 @@ _RUNTATTR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=508,
-  serialized_end=606,
+  serialized_start=518,
+  serialized_end=616,
 )
 
 
@@ -335,9 +335,9 @@ _REFRESHRUNTRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='refresh_id', full_name='RefreshRuntResponse.refresh_id', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='refresh_runt', full_name='RefreshRuntResponse.refresh_runt', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -350,8 +350,8 @@ _REFRESHRUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=608,
-  serialized_end=679,
+  serialized_start=618,
+  serialized_end=699,
 )
 
 
@@ -378,8 +378,8 @@ _REFININGRUNTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=681,
-  serialized_end=719,
+  serialized_start=701,
+  serialized_end=739,
 )
 
 
@@ -427,8 +427,8 @@ _REFININGRUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=721,
-  serialized_end=827,
+  serialized_start=741,
+  serialized_end=847,
 )
 
 
@@ -447,15 +447,8 @@ _BUILDRUNTRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='refresh_id', full_name='BuildRuntResponse.refresh_id', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='runt', full_name='BuildRuntResponse.runt', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='refresh_runt', full_name='BuildRuntResponse.refresh_runt', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -469,20 +462,22 @@ _BUILDRUNTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=829,
-  serialized_end=920,
+  serialized_start=849,
+  serialized_end=928,
 )
 
 _RUNTSETRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _RUNTPICKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _INITRUNTRESPONSE.fields_by_name['runt'].message_type = _RUNT1
+_INITRUNTRESPONSE.fields_by_name['refresh_runt'].message_type = _RUNT1
 _RUNT1.fields_by_name['main_attr'].message_type = _RUNTATTR
 _RUNT1.fields_by_name['minor_attr'].message_type = _RUNTATTR
 _REFRESHRUNTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_REFRESHRUNTRESPONSE.fields_by_name['refresh_runt'].message_type = _RUNT1
 _REFININGRUNTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _REFININGRUNTRESPONSE.fields_by_name['runt'].message_type = _RUNT1
 _BUILDRUNTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_BUILDRUNTRESPONSE.fields_by_name['runt'].message_type = _RUNT1
+_BUILDRUNTRESPONSE.fields_by_name['refresh_runt'].message_type = _RUNT1
 DESCRIPTOR.message_types_by_name['RuntSetRequest'] = _RUNTSETREQUEST
 DESCRIPTOR.message_types_by_name['RuntSetResponse'] = _RUNTSETRESPONSE
 DESCRIPTOR.message_types_by_name['RuntPickRequest'] = _RUNTPICKREQUEST

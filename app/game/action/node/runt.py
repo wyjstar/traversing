@@ -10,6 +10,7 @@ from shared.db_opear.configs_data.game_configs import stone_config, base_config
 from gfirefly.server.logobj import logger
 import random
 import time
+from shared.utils.pyuuid import get_uuid
 
 
 @remoteserviceHandle('gate')
@@ -117,24 +118,10 @@ def init_runt_843(data, player):
     my_runt = player.runt.m_runt
 
     for (runt_no, runt_info) in my_runt.items():
-        mrunt = response.runt.add()
-        mrunt.runt_no = runt_no
+        runt_pb = response.runt.add()
         [runt_id, main_attr, minor_attr] = runt_info
-        mrunt.runt_id = runt_id
-        for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
-            main_attr_pb = mrunt.main_attr.add()
-            main_attr_pb.attr_type = attr_type
-            main_attr_pb.attr_value_type = attr_value_type
-            main_attr_pb.attr_value = attr_value
-            main_attr_pb.attr_increment = attr_increment
 
-        for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
-            minor_attr_pb = mrunt.minor_attr.add()
-            minor_attr_pb.attr_type = attr_type
-            minor_attr_pb.attr_value_type = attr_value_type
-            minor_attr_pb.attr_value = attr_value
-            minor_attr_pb.attr_increment = attr_increment
-
+        player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
 
     if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
             and time.localtime(player.runt.refresh_times[1]).tm_yday == time.localtime().tm_yday:
@@ -144,8 +131,12 @@ def init_runt_843(data, player):
 
     response.stone1 = player.runt.stone1
     response.stone2 = player.runt.stone2
-    response.refresh_id = player.runt.refresh_id
 
+    if player.runt.refresh_runt:
+        [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
+        player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, response.refresh_runt)
+
+    print response
     return response.SerializeToString()
 
 
@@ -171,14 +162,19 @@ def refresh_runt_844(data, player):
 
     while True:
         new_refresh_id = player.runt.build_refresh()
-        if not player.runt.refresh_id == new_refresh_id:
+        if player.runt.refresh_runt:
+            if not player.runt.refresh_runt[1] == new_refresh_id:
+                break
+        else:
             break
 
-    player.runt.refresh_id = new_refresh_id
+    runt_no = get_uuid()
+    mainAttr, minorAttr = player.runt.get_attr(new_refresh_id)
+    player.runt.refresh_runt = [runt_no, new_refresh_id, mainAttr, minorAttr]
+    player.runt.deal_runt_pb(runt_no, new_refresh_id, mainAttr, minorAttr, response.refresh_runt)
+
     player.finance.save_data()
     player.runt.save()
-
-    response.refresh_id = new_refresh_id
 
     response.res.result = True
     return response.SerializeToString()
@@ -216,23 +212,10 @@ def refining_runt_845(data, player):
 
     for runt_no in runt:
         runt_info = player.runt.m_runt.get(runt_no)
-        mrunt = response.runt.add()
-        mrunt.runt_no = runt_no
+        runt_pb = response.runt.add()
         [runt_id, main_attr, minor_attr] = runt_info
-        mrunt.runt_id = runt_id
-        for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
-            main_attr_pb = mrunt.main_attr.add()
-            main_attr_pb.attr_type = attr_type
-            main_attr_pb.attr_value_type = attr_value_type
-            main_attr_pb.attr_value = attr_value
-            main_attr_pb.attr_increment = attr_increment
 
-        for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
-            minor_attr_pb = mrunt.minor_attr.add()
-            minor_attr_pb.attr_type = attr_type
-            minor_attr_pb.attr_value_type = attr_value_type
-            minor_attr_pb.attr_value = attr_value
-            minor_attr_pb.attr_increment = attr_increment
+        player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
 
     response.stone1 = stone1
     response.stone2 = stone2
@@ -246,13 +229,13 @@ def build_runt_846(data, player):
     """打造"""
     response = BuildRuntResponse()
 
-    runt_id = player.runt.refresh_id
-    if not runt_id:
+    refresh_runt = player.runt.refresh_runt
+    if not refresh_runt:
         response.res.result = False
         response.res.result_no = 828
         return response.SerializeToString()
 
-    runt_conf = stone_config.get('stones').get(runt_id)
+    runt_conf = stone_config.get('stones').get(refresh_runt[1])
     [need_stone1, need_stone2, need_coin] = runt_conf.price
     if player.runt.stone1 < need_stone1 or player.runt.stone2 < need_stone2 or player.finance.coin < need_coin:
         response.res.result = False
@@ -263,40 +246,27 @@ def build_runt_846(data, player):
     player.runt.stone2 -= need_stone2
     player.finance.coin -= need_coin
 
-    runt_no = player.runt.add_runt(runt_id)
-    if not runt_no:
+    if len(player.runt.m_runt) + 1 >= base_config.get('totemStash'):
         response.res.result = False
         response.res.result_no = 824
         return response.SerializeToString()
 
+    [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
+    player.runt.m_runt[runt_no] = [runt_id, main_attr, minor_attr]
+
     while True:
         new_refresh_id = player.runt.build_refresh()
-        if not player.runt.refresh_id == new_refresh_id:
+        if not player.runt.refresh_runt[1] == new_refresh_id:
             break
 
-    response.refresh_id = new_refresh_id
-    player.runt.refresh_id = new_refresh_id
-    runt_info = player.runt.m_runt.get(runt_no)
-    mrunt = response.runt
-    mrunt.runt_no = runt_no
-    [runt_id, main_attr, minor_attr] = runt_info
-    mrunt.runt_id = runt_id
-    for (attr_type, [attr_value_type, attr_value, attr_increment]) in main_attr.items():
-        main_attr_pb = mrunt.main_attr.add()
-        main_attr_pb.attr_type = attr_type
-        main_attr_pb.attr_value_type = attr_value_type
-        main_attr_pb.attr_value = attr_value
-        main_attr_pb.attr_increment = attr_increment
-
-    for (attr_type, [attr_value_type, attr_value, attr_increment]) in minor_attr.items():
-        minor_attr_pb = mrunt.minor_attr.add()
-        minor_attr_pb.attr_type = attr_type
-        minor_attr_pb.attr_value_type = attr_value_type
-        minor_attr_pb.attr_value = attr_value
-        minor_attr_pb.attr_increment = attr_increment
+    runt_no = get_uuid()
+    mainAttr, minorAttr = player.runt.get_attr(new_refresh_id)
+    player.runt.refresh_runt = [runt_no, new_refresh_id, mainAttr, minorAttr]
+    player.runt.deal_runt_pb(runt_no, new_refresh_id, mainAttr, minorAttr, response.refresh_runt)
 
     player.runt.save()
     player.finance.save_data()
 
     response.res.result = True
+    print response
     return response.SerializeToString()
