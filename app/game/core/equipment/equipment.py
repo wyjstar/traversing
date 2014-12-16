@@ -68,7 +68,7 @@ def rand_pick_attr(attr):
                 _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
             else:
                 _, attrValueType, valueMin, valueMax = attr[k]
-            attrValue = random.randint(valueMin, valueMax)
+            attrValue = int(valueMin + random.random() * (valueMax - valueMin))
             del attr[k]
             break
         else:
@@ -202,6 +202,20 @@ class Equipment(object):
         equipment_pb.awakening_lv = self.attribute.awakening_lv
         equipment_pb.nobbing_effect = 0
         equipment_pb.hero_no = 0
+
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in self.attribute.main_attr.items():
+            main_attr_pb = equipment_pb.main_attr.add()
+            main_attr_pb.attr_type = attr_type
+            main_attr_pb.attr_value_type = attr_value_type
+            main_attr_pb.attr_value = attr_value
+            main_attr_pb. attr_increment = attr_increment
+
+        for (attr_type, [attr_value_type, attr_value, attr_increment]) in self.attribute.minor_attr.items():
+            minor_attr_pb = equipment_pb.minor_attr.add()
+            minor_attr_pb.attr_type = attr_type
+            minor_attr_pb.attr_value_type = attr_value_type
+            minor_attr_pb.attr_value = attr_value
+            minor_attr_pb.attr_increment = attr_increment
 
     def calculate_attr(self):
         """根据属性和强化等级计算装备属性"""

@@ -28,7 +28,7 @@ CREATE TABLE `tb_character_activity` (
 DROP TABLE IF EXISTS `tb_character_equipment_chip`;
 CREATE TABLE `tb_character_equipment_chip` (
   `id` bigint(20) NOT NULL,
-  `chips` mediumblob,
+  `chips` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,9 +39,9 @@ CREATE TABLE `tb_character_equipment_chip` (
 DROP TABLE IF EXISTS `tb_character_friend`;
 CREATE TABLE `tb_character_friend` (
   `id` bigint(20) NOT NULL,
-  `friends` mediumblob,
-  `blacklist` mediumblob,
-  `applicants_list` mediumblob,
+  `friends` blob,
+  `blacklist` blob,
+  `applicants_list` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -93,14 +93,15 @@ CREATE TABLE `tb_character_info` (
   `excellent_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `fine_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
-  `stamina` blob NOT NULL,
   `pvp_times` int(11) DEFAULT NULL,
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
   `last_login_time` int(11) DEFAULT NULL,
   `vip_level` int(11) NOT NULL DEFAULT '0',
   `create_time` int(11) NOT NULL DEFAULT '0',
   `pvp_count` bigint(20) NOT NULL DEFAULT '0',
+  `newbee_guide_id` int(11) NOT NULL DEFAULT '0',
   `finances` tinyblob,
+  `stamina` blob NOT NULL,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -130,9 +131,9 @@ CREATE TABLE `tb_character_item_package` (
 DROP TABLE IF EXISTS `tb_character_line_up`;
 CREATE TABLE `tb_character_line_up` (
   `id` bigint(20) NOT NULL,
-  `line_up_slots` mediumblob,
-  `sub_slots` mediumblob,
-  `line_up_order` mediumblob,
+  `line_up_slots` blob,
+  `sub_slots` blob,
+  `line_up_order` blob,
   `unpars` tinyblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -144,7 +145,7 @@ CREATE TABLE `tb_character_line_up` (
 DROP TABLE IF EXISTS `tb_character_lord`;
 CREATE TABLE `tb_character_lord` (
   `id` bigint(20) NOT NULL,
-  `attr_info` mediumblob,
+  `attr_info` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -155,11 +156,11 @@ CREATE TABLE `tb_character_lord` (
 DROP TABLE IF EXISTS `tb_character_stages`;
 CREATE TABLE `tb_character_stages` (
   `id` bigint(20) NOT NULL,
-  `stage_info` mediumblob,
-  `award_info` mediumblob,
-  `elite_stage` mediumblob,
-  `act_stage` mediumblob,
-  `sweep_times` mediumblob NOT NULL,
+  `stage_info` blob,
+  `award_info` blob,
+  `elite_stage` blob,
+  `act_stage` blob,
+  `sweep_times` blob NOT NULL,
   `stage_up_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -172,9 +173,9 @@ DROP TABLE IF EXISTS `tb_equipment_info`;
 CREATE TABLE `tb_equipment_info` (
   `id` varchar(32) NOT NULL,
   `character_id` bigint(20) NOT NULL,
-  `equipment_info` mediumblob,
-  `enhance_info` mediumblob,
-  `nobbing_effect` mediumblob,
+  `equipment_info` blob,
+  `enhance_info` blob,
+  `nobbing_effect` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -185,7 +186,7 @@ CREATE TABLE `tb_equipment_info` (
 DROP TABLE IF EXISTS `tb_guild_info`;
 CREATE TABLE `tb_guild_info` (
   `id` varchar(32) NOT NULL,
-  `info` mediumblob,
+  `info` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -236,8 +237,8 @@ CREATE TABLE `tb_pvp_rank` (
 DROP TABLE IF EXISTS `tb_character_brew`;
 CREATE TABLE `tb_character_brew` (
   `id` bigint(20) NOT NULL,
-  `brew` mediumblob,
-  `hero_refine` mediumblob,
+  `brew` blob,
+  `hero_refine` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -245,12 +246,12 @@ CREATE TABLE `tb_character_brew` (
 DROP TABLE IF EXISTS `tb_character_travel`;
 CREATE TABLE `tb_character_travel` (
   `id` bigint(20) NOT NULL,
-  `travel` mediumblob,
-  `travel_item` mediumblob,
-  `shoes` mediumblob,
-  `fight_cache` mediumblob,
+  `travel` blob,
+  `travel_item` blob,
+  `shoes` blob,
+  `fight_cache` blob,
   `chest_time` bigint(20),
-  `auto` mediumblob,
+  `auto` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -259,8 +260,8 @@ DROP TABLE IF EXISTS `tb_character_lively`;
 CREATE TABLE `tb_character_lively` (
   `id` bigint(20) NOT NULL,
   `lively` int(11) NOT NULL,
-  `tasks` mediumblob,
-  `event_map` mediumblob,
+  `tasks` blob,
+  `event_map` blob,
   `last_day` varchar(8),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -286,10 +287,10 @@ CREATE TABLE `tb_character_mine` (
 DROP TABLE IF EXISTS `tb_character_runt`;
 CREATE TABLE `tb_character_runt` (
   `id` bigint(20) NOT NULL,
-  `m_runt` mediumblob,
+  `m_runt` blob,
   `stone1` int(11),
   `stone2` int(11),
   `refresh_id` bigint(20),
-  `refresh_times` mediumblob,
+  `refresh_times` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

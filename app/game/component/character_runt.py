@@ -6,15 +6,17 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_runt
 from shared.db_opear.configs_data import game_configs
 import random
+from shared.utils.pyuuid import get_uuid
+import copy
 
 
 class CharacterRuntComponent(Component):
-    """玩家游历组建
+    """玩家符文属性
     """
 
     def __init__(self, owner):
         super(CharacterRuntComponent, self).__init__(owner)
-        self._m_runt = {}  # {id, num}
+        self._m_runt = {}  # {id, num} -> {runt_no: [runt_id, mainAtrr{}, minorAtrr{},]}
         self._stone1 = 0  # 晶石
         self._stone2 = 0  # 原石
         self._refresh_id = 0  # 刷新石头id
@@ -29,7 +31,6 @@ class CharacterRuntComponent(Component):
             self._refresh_id = runt_data.get('refresh_id')
             self._refresh_times = runt_data.get('refresh_times')
         else:
-            self._refresh_id = self.build_refresh()
             tb_character_runt.new({'id': self.owner.base_info.id,
                                    'm_runt': self._m_runt,
                                    'stone1': self._stone1,
@@ -56,23 +57,79 @@ class CharacterRuntComponent(Component):
             flag = weight
         return refresh_id
 
-    def add_runt(self, runt_id, num):
-        if len(self._m_runt) + num >= game_configs.base_config.get('totemStash'):
+    def add_runt(self, runt_id):
+        if len(self._m_runt) + 1 >= game_configs.base_config.get('totemStash'):
             return 0
-        if self._m_runt.get(runt_id):
-            self._m_runt[runt_id] += num
+
+        runt_no = get_uuid()
+        mainAttr, minorAttr = self.get_attr(runt_id)
+
+        if self._m_runt.get(runt_no):
+            return 0
         else:
-            self._m_runt[runt_id] = num
+            self._m_runt[runt_no] = [runt_id, mainAttr, minorAttr]
+        return runt_no
+
+    def pick_runt(self, runt_info):
+        if len(self._m_runt) + 1 >= game_configs.base_config.get('totemStash'):
+            return 0
+        runt_info1 = copy.copy(runt_info)
+        del runt_info1[0]
+        self._m_runt[runt_info[0]] = runt_info1
         return 1
 
-    def reduce_runt(self, runt_id, num):
-        if not self._m_runt.get(runt_id) or self._m_runt.get(runt_id) < num:
+    def reduce_runt(self, runt_no):
+        if not self._m_runt.get(runt_no):
             return 0
-        if self._m_runt.get(runt_id) > num:
-            self._m_runt[runt_id] -= num
-        else:
-            del self._m_runt[runt_id]
+        del self._m_runt[runt_no]
         return 1
+
+    def get_attr(self, runt_id):
+        conf = game_configs.stone_config.get('stones').get(runt_id)
+        mainAttr, minorAttr = {}, {}
+
+        main_num = conf.mainAttrNum
+        minor_num = conf.minorAttrNum
+
+        main_pool = copy.copy(conf.mainAttr)
+        minor_pool = copy.copy(conf.minorAttr)
+
+        for _ in range(main_num):
+            at, avt, av, ai = self.rand_pick_attr(main_pool)
+            mainAttr[at] = [avt, av, ai]
+        for _ in range(minor_num):
+            at, avt, av, ai = self.rand_pick_attr(minor_pool)
+            minorAttr[at] = [avt, av, ai]
+
+        return mainAttr, minorAttr
+
+    def rand_pick_attr(self, attr):
+        attrType, attrValueType, attrValue, attrIncrement = -1, -1, -1, 0
+        rand_pool = {}
+        for at, v in attr.items():
+            rand_pool[at] = int(v[0] * 100)
+        rand = random.randint(0, sum(rand_pool.values()))
+        r = rand
+        alen = len(attr)
+
+        for k, v in rand_pool.items():
+            if v >= rand:
+                attrType = k
+                if len(attr[k]) == 5:
+                    _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
+                else:
+                    _, attrValueType, valueMin, valueMax = attr[k]
+                attrValue1 = valueMin + random.random() * (valueMax - valueMin)
+                if isinstance(valueMin, int):
+                    attrValue = int(attrValue1)
+                else:
+                    attrValue = round(attrValue1, 1)
+
+                del attr[k]
+                break
+            else:
+                rand -= v
+        return attrType, attrValueType, attrValue, attrIncrement
 
     @property
     def m_runt(self):

@@ -45,6 +45,7 @@ from mine_config import MineConfig
 from formula_config import FormulaConfig
 from mine_match_config import MineMatchConfig
 from stone_config import StoneConfig
+from newbee_guide_config import NewbeeGuideConfig
 
 stone_config = {}
 travel_item_config = {}
@@ -87,7 +88,9 @@ achievement_config = {}
 seal_config = {}
 mine_config = {}
 formula_config = {}
+newbee_guide_config = {}
 mine_match_config = {}
+
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -132,7 +135,7 @@ all_config_name = {
     'formula_config': FormulaConfig(),
     'mine_match_config':MineMatchConfig(),
     'stone_config': StoneConfig(),
-    'formula_config': FormulaConfig()
+    'newbee_guide_config': NewbeeGuideConfig()
 }
 
 module = cPickle.load(open('config/excel_cpickle', 'r'))
@@ -142,6 +145,8 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
+    print newbee_guide_config.get(4)
+
     print stage_config.get("stages").get(100101)
     for k, v in shop_config.items():
         print k, v

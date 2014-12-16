@@ -1,4 +1,5 @@
-
+import "game.proto";
+import "common.proto";
 
 message PlayerResponse
 {
@@ -7,3 +8,8 @@ message PlayerResponse
 
 }
 
+
+message NewbeeGuideStepResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

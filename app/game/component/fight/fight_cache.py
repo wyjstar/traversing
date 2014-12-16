@@ -65,6 +65,8 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_config(self):
         """取得关卡配置数据
         """
+        if game_configs.stage_config.get('travel_fight_stages').get(self._stage_id):
+            return game_configs.stage_config.get('travel_fight_stages').get(self._stage_id)
         if game_configs.stage_config.get('stages').get(self._stage_id):
             return game_configs.stage_config.get('stages').get(self._stage_id)
         if game_configs.special_stage_config.get('elite_stages').get(self._stage_id):

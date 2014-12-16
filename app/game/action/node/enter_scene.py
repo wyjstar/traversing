@@ -47,6 +47,7 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.pvp_times = player.pvp_times
 
     responsedata.combat_power = player.line_up_component.combat_power
+    responsedata.newbee_guide_id = player.newbee_guide_id
 
     if player.guild.g_id != 0:
         responsedata.guild_id = player.guild.g_id
