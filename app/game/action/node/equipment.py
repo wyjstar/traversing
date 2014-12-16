@@ -255,14 +255,17 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
     if not enhance_cost or curr_coin < enhance_cost:
         return {'result': False, 'result_no': 101, 'message': u''}
 
-    if equipment_obj.attribute.strengthen_lv > 200 or \
-        equipment_obj.attribute.strengthen_lv + enhance_num > player.level.level + equipment_obj.strength_max:
-        return {'result': False, 'result_no': 402, 'message': u''}
 
+    strength_max = player.level.level + equipment_obj.strength_max
     for i in xrange(0, enhance_num):
         result = __do_enhance(player, equipment_obj)
         if not result.get('result'):
             return result
+
+        if result.get('record')[1] >= strength_max:
+            result['record'] = (result.get('record')[0], strength_max, result.get('record')[2])
+            enhance_record.append(result.get('record'))
+            break
         enhance_record.append(result.get('record'))
 
     print equipment_obj.enhance_record
