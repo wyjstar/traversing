@@ -101,7 +101,7 @@ class Hero(object):
 
         return total_exp + self._exp
 
-    def upgrade(self, exp):
+    def upgrade(self, exp, player_level):
         """根据经验升级"""
         level = self._level
         temp_exp = self._exp
@@ -117,6 +117,9 @@ class Hero(object):
         self.level = level
         self.exp = temp_exp
         self.save_data()
+        if self.level > player_level:
+            self.level = player_level
+            temp_exp = hero_exp_config[player_level].get('exp', 0)
         return level, temp_exp
 
     def save_data(self):

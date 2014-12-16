@@ -198,8 +198,7 @@ def refining_runt_845(data, player):
         runt_conf = stone_config.get('stones').get(runt_info[0])
         stone1 += runt_conf.stone1
         stone2 += runt_conf.stone2
-        # if random.random() <= runt_conf.biggerStoneCri:
-        if True:
+        if random.random() <= runt_conf.biggerStoneCri:
             get_runt_id = runt_conf.biggerStoneId[random.randint(0, len(runt_conf.biggerStoneId)-1)]
             new_runt_no = player.runt.add_runt(get_runt_id)
             if new_runt_no:

@@ -340,6 +340,7 @@ class PlayerField(Mine):
 #         print 'match_mine', match_mine['seq']
 #         mine.update_info(match_mine)
 #         return mine
+        print lively, level, "lively, level*"*80
         item = None
         for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
@@ -900,7 +901,7 @@ class UserMine(Component):
     
     def settle(self, position):
         mine, tid = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
-        print 'settle', mine.__dict__, "-"*80
+        print 'settle', mine.__dict__
         self._mine[position] = mine #更改本地信息
         self._update = True
         return tid
