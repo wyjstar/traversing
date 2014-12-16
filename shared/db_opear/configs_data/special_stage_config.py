@@ -13,7 +13,8 @@ class SpecialStageConfig(object):
     def __init__(self):
         self._elite_stages = {}  # 精英关卡  关卡ID：关卡信息
         self._act_stages = {}  # 活动关卡
-        self._boss_stages = {}  # boss关卡
+        self._world_boss_stages = {}  # boss关卡
+        self._mine_boss_stages = {}  # boss关卡
         self._first_stage_id = []  # 第一关
         self._condition_mapping = {}  # 开启条件 {'开启条件关卡编号'：['开启关卡编号']}
 
@@ -34,7 +35,11 @@ class SpecialStageConfig(object):
                 else:
                     self._first_stage_id.append(item.id)
             elif item.type == 7:
-                self._boss_stages[item.id] = item
+                self._world_boss_stages[item.id] = item
+            elif item.type == 8:
+                self._mine_boss_stages[item.id] = item
 
-        return {'elite_stages': self._elite_stages, 'act_stages': self._act_stages, 'boss_stages': self._boss_stages,
+        return {'elite_stages': self._elite_stages, 'act_stages': self._act_stages,
+                'world_boss_stages': self._world_boss_stages,
+                'mine_boss_stages': self._mine_boss_stages,
                 'first_stage_id': self._first_stage_id, 'condition_mapping': self._condition_mapping}

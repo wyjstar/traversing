@@ -279,6 +279,8 @@ def assembly_slots(player, response):
     """组装阵容单元格
     """
     line_up_slots = player.line_up_component.line_up_slots
+    if line_up_slots == None:
+        return
     for slot in line_up_slots.values():
         add_slot = response.slot.add()
         add_slot.slot_no = slot.slot_no

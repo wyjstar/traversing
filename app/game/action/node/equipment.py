@@ -48,6 +48,13 @@ def get_equipments_401(pro_data, player):
             minor_attr_pb.attr_value_type = attr_value_type
             minor_attr_pb.attr_value = attr_value
             minor_attr_pb.attr_increment = attr_increment
+        equipment_add.is_guard = obj.attribute.is_guard
+
+        for before_lv, after_lv, enhance_cost in obj.enhance_record.enhance_record:
+            data_format = equipment_add.data.add()
+            data_format.before_lv = before_lv
+            data_format.after_lv = after_lv
+            data_format.cost_coin = enhance_cost
 
     return response.SerializePartialToString()
 

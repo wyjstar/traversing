@@ -8,7 +8,7 @@ from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 
 
-class StageLogic(base_stage.BaseStage):
+class StageLogic(base_stage.BaseStageLogic):
     """docstring for 普通关卡"""
     def __init__(self, player, stage_id):
         super(StageLogic, self).__init__(player, stage_id)
@@ -45,7 +45,11 @@ class StageLogic(base_stage.BaseStage):
         # 体力
         player.stamina.stamina -= conf.vigor
         player.stamina.save_data()
+
         # 活跃度
         lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         # 结算
         stage_util.settle(player, result, response, lively_event, conf)
+        # update 相关信息
+        player.line_up_component.update_slot_activation()
+        player.line_up_component.save_data()

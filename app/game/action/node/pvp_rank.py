@@ -5,17 +5,18 @@ created by sphinx on 27/10/14.
 import cPickle
 import random
 from app.proto_file import pvp_rank_pb2
-from app.game.action.node.stage import assemble
+from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
 from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
-from app.battle.battle_process import BattlePVPProcess
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
+from app.game.action.node._fight_start_logic import pvp_assemble_units
+from app.game.action.node._fight_start_logic import pvp_process
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -88,27 +89,40 @@ def pvp_player_info_request_1504(data, player):
         return None
 
 
+def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level):
+    """docstring for pvp_fight_assemble_data"""
+    # assemble pvp response
+    response = pvp_rank_pb2.PvpFightResponse()
+    response.res.result = True
+    for slot_no, red_unit in red_units.items():
+        if not red_unit:
+            continue
+        red_add = response.red.add()
+        assemble(red_add, red_unit)
+    for slot_no, blue_unit in blue_units.items():
+        if not blue_unit:
+            continue
+        blue_add = response.blue.add()
+        assemble(blue_add, blue_unit)
+    response.red_skill = red_skill
+    response.red_skill_level = red_skill_level
+    response.blue_skill = blue_skill
+    response.blue_skill_level = blue_skill_level
+
+    return response.SerializeToString()
+
+
+
 @remoteserviceHandle('gate')
 def pvp_fight_request_1505(data, player):
+    """
+    pvp战斗开始
+    """
     request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
+    line_up = request.lineup
     __skill = request.skill
-    __best_skill = player.line_up_component.get_skill_id_by_unpar(__skill)
-    __skill_level = 0
-    if __skill in player.line_up_component.unpars:
-        __skill_level = player.line_up_component.unpars[request.skill]
-    else:
-        logger.error('error skill level:%s,%s', request.skill,
-                     player.line_up_component.unpars.keys())
-
-    line_up = {}  # {hero_id:pos}
-    for line in request.lineup:
-        if not line.hero_id:
-            continue
-        line_up[line.hero_id] = line.pos
-
-    player.line_up_component.line_up_order = line_up
-    player.line_up_component.save_data()
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
@@ -139,13 +153,8 @@ def pvp_fight_request_1505(data, player):
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
-    # player.fight_cache_component.awake_hero_units(blue_units)
-    player.fight_cache_component.awake_hero_units(red_units)
 
-    process = BattlePVPProcess(red_units, __best_skill, player.level.level,
-                               blue_units, record.get('best_skill', 0),
-                               record.get('level', 1))
-    fight_result = process.process()
+    fight_result = pvp_process(player, line_up,red_units, blue_units, __best_skill, record.get("best_skill"), record.get("level"))
 
     logger.debug("fight result:%s" % fight_result)
 
@@ -166,28 +175,22 @@ def pvp_fight_request_1505(data, player):
     else:
         logger.debug("fight result:False")
 
-    response = pvp_rank_pb2.PvpFightResponse()
-    response.res.result = True
-    for slot_no, red_unit in red_units.items():
-        if not red_unit:
-            continue
-        red_add = response.red.add()
-        assemble(red_add, red_unit)
-    for slot_no, blue_unit in blue_units.items():
-        if not blue_unit:
-            continue
-        blue_add = response.blue.add()
-        assemble(blue_add, blue_unit)
-    response.red_skill = __skill
-    response.red_skill_level = __skill_level
-    response.blue_skill = record.get('unpar_skill')
-    response.blue_skill_level = record.get('unpar_skill_level')
 
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+
+    response = pvp_rank_pb2.PvpFightResponse()
+    response.res.result = True
+    pvp_assemble_units(red_units, blue_units, response)
+    response.fight_result = fight_result
+    response.red_skill = __skill
+    response.red_skill_level = __skill_level
+    response.blue_skill = record.get("unpar_skill")
+    response.blue_skill_level = record.get("unpar_skill_level")
+
     return response.SerializeToString()
 
 

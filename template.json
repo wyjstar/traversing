@@ -98,7 +98,9 @@
             "db": true,
             "app": "app.game",
             "reload":"app.game.doreload",
-            "log": "app/logs/game1.log"
+            "log": "app/logs/game1.log",
+            "redis":true
+            
         },
         "chat": {
             "name": "chat",
