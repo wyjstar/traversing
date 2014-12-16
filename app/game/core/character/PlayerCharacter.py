@@ -189,7 +189,7 @@ class PlayerCharacter(Character):
                           'newbee_guide_id': 0,
                           'pvp_count': 0,
                           'create_time': int(time.time()),
-                          'vip_level': 0,
+                          'vip_level': base_config.get('initialVipLevel'),
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time()),
                           'finances': finances
