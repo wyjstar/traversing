@@ -229,7 +229,7 @@ def guard_1244(data, player):
         line_up_slot = LineUpSlotComponent(character_line_up, slot.slot_no, activation=True, hero_no=slot.hero_no)
 
         for equipment_slot in slot.equipment_slots:
-            equipment_slot = EquipmentSlotComponent(equipment_slot.slot_no, activation=True, equipment_id=slot.equipment_id)
+            equipment_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
             line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
             # 标记装备已驻守
             equip = player.equipment_component.get_equipment(slot.equipment_id)
