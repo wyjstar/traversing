@@ -5,6 +5,7 @@ import "stage.proto";
 import "line_up.proto";
 import "pvp_rank.proto";
 import "item_response.proto";
+import "runt.proto";
 
 //1241,1243,1245,1246,1248,1247, 1249
 message positionRequest
@@ -85,7 +86,7 @@ message drawStones
 {
 	required int32 position = 1;
 	required CommonResponse res = 2;//通用返回
-	repeated stoneData stones = 3;
+	repeated Runt1 runt = 3;
 }
 
 //1246请求

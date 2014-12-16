@@ -900,7 +900,7 @@ class UserMine(Component):
     
     def settle(self, position):
         mine, tid = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
-        print 'settle', mine.__dict__, "-"*80
+        print 'settle', mine.__dict__
         self._mine[position] = mine #更改本地信息
         self._update = True
         return tid

@@ -120,7 +120,7 @@ def inherit_upara_153(pro_data, player):
         response.result = False
         return response.SerializeToString()
 
-    player.line_up_component.unpars[target_id] = origin_level
+    player.line_up_component.unpars[target_id] = origin_id
     player.line_up_component.unpars[origin_id] = 1
     player.line_up_component.save_data()
 
