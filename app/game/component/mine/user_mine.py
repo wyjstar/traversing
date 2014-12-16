@@ -334,12 +334,12 @@ class PlayerField(Mine):
     @classmethod
     def create(cls, uid, nickname, level, lively, sword):
         
-#         match_mine = MineOpt.get_mine("hello2.1418711163.11")
-#         mine = cls()
-#         match_mine['seq'] = "hello2.1418711163.11"
-#         print 'match_mine', match_mine['seq']
-#         mine.update_info(match_mine)
-#         return mine
+        match_mine = MineOpt.get_mine("hello1.1418721326.0")
+        mine = cls()
+        match_mine['seq'] = "hello1.1418721326.0"
+        print 'match_mine', match_mine['seq']
+        mine.update_info(match_mine)
+        return mine
         item = None
         for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
@@ -786,7 +786,7 @@ class UserMine(Component):
             print '123', result
             if not result:
                 stype = MineType.MONSTER_FIELD
-                
+        stype = 1
         if stype == MineType.PLAYER_FIELD:
             sword = 0
             mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
