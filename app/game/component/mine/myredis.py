@@ -48,6 +48,7 @@ class Ranking(object):
             logger.error('redis zadd error : %s' % e)
 
     def zget(self, label, k):
+        score = 0
         try:
             score = self.redis.zscore(label, k)
         except Exception, e:
