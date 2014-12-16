@@ -239,12 +239,14 @@ def guard_1244(data, player):
             # 标记装备已驻守
             equip = player.equipment_component.get_equipment(slot.equipment_id)
             equip.attribute.is_guard = True
+            equip.save_data()
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
 
         # 标记武将已驻守
         hero = player.hero_component.get_hero(slot.hero_no)
         hero.is_guard = True
+        hero.save_data()
 
 
     battle_units = {} #需要保存的阵容信息
