@@ -276,6 +276,9 @@ def gain(player, item_group, result=None):
             if flag1:
                 stage_item_info.append([item_no, num])
             player.travel_component.save()
+        elif type_id == 108:
+            item_no = player.runt.add_runt(item_no)
+            player.runt.save()
 
         flag = 1
         for i in result:
@@ -376,5 +379,7 @@ def get_return(player, return_data, game_resources_response):
                     change.item_type = item_type
                     change.item_num = item_num
                     change.item_no = item_no
+        elif 108 == item_type:
+            pass
 
     logger.debug('return resource:%s', game_resources_response)
