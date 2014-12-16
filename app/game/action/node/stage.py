@@ -11,15 +11,13 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.game_configs import special_stage_config
-from shared.db_opear.configs_data.game_configs import vip_config
-from app.battle.battle_unit import BattleUnit
 from app.game.core.drop_bag import BigBag
 from app.game.core.lively import task_status
 from app.game.core.item_group_helper import gain, get_return
-from app.game.redis_mode import tb_character_lord
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
+from app.game.action.node._fight_start_logic import pve_process, pve_assemble_units, pve_assemble_friend
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -72,72 +70,47 @@ def get_chapter_902(pro_data, player):
 
 @remoteserviceHandle('gate')
 def stage_start_903(pro_data, player):
-    """开始战斗
+    """pve开始战斗
     """
     request = stage_request_pb2.StageStartRequest()
     request.ParseFromString(pro_data)
 
-    stage_id = request.stage_id  # 关卡编号
-    unparalleled = request.unparalleled  # 无双编号
-    fid = request.fid  # 好友ID
+    stage_id = request.stage_id          # 关卡编号
+    stage_type = request.stage_type      # 关卡类型
+    line_up = request.lineup            # 阵容顺序
+    red_best_skill_id = request.unparalleled # 无双编号
+    fid = request.fid                    # 好友ID
 
-    logger.debug("unparalleled,%s" % unparalleled)
+    logger.debug("red_best_skill_id,%s" % red_best_skill_id)
     logger.debug("fid,%s" % fid)
 
-    line_up = {}  # {hero_id:pos}
-    for line in request.lineup:
-        if not line.hero_id:
-            continue
-        line_up[line.hero_id] = line.pos
-
-    stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
-    stage_info = fight_start(stage, line_up, unparalleled, fid, player)
+    stage_info = pve_process(stage_id, stage_type, line_up, fid, player)
     result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()
-
     res = response.res
     res.result = result
-    if stage_info.get('result_no'):
-        res.result_no = stage_info.get('result_no')
 
     if not result:
         logger.info('进入关卡返回数据:%s', response)
+        res.result_no = stage_info.get('result_no')
         return response.SerializePartialToString()
 
     red_units = stage_info.get('red_units')
-    blue_units = stage_info.get('blue_units')
+    blue_groups = stage_info.get('blue_units')
     drop_num = stage_info.get('drop_num')
-    monster_unpara = stage_info.get('monster_unpara')
+    blue_skill = stage_info.get('monster_unpara')
     f_unit = stage_info.get('f_unit')
 
+    pve_assemble_units(red_units, blue_groups, response)
+    pve_assemble_friend(f_unit, response)
+    if blue_skill:
+        response.monster_unpar = blue_skill
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+    response.hero_unpar = red_best_skill_id
+    response.hero_unpar_level = red_best_skill_level
+
     response.drop_num = drop_num
-    for slot_no, red_unit in red_units.items():
-        if not red_unit:
-            continue
-        red_add = response.red.add()
-        assemble(red_add, red_unit)
-
-    for blue_group in blue_units:
-        blue_group_add = response.blue.add()
-        for slot_no, blue_unit in blue_group.items():
-            if not blue_unit:
-                continue
-            blue_add = blue_group_add.group.add()
-            assemble(blue_add, blue_unit)
-
-    if monster_unpara:
-        response.monster_unpar = monster_unpara
-
-    response.hero_unpar = unparalleled
-    if unparalleled in player.line_up_component.unpars:
-        unpar_level = player.line_up_component.unpars[unparalleled]
-        response.hero_unpar_level = unpar_level
-
-    if f_unit:
-        friend = response.friend
-        assemble(friend, f_unit)
-    logger.debug('进入关卡返回数据:%s', response)
     return response.SerializePartialToString()
 
 
@@ -204,34 +177,6 @@ def stage_sweep_907(pro_data, player):
     return stage_sweep(stage_id, times, player)
 
 
-def assemble(unit_add, unit):
-    unit_add.no = unit.unit_no
-    unit_add.quality = unit.quality
-
-    for skill_no in unit.skill.break_skill_ids:
-        unit_add.break_skills.append(skill_no)
-
-    unit_add.hp = unit.hp
-    unit_add.atk = unit.atk
-    unit_add.physical_def = unit.physical_def
-    unit_add.magic_def = unit.magic_def
-    unit_add.hit = unit.hit
-    unit_add.dodge = unit.dodge
-    unit_add.cri = unit.cri
-    unit_add.cri_coeff = unit.cri_coeff
-    unit_add.cri_ded_coeff = unit.cri_ded_coeff
-    unit_add.block = unit.block
-
-    unit_add.level = unit.level
-    unit_add.break_level = unit.break_level
-
-    unit_add.position = unit.slot_no
-    unit_add.is_boss = unit.is_boss
-
-    unit_add.is_awake = unit.is_awake
-    unit_add.origin_no = unit.origin_no
-    unit_add.is_break = unit.is_break
-    unit_add.origin_no = unit.origin_no
 
 
 def get_stage_info(stage_id, player):
@@ -280,42 +225,6 @@ def get_chapter_info(chapter_id, player):
         response.extend(chapters_obj)
 
     return response
-
-
-
-def fight_start(stage, line_up, unparalleled, fid, player):
-    """开始战斗
-    """
-    # 校验信息：是否开启，是否达到次数上限等
-    res = stage.check()
-    if not res.get('result'):
-        return res
-
-    # 保存阵容
-    player.line_up_component.line_up_order = line_up
-    player.line_up_component.save_data()
-
-    fight_cache_component = player.fight_cache_component
-    fight_cache_component.stage_id = stage.stage_id
-    red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
-
-    # 好友
-    lord_data = tb_character_lord.getObjData(fid)
-    f_unit = None
-    if lord_data:
-        info = lord_data.get('attr_info').get('info')
-        f_unit = BattleUnit.loads(info)
-    else:
-        logger.info('can not find friend id :%d' % fid)
-
-    return dict(result=True,
-                red_units=red_units,
-                blue_units=blue_units,
-                drop_num=drop_num,
-                monster_unpara=monster_unpara,
-                f_unit=f_unit,
-                result_no=0)
-
 
 def fight_settlement(stage, result, player):
     response = stage_response_pb2.StageSettlementResponse()

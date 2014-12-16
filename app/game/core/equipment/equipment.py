@@ -81,7 +81,7 @@ class Equipment(object):
 
     def __init__(self, equipment_id, equipment_name, equipment_no,
                  strengthen_lv=1, awakening_lv=1, enhance_record=[],
-                 nobbing_effect={}, main_attr={}, minor_attr={}):
+                 nobbing_effect={}, is_guard=False, main_attr={}, minor_attr={}):
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,
                                                      equipment_name,
@@ -90,6 +90,7 @@ class Equipment(object):
                                                       strengthen_lv,
                                                       awakening_lv,
                                                       nobbing_effect,
+                                                      is_guard,
                                                       main_attr,
                                                       minor_attr)
         self._record = EquipmentEnhanceComponent(self, enhance_record)
@@ -104,6 +105,7 @@ class Equipment(object):
                     equipment_info=dict(equipment_no=no,
                                         slv=self._attribute.strengthen_lv,
                                         alv=self._attribute.awakening_lv,
+                                        is_guard=self._attribute.is_guard,
                                         main_attr=mainAttr,
                                         minor_attr=minorAttr),
                     enhance_info=self._record.enhance_record,
@@ -116,6 +118,7 @@ class Equipment(object):
             'equipment_info': {'equipment_no': self._base_info.equipment_no,
                                'slv': self._attribute.strengthen_lv,
                                'alv': self._attribute.awakening_lv,
+                               'is_guard': self._attribute.is_guard,
                                'main_attr': self._attribute.main_attr,
                                'minor_attr': self._attribute.minor_attr},
             'enhance_info': self._record.enhance_record,
@@ -325,3 +328,11 @@ class Equipment(object):
     @property
     def enhance_record(self):
         return self._record
+
+    @property
+    def equipment_config_info(self):
+        equipment_no = self._base_info.equipment_no
+        equ_config_obj = game_configs.equipment_config.get(equipment_no)
+        assert equ_config_obj!=None, "equipment id: %s can not find config info" % equipment_no
+        return equ_config_obj
+

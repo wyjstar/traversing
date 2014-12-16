@@ -2,20 +2,18 @@
 # -*- coding: utf-8 -*-
 
 from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
-from app.proto_file import stage_request_pb2
-from app.game.action.node.stage import assemble, fight_start
+from app.proto_file import world_boss_pb2
 from gfirefly.server.logobj import logger
 from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, \
-    PvbPlayerInfoRequest
+    PvbPlayerInfoRequest, PvbRequest
 from app.proto_file.common_pb2 import CommonResponse
-from shared.db_opear.configs_data.game_configs import base_config
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
 from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.game.core.lively import task_status
-from app.game.component.fight.stage_logic import base_stage
+from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
 
 # from app.proto_file import world_boss_pb2
 
@@ -24,15 +22,15 @@ remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def get_before_fight_1701(data, player):
-    return get_fight_info(player)
+    return get_fight_info(data, player)
 
 
 @remoteserviceHandle('gate')
 def get_after_fight_1706(data, player):
-    return get_fight_info(player)
+    return get_fight_info(data, player)
 
 
-def get_fight_info(player):
+def get_fight_info(data, player):
     """
     获取世界boss开战前的信息：
     1. 关卡id
@@ -46,19 +44,28 @@ def get_fight_info(player):
     1. 剩余血量
     2. 鼓舞次数
     """
-    world_data = remote_gate['world'].pvb_get_before_fight_info_remote(player.base_info.id)
+    request = PvbRequest()
+    request.ParseFromString(data)
+    print "pvb request:", request
+    boss_id = request.boss_id
+    print "pvb request:", request, boss_id
+
+    world_data = remote_gate['world'].pvb_get_before_fight_info_remote(player.base_info.id, boss_id)
     response = PvbBeforeInfoResponse()
     response.ParseFromString(world_data)
-    player.world_boss.stage_id = response.stage_id
-    player.world_boss.reset_info()  # 重设信息
+
+    boss = player.world_boss.get_boss(boss_id)
+    boss.stage_id = response.stage_id
+
+    boss.reset_info()  # 重设信息
 
     player.world_boss.save_data()
-    response.encourage_coin_num = player.world_boss.encourage_coin_num
-    response.encourage_gold_num = player.world_boss.encourage_gold_num
-    logger.debug("encourage_coin_num %s" % player.world_boss.encourage_coin_num)
-    logger.debug("encourage_gold_num %s" % player.world_boss.encourage_gold_num)
-    response.fight_times = player.world_boss.fight_times
-    response.last_fight_time = int(player.world_boss.last_fight_time)
+    response.encourage_coin_num = boss.encourage_coin_num
+    response.encourage_gold_num = boss.encourage_gold_num
+    logger.debug("encourage_coin_num %s" % boss.encourage_coin_num)
+    logger.debug("encourage_gold_num %s" % boss.encourage_gold_num)
+    response.fight_times = boss.fight_times
+    response.last_fight_time = int(boss.last_fight_time)
     print response
     print "*" * 80
 
@@ -72,7 +79,9 @@ def get_player_info_1702(data, player):
     """
     request = PvbPlayerInfoRequest()
     request.ParseFromString(data)
-    line_up_info = remote_gate['world'].pvb_player_info_remote(request.rank_no)
+    boss_id = request.boss_id
+
+    line_up_info = remote_gate['world'].pvb_player_info_remote(request.rank_no, boss_id)
     return line_up_info
 
 
@@ -88,14 +97,17 @@ def encourage_heros_1703(data, player):
 
     request = EncourageHerosRequest()
     request.ParseFromString(data)
+    boss_id = request.boss_id
+    boss = player.world_boss.get_boss(boss_id)
+    base_config = boss.get_base_config()
 
     if request.finance_type == 1:
         # 金币鼓舞
-        goldcoin_inspire_price = base_config.get("goldcoin_inspire_price")
-        goldcoin_inspire_price_multiple = base_config.get("goldcoin_inspire_price_multiple")
+        goldcoin_inspire_price = base_config.get("coin_inspire_price")
+        goldcoin_inspire_price_multiple = base_config.get("coin_inspire_price_multi")
         coin = player.finance.coin
         need_coin = goldcoin_inspire_price * (
-            pow(goldcoin_inspire_price_multiple, player.world_boss.encourage_coin_num))
+            pow(goldcoin_inspire_price_multiple, boss.encourage_coin_num))
         if coin < need_coin:
             response.result = False
             response.result_no = 101
@@ -105,11 +117,11 @@ def encourage_heros_1703(data, player):
 
         player.finance.coin -= need_coin
         player.finance.save_data()
-        player.world_boss.encourage_coin_num += 1
+        boss.encourage_coin_num += 1
 
     if request.finance_type == 2:
         # 钻石鼓舞
-        money_inspire_price = base_config.get("money_inspire_price")
+        money_inspire_price = base_config.get("gold_inspire_price")
         #money_inspire_price_multiple = base_config.get("money_inspire_price_multiple")
         gold = player.finance.gold
         need_gold = money_inspire_price
@@ -121,12 +133,12 @@ def encourage_heros_1703(data, player):
             return response.SerializePartialToString()
         player.finance.gold -= need_gold
         player.finance.save_data()
-        player.world_boss.encourage_gold_num += 1
+        boss.encourage_gold_num += 1
 
     player.world_boss.save_data()
     response.result = True
-    logger.debug("encourage_coin_num %s" % player.world_boss.encourage_coin_num)
-    logger.debug("encourage_gold_num %s" % player.world_boss.encourage_gold_num)
+    logger.debug("encourage_coin_num %s" % boss.encourage_coin_num)
+    logger.debug("encourage_gold_num %s" % boss.encourage_gold_num)
     return response.SerializePartialToString()
 
 
@@ -135,10 +147,16 @@ def pvb_reborn_1704(data, player):
     """
     使用元宝复活。
     """
+    request = PvbRequest()
+    request.ParseFromString(data)
+    boss_id = request.boss_id
+    boss = player.world_boss.get(boss_id)
+    base_config = boss.get_base_config()
+
     response = CommonResponse()
     # 1. 校验元宝
     gold = player.finance.gold
-    money_relive_price = base_config.get('money_relive_price')
+    money_relive_price = base_config.get('gold_relive_price')
     need_gold = money_relive_price
     print need_gold, gold, "*"*80
     if gold < need_gold:
@@ -149,7 +167,7 @@ def pvb_reborn_1704(data, player):
 
     #2. 校验CD
     current_time = get_current_timestamp()
-    if current_time - player.world_boss.last_fight_time > base_config.get("free_relive_time"):
+    if current_time - boss.last_fight_time > base_config.get("free_relive_time"):
         logger.debug("reborn error: %s" % 1701)
         response.result = False
         response.result_no = 1701
@@ -167,22 +185,20 @@ def pvb_fight_start_1705(pro_data, player):
     """开始战斗
     """
     logger.debug("fight start..")
-    request = stage_request_pb2.StageStartRequest()
+    request = world_boss_pb2.PvbStartRequest()
     request.ParseFromString(pro_data)
+    print request, "request"
 
-    stage_id = request.stage_id  # 关卡编号
-    unparalleled = request.unparalleled  # 无双编号
+    best_skill_id = request.unparalleled  # 无双编号
+    line_up = request.lineup
+    boss_id = request.boss_id
+    boss = player.world_boss.get_boss(boss_id)
+    base_config = boss.get_base_config()
 
-    logger.debug("unparalleled,%s" % unparalleled)
-
-    line_up = {}  # {hero_id:pos}
-    for line in request.lineup:
-        if not line.hero_id:
-            continue
-        line_up[line.hero_id] = line.pos
-
-    stage = base_stage.BaseStage(player, stage_id)
-    stage_info = fight_start(stage, line_up, unparalleled, 0, player)
+    stage_id = boss.stage_id
+    logger.debug("best_skill_id,%s" % best_skill_id)
+    WORLD_BOSS = 5
+    stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player)
     result = stage_info.get('result')
 
     response = PvbFightResponse()
@@ -199,30 +215,16 @@ def pvb_fight_start_1705(pro_data, player):
     red_units = stage_info.get('red_units')
     blue_units = stage_info.get('blue_units')
 
+    blue_units = blue_units[0]
+
     logger.debug("--" * 40)
 
     # 根据鼓舞次数，增加ATK百分比
-    atk_rate = player.world_boss.encourage_coin_num * base_config.get("worldbossInspireAtk", 0) + \
-               player.world_boss.encourage_gold_num * base_config.get("worldbossInspireAtkMoney", 0)
+    atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
+               boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
 
     for slot_no, red_unit in red_units.items():
         red_unit.atk *= (1 + atk_rate)
-
-    print red_units
-    print blue_units
-    for slot_no, red_unit in red_units.items():
-        red_add = response.red.add()
-        assemble(red_add, red_unit)
-
-    blue_units = blue_units[0]
-    for no, blue_unit in blue_units.items():
-        blue_add = response.blue.add()
-        assemble(blue_add, blue_unit)
-
-    response.red_best_skill = unparalleled
-    if unparalleled in player.line_up_component.unpars:
-        response.red_best_skill_level = player.line_up_component.unpars[unparalleled]
-
 
     # mock fight.
     player_info = {}
@@ -237,22 +239,27 @@ def pvb_fight_start_1705(pro_data, player):
     print red_units
     print blue_units
     result = remote_gate['world'].pvb_fight_remote(str_red_units,
-                                                   unparalleled, str_blue_units, player_info)
+                                                   best_skill_id, str_blue_units, player_info, boss_id)
     response.fight_result = result
 
     # 玩家信息更新
-    player.world_boss.fight_times += 1
-    player.world_boss.last_fight_time = get_current_timestamp()
+    boss.fight_times += 1
+    boss.last_fight_time = get_current_timestamp()
     player.world_boss.save_data()
 
-    print response
     logger.debug("fight end..")
-    
+
     lively_event = CountEvent.create_event(EventType.BOSS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+
+    pvp_assemble_units(red_units, blue_units, response)
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(best_skill_id)
+    response.red_best_skill= best_skill_id
+    response.red_best_skill_level = red_best_skill_level
+    print response
 
     return response.SerializePartialToString()
 

@@ -5,12 +5,14 @@ created by wzp.
 from robot import Robot
 from app.proto_file.world_boss_pb2 import PvbBeforeInfoResponse, EncourageHerosRequest, PvbFightResponse
 from app.proto_file.common_pb2 import CommonResponse
-from app.proto_file.stage_request_pb2 import StageStartRequest
+from app.proto_file import world_boss_pb2, common_pb2
 
 class RobotWorldBoss(Robot):
 
     def command_get_before_fight_info(self):
-        self.send_message("", 1701)
+        request = world_boss_pb2.PvbRequest()
+        request.boss_id = "world_boss"
+        self.send_message(request, 1701)
 
     def get_1701(self, message):
         argument = PvbBeforeInfoResponse()
@@ -20,6 +22,7 @@ class RobotWorldBoss(Robot):
 
     def command_encourage(self):
         request = EncourageHerosRequest()
+        request.boss_id = "world_boss"
         request.finance_type = 1
         request.finance_num = 2
         self.send_message(request, 1703)
@@ -38,8 +41,8 @@ class RobotWorldBoss(Robot):
         self.on_command_finish()
 
     def command_fight(self):
-        argument1 = StageStartRequest()
-        argument1.stage_id = 800101
+        argument1 = world_boss_pb2.PvbStartRequest()
+        argument1.boss_id = "world_boss"
         # argument1.fid = 1120
         line_up = argument1.lineup.add()
         line_up.pos = 1
@@ -64,6 +67,21 @@ class RobotWorldBoss(Robot):
 
     def fight_1705(self, message):
         response = PvbFightResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_trigger_boss(self):
+        self.send_message("", 1259)
+
+    def trigger_boss_1259(self, message):
+        response = common_pb2.CommonResponse()
+        response.ParseFromString(message)
+        print response
+        #self.on_command_finish()
+
+    def trigger_boss_1707(self, message):
+        response = world_boss_pb2.MineBossResponse()
         response.ParseFromString(message)
         print response
         self.on_command_finish()

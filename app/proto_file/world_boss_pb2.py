@@ -15,9 +15,37 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='world_boss.proto',
   package='',
-  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"X\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x15\n\rfirst_hero_no\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\"\x89\x03\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x18\n\x10lucky_high_heros\x18\x02 \x03(\x05\x12\x1a\n\x12lucky_middle_heros\x18\x03 \x03(\x05\x12\x17\n\x0flucky_low_heros\x18\x04 \x03(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x17\n\x0flast_fight_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\"\'\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\"B\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\"\xcf\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x02(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x02(\x05\x12\x14\n\x0c\x66ight_result\x18\x06 \x02(\x08\x12\r\n\x05seed1\x18\x07 \x01(\x05\x12\r\n\x05seed2\x18\x08 \x02(\x05')
+  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"\x1d\n\nPvbRequest\x12\x0f\n\x07\x62oss_id\x18\x01 \x02(\t\"X\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x15\n\rfirst_hero_no\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\"\x89\x03\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x18\n\x10lucky_high_heros\x18\x02 \x03(\x05\x12\x1a\n\x12lucky_middle_heros\x18\x03 \x03(\x05\x12\x17\n\x0flucky_low_heros\x18\x04 \x03(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x17\n\x0flast_fight_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\"8\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x02 \x01(\t\"S\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x03 \x01(\t\"^\n\x0fPvbStartRequest\x12\x0f\n\x07\x62oss_id\x18\x01 \x02(\t\x12\x17\n\x06lineup\x18\x03 \x03(\x0b\x32\x07.LineUp\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"\xcf\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x02(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x02(\x05\x12\x14\n\x0c\x66ight_result\x18\x06 \x02(\x08\x12\r\n\x05seed1\x18\x07 \x01(\x05\x12\r\n\x05seed2\x18\x08 \x02(\x05\"S\n\x10MineBossResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07\x62oss_id\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x03 \x02(\x05')
 
 
+
+
+_PVBREQUEST = _descriptor.Descriptor(
+  name='PvbRequest',
+  full_name='PvbRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='boss_id', full_name='PvbRequest.boss_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=47,
+  serialized_end=76,
+)
 
 
 _PVBRANKITEM = _descriptor.Descriptor(
@@ -64,8 +92,8 @@ _PVBRANKITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=47,
-  serialized_end=135,
+  serialized_start=78,
+  serialized_end=166,
 )
 
 
@@ -190,8 +218,8 @@ _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=138,
-  serialized_end=531,
+  serialized_start=169,
+  serialized_end=562,
 )
 
 
@@ -209,6 +237,13 @@ _PVBPLAYERINFOREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='boss_id', full_name='PvbPlayerInfoRequest.boss_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -218,8 +253,8 @@ _PVBPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=533,
-  serialized_end=572,
+  serialized_start=564,
+  serialized_end=620,
 )
 
 
@@ -244,6 +279,13 @@ _ENCOURAGEHEROSREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='boss_id', full_name='EncourageHerosRequest.boss_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -253,8 +295,57 @@ _ENCOURAGEHEROSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=574,
-  serialized_end=640,
+  serialized_start=622,
+  serialized_end=705,
+)
+
+
+_PVBSTARTREQUEST = _descriptor.Descriptor(
+  name='PvbStartRequest',
+  full_name='PvbStartRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='boss_id', full_name='PvbStartRequest.boss_id', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='lineup', full_name='PvbStartRequest.lineup', index=1,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='unparalleled', full_name='PvbStartRequest.unparalleled', index=2,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='fid', full_name='PvbStartRequest.fid', index=3,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=707,
+  serialized_end=801,
 )
 
 
@@ -330,20 +421,73 @@ _PVBFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=643,
-  serialized_end=850,
+  serialized_start=804,
+  serialized_end=1011,
+)
+
+
+_MINEBOSSRESPONSE = _descriptor.Descriptor(
+  name='MineBossResponse',
+  full_name='MineBossResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='MineBossResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='boss_id', full_name='MineBossResponse.boss_id', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='stage_id', full_name='MineBossResponse.stage_id', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1013,
+  serialized_end=1096,
 )
 
 _PVBBEFOREINFORESPONSE.fields_by_name['rank_items'].message_type = _PVBRANKITEM
 _PVBBEFOREINFORESPONSE.fields_by_name['last_shot_item'].message_type = _PVBRANKITEM
+_PVBSTARTREQUEST.fields_by_name['lineup'].message_type = stage_pb2._LINEUP
 _PVBFIGHTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _PVBFIGHTRESPONSE.fields_by_name['red'].message_type = stage_pb2._BATTLEUNIT
 _PVBFIGHTRESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNIT
+_MINEBOSSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+DESCRIPTOR.message_types_by_name['PvbRequest'] = _PVBREQUEST
 DESCRIPTOR.message_types_by_name['PvbRankItem'] = _PVBRANKITEM
 DESCRIPTOR.message_types_by_name['PvbBeforeInfoResponse'] = _PVBBEFOREINFORESPONSE
 DESCRIPTOR.message_types_by_name['PvbPlayerInfoRequest'] = _PVBPLAYERINFOREQUEST
 DESCRIPTOR.message_types_by_name['EncourageHerosRequest'] = _ENCOURAGEHEROSREQUEST
+DESCRIPTOR.message_types_by_name['PvbStartRequest'] = _PVBSTARTREQUEST
 DESCRIPTOR.message_types_by_name['PvbFightResponse'] = _PVBFIGHTRESPONSE
+DESCRIPTOR.message_types_by_name['MineBossResponse'] = _MINEBOSSRESPONSE
+
+class PvbRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PVBREQUEST
+
+  # @@protoc_insertion_point(class_scope:PvbRequest)
 
 class PvbRankItem(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -369,11 +513,23 @@ class EncourageHerosRequest(_message.Message):
 
   # @@protoc_insertion_point(class_scope:EncourageHerosRequest)
 
+class PvbStartRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PVBSTARTREQUEST
+
+  # @@protoc_insertion_point(class_scope:PvbStartRequest)
+
 class PvbFightResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _PVBFIGHTRESPONSE
 
   # @@protoc_insertion_point(class_scope:PvbFightResponse)
+
+class MineBossResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _MINEBOSSRESPONSE
+
+  # @@protoc_insertion_point(class_scope:MineBossResponse)
 
 
 # @@protoc_insertion_point(module_scope)

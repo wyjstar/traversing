@@ -41,10 +41,11 @@ from language_config import LanguageConfig
 from achievement_config import AchievementConfig
 from seal_config import SealConfig
 from travel_item_config import TravelItemConfig
+from mine_config import MineConfig
 from formula_config import FormulaConfig
+from mine_match_config import MineMatchConfig
 from stone_config import StoneConfig
 from newbee_guide_config import NewbeeGuideConfig
-
 
 stone_config = {}
 travel_item_config = {}
@@ -85,9 +86,14 @@ travel_event_config = {}
 language_config = {}
 achievement_config = {}
 seal_config = {}
+mine_config = {}
 formula_config = {}
+<<<<<<< HEAD
 newbee_guide_config = {}
 
+=======
+mine_match_config = {}
+>>>>>>> develop_mine
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -128,6 +134,9 @@ all_config_name = {
     'achievement_config': AchievementConfig(),
     'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig(),
+    'mine_config':MineConfig(),
+    'formula_config': FormulaConfig(),
+    'mine_match_config':MineMatchConfig(),
     'stone_config': StoneConfig(),
     'formula_config': FormulaConfig(),
     'newbee_guide_config': NewbeeGuideConfig()
@@ -141,3 +150,8 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     print newbee_guide_config.get(4)
+
+    print stage_config.get("stages").get(100101)
+    for k, v in shop_config.items():
+        print k, v
+

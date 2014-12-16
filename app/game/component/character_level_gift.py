@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-created by sphinx on 
+created by sphinx on
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_activity

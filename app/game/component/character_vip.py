@@ -110,6 +110,7 @@ class CharacterVIPComponent(Component):
         """更新VIP组件"""
         self._vip_content = vip_config.get(self._vip_level)
 
-
-
+    @property
+    def war_refresh_times(self):
+        return self._vip_content.warFogRefreshNum
 

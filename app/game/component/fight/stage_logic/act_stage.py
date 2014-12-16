@@ -7,7 +7,7 @@ import time
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 
-class ActStageLogic(base_stage.BaseStage):
+class ActStageLogic(base_stage.BaseStageLogic):
     """docstring for 活动关卡"""
     def __init__(self, player, stage_id):
         super(ActStageLogic, self).__init__(player, stage_id)

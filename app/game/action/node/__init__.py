@@ -75,4 +75,6 @@ import brew
 import world_boss
 import travel
 import lively
+import mine
 import runt
+import inherit

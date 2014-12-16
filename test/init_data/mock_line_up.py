@@ -38,4 +38,8 @@ def init_line_up(player):
 
     slot.equipment_slots[1].activation = True
     print id(player)
+
+    player.line_up_component.unpars[10001] = 3
+    player.line_up_component.unpars[10002] = 3
+
     player.line_up_component.save_data()

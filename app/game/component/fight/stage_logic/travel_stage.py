@@ -6,7 +6,7 @@ from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain
 
-class TravelStageLogic(base_stage.BaseStage):
+class TravelStageLogic(base_stage.BaseStageLogic):
     """docstring for StageLogic"""
     def __init__(self, player, stage_id):
         super(TravelStageLogic, self).__init__(player, stage_id)
