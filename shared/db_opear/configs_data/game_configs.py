@@ -88,12 +88,9 @@ achievement_config = {}
 seal_config = {}
 mine_config = {}
 formula_config = {}
-<<<<<<< HEAD
 newbee_guide_config = {}
-
-=======
 mine_match_config = {}
->>>>>>> develop_mine
+
 
 all_config_name = {
     'base_config': BaseConfig(),
@@ -138,7 +135,6 @@ all_config_name = {
     'formula_config': FormulaConfig(),
     'mine_match_config':MineMatchConfig(),
     'stone_config': StoneConfig(),
-    'formula_config': FormulaConfig(),
     'newbee_guide_config': NewbeeGuideConfig()
 }
 
