@@ -278,7 +278,7 @@ def add_stones(player, stones, response):
             if not runt_no:
                 return 0
             else:
-                runt_no, runt_info = player.runt.m_runt.get(runt_no)
+                runt_info = player.runt.m_runt.get(runt_no)
                 runt_pb = response.runt.add()
                 [runt_id, main_attr, minor_attr] = runt_info
                 player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
