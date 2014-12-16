@@ -46,7 +46,7 @@ def shop_oper(pro_data, player):
     request.ParseFromString(pro_data)
     response = ShopResponse()
 
-    shop_id = request.id
+    shop_id = request.ids[0]
     shop_item = shop_config.get(shop_id)
 
     result = is_afford(player, shop_item.consume)  # 校验
@@ -84,7 +84,7 @@ def shop_equipment_oper(pro_data, player):
     request.ParseFromString(pro_data)
     response = ShopResponse()
 
-    shop_id = request.id
+    shop_id = request.ids[0]
     shop_num = request.num
     shop_item = shop_config.get(shop_id)
 
@@ -133,7 +133,7 @@ def shop_buy_505(pro_data, player):
         if not shop_item:
             common_response.result = False
             common_response.result_no = 911
-            logger.info('error shop id:%s', shop_id)
+            logger.error('error shop id:%s', shop_id)
             return response.SerializeToString()
 
         shop = player.shop.get_shop_data(shop_item.get('type'))
@@ -143,7 +143,7 @@ def shop_buy_505(pro_data, player):
             common_response.result = False
             common_response.result_no = result.get('result_no')
             common_response.message = u'消费不足！'
-            logger.info('not enough money')
+            logger.error('not enough money')
             return response.SerializeToString()
 
         if shop_id in shop['item_ids']:
@@ -151,7 +151,7 @@ def shop_buy_505(pro_data, player):
             shop['buyed_item_ids'].append(shop_id)
             player.shop.save_data()
         else:
-            logger.debug("can not find shop id:%s:%s",
+            logger.error("can not find shop id:%s:%s",
                          shop_id, shop['item_ids'])
             common_response.result = False
             common_response.result_no = 501

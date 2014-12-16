@@ -13,9 +13,51 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player.proto',
   package='',
-  serialized_pb='\n\x0cplayer.proto\"\x8d\x01\n\tFinancePB\x12\x0c\n\x04\x63oin\x18\x01 \x01(\x05\x12\x0c\n\x04gold\x18\x02 \x01(\x05\x12\x11\n\thero_soul\x18\x03 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x04 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\x05 \x01(\x05\x12\x12\n\nhigh_stone\x18\x06 \x01(\x05\x12\x11\n\tpvp_store\x18\x07 \x01(\x05')
+  serialized_pb='\n\x0cplayer.proto\"F\n\x0e\x46inanceChanges\x12\x11\n\titem_type\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05\x12\x0f\n\x07item_no\x18\x03 \x02(\x05\"\xc9\x01\n\tFinancePB\x12\x0c\n\x04\x63oin\x18\x01 \x01(\x05\x12\x0c\n\x04gold\x18\x02 \x01(\x05\x12\x11\n\thero_soul\x18\x03 \x01(\x05\x12\x14\n\x0cjunior_stone\x18\x04 \x01(\x05\x12\x14\n\x0cmiddle_stone\x18\x05 \x01(\x05\x12\x12\n\nhigh_stone\x18\x06 \x01(\x05\x12\x11\n\tpvp_score\x18\x07 \x01(\x05\x12\x10\n\x08\x66inances\x18\x08 \x03(\x05\x12(\n\x0f\x66inance_changes\x18\t \x03(\x0b\x32\x0f.FinanceChanges')
 
 
+
+
+_FINANCECHANGES = _descriptor.Descriptor(
+  name='FinanceChanges',
+  full_name='FinanceChanges',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='item_type', full_name='FinanceChanges.item_type', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='item_num', full_name='FinanceChanges.item_num', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='item_no', full_name='FinanceChanges.item_no', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=16,
+  serialized_end=86,
+)
 
 
 _FINANCEPB = _descriptor.Descriptor(
@@ -68,9 +110,23 @@ _FINANCEPB = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='pvp_store', full_name='FinancePB.pvp_store', index=6,
+      name='pvp_score', full_name='FinancePB.pvp_score', index=6,
       number=7, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='finances', full_name='FinancePB.finances', index=7,
+      number=8, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='finance_changes', full_name='FinancePB.finance_changes', index=8,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -83,11 +139,19 @@ _FINANCEPB = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=17,
-  serialized_end=158,
+  serialized_start=89,
+  serialized_end=290,
 )
 
+_FINANCEPB.fields_by_name['finance_changes'].message_type = _FINANCECHANGES
+DESCRIPTOR.message_types_by_name['FinanceChanges'] = _FINANCECHANGES
 DESCRIPTOR.message_types_by_name['FinancePB'] = _FINANCEPB
+
+class FinanceChanges(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FINANCECHANGES
+
+  # @@protoc_insertion_point(class_scope:FinanceChanges)
 
 class FinancePB(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

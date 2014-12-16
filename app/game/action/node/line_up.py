@@ -118,6 +118,19 @@ def get_target_line_up_info_706(pro_data, player):
                             equ.no = equipment_obj.get('equipment_info').get('equipment_no')
                             equ.strengthen_lv = equipment_obj.get('equipment_info').get('slv')
                             equ.awakening_lv = equipment_obj.get('equipment_info').get('alv')
+                            for (attr_type, [attr_value_type, attr_value, attr_increment]) in equipment_obj.get('equipment_info').get('main_attr').items():
+                                main_attr_pb = equ.main_attr.add()
+                                main_attr_pb.attr_type = attr_type
+                                main_attr_pb.attr_value_type = attr_value_type
+                                main_attr_pb.attr_value = attr_value
+                                main_attr_pb. attr_increment = attr_increment
+
+                            for (attr_type, [attr_value_type, attr_value, attr_increment]) in equipment_obj.get('equipment_info').get('minor_attr').items():
+                                minor_attr_pb = equ.minor_attr.add()
+                                minor_attr_pb.attr_type = attr_type
+                                minor_attr_pb.attr_value_type = attr_value_type
+                                minor_attr_pb.attr_value = attr_value
+                                minor_attr_pb.attr_increment = attr_increment
 
             # 助威位置信息
             line_sub_slots = line_up_data.get('sub_slots')
@@ -266,6 +279,8 @@ def assembly_slots(player, response):
     """组装阵容单元格
     """
     line_up_slots = player.line_up_component.line_up_slots
+    if line_up_slots == None:
+        return
     for slot in line_up_slots.values():
         add_slot = response.slot.add()
         add_slot.slot_no = slot.slot_no

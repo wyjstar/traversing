@@ -22,25 +22,19 @@
                 "nickname": "simple",
                 "hero_list": "simple",
                 "hero_chip_list": "simple",
-                "coin": "simple",
-                "gold": "simple",
-                "hero_soul": "simple",
                 "level": "simple",
                 "exp": "simple",
-                "junior_stone": "simple",
-                "middle_stone": "simple",
-                "high_stone": "simple",
                 "fine_hero_last_pick_time": "simple",
                 "excellent_hero_last_pick_time": "simple",
                 "fine_equipment_last_pick_time": "simple",
                 "excellent_equipment_last_pick_time": "simple",
                 "stamina": "complex",
-                "soul_shop": "complex",
-                "arena_shop": "complex",
+                "finances": "complex",
                 "pvp_times": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
                 "vip_level": "simple",
+                "newbee_guide_id": "simple",
                 "create_time": "simple"
             }
         },
@@ -197,6 +191,24 @@
         		"event_map": "complex",
                 "last_day":"simple"
         	}
+        },
+        "tb_character_mine":{
+            "pkey_field": "id",
+            "def_attrs":{
+                "id":"simple",
+                "reset_day":"simple",
+                "reset_times":"simple",
+                "day_before":"simple",
+                "lively":"simple",
+                "mine":"complex"
+            }
+        },
+        "tb_character_stone":{
+            "pkey_field": "id",
+            "def_attrs":{
+                "id":"simple",
+                "stones":"complex"
+            }
         },
         "tb_character_runt": {
             "pkey_field": "id",

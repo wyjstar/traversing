@@ -14,12 +14,23 @@ message EnhanceDataFormat{
 
 // 装备
 message EquipmentPB{
-	required string id = 1; // 装备ID
-	optional int32 no = 2;  // 装备NO
-	optional int32 strengthen_lv = 3;  //装备强化等级
-	optional int32 awakening_lv = 4;  //装备觉醒等级
-	optional int32 nobbing_effect =7;  //装备锤炼效果
-	optional int32 hero_no = 5;  //装备武将编号
-	optional SetEquipment set = 6;
+	required string id = 1;             // 装备ID
+	optional int32 no = 2;              // 装备NO
+	optional int32 strengthen_lv = 3;   // 装备强化等级
+	optional int32 awakening_lv = 4;    // 装备觉醒等级
+	optional int32 nobbing_effect =7;   // 装备锤炼效果
+	optional int32 hero_no = 5;         // 装备武将编号
+	optional SetEquipment set = 6;      // 套装
+	repeated EnhanceDataFormat data= 8; // 装备强化过程
+	optional bool is_guard = 9;         // 装备是否驻守
+    repeated EquAttr main_attr = 10;
+    repeated EquAttr minor_attr = 11;
+}
+
+message EquAttr{
+    required int32 attr_value_type = 1;
+    required int32 attr_value = 2;
+    required float attr_increment = 3;
+    required int32 attr_type = 4;
 }
 

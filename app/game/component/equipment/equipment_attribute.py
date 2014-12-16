@@ -10,13 +10,24 @@ class EquipmentAttributeComponent(Component):
     """装备属性
     """
 
-    def __init__(self, owner, strengthen_lv, awakening_lv, nobbing_effect):
+    def __init__(self, owner, strengthen_lv, awakening_lv, nobbing_effect, is_guard,
+                 main_attr, minor_attr):
         super(EquipmentAttributeComponent, self).__init__(owner)
 
         self._strengthen_lv = strengthen_lv  # 强化等级
         self._awakening_lv = awakening_lv  # 觉醒等级
-
         self._nobbing_effect = nobbing_effect  # 锤炼效果
+        self._is_guard = is_guard  # 是否驻守，秘境相关
+        self._main_attr = main_attr
+        self._minor_attr = minor_attr
+
+    @property
+    def is_guard(self):
+        return self._is_guard
+
+    @is_guard.setter
+    def is_guard(self, value):
+        self._is_guard = value
 
     @property
     def strengthen_lv(self):
@@ -41,6 +52,22 @@ class EquipmentAttributeComponent(Component):
     @nobbing_effect.setter
     def nobbing_effect(self, value):
         self._nobbing_effect = value
+
+    @property
+    def main_attr(self):
+        return self._main_attr
+
+    @main_attr.setter
+    def main_attr(self, value):
+        self._main_attr = value
+
+    @property
+    def minor_attr(self):
+        return self._minor_attr
+
+    @minor_attr.setter
+    def minor_attr(self, value):
+        self._minor_attr = value
 
     @property
     def equipment_type(self):

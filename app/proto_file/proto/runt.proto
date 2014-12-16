@@ -5,7 +5,7 @@ message RuntSetRequest{
     required int32 hero_no = 1;
     required int32 runt_type = 2;
     required int32 runt_po = 3;
-    required int32 runt_id = 4;
+    required bytes runt_no = 4;
 }
 
 message RuntSetResponse{
@@ -33,19 +33,28 @@ message InitRuntResponse{
 }
 
 message Runt1{
-    required int32 runt_id = 1;
-    required int32 num = 2;
+    required bytes runt_no = 1;
+    repeated RuntAttr main_attr = 2;
+    repeated RuntAttr minor_attr = 3;
+    required int32 runt_id = 4;
+}
+
+message RuntAttr{
+    required int32 attr_value_type = 1;
+    required float attr_value = 2;
+    required int32 attr_increment = 3;
+    required int32 attr_type = 4;
 }
 
 // 844 打造刷新
 message RefreshRuntResponse{
     required CommonResponse res = 1;
-    required int32 refresh_id = 2;
+    optional int32 refresh_id = 2;
 }
 
 // 845 炼化
 message RefiningRuntRequest{
-    repeated Runt1 runt = 1;
+    repeated bytes runt_no = 1;
 }
 
 message RefiningRuntResponse{
@@ -58,4 +67,6 @@ message RefiningRuntResponse{
 // 846 BuildRuntRequest
 message BuildRuntResponse{
     required CommonResponse res = 1;
+    optional int32 refresh_id = 2;
+    optional Runt1 runt = 3;
 }

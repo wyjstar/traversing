@@ -8,6 +8,8 @@ from app.game.redis_mode import tb_character_line_up
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import warriors_config
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
+from app.game.component.mine.monster_mine import MineOpt
 
 
 class CharacterLineUpComponent(Component):
@@ -116,7 +118,7 @@ class CharacterLineUpComponent(Component):
             return False
 
         spirit, coin = expends.get(skill_upgrade_level)
-        if not self.owner.finance.is_afford(coin):
+        if not self.owner.finance.is_afford(const.COIN, coin):
             return False
 
         self._unpars[skill_id] = skill_upgrade_level
@@ -135,6 +137,17 @@ class CharacterLineUpComponent(Component):
             logger.error('can not find warrior:%s', unpar)
             return 0
         return item.skill_ids[self._unpars[unpar]]
+
+    def get_skill_info_by_unpar(self, unpar):
+        if unpar not in self._unpars:
+            return (0, 0)
+
+        item = warriors_config.get(unpar)
+        if not item:
+            logger.error('can not find warrior:%s', unpar)
+            return (0, 0)
+        upar_level = self._unpars[unpar]
+        return item.skill_ids[upar_level], upar_level
 
     @property
     def lead_hero_no(self):
@@ -178,6 +191,7 @@ class CharacterLineUpComponent(Component):
             if not hero_no:
                 continue
             new_pos = line_up_order.get(hero_no)  # 新位置
+            logger.debug("line up %s , hero_no %s" % (new_pos, hero_no))
 
             new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
 
@@ -305,6 +319,8 @@ class CharacterLineUpComponent(Component):
         for slot in self._line_up_slots.values():
             each_power = slot.combat_power()
             _power += each_power
+            
+        MineOpt.update('sword', self.owner.base_info.id, _power)
         return _power
 
     def get_slot_by_hero(self, hero_no):

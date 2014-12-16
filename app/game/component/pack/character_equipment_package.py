@@ -32,10 +32,17 @@ class CharacterEquipmentPackageComponent(Component):
             equipment_no = equipment_info.get('equipment_no')  # 装备编号
             strengthen_lv = equipment_info.get('slv')  # 装备强化等级
             awakening_lv = equipment_info.get('alv')  # 装备觉醒等级
+            main_attr = equipment_info.get('main_attr', {})
+            minor_attr = equipment_info.get('minor_attr', {})
+            is_guard = equipment_info.get('is_guard')  # guard
+
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
-            equipment_obj = Equipment(equipment_id, '', equipment_no, strengthen_lv,
-                                      awakening_lv, enhance_info, nobbing_effect)
+
+            equipment_obj = Equipment(equipment_id, '', equipment_no,
+                                      strengthen_lv, awakening_lv,
+                                      enhance_info, nobbing_effect, is_guard,
+                                      main_attr, minor_attr)
             self._equipments_obj[equipment_id] = equipment_obj
 
     def add_equipment(self, equipment_no):
@@ -77,6 +84,15 @@ class CharacterEquipmentPackageComponent(Component):
         """返回全部装备
         """
         return self._equipments_obj.values()
+
+
+    def is_guard(self, equipment_id):
+        """
+        是否在驻守中, 秘境相关
+        """
+        temp = self._equipments_obj.get(equipment_id)
+        assert temp!=None, ("equipment %s not exists!" % equipment_id)
+        return temp.is_guard
 
 
     # def new_equipment_data(self, equipment):

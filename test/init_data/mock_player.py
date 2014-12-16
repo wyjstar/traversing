@@ -2,13 +2,15 @@
 """
 created by server on 14-7-4上午10:30.
 """
+from shared.utils.const import const
 
 
 def init_player(player):
-    player.finance.coin = 3000000*100
-    player.finance.hero_soul = 2000000
-    player.finance.gold = 1000000*100
-    player.finance.pvp_score = 1000000
+    player.finance[const.COIN] = 10000000
+    player.finance[const.GOLD] = 10000000
+    player.finance[const.HERO_SOUL] = 10000000
+    player.finance[const.EQUIPMENT_ELITE] = 10000000
+    player.finance[const.PVP] = 10000000
     player.finance.save_data()
 
     player.level.level = 60

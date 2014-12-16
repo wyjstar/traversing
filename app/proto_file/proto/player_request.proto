@@ -9,4 +9,6 @@ message CreatePlayerRequest{
      optional string nickname = 1;//角色昵称
 }
 
-
+message NewbeeGuideStepRequest{
+	required int32 step_id = 1;
+}
