@@ -11,6 +11,7 @@ from shared.db_opear.configs_data.game_configs import shop_type_config
 from app.game.core.item_group_helper import is_afford
 # from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
 from gfirefly.server.logobj import logger
@@ -49,13 +50,13 @@ def shop_oper(pro_data, player):
     shop_id = request.ids[0]
     shop_item = shop_config.get(shop_id)
 
-    result = is_afford(player, shop_item.consume)  # 校验
-    if not result.get('result'):
-        response.res.result = False
-        response.res.result_no = result.get('result_no')
-        response.res.message = u'消费不足！'
-        logger.error('no enough money:%s', shop_item.consume)
-        return response.SerializeToString()
+    if not is_consume(player, shop_item):
+        result = is_afford(player, shop_item.consume)  # 校验
+        if not result.get('result'):
+            response.res.result = False
+            response.res.result_no = result.get('result_no')
+            response.res.message = u'消费不足！'
+            return response.SerializeToString()
 
     player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
     if not player_type_shop:
