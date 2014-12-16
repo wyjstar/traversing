@@ -286,6 +286,7 @@ class PlayerField(Mine):
         
     def save_info(self, lineup=None):
         info = {
+                'seq':self._seq,
                 'uid':self._tid,
                 'type':self._type,
                 'status':self._status,
@@ -301,6 +302,8 @@ class PlayerField(Mine):
         return info
     
     def update_info(self, info):
+        print 'update_info', info['seq']
+        self._seq = info.get('seq', -1)
         self._tid = info.get('uid', -1)
         self._type = info.get('type')
         self._status = info.get('status')
@@ -309,7 +312,7 @@ class PlayerField(Mine):
         self._guard_time = info.get('guard_time')
         self._mine_id = info.get('mine_id')
         self._normal_harvest = info.get('normal_harvest')
-        self._luck_harvest = info.get('luck_harvest')
+        self._lucky_harvest = info.get('lucky_harvest')
         self._normal_end = info.get('normal_end')
         self._lucky_end = info.get('lucky_end')
         self._normal = {}
@@ -325,9 +328,18 @@ class PlayerField(Mine):
             if int(sp_id) == 0:
                 continue
             self._lucky[int(sp_id)] = 0
+            
+        print 'seq', self._seq
     
     @classmethod
     def create(cls, uid, nickname, level, lively, sword):
+        
+#         match_mine = MineOpt.get_mine("hello2.1418711163.11")
+#         mine = cls()
+#         match_mine['seq'] = "hello2.1418711163.11"
+#         print 'match_mine', match_mine['seq']
+#         mine.update_info(match_mine)
+#         return mine
         item = None
         for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
@@ -364,6 +376,10 @@ class PlayerField(Mine):
                             continue
                 if not match_mine:#没有随到玩家占领的野怪矿，生成野怪矿
                     return MonsterField.create(uid, nickname)
+                else:
+                    mine = cls()
+                    mine.update_info(mine)
+                    return mine
                 
     def start_battle(self):
         lock = MineOpt.lock(self._seq)
@@ -510,6 +526,7 @@ class MonsterField(Mine):
         player_field._nickname = nickname
         data = player_field.save_info()
         MineOpt.add_mine(self._tid, self._seq, data)
+        print 'settle', player_field.__dict__
         src_id = 0
         return player_field, src_id
     
@@ -769,6 +786,7 @@ class UserMine(Component):
             print '123', result
             if not result:
                 stype = MineType.MONSTER_FIELD
+                
         if stype == MineType.PLAYER_FIELD:
             sword = 0
             mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
@@ -881,6 +899,7 @@ class UserMine(Component):
     
     def settle(self, position):
         mine, tid = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
+        print 'settle', mine.__dict__
         self._mine[position] = mine #更改本地信息
         self._update = True
         return tid
@@ -897,6 +916,7 @@ class UserMine(Component):
         """
         驻守
         """
+        print 'save_guard', position
         if position in self._mine:
             result_code = self._mine[position].guard(self.owner.base_info.base_name, info)
             return result_code

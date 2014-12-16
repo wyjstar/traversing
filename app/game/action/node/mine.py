@@ -429,11 +429,12 @@ def acc_mine_1250(data, player):
     return response.SerializePartialToString()
 
 
-def process_mine_result(player, position, response, result, stype):
+def process_mine_result(player, position, result, response, stype):
     """
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
     @param gain: true or false
     """
+    print 'process_mine_result', position, response, result, stype
     if result == True:
         target = player.mine.settle(position)
         if stype == 1:
@@ -484,6 +485,7 @@ def settle_1252(data, player):
     result = request.result
     #todo: check result
     #todo: set settle time to calculate acc_mine
+    process_mine_result(player, pos, result, None, 0)
     response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
@@ -524,7 +526,7 @@ def battle_1253(data, player):
         red_units = stage_info.get('red_units')
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
-        process_mine_result(player, pos, response, result, mine_type)
+        
 
         print red_units, blue_units
 
