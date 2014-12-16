@@ -8,12 +8,14 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import game_pb2
+import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_response.proto',
   package='',
-  serialized_pb='\n\x15player_response.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t')
+  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"]\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -48,17 +50,61 @@ _PLAYERRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=25,
-  serialized_end=71,
+  serialized_start=51,
+  serialized_end=97,
 )
 
+
+_NEWBEEGUIDESTEPRESPONSE = _descriptor.Descriptor(
+  name='NewbeeGuideStepResponse',
+  full_name='NewbeeGuideStepResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='NewbeeGuideStepResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='NewbeeGuideStepResponse.gain', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=99,
+  serialized_end=192,
+)
+
+_NEWBEEGUIDESTEPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_NEWBEEGUIDESTEPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['PlayerResponse'] = _PLAYERRESPONSE
+DESCRIPTOR.message_types_by_name['NewbeeGuideStepResponse'] = _NEWBEEGUIDESTEPRESPONSE
 
 class PlayerResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _PLAYERRESPONSE
 
   # @@protoc_insertion_point(class_scope:PlayerResponse)
+
+class NewbeeGuideStepResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _NEWBEEGUIDESTEPRESPONSE
+
+  # @@protoc_insertion_point(class_scope:NewbeeGuideStepResponse)
 
 
 # @@protoc_insertion_point(module_scope)

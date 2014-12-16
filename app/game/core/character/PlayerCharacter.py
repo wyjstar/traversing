@@ -36,6 +36,8 @@ from app.game.component.brew.brew import CharacterBrewComponent
 from app.game.component.character_travel import CharacterTravelComponent
 import time
 from app.game.component.achievement.user_achievement import UserAchievement
+from app.game.component.mine.user_mine import UserMine
+from app.game.component.stone.user_stone import UserStone
 from app.game.component.character_runt import CharacterRuntComponent
 
 
@@ -81,8 +83,11 @@ class PlayerCharacter(Character):
         self._brew = CharacterBrewComponent(self)
 
         self._tasks = UserAchievement(self)
+        self._mine = UserMine(self)
+        self._stone = UserStone(self)
 
         self._pvp_times = 0  # pvp次数
+        self._newbee_guide_id = 0
 
         self._travel = CharacterTravelComponent(self)
         self._runt = CharacterRuntComponent(self)
@@ -108,6 +113,7 @@ class PlayerCharacter(Character):
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
+        self._newbee_guide_id = character_info['newbee_guide_id']
 
         # ------------初始化角色货币信息------------
         self._finance.init_data(character_info)
@@ -149,6 +155,8 @@ class PlayerCharacter(Character):
         self._travel.init_data()
         # 活跃度
         self._tasks.init_data()
+        self._mine.init_data()
+        self._stone.init_data()
         self._runt.init_data()
 
     def is_new_character(self):
@@ -167,20 +175,14 @@ class PlayerCharacter(Character):
 
         character_info = {'id': pid,
                           'nickname': u'',
-                          # 'coin': 0,
-                          # 'gold': 0,
-                          # 'hero_soul': 0,
-                          'level': 0,
+                          'level': 1,
                           'exp': 0,
-                          # 'junior_stone': 0,
-                          # 'middle_stone': 0,
-                          # 'high_stone': 0,
                           'fine_hero_last_pick_time': 0,
                           'excellent_hero_last_pick_time': 0,
                           'fine_equipment_last_pick_time': 0,
                           'excellent_equipment_last_pick_time': 0,
                           'pvp_times': 0,
-                          # 'pvp_score': 0,
+                          'newbee_guide_id': 0,
                           'pvp_count': 0,
                           'create_time': int(time.time()),
                           'vip_level': 0,
@@ -201,6 +203,14 @@ class PlayerCharacter(Character):
     @dynamic_id.setter
     def dynamic_id(self, value):
         self._dynamic_id = value
+
+    @property
+    def newbee_guide_id(self):
+        return self._newbee_guide_id
+
+    @newbee_guide_id.setter
+    def newbee_guide_id(self, value):
+        self._newbee_guide_id = value
 
     @property
     def hero_component(self):
@@ -356,6 +366,14 @@ class PlayerCharacter(Character):
         return self._brew
 
     @property
+    def mine(self):
+        return self._mine
+
+    @property
+    def stone(self):
+        return self._stone
+
+    @property
     def runt(self):
         return self._runt
 
@@ -365,4 +383,5 @@ class PlayerCharacter(Character):
         character_info.update_multi(dict(level=self._level.level,
                                          exp=self.level.exp,
                                          pvp_times=self._pvp_times,
+                                         newbee_guide_id=self._newbee_guide_id,
                                          vip_level=self._vip.vip_level))

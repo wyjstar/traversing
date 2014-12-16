@@ -9,8 +9,22 @@ from gfirefly.server.globalobject import GlobalObject, remoteserviceHandle
 
 @remoteserviceHandle('gate')
 def push_object_remote(topicID, msg, sendList):
+    """
+    向指定玩家发送消息msg。
+    topicID: 为协议号。
+    msg: 发送的消息。
+    sendList: 玩家连接ID列表。
+    """
     GlobalObject().netfactory.pushObject(topicID, msg, sendList)
 
+@remoteserviceHandle('gate')
+def push_all_object_remote(topicID, msg):
+    """
+    向全区玩家发送消息。
+    topicID: 为协议号。
+    msg: 发送的消息。
+    """
+    GlobalObject().netfactory.pushAllObject(topicID, msg)
 
 @remoteserviceHandle('gate')
 def disconnect_remote(connection_id):

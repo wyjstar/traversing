@@ -7,6 +7,8 @@ from robot import Robot
 from app.proto_file import friend_pb2
 from app.proto_file import shop_pb2
 from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file import player_request_pb2
+from app.proto_file import player_response_pb2
 
 
 class RobotFriend(Robot):
@@ -108,6 +110,17 @@ class RobotFriend(Robot):
 
     def anonyous_507(self, message):
         response = shop_pb2.GetShopItemsResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_new_guid_step(self, step_id):
+        request = player_request_pb2.NewbeeGuideStepRequest()
+        request.step_id = int(step_id)
+        self.send_message(request, 1802)
+
+    def anonyous_1802(self, message):
+        response = player_response_pb2.NewbeeGuideStepResponse()
         response.ParseFromString(message)
         print response
         self.on_command_finish()

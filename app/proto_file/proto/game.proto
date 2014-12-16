@@ -35,6 +35,7 @@ message GameLoginResponse{
     optional int32 server_time = 20;
     optional bytes guild_id = 21;
     optional float combat_power = 22;
+	optional int32 newbee_guide_id = 28;
 
     //stamina
     optional int32 get_stamina_times = 23; //通过邮件获取体力次数

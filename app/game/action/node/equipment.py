@@ -35,6 +35,13 @@ def get_equipments_401(pro_data, player):
         equipment_add.no = obj.base_info.equipment_no
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
+        equipment_add.is_guard = obj.attribute.is_guard
+
+        for before_lv, after_lv, enhance_cost in obj.enhance_record.enhance_record:
+            data_format = equipment_add.data.add()
+            data_format.before_lv = before_lv
+            data_format.after_lv = after_lv
+            data_format.cost_coin = enhance_cost
 
     return response.SerializePartialToString()
 
@@ -250,7 +257,7 @@ def __do_enhance(player, equipment_obj):
     """
     enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
     player.finance.consume(const.COIN, enhance_cost)
-    player.finance.save_data(0)
+    player.finance.save_data()
 
     before_lv, after_lv = equipment_obj.enhance(player)
 

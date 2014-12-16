@@ -65,14 +65,20 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_config(self):
         """取得关卡配置数据
         """
+        if game_configs.stage_config.get('travel_fight_stages').get(self._stage_id):
+            return game_configs.stage_config.get('travel_fight_stages').get(self._stage_id)
         if game_configs.stage_config.get('stages').get(self._stage_id):
             return game_configs.stage_config.get('stages').get(self._stage_id)
         if game_configs.special_stage_config.get('elite_stages').get(self._stage_id):
             return game_configs.special_stage_config.get('elite_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('act_stages').get(self._stage_id):
             return game_configs.special_stage_config.get('act_stages').get(self._stage_id)
-        if game_configs.special_stage_config.get('boss_stages').get(self._stage_id):
-            return game_configs.special_stage_config.get('boss_stages').get(self._stage_id)
+        if game_configs.special_stage_config.get('world_boss_stages').get(self._stage_id):
+            return game_configs.special_stage_config.get('world_boss_stages').get(self._stage_id)
+        if game_configs.special_stage_config.get('mine_boss_stages').get(self._stage_id):
+            return game_configs.special_stage_config.get('mine_boss_stages').get(self._stage_id)
+        if game_configs.stage_config.get('mine_stages').get(self._stage_id):
+            return game_configs.stage_config.get('mine_stages').get(self._stage_id)
 
     def __get_skill_config(self, skill_id):
         """取得技能BUFF配置
