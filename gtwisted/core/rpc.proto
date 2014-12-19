@@ -1,0 +1,8 @@
+message RPCProtocol{
+	required bytes msgType = 1;
+	required bytes key = 2;
+	required bytes name = 3;
+	optional bytes result = 4;
+	optional bytes args = 5;
+	optional bytes kw = 6;
+}

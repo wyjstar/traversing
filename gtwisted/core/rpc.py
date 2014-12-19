@@ -9,8 +9,9 @@ from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
 import gevent
-import marshal
+import json
 import struct
+import rpc_pb2
 
 
 ASK_SIGNAL = "ASK"  # 请求结果的信号
@@ -69,8 +70,13 @@ class PBProtocl(BaseProtocol):
             _msgtype = ASK_SIGNAL
         else:
             _msgtype = NOTICE_SIGNAL
-        request = marshal.dumps(dict(_msgtype=_msgtype, _key=_key, _name=_name, _args=args, _kw=kw))
-        self.writeData(request)
+        request = rpc_pb2.RPCProtocol()
+        request.msgType = _msgtype
+        request.key = _key
+        request.name = _name
+        request.args = str(args)
+        request.kw = str(kw)
+        self.writeData(request.SerializePartialToString())
 
     def writeData(self, data):
         """发送数据的统一接口
@@ -97,8 +103,9 @@ class PBProtocl(BaseProtocol):
     def msgResolve(self, data):
         """消息解析
         """
-        request = marshal.loads(data)
-        _msgtype = request['_msgtype']
+        request = rpc_pb2.RPCProtocol()
+        request.ParseFromString(data)
+        _msgtype = request.msgType
         if _msgtype == ASK_SIGNAL or _msgtype == NOTICE_SIGNAL:
             self.askReceived(request)
         elif _msgtype == ANSWER_SIGNAL:
@@ -107,16 +114,18 @@ class PBProtocl(BaseProtocol):
     def askReceived(self, request):
         """远程调用请求到达时的处理
         """
-        _key = request['_key']
-        _name = request['_name']
-        _args = request['_args']
-        _kw = request['_kw']
+        _key = request.key
+        _name = request.name
+        _args = eval(request.args)
+        _kw = eval(request.kw)
         method = self.getRemoteMethod(_name)
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
-            response = {'_msgtype': ANSWER_SIGNAL, '_key': _key, 'result': result}
-            _response = marshal.dumps(response)
-            self.writeData(_response)
+            response = rpc_pb2.RPCProtocol()
+            response.msgType = ANSWER_SIGNAL
+            response.key = _key
+            response.result = json.dumps(result)
+            self.writeData(response.SerializePartialToString())
 
     def getRemoteMethod(self, _name):
         """获取远程调用的方法对象
@@ -132,9 +141,9 @@ class PBProtocl(BaseProtocol):
     def answerReceived(self, request):
         """请求的结果返回后的处理
         """
-        _key = request['_key']
+        _key = request.key
         aresult = AsyncResultFactory().popAsyncResult(_key)
-        aresult.set(request['result'])
+        aresult.set(json.loads(request.result))
 
 
 class PBServerProtocl(PBProtocl):
