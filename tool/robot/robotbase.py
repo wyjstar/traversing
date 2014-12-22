@@ -6,6 +6,7 @@ created by server on 14-8-21下午2:45.
 import struct
 import inspect
 from twisted.internet import protocol
+from twisted.internet import reactor
 
 
 def build_data(send_str, command_id):
@@ -83,7 +84,8 @@ class RobotBase(protocol.Protocol):
 
         fun = getattr(self, self._distributor[str(command)])
         if fun:
-            fun(message)
+            reactor.callLater(0, fun, message)
+            #fun(message)
         else:
             self.on_command_error()
             print 'cant find processor by command:', command
