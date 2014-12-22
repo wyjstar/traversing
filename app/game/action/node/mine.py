@@ -321,6 +321,7 @@ def harvest_1245(data, player):
         response.res.message = u"没有可以领取的符文石"
 
     player.mine.save_data()
+    player.runt.save()
     print '1245-response', response
     return response.SerializePartialToString()
 

@@ -205,6 +205,7 @@ def refresh_shop_items_507(pro_data, player):
     for x in shopdata['buyed_item_ids']:
         response.buyed_id.append(x)
 
+    response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
 
 
