@@ -51,10 +51,11 @@ class MineBoss(BaseBoss):
     """随机boss"""
     def __init__(self, boss_name, rank_instance, config_name):
         super(MineBoss, self).__init__(boss_name, rank_instance, config_name)
+        self.init_data()
 
     def init_data(self):
         """docstring for init_data"""
-        str_data = redis_client.get("")
+        str_data = redis_client.get(self._boss_name)
         if not str_data:
             logger.debug("init data...")
             self.update_boss()
@@ -63,8 +64,19 @@ class MineBoss(BaseBoss):
         self.init_base_data(world_boss_data)
 
     def update_boss(self):
+        self._stage_id = 820001
         self.update_base_boss(base_config.get("mine_boss"))
-        self.save_data()
+
+    @property
+    def open_or_not(self):
+        return True
+
+    def save_data(self):
+        base_boss_data = self.get_data_dict()
+
+        str_data = cPickle.dumps(base_boss_data)
+        redis_client.set(self._boss_name, str_data)
+
 
 
 mine_boss_manager = MineBossManager()
