@@ -9,7 +9,6 @@ from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
 import gevent
-import json
 import struct
 import rpc_pb2
 
@@ -18,7 +17,39 @@ ASK_SIGNAL = "ASK"  # 请求结果的信号
 NOTICE_SIGNAL = "NOTICE"  # 仅做通知的信号，不要求返回值
 ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
 DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
-RPC_DATA_MAX_LENGTH = 2147483647  # rpc数据包允许的最大长度
+RPC_DATA_MAX_LENGTH = 64*1024  # rpc数据包允许的最大长度
+
+
+def _write_parameter(proto, arg):
+    if isinstance(arg, str):
+        proto.proto_param = arg
+    elif isinstance(arg, unicode):
+        proto.string_param = arg
+    elif isinstance(arg, int):
+        proto.int_param = arg
+    elif isinstance(arg, float):
+        proto.float_param = arg
+    elif isinstance(arg, bool):
+        proto.bool_param = arg
+    elif arg is None:
+        proto.is_null = True
+    else:
+        print 'error type < '*30, type(arg), arg
+
+
+def _read_parameter(proto):
+    if proto.HasField('proto_param'):
+        return proto.proto_param
+    elif proto.HasField('string_param'):
+        return proto.string_param
+    elif proto.HasField('int_param'):
+        return proto.int_param
+    elif proto.HasField('float_param'):
+        return proto.float_param
+    elif proto.HasField('bool_param'):
+        return proto.bool_param
+    else:
+        return None
 
 
 class RemoteObject:
@@ -74,8 +105,15 @@ class PBProtocl(BaseProtocol):
         request.msgType = _msgtype
         request.key = _key
         request.name = _name
-        request.args = str(args)
-        request.kw = str(kw)
+        for arg in args:
+            para = request.parameters.add()
+            _write_parameter(para, arg)
+
+        if kw:
+            print 'rpc kw para'*10, kw
+
+        # request.args = str(args)
+        # request.kw = str(kw)
         self.writeData(request.SerializePartialToString())
 
     def writeData(self, data):
@@ -116,15 +154,18 @@ class PBProtocl(BaseProtocol):
         """
         _key = request.key
         _name = request.name
-        _args = eval(request.args)
-        _kw = eval(request.kw)
+        _args = []  # eval(request.args)
+        for para in request.parameters:
+            _args.append(_read_parameter(para))
+
+        _kw = {}  # eval(request.kw)
         method = self.getRemoteMethod(_name)
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
             response = rpc_pb2.RPCProtocol()
             response.msgType = ANSWER_SIGNAL
             response.key = _key
-            response.result = json.dumps(result)
+            _write_parameter(response.result, result)
             self.writeData(response.SerializePartialToString())
 
     def getRemoteMethod(self, _name):
@@ -143,7 +184,8 @@ class PBProtocl(BaseProtocol):
         """
         _key = request.key
         aresult = AsyncResultFactory().popAsyncResult(_key)
-        aresult.set(json.loads(request.result))
+        result = _read_parameter(request.result)
+        aresult.set(result)
 
 
 class PBServerProtocl(PBProtocl):
