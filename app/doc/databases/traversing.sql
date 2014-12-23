@@ -102,6 +102,8 @@ CREATE TABLE `tb_character_info` (
   `newbee_guide_id` int(11) NOT NULL DEFAULT '0',
   `finances` tinyblob,
   `stamina` blob NOT NULL,
+  `brew` blob,
+  `hero_refine` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -230,15 +232,6 @@ CREATE TABLE `tb_pvp_rank` (
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
   `hero_ids` tinyblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `tb_character_brew`;
-CREATE TABLE `tb_character_brew` (
-  `id` bigint(20) NOT NULL,
-  `brew` blob,
-  `hero_refine` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
