@@ -180,17 +180,48 @@ class Hero(object):
         hero_no = self._hero_no  # 英雄编号
         quality = item_config.quality  # 英雄品质
 
-        hp = item_config.hp + self._level * item_config.growHp  # 血
-        atk = item_config.atk + self._level * item_config.growAtk  # 攻击
-        physical_def = item_config.physicalDef + self._level * item_config.growPhysicalDef  # 物理防御
-        magic_def = item_config.magicDef + self._level * item_config.growMagicDef  # 魔法防御
-        hit = item_config.hit  # 命中率
-        dodge = item_config.dodge  # 闪避率
-        cri = item_config.cri  # 暴击率
-        cri_coeff = item_config.criCoeff  # 暴击伤害系数
-        cri_ded_coeff = item_config.criDedCoeff  # 暴击减免系数
-        block = item_config.block  # 格挡率
-        ductility = item_config.ductility  # 韧性
+        # =============================================
+
+        # 符文属性
+        # {type_id:{po:[no,type,main,minor]}}
+        all_attr = {1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0,
+                    11: 0}
+        for (type_id, type_info) in self._runt.items():
+            for (po, [runt_no, runt_type, main_attr, minor_attr]) in type_info.items():
+                xs = 1
+                if type_id != runt_type:
+                    xs = game_configs.base_config.get('totemSpaceDecay')
+
+                for (attr_type, attr_info) in main_attr.items():
+                    attr_value_type, attr_value, attr_increment = attr_info
+                    all_attr[attr_type] += xs * attr_value
+
+                for (attr_type, attr_info) in minor_attr.items():
+                    attr_value_type, attr_value, attr_increment = attr_info
+                    all_attr[attr_type] += xs * attr_value
+
+        # =============================================
+
+        hp = item_config.hp + self._level * item_config.growHp + all_attr[1]  # 血
+        atk = item_config.atk + self._level * item_config.growAtk + all_attr[2]  # 攻击
+        physical_def = item_config.physicalDef + self._level * item_config.growPhysicalDef + all_attr[3]  # 物理防御
+        magic_def = item_config.magicDef + self._level * item_config.growMagicDef + all_attr[4]  # 魔法防御
+        hit = item_config.hit + all_attr[5]  # 命中率
+        dodge = item_config.dodge + all_attr[6]  # 闪避率
+        cri = item_config.cri + all_attr[7]  # 暴击率
+        cri_coeff = item_config.criCoeff + all_attr[8]  # 暴击伤害系数
+        cri_ded_coeff = item_config.criDedCoeff + all_attr[9]  # 暴击减免系数
+        block = item_config.block + all_attr[10]  # 格挡率
+        ductility = item_config.ductility + all_attr[11]  # 韧性
 
         normal_skill = self.group_by_normal
         rage_skill = self.group_by_rage
