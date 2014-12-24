@@ -11,6 +11,7 @@ from gevent.timeout import Timeout
 import gevent
 import struct
 import rpc_pb2
+import marshal
 
 
 ASK_SIGNAL = "ASK"  # 请求结果的信号
@@ -33,6 +34,8 @@ def _write_parameter(proto, arg):
         proto.bool_param = arg
     elif arg is None:
         proto.is_null = True
+    elif isinstance(arg, list) or isinstance(arg, map):
+        proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
 
@@ -48,6 +51,8 @@ def _read_parameter(proto):
         return proto.float_param
     elif proto.HasField('bool_param'):
         return proto.bool_param
+    elif proto.HasField('python_param'):
+        return marshal.loads(proto.python_param)
     else:
         return None
 
