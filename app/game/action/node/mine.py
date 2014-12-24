@@ -21,6 +21,7 @@ from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.proto_file import line_up_pb2
+import time
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -495,6 +496,16 @@ def process_mine_result(player, position, result, response, stype):
                 optional string prize = 12; //奖品
             """
             mail = {}
+            
+            mail = {'sender_id': -1,
+            'sender_name': '',
+            'receive_id': target,
+            'receive_name': '',
+            'title': '',
+            'content': '',
+            'mail_type': 2,
+            'prize': mail.prize}
+            mail['send_time'] = int(time.time())
             
             # command:id 为收邮件的命令ID
             if sum(count.values()) > 0:
