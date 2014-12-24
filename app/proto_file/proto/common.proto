@@ -25,4 +25,19 @@ message GameResourcesResponse
     optional int32 stamina = 7;
     repeated TravelItem travel_item= 8;
     repeated ShoesInfo shoes_info = 9;
+    repeated Runt1 runt = 10;
+}
+
+message Runt1{
+    required bytes runt_no = 1;
+    repeated RuntAttr main_attr = 2;
+    repeated RuntAttr minor_attr = 3;
+    required int32 runt_id = 4;
+}
+
+message RuntAttr{
+    required int32 attr_value_type = 1;
+    required float attr_value = 2;
+    required int32 attr_increment = 3;
+    required int32 attr_type = 4;
 }
