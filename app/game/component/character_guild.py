@@ -41,7 +41,6 @@ class CharacterGuildComponent(Component):
                              'exit_time': self._exit_time}}
             tb_character_guild.new(data)
             return
-        character_guild = tb_character_guild.getObjData(p_id)
         info = character_guild.get("info")
         self._g_id = info.get("g_id")
         self._position = info.get("position")

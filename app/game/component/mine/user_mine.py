@@ -340,6 +340,7 @@ class PlayerField(Mine):
 #         print 'match_mine', match_mine['seq']
 #         mine.update_info(match_mine)
 #         return mine
+        print lively, level, "lively, level*"*80
         item = None
         for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
@@ -688,6 +689,12 @@ class UserMine(Component):
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
             
+    def if_have_chest(self):
+        for mine_id in self._mine:
+            if self._mine[mine_id]._type == MineType.CHEST:
+                return False
+        return True
+    
     def _reset_everyday(self):
         """
         每日更新内容
@@ -779,27 +786,30 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
         
+        stype = MineType.COPY
         print 'stype', stype
+        
         if stype == MineType.COPY:
             print '123'
             result = func()
             print '123', result
             if not result:
                 stype = MineType.MONSTER_FIELD
-        if stype == MineType.COPY:
-            stype = 2
         if stype == MineType.PLAYER_FIELD:
             sword = 0
             mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.level.level, lively, sword)
         if stype == MineType.MONSTER_FIELD:
             mine = MonsterField.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.CHEST:
-            mine = Chest.create(self.owner.base_info.id, self.owner.base_info.base_name)
+            if self.if_have_chest():
+                mine = None
+            else:
+                mine = Chest.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.SHOP:
             mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.COPY:
             mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
-            
+
         if not mine:
             mine = MineType.create(MineType.MONSTER_FIELD, self.owner.base_info.id, self.owner.base_info.base_name)
         self._mine[position] = mine

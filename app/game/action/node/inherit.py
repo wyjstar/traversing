@@ -23,6 +23,8 @@ def inherit_refine_151(pro_data, player):
     origin = player.hero_component.get_hero(origin_id)
     target = player.hero_component.get_hero(target_id)
 
+
+    print "origin:", origin.refine, "target:", target.refine
     if not origin or (not target):
         logger.error("hero %s or %s not exists" % (origin_id, target_id))
         response.result = False
@@ -41,6 +43,8 @@ def inherit_refine_151(pro_data, player):
     target.refine = origin.refine
     origin.refine = 0
 
+    target.save_data()
+    origin.save_data()
     player.finance.gold -= base_config.get("heroInheritPrice")
     player.finance.save_data()
     response.result = True
@@ -62,7 +66,7 @@ def inherit_equipment_152(pro_data, player):
 
     origin = player.equipment_component.get_equipment(origin_id)
     target = player.equipment_component.get_equipment(target_id)
-    print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
+    # print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
     if not origin or (not target):
         logger.error("equip %s or %s not exists" % (origin_id, target_id))

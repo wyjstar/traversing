@@ -265,8 +265,8 @@ def line_up_info(player):
     """取得用户的阵容信息
     """
     response = line_up_pb2.LineUpResponse()
-    assembly_slots(player, response)
-    assembly_sub_slots(player, response)
+    line_up_info_detail(player.line_up_component.line_up_slots, player.line_up_component.sub_slots, response)
+
     for k, v in player.line_up_component.unpars.items():
         add_unpar = response.unpars.add()
         add_unpar.unpar_id = k
@@ -274,11 +274,14 @@ def line_up_info(player):
 
     return response
 
+def line_up_info_detail(line_up_slots, sub_slots, response):
+    assembly_slots(line_up_slots, response)
+    assembly_sub_slots(sub_slots, response)
 
-def assembly_slots(player, response):
+
+def assembly_slots(line_up_slots, response):
     """组装阵容单元格
     """
-    line_up_slots = player.line_up_component.line_up_slots
     if line_up_slots == None:
         return
     for slot in line_up_slots.values():
@@ -312,10 +315,9 @@ def assembly_slots(player, response):
                 equ.set.num = equipment_slot.suit.get('num', 0)
 
 
-def assembly_sub_slots(player, response):
+def assembly_sub_slots(sub_slots, response):
     """组装助威阵容
     """
-    sub_slots = player.line_up_component.sub_slots
     for slot in sub_slots.values():
         add_slot = response.sub.add()
         add_slot.slot_no = slot.slot_no

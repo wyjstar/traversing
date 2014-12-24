@@ -32,20 +32,6 @@ message InitRuntResponse{
     required int32 refresh_times = 5;
 }
 
-message Runt1{
-    required bytes runt_no = 1;
-    repeated RuntAttr main_attr = 2;
-    repeated RuntAttr minor_attr = 3;
-    required int32 runt_id = 4;
-}
-
-message RuntAttr{
-    required int32 attr_value_type = 1;
-    required float attr_value = 2;
-    required int32 attr_increment = 3;
-    required int32 attr_type = 4;
-}
-
 // 844 打造刷新
 message RefreshRuntResponse{
     required CommonResponse res = 1;

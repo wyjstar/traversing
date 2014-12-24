@@ -55,6 +55,7 @@ def nickname_create_5(request_proto, player):
     if not character_obj:
         response.result_no = 2
         return response.SerializeToString()
+    player.base_info.base_name = nickname
     character_obj.update('nickname', nickname)
 
     # 加入聊天
@@ -172,4 +173,4 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        init(player)
+        # init(player)

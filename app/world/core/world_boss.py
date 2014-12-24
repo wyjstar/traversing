@@ -41,9 +41,9 @@ class WorldBoss(BaseBoss):
         pm_period = self.get_stage_period(self._stage_id_pm)
 
         current = get_current_timestamp()
-        if current < am_period[1] and current > pm_period[1]:
+        if current < am_period[1]:
             self._stage_id = self._stage_id_am
-        elif current > am_period[1] and current < pm_period[1]:
+        elif current > am_period[1]:
             self._stage_id = self._stage_id_pm
 
     def save_data(self):
@@ -74,8 +74,8 @@ class WorldBoss(BaseBoss):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        self.update_base_boss(base_config.get("world_boss"))
         self.set_next_stage(self._hp<=0)
+        self.update_base_boss(base_config.get("world_boss"))
 
         self.save_data()
 
@@ -114,6 +114,10 @@ class WorldBoss(BaseBoss):
         stage_info = self.get_stage_info(stage_id)
         time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
         return time_start, time_end
+
+    @property
+    def open_or_not(self):
+        return self.in_the_time_period()
 
 
 

@@ -57,6 +57,10 @@ def get_fight_info(data, player):
     boss = player.world_boss.get_boss(boss_id)
     boss.stage_id = response.stage_id
 
+
+    print response, "-"*80
+    print boss.stage_id
+
     boss.reset_info()  # 重设信息
 
     player.world_boss.save_data()
@@ -150,7 +154,7 @@ def pvb_reborn_1704(data, player):
     request = PvbRequest()
     request.ParseFromString(data)
     boss_id = request.boss_id
-    boss = player.world_boss.get(boss_id)
+    boss = player.world_boss.get_boss(boss_id)
     base_config = boss.get_base_config()
 
     response = CommonResponse()

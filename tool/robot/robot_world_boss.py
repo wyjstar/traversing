@@ -84,4 +84,9 @@ class RobotWorldBoss(Robot):
         response = world_boss_pb2.MineBossResponse()
         response.ParseFromString(message)
         print response
-        self.on_command_finish()
+
+        request = world_boss_pb2.PvbRequest()
+        request.boss_id = response.boss_id
+        self.send_message(request, 1701)
+
+        # self.on_command_finish()

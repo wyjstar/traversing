@@ -202,7 +202,7 @@ def pvp_player_rank_refresh_request(data, player):
     response.player_rank = record.get('id') if record else -1
     cur_rank = record.get('id') if record else 300
 
-    ranks = []
+    ranks = [cur_rank]
     for v in arena_fight_config.values():
         play_rank = v.get('play_rank')
         if cur_rank in range(play_rank[0], play_rank[1] + 1):

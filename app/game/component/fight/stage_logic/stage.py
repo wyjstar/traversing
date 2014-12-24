@@ -43,8 +43,9 @@ class StageLogic(base_stage.BaseStageLogic):
 
         # todo: 更新战斗次数
         # 体力
-        player.stamina.stamina -= conf.vigor
-        player.stamina.save_data()
+        if result:
+            player.stamina.stamina -= conf.vigor
+            player.stamina.save_data()
 
         # 活跃度
         lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)

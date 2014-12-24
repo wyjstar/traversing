@@ -5,7 +5,7 @@ created by lucas on 14-11-11下午4:05.
 import random
 import time
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_brew
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
@@ -25,19 +25,15 @@ class CharacterBrewComponent(Component):
         self._brew_times = 0
         self._brew_step = 1
 
-    def init_data(self):
-        brew_data = tb_character_brew.getObjData(self.owner.base_info.id)
-        if brew_data:
-            brew = brew_data.get('brew')
-            if brew:
-                self._brew_times = brew.get('brew_times')
-                self._brew_date = brew.get('brew_data')
-                self._nectar = brew.get('nectar')
-                self._nectar_cur = brew.get('nectar_cur')
-                self._brew_step = brew.get('brew_step')
-                self.check_time()
-            else:
-                logger.error('cant find brew:%s', self.owner.base_info.id)
+    def init_data(self, character_data):
+        brew = character_data.get('brew')
+        if brew:
+            self._brew_times = brew.get('brew_times')
+            self._brew_date = brew.get('brew_data')
+            self._nectar = brew.get('nectar')
+            self._nectar_cur = brew.get('nectar_cur')
+            self._brew_step = brew.get('brew_step')
+            self.check_time()
         else:
             self.check_time()
             brew = dict(brew_times=self._brew_times,
@@ -45,20 +41,20 @@ class CharacterBrewComponent(Component):
                         nectar=self._nectar,
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
-            data = dict(id=self.owner.base_info.id, brew=brew, hero_refine='')
-            tb_character_brew.new(data)
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.update('brew', brew)
 
     def save_data(self):
-        brew_obj = tb_character_brew.getObj(self.owner.base_info.id)
-        if brew_obj:
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
+        if char_obj:
             brew = dict(brew_times=self._brew_times,
                         brew_data=self._brew_date,
                         nectar=self._nectar,
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
-            brew_obj.update('brew', brew)
+            char_obj.update('brew', brew)
         else:
-            logger.error('cant find brewdata:%s', self.owner.base_info.id)
+            logger.error('cant find charinfo:%s', self.owner.base_info.id)
 
     def do_brew(self, brew_type):
         vip_level = self.owner.vip_component.vip_level

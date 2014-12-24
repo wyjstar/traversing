@@ -21,7 +21,7 @@ class Robot(RobotBase):
 
         self.on_connection_made = self.connection_made
         self.on_account_login_result = None
-        self.on_character_login_result = None
+        #self.on_character_login_result = None
 
         self._passport = passport
         self._nickname = nickname  # 'bab5'
@@ -73,4 +73,12 @@ class Robot(RobotBase):
         response = CommonResponse()
         response.ParseFromString(message)
         print 'change nickname result:', response.result
-        self.on_character_login_result(True)
+        print "-+"*40, self.__class__, self.on_character_login_result
+        #if self.on_character_login_result:
+            #self.on_character_login_result(True)
+        if self.on_login:
+            self.on_login()
+
+    def abc_1234(self, message):
+        if self.on_command_finish:
+            self.on_command_finish()

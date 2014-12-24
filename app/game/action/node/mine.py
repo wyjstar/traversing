@@ -17,9 +17,10 @@ from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from gfirefly.server.logobj import logger
-from app.game.action.node.line_up import line_up_info
+from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
 from app.game.action.root import netforwarding
+from app.proto_file import line_up_pb2
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -99,7 +100,7 @@ def search_1241(data, player):
     response.position = request.position
     print 'response.position', response.position
     if player.mine.can_search(request.position):
-        player.mine.search_mine(request.position, trigger_mine_boss)
+        player.mine.search_mine(request.position, mine_boss)
         player.mine.save_data()
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(one_mine, response.mine)
@@ -219,6 +220,7 @@ def guard_1244(data, player):
     """
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
+    print request
     response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
@@ -234,12 +236,14 @@ def guard_1244(data, player):
             # 标记装备已驻守
             equip = player.equipment_component.get_equipment(slot.equipment_id)
             equip.attribute.is_guard = True
+            equip.save_data()
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
 
         # 标记武将已驻守
         hero = player.hero_component.get_hero(slot.hero_no)
         hero.is_guard = True
+        hero.save_data()
 
 
     battle_units = {} #需要保存的阵容信息
@@ -247,6 +251,12 @@ def guard_1244(data, player):
         unit = slot.slot_attr
         if unit:
             battle_units[no] = unit
+
+    line_up_response = line_up_pb2.LineUpResponse()
+    line_up_info_detail(character_line_up.line_up_slots, {}, line_up_response)
+    add_unpar = line_up_response.unpars.add()
+    add_unpar.unpar_id = __skill
+    add_unpar.unpar_level = __skill_level
 
     info = {}
     info["battle_units"] = battle_units
@@ -256,13 +266,15 @@ def guard_1244(data, player):
     info["level"] = player.level.level
     info["nickname"] = player.base_info.base_name
     info["character_id"] = player.base_info.id
-    info["line_up"] = line_up_info(player).SerializePartialToString()
+    info["line_up"] = line_up_response.SerializePartialToString()
 
     result_code = save_guard(player, request.pos, info)
     if result_code:
         response.result = False
         response.result_no = result_code
         return response.SerializePartialToString()
+
+
 
     response.result = True
     player.mine.save_data()
@@ -309,6 +321,7 @@ def harvest_1245(data, player):
         response.res.message = u"没有可以领取的符文石"
 
     player.mine.save_data()
+    player.runt.save()
     print '1245-response', response
     return response.SerializePartialToString()
 
@@ -600,6 +613,17 @@ def trigger_mine_boss():
         return False
 
     result = remote_gate['world'].trigger_mine_boss()
+    return result
+
+def mine_boss():
+    boss_num = remote_gate['world'].mine_get_boss_num_remote()
+    logger.debug("mine boss num: %s" % boss_num)
+    max_boss_num = base_config.get("warFogBossCriServer")
+    if boss_num >= max_boss_num:
+        assert False, "mine boss reach max!"
+
+    result = remote_gate['world'].trigger_mine_boss_remote()
+    assert result, "trigger boss error!"
     return result
 
 
