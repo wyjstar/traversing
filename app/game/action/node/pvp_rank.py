@@ -4,6 +4,7 @@ created by sphinx on 27/10/14.
 """
 import cPickle
 import random
+import time
 from app.proto_file import pvp_rank_pb2
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
@@ -11,12 +12,17 @@ from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
+from shared.db_opear.configs_data.game_configs import base_config
+from app.game.component.achievement.user_achievement import CountEvent
+from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import pvp_process
+from app.game.core.item_group_helper import is_afford
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import get_return
+from app.proto_file.shop_pb2 import ShopResponse
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -68,9 +74,9 @@ def pvp_player_rank_request_1502(data, player):
     return response.SerializeToString()
 
 
-@remoteserviceHandle('gate')
-def pvp_player_rank_refresh_request_1503(data, player):
-    return pvp_player_rank_refresh_request(data, player)
+# @remoteserviceHandle('gate')
+# def pvp_player_rank_refresh_request_1503(data, player):
+#     return pvp_player_rank_refresh_request(data, player)
 
 
 @remoteserviceHandle('gate')
@@ -89,7 +95,8 @@ def pvp_player_info_request_1504(data, player):
         return None
 
 
-def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level):
+def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level,
+                            blue_skill, blue_skill_level):
     """docstring for pvp_fight_assemble_data"""
     # assemble pvp response
     response = pvp_rank_pb2.PvpFightResponse()
@@ -112,12 +119,21 @@ def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level, b
     return response.SerializeToString()
 
 
-
 @remoteserviceHandle('gate')
 def pvp_fight_request_1505(data, player):
     """
     pvp战斗开始
     """
+    tm = time.localtime(player.pvp_refresh_time)
+    local_tm = time.localtime()
+    if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+        player.pvp_times = 0
+        player.pvp_refresh_time = time.time()
+
+    if player.pvp_times >= base_config.get('arena_free_times'):
+        logger.error('not enough pvp times:%s%s', player.pvp_times,
+                     base_config.get('arena_free_times'))
+        return False
     request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
     line_up = request.lineup
@@ -129,8 +145,7 @@ def pvp_fight_request_1505(data, player):
     before_player_rank = 0
     if record:
         before_player_rank = record.get('id')
-        refresh_rank_data(player, before_player_rank,
-                          __skill, __skill_level)
+        refresh_rank_data(player, before_player_rank, __skill, __skill_level)
 
     if before_player_rank == request.challenge_rank:
         logger.error('cant not fight self')
@@ -154,7 +169,9 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
-    fight_result = pvp_process(player, line_up,red_units, blue_units, __best_skill, record.get("best_skill"), record.get("level"))
+    fight_result = pvp_process(player, line_up, red_units, blue_units,
+                               __best_skill, record.get("best_skill"),
+                               record.get("level"))
 
     logger.debug("fight result:%s" % fight_result)
 
@@ -175,13 +192,15 @@ def pvp_fight_request_1505(data, player):
     else:
         logger.debug("fight result:False")
 
-
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
+    player.pvp_times += 1
+    player.pvp_refresh_time = time.time()
+    player.save_data()
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
     pvp_assemble_units(red_units, blue_units, response)
@@ -192,6 +211,24 @@ def pvp_fight_request_1505(data, player):
     response.blue_skill_level = record.get("unpar_skill_level")
 
     return response.SerializeToString()
+
+
+def reset_pvp_time_1506(data, player):
+    response = ShopResponse()
+    _consume = base_config.get('arena_times_buy_price')
+    result = is_afford(player, _consume)  # 校验
+    if not result.get('result'):
+        response.res.result = False
+        response.res.result_no = 1506
+        return response.SerializePartialToString()
+
+    return_data = consume(player, _consume)  # 消耗
+    get_return(player, return_data, response.consume)
+    player.pvp_times = 0
+    player.pvp_refresh_time = time.time()
+    player.save_data()
+
+    return response.SerializePartialToString()
 
 
 def pvp_player_rank_refresh_request(data, player):

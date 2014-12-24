@@ -110,6 +110,7 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time =\
             character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
+        pvp_refresh_time = character_info['pvp_refresh_time']
         vip_level = character_info['vip_level']
 
         # ------------初始化角色基础信息组件---------
@@ -143,6 +144,7 @@ class PlayerCharacter(Character):
         self._stage.init_data()
 
         self._pvp_times = pvp_times
+        self._pvp_refresh_time = pvp_refresh_time
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
         self._level_gift.init_data()
@@ -303,6 +305,14 @@ class PlayerCharacter(Character):
         self._pvp_times = value
 
     @property
+    def pvp_refresh_time(self):
+        return self._pvp_refresh_time
+
+    @pvp_refresh_time.setter
+    def pvp_refresh_time(self, value):
+        self._pvp_refresh_time = value
+
+    @property
     def mail_component(self):
         return self._mail
 
@@ -388,5 +398,6 @@ class PlayerCharacter(Character):
         character_info.update_multi(dict(level=self._level.level,
                                          exp=self.level.exp,
                                          pvp_times=self._pvp_times,
+                                         pvp_refresh_time=self.pvp_refresh_time,
                                          newbee_guide_id=self._newbee_guide_id,
                                          vip_level=self._vip.vip_level))
