@@ -75,10 +75,6 @@ tb_character_stamina.insert()
 tb_character_travel = MAdmin('tb_character_travel', 'id')
 tb_character_travel.insert()
 
-# brew
-tb_character_brew = MAdmin('tb_character_brew', 'id')
-tb_character_brew.insert()
-
 # 活跃度
 tb_character_tasks = MAdmin('tb_character_lively', 'id')
 tb_character_tasks.insert()
