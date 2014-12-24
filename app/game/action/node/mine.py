@@ -100,7 +100,7 @@ def search_1241(data, player):
     response.position = request.position
     print 'response.position', response.position
     if player.mine.can_search(request.position):
-        player.mine.search_mine(request.position, trigger_mine_boss)
+        player.mine.search_mine(request.position, mine_boss)
         player.mine.save_data()
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(one_mine, response.mine)
@@ -613,6 +613,17 @@ def trigger_mine_boss():
         return False
 
     result = remote_gate['world'].trigger_mine_boss()
+    return result
+
+def mine_boss():
+    boss_num = remote_gate['world'].mine_get_boss_num_remote()
+    logger.debug("mine boss num: %s" % boss_num)
+    max_boss_num = base_config.get("warFogBossCriServer")
+    if boss_num >= max_boss_num:
+        assert False, "mine boss reach max!"
+
+    result = remote_gate['world'].trigger_mine_boss_remote()
+    assert result, "trigger boss error!"
     return result
 
 

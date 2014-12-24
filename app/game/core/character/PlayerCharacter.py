@@ -152,7 +152,7 @@ class PlayerCharacter(Character):
         self._vip.init_vip(vip_level)
         self._stamina.init_stamina(character_info.get('stamina'))
         self._shop.init_data()
-        self._brew.init_data()
+        self._brew.init_data(character_info)
         self._travel.init_data()
         # 活跃度
         self._tasks.init_data()

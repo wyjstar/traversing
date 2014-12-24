@@ -114,12 +114,13 @@ class Hero(object):
             else:
                 break
 
+        if level > player_level:
+            level = player_level
+            temp_exp = hero_exp_config[player_level].get('exp', 0)
         self.level = level
         self.exp = temp_exp
         self.save_data()
-        if self.level > player_level:
-            self.level = player_level
-            temp_exp = hero_exp_config[player_level].get('exp', 0)
+
         return level, temp_exp
 
     def save_data(self):

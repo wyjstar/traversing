@@ -128,5 +128,6 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
     print 'login game success'
     game_passport = login_game_response.get('passport')
 
+
     c = ClientCreator(reactor, robot_type, manager, game_passport, robot_nickname)
     c.connectTCP(net_ip, net_port)

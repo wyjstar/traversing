@@ -17,7 +17,7 @@ class CharacterStaminaComponent(Component):
     def __init__(self, owner):
         super(CharacterStaminaComponent, self).__init__(owner)
         self._open_receive = 1  # 开启接收活力
-        self._stamina = self.max_of_stamina  # 体力
+        self._stamina = base_config.get('vigor_for_InitUser', 120)  # 体力
         self._get_stamina_times = 0  # 通过邮件获取体力次数
         self._buy_stamina_times = 0  # 购买体力次数
         self._last_gain_stamina_time = 0  # 上次获取体力时间

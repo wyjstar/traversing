@@ -55,6 +55,7 @@ def nickname_create_5(request_proto, player):
     if not character_obj:
         response.result_no = 2
         return response.SerializeToString()
+    player.base_info.base_name = nickname
     character_obj.update('nickname', nickname)
 
     # 加入聊天

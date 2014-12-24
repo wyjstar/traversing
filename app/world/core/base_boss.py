@@ -99,9 +99,7 @@ class BaseBoss(object):
     def boss_dead_time(self, value):
         self._boss_dead_time = value
 
-    @property
-    def open_or_not(self):
-        return self.in_the_time_period()
+
 
     def start_boss(self):
         self._rank_instance.clear_rank() # 重置排行
@@ -130,7 +128,7 @@ class BaseBoss(object):
         debuff_skill = base_config_info.get("debuff_skill")
         self._debuff_skill_no = random_pick_with_percent(debuff_skill)
 
-        self.set_next_stage(self._hp<=0)
+
         self._hp = self.get_hp() # 重置血量
 
         #todo: 重置玩家信息
@@ -159,34 +157,6 @@ class BaseBoss(object):
             if v.quality in [2, 3, 4, 5, 6]:
                 all_low_heros.append(k)
         return all_high_heros, all_middle_heros, all_low_heros
-
-    def set_next_stage(self, kill_or_not=False):
-        """
-        根据id规则确定下一个关卡
-        如果boss未被击杀则不升级
-        """
-        logger.debug("current_stage_id1%s" % self._stage_id)
-        current_stage_id = self._stage_id
-        if current_stage_id == 0:
-            self._stage_id_am = 800101
-            self._stage_id_pm = 800102
-            self._stage_id = 800101
-            return
-        if kill_or_not: #如果boss被击杀，则升级boss
-            if current_stage_id == self._stage_id_am: # am
-                self._stage_id_am = current_stage_id + 100
-            else: # pm
-                self._stage_id_pm = current_stage_id + 100
-
-        if current_stage_id == self._stage_id_am:
-            self._stage_id = self._stage_id_pm
-        else:
-            self._stage_id = self._stage_id_am
-
-
-        logger.debug("current_stage_id3%s" % self._stage_id)
-        logger.debug("current_stage_id_am%s" % self._stage_id_am)
-        logger.debug("current_stage_id_pm%s" % self._stage_id_pm)
 
 
     def add_rank_item(self, player_info):

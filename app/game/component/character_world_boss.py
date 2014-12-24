@@ -84,13 +84,14 @@ class Boss(object):
         如果过期，则重设信息
         """
         stage_info  = self.get_stage_info()
+        if self._boss_id != "world_boss":
+            return
         time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
         if time_start > self._last_request_time or time_end < self._last_request_time:
             self._encourage_coin_num = 0
             self._encourage_gold_num = 0
             self._fight_times = 0
             self._last_fight_time = 0
-            self._stage_id = 0
             self._last_request_time = get_current_timestamp()
 
     @property

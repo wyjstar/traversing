@@ -35,7 +35,9 @@
                 "get_stamina_times": "simple",
                 "vip_level": "simple",
                 "newbee_guide_id": "simple",
-                "create_time": "simple"
+                "create_time": "simple",
+                "brew": "complex",
+                "hero_refine": "complex"
             }
         },
         "tb_character_shop": {
@@ -173,14 +175,6 @@
                 "chest_time": "simple",
                 "travel_item": "complex",
                 "fight_cache": "complex"
-            }
-        },
-        "tb_character_brew": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "brew": "complex",
-                "hero_refine": "complex"
             }
         },
         "tb_character_lively":{

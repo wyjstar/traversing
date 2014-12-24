@@ -4,6 +4,7 @@ created by wzp.
 """
 from robot import Robot
 from app.proto_file import pvp_rank_pb2
+import gevent
 
 class RobotPvp(Robot):
 
@@ -35,4 +36,17 @@ class RobotPvp(Robot):
         response = pvp_rank_pb2.PvpFightResponse()
         response.ParseFromString(message)
         print response
-        self.on_command_finish()
+        #gevent.sleep(1)
+        self.command_fight()
+
+        #self.on_command_finish()
+
+    def on_character_login_result(self, result):
+        print "*"*80
+        self.command_fight()
+
+    def on_login(self):
+        print "*"*80
+        self.command_fight()
+
+
