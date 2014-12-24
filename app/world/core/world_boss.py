@@ -41,9 +41,9 @@ class WorldBoss(BaseBoss):
         pm_period = self.get_stage_period(self._stage_id_pm)
 
         current = get_current_timestamp()
-        if current < am_period[1] and current > pm_period[1]:
+        if current < am_period[1]:
             self._stage_id = self._stage_id_am
-        elif current > am_period[1] and current < pm_period[1]:
+        elif current > am_period[1]:
             self._stage_id = self._stage_id_pm
 
     def save_data(self):

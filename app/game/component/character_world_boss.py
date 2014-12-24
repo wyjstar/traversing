@@ -90,7 +90,6 @@ class Boss(object):
             self._encourage_gold_num = 0
             self._fight_times = 0
             self._last_fight_time = 0
-            self._stage_id = 0
             self._last_request_time = get_current_timestamp()
 
     @property
