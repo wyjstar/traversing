@@ -62,7 +62,7 @@ class CharacterLoginGiftComponent(Component):
                         self._continuous_received = data.get('continuous_received')
                     self._last_login = int(time.time())
 
-            self.save_data()
+                    self.save_data()
 
         else:
             tb_character_activity.new({'id': self.owner.base_info.id,

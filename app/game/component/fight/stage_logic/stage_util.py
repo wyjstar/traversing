@@ -23,7 +23,16 @@ def settle(player, result, response, lively_event, conf):
     # 保存关卡信息
     player.stage_component.update()
 
+    # 保存活跃度
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+
     # 增加玩家和武将经验，增加金币
+    if not result:
+        return
+
     for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
         print lineUpSlotComponent,
         hero = lineUpSlotComponent.hero_slot.hero_obj
@@ -42,11 +51,6 @@ def settle(player, result, response, lively_event, conf):
     data = gain(player, settlement_drops)
     get_return(player, data, response.drops)
 
-    # 保存活跃度
-    tstatus = player.tasks.check_inter(lively_event)
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
 
 

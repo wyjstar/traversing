@@ -238,7 +238,7 @@ class MAdmin(MemObject):
         if not mm.IsEffective():
             return None
         data = mm.get('data')
-        if mm.get('data'):
+        if data:
             return data
         props = {self._pk: pk}
         record = util.GetOneRecordInfo(self._name, props)
