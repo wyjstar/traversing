@@ -4,7 +4,7 @@ created by server on 14-10-3下午3:43.
 """
 
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_shop
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import shop_config
 from shared.db_opear.configs_data.game_configs import shop_type_config
 from shared.utils.random_pick import random_multi_pick_without_repeat
@@ -20,14 +20,14 @@ class CharacterShopComponent(Component):
         super(CharacterShopComponent, self).__init__(owner)
         self._shop_data = {}
 
-    def init_data(self):
-        shop_data = tb_character_shop.getObjData(self.owner.base_info.id)
-        if shop_data:
+    def init_data(self, character_info):
+        if character_info.get('shop'):
             # print shop_data
-            self._shop_data = shop_data.get('shop')
+            self._shop_data = character_info.get('shop')
             # print self._shop_data
             self.check_time()
         else:
+            shop = tb_character_info.getObj(self.owner.base_info.id)
             for t, item in shop_type_config.items():
                 data = {}
                 data['buyed_item_ids'] = []
@@ -40,16 +40,15 @@ class CharacterShopComponent(Component):
                 self._shop_data[t] = data
             data = dict(id=self.owner.base_info.id, shop=self._shop_data)
             # print data
-            tb_character_shop.new(data)
+            shop.update('shop', data)
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
 
     def save_data(self):
-        shop = tb_character_shop.getObj(self.owner.base_info.id)
+        shop = tb_character_info.getObj(self.owner.base_info.id)
         if shop:
-            props = dict(shop=self._shop_data)
-            shop.update_multi(props)
+            shop.update('shop', self._shop_data)
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
 

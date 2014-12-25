@@ -44,9 +44,6 @@ tb_character_guild.insert()
 tb_guild_name = MAdmin('tb_guild_name', 'g_name')
 tb_guild_name.insert()
 
-tb_character_shop = MAdmin('tb_character_shop', 'id')
-tb_character_shop.insert()
-
 # 关卡信息表
 tb_character_stages = MAdmin('tb_character_stages', 'id')
 tb_character_stages.insert()

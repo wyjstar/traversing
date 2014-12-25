@@ -93,17 +93,12 @@ CREATE TABLE `tb_character_info` (
   `friends` blob,
   `blacklist` blob,
   `applicants_list` blob,
+  `shop` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `tb_character_shop`;
-CREATE TABLE `tb_character_shop` (
-  `id` bigint(20) NOT NULL,
-  `shop` blob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Table structure for table `tb_character_item_package`
 --

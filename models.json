@@ -40,13 +40,7 @@
                 "brew": "complex",
                 "friends": "complex",
                 "blacklist": "complex",
-                "applicants_list": "complex"
-            }
-        },
-        "tb_character_shop": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
+                "applicants_list": "complex",
                 "shop": "complex"
             }
         },
