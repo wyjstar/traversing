@@ -2,6 +2,7 @@
 """
 created by server on 14-6-17下午5:29.
 """
+from shared.db_opear.configs_data.data_helper import parse
 
 
 class BaseConfig(object):
@@ -92,4 +93,6 @@ class BaseConfig(object):
                 gold_relive_price = config_value.get("warFogBossMoneyRelivePrice")
                 )
         config_value["mine_boss"] = mine_boss
+
+        config_value['arena_times_buy_price'] = parse(config_value['arena_times_buy_price'])
         return config_value
