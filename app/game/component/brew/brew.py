@@ -9,6 +9,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
+from shared.utils.const import const
 
 # base_config.get('cookingWineOpenLevel')
 # base_config.get('cookingWineOutput')
@@ -20,7 +21,7 @@ class CharacterBrewComponent(Component):
     def __init__(self, owner):
         super(CharacterBrewComponent, self).__init__(owner)
         self._brew_date = 0
-        self._nectar = 0
+        # self._nectar = 0
         self._nectar_cur = 0
         self._brew_times = 0
         self._brew_step = 1
@@ -30,7 +31,7 @@ class CharacterBrewComponent(Component):
         if brew:
             self._brew_times = brew.get('brew_times')
             self._brew_date = brew.get('brew_data')
-            self._nectar = brew.get('nectar')
+            # self._nectar = brew.get('nectar')
             self._nectar_cur = brew.get('nectar_cur')
             self._brew_step = brew.get('brew_step')
             self.check_time()
@@ -38,7 +39,7 @@ class CharacterBrewComponent(Component):
             self.check_time()
             brew = dict(brew_times=self._brew_times,
                         brew_data=self._brew_date,
-                        nectar=self._nectar,
+                        # nectar=self._nectar,
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
             char_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -49,7 +50,7 @@ class CharacterBrewComponent(Component):
         if char_obj:
             brew = dict(brew_times=self._brew_times,
                         brew_data=self._brew_date,
-                        nectar=self._nectar,
+                        # nectar=self._nectar,
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
             char_obj.update('brew', brew)
@@ -119,7 +120,9 @@ cur:%s time:%s cri:%s',
         if self._brew_times >= brew_times_max:
             logger.error('not enough times to taken brew:%s', self._brew_times)
             return False
-        self._nectar += self._nectar_cur
+        # self._nectar += self._nectar_cur
+        self.owner.finance[const.NECTAR] += self._nectar_cur
+        self.owner.finance.save_data()
         self._nectar_cur = base_config.get('cookingWineOutput')
         self._brew_step = 1
         self._brew_times += 1
@@ -138,14 +141,11 @@ cur:%s time:%s cri:%s',
             self._brew_step = 1
 
     def consume(self, value):
-        if self._nectar >= value:
-            self._nectar -= value
-            return True
-        return False
+        return self.owner.finance.consume(const.NECTAR, value)
 
     @property
     def nectar(self):
-        return self._nectar
+        return self.owner.finance[const.NECTAR]
 
     @property
     def brew_times(self):

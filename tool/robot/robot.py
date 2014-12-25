@@ -74,9 +74,9 @@ class Robot(RobotBase):
         response.ParseFromString(message)
         print 'change nickname result:', response.result
         print "-+"*40, self.__class__, self.on_character_login_result
-        #if self.on_character_login_result:
-            #self.on_character_login_result(True)
-        if self.on_login:
+        if self.on_character_login_result:
+            self.on_character_login_result(True)
+        if hasattr(self, 'on_login'):
             self.on_login()
 
     def abc_1234(self, message):

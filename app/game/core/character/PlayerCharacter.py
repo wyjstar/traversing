@@ -177,8 +177,9 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
 
         finances = [0] * const.RESOURCE_MAX
-        finances[const.COIN] = base_config.get('coin_for_InitUser')
-        finances[const.GOLD] = base_config.get('money_for_InitUser')
+        for t, v in base_config.get('resource_for_InitUser').items():
+            finances[t] = v
+
         character_info = {'id': pid,
                           'nickname': u'',
                           'level': 1,
