@@ -20,7 +20,7 @@ class CharacterTravelComponent(Component):
         self._fight_cache = [0, 0]
 
         # {stage_id:[{start_tiem:0, continued_time:0,
-        # 'events': [[event_id, drop, start_time]], already_times: 0}]}
+        # 'events': [[state, event_id, drop, start_time]], already_times: 0}]}
         self._auto = {}
 
     def init_data(self):
