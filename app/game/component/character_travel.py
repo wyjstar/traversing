@@ -57,6 +57,18 @@ class CharacterTravelComponent(Component):
                                'auto': self._auto,
                                'fight_cache': self._fight_cache})
 
+    def get_travel_item_groups(self):
+        groups = []
+        my_travel_items = []
+        for stage_id, stage_items in self._travel_item:
+            my_travel_items += stage_items
+
+        for (group_id, group_info) in game_configs.travel_item_config.get('groups').items():
+            t_group = set(group_info)
+            if t_group.issubset(set(my_travel_items)):
+                groups.append(group_id)
+        return groups
+
     @property
     def shoes(self):
         return self._shoes

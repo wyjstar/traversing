@@ -262,7 +262,7 @@ def gain(player, item_group, result=None):
             logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
         elif type_id == const.TRAVEL_ITEM:
-            stage_id = travel_item_config.get(item_no).stageId
+            stage_id = travel_item_config.get('items').get(item_no).stageId
             flag1 = 1
             flag2 = 0
             stage_item_info = player.travel_component.travel_item.get(stage_id)

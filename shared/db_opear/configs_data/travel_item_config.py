@@ -11,10 +11,15 @@ from shared.db_opear.configs_data.data_helper import parse
 class TravelItemConfig(object):
     def __init__(self):
         self._items = {}
+        self._group = {}
 
     def parser(self, config_value):
         for row in config_value:
             item = CommonItem(row)
             self._items[item.id] = item
+            if self._group.get(item.group):
+                self._group[item.group].append(item.id)
+            else:
+                self._group[item.group] = [item.id]
 
-        return self._items
+        return {'items': self._items, 'groups': self._group}
