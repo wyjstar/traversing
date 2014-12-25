@@ -38,9 +38,8 @@ class CharacterShopComponent(Component):
                 if item.itemNum > 0:
                     data['item_ids'] = self.get_shop_item_ids(t, 0)
                 self._shop_data[t] = data
-            data = dict(id=self.owner.base_info.id, shop=self._shop_data)
             # print data
-            shop.update('shop', data)
+            shop.update('shop', self._shop_data)
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
