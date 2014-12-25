@@ -167,9 +167,9 @@ def _with_battle_info(response, pid):
     # 添加好友主将的属性
     lord_data = tb_character_info.getObjData(pid).get('lord_attr_info', {})
     if lord_data:
-        battle_unit = BattleUnit.loads(info.get('info'))
+        battle_unit = BattleUnit.loads(lord_data.get('info'))
         response.hero_no = battle_unit.unit_no
-        response.power = int(info.get('power', 0))
+        response.power = int(lord_data.get('power', 0))
         response.hp = battle_unit.hp
         response.atk = battle_unit.atk
         response.physical_def = battle_unit.physical_def
