@@ -213,6 +213,7 @@ def pvp_fight_request_1505(data, player):
     return response.SerializeToString()
 
 
+@remoteserviceHandle('gate')
 def reset_pvp_time_1506(data, player):
     response = ShopResponse()
     _consume = base_config.get('arena_times_buy_price')
