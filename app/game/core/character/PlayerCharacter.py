@@ -196,7 +196,6 @@ class PlayerCharacter(Character):
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time()),
                           'finances': finances
-
                           }
         tb_character_info.new(character_info)
 
