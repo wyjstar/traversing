@@ -23,7 +23,7 @@ def get_heros_101(pro_data, player):
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
 
-    print response, "*"*80
+    # print response, "*"*80
     return response.SerializePartialToString()
 
 
@@ -234,6 +234,6 @@ def hero_sacrifice_oper(heros, player):
     item_pb.item_no = exp_item_no
     item_pb.item_num = exp_item_num
     response.res.result = True
-    print "*"*80
-    print response
+    # print "*"*80
+    # print response
     return response
