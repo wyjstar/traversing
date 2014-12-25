@@ -94,6 +94,7 @@ CREATE TABLE `tb_character_info` (
   `blacklist` blob,
   `applicants_list` blob,
   `shop` blob,
+  `lord_attr_info` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -121,17 +122,6 @@ CREATE TABLE `tb_character_line_up` (
   `sub_slots` blob,
   `line_up_order` blob,
   `unpars` tinyblob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `tb_character_lord`
---
-
-DROP TABLE IF EXISTS `tb_character_lord`;
-CREATE TABLE `tb_character_lord` (
-  `id` bigint(20) NOT NULL,
-  `attr_info` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

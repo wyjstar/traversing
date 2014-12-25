@@ -56,10 +56,6 @@ tb_mail_info.insert()
 tb_character_activity = MAdmin('tb_character_activity', 'id')
 tb_character_activity.insert()
 
-# 主将信息表
-tb_character_lord = MAdmin('tb_character_lord', 'id')
-tb_character_lord.insert()
-
 # 体力表
 tb_character_stamina = MAdmin('tb_character_stamina', 'id')
 tb_character_stamina.insert()

@@ -41,7 +41,8 @@
                 "friends": "complex",
                 "blacklist": "complex",
                 "applicants_list": "complex",
-                "shop": "complex"
+                "shop": "complex",
+                "lord_attr_info": "complex"
             }
         },
         "tb_character_hero": {
@@ -146,14 +147,6 @@
                 "level_gift": "complex"
             }
         },
-        "tb_character_lord": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "attr_info": "complex"
-            }
-        },
-        
         "tb_character_travel": {
             "pkey_field": "id",
             "def_attrs": {
