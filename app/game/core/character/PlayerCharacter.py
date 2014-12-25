@@ -139,7 +139,7 @@ class PlayerCharacter(Character):
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._mail.init_data()  # 初始化邮箱
-        self._friends.init_data()
+        self._friends.init_data(character_info)
         self._guild.init_data()
         self._stage.init_data()
 

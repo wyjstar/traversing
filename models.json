@@ -38,7 +38,9 @@
                 "newbee_guide_id": "simple",
                 "create_time": "simple",
                 "brew": "complex",
-                "hero_refine": "complex"
+                "friends": "complex",
+                "blacklist": "complex",
+                "applicants_list": "complex"
             }
         },
         "tb_character_shop": {
@@ -114,15 +116,6 @@
             "def_attrs": {
                 "id":"simple",
                 "info": "complex"
-            }
-        },
-        "tb_character_friend":{
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "friends": "complex",
-                "blacklist": "complex",
-                "applicants_list": "complex"
             }
         },
         "tb_guild_name": {

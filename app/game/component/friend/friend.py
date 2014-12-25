@@ -8,7 +8,7 @@ import time
 
 from app.game.action.root import netforwarding
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_friend
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import mail_config
 
@@ -20,26 +20,24 @@ class FriendComponent(Component):
         self._blacklist = []
         self._applicants_list = {}
 
-    def init_data(self):
-        friend_data = tb_character_friend.getObjData(self.owner.base_info.id)
-
-        if friend_data:
-            self._friends = friend_data.get('friends')
-            self._blacklist = friend_data.get('blacklist')
-            self._applicants_list = friend_data.get('applicants_list')
+    def init_data(self, character_info):
+        if character_info.get('friend'):
+            self._friends = character_info.get('friends')
+            self._blacklist = character_info.get('blacklist')
+            self._applicants_list = character_info.get('applicants_list')
         else:
-            data = dict(id=self.owner.base_info.id,
-                        friends=self._friends,
+            friend_obj = tb_character_info.getObj(self.owner.base_info.id)
+            data = dict(friends=self._friends,
                         blacklist=self._blacklist,
                         applicants_list=self._applicants_list)
-            tb_character_friend.new(data)
+            friend_obj.update_multi(data)
 
     def save_data(self):
-        friend_obj = tb_character_friend.getObj(self.owner.base_info.id)
+        friend_obj = tb_character_info.getObj(self.owner.base_info.id)
         if friend_obj:
-            data = {'friends': self._friends,
-                    'blacklist': self._blacklist,
-                    'applicants_list': self._applicants_list}
+            data = dict(friends=self._friends,
+                        blacklist=self._blacklist,
+                        applicants_list=self._applicants_list)
             friend_obj.update_multi(data)
         else:
             logger.error('cant find friendinfo:%s', self.owner.base_info.id)

@@ -44,10 +44,6 @@ tb_character_guild.insert()
 tb_guild_name = MAdmin('tb_guild_name', 'g_name')
 tb_guild_name.insert()
 
-# friend表
-tb_character_friend = MAdmin('tb_character_friend', 'id')
-tb_character_friend.insert()
-
 tb_character_shop = MAdmin('tb_character_shop', 'id')
 tb_character_shop.insert()
 

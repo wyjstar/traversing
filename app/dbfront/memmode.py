@@ -33,10 +33,6 @@ tb_equipment_info.insert()
 tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
 tb_character_equipment_chip.insert()
 
-# friend琛�
-tb_character_friend = MAdmin('tb_character_friend', 'id')
-tb_character_friend.insert()
-
 # ���浼�淇℃��琛�
 tb_guild_info = MAdmin('tb_guild_info', 'id')
 tb_guild_info.insert()

@@ -33,19 +33,6 @@ CREATE TABLE `tb_character_equipment_chip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `tb_character_friend`
---
-
-DROP TABLE IF EXISTS `tb_character_friend`;
-CREATE TABLE `tb_character_friend` (
-  `id` bigint(20) NOT NULL,
-  `friends` blob,
-  `blacklist` blob,
-  `applicants_list` blob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Table structure for table `tb_character_guild`
 --
 
@@ -103,7 +90,9 @@ CREATE TABLE `tb_character_info` (
   `finances` tinyblob,
   `stamina` blob NOT NULL,
   `brew` blob,
-  `hero_refine` blob,
+  `friends` blob,
+  `blacklist` blob,
+  `applicants_list` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
