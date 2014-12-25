@@ -34,27 +34,20 @@ def _write_parameter(proto, arg):
         proto.bool_param = arg
     elif arg is None:
         proto.is_null = True
-    elif isinstance(arg, list) or isinstance(arg, dict):
+    elif isinstance(arg, list):
         proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
 
 
 def _read_parameter(proto):
-    if proto.HasField('proto_param'):
-        return proto.proto_param
-    elif proto.HasField('string_param'):
-        return proto.string_param
-    elif proto.HasField('int_param'):
-        return proto.int_param
-    elif proto.HasField('float_param'):
-        return proto.float_param
-    elif proto.HasField('bool_param'):
-        return proto.bool_param
-    elif proto.HasField('python_param'):
-        return marshal.loads(proto.python_param)
-    else:
+    desc, arg = proto.ListFields()[0]
+    if desc.name == 'is_null':
         return None
+    elif desc.name == 'python_param':
+        return marshal.loads(arg)
+    else:
+        return arg
 
 
 class RemoteObject:

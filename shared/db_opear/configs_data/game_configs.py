@@ -145,9 +145,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print newbee_guide_config.get(4)
-
-    print stage_config.get("stages").get(100101)
-    for k, v in shop_config.items():
-        print k, v
-
+    print base_config.get('arena_times_buy_price')
