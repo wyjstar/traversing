@@ -46,7 +46,9 @@ from formula_config import FormulaConfig
 from mine_match_config import MineMatchConfig
 from stone_config import StoneConfig
 from newbee_guide_config import NewbeeGuideConfig
+from travel_item_group_config import TravelItemGroupConfig
 
+travel_item_group_config = {}
 stone_config = {}
 travel_item_config = {}
 base_config = {}
@@ -93,6 +95,7 @@ mine_match_config = {}
 
 
 all_config_name = {
+    'travel_item_group_config': TravelItemGroupConfig(),
     'base_config': BaseConfig(),
     'hero_config': HeroConfig(),
     'hero_exp_config': HeroExpConfig(),
@@ -145,4 +148,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print base_config.get('arena_times_buy_price')
+    print travel_item_group_config.get(1).hp

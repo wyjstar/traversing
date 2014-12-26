@@ -5,6 +5,7 @@ created by server on 14-7-17上午11:07.
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_travel
 from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class CharacterTravelComponent(Component):
@@ -56,6 +57,32 @@ class CharacterTravelComponent(Component):
                                'chest_time': self._chest_time,
                                'auto': self._auto,
                                'fight_cache': self._fight_cache})
+
+    def get_travel_item_groups(self):
+        groups = []
+        my_travel_items = []
+        for stage_id, stage_items in self._travel_item:
+            my_travel_items += stage_items
+
+        for (group_id, group_info) in game_configs.travel_item_config.get('groups').items():
+            t_group = set(group_info)
+            if t_group.issubset(set(my_travel_items)):
+                groups.append(group_id)
+        return groups
+
+    def get_travel_item_attr(self):
+        hp = 0
+        atk = 0
+        physical_def = 0
+        magic_def = 0
+        for group_id in self.get_travel_item_groups():
+            conf = game_configs.travel_item_group_config.get(group_id)
+            hp += conf.hp
+            atk += conf.atk
+            physical_def += conf.physicalDef
+            magic_def += conf.magicDef
+
+        return CommonItem(dict(hp=hp, atk=atk, physical_def=physical_def, magic_def=magic_def))
 
     @property
     def shoes(self):
