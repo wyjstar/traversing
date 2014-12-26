@@ -27,8 +27,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_character_equipment_chip)
     # 装备信息表
     MAdminManager().registe(memmode.tb_equipment_info)
-    # friend表
-    MAdminManager().registe(memmode.tb_character_friend)
     # 公会信息表
     MAdminManager().registe(memmode.tb_guild_info)
     # 玩家公会表
@@ -37,15 +35,14 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_character_guild)
     # 玩家活动表
     MAdminManager().registe(memmode.tb_character_activity)
-    # 主将信息表
-    MAdminManager().registe(memmode.tb_character_lord)
     # 关卡信息表
     MAdminManager().registe(memmode.tb_character_stages)
     # 邮件表
     MAdminManager().registe(memmode.tb_mail_info)
 
-    #活跃度
+    # 活跃度
     MAdminManager().registe(memmode.tb_character_tasks)
+
 
 def check_mem_db(delta):
     """同步内存数据到数据库

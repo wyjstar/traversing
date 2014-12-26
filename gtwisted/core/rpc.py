@@ -9,15 +9,45 @@ from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
 import gevent
-import marshal
 import struct
+import rpc_pb2
+import marshal
 
 
 ASK_SIGNAL = "ASK"  # 请求结果的信号
 NOTICE_SIGNAL = "NOTICE"  # 仅做通知的信号，不要求返回值
 ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
 DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
-RPC_DATA_MAX_LENGTH = 2147483647  # rpc数据包允许的最大长度
+RPC_DATA_MAX_LENGTH = 64*1024  # rpc数据包允许的最大长度
+
+
+def _write_parameter(proto, arg):
+    if isinstance(arg, str):
+        proto.proto_param = arg
+    elif isinstance(arg, unicode):
+        proto.string_param = arg
+    elif isinstance(arg, int):
+        proto.int_param = arg
+    elif isinstance(arg, float):
+        proto.float_param = arg
+    elif isinstance(arg, bool):
+        proto.bool_param = arg
+    elif arg is None:
+        proto.is_null = True
+    elif isinstance(arg, list):
+        proto.python_param = marshal.dumps(arg)
+    else:
+        print 'error type < '*30, type(arg), arg
+
+
+def _read_parameter(proto):
+    desc, arg = proto.ListFields()[0]
+    if desc.name == 'is_null':
+        return None
+    elif desc.name == 'python_param':
+        return marshal.loads(arg)
+    else:
+        return arg
 
 
 class RemoteObject:
@@ -69,8 +99,20 @@ class PBProtocl(BaseProtocol):
             _msgtype = ASK_SIGNAL
         else:
             _msgtype = NOTICE_SIGNAL
-        request = marshal.dumps(dict(_msgtype=_msgtype, _key=_key, _name=_name, _args=args, _kw=kw))
-        self.writeData(request)
+        request = rpc_pb2.RPCProtocol()
+        request.msgType = _msgtype
+        request.key = _key
+        request.name = _name
+        for arg in args:
+            para = request.parameters.add()
+            _write_parameter(para, arg)
+
+        if kw:
+            print 'rpc kw para'*10, kw
+
+        # request.args = str(args)
+        # request.kw = str(kw)
+        self.writeData(request.SerializePartialToString())
 
     def writeData(self, data):
         """发送数据的统一接口
@@ -97,8 +139,9 @@ class PBProtocl(BaseProtocol):
     def msgResolve(self, data):
         """消息解析
         """
-        request = marshal.loads(data)
-        _msgtype = request['_msgtype']
+        request = rpc_pb2.RPCProtocol()
+        request.ParseFromString(data)
+        _msgtype = request.msgType
         if _msgtype == ASK_SIGNAL or _msgtype == NOTICE_SIGNAL:
             self.askReceived(request)
         elif _msgtype == ANSWER_SIGNAL:
@@ -107,16 +150,21 @@ class PBProtocl(BaseProtocol):
     def askReceived(self, request):
         """远程调用请求到达时的处理
         """
-        _key = request['_key']
-        _name = request['_name']
-        _args = request['_args']
-        _kw = request['_kw']
+        _key = request.key
+        _name = request.name
+        _args = []  # eval(request.args)
+        for para in request.parameters:
+            _args.append(_read_parameter(para))
+
+        _kw = {}  # eval(request.kw)
         method = self.getRemoteMethod(_name)
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
-            response = {'_msgtype': ANSWER_SIGNAL, '_key': _key, 'result': result}
-            _response = marshal.dumps(response)
-            self.writeData(_response)
+            response = rpc_pb2.RPCProtocol()
+            response.msgType = ANSWER_SIGNAL
+            response.key = _key
+            _write_parameter(response.result, result)
+            self.writeData(response.SerializePartialToString())
 
     def getRemoteMethod(self, _name):
         """获取远程调用的方法对象
@@ -132,9 +180,10 @@ class PBProtocl(BaseProtocol):
     def answerReceived(self, request):
         """请求的结果返回后的处理
         """
-        _key = request['_key']
+        _key = request.key
         aresult = AsyncResultFactory().popAsyncResult(_key)
-        aresult.set(request['result'])
+        result = _read_parameter(request.result)
+        aresult.set(result)
 
 
 class PBServerProtocl(PBProtocl):

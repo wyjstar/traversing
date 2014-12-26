@@ -33,19 +33,6 @@ CREATE TABLE `tb_character_equipment_chip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `tb_character_friend`
---
-
-DROP TABLE IF EXISTS `tb_character_friend`;
-CREATE TABLE `tb_character_friend` (
-  `id` bigint(20) NOT NULL,
-  `friends` blob,
-  `blacklist` blob,
-  `applicants_list` blob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Table structure for table `tb_character_guild`
 --
 
@@ -93,26 +80,26 @@ CREATE TABLE `tb_character_info` (
   `excellent_hero_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `fine_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
-  `pvp_times` int(11) DEFAULT NULL,
+  `pvp_times` int(11) DEFAULT 0,
+  `pvp_refresh_time` int(11) DEFAULT 0,
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
   `last_login_time` int(11) DEFAULT NULL,
   `vip_level` int(11) NOT NULL DEFAULT '0',
   `create_time` int(11) NOT NULL DEFAULT '0',
-  `pvp_count` bigint(20) NOT NULL DEFAULT '0',
   `newbee_guide_id` int(11) NOT NULL DEFAULT '0',
   `finances` tinyblob,
   `stamina` blob NOT NULL,
+  `brew` blob,
+  `friends` blob,
+  `blacklist` blob,
+  `applicants_list` blob,
+  `shop` blob,
+  `lord_attr_info` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `tb_character_shop`;
-CREATE TABLE `tb_character_shop` (
-  `id` bigint(20) NOT NULL,
-  `shop` blob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Table structure for table `tb_character_item_package`
 --
@@ -135,17 +122,6 @@ CREATE TABLE `tb_character_line_up` (
   `sub_slots` blob,
   `line_up_order` blob,
   `unpars` tinyblob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `tb_character_lord`
---
-
-DROP TABLE IF EXISTS `tb_character_lord`;
-CREATE TABLE `tb_character_lord` (
-  `id` bigint(20) NOT NULL,
-  `attr_info` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -230,15 +206,6 @@ CREATE TABLE `tb_pvp_rank` (
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
   `hero_ids` tinyblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `tb_character_brew`;
-CREATE TABLE `tb_character_brew` (
-  `id` bigint(20) NOT NULL,
-  `brew` blob,
-  `hero_refine` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

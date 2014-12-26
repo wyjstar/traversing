@@ -110,6 +110,7 @@ class PlayerCharacter(Character):
         excellent_equipment_last_pick_time =\
             character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
+        pvp_refresh_time = character_info['pvp_refresh_time']
         vip_level = character_info['vip_level']
 
         # ------------初始化角色基础信息组件---------
@@ -138,11 +139,12 @@ class PlayerCharacter(Character):
         self._equipment_chip.init_data()
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._mail.init_data()  # 初始化邮箱
-        self._friends.init_data()
+        self._friends.init_data(character_info)
         self._guild.init_data()
         self._stage.init_data()
 
         self._pvp_times = pvp_times
+        self._pvp_refresh_time = pvp_refresh_time
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
         self._level_gift.init_data()
@@ -151,8 +153,8 @@ class PlayerCharacter(Character):
         self._world_boss.init_data()
         self._vip.init_vip(vip_level)
         self._stamina.init_stamina(character_info.get('stamina'))
-        self._shop.init_data()
-        self._brew.init_data()
+        self._shop.init_data(character_info)
+        self._brew.init_data(character_info)
         self._travel.init_data()
         # 活跃度
         self._tasks.init_data()
@@ -175,8 +177,9 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
 
         finances = [0] * const.RESOURCE_MAX
-        finances[const.COIN] = base_config.get('coin_for_InitUser')
-        finances[const.GOLD] = base_config.get('money_for_InitUser')
+        for t, v in base_config.get('resource_for_InitUser').items():
+            finances[t] = v
+
         character_info = {'id': pid,
                           'nickname': u'',
                           'level': 1,
@@ -186,14 +189,13 @@ class PlayerCharacter(Character):
                           'fine_equipment_last_pick_time': 0,
                           'excellent_equipment_last_pick_time': 0,
                           'pvp_times': 0,
+                          'pvp_refresh_time': 0,
                           'newbee_guide_id': 0,
-                          'pvp_count': 0,
                           'create_time': int(time.time()),
                           'vip_level': base_config.get('initialVipLevel'),
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time()),
                           'finances': finances
-
                           }
         tb_character_info.new(character_info)
 
@@ -303,6 +305,14 @@ class PlayerCharacter(Character):
         self._pvp_times = value
 
     @property
+    def pvp_refresh_time(self):
+        return self._pvp_refresh_time
+
+    @pvp_refresh_time.setter
+    def pvp_refresh_time(self, value):
+        self._pvp_refresh_time = value
+
+    @property
     def mail_component(self):
         return self._mail
 
@@ -388,5 +398,6 @@ class PlayerCharacter(Character):
         character_info.update_multi(dict(level=self._level.level,
                                          exp=self.level.exp,
                                          pvp_times=self._pvp_times,
+                                         pvp_refresh_time=self.pvp_refresh_time,
                                          newbee_guide_id=self._newbee_guide_id,
                                          vip_level=self._vip.vip_level))
