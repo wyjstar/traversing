@@ -7,7 +7,7 @@ from app.game.component.Component import Component
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.component.line_up.hero_slot import HeroSlotComponent
 from app.battle.battle_unit import do_assemble
-from app.game.redis_mode import tb_character_lord
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.game_configs import formula_config
 from shared.db_opear.configs_data.common_item import CommonItem
@@ -249,9 +249,10 @@ class LineUpSlotComponent(Component):
         position = line_up_order.index(self._slot_no)
         position += 1
         battlt_unit = do_assemble(hero_no, quality, break_skill_buff_ids,
-                                  hp, atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block,
-                                  ductility, position,
-                                  hero_obj.level, hero_obj.break_level, is_boss)
+                                  hp, atk, physical_def, magic_def, hit,
+                                  dodge, cri, cri_coeff, cri_ded_coeff,
+                                  block, ductility, position, hero_obj.level,
+                                  hero_obj.break_level, is_boss)
 
         return battlt_unit
 
@@ -286,13 +287,13 @@ class LineUpSlotComponent(Component):
         更新主将属性
         """
         unit = self.slot_attr
-        lord_data = tb_character_lord.getObjData(self.owner.character_id)
-        if lord_data:
-            lord_obj = tb_character_lord.getObj(self.owner.character_id)
-            lord_obj.update('attr_info', {'info': unit.dumps(), 'power': self.combat_power()})
+        lord_obj = tb_character_info.getObj(self.owner.character_id)
+        if lord_obj:
+            data = {'info': unit.dumps(), 'power': self.combat_power()}
+            lord_obj.update('lord_attr_info', data)
         else:
-            tb_character_lord.new({'id': self.owner.character_id, 'attr_info': {'info': unit.dumps(),
-                                                                                'power': self.combat_power()}})
+            logger.error('error cant find character info:%s',
+                         self.owner.character_id)
 
     @property
     def first_slot(self):

@@ -38,14 +38,11 @@
                 "newbee_guide_id": "simple",
                 "create_time": "simple",
                 "brew": "complex",
-                "hero_refine": "complex"
-            }
-        },
-        "tb_character_shop": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "shop": "complex"
+                "friends": "complex",
+                "blacklist": "complex",
+                "applicants_list": "complex",
+                "shop": "complex",
+                "lord_attr_info": "complex"
             }
         },
         "tb_character_hero": {
@@ -116,15 +113,6 @@
                 "info": "complex"
             }
         },
-        "tb_character_friend":{
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "friends": "complex",
-                "blacklist": "complex",
-                "applicants_list": "complex"
-            }
-        },
         "tb_guild_name": {
             "pkey_field": "g_name",
             "def_attrs": {
@@ -159,14 +147,6 @@
                 "level_gift": "complex"
             }
         },
-        "tb_character_lord": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "attr_info": "complex"
-            }
-        },
-        
         "tb_character_travel": {
             "pkey_field": "id",
             "def_attrs": {

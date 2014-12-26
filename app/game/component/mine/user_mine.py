@@ -430,9 +430,10 @@ class PlayerField(Mine):
 #             last_increase =  0
 #         else:
 #             last_increase = self._increase
-#         mine = ConfigData.mine(self._mine_id)
+        mine = ConfigData.mine(self._mine_id)
         print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
-        return 0, 1, 0, -1, self._normal, self._lucky, self._lineup, self._guard_time  # ret, msg, last_increase, limit, normal, lucky, heros
+        limit = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
+        return 0, 1, 0, limit, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
     
     def guard(self, nickname, info):
         """
@@ -786,13 +787,17 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
         
-        stype = MineType.COPY
+#         stype = MineType.COPY
         print 'stype', stype
         
         if stype == MineType.COPY:
             print '123'
-            result = func()
-            print '123', result
+            result = None
+            try:
+                result = func()
+                print '123', result
+            except:
+                print '123456'
             if not result:
                 stype = MineType.MONSTER_FIELD
         if stype == MineType.PLAYER_FIELD:

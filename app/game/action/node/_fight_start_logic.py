@@ -4,10 +4,11 @@
 重用开始战斗相关代码。
 """
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.redis_mode import tb_character_lord
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.battle.battle_unit import BattleUnit
 from app.battle.battle_process import BattlePVPProcess
+
 
 def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level):
     """docstring for pvp_process"""
@@ -76,10 +77,10 @@ def fight_start(stage, fid, player):
     red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     # 好友
-    lord_data = tb_character_lord.getObjData(fid)
+    lord_data = tb_character_info.getObjData(fid)
     f_unit = None
     if lord_data:
-        info = lord_data.get('attr_info').get('info')
+        info = lord_data.get('lord_attr_info').get('info')
         f_unit = BattleUnit.loads(info)
     else:
         logger.info('can not find friend id :%d' % fid)
@@ -91,6 +92,7 @@ def fight_start(stage, fid, player):
                 monster_unpara=monster_unpara,
                 f_unit=f_unit,
                 result_no=0)
+
 
 def pve_assemble_units(red_units, blue_groups, response):
     """docstring for pve_assemble_response"""
@@ -116,11 +118,13 @@ def pve_assemble_units(red_units, blue_groups, response):
         #unpar_level = player.line_up_component.unpars[red_skill]
         #response.hero_unpar_level = unpar_level
 
+
 def pve_assemble_friend(f_unit, response):
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
     logger.debug('进入关卡返回数据:%s', response)
+
 
 def assemble(unit_add, unit):
     unit_add.no = unit.unit_no

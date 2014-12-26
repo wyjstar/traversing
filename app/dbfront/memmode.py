@@ -33,10 +33,6 @@ tb_equipment_info.insert()
 tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
 tb_character_equipment_chip.insert()
 
-# friend琛�
-tb_character_friend = MAdmin('tb_character_friend', 'id')
-tb_character_friend.insert()
-
 # ���浼�淇℃��琛�
 tb_guild_info = MAdmin('tb_guild_info', 'id')
 tb_guild_info.insert()
@@ -52,10 +48,6 @@ tb_guild_name.insert()
 # ��╁�舵椿��ㄨ〃
 tb_character_activity = MAdmin('tb_character_activity', 'id')
 tb_character_activity.insert()
-
-# 涓诲��淇℃��琛�
-tb_character_lord = MAdmin('tb_character_lord', 'id')
-tb_character_lord.insert()
 
 # ��冲�′俊���琛�
 tb_character_stages = MAdmin('tb_character_stages', 'id')

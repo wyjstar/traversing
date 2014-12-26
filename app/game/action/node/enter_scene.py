@@ -29,13 +29,6 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.level = player.level.level
     responsedata.exp = player.level.exp
 
-    responsedata.coin = player.finance.coin
-    responsedata.gold = player.finance.gold
-    responsedata.hero_soul = player.finance.hero_soul
-    responsedata.junior_stone = player.finance.junior_stone
-    responsedata.middle_stone = player.finance.middle_stone
-    responsedata.high_stone = player.finance.high_stone
-    responsedata.pvp_score = player.finance.pvp_score
     for i in player.finance._finances:
         responsedata.finances.append(i)
 
