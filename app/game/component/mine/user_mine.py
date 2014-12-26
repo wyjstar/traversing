@@ -787,13 +787,17 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
         
-        stype = MineType.COPY
+#         stype = MineType.COPY
         print 'stype', stype
         
         if stype == MineType.COPY:
             print '123'
-            result = func()
-            print '123', result
+            result = None
+            try:
+                result = func()
+                print '123', result
+            except:
+                print '123456'
             if not result:
                 stype = MineType.MONSTER_FIELD
         if stype == MineType.PLAYER_FIELD:
