@@ -39,9 +39,13 @@ def get_stages_901(pro_data, player):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
+        addadd = add.reset.add()
+        addadd.times = stage_obj.reset[0]
+        addadd.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
     response.sweep_times = sweep_times
+    logger.debug(response)
     return response.SerializePartialToString()
 
 
