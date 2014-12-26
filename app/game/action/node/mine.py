@@ -496,6 +496,11 @@ def process_mine_result(player, position, result, response, stype):
                 optional string prize = 12; //奖品
             """
             mail = {}
+            prize = {}
+            prize[108] = []
+            
+            for k, v in count.items():
+                prize[108].append([v, v, k])
             
             mail = {'sender_id': -1,
             'sender_name': '',
@@ -504,14 +509,12 @@ def process_mine_result(player, position, result, response, stype):
             'title': '',
             'content': '',
             'mail_type': 2,
-            'prize': mail.prize}
+            'prize': prize}
             mail['send_time'] = int(time.time())
             
             # command:id 为收邮件的命令ID
             if sum(count.values()) > 0:
                 response.result = netforwarding.push_message('receive_mail_remote', target, mail)
-
-
 
 @remoteserviceHandle('gate')
 def settle_1252(data, player):
