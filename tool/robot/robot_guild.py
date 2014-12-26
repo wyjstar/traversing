@@ -14,6 +14,17 @@ from app.proto_file.runt_pb2 import *
 
 class RobotGuild(Robot):
 
+    def command_reset_stage(self):
+        argument1 = ResetStageRequest()
+        argument1.stage_id = 100101
+        self.send_message(argument1, 908)
+
+    def reset_stage_908(self, message):
+        argument = ResetStageResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_init_runt(self):
         argument1 = BuyShoesRequest()
         for i in [1, 2, 3]:
