@@ -61,8 +61,9 @@ class CharacterTravelComponent(Component):
     def get_travel_item_groups(self):
         groups = []
         my_travel_items = []
-        for stage_id, stage_items in self._travel_item:
-            my_travel_items += stage_items
+        for stage_id, stage_items in self._travel_item.items():
+            for [stage_item_id, stage_item_info] in stage_items:
+                my_travel_items.append(stage_item_id)
 
         for (group_id, group_info) in game_configs.travel_item_config.get('groups').items():
             t_group = set(group_info)

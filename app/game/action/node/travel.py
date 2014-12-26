@@ -405,8 +405,8 @@ def settle_auto_838(data, player):
     args.ParseFromString(data)
     stage_id = args.stage_id
     start_time = args.start_time
-    event_id = args.event_id
-    settle_type = args.settle_type
+    event_id = args.event_id  # id 为0  就是全部结算
+    settle_type = args.settle_type  # 0 普通结算 1 立即结算
 
     response = SettleAutoResponse()
 
@@ -448,14 +448,14 @@ def settle_auto_838(data, player):
             return response.SerializeToString()
 
     flag1 = 1
+    flag = 1
     for event_info in auto_travel_info.get('events'):
-        flag = 1
-        if event_id:
+        if event_info[0] == 0 and event_id != event_info[1]: # 如果 状态是未完成 就标志为0
+            flag1 = 0
+
+        if event_id:  # 单独结算
             if event_info[1] != event_id:
                 continue
-            else:
-                if event_info[0] == 0:
-                    flag = 0
 
         event_conf = travel_event_config.get('events').get(event_info[1]%xs)
         if event_conf.type == 1 and not settle_type:
@@ -559,7 +559,7 @@ def deal_auto_response(response, player):
                 res_drops = res_travel.drops
                 drop_data = get_drop_data(tra[2])
                 get_return(player, drop_data, res_drops)
-                if travel_event_config.get('events').get(tra[0]%xs).type == 1:
+                if travel_event_config.get('events').get(tra[1]%xs).type == 1:
                     if len(tra) == 4:
                         res_travel.time = tra[3]
 
@@ -577,7 +577,6 @@ def update_auto(player, up_type):
             need_times = cishu - one_auto.get('already_times')
             if need_times > 0:
                 for _ in range(need_times):
-
                     travel_event_id = get_travel_event_id()
                     flag = 10
                     for event in one_auto.get('events'):

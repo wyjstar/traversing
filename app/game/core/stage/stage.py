@@ -13,10 +13,19 @@ class Stage(object):
         self._stage_id = stage_id  # 关卡编号
         self._attacks = attacks  # 攻击次数
         self._state = state  # 关卡状态 -2: 未开启 -1：开启没打过 0：输 1：赢
+        self._reset = [0, 1]  # 次数重置 【重置次数， 时间】
 
     @property
     def stage_id(self):
         return self._stage_id
+
+    @property
+    def reset(self):
+        return self._reset
+
+    @reset.setter
+    def reset(self, v):
+        self._reset = v
 
     @property
     def attacks(self):

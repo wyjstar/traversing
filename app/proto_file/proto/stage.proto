@@ -42,6 +42,12 @@ message Stage{
 	required int32 stage_id = 1;  //关卡编号
 	optional int32 attacks = 2;  //攻击次数
 	optional int32 state = 3;  //关卡状态 -1:开启没打过 0：输  1：赢
+    optional Reset reset = 4;
+}
+
+message Reset{
+    required int32 times = 1;
+    required int32 time = 2;
 }
 
 message StageAward{

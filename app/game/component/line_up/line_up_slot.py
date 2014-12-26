@@ -195,7 +195,7 @@ class LineUpSlotComponent(Component):
                 attr += _refine_attr
             else:
                 logger.error('cant find refine config:%s', hero_obj.refine)
-        attr += self.owner.owner.travel.get_travel_item_attr()
+        attr += self.owner.owner.travel_component.get_travel_item_attr()
 
         return hero_base_attr, attr, hero_obj
 
