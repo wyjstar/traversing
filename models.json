@@ -185,17 +185,6 @@
                 "id":"simple",
                 "stones":"complex"
             }
-        },
-        "tb_character_runt": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "m_runt": "complex",
-                "stone1": "simple",
-                "stone2": "simple",
-                "refresh_runt": "complex",
-                "refresh_times": "complex"
-            }
         }
     }
 }
