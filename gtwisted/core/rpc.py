@@ -34,7 +34,7 @@ def _write_parameter(proto, arg):
         proto.bool_param = arg
     elif arg is None:
         proto.is_null = True
-    elif isinstance(arg, list):
+    elif isinstance(arg, list) or isinstance(arg, dict):
         proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
