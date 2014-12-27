@@ -14,34 +14,24 @@ message GameLoginResponse{
     optional int32 level = 4;
     optional int32 exp = 5;
     //金币
-    optional int32 coin = 6;
-    optional int32 gold = 7;
-    optional int32 hero_soul = 8;
-    optional int32 junior_stone = 9;
-    optional int32 middle_stone = 10;
-    optional int32 high_stone = 11;
-	optional int32 pvp_score = 12;
-	repeated int32 finances = 27;
+	repeated int32 finances = 6;
     //抽取时间
-    optional int32 fine_hero = 13;
-    optional int32 excellent_hero = 14;
-    optional int32 fine_equipment = 15;
-    optional int32 excellent_equipment = 16;
-
+    optional int32 fine_hero = 7;
+    optional int32 excellent_hero = 8;
+    optional int32 fine_equipment = 9;
+    optional int32 excellent_equipment = 10;
     //other
-    optional int32 stamina = 17;
-    optional int32 pvp_times = 18;
-    optional int32 vip_level = 19;
-    optional int32 server_time = 20;
-    optional bytes guild_id = 21;
-    optional float combat_power = 22;
-	optional int32 newbee_guide_id = 28;
-
+    optional int32 stamina = 11;
+    optional int32 pvp_times = 12;
+    optional int32 vip_level = 13;
+    optional int32 server_time = 14;
+    optional bytes guild_id = 15;
+    optional float combat_power = 16;
+	optional int32 newbee_guide_id = 17;
     //stamina
-    optional int32 get_stamina_times = 23; //通过邮件获取体力次数
-    optional int32 buy_stamina_times = 24; //购买体力次数
-    optional int32 last_gain_stamina_time = 25; //上次获得体力时间
-
-    optional int32 soul_shop_refresh_times = 26; //武魂商店刷新次数刷新次数
+    optional int32 get_stamina_times = 18; //通过邮件获取体力次数
+    optional int32 buy_stamina_times = 19; //购买体力次数
+    optional int32 last_gain_stamina_time = 20; //上次获得体力时间
+    optional int32 soul_shop_refresh_times = 21; //武魂商店刷新次数刷新次数
 
 }

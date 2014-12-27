@@ -65,30 +65,6 @@ class CharacterFinanceComponent(Component):
         self._finances[res_type] = value
 
     @property
-    def junior_stone(self):
-        return self._finances[const.JUNIOR_STONE]
-
-    @junior_stone.setter
-    def junior_stone(self, junior_stone):
-        self._finances[const.JUNIOR_STONE] = junior_stone
-
-    @property
-    def middle_stone(self):
-        return self._finances[const.MIDDLE_STONE]
-
-    @middle_stone.setter
-    def middle_stone(self, middle_stone):
-        self._finances[const.MIDDLE_STONE] = middle_stone
-
-    @property
-    def high_stone(self):
-        return self._finances[const.HIGH_STONE]
-
-    @high_stone.setter
-    def high_stone(self, high_stone):
-        self._finances[const.HIGH_STONE] = high_stone
-
-    @property
     def coin(self):
         return self._finances[const.COIN]
 
