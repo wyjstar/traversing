@@ -82,6 +82,7 @@ CREATE TABLE `tb_character_info` (
   `excellent_equipment_last_pick_time` int(11) NOT NULL DEFAULT '0',
   `pvp_times` int(11) DEFAULT 0,
   `pvp_refresh_time` int(11) DEFAULT 0,
+  `pvp_refresh_count` int(11) DEFAULT 0,
   `get_stamina_times` int(11) NOT NULL DEFAULT '0',
   `last_login_time` int(11) DEFAULT NULL,
   `vip_level` int(11) NOT NULL DEFAULT '0',
