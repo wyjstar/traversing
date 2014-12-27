@@ -141,7 +141,6 @@ CREATE TABLE `tb_character_stages` (
   `award_info` blob,
   `elite_stage` blob,
   `act_stage` blob,
-  `sweep_times` blob NOT NULL,
   `stage_up_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

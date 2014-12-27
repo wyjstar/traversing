@@ -31,7 +31,7 @@ def get_stages_901(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj, elite_stage_times, act_stage_times, sweep_times = get_stage_info(stage_id, player)
+    stages_obj, elite_stage_times, act_stage_times = get_stage_info(stage_id, player)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -43,8 +43,6 @@ def get_stages_901(pro_data, player):
         add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
-    response.sweep_times = sweep_times
-    logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -206,11 +204,7 @@ def get_stage_info(stage_id, player):
     else:
         act_stage_times = 0
 
-    if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday:
-        sweep_times = player.stage_component.sweep_times[0]
-    else:
-        sweep_times = 0
-    return response, elite_stage_times, act_stage_times, sweep_times
+    return response, elite_stage_times, act_stage_times
 
 
 def get_chapter_info(chapter_id, player):
@@ -249,25 +243,22 @@ def stage_sweep(stage_id, times, player):
     drops = response.drops
     res = response.res
 
-    need_money = 0
+    if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
+        player.stage_component.stage_up_time = int(time.time())
+        player.stage_component.update_stage_times()
+        player.stage_component.update()
+
     if times == 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
-    if times == 10:
+    if times > 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweepTen:
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
 
-    if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday \
-            and game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes - player.stage_component.sweep_times[0] < times:
-        need_money = times-(game_configs.vip_config.get(player.vip_component.vip_level).freeSweepTimes-player.stage_component.sweep_times[0])
-        if need_money > player.finance.gold:
-            res.result = False
-            res.result_no = 102
-            return response.SerializePartialToString()
     state = player.stage_component.check_stage_state(stage_id)
     if state != 1:
         res.result = False
@@ -299,12 +290,6 @@ def stage_sweep(stage_id, times, player):
     data = gain(player, drop)
     get_return(player, data, drops)
 
-    if time.localtime(player.stage_component.sweep_times[1]).tm_mday == time.localtime().tm_mday:
-        player.stage_component.sweep_times[0] += times
-    else:
-        player.stage_component.sweep_times[0] = times
-        player.stage_component.sweep_times[1] = int(time.time())
-
     player.stage_component.get_stage(stage_id).attacks += times
     player.stage_component.update()
 
@@ -315,10 +300,9 @@ def stage_sweep(stage_id, times, player):
         print lineUpSlotComponent,
         hero = lineUpSlotComponent.hero_slot.hero_obj
         if hero:
-            hero.upgrade(stage_config.HeroExp)
+            hero.upgrade(stage_config.HeroExp, player.level.level)
     # 玩家金钱
     player.finance.coin += stage_config.currency
-    player.finance.gold -= need_money
     # 玩家经验
     player.level.addexp(stage_config.playerExp)
     player.save_data()
