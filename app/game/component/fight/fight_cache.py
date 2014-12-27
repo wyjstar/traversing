@@ -152,6 +152,7 @@ class CharacterFightCacheComponent(Component):
                 if j + 1 == boss_position:
                     is_boss = True
                 monster_config = self.__get_monster_config(monster_id)
+                logger.info('怪物ID：%s' % monster_id)
 
                 battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
                                           monster_config.hp, monster_config.atk, monster_config.physicalDef,
@@ -159,7 +160,6 @@ class CharacterFightCacheComponent(Component):
                                           monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
                                           monster_config.block, monster_config.ductility, pos, monster_config.monsterLv, 0,
                                           is_boss, is_hero=False)
-                logger.info('怪物ID：%s' % monster_config.id)
                 round_monsters[pos] = battle_unit
             monsters.append(round_monsters)
 
