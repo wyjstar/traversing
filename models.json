@@ -32,7 +32,6 @@
                 "finances": "complex",
                 "pvp_times": "simple",
                 "pvp_refresh_time": "simple",
-                "pvp_refresh_count": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
                 "vip_level": "simple",
@@ -103,7 +102,6 @@
                 "award_info": "complex",
                 "elite_stage": "complex",
                 "act_stage": "complex",
-                "sweep_times": "complex",
                 "stage_up_time": "simple"
             }
         },

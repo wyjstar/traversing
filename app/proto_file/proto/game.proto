@@ -21,8 +21,8 @@ message GameLoginResponse{
     optional int32 fine_equipment = 9;
     optional int32 excellent_equipment = 10;
     //other
-    optional int32 pvp_times = 11;
-    optional int32 pvp_refresh_count = 12;
+    optional int32 stamina = 11;
+    optional int32 pvp_times = 12;
     optional int32 vip_level = 13;
     optional int32 server_time = 14;
     optional bytes guild_id = 15;
