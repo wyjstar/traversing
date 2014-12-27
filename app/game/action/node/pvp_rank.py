@@ -216,6 +216,7 @@ def pvp_fight_request_1505(data, player):
 @remoteserviceHandle('gate')
 def reset_pvp_time_1506(data, player):
     response = ShopResponse()
+    response.res.result = True
     _consume = base_config.get('arena_times_buy_price')
     result = is_afford(player, _consume)  # 校验
     if not result.get('result'):
