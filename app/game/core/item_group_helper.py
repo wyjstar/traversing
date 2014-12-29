@@ -205,6 +205,7 @@ def gain(player, item_group, result=None):
                 hero_chip_config_item = chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.needNum
+                print hero_chip_num, "--"*30
 
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)
@@ -218,7 +219,9 @@ def gain(player, item_group, result=None):
         elif type_id == const.BIG_BAG:
             big_bag = BigBag(item_no)
             for i in range(num):
-                gain(player, big_bag.get_drop_items(), result)
+                temp = big_bag.get_drop_items()
+                print temp, "-+"*30
+                gain(player, temp, result)
             return result
 
         elif type_id == const.EQUIPMENT:
@@ -233,6 +236,11 @@ def gain(player, item_group, result=None):
             player.stamina.stamina += num
             logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
+
+        elif type_id == const.TEAM_EXPERIENCE:
+            player.level.addexp(num)
+            player.save_data()
+
         elif type_id == const.TRAVEL_ITEM:
             stage_id = travel_item_config.get('items').get(item_no).stageId
             flag1 = 1
@@ -252,15 +260,15 @@ def gain(player, item_group, result=None):
             item_no = player.runt.add_runt(item_no)
             player.runt.save()
 
-        flag = 1
+        is_over = False       # 是否累加
         for i in result:
-            if i[0] == type_id and i[2] == item_no:
-                i[1] += 1
-                flag = 0
+            if i[0] == type_id and i[2] == item_no and type_id != const.HERO_CHIP:
+                i[1] += num
+                is_over = True
                 continue
-        if flag:
+
+        if not is_over:
             result.append([type_id, num, item_no])
-        # result.append([type_id, num, item_no])
     return result
 
 
@@ -318,6 +326,9 @@ def get_return(player, return_data, game_resources_response):
             travel_item = game_resources_response.travel_item.add()
             travel_item.id = item_no
             travel_item.num = item_num
+
+        elif const.TEAM_EXPERIENCE == item_type:
+            game_resources_response.team_exp += item_num
 
         elif 107 == item_type:
             if item_no == 18:

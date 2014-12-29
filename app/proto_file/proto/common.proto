@@ -26,6 +26,7 @@ message GameResourcesResponse
     repeated TravelItem travel_item= 8;
     repeated ShoesInfo shoes_info = 9;
     repeated Runt1 runt = 10;
+    optional int32 team_exp = 11;
 }
 
 message Runt1{
