@@ -249,17 +249,20 @@ def stage_sweep(stage_id, times, player):
 
     if times == 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
+            logger.error('result_no = 803')
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
     if times > 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweepTen:
+            logger.error('result_no = 803')
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
 
     state = player.stage_component.check_stage_state(stage_id)
     if state != 1:
+        logger.error('result_no = 803')
         res.result = False
         res.result_no = 803
         return response.SerializePartialToString()
@@ -267,6 +270,7 @@ def stage_sweep(stage_id, times, player):
     stage_config = game_configs.stage_config.get('stages').get(stage_id)
 
     if player.stage_component.get_stage(stage_id).attacks + times > stage_config.limitTimes:
+        logger.error('result_no = 810')
         res.result = False
         res.result_no = 810
         return response.SerializePartialToString()

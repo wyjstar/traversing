@@ -160,7 +160,7 @@ class PlayerCharacter(Character):
         self._tasks.init_data()
         self._mine.init_data()
         self._stone.init_data()
-        self._runt.init_data()
+        self._runt.init_data(character_info)
 
     def is_new_character(self):
         """is new character or not"""
