@@ -282,6 +282,12 @@ class LineUpSlotComponent(Component):
         result = eval(formula, allVars, allVars)
         return result
 
+    def combat_power_hero(self):
+        pass
+
+    def combat_power_line_up(self):
+        pass
+
     def update_lord_info(self):
         """
         更新主将属性
