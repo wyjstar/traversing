@@ -38,6 +38,7 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
 
     responsedata.pvp_times = player.pvp_times
+    responsedata.pvp_refresh_count = player.pvp_refresh_count
 
     responsedata.combat_power = player.line_up_component.combat_power
     responsedata.newbee_guide_id = player.newbee_guide_id
@@ -47,7 +48,6 @@ def enter_scene_remote(dynamic_id, character_id):
 
     responsedata.vip_level = player.vip_component.vip_level
     # 体力
-    responsedata.stamina = player.stamina.stamina
     responsedata.get_stamina_times = player.stamina.get_stamina_times
     responsedata.buy_stamina_times = player.stamina.buy_stamina_times
     responsedata.last_gain_stamina_time = player.stamina.last_gain_stamina_time
@@ -62,5 +62,4 @@ def enter_scene_remote(dynamic_id, character_id):
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
     # logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
 
-    # GlobalObject().remote['gate']['world'].on_test_remote('43432', 4324)
     return responsedata.SerializeToString()

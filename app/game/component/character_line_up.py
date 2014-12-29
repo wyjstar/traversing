@@ -27,11 +27,11 @@ class CharacterLineUpComponent(Component):
         # TODO 有多少个位置 需要读取baseinfo配置表
 
         self._line_up_slots = dict([(slot_no,
-                                   LineUpSlotComponent(self, slot_no)) for
-                                   slot_no in range(1, 7)])  # 卡牌位列表
+                                     LineUpSlotComponent(self, slot_no)) for
+                                    slot_no in range(1, 7)])  # 卡牌位列表
         self._sub_slots = dict([(slot_no,
-                               LineUpSlotComponent(self, slot_no)) for
-                               slot_no in range(1, 7)])  # 卡牌位替补
+                                 LineUpSlotComponent(self, slot_no)) for
+                                slot_no in range(1, 7)])  # 卡牌位替补
 
         self._line_up_order = []
         self._unpars = {}  # 无双
@@ -54,11 +54,11 @@ class CharacterLineUpComponent(Component):
             self._unpars = line_up_data.get('unpars')
         else:
             __line_up_slots = dict([(slot_no,
-                                   LineUpSlotComponent(self, slot_no).dumps())
-                                   for slot_no in self._line_up_slots.keys()])
+                                     LineUpSlotComponent(self, slot_no).dumps())
+                                    for slot_no in self._line_up_slots.keys()])
             __sub_slots = dict([(slot_no,
-                               LineUpSlotComponent(self, slot_no).dumps()) for
-                               slot_no in self._sub_slots.keys()])
+                                 LineUpSlotComponent(self, slot_no).dumps()) for
+                                slot_no in self._sub_slots.keys()])
             data = dict(id=self.character_id,
                         line_up_slots=__line_up_slots,
                         sub_slots=__sub_slots,
@@ -71,10 +71,10 @@ class CharacterLineUpComponent(Component):
     def save_data(self):
         props = {
             'line_up_slots': dict([(slot_no, slot.dumps()) for
-                                  slot_no, slot in
-                                  self._line_up_slots.items()]),
+                                   slot_no, slot in
+                                   self._line_up_slots.items()]),
             'sub_slots': dict([(slot_no, sub_slot.dumps()) for
-                              slot_no, sub_slot in self._sub_slots.items()]),
+                               slot_no, sub_slot in self._sub_slots.items()]),
             'line_up_order': self._line_up_order,
             'unpars': self._unpars}
 
@@ -193,8 +193,8 @@ class CharacterLineUpComponent(Component):
             new_pos = line_up_order.get(hero_no)  # 新位置
             logger.debug("line up %s , hero_no %s" % (new_pos, hero_no))
 
-            new_line_up_order[pos], new_line_up_order[new_pos-1] = new_line_up_order[new_pos-1], new_line_up_order[pos]
-
+            new_line_up_order[pos], new_line_up_order[new_pos - 1] = new_line_up_order[new_pos - 1], new_line_up_order[
+                pos]
 
         self._line_up_order = new_line_up_order
 
@@ -218,7 +218,14 @@ class CharacterLineUpComponent(Component):
         else:
             slot_obj = self._sub_slots.get(slot_no)
 
+        origin_hero_no = slot_obj.hero_slot.hero_no
+        origin_hero = self.owner.hero_component.get_hero(origin_hero_no)
+        if origin_hero: origin_hero.is_online = False
         slot_obj.change_hero(hero_no)
+
+        target_hero = self.owner.hero_component.get_hero(hero_no)
+        assert target_hero != None, "change hero can not be None!"
+        target_hero.is_online = True
 
         # 如果无双条件不满足，则无双设为空
         hero_nos = set(self.hero_nos)  # 阵容英雄编号
@@ -227,7 +234,7 @@ class CharacterLineUpComponent(Component):
                 conditions = item.get('conditions')
                 if conditions and hero_nos.issuperset(conditions):
                     self._unpars[skill_id] = 1
-        # logger.warning('unpars:%s', str(self._unpars))
+                    # logger.warning('unpars:%s', str(self._unpars))
 
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
@@ -264,7 +271,7 @@ class CharacterLineUpComponent(Component):
         for slot in self._line_up_slots.values():
             heros.append(slot.hero_slot.hero_obj)
         # for slot in self._sub_slots.values():
-        #     heros.append(slot.hero_slot.hero_obj)
+        # heros.append(slot.hero_slot.hero_obj)
         return heros
 
     @property
@@ -319,7 +326,7 @@ class CharacterLineUpComponent(Component):
         for slot in self._line_up_slots.values():
             each_power = slot.combat_power()
             _power += each_power
-            
+
         MineOpt.update('sword', self.owner.base_info.id, _power)
         return _power
 

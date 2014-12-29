@@ -11,6 +11,10 @@ from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
 from shared.utils.const import const
 
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import is_afford
+
 # base_config.get('cookingWineOpenLevel')
 # base_config.get('cookingWineOutput')
 # base_config.get('cookingWineOutputCrit')
@@ -57,7 +61,7 @@ class CharacterBrewComponent(Component):
         else:
             logger.error('cant find charinfo:%s', self.owner.base_info.id)
 
-    def do_brew(self, brew_type):
+    def do_brew(self, brew_type, response):
         vip_level = self.owner.vip_component.vip_level
         brew_times_max = vip_config.get(vip_level).get('cookingTimes')
 
@@ -85,12 +89,14 @@ class CharacterBrewComponent(Component):
             logger.error('base config error step:%s', brew_type)
             return False
 
-        if not self.owner.finance.consume_gold(
-                brew_prices[brew_type][self._brew_step - 1]):
-            logger.error('not enough gold to do brew:%s:%s',
-                         self.owner.finance.gold,
-                         brew_prices[brew_type][self._brew_step - 1])
+        _consume = brew_prices[brew_type][self._brew_step - 1]
+        result = is_afford(self.owner, _consume)  # 校验
+        if not result.get('result'):
+            logger.error('not enough gold to do brew:%s', _consume)
             return False
+
+        return_data = consume(self.owner, _consume)
+        get_return(self.owner, return_data, response.consume)
 
         self._brew_step += 1
         critical = critical[brew_type]

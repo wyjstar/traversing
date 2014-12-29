@@ -148,4 +148,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print travel_item_group_config.get(1).hp
+    print len(base_config.get('cookingWinePrice')[1])
+    print len(base_config.get('cookingWinePrice')[2])
+    print len(base_config.get('cookingWinePrice')[3])
+    print base_config.get('cookingWinePrice')

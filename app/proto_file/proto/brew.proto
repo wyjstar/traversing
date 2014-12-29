@@ -7,6 +7,7 @@ message BrewInfo{
     optional int32 nectar_cur = 4;
     optional int32 gold = 5;
     optional CommonResponse res = 6;
+    optional GameResourcesResponse consume = 7;
 }
 
 message DoBrew{

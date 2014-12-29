@@ -32,6 +32,8 @@ class Hero(object):
         self._refine = 0
         self._character_id = character_id
         self._is_guard = False
+        self._is_on_line = False
+
         self._runt = {}
 
     def init_data(self, data):
@@ -43,6 +45,7 @@ class Hero(object):
         self._break_level = hero_property.get("break_level")
         self._refine = hero_property.get("refine")
         self._is_guard = hero_property.get("is_guard")
+        self._is_on_line = hero_property.get("is_online")
         self._runt = hero_property.get("runt")
 
     @property
@@ -136,6 +139,7 @@ class Hero(object):
             'break_level': self._break_level,
             'refine': self._refine,
             'is_guard': self._is_guard,
+            'is_online': self._is_online,
             'runt': self._runt
         }
         return hero_property
@@ -147,6 +151,7 @@ class Hero(object):
         hero_pb.exp = self._exp
         hero_pb.refine = self._refine
         hero_pb.is_guard = self._is_guard
+        hero_pb.is_online = self._is_on_line
         for (runt_type, item) in self._runt.items():
             runt_type_pb = hero_pb.runt_type.add()
             runt_type_pb.runt_type = runt_type
@@ -347,6 +352,17 @@ class Hero(object):
     @is_guard.setter
     def is_guard(self, value):
         self._is_guard = value
+
+    @property
+    def is_online(self):
+        """
+        是否上阵
+        """
+        return self._is_online
+
+    @is_online.setter
+    def is_online(self, value):
+        self._is_online = value
 
     @property
     def break_skill_buff_ids(self):

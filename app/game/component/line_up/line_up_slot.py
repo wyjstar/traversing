@@ -282,11 +282,19 @@ class LineUpSlotComponent(Component):
         result = eval(formula, allVars, allVars)
         return result
 
+    def combat_power_hero(self):
+        pass
+
+    def combat_power_line_up(self):
+        pass
+
     def update_lord_info(self):
         """
         更新主将属性
         """
         unit = self.slot_attr
+        if not unit:
+            return
         lord_obj = tb_character_info.getObj(self.owner.character_id)
         if lord_obj:
             data = {'info': unit.dumps(), 'power': self.combat_power()}

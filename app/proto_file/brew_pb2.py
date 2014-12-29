@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='brew.proto',
   package='',
-  serialized_pb='\n\nbrew.proto\x1a\x0c\x63ommon.proto\"\x85\x01\n\x08\x42rewInfo\x12\x12\n\nbrew_times\x18\x01 \x01(\x05\x12\x11\n\tbrew_step\x18\x02 \x01(\x05\x12\x12\n\nnectar_num\x18\x03 \x01(\x05\x12\x12\n\nnectar_cur\x18\x04 \x01(\x05\x12\x0c\n\x04gold\x18\x05 \x01(\x05\x12\x1c\n\x03res\x18\x06 \x01(\x0b\x32\x0f.CommonResponse\"\x1b\n\x06\x44oBrew\x12\x11\n\tbrew_type\x18\x01 \x01(\x05')
+  serialized_pb='\n\nbrew.proto\x1a\x0c\x63ommon.proto\"\xae\x01\n\x08\x42rewInfo\x12\x12\n\nbrew_times\x18\x01 \x01(\x05\x12\x11\n\tbrew_step\x18\x02 \x01(\x05\x12\x12\n\nnectar_num\x18\x03 \x01(\x05\x12\x12\n\nnectar_cur\x18\x04 \x01(\x05\x12\x0c\n\x04gold\x18\x05 \x01(\x05\x12\x1c\n\x03res\x18\x06 \x01(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x07 \x01(\x0b\x32\x16.GameResourcesResponse\"\x1b\n\x06\x44oBrew\x12\x11\n\tbrew_type\x18\x01 \x01(\x05')
 
 
 
@@ -68,6 +68,13 @@ _BREWINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='BrewInfo.consume', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -78,7 +85,7 @@ _BREWINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=29,
-  serialized_end=162,
+  serialized_end=203,
 )
 
 
@@ -105,11 +112,12 @@ _DOBREW = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=164,
-  serialized_end=191,
+  serialized_start=205,
+  serialized_end=232,
 )
 
 _BREWINFO.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_BREWINFO.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['BrewInfo'] = _BREWINFO
 DESCRIPTOR.message_types_by_name['DoBrew'] = _DOBREW
 
