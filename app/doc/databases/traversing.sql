@@ -32,16 +32,6 @@ CREATE TABLE `tb_character_equipment_chip` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Table structure for table `tb_character_guild`
---
-
-DROP TABLE IF EXISTS `tb_character_guild`;
-CREATE TABLE `tb_character_guild` (
-  `id` varchar(32) NOT NULL,
-  `info` blob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tb_character_hero`
@@ -96,11 +86,22 @@ CREATE TABLE `tb_character_info` (
   `applicants_list` blob,
   `shop` blob,
   `lord_attr_info` blob,
+
   `m_runt` blob,
   `stone1` int(11),
   `stone2` int(11),
   `refresh_runt` blob,
   `refresh_times` blob,
+
+  `g_id` varchar(32),
+  `position` int(11),
+  `contribution` int(11),
+  `all_contribution` int(11),
+  `k_num` int(11),
+  `worship` int(11),
+  `worship_time` int(11),
+  `exit_time` int(11),
+
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

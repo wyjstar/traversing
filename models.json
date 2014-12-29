@@ -48,7 +48,15 @@
                 "stone1": "simple",
                 "stone2": "simple",
                 "refresh_runt": "complex",
-                "refresh_times": "complex"
+                "refresh_times": "complex",
+				"g_id": "simple",
+				"position": "simple",
+				"contribution": "simple",
+				"all_contribution": "simple",
+				"k_num": "simple",
+				"worship": "simple",
+				"worship_time": "simple",
+				"exit_time" "simple"
             }
         },
         "tb_character_hero": {
@@ -120,13 +128,6 @@
         },
         "tb_guild_name": {
             "pkey_field": "g_name",
-            "def_attrs": {
-                "id": "simple",
-                "info": "complex"
-            }
-        },
-        "tb_character_guild": {
-            "pkey_field": "id",
             "def_attrs": {
                 "id": "simple",
                 "info": "complex"

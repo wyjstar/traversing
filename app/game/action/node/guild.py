@@ -41,7 +41,7 @@ def create_guild_801(data, player):
         response.message = "元宝不足"
         return response.SerializeToString()
 
-    if g_id != 0:
+    if g_id != 'no':
         response.result = False
         response.message = "您已加入公会"
         return response.SerializeToString()
@@ -121,7 +121,7 @@ def join_guild_802(data, player):
         response.spare_time = base_config.get('exit_time') - the_time
         return response.SerializeToString()
 
-    if m_g_id != 0:
+    if m_g_id != 'no':
         response.result = False
         response.message = "您已加入公会"
         return response.SerializeToString()
@@ -157,7 +157,7 @@ def exit_guild_803(data, player):
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(m_g_id)
 
-    if m_g_id == 0:
+    if m_g_id == 'no':
         response.result = False
         response.message = "您还未加入公会"
         return response.SerializeToString()
@@ -182,7 +182,7 @@ def exit_guild_803(data, player):
         # 解散公会，删除公会聊天室
         remote_gate.del_guild_room_remote(player.guild.g_id)
 
-        player.guild.g_id = 0
+        player.guild.g_id = 'no'
         player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.delete_guild()
@@ -244,7 +244,7 @@ def exit_guild_803(data, player):
             p_list1 = p_list.get(tihuan_position)
             p_list1.remove(tihuan_id)
 
-            player.guild.g_id = 0
+            player.guild.g_id = 'no'
             player.guild.exit_time = int(time.time())
             player.guild.save_data()
 
@@ -258,7 +258,7 @@ def exit_guild_803(data, player):
             response.result = True
             response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
-        player.guild.g_id = 0
+        player.guild.g_id = 'no'
         player.guild.exit_time = int(time.time())
         player.guild.save_data()
         guild_obj.exit_guild(p_id, position)
@@ -325,7 +325,7 @@ def deal_apply_805(data, player):
     res_type = args.res_type
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObjData(m_g_id)
-    if not data1 or m_g_id == 0:
+    if not data1 or m_g_id == 'no':
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
@@ -343,7 +343,7 @@ def deal_apply_805(data, player):
         for p_id in p_ids:
             character_guild = tb_character_guild.getObjData(p_id)
             info = character_guild.get("info")
-            if info.get("g_id") != 0:
+            if info.get("g_id") != 'no':
                 if guild_obj.apply.count(p_id) == 1:
                     guild_obj.apply.remove(p_id)
                     response.p_ids.append(p_id)
@@ -495,7 +495,7 @@ def kick_807(data, player):
                 guild_obj.save_data()
                 character_guild = tb_character_guild.getObjData(p_id)
                 info = character_guild.get("info")
-                if info.get("g_id") == 0:
+                if info.get("g_id") == 'no':
                     response.result = False
                     response.message = "此玩家不在公会"
                     return response.SerializeToString()
@@ -515,7 +515,7 @@ def kick_807(data, player):
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 if invitee_player:  # 在线
                     remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
-                    invitee_player.guild.g_id = 0
+                    invitee_player.guild.g_id = 'no'
                     invitee_player.guild.save_data()
                     remote_gate.push_object_remote(814,
                                                    args.SerializeToString(),
@@ -643,7 +643,7 @@ def worship_809(data, player):
     m_g_id = player.guild.g_id
 
     data1 = tb_guild_info.getObjData(m_g_id)
-    if not data1 or m_g_id == 0:
+    if not data1 or m_g_id == 'no':
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
@@ -749,7 +749,7 @@ def get_role_list_811(data, player):
     """角色列表 """
     response = GuildRoleListProto()
     m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    if m_g_id == 'no':
         response.result = False
         response.message = "没有公会"
         return response.SerializeToString()
@@ -793,7 +793,7 @@ def get_guild_info_812(data, player):
     """获取公会信息 """
     response = GuildInfoProto()
     m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    if m_g_id == 'no':
         response.result = False
         response.message = "没有公会"
         return response.SerializeToString()
@@ -826,7 +826,7 @@ def get_apply_list_813(data, player):
     """获取申请列表 """
     response = ApplyListProto()
     m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    if m_g_id == 'no':
         response.result = False
         response.message = "没有公会"
         return response.SerializeToString()
