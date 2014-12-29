@@ -32,7 +32,7 @@
                 "finances": "complex",
                 "pvp_times": "simple",
                 "pvp_refresh_time": "simple",
-				"pvp_refresh_count": "simple",
+                "pvp_refresh_count": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
                 "vip_level": "simple",
@@ -49,14 +49,14 @@
                 "stone2": "simple",
                 "refresh_runt": "complex",
                 "refresh_times": "complex",
-				"g_id": "simple",
-				"position": "simple",
-				"contribution": "simple",
-				"all_contribution": "simple",
-				"k_num": "simple",
-				"worship": "simple",
-				"worship_time": "simple",
-				"exit_time" "simple"
+                "g_id": "simple",
+                "position": "simple",
+                "contribution": "simple",
+                "all_contribution": "simple",
+                "k_num": "simple",
+                "worship": "simple",
+                "worship_time": "simple",
+                "exit_time": "simple"
             }
         },
         "tb_character_hero": {

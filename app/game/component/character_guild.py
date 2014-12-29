@@ -3,7 +3,7 @@
 created by server on 14-7-24下午6:32.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_guild
+from app.game.redis_mode import tb_character_info
 
 
 class CharacterGuildComponent(Component):
@@ -45,7 +45,7 @@ class CharacterGuildComponent(Component):
                                              'k_num': self._k_num,
                                              'worship': self._worship,
                                              'worship_time': self._worship_time,
-                                             'exit_time': self._exit_time}}
+                                             'exit_time': self._exit_time})
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)

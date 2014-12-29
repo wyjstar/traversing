@@ -8,7 +8,6 @@ from app.game.core.PlayersManager import PlayersManager
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info, tb_guild_name
-from app.game.redis_mode import tb_character_guild
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
@@ -203,16 +202,15 @@ def exit_guild_803(data, player):
                 p_list1 = p_list.get(num)
                 if p_list1:
                     for p_id1 in p_list1:
-                        guildinfo = tb_character_guild.getObjData(p_id1)
+                        guildinfo = tb_character_info.getObjData(p_id1)
                         if guildinfo:
-                            guildinfolist.update({guildinfo.get('id'): guildinfo.get('info')})
+                            guildinfolist.update({guildinfo.get('id'): guildinfolist})
             new_list = sorted(guildinfolist.items(), key=lambda x: (-1 * x[1]['position'], x[1]['contribution'],
                                                                     x[1]['k_num']), reverse=True)
             tihuan_id = new_list[0][0]
             tihuan_position = new_list[0][1].get('position')
 
-            character_guild = tb_character_guild.getObjData(tihuan_id)
-            info = character_guild.get("info")
+            info = tb_character_info.getObjData(tihuan_id)
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "此玩家不在公会"
@@ -224,16 +222,15 @@ def exit_guild_803(data, player):
                 invitee_player.guild.position = 1
                 invitee_player.guild.save_data()
             else:
-                data = {
-                    'info': {'g_id': info.get("g_id"),
-                             'position': 1,
-                             'contribution': info.get("contribution"),
-                             'all_contribution': info.get("all_contribution"),
-                             'k_num': info.get("k_num"),
-                             'worship': info.get("worship"),
-                             'worship_time': info.get("worship_time"),
-                             'exit_time': info.get("exit_time")}}
-                p_guild_data = tb_character_guild.getObj(tihuan_id)
+                data = {'g_id': info.get("g_id"),
+                        'position': 1,
+                        'contribution': info.get("contribution"),
+                        'all_contribution': info.get("all_contribution"),
+                        'k_num': info.get("k_num"),
+                        'worship': info.get("worship"),
+                        'worship_time': info.get("worship_time"),
+                        'exit_time': info.get("exit_time")}
+                p_guild_data = tb_character_info.getObj(tihuan_id)
                 p_guild_data.update_multi(data)
 
             # if not push_message(1801, tihuan_id):
@@ -341,8 +338,7 @@ def deal_apply_805(data, player):
             return response.SerializeToString()
 
         for p_id in p_ids:
-            character_guild = tb_character_guild.getObjData(p_id)
-            info = character_guild.get("info")
+            info = tb_character_info.getObjData(p_id)
             if info.get("g_id") != 'no':
                 if guild_obj.apply.count(p_id) == 1:
                     guild_obj.apply.remove(p_id)
@@ -363,16 +359,15 @@ def deal_apply_805(data, player):
                 invitee_player.guild.exit_time = 1
                 invitee_player.guild.save_data()
             else:
-                data = {
-                    'info': {'g_id': player.guild.g_id,
-                             'position': 5,
-                             'contribution': 0,
-                             'all_contribution': 0,
-                             'k_num': 0,
-                             'worship': 0,
-                             'worship_time': 1,
-                             'exit_time': 1}}
-                p_guild_data = tb_character_guild.getObj(p_id)
+                data = {'g_id': player.guild.g_id,
+                        'position': 5,
+                        'contribution': 0,
+                        'all_contribution': 0,
+                        'k_num': 0,
+                        'worship': 0,
+                        'worship_time': 1,
+                        'exit_time': 1}
+                p_guild_data = tb_character_info.getObj(p_id)
                 p_guild_data.update_multi(data)
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
@@ -429,8 +424,7 @@ def change_president_806(data, player):
             guild_obj.p_list = p_list
             guild_obj.save_data()
 
-            character_guild = tb_character_guild.getObjData(p_p_id)
-            info = character_guild.get("info")
+            info = tb_character_info.getObjData(p_p_id)
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "此玩家不在公会"
@@ -441,16 +435,15 @@ def change_president_806(data, player):
                 invitee_player.guild.position = 1
                 invitee_player.guild.save_data()
             else:
-                data = {
-                    'info': {'g_id': info.get("g_id"),
-                             'position': 1,
-                             'contribution': info.get("contribution"),
-                             'all_contribution': info.get("all_contribution"),
-                             'k_num': info.get("k_num"),
-                             'worship': info.get("worship"),
-                             'worship_time': info.get("worship_time"),
-                             'exit_time': info.get("exit_time")}}
-                p_guild_data = tb_character_guild.getObj(p_p_id)
+                data = {'g_id': info.get("g_id"),
+                        'position': 1,
+                        'contribution': info.get("contribution"),
+                        'all_contribution': info.get("all_contribution"),
+                        'k_num': info.get("k_num"),
+                        'worship': info.get("worship"),
+                        'worship_time': info.get("worship_time"),
+                        'exit_time': info.get("exit_time")}
+                p_guild_data = tb_character_info.getObj(p_p_id)
                 p_guild_data.update_multi(data)
 
             player.guild.position = 5
@@ -493,22 +486,20 @@ def kick_807(data, player):
                 guild_obj.p_list = p_list
                 guild_obj.p_num -= 1
                 guild_obj.save_data()
-                character_guild = tb_character_guild.getObjData(p_id)
-                info = character_guild.get("info")
+                info = tb_character_info.getObjData(p_id)
                 if info.get("g_id") == 'no':
                     response.result = False
                     response.message = "此玩家不在公会"
                     return response.SerializeToString()
-                data = {
-                    'info': {'g_id': 0,
-                             'position': 5,
-                             'contribution': 0,
-                             'all_contribution': 0,
-                             'k_num': 0,
-                             'worship': 0,
-                             'worship_time': 1,
-                             'exit_time': time.time()}}
-                p_guild_data = tb_character_guild.getObj(p_id)
+                data = {'g_id': 0,
+                        'position': 5,
+                        'contribution': 0,
+                        'all_contribution': 0,
+                        'k_num': 0,
+                        'worship': 0,
+                        'worship_time': 1,
+                        'exit_time': time.time()}
+                p_guild_data = tb_character_info.getObj(p_id)
                 p_guild_data.update_multi(data)
 
                 # 踢出公会聊天室
@@ -566,11 +557,11 @@ def promotion_808(data, player):
         if flag == 1:
             guildinfolist = {}
             for p_id1 in t_p_list:
-                guildinfo = tb_character_guild.getObjData(p_id1)
+                guildinfo = tb_character_info.getObjData(p_id1)
                 if guildinfo:
-                    guildinfolist.update({guildinfo.get('id'): guildinfo.get('info')})
-            m_guildinfo = tb_character_guild.getObjData(m_p_id)
-            guildinfolist.update({m_guildinfo.get('id'): m_guildinfo.get('info')})
+                    guildinfolist.update({guildinfo.get('id'): guildinfo})
+            m_guildinfo = tb_character_info.getObjData(m_p_id)
+            guildinfolist.update({m_guildinfo.get('id'): m_guildinfo})
             new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
             if new_list[-1][0] == m_p_id or new_list[-1][1].get('contribution') == new_list[-2][1].get('contribution'):
                 response.result = False
@@ -578,8 +569,7 @@ def promotion_808(data, player):
                 return response.SerializeToString()
 
             tihuan_id = new_list[-1][0]
-            character_guild = tb_character_guild.getObjData(tihuan_id)
-            info = character_guild.get("info")
+            info = tb_character_info.getObjData(tihuan_id)
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "未知错误"
@@ -590,16 +580,15 @@ def promotion_808(data, player):
                 invitee_player.guild.position = m_position
                 invitee_player.guild.save_data()
             else:
-                data = {
-                    'info': {'g_id': info.get("g_id"),
-                             'position': m_position,
-                             'contribution': info.get("contribution"),
-                             'all_contribution': info.get("all_contribution"),
-                             'k_num': info.get("k_num"),
-                             'worship': info.get("worship"),
-                             'worship_time': info.get("worship_time"),
-                             'exit_time': info.get("exit_time")}}
-                p_guild_data = tb_character_guild.getObj(tihuan_id)
+                data = {'g_id': info.get("g_id"),
+                        'position': m_position,
+                        'contribution': info.get("contribution"),
+                        'all_contribution': info.get("all_contribution"),
+                        'k_num': info.get("k_num"),
+                        'worship': info.get("worship"),
+                        'worship_time': info.get("worship_time"),
+                        'exit_time': info.get("exit_time")}
+                p_guild_data = tb_character_info.getObj(tihuan_id)
                 p_guild_data.update_multi(data)
 
             p_list1 = p_list.get(m_position)
@@ -767,10 +756,8 @@ def get_role_list_811(data, player):
     if guild_p_list.values():
         for p_list in guild_p_list.values():
             for role_id in p_list:
-                character_guild = tb_character_guild.getObjData(role_id)
                 character_info = tb_character_info.getObjData(role_id)
-                if character_info and character_guild:
-                    guild_info = character_guild.get("info")
+                if character_info:
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
 
@@ -780,9 +767,11 @@ def get_role_list_811(data, player):
                         role_info.name = u'无名'
                     role_info.level = character_info['level']
 
-                    role_info.position = guild_info.get("position")
-                    role_info.all_contribution = guild_info.get("all_contribution")
-                    role_info.k_num = guild_info.get("k_num")
+                    role_info.position = character_info['position']
+                    role_info.all_contribution = character_info['all_contribution']
+
+                    role_info.k_num = character_info['k_num']
+
 
         response.result = True
         return response.SerializeToString()
