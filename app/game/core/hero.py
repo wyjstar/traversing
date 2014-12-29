@@ -150,6 +150,7 @@ class Hero(object):
         hero_pb.exp = self._exp
         hero_pb.refine = self._refine
         hero_pb.is_guard = self._is_guard
+        hero_pb.is_online = self._is_on_line
         for (runt_type, item) in self._runt.items():
             runt_type_pb = hero_pb.runt_type.add()
             runt_type_pb.runt_type = runt_type
