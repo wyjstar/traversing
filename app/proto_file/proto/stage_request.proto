@@ -32,4 +32,9 @@ message StageSweepRequest{
 	required int32 times = 2;  //扫荡次数
 }
 
+//重置关卡挑战次数 command:908
+message ResetStageRequest{
+	required int32 stage_id = 1;
+}
+
 

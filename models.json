@@ -32,6 +32,7 @@
                 "finances": "complex",
                 "pvp_times": "simple",
                 "pvp_refresh_time": "simple",
+				"pvp_refresh_count": "simple",
                 "last_login_time": "simple",
                 "get_stamina_times": "simple",
                 "vip_level": "simple",
@@ -42,7 +43,12 @@
                 "blacklist": "complex",
                 "applicants_list": "complex",
                 "shop": "complex",
-                "lord_attr_info": "complex"
+                "lord_attr_info": "complex",
+                "m_runt": "complex",
+                "stone1": "simple",
+                "stone2": "simple",
+                "refresh_runt": "complex",
+                "refresh_times": "complex"
             }
         },
         "tb_character_hero": {
@@ -183,17 +189,6 @@
             "def_attrs":{
                 "id":"simple",
                 "stones":"complex"
-            }
-        },
-        "tb_character_runt": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "m_runt": "complex",
-                "stone1": "simple",
-                "stone2": "simple",
-                "refresh_runt": "complex",
-                "refresh_times": "complex"
             }
         }
     }

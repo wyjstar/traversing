@@ -8,7 +8,7 @@ from app.proto_file import online_gift_pb2
 from app.proto_file import level_gift_pb2
 from app.proto_file import pvp_rank_pb2
 from app.proto_file import line_up_pb2
-from app.proto_file import soul_shop_pb2
+# from app.proto_file import soul_shop_pb2
 
 
 class RobotActivity(Robot):

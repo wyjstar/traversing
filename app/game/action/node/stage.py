@@ -39,6 +39,8 @@ def get_stages_901(pro_data, player):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
+        add.reset.times = stage_obj.reset[0]
+        add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
     return response.SerializePartialToString()
@@ -77,7 +79,7 @@ def stage_start_903(pro_data, player):
     stage_id = request.stage_id          # 关卡编号
     stage_type = request.stage_type      # 关卡类型
     line_up = request.lineup            # 阵容顺序
-    red_best_skill_id = request.unparalleled # 无双编号
+    red_best_skill_id = request.unparalleled  # 无双编号
     fid = request.fid                    # 好友ID
 
     logger.debug("red_best_skill_id,%s" % red_best_skill_id)
@@ -176,8 +178,6 @@ def stage_sweep_907(pro_data, player):
     return stage_sweep(stage_id, times, player)
 
 
-
-
 def get_stage_info(stage_id, player):
     """取得关卡信息
     """
@@ -194,12 +194,12 @@ def get_stage_info(stage_id, player):
         stages_obj = player.stage_component.get_stages()
         response.extend(stages_obj)
 
-    if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
+    if time.localtime(player.stage_component.elite_stage_info[1]).tm_yday == time.localtime().tm_yday:
         elite_stage_times = player.stage_component.elite_stage_info[0]
     else:
         elite_stage_times = 0
 
-    if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
+    if time.localtime(player.stage_component.act_stage_info[1]).tm_yday == time.localtime().tm_yday:
         act_stage_times = player.stage_component.act_stage_info[0]
     else:
         act_stage_times = 0
@@ -240,27 +240,29 @@ def fight_settlement(stage, result, player):
 
 def stage_sweep(stage_id, times, player):
     response = stage_response_pb2.StageSweepResponse()
-    drops = response.drops
     res = response.res
 
-    if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
+    if time.localtime(player.stage_component.stage_up_time).tm_yday != time.localtime().tm_yday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
         player.stage_component.update()
 
     if times == 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
+            logger.error('result_no = 803')
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
     if times > 1:
         if not game_configs.vip_config.get(player.vip_component.vip_level).openSweepTen:
+            logger.error('result_no = 803')
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
 
     state = player.stage_component.check_stage_state(stage_id)
     if state != 1:
+        logger.error('result_no = 803')
         res.result = False
         res.result_no = 803
         return response.SerializePartialToString()
@@ -268,12 +270,14 @@ def stage_sweep(stage_id, times, player):
     stage_config = game_configs.stage_config.get('stages').get(stage_id)
 
     if player.stage_component.get_stage(stage_id).attacks + times > stage_config.limitTimes:
+        logger.error('result_no = 810')
         res.result = False
         res.result_no = 810
         return response.SerializePartialToString()
 
-    drop = []
     for _ in range(times):
+        drop = []
+        drops = response.drops.add()
         low = stage_config.low
         high = stage_config.high
         drop_num = random.randint(low, high)
@@ -287,25 +291,65 @@ def stage_sweep(stage_id, times, player):
         elite_drop = elite_bag.get_drop_items()
         drop.extend(elite_drop)
 
-    data = gain(player, drop)
-    get_return(player, data, drops)
+        data = gain(player, drop)
+        get_return(player, data, drops)
 
-    player.stage_component.get_stage(stage_id).attacks += times
-    player.stage_component.update()
+        player.stage_component.get_stage(stage_id).attacks += times
+        player.stage_component.update()
 
-    player.stamina.stamina -= stage_config.vigor
+        player.stamina.stamina -= stage_config.vigor
+        # 经验
+        for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+            print lineUpSlotComponent,
+            hero = lineUpSlotComponent.hero_slot.hero_obj
+            if hero:
+                hero.upgrade(stage_config.HeroExp, player.level.level)
+        # 玩家金钱
+        player.finance.coin += stage_config.currency
+        # 玩家经验
+        player.level.addexp(stage_config.playerExp)
+
     player.stamina.save_data()
-    # 经验
-    for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-        print lineUpSlotComponent,
-        hero = lineUpSlotComponent.hero_slot.hero_obj
-        if hero:
-            hero.upgrade(stage_config.HeroExp, player.level.level)
-    # 玩家金钱
-    player.finance.coin += stage_config.currency
-    # 玩家经验
-    player.level.addexp(stage_config.playerExp)
     player.save_data()
+    player.finance.save_data()
 
     res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def reset_stage_908(pro_data, player):
+    request = stage_request_pb2.ResetStageRequest()
+    request.ParseFromString(pro_data)
+    stage_id = request.stage_id
+
+    response = stage_response_pb2.ResetStageResponse()
+
+    stage_obj = player.stage_component.get_stage(stage_id)
+
+    if time.localtime(stage_obj.reset[1]).tm_year == time.localtime().tm_year \
+            and time.localtime(stage_obj.reset[1]).tm_yday == time.localtime().tm_yday:
+        if game_configs.vip_config.get(player.vip_component.vip_level).buyStageResetTimes <= stage_obj.reset[0]:
+            logger.error("stage reset times not enough")
+            response.res.result = False
+            response.res.result_no = 830
+            return response.SerializePartialToString()
+        else:
+            stage_obj.reset[0] += 1
+    else:
+        stage_obj.reset = [0, int(time.time())]
+    need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0] - 1]
+    if player.finance.gold < need_gold:
+        logger.error("gold not enough")
+        response.res.result = False
+        response.res.result_no = 102
+        return response.SerializePartialToString()
+
+    stage_obj.attacks = 0
+    player.finance.gold -= need_gold
+
+    player.stage_component.update()
+    player.finance.save_data()
+
+    response.res.result = True
     return response.SerializePartialToString()
