@@ -194,12 +194,12 @@ def get_stage_info(stage_id, player):
         stages_obj = player.stage_component.get_stages()
         response.extend(stages_obj)
 
-    if time.localtime(player.stage_component.elite_stage_info[1]).tm_mday == time.localtime().tm_mday:
+    if time.localtime(player.stage_component.elite_stage_info[1]).tm_yday == time.localtime().tm_yday:
         elite_stage_times = player.stage_component.elite_stage_info[0]
     else:
         elite_stage_times = 0
 
-    if time.localtime(player.stage_component.act_stage_info[1]).tm_mday == time.localtime().tm_mday:
+    if time.localtime(player.stage_component.act_stage_info[1]).tm_yday == time.localtime().tm_yday:
         act_stage_times = player.stage_component.act_stage_info[0]
     else:
         act_stage_times = 0
@@ -240,10 +240,9 @@ def fight_settlement(stage, result, player):
 
 def stage_sweep(stage_id, times, player):
     response = stage_response_pb2.StageSweepResponse()
-    drops = response.drops
     res = response.res
 
-    if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
+    if time.localtime(player.stage_component.stage_up_time).tm_yday != time.localtime().tm_yday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
         player.stage_component.update()
@@ -272,8 +271,9 @@ def stage_sweep(stage_id, times, player):
         res.result_no = 810
         return response.SerializePartialToString()
 
-    drop = []
     for _ in range(times):
+        drop = []
+        drops = response.drops.add()
         low = stage_config.low
         high = stage_config.high
         drop_num = random.randint(low, high)
@@ -287,24 +287,25 @@ def stage_sweep(stage_id, times, player):
         elite_drop = elite_bag.get_drop_items()
         drop.extend(elite_drop)
 
-    data = gain(player, drop)
-    get_return(player, data, drops)
+        data = gain(player, drop)
+        get_return(player, data, drops)
 
-    player.stage_component.get_stage(stage_id).attacks += times
-    player.stage_component.update()
+        player.stage_component.get_stage(stage_id).attacks += times
+        player.stage_component.update()
 
-    player.stamina.stamina -= stage_config.vigor
+        player.stamina.stamina -= stage_config.vigor
+        # 经验
+        for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+            print lineUpSlotComponent,
+            hero = lineUpSlotComponent.hero_slot.hero_obj
+            if hero:
+                hero.upgrade(stage_config.HeroExp, player.level.level)
+        # 玩家金钱
+        player.finance.coin += stage_config.currency
+        # 玩家经验
+        player.level.addexp(stage_config.playerExp)
+
     player.stamina.save_data()
-    # 经验
-    for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-        print lineUpSlotComponent,
-        hero = lineUpSlotComponent.hero_slot.hero_obj
-        if hero:
-            hero.upgrade(stage_config.HeroExp, player.level.level)
-    # 玩家金钱
-    player.finance.coin += stage_config.currency
-    # 玩家经验
-    player.level.addexp(stage_config.playerExp)
     player.save_data()
     player.finance.save_data()
 
