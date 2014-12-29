@@ -32,7 +32,8 @@ class Hero(object):
         self._refine = 0
         self._character_id = character_id
         self._is_guard = False
-        self._is_online = False
+        self._is_on_line = False
+
         self._runt = {}
 
     def init_data(self, data):
