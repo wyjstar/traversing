@@ -29,6 +29,7 @@ message HeroPB
     optional bool is_guard = 6;
     repeated LinkPB links = 7;
     repeated RuntType runt_type = 8;
+    optional bool is_online = 9;
 }
 
 message RuntAttr1{
