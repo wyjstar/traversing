@@ -95,6 +95,11 @@ CREATE TABLE `tb_character_info` (
   `applicants_list` blob,
   `shop` blob,
   `lord_attr_info` blob,
+  `m_runt` blob,
+  `stone1` int(11),
+  `stone2` int(11),
+  `refresh_runt` blob,
+  `refresh_times` blob,
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -247,16 +252,5 @@ CREATE TABLE `tb_character_mine` (
   `day_before` varchar(8) NOT NULL,
   `lively` int(11) NOT NULL,
   `mine` mediumblob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS `tb_character_runt`;
-CREATE TABLE `tb_character_runt` (
-  `id` bigint(20) NOT NULL,
-  `m_runt` mediumblob,
-  `stone1` int(11),
-  `stone2` int(11),
-  `refresh_runt` blob,
-  `refresh_times` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
