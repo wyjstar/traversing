@@ -18,7 +18,7 @@ ASK_SIGNAL = "ASK"  # 请求结果的信号
 NOTICE_SIGNAL = "NOTICE"  # 仅做通知的信号，不要求返回值
 ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
 DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
-RPC_DATA_MAX_LENGTH = 64*1024  # rpc数据包允许的最大长度
+RPC_DATA_MAX_LENGTH = 256*1024  # rpc数据包允许的最大长度
 
 
 def _write_parameter(proto, arg):
@@ -34,7 +34,7 @@ def _write_parameter(proto, arg):
         proto.bool_param = arg
     elif arg is None:
         proto.is_null = True
-    elif isinstance(arg, list):
+    elif isinstance(arg, list) or isinstance(arg, dict):
         proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
@@ -119,6 +119,7 @@ class PBProtocl(BaseProtocol):
         """
         _length = len(data)
         if _length > RPC_DATA_MAX_LENGTH:
+            print _length, 'len=-='*12
             raise RPCDataTooLongError
         self.transport.sendall(struct.pack("!i", _length)+data)
 

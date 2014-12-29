@@ -10,6 +10,7 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import player_request_pb2
 from app.proto_file import player_response_pb2
 from app.proto_file.shop_pb2 import ShopResponse
+from app.proto_file import brew_pb2
 
 
 class RobotFriend(Robot):
@@ -131,6 +132,17 @@ class RobotFriend(Robot):
 
     def anonyous_1506(self, message):
         response = ShopResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_do_brew(self, brew_type):
+        request = brew_pb2.DoBrew()
+        request.brew_type = int(brew_type)
+        self.send_message(request, 1601)
+
+    def anonyous_1601(self, message):
+        response = brew_pb2.BrewInfo()
         response.ParseFromString(message)
         print response
         self.on_command_finish()

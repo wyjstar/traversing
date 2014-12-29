@@ -29,7 +29,7 @@ def do_brew_1601(data, player):
     request = brew_pb2.DoBrew()
     request.ParseFromString(data)
     response = brew_pb2.BrewInfo()
-    response.res.result = player.brew.do_brew(request.brew_type)
+    response.res.result = player.brew.do_brew(request.brew_type, response)
     if response.res.result:
         response.brew_times = player.brew.brew_times
         response.brew_step = player.brew.brew_step
@@ -49,7 +49,7 @@ def taken_brew_1602(data, player):
         response.nectar_num = player.brew.nectar
         response.nectar_cur = player.brew.nectar_cur
         response.gold = player.finance.gold
-        
+
     lively_event = CountEvent.create_event(EventType.WINE, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:
