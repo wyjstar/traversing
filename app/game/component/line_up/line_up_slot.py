@@ -213,13 +213,18 @@ class LineUpSlotComponent(Component):
                 continue
             equipment_base_attr = equ_obj.calculate_attr()  # 装备基础属性，强化等级
             attr += equipment_base_attr
+        return attr
+
+    def set_equ_attr(self):
+        """
+        套装属性
+        """
         suit_attr = CommonItem()
         equ_suit = self.equ_suit  # 装备套装技能属性
         for temp in equ_suit.values():
             suit_attr += temp
 
-        attr += suit_attr
-        return attr
+        return suit_attr
 
     def __assemble_hero(self, hero_obj, attr):
         """组装英雄战斗单位

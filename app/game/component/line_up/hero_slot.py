@@ -13,7 +13,6 @@ class HeroSlotComponent(SlotBaseInfoComponent):
 
     def __init__(self, owner, slot_no, activation=False, hero_no=0, base_name=''):
         super(HeroSlotComponent, self).__init__(owner, slot_no, base_name, activation)
-
         self._hero_no = hero_no  # 英雄
 
     @property
@@ -87,3 +86,9 @@ class HeroSlotComponent(SlotBaseInfoComponent):
         skill_helper.init_attr()
         attr = skill_helper.parse_buffs()
         return attr
+
+    def link_skill_ids(self):
+        """
+        已经激活的羁绊技能ids
+        """
+        return [skill_id for skill_id, activation in self.link.items() if activation]

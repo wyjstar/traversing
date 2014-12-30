@@ -4,6 +4,7 @@ created by server on 14-7-24下午6:32.
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_guild
+from shared.db_opear.configs_data.game_configs import guild_config
 
 
 class CharacterGuildComponent(Component):
@@ -119,3 +120,15 @@ class CharacterGuildComponent(Component):
     @all_contribution.setter
     def all_contribution(self, all_contribution):
         self._all_contribution = all_contribution
+
+    def guild_attr(self):
+        guild_level = self.get_guild_level()
+        guild_info = guild_config.get(guild_level)
+        if not guild_info:
+            return {}
+
+        return dict(hp=guild_info.profit_hp,
+                atk=guild_info.profit_atk,
+                physical_def=guild_info.profit_pdef,
+                magic_def=guild_info.profit_mdef
+                )

@@ -11,6 +11,7 @@ from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 import copy
+from app.game.core.hero_attr_cal import combat_power
 
 
 class CharacterFightCacheComponent(Component):
@@ -377,7 +378,8 @@ class CharacterFightCacheComponent(Component):
             if not hero_item.get('awake'):
                 continue
             old_line_up_slot = self.line_up_slots.get(red.slot_no)
-            ap = old_line_up_slot.combat_power()
+            hero = self.owner.hero_component.get_hero(red.unit_no)
+            ap = combat_power.combat_power_hero_self(self.owner, hero, red.slot_no)
             for upAp, prob in hero_item.get('awake').items():
                 if ap > upAp and _rand < prob:
                     logger.info('hit:%s, %s,ap:%s, upAp:%s', _rand, prob, ap, upAp)
