@@ -58,3 +58,8 @@ message StageSweepResponse{
 message ResetStageResponse{
     required CommonResponse res = 1;
 }
+
+message StarAwardResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse drops = 2;
+}

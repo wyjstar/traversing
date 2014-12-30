@@ -70,3 +70,7 @@
 829: travel event not find
 
 830: 关卡挑战次数的刷新次数,已经到上限 
+
+831: chapter_info dont find,or (chapter_id == 1 and award_type == 2 )
+832: already receive or can`t receive
+833: can`t receive

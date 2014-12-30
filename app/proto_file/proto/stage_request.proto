@@ -40,7 +40,7 @@ message ResetStageRequest{
 //星星抽奖 command:909
 message StarAwardRequest{
     required int32 chapter_id = 1;//章节编号
-    required int32 award_type = 2;
+    required int32 award_type = 2; //0:7star 1:14star 2:21star 3:dragon award
 }
 
 
