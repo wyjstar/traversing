@@ -126,7 +126,6 @@ class StageAward(object):
         """根据星星数量判断是否能领取奖励
         """
         award_info = []  # 奖励可以领取状态
-        stages_config = game_configs.stage_config.get('stages')
 
         stage = self.get_conf()
         star = stage.star
@@ -140,6 +139,7 @@ class StageAward(object):
 
     def get_conf(self):
         stage = None  # 章节配置数据
+        stages_config = game_configs.stage_config.get('stages')
         for stage_id, item in stages_config.items():
             if item.sectionCount and item.chapter == self._chapter_id:
                 stage = item
