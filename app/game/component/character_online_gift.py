@@ -2,6 +2,7 @@
 """
 created by server on 14-8-26
 """
+import time
 import datetime
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_activity
@@ -14,6 +15,7 @@ class CharacterOnlineGift(Component):
         super(CharacterOnlineGift, self).__init__(owner)
         self._login_on_time = datetime.datetime.now()
         self._online_time = 0
+        self._refresh_time = time.time()
         self._received_gift_ids = []
 
     def init_data(self):
@@ -23,17 +25,22 @@ class CharacterOnlineGift(Component):
             data = activity.get('online_gift')
             if data:
                 self._online_time = data['online_time']
+                self._refresh_time = data['refresh_time']
                 self._received_gift_ids = data['received_gift_ids']
+                self.check_time()
         else:
-            data = {'online_time': self._online_time,
-                    'received_gift_ids': self._received_gift_ids}
+            data = dict(online_time=self._online_time,
+                        refresh_time=self._refresh_time,
+                        received_gift_ids=self._received_gift_ids)
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'online_gift': data})
 
     def save_data(self):
+        self.check_time()
         activity = tb_character_activity.getObj(self.owner.base_info.id)
-        data = {'online_time': self._online_time,
-                'received_gift_ids': self._received_gift_ids}
+        data = dict(online_time=self._online_time,
+                    refresh_time=self._refresh_time,
+                    received_gift_ids=self._received_gift_ids)
         activity.update('online_gift', data)
 
     def offline_player(self):
@@ -41,9 +48,20 @@ class CharacterOnlineGift(Component):
         self._online_time += accumulate_time.seconds
         self.save_data()
 
+    def check_time(self):
+        tm = time.localtime(self._refresh_time)
+        local_tm = time.localtime()
+        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+            self._online_time = 0
+            self._login_on_time = datetime.datetime(self._login_on_time.year,
+                                                    self._login_on_time.month,
+                                                    self._login_on_time.day)
+            self._received_gift_ids = []
+
     @property
     def online_time(self):
-        return self._online_time + (datetime.datetime.now() - self._login_on_time).seconds
+        elapse = (datetime.datetime.now() - self._login_on_time).seconds
+        return self._online_time + elapse
 
     @online_time.setter
     def online_time(self, value):

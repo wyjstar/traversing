@@ -11,6 +11,8 @@ from gfirefly.server.globalobject import remoteserviceHandle
 @remoteserviceHandle('gate')
 def get_online_gift_1121(data, player):
     """get online gift"""
+    player.online_gift.check_time()
+
     request = online_gift_pb2.GetOnlineGift()
     request.ParseFromString(data)
     response = online_gift_pb2.GetOnlineGiftResponse()

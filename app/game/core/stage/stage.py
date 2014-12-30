@@ -117,6 +117,10 @@ class StageAward(object):
         else:
             self._award_info = award_info
 
+        if self._dragon_gift == -1:
+            if self._award_info[-1] != -1:
+                self._dragon_gift = 0
+
     def check(self, star_num):
         """根据星星数量判断是否能领取奖励
         """
