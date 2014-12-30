@@ -111,6 +111,7 @@ class PlayerCharacter(Character):
             character_info['excellent_equipment_last_pick_time']
         pvp_times = character_info['pvp_times']
         pvp_refresh_time = character_info['pvp_refresh_time']
+        pvp_refresh_count = character_info['pvp_refresh_count']
         vip_level = character_info['vip_level']
 
         # ------------初始化角色基础信息组件---------
@@ -140,11 +141,12 @@ class PlayerCharacter(Character):
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._mail.init_data()  # 初始化邮箱
         self._friends.init_data(character_info)
-        self._guild.init_data()
+        self._guild.init_data(character_info)
         self._stage.init_data()
 
         self._pvp_times = pvp_times
         self._pvp_refresh_time = pvp_refresh_time
+        self._pvp_refresh_count = pvp_refresh_count
         self._sign_in.init_sign_in()
         self._online_gift.init_data()
         self._level_gift.init_data()
@@ -160,7 +162,9 @@ class PlayerCharacter(Character):
         self._tasks.init_data()
         self._mine.init_data()
         self._stone.init_data()
-        self._runt.init_data()
+        self._runt.init_data(character_info)
+
+        self.check_time()
 
     def is_new_character(self):
         """is new character or not"""
@@ -190,6 +194,7 @@ class PlayerCharacter(Character):
                           'excellent_equipment_last_pick_time': 0,
                           'pvp_times': 0,
                           'pvp_refresh_time': 0,
+                          'pvp_refresh_count': 0,
                           'newbee_guide_id': 0,
                           'create_time': int(time.time()),
                           'vip_level': base_config.get('initialVipLevel'),
@@ -198,6 +203,15 @@ class PlayerCharacter(Character):
                           'finances': finances
                           }
         tb_character_info.new(character_info)
+
+    def check_time(self):
+        tm = time.localtime(self.pvp_refresh_time)
+        local_tm = time.localtime()
+        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+            self.pvp_times = 0
+            self.pvp_refresh_count = 0
+            self.pvp_refresh_time = time.time()
+            self.save_data()
 
     @property
     def character_type(self):
@@ -305,6 +319,14 @@ class PlayerCharacter(Character):
         self._pvp_times = value
 
     @property
+    def pvp_refresh_count(self):
+        return self._pvp_refresh_count
+
+    @pvp_refresh_count.setter
+    def pvp_refresh_count(self, value):
+        self._pvp_refresh_count = value
+
+    @property
     def pvp_refresh_time(self):
         return self._pvp_refresh_time
 
@@ -395,9 +417,11 @@ class PlayerCharacter(Character):
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        character_info.update_multi(dict(level=self._level.level,
-                                         exp=self.level.exp,
-                                         pvp_times=self._pvp_times,
-                                         pvp_refresh_time=self.pvp_refresh_time,
-                                         newbee_guide_id=self._newbee_guide_id,
-                                         vip_level=self._vip.vip_level))
+        data = dict(level=self._level.level,
+                    exp=self.level.exp,
+                    pvp_times=self._pvp_times,
+                    pvp_refresh_time=self._pvp_refresh_time,
+                    pvp_refresh_count=self._pvp_refresh_count,
+                    newbee_guide_id=self._newbee_guide_id,
+                    vip_level=self._vip.vip_level)
+        character_info.update_multi(data)

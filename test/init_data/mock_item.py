@@ -23,6 +23,7 @@ def init_item(player):
     item7 = Item(40001, 1500)
     # key
     item8 = Item(40002, 1500)
+    item9 = Item(60001, 100)
 
 
 
@@ -35,5 +36,6 @@ def init_item(player):
     player.item_package.add_item(item9)
     player.item_package.add_item(item7)
     player.item_package.add_item(item8)
+    player.item_package.add_item(item9)
 
     player.item_package.save_data()

@@ -51,5 +51,10 @@ message UnparalleledResponse{
 // 关卡扫荡返回 command:907
 message StageSweepResponse{
     required CommonResponse res = 1;
-	optional GameResourcesResponse drops = 2;
+	repeated GameResourcesResponse drops = 2;
+}
+
+//重置关卡挑战次数 command:908
+message ResetStageResponse{
+    required CommonResponse res = 1;
 }

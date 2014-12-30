@@ -35,8 +35,8 @@ class CharacterShopComponent(Component):
                 data['last_refresh_time'] = time.time()
                 data['luck_num'] = 0.0
                 data['luck_time'] = time.time()
-                if item.itemNum > 0:
-                    data['item_ids'] = self.get_shop_item_ids(t, 0)
+                data['item_ids'] = self.get_shop_item_ids(t, 0)
+                print t, data['item_ids']
                 self._shop_data[t] = data
             # print data
             shop.update('shop', self._shop_data)
@@ -132,6 +132,8 @@ class CharacterShopComponent(Component):
         if not shop_item:
             raise Exception('error shop type:%s' % shop_type)
         item_num = shop_item.get('itemNum')
+        if item_num == -1:
+            return items.keys()
         if not items:
             return []
         return random_multi_pick_without_repeat(items, item_num)

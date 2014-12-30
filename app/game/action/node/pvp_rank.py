@@ -13,6 +13,7 @@ from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
 from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data.game_configs import vip_config
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
@@ -124,11 +125,7 @@ def pvp_fight_request_1505(data, player):
     """
     pvp战斗开始
     """
-    tm = time.localtime(player.pvp_refresh_time)
-    local_tm = time.localtime()
-    if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
-        player.pvp_times = 0
-        player.pvp_refresh_time = time.time()
+    player.check_time()
 
     if player.pvp_times >= base_config.get('arena_free_times'):
         logger.error('not enough pvp times:%s%s', player.pvp_times,
@@ -215,8 +212,16 @@ def pvp_fight_request_1505(data, player):
 
 @remoteserviceHandle('gate')
 def reset_pvp_time_1506(data, player):
+    player.check_time()
     response = ShopResponse()
     response.res.result = True
+    vip_level = player.vip_component.vip_level
+    reset_times_max = vip_config.get(vip_level).get('buyArenaTimes')
+    if player.pvp_refresh_count >= reset_times_max:
+        response.res.result = False
+        response.res.result_no = 15061
+        return response.SerializePartialToString()
+
     _consume = base_config.get('arena_times_buy_price')
     result = is_afford(player, _consume)  # 校验
     if not result.get('result'):
@@ -228,6 +233,7 @@ def reset_pvp_time_1506(data, player):
     get_return(player, return_data, response.consume)
     player.pvp_times = 0
     player.pvp_refresh_time = time.time()
+    player.pvp_refresh_count += 1
     player.save_data()
 
     return response.SerializePartialToString()

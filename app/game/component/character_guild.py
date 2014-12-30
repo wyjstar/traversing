@@ -3,8 +3,10 @@
 created by server on 14-7-24下午6:32.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_guild
+from app.game.redis_mode import tb_guild_info
 from shared.db_opear.configs_data.game_configs import guild_config
+from app.game.redis_mode import tb_character_info
+from app.game.core.guild import Guild
 
 
 class CharacterGuildComponent(Component):
@@ -14,7 +16,7 @@ class CharacterGuildComponent(Component):
 
     def __init__(self, owner):
         super(CharacterGuildComponent, self).__init__(owner)
-        self._g_id = 0  # 公会id
+        self._g_id = 'no'  # 公会id
         self._position = 5  # 职务
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
@@ -23,47 +25,49 @@ class CharacterGuildComponent(Component):
         self._worship_time = 1  # 最后膜拜时间
         self._exit_time = 1  # 上次退出公会时间
 
-    def init_data(self):
+    def init_data(self, character_info):
         """
         初始化公会组件
         """
-        p_id = self.owner.base_info.id
-        character_guild = tb_character_guild.getObjData(p_id)
-        if not character_guild:
+        if character_info.get('g_id'):
+            self._g_id = character_info.get("g_id")
+            self._position = character_info.get("position")
+            self._contribution = character_info.get("contribution")
+            self._all_contribution = character_info.get("all_contribution")
+            self._k_num = character_info.get("k_num")
+            self._worship = character_info.get("worship")
+            self._worship_time = character_info.get("worship_time")
+            self._exit_time = character_info.get("exit_time")
+        else:
             # 没有公会数据
-            data = {'id': p_id,
-                    'info': {'g_id': self._g_id,
-                             'position': self._position,
-                             'contribution': self._contribution,
-                             'all_contribution': self._all_contribution,
-                             'k_num': self._k_num,
-                             'worship': self._worship,
-                             'worship_time': self._worship_time,
-                             'exit_time': self._exit_time}}
-            tb_character_guild.new(data)
-            return
-        info = character_guild.get("info")
-        self._g_id = info.get("g_id")
-        self._position = info.get("position")
-        self._contribution = info.get("contribution")
-        self._all_contribution = info.get("all_contribution")
-        self._k_num = info.get("k_num")
-        self._worship = info.get("worship")
-        self._worship_time = info.get("worship_time")
-        self._exit_time = info.get("exit_time")
+            character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
+            character_info_obj.update_multi({'g_id': self._g_id,
+                                             'position': self._position,
+                                             'contribution': self._contribution,
+                                             'all_contribution': self._all_contribution,
+                                             'k_num': self._k_num,
+                                             'worship': self._worship,
+                                             'worship_time': self._worship_time,
+                                             'exit_time': self._exit_time})
 
     def save_data(self):
-        data = {
-            'info': {'g_id': self._g_id,
-                     'position': self._position,
-                     'contribution': self._contribution,
-                     'all_contribution': self._all_contribution,
-                     'k_num': self._k_num,
-                     'worship': self._worship,
-                     'worship_time': self._worship_time,
-                     'exit_time': self._exit_time}}
-        p_guild_data = tb_character_guild.getObj(self.owner.base_info.id)
-        p_guild_data.update_multi(data)
+        data_obj = tb_character_info.getObj(self.owner.base_info.id)
+        data_obj.update_multi({'g_id': self._g_id,
+                               'position': self._position,
+                               'contribution': self._contribution,
+                               'all_contribution': self._all_contribution,
+                               'k_num': self._k_num,
+                               'worship': self._worship,
+                               'worship_time': self._worship_time,
+                               'exit_time': self._exit_time})
+
+    def get_guild_level(self):
+        if self._g_id == "no":
+            return 0
+        data = tb_guild_info.getObjData(self._g_id)
+        guild_obj = Guild()
+        guild_obj.init_data(data)
+        return guild_obj.level
 
     @property
     def g_id(self):

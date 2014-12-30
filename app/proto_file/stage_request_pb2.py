@@ -14,7 +14,7 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_request.proto',
   package='',
-  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"u\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x17\n\x06lineup\x18\x03 \x03(\x0b\x32\x07.LineUp\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"N\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06result\x18\x03 \x02(\x05\"4\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05')
+  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"u\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x17\n\x06lineup\x18\x03 \x03(\x0b\x32\x07.LineUp\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"N\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06result\x18\x03 \x02(\x05\"4\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05')
 
 
 
@@ -207,12 +207,41 @@ _STAGESWEEPREQUEST = _descriptor.Descriptor(
   serialized_end=367,
 )
 
+
+_RESETSTAGEREQUEST = _descriptor.Descriptor(
+  name='ResetStageRequest',
+  full_name='ResetStageRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='stage_id', full_name='ResetStageRequest.stage_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=369,
+  serialized_end=406,
+)
+
 _STAGESTARTREQUEST.fields_by_name['lineup'].message_type = stage_pb2._LINEUP
 DESCRIPTOR.message_types_by_name['StageInfoRequest'] = _STAGEINFOREQUEST
 DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
 DESCRIPTOR.message_types_by_name['StageStartRequest'] = _STAGESTARTREQUEST
 DESCRIPTOR.message_types_by_name['StageSettlementRequest'] = _STAGESETTLEMENTREQUEST
 DESCRIPTOR.message_types_by_name['StageSweepRequest'] = _STAGESWEEPREQUEST
+DESCRIPTOR.message_types_by_name['ResetStageRequest'] = _RESETSTAGEREQUEST
 
 class StageInfoRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -243,6 +272,12 @@ class StageSweepRequest(_message.Message):
   DESCRIPTOR = _STAGESWEEPREQUEST
 
   # @@protoc_insertion_point(class_scope:StageSweepRequest)
+
+class ResetStageRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _RESETSTAGEREQUEST
+
+  # @@protoc_insertion_point(class_scope:ResetStageRequest)
 
 
 # @@protoc_insertion_point(module_scope)
