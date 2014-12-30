@@ -35,6 +35,7 @@
         "transit": {
             "rootport": 30002,
             "name": "transit",
+            "db": true,
             "app": "app.transit",
             "log": "app/logs/transit.log"
         },

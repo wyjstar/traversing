@@ -5,6 +5,7 @@ created by sphinx on 27/10/14.
 import cPickle
 import random
 import time
+from shared.utils.const import const
 from app.proto_file import pvp_rank_pb2
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
@@ -303,4 +304,5 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
 
 @remoteserviceHandle('gate')
 def pvp_award_remote(pvp_num, is_online, player):
-    print pvp_num, 'pvp award!'*5
+    player.finance[const.PVP] += pvp_num
+    logger.debug('pvp award!%s',pvp_num)
