@@ -139,7 +139,7 @@ class Hero(object):
             'break_level': self._break_level,
             'refine': self._refine,
             'is_guard': self._is_guard,
-            'is_online': self._is_online,
+            'is_online': self._is_on_line,
             'runt': self._runt
         }
         return hero_property
