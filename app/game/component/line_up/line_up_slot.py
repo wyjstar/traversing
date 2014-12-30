@@ -12,6 +12,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.game_configs import formula_config
 from shared.db_opear.configs_data.common_item import CommonItem
 from gfirefly.server.logobj import logger
+from app.game.component.fight.hero_attr_cal import combat_power
 
 
 class LineUpSlotComponent(Component):
@@ -151,6 +152,7 @@ class LineUpSlotComponent(Component):
     def slot_attr(self):
         """
         """
+
         hero_base_attr, attr, hero_obj = self.hero_attr()
 
         if not hero_base_attr:
@@ -261,6 +263,48 @@ class LineUpSlotComponent(Component):
 
         return battlt_unit
 
+    def assemble_hero(self):
+        """docstring for assemble_hero"""
+
+        line_up_order = self.owner.line_up_order
+        hero = self._hero_slot.hero_obj
+        if not hero:
+            return None
+
+        attr = combat_power.hero_lineup_attr(self.owner.owner, hero, self._slot_no)
+        hero_no = hero.hero_no
+        quality = hero.hero_info.get("quality")
+        break_skill_buff_ids = []
+        hp = attr.get("hpArray")
+        atk = attr.get("atkArray")
+        physical_def = attr.get("physicalDefArray")
+        magic_def = attr.get("magicDefArray")
+        hit = attr.get("hitArray")
+        dodge = attr.get("dodgeArray")
+        cri = attr.get("criArray")
+        cri_coeff = attr.get("criCoeff")
+        cri_ded_coeff = attr.get("criDedCoeff")
+        block = attr.get("blockArray")
+        ductility = attr.get("ductilityArray")
+
+        position = line_up_order.index(self._slot_no)
+        position += 1
+        is_boss = False
+        battlt_unit = do_assemble(hero_no, quality, break_skill_buff_ids,
+                                  hp, atk, physical_def, magic_def, hit,
+                                  dodge, cri, cri_coeff, cri_ded_coeff,
+                                  block, ductility, position, hero.level,
+                                  hero.break_level, is_boss)
+
+        return battlt_unit
+
+
+    def combat_power_lineup(self):
+        hero = self._hero_slot.hero_obj
+        if not hero:
+            return 0
+        return combat_power.combat_power_hero_lineup(self.owner.owner, self._hero_slot.hero_obj, self._slot_no)
+
     def combat_power(self):
         """战斗力
         ((攻击 + 物防 + 魔防) * 血量) ^ 战斗力系数A * （命中率 + 闪避率） * （1 + 暴击率 * （暴击伤害系数 + 暴击伤害减免系数 - 100）/ 10000）*
@@ -287,12 +331,6 @@ class LineUpSlotComponent(Component):
         result = eval(formula, allVars, allVars)
         return result
 
-    def combat_power_hero(self):
-        pass
-
-    def combat_power_line_up(self):
-        pass
-
     def update_lord_info(self):
         """
         更新主将属性
@@ -302,7 +340,8 @@ class LineUpSlotComponent(Component):
             return
         lord_obj = tb_character_info.getObj(self.owner.character_id)
         if lord_obj:
-            data = {'info': unit.dumps(), 'power': self.combat_power()}
+            ap = self.combat_power_lineup()
+            data = {'info': unit.dumps(), 'power': ap}
             lord_obj.update('lord_attr_info', data)
         else:
             logger.error('error cant find character info:%s',

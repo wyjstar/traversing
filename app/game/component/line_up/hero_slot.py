@@ -87,6 +87,7 @@ class HeroSlotComponent(SlotBaseInfoComponent):
         attr = skill_helper.parse_buffs()
         return attr
 
+    @property
     def link_skill_ids(self):
         """
         已经激活的羁绊技能ids

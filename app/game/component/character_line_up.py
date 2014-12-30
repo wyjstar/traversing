@@ -324,7 +324,7 @@ class CharacterLineUpComponent(Component):
         """
         _power = 0
         for slot in self._line_up_slots.values():
-            each_power = slot.combat_power()
+            each_power = slot.combat_power_lineup()
             _power += each_power
 
         MineOpt.update('sword', self.owner.base_info.id, _power)
