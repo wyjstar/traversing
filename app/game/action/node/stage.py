@@ -43,7 +43,6 @@ def get_stages_901(pro_data, player):
         add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
-    logger.debug(response)
     return response.SerializePartialToString()
 
 
