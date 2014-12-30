@@ -43,6 +43,7 @@ def get_stages_901(pro_data, player):
         add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
+    logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -294,9 +295,6 @@ def stage_sweep(stage_id, times, player):
         data = gain(player, drop)
         get_return(player, data, drops)
 
-        player.stage_component.get_stage(stage_id).attacks += times
-        player.stage_component.update()
-
         player.stamina.stamina -= stage_config.vigor
         # 经验
         for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
@@ -308,6 +306,9 @@ def stage_sweep(stage_id, times, player):
         player.finance.coin += stage_config.currency
         # 玩家经验
         player.level.addexp(stage_config.playerExp)
+
+    player.stage_component.get_stage(stage_id).attacks += times
+    player.stage_component.update()
 
     player.stamina.save_data()
     player.save_data()

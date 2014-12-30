@@ -36,10 +36,6 @@ tb_character_equipment_chip.insert()
 tb_guild_info = MAdmin('tb_guild_info', 'id')
 tb_guild_info.insert()
 
-# 玩家公会表
-tb_character_guild = MAdmin('tb_character_guild', 'id')
-tb_character_guild.insert()
-
 # 公会名表
 tb_guild_name = MAdmin('tb_guild_name', 'g_name')
 tb_guild_name.insert()
