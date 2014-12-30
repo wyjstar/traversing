@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rpc.proto',
   package='',
-  serialized_pb='\n\trpc.proto\"\xfe\x02\n\x0bRPCProtocol\x12\x0f\n\x07msgType\x18\x01 \x02(\x0c\x12\x0b\n\x03key\x18\x02 \x02(\x0c\x12\x0c\n\x04name\x18\x03 \x02(\x0c\x12&\n\x06result\x18\x04 \x01(\x0b\x32\x16.RPCProtocol.Parameter\x12*\n\nparameters\x18\x05 \x03(\x0b\x32\x16.RPCProtocol.Parameter\x1a\xee\x01\n\tParameter\x12\x14\n\x0cpython_param\x18\x01 \x01(\x0c\x12\x13\n\x0bproto_param\x18\x02 \x01(\x0c\x12\x14\n\x0cstring_param\x18\x03 \x01(\t\x12\x11\n\tint_param\x18\x04 \x01(\x11\x12\x12\n\nuint_param\x18\x05 \x01(\r\x12\x13\n\x0bint64_param\x18\x06 \x01(\x12\x12\x14\n\x0cuint64_param\x18\x07 \x01(\x04\x12\x12\n\nbool_param\x18\x08 \x01(\x08\x12\x13\n\x0b\x66loat_param\x18\t \x01(\x02\x12\x14\n\x0c\x64ouble_param\x18\n \x01(\x01\x12\x0f\n\x07is_null\x18\x0b \x01(\x08')
+  serialized_pb='\n\trpc.proto\"\xcc\x03\n\x0bRPCProtocol\x12\x0f\n\x07msgType\x18\x01 \x02(\x0c\x12\x0b\n\x03key\x18\x02 \x02(\x0c\x12\x0c\n\x04name\x18\x03 \x02(\x0c\x12&\n\x06result\x18\x04 \x01(\x0b\x32\x16.RPCProtocol.Parameter\x12*\n\nparameters\x18\x05 \x03(\x0b\x32\x16.RPCProtocol.Parameter\x1a\xbc\x02\n\tParameter\x12\x14\n\x0cpython_param\x18\x01 \x01(\x0c\x12\x13\n\x0bproto_param\x18\x02 \x01(\x0c\x12\x14\n\x0cstring_param\x18\x03 \x01(\t\x12\x11\n\tint_param\x18\x04 \x01(\x11\x12\x12\n\nuint_param\x18\x05 \x01(\r\x12\x13\n\x0bint64_param\x18\x06 \x01(\x12\x12\x14\n\x0cuint64_param\x18\x07 \x01(\x04\x12\x12\n\nbool_param\x18\x08 \x01(\x08\x12\x13\n\x0b\x66loat_param\x18\t \x01(\x02\x12\x14\n\x0c\x64ouble_param\x18\n \x01(\x01\x12\x0f\n\x07is_null\x18\x0b \x01(\x08\x12&\n\x06tuples\x18\x0c \x03(\x0b\x32\x16.RPCProtocol.Parameter\x12$\n\x04list\x18\r \x03(\x0b\x32\x16.RPCProtocol.Parameter')
 
 
 
@@ -102,6 +102,20 @@ _RPCPROTOCOL_PARAMETER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='tuples', full_name='RPCProtocol.Parameter.tuples', index=11,
+      number=12, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='list', full_name='RPCProtocol.Parameter.list', index=12,
+      number=13, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -112,7 +126,7 @@ _RPCPROTOCOL_PARAMETER = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=158,
-  serialized_end=396,
+  serialized_end=474,
 )
 
 _RPCPROTOCOL = _descriptor.Descriptor(
@@ -167,9 +181,11 @@ _RPCPROTOCOL = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=14,
-  serialized_end=396,
+  serialized_end=474,
 )
 
+_RPCPROTOCOL_PARAMETER.fields_by_name['tuples'].message_type = _RPCPROTOCOL_PARAMETER
+_RPCPROTOCOL_PARAMETER.fields_by_name['list'].message_type = _RPCPROTOCOL_PARAMETER
 _RPCPROTOCOL_PARAMETER.containing_type = _RPCPROTOCOL;
 _RPCPROTOCOL.fields_by_name['result'].message_type = _RPCPROTOCOL_PARAMETER
 _RPCPROTOCOL.fields_by_name['parameters'].message_type = _RPCPROTOCOL_PARAMETER
