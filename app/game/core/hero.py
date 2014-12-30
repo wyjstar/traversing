@@ -236,6 +236,7 @@ class Hero(object):
         rage_skill = self.group_by_rage
         break_skills = self.break_skill_ids
 
+
         return CommonItem(
             dict(hero_no=hero_no, quality=quality, normal_skill=normal_skill,
                  rage_skill=rage_skill, hp=hp, atk=atk,
@@ -244,6 +245,51 @@ class Hero(object):
                  cri_ded_coeff=cri_ded_coeff, block=block,
                  break_skills=break_skills, level=self._level,
                  break_level=self._break_level, ductility=ductility))
+
+    def refine_attr(self):
+        attr = CommonItem()
+
+        if self.refine != 0:
+            _refine_attr = game_configs.seal_config.get(self.refine)
+            if _refine_attr:
+                attr += _refine_attr
+            else:
+                logger.error('cant find refine config:%s', self.refine)
+        return attr
+
+    def runt_attr(self):
+        all_attr = {1: "hp",
+                    2: "atk",
+                    3: "physical_def",
+                    4: "magic_def",
+                    5: "hit",
+                    6: "dodge",
+                    7: "cri",
+                    8: "cri_coeff",
+                    9: "cri_ded_coeff",
+                    10: "block",
+                    11: "ductility"}
+
+        result_attr = {}
+        # init
+        for _, v in all_attr.items():
+            result_attr[v] = 0
+
+        for (type_id, type_info) in self._runt.items():
+            for (po, [runt_no, runt_type, main_attr, minor_attr]) in type_info.items():
+                xs = 1
+                if type_id != runt_type:
+                    xs = game_configs.base_config.get('totemSpaceDecay')
+
+                for (attr_type, attr_info) in main_attr.items():
+                    attr_value_type, attr_value, attr_increment = attr_info
+                    result_attr[all_attr.get(attr_type)] += xs * attr_value
+
+                for (attr_type, attr_info) in minor_attr.items():
+                    attr_value_type, attr_value, attr_increment = attr_info
+                    result_attr[all_attr.get(attr_type)] += xs * attr_value
+
+        return result_attr
 
     def break_attr(self):
         """突破技能带来的属性加成

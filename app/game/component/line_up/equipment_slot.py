@@ -99,16 +99,3 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
             if num >= skill_cof[0]:
                 skills.append(skill_cof[1])
         return skills
-
-
-
-
-
-
-
-
-
-
-
-
-
