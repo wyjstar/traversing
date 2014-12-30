@@ -116,7 +116,8 @@ class StageAward(object):
             self._award_info = curr_award_info
         else:
             self._award_info = award_info
-
+        if not self._award_info:
+            return
         if self._dragon_gift == -1:
             if self._award_info[-1] != -1:
                 self._dragon_gift = 0
