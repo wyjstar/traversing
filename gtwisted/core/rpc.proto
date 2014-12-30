@@ -17,5 +17,7 @@ message RPCProtocol{
         optional float float_param = 9;
         optional double double_param = 10;
         optional bool is_null = 11;
+        repeated Parameter tuples = 12;
+        repeated Parameter list = 13;
     }  
 }

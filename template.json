@@ -42,7 +42,7 @@
             "rootport": 30001,
             "remoteport": [
                 {
-                    "roothost": "<=login_ip=>",
+                    "roothost": "127.0.0.1",
                     "rootport": 30002,
                     "rootname": "transit"
                 },

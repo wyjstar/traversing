@@ -34,7 +34,15 @@ def _write_parameter(proto, arg):
         proto.bool_param = arg
     elif arg is None:
         proto.is_null = True
-    elif isinstance(arg, list) or isinstance(arg, dict):
+    elif isinstance(arg, list):
+        for a in arg:
+            proto = proto.list.add()
+            _write_parameter(proto, a)
+    elif isinstance(arg, tuple):
+        for a in arg:
+            proto = proto.tuples.add()
+            _write_parameter(proto, a)
+    elif isinstance(arg, dict):
         proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
@@ -44,6 +52,16 @@ def _read_parameter(proto):
     desc, arg = proto.ListFields()[0]
     if desc.name == 'is_null':
         return None
+    elif desc.name == 'tuples':
+        t = ()
+        for a in arg:
+            t = t + (_read_parameter(a),)
+        return t
+    elif desc.name == 'list':
+        l = []
+        for a in arg:
+            l.append(_read_parameter(a))
+        return l
     elif desc.name == 'python_param':
         return marshal.loads(arg)
     else:

@@ -299,3 +299,8 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
     result = util.UpdateWithDict(PVP_TABLE_NAME, rank_data, prere)
     if not result:
         raise Exception('update pvp fail!! id:%s' % rank_id)
+
+
+@remoteserviceHandle('gate')
+def pvp_award_remote(pvp_num, is_online, player):
+    print pvp_num, 'pvp award!'*5
