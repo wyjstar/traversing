@@ -354,3 +354,25 @@ def reset_stage_908(pro_data, player):
 
     response.res.result = True
     return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def get_award_909(pro_data, player):
+    """取得章节奖励信息
+    """
+    request = stage_request_pb2.ChapterInfoRequest()
+    request.ParseFromString(pro_data)
+    chapter_id = request.chapter_id
+
+    chapters_info = get_chapter_info(chapter_id, player)
+
+    response = stage_response_pb2.ChapterInfoResponse()
+    for chapter_obj in chapters_info:
+        stage_award_add = response.stage_award.add()
+        stage_award_add.chapter_id = chapter_obj.chapter_id
+
+        for award in chapter_obj.award_info:
+            stage_award_add.award.append(award)
+
+        stage_award_add.dragon_gift = chapter_obj.dragon_gift
+
+    return response.SerializePartialToString()
