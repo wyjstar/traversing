@@ -149,7 +149,7 @@ class CharacterStageComponent(Component):
         """
         stages_config = game_configs.stage_config.get('stages')
         chapter_stages_config = [self.get_stage(stage_id) for stage_id, item in stages_config.items() if
-                                 "contents" not in item and item.chapter == chapter_id]
+                                 not item.chaptersTab and item.chapter == chapter_id]
 
         num = 0
         for stage_config in chapter_stages_config:

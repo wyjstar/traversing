@@ -116,18 +116,18 @@ class StageAward(object):
             self._award_info = curr_award_info
         else:
             self._award_info = award_info
+        if not self._award_info:
+            return
+        if self._dragon_gift == -1:
+            if self._award_info[-1] != -1:
+                self._dragon_gift = 0
 
     def check(self, star_num):
         """根据星星数量判断是否能领取奖励
         """
-        stage = None  # 章节配置数据
         award_info = []  # 奖励可以领取状态
-        stages_config = game_configs.stage_config.get('stages')
 
-        for stage_id, item in stages_config.items():
-            if item.sectionCount and item.chapter == self._chapter_id:
-                stage = item
-                break
+        stage = self.get_conf()
         star = stage.star
         for value in star:
             if star_num >= value:  # 可以领奖
@@ -136,4 +136,13 @@ class StageAward(object):
                 award_info.append(-1)  # 没达成
 
         return award_info
+
+    def get_conf(self):
+        stage = None  # 章节配置数据
+        stages_config = game_configs.stage_config.get('stages')
+        for stage_id, item in stages_config.items():
+            if item.sectionCount and item.chapter == self._chapter_id and item.chaptersTab:
+                stage = item
+                break
+        return stage
 

@@ -25,7 +25,7 @@ class CharacterOnlineGift(Component):
             data = activity.get('online_gift')
             if data:
                 self._online_time = data['online_time']
-                self._refresh_time = data['refresh_time']
+                self._refresh_time = data.get('refresh_time', time.time())
                 self._received_gift_ids = data['received_gift_ids']
                 self.check_time()
         else:

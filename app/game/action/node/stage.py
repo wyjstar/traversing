@@ -59,14 +59,13 @@ def get_chapter_902(pro_data, player):
 
     response = stage_response_pb2.ChapterInfoResponse()
     for chapter_obj in chapters_id:
+        if len(chapter_obj.award_info) == 0:
+            continue
         stage_award_add = response.stage_award.add()
         stage_award_add.chapter_id = chapter_obj.chapter_id
-
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
-
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
-
     return response.SerializePartialToString()
 
 
@@ -353,4 +352,53 @@ def reset_stage_908(pro_data, player):
     player.finance.save_data()
 
     response.res.result = True
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def get_award_909(pro_data, player):
+    """取得章节奖励信息
+    """
+    request = stage_request_pb2.StarAwardRequest()
+    request.ParseFromString(pro_data)
+    chapter_id = request.chapter_id
+    award_type = request.award_type
+
+    response = stage_response_pb2.StarAwardResponse()
+
+    chapters_info = get_chapter_info(chapter_id, player)
+    if len(chapters_info) != 1 or chapter_id == 1 or (chapter_id == 2 and award_type ==2) or len(chapters_info[0].award_info) == 0:
+        logger.error("chapter_info dont find,or (chapter_id == 1 and award_type == 2 ) or ")
+        response.res.result = False
+        response.res.result_no = 831
+        return response.SerializePartialToString()
+    else:
+        chapter_obj = chapters_info[0]
+
+    conf = chapter_obj.get_conf
+
+    if 0 <= award_type <= 2:
+        if chapter_obj.award_info[award_type] != 0:
+            logger.error("already receive or can`t receive")
+            response.res.result = False
+            response.res.result_no = 832
+            return response.SerializePartialToString()
+        else:
+            chapter_obj.award_info[award_type] = 1
+            drop = conf.starGift[award_type]
+
+    else:
+        if chapter_obj.award_info[-1] == -1:
+            logger.error("can`t receive")
+            response.res.result = False
+            response.res.result_no = 833
+            return response.SerializePartialToString()
+        else:
+            chapter_obj.dragon_gift = 1
+            drop = conf.dragonGift
+
+    return_data = gain(player, drop)
+    get_return(player, return_data, response.gain)
+
+    player.stage_component.update()
+
     return response.SerializePartialToString()
