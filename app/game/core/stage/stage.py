@@ -141,7 +141,7 @@ class StageAward(object):
         stage = None  # 章节配置数据
         stages_config = game_configs.stage_config.get('stages')
         for stage_id, item in stages_config.items():
-            if item.sectionCount and item.chapter == self._chapter_id:
+            if item.sectionCount and item.chapter == self._chapter_id and item.chaptersTab:
                 stage = item
                 break
         return stage
