@@ -58,6 +58,14 @@ class CharacterGuildComponent(Component):
                                'worship_time': self._worship_time,
                                'exit_time': self._exit_time})
 
+    def get_guild_level():
+        if self._g_id == "no":
+            return 0
+        data = tb_guild_info.getObjData(self._g_id)
+        guild_obj = Guild()
+        guild_obj.init_data(data)
+        return guild_obj.level
+
     @property
     def g_id(self):
         return self._g_id
