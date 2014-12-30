@@ -9,8 +9,8 @@ groot = GlobalObject().root
 
 
 @rootserviceHandle
-def push_message_remote(key, character_id, args, kw):
-    message_cache.cache(key, character_id, *args, **kw)
+def push_message_remote(key, character_id, args):
+    message_cache.cache(key, character_id, *args)
     return True
 
 

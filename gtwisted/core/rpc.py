@@ -56,10 +56,12 @@ def _read_parameter(proto):
         t = ()
         for a in arg:
             t = t + (_read_parameter(a),)
+        return t
     elif desc.name == 'list':
         l = []
         for a in arg:
             l.append(_read_parameter(a))
+        return l
     elif desc.name == 'python_param':
         return marshal.loads(arg)
     else:
