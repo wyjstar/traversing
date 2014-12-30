@@ -10,6 +10,13 @@ groot = GlobalObject().root
 
 @rootserviceHandle
 def push_message_remote(key, character_id, args):
+    childs = groot.childsmanager.childs
+    for child in childs.values():
+        if 'gate' in child.name:
+            result = child.pull_message_remote(*args)
+            if type(result) is bool and result:
+                return
+
     message_cache.cache(key, character_id, *args)
     return True
 
@@ -17,10 +24,10 @@ def push_message_remote(key, character_id, args):
 @rootserviceHandle
 def pull_message_remote(character_id):
     count = 0
-    for key, message in message_cache.get(character_id):
-        childs = groot.childsmanager.childs
-        # print groot.childsmanager
+    childs = groot.childsmanager.childs
+    # print groot.childsmanager
 
+    for key, message in message_cache.get(character_id):
         args = (message.get('topic_id'), message.get('character_id'))
         args += message.get('args')
         kw = message.get('kw')
