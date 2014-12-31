@@ -19,5 +19,7 @@ message RPCProtocol{
         optional bool is_null = 11;
         repeated Parameter tuples = 12;
         repeated Parameter list = 13;
+        optional bool null_list = 14;
+        optional bool null_tuple = 15;
     }  
 }
