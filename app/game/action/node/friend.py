@@ -46,9 +46,7 @@ def add_friend_request_1100(data, player):
         response.result_no = 4  # fail
         return response.SerializePartialToString()  # fail
 
-    if not push_message('add_friend_request_remote',
-                        target_id,
-                        player.base_info.id):
+    if not push_message('add_friend_request_remote', target_id, player.base_info.id):
         response.result = False
         response.result_no = 2
         return response.SerializePartialToString()  # fail

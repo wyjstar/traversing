@@ -13,6 +13,39 @@ from app.proto_file.runt_pb2 import *
 
 
 class RobotGuild(Robot):
+    def command_get_stage_info(self):
+        argument1 = StageInfoRequest()
+        argument1.stage_id = 0
+        self.send_message(argument1, 901)
+
+    def reset_get_stage_info_901(self, message):
+        argument = StageInfoResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_get_award_info(self):
+        argument1 = ChapterInfoRequest()
+        argument1.chapter_id = 0
+        self.send_message(argument1, 902)
+
+    def reset_get_award_info_902(self, message):
+        argument = ChapterInfoResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_star_award(self):
+        argument1 = StarAwardRequest()
+        argument1.chapter_id = 4
+        argument1.award_type = 1
+        self.send_message(argument1, 909)
+
+    def reset_star_award_909(self, message):
+        argument = StarAwardResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
 
     def command_reset_stage(self):
         argument1 = ResetStageRequest()

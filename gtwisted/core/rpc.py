@@ -24,26 +24,49 @@ RPC_DATA_MAX_LENGTH = 256*1024  # rpc数据包允许的最大长度
 def _write_parameter(proto, arg):
     if isinstance(arg, str):
         proto.proto_param = arg
+    elif isinstance(arg, bool):
+        proto.bool_param = arg
     elif isinstance(arg, unicode):
         proto.string_param = arg
     elif isinstance(arg, int):
         proto.int_param = arg
     elif isinstance(arg, float):
         proto.float_param = arg
-    elif isinstance(arg, bool):
-        proto.bool_param = arg
     elif arg is None:
         proto.is_null = True
-    elif isinstance(arg, list) or isinstance(arg, dict):
+    elif isinstance(arg, list):
+        for a in arg:
+            proto = proto.list.add()
+            _write_parameter(proto, a)
+        else:
+            proto.null_list = True
+    elif isinstance(arg, tuple):
+        for a in arg:
+            proto = proto.tuples.add()
+            _write_parameter(proto, a)
+        else:
+            proto.null_tuple = True
+    elif isinstance(arg, dict):
         proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
 
 
 def _read_parameter(proto):
+    if len(proto.ListFields()) < 1:
+        import traceback
+        traceback.print_stack()
     desc, arg = proto.ListFields()[0]
     if desc.name == 'is_null':
         return None
+    elif desc.name == 'null_list':
+        return []
+    elif desc.name == 'null_tuple':
+        return ()
+    elif desc.name == 'tuples':
+        return (_read_parameter(a) for a in arg)
+    elif desc.name == 'list':
+        return [_read_parameter(a) for a in arg]
     elif desc.name == 'python_param':
         return marshal.loads(arg)
     else:

@@ -5,6 +5,7 @@ created by sphinx on 27/10/14.
 import cPickle
 import random
 import time
+from shared.utils.const import const
 from app.proto_file import pvp_rank_pb2
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
@@ -43,6 +44,7 @@ def pvp_top_rank_request_1501(data, player):
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+    response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
 
@@ -72,6 +74,7 @@ def pvp_player_rank_request_1502(data, player):
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+    response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
 
@@ -276,6 +279,7 @@ def pvp_player_rank_refresh_request(data, player):
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+    response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
 
@@ -299,3 +303,11 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
     result = util.UpdateWithDict(PVP_TABLE_NAME, rank_data, prere)
     if not result:
         raise Exception('update pvp fail!! id:%s' % rank_id)
+
+
+@remoteserviceHandle('gate')
+def pvp_award_remote(pvp_num, is_online, player):
+    player.finance[const.PVP] += pvp_num
+    player.finance.save_data()
+    logger.debug('pvp award!%s',pvp_num)
+    return True
