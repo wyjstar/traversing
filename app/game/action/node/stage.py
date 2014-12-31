@@ -65,6 +65,7 @@ def get_chapter_902(pro_data, player):
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -357,11 +358,20 @@ def reset_stage_908(pro_data, player):
 def get_award_909(pro_data, player):
     """取得章节奖励信息
     """
+    return get_award(pro_data, player)
+
+@remoteserviceHandle('gate')
+def get_award_910(pro_data, player):
+    """取得章节奖励信息
+    """
+    return get_award(pro_data, player)
+
+def get_award(pro_data, player):
+
     request = stage_request_pb2.StarAwardRequest()
     request.ParseFromString(pro_data)
     chapter_id = request.chapter_id
     award_type = request.award_type
-
     response = stage_response_pb2.StarAwardResponse()
 
     chapters_info = get_chapter_info(chapter_id, player)
@@ -373,7 +383,7 @@ def get_award_909(pro_data, player):
     else:
         chapter_obj = chapters_info[0]
 
-    conf = chapter_obj.get_conf
+    conf = chapter_obj.get_conf()
 
     if 0 <= award_type <= 2:
         if chapter_obj.award_info[award_type] != 0:
@@ -383,7 +393,7 @@ def get_award_909(pro_data, player):
             return response.SerializePartialToString()
         else:
             chapter_obj.award_info[award_type] = 1
-            drop = conf.starGift[award_type]
+            bag_id = conf.starGift[award_type]
 
     else:
         if chapter_obj.award_info[-1] == -1:
@@ -393,11 +403,21 @@ def get_award_909(pro_data, player):
             return response.SerializePartialToString()
         else:
             chapter_obj.dragon_gift = 1
-            drop = conf.dragonGift
+            bag_id = conf.dragonGift
 
+    drop = get_drop(bag_id)
     return_data = gain(player, drop)
-    get_return(player, return_data, response.gain)
+    get_return(player, return_data, response.drops)
 
     player.stage_component.update()
 
+    response.res.result = True
+    logger.debug(response)
     return response.SerializePartialToString()
+
+def get_drop(bag_id):
+    drops = []
+    common_bag = BigBag(bag_id)
+    common_drop = common_bag.get_drop_items()
+    drops.extend(common_drop)
+    return drops
