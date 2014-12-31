@@ -31,7 +31,9 @@ class MessageCache:
                                      uid=unique_id))
         score = time.time() + STAY_TIME
         result = self._redis.zadd(key_name, score, message)
-        print result
+        if result != 1:
+            print 'cache key:', key, 'char id:', character_id, 'result', result
+        # print result
 
     def get(self, character_id):
         request_key = str(character_id)
@@ -46,7 +48,7 @@ class MessageCache:
         result = self._redis.zrem(key, message)
         if result != 1:
             print 'delete key:', key, 'message:', message, 'result', result
-        print result
+        # print result
 
 
 message_cache = MessageCache()
