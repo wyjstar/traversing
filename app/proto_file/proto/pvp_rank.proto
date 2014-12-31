@@ -13,6 +13,7 @@ message RankItems{
 message PlayerRankResponse{
     repeated RankItems rank_items = 1;
 	optional int32 player_rank = 2;
+	optional int32 pvp_score = 3;
 }
 
 message PvpFightRequest{

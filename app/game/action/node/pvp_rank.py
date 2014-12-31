@@ -44,6 +44,7 @@ def pvp_top_rank_request_1501(data, player):
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+    response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
 
@@ -73,6 +74,7 @@ def pvp_player_rank_request_1502(data, player):
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+    response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
 
@@ -277,6 +279,7 @@ def pvp_player_rank_refresh_request(data, player):
         rank_item.ap = record.get('ap')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+    response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
 
