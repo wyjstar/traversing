@@ -11,6 +11,8 @@ from test.init_data.mock_player import init_player
 from test.init_data.mock_line_up import init_line_up
 from test.init_data.mock_mails import init_mail
 from test.init_data.mock_runt import init_runt
+from test.init_data.mock_guild import init_guild
+from test.init_data.mock_travel_item import init_travel_item
 
 
 def init(player):
@@ -22,3 +24,5 @@ def init(player):
     init_item(player)
     init_line_up(player)
     init_runt(player)
+    init_guild(player)
+    init_travel_item(player)
