@@ -7,4 +7,4 @@ import pvp_award
 from gtwisted.core import reactor
 
 
-reactor.callLater(10, pvp_award.pvp_award_tick)
+reactor.callLater(60*6, pvp_award.pvp_award_tick)
