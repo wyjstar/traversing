@@ -15,7 +15,6 @@ class GameCommandService(CommandService):
         target = self.getTarget(targetKey)
         if not target:
             logger.error('command %s not Found on service' % str(targetKey))
-            print self._targets
             return None
         # if targetKey not in self.unDisplay:
         #     logger.info("call method %s on service[%s]" %
