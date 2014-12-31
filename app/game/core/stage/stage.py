@@ -125,7 +125,7 @@ class StageAward(object):
     def check(self, star_num):
         """根据星星数量判断是否能领取奖励
         """
-        star_num = 21
+        # star_num = 21
         award_info = []  # 奖励可以领取状态
 
         stage = self.get_conf()

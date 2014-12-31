@@ -65,7 +65,6 @@ def get_chapter_902(pro_data, player):
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
-    print "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", response
     return response.SerializePartialToString()
 
 
