@@ -9,9 +9,8 @@ import time
 from shared.utils.const import const
 
 
-def init_mail():
+def init_mail(player):
 
-    player = PlayersManager().get_player_by_id(1)
     # 领取体力
     mail = Mail(mail_id='001', character_id=1, sender_id=2, sender_name='player2', title='mail1', content='content1',
                 mail_type=1, is_readed=False, send_time=100)

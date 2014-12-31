@@ -37,7 +37,9 @@ class CharacterFightCacheComponent(Component):
         """
         red_unit = {}
         for no, slot in self.line_up_slots.items():
+            logger.debug("xxxxxx%s" % no)
             red = slot.slot_attr
+            logger.debug("xxxxxx%s" % slot.hero_slot.hero_no)
             if red:
                 red_unit[no] = red
         self._red_unit = red_unit

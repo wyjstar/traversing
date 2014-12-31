@@ -51,6 +51,11 @@ class DBPool(object):
         connection.commit()
         self.idle_connections.append(connection)
 
+    def closePool(self):
+        for con in self.idle_connections:
+            if con.socket:
+                con.close()
+
 
 # 数据库连接池对象
 dbpool = DBPool()

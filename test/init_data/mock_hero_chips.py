@@ -12,6 +12,7 @@ def init_hero_chip(player):
         if val.get('type') == 2: continue
         chip = HeroChip(int(k), 4000)
         player.hero_chip_component.add_chip(chip)
+        player.hero_chip_component.save_data()
     return
 
     hero_chip1 = HeroChip(1010020, 300)
@@ -19,3 +20,4 @@ def init_hero_chip(player):
 
     player.hero_chip_component.add_chip(hero_chip1)
     player.hero_chip_component.add_chip(hero_chip2)
+    player.hero_chip_component.save_data()
