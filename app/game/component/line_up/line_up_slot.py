@@ -152,13 +152,7 @@ class LineUpSlotComponent(Component):
     def slot_attr(self):
         """
         """
-
-        hero_base_attr, attr, hero_obj = self.hero_attr()
-
-        if not hero_base_attr:
-            return None
-
-        return self.get_battle_unit(hero_obj, attr)
+        return self.assemble_hero()
 
     def get_battle_unit(self, hero_obj, attr):
         equ_attr = self.equ_attr()
@@ -282,8 +276,8 @@ class LineUpSlotComponent(Component):
         hit = attr.get("hitArray")
         dodge = attr.get("dodgeArray")
         cri = attr.get("criArray")
-        cri_coeff = attr.get("criCoeff")
-        cri_ded_coeff = attr.get("criDedCoeff")
+        cri_coeff = attr.get("criCoeffArray")
+        cri_ded_coeff = attr.get("criDedCoeffArray")
         block = attr.get("blockArray")
         ductility = attr.get("ductilityArray")
 
@@ -297,7 +291,6 @@ class LineUpSlotComponent(Component):
                                   hero.break_level, is_boss)
 
         return battlt_unit
-
 
     def combat_power_lineup(self):
         hero = self._hero_slot.hero_obj
@@ -343,9 +336,6 @@ class LineUpSlotComponent(Component):
             ap = self.combat_power_lineup()
             data = {'info': unit.dumps(), 'power': ap}
             lord_obj.update('lord_attr_info', data)
-        else:
-            logger.error('error cant find character info:%s',
-                         self.owner.character_id)
 
     @property
     def first_slot(self):

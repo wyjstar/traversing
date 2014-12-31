@@ -3,7 +3,8 @@
 created by server on 14-12-29下午2:03.
 """
 from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config
-from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger_cal
+import pprint
 
 def hero_self_attr(player, hero):
     """
@@ -85,13 +86,15 @@ def hero_self_attr(player, hero):
         ductilityStone=runt_attr.get("ductility", 0),
     )
 
-    logger.debug("*"*80)
-    logger.debug(all_vars)
+    #if hero.hero_no == 10045: logger_cal.debug("武将自身属性计算的输入:%s" % pprint.pformat(all_vars))
+    if hero.hero_no == 10045: logger_cal.debug("武将突破:%s" % pprint.pformat(break_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将炼体:%s" % pprint.pformat(refine_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将符文:%s" % pprint.pformat(runt_attr))
+
     # hpHero
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
     hpHero_formula = formula_config.get("hpHero").get("formula")
     assert hpHero_formula!=None, "hpHero formula can not be None!"
-    print hpHero_formula, "*"*80
     hpHero = eval(hpHero_formula, all_vars)
 
     # atkHero
@@ -172,9 +175,7 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
     assert hero!=None, "hero can not be None!"
 
     line_up_slot = player.line_up_component.line_up_slots.get(line_up_slot_no)
-
     hero_slot = line_up_slot.hero_slot
-
     hero_info = hero.hero_info
     # 自身属性
     self_attr = hero_self_attr(player, hero)
@@ -191,8 +192,13 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
     # 公会
     guild_attr = player.guild.guild_attr()
 
+    if hero.hero_no == 10045: logger_cal.debug("武将装备:%s" % pprint.pformat(equ_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将套装:%s" % pprint.pformat(set_equ_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将羁绊:%s" % pprint.pformat(link_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将游历:%s" % pprint.pformat(travel_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将助威:%s" % pprint.pformat(cheer_attr))
+    if hero.hero_no == 10045: logger_cal.debug("武将公会:%s" % pprint.pformat(guild_attr))
     all_vars = dict(
-            hpHero=self_attr.get("hp", 0),
             hpEqu=equ_attr.get("hp", 0),
             hpSetEqu=set_equ_attr.get("hp", 0),
             hplink=link_attr.get("hp", 0),
@@ -200,7 +206,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             hpCheer=cheer_attr.get("hp", 0),
             hpTravel=travel_attr.get("hp", 0),
 
-            atkHero=self_attr.get("atk", 0),
             atkEqu=equ_attr.get("atk", 0),
             atkSetEqu=set_equ_attr.get("atk", 0),
             atklink=link_attr.get("atk", 0),
@@ -208,7 +213,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             atkCheer=cheer_attr.get("atk", 0),
             atkTravel=travel_attr.get("atk", 0),
 
-            physicalDefHero=self_attr.get("physical_def", 0),
             physicalDefEqu=equ_attr.get("physical_def", 0),
             physicalDefSetEqu=set_equ_attr.get("physical_def", 0),
             physicalDeflink=link_attr.get("physical_def", 0),
@@ -216,7 +220,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             physicalDefCheer=cheer_attr.get("physical_def", 0),
             physicalDefTravel=travel_attr.get("physical_def", 0),
 
-            magicDefHero=self_attr.get("magic_def", 0),
             magicDefEqu=equ_attr.get("magic_def", 0),
             magicDefSetEqu=set_equ_attr.get("magic_def", 0),
             magicDeflink=link_attr.get("magic_def", 0),
@@ -224,7 +227,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             magicDefCheer=cheer_attr.get("magic_def", 0),
             magicDefTravel=travel_attr.get("magic_def", 0),
 
-            hitHero=self_attr.get("hit", 0),
             hitEqu=equ_attr.get("hit", 0),
             hitSetEqu=set_equ_attr.get("hit", 0),
             hitlink=link_attr.get("hit", 0),
@@ -232,7 +234,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             hitCheer=cheer_attr.get("hit", 0),
             hitTravel=travel_attr.get("hit", 0),
 
-            dodgeHero=self_attr.get("dodge", 0),
             dodgeEqu=equ_attr.get("dodge", 0),
             dodgeSetEqu=set_equ_attr.get("dodge", 0),
             dodgelink=link_attr.get("dodge", 0),
@@ -240,7 +241,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             dodgeCheer=cheer_attr.get("dodge", 0),
             dodgeTravel=travel_attr.get("dodge", 0),
 
-            criHero=self_attr.get("cri", 0),
             criEqu=equ_attr.get("cri", 0),
             criSetEqu=set_equ_attr.get("cri", 0),
             crilink=link_attr.get("cri", 0),
@@ -248,7 +248,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             criCheer=cheer_attr.get("cri", 0),
             criTravel=travel_attr.get("cri", 0),
 
-            criCoeffHero=self_attr.get("cri_coeff", 0),
             criCoeffEqu=equ_attr.get("cri_coeff", 0),
             criCoeffSetEqu=set_equ_attr.get("cri_coeff", 0),
             criCoefflink=link_attr.get("cri_coeff", 0),
@@ -256,7 +255,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             criCoeffCheer=cheer_attr.get("cri_coeff", 0),
             criCoeffTravel=travel_attr.get("cri_coeff", 0),
 
-            criDedCoeffHero=self_attr.get("cri_ded_coeff", 0),
             criDedCoeffEqu=equ_attr.get("cri_ded_coeff", 0),
             criDedCoeffSetEqu=set_equ_attr.get("cri_ded_coeff", 0),
             criDedCoefflink=link_attr.get("cri_ded_coeff", 0),
@@ -264,7 +262,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             criDedCoeffCheer=cheer_attr.get("cri_ded_coeff", 0),
             criDedCoeffTravel=travel_attr.get("cri_ded_coeff", 0),
 
-            blockHero=self_attr.get("block", 0),
             blockEqu=equ_attr.get("block", 0),
             blockSetEqu=set_equ_attr.get("block", 0),
             blocklink=link_attr.get("block", 0),
@@ -272,7 +269,6 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             blockCheer=cheer_attr.get("block", 0),
             blockTravel=travel_attr.get("block", 0),
 
-            ductilityHero=self_attr.get("ductility", 0),
             ductilityEqu=equ_attr.get("ductility", 0),
             ductilitySetEqu=set_equ_attr.get("ductility", 0),
             ductilitylink=link_attr.get("ductility", 0),
@@ -281,7 +277,9 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
             ductilityTravel=travel_attr.get("ductility", 0),
             )
 
+    all_vars.update(self_attr)
 
+    #if hero.hero_no == 10045: logger_cal.debug("武将阵容属性中的输入:%s" % pprint.pformat(all_vars, indent=1))
     # hpArray
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
     hpArray_formula = formula_config.get("hpArray").get("formula")
@@ -376,16 +374,16 @@ def skill_attr(hero, hero_info, skill_ids):
 
             assert skill_info!=None, "skill buff: %s not in skill_buff_config!" % skill_id
             cal_vars = dict(
-                valueEffect=skill_info.valueEffect,
-                levelEffectValue=skill_info.levelEffectValue,
+                skill_buff=skill_info,
                 heroLevel=hero.level,
                 hero_info=hero_info
                 )
             pre_vars = dict(skill_buff=skill_info)
 
             for formula_key, result_key in formulas:
-                formula = formula_config.get(formula_key)
-                pre_formula = formula.get("precondition")
+                formula_info = formula_config.get(formula_key)
+                pre_formula = formula_info.get("precondition")
+                formula = formula_info.get("formula")
                 if eval(pre_formula, pre_vars):
                     attr[result_key] = eval(formula, cal_vars)
     return attr
@@ -465,6 +463,7 @@ def combat_power_hero_self(player, hero):
     assert formula!=None, "formula can not be None"
     result = eval(formula, self_attr)
 
+    if hero.hero_no == 10045: logger_cal.debug("武将%s自身的战斗力%s" % (hero.hero_no, result))
     return result
 
 def combat_power_hero_lineup(player, hero, line_up_slot_no):
@@ -477,4 +476,5 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no):
     formula = formula_config.get("fightValueArray").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, line_up_attr)
+    if hero.hero_no == 10045: logger_cal.debug("武将%s在阵容中的战斗力%s" % (hero.hero_no, result))
     return result

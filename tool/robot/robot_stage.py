@@ -14,13 +14,13 @@ class RobotStage(Robot):
         arg.stage_type = 1
         line_up = arg.lineup.add()
         line_up.pos = 1
-        line_up.hero_id = 10046
+        line_up.hero_id = 10044
         line_up = arg.lineup.add()
         line_up.pos = 2
-        line_up.hero_id = 10029
+        line_up.hero_id = 10045
         line_up = arg.lineup.add()
         line_up.pos = 3
-        line_up.hero_id = 10043
+        line_up.hero_id = 10046
         line_up = arg.lineup.add()
         line_up.pos = 4
         line_up.hero_id = 0

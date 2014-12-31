@@ -139,7 +139,6 @@ def find_target_units(attacker, army, enemy, skill_buff_info, main_target_units=
     target_pos = skill_buff_info.effectPos
     key, value = target_pos.items()[0]
 
-    key = int(key)
     if key == 13: # 反击，作特殊处理
         return [target]
 
@@ -158,13 +157,3 @@ def find_side(skill_buff_info, army, enemy):
         return enemy
     else: # army
         return army
-
-
-
-
-
-
-
-
-
-
