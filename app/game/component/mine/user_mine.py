@@ -291,7 +291,7 @@ class PlayerField(Mine):
                 'type':self._type,
                 'status':self._status,
                 'nickname':self._nickname,
-                'lineup':lineup,
+                'lineup':lineup if lineup else self._lineup,
                 'guard_time':self._guard_time,
                 'mine_id':self._mine_id,
                 'normal_harvest':self._normal_harvest,
@@ -452,6 +452,29 @@ class PlayerField(Mine):
             MineOpt.add_mine(self._tid, self._seq, data)
             MineOpt.unlock(self._seq)
             return 0
+        
+    def draw_stones(self):
+        #领取产出
+        print 'draw_stones'
+#         lock = MineOpt.lock(self._seq)
+#         if lock != 1:
+#             return {}
+        self.update_mine()
+        stones = {}
+        print self._normal, self._lucky
+        for k, v in self._normal.items():
+            stones[k] = v
+            self._normal[k] = 0
+        for k, v in self._lucky.items():
+            stones[k] = v
+            self._lucky[k] = 0
+        
+        self._status = 3
+        save_data =self.save_info()
+        MineOpt.add_mine(self._tid, self._seq, save_data)
+#         MineOpt.unlock(self._seq)
+
+        return stones
         
     def mine_data(self):
         info = {}

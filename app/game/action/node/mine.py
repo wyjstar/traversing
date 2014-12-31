@@ -304,8 +304,7 @@ def harvest_1245(data, player):
     收获符文石,待测试
     """
     request = mine_pb2.positionRequest()
-    #request.ParseFromString(data)
-    request.position = 0
+    request.ParseFromString(data)
     response = mine_pb2.drawStones()
     response.position = request.position
     stones = player.mine.harvest(request.position)
