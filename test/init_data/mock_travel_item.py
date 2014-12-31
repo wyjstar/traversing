@@ -8,12 +8,12 @@ from shared.db_opear.configs_data.game_configs import travel_item_config
 
 def init_travel_item(player):
     travel_item = {}
-    for conf in travel_item_config.get('items'):
-        stage_id = conf.stageId
+    for (item_id, conf) in travel_item_config.get('items').items():
+        stage_id = conf.get('stageId')
         if travel_item.get(stage_id):
-            travel_item.get(stage_id).append([conf.id, 1])
+            travel_item.get(stage_id).append([item_id, 1])
         else:
-            travel_item[stage_id] = [conf.id, 1]
+            travel_item[stage_id] = [[item_id, 1]]
 
     player.travel_component.travel_item = travel_item
     player.travel_component.save()

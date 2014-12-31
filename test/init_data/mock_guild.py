@@ -15,13 +15,7 @@ def init_guild(player):
 
     uuid = get_uuid()
     guild_obj = Guild()
-    guild_obj.create_guild(p_id, uuid)
-
-    remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
-
-    data = {'g_name': g_name,
-            'g_id': guild_obj.g_id}
-    tb_guild_name.new(data)
+    guild_obj.create_guild(player.base_info.id, uuid)
 
     player.guild.g_id = guild_obj.g_id
     player.guild.worship = 0
