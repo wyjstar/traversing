@@ -122,7 +122,6 @@ class Hero(object):
             temp_exp = hero_exp_config[player_level].get('exp', 0)
         self.level = level
         self.exp = temp_exp
-        self.save_data()
 
         return level, temp_exp
 

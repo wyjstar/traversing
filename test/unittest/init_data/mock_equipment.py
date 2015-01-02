@@ -3,85 +3,52 @@
 created by server on 14-7-10下午3:37.
 """
 from app.game.core.equipment.equipment import Equipment
-from app.game.core.PlayersManager import PlayersManager
 from shared.utils.pyuuid import get_uuid
+from shared.db_opear.configs_data import game_configs
 
 
-def init_equipment():
-    print '#1 --------------------'
-    player = PlayersManager().get_player_by_id(1)
-    equipment = player.equipment_component.add_equipment(110001)
-    equipment.base_info.base_name = 'e1'
-    equipment.attribute.strengthen_lv = 1
-    equipment.attribute.awakening_lv = 1
-    equipment.save_data()
+def init_equipment(player):
 
-    player.equipment_component.add_equipment(110002)
-    equipment.base_info.base_name = 'e2'
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    for equip_no, val in game_configs.equipment_config.items():
+        equipment_obj = Equipment(get_uuid(), '', equip_no)
+        player.equipment_component.add_exist_equipment(equipment_obj)
+        equipment_obj.attribute.strengthen_lv = 1
 
-    player.equipment_component.add_equipment(110003)
-    equipment.base_info.base_name = 'e3'
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    return
+    equipment_obj = Equipment(get_uuid(), '', 100001)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    player.equipment_component.add_equipment(110004)
-    equipment.base_info.base_name = 'e4'
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    equipment_obj = Equipment(get_uuid(), '', 100002)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    player.equipment_component.add_equipment(110005)
-    equipment.base_info.base_name = 'e5'
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    equipment_obj = Equipment(get_uuid(), '', 100003)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    player.equipment_component.add_equipment(110006)
-    equipment.base_info.base_name = 'e6'
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 2
-    equipment.save_data()
+    equipment_obj = Equipment(get_uuid(), '', 100004)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    equipment = Equipment(get_uuid(), '', 100001)
-    player.equipment_component.add_exist_equipment(equipment)
-    equipment.base_info.base_name = 'e6'
-    equipment.attribute.strengthen_lv = 10
-    equipment.attribute.awakening_lv = 20
-    equipment.attribute.nobbing_effect = 9
-    equipment.save_data()
+    equipment_obj = Equipment(get_uuid(), '', 100005)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    equipment = Equipment(get_uuid(), '', 100023)
-    player.equipment_component.add_exist_equipment(equipment)
-    equipment.base_info.base_name = 'e6'
-    equipment.attribute.strengthen_lv = 11
-    equipment.attribute.awakening_lv = 20
-    equipment.attribute.nobbing_effect = 9
-    equipment.save_data()
+    equipment_obj = Equipment(get_uuid(), '', 100006)
+    player.equipment_component.add_exist_equipment(equipment_obj)
+    equipment_obj.attribute.strengthen_lv = 2
+    equipment_obj.attribute.awakening_lv = 2
+    equipment_obj.save_data()
 
-    equipment = Equipment(get_uuid(), '', 100022)
-    player.equipment_component.add_exist_equipment(equipment)
-    equipment.base_info.base_name = 'e6'
-    equipment.attribute.strengthen_lv = 2
-    equipment.attribute.awakening_lv = 20
-    equipment.attribute.nobbing_effect = 9
-    equipment.save_data()
-
-    equipment = Equipment(get_uuid(), '', 100036)
-    player.equipment_component.add_exist_equipment(equipment)
-    equipment.base_info.base_name = 'e6'
-    equipment.attribute.strengthen_lv = 110
-    equipment.attribute.awakening_lv = 20
-    equipment.attribute.nobbing_effect = 9
-    equipment.save_data()
-
-    equipment = Equipment(get_uuid(), '', 100037)
-    player.equipment_component.add_exist_equipment(equipment)
-    equipment.base_info.base_name = 'e6'
-    equipment.attribute.strengthen_lv = 0
-    equipment.attribute.awakening_lv = 20
-    equipment.attribute.nobbing_effect = 9
-    equipment.save_data()
+    player.equipment_component.save_data()

@@ -1,7 +1,6 @@
 delete from tb_account;
 delete from tb_character_equipment_chip;
 delete from tb_character_friend;
-delete from tb_character_guild;
 delete from tb_character_hero;
 delete from tb_character_hero_chip;
 delete from tb_character_info;

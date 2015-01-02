@@ -57,6 +57,12 @@ class CharacterHerosComponent(Component):
         self.new_hero_data(hero)
         return hero
 
+    def add_hero_without_save(self, hero_no):
+        hero = Hero(self.owner.base_info.id)
+        hero.hero_no = hero_no
+        self._heros[hero_no] = hero
+        return hero
+
     def delete_hero(self, hero_no):
         if self._heros.get(hero_no):
             del self._heros[hero_no]

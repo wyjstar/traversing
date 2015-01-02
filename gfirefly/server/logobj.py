@@ -106,11 +106,5 @@ def log_init_only_out():
 
 logger = logging.getLogger(logger_name)
 logger_cal = logging.getLogger(logger_name+"_cal")
-# logger_cal.setLevel(logging.DEBUG)
-# log_init_debug_cal()
-#
-#
-# if __name__ == "__main__":
-#     logger_cal.debug("test")
-
-
+#logger_cal.setLevel(logging.DEBUG)
+#log_init_debug_cal()

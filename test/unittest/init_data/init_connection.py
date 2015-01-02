@@ -10,6 +10,7 @@ from gfirefly.server.globalobject import GlobalObject
 from test.unittest.settings import config_model_path, config_path
 # from gfirefly.dbentrust.madminanager import
 from gfirefly.dbentrust.memclient import mclient
+from gfirefly.server.logobj import log_init
 
 
 def init():
@@ -35,4 +36,4 @@ memconfig = config.get("memcached")
 urls = memconfig.get('urls')
 hostname = str(memconfig.get('hostname'))
 mclient.connect(urls, hostname)
-# redis_manager.connection_setup(config.get("memcached").get("urls"))
+log_init("output")  # 日志处理

@@ -49,6 +49,7 @@ def hero_upgrade_with_item_103(data, player):
     exp = game_configs.item_config.get(exp_item_no).get('funcArg1')
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num, player.level.level)
+    hero.save_data()
     player.item_package.consume_item(exp_item_no, exp_item_num)
     # 返回
     response.res.result = True

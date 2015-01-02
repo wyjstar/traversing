@@ -3,54 +3,49 @@
 created by server on 14-7-4上午10:32.
 """
 
-from app.game.core.hero import Hero
-from app.game.core.PlayersManager import PlayersManager
+from shared.db_opear.configs_data.game_configs import hero_config, stone_config
+from shared.utils.pyuuid import get_uuid
+import random
 
+def init_hero(player):
+    # ==========================================
 
-def init_hero():
+    runts = {}
+    d = []
+    for _ in range(2):
+        while True:
+            e = random.randint(1, 10)
+            if len(d) == 0 or d[0] != e:
+                break
+        d.append(e)
 
-    player = PlayersManager().get_player_by_id(1)
-    hero1 = player.hero_component.add_hero(10001)
-    hero2 = player.hero_component.add_hero(10002)
-    hero3 = player.hero_component.add_hero(10003)
-    hero4 = player.hero_component.add_hero(10004)
-    hero5 = player.hero_component.add_hero(10005)
-    hero6 = player.hero_component.add_hero(10006)
+    runt_ids = stone_config.get('weight')
+    for a in xrange(1, 5):
+        type_info = {}
+        # for b in xrange(1, 11):
+        for b in d:
+            c = random.randint(0, len(runt_ids)-1)
+            runt_id = runt_ids[c][0]
+            main_attr, minor_attr = player.runt.get_attr(runt_id)
+            runt_info = [get_uuid(), runt_id, main_attr, minor_attr]
 
-    hero1.hero_no = 10001
-    hero1.level = 11
-    hero1.break_level = 1
-    hero1.exp = 1
-    hero1.equipment_ids = []
+            type_info[b] = runt_info
+        runts[a] = type_info
 
-    hero2.hero_no = 10002
-    hero2.level = 12
-    hero2.break_level = 2
-    hero2.exp = 2
-    hero2.equipment_ids = []
+    # hero2.runt = runts
 
-    hero3.hero_no = 10003
-    hero3.level = 13
-    hero3.break_level = 3
-    hero3.exp = 3
-    hero3.equipment_ids = []
+    # ===============================================
 
-    hero4.hero_no = 10004
-    hero4.level = 11
-    hero4.break_level = 1
-    hero4.exp = 1
-    hero4.equipment_ids = []
+    for k, val in hero_config.items():
+        if val.type == 0:
+            hero1 = player.hero_component.add_hero_without_save(k)
+            hero1.hero_no = k
+            hero1.level = 1
+            hero1.break_level = 0
+            hero1.exp = 0
 
-    hero5.hero_no = 10005
-    hero5.level = 12
-    hero5.break_level = 2
-    hero5.exp = 2
-    hero5.equipment_ids = []
-
-    hero6.hero_no = 10006
-    hero6.level = 13
-    hero6.break_level = 3
-    hero6.exp = 3
-    hero6.equipment_ids = []
-
-
+    hero1 = player.hero_component.add_hero_without_save(10045)
+    hero1.break_level = 7
+    hero1.level = 35
+    hero1.runt = runts
+    hero1.refine = 1001020

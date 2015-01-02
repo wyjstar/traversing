@@ -13,3 +13,5 @@ tool/excel_maker/sql/
 tool/traversing_one.*
 input.csv
 output
+my.json
+my.json.bak
