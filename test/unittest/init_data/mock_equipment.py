@@ -52,4 +52,3 @@ def init_equipment(player):
     equipment_obj.save_data()
 
     player.equipment_component.save_data()
-

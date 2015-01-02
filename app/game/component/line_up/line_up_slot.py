@@ -149,6 +149,16 @@ class LineUpSlotComponent(Component):
         return suit_info
 
     @property
+    def set_equ_skill_ids(self):
+        """套装技能ids"""
+        skill_ids = []  # suit_no:attr
+        for no, slot in self._equipment_slots.items():
+            slot_suit_skills = slot.suit_skills
+            skill_ids = list(set(skill_ids).union(set(slot_suit_skills)))
+
+        return skill_ids
+
+    @property
     def slot_attr(self):
         """
         """

@@ -35,3 +35,9 @@ class HeroTest(BaseTestCase):
         hero = self.player.hero_component.get_hero(10045)
 
         self.Equal(len(hero.break_skill_ids), 7)
+
+    def test_runt(self):
+        hero = self.player.hero_component.get_hero(10045)
+        runt_attr = hero.runt_attr()
+        print runt_attr
+

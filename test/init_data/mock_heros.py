@@ -3,9 +3,6 @@
 created by server on 14-7-4上午10:32.
 """
 
-from shared.db_opear.configs_data.game_configs import hero_config
-from app.game.core.hero import Hero
-from app.game.core.PlayersManager import PlayersManager
 from shared.db_opear.configs_data.game_configs import hero_config, stone_config
 from shared.utils.pyuuid import get_uuid
 import random
