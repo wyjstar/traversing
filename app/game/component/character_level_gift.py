@@ -12,6 +12,7 @@ class CharacterLevelGift(Component):
     def __init__(self, owner):
         super(CharacterLevelGift, self).__init__(owner)
         self._received_gift_ids = []
+        self._level_gift = [0] * 250
 
     def init_data(self):
         activity = tb_character_activity.getObjData(self.owner.base_info.id)
@@ -20,17 +21,18 @@ class CharacterLevelGift(Component):
             data = activity.get('level_gift')
             if data and data != 'None':
                 self._received_gift_ids = data['received_gift_ids']
+                self._level_gift = data['level_gift']
             else:
                 self.received_gift_ids = []
                 self.save_data()
         else:
-            data = dict(received_gift_ids=self._received_gift_ids)
+            data = dict(received_gift_ids=self._received_gift_ids, level_gift=self._level_gift)
             tb_character_activity.new({'id': self.owner.base_info.id,
                                        'level_gift': data})
 
     def save_data(self):
         activity = tb_character_activity.getObj(self.owner.base_info.id)
-        data = dict(received_gift_ids=self._received_gift_ids)
+        data = dict(received_gift_ids=self._received_gift_ids, level_gift=self._level_gift)
         activity.update('level_gift', data)
 
     @property
@@ -40,3 +42,11 @@ class CharacterLevelGift(Component):
     @received_gift_ids.setter
     def received_gift_ids(self, value):
         self._received_gift_ids = value
+
+    @property
+    def level_gift(self):
+        return self._level_gift
+
+    @level_gift.setter
+    def level_gift(self, value):
+        self._level_gift = value
