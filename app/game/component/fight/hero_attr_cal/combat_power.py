@@ -4,7 +4,7 @@ created by server on 14-12-29下午2:03.
 """
 from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config
 from gfirefly.server.logobj import logger_cal
-import pprint
+from shared.utils import pprint
 
 def hero_self_attr(player, hero):
     """
@@ -86,10 +86,12 @@ def hero_self_attr(player, hero):
         ductilityStone=runt_attr.get("ductility", 0),
     )
 
-    #if hero.hero_no == 10045: logger_cal.debug("武将自身属性计算的输入:%s" % pprint.pformat(all_vars))
-    if hero.hero_no == 10045: logger_cal.debug("武将突破:%s" % pprint.pformat(break_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将炼体:%s" % pprint.pformat(refine_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将符文:%s" % pprint.pformat(runt_attr))
+    log(hero.hero_no, "计算武将自身属性所需的所有参数：", "", all_vars)
+
+    log(hero.hero_no, "武将突破", hero.break_skill_ids, break_attr)
+    log(hero.hero_no, "武将炼体", hero.refine, refine_attr)
+    log(hero.hero_no, "武将符文", log_runt(hero), runt_attr)
+
 
     # hpHero
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
@@ -192,12 +194,13 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
     # 公会
     guild_attr = player.guild.guild_attr()
 
-    if hero.hero_no == 10045: logger_cal.debug("武将装备:%s" % pprint.pformat(equ_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将套装:%s" % pprint.pformat(set_equ_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将羁绊:%s" % pprint.pformat(link_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将游历:%s" % pprint.pformat(travel_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将助威:%s" % pprint.pformat(cheer_attr))
-    if hero.hero_no == 10045: logger_cal.debug("武将公会:%s" % pprint.pformat(guild_attr))
+    log(hero.hero_no, "武将自身", "", self_attr)
+    log(hero.hero_no, "武将装备", log_equ(line_up_slot), equ_attr)
+    log(hero.hero_no, "武将套装", "与装备一致", set_equ_attr)
+    log(hero.hero_no, "武将羁绊", hero_slot.link_skill_ids, link_attr)
+    log(hero.hero_no, "武将游历", log_travel(player), travel_attr)
+    log(hero.hero_no, "武将助威", log_cheer(player), cheer_attr)
+    log(hero.hero_no, "武将公会", 7, guild_attr)
     all_vars = dict(
             hpEqu=equ_attr.get("hp", 0),
             hpSetEqu=set_equ_attr.get("hp", 0),
@@ -279,6 +282,7 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
 
     all_vars.update(self_attr)
 
+    log(hero.hero_no, "计算武将阵容属性所需的所有参数：", "", all_vars)
     #if hero.hero_no == 10045: logger_cal.debug("武将阵容属性中的输入:%s" % pprint.pformat(all_vars, indent=1))
     # hpArray
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
@@ -478,3 +482,39 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no):
     result = eval(formula, line_up_attr)
     if hero.hero_no == 10045: logger_cal.debug("武将%s在阵容中的战斗力%s" % (hero.hero_no, result))
     return result
+
+def log_runt(hero):
+    """docstring for pprint_runt"""
+    s=[]
+    for (runt_type, item) in hero.runt.items():
+        for (runt_po, runt_info) in item.items():
+            [runt_no, runt_id, main_attr, minor_attr] = runt_info
+            s.append("符文编号%s, 符文类型%s, 符文位置%s, 主要属性%s, 次要属性%s" % (runt_id, runt_type, runt_po, main_attr, minor_attr))
+    return s
+
+def log_equ(line_up_slot):
+    s = []
+    for no, slot in line_up_slot.equipment_slots.items():
+        obj = slot.equipment_obj
+        if not obj: continue
+        equipment_no = obj.base_info.equipment_no
+        strengthen_lv = obj.attribute.strengthen_lv
+        s.append("装备编号%s, 装备等级%s, 主要属性%s, 次要属性%s" % (equipment_no, strengthen_lv, obj.attribute.main_attr, obj.attribute.minor_attr))
+    return s
+
+def log_travel(player):
+    return player.travel_component.get_travel_item_groups()
+
+def log_cheer(player):
+    s = []
+    for slot_no, slot in player.line_up_component.sub_slots.items():
+        hero_no = slot.hero_slot.hero_no
+        hero = player.hero_component.get_hero(hero_no)
+        s.append("助威阵容编号%s, 武将编号%s, 武将等级%s" % (slot_no, hero.hero_no, hero.level))
+    return s
+
+
+def log(hero_no, title, str_input, str_output):
+    if hero_no == 10045:
+        logger_cal.debug("%s \n 输入: %s \n 输出: %s \n\n" % (title, pprint.pformat(str_input), pprint.pformat(str_output)))
+
