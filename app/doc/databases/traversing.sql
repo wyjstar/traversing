@@ -114,7 +114,7 @@ CREATE TABLE `tb_character_info` (
 DROP TABLE IF EXISTS `tb_character_item_package`;
 CREATE TABLE `tb_character_item_package` (
   `id` bigint(10) NOT NULL,
-  `items` mediumblob,
+  `items` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -242,7 +242,7 @@ CREATE TABLE `tb_character_lively` (
 DROP TABLE IF EXISTS `tb_character_stone`;
 CREATE TABLE `tb_character_stone` (
   `id` bigint(20) NOT NULL,
-  `stones` mediumblob,
+  `stones` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -253,6 +253,6 @@ CREATE TABLE `tb_character_mine` (
   `reset_times` int(11) NOT NULL,
   `day_before` varchar(8) NOT NULL,
   `lively` int(11) NOT NULL,
-  `mine` mediumblob,
+  `mine` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
