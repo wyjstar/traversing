@@ -337,7 +337,7 @@ def reset_stage_908(pro_data, player):
         else:
             stage_obj.reset[0] += 1
     else:
-        stage_obj.reset = [0, int(time.time())]
+        stage_obj.reset = [1, int(time.time())]
     need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0] - 1]
     if player.finance.gold < need_gold:
         logger.error("gold not enough")
@@ -352,6 +352,7 @@ def reset_stage_908(pro_data, player):
     player.finance.save_data()
 
     response.res.result = True
+    logger.debug('reset stage 908 success')
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
