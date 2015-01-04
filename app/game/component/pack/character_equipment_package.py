@@ -85,7 +85,6 @@ class CharacterEquipmentPackageComponent(Component):
         """
         return self._equipments_obj.values()
 
-
     def is_guard(self, equipment_id):
         """
         是否在驻守中, 秘境相关
@@ -93,15 +92,3 @@ class CharacterEquipmentPackageComponent(Component):
         temp = self._equipments_obj.get(equipment_id)
         assert temp!=None, ("equipment %s not exists!" % equipment_id)
         return temp.is_guard
-
-
-    # def new_equipment_data(self, equipment):
-    #     character_id = self.owner.base_info.id
-    #     equipment_info = equipment.equipment_info_dict()
-    #
-    #     data = {
-    #         'id': equipment.base_info.id,
-    #         'character_id': character_id,
-    #         'equipment_info': equipment_info
-    #     }
-    #     tb_equipment_info.new(data)

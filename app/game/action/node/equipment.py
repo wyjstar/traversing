@@ -313,20 +313,23 @@ def compose_equipment(chip_no, player):
     return {'result': True, 'equipment_obj': equipment_obj}
 
 
-def melting_equipment(equipment_ids, response, player):
+def melting_equipment(equipment_id, response, player):
     """熔炼
     @param dynamic_id:
     @param equipment_ids:
     @param kwargs:
     @return:
     """
-    equipment_obj = player.equipment_component.get_equipment(equipment_ids)
+    equipment_obj = player.equipment_component.get_equipment(equipment_id)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
     melting_items = equipment_obj.melting_item
     gain = item_group_helper.gain(player, melting_items)
 
     item_group_helper.get_return(player, gain, response.cgr)
+
+    # 删除装备
+    player.equipment_component.delete_equipment(equipment_id)
 
     # 添加强化金币
     strength_coin = 0
