@@ -510,6 +510,7 @@ def log_cheer(player):
     for slot_no, slot in player.line_up_component.sub_slots.items():
         hero_no = slot.hero_slot.hero_no
         hero = player.hero_component.get_hero(hero_no)
+        if not hero: continue
         s.append("助威阵容编号%s, 武将编号%s, 武将等级%s" % (slot_no, hero.hero_no, hero.level))
     return s
 

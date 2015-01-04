@@ -10,6 +10,7 @@ from gfirefly.server.globalobject import GlobalObject
 from test.unittest.settings import config_model_path, config_path
 # from gfirefly.dbentrust.madminanager import
 from gfirefly.dbentrust.memclient import mclient
+from gfirefly.dbentrust.redis_client import redis_client
 from gfirefly.server.logobj import log_init
 
 
@@ -31,9 +32,18 @@ GlobalObject().json_model_config = model_config.get("models")
 config = json.load(open(config_path, 'r'))
 GlobalObject().json_config = config
 
-
+# init memconfig
 memconfig = config.get("memcached")
 urls = memconfig.get('urls')
 hostname = str(memconfig.get('hostname'))
 mclient.connect(urls, hostname)
+
+# init redis
+redis_config = config.get("redis")
+host = redis_config.get("host")
+port = redis_config.get("port")
+db = redis_config.get("db", 0)
+redis_client.connect(host, port, db)
+
+# init log
 log_init("output")  # 日志处理
