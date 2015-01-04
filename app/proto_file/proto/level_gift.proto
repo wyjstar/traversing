@@ -15,6 +15,7 @@ message NewLevelGiftResponse{
     repeated LevelGiftInfo level_info = 2;
 }
 
+//840
 message LevelGiftInfo{
     required int32 level = 1;
     required GameResourcesResponse drops = 2;
