@@ -157,7 +157,7 @@ class PlayerCharacter(Character):
         self._stamina.init_stamina(character_info.get('stamina'))
         self._shop.init_data(character_info)
         self._brew.init_data(character_info)
-        self._travel.init_data()
+        self._travel.init_data(character_info)
         # 活跃度
         self._tasks.init_data()
         self._mine.init_data()

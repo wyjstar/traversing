@@ -76,6 +76,13 @@ CREATE TABLE `tb_character_info` (
   `chiequipment_chips` blob,
   `hero_chips` blob,
 
+  `travel` blob,
+  `travel_item` blob,
+  `shoes` blob,
+  `fight_cache` blob,
+  `chest_time` bigint(20),
+  `auto` blob,
+
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

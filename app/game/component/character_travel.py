@@ -25,7 +25,7 @@ class CharacterTravelComponent(Component):
         self._auto = {}
 
     def init_data(self, character_info):
-        if character_info.get('travel'):
+        if character_info.get('travel_item'):
             self._travel = character_info.get('travel')
             self._travel_item = character_info.get('travel_item')
             self._shoes = character_info.get('shoes')
