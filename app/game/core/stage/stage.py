@@ -106,7 +106,6 @@ class StageAward(object):
     def update(self, star_num):
         """根据星星数量更新奖励信息
         """
-        # star_num = 21
         award_info = self.check(star_num)
         if self._award_info:  # 领取奖励信息存在
             curr_award_info = []
