@@ -511,9 +511,22 @@ def process_mine_result(player, position, result, response, stype):
             'prize': prize}
             mail['send_time'] = int(time.time())
             
+            battle_process = {
+            'sender_id': -1,
+            'sender_name': player.base_info.base_name,
+            'receive_id': target,
+            'receive_name': '',
+            'title': '',
+            'content': '',
+            'mail_type': 2,
+            'prize': prize
+            }
+            
             # command:id 为收邮件的命令ID
             if sum(count.values()) > 0:
-                response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+                #response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+                netforwarding.push_message('receive_mail_remote', target, mail)
+                netforwarding.push_message('receive_mail_remote', target, battle_process)
 
 @remoteserviceHandle('gate')
 def settle_1252(data, player):
