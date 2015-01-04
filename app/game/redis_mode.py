@@ -12,10 +12,6 @@ tb_character_info.insert()
 tb_character_hero = MAdmin('tb_character_hero', 'id', fk='character_id')
 tb_character_hero.insert()
 
-# 用户英雄碎片信息表
-tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id')
-tb_character_hero_chip.insert()
-
 # 用户道具背包
 tb_character_item_package = MAdmin('tb_character_item_package', 'id')
 tb_character_item_package.insert()
@@ -27,10 +23,6 @@ tb_character_line_up.insert()
 # 装备信息表
 tb_equipment_info = MAdmin('tb_equipment_info', 'id', fk='character_id')
 tb_equipment_info.insert()
-
-# 装备碎片表
-tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
-tb_character_equipment_chip.insert()
 
 # 公会信息表
 tb_guild_info = MAdmin('tb_guild_info', 'id')
@@ -47,10 +39,6 @@ tb_character_stages.insert()
 # 邮件表
 tb_mail_info = MAdmin('tb_mail_info', 'id', fk='character_id')
 tb_mail_info.insert()
-
-# 玩家活动表
-tb_character_activity = MAdmin('tb_character_activity', 'id')
-tb_character_activity.insert()
 
 # 体力表
 tb_character_stamina = MAdmin('tb_character_stamina', 'id')

@@ -62,7 +62,9 @@
                 "level_gift": "complex",
                 "login_gift": "complex",
                 "world_boss": "complex",
-                "feast": "simple"
+                "feast": "simple",
+                "chiequipment_chips": "complex",
+                "hero_chips": "complex"
             }
         },
         "tb_character_hero": {
@@ -71,13 +73,6 @@
                 "id": "simple",
                 "character_id": "simple",
                 "property": "complex"
-            }
-        },
-        "tb_character_hero_chip": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "hero_chips": "complex"
             }
         },
         "tb_character_item_package": {
@@ -105,13 +100,6 @@
                 "equipment_info": "complex",
                 "enhance_info": "complex",
                 "nobbing_effect": "complex"
-            }
-        },
-        "tb_character_equipment_chip": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "chips": "complex"
             }
         },
         "tb_character_stages":{
