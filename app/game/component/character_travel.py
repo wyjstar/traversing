@@ -3,7 +3,7 @@
 created by server on 14-7-17上午11:07.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_travel
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 
@@ -24,15 +24,14 @@ class CharacterTravelComponent(Component):
         # 'events': [[state, event_id, drop, start_time]], already_times: 0}]}
         self._auto = {}
 
-    def init_data(self):
-        travel_data = tb_character_travel.getObjData(self.owner.base_info.id)
-        if travel_data:
-            self._travel = travel_data.get('travel')
-            self._travel_item = travel_data.get('travel_item')
-            self._shoes = travel_data.get('shoes')
-            self._chest_time = travel_data.get('chest_time')
-            self._fight_cache = travel_data.get('fight_cache')
-            self._auto = travel_data.get('auto')
+    def init_data(self, character_info):
+        if character_info.get('travel'):
+            self._travel = character_info.get('travel')
+            self._travel_item = character_info.get('travel_item')
+            self._shoes = character_info.get('shoes')
+            self._chest_time = character_info.get('chest_time')
+            self._fight_cache = character_info.get('fight_cache')
+            self._auto = character_info.get('auto')
             for travel_stage_id in game_configs.stage_config. \
                     get('travel_stages'):
                 if not self._travel_item.get(travel_stage_id):
@@ -41,16 +40,16 @@ class CharacterTravelComponent(Component):
             for travel_stage_id in game_configs.stage_config. \
                     get('travel_stages'):
                 self._travel_item[travel_stage_id] = []
-            tb_character_travel.new({'id': self.owner.base_info.id,
-                                     'travel': self._travel,
-                                     'travel_item': self._travel_item,
-                                     'shoes': self._shoes,
-                                     'chest_time': self._chest_time,
-                                     'auto': self._auto,
-                                     'fight_cache': self._fight_cache})
+            character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
+            character_info_obj.update_multi({'travel': self._travel,
+                                             'travel_item': self._travel_item,
+                                             'shoes': self._shoes,
+                                             'chest_time': self._chest_time,
+                                             'auto': self._auto,
+                                             'fight_cache': self._fight_cache})
 
     def save(self):
-        data_obj = tb_character_travel.getObj(self.owner.base_info.id)
+        data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.update_multi({'travel': self._travel,
                                'travel_item': self._travel_item,
                                'shoes': self._shoes,

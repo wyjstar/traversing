@@ -62,7 +62,12 @@
                 "level_gift": "complex",
                 "login_gift": "complex",
                 "world_boss": "complex",
-                "feast": "simple"
+                "feast": "simple",
+                "travel": "complex",
+                "shoes": "complex",
+                "chest_time": "simple",
+                "travel_item": "complex",
+                "fight_cache": "complex"
             }
         },
         "tb_character_hero": {
@@ -145,17 +150,6 @@
                 "id": "simple",
                 "character_id": "simple",
                 "property": "complex"
-            }
-        },
-        "tb_character_travel": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "travel": "complex",
-                "shoes": "complex",
-                "chest_time": "simple",
-                "travel_item": "complex",
-                "fight_cache": "complex"
             }
         },
         "tb_character_lively":{

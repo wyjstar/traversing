@@ -56,10 +56,6 @@ tb_character_activity.insert()
 tb_character_stamina = MAdmin('tb_character_stamina', 'id')
 tb_character_stamina.insert()
 
-# 游历
-tb_character_travel = MAdmin('tb_character_travel', 'id')
-tb_character_travel.insert()
-
 # 活跃度
 tb_character_tasks = MAdmin('tb_character_lively', 'id')
 tb_character_tasks.insert()
