@@ -12,12 +12,6 @@
 DROP TABLE IF EXISTS `tb_character_activity`;
 CREATE TABLE `tb_character_activity` (
   `id` bigint(20) NOT NULL,
-  `sign_in` blob,
-  `online_gift` blob,
-  `level_gift` blob,
-  `feast` int(11) DEFAULT '0',
-  `login_gift` blob,
-  `world_boss` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -101,6 +95,13 @@ CREATE TABLE `tb_character_info` (
   `worship` int(11),
   `worship_time` int(11),
   `exit_time` int(11),
+
+  `online_gift` blob,
+  `sign_in` blob,
+  `level_gift` blob,
+  `feast` int(11) DEFAULT '0',
+  `login_gift` blob,
+  `world_boss` blob,
 
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)

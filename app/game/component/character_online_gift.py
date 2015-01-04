@@ -5,7 +5,7 @@ created by server on 14-8-26
 import time
 import datetime
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_activity
+from app.game.redis_mode import tb_character_info
 
 
 class CharacterOnlineGift(Component):
@@ -18,26 +18,22 @@ class CharacterOnlineGift(Component):
         self._refresh_time = time.time()
         self._received_gift_ids = []
 
-    def init_data(self):
-        activity = tb_character_activity.getObjData(self.owner.base_info.id)
-
-        if activity:
-            data = activity.get('online_gift')
-            if data:
-                self._online_time = data['online_time']
-                self._refresh_time = data.get('refresh_time', time.time())
-                self._received_gift_ids = data['received_gift_ids']
-                self.check_time()
+    def init_data(self, character_info):
+        data = character_info.get('online_gift')
+        if data:
+            self._online_time = data['online_time']
+            self._refresh_time = data.get('refresh_time', time.time())
+            self._received_gift_ids = data['received_gift_ids']
+            self.check_time()
         else:
             data = dict(online_time=self._online_time,
                         refresh_time=self._refresh_time,
                         received_gift_ids=self._received_gift_ids)
-            tb_character_activity.new({'id': self.owner.base_info.id,
-                                       'online_gift': data})
+            tb_character_info.update('online_gift', data)
 
     def save_data(self):
         self.check_time()
-        activity = tb_character_activity.getObj(self.owner.base_info.id)
+        activity = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(online_time=self._online_time,
                     refresh_time=self._refresh_time,
                     received_gift_ids=self._received_gift_ids)
