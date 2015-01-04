@@ -137,7 +137,7 @@ class PlayerCharacter(Character):
         self._item_package.init_data()
         self._line_up.init_data()
         self._equipment.init_data()
-        self._equipment_chip.init_data()
+        self._equipment_chip.init_data(character_info)
         self._hero_chip_component.init_hero_chips()  # 初始化武将碎片
         self._mail.init_data()  # 初始化邮箱
         self._friends.init_data(character_info)
@@ -200,7 +200,9 @@ class PlayerCharacter(Character):
                           'vip_level': base_config.get('initialVipLevel'),
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time()),
-                          'finances': finances
+                          'finances': finances,
+                          'chiequipment_chips': {},
+                          'hero_chips': {}
                           }
         tb_character_info.new(character_info)
 

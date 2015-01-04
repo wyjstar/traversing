@@ -13,10 +13,6 @@ tb_character_info.insert()
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800)
 tb_character_hero.insert()
 
-# ��ㄦ�疯�遍��纰����淇℃��琛�
-tb_character_hero_chip = MAdmin('tb_character_hero_chip', 'id', 1800)
-tb_character_hero_chip.insert()
-
 # ��ㄦ�烽����疯�����
 tb_character_item_package = MAdmin('tb_character_item_package', 'id')
 tb_character_item_package.insert()
@@ -29,10 +25,6 @@ tb_character_line_up.insert()
 tb_equipment_info = MAdmin('tb_equipment_info', 'id')
 tb_equipment_info.insert()
 
-# 瑁�澶�纰����琛�
-tb_character_equipment_chip = MAdmin('tb_character_equipment_chip', 'id')
-tb_character_equipment_chip.insert()
-
 # ���浼�淇℃��琛�
 tb_guild_info = MAdmin('tb_guild_info', 'id')
 tb_guild_info.insert()
@@ -40,10 +32,6 @@ tb_guild_info.insert()
 # ���浼����琛�
 tb_guild_name = MAdmin('tb_guild_name', 'id')
 tb_guild_name.insert()
-
-# ��╁�舵椿��ㄨ〃
-tb_character_activity = MAdmin('tb_character_activity', 'id')
-tb_character_activity.insert()
 
 # ��冲�′俊���琛�
 tb_character_stages = MAdmin('tb_character_stages', 'id')
