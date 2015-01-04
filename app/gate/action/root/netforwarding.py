@@ -90,7 +90,7 @@ def del_guild_room_remote(guild_id):
 
 
 @rootserviceHandle
-def push_message_remote(key, character_id, args, kw):
+def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
@@ -98,10 +98,10 @@ def push_message_remote(key, character_id, args, kw):
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id, True) + args
         child_node = groot.child(oldvcharacter.node)
-        return child_node.callbackChild(*args, **kw)
+        return child_node.callbackChild(*args)
     else:
         transit_remote = GlobalObject().remote['transit']
-        return transit_remote.push_message_remote(key, character_id, args, kw)
+        return transit_remote.push_message_remote(key, character_id, args)
 
 
 remoteservice = CommandService('transitremote')
@@ -109,14 +109,15 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 
 @remoteserviceHandle('transit')
-def pull_message_remote(key, character_id, *args, **kw):
+def pull_message_remote(key, character_id, *args):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
-        print 'gate found character to pull message:', oldvcharacter.__dict__
-        kw['is_online'] = False
+        args = args + (False,)
         args = (key, oldvcharacter.dynamic_id) + args
         child_node = groot.child(oldvcharacter.node)
-        return child_node.callbackChild(*args, **kw)
+        result = child_node.callbackChild(*args)
+        # print 'gate found character to pull message:', oldvcharacter.__dict__, args, result
+        return result
     else:
         return False
 

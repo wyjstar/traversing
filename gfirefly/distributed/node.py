@@ -46,10 +46,10 @@ class RemoteObject(object):
                 self._fun = fun
                 self._handle = handle
 
-            def __call__(self, *arg, **kw):
+            def __call__(self, *arg):
                 if not self._handle:
                     return False
-                return self._handle('callTarget', self._fun, *arg, **kw)
+                return self._handle('callTarget', self._fun, *arg)
 
         deferedRemote = self._factory.getRootObject(timeout=self._timeout)
         if not deferedRemote:
@@ -78,12 +78,12 @@ class RemoteObject(object):
                         self._node = node
                         self._handle = handle
 
-                    def __call__(self, *arg, **kw):
+                    def __call__(self, *arg):
                         if not self._handle:
                             return False
                         return self._handle('transit',
                                             self._node,
-                                            self._fun, *arg, **kw)
+                                            self._fun, *arg)
 
                 if fun.endswith('remote'):
                     return RpcFunctionWrapper(self._node,

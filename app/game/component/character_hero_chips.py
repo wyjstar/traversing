@@ -47,7 +47,6 @@ class CharacterHeroChipsComponent(Component):
             self._chips[hero_chip.chip_no].num += hero_chip.num
         else:
             self._chips[hero_chip.chip_no] = hero_chip
-        self.save_data()
 
     def save_data(self):
         props = {}

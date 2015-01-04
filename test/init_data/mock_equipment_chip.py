@@ -15,6 +15,7 @@ def init_equipment_chip(player):
         if val.get('type') == 1: continue
         equipment_chip = EquipmentChip(int(k), 1000)
         player.equipment_chip_component.add_chip(equipment_chip)
+        player.equipment_chip_component.save_data()
 
     return
     chip1 = EquipmentChip(2100005, 16)
@@ -22,3 +23,4 @@ def init_equipment_chip(player):
 
     player.equipment_chip_component.add_chip(chip1)
     player.equipment_chip_component.add_chip(chip2)
+    player.equipment_chip_component.save_data()

@@ -35,6 +35,7 @@
         "transit": {
             "rootport": 30002,
             "name": "transit",
+            "db": true,
             "app": "app.transit",
             "log": "app/logs/transit.log"
         },
@@ -42,7 +43,7 @@
             "rootport": 30001,
             "remoteport": [
                 {
-                    "roothost": "<=login_ip=>",
+                    "roothost": "127.0.0.1",
                     "rootport": 30002,
                     "rootname": "transit"
                 },

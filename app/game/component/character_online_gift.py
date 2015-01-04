@@ -53,9 +53,7 @@ class CharacterOnlineGift(Component):
         local_tm = time.localtime()
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._online_time = 0
-            self._login_on_time = datetime.datetime(self._login_on_time.year,
-                                                    self._login_on_time.month,
-                                                    self._login_on_time.day)
+            self._login_on_time = datetime.datetime.now()
             self._received_gift_ids = []
 
     @property
