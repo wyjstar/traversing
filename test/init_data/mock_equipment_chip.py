@@ -5,7 +5,6 @@ created by server on 14-7-15下午2:50.
 
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.PlayersManager import PlayersManager
-from app.game.redis_mode import tb_character_equipment_chip
 from shared.db_opear.configs_data.game_configs import chip_config
 
 

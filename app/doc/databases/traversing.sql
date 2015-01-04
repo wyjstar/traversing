@@ -4,35 +4,6 @@
 -- ------------------------------------------------------
 -- Server version	5.6.21
 
-
---
--- Table structure for table `tb_character_activity`
---
-
-DROP TABLE IF EXISTS `tb_character_activity`;
-CREATE TABLE `tb_character_activity` (
-  `id` bigint(20) NOT NULL,
-  `sign_in` blob,
-  `online_gift` blob,
-  `level_gift` blob,
-  `feast` int(11) DEFAULT '0',
-  `login_gift` blob,
-  `world_boss` blob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `tb_character_equipment_chip`
---
-
-DROP TABLE IF EXISTS `tb_character_equipment_chip`;
-CREATE TABLE `tb_character_equipment_chip` (
-  `id` bigint(20) NOT NULL,
-  `chips` blob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 --
 -- Table structure for table `tb_character_hero`
 --
@@ -49,12 +20,6 @@ CREATE TABLE `tb_character_hero` (
 -- Table structure for table `tb_character_hero_chip`
 --
 
-DROP TABLE IF EXISTS `tb_character_hero_chip`;
-CREATE TABLE `tb_character_hero_chip` (
-  `id` varchar(50) NOT NULL,
-  `hero_chips` blob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tb_character_info`
@@ -101,6 +66,15 @@ CREATE TABLE `tb_character_info` (
   `worship` int(11),
   `worship_time` int(11),
   `exit_time` int(11),
+
+  `online_gift` blob,
+  `sign_in` blob,
+  `level_gift` blob,
+  `feast` int(11) DEFAULT '0',
+  `login_gift` blob,
+  `world_boss` blob,
+  `chiequipment_chips` blob,
+  `hero_chips` blob,
 
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)

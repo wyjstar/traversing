@@ -9,11 +9,11 @@ from shared.db_opear.configs_data import game_configs
 class Stage(object):
     """关卡
     """
-    def __init__(self, stage_id, attacks=0, state=-1):
+    def __init__(self, stage_id, attacks=0, state=-1, reset=[0, 1]):
         self._stage_id = stage_id  # 关卡编号
         self._attacks = attacks  # 攻击次数
         self._state = state  # 关卡状态 -2: 未开启 -1：开启没打过 0：输 1：赢
-        self._reset = [0, 1]  # 次数重置 【重置次数， 时间】
+        self._reset = reset  # 次数重置 【重置次数， 时间】
 
     @property
     def stage_id(self):
@@ -45,7 +45,7 @@ class Stage(object):
 
     @property
     def info(self):
-        return dict(stage_id=self._stage_id, attacks=self._attacks, state=self._state)
+        return dict(stage_id=self._stage_id, attacks=self._attacks, state=self._state, reset=self._reset)
 
     def dumps(self):
         return cPickle.dumps(self.info)

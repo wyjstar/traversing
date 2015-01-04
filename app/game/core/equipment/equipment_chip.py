@@ -58,7 +58,7 @@ class EquipmentChip(object):
         if not chip_obj:
             return None
         return chip_obj.combineResult
-    
+
     def update_pb(self, equipment_chip_pb):
         equipment_chip_pb.equipment_chip_no = self._chip_no
         equipment_chip_pb.equipment_chip_num = self._chip_num

@@ -56,7 +56,15 @@
                 "k_num": "simple",
                 "worship": "simple",
                 "worship_time": "simple",
-                "exit_time": "simple"
+                "exit_time": "simple",
+                "online_gift": "complex",
+                "sign_in": "complex",
+                "level_gift": "complex",
+                "login_gift": "complex",
+                "world_boss": "complex",
+                "feast": "simple",
+                "chiequipment_chips": "complex",
+                "hero_chips": "complex"
             }
         },
         "tb_character_hero": {
@@ -65,13 +73,6 @@
                 "id": "simple",
                 "character_id": "simple",
                 "property": "complex"
-            }
-        },
-        "tb_character_hero_chip": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "hero_chips": "complex"
             }
         },
         "tb_character_item_package": {
@@ -99,13 +100,6 @@
                 "equipment_info": "complex",
                 "enhance_info": "complex",
                 "nobbing_effect": "complex"
-            }
-        },
-        "tb_character_equipment_chip": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id":"simple",
-                "chips": "complex"
             }
         },
         "tb_character_stages":{
@@ -139,18 +133,6 @@
                 "id": "simple",
                 "character_id": "simple",
                 "property": "complex"
-            }
-        },
-        "tb_character_activity": {
-            "pkey_field": "id",
-            "def_attrs": {
-                "id": "simple",
-                "sign_in": "simple",
-                "online_gift": "complex",
-                "feast": "simple",
-                "login_gift": "complex",
-                "world_boss": "complex",
-                "level_gift": "complex"
             }
         },
         "tb_character_travel": {
