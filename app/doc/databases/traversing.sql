@@ -73,7 +73,7 @@ CREATE TABLE `tb_character_info` (
   `feast` int(11) DEFAULT '0',
   `login_gift` blob,
   `world_boss` blob,
-  `chiequipment_chips` blob,
+  `equipment_chips` blob,
   `hero_chips` blob,
 
   `travel` blob,
