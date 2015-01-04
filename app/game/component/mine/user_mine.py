@@ -779,7 +779,7 @@ class UserMine(Component):
     
     def reset_price(self):
         price_list = base_config['warFogRefreshPrice']
-        if len(price_list) > self._reset_times:
+        if len(price_list) <= self._reset_times:
             return price_list[-1]
         else:
             return price_list[self._reset_times]
