@@ -23,7 +23,7 @@ def get_heros_101(pro_data, player):
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
 
-    # print response, "*"*80
+    print response, "*"*80
     return response.SerializePartialToString()
 
 
@@ -105,6 +105,7 @@ def hero_sacrifice_105(data, player):
     response = hero_sacrifice_oper(heros, player)
     # remove hero
     player.hero_component.delete_heros_by_nos(args.hero_nos)
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -124,10 +125,12 @@ def hero_compose_106(data, player):
     if hero_chip.num < need_num:
         response.res.result = False
         response.res.message = u"碎片不足，合成失败！"
+        logger.error("碎片不足，合成失败！")
         return response.SerializeToString()
     if player.hero_component.contain_hero(hero_no):
         response.res.result = False
         response.res.result_no = 202
+        logger.error("武将已存在，合成失败！")
         response.res.message = u"武将已存在，合成失败！"
         return response.SerializeToString()
     hero = player.hero_component.add_hero(hero_no)
@@ -140,6 +143,7 @@ def hero_compose_106(data, player):
     # 3、返回
     response.res.result = True
     hero.update_pb(response.hero)
+    logger.debug(response)
     return response.SerializeToString()
 
 

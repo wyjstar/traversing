@@ -3,9 +3,7 @@
 created by server on 14-6-27下午6:44.
 """
 from app.game.component.Component import Component
-from app.game.core.hero_chip import HeroChip
-from app.game.redis_mode import tb_character_activity, tb_character_info
-import cPickle
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 
 
@@ -20,19 +18,27 @@ class CharacterSignInComponent(Component):
         self._continuous_sign_in_prize = []  # 已经获取的连续签到奖励，保存列表[7，15，25]
         self._repair_sign_in_times = 0  # 补充签到次数
 
-    def init_sign_in(self):
-        activity = tb_character_activity.getObjData(self.owner.base_info.id)
-        if activity:
-            sign_in_data = cPickle.loads(activity.get('sign_in'))
-            if sign_in_data:
-                self._month = sign_in_data.get('month', 0)
-                self._sign_in_days = sign_in_data.get('sign_in_days', [])
-                self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days', 0)
-                self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
-                self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
+    def init_sign_in(self, character_info):
+        sign_in_data = character_info.get('sign_in')
+        if sign_in_data:
+            self._month = sign_in_data.get('month', 0)
+            self._sign_in_days = sign_in_data.get('sign_in_days', [])
+            self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days', 0)
+            self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
+            self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
         else:
-            tb_character_activity.new({'id': self.owner.base_info.id,
-                                       'sign_in': cPickle.dumps({})})
+            tb_character_info.update('sign_in', {})
+
+    def save_data(self):
+        props = dict(
+            month=self._month,
+            sign_in_days=self._sign_in_days,
+            continuous_sign_in_days=self._continuous_sign_in_days,
+            continuous_sign_in_prize=self._continuous_sign_in_prize,
+            repair_sign_in_times=self._repair_sign_in_times)
+
+        sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
+        sign_in_data.update('sign_in', props)
 
     @property
     def sign_in_days(self):
@@ -81,16 +87,3 @@ class CharacterSignInComponent(Component):
         self._sign_in_days.append(day)
         if not self._sign_in_days or day - self._sign_in_days[-1] == 1:
             self._continuous_sign_in_days += 1
-
-    def save_data(self):
-        props = dict(
-            month=self._month,
-            sign_in_days=self._sign_in_days,
-            continuous_sign_in_days=self._continuous_sign_in_days,
-            continuous_sign_in_prize=self._continuous_sign_in_prize,
-            repair_sign_in_times=self._repair_sign_in_times)
-
-        sign_in_data = tb_character_activity.getObj(self.owner.base_info.id)
-        sign_in_data.update('sign_in', cPickle.dumps(props))
-
-

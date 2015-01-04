@@ -12,9 +12,11 @@ from test.init_data.mock_line_up import init_line_up
 from test.init_data.mock_runt import init_runt
 from test.init_data.mock_guild import init_guild
 from test.init_data.mock_travel_item import init_travel_item
+from test.init_data.mock_player import init_player
 
 
 def init(player):
+    init_player(player)
     init_hero(player)
     init_hero_chip(player)
     init_equipment(player)

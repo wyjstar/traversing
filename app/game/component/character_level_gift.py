@@ -3,7 +3,7 @@
 created by sphinx on
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_activity
+from app.game.redis_mode import tb_character_info
 
 
 class CharacterLevelGift(Component):
@@ -14,25 +14,19 @@ class CharacterLevelGift(Component):
         self._received_gift_ids = []
         self._level_gift = [0] * 250
 
-    def init_data(self):
-        activity = tb_character_activity.getObjData(self.owner.base_info.id)
-
-        if activity:
-            data = activity.get('level_gift')
-            if data and data != 'None':
-                self._received_gift_ids = data['received_gift_ids']
-                self._level_gift = data['level_gift']
-            else:
-                self.received_gift_ids = []
-                self.save_data()
+    def init_data(self, character_info):
+        data = character_info.get('level_gift')
+        if data and data != 'None':
+            self._received_gift_ids = data['received_gift_ids']
+            self._level_gift = data['level_gift']
         else:
-            data = dict(received_gift_ids=self._received_gift_ids, level_gift=self._level_gift)
-            tb_character_activity.new({'id': self.owner.base_info.id,
-                                       'level_gift': data})
+            self.received_gift_ids = []
+            self.save_data()
 
     def save_data(self):
-        activity = tb_character_activity.getObj(self.owner.base_info.id)
-        data = dict(received_gift_ids=self._received_gift_ids, level_gift=self._level_gift)
+        activity = tb_character_info.getObj(self.owner.base_info.id)
+        data = dict(received_gift_ids=self._received_gift_ids,
+                    level_gift=self._level_gift)
         activity.update('level_gift', data)
 
     @property
