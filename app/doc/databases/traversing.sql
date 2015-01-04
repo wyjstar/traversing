@@ -6,16 +6,6 @@
 
 
 --
--- Table structure for table `tb_character_activity`
---
-
-DROP TABLE IF EXISTS `tb_character_activity`;
-CREATE TABLE `tb_character_activity` (
-  `id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Table structure for table `tb_character_equipment_chip`
 --
 
