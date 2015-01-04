@@ -147,12 +147,12 @@ class PlayerCharacter(Character):
         self._pvp_times = pvp_times
         self._pvp_refresh_time = pvp_refresh_time
         self._pvp_refresh_count = pvp_refresh_count
-        self._sign_in.init_sign_in()
-        self._online_gift.init_data()
-        self._level_gift.init_data()
-        self._feast.init_feast()
-        self._login_gift.init_data()
-        self._world_boss.init_data()
+        self._sign_in.init_sign_in(character_info)
+        self._online_gift.init_data(character_info)
+        self._level_gift.init_data(character_info)
+        self._feast.init_feast(character_info)
+        self._login_gift.init_data(character_info)
+        self._world_boss.init_data(character_info)
         self._vip.init_vip(vip_level)
         self._stamina.init_stamina(character_info.get('stamina'))
         self._shop.init_data(character_info)

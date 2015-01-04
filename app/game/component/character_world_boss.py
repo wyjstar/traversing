@@ -3,9 +3,11 @@
 created by server on 14-8-26
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_character_activity
-from shared.db_opear.configs_data.game_configs import special_stage_config, base_config
-from shared.utils.date_util import str_time_period_to_timestamp, get_current_timestamp
+from app.game.redis_mode import tb_character_info
+from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data.game_configs import special_stage_config
+from shared.utils.date_util import get_current_timestamp
+from shared.utils.date_util import str_time_period_to_timestamp
 
 
 class CharacterWorldBoss(Component):
@@ -15,26 +17,20 @@ class CharacterWorldBoss(Component):
         super(CharacterWorldBoss, self).__init__(owner)
         self._bosses = {}
 
-    def init_data(self):
-        activity = tb_character_activity.getObjData(self.owner.base_info.id)
-
-        if activity:
-            data = activity.get('world_boss')
-            if data:
-                for k, info in data.items():
-                    if not info:
-                        continue
-                    boss = Boss()
-                    boss.init_data(info)
-                    self._bosses[boss.boss_id] = boss
+    def init_data(self, character_info):
+        data = character_info.get('world_boss')
+        if data:
+            for k, info in data.items():
+                if not info:
+                    continue
+                boss = Boss()
+                boss.init_data(info)
+                self._bosses[boss.boss_id] = boss
         else:
-            data = {}
-            tb_character_activity.new({'id': self.owner.base_info.id,
-                                       'world_boss': data})
-
+            tb_character_info.update('world_boss', {})
 
     def save_data(self):
-        activity = tb_character_activity.getObj(self.owner.base_info.id)
+        activity = tb_character_info.getObj(self.owner.base_info.id)
         data = {}
         for k, boss in self._bosses.items():
             data[k] = boss.get_data_dict()
@@ -47,6 +43,7 @@ class CharacterWorldBoss(Component):
             boss = Boss(boss_id)
             self._bosses[boss_id] = boss
         return boss
+
 
 class Boss(object):
     """docstring for Boss"""
