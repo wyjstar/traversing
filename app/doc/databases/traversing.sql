@@ -76,6 +76,13 @@ CREATE TABLE `tb_character_info` (
   `equipment_chips` blob,
   `hero_chips` blob,
 
+  `travel` blob,
+  `travel_item` blob,
+  `shoes` blob,
+  `fight_cache` blob,
+  `chest_time` bigint(20),
+  `auto` blob,
+
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -186,19 +193,6 @@ CREATE TABLE `tb_pvp_rank` (
   `units` blob NOT NULL,
   `slots` blob NOT NULL,
   `hero_ids` tinyblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `tb_character_travel`;
-CREATE TABLE `tb_character_travel` (
-  `id` bigint(20) NOT NULL,
-  `travel` blob,
-  `travel_item` blob,
-  `shoes` blob,
-  `fight_cache` blob,
-  `chest_time` bigint(20),
-  `auto` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

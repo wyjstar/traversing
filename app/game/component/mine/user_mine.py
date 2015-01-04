@@ -713,9 +713,9 @@ class UserMine(Component):
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
             
-    def if_have_chest(self):
+    def if_have_shop(self):
         for mine_id in self._mine:
-            if self._mine[mine_id]._type == MineType.CHEST:
+            if self._mine[mine_id]._type == MineType.SHOP:
                 return False
         return True
     
@@ -779,7 +779,7 @@ class UserMine(Component):
     
     def reset_price(self):
         price_list = base_config['warFogRefreshPrice']
-        if len(price_list) > self._reset_times:
+        if len(price_list) <= self._reset_times:
             return price_list[-1]
         else:
             return price_list[self._reset_times]
@@ -829,12 +829,12 @@ class UserMine(Component):
         if stype == MineType.MONSTER_FIELD:
             mine = MonsterField.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.CHEST:
-            if self.if_have_chest():
-                mine = None
-            else:
                 mine = Chest.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.SHOP:
-            mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
+            if self.if_have_shop():
+                mine = None
+            else:
+                mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.COPY:
             mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
 
