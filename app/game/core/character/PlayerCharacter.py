@@ -201,7 +201,7 @@ class PlayerCharacter(Character):
                           'stamina': self._stamina.detail_data,
                           'last_login_time': int(time.time()),
                           'finances': finances,
-                          'chiequipment_chips': {},
+                          'equipment_chips': {},
                           'hero_chips': {}
                           }
         tb_character_info.new(character_info)

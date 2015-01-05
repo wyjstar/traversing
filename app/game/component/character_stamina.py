@@ -75,6 +75,7 @@ class CharacterStaminaComponent(Component):
     def stamina(self, value):
         """体力"""
         self.owner.finance[const.STAMINA] = value
+        self.owner.finance.save_data()
 
     def open_receive(self):
         self._open_receive = 1

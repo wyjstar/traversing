@@ -301,10 +301,19 @@ def stage_sweep(stage_id, times, player):
             hero = lineUpSlotComponent.hero_slot.hero_obj
             if hero:
                 hero.upgrade(stage_config.HeroExp, player.level.level)
+                hero.save_data()
         # 玩家金钱
         player.finance.coin += stage_config.currency
         # 玩家经验
         player.level.addexp(stage_config.playerExp)
+
+    # 活跃度
+    lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
+    # 保存活跃度
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     player.stage_component.get_stage(stage_id).attacks += times
     player.stage_component.update()
