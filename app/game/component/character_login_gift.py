@@ -21,6 +21,7 @@ class CharacterLoginGiftComponent(Component):
 
     def init_data(self, character_info):
         data = tb_character_info.get('login_gift')
+        data = eval(data)
         if data:
             # print data, type(data)
             # print time.localtime(data.get('last_login')), type(time.localtime(data.get('last_login')))

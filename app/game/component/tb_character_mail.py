@@ -21,8 +21,9 @@ class CharacterMailComponent(Component):
 
     def init_data(self):
         pid = self.owner.base_info.id
-        mail_obj_list = tb_mail_info.getObjListByFk(pid)
-        for mail_obj in mail_obj_list:
+        mail_ids = tb_mail_info.getAllPkByFk(pid)
+        for mail_id in mail_ids:
+            mail_obj = tb_mail_info.getObjData(mail_id)
             mail_data = mail_obj.get('data')
             mail_id = mail_data.get('id')
             mail = Mail(mail_id=mail_id)

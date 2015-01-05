@@ -16,15 +16,15 @@ class CharacterEquipmentPackageComponent(Component):
         super(CharacterEquipmentPackageComponent, self).__init__(owner)
         self._equipments_obj = {}  # {装备ID：装备obj}
 
-
     @property
     def equipments_obj(self):
         return self._equipments_obj
 
     def init_data(self):
-        equipment_datas = tb_equipment_info.getObjListByFk(self.owner.base_info.id)
+        equipment_ids = tb_equipment_info.getAllPkByFk(self.owner.base_info.id)
 
-        for equipment_obj in equipment_datas:
+        for equipment_id in equipment_ids:
+            equipment_obj = tb_equipment_info.getObjData(equipment_id)
             equipment_data = equipment_obj.get('data')
             equipment_info = equipment_data.get('equipment_info')
             equipment_id = equipment_data.get('id')

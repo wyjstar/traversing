@@ -3,7 +3,7 @@
 created by server on 14-6-6上午11:12.
 """
 
-from gfirefly.dbentrust.mmode import MAdmin
+from gfirefly.dbentrust.redis_mode import MAdmin
 
 tb_account = MAdmin('tb_account', 'id')  # 帐号表
 tb_account.insert()

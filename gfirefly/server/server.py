@@ -4,7 +4,6 @@ Created on 2013-8-2
 
 @author: lan (www.9miao.com)
 """
-from gfirefly.dbentrust.memclient import mclient
 from gfirefly.dbentrust.redis_client import redis_client
 from gfirefly.netconnect.protoc import LiberateFactory
 from flask import Flask
@@ -18,6 +17,7 @@ from gtwisted.core import reactor
 from gfirefly.utils import services
 import os
 import affinity
+from gfirefly.dbentrust.redis_manager import redis_manager
 
 reactor = reactor
 
@@ -100,9 +100,8 @@ class FFServer:
             dbpool.initPool(**dbconfig)
 
         if hasmem and memconfig:
-            urls = memconfig.get('urls')
-            hostname = str(memconfig.get('hostname'))
-            mclient.connect(urls, hostname)
+            connection_setting = memconfig.get('urls')
+            redis_manager.connection_setup(connection_setting)
 
         if hasredis and redis_config:
             host = redis_config.get("host")

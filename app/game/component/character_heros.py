@@ -25,8 +25,8 @@ class CharacterHerosComponent(Component):
 
     def init_heros(self):
         pid = self.owner.base_info.id
-        heros = tb_character_hero.getObjListByFk(pid)
-
+        hero_ids = tb_character_hero.getAllPkByFk(pid)
+        heros = tb_character_hero.getObjList(hero_ids)
         for hero_mmode in heros:
             data = hero_mmode.get('data')
             hero = Hero(pid)

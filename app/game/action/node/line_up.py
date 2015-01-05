@@ -37,10 +37,10 @@ def get_target_line_up_info_706(pro_data, player):
         response = line_up_pb2.LineUpResponse()
 
         heros_obj = {}
-        heros = tb_character_hero.getObjListByFk(target_id)
         hero_ids = tb_character_hero.getAllPkByFk(target_id)
 
-        for hero_mmode in heros:
+        for hero_id in hero_ids:
+            hero_mmode = tb_character_hero.getObjData(hero_id)
             data = hero_mmode.get('data')
             hero = Hero(target_id)
             hero.init_data(data)

@@ -2,7 +2,7 @@
 """
 created by server on 14-6-10下午9:09.
 """
-from gfirefly.dbentrust.mmode import MAdmin
+from gfirefly.dbentrust.redis_mode import MAdmin
 
 # 用户信息表
 tb_character_info = MAdmin('tb_character_info', 'id')
