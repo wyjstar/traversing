@@ -44,8 +44,11 @@ def push_object_remote(topic_id, msg, send_list):
 @rootserviceHandle
 def get_guild_rank_remote():
     level_instance = Ranking.instance('GuildLevel')
-    data = level_instance.get(1, 9999)  # 获取排行最高的公会列表(999条)
-    return data
+    datas = level_instance.get(1, 9999)  # 获取排行最高的公会列表(999条)
+    result = {}
+    for data in datas:
+        result[data[0]] = data[1]
+    return result
 
 
 @rootserviceHandle

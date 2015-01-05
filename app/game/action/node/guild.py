@@ -702,9 +702,10 @@ def get_guild_rank_810(data, player):
     # 得到公会排行
     ranks = remote_gate.get_guild_rank_remote()
     rank_num = 1
-    for rank in ranks:
-        data1 = tb_guild_info.getObjData(rank[0])
-        if data1 and rank != 0:
+    for uuid, _rank in ranks.items():
+        data1 = tb_guild_info.getObjData(uuid)
+        if data1:
+            print data1
             guild_obj = Guild()
             guild_obj.init_data(data1)
             guild_rank = response.guild_rank.add()
