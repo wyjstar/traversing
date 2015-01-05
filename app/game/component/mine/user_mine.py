@@ -383,10 +383,11 @@ class PlayerField(Mine):
                     return mine
                 
     def start_battle(self):
-        lock = MineOpt.lock(self._seq)
-        if lock == 1:
-            return True
-        return False
+        return True
+#         lock = MineOpt.lock(self._seq)
+#         if lock == 1:
+#             return True
+#         return False
     
     def settle(self, uid=None, nickname=None):
         tid = self._tid
@@ -439,7 +440,10 @@ class PlayerField(Mine):
         """
         驻守攻占的野怪矿
         """
+        print 'guard', '------------------------'
+        
         lock = MineOpt.lock(self._seq)
+        print 'lock', lock
         if lock > 1:
             return 12440 #战斗中
         self.update_mine()
@@ -456,9 +460,9 @@ class PlayerField(Mine):
     def draw_stones(self):
         #领取产出
         print 'draw_stones'
-#         lock = MineOpt.lock(self._seq)
-#         if lock != 1:
-#             return {}
+        lock = MineOpt.lock(self._seq)
+        if lock != 1:
+            return {}
         self.update_mine()
         stones = {}
         print self._normal, self._lucky
@@ -472,7 +476,7 @@ class PlayerField(Mine):
         self._status = 3
         save_data =self.save_info()
         MineOpt.add_mine(self._tid, self._seq, save_data)
-#         MineOpt.unlock(self._seq)
+        MineOpt.unlock(self._seq)
 
         return stones
         
@@ -690,7 +694,7 @@ class UserMine(Component):
             self._reset_times = mine_data.get('reset_times')
             self._tby = mine_data.get('day_before')
             self._lively = mine_data.get('lively')
-            self._guard = mine_data.get('gurad')
+            self._guard = mine_data.get('gurad', {})
         else:
             data = dict(id=self.owner.base_info.id,
                         mine={'1':cPickle.dumps(self._mine)},
@@ -1003,11 +1007,11 @@ class UserMine(Component):
         """
         if position in self._guard:
             for hero_no in self._guard[position].keys():
-                hero = self.owner().hero_component.get_hero(hero_no)
+                hero = self._owner.hero_component.get_hero(hero_no)
                 hero.is_guard = False
                 hero.save_data()
                 for equid in self._guard[position][hero_no]:
-                    equip = self.owner().equipment_component.get_equipment(equid)
+                    equip = self._owner.equipment_component.get_equipment(equid)
                     equip.attribute.is_guard = False
                     equip.save_data()
             del self._guard[position]
