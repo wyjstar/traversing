@@ -16,10 +16,6 @@ CREATE TABLE `tb_character_hero` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Table structure for table `tb_character_hero_chip`
---
-
 
 --
 -- Table structure for table `tb_character_info`
