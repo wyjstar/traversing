@@ -43,15 +43,13 @@ class MineOpt(object):
     @classmethod
     def lock(cls, tid):
         label = 'mine.lock'
-        print 'lock,lolock,locklock,locklock,locklock,lockck', label, tid, 1
         val = cls.rank.zincrby(label, tid, 1)
         return val
     
     @classmethod
     def unlock(cls, tid):
         label = 'mine.lock'
-        print 'unlockunlockunlockunlockunlockunlockunlo', label, tid, 0
-        cls.rank.zadd(label, tid, 0.0)
+        cls.rank.zadd(label, tid, 0)
         
     @classmethod
     def update(cls, label, k, v):

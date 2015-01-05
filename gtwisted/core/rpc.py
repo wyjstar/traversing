@@ -64,9 +64,15 @@ def _read_parameter(proto):
     elif desc.name == 'null_tuple':
         return ()
     elif desc.name == 'tuples':
-        return (_read_parameter(a) for a in arg)
+        tt = ()
+        for a in arg:
+            tt = tt + (_read_parameter(a),)
+        return tt
     elif desc.name == 'list':
-        return [_read_parameter(a) for a in arg]
+        ll = []
+        for a in arg:
+            ll.append(_read_parameter(a))
+        return ll
     elif desc.name == 'python_param':
         return marshal.loads(arg)
     else:

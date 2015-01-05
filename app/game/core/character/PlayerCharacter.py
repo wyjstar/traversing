@@ -186,7 +186,7 @@ class PlayerCharacter(Character):
 
         character_info = {'id': pid,
                           'nickname': u'',
-                          'level': base_config.get('initialPlayerLevel'),
+                          'level': 1,
                           'exp': 0,
                           'fine_hero_last_pick_time': 0,
                           'excellent_hero_last_pick_time': 0,

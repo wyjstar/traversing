@@ -412,14 +412,8 @@ def get_award(pro_data, player):
             response.res.result_no = 833
             return response.SerializePartialToString()
         else:
-            if chapter_obj.dragon_gift == 1:
-                logger.error("already receive")
-                response.res.result = False
-                response.res.result_no = 832
-                return response.SerializePartialToString()
-            else:
-                chapter_obj.dragon_gift = 1
-                bag_id = conf.dragonGift
+            chapter_obj.dragon_gift = 1
+            bag_id = conf.dragonGift
 
     drop = get_drop(bag_id)
     return_data = gain(player, drop)

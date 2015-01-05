@@ -27,8 +27,7 @@ CREATE TABLE `tb_character_mine` (
   `reset_times` int(11) NOT NULL,
   `day_before` varchar(8) NOT NULL,
   `lively` int(11) NOT NULL,
-  `mine` blob,
-  `guard` blob,
+  `mine` mediumblob,
   PRIMARY KEY (`id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
