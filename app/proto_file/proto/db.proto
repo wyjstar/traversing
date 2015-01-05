@@ -1,0 +1,3 @@
+message heads_db{
+	repeated head = 1;
+}
