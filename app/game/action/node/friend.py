@@ -293,14 +293,14 @@ def add_friend_request_remote(target_id, is_online, player):
         remote_gate.push_object_remote(1110,
                                        player.base_info.id,
                                        [player.dynamic_id])
-    return result
+    return True
 
 
 @remoteserviceHandle('gate')
 def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
     player.friends.save_data()
-    return result
+    return True
 
 
 @remoteserviceHandle('gate')
