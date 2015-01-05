@@ -673,6 +673,8 @@ class UserMine(Component):
         
         self._mine = {} #玩家当前搜索出的矿
         
+        self._guard = {} #玩家驻守的英雄与装备，在失效的时候，退回
+        
     def init_data(self):
         mine_data = tb_character_mine.getObjData(self.owner.base_info.id)
         if mine_data:
@@ -688,13 +690,15 @@ class UserMine(Component):
             self._reset_times = mine_data.get('reset_times')
             self._tby = mine_data.get('day_before')
             self._lively = mine_data.get('lively')
+            self._guard = mine_data.get('gurad')
         else:
             data = dict(id=self.owner.base_info.id,
                         mine={'1':cPickle.dumps(self._mine)},
                         reset_day=self._reset_day,
                         reset_times=self._reset_times,
                         day_before=self._tby,
-                        lively=self._lively)
+                        lively=self._lively,
+                        guard=self._guard)
             tb_character_mine.new(data)
             
     def save_data(self):
@@ -708,7 +712,8 @@ class UserMine(Component):
                     'reset_day':self._reset_day,
                     'reset_times': self._reset_times,
                     'day_before':self._tby,
-                    'lively':self._lively}
+                    'lively':self._lively,
+                    'guard':self._guard}
             mine_obj.update_multi(data)
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
@@ -855,6 +860,9 @@ class UserMine(Component):
         for pos in self._mine.keys():
             mine_info = self._mine[pos].mine_info()
             mine_info['position'] = pos
+            if mine_info['type'] == MineType.PLAYER_FIELD:
+                if mine_info['nickname'] != self.owner.base_info.base_name:
+                    self.un_guard(pos)
             mine_infos.append(mine_info)
         return mine_infos
     
@@ -979,3 +987,29 @@ class UserMine(Component):
     def get_guard_info(self, pos):
         if pos in self._mine:
             return self._mine[pos].guard_info()
+        
+    
+    def save_slot(self, position, slots):
+        """
+        {hid, []}
+        """
+        self.un_guard(position)
+        self._guard[position] = slots
+        self._update = True
+        
+    def un_guard(self, position):
+        """
+        解绑定驻守
+        """
+        if position in self._guard:
+            for hero_no in self._guard[position].keys():
+                hero = self.owner().hero_component.get_hero(hero_no)
+                hero.is_guard = False
+                hero.save_data()
+                for equid in self._guard[position][hero_no]:
+                    equip = self.owner().equipment_component.get_equipment(equid)
+                    equip.attribute.is_guard = False
+                    equip.save_data()
+            del self._guard[position]
+            self._update = True
+            
