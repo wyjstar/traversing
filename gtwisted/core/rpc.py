@@ -8,6 +8,7 @@ from gtwisted.core.protocols import BaseProtocol, ClientFactory, ServerFactory
 from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
+from gfirefly.server.logobj import logger
 import gevent
 import struct
 import rpc_pb2
@@ -64,9 +65,15 @@ def _read_parameter(proto):
     elif desc.name == 'null_tuple':
         return ()
     elif desc.name == 'tuples':
-        return (_read_parameter(a) for a in arg)
+        tt = ()
+        for a in arg:
+            tt = tt + (_read_parameter(a),)
+        return tt
     elif desc.name == 'list':
-        return [_read_parameter(a) for a in arg]
+        ll = []
+        for a in arg:
+            ll.append(_read_parameter(a))
+        return ll
     elif desc.name == 'python_param':
         return marshal.loads(arg)
     else:
@@ -118,6 +125,7 @@ class PBProtocl(BaseProtocol):
     def _sendMessage(self, _key, _name, args, kw):
         """发送远程请求
         """
+        # logger.debug('send:%s:%s', args, kw)
         if _key:
             _msgtype = ASK_SIGNAL
         else:
@@ -182,6 +190,7 @@ class PBProtocl(BaseProtocol):
 
         _kw = {}  # eval(request.kw)
         method = self.getRemoteMethod(_name)
+        # logger.debug('process:%s:%s', _args, _kw)
         result = self.callRemoteMethod(method, _args, _kw)
         if _key:
             response = rpc_pb2.RPCProtocol()

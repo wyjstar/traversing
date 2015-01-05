@@ -16,10 +16,6 @@ CREATE TABLE `tb_character_hero` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Table structure for table `tb_character_hero_chip`
---
-
 
 --
 -- Table structure for table `tb_character_info`
@@ -73,7 +69,7 @@ CREATE TABLE `tb_character_info` (
   `feast` int(11) DEFAULT '0',
   `login_gift` blob,
   `world_boss` blob,
-  `chiequipment_chips` blob,
+  `equipment_chips` blob,
   `hero_chips` blob,
 
   `travel` blob,

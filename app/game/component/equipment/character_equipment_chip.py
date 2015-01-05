@@ -15,7 +15,7 @@ class CharacterEquipmentChipComponent(Component):
         self._chips = {}
 
     def init_data(self, character_info):
-        chips = character_info.get('chiequipment_chips')
+        chips = character_info.get('equipment_chips')
         for chip_no, chip_num in chips.items():
             equipment_chip = EquipmentChip(chip_no, chip_num)
             self._chips[chip_no] = equipment_chip
@@ -44,7 +44,7 @@ class CharacterEquipmentChipComponent(Component):
             if chip.chip_num:  # 如果chip num == 0, 则不保存
                 props[no] = chip.chip_num
         items_data = tb_character_info.getObj(self.owner.base_info.id)
-        items_data.update('chiequipment_chips', props)
+        items_data.update('equipment_chips', props)
 
     # def get_chip_num(self, chip_no):
     #     """根据碎片编号取得当前个数

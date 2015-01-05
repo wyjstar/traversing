@@ -15,8 +15,9 @@ remote_gate = GlobalObject().remote['gate']
 def push_message(key, character_id, *args):
     player = PlayersManager().get_player_by_id(character_id)
     if player:
+        kw = {}
         pargs = (key, player.dynamic_id) + args
         kw['is_online'] = True
-        return remote_gate._reference._service.callTarget(*pargs)
+        return remote_gate._reference._service.callTarget(*pargs, **kw)
     else:
         return remote_gate.push_message_remote(key, character_id, args)
