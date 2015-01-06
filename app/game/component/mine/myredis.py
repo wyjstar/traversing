@@ -43,7 +43,7 @@ class Ranking(object):
     
     def zadd(self, label, k, v):
         try:
-            self.redis.zadd(label, k, v)
+            self.redis.zadd(label, v, k)
         except Exception, e:
             logger.error('redis zadd error : %s' % e)
 
