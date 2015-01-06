@@ -10,7 +10,7 @@ from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.game_configs import hero_config
 from shared.db_opear.configs_data.game_configs import hero_exp_config
 from shared.db_opear.configs_data.game_configs import hero_breakup_config, hero_breakup_attr_config
-from shared.db_opear.configs_data.game_configs import link_config
+from shared.db_opear.configs_data.game_configs import link_config, stone_config
 from app.game.redis_mode import tb_character_hero
 
 
@@ -275,9 +275,10 @@ class Hero(object):
             result_attr[v] = 0
 
         for (type_id, type_info) in self._runt.items():
-            for (po, [runt_no, runt_type, main_attr, minor_attr]) in type_info.items():
+            for (po, [runt_no, runt_id, main_attr, minor_attr]) in type_info.items():
                 xs = 1
-                if type_id != runt_type:
+                stone_info = stone_config.get("stones").get(runt_id)
+                if type_id != stone_info.get("type"):
                     xs = game_configs.base_config.get('totemSpaceDecay')
 
                 for (attr_type, attr_info) in main_attr.items():
