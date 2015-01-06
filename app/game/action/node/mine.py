@@ -228,16 +228,18 @@ def guard_1244(data, player):
 
     #构造阵容组件
     character_line_up = CharacterLineUpComponent(player)
+    save_slot = {}
     for slot in request.line_up_slots:
         line_up_slot = LineUpSlotComponent(character_line_up, slot.slot_no, activation=True, hero_no=slot.hero_no)
-
+        save_slot[slot.hero_no] = []
         for equipment_slot in slot.equipment_slots:
-            equipment_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
-            line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
+            temp_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
+            line_up_slot.equipment_slots[equipment_slot.slot_no] = temp_slot
             # 标记装备已驻守
-            equip = player.equipment_component.get_equipment(slot.equipment_id)
+            equip = player.equipment_component.get_equipment(equipment_slot.equipment_id)
             equip.attribute.is_guard = True
             equip.save_data()
+            save_slot[slot.hero_no].append(equipment_slot.equipment_id)
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
 
@@ -275,7 +277,7 @@ def guard_1244(data, player):
         response.result_no = result_code
         return response.SerializePartialToString()
 
-
+    player.mine.save_slot(request.pos, save_slot)
 
     response.result = True
     player.mine.save_data()

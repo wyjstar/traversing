@@ -28,19 +28,13 @@ def character_login_4(key, dynamic_id, request_proto):
     player_data = data.get('player_data')
     response.ParseFromString(player_data)
 
-    # TODO 需要修改
-    if response.guild_id:
-        guild_id = response.guild_id
-    else:
-        guild_id = 0
     nickname = response.nickname
     if nickname:
-        # TODO 起名时候
         # 聊天室登录
         GlobalObject().child('chat').login_chat_remote(dynamic_id,
                                                        response.id,
                                                        nickname,
-                                                       guild_id)
+                                                       response.guild_id)
     return response.SerializePartialToString()
 
 

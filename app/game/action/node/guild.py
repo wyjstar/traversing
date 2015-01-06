@@ -705,7 +705,6 @@ def get_guild_rank_810(data, player):
     for uuid, _rank in ranks.items():
         data1 = tb_guild_info.getObjData(uuid)
         if data1:
-            print data1
             guild_obj = Guild()
             guild_obj.init_data(data1)
             guild_rank = response.guild_rank.add()
