@@ -2,7 +2,7 @@
 """
 created by server on 14-12-29下午2:03.
 """
-from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config
+from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config, stone_config
 from gfirefly.server.logobj import logger_cal
 from shared.utils import pprint
 
@@ -486,10 +486,11 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no):
 def log_runt(hero):
     """docstring for pprint_runt"""
     s=[]
-    for (runt_type, item) in hero.runt.items():
+    for (runt_slot_type, item) in hero.runt.items():
         for (runt_po, runt_info) in item.items():
-            [runt_no, runt_id, main_attr, minor_attr] = runt_info
-            s.append("符文编号%s, 符文类型%s, 符文位置%s, 主要属性%s, 次要属性%s" % (runt_id, runt_type, runt_po, main_attr, minor_attr))
+            [runt_id, runt_no, main_attr, minor_attr] = runt_info
+            runt_type = stone_config.get("stones").get(runt_no).get("type")
+            s.append("符文编号%s, 符文槽类型%s, 符文类型%s, 符文是否镶嵌正确%s, 主要属性%s, 次要属性%s" % (runt_no, runt_slot_type, runt_type, runt_slot_type==runt_type, main_attr, minor_attr))
     return s
 
 def log_equ(line_up_slot):
