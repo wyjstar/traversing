@@ -14,8 +14,8 @@ from shared.db_opear.configs_data.game_configs import newbee_guide_config
 from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
-from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest
-from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse
+from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, ChangeHeadRequest
+from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHeadResponse
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
@@ -163,6 +163,22 @@ def new_guide_step_1802(data, player):
     return_data = gain(player, gain_data)
     get_return(player, return_data, response.gain)
 
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def change_head_841(data, player):
+    request = ChangeHeadRequest()
+    request.ParseFromString(data)
+    response = ChangeHeadResponse()
+    if request.hero_id in player.heads.head:
+        player.heads.now_head = request.hero_id
+    else:
+        response.res.result = False
+        response.res.result_no = 834
+        return response.SerializePartialToString()
+
+    response.res.result = True
     return response.SerializePartialToString()
 
 
