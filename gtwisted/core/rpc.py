@@ -19,7 +19,7 @@ ASK_SIGNAL = "ASK"  # 请求结果的信号
 NOTICE_SIGNAL = "NOTICE"  # 仅做通知的信号，不要求返回值
 ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
 DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
-RPC_DATA_MAX_LENGTH = 256*1024  # rpc数据包允许的最大长度
+RPC_DATA_MAX_LENGTH = 512*1024  # rpc数据包允许的最大长度
 
 
 def _write_parameter(proto, arg):
@@ -37,14 +37,14 @@ def _write_parameter(proto, arg):
         proto.is_null = True
     elif isinstance(arg, list):
         for a in arg:
-            proto = proto.list.add()
-            _write_parameter(proto, a)
+            p = proto.list.add()
+            _write_parameter(p, a)
         else:
             proto.null_list = True
     elif isinstance(arg, tuple):
         for a in arg:
-            proto = proto.tuples.add()
-            _write_parameter(proto, a)
+            p = proto.tuples.add()
+            _write_parameter(p, a)
         else:
             proto.null_tuple = True
     elif isinstance(arg, dict):
