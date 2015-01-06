@@ -13,6 +13,7 @@ from app.game.core.item_group_helper \
     import is_afford, consume, gain, get_return
 from shared.utils import log_action
 from app.game.core.pack.item import Item
+from shared.db_opear.configs_data.data_helper import parse
 
 
 @remoteserviceHandle('gate')
@@ -66,15 +67,17 @@ def hero_break_104(data, player):
     hero_no = args.hero_no
     hero = player.hero_component.get_hero(hero_no)
     response = hero_response_pb2.HeroBreakResponse()
+    hero_info = game_configs.hero_config.get(hero_no)
 
     # 验证武将是否突破到上限
-    if hero.break_level == game_configs.hero_config.get(hero_no).breakLimit:
+    if hero.break_level == hero_info.breakLimit:
         response.res.result = False
         response.res.result_no = 201
         return response.SerializeToString()
 
-    _hero_breakup = game_configs.hero_breakup_config.get(hero.hero_no)
-    item_group = _hero_breakup.get_consume(hero.break_level)
+    consume_info = hero_info.get('consume' + str(hero.break_level+1))
+    item_group = parse(consume_info)
+    hero_info = game_configs.hero_config.get(hero.hero_no)
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):

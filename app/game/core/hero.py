@@ -9,7 +9,6 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.game_configs import hero_config
 from shared.db_opear.configs_data.game_configs import hero_exp_config
-from shared.db_opear.configs_data.game_configs import hero_breakup_config, hero_breakup_attr_config
 from shared.db_opear.configs_data.game_configs import link_config, stone_config
 from app.game.redis_mode import tb_character_hero
 
@@ -309,12 +308,11 @@ class Hero(object):
     def break_skill_ids(self):
         """根据突破等级取得突破技能ID
         """
-        breakup_config = hero_breakup_config.get(self._hero_no)
-        if not breakup_config:
-            logger.error('cant find breakup:%d' % self.hero_no)
+        hero_info = hero_config.get(self._hero_no)
+        assert hero_info!=None, "cannot find hero no %s" % self._hero_no
         skill_ids = []
         for i in range(self._break_level):
-            skill_id = breakup_config.info.get('break%s' % (i + 1))
+            skill_id = hero_info.get('break%s' % (i + 1))
             skill_ids.append(skill_id)
 
         return skill_ids
@@ -322,8 +320,8 @@ class Hero(object):
     @property
     def break_param(self):
         """突破系数*基础"""
-        breakup_attr_info = hero_breakup_attr_config.get(self._hero_no)
-        param = breakup_attr_info.get("parameters%d" % self._break_level)
+        hero_info = hero_config.get(self._hero_no)
+        param = hero_info.get("parameters%d" % self._break_level)
 
         if param:
             return param

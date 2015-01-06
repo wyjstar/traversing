@@ -22,6 +22,9 @@ from app.game.action.node._fight_start_logic import pve_process, pvp_process, pv
 from app.game.action.root import netforwarding
 from app.proto_file import line_up_pb2
 import time
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -106,6 +109,11 @@ def search_1241(data, player):
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(one_mine, response.mine)
         response.res.result = True
+        lively_event = CountEvent.create_event(EventType.MAGIC, 1, ifadd=True)
+        tstatus = player.tasks.check_inter(lively_event)
+        if tstatus:
+            task_data = task_status(player)
+            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
     else:
         response.res.result = False
         response.res.result_no = 12410
@@ -316,6 +324,11 @@ def harvest_1245(data, player):
             response.res.result = False
             response.res.result_no = 824
             return response.SerializePartialToString()
+        lively_event = CountEvent.create_event(EventType.WORD, 1, ifadd=True)
+        tstatus = player.tasks.check_inter(lively_event)
+        if tstatus:
+            task_data = task_status(player)
+            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     else:
         response.res.result = False
