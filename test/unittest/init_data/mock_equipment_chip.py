@@ -4,7 +4,7 @@ created by server on 14-7-15下午2:50.
 """
 
 from app.game.core.equipment.equipment_chip import EquipmentChip
-from app.game.core.PlayersManager import PlayersManager
+from shared.db_opear.configs_data.game_configs import chip_config
 
 
 def init_equipment_chip(player):

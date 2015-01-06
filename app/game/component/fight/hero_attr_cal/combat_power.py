@@ -50,11 +50,11 @@ def hero_self_attr(player, hero):
         atkStone=runt_attr.get("atk", 0),
 
         pDefB=break_attr.get("physical_def", 0),
-        pDefSeal=refine_attr.get("physical_def", 0),
+        pDefSeal=refine_attr.get("physicalDef", 0),
         pDefStone=runt_attr.get("physical_def", 0),
 
         mDefB=break_attr.get("magic_def", 0),
-        mDefSeal=refine_attr.get("magic_def", 0),
+        mDefSeal=refine_attr.get("magicDef", 0),
         mDefStone=runt_attr.get("magic_def", 0),
 
         hitB=break_attr.get("hit", 0),
@@ -70,11 +70,11 @@ def hero_self_attr(player, hero):
         criStone=runt_attr.get("cri", 0),
 
         criCoeffB=break_attr.get("cri_coeff", 0),
-        criCoeffSeal=refine_attr.get("cri_coeff", 0),
+        criCoeffSeal=refine_attr.get("criCoeff", 0),
         criCoeffStone=runt_attr.get("cri_coeff", 0),
 
         criDedCoeffB=break_attr.get("cri_ded_coeff", 0),
-        criDedCoeffSeal=refine_attr.get("cri_ded_coeff", 0),
+        criDedCoeffSeal=refine_attr.get("criDedCoeff", 0),
         criDedCoeffStone=runt_attr.get("cri_ded_coeff", 0),
 
         blockB=break_attr.get("block", 0),
@@ -362,6 +362,8 @@ def skill_attr(hero, hero_info, skill_ids):
             ("atkB_2", "atk"),
             ("pDefB_1", "physical_def"),
             ("pDefB_2", "physical_def"),
+            ("mDefB_1", "magic_def"),
+            ("mDefB_2", "magic_def"),
             ("hitB", "hit"),
             ("dodgeB", "dodge"),
             ("criB", "cri"),
@@ -389,7 +391,8 @@ def skill_attr(hero, hero_info, skill_ids):
                 pre_formula = formula_info.get("precondition")
                 formula = formula_info.get("formula")
                 if eval(pre_formula, pre_vars):
-                    attr[result_key] = eval(formula, cal_vars)
+                    val = attr.get(result_key, 0)
+                    attr[result_key] = val + eval(formula, cal_vars)
     return attr
 
 def _cheer_attr(player):

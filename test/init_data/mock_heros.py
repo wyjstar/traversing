@@ -11,7 +11,7 @@ def init_hero(player):
     # ==========================================
 
     runts = {}
-    d = random.sample(range(1, 11))
+    d = random.sample(range(1, 11), 2)
 
     runt_nos = stone_config.get('stones').keys()
     for a in xrange(1, 5):

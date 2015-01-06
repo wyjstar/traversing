@@ -11,28 +11,20 @@ def init_hero(player):
     # ==========================================
 
     runts = {}
-    d = []
-    for _ in range(2):
-        while True:
-            e = random.randint(1, 10)
-            if len(d) == 0 or d[0] != e:
-                break
-        d.append(e)
+    d = random.sample(range(1, 11), 2)
 
-    runt_ids = stone_config.get('weight')
+    runt_nos = stone_config.get('stones').keys()
     for a in xrange(1, 5):
         type_info = {}
         # for b in xrange(1, 11):
         for b in d:
-            c = random.randint(0, len(runt_ids)-1)
-            runt_id = runt_ids[c][0]
+            c = random.randint(0, len(runt_nos)-1)
+            runt_id = runt_nos[c]
             main_attr, minor_attr = player.runt.get_attr(runt_id)
             runt_info = [get_uuid(), runt_id, main_attr, minor_attr]
 
             type_info[b] = runt_info
         runts[a] = type_info
-
-    # hero2.runt = runts
 
     # ===============================================
 
