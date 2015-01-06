@@ -69,7 +69,9 @@
                 "shoes": "complex",
                 "chest_time": "simple",
                 "travel_item": "complex",
-                "fight_cache": "complex"
+                "fight_cache": "complex",
+				"auto": "complex",
+				"heads": "simple"
             }
         },
         "tb_character_hero": {

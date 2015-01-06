@@ -55,6 +55,12 @@ class CharacterHerosComponent(Component):
         hero.hero_no = hero_no
         self._heros[hero_no] = hero
         self.new_hero_data(hero)
+
+        if not self.owner.heads.head:
+            self.owner.heads.now_head = hero_no
+        if not (hero_no in self.owner.heads.head):
+            self.owner.heads.head.append(hero_no)
+        self.owner.save_data()
         return hero
 
     def add_hero_without_save(self, hero_no):
