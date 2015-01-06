@@ -167,7 +167,7 @@ def new_guide_step_1802(data, player):
 
 
 @remoteserviceHandle('gate')
-def change_head_841(data, player):
+def change_head_847(data, player):
     request = ChangeHeadRequest()
     request.ParseFromString(data)
     response = ChangeHeadResponse()
