@@ -37,14 +37,14 @@ def _write_parameter(proto, arg):
         proto.is_null = True
     elif isinstance(arg, list):
         for a in arg:
-            proto = proto.list.add()
-            _write_parameter(proto, a)
+            p = proto.list.add()
+            _write_parameter(p, a)
         else:
             proto.null_list = True
     elif isinstance(arg, tuple):
         for a in arg:
-            proto = proto.tuples.add()
-            _write_parameter(proto, a)
+            p = proto.tuples.add()
+            _write_parameter(p, a)
         else:
             proto.null_tuple = True
     elif isinstance(arg, dict):
