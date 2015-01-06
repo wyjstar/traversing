@@ -9,7 +9,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.game_configs import hero_config
 from shared.db_opear.configs_data.game_configs import hero_exp_config
-from shared.db_opear.configs_data.game_configs import hero_breakup_config, hero_breakup_attr_config
+from shared.db_opear.configs_data.game_configs import hero_breakup_config
 from shared.db_opear.configs_data.game_configs import link_config, stone_config
 from app.game.redis_mode import tb_character_hero
 
@@ -322,8 +322,8 @@ class Hero(object):
     @property
     def break_param(self):
         """突破系数*基础"""
-        breakup_attr_info = hero_breakup_attr_config.get(self._hero_no)
-        param = breakup_attr_info.get("parameters%d" % self._break_level)
+        hero_info = hero_config.get(self._hero_no)
+        param = hero_info.get("parameters%d" % self._break_level)
 
         if param:
             return param
