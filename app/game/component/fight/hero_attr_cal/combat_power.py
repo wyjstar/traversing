@@ -389,7 +389,7 @@ def skill_attr(hero, hero_info, skill_ids):
                 pre_formula = formula_info.get("precondition")
                 formula = formula_info.get("formula")
                 if eval(pre_formula, pre_vars):
-                    attr[result_key] = eval(formula, cal_vars)
+                    attr[result_key] += eval(formula, cal_vars)
     return attr
 
 def _cheer_attr(player):
