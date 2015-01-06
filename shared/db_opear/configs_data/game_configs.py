@@ -8,7 +8,6 @@ from equipment.equipment_config import EquipmentConfig
 from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 from equipment.set_equipment_config import SetEquipmentConfig
 from equipment.equipment_attribute_config import EquipmentAttributeConfig
-from hero_breakup_config import HeroBreakupConfig
 from item_config import ItemsConfig
 from link_config import LinkConfig
 from mail_config import MailConfig
@@ -53,7 +52,6 @@ travel_item_config = {}
 base_config = {}
 hero_config = {}
 hero_exp_config = {}
-hero_breakup_config = {}
 chip_config = {}
 item_config = {}
 small_bag_config = {}
@@ -97,7 +95,6 @@ all_config_name = {
     'base_config': BaseConfig(),
     'hero_config': HeroConfig(),
     'hero_exp_config': HeroExpConfig(),
-    'hero_breakup_config': HeroBreakupConfig(),
     'item_config': ItemsConfig(),
     'small_bag_config': SmallBagsConfig(),
     'big_bag_config': BigBagsConfig(),
