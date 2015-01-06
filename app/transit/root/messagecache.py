@@ -23,7 +23,7 @@ class MessageCache:
 
     def cache(self, key, character_id, *args, **kw):
         unique_id = uuid.uuid4()
-        key_name = str(character_id)
+        key_name = 'pvp_' + str(character_id)
         message = cPickle.dumps(dict(topic_id=key,
                                      character_id=character_id,
                                      args=args,
@@ -36,7 +36,7 @@ class MessageCache:
         # print result
 
     def get(self, character_id):
-        request_key = str(character_id)
+        request_key = 'pvp_' + str(character_id)
         self._redis.zremrangebyscore(request_key, 0, time.time())
         messages = self._redis.zrange(request_key, 0, 10000)
 
@@ -45,7 +45,8 @@ class MessageCache:
             yield message, data
 
     def delete(self, key, message):
-        result = self._redis.zrem(key, message)
+        request_key = 'pvp_' + str(key)
+        result = self._redis.zrem(request_key, message)
         if result != 1:
             print 'delete key:', key, 'message:', message, 'result', result
         # print result
