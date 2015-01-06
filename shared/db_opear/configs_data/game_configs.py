@@ -8,7 +8,6 @@ from equipment.equipment_config import EquipmentConfig
 from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
 from equipment.set_equipment_config import SetEquipmentConfig
 from equipment.equipment_attribute_config import EquipmentAttributeConfig
-from hero_breakup_config import HeroBreakupConfig
 from item_config import ItemsConfig
 from link_config import LinkConfig
 from mail_config import MailConfig
@@ -35,7 +34,6 @@ from guild_config import GuildConfig
 from vip_config import VIPConfig
 from special_stage_config import SpecialStageConfig
 from arena_fight_config import ArenaFightConfig
-from hero_breakup_attr_config import HeroBreakupAttrConfig
 from travel_event_config import TravelEventConfig
 from language_config import LanguageConfig
 from achievement_config import AchievementConfig
@@ -54,7 +52,6 @@ travel_item_config = {}
 base_config = {}
 hero_config = {}
 hero_exp_config = {}
-hero_breakup_config = {}
 chip_config = {}
 item_config = {}
 small_bag_config = {}
@@ -83,7 +80,6 @@ robot_born_config = {}
 rand_name_config = {}
 player_exp_config = {}
 arena_fight_config = {}
-hero_breakup_attr_config = {}
 travel_event_config = {}
 language_config = {}
 achievement_config = {}
@@ -99,7 +95,6 @@ all_config_name = {
     'base_config': BaseConfig(),
     'hero_config': HeroConfig(),
     'hero_exp_config': HeroExpConfig(),
-    'hero_breakup_config': HeroBreakupConfig(),
     'item_config': ItemsConfig(),
     'small_bag_config': SmallBagsConfig(),
     'big_bag_config': BigBagsConfig(),
@@ -128,7 +123,6 @@ all_config_name = {
     'robot_born_config': RobotBornConfig(),
     'player_exp_config': PlayerExpConfig(),
     'arena_fight_config': ArenaFightConfig(),
-    'hero_breakup_attr_config': HeroBreakupAttrConfig(),
     'travel_event_config': TravelEventConfig(),
     'language_config': LanguageConfig(),
     'achievement_config': AchievementConfig(),

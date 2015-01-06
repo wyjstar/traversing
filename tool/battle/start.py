@@ -5,7 +5,7 @@ from app.battle.battle_process import BattlePVPProcess, BattlePVEProcess
 from app.battle.battle_unit import BattleUnit, do_assemble
 from app.battle.battle_skill import FriendSkill
 from shared.db_opear.configs_data.game_configs import monster_config, \
-    monster_group_config, stage_config, special_stage_config, language_config, skill_config, hero_breakup_config
+    monster_group_config, stage_config, special_stage_config, language_config, skill_config, hero_config
 #from shared.db_opear.configs_data.game_configs import base_config
 import sys
 
@@ -98,10 +98,10 @@ def init_unit(slot_no, eles, is_hero=True):
 
 def hero_break_skill_buff_ids(hero_no, break_level):
         hero_break_skill_buff_ids = []
-        hero_break_info = hero_breakup_config.get(hero_no)
+        hero_info = hero_config.get(hero_no)
 
         for i in range(break_level):
-            skill_id = hero_break_info.get_skill_id(i + 1)
+            skill_id = hero_info.get("break"+str(break_level))
             skill_info = skill_config.get(skill_id, None)
             if skill_info:
                 hero_break_skill_buff_ids.extend(skill_info.get("group"))
