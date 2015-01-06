@@ -12,3 +12,6 @@ message CreatePlayerRequest{
 message NewbeeGuideStepRequest{
 	required int32 step_id = 1;
 }
+message ChangeHeadRequest{
+	required int32 hero_id = 1;
+}

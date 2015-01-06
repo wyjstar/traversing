@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_response.proto',
   package='',
-  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"]\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"]\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"2\n\x12\x43hangeHeadResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -89,10 +89,40 @@ _NEWBEEGUIDESTEPRESPONSE = _descriptor.Descriptor(
   serialized_end=192,
 )
 
+
+_CHANGEHEADRESPONSE = _descriptor.Descriptor(
+  name='ChangeHeadResponse',
+  full_name='ChangeHeadResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='ChangeHeadResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=194,
+  serialized_end=244,
+)
+
 _NEWBEEGUIDESTEPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _NEWBEEGUIDESTEPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_CHANGEHEADRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['PlayerResponse'] = _PLAYERRESPONSE
 DESCRIPTOR.message_types_by_name['NewbeeGuideStepResponse'] = _NEWBEEGUIDESTEPRESPONSE
+DESCRIPTOR.message_types_by_name['ChangeHeadResponse'] = _CHANGEHEADRESPONSE
 
 class PlayerResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -105,6 +135,12 @@ class NewbeeGuideStepResponse(_message.Message):
   DESCRIPTOR = _NEWBEEGUIDESTEPRESPONSE
 
   # @@protoc_insertion_point(class_scope:NewbeeGuideStepResponse)
+
+class ChangeHeadResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CHANGEHEADRESPONSE
+
+  # @@protoc_insertion_point(class_scope:ChangeHeadResponse)
 
 
 # @@protoc_insertion_point(module_scope)

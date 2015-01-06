@@ -74,3 +74,5 @@
 831: chapter_info dont find,or (chapter_id == 1 and award_type == 2 )
 832: already receive or can`t receive
 833: can`t receive
+
+834: 武将不存在
