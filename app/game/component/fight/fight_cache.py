@@ -407,4 +407,3 @@ class CharacterFightCacheComponent(Component):
                     unit.is_awake = True
                     unit.origin_no = red.unit_no
                     red_units[no] = unit
-                    break
