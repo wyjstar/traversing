@@ -18,7 +18,9 @@ class CharacterTravelComponent(Component):
         self._travel_item = {}  # 获得的风物志 {stage_id:[travel_item_id]}
         self._shoes = [0, 0, 0, 0, 0]  # 剩余鞋子[1,2,3,正在消耗，已消耗个数]
         self._chest_time = 1  # 上次领取宝箱时间
-        self._fight_cache = [0, 0]
+        self._fight_cache = [0, 0]  # [stage_id, event_id]
+
+
 
         # {stage_id:[{start_tiem:0, continued_time:0,
         # 'events': [[state, event_id, drop, start_time]], already_times: 0}]}

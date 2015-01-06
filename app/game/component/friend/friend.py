@@ -21,16 +21,15 @@ class FriendComponent(Component):
         self._applicants_list = {}
 
     def init_data(self, character_info):
-        if character_info.get('friend'):
-            self._friends = character_info.get('friends')
-            self._blacklist = character_info.get('blacklist')
-            self._applicants_list = character_info.get('applicants_list')
-        else:
-            friend_obj = tb_character_info.getObj(self.owner.base_info.id)
-            data = dict(friends=self._friends,
-                        blacklist=self._blacklist,
-                        applicants_list=self._applicants_list)
-            friend_obj.update_multi(data)
+        self._friends = character_info.get('friends')
+        self._blacklist = character_info.get('blacklist')
+        self._applicants_list = character_info.get('applicants_list')
+        if self._friends is None:
+            self._friends = {}
+        if self._blacklist is None:
+            self._blacklist = []
+        if self._applicants_list is None:
+            self._applicants_list = {}
 
     def save_data(self):
         friend_obj = tb_character_info.getObj(self.owner.base_info.id)
