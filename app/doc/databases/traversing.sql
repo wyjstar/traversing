@@ -79,6 +79,8 @@ CREATE TABLE `tb_character_info` (
   `chest_time` bigint(20),
   `auto` blob,
 
+  `heads` blob,
+
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
