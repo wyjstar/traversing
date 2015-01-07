@@ -5,7 +5,6 @@ created by wzp.
 """
 from shared.db_opear.configs_data.game_configs import special_stage_config, hero_config, monster_group_config, monster_config
 from gfirefly.dbentrust.redis_client import redis_client
-import random
 from shared.utils.random_pick import random_pick_with_percent
 import cPickle
 from shared.utils.date_util import str_time_period_to_timestamp, get_current_timestamp
@@ -109,32 +108,12 @@ class BaseBoss(object):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        # 初始化幸运武将
-        lucky_hero_1_num = base_config_info.get("lucky_hero_1_num")
-        lucky_hero_2_num = base_config_info.get("lucky_hero_2_num")
-        lucky_hero_3_num = base_config_info.get("lucky_hero_3_num")
-        all_high_heros, all_middle_heros, all_low_heros = self.get_hero_category()
-        self._lucky_high_heros =  random.sample(all_high_heros, lucky_hero_1_num)
-
-        for k in self._lucky_high_heros: # 去重
-            all_middle_heros.remove(k)
-        self._lucky_middle_heros =  random.sample(all_middle_heros, lucky_hero_2_num)
-
-        for k in self._lucky_middle_heros: # 去重
-            all_low_heros.remove(k)
-        self._lucky_low_heros =  random.sample(all_low_heros, lucky_hero_3_num)
-
         # 初始化奇遇
         debuff_skill = base_config_info.get("debuff_skill")
         self._debuff_skill_no = random_pick_with_percent(debuff_skill)
-
-
         self._hp = self.get_hp() # 重置血量
-
         #todo: 重置玩家信息
-
         # todo:对前十名发放奖励
-
 
     def in_the_time_period(self):
         stage_info = self.current_stage_info()
