@@ -61,19 +61,12 @@
             "mem": true,
             "redis": true,
             "db": true,
+			"tlog": true,
             "app": "app.gate",
             "log": "app/logs/gate.log",
             "name": "<=server_name=>",
             "front_ip": "<=front_ip=>",
-            "front_port": 31009,
-            "Ranking_configs": {
-                "label": "GuildLevel",
-                "redis_server": "127.0.0.1",
-                "redis_port": 6379,
-                "redis_db": 1,
-                "rank_len": 9999,
-                "eval_rank_func": "guild_eval"
-            }
+            "front_port": 31009
         },
         "net": {
             "netport": 31009,
@@ -100,7 +93,8 @@
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
-            "redis":true
+            "redis": true,
+			"tlog": true
             
         },
         "chat": {
@@ -145,6 +139,10 @@
          "host": "127.0.0.1",
          "port": 6379,
          "db": 0
+    },
+    "tlog":{
+         "host": "127.0.0.1",
+         "port": 30005
     }
 
 }
