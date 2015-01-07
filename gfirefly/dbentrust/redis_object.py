@@ -42,8 +42,6 @@ class RedisObject(object):
         result = {}
         for k, v in newdict.items():
             result[k] = cPickle.loads(v) if v else v
-        print result, '9'*8
-        print
 
         return result
 
@@ -80,22 +78,26 @@ class RedisObject(object):
             nowdict.update(self.data)
         newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
                               nowdict.values()))
-        print newmapping
         for k, v in newmapping.items():
             self._client.set(k, cPickle.dumps(v))
 
     def sadd(self, key, member):
-        self._client.sadd(key, member)
+        produce_key = self.produceKey(key)
+        return self._client.sadd(produce_key, member)
 
     def srem(self, key, member):
-        self._client.srem(key, member)
+        produce_key = self.produceKey(key)
+        return self._client.srem(produce_key, member)
 
     def scard(self, key):
-        self._client.scard(key)
+        produce_key = self.produceKey(key)
+        return self._client.scard(produce_key)
 
     def smem(self, key):
-        self._client.smembers(key)
+        produce_key = self.produceKey(key)
+        return self._client.smembers(produce_key)
 
     def supdate(self, key, old_member, new_member):
-        self.srem(key, old_member)
-        self.sadd(key, new_member)
+        produce_key = self.produceKey(key)
+        self.srem(produce_key, old_member)
+        self.sadd(produce_key, new_member)

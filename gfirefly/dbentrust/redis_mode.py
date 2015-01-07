@@ -45,8 +45,10 @@ class MMode(RedisObject):
     def update_multi(self, mapping):
         return RedisObject.update_multi(self, mapping)
 
-    def get(self, key):
+    def get(self, key, default=None):
         value = RedisObject.get(self, key)
+        if value is None and default is not None:
+            return default
         return value
 
     def get_multi(self, keys):
@@ -109,9 +111,7 @@ class MAdmin(RedisObject):
 
     def getObj(self, pk):
         mm = MMode(self._name + ':%s' % pk, self._pk)
-        if mm.get('data'):
-            return mm
-        return None
+        return mm
 
     def getObjData(self, pk):
         # print pk,"pk++++++++++++++"

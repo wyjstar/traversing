@@ -18,9 +18,8 @@ class UserStone(Component):
         
     def init_data(self):
         stone_data = tb_character_stone.getObjData(self.owner.base_info.id)
-
-        if stone_data:
-            mine = stone_data.get('stones')
+        mine = stone_data.get('stones')
+        if mine:
             all_stones = mine.get('1')
             if all_stones:
                 self._stones = cPickle.loads(all_stones)

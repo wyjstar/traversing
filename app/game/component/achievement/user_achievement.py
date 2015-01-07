@@ -240,8 +240,8 @@ class UserAchievement(Component):
     def init_data(self):
         live_data = tb_character_tasks.getObjData(self.owner.base_info.id)
 
-        if live_data:
-            tasks = live_data.get('tasks')
+        tasks = live_data.get('tasks')
+        if tasks:
             all_tasks = tasks.get('1')
             if all_tasks:
                 self._tasks = cPickle.loads(all_tasks)

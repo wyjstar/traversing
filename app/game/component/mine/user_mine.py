@@ -681,8 +681,8 @@ class UserMine(Component):
         
     def init_data(self):
         mine_data = tb_character_mine.getObjData(self.owner.base_info.id)
-        if mine_data:
-            mine = mine_data.get('mine')
+        mine = mine_data.get('mine')
+        if mine:
             all_mine = mine.get('1')
             if all_mine:
                 self._mine = cPickle.loads(all_mine)

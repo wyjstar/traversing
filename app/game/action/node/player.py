@@ -44,9 +44,8 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    sql_result = util.GetOneRecordInfo('tb_character_info',
-                                       dict(nickname=nickname))
-    if sql_result:
+    nicknames = tb_character_info.smem('nickname')
+    if nicknames and nickname in nicknames:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()
@@ -57,6 +56,7 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
     player.base_info.base_name = nickname
     character_obj.update('nickname', nickname)
+    tb_character_info.sadd('nickname', nickname)
 
     # 加入聊天
     remote_gate.login_chat_remote(player.dynamic_id,
@@ -173,4 +173,4 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        # init(player)
+        init(player)

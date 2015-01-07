@@ -153,7 +153,7 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
         character_obj = tb_character_info.getObjData(pid)
         character_info = character_obj.get_multi(character_info_columns)
-        print character_info
+        # print character_info
 
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
