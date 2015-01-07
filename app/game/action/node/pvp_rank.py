@@ -64,7 +64,7 @@ def pvp_player_rank_request_1502(data, player):
 
     cur_rank = record.get('id')
     columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
-    prere = 'id>=%s and id<=%s' % (cur_rank - 9, cur_rank + 1)
+    prere = 'id>=%s and id<=%s' % (cur_rank - 8, cur_rank + 1)
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
     for record in records:
         rank_item = response.rank_items.add()

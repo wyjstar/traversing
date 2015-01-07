@@ -282,7 +282,7 @@ class Equipment(object):
                        growAtk=0,
                        growPdef=0,
                        growMdef=0,
-                       equLevel=0)
+                       equLevel=self._attribute.strengthen_lv)
 
         for k, v in self._attribute.main_attr.items():
             assert varNames[k] in allVars

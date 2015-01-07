@@ -22,6 +22,9 @@ from app.game.action.node._fight_start_logic import pve_process, pvp_process, pv
 from app.game.action.root import netforwarding
 from app.proto_file import line_up_pb2
 import time
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
+from app.game.core.lively import task_status
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -106,6 +109,11 @@ def search_1241(data, player):
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(one_mine, response.mine)
         response.res.result = True
+        lively_event = CountEvent.create_event(EventType.MAGIC, 1, ifadd=True)
+        tstatus = player.tasks.check_inter(lively_event)
+        if tstatus:
+            task_data = task_status(player)
+            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
     else:
         response.res.result = False
         response.res.result_no = 12410
@@ -228,16 +236,18 @@ def guard_1244(data, player):
 
     #构造阵容组件
     character_line_up = CharacterLineUpComponent(player)
+    save_slot = {}
     for slot in request.line_up_slots:
         line_up_slot = LineUpSlotComponent(character_line_up, slot.slot_no, activation=True, hero_no=slot.hero_no)
-
+        save_slot[slot.hero_no] = []
         for equipment_slot in slot.equipment_slots:
-            equipment_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
-            line_up_slot.equipment_slots[equipment_slot.slot_no] = equipment_slot
+            temp_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
+            line_up_slot.equipment_slots[equipment_slot.slot_no] = temp_slot
             # 标记装备已驻守
-            equip = player.equipment_component.get_equipment(slot.equipment_id)
+            equip = player.equipment_component.get_equipment(equipment_slot.equipment_id)
             equip.attribute.is_guard = True
             equip.save_data()
+            save_slot[slot.hero_no].append(equipment_slot.equipment_id)
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
 
@@ -275,7 +285,7 @@ def guard_1244(data, player):
         response.result_no = result_code
         return response.SerializePartialToString()
 
-
+    player.mine.save_slot(request.pos, save_slot)
 
     response.result = True
     player.mine.save_data()
@@ -314,6 +324,11 @@ def harvest_1245(data, player):
             response.res.result = False
             response.res.result_no = 824
             return response.SerializePartialToString()
+        lively_event = CountEvent.create_event(EventType.WORD, 1, ifadd=True)
+        tstatus = player.tasks.check_inter(lively_event)
+        if tstatus:
+            task_data = task_status(player)
+            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     else:
         response.res.result = False

@@ -13,6 +13,7 @@ class CombatPowerTest(BaseTestCase):
         hero_info = hero.hero_info
 
         break_attr = combat_power.skill_attr(hero, hero_info, hero.break_skill_ids)
+        print break_attr
         self.NotEqual(break_attr, {})
 
     def test_travel_attr(self):
