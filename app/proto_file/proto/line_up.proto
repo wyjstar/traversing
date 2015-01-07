@@ -19,7 +19,6 @@ message LineUpSlot{
 
 
 // 取得阵容 701
-
 message Unpar{
 	required int32 unpar_id = 1;
 	required int32 unpar_level = 2;
@@ -31,6 +30,7 @@ message LineUpResponse{
 	repeated LineUpSlot sub = 2;
 	repeated Unpar unpars = 3;
 	optional CommonResponse res = 4;
+    repeated int32 order = 5;
 }
 
 message LineUpUnparUpgrade{

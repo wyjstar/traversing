@@ -19,6 +19,7 @@ from app.proto_file.common_pb2 import CommonResponse
 def get_line_up_info_701(pro_data, player):
     """取得阵容信息 """
     response = line_up_info(player)
+    logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -265,6 +266,9 @@ def line_up_info(player):
     """取得用户的阵容信息
     """
     response = line_up_pb2.LineUpResponse()
+    for temp in player.line_up_component.line_up_order:
+        response.order.append(temp)
+
     line_up_info_detail(player.line_up_component.line_up_slots, player.line_up_component.sub_slots, response)
 
     for k, v in player.line_up_component.unpars.items():
