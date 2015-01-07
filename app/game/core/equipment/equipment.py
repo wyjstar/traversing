@@ -267,7 +267,6 @@ class Equipment(object):
                      3: 'physical_def_rate',
                      4: 'magic_def_rate'}
 
-        equipment_info = self.equipment_config_info
         allVars = dict(baseHp=0,
                        baseAtk=0,
                        basePdef=0,
@@ -279,10 +278,10 @@ class Equipment(object):
                        criDedCoeff=0,
                        block=0,
                        ductility=0,
-                       growHp=equipment_info.growHp,
-                       growAtk=equipment_info.growAtk,
-                       growPdef=equipment_info.growPdef,
-                       growMdef=equipment_info.Mdef,
+                       growHp=0,
+                       growAtk=0,
+                       growPdef=0,
+                       growMdef=0,
                        equLevel=self._attribute.strengthen_lv)
 
         for k, v in self._attribute.main_attr.items():
