@@ -2,4 +2,3 @@
 
 sh bin/db_create.sh
 sh bin/db_update.sh
-sh bin/db_insert.sh
