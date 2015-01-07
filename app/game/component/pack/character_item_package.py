@@ -19,9 +19,8 @@ class CharacterItemPackageComponent(Component):
         """初始化道具信息
         """
         item_package_data = tb_character_item_package.getObjData(self.owner.base_info.id)
-        print item_package_data, "8"*80
         if item_package_data:
-            items_data = item_package_data.get('items', {})
+            items_data = item_package_data.get('items')
             if items_data:
                 for item_no, item_num in items_data.items():
                     item = Item(item_no, item_num)

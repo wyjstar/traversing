@@ -39,9 +39,9 @@ class CharacterLineUpComponent(Component):
     def init_data(self):
         line_up_data = tb_character_line_up.getObjData(self.character_id)
 
-        if line_up_data:
+        line_up_slots = line_up_data.get('line_up_slots')
+        if line_up_slots:
             # 阵容位置信息
-            line_up_slots = line_up_data.get('line_up_slots')
             for slot_no, slot in line_up_slots.items():
                 line_up_slot = LineUpSlotComponent.loads(self, slot)
                 self._line_up_slots[slot_no] = line_up_slot

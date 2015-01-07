@@ -96,7 +96,6 @@
             ],
             "name": "game",
             "mem": true,
-            "db": true,
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
@@ -124,9 +123,9 @@
     },
     "db": {
         "host": "127.0.0.1",
-        "user": "test",
-        "passwd": "test",
-        "port": 8066,
+        "user": "root",
+        "passwd": "123456",
+        "port": 3306,
         "db": "db_traversing",
         "charset": "utf8"
     },
