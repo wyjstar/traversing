@@ -136,7 +136,6 @@ def init_runt_843(data, player):
         [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
         player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, response.refresh_runt)
 
-    print response
     return response.SerializeToString()
 
 

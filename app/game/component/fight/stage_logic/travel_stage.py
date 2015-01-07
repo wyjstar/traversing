@@ -6,6 +6,9 @@ from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain
 
+
+xs = 100000
+
 class TravelStageLogic(base_stage.BaseStageLogic):
     """docstring for StageLogic"""
     def __init__(self, player, stage_id):
@@ -49,8 +52,8 @@ class TravelStageLogic(base_stage.BaseStageLogic):
 
                 return
 
-        if player.travel_component.fight_cache[1] and game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]) and \
-                stage_id == game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]).parameter.items()[0][0]:
+        if game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]%xs) and \
+                stage_id == game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]%xs).parameter.items()[0][0]:
 
             gain(player, event_cache[1])
             stage_cache.remove(event_cache)

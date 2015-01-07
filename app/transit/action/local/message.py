@@ -13,7 +13,7 @@ def push_message_remote(key, character_id, args):
     childs = groot.childsmanager.childs
     for child in childs.values():
         if 'gate' in child.name:
-            result = child.pull_message_remote(*args)
+            result = child.pull_message_remote(key, character_id, *args)
             if type(result) is bool and result:
                 return
 

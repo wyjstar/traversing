@@ -2,7 +2,7 @@
 """
 created by server on 14-12-29下午2:03.
 """
-from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config
+from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config, stone_config
 from gfirefly.server.logobj import logger_cal
 from shared.utils import pprint
 
@@ -50,11 +50,11 @@ def hero_self_attr(player, hero):
         atkStone=runt_attr.get("atk", 0),
 
         pDefB=break_attr.get("physical_def", 0),
-        pDefSeal=refine_attr.get("physical_def", 0),
+        pDefSeal=refine_attr.get("physicalDef", 0),
         pDefStone=runt_attr.get("physical_def", 0),
 
         mDefB=break_attr.get("magic_def", 0),
-        mDefSeal=refine_attr.get("magic_def", 0),
+        mDefSeal=refine_attr.get("magicDef", 0),
         mDefStone=runt_attr.get("magic_def", 0),
 
         hitB=break_attr.get("hit", 0),
@@ -70,11 +70,11 @@ def hero_self_attr(player, hero):
         criStone=runt_attr.get("cri", 0),
 
         criCoeffB=break_attr.get("cri_coeff", 0),
-        criCoeffSeal=refine_attr.get("cri_coeff", 0),
+        criCoeffSeal=refine_attr.get("criCoeff", 0),
         criCoeffStone=runt_attr.get("cri_coeff", 0),
 
         criDedCoeffB=break_attr.get("cri_ded_coeff", 0),
-        criDedCoeffSeal=refine_attr.get("cri_ded_coeff", 0),
+        criDedCoeffSeal=refine_attr.get("criDedCoeff", 0),
         criDedCoeffStone=runt_attr.get("cri_ded_coeff", 0),
 
         blockB=break_attr.get("block", 0),
@@ -362,6 +362,8 @@ def skill_attr(hero, hero_info, skill_ids):
             ("atkB_2", "atk"),
             ("pDefB_1", "physical_def"),
             ("pDefB_2", "physical_def"),
+            ("mDefB_1", "magic_def"),
+            ("mDefB_2", "magic_def"),
             ("hitB", "hit"),
             ("dodgeB", "dodge"),
             ("criB", "cri"),
@@ -389,7 +391,8 @@ def skill_attr(hero, hero_info, skill_ids):
                 pre_formula = formula_info.get("precondition")
                 formula = formula_info.get("formula")
                 if eval(pre_formula, pre_vars):
-                    attr[result_key] = eval(formula, cal_vars)
+                    val = attr.get(result_key, 0)
+                    attr[result_key] = val + eval(formula, cal_vars)
     return attr
 
 def _cheer_attr(player):
@@ -486,10 +489,11 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no):
 def log_runt(hero):
     """docstring for pprint_runt"""
     s=[]
-    for (runt_type, item) in hero.runt.items():
+    for (runt_slot_type, item) in hero.runt.items():
         for (runt_po, runt_info) in item.items():
-            [runt_no, runt_id, main_attr, minor_attr] = runt_info
-            s.append("符文编号%s, 符文类型%s, 符文位置%s, 主要属性%s, 次要属性%s" % (runt_id, runt_type, runt_po, main_attr, minor_attr))
+            [runt_id, runt_no, main_attr, minor_attr] = runt_info
+            runt_type = stone_config.get("stones").get(runt_no).get("type")
+            s.append("符文编号%s, 符文槽类型%s, 符文类型%s, 符文是否镶嵌正确%s, 主要属性%s, 次要属性%s" % (runt_no, runt_slot_type, runt_type, runt_slot_type==runt_type, main_attr, minor_attr))
     return s
 
 def log_equ(line_up_slot):
