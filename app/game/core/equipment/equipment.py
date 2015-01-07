@@ -321,7 +321,6 @@ class Equipment(object):
                         block='blockEqu',
                         ductility='ductilityEqu')
 
-        allVars[""]
         for k, v in formulas.items():
             formula = formula_config.get(v)
             if not formula:
