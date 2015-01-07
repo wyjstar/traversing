@@ -306,6 +306,9 @@ def stage_sweep(stage_id, times, player):
         player.finance.coin += stage_config.currency
         # 玩家经验
         player.level.addexp(stage_config.playerExp)
+    # 更新等级相关属性
+    player.line_up_component.update_slot_activation()
+    player.line_up_component.save_data()
 
     # 活跃度
     lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
