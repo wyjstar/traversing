@@ -189,9 +189,7 @@ class PlayerCharacter(Character):
         for t, v in base_config.get('resource_for_InitUser').items():
             finances[t] = v
         heads = Heads_db()
-        heads.now_head = base_config.get('initiaHaHead')
-        heads.SerializeToString()
-
+        heads.now_head = base_config.get('initialHead')
 
         character_info = {'id': pid,
                           'nickname': u'',
@@ -212,7 +210,8 @@ class PlayerCharacter(Character):
                           'finances': finances,
                           'equipment_chips': {},
                           'hero_chips': {},
-                          'heads': heads
+                          'heads': heads.SerializeToString()
+
                           }
         tb_character_info.new(character_info)
 
