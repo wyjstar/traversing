@@ -61,7 +61,6 @@
             "mem": true,
             "redis": true,
             "db": true,
-			"tlog": true,
             "app": "app.gate",
             "log": "app/logs/gate.log",
             "name": "<=server_name=>",
@@ -93,8 +92,7 @@
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
-            "redis": true,
-			"tlog": true
+            "redis": true
             
         },
         "chat": {

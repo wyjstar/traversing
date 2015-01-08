@@ -383,8 +383,8 @@ class CharacterFightCacheComponent(Component):
             hero = self.owner.hero_component.get_hero(red.unit_no)
             ap = combat_power.combat_power_hero_self(self.owner, hero)
             for upAp, prob in hero_item.get('awake').items():
+                logger.info('hero:%s, hit:%s, %s,ap:%s, upAp:%s', hero.hero_no, _rand, prob, ap, upAp)
                 if ap > upAp and _rand < prob:
-                    logger.info('hit:%s, %s,ap:%s, upAp:%s', _rand, prob, ap, upAp)
 
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
 

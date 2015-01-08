@@ -173,6 +173,7 @@ def change_head_847(data, player):
     response = ChangeHeadResponse()
     if request.hero_id in player.heads.head:
         player.heads.now_head = request.hero_id
+        player.save_data()
     else:
         response.res.result = False
         response.res.result_no = 834
@@ -189,4 +190,4 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        # init(player)
+        init(player)
