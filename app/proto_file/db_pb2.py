@@ -13,10 +13,52 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='db.proto',
   package='',
-  serialized_pb='\n\x08\x64\x62.proto')
+  serialized_pb='\n\x08\x64\x62.proto\"*\n\x08Heads_db\x12\x0c\n\x04head\x18\x01 \x03(\x05\x12\x10\n\x08now_head\x18\x02 \x01(\x05')
 
 
 
+
+_HEADS_DB = _descriptor.Descriptor(
+  name='Heads_db',
+  full_name='Heads_db',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='head', full_name='Heads_db.head', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='now_head', full_name='Heads_db.now_head', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=12,
+  serialized_end=54,
+)
+
+DESCRIPTOR.message_types_by_name['Heads_db'] = _HEADS_DB
+
+class Heads_db(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEADS_DB
+
+  # @@protoc_insertion_point(class_scope:Heads_db)
 
 
 # @@protoc_insertion_point(module_scope)
