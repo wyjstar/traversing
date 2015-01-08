@@ -5,27 +5,7 @@ created by server on 14-5-28下午4:41.
 from gfirefly.dbentrust.redis_manager import redis_manager
 from gfirefly.dbentrust.redis_object import RedisObject
 from gfirefly.dbentrust import util
-import time
-
-
-TIMEOUT = 1800
-
-
-def _insert(args):
-    record, pkname, mmname, cls = args
-    pk = record[pkname]
-    mm = cls(mmname + ':%s' % pk, pkname, data=record)
-    mm.insert()
-    return pk
-
-
-class PKValueError(ValueError):
-    def __init__(self, data):
-        ValueError.__init__(self)
-        self.data = data
-
-    def __str__(self):
-        return "new record has no 'PK': %s" % (self.data)
+# import time
 
 
 class MMode(RedisObject):
@@ -39,42 +19,18 @@ class MMode(RedisObject):
         self._pk = pk
         self.data = data
 
-    def update(self, key, values):
-        return RedisObject.update(self, key, values)
-
-    def update_multi(self, mapping):
-        return RedisObject.update_multi(self, mapping)
-
     def get(self, key, default=None):
         value = RedisObject.get(self, key)
         if value is None and default is not None:
             return default
         return value
 
-    def get_multi(self, keys):
-        return RedisObject.get_multi(self, keys)
-
-    def delete(self):
-        return RedisObject.mdelete(self)
-
-    def mdelete(self):
-        RedisObject.mdelete(self)
-
-
-class MFKMode(RedisObject):
-    """外键内存数据模型
-    """
-
-    def __init__(self, name, pklist=[]):
-        RedisObject.__init__(self, name, redis_manager)
-        self.pklist = pklist
-
 
 class MAdmin(RedisObject):
     """MMode对象管理，同一个MAdmin管理同一类的MMode，对应的是数据库中的某一种表
     """
 
-    def __init__(self, name, pk, timeout=TIMEOUT, **kw):
+    def __init__(self, name, pk, **kw):
         super(MAdmin, self).__init__(name, redis_manager)
         self._pk = pk
 
@@ -99,15 +55,7 @@ class MAdmin(RedisObject):
         return info
 
     def getAllPkByFk(self, fk):
-        """根据外键获取主键列表
-        """
-        name = '%s_fk:%s' % (self._name, fk)
-        fkmm = MFKMode(name)
-        pklist = fkmm.pklist
-
-        if pklist is not None:
-            return pklist
-        return None
+        return []
 
     def getObj(self, pk):
         mm = MMode(self._name + ':%s' % pk, self._pk)

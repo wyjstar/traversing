@@ -83,21 +83,30 @@ class RedisObject(object):
 
     def sadd(self, key, member):
         produce_key = self.produceKey(key)
-        return self._client.sadd(produce_key, member)
+        member = cPickle.dumps(member)
+        return self._client.sadd(produce_key, member) == 1
 
     def srem(self, key, member):
         produce_key = self.produceKey(key)
-        return self._client.srem(produce_key, member)
+        member = cPickle.dumps(member)
+        return self._client.srem(produce_key, member) == 1
 
     def scard(self, key):
         produce_key = self.produceKey(key)
-        return self._client.scard(produce_key)
+        return self._client.scard(produce_key) == 1
 
     def smem(self, key):
         produce_key = self.produceKey(key)
-        return self._client.smembers(produce_key)
+        result = []
+        datas = self._client.smembers(produce_key)
+        for data in datas:
+            result.append(cPickle.loads(data))
+        return result
 
     def supdate(self, key, old_member, new_member):
         produce_key = self.produceKey(key)
-        self.srem(produce_key, old_member)
-        self.sadd(produce_key, new_member)
+        if self.srem(produce_key, old_member) != 1:
+            return False
+        if self.sadd(produce_key, new_member) != 1:
+            return False
+        return True

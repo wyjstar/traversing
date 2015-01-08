@@ -5,7 +5,7 @@ created by server on 14-7-7下午5:26.
 from app.game.component.baseInfo.equipment_base_info import EquipmentBaseInfoComponent
 from app.game.component.equipment.equipment_attribute import EquipmentAttributeComponent
 from app.game.component.record.equipment_enhance import EquipmentEnhanceComponent
-from app.game.redis_mode import tb_equipment_info
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
@@ -79,9 +79,12 @@ def rand_pick_attr(attr):
 class Equipment(object):
     """装备 """
 
-    def __init__(self, equipment_id, equipment_name, equipment_no,
+    def __init__(self, character_id, equipment_id, equipment_name, equipment_no,
                  strengthen_lv=1, awakening_lv=1, enhance_record=[],
-                 nobbing_effect={}, is_guard=False, main_attr={}, minor_attr={}):
+                 nobbing_effect={}, is_guard=False, main_attr={},
+                 minor_attr={}):
+        self._old_data = None
+        self._character_id = character_id
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,
                                                      equipment_name,
@@ -101,7 +104,6 @@ class Equipment(object):
         self._attribute.main_attr = mainAttr
         self._attribute.minor_attr = minorAttr
         data = dict(id=self._base_info.id,
-                    character_id=character_id,
                     equipment_info=dict(equipment_no=no,
                                         slv=self._attribute.strengthen_lv,
                                         alv=self._attribute.awakening_lv,
@@ -111,26 +113,27 @@ class Equipment(object):
                     enhance_info=self._record.enhance_record,
                     nobbing_effect=self._attribute.nobbing_effect)
 
-        tb_equipment_info.new(data)
+        char_obj = tb_character_info.getObj(character_id)
+        char_obj.sadd('equipments', data)
+        self._old_data = data
 
     def save_data(self):
-        data = {
-            'equipment_info': {'equipment_no': self._base_info.equipment_no,
-                               'slv': self._attribute.strengthen_lv,
-                               'alv': self._attribute.awakening_lv,
-                               'is_guard': self._attribute.is_guard,
-                               'main_attr': self._attribute.main_attr,
-                               'minor_attr': self._attribute.minor_attr},
-            'enhance_info': self._record.enhance_record,
-            'nobbing_effect': self._attribute.nobbing_effect
-        }
+        data = {'id': self._base_info.id,
+                'equipment_info': {'equipment_no': self._base_info.equipment_no,
+                                   'slv': self._attribute.strengthen_lv,
+                                   'alv': self._attribute.awakening_lv,
+                                   'is_guard': self._attribute.is_guard,
+                                   'main_attr': self._attribute.main_attr,
+                                   'minor_attr': self._attribute.minor_attr},
+                'enhance_info': self._record.enhance_record,
+                'nobbing_effect': self._attribute.nobbing_effect}
 
-        items_data = tb_equipment_info.getObj(self._base_info.id)
-        items_data.update_multi(data)
+        char_obj = tb_character_info.getObj(self._character_id)
+        char_obj.supdate('equipments', self._old_data, data)
 
     def delete(self):
-        items_data = tb_equipment_info.getObj(self._base_info.id)
-        items_data.delete()
+        char_obj = tb_character_info.getObj(self._character_id)
+        char_obj.srem('equipments', self._old_data)
 
     @property
     def base_info(self):
@@ -347,6 +350,5 @@ class Equipment(object):
     def equipment_config_info(self):
         equipment_no = self._base_info.equipment_no
         equ_config_obj = game_configs.equipment_config.get(equipment_no)
-        assert equ_config_obj!=None, "equipment id: %s can not find config info" % equipment_no
+        assert equ_config_obj is not None, "equipment id: %s can not find config info" % equipment_no
         return equ_config_obj
-

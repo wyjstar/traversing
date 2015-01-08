@@ -3,7 +3,7 @@
 created by server on 14-8-14下午3:48.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_mail_info
+from app.game.redis_mode import tb_character_info
 from app.game.core.mail import Mail
 from shared.utils.pyuuid import get_uuid
 from shared.db_opear.configs_data.game_configs import base_config
@@ -21,32 +21,27 @@ class CharacterMailComponent(Component):
 
     def init_data(self):
         pid = self.owner.base_info.id
-        mail_ids = tb_mail_info.getAllPkByFk(pid)
-        for mail_id in mail_ids:
-            mail_obj = tb_mail_info.getObjData(mail_id)
-            mail_data = mail_obj.get('data')
-            mail_id = mail_data.get('id')
-            mail = Mail(mail_id=mail_id)
-            mail.init_data()
+        char_obj = tb_character_info.getObj(pid)
+        mails = char_obj.smem('mails')
+        for mail_data in mails:
+            mail = Mail()
+            mail.init_data(mail_data)
             self._mails[mail.mail_id] = mail
 
     def new_mail_data(self, mail):
         character_id = self.owner.base_info.id
         mail_property = mail.mail_proerty_dict()
 
-        data = {
-            'id': mail.mail_id,
-            'character_id': character_id,
-            'property': mail_property
-        }
-        tb_mail_info.new(data)
+        char_obj = tb_character_info.getObj(character_id)
+        char_obj.sadd('mails', mail_property)
 
     def add_exist_mail(self, mail):
         self._mails[mail.mail_id] = mail
         self.new_mail_data(mail)
         self.save_data()
 
-    def add_mail(self, sender_id, sender_name, title, content, mail_type, send_time, prize, sender_icon=0):
+    def add_mail(self, sender_id, sender_name, title, content, mail_type,
+                 send_time, prize, sender_icon=0):
         """添加邮件"""
         if mail_type == 1:  # 领取体力邮件不能超过15个
             mails = self.get_mails_by_type(1)
@@ -57,8 +52,8 @@ class CharacterMailComponent(Component):
         character_id = self.owner.base_info.id
 
         mail = Mail(mail_id=mail_id, character_id=character_id,
-                    sender_id=sender_id, sender_name=sender_name, sender_icon=sender_icon,
-                    title=title, content=content,
+                    sender_id=sender_id, sender_name=sender_name,
+                    sender_icon=sender_icon, title=title, content=content,
                     mail_type=mail_type, send_time=send_time, prize=prize)
         self._mails[mail_id] = mail
         self.new_mail_data(mail)
@@ -79,9 +74,10 @@ class CharacterMailComponent(Component):
         return self._mails.get(mail_id)
 
     def delete_mail(self, mail_id):
-        if not mail_id in self._mails:
+        if mail_id not in self._mails:
             return
-        tb_mail_info.deleteMode(mail_id)
+        mail = self._mails[mail_id]
+        mail.delete()
         del self._mails[mail_id]
         # self.save_data()
         # tb_character_mails.deleteMode(mail_id)
