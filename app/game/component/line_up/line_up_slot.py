@@ -252,6 +252,8 @@ class LineUpSlotComponent(Component):
         block = attr.get("blockArray")
         ductility = attr.get("ductilityArray")
 
+        logger.debug(self._slot_no)
+        logger.debug(line_up_order)
         position = line_up_order.index(self._slot_no)
         position += 1
         is_boss = False

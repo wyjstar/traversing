@@ -29,6 +29,9 @@ def save_line_up_order(line_up, player):
     line_up_info = []  # {hero_id:pos}
     for line in line_up:
         line_up_info.append(line)
+    if len(line_up_info) != 6:
+        logger.error("line up order error %s !" % len(line_up_info))
+        return
 
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component.save_data()

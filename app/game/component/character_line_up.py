@@ -33,7 +33,7 @@ class CharacterLineUpComponent(Component):
                                  LineUpSlotComponent(self, slot_no)) for
                                 slot_no in range(1, 7)])  # 卡牌位替补
 
-        self._line_up_order = []
+        self._line_up_order = [1,2,3,4,5,6]
         self._unpars = {}  # 无双
 
     def init_data(self):
