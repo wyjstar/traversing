@@ -93,6 +93,9 @@ class PlayerCharacter(Character):
 
         self._travel = CharacterTravelComponent(self)
         self._runt = CharacterRuntComponent(self)
+        self._heads = Heads_db()
+        self._pvp_refresh_time = 0
+        self._pvp_refresh_count = 0
 
     def init_player_info(self):
         """初始化角色信息
