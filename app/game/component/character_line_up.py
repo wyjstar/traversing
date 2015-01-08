@@ -173,30 +173,11 @@ class CharacterLineUpComponent(Component):
     def line_up_order(self):
         """取得队形
         """
-        if not self._line_up_order:  # 默认队形
-            line_up_order = []
-            new_list = sorted(self._line_up_slots.items(), key=lambda x: x[0])
-            for slot_no, slot in new_list:
-                line_up_order.append(slot_no)
-            self._line_up_order = line_up_order
         return self._line_up_order
 
     @line_up_order.setter
     def line_up_order(self, line_up_order):
-        new_line_up_order = self.line_up_order[:]  # copy[1,2,3,4,5,6]
-        # 更新队形
-        for pos, slot_no in enumerate(self._line_up_order):
-            slot = self._line_up_slots.get(slot_no)  # 格子对象
-            hero_no = slot.hero_slot.hero_no  # 英雄编号
-            if not hero_no:
-                continue
-            new_pos = line_up_order.get(hero_no)  # 新位置
-            logger.debug("line up %s , hero_no %s" % (new_pos, hero_no))
-
-            new_line_up_order[pos], new_line_up_order[new_pos - 1] = new_line_up_order[new_pos - 1], new_line_up_order[
-                pos]
-
-        self._line_up_order = new_line_up_order
+        self._line_up_order = line_up_order
 
     @property
     def sub_slots(self):
