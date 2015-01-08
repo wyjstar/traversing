@@ -56,7 +56,7 @@ def enter_scene_remote(dynamic_id, character_id):
     if player.heads.head:
         for head in player.heads.head:
             responsedata.head.append(head)
-        responsedata.now_head = player.heads.now_head
+    responsedata.now_head = player.heads.now_head
 
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.vip_component.vip_level)
