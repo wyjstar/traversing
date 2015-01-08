@@ -162,12 +162,10 @@ class LineUpSlotComponent(Component):
     def slot_attr(self):
         """
         """
-        return self.assemble_hero()
-
-    def get_battle_unit(self, hero_obj, attr):
-        equ_attr = self.equ_attr()
-        attr += equ_attr
-        return self.__assemble_hero(hero_obj, attr)
+        hero = self._hero_slot.hero_obj
+        if not hero:
+            return None
+        return self.assemble_hero(hero)
 
     def hero_attr(self):
         """
@@ -232,48 +230,11 @@ class LineUpSlotComponent(Component):
 
         return suit_attr
 
-    def __assemble_hero(self, hero_obj, attr):
-        """组装英雄战斗单位
-        """
 
-        base_attr = hero_obj.calculate_attr()
-        hero_no = base_attr.hero_no
-        quality = base_attr.quality
-        break_skill_buff_ids = hero_obj.break_skill_buff_ids
-
-        hp = base_attr.hp + base_attr.hp * attr.hp_rate + attr.hp + hero_obj.break_param * hero_obj.hero_info.hp
-        atk = base_attr.atk + base_attr.atk * attr.atk_rate + attr.atk + hero_obj.break_param * hero_obj.hero_info.atk
-        physical_def = base_attr.physical_def + base_attr.physical_def * attr.physical_def_rate + attr.physical_def + hero_obj.break_param * hero_obj.hero_info.physicalDef
-        magic_def = base_attr.magic_def + base_attr.magic_def * attr.magic_def_rate + attr.magic_def + hero_obj.break_param * hero_obj.hero_info.magicDef
-        hit = base_attr.hit + attr.hit
-        dodge = base_attr.dodge + attr.dodge
-        cri = base_attr.cri + attr.cri
-        cri_coeff = base_attr.cri_coeff + attr.cri_coeff
-        cri_ded_coeff = base_attr.cri_ded_coeff + attr.cri_ded_coeff
-        block = base_attr.block + attr.block
-        ductility = base_attr.ductility + attr.ductility
-
-        is_boss = False
-
-        line_up_order = self.owner.line_up_order
-        print line_up_order
-        position = line_up_order.index(self._slot_no)
-        position += 1
-        battlt_unit = do_assemble(hero_no, quality, break_skill_buff_ids,
-                                  hp, atk, physical_def, magic_def, hit,
-                                  dodge, cri, cri_coeff, cri_ded_coeff,
-                                  block, ductility, position, hero_obj.level,
-                                  hero_obj.break_level, is_boss)
-
-        return battlt_unit
-
-    def assemble_hero(self):
+    def assemble_hero(self, hero):
         """docstring for assemble_hero"""
 
         line_up_order = self.owner.line_up_order
-        hero = self._hero_slot.hero_obj
-        if not hero:
-            return None
 
         attr = combat_power.hero_lineup_attr(self.owner.owner, hero, self._slot_no)
         hero_no = hero.hero_no
