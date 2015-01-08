@@ -205,7 +205,7 @@ class LineUpSlotComponent(Component):
 
         return hero_base_attr, attr, hero_obj
 
-    def equ_attr(self):
+    def equ_attr(self, hero_self_attr):
         """
         装备属性：
         """
@@ -217,7 +217,7 @@ class LineUpSlotComponent(Component):
             equ_obj = equ_slot.equipment_obj
             if not equ_obj:
                 continue
-            equipment_base_attr = equ_obj.calculate_attr()  # 装备基础属性，强化等级
+            equipment_base_attr = equ_obj.calculate_attr(hero_self_attr)  # 装备基础属性，强化等级
             attr += equipment_base_attr
         return attr
 

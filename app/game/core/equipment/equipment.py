@@ -217,7 +217,7 @@ class Equipment(object):
             minor_attr_pb.attr_value = attr_value
             minor_attr_pb.attr_increment = attr_increment
 
-    def calculate_attr(self):
+    def calculate_attr(self, hero_self_attr):
         """根据属性和强化等级计算装备属性"""
         # hpEqu             装备加生命值    中间值  1   baseHp+growHp*equLevel
         # atkEqu            装备加攻击力    中间值  1   baseAtk+growAtk*equLevel
@@ -243,10 +243,7 @@ class Equipment(object):
         # 10：加格挡率
         # 11：加韧性
 
-        result = {'hp_rate': 0,
-                  'atk_rate': 0,
-                  'physical_def_rate': 0,
-                  'magic_def_rate': 0}
+        result = {}
         varNames = {1: 'baseHp',
                     2: 'baseAtk',
                     3: 'basePdef',
@@ -262,10 +259,10 @@ class Equipment(object):
                      2: 'growAtk',
                      3: 'growPdef',
                      4: 'growMdef'}
-        varNames3 = {1: 'hp_rate',
-                     2: 'atk_rate',
-                     3: 'physical_def_rate',
-                     4: 'magic_def_rate'}
+        varNames3 = {1: 'hpHero',
+                     2: 'atkHero',
+                     3: 'physicalDefHero',
+                     4: 'magicDefHero'}
 
         allVars = dict(baseHp=0,
                        baseAtk=0,
@@ -292,8 +289,8 @@ class Equipment(object):
                 if k in varNames2:
                     allVars[varNames2[k]] += ai
             elif avt == 2:
-                if varNames3[k] in result:
-                    result[varNames3[k]] += av
+                if k not in varNames3:
+                    allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
                 else:
                     raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
         for k, v in self._attribute.minor_attr.items():
@@ -304,8 +301,8 @@ class Equipment(object):
                 if k in varNames2:
                     allVars[varNames2[k]] += ai
             elif avt == 2:
-                if varNames3[k] in result:
-                    result[varNames3[k]] += av
+                if k not in varNames3:
+                    allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
                 else:
                     raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
 
