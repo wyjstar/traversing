@@ -44,8 +44,8 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    nicknames = tb_character_info.smem('nickname')
-    if nicknames and nickname in nicknames:
+    isexist = tb_character_info.sismem('nickname', nickname)
+    if isexist:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()

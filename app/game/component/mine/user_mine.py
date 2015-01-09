@@ -703,8 +703,8 @@ class UserMine(Component):
                         day_before=self._tby,
                         lively=self._lively,
                         guard=self._guard)
-            tb_character_mine.new(data)
-            
+            mine_data.new(data)
+
     def save_data(self):
         if self._update != True:
             return

@@ -29,7 +29,7 @@ class UserStone(Component):
         else:
             data = dict(id=self.owner.base_info.id,
                         stones={'1':cPickle.dumps(self._stones)})
-            tb_character_stone.new(data)
+            stone_data.new(data)
             
     def save_data(self):
         mine_obj = tb_character_stone.getObj(self.owner.base_info.id)

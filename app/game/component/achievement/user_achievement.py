@@ -251,12 +251,11 @@ class UserAchievement(Component):
             self._event_task_map = live_data.get('event_map')
             self._last_day = live_data.get('last_day', '')
         else:
-            data = dict(id=self.owner.base_info.id,
-                        tasks={'1':cPickle.dumps(self._tasks)},
+            data = dict(tasks={'1':cPickle.dumps(self._tasks)},
                         lively=self._lively,
                         event_map=self._event_task_map,
                         last_day=self._last_day)
-            tb_character_tasks.new(data)
+            live_data.new(data)
 
     def save_data(self):
         lively_obj = tb_character_tasks.getObj(self.owner.base_info.id)

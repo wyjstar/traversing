@@ -53,16 +53,15 @@ class CharacterStageComponent(Component):
             first_special_stage_ids = game_configs.special_stage_config.get('first_stage_id')
             for first_special_stage_id in first_special_stage_ids:
                 self._stage_info[first_special_stage_id] = Stage(first_special_stage_id)
-            tb_character_stages.new({'id': self.owner.base_info.id,
-                                     'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in
-                                                         self._stage_info.iteritems()]),
-                                     'award_info': dict(
-                                         [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
-                                          self._award_info.iteritems()]),
-                                     'elite_stage': [0, int(time.time())],
-                                     'act_stage': [0, int(time.time())],
-                                     'stage_up_time': int(time.time())
-                                     })
+            stage_data.new({'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in
+                                                self._stage_info.iteritems()]),
+                            'award_info': dict(
+                                [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
+                                 self._award_info.iteritems()]),
+                            'elite_stage': [0, int(time.time())],
+                            'act_stage': [0, int(time.time())],
+                            'stage_up_time': int(time.time())
+                            })
 
     def get_stage(self, stage_id):
         """取得关卡信息

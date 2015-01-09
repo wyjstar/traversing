@@ -29,8 +29,7 @@ class Guild(object):
         self._g_id = uuid
         self._p_list = {1: [p_id]}
         # fund 资金
-        data = {'id': self._g_id,
-                'info': {'name': self._name,
+        data = {'info': {'name': self._name,
                          'p_num': self._p_num,
                          'level': self._level,
                          'exp': self._exp,
@@ -39,7 +38,8 @@ class Guild(object):
                          'record': self._record,
                          'p_list': self._p_list,
                          'apply': self._apply}}
-        tb_guild_info.new(data)
+        guild_obj = tb_guild_info.getObj(self._g_id)
+        guild_obj.new(data)
 
     def save_data(self):
         data = {

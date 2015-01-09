@@ -59,12 +59,11 @@ class CharacterLineUpComponent(Component):
             __sub_slots = dict([(slot_no,
                                  LineUpSlotComponent(self, slot_no).dumps()) for
                                 slot_no in self._sub_slots.keys()])
-            data = dict(id=self.character_id,
-                        line_up_slots=__line_up_slots,
+            data = dict(line_up_slots=__line_up_slots,
                         sub_slots=__sub_slots,
                         line_up_order=self._line_up_order,
                         unpars=self._unpars)
-            tb_character_line_up.new(data)
+            line_up_data.new(data)
 
         self.update_slot_activation()
 

@@ -3,85 +3,64 @@
 created by server on 14-5-28下午4:41.
 """
 from gfirefly.dbentrust.redis_manager import redis_manager
-from gfirefly.dbentrust import util
 import cPickle
-# import time
 
 
 class RedisObject(object):
-    """redis 关系对象,可以将一个对象的属性值记录到redis中"""
-
-    def __init__(self, name, mc):
-        super(RedisObject, self).__init__()
-        self._client = mc.get_connection(name)
+    def __init__(self, name):
         self._name = name
+        self._client = redis_manager.get_connection(name)
+
+    def getObj(self, pk):
+        mm = RedisObject(self._name + ':%s' % pk)
+        return mm
+
+    def new(self, data):
+        newdict = {}
+        for k, v in data.items():
+            newdict[k] = cPickle.dumps(v)
+        self._client.hmset(self._name, newdict)
 
     def produceKey(self, keyname):
-        """重新生成key
-        """
         if isinstance(keyname, basestring):
             return ''.join([self._name, ':', keyname])
         else:
             raise "type error"
 
-    def get(self, key):
-        """获取对象值
-        """
-        produce_key = self.produceKey(key)
-        value = self._client.get(produce_key)
+    def exists(self):
+        return self._client.exists(self._name) == 1
 
-        if value:
-            value = cPickle.loads(value)
-        return value
+    def hgetall(self):
+        newdict = self._client.hgetall(self._name)
+        result = {}
+        for k, v in newdict.items():
+            result[k] = cPickle.loads(v)
+        return result
 
-    def get_multi(self, keys):
-        """一次获取多个key的值
-        @param keys: list(str) key的列表
-        """
-        keynamelist = [self.produceKey(keyname) for keyname in keys]
-        olddict = self._client.mget(keynamelist)
-        newdict = dict(zip([keyname.split(':')[-1] for keyname in keynamelist], olddict))
+    def get(self, field):
+        value = self._client.hget(self._name, field)
+        return cPickle.loads(value) if value else value
+
+    def get_multi(self, fiedls):
+        olddict = self._client.hmget(self._name, fiedls)
+        newdict = dict(zip(fiedls, olddict))
         result = {}
         for k, v in newdict.items():
             result[k] = cPickle.loads(v) if v else v
-
         return result
 
-    def update(self, key, values):
-        """修改对象的值
-        """
-        produce_key = self.produceKey(key)
-
-        return self._client.set(produce_key, cPickle.dumps(values))
+    def update(self, field, values):
+        return self._client.hset(self._name, field, cPickle.dumps(values))
 
     def update_multi(self, mapping):
-        """同时修改多个key值
-        """
-        newmapping = dict(zip([self.produceKey(keyname) for keyname in mapping.keys()],
-                              mapping.values()))
-        for k, v in newmapping.items():
-            self._client.set(k, cPickle.dumps(v))
-
+        newdict = {}
+        for k, v in mapping.items():
+            newdict[k] = cPickle.dumps(v)
+        self._client.hmset(self._name, newdict)
         return True
 
     def mdelete(self):
-        """删除redis中的数据 """
-        nowdict = dict(self.__dict__)
-        del nowdict['_client']
-        keys = nowdict.keys()
-        keys = [self.produceKey(key) for key in keys]
-        for key in keys:
-            self._client.delete(key)
-
-    def insert(self):
-        """插入对象记录 """
-        nowdict = dict(name=self._name)
-        if hasattr(self, 'data'):
-            nowdict.update(self.data)
-        newmapping = dict(zip([self.produceKey(keyname) for keyname in nowdict.keys()],
-                              nowdict.values()))
-        for k, v in newmapping.items():
-            self._client.set(k, cPickle.dumps(v))
+        return self._client.hdel(self._name)
 
     def sadd(self, key, member):
         produce_key = self.produceKey(key)
@@ -105,6 +84,11 @@ class RedisObject(object):
             result.append(cPickle.loads(data))
         return result
 
+    def sismem(self, key, member):
+        produce_key = self.produceKey(key)
+        result = self._client.sismember(produce_key, cPickle.dumps(member))
+        return result == 1
+
     def supdate(self, key, old_member, new_member):
         produce_key = self.produceKey(key)
         if self.srem(produce_key, old_member) != 1:
@@ -112,34 +96,3 @@ class RedisObject(object):
         if self.sadd(produce_key, new_member) != 1:
             return False
         return True
-
-
-class MAdmin(RedisObject):
-    def __init__(self, name, pk, **kw):
-        super(MAdmin, self).__init__(name, redis_manager)
-        self._pk = pk
-
-    def getObj(self, pk):
-        mm = MAdmin(self._name + ':%s' % pk, self._pk)
-        return mm
-
-    def getObjData(self, pk):
-        # print pk,"pk++++++++++++++"
-        mm = MAdmin(self._name + ':%s' % pk, self._pk)
-        return mm
-
-    def deleteMode(self, pk):
-        """根据主键删除内存中的某条记录信息.\n
-        >>> m = madmin.deleteMode(1)
-        """
-        mm = self.getObj(pk)
-        if mm:
-            mm.delete()
-        return True
-
-    def new(self, data):
-        """创建一个新的对象 """
-        pk = data.get(self._pk)
-        mm = MAdmin(self._name + ':%s' % pk, self._pk, data=data)
-        mm.insert()
-        return mm

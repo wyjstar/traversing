@@ -68,7 +68,7 @@ def create_guild_801(data, player):
 
     # 判断有没有重名
     guild_name_data = tb_guild_name.getObj(g_name)
-    if guild_name_data:
+    if guild_name_data.exists():
         response.result = False
         response.message = "此名已存在"
         return response.SerializeToString()
@@ -79,9 +79,8 @@ def create_guild_801(data, player):
 
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
 
-    data = {'g_name': g_name,
-            'g_id': guild_obj.g_id}
-    tb_guild_name.new(data)
+    data = {'g_id': guild_obj.g_id}
+    guild_name_data.new(data)
 
     player.guild.g_id = guild_obj.g_id
     player.guild.worship = 0
@@ -173,7 +172,7 @@ def exit_guild_803(data, player):
         # 解散公会
         # 删除公会名字
         guild_name_data = tb_guild_name.getObj(guild_obj.name)
-        if guild_name_data:
+        if guild_name_data.exists():
             # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
             # guild_name_obj.delete()
             tb_guild_name.deleteMode(guild_obj.name)

@@ -152,8 +152,8 @@ class PlayerCharacter(Character):
         """
         pid = self.base_info.id
         character_obj = tb_character_info.getObj(pid)
-        character_info = character_obj.get_multi(character_info_columns)
-        # print character_info
+        character_info = character_obj.hgetall()
+        print character_info
 
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
@@ -226,13 +226,9 @@ class PlayerCharacter(Character):
     def is_new_character(self):
         """is new character or not"""
         pid = self.base_info.id
-
         character_info = tb_character_info.getObj(pid)
-        name = character_info.get('name')
-        # print 'character info:', character_info
-        if name:
-            return False
-        return True
+        print 'exist:', not character_info.exists()
+        return not character_info.exists()
 
     def create_character_data(self):
         """docstring for create_character_data"""
@@ -262,7 +258,8 @@ class PlayerCharacter(Character):
                           'equipment_chips': {},
                           'hero_chips': {}
                           }
-        tb_character_info.new(character_info)
+        char_obj = tb_character_info.getObj(pid)
+        char_obj.new(character_info)
 
     def check_time(self):
         tm = time.localtime(self.pvp_refresh_time)
