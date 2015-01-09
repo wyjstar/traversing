@@ -11,18 +11,23 @@ def init_hero(player):
     # ==========================================
 
     runts = {}
-    d = random.sample(range(1, 11), 2)
+    d = random.sample(range(1, 11), 10)
 
-    runt_nos = stone_config.get('stones').keys()
+    #runt_nos = stone_config.get('stones').keys()
+    runt_nos = [150101, 150201, 150301, 150401]
     for a in xrange(1, 5):
         type_info = {}
         # for b in xrange(1, 11):
         for b in d:
-            c = random.randint(0, len(runt_nos)-1)
-            runt_id = runt_nos[c]
-            main_attr, minor_attr = player.runt.get_attr(runt_id)
-            runt_info = [get_uuid(), runt_id, main_attr, minor_attr]
+            temp = None
+            runt_no = None
+            while a != temp:
+                c = random.randint(0, len(runt_nos)-1)
+                runt_no = runt_nos[c]
+                temp = stone_config.get("stones").get(runt_no).get("type")
 
+            main_attr, minor_attr = player.runt.get_attr(runt_no)
+            runt_info = [get_uuid(), runt_no, main_attr, minor_attr]
             type_info[b] = runt_info
         runts[a] = type_info
 
@@ -35,10 +40,15 @@ def init_hero(player):
             hero1.break_level = 0
             hero1.exp = 0
             hero1.save_data()
+    heros = [10045, 10046, 10048, 10053, 10056, 10061]
+    for no in heros:
+        init_single_hero(player, runts, no)
 
-    hero1 = player.hero_component.get_hero(10045)
+
+def init_single_hero(player, runts, hero_no):
+    hero1 = player.hero_component.get_hero(hero_no)
     hero1.break_level = 7
-    hero1.level = 35
+    hero1.level = 200
     hero1.runt = runts
-    hero1.refine = 1001020
+    hero1.refine = 4008016
     hero1.save_data()
