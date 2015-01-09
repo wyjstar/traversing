@@ -29,7 +29,6 @@ class CharacterGuildComponent(Component):
         """
         初始化公会组件
         """
-        print character_info
         if character_info.get('guild_id'):
             self._g_id = character_info.get("guild_id")
             self._position = character_info.get("position")

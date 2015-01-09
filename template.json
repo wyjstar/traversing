@@ -92,7 +92,20 @@
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
             "redis": true
-            
+        },
+        "game2": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "mem": true,
+            "app": "app.game",
+            "reload":"app.game.doreload",
+            "log": "app/logs/game1.log",
+            "redis": true
         },
         "chat": {
             "name": "chat",
