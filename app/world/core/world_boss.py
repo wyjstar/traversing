@@ -12,6 +12,7 @@ from app.world.core.base_boss import BaseBoss
 from shared.db_opear.configs_data.game_configs import base_config
 from gtwisted.core import reactor
 import cPickle
+import random
 
 
 tb_mineboss = RedisObject('tb_character_info')
@@ -73,11 +74,29 @@ class WorldBoss(BaseBoss):
         self._rank_instance.clear_rank()  # 重置排行
         self._last_shot_item = {}  # 重置最后击杀
 
+    def update_lucky_hero(self, base_config_info):
+        # 初始化幸运武将
+        lucky_hero_1_num = base_config_info.get("lucky_hero_1_num")
+        lucky_hero_2_num = base_config_info.get("lucky_hero_2_num")
+        lucky_hero_3_num = base_config_info.get("lucky_hero_3_num")
+        all_high_heros, all_middle_heros, all_low_heros = self.get_hero_category()
+        self._lucky_high_heros =  random.sample(all_high_heros, lucky_hero_1_num)
+
+        for k in self._lucky_high_heros: # 去重
+            all_middle_heros.remove(k)
+        self._lucky_middle_heros =  random.sample(all_middle_heros, lucky_hero_2_num)
+
+        for k in self._lucky_middle_heros: # 去重
+            all_low_heros.remove(k)
+        self._lucky_low_heros =  random.sample(all_low_heros, lucky_hero_3_num)
+
+
     def update_boss(self):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        self.set_next_stage(self._hp <= 0)
+        self.set_next_stage(self._hp<=0)
+        self.update_lucky_hero(base_config.get("world_boss"))
         self.update_base_boss(base_config.get("world_boss"))
 
         self.save_data()

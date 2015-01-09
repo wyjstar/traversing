@@ -9,7 +9,6 @@ from app.game.core.hero import Hero
 from app.battle.battle_unit import do_assemble
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
-from shared.db_opear.configs_data.common_item import CommonItem
 import copy
 from app.game.component.fight.hero_attr_cal import combat_power
 
@@ -354,14 +353,7 @@ class CharacterFightCacheComponent(Component):
             break_hero_obj.level = level
             break_hero_obj.break_level = red_unit.break_level
 
-            attr = CommonItem()
-            hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
-            attr += hero_break_attr
-            slot_obj = self.owner.line_up_component.get_slot_by_hero(red_unit.unit_no)  # 格子对象
-            equ_attr = slot_obj.equ_attr()
-            attr += equ_attr
-
-            unit = break_line_up_slot.get_battle_unit(break_hero_obj, attr)
+            unit = break_line_up_slot.assemble_hero(break_hero_obj)
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
             unit.is_break = True
@@ -369,7 +361,6 @@ class CharacterFightCacheComponent(Component):
             for key, red in red_units.items():
                 if red.unit_no == red_unit.unit_no:
                     red_units[key] = unit
-            # red_units[red_unit.slot_no] = unit
 
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
@@ -395,15 +386,7 @@ class CharacterFightCacheComponent(Component):
                     break_hero_obj.level = level
                     break_hero_obj.break_level = red.break_level
 
-                    attr = CommonItem()
-                    hero_break_attr = break_hero_obj.break_attr()  # 英雄突破技能属性
-                    attr += hero_break_attr
-                    slot_obj = self.owner.line_up_component.get_slot_by_hero(hero_item.get('id'))  # 格子对象
-                    equ_attr = slot_obj.equ_attr()
-                    attr += equ_attr
-
-                    unit = break_line_up_slot.get_battle_unit(break_hero_obj,
-                                                              attr)
+                    unit = break_line_up_slot.assemble_hero(break_hero_obj)
                     unit.is_awake = True
                     unit.origin_no = red.unit_no
                     red_units[no] = unit

@@ -56,11 +56,6 @@ message StageAward{
 	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
 }
 
-message LineUp{
-	required int32 pos = 1;  // 位置
-	optional int32 hero_id = 2;  //英雄编号
-}
-
 message Unparalleled{
 	required int32 id = 1; //无双ID
 	repeated int32 unpar = 2; // 无双技能

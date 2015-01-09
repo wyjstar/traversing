@@ -184,7 +184,7 @@ message MineEquipmentSlot
 message MineBattleRequest
 {
 	required int32 pos = 1;          // 矿位置
-	repeated LineUp lineup = 2;      // 队形
+	repeated int32 lineup = 2;      // 队形
 	optional int32 unparalleled = 3; // 无双技能ID
 	optional int32 fid = 4;          // 好友ID
 }

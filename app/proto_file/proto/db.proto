@@ -1,0 +1,4 @@
+message Heads_db{
+	repeated int32 head = 1;
+	optional int32 now_head = 2;
+}

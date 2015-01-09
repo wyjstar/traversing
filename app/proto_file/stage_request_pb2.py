@@ -14,7 +14,7 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_request.proto',
   package='',
-  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"u\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x17\n\x06lineup\x18\x03 \x03(\x0b\x32\x07.LineUp\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"N\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06result\x18\x03 \x02(\x05\"4\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x10StarAwardRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\x12\n\naward_type\x18\x02 \x02(\x05')
+  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"l\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"N\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06result\x18\x03 \x02(\x05\"4\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x10StarAwardRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\x12\n\naward_type\x18\x02 \x02(\x05')
 
 
 
@@ -98,7 +98,7 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='lineup', full_name='StageStartRequest.lineup', index=2,
-      number=3, type=11, cpp_type=10, label=3,
+      number=3, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -127,7 +127,7 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=116,
-  serialized_end=233,
+  serialized_end=224,
 )
 
 
@@ -168,8 +168,8 @@ _STAGESETTLEMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=235,
-  serialized_end=313,
+  serialized_start=226,
+  serialized_end=304,
 )
 
 
@@ -203,8 +203,8 @@ _STAGESWEEPREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=315,
-  serialized_end=367,
+  serialized_start=306,
+  serialized_end=358,
 )
 
 
@@ -231,8 +231,8 @@ _RESETSTAGEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=369,
-  serialized_end=406,
+  serialized_start=360,
+  serialized_end=397,
 )
 
 
@@ -266,11 +266,10 @@ _STARAWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=408,
-  serialized_end=466,
+  serialized_start=399,
+  serialized_end=457,
 )
 
-_STAGESTARTREQUEST.fields_by_name['lineup'].message_type = stage_pb2._LINEUP
 DESCRIPTOR.message_types_by_name['StageInfoRequest'] = _STAGEINFOREQUEST
 DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
 DESCRIPTOR.message_types_by_name['StageStartRequest'] = _STAGESTARTREQUEST

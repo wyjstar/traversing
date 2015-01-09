@@ -182,7 +182,7 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
     # 自身属性
     self_attr = hero_self_attr(player, hero)
     # 装备
-    equ_attr = line_up_slot.equ_attr()
+    equ_attr = line_up_slot.equ_attr(self_attr)
     # 套装
     set_equ_attr = skill_attr(hero, hero_info, line_up_slot.set_equ_skill_ids)
     # 羁绊

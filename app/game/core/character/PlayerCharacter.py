@@ -40,6 +40,7 @@ from app.game.component.mine.user_mine import UserMine
 from app.game.component.stone.user_stone import UserStone
 from app.game.component.character_runt import CharacterRuntComponent
 from shared.db_opear.configs_data.game_configs import base_config
+from app.proto_file.db_pb2 import Heads_db
 
 
 class PlayerCharacter(Character):
@@ -92,6 +93,9 @@ class PlayerCharacter(Character):
 
         self._travel = CharacterTravelComponent(self)
         self._runt = CharacterRuntComponent(self)
+        self._heads = Heads_db()
+        self._pvp_refresh_time = 0
+        self._pvp_refresh_count = 0
 
     def init_player_info(self):
         """初始化角色信息
@@ -116,10 +120,14 @@ class PlayerCharacter(Character):
         pvp_refresh_time = character_info['pvp_refresh_time']
         pvp_refresh_count = character_info['pvp_refresh_count']
         vip_level = character_info['vip_level']
+        heads = character_info['heads']
 
         # ------------初始化角色基础信息组件---------
         self.base_info.base_name = nickname  # 角色昵称
         self._newbee_guide_id = character_info['newbee_guide_id']
+
+        self._heads = Heads_db()
+        self._heads.ParseFromString(heads)
 
         # ------------初始化角色货币信息------------
         self._finance.init_data(character_info)
@@ -183,6 +191,8 @@ class PlayerCharacter(Character):
         finances = [0] * const.RESOURCE_MAX
         for t, v in base_config.get('resource_for_InitUser').items():
             finances[t] = v
+        heads = Heads_db()
+        heads.now_head = base_config.get('initialHead')
 
         character_info = {'id': pid,
                           'nickname': u'',
@@ -202,7 +212,8 @@ class PlayerCharacter(Character):
                           'last_login_time': int(time.time()),
                           'finances': finances,
                           'equipment_chips': {},
-                          'hero_chips': {}
+                          'hero_chips': {},
+                          'heads': heads.SerializeToString()
                           }
         char_obj = tb_character_info.getObj(pid)
         char_obj.new(character_info)
@@ -417,14 +428,24 @@ class PlayerCharacter(Character):
     def runt(self):
         return self._runt
 
+    @property
+    def heads(self):
+        return self._heads
+
+    @heads.setter
+    def heads(self, value):
+        self._heads = value
+
     def save_data(self):
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
+
         data = dict(level=self._level.level,
                     exp=self.level.exp,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
-                    vip_level=self._vip.vip_level)
+                    vip_level=self._vip.vip_level,
+                    heads=self._heads.SerializeToString())
         character_info.hmset(data)
