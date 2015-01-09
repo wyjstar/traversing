@@ -77,7 +77,7 @@ def fight_start(stage, fid, player):
     red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     # 好友
-    lord_data = tb_character_info.getObjData(fid)
+    lord_data = tb_character_info.getObj(fid)
     f_unit = None
     if lord_data:
         info = lord_data.get('lord_attr_info').get('info')

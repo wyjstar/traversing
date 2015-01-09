@@ -24,7 +24,7 @@ class EquipmentTest(unittest.TestCase):
         equipment.save_data()
 
 
-        data = tb_equipment_info.getObjData(equipment.base_info.id)
+        data = tb_equipment_info.getObj(equipment.base_info.id)
 
         equipment = self.player.equipment_component.get_equipment(equipment.base_info.id)
         name = equipment.base_info.base_name
@@ -36,7 +36,7 @@ class EquipmentTest(unittest.TestCase):
         self.assertEqual(slv, 3, "%d_%d" % (slv, 3))
         self.assertEqual(alv, 4, "%d_%d" % (alv, 4))
 
-        data = tb_equipment_info.getObjData(equipment.base_info.id).get('equipment_info')
+        data = tb_equipment_info.getObj(equipment.base_info.id).get('equipment_info')
         print 'equipment_no', data.get('equipment_no')
         self.assertEqual(data.get('equipment_no'), 110003, "%d_%d" % (data.get('equipment_no'), 110003))
         self.assertEqual(data.get('slv'), 3, "%d_%d" % (data.get('slv'), 3))

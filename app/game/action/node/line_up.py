@@ -45,7 +45,7 @@ def get_target_line_up_info_706(pro_data, player):
             hero.init_data(data)
             heros_obj[hero.hero_no] = hero
 
-        line_up_data = tb_character_line_up.getObjData(target_id)
+        line_up_data = tb_character_line_up.getObj(target_id)
 
         if line_up_data:
             # 阵容位置信息

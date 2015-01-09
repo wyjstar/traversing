@@ -17,7 +17,7 @@ class UserStone(Component):
         self._stones = {}
         
     def init_data(self):
-        stone_data = tb_character_stone.getObjData(self.owner.base_info.id)
+        stone_data = tb_character_stone.getObj(self.owner.base_info.id)
         mine = stone_data.get('stones')
         if mine:
             all_stones = mine.get('1')

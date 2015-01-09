@@ -680,7 +680,7 @@ class UserMine(Component):
         self._guard = {} #玩家驻守的英雄与装备，失效的时候，退回
         
     def init_data(self):
-        mine_data = tb_character_mine.getObjData(self.owner.base_info.id)
+        mine_data = tb_character_mine.getObj(self.owner.base_info.id)
         mine = mine_data.get('mine')
         if mine:
             all_mine = mine.get('1')

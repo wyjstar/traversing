@@ -18,7 +18,7 @@ class CharacterItemPackageComponent(Component):
     def init_data(self):
         """初始化道具信息
         """
-        item_package_data = tb_character_item_package.getObjData(self.owner.base_info.id)
+        item_package_data = tb_character_item_package.getObj(self.owner.base_info.id)
         if item_package_data:
             items_data = item_package_data.get('items')
             if items_data:

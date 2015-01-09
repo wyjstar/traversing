@@ -23,7 +23,7 @@ class FriendTest(unittest.TestCase):
 
     def print_friend_data(self, player_id):
         for i in player_id:
-            friend_data = tb_character_friend.getObjData(i)
+            friend_data = tb_character_friend.getObj(i)
             print '>>>>>>player_id', i, friend_data
 
     def test_friend_function(self):

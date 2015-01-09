@@ -37,7 +37,7 @@ class CharacterLineUpComponent(Component):
         self._unpars = {}  # 无双
 
     def init_data(self):
-        line_up_data = tb_character_line_up.getObjData(self.character_id)
+        line_up_data = tb_character_line_up.getObj(self.character_id)
 
         line_up_slots = line_up_data.get('line_up_slots')
         if line_up_slots:

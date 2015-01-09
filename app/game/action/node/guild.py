@@ -67,7 +67,7 @@ def create_guild_801(data, player):
         return response.SerializeToString()
 
     # 判断有没有重名
-    guild_name_data = tb_guild_name.getObjData(g_name)
+    guild_name_data = tb_guild_name.getObj(g_name)
     if guild_name_data:
         response.result = False
         response.message = "此名已存在"
@@ -125,7 +125,7 @@ def join_guild_802(data, player):
         response.message = "您已加入公会"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObjData(g_id)
+    data1 = tb_guild_info.getObj(g_id)
 
     if not data1:
         response.result = False
@@ -154,7 +154,7 @@ def exit_guild_803(data, player):
     dynamicid = player.dynamic_id
     response = GuildCommonResponse()
     m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
 
     if m_g_id == 'no':
         response.result = False
@@ -172,7 +172,7 @@ def exit_guild_803(data, player):
 
         # 解散公会
         # 删除公会名字
-        guild_name_data = tb_guild_name.getObjData(guild_obj.name)
+        guild_name_data = tb_guild_name.getObj(guild_obj.name)
         if guild_name_data:
             # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
             # guild_name_obj.delete()
@@ -202,7 +202,7 @@ def exit_guild_803(data, player):
                 p_list1 = p_list.get(num)
                 if p_list1:
                     for p_id1 in p_list1:
-                        guildinfo = tb_character_info.getObjData(p_id1)
+                        guildinfo = tb_character_info.getObj(p_id1)
                         if guildinfo:
                             guildinfolist.update({guildinfo.get('id'): guildinfolist})
             new_list = sorted(guildinfolist.items(), key=lambda x: (-1 * x[1]['position'], x[1]['contribution'],
@@ -210,7 +210,7 @@ def exit_guild_803(data, player):
             tihuan_id = new_list[0][0]
             tihuan_position = new_list[0][1].get('position')
 
-            info = tb_character_info.getObjData(tihuan_id)
+            info = tb_character_info.getObj(tihuan_id)
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "此玩家不在公会"
@@ -281,7 +281,7 @@ def editor_call_804(data, player):
         response.result = True
         response.message = "公告内容超过字数限制"
         return response.SerializeToString()
-    data1 = tb_guild_info.getObjData(player.guild.g_id)
+    data1 = tb_guild_info.getObj(player.guild.g_id)
     if not data1:
         response.result = False
         response.message = "公会ID错误"
@@ -321,7 +321,7 @@ def deal_apply_805(data, player):
 
     res_type = args.res_type
     m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     if not data1 or m_g_id == 'no':
         response.result = False
         response.message = "公会ID错误"
@@ -338,7 +338,7 @@ def deal_apply_805(data, player):
             return response.SerializeToString()
 
         for p_id in p_ids:
-            info = tb_character_info.getObjData(p_id)
+            info = tb_character_info.getObj(p_id)
             if info.get("g_id") != 'no':
                 if guild_obj.apply.count(p_id) == 1:
                     guild_obj.apply.remove(p_id)
@@ -409,7 +409,7 @@ def change_president_806(data, player):
         response.message = "您不是会长"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
@@ -424,7 +424,7 @@ def change_president_806(data, player):
             guild_obj.p_list = p_list
             guild_obj.save_data()
 
-            info = tb_character_info.getObjData(p_p_id)
+            info = tb_character_info.getObj(p_p_id)
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "此玩家不在公会"
@@ -473,7 +473,7 @@ def kick_807(data, player):
         response.result = False
         response.message = "您不是会长"
         return response.SerializeToString()
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     guild_obj = Guild()
     guild_obj.init_data(data1)
     p_list = guild_obj.p_list
@@ -486,7 +486,7 @@ def kick_807(data, player):
                 guild_obj.p_list = p_list
                 guild_obj.p_num -= 1
                 guild_obj.save_data()
-                info = tb_character_info.getObjData(p_id)
+                info = tb_character_info.getObj(p_id)
                 if info.get("g_id") == 'no':
                     response.result = False
                     response.message = "此玩家不在公会"
@@ -529,7 +529,7 @@ def promotion_808(data, player):
         response.message = "您不能再晋升了"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
@@ -557,10 +557,10 @@ def promotion_808(data, player):
         if flag == 1:
             guildinfolist = {}
             for p_id1 in t_p_list:
-                guildinfo = tb_character_info.getObjData(p_id1)
+                guildinfo = tb_character_info.getObj(p_id1)
                 if guildinfo:
                     guildinfolist.update({guildinfo.get('id'): guildinfo})
-            m_guildinfo = tb_character_info.getObjData(m_p_id)
+            m_guildinfo = tb_character_info.getObj(m_p_id)
             guildinfolist.update({m_guildinfo.get('id'): m_guildinfo})
             new_list = sorted(guildinfolist.items(), key=lambda x: (x[1]['contribution']), reverse=True)
             if new_list[-1][0] == m_p_id or new_list[-1][1].get('contribution') == new_list[-2][1].get('contribution'):
@@ -569,7 +569,7 @@ def promotion_808(data, player):
                 return response.SerializeToString()
 
             tihuan_id = new_list[-1][0]
-            info = tb_character_info.getObjData(tihuan_id)
+            info = tb_character_info.getObj(tihuan_id)
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "未知错误"
@@ -631,7 +631,7 @@ def worship_809(data, player):
 
     m_g_id = player.guild.g_id
 
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     if not data1 or m_g_id == 'no':
         response.result = False
         response.message = "公会ID错误"
@@ -703,7 +703,7 @@ def get_guild_rank_810(data, player):
     ranks = remote_gate.get_guild_rank_remote()
     rank_num = 1
     for uuid, _rank in ranks.items():
-        data1 = tb_guild_info.getObjData(uuid)
+        data1 = tb_guild_info.getObj(uuid)
         if data1:
             guild_obj = Guild()
             guild_obj.init_data(data1)
@@ -715,7 +715,7 @@ def get_guild_rank_810(data, player):
             guild_rank.level = guild_obj.level
 
             president_id = guild_obj.p_list.get(1)[0]
-            player_data = tb_character_info.getObjData(president_id)
+            player_data = tb_character_info.getObj(president_id)
             if player_data:
                 if player_data.get('nickname'):
                     guild_rank.president = player_data.get('nickname')
@@ -743,7 +743,7 @@ def get_role_list_811(data, player):
         response.message = "没有公会"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     if not data1:
         response.result = False
         response.message = "公会ID错误"
@@ -756,7 +756,7 @@ def get_role_list_811(data, player):
     if guild_p_list.values():
         for p_list in guild_p_list.values():
             for role_id in p_list:
-                character_info = tb_character_info.getObjData(role_id)
+                character_info = tb_character_info.getObj(role_id)
                 if character_info:
                     role_info = response.role_info.add()
                     role_info.p_id = role_id
@@ -787,7 +787,7 @@ def get_guild_info_812(data, player):
         response.message = "没有公会"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     if not data1:
         response.result = False
         response.message = "公会ID错误"
@@ -820,7 +820,7 @@ def get_apply_list_813(data, player):
         response.message = "没有公会"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObjData(m_g_id)
+    data1 = tb_guild_info.getObj(m_g_id)
     if not data1:
         response.result = False
         response.message = "公会ID错误"
@@ -833,7 +833,7 @@ def get_apply_list_813(data, player):
 
     for role_id in guild_apply:
         # TODO 获取玩家 战斗力
-        character_info = tb_character_info.getObjData(role_id)
+        character_info = tb_character_info.getObj(role_id)
         if character_info:
             role_info = response.role_info.add()
             role_info.p_id = role_id

@@ -74,11 +74,11 @@ tb_character_info.insert()
 tb_character_hero = MAdmin('tb_character_hero', 'id', 1800, fk='character_id')
 tb_character_hero.insert()
 
-character = tb_character_info.getObjData(1037)
+character = tb_character_info.getObj(1037)
 print character
 
-print tb_character_hero.getObjData('1037_10001')
+print tb_character_hero.getObj('1037_10001')
 tb_character_hero.loadByFK(1037)
-print tb_character_hero.getObjData('1037_10002')
+print tb_character_hero.getObj('1037_10002')
 
 

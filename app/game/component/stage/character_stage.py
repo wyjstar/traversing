@@ -34,7 +34,7 @@ class CharacterStageComponent(Component):
             stage.attacks = 0
 
     def init_data(self):
-        stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
+        stage_data = tb_character_stages.getObj(self.owner.base_info.id)
         stages = stage_data.get('stage_info')
         if stages:
             for stage_id, stage in stages.items():

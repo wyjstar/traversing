@@ -6,7 +6,6 @@ created by server on 14-7-17下午4:36.
 import datetime
 from app.battle.battle_unit import BattleUnit
 from app.game.redis_mode import tb_character_info
-from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.game.action.root.netforwarding import push_message
@@ -163,7 +162,7 @@ def del_black_list_1105(data, player):
 
 def _with_battle_info(response, pid):
     # 添加好友主将的属性
-    lord_data = tb_character_info.getObjData(pid).get('lord_attr_info', {})
+    lord_data = tb_character_info.getObj(pid).get('lord_attr_info', {})
     if lord_data:
         battle_unit = BattleUnit.loads(lord_data.get('info'))
         response.hero_no = battle_unit.unit_no
@@ -180,7 +179,7 @@ def get_player_friend_list_1106(data, player):
     response.open_receive = player.stamina._open_receive
 
     for pid in player.friends.friends + [player.base_info.id]:
-        player_data = tb_character_info.getObjData(pid)
+        player_data = tb_character_info.getObj(pid)
         if player_data:
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
@@ -194,7 +193,7 @@ def get_player_friend_list_1106(data, player):
             player.friends.friends.remove(pid)
 
     for pid in player.friends.blacklist:
-        player_data = tb_character_info.getObjData(pid)
+        player_data = tb_character_info.getObj(pid)
         if player_data:
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
@@ -208,7 +207,7 @@ def get_player_friend_list_1106(data, player):
             player.friends.blacklist.remove(pid)
 
     for pid in player.friends.applicant_list:
-        player_data = tb_character_info.getObjData(pid)
+        player_data = tb_character_info.getObj(pid)
         if player_data:
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
@@ -237,7 +236,7 @@ def find_friend_request_1107(data, player):
     response.gift = datetime.datetime.now().day
 
     if request.id_or_nickname.isdigit():
-        player_data = tb_character_info.getObjData(request.id_or_nickname)
+        player_data = tb_character_info.getObj(request.id_or_nickname)
 
     else:
         prere = dict(nickname=request.id_or_nickname)
@@ -265,16 +264,16 @@ def given_stamina_1108(data, player):
     request.ParseFromString(data)
     target_id = request.target_ids[0]
 
-    player_data = tb_character_info.getObjData(target_id)
+    player_data = tb_character_info.getObj(target_id)
     open_receive = player_data.get('stamina').get('open_receive')
 
     if not player.friends.given_stamina(target_id, if_present=open_receive):
         response.result = False
         response.result_no = 1  # fail
-        return response.SerializePartialToString()  # fail
-    
+        return response.SerializePartialToString()  #
+
     player.friends.save_data()
-    
+
     lively_event = CountEvent.create_event(EventType.PRESENT, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
     if tstatus:

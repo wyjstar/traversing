@@ -151,7 +151,7 @@ class PlayerCharacter(Character):
         """初始化角色信息
         """
         pid = self.base_info.id
-        character_obj = tb_character_info.getObjData(pid)
+        character_obj = tb_character_info.getObj(pid)
         character_info = character_obj.get_multi(character_info_columns)
         # print character_info
 
@@ -227,7 +227,7 @@ class PlayerCharacter(Character):
         """is new character or not"""
         pid = self.base_info.id
 
-        character_info = tb_character_info.getObjData(pid)
+        character_info = tb_character_info.getObj(pid)
         name = character_info.get('name')
         # print 'character info:', character_info
         if name:

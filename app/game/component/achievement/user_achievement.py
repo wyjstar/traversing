@@ -236,9 +236,9 @@ class UserAchievement(Component):
         self._event_task_map = {}
         self._last_day = ''
         self._update = False
-    
+
     def init_data(self):
-        live_data = tb_character_tasks.getObjData(self.owner.base_info.id)
+        live_data = tb_character_tasks.getObj(self.owner.base_info.id)
 
         tasks = live_data.get('tasks')
         if tasks:
@@ -257,7 +257,7 @@ class UserAchievement(Component):
                         event_map=self._event_task_map,
                         last_day=self._last_day)
             tb_character_tasks.new(data)
-            
+
     def save_data(self):
         lively_obj = tb_character_tasks.getObj(self.owner.base_info.id)
         if lively_obj:
