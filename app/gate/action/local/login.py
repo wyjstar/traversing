@@ -10,6 +10,7 @@ from app.gate.core.virtual_character_manager import VCharacterManager
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import game_pb2
 from gfirefly.server.logobj import logger
+from shared.tlog import tlog_action
 
 
 @local_service_handle
@@ -27,6 +28,25 @@ def character_login_4(key, dynamic_id, request_proto):
         return response.SerializePartialToString()
     player_data = data.get('player_data')
     response.ParseFromString(player_data)
+
+    argument.plat_id = 0
+    argument.client_version = '0.0.0.1'
+    argument.system_software = '1.1'
+    argument.system_hardware = '2.2'
+    argument.telecom_oper = 'tx'
+    argument.network = 'wifi'
+    argument.screen_width = 1024
+    argument.screen_hight = 2048
+    argument.density = 256
+    argument.login_channel = 512
+    argument.mac = '1.1.1'
+    argument.cpu_hardware = 'intel'
+    argument.memory = 1024
+    argument.gl_render = 'abc'
+    argument.gl_version = 'abcd'
+    argument.device_id = '1x2y'
+
+    tlog_action.log('PlayerLogin', player_data, argument)
 
     nickname = response.nickname
     if nickname:

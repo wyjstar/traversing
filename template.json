@@ -58,6 +58,10 @@
                     "rootname": "world"
                 }
             ],
+			"tlog":{
+				 "host": "192.168.10.26",
+				 "port": 30005
+			},
             "mem": true,
             "redis": true,
             "db": true,
@@ -139,7 +143,7 @@
          "db": 0
     },
     "tlog":{
-         "host": "127.0.0.1",
+         "host": "192.168.10.26",
          "port": 30005
     }
 
