@@ -191,3 +191,4 @@ def init_player(player):
     if new_character:
         logger.debug("mock player info.....")
         init(player)
+    return new_character
