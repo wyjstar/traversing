@@ -264,7 +264,7 @@ class UserAchievement(Component):
                     'lively':self._lively,
                     'event_map': self._event_task_map,
                     'last_day':self._last_day}
-            lively_obj.update_multi(data)
+            lively_obj.hmset(data)
         else:
             logger.error('cant find achievement:%s', self.owner.base_info.id)
     

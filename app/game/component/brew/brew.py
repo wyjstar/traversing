@@ -47,7 +47,7 @@ class CharacterBrewComponent(Component):
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
             char_obj = tb_character_info.getObj(self.owner.base_info.id)
-            char_obj.update('brew', brew)
+            char_obj.hset('brew', brew)
 
     def save_data(self):
         char_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -57,7 +57,7 @@ class CharacterBrewComponent(Component):
                         # nectar=self._nectar,
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
-            char_obj.update('brew', brew)
+            char_obj.hset('brew', brew)
         else:
             logger.error('cant find charinfo:%s', self.owner.base_info.id)
 

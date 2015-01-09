@@ -58,5 +58,5 @@ class CharacterLastPickTimeComponent(Component):
                  'fine_equipment_last_pick_time': self._fine_equipment,
                  'excellent_equipment_last_pick_time': self._excellent_equipment}
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
-        character_obj.update_multi(props)
+        character_obj.hmset(props)
 

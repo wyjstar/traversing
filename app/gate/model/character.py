@@ -21,5 +21,5 @@ class Character(RedisObject):
     @property
     def character_info(self):
         keys = [key for key in self.__dict__.keys() if not key.startswith('_')]
-        info = self.get_multi(keys)
+        info = self.hmget(keys)
         return info

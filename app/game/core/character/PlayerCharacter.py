@@ -42,60 +42,6 @@ from app.game.component.character_runt import CharacterRuntComponent
 from shared.db_opear.configs_data.game_configs import base_config
 
 
-character_info_columns = ["id",
-                          "nickname",
-                          "hero_list",
-                          "hero_chip_list",
-                          "level",
-                          "exp",
-                          "fine_hero_last_pick_time",
-                          "excellent_hero_last_pick_time",
-                          "fine_equipment_last_pick_time",
-                          "excellent_equipment_last_pick_time",
-                          "stamina",
-                          "finances",
-                          "pvp_times",
-                          "pvp_refresh_time",
-                          "pvp_refresh_count",
-                          "last_login_time",
-                          "get_stamina_times",
-                          "vip_level",
-                          "newbee_guide_id",
-                          "create_time",
-                          "brew",
-                          "friends",
-                          "blacklist",
-                          "applicants_list",
-                          "shop",
-                          "lord_attr_info",
-                          "m_runt",
-                          "stone1",
-                          "stone2",
-                          "refresh_runt",
-                          "refresh_times",
-                          "g_id",
-                          "position",
-                          "contribution",
-                          "all_contribution",
-                          "k_num",
-                          "worship",
-                          "worship_time",
-                          "exit_time",
-                          "online_gift",
-                          "sign_in",
-                          "level_gift",
-                          "login_gift",
-                          "world_boss",
-                          "feast",
-                          "equipment_chips",
-                          "hero_chips",
-                          "travel",
-                          "shoes",
-                          "chest_time",
-                          "travel_item",
-                          "fight_cache"]
-
-
 class PlayerCharacter(Character):
     """玩家角色类
     """
@@ -153,7 +99,7 @@ class PlayerCharacter(Character):
         pid = self.base_info.id
         character_obj = tb_character_info.getObj(pid)
         character_info = character_obj.hgetall()
-        print character_info
+        # print character_info
 
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
@@ -227,7 +173,7 @@ class PlayerCharacter(Character):
         """is new character or not"""
         pid = self.base_info.id
         character_info = tb_character_info.getObj(pid)
-        print 'exist:', not character_info.exists()
+        # print 'exist:', not character_info.exists()
         return not character_info.exists()
 
     def create_character_data(self):
@@ -481,4 +427,4 @@ class PlayerCharacter(Character):
                     pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip.vip_level)
-        character_info.update_multi(data)
+        character_info.hmset(data)

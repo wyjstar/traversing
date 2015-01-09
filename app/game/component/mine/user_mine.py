@@ -718,7 +718,7 @@ class UserMine(Component):
                     'day_before':self._tby,
                     'lively':self._lively,
                     'guard':self._guard}
-            mine_obj.update_multi(data)
+            mine_obj.hmset(data)
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
             

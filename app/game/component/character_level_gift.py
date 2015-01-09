@@ -27,7 +27,7 @@ class CharacterLevelGift(Component):
         activity = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(received_gift_ids=self._received_gift_ids,
                     level_gift=self._level_gift)
-        activity.update('level_gift', data)
+        activity.hset('level_gift', data)
 
     @property
     def received_gift_ids(self):

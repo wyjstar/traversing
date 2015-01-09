@@ -169,7 +169,7 @@ class CharacterStageComponent(Component):
                  }
 
         stage_obj = tb_character_stages.getObj(self.owner.base_info.id)
-        stage_obj.update_multi(props)
+        stage_obj.hmset(props)
 
     @property
     def elite_stage_info(self):

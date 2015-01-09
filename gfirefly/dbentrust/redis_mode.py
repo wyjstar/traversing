@@ -37,11 +37,11 @@ class RedisObject(object):
             result[k] = cPickle.loads(v)
         return result
 
-    def get(self, field):
+    def hget(self, field):
         value = self._client.hget(self._name, field)
         return cPickle.loads(value) if value else value
 
-    def get_multi(self, fiedls):
+    def hmget(self, fiedls):
         olddict = self._client.hmget(self._name, fiedls)
         newdict = dict(zip(fiedls, olddict))
         result = {}
@@ -49,18 +49,26 @@ class RedisObject(object):
             result[k] = cPickle.loads(v) if v else v
         return result
 
-    def update(self, field, values):
+    def hset(self, field, values):
         return self._client.hset(self._name, field, cPickle.dumps(values))
 
-    def update_multi(self, mapping):
+    def hmset(self, mapping):
         newdict = {}
         for k, v in mapping.items():
             newdict[k] = cPickle.dumps(v)
         self._client.hmset(self._name, newdict)
         return True
 
-    def mdelete(self):
+    def hdel(self):
         return self._client.hdel(self._name)
+
+    def hkeys(self):
+        val = self._client.hkeys(self._name)
+        return val
+
+    def hexists(self, field):
+        val = self._client.hexists(self._name, field)
+        return val == 1
 
     def sadd(self, key, member):
         produce_key = self.produceKey(key)
@@ -96,3 +104,76 @@ class RedisObject(object):
         if self.sadd(produce_key, new_member) != 1:
             return False
         return True
+
+    def set(self, key, value):
+        produce_key = self.produceKey(key)
+        self._client.set(produce_key, cPickle.dumps(value))
+
+    def get(self, key):
+        produce_key = self.produceKey(key)
+        ret = self._client.get(produce_key)
+        return cPickle.loads(ret) if ret else ret
+
+    def delete(self, key):
+        produce_key = self.produceKey(key)
+        self._client.delete(produce_key)
+
+    def zscore(self, label, key):
+        produce_key = self.produceKey(label)
+        score = self._client.zscore(produce_key, key)
+        return score
+
+    def zadd(self, label, k, v):
+        produce_key = self.produceKey(label)
+        self._client.zadd(produce_key, v, k)
+
+    def zget(self, label, k):
+        score = 0
+        produce_key = self.produceKey(label)
+        score = self._client.zscore(produce_key, k)
+        return score
+
+    def ztotal(self, label):
+        produce_key = self.produceKey(label)
+        total = self._client.zcard(produce_key)
+        return total
+
+    def zrem(self, label, k):
+        produce_key = self.produceKey(label)
+        rem = self._client.zrem(produce_key, k)
+        return rem
+
+    def zrank(self, label, k):
+        produce_key = self.produceKey(label)
+        rank = self._client.zrank(produce_key, k)
+        return rank
+
+    def zrevrank(self, label, k):
+        produce_key = self.produceKey(label)
+        rank = self._client.zrevrank(produce_key, k)
+        return rank
+
+    def zincrby(self, label, k, v):
+        produce_key = self.produceKey(label)
+        val = self._client.zincrby(produce_key, k, v)
+        return val
+
+    def znear(self, label, k, front, back):
+        produce_key = self.produceKey(label)
+        print 'znear1', label, k, type(label), type(k)
+        index = self._client.zrevrank(produce_key, k)
+        print 'znear3', index
+        if index is not None:
+            index = 20
+        _min = index - front
+        _max = index + back
+        if index < front:
+            _min = 0
+            _max = front + back
+        print 'znear2', label, _min, type(_min), _max, type(_max)
+        _range = self._client.zrevrange(produce_key, _min, _max)
+        return _range
+
+    def zremrangebyrank(self, label, m, n):
+        produce_key = self.produceKey(label)
+        self._client.zremrangebyrank(produce_key, m, n)

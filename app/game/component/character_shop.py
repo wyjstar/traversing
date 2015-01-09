@@ -39,7 +39,7 @@ class CharacterShopComponent(Component):
                 print t, data['item_ids']
                 self._shop_data[t] = data
             # print data
-            shop.update('shop', self._shop_data)
+            shop.hset('shop', self._shop_data)
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
@@ -47,7 +47,7 @@ class CharacterShopComponent(Component):
     def save_data(self):
         shop = tb_character_info.getObj(self.owner.base_info.id)
         if shop:
-            shop.update('shop', self._shop_data)
+            shop.hset('shop', self._shop_data)
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
 

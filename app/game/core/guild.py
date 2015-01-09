@@ -53,20 +53,21 @@ class Guild(object):
                      'p_list': self._p_list,
                      'apply': self._apply}}
         guild_data = tb_guild_info.getObj(self._g_id)
-        guild_data.update_multi(data)
+        guild_data.hmset(data)
 
     def init_data(self, data):
         self._g_id = data.get("id")
         info = data.get("info")
-        self._name = info.get("name")
-        self._p_num = info.get("p_num")
-        self._level = info.get("level")
-        self._exp = info.get("exp")
-        self._fund = info.get("fund")
-        self._call = info.get("call")
-        self._p_list = info.get("p_list")
-        self._apply = info.get("apply")
-        self._record = info.get("record")
+        if info:
+            self._name = info.get("name")
+            self._p_num = info.get("p_num")
+            self._level = info.get("level")
+            self._exp = info.get("exp")
+            self._fund = info.get("fund")
+            self._call = info.get("call")
+            self._p_list = info.get("p_list")
+            self._apply = info.get("apply")
+            self._record = info.get("record")
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:

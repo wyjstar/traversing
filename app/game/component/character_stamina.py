@@ -131,4 +131,4 @@ class CharacterStaminaComponent(Component):
         props = dict(stamina=self.detail_data)
         info = tb_character_info.getObj(self.owner.base_info.id)
         logger.debug(str(props))
-        info.update_multi(props)
+        info.hmset(props)

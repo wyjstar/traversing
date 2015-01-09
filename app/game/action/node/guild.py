@@ -67,8 +67,8 @@ def create_guild_801(data, player):
         return response.SerializeToString()
 
     # 判断有没有重名
-    guild_name_data = tb_guild_name.getObj(g_name)
-    if guild_name_data.exists():
+    guild_name_data = tb_guild_name.getObj('names')
+    if guild_name_data.hexists(g_name):
         response.result = False
         response.message = "此名已存在"
         return response.SerializeToString()
@@ -79,8 +79,8 @@ def create_guild_801(data, player):
 
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
 
-    data = {'g_id': guild_obj.g_id}
-    guild_name_data.new(data)
+    data = {g_name: guild_obj.g_id}
+    guild_name_data.hset(data)
 
     player.guild.g_id = guild_obj.g_id
     player.guild.worship = 0
@@ -171,11 +171,11 @@ def exit_guild_803(data, player):
 
         # 解散公会
         # 删除公会名字
-        guild_name_data = tb_guild_name.getObj(guild_obj.name)
-        if guild_name_data.exists():
+        guild_name_data = tb_guild_name.getObj('names')
+        if guild_name_data.hexists(guild_obj.name):
             # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
             # guild_name_obj.delete()
-            tb_guild_name.deleteMode(guild_obj.name)
+            tb_guild_name.hdel(guild_obj.name)
 
         # 解散公会，删除公会聊天室
         remote_gate.del_guild_room_remote(player.guild.g_id)
@@ -230,7 +230,7 @@ def exit_guild_803(data, player):
                         'worship_time': info.get("worship_time"),
                         'exit_time': info.get("exit_time")}
                 p_guild_data = tb_character_info.getObj(tihuan_id)
-                p_guild_data.update_multi(data)
+                p_guild_data.hmset(data)
 
             # if not push_message(1801, tihuan_id):
             #     response.result = False
@@ -367,7 +367,7 @@ def deal_apply_805(data, player):
                         'worship_time': 1,
                         'exit_time': 1}
                 p_guild_data = tb_character_info.getObj(p_id)
-                p_guild_data.update_multi(data)
+                p_guild_data.hmset(data)
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(5):
@@ -443,7 +443,7 @@ def change_president_806(data, player):
                         'worship_time': info.get("worship_time"),
                         'exit_time': info.get("exit_time")}
                 p_guild_data = tb_character_info.getObj(p_p_id)
-                p_guild_data.update_multi(data)
+                p_guild_data.hmset(data)
 
             player.guild.position = 5
             player.guild.save_data()
@@ -499,7 +499,7 @@ def kick_807(data, player):
                         'worship_time': 1,
                         'exit_time': time.time()}
                 p_guild_data = tb_character_info.getObj(p_id)
-                p_guild_data.update_multi(data)
+                p_guild_data.hmset(data)
 
                 # 踢出公会聊天室
                 invitee_player = PlayersManager().get_player_by_id(p_id)
@@ -588,7 +588,7 @@ def promotion_808(data, player):
                         'worship_time': info.get("worship_time"),
                         'exit_time': info.get("exit_time")}
                 p_guild_data = tb_character_info.getObj(tihuan_id)
-                p_guild_data.update_multi(data)
+                p_guild_data.hmset(data)
 
             p_list1 = p_list.get(m_position)
             p_list1.remove(m_p_id)
@@ -771,7 +771,6 @@ def get_role_list_811(data, player):
 
                     role_info.k_num = character_info['k_num']
 
-
         response.result = True
         return response.SerializeToString()
 
@@ -787,7 +786,7 @@ def get_guild_info_812(data, player):
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObj(m_g_id)
-    if not data1:
+    if not data1.exists():
         response.result = False
         response.message = "公会ID错误"
         return response.SerializeToString()
@@ -797,7 +796,7 @@ def get_guild_info_812(data, player):
 
     response.result = True
     guild_info = response.guild_info
-    guild_info.g_id = guild_obj.g_id
+    guild_info.g_id = m_g_id
     guild_info.name = guild_obj.name
     guild_info.p_num = guild_obj.p_num
     guild_info.level = guild_obj.level

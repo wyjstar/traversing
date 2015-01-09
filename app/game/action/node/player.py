@@ -6,7 +6,6 @@ import time
 import re
 from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
-from gfirefly.dbentrust import util
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
@@ -44,7 +43,9 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    isexist = tb_character_info.sismem('nickname', nickname)
+    nickname_obj = tb_character_info.getObj('nickname')
+    isexist = nickname_obj.hexists(nickname)
+    print 'isexists:', isexist
     if isexist:
         response.result = False
         response.result_no = 1
@@ -55,8 +56,8 @@ def nickname_create_5(request_proto, player):
         response.result_no = 2
         return response.SerializeToString()
     player.base_info.base_name = nickname
-    character_obj.update('nickname', nickname)
-    tb_character_info.sadd('nickname', nickname)
+    character_obj.hset('nickname', nickname)
+    nickname_obj.hset(nickname, player.base_info.id)
 
     # 加入聊天
     remote_gate.login_chat_remote(player.dynamic_id,

@@ -35,7 +35,7 @@ class UserStone(Component):
         mine_obj = tb_character_stone.getObj(self.owner.base_info.id)
         if mine_obj:
             data = {'stones': {'1':cPickle.dumps(self._stones)}}
-            mine_obj.update_multi(data)
+            mine_obj.hmset(data)
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
             

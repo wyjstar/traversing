@@ -122,7 +122,7 @@ if __name__ == '__main__':
     for _ in pvp_ranks.values():
         print _.get('id'), _.get('nickname'), _.get('character_id')
         rank_obj = pvp_rank.getObj(_.get('id'))
-        rank_obj.update_multi(_)
+        rank_obj.hmset(_)
 
 
 def dbpool_get():

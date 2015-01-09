@@ -78,7 +78,7 @@ class CharacterLineUpComponent(Component):
             'unpars': self._unpars}
 
         line_up_obj = tb_character_line_up.getObj(self.character_id)
-        line_up_obj.update_multi(props)
+        line_up_obj.hmset(props)
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态

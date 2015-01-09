@@ -67,4 +67,4 @@ class CharacterItemPackageComponent(Component):
 
         items_data = tb_character_item_package.getObj(self.owner.base_info.id)
         logger.debug(str(props))
-        items_data.update('items', props)
+        items_data.hset('items', props)

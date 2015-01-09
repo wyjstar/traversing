@@ -29,7 +29,7 @@ class CharacterOnlineGift(Component):
             data = dict(online_time=self._online_time,
                         refresh_time=self._refresh_time,
                         received_gift_ids=self._received_gift_ids)
-            tb_character_info.update('online_gift', data)
+            tb_character_info.hset('online_gift', data)
 
     def save_data(self):
         self.check_time()
@@ -37,7 +37,7 @@ class CharacterOnlineGift(Component):
         data = dict(online_time=self._online_time,
                     refresh_time=self._refresh_time,
                     received_gift_ids=self._received_gift_ids)
-        activity.update('online_gift', data)
+        activity.hset('online_gift', data)
 
     def offline_player(self):
         accumulate_time = datetime.datetime.now() - self._login_on_time

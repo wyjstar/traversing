@@ -3,30 +3,37 @@
 """
 created by wzp.
 """
-from shared.db_opear.configs_data.game_configs import special_stage_config, hero_config, monster_group_config, monster_config
-from gfirefly.dbentrust.redis_client import redis_client
+from shared.db_opear.configs_data.game_configs import special_stage_config
+from shared.db_opear.configs_data.game_configs import hero_config
+from shared.db_opear.configs_data.game_configs import monster_group_config
+from shared.db_opear.configs_data.game_configs import monster_config
+from gfirefly.dbentrust.redis_mode import RedisObject
 import random
 from shared.utils.random_pick import random_pick_with_percent
 import cPickle
-from shared.utils.date_util import str_time_period_to_timestamp, get_current_timestamp
+from shared.utils.date_util import get_current_timestamp
+from shared.utils.date_util import str_time_period_to_timestamp
 from gfirefly.server.logobj import logger
+
+
+tb_baseboss = RedisObject('tb_character_info')
+
 
 class BaseBoss(object):
     """docstring for Boss 基类"""
     def __init__(self, boss_name, rank_instance, config_name):
-        self._boss_name = boss_name   # boss 名称：对应redis key
-        self._lucky_high_heros = []   # 高级幸运武将
-        self._lucky_middle_heros = [] # 中级幸运武将
-        self._lucky_low_heros = []    # 低级幸运武将
-        self._debuff_skill_no = 0     # debuff id
-        self._last_shot_item = {}     # 最后击杀
-        self._stage_id = 0            # 关卡id
-        self._hp = 0                  # 剩余血量
-        self._boss_dead_time = 0      # boss被打死的时间
+        self._boss_name = boss_name    # boss 名称：对应redis key
+        self._lucky_high_heros = []    # 高级幸运武将
+        self._lucky_middle_heros = []  # 中级幸运武将
+        self._lucky_low_heros = []     # 低级幸运武将
+        self._debuff_skill_no = 0      # debuff id
+        self._last_shot_item = {}      # 最后击杀
+        self._stage_id = 0             # 关卡id
+        self._hp = 0                   # 剩余血量
+        self._boss_dead_time = 0       # boss被打死的时间
 
-        self._rank_instance = rank_instance # 排名
-        self._config_name = config_name # worldboss:boss_stages, mineboss:mine_boss_stages
-
+        self._rank_instance = rank_instance  # 排名
+        self._config_name = config_name  # worldboss:boss_stages, mineboss:mine_boss_stages
 
     def init_base_data(self, boss_data):
         """docstring for init_base_data"""
@@ -58,14 +65,13 @@ class BaseBoss(object):
 
     def get_data_dict(self):
         return dict(hp=self._hp,
-                lucky_high_heros=self._lucky_high_heros,
-                lucky_middle_heros=self._lucky_middle_heros,
-                lucky_low_heros=self._lucky_low_heros,
-                debuff_skill_no=self._debuff_skill_no,
-                last_shot_item=self._last_shot_item,
-                stage_id=self._stage_id,
-                boss_dead_time=self._boss_dead_time
-                )
+                    lucky_high_heros=self._lucky_high_heros,
+                    lucky_middle_heros=self._lucky_middle_heros,
+                    lucky_low_heros=self._lucky_low_heros,
+                    debuff_skill_no=self._debuff_skill_no,
+                    last_shot_item=self._last_shot_item,
+                    stage_id=self._stage_id,
+                    boss_dead_time=self._boss_dead_time)
 
     @property
     def debuff_skill_no(self):
@@ -99,11 +105,9 @@ class BaseBoss(object):
     def boss_dead_time(self, value):
         self._boss_dead_time = value
 
-
-
     def start_boss(self):
-        self._rank_instance.clear_rank() # 重置排行
-        self._last_shot_item = {} # 重置最后击杀
+        self._rank_instance.clear_rank()  # 重置排行
+        self._last_shot_item = {}  # 重置最后击杀
 
     def update_base_boss(self, base_config_info):
         """
@@ -114,27 +118,24 @@ class BaseBoss(object):
         lucky_hero_2_num = base_config_info.get("lucky_hero_2_num")
         lucky_hero_3_num = base_config_info.get("lucky_hero_3_num")
         all_high_heros, all_middle_heros, all_low_heros = self.get_hero_category()
-        self._lucky_high_heros =  random.sample(all_high_heros, lucky_hero_1_num)
+        self._lucky_high_heros = random.sample(all_high_heros, lucky_hero_1_num)
 
-        for k in self._lucky_high_heros: # 去重
+        for k in self._lucky_high_heros:  # 去重
             all_middle_heros.remove(k)
-        self._lucky_middle_heros =  random.sample(all_middle_heros, lucky_hero_2_num)
+        self._lucky_middle_heros = random.sample(all_middle_heros, lucky_hero_2_num)
 
-        for k in self._lucky_middle_heros: # 去重
+        for k in self._lucky_middle_heros:  # 去重
             all_low_heros.remove(k)
-        self._lucky_low_heros =  random.sample(all_low_heros, lucky_hero_3_num)
+        self._lucky_low_heros = random.sample(all_low_heros, lucky_hero_3_num)
 
         # 初始化奇遇
         debuff_skill = base_config_info.get("debuff_skill")
         self._debuff_skill_no = random_pick_with_percent(debuff_skill)
 
+        self._hp = self.get_hp()  # 重置血量
 
-        self._hp = self.get_hp() # 重置血量
-
-        #todo: 重置玩家信息
-
+        # todo: 重置玩家信息
         # todo:对前十名发放奖励
-
 
     def in_the_time_period(self):
         stage_info = self.current_stage_info()
@@ -158,7 +159,6 @@ class BaseBoss(object):
                 all_low_heros.append(k)
         return all_high_heros, all_middle_heros, all_low_heros
 
-
     def add_rank_item(self, player_info):
         """
         每次战斗结束, 添加排名
@@ -170,9 +170,10 @@ class BaseBoss(object):
 
         # 如果玩家信息在前十名，保存玩家信息到redis
         rank_no = instance.get_rank_no(player_id)
-        if rank_no > 10: return
+        if rank_no > 10:
+            return
         str_player_info = cPickle.dumps(player_info)
-        redis_client.set(player_id, str_player_info)
+        tb_baseboss.set(player_id, str_player_info)
 
     def get_rank_items(self):
         """
@@ -181,7 +182,7 @@ class BaseBoss(object):
         instance = self._rank_instance
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
-            player_info = cPickle.loads(redis_client.get(player_id))
+            player_info = cPickle.loads(tb_baseboss.get(player_id))
 
             player_info["demage_hp"] = demage_hp
             rank_items.append(player_info)
@@ -193,7 +194,7 @@ class BaseBoss(object):
         rank no
         """
         player_id = self._rank_instance.get(no, no)[0][0]
-        player_info = cPickle.loads(redis_client.get(player_id))
+        player_info = cPickle.loads(tb_baseboss.get(player_id))
         return player_info
 
     def get_demage_hp(self, player_id):
@@ -216,4 +217,3 @@ class BaseBoss(object):
         monster_group_info = monster_group_config.get(stage_info.round1)
         monster_info = monster_config.get(monster_group_info.pos5)
         return monster_info.hp
-

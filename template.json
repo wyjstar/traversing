@@ -129,14 +129,8 @@
         "db": "db_traversing",
         "charset": "utf8"
     },
-    "memcached": {
+    "redis": {
         "urls": ["127.0.0.1:11211"],
         "hostname": "mem"
-    },
-    "redis":{
-         "host": "127.0.0.1",
-         "port": 6379,
-         "db": 0
     }
-
 }
