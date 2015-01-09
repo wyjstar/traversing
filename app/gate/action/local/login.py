@@ -46,7 +46,7 @@ def character_login_4(key, dynamic_id, request_proto):
     argument.gl_version = 'abcd'
     argument.device_id = '1x2y'
 
-    tlog_action.log('PlayerLogin', player_data, argument)
+    tlog_action.log('PlayerLogin', response, argument)
 
     nickname = response.nickname
     if nickname:

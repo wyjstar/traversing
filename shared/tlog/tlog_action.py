@@ -9,7 +9,6 @@ game_app_id = 1
 
 
 def player_login(player_data, handler):
-    print 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
     log4tx.player_login(Uid=player_data.id, GameSvrId=game_server_id, dtEventTime=xtime.strdatetime(), GameAppID=game_app_id,
                         PlatID=handler.plat_id, OpenID=player_data.id, Level=player_data.level, PlayerFriendsNum=1,
                         ClientVersion=handler.client_version, SystemSoftware=handler.system_software, SystemHardware=handler.system_hardware, TelecomOper=handler.telecom_oper,

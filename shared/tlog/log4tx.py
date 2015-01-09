@@ -56,11 +56,7 @@ def player_login(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenI
                  ClientVersion=0, SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0, ScreenWidth=0,
                  ScreenHight=0, Density=0, LoginChannel=0, UUID=0, CpuHardware=0, Memory=0,
                  GLRender=0, GLVersion=0, DeviceId=0, IPAddress=0):
-    """
-    player login.
-    record:PlayerLogin|vGameSvrId|dtEventTime|vGameAppID|vOpenID|iLevel|PlatID|ClientVersion|SystemSoftware|SystemHardware|TelecomOper|
-    Network|ScreenWidth|ScreenHight|Density|Channel|UUID|CpuHardware|Memory|GLRender|GLVersion|DeviceId|PlayerFriendsNum
-    """
+
     message = ['PlayerLogin']
 
     message.append(GameSvrId)
@@ -83,7 +79,6 @@ def player_login(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenI
     message.append(CpuHardware)
     message.append(Memory)
     message.append(GLRender)
-    GLVersion = GLVersion.split('\n')[0]
     message.append(GLVersion)
     message.append(DeviceId)
     message.append(IPAddress)
