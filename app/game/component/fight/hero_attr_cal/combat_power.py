@@ -144,7 +144,6 @@ def hero_self_attr(player, hero):
     ductilityHero_formula = formula_config.get("ductilityHero").get("formula")
     ductilityHero = eval(ductilityHero_formula, all_vars)
 
-
     return dict(hpHero=hpHero,
             atkHero=atkHero,
             physicalDefHero=physicalDefHero,
@@ -480,6 +479,7 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no):
     (hitArray+dodgeArray+criArray+criCoeffArray+criDedCoeffArray+blockArray+ductilityArray)/10000
     """
     line_up_attr = hero_lineup_attr(player, hero, line_up_slot_no)
+    log(hero.hero_no, "武将阵容", "", line_up_attr)
     formula = formula_config.get("fightValueArray").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, line_up_attr)
