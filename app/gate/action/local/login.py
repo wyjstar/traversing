@@ -47,6 +47,8 @@ def character_login_4(key, dynamic_id, request_proto):
     argument.device_id = '1x2y'
 
     tlog_action.log('PlayerLogin', response, argument)
+    if data.get('is_new_character'):
+        tlog_action.log('PlayerRegister', response, argument)
 
     nickname = response.nickname
     if nickname:

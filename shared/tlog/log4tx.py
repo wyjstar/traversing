@@ -40,7 +40,6 @@ def player_register(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, Op
     message.append(CpuHardware)
     message.append(Memory)
     message.append(GLRender)
-    GLVersion = GLVersion.split('\n')[0]
     message.append(GLVersion)
     message.append(DeviceId)
     message.append(Nickname)
