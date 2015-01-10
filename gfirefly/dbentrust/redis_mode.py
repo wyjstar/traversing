@@ -176,8 +176,12 @@ class RedisObject(object):
 
     def zremrangebyrank(self, label, m, n):
         produce_key = self.produceKey(label)
-        self._client.zremrangebyrank(produce_key, m, n)
+        return self._client.zremrangebyrank(produce_key, m, n)
 
     def zcount(self, label, m, n):
         produce_key = self.produceKey(label)
-        self.zcount(produce_key, m, n)
+        return self._client.zcount(produce_key, m, n)
+
+    def zrevrange(self, label, start, end, withscores=False):
+        produce_key = self.produceKey(label)
+        return self._client.zrevrange(produce_key, start, end, withscores)
