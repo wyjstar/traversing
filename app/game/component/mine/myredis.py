@@ -8,10 +8,10 @@ from gfirefly.server.logobj import logger
 from gfirefly.dbentrust.redis_mode import RedisObject
 
 
-tb_ranking = RedisObject('tb_character_info')
+tb_ranking = RedisObject('tb_rank_ooo')
 
 
-class Ranking(object):
+class Ranking_old(object):
     def __init__(self):
         pass
 

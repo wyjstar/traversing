@@ -125,7 +125,7 @@ class RedisObject(object):
 
     def zadd(self, label, k, v):
         produce_key = self.produceKey(label)
-        self._client.zadd(produce_key, v, k)
+        return self._client.zadd(produce_key, v, k)
 
     def zget(self, label, k):
         score = 0
