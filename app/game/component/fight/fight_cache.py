@@ -341,17 +341,12 @@ class CharacterFightCacheComponent(Component):
             red_unit = random.choice(replace)  # 选出可以替换的单位
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
-
+            hero = self.owner.hero_component.get_hero(red_unit.unit_no)
             old_line_up_slot = self.line_up_slots.get(red_unit.slot_no)
-
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
             hero_no = break_config.hero_id
-            level = red_unit.level  # 等级
-            break_hero_obj = Hero()  # 实例化一个替换英雄对象
-            break_hero_obj.hero_no = hero_no
-            break_hero_obj.level = level
-            break_hero_obj.break_level = red_unit.break_level
+            break_hero_obj = self.change_hero(hero, hero_no)
 
             unit = break_line_up_slot.assemble_hero(break_hero_obj)
             logger.info('乱入替换战斗单位属性: %s' % unit)
@@ -364,30 +359,32 @@ class CharacterFightCacheComponent(Component):
 
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
-            hero_item = game_configs.hero_config.get(red.unit_no)
+            hero = self.owner.hero_component.get_hero(red.unit_no)
+            hero_item = hero.hero_info
             _rand = random.random()
             if not hero_item:
                 continue
             if not hero_item.get('awake'):
                 continue
             old_line_up_slot = self.line_up_slots.get(red.slot_no)
-            hero = self.owner.hero_component.get_hero(red.unit_no)
             ap = combat_power.combat_power_hero_self(self.owner, hero)
             for upAp, prob in hero_item.get('awake').items():
                 logger.info('hero:%s, hit:%s, %s,ap:%s, upAp:%s', hero.hero_no, _rand, prob, ap, upAp)
                 if ap > upAp and _rand < prob:
-
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
-
-                    hero_no = hero_item.get('awakeHeroID')
-                    level = red.level  # 等级
-                    break_hero_obj = Hero()  # 实例化一个替换英雄对象
-                    break_hero_obj.hero_no = hero_no
-                    break_hero_obj.level = level
-                    break_hero_obj.break_level = red.break_level
+                    target_hero_no = hero_item.get('awakeHeroID')
+                    break_hero_obj = self.change_hero(hero, target_hero_no)
 
                     unit = break_line_up_slot.assemble_hero(break_hero_obj)
                     unit.is_awake = True
                     unit.origin_no = red.unit_no
                     red_units[no] = unit
                     break
+
+    def change_hero(self, origin_hero, target_hero_no):
+        """docstring for change_hero, 觉醒，乱入
+        return new line_up_slot
+        """
+        break_hero_obj = copy.deepcopy(origin_hero)  # 实例化一个替换英雄对象
+        break_hero_obj.hero_no = target_hero_no
+        return break_hero_obj
