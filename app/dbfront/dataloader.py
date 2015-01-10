@@ -13,8 +13,6 @@ def register_madmin():
     """
     # 用户信息表
     MAdminManager().registe(memmode.tb_character_info)
-    # 用户道具背包
-    MAdminManager().registe(memmode.tb_character_item_package)
     # 帐号表
     MAdminManager().registe(memmode.tb_account)
     # 用户阵容信息
@@ -23,8 +21,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_guild_info)
     # 玩家公会表
     MAdminManager().registe(memmode.tb_guild_name)
-    # 关卡信息表
-    MAdminManager().registe(memmode.tb_character_stages)
     # 活跃度
     MAdminManager().registe(memmode.tb_character_tasks)
 

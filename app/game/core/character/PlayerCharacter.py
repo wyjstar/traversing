@@ -153,7 +153,7 @@ class PlayerCharacter(Character):
         self._mail.init_data()  # 初始化邮箱
         self._friends.init_data(character_info)
         self._guild.init_data(character_info)
-        self._stage.init_data()
+        self._stage.init_data(character_info)
 
         self._pvp_times = pvp_times
         self._pvp_refresh_time = pvp_refresh_time

@@ -4,7 +4,7 @@ created by server on 14-7-2下午4:51.
 """
 from app.game.component.Component import Component
 from app.game.core.pack.item import Item
-from app.game.redis_mode import tb_character_item_package
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 
 
@@ -15,18 +15,18 @@ class CharacterItemPackageComponent(Component):
         super(CharacterItemPackageComponent, self).__init__(owner)
         self._items = {}  # 背包道具 {'item_no': item obj}
 
-    def init_data(self):
+    def init_data(self, character_info):
         """初始化道具信息
         """
-        pid = self.owner.base_info.id
-        item_package_data = tb_character_item_package.getObj(pid)
-        items_data = item_package_data.get('items')
+        items_data = character_info.get('items')
         if items_data:
             for item_no, item_num in items_data.items():
                 item = Item(item_no, item_num)
                 self._items[item_no] = item
         else:
-            item_package_data.new({'items': {}})
+            pid = self.owner.base_info.id
+            char_obj = tb_character_info.getObj(pid)
+            char_obj.hset('items', {})
 
     @property
     def items(self):
@@ -65,6 +65,6 @@ class CharacterItemPackageComponent(Component):
         for item_no, item in self._items.iteritems():
             props[item_no] = item.num
 
-        items_data = tb_character_item_package.getObj(self.owner.base_info.id)
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
         logger.debug(str(props))
-        items_data.hset('items', props)
+        char_obj.hset('items', props)
