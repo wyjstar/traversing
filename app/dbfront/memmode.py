@@ -16,7 +16,3 @@ tb_guild_info.insert()
 # ���浼����琛�
 tb_guild_name = RedisObject('tb_guild_name', 'id')
 tb_guild_name.insert()
-
-# 活跃度
-tb_character_tasks = RedisObject('tb_character_lively', 'id')
-tb_character_tasks.insert()

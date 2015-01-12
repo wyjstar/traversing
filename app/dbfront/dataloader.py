@@ -19,8 +19,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_guild_info)
     # 玩家公会表
     MAdminManager().registe(memmode.tb_guild_name)
-    # 活跃度
-    MAdminManager().registe(memmode.tb_character_tasks)
 
 
 def check_mem_db(delta):
