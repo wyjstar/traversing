@@ -206,7 +206,7 @@ def change_hero(slot_no, hero_no, change_type, player):
 
     # 校验该武将是否已经上阵
     response = line_up_pb2.LineUpResponse()
-    if hero_no in player.line_up_component.hero_nos:
+    if hero_no != 0 and hero_no in player.line_up_component.hero_nos:
         logger.debug("hero already in the line up+++++++")
         response.res.result = False
         response.res.result_no = 701

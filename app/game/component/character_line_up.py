@@ -205,8 +205,9 @@ class CharacterLineUpComponent(Component):
         slot_obj.change_hero(hero_no)
 
         target_hero = self.owner.hero_component.get_hero(hero_no)
-        assert target_hero != None, "change hero can not be None!"
-        target_hero.is_online = True
+        if hero_no != 0:
+            assert target_hero != None, "change hero can not be None!"
+            target_hero.is_online = True
 
         # 如果无双条件不满足，则无双设为空
         hero_nos = set(self.hero_nos)  # 阵容英雄编号
