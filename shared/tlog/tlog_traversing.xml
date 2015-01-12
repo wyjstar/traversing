@@ -1,0 +1,131 @@
+<metalib tagsetversion="1" name="Log" version="2">
+  
+
+
+
+  <!--
+  ////////////////////////////////////////////////////////
+
+  ////新终端手游经分所需数据分为三大类
+  ////1. tlog过程流水
+  ////2. 充值，消费云支付流水
+  ////3. 在线和用户信息缓存流水
+
+  /////////////////////////////////////////////////////////
+   -->
+
+
+     <!--
+  ////////////////////////////////////////////////////////
+
+  ////本文档主要描述第一类数据，另外两类见
+  /////<<手游经分_实时与支付数据.xmll>>
+
+  /////////////////////////////////////////////////////////
+   -->
+  
+  <!--*****************************************************************
+  ///////////////////////////////////////////////////////////////////
+  //////////////////第一类走tlog流水数据/////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  ********************************************************************-->
+  
+  
+  <!--//////////////////////////////////////////////
+	///////玩家注册表///////////////////////////////
+   /////////////////////////////////////////////////-->
+  <struct name="PlayerRegister"  version="1" desc="玩家注册">
+    <entry name="GameSvrId"			type="string"		size="25"						desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"		type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="GameAppID"			type="string"		size="32"						desc="游戏APPID" />
+    <entry name="PlatID"			type="int"						defaultvalue="0"	desc="ios 0 /android 1"/>
+    <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+    <entry name="ClientVersion"		type="string"		size="64"	defaultvalue="NULL" desc="客户端版本"/>
+    <entry name="SystemSoftware"	type="string"		size="64"	defaultvalue="NULL" desc="移动终端操作系统版本"/>
+    <entry name="SystemHardware"	type="string"		size="64"	defaultvalue="NULL" desc="移动终端机型"/>
+    <entry name="TelecomOper"		type="string"		size="64"	defaultvalue="NULL" desc="运营商"/>
+    <entry name="Network"			type="string"		size="64"	defaultvalue="NULL" desc="3G/WIFI/2G"/>
+    <entry name="ScreenWidth"		type="int"						defaultvalue="0"	desc="显示屏宽度"/>
+    <entry name="ScreenHight"		type="int"						defaultvalue="0"	desc="显示屏高度"/>
+    <entry name="Density"			type="float"					defaultvalue="0"	desc="像素密度"/>
+    <entry name="RegChannel"		type="int"						defaultvalue="0"	desc="注册渠道"/>
+    <entry name="UUID"				type="string"		size="64"	defaultvalue="NULL" desc="MAC地址"/>
+    <entry name="CpuHardware"		type="string"		size="64"	defaultvalue="NULL" desc="cpu类型|频率|核数"/>
+    <entry name="Memory"			type="int"						defaultvalue="0"	desc="内存信息单位M"/>
+    <entry name="GLRender"			type="string"		size="64"	defaultvalue="NULL" desc="opengl render信息"/>
+    <entry name="GLVersion"			type="string"		size="255"	defaultvalue="NULL" desc="opengl版本信息"/>
+    <entry name="DeviceId"			type="string"		size="64"	defaultvalue="NULL"	desc="设备ID"/>
+	<entry name="Nickname"			type="string"		size="64"	defaultvalue="NULL"	desc="用户昵称"/>
+    <entry name="Uid"                      type="int"                        defaultvalue="0"    desc="用户唯一编号"/>
+  </struct>
+
+     <!--//////////////////////////////////////////////
+	///////玩家登录表///////////////////////////////
+   /////////////////////////////////////////////////-->
+   <struct  name="PlayerLogin"  version="1" desc="玩家登陆">
+    <entry name="GameSvrId"         type="string"		size="25"							desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"		type="datetime"											desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="GameAppID"         type="string"		size="32"							desc="游戏APPID" />
+    <entry name="PlatID"			type="int"						defaultvalue="0"		desc="ios 0/android 1"/>
+    <entry name="OpenID"            type="string"		size="64"							desc="用户OPENID号" />
+    <entry name="Level"             type="int"												desc="等级" />
+	<entry name="PlayerFriendsNum"  type="int"												desc="玩家好友数量"/>
+    <entry name="ClientVersion"		type="string"		size="64"	defaultvalue="NULL"		desc="客户端版本"/>
+    <entry name="SystemSoftware"	type="string"		size="64"	defaultvalue="NULL"		desc="移动终端操作系统版本"/>
+    <entry name="SystemHardware"	type="string"		size="64"	defaultvalue="NULL"		desc="移动终端机型"/>
+    <entry name="TelecomOper"		type="string"		size="64"	defaultvalue="NULL"		desc="运营商"/>
+    <entry name="Network"			type="string"		size="64"	defaultvalue="NULL"		desc="3G/WIFI/2G"/>
+    <entry name="ScreenWidth"		type="int"						defaultvalue="0"		desc="显示屏宽度"/>
+    <entry name="ScreenHight"		type="int"						defaultvalue="0"		desc="显示屏高度"/>
+    <entry name="Density"			type="float"					defaultvalue="0"		desc="像素密度"/>
+    <entry name="LoginChannel"		type="int"						defaultvalue="0"		desc="登录渠道"/>
+    <entry name="UUID"				type="string"		size="64"	defaultvalue="NULL"		desc="MAC地址"/>
+    <entry name="CpuHardware"		type="string"		size="64"	defaultvalue="NULL"		desc="cpu类型|频率|核数"/>
+    <entry name="Memory"			type="int"						defaultvalue="0"		desc="内存信息单位M"/>
+    <entry name="GLRender"			type="string"		size="64"	defaultvalue="NULL"		desc="opengl render信息"/>
+    <entry name="GLVersion"			type="string"		size="255"	defaultvalue="NULL"		desc="opengl版本信息"/>
+    <entry name="DeviceId"			type="string"		size="64"	defaultvalue="NULL"		desc="设备ID"/>
+	<entry name="IPAddress"			type="string"		size="64"	defaultvalue="NULL"		desc="IP地址"/>
+    <entry name="Uid"                      type="int"                        defaultvalue="0"    desc="用户唯一编号"/>
+  </struct>
+
+  <!--//////////////////////////////////////////////
+	///////玩家登出表///////////////////////////////
+   /////////////////////////////////////////////////-->
+  <struct name="PlayerLogout" version="1" desc="玩家登出">
+    <entry name="GameSvrId"          type="string"      size="25"							desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"		 type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="GameAppID"          type="string"		size="32"							desc="游戏APPID" />
+    <entry name="PlatID"			 type="int"						defaultvalue="0"		desc="ios 0/android 1"/>
+    <entry name="OpenID"             type="string"		size="64"							desc="用户OPENID号" />
+    <entry name="OnlineTime"		 type="int"												desc="本次登录在线时间(秒)" />
+  </struct>
+
+   <!--//////////////////////////////////////////////
+	///////道具流水表///////////////////////////////
+   /////////////////////////////////////////////////-->
+  <macrosgroup name="ADDORREDUCE">
+    <macro name="ADD"       value="0" desc="加"/>
+    <macro name="REDUCE"    value="1" desc="减"/>
+  </macrosgroup>
+
+  
+  <struct name="ItemFlow" version="1" desc="道具流水表">
+	<entry name="GameSvrId"				type="string"		size="25"						desc="登录的游戏服务器编号" />
+  <entry name="dtEventTime"			type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+	<entry name="Sequence"				type="int"											desc="用于关联一次动作产生多条不同类型的道具流动日志" />
+  <entry name="GameAppID"				type="string"		size="32"						desc="游戏APPID" />
+	<entry name="PlatID"				type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
+	<entry name="OpenID"				type="string"		size="64"						desc="玩家" />
+	<entry name="ItemType"				type="int"											desc="道具类型" />
+  <entry name="ItemId"				type="int"											desc="道具ID" />
+  <entry name="AfterCount"			type="int"											desc="动作后的物品存量" />
+  <entry name="Count"					type="int"											desc="动作涉及的物品数量" />
+	<entry name="Reason"				type="int"       									desc="道具流动一级原因" />
+  <entry name="SubReason"				type="int"       									desc="道具流动二级原因" />
+	<entry name="AddOrReduce"           type="int"											desc="增加还是减少" />
+	<entry name="ItId"                  type="string"		size="50"						desc="用户道具ID" />
+    <entry name="Uid"                      type="int"                        defaultvalue="0"    desc="用户唯一编号"/>
+  </struct>
+
+</metalib>
