@@ -72,7 +72,7 @@ class User(object):
         print 'character:', character
         self._character = character
         pmmode = tb_character_info.getObj(self._character.get('id'))
-        pmmode.update_multi(self._character)
+        pmmode.hmset(self._character)
 
     @property
     def token(self):

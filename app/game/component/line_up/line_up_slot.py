@@ -311,7 +311,7 @@ class LineUpSlotComponent(Component):
         if lord_obj:
             ap = self.combat_power_lineup()
             data = {'info': unit.dumps(), 'power': ap}
-            lord_obj.update('lord_attr_info', data)
+            lord_obj.hset('lord_attr_info', data)
 
     @property
     def first_slot(self):

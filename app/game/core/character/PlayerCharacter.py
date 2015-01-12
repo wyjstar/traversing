@@ -101,7 +101,10 @@ class PlayerCharacter(Character):
         """初始化角色信息
         """
         pid = self.base_info.id
-        character_info = tb_character_info.getObjData(pid)
+        character_obj = tb_character_info.getObj(pid)
+        character_info = character_obj.hgetall()
+        # print character_info
+
         # ------------角色信息表数据---------------
         nickname = character_info['nickname']
         level = character_info['level']
@@ -142,7 +145,7 @@ class PlayerCharacter(Character):
 
         # ------------初始化角色其他组件------------
         self._hero_component.init_heros()  # 初始化武将列表
-        self._item_package.init_data()
+        self._item_package.init_data(character_info)
         self._line_up.init_data()
         self._equipment.init_data()
         self._equipment_chip.init_data(character_info)
@@ -150,7 +153,7 @@ class PlayerCharacter(Character):
         self._mail.init_data()  # 初始化邮箱
         self._friends.init_data(character_info)
         self._guild.init_data(character_info)
-        self._stage.init_data()
+        self._stage.init_data(character_info)
 
         self._pvp_times = pvp_times
         self._pvp_refresh_time = pvp_refresh_time
@@ -177,12 +180,9 @@ class PlayerCharacter(Character):
     def is_new_character(self):
         """is new character or not"""
         pid = self.base_info.id
-
-        character_info = tb_character_info.getObjData(pid)
-        # print 'character info:', character_info
-        if character_info:
-            return False
-        return True
+        character_info = tb_character_info.getObj(pid)
+        # print 'exist:', not character_info.exists()
+        return not character_info.exists()
 
     def create_character_data(self):
         """docstring for create_character_data"""
@@ -214,9 +214,9 @@ class PlayerCharacter(Character):
                           'equipment_chips': {},
                           'hero_chips': {},
                           'heads': heads.SerializeToString()
-
                           }
-        tb_character_info.new(character_info)
+        char_obj = tb_character_info.getObj(pid)
+        char_obj.new(character_info)
 
     def check_time(self):
         tm = time.localtime(self.pvp_refresh_time)
@@ -448,4 +448,4 @@ class PlayerCharacter(Character):
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip.vip_level,
                     heads=self._heads.SerializeToString())
-        character_info.update_multi(data)
+        character_info.hmset(data)

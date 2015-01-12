@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 """
 
 """
@@ -13,26 +13,12 @@ def register_madmin():
     """
     # 用户信息表
     MAdminManager().registe(memmode.tb_character_info)
-    # 英雄信息表
-    MAdminManager().registe(memmode.tb_character_hero)
-    # 用户道具背包
-    MAdminManager().registe(memmode.tb_character_item_package)
     # 帐号表
     MAdminManager().registe(memmode.tb_account)
-    # 用户阵容信息
-    MAdminManager().registe(memmode.tb_character_line_up)
-    # 装备信息表
-    MAdminManager().registe(memmode.tb_equipment_info)
     # 公会信息表
     MAdminManager().registe(memmode.tb_guild_info)
     # 玩家公会表
     MAdminManager().registe(memmode.tb_guild_name)
-    # 关卡信息表
-    MAdminManager().registe(memmode.tb_character_stages)
-    # 邮件表
-    MAdminManager().registe(memmode.tb_mail_info)
-    # 活跃度
-    MAdminManager().registe(memmode.tb_character_tasks)
 
 
 def check_mem_db(delta):

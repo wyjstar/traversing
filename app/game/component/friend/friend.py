@@ -37,7 +37,7 @@ class FriendComponent(Component):
             data = dict(friends=self._friends,
                         blacklist=self._blacklist,
                         applicants_list=self._applicants_list)
-            friend_obj.update_multi(data)
+            friend_obj.hmset(data)
         else:
             logger.error('cant find friendinfo:%s', self.owner.base_info.id)
 

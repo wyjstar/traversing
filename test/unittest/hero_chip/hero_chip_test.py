@@ -18,7 +18,7 @@ class HeroChipTest(unittest.TestCase):
         self.player = PlayersManager().get_player_by_id(1)
 
     def test_init_data(self):
-        data = tb_character_hero_chip.getObjData(1)
+        data = tb_character_hero_chip.getObj(1)
         self.assertEqual(data.get('id'), 1, "player id error!")
         num = data.get('hero_chips').get(1000112)
         self.assertEqual(num, 300, "hero_chip num error!%d_%d" % (num, 300))
@@ -27,7 +27,7 @@ class HeroChipTest(unittest.TestCase):
         hero_chip = self.player.hero_chip_component.get_chip(1000112)
         hero_chip.num = 1000
         self.player.hero_chip_component.save_data()
-        data = tb_character_hero_chip.getObjData(1)
+        data = tb_character_hero_chip.getObj(1)
         self.assertEqual(data.get('id'), 1, "player id error!")
         num = data.get('hero_chips').get(1000112)
         self.assertEqual(num, 1000, "hero_chip num error!%d_%d" % (num, 1000))
@@ -39,6 +39,3 @@ class HeroChipTest(unittest.TestCase):
 
         lst = [x for x in response.hero_chips]
         self.assertEqual(len(lst), 2, "%d_%d" % (len(lst), 2))
-
-
-

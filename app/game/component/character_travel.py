@@ -43,7 +43,7 @@ class CharacterTravelComponent(Component):
                     get('travel_stages'):
                 self._travel_item[travel_stage_id] = []
             character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
-            character_info_obj.update_multi({'travel': self._travel,
+            character_info_obj.hmset({'travel': self._travel,
                                              'travel_item': self._travel_item,
                                              'shoes': self._shoes,
                                              'chest_time': self._chest_time,
@@ -52,7 +52,7 @@ class CharacterTravelComponent(Component):
 
     def save(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data_obj.update_multi({'travel': self._travel,
+        data_obj.hmset({'travel': self._travel,
                                'travel_item': self._travel_item,
                                'shoes': self._shoes,
                                'chest_time': self._chest_time,

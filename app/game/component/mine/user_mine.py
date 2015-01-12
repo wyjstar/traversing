@@ -9,7 +9,7 @@ from shared.db_opear.configs_data.game_configs import base_config, mine_config,\
     shop_config, mine_match_config
 from app.game.component.Component import Component
 import time
-from app.game.redis_mode import tb_character_mine
+from app.game.redis_mode import tb_character_info
 import cPickle
 from gfirefly.server.logobj import logger
 from monster_mine import MineOpt
@@ -680,9 +680,9 @@ class UserMine(Component):
         self._guard = {} #玩家驻守的英雄与装备，失效的时候，退回
         
     def init_data(self):
-        mine_data = tb_character_mine.getObjData(self.owner.base_info.id)
-        if mine_data:
-            mine = mine_data.get('mine')
+        mine_data = tb_character_info.getObj(self.owner.base_info.id)
+        mine = mine_data.hget('mine')
+        if mine:
             all_mine = mine.get('1')
             if all_mine:
                 self._mine = cPickle.loads(all_mine)
@@ -690,11 +690,11 @@ class UserMine(Component):
                 print '12244444444444444444444444444444444'
                 self._mine = {}
                 self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
-            self._reset_day = mine_data.get('reset_day', '')
-            self._reset_times = mine_data.get('reset_times')
-            self._tby = mine_data.get('day_before')
-            self._lively = mine_data.get('lively')
-            self._guard = mine_data.get('guard', {})
+            self._reset_day = mine_data.hget('reset_day')
+            self._reset_times = mine_data.hget('reset_times')
+            self._tby = mine_data.hget('day_before')
+            self._lively = mine_data.hget('lively')
+            self._guard = mine_data.hget('guard')
         else:
             data = dict(id=self.owner.base_info.id,
                         mine={'1':cPickle.dumps(self._mine)},
@@ -703,13 +703,13 @@ class UserMine(Component):
                         day_before=self._tby,
                         lively=self._lively,
                         guard=self._guard)
-            tb_character_mine.new(data)
-            
+            mine_data.new(data)
+
     def save_data(self):
         if self._update != True:
             return
         self._update = False
-        mine_obj = tb_character_mine.getObj(self.owner.base_info.id)
+        mine_obj = tb_character_info.getObj(self.owner.base_info.id)
         print 'save_data', mine_obj
         if mine_obj:
             data = {'mine': {'1':cPickle.dumps(self._mine)},
@@ -718,7 +718,7 @@ class UserMine(Component):
                     'day_before':self._tby,
                     'lively':self._lively,
                     'guard':self._guard}
-            mine_obj.update_multi(data)
+            mine_obj.hmset(data)
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
             

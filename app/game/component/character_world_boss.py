@@ -19,6 +19,7 @@ class CharacterWorldBoss(Component):
 
     def init_data(self, character_info):
         data = character_info.get('world_boss')
+        print ' world_boos data ', data
         if data:
             for k, info in data.items():
                 if not info:
@@ -27,15 +28,17 @@ class CharacterWorldBoss(Component):
                 boss.init_data(info)
                 self._bosses[boss.boss_id] = boss
         else:
-            tb_character_info.update('world_boss', {})
+            print 'save world_boos'
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.hset('world_boss', {})
 
     def save_data(self):
-        activity = tb_character_info.getObj(self.owner.base_info.id)
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = {}
         for k, boss in self._bosses.items():
             data[k] = boss.get_data_dict()
 
-        activity.update('world_boss', data)
+        char_obj.hset('world_boss', data)
 
     def get_boss(self, boss_id):
         boss = self._bosses.get(boss_id)

@@ -62,15 +62,16 @@ class CharacterLoginGiftComponent(Component):
 
                 self.save_data()
         else:
-            tb_character_info.update('login_gift', {'last_login': int(time.time()),
-                                     'continuous_received': [],
-                                     'cumulative_received': [],
-                                     'continuous_day': [1, 1],
-                                     'cumulative_day': [1, 1]})
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.hset('login_gift', {'last_login': int(time.time()),
+                                                  'continuous_received': [],
+                                                  'cumulative_received': [],
+                                                  'continuous_day': [1, 1],
+                                                  'cumulative_day': [1, 1]})
 
     def save_data(self):
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
-        sign_in_data.update('login_gift', {
+        sign_in_data.hset('login_gift', {
             'continuous_received': self._continuous_received,
             'cumulative_received': self._cumulative_received,
             'cumulative_day': self._cumulative_day,

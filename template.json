@@ -88,12 +88,24 @@
             ],
             "name": "game",
             "mem": true,
-            "db": true,
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
             "redis": true
-            
+        },
+        "game2": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "mem": true,
+            "app": "app.game",
+            "reload":"app.game.doreload",
+            "log": "app/logs/game1.log",
+            "redis": true
         },
         "chat": {
             "name": "chat",
@@ -106,13 +118,6 @@
             "app": "app.chat",
             "log": "app/logs/chat.log"
         },
-        "dbfront": {
-            "name": "dbfront",
-            "db": true,
-            "mem": true,
-            "app": "app.dbfront",
-            "log": "app/logs/db.log"
-        },
         "world": {
             "rootport": 30004,
             "name": "world",
@@ -123,24 +128,18 @@
     },
     "db": {
         "host": "127.0.0.1",
-        "user": "test",
-        "passwd": "test",
-        "port": 8066,
+        "user": "root",
+        "passwd": "123456",
+        "port": 3306,
         "db": "db_traversing",
         "charset": "utf8"
     },
-    "memcached": {
+    "redis": {
         "urls": ["127.0.0.1:11211"],
         "hostname": "mem"
-    },
-    "redis":{
-         "host": "127.0.0.1",
-         "port": 6379,
-         "db": 0
     },
     "tlog":{
          "host": "127.0.0.1",
          "port": 30005
     }
-
 }

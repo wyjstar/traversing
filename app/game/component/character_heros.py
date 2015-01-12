@@ -4,7 +4,7 @@ created by server on 14-6-25下午7:00.
 """
 from app.game.component.Component import Component
 from app.game.core.hero import Hero
-from app.game.redis_mode import tb_character_hero
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import hero_config
 
@@ -26,10 +26,9 @@ class CharacterHerosComponent(Component):
 
     def init_heros(self):
         pid = self.owner.base_info.id
-        heros = tb_character_hero.getObjListByFk(pid)
-
-        for hero_mmode in heros:
-            data = hero_mmode.get('data')
+        char_obj = tb_character_info.getObj(pid)
+        heros = char_obj.smem('heroes')
+        for data in heros:
             hero = Hero(pid)
             hero.init_data(data)
             self._heros[hero.hero_no] = hero
@@ -71,8 +70,9 @@ class CharacterHerosComponent(Component):
 
     def delete_hero(self, hero_no):
         if self._heros.get(hero_no):
+            hero = self._heros[hero_no]
+            hero.delete()
             del self._heros[hero_no]
-            tb_character_hero.deleteMode(self.get_hero_id(hero_no))
         else:
             logger.debug("don't find hero_no from self._heros")
 
@@ -90,23 +90,13 @@ class CharacterHerosComponent(Component):
     def new_hero_data(self, hero):
         character_id = self.owner.base_info.id
         hero_property = hero.hero_proerty_dict()
-        hero_id = self.get_hero_id(hero.hero_no)
-        hero = tb_character_hero.getObj(hero_id)
-        if hero:
-            logger.error("error:hero no %s has existed!" % hero_id)
-            return
-        data = {
-            'id': hero_id,
-            'character_id': character_id,
-            'property': hero_property
-        }
-        tb_character_hero.new(data)
+        char_obj = tb_character_info.getObj(character_id)
+        char_obj.sadd('heroes', hero_property)
 
     def is_guard(self, hero_no):
         """
         是否在驻守中, 秘境相关
         """
         hero = self._heros.get(hero_no)
-        assert hero!=None, ("hero %s not exists!" % hero_no)
+        assert hero is not None, ("hero %s not exists!" % hero_no)
         return hero.is_guard
-

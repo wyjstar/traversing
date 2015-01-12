@@ -4,7 +4,7 @@ created by server on 14-7-7上午11:39.
 """
 from app.game.component.Component import Component
 from app.game.core.equipment.equipment import Equipment
-from app.game.redis_mode import tb_equipment_info
+from app.game.redis_mode import tb_character_info
 from shared.utils.pyuuid import get_uuid
 
 
@@ -16,16 +16,16 @@ class CharacterEquipmentPackageComponent(Component):
         super(CharacterEquipmentPackageComponent, self).__init__(owner)
         self._equipments_obj = {}  # {装备ID：装备obj}
 
-
     @property
     def equipments_obj(self):
         return self._equipments_obj
 
     def init_data(self):
-        equipment_datas = tb_equipment_info.getObjListByFk(self.owner.base_info.id)
+        character_id = self.owner.base_info.id
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
+        equipments = char_obj.smem('equipments')
 
-        for equipment_obj in equipment_datas:
-            equipment_data = equipment_obj.get('data')
+        for equipment_data in equipments:
             equipment_info = equipment_data.get('equipment_info')
             equipment_id = equipment_data.get('id')
 
@@ -39,17 +39,19 @@ class CharacterEquipmentPackageComponent(Component):
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
 
-            equipment_obj = Equipment(equipment_id, '', equipment_no,
-                                      strengthen_lv, awakening_lv,
-                                      enhance_info, nobbing_effect, is_guard,
+            equipment_obj = Equipment(character_id, equipment_id, '',
+                                      equipment_no, strengthen_lv,
+                                      awakening_lv, enhance_info,
+                                      nobbing_effect, is_guard,
                                       main_attr, minor_attr)
             self._equipments_obj[equipment_id] = equipment_obj
 
     def add_equipment(self, equipment_no):
         """添加装备
         """
+        character_id = self.owner.base_info.id
         equipment_id = get_uuid()
-        equipment_obj = Equipment(equipment_id, '', equipment_no)
+        equipment_obj = Equipment(character_id, equipment_id, '', equipment_no)
         self._equipments_obj[equipment_id] = equipment_obj
 
         equipment_obj.add_data(self.owner.base_info.id)
@@ -60,8 +62,9 @@ class CharacterEquipmentPackageComponent(Component):
         equipment.add_data(self.owner.base_info.id)
 
     def delete_equipment(self, equipment_id):
+        equipment = self._equipments_obj[equipment_id]
+        equipment.delete()
         del self._equipments_obj[equipment_id]
-        tb_equipment_info.deleteMode(equipment_id)
 
     def get_equipment(self, equipment_id):
         """根据装备ID 取得装备
@@ -90,5 +93,5 @@ class CharacterEquipmentPackageComponent(Component):
         是否在驻守中, 秘境相关
         """
         temp = self._equipments_obj.get(equipment_id)
-        assert temp!=None, ("equipment %s not exists!" % equipment_id)
+        assert temp is not None, ("equipment %s not exists!" % equipment_id)
         return temp.is_guard

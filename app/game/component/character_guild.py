@@ -29,8 +29,8 @@ class CharacterGuildComponent(Component):
         """
         初始化公会组件
         """
-        if character_info.get('g_id'):
-            self._g_id = character_info.get("g_id")
+        if character_info.get('guild_id'):
+            self._g_id = character_info.get("guild_id")
             self._position = character_info.get("position")
             self._contribution = character_info.get("contribution")
             self._all_contribution = character_info.get("all_contribution")
@@ -40,31 +40,33 @@ class CharacterGuildComponent(Component):
             self._exit_time = character_info.get("exit_time")
         else:
             # 没有公会数据
-            character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
-            character_info_obj.update_multi({'g_id': self._g_id,
-                                             'position': self._position,
-                                             'contribution': self._contribution,
-                                             'all_contribution': self._all_contribution,
-                                             'k_num': self._k_num,
-                                             'worship': self._worship,
-                                             'worship_time': self._worship_time,
-                                             'exit_time': self._exit_time})
+            pid = self.owner.base_info.id
+            character_info_obj = tb_character_info.getObj(pid)
+            data = {'guild_id': self._g_id,
+                    'position': self._position,
+                    'contribution': self._contribution,
+                    'all_contribution': self._all_contribution,
+                    'k_num': self._k_num,
+                    'worship': self._worship,
+                    'worship_time': self._worship_time,
+                    'exit_time': self._exit_time}
+            character_info_obj.hmset(data)
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data_obj.update_multi({'g_id': self._g_id,
-                               'position': self._position,
-                               'contribution': self._contribution,
-                               'all_contribution': self._all_contribution,
-                               'k_num': self._k_num,
-                               'worship': self._worship,
-                               'worship_time': self._worship_time,
-                               'exit_time': self._exit_time})
+        data_obj.hmset({'guild_id': self._g_id,
+                        'position': self._position,
+                        'contribution': self._contribution,
+                        'all_contribution': self._all_contribution,
+                        'k_num': self._k_num,
+                        'worship': self._worship,
+                        'worship_time': self._worship_time,
+                        'exit_time': self._exit_time})
 
     def get_guild_level(self):
         if self._g_id == "no":
             return 0
-        data = tb_guild_info.getObjData(self._g_id)
+        data = tb_guild_info.getObj(self._g_id)
         guild_obj = Guild()
         guild_obj.init_data(data)
         return guild_obj.level
@@ -132,7 +134,6 @@ class CharacterGuildComponent(Component):
             return {}
 
         return dict(hp=guild_info.profit_hp,
-                atk=guild_info.profit_atk,
-                physical_def=guild_info.profit_pdef,
-                magic_def=guild_info.profit_mdef
-                )
+                    atk=guild_info.profit_atk,
+                    physical_def=guild_info.profit_pdef,
+                    magic_def=guild_info.profit_mdef)

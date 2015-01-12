@@ -18,11 +18,12 @@ class CharacterFeastComponent(Component):
         if data:
             self._last_eat_time = data
         else:
-            tb_character_info.update('feast', 1)
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.hset('feast', 1)
 
     def save_data(self):
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
-        sign_in_data.update('feast', self._last_eat_time)
+        sign_in_data.hset('feast', self._last_eat_time)
 
     @property
     def last_eat_time(self):

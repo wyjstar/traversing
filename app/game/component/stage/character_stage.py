@@ -4,10 +4,10 @@ created by server on 14-7-17上午11:07.
 """
 from app.game.component.Component import Component
 from app.game.core.stage.stage import Stage, StageAward
-from app.game.redis_mode import tb_character_stages
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 import time
-from gfirefly.server.logobj import logger
+# from gfirefly.server.logobj import logger
 
 
 class CharacterStageComponent(Component):
@@ -33,19 +33,18 @@ class CharacterStageComponent(Component):
         for stage_id, stage in self._stage_info.items():
             stage.attacks = 0
 
-    def init_data(self):
-        stage_data = tb_character_stages.getObjData(self.owner.base_info.id)
-        if stage_data:
-            stages = stage_data.get('stage_info')
+    def init_data(self, character_info):
+        stages = character_info.get('stage_info')
+        if stages:
             for stage_id, stage in stages.items():
                 self._stage_info[stage_id] = Stage.loads(stage)
 
-            stage_awards = stage_data.get('award_info')
+            stage_awards = character_info.get('award_info')
             for chapter_id, stage_award in stage_awards.items():
                 self._award_info[chapter_id] = StageAward.loads(stage_award)
-            self._elite_stage_info = stage_data.get('elite_stage')
-            self._act_stage_info = stage_data.get('act_stage')
-            self._stage_up_time = stage_data.get('stage_up_time')
+            self._elite_stage_info = character_info.get('elite_stage')
+            self._act_stage_info = character_info.get('act_stage')
+            self._stage_up_time = character_info.get('stage_up_time')
 
         else:
             first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -53,16 +52,16 @@ class CharacterStageComponent(Component):
             first_special_stage_ids = game_configs.special_stage_config.get('first_stage_id')
             for first_special_stage_id in first_special_stage_ids:
                 self._stage_info[first_special_stage_id] = Stage(first_special_stage_id)
-            tb_character_stages.new({'id': self.owner.base_info.id,
-                                     'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in
-                                                         self._stage_info.iteritems()]),
-                                     'award_info': dict(
-                                         [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
-                                          self._award_info.iteritems()]),
-                                     'elite_stage': [0, int(time.time())],
-                                     'act_stage': [0, int(time.time())],
-                                     'stage_up_time': int(time.time())
-                                     })
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+
+            data = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in self._stage_info.iteritems()]),
+                    'award_info': dict(
+                        [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
+                         self._award_info.iteritems()]),
+                    'elite_stage': [0, int(time.time())],
+                    'act_stage': [0, int(time.time())],
+                    'stage_up_time': int(time.time())}
+            char_obj.hmset(data)
 
     def get_stage(self, stage_id):
         """取得关卡信息
@@ -135,7 +134,6 @@ class CharacterStageComponent(Component):
 
         return True
 
-
     def check_stage_state(self, stage_id):
         """校验当前关卡是否已经通关
         """
@@ -169,8 +167,8 @@ class CharacterStageComponent(Component):
                  'stage_up_time': self._stage_up_time
                  }
 
-        stage_obj = tb_character_stages.getObj(self.owner.base_info.id)
-        stage_obj.update_multi(props)
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
+        char_obj.hmset(props)
 
     @property
     def elite_stage_info(self):
@@ -195,5 +193,3 @@ class CharacterStageComponent(Component):
     @stage_up_time.setter
     def stage_up_time(self, stage_up_time):
         self._stage_up_time = stage_up_time
-
-

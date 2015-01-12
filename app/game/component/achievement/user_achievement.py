@@ -2,7 +2,7 @@
 from app.game.component.Component import Component
 from shared.db_opear.configs_data.game_configs import achievement_config
 from shared.db_opear.configs_data.achievement_config import TaskType
-from app.game.redis_mode import tb_character_tasks
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 import random
 import datetime
@@ -236,36 +236,35 @@ class UserAchievement(Component):
         self._event_task_map = {}
         self._last_day = ''
         self._update = False
-    
-    def init_data(self):
-        live_data = tb_character_tasks.getObjData(self.owner.base_info.id)
 
-        if live_data:
-            tasks = live_data.get('tasks')
+    def init_data(self):
+        live_data = tb_character_info.getObj(self.owner.base_info.id)
+
+        tasks = live_data.hget('tasks')
+        if tasks:
             all_tasks = tasks.get('1')
             if all_tasks:
                 self._tasks = cPickle.loads(all_tasks)
             else:
                 self._tasks = {}
-            self._lively = live_data.get('lively')
-            self._event_task_map = live_data.get('event_map')
-            self._last_day = live_data.get('last_day', '')
+            self._lively = live_data.hget('lively')
+            self._event_task_map = live_data.hget('event_map')
+            self._last_day = live_data.hget('last_day')
         else:
-            data = dict(id=self.owner.base_info.id,
-                        tasks={'1':cPickle.dumps(self._tasks)},
+            data = dict(tasks={'1':cPickle.dumps(self._tasks)},
                         lively=self._lively,
                         event_map=self._event_task_map,
                         last_day=self._last_day)
-            tb_character_tasks.new(data)
-            
+            live_data.new(data)
+
     def save_data(self):
-        lively_obj = tb_character_tasks.getObj(self.owner.base_info.id)
+        lively_obj = tb_character_info.getObj(self.owner.base_info.id)
         if lively_obj:
             data = {'tasks': {'1':cPickle.dumps(self._tasks)},
                     'lively':self._lively,
                     'event_map': self._event_task_map,
                     'last_day':self._last_day}
-            lively_obj.update_multi(data)
+            lively_obj.hmset(data)
         else:
             logger.error('cant find achievement:%s', self.owner.base_info.id)
     

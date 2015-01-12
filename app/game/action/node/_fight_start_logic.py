@@ -78,13 +78,14 @@ def fight_start(stage, fid, player):
     red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     # 好友
-    lord_data = tb_character_info.getObjData(fid)
+    char_obj = tb_character_info.getObj(fid)
+    lord_data = char_obj.hget('lord_attr_info')
     f_unit = None
     if lord_data:
-        info = lord_data.get('lord_attr_info').get('info')
+        info = lord_data.get('info')
         f_unit = BattleUnit.loads(info)
     else:
-        logger.info('can not find friend id :%d' % fid)
+        logger.error('can not find friend id :%d' % fid)
 
     return dict(result=True,
                 red_units=red_units,

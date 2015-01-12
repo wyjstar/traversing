@@ -4,7 +4,7 @@ created by server on 14-7-5下午3:07.
 """
 from app.game.component.Component import Component
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
-from app.game.redis_mode import tb_character_line_up
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import warriors_config
 from gfirefly.server.logobj import logger
@@ -37,21 +37,21 @@ class CharacterLineUpComponent(Component):
         self._unpars = {}  # 无双
 
     def init_data(self):
-        line_up_data = tb_character_line_up.getObjData(self.character_id)
+        line_up_data = tb_character_info.getObj(self.character_id)
 
-        if line_up_data:
+        line_up_slots = line_up_data.hget('line_up_slots')
+        if line_up_slots:
             # 阵容位置信息
-            line_up_slots = line_up_data.get('line_up_slots')
             for slot_no, slot in line_up_slots.items():
                 line_up_slot = LineUpSlotComponent.loads(self, slot)
                 self._line_up_slots[slot_no] = line_up_slot
             # 助威位置信息
-            line_sub_slots = line_up_data.get('sub_slots')
+            line_sub_slots = line_up_data.hget('sub_slots')
             for sub_slot_no, sub_slot in line_sub_slots.items():
                 line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
                 self._sub_slots[sub_slot_no] = line_sub_slot
-            self._line_up_order = line_up_data.get('line_up_order')
-            self._unpars = line_up_data.get('unpars')
+            self._line_up_order = line_up_data.hget('line_up_order')
+            self._unpars = line_up_data.hget('unpars')
         else:
             __line_up_slots = dict([(slot_no,
                                      LineUpSlotComponent(self, slot_no).dumps())
@@ -59,12 +59,11 @@ class CharacterLineUpComponent(Component):
             __sub_slots = dict([(slot_no,
                                  LineUpSlotComponent(self, slot_no).dumps()) for
                                 slot_no in self._sub_slots.keys()])
-            data = dict(id=self.character_id,
-                        line_up_slots=__line_up_slots,
+            data = dict(line_up_slots=__line_up_slots,
                         sub_slots=__sub_slots,
                         line_up_order=self._line_up_order,
                         unpars=self._unpars)
-            tb_character_line_up.new(data)
+            line_up_data.new(data)
 
         self.update_slot_activation()
 
@@ -78,8 +77,8 @@ class CharacterLineUpComponent(Component):
             'line_up_order': self._line_up_order,
             'unpars': self._unpars}
 
-        line_up_obj = tb_character_line_up.getObj(self.character_id)
-        line_up_obj.update_multi(props)
+        line_up_obj = tb_character_info.getObj(self.character_id)
+        line_up_obj.hmset(props)
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态

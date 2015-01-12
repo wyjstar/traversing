@@ -10,7 +10,7 @@ from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.game_configs import hero_config
 from shared.db_opear.configs_data.game_configs import hero_exp_config
 from shared.db_opear.configs_data.game_configs import link_config, stone_config
-from app.game.redis_mode import tb_character_hero
+from app.game.redis_mode import tb_character_info
 
 
 class Hero(object):
@@ -34,10 +34,10 @@ class Hero(object):
         self._is_online = False
 
         self._runt = {}
+        self._old_data = None
 
-    def init_data(self, data):
-        self._character_id = data.get("character_id")
-        hero_property = data.get("property")
+    def init_data(self, hero_property):
+        self._old_data = hero_property
         self._hero_no = hero_property.get("hero_no")
         self._level = hero_property.get("level")
         self._exp = hero_property.get("exp")
@@ -125,9 +125,10 @@ class Hero(object):
         return level, temp_exp
 
     def save_data(self):
-        hero_id = str(self._character_id) + '_' + str(self._hero_no)
-        mmode = tb_character_hero.getObj(hero_id)
-        mmode.update('property', self.hero_proerty_dict())
+        char_obj = tb_character_info.getObj(self._character_id)
+        data = self.hero_proerty_dict()
+        if char_obj.supdate('heroes', self._old_data, data):
+            self._old_data = data
 
     def hero_proerty_dict(self):
         hero_property = {
@@ -141,6 +142,10 @@ class Hero(object):
             'runt': self._runt
         }
         return hero_property
+
+    def delete(self):
+        char_obj = tb_character_info.getObj(self._character_id)
+        return char_obj.srem('heroes', self._old_data)
 
     def update_pb(self, hero_pb):
         hero_pb.hero_no = self._hero_no

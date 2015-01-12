@@ -4,7 +4,7 @@ created by server on 14-7-2下午4:51.
 """
 from app.game.component.Component import Component
 from app.game.core.pack.item import Item
-from app.game.redis_mode import tb_character_item_package
+from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 
 
@@ -15,19 +15,18 @@ class CharacterItemPackageComponent(Component):
         super(CharacterItemPackageComponent, self).__init__(owner)
         self._items = {}  # 背包道具 {'item_no': item obj}
 
-    def init_data(self):
+    def init_data(self, character_info):
         """初始化道具信息
         """
-        item_package_data = tb_character_item_package.getObjData(self.owner.base_info.id)
-        print item_package_data, "8"*80
-        if item_package_data:
-            items_data = item_package_data.get('items', {})
-            if items_data:
-                for item_no, item_num in items_data.items():
-                    item = Item(item_no, item_num)
-                    self._items[item_no] = item
+        items_data = character_info.get('items')
+        if items_data:
+            for item_no, item_num in items_data.items():
+                item = Item(item_no, item_num)
+                self._items[item_no] = item
         else:
-            tb_character_item_package.new({'id': self.owner.base_info.id, 'items': {}})
+            pid = self.owner.base_info.id
+            char_obj = tb_character_info.getObj(pid)
+            char_obj.hset('items', {})
 
     @property
     def items(self):
@@ -54,8 +53,6 @@ class CharacterItemPackageComponent(Component):
         return self._items.values()
 
     def consume_item(self, item_no, item_num):
-
-
         item = self._items.get(item_no)
         item.num -= item_num
         if item.num == 0:
@@ -63,22 +60,11 @@ class CharacterItemPackageComponent(Component):
 
         self.save_data()
 
-
     def save_data(self):
         props = {}
         for item_no, item in self._items.iteritems():
             props[item_no] = item.num
 
-        items_data = tb_character_item_package.getObj(self.owner.base_info.id)
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
         logger.debug(str(props))
-        items_data.update('items', props)
-
-
-
-
-
-
-
-
-
-
+        char_obj.hset('items', props)

@@ -2,13 +2,14 @@
 """
 created by server on 14-7-31下午3:04.
 """
-from gfirefly.dbentrust.redis_client import redis_client
+from gfirefly.dbentrust.redis_mode import RedisObject
 
 # 调试开关
 _DEBUG = False
 
 # 删除缓冲
 BUF_SIZE = 128
+tb_rank = RedisObject('tb_rank')
 
 
 class Ranking:
@@ -16,7 +17,6 @@ class Ranking:
 
     def __init__(self, label, rank_len):
         self.label = label
-        self.redis = redis_client.conn
         self.rank_len = rank_len
 
     @classmethod
@@ -26,7 +26,7 @@ class Ranking:
     @classmethod
     def init(cls, label, rank_len):
         instance = None
-        if cls._instances.has_key(label):
+        if label in cls._instances:
             instance = cls._instances[label]
 
         if instance is None:
@@ -38,39 +38,38 @@ class Ranking:
     def add(self, id, value):
         label = self.label
         if _DEBUG:
-            print "[DEBUG] Ranking.do_add: rank:",label , " id:", id, " value", value
+            print "[DEBUG] Ranking.do_add: rank:", label, " id:", id, " value", value
 
         rank_len = self.rank_len
-        self.redis.zadd(label, value, id)
-        len = self.redis.zcount(label, '-inf', '+inf')
+        tb_rank.zadd(label, value, id)
+        len = tb_rank.zcount(label, '-inf', '+inf')
         if (len - BUF_SIZE) > rank_len:
-            self.redis.zremrangebyrank(label, 0, (len - rank_len))
+            tb_rank.zremrangebyrank(label, 0, (len - rank_len))
             if _DEBUG:
-                len = self.redis.zcount(label, '-inf', '+inf')
+                len = tb_rank.zcount(label, '-inf', '+inf')
                 print "[DEBUG] Ranking.do_add: do remove due to too long, now len =", len
 
     def get(self, start=1, end=1):
         """
         获取排名：start-end
         """
-        print start, end, self.redis.zcount(self.label, '-inf', '+inf')
-        return self.redis.zrevrange(self.label, start-1, end-1, withscores=True)
+        print start, end, tb_rank.zcount(self.label, '-inf', '+inf')
+        return tb_rank.zrevrange(self.label, start-1, end-1, withscores=True)
 
     def get_rank_no(self, key):
         """
         获取某个key的名次
         """
-        rank_no = self.redis.zrank(self.label, key)
+        rank_no = tb_rank.zrank(self.label, key)
         if not rank_no:
             return 0
         return rank_no + 1
-
 
     def get_value(self, key):
         """
         获取某个key的值
         """
-        value = self.redis.zscore(self.label, key)
+        value = tb_rank.zscore(self.label, key)
         if not value:
             return 0
         return value
@@ -79,15 +78,14 @@ class Ranking:
         """
         增加值，根据key
         """
-        return self.redis.zincrby(self.label, key, value)
-
+        return tb_rank.zincrby(self.label, key, value)
 
     def clear_rank(self):
-        self.redis.zremrangebyrank(self.label, 0, -1)
+        tb_rank.zremrangebyrank(self.label, 0, -1)
 
 
 def testcase1():
-    redis_client.connect("127.0.0.1", "6379", 0)
+    # redis_client.connect("127.0.0.1", "6379", 0)
 
     Ranking.init("Level", 20)
 
@@ -95,7 +93,7 @@ def testcase1():
 
     for i in xrange(2000):
         uid = "uid%d" % i
-        level = i #random.randint(1, 10000)
+        level = i  # random.randint(1, 10000)
 
         level_instance.add(uid, level)  # 添加rank数据
 

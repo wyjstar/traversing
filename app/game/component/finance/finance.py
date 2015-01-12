@@ -50,7 +50,7 @@ class CharacterFinanceComponent(Component):
         #          'finances': self._finances}
         props = {'finances': self._finances}
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
-        character_obj.update_multi(props)
+        character_obj.hmset(props)
 
     def __getitem__(self, res_type):
         if res_type >= len(self._finances):
