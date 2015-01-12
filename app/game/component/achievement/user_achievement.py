@@ -249,7 +249,7 @@ class UserAchievement(Component):
                 self._tasks = {}
             self._lively = live_data.hget('lively')
             self._event_task_map = live_data.hget('event_map')
-            self._last_day = live_data.hget('last_day', '')
+            self._last_day = live_data.hget('last_day')
         else:
             data = dict(tasks={'1':cPickle.dumps(self._tasks)},
                         lively=self._lively,
