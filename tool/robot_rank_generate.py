@@ -18,6 +18,7 @@ from gfirefly.distributed.node import RemoteObject
 from shared.db_opear.configs_data.game_configs import robot_born_config
 from shared.db_opear.configs_data.game_configs import rand_name_config
 from shared.db_opear.configs_data.game_configs import hero_config
+from gfirefly.dbentrust.redis_manager import redis_manager
 
 
 GlobalObject().remote['gate'] = RemoteObject('gate')
@@ -50,6 +51,8 @@ def init_line_up(player, robot_config, level):
 
 
 if __name__ == '__main__':
+    redis_config = ["127.0.0.1:11211"]
+    redis_manager.connection_setup(redis_config)
     log_init_only_out()
 
     mconfig = json.load(open('models.json', 'r'))
@@ -67,7 +70,7 @@ if __name__ == '__main__':
     dbpool.initPool(host=hostname, user=user,
                     passwd=password, port=port,
                     db=dbname, charset=charset)
-    mclient.connect(["127.0.0.1:11211"], 'robot')
+    # mclient.connect(["127.0.0.1:11211"], 'robot')
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 

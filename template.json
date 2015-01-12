@@ -28,7 +28,6 @@
             "rootport": 20000,
             "webport": 20097,
             "name": "login",
-            "mem": true,
             "app": "app.login",
             "log": "app/logs/login.log"
         },
@@ -58,7 +57,6 @@
                     "rootname": "world"
                 }
             ],
-            "mem": true,
             "redis": true,
             "db": true,
             "app": "app.gate",
@@ -87,7 +85,7 @@
                 }
             ],
             "name": "game",
-            "mem": true,
+            "db": true,
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
@@ -101,7 +99,7 @@
                 }
             ],
             "name": "game",
-            "mem": true,
+            "db": true,
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game1.log",
@@ -136,7 +134,7 @@
     },
     "redis": {
         "urls": ["127.0.0.1:11211"],
-        "hostname": "mem"
+        "hostname": "tt"
     },
     "tlog":{
          "host": "127.0.0.1",
