@@ -106,7 +106,7 @@ class RedisObject(object):
         return True
 
     def set(self, key, value):
-        produce_key = self.produceKey(key)
+        produce_key = self.produceKey(str(key))
         self._client.set(produce_key, cPickle.dumps(value))
 
     def get(self, key):
