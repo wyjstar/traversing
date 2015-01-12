@@ -27,7 +27,8 @@ class CharacterSignInComponent(Component):
             self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
             self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
         else:
-            tb_character_info.hset('sign_in', {})
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.hset('sign_in', {})
 
     def save_data(self):
         props = dict(

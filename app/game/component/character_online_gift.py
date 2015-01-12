@@ -29,7 +29,8 @@ class CharacterOnlineGift(Component):
             data = dict(online_time=self._online_time,
                         refresh_time=self._refresh_time,
                         received_gift_ids=self._received_gift_ids)
-            tb_character_info.hset('online_gift', data)
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.hset('online_gift', data)
 
     def save_data(self):
         self.check_time()

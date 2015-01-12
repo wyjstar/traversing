@@ -15,7 +15,7 @@ import cPickle
 import random
 
 
-tb_mineboss = RedisObject('tb_character_info')
+tb_boss = RedisObject('tb_boss')
 
 
 class WorldBoss(BaseBoss):
@@ -32,7 +32,7 @@ class WorldBoss(BaseBoss):
 
     def init_data(self):
         """docstring for init_data"""
-        str_data = tb_mineboss.get(self._boss_name)
+        str_data = tb_boss.get(self._boss_name)
         if not str_data:
             logger.debug("init data...")
             self.update_boss()
@@ -58,7 +58,7 @@ class WorldBoss(BaseBoss):
                                stage_id_pm=self._stage_id_pm,)
         world_boss_data.update(base_boss_data)
         str_data = cPickle.dumps(world_boss_data)
-        tb_mineboss.set(self._boss_name, str_data)
+        tb_boss.set(self._boss_name, str_data)
 
     def loop_update(self):
         if self._stage_id and self.in_the_time_period() and self._state == 0:

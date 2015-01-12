@@ -62,7 +62,8 @@ class CharacterLoginGiftComponent(Component):
 
                 self.save_data()
         else:
-            tb_character_info.hset('login_gift', {'last_login': int(time.time()),
+            char_obj = tb_character_info.getObj(self.owner.base_info.id)
+            char_obj.hset('login_gift', {'last_login': int(time.time()),
                                                   'continuous_received': [],
                                                   'cumulative_received': [],
                                                   'continuous_day': [1, 1],
