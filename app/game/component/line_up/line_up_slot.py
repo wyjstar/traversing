@@ -81,6 +81,9 @@ class LineUpSlotComponent(Component):
         @param hero_no: 英雄编号
         @return:
         """
+        if hero_no == 0:
+            for i in range(1, 7):
+                self.change_equipment(i, '0')
         self._hero_slot.hero_no = hero_no
 
     def change_equipment(self, no, equipment_id):

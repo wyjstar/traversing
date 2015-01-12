@@ -16,7 +16,7 @@ from shared.utils.date_util import str_time_period_to_timestamp
 from gfirefly.server.logobj import logger
 
 
-tb_baseboss = RedisObject('tb_character_info')
+tb_baseboss = RedisObject('tb_baseboss')
 
 
 class BaseBoss(object):
