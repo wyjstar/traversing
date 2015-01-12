@@ -7,7 +7,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 import cPickle
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.hero import Hero
-from app.game.redis_mode import tb_character_line_up
+from app.game.redis_mode import tb_character_info
 from app.game.redis_mode import tb_character_info
 from app.game.core.check import check_have_equipment
 from gfirefly.server.logobj import logger
@@ -46,11 +46,11 @@ def get_target_line_up_info_706(pro_data, player):
             hero.init_data(data)
             heros_obj[hero.hero_no] = hero
 
-        line_up_data = tb_character_line_up.getObj(target_id)
+        line_up_data = tb_character_info.getObj(target_id)
 
         if line_up_data:
             # 阵容位置信息
-            line_up_slots = line_up_data.get('line_up_slots')
+            line_up_slots = line_up_data.hget('line_up_slots')
 
             for slot_no, slot1 in line_up_slots.items():
                 slot = cPickle.loads(slot1)
@@ -132,7 +132,7 @@ def get_target_line_up_info_706(pro_data, player):
                                 minor_attr_pb.attr_increment = attr_increment
 
             # 助威位置信息
-            line_sub_slots = line_up_data.get('sub_slots')
+            line_sub_slots = line_up_data.hget('sub_slots')
             for sub_slot_no, sub_slot in line_sub_slots.items():
                 slot = cPickle.loads(sub_slot)
 

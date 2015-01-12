@@ -9,10 +9,6 @@ tb_account.insert()
 tb_character_info = RedisObject('tb_character_info', 'id')
 tb_character_info.insert()
 
-# ��ㄦ�烽�靛�逛俊���
-tb_character_line_up = RedisObject('tb_character_line_up', 'id')
-tb_character_line_up.insert()
-
 # ���浼�淇℃��琛�
 tb_guild_info = RedisObject('tb_guild_info', 'id')
 tb_guild_info.insert()

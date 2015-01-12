@@ -15,8 +15,6 @@ def register_madmin():
     MAdminManager().registe(memmode.tb_character_info)
     # 帐号表
     MAdminManager().registe(memmode.tb_account)
-    # 用户阵容信息
-    MAdminManager().registe(memmode.tb_character_line_up)
     # 公会信息表
     MAdminManager().registe(memmode.tb_guild_info)
     # 玩家公会表
