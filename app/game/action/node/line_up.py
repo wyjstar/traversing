@@ -18,7 +18,7 @@ from app.proto_file.common_pb2 import CommonResponse
 def get_line_up_info_701(pro_data, player):
     """取得阵容信息 """
     response = line_up_info(player)
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 

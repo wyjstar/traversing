@@ -24,7 +24,7 @@ def get_heros_101(pro_data, player):
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
 
-    print response, "*"*80
+    # print response, "*"*80
     return response.SerializePartialToString()
 
 
