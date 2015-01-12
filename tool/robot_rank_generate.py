@@ -62,9 +62,9 @@ if __name__ == '__main__':
     GlobalObject().json_model_default_config = model_default_config
 
     hostname = "127.0.0.1"
-    user = "test"
-    password = "test"
-    port = 8066
+    user = "root"
+    password = "123456"
+    port = 3306
     dbname = "db_traversing"
     charset = "utf8"
     dbpool.initPool(host=hostname, user=user,
