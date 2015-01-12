@@ -23,7 +23,8 @@ class CharacterStaminaComponent(Component):
         self._last_gain_stamina_time = 0  # 上次获取体力时间
         self._last_mail_day = ''  # 上次通过邮件获取的体力的日期-周期
 
-    def init_stamina(self, stamina_data):
+    def init_data(self, character_info):
+        stamina_data = character_info.get('stamina')
         if stamina_data:
             self._open_receive = stamina_data.get('open_receive')
             if self._open_receive is None:

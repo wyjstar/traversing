@@ -33,37 +33,37 @@ class CharacterLineUpComponent(Component):
                                  LineUpSlotComponent(self, slot_no)) for
                                 slot_no in range(1, 7)])  # 卡牌位替补
 
-        self._line_up_order = [1,2,3,4,5,6]
+        self._line_up_order = [1, 2, 3, 4, 5, 6]
         self._unpars = {}  # 无双
 
-    def init_data(self):
-        line_up_data = tb_character_info.getObj(self.character_id)
+    def init_data(self, character_info):
 
-        line_up_slots = line_up_data.hget('line_up_slots')
+        line_up_slots = character_info.get('line_up_slots')
         if line_up_slots:
             # 阵容位置信息
             for slot_no, slot in line_up_slots.items():
                 line_up_slot = LineUpSlotComponent.loads(self, slot)
                 self._line_up_slots[slot_no] = line_up_slot
             # 助威位置信息
-            line_sub_slots = line_up_data.hget('sub_slots')
+            line_sub_slots = character_info.get('sub_slots')
             for sub_slot_no, sub_slot in line_sub_slots.items():
                 line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
                 self._sub_slots[sub_slot_no] = line_sub_slot
-            self._line_up_order = line_up_data.hget('line_up_order')
-            self._unpars = line_up_data.hget('unpars')
+            self._line_up_order = character_info.get('line_up_order')
+            self._unpars = character_info.get('unpars')
         else:
             __line_up_slots = dict([(slot_no,
-                                     LineUpSlotComponent(self, slot_no).dumps())
+                                    LineUpSlotComponent(self, slot_no).dumps())
                                     for slot_no in self._line_up_slots.keys()])
             __sub_slots = dict([(slot_no,
-                                 LineUpSlotComponent(self, slot_no).dumps()) for
+                                LineUpSlotComponent(self, slot_no).dumps()) for
                                 slot_no in self._sub_slots.keys()])
             data = dict(line_up_slots=__line_up_slots,
                         sub_slots=__sub_slots,
                         line_up_order=self._line_up_order,
                         unpars=self._unpars)
-            line_up_data.new(data)
+            char_obj = tb_character_info.getObj(self.character_id)
+            char_obj.new(data)
 
         self.update_slot_activation()
 

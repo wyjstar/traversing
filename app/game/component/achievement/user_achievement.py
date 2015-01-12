@@ -237,37 +237,33 @@ class UserAchievement(Component):
         self._last_day = ''
         self._update = False
 
-    def init_data(self):
-        live_data = tb_character_info.getObj(self.owner.base_info.id)
-
-        tasks = live_data.hget('tasks')
+    def init_data(self, character_info):
+        tasks = character_info.get('tasks')
         if tasks:
             all_tasks = tasks.get('1')
             if all_tasks:
                 self._tasks = cPickle.loads(all_tasks)
             else:
                 self._tasks = {}
-            self._lively = live_data.hget('lively')
-            self._event_task_map = live_data.hget('event_map')
-            self._last_day = live_data.hget('last_day')
+            self._lively = character_info.get('lively')
+            self._event_task_map = character_info.get('event_map')
+            self._last_day = character_info.get('last_day')
         else:
-            data = dict(tasks={'1':cPickle.dumps(self._tasks)},
+            data = dict(tasks={'1': cPickle.dumps(self._tasks)},
                         lively=self._lively,
                         event_map=self._event_task_map,
                         last_day=self._last_day)
-            live_data.new(data)
+            lively_obj = tb_character_info.getObj(self.owner.base_info.id)
+            lively_obj.new(data)
 
     def save_data(self):
         lively_obj = tb_character_info.getObj(self.owner.base_info.id)
-        if lively_obj:
-            data = {'tasks': {'1':cPickle.dumps(self._tasks)},
-                    'lively':self._lively,
-                    'event_map': self._event_task_map,
-                    'last_day':self._last_day}
-            lively_obj.hmset(data)
-        else:
-            logger.error('cant find achievement:%s', self.owner.base_info.id)
-    
+        data = {'tasks': {'1': cPickle.dumps(self._tasks)},
+                'lively': self._lively,
+                'event_map': self._event_task_map,
+                'last_day': self._last_day}
+        lively_obj.hmset(data)
+
     def _reset(self):
         self._tasks = {}
         self._lively = 0

@@ -32,18 +32,18 @@ class CharacterRuntComponent(Component):
         else:
             character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
             character_info_obj.hmset({'m_runt': self._m_runt,
-                                             'stone1': self._stone1,
-                                             'stone2': self._stone2,
-                                             'refresh_runt': self._refresh_runt,
-                                             'refresh_times': self._refresh_times})
+                                      'stone1': self._stone1,
+                                      'stone2': self._stone2,
+                                      'refresh_runt': self._refresh_runt,
+                                      'refresh_times': self._refresh_times})
 
     def save(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'m_runt': self._m_runt,
-                               'stone1': self._stone1,
-                               'stone2': self._stone2,
-                               'refresh_runt': self._refresh_runt,
-                               'refresh_times': self._refresh_times})
+                        'stone1': self._stone1,
+                        'stone2': self._stone2,
+                        'refresh_runt': self._refresh_runt,
+                        'refresh_times': self._refresh_times})
 
     def build_refresh(self):
         refresh_id = None

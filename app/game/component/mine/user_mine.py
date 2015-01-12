@@ -679,9 +679,8 @@ class UserMine(Component):
         
         self._guard = {} #玩家驻守的英雄与装备，失效的时候，退回
         
-    def init_data(self):
-        mine_data = tb_character_info.getObj(self.owner.base_info.id)
-        mine = mine_data.hget('mine')
+    def init_data(self, character_info):
+        mine = character_info.get('mine')
         if mine:
             all_mine = mine.get('1')
             if all_mine:
@@ -690,19 +689,20 @@ class UserMine(Component):
                 print '12244444444444444444444444444444444'
                 self._mine = {}
                 self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
-            self._reset_day = mine_data.hget('reset_day')
-            self._reset_times = mine_data.hget('reset_times')
-            self._tby = mine_data.hget('day_before')
-            self._lively = mine_data.hget('lively')
-            self._guard = mine_data.hget('guard')
+            self._reset_day = character_info.get('reset_day')
+            self._reset_times = character_info.get('reset_times')
+            self._tby = character_info.get('day_before')
+            self._lively = character_info.get('lively')
+            self._guard = character_info.get('guard')
         else:
             data = dict(id=self.owner.base_info.id,
-                        mine={'1':cPickle.dumps(self._mine)},
+                        mine={'1': cPickle.dumps(self._mine)},
                         reset_day=self._reset_day,
                         reset_times=self._reset_times,
                         day_before=self._tby,
                         lively=self._lively,
                         guard=self._guard)
+            mine_data = tb_character_info.getObj(self.owner.base_info.id)
             mine_data.new(data)
 
     def save_data(self):
