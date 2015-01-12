@@ -244,11 +244,11 @@ def find_friend_request_1107(data, player):
         player_data = tb_character_info.getObj(pid)
 
     if isexist:
-        response.id = player_data.get('id')
-        response.nickname = player_data.get('nickname')
+        response.id = player_data.hget('id')
+        response.nickname = player_data.hget('nickname')
 
         # 添加好友主将的属性
-        _with_battle_info(response, player_data.get('id'))
+        _with_battle_info(response, player_data.hget('id'))
 
     return response.SerializePartialToString()
 
