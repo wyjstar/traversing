@@ -19,7 +19,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         conf = self.get_stage_config()
         tm_time = time.localtime(player.stage_component.elite_stage_info[1])
         if tm_time.tm_mday == time.localtime().tm_mday \
-            and vip_config.get(player.vip_component.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
+            and vip_config.get(player.base_info.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
             logger.error("精英关卡开始战斗出错: %s" % 805)
             return {'result': False, 'result_no': 805}  # 805 次数不足
         return {'result': True}

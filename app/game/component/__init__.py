@@ -7,7 +7,6 @@ from character_line_up import CharacterLineUpComponent
 from character_online_gift import CharacterOnlineGift
 from equipment.character_equipment_chip import CharacterEquipmentChipComponent
 from fight.fight_cache import CharacterFightCacheComponent
-from level.character_level import CharacterLevelComponent
 from pack.character_equipment_package import CharacterEquipmentPackageComponent
 from pack.character_item_package import CharacterItemPackageComponent
 from stage.character_stage import CharacterStageComponent
@@ -23,7 +22,6 @@ from character_feast import CharacterFeastComponent
 from character_login_gift import CharacterLoginGiftComponent
 from character_level_gift import CharacterLevelGift
 from character_world_boss import CharacterWorldBoss
-from character_vip import CharacterVIPComponent
 from character_stamina import CharacterStaminaComponent
 from character_shop import CharacterShopComponent
 from brew.brew import CharacterBrewComponent
@@ -37,7 +35,7 @@ from baseInfo.CharacterBaseInfoComponent import CharacterBaseInfoComponent
 
 __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterEquipmentChipComponent', 'CharacterFightCacheComponent',
-           'CharacterLevelComponent', 'CharacterEquipmentPackageComponent',
+           'CharacterEquipmentPackageComponent', 'CharacterRuntComponent',
            'CharacterItemPackageComponent', 'CharacterStageComponent',
            'CharacterHerosComponent', 'CharacterFinanceComponent',
            'CharacterHeroChipsComponent', 'CharacterLastPickTimeComponent',
@@ -45,9 +43,8 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterMailComponent', 'CharacterSignInComponent',
            'CharacterFeastComponent', 'CharacterLoginGiftComponent',
            'CharacterLevelGift', 'CharacterWorldBoss',
-           'CharacterVIPComponent', 'CharacterStaminaComponent',
-           'CharacterShopComponent', 'CharacterBrewComponent',
-           'CharacterTravelComponent', 'UserAchievement',
-           'UserMine', 'UserStone', 'CharacterRuntComponent',
+           'CharacterStaminaComponent', 'CharacterShopComponent',
+           'CharacterBrewComponent', 'CharacterTravelComponent',
+           'UserAchievement', 'UserMine', 'UserStone',
            'CharacterBaseInfoComponent'
            ]

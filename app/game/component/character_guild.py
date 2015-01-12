@@ -29,28 +29,14 @@ class CharacterGuildComponent(Component):
         """
         初始化公会组件
         """
-        if character_info.get('guild_id'):
-            self._g_id = character_info.get("guild_id")
-            self._position = character_info.get("position")
-            self._contribution = character_info.get("contribution")
-            self._all_contribution = character_info.get("all_contribution")
-            self._k_num = character_info.get("k_num")
-            self._worship = character_info.get("worship")
-            self._worship_time = character_info.get("worship_time")
-            self._exit_time = character_info.get("exit_time")
-        else:
-            # 没有公会数据
-            pid = self.owner.base_info.id
-            character_info_obj = tb_character_info.getObj(pid)
-            data = {'guild_id': self._g_id,
-                    'position': self._position,
-                    'contribution': self._contribution,
-                    'all_contribution': self._all_contribution,
-                    'k_num': self._k_num,
-                    'worship': self._worship,
-                    'worship_time': self._worship_time,
-                    'exit_time': self._exit_time}
-            character_info_obj.hmset(data)
+        self._g_id = character_info.get("guild_id")
+        self._position = character_info.get("position")
+        self._contribution = character_info.get("contribution")
+        self._all_contribution = character_info.get("all_contribution")
+        self._k_num = character_info.get("k_num")
+        self._worship = character_info.get("worship")
+        self._worship_time = character_info.get("worship_time")
+        self._exit_time = character_info.get("exit_time")
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -62,6 +48,17 @@ class CharacterGuildComponent(Component):
                         'worship': self._worship,
                         'worship_time': self._worship_time,
                         'exit_time': self._exit_time})
+
+    def new_data(self):
+        data = {'guild_id': self._g_id,
+                'position': self._position,
+                'contribution': self._contribution,
+                'all_contribution': self._all_contribution,
+                'k_num': self._k_num,
+                'worship': self._worship,
+                'worship_time': self._worship_time,
+                'exit_time': self._exit_time}
+        return data
 
     def get_guild_level(self):
         if self._g_id == "no":

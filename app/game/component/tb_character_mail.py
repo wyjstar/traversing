@@ -19,7 +19,7 @@ class CharacterMailComponent(Component):
         super(CharacterMailComponent, self).__init__(owner)
         self._mails = {}
 
-    def init_data(self):
+    def init_data(self, c):
         pid = self.owner.base_info.id
         char_obj = tb_character_info.getObj(pid)
         mails = char_obj.smem('mails')
@@ -27,6 +27,9 @@ class CharacterMailComponent(Component):
             mail = Mail()
             mail.init_data(mail_data)
             self._mails[mail.mail_id] = mail
+
+    def new_data(self):
+        return {}
 
     def new_mail_data(self, mail):
         character_id = self.owner.base_info.id

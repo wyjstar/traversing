@@ -36,7 +36,7 @@ def travel_831(data, player):
     stage_id = args.stage_id
     response = TravelResponse()
 
-    if base_config.get('travelOpenLevel') > player.level.level:
+    if base_config.get('travelOpenLevel') > player.base_info.level:
         response.res.result = False
         response.res.result_no = 811  # 等级不够
         return response.SerializeToString()
@@ -526,7 +526,7 @@ def fast_finish_auto_839(data, player):
         response.res.result_no = 820
         return response.SerializeToString()
 
-    if not vip_config.get(player.vip_component.vip_level).autoTravelGet:
+    if not vip_config.get(player.base_info.vip_level).autoTravelGet:
         logger.error('auto travel dont finish')
         response.res.result = False
         response.res.result_no = 822

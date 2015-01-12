@@ -20,54 +20,46 @@ class CharacterLoginGiftComponent(Component):
         self._last_login = int(time.time())  # 日期
 
     def init_data(self, character_info):
-        data = tb_character_info.get('login_gift')
-        if data:
-            # print data, type(data)
-            # print time.localtime(data.get('last_login')), type(time.localtime(data.get('last_login')))
-            if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday:  # 上次更新是今天
-                self._continuous_received = data.get('continuous_received')
+        data = character_info.get('login_gift')
+        # print data, type(data)
+        # print time.localtime(data.get('last_login')), type(time.localtime(data.get('last_login')))
+        if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday:  # 上次更新是今天
+            self._continuous_received = data.get('continuous_received')
+            self._cumulative_received = data.get('cumulative_received')
+            self._continuous_day = data.get('continuous_day')
+            self._cumulative_day = data.get('cumulative_day')
+        else:  # 上次更新不是今天，需要更新活动数据
+            # 累积登录活动
+            cumulative_login_config = activity_config.get(1)[0]  # 新注册用户的累积活动配置
+            if data.get('cumulative_day')[1] and (data.get('cumulative_day')[0]+1) <= cumulative_login_config.get('parameterB'):
+                # 新手累积登录活动
+                self._cumulative_day[0] = data.get('cumulative_day')[0] + 1
+                self._cumulative_day[1] = 1
                 self._cumulative_received = data.get('cumulative_received')
-                self._continuous_day = data.get('continuous_day')
-                self._cumulative_day = data.get('cumulative_day')
-            else:  # 上次更新不是今天，需要更新活动数据
-                # 累积登录活动
-                cumulative_login_config = activity_config.get(1)[0]  # 新注册用户的累积活动配置
-                if data.get('cumulative_day')[1] and (data.get('cumulative_day')[0]+1) <= cumulative_login_config.get('parameterB'):
-                    # 新手累积登录活动
-                    self._cumulative_day[0] = data.get('cumulative_day')[0] + 1
-                    self._cumulative_day[1] = 1
-                    self._cumulative_received = data.get('cumulative_received')
-                else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
-                    self._cumulative_day[0] = data.get('cumulative_day')[0]
-                    self._cumulative_day[1] = 1
-                    self._cumulative_received = data.get('cumulative_received')
+            else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
+                self._cumulative_day[0] = data.get('cumulative_day')[0]
+                self._cumulative_day[1] = 1
+                self._cumulative_received = data.get('cumulative_received')
 
-                continuous_login_config = activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
-                if data.get('continuous_day')[1] and (data.get('continuous_day')[0]+1) <= continuous_login_config.get('parameterB'):
-                    # 新手连续登录活动
-                    # TODO  判断是不是昨天！！！！！！！！！！！！！！！！！！！！！！！
-                    if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday-1:
-                        self._continuous_day[0] = data.get('continuous_day')[0] + 1
-                        self._continuous_day[1] = 1
-                        self._continuous_received = data.get('continuous_received')
-                    else:  # 不是昨天
-                        self._continuous_day[0] = 1
-                        self._continuous_day[1] = 1
-                        self._continuous_received = data.get('continuous_received')
-                else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
-                    self._continuous_day[0] = data.get('continuous_day')[0]
+            continuous_login_config = activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
+            if data.get('continuous_day')[1] and (data.get('continuous_day')[0]+1) <= continuous_login_config.get('parameterB'):
+                # 新手连续登录活动
+                # TODO  判断是不是昨天！！！！！！！！！！！！！！！！！！！！！！！
+                if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday-1:
+                    self._continuous_day[0] = data.get('continuous_day')[0] + 1
                     self._continuous_day[1] = 1
                     self._continuous_received = data.get('continuous_received')
-                self._last_login = int(time.time())
+                else:  # 不是昨天
+                    self._continuous_day[0] = 1
+                    self._continuous_day[1] = 1
+                    self._continuous_received = data.get('continuous_received')
+            else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
+                self._continuous_day[0] = data.get('continuous_day')[0]
+                self._continuous_day[1] = 1
+                self._continuous_received = data.get('continuous_received')
+            self._last_login = int(time.time())
 
-                self.save_data()
-        else:
-            char_obj = tb_character_info.getObj(self.owner.base_info.id)
-            char_obj.hset('login_gift', {'last_login': int(time.time()),
-                                                  'continuous_received': [],
-                                                  'cumulative_received': [],
-                                                  'continuous_day': [1, 1],
-                                                  'cumulative_day': [1, 1]})
+            self.save_data()
 
     def save_data(self):
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
@@ -77,6 +69,13 @@ class CharacterLoginGiftComponent(Component):
             'cumulative_day': self._cumulative_day,
             'continuous_day': self._continuous_day,
             'last_login': self._last_login})
+
+    def new_data(self):
+        return {'login_gift': {'last_login': int(time.time()),
+                               'continuous_received': [],
+                               'cumulative_received': [],
+                               'continuous_day': [1, 1],
+                               'cumulative_day': [1, 1]}}
 
     @property
     def continuous_received(self):

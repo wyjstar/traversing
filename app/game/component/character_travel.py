@@ -20,44 +20,39 @@ class CharacterTravelComponent(Component):
         self._chest_time = 1  # 上次领取宝箱时间
         self._fight_cache = [0, 0]  # [stage_id, event_id]
 
-
-
         # {stage_id:[{start_tiem:0, continued_time:0,
         # 'events': [[state, event_id, drop, start_time]], already_times: 0}]}
         self._auto = {}
 
     def init_data(self, character_info):
-        if character_info.get('travel_item'):
-            self._travel = character_info.get('travel')
-            self._travel_item = character_info.get('travel_item')
-            self._shoes = character_info.get('shoes')
-            self._chest_time = character_info.get('chest_time')
-            self._fight_cache = character_info.get('fight_cache')
-            self._auto = character_info.get('auto')
-            for travel_stage_id in game_configs.stage_config. \
-                    get('travel_stages'):
-                if not self._travel_item.get(travel_stage_id):
-                    self._travel_item[travel_stage_id] = []
-        else:
-            for travel_stage_id in game_configs.stage_config. \
-                    get('travel_stages'):
+        self._travel = character_info.get('travel')
+        self._travel_item = character_info.get('travel_item')
+        self._shoes = character_info.get('shoes')
+        self._chest_time = character_info.get('chest_time')
+        self._fight_cache = character_info.get('fight_cache')
+        self._auto = character_info.get('auto')
+        for travel_stage_id in game_configs.stage_config.get('travel_stages'):
+            if not self._travel_item.get(travel_stage_id):
                 self._travel_item[travel_stage_id] = []
-            character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
-            character_info_obj.hmset({'travel': self._travel,
-                                             'travel_item': self._travel_item,
-                                             'shoes': self._shoes,
-                                             'chest_time': self._chest_time,
-                                             'auto': self._auto,
-                                             'fight_cache': self._fight_cache})
 
     def save(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'travel': self._travel,
-                               'travel_item': self._travel_item,
-                               'shoes': self._shoes,
-                               'chest_time': self._chest_time,
-                               'auto': self._auto,
-                               'fight_cache': self._fight_cache})
+                        'travel_item': self._travel_item,
+                        'shoes': self._shoes,
+                        'chest_time': self._chest_time,
+                        'auto': self._auto,
+                        'fight_cache': self._fight_cache})
+
+    def new_data(self):
+        for travel_stage_id in game_configs.stage_config.get('travel_stages'):
+            self._travel_item[travel_stage_id] = []
+        return {'travel': self._travel,
+                'travel_item': self._travel_item,
+                'shoes': self._shoes,
+                'chest_time': self._chest_time,
+                'auto': self._auto,
+                'fight_cache': self._fight_cache}
 
     def get_travel_item_groups(self):
         groups = []
@@ -84,7 +79,8 @@ class CharacterTravelComponent(Component):
             physical_def += conf.physicalDef
             magic_def += conf.magicDef
 
-        return CommonItem(dict(hp=hp, atk=atk, physical_def=physical_def, magic_def=magic_def))
+        return CommonItem(dict(hp=hp, atk=atk, physical_def=physical_def,
+                               magic_def=magic_def))
 
     @property
     def shoes(self):

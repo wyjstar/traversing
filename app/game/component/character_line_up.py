@@ -37,33 +37,18 @@ class CharacterLineUpComponent(Component):
         self._unpars = {}  # 无双
 
     def init_data(self, character_info):
-
         line_up_slots = character_info.get('line_up_slots')
-        if line_up_slots:
-            # 阵容位置信息
-            for slot_no, slot in line_up_slots.items():
-                line_up_slot = LineUpSlotComponent.loads(self, slot)
-                self._line_up_slots[slot_no] = line_up_slot
-            # 助威位置信息
-            line_sub_slots = character_info.get('sub_slots')
-            for sub_slot_no, sub_slot in line_sub_slots.items():
-                line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
-                self._sub_slots[sub_slot_no] = line_sub_slot
-            self._line_up_order = character_info.get('line_up_order')
-            self._unpars = character_info.get('unpars')
-        else:
-            __line_up_slots = dict([(slot_no,
-                                    LineUpSlotComponent(self, slot_no).dumps())
-                                    for slot_no in self._line_up_slots.keys()])
-            __sub_slots = dict([(slot_no,
-                                LineUpSlotComponent(self, slot_no).dumps()) for
-                                slot_no in self._sub_slots.keys()])
-            data = dict(line_up_slots=__line_up_slots,
-                        sub_slots=__sub_slots,
-                        line_up_order=self._line_up_order,
-                        unpars=self._unpars)
-            char_obj = tb_character_info.getObj(self.character_id)
-            char_obj.new(data)
+        # 阵容位置信息
+        for slot_no, slot in line_up_slots.items():
+            line_up_slot = LineUpSlotComponent.loads(self, slot)
+            self._line_up_slots[slot_no] = line_up_slot
+        # 助威位置信息
+        line_sub_slots = character_info.get('sub_slots')
+        for sub_slot_no, sub_slot in line_sub_slots.items():
+            line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
+            self._sub_slots[sub_slot_no] = line_sub_slot
+        self._line_up_order = character_info.get('line_up_order')
+        self._unpars = character_info.get('unpars')
 
         self.update_slot_activation()
 
@@ -80,17 +65,30 @@ class CharacterLineUpComponent(Component):
         line_up_obj = tb_character_info.getObj(self.character_id)
         line_up_obj.hmset(props)
 
+    def new_data(self):
+        __line_up_slots = dict([(slot_no,
+                                LineUpSlotComponent(self, slot_no).dumps())
+                                for slot_no in self._line_up_slots.keys()])
+        __sub_slots = dict([(slot_no,
+                            LineUpSlotComponent(self, slot_no).dumps()) for
+                            slot_no in self._sub_slots.keys()])
+        data = dict(line_up_slots=__line_up_slots,
+                    sub_slots=__sub_slots,
+                    line_up_order=self._line_up_order,
+                    unpars=self._unpars)
+        return data
+
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态
         for i in range(1, 7):
             slot = self._line_up_slots[i]
             __level = base_config.get("hero_position_open_level").get(i)
-            if self.owner.level.level >= __level:
+            if self.owner.base_info.level >= __level:
                 slot.activation = True
         for i in range(1, 7):
             slot = self._sub_slots[i]
             __level = base_config.get("friend_position_open_level").get(i)
-            if self.owner.level.level >= __level:
+            if self.owner.base_info.level >= __level:
                 slot.activation = True
 
     def unpar_upgrade(self, skill_id, skill_upgrade_level):

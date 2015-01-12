@@ -16,18 +16,19 @@ class CharacterLevelGift(Component):
 
     def init_data(self, character_info):
         data = character_info.get('level_gift')
-        if data and data != 'None':
-            self._received_gift_ids = data['received_gift_ids']
-            self._level_gift = data['level_gift']
-        else:
-            self.received_gift_ids = []
-            self.save_data()
+        self._received_gift_ids = data['received_gift_ids']
+        self._level_gift = data['level_gift']
 
     def save_data(self):
         activity = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(received_gift_ids=self._received_gift_ids,
                     level_gift=self._level_gift)
         activity.hset('level_gift', data)
+
+    def new_data(self):
+        data = dict(received_gift_ids=[],
+                    level_gift=self._level_gift)
+        return {'level_gift': data}
 
     @property
     def received_gift_ids(self):

@@ -18,7 +18,7 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    process = BattlePVPProcess(red_units, red_best_skill, player.level.level, blue_units,
+    process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
                                 blue_best_skill, blue_player_level)
     fight_result = process.process()
     return fight_result

@@ -8,7 +8,6 @@ from gfirefly.server.logobj import logger
 
 
 class CharacterSignInComponent(Component):
-    """武将碎片组件"""
 
     def __init__(self, owner):
         super(CharacterSignInComponent, self).__init__(owner)
@@ -18,17 +17,13 @@ class CharacterSignInComponent(Component):
         self._continuous_sign_in_prize = []  # 已经获取的连续签到奖励，保存列表[7，15，25]
         self._repair_sign_in_times = 0  # 补充签到次数
 
-    def init_sign_in(self, character_info):
+    def init_data(self, character_info):
         sign_in_data = character_info.get('sign_in')
-        if sign_in_data:
-            self._month = sign_in_data.get('month', 0)
-            self._sign_in_days = sign_in_data.get('sign_in_days', [])
-            self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days', 0)
-            self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize', [])
-            self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times', 0)
-        else:
-            char_obj = tb_character_info.getObj(self.owner.base_info.id)
-            char_obj.hset('sign_in', {})
+        self._month = sign_in_data.get('month')
+        self._sign_in_days = sign_in_data.get('sign_in_days')
+        self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days')
+        self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize')
+        self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times')
 
     def save_data(self):
         props = dict(
@@ -40,6 +35,15 @@ class CharacterSignInComponent(Component):
 
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
         sign_in_data.hset('sign_in', props)
+
+    def new_data(self):
+        props = dict(
+            month=self._month,
+            sign_in_days=self._sign_in_days,
+            continuous_sign_in_days=self._continuous_sign_in_days,
+            continuous_sign_in_prize=self._continuous_sign_in_prize,
+            repair_sign_in_times=self._repair_sign_in_times)
+        return {'sign_in': props}
 
     @property
     def sign_in_days(self):

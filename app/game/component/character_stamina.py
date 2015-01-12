@@ -25,38 +25,46 @@ class CharacterStaminaComponent(Component):
 
     def init_data(self, character_info):
         stamina_data = character_info.get('stamina')
-        if stamina_data:
-            self._open_receive = stamina_data.get('open_receive')
-            if self._open_receive is None:
-                self._open_receive = 1
-            self._get_stamina_times = stamina_data.get('get_stamina_times')
-            self._buy_stamina_times = stamina_data.get('buy_stamina_times')
-            self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
-            self._last_mail_day = stamina_data.get('last_mail_day', '')
+        self._open_receive = stamina_data.get('open_receive')
+        if self._open_receive is None:
+            self._open_receive = 1
+        self._get_stamina_times = stamina_data.get('get_stamina_times')
+        self._buy_stamina_times = stamina_data.get('buy_stamina_times')
+        self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
+        self._last_mail_day = stamina_data.get('last_mail_day', '')
 
-            # 初始化体力
-            current_time = int(time.time())
-            logger.debug("last_gain_stamina_time:" + str(self._last_gain_stamina_time))
-            logger.debug("peroid_of_stamina_recover:" + str(self.peroid_of_stamina_recover))
+        # 初始化体力
+        current_time = int(time.time())
+        logger.debug("last_gain_stamina_time:" + str(self._last_gain_stamina_time))
+        logger.debug("peroid_of_stamina_recover:" + str(self.peroid_of_stamina_recover))
 
-            stamina_add = (current_time - self._last_gain_stamina_time) / self.peroid_of_stamina_recover
-            left_stamina = (current_time - self._last_gain_stamina_time) % self.peroid_of_stamina_recover
+        stamina_add = (current_time - self._last_gain_stamina_time) / self.peroid_of_stamina_recover
+        left_stamina = (current_time - self._last_gain_stamina_time) % self.peroid_of_stamina_recover
 
-            if self.owner.finance[const.STAMINA] < self.max_of_stamina:  # 如果原来的体力超出上限，则不添加体力
-                self.owner.finance[const.STAMINA] += int(stamina_add)
-                if self.owner.finance[const.STAMINA] > self.max_of_stamina:  # 如果体力超出上限， 则设为上限
-                    self.owner.finance[const.STAMINA] = self.max_of_stamina
-            self._last_gain_stamina_time = current_time - left_stamina
+        if self.owner.finance[const.STAMINA] < self.max_of_stamina:  # 如果原来的体力超出上限，则不添加体力
+            self.owner.finance[const.STAMINA] += int(stamina_add)
+            if self.owner.finance[const.STAMINA] > self.max_of_stamina:  # 如果体力超出上限， 则设为上限
+                self.owner.finance[const.STAMINA] = self.max_of_stamina
+        self._last_gain_stamina_time = current_time - left_stamina
+
+    def save_data(self):
+        props = dict(stamina=self.detail_data)
+        info = tb_character_info.getObj(self.owner.base_info.id)
+        logger.debug(str(props))
+        info.hmset(props)
+
+    def new_data(self):
+        return dict(stamina=self.detail_data)
 
     @property
     def detail_data(self):
         """stamina detail data"""
-        return  {
+        return {
             'open_receive': self._open_receive,
             'get_stamina_times': self._get_stamina_times,
             'buy_stamina_times': self._buy_stamina_times,
             'last_gain_stamina_time': self._last_gain_stamina_time,
-            'last_mail_day':self._last_mail_day,
+            'last_mail_day': self._last_mail_day,
         }
 
     @property
@@ -127,9 +135,3 @@ class CharacterStaminaComponent(Component):
     def last_gain_stamina_time(self, value):
         """已经购买的体力次数"""
         self._last_gain_stamina_time = value
-
-    def save_data(self):
-        props = dict(stamina=self.detail_data)
-        info = tb_character_info.getObj(self.owner.base_info.id)
-        logger.debug(str(props))
-        info.hmset(props)

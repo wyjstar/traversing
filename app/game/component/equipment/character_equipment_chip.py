@@ -20,6 +20,9 @@ class CharacterEquipmentChipComponent(Component):
             equipment_chip = EquipmentChip(chip_no, chip_num)
             self._chips[chip_no] = equipment_chip
 
+    def new_data(self):
+        return {'equipment_chips': {}}
+
     def get_chip(self, chip_no):
         chip = self._chips.get(chip_no)
         return chip

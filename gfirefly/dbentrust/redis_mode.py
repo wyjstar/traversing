@@ -28,6 +28,7 @@ class RedisObject(object):
             raise "type error"
 
     def exists(self):
+        print self._name
         return self._client.exists(self._name) == 1
 
     def hgetall(self):

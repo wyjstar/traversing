@@ -20,7 +20,7 @@ class CharacterEquipmentPackageComponent(Component):
     def equipments_obj(self):
         return self._equipments_obj
 
-    def init_data(self):
+    def init_data(self, c):
         character_id = self.owner.base_info.id
         char_obj = tb_character_info.getObj(self.owner.base_info.id)
         equipments = char_obj.smem('equipments')
@@ -45,6 +45,12 @@ class CharacterEquipmentPackageComponent(Component):
                                       nobbing_effect, is_guard,
                                       main_attr, minor_attr)
             self._equipments_obj[equipment_id] = equipment_obj
+
+    def save_data(self):
+        return
+
+    def new_data(self):
+        return {}
 
     def add_equipment(self, equipment_no):
         """添加装备

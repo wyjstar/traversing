@@ -30,6 +30,12 @@ class CharacterFightCacheComponent(Component):
 
         self._not_replace = []  # 不能替换的英雄
 
+    def init_data(self, c):
+        return
+
+    def new_data(self):
+        return {}
+
     @property
     def red_unit(self):
         """初始创建红方单位

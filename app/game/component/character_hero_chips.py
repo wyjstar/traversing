@@ -19,6 +19,17 @@ class CharacterHeroChipsComponent(Component):
             hero_chip = HeroChip(no, num)
             self._chips[no] = hero_chip
 
+    def save_data(self):
+        props = {}
+        for no, chip in self._chips.items():
+            props[no] = chip.num
+
+        items_data = tb_character_info.getObj(self.owner.base_info.id)
+        items_data.hset('hero_chips', props)
+
+    def new_data(self):
+        return {'hero_chips': {}}
+
     @property
     def chips_count(self):
         return len(self._chips)
@@ -43,11 +54,3 @@ class CharacterHeroChipsComponent(Component):
             self._chips[hero_chip.chip_no].num += hero_chip.num
         else:
             self._chips[hero_chip.chip_no] = hero_chip
-
-    def save_data(self):
-        props = {}
-        for no, chip in self._chips.items():
-            props[no] = chip.num
-
-        items_data = tb_character_info.getObj(self.owner.base_info.id)
-        items_data.hset('hero_chips', props)

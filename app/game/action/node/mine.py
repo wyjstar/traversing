@@ -274,7 +274,7 @@ def guard_1244(data, player):
     info["best_skill_id"] = __skill
     info["best_skill_no"] = __best_skill_no
     info["best_skill_level"] = __skill_level
-    info["level"] = player.level.level
+    info["level"] = player.base_info.level
     info["nickname"] = player.base_info.base_name
     info["character_id"] = player.base_info.id
     info["line_up"] = line_up_response.SerializePartialToString()

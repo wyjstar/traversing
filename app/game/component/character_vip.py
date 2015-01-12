@@ -19,6 +19,9 @@ class CharacterVIPComponent(Component):
         self._vip_level = character_info.get('vip_level')
         self.update_vip()
 
+    def new_data(self):
+        return {'vip_level': 0}
+
     @property
     def vip_level(self):
         return self._vip_level

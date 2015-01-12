@@ -16,17 +16,22 @@ class CharacterItemPackageComponent(Component):
         self._items = {}  # 背包道具 {'item_no': item obj}
 
     def init_data(self, character_info):
-        """初始化道具信息
-        """
         items_data = character_info.get('items')
-        if items_data:
-            for item_no, item_num in items_data.items():
-                item = Item(item_no, item_num)
-                self._items[item_no] = item
-        else:
-            pid = self.owner.base_info.id
-            char_obj = tb_character_info.getObj(pid)
-            char_obj.hset('items', {})
+        for item_no, item_num in items_data.items():
+            item = Item(item_no, item_num)
+            self._items[item_no] = item
+
+    def save_data(self):
+        props = {}
+        for item_no, item in self._items.iteritems():
+            props[item_no] = item.num
+
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
+        logger.debug(str(props))
+        char_obj.hset('items', props)
+
+    def new_data(self):
+        return {'items': {}}
 
     @property
     def items(self):
@@ -59,12 +64,3 @@ class CharacterItemPackageComponent(Component):
             del self._items[item_no]
 
         self.save_data()
-
-    def save_data(self):
-        props = {}
-        for item_no, item in self._items.iteritems():
-            props[item_no] = item.num
-
-        char_obj = tb_character_info.getObj(self.owner.base_info.id)
-        logger.debug(str(props))
-        char_obj.hset('items', props)

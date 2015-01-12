@@ -32,37 +32,33 @@ class CharacterBrewComponent(Component):
 
     def init_data(self, character_data):
         brew = character_data.get('brew')
-        if brew:
-            self._brew_times = brew.get('brew_times')
-            self._brew_date = brew.get('brew_data')
-            # self._nectar = brew.get('nectar')
-            self._nectar_cur = brew.get('nectar_cur')
-            self._brew_step = brew.get('brew_step')
-            self.check_time()
-        else:
-            self.check_time()
-            brew = dict(brew_times=self._brew_times,
-                        brew_data=self._brew_date,
-                        # nectar=self._nectar,
-                        nectar_cur=self._nectar_cur,
-                        brew_step=self._brew_step)
-            char_obj = tb_character_info.getObj(self.owner.base_info.id)
-            char_obj.hset('brew', brew)
+        self._brew_times = brew.get('brew_times')
+        self._brew_date = brew.get('brew_data')
+        self._nectar_cur = brew.get('nectar_cur')
+        self._brew_step = brew.get('brew_step')
+        self.check_time()
 
     def save_data(self):
         char_obj = tb_character_info.getObj(self.owner.base_info.id)
         if char_obj:
             brew = dict(brew_times=self._brew_times,
                         brew_data=self._brew_date,
-                        # nectar=self._nectar,
                         nectar_cur=self._nectar_cur,
                         brew_step=self._brew_step)
             char_obj.hset('brew', brew)
         else:
             logger.error('cant find charinfo:%s', self.owner.base_info.id)
 
+    def new_data(self):
+        self.check_time()
+        brew = dict(brew_times=self._brew_times,
+                    brew_data=self._brew_date,
+                    nectar_cur=self._nectar_cur,
+                    brew_step=self._brew_step)
+        return {'brew': brew}
+
     def do_brew(self, brew_type, response):
-        vip_level = self.owner.vip_component.vip_level
+        vip_level = self.owner.base_info.vip_level
         brew_times_max = vip_config.get(vip_level).get('cookingTimes')
 
         MAX_STEPS = len(base_config.get('cookingWinePrice')[brew_type])
@@ -71,8 +67,9 @@ class CharacterBrewComponent(Component):
         if self._brew_step > MAX_STEPS:
             return False
 
-        if self.owner.level.level < base_config.get('cookingWineOpenLevel'):
-            logger.error('char brew level error!!:%s', self.owner.level.level)
+        if self.owner.base_info.level < base_config.get('cookingWineOpenLevel'):
+            logger.error('char brew level error!!:%s',
+                         self.owner.base_info.level)
             return False
 
         critical = base_config.get('cookingWineOutputCrit')
@@ -121,7 +118,7 @@ cur:%s time:%s cri:%s',
 
     def taken_brew(self):
         self.check_time()
-        vip_level = self.owner.vip_component.vip_level
+        vip_level = self.owner.base_info.vip_level
         brew_times_max = vip_config.get(vip_level).get('cookingTimes')
         if self._brew_times >= brew_times_max:
             logger.error('not enough times to taken brew:%s', self._brew_times)
@@ -140,7 +137,7 @@ cur:%s time:%s cri:%s',
         local_tm = time.localtime()
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._brew_date = time.time()
-            # vip_level = self.owner.vip_component.vip_level
+            # vip_level = self.owner.base_info.vip_level
             self._brew_times = 0
         # logger.debug('brew times vip:%s :%s', vip_level, self._brew_times)
             self._nectar_cur = base_config.get('cookingWineOutput')

@@ -44,7 +44,7 @@ def new_level_gift_840(data, player):
 
     conf = activity_config.get(5)
 
-    for a in range(2, player.level.level):
+    for a in range(2, player.base_info.level):
         if not player.level_gift.level_gift[a]:
             level_info = response.level_info.add()
             level_info.level = a + 1

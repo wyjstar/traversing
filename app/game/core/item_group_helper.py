@@ -238,8 +238,8 @@ def gain(player, item_group, result=None):
             player.stamina.save_data()
 
         elif type_id == const.TEAM_EXPERIENCE:
-            player.level.addexp(num)
-            player.save_data()
+            player.base_info.addexp(num)
+            player.base_info.save_data()
 
         elif type_id == const.TRAVEL_ITEM:
             stage_id = travel_item_config.get('items').get(item_no).stageId

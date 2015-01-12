@@ -23,19 +23,11 @@ class CharacterRuntComponent(Component):
         self._refresh_times = [0, 1]  # 已经使用次数，上次使用时间
 
     def init_data(self, character_info):
-        if character_info.get('m_runt'):
-            self._m_runt = character_info.get('m_runt')
-            self._stone1 = character_info.get('stone1')
-            self._stone2 = character_info.get('stone2')
-            self._refresh_runt = character_info.get('refresh_runt')
-            self._refresh_times = character_info.get('refresh_times')
-        else:
-            character_info_obj = tb_character_info.getObj(self.owner.base_info.id)
-            character_info_obj.hmset({'m_runt': self._m_runt,
-                                      'stone1': self._stone1,
-                                      'stone2': self._stone2,
-                                      'refresh_runt': self._refresh_runt,
-                                      'refresh_times': self._refresh_times})
+        self._m_runt = character_info.get('m_runt')
+        self._stone1 = character_info.get('stone1')
+        self._stone2 = character_info.get('stone2')
+        self._refresh_runt = character_info.get('refresh_runt')
+        self._refresh_times = character_info.get('refresh_times')
 
     def save(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -44,6 +36,13 @@ class CharacterRuntComponent(Component):
                         'stone2': self._stone2,
                         'refresh_runt': self._refresh_runt,
                         'refresh_times': self._refresh_times})
+
+    def new_data(self):
+        return {'m_runt': self._m_runt,
+                'stone1': self._stone1,
+                'stone2': self._stone2,
+                'refresh_runt': self._refresh_runt,
+                'refresh_times': self._refresh_times}
 
     def build_refresh(self):
         refresh_id = None

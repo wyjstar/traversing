@@ -74,7 +74,7 @@ def buy_stamina_6(request_proto, player):
     """购买体力"""
     response = CommonResponse()
 
-    current_vip_level = player.vip_component.vip_level
+    current_vip_level = player.base_info.vip_level
     current_buy_stamina_times = player.stamina.buy_stamina_times
     # current_stamina = player.stamina.stamina
     current_gold = player.finance.gold
@@ -102,7 +102,7 @@ def buy_stamina_6(request_proto, player):
     player.finance.save_data()
 
     player.stamina.buy_stamina_times += 1
-    player.save_data()
+    player.base_info.save_data()
 
     player.stamina.stamina += 120
     player.stamina.save_data()
@@ -152,13 +152,13 @@ def new_guide_step_1802(data, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-    player.newbee_guide_id = new_guide_item.get('backID')
-    player.save_data()
+    player.base_info.newbee_guide_id = new_guide_item.get('backID')
+    player.base_info.save_data()
     response.res.result = True
 
     logger.info('newbee:%s step:%s',
                 player.base_info.id,
-                player.newbee_guide_id)
+                player.base_info.newbee_guide_id)
 
     gain_data = new_guide_item.get('rewards')
     return_data = gain(player, gain_data)
@@ -172,9 +172,9 @@ def change_head_847(data, player):
     request = ChangeHeadRequest()
     request.ParseFromString(data)
     response = ChangeHeadResponse()
-    if request.hero_id in player.heads.head:
-        player.heads.now_head = request.hero_id
-        player.save_data()
+    if request.hero_id in player.base_info.heads.head:
+        player.base_info.heads.now_head = request.hero_id
+        player.base_info.save_data()
     else:
         response.res.result = False
         response.res.result_no = 834

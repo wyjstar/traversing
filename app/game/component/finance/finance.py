@@ -2,10 +2,11 @@
 """
 created by server on 14-6-27下午6:49.
 """
+from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from shared.utils.const import const
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
 
 
 # const.COIN = 1
@@ -38,19 +39,14 @@ class CharacterFinanceComponent(Component):
             self._finances.append(0)
 
     def save_data(self):
-        """保存数据
-        """
-        # props = {'coin': self._coin,
-        #          'gold': self._gold,
-        #          'hero_soul': self._hero_soul,
-        #          'junior_stone': self._junior_stone,
-        #          'middle_stone': self._middle_stone,
-        #          'high_stone': self._high_stone,
-        #          'pvp_score': self._pvp_score,
-        #          'finances': self._finances}
-        props = {'finances': self._finances}
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
-        character_obj.hmset(props)
+        character_obj.hset('finances', self._finances)
+
+    def new_data(self):
+        finances = [0] * const.RESOURCE_MAX
+        for t, v in base_config.get('resource_for_InitUser').items():
+            finances[t] = v
+        return {'finances': self._finances}
 
     def __getitem__(self, res_type):
         if res_type >= len(self._finances):

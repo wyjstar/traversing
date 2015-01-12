@@ -52,7 +52,7 @@ def player_combat_power_flow(player, add_or_reduce, combat_power, after_combat_p
 def player_info(player):
     """登录/登出时，记录玩家信息"""
     send_message(title='PlayerInfo', Uid=player.base_info.id, Name=player.base_info.base_name,  \
-                     Level=player.level.level, Exp=player.level.exp, Stamina=player.stamina)
+                     Level=player.base_info.level, Exp=player.base_info.exp, Stamina=player.stamina)
     player_heros_info(player)
     player_equipments_info(player)
 

@@ -24,22 +24,19 @@ class FriendComponent(Component):
         self._friends = character_info.get('friends')
         self._blacklist = character_info.get('blacklist')
         self._applicants_list = character_info.get('applicants_list')
-        if self._friends is None:
-            self._friends = {}
-        if self._blacklist is None:
-            self._blacklist = []
-        if self._applicants_list is None:
-            self._applicants_list = {}
 
     def save_data(self):
         friend_obj = tb_character_info.getObj(self.owner.base_info.id)
-        if friend_obj:
-            data = dict(friends=self._friends,
-                        blacklist=self._blacklist,
-                        applicants_list=self._applicants_list)
-            friend_obj.hmset(data)
-        else:
-            logger.error('cant find friendinfo:%s', self.owner.base_info.id)
+        data = dict(friends=self._friends,
+                    blacklist=self._blacklist,
+                    applicants_list=self._applicants_list)
+        friend_obj.hmset(data)
+
+    def new_data(self):
+        data = dict(friends=self._friends,
+                    blacklist=self._blacklist,
+                    applicants_list=self._applicants_list)
+        return data
 
     @property
     def friends(self):

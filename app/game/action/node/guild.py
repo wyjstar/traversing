@@ -30,7 +30,7 @@ def create_guild_801(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    if base_config.get('create_level') > player.level.level:
+    if base_config.get('create_level') > player.base_info.level:
         response.result = False
         response.message = "等级不够"
         return response.SerializeToString()
@@ -654,7 +654,7 @@ def worship_809(data, player):
             return response.SerializeToString()
 
     if (int(time.time())-player.guild.worship_time) < (60*60*24):
-        if player.vip_component.guild_worship_times > player.guild.worship:
+        if player.base_info.guild_worship_times > player.guild.worship:
             player.guild.worship += 1
             player.guild.contribution += worship_info[4]
             player.guild.all_contribution += worship_info[3]

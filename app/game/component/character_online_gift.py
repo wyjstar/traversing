@@ -20,17 +20,10 @@ class CharacterOnlineGift(Component):
 
     def init_data(self, character_info):
         data = character_info.get('online_gift')
-        if data:
-            self._online_time = data['online_time']
-            self._refresh_time = data.get('refresh_time', time.time())
-            self._received_gift_ids = data['received_gift_ids']
-            self.check_time()
-        else:
-            data = dict(online_time=self._online_time,
-                        refresh_time=self._refresh_time,
-                        received_gift_ids=self._received_gift_ids)
-            char_obj = tb_character_info.getObj(self.owner.base_info.id)
-            char_obj.hset('online_gift', data)
+        self._online_time = data['online_time']
+        self._refresh_time = data.get('refresh_time', time.time())
+        self._received_gift_ids = data['received_gift_ids']
+        self.check_time()
 
     def save_data(self):
         self.check_time()
@@ -39,6 +32,12 @@ class CharacterOnlineGift(Component):
                     refresh_time=self._refresh_time,
                     received_gift_ids=self._received_gift_ids)
         activity.hset('online_gift', data)
+
+    def new_data(self):
+        data = dict(online_time=self._online_time,
+                    refresh_time=self._refresh_time,
+                    received_gift_ids=self._received_gift_ids)
+        return {'online_gift': data}
 
     def offline_player(self):
         accumulate_time = datetime.datetime.now() - self._login_on_time

@@ -130,8 +130,8 @@ def pvp_fight_request_1505(data, player):
     """
     player.check_time()
 
-    if player.pvp_times >= base_config.get('arena_free_times'):
-        logger.error('not enough pvp times:%s%s', player.pvp_times,
+    if player.base_info.pvp_times >= base_config.get('arena_free_times'):
+        logger.error('not enough pvp times:%s%s', player.base_info.pvp_times,
                      base_config.get('arena_free_times'))
         return False
     request = pvp_rank_pb2.PvpFightRequest()
@@ -198,9 +198,9 @@ def pvp_fight_request_1505(data, player):
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
-    player.pvp_times += 1
-    player.pvp_refresh_time = time.time()
-    player.save_data()
+    player.base_info.pvp_times += 1
+    player.base_info.pvp_refresh_time = time.time()
+    player.base_info.save_data()
     response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
     pvp_assemble_units(red_units, blue_units, response)
@@ -218,9 +218,9 @@ def reset_pvp_time_1506(data, player):
     player.check_time()
     response = ShopResponse()
     response.res.result = True
-    vip_level = player.vip_component.vip_level
+    vip_level = player.base_info.vip_level
     reset_times_max = vip_config.get(vip_level).get('buyArenaTimes')
-    if player.pvp_refresh_count >= reset_times_max:
+    if player.base_info.pvp_refresh_count >= reset_times_max:
         response.res.result = False
         response.res.result_no = 15061
         return response.SerializePartialToString()
@@ -234,10 +234,10 @@ def reset_pvp_time_1506(data, player):
 
     return_data = consume(player, _consume)  # 消耗
     get_return(player, return_data, response.consume)
-    player.pvp_times = 0
-    player.pvp_refresh_time = time.time()
-    player.pvp_refresh_count += 1
-    player.save_data()
+    player.base_info.pvp_times = 0
+    player.base_info.pvp_refresh_time = time.time()
+    player.base_info.pvp_refresh_count += 1
+    player.base_info.save_data()
 
     return response.SerializePartialToString()
 
@@ -289,7 +289,7 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
     hero_nos = player.line_up_component.hero_nos
     best_skill = player.line_up_component.get_skill_id_by_unpar(skill)
     rank_data = dict(hero_ids=cPickle.dumps(hero_nos),
-                     level=player.level.level,
+                     level=player.base_info.level,
                      nickname=player.base_info.base_name,
                      best_skill=best_skill,
                      unpar_skill=skill,

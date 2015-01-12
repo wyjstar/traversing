@@ -24,7 +24,7 @@ class CharacterHerosComponent(Component):
     def heros(self, heros):
         self._heros = heros
 
-    def init_heros(self):
+    def init_data(self, c):
         pid = self.owner.base_info.id
         char_obj = tb_character_info.getObj(pid)
         heros = char_obj.smem('heroes')
@@ -32,6 +32,12 @@ class CharacterHerosComponent(Component):
             hero = Hero(pid)
             hero.init_data(data)
             self._heros[hero.hero_no] = hero
+
+    def save_data(self):
+        pass
+
+    def new_data(self):
+        return {}
 
     def get_hero(self, hero_no):
         return self._heros.get(hero_no)
@@ -57,9 +63,9 @@ class CharacterHerosComponent(Component):
         self.new_hero_data(hero)
 
         if hero_config.get(hero_no).get('quality') >= 5:
-            if not (hero_no in self.owner.heads.head):
-                self.owner.heads.head.append(hero_no)
-            self.owner.save_data()
+            if not (hero_no in self.owner.base_info.heads.head):
+                self.owner.base_info.heads.head.append(hero_no)
+            self.owner.base_info.save_data()
         return hero
 
     def add_hero_without_save(self, hero_no):
