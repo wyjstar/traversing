@@ -34,10 +34,8 @@ class Hero(object):
         self._is_online = False
 
         self._runt = {}
-        self._old_data = None
 
     def init_data(self, hero_property):
-        self._old_data = hero_property
         self._hero_no = hero_property.get("hero_no")
         self._level = hero_property.get("level")
         self._exp = hero_property.get("exp")
@@ -125,10 +123,10 @@ class Hero(object):
         return level, temp_exp
 
     def save_data(self):
-        char_obj = tb_character_info.getObj(self._character_id)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('heroes')
         data = self.hero_proerty_dict()
-        if char_obj.supdate('heroes', self._old_data, data):
-            self._old_data = data
+        if char_obj.hset(data['hero_no'], data):
+            logger.error('save hero error:%s', data['hero_no'])
 
     def hero_proerty_dict(self):
         hero_property = {
@@ -144,8 +142,8 @@ class Hero(object):
         return hero_property
 
     def delete(self):
-        char_obj = tb_character_info.getObj(self._character_id)
-        return char_obj.srem('heroes', self._old_data)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('heroes')
+        return char_obj.hdel(self._hero_no)
 
     def update_pb(self, hero_pb):
         hero_pb.hero_no = self._hero_no

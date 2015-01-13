@@ -2,11 +2,11 @@
 """
 created by server on 14-8-14下午3:48.
 """
+from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from app.game.core.mail import Mail
 from shared.utils.pyuuid import get_uuid
-from shared.db_opear.configs_data.game_configs import base_config
+from app.game.core.mail import Mail
 
 
 class CharacterMailComponent(Component):
@@ -21,9 +21,9 @@ class CharacterMailComponent(Component):
 
     def init_data(self, c):
         pid = self.owner.base_info.id
-        char_obj = tb_character_info.getObj(pid)
-        mails = char_obj.smem('mails')
-        for mail_data in mails:
+        char_obj = tb_character_info.getObj(pid).getObj('mails')
+        mails = char_obj.hgetall()
+        for mid, mail_data in mails.items():
             mail = Mail()
             mail.init_data(mail_data)
             self._mails[mail.mail_id] = mail
@@ -35,8 +35,8 @@ class CharacterMailComponent(Component):
         character_id = self.owner.base_info.id
         mail_property = mail.mail_proerty_dict()
 
-        char_obj = tb_character_info.getObj(character_id)
-        char_obj.sadd('mails', mail_property)
+        char_obj = tb_character_info.getObj(character_id).getObj('mails')
+        char_obj.hset(mail.mail_id, mail_property)
 
     def add_exist_mail(self, mail):
         self._mails[mail.mail_id] = mail

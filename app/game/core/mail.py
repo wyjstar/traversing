@@ -125,10 +125,10 @@ class Mail(object):
 
     def save_data(self):
         prop = self.mail_proerty_dict()
-        char_obj = tb_character_info.getObj(self._character_id)
-        char_obj.supdate('mails', self._old_data, prop)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('mails')
+        char_obj.hset(self._id, self._old_data, prop)
         self._old_data = prop
 
     def delete(self):
-        char_obj = tb_character_info.getObj(self._character_id)
-        char_obj.srem('mails', self._old_data)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('mails')
+        char_obj.hdel(self._id)

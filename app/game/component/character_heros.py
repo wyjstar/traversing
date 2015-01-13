@@ -26,9 +26,9 @@ class CharacterHerosComponent(Component):
 
     def init_data(self, c):
         pid = self.owner.base_info.id
-        char_obj = tb_character_info.getObj(pid)
-        heros = char_obj.smem('heroes')
-        for data in heros:
+        char_obj = tb_character_info.getObj(pid).getObj('heroes')
+        heros = char_obj.hgetall()
+        for hid, data in heros.items():
             hero = Hero(pid)
             hero.init_data(data)
             self._heros[hero.hero_no] = hero
@@ -94,10 +94,10 @@ class CharacterHerosComponent(Component):
         return str(character_id)+'_'+str(hero_no)
 
     def new_hero_data(self, hero):
-        character_id = self.owner.base_info.id
+        pid = self.owner.base_info.id
         hero_property = hero.hero_proerty_dict()
-        char_obj = tb_character_info.getObj(character_id)
-        char_obj.sadd('heroes', hero_property)
+        char_obj = tb_character_info.getObj(pid).getObj('heroes')
+        char_obj.hset('heroes', hero_property)
 
     def is_guard(self, hero_no):
         """
