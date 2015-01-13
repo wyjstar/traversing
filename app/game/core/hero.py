@@ -125,7 +125,7 @@ class Hero(object):
     def save_data(self):
         char_obj = tb_character_info.getObj(self._character_id).getObj('heroes')
         data = self.hero_proerty_dict()
-        if char_obj.hset(data['hero_no'], data):
+        if not char_obj.hset(data['hero_no'], data):
             logger.error('save hero error:%s', data['hero_no'])
 
     def hero_proerty_dict(self):
