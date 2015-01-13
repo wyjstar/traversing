@@ -154,7 +154,7 @@ class RedisObject(object):
     def zadd(self, label, k, v):
         produce_key = self.produceKey(label)
         client = redis_manager.get_connection(produce_key)
-        return client.zadd(produce_key, v, k) == 1
+        return client.zadd(produce_key, k, v) == 1
 
     def zget(self, label, k):
         score = 0
@@ -226,10 +226,12 @@ class RedisObject(object):
         client = redis_manager.get_connection(produce_key)
         return client.zrevrange(produce_key, start, end, withscores)
 
-    def zremrangebyscore(self, m, n):
-        client = redis_manager.get_connection(self._name)
-        return client.zremrangebyscore(self._name, m, n)
+    def zremrangebyscore(self, label, m, n):
+        produce_key = self.produceKey(label)
+        client = redis_manager.get_connection(produce_key)
+        return client.zremrangebyscore(produce_key, m, n)
 
-    def zrange(self, m, n):
-        client = redis_manager.get_connection(self._name)
-        return client.zrange(self._name, m, n)
+    def zrange(self, label, m, n):
+        produce_key = self.produceKey(label)
+        client = redis_manager.get_connection(produce_key)
+        return client.zrange(produce_key, m, n)
