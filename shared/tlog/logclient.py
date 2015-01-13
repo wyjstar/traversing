@@ -3,10 +3,8 @@
 from gfirefly.server.globalobject import GlobalObject
 import socket
 from gfirefly.server.logobj import logger
-host = GlobalObject().json_config['tlog']['host']
-port = GlobalObject().json_config['tlog']['port']
-# host = "192.169.10.26"
-# port = 30005
+host = GlobalObject().allconfig['tlog']['host']
+port = GlobalObject().allconfig['tlog']['port']
 
 
 class LogClient:
