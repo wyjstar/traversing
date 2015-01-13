@@ -52,7 +52,7 @@ if __name__ == "__main__":
     mconfig = json.load(open('models.json', 'r'))
     model_default_config = mconfig.get('model_default', {})
     model_config = mconfig.get('models', {})
-    GlobalObject().config = mconfig
+    GlobalObject().allconfig = mconfig
 
     serconfig = sersconf.get(servername)
     ser = FFServer()
