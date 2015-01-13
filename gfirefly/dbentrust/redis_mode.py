@@ -25,7 +25,7 @@ class RedisObject(object):
         if isinstance(keyname, basestring):
             return ''.join([self._name, ':', keyname])
         else:
-            raise "type error"
+            raise Exception("type error")
 
     def exists(self):
         print self._name

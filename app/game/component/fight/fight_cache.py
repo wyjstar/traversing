@@ -175,7 +175,7 @@ class CharacterFightCacheComponent(Component):
         self._blue_unit = monsters
         self._common_drop = stage_config.commonDrop
         self._elite_drop = stage_config.eliteDrop
-        logger.info('关卡怪物信息: %s ' % monsters)
+        # logger.info('关卡怪物信息: %s ' % monsters)
         return monsters
 
     def __get_monster_unpara(self):
@@ -380,8 +380,8 @@ class CharacterFightCacheComponent(Component):
             hero = self.owner.hero_component.get_hero(red.unit_no)
             ap = combat_power.combat_power_hero_self(self.owner, hero)
             for upAp, prob in hero_item.get('awake').items():
-                logger.info('hero:%s, hit:%s, %s,ap:%s, upAp:%s', hero.hero_no, _rand, prob, ap, upAp)
                 if ap > upAp and _rand < prob:
+                    logger.info('hero:%s, hit:%s, %s,ap:%s, upAp:%s', hero.hero_no, _rand, prob, ap, upAp)
 
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
