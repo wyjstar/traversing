@@ -97,7 +97,7 @@ class CharacterBrewComponent(Component):
 
         self._brew_step += 1
         critical = critical[brew_type]
-        rand = random.random()
+        rand = random.random()*sum(critical.values())
         for critical_num, rand_range in critical.items():
             if rand < rand_range:
                 self._nectar_cur = int(critical_num * self._nectar_cur)
