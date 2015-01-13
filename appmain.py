@@ -8,6 +8,7 @@ import code
 import signal
 import traceback
 from gfirefly.server.server import FFServer
+from gfirefly.server.globalobject import GlobalObject
 
 
 def dump_stacks(signal, frame):
@@ -51,6 +52,7 @@ if __name__ == "__main__":
     mconfig = json.load(open('models.json', 'r'))
     model_default_config = mconfig.get('model_default', {})
     model_config = mconfig.get('models', {})
+    GlobalObject().json_config = mconfig
 
     serconfig = sersconf.get(servername)
     ser = FFServer()
