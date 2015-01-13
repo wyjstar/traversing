@@ -25,6 +25,7 @@ class GlobalObject:
         self.reloadmodule = None
         self.remote_connect = None
         self.log = None
+        self.config = {}
         self.json_config = {}
         self.remote_map = {}
         self.json_model_default_config = {}
