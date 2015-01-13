@@ -236,7 +236,7 @@ def pvb_fight_start_1705(pro_data, player):
     player_info = {}
     player_info["player_id"] = player.base_info.id
     player_info["nickname"] = player.base_info.base_name
-    player_info["level"] = player.level.level
+    player_info["level"] = player.base_info.level
     player_info["line_up_info"] = line_up_info(player).SerializePartialToString()
 
     str_red_units = cPickle.dumps(red_units)

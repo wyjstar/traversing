@@ -40,7 +40,7 @@ message StageSettlementResponse{
 
 // 请求队形信息: 905
 message FormationResponse{
-	repeated LineUp lineup = 1; // 队形
+	repeated int32 lineup = 1; // 队形
 }
 
 // 请求无双信息：906

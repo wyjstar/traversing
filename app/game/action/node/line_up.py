@@ -7,9 +7,8 @@ from gfirefly.server.globalobject import remoteserviceHandle
 import cPickle
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.hero import Hero
-from app.game.redis_mode import tb_character_line_up
-from app.game.redis_mode import tb_character_hero
-from app.game.redis_mode import tb_equipment_info
+from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_info
 from app.game.core.check import check_have_equipment
 from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import CommonResponse
@@ -19,6 +18,7 @@ from app.proto_file.common_pb2 import CommonResponse
 def get_line_up_info_701(pro_data, player):
     """取得阵容信息 """
     response = line_up_info(player)
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -37,20 +37,20 @@ def get_target_line_up_info_706(pro_data, player):
         response = line_up_pb2.LineUpResponse()
 
         heros_obj = {}
-        heros = tb_character_hero.getObjListByFk(target_id)
-        hero_ids = tb_character_hero.getAllPkByFk(target_id)
+        char_obj = tb_character_info.getObj(target_id)
+        heros = char_obj.smem('heroes')
+        equipments = char_obj.smem('equipments')
 
-        for hero_mmode in heros:
-            data = hero_mmode.get('data')
+        for data in heros:
             hero = Hero(target_id)
             hero.init_data(data)
             heros_obj[hero.hero_no] = hero
 
-        line_up_data = tb_character_line_up.getObjData(target_id)
+        line_up_data = tb_character_info.getObj(target_id)
 
         if line_up_data:
             # 阵容位置信息
-            line_up_slots = line_up_data.get('line_up_slots')
+            line_up_slots = line_up_data.hget('line_up_slots')
 
             for slot_no, slot1 in line_up_slots.items():
                 slot = cPickle.loads(slot1)
@@ -73,11 +73,10 @@ def get_target_line_up_info_706(pro_data, player):
                     equipment_ids = slot.get('equipment_ids').values()
                     for equ_id in equipment_ids:
                         if equ_id:
-                            equ_data = tb_equipment_info.getObjData(equ_id)
-                            # t_equipment_ids
-                            if equ_data:
-                                t_data['ids'].append(equ_data.get('equipment_info').get('equipment_no'))
-                                t_data['datas'][equ_id] = equ_data
+                            for equ_data in equipments:
+                                if equ_id == equ_data['id']:
+                                    t_data['ids'].append(equ_data['equipment_info']['equipment_no'])
+                                    t_data['datas'][equ_id] = equ_data
 
                     link_data = {}
                     for i in range(1, 6):
@@ -133,7 +132,7 @@ def get_target_line_up_info_706(pro_data, player):
                                 minor_attr_pb.attr_increment = attr_increment
 
             # 助威位置信息
-            line_sub_slots = line_up_data.get('sub_slots')
+            line_sub_slots = line_up_data.hget('sub_slots')
             for sub_slot_no, sub_slot in line_sub_slots.items():
                 slot = cPickle.loads(sub_slot)
 
@@ -205,7 +204,7 @@ def change_hero(slot_no, hero_no, change_type, player):
 
     # 校验该武将是否已经上阵
     response = line_up_pb2.LineUpResponse()
-    if hero_no in player.line_up_component.hero_nos:
+    if hero_no != 0 and hero_no in player.line_up_component.hero_nos:
         logger.debug("hero already in the line up+++++++")
         response.res.result = False
         response.res.result_no = 701
@@ -265,6 +264,9 @@ def line_up_info(player):
     """取得用户的阵容信息
     """
     response = line_up_pb2.LineUpResponse()
+    for temp in player.line_up_component.line_up_order:
+        response.order.append(temp)
+
     line_up_info_detail(player.line_up_component.line_up_slots, player.line_up_component.sub_slots, response)
 
     for k, v in player.line_up_component.unpars.items():

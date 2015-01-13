@@ -19,23 +19,23 @@ class CharacterWorldBoss(Component):
 
     def init_data(self, character_info):
         data = character_info.get('world_boss')
-        if data:
-            for k, info in data.items():
-                if not info:
-                    continue
-                boss = Boss()
-                boss.init_data(info)
-                self._bosses[boss.boss_id] = boss
-        else:
-            tb_character_info.update('world_boss', {})
+        for k, info in data.items():
+            if not info:
+                continue
+            boss = Boss()
+            boss.init_data(info)
+            self._bosses[boss.boss_id] = boss
 
     def save_data(self):
-        activity = tb_character_info.getObj(self.owner.base_info.id)
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = {}
         for k, boss in self._bosses.items():
             data[k] = boss.get_data_dict()
 
-        activity.update('world_boss', data)
+        char_obj.hset('world_boss', data)
+
+    def new_data(self):
+        return {'world_boss': {}}
 
     def get_boss(self, boss_id):
         boss = self._bosses.get(boss_id)
@@ -142,12 +142,12 @@ class Boss(object):
     def get_data_dict(self):
         """docstring for get_data_dict"""
         return {'encourage_coin_num': self._encourage_coin_num,
-                    'encourage_gold_num': self._encourage_gold_num,
-                    'last_request_time': self._last_request_time,
-                    'last_fight_time': self._last_fight_time,
-                    'fight_times': self._fight_times,
-                    'stage_id': self._stage_id,
-                    'boss_id': self._boss_id}
+                'encourage_gold_num': self._encourage_gold_num,
+                'last_request_time': self._last_request_time,
+                'last_fight_time': self._last_fight_time,
+                'fight_times': self._fight_times,
+                'stage_id': self._stage_id,
+                'boss_id': self._boss_id}
 
     def get_base_config(self):
         if self._boss_id == "world_boss":

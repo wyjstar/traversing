@@ -249,13 +249,13 @@ def stage_sweep(stage_id, times, player):
         player.stage_component.update()
 
     if times == 1:
-        if not game_configs.vip_config.get(player.vip_component.vip_level).openSweep:
+        if not game_configs.vip_config.get(player.base_info.vip_level).openSweep:
             logger.error('result_no = 803')
             res.result = False
             res.result_no = 803
             return response.SerializePartialToString()
     if times > 1:
-        if not game_configs.vip_config.get(player.vip_component.vip_level).openSweepTen:
+        if not game_configs.vip_config.get(player.base_info.vip_level).openSweepTen:
             logger.error('result_no = 803')
             res.result = False
             res.result_no = 803
@@ -301,12 +301,12 @@ def stage_sweep(stage_id, times, player):
             print lineUpSlotComponent,
             hero = lineUpSlotComponent.hero_slot.hero_obj
             if hero:
-                hero.upgrade(stage_config.HeroExp, player.level.level)
+                hero.upgrade(stage_config.HeroExp, player.base_info.level)
                 hero.save_data()
         # 玩家金钱
         player.finance.coin += stage_config.currency
         # 玩家经验
-        player.level.addexp(stage_config.playerExp)
+        player.base_info.addexp(stage_config.playerExp)
     # 更新等级相关属性
     player.line_up_component.update_slot_activation()
     player.line_up_component.save_data()
@@ -323,7 +323,7 @@ def stage_sweep(stage_id, times, player):
     player.stage_component.update()
 
     player.stamina.save_data()
-    player.save_data()
+    player.base_info.save_data()
     player.finance.save_data()
 
     res.result = True
@@ -342,7 +342,7 @@ def reset_stage_908(pro_data, player):
 
     if time.localtime(stage_obj.reset[1]).tm_year == time.localtime().tm_year \
             and time.localtime(stage_obj.reset[1]).tm_yday == time.localtime().tm_yday:
-        if game_configs.vip_config.get(player.vip_component.vip_level).buyStageResetTimes <= stage_obj.reset[0]:
+        if game_configs.vip_config.get(player.base_info.vip_level).buyStageResetTimes <= stage_obj.reset[0]:
             logger.error("stage reset times not enough")
             response.res.result = False
             response.res.result_no = 830

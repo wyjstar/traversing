@@ -27,8 +27,8 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.id = player.base_info.id
     responsedata.nickname = player.base_info.base_name
 
-    responsedata.level = player.level.level
-    responsedata.exp = player.level.exp
+    responsedata.level = player.base_info.level
+    responsedata.exp = player.base_info.exp
 
     for i in player.finance._finances:
         responsedata.finances.append(i)
@@ -38,29 +38,29 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.fine_equipment = player.last_pick_time.fine_equipment
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
 
-    responsedata.pvp_times = player.pvp_times
-    responsedata.pvp_refresh_count = player.pvp_refresh_count
+    responsedata.pvp_times = player.base_info.pvp_times
+    responsedata.pvp_refresh_count = player.base_info.pvp_refresh_count
 
     responsedata.combat_power = player.line_up_component.combat_power
-    responsedata.newbee_guide_id = player.newbee_guide_id
+    responsedata.newbee_guide_id = player.base_info.newbee_guide_id
 
     if player.guild.g_id != 'no':
         responsedata.guild_id = player.guild.g_id
 
-    responsedata.vip_level = player.vip_component.vip_level
+    responsedata.vip_level = player.base_info.vip_level
     # 体力
     responsedata.get_stamina_times = player.stamina.get_stamina_times
     responsedata.buy_stamina_times = player.stamina.buy_stamina_times
     responsedata.last_gain_stamina_time = player.stamina.last_gain_stamina_time
     responsedata.server_time = int(time.time())
     # responsedata.soul_shop_refresh_times = player.soul_shop.refresh_times
-    if player.heads.head:
-        for head in player.heads.head:
+    if player.base_info.heads.head:
+        for head in player.base_info.heads.head:
             responsedata.head.append(head)
-    responsedata.now_head = player.heads.now_head
+    responsedata.now_head = player.base_info.heads.now_head
 
     logger.debug("character info:----------------------")
-    logger.debug("vip_level:%d", player.vip_component.vip_level)
+    logger.debug("vip_level:%d", player.base_info.vip_level)
     # logger.debug("stamina:%d", player.stamina.stamina)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)

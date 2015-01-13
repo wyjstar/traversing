@@ -2,231 +2,111 @@
 """
 created by server on 14-6-4下午3:04.
 """
-from app.game.component.character_line_up import CharacterLineUpComponent
-from app.game.component.character_online_gift import CharacterOnlineGift
-from app.game.component.equipment.character_equipment_chip\
-    import CharacterEquipmentChipComponent
-from app.game.component.fight.fight_cache import CharacterFightCacheComponent
-from app.game.component.level.character_level import CharacterLevelComponent
-from app.game.component.pack.character_equipment_package\
-    import CharacterEquipmentPackageComponent
-from app.game.component.pack.character_item_package\
-    import CharacterItemPackageComponent
-from app.game.component.stage.character_stage import CharacterStageComponent
-from app.game.core.character.Character import Character
 from app.game.redis_mode import tb_character_info
-from shared.utils.const import const
-from app.game.component.character_heros import CharacterHerosComponent
-from app.game.component.finance.finance import CharacterFinanceComponent
-from app.game.component.character_hero_chips import CharacterHeroChipsComponent
-from app.game.component.character_last_pick_time\
-    import CharacterLastPickTimeComponent
-from app.game.component.friend.friend import FriendComponent
-from app.game.component.character_guild import CharacterGuildComponent
-from app.game.component.tb_character_mail import CharacterMailComponent
-from app.game.component.character_sign_in import CharacterSignInComponent
-from app.game.component.character_feast import CharacterFeastComponent
-from app.game.component.character_login_gift import CharacterLoginGiftComponent
-from app.game.component.character_level_gift import CharacterLevelGift
-from app.game.component.character_world_boss import CharacterWorldBoss
-from app.game.component.character_vip import CharacterVIPComponent
-from app.game.component.character_stamina import CharacterStaminaComponent
-from app.game.component.character_shop import CharacterShopComponent
-from app.game.component.brew.brew import CharacterBrewComponent
-from app.game.component.character_travel import CharacterTravelComponent
-import time
-from app.game.component.achievement.user_achievement import UserAchievement
-from app.game.component.mine.user_mine import UserMine
-from app.game.component.stone.user_stone import UserStone
-from app.game.component.character_runt import CharacterRuntComponent
-from shared.db_opear.configs_data.game_configs import base_config
-from app.proto_file.db_pb2 import Heads_db
+from app.game import component
 
 
-class PlayerCharacter(Character):
+class PlayerCharacter(object):
     """玩家角色类
     """
 
-    def __init__(self, cid, name=u'MLGB', dynamic_id=-1, status=1):
+    def __init__(self, pid, name=u'MLGB', dynamic_id=-1, status=1):
         """构造方法
         @dynamic_id （int） 角色登陆的动态ID socket连接产生的id
         """
-        Character.__init__(self, cid, name)
-
-        self._character_type = const.PLAYER_TYPE  # 设置角色类型为玩家角色
+        self._pid = pid
         self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
+        self._components = {}
+
         # --------角色的各个组件类------------
+        self._base_info = component.CharacterBaseInfoComponent(self)
+        self._hero_component = component.CharacterHerosComponent(self)  # 武将列表
+        self._finance = component.CharacterFinanceComponent(self)  # 金币
+        self._hero_chip_component = component.CharacterHeroChipsComponent(self)  # 武将碎片
+        self._item_package = component.CharacterItemPackageComponent(self)  # 游戏道具背包
+        self._equipment = component.CharacterEquipmentPackageComponent(self)  # 装备
+        self._equipment_chip = component.CharacterEquipmentChipComponent(self)  # 装备碎片
+        self._line_up = component.CharacterLineUpComponent(self)  # 阵容
+        self._stage = component.CharacterStageComponent(self)  # 关卡
+        self._last_pick_time = component.CharacterLastPickTimeComponent(self)  # 上次抽取时间
 
-        self._hero_component = CharacterHerosComponent(self)  # 武将列表
-        self._finance = CharacterFinanceComponent(self)  # 金币
-        self._hero_chip_component = CharacterHeroChipsComponent(self)  # 武将碎片
-        self._item_package = CharacterItemPackageComponent(self)  # 游戏道具背包
-        self._equipment = CharacterEquipmentPackageComponent(self)  # 装备
-        self._equipment_chip = CharacterEquipmentChipComponent(self)  # 装备碎片
-        self._level = CharacterLevelComponent(self)  # 等级
-        self._line_up = CharacterLineUpComponent(self)  # 阵容
-        self._stage = CharacterStageComponent(self)  # 关卡
-        self._last_pick_time = CharacterLastPickTimeComponent(self)  # 上次抽取时间
+        self._fight_cache = component.CharacterFightCacheComponent(self)  # 关卡战斗缓存
+        self._friends = component.FriendComponent(self)  # friend system
+        self._guild = component.CharacterGuildComponent(self)  # 公会组件
+        self._mail = component.CharacterMailComponent(self)  # 邮箱组件
+        self._sign_in = component.CharacterSignInComponent(self)  # 签到组件
+        self._feast = component.CharacterFeastComponent(self)
+        self._online_gift = component.CharacterOnlineGift(self)  # online gift
+        self._level_gift = component.CharacterLevelGift(self)  # level gift
+        self._login_gift = component.CharacterLoginGiftComponent(self)  # Login gift
+        self._world_boss = component.CharacterWorldBoss(self)  # world boss
 
-        self._fight_cache = CharacterFightCacheComponent(self)  # 关卡战斗缓存
-        self._friends = FriendComponent(self)  # friend system
-        self._guild = CharacterGuildComponent(self)  # 公会组件
-        self._mail = CharacterMailComponent(self)  # 邮箱组件
-        self._sign_in = CharacterSignInComponent(self)  # 签到组件
-        self._feast = CharacterFeastComponent(self)
-        self._online_gift = CharacterOnlineGift(self)  # online gift
-        self._level_gift = CharacterLevelGift(self)  # level gift
-        self._login_gift = CharacterLoginGiftComponent(self)  # Login gift
-        self._world_boss = CharacterWorldBoss(self)  # world boss
-        self._vip = CharacterVIPComponent(self)  # VIP level
+        self._stamina = component.CharacterStaminaComponent(self)  # 体力
+        self._shop = component.CharacterShopComponent(self)  # 商店
+        self._brew = component.CharacterBrewComponent(self)
 
-        self._stamina = CharacterStaminaComponent(self)  # 体力
-        self._shop = CharacterShopComponent(self)  # 商店
-        self._brew = CharacterBrewComponent(self)
+        self._tasks = component.UserAchievement(self)
+        self._mine = component.UserMine(self)
+        self._stone = component.UserStone(self)
 
-        self._tasks = UserAchievement(self)
-        self._mine = UserMine(self)
-        self._stone = UserStone(self)
+        self._travel = component.CharacterTravelComponent(self)
+        self._runt = component.CharacterRuntComponent(self)
 
-        self._pvp_times = 0  # pvp次数
-        self._newbee_guide_id = 0
-
-        self._travel = CharacterTravelComponent(self)
-        self._runt = CharacterRuntComponent(self)
+        self._components['base_info'] = self._base_info
+        self._components['hero_component'] = self._hero_component
+        self._components['finance'] = self._finance
+        self._components['hero_chip_component'] = self._hero_chip_component
+        self._components['item_package'] = self._item_package
+        self._components['equipment'] = self._equipment
+        self._components['equipment_chip'] = self._equipment_chip
+        self._components['line_up'] = self._line_up
+        self._components['stage'] = self._stage
+        self._components['last_pick_time'] = self._last_pick_time
+        self._components['fight_cache'] = self._fight_cache
+        self._components['friends'] = self._friends
+        self._components['guild'] = self._guild
+        self._components['mail'] = self._mail
+        self._components['sign_in'] = self._sign_in
+        self._components['feast'] = self._feast
+        self._components['online_gift'] = self._online_gift
+        self._components['level_gift'] = self._level_gift
+        self._components['login_gift'] = self._login_gift
+        self._components['world_boss'] = self._world_boss
+        self._components['stamina'] = self._stamina
+        self._components['shop'] = self._shop
+        self._components['brew'] = self._brew
+        self._components['tasks'] = self._tasks
+        self._components['mine'] = self._mine
+        self._components['stone'] = self._stone
+        self._components['travel'] = self._travel
+        self._components['runt'] = self._runt
 
     def init_player_info(self):
-        """初始化角色信息
-        """
-        pid = self.base_info.id
-        character_info = tb_character_info.getObjData(pid)
-        # ------------角色信息表数据---------------
-        nickname = character_info['nickname']
-        level = character_info['level']
-        exp = character_info['exp']
-        fine_hero_last_pick_time = character_info['fine_hero_last_pick_time']
-        excellent_hero_last_pick_time =\
-            character_info['excellent_hero_last_pick_time']
-        fine_equipment_last_pick_time =\
-            character_info['fine_equipment_last_pick_time']
-        excellent_equipment_last_pick_time =\
-            character_info['excellent_equipment_last_pick_time']
-        pvp_times = character_info['pvp_times']
-        pvp_refresh_time = character_info['pvp_refresh_time']
-        pvp_refresh_count = character_info['pvp_refresh_count']
-        vip_level = character_info['vip_level']
-        heads = character_info['heads']
-
-        # ------------初始化角色基础信息组件---------
-        self.base_info.base_name = nickname  # 角色昵称
-        self._newbee_guide_id = character_info['newbee_guide_id']
-
-        self._heads = Heads_db()
-        self._heads.ParseFromString(heads)
-
-        # ------------初始化角色货币信息------------
-        self._finance.init_data(character_info)
-
-        # ------------初始化上次抽取信息------------
-        self._last_pick_time.fine_hero = fine_hero_last_pick_time
-        self._last_pick_time.excellent_hero = excellent_hero_last_pick_time
-        self._last_pick_time.fine_equipment = fine_equipment_last_pick_time
-        self._last_pick_time.excellent_equipment =\
-            excellent_equipment_last_pick_time
-
-        # ------------初始化角色等级信息------------
-        self._level.level = level
-        self._level.exp = exp
-
-        # ------------初始化角色其他组件------------
-        self._hero_component.init_heros()  # 初始化武将列表
-        self._item_package.init_data()
-        self._line_up.init_data()
-        self._equipment.init_data()
-        self._equipment_chip.init_data(character_info)
-        self._hero_chip_component.init_data(character_info)  # 初始化武将碎片
-        self._mail.init_data()  # 初始化邮箱
-        self._friends.init_data(character_info)
-        self._guild.init_data(character_info)
-        self._stage.init_data()
-
-        self._pvp_times = pvp_times
-        self._pvp_refresh_time = pvp_refresh_time
-        self._pvp_refresh_count = pvp_refresh_count
-        self._sign_in.init_sign_in(character_info)
-        self._online_gift.init_data(character_info)
-        self._level_gift.init_data(character_info)
-        self._feast.init_feast(character_info)
-        self._login_gift.init_data(character_info)
-        self._world_boss.init_data(character_info)
-        self._vip.init_vip(vip_level)
-        self._stamina.init_stamina(character_info.get('stamina'))
-        self._shop.init_data(character_info)
-        self._brew.init_data(character_info)
-        self._travel.init_data(character_info)
-        # 活跃度
-        self._tasks.init_data()
-        self._mine.init_data()
-        self._stone.init_data()
-        self._runt.init_data(character_info)
-
-        self.check_time()
+        character_obj = tb_character_info.getObj(self._pid)
+        character_info = character_obj.hgetall()
+        # print len(character_info), character_info
+        for c in self._components.values():
+            c.init_data(character_info)
 
     def is_new_character(self):
-        """is new character or not"""
-        pid = self.base_info.id
-
-        character_info = tb_character_info.getObjData(pid)
-        # print 'character info:', character_info
-        if character_info:
-            return False
-        return True
+        character_info = tb_character_info.getObj(self._pid)
+        # print 'exist:', self._pid, not character_info.exists()
+        return not character_info.exists()
 
     def create_character_data(self):
-        """docstring for create_character_data"""
-        pid = self.base_info.id
-
-        finances = [0] * const.RESOURCE_MAX
-        for t, v in base_config.get('resource_for_InitUser').items():
-            finances[t] = v
-        heads = Heads_db()
-        heads.now_head = base_config.get('initialHead')
-
-        character_info = {'id': pid,
-                          'nickname': u'',
-                          'level': 1,
-                          'exp': 0,
-                          'fine_hero_last_pick_time': 0,
-                          'excellent_hero_last_pick_time': 0,
-                          'fine_equipment_last_pick_time': 0,
-                          'excellent_equipment_last_pick_time': 0,
-                          'pvp_times': 0,
-                          'pvp_refresh_time': 0,
-                          'pvp_refresh_count': 0,
-                          'newbee_guide_id': 0,
-                          'create_time': int(time.time()),
-                          'vip_level': base_config.get('initialVipLevel'),
-                          'stamina': self._stamina.detail_data,
-                          'last_login_time': int(time.time()),
-                          'finances': finances,
-                          'equipment_chips': {},
-                          'hero_chips': {},
-                          'heads': heads.SerializeToString()
-
-                          }
-        tb_character_info.new(character_info)
-
-    def check_time(self):
-        tm = time.localtime(self.pvp_refresh_time)
-        local_tm = time.localtime()
-        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
-            self.pvp_times = 0
-            self.pvp_refresh_count = 0
-            self.pvp_refresh_time = time.time()
-            self.save_data()
+        character_info = {'id': self._pid}
+        for k, c in self._components.items():
+            newdict = c.new_data()
+            # print '='*88
+            # print k, newdict
+            character_info.update(newdict)
+        char_obj = tb_character_info.getObj(self._pid)
+        # print len(character_info), character_info
+        char_obj.new(character_info)
 
     @property
-    def character_type(self):
-        return self._character_type
+    def base_info(self):
+        return self._base_info
 
     @property
     def dynamic_id(self):
@@ -235,14 +115,6 @@ class PlayerCharacter(Character):
     @dynamic_id.setter
     def dynamic_id(self, value):
         self._dynamic_id = value
-
-    @property
-    def newbee_guide_id(self):
-        return self._newbee_guide_id
-
-    @newbee_guide_id.setter
-    def newbee_guide_id(self, value):
-        self._newbee_guide_id = value
 
     @property
     def hero_component(self):
@@ -259,10 +131,6 @@ class PlayerCharacter(Character):
     @finance.setter
     def finance(self, value):
         self._finance = value
-
-    @property
-    def level(self):
-        return self._level
 
     @property
     def last_pick_time(self):
@@ -297,10 +165,6 @@ class PlayerCharacter(Character):
         return self._line_up
 
     def check_dynamic_id(self, dynamic_id):
-        """检测客户端ID是否匹配
-        @param dynamic_id: 客户端动态ID
-        @return:
-        """
         if self._dynamic_id == dynamic_id:
             return True
         return False
@@ -322,40 +186,12 @@ class PlayerCharacter(Character):
         return self._guild
 
     @property
-    def pvp_times(self):
-        return self._pvp_times
-
-    @pvp_times.setter
-    def pvp_times(self, value):
-        self._pvp_times = value
-
-    @property
-    def pvp_refresh_count(self):
-        return self._pvp_refresh_count
-
-    @pvp_refresh_count.setter
-    def pvp_refresh_count(self, value):
-        self._pvp_refresh_count = value
-
-    @property
-    def pvp_refresh_time(self):
-        return self._pvp_refresh_time
-
-    @pvp_refresh_time.setter
-    def pvp_refresh_time(self, value):
-        self._pvp_refresh_time = value
-
-    @property
     def mail_component(self):
         return self._mail
 
     @property
     def sign_in_component(self):
         return self._sign_in
-
-    @property
-    def vip_component(self):
-        return self._vip
 
     @property
     def online_gift(self):
@@ -369,17 +205,17 @@ class PlayerCharacter(Character):
     def login_gift(self):
         return self._login_gift
 
-    @login_gift.setter
-    def login_gift(self, value):
-        self._login_gift = value
+    # @login_gift.setter
+    # def login_gift(self, value):
+    #     self._login_gift = value
 
     @property
     def world_boss(self):
         return self._world_boss
 
-    @world_boss.setter
-    def world_boss(self, value):
-        self._world_boss = value
+    # @world_boss.setter
+    # def world_boss(self, value):
+    #     self._world_boss = value
 
     @property
     def feast(self):
@@ -395,7 +231,6 @@ class PlayerCharacter(Character):
 
     @property
     def stamina(self):
-        """体力组件"""
         return self._stamina
 
     @property
@@ -404,9 +239,6 @@ class PlayerCharacter(Character):
 
     @property
     def tasks(self):
-        """
-        活跃度
-        """
         return self._tasks
 
     @property
@@ -424,25 +256,3 @@ class PlayerCharacter(Character):
     @property
     def runt(self):
         return self._runt
-
-    @property
-    def heads(self):
-        return self._heads
-
-    @heads.setter
-    def heads(self, value):
-        self._heads = value
-
-    def save_data(self):
-        pid = self.base_info.id
-        character_info = tb_character_info.getObj(pid)
-
-        data = dict(level=self._level.level,
-                    exp=self.level.exp,
-                    pvp_times=self._pvp_times,
-                    pvp_refresh_time=self._pvp_refresh_time,
-                    pvp_refresh_count=self._pvp_refresh_count,
-                    newbee_guide_id=self._newbee_guide_id,
-                    vip_level=self._vip.vip_level,
-                    heads=self._heads.SerializeToString())
-        character_info.update_multi(data)

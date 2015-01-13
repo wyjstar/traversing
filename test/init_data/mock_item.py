@@ -4,7 +4,6 @@ created by server on 14-7-7下午2:25.
 """
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.pack.item import Item
-from app.game.redis_mode import tb_character_item_package
 
 
 def init_item(player):
@@ -24,8 +23,6 @@ def init_item(player):
     # key
     item8 = Item(40002, 1500)
     item9 = Item(60001, 100)
-
-
 
     player.item_package.add_item(item1)
     player.item_package.add_item(item2)

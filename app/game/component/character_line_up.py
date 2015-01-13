@@ -4,7 +4,7 @@ created by server on 14-7-5下午3:07.
 """
 from app.game.component.Component import Component
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
-from app.game.redis_mode import tb_character_line_up
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import warriors_config
 from gfirefly.server.logobj import logger
@@ -33,38 +33,22 @@ class CharacterLineUpComponent(Component):
                                  LineUpSlotComponent(self, slot_no)) for
                                 slot_no in range(1, 7)])  # 卡牌位替补
 
-        self._line_up_order = []
+        self._line_up_order = [1, 2, 3, 4, 5, 6]
         self._unpars = {}  # 无双
 
-    def init_data(self):
-        line_up_data = tb_character_line_up.getObjData(self.character_id)
-
-        if line_up_data:
-            # 阵容位置信息
-            line_up_slots = line_up_data.get('line_up_slots')
-            for slot_no, slot in line_up_slots.items():
-                line_up_slot = LineUpSlotComponent.loads(self, slot)
-                self._line_up_slots[slot_no] = line_up_slot
-            # 助威位置信息
-            line_sub_slots = line_up_data.get('sub_slots')
-            for sub_slot_no, sub_slot in line_sub_slots.items():
-                line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
-                self._sub_slots[sub_slot_no] = line_sub_slot
-            self._line_up_order = line_up_data.get('line_up_order')
-            self._unpars = line_up_data.get('unpars')
-        else:
-            __line_up_slots = dict([(slot_no,
-                                     LineUpSlotComponent(self, slot_no).dumps())
-                                    for slot_no in self._line_up_slots.keys()])
-            __sub_slots = dict([(slot_no,
-                                 LineUpSlotComponent(self, slot_no).dumps()) for
-                                slot_no in self._sub_slots.keys()])
-            data = dict(id=self.character_id,
-                        line_up_slots=__line_up_slots,
-                        sub_slots=__sub_slots,
-                        line_up_order=self._line_up_order,
-                        unpars=self._unpars)
-            tb_character_line_up.new(data)
+    def init_data(self, character_info):
+        line_up_slots = character_info.get('line_up_slots')
+        # 阵容位置信息
+        for slot_no, slot in line_up_slots.items():
+            line_up_slot = LineUpSlotComponent.loads(self, slot)
+            self._line_up_slots[slot_no] = line_up_slot
+        # 助威位置信息
+        line_sub_slots = character_info.get('sub_slots')
+        for sub_slot_no, sub_slot in line_sub_slots.items():
+            line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
+            self._sub_slots[sub_slot_no] = line_sub_slot
+        self._line_up_order = character_info.get('line_up_order')
+        self._unpars = character_info.get('unpars')
 
         self.update_slot_activation()
 
@@ -78,20 +62,33 @@ class CharacterLineUpComponent(Component):
             'line_up_order': self._line_up_order,
             'unpars': self._unpars}
 
-        line_up_obj = tb_character_line_up.getObj(self.character_id)
-        line_up_obj.update_multi(props)
+        line_up_obj = tb_character_info.getObj(self.character_id)
+        line_up_obj.hmset(props)
+
+    def new_data(self):
+        __line_up_slots = dict([(slot_no,
+                                LineUpSlotComponent(self, slot_no).dumps())
+                                for slot_no in self._line_up_slots.keys()])
+        __sub_slots = dict([(slot_no,
+                            LineUpSlotComponent(self, slot_no).dumps()) for
+                            slot_no in self._sub_slots.keys()])
+        data = dict(line_up_slots=__line_up_slots,
+                    sub_slots=__sub_slots,
+                    line_up_order=self._line_up_order,
+                    unpars=self._unpars)
+        return data
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态
         for i in range(1, 7):
             slot = self._line_up_slots[i]
             __level = base_config.get("hero_position_open_level").get(i)
-            if self.owner.level.level >= __level:
+            if self.owner.base_info.level >= __level:
                 slot.activation = True
         for i in range(1, 7):
             slot = self._sub_slots[i]
             __level = base_config.get("friend_position_open_level").get(i)
-            if self.owner.level.level >= __level:
+            if self.owner.base_info.level >= __level:
                 slot.activation = True
 
     def unpar_upgrade(self, skill_id, skill_upgrade_level):
@@ -173,30 +170,11 @@ class CharacterLineUpComponent(Component):
     def line_up_order(self):
         """取得队形
         """
-        if not self._line_up_order:  # 默认队形
-            line_up_order = []
-            new_list = sorted(self._line_up_slots.items(), key=lambda x: x[0])
-            for slot_no, slot in new_list:
-                line_up_order.append(slot_no)
-            self._line_up_order = line_up_order
         return self._line_up_order
 
     @line_up_order.setter
     def line_up_order(self, line_up_order):
-        new_line_up_order = self.line_up_order[:]  # copy[1,2,3,4,5,6]
-        # 更新队形
-        for pos, slot_no in enumerate(self._line_up_order):
-            slot = self._line_up_slots.get(slot_no)  # 格子对象
-            hero_no = slot.hero_slot.hero_no  # 英雄编号
-            if not hero_no:
-                continue
-            new_pos = line_up_order.get(hero_no)  # 新位置
-            logger.debug("line up %s , hero_no %s" % (new_pos, hero_no))
-
-            new_line_up_order[pos], new_line_up_order[new_pos - 1] = new_line_up_order[new_pos - 1], new_line_up_order[
-                pos]
-
-        self._line_up_order = new_line_up_order
+        self._line_up_order = line_up_order
 
     @property
     def sub_slots(self):
@@ -224,8 +202,9 @@ class CharacterLineUpComponent(Component):
         slot_obj.change_hero(hero_no)
 
         target_hero = self.owner.hero_component.get_hero(hero_no)
-        assert target_hero != None, "change hero can not be None!"
-        target_hero.is_online = True
+        if hero_no != 0:
+            assert target_hero != None, "change hero can not be None!"
+            target_hero.is_online = True
 
         # 如果无双条件不满足，则无双设为空
         hero_nos = set(self.hero_nos)  # 阵容英雄编号

@@ -18,7 +18,7 @@ message PlayerRankResponse{
 
 message PvpFightRequest{
     required int32 challenge_rank = 1;
-    repeated LineUp lineup = 2; // 队形
+    repeated int32 lineup = 2; // 队形
     optional int32 skill = 3; //无双技能ID
 }
 

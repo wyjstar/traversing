@@ -15,9 +15,12 @@ class CharacterVIPComponent(Component):
         self._vip_level = 0  # VIP等级
         self._vip_content = None  # VIP 相关内容，从config中获得
 
-    def init_vip(self, vip_level):
-        self._vip_level = vip_level
+    def init_data(self, character_info):
+        self._vip_level = character_info.get('vip_level')
         self.update_vip()
+
+    def new_data(self):
+        return {'vip_level': 0}
 
     @property
     def vip_level(self):
@@ -91,20 +94,19 @@ class CharacterVIPComponent(Component):
     @property
     def gifts(self):
         """获得礼包"""
-        #todo: send mail
+        # todo: send mail
         return self._vip_content.gifts
 
     @property
     def buy_gifts(self):
         """可购买的礼包"""
-        #todo: 礼包ID
+        # todo: 礼包ID
         return self._vip_content.buyGifts
 
     @property
     def guild_worship_times(self):
         """公会膜拜次数"""
         return self._vip_content.guildWorshipTimes
-
 
     def update_vip(self):
         """更新VIP组件"""
@@ -113,4 +115,3 @@ class CharacterVIPComponent(Component):
     @property
     def war_refresh_times(self):
         return self._vip_content.warFogRefreshNum
-

@@ -18,7 +18,7 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    process = BattlePVPProcess(red_units, red_best_skill, player.level.level, blue_units,
+    process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
                                 blue_best_skill, blue_player_level)
     fight_result = process.process()
     return fight_result
@@ -26,11 +26,12 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
 
 def save_line_up_order(line_up, player):
     """docstring for save_line_up_order"""
-    line_up_info = {}  # {hero_id:pos}
+    line_up_info = []  # {hero_id:pos}
     for line in line_up:
-        if not line.hero_id:
-            continue
-        line_up_info[line.hero_id] = line.pos
+        line_up_info.append(line)
+    if len(line_up_info) != 6:
+        logger.error("line up order error %s !" % len(line_up_info))
+        return
 
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component.save_data()
@@ -77,13 +78,14 @@ def fight_start(stage, fid, player):
     red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     # 好友
-    lord_data = tb_character_info.getObjData(fid)
+    char_obj = tb_character_info.getObj(fid)
+    lord_data = char_obj.hget('lord_attr_info')
     f_unit = None
     if lord_data:
-        info = lord_data.get('lord_attr_info').get('info')
+        info = lord_data.get('info')
         f_unit = BattleUnit.loads(info)
     else:
-        logger.info('can not find friend id :%d' % fid)
+        logger.error('can not find friend id :%d' % fid)
 
     return dict(result=True,
                 red_units=red_units,

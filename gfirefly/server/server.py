@@ -4,8 +4,6 @@ Created on 2013-8-2
 
 @author: lan (www.9miao.com)
 """
-from gfirefly.dbentrust.memclient import mclient
-from gfirefly.dbentrust.redis_client import redis_client
 from gfirefly.netconnect.protoc import LiberateFactory
 from flask import Flask
 from gfirefly.distributed.root import PBRoot, BilateralFactory
@@ -18,6 +16,7 @@ from gtwisted.core import reactor
 from gfirefly.utils import services
 import os
 import affinity
+from gfirefly.dbentrust.redis_manager import redis_manager
 
 reactor = reactor
 
@@ -43,7 +42,6 @@ class FFServer:
         self.remote = {}  #remote节点
         self.master_remote = None
         self.db = None
-        self.mem = None
         self.servername = None
         self.remoteportlist = []
 
@@ -62,7 +60,7 @@ class FFServer:
             servername = config.get('name')  # 服务器名称
         logpath = config.get('log')  # 日志
         hasdb = config.get('db')  # 数据库连接
-        hasmem = config.get('mem')  # memcached连接
+        # hasmem = config.get('mem')  # memcached连接
         hasredis = config.get('redis') # redis连接
         app = config.get('app')  # 入口模块名称
         cpuid = config.get('cpu')  # 绑定cpu
@@ -99,16 +97,9 @@ class FFServer:
             # logger.info(str(dbconfig))
             dbpool.initPool(**dbconfig)
 
-        if hasmem and memconfig:
-            urls = memconfig.get('urls')
-            hostname = str(memconfig.get('hostname'))
-            mclient.connect(urls, hostname)
-
         if hasredis and redis_config:
-            host = redis_config.get("host")
-            port = redis_config.get("port")
-            db = redis_config.get("db", 0)
-            redis_client.connect(host, port, db)
+            connection_setting = redis_config.get('urls')
+            redis_manager.connection_setup(connection_setting)
 
         if cpuid:
             affinity.set_process_affinity_mask(os.getpid(), cpuid)

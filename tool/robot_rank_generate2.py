@@ -11,13 +11,13 @@ import json
 from gfirefly.dbentrust import util
 from gfirefly.dbentrust.dbpool import dbpool
 from gfirefly.dbentrust.dbpool import get_connection
-from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import log_init_only_out
 from gfirefly.distributed.node import RemoteObject
 from shared.db_opear.configs_data.game_configs import robot_born_config
 from shared.db_opear.configs_data.game_configs import rand_name_config
 from shared.db_opear.configs_data.game_configs import hero_config
+from gfirefly.dbentrust.redis_mode import MAdmin
 from gfirefly.dbentrust.redis_manager import redis_manager
 
 
@@ -53,6 +53,7 @@ def init_line_up(player, robot_config, level):
 if __name__ == '__main__':
     redis_config = ["127.0.0.1:11211"]
     redis_manager.connection_setup(redis_config)
+    pvp_rank = MAdmin('pvp_rank', 'id')
     log_init_only_out()
 
     mconfig = json.load(open('models.json', 'r'))
@@ -62,15 +63,14 @@ if __name__ == '__main__':
     GlobalObject().json_model_default_config = model_default_config
 
     hostname = "127.0.0.1"
-    user = "root"
-    password = "123456"
-    port = 3306
+    user = "test"
+    password = "test"
+    port = 8066
     dbname = "db_traversing"
     charset = "utf8"
-    dbpool.initPool(host=hostname, user=user,
-                    passwd=password, port=port,
-                    db=dbname, charset=charset)
-    # mclient.connect(["127.0.0.1:11211"], 'robot')
+    # dbpool.initPool(host=hostname, user=user,
+    #                 passwd=password, port=port,
+    #                 db=dbname, charset=charset)
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
@@ -93,7 +93,7 @@ if __name__ == '__main__':
             hero1.break_level = 1
             hero1.exp = 0
 
-    pvp_rank = {}
+    pvp_ranks = {}
     for rank in range(1, rank_length+1):
         for k, v in robot_born_config.items():
             rank_period = v.get('period')
@@ -117,21 +117,12 @@ if __name__ == '__main__':
                                  ap=player.line_up_component.combat_power,
                                  units=red_units,
                                  slots=slots)
-                pvp_rank[rank] = rank_item
+                pvp_ranks[rank] = rank_item
 
-    util.DeleteFromDB(PVP_TABLE_NAME)
-    for _ in pvp_rank.values():
+    for _ in pvp_ranks.values():
         print _.get('id'), _.get('nickname'), _.get('character_id')
-        util.InsertIntoDB(PVP_TABLE_NAME, _)
-
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
-                                     'id=1',
-                                     ['id', 'nickname', 'level', 'units'])
-    for r in records:
-        u = r.get('units')
-        print 'before:', u
-        u = cPickle.loads(u)
-        print r.get('nickname'), r.get('level'), r.get('id'), r.get('units')
+        rank_obj = pvp_rank.getObj(_.get('id'))
+        rank_obj.hmset(_)
 
 
 def dbpool_get():

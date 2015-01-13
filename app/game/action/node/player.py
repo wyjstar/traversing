@@ -6,7 +6,6 @@ import time
 import re
 from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
-from gfirefly.dbentrust import util
 from shared.utils import trie_tree
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
@@ -45,9 +44,10 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
 
     # 判断昵称是否重复
-    sql_result = util.GetOneRecordInfo('tb_character_info',
-                                       dict(nickname=nickname))
-    if sql_result:
+    nickname_obj = tb_character_info.getObj('nickname')
+    result = nickname_obj.hset(nickname, player.base_info.id)
+    print 'is new player:', result
+    if not result:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()
@@ -57,7 +57,7 @@ def nickname_create_5(request_proto, player):
         response.result_no = 2
         return response.SerializeToString()
     player.base_info.base_name = nickname
-    character_obj.update('nickname', nickname)
+    character_obj.hset('nickname', nickname)
 
     # 加入聊天
     remote_gate.login_chat_remote(player.dynamic_id,
@@ -74,7 +74,7 @@ def buy_stamina_6(request_proto, player):
     """购买体力"""
     response = CommonResponse()
 
-    current_vip_level = player.vip_component.vip_level
+    current_vip_level = player.base_info.vip_level
     current_buy_stamina_times = player.stamina.buy_stamina_times
     # current_stamina = player.stamina.stamina
     current_gold = player.finance.gold
@@ -102,7 +102,7 @@ def buy_stamina_6(request_proto, player):
     player.finance.save_data()
 
     player.stamina.buy_stamina_times += 1
-    player.save_data()
+    player.base_info.save_data()
 
     player.stamina.stamina += 120
     player.stamina.save_data()
@@ -152,13 +152,13 @@ def new_guide_step_1802(data, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-    player.newbee_guide_id = new_guide_item.get('backID')
-    player.save_data()
+    player.base_info.newbee_guide_id = new_guide_item.get('backID')
+    player.base_info.save_data()
     response.res.result = True
 
     logger.info('newbee:%s step:%s',
                 player.base_info.id,
-                player.newbee_guide_id)
+                player.base_info.newbee_guide_id)
 
     gain_data = new_guide_item.get('rewards')
     return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
@@ -172,9 +172,9 @@ def change_head_847(data, player):
     request = ChangeHeadRequest()
     request.ParseFromString(data)
     response = ChangeHeadResponse()
-    if request.hero_id in player.heads.head:
-        player.heads.now_head = request.hero_id
-        player.save_data()
+    if request.hero_id in player.base_info.heads.head:
+        player.base_info.heads.now_head = request.hero_id
+        player.base_info.save_data()
     else:
         response.res.result = False
         response.res.result_no = 834

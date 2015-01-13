@@ -20,6 +20,9 @@ class CharacterEquipmentChipComponent(Component):
             equipment_chip = EquipmentChip(chip_no, chip_num)
             self._chips[chip_no] = equipment_chip
 
+    def new_data(self):
+        return {'equipment_chips': {}}
+
     def get_chip(self, chip_no):
         chip = self._chips.get(chip_no)
         return chip
@@ -44,7 +47,7 @@ class CharacterEquipmentChipComponent(Component):
             if chip.chip_num:  # 如果chip num == 0, 则不保存
                 props[no] = chip.chip_num
         items_data = tb_character_info.getObj(self.owner.base_info.id)
-        items_data.update('equipment_chips', props)
+        items_data.hset('equipment_chips', props)
 
     # def get_chip_num(self, chip_no):
     #     """根据碎片编号取得当前个数

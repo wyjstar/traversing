@@ -14,7 +14,7 @@ message ChapterInfoRequest{
 message StageStartRequest{
 	required int32 stage_id = 1;     // 关卡编号
     required int32 stage_type = 2;   // 关卡类型:1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
-	repeated LineUp lineup = 3;      // 队形
+	repeated int32 lineup = 3;      // 队形
 	optional int32 unparalleled = 4; // 无双技能ID
 	optional int32 fid = 5;          // 好友ID
 }

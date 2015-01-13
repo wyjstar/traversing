@@ -21,25 +21,9 @@ class CharacterShopComponent(Component):
         self._shop_data = {}
 
     def init_data(self, character_info):
-        if character_info.get('shop'):
-            # print shop_data
-            self._shop_data = character_info.get('shop')
-            # print self._shop_data
-            self.check_time()
-        else:
-            shop = tb_character_info.getObj(self.owner.base_info.id)
-            for t, item in shop_type_config.items():
-                data = {}
-                data['buyed_item_ids'] = []
-                data['refresh_times'] = 0
-                data['last_refresh_time'] = time.time()
-                data['luck_num'] = 0.0
-                data['luck_time'] = time.time()
-                data['item_ids'] = self.get_shop_item_ids(t, 0)
-                print t, data['item_ids']
-                self._shop_data[t] = data
-            # print data
-            shop.update('shop', self._shop_data)
+        self._shop_data = character_info.get('shop')
+        # print self._shop_data
+        self.check_time()
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
@@ -47,9 +31,23 @@ class CharacterShopComponent(Component):
     def save_data(self):
         shop = tb_character_info.getObj(self.owner.base_info.id)
         if shop:
-            shop.update('shop', self._shop_data)
+            shop.hset('shop', self._shop_data)
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
+
+    def new_data(self):
+        for t, item in shop_type_config.items():
+            data = {}
+            data['buyed_item_ids'] = []
+            data['refresh_times'] = 0
+            data['last_refresh_time'] = time.time()
+            data['luck_num'] = 0.0
+            data['luck_time'] = time.time()
+            data['item_ids'] = self.get_shop_item_ids(t, 0)
+            print t, data['item_ids']
+            self._shop_data[t] = data
+        # print data
+        return {'shop': self._shop_data}
 
     def check_time(self):
         current_date_time = time.time()

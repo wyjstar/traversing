@@ -5,7 +5,7 @@ created by server on 14-7-7下午5:26.
 from app.game.component.baseInfo.equipment_base_info import EquipmentBaseInfoComponent
 from app.game.component.equipment.equipment_attribute import EquipmentAttributeComponent
 from app.game.component.record.equipment_enhance import EquipmentEnhanceComponent
-from app.game.redis_mode import tb_equipment_info
+from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
@@ -79,9 +79,11 @@ def rand_pick_attr(attr):
 class Equipment(object):
     """装备 """
 
-    def __init__(self, equipment_id, equipment_name, equipment_no,
+    def __init__(self, character_id, equipment_id, equipment_name, equipment_no,
                  strengthen_lv=1, awakening_lv=1, enhance_record=[],
-                 nobbing_effect={}, is_guard=False, main_attr={}, minor_attr={}):
+                 nobbing_effect={}, is_guard=False, main_attr={},
+                 minor_attr={}):
+        self._character_id = character_id
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,
                                                      equipment_name,
@@ -101,7 +103,6 @@ class Equipment(object):
         self._attribute.main_attr = mainAttr
         self._attribute.minor_attr = minorAttr
         data = dict(id=self._base_info.id,
-                    character_id=character_id,
                     equipment_info=dict(equipment_no=no,
                                         slv=self._attribute.strengthen_lv,
                                         alv=self._attribute.awakening_lv,
@@ -111,26 +112,26 @@ class Equipment(object):
                     enhance_info=self._record.enhance_record,
                     nobbing_effect=self._attribute.nobbing_effect)
 
-        tb_equipment_info.new(data)
+        char_obj = tb_character_info.getObj(character_id).getObj('equipments')
+        char_obj.hset(self._base_info.id, data)
 
     def save_data(self):
-        data = {
-            'equipment_info': {'equipment_no': self._base_info.equipment_no,
-                               'slv': self._attribute.strengthen_lv,
-                               'alv': self._attribute.awakening_lv,
-                               'is_guard': self._attribute.is_guard,
-                               'main_attr': self._attribute.main_attr,
-                               'minor_attr': self._attribute.minor_attr},
-            'enhance_info': self._record.enhance_record,
-            'nobbing_effect': self._attribute.nobbing_effect
-        }
+        data = {'id': self._base_info.id,
+                'equipment_info': {'equipment_no': self._base_info.equipment_no,
+                                   'slv': self._attribute.strengthen_lv,
+                                   'alv': self._attribute.awakening_lv,
+                                   'is_guard': self._attribute.is_guard,
+                                   'main_attr': self._attribute.main_attr,
+                                   'minor_attr': self._attribute.minor_attr},
+                'enhance_info': self._record.enhance_record,
+                'nobbing_effect': self._attribute.nobbing_effect}
 
-        items_data = tb_equipment_info.getObj(self._base_info.id)
-        items_data.update_multi(data)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('equipments')
+        char_obj.hset(self._base_info.id, data)
 
     def delete(self):
-        items_data = tb_equipment_info.getObj(self._base_info.id)
-        items_data.delete()
+        char_obj = tb_character_info.getObj(self._character_id).getObj('equipments')
+        char_obj.hdel(self._base_info.id)
 
     @property
     def base_info(self):
@@ -156,7 +157,7 @@ class Equipment(object):
         """ 获取强化暴击倍数
         return: 暴击倍数
         """
-        items = player.vip_component.equipment_strength_cli_times
+        items = player.base_info.equipment_strength_cli_times
         times = random_pick_with_percent(items)
         if times:
             return times
@@ -217,7 +218,7 @@ class Equipment(object):
             minor_attr_pb.attr_value = attr_value
             minor_attr_pb.attr_increment = attr_increment
 
-    def calculate_attr(self):
+    def calculate_attr(self, hero_self_attr):
         """根据属性和强化等级计算装备属性"""
         # hpEqu             装备加生命值    中间值  1   baseHp+growHp*equLevel
         # atkEqu            装备加攻击力    中间值  1   baseAtk+growAtk*equLevel
@@ -243,10 +244,7 @@ class Equipment(object):
         # 10：加格挡率
         # 11：加韧性
 
-        result = {'hp_rate': 0,
-                  'atk_rate': 0,
-                  'physical_def_rate': 0,
-                  'magic_def_rate': 0}
+        result = {}
         varNames = {1: 'baseHp',
                     2: 'baseAtk',
                     3: 'basePdef',
@@ -262,10 +260,10 @@ class Equipment(object):
                      2: 'growAtk',
                      3: 'growPdef',
                      4: 'growMdef'}
-        varNames3 = {1: 'hp_rate',
-                     2: 'atk_rate',
-                     3: 'physical_def_rate',
-                     4: 'magic_def_rate'}
+        varNames3 = {1: 'hpHero',
+                     2: 'atkHero',
+                     3: 'physicalDefHero',
+                     4: 'magicDefHero'}
 
         allVars = dict(baseHp=0,
                        baseAtk=0,
@@ -292,8 +290,8 @@ class Equipment(object):
                 if k in varNames2:
                     allVars[varNames2[k]] += ai
             elif avt == 2:
-                if varNames3[k] in result:
-                    result[varNames3[k]] += av
+                if k not in varNames3:
+                    allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
                 else:
                     raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
         for k, v in self._attribute.minor_attr.items():
@@ -304,8 +302,8 @@ class Equipment(object):
                 if k in varNames2:
                     allVars[varNames2[k]] += ai
             elif avt == 2:
-                if varNames3[k] in result:
-                    result[varNames3[k]] += av
+                if k not in varNames3:
+                    allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
                 else:
                     raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
 
@@ -347,6 +345,5 @@ class Equipment(object):
     def equipment_config_info(self):
         equipment_no = self._base_info.equipment_no
         equ_config_obj = game_configs.equipment_config.get(equipment_no)
-        assert equ_config_obj!=None, "equipment id: %s can not find config info" % equipment_no
+        assert equ_config_obj is not None, "equipment id: %s can not find config info" % equipment_no
         return equ_config_obj
-

@@ -2,20 +2,20 @@
 """
 created by server on 14-8-14下午3:20.
 """
-from app.game.redis_mode import tb_mail_info
+from app.game.redis_mode import tb_character_info
 import json
 import cPickle
 
 
 class Mail(object):
-    """
-    邮件
-    """
-    def __init__(self, mail_id='', character_id=0, sender_id=-1, sender_name='', sender_icon=0, title='',
-                 content=u'', mail_type=1, is_readed=False,
-                 send_time=0, read_time=0, prize=0):
+    """ 邮件 """
+    def __init__(self, mail_id='', character_id=0, sender_id=-1,
+                 sender_name='', sender_icon=0, title='', content=u'',
+                 mail_type=1, is_readed=False, send_time=0, read_time=0,
+                 prize=0):
         """初始化邮件信息
         """
+        self._old_data = None
         self._id = mail_id  # 邮件的ID
         self._character_id = character_id  # ID
         self._title = title  # 邮件的主题
@@ -29,21 +29,19 @@ class Mail(object):
         self._read_time = read_time  # 读邮件时间
         self._prize = prize  # 邮件物品包裹
 
-    def init_data(self):
-        mail_data = tb_mail_info.getObjData(self._id)
-        if mail_data:
-            self._character_id = mail_data.get("character_id")
-            mail_prop = mail_data.get("property")
-            self._title = mail_prop.get("title")
-            self._sender_id = mail_prop.get("sender_id")
-            self._sender_name = mail_prop.get("sender_name")
-            self._sender_icon = mail_prop.get("sender_icon")
-            self._mail_type = mail_prop.get("mail_type")
-            self._content = mail_prop.get("content")
-            self._is_readed = mail_prop.get("is_readed")
-            self._send_time = mail_prop.get("send_time")
-            self._read_time = mail_prop.get("read_time")
-            self._prize = cPickle.loads(mail_prop.get("prize"))
+    def init_data(self, mail_prop):
+        self._old_data = mail_prop
+        self._character_id = mail_prop.get("character_id")
+        self._title = mail_prop.get("title")
+        self._sender_id = mail_prop.get("sender_id")
+        self._sender_name = mail_prop.get("sender_name")
+        self._sender_icon = mail_prop.get("sender_icon")
+        self._mail_type = mail_prop.get("mail_type")
+        self._content = mail_prop.get("content")
+        self._is_readed = mail_prop.get("is_readed")
+        self._send_time = mail_prop.get("send_time")
+        self._read_time = mail_prop.get("read_time")
+        self._prize = cPickle.loads(mail_prop.get("prize"))
 
     @property
     def mail_id(self):
@@ -68,7 +66,7 @@ class Mail(object):
     @property
     def sender_name(self):
         return self._sender_name
-    
+
     @property
     def sender_icon(self):
         return self._sender_icon
@@ -107,12 +105,12 @@ class Mail(object):
         mail_pb.mail_type = self._mail_type
         mail_pb.send_time = self._send_time
         mail_pb.is_readed = self._is_readed
-        
         mail_pb.prize = json.dumps(self._prize)
 
     def mail_proerty_dict(self):
         mail_property = {
             'mail_id': self._id,
+            'character_id': self._character_id,
             'sender_id': self._sender_id,
             'sender_name': self._sender_name,
             'sender_icon': self._sender_icon,
@@ -126,6 +124,11 @@ class Mail(object):
         return mail_property
 
     def save_data(self):
-        mmode = tb_mail_info.getObj(self._id)
-        mmode.update("property", self.mail_proerty_dict())
-        
+        prop = self.mail_proerty_dict()
+        char_obj = tb_character_info.getObj(self._character_id).getObj('mails')
+        char_obj.hset(self._id, self._old_data, prop)
+        self._old_data = prop
+
+    def delete(self):
+        char_obj = tb_character_info.getObj(self._character_id).getObj('mails')
+        char_obj.hdel(self._id)

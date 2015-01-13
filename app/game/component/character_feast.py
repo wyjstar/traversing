@@ -13,16 +13,15 @@ class CharacterFeastComponent(Component):
         super(CharacterFeastComponent, self).__init__(owner)
         self._last_eat_time = 1  # 最后吃酒席的时间戳
 
-    def init_feast(self, character_info):
-        data = character_info.get('feast')
-        if data:
-            self._last_eat_time = data
-        else:
-            tb_character_info.update('feast', 1)
+    def init_data(self, character_info):
+        self._last_eat_time = character_info.get('feast')
 
     def save_data(self):
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
-        sign_in_data.update('feast', self._last_eat_time)
+        sign_in_data.hset('feast', self._last_eat_time)
+
+    def new_data(self):
+        return {'feast': 1}
 
     @property
     def last_eat_time(self):

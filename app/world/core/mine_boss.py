@@ -4,12 +4,16 @@
 created by wzp.
 """
 from shared.utils.ranking import Ranking
-from gfirefly.dbentrust.redis_client import redis_client
-import cPickle
+from gfirefly.dbentrust.redis_mode import RedisObject
 from gfirefly.server.logobj import logger
 from shared.utils.pyuuid import get_uuid
 from app.world.core.base_boss import BaseBoss
 from shared.db_opear.configs_data.game_configs import base_config
+import cPickle
+
+
+tb_mineboss = RedisObject('tb_character_info')
+
 
 class MineBossManager(object):
     """docstring for MineBoss"""
@@ -24,7 +28,8 @@ class MineBossManager(object):
         boss_id = get_uuid()
         boss_name, boss_demage_name = self.get_boss_name(boss_id)
         Ranking.init(boss_demage_name, 10)
-        boss = MineBoss(boss_name, Ranking.instance(boss_demage_name), "mine_boss_stages")
+        boss = MineBoss(boss_name, Ranking.instance(boss_demage_name),
+                        "mine_boss_stages")
         self._bosses[boss_id] = boss
         return boss_id, boss
 
@@ -55,7 +60,7 @@ class MineBoss(BaseBoss):
 
     def init_data(self):
         """docstring for init_data"""
-        str_data = redis_client.get(self._boss_name)
+        str_data = tb_mineboss.get(self._boss_name)
         if not str_data:
             logger.debug("init data...")
             self.update_boss()
@@ -75,8 +80,7 @@ class MineBoss(BaseBoss):
         base_boss_data = self.get_data_dict()
 
         str_data = cPickle.dumps(base_boss_data)
-        redis_client.set(self._boss_name, str_data)
-
+        tb_mineboss.set(self._boss_name, str_data)
 
 
 mine_boss_manager = MineBossManager()

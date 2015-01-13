@@ -34,5 +34,20 @@ CREATE TABLE `tb_user` (
   UNIQUE KEY `account_name` (`account_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `tb_pvp_rank`;
+CREATE TABLE `tb_pvp_rank` (
+  `id` bigint(20) NOT NULL,
+  `character_id` bigint(20) NOT NULL,
+  `nickname` varchar(128) DEFAULT '',
+  `level` int(11) NOT NULL DEFAULT '1',
+  `ap` int(11) NOT NULL,
+  `best_skill` int(11) NOT NULL,
+  `unpar_skill` int(11) NOT NULL,
+  `unpar_skill_level` int(11) NOT NULL,
+  `units` blob NOT NULL,
+  `slots` blob NOT NULL,
+  `hero_ids` tinyblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dump completed on 2014-09-29 15:45:49

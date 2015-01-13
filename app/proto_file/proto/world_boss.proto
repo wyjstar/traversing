@@ -57,7 +57,7 @@ message EncourageHerosRequest{
 message PvbStartRequest
 {
 	optional string boss_id = 4;     //boss id
-	repeated LineUp lineup = 1;      // 队形
+	repeated int32 lineup = 1;      // 队形
 	optional int32 unparalleled = 2; // 无双技能ID
 	optional int32 fid = 3;          // 好友ID
 

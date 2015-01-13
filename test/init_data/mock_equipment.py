@@ -9,9 +9,10 @@ from shared.db_opear.configs_data import game_configs
 
 
 def init_equipment(player):
+    character_id = player.base_info.id
 
     for equip_no, val in game_configs.equipment_config.items():
-        equipment_obj = Equipment(get_uuid(), '', equip_no)
+        equipment_obj = Equipment(character_id, get_uuid(), '', equip_no)
         player.equipment_component.add_exist_equipment(equipment_obj)
         equipment_obj.attribute.strengthen_lv = 1
         equipment_obj.save_data()

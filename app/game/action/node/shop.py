@@ -180,7 +180,7 @@ def refresh_shop_items_507(pro_data, player):
     shop_type = request.shop_type
 
     response = GetShopItemsResponse()
-    # max_shop_refresh_times = player.vip_component.shop_refresh_times
+    # max_shop_refresh_times = player.base_info.shop_refresh_times
 
     # cancel vip temprory
     # if max_shop_refresh_times <= player.soul_shop.refresh_times:

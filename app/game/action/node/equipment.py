@@ -239,8 +239,8 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     # print equipment_obj, "equipment_obj"
 
-    if enhance_type == 2 and not player.vip_component.equipment_strength_one_key:
-        logger.debug('enhance_equipment_vip_error!%d' % player.vip_component.equipment_strength_one_key)
+    if enhance_type == 2 and not player.base_info.equipment_strength_one_key:
+        logger.debug('enhance_equipment_vip_error!%d' % player.base_info.equipment_strength_one_key)
         return {'result': False, 'result_no': 403, 'message': u''}
 
     if not equipment_obj:
@@ -256,7 +256,7 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
         return {'result': False, 'result_no': 101, 'message': u''}
 
 
-    strength_max = player.level.level + equipment_obj.strength_max
+    strength_max = player.base_info.level + equipment_obj.strength_max
     for i in xrange(0, enhance_num):
         result = __do_enhance(player, equipment_obj)
         if not result.get('result'):
