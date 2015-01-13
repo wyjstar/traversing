@@ -22,10 +22,10 @@ class CharacterEquipmentPackageComponent(Component):
 
     def init_data(self, c):
         character_id = self.owner.base_info.id
-        char_obj = tb_character_info.getObj(self.owner.base_info.id)
-        equipments = char_obj.smem('equipments')
+        char_obj = tb_character_info.getObj(self.owner.base_info.id).getObj('equipments')
+        equipments = char_obj.hgetall()
 
-        for equipment_data in equipments:
+        for eid, equipment_data in equipments:
             equipment_info = equipment_data.get('equipment_info')
             equipment_id = equipment_data.get('id')
 

@@ -83,7 +83,6 @@ class Equipment(object):
                  strengthen_lv=1, awakening_lv=1, enhance_record=[],
                  nobbing_effect={}, is_guard=False, main_attr={},
                  minor_attr={}):
-        self._old_data = None
         self._character_id = character_id
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,
@@ -113,9 +112,8 @@ class Equipment(object):
                     enhance_info=self._record.enhance_record,
                     nobbing_effect=self._attribute.nobbing_effect)
 
-        char_obj = tb_character_info.getObj(character_id)
-        char_obj.sadd('equipments', data)
-        self._old_data = data
+        char_obj = tb_character_info.getObj(character_id).getObj('equipments')
+        char_obj.hset(self._base_info.id, data)
 
     def save_data(self):
         data = {'id': self._base_info.id,
@@ -128,12 +126,12 @@ class Equipment(object):
                 'enhance_info': self._record.enhance_record,
                 'nobbing_effect': self._attribute.nobbing_effect}
 
-        char_obj = tb_character_info.getObj(self._character_id)
-        char_obj.supdate('equipments', self._old_data, data)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('equipments')
+        char_obj.hset(self._base_info.id, data)
 
     def delete(self):
-        char_obj = tb_character_info.getObj(self._character_id)
-        char_obj.srem('equipments', self._old_data)
+        char_obj = tb_character_info.getObj(self._character_id).getObj('equipments')
+        char_obj.hdel(self._base_info.id)
 
     @property
     def base_info(self):
