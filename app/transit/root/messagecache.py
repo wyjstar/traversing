@@ -13,7 +13,7 @@ import uuid
 # DB = 1
 STAY_TIME = 60 * 60 * 24
 
-pvp_rank = RedisObject('pvp_rank')
+message_cache = RedisObject('message_cache')
 
 
 class MessageCache:
@@ -24,31 +24,31 @@ class MessageCache:
 
     def cache(self, key, character_id, *args, **kw):
         unique_id = uuid.uuid4()
-        pvp_obj = pvp_rank.getObj(character_id)
+        message_obj = message_cache.getObj(character_id)
         message = cPickle.dumps(dict(topic_id=key,
                                      character_id=character_id,
                                      args=args,
                                      kw=kw,
                                      uid=unique_id))
         score = time.time() + STAY_TIME
-        result = pvp_obj.zadd('', score, message)
+        result = message_obj.zadd('', score, message)
         if not result:
             logger.error('cache key:%s, char id:%s, result%s',
                          key, character_id, result)
         # print result
 
     def get(self, character_id):
-        pvp_obj = pvp_rank.getObj(character_id)
-        pvp_obj.zremrangebyscore('', 0, time.time())
-        messages = pvp_obj.zrange('', 0, 10000)
+        message_obj = message_cache.getObj(character_id)
+        message_obj.zremrangebyscore('', 0, time.time())
+        messages = message_obj.zrange('', 0, 10000)
 
         for message in messages:
             data = cPickle.loads(message)
             yield message, data
 
     def delete(self, key, message):
-        pvp_obj = pvp_rank.getObj(key)
-        result = pvp_obj.zrem('', message)
+        message_obj = message_cache.getObj(key)
+        result = message_obj.zrem('', message)
         if not result:
             logger.error('delete key:%s, message:%s, result%s',
                          key, message, result)
