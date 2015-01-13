@@ -44,9 +44,9 @@ def nickname_create_5(request_proto, player):
 
     # 判断昵称是否重复
     nickname_obj = tb_character_info.getObj('nickname')
-    isexist = nickname_obj.hexists(nickname)
-    print 'isexists:', isexist
-    if isexist:
+    result = nickname_obj.hset(nickname, player.base_info.id)
+    print 'is new player:', result
+    if not result:
         response.result = False
         response.result_no = 1
         return response.SerializeToString()
@@ -57,7 +57,6 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
     player.base_info.base_name = nickname
     character_obj.hset('nickname', nickname)
-    nickname_obj.hset(nickname, player.base_info.id)
 
     # 加入聊天
     remote_gate.login_chat_remote(player.dynamic_id,
