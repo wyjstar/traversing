@@ -3,6 +3,7 @@
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
+from shared.utils.const import const
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -49,7 +50,7 @@ def settle(player, result, response, lively_event, conf):
 
     # 构造掉落
     settlement_drops = player.fight_cache_component.fighting_settlement(result)
-    data = gain(player, settlement_drops)
+    data = gain(player, settlement_drops, const.STAGE)
     get_return(player, data, response.drops)
 
 

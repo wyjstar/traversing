@@ -194,7 +194,7 @@ def money_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, PlatI
         print sendmsg
 
 
-def item_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, PlatID=0, OpenID=0, ItemType=0, ItemID=0,
+def item_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, OpenID=0, ItemType=0, ItemID=0,
               AfterCount=0, Count=0, Reason=0, SubReason=0, AddOrReduce=0, Itid=0):
     """
     log for ItemFlow
@@ -207,7 +207,6 @@ def item_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, PlatID
     message.append(dtEventTime)
     message.append(Sequence)
     message.append(GameAppID)
-    message.append(PlatID)
     message.append(OpenID)
     message.append(ItemType)
     message.append(ItemID)

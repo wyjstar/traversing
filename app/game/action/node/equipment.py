@@ -324,7 +324,7 @@ def melting_equipment(equipment_id, response, player):
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
     melting_items = equipment_obj.melting_item
-    gain = item_group_helper.gain(player, melting_items)
+    gain = item_group_helper.gain(player, melting_items, const.MELTING_EQUIPMENT)
 
     item_group_helper.get_return(player, gain, response.cgr)
 

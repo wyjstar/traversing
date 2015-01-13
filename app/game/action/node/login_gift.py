@@ -7,6 +7,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import activity_config
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -68,7 +69,7 @@ def get_login_gift(activity_id, activity_type, response, player):
                         if i.get('parameterA') <= player.login_gift.cumulative_day[0]:
                             player.login_gift.cumulative_received.append(activity_id)
                             gain_data = i['reward']
-                            return_data = gain(player, gain_data)
+                            return_data = gain(player, gain_data, const.CUMULATIVE_LOGIN_GIFT)
                             get_return(player, return_data, response.gain)
                             res = True
                             err_no = 0
@@ -96,7 +97,7 @@ def get_login_gift(activity_id, activity_type, response, player):
                         if i.get('parameterA') <= player.login_gift.continuous_day[0]:
                             player.login_gift.continuous_received.append(activity_id)
                             gain_data = i['reward']
-                            return_data = gain(player, gain_data)
+                            return_data = gain(player, gain_data, const.CONTINUOUS_LOGIN_GIFT)
                             get_return(player, return_data, response.gain)
                             res = True
                             err_no = 0

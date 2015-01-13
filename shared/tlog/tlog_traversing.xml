@@ -104,18 +104,11 @@
    <!--//////////////////////////////////////////////
 	///////道具流水表///////////////////////////////
    /////////////////////////////////////////////////-->
-  <macrosgroup name="ADDORREDUCE">
-    <macro name="ADD"       value="0" desc="加"/>
-    <macro name="REDUCE"    value="1" desc="减"/>
-  </macrosgroup>
-
-  
   <struct name="ItemFlow" version="1" desc="道具流水表">
 	<entry name="GameSvrId"				type="string"		size="25"						desc="登录的游戏服务器编号" />
   <entry name="dtEventTime"			type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
 	<entry name="Sequence"				type="int"											desc="用于关联一次动作产生多条不同类型的道具流动日志" />
   <entry name="GameAppID"				type="string"		size="32"						desc="游戏APPID" />
-	<entry name="PlatID"				type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
 	<entry name="OpenID"				type="string"		size="64"						desc="玩家" />
 	<entry name="ItemType"				type="int"											desc="道具类型" />
   <entry name="ItemId"				type="int"											desc="道具ID" />
@@ -123,7 +116,7 @@
   <entry name="Count"					type="int"											desc="动作涉及的物品数量" />
 	<entry name="Reason"				type="int"       									desc="道具流动一级原因" />
   <entry name="SubReason"				type="int"       									desc="道具流动二级原因" />
-	<entry name="AddOrReduce"           type="int"											desc="增加还是减少" />
+	<entry name="AddOrReduce"           type="int"											desc="增加还是减少,0 加，1 减" />
 	<entry name="ItId"                  type="string"		size="50"						desc="用户道具ID" />
     <entry name="Uid"                      type="int"                        defaultvalue="0"    desc="用户唯一编号"/>
   </struct>

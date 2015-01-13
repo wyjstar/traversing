@@ -18,6 +18,7 @@ from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
 from app.game.action.node._fight_start_logic import pve_process, pve_assemble_units, pve_assemble_friend
+from shared.utils.const import const
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -291,7 +292,7 @@ def stage_sweep(stage_id, times, player):
         elite_drop = elite_bag.get_drop_items()
         drop.extend(elite_drop)
 
-        data = gain(player, drop)
+        data = gain(player, drop, const.STAGE_SWEEP)
         get_return(player, data, drops)
 
         player.stamina.stamina -= stage_config.vigor
@@ -419,7 +420,7 @@ def get_award(pro_data, player):
             bag_id = conf.dragonGift
 
     drop = get_drop(bag_id)
-    return_data = gain(player, drop)
+    return_data = gain(player, drop, const.CHAPTER_AWARD)
     get_return(player, return_data, response.drops)
 
     player.stage_component.update()

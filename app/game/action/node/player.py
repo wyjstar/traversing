@@ -19,6 +19,7 @@ from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHe
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
+from shared.utils.const import const
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -160,7 +161,7 @@ def new_guide_step_1802(data, player):
                 player.newbee_guide_id)
 
     gain_data = new_guide_item.get('rewards')
-    return_data = gain(player, gain_data)
+    return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
     get_return(player, return_data, response.gain)
 
     return response.SerializePartialToString()
