@@ -43,9 +43,9 @@ class CharacterFinanceComponent(Component):
         character_obj.hset('finances', self._finances)
 
     def new_data(self):
-        finances = [0] * const.RESOURCE_MAX
+        self._finances = [0] * const.RESOURCE_MAX
         for t, v in base_config.get('resource_for_InitUser').items():
-            finances[t] = v
+            self._finances[t] = v
         return {'finances': self._finances}
 
     def __getitem__(self, res_type):
