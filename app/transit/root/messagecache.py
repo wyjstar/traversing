@@ -39,8 +39,8 @@ class MessageCache:
 
     def get(self, character_id):
         pvp_obj = pvp_rank.getObj(character_id)
-        pvp_obj.zremrangebyscore('', 0, time.time())
-        messages = pvp_obj.zrange('', 0, 10000)
+        pvp_obj.zremrangebyscore(0, time.time())
+        messages = pvp_obj.zrange(0, 10000)
 
         for message in messages:
             data = cPickle.loads(message)
