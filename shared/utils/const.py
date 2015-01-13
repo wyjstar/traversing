@@ -110,7 +110,7 @@ const.TLOG_ADDR = ('192.168.10.25', 6667)
 const.ADD = 0
 const.REDUCE = 1
 
-# ==道具流水，流动原因==
+# ==道具流水，获得原因==
 const.MELTING_EQUIPMENT = 1  # 装备熔炼
 const.HERO_SELL = 2  # 武将出售
 const.HERO_SACRIFICE_OPER = 3  # 武将献祭
@@ -138,6 +138,8 @@ const.TRAVEL = 24  # 游历
 const.TRAVEL_OPEN_CHEST = 25  # 游历宝箱
 const.TRAVEL_AUTO = 26  # 自动游历
 const.STAGE = 27  # 关卡
+
+const.ENHANCE_EQUIPMENT = 28  # 装备强化
 
 
 

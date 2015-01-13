@@ -92,8 +92,14 @@ def is_consume(player, shop_item):
 
 
 def consume(player, item_group, shop=None, luck_config=None):
+# def consume(player, item_group, reason, shop=None, luck_config=None):
     """消耗"""
     result = []
+
+    after_num = 0
+    itid = 0
+    reason = 0
+
 
     luckValue = None
     if luck_config:
@@ -113,35 +119,47 @@ def consume(player, item_group, shop=None, luck_config=None):
             if shop and luckValue:
                 shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
+            after_num = player.finance.gold
 
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul -= num
             player.finance.save_data()
+            after_num = player.Finance.hero_soul
 
         elif type_id == const.PVP:
             player.finance.pvp_score -= num
             player.finance.save_data()
+            after_num = player.finance.pvp_score
 
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             hero_chip.num -= num
             player.hero_chip_component.save_data()
+            after_num = hero_chip.num
 
         elif type_id == const.EQUIPMENT_CHIP:
             equipment_chip = player.equipment_chip_component.get_chip(item_no)
             equipment_chip.chip_num -= num
             player.equipment_chip_component.save_data()
+            after_num = equipment_chip.chip_num
 
         elif type_id == const.ITEM:
             item = player.item_package.get_item(item_no)
             item.num -= num
             player.item_package.save_data()
+            after_num = item.num
 
         elif type_id == const.RESOURCE:
             player.finance[item_no] -= num
             player.finance.save_data()
+            after_num = player.finance[item_no]
 
         result.append([type_id, num, item_no])
+
+        # =====Tlog================
+        tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
+        # ========================
+
     return result
 
 
