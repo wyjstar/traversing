@@ -225,3 +225,7 @@ class RedisObject(object):
         produce_key = self.produceKey(label)
         client = redis_manager.get_connection(produce_key)
         return client.zrevrange(produce_key, start, end, withscores)
+
+    def zremrangebyscore(self, label, m, n):
+        client = redis_manager.get_connection(self._name)
+        return client.zremrangebyscore(self._name, m, n)

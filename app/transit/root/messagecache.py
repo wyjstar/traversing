@@ -3,6 +3,7 @@
 created by sphinx on
 """
 from gfirefly.dbentrust.redis_mode import RedisObject
+from gfirefly.server.logobj import logger
 import cPickle
 import gevent
 import uuid
@@ -23,32 +24,34 @@ class MessageCache:
 
     def cache(self, key, character_id, *args, **kw):
         unique_id = uuid.uuid4()
-        key_name = 'pvp_' + str(character_id)
+        pvp_obj = pvp_rank.getObj(character_id)
         message = cPickle.dumps(dict(topic_id=key,
                                      character_id=character_id,
                                      args=args,
                                      kw=kw,
                                      uid=unique_id))
         score = time.time() + STAY_TIME
-        result = pvp_rank.zadd(key_name, score, message)
+        result = pvp_obj.zadd('', score, message)
         if not result:
-            print 'cache key:', key, 'char id:', character_id, 'result', result
+            logger.error('cache key:%s, char id:%s, result%s',
+                         key, character_id, result)
         # print result
 
     def get(self, character_id):
-        request_key = 'pvp_' + str(character_id)
-        pvp_rank.zremrangebyscore(request_key, 0, time.time())
-        messages = pvp_rank.zrange(request_key, 0, 10000)
+        pvp_obj = pvp_rank.getObj(character_id)
+        pvp_obj.zremrangebyscore('', 0, time.time())
+        messages = pvp_obj.zrange('', 0, 10000)
 
         for message in messages:
             data = cPickle.loads(message)
             yield message, data
 
     def delete(self, key, message):
-        request_key = 'pvp_' + str(key)
-        result = pvp_rank.zrem(request_key, message)
+        pvp_obj = pvp_rank.getObj(key)
+        result = pvp_obj.zrem('', message)
         if not result:
-            print 'delete key:', key, 'message:', message, 'result', result
+            logger.error('delete key:%s, message:%s, result%s',
+                         key, message, result)
         # print result
 
 
