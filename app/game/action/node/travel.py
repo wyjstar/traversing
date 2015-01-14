@@ -244,7 +244,14 @@ def travel_settle_833(data, player):
             return response.SerializeToString()
 
     # 结算
-    gain(player, event_cache[1], const.TRAVEL)
+    if event_info.type == 2 and not event_info.parameter[args.parameter]:
+        common_bag = BigBag(stage_info.commonDrop)
+        common_drop = common_bag.get_drop_items()
+
+        gain_data = gain(player, [common_drop], const.TRAVEL)
+        get_return(player, gain_data, response.drops)
+    else:
+        gain(player, event_cache[1], const.TRAVEL)
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
