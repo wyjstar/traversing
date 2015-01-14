@@ -6,6 +6,7 @@ import redis
 from shared.utils.hash_ring import HashRing
 from redis.connection import BlockingConnectionPool
 
+
 def parse_setting(setting):
     """解析配置
     """
@@ -17,12 +18,10 @@ def parse_setting(setting):
 
 class RedisClient(object):
     def __init__(self, **kwargs):
-        kwargs['connection_pool'] = BlockingConnectionPool(100, 120)
-        self.connection_settings = kwargs or {'host': 'localhost',
-        'port': 6379, 'db': 0}
+        self._pool = BlockingConnectionPool(**kwargs)
 
     def redis(self):
-        return redis.StrictRedis(**self.connection_settings)
+        return redis.StrictRedis(connection_pool=self._pool)
 
     def update(self, d):
         self.connection_settings.update(d)
