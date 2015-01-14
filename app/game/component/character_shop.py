@@ -22,7 +22,6 @@ class CharacterShopComponent(Component):
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
-        # print self._shop_data
         self.check_time()
 
         # for k, v in self._shop_data.items():
@@ -44,7 +43,7 @@ class CharacterShopComponent(Component):
             data['luck_num'] = 0.0
             data['luck_time'] = time.time()
             data['item_ids'] = self.get_shop_item_ids(t, 0)
-            print t, data['item_ids']
+            # print t, data['item_ids']
             self._shop_data[t] = data
         # print data
         return {'shop': self._shop_data}
@@ -93,14 +92,16 @@ class CharacterShopComponent(Component):
         __shop_data['buyed_item_ids'] = []
         # data['last_refresh_time'] = time.time()
         if shop_item.itemNum > 0:
-            __shop_data['item_ids'] = self.get_shop_item_ids(shop_type, shop_item.itemNum)
+            # print shop_item, shop_type
+            __shop_data['item_ids'] = self.get_shop_item_ids(shop_type, 
+                                                             self._shop_data[shop_type]['luck_num'])
         self.save_data()
 
         return result
 
     def refresh_items(self, type_shop):
         if type_shop in self._shop_data:
-            ids = self.get_shop_item_ids(type_shop, type_shop.luck_num)
+            ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop].luck_num)
             self._shop_data[type_shop]['item_ids'] = ids
             logger.info('refresh_item_ids:%s', ids)
             self.save_data()

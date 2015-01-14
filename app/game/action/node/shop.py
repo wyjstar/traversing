@@ -151,7 +151,6 @@ def shop_buy_505(pro_data, player):
         if shop_id in shop['item_ids']:
             shop['item_ids'].remove(shop_id)
             shop['buyed_item_ids'].append(shop_id)
-            player.shop.save_data()
         else:
             logger.error("can not find shop id:%s:%s",
                          shop_id, shop['item_ids'])
@@ -167,6 +166,7 @@ def shop_buy_505(pro_data, player):
         get_return(player, consume_return_data, response.consume)
         get_return(player, return_data, response.gain)
 
+    player.shop.save_data()
     common_response.result = True
     return response.SerializeToString()
 
