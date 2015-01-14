@@ -9,13 +9,15 @@ from app.game.redis_mode import tb_guild_name
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils.pyuuid import get_uuid
+from gfirefly.server.globalobject import GlobalObject
 
+
+remote_gate = GlobalObject().remote['gate']
 
 def init_guild(player):
 
-    uuid = get_uuid()
     guild_obj = Guild()
-    guild_obj.create_guild(player.base_info.id, uuid)
+    guild_obj.create_guild(player.base_info.id, '自动生成')
 
     player.guild.g_id = guild_obj.g_id
     player.guild.worship = 0
@@ -30,3 +32,8 @@ def init_guild(player):
     guild_obj.save_data()
     player.finance.gold -= base_config.get('create_money')
     player.finance.save_data()
+
+    remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)
+
+    # 加入公会聊天
+    remote_gate.login_guild_chat_remote(player.dynamic_id, player.guild.g_id)
