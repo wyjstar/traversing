@@ -29,45 +29,44 @@ class Guild(object):
         self._g_id = uuid
         self._p_list = {1: [p_id]}
         # fund 资金
-        data = {'info': {'name': self._name,
-                         'p_num': self._p_num,
-                         'level': self._level,
-                         'exp': self._exp,
-                         'fund': self._fund,
-                         'call': self._call,
-                         'record': self._record,
-                         'p_list': self._p_list,
-                         'apply': self._apply}}
+        data = {'id': self._g_id,
+                'name': self._name,
+                'p_num': self._p_num,
+                'level': self._level,
+                'exp': self._exp,
+                'fund': self._fund,
+                'call': self._call,
+                'record': self._record,
+                'p_list': self._p_list,
+                'apply': self._apply}
         guild_obj = tb_guild_info.getObj(self._g_id)
         guild_obj.new(data)
 
     def save_data(self):
-        data = {
-            'info': {'name': self._name,
-                     'p_num': self._p_num,
-                     'level': self._level,
-                     'exp': self._exp,
-                     'fund': self._fund,
-                     'call': self._call,
-                     'record': self._record,
-                     'p_list': self._p_list,
-                     'apply': self._apply}}
+        data = {'id': self._g_id,
+                'name': self._name,
+                'p_num': self._p_num,
+                'level': self._level,
+                'exp': self._exp,
+                'fund': self._fund,
+                'call': self._call,
+                'record': self._record,
+                'p_list': self._p_list,
+                'apply': self._apply}
         guild_data = tb_guild_info.getObj(self._g_id)
         guild_data.hmset(data)
 
     def init_data(self, data):
         self._g_id = data.get("id")
-        info = data.get("info")
-        if info:
-            self._name = info.get("name")
-            self._p_num = info.get("p_num")
-            self._level = info.get("level")
-            self._exp = info.get("exp")
-            self._fund = info.get("fund")
-            self._call = info.get("call")
-            self._p_list = info.get("p_list")
-            self._apply = info.get("apply")
-            self._record = info.get("record")
+        self._name = data.get("name")
+        self._p_num = data.get("p_num")
+        self._level = data.get("level")
+        self._exp = data.get("exp")
+        self._fund = data.get("fund")
+        self._call = data.get("call")
+        self._p_list = data.get("p_list")
+        self._apply = data.get("apply")
+        self._record = data.get("record")
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:

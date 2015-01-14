@@ -111,7 +111,7 @@ class CharacterEquipmentPackageComponent(Component):
             return self._equipments_obj[equipment_id]
         return None
 
-    def get_equipment_num(equipment_no):
+    def get_equipment_num(self, equipment_no):
         num = 0
         for equipment_obj in self._equipments_obj.values():
             if equipment_obj.base_info.equipment_no == equipment_no:

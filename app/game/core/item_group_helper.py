@@ -314,8 +314,8 @@ def gain(player, item_group, reason, result=None):
         # ====tlog======
         if type_id in [const.EQUIPMENT, const.RUNT]:
             a = itid
-            itid = item_id
-            item_id = a
+            itid = item_no
+            item_no = a
         if type_id != const.TEAM_EXPERIENCE:
             tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
         # ==============
