@@ -70,9 +70,9 @@ class RedisObject(object):
         client = redis_manager.get_connection(self._name)
         return client.hmset(self._name, newdict) == 1
 
-    def hdel(self):
+    def hdel(self, field):
         client = redis_manager.get_connection(self._name)
-        return client.hdel(self._name) == 1
+        return client.hdel(self._name, field) == 1
 
     def hkeys(self):
         client = redis_manager.get_connection(self._name)
