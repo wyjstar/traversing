@@ -16,7 +16,7 @@ import travel_shoes_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='travel.proto',
   package='',
-  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\x1a\x11travel_item.proto\x1a\x12travel_shoes.proto\"4\n\x07\x43hapter\x12\x17\n\x06travel\x18\x01 \x03(\x0b\x32\x07.Travel\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"^\n\x06Travel\x12\x10\n\x08\x65vent_id\x18\x01 \x02(\x05\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0c\n\x04time\x18\x03 \x01(\x05\x12\r\n\x05state\x18\x04 \x01(\x05\"V\n\x05Shoes\x12\r\n\x05shoe1\x18\x01 \x02(\x05\x12\r\n\x05shoe2\x18\x02 \x02(\x05\x12\r\n\x05shoe3\x18\x03 \x02(\x05\x12\x10\n\x08use_type\x18\x04 \x02(\x05\x12\x0e\n\x06use_no\x18\x05 \x02(\x05\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"g\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x01(\x05\x12%\n\x05\x64rops\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\xcd\x01\n\x12TravelInitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x07\x63hapter\x18\x02 \x03(\x0b\x32\x08.Chapter\x12\x15\n\x05shoes\x18\x03 \x02(\x0b\x32\x06.Shoes\x12\x12\n\nchest_time\x18\x04 \x02(\x05\x12/\n\x13travel_item_chapter\x18\x05 \x03(\x0b\x32\x12.TravelItemChapter\x12\"\n\x0cstage_travel\x18\x06 \x03(\x0b\x32\x0c.StageTravel\"G\n\x11TravelItemChapter\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0btravel_item\x18\x02 \x03(\x0b\x32\x0b.TravelItem\"2\n\x0f\x42uyShoesRequest\x12\x1f\n\x0bshoes_infos\x18\x01 \x03(\x0b\x32\n.ShoesInfo\"0\n\x10\x42uyShoesResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"9\n\x13TravelSettleRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"4\n\x14TravelSettleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"7\n\x11\x45ventStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"@\n\x12\x45ventStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"3\n\rNoWaitRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"<\n\x0eNoWaitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"X\n\x11OpenChestResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"4\n\x11\x41utoTravelRequest\x12\r\n\x05ttime\x18\x01 \x02(\x05\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"V\n\x12\x41utoTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel\"h\n\nAutoTravel\x12\x12\n\nstart_time\x18\x01 \x02(\x05\x12\x16\n\x0e\x63ontinued_time\x18\x02 \x02(\x05\x12\x17\n\x06travel\x18\x03 \x03(\x0b\x32\x07.Travel\x12\x15\n\ralready_times\x18\x04 \x02(\x05\"A\n\x0bStageTravel\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0b\x61uto_travel\x18\x02 \x03(\x0b\x32\x0b.AutoTravel\"`\n\x11SettleAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x03 \x02(\x05\x12\x13\n\x0bsettle_type\x18\x04 \x02(\x05\"V\n\x12SettleAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel\"=\n\x15\x46\x61stFinishAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\"Z\n\x16\x46\x61stFinishAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel')
+  serialized_pb='\n\x0ctravel.proto\x1a\x0c\x63ommon.proto\x1a\x11travel_item.proto\x1a\x12travel_shoes.proto\"4\n\x07\x43hapter\x12\x17\n\x06travel\x18\x01 \x03(\x0b\x32\x07.Travel\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"^\n\x06Travel\x12\x10\n\x08\x65vent_id\x18\x01 \x02(\x05\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0c\n\x04time\x18\x03 \x01(\x05\x12\r\n\x05state\x18\x04 \x01(\x05\"V\n\x05Shoes\x12\r\n\x05shoe1\x18\x01 \x02(\x05\x12\r\n\x05shoe2\x18\x02 \x02(\x05\x12\r\n\x05shoe3\x18\x03 \x02(\x05\x12\x10\n\x08use_type\x18\x04 \x02(\x05\x12\x0e\n\x06use_no\x18\x05 \x02(\x05\"!\n\rTravelRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"g\n\x0eTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x65vent_id\x18\x02 \x01(\x05\x12%\n\x05\x64rops\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\xcd\x01\n\x12TravelInitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x07\x63hapter\x18\x02 \x03(\x0b\x32\x08.Chapter\x12\x15\n\x05shoes\x18\x03 \x02(\x0b\x32\x06.Shoes\x12\x12\n\nchest_time\x18\x04 \x02(\x05\x12/\n\x13travel_item_chapter\x18\x05 \x03(\x0b\x32\x12.TravelItemChapter\x12\"\n\x0cstage_travel\x18\x06 \x03(\x0b\x32\x0c.StageTravel\"G\n\x11TravelItemChapter\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0btravel_item\x18\x02 \x03(\x0b\x32\x0b.TravelItem\"2\n\x0f\x42uyShoesRequest\x12\x1f\n\x0bshoes_infos\x18\x01 \x03(\x0b\x32\n.ShoesInfo\"0\n\x10\x42uyShoesResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"L\n\x13TravelSettleRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\x12\x11\n\tparameter\x18\x03 \x01(\x05\"[\n\x14TravelSettleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"7\n\x11\x45ventStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"@\n\x12\x45ventStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"3\n\rNoWaitRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x02 \x02(\x05\"<\n\x0eNoWaitResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04time\x18\x02 \x01(\x05\"X\n\x11OpenChestResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"4\n\x11\x41utoTravelRequest\x12\r\n\x05ttime\x18\x01 \x02(\x05\x12\x10\n\x08stage_id\x18\x02 \x02(\x05\"V\n\x12\x41utoTravelResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel\"h\n\nAutoTravel\x12\x12\n\nstart_time\x18\x01 \x02(\x05\x12\x16\n\x0e\x63ontinued_time\x18\x02 \x02(\x05\x12\x17\n\x06travel\x18\x03 \x03(\x0b\x32\x07.Travel\x12\x15\n\ralready_times\x18\x04 \x02(\x05\"A\n\x0bStageTravel\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12 \n\x0b\x61uto_travel\x18\x02 \x03(\x0b\x32\x0b.AutoTravel\"`\n\x11SettleAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\x12\x10\n\x08\x65vent_id\x18\x03 \x02(\x05\x12\x13\n\x0bsettle_type\x18\x04 \x02(\x05\"V\n\x12SettleAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel\"=\n\x15\x46\x61stFinishAutoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstart_time\x18\x02 \x02(\x05\"Z\n\x16\x46\x61stFinishAutoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cstage_travel\x18\x02 \x03(\x0b\x32\x0c.StageTravel')
 
 
 
@@ -406,6 +406,13 @@ _TRAVELSETTLEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='parameter', full_name='TravelSettleRequest.parameter', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -416,7 +423,7 @@ _TRAVELSETTLEREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=830,
-  serialized_end=887,
+  serialized_end=906,
 )
 
 
@@ -434,6 +441,13 @@ _TRAVELSETTLERESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='drops', full_name='TravelSettleResponse.drops', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -443,8 +457,8 @@ _TRAVELSETTLERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=889,
-  serialized_end=941,
+  serialized_start=908,
+  serialized_end=999,
 )
 
 
@@ -478,8 +492,8 @@ _EVENTSTARTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=943,
-  serialized_end=998,
+  serialized_start=1001,
+  serialized_end=1056,
 )
 
 
@@ -513,8 +527,8 @@ _EVENTSTARTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1000,
-  serialized_end=1064,
+  serialized_start=1058,
+  serialized_end=1122,
 )
 
 
@@ -548,8 +562,8 @@ _NOWAITREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1066,
-  serialized_end=1117,
+  serialized_start=1124,
+  serialized_end=1175,
 )
 
 
@@ -583,8 +597,8 @@ _NOWAITRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1119,
-  serialized_end=1179,
+  serialized_start=1177,
+  serialized_end=1237,
 )
 
 
@@ -618,8 +632,8 @@ _OPENCHESTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1181,
-  serialized_end=1269,
+  serialized_start=1239,
+  serialized_end=1327,
 )
 
 
@@ -653,8 +667,8 @@ _AUTOTRAVELREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1271,
-  serialized_end=1323,
+  serialized_start=1329,
+  serialized_end=1381,
 )
 
 
@@ -688,8 +702,8 @@ _AUTOTRAVELRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1325,
-  serialized_end=1411,
+  serialized_start=1383,
+  serialized_end=1469,
 )
 
 
@@ -737,8 +751,8 @@ _AUTOTRAVEL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1413,
-  serialized_end=1517,
+  serialized_start=1471,
+  serialized_end=1575,
 )
 
 
@@ -772,8 +786,8 @@ _STAGETRAVEL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1519,
-  serialized_end=1584,
+  serialized_start=1577,
+  serialized_end=1642,
 )
 
 
@@ -821,8 +835,8 @@ _SETTLEAUTOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1586,
-  serialized_end=1682,
+  serialized_start=1644,
+  serialized_end=1740,
 )
 
 
@@ -856,8 +870,8 @@ _SETTLEAUTORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1684,
-  serialized_end=1770,
+  serialized_start=1742,
+  serialized_end=1828,
 )
 
 
@@ -891,8 +905,8 @@ _FASTFINISHAUTOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1772,
-  serialized_end=1833,
+  serialized_start=1830,
+  serialized_end=1891,
 )
 
 
@@ -926,8 +940,8 @@ _FASTFINISHAUTORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1835,
-  serialized_end=1925,
+  serialized_start=1893,
+  serialized_end=1983,
 )
 
 _CHAPTER.fields_by_name['travel'].message_type = _TRAVEL
@@ -943,6 +957,7 @@ _TRAVELITEMCHAPTER.fields_by_name['travel_item'].message_type = travel_item_pb2.
 _BUYSHOESREQUEST.fields_by_name['shoes_infos'].message_type = travel_shoes_pb2._SHOESINFO
 _BUYSHOESRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _TRAVELSETTLERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_TRAVELSETTLERESPONSE.fields_by_name['drops'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _EVENTSTARTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _NOWAITRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _OPENCHESTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

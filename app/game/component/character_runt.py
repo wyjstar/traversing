@@ -68,6 +68,13 @@ class CharacterRuntComponent(Component):
             self._m_runt[runt_no] = [runt_id, mainAttr, minorAttr]
         return runt_no
 
+    def get_runt_num(runt_no):
+        num = 1
+        for [runt_id, _, _] in self._m_runt.values():
+            if runt_id == runt_no:
+                num += 1
+        return num
+
     def pick_runt(self, runt_info):
         if len(self._m_runt) + 1 >= game_configs.base_config.get('totemStash'):
             return 0

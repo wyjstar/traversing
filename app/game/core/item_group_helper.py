@@ -13,6 +13,7 @@ from app.proto_file.player_pb2 import FinancePB
 from shared.utils.const import const
 from gfirefly.server.logobj import logger
 import time
+from shared.tlog import tlog_action
 
 
 def is_afford(player, item_group):
@@ -91,8 +92,14 @@ def is_consume(player, shop_item):
 
 
 def consume(player, item_group, shop=None, luck_config=None):
+# def consume(player, item_group, reason, shop=None, luck_config=None):
     """消耗"""
     result = []
+
+    after_num = 0
+    itid = 0
+    reason = 0
+
 
     luckValue = None
     if luck_config:
@@ -112,44 +119,59 @@ def consume(player, item_group, shop=None, luck_config=None):
             if shop and luckValue:
                 shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
+            after_num = player.finance.gold
 
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul -= num
             player.finance.save_data()
+            after_num = player.Finance.hero_soul
 
         elif type_id == const.PVP:
             player.finance.pvp_score -= num
             player.finance.save_data()
+            after_num = player.finance.pvp_score
 
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
             hero_chip.num -= num
             player.hero_chip_component.save_data()
+            after_num = hero_chip.num
 
         elif type_id == const.EQUIPMENT_CHIP:
             equipment_chip = player.equipment_chip_component.get_chip(item_no)
             equipment_chip.chip_num -= num
             player.equipment_chip_component.save_data()
+            after_num = equipment_chip.chip_num
 
         elif type_id == const.ITEM:
             item = player.item_package.get_item(item_no)
             item.num -= num
             player.item_package.save_data()
+            after_num = item.num
 
         elif type_id == const.RESOURCE:
             player.finance[item_no] -= num
             player.finance.save_data()
+            after_num = player.finance[item_no]
 
         result.append([type_id, num, item_no])
+
+        # =====Tlog================
+        tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
+        # ========================
+
     return result
 
 
-def gain(player, item_group, result=None):
+def gain(player, item_group, reason, result=None):
     """获取
     @param item_group: [obj,obj]
     """
     if result is None:
         result = []
+
+    after_num = 0
+    itid = 0
 
     for group_item in item_group:
         type_id = group_item.item_type
@@ -158,23 +180,28 @@ def gain(player, item_group, result=None):
         if type_id == const.COIN:
             player.finance.coin += num
             player.finance.save_data()
+            after_num = player.finance.coin
 
         elif type_id == const.RESOURCE:
             if item_no == 18:
                 shoes = player.travel_component.shoes
                 shoes[0] += num
                 player.travel_component.save()
+                after_num = shoes[0]
             elif item_no == 19:
                 shoes = player.travel_component.shoes
                 shoes[1] += num
                 player.travel_component.save()
+                after_num = shoes[1]
             elif item_no == 20:
                 shoes = player.travel_component.shoes
                 shoes[2] += num
                 player.travel_component.save()
+                after_num = shoes[2]
             else:
                 player.finance[item_no] += num
                 player.finance.save_data()
+                after_num = player.finance[item_no]
 
         elif type_id == const.GOLD:
             player.finance.gold += num
@@ -192,11 +219,13 @@ def gain(player, item_group, result=None):
             hero_chip = HeroChip(item_no, num)
             player.hero_chip_component.add_chip(hero_chip)
             player.hero_chip_component.save_data()
+            after_num = player.hero_chip_component.get_chip(item_no).num
 
         elif type_id == const.ITEM:
             item = Item(item_no, num)
             player.item_package.add_item(item)
             player.item_package.save_data()
+            after_num = player.item_package.get_item(item_no).num
 
         elif type_id == const.HERO:
             if player.hero_component.contain_hero(item_no):
@@ -213,25 +242,31 @@ def gain(player, item_group, result=None):
                 type_id = const.HERO_CHIP
                 item_no = hero_chip_no
                 num = hero_chip_num
+                after_num = player.hero_chip_component.get_chip(item_no).num
             else:
                 player.hero_component.add_hero(item_no)
+                after_num = 1
 
         elif type_id == const.BIG_BAG:
             big_bag = BigBag(item_no)
             for i in range(num):
                 temp = big_bag.get_drop_items()
                 print temp, "-+"*30
-                gain(player, temp, result)
+                gain(player, temp, reason, result)
             return result
 
         elif type_id == const.EQUIPMENT:
             equipment = player.equipment_component.add_equipment(item_no)
+            itid = item_no
             item_no = equipment.base_info.id
+            after_num = player.equipment_component.get_equipment_num(itid)
 
         elif type_id == const.EQUIPMENT_CHIP:
             chip = EquipmentChip(item_no, num)
             player.equipment_chip_component.add_chip(chip)
             player.equipment_chip_component.save_data()
+            after_num = player.equipment_chip_component.get_chip(item_no).chip_num
+
         elif type_id == const.STAMINA:
             player.stamina.stamina += num
             logger.debug(str(num)+" , stamina+++++++++++")
@@ -242,23 +277,29 @@ def gain(player, item_group, result=None):
             player.base_info.save_data()
 
         elif type_id == const.TRAVEL_ITEM:
+            after_num = num
             stage_id = travel_item_config.get('items').get(item_no).stageId
             flag1 = 1
             flag2 = 0
             stage_item_info = player.travel_component.travel_item.get(stage_id)
             for [travel_item_id, travel_item_num] in stage_item_info:
                 if travel_item_id == item_no:
+                    the_num = travel_item_num + num
                     stage_item_info[flag2] = \
-                        [travel_item_id, travel_item_num + num]
+                        [travel_item_id, the_num]
                     flag1 = 0
+                    after_num = the_num
                     break
                 flag2 += 1
             if flag1:
                 stage_item_info.append([item_no, num])
             player.travel_component.save()
-        elif type_id == 108:
+
+        elif type_id == const.RUNT:
+            itid = item_no
             item_no = player.runt.add_runt(item_no)
             player.runt.save()
+            after_num = player.runt.get_runt_num(item_no)
 
         is_over = False       # 是否累加
         for i in result:
@@ -269,6 +310,16 @@ def gain(player, item_group, result=None):
 
         if not is_over:
             result.append([type_id, num, item_no])
+
+        # ====tlog======
+        if type_id in [const.EQUIPMENT, const.RUNT]:
+            a = itid
+            itid = item_no
+            item_no = a
+        if type_id != const.TEAM_EXPERIENCE:
+            tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
+        # ==============
+
     return result
 
 

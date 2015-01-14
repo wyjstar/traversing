@@ -9,6 +9,8 @@ from shared.db_opear.configs_data import data_helper
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 remote_gate = GlobalObject().remote['gate']
+from shared.utils.const import const
+
 
 @remoteserviceHandle('gate')
 def query_status_1234(data, player):
@@ -32,7 +34,7 @@ def add_items(player, task_id):
     if task_id in achievement_config:
         task = achievement_config[task_id]
         reward = data_helper.parse(task.reward)
-        item_group_helper.gain(player, reward, add_items)
+        item_group_helper.gain(player, reward, const.LIVELY, add_items)
     return add_items
 
 @remoteserviceHandle('gate')

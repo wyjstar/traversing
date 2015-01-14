@@ -3,6 +3,22 @@ import "common.proto";
 // 游戏服登录 command：4
 message GameLoginRequest{
 	required string token = 1;
+	optional int32 plat_id = 2;  // ios 0 android 1
+	optional string client_version = 3;  // 客户端版本
+	optional string system_software = 4;  // 移动终端操作系统
+	optional string system_hardware = 5;  // 移动终端机型
+	optional string telecom_oper = 6;  // 运营商
+	optional string network = 7;  // 3G WIFI 2G 4G
+	optional int32 screen_width = 8;  // 显示屏宽度
+	optional int32 screen_hight = 9;  // 显示屏高度
+	optional float density = 10;  // 像素密度
+	optional int32 login_channel = 11;  //登录渠道
+	optional string mac = 12;  // MAC地址
+	optional string cpu_hardware = 13;  // cpu类型 频率 核数
+	optional int32 memory = 14;  // 内存信息单位M
+	optional string gl_render = 15;  // opengl render 信息
+	optional string gl_version = 16;  // opengl 版本信息
+	optional string device_id = 17;  // 设备ID
 }
 
 //返回结果

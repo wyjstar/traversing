@@ -14,6 +14,7 @@ from app.game.action.root import netforwarding
 import time
 from shared.db_opear.configs_data import data_helper
 from shared.db_opear.configs_data.game_configs import base_config
+from shared.utils.const import const
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -180,5 +181,5 @@ def get_prize(player, mail_ids, response):
         mail = player.mail_component.get_mail(mail_id)
 
         prize = data_helper.parse(mail.prize)
-        return_data = gain(player, prize)
+        return_data = gain(player, prize, const.MAIL)
         get_return(player, return_data, response.gain)

@@ -58,6 +58,7 @@
                     "rootname": "world"
                 }
             ],
+            "mem": true,
             "redis": true,
             "db": true,
             "app": "app.gate",
@@ -138,7 +139,7 @@
         "hostname": "tt"
     },
     "tlog":{
-         "host": "127.0.0.1",
+         "host": "192.168.10.26",
          "port": 30005
     }
 }
