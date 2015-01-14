@@ -19,27 +19,32 @@ class MineOpt(object):
         v = cPickle.dumps(data)
         label = 'mine.%s' % uid
 
-        cls.rank.hset(label, mid, 1)
+        _rank = cls.rank.getObj(label)
+        _rank.hset(mid, 1)
         label = 'mine'
         print 'add_mine------', label, mid, data
-        cls.rank.hset(label, mid, v)
+        _rank = cls.rank.getObj(label)
+        _rank.hset(mid, v)
 
     @classmethod
     def rem_mine(cls, mid):
         label = 'mine'
-        cls.rank.hdel(label, mid)
+        _rank = cls.rank.getObj(label)
+        _rank.hdel(mid)
 
     @classmethod
     def get_mine(cls, mid):
         label = 'mine'
-        ret = cls.rank.hget(label, mid)
+        _rank = cls.rank.getObj(label)
+        ret = _rank.hget(mid)
         print 'get_mine------', label, mid, cPickle.loads(ret)
         return cPickle.loads(ret)
 
     @classmethod
     def get_user_mines(cls, uid):
         label = 'mine.%s' % uid
-        mids = cls.rank.hkeys(label)
+        _rank = cls.rank.getObj(label)
+        mids = _rank.hkeys()
         return mids
 
     @classmethod
