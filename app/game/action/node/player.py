@@ -45,7 +45,7 @@ def nickname_create_5(request_proto, player):
 
     # 判断昵称是否重复
     nickname_obj = tb_character_info.getObj('nickname')
-    result = nickname_obj.hset(nickname, player.base_info.id)
+    result = nickname_obj.hsetnx(nickname, player.base_info.id)
     print 'is new player:', result
     if not result:
         response.result = False

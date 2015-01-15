@@ -205,17 +205,9 @@ class PlayerCharacter(object):
     def login_gift(self):
         return self._login_gift
 
-    # @login_gift.setter
-    # def login_gift(self, value):
-    #     self._login_gift = value
-
     @property
     def world_boss(self):
         return self._world_boss
-
-    # @world_boss.setter
-    # def world_boss(self, value):
-    #     self._world_boss = value
 
     @property
     def feast(self):
