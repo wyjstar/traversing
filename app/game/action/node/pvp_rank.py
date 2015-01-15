@@ -128,7 +128,7 @@ def pvp_fight_request_1505(data, player):
     """
     pvp战斗开始
     """
-    player.check_time()
+    player.base_info.check_time()
 
     if player.base_info.pvp_times >= base_config.get('arena_free_times'):
         logger.error('not enough pvp times:%s%s', player.base_info.pvp_times,
@@ -215,7 +215,7 @@ def pvp_fight_request_1505(data, player):
 
 @remoteserviceHandle('gate')
 def reset_pvp_time_1506(data, player):
-    player.check_time()
+    player.base_info.check_time()
     response = ShopResponse()
     response.res.result = True
     vip_level = player.base_info.vip_level

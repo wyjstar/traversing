@@ -113,7 +113,9 @@ class Equipment(object):
                     nobbing_effect=self._attribute.nobbing_effect)
 
         char_obj = tb_character_info.getObj(character_id).getObj('equipments')
-        char_obj.hset(self._base_info.id, data)
+        result = char_obj.hsetnx(self._base_info.id, data)
+        if not result:
+            logger.error('add equipment error!:%s', self._base_info.id)
 
     def save_data(self):
         data = {'id': self._base_info.id,
@@ -127,11 +129,15 @@ class Equipment(object):
                 'nobbing_effect': self._attribute.nobbing_effect}
 
         char_obj = tb_character_info.getObj(self._character_id).getObj('equipments')
-        char_obj.hset(self._base_info.id, data)
+        result = char_obj.hset(self._base_info.id, data)
+        if not result:
+            logger.error('save equipment error!:%s', self._base_info.id)
 
     def delete(self):
         char_obj = tb_character_info.getObj(self._character_id).getObj('equipments')
-        char_obj.hdel(self._base_info.id)
+        result = char_obj.hdel(self._base_info.id)
+        if not result:
+            logger.error('del equipment error!:%s', self._base_info.id)
 
     @property
     def base_info(self):

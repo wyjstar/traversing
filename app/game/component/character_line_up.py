@@ -167,6 +167,15 @@ class CharacterLineUpComponent(Component):
         self._line_up_slots = line_up_slots
 
     @property
+    def line_up_slots_has_heros(self):
+        res = {}
+        for k, v in self._line_up_slots.items():
+            if v.hero_slot.hero_obj:
+                res[k] = v
+
+        return res
+
+    @property
     def line_up_order(self):
         """取得队形
         """

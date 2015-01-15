@@ -3,6 +3,7 @@
 created by server on 14-5-28下午4:41.
 """
 from gfirefly.dbentrust.redis_manager import redis_manager
+from gfirefly.server.logobj import logger
 import cPickle
 
 
@@ -55,11 +56,14 @@ class RedisObject(object):
 
     def hset(self, field, values):
         client = redis_manager.get_connection(self._name)
-        return client.hset(self._name, field, cPickle.dumps(values)) == 1
+        result = client.hset(self._name, field, cPickle.dumps(values))
+        return True
 
     def hsetnx(self, field, values):
         client = redis_manager.get_connection(self._name)
         result = client.hsetnx(self._name, field, cPickle.dumps(values))
+        if result != 1:
+            logger.error('hsetnx error:%s--%s', self._name, field)
         return result == 1
 
     def hmset(self, mapping):
@@ -67,11 +71,17 @@ class RedisObject(object):
         for k, v in mapping.items():
             newdict[k] = cPickle.dumps(v)
         client = redis_manager.get_connection(self._name)
-        return client.hmset(self._name, newdict) == 1
+        result = client.hmset(self._name, newdict)
+        if result != 1:
+            logger.error('hmset error--%s', self._name)
+        return result == 1
 
     def hdel(self, field):
         client = redis_manager.get_connection(self._name)
-        return client.hdel(self._name, field) == 1
+        result = client.hdel(self._name, field)
+        if result != 1:
+            logger.error('hdel error:%s--%s', self._name, field)
+        return result == 1
 
     def hkeys(self):
         client = redis_manager.get_connection(self._name)

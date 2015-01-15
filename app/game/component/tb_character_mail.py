@@ -36,7 +36,9 @@ class CharacterMailComponent(Component):
         mail_property = mail.mail_proerty_dict()
 
         char_obj = tb_character_info.getObj(character_id).getObj('mails')
-        char_obj.hset(mail.mail_id, mail_property)
+        result = char_obj.hsetnx(mail.mail_id, mail_property)
+        if not result:
+            logger.error('add mail error!:%s', mail.mail_id)
 
     def add_exist_mail(self, mail):
         self._mails[mail.mail_id] = mail
