@@ -31,8 +31,11 @@ def add_level_remote(data, player):
     level = args.get('level')
     if not level and level.isdigit():
         return False
+    level = int(level)
+    if level > 200:
+        level = 200
 
-    player.base_info.level = int(level)
+    player.base_info.level = level
     player.base_info.save_data()
     return True
 
@@ -48,4 +51,19 @@ def gain_remote(data, player):
 @remoteserviceHandle('gate')
 def super_init_remote(data, player):
     init(player)
+    return True
+
+
+@remoteserviceHandle('gate')
+def add_vip_remote(data, player):
+    args = cPickle.loads(data)
+    level = args.get('level')
+    if not level and level.isdigit():
+        return False
+    level = int(level)
+    if level > 15:
+        level = 15
+
+    player.base_info.vip_level = level
+    player.base_info.save_data()
     return True
