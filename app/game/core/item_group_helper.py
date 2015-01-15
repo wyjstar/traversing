@@ -408,7 +408,7 @@ def get_return(player, return_data, game_resources_response):
                     change.item_num = item_num
                     change.item_no = item_no
         elif 108 == item_type:
-            [runt_id, main_attr, minor_attr] = player.runt.my_runt.get(item_no)
+            [runt_id, main_attr, minor_attr] = player.runt.m_runt.get(item_no)
             runt_pb = game_resources_response.runt.add()
             player.runt.deal_runt_pb(item_no, runt_id, main_attr, minor_attr, runt_pb)
 

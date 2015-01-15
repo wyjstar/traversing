@@ -10,16 +10,11 @@ def _format(message):
     return '|'.join(map(str, message))
 
 
-def player_register(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, ClientVersion=0,
+def player_register(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, ClientVersion=0,
                     SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0, ScreenWidth=0,
                     ScreenHight=0, Density=0, RegChannel=0, UUID=0, CpuHardware=0, Memory=0,
                     GLRender=0, GLVersion=0, DeviceId=0, Nickname=0):
-    """ 
-    log4tx player register.
-    
-    record:PlayerRegister|vGameSvrId|dtEventTime|vGameAppID|OpenID|PlatID|ClientVersion|SystemSoftware|SystemHardware|TelecomOper|
-    Netword|ScreenWidth|ScreenHight|Density|Channel|UUID|CpuHardware|Memory|GLRender|GLVersion|DeviceId|Nickname
-    """
+
     message = ['PlayerRegister']
 
     message.append(GameSvrId)
@@ -43,7 +38,6 @@ def player_register(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, Op
     message.append(GLVersion)
     message.append(DeviceId)
     message.append(Nickname)
-    message.append(Uid)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -51,10 +45,10 @@ def player_register(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, Op
         print sendmsg
 
 
-def player_login(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, Level=0, PlayerFriendsNum=0,
+def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, Level=0, PlayerFriendsNum=0,
                  ClientVersion=0, SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0, ScreenWidth=0,
                  ScreenHight=0, Density=0, LoginChannel=0, UUID=0, CpuHardware=0, Memory=0,
-                 GLRender=0, GLVersion=0, DeviceId=0, IPAddress=0):
+                 GLRender=0, GLVersion=0, DeviceId=0):
 
     message = ['PlayerLogin']
 
@@ -80,8 +74,6 @@ def player_login(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenI
     message.append(GLRender)
     message.append(GLVersion)
     message.append(DeviceId)
-    message.append(IPAddress)
-    message.append(Uid)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -194,7 +186,7 @@ def money_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, PlatI
         print sendmsg
 
 
-def item_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, OpenID=0, ItemType=0, ItemID=0,
+def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, OpenID=0, ItemType=0, ItemID=0,
               AfterCount=0, Count=0, Reason=0, SubReason=0, AddOrReduce=0, Itid=0):
     """
     log for ItemFlow
@@ -207,6 +199,7 @@ def item_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, OpenID
     message.append(dtEventTime)
     message.append(Sequence)
     message.append(GameAppID)
+    message.append(PlatID)
     message.append(OpenID)
     message.append(ItemType)
     message.append(ItemID)
@@ -216,7 +209,6 @@ def item_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, OpenID
     message.append(SubReason)
     message.append(AddOrReduce)
     message.append(Itid)
-    message.append(Uid)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
