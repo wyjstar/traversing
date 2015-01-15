@@ -68,7 +68,8 @@ def create_guild_801(data, player):
 
     # 判断有没有重名
     guild_name_data = tb_guild_name.getObj('names')
-    if guild_name_data.hexists(g_name):
+    _result =  guild_name_data.hsetnx(g_name, guild_obj.g_id)
+    if _result:
         response.result = False
         response.message = "此名已存在"
         return response.SerializeToString()
@@ -78,9 +79,6 @@ def create_guild_801(data, player):
     guild_obj.create_guild(p_id, g_name)
 
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
-
-    data = {g_name: guild_obj.g_id}
-    guild_name_data.hmset(data)
 
     player.guild.g_id = guild_obj.g_id
     player.guild.worship = 0
@@ -173,8 +171,6 @@ def exit_guild_803(data, player):
         # 删除公会名字
         guild_name_data = tb_guild_name.getObj('names')
         if guild_name_data.hexists(guild_obj.name):
-            # guild_name_obj = tb_guild_name.getObj(guild_obj.name)
-            # guild_name_obj.delete()
             tb_guild_name.hdel(guild_obj.name)
 
         # 解散公会，删除公会聊天室
@@ -201,7 +197,7 @@ def exit_guild_803(data, player):
                 p_list1 = p_list.get(num)
                 if p_list1:
                     for p_id1 in p_list1:
-                        guildinfo = tb_character_info.getObj(p_id1)
+                        guildinfo = tb_character_info.getObj(p_id1).hgetall()
                         if guildinfo:
                             guildinfolist.update({guildinfo.get('id'): guildinfolist})
             new_list = sorted(guildinfolist.items(), key=lambda x: (-1 * x[1]['position'], x[1]['contribution'],
@@ -209,7 +205,7 @@ def exit_guild_803(data, player):
             tihuan_id = new_list[0][0]
             tihuan_position = new_list[0][1].get('position')
 
-            info = tb_character_info.getObj(tihuan_id)
+            info = tb_character_info.getObj(tihuan_id).hgetall()
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "此玩家不在公会"
@@ -337,8 +333,8 @@ def deal_apply_805(data, player):
             return response.SerializeToString()
 
         for p_id in p_ids:
-            info = tb_character_info.getObj(p_id)
-            if info.get("g_id") != 'no':
+            info = tb_character_info.getObj(p_id).hget('guild_id')
+            if info != 'no':
                 if guild_obj.apply.count(p_id) == 1:
                     guild_obj.apply.remove(p_id)
                     response.p_ids.append(p_id)
@@ -358,7 +354,7 @@ def deal_apply_805(data, player):
                 invitee_player.guild.exit_time = 1
                 invitee_player.guild.save_data()
             else:
-                data = {'g_id': player.guild.g_id,
+                data = {'guild_id': player.guild.g_id,
                         'position': 5,
                         'contribution': 0,
                         'all_contribution': 0,
@@ -568,7 +564,7 @@ def promotion_808(data, player):
                 return response.SerializeToString()
 
             tihuan_id = new_list[-1][0]
-            info = tb_character_info.getObj(tihuan_id)
+            info = tb_character_info.getObj(tihuan_id).hgetall()
             if info.get("g_id") != player.guild.g_id:
                 response.result = False
                 response.message = "未知错误"
@@ -714,13 +710,9 @@ def get_guild_rank_810(data, player):
             guild_rank.level = guild_obj.level
 
             president_id = guild_obj.p_list.get(1)[0]
-            player_data = tb_character_info.getObj(president_id)
-            if player_data:
-                if player_data.get('nickname'):
-                    guild_rank.president = player_data.get('nickname')
-                else:
-                    logger.info('guild rank ,president name is null,id:%s', president_id)
-                    guild_rank.president = u'无名'
+            char_obj = tb_character_info.getObj(president_id)
+            if char_obj.exists():
+                guild_rank.president = char_obj.hget('nickname')
             else:
                 guild_rank.president = u'错误'
                 logger.error('guild rank, president player not fond,id:%s', president_id)

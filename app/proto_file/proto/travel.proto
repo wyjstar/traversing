@@ -60,7 +60,7 @@ message BuyShoesResponse{
 message TravelSettleRequest{
     required int32 stage_id = 1;
     required int32 event_id =2;
-	optional int32 parameter = 3;  //如果是答题类型，发送答案id
+	optional int64 parameter = 3;  //如果是答题类型，发送答案id
 }
 
 message TravelSettleResponse{

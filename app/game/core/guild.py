@@ -82,7 +82,8 @@ class Guild(object):
         self._p_list.update({position: position_p_list})
 
     def delete_guild(self):
-        tb_guild_info.deleteMode(self._g_id)
+        guild_obj = tb_guild_info.getObj(self._g_id)
+        guild_obj.delete()
 
     def editor_call(self, call):
         self._call = call

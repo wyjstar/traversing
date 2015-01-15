@@ -207,7 +207,9 @@ def open_chest_836(data, player):
 
 @remoteserviceHandle('gate')
 def travel_settle_833(data, player):
-    """ settle"""
+    """ settle,
+        type 1 3 这此结算
+    """
     args = TravelSettleRequest()
     args.ParseFromString(data)
     stage_id = args.stage_id
@@ -244,11 +246,11 @@ def travel_settle_833(data, player):
             return response.SerializeToString()
 
     # 结算
-    if event_info.type == 2 and not event_info.parameter[args.parameter]:
-        common_bag = BigBag(stage_info.commonDrop)
+    if event_info.type == 3 and not event_info.parameter[args.parameter]:
+        common_bag = BigBag(event_info.wrong)
         common_drop = common_bag.get_drop_items()
 
-        gain_data = gain(player, [common_drop], const.TRAVEL)
+        gain_data = gain(player, common_drop, const.TRAVEL)
         get_return(player, gain_data, response.drops)
     else:
         gain(player, event_cache[1], const.TRAVEL)

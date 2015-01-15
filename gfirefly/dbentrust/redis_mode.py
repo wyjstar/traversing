@@ -28,7 +28,6 @@ class RedisObject(object):
             raise Exception("type error")
 
     def exists(self):
-        print self._name
         client = redis_manager.get_connection(self._name)
         return client.exists(self._name) == 1
 
@@ -140,10 +139,9 @@ class RedisObject(object):
         ret = client.get(produce_key)
         return cPickle.loads(ret) if ret else ret
 
-    def delete(self, key):
-        produce_key = self.produceKey(key)
-        client = redis_manager.get_connection(produce_key)
-        return client.delete(produce_key) == 1
+    def delete(self):
+        client = redis_manager.get_connection(self._name)
+        return client.delete(self._name) == 1
 
     def zscore(self, label, key):
         produce_key = self.produceKey(label)
