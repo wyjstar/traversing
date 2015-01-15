@@ -13,6 +13,7 @@ def init_item(player):
     item3 = Item(20003, 3000)
     item4 = Item(20004, 4000)
     item5 = Item(20005, 5000)
+    item11 = Item(20006, 5000)
 
     # 经验
     item6 = Item(10003, 1500)
@@ -34,5 +35,6 @@ def init_item(player):
     player.item_package.add_item(item7)
     player.item_package.add_item(item8)
     player.item_package.add_item(item9)
+    player.item_package.add_item(item11)
 
     player.item_package.save_data()

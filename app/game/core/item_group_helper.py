@@ -262,7 +262,7 @@ def gain(player, item_group, result=None):
 
         is_over = False       # 是否累加
         for i in result:
-            if i[0] == type_id and i[2] == item_no and type_id != const.HERO_CHIP:
+            if i[0] == type_id and i[2] == item_no and type_id != const.HERO:
                 i[1] += num
                 is_over = True
                 continue

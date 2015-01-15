@@ -397,6 +397,9 @@ def skill_attr(hero, hero_info, skill_ids):
 def _cheer_attr(player):
     """docstring for cheer_attr"""
     all_vars = {}
+    line_up_slots_has_heros = player.line_up_component.line_up_slots_has_heros
+    all_vars["person"] = len(line_up_slots_has_heros)
+
 
     for slot_no, slot in player.line_up_component.sub_slots.items():
         hero_no = slot.hero_slot.hero_no
