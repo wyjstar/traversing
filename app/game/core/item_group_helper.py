@@ -177,6 +177,7 @@ def gain(player, item_group, reason, result=None):
         type_id = group_item.item_type
         num = group_item.num
         item_no = group_item.item_no
+        front_type_id = type_id # 记录类型，用于武将已存在的情况。
         if type_id == const.COIN:
             player.finance.coin += num
             player.finance.save_data()
@@ -303,7 +304,7 @@ def gain(player, item_group, reason, result=None):
 
         is_over = False       # 是否累加
         for i in result:
-            if i[0] == type_id and i[2] == item_no and type_id != const.HERO:
+            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id !=const.HERO_CHIP):
                 i[1] += num
                 is_over = True
                 continue
