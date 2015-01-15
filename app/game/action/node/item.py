@@ -9,6 +9,7 @@ from app.game.core.drop_bag import BigBag
 from app.game.core.item_group_helper import gain, get_return
 from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -69,7 +70,7 @@ def use_item_302(pro_data, player):
     big_bag = BigBag(drop_id)
     for i in range(item_num):
         drop_item_group = big_bag.get_drop_items()
-        return_data = gain(player, drop_item_group)
+        return_data = gain(player, drop_item_group, const.USE_ITEM)
         get_return(player, return_data, response.gain)
 
     logger.debug("item_no:%s", item_no)

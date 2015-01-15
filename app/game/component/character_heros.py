@@ -97,7 +97,9 @@ class CharacterHerosComponent(Component):
         pid = self.owner.base_info.id
         hero_property = hero.hero_proerty_dict()
         char_obj = tb_character_info.getObj(pid).getObj('heroes')
-        char_obj.hset('heroes', hero_property)
+        result = char_obj.hsetnx(hero_property['hero_no'], hero_property)
+        if not result:
+            logger.error('new hero error!:%s', hero_property['hero_no'])
 
     def is_guard(self, hero_no):
         """

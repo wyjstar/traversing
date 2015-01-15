@@ -15,12 +15,13 @@ from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
 from gfirefly.server.logobj import logger
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
 def lucky_draw_hero_501(pro_data, player):
     """抽取hero"""
-    return shop_oper(pro_data, player)
+    return shop_oper(pro_data, player, const.SHOP_DRAW_HERO)
 
 
 @remoteserviceHandle('gate')
@@ -32,16 +33,16 @@ def lucky_draw_equipment_502(pro_data, player):
 @remoteserviceHandle('gate')
 def buy_item_503(pro_data, player):
     """购买item"""
-    return shop_oper(pro_data, player)
+    return shop_oper(pro_data, player, const.SHOP_BUY_ITEM)
 
 
 @remoteserviceHandle('gate')
 def buy_gift_pack_504(pro_data, player):
     """购买礼包"""
-    return shop_oper(pro_data, player)
+    return shop_oper(pro_data, player, const.SHOP_BUY_GIFT_PACK)
 
 
-def shop_oper(pro_data, player):
+def shop_oper(pro_data, player, reason):
     """商城所有操作"""
     request = ShopRequest()
     request.ParseFromString(pro_data)
@@ -70,8 +71,8 @@ def shop_oper(pro_data, player):
                           player_type_shop, shop_type_item)
     get_return(player, return_data, response.consume)
 
-    return_data = gain(player, shop_item.gain)  # 获取
-    extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
+    return_data = gain(player, shop_item.gain, reason)  # 获取
+    extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
     get_return(player, return_data, response.gain)
     get_return(player, extra_return_data, response.gain)
@@ -92,8 +93,8 @@ def shop_equipment_oper(pro_data, player):
 
     if shop_num == 1:  # and not is_consume(player, shop_item):
         # 免费抽取
-        return_data = gain(player, shop_item.gain)  # 获取
-        extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
+        return_data = gain(player, shop_item.gain, const.SHOP_DRAW_EQUIPMENT)  # 获取
+        extra_return_data = gain(player, shop_item.extraGain, const.SHOP_DRAW_EQUIPMENT)  # 额外获取
 
         get_return(player, return_data, response.gain)
         get_return(player, extra_return_data, response.gain)
@@ -111,8 +112,8 @@ def shop_equipment_oper(pro_data, player):
             get_return(player, return_data, response.consume)
 
         for i in range(shop_num):
-            return_data = gain(player, shop_item.gain)  # 获取
-            extra_return_data = gain(player, shop_item.extraGain)  # 额外获取
+            return_data = gain(player, shop_item.gain, const.SHOP_DRAW_EQUIPMENT)  # 获取
+            extra_return_data = gain(player, shop_item.extraGain, const.SHOP_DRAW_EQUIPMENT)  # 额外获取
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
@@ -162,7 +163,7 @@ def shop_buy_505(pro_data, player):
         consume_return_data = consume(player, shop_item.consume,
                                       shop, shop_type_item)  # 消耗
 
-        return_data = gain(player, shop_item.gain)  # 获取
+        return_data = gain(player, shop_item.gain, const.COMMON_BUY)  # 获取
         get_return(player, consume_return_data, response.consume)
         get_return(player, return_data, response.gain)
 

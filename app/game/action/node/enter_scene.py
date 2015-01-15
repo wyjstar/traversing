@@ -15,10 +15,11 @@ from gfirefly.server.logobj import logger
 @remoteserviceHandle('gate')
 def enter_scene_remote(dynamic_id, character_id):
     """进入场景"""
+    is_new_character = 1
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
-        init_player(player)
+        is_new_character = init_player(player)
         PlayersManager().add_player(player)
 
     responsedata = GameLoginResponse()
@@ -66,4 +67,4 @@ def enter_scene_remote(dynamic_id, character_id):
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
     # logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
 
-    return responsedata.SerializeToString()
+    return {'player_data': responsedata.SerializeToString(), 'is_new_character': is_new_character}

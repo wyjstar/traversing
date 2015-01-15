@@ -18,6 +18,7 @@ from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHe
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
+from shared.utils.const import const
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -44,7 +45,7 @@ def nickname_create_5(request_proto, player):
 
     # 判断昵称是否重复
     nickname_obj = tb_character_info.getObj('nickname')
-    result = nickname_obj.hset(nickname, player.base_info.id)
+    result = nickname_obj.hsetnx(nickname, player.base_info.id)
     print 'is new player:', result
     if not result:
         response.result = False
@@ -160,7 +161,7 @@ def new_guide_step_1802(data, player):
                 player.base_info.newbee_guide_id)
 
     gain_data = new_guide_item.get('rewards')
-    return_data = gain(player, gain_data)
+    return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
     get_return(player, return_data, response.gain)
 
     return response.SerializePartialToString()
@@ -190,4 +191,5 @@ def init_player(player):
     player.init_player_info()
     if new_character:
         logger.debug("mock player info.....")
-        # init(player)
+        init(player)
+    return new_character

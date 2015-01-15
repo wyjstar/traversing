@@ -101,3 +101,19 @@ class CharacterEquipmentPackageComponent(Component):
         temp = self._equipments_obj.get(equipment_id)
         assert temp is not None, ("equipment %s not exists!" % equipment_id)
         return temp.is_guard
+
+    def get_equipment(self, equipment_id):
+        """根据装备ID 取得装备
+        @param equipment_id: 装备ID
+        @return: 装备对象
+        """
+        if equipment_id in self._equipments_obj:
+            return self._equipments_obj[equipment_id]
+        return None
+
+    def get_equipment_num(self, equipment_no):
+        num = 0
+        for equipment_obj in self._equipments_obj.values():
+            if equipment_obj.base_info.equipment_no == equipment_no:
+                num += 1
+        return num

@@ -15,7 +15,6 @@ class Mail(object):
                  prize=0):
         """初始化邮件信息
         """
-        self._old_data = None
         self._id = mail_id  # 邮件的ID
         self._character_id = character_id  # ID
         self._title = title  # 邮件的主题
@@ -30,7 +29,6 @@ class Mail(object):
         self._prize = prize  # 邮件物品包裹
 
     def init_data(self, mail_prop):
-        self._old_data = mail_prop
         self._character_id = mail_prop.get("character_id")
         self._title = mail_prop.get("title")
         self._sender_id = mail_prop.get("sender_id")
@@ -126,9 +124,12 @@ class Mail(object):
     def save_data(self):
         prop = self.mail_proerty_dict()
         char_obj = tb_character_info.getObj(self._character_id).getObj('mails')
-        char_obj.hset(self._id, self._old_data, prop)
-        self._old_data = prop
+        result = char_obj.hset(self._id, prop)
+        if not result:
+            logger.error('save mail error!:%s', self._id)
 
     def delete(self):
         char_obj = tb_character_info.getObj(self._character_id).getObj('mails')
-        char_obj.hdel(self._id)
+        result = char_obj.hdel(self._id)
+        if not result:
+            logger.error('del mail error!:%s', self._id)

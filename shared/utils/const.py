@@ -60,6 +60,7 @@ const.EQUIPMENT = 102
 const.EQUIPMENT_CHIP = 104
 const.ITEM = 105
 const.BIG_BAG = 106
+const.RUNT = 108
 const.TRAVEL_ITEM = 109
 # 1：金币
 # 2：充值币
@@ -104,3 +105,43 @@ const.TRAVEL_ITEM = 109
 const.MAX_CONNECTION = 2000
 const.TIME_OUT = 60 * 1000  # 秒
 const.TLOG_ADDR = ('192.168.10.25', 6667)
+
+# ========t_log=============
+const.ADD = 0
+const.REDUCE = 1
+
+# ==道具流水，获得原因==
+const.MELTING_EQUIPMENT = 1  # 装备熔炼
+const.HERO_SELL = 2  # 武将出售
+const.HERO_SACRIFICE_OPER = 3  # 武将献祭
+const.USE_ITEM = 4  # 使用物品
+const.LEVEL_GIFT = 5  # 等级活动奖励
+const.NEW_LEVEL_GIFT = 6  # 等级推送
+const.LIVELY = 7  # 活跃
+const.CUMULATIVE_LOGIN_GIFT = 8  # 累积登陆奖励
+const.CONTINUOUS_LOGIN_GIFT = 9  # 连续登陆奖励
+const.MAIL = 10  # 邮件
+const.MINE_EXCHANGE = 11  # 秘境神秘商人
+const.MINE_REWARD = 12  # 秘境宝箱
+const.NEW_GUIDE_STEP = 13  # 新手引导
+const.SHOP_BUY_GIFT_PACK = 14  # 商城,购买礼包
+const.SHOP_BUY_ITEM = 15  # 商城购买道具
+const.SHOP_DRAW_HERO = 16  # 商城抽英雄
+const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
+const.COMMON_BUY = 18  # 通用商城购买
+const.SIGN_GIFT = 19  # 签到奖励
+const.CONTINUS_SIGN = 20  # 连续签到
+const.REPAIR_SIGN = 21  # 补充签到
+const.STAGE_SWEEP = 22  # 关卡扫荡
+const.CHAPTER_AWARD = 23  # 章节奖励
+const.TRAVEL = 24  # 游历
+const.TRAVEL_OPEN_CHEST = 25  # 游历宝箱
+const.TRAVEL_AUTO = 26  # 自动游历
+const.STAGE = 27  # 关卡
+
+const.ENHANCE_EQUIPMENT = 28  # 装备强化
+
+
+
+from shared.utils.const import const
+# ==========================

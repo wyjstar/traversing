@@ -22,6 +22,7 @@ from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
+from shared.utils.const import const
 
 
 xs = 100000
@@ -78,7 +79,7 @@ def travel_831(data, player):
 
     # 等待 战斗 答题 领取
     if event_info.type == 4:
-        gain(player, drops)
+        gain(player, drops, const.TRAVEL)
     else:
         travel_cache.get(stage_id).append([res_travel_event_id, drops])
 
@@ -193,7 +194,7 @@ def open_chest_836(data, player):
     common_bag = BigBag(base_config.get('travelChest'))
     common_drop = common_bag.get_drop_items()
     drops.extend(common_drop)
-    drop_data = gain(player, drops)
+    drop_data = gain(player, drops, const.TRAVEL_OPEN_CHEST)
     get_return(player, drop_data, res_drops)
 
     player.travel_component.chest_time = int(time.time())
@@ -206,7 +207,9 @@ def open_chest_836(data, player):
 
 @remoteserviceHandle('gate')
 def travel_settle_833(data, player):
-    """ settle"""
+    """ settle,
+        type 1 3 这此结算
+    """
     args = TravelSettleRequest()
     args.ParseFromString(data)
     stage_id = args.stage_id
@@ -243,7 +246,14 @@ def travel_settle_833(data, player):
             return response.SerializeToString()
 
     # 结算
-    gain(player, event_cache[1])
+    if event_info.type == 3 and not event_info.parameter[args.parameter]:
+        common_bag = BigBag(event_info.wrong)
+        common_drop = common_bag.get_drop_items()
+
+        gain_data = gain(player, common_drop, const.TRAVEL)
+        get_return(player, gain_data, response.drops)
+    else:
+        gain(player, event_cache[1], const.TRAVEL)
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
@@ -337,7 +347,7 @@ def no_wait_835(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    gain(player, event_cache[1])
+    gain(player, event_cache[1], const.TRAVEL)
     player.finance.gold -= event_info.price
     player.finance.save_data()
 
@@ -464,7 +474,7 @@ def settle_auto_838(data, player):
                 continue
 
         # 结算
-        gain(player, event_info[2])
+        gain(player, event_info[2], const.TRAVEL_AUTO)
 
         event_info[0] = 1
         flag = 0

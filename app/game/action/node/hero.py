@@ -14,6 +14,7 @@ from app.game.core.item_group_helper \
 from shared.utils import log_action
 from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.data_helper import parse
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -24,7 +25,6 @@ def get_heros_101(pro_data, player):
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
 
-    # print response, "*"*80
     return response.SerializePartialToString()
 
 
@@ -160,7 +160,7 @@ def hero_sell_107(data, player):
     response = hero_response_pb2.HeroSellResponse()
     for hero_no in hero_nos:
         sell_gain = game_configs.hero_config.get(hero_no).sellGain
-        return_data = gain(player, sell_gain)
+        return_data = gain(player, sell_gain, const.HERO_SELL)
         get_return(player, return_data, response.gain)
 
     response.res.result = True
@@ -210,7 +210,7 @@ def hero_sacrifice_oper(heros, player):
     gain_response = response.gain
     for hero in heros:
         sacrifice_gain = game_configs.hero_config.get(hero.hero_no).sacrificeGain
-        return_data = gain(player, sacrifice_gain)
+        return_data = gain(player, sacrifice_gain, const.HERO_SACRIFICE_OPER)
         get_return(player, return_data, gain_response)
         # 经验
         exp = hero.get_all_exp()

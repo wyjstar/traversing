@@ -1,12 +1,10 @@
 # -*- coding:utf-8 -*-
 
-# from gfirefly.server.globalobject import GlobalObject
+from gfirefly.server.globalobject import GlobalObject
 import socket
-# from gfirefly.server.logobj import logger
-# host = GlobalObject().json_config['tlog']['host']
-# port = GlobalObject().json_config['tlog']['port']
-host = "192.169.10.26"
-port = 30005
+from gfirefly.server.logobj import logger
+host = GlobalObject().allconfig['tlog']['host']
+port = GlobalObject().allconfig['tlog']['port']
 
 
 class LogClient:
@@ -20,8 +18,7 @@ class LogClient:
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         except socket.error, arg:
             (_, err_msg) = arg
-            # logger.info(str(err_msg))
-            print str(err_msg)
+            logger.info(str(err_msg))
 
     def send_msg(self, msg):
         if msg:
@@ -29,8 +26,7 @@ class LogClient:
                 self.sock.sendto(msg, (host, port))
             except socket.error, arg:
                 (_, err_msg) = arg
-                # logger.info(str(err_msg))
-                print str(err_msg)
+                logger.info(str(err_msg))
 
 udphandler = LogClient()
 

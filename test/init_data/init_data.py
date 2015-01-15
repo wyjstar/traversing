@@ -24,5 +24,5 @@ def init(player):
     init_item(player)
     init_line_up(player)
     init_runt(player)
-    init_guild(player)
+    # init_guild(player)
     init_travel_item(player)

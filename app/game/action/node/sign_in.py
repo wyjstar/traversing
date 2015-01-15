@@ -14,6 +14,7 @@ from app.proto_file.sign_in_pb2 import ContinuousSignInResponse
 from app.proto_file.sign_in_pb2 import GetSignInResponse
 from app.game.core.drop_bag import BigBag
 import datetime
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -54,7 +55,7 @@ def sign_in_1401(pro_data, player):
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
         return
     gain_data = sign_in_config.get(month).get(day)
-    return_data = gain(player, gain_data)
+    return_data = gain(player, gain_data, const.SIGN_GIFT)
     get_return(player, return_data, response.gain)
     response.res.result = True
     return response.SerializePartialToString()
@@ -87,7 +88,7 @@ def continus_sign_in_1402(pro_data, player):
     drop_bag_id = sign_in_prize.get(days)
     big_bag = BigBag(drop_bag_id)
     gain_data = big_bag.get_drop_items()
-    return_data = gain(player, gain_data)
+    return_data = gain(player, gain_data, const.CONTINUS_SIGN)
     get_return(player, return_data, response.gain)
 
     response.res.result = True
@@ -140,7 +141,7 @@ def repair_sign_in_1403(pro_data, player):
     if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
         return
     gain_data = sign_in_config.get(month).get(day)
-    return_data = gain(player, gain_data)
+    return_data = gain(player, gain_data, const.REPAIR_SIGN)
     get_return(player, return_data, response.gain)
 
     player.sign_in_component.repair_sign_in_times += 1

@@ -397,7 +397,7 @@ def exchange_1248(data, player):
 
     consume_return_data = item_group_helper.consume(player, shop_item.discountPrice)  # 消耗
 
-    return_data = item_group_helper.gain(player, shop_item.gain)  # 获取
+    return_data = item_group_helper.gain(player, shop_item.gain, const.MINE_EXCHANGE)  # 获取
     # extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
     item_group_helper.get_return(player, consume_return_data, response.consume)
     item_group_helper.get_return(player, return_data, response.gain)
@@ -415,7 +415,7 @@ def add_items(player, response, drop_ids):
     for drop_id in drop_ids:
         big_bag = BigBag(drop_id)
         drop_item_group = big_bag.get_drop_items()
-        return_data = item_group_helper.gain(player, drop_item_group)
+        return_data = item_group_helper.gain(player, drop_item_group, const.MINE_REWARD)
         item_group_helper.get_return(player, return_data, response.gain)
     return response
 
