@@ -140,6 +140,8 @@ const.TRAVEL_AUTO = 26  # 自动游历
 const.STAGE = 27  # 关卡
 
 const.ENHANCE_EQUIPMENT = 28  # 装备强化
+const.ONLINE_GIFT = 29  # 在线奖励
+const.GM = 30  # gm发放
 
 
 

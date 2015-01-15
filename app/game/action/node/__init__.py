@@ -77,3 +77,4 @@ import lively
 import mine
 import runt
 import inherit
+import gm

@@ -52,15 +52,26 @@ def get_guild_rank_remote():
 
 
 @rootserviceHandle
-def from_admin(msg):
-    print 'from admin,=======================', msg
-
-
-@rootserviceHandle
 def from_admin_rpc_remote(args):
     args = cPickle.loads(args)
-    print args.get('args'), 'ssssss', args, 'sssssss'
-    return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
+    key = args.get('command')
+    print 'command:', args.get('command'), args.get('id')
+
+    reason = ''
+
+    oldvcharacter = VCharacterManager().get_by_id(int(args.get('id')))
+    if oldvcharacter:
+        args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
+        child_node = groot.child(oldvcharacter.node)
+        result = child_node.callbackChild(*args)
+    else:
+        result = False
+        reason = '玩家不在线'
+
+    print result, '#######################'
+
+    return cPickle.dumps({'result': result, 'reason': reason})
+    # return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
 
 
 @rootserviceHandle
