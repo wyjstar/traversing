@@ -189,7 +189,7 @@ def init_player(player):
     if new_character:
         player.create_character_data()
     player.init_player_info()
-    if new_character:
-        logger.debug("mock player info.....")
-        init(player)
+    # if new_character:
+    #     logger.debug("mock player info.....")
+    #     init(player)
     return new_character
