@@ -13,6 +13,7 @@ from app.gate.service.local.gateservice import local_service
 from gfirefly.utils.services import CommandService
 from shared.utils.ranking import Ranking
 import cPickle
+from gfirefly.server.logobj import logger
 
 groot = GlobalObject().root
 
@@ -106,11 +107,12 @@ def del_guild_room_remote(guild_id):
 @rootserviceHandle
 def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
+    logger.debug("%s %s %s" % (key, character_id, cPickle.loads(args)))
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
     if oldvcharacter:
-        args = (key, oldvcharacter.dynamic_id, True) + args
+        args = (key, oldvcharacter.dynamic_id, args)
         child_node = groot.child(oldvcharacter.node)
         return child_node.callbackChild(*args)
     else:
@@ -123,11 +125,13 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 
 @remoteserviceHandle('transit')
-def pull_message_remote(key, character_id, *args):
+def pull_message_remote(key, character_id, args):
+    args = cPickle.loads(args)
+    logger.debug(args)
+    logger.debug("pull_message_remote1")
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
-        args = args + (False,)
-        args = (key, oldvcharacter.dynamic_id) + args
+        args = (key, oldvcharacter.dynamic_id, args)
         child_node = groot.child(oldvcharacter.node)
         result = child_node.callbackChild(*args)
         # print 'gate found character to pull message:', oldvcharacter.__dict__, args, result
