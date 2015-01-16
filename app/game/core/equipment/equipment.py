@@ -242,6 +242,12 @@ class Equipment(object):
             minor_attr_pb.attr_value = attr_value
             minor_attr_pb.attr_increment = attr_increment
 
+        for before_lv, after_lv, enhance_cost in self.enhance_record.enhance_record:
+            data_format = equipment_pb.data.add()
+            data_format.before_lv = before_lv
+            data_format.after_lv = after_lv
+            data_format.cost_coin = enhance_cost
+
     def calculate_attr(self, hero_self_attr):
         """根据属性和强化等级计算装备属性"""
         # hpEqu             装备加生命值    中间值  1   baseHp+growHp*equLevel
