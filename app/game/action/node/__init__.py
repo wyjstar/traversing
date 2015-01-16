@@ -40,6 +40,7 @@ class GameCommandService(CommandService):
             return None
         except:
             logger.error(traceback.format_exc())
+            return None
         logger.info("call method %s on service[%s]:%f",
                     target.__name__, self._name, time.time() - t)
         return response

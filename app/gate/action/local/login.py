@@ -76,6 +76,8 @@ def __character_login(dynamic_id):
         VCharacterManager().add_character(v_character)
 
     now_node = SceneSerManager().get_best_sceneid()
+    if not now_node:
+        return {'result': False}
 
     # game服登录
     child_node = GlobalObject().child(now_node)
