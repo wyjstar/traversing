@@ -19,7 +19,16 @@ import cPickle
 from app.game.core.item_group_helper import gain
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
-from test.init_data.init_data import init
+from test.inifrom test.init_data.mock_heros import init_hero
+from test.init_data.mock_hero_chips import init_hero_chip
+from test.init_data.mock_equipment import init_equipment
+from test.init_data.mock_equipment_chip import init_equipment_chip
+from test.init_data.mock_item import init_item
+from test.init_data.mock_line_up import init_line_up
+from test.init_data.mock_runt import init_runt
+from test.init_data.mock_guild import init_guild
+from test.init_data.mock_travel_item import init_travel_item
+from test.init_data.mock_player import init_playert_data.init_data import init
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -66,4 +75,34 @@ def add_vip_remote(data, player):
 
     player.base_info.vip_level = level
     player.base_info.save_data()
+    return True
+
+
+@remoteserviceHandle('gate')
+def init_hero_remote(data, player):
+    init_hero(player)
+    return True
+
+
+@remoteserviceHandle('gate')
+def init_hero_chip_remote(data, player):
+    init_hero_chip(player)
+    return True
+
+
+@remoteserviceHandle('gate')
+def init_equipment_remote(data, player):
+    init_equipment(player)
+    return True
+
+
+@remoteserviceHandle('gate')
+def init_equipment_chip_remote(data, player):
+    init_equipment_chip(player)
+    return True
+
+
+@remoteserviceHandle('gate')
+def init_item_remote(data, player):
+    init_item(player)
     return True
