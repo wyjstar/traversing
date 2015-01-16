@@ -74,7 +74,7 @@ def __character_login(dynamic_id):
     else:
         v_character = VirtualCharacter(user.user_id, dynamic_id)
         VCharacterManager().add_character(v_character)
-    
+
     now_node = SceneSerManager().get_best_sceneid()
 
     # game服登录
@@ -84,6 +84,7 @@ def __character_login(dynamic_id):
         return {'result': False}
     v_character.node = now_node
 
+    logger.debug("pull_message_remote")
     # pull message from transit
     GlobalObject().remote['transit'].pull_message_remote(user.user_id)
 

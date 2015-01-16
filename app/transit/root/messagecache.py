@@ -23,6 +23,7 @@ class MessageCache:
         pass
 
     def cache(self, key, character_id, *args, **kw):
+
         unique_id = uuid.uuid4()
         message_obj = _messages.getObj(character_id)
         message = cPickle.dumps(dict(topic_id=key,
@@ -66,15 +67,15 @@ if __name__ == '__main__':
         print request
         message_cache.delete(222, key)
 
-    def get_message():
-        print 'begin'
-        for _ in range(10000):
-            message = message_cache.get(222)
-        print 'end'
+    #def get_message():
+        #print 'begin'
+        #for _ in range(10000):
+            #message = message_cache.get(222)
+        #print 'end'
 
-    _time = time.time()
-    threads = []
-    for _ in range(100):
-        threads.append(gevent.spawn(get_message))
-    gevent.joinall(threads)
-    print 'use time:', time.time() - _time
+    #_time = time.time()
+    #threads = []
+    #for _ in range(100):
+        #threads.append(gevent.spawn(get_message))
+    #gevent.joinall(threads)
+    #print 'use time:', time.time() - _time
