@@ -3,7 +3,6 @@
 created by server on 14-6-17下午5:29.
 """
 from shared.db_opear.configs_data.data_helper import parse
-from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.data_helper import convert_keystr2num
 
 
@@ -83,6 +82,15 @@ class BaseConfig(object):
         config_value["mine_boss"] = mine_boss
 
         config_value['arena_times_buy_price'] = parse(config_value['arena_times_buy_price'])
+
+
+        # modify equipment prefix
+        equPrefix = {}
+        for _, v in config_value.get("equPrefix").items():
+            if v[0] not in equPrefix:
+                equPrefix[v[0]] = []
+            equPrefix[v[0]].append(v[1:])
+        config_value["equPrefix"] = equPrefix
 
         # modify cook data
         cooking_data = config_value['cookingWinePrice']

@@ -25,6 +25,7 @@ message EquipmentPB{
 	optional bool is_guard = 9;         // 装备是否驻守
     repeated EquAttr main_attr = 10;
     repeated EquAttr minor_attr = 11;
+	optional int32 prefix= 12;         // 装备前缀
 }
 
 message EquAttr{
