@@ -127,8 +127,6 @@ GlobalObject().remote['transit']._reference.addService(remoteservice)
 
 @remoteserviceHandle('transit')
 def pull_message_remote(key, character_id, args):
-    args = cPickle.loads(args)
-    logger.debug(args)
     logger.debug("netforwarding.pull_message_remote")
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:

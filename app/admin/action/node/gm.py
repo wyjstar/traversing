@@ -36,8 +36,8 @@ def gm():
 
     return json.dumps(response)
 
-@webserviceHandle('/gm_off', methods=['post', 'get'])
-def gm_off():
+@webserviceHandle('/gm2', methods=['post', 'get'])
+def gm2():
     response = {}
     if request.args:
         args = request.args
