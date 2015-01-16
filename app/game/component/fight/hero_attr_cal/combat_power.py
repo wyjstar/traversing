@@ -468,6 +468,7 @@ def combat_power_hero_self(player, hero):
     (hitHero+dodgeHero+criHero+criCoeffHero+criDedCoeffHero+blockHero+ductilityHero)/10000
     """
     self_attr = hero_self_attr(player, hero)
+    self_attr["job"] = hero.hero_info.job
     formula = formula_config.get("fightValueHero").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, self_attr)
@@ -482,6 +483,7 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no):
     (hitArray+dodgeArray+criArray+criCoeffArray+criDedCoeffArray+blockArray+ductilityArray)/10000
     """
     line_up_attr = hero_lineup_attr(player, hero, line_up_slot_no)
+    line_up_attr["job"] = hero.hero_info.job
     log(hero.hero_no, "武将阵容", "", line_up_attr)
     formula = formula_config.get("fightValueArray").get("formula")
     assert formula!=None, "formula can not be None"
