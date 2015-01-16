@@ -35,6 +35,8 @@ def get_equipments_401(pro_data, player):
         equipment_add.no = obj.base_info.equipment_no
         equipment_add.strengthen_lv = obj.attribute.strengthen_lv
         equipment_add.awakening_lv = obj.attribute.awakening_lv
+        equipment_add.prefix = obj.attribute.prefix
+        logger.debug(equipment_add.prefix)
         for (attr_type, [attr_value_type, attr_value, attr_increment]) in obj.attribute.main_attr.items():
             main_attr_pb = equipment_add.main_attr.add()
             main_attr_pb.attr_type = attr_type
