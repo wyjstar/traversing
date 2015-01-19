@@ -8,7 +8,6 @@ import cPickle
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.hero import Hero
 from app.game.redis_mode import tb_character_info
-from app.game.redis_mode import tb_character_info
 from app.game.core.check import check_have_equipment
 from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import CommonResponse
@@ -179,11 +178,11 @@ def change_equipments_703(pro_data, player):
     no = request.no
     equipment_id = request.equipment_id
     res = change_equipment(slot_no, no, equipment_id, player)
-    response.result = res.get("result")
+    response.res.result = res.get("result")
     if res.get("result"):
         response = line_up_info(player)
     else:
-        response.result_no = res.get("result_no")
+        response.res.result_no = res.get("result_no")
     logger.debug("change_equipments_703")
     logger.debug(response)
     return response.SerializePartialToString()
@@ -198,9 +197,9 @@ def change_multi_equipments_704(pro_data, player):
     response = line_up_pb2.LineUpResponse()
 
     for temp in request.equs:
-        slot_no = request.slot_no
-        no = request.no
-        equipment_id = request.equipment_id
+        slot_no = temp.slot_no
+        no = temp.no
+        equipment_id = temp.equipment_id
         change_equipment(slot_no, no, equipment_id, player)
 
     response = line_up_info(player)
@@ -208,6 +207,7 @@ def change_multi_equipments_704(pro_data, player):
     logger.debug("change_multi_equipments_704")
     logger.debug(response)
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def unpar_upgrade_705(pro_data, player):
@@ -277,6 +277,7 @@ def change_equipment(slot_no, no, equipment_id, player):
         logger.debug("3check_have_equipment")
         return {"result":False, "result_no":704}
     player.line_up_component.save_data()
+    return {"result":True}
 
 
 def line_up_info(player):
