@@ -174,11 +174,40 @@ def change_equipments_703(pro_data, player):
     """
     request = line_up_pb2.ChangeEquipmentsRequest()
     request.ParseFromString(pro_data)
+    response = line_up_pb2.LineUpResponse()
     slot_no = request.slot_no
     no = request.no
     equipment_id = request.equipment_id
-    return change_equipment(slot_no, no, equipment_id, player)
+    res = change_equipment(slot_no, no, equipment_id, player)
+    response.result = res.get("result")
+    if res.get("result"):
+        response = line_up_info(player)
+    else:
+        response.result_no = res.get("result_no")
+    logger.debug("change_equipments_703")
+    logger.debug(response)
+    return response.SerializePartialToString()
 
+
+@remoteserviceHandle('gate')
+def change_multi_equipments_704(pro_data, player):
+    """更换装备
+    """
+    request = line_up_pb2.ChangeMultiEquipmentsRequest()
+    request.ParseFromString(pro_data)
+    response = line_up_pb2.LineUpResponse()
+
+    for temp in request.equs:
+        slot_no = request.slot_no
+        no = request.no
+        equipment_id = request.equipment_id
+        change_equipment(slot_no, no, equipment_id, player)
+
+    response = line_up_info(player)
+    response.result = True
+    logger.debug("change_multi_equipments_704")
+    logger.debug(response)
+    return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
 def unpar_upgrade_705(pro_data, player):
@@ -232,32 +261,22 @@ def change_equipment(slot_no, no, equipment_id, player):
     @return:
     """
     logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
-    response = line_up_pb2.LineUpResponse()
 
     # 检验装备是否存在
     if equipment_id != '0' and not check_have_equipment(player, equipment_id):
         logger.debug("1check_have_equipment %d", equipment_id)
-        response.res.result = False
-        response.res.result_no = 702
-        return response.SerializePartialToString()
+        return {"result":False, "result_no":702}
 
     # 校验该装备是否已经装备
     if equipment_id != '0' and equipment_id in player.line_up_component.on_equipment_ids:
         logger.debug("2check_have_equipment")
-        response.res.result = False
-        response.res.result_no = 703
-        return response.SerializePartialToString()
+        return {"result":False, "result_no":703}
 
     # 校验装备类型
     if not player.line_up_component.change_equipment(slot_no, no, equipment_id):
         logger.debug("3check_have_equipment")
-        response.res.result = False
-        response.res.result_no = 704
-        return response.SerializePartialToString()
-    logger.debug("0check_have_equipment")
+        return {"result":False, "result_no":704}
     player.line_up_component.save_data()
-    response = line_up_info(player)
-    return response.SerializePartialToString()
 
 
 def line_up_info(player):

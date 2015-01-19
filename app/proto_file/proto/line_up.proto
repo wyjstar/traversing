@@ -46,6 +46,11 @@ message ChangeEquipmentsRequest
     optional string equipment_id = 3; // 装备ID
 }
 
+// 更换多个装备 704
+message ChangeMultiEquipmentsRequest
+{
+    repeated ChangeEquipmentsRequest equs = 1; //多个装备
+}
 
 // 更换武将 702
 message ChangeHeroRequest{
