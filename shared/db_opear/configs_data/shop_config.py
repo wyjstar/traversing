@@ -19,6 +19,7 @@ class ShopConfig(object):
             row["consume"] = parse(row.get("consume"))
             row["gain"] = parse(row.get("gain"))
             row["extraGain"] = parse(row.get("extraGain"))
+            row["discountPrice"] = parse(row.get("discountPrice"))
             item = CommonItem(row)
             self._items[item.id] = item
 
