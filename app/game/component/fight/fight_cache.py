@@ -330,8 +330,8 @@ class CharacterFightCacheComponent(Component):
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
-        self.__break_hero_units(red_units)
         self.awake_hero_units(red_units)
+        self.__break_hero_units(red_units)
 
         return red_units, blue_units, drop_num, monster_unpara
 
@@ -375,6 +375,8 @@ class CharacterFightCacheComponent(Component):
                 if not red_unit:
                     continue
                 hero_no = red_unit.unit_no  # 英雄编号
+                if red_unit.is_awake:
+                    hero_no = red_unit.origin_no
                 if hero_no in self._not_replace:
                     continue
                 replace.append(red_unit)
@@ -386,6 +388,9 @@ class CharacterFightCacheComponent(Component):
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
             hero = self.owner.hero_component.get_hero(red_unit.unit_no)
+            if hero.is_awake:
+                hero = self.owner.hero_component.get_hero(red_unit.origin_no)
+
             old_line_up_slot = self.line_up_slots.get(red_unit.slot_no)
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
@@ -404,6 +409,8 @@ class CharacterFightCacheComponent(Component):
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
             hero = self.owner.hero_component.get_hero(red.unit_no)
+            if not hero:
+                continue
             hero_item = hero.hero_info
             _rand = random.random()
             if not hero_item:
