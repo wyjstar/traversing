@@ -86,9 +86,9 @@ def __character_login(dynamic_id):
         return {'result': False}
     v_character.node = now_node
 
-    logger.debug("pull_message_remote")
-    # pull message from transit
-    GlobalObject().remote['transit'].pull_message_remote(user.user_id)
+    #logger.debug("pull_message_remote")
+    ## pull message from transit
+    #GlobalObject().remote['transit'].pull_message_remote(user.user_id)
 
     SceneSerManager().add_client(now_node, dynamic_id)
 

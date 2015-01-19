@@ -11,8 +11,10 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 # from gfirefly.server.globalobject import GlobalObject
 from app.game.component.fight.hero_attr_cal.combat_power import combat_power_hero_lineup
+from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
 
+remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def enter_scene_remote(dynamic_id, character_id):
@@ -23,6 +25,8 @@ def enter_scene_remote(dynamic_id, character_id):
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
+
+    remote_gate.pull_message_remote(character_id)
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True
