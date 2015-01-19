@@ -10,6 +10,8 @@ from app.game.action.node.player import init_player
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 # from gfirefly.server.globalobject import GlobalObject
+from app.game.component.fight.hero_attr_cal.combat_power import combat_power_hero_lineup
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -66,5 +68,14 @@ def enter_scene_remote(dynamic_id, character_id):
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
     # logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
+
+    if const.DEBUG:
+        for slot_no, slot in player.line_up_component.line_up_slots.items():
+            hero = slot.hero_slot.hero_obj
+            if not hero: continue
+            combat_power_hero_lineup(player, hero, slot_no)
+            awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
+
+            combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
 
     return {'player_data': responsedata.SerializeToString(), 'is_new_character': is_new_character}

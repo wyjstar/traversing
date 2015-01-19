@@ -5,7 +5,6 @@ created by server on 14-7-17下午6:54.
 import random
 from app.game.component.Component import Component
 from app.game.core.drop_bag import BigBag
-from app.game.core.hero import Hero
 from app.battle.battle_unit import do_assemble
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
@@ -14,6 +13,7 @@ from app.game.component.fight.hero_attr_cal import combat_power
 
 
 class CharacterFightCacheComponent(Component):
+
     """战斗缓存组件
     """
 
@@ -74,19 +74,25 @@ class CharacterFightCacheComponent(Component):
         """取得关卡配置数据
         """
         if game_configs.stage_config.get('travel_fight_stages').get(self._stage_id):
-            return game_configs.stage_config.get('travel_fight_stages').get(self._stage_id)
+            return game_configs.stage_config.get(
+                'travel_fight_stages').get(self._stage_id)
         if game_configs.stage_config.get('stages').get(self._stage_id):
             return game_configs.stage_config.get('stages').get(self._stage_id)
         if game_configs.special_stage_config.get('elite_stages').get(self._stage_id):
-            return game_configs.special_stage_config.get('elite_stages').get(self._stage_id)
+            return game_configs.special_stage_config.get(
+                'elite_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('act_stages').get(self._stage_id):
-            return game_configs.special_stage_config.get('act_stages').get(self._stage_id)
+            return game_configs.special_stage_config.get(
+                'act_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('world_boss_stages').get(self._stage_id):
-            return game_configs.special_stage_config.get('world_boss_stages').get(self._stage_id)
+            return game_configs.special_stage_config.get(
+                'world_boss_stages').get(self._stage_id)
         if game_configs.special_stage_config.get('mine_boss_stages').get(self._stage_id):
-            return game_configs.special_stage_config.get('mine_boss_stages').get(self._stage_id)
+            return game_configs.special_stage_config.get(
+                'mine_boss_stages').get(self._stage_id)
         if game_configs.stage_config.get('mine_stages').get(self._stage_id):
-            return game_configs.stage_config.get('mine_stages').get(self._stage_id)
+            return game_configs.stage_config.get(
+                'mine_stages').get(self._stage_id)
 
     def __get_skill_config(self, skill_id):
         """取得技能BUFF配置
@@ -110,7 +116,9 @@ class CharacterFightCacheComponent(Component):
         stage = self.__get_stage_config()
         # print stage,
         if stage and "stage_break_id" in stage:
-            return game_configs.stage_break_config.get(stage.stage_break_id, None)
+            return game_configs.stage_break_config.get(
+                stage.stage_break_id,
+                None)
 
         return None
 
@@ -140,12 +148,17 @@ class CharacterFightCacheComponent(Component):
         monsters = []
         for i in range(3):
             logger.debug("stage_id %s" % self._stage_id)
-            logger.debug("stage_group_id %s" % getattr(stage_config, 'round%s' % (i + 1)))
+            logger.debug(
+                "stage_group_id %s" %
+                getattr(
+                    stage_config, 'round%s' %
+                    (i + 1)))
             print stage_config
-            monster_group_id = getattr(stage_config, 'round%s' %(i+1))
+            monster_group_id = getattr(stage_config, 'round%s' % (i+1))
             if not monster_group_id:
                 continue
-            monster_group_config = self.__get_monster_group_config(monster_group_id)
+            monster_group_config = self.__get_monster_group_config(
+                monster_group_id)
 
             round_monsters = {}
 
@@ -162,12 +175,26 @@ class CharacterFightCacheComponent(Component):
                 monster_config = self.__get_monster_config(monster_id)
                 logger.info('怪物ID：%s' % monster_id)
 
-                battle_unit = do_assemble(monster_config.id, monster_config.quality, [],
-                                          monster_config.hp, monster_config.atk, monster_config.physicalDef,
-                                          monster_config.magicDef, monster_config.hit, monster_config.dodge,
-                                          monster_config.cri, monster_config.criCoeff, monster_config.criDedCoeff,
-                                          monster_config.block, monster_config.ductility, pos, monster_config.monsterLv, 0,
-                                          is_boss, is_hero=False)
+                battle_unit = do_assemble(
+                    monster_config.id,
+                    monster_config.quality,
+                    [],
+                    monster_config.hp,
+                    monster_config.atk,
+                    monster_config.physicalDef,
+                    monster_config.magicDef,
+                    monster_config.hit,
+                    monster_config.dodge,
+                    monster_config.cri,
+                    monster_config.criCoeff,
+                    monster_config.criDedCoeff,
+                    monster_config.block,
+                    monster_config.ductility,
+                    pos,
+                    monster_config.monsterLv,
+                    0,
+                    is_boss,
+                    is_hero=False)
                 round_monsters[pos] = battle_unit
             monsters.append(round_monsters)
 
@@ -202,11 +229,16 @@ class CharacterFightCacheComponent(Component):
             return odds
 
         for i in range(1, 8):
-            condition_config = getattr(stage_break_config, 'condition%d' % i)  # 乱入条件
+            condition_config = getattr(
+                stage_break_config,
+                'condition%d' %
+                i)  # 乱入条件
             odds_config = getattr(stage_break_config, 'odds%d' % i)  # 乱入几率
             if self.check_condition(condition_config):
                 odds += odds_config
-            logger.info('乱入条件: %s odds:%f not replace:%s' % (condition_config, odds, self._not_replace))
+            logger.info(
+                '乱入条件: %s odds:%f not replace:%s' %
+                (condition_config, odds, self._not_replace))
 
         return odds
 
@@ -272,15 +304,19 @@ class CharacterFightCacheComponent(Component):
             if slot.hero_slot.hero_no in self._not_replace:
                 continue
             if condition_param in slot.hero_slot.link:
-                link_config = game_configs.link_config.get(slot.hero_slot.hero_no)
+                link_config = game_configs.link_config.get(
+                    slot.hero_slot.hero_no)
                 for i in (1, 6):
                     link = getattr(link_config, 'link%s' % i)
                     if link:
-                        logger.info('slot hero no%s, link:%s' % (slot.hero_slot.hero_no, link))
+                        logger.info(
+                            'slot hero no%s, link:%s' %
+                            (slot.hero_slot.hero_no, link))
                     if condition_param == link:
                         trigger = getattr(link_config, 'trigger%s' % i)
                         set_trigger = set(trigger)
-                        set_hero_nos = set(self.owner.line_up_component.hero_nos)
+                        set_hero_nos = set(
+                            self.owner.line_up_component.hero_nos)
                         if set_hero_nos.issuperset(set_trigger):
                             self._not_replace.append(slot.hero_slot.hero_no)
                             self._not_replace.extend(trigger)
@@ -330,7 +366,9 @@ class CharacterFightCacheComponent(Component):
 
         rand_odds = random.random()
 
-        logger.info('乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' % (odds, rand_odds, red_units))
+        logger.info(
+            '乱入几率: %s, 随机几率: %s, 红发战斗单位: %s' %
+            (odds, rand_odds, red_units))
         if rand_odds <= odds:
             replace = []  # 可以替换的英雄
             for k, red_unit in red_units.items():
@@ -347,17 +385,12 @@ class CharacterFightCacheComponent(Component):
             red_unit = random.choice(replace)  # 选出可以替换的单位
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
-
+            hero = self.owner.hero_component.get_hero(red_unit.unit_no)
             old_line_up_slot = self.line_up_slots.get(red_unit.slot_no)
-
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
             hero_no = break_config.hero_id
-            level = red_unit.level  # 等级
-            break_hero_obj = Hero()  # 实例化一个替换英雄对象
-            break_hero_obj.hero_no = hero_no
-            break_hero_obj.level = level
-            break_hero_obj.break_level = red_unit.break_level
+            break_hero_obj = self.change_hero(hero, hero_no)
 
             unit = break_line_up_slot.assemble_hero(break_hero_obj)
             logger.info('乱入替换战斗单位属性: %s' % unit)
@@ -370,30 +403,31 @@ class CharacterFightCacheComponent(Component):
 
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
-            hero_item = game_configs.hero_config.get(red.unit_no)
+            hero = self.owner.hero_component.get_hero(red.unit_no)
+            hero_item = hero.hero_info
             _rand = random.random()
             if not hero_item:
                 continue
             if not hero_item.get('awake'):
                 continue
             old_line_up_slot = self.line_up_slots.get(red.slot_no)
-            hero = self.owner.hero_component.get_hero(red.unit_no)
             ap = combat_power.combat_power_hero_self(self.owner, hero)
             for upAp, prob in hero_item.get('awake').items():
                 if ap > upAp and _rand < prob:
-                    logger.info('hero:%s, hit:%s, %s,ap:%s, upAp:%s', hero.hero_no, _rand, prob, ap, upAp)
-
                     break_line_up_slot = copy.deepcopy(old_line_up_slot)
-
-                    hero_no = hero_item.get('awakeHeroID')
-                    level = red.level  # 等级
-                    break_hero_obj = Hero()  # 实例化一个替换英雄对象
-                    break_hero_obj.hero_no = hero_no
-                    break_hero_obj.level = level
-                    break_hero_obj.break_level = red.break_level
+                    target_hero_no = hero_item.get('awakeHeroID')
+                    break_hero_obj = self.change_hero(hero, target_hero_no)
 
                     unit = break_line_up_slot.assemble_hero(break_hero_obj)
                     unit.is_awake = True
                     unit.origin_no = red.unit_no
                     red_units[no] = unit
                     break
+
+    def change_hero(self, origin_hero, target_hero_no):
+        """docstring for change_hero, 觉醒，乱入
+        return new line_up_slot
+        """
+        break_hero_obj = copy.deepcopy(origin_hero)  # 实例化一个替换英雄对象
+        break_hero_obj.hero_no = target_hero_no
+        return break_hero_obj
