@@ -51,7 +51,7 @@ def init_line_up(player, robot_config, level):
 
 
 if __name__ == '__main__':
-    redis_config = ["127.0.0.1:11211"]
+    redis_config = ["127.0.0.1:6379"]
     redis_manager.connection_setup(redis_config)
     log_init_only_out()
 
@@ -60,6 +60,7 @@ if __name__ == '__main__':
     model_config = mconfig.get('models', {})
     GlobalObject().json_model_config = model_config
     GlobalObject().json_model_default_config = model_default_config
+    GlobalObject().allconfig = {'tlog':0}
 
     hostname = "127.0.0.1"
     user = "root"

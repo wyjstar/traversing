@@ -55,7 +55,6 @@ class CharacterBaseInfoComponent(Component):
         self.check_time()
 
     def save_data(self):
-        assert(self.id != 0)
         character_info = tb_character_info.getObj(self._id)
 
         data = dict(level=self.level,
