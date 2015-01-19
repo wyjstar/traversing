@@ -31,30 +31,7 @@ def get_equipments_401(pro_data, player):
     for obj in equipments:
         # print obj.base_info.__dict__
         equipment_add = response.equipment.add()
-        equipment_add.id = obj.base_info.id
-        equipment_add.no = obj.base_info.equipment_no
-        equipment_add.strengthen_lv = obj.attribute.strengthen_lv
-        equipment_add.awakening_lv = obj.attribute.awakening_lv
-        for (attr_type, [attr_value_type, attr_value, attr_increment]) in obj.attribute.main_attr.items():
-            main_attr_pb = equipment_add.main_attr.add()
-            main_attr_pb.attr_type = attr_type
-            main_attr_pb.attr_value_type = attr_value_type
-            main_attr_pb.attr_value = attr_value
-            main_attr_pb.attr_increment = attr_increment
-
-        for (attr_type, [attr_value_type, attr_value, attr_increment]) in obj.attribute.minor_attr.items():
-            minor_attr_pb = equipment_add.minor_attr.add()
-            minor_attr_pb.attr_type = attr_type
-            minor_attr_pb.attr_value_type = attr_value_type
-            minor_attr_pb.attr_value = attr_value
-            minor_attr_pb.attr_increment = attr_increment
-        equipment_add.is_guard = obj.attribute.is_guard
-
-        for before_lv, after_lv, enhance_cost in obj.enhance_record.enhance_record:
-            data_format = equipment_add.data.add()
-            data_format.before_lv = before_lv
-            data_format.after_lv = after_lv
-            data_format.cost_coin = enhance_cost
+        obj.update_pb(equipment_add)
 
     return response.SerializePartialToString()
 
@@ -122,23 +99,7 @@ def compose_equipment_403(pro_data, player):
 
     equipment_obj = data.get('equipment_obj')
     equ = response.equ
-    equ.id = equipment_obj.base_info.id
-    equ.no = equipment_obj.base_info.equipment_no
-    equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
-    equ.awakening_lv = equipment_obj.attribute.awakening_lv
-    for (attr_type, [attr_value_type, attr_value, attr_increment]) in equipment_obj.attribute.main_attr.items():
-        main_attr_pb = equ.main_attr.add()
-        main_attr_pb.attr_type = attr_type
-        main_attr_pb.attr_value_type = attr_value_type
-        main_attr_pb.attr_value = attr_value
-        main_attr_pb. attr_increment = attr_increment
-
-    for (attr_type, [attr_value_type, attr_value, attr_increment]) in equipment_obj.attribute.minor_attr.items():
-        minor_attr_pb = equ.minor_attr.add()
-        minor_attr_pb.attr_type = attr_type
-        minor_attr_pb.attr_value_type = attr_value_type
-        minor_attr_pb.attr_value = attr_value
-        minor_attr_pb.attr_increment = attr_increment
+    equipment_obj.update_pb(equ)
 
     res.result = True
     return response.SerializePartialToString()

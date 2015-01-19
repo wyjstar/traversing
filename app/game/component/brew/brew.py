@@ -100,7 +100,8 @@ class CharacterBrewComponent(Component):
         rand = random.random()*sum(critical.values())
         for critical_num, rand_range in critical.items():
             if rand < rand_range:
-                self._nectar_cur = int(critical_num * self._nectar_cur)
+                increment = critical_num * base_config.get('cookingWineOutput')
+                self._nectar_cur += int(increment)
                 break
             else:
                 rand -= rand_range

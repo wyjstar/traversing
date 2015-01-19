@@ -4,31 +4,14 @@ created by wzp.
 """
 from robot import Robot
 from app.proto_file import pvp_rank_pb2
-import gevent
 
 class RobotPvp(Robot):
 
     def command_fight(self):
         arg = pvp_rank_pb2.PvpFightRequest()
         arg.challenge_rank = 1
-        line_up = arg.lineup.add()
-        line_up.pos = 1
-        line_up.hero_id = 10046
-        line_up = arg.lineup.add()
-        line_up.pos = 2
-        line_up.hero_id = 10029
-        line_up = arg.lineup.add()
-        line_up.pos = 3
-        line_up.hero_id = 10043
-        line_up = arg.lineup.add()
-        line_up.pos = 4
-        line_up.hero_id = 0
-        line_up = arg.lineup.add()
-        line_up.pos = 5
-        line_up.hero_id = 0
-        line_up = arg.lineup.add()
-        line_up.pos = 6
-        line_up.hero_id = 0
+        for i in range(1, 7):
+            arg.lineup.append(i)
 
         self.send_message(arg, 1505)
 
@@ -48,5 +31,3 @@ class RobotPvp(Robot):
     def on_login(self):
         print "*"*80
         self.command_fight()
-
-

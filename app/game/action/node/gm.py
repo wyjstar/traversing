@@ -38,6 +38,8 @@ remote_gate = GlobalObject().remote['gate']
 
 @remoteserviceHandle('gate')
 def add_level_remote(data, player):
+    logger.debug("add_level_remote")
+    logger.debug(data)
     args = cPickle.loads(data)
     level = args.get('level')
     if not level and level.isdigit():

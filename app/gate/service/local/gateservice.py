@@ -4,6 +4,7 @@ Created on 2013-8-14
 """
 from gfirefly.utils.services import CommandService
 from gfirefly.server.logobj import logger
+import traceback
 import time
 
 
@@ -21,7 +22,15 @@ class LocalService(CommandService):
         # if target_key not in self.unDisplay:
         #     logger.info("call method %s on service:[%s]" % (target.__name__, self._name))
         t = time.time()
-        response = target(target_key, *args, **kw)
+        try:
+            response = target(target_key, *args, **kw)
+        except Exception, e:
+            logger.exception(e)
+            return None
+        except:
+            logger.error(traceback.format_exc())
+            return None
+
         logger.info("call method %s on service:[%s]:%f",
                     target.__name__, self._name, time.time() - t)
         return response

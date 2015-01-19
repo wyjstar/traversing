@@ -35,3 +35,18 @@ def gm():
         response["data"] = res.get('data')
 
     return json.dumps(response)
+
+@webserviceHandle('/gm2', methods=['post', 'get'])
+def gm2():
+    response = {}
+    if request.args:
+        args = request.args
+    else:
+        args = request.form
+    data = dict((key, args.getlist(key)[0]) for key in args.keys())
+    logger.debug("data:%s", data)
+    key = data.get('command')
+    res = remote_gate.push_message_remote(key, int(data.get('id')), cPickle.dumps(data))
+
+    response["result"] = str(res)
+    return json.dumps(response)

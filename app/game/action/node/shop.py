@@ -6,7 +6,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
 from app.proto_file.shop_pb2 import GetShopItemsResponse
-from shared.db_opear.configs_data.game_configs import shop_config
+from shared.db_opear.configs_data.game_configs import shop_config, base_config
 from shared.db_opear.configs_data.game_configs import shop_type_config
 from app.game.core.item_group_helper import is_afford
 # from app.game.core.item_group_helper import is_consume
@@ -47,6 +47,17 @@ def shop_oper(pro_data, player, reason):
     request = ShopRequest()
     request.ParseFromString(pro_data)
     response = ShopResponse()
+
+    if player.shop.first_one_draw:
+        logger.debug("first one draw")
+        card_draw = base_config.get("CardFirst")
+        return_data = gain(player, card_draw, reason)  # 获取
+        get_return(player, return_data, response.gain)
+        player.shop.first_one_draw = False
+        player.shop.save_data()
+
+        response.res.result = True
+        return response.SerializeToString()
 
     shop_id = request.ids[0]
     shop_item = shop_config.get(shop_id)

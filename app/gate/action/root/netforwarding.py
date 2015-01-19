@@ -5,14 +5,14 @@ Created on 2013-8-14
 @author: lan (www.9miao.com)
 """
 from app.gate.core.users_manager import UsersManager
-from gfirefly.server.globalobject import rootserviceHandle, remoteserviceHandle
+from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.gate.core.virtual_character_manager import VCharacterManager
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
-from gfirefly.utils.services import CommandService
 from shared.utils.ranking import Ranking
 import cPickle
+from gfirefly.server.logobj import logger
 
 groot = GlobalObject().root
 
@@ -106,34 +106,23 @@ def del_guild_room_remote(guild_id):
 @rootserviceHandle
 def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
+    logger.debug("netforwarding.push_message_remote")
+    logger.debug("%s %s %s" % (key, character_id, cPickle.loads(args)))
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
     if oldvcharacter:
-        args = (key, oldvcharacter.dynamic_id, True) + args
+        args = (key, oldvcharacter.dynamic_id, args)
         child_node = groot.child(oldvcharacter.node)
         return child_node.callbackChild(*args)
     else:
         transit_remote = GlobalObject().remote['transit']
         return transit_remote.push_message_remote(key, character_id, args)
 
-
-remoteservice = CommandService('transitremote')
-GlobalObject().remote['transit']._reference.addService(remoteservice)
-
-
-@remoteserviceHandle('transit')
-def pull_message_remote(key, character_id, *args):
-    oldvcharacter = VCharacterManager().get_by_id(character_id)
-    if oldvcharacter:
-        args = args + (False,)
-        args = (key, oldvcharacter.dynamic_id) + args
-        child_node = groot.child(oldvcharacter.node)
-        result = child_node.callbackChild(*args)
-        # print 'gate found character to pull message:', oldvcharacter.__dict__, args, result
-        return result
-    else:
-        return False
+@rootserviceHandle
+def pull_message_remote(character_id):
+    transit_remote = GlobalObject().remote['transit']
+    return transit_remote.pull_message_remote(character_id)
 
 
 def save_playerinfo_in_db(dynamic_id):

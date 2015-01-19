@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment.proto',
   package='',
-  serialized_pb='\n\x0f\x65quipment.proto\"\'\n\x0cSetEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"K\n\x11\x45nhanceDataFormat\x12\x11\n\tbefore_lv\x18\x01 \x01(\x05\x12\x10\n\x08\x61\x66ter_lv\x18\x02 \x01(\x05\x12\x11\n\tcost_coin\x18\x03 \x01(\x05\"\x86\x02\n\x0b\x45quipmentPB\x12\n\n\x02id\x18\x01 \x02(\t\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x15\n\rstrengthen_lv\x18\x03 \x01(\x05\x12\x14\n\x0c\x61wakening_lv\x18\x04 \x01(\x05\x12\x16\n\x0enobbing_effect\x18\x07 \x01(\x05\x12\x0f\n\x07hero_no\x18\x05 \x01(\x05\x12\x1a\n\x03set\x18\x06 \x01(\x0b\x32\r.SetEquipment\x12 \n\x04\x64\x61ta\x18\x08 \x03(\x0b\x32\x12.EnhanceDataFormat\x12\x10\n\x08is_guard\x18\t \x01(\x08\x12\x1b\n\tmain_attr\x18\n \x03(\x0b\x32\x08.EquAttr\x12\x1c\n\nminor_attr\x18\x0b \x03(\x0b\x32\x08.EquAttr\"a\n\x07\x45quAttr\x12\x17\n\x0f\x61ttr_value_type\x18\x01 \x02(\x05\x12\x12\n\nattr_value\x18\x02 \x02(\x05\x12\x16\n\x0e\x61ttr_increment\x18\x03 \x02(\x02\x12\x11\n\tattr_type\x18\x04 \x02(\x05')
+  serialized_pb='\n\x0f\x65quipment.proto\"\'\n\x0cSetEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x01(\x05\"K\n\x11\x45nhanceDataFormat\x12\x11\n\tbefore_lv\x18\x01 \x01(\x05\x12\x10\n\x08\x61\x66ter_lv\x18\x02 \x01(\x05\x12\x11\n\tcost_coin\x18\x03 \x01(\x05\"\x96\x02\n\x0b\x45quipmentPB\x12\n\n\x02id\x18\x01 \x02(\t\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x15\n\rstrengthen_lv\x18\x03 \x01(\x05\x12\x14\n\x0c\x61wakening_lv\x18\x04 \x01(\x05\x12\x16\n\x0enobbing_effect\x18\x07 \x01(\x05\x12\x0f\n\x07hero_no\x18\x05 \x01(\x05\x12\x1a\n\x03set\x18\x06 \x01(\x0b\x32\r.SetEquipment\x12 \n\x04\x64\x61ta\x18\x08 \x03(\x0b\x32\x12.EnhanceDataFormat\x12\x10\n\x08is_guard\x18\t \x01(\x08\x12\x1b\n\tmain_attr\x18\n \x03(\x0b\x32\x08.EquAttr\x12\x1c\n\nminor_attr\x18\x0b \x03(\x0b\x32\x08.EquAttr\x12\x0e\n\x06prefix\x18\x0c \x01(\x03\"a\n\x07\x45quAttr\x12\x17\n\x0f\x61ttr_value_type\x18\x01 \x02(\x05\x12\x12\n\nattr_value\x18\x02 \x02(\x05\x12\x16\n\x0e\x61ttr_increment\x18\x03 \x02(\x02\x12\x11\n\tattr_type\x18\x04 \x02(\x05')
 
 
 
@@ -179,6 +179,13 @@ _EQUIPMENTPB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='prefix', full_name='EquipmentPB.prefix', index=11,
+      number=12, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -189,7 +196,7 @@ _EQUIPMENTPB = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=138,
-  serialized_end=400,
+  serialized_end=416,
 )
 
 
@@ -237,8 +244,8 @@ _EQUATTR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=402,
-  serialized_end=499,
+  serialized_start=418,
+  serialized_end=515,
 )
 
 _EQUIPMENTPB.fields_by_name['set'].message_type = _SETEQUIPMENT

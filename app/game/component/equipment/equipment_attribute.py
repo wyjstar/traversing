@@ -11,7 +11,7 @@ class EquipmentAttributeComponent(Component):
     """
 
     def __init__(self, owner, strengthen_lv, awakening_lv, nobbing_effect, is_guard,
-                 main_attr, minor_attr):
+                 main_attr, minor_attr, prefix):
         super(EquipmentAttributeComponent, self).__init__(owner)
 
         self._strengthen_lv = strengthen_lv  # 强化等级
@@ -20,6 +20,7 @@ class EquipmentAttributeComponent(Component):
         self._is_guard = is_guard  # 是否驻守，秘境相关
         self._main_attr = main_attr
         self._minor_attr = minor_attr
+        self._prefix = prefix
 
     @property
     def is_guard(self):
@@ -78,6 +79,14 @@ class EquipmentAttributeComponent(Component):
         if not obj:
             return None
         return obj.type
+
+    @property
+    def prefix(self):
+        return self._prefix
+
+    @prefix.setter
+    def prefix(self, value):
+        self._prefix = value
 
     @property
     def enhance_cost(self):

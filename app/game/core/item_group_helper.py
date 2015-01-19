@@ -104,6 +104,7 @@ def consume(player, item_group, shop=None, luck_config=None):
     luckValue = None
     if luck_config:
         luckValue = luck_config.luckyValue
+        print luckValue
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num
@@ -153,6 +154,8 @@ def consume(player, item_group, shop=None, luck_config=None):
             player.finance[item_no] -= num
             player.finance.save_data()
             after_num = player.finance[item_no]
+            if shop and luckValue and luckValue.get(item_no):
+                shop['luck_num'] += num * luckValue.get(item_no)
 
         result.append([type_id, num, item_no])
 
