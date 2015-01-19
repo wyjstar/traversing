@@ -25,7 +25,7 @@ def pvp_award_tick():
         childs = groot.childsmanager.childs
         for child in childs.values():
             if 'gate' in child.name:
-                result = child.pull_message_remote('pvp_award_remote', k['character_id'], 2)
+                result = child.pull_message_remote('pvp_award_remote', k['character_id'], (2,))
                 if type(result) is bool and result:
                     break
                 else:

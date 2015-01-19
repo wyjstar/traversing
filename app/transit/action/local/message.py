@@ -33,8 +33,7 @@ def pull_message_remote(character_id):
 
     logger.debug("pull all message")
     for key, message in message_cache.get(character_id):
-        args = (message.get('topic_id'), message.get('character_id'))
-        args += message.get('args')
+        args = (message.get('topic_id'), message.get('character_id'), message.get('args'))
         kw = message.get('kw')
         logger.debug("args:%s", message.get('args'))
         logger.debug("message.pull_message_remote")

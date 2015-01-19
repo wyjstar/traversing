@@ -266,7 +266,7 @@ def given_stamina_1108(data, player):
     target_id = request.target_ids[0]
 
     player_data = tb_character_info.getObj(target_id)
-    open_receive = player_data.get('stamina').get('open_receive')
+    open_receive = player_data.hget('stamina').get('open_receive')
 
     if not player.friends.given_stamina(target_id, if_present=open_receive):
         response.result = False
