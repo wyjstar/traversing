@@ -203,7 +203,7 @@ def change_multi_equipments_704(pro_data, player):
         change_equipment(slot_no, no, equipment_id, player)
 
     response = line_up_info(player)
-    response.result = True
+    response.res.result = True
     logger.debug("change_multi_equipments_704")
     logger.debug(response)
     return response.SerializePartialToString()

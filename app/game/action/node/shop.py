@@ -170,9 +170,10 @@ def shop_buy_505(pro_data, player):
             common_response.result_no = 501
             return response.SerializeToString()
 
+        price = shop_item.consume if not shop_item.discountPrice else shop_item.discountPrice
+
         shop_type_item = shop_type_config.get(shop_item.get('type'))
-        consume_return_data = consume(player, shop_item.consume,
-                                      shop, shop_type_item)  # 消耗
+        consume_return_data = consume(player, price, shop, shop_type_item)  # 消耗
 
         return_data = gain(player, shop_item.gain, const.COMMON_BUY)  # 获取
         get_return(player, consume_return_data, response.consume)
