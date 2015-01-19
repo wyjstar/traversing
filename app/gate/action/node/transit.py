@@ -15,6 +15,8 @@ def pull_message_remote(key, character_id, args):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id, args)
+        logger.debug(args)
+        logger.debug(oldvcharacter.node)
         child_node = groot.child(oldvcharacter.node)
         result = child_node.callbackChild(*args)
         # print 'gate found character to pull message:', oldvcharacter.__dict__, args, result
