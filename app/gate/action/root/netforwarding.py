@@ -107,7 +107,7 @@ def del_guild_room_remote(guild_id):
 def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
     logger.debug("netforwarding.push_message_remote")
-    logger.debug("%s %s %s" % (key, character_id, cPickle.loads(args)))
+    logger.debug("%s %s %s" % (key, character_id, args))
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
