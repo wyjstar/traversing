@@ -388,7 +388,7 @@ class CharacterFightCacheComponent(Component):
 
             logger.info('乱入被替换战斗单位属性: %s' % red_unit)
             hero = self.owner.hero_component.get_hero(red_unit.unit_no)
-            if hero.is_awake:
+            if red_unit.is_awake:
                 hero = self.owner.hero_component.get_hero(red_unit.origin_no)
 
             old_line_up_slot = self.line_up_slots.get(red_unit.slot_no)
