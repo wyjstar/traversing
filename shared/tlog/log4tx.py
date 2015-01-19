@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from shared.tlog import logclient
+from gfirefly.server.logobj import logger
 
 debug = 0
 LOG_FOR_SELF = 1

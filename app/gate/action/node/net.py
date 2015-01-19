@@ -19,4 +19,3 @@ def change_dynamic_id(new_id, cur_id):
 @remoteserviceHandle('world')
 def push_all_object_remote(topic_id, message):
     groot.child('net').push_all_object_remote(topic_id, message)
-

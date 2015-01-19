@@ -5,6 +5,7 @@ import socket
 from gfirefly.server.logobj import logger
 host = GlobalObject().allconfig['tlog']['host']
 port = GlobalObject().allconfig['tlog']['port']
+from gfirefly.server.logobj import logger
 
 
 class LogClient:
@@ -24,6 +25,7 @@ class LogClient:
         if msg:
             try:
                 self.sock.sendto(msg, (host, port))
+                logger.debug('t logclient,send_msg:%s', msg)
             except socket.error, arg:
                 (_, err_msg) = arg
                 logger.info(str(err_msg))

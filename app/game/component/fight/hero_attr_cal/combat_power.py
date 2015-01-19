@@ -3,8 +3,10 @@
 created by server on 14-12-29下午2:03.
 """
 from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config, stone_config
-from gfirefly.server.logobj import logger_cal
 from shared.utils import pprint
+
+LOG_NAME = ""
+LOG = False
 
 def hero_self_attr(player, hero):
     """
@@ -473,22 +475,25 @@ def combat_power_hero_self(player, hero):
     assert formula!=None, "formula can not be None"
     result = eval(formula, self_attr)
 
-    if hero.hero_no == 10045: logger_cal.debug("武将%s自身的战斗力%s" % (hero.hero_no, result))
+    log(hero.hero_no, "武将自身战力：", "", result)
     return result
 
-def combat_power_hero_lineup(player, hero, line_up_slot_no):
+def combat_power_hero_lineup(player, hero, line_up_slot_no, log_name=""):
     """
     武将在阵容中的战斗力。
     (atkArray+(physicalDefArray+magicDefArray)/2)*hpArray**0.5*
     (hitArray+dodgeArray+criArray+criCoeffArray+criDedCoeffArray+blockArray+ductilityArray)/10000
     """
+    global LOG_NAME
+    LOG_NAME = log_name
+    create_log(hero.hero_no)
     line_up_attr = hero_lineup_attr(player, hero, line_up_slot_no)
     line_up_attr["job"] = hero.hero_info.job
     log(hero.hero_no, "武将阵容", "", line_up_attr)
     formula = formula_config.get("fightValueArray").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, line_up_attr)
-    if hero.hero_no == 10045: logger_cal.debug("武将%s在阵容中的战斗力%s" % (hero.hero_no, result))
+    log(hero.hero_no, "武将阵容战力：", "", result)
     return result
 
 def log_runt(hero):
@@ -524,7 +529,18 @@ def log_cheer(player):
     return s
 
 
+def create_log(hero_no):
+    global LOG
+    if not LOG:
+        return
+    f = open(str(hero_no)+"_hero_panel_"+LOG_NAME, "w")
+    f.close()
+
 def log(hero_no, title, str_input, str_output):
-    if hero_no == 10045:
-        logger_cal.debug("%s \n 输入: %s \n 输出: %s \n\n" % (title, pprint.pformat(str_input), pprint.pformat(str_output)))
+    global LOG
+    if not LOG:
+        return
+    f = open(str(hero_no)+"_hero_panel_"+LOG_NAME, "a")
+    f.write("%s \n 输入: %s \n 输出: %s \n\n" % (title, pprint.pformat(str_input), pprint.pformat(str_output)))
+    f.close()
 

@@ -81,14 +81,14 @@ def __character_login(dynamic_id):
 
     # game服登录
     child_node = GlobalObject().child(now_node)
+    v_character.node = now_node
     res_data = child_node.enter_scene_remote(dynamic_id, user.user_id)
     if not res_data['player_data']:
         return {'result': False}
-    v_character.node = now_node
 
-    logger.debug("pull_message_remote")
-    # pull message from transit
-    GlobalObject().remote['transit'].pull_message_remote(user.user_id)
+    #logger.debug("pull_message_remote")
+    ## pull message from transit
+    #GlobalObject().remote['transit'].pull_message_remote(user.user_id)
 
     SceneSerManager().add_client(now_node, dynamic_id)
 
