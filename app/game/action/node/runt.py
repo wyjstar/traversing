@@ -202,6 +202,7 @@ def refining_runt_845(data, player):
             new_runt_no = player.runt.add_runt(get_runt_id)
             if new_runt_no:
                 runt.append(new_runt_no)
+        del player.runt.m_runt[runt_no]
 
     player.runt.stone1 += stone1
     player.runt.stone2 += stone2

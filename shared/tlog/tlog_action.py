@@ -3,6 +3,7 @@
 from shared.tlog import log4tx
 from shared.utils import xtime
 # from utils.log import log_except
+from gfirefly.server.logobj import logger
 
 game_server_id = 1
 game_app_id = 1
