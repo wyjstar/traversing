@@ -410,8 +410,8 @@ def get_award(pro_data, player):
             bag_id = conf.starGift[award_type]
 
     else:
-        if chapter_obj.award_info[-1] == -1:
-            logger.error("can`t receive")
+        if chapter_obj.award_info[-1] == -1 or chapter_obj.dragon_gift == 1:
+            logger.error("already receive or can`t receive")
             response.res.result = False
             response.res.result_no = 833
             return response.SerializePartialToString()
