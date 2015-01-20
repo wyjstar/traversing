@@ -339,8 +339,8 @@ class CharacterFightCacheComponent(Component):
         """战斗结算
         stage_type: 1剧情关卡 2副本关卡 3活动关卡
         """
-        self.owner.stage_component.settlement(self._stage_id, result)
-        self.owner.stage_component.update()
+        self.owner.stage_component.settlement(self._stage_id, result, self._drop_num)
+        self.owner.stage_component.save_data()
         drops = []
         if not result:
             return drops

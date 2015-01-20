@@ -9,11 +9,13 @@ from shared.db_opear.configs_data import game_configs
 class Stage(object):
     """关卡
     """
-    def __init__(self, stage_id, attacks=0, state=-1, reset=[0, 1]):
-        self._stage_id = stage_id  # 关卡编号
-        self._attacks = attacks  # 攻击次数
-        self._state = state  # 关卡状态 -2: 未开启 -1：开启没打过 0：输 1：赢
-        self._reset = reset  # 次数重置 【重置次数， 时间】
+    def __init__(self, stage_id, attacks=0, state=-1, reset=[0, 1], drop_num = 0):
+        self._stage_id = stage_id   # 关卡编号
+        self._attacks = attacks     # 攻击次数
+        self._state = state         # 关卡状态 -2: 未开启 -1：开启没打过 0：输 1：赢
+        self._reset = reset         # 次数重置 【重置次数， 时间】
+        self._drop_num = drop_num # 本关卡掉落包数量, 当战斗失败时设置，
+                                    # 防止玩家强退，来刷最大掉落数
 
     @property
     def stage_id(self):
@@ -44,8 +46,17 @@ class Stage(object):
         self._state = state
 
     @property
+    def drop_num(self):
+        return self._drop_num
+
+    @drop_num.setter
+    def drop_num(self, drop_num):
+        self._drop_num = drop_num
+
+    @property
     def info(self):
-        return dict(stage_id=self._stage_id, attacks=self._attacks, state=self._state, reset=self._reset)
+        return dict(stage_id=self._stage_id, attacks=self._attacks,
+                    state=self._state, reset=self._reset, drop_num=self._drop_num)
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -55,7 +66,7 @@ class Stage(object):
         info = cPickle.loads(data)
         return cls(**info)
 
-    def update(self, result):
+    def update(self, result, drop_num):
         """更新攻击次数和关卡状态
         """
         if result:  # win
@@ -63,6 +74,7 @@ class Stage(object):
             self._state = 1  # 状态赢
         else:
             self._state = 0
+            self._drop_num = drop_num
 
 
 class StageAward(object):

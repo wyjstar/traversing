@@ -22,7 +22,7 @@ def get_stage_config(stage_config, stage_type, stage_id):
 def settle(player, result, response, lively_event, conf):
     """docstring for settle"""
     # 保存关卡信息
-    player.stage_component.update()
+    player.stage_component.save_data()
 
     # 保存活跃度
     tstatus = player.tasks.check_inter(lively_event)

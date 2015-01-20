@@ -104,7 +104,7 @@ class CharacterStageComponent(Component):
 
         return [self.get_chapter(chapter_id) for chapter_id in chapter_ids]
 
-    def settlement(self, stage_id, result):
+    def settlement(self, stage_id, result, drop_num):
         """结算
         """
         stage = self.get_stage(stage_id)
@@ -112,7 +112,7 @@ class CharacterStageComponent(Component):
         if stage.state == -2:  # 未开启
             return False
 
-        stage.update(result)
+        stage.update(result, drop_num)
         if result:  # win
             if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
                 conf = game_configs.stage_config.get('stages')
@@ -156,7 +156,7 @@ class CharacterStageComponent(Component):
             num += 1
         return num
 
-    def update(self):
+    def save_data(self):
         props = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in self._stage_info.iteritems()]),
                  'award_info': dict(
                      [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),
