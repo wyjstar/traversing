@@ -185,7 +185,7 @@ def get_stage_info(stage_id, player):
     if time.localtime(player.stage_component.stage_up_time).tm_mday != time.localtime().tm_mday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
-        player.stage_component.update()
+        player.stage_component.save_data()
 
     response = []
     if stage_id:  # 根据关卡ID
@@ -246,7 +246,7 @@ def stage_sweep(stage_id, times, player):
     if time.localtime(player.stage_component.stage_up_time).tm_yday != time.localtime().tm_yday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
-        player.stage_component.update()
+        player.stage_component.save_data()
 
     if times == 1:
         if not game_configs.vip_config.get(player.base_info.vip_level).openSweep:
@@ -320,7 +320,7 @@ def stage_sweep(stage_id, times, player):
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     player.stage_component.get_stage(stage_id).attacks += times
-    player.stage_component.update()
+    player.stage_component.save_data()
 
     player.stamina.save_data()
     player.base_info.save_data()
@@ -361,7 +361,7 @@ def reset_stage_908(pro_data, player):
     stage_obj.attacks = 0
     player.finance.gold -= need_gold
 
-    player.stage_component.update()
+    player.stage_component.save_data()
     player.finance.save_data()
 
     response.res.result = True
@@ -423,7 +423,7 @@ def get_award(pro_data, player):
     return_data = gain(player, drop, const.CHAPTER_AWARD)
     get_return(player, return_data, response.drops)
 
-    player.stage_component.update()
+    player.stage_component.save_data()
 
     response.res.result = True
     logger.debug(response)

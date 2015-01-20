@@ -156,7 +156,7 @@ class CharacterStageComponent(Component):
             num += 1
         return num
 
-    def update(self):
+    def save_data(self):
         props = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in self._stage_info.iteritems()]),
                  'award_info': dict(
                      [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),

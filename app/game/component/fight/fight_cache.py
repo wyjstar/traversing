@@ -125,10 +125,19 @@ class CharacterFightCacheComponent(Component):
     def __get_drop_num(self):
         """取得关卡小怪掉落数量
         """
-        stage_config = self.__get_stage_config()
-        low = stage_config.low
-        high = stage_config.high
-        drop_num = random.randint(low, high)
+        drop_num = 0
+        # 如果上次战斗未结算，则使用上次保存的掉落数
+        stage = self.owner.stage_component.get_stage(self._stage_id)
+        if stage:
+            drop_num = stage.drop_num
+        if not drop_num:
+            stage_config = self.__get_stage_config()
+            low = stage_config.low
+            high = stage_config.high
+            drop_num = random.randint(low, high)
+            stage.drop_num = drop_num
+            self.owner.stage_component.save_data()
+
         self._drop_num = drop_num
         return drop_num
 
@@ -340,7 +349,7 @@ class CharacterFightCacheComponent(Component):
         stage_type: 1剧情关卡 2副本关卡 3活动关卡
         """
         self.owner.stage_component.settlement(self._stage_id, result)
-        self.owner.stage_component.update()
+        self.owner.stage_component.save_data()
         drops = []
         if not result:
             return drops

@@ -22,6 +22,9 @@ class CharacterHeroChipsComponent(Component):
     def save_data(self):
         props = {}
         for no, chip in self._chips.items():
+            if chip.num <= 0:
+                del self._chips[no]
+                continue
             props[no] = chip.num
 
         items_data = tb_character_info.getObj(self.owner.base_info.id)

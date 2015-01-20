@@ -1,4 +1,4 @@
-
+import "hero_chip.proto";
 //武将升级，使用道具 command:103
 message HeroUpgradeWithItemRequest
 {
@@ -13,10 +13,11 @@ message HeroBreakRequest
     required int32 hero_no = 1;
 }
 
-//武将献祭 command:105
+//武将和碎片献祭 command:105
 message HeroSacrificeRequest
 {
     repeated int32 hero_nos = 1;
+    repeated HeroChipPB hero_chips = 2;
 }
 
 //武将合成 command:106

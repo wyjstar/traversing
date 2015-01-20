@@ -165,6 +165,7 @@ def awakening_equipment_406(pro_data, player):
     gain = data.get('gain', [])
     item_group_helper.get_return(player, gain, response.cgr)
 
+    logger.debug(response)
     return response.SerializePartialToString()
 
 
