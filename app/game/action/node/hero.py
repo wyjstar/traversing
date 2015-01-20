@@ -102,12 +102,25 @@ def hero_sacrifice_105(data, player):
     """武将献祭"""
     args = hero_request_pb2.HeroSacrificeRequest()
     args.ParseFromString(data)
+    logger.debug(args)
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
     if len(heros) == 0:
         logger.error("hero %s is not exists." % str(args.hero_nos))
     response = hero_sacrifice_oper(heros, player)
     # remove hero
     player.hero_component.delete_heros_by_nos(args.hero_nos)
+
+    # hero chip
+    for hero_chip in args.hero_chips:
+        sacrifice_gain = game_configs.chip_config.get("chips").get(hero_chip.hero_chip_no).sacrificeGain
+        for i in range(hero_chip.hero_chip_num):
+            return_data = gain(player, sacrifice_gain, const.HERO_CHIP_SACRIFICE_OPER)
+            get_return(player, return_data, response.gain)
+        # remove hero_chip
+        temp = player.hero_chip_component.get_chip(hero_chip.hero_chip_no)
+        if temp:
+            temp.consume_chip(hero_chip.hero_chip_num)  # 消耗碎片
+    player.hero_chip_component.save_data()
     logger.debug(response)
     return response.SerializeToString()
 
@@ -138,6 +151,7 @@ def hero_compose_106(data, player):
         return response.SerializeToString()
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
+    player.hero_chip_component.save_data()
 
     # tlog
     log_action.hero_flow(player, hero.hero_no, 1, 1)

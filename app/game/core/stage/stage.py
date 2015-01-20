@@ -12,7 +12,7 @@ class Stage(object):
     def __init__(self, stage_id, attacks=0, state=-1, reset=[0, 1], drop_num = 0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
-        self._state = state         # 关卡状态 -2: 未开启 -1：开启没打过 0：输 1：赢
+        self._state = state         # 关卡状态 -2: 未开启 -1：已开启但没打 0：输 1：赢
         self._reset = reset         # 次数重置 【重置次数， 时间】
         self._drop_num = drop_num # 本关卡掉落包数量, 当战斗失败时设置，
                                     # 防止玩家强退，来刷最大掉落数
@@ -66,15 +66,15 @@ class Stage(object):
         info = cPickle.loads(data)
         return cls(**info)
 
-    def update(self, result, drop_num):
+    def update(self, result):
         """更新攻击次数和关卡状态
         """
+        self._drop_num = 0 # 结算时清空drop_num
         if result:  # win
             self._attacks += 1  # 攻击次数+1
             self._state = 1  # 状态赢
         else:
             self._state = 0
-            self._drop_num = drop_num
 
 
 class StageAward(object):

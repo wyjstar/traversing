@@ -2,9 +2,6 @@
 """
 created by server on 14-6-27下午8:06.
 """
-from shared.db_opear.configs_data.game_configs import chip_config
-from gfirefly.server.logobj import logger
-
 
 class HeroChip(object):
     """武将碎片"""
@@ -31,5 +28,3 @@ class HeroChip(object):
     def update_pb(self, hero_chip_pb):
         hero_chip_pb.hero_chip_no = self._chip_no
         hero_chip_pb.hero_chip_num = self._num
-
-
