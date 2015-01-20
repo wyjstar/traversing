@@ -542,7 +542,7 @@ def fast_finish_auto_839(data, player):
         response.res.result_no = 822
         return response.SerializeToString()
 
-    update_auto(player, 2)
+    update_auto(player, 2, stage_id)
 
     player.finance.save_data()
 
@@ -574,9 +574,12 @@ def deal_auto_response(response, player):
                         res_travel.time = tra[3]
 
 
-def update_auto(player, up_type):
+def update_auto(player, up_type, update_stage_id=0):
+    # 立刻完成需要stage_id
     # 1 普通 2,立刻
     for (stage_id, item) in player.travel_component.auto.items():
+        if up_type == 2 and update_stage_id != stage_id:
+            continue
         for one_auto in item:
             auto_travel_config = base_config.get('autoTravel').get(one_auto.get('continued_time'))
             timeA = int(time.time()) - one_auto.get('start_time')

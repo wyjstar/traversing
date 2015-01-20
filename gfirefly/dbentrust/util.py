@@ -214,10 +214,10 @@ def UpdateWithDict(tablename, props, prere, conn=None):
     except Exception, e:
         logger.exception(e)
         logger.error(sql)
+        cursor.close()
+        return False
     cursor.close()
-    if (count >= 1):
-        return True
-    return False
+    return True
 
 
 @get_connection

@@ -29,7 +29,7 @@ class LogClient:
             try:
                 if tlog:
                     self.sock.sendto(msg, (host, port))
-                    logger.debug('t logclient,send_msg:%s', msg)
+                    # logger.debug('t logclient,send_msg:%s', msg)
             except socket.error, arg:
                 (_, err_msg) = arg
                 logger.info(str(err_msg))

@@ -125,7 +125,7 @@ def consume(player, item_group, shop=None, luck_config=None):
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul -= num
             player.finance.save_data()
-            after_num = player.Finance.hero_soul
+            after_num = player.finance.hero_soul
 
         elif type_id == const.PVP:
             player.finance.pvp_score -= num
