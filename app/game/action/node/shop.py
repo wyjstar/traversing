@@ -47,8 +47,12 @@ def shop_oper(pro_data, player, reason):
     request = ShopRequest()
     request.ParseFromString(pro_data)
     response = ShopResponse()
+    shop_id = request.ids[0]
+    shop_item = shop_config.get(shop_id)
+    logger.debug(shop_id)
+    logger.debug("---------")
 
-    if player.shop.first_one_draw:
+    if shop_id == 10001 and player.shop.first_one_draw:
         logger.debug("first one draw")
         card_draw = base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
@@ -59,8 +63,6 @@ def shop_oper(pro_data, player, reason):
         response.res.result = True
         return response.SerializeToString()
 
-    shop_id = request.ids[0]
-    shop_item = shop_config.get(shop_id)
 
     if not is_consume(player, shop_item):
         result = is_afford(player, shop_item.consume)  # 校验

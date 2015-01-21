@@ -107,7 +107,10 @@ class Hero(object):
         temp_exp = self._exp
         temp_exp += exp
         while True:
-            current_level_exp = hero_exp_config[level].get('exp', 0)
+            level_conf = hero_exp_config.get(level)
+            if not level_conf:
+                break
+            current_level_exp = level_conf.get('exp', 0)
             if current_level_exp <= temp_exp:
                 level += 1
                 temp_exp -= current_level_exp
