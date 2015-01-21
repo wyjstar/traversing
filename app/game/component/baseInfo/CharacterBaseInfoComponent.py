@@ -68,14 +68,16 @@ class CharacterBaseInfoComponent(Component):
         character_info.hmset(data)
 
     def new_data(self):
-        data = dict(level=self.level,
+        init_level = base_config.get('initialPlayerLevel')
+        init_vip_level = base_config.get('initialVipLevel')
+        data = dict(level=init_level,
                     exp=self.exp,
                     nickname=u'',
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
-                    vip_level=self._vip_level,
+                    vip_level=init_vip_level,
                     heads=self._heads.SerializeToString())
         return data
 

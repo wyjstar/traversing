@@ -105,7 +105,7 @@ class StageAward(object):
 
     @property
     def info(self):
-        return dict(chapter_id=self._chapter_id, award_info=self._award_info)
+        return dict(chapter_id=self._chapter_id, award_info=self._award_info, dragon_gift=self._dragon_gift)
 
     def dumps(self):
         return cPickle.dumps(self.info)
