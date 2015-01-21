@@ -139,19 +139,20 @@ def find_target_units(attacker, army, enemy, skill_buff_info, main_target_units=
     target_pos = skill_buff_info.effectPos
     key, value = target_pos.items()[0]
 
+    target_side = find_side(skill_buff_info, army, enemy) # 作用方：army or enemy
     if key == 13: # 反击，作特殊处理
-        return [target]
+        return [target], target_side
 
     elif key == 12: # 没有自己的作用位置，做特殊处理
-        return main_target_units
+        return main_target_units, target_side
 
     func = target_types.get(key)
-
-    target_units = find_side(skill_buff_info, army, enemy)
-    result = func(value, attacker, target_units)
-    return result
+    result = func(value, attacker, target_side)
+    return result, target_side
 
 def find_side(skill_buff_info, army, enemy):
+    """作用方：army or enemy all units
+    """
     target_role = skill_buff_info.effectRole
     if target_role == 1: # enemy
         return enemy

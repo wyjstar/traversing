@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-from gfirefly.server.logobj import logger_cal
+from gfirefly.server.logobj import logger_cal, logger
 from execute_skill_buff import execute_demage, execute_pure_demage, execute_mp, execute_treat, check_block
 from random_with_seed import get_random_int
 
@@ -244,11 +244,15 @@ class BuffManager(object):
 class Buff(object):
     """docstring for Buff"""
 
-    def __init__(self, attacker, skill_buff_info, is_block=False):
+    def __init__(self, target_side, attacker, skill_buff_info, is_block=False):
         """
-        before_or_not: 在主技能释放前，添加的buff为True，在此回合有效
+        target_side: 目标方所有units
+        attacker: 攻击者
+        skill_buff_info: 数值数据
+        is_block: 是否出现格挡
         """
         super(Buff, self).__init__()
+        self._target_side = target_side
         self._skill_buff_info = skill_buff_info
         self._attacker = attacker
         self._continue_num = skill_buff_info.get("continue")
@@ -270,6 +274,7 @@ class Buff(object):
         return ("Buff_ID(%d), 持续回合(%d)" % (self._skill_buff_info.id, self._continue_num))
 
     def perform_buff(self, owner):
+        if not self._target_side: return
         effect_id = self._skill_buff_info.effectId
         if effect_id in [1, 2, 3, 8, 9, 26]:
             logger_cal.debug("执行buff %s" % self._skill_buff_info.id)
@@ -290,4 +295,10 @@ class Buff(object):
         elif effect_id in [26]:
             execute_treat(self._attacker, owner, self._skill_buff_info)
 
+        if owner.hp<=0:
+            logger.debug(owner.hp)
+            #logger.debug(self._target_side)
+            #logger.debug(owner.slot_no)
+            del self._target_side[owner.slot_no]
+            logger_cal.debug("%s死了。" % owner.unit_no)
 
