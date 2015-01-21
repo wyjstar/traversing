@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from battle_buff import Buff
 from execute_skill_buff import check_hit, check_block
-from find_target_units import find_side, find_target_units
+from find_target_units import find_target_units
 from gfirefly.server.logobj import logger_cal
 import copy
 
@@ -42,8 +42,8 @@ class BattleRound(object):
         logger_cal.debug("    进入战场，添加的buff...")
         for temp in self._red_units.values():
             for skill_buff_info in temp.skill.begin_skill_buffs():
-                target_units = find_target_units(temp, self._red_units, self._blue_units, skill_buff_info)
-                self.handle_skill_buff(temp, self._red_units, self._blue_units, skill_buff_info, target_units)
+                target_units, target_side = find_target_units(temp, self._red_units, self._blue_units, skill_buff_info)
+                self.handle_skill_buff(temp, target_side, target_units, skill_buff_info)
                 if DEBUG:
                     target_nos = []
                     for temp in target_units:
@@ -52,8 +52,8 @@ class BattleRound(object):
 
         for temp in self._blue_units.values():
             for skill_buff_info in temp.skill.begin_skill_buffs():
-                target_units = find_target_units(temp, self._blue_units, self._red_units, skill_buff_info)
-                self.handle_skill_buff(temp, self._blue_units, self._red_units, skill_buff_info, target_units)
+                target_units, target_side = find_target_units(temp, self._blue_units, self._red_units, skill_buff_info)
+                self.handle_skill_buff(temp, target_side, target_units, skill_buff_info)
                 if DEBUG:
                     target_nos = []
                     for temp in target_units:
@@ -151,15 +151,9 @@ class BattleRound(object):
             units.pop(k)
 
     def perform_buff(self, units):
-        units_dead = []
         for k, temp in units.items():
             logger_cal.debug("武将: %s" % temp.unit_no)
             temp.buff_manager.perform_buff()
-            if temp.hp<=0:
-                units_dead.append(k)
-        for k in units_dead:
-            logger_cal.debug("%s死了。" % units[k].unit_no)
-            del units[k]
 
 
     def handle_mock_special_skill(self, best_skill):
@@ -180,7 +174,7 @@ class BattleRound(object):
             logger_cal.debug("    攻击者在buff中，无法攻击！")
             return
 
-        main_target_units = find_target_units(attacker, army, enemy, skill.main_skill_buff)  # 主技能作用目标
+        main_target_units, main_target_side = find_target_units(attacker, army, enemy, skill.main_skill_buff)  # 主技能作用目标
 
         # 1.计算命中, 格挡
         # 规则：主技能作用多个目标，只要有一个命中的，则判定命中
@@ -198,8 +192,8 @@ class BattleRound(object):
         # 2.主技能释放前，触发的buff
         logger_cal.debug("    1. 攻击前, 添加的buff")
         for skill_buff_info in skill.before_skill_buffs(is_main_hit):
-            target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units)
+            target_units, target_side = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
+            self.handle_skill_buff(attacker, target_side, target_units, skill_buff_info)
 
         # 3.触发攻击技能
         logger_cal.debug("    2. 攻击...")
@@ -208,29 +202,29 @@ class BattleRound(object):
                 # 当攻击主技能没有命中，则退出
                 break
             if skill_buff_info.skill_key:
-                self.handle_skill_buff(attacker, army, enemy, skill_buff_info, main_target_units)
+                self.handle_skill_buff(attacker, main_target_side, main_target_units, skill_buff_info)
                 continue
-            target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units)
+            target_units, target_side = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
+            self.handle_skill_buff(attacker, target_side, target_units, skill_buff_info)
 
 
         # 4.主技能释放后，触发的buff
         logger_cal.debug("    3. 攻击后的buff...")
         for skill_buff_info in skill.after_skill_buffs(is_main_hit):
-            target_units = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
-            self.handle_skill_buff(attacker, army, enemy, skill_buff_info, target_units)
+            target_units, target_side = find_target_units(attacker, army, enemy, skill_buff_info, main_target_units)
+            self.handle_skill_buff(attacker, target_side, target_units, skill_buff_info)
         # 在攻击技能触发完成后，处理mp
         skill.set_mp(is_mp_skill)
 
         # 5. 反击
         for backer, is_block in main_target_unit_infos:
             for skill_buff_info in backer.skill.back_skill_buffs(is_main_hit, is_block):
-                target_units = find_target_units(backer, army, enemy, skill_buff_info, None, attacker)
+                target_units, target_side = find_target_units(backer, army, enemy, skill_buff_info, main_target_units=None, target=attacker)
                 target_nos = []
                 for temp in target_units:
                     target_nos.append(temp.slot_no)
                 logger_cal.debug("    反击目标: %s" % (target_nos))
-                buff = Buff(attacker, skill_buff_info, is_block)
+                buff = Buff(target_side, attacker, skill_buff_info, is_block)
                 target_unit.buff_manager.add(buff)
 
     def perform_best_skill(self, army, enemy, skill):
@@ -238,7 +232,7 @@ class BattleRound(object):
         if not skill.is_full():
             return
         for skill_buff_info in skill.skill_buffs:
-            target_units = find_target_units(None, army, enemy, skill_buff_info, None)
+            target_units, target_side = find_target_units(None, army, enemy, skill_buff_info, None)
             demage_hp = skill.player_level * skill_buff_info.levelEffectValue
             for target_unit in target_units:
                 target_unit.hp -= demage_hp
@@ -253,32 +247,20 @@ class BattleRound(object):
         self.perform_one_skill(army, enemy, skill)
         skill.reset_mp()
 
-    def handle_skill_buff(self, attacker, army, enemy, skill_buff_info, target_units):
+    def handle_skill_buff(self, attacker, target_side, target_units, skill_buff_info):
         """
         根据作用位置找到攻击目标，然后执行技能或者添加buff
         """
         logger_cal.debug("-" * 80)
-        target_units_dead = []
         for target_unit in target_units:
-            buff = Buff(attacker, skill_buff_info)
+            buff = Buff(target_side, attacker, skill_buff_info)
             target_unit.buff_manager.add(buff)
 
-            if target_unit.hp <= 0:  # 如果血量为0，则去掉该unit
-                target_units_dead.append(target_unit)
-
         logger_cal.debug("    技能或buffID：%s, 受击后的状态：" % (skill_buff_info.id))
-
-        target_side = find_side(skill_buff_info, army, enemy)
-        for temp in target_units_dead:
-            if target_unit.slot_no in target_side:
-                del target_side[target_unit.slot_no]
-            target_units.remove(temp)
-            logger_cal.debug("%s死了。" % temp.unit_no)
 
         for temp in target_units:
             if temp.hp > 0:
                 logger_cal.debug("    %s" % temp)
-
 
         logger_cal.debug("-" * 80)
 
