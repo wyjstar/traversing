@@ -162,7 +162,7 @@ class RedisObject(object):
     def zadd(self, label, k, v):
         produce_key = self.produceKey(label)
         client = redis_manager.get_connection(produce_key)
-        return client.zadd(produce_key, k, v) == 1
+        return client.zadd(produce_key, v, k) == 1
 
     def zget(self, label, k):
         score = 0
@@ -203,7 +203,7 @@ class RedisObject(object):
 
     def znear(self, label, k, front, back):
         produce_key = self.produceKey(label)
-        print 'znear1', label, k, type(label), type(k)
+        print 'znear1', label, k, type(label), type(k), front, back
         client = redis_manager.get_connection(produce_key)
         index = client.zrevrank(produce_key, k)
         print 'znear3', index
@@ -218,6 +218,34 @@ class RedisObject(object):
         client = redis_manager.get_connection(produce_key)
         _range = client.zrevrange(produce_key, _min, _max)
         return _range
+    
+    def mysadd(self, label, uid):
+        client = redis_manager.get_connection(self._name)
+        client.sadd(label, uid)
+        
+    def smembers(self, label):
+        client = redis_manager.get_connection(self._name)
+        return client.smembers(label)
+    
+    def mysmove(self, member, src, dst):
+        client = redis_manager.get_connection(self._name)
+        client.smove(src, dst, member)
+        
+    def myhset(self, label, k, v):
+        client = redis_manager.get_connection(self._name)
+        client.hset(label, k, v)
+        
+    def myhkeys(self, label):
+        client = redis_manager.get_connection(self._name)
+        return client.hkeys(label)
+    
+    def myhget(self, label, k):
+        client = redis_manager.get_connection(self._name)
+        return client.hget(label, k)
+    
+    def myhdel(self, label, *k):
+        client = redis_manager.get_connection(self._name)
+        return client.hdel(label, k)
 
     def zremrangebyrank(self, label, m, n):
         produce_key = self.produceKey(label)

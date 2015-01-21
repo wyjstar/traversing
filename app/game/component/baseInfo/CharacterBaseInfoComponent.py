@@ -41,6 +41,7 @@ class CharacterBaseInfoComponent(Component):
         self._id = character_info['id']
         self._base_name = character_info['nickname']
         self._level = character_info['level']
+        MineOpt.asadd('user_level', self.owner.base_info.id, self._level)
         self._exp = character_info['exp']
 
         self._newbee_guide_id = character_info['newbee_guide_id']
@@ -92,11 +93,10 @@ class CharacterBaseInfoComponent(Component):
 
     def addexp(self, exp):
         self._exp += exp
-
         while self._exp >= player_exp_config.get(self._level).get('exp'):
             self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
-            MineOpt.update('user_level', self.owner.base_info.id, self._level)
+            MineOpt.updata_level('user_level', self.owner.base_info.id, self._level-1, self._level)
 
     @property
     def id(self):

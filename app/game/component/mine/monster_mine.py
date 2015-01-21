@@ -18,33 +18,29 @@ class MineOpt(object):
     def add_mine(cls, uid, mid, data):
         v = cPickle.dumps(data)
         label = 'mine.%s' % uid
-
-        _rank = cls.rank.getObj(label)
-        _rank.hset(mid, 1)
+        print 'add_mine', label, mid 
+        _rank = cls.rank.myhset(label, mid, 1)
+        print cls.rank.myhkeys(label)
         label = 'mine'
-        print 'add_mine------', label, mid, data
-        _rank = cls.rank.getObj(label)
-        _rank.hset(mid, v)
+        _rank = cls.rank.myhset(label, mid, v)
 
     @classmethod
     def rem_mine(cls, mid):
         label = 'mine'
-        _rank = cls.rank.getObj(label)
-        _rank.hdel(mid)
+        _rank = cls.rank.myhdel(label, mid)
 
     @classmethod
     def get_mine(cls, mid):
         label = 'mine'
-        _rank = cls.rank.getObj(label)
-        ret = _rank.hget(mid)
+        ret = cls.rank.myhget(label, mid)
         print 'get_mine------', label, mid, cPickle.loads(ret)
         return cPickle.loads(ret)
 
     @classmethod
     def get_user_mines(cls, uid):
         label = 'mine.%s' % uid
-        _rank = cls.rank.getObj(label)
-        mids = _rank.hkeys()
+        print 'get_user_mines', label
+        mids = cls.rank.myhkeys(label)
         return mids
 
     @classmethod
@@ -61,26 +57,70 @@ class MineOpt(object):
     @classmethod
     def update(cls, label, k, v):
         """
-        label : "user_level","sword",玩家等级，团队战力
+        label : "sword",玩家等级，团队战力
         """
         old_score = cls.rank.zget(label, k)
         if old_score:
             if old_score >= v:
                 return
+        print 'update', label, k, v
         cls.rank.zadd(label, k, v)
-
+        
     @classmethod
-    def rand_user(cls, label, k, front, back):
+    def updata_level(cls, label, uid, s, t):
         """
-        label : "user_level","sword",玩家等级，团队战力
+        label = 'user_level'
         """
-        ret = cls.rank.znear(label, k, front, back)
-        return ret
+        src = '%s.%s' %(label, s)
+        dst = '%s.%s' %(label, t)
+        print 'updata_level', src, dst
+        try:
+            cls.rank.mysmove(src, dst, uid)
+        except Exception, e:
+            print 'update_level, error', e
+            
+    @classmethod
+    def asadd(cls, label, uid, grade):
+        key = '%s.%s' %(label, grade)
+        print 'asadd', key
+        cls.rank.mysadd(key, uid)
+    
+    @classmethod
+    def rand_level(cls, label, front, back):
+        """
+        """
+        users = []
+        for level in range(front, back):
+            mem = '%s.%s' %(label, level)
+            print 'rand_level', mem
+            try:
+                ret = cls.rank.smembers(mem)
+                print 'rand_level', ret
+                if ret:
+                    ret_list = list(ret)
+                    print ret_list
+                    users.extend(ret_list)
+            except Exception, e:
+                print 'rank_level', e
+        return users
+                
+#     @classmethod
+#     def rand_user(cls, label, k, front, back):
+#         """
+#         label : sword",玩家等级，团队战力
+#         """
+#         ret = cls.rank.znear(label, k, front, back)
+#         return ret
 
     @classmethod
     def get_user(cls, label, k):
         """
         label : "user_level","sword",玩家等级，团队战力
         """
-        ret = cls.rank.zget(label, k)
+        try:
+            ret = cls.rank.zget(label, k)
+        except Exception, e:
+            print e
+            return 1
         return ret
+
