@@ -268,7 +268,6 @@ class UserAchievement(Component):
         self._update = False
 
     def init_data(self, character_info):
-        return
         tasks = character_info.get('tasks')
         all_tasks = tasks.get('1')
         if all_tasks:
@@ -338,7 +337,7 @@ class UserAchievement(Component):
         for task_id in self._tasks:
             task = achievement_config.get(task_id)
             if task and task.sort == TaskType.LIVELY:
-                if self._tasks[task_id]._status == TaskStatus.COMPLETE:
+                if self._tasks[task_id]._status == TaskStatus.COMPLETE or self._tasks[task_id]._status == TaskStatus.FINISHED:
                     self._lively += random.randint(task.reward['17'][0], task.reward['17'][1])
                     self._tasks[task_id]._status = TaskStatus.FINISHED
                     self._update = True
