@@ -295,10 +295,11 @@ class Buff(object):
         elif effect_id in [26]:
             execute_treat(self._attacker, owner, self._skill_buff_info)
 
-        if owner.hp<=0:
+        if owner.hp<=0 and owner.slot_no in self._target_side:
             logger.debug(owner.hp)
-            #logger.debug(self._target_side)
-            #logger.debug(owner.slot_no)
+            logger.debug(self._target_side)
+            logger.debug(owner.slot_no)
+
             del self._target_side[owner.slot_no]
             logger_cal.debug("%s死了。" % owner.unit_no)
 
