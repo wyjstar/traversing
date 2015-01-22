@@ -337,8 +337,7 @@ class UserAchievement(Component):
         for task_id in self._tasks:
             task = achievement_config.get(task_id)
             if task and task.sort == TaskType.LIVELY:
-                if self._tasks[task_id]._status == TaskStatus.COMPLETE:
-                    print task.reward
+                if self._tasks[task_id]._status == TaskStatus.COMPLETE or self._tasks[task_id]._status == TaskStatus.FINISHED:
                     self._lively += random.randint(task.reward['17'][0], task.reward['17'][1])
                     self._tasks[task_id]._status = TaskStatus.FINISHED
                     self._update = True
@@ -374,7 +373,6 @@ class UserAchievement(Component):
         """
         self._refresh()
         ret_status = []
-        print 'len', len(self._tasks)
         for tid in self._tasks:
             task_status = self._tasks[tid].status()
 #             if task_status:

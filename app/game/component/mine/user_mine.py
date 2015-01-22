@@ -104,7 +104,8 @@ class Mine(object):
         自己的已枯竭的矿
         非自己的矿
         """
-        if self._type in [3,4,5] or (self._status == 3 and self._type == 2 and self._tid == uid)  or self._tid != uid:
+        print 'can_reset', self._status, self._type, self._tid, uid
+        if self._type in [3,4,5] or (self._status == 3 and self._type == 1 and self._tid == uid)  or self._tid != uid:
             return True
         return False
 
@@ -304,6 +305,7 @@ class PlayerField(Mine):
         return info
 
     def update_info(self, info):
+        print type(info)
         print 'update_info', info['seq']
         self._seq = info.get('seq', -1)
         self._tid = info.get('uid', -1)
@@ -334,7 +336,7 @@ class PlayerField(Mine):
         print 'seq', self._seq
 
     @classmethod
-    def create(cls, uid, nickname, level, lively, sword):
+    def create(cls, uid, nickname, level, lively):
 
 #         match_mine = MineOpt.get_mine("hello1.1418728113.23")
 #         mine = cls()
@@ -342,46 +344,58 @@ class PlayerField(Mine):
 #         print 'match_mine', match_mine['seq']
 #         mine.update_info(match_mine)
 #         return mine
-        print lively, level, "lively, level*"*80
+        print lively, level, "lively, level*"*5
+        lively = 1
         item = None
         for v in mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
                 item = v
         rule_id = random_pick(item.proRule, sum(item.proRule.values()))
         rule = item.Rule[rule_id]
+        print 'rule_id', rule_id, rule, item.id
         if len(rule) < 8:
             return MonsterField.create(uid, nickname)
         else:
             isplayer, _, lowlevel, highlevel, minus, add, lowswordrate, highswordrate = rule
+            print isplayer,  lowlevel, highlevel, minus, add, lowswordrate, highswordrate
             if isplayer == 0:
                 return MonsterField.create(uid, nickname)
             else:
-                front = level - minus if level - minus >= lowlevel else lowlevel
+                front = level + minus if level + minus >= lowlevel else lowlevel
                 back = level + add if level + add <= highlevel else highlevel
-                uids = MineOpt.rand_user("user_level", uid, front, back) #取玩家等级附近的玩家
+                print 'aaaaa', uid, front, back
+                uids = MineOpt.rand_level("user_level", front, back+1) #取玩家等级附近的玩家
                 match_users = []
+                self_sword = MineOpt.get_user("sword", uid)
                 for one_user in uids: #取战力匹配的玩家
+                    one_user = int(one_user)
+                    print one_user
+                    if one_user == uid:
+                        continue
                     user_sword = MineOpt.get_user("sword", one_user)
-                    if user_sword < sword * lowswordrate or user_sword > highswordrate * sword:
+                    if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
                         continue
                     match_users.append(one_user)
                 if not match_users:#没有匹配的玩家生成野怪矿
                     return  MonsterField.create(uid, nickname)
                 match_mine = None
                 for one_user in match_users:#随机玩家占领的野怪矿
+                    print 'one_user', one_user
                     mids = MineOpt.get_user_mines(one_user)
+                    print 'mids', mids
                     if mids:
                         mid = random.sample(mids,1)
                         if not mid:
                             continue
                         match_mine = MineOpt.get_mine(mid[0])
+                        print 'match_mine', match_mine
                         if not match_mine:
                             continue
                 if not match_mine:#没有随到玩家占领的野怪矿，生成野怪矿
                     return MonsterField.create(uid, nickname)
                 else:
                     mine = cls()
-                    mine.update_info(mine)
+                    mine.update_info(match_mine)
                     return mine
 
     def start_battle(self):
@@ -554,7 +568,8 @@ class MonsterField(Mine):
         player_field._tid = uid
         player_field._nickname = nickname
         data = player_field.save_info()
-        MineOpt.add_mine(self._tid, self._seq, data)
+        print 'settle-------', data
+        MineOpt.add_mine(player_field._tid, player_field._seq, data)
         print 'settle', player_field.__dict__
         src_id = 0
         return player_field, src_id
@@ -807,10 +822,11 @@ class UserMine(Component):
             return self._mine[position]
         odds = base_config['warFogStrongpointOdds']
         odds1 = base_config['warFogStrongpointOdds2']
-        lively = False
+        lively = 0
+        print 'search_mine', lively
         if self._lively >= 1:
             stype = random_pick(odds, sum(odds.values()))
-            lively = True
+            lively = 1
         else:
             stype = random_pick(odds1, sum(odds.values()))
         if stype == MineType.COPY:
@@ -818,7 +834,6 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
 
-#         stype = MineType.COPY
         print 'stype', stype
 
         if stype == MineType.COPY:
@@ -831,9 +846,9 @@ class UserMine(Component):
                 print '123456'
             if not result:
                 stype = MineType.MONSTER_FIELD
+
         if stype == MineType.PLAYER_FIELD:
-            sword = 0
-            mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.base_info.level, lively, sword)
+            mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.base_info.level, lively)
         if stype == MineType.MONSTER_FIELD:
             mine = MonsterField.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.CHEST:
