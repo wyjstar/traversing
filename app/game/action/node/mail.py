@@ -72,8 +72,9 @@ def send_mail_1304(proto_data, player):
     mail.send_time = int(time.time())
     receive_id = mail.receive_id
     # command:id 为收邮件的命令ID
+    mail_data = mail.SerializePartialToString()
     response.result = netforwarding.push_message('receive_mail_remote',
-                                                 receive_id, mail)
+                                                 receive_id, mail_data)
     logger.debug('send_mail_1304 %s', response.result)
     return response.SerializePartialToString()
 

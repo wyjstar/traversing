@@ -11,6 +11,7 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data.game_configs import mail_config
+from app.proto_file.db_pb2 import Mail_PB
 
 
 class FriendComponent(Component):
@@ -146,7 +147,7 @@ class FriendComponent(Component):
             return 0
         given_times = len(given_time_list)
         return max(1 - given_times, 0)
-    
+
     def given_stamina(self, target_id, if_present=True):
         if target_id not in self._friends.keys():
             return False
@@ -155,25 +156,27 @@ class FriendComponent(Component):
         given_times = len(given_time_list)
         if given_times >= 1:
             return False
-        
+
         given_time_list.append(datetime.datetime.now())
         if not if_present:
             return True
-        
+
         stamina_mail = mail_config.get(1)
         if stamina_mail:
-            mail = dict(sender_id=self.owner.base_info.id,
-                        sender_name=self.owner.base_info.base_name,
-                        sender_icon=self.owner.line_up_component.lead_hero_no,
-                        receive_id=target_id,
-                        title=stamina_mail.get('title'),
-                        content=stamina_mail.get('content'),
-                        mail_type=stamina_mail.get('type'),
-                        send_time=int(time.time()),
-                        prize=stamina_mail.get('rewards'))
+            mail = Mail_PB()
+            mail.sender_id = self.owner.base_info.id
+            mail.sender_name = self.owner.base_info.base_name
+            mail.sender_icon = self.owner.line_up_component.lead_hero_no
+            mail.receive_id = target_id
+            mail.title = stamina_mail.get('title')
+            mail.content = stamina_mail.get('content')
+            mail.mail_type = stamina_mail.get('type')
+            mail.send_time = int(time.time())
+            mail.prize = stamina_mail.get('rewards')
 
             # command:id 为收邮件的命令ID
-            if netforwarding.push_message('receive_mail_remote', target_id, mail):
+            mail_data = mail.SerializePartialToString()
+            if netforwarding.push_message('receive_mail_remote', target_id, mail_data):
                 return True
             else:
                 logger.error('stamina mail push message fail')
