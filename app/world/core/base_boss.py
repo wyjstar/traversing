@@ -113,21 +113,6 @@ class BaseBoss(object):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        # 初始化幸运武将
-        lucky_hero_1_num = base_config_info.get("lucky_hero_1_num")
-        lucky_hero_2_num = base_config_info.get("lucky_hero_2_num")
-        lucky_hero_3_num = base_config_info.get("lucky_hero_3_num")
-        all_high_heros, all_middle_heros, all_low_heros = self.get_hero_category()
-        self._lucky_high_heros = random.sample(all_high_heros, lucky_hero_1_num)
-
-        for k in self._lucky_high_heros:  # 去重
-            all_middle_heros.remove(k)
-        self._lucky_middle_heros = random.sample(all_middle_heros, lucky_hero_2_num)
-
-        for k in self._lucky_middle_heros:  # 去重
-            all_low_heros.remove(k)
-        self._lucky_low_heros = random.sample(all_low_heros, lucky_hero_3_num)
-
         # 初始化奇遇
         debuff_skill = base_config_info.get("debuff_skill")
         self._debuff_skill_no = random_pick_with_percent(debuff_skill)

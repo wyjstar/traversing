@@ -23,26 +23,24 @@ class BuffManager(object):
         effect_id = buff.skill_buff_info.effectId
         if effect_id not in self._buffs:
             self._buffs[effect_id] = []
-            buff.perform_buff(self._owner) # perform buff
-            if buff.continue_num > 0:
-                self._buffs[effect_id].append(buff)
 
-
-        elif buff.skill_buff_info.overlay:
-            buff.perform_buff(self._owner) # perform buff
-            if buff.continue_num > 0:
-                self._buffs[effect_id].append(buff)
+        if buff.skill_buff_info.overlay:
+            self._add_buff(buff, effect_id)
         elif not buff.skill_buff_info.overlay:
             if self._buffs[effect_id]:
                 temp = self._buffs[effect_id][0]
                 if temp.skill_buff_info.replace <= buff.skill_buff_info.replace:
-                    buff.perform_buff(self._owner) # perform buff
-                    if buff.continue_num > 0:
-                        self._buffs[effect_id] = [buff]
+                    self._add_buff(buff, effect_id, True)
             else:
-                buff.perform_buff(self._owner) # perform buff
-                if buff.continue_num > 0:
-                    self._buffs[effect_id].append(buff)
+                self._add_buff(buff, effect_id)
+
+    def _add_buff(self, buff, effect_id, replace=False):
+        buff.perform_buff(self._owner) # perform buff
+        if buff.continue_num > 0:
+            if replace:
+                self._buffs[effect_id] = [buff]
+            else:
+                self._buffs[effect_id].append(buff)
 
     def perform_buff(self):
         """

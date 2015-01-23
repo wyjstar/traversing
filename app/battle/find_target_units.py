@@ -9,7 +9,7 @@ import random
 def single_attack(value, attacker, target_units):
     attack_orders = {1:[1,2,3,4,5,6],
             2: [2,3,1,5,6,4],
-            3: [3,1,2,6,5,6],
+            3: [3,1,2,6,5,4],
             4: [1,2,3,4,5,6],
             5: [2,3,1,5,6,4],
             6: [3,1,2,6,4,5]}
@@ -61,7 +61,7 @@ def vertical_attack(value, attacker, target_units):
     order = attack_orders.get(attacker.slot_no)
     target_keys = target_units.keys()
     for i, j in order:
-        if i in order:
+        if i in target_keys:
             vertical_units.append(target_units.get(i))
         if j in target_keys:
             vertical_units.append(target_units.get(j))

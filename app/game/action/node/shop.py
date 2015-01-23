@@ -52,7 +52,7 @@ def shop_oper(pro_data, player, reason):
     logger.debug(shop_id)
     logger.debug("---------")
 
-    if shop_id == 10001 and player.shop.first_one_draw:
+    if shop_id == 50001 and player.shop.first_one_draw:
         logger.debug("first one draw")
         card_draw = base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
