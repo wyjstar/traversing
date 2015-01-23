@@ -88,7 +88,7 @@ def receive_mail_remote(mail_data, is_online, player):
 
     if is_online:
         response = ReceiveMailResponse()
-        # mail.update(response.mail)
+        response.mail.CopyFrom(mail)
         remote_gate.push_object_remote(1305,
                                        response.SerializePartialToString(),
                                        [player.dynamic_id])
@@ -165,6 +165,7 @@ def get_prize(player, mail_ids, response):
     for mail_id in mail_ids:
         mail = player.mail_component.get_mail(mail_id)
 
-        prize = data_helper.parse(mail.prize)
+        prize = data_helper.parse(eval(mail.prize))
+        print prize
         return_data = gain(player, prize, const.MAIL)
         get_return(player, return_data, response.gain)
