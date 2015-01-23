@@ -5,8 +5,9 @@ created by server on 14-8-14下午3:48.
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
+from gfirefly.server.logobj import logger
+from app.proto_file.db_pb2 import Mail_PB
 from shared.utils.pyuuid import get_uuid
-from app.game.core.mail import Mail
 
 
 class CharacterMailComponent(Component):
@@ -24,46 +25,41 @@ class CharacterMailComponent(Component):
         char_obj = tb_character_info.getObj(pid).getObj('mails')
         mails = char_obj.hgetall()
         for mid, mail_data in mails.items():
-            mail = Mail()
-            mail.init_data(mail_data)
+            mail = Mail_PB()
+            mail.ParseFromString(mail_data)
             self._mails[mail.mail_id] = mail
 
     def new_data(self):
         return {}
 
-    def new_mail_data(self, mail):
+    def save_data(self):
+        return
+
+    def _new_mail_data(self, mail):
         character_id = self.owner.base_info.id
-        mail_property = mail.mail_proerty_dict()
 
         char_obj = tb_character_info.getObj(character_id).getObj('mails')
-        result = char_obj.hsetnx(mail.mail_id, mail_property)
+        result = char_obj.hsetnx(mail.mail_id, mail.SerializePartialToString())
         if not result:
             logger.error('add mail error!:%s', mail.mail_id)
 
     def add_exist_mail(self, mail):
         self._mails[mail.mail_id] = mail
-        self.new_mail_data(mail)
+        self._new_mail_data(mail)
         self.save_data()
 
-    def add_mail(self, sender_id, sender_name, title, content, mail_type,
-                 send_time, prize, sender_icon=0):
+    def add_mail(self, mail):
         """添加邮件"""
-        if mail_type == 1:  # 领取体力邮件不能超过15个
+        if mail.mail_type == 1:  # 领取体力邮件不能超过15个
             mails = self.get_mails_by_type(1)
             if len(mails) >= base_config['times_save_vigor']:
                 return
 
-        mail_id = get_uuid()
-        character_id = self.owner.base_info.id
+        mail.mail_id = get_uuid()
+        mail.character_id = self.owner.base_info.id
 
-        mail = Mail(mail_id=mail_id, character_id=character_id,
-                    sender_id=sender_id, sender_name=sender_name,
-                    sender_icon=sender_icon, title=title, content=content,
-                    mail_type=mail_type, send_time=send_time, prize=prize)
-        self._mails[mail_id] = mail
-        self.new_mail_data(mail)
-        self.save_data()
-        return mail
+        self._mails[mail.mail_id] = mail
+        self._new_mail_data(mail)
 
     def get_mails(self):
         """获取角色邮件列表
@@ -75,7 +71,6 @@ class CharacterMailComponent(Component):
         return [mail for mail in self._mails.values() if mail.mail_type == mail_type]
 
     def get_mail(self, mail_id):
-        """根据ID获取邮件"""
         return self._mails.get(mail_id)
 
     def delete_mail(self, mail_id):
@@ -84,19 +79,8 @@ class CharacterMailComponent(Component):
         mail = self._mails[mail_id]
         mail.delete()
         del self._mails[mail_id]
-        # self.save_data()
-        # tb_character_mails.deleteMode(mail_id)
 
     def delete_mails(self, mail_ids):
         """批量删除"""
         for mail_id in mail_ids:
             self.delete_mail(mail_id)
-
-    def save_data(self):
-        pass
-        # mail_ids = []
-        # character_id = self.owner.base_info.id
-        # for mail_id in self._mails.keys():
-        #     mail_ids.append(mail_id)
-        # character_mails = tb_character_mails.getObj(character_id)
-        # character_mails.update('mail_ids', mail_ids)
