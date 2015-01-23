@@ -56,7 +56,7 @@ class CharacterMailComponent(Component):
                 return
 
         mail.mail_id = get_uuid()
-        mail.character_id = self.owner.base_info.id
+        mail.receive_id = self.owner.base_info.id
 
         self._mails[mail.mail_id] = mail
         self._new_mail_data(mail)

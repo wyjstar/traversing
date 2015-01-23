@@ -18,4 +18,5 @@ message Mail_PB
     optional int32 send_time = 10; //发件时间
     optional bool is_readed = 11; //是否已读
     optional string prize = 12; //奖品
+    optional string read_time = 13;
 }

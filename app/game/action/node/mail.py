@@ -33,7 +33,7 @@ def get_all_mail_info_1301(proto_data, player):
             expire_ids.append(mail.mail_id)
             continue
         mail_pb = response.mails.add()
-        mail.update(mail_pb)
+        mail_pb.CopyFrom(mail)
     response.target = base_config['times_get_vigor_from_friend']
     response.current = player.stamina.get_stamina_times
     # 删除过期公告
@@ -84,11 +84,11 @@ def receive_mail_remote(mail_data, is_online, player):
     """接收邮件"""
     mail = Mail_PB()
     mail.ParseFromString(mail_data)
-    mail = player.mail_component.add_mail(mail)
+    player.mail_component.add_mail(mail)
 
     if is_online:
         response = ReceiveMailResponse()
-        mail.update(response.mail)
+        # mail.update(response.mail)
         remote_gate.push_object_remote(1305,
                                        response.SerializePartialToString(),
                                        [player.dynamic_id])

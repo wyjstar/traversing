@@ -172,7 +172,7 @@ class FriendComponent(Component):
             mail.content = stamina_mail.get('content')
             mail.mail_type = stamina_mail.get('type')
             mail.send_time = int(time.time())
-            mail.prize = stamina_mail.get('rewards')
+            mail.prize = str(stamina_mail.get('rewards'))
 
             # command:id 为收邮件的命令ID
             mail_data = mail.SerializePartialToString()
