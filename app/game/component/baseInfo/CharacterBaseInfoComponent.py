@@ -69,7 +69,7 @@ class CharacterBaseInfoComponent(Component):
         character_info.hmset(data)
 
     def new_data(self):
-        init_level = base_config.get('initialPlayerLevel')
+        init_level = 1 #base_config.get('initialPlayerLevel')
         init_vip_level = base_config.get('initialVipLevel')
         data = dict(level=init_level,
                     exp=self.exp,
@@ -93,10 +93,13 @@ class CharacterBaseInfoComponent(Component):
 
     def addexp(self, exp):
         self._exp += exp
+
         while self._exp >= player_exp_config.get(self._level).get('exp'):
             self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
             MineOpt.updata_level('user_level', self.owner.base_info.id, self._level-1, self._level)
+            if not player_exp_config.get(self._level):
+                return
 
     @property
     def id(self):
