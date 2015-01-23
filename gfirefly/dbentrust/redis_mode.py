@@ -159,10 +159,10 @@ class RedisObject(object):
         score = client.zscore(produce_key, key)
         return score
 
-    def zadd(self, label, k, v):
+    def zadd(self, label, score, message):
         produce_key = self.produceKey(label)
         client = redis_manager.get_connection(produce_key)
-        return client.zadd(produce_key, v, k) == 1
+        return client.zadd(produce_key, score, message) == 1
 
     def zget(self, label, k):
         score = 0

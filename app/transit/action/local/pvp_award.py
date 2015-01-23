@@ -5,8 +5,9 @@ created by sphinx on
 
 from gtwisted.core import reactor
 from gfirefly.dbentrust import util
-from app.transit.root.messagecache import message_cache
+from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
+from app.transit.root.messagecache import message_cache
 
 
 groot = GlobalObject().root
@@ -18,7 +19,15 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 
 def pvp_award_tick():
     reactor.callLater(tick_peroid, pvp_award_tick)
+    try:
+        pvp_award()
+    except Exception, e:
+        logger.exception(e)
+    except:
+        logger.error(traceback.format_exc())
 
+
+def pvp_award():
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'character_id>1000', ['character_id'])
 
     for k in records:
