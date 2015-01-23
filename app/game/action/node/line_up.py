@@ -264,7 +264,7 @@ def change_equipment(slot_no, no, equipment_id, player):
 
     # 检验装备是否存在
     if equipment_id != '0' and not check_have_equipment(player, equipment_id):
-        logger.debug("1check_have_equipment %d", equipment_id)
+        logger.debug("1check_have_equipment %s", equipment_id)
         return {"result":False, "result_no":702}
 
     # 校验该装备是否已经装备
