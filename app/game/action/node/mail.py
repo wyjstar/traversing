@@ -2,19 +2,19 @@
 """
 created by server on 14-8-14下午3:16.
 """
-from app.proto_file.mailbox_pb2 import GetMailInfos, \
-    ReadMailRequest, DeleteMailRequest, SendMailRequest
-from app.proto_file.common_pb2 import CommonResponse
-from gfirefly.server.globalobject import remoteserviceHandle
-from gfirefly.server.globalobject import GlobalObject
-from gfirefly.server.logobj import logger
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
-from app.game.core.item_group_helper import gain, get_return
-from app.game.action.root import netforwarding
-import time
-from shared.db_opear.configs_data import data_helper
 from shared.db_opear.configs_data.game_configs import base_config
+from gfirefly.server.globalobject import remoteserviceHandle
+from app.game.core.item_group_helper import gain, get_return
+from gfirefly.server.globalobject import GlobalObject
+from shared.db_opear.configs_data import data_helper
+from app.proto_file.common_pb2 import CommonResponse
+from app.game.action.root import netforwarding
+from gfirefly.server.logobj import logger
+from app.proto_file import mailbox_pb2
+from app.proto_file.db_pb2 import Mail_PB
 from shared.utils.const import const
+import time
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -25,7 +25,7 @@ def get_all_mail_info_1301(proto_data, player):
     """获取所有邮件"""
     mails = player.mail_component.get_mails()
 
-    response = GetMailInfos()
+    response = mailbox_pb2.GetMailInfos()
 
     expire_ids = []
     for mail in mails:
@@ -33,8 +33,8 @@ def get_all_mail_info_1301(proto_data, player):
             expire_ids.append(mail.mail_id)
             continue
         mail_pb = response.mails.add()
-        mail.update(mail_pb)
-    response.target =  base_config['times_get_vigor_from_friend']
+        mail_pb.CopyFrom(mail)
+    response.target = base_config['times_get_vigor_from_friend']
     response.current = player.stamina.get_stamina_times
     # 删除过期公告
     player.mail_component.delete_mails(expire_ids)
@@ -44,7 +44,7 @@ def get_all_mail_info_1301(proto_data, player):
 @remoteserviceHandle('gate')
 def read_mail_1302(proto_data, player):
     """读邮件，更改邮件状态"""
-    request = ReadMailRequest()
+    request = mailbox_pb2.ReadMailRequest()
     request.ParseFromString(proto_data)
     return read_mail(request.mail_ids, request.mail_type, player)
 
@@ -52,7 +52,7 @@ def read_mail_1302(proto_data, player):
 @remoteserviceHandle('gate')
 def delete_mail_1303(proto_data, player):
     """删除邮件"""
-    request = DeleteMailRequest()
+    request = mailbox_pb2.DeleteMailRequest()
     mail_ids = request.mail_ids
     player.mail_component.delete_mails(mail_ids)
     response = CommonResponse()
@@ -63,65 +63,51 @@ def delete_mail_1303(proto_data, player):
 @remoteserviceHandle('gate')
 def send_mail_1304(proto_data, player):
     """发送邮件"""
-    request = SendMailRequest()
+    request = mailbox_pb2.SendMailRequest()
     request.ParseFromString(proto_data)
     mail = request.mail
-    mail = {'sender_id': mail.sender_id,
-            'sender_name': mail.sender_name,
-            'receive_id': mail.receive_id,
-            'receive_name': mail.receive_name,
-            'title': mail.title,
-            'content': mail.content,
-            'mail_type': mail.mail_type,
-            'send_time': mail.send_time,
-            'prize': mail.prize}
+
     response = CommonResponse()
     """发送邮件， mail为json类型"""
-    mail['send_time'] = int(time.time())
-    receive_id = mail['receive_id']
+    mail.send_time = int(time.time())
+    receive_id = mail.receive_id
     # command:id 为收邮件的命令ID
-    response.result = netforwarding.push_message('receive_mail_remote', receive_id, mail)
+    mail_data = mail.SerializePartialToString()
+    response.result = netforwarding.push_message('receive_mail_remote',
+                                                 receive_id, mail_data)
     logger.debug('send_mail_1304 %s', response.result)
     return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
-def receive_mail_remote(mail, is_online, player):
+def receive_mail_remote(mail_data, is_online, player):
     """接收邮件"""
-    mail_type = mail.get("mail_type")
-    sender_id = mail.get("sender_id")
-    sender_name = mail.get("sender_name")
-    sender_icon = mail.get("sender_icon")
-    title = mail.get("title")
-    content = mail.get("content")
-    send_time = mail.get("send_time")
-    prize = mail.get("prize")
-    mail = player.mail_component.add_mail(sender_id, sender_name, title,
-                                          content, mail_type, send_time, prize,
-                                          sender_icon=sender_icon)
+    mail = Mail_PB()
+    mail.ParseFromString(mail_data)
+    player.mail_component.add_mail(mail)
 
     if is_online:
         response = ReceiveMailResponse()
-        mail.update(response.mail)
+        response.mail.CopyFrom(mail)
         remote_gate.push_object_remote(1305,
                                        response.SerializePartialToString(),
                                        [player.dynamic_id])
     return True
 
 
-@remoteserviceHandle('gate')
-def receive_mail_from_client_1306(receive_id, proto_data, player):
-    """在线/登录时，接收邮件"""
-    mail_type = proto_data.get("mail_type")
-    sender_id = proto_data.get("sender_id")
-    sender_name = proto_data.get("sender_name")
-    title = proto_data.get("title")
-    content = proto_data.get("content")
-    send_time = proto_data.get("send_time")
-    bag = proto_data.get("bag")
-
-    player.mail_component.add_mail(sender_id, sender_name, title,
-                                   content, mail_type, send_time, bag)
+# @remoteserviceHandle('gate')
+# def receive_mail_from_client_1306(receive_id, proto_data, player):
+#     """在线/登录时，接收邮件"""
+#     mail_type = proto_data.get("mail_type")
+#     sender_id = proto_data.get("sender_id")
+#     sender_name = proto_data.get("sender_name")
+#     title = proto_data.get("title")
+#     content = proto_data.get("content")
+#     send_time = proto_data.get("send_time")
+#     bag = proto_data.get("bag")
+#
+#     player.mail_component.add_mail(sender_id, sender_name, title,
+#                                    content, mail_type, send_time, bag)
 
 
 def is_expire_notice(mail):
@@ -141,9 +127,8 @@ def read_mail(mail_ids, mail_type, player):
             response.res.result = False
             response.res.result_no = result.get('result_no')
             return response.SerializePartialToString()
-        
-        
-        #player.stamina.add_stamina(len(mail_ids)*2)
+
+        # player.stamina.add_stamina(len(mail_ids)*2)
         get_prize(player, mail_ids, response)
         last_times = player.stamina.get_stamina_times
         player.stamina.get_stamina_times = last_times + len(mail_ids)
@@ -180,6 +165,7 @@ def get_prize(player, mail_ids, response):
     for mail_id in mail_ids:
         mail = player.mail_component.get_mail(mail_id)
 
-        prize = data_helper.parse(mail.prize)
+        prize = data_helper.parse(eval(mail.prize))
+        print prize
         return_data = gain(player, prize, const.MAIL)
         get_return(player, return_data, response.gain)

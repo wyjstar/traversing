@@ -17,7 +17,9 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process, pve_assemble_units, pve_assemble_friend
+from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pve_assemble_units
+from app.game.action.node._fight_start_logic import pve_assemble_friend
 from shared.utils.const import const
 
 
@@ -426,8 +428,9 @@ def get_award(pro_data, player):
     player.stage_component.save_data()
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
+
 
 def get_drop(bag_id):
     drops = []

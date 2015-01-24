@@ -107,7 +107,7 @@ def del_guild_room_remote(guild_id):
 def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
     logger.debug("netforwarding.push_message_remote")
-    logger.debug("%s %s %s" % (key, character_id, args))
+    logger.debug("push message %s %s %s" % (key, character_id, args))
 
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
@@ -117,7 +117,7 @@ def push_message_remote(key, character_id, args):
         return child_node.callbackChild(*args)
     else:
         transit_remote = GlobalObject().remote['transit']
-        return transit_remote.push_message_remote(key, character_id, args)
+        return transit_remote.push_message_remote(key, character_id, *args)
 
 @rootserviceHandle
 def pull_message_remote(character_id):

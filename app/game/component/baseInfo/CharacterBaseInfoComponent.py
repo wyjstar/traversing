@@ -236,6 +236,10 @@ class CharacterBaseInfoComponent(Component):
         self._heads = value
 
     @property
+    def head(self):
+        return self._heads.now_head
+
+    @property
     def newbee_guide_id(self):
         return self._newbee_guide_id
 

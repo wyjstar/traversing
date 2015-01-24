@@ -3,21 +3,22 @@
 created by server on 14-7-17下午4:36.
 """
 
-import datetime
-from app.battle.battle_unit import BattleUnit
-from app.game.redis_mode import tb_character_info
-from app.proto_file.common_pb2 import CommonResponse
-from app.proto_file import friend_pb2
-from app.game.action.root.netforwarding import push_message
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
+from app.battle.battle_unit import BattleUnit
+from app.game.redis_mode import tb_character_info
+from app.game.action.root.netforwarding import push_message
 from app.game.component.mail.mail import MailComponent
-import time
 from app.game.action.root import netforwarding
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
+from app.game.component.achievement.user_achievement import CountEvent
+from app.game.component.achievement.user_achievement import EventType
 from app.game.core.lively import task_status
+from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file import friend_pb2
+from app.proto_file.db_pb2 import Mail_PB
+import datetime
+import time
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -320,24 +321,21 @@ def friend_private_chat_1060(data, player):
     else:
         title = content[:title_display_len] + "..."
 
-    mail = {'sender_id': player.base_info.id,
-            'sender_name': player.base_info.base_name,
-            'sender_icon': player.line_up_component.lead_hero_no,
-            'receive_id': target_id,
-            'receive_name': '0',
-            'title': title,
-            'content': content,
-            'mail_type': MailComponent.TYPE_MESSAGE,
-            'prize': 0}
+    mail = Mail_PB()
+    mail.sender_id = player.base_info.id,
+    mail.sender_name = player.base_info.base_name,
+    mail.sender_icon = player.base_info.head,
+    mail.receive_id = target_id,
+    mail.receive_name = '',
+    mail.title = title,
+    mail.content = content,
+    mail.mail_type = MailComponent.TYPE_MESSAGE,
+    mail.prize = 0
+    mail.send_time = int(time.time())
 
-    if not mail:
-        response.result = False
-        return response.SerializePartialToString()
-
-    mail['send_time'] = int(time.time())
-    receive_id = mail['receive_id']
     # command:id 为收邮件的命令ID
-    netforwarding.push_message('receive_mail_remote', receive_id, mail)
+    mail_data = mail.SerializePartialToString()
+    netforwarding.push_message('receive_mail_remote', target_id, mail_data)
 
     response.result = True
     return response.SerializePartialToString()
