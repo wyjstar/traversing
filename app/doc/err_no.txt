@@ -76,3 +76,5 @@
 833: can`t receive
 
 834: 武将不存在
+
+835: travel buy shoes time dont enough
