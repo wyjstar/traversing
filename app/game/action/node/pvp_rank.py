@@ -11,6 +11,7 @@ from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
 from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
+from app.game.action.root.netforwarding import push_message
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
 from shared.db_opear.configs_data.game_configs import base_config
@@ -177,8 +178,11 @@ def pvp_fight_request_1505(data, player):
 
     if fight_result:
         logger.debug("fight result:True:%s:%s",
-                     before_player_rank,
-                     request.challenge_rank)
+                     before_player_rank, request.challenge_rank)
+
+        push_message('add_blacklist_request_remote', record['character_id'],
+                     player.base_info.id)
+
         if before_player_rank != 0:
             if request.challenge_rank < before_player_rank:
                 prere = dict(id=before_player_rank)

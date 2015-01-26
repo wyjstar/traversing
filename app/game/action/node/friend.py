@@ -45,7 +45,8 @@ def add_friend_request_1100(data, player):
         response.result_no = 4  # fail
         return response.SerializePartialToString()  # fail
 
-    if not push_message('add_friend_request_remote', target_id, player.base_info.id):
+    if not push_message('add_friend_request_remote', target_id,
+                        player.base_info.id):
         response.result = False
         response.result_no = 2
         return response.SerializePartialToString()  # fail
@@ -185,6 +186,8 @@ def get_player_friend_list_1106(data, player):
             response_friend_add.id = pid
             response_friend_add.nickname = player_data.hget('nickname')
             response_friend_add.gift = player.friends.last_present_times(pid)
+            ap = player_data.hget('attackPoint')
+            response_friend_add.atk = ap if ap else 0
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
@@ -289,6 +292,7 @@ def add_friend_request_remote(target_id, is_online, player):
     # print 'target_id:', target_id, 'ison:', is_online
     logger.debug('add friend request:%s, %s', is_online, target_id)
     result = player.friends.add_applicant(target_id)
+    assert(result)
     player.friends.save_data()
     if is_online:
         remote_gate.push_object_remote(1110,
@@ -300,6 +304,7 @@ def add_friend_request_remote(target_id, is_online, player):
 @remoteserviceHandle('gate')
 def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
+    assert(result)
     player.friends.save_data()
     return True
 
@@ -368,5 +373,14 @@ def close_friend_receive_1062(data, player):
 @remoteserviceHandle('gate')
 def delete_friend_remote(target_id, is_online, player):
     result = player.friends.del_friend(target_id)
+    player.friends.save_data()
+    return result
+
+
+@remoteserviceHandle('gate')
+def add_blacklist_request_remote(target_id, is_online, player):
+    print 'killer', target_id, 'victim', player.base_info.id
+    return False
+    result = player.friends.add_blacklist(target_id)
     player.friends.save_data()
     return result
