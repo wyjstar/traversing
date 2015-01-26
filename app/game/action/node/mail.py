@@ -46,7 +46,8 @@ def read_mail_1302(proto_data, player):
     """读邮件，更改邮件状态"""
     request = mailbox_pb2.ReadMailRequest()
     request.ParseFromString(proto_data)
-    return read_mail(request.mail_ids, request.mail_type, player)
+    result = read_mail(request.mail_ids, request.mail_type, player)
+    return result
 
 
 @remoteserviceHandle('gate')
@@ -148,7 +149,6 @@ def read_mail(mail_ids, mail_type, player):
         player.mail_component.delete_mails(mail_ids)
 
     response.res.result = True
-    print response
     return response.SerializePartialToString()
 
 
