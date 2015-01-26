@@ -55,7 +55,7 @@ def draw_reward_1235(data, player):
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
         return response.SerializePartialToString()
     else:
-        common = CommonResponse
+        common = CommonResponse()
         common.result = False
         common.result_no = status
         common.message = "未完成" if status == 1  else "已领取"

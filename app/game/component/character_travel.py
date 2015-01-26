@@ -19,6 +19,7 @@ class CharacterTravelComponent(Component):
         self._shoes = [0, 0, 0, 0, 0]  # 剩余鞋子[1,2,3,正在消耗，已消耗个数]
         self._chest_time = 1  # 上次领取宝箱时间
         self._fight_cache = [0, 0]  # [stage_id, event_id]
+        self._last_buy_shoes = [0, 1]  # [已用次数, 最后买的时间]
 
         # {stage_id:[{start_tiem:0, continued_time:0,
         # 'events': [[state, event_id, drop, start_time]], already_times: 0}]}
@@ -30,6 +31,7 @@ class CharacterTravelComponent(Component):
         self._shoes = character_info.get('shoes')
         self._chest_time = character_info.get('chest_time')
         self._fight_cache = character_info.get('fight_cache')
+        self._last_buy_shoes = character_info.get('last_buy_shoes', self._last_buy_shoes)
         self._auto = character_info.get('auto')
         for travel_stage_id in game_configs.stage_config.get('travel_stages'):
             if not self._travel_item.get(travel_stage_id):
@@ -42,6 +44,7 @@ class CharacterTravelComponent(Component):
                         'shoes': self._shoes,
                         'chest_time': self._chest_time,
                         'auto': self._auto,
+                        'last_buy_shoes': self._last_buy_shoes,
                         'fight_cache': self._fight_cache})
 
     def new_data(self):
@@ -52,6 +55,7 @@ class CharacterTravelComponent(Component):
                 'shoes': self._shoes,
                 'chest_time': self._chest_time,
                 'auto': self._auto,
+                'last_buy_shoes': self._last_buy_shoes,
                 'fight_cache': self._fight_cache}
 
     def get_travel_item_groups(self):
@@ -129,3 +133,11 @@ class CharacterTravelComponent(Component):
     @auto.setter
     def auto(self, value):
         self._auto = value
+    @property
+
+    def last_buy_shoes(self):
+        return self._last_buy_shoes
+
+    @last_buy_shoes.setter
+    def last_buy_shoes(self, value):
+        self._last_buy_shoes = value

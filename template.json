@@ -27,6 +27,7 @@
         "login": {
             "rootport": 20000,
             "webport": 20097,
+            "db": true,
             "name": "login",
             "app": "app.login",
             "log": "app/logs/login.log"
