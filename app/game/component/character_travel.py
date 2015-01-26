@@ -31,7 +31,7 @@ class CharacterTravelComponent(Component):
         self._shoes = character_info.get('shoes')
         self._chest_time = character_info.get('chest_time')
         self._fight_cache = character_info.get('fight_cache')
-        self._last_buy_shoes = character_info.get('last_buy_shoes')
+        self._last_buy_shoes = character_info.get('last_buy_shoes', self._last_buy_shoes)
         self._auto = character_info.get('auto')
         for travel_stage_id in game_configs.stage_config.get('travel_stages'):
             if not self._travel_item.get(travel_stage_id):
