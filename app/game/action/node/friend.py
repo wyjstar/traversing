@@ -17,6 +17,7 @@ from app.game.core.lively import task_status
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.proto_file.db_pb2 import Mail_PB
+from app.proto_file.db_pb2 import Heads_db
 import datetime
 import time
 
@@ -181,13 +182,18 @@ def get_player_friend_list_1106(data, player):
 
     for pid in player.friends.friends + [player.base_info.id]:
         player_data = tb_character_info.getObj(pid)
-        if player_data:
+        if player_data.exists():
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
-            response_friend_add.nickname = player_data.hget('nickname')
+            friend_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
+            response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
-            ap = player_data.hget('attackPoint')
+            ap = friend_data['attackPoint']
             response_friend_add.atk = ap if ap else 0
+
+            friend_heads = Heads_db()
+            friend_heads.ParseFromString(friend_data['heads'])
+            response_friend_add.hero_no = friend_heads.now_head
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
@@ -197,7 +203,7 @@ def get_player_friend_list_1106(data, player):
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObj(pid)
-        if player_data:
+        if player_data.exists():
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
             response_blacklist_add.nickname = player_data.hget('nickname')
@@ -211,7 +217,7 @@ def get_player_friend_list_1106(data, player):
 
     for pid in player.friends.applicant_list:
         player_data = tb_character_info.getObj(pid)
-        if player_data:
+        if player_data.exists():
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
             response_applicant_list_add.nickname = player_data.hget('nickname')
