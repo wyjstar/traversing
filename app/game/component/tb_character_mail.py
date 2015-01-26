@@ -78,7 +78,7 @@ class CharacterMailComponent(Component):
             return
         mail = self._mails[mail_id]
         char_obj = tb_character_info.getObj(self.owner.base_info.id).getObj('mails')
-        result = char_obj.hdel(mail_id)
+        result = char_obj.hdel(mail.mail_id)
         del self._mails[mail_id]
 
     def delete_mails(self, mail_ids):
