@@ -9,7 +9,7 @@ from shared.db_opear.configs_data.game_configs import vip_config
 from app.game.component.mine.monster_mine import MineOpt
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from app.proto_file.db_pb2 import Heads_db
+from app.proto_file.db_pb2 import Heads_DB
 import time
 from shared.tlog import tlog_action
 
@@ -32,7 +32,7 @@ class CharacterBaseInfoComponent(Component):
         self._pvp_refresh_time = 0
         self._pvp_refresh_count = 0
 
-        self._heads = Heads_db()
+        self._heads = Heads_DB()
         self._heads.now_head = base_config.get('initialHead')
 
         self._vip_level = 0  # VIP等级

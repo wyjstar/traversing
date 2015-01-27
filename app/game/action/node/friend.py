@@ -17,7 +17,7 @@ from app.game.core.lively import task_status
 from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.proto_file.db_pb2 import Mail_PB
-from app.proto_file.db_pb2 import Heads_db
+from app.proto_file.db_pb2 import Heads_DB
 import datetime
 import time
 
@@ -191,7 +191,7 @@ def get_player_friend_list_1106(data, player):
             ap = friend_data['attackPoint']
             response_friend_add.atk = ap if ap else 0
 
-            friend_heads = Heads_db()
+            friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             response_friend_add.hero_no = friend_heads.now_head
 
@@ -204,10 +204,17 @@ def get_player_friend_list_1106(data, player):
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
+            black_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
-            response_blacklist_add.nickname = player_data.hget('nickname')
+            response_blacklist_add.nickname = black_data['nickname']
             response_blacklist_add.gift = 0
+            ap = friend_data['attackPoint']
+            response_friend_add.atk = ap if ap else 0
+
+            black_heads = Heads_DB()
+            black_heads.ParseFromString(black_data['heads'])
+            response_friend_add.hero_no = black_heads.now_head
 
             # 添加好友主将的属性
             _with_battle_info(response_blacklist_add, pid)
@@ -385,8 +392,6 @@ def delete_friend_remote(target_id, is_online, player):
 
 @remoteserviceHandle('gate')
 def add_blacklist_request_remote(target_id, is_online, player):
-    print 'killer', target_id, 'victim', player.base_info.id
-    return False
     result = player.friends.add_blacklist(target_id)
     player.friends.save_data()
     return result
