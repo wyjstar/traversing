@@ -73,7 +73,7 @@ def continus_sign_in_1402(pro_data, player):
     if not sign_in_prize:
         return
     # 验证连续签到日期
-    if player.sign_in_component.continuous_sign_in_days < days:
+    if len(player.sign_in_component.sign_in_days) < days:
         response.res.result = False
         response.res.result_no = 1402
         return response.SerializePartialToString()
