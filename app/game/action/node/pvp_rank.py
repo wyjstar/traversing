@@ -57,26 +57,36 @@ def pvp_player_rank_request_1502(data, player):
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     response.player_rank = record.get('id') if record else -1
 
-    prere = dict(character_id=player.base_info.id)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    if response.player_rank < 9 and response.player_rank > 0:
+        columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+        records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
+        for record in records:
+            rank_item = response.rank_items.add()
+            rank_item.level = record.get('level')
+            rank_item.nickname = record.get('nickname')
+            rank_item.rank = record.get('id')
+            rank_item.ap = record.get('ap')
+            hero_ids = cPickle.loads(record.get('hero_ids'))
+            rank_item.hero_ids.extend([_ for _ in hero_ids])
+        response.pvp_score = player.finance[const.PVP]
+        return response.SerializeToString()
+    # if not record:
+    return pvp_player_rank_refresh_request(data, player)
 
-    if not record:
-        return pvp_player_rank_refresh_request(data, player)
-
-    cur_rank = record.get('id')
-    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
-    prere = 'id>=%s and id<=%s' % (cur_rank - 8, cur_rank + 1)
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
-    for record in records:
-        rank_item = response.rank_items.add()
-        rank_item.level = record.get('level')
-        rank_item.nickname = record.get('nickname')
-        rank_item.rank = record.get('id')
-        rank_item.ap = record.get('ap')
-        hero_ids = cPickle.loads(record.get('hero_ids'))
-        rank_item.hero_ids.extend([_ for _ in hero_ids])
-    response.pvp_score = player.finance[const.PVP]
-    return response.SerializeToString()
+    # cur_rank = record.get('id')
+    # columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+    # prere = 'id>=%s and id<=%s' % (cur_rank - 8, cur_rank + 1)
+    # records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
+    # for record in records:
+    #     rank_item = response.rank_items.add()
+    #     rank_item.level = record.get('level')
+    #     rank_item.nickname = record.get('nickname')
+    #     rank_item.rank = record.get('id')
+    #     rank_item.ap = record.get('ap')
+    #     hero_ids = cPickle.loads(record.get('hero_ids'))
+    #     rank_item.hero_ids.extend([_ for _ in hero_ids])
+    # response.pvp_score = player.finance[const.PVP]
+    # return response.SerializeToString()
 
 
 # @remoteserviceHandle('gate')
