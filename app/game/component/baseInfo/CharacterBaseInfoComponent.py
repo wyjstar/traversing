@@ -11,6 +11,7 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_db
 import time
+from shared.tlog import tlog_action
 
 
 class CharacterBaseInfoComponent(Component):
@@ -36,6 +37,7 @@ class CharacterBaseInfoComponent(Component):
 
         self._vip_level = 0  # VIP等级
         self._vip_content = None  # VIP 相关内容，从config中获得
+        self._upgrade_time = int(time.time())
 
     def init_data(self, character_info):
         self._id = character_info['id']
@@ -51,6 +53,7 @@ class CharacterBaseInfoComponent(Component):
 
         self._heads.ParseFromString(character_info['heads'])
         self._vip_level = character_info.get('vip_level')
+        self._upgrade_time = character_info.get('upgrade_time', self._upgrade_time)
 
         self.update_vip()
         self.check_time()
@@ -65,6 +68,7 @@ class CharacterBaseInfoComponent(Component):
                     pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
+                    upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString())
         character_info.hmset(data)
 
@@ -79,6 +83,7 @@ class CharacterBaseInfoComponent(Component):
                     pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=init_vip_level,
+                    upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString())
         return data
 
@@ -91,15 +96,21 @@ class CharacterBaseInfoComponent(Component):
             self._pvp_refresh_time = time.time()
             self.save_data()
 
-    def addexp(self, exp):
+    def addexp(self, exp, reason):
         self._exp += exp
+        before_level = self._level
 
         while self._exp >= player_exp_config.get(self._level).get('exp'):
             self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
-            MineOpt.updata_level('user_level', self.owner.base_info.id, self._level-1, self._level)
+            MineOpt.updata_level('user_level', self.owner.base_info.id,
+                                 self._level-1, self._level)
             if not player_exp_config.get(self._level):
                 return
+
+        # =====Tlog================
+        tlog_action.log('PlayerExpFlow', self.owner, before_level,
+                        exp, reason)
 
     @property
     def id(self):
@@ -270,3 +281,11 @@ class CharacterBaseInfoComponent(Component):
     @pvp_refresh_time.setter
     def pvp_refresh_time(self, value):
         self._pvp_refresh_time = value
+
+    @property
+    def upgrade_time(self):
+        return self._upgrade_time
+
+    @upgrade_time.setter
+    def upgrade_time(self, value):
+        self._upgrade_time = value

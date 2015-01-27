@@ -11,10 +11,12 @@ def _format(message):
     return '|'.join(map(str, message))
 
 
-def player_register(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, ClientVersion=0,
-                    SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0, ScreenWidth=0,
-                    ScreenHight=0, Density=0, RegChannel=0, UUID=0, CpuHardware=0, Memory=0,
-                    GLRender=0, GLVersion=0, DeviceId=0, Nickname=0):
+def player_register(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                    PlatID=0, OpenID=0, ClientVersion=0,
+                    SystemSoftware=0, SystemHardware=0, TelecomOper=0,
+                    Network=0, ScreenWidth=0, ScreenHight=0, Density=0,
+                    RegChannel=0, UUID=0, CpuHardware=0, Memory=0, GLRender=0,
+                    GLVersion=0, DeviceId=0, Nickname=0):
 
     message = ['PlayerRegister']
 
@@ -46,10 +48,12 @@ def player_register(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0,
         print sendmsg
 
 
-def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, Level=0, PlayerFriendsNum=0,
-                 ClientVersion=0, SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0, ScreenWidth=0,
-                 ScreenHight=0, Density=0, LoginChannel=0, UUID=0, CpuHardware=0, Memory=0,
-                 GLRender=0, GLVersion=0, DeviceId=0):
+def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0,
+                 Level=0, PlayerFriendsNum=0, ClientVersion=0,
+                 SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0,
+                 ScreenWidth=0, ScreenHight=0, Density=0, LoginChannel=0,
+                 UUID=0, CpuHardware=0, Memory=0, GLRender=0,
+                 GLVersion=0, DeviceId=0):
 
     message = ['PlayerLogin']
 
@@ -82,17 +86,15 @@ def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, Le
         print sendmsg
 
 
-def player_logout(Uid=0, vGameSvrId=0, dtEventTime=0, vGameAppID=0, vOpenID=0, iOnlineTime=0, iLevel=0,
-                  PlatID=0, ClientVersion=0, SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0,
-                  ScreenWidth=0, ScreenHight=0, Density=0, Channel=0, UUID=0, CpuHardware=0,
-                  Memory=0, GLRender=0, GLVersion=0, DeviceId=0, PlayerFriendsNum=0):
-    """
-    for player logout
-    record:PlayerLogout|vGameSvrId|dtEventTime|vGameAppID|vOpenID|iOnlineTime|iLevel|PlatID|ClientVersion|SystemSoftware|
-    SystemHardware|TelecomOper|Network|ScreenWidth|ScreenHight|Density|Channel|UUID|CpuHardware|Memory|GLRender|GLVersion|
-    DeviceId|PlayerFriendsNum|
-    """
+def player_logout(Uid=0, vGameSvrId=0, dtEventTime=0, vGameAppID=0, vOpenID=0,
+                  iOnlineTime=0, iLevel=0, PlatID=0, ClientVersion=0,
+                  SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0,
+                  ScreenWidth=0, ScreenHight=0, Density=0, Channel=0, UUID=0,
+                  CpuHardware=0, Memory=0, GLRender=0, GLVersion=0,
+                  DeviceId=0, PlayerFriendsNum=0):
+
     message = ['PlayerLogout']
+
     message.append(vGameSvrId)
     message.append(dtEventTime)
     message.append(vGameAppID)
@@ -187,13 +189,10 @@ def money_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, PlatI
         print sendmsg
 
 
-def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, OpenID=0, ItemType=0, ItemID=0,
-              AfterCount=0, Count=0, Reason=0, SubReason=0, AddOrReduce=0, Itid=0):
-    """
-    log for ItemFlow
-    record:ItemFlow|vGameSvrId|dtEventTime|vGameAppID|vOpenID|PlatID|ItemId|iAfterCount|Count|AddOrReduce|Reason
-    Reason:0,1,2,3,4,5,6,7,8,9,10
-    """
+def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
+              OpenID=0, ItemType=0, ItemID=0, AfterCount=0, Count=0,
+              Reason=0, SubReason=0, AddOrReduce=0, Itid=0):
+
     message = ['ItemFlow']
 
     message.append(GameSvrId)
@@ -270,13 +269,10 @@ def item_money_flow(Uid=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0, 
         print sendmsg
 
 
-def player_exp_flow(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0, ExpChange=0,
-                    BeforeLevel=0, AfterLevel=0, Time=0, Reason=0, SubReason=0):
-    """
-    log for PlayerExpFlow
-    record:PlayerExpFlow|vGameSvrId|dtEventTime|vGameAppID|vOpenID|PlatID|ExpChange|BeforeLevel|AfterLevel|time|Reason|
-    Reason:0,1,2,3
-    """
+def player_exp_flow(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
+                    OpenID=0, ExpChange=0, BeforeLevel=0, AfterLevel=0,
+                    Time=0, Reason=0, SubReason=0, Exp=0):
+
     message = ['PlayerExpFlow']
 
     message.append(GameSvrId)
@@ -290,7 +286,7 @@ def player_exp_flow(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, Op
     message.append(Time)
     message.append(Reason)
     message.append(SubReason)
-    message.append(Uid)
+    message.append(Exp)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

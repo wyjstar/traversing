@@ -81,7 +81,7 @@ def buy_stamina_6(request_proto, player):
 
     available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
 
-    logger.debug("available_buy_stamina_times:", available_buy_stamina_times,
+    logger.debug("available_buy_stamina_times:%s,%s", available_buy_stamina_times,
                  current_buy_stamina_times)
     # 校验购买次数上限
     if current_buy_stamina_times >= available_buy_stamina_times:
@@ -90,7 +90,7 @@ def buy_stamina_6(request_proto, player):
         return response.SerializePartialToString()
 
     need_gold = base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
-    logger.debug("need_gold++++++++++++++++", need_gold)
+    logger.debug("need_gold++++++++++++++++%s", need_gold)
     # 校验金币是否不足
     if need_gold > current_gold:
         logger.debug("gold not enough++++++++++++")
