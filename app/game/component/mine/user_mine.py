@@ -367,12 +367,16 @@ class PlayerField(Mine):
                 uids = MineOpt.rand_level("user_level", front, back+1) #取玩家等级附近的玩家
                 match_users = []
                 self_sword = MineOpt.get_user("sword", uid)
+                if self_sword == None:
+                    self_sword = 0
                 for one_user in uids: #取战力匹配的玩家
                     one_user = int(one_user)
                     print one_user
                     if one_user == uid:
                         continue
                     user_sword = MineOpt.get_user("sword", one_user)
+                    if user_sword == None:
+                        user_sword = 0
                     if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
                         continue
                     match_users.append(one_user)
@@ -835,7 +839,7 @@ class UserMine(Component):
                 stype = MineType.MONSTER_FIELD
 
         print 'stype', stype
-
+        stype = MineType.COPY
         if stype == MineType.COPY:
             print '123'
             result = None

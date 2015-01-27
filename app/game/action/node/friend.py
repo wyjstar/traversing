@@ -3,21 +3,23 @@
 created by server on 14-7-17下午4:36.
 """
 
-import datetime
-from app.battle.battle_unit import BattleUnit
-from app.game.redis_mode import tb_character_info
-from app.proto_file.common_pb2 import CommonResponse
-from app.proto_file import friend_pb2
-from app.game.action.root.netforwarding import push_message
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
+from app.battle.battle_unit import BattleUnit
+from app.game.redis_mode import tb_character_info
+from app.game.action.root.netforwarding import push_message
 from app.game.component.mail.mail import MailComponent
-import time
 from app.game.action.root import netforwarding
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
+from app.game.component.achievement.user_achievement import CountEvent
+from app.game.component.achievement.user_achievement import EventType
 from app.game.core.lively import task_status
+from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file import friend_pb2
+from app.proto_file.db_pb2 import Mail_PB
+from app.proto_file.db_pb2 import Heads_DB
+import datetime
+import time
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -44,7 +46,8 @@ def add_friend_request_1100(data, player):
         response.result_no = 4  # fail
         return response.SerializePartialToString()  # fail
 
-    if not push_message('add_friend_request_remote', target_id, player.base_info.id):
+    if not push_message('add_friend_request_remote', target_id,
+                        player.base_info.id):
         response.result = False
         response.result_no = 2
         return response.SerializePartialToString()  # fail
@@ -179,11 +182,18 @@ def get_player_friend_list_1106(data, player):
 
     for pid in player.friends.friends + [player.base_info.id]:
         player_data = tb_character_info.getObj(pid)
-        if player_data:
+        if player_data.exists():
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
-            response_friend_add.nickname = player_data.hget('nickname')
+            friend_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
+            response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
+            ap = friend_data['attackPoint']
+            response_friend_add.atk = ap if ap else 0
+
+            friend_heads = Heads_DB()
+            friend_heads.ParseFromString(friend_data['heads'])
+            response_friend_add.hero_no = friend_heads.now_head
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
@@ -193,11 +203,18 @@ def get_player_friend_list_1106(data, player):
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObj(pid)
-        if player_data:
+        if player_data.exists():
+            black_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
-            response_blacklist_add.nickname = player_data.hget('nickname')
+            response_blacklist_add.nickname = black_data['nickname']
             response_blacklist_add.gift = 0
+            ap = friend_data['attackPoint']
+            response_friend_add.atk = ap if ap else 0
+
+            black_heads = Heads_DB()
+            black_heads.ParseFromString(black_data['heads'])
+            response_friend_add.hero_no = black_heads.now_head
 
             # 添加好友主将的属性
             _with_battle_info(response_blacklist_add, pid)
@@ -207,7 +224,7 @@ def get_player_friend_list_1106(data, player):
 
     for pid in player.friends.applicant_list:
         player_data = tb_character_info.getObj(pid)
-        if player_data:
+        if player_data.exists():
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
             response_applicant_list_add.nickname = player_data.hget('nickname')
@@ -288,6 +305,7 @@ def add_friend_request_remote(target_id, is_online, player):
     # print 'target_id:', target_id, 'ison:', is_online
     logger.debug('add friend request:%s, %s', is_online, target_id)
     result = player.friends.add_applicant(target_id)
+    assert(result)
     player.friends.save_data()
     if is_online:
         remote_gate.push_object_remote(1110,
@@ -299,6 +317,7 @@ def add_friend_request_remote(target_id, is_online, player):
 @remoteserviceHandle('gate')
 def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
+    assert(result)
     player.friends.save_data()
     return True
 
@@ -320,24 +339,21 @@ def friend_private_chat_1060(data, player):
     else:
         title = content[:title_display_len] + "..."
 
-    mail = {'sender_id': player.base_info.id,
-            'sender_name': player.base_info.base_name,
-            'sender_icon': player.line_up_component.lead_hero_no,
-            'receive_id': target_id,
-            'receive_name': '0',
-            'title': title,
-            'content': content,
-            'mail_type': MailComponent.TYPE_MESSAGE,
-            'prize': 0}
+    mail = Mail_PB()
+    mail.sender_id = player.base_info.id,
+    mail.sender_name = player.base_info.base_name,
+    mail.sender_icon = player.base_info.head,
+    mail.receive_id = target_id,
+    mail.receive_name = '',
+    mail.title = title,
+    mail.content = content,
+    mail.mail_type = MailComponent.TYPE_MESSAGE,
+    mail.prize = 0
+    mail.send_time = int(time.time())
 
-    if not mail:
-        response.result = False
-        return response.SerializePartialToString()
-
-    mail['send_time'] = int(time.time())
-    receive_id = mail['receive_id']
     # command:id 为收邮件的命令ID
-    netforwarding.push_message('receive_mail_remote', receive_id, mail)
+    mail_data = mail.SerializePartialToString()
+    netforwarding.push_message('receive_mail_remote', target_id, mail_data)
 
     response.result = True
     return response.SerializePartialToString()
@@ -370,5 +386,12 @@ def close_friend_receive_1062(data, player):
 @remoteserviceHandle('gate')
 def delete_friend_remote(target_id, is_online, player):
     result = player.friends.del_friend(target_id)
+    player.friends.save_data()
+    return result
+
+
+@remoteserviceHandle('gate')
+def add_blacklist_request_remote(target_id, is_online, player):
+    result = player.friends.add_blacklist(target_id)
     player.friends.save_data()
     return result

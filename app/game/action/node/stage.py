@@ -17,7 +17,9 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process, pve_assemble_units, pve_assemble_friend
+from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pve_assemble_units
+from app.game.action.node._fight_start_logic import pve_assemble_friend
 from shared.utils.const import const
 
 
@@ -306,7 +308,7 @@ def stage_sweep(stage_id, times, player):
         # 玩家金钱
         player.finance.coin += stage_config.currency
         # 玩家经验
-        player.base_info.addexp(stage_config.playerExp)
+        player.base_info.addexp(stage_config.playerExp, const.STAGE_SWEEP)
     # 更新等级相关属性
     player.line_up_component.update_slot_activation()
     player.line_up_component.save_data()
@@ -426,8 +428,9 @@ def get_award(pro_data, player):
     player.stage_component.save_data()
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
+
 
 def get_drop(bag_id):
     drops = []

@@ -130,6 +130,11 @@ def travel_init_830(data, player):
 
     response.chest_time = player.travel_component.chest_time
 
+    if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday != time.localtime().tm_yday:
+        player.travel_component.last_buy_shoes = [0, int(time.time())]
+
+    response.buy_shoe_times = player.travel_component.last_buy_shoes[0]
+
     for (stage_id, item) in player.travel_component.travel_item.items():
         travel_item_chapter = response.travel_item_chapter.add()
         travel_item_chapter.stage_id = stage_id
@@ -140,6 +145,8 @@ def travel_init_830(data, player):
 
     update_auto(player, 1)
     deal_auto_response(response, player)
+
+    player.travel_component.save()
 
     response.res.result = True
     # logger.debug(response)
@@ -154,20 +161,32 @@ def buy_shoes_832(data, player):
     response = BuyShoesResponse()
 
     need_good = 0
+    num = 0
     for shoes_info in args.shoes_infos:
         need_good += base_config.get("travelShoe"+str(shoes_info.shoes_type))[2] \
             * shoes_info.shoes_no
+        num += shoes_info.shoes_no
 
     if player.finance.gold < need_good:
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
+    if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday == time.localtime().tm_yday:
+        if player.travel_component.last_buy_shoes[0] + num > vip_config.get(player.base_info.vip_level).buyShoeTimes:
+            logger.error('travel buy shoes time dont enough')
+            response.res.result = False
+            response.res.result_no = 835  # 购买次数不足
+            return response.SerializeToString()
+    else:
+        player.travel_component.last_buy_shoes = [0, int(time.time())]
+
     for shoes_info in args.shoes_infos:
         player.travel_component.shoes[shoes_info.shoes_type-1] += \
             shoes_info.shoes_no
 
     player.finance.gold -= need_good
+    player.travel_component.last_buy_shoes[0] += num
 
     player.travel_component.save()
     player.finance.save_data()
@@ -545,6 +564,7 @@ def fast_finish_auto_839(data, player):
     update_auto(player, 2, stage_id)
 
     player.finance.save_data()
+    player.travel_component.save()
 
     deal_auto_response(response, player)
 
@@ -609,8 +629,6 @@ def update_auto(player, up_type, update_stage_id=0):
                     else:
                         one_auto.get('events').append([0, res_travel_event_id, drops])
                     one_auto['already_times'] += 1
-
-    player.travel_component.save()
 
 
 def get_travel_event_id():

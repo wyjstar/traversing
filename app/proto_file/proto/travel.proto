@@ -40,6 +40,7 @@ message TravelInitResponse{
     required int32 chest_time = 4;
     repeated TravelItemChapter travel_item_chapter = 5;
     repeated StageTravel stage_travel = 6;
+    required int32 buy_shoe_times = 7;
 }
 
 message TravelItemChapter{

@@ -52,7 +52,10 @@ def shop_oper(pro_data, player, reason):
     logger.debug(shop_id)
     logger.debug("---------")
 
-    if shop_id == 50001 and player.shop.first_one_draw:
+    print shop_id, player.shop.first_one_draw, 'shop_id  '*10
+    if shop_id == 10001 and player.shop.first_one_draw:
+        is_consume(player, shop_item)
+
         logger.debug("first one draw")
         card_draw = base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
@@ -64,12 +67,14 @@ def shop_oper(pro_data, player, reason):
         return response.SerializeToString()
 
 
-    if not is_consume(player, shop_item):
+    _is_consume_result = is_consume(player, shop_item)
+    if _is_consume_result:
         result = is_afford(player, shop_item.consume)  # 校验
         if not result.get('result'):
             response.res.result = False
             response.res.result_no = result.get('result_no')
             response.res.message = u'消费不足！'
+            logger.error('shop oper is not enough gold')
             return response.SerializeToString()
 
     player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
@@ -80,9 +85,10 @@ def shop_oper(pro_data, player, reason):
 
     shop_type_item = shop_type_config.get(shop_item.get('type'))
     # 消耗
-    return_data = consume(player, shop_item.consume,
-                          player_type_shop, shop_type_item)
-    get_return(player, return_data, response.consume)
+    if _is_consume_result:
+        return_data = consume(player, shop_item.consume,
+                              player_type_shop, shop_type_item)
+        get_return(player, return_data, response.consume)
 
     return_data = gain(player, shop_item.gain, reason)  # 获取
     extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取

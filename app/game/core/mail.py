@@ -7,7 +7,7 @@ import json
 import cPickle
 
 
-class Mail(object):
+class Mail_old(object):
     """ 邮件 """
     def __init__(self, mail_id='', character_id=0, sender_id=-1,
                  sender_name='', sender_icon=0, title='', content=u'',

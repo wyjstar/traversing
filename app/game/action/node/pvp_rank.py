@@ -11,6 +11,7 @@ from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
 from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
+from app.game.action.root.netforwarding import push_message
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
 from shared.db_opear.configs_data.game_configs import base_config
@@ -56,26 +57,36 @@ def pvp_player_rank_request_1502(data, player):
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     response.player_rank = record.get('id') if record else -1
 
-    prere = dict(character_id=player.base_info.id)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    if response.player_rank < 9 and response.player_rank > 0:
+        columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+        records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
+        for record in records:
+            rank_item = response.rank_items.add()
+            rank_item.level = record.get('level')
+            rank_item.nickname = record.get('nickname')
+            rank_item.rank = record.get('id')
+            rank_item.ap = record.get('ap')
+            hero_ids = cPickle.loads(record.get('hero_ids'))
+            rank_item.hero_ids.extend([_ for _ in hero_ids])
+        response.pvp_score = player.finance[const.PVP]
+        return response.SerializeToString()
+    # if not record:
+    return pvp_player_rank_refresh_request(data, player)
 
-    if not record:
-        return pvp_player_rank_refresh_request(data, player)
-
-    cur_rank = record.get('id')
-    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
-    prere = 'id>=%s and id<=%s' % (cur_rank - 8, cur_rank + 1)
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
-    for record in records:
-        rank_item = response.rank_items.add()
-        rank_item.level = record.get('level')
-        rank_item.nickname = record.get('nickname')
-        rank_item.rank = record.get('id')
-        rank_item.ap = record.get('ap')
-        hero_ids = cPickle.loads(record.get('hero_ids'))
-        rank_item.hero_ids.extend([_ for _ in hero_ids])
-    response.pvp_score = player.finance[const.PVP]
-    return response.SerializeToString()
+    # cur_rank = record.get('id')
+    # columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+    # prere = 'id>=%s and id<=%s' % (cur_rank - 8, cur_rank + 1)
+    # records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
+    # for record in records:
+    #     rank_item = response.rank_items.add()
+    #     rank_item.level = record.get('level')
+    #     rank_item.nickname = record.get('nickname')
+    #     rank_item.rank = record.get('id')
+    #     rank_item.ap = record.get('ap')
+    #     hero_ids = cPickle.loads(record.get('hero_ids'))
+    #     rank_item.hero_ids.extend([_ for _ in hero_ids])
+    # response.pvp_score = player.finance[const.PVP]
+    # return response.SerializeToString()
 
 
 # @remoteserviceHandle('gate')
@@ -177,8 +188,11 @@ def pvp_fight_request_1505(data, player):
 
     if fight_result:
         logger.debug("fight result:True:%s:%s",
-                     before_player_rank,
-                     request.challenge_rank)
+                     before_player_rank, request.challenge_rank)
+
+        push_message('add_blacklist_request_remote', record['character_id'],
+                     player.base_info.id)
+
         if before_player_rank != 0:
             if request.challenge_rank < before_player_rank:
                 prere = dict(id=before_player_rank)

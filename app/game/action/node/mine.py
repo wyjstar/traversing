@@ -7,8 +7,9 @@ Created on 2014-11-24
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import mine_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
-from shared.db_opear.configs_data.game_configs import shop_config, base_config,\
-    mine_config
+from shared.db_opear.configs_data.game_configs import shop_config
+from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data.game_configs import mine_config
 from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
 from shared.db_opear.configs_data.common_item import CommonGroupItem
@@ -18,15 +19,19 @@ from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from gfirefly.server.logobj import logger
 from app.game.action.node.line_up import line_up_info_detail
-from app.game.action.node._fight_start_logic import pve_process, pvp_process, pvp_assemble_units
+from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pvp_process
+from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.proto_file import line_up_pb2
-import time
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
+from app.game.component.achievement.user_achievement import CountEvent
+from app.game.component.achievement.user_achievement import EventType
 from app.game.core.lively import task_status
+from app.proto_file.db_pb2 import Mail_PB
+import time
 
 remote_gate = GlobalObject().remote['gate']
+
 
 def mine_status(player, response):
     """
@@ -60,6 +65,7 @@ def mine_status(player, response):
             one_mine.gen_time = int(gen_time)
     return response
 
+
 def one_mine_info(mstatus, one_mine):
         position = mstatus.get('position', None)
         if position != None:
@@ -80,6 +86,7 @@ def one_mine_info(mstatus, one_mine):
         if gen_time != None:
             one_mine.gen_time = int(gen_time)
 
+
 @remoteserviceHandle('gate')
 def query_1240(data, player):
     """
@@ -90,6 +97,7 @@ def query_1240(data, player):
     player.mine.save_data()
     print '1240-response', response
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def search_1241(data, player):
@@ -125,14 +133,15 @@ def search_1241(data, player):
     player.mine.save_data()
     return response.SerializePartialToString()
 
+
 @remoteserviceHandle('gate')
 def reset_1242(data, player):
     """
     重置地图,ok
     """
-    request  = mine_pb2.resetMap()
+    request = mine_pb2.resetMap()
     request.ParseFromString(data)
-    response  = mine_pb2.resetResponse()
+    response = mine_pb2.resetResponse()
     response.free = request.free
     print '1242-request', request
     if request.free == 1:
@@ -164,8 +173,8 @@ def reset_1242(data, player):
                 mine_status(player, response.mine)
                 response.res.result = True
     player.mine.save_data()
-    #print '1242-response', response
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def query_1243(data, player):
@@ -215,12 +224,14 @@ def query_1243(data, player):
     print '1243-response', response
     return response.SerializePartialToString()
 
+
 def save_guard(player, position, info):
     """
     驻守矿点
     """
     result_code = player.mine.save_guard(position, info)
     return result_code
+
 
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
@@ -234,7 +245,7 @@ def guard_1244(data, player):
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
-    #构造阵容组件
+    # 构造阵容组件
     character_line_up = CharacterLineUpComponent(player)
     save_slot = {}
     for slot in request.line_up_slots:
@@ -256,8 +267,7 @@ def guard_1244(data, player):
         hero.is_guard = True
         hero.save_data()
 
-
-    battle_units = {} #需要保存的阵容信息
+    battle_units = {}  # 需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
         unit = slot.slot_attr
         if unit:
@@ -364,6 +374,7 @@ def query_shop_1247(data, player):
     print 'query_shop_1247-response', response
     return response.SerializePartialToString()
 
+
 @remoteserviceHandle('gate')
 def exchange_1248(data, player):
     """
@@ -408,6 +419,7 @@ def exchange_1248(data, player):
 
     return response.SerializePartialToString()
 
+
 def add_items(player, response, drop_ids):
     """
     添加道具给玩家
@@ -419,6 +431,7 @@ def add_items(player, response, drop_ids):
         return_data = item_group_helper.gain(player, drop_item_group, const.MINE_REWARD)
         item_group_helper.get_return(player, return_data, response.gain)
     return response
+
 
 @remoteserviceHandle('gate')
 def reward_1249(data, player):
@@ -440,6 +453,7 @@ def reward_1249(data, player):
     add_items(player, items, [drop_id])
     print 'reward_1249-response', response
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def acc_mine_1250(data, player):
@@ -513,36 +527,37 @@ def process_mine_result(player, position, result, response, stype):
             mail = {}
             prize = {}
             prize[108] = []
-            
+
             for k, v in count.items():
                 prize[108].append([v, v, k])
-            
-            mail = {'sender_id': -1,
-            'sender_name': '',
-            'receive_id': target,
-            'receive_name': '',
-            'title': '',
-            'content': '',
-            'mail_type': 2,
-            'prize': prize}
-            mail['send_time'] = int(time.time())
-            
-            battle_process = {
-            'sender_id': -1,
-            'sender_name': player.base_info.base_name,
-            'receive_id': target,
-            'receive_name': '',
-            'title': '',
-            'content': '',
-            'mail_type': 2,
-            'prize': prize
-            }
-            
+
+            mail = Mail_PB()
+            mail.sender_id = -1
+            mail.sender_name = ''
+            mail.receive_id = target
+            mail.receive_name = ''
+            mail.title = ''
+            mail.content = ''
+            mail.mail_type = 2
+            mail.prize = prize
+            mail.send_time = int(time.time())
+
+            battle_process = Mail_PB()
+            battle_process.sender_id = -1
+            battle_process.sender_name = player.base_info.base_name
+            battle_process.receive_id = target
+            battle_process.receive_name = ''
+            battle_process.title = ''
+            battle_process.content = ''
+            battle_process.mail_type = 2
+            battle_process.prize = prize
+
             # command:id 为收邮件的命令ID
             if sum(count.values()) > 0:
-                #response.result = netforwarding.push_message('receive_mail_remote', target, mail)
-                netforwarding.push_message('receive_mail_remote', target, mail)
-                netforwarding.push_message('receive_mail_remote', target, battle_process)
+                # response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+                netforwarding.push_message('receive_mail_remote', target, mail.SerializePartialToString())
+                netforwarding.push_message('receive_mail_remote', target, battle_process.SerializePartialToString())
+
 
 @remoteserviceHandle('gate')
 def settle_1252(data, player):
@@ -687,4 +702,3 @@ def trigger_mine_boss_1259(data, player):
     response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
-
