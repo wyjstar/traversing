@@ -85,6 +85,15 @@ def receive_mail_remote(mail_data, is_online, player):
     """接收邮件"""
     mail = Mail_PB()
     mail.ParseFromString(mail_data)
+    if mail.mail_type == 1:
+        # 领取赠送体力
+        if mail.sender_id in player.stamina.contributors:
+            logger.error('this contributor has already given stamina:%s',
+                         mail.sender_id)
+            return True
+        else:
+            player.stamina.contributors.append(mail.sender_id)
+
     player.mail_component.add_mail(mail)
 
     if is_online:
@@ -166,6 +175,6 @@ def get_prize(player, mail_ids, response):
         mail = player.mail_component.get_mail(mail_id)
 
         prize = data_helper.parse(eval(mail.prize))
-        print prize
+        # print prize
         return_data = gain(player, prize, const.MAIL)
         get_return(player, return_data, response.gain)
