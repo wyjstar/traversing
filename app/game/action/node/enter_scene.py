@@ -59,6 +59,7 @@ def enter_scene_remote(dynamic_id, character_id):
     responsedata.buy_stamina_times = player.stamina.buy_stamina_times
     responsedata.last_gain_stamina_time = player.stamina.last_gain_stamina_time
     responsedata.server_time = int(time.time())
+    responsedata.register_time = player.base_info.register_time
     # responsedata.soul_shop_refresh_times = player.soul_shop.refresh_times
     if player.base_info.heads.head:
         for head in player.base_info.heads.head:
@@ -67,6 +68,7 @@ def enter_scene_remote(dynamic_id, character_id):
 
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.base_info.vip_level)
+    logger.debug("register_time:%d", player.base_info.register_time)
     # logger.debug("stamina:%d", player.stamina.stamina)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)
