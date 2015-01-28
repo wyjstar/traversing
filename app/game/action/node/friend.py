@@ -188,8 +188,8 @@ def get_player_friend_list_1106(data, player):
             friend_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
-            ap = friend_data['attackPoint']
-            response_friend_add.atk = ap if ap else 0
+            ap = int(friend_data['attackPoint'])
+            response_friend_add.power = ap if ap else 0
 
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
@@ -209,12 +209,12 @@ def get_player_friend_list_1106(data, player):
             response_blacklist_add.id = pid
             response_blacklist_add.nickname = black_data['nickname']
             response_blacklist_add.gift = 0
-            ap = friend_data['attackPoint']
-            response_friend_add.atk = ap if ap else 0
+            ap = int(friend_data['attackPoint'])
+            response_blacklist_add.power = ap if ap else 0
 
             black_heads = Heads_DB()
             black_heads.ParseFromString(black_data['heads'])
-            response_friend_add.hero_no = black_heads.now_head
+            response_blacklist_add.hero_no = black_heads.now_head
 
             # 添加好友主将的属性
             _with_battle_info(response_blacklist_add, pid)
