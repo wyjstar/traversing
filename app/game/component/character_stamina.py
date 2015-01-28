@@ -57,8 +57,8 @@ class CharacterStaminaComponent(Component):
         return dict(stamina=self._stamina.SerializeToString())
 
     def check_time(self):
-        tm = time.localtime(self.last_mail_day)
-        dateNow = time.time()
+        tm = time.localtime(self._stamina.last_mail_day)
+        dateNow = int(time.time())
         local_tm = time.localtime(dateNow)
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._stamina.last_mail_day = dateNow
@@ -76,6 +76,10 @@ class CharacterStaminaComponent(Component):
         """体力"""
         self.owner.finance[const.STAMINA] = value
         self.owner.finance.save_data()
+
+    @property
+    def _open_receive(self):
+        return self._stamina.open_receive
 
     def open_receive(self):
         self._stamina.open_receive = 1
@@ -126,4 +130,4 @@ class CharacterStaminaComponent(Component):
     @property
     def contributors(self):
         self.check_time()
-        return self._contributors
+        return self.contributors

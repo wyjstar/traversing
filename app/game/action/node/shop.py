@@ -150,11 +150,10 @@ def shop_buy_505(pro_data, player):
     response = ShopResponse()
     common_response = response.res
 
-    assert(len(request.ids) == len(request.item_count))
     if len(request.ids) != len(request.item_count):
-        return
-
-    shop_items = dict(zip(request.ids, request.item_count))
+        shop_items = dict(zip(request.ids, [1]*len(request.ids)))
+    else:
+        shop_items = dict(zip(request.ids, request.item_count))
     # shop_items = {}
     # shop_items[request.ids[0]] = 2
     for shop_id, item_count in shop_items.items():

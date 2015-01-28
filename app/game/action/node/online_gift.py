@@ -43,6 +43,7 @@ def get_online_gift_1121(data, player):
                 break
 
     response.result = False
+    print response
     return response.SerializeToString()
 
 
