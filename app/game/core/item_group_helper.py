@@ -91,7 +91,7 @@ def is_consume(player, shop_item):
     return True
 
 
-def consume(player, item_group, multiple=1, shop=None, luck_config=None):
+def consume(player, item_group, shop=None, luck_config=None, multiple=1):
 # def consume(player, item_group, reason, shop=None, luck_config=None):
     """消耗"""
     result = []
@@ -164,7 +164,7 @@ def consume(player, item_group, multiple=1, shop=None, luck_config=None):
     return result
 
 
-def gain(player, item_group, reason, multiple=1, result=None):
+def gain(player, item_group, reason, result=None, multiple=1):
     """获取
     @param item_group: [obj,obj]
     """
