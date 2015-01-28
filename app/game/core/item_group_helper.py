@@ -100,7 +100,6 @@ def consume(player, item_group, shop=None, luck_config=None):
     itid = 0
     reason = 0
 
-
     luckValue = None
     if luck_config:
         luckValue = luck_config.luckyValue
@@ -161,7 +160,6 @@ def consume(player, item_group, shop=None, luck_config=None):
 
         # =====Tlog================
         tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
-        # ========================
 
     return result
 
@@ -273,11 +271,11 @@ def gain(player, item_group, reason, result=None):
 
         elif type_id == const.STAMINA:
             player.stamina.stamina += num
-            logger.debug(str(num)+" , stamina+++++++++++")
+            # logger.debug(str(num)+" , stamina+++++++++++")
             player.stamina.save_data()
 
         elif type_id == const.TEAM_EXPERIENCE:
-            player.base_info.addexp(num)
+            player.base_info.addexp(num, const.GAIN)
             player.base_info.save_data()
 
         elif type_id == const.TRAVEL_ITEM:
@@ -416,4 +414,4 @@ def get_return(player, return_data, game_resources_response):
             runt_pb = game_resources_response.runt.add()
             player.runt.deal_runt_pb(item_no, runt_id, main_attr, minor_attr, runt_pb)
 
-    logger.debug('return resource:%s', game_resources_response)
+    # logger.debug('return resource:%s', game_resources_response)

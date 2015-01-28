@@ -308,7 +308,7 @@ def stage_sweep(stage_id, times, player):
         # 玩家金钱
         player.finance.coin += stage_config.currency
         # 玩家经验
-        player.base_info.addexp(stage_config.playerExp)
+        player.base_info.addexp(stage_config.playerExp, const.STAGE_SWEEP)
     # 更新等级相关属性
     player.line_up_component.update_slot_activation()
     player.line_up_component.save_data()

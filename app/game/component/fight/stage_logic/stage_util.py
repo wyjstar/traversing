@@ -8,6 +8,7 @@ from shared.utils.const import const
 
 remote_gate = GlobalObject().remote['gate']
 
+
 def get_stage_config(stage_config, stage_type, stage_id):
     """get stage config util
     stage_config: stage_config or special_stage_config
@@ -18,6 +19,7 @@ def get_stage_config(stage_config, stage_type, stage_id):
     stage_info = stage_config.get(stage_type).get(stage_id)
     assert stage_info!=None, ("can not find stage info by stage id %s in %s" % (stage_id, type(stage_config)))
     return stage_info
+
 
 def settle(player, result, response, lively_event, conf):
     """docstring for settle"""
@@ -41,7 +43,7 @@ def settle(player, result, response, lively_event, conf):
             hero.upgrade(conf.HeroExp, player.base_info.level)
             hero.save_data()
     player.finance.coin += conf.currency
-    player.base_info.addexp(conf.playerExp)
+    player.base_info.addexp(conf.playerExp, const.STAGE)
     player.base_info.save_data()
 
     # 更新等级相关属性
