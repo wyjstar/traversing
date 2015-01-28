@@ -79,7 +79,8 @@ class CharacterLineUpComponent(Component):
         data = dict(line_up_slots=__line_up_slots,
                     sub_slots=__sub_slots,
                     line_up_order=self._line_up_order,
-                    unpars=self._unpars)
+                    unpars=self._unpars,
+                    current_unpar=self._current_unpar)
         return data
 
     def update_slot_activation(self):
