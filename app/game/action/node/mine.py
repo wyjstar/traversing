@@ -255,12 +255,17 @@ def guard_1244(data, player):
             temp_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
             line_up_slot.equipment_slots[equipment_slot.slot_no] = temp_slot
             # 标记装备已驻守
+            logger.debug(equipment_slot.equipment_id)
             equip = player.equipment_component.get_equipment(equipment_slot.equipment_id)
+            if not equip:
+                continue
             equip.attribute.is_guard = True
             equip.save_data()
             save_slot[slot.hero_no].append(equipment_slot.equipment_id)
 
         character_line_up.line_up_slots[slot.slot_no] = line_up_slot
+        logger.debug(line_up_slot.hero_slot.hero_no)
+        logger.debug("hero_no")
 
         # 标记武将已驻守
         hero = player.hero_component.get_hero(slot.hero_no)
@@ -270,7 +275,9 @@ def guard_1244(data, player):
     battle_units = {}  # 需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
         unit = slot.slot_attr
+
         if unit:
+            logger.debug("unit:"+str(unit.unit_no))
             battle_units[no] = unit
 
     line_up_response = line_up_pb2.LineUpResponse()
@@ -289,6 +296,8 @@ def guard_1244(data, player):
     info["character_id"] = player.base_info.id
     info["line_up"] = line_up_response.SerializePartialToString()
 
+    logger.debug(request)
+    logger.debug("guard-----------------")
     result_code = save_guard(player, request.pos, info)
     if result_code:
         response.result = False
@@ -509,7 +518,7 @@ def process_mine_result(player, position, result, response, stype):
                     luck.stone_id = k
                     luck.stone_num = int(v*warFogLootRatio)
                     count[k] = v
-        
+
             """
                 required string mail_id = 1; // ID
                 optional int32 sender_id = 2; //发件人ID
@@ -608,7 +617,7 @@ def battle_1253(data, player):
         red_units = stage_info.get('red_units')
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
-        
+
 
         print red_units, blue_units
 
