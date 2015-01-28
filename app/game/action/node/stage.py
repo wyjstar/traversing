@@ -88,7 +88,7 @@ def stage_start_903(pro_data, player):
     logger.debug("red_best_skill_id,%s" % red_best_skill_id)
     logger.debug("fid,%s" % fid)
 
-    stage_info = pve_process(stage_id, stage_type, line_up, fid, player)
+    stage_info = pve_process(stage_id, stage_type, line_up, fid, player, red_best_skill_id)
     result = stage_info.get('result')
 
     response = stage_response_pb2.StageStartResponse()

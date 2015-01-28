@@ -105,16 +105,12 @@ def pvb_player_info_remote(no, boss_id):
     boss = get_boss(boss_id)
     return boss.get_rank_item_by_rankno(no).get("line_up_info")
 
-
-
 def get_boss(boss_id):
     """docstring for get_boss_id"""
     if boss_id == "world_boss":
         return world_boss
     else:
         return mine_boss_manager.get(boss_id)
-
-
 
 @rootserviceHandle
 def mine_get_boss_num_remote():
@@ -125,6 +121,8 @@ def trigger_mine_boss_remote():
     """
     触发boss
     """
+    if mine_boss_manager.get_boss_num() >= 1:
+        return False
     boss_id, boss = mine_boss_manager.add()
     response = world_boss_pb2.MineBossResponse()
     response.res.result = True

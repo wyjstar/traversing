@@ -31,6 +31,7 @@ message LineUpResponse{
 	repeated Unpar unpars = 3;
 	optional CommonResponse res = 4;
     repeated int32 order = 5;
+    optional int32 unpar_id = 6;  // 当前无双
 }
 
 message LineUpUnparUpgrade{

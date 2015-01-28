@@ -286,6 +286,7 @@ def line_up_info(player):
     response = line_up_pb2.LineUpResponse()
     for temp in player.line_up_component.line_up_order:
         response.order.append(temp)
+    response.unpar_id = player.line_up_component.current_unpar
 
     line_up_info_detail(player.line_up_component.line_up_slots, player.line_up_component.sub_slots, response)
 

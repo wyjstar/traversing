@@ -12,7 +12,7 @@ from app.battle.battle_process import BattlePVPProcess
 
 def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level):
     """docstring for pvp_process"""
-    save_line_up_order(line_up, player)
+    save_line_up_order(line_up, player, red_best_skill)
     #player.fight_cache_component.awake_hero_units(blue_units)
     player.fight_cache_component.awake_hero_units(red_units)
     if not blue_units:
@@ -24,7 +24,7 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     return fight_result
 
 
-def save_line_up_order(line_up, player):
+def save_line_up_order(line_up, player, current_unpar):
     """docstring for save_line_up_order"""
     line_up_info = []  # {hero_id:pos}
     for line in line_up:
@@ -34,6 +34,7 @@ def save_line_up_order(line_up, player):
         return
 
     player.line_up_component.line_up_order = line_up_info
+    player.line_up_component.current_unpar = current_unpar
     player.line_up_component.save_data()
 
 
@@ -51,13 +52,13 @@ def pvp_assemble_units(red_units, blue_units, response):
         assemble(blue_add, blue_unit)
 
 
-def pve_process(stage_id, stage_type, line_up, fid, player):
+def pve_process(stage_id, stage_type, line_up, fid, player, current_unpar):
     """docstring for pve_process
     line_up: line up order
     best_skill_id: unpar
     fid: friend id.
     """
-    save_line_up_order(line_up, player)
+    save_line_up_order(line_up, player, current_unpar)
 
     stage = get_stage_by_stage_type(stage_type, stage_id, player)
 
