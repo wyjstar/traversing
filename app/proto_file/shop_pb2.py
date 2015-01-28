@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"\x1a\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\"{\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"d\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08\x62uyed_id\x18\x03 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05')
+  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"{\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"d\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08\x62uyed_id\x18\x03 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05')
 
 
 
@@ -89,6 +89,13 @@ _SHOPREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='item_count', full_name='ShopRequest.item_count', index=1,
+      number=2, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -99,7 +106,7 @@ _SHOPREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=102,
-  serialized_end=128,
+  serialized_end=148,
 )
 
 
@@ -140,8 +147,8 @@ _SHOPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=130,
-  serialized_end=253,
+  serialized_start=150,
+  serialized_end=273,
 )
 
 
@@ -189,8 +196,8 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=255,
-  serialized_end=355,
+  serialized_start=275,
+  serialized_end=375,
 )
 
 _SHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
