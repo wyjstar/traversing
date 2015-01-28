@@ -168,15 +168,16 @@ def shop_buy_505(pro_data, player):
             logger.error('not enough money')
             return response.SerializeToString()
 
-        if shop_id in shop['item_ids']:
-            shop['item_ids'].remove(shop_id)
-            shop['buyed_item_ids'].append(shop_id)
-        else:
-            logger.error("can not find shop id:%s:%s",
-                         shop_id, shop['item_ids'])
-            common_response.result = False
-            common_response.result_no = 501
-            return response.SerializeToString()
+        if shop_item.batch == 1:
+            if shop_id in shop['item_ids']:
+                shop['item_ids'].remove(shop_id)
+                shop['buyed_item_ids'].append(shop_id)
+            else:
+                logger.error("can not find shop id:%s:%s",
+                             shop_id, shop['item_ids'])
+                common_response.result = False
+                common_response.result_no = 501
+                return response.SerializeToString()
 
         price = shop_item.consume if not shop_item.discountPrice else shop_item.discountPrice
 
