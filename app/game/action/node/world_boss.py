@@ -204,7 +204,7 @@ def pvb_fight_start_1705(pro_data, player):
     stage_id = boss.stage_id
     logger.debug("stage_id,%s" % stage_id)
     WORLD_BOSS = 5
-    stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player)
+    stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player, best_skill_id)
     result = stage_info.get('result')
 
     response = PvbFightResponse()

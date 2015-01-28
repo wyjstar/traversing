@@ -34,6 +34,7 @@ class CharacterLineUpComponent(Component):
                                 slot_no in range(1, 7)])  # 卡牌位替补
 
         self._line_up_order = [1, 2, 3, 4, 5, 6]
+        self._current_unpar = 0
         self._unpars = {}  # 无双
 
     def init_data(self, character_info):
@@ -49,6 +50,7 @@ class CharacterLineUpComponent(Component):
             self._sub_slots[sub_slot_no] = line_sub_slot
         self._line_up_order = character_info.get('line_up_order')
         self._unpars = character_info.get('unpars')
+        self._current_unpar = character_info.get('current_unpar')
 
         self.update_slot_activation()
 
@@ -60,7 +62,9 @@ class CharacterLineUpComponent(Component):
             'sub_slots': dict([(slot_no, sub_slot.dumps()) for
                                slot_no, sub_slot in self._sub_slots.items()]),
             'line_up_order': self._line_up_order,
-            'unpars': self._unpars}
+            'unpars': self._unpars,
+            'current_unpar': self._current_unpar
+        }
 
         line_up_obj = tb_character_info.getObj(self.character_id)
         line_up_obj.hmset(props)
@@ -184,6 +188,16 @@ class CharacterLineUpComponent(Component):
     @line_up_order.setter
     def line_up_order(self, line_up_order):
         self._line_up_order = line_up_order
+
+    @property
+    def current_unpar(self):
+        """取得队形
+        """
+        return self._current_unpar
+
+    @current_unpar.setter
+    def current_unpar(self, current_unpar):
+        self._current_unpar = current_unpar
 
     @property
     def sub_slots(self):
