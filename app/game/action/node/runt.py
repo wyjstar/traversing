@@ -11,6 +11,7 @@ from gfirefly.server.logobj import logger
 import random
 import time
 from shared.utils.pyuuid import get_uuid
+import copy
 
 
 @remoteserviceHandle('gate')
@@ -73,37 +74,53 @@ def runt_pick_842(data, player):
 
     hero = player.hero_component.get_hero(hero_no)
 
+    need_coin = 0
+    runts = []
     if runt_po:
         if not hero.runt.get(runt_type) or not hero.runt.get(runt_type).get(runt_po):
             response.res.result = False
             response.res.result_no = 823  # 符文不存在
             return response.SerializeToString()
+
         runt_info = hero.runt.get(runt_type).get(runt_po)
+        need_coin = stone_config.get('stones').get(runt_info[1]).PickPrice
+        runt_info = hero.runt.get(runt_type).get(runt_po)
+        runts = [runt_info]
 
-        need_gold = stone_config.get('stones').get(runt_info[1]).PickPrice
-
-        if not player.runt.pick_runt(runt_info):
+    else:
+        if not hero.runt.get(runt_type):
             response.res.result = False
-            response.res.result_no = 824
+            response.res.result_no = 823  # 符文不存在
             return response.SerializeToString()
+        for (_, runt_info) in hero.runt[runt_type].items():
+            need_coin += stone_config.get('stones').get(runt_info[1]).PickPrice
+            runts.append(runt_info)
 
+    if player.finance.gold < need_coin:
+        response.res.result = False
+        response.res.result_no = 101  # 银币不足
+        return response.SerializeToString()
+
+    if len(player.runt.m_runt) + len(runts) > \
+            base_config.get('totemStash'):
+        response.res.result = False
+        response.res.result_no = 824
+        return response.SerializeToString()
+
+    for runt_info in runts:
+        runt_info1 = copy.copy(runt_info)
+        del runt_info1[0]
+        player.runt.m_runt[runt_info[0]] = runt_info1
+
+    if runt_po:
         del hero.runt[runt_type][runt_po]
     else:
-        need_gold = 0
-        for (_, runt_info) in hero.runt[runt_type].items():
-            need_gold += stone_config.get('stones').get(runt_info[1]).PickPrice
-            player.runt.pick_runt(runt_info)
         del hero.runt[runt_type]
-
-    if player.finance.gold < need_gold:
-        response.res.result = False
-        response.res.result_no = 102  # 充值币不足
-        return response.SerializeToString()
 
     hero.save_data()
     player.runt.save()
 
-    player.finance.gold -= need_gold
+    player.finance.coin -= need_coin
     player.finance.save_data()
 
     response.res.result = True

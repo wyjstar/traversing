@@ -2,6 +2,7 @@
 """
 created by server on 14-7-9下午2:39.
 """
+from shared.db_opear.configs_data.common_item import CommonGroupItem
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
@@ -149,7 +150,13 @@ def shop_buy_505(pro_data, player):
     response = ShopResponse()
     common_response = response.res
 
-    for shop_id in request.ids:
+    if len(request.ids) != len(request.item_count):
+        shop_items = dict(zip(request.ids, [1]*len(request.ids)))
+    else:
+        shop_items = dict(zip(request.ids, request.item_count))
+    # shop_items = {}
+    # shop_items[request.ids[0]] = 2
+    for shop_id, item_count in shop_items.items():
         logger.info("shop id:%s", shop_id)
         shop_item = shop_config.get(shop_id)
         if not shop_item:
@@ -160,7 +167,8 @@ def shop_buy_505(pro_data, player):
 
         shop = player.shop.get_shop_data(shop_item.get('type'))
 
-        result = is_afford(player, shop_item.consume)  # 校验
+        price = shop_item.consume if not shop_item.discountPrice else shop_item.discountPrice
+        result = is_afford(player, price, multiple=item_count)  # 校验
         if not result.get('result'):
             common_response.result = False
             common_response.result_no = result.get('result_no')
@@ -179,12 +187,14 @@ def shop_buy_505(pro_data, player):
                 common_response.result_no = 501
                 return response.SerializeToString()
 
-        price = shop_item.consume if not shop_item.discountPrice else shop_item.discountPrice
-
         shop_type_item = shop_type_config.get(shop_item.get('type'))
-        consume_return_data = consume(player, price, shop, shop_type_item)  # 消耗
 
-        return_data = gain(player, shop_item.gain, const.COMMON_BUY)  # 获取
+        consume_return_data = consume(player, price,
+                                      multiple=item_count,
+                                      shop=shop,
+                                      luck_config=shop_type_item)  # 消耗
+        return_data = gain(player, shop_item.gain, const.COMMON_BUY, multiple=item_count)  # 获取
+
         get_return(player, consume_return_data, response.consume)
         get_return(player, return_data, response.gain)
 
@@ -253,4 +263,5 @@ def get_shop_items_508(pro_data, player):
     logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
+    response.refresh_times = shopdata['refresh_times']
     return response.SerializePartialToString()
