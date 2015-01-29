@@ -263,4 +263,5 @@ def get_shop_items_508(pro_data, player):
     logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
+    response.refresh_times = shopdata['refresh_times']
     return response.SerializePartialToString()
