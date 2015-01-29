@@ -841,16 +841,17 @@ class UserMine(Component):
 
         print 'stype', stype
         if stype == MineType.COPY:
-            print '123'
             result = None
             try:
                 result = func()
                 print '123', result
             except:
                 print '123456'
+            print 'result------', result
             if not result:
                 stype = MineType.MONSTER_FIELD
 
+        print 'stype------------------', stype
         if stype == MineType.PLAYER_FIELD:
             mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.base_info.level, lively)
         if stype == MineType.MONSTER_FIELD:
