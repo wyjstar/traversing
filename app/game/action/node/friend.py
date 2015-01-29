@@ -18,6 +18,7 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.proto_file import friend_pb2
 from app.proto_file.db_pb2 import Mail_PB
 from app.proto_file.db_pb2 import Heads_DB
+from app.proto_file.db_pb2 import Stamina_DB
 import datetime
 import time
 
@@ -283,7 +284,9 @@ def given_stamina_1108(data, player):
     target_id = request.target_ids[0]
 
     player_data = tb_character_info.getObj(target_id)
-    open_receive = player_data.hget('stamina').get('open_receive')
+    stamina_db = Stamina_DB()
+    stamina_db.ParseFromString(player_data.hget('stamina'))
+    open_receive = stamina_db.open_receive
 
     if not player.friends.given_stamina(target_id, if_present=open_receive):
         response.result = False

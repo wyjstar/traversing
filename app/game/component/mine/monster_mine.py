@@ -18,7 +18,7 @@ class MineOpt(object):
     def add_mine(cls, uid, mid, data):
         v = cPickle.dumps(data)
         label = 'mine.%s' % uid
-        print 'add_mine', label, mid 
+        print 'add_mine', label, mid
         _rank = cls.rank.myhset(label, mid, 1)
         print cls.rank.myhkeys(label)
         label = 'mine'
@@ -65,33 +65,33 @@ class MineOpt(object):
                 return
         print 'update', label, k, v
         cls.rank.zadd(label, k, v)
-        
+
     @classmethod
     def updata_level(cls, label, uid, s, t):
         """
         label = 'user_level'
         """
-        src = '%s.%s' %(label, s)
-        dst = '%s.%s' %(label, t)
+        src = '%s.%s' % (label, s)
+        dst = '%s.%s' % (label, t)
         print 'updata_level', src, dst
         try:
             cls.rank.mysmove(src, dst, uid)
         except Exception, e:
             print 'update_level, error', e
-            
+
     @classmethod
     def asadd(cls, label, uid, grade):
-        key = '%s.%s' %(label, grade)
+        key = '%s.%s' % (label, grade)
         print 'asadd', key
         cls.rank.mysadd(key, uid)
-    
+
     @classmethod
     def rand_level(cls, label, front, back):
         """
         """
         users = []
         for level in range(front, back):
-            mem = '%s.%s' %(label, level)
+            mem = '%s.%s' % (label, level)
             print 'rand_level', mem
             try:
                 ret = cls.rank.smembers(mem)
@@ -103,7 +103,7 @@ class MineOpt(object):
             except Exception, e:
                 print 'rank_level', e
         return users
-                
+
 #     @classmethod
 #     def rand_user(cls, label, k, front, back):
 #         """
@@ -123,4 +123,3 @@ class MineOpt(object):
             print e
             return 1
         return ret
-
