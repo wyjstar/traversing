@@ -15,13 +15,13 @@ import cPickle
 import random
 
 
-tb_boss = RedisObject('tb_boss')
+tb_boss = RedisObject('tb_worldboss')
 
 
 class WorldBoss(BaseBoss):
     """docstring for WorldBoss"""
     def __init__(self, boss_name, rank_instance, config_name):
-        super(WorldBoss, self).__init__(boss_name, rank_instance, config_name)
+        super(WorldBoss, self).__init__(boss_name, rank_instance, config_name, tb_boss)
         self._stage_id_am = 0         # 关卡id am
         self._stage_id_pm = 0         # 关卡id pm
         self._state = 0               # boss状态：用于boss到期, 重置状态

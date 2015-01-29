@@ -10,9 +10,12 @@ from shared.utils.pyuuid import get_uuid
 from app.world.core.base_boss import BaseBoss
 from shared.db_opear.configs_data.game_configs import base_config
 import cPickle
+import time
+from shared.utils.date_util import is_next_day
 
 
-tb_mineboss = RedisObject('tb_character_info')
+tb_boss = RedisObject('tb_mineboss')
+tb_boss_manager = RedisObject('tb_minebossmanager')
 
 
 class MineBossManager(object):
@@ -22,6 +25,15 @@ class MineBossManager(object):
         self._bosses = {}  # 所有boss
         self._base_data_name = "mine_boss"
         self._base_demage_name = "MineBossDemage"
+        self._last_time = 0
+        self._boss_num = 0
+
+        str_data = tb_boss_manager.get("")
+        if str_data:
+            data = cPickle.loads(str_data)
+            self._last_time = data.get("boss_num")
+            self._boss_num = data.get("last_time")
+
 
     def add(self):
         """docstring for add"""
@@ -31,6 +43,10 @@ class MineBossManager(object):
         boss = MineBoss(boss_name, Ranking.instance(boss_demage_name),
                         "mine_boss_stages")
         self._bosses[boss_id] = boss
+        current_time = time.time()
+        self._last_time = current_time
+        self._boss_num += 1
+        self.save_data()
         return boss_id, boss
 
     def get_boss_name(self, boss_id):
@@ -49,18 +65,29 @@ class MineBossManager(object):
         """
         获取boss数量
         """
-        return len(self._bosses)
+        current_time = time.time()
+        if is_next_day(current_time, self._last_time):
+            self._boss_num = 0
+        return self._boss_num
+
+    def current_has_boss(self):
+        return len(self._bosses) == 1
+
+    def save_data(self):
+        data = dict(boss_num=self._boss_num, last_time=self._last_time)
+        str_data = cPickle.dumps(data)
+        tb_boss.set("", str_data)
 
 
 class MineBoss(BaseBoss):
     """随机boss"""
     def __init__(self, boss_name, rank_instance, config_name):
-        super(MineBoss, self).__init__(boss_name, rank_instance, config_name)
+        super(MineBoss, self).__init__(boss_name, rank_instance, config_name, tb_boss)
         self.init_data()
 
     def init_data(self):
         """docstring for init_data"""
-        str_data = tb_mineboss.get(self._boss_name)
+        str_data = tb_boss.get(self._boss_name)
         if not str_data:
             logger.debug("init data...")
             self.update_boss()
@@ -80,7 +107,7 @@ class MineBoss(BaseBoss):
         base_boss_data = self.get_data_dict()
 
         str_data = cPickle.dumps(base_boss_data)
-        tb_mineboss.set(self._boss_name, str_data)
+        tb_boss.set(self._boss_name, str_data)
 
 
 mine_boss_manager = MineBossManager()
