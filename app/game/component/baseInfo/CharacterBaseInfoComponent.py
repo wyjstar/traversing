@@ -76,7 +76,7 @@ class CharacterBaseInfoComponent(Component):
         character_info.hmset(data)
 
     def new_data(self):
-        init_level = 1 #base_config.get('initialPlayerLevel')
+        init_level = base_config.get('initialPlayerLevel')
         init_vip_level = base_config.get('initialVipLevel')
         data = dict(level=init_level,
                     exp=self.exp,
