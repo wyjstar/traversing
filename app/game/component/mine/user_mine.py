@@ -839,7 +839,7 @@ class UserMine(Component):
                 stype = MineType.MONSTER_FIELD
 
         print 'stype', stype
-        stype = MineType.COPY
+#         stype = MineType.COPY
         if stype == MineType.COPY:
             print '123'
             result = None
