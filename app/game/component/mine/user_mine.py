@@ -840,7 +840,6 @@ class UserMine(Component):
                 stype = MineType.MONSTER_FIELD
 
         print 'stype', stype
-#         stype = MineType.COPY
         if stype == MineType.COPY:
             print '123'
             result = None
@@ -866,12 +865,17 @@ class UserMine(Component):
         if stype == MineType.COPY:
             mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
 
-        if not mine:
+        if not mine or mine._tid == self.owner.base_info.id or self.ifhave(mine._seq):
             mine = MineType.create(MineType.MONSTER_FIELD, self.owner.base_info.id, self.owner.base_info.base_name)
         self._mine[position] = mine
         print 'search_mine', position, mine.__dict__
         self._update = True
         return mine
+    
+    def ifhave(self, tid):
+        for mine in self._mine.values():
+            if  mine._type != 0 and tid == mine._seq:
+                return True
 
     def mine_status(self):
         """
