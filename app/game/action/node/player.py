@@ -19,6 +19,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
+from app.game.component.character_stamina import max_of_stamina
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -126,7 +127,7 @@ def add_stamina_7(request_proto, player):
         response.result = False
         return response.SerializePartialToString()
 
-    max_stamina = player.stamina.max_of_stamina
+    max_stamina = max_of_stamina()
     if player.stamina.stamina >= max_stamina:
         logger.debug("has reach max stamina ++++++++++++++++++++++")
         response.result_no = 13
@@ -189,7 +190,7 @@ def init_player(player):
     if new_character:
         player.create_character_data()
     player.init_player_info()
-    # if new_character:
-    #     logger.debug("mock player info.....")
-    #     init(player)
+#     if new_character:
+#         logger.debug("mock player info.....")
+#         init(player)
     return new_character

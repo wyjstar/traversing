@@ -15,6 +15,7 @@ message GetShopItems
 message ShopRequest
 {
     repeated int32 ids = 1; // 对应shop配置表中商品编号
+    repeated int32 item_count = 2;
 }
 
 //商城返回 command:501/502/503/504
@@ -32,4 +33,5 @@ message GetShopItemsResponse
     repeated int32 id = 2;
     repeated int32 buyed_id = 3;
     optional int32 luck_num = 4;
+    optional int32 refresh_times = 5;
 }

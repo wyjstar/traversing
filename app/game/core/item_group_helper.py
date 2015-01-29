@@ -16,11 +16,11 @@ import time
 from shared.tlog import tlog_action
 
 
-def is_afford(player, item_group):
+def is_afford(player, item_group, multiple=1):
     """消耗是否足够。"""
     for group_item in item_group:
         type_id = group_item.item_type
-        num = group_item.num
+        num = group_item.num * multiple
         item_no = group_item.item_no
         if type_id == const.COIN and player.finance.coin < num:
             return {'result': False, 'result_no': 101}
@@ -91,7 +91,7 @@ def is_consume(player, shop_item):
     return True
 
 
-def consume(player, item_group, shop=None, luck_config=None):
+def consume(player, item_group, shop=None, luck_config=None, multiple=1):
 # def consume(player, item_group, reason, shop=None, luck_config=None):
     """消耗"""
     result = []
@@ -106,7 +106,7 @@ def consume(player, item_group, shop=None, luck_config=None):
         print luckValue
     for group_item in item_group:
         type_id = group_item.item_type
-        num = group_item.num
+        num = group_item.num * multiple
         item_no = group_item.item_no
         if type_id == const.COIN:
             player.finance.coin -= num
@@ -164,7 +164,7 @@ def consume(player, item_group, shop=None, luck_config=None):
     return result
 
 
-def gain(player, item_group, reason, result=None):
+def gain(player, item_group, reason, result=None, multiple=1):
     """获取
     @param item_group: [obj,obj]
     """
@@ -176,7 +176,7 @@ def gain(player, item_group, reason, result=None):
 
     for group_item in item_group:
         type_id = group_item.item_type
-        num = group_item.num
+        num = group_item.num * multiple
         item_no = group_item.item_no
         front_type_id = type_id # 记录类型，用于武将已存在的情况。
         if type_id == const.COIN:

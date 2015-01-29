@@ -22,10 +22,10 @@ message Mail_PB
 }
 
 message Stamina_DB{
-    optional int32 open_receive = 1;
-    optional int32 get_stamina_times = 2;
-    optional int32 buy_stamina_times = 3;
-    optional int32 last_gain_stamina_time = 4;
-    optional int32 last_mail_day = 5;
+    optional int32 open_receive = 1 [default = 0];
+    optional int32 get_stamina_times = 2 [default = 0];
+    optional int32 buy_stamina_times = 3 [default = 0];
+    optional int32 last_gain_stamina_time = 4 [default = 0];
+    optional int32 last_mail_day = 5 [default = 0];
     repeated int32 contributors = 6;
 }

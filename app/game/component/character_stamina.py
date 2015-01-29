@@ -6,10 +6,18 @@ created by server on 14-9-28上午10:59.
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data.game_configs import base_config
+from app.proto_file.db_pb2 import Stamina_DB
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
-import datetime
 import time
+
+
+def peroid_of_stamina_recover():
+    return base_config.get('peroid_of_vigor_recover')
+
+
+def max_of_stamina():
+    return base_config.get('max_of_vigor')
 
 
 class CharacterStaminaComponent(Component):
@@ -17,67 +25,46 @@ class CharacterStaminaComponent(Component):
 
     def __init__(self, owner):
         super(CharacterStaminaComponent, self).__init__(owner)
-        self._open_receive = 1  # 开启接收活力
-        self._get_stamina_times = 0  # 通过邮件获取体力次数
-        self._buy_stamina_times = 0  # 购买体力次数
-        self._last_gain_stamina_time = 0  # 上次获取体力时间
-        self._last_mail_day = ''  # 上次通过邮件获取的体力的日期-周期
-        self._contributors = []
+        self._stamina = Stamina_DB()
 
     def init_data(self, character_info):
         stamina_data = character_info.get('stamina')
-        self._open_receive = stamina_data.get('open_receive', 1)
-        self._get_stamina_times = stamina_data.get('get_stamina_times')
-        self._buy_stamina_times = stamina_data.get('buy_stamina_times')
-        self._last_gain_stamina_time = stamina_data.get('last_gain_stamina_time')
-        self._last_mail_day = stamina_data.get('last_mail_day', '')
-        self._contributors = stamina_data.get('contributors', [])
-        print self._contributors
+        self._stamina.ParseFromString(stamina_data)
+        _peroid = peroid_of_stamina_recover()
 
         # 初始化体力
         current_time = int(time.time())
         logger.debug("last_gain_stamina_time:%s",
-                     str(self._last_gain_stamina_time))
-        logger.debug("peroid_of_stamina_recover:%s",
-                     str(self.peroid_of_stamina_recover))
+                     self._stamina.last_gain_stamina_time)
+        logger.debug("_peroid:%s", _peroid)
 
-        stamina_add = (current_time - self._last_gain_stamina_time) / self.peroid_of_stamina_recover
-        left_stamina = (current_time - self._last_gain_stamina_time) % self.peroid_of_stamina_recover
+        stamina_add = (current_time - self._stamina.last_gain_stamina_time) / _peroid
+        left_stamina = (current_time - self._stamina.last_gain_stamina_time) % _peroid
 
-        if self.owner.finance[const.STAMINA] < self.max_of_stamina:
+        if self.owner.finance[const.STAMINA] < max_of_stamina():
             # 如果原来的体力超出上限，则不添加体力
-            self.owner.finance[const.STAMINA] += int(stamina_add)
-            if self.owner.finance[const.STAMINA] > self.max_of_stamina:
-                # 如果体力超出上限， 则设为上限
-                self.owner.finance[const.STAMINA] = self.max_of_stamina
-        self._last_gain_stamina_time = current_time - left_stamina
+            _value = self.owner.finance[const.STAMINA] + int(stamina_add)
+            self.owner.finance[const.STAMINA] = min(_value, max_of_stamina())
+        self._stamina.last_gain_stamina_time = current_time - left_stamina
+
+        self.check_time()
 
     def save_data(self):
         info = tb_character_info.getObj(self.owner.base_info.id)
-        info.hset('stamina', self.detail_data)
+        info.hset('stamina', self._stamina.SerializeToString())
 
     def new_data(self):
-        return dict(stamina=self.detail_data)
+        return dict(stamina=self._stamina.SerializeToString())
 
-    @property
-    def detail_data(self):
-        """stamina detail data"""
-        return {
-            'open_receive': self._open_receive,
-            'get_stamina_times': self._get_stamina_times,
-            'buy_stamina_times': self._buy_stamina_times,
-            'last_gain_stamina_time': self._last_gain_stamina_time,
-            'last_mail_day': self._last_mail_day,
-            'contributors': self._contributors,
-        }
-
-    @property
-    def peroid_of_stamina_recover(self):
-        return base_config.get('peroid_of_vigor_recover', 300)
-
-    @property
-    def max_of_stamina(self):
-        return base_config.get('max_of_vigor', 120)
+    def check_time(self):
+        tm = time.localtime(self._stamina.last_mail_day)
+        dateNow = int(time.time())
+        local_tm = time.localtime(dateNow)
+        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+            self._stamina.last_mail_day = dateNow
+            self._stamina.get_stamina_times = 0
+            self._stamina.ClearField('contributors')
+            self.save_data()
 
     @property
     def stamina(self):
@@ -90,64 +77,57 @@ class CharacterStaminaComponent(Component):
         self.owner.finance[const.STAMINA] = value
         self.owner.finance.save_data()
 
+    @property
+    def _open_receive(self):
+        return self._stamina.open_receive
+
     def open_receive(self):
-        self._open_receive = 1
+        self._stamina.open_receive = 1
 
     def close_receive(self):
-        self._open_receive = 0
+        self._stamina.open_receive = 0
 
     def add_stamina(self, value):
         """ 添加体力
         """
-        if not self._open_receive:
+        if not self._stamina.open_receive:
             return
         stamina = self.owner.finance[const.STAMINA] + value
-        self.owner.finance[const.STAMINA] = min(stamina, self.max_of_stamina)
+        self.owner.finance[const.STAMINA] = min(stamina, max_of_stamina())
         self.owner.finance.save_data()
 
     @property
     def get_stamina_times(self):
         """邮件中获取赠送体力次数"""
-        date_now = datetime.datetime.now().date()
-        if self._last_mail_day != date_now:
-            self._last_mail_day = date_now
-            self._get_stamina_times = 0
-
-        return self._get_stamina_times
+        self.check_time()
+        return self._stamina.get_stamina_times
 
     @get_stamina_times.setter
     def get_stamina_times(self, value):
         """邮件中获取赠送体力次数"""
-        self._get_stamina_times = value
+        self._stamina.get_stamina_times = value
 
     @property
     def buy_stamina_times(self):
         """已经购买的体力次数"""
-        return self._buy_stamina_times
+        return self._stamina.buy_stamina_times
 
     @buy_stamina_times.setter
     def buy_stamina_times(self, value):
         """已经购买的体力次数"""
-        self._buy_stamina_times = value
+        self._stamina.buy_stamina_times = value
 
     @property
     def last_gain_stamina_time(self):
         """已经购买的体力次数"""
-        return self._last_gain_stamina_time
+        return self._stamina.last_gain_stamina_time
 
     @last_gain_stamina_time.setter
     def last_gain_stamina_time(self, value):
         """已经购买的体力次数"""
-        self._last_gain_stamina_time = value
+        self._stamina.last_gain_stamina_time = value
 
     @property
     def contributors(self):
-        date_now = datetime.datetime.now().date()
-        if self._last_mail_day != date_now:
-            self._last_mail_day = date_now
-            self._contributors = []
-        return self._contributors
-
-    @contributors.setter
-    def contributors(self, value):
-        self._contributors = value
+        self.check_time()
+        return self.contributors
