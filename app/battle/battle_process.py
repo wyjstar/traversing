@@ -104,7 +104,7 @@ class BattlePVBProcess(object):
                     if not skill_buff_info:
                         continue
 
-                    buff = Buff(None, skill_buff_info)
+                    buff = Buff(blue_units, None, skill_buff_info)
                     v.buff_manager.add(buff)
 
         self._red_best_skill = BestSkill(red_best_skill_no, red_player_level) if red_best_skill_no else BestSkillNone()
