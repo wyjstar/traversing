@@ -765,8 +765,9 @@ class UserMine(Component):
     def reset_times(self):
         self._reset_everyday()
         vip_add = self.owner.base_info.war_refresh_times
-        free_everyday = base_config['totemRefreshFreeTimes']
-        return self._reset_times, free_everyday, vip_add+free_everyday
+#         free_everyday = base_config['totemRefreshFreeTimes']
+        print 'reset_times------', self._reset_times, 0, vip_add, 0
+        return self._reset_times, 0, vip_add+0
 
     def add_lively(self, times):
         """
