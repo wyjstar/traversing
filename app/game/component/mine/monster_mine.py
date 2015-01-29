@@ -52,7 +52,7 @@ class MineOpt(object):
     @classmethod
     def unlock(cls, tid):
         label = 'mine.lock'
-        cls.rank.zadd(label, tid, 0)
+        cls.rank.myzadd(label, tid, 0)
 
     @classmethod
     def update(cls, label, k, v):

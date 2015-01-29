@@ -246,6 +246,10 @@ class RedisObject(object):
     def myhdel(self, label, *k):
         client = redis_manager.get_connection(self._name)
         return client.hdel(label, k)
+    
+    def myzadd(self, label, k, v):
+        client = redis_manager.get_connection(self._name)
+        client.zadd(label, v, k)
 
     def zremrangebyrank(self, label, m, n):
         produce_key = self.produceKey(label)
