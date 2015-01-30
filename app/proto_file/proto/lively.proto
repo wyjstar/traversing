@@ -1,4 +1,4 @@
-import "item.proto";
+import "common.proto";
 //任务
 message Task
 {
@@ -24,7 +24,8 @@ message rewardRequest
 message rewardResponse
 {
 	required int32 tid = 1; //任务ID
-	repeated ItemPB items = 2; //奖励道具列表
+	//repeated ItemPB items = 2; //奖励道具列表
+	required GameResourcesResponse gain = 2; //通用奖励
 }
 
 message TaskDebug

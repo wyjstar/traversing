@@ -8,6 +8,7 @@ from app.game.core import item_group_helper
 from shared.db_opear.configs_data import data_helper
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
+from app.game.core.item_group_helper import get_return
 remote_gate = GlobalObject().remote['gate']
 from shared.utils.const import const
 
@@ -26,7 +27,7 @@ def query_status_1234(data, player):
         ts.status = status[3]
     return response.SerializePartialToString()
 
-def add_items(player, task_id):
+def add_items(player, task_id, gain):
     """
     添加道具给玩家
     """
@@ -34,8 +35,8 @@ def add_items(player, task_id):
     if task_id in achievement_config:
         task = achievement_config[task_id]
         reward = data_helper.parse(task.reward)
-        item_group_helper.gain(player, reward, const.LIVELY, add_items)
-    return add_items
+        return_data = item_group_helper.gain(player, reward, const.LIVELY)
+        get_return(player, return_data, gain)
 
 @remoteserviceHandle('gate')
 def draw_reward_1235(data, player):
@@ -44,15 +45,12 @@ def draw_reward_1235(data, player):
     status = player.tasks.reward(request.tid)
     player.tasks.save_data()
     if status == 0:
-        items = add_items(player, request.tid)
         response = rewardResponse()
         response.tid = request.tid
-        for item in items:
-            add_item = response.items.add()
-            add_item.item_no = item[2]
-            add_item.item_num = item[1]
+        add_items(player, request.tid, response.gain)
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+        print 'draw_reward_1235::', response
         return response.SerializePartialToString()
     else:
         common = CommonResponse()
