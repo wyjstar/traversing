@@ -2,10 +2,11 @@
 """
 created by sphinx on
 """
-from app.proto_file import online_gift_pb2
 from shared.db_opear.configs_data.game_configs import activity_config
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.logobj import logger
+from app.proto_file import online_gift_pb2
 from shared.utils.const import const
 
 
@@ -57,4 +58,5 @@ def get_online_and_level_gift_data_1120(data, player):
     for _ in player.level_gift.received_gift_ids:
         response.received_level_gift_id.append(_)
 
+    logger.debug(response)
     return response.SerializeToString()

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import time
+from xtime import timestamp_to_date
 import datetime
 
 def get_timestamp(year, month, day, hour=0, minute=0, sec=0):
@@ -46,6 +47,15 @@ def str_time_period_to_timestamp(str_time_period):
     get_current_day_timestamp(hour=int(time2s[0]), minute=int(time2s[1])))
 
 
+def is_next_day(current_time_stamp, last_time_stamp):
+    """docstring for is_nextfname"""
+    current_date = timestamp_to_date(current_time_stamp)
+    last_date = timestamp_to_date(current_time_stamp)
+    if current_date.year >= current_date.year \
+        and current_date.month >= last_date.month \
+        and current_date.day > last_date.day:
+            return True
+    return False
 
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)

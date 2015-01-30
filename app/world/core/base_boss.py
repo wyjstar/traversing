@@ -16,12 +16,9 @@ from shared.utils.date_util import str_time_period_to_timestamp
 from gfirefly.server.logobj import logger
 
 
-tb_baseboss = RedisObject('tb_baseboss')
-
-
 class BaseBoss(object):
     """docstring for Boss 基类"""
-    def __init__(self, boss_name, rank_instance, config_name):
+    def __init__(self, boss_name, rank_instance, config_name, tb_boss):
         self._boss_name = boss_name    # boss 名称：对应redis key
         self._lucky_high_heros = []    # 高级幸运武将
         self._lucky_middle_heros = []  # 中级幸运武将
@@ -34,6 +31,7 @@ class BaseBoss(object):
 
         self._rank_instance = rank_instance  # 排名
         self._config_name = config_name  # worldboss:boss_stages, mineboss:mine_boss_stages
+        self._tb_boss = tb_boss
 
     def init_base_data(self, boss_data):
         """docstring for init_base_data"""
@@ -158,7 +156,7 @@ class BaseBoss(object):
         if rank_no > 10:
             return
         str_player_info = cPickle.dumps(player_info)
-        tb_baseboss.set(player_id, str_player_info)
+        self._tb_boss.set(player_id, str_player_info)
 
     def get_rank_items(self):
         """
@@ -167,7 +165,7 @@ class BaseBoss(object):
         instance = self._rank_instance
         rank_items = []
         for player_id, demage_hp in instance.get(1, 10):
-            player_info = cPickle.loads(tb_baseboss.get(player_id))
+            player_info = cPickle.loads(self._tb_boss.get(player_id))
 
             player_info["demage_hp"] = demage_hp
             rank_items.append(player_info)
@@ -179,7 +177,7 @@ class BaseBoss(object):
         rank no
         """
         player_id = self._rank_instance.get(no, no)[0][0]
-        player_info = cPickle.loads(tb_baseboss.get(player_id))
+        player_info = cPickle.loads(self._tb_boss.get(player_id))
         return player_info
 
     def get_demage_hp(self, player_id):

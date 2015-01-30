@@ -334,13 +334,17 @@ class UserAchievement(Component):
         """
         统计活跃度获得
         """
+        lively_add = 0
         for task_id in self._tasks:
             task = achievement_config.get(task_id)
             if task and task.sort == TaskType.LIVELY:
-                if self._tasks[task_id]._status == TaskStatus.COMPLETE or self._tasks[task_id]._status == TaskStatus.FINISHED:
-                    self._lively += random.randint(task.reward['17'][0], task.reward['17'][1])
+                if self._tasks[task_id]._status == TaskStatus.COMPLETE:# or self._tasks[task_id]._status == TaskStatus.FINISHED:
+                    lively_add += random.randint(task.reward['17'][0], task.reward['17'][1])
                     self._tasks[task_id]._status = TaskStatus.FINISHED
                     self._update = True
+                    
+        self._lively += lively_add
+        print 'lively_count', self._lively
         return self._lively
 
     def check_inter(self, event):

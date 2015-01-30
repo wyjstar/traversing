@@ -121,7 +121,7 @@ def trigger_mine_boss_remote():
     """
     触发boss
     """
-    if mine_boss_manager.get_boss_num() >= 1:
+    if mine_boss_manager.get_boss_num() >= 1 or mine_boss_manager.current_has_boss():
         return False
     boss_id, boss = mine_boss_manager.add()
     response = world_boss_pb2.MineBossResponse()

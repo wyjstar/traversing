@@ -150,15 +150,18 @@ class FriendComponent(Component):
 
     def given_stamina(self, target_id, if_present=True):
         if target_id not in self._friends.keys():
+            logger.error('given_stamina can not find friend!:%s', target_id)
             return False
 
         given_time_list = self._friends[target_id]
         given_times = len(given_time_list)
         if given_times >= 1:
+            logger.error('given_stamina times!:%s', given_times)
             return False
 
         given_time_list.append(datetime.datetime.now())
         if not if_present:
+            logger.error('given_stamina present!:%s', if_present)
             return True
 
         stamina_mail = mail_config.get(1)

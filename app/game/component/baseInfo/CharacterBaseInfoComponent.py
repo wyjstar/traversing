@@ -38,6 +38,7 @@ class CharacterBaseInfoComponent(Component):
         self._vip_level = 0  # VIP等级
         self._vip_content = None  # VIP 相关内容，从config中获得
         self._upgrade_time = int(time.time())
+        self._register_time  = int(time.time()) # 注册时间
 
     def init_data(self, character_info):
         self._id = character_info['id']
@@ -54,6 +55,7 @@ class CharacterBaseInfoComponent(Component):
         self._heads.ParseFromString(character_info['heads'])
         self._vip_level = character_info.get('vip_level')
         self._upgrade_time = character_info.get('upgrade_time', self._upgrade_time)
+        self._register_time = character_info.get('register_time', self._register_time)
 
         self.update_vip()
         self.check_time()
@@ -69,11 +71,12 @@ class CharacterBaseInfoComponent(Component):
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
-                    heads=self._heads.SerializeToString())
+                    heads=self._heads.SerializeToString(),
+                    register_time=self._register_time)
         character_info.hmset(data)
 
     def new_data(self):
-        init_level = 1 #base_config.get('initialPlayerLevel')
+        init_level = base_config.get('initialPlayerLevel')
         init_vip_level = base_config.get('initialVipLevel')
         data = dict(level=init_level,
                     exp=self.exp,
@@ -84,7 +87,8 @@ class CharacterBaseInfoComponent(Component):
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=init_vip_level,
                     upgrade_time=self._upgrade_time,
-                    heads=self._heads.SerializeToString())
+                    heads=self._heads.SerializeToString(),
+                    register_time=self._register_time)
         return data
 
     def check_time(self):
@@ -289,3 +293,11 @@ class CharacterBaseInfoComponent(Component):
     @upgrade_time.setter
     def upgrade_time(self, value):
         self._upgrade_time = value
+
+    @property
+    def register_time(self):
+        return self._register_time
+
+    @register_time.setter
+    def register_time(self, value):
+        self._register_time = value

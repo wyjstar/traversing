@@ -839,21 +839,24 @@ class UserMine(Component):
             if num >= base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
 
-        print 'stype', stype
-#         stype = MineType.COPY
+        print 'stype', stype, MineType.COPY
         if stype == MineType.COPY:
-            print '123'
+            print 'aaaaaaaaaaaaaaaaaa'
             result = None
             try:
                 result = func()
                 print '123', result
             except:
                 print '123456'
+            print 'result------', result
             if not result:
                 stype = MineType.MONSTER_FIELD
 
+        print 'stype------------------', stype
         if stype == MineType.PLAYER_FIELD:
             mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.base_info.level, lively)
+            if mine._tid == self.owner.base_info.id or self.ifhave(mine._seq):
+                mine = None
         if stype == MineType.MONSTER_FIELD:
             mine = MonsterField.create(self.owner.base_info.id, self.owner.base_info.base_name)
         if stype == MineType.CHEST:
@@ -872,6 +875,11 @@ class UserMine(Component):
         print 'search_mine', position, mine.__dict__
         self._update = True
         return mine
+    
+    def ifhave(self, tid):
+        for mine in self._mine.values():
+            if  mine._type != 0 and tid == mine._seq:
+                return True
 
     def mine_status(self):
         """

@@ -21,7 +21,7 @@ def mstimestamp():
 def strdate():
     """
     Get current date.
-    
+
     @return: YYYYmmdd
     @rtype: 8s
     """
@@ -31,7 +31,7 @@ def strdate():
 def strtime():
     """
     Get current time.
-        
+
     @return: HHMMSS
     @rtype: 6s
     """
@@ -41,23 +41,23 @@ def strtime():
 def strdatetime():
     """
     Get current date and time.
-        
+
     @return: YYYY-mm-dd HH:MM:SS
     @rtype: 6s
     """
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-    
+
 def utctimestamp():
     """Get UTC timestamp.
 
-    @rtype: 10d 
+    @rtype: 10d
     """
     return int(time.mktime(time.gmtime()))
 
 def timestambytz(tz):
     """
     Get user timestamp with user's timezone.
-    
+
     @rtype: 10d
     """
     return int(time.mktime(time.gmtime()) + tz)
@@ -65,7 +65,7 @@ def timestambytz(tz):
 def strdatetimebytz(tz):
     """
     Get user date and time with user's timezone.
-    
+
     @rtype: 10d
     """
     try:
@@ -77,7 +77,7 @@ def strdatetimebytz(tz):
 def strdatebytz(tz):
     """
     Get user date with user's timezone.
-    
+
     @rtype: 10d
     """
     try:
@@ -89,31 +89,31 @@ def strdatebytz(tz):
 def strdatefromts(stamp):
     """
     Get date value with timestamp.
-    
-    @rtype: YYmmdd 
+
+    @rtype: YYmmdd
     """
     return (datetime.datetime.fromtimestamp(stamp)).strftime("%Y%m%d")
 
 def strdatetimefromts(stamp):
     """
     Get datetime with timestamp.
-    
-    @rtype: %Y-%m-%d %H:%M 
+
+    @rtype: %Y-%m-%d %H:%M
     """
     return (datetime.datetime.fromtimestamp(stamp)).strftime("%Y-%m-%d %H:%M")
 
 def strdatetimefromts_ss(stamp):
     """
     Get datetime with timestamp.
-    
-    @rtype: %Y-%m-%d %H:%M 
+
+    @rtype: %Y-%m-%d %H:%M
     """
     return (datetime.datetime.fromtimestamp(stamp)).strftime("%Y-%m-%d %H:%M:%S")
 
 def tsfromstrdate(s, with_sec=False):
     """
     Convert datetime string to timestamp.
-    
+
     @rtype: 10d
     """
     pattern = "%Y-%m-%d %H:%M:%S" if with_sec else "%Y-%m-%d %H:%M"
@@ -122,7 +122,7 @@ def tsfromstrdate(s, with_sec=False):
 def foract(s):
     """
     Convert datetime string to timestamp.
-    
+
     @rtype: 10d
     """
     return int(time.mktime(datetime.datetime.strptime(s, "%Y-%m-%d %H:%M:%S").timetuple()))
@@ -130,7 +130,7 @@ def foract(s):
 def today_ts():
     """
     Get timestamp of today.
-    
+
     @rtype: 10d
     """
     s = datetime.date.today()
@@ -142,8 +142,8 @@ def tomorrow_ts():
 def week_num():
     w = datetime.date.today().isocalendar()[1]
     return w
-    
-def now_hour():    
+
+def now_hour():
     return datetime.datetime.now().hour
 
 def now_minutes():
@@ -160,3 +160,10 @@ def minutesfromstr(s):
 
 def dateToTime(d):
     return tsfromstrdate(d, with_sec=True)
+
+def timestamp_to_date(timestamp):
+    return datetime.datetime.fromtimestamp(timestamp)
+
+if __name__ == '__main__':
+    xx = timestamp_to_date(time.time())
+    print xx.year, xx.month, xx.day

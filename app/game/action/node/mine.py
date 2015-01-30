@@ -682,14 +682,7 @@ def trigger_mine_boss():
     return result
 
 def mine_boss():
-    boss_num = remote_gate['world'].mine_get_boss_num_remote()
-    logger.debug("mine boss num: %s" % boss_num)
-    max_boss_num = base_config.get("warFogBossCriServer")
-    if boss_num >= max_boss_num:
-        assert False, "mine boss reach max!"
-
     result = remote_gate['world'].trigger_mine_boss_remote()
-    assert result, "trigger boss error!"
     return result
 
 
@@ -699,15 +692,9 @@ def trigger_mine_boss_1259(data, player):
     仅供测试，触发秘境boss
     return {"result":True, "boss_id": boss_id}
     """
-    boss_num = remote_gate['world'].mine_get_boss_num_remote()
-    logger.debug("mine boss num: %s" % boss_num)
-    max_boss_num = base_config.get("warFogBossCriServer")
-    if boss_num >= max_boss_num:
-        assert False, "mine boss reach max!"
 
     result = remote_gate['world'].trigger_mine_boss_remote()
-    assert result, "trigger boss error!"
-
+    assert result, "trigger_mine_boss"
     response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
