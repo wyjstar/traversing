@@ -80,15 +80,20 @@ class CharacterSignInComponent(Component):
     def is_signd(self, month, day):
         """是否已经签到"""
         logger.info("sign_in_days:%s", self._sign_in_days)
+        logger.debug("sign_in_days:%s" % self._sign_in_days)
         return day in self._sign_in_days and month == self._month
 
     def sign_in(self, month, day):
         """签到"""
         if self._sign_in_days and month - self._month != 0:
+            logger.debug(self._month)
+            logger.debug(month)
+            logger.debug("++++++++++++++")
             self._month = month
             self._sign_in_days = []
             self._continuous_sign_in_days = 0
 
+        self._month = month
         self._sign_in_days.append(day)
         if not self._sign_in_days or day - self._sign_in_days[-1] == 1:
             self._continuous_sign_in_days += 1

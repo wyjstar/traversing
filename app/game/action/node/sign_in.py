@@ -15,6 +15,8 @@ from app.proto_file.sign_in_pb2 import GetSignInResponse
 from app.game.core.drop_bag import BigBag
 import datetime
 from shared.utils.const import const
+from shared.utils.xtime import timestamp_to_date
+from gfirefly.server.logobj import logger
 
 
 @remoteserviceHandle('gate')
@@ -40,6 +42,16 @@ def sign_in_1401(pro_data, player):
     date = datetime.datetime.now()
     month = date.month
     day = date.day
+
+    register_time = player.base_info.register_time
+    register_time = timestamp_to_date(register_time)
+    if register_time.month == month:
+        day = day - register_time.day + 1
+
+    logger.debug(day)
+    logger.debug(date.day)
+    logger.debug(register_time.day)
+    logger.debug(register_time.month)
 
     # 同一天签到校验
     if player.sign_in_component.is_signd(month, day):
