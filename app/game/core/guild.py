@@ -13,7 +13,7 @@ class Guild(object):
         """创建一个角色
         """
         self._name = ''  # 名
-        self._g_id = 0  # id
+        self._g_id = 'no'  # id
         self._p_num = 1  # 人数
         self._level = 1  # 等级
         self._exp = 0  # 经验
