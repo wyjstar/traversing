@@ -308,7 +308,7 @@ def add_friend_request_remote(target_id, is_online, player):
     # print 'target_id:', target_id, 'ison:', is_online
     logger.debug('add friend request:%s, %s', is_online, target_id)
     result = player.friends.add_applicant(target_id)
-    assert(result)
+    # assert(result)
     player.friends.save_data()
     if is_online:
         remote_gate.push_object_remote(1110,
