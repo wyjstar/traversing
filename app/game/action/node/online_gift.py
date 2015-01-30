@@ -23,6 +23,9 @@ def get_online_gift_1121(data, player):
     online_minutes = player.online_gift.online_time  # / 60
 
     if request.gift_id in player.online_gift.received_gift_ids:
+        logger.error('repeat onilne gift:%s,%s',
+                     player.online_gift.received_gift_ids,
+                     request.gift_id)
         response.result = False
         return response.SerializeToString()
 
@@ -36,15 +39,17 @@ def get_online_gift_1121(data, player):
                 data = dict(online_time=player.online_gift.online_time,
                             received_gift_ids=player.online_gift.received_gift_ids)
                 player.online_gift.received_gift_ids.append(request.gift_id)
+                player.online_gift.reset()
                 player.online_gift.save_data()
 
                 response.result = True
                 return response.SerializeToString()
-            else:
-                break
+            break
+    else:
+        logger.error('cant find gift id:%s', request.gift_id)
 
     response.result = False
-    print response
+    logger.error(response)
     return response.SerializeToString()
 
 
@@ -52,11 +57,10 @@ def get_online_gift_1121(data, player):
 def get_online_and_level_gift_data_1120(data, player):
     response = online_gift_pb2.GetOnlineLevelGiftData()
 
-    response.online_time = player.online_gift.online_time
+    response.online_time = int(player.online_gift.online_time)
     for _ in player.online_gift.received_gift_ids:
         response.received_online_gift_id.append(_)
     for _ in player.level_gift.received_gift_ids:
         response.received_level_gift_id.append(_)
 
-    logger.debug(response)
     return response.SerializeToString()
