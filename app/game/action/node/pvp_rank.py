@@ -16,6 +16,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data.game_configs import arena_fight_config
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import vip_config
+from shared.db_opear.configs_data.game_configs import mail_config
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
@@ -200,6 +201,24 @@ def pvp_fight_request_1505(data, player):
                 logger.info('update result:%s', result)
                 refresh_rank_data(player, request.challenge_rank,
                                   __skill, __skill_level)
+                # 首次达到某名次的奖励
+                for (rank, mail_id) in base_config.get('arena_rank_points'):
+                    if rank < request.challenge_rank:
+                        pass
+                    if rank in player.base_info.pvp_high_rank_award:
+                        continue
+                    mail_conf = mail_config.get(mail_id)
+                    mail = Mail_PB()
+                    mail.config_id = mail_id
+                    mail.receive_id = player.base_info.id
+                    mail.send_time = int(time.time())
+                    mail_data = mail.SerializePartialToString()
+
+                    if not netforwarding.push_message('receive_mail_remote',
+                                                      player.base_info.id,
+                                                      mail_data):
+                        logger.error('pvp high rank award mail fail, \
+                                player id:%s', player.base_info.id)
         else:
             refresh_rank_data(player, request.challenge_rank,
                               __skill, __skill_level)

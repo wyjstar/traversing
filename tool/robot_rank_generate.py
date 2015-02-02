@@ -11,7 +11,6 @@ import json
 from gfirefly.dbentrust import util
 from gfirefly.dbentrust.dbpool import dbpool
 from gfirefly.dbentrust.dbpool import get_connection
-from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import log_init_only_out
 from gfirefly.distributed.node import RemoteObject
@@ -71,7 +70,6 @@ if __name__ == '__main__':
     dbpool.initPool(host=hostname, user=user,
                     passwd=password, port=port,
                     db=dbname, charset=charset)
-    # mclient.connect(["127.0.0.1:11211"], 'robot')
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
