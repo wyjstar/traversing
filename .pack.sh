@@ -28,20 +28,20 @@ echo "mkdir $temp_dir"
 mkdir $temp_dir
 
 for dir in gfirefly gtwisted config test shared app cobar deploy tool appmain.py models.json mgc.config template.json startmaster.py; do
-    echo "cp -rf $dir $temp_dir"
-    cp $dir -rf $temp_dir
+    echo "cp -fr $dir $temp_dir"
+    cp -fr $dir $temp_dir/
 done
 
 cd $temp_dir
 echo "compile *.py to *.pyc"
-find -name '*.py' -exec python -m py_compile {} \;
+find ./ -name '*.py' -exec python -m py_compile {} \;
 cp startmaster.py ..
 cp appmain.py ..
 echo "clear useless files"
-find ./ -name '.*' -exec rm -rf {} \;
+# find ./ -name '.*' -exec rm -rf {} \;
 find ./ -name '~*' -exec rm -rf {} \;
 find ./ -name '*.log' -exec rm -rf {} \;
-#find ./ -name '*.py' -exec rm -rf {} \;
+# find ./ -name '*.py' -exec rm -rf {} \;
 find ./ -name '*.zip' -exec rm -rf {} \;
 find ./ -name '*.xls' -exec rm -rf {} \;
 
