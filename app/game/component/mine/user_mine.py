@@ -878,7 +878,7 @@ class UserMine(Component):
     
     def ifhave(self, tid):
         for mine in self._mine.values():
-            if  mine._type != 0 and tid == mine._seq:
+            if  mine._type == 1 and tid == mine._seq:
                 return True
 
     def mine_status(self):
