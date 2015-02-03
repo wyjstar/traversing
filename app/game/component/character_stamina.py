@@ -130,4 +130,4 @@ class CharacterStaminaComponent(Component):
     @property
     def contributors(self):
         self.check_time()
-        return self.contributors
+        return self._stamina.contributors

@@ -3,9 +3,9 @@
 created by server on 14-8-26
 """
 import time
-import datetime
-from app.game.component.Component import Component
+from gfirefly.server.logobj import logger
 from app.game.redis_mode import tb_character_info
+from app.game.component.Component import Component
 
 
 class CharacterOnlineGift(Component):
@@ -13,7 +13,7 @@ class CharacterOnlineGift(Component):
 
     def __init__(self, owner):
         super(CharacterOnlineGift, self).__init__(owner)
-        self._login_on_time = datetime.datetime.now()
+        self._login_on_time = time.time()
         self._online_time = 0
         self._refresh_time = time.time()
         self._received_gift_ids = []
@@ -24,9 +24,9 @@ class CharacterOnlineGift(Component):
         self._refresh_time = data.get('refresh_time', time.time())
         self._received_gift_ids = data['received_gift_ids']
         self.check_time()
+        logger.debug(self.__dict__)
 
     def save_data(self):
-        self.check_time()
         activity = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(online_time=self._online_time,
                     refresh_time=self._refresh_time,
@@ -40,8 +40,8 @@ class CharacterOnlineGift(Component):
         return {'online_gift': data}
 
     def offline_player(self):
-        accumulate_time = datetime.datetime.now() - self._login_on_time
-        self._online_time += accumulate_time.seconds
+        accumulate_time = time.time() - self._login_on_time
+        self._online_time += accumulate_time
         self.save_data()
 
     def check_time(self):
@@ -49,12 +49,19 @@ class CharacterOnlineGift(Component):
         local_tm = time.localtime()
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._online_time = 0
-            self._login_on_time = datetime.datetime.now()
+            self._login_on_time = time.time()
+            self._refresh_time = time.time()
             self._received_gift_ids = []
+            self.save_data()
+
+    def reset(self):
+        self._refresh_time = time.time()
+        self._login_on_time = time.time()
+        self.online_time = 0
 
     @property
     def online_time(self):
-        elapse = (datetime.datetime.now() - self._login_on_time).seconds
+        elapse = time.time() - self._login_on_time
         return self._online_time + elapse
 
     @online_time.setter
