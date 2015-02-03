@@ -288,8 +288,16 @@ def line_up_info(player):
         response.order.append(temp)
     response.unpar_id = player.line_up_component.current_unpar
 
+    # 武将和装备
     line_up_info_detail(player.line_up_component.line_up_slots, player.line_up_component.sub_slots, response)
 
+    # 风物志
+    player.travel_component.update_travel_item(response)
+
+    # 公会等级
+    response.guild_level = player.guild.get_guild_level()
+
+    # 无双
     for k, v in player.line_up_component.unpars.items():
         add_unpar = response.unpars.add()
         add_unpar.unpar_id = k

@@ -134,14 +134,7 @@ def travel_init_830(data, player):
         player.travel_component.last_buy_shoes = [0, int(time.time())]
 
     response.buy_shoe_times = player.travel_component.last_buy_shoes[0]
-
-    for (stage_id, item) in player.travel_component.travel_item.items():
-        travel_item_chapter = response.travel_item_chapter.add()
-        travel_item_chapter.stage_id = stage_id
-        for [travel_item_id, num] in item:
-            travel_item = travel_item_chapter.travel_item.add()
-            travel_item.id = travel_item_id
-            travel_item.num = num
+    player.travel_component.update_travel_item(response)
 
     update_auto(player, 1)
     deal_auto_response(response, player)

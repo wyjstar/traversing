@@ -271,7 +271,6 @@ def guard_1244(data, player):
         hero = player.hero_component.get_hero(slot.hero_no)
         hero.is_guard = True
         hero.save_data()
-
     battle_units = {}  # 需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
         unit = slot.slot_attr
@@ -285,6 +284,12 @@ def guard_1244(data, player):
     add_unpar = line_up_response.unpars.add()
     add_unpar.unpar_id = __skill
     add_unpar.unpar_level = __skill_level
+
+    # 风物志
+    player.travel_component.update_travel_item(line_up_response)
+
+    # 公会等级
+    line_up_response.guild_level = player.guild.get_guild_level()
 
     info = {}
     info["battle_units"] = battle_units

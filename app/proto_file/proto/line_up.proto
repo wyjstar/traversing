@@ -1,6 +1,8 @@
 import "common.proto";
 import "hero.proto";
 import "equipment.proto";
+import "travel_item.proto";
+import "travel.proto";
 
 //格子装备
 message SlotEquipment{
@@ -32,6 +34,8 @@ message LineUpResponse{
 	optional CommonResponse res = 4;
     repeated int32 order = 5;
     optional int32 unpar_id = 6;  // 当前无双
+    repeated TravelItemChapter travel_item_chapter = 7; // 风物志
+    optional int32 guild_level = 8; // 公会等级
 }
 
 message LineUpUnparUpgrade{
