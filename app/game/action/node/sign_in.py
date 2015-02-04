@@ -13,7 +13,6 @@ from app.proto_file.sign_in_pb2 import SignInResponse
 from app.proto_file.sign_in_pb2 import ContinuousSignInResponse
 from app.proto_file.sign_in_pb2 import GetSignInResponse
 from app.game.core.drop_bag import BigBag
-import datetime
 from shared.utils.const import const
 from shared.utils.xtime import timestamp_to_date
 from gfirefly.server.logobj import logger
@@ -116,8 +115,10 @@ def repair_sign_in_1403(pro_data, player):
 
     repair_sign_in_times = player.sign_in_component.repair_sign_in_times
     gold = player.finance.gold
+    logger.debug("repair sign in : %s %s" % (repair_sign_in_times, len(sign_in_add)))
     # 校验签到次数
-    if repair_sign_in_times == len(sign_in_add):
+    if repair_sign_in_times >= len(sign_in_add):
+        logger.debug("repair sigin in max")
         response.res.result = False
         response.res.result_no = 1404
         return response.SerializePartialToString()
