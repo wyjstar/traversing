@@ -10,6 +10,7 @@ from app.game.component.mine.monster_mine import MineOpt
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
+from gfirefly.server.logobj import logger
 import time
 from shared.tlog import tlog_action
 
@@ -107,6 +108,7 @@ class CharacterBaseInfoComponent(Component):
         while self._exp >= player_exp_config.get(self._level).get('exp'):
             self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
+            logger.info('player level up ++ %s', self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
             if not player_exp_config.get(self._level):
