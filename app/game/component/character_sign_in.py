@@ -5,31 +5,29 @@ created by server on 14-6-27下午6:44.
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
+from shared.utils.date_util import days_to_current
 
 
 class CharacterSignInComponent(Component):
 
     def __init__(self, owner):
         super(CharacterSignInComponent, self).__init__(owner)
-        self._month = 0  # 当前签到月
+        self._sign_round = 1  # 当前签到月
         self._sign_in_days = []  # 签到日期
-        self._continuous_sign_in_days = 0  # 连续签到天数
-        self._continuous_sign_in_prize = []  # 已经获取的连续签到奖励，保存列表[7，15，25]
+        self._continuous_sign_in_prize = []  # 已经获取的累积签到奖励，保存列表[7，15，25]
         self._repair_sign_in_times = 0  # 补充签到次数
 
     def init_data(self, character_info):
         sign_in_data = character_info.get('sign_in')
-        self._month = sign_in_data.get('month')
+        self._sign_round = sign_in_data.get('sign_round')
         self._sign_in_days = sign_in_data.get('sign_in_days')
-        self._continuous_sign_in_days = sign_in_data.get('continuous_sign_in_days')
         self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize')
         self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times')
 
     def save_data(self):
         props = dict(
-            month=self._month,
+            sign_round=self._sign_round,
             sign_in_days=self._sign_in_days,
-            continuous_sign_in_days=self._continuous_sign_in_days,
             continuous_sign_in_prize=self._continuous_sign_in_prize,
             repair_sign_in_times=self._repair_sign_in_times)
 
@@ -38,9 +36,8 @@ class CharacterSignInComponent(Component):
 
     def new_data(self):
         props = dict(
-            month=self._month,
+            sign_round=self._sign_round,
             sign_in_days=self._sign_in_days,
-            continuous_sign_in_days=self._continuous_sign_in_days,
             continuous_sign_in_prize=self._continuous_sign_in_prize,
             repair_sign_in_times=self._repair_sign_in_times)
         return {'sign_in': props}
@@ -54,12 +51,15 @@ class CharacterSignInComponent(Component):
         self._sign_in_days = value
 
     @property
-    def continuous_sign_in_days(self):
-        return self._continuous_sign_in_days
+    def sign_round(self):
+        return self._sign_round
 
-    @continuous_sign_in_days.setter
-    def continuous_sign_in_days(self, value):
-        self._continuous_sign_in_days = value
+    @sign_round.setter
+    def sign_round(self, value):
+        self._sign_round = value
+
+    def current_day(self):
+        return days_to_current(self.owner.base_info.register_time) / 30 + 1
 
     @property
     def continuous_sign_in_prize(self):
@@ -77,23 +77,20 @@ class CharacterSignInComponent(Component):
     def repair_sign_in_times(self, value):
         self._repair_sign_in_times = value
 
-    def is_signd(self, month, day):
+    def is_signd(self, day):
         """是否已经签到"""
         logger.info("sign_in_days:%s", self._sign_in_days)
-        logger.debug("sign_in_days:%s" % self._sign_in_days)
-        return day in self._sign_in_days and month == self._month
+        return day in self._sign_in_days
 
-    def sign_in(self, month, day):
+    def sign_in(self, day):
         """签到"""
-        if self._sign_in_days and month - self._month != 0:
-            logger.debug(self._month)
-            logger.debug(month)
-            logger.debug("++++++++++++++")
-            self._month = month
-            self._sign_in_days = []
-            self._continuous_sign_in_days = 0
-
-        self._month = month
         self._sign_in_days.append(day)
-        if not self._sign_in_days or day - self._sign_in_days[-1] == 1:
-            self._continuous_sign_in_days += 1
+
+    def clear_sign_days(self):
+        """docstring for clear_sign_days"""
+        sign_round = days_to_current(self.owner.base_info.register_time) / 30 + 1
+        if self._sign_in_days and sign_round - self._sign_round != 0:
+            self._sign_round = sign_round
+            self._sign_in_days = []
+        self.save_data()
+
