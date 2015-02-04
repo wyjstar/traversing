@@ -108,7 +108,7 @@ class CharacterBaseInfoComponent(Component):
         while self._exp >= player_exp_config.get(self._level).get('exp'):
             self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
-            logger.info('player level up ++ %s', self._level)
+            logger.info('player id:%s level up ++ %s', self._id, self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
             if not player_exp_config.get(self._level):
