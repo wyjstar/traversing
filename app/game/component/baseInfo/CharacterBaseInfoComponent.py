@@ -64,7 +64,7 @@ class CharacterBaseInfoComponent(Component):
     def save_data(self):
         character_info = tb_character_info.getObj(self._id)
 
-        data = dict(level=self.level,
+        data = dict(level=self._level,
                     exp=self.exp,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
@@ -75,6 +75,7 @@ class CharacterBaseInfoComponent(Component):
                     heads=self._heads.SerializeToString(),
                     register_time=self._register_time)
         character_info.hmset(data)
+        logger.debug("save level:%s,%s", str(self._id), str(data))
 
     def new_data(self):
         init_level = base_config.get('initialPlayerLevel')
@@ -108,7 +109,7 @@ class CharacterBaseInfoComponent(Component):
         while self._exp >= player_exp_config.get(self._level).get('exp'):
             self._exp -= player_exp_config.get(self._level).get('exp')
             self._level += 1
-            logger.info('player id:%s level up ++ %s', self._id, self._level)
+            logger.info('player id:%s level up ++ %s>>%s', self._id, before_level, self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
             if not player_exp_config.get(self._level):
@@ -138,17 +139,9 @@ class CharacterBaseInfoComponent(Component):
     def level(self):
         return self._level
 
-    @level.setter
-    def level(self, level):
-        self._level = level
-
     @property
     def exp(self):
         return self._exp
-
-    @exp.setter
-    def exp(self, exp):
-        self._exp = exp
 
     @property
     def vip_level(self):

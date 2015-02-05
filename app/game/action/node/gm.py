@@ -2,37 +2,22 @@
 """
 created by server on 14-7-17下午4:50.
 """
-import re
-import time
-from app.game.core.PlayersManager import PlayersManager
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info, tb_guild_name
-from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
-from shared.db_opear.configs_data.game_configs import guild_config
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.utils import trie_tree
-import cPickle
 from app.game.core.item_group_helper import gain
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
 from test.init_data.init_data import init
-
 from test.init_data.mock_heros import init_hero
 from test.init_data.mock_hero_chips import init_hero_chip
 from test.init_data.mock_equipment import init_equipment
 from test.init_data.mock_equipment_chip import init_equipment_chip
 from test.init_data.mock_item import init_item
-from test.init_data.mock_line_up import init_line_up
-from test.init_data.mock_runt import init_runt
-from test.init_data.mock_guild import init_guild
-from test.init_data.mock_travel_item import init_travel_item
-from test.init_data.mock_player import init_player
-
-from app.game.redis_mode import tb_guild_info, tb_guild_name
+import cPickle
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -50,7 +35,7 @@ def add_level_remote(data, player):
     if level > 200:
         level = 200
 
-    player.base_info.level = level
+    player.base_info._level = level
     player.base_info.save_data()
     return True
 
