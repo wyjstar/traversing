@@ -841,6 +841,7 @@ class UserMine(Component):
                 stype = MineType.MONSTER_FIELD
 
         print 'stype', stype, MineType.COPY
+        stype = MineType.COPY
         if stype == MineType.COPY:
             print 'aaaaaaaaaaaaaaaaaa'
             result = None
@@ -877,7 +878,7 @@ class UserMine(Component):
         print 'search_mine', position, mine.__dict__
         self._update = True
         return mine
-    
+
     def ifhave(self, tid):
         for mine in self._mine.values():
             if  mine._type == 1 and tid == mine._seq:
