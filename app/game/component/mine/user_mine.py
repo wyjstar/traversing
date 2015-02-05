@@ -6,7 +6,7 @@ Created on 2014-11-24
 '''
 import random
 from shared.db_opear.configs_data.game_configs import base_config, mine_config,\
-    shop_config, mine_match_config
+    shop_config, mine_match_config, shop_type_config
 from app.game.component.Component import Component
 import time
 from app.game.redis_mode import tb_character_info
@@ -620,7 +620,8 @@ class Shop(Mine):
         Mine.__init__(self)
         self._gen_time = 0
         self._shops = {}
-        num = base_config['warFogShopItemNum']
+#         num = base_config['warFogShopItemNum']
+        num = shop_type_config.get(7).itemNum
         shopids = ConfigData.shopid_odds()
         for _ in range(num):
             shop_id = random_pick(shopids, sum(shopids.values()))
@@ -743,8 +744,8 @@ class UserMine(Component):
     def if_have_shop(self):
         for mine_id in self._mine:
             if self._mine[mine_id]._type == MineType.SHOP:
-                return False
-        return True
+                return True
+        return False
 
     def _reset_everyday(self):
         """
