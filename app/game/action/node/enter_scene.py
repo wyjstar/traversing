@@ -16,12 +16,14 @@ from shared.utils.const import const
 
 remote_gate = GlobalObject().remote['gate']
 
+
 @remoteserviceHandle('gate')
 def enter_scene_remote(dynamic_id, character_id):
     """进入场景"""
     is_new_character = 1
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
+        logger.debug('new player:%s', character_id)
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
@@ -78,7 +80,8 @@ def enter_scene_remote(dynamic_id, character_id):
     if const.DEBUG:
         for slot_no, slot in player.line_up_component.line_up_slots.items():
             hero = slot.hero_slot.hero_obj
-            if not hero: continue
+            if not hero:
+                continue
             combat_power_hero_lineup(player, hero, slot_no)
             awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
 
