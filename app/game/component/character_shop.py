@@ -84,9 +84,9 @@ class CharacterShopComponent(Component):
         if __shop_data['refresh_times'] >= free_times:
             refreshprice = shop_item.get('refreshPrice')
             if not refreshprice:
-                logger.error('no refresh price:shop type:%s', shop_type)
-                return False
-            ctype, price = refreshprice.items()[0]
+                logger.debug('no refresh price:shop type:%s', shop_type)
+            else:
+                ctype, price = refreshprice.items()[0]
             # print ctype, price
 
         result = self.owner.finance.consume_gold(price)

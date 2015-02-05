@@ -28,11 +28,6 @@ class CharacterStageComponent(Component):
 
         self._stage_up_time = 1  # 关卡挑战次数 更新 时间
 
-    def update_stage_times(self):
-        self._stage_up_time = int(time.time())
-        for stage_id, stage in self._stage_info.items():
-            stage.attacks = 0
-
     def init_data(self, character_info):
         stages = character_info.get('stage_info')
         for stage_id, stage in stages.items():
@@ -44,15 +39,6 @@ class CharacterStageComponent(Component):
         self._elite_stage_info = character_info.get('elite_stage')
         self._act_stage_info = character_info.get('act_stage')
         self._stage_up_time = character_info.get('stage_up_time')
-
-    def get_stage(self, stage_id):
-        """取得关卡信息
-        """
-        stage_obj = self._stage_info.get(stage_id, None)
-        if not stage_obj:
-            stage_obj = Stage(stage_id, state=-2)
-            self._stage_info[stage_id] = stage_obj
-        return stage_obj
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -69,6 +55,32 @@ class CharacterStageComponent(Component):
                 'act_stage': [0, int(time.time())],
                 'stage_up_time': int(time.time())}
         return data
+
+    def save_data(self):
+        props = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in self._stage_info.iteritems()]),
+                 'award_info': dict(
+                     [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),
+                 'elite_stage': self._elite_stage_info,
+                 'act_stage': self._act_stage_info,
+                 'stage_up_time': self._stage_up_time
+                 }
+
+        char_obj = tb_character_info.getObj(self.owner.base_info.id)
+        char_obj.hmset(props)
+
+    def get_stage(self, stage_id):
+        """取得关卡信息
+        """
+        stage_obj = self._stage_info.get(stage_id, None)
+        if not stage_obj:
+            stage_obj = Stage(stage_id, state=-2)
+            self._stage_info[stage_id] = stage_obj
+        return stage_obj
+
+    def update_stage_times(self):
+        self._stage_up_time = int(time.time())
+        for stage_id, stage in self._stage_info.items():
+            stage.attacks = 0
 
     # def get_stage_by_condition(self, stage_id):
     #     """根据条件关卡编号取得开启关卡信息
@@ -155,18 +167,6 @@ class CharacterStageComponent(Component):
                 continue
             num += 1
         return num
-
-    def save_data(self):
-        props = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in self._stage_info.iteritems()]),
-                 'award_info': dict(
-                     [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),
-                 'elite_stage': self._elite_stage_info,
-                 'act_stage': self._act_stage_info,
-                 'stage_up_time': self._stage_up_time
-                 }
-
-        char_obj = tb_character_info.getObj(self.owner.base_info.id)
-        char_obj.hmset(props)
 
     @property
     def elite_stage_info(self):
