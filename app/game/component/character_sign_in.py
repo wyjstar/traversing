@@ -59,7 +59,7 @@ class CharacterSignInComponent(Component):
         self._sign_round = value
 
     def current_day(self):
-        return days_to_current(self.owner.base_info.register_time) / 30 + 1
+        return days_to_current(self.owner.base_info.register_time) % 30 + 1
 
     @property
     def continuous_sign_in_prize(self):
