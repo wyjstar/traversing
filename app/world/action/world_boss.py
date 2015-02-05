@@ -11,6 +11,7 @@ from app.battle.battle_process import BattlePVBProcess
 import cPickle
 from shared.utils.date_util import get_current_timestamp
 from app.world.action.gateforwarding import push_all_object_message
+from gfirefly.server.logobj import logger
 
 
 @rootserviceHandle
@@ -25,13 +26,16 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     """
     boss = get_boss(boss_id)
     print "boss ", boss
+    logger.debug("boss %s" % boss_id)
     response = world_boss_pb2.PvbBeforeInfoResponse()
-    for hero_no in boss.lucky_high_heros:
-        response.lucky_high_heros.append(hero_no)
-    for hero_no in boss.lucky_middle_heros:
-        response.lucky_middle_heros.append(hero_no)
-    for hero_no in boss.lucky_low_heros:
-        response.lucky_low_heros.append(hero_no)
+
+    if boss_id == "world_boss":
+        for hero_no in boss.lucky_high_heros:
+            response.lucky_high_heros.append(hero_no)
+        for hero_no in boss.lucky_middle_heros:
+            response.lucky_middle_heros.append(hero_no)
+        for hero_no in boss.lucky_low_heros:
+            response.lucky_low_heros.append(hero_no)
 
     # 返回伤害前十名
     for rank_item in boss.get_rank_items():
@@ -110,7 +114,7 @@ def get_boss(boss_id):
     if boss_id == "world_boss":
         return world_boss
     else:
-        return mine_boss_manager.get(boss_id)
+        return mine_boss_manager.get_current_boss()
 
 @rootserviceHandle
 def mine_get_boss_num_remote():

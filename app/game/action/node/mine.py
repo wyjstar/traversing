@@ -672,33 +672,21 @@ def get_save_guard(player, pos):
     return info
 
 
-def trigger_mine_boss():
-    """
-    触发秘境boss
-    return {"result":True, "boss_id": boss_id}
-    """
-    boss_num = remote_gate['world'].get_boss_num()
-    max_boss_num = base_config.get("warFogBossCriServer")
-    if boss_num >= max_boss_num:
-        return False
-
-    result = remote_gate['world'].trigger_mine_boss()
-    return result
 
 def mine_boss():
     result = remote_gate['world'].trigger_mine_boss_remote()
     return result
 
 
-@remoteserviceHandle('gate')
-def trigger_mine_boss_1259(data, player):
-    """
-    仅供测试，触发秘境boss
-    return {"result":True, "boss_id": boss_id}
-    """
+#@remoteserviceHandle('gate')
+#def trigger_mine_boss_1259(data, player):
+    #"""
+    #仅供测试，触发秘境boss
+    #return {"result":True, "boss_id": boss_id}
+    #"""
 
-    result = remote_gate['world'].trigger_mine_boss_remote()
-    assert result, "trigger_mine_boss"
-    response = common_pb2.CommonResponse()
-    response.result = True
-    return response.SerializePartialToString()
+    #result = remote_gate['world'].trigger_mine_boss_remote()
+    #assert result, "trigger_mine_boss"
+    #response = common_pb2.CommonResponse()
+    #response.result = True
+    #return response.SerializePartialToString()

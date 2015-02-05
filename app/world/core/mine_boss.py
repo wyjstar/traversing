@@ -22,7 +22,8 @@ class MineBossManager(object):
     """docstring for MineBoss"""
     def __init__(self):
         super(MineBossManager, self).__init__()
-        self._bosses = {}  # 所有boss
+        #self._bosses = {}  # 所有boss
+        self._boss = None  # current boss
         self._base_data_name = "mine_boss"
         self._base_demage_name = "MineBossDemage"
         self._last_time = 0
@@ -42,7 +43,8 @@ class MineBossManager(object):
         Ranking.init(boss_demage_name, 10)
         boss = MineBoss(boss_name, Ranking.instance(boss_demage_name),
                         "mine_boss_stages")
-        self._bosses[boss_id] = boss
+        #self._bosses[boss_id] = boss
+        self._boss = boss
         current_time = time.time()
         self._last_time = current_time
         self._boss_num += 1
@@ -56,7 +58,11 @@ class MineBossManager(object):
         return boss_name, boss_demage_name
 
     def get(self, boss_id):
-        return self._bosses.get(boss_id)
+        #return self._bosses.get(boss_id)
+        return self._boss
+
+    def get_current_boss(self):
+        return self._boss
 
     def remove(self, boss_id):
         boss_name, boss_demage_name = self.get_boss_name(boss_id)
@@ -71,7 +77,8 @@ class MineBossManager(object):
         return self._boss_num
 
     def current_has_boss(self):
-        return len(self._bosses) == 1
+        #return len(self._bosses) == 1
+        return self._boss != None
 
     def save_data(self):
         data = dict(boss_num=self._boss_num, last_time=self._last_time)
