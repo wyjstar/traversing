@@ -638,8 +638,8 @@ def battle_1253(data, player):
             pass
         process_mine_result(player, pos, response, fight_result, mine_type)
 
-        blue_best_skill_id = info.get("best_skill_id")
-        blue_best_skill_level = info.get("best_skill_level")
+        blue_best_skill_id = info.get("best_skill_id", 0)
+        blue_best_skill_level = info.get("best_skill_level", 0)
 
         print red_units, blue_units
 
@@ -649,7 +649,6 @@ def battle_1253(data, player):
     response.blue_best_skill_id = blue_best_skill_id
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
-    print response, red_units, blue_units
     response.res.result = True
     return response.SerializePartialToString()
 
