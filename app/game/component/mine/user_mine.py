@@ -867,6 +867,7 @@ class UserMine(Component):
                 mine = None
             else:
                 mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
+                self.owner.shop.refresh_price(7)
         if stype == MineType.COPY:
             mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
 
