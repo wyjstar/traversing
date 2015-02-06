@@ -579,8 +579,8 @@ def settle_1252(data, player):
     request.ParseFromString(data)
     pos = request.pos
     result = request.result
-    #todo: check result
-    #todo: set settle time to calculate acc_mine
+    # todo: check result
+    # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0)
     response = common_pb2.CommonResponse()
     response.result = True
@@ -594,7 +594,7 @@ def battle_1253(data, player):
     request.ParseFromString(data)
     pos = request.pos                    # 矿所在位置
     line_up = request.lineup            # 阵容顺序
-    red_best_skill_id = request.unparalleled # 无双编号
+    red_best_skill_id = request.unparalleled  # 无双编号
     blue_best_skill_id = 0
     blue_best_skill_level = 0
     red_units = {}
@@ -623,8 +623,7 @@ def battle_1253(data, player):
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
 
-
-        print red_units, blue_units
+        # print red_units, blue_units
 
     elif mine_type == 1:
         # pvp
@@ -659,8 +658,9 @@ def get_mine_info(player, pos):
     如果野怪驻守的矿：关卡id
     玩家驻守的矿：
     """
-    mine_info  = player.mine.get_info(pos)
+    mine_info = player.mine.get_info(pos)
     return mine_info
+
 
 def get_save_guard(player, pos):
     """
@@ -682,23 +682,24 @@ def trigger_mine_boss():
     if boss_num >= max_boss_num:
         return False
 
-    result = remote_gate['world'].trigger_mine_boss()
+    result = remote_gate['world'].trigger_mine_boss_remote()
     return result
+
 
 def mine_boss():
     result = remote_gate['world'].trigger_mine_boss_remote()
     return result
 
 
-@remoteserviceHandle('gate')
-def trigger_mine_boss_1259(data, player):
-    """
-    仅供测试，触发秘境boss
-    return {"result":True, "boss_id": boss_id}
-    """
-
-    result = remote_gate['world'].trigger_mine_boss_remote()
-    assert result, "trigger_mine_boss"
-    response = common_pb2.CommonResponse()
-    response.result = True
-    return response.SerializePartialToString()
+# @remoteserviceHandle('gate')
+# def trigger_mine_boss_1259(data, player):
+#     """
+#     仅供测试，触发秘境boss
+#     return {"result":True, "boss_id": boss_id}
+#     """
+#
+#     result = remote_gate['world'].trigger_mine_boss_remote()
+#     assert result, "trigger_mine_boss"
+#     response = common_pb2.CommonResponse()
+#     response.result = True
+#     return response.SerializePartialToString()
