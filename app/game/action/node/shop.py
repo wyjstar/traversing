@@ -173,7 +173,7 @@ def shop_buy_505(pro_data, player):
             common_response.result = False
             common_response.result_no = result.get('result_no')
             common_response.message = u'消费不足！'
-            logger.error('not enough money')
+            logger.error('not enough money:%s', price)
             return response.SerializeToString()
 
         if shop_item.batch == 1:
