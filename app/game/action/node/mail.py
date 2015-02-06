@@ -3,6 +3,7 @@
 created by server on 14-8-14下午3:16.
 """
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
+from shared.db_opear.configs_data.game_configs import mail_config
 from shared.db_opear.configs_data.game_configs import base_config
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import gain, get_return
@@ -97,6 +98,7 @@ def receive_mail_remote(mail_data, is_online, player):
                 player.stamina.contributors.append(mail.sender_id)
 
     player.mail_component.add_mail(mail)
+    player.mail_component.save_data()
 
     if is_online:
         response = ReceiveMailResponse()
@@ -176,7 +178,12 @@ def get_prize(player, mail_ids, response):
     for mail_id in mail_ids:
         mail = player.mail_component.get_mail(mail_id)
 
-        prize = data_helper.parse(eval(mail.prize))
+        if mail.config_id:
+            mail_conf = mail_config.get(mail.config_id)
+            prize = data_helper.parse(mail_conf.rewards)
+        else:
+            prize = data_helper.parse(eval(mail.prize))
+
         # print prize
         return_data = gain(player, prize, const.MAIL)
         get_return(player, return_data, response.gain)

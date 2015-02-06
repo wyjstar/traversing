@@ -36,15 +36,15 @@ def settle(player, result, response, lively_event, conf):
     if not result:
         return
 
+    player.finance.coin += conf.currency
+    player.base_info.addexp(conf.playerExp, const.STAGE)
+    player.base_info.save_data()
     for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
         print lineUpSlotComponent,
         hero = lineUpSlotComponent.hero_slot.hero_obj
         if hero:
             hero.upgrade(conf.HeroExp, player.base_info.level)
             hero.save_data()
-    player.finance.coin += conf.currency
-    player.base_info.addexp(conf.playerExp, const.STAGE)
-    player.base_info.save_data()
 
     # 更新等级相关属性
     player.line_up_component.update_slot_activation()

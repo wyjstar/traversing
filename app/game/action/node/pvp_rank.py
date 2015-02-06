@@ -27,6 +27,8 @@ from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import get_return
 from app.proto_file.shop_pb2 import ShopResponse
+from app.proto_file.db_pb2 import Mail_PB
+from app.game.action.root import netforwarding
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -201,27 +203,33 @@ def pvp_fight_request_1505(data, player):
                 logger.info('update result:%s', result)
                 refresh_rank_data(player, request.challenge_rank,
                                   __skill, __skill_level)
-                # 首次达到某名次的奖励
-                for (rank, mail_id) in base_config.get('arena_rank_points'):
-                    if rank < request.challenge_rank:
-                        pass
-                    if rank in player.base_info.pvp_high_rank_award:
-                        continue
-                    mail_conf = mail_config.get(mail_id)
-                    mail = Mail_PB()
-                    mail.config_id = mail_id
-                    mail.receive_id = player.base_info.id
-                    mail.send_time = int(time.time())
-                    mail_data = mail.SerializePartialToString()
-
-                    if not netforwarding.push_message('receive_mail_remote',
-                                                      player.base_info.id,
-                                                      mail_data):
-                        logger.error('pvp high rank award mail fail, \
-                                player id:%s', player.base_info.id)
         else:
             refresh_rank_data(player, request.challenge_rank,
                               __skill, __skill_level)
+
+        # 首次达到某名次的奖励
+        for (rank, mail_id) in base_config.get('arena_rank_points').items():
+            if rank < request.challenge_rank:
+                continue
+            if rank in player.base_info.pvp_high_rank_award:
+                continue
+            mail_conf = mail_config.get(mail_id)
+            mail = Mail_PB()
+            mail.config_id = mail_id
+            mail.receive_id = player.base_info.id
+            mail.send_time = int(time.time())
+            mail_data = mail.SerializePartialToString()
+            player.base_info.pvp_high_rank_award.append(rank)
+
+            if not netforwarding.push_message('receive_mail_remote',
+                                              player.base_info.id,
+                                              mail_data):
+                logger.error('pvp high rank award mail fail, \
+                        player id:%s', player.base_info.id)
+            else:
+                logger.debug('pvp high rak award mail,mail_id:%s',
+                             mail_id)
+                pass
     else:
         logger.debug("fight result:False")
 
