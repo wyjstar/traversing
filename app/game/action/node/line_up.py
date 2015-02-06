@@ -334,14 +334,10 @@ def assembly_slots(line_up_slots, response):
         for key, equipment_slot in slot.equipment_slots.items():
             equ_add = add_slot.equs.add()
             equ_add.no = key
-
             equipment_obj = equipment_slot.equipment_obj
             if equipment_obj:
                 equ = equ_add.equ
-                equ.id = equipment_obj.base_info.id
-                equ.no = equipment_obj.base_info.equipment_no
-                equ.strengthen_lv = equipment_obj.attribute.strengthen_lv
-                equ.awakening_lv = equipment_obj.attribute.awakening_lv
+                equipment_obj.update_pb(equ)
                 equ.set.no = equipment_slot.suit.get('suit_no', 0)
                 equ.set.num = equipment_slot.suit.get('num', 0)
 
@@ -359,10 +355,7 @@ def assembly_sub_slots(sub_slots, response):
         hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
             hero = add_slot.hero
-            hero.hero_no = hero_obj.hero_no
-            hero.level = hero_obj.level
-            hero.exp = hero_obj.exp
-            hero.break_level = hero_obj.break_level
+            hero_obj.update_pb(hero)
             link_info = slot.hero_slot.link
             for key, value in link_info.items():
                 add_link = hero.links.add()
