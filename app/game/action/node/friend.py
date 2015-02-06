@@ -343,15 +343,15 @@ def friend_private_chat_1060(data, player):
         title = content[:title_display_len] + "..."
 
     mail = Mail_PB()
-    mail.sender_id = player.base_info.id,
-    mail.sender_name = player.base_info.base_name,
-    mail.sender_icon = player.base_info.head,
-    mail.receive_id = target_id,
-    mail.receive_name = '',
-    mail.title = title,
-    mail.content = content,
-    mail.mail_type = MailComponent.TYPE_MESSAGE,
-    mail.prize = 0
+    mail.sender_id = player.base_info.id
+    mail.sender_name = player.base_info.base_name
+    mail.sender_icon = player.base_info.head
+    mail.receive_id = target_id
+    mail.receive_name = ''
+    mail.title = title
+    mail.content = content
+    mail.mail_type = MailComponent.TYPE_MESSAGE
+    mail.prize = ''
     mail.send_time = int(time.time())
 
     # command:id 为收邮件的命令ID

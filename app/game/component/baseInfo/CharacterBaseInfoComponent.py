@@ -32,6 +32,8 @@ class CharacterBaseInfoComponent(Component):
         self._pvp_times = 0  # pvp次数
         self._pvp_refresh_time = 0
         self._pvp_refresh_count = 0
+        self._pvp_high_rank = 999999  # 玩家pvp最高排名
+        self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
 
         self._heads = Heads_DB()
         self._heads.now_head = base_config.get('initialHead')
@@ -296,3 +298,19 @@ class CharacterBaseInfoComponent(Component):
     @register_time.setter
     def register_time(self, value):
         self._register_time = value
+
+    @property
+    def pvp_high_rank(self):
+        return self._pvp_high_rank
+
+    @pvp_high_rank.setter
+    def pvp_high_rank(self, value):
+        self._pvp_high_rank = value
+
+    @property
+    def pvp_high_rank_award(self):
+        return self._pvp_high_rank_award
+
+    @pvp_high_rank_award.setter
+    def pvp_high_rank_award(self, value):
+        self._pvp_high_rank_award = value

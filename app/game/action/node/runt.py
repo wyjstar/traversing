@@ -210,15 +210,19 @@ def refining_runt_845(data, player):
     runt = []
     for runt_no in runts:
         runt_info = player.runt.m_runt.get(runt_no)
+        if not runt_info:
+            logger.error('refining runt,runt no dont find,runt no:%s', runt_no)
+            continue
 
         runt_conf = stone_config.get('stones').get(runt_info[0])
         stone1 += runt_conf.stone1
         stone2 += runt_conf.stone2
-        if random.random() <= runt_conf.biggerStoneCri:
-            get_runt_id = runt_conf.biggerStoneId[random.randint(0, len(runt_conf.biggerStoneId)-1)]
-            new_runt_no = player.runt.add_runt(get_runt_id)
-            if new_runt_no:
-                runt.append(new_runt_no)
+        for _ in range(runt_conf.biggerStoneNum):
+            if random.random() <= runt_conf.biggerStoneCri:
+                get_runt_id = runt_conf.biggerStoneId[random.randint(0, len(runt_conf.biggerStoneId)-1)]
+                new_runt_no = player.runt.add_runt(get_runt_id)
+                if new_runt_no:
+                    runt.append(new_runt_no)
         del player.runt.m_runt[runt_no]
 
     player.runt.stone1 += stone1

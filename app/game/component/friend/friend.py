@@ -169,7 +169,7 @@ class FriendComponent(Component):
             mail = Mail_PB()
             mail.sender_id = self.owner.base_info.id
             mail.sender_name = self.owner.base_info.base_name
-            mail.sender_icon = self.owner.line_up_component.lead_hero_no
+            mail.sender_icon = self.owner.base_info.head
             mail.receive_id = target_id
             mail.title = stamina_mail.get('title')
             mail.content = stamina_mail.get('content')

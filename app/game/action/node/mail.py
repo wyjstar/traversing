@@ -3,6 +3,7 @@
 created by server on 14-8-14下午3:16.
 """
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
+from shared.db_opear.configs_data.game_configs import mail_config
 from shared.db_opear.configs_data.game_configs import base_config
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import gain, get_return
@@ -85,17 +86,19 @@ def receive_mail_remote(mail_data, is_online, player):
     """接收邮件"""
     mail = Mail_PB()
     mail.ParseFromString(mail_data)
-    logger.debug(mail)
-    if mail.mail_type == 1:
-        # 领取赠送体力
-        if mail.sender_id in player.stamina.contributors:
-            logger.error('this contributor has already given stamina:%s',
-                         mail.sender_id)
-            return True
-        else:
-            player.stamina.contributors.append(mail.sender_id)
+    logger.debug('receive_mail:%s', mail)
+    if not mail.config_id:
+        if mail.mail_type == 1:
+            # 领取赠送体力
+            if mail.sender_id in player.stamina.contributors:
+                logger.error('this contributor has already given stamina:%s',
+                             mail.sender_id)
+                return True
+            else:
+                player.stamina.contributors.append(mail.sender_id)
 
     player.mail_component.add_mail(mail)
+    player.mail_component.save_data()
 
     if is_online:
         response = ReceiveMailResponse()
@@ -175,7 +178,12 @@ def get_prize(player, mail_ids, response):
     for mail_id in mail_ids:
         mail = player.mail_component.get_mail(mail_id)
 
-        prize = data_helper.parse(eval(mail.prize))
+        if mail.config_id:
+            mail_conf = mail_config.get(mail.config_id)
+            prize = data_helper.parse(mail_conf.rewards)
+        else:
+            prize = data_helper.parse(eval(mail.prize))
+
         # print prize
         return_data = gain(player, prize, const.MAIL)
         get_return(player, return_data, response.gain)
