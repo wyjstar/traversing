@@ -69,22 +69,13 @@ class PlayerCharacter(object):
         # print len(character_info), character_info
         char_obj.new(character_info)
 
-    def check_dynamic_id(self, dynamic_id):
-        if self._dynamic_id == dynamic_id:
-            return True
-        return False
-
-    @property
-    def base_info(self):
-        return self._components['base_info']
-
     @property
     def dynamic_id(self):
         return self._dynamic_id
 
-    @dynamic_id.setter
-    def dynamic_id(self, value):
-        self._dynamic_id = value
+    @property
+    def base_info(self):
+        return self._components['base_info']
 
     @property
     def hero_component(self):
