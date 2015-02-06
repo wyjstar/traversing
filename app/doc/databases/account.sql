@@ -45,7 +45,7 @@ CREATE TABLE `tb_pvp_rank` (
   `unpar_skill` int(11) NOT NULL,
   `unpar_skill_level` int(11) NOT NULL,
   `units` blob NOT NULL,
-  `slots` blob NOT NULL,
+  `slots` mediumblob NOT NULL,
   `hero_ids` tinyblob NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `character_id` (`character_id`)

@@ -13,7 +13,6 @@ from app.proto_file.sign_in_pb2 import SignInResponse
 from app.proto_file.sign_in_pb2 import ContinuousSignInResponse
 from app.proto_file.sign_in_pb2 import GetSignInResponse
 from app.game.core.drop_bag import BigBag
-import datetime
 from shared.utils.const import const
 from shared.utils.xtime import timestamp_to_date
 from gfirefly.server.logobj import logger
@@ -24,11 +23,14 @@ def get_sign_in_1400(pro_data, player):
     """获取签到初始化信息"""
     response = GetSignInResponse()
     sign_in_component = player.sign_in_component
+    sign_in_component.clear_sign_days()
     [response.days.append(i) for i in sign_in_component.sign_in_days]
-    response.continuous_sign_in_days = sign_in_component.continuous_sign_in_days
+    response.sign_round = sign_in_component.sign_round
+    response.current_day = sign_in_component.current_day()
     [response.continuous_sign_in_prize.append(i) for i in sign_in_component.continuous_sign_in_prize]
     response.repair_sign_in_times = sign_in_component.repair_sign_in_times
-    print "get_sign_in:", player.sign_in_component.sign_in_days, player.base_info.id
+    logger.debug("get_sign_in: days %s  sign_round %s current_day %s" %  (sign_in_component.sign_in_days, sign_in_component.sign_round, response.current_day))
+    logger.debug("get_sign_in: %s" % response)
     return response.SerializePartialToString()
 
 
@@ -39,34 +41,26 @@ def sign_in_1401(pro_data, player):
     response = SignInResponse()
 
     # 签到
-    date = datetime.datetime.now()
-    month = date.month
-    day = date.day
+    day = player.sign_in_component.current_day()
 
     register_time = player.base_info.register_time
     register_time = timestamp_to_date(register_time)
-    if register_time.month == month:
-        day = day - register_time.day + 1
-
-    logger.debug(day)
-    logger.debug(date.day)
-    logger.debug(register_time.day)
-    logger.debug(register_time.month)
 
     # 同一天签到校验
-    if player.sign_in_component.is_signd(month, day):
+    if player.sign_in_component.is_signd(day):
         print "sign in error code:", 1405
         response.res.result = False
         response.res.result_no = 1405
         return response.SerializePartialToString()
 
-    player.sign_in_component.sign_in(month, day)
+    player.sign_in_component.sign_in(day)
     player.sign_in_component.save_data()
 
+    sign_round = player.sign_in_component.sign_round
     # 获取奖励
-    if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
+    if not sign_in_config.get(sign_round) or not sign_in_config.get(sign_round).get(day):
         return
-    gain_data = sign_in_config.get(month).get(day)
+    gain_data = sign_in_config.get(sign_round).get(day)
     return_data = gain(player, gain_data, const.SIGN_GIFT)
     get_return(player, return_data, response.gain)
     response.res.result = True
@@ -75,7 +69,7 @@ def sign_in_1401(pro_data, player):
 
 @remoteserviceHandle('gate')
 def continus_sign_in_1402(pro_data, player):
-    """连续签到"""
+    """累积签到"""
     request = ContinuousSignInRequest()
     request.ParseFromString(pro_data)
     days = request.sign_in_days
@@ -122,8 +116,10 @@ def repair_sign_in_1403(pro_data, player):
 
     repair_sign_in_times = player.sign_in_component.repair_sign_in_times
     gold = player.finance.gold
+    logger.debug("repair sign in : %s %s" % (repair_sign_in_times, len(sign_in_add)))
     # 校验签到次数
-    if repair_sign_in_times == len(sign_in_add):
+    if repair_sign_in_times >= len(sign_in_add):
+        logger.debug("repair sigin in max")
         response.res.result = False
         response.res.result_no = 1404
         return response.SerializePartialToString()
@@ -139,20 +135,18 @@ def repair_sign_in_1403(pro_data, player):
     player.finance.save_data()
     # 签到奖励
 
-    date = datetime.datetime.now()
-    month = date.month
-
     # 同一天签到校验
-    if player.sign_in_component.is_signd(month, day):
+    if player.sign_in_component.is_signd(day):
         response.res.result = False
         response.res.result_no = 1405
         return response.SerializePartialToString()
 
-    player.sign_in_component.sign_in(month, day)
+    player.sign_in_component.sign_in(day)
     player.sign_in_component.save_data()
-    if not sign_in_config.get(month) or not sign_in_config.get(month).get(day):
+    sign_round = player.sign_in_component.sign_round
+    if not sign_in_config.get(sign_round) or not sign_in_config.get(sign_round).get(day):
         return
-    gain_data = sign_in_config.get(month).get(day)
+    gain_data = sign_in_config.get(sign_round).get(day)
     return_data = gain(player, gain_data, const.REPAIR_SIGN)
     get_return(player, return_data, response.gain)
 

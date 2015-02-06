@@ -271,7 +271,6 @@ def guard_1244(data, player):
         hero = player.hero_component.get_hero(slot.hero_no)
         hero.is_guard = True
         hero.save_data()
-
     battle_units = {}  # 需要保存的阵容信息
     for no, slot in character_line_up.line_up_slots.items():
         unit = slot.slot_attr
@@ -285,6 +284,12 @@ def guard_1244(data, player):
     add_unpar = line_up_response.unpars.add()
     add_unpar.unpar_id = __skill
     add_unpar.unpar_level = __skill_level
+
+    # 风物志
+    player.travel_component.update_travel_item(line_up_response)
+
+    # 公会等级
+    line_up_response.guild_level = player.guild.get_guild_level()
 
     info = {}
     info["battle_units"] = battle_units
@@ -574,8 +579,8 @@ def settle_1252(data, player):
     request.ParseFromString(data)
     pos = request.pos
     result = request.result
-    #todo: check result
-    #todo: set settle time to calculate acc_mine
+    # todo: check result
+    # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0)
     response = common_pb2.CommonResponse()
     response.result = True
@@ -589,7 +594,7 @@ def battle_1253(data, player):
     request.ParseFromString(data)
     pos = request.pos                    # 矿所在位置
     line_up = request.lineup            # 阵容顺序
-    red_best_skill_id = request.unparalleled # 无双编号
+    red_best_skill_id = request.unparalleled  # 无双编号
     blue_best_skill_id = 0
     blue_best_skill_level = 0
     red_units = {}
@@ -618,8 +623,7 @@ def battle_1253(data, player):
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
 
-
-        print red_units, blue_units
+        # print red_units, blue_units
 
     elif mine_type == 1:
         # pvp
@@ -633,8 +637,8 @@ def battle_1253(data, player):
             pass
         process_mine_result(player, pos, response, fight_result, mine_type)
 
-        blue_best_skill_id = info.get("best_skill_id")
-        blue_best_skill_level = info.get("best_skill_level")
+        blue_best_skill_id = info.get("best_skill_id", 0)
+        blue_best_skill_level = info.get("best_skill_level", 0)
 
         print red_units, blue_units
 
@@ -644,7 +648,6 @@ def battle_1253(data, player):
     response.blue_best_skill_id = blue_best_skill_id
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
-    print response, red_units, blue_units
     response.res.result = True
     return response.SerializePartialToString()
 
@@ -655,8 +658,9 @@ def get_mine_info(player, pos):
     如果野怪驻守的矿：关卡id
     玩家驻守的矿：
     """
-    mine_info  = player.mine.get_info(pos)
+    mine_info = player.mine.get_info(pos)
     return mine_info
+
 
 def get_save_guard(player, pos):
     """
@@ -668,33 +672,19 @@ def get_save_guard(player, pos):
     return info
 
 
-def trigger_mine_boss():
-    """
-    触发秘境boss
-    return {"result":True, "boss_id": boss_id}
-    """
-    boss_num = remote_gate['world'].get_boss_num()
-    max_boss_num = base_config.get("warFogBossCriServer")
-    if boss_num >= max_boss_num:
-        return False
-
-    result = remote_gate['world'].trigger_mine_boss()
-    return result
-
 def mine_boss():
     result = remote_gate['world'].trigger_mine_boss_remote()
     return result
 
-
-@remoteserviceHandle('gate')
-def trigger_mine_boss_1259(data, player):
-    """
-    仅供测试，触发秘境boss
-    return {"result":True, "boss_id": boss_id}
-    """
-
-    result = remote_gate['world'].trigger_mine_boss_remote()
-    assert result, "trigger_mine_boss"
-    response = common_pb2.CommonResponse()
-    response.result = True
-    return response.SerializePartialToString()
+# @remoteserviceHandle('gate')
+# def trigger_mine_boss_1259(data, player):
+#     """
+#     仅供测试，触发秘境boss
+#     return {"result":True, "boss_id": boss_id}
+#     """
+#
+#     result = remote_gate['world'].trigger_mine_boss_remote()
+#     assert result, "trigger_mine_boss"
+#     response = common_pb2.CommonResponse()
+#     response.result = True
+#     return response.SerializePartialToString()

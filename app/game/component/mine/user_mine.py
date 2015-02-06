@@ -6,7 +6,7 @@ Created on 2014-11-24
 '''
 import random
 from shared.db_opear.configs_data.game_configs import base_config, mine_config,\
-    shop_config, mine_match_config
+    shop_config, mine_match_config, shop_type_config
 from app.game.component.Component import Component
 import time
 from app.game.redis_mode import tb_character_info
@@ -620,7 +620,8 @@ class Shop(Mine):
         Mine.__init__(self)
         self._gen_time = 0
         self._shops = {}
-        num = base_config['warFogShopItemNum']
+#         num = base_config['warFogShopItemNum']
+        num = shop_type_config.get(7).itemNum
         shopids = ConfigData.shopid_odds()
         for _ in range(num):
             shop_id = random_pick(shopids, sum(shopids.values()))
@@ -743,8 +744,8 @@ class UserMine(Component):
     def if_have_shop(self):
         for mine_id in self._mine:
             if self._mine[mine_id]._type == MineType.SHOP:
-                return False
-        return True
+                return True
+        return False
 
     def _reset_everyday(self):
         """
@@ -840,6 +841,7 @@ class UserMine(Component):
                 stype = MineType.MONSTER_FIELD
 
         print 'stype', stype, MineType.COPY
+        #stype = MineType.COPY
         if stype == MineType.COPY:
             print 'aaaaaaaaaaaaaaaaaa'
             result = None
@@ -866,6 +868,7 @@ class UserMine(Component):
                 mine = None
             else:
                 mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
+                self.owner.shop.refresh_price(7)
         if stype == MineType.COPY:
             mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
 
@@ -875,10 +878,10 @@ class UserMine(Component):
         print 'search_mine', position, mine.__dict__
         self._update = True
         return mine
-    
+
     def ifhave(self, tid):
         for mine in self._mine.values():
-            if  mine._type != 0 and tid == mine._seq:
+            if  mine._type == 1 and tid == mine._seq:
                 return True
 
     def mine_status(self):

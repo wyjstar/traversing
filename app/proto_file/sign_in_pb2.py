@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='sign_in.proto',
   package='',
-  serialized_pb='\n\rsign_in.proto\x1a\x0c\x63ommon.proto\"\x82\x01\n\x11GetSignInResponse\x12\x0c\n\x04\x64\x61ys\x18\x01 \x03(\x05\x12\x1f\n\x17\x63ontinuous_sign_in_days\x18\x02 \x02(\x05\x12 \n\x18\x63ontinuous_sign_in_prize\x18\x03 \x03(\x05\x12\x1c\n\x14repair_sign_in_times\x18\x04 \x02(\x05\"\"\n\x13RepairSignInRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"T\n\x0eSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x17\x43ontinuousSignInRequest\x12\x14\n\x0csign_in_days\x18\x01 \x02(\x05\"^\n\x18\x43ontinuousSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\rsign_in.proto\x1a\x0c\x63ommon.proto\"\x8a\x01\n\x11GetSignInResponse\x12\x0c\n\x04\x64\x61ys\x18\x01 \x03(\x05\x12\x12\n\nsign_round\x18\x02 \x02(\x05\x12\x13\n\x0b\x63urrent_day\x18\x05 \x02(\x05\x12 \n\x18\x63ontinuous_sign_in_prize\x18\x03 \x03(\x05\x12\x1c\n\x14repair_sign_in_times\x18\x04 \x02(\x05\"\"\n\x13RepairSignInRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"T\n\x0eSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x17\x43ontinuousSignInRequest\x12\x14\n\x0csign_in_days\x18\x01 \x02(\x05\"^\n\x18\x43ontinuousSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -34,21 +34,28 @@ _GETSIGNINRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='continuous_sign_in_days', full_name='GetSignInResponse.continuous_sign_in_days', index=1,
+      name='sign_round', full_name='GetSignInResponse.sign_round', index=1,
       number=2, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='continuous_sign_in_prize', full_name='GetSignInResponse.continuous_sign_in_prize', index=2,
+      name='current_day', full_name='GetSignInResponse.current_day', index=2,
+      number=5, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='continuous_sign_in_prize', full_name='GetSignInResponse.continuous_sign_in_prize', index=3,
       number=3, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='repair_sign_in_times', full_name='GetSignInResponse.repair_sign_in_times', index=3,
+      name='repair_sign_in_times', full_name='GetSignInResponse.repair_sign_in_times', index=4,
       number=4, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -64,7 +71,7 @@ _GETSIGNINRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=32,
-  serialized_end=162,
+  serialized_end=170,
 )
 
 
@@ -91,8 +98,8 @@ _REPAIRSIGNINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=164,
-  serialized_end=198,
+  serialized_start=172,
+  serialized_end=206,
 )
 
 
@@ -126,8 +133,8 @@ _SIGNINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=200,
-  serialized_end=284,
+  serialized_start=208,
+  serialized_end=292,
 )
 
 
@@ -154,8 +161,8 @@ _CONTINUOUSSIGNINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=286,
-  serialized_end=333,
+  serialized_start=294,
+  serialized_end=341,
 )
 
 
@@ -189,8 +196,8 @@ _CONTINUOUSSIGNINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=335,
-  serialized_end=429,
+  serialized_start=343,
+  serialized_end=437,
 )
 
 _SIGNINRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

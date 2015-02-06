@@ -141,3 +141,15 @@ class CharacterTravelComponent(Component):
     @last_buy_shoes.setter
     def last_buy_shoes(self, value):
         self._last_buy_shoes = value
+
+    def update_travel_item(self, response):
+        """docstring for update_travel_item"""
+        for (stage_id, item) in self.travel_item.items():
+            travel_item_chapter = response.travel_item_chapter.add()
+            travel_item_chapter.stage_id = stage_id
+            for [travel_item_id, num] in item:
+                travel_item = travel_item_chapter.travel_item.add()
+                travel_item.id = travel_item_id
+                travel_item.num = num
+
+

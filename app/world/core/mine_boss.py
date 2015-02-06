@@ -22,7 +22,8 @@ class MineBossManager(object):
     """docstring for MineBoss"""
     def __init__(self):
         super(MineBossManager, self).__init__()
-        self._bosses = {}  # 所有boss
+        #self._bosses = {}  # 所有boss
+        self._boss = None  # current boss
         self._base_data_name = "mine_boss"
         self._base_demage_name = "MineBossDemage"
         self._last_time = 0
@@ -34,32 +35,35 @@ class MineBossManager(object):
             self._last_time = data.get("boss_num")
             self._boss_num = data.get("last_time")
 
+        #boss_name, boss_demage_name = self.get_boss_name()
+        #Ranking.init(boss_demage_name, 10)
+        #boss = MineBoss(boss_name, Ranking.instance(boss_demage_name),
+                        #"mine_boss_stages")
+        #self._boss = boss
+
 
     def add(self):
         """docstring for add"""
-        boss_id = get_uuid()
-        boss_name, boss_demage_name = self.get_boss_name(boss_id)
+        boss_name, boss_demage_name = self.get_boss_name()
         Ranking.init(boss_demage_name, 10)
         boss = MineBoss(boss_name, Ranking.instance(boss_demage_name),
                         "mine_boss_stages")
-        self._bosses[boss_id] = boss
+        self._boss = boss
         current_time = time.time()
         self._last_time = current_time
         self._boss_num += 1
         self.save_data()
-        return boss_id, boss
+        return "boss_id", boss
 
-    def get_boss_name(self, boss_id):
+    def get_boss_name(self):
         """docstring for get_boss_name"""
-        boss_name = self._base_data_name + boss_id
-        boss_demage_name = self._base_demage_name + boss_id
-        return boss_name, boss_demage_name
+        return "mine_boss", "mine_boss_demage"
 
-    def get(self, boss_id):
-        return self._bosses.get(boss_id)
+    def get_current_boss(self):
+        return self._boss
 
-    def remove(self, boss_id):
-        boss_name, boss_demage_name = self.get_boss_name(boss_id)
+    def remove(self):
+        self._boss = None
 
     def get_boss_num(self):
         """
@@ -71,12 +75,13 @@ class MineBossManager(object):
         return self._boss_num
 
     def current_has_boss(self):
-        return len(self._bosses) == 1
+        #return len(self._bosses) == 1
+        return self._boss != None
 
     def save_data(self):
         data = dict(boss_num=self._boss_num, last_time=self._last_time)
         str_data = cPickle.dumps(data)
-        tb_boss.set("", str_data)
+        tb_boss_manager.set("", str_data)
 
 
 class MineBoss(BaseBoss):

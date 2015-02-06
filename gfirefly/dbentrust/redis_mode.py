@@ -72,9 +72,9 @@ class RedisObject(object):
             newdict[k] = cPickle.dumps(v)
         client = redis_manager.get_connection(self._name)
         result = client.hmset(self._name, newdict)
-        if result != 1:
-            logger.error('hmset error--%s', self._name)
-        return result == 1
+        if not result:
+            logger.error('hmset error--%s:%s', self._name, newdict)
+        return result
 
     def hdel(self, field):
         client = redis_manager.get_connection(self._name)

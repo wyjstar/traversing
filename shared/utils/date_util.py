@@ -50,12 +50,18 @@ def str_time_period_to_timestamp(str_time_period):
 def is_next_day(current_time_stamp, last_time_stamp):
     """docstring for is_nextfname"""
     current_date = timestamp_to_date(current_time_stamp)
-    last_date = timestamp_to_date(current_time_stamp)
+    last_date = timestamp_to_date(last_time_stamp)
     if current_date.year >= current_date.year \
         and current_date.month >= last_date.month \
         and current_date.day > last_date.day:
             return True
     return False
+
+def days_to_current(timestamp):
+    current_date = datetime.datetime.now()
+    some_date = timestamp_to_date(timestamp)
+    return (current_date-some_date).days
+
 
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)
