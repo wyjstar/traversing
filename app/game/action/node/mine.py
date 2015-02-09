@@ -95,22 +95,20 @@ def query_1240(data, player):
     response = mine_pb2.mineUpdate()
     mine_status(player, response)
     player.mine.save_data()
-    print '1240-response', response
+    # print '1240-response', response
     return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
 def search_1241(data, player):
-    """
-    搜索矿点,ok
-    """
-    print 'search_1241'
-#     try:
+    """ 搜索矿点,ok """
+    # print 'search_1241'
+    # try:
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
     response = mine_pb2.searchResponse()
     response.position = request.position
-    print 'response.position', response.position
+    # print 'response.position', response.position
     if player.mine.can_search(request.position):
         player.mine.search_mine(request.position, mine_boss)
         player.mine.save_data()
@@ -126,9 +124,9 @@ def search_1241(data, player):
         response.res.result = False
         response.res.result_no = 12410
         response.res.message = u"超出探索范围"
-    print '1241-response', response
+#     print '1241-response', response
 #     except Exception, e:
-#         print 'search', e
+#         # print 'search', e
 
     player.mine.save_data()
     return response.SerializePartialToString()
@@ -143,7 +141,7 @@ def reset_1242(data, player):
     request.ParseFromString(data)
     response = mine_pb2.resetResponse()
     response.free = request.free
-    print '1242-request', request
+    # print '1242-request', request
     if request.free == 1:
         if player.mine.can_reset_free():
             player.mine.reset_map()
@@ -178,9 +176,7 @@ def reset_1242(data, player):
 
 @remoteserviceHandle('gate')
 def query_1243(data, player):
-    """
-    查看矿点详细信息
-    """
+    """ 查看矿点详细信息 """
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
     response = mine_pb2.mineDetail()
@@ -221,26 +217,22 @@ def query_1243(data, player):
         response.res.result_no = ret
 
     player.mine.save_data()
-    print '1243-response', response
+    # print '1243-response', response.lineup
     return response.SerializePartialToString()
 
 
 def save_guard(player, position, info):
-    """
-    驻守矿点
-    """
+    """ 驻守矿点 """
     result_code = player.mine.save_guard(position, info)
     return result_code
 
 
 @remoteserviceHandle('gate')
 def guard_1244(data, player):
-    """
-    驻守矿点
-    """
+    """ 驻守矿点 """
     request = mine_pb2.MineGuardRequest()
     request.ParseFromString(data)
-    print request
+    # print request
     response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
@@ -249,10 +241,17 @@ def guard_1244(data, player):
     character_line_up = CharacterLineUpComponent(player)
     save_slot = {}
     for slot in request.line_up_slots:
-        line_up_slot = LineUpSlotComponent(character_line_up, slot.slot_no, activation=True, hero_no=slot.hero_no)
+        line_up_slot = LineUpSlotComponent(character_line_up,
+                                           slot.slot_no,
+                                           activation=True,
+                                           hero_no=slot.hero_no)
         save_slot[slot.hero_no] = []
         for equipment_slot in slot.equipment_slots:
-            temp_slot = EquipmentSlotComponent(line_up_slot, equipment_slot.slot_no, activation=True, equipment_id=equipment_slot.equipment_id)
+            temp_slot = EquipmentSlotComponent(line_up_slot,
+                                               equipment_slot.slot_no,
+                                               activation=True,
+                                               equipment_id=equipment_slot.equipment_id)
+
             line_up_slot.equipment_slots[equipment_slot.slot_no] = temp_slot
             # 标记装备已驻守
             logger.debug(equipment_slot.equipment_id)
@@ -328,7 +327,7 @@ def add_stones(player, stones, response):
                 runt_info = player.runt.m_runt.get(runt_no)
                 runt_pb = response.runt.add()
                 [runt_id, main_attr, minor_attr] = runt_info
-                print runt_no
+                # print runt_no
                 player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
     return 1
 
@@ -343,7 +342,7 @@ def harvest_1245(data, player):
     response = mine_pb2.drawStones()
     response.position = request.position
     stones = player.mine.harvest(request.position)
-    print 'stones', stones
+    # print 'stones', stones
     if stones:
         if not add_stones(player, stones, response):
             response.res.result = False
@@ -362,7 +361,7 @@ def harvest_1245(data, player):
 
     player.mine.save_data()
     player.runt.save()
-    print '1245-response', response
+    # print '1245-response', response
     return response.SerializePartialToString()
 
 
@@ -385,7 +384,7 @@ def query_shop_1247(data, player):
         response.res.result = False
         response.res.message = u"商人不存在"
     player.mine.save_data()
-    print 'query_shop_1247-response', response
+    # print 'query_shop_1247-response', response
     return response.SerializePartialToString()
 
 
@@ -401,7 +400,7 @@ def exchange_1248(data, player):
     response.shop_id = request.shop_id
     common_response = response.res
 
-    print "mijing shop id:", request.shop_id
+    # print "mijing shop id:", request.shop_id
     shop_item = shop_config.get(request.shop_id)
     result = item_group_helper.is_afford(player, shop_item.discountPrice)  # 校验
     if not result.get('result'):
@@ -465,7 +464,7 @@ def reward_1249(data, player):
     player.mine.save_data()
     drop_id = base_config['warFogChest']
     add_items(player, items, [drop_id])
-    print 'reward_1249-response', response
+    # print 'reward_1249-response', response
     return response.SerializePartialToString()
 
 
@@ -487,7 +486,7 @@ def acc_mine_1250(data, player):
         return response.SerializePartialToString()
     else:
         response.res.result = True
-    print 'price', price
+    # print 'price', price
     consume_return_data = item_group_helper.consume(player, [price])  # 消耗
     item_group_helper.get_return(player, consume_return_data, response.consume)
     last_time = player.mine.acc_mine()
@@ -503,7 +502,7 @@ def process_mine_result(player, position, result, response, stype):
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
     @param gain: true or false
     """
-    print 'process_mine_result', position, response, result, stype
+    # print 'process_mine_result', position, response, result, stype
     if result == True:
         target = player.mine.settle(position)
         if stype == 1:
@@ -606,8 +605,8 @@ def battle_1253(data, player):
     response = mine_pb2.MineBattleResponse()
 
     mine_type = mine_info.get("mine_type") # 根据矿所在位置判断pve or pvp
-    print mine_type, "*"*80
-    print request
+    # print mine_type, "*"*80
+    # print request
     if mine_type == 0:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
@@ -623,7 +622,7 @@ def battle_1253(data, player):
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
 
-        # print red_units, blue_units
+        # # print red_units, blue_units
 
     elif mine_type == 1:
         # pvp
@@ -640,7 +639,7 @@ def battle_1253(data, player):
         blue_best_skill_id = info.get("best_skill_id", 0)
         blue_best_skill_level = info.get("best_skill_level", 0)
 
-        print red_units, blue_units
+        # print red_units, blue_units
 
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     response.red_best_skill_id = red_best_skill_id
