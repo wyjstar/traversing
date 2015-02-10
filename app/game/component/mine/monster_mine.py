@@ -4,7 +4,6 @@ Created on 2014-11-28
 
 @author: hack
 '''
-import cPickle
 from gfirefly.dbentrust.redis_mode import RedisObject
 
 
@@ -40,7 +39,7 @@ class MineOpt(object):
         rdobj = cls.rank.getObj(label)
         ret = rdobj.hget(mid)
         # print 'get_mine------', label, mid, cPickle.loads(ret)
-        return cPickle.loads(ret)
+        return ret
 
     @classmethod
     def get_user_mines(cls, uid):

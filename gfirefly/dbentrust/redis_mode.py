@@ -86,7 +86,7 @@ class RedisObject(object):
     def hkeys(self):
         client = redis_manager.get_connection(self._name)
         val = client.hkeys(self._name)
-        return val == 1
+        return val
 
     def hexists(self, field):
         client = redis_manager.get_connection(self._name)

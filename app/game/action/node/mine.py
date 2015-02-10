@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-'''
+"""
 Created on 2014-11-24
 
 @author: hack
-'''
+"""
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import mine_pb2, common_pb2
 from gfirefly.server.globalobject import GlobalObject
@@ -46,44 +46,44 @@ def mine_status(player, response):
     for mstatus in mine_status:
         one_mine = response.mine.add()
         position = mstatus.get('position', None)
-        if position != None:
+        if position is not None:
             one_mine.position = position
         mtype = mstatus.get('type', None)
-        if mtype != None:
+        if mtype is not None:
             one_mine.type = mtype
         status = mstatus.get('status', None)
-        if status != None:
+        if status is not None:
             one_mine.status = status
         nickname = mstatus.get('nickname', None)
-        if nickname != None:
+        if nickname is not None:
             one_mine.nickname = nickname
         last_time = mstatus.get('last_time', None)
-        if last_time != None:
+        if last_time is not None:
             one_mine.last_time = int(last_time)
         gen_time = mstatus.get('gen_time', None)
-        if gen_time != None:
+        if gen_time is not None:
             one_mine.gen_time = int(gen_time)
     return response
 
 
 def one_mine_info(mstatus, one_mine):
         position = mstatus.get('position', None)
-        if position != None:
+        if position is not None:
             one_mine.position = position
         mtype = mstatus.get('type', None)
-        if mtype != None:
+        if mtype is not None:
             one_mine.type = mtype
         status = mstatus.get('status', None)
-        if status != None:
+        if status is not None:
             one_mine.status = status
         nickname = mstatus.get('nickname', None)
-        if nickname != None:
+        if nickname is not None:
             one_mine.nickname = nickname
         last_time = mstatus.get('last_time', None)
-        if last_time != None:
+        if last_time is not None:
             one_mine.last_time = int(last_time)
         gen_time = mstatus.get('gen_time', None)
-        if gen_time != None:
+        if gen_time is not None:
             one_mine.gen_time = int(gen_time)
 
 
@@ -119,7 +119,9 @@ def search_1241(data, player):
         tstatus = player.tasks.check_inter(lively_event)
         if tstatus:
             task_data = task_status(player)
-            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+            remote_gate.push_object_remote(1234,
+                                           task_data,
+                                           [player.dynamic_id])
     else:
         response.res.result = False
         response.res.result_no = 12410
@@ -165,8 +167,11 @@ def reset_1242(data, player):
                 response.res.result_no = result.get('result_no')
                 response.res.message = u'消费不足！'
             else:
-                consume_return_data = item_group_helper.consume(player, [price])  # 消耗
-                item_group_helper.get_return(player, consume_return_data, response.consume)
+                consume_return_data = item_group_helper.consume(player,
+                                                                [price])  # 消耗
+                item_group_helper.get_return(player,
+                                             consume_return_data,
+                                             response.consume)
                 player.mine.reset_map()
                 mine_status(player, response.mine)
                 response.res.result = True

@@ -13,7 +13,6 @@ from shared.db_opear.configs_data.game_configs import shop_type_config
 from app.game.component.Component import Component
 import time
 from app.game.redis_mode import tb_character_info
-import cPickle
 from gfirefly.server.logobj import logger
 from monster_mine import MineOpt
 
@@ -39,12 +38,12 @@ class MineType:
     SHOP = 3
     CHEST = 4
     COPY = 5
-    _create = {
-               PLAYER_FIELD:"PlayerField",
-               MONSTER_FIELD:"MonsterField",
-               CHEST:"Chest",
-               SHOP:"Shop",
-               COPY:"Copy"}
+    _create = {PLAYER_FIELD: "PlayerField",
+               MONSTER_FIELD: "MonsterField",
+               CHEST: "Chest",
+               SHOP: "Shop",
+               COPY: "Copy"}
+
     @classmethod
     def create(cls, stype, uid, nickname):
         if stype in cls._create:
@@ -52,6 +51,7 @@ class MineType:
             # print 'MineType.create', stype, uid, nickname, type(mine)
             return mine
         return None
+
 
 class ConfigData(object):
     def __init__(self):
@@ -341,13 +341,12 @@ class PlayerField(Mine):
 
     @classmethod
     def create(cls, uid, nickname, level, lively):
-
-#         match_mine = MineOpt.get_mine("hello1.1418728113.23")
-#         mine = cls()
-#         match_mine['seq'] = "hello1.1418728113.23"
-#         print 'match_mine', match_mine['seq']
-#         mine.update_info(match_mine)
-#         return mine
+        # match_mine = MineOpt.get_mine("hello1.1418728113.23")
+        # mine = cls()
+        # match_mine['seq'] = "hello1.1418728113.23"
+        # print 'match_mine', match_mine['seq']
+        # mine.update_info(match_mine)
+        # return mine
         # print lively, level, "lively, level*"*5
         lively = 1
         item = None
@@ -368,38 +367,40 @@ class PlayerField(Mine):
                 front = level + minus if level + minus >= lowlevel else lowlevel
                 back = level + add if level + add <= highlevel else highlevel
                 # print 'aaaaa', uid, front, back
-                uids = MineOpt.rand_level("user_level", front, back+1) #取玩家等级附近的玩家
+                # 取玩家等级附近的玩家
+                uids = MineOpt.rand_level("user_level", front, back+1)
                 match_users = []
                 self_sword = MineOpt.get_user("sword", uid)
-                if self_sword == None:
+                if self_sword is None:
                     self_sword = 0
-                for one_user in uids: #取战力匹配的玩家
+                for one_user in uids:  # 取战力匹配的玩家
                     one_user = int(one_user)
                     # print one_user
                     if one_user == uid:
                         continue
                     user_sword = MineOpt.get_user("sword", one_user)
-                    if user_sword == None:
+                    if user_sword is None:
                         user_sword = 0
                     if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
                         continue
                     match_users.append(one_user)
-                if not match_users:#没有匹配的玩家生成野怪矿
-                    return  MonsterField.create(uid, nickname)
+                logger.debug('mine match player:%smatch_users')
+                if not match_users:  # 没有匹配的玩家生成野怪矿
+                    return MonsterField.create(uid, nickname)
                 match_mine = None
-                for one_user in match_users:#随机玩家占领的野怪矿
+                for one_user in match_users:  # 随机玩家占领的野怪矿
                     # print 'one_user', one_user
                     mids = MineOpt.get_user_mines(one_user)
                     # print 'mids', mids
                     if mids:
-                        mid = random.sample(mids,1)
+                        mid = random.sample(mids, 1)
                         if not mid:
                             continue
                         match_mine = MineOpt.get_mine(mid[0])
                         # print 'match_mine', match_mine
                         if not match_mine:
                             continue
-                if not match_mine:#没有随到玩家占领的野怪矿，生成野怪矿
+                if not match_mine:  # 没有随到玩家占领的野怪矿，生成野怪矿
                     return MonsterField.create(uid, nickname)
                 else:
                     mine = cls()
@@ -684,33 +685,35 @@ class Copy(Mine):
         self._status = 6
         return True
 
+
 def get_num():
     pass
+
 
 class UserMine(Component):
     def __init__(self, owner):
         self._update = True
         Component.__init__(self, owner)
 
-        self._reset_day = '' #上次重置时间
-        self._reset_times = 0 #已重置次数
-
-        self._tby = '' #玩家活跃度周期
-        self._lively = 0 #玩家活跃度，每两天刷新一次
-
-        self._mine = {} #玩家当前搜索出的矿
-
-        self._guard = {} #玩家驻守的英雄与装备，失效的时候，退回
+        self._reset_day = ''  # 上次重置时间
+        self._reset_times = 0  # 已重置次数
+        self._tby = ''  # 玩家活跃度周期
+        self._lively = 0  # 玩家活跃度，每两天刷新一次
+        self._mine = {}  # 玩家当前搜索出的矿
+        self._guard = {}  # 玩家驻守的英雄与装备，失效的时候，退回
 
     def init_data(self, character_info):
         mine = character_info.get('mine')
         all_mine = mine.get('1')
         if all_mine:
-            self._mine = cPickle.loads(all_mine)
+            self._mine = all_mine
+            print self._mine, '-'*8
         else:
             # print '12244444444444444444444444444444444'
             self._mine = {}
-            self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
+            self._mine[0] = UserSelf.create(self.owner.base_info.id,
+                                            self.owner.base_info.base_name)
+            print self._mine, '='*8
         self._reset_day = character_info.get('reset_day')
         self._reset_times = character_info.get('reset_times')
         self._tby = character_info.get('day_before')
@@ -718,30 +721,30 @@ class UserMine(Component):
         self._guard = character_info.get('guard')
 
     def save_data(self):
-        if self._update != True:
+        if self._update is not True:
             return
         self._update = False
         mine_obj = tb_character_info.getObj(self.owner.base_info.id)
         # print 'save_data', mine_obj
         if mine_obj:
-            data = {'mine': {'1':cPickle.dumps(self._mine)},
-                    'reset_day':self._reset_day,
+            data = {'mine': {'1': self._mine},
+                    'reset_day': self._reset_day,
                     'reset_times': self._reset_times,
-                    'day_before':self._tby,
-                    'lively':self._lively,
-                    'guard':self._guard}
+                    'day_before': self._tby,
+                    'lively': self._lively,
+                    'guard': self._guard}
             mine_obj.hmset(data)
         else:
             logger.error('cant find mine:%s', self.owner.base_info.id)
 
     def new_data(self):
-        data = dict(mine={'1': cPickle.dumps(self._mine)},
+        data = dict(mine={'1': self._mine},
                     reset_day=self._reset_day,
                     reset_times=self._reset_times,
                     day_before=self._tby,
                     lively=self._lively,
                     guard=self._guard)
-        mine_data = tb_character_info.getObj(self.owner.base_info.id)
+        # mine_data = tb_character_info.getObj(self.owner.base_info.id)
         return data
 
     def if_have_shop(self):
@@ -844,7 +847,7 @@ class UserMine(Component):
                 stype = MineType.MONSTER_FIELD
 
         # print 'stype', stype, MineType.COPY
-        #stype = MineType.COPY
+        # stype = MineType.COPY
         if stype == MineType.COPY:
             # print 'aaaaaaaaaaaaaaaaaa'
             result = None
@@ -857,26 +860,37 @@ class UserMine(Component):
             if not result:
                 stype = MineType.MONSTER_FIELD
 
-        # print 'stype------------------', stype
+        print 'stype------------------', stype
         if stype == MineType.PLAYER_FIELD:
-            mine = PlayerField.create(self.owner.base_info.id, self.owner.base_info.base_name, self.owner.base_info.level, lively)
+            mine = PlayerField.create(self.owner.base_info.id,
+                                      self.owner.base_info.base_name,
+                                      self.owner.base_info.level, lively)
+            print mine._tid, self.owner.base_info.id, self.ifhave(mine._seq)
+            print self.owner.base_info.base_name,
             if mine._tid == self.owner.base_info.id or self.ifhave(mine._seq):
+                print '.....'
                 mine = None
         if stype == MineType.MONSTER_FIELD:
-            mine = MonsterField.create(self.owner.base_info.id, self.owner.base_info.base_name)
+            mine = MonsterField.create(self.owner.base_info.id,
+                                       self.owner.base_info.base_name)
         if stype == MineType.CHEST:
-                mine = Chest.create(self.owner.base_info.id, self.owner.base_info.base_name)
+                mine = Chest.create(self.owner.base_info.id,
+                                    self.owner.base_info.base_name)
         if stype == MineType.SHOP:
             if self.if_have_shop():
                 mine = None
             else:
-                mine = Shop.create(self.owner.base_info.id, self.owner.base_info.base_name)
+                mine = Shop.create(self.owner.base_info.id,
+                                   self.owner.base_info.base_name)
                 self.owner.shop.refresh_price(7)
         if stype == MineType.COPY:
-            mine = Copy.create(self.owner.base_info.id, self.owner.base_info.base_name)
+            mine = Copy.create(self.owner.base_info.id,
+                               self.owner.base_info.base_name)
 
         if not mine:
-            mine = MineType.create(MineType.MONSTER_FIELD, self.owner.base_info.id, self.owner.base_info.base_name)
+            mine = MineType.create(MineType.MONSTER_FIELD,
+                                   self.owner.base_info.id,
+                                   self.owner.base_info.base_name)
         self._mine[position] = mine
         # print 'search_mine', position, mine.__dict__
         self._update = True
@@ -884,7 +898,7 @@ class UserMine(Component):
 
     def ifhave(self, tid):
         for mine in self._mine.values():
-            if  mine._type == 1 and tid == mine._seq:
+            if mine._type == 1 and tid == mine._seq:
                 return True
 
     def mine_status(self):
@@ -893,7 +907,8 @@ class UserMine(Component):
         """
         mine_infos = []
         if 0 not in self._mine:
-            self._mine[0] = UserSelf.create(self.owner.base_info.id, self.owner.base_info.base_name)
+            self._mine[0] = UserSelf.create(self.owner.base_info.id,
+                                            self.owner.base_info.base_name)
         for pos in self._mine.keys():
             mine_info = self._mine[pos].mine_info()
             if mine_info['type'] == MineType.PLAYER_FIELD:
@@ -963,7 +978,7 @@ class UserMine(Component):
         查看矿点详细信息，初始矿和野外矿
         """
         if position in self._mine:
-            detail_data =  self._mine[position].detail_info()
+            detail_data = self._mine[position].detail_info()
             # print 'detail_data', detail_data
             self._update = True
             return detail_data
@@ -981,7 +996,8 @@ class UserMine(Component):
         return last_time
 
     def settle(self, position):
-        mine, tid = self._mine[position].settle(self.owner.base_info.id, self.owner.base_info.base_name)
+        mine, tid = self._mine[position].settle(self.owner.base_info.id,
+                                                self.owner.base_info.base_name)
         # print 'settle', mine.__dict__
         self._mine[position] = mine  # 更改本地信息
         self._update = True
@@ -999,7 +1015,8 @@ class UserMine(Component):
         """ 驻守 """
         # print 'save_guard', position
         if position in self._mine:
-            result_code = self._mine[position].guard(self.owner.base_info.base_name, info)
+            nickname = self.owner.base_info.base_name
+            result_code = self._mine[position].guard(nickname, info)
             return result_code
 
     def start(self, position):
