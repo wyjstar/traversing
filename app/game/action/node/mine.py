@@ -103,7 +103,6 @@ def query_1240(data, player):
 def search_1241(data, player):
     """ 搜索矿点,ok """
     # print 'search_1241'
-    # try:
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
     response = mine_pb2.searchResponse()
@@ -126,9 +125,7 @@ def search_1241(data, player):
         response.res.result = False
         response.res.result_no = 12410
         response.res.message = u"超出探索范围"
-#     print '1241-response', response
-#     except Exception, e:
-#         # print 'search', e
+    # print '1241-response', response
 
     player.mine.save_data()
     return response.SerializePartialToString()
