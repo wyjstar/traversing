@@ -63,7 +63,9 @@ class CharacterGuildComponent(Component):
     def get_guild_level(self):
         if self._g_id == "no":
             return 0
-        data = tb_guild_info.getObj(self._g_id)
+        data = tb_guild_info.getObj(self._g_id).hgetall()
+        if not data:
+            return 0
         guild_obj = Guild()
         guild_obj.init_data(data)
         return guild_obj.level

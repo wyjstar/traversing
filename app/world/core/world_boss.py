@@ -102,6 +102,11 @@ class WorldBoss(BaseBoss):
         self.save_data()
 
         # todo:对前十名发放奖励
+        # self.send_award_mail()
+
+    def send_award_mail(self):
+        ranks = self._rank_instance.get(1, 99999)
+
 
     def set_next_stage(self, kill_or_not=False):
         """
