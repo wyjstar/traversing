@@ -125,6 +125,12 @@ class RedisObject(object):
         result = client.sismember(produce_key, cPickle.dumps(member))
         return result == 1
 
+    def smove(self, src, dst, member):
+        src_key = self.produceKey(src)
+        dst_key = self.produceKey(dst)
+        client = redis_manager.get_connection(self._name)
+        client.smove(src_key, dst_key, member)
+
     def supdate(self, key, old_member, new_member):
         produce_key = self.produceKey(key)
         if self.srem(produce_key, old_member) != 1:
@@ -218,38 +224,6 @@ class RedisObject(object):
         client = redis_manager.get_connection(produce_key)
         _range = client.zrevrange(produce_key, _min, _max)
         return _range
-    
-    def mysadd(self, label, uid):
-        client = redis_manager.get_connection(self._name)
-        client.sadd(label, uid)
-        
-    def smembers(self, label):
-        client = redis_manager.get_connection(self._name)
-        return client.smembers(label)
-    
-    def mysmove(self, member, src, dst):
-        client = redis_manager.get_connection(self._name)
-        client.smove(src, dst, member)
-        
-    def myhset(self, label, k, v):
-        client = redis_manager.get_connection(self._name)
-        client.hset(label, k, v)
-        
-    def myhkeys(self, label):
-        client = redis_manager.get_connection(self._name)
-        return client.hkeys(label)
-    
-    def myhget(self, label, k):
-        client = redis_manager.get_connection(self._name)
-        return client.hget(label, k)
-    
-    def myhdel(self, label, *k):
-        client = redis_manager.get_connection(self._name)
-        return client.hdel(label, k)
-    
-    def myzadd(self, label, k, v):
-        client = redis_manager.get_connection(self._name)
-        client.zadd(label, v, k)
 
     def zremrangebyrank(self, label, m, n):
         produce_key = self.produceKey(label)

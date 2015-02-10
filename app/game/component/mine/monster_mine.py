@@ -16,23 +16,29 @@ class MineOpt(object):
 
     @classmethod
     def add_mine(cls, uid, mid, data):
-        v = cPickle.dumps(data)
         label = 'mine.%s' % uid
         # print 'add_mine', label, mid
-        _rank = cls.rank.myhset(label, mid, 1)
+        rdobj = cls.rank.getObj(label)
+        rdobj.hset(mid, 1)
+
         # print cls.rank.myhkeys(label)
         label = 'mine'
-        _rank = cls.rank.myhset(label, mid, v)
+        rdobj = cls.rank.getObj(label)
+        rdobj.hset(mid, data)
 
     @classmethod
     def rem_mine(cls, mid):
         label = 'mine'
-        _rank = cls.rank.myhdel(label, mid)
+        rdobj = cls.rank.getObj(label)
+        result = rdobj.hdel(mid)
+        if not result:
+            print 'rem_mine error'
 
     @classmethod
     def get_mine(cls, mid):
         label = 'mine'
-        ret = cls.rank.myhget(label, mid)
+        rdobj = cls.rank.getObj(label)
+        ret = rdobj.hget(mid)
         # print 'get_mine------', label, mid, cPickle.loads(ret)
         return cPickle.loads(ret)
 
@@ -40,7 +46,8 @@ class MineOpt(object):
     def get_user_mines(cls, uid):
         label = 'mine.%s' % uid
         # print 'get_user_mines', label
-        mids = cls.rank.myhkeys(label)
+        rdobj = cls.rank.getObj(label)
+        mids = rdobj.hkeys()
         return mids
 
     @classmethod
@@ -75,7 +82,7 @@ class MineOpt(object):
         dst = '%s.%s' % (label, t)
         # print 'updata_level', src, dst
         try:
-            cls.rank.mysmove(src, dst, uid)
+            cls.rank.smove(src, dst, uid)
         except Exception, e:
             print 'update_level, error', e
 
@@ -83,7 +90,7 @@ class MineOpt(object):
     def asadd(cls, label, uid, grade):
         key = '%s.%s' % (label, grade)
         # print 'asadd', key
-        cls.rank.mysadd(key, uid)
+        cls.rank.sadd(key, uid)
 
     @classmethod
     def rand_level(cls, label, front, back):
@@ -94,12 +101,9 @@ class MineOpt(object):
             mem = '%s.%s' % (label, level)
             # print 'rand_level', mem
             try:
-                ret = cls.rank.smembers(mem)
+                ret = cls.rank.smem(mem)
                 # print 'rand_level', ret
-                if ret:
-                    ret_list = list(ret)
-                    # print ret_list
-                    users.extend(ret_list)
+                users.extend(ret)
             except Exception, e:
                 print 'rank_level', e
         return users
