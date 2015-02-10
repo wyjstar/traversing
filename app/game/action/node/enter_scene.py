@@ -87,4 +87,7 @@ def enter_scene_remote(dynamic_id, character_id):
 
             combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
 
-    return {'player_data': responsedata.SerializeToString(), 'is_new_character': is_new_character}
+    logger.debug('login:%s:%s', character_id, responsedata.level)
+
+    return {'player_data': responsedata.SerializeToString(),
+            'is_new_character': is_new_character}
