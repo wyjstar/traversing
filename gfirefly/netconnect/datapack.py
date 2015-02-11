@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2014-2-23
 
 @author: lan (www.9miao.com)
-'''
+"""
 from gfirefly.server.logobj import logger
 import struct
 
@@ -24,14 +24,14 @@ class DataPackProtoc:
     """
 
     def __init__(self, HEAD_0=0, HEAD_1=0, HEAD_2=0, HEAD_3=0, protoVersion=0, serverVersion=0):
-        '''初始化
+        """初始化
         @param HEAD_0: int 协议头0
         @param HEAD_1: int 协议头1
         @param HEAD_2: int 协议头2
         @param HEAD_3: int 协议头3
         @param protoVersion: int 协议头版本号
         @param serverVersion: int 服务版本号
-        '''
+        """
         self.HEAD_0 = HEAD_0
         self.HEAD_1 = HEAD_1
         self.HEAD_2 = HEAD_2
@@ -63,8 +63,8 @@ class DataPackProtoc:
         return 17
 
     def unpack(self, dpack):
-        '''解包
-        '''
+        """解包
+        """
         try:
             ud = struct.unpack('!sssss3I', dpack)
         except struct.error, de:
@@ -85,8 +85,8 @@ class DataPackProtoc:
         return {'result': True, 'command': command, 'length': length}
 
     def pack(self, response, command):
-        '''打包数据包
-        '''
+        """打包数据包
+        """
         HEAD_0 = chr(self.HEAD_0)
         HEAD_1 = chr(self.HEAD_1)
         HEAD_2 = chr(self.HEAD_2)
@@ -95,7 +95,7 @@ class DataPackProtoc:
         serverVersion = self.serverVersion
         length = response.__len__() + 4
         commandID = command
-        data = struct.pack('!sssss3I', HEAD_0, HEAD_1, HEAD_2, HEAD_3, \
+        data = struct.pack('!sssss3I', HEAD_0, HEAD_1, HEAD_2, HEAD_3,
                            protoVersion, serverVersion, length, commandID)
         # print struct.unpack('!sssss3I', data)
         data = data + str(response)

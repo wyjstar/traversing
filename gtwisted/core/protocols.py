@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 """
 Created on 2014年2月20日
 协议、工厂
@@ -12,30 +12,30 @@ import socket
 
 
 class BaseProtocol(Greenlet):
-    
-    def __init__(self,transport,factory):
+
+    def __init__(self, transport, factory):
         """
         """
         Greenlet.__init__(self)
         self.transport = transport
         self.factory = factory
-        
+
     def connectionMade(self):
         """当连接建立时的处理
         """
         pass
-        
-    def connectionLost(self,reason):
+
+    def connectionLost(self, reason):
         """当连接断开时的处理
         """
         pass
-        
+
     def dataReceived(self, data):
         """当连接数据到达时的处理
         @param data: str 接收到的数据
         """
         pass
-        
+
     def _run(self):
         """
         """
@@ -59,24 +59,24 @@ class BaseProtocol(Greenlet):
 
 
 class ServerFactory:
-    
+
     protocol = BaseProtocol
-    
+
     def __init__(self):
         """
         @param sessionno: int 用来记录客户端连接的动态编号
         """
         self.sessionno = 1
-        
+
     def buildProtocol(self, transport):
         """
         """
         pass
-    
-    def __call__(self,socket,address):
+
+    def __call__(self, socket, address):
         """每当有客户端连接产生是会被调用
         """
-        t = Transport(socket,address, self.sessionno)
+        t = Transport(socket, address, self.sessionno)
         self.buildProtocol(t)
         p = self.protocol(t, self)
         p.start()
@@ -84,28 +84,28 @@ class ServerFactory:
 
 
 class ClientFactory:
-    
+
     protocol = BaseProtocol
-    
+
     def __init__(self):
         """
         """
         self._protocol = None
-        
+
     def buildProtocol(self, transport):
         """
         """
         pass
-    
-    def startedConnecting(self,connector):
+
+    def startedConnecting(self, connector):
         """
         """
         address = connector.getHost()
         client = create_connection(address)
-        t = Transport(client,address)
+        t = Transport(client, address)
         self.buildProtocol(t)
-        self._protocol = self.protocol(t,self)
-    
+        self._protocol = self.protocol(t, self)
+
     def doStart(self):
         """
         """
