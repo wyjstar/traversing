@@ -350,8 +350,8 @@ def deal_apply_805(data, player):
                 invitee_player.guild.contribution = 0
                 invitee_player.guild.all_contribution = 0
                 invitee_player.guild.k_num = 0
-                invitee_player.guild.worship = 0
-                invitee_player.guild.worship_time = 1
+                # invitee_player.guild.worship = 0
+                # invitee_player.guild.worship_time = 1
                 invitee_player.guild.exit_time = 1
                 invitee_player.guild.save_data()
             else:
@@ -360,8 +360,8 @@ def deal_apply_805(data, player):
                         'contribution': 0,
                         'all_contribution': 0,
                         'k_num': 0,
-                        'worship': 0,
-                        'worship_time': 1,
+                        # 'worship': 0,
+                        # 'worship_time': 1,
                         'exit_time': 1}
                 p_guild_data = tb_character_info.getObj(p_id)
                 p_guild_data.hmset(data)
@@ -495,8 +495,8 @@ def kick_807(data, player):
                         'contribution': 0,
                         'all_contribution': 0,
                         'k_num': 0,
-                        'worship': 0,
-                        'worship_time': 1,
+                        # 'worship': 0,
+                        # 'worship_time': 1,
                         'exit_time': time.time()}
                 p_guild_data = tb_character_info.getObj(p_id)
                 p_guild_data.hmset(data)
