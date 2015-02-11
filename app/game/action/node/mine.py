@@ -4,31 +4,35 @@ Created on 2014-11-24
 
 @author: hack
 """
-from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file import mine_pb2, common_pb2
+import time
+from app.proto_file import mine_pb2
+from app.proto_file import common_pb2
+from app.proto_file import line_up_pb2
+from app.proto_file import db_pb2
+from app.game.core import item_group_helper
+from app.game.core.drop_bag import BigBag
+from app.game.core.lively import task_status
+
+from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
+from gfirefly.server.globalobject import remoteserviceHandle
+
+from shared.utils.const import const
 from shared.db_opear.configs_data.game_configs import shop_config
 from shared.db_opear.configs_data.game_configs import base_config
 from shared.db_opear.configs_data.game_configs import mine_config
-from app.game.core import item_group_helper
-from app.game.core.drop_bag import BigBag
 from shared.db_opear.configs_data.common_item import CommonGroupItem
-from shared.utils.const import const
+
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
-from gfirefly.server.logobj import logger
+from app.game.component.achievement.user_achievement import CountEvent
+from app.game.component.achievement.user_achievement import EventType
 from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
-from app.proto_file import line_up_pb2
-from app.game.component.achievement.user_achievement import CountEvent
-from app.game.component.achievement.user_achievement import EventType
-from app.game.core.lively import task_status
-from app.proto_file.db_pb2 import Mail_PB
-import time
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -204,13 +208,13 @@ def query_1243(data, player):
         if stype == 2:
             response.stage_id = int(lineup)
         if stype == 1:
-            if lineup != None:
+            if lineup is not None:
                 response.lineup.ParseFromString(lineup.get('line_up'))
 
         mid = player.mine.mid(request.position)
         main_mine = mine_config.get(mid)
 
-        response.genUnit = int( (60 / main_mine.timeGroup1) * main_mine.outputGroup1)
+        response.genUnit = int((60 / main_mine.timeGroup1) * main_mine.outputGroup1)
         response.rate = main_mine.increase
         response.incrcost = main_mine.increasePrice
         response.guard_time = int(guard_time)
@@ -330,7 +334,11 @@ def add_stones(player, stones, response):
                 runt_pb = response.runt.add()
                 [runt_id, main_attr, minor_attr] = runt_info
                 # print runt_no
-                player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
+                player.runt.deal_runt_pb(runt_no,
+                                         runt_id,
+                                         main_attr,
+                                         minor_attr,
+                                         runt_pb)
     return 1
 
 
@@ -354,7 +362,9 @@ def harvest_1245(data, player):
         tstatus = player.tasks.check_inter(lively_event)
         if tstatus:
             task_data = task_status(player)
-            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+            remote_gate.push_object_remote(1234,
+                                           task_data,
+                                           [player.dynamic_id])
 
     else:
         response.res.result = False
@@ -436,14 +446,13 @@ def exchange_1248(data, player):
 
 
 def add_items(player, response, drop_ids):
-    """
-    添加道具给玩家
-    """
-
+    """ 添加道具给玩家 """
     for drop_id in drop_ids:
         big_bag = BigBag(drop_id)
         drop_item_group = big_bag.get_drop_items()
-        return_data = item_group_helper.gain(player, drop_item_group, const.MINE_REWARD)
+        return_data = item_group_helper.gain(player,
+                                             drop_item_group,
+                                             const.MINE_REWARD)
         item_group_helper.get_return(player, return_data, response.gain)
     return response
 
@@ -505,7 +514,7 @@ def process_mine_result(player, position, result, response, stype):
     @param gain: true or false
     """
     # print 'process_mine_result', position, response, result, stype
-    if result == True:
+    if result is True:
         target = player.mine.settle(position)
         if stype == 1:
             detail_info = player.mine.detail_info(position)
@@ -516,7 +525,7 @@ def process_mine_result(player, position, result, response, stype):
                 if v > 0:
                     normal = response.normal.add()
                     normal.stone_id = k
-                    normal.stone_num = int(v *warFogLootRatio)
+                    normal.stone_num = int(v * warFogLootRatio)
                     count[k] = v
             for k, v in lucky.items():
                 if v > 0:
@@ -525,20 +534,6 @@ def process_mine_result(player, position, result, response, stype):
                     luck.stone_num = int(v*warFogLootRatio)
                     count[k] = v
 
-            """
-                required string mail_id = 1; // ID
-                optional int32 sender_id = 2; //发件人ID
-                optional string sender_name = 3; //发件人
-                optional int32 sender_icon = 4; //发件人Icon
-                optional int32 receive_id = 5; //收件人ID
-                optional string receive_name = 6; //收件人
-                optional string title = 7; //标题
-                optional string content = 8; //邮件内容
-                required int32 mail_type = 9; //邮件类型
-                optional int32 send_time = 10; //发件时间
-                optional bool is_readed = 11; //是否已读
-                optional string prize = 12; //奖品
-            """
             mail = {}
             prize = {}
             prize[108] = []
@@ -546,7 +541,7 @@ def process_mine_result(player, position, result, response, stype):
             for k, v in count.items():
                 prize[108].append([v, v, k])
 
-            mail = Mail_PB()
+            mail = db_pb2.Mail_PB()
             mail.sender_id = -1
             mail.sender_name = ''
             mail.receive_id = target
@@ -557,7 +552,7 @@ def process_mine_result(player, position, result, response, stype):
             mail.prize = prize
             mail.send_time = int(time.time())
 
-            battle_process = Mail_PB()
+            battle_process = db_pb2.Mail_PB()
             battle_process.sender_id = -1
             battle_process.sender_name = player.base_info.base_name
             battle_process.receive_id = target
@@ -570,8 +565,12 @@ def process_mine_result(player, position, result, response, stype):
             # command:id 为收邮件的命令ID
             if sum(count.values()) > 0:
                 # response.result = netforwarding.push_message('receive_mail_remote', target, mail)
-                netforwarding.push_message('receive_mail_remote', target, mail.SerializePartialToString())
-                netforwarding.push_message('receive_mail_remote', target, battle_process.SerializePartialToString())
+                netforwarding.push_message('receive_mail_remote',
+                                           target,
+                                           mail.SerializePartialToString())
+                netforwarding.push_message('receive_mail_remote',
+                                           target,
+                                           battle_process.SerializePartialToString())
 
 
 @remoteserviceHandle('gate')
@@ -606,14 +605,19 @@ def battle_1253(data, player):
     mine_info = get_mine_info(player, pos)
     response = mine_pb2.MineBattleResponse()
 
-    mine_type = mine_info.get("mine_type") # 根据矿所在位置判断pve or pvp
+    mine_type = mine_info.get("mine_type")  # 根据矿所在位置判断pve or pvp
     # print mine_type, "*"*80
     # print request
     if mine_type == 0:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
         stage_type = 5                              # 关卡类型
-        stage_info = pve_process(stage_id, stage_type, line_up, 0, player, red_best_skill_id)
+        stage_info = pve_process(stage_id,
+                                 stage_type,
+                                 line_up,
+                                 0,
+                                 player,
+                                 red_best_skill_id)
         result = stage_info.get('result')
         response.res.result = result
         if not result:
@@ -632,7 +636,13 @@ def battle_1253(data, player):
         info = get_save_guard(player, pos)
         blue_units = info.get("battle_units")
 
-        fight_result = pvp_process(player, line_up, red_units, blue_units, red_best_skill_id, info.get("best_skill_no"), info.get("level"))
+        fight_result = pvp_process(player,
+                                   line_up,
+                                   red_units,
+                                   blue_units,
+                                   red_best_skill_id,
+                                   info.get("best_skill_no"),
+                                   info.get("level"))
         if fight_result:
             # 返回秘境的结果
             pass
@@ -664,11 +674,9 @@ def get_mine_info(player, pos):
 
 
 def get_save_guard(player, pos):
-    """
-    获取保存的驻守信息
-    """
+    """ 获取保存的驻守信息 """
     info = player.mine.get_guard_info(pos)
-    if info == None:
+    if info is None:
         return {}
     return info
 
