@@ -8,4 +8,4 @@ from gtwisted.core import reactor
 
 
 reactor.callLater(600, pvp_award.pvp_award_tick)
-# pvp_award.pvp_daily_award_tick()
+pvp_award.pvp_daily_award_tick()
