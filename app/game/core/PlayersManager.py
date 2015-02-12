@@ -28,9 +28,8 @@ class PlayersManager:
         @param player:
         @return:
         """
-        #TODO
-        if self._players.has_key(player.base_info.id):
-#            raise Exception("系统记录冲突")
+        if player.base_info.id in self._players:
+            raise Exception("系统记录冲突")
             return
         self._players[player.base_info.id] = player
 

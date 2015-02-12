@@ -2,14 +2,13 @@
 """
 created by wzp on 14-6-19下午7: 51.
 """
+import time
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.game_pb2 import GameLoginResponse
-import time
 from app.game.action.node.player import init_player
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
-# from gfirefly.server.globalobject import GlobalObject
 from app.game.component.fight.hero_attr_cal.combat_power import combat_power_hero_lineup
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
@@ -23,10 +22,12 @@ def enter_scene_remote(dynamic_id, character_id):
     is_new_character = 1
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
-        logger.debug('new player:%s', character_id)
+        logger.debug('player login:%s', character_id)
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
+    else:
+        player.dynamic_id = dynamic_id
 
     remote_gate.pull_message_remote(character_id)
 
@@ -87,7 +88,12 @@ def enter_scene_remote(dynamic_id, character_id):
 
             combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
 
-    logger.debug('login:%s:%s', character_id, responsedata.level)
+    logger.debug('login:<%s>%s:%s %s:%s',
+                 player,
+                 character_id,
+                 responsedata.level,
+                 dynamic_id,
+                 player.dynamic_id)
 
     return {'player_data': responsedata.SerializeToString(),
             'is_new_character': is_new_character}

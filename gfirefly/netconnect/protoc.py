@@ -43,7 +43,6 @@ class LiberateProtocol(protocols.BaseProtocol):
         self.transport.sendall(senddata)
 
     def dataReceived(self, data):
-
         """数据到达处理
         @param data: str 客户端传送过来的数据
         """
@@ -103,9 +102,10 @@ class LiberateFactory(protocols.ServerFactory):
     def doDataReceived(self, conn, commandID, data):
         """数据到达时的处理"""
         if commandID == 88:
-            connection = self.connmanager.getConnectionByID(conn.transport.sessionno)
+            _id = conn.transport.sessionno
+            connection = self.connmanager.getConnectionByID(_id)
             connection.set_time()
-            print "+++++++++++++++++++++++++++++88++++++++++++++++++++++++++++++++++++++++"
+            print "+++++++++++++++++++++++++++++88++++++++++++++++++++++++"
             return 'I am the 88 return.'
         response = self.service.callTarget(commandID, conn, data)
 

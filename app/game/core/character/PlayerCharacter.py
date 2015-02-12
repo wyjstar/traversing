@@ -3,6 +3,7 @@
 created by server on 14-6-4下午3:04.
 """
 from app.game.redis_mode import tb_character_info
+from gfirefly.server.logobj import logger
 from app.game import component
 
 
@@ -67,11 +68,22 @@ class PlayerCharacter(object):
             character_info.update(newdict)
         char_obj = tb_character_info.getObj(self._pid)
         # print len(character_info), character_info
+        logger.debug('new player db:%s:level:%s',
+                     character_info['id'],
+                     character_info['level'])
         char_obj.new(character_info)
+
+    @property
+    def character_id(self):
+        return self._pid
 
     @property
     def dynamic_id(self):
         return self._dynamic_id
+
+    @dynamic_id.setter
+    def dynamic_id(self, value):
+        self._dynamic_id = value
 
     @property
     def base_info(self):

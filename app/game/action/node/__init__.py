@@ -28,6 +28,7 @@ class GameCommandService(CommandService):
                 _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
                 # print 'find player:', _player
                 if not _player:
+                    logger.error('cantfind player dynamic id:%s', dynamic_id)
                     return {'result': False, 'result_no': 1, 'message': u''}
                 args = args[1:]
                 kw['player'] = _player
