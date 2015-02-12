@@ -4,7 +4,9 @@ Created on 2014年2月22日
 这里定义了两个服务之间进行接口调用的过程
 @author:  lan (www.9miao.com)
 '''
-from gtwisted.core.protocols import BaseProtocol, ClientFactory, ServerFactory
+from gtwisted.core.protocols import BaseProtocol
+from gtwisted.core.protocols import ClientFactory
+from gtwisted.core.protocols import ServerFactory
 from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
