@@ -27,6 +27,11 @@ def enter_scene_remote(dynamic_id, character_id):
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
     else:
+        if player.dynamic_id != dynamic_id:
+            logger.error('dynamic id is not same:%s,%s:%s',
+                         character_id,
+                         dynamic_id,
+                         player.dynamic_id)
         player.dynamic_id = dynamic_id
 
     remote_gate.pull_message_remote(character_id)
