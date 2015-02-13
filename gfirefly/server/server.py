@@ -4,8 +4,10 @@ Created on 2013-8-2
 
 @author: lan (www.9miao.com)
 """
-from gfirefly.netconnect.protoc import LiberateFactory
+import os
+import affinity
 from flask import Flask
+from gfirefly.netconnect.protoc import LiberateFactory
 from gfirefly.distributed.root import PBRoot, BilateralFactory
 from gfirefly.distributed.node import RemoteObject
 from gfirefly.dbentrust.dbpool import dbpool
@@ -14,8 +16,6 @@ from gfirefly.server.logobj import log_init
 from gfirefly.server.logobj import logger
 from gtwisted.core import reactor
 from gfirefly.utils import services
-import os
-import affinity
 from gfirefly.dbentrust.redis_manager import redis_manager
 
 reactor = reactor
@@ -36,18 +36,18 @@ class FFServer:
     def __init__(self):
         """
         """
-        self.netfactory = None  #net前端
-        self.root = None  #分布式root节点
-        self.webroot = None  #http服务
-        self.remote = {}  #remote节点
+        self.netfactory = None  # net前端
+        self.root = None  # 分布式root节点
+        self.webroot = None  # http服务
+        self.remote = {}  # remote节点
         self.master_remote = None
         self.db = None
         self.servername = None
         self.remoteportlist = []
 
     def config(self, config, servername=None, dbconfig=None,
-               memconfig=None, redis_config=None, masterconf=None, model_default_config=None,
-               model_config=None):
+               memconfig=None, redis_config=None, masterconf=None,
+               model_default_config=None, model_config=None):
         """配置服务器"""
         GlobalObject().json_config = config
         GlobalObject().json_model_config = model_default_config
@@ -61,7 +61,7 @@ class FFServer:
         logpath = config.get('log')  # 日志
         hasdb = config.get('db')  # 数据库连接
         # hasmem = config.get('mem')  # memcached连接
-        hasredis = config.get('redis') # redis连接
+        hasredis = config.get('redis')  # redis连接
         app = config.get('app')  # 入口模块名称
         cpuid = config.get('cpu')  # 绑定cpu
         mreload = config.get('reload')  # 重新加载模块名称
