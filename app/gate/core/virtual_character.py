@@ -8,7 +8,7 @@ class VirtualCharacter:
     """
     虚拟角色类，记录角色对应的游戏服务器
     """
-    def __init__(self, character_id, dynamic_id, node=''):
+    def __init__(self, character_id, dynamic_id, node=None):
         """
         @param character_id: character id
         @param dynamic_id: connection id
