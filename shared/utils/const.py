@@ -104,7 +104,7 @@ const.TRAVEL_ITEM = 109
 # 22    商店幸运值
 
 const.MAX_CONNECTION = 2000
-const.TIME_OUT = 60 * 1000  # 秒
+const.TIME_OUT = 60 * 10  # 秒
 const.TLOG_ADDR = ('192.168.10.25', 6667)
 
 # ========t_log=============
