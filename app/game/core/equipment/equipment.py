@@ -20,14 +20,14 @@ import copy
 EQUIP_ATTR_CONFIG = game_configs.equipment_attribute_config
 
 
-def init_equipment_attr(equipment_no, is_special=False):
+def init_equipment_attr(equipment_no):
     mainAttr, minorAttr = {}, {}
     equipment_item = game_configs.equipment_config.get(equipment_no)
     if not equipment_item:
         logger.error('error equipment no:%s', equipment_no)
         return mainAttr, minorAttr
 
-    equip_attr_id = equipment_item.specialAttr if is_special else equipment_item.attr
+    equip_attr_id = equipment_item.attr
     equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
     if not equipment_attr_item:
         logger.error('error equipment attr no:%s:%s',
@@ -51,20 +51,75 @@ def init_equipment_attr(equipment_no, is_special=False):
     assert main_num == len(mainAttr)
     assert minor_num == len(minorAttr)
 
-    # random for prefx
-    prefix = get_prefix(equipment_item.get("quality"))
+    # calculation for prefx
+    prefix = get_prefix(equipment_item, mainAttr, minorAttr)
 
     return mainAttr, minorAttr, prefix
 
-def get_prefix(quality):
+def get_prefix(equipment_item, mainAttr, minorAttr):
     """docstring for get_prefix"""
-    ran = random.random()
-
+    quality = equipment_item.get("quality")
     for item in base_config.get("equPrefix")[quality]:
-        if item[0] < ran and item[1] >ran:
+        ran = get_equip_rate(equipment_item, mainAttr, minorAttr)
+        logger.debug("ran=========:%s" % ran)
+        if item[0] <= ran and item[1] > ran:
             return item[2]
     return 0
 
+def get_equip_rate(equipment_item, mainAttr, minorAttr):
+    """当前装备/极限装备战斗力"""
+
+    equip_attr_id = equipment_item.attr
+    equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
+    main_pool = copy.copy(equipment_attr_item.get('mainAttr'))
+    minor_pool = copy.copy(equipment_attr_item.get('minorAttr'))
+
+    varNames = {1: 'hp',
+                2: 'atk',
+                3: 'physicalDef',
+                4: 'magicDef',
+                5: 'hit',
+                6: 'dodge',
+                7: 'cri',
+                8: 'criCoeff',
+                9: 'criDedCoeff',
+                10: 'block',
+                11: 'ductility'}
+
+    attr = {}
+    for k, v in varNames.items():
+        attr[v] = 0
+
+    for k, v in main_pool.items():
+        max_value = v[3]
+        attr[varNames[k]] = attr[varNames[k]] + max_value
+
+    for k, v in minor_pool.items():
+        max_value = v[3]
+        attr[varNames[k]] = attr[varNames[k]] + max_value
+
+    formula = formula_config.get("equFightValue").get("formula")
+    assert formula!=None, "formula can not be None"
+    max_result = eval(formula, attr)
+
+    attr = {}
+    for k, v in varNames.items():
+        attr[v] = 0
+    for k, v in mainAttr.items():
+        max_value = v[1]
+        attr[varNames[k]] = max_value
+
+    for k, v in minorAttr.items():
+        max_value = v[1]
+        attr[varNames[k]] = attr.get(varNames[k], 0) + max_value
+
+    formula = formula_config.get("equFightValue").get("formula")
+    assert formula!=None, "formula can not be None"
+    result = eval(formula, attr)
+    logger.debug("result/max_result")
+    logger.debug(result)
+    logger.debug(max_result)
+    return result/float(max_result)
 
 
 def rand_pick_attr(attr):
