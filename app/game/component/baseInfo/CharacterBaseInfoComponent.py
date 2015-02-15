@@ -77,7 +77,7 @@ class CharacterBaseInfoComponent(Component):
                     heads=self._heads.SerializeToString(),
                     register_time=self._register_time)
         character_info.hmset(data)
-        logger.debug("save level:%s,%s", str(self._id), str(data))
+        # logger.debug("save level:%s,%s", str(self._id), str(data))
 
     def new_data(self):
         init_level = base_config.get('initialPlayerLevel')

@@ -4,7 +4,9 @@ Created on 2013-8-2
 
 @author: lan (www.9miao.com)
 '''
-import subprocess, json, sys
+import sys
+import json
+import subprocess
 from gtwisted.core import reactor
 from gfirefly.utils import services
 from gfirefly.distributed.root import PBRoot, BilateralFactory
@@ -20,12 +22,7 @@ MASTER_SERVER_MODE = 3
 
 
 class Master:
-    """
-    """
-
     def __init__(self):
-        """
-        """
         self.configpath = None
         self.mainpath = None
         self.root = None
@@ -53,7 +50,7 @@ class Master:
         GlobalObject().root = self.root
         GlobalObject().webroot = self.webroot
         if masterlog:
-            log_init(masterlog)  #日志处理
+            log_init(masterlog)  # 日志处理
         import webapp
         import rootapp
 
