@@ -95,7 +95,7 @@ class EquipmentAttributeComponent(Component):
         equipment_no = self.owner.base_info.equipment_no
         # 配置数据
         equ_config_obj = game_configs.equipment_config.get(equipment_no, None)
-        str_config_obj = game_configs.equipment_strengthen_config.get(self._strengthen_lv + 1, None)
+        str_config_obj = game_configs.equipment_strengthen_config.get(self._strengthen_lv, None)
         if (not equ_config_obj) or (not str_config_obj):
             return None
         curencydir = equ_config_obj.currencyDir  # 强化路线

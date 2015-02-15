@@ -10,6 +10,7 @@ message GetEquipmentResponse{
 // 装备强化返回 command: 402
 message EnhanceEquipmentResponse{
 	required CommonResponse res = 1;
+	optional int32 num = 3; // 强化次数, 用于一键强化
 	repeated EnhanceDataFormat data= 2;
 }
 

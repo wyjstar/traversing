@@ -8,6 +8,7 @@ from app.proto_file import equipment_response_pb2
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
+from shared.db_opear.configs_data.game_configs import base_config
 
 
 @remoteserviceHandle('gate')
@@ -47,11 +48,9 @@ def enhance_equipment_402(pro_data, player):
     request.ParseFromString(pro_data)
     equipment_id = request.id
     enhance_type = request.type
-    enhance_num = request.num
 
     enhance_info = enhance_equipment(equipment_id,
                                      enhance_type,
-                                     enhance_num,
                                      player)
 
     result = enhance_info.get('result')
@@ -74,7 +73,9 @@ def enhance_equipment_402(pro_data, player):
             flag = 2
         data_format.after_lv = after_lv
         data_format.cost_coin += enhance_cost
+        logger.debug("after_lv %s " % after_lv)
 
+    response.num = enhance_info.get("num")
     return response.SerializePartialToString()
 
 
@@ -188,12 +189,11 @@ def get_equipments_info(get_type, get_id, player):
     return equipments
 
 
-def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
+def enhance_equipment(equipment_id, enhance_type, player):
     """装备强化
     @param dynamic_id:  客户端动态ID
     @param equipment_id: 装备ID
     @param enhance_type: 强化类型
-    @param enhance_num: 强化次数
     @param kwargs:
     @return:
     """
@@ -217,18 +217,33 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
     if not enhance_cost or curr_coin < enhance_cost:
         return {'result': False, 'result_no': 101, 'message': u''}
 
-
     strength_max = player.base_info.level + equipment_obj.strength_max
-    for i in xrange(0, enhance_num):
-        result = __do_enhance(player, equipment_obj)
-        if not result.get('result'):
-            return result
+    current_strength_lv = equipment_obj.attribute.strengthen_lv
 
+    num = 0
+    if enhance_type == 1:
+        result = __do_enhance(player, equipment_obj)
         if result.get('record')[1] >= strength_max:
             result['record'] = (result.get('record')[0], strength_max, result.get('record')[2])
             enhance_record.append(result.get('record'))
-            break
         enhance_record.append(result.get('record'))
+        num += 1
+    else:
+        while strength_max > current_strength_lv and curr_coin > enhance_cost:
+            num += 1
+            result = __do_enhance(player, equipment_obj)
+            if not result.get('result'):
+                return result
+
+            if result.get('record')[1] >= strength_max:
+                result['record'] = (result.get('record')[0], strength_max, result.get('record')[2])
+                enhance_record.append(result.get('record'))
+                break
+            enhance_record.append(result.get('record'))
+            current_strength_lv = equipment_obj.attribute.strengthen_lv
+            enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
+            curr_coin = player.finance.coin  # 用户金币
+
 
     print equipment_obj.enhance_record
     equipment_obj.enhance_record.enhance_record.extend(enhance_record)
@@ -237,7 +252,7 @@ def enhance_equipment(equipment_id, enhance_type, enhance_num, player):
     equipment_obj.save_data()
     player.finance.save_data()
 
-    return {'result': True, 'enhance_record': enhance_record}
+    return {'result': True, 'enhance_record': equipment_obj.enhance_record.enhance_record, 'num': num}
 
 
 def __do_enhance(player, equipment_obj):
@@ -298,7 +313,7 @@ def melting_equipment(equipment_id, response, player):
     for record in equipment_obj.enhance_record.enhance_record:
         strength_coin += record[2]
 
-    response.cgr.finance.coin += strength_coin
+    response.cgr.finance.coin += int(strength_coin*base_config.get("equRefundRatio"))
 
 
 def awakening_equipment(equipment_id, player):

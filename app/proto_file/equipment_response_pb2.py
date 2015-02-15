@@ -15,7 +15,7 @@ import equipment_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment_response.proto',
   package='',
-  serialized_pb='\n\x18\x65quipment_response.proto\x1a\x0c\x63ommon.proto\x1a\x0f\x65quipment.proto\"U\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1f\n\tequipment\x18\x02 \x03(\x0b\x32\x0c.EquipmentPB\"Z\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"S\n\x18\x43omposeEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"x\n\x18NobbingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\x12#\n\x03\x63gr\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"]\n\x18MeltingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"_\n\x1a\x41wakeningEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x18\x65quipment_response.proto\x1a\x0c\x63ommon.proto\x1a\x0f\x65quipment.proto\"U\n\x14GetEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1f\n\tequipment\x18\x02 \x03(\x0b\x32\x0c.EquipmentPB\"g\n\x18\x45nhanceEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03num\x18\x03 \x01(\x05\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"S\n\x18\x43omposeEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"x\n\x18NobbingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\x12#\n\x03\x63gr\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"]\n\x18MeltingEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"_\n\x1a\x41wakeningEquipmentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12#\n\x03\x63gr\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -70,7 +70,14 @@ _ENHANCEEQUIPMENTRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='data', full_name='EnhanceEquipmentResponse.data', index=1,
+      name='num', full_name='EnhanceEquipmentResponse.num', index=1,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='EnhanceEquipmentResponse.data', index=2,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -86,7 +93,7 @@ _ENHANCEEQUIPMENTRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=146,
-  serialized_end=236,
+  serialized_end=249,
 )
 
 
@@ -120,8 +127,8 @@ _COMPOSEEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=238,
-  serialized_end=321,
+  serialized_start=251,
+  serialized_end=334,
 )
 
 
@@ -162,8 +169,8 @@ _NOBBINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=323,
-  serialized_end=443,
+  serialized_start=336,
+  serialized_end=456,
 )
 
 
@@ -197,8 +204,8 @@ _MELTINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=445,
-  serialized_end=538,
+  serialized_start=458,
+  serialized_end=551,
 )
 
 
@@ -232,8 +239,8 @@ _AWAKENINGEQUIPMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=540,
-  serialized_end=635,
+  serialized_start=553,
+  serialized_end=648,
 )
 
 _GETEQUIPMENTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

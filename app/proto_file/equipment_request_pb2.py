@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='equipment_request.proto',
   package='',
-  serialized_pb='\n\x17\x65quipment_request.proto\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"@\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\x12\x0b\n\x03num\x18\x03 \x01(\x05\"%\n\x17\x43omposeEquipmentRequest\x12\n\n\x02no\x18\x01 \x02(\x05\"%\n\x17NobbingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"%\n\x17MeltingEquipmentRequest\x12\n\n\x02id\x18\x01 \x03(\t\"(\n\x19\x41wakeningEquipmentRequest\x12\x0b\n\x03ids\x18\x01 \x02(\t')
+  serialized_pb='\n\x17\x65quipment_request.proto\"0\n\x14GetEquipmentsRequest\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\n\n\x02id\x18\x02 \x01(\t\"3\n\x17\x45nhanceEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x0c\n\x04type\x18\x02 \x01(\x05\"%\n\x17\x43omposeEquipmentRequest\x12\n\n\x02no\x18\x01 \x02(\x05\"%\n\x17NobbingEquipmentRequest\x12\n\n\x02id\x18\x01 \x02(\t\"%\n\x17MeltingEquipmentRequest\x12\n\n\x02id\x18\x01 \x03(\t\"(\n\x19\x41wakeningEquipmentRequest\x12\x0b\n\x03ids\x18\x01 \x02(\t')
 
 
 
@@ -74,13 +74,6 @@ _ENHANCEEQUIPMENTREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='num', full_name='EnhanceEquipmentRequest.num', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -91,7 +84,7 @@ _ENHANCEEQUIPMENTREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=77,
-  serialized_end=141,
+  serialized_end=128,
 )
 
 
@@ -118,8 +111,8 @@ _COMPOSEEQUIPMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=143,
-  serialized_end=180,
+  serialized_start=130,
+  serialized_end=167,
 )
 
 
@@ -146,8 +139,8 @@ _NOBBINGEQUIPMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=182,
-  serialized_end=219,
+  serialized_start=169,
+  serialized_end=206,
 )
 
 
@@ -174,8 +167,8 @@ _MELTINGEQUIPMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=221,
-  serialized_end=258,
+  serialized_start=208,
+  serialized_end=245,
 )
 
 
@@ -202,8 +195,8 @@ _AWAKENINGEQUIPMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=260,
-  serialized_end=300,
+  serialized_start=247,
+  serialized_end=287,
 )
 
 DESCRIPTOR.message_types_by_name['GetEquipmentsRequest'] = _GETEQUIPMENTSREQUEST

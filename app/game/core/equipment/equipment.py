@@ -91,10 +91,14 @@ def get_equip_rate(equipment_item, mainAttr, minorAttr):
         attr[v] = 0
 
     for k, v in main_pool.items():
+        if k not in mainAttr:
+            continue
         max_value = v[3]
         attr[varNames[k]] = attr[varNames[k]] + max_value
 
     for k, v in minor_pool.items():
+        if k not in minorAttr:
+            continue
         max_value = v[3]
         attr[varNames[k]] = attr[varNames[k]] + max_value
 
@@ -222,11 +226,15 @@ class Equipment(object):
     def enhance(self, player):
         """强化
         """
+        strength_max = player.base_info.level + self.strength_max
         before_lv = self._attribute.strengthen_lv
         enhance_lv = 1
         extra_enhance = self.get_extra_enhance_times(player) * enhance_lv
-
-        self._attribute.modify_single_attr('strengthen_lv', extra_enhance, add=True)
+        print("extra_enhance=================", type(extra_enhance), type(before_lv))
+        strengthen_lv = extra_enhance + before_lv
+        if strengthen_lv > strength_max:
+            strengthen_lv = strength_max
+        self._attribute.strengthen_lv = strengthen_lv
         after_lv = self._attribute.strengthen_lv
 
         return before_lv, after_lv
@@ -238,7 +246,7 @@ class Equipment(object):
         items = player.base_info.equipment_strength_cli_times
         times = random_pick_with_percent(items)
         if times:
-            return times
+            return int(times)
         return 1
 
     def nobbing(self):
@@ -302,6 +310,8 @@ class Equipment(object):
             data_format.before_lv = before_lv
             data_format.after_lv = after_lv
             data_format.cost_coin = enhance_cost
+        logger.debug("equipment_pb.data===============")
+        logger.debug(equipment_pb.data)
 
     def calculate_attr(self, hero_self_attr):
         """根据属性和强化等级计算装备属性"""

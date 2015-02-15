@@ -9,7 +9,6 @@ message GetEquipmentsRequest{
 message EnhanceEquipmentRequest{
 	required string id = 1;  //装备ID
 	optional int32 type = 2; //强化类型 1：强化 2：自动强化
-	optional int32 num = 3;  //类型1使用：强化次数
 }
 
 
