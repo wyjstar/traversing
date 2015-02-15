@@ -23,7 +23,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
             return {'result': False, 'result_no': 805}  # 805 次数不足
         if conf.weeklyControl:
             if time.localtime().tm_wday == 6:
-                wday = 7
+                wday = 0
             else:
                 wday = time.localtime().tm_wday + 1
 
