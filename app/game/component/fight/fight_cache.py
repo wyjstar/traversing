@@ -315,7 +315,7 @@ class CharacterFightCacheComponent(Component):
             if condition_param in slot.hero_slot.link:
                 link_config = game_configs.link_config.get(
                     slot.hero_slot.hero_no)
-                for i in (1, 6):
+                for i in range(1, 6):
                     link = getattr(link_config, 'link%s' % i)
                     if link:
                         logger.info(
