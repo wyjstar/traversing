@@ -313,7 +313,10 @@ def melting_equipment(equipment_id, response, player):
     for record in equipment_obj.enhance_record.enhance_record:
         strength_coin += record[2]
 
-    response.cgr.finance.coin += int(strength_coin*base_config.get("equRefundRatio"))
+    strength_coin = int(strength_coin*base_config.get("equRefundRatio"))
+    player.finance.coin += strength_coin
+    player.finance.save_data()
+    response.cgr.finance.coin += strength_coin
 
 
 def awakening_equipment(equipment_id, player):
