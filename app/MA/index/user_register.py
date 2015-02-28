@@ -13,18 +13,25 @@ from gfirefly.server.logobj import logger
 
 account_login_cache = []
 USER_TABLE_NAME = 'tb_user'
+TOURIST_NAME = '_tourist_'
 
 
 def get_uuid():
     return uuid.uuid1().get_hex()
 
 
-def __user_register(account_name='', account_password=''):
+def __user_register(account_name='', account_password='', is_tourist=True):
     # todo check account name password
-    # sql_result = select_execute(USER_TABLE_NAME, dict(account_name=account_name))
-    sql_result = util.GetOneRecordInfo(USER_TABLE_NAME, dict(account_name=account_name))
+    sql_result = util.GetOneRecordInfo(USER_TABLE_NAME,
+                                       dict(account_name=account_name))
     if sql_result:
-        return json.dumps(dict(result=False, result_no=1, message='account name is exist'))
+        return json.dumps(dict(result=False,
+                               result_no=1,
+                               message='account name is exist'))
+
+    if is_tourist:
+        account_name = TOURIST_NAME
+        account_password = get_uuid()
 
     user_data = dict(id=get_uuid(),
                      account_name=account_name,
@@ -34,7 +41,11 @@ def __user_register(account_name='', account_password=''):
 
     insert_result = util.InsertIntoDB(USER_TABLE_NAME, user_data)
     if insert_result:
-        return json.dumps(dict(result=True, result_no=0, passport=user_data.get('uuid')))
+        return json.dumps(dict(result=True,
+                               result_no=0,
+                               account_name=account_name,
+                               account_password=account_password,
+                               passport=user_data.get('uuid')))
     return json.dumps(dict(result=False, result_no=-1, message='error'))
 
 
@@ -42,17 +53,37 @@ def __user_register(account_name='', account_password=''):
 def user_register():
     user_name = request.args.get('name')
     user_pwd = request.args.get('pwd')
-    logger.info('register name:%s pwd:%s', user_name, user_pwd)
+    is_tourist = 'tourist' in request.args
+    logger.info('register name:%s pwd:%s %s', user_name, user_pwd, is_tourist)
 
-    return __user_register(account_name=user_name, account_password=user_pwd)
+    if not user_name.isalnum():
+        return json.dumps(dict(result=False,
+                               result_no=-2,
+                               message='error name'))
+
+    if len(user_name) > 30:
+        return json.dumps(dict(result=False,
+                               result_no=-3,
+                               message='error name len'))
+
+    if len(user_pwd) > 30:
+        return json.dumps(dict(result=False,
+                               result_no=-4,
+                               message='error pwd len'))
+
+    return __user_register(account_name=user_name,
+                           account_password=user_pwd,
+                           is_tourist=is_tourist)
 
 
 def __user_login(account_name='', account_password=''):
-    get_result = util.GetOneRecordInfo(USER_TABLE_NAME, dict(account_name=account_name,
-                                                             account_password=account_password))
+    get_result = util.GetOneRecordInfo(USER_TABLE_NAME,
+                                       dict(account_name=account_name,
+                                            account_password=account_password))
     logger.info(get_result)
     if get_result is None:
-        return json.dumps(dict(result=False, message='account name or password error!'))
+        return json.dumps(dict(result=False,
+                          message='account name or password error!'))
 
     if get_result['id'] not in account_login_cache:
         account_login_cache.append(get_result['id'])
@@ -75,6 +106,43 @@ def user_verify():
         return str({'result': False})
     account_login_cache.remove(user_passport)
     return str({'result': True})
+
+
+@webserviceHandle('/bind')
+def user_bind():
+    user_name = request.args.get('name')
+    user_pwd = request.args.get('pwd')
+    tourist_id = request.args.get('tid')
+    logger.info('bind name:%s pwd:%s %s', user_name, user_pwd, tourist_id)
+
+    if not user_name.isalnum():
+        return json.dumps(dict(result=False,
+                               result_no=-2,
+                               message='error name'))
+
+    if len(user_name) > 30:
+        return json.dumps(dict(result=False,
+                               result_no=-3,
+                               message='error name len'))
+
+    if len(user_pwd) > 30:
+        return json.dumps(dict(result=False,
+                               result_no=-4,
+                               message='error pwd len'))
+
+    get_result = util.GetOneRecordInfo(USER_TABLE_NAME,
+                                       dict(account_name=TOURIST_NAME,
+                                            account_password=tourist_id))
+    if get_result is None:
+        return json.dumps(dict(result=False,
+                               message='account name or password error!'))
+
+    result = util.UpdateWithDict(USER_TABLE_NAME,
+                                 dict(account_name=user_name,
+                                      account_password=user_pwd),
+                                 dict(id=get_result['id']))
+    logger.info('bind result:%s', result)
+    return json.dumps(dict(result=True))
 
 
 if __name__ == '__main__':
