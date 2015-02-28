@@ -305,7 +305,7 @@ class Equipment(object):
             minor_attr_pb.attr_value = attr_value
             minor_attr_pb.attr_increment = attr_increment
 
-        for before_lv, after_lv, enhance_cost in self.enhance_record.enhance_record:
+        for before_lv, after_lv, enhance_cost in self._record.enhance_record:
             data_format = equipment_pb.data.add()
             data_format.before_lv = before_lv
             data_format.after_lv = after_lv
