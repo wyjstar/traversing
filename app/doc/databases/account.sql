@@ -26,7 +26,7 @@ CREATE TABLE `tb_account` (
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
   `id` varchar(32) NOT NULL,
-  `account_name` varchar(20) DEFAULT NULL,
+  `account_name` varchar(32) DEFAULT NULL,
   `account_password` varchar(32) DEFAULT NULL,
   `last_login` int(11) NOT NULL,
   `create_time` int(11) NOT NULL,
