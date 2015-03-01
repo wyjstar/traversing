@@ -53,20 +53,30 @@ def shop_oper(pro_data, player, reason):
     logger.debug(shop_id)
     logger.debug("---------")
 
-    print shop_id, player.shop.first_one_draw, 'shop_id  '*10
-    if shop_id == 10001 and player.shop.first_one_draw:
+    print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
+    if shop_id == 10001 and player.shop.first_coin_draw:
         is_consume(player, shop_item)
 
-        logger.debug("first one draw")
-        card_draw = base_config.get("CardFirst")
+        card_draw = base_config.get("CoinCardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
         get_return(player, return_data, response.gain)
-        player.shop.first_one_draw = False
+        player.shop.first_coin_draw = False
         player.shop.save_data()
 
         response.res.result = True
         return response.SerializeToString()
 
+    if shop_id == 50001 and player.shop.first_gold_draw:
+        is_consume(player, shop_item)
+
+        card_draw = base_config.get("CardFirst")
+        return_data = gain(player, card_draw, reason)  # 获取
+        get_return(player, return_data, response.gain)
+        player.shop.first_gold_draw = False
+        player.shop.save_data()
+
+        response.res.result = True
+        return response.SerializeToString()
 
     _is_consume_result = is_consume(player, shop_item)
     if _is_consume_result:
