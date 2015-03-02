@@ -91,6 +91,7 @@ class BaseConfig(object):
                 equPrefix[v[0]] = []
             equPrefix[v[0]].append(v[1:])
         config_value["equPrefix"] = equPrefix
+        config_value["CoinCardFirst"] = parse(config_value["CoinCardFirst"])
         config_value["CardFirst"] = parse(config_value["CardFirst"])
 
         # modify cook data

@@ -19,11 +19,13 @@ class CharacterShopComponent(Component):
     def __init__(self, owner):
         super(CharacterShopComponent, self).__init__(owner)
         self._shop_data = {}
-        self._first_one_draw = True # 第一次免费抽取为某个特定武将
+        self._first_coin_draw = True # 第一次免费抽取为某个特定武将
+        self._first_gold_draw = True # 第一次免费抽取为某个特定武将
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
-        self._first_one_draw = character_info.get('first_one_draw')
+        self._first_coin_draw = character_info.get('first_coin_draw')
+        self._first_gold_draw = character_info.get('first_gold_draw')
         self.check_time()
 
         # for k, v in self._shop_data.items():
@@ -33,7 +35,8 @@ class CharacterShopComponent(Component):
         shop = tb_character_info.getObj(self.owner.base_info.id)
         if shop:
             shop.hset('shop', self._shop_data)
-            shop.hset('first_one_draw', self._first_one_draw)
+            shop.hset('first_coin_draw', self._first_coin_draw)
+            shop.hset('first_gold_draw', self._first_gold_draw)
 
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
@@ -50,7 +53,7 @@ class CharacterShopComponent(Component):
             # print t, data['item_ids']
             self._shop_data[t] = data
         # print data
-        return {'shop': self._shop_data, 'first_one_draw': True}
+        return {'shop': self._shop_data, 'first_coin_draw': True, 'first_gold_draw': True}
 
     def check_time(self):
         current_date_time = time.time()
@@ -141,8 +144,15 @@ class CharacterShopComponent(Component):
             return []
         return random_multi_pick_without_repeat(items, item_num)
     @property
-    def first_one_draw(self):
-        return self._first_one_draw
-    @first_one_draw.setter
-    def first_one_draw(self, value):
-        self._first_one_draw = value
+    def first_coin_draw(self):
+        return self._first_coin_draw
+    @first_coin_draw.setter
+    def first_coin_draw(self, value):
+        self._first_coin_draw = value
+
+    @property
+    def first_gold_draw(self):
+        return self._first_gold_draw
+    @first_gold_draw.setter
+    def first_gold_draw(self, value):
+        self._first_gold_draw = value

@@ -98,6 +98,11 @@ def travel_831(data, player):
             shoes[4] += 1
 
     player.travel_component.save()
+    lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     response.res.result = True
     return response.SerializeToString()
@@ -269,11 +274,7 @@ def travel_settle_833(data, player):
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
-    lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
-    tstatus = player.tasks.check_inter(lively_event)
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+    
 
     response.res.result = True
     return response.SerializeToString()
