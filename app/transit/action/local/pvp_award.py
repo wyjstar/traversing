@@ -94,10 +94,10 @@ def pvp_daily_award():
             logger.error('pvp daily award error:%s', k)
             continue
 
-        mail_conf = mail_config.get(mail_id)
+        # mail_conf = mail_config.get(mail_id)
         mail = Mail_PB()
         mail.config_id = mail_id
-        mail.receive_id = player.base_info.id
+        mail.receive_id = k['character_id']
         mail.send_time = int(time.time())
         mail_data = mail.SerializePartialToString()
 

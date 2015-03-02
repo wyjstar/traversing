@@ -104,6 +104,39 @@ class MineBoss(BaseBoss):
         self._stage_id = 820001
         self.update_base_boss(base_config.get("mine_boss"))
 
+        # todo:对前十名和最后击杀者发放奖励
+        if self._last_shot_item:
+            self.send_award_mail_kill()
+        self.send_award_mail_damage()
+
+    def send_award_mail_damage(self):
+        award_mail = base_config.get('hurt_rewards_worldboss_rank')
+        for up, down, mail_id in award_mail.values():
+            ranks = self._rank_instance.get(up, down)
+            for player_id, v in ranks:
+                mail = Mail_PB()
+                mail.config_id = mail_id
+                mail.receive_id = int(player_id)
+                mail.send_time = int(time.time())
+                mail_data = mail.SerializePartialToString()
+
+                remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+                remote_gate.push_message_to_transit_remote('receive_mail_remote',
+                                                           int(player_id), mail_data)
+
+    def send_award_mail_kill(self):
+        mail_id = base_config.get('kill_rewards_worldboss')
+
+        player_id = self._last_shot_item['player_id']
+        mail = Mail_PB()
+        mail.config_id = mail_id
+        mail.receive_id = player_id
+        mail.send_time = int(time.time())
+        mail_data = mail.SerializePartialToString()
+        remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+        remote_gate.push_message_to_transit_remote('receive_mail_remote',
+                                                   player_id, mail_data)
+
     @property
     def open_or_not(self):
         return True
