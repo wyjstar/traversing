@@ -13,7 +13,7 @@ from gfirefly.server.logobj import logger
 
 account_login_cache = []
 USER_TABLE_NAME = 'tb_user'
-TOURIST_NAME = '_tourist_'
+TOURIST_PWD = '_tourist_'
 
 
 def get_uuid():
@@ -30,8 +30,8 @@ def __user_register(account_name='', account_password='', is_tourist=True):
                                message='account name is exist'))
 
     if is_tourist:
-        account_name = TOURIST_NAME
-        account_password = get_uuid()
+        account_name = get_uuid()
+        account_password = TOURIST_PWD
 
     user_data = dict(id=get_uuid(),
                      account_name=account_name,
@@ -131,8 +131,8 @@ def user_bind():
                                message='error pwd len'))
 
     get_result = util.GetOneRecordInfo(USER_TABLE_NAME,
-                                       dict(account_name=TOURIST_NAME,
-                                            account_password=tourist_id))
+                                       dict(account_name=tourist_id,
+                                            account_password=TOURIST_PWD))
     if get_result is None:
         return json.dumps(dict(result=False,
                                message='account name or password error!'))
