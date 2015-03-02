@@ -13,6 +13,10 @@ from shared.db_opear.configs_data.game_configs import base_config
 from gtwisted.core import reactor
 import cPickle
 import random
+import time
+from gfirefly.server.globalobject import GlobalObject
+from shared.db_opear.configs_data.game_configs import mail_config
+from app.proto_file.db_pb2 import Mail_PB
 
 
 tb_boss = RedisObject('tb_worldboss')
@@ -90,23 +94,48 @@ class WorldBoss(BaseBoss):
             all_low_heros.remove(k)
         self._lucky_low_heros =  random.sample(all_low_heros, lucky_hero_3_num)
 
-
     def update_boss(self):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        self.set_next_stage(self._hp<=0)
+        self.set_next_stage(self._hp <= 0)
         self.update_lucky_hero(base_config.get("world_boss"))
         self.update_base_boss(base_config.get("world_boss"))
 
         self.save_data()
 
-        # todo:对前十名发放奖励
-        # self.send_award_mail()
+        # todo:对前十名和最后击杀者发放奖励
+        if self._last_shot_item:
+            self.send_award_mail_kill()
+        self.send_award_mail_damage()
 
-    def send_award_mail(self):
-        ranks = self._rank_instance.get(1, 99999)
+    def send_award_mail_damage(self):
+        award_mail = base_config.get('hurt_rewards_worldboss_rank')
+        for up, down, mail_id in award_mail.values():
+            ranks = self._rank_instance.get(up, down)
+            for player_id, v in ranks:
+                mail = Mail_PB()
+                mail.config_id = mail_id
+                mail.receive_id = int(player_id)
+                mail.send_time = int(time.time())
+                mail_data = mail.SerializePartialToString()
 
+                remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+                remote_gate.push_message_to_transit_remote('receive_mail_remote',
+                                                           int(player_id), mail_data)
+
+    def send_award_mail_kill(self):
+        mail_id = base_config.get('kill_rewards_worldboss')
+
+        player_id = self._last_shot_item['player_id']
+        mail = Mail_PB()
+        mail.config_id = mail_id
+        mail.receive_id = player_id
+        mail.send_time = int(time.time())
+        mail_data = mail.SerializePartialToString()
+        remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+        remote_gate.push_message_to_transit_remote('receive_mail_remote',
+                                                   player_id, mail_data)
 
     def set_next_stage(self, kill_or_not=False):
         """
