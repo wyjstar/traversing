@@ -44,6 +44,7 @@ message CharacterInfo{
     optional float atk = 7;  //攻
     optional float physical_def = 8;  //物理防御
     optional float magic_def = 9;  //魔法防御
+	optional int32 last_time = 10;
 }
 
 // player friend items
