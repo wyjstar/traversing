@@ -20,7 +20,8 @@ def get_uuid():
     return uuid.uuid1().get_hex()
 
 
-def __user_register(account_name='', account_password='', is_tourist=True):
+def __user_register(account_name='', account_password='',
+                    device_id='', is_tourist=True):
     # todo check account name password
     sql_result = util.GetOneRecordInfo(USER_TABLE_NAME,
                                        dict(account_name=account_name))
@@ -36,6 +37,7 @@ def __user_register(account_name='', account_password='', is_tourist=True):
     user_data = dict(id=get_uuid(),
                      account_name=account_name,
                      account_password=account_password,
+                     device_id=device_id,
                      last_login=0,
                      create_time=int(time.time()))
 
@@ -53,6 +55,7 @@ def __user_register(account_name='', account_password='', is_tourist=True):
 def user_register():
     user_name = request.args.get('name')
     user_pwd = request.args.get('pwd')
+    device_id = request.args.get('deviceid')
     is_tourist = 'tourist' in request.args
     logger.info('register name:%s pwd:%s %s', user_name, user_pwd, is_tourist)
 
@@ -73,6 +76,7 @@ def user_register():
 
     return __user_register(account_name=user_name,
                            account_password=user_pwd,
+                           device_id=device_id,
                            is_tourist=is_tourist)
 
 
@@ -143,6 +147,20 @@ def user_bind():
                                  dict(id=get_result['id']))
     logger.info('bind result:%s', result)
     return json.dumps(dict(result=True))
+
+
+@webserviceHandle('/query_touristid')
+def query_touristid():
+    device_id = request.args.get('deviceid')
+
+    get_result = util.GetOneRecordInfo(USER_TABLE_NAME,
+                                       dict(device_id=device_id))
+    if get_result is None:
+        return json.dumps(dict(result=False,
+                               message='query tourist fail!'))
+
+    logger.info('tourist query :%s', get_result)
+    return json.dumps(dict(result=True, tourist_id=get_result['account_name']))
 
 
 if __name__ == '__main__':
