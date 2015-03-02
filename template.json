@@ -80,7 +80,7 @@
             "app": "app.net",
             "log": "app/logs/net.log"
         },
-        "game": {
+        "game1": {
             "remoteport": [
                 {
                     "rootport": 30001,
@@ -106,6 +106,34 @@
             "app": "app.game",
             "reload":"app.game.doreload",
             "log": "app/logs/game2.log",
+            "redis": true
+        },
+        "game3": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"app.game.doreload",
+            "log": "app/logs/game3.log",
+            "redis": true
+        },
+        "game4": {
+            "remoteport": [
+                {
+                    "rootport": 30001,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"app.game.doreload",
+            "log": "app/logs/game4.log",
             "redis": true
         },
         "chat": {
