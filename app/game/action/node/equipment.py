@@ -64,17 +64,20 @@ def enhance_equipment_402(pro_data, player):
 
     enhance_record = enhance_info.get('enhance_record')
 
-    data_format = response.data.add()
-    flag = 1
-    data_format.cost_coin = 0
+    #flag = 1
+    #data_format.cost_coin = 0
     for before_lv, after_lv, enhance_cost in enhance_record:
-        if flag == 1:
-            data_format.before_lv = before_lv
-            flag = 2
+        data_format = response.data.add()
+        #if flag == 1:
+            #data_format.before_lv = before_lv
+            #flag = 2
+        data_format.before_lv = before_lv
         data_format.after_lv = after_lv
-        data_format.cost_coin += enhance_cost
-        logger.debug("after_lv %s " % after_lv)
+        data_format.cost_coin = enhance_cost
+        logger.debug("before_lv %s after_lv %s " % (before_lv, after_lv))
 
+    logger.debug(response.data)
+    logger.debug("response.data===================")
     response.num = enhance_info.get("num")
     return response.SerializePartialToString()
 
@@ -225,7 +228,6 @@ def enhance_equipment(equipment_id, enhance_type, player):
         result = __do_enhance(player, equipment_obj)
         if result.get('record')[1] >= strength_max:
             result['record'] = (result.get('record')[0], strength_max, result.get('record')[2])
-            enhance_record.append(result.get('record'))
         enhance_record.append(result.get('record'))
         num += 1
     else:
@@ -252,7 +254,7 @@ def enhance_equipment(equipment_id, enhance_type, player):
     equipment_obj.save_data()
     player.finance.save_data()
 
-    return {'result': True, 'enhance_record': equipment_obj.enhance_record.enhance_record, 'num': num}
+    return {'result': True, 'enhance_record': enhance_record, 'num': num}
 
 
 def __do_enhance(player, equipment_obj):
