@@ -33,7 +33,7 @@ CREATE TABLE `tb_user` (
   `create_time` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account_name` (`account_name`),
-  UNIQUE KEY `device_id` (`device_id`)
+  INDEX `device_id` (`device_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tb_pvp_rank`;

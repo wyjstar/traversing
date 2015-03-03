@@ -55,7 +55,7 @@ def __user_register(account_name='', account_password='',
 def user_register():
     user_name = request.args.get('name')
     user_pwd = request.args.get('pwd')
-    device_id = request.args.get('deviceid')
+    device_id = request.args.get('deviceid', '')
     is_tourist = 'tourist' in request.args
     logger.info('register name:%s pwd:%s %s', user_name, user_pwd, is_tourist)
 
@@ -64,12 +64,12 @@ def user_register():
                                result_no=-2,
                                message='error name'))
 
-    if len(user_name) > 30:
+    if len(user_name) > 32:
         return json.dumps(dict(result=False,
                                result_no=-3,
                                message='error name len'))
 
-    if len(user_pwd) > 30:
+    if len(user_pwd) > 32:
         return json.dumps(dict(result=False,
                                result_no=-4,
                                message='error pwd len'))
@@ -124,12 +124,12 @@ def user_bind():
                                result_no=-2,
                                message='error name'))
 
-    if len(user_name) > 30:
+    if len(user_name) > 32:
         return json.dumps(dict(result=False,
                                result_no=-3,
                                message='error name len'))
 
-    if len(user_pwd) > 30:
+    if len(user_pwd) > 32:
         return json.dumps(dict(result=False,
                                result_no=-4,
                                message='error pwd len'))
@@ -160,7 +160,9 @@ def query_touristid():
                                message='query tourist fail!'))
 
     logger.info('tourist query :%s', get_result)
-    return json.dumps(dict(result=True, tourist_id=get_result['account_name']))
+    return json.dumps(dict(result=True,
+                           account_name=get_result['account_name'],
+                           account_password=get_result['account_password']))
 
 
 if __name__ == '__main__':
