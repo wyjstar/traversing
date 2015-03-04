@@ -15,6 +15,8 @@ account_login_cache = []
 USER_TABLE_NAME = 'tb_user'
 TOURIST_PWD = '_tourist_'
 
+USER_TABLE_MAX = util.GetTableCount(USER_TABLE_NAME)
+
 
 def get_uuid():
     return uuid.uuid1().get_hex()
@@ -31,7 +33,9 @@ def __user_register(account_name='', account_password='',
                                message='account name is exist'))
 
     if is_tourist:
-        account_name = get_uuid()
+        global USER_TABLE_MAX
+        USER_TABLE_MAX += 1
+        account_name = 'tourist%s' % USER_TABLE_MAX
         account_password = TOURIST_PWD
 
     user_data = dict(id=get_uuid(),
