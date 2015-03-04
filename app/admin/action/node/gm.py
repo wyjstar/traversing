@@ -46,7 +46,7 @@ def gm2():
     data = dict((key, args.getlist(key)[0]) for key in args.keys())
     logger.debug("data:%s", data)
     key = data.get('command')
-    res = remote_gate.push_message_remote(key, int(data.get('id')), cPickle.dumps(data))
+    res = remote_gate.push_message_remote(key, int(data.get('uid')), cPickle.dumps(data))
 
     response["result"] = str(res)
     return json.dumps(response)
