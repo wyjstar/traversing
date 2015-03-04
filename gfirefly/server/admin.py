@@ -27,11 +27,12 @@ def sreload():
     """供master调用的接口：热更新模块
     """
     logger.info('reload')
-    from shared.db_opear.configs_data.game_configs import base_config
-    logger.debug("1==base_config.resource_for_InitUser %s" % base_config.get("resource_for_InitUser"))
+    from shared.db_opear.configs_data import game_configs
+    logger.debug("1==base_config.resource_for_InitUser %s" % game_configs.base_config.get("resource_for_InitUser"))
     if GlobalObject().reloadmodule:
         reload(GlobalObject().reloadmodule)
-    logger.debug("2==base_config.resource_for_InitUser %s" % base_config.get("resource_for_InitUser"))
+    logger.debug("2==base_config.resource_for_InitUser %s" % game_configs.base_config.get("resource_for_InitUser"))
+    from shared.db_opear.configs_data.game_configs import base_config
 
     return True
 
