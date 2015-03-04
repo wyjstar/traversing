@@ -65,6 +65,7 @@ class CharacterBaseInfoComponent(Component):
 
     def save_data(self):
         character_info = tb_character_info.getObj(self._id)
+        self._upgrade_time = int(time.time())
 
         data = dict(level=self._level,
                     exp=self.exp,
@@ -74,8 +75,7 @@ class CharacterBaseInfoComponent(Component):
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
-                    heads=self._heads.SerializeToString(),
-                    register_time=self._register_time)
+                    heads=self._heads.SerializeToString())
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self._id), str(data))
 
@@ -286,10 +286,6 @@ class CharacterBaseInfoComponent(Component):
     @property
     def upgrade_time(self):
         return self._upgrade_time
-
-    @upgrade_time.setter
-    def upgrade_time(self, value):
-        self._upgrade_time = value
 
     @property
     def register_time(self):

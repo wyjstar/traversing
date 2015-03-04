@@ -13,14 +13,15 @@ from gfirefly.server.logobj import logger
 
 account_login_cache = []
 USER_TABLE_NAME = 'tb_user'
-TOURIST_NAME = '_tourist_'
+TOURIST_PWD = '_tourist_'
 
 
 def get_uuid():
     return uuid.uuid1().get_hex()
 
 
-def __user_register(account_name='', account_password='', is_tourist=True):
+def __user_register(account_name='', account_password='',
+                    device_id='', is_tourist=True):
     # todo check account name password
     sql_result = util.GetOneRecordInfo(USER_TABLE_NAME,
                                        dict(account_name=account_name))
@@ -30,12 +31,13 @@ def __user_register(account_name='', account_password='', is_tourist=True):
                                message='account name is exist'))
 
     if is_tourist:
-        account_name = TOURIST_NAME
-        account_password = get_uuid()
+        account_name = get_uuid()
+        account_password = TOURIST_PWD
 
     user_data = dict(id=get_uuid(),
                      account_name=account_name,
                      account_password=account_password,
+                     device_id=device_id,
                      last_login=0,
                      create_time=int(time.time()))
 
@@ -53,6 +55,7 @@ def __user_register(account_name='', account_password='', is_tourist=True):
 def user_register():
     user_name = request.args.get('name')
     user_pwd = request.args.get('pwd')
+    device_id = request.args.get('deviceid', '')
     is_tourist = 'tourist' in request.args
     logger.info('register name:%s pwd:%s %s', user_name, user_pwd, is_tourist)
 
@@ -61,18 +64,19 @@ def user_register():
                                result_no=-2,
                                message='error name'))
 
-    if len(user_name) > 30:
+    if len(user_name) > 32:
         return json.dumps(dict(result=False,
                                result_no=-3,
                                message='error name len'))
 
-    if len(user_pwd) > 30:
+    if len(user_pwd) > 32:
         return json.dumps(dict(result=False,
                                result_no=-4,
                                message='error pwd len'))
 
     return __user_register(account_name=user_name,
                            account_password=user_pwd,
+                           device_id=device_id,
                            is_tourist=is_tourist)
 
 
@@ -120,19 +124,19 @@ def user_bind():
                                result_no=-2,
                                message='error name'))
 
-    if len(user_name) > 30:
+    if len(user_name) > 32:
         return json.dumps(dict(result=False,
                                result_no=-3,
                                message='error name len'))
 
-    if len(user_pwd) > 30:
+    if len(user_pwd) > 32:
         return json.dumps(dict(result=False,
                                result_no=-4,
                                message='error pwd len'))
 
     get_result = util.GetOneRecordInfo(USER_TABLE_NAME,
-                                       dict(account_name=TOURIST_NAME,
-                                            account_password=tourist_id))
+                                       dict(account_name=tourist_id,
+                                            account_password=TOURIST_PWD))
     if get_result is None:
         return json.dumps(dict(result=False,
                                message='account name or password error!'))
@@ -143,6 +147,22 @@ def user_bind():
                                  dict(id=get_result['id']))
     logger.info('bind result:%s', result)
     return json.dumps(dict(result=True))
+
+
+@webserviceHandle('/query_touristid')
+def query_touristid():
+    device_id = request.args.get('deviceid')
+
+    get_result = util.GetOneRecordInfo(USER_TABLE_NAME,
+                                       dict(device_id=device_id))
+    if get_result is None:
+        return json.dumps(dict(result=False,
+                               message='query tourist fail!'))
+
+    logger.info('tourist query :%s', get_result)
+    return json.dumps(dict(result=True,
+                           account_name=get_result['account_name'],
+                           account_password=get_result['account_password']))
 
 
 if __name__ == '__main__':

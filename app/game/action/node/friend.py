@@ -186,11 +186,13 @@ def get_player_friend_list_1106(data, player):
         if player_data.exists():
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
-            friend_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
+            friend_data = player_data.hmget(['nickname', 'attackPoint',
+                                             'heads', 'upgrade_time'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
             ap = int(friend_data['attackPoint'])
             response_friend_add.power = ap if ap else 0
+            response_friend_add.last_time = friend_data['upgrade_time']
 
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
@@ -205,13 +207,15 @@ def get_player_friend_list_1106(data, player):
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
-            black_data = player_data.hmget(['nickname', 'attackPoint', 'heads'])
+            black_data = player_data.hmget(['nickname', 'attackPoint',
+                                            'heads', 'upgrade_time'])
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
             response_blacklist_add.nickname = black_data['nickname']
             response_blacklist_add.gift = 0
             ap = int(friend_data['attackPoint'])
             response_blacklist_add.power = ap if ap else 0
+            response_blacklist_add.last_time = friend_data['upgrade_time']
 
             black_heads = Heads_DB()
             black_heads.ParseFromString(black_data['heads'])
