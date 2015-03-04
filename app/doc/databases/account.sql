@@ -12,7 +12,7 @@
 DROP TABLE IF EXISTS `tb_account`;
 CREATE TABLE `tb_account` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(32) NOT NULL,
+  `uuid` varchar(64) NOT NULL,
   `last_login` int(11) NOT NULL,
   `create_time` int(11) NOT NULL,
   PRIMARY KEY (`id`),
