@@ -9,8 +9,7 @@ from app.proto_file import hero_response_pb2
 from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
-from app.game.core.item_group_helper \
-    import is_afford, consume, gain, get_return
+from app.game.core.item_group_helper import is_afford, consume, gain, get_return
 from shared.utils import log_action
 from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.data_helper import parse

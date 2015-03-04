@@ -5,8 +5,7 @@ created by server on 14-7-5下午3:07.
 from app.game.component.Component import Component
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.redis_mode import tb_character_info
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import warriors_config
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.game.component.mine.monster_mine import MineOpt
@@ -87,12 +86,12 @@ class CharacterLineUpComponent(Component):
         # 根据base_config获取卡牌位激活状态
         for i in range(1, 7):
             slot = self._line_up_slots[i]
-            __level = base_config.get("hero_position_open_level").get(i)
+            __level = game_configs.base_config.get("hero_position_open_level").get(i)
             if self.owner.base_info.level >= __level:
                 slot.activation = True
         for i in range(1, 7):
             slot = self._sub_slots[i]
-            __level = base_config.get("friend_position_open_level").get(i)
+            __level = game_configs.base_config.get("friend_position_open_level").get(i)
             if self.owner.base_info.level >= __level:
                 slot.activation = True
 
@@ -105,7 +104,7 @@ class CharacterLineUpComponent(Component):
                          skill_upgrade_level,
                          self._unpars[skill_id])
             return False
-        item = warriors_config.get(skill_id)
+        item = game_configs.warriors_config.get(skill_id)
         if not item:
             logger.error('skill is not exist:%d', skill_id)
             return False
@@ -134,7 +133,7 @@ class CharacterLineUpComponent(Component):
         if unpar not in self._unpars:
             return 0
 
-        item = warriors_config.get(unpar)
+        item = game_configs.warriors_config.get(unpar)
         if not item:
             logger.error('can not find warrior:%s', unpar)
             return 0
@@ -144,7 +143,7 @@ class CharacterLineUpComponent(Component):
         if unpar not in self._unpars:
             return (0, 0)
 
-        item = warriors_config.get(unpar)
+        item = game_configs.warriors_config.get(unpar)
         if not item:
             logger.error('can not find warrior:%s', unpar)
             return (0, 0)
@@ -232,7 +231,7 @@ class CharacterLineUpComponent(Component):
 
         # 如果无双条件不满足，则无双设为空
         hero_nos = set(self.hero_nos)  # 阵容英雄编号
-        for skill_id, item in warriors_config.items():
+        for skill_id, item in game_configs.warriors_config.items():
             if skill_id not in self._unpars:
                 conditions = item.get('conditions')
                 if conditions and hero_nos.issuperset(conditions):
@@ -299,7 +298,7 @@ class CharacterLineUpComponent(Component):
         """无双列表
         """
         warrior_list = []
-        warriors_item = warriors_config
+        warriors_item = game_configs.warriors_config
         hero_nos = set(self.hero_nos)  # 阵容英雄编号
         for warrior_id, warrior in warriors_item.items():
             conditions = set()

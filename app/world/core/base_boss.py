@@ -3,14 +3,9 @@
 """
 created by wzp.
 """
-from shared.db_opear.configs_data.game_configs import special_stage_config
-from shared.db_opear.configs_data.game_configs import hero_config
-from shared.db_opear.configs_data.game_configs import monster_group_config
-from shared.db_opear.configs_data.game_configs import monster_config
-from gfirefly.dbentrust.redis_mode import RedisObject
-import random
-from shared.utils.random_pick import random_pick_with_percent
 import cPickle
+from shared.db_opear.configs_data import game_configs
+from shared.utils.random_pick import random_pick_with_percent
 from shared.utils.date_util import get_current_timestamp
 from shared.utils.date_util import str_time_period_to_timestamp
 from gfirefly.server.logobj import logger
@@ -133,7 +128,7 @@ class BaseBoss(object):
         all_high_heros = []
         all_middle_heros = []
         all_low_heros = []
-        for k, v in hero_config.items():
+        for k, v in game_configs.hero_config.items():
             if v.quality in [5, 6]:
                 all_high_heros.append(k)
             if v.quality in [3, 4, 5, 6]:
@@ -189,14 +184,14 @@ class BaseBoss(object):
         return rank_no
 
     def current_stage_info(self):
-        return special_stage_config.get(self._config_name).get(self._stage_id)
+        return game_configs.special_stage_config.get(self._config_name).get(self._stage_id)
 
     def get_stage_info(self, stage_id):
-        return special_stage_config.get(self._config_name).get(stage_id)
+        return game_configs.special_stage_config.get(self._config_name).get(stage_id)
 
     def get_hp(self):
         stage_info = self.current_stage_info()
         logger.info("stage info %s id:%s" % (stage_info, self._stage_id))
-        monster_group_info = monster_group_config.get(stage_info.round1)
-        monster_info = monster_config.get(monster_group_info.pos5)
+        monster_group_info = game_configs.monster_group_config.get(stage_info.round1)
+        monster_info = game_configs.monster_config.get(monster_group_info.pos5)
         return monster_info.hp

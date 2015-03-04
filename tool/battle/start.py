@@ -4,10 +4,9 @@
 from app.battle.battle_process import BattlePVPProcess, BattlePVEProcess
 from app.battle.battle_unit import BattleUnit, do_assemble
 from app.battle.battle_skill import FriendSkill
-from shared.db_opear.configs_data.game_configs import monster_config, \
-    monster_group_config, stage_config, special_stage_config, language_config, skill_config, hero_config
-#from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 import sys
+
 
 def parse_input(battle_type):
     """docstring for parse_input"""
@@ -98,11 +97,11 @@ def init_unit(slot_no, eles, is_hero=True):
 
 def hero_break_skill_buff_ids(hero_no, break_level):
         hero_break_skill_buff_ids = []
-        hero_info = hero_config.get(hero_no)
+        hero_info = game_configs.hero_config.get(hero_no)
 
         for i in range(break_level):
             skill_id = hero_info.get("break"+str(break_level))
-            skill_info = skill_config.get(skill_id, None)
+            skill_info = game_configs.skill_config.get(skill_id, None)
             if skill_info:
                 hero_break_skill_buff_ids.extend(skill_info.get("group"))
         return hero_break_skill_buff_ids
@@ -128,7 +127,7 @@ def get_stage_info(stage):
         stage_type_id = 7
 
     stage_name_id = None
-    for k, v in language_config.items():
+    for k, v in game_configs.language_config.items():
         if v.cn == stage_name:
             stage_name_id = k
             break
@@ -139,13 +138,13 @@ def get_stage_info(stage):
     stage_info = None
 
     if stage_type_id in [1,2,3]:
-        for k, v in stage_config.items():
+        for k, v in game_configs.stage_config.items():
             if v.name == stage_name_id and v.type == stage_type_id:
                 stage_info = v
                 break
 
     if stage_type_id in [5,6,7]:
-        for k, v in special_stage_config.items():
+        for k, v in game_configs.special_stage_config.items():
             if v.name == stage_name_id and v.type == stage_type_id:
                 stage_info = v
                 break
@@ -160,13 +159,13 @@ def get_monsters(stage_info):
     blue_groups = []
     for i in [1,2,3]:
         monster_group_id = stage_info.get("round%d" % i)
-        monster_group_info = monster_group_config.get(monster_group_id)
+        monster_group_info = game_configs.monster_group_config.get(monster_group_id)
         blue_units = {}
 
         for j in [1,2,3,4,5,6]:
             monster_id = monster_group_info.get("pos%d" % j)
             if not monster_id: continue
-            monster_info = monster_config.get(monster_id)
+            monster_info = game_configs.monster_config.get(monster_id)
             unit = BattleUnit()
             eles = [j, "怪物"+str(j), monster_id, 0, monster_info.hp, monster_info.atk, monster_info.physicalDef, monster_info.magicDef, monster_info.hit,
                      monster_info.dodge, monster_info.cri, monster_info.cri_coeff, monster_info.cri_ded_coeff, monster_info.block, monster_info.ductility,

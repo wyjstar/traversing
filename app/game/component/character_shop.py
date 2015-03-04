@@ -5,8 +5,7 @@ created by server on 14-10-3下午3:43.
 
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from shared.db_opear.configs_data.game_configs import shop_config
-from shared.db_opear.configs_data.game_configs import shop_type_config
+from shared.db_opear.configs_data import game_configs
 from shared.utils.random_pick import random_multi_pick_without_repeat
 from gfirefly.server.logobj import logger
 from time import localtime
@@ -19,8 +18,8 @@ class CharacterShopComponent(Component):
     def __init__(self, owner):
         super(CharacterShopComponent, self).__init__(owner)
         self._shop_data = {}
-        self._first_coin_draw = True # 第一次免费抽取为某个特定武将
-        self._first_gold_draw = True # 第一次免费抽取为某个特定武将
+        self._first_coin_draw = True  # 第一次免费抽取为某个特定武将
+        self._first_gold_draw = True  # 第一次免费抽取为某个特定武将
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
@@ -42,7 +41,7 @@ class CharacterShopComponent(Component):
             logger.error('cant find shop:%s', self.owner.base_info.id)
 
     def new_data(self):
-        for t, item in shop_type_config.items():
+        for t, item in game_configs.shop_type_config.items():
             data = {}
             data['buyed_item_ids'] = []
             data['refresh_times'] = 0
@@ -77,7 +76,7 @@ class CharacterShopComponent(Component):
         return self._shop_data[t]
 
     def refresh_price(self, shop_type):
-        shop_item = shop_type_config.get(shop_type)
+        shop_item = game_configs.shop_type_config.get(shop_type)
         if not shop_item:
             raise Exception('error shop type:%s' % shop_type)
         price = 0
@@ -120,7 +119,7 @@ class CharacterShopComponent(Component):
     def get_shop_item_ids(self, shop_type, luck_num):
         """随机筛选ids"""
         items = {}
-        for item in shop_config.get(shop_type):
+        for item in game_configs.shop_config.get(shop_type):
             if item.weight == -1:
                 continue
             elif item.weight == -2:
@@ -134,7 +133,7 @@ class CharacterShopComponent(Component):
             else:
                 items[item.id] = item.weight
 
-        shop_item = shop_type_config.get(shop_type)
+        shop_item = game_configs.shop_type_config.get(shop_type)
         if not shop_item:
             raise Exception('error shop type:%s' % shop_type)
         item_num = shop_item.get('itemNum')

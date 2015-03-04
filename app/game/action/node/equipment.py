@@ -8,7 +8,7 @@ from app.proto_file import equipment_response_pb2
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 
 
 @remoteserviceHandle('gate')
@@ -315,7 +315,7 @@ def melting_equipment(equipment_id, response, player):
     for record in equipment_obj.enhance_record.enhance_record:
         strength_coin += record[2]
 
-    strength_coin = int(strength_coin*base_config.get("equRefundRatio"))
+    strength_coin = int(strength_coin*game_configs.base_config.get("equRefundRatio"))
     player.finance.coin += strength_coin
     player.finance.save_data()
     response.cgr.finance.coin += strength_coin

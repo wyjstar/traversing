@@ -3,11 +3,9 @@
 created by server on 14-11-10下午3:43.
 """
 
-from shared.db_opear.configs_data.game_configs import skill_config
-from shared.db_opear.configs_data.game_configs import skill_buff_config
-from shared.db_opear.configs_data.game_configs import hero_config, monster_config
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger_cal
+
 
 class UnitSkill(object):
     """docstring for UnitSkill"""
@@ -24,11 +22,11 @@ class UnitSkill(object):
         self._attack_mp_skill_buffs = []
         self._has_skill_buff = False
         temp_unit = unit_config.get(self._unit_no)
-        skill_info = skill_config.get(temp_unit.normalSkill, None)
+        skill_info = game_configs.skill_config.get(temp_unit.normalSkill, None)
         self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = \
             self.get_skill_buff(skill_info.get("group"))
 
-        skill_info = skill_config.get(temp_unit.rageSkill, None)
+        skill_info = game_configs.skill_config.get(temp_unit.rageSkill, None)
         self._main_mp_skill_buff, self._attack_mp_skill_buffs, self._has_mp_treat_skill_buff = self.get_skill_buff(
             skill_info.get("group"))
 
@@ -37,7 +35,7 @@ class UnitSkill(object):
         attack_skill_buffs = []
         has_treat_skill_buff = False
         for id in skill_buff_ids:
-            skill_buff_info = skill_buff_config.get(id)
+            skill_buff_info = game_configs.skill_buff_config.get(id)
             if skill_buff_info.skill_key:
                 main_skill_buff = skill_buff_info
             attack_skill_buffs.append(skill_buff_info)
@@ -107,18 +105,18 @@ class UnitSkill(object):
         else:
             self._mp = value
 
+
 class HeroSkill(UnitSkill):
     """武将技能"""
     def __init__(self, unit):
-        mp_config = base_config.get('chushi_value_config')
+        mp_config = game_configs.base_config.get('chushi_value_config')
         if unit.is_break:
-            mp_config = base_config.get('stage_break_angry_value')
+            mp_config = game_configs.base_config.get('stage_break_angry_value')
         elif unit.is_awake:
-            mp_config = base_config.get('angryValueAwakeHero')
-        super(HeroSkill, self).__init__(unit, hero_config, mp_config)
+            mp_config = game_configs.base_config.get('angryValueAwakeHero')
+        super(HeroSkill, self).__init__(unit, game_configs.hero_config, mp_config)
         self._break_skill_ids = []
         self._break_skill_buffs = {}
-
 
     def before_skill_buffs(self, is_hit):
         """主技能释放前，执行的buff(triggerType==10)"""
@@ -168,17 +166,18 @@ class HeroSkill(UnitSkill):
     def break_skill_ids(self, value):
         self._break_skill_ids = value
         for id in self._break_skill_ids:
-            skill_buff_info = skill_buff_config.get(id)
+            skill_buff_info = game_configs.skill_buff_config.get(id)
             trigger_type = skill_buff_info.triggerType
             if trigger_type not in self._break_skill_buffs:
                 self._break_skill_buffs[trigger_type] = []
             self._break_skill_buffs[trigger_type].append(skill_buff_info)
 
+
 class MonsterSkill(UnitSkill):
     """怪物技能"""
     def __init__(self, unit):
-        mp_config = base_config.get('chushi_value_config')
-        super(MonsterSkill, self).__init__(unit, monster_config, mp_config)
+        mp_config = game_configs.base_config.get('chushi_value_config')
+        super(MonsterSkill, self).__init__(unit, game_configs.monster_config, mp_config)
 
     def before_skill_buffs(self, is_hit):
         return []
@@ -192,12 +191,13 @@ class MonsterSkill(UnitSkill):
     def begin_skill_buffs(self):
         return []
 
+
 class BestSkill(object):
     """docstring for BestSkill"""
 
     def __init__(self, skill_no, player_level):
         super(BestSkill, self).__init__()
-        best_mp_config = base_config.get('wushang_value_config')
+        best_mp_config = game_configs.base_config.get('wushang_value_config')
         self._mp = best_mp_config[0]
         self._skill_no = skill_no
         self._mp_step = best_mp_config[1]
@@ -206,10 +206,10 @@ class BestSkill(object):
         self._mp_max_3 = best_mp_config[4]
         self._skill_buffs = []
         self._player_level = player_level
-        skill_info = skill_config.get(self._skill_no, None)
+        skill_info = game_configs.skill_config.get(self._skill_no, None)
         if skill_info:
             for buff_id in skill_info.group:
-                self._skill_buffs.append(skill_buff_config.get(buff_id))
+                self._skill_buffs.append(game_configs.skill_buff_config.get(buff_id))
 
     def is_full(self):
         """只进行最后的三段攻击"""
@@ -229,7 +229,7 @@ class BestSkill(object):
         return self._skill_buffs
 
     def reset_mp(self):
-        #释放技能后，减少怒气
+        # 释放技能后，减少怒气
         if self._mp == self._mp_max_3:
             self._mp = 0
         elif self._mp >= self._mp_max_2:
@@ -243,7 +243,7 @@ class BestSkill(object):
         """docstring for add_mp"""
         if not self.is_full():
             self._mp += self._mp_step
-            #如果超过最大怒气，赋值为最大怒气,
+            # 如果超过最大怒气，赋值为最大怒气,
             if self._mp > self._mp_max_3:
                 self._mp = self._mp_max_3
 
@@ -254,6 +254,7 @@ class BestSkill(object):
     @player_level.setter
     def player_level(self, value):
         self._player_level = value
+
 
 class BestSkillNone(object):
     """docstring for BestSkill"""
@@ -273,18 +274,19 @@ class BestSkillNone(object):
         return []
 
     def reset_mp(self):
-        #释放技能后，减少怒气
+        # 释放技能后，减少怒气
         pass
 
     def add_mp(self):
         pass
+
 
 class FriendSkill(object):
     """docstring for FriendSkill"""
 
     def __init__(self, unit):
         super(FriendSkill, self).__init__()
-        friend_mp_config = base_config.get('huoban_value_config')
+        friend_mp_config = game_configs.base_config.get('huoban_value_config')
         self._unit = unit
         self._mp_init = friend_mp_config[0]
         self._mp = self._mp_init
@@ -323,6 +325,7 @@ class FriendSkill(object):
             self._mp += self._mp_step
         if self._mp > self._mp_max:
             self._mp = self._mp_max
+
 
 class FriendSkillNone(object):
     """docstring for FriendSkill"""

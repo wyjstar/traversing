@@ -4,7 +4,7 @@ created by server on 14-8-12下午2:17.
 """
 from app.proto_file.feast_pb2 import EatFeastResponse, GetEatTimeResponse
 from gfirefly.server.globalobject import remoteserviceHandle
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 import time
 
 
@@ -34,7 +34,7 @@ def eat_feast(player):
     # (tm_year=2014, tm_mon=9, tm_mday=1, tm_hour=18, tm_min=38, tm_sec=1, tm_wday=0, tm_yday=244, tm_isdst=0)
     last_eat_time = time.localtime(player.feast.last_eat_time).tm_hour*60*60 + \
         time.localtime(player.feast.last_eat_time).tm_min*60 + time.localtime(player.feast.last_eat_time).tm_sec
-    eat_times = base_config.get(u'time_vigor_activity')
+    eat_times = game_configs.base_config.get(u'time_vigor_activity')
     now = time.localtime().tm_hour*60*60 + time.localtime().tm_min*60 + time.localtime().tm_sec
     for eat_time in eat_times:
         t1 = eat_time[0].split(':')
@@ -46,7 +46,7 @@ def eat_feast(player):
                 # 已经吃过
                 return 1
             # 吃
-            player.stamina.stamina += base_config.get(u'num_vigor_activity')
+            player.stamina.stamina += game_configs.base_config.get(u'num_vigor_activity')
             player.stamina.save_data()
             player.feast.last_eat_time = int(time.time())
             player.feast.save_data()

@@ -3,8 +3,8 @@
 created by server on 14-8-14下午3:16.
 """
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
-from shared.db_opear.configs_data.game_configs import mail_config
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.globalobject import GlobalObject
@@ -35,7 +35,7 @@ def get_all_mail_info_1301(proto_data, player):
             continue
         mail_pb = response.mails.add()
         mail_pb.CopyFrom(mail)
-    response.target = base_config['times_get_vigor_from_friend']
+    response.target = game_configs.base_config['times_get_vigor_from_friend']
     response.current = player.stamina.get_stamina_times
     # 删除过期公告
     player.mail_component.delete_mails(expire_ids)
@@ -148,7 +148,7 @@ def read_mail(mail_ids, mail_type, player):
         player.stamina.get_stamina_times = last_times + len(mail_ids)
         player.stamina.save_data()
         player.mail_component.delete_mails(mail_ids)
-        response.target = base_config['times_get_vigor_from_friend']
+        response.target = game_configs.base_config['times_get_vigor_from_friend']
         response.current = player.stamina.get_stamina_times
         response.mail_type = mail_type
 
@@ -166,7 +166,7 @@ def read_mail(mail_ids, mail_type, player):
 
 
 def check_gives(mail_ids, player):
-    if len(mail_ids) + player.stamina.get_stamina_times > base_config['times_get_vigor_from_friend']:
+    if len(mail_ids) + player.stamina.get_stamina_times > game_configs.base_config['times_get_vigor_from_friend']:
         # 一天领取邮件不超过15个
         return {'result': False, 'result_no': 1302}
 
@@ -179,7 +179,7 @@ def get_prize(player, mail_ids, response):
         mail = player.mail_component.get_mail(mail_id)
 
         if mail.config_id:
-            mail_conf = mail_config.get(mail.config_id)
+            mail_conf = game_configs.mail_config.get(mail.config_id)
             prize = data_helper.parse(mail_conf.rewards)
         else:
             prize = data_helper.parse(eval(mail.prize))

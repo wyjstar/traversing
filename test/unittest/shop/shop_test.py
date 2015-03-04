@@ -7,9 +7,8 @@ from app.game.core.PlayersManager import PlayersManager
 import unittest
 from app.game.logic.shop import is_consume, shop_oper
 import time
-from shared.db_opear.configs_data.game_configs import shop_config
+from shared.db_opear.configs_data import game_configs
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
-
 
 
 class ShopTest(unittest.TestCase):
@@ -20,7 +19,7 @@ class ShopTest(unittest.TestCase):
 
     def test_is_consume(self):
         self.player.last_pick_time.fine_hero = time.time()
-        shop_item = shop_config.get(10001)
+        shop_item = game_configs.shop_config.get(10001)
         result = is_consume(self.player, shop_item)
         self.assertTrue(result)
 

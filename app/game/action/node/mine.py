@@ -18,9 +18,7 @@ from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import remoteserviceHandle
 
 from shared.utils.const import const
-from shared.db_opear.configs_data.game_configs import shop_config
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import mine_config
+from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonGroupItem
 
 from app.game.component.character_line_up import CharacterLineUpComponent
@@ -212,7 +210,7 @@ def query_1243(data, player):
                 response.lineup.ParseFromString(lineup.get('line_up'))
 
         mid = player.mine.mid(request.position)
-        main_mine = mine_config.get(mid)
+        main_mine = game_configs.mine_config.get(mid)
 
         response.genUnit = int((60 / main_mine.timeGroup1) * main_mine.outputGroup1)
         response.rate = main_mine.increase
@@ -413,7 +411,7 @@ def exchange_1248(data, player):
     common_response = response.res
 
     # print "mijing shop id:", request.shop_id
-    shop_item = shop_config.get(request.shop_id)
+    shop_item = game_configs.shop_config.get(request.shop_id)
     result = item_group_helper.is_afford(player, shop_item.discountPrice)  # 校验
     if not result.get('result'):
         common_response.result = False
@@ -473,7 +471,7 @@ def reward_1249(data, player):
         items.res.message = u"已领取"
         return items.SerializePartialToString()
     player.mine.save_data()
-    drop_id = base_config['warFogChest']
+    drop_id = game_configs.base_config['warFogChest']
     add_items(player, items, [drop_id])
     # print 'reward_1249-response', response
     return response.SerializePartialToString()
@@ -519,7 +517,7 @@ def process_mine_result(player, position, result, response, stype):
         if stype == 1:
             detail_info = player.mine.detail_info(position)
             _, _, _, _, normal, lucky, _, _ = detail_info
-            warFogLootRatio = base_config['warFogLootRatio']
+            warFogLootRatio = game_configs.base_config['warFogLootRatio']
             count = {}
             for k, v in normal.items():
                 if v > 0:

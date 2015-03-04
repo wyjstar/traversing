@@ -9,7 +9,6 @@ from app.game.component.line_up.hero_slot import HeroSlotComponent
 from app.battle.battle_unit import do_assemble
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
-from shared.db_opear.configs_data.game_configs import formula_config
 from shared.db_opear.configs_data.common_item import CommonItem
 from gfirefly.server.logobj import logger
 from app.game.component.fight.hero_attr_cal import combat_power
@@ -282,10 +281,10 @@ class LineUpSlotComponent(Component):
         unit = self.slot_attr
         if not unit:
             return 0
-        if 'fightValue' not in formula_config:
+        if 'fightValue' not in game_configs.formula_config:
             logger.error('can not find fightValue')
             return 0
-        formula = formula_config.get('fightValue').formula
+        formula = game_configs.formula_config.get('fightValue').formula
         allVars = dict(atk=unit.atk,
                        physicalDef=unit.physical_def,
                        magicDef=unit.magic_def,
