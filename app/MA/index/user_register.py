@@ -143,7 +143,8 @@ def user_bind():
 
     result = util.UpdateWithDict(USER_TABLE_NAME,
                                  dict(account_name=user_name,
-                                      account_password=user_pwd),
+                                      account_password=user_pwd,
+                                      device_id=''),
                                  dict(id=get_result['id']))
     logger.info('bind result:%s', result)
     return json.dumps(dict(result=True))
