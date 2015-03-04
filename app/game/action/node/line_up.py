@@ -37,10 +37,11 @@ def get_target_line_up_info_706(pro_data, player):
 
         heros_obj = {}
         char_obj = tb_character_info.getObj(target_id)
-        heros = char_obj.smem('heroes')
-        equipments = char_obj.smem('equipments')
+        heros = char_obj.getObj('heroes').hgetall()
+        equipments = char_obj.getObj('equipments').hgetall()
+        hero_ids = heros.keys()
 
-        for data in heros:
+        for data in heros.values():
             hero = Hero(target_id)
             hero.init_data(data)
             heros_obj[hero.hero_no] = hero
@@ -72,7 +73,7 @@ def get_target_line_up_info_706(pro_data, player):
                     equipment_ids = slot.get('equipment_ids').values()
                     for equ_id in equipment_ids:
                         if equ_id:
-                            for equ_data in equipments:
+                            for equ_data in equipments.values():
                                 if equ_id == equ_data['id']:
                                     t_data['ids'].append(equ_data['equipment_info']['equipment_no'])
                                     t_data['datas'][equ_id] = equ_data
