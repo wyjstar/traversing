@@ -135,6 +135,7 @@ all_config_name = {
     'newbee_guide_config': NewbeeGuideConfig()
 }
 
+print("load game_configs===========================")
 module = cPickle.load(open('config/excel_cpickle', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)
