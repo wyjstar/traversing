@@ -1,39 +1,39 @@
 {
     "master": {
         "roothost": "127.0.0.1",
-        "rootport": 20099,
-        "webport": 20098
+        "rootport": 30001,
+        "webport": 30002
     },
     "servers": {
         "admin": {
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
-            "webport": 32001,
+            "webport": 30003,
             "name": "admin",
             "app": "app.admin",
             "log": "app/logs/admin.log"
         },
         "MA": {
-            "webport": 20100,
+            "webport": 30004,
             "name": "MA",
             "db": true,
             "app": "app.MA",
             "log": "app/logs/MA.log"
         },
         "login": {
-            "rootport": 20000,
-            "webport": 20097,
+            "rootport": 30005,
+            "webport": 30006,
             "db": true,
             "name": "login",
             "app": "app.login",
             "log": "app/logs/login.log"
         },
         "transit": {
-            "rootport": 30002,
+            "rootport": 30007,
             "name": "transit",
             "redis": true,
             "db": true,
@@ -41,21 +41,21 @@
             "log": "app/logs/transit.log"
         },
         "gate": {
-            "rootport": 30001,
+            "rootport": 30008,
             "remoteport": [
                 {
                     "roothost": "127.0.0.1",
-                    "rootport": 30002,
+                    "rootport": 30007,
                     "rootname": "transit"
                 },
                 {
                     "roothost": "<=login_ip=>",
-                    "rootport": 20000,
+                    "rootport": 30005,
                     "rootname": "login"
                 },
                 {
                     "roothost": "127.0.0.1",
-                    "rootport": 30004,
+                    "rootport": 30010,
                     "rootname": "world"
                 }
             ],
@@ -66,14 +66,14 @@
             "log": "app/logs/gate.log",
             "name": "<=server_name=>",
             "front_ip": "<=front_ip=>",
-            "front_port": 31009
+            "front_port": 30009
         },
         "net": {
-            "netport": 31009,
+            "netport": 30009,
             "name": "net",
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
@@ -83,7 +83,7 @@
         "game1": {
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
@@ -97,7 +97,7 @@
         "game2": {
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
@@ -111,7 +111,7 @@
         "game3": {
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
@@ -125,7 +125,7 @@
         "game4": {
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
@@ -140,7 +140,7 @@
             "name": "chat",
             "remoteport": [
                 {
-                    "rootport": 30001,
+                    "rootport": 30008,
                     "rootname": "gate"
                 }
             ],
@@ -148,7 +148,7 @@
             "log": "app/logs/chat.log"
         },
         "world": {
-            "rootport": 30004,
+            "rootport": 30010,
             "name": "world",
             "app": "app.world",
             "redis": true,
@@ -169,6 +169,6 @@
     },
     "tlog":{
          "host": "192.168.1.62",
-         "port": 30005
+         "port": 30011
     }
 }

@@ -34,7 +34,7 @@ def server_login():
 def __login(passport):
     """login """
     logger.info('player login passport:%s' % passport)
-    url_response = urllib.urlopen('http://localhost:20100/verify?passport=%s' % passport)
+    url_response = urllib.urlopen('http://localhost:30004/verify?passport=%s' % passport)
     str_response = url_response.read()
     response = eval(str_response)
     if response.get('result') is True:
