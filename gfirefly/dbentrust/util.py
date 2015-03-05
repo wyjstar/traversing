@@ -297,6 +297,16 @@ def GetRecordList(tablename, pkname, pklist, conn=None):
 
 
 @get_connection
+def GetTableCount(tablename, conn=None):
+    sql = """SELECT count(*) FROM `%s` ;""" % tablename
+    cursor = conn.cursor(cursor=DictCursor)
+    result = cursor.execute(sql)
+    result = cursor.fetchall()
+    cursor.close()
+    return result[0].values()[0]
+
+
+@get_connection
 def DBTest(conn=None):
     sql = """SELECT * FROM tb_item WHERE characterId=1000001;"""
     cursor = conn.cursor(cursor=DictCursor)
