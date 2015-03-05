@@ -12,8 +12,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
-from shared.db_opear.configs_data.game_configs import guild_config
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from shared.utils import trie_tree
 
 
@@ -30,12 +29,12 @@ def create_guild_801(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    if base_config.get('create_level') > player.base_info.level:
+    if game_configs.base_config.get('create_level') > player.base_info.level:
         response.result = False
         response.message = "等级不够"
         return response.SerializeToString()
 
-    if base_config.get('create_money') > player.finance.gold:
+    if game_configs.base_config.get('create_money') > player.finance.gold:
         response.result = False
         response.message = "元宝不足"
         return response.SerializeToString()
@@ -90,7 +89,7 @@ def create_guild_801(data, player):
     player.guild.position = 1
     player.guild.save_data()
     guild_obj.save_data()
-    player.finance.gold -= base_config.get('create_money')
+    player.finance.gold -= game_configs.base_config.get('create_money')
     player.finance.save_data()
 
     # 加入公会聊天
@@ -112,10 +111,10 @@ def join_guild_802(data, player):
     m_exit_time = player.guild.exit_time
     the_time = int(time.time())-m_exit_time
 
-    if m_exit_time != 1 and the_time < base_config.get('exit_time'):
+    if m_exit_time != 1 and the_time < game_configs.base_config.get('exit_time'):
         response.result = False
         response.message = "退出公会半小时内不可加入公会"
-        response.spare_time = base_config.get('exit_time') - the_time
+        response.spare_time = game_configs.base_config.get('exit_time') - the_time
         return response.SerializeToString()
 
     if m_g_id != 'no':
@@ -133,7 +132,7 @@ def join_guild_802(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    if guild_obj.get_p_num() >= guild_config.get(guild_obj.level).p_max:
+    if guild_obj.get_p_num() >= game_configs.guild_config.get(guild_obj.level).p_max:
         response.result = False
         response.message = "公会已满员"
         return response.SerializeToString()
@@ -328,7 +327,7 @@ def deal_apply_805(data, player):
     if res_type == 1:
         p_ids = args.p_ids
 
-        if guild_obj.get_p_num()+len(p_ids) > guild_config.get(guild_obj.level).p_max:
+        if guild_obj.get_p_num()+len(p_ids) > game_configs.guild_config.get(guild_obj.level).p_max:
             response.result = False
             response.message = "超出公会人数上限"
             return response.SerializeToString()
@@ -540,13 +539,13 @@ def promotion_808(data, player):
         t_position = m_position - 1
         flag = 0
         if t_position == 2:
-            if list_len >= base_config.get('pos_p_num')[0]:
+            if list_len >= game_configs.base_config.get('pos_p_num')[0]:
                 flag = 1
         elif t_position == 3:
-            if list_len >= base_config.get('pos_p_num')[1]:
+            if list_len >= game_configs.base_config.get('pos_p_num')[1]:
                 flag = 1
         elif t_position == 4:
-            if list_len >= base_config.get('pos_p_num')[2]:
+            if list_len >= game_configs.base_config.get('pos_p_num')[2]:
                 flag = 1
         else:
             response.result = False
@@ -640,7 +639,7 @@ def worship_809(data, player):
     guild_obj.init_data(data1)
 
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
-    worship_info = base_config.get('worship').get(w_type)
+    worship_info = game_configs.base_config.get('worship').get(w_type)
 
     if worship_info[1] == 1:  # 1金币  2元宝
         if worship_info[2] > player.finance.coin:
@@ -674,8 +673,8 @@ def worship_809(data, player):
         guild_obj.exp += worship_info[2]
         player.guild.worship_time = new_time
 
-    if guild_obj.exp >= guild_config.get(guild_obj.level).exp:
-        guild_obj.exp -= guild_config.get(guild_obj.level).exp
+    if guild_obj.exp >= game_configs.guild_config.get(guild_obj.level).exp:
+        guild_obj.exp -= game_configs.guild_config.get(guild_obj.level).exp
         guild_obj.level += 1
         remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level + (guild_obj.fund * 100))
 

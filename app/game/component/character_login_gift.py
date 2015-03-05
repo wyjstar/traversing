@@ -5,7 +5,7 @@ created by server on 14-8-29上午11:39.
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 import time
-from shared.db_opear.configs_data.game_configs import activity_config
+from shared.db_opear.configs_data import game_configs
 
 
 class CharacterLoginGiftComponent(Component):
@@ -30,7 +30,7 @@ class CharacterLoginGiftComponent(Component):
             self._cumulative_day = data.get('cumulative_day')
         else:  # 上次更新不是今天，需要更新活动数据
             # 累积登录活动
-            cumulative_login_config = activity_config.get(1)[0]  # 新注册用户的累积活动配置
+            cumulative_login_config = game_configs.activity_config.get(1)[0]  # 新注册用户的累积活动配置
             if data.get('cumulative_day')[1] and (data.get('cumulative_day')[0]+1) <= cumulative_login_config.get('parameterB'):
                 # 新手累积登录活动
                 self._cumulative_day[0] = data.get('cumulative_day')[0] + 1
@@ -41,7 +41,7 @@ class CharacterLoginGiftComponent(Component):
                 self._cumulative_day[1] = 1
                 self._cumulative_received = data.get('cumulative_received')
 
-            continuous_login_config = activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
+            continuous_login_config = game_configs.activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
             if data.get('continuous_day')[1] and (data.get('continuous_day')[0]+1) <= continuous_login_config.get('parameterB'):
                 # 新手连续登录活动
                 # TODO  判断是不是昨天！！！！！！！！！！！！！！！！！！！！！！！

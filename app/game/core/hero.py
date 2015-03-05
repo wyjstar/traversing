@@ -7,9 +7,6 @@ from app.game.core.fight.skill import Skill
 from app.game.core.fight.skill_helper import SkillHelper
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
-from shared.db_opear.configs_data.game_configs import hero_config
-from shared.db_opear.configs_data.game_configs import hero_exp_config
-from shared.db_opear.configs_data.game_configs import link_config, stone_config
 from app.game.redis_mode import tb_character_info
 
 
@@ -97,7 +94,7 @@ class Hero(object):
         """根据等级+当前等级经验，得到总经验"""
         total_exp = 0
         for level in range(1, self._level):
-            total_exp += hero_exp_config[level].get('exp', 0)
+            total_exp += game_configs.hero_exp_config[level].get('exp', 0)
 
         return total_exp + self._exp
 
@@ -107,7 +104,7 @@ class Hero(object):
         temp_exp = self._exp
         temp_exp += exp
         while True:
-            level_conf = hero_exp_config.get(level)
+            level_conf = game_configs.hero_exp_config.get(level)
             if not level_conf:
                 break
             current_level_exp = level_conf.get('exp', 0)
@@ -119,7 +116,7 @@ class Hero(object):
 
         if level > player_level:
             level = player_level
-            temp_exp = hero_exp_config[player_level].get('exp', 0)
+            temp_exp = game_configs.hero_exp_config[player_level].get('exp', 0)
         self.level = level
         self.exp = temp_exp
 
@@ -183,7 +180,7 @@ class Hero(object):
 
     @property
     def hero_info(self):
-        return hero_config.get(self._hero_no)
+        return game_configs.hero_config.get(self._hero_no)
 
     def calculate_attr(self):
         """根据属性和等级计算卡牌属性
@@ -282,7 +279,7 @@ class Hero(object):
         for (type_id, type_info) in self._runt.items():
             for (po, [runt_no, runt_id, main_attr, minor_attr]) in type_info.items():
                 xs = 1
-                stone_info = stone_config.get("stones").get(runt_id)
+                stone_info = game_configs.stone_config.get("stones").get(runt_id)
                 if type_id != stone_info.get("type"):
                     xs = game_configs.base_config.get('totemSpaceDecay')
 
@@ -314,7 +311,7 @@ class Hero(object):
     def break_skill_ids(self):
         """根据突破等级取得突破技能ID
         """
-        hero_info = hero_config.get(self._hero_no)
+        hero_info = game_configs.hero_config.get(self._hero_no)
         assert hero_info!=None, "cannot find hero no %s" % self._hero_no
         skill_ids = []
         for i in range(self._break_level):
@@ -326,7 +323,7 @@ class Hero(object):
     @property
     def break_param(self):
         """突破系数*基础"""
-        hero_info = hero_config.get(self._hero_no)
+        hero_info = game_configs.hero_config.get(self._hero_no)
         param = hero_info.get("parameters%d" % self._break_level)
 
         if param:
@@ -337,13 +334,13 @@ class Hero(object):
     def hero_links(self):
         """英雄羁绊配置数据
         """
-        return link_config.get(self._hero_no)
+        return game_configs.link_config.get(self._hero_no)
 
     @property
     def normal_skill_id(self):
         """普通技能ID
         """
-        item_config = hero_config.get(self._hero_no)
+        item_config = game_configs.hero_config.get(self._hero_no)
         skill_id = item_config.normalSkill  # 普通技能
         return skill_id
 
@@ -351,7 +348,7 @@ class Hero(object):
     def rage_skill_id(self):
         """怒气技能ID
         """
-        item_config = hero_config.get(self._hero_no)
+        item_config = game_configs.hero_config.get(self._hero_no)
         rage_id = item_config.rageSkill  # 怒气技能
         return rage_id
 

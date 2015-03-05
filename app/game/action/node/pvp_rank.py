@@ -13,10 +13,7 @@ from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from app.game.action.root.netforwarding import push_message
 from gfirefly.server.globalobject import remoteserviceHandle
-from shared.db_opear.configs_data.game_configs import arena_fight_config
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import vip_config
-from shared.db_opear.configs_data.game_configs import mail_config
+from shared.db_opear.configs_data import game_configs
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
@@ -144,9 +141,9 @@ def pvp_fight_request_1505(data, player):
     """
     player.base_info.check_time()
 
-    if player.base_info.pvp_times >= base_config.get('arena_free_times'):
+    if player.base_info.pvp_times >= game_configs.base_config.get('arena_free_times'):
         logger.error('not enough pvp times:%s%s', player.base_info.pvp_times,
-                     base_config.get('arena_free_times'))
+                     game_configs.base_config.get('arena_free_times'))
         return False
     request = pvp_rank_pb2.PvpFightRequest()
     request.ParseFromString(data)
@@ -208,12 +205,12 @@ def pvp_fight_request_1505(data, player):
                               __skill, __skill_level)
 
         # 首次达到某名次的奖励
-        for (rank, mail_id) in base_config.get('arena_rank_points').items():
+        for (rank, mail_id) in game_configs.base_config.get('arena_rank_points').items():
             if rank < request.challenge_rank:
                 continue
             if rank in player.base_info.pvp_high_rank_award:
                 continue
-            mail_conf = mail_config.get(mail_id)
+            mail_conf = game_configs.mail_config.get(mail_id)
             mail = Mail_PB()
             mail.config_id = mail_id
             mail.receive_id = player.base_info.id
@@ -260,13 +257,13 @@ def reset_pvp_time_1506(data, player):
     response = ShopResponse()
     response.res.result = True
     vip_level = player.base_info.vip_level
-    reset_times_max = vip_config.get(vip_level).get('buyArenaTimes')
+    reset_times_max = game_configs.vip_config.get(vip_level).get('buyArenaTimes')
     if player.base_info.pvp_refresh_count >= reset_times_max:
         response.res.result = False
         response.res.result_no = 15061
         return response.SerializePartialToString()
 
-    _consume = base_config.get('arena_times_buy_price')
+    _consume = game_configs.base_config.get('arena_times_buy_price')
     result = is_afford(player, _consume)  # 校验
     if not result.get('result'):
         response.res.result = False
@@ -292,7 +289,7 @@ def pvp_player_rank_refresh_request(data, player):
     cur_rank = record.get('id') if record else 300
 
     ranks = [cur_rank]
-    for v in arena_fight_config.values():
+    for v in game_configs.arena_fight_config.values():
         play_rank = v.get('play_rank')
         if cur_rank in range(play_rank[0], play_rank[1] + 1):
             para = dict(k=cur_rank)

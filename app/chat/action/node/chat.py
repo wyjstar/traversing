@@ -8,12 +8,11 @@ from app.chat.service.node.chatgateservice import nodeservice_handle
 from app.proto_file import chat_pb2
 from app.chat.service.node.chatgateservice import noderemote
 from shared.utils import trie_tree
-from shared.db_opear.configs_data.game_configs import base_config
-
+from shared.db_opear.configs_data import game_configs
 
 
 @nodeservice_handle
-def send_message_1002(character_id, dynamic_id, room_id, content, character_nickname, \
+def send_message_1002(character_id, dynamic_id, room_id, content, character_nickname,
                       to_character_id, to_character_nickname, guild_id):
     """发送信息
     @param character_nickname: 角色昵称
@@ -35,7 +34,7 @@ def send_message_1002(character_id, dynamic_id, room_id, content, character_nick
     if room_id == 1:  # 世界聊天频道
 
         last_time = chater.last_time
-        if int(time.time()) - last_time < base_config.get('chat_interval'):
+        if int(time.time()) - last_time < game_configs.base_config.get('chat_interval'):
             return {'result': False, 'result_no': 806}  # 60秒内不可聊天
 
         ids = ChaterManager().getall_dynamicid()

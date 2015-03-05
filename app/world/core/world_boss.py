@@ -9,13 +9,12 @@ from shared.utils.ranking import Ranking
 from gfirefly.dbentrust.redis_mode import RedisObject
 from gfirefly.server.logobj import logger
 from app.world.core.base_boss import BaseBoss
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from gtwisted.core import reactor
 import cPickle
 import random
 import time
 from gfirefly.server.globalobject import GlobalObject
-from shared.db_opear.configs_data.game_configs import mail_config
 from app.proto_file.db_pb2 import Mail_PB
 
 
@@ -99,8 +98,8 @@ class WorldBoss(BaseBoss):
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
         self.set_next_stage(self._hp <= 0)
-        self.update_lucky_hero(base_config.get("world_boss"))
-        self.update_base_boss(base_config.get("world_boss"))
+        self.update_lucky_hero(game_configs.base_config.get("world_boss"))
+        self.update_base_boss(game_configs.base_config.get("world_boss"))
 
         self.save_data()
 
@@ -110,7 +109,7 @@ class WorldBoss(BaseBoss):
         self.send_award_mail_damage()
 
     def send_award_mail_damage(self):
-        award_mail = base_config.get('hurt_rewards_worldboss_rank')
+        award_mail = game_configs.base_config.get('hurt_rewards_worldboss_rank')
         for up, down, mail_id in award_mail.values():
             ranks = self._rank_instance.get(up, down)
             for player_id, v in ranks:
@@ -125,7 +124,7 @@ class WorldBoss(BaseBoss):
                                                            int(player_id), mail_data)
 
     def send_award_mail_kill(self):
-        mail_id = base_config.get('kill_rewards_worldboss')
+        mail_id = game_configs.base_config.get('kill_rewards_worldboss')
 
         player_id = self._last_shot_item['player_id']
         mail = Mail_PB()

@@ -9,8 +9,6 @@ from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.utils.random_pick import random_pick_with_percent
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import formula_config
 from gfirefly.server.logobj import logger
 # from shared.utils.const import const
 import random
@@ -59,7 +57,7 @@ def init_equipment_attr(equipment_no):
 def get_prefix(equipment_item, mainAttr, minorAttr):
     """docstring for get_prefix"""
     quality = equipment_item.get("quality")
-    for item in base_config.get("equPrefix")[quality]:
+    for item in game_configs.base_config.get("equPrefix")[quality]:
         ran = get_equip_rate(equipment_item, mainAttr, minorAttr)
         logger.debug("ran=========:%s" % ran)
         if item[0] <= ran and item[1] > ran:
@@ -102,7 +100,7 @@ def get_equip_rate(equipment_item, mainAttr, minorAttr):
         max_value = v[3]
         attr[varNames[k]] = attr[varNames[k]] + max_value
 
-    formula = formula_config.get("equFightValue").get("formula")
+    formula = game_configs.formula_config.get("equFightValue").get("formula")
     assert formula!=None, "formula can not be None"
     max_result = eval(formula, attr)
 
@@ -117,7 +115,7 @@ def get_equip_rate(equipment_item, mainAttr, minorAttr):
         max_value = v[1]
         attr[varNames[k]] = attr.get(varNames[k], 0) + max_value
 
-    formula = formula_config.get("equFightValue").get("formula")
+    formula = game_configs.formula_config.get("equFightValue").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, attr)
     logger.debug("result/max_result")
@@ -415,7 +413,7 @@ class Equipment(object):
                         ductility='ductilityEqu')
 
         for k, v in formulas.items():
-            formula = formula_config.get(v)
+            formula = game_configs.formula_config.get(v)
             if not formula:
                 raise Exception('cant find formula by name:%s' % k)
             result[k] = eval(formula.formula, allVars, allVars)
@@ -430,7 +428,7 @@ class Equipment(object):
     @property
     def strength_max(self):
         """获取装备上限为玩家等级+strength_max"""
-        return base_config.get("max_equipment_strength")
+        return game_configs.base_config.get("max_equipment_strength")
 
     @property
     def enhance_record(self):

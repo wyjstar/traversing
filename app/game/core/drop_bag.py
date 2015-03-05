@@ -5,7 +5,7 @@ created by server on 14-7-10上午11:32.
 import random
 import copy
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import big_bag_config, small_bag_config
+from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonGroupItem
 from shared.utils.random_pick import *
 
@@ -13,9 +13,9 @@ from shared.utils.random_pick import *
 class BigBag(object):
 
     def __init__(self, big_bag_config_id):
-        self.big_bag = big_bag_config.get(big_bag_config_id)
+        self.big_bag = game_configs.big_bag_config.get(big_bag_config_id)
         if not self.big_bag:
-            logger.error("big_bag is None %s, %s", big_bag_config_id, big_bag_config)
+            logger.error("big_bag is None %s, %s", big_bag_config_id, game_configs.big_bag_config)
 
     def get_drop_items(self):
         """获取大包内物品"""
@@ -45,7 +45,7 @@ class BigBag(object):
 class SmallBag(object):
 
     def __init__(self, small_bag_config_id):
-        self.small_bag = small_bag_config.get(small_bag_config_id)
+        self.small_bag = game_configs.small_bag_config.get(small_bag_config_id)
 
     def get_drop_items(self):
         data = {}

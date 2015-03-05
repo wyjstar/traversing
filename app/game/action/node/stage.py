@@ -10,7 +10,6 @@ from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
-from shared.db_opear.configs_data.game_configs import special_stage_config
 from app.game.core.drop_bag import BigBag
 from app.game.core.lively import task_status
 from app.game.core.item_group_helper import gain, get_return
@@ -167,9 +166,9 @@ def stage_sweep_907(pro_data, player):
     lively_event = {}
     if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
         lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
-    elif special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+    elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
         lively_event = CountEvent.create_event(EventType.STAGE_2, times, ifadd=True)
-    elif special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
+    elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
         lively_event = CountEvent.create_event(EventType.STAGE_3, times, ifadd=True)
 
     tstatus = player.tasks.check_inter(lively_event)

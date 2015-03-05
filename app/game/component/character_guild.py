@@ -4,7 +4,7 @@ created by server on 14-7-24下午6:32.
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_guild_info
-from shared.db_opear.configs_data.game_configs import guild_config
+from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
 from app.game.core.guild import Guild
 
@@ -128,7 +128,7 @@ class CharacterGuildComponent(Component):
 
     def guild_attr(self):
         guild_level = self.get_guild_level()
-        guild_info = guild_config.get(guild_level)
+        guild_info = game_configs.guild_config.get(guild_level)
         if not guild_info:
             return {}
 

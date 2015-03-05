@@ -2,7 +2,7 @@
 """
 created by server on 14-8-14下午3:48.
 """
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
@@ -52,7 +52,7 @@ class CharacterMailComponent(Component):
         """添加邮件"""
         if mail.mail_type == 1:  # 领取体力邮件不能超过15个
             mails = self.get_mails_by_type(1)
-            if len(mails) >= base_config['times_save_vigor']:
+            if len(mails) >= game_configs.base_config['times_save_vigor']:
                 return
 
         mail.mail_id = get_uuid()

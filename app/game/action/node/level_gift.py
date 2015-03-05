@@ -5,7 +5,7 @@ created by sphinx on
 
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import level_gift_pb2
-from shared.db_opear.configs_data.game_configs import activity_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 
@@ -17,7 +17,7 @@ def get_level_gift_1131(data, player):
     request.ParseFromString(data)
     response = level_gift_pb2.GetLevelGiftResponse()
 
-    activity_level_gift = activity_config.get(3)
+    activity_level_gift = game_configs.activity_config.get(3)
 
     if request.gift_id in player.level_gift.received_gift_ids:
         response.result = False
@@ -44,7 +44,7 @@ def new_level_gift_840(data, player):
     """get online gift"""
     response = level_gift_pb2.NewLevelGiftResponse()
 
-    conf = activity_config.get(5)
+    conf = game_configs.activity_config.get(5)
 
     for a in range(3, player.base_info.level+1):
         if not player.level_gift.level_gift[a]:

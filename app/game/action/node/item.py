@@ -4,7 +4,7 @@ created by server on 14-7-3下午4:16.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import item_pb2
-from shared.db_opear.configs_data.game_configs import item_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.drop_bag import BigBag
 from app.game.core.item_group_helper import gain, get_return
 from app.proto_file.item_response_pb2 import GetItemsResponse, ItemUseResponse
@@ -33,7 +33,7 @@ def use_item_302(pro_data, player):
     item_pb.ParseFromString(pro_data)
     item_no = item_pb.item_no
     item_num = item_pb.item_num
-    item_config_item = item_config.get(item_no)
+    item_config_item = game_configs.item_config.get(item_no)
     if not item_config_item:
         return
     item_func = item_config_item.func

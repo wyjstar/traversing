@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from shared.db_opear.configs_data.game_configs import special_stage_config, vip_config
+from shared.db_opear.configs_data import game_configs
 from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 import time
@@ -18,7 +18,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
         conf = self.get_stage_config()
         tm_time = time.localtime(player.stage_component.act_stage_info[1])
         if tm_time.tm_yday == time.localtime().tm_yday \
-            and vip_config.get(player.base_info.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
+            and game_configs.vip_config.get(player.base_info.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
             logger.error("活动关卡开始战斗出错: %s" % 805)
             return {'result': False, 'result_no': 805}  # 805 次数不足
         if conf.weeklyControl:
@@ -41,7 +41,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
 
     def get_stage_config(self):
         """get_stage_config"""
-        return stage_util.get_stage_config(special_stage_config, "act_stages", self._stage_id)
+        return stage_util.get_stage_config(game_configs.special_stage_config, "act_stages", self._stage_id)
 
     def settle(self, result, response):
         """docstring for 结算"""

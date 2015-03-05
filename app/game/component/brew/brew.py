@@ -4,11 +4,10 @@ created by lucas on 14-11-11下午4:05.
 """
 import random
 import time
+from shared.db_opear.configs_data import game_configs
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import vip_config
 from shared.utils.const import const
 
 from app.game.core.item_group_helper import consume
@@ -59,20 +58,20 @@ class CharacterBrewComponent(Component):
 
     def do_brew(self, brew_type, response):
         vip_level = self.owner.base_info.vip_level
-        brew_times_max = vip_config.get(vip_level).get('cookingTimes')
+        brew_times_max = game_configs.vip_config.get(vip_level).get('cookingTimes')
 
-        MAX_STEPS = len(base_config.get('cookingWinePrice')[brew_type])
+        MAX_STEPS = len(game_configs.base_config.get('cookingWinePrice')[brew_type])
 
         self.check_time()
         if self._brew_step > MAX_STEPS:
             return False
 
-        if self.owner.base_info.level < base_config.get('cookingWineOpenLevel'):
+        if self.owner.base_info.level < game_configs.base_config.get('cookingWineOpenLevel'):
             logger.error('char brew level error!!:%s',
                          self.owner.base_info.level)
             return False
 
-        critical = base_config.get('cookingWineOutputCrit')
+        critical = game_configs.base_config.get('cookingWineOutputCrit')
         if brew_type not in critical:
             logger.error('base config error type:%s', brew_type)
             return False
@@ -81,7 +80,7 @@ class CharacterBrewComponent(Component):
             logger.error('there is no times to brew:%s', self.brew_times)
             return False
 
-        brew_prices = base_config.get('cookingWinePrice')
+        brew_prices = game_configs.base_config.get('cookingWinePrice')
         if brew_type not in brew_prices:
             logger.error('base config error step:%s', brew_type)
             return False
@@ -100,7 +99,7 @@ class CharacterBrewComponent(Component):
         rand = random.random()*sum(critical.values())
         for critical_num, rand_range in critical.items():
             if rand < rand_range:
-                increment = critical_num * base_config.get('cookingWineOutput')
+                increment = critical_num * game_configs.base_config.get('cookingWineOutput')
                 self._nectar_cur += int(increment)
                 break
             else:
@@ -120,14 +119,14 @@ cur:%s time:%s cri:%s',
     def taken_brew(self):
         self.check_time()
         vip_level = self.owner.base_info.vip_level
-        brew_times_max = vip_config.get(vip_level).get('cookingTimes')
+        brew_times_max = game_configs.vip_config.get(vip_level).get('cookingTimes')
         if self._brew_times >= brew_times_max:
             logger.error('not enough times to taken brew:%s', self._brew_times)
             return False
         # self._nectar += self._nectar_cur
         self.owner.finance[const.NECTAR] += self._nectar_cur
         self.owner.finance.save_data()
-        self._nectar_cur = base_config.get('cookingWineOutput')
+        self._nectar_cur = game_configs.base_config.get('cookingWineOutput')
         self._brew_step = 1
         self._brew_times += 1
         self.save_data()
@@ -141,7 +140,7 @@ cur:%s time:%s cri:%s',
             # vip_level = self.owner.base_info.vip_level
             self._brew_times = 0
         # logger.debug('brew times vip:%s :%s', vip_level, self._brew_times)
-            self._nectar_cur = base_config.get('cookingWineOutput')
+            self._nectar_cur = game_configs.base_config.get('cookingWineOutput')
             self._brew_step = 1
 
     def consume(self, value):
