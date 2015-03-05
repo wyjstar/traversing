@@ -6,12 +6,13 @@ created by wzp.
 from shared.utils.ranking import Ranking
 from gfirefly.dbentrust.redis_mode import RedisObject
 from gfirefly.server.logobj import logger
-from shared.utils.pyuuid import get_uuid
 from app.world.core.base_boss import BaseBoss
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
+from shared.utils.date_util import is_next_day
+from gfirefly.server.globalobject import GlobalObject
+from app.proto_file.db_pb2 import Mail_PB
 import cPickle
 import time
-from shared.utils.date_util import is_next_day
 
 
 tb_boss = RedisObject('tb_mineboss')
@@ -22,7 +23,7 @@ class MineBossManager(object):
     """docstring for MineBoss"""
     def __init__(self):
         super(MineBossManager, self).__init__()
-        #self._bosses = {}  # 所有boss
+        # self._bosses = {}  # 所有boss
         self._boss = None  # current boss
         self._base_data_name = "mine_boss"
         self._base_demage_name = "MineBossDemage"
@@ -102,7 +103,7 @@ class MineBoss(BaseBoss):
 
     def update_boss(self):
         self._stage_id = 820001
-        self.update_base_boss(base_config.get("mine_boss"))
+        self.update_base_boss(game_configs.base_config.get("mine_boss"))
 
         # todo:对前十名和最后击杀者发放奖励
         if self._last_shot_item:
@@ -110,7 +111,7 @@ class MineBoss(BaseBoss):
         self.send_award_mail_damage()
 
     def send_award_mail_damage(self):
-        award_mail = base_config.get('hurt_rewards_worldboss_rank')
+        award_mail = game_configs.base_config.get('hurt_rewards_worldboss_rank')
         for up, down, mail_id in award_mail.values():
             ranks = self._rank_instance.get(up, down)
             for player_id, v in ranks:
@@ -125,7 +126,7 @@ class MineBoss(BaseBoss):
                                                            int(player_id), mail_data)
 
     def send_award_mail_kill(self):
-        mail_id = base_config.get('kill_rewards_worldboss')
+        mail_id = game_configs.base_config.get('kill_rewards_worldboss')
 
         player_id = self._last_shot_item['player_id']
         mail = Mail_PB()

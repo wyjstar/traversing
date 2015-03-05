@@ -3,9 +3,7 @@
 created by server on 14-5-27下午5:21.
 """
 
-from shared.db_opear.configs_data.game_configs import player_exp_config
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import vip_config
+from shared.db_opear.configs_data import game_configs
 from app.game.component.mine.monster_mine import MineOpt
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
@@ -36,7 +34,7 @@ class CharacterBaseInfoComponent(Component):
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
 
         self._heads = Heads_DB()
-        self._heads.now_head = base_config.get('initialHead')
+        self._heads.now_head = game_configs.base_config.get('initialHead')
 
         self._vip_level = 0  # VIP等级
         self._vip_content = None  # VIP 相关内容，从config中获得
@@ -80,8 +78,8 @@ class CharacterBaseInfoComponent(Component):
         # logger.debug("save level:%s,%s", str(self._id), str(data))
 
     def new_data(self):
-        init_level = base_config.get('initialPlayerLevel')
-        init_vip_level = base_config.get('initialVipLevel')
+        init_level = game_configs.base_config.get('initialPlayerLevel')
+        init_vip_level = game_configs.base_config.get('initialVipLevel')
         data = dict(level=init_level,
                     exp=self.exp,
                     nickname=u'',
@@ -108,13 +106,13 @@ class CharacterBaseInfoComponent(Component):
         self._exp += exp
         before_level = self._level
 
-        while self._exp >= player_exp_config.get(self._level).get('exp'):
-            self._exp -= player_exp_config.get(self._level).get('exp')
+        while self._exp >= game_configs.player_exp_config.get(self._level).get('exp'):
+            self._exp -= game_configs.player_exp_config.get(self._level).get('exp')
             self._level += 1
             logger.info('player id:%s level up ++ %s>>%s', self._id, before_level, self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
-            if not player_exp_config.get(self._level):
+            if not game_configs.player_exp_config.get(self._level):
                 return
 
         # =====Tlog================
@@ -233,7 +231,7 @@ class CharacterBaseInfoComponent(Component):
 
     def update_vip(self):
         """更新VIP组件"""
-        self._vip_content = vip_config.get(self._vip_level)
+        self._vip_content = game_configs.vip_config.get(self._vip_level)
 
     @property
     def war_refresh_times(self):

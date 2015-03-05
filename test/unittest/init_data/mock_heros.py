@@ -3,9 +3,10 @@
 created by server on 14-7-4上午10:32.
 """
 
-from shared.db_opear.configs_data.game_configs import hero_config, stone_config
+from shared.db_opear.configs_data import game_configs
 from shared.utils.pyuuid import get_uuid
 import random
+
 
 def init_hero(player):
     # ==========================================
@@ -13,7 +14,7 @@ def init_hero(player):
     runts = {}
     d = random.sample(range(1, 11), 2)
 
-    runt_nos = stone_config.get('stones').keys()
+    runt_nos = game_configs.stone_config.get('stones').keys()
     for a in xrange(1, 5):
         type_info = {}
         # for b in xrange(1, 11):
@@ -28,7 +29,7 @@ def init_hero(player):
 
     # ===============================================
 
-    for k, val in hero_config.items():
+    for k, val in game_configs.hero_config.items():
         if val.type == 0:
             hero1 = player.hero_component.add_hero_without_save(k)
             hero1.hero_no = k

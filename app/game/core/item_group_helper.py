@@ -6,8 +6,7 @@ created by server on 14-7-9下午5:11.
 from app.game.core.hero_chip import HeroChip
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from app.game.core.pack.item import Item
-from shared.db_opear.configs_data.game_configs import travel_item_config
-from shared.db_opear.configs_data.game_configs import chip_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.drop_bag import BigBag
 from app.proto_file.player_pb2 import FinancePB
 from shared.utils.const import const
@@ -233,7 +232,7 @@ def gain(player, item_group, reason, result=None, multiple=1):
             if player.hero_component.contain_hero(item_no):
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
-                hero_chip_config_item = chip_config.get("mapping").get(item_no)
+                hero_chip_config_item = game_configs.chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.needNum
                 print hero_chip_num, "--"*30
@@ -280,7 +279,7 @@ def gain(player, item_group, reason, result=None, multiple=1):
 
         elif type_id == const.TRAVEL_ITEM:
             after_num = num
-            stage_id = travel_item_config.get('items').get(item_no).stageId
+            stage_id = game_configs.travel_item_config.get('items').get(item_no).stageId
             flag1 = 1
             flag2 = 0
             stage_item_info = player.travel_component.travel_item.get(stage_id)

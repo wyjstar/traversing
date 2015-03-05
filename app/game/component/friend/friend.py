@@ -10,7 +10,7 @@ from app.game.action.root import netforwarding
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import mail_config
+from shared.db_opear.configs_data import game_configs
 from app.proto_file.db_pb2 import Mail_PB
 
 
@@ -164,7 +164,7 @@ class FriendComponent(Component):
             logger.error('given_stamina present!:%s', if_present)
             return True
 
-        stamina_mail = mail_config.get(1)
+        stamina_mail = game_configs.mail_config.get(1)
         if stamina_mail:
             mail = Mail_PB()
             mail.sender_id = self.owner.base_info.id

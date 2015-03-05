@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from app.game.component.Component import Component
-from shared.db_opear.configs_data.game_configs import achievement_config
+from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.achievement_config import TaskType
 from app.game.redis_mode import tb_character_info
 import random
@@ -69,7 +69,7 @@ class TaskEvents(object):
         if self._status != TaskStatus.RUNNING:
             return []
         data['taskid'] = self._taskid
-        task = achievement_config.get(self._taskid)
+        task = game_configs.achievement_config.get(self._taskid)
         jude = True if task.composition == JudeEvent.AND else False
         for event in self._events:
             ret = event.check(data)
@@ -84,7 +84,7 @@ class TaskEvents(object):
             return [self._taskid, self._events[0]._current, task.condition[self._events[0]._seq][1], self._status]
 
     def status(self):
-        task = achievement_config.get(self._taskid)
+        task = game_configs.achievement_config.get(self._taskid)
         if not task:
             return []
         if self._status != TaskStatus.RUNNING:
@@ -109,7 +109,7 @@ class TaskEvent(object):
         任务的条件类型是次数的检查
         """
         task_id = data['taskid']
-        task = achievement_config.get(task_id)
+        task = game_configs.achievement_config.get(task_id)
         one_cond = task.condition.get(event._seq)
         if event._eventid != one_cond[0]:
             return True if event._event_status != TaskStatus.Running else False
@@ -301,8 +301,8 @@ class UserAchievement(Component):
         self._update = True
 
     def routine(self):
-        for task_id in achievement_config.keys():
-            task = achievement_config[task_id]
+        for task_id in game_configs.achievement_config.keys():
+            task = game_configs.achievement_config[task_id]
             if task_id not in self._tasks:
                 task_event = TaskEvents(task_id)
                 for seq in task.condition.keys():
@@ -320,7 +320,7 @@ class UserAchievement(Component):
                 self._update = True
 
         for task_id in self._tasks.keys():
-            if task_id not in achievement_config:
+            if task_id not in game_configs.achievement_config:
                 del self._tasks[task_id]
                 self._update = True
 
@@ -336,7 +336,7 @@ class UserAchievement(Component):
         """
         lively_add = 0
         for task_id in self._tasks:
-            task = achievement_config.get(task_id)
+            task = game_configs.achievement_config.get(task_id)
             if task and task.sort == TaskType.LIVELY:
                 if self._tasks[task_id]._status == TaskStatus.COMPLETE:# or self._tasks[task_id]._status == TaskStatus.FINISHED:
                     lively_add += random.randint(task.reward['17'][0], task.reward['17'][1])
@@ -388,7 +388,7 @@ class UserAchievement(Component):
         领取任务奖励
         判断是否能领奖
         """
-        if task_id in self._tasks and task_id in achievement_config:
+        if task_id in self._tasks and task_id in game_configs.achievement_config:
             if self._tasks[task_id]._status == TaskStatus.COMPLETE:
                 self._tasks[task_id]._status = TaskStatus.FINISHED
                 return 0

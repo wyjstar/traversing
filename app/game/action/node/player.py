@@ -7,9 +7,7 @@ import re
 from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from shared.utils import trie_tree
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import vip_config
-from shared.db_opear.configs_data.game_configs import newbee_guide_config
+from shared.db_opear.configs_data import game_configs
 from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
@@ -80,7 +78,7 @@ def buy_stamina_6(request_proto, player):
     # current_stamina = player.stamina.stamina
     current_gold = player.finance.gold
 
-    available_buy_stamina_times = vip_config.get(current_vip_level).get("buyStaminaMax")
+    available_buy_stamina_times = game_configs.vip_config.get(current_vip_level).get("buyStaminaMax")
 
     logger.debug("available_buy_stamina_times:%s,%s", available_buy_stamina_times,
                  current_buy_stamina_times)
@@ -90,7 +88,7 @@ def buy_stamina_6(request_proto, player):
         response.result_no = 11
         return response.SerializePartialToString()
 
-    need_gold = base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
+    need_gold = game_configs.base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
     logger.debug("need_gold++++++++++++++++%s", need_gold)
     # 校验金币是否不足
     if need_gold > current_gold:
@@ -147,7 +145,7 @@ def new_guide_step_1802(data, player):
     request.ParseFromString(data)
     response = NewbeeGuideStepResponse()
 
-    new_guide_item = newbee_guide_config.get(request.step_id)
+    new_guide_item = game_configs.newbee_guide_config.get(request.step_id)
     if not new_guide_item:
         logger.error('error newbee id:%s', request.step_id)
         response.res.result = False

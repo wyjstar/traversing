@@ -8,21 +8,20 @@ from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 from app.transit.root.messagecache import message_cache
-from shared.db_opear.configs_data.game_configs import base_config
-import time
+from shared.db_opear.configs_data import game_configs
 from app.proto_file.db_pb2 import Mail_PB
-from shared.db_opear.configs_data.game_configs import mail_config
+import time
+import traceback
 
 
 groot = GlobalObject().root
 
 
-tick_peroid = base_config.get('arena_shorttime_points_time')
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
 
 def pvp_award_tick():
-    reactor.callLater(tick_peroid, pvp_award_tick)
+    reactor.callLater(game_configs.base_config.get('arena_shorttime_points_time'), pvp_award_tick)
     try:
         pvp_award()
     except Exception, e:
@@ -32,7 +31,7 @@ def pvp_award_tick():
 
 
 def pvp_award():
-    arena_award = base_config.get('arena_shorttime_points')
+    arena_award = game_configs.base_config.get('arena_shorttime_points')
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'character_id>1000', ['id', 'character_id'])
 
     for k in records:
@@ -58,7 +57,7 @@ def pvp_award():
 
 
 def pvp_daily_award_tick():
-    award_time_x = base_config.get('arena_day_points_time')
+    award_time_x = game_configs.base_config.get('arena_day_points_time')
     award_time = time.strftime("%Y-%m-%d %X", time.localtime())[0:-8]
     award_time += award_time_x
     award_strptime = time.strptime(award_time, "%Y-%m-%d %X")
@@ -78,7 +77,7 @@ def do_pvp_daily_award_tick():
 
 
 def pvp_daily_award():
-    arena_award = base_config.get('arena_day_points')
+    arena_award = game_configs.base_config.get('arena_day_points')
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
                                      'character_id>1000',
                                      ['id', 'character_id'])
@@ -94,7 +93,7 @@ def pvp_daily_award():
             logger.error('pvp daily award error:%s', k)
             continue
 
-        # mail_conf = mail_config.get(mail_id)
+        # mail_conf = game_configs.mail_config.get(mail_id)
         mail = Mail_PB()
         mail.config_id = mail_id
         mail.receive_id = k['character_id']

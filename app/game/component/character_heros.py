@@ -6,7 +6,7 @@ from app.game.component.Component import Component
 from app.game.core.hero import Hero
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import hero_config
+from shared.db_opear.configs_data import game_configs
 
 
 class CharacterHerosComponent(Component):
@@ -62,7 +62,7 @@ class CharacterHerosComponent(Component):
         self._heros[hero_no] = hero
         self.new_hero_data(hero)
 
-        if hero_config.get(hero_no).get('quality') >= 5:
+        if game_configs.hero_config.get(hero_no).get('quality') >= 5:
             if not (hero_no in self.owner.base_info.heads.head):
                 self.owner.base_info.heads.head.append(hero_no)
             self.owner.base_info.save_data()

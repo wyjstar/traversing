@@ -5,14 +5,12 @@ created by server on 14-7-7下午5:29.
 
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
-from app.game.redis_mode import tb_guild_name
-from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.utils.pyuuid import get_uuid
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import GlobalObject
 
 
 remote_gate = GlobalObject().remote['gate']
+
 
 def init_guild(player):
 
@@ -30,7 +28,7 @@ def init_guild(player):
 
     guild_obj.level = 7
     guild_obj.save_data()
-    player.finance.gold -= base_config.get('create_money')
+    player.finance.gold -= game_configs.base_config.get('create_money')
     player.finance.save_data()
 
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)

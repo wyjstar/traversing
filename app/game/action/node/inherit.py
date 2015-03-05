@@ -5,8 +5,9 @@ created by wzp.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import inherit_pb2, common_pb2
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
+
 
 @remoteserviceHandle('gate')
 def inherit_refine_151(pro_data, player):
@@ -22,7 +23,6 @@ def inherit_refine_151(pro_data, player):
 
     origin = player.hero_component.get_hero(origin_id)
     target = player.hero_component.get_hero(target_id)
-
 
     print "origin:", origin.refine, "target:", target.refine
     if not origin or (not target):
@@ -45,11 +45,10 @@ def inherit_refine_151(pro_data, player):
 
     target.save_data()
     origin.save_data()
-    player.finance.gold -= base_config.get("heroInheritPrice")
+    player.finance.gold -= game_configs.base_config.get("heroInheritPrice")
     player.finance.save_data()
     response.result = True
     return response.SerializeToString()
-
 
 
 @remoteserviceHandle('gate')
@@ -94,10 +93,11 @@ def inherit_equipment_152(pro_data, player):
 
     print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
-    player.finance.gold -= base_config.get("equInheritPrice")
+    player.finance.gold -= game_configs.base_config.get("equInheritPrice")
     player.finance.save_data()
     response.result = True
     return response.SerializeToString()
+
 
 @remoteserviceHandle('gate')
 def inherit_upara_153(pro_data, player):
@@ -128,7 +128,7 @@ def inherit_upara_153(pro_data, player):
     player.line_up_component.unpars[origin_id] = 1
     player.line_up_component.save_data()
 
-    player.finance.gold -= base_config.get("warriorsInheritPrice")
+    player.finance.gold -= game_configs.base_config.get("warriorsInheritPrice")
     player.finance.save_data()
     response.result = True
     return response.SerializeToString()

@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 from battle_round import BattleRound
-from shared.db_opear.configs_data.game_configs import base_config, skill_config, skill_buff_config
+from shared.db_opear.configs_data import game_configs
 from battle_skill import BestSkill, BestSkillNone, FriendSkillNone
 from gfirefly.server.logobj import logger_cal
 from battle_buff import Buff
@@ -33,12 +33,13 @@ class BattlePVPProcess(object):
             return True
         logger_cal.debug("开始战斗...")
 
-        for i in range(base_config.get("max_times_fight")):
+        for i in range(game_configs.base_config.get("max_times_fight")):
             i = i + 1
             logger_cal.debug("第%d回合......" % i)
             battle_round.perform_round()
             result = battle_round.result
-            if result == 0: continue
+            if result == 0:
+                continue
             if result == 1:
                 logger_cal.debug("我赢了。")
                 return True
@@ -96,11 +97,11 @@ class BattlePVBProcess(object):
         self._blue_units = blue_units
 
         # add debuff
-        skill_info = skill_config.get(debuff_no)
+        skill_info = game_configs.skill_config.get(debuff_no)
         if skill_info:
             for k, v in blue_units.items():
                 for temp in skill_info.group:
-                    skill_buff_info = skill_buff_config.get(temp)
+                    skill_buff_info = game_configs.skill_buff_config.get(temp)
                     if not skill_buff_info:
                         continue
 
@@ -127,7 +128,7 @@ class BattlePVBProcess(object):
         logger_cal.debug("开始战斗...")
 
         blue_units = None
-        for i in range(base_config.get("max_times_fight")):
+        for i in range(game_configs.base_config.get("max_times_fight")):
             i = i + 1
             logger_cal.debug("第%d回合......" % i)
             red_units, blue_units = battle_round.perform_round()

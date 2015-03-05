@@ -14,9 +14,7 @@ from gfirefly.dbentrust.dbpool import get_connection
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import log_init_only_out
 from gfirefly.distributed.node import RemoteObject
-from shared.db_opear.configs_data.game_configs import robot_born_config
-from shared.db_opear.configs_data.game_configs import rand_name_config
-from shared.db_opear.configs_data.game_configs import hero_config
+from shared.db_opear.configs_data import game_configs
 from gfirefly.dbentrust.redis_manager import redis_manager
 
 
@@ -77,14 +75,14 @@ if __name__ == '__main__':
 
     nickname_set = set()
     while len(nickname_set) < rank_length + 5:
-        pre1 = random.choice(rand_name_config.get('pre1'))
-        pre2 = random.choice(rand_name_config.get('pre2'))
-        str = random.choice(rand_name_config.get('str'))
+        pre1 = random.choice(game_configs.rand_name_config.get('pre1'))
+        pre2 = random.choice(game_configs.rand_name_config.get('pre2'))
+        str = random.choice(game_configs.rand_name_config.get('str'))
         nickname_set.add(pre1 + pre2 + str)
 
     player = PlayerCharacter(1, dynamic_id=1)
     player.create_character_data()
-    for k, val in hero_config.items():
+    for k, val in game_configs.hero_config.items():
         if val.type == 0:
             hero1 = player.hero_component.add_hero(k)
             hero1.hero_no = k
@@ -94,7 +92,7 @@ if __name__ == '__main__':
 
     pvp_rank = {}
     for rank in range(1, rank_length+1):
-        for k, v in robot_born_config.items():
+        for k, v in game_configs.robot_born_config.items():
             rank_period = v.get('period')
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')

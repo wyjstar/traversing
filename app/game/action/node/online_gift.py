@@ -2,7 +2,7 @@
 """
 created by sphinx on
 """
-from shared.db_opear.configs_data.game_configs import activity_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
@@ -19,7 +19,7 @@ def get_online_gift_1121(data, player):
     request.ParseFromString(data)
     response = online_gift_pb2.GetOnlineGiftResponse()
 
-    activity_online_gift = activity_config.get(4)
+    activity_online_gift = game_configs.activity_config.get(4)
     online_minutes = player.online_gift.online_time  # / 60
 
     if request.gift_id in player.online_gift.received_gift_ids:

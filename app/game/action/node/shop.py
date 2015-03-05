@@ -7,8 +7,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
 from app.proto_file.shop_pb2 import GetShopItemsResponse
-from shared.db_opear.configs_data.game_configs import shop_config, base_config
-from shared.db_opear.configs_data.game_configs import shop_type_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import is_afford
 # from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
@@ -49,7 +48,7 @@ def shop_oper(pro_data, player, reason):
     request.ParseFromString(pro_data)
     response = ShopResponse()
     shop_id = request.ids[0]
-    shop_item = shop_config.get(shop_id)
+    shop_item = game_configs.shop_config.get(shop_id)
     logger.debug(shop_id)
     logger.debug("---------")
 
@@ -57,7 +56,7 @@ def shop_oper(pro_data, player, reason):
     if shop_id == 10001 and player.shop.first_coin_draw:
         is_consume(player, shop_item)
 
-        card_draw = base_config.get("CoinCardFirst")
+        card_draw = game_configs.base_config.get("CoinCardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
         get_return(player, return_data, response.gain)
         player.shop.first_coin_draw = False
@@ -69,7 +68,7 @@ def shop_oper(pro_data, player, reason):
     if shop_id == 50001 and player.shop.first_gold_draw:
         is_consume(player, shop_item)
 
-        card_draw = base_config.get("CardFirst")
+        card_draw = game_configs.base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
         get_return(player, return_data, response.gain)
         player.shop.first_gold_draw = False
@@ -94,7 +93,7 @@ def shop_oper(pro_data, player, reason):
         logger.error('no type shop:%s', shop_item.get('type'))
         return response.SerializeToString()
 
-    shop_type_item = shop_type_config.get(shop_item.get('type'))
+    shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
     # 消耗
     if _is_consume_result:
         return_data = consume(player, shop_item.consume,
@@ -119,7 +118,7 @@ def shop_equipment_oper(pro_data, player):
 
     shop_id = request.ids[0]
     shop_num = request.num
-    shop_item = shop_config.get(shop_id)
+    shop_item = game_configs.shop_config.get(shop_id)
 
     if shop_num == 1:  # and not is_consume(player, shop_item):
         # 免费抽取
@@ -168,7 +167,7 @@ def shop_buy_505(pro_data, player):
     # shop_items[request.ids[0]] = 2
     for shop_id, item_count in shop_items.items():
         logger.info("shop id:%s", shop_id)
-        shop_item = shop_config.get(shop_id)
+        shop_item = game_configs.shop_config.get(shop_id)
         if not shop_item:
             common_response.result = False
             common_response.result_no = 911
@@ -197,7 +196,7 @@ def shop_buy_505(pro_data, player):
                 common_response.result_no = 501
                 return response.SerializeToString()
 
-        shop_type_item = shop_type_config.get(shop_item.get('type'))
+        shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
 
         consume_return_data = consume(player, price,
                                       multiple=item_count,

@@ -6,8 +6,7 @@ created by server on 14-8-25下午8:29.
 from app.proto_file.sign_in_pb2 import RepairSignInRequest
 from app.proto_file.sign_in_pb2 import ContinuousSignInRequest
 from gfirefly.server.globalobject import remoteserviceHandle
-from shared.db_opear.configs_data.game_configs import sign_in_config
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from app.proto_file.sign_in_pb2 import SignInResponse
 from app.proto_file.sign_in_pb2 import ContinuousSignInResponse
@@ -58,9 +57,9 @@ def sign_in_1401(pro_data, player):
 
     sign_round = player.sign_in_component.sign_round
     # 获取奖励
-    if not sign_in_config.get(sign_round) or not sign_in_config.get(sign_round).get(day):
+    if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
         return
-    gain_data = sign_in_config.get(sign_round).get(day)
+    gain_data = game_configs.sign_in_config.get(sign_round).get(day)
     return_data = gain(player, gain_data, const.SIGN_GIFT)
     get_return(player, return_data, response.gain)
     response.res.result = True
@@ -75,7 +74,7 @@ def continus_sign_in_1402(pro_data, player):
     days = request.sign_in_days
     response = ContinuousSignInResponse()
 
-    sign_in_prize = base_config.get("signInPrize")
+    sign_in_prize = game_configs.base_config.get("signInPrize")
     if not sign_in_prize:
         return
     # 验证连续签到日期
@@ -110,7 +109,7 @@ def repair_sign_in_1403(pro_data, player):
     print "repair_sign_in+++++++++++", day
     response = SignInResponse()
 
-    sign_in_add = base_config.get("signInAdd")
+    sign_in_add = game_configs.base_config.get("signInAdd")
     if not sign_in_add:
         return
 
@@ -144,9 +143,9 @@ def repair_sign_in_1403(pro_data, player):
     player.sign_in_component.sign_in(day)
     player.sign_in_component.save_data()
     sign_round = player.sign_in_component.sign_round
-    if not sign_in_config.get(sign_round) or not sign_in_config.get(sign_round).get(day):
+    if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
         return
-    gain_data = sign_in_config.get(sign_round).get(day)
+    gain_data = game_configs.sign_in_config.get(sign_round).get(day)
     return_data = gain(player, gain_data, const.REPAIR_SIGN)
     get_return(player, return_data, response.gain)
 

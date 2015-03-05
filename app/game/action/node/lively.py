@@ -3,7 +3,7 @@
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.lively_pb2 import TaskUpdate, rewardRequest, rewardResponse
 from app.proto_file.common_pb2 import CommonResponse
-from shared.db_opear.configs_data.game_configs import achievement_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core import item_group_helper
 from shared.db_opear.configs_data import data_helper
 from app.game.core.lively import task_status
@@ -27,13 +27,14 @@ def query_status_1234(data, player):
         ts.status = status[3]
     return response.SerializePartialToString()
 
+
 def add_items(player, task_id, gain):
     """
     添加道具给玩家
     """
     add_items = []
-    if task_id in achievement_config:
-        task = achievement_config[task_id]
+    if task_id in game_configs.achievement_config:
+        task = game_configs.achievement_config[task_id]
         reward = data_helper.parse(task.reward)
         return_data = item_group_helper.gain(player, reward, const.LIVELY)
         get_return(player, return_data, gain)

@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import random
-from shared.db_opear.configs_data.game_configs import base_config
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger_cal
 from random_with_seed import get_random_int
 
 
 skill_types = {}
+
 
 def check_hit(skill_buff_info, hit, dodge):
     """
@@ -20,8 +21,9 @@ def check_hit(skill_buff_info, hit, dodge):
             return True
     return False
 
+
 def check_block(attacker, target, skill_buff_info):
-    is_block = False # 是否格挡
+    is_block = False  # 是否格挡
     if get_random_int(1, 99) < attacker.block:
         is_block = True
     return is_block
@@ -46,17 +48,17 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
     elif skill_buff_info.effectId == 2:
         k2 = target.magic_def
 
-    k3_k4 = base_config.get("a3") # 基础伤害值调整参数
+    k3_k4 = game_configs.base_config.get("a3") # 基础伤害值调整参数
     k3 = k3_k4[0]
     k4 = k3_k4[1]
 
     base_demage_value = (k1*k1/(k1+k3*k2))*k4              # 基础伤害值
-    block_demage_coeff = base_config.get("a4")             # 格挡受伤比参数
+    block_demage_coeff = game_configs.base_config.get("a4")             # 格挡受伤比参数
                                                            #
     level_coeff = 1                                        # 等级压制系数
     k1 = attacker.level                                    # 攻方等级
     k2 = target.level                                      # 守方等级
-    temp = base_config.get("a5")                           # 等级压制调整参数
+    temp = game_configs.base_config.get("a5")                           # 等级压制调整参数
     k3, k4, k5 = temp[0], temp[1], temp[2]                 # 等级压制调整参数
     if (k2-k1) > 5:
         if (1-k3/k4*((k2-k1)*(k2-k1)+(k2-k1)+k5))>0.1:
@@ -66,7 +68,7 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
     else:
         level_coeff = 1
                                                            #
-    temp = base_config.get("a6")                           # 伤害浮动调整参数
+    temp = game_configs.base_config.get("a6")                           # 伤害浮动调整参数
     k1, k2 = temp[0], temp[1]                              #
     demage_fluct_coeff = random.uniform(k1, k2)            # 伤害浮动系数
 
@@ -135,6 +137,3 @@ def execute_treat(attacker, target, skill_buff_info):
         actual_treat  = total_treat * skill_buff_info.valueEffect/100 + skill_buff_info.levelEffectValue* attacker.level
     logger_cal.debug("治疗值 %s", actual_treat)
     target.hp += actual_treat
-
-
-

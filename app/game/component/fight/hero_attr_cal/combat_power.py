@@ -2,11 +2,12 @@
 """
 created by server on 14-12-29下午2:03.
 """
-from shared.db_opear.configs_data.game_configs import formula_config, skill_buff_config, skill_config, stone_config
+from shared.db_opear.configs_data import game_configs
 from shared.utils import pprint
 
 LOG_NAME = ""
 LOG = False
+
 
 def hero_self_attr(player, hero):
     """
@@ -25,7 +26,8 @@ def hero_self_attr(player, hero):
     blockHero:武将自身格挡,
     ductilityHero:武将自身韧性
     """
-    if hero==None: return {}
+    if hero is None:
+        return {}
 
     assert hero!=None, "hero can not be None!"
 
@@ -97,67 +99,68 @@ def hero_self_attr(player, hero):
 
     # hpHero
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
-    hpHero_formula = formula_config.get("hpHero").get("formula")
+    hpHero_formula = game_configs.formula_config.get("hpHero").get("formula")
     assert hpHero_formula!=None, "hpHero formula can not be None!"
     hpHero = eval(hpHero_formula, all_vars)
 
     # atkHero
     # hero_info.atk+hero_info.growAtk*heroLevel+atkB+hero_info.atk*parameters+atkSeal+atkStone
-    atkHero_formula = formula_config.get("atkHero").get("formula")
+    atkHero_formula = game_configs.formula_config.get("atkHero").get("formula")
     atkHero = eval(atkHero_formula, all_vars)
 
     # pdefHero
     # hero_info.physicalDef+hero_info.growPhysicalDef*heroLevel+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone
-    physicalDefHero_formula = formula_config.get("physicalDefHero").get("formula")
+    physicalDefHero_formula = game_configs.formula_config.get("physicalDefHero").get("formula")
     physicalDefHero = eval(physicalDefHero_formula, all_vars)
 
     # magicDefHero
     # hero_info.magicDef+hero_info.growMagicDef*heroLevel+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone
-    magicDefHero_formula = formula_config.get("magicDefHero").get("formula")
+    magicDefHero_formula = game_configs.formula_config.get("magicDefHero").get("formula")
     magicDefHero = eval(magicDefHero_formula, all_vars)
     # hitHero
     # hero_info.hit+hitB+hitSeal+hitStone
-    hitHero_formula = formula_config.get("hitHero").get("formula")
+    hitHero_formula = game_configs.formula_config.get("hitHero").get("formula")
     hitHero = eval(hitHero_formula, all_vars)
 
     # dodgeHero
     # hero_info.dodge+dodgeB+dodgeSeal+dodgeStone
-    dodgeHero_formula = formula_config.get("dodgeHero").get("formula")
+    dodgeHero_formula = game_configs.formula_config.get("dodgeHero").get("formula")
     dodgeHero = eval(dodgeHero_formula, all_vars)
     # criHero
     # hero_info.cri+criB+criSeal+criStone
-    criHero_formula = formula_config.get("criHero").get("formula")
+    criHero_formula = game_configs.formula_config.get("criHero").get("formula")
     criHero = eval(criHero_formula, all_vars)
 
     # criCoeffHero
     # hero_info.criCoeff+criCoeffB+criCoeffSeal+criCoeffStone
-    criCoeffHero_formula = formula_config.get("criCoeffHero").get("formula")
+    criCoeffHero_formula = game_configs.formula_config.get("criCoeffHero").get("formula")
     criCoeffHero = eval(criCoeffHero_formula, all_vars)
     # criDedCoeffHero
     # hero_info.criDedCoeff+criDedCoeffB+criDedCoeffSeal+criDedCoeffStone
-    criDedCoeffHero_formula = formula_config.get("criDedCoeffHero").get("formula")
+    criDedCoeffHero_formula = game_configs.formula_config.get("criDedCoeffHero").get("formula")
     criDedCoeffHero = eval(criDedCoeffHero_formula, all_vars)
     # blockHero
     # hero_info.block+blockB+blockSeal+blockStone
-    blockHero_formula = formula_config.get("blockHero").get("formula")
+    blockHero_formula = game_configs.formula_config.get("blockHero").get("formula")
     blockHero = eval(blockHero_formula, all_vars)
     # ductilityHero
     # hero_info.ductility+ductilityB+ductilitySeal+ductilityStone
-    ductilityHero_formula = formula_config.get("ductilityHero").get("formula")
+    ductilityHero_formula = game_configs.formula_config.get("ductilityHero").get("formula")
     ductilityHero = eval(ductilityHero_formula, all_vars)
 
     return dict(hpHero=hpHero,
-            atkHero=atkHero,
-            physicalDefHero=physicalDefHero,
-            magicDefHero=magicDefHero,
-            hitHero=hitHero,
-            dodgeHero=dodgeHero,
-            criHero=criHero,
-            criCoeffHero=criCoeffHero,
-            criDedCoeffHero=criDedCoeffHero,
-            blockHero=blockHero,
-            ductilityHero=ductilityHero
-            )
+                atkHero=atkHero,
+                physicalDefHero=physicalDefHero,
+                magicDefHero=magicDefHero,
+                hitHero=hitHero,
+                dodgeHero=dodgeHero,
+                criHero=criHero,
+                criCoeffHero=criCoeffHero,
+                criDedCoeffHero=criDedCoeffHero,
+                blockHero=blockHero,
+                ductilityHero=ductilityHero
+                )
+
 
 def hero_lineup_attr(player, hero, line_up_slot_no):
     """
@@ -287,58 +290,58 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
     #if hero.hero_no == 10045: logger_cal.debug("武将阵容属性中的输入:%s" % pprint.pformat(all_vars, indent=1))
     # hpArray
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
-    hpArray_formula = formula_config.get("hpArray").get("formula")
+    hpArray_formula = game_configs.formula_config.get("hpArray").get("formula")
     assert hpArray_formula!=None, "hpArray formula can not be None!"
     hpArray = eval(hpArray_formula, all_vars)
 
     # atkArray
     # hero_info.atk+hero_info.growAtk*heroLevel+atkB+hero_info.atk*parameters+atkSeal+atkStone
-    atkArray_formula = formula_config.get("atkArray").get("formula")
+    atkArray_formula = game_configs.formula_config.get("atkArray").get("formula")
     atkArray = eval(atkArray_formula, all_vars)
 
     # pdefArray
     # hero_info.physicalDef+hero_info.growPhysicalDef*heroLevel+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone
-    physicalDefArray_formula = formula_config.get("physicalDefArray").get("formula")
+    physicalDefArray_formula = game_configs.formula_config.get("physicalDefArray").get("formula")
     physicalDefArray = eval(physicalDefArray_formula, all_vars)
 
     # magicDefArray
     # hero_info.magicDef+hero_info.growMagicDef*heroLevel+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone
-    magicDefArray_formula = formula_config.get("magicDefArray").get("formula")
+    magicDefArray_formula = game_configs.formula_config.get("magicDefArray").get("formula")
     magicDefArray = eval(magicDefArray_formula, all_vars)
 
     # hitArray
     # hero_info.hit+hitB+hitSeal+hitStone
-    hitArray_formula = formula_config.get("hitArray").get("formula")
+    hitArray_formula = game_configs.formula_config.get("hitArray").get("formula")
     hitArray = eval(hitArray_formula, all_vars)
 
     # dodgeArray
     # hero_info.dodge+dodgeB+dodgeSeal+dodgeStone
-    dodgeArray_formula = formula_config.get("dodgeArray").get("formula")
+    dodgeArray_formula = game_configs.formula_config.get("dodgeArray").get("formula")
     dodgeArray = eval(dodgeArray_formula, all_vars)
 
     # criArray
     # hero_info.cri+criB+criSeal+criStone
-    criArray_formula = formula_config.get("criArray").get("formula")
+    criArray_formula = game_configs.formula_config.get("criArray").get("formula")
     criArray = eval(criArray_formula, all_vars)
 
     # criCoeffArray
     # hero_info.criCoeff+criCoeffB+criCoeffSeal+criCoeffStone
-    criCoeffArray_formula = formula_config.get("criCoeffArray").get("formula")
+    criCoeffArray_formula = game_configs.formula_config.get("criCoeffArray").get("formula")
     criCoeffArray = eval(criCoeffArray_formula, all_vars)
 
     # criDedCoeffArray
     # hero_info.criDedCoeff+criDedCoeffB+criDedCoeffSeal+criDedCoeffStone
-    criDedCoeffArray_formula = formula_config.get("criDedCoeffArray").get("formula")
+    criDedCoeffArray_formula = game_configs.formula_config.get("criDedCoeffArray").get("formula")
     criDedCoeffArray = eval(criDedCoeffArray_formula, all_vars)
 
     # blockArray
     # hero_info.block+blockB+blockSeal+blockStone
-    blockArray_formula = formula_config.get("blockArray").get("formula")
+    blockArray_formula = game_configs.formula_config.get("blockArray").get("formula")
     blockArray = eval(blockArray_formula, all_vars)
 
     # ductilityArray
     # hero_info.ductility+ductilityB+ductilitySeal+ductilityStone
-    ductilityArray_formula = formula_config.get("ductilityArray").get("formula")
+    ductilityArray_formula = game_configs.formula_config.get("ductilityArray").get("formula")
     ductilityArray = eval(ductilityArray_formula, all_vars)
 
     return dict(hpArray=hpArray,
@@ -375,11 +378,11 @@ def skill_attr(hero, hero_info, skill_ids):
             )
     for skill_id in skill_ids:
 
-        skill_buff_ids = skill_config.get(skill_id).get("group")
+        skill_buff_ids = game_configs.skill_config.get(skill_id).get("group")
         for skill_id in skill_buff_ids:
-            skill_info = skill_buff_config.get(skill_id)
+            skill_info = game_configs.skill_buff_config.get(skill_id)
 
-            assert skill_info!=None, "skill buff: %s not in skill_buff_config!" % skill_id
+            assert skill_info!=None, "skill buff: %s not in game_configs.skill_buff_config!" % skill_id
             cal_vars = dict(
                 skill_buff=skill_info,
                 heroLevel=hero.level,
@@ -388,7 +391,7 @@ def skill_attr(hero, hero_info, skill_ids):
             pre_vars = dict(skill_buff=skill_info)
 
             for formula_key, result_key in formulas:
-                formula_info = formula_config.get(formula_key)
+                formula_info = game_configs.formula_config.get(formula_key)
                 pre_formula = formula_info.get("precondition")
                 formula = formula_info.get("formula")
                 if eval(pre_formula, pre_vars):
@@ -447,16 +450,16 @@ def _cheer_attr(player):
             all_vars["atkHero6"] = self_attr.get("atkHero", 0)
             all_vars["physicalDefHero6"] = self_attr.get("physicalDefHero", 0)
             all_vars["magicDefHero6"] = self_attr.get("magicDefHero", 0)
-    formula = formula_config.get("hpCheer").get("formula")
+    formula = game_configs.formula_config.get("hpCheer").get("formula")
     hpCheer = eval(formula, all_vars)
 
-    formula = formula_config.get("atkCheer").get("formula")
+    formula = game_configs.formula_config.get("atkCheer").get("formula")
     atkCheer = eval(formula, all_vars)
 
-    formula = formula_config.get("physicalDefCheer").get("formula")
+    formula = game_configs.formula_config.get("physicalDefCheer").get("formula")
     physicalDefCheer = eval(formula, all_vars)
 
-    formula = formula_config.get("magicDefCheer").get("formula")
+    formula = game_configs.formula_config.get("magicDefCheer").get("formula")
     magicDefCheer = eval(formula, all_vars)
     return dict(hp=hpCheer,
             atk=atkCheer,
@@ -471,7 +474,7 @@ def combat_power_hero_self(player, hero):
     """
     self_attr = hero_self_attr(player, hero)
     self_attr["job"] = hero.hero_info.job
-    formula = formula_config.get("fightValueHero").get("formula")
+    formula = game_configs.formula_config.get("fightValueHero").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, self_attr)
 
@@ -490,7 +493,7 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no, log_name=""):
     line_up_attr = hero_lineup_attr(player, hero, line_up_slot_no)
     line_up_attr["job"] = hero.hero_info.job
     log(hero.hero_no, "武将阵容", "", line_up_attr)
-    formula = formula_config.get("fightValueArray").get("formula")
+    formula = game_configs.formula_config.get("fightValueArray").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, line_up_attr)
     log(hero.hero_no, "武将阵容战力：", "", result)
@@ -502,7 +505,7 @@ def log_runt(hero):
     for (runt_slot_type, item) in hero.runt.items():
         for (runt_po, runt_info) in item.items():
             [runt_id, runt_no, main_attr, minor_attr] = runt_info
-            runt_type = stone_config.get("stones").get(runt_no).get("type")
+            runt_type = game_configs.stone_config.get("stones").get(runt_no).get("type")
             s.append("符文编号%s, 符文槽类型%s, 符文类型%s, 符文是否镶嵌正确%s, 主要属性%s, 次要属性%s" % (runt_no, runt_slot_type, runt_type, runt_slot_type==runt_type, main_attr, minor_attr))
     return s
 
@@ -543,4 +546,3 @@ def log(hero_no, title, str_input, str_output):
     f = open(str(hero_no)+"_hero_panel_"+LOG_NAME, "a")
     f.write("%s \n 输入: %s \n 输出: %s \n\n" % (title, pprint.pformat(str_input), pprint.pformat(str_output)))
     f.close()
-

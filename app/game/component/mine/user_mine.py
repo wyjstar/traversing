@@ -6,11 +6,7 @@ Created on 2014-11-24
 """
 import time
 import random
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import mine_config
-from shared.db_opear.configs_data.game_configs import shop_config
-from shared.db_opear.configs_data.game_configs import mine_match_config
-from shared.db_opear.configs_data.game_configs import shop_type_config
+from shared.db_opear.configs_data import game_configs
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
@@ -60,21 +56,21 @@ class ConfigData(object):
     @classmethod
     def mine_ids(cls, mtype):
         mids = {}
-        for mid in mine_config.keys():
-            if mine_config[mid].type == mtype:
-                mids[mid] = mine_config[mid].weight
+        for mid in game_configs.mine_config.keys():
+            if game_configs.mine_config[mid].type == mtype:
+                mids[mid] = game_configs.mine_config[mid].weight
         return mids
 
     @classmethod
     def mine(cls, mid):
-        if mid in mine_config:
-            return mine_config[mid]
+        if mid in game_configs.mine_config:
+            return game_configs.mine_config[mid]
         return None
 
     @classmethod
     def shopid_odds(cls, stype=7):
         sids = {}
-        doors = shop_config.get(7)
+        doors = game_configs.shop_config.get(7)
         for one in doors:
             if one.type == stype:
                 sids[one.id] = one.weight
@@ -384,7 +380,7 @@ class PlayerField(Mine):
         # print lively, level, "lively, level*"*5
         lively = 1
         item = None
-        for v in mine_match_config.values():
+        for v in game_configs.mine_match_config.values():
             if lively == v.playerActivity and level >= v.playerLevel[0] and level <= v.playerLevel[1]:
                 item = v
         rule_id = random_pick(item.proRule, sum(item.proRule.values()))
@@ -665,8 +661,8 @@ class Shop(Mine):
         Mine.__init__(self)
         self._gen_time = 0
         self._shops = {}
-#         num = base_config['warFogShopItemNum']
-        num = shop_type_config.get(7).itemNum
+#         num = game_configs.base_config['warFogShopItemNum']
+        num = game_configs.shop_type_config.get(7).itemNum
         shopids = ConfigData.shopid_odds()
         for _ in range(num):
             shop_id = random_pick(shopids, sum(shopids.values()))
@@ -812,7 +808,7 @@ class UserMine(Component):
     def reset_times(self):
         self._reset_everyday()
         vip_add = self.owner.base_info.war_refresh_times
-#         free_everyday = base_config['totemRefreshFreeTimes']
+#         free_everyday = game_configs.base_config['totemRefreshFreeTimes']
         # print 'reset_times------', self._reset_times, 0, vip_add, 0
         return self._reset_times, 0, vip_add+0
 
@@ -826,32 +822,32 @@ class UserMine(Component):
         """
         能否探索
         """
-        num = base_config['warFogStrongpointNum']
+        num = game_configs.base_config['warFogStrongpointNum']
         if len(self._mine) >= num + 1:
             return False
         return True
 
     def can_reset_free(self):
         self._reset_everyday()
-        free_everyday = base_config['totemRefreshFreeTimes']
+        free_everyday = game_configs.base_config['totemRefreshFreeTimes']
         if self._reset_times >= free_everyday:
             return False
-        if len(self._mine) < base_config['warFogStrongpointNum']:
+        if len(self._mine) < game_configs.base_config['warFogStrongpointNum']:
             return False
         return True
 
     def can_reset(self):
         self._reset_everyday()
         vip_add = self.owner.base_info.war_refresh_times
-        free_everyday = base_config['totemRefreshFreeTimes']
+        free_everyday = game_configs.base_config['totemRefreshFreeTimes']
         if self._reset_times >= vip_add + free_everyday:
             return False
-        if len(self._mine) < base_config['warFogStrongpointNum']:
+        if len(self._mine) < game_configs.base_config['warFogStrongpointNum']:
             return False
         return True
 
     def reset_price(self):
-        price_list = base_config['warFogRefreshPrice']
+        price_list = game_configs.base_config['warFogRefreshPrice']
         if len(price_list) <= self._reset_times:
             return price_list[-1]
         else:
@@ -868,8 +864,8 @@ class UserMine(Component):
     def search_mine(self, position, func):
         if position in self._mine:
             return self._mine[position]
-        odds = base_config['warFogStrongpointOdds']
-        odds1 = base_config['warFogStrongpointOdds2']
+        odds = game_configs.base_config['warFogStrongpointOdds']
+        odds1 = game_configs.base_config['warFogStrongpointOdds2']
         lively = 0
         # print 'search_mine', lively
         if self._lively >= 1:
@@ -879,7 +875,7 @@ class UserMine(Component):
             stype = random_pick(odds1, sum(odds.values()))
         if stype == MineType.COPY:
             num = get_num()
-            if num >= base_config['warFogBossCriServer']:
+            if num >= game_configs.base_config['warFogBossCriServer']:
                 stype = MineType.MONSTER_FIELD
 
         # print 'stype', stype, MineType.COPY

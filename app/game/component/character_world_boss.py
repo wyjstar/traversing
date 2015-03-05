@@ -4,8 +4,7 @@ created by server on 14-8-26
 """
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
-from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data.game_configs import special_stage_config
+from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
 from shared.utils.date_util import str_time_period_to_timestamp
 
@@ -70,9 +69,9 @@ class Boss(object):
     def get_stage_info(self):
         stage_info = None
         if self._boss_id == "world_boss":
-            stage_info = special_stage_config.get("world_boss_stages").get(self._stage_id)
+            stage_info = game_configs.special_stage_config.get("world_boss_stages").get(self._stage_id)
         else:
-            stage_info = special_stage_config.get("mine_boss_stages").get(self._stage_id)
+            stage_info = game_configs.special_stage_config.get("mine_boss_stages").get(self._stage_id)
         assert stage_info!=None, "can not get stage info by stageid %s %s" % (self._stage_id, self._boss_id)
         return stage_info
 
@@ -151,6 +150,6 @@ class Boss(object):
 
     def get_base_config(self):
         if self._boss_id == "world_boss":
-            return base_config.get("world_boss")
+            return game_configs.base_config.get("world_boss")
         else:
-            return base_config.get("mine_boss")
+            return game_configs.base_config.get("mine_boss")

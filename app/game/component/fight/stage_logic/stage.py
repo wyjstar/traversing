@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from shared.db_opear.configs_data.game_configs import stage_config
+from shared.db_opear.configs_data import game_configs
 from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 import time
@@ -31,7 +31,7 @@ class StageLogic(base_stage.BaseStageLogic):
 
     def get_stage_config(self):
         """docstring for stage_config"""
-        return stage_util.get_stage_config(stage_config, "stages", self._stage_id)
+        return stage_util.get_stage_config(game_configs.stage_config, "stages", self._stage_id)
 
     def settle(self, result, response):
         """
