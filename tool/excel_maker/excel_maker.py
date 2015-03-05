@@ -165,6 +165,8 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
 
             prop_value = format_by_type(table.cell_value(2, c), table.cell_value(rownum, c))
             obj[prop_name] = prop_value
+            if type(prop_value) is str:
+                prop_value = prop_value.replace("'", "''")
             insert_content += "'%s'," % prop_value
 
         obj_list.append(obj)
