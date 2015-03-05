@@ -3,7 +3,6 @@
 created by server on 14-6-27下午6:49.
 """
 from shared.db_opear.configs_data.game_configs import base_config
-from shared.db_opear.configs_data import game_configs
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
@@ -45,7 +44,7 @@ class CharacterFinanceComponent(Component):
 
     def new_data(self):
         self._finances = [0] * const.RESOURCE_MAX
-        for t, v in game_configs.base_config.get('resource_for_InitUser').items():
+        for t, v in base_config.get('resource_for_InitUser').items():
             self._finances[t] = v
         return {'finances': self._finances}
 
