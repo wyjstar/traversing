@@ -169,7 +169,7 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
                 prop_value = prop_value.replace("'", "''")
             insert_content += "'%s'," % prop_value
 
-    obj_list.append(obj)
+        obj_list.append(obj)
 
         print ''
         insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
