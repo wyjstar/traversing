@@ -58,7 +58,6 @@ def from_admin_rpc_remote(args):
     key = args.get('command')
     print 'command:', args.get('command'), args.get('uid')
     if args.get('uid'):
-
         oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
         if oldvcharacter:
             args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
