@@ -31,11 +31,11 @@ def gm():
     logger.info('gm2admin,command:%s', t_dict['command'])
     if t_dict['command'] in admin_command:
         com = t_dict['command'] + "(t_dict)"
-        exec(com)
+        res = eval(com)
+        # res = {"result": True}
     else:
         res = remote_gate.from_admin_rpc_remote(cPickle.dumps(t_dict))
-
-    res = cPickle.loads(res)
+        res = cPickle.loads(res)
     response["result"] = res.get('result')
     if res.get('data'):
         response["data"] = res.get('data')
@@ -61,3 +61,4 @@ def gm2():
 
 def update_excel(args):
     print args['command'], '**********************************************'
+    return {"result":True}
