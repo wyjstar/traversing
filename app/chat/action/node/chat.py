@@ -14,7 +14,7 @@ from shared.db_opear.configs_data.game_configs import base_config
 
 @nodeservice_handle
 def send_message_1002(character_id, dynamic_id, room_id, content, character_nickname, \
-                      to_character_id, to_character_nickname, guild_id):
+                      to_character_id, to_character_nickname, guild_id, vip_level):
     """发送信息
     @param character_nickname: 角色昵称
     @param to_character_id: 私聊对象角色id
@@ -40,10 +40,12 @@ def send_message_1002(character_id, dynamic_id, room_id, content, character_nick
 
         ids = ChaterManager().getall_dynamicid()
         response = chat_pb2.chatMessageResponse()
+        response.time = int(time.time())
         response.channel = room_id
         owner = response.owner
         owner.id = character_id
         owner.nickname = character_nickname
+        owner.vip_level = vip_level
         response.content = content
         chater.last_time = int(time.time())
         noderemote.push_object_remote(1000, response.SerializeToString(), ids)
@@ -53,10 +55,12 @@ def send_message_1002(character_id, dynamic_id, room_id, content, character_nick
         if not other_chater:
             return {'result': False}
         response = chat_pb2.chatMessageResponse()
+        response.time = int(time.time())
         response.channel = room_id
         owner = response.owner
         owner.id = character_id
         owner.nickname = character_nickname
+        owner.vip_level = vip_level
         response.content = content
         noderemote.push_object_remote(1000, response.SerializeToString(),
                                       [other_chater.dynamic_id])
@@ -66,10 +70,12 @@ def send_message_1002(character_id, dynamic_id, room_id, content, character_nick
         if ids.count(dynamic_id) != 1:
             return {'result': False}
         response = chat_pb2.chatMessageResponse()
+        response.time = int(time.time())
         response.channel = room_id
         owner = response.owner
         owner.id = character_id
         owner.nickname = character_nickname
+        owner.vip_level = vip_level
         response.content = content
         noderemote.push_object_remote(1000, response.SerializeToString(), ids)
 
