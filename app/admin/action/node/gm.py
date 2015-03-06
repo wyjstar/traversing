@@ -8,6 +8,9 @@ from flask import request
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 import cPickle
+import urllib
+import re
+import os
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -36,7 +39,7 @@ def gm():
     else:
         res = remote_gate.from_admin_rpc_remote(cPickle.dumps(t_dict))
         res = cPickle.loads(res)
-    response["result"] = res.get('result')
+    response["success"] = res.get('success')
     if res.get('data'):
         response["data"] = res.get('data')
 
@@ -53,7 +56,8 @@ def gm2():
     data = dict((key, args.getlist(key)[0]) for key in args.keys())
     logger.debug("data:%s", data)
     key = data.get('command')
-    res = remote_gate.push_message_remote(key, int(data.get('uid')), cPickle.dumps(data))
+    res = remote_gate.push_message_remote(key, int(data.get('uid')),
+                                          cPickle.dumps(data))
 
     response["result"] = str(res)
     return json.dumps(response)
@@ -61,4 +65,8 @@ def gm2():
 
 def update_excel(args):
     print args['command'], '**********************************************'
-    return {"result":True}
+    url = args['excel_url']
+    urllib.urlretrieve(url, 'config/excel_cpickle')
+    com = "curl localhost:30002/reloadmodule"
+    os.system(com)
+    return {"success": 1}
