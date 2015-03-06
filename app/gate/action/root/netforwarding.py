@@ -69,7 +69,7 @@ def from_admin_rpc_remote(args):
 
     print result, '#######################'
 
-    return cPickle.dumps({'result': result, 'reason': reason})
+    return cPickle.dumps({'success': result, 'message': reason})
     # return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
 
 

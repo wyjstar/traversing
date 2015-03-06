@@ -30,14 +30,14 @@ def add_level_remote(data, player):
     args = cPickle.loads(data)
     level = args.get('level')
     if not level and level.isdigit():
-        return False
+        return 0
     level = int(level)
     if level > 200:
         level = 200
 
     player.base_info._level = level
     player.base_info.save_data()
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
@@ -45,13 +45,13 @@ def gain_remote(data, player):
     args = cPickle.loads(data)
     gain_info= parse(eval(args.get('gain')))
     gain(player, gain_info, const.GM)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
 def super_init_remote(data, player):
     init(player)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
@@ -59,44 +59,44 @@ def add_vip_remote(data, player):
     args = cPickle.loads(data)
     level = args.get('level')
     if not level and level.isdigit():
-        return False
+        return 0
     level = int(level)
     if level > 15:
         level = 15
 
     player.base_info.vip_level = level
     player.base_info.save_data()
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
 def init_hero_remote(data, player):
     init_hero(player)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
 def init_hero_chip_remote(data, player):
     init_hero_chip(player)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
 def init_equipment_remote(data, player):
     init_equipment(player)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
 def init_equipment_chip_remote(data, player):
     init_equipment_chip(player)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
 def init_item_remote(data, player):
     init_item(player)
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
@@ -108,12 +108,12 @@ def add_guild_level_remote(data, player):
     guild_id = guild_name_data.hget(name)
     if not guild_id:
         logger.debug('guild name not find')
-        return False
+        return 0
 
     guild_data = tb_guild_info.getObj(guild_id).hgetall()
     if not guild_data:
         logger.debug('guild name not find1')
-        return False
+        return 0
     if level >10:
         level = 10
     guild_obj = Guild()
@@ -121,4 +121,4 @@ def add_guild_level_remote(data, player):
     guild_obj.level = int(level)
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)
     guild_obj.save_data()
-    return True
+    return 1
