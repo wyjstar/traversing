@@ -129,7 +129,29 @@ const.SHOP_BUY_GIFT_PACK = 14  # 商城,购买礼包
 const.SHOP_BUY_ITEM = 15  # 商城购买道具
 const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
+#const.COMMON_BUY = 18  # 通用商城购买
+
+#1：商城良将寻访
+#2：商城装备宝箱（作废）
+#3：商城道具
+#4：商城礼包
+#5：商城神将寻访
+#6：商城神兵寻访（作废）
+#7：密境商店
+#8：风物志商店（作废）
+#9：武魂商店
+#10：竞技场商店
+#11：熔炼商店
+#12：抽装备商店
 const.COMMON_BUY = 18  # 通用商城购买
+const.COMMON_BUY_ITEM = 1803  # 通用商城购买道具
+const.COMMON_BUY_GIFT = 1804  # 通用商城购买礼包
+const.COMMON_BUY_MINE = 1807  # 通用商城密境商店
+const.COMMON_BUY_HERO_SOUL = 1808  # 通用商城武魂商店
+const.COMMON_BUY_PVP = 1809  # 通用商城PVP商店
+const.COMMON_BUY_MELT = 1811  # 通用商城熔炼商店
+const.COMMON_BUY_EQUIPMENT = 1812  # 通用商城装备商店
+
 const.SIGN_GIFT = 19  # 签到奖励
 const.CONTINUS_SIGN = 20  # 连续签到
 const.REPAIR_SIGN = 21  # 补充签到

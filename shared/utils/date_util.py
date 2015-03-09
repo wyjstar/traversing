@@ -46,6 +46,9 @@ def str_time_period_to_timestamp(str_time_period):
     return (get_current_day_timestamp(hour=int(time1s[0]), minute=int(time1s[1])),
     get_current_day_timestamp(hour=int(time2s[0]), minute=int(time2s[1])))
 
+def str_time_to_timestamp(str_time):
+    _time = str_time.split(':')
+    return get_current_day_timestamp(hour=int(_time[0]), minute=int(_time[1]))
 
 def is_next_day(current_time_stamp, last_time_stamp):
     """docstring for is_nextfname"""

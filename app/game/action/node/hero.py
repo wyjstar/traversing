@@ -14,6 +14,7 @@ from shared.utils import log_action
 from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.data_helper import parse
 from shared.utils.const import const
+from shared.utils.notice import push_notice
 
 
 @remoteserviceHandle('gate')
@@ -89,6 +90,9 @@ def hero_break_104(data, player):
     get_return(player, return_data, response.consume)
 
     hero.break_level += 1
+    notice_item = game_configs.notes_config.get(4001)
+    if hero.break_level in notice_item.parameter1:
+        push_notice(4001, player_name=player.base_info.base_name, hero_no=hero.hero_no)
     hero.save_data()
     # 3、返回
     response.res.result = True
