@@ -1,0 +1,15 @@
+README
+
+SDK说明文件
+
+[功能]
+艺动服务端通用SDK，封装各种通用方法
+
+[语言]
+python
+
+[目录]
+api             # 其它平台API
+func            # 通用函数库
+util            # 通用工具集
+tlog            # tlog客户端

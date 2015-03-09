@@ -105,6 +105,7 @@ const.TRAVEL_ITEM = 109
 
 const.MAX_CONNECTION = 2000
 const.TIME_OUT = 60 * 10  # 秒
+const.CHANNEL = "tencent" # 渠道 tencent, taiwan
 const.TLOG_ADDR = ('192.168.10.25', 6667)
 
 # ========t_log=============
