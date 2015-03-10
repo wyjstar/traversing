@@ -268,15 +268,15 @@ def gain(player, item_group, reason, result=None, multiple=1):
             after_num = player.equipment_component.get_equipment_num(itid)
             notice_item = game_configs.notes_config.get(3001)
             if reason == const.COMMON_BUY_PVP and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(5001, player_name=player.base_info.base_name, equipment_no=item_no)
+                push_notice(5001, player_name=player.base_info.base_name, equipment_no=itid)
 
             notice_item = game_configs.notes_config.get(6001)
             if reason ==const.COMMON_BUY_MELT and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(6001, player_name=player.base_info.base_name, equipment_no=item_no)
+                push_notice(6001, player_name=player.base_info.base_name, equipment_no=itid)
 
             notice_item = game_configs.notes_config.get(7001)
             if reason == const.COMMON_BUY_EQUIPMENT and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(7001, player_name=player.base_info.base_name, equipment_no=item_no)
+                push_notice(7001, player_name=player.base_info.base_name, equipment_no=itid)
 
         elif type_id == const.EQUIPMENT_CHIP:
             chip = EquipmentChip(item_no, num)
