@@ -13,7 +13,7 @@ from shared.utils.const import const
 from gfirefly.server.logobj import logger
 import time
 from shared.tlog import tlog_action
-from shared.utils.notice import push_notice
+from app.game.core.notice import push_notice
 
 
 def is_afford(player, item_group, multiple=1):

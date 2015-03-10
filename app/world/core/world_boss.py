@@ -16,8 +16,9 @@ import random
 import time
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file.db_pb2 import Mail_PB
-from shared.utils.notice import push_notice
 from shared.utils.date_util import str_time_to_timestamp
+from app.world.action.gateforwarding import push_all_object_message
+from app.proto_file.notice_pb2 import NoticeResponse
 
 
 tb_boss = RedisObject('tb_worldboss')
@@ -70,10 +71,10 @@ class WorldBoss(BaseBoss):
         notice_item = game_configs.notes_config.get(1001)
         current_time = time.time()
         if current_time == str_time_to_timestamp(notice_item.parameter1[0]) or current_time == str_time_to_timestamp(notice_item.parameter1[1]):
-            push_notice(1001)
+            response = NoticeResponse()
+            response.notice_id = 1001
+            push_all_object_message(2000, response)
 
-
-        push_notice()
         if self._stage_id and self.in_the_time_period() and self._state == 0:
             self.start_boss()
             self._state = 1

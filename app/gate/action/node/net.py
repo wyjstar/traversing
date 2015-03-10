@@ -5,6 +5,8 @@ created by sphinx on
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
+from app.proto_file.notice_pb2 import NoticeResponse
+from gfirefly.server.globalobject import rootserviceHandle
 
 childsman = GlobalObject().root.childsmanager
 groot = GlobalObject().root
@@ -21,13 +23,15 @@ def change_dynamic_id(new_id, cur_id):
 def push_all_object_remote(topic_id, message):
     push_all_objects(topic_id, message)
 
-
 def push_all_objects(topic_id, message):
     """
     向全服玩家发送消息
     """
     groot.child('net').push_all_object_remote(topic_id, message)
 
+@rootserviceHandle
+def push_notice_remote(topic_id, message):
+    groot.child('net').push_all_object_remote(topic_id, message)
 
 @remoteserviceHandle('world')
 def push_message_to_transit_remote(key, character_id, *args):

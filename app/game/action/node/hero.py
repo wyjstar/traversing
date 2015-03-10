@@ -14,7 +14,7 @@ from shared.utils import log_action
 from app.game.core.pack.item import Item
 from shared.db_opear.configs_data.data_helper import parse
 from shared.utils.const import const
-from shared.utils.notice import push_notice
+from app.game.core.notice import push_notice
 
 
 @remoteserviceHandle('gate')

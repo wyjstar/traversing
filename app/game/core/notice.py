@@ -2,8 +2,10 @@
 """
 created by server on 14-7-9上午11:28.
 """
-from app.gate.action.node.net import push_all_objects
 from app.proto_file.notice_pb2 import NoticeResponse
+from gfirefly.server.globalobject import GlobalObject
+
+remote_gate = GlobalObject().remote['gate']
 
 def push_notice(notice_id, player_name="", hero_no=0, hero_break_level="", equipment_no=""):
     response = NoticeResponse()
@@ -12,4 +14,4 @@ def push_notice(notice_id, player_name="", hero_no=0, hero_break_level="", equip
     response.hero_no = hero_no
     response.hero_break_level = hero_break_level
     response.equipment_no = equipment_no
-    push_all_objects(2000, response.SerializePartialToString())
+    remote_gate.push_notice_remote(2000, response.SerializePartialToString())
