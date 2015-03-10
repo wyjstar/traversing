@@ -45,6 +45,7 @@ from mine_match_config import MineMatchConfig
 from stone_config import StoneConfig
 from newbee_guide_config import NewbeeGuideConfig
 from travel_item_group_config import TravelItemGroupConfig
+from notes_config import NotesConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -88,6 +89,7 @@ mine_config = {}
 formula_config = {}
 newbee_guide_config = {}
 mine_match_config = {}
+notes_config = {}
 
 
 all_config_name = {
@@ -132,7 +134,8 @@ all_config_name = {
     'formula_config': FormulaConfig(),
     'mine_match_config': MineMatchConfig(),
     'stone_config': StoneConfig(),
-    'newbee_guide_config': NewbeeGuideConfig()
+    'newbee_guide_config': NewbeeGuideConfig(),
+    'notes_config': NotesConfig()
 }
 
 print("load game_configs===========================")

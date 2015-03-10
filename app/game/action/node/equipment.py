@@ -289,6 +289,8 @@ def compose_equipment(chip_no, player):
     equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
     chip.chip_num -= compose_num
     player.equipment_chip_component.save_data()
+    # notice
+
     return {'result': True, 'equipment_obj': equipment_obj}
 
 

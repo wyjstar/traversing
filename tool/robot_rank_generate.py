@@ -71,7 +71,7 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
-    rank_length = 300
+    rank_length = 3000
 
     nickname_set = set()
     while len(nickname_set) < rank_length + 5:
@@ -115,6 +115,7 @@ if __name__ == '__main__':
                                  units=red_units,
                                  slots=slots)
                 pvp_rank[rank] = rank_item
+                break
 
     util.DeleteFromDB(PVP_TABLE_NAME)
     for _ in pvp_rank.values():
