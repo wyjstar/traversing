@@ -286,7 +286,7 @@ def pvp_player_rank_refresh_request(data, player):
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
     response.player_rank = record.get('id') if record else -1
-    cur_rank = record.get('id') if record else 300
+    cur_rank = record.get('id') if record else 3000
 
     ranks = [cur_rank]
     for v in game_configs.arena_fight_config.values():
