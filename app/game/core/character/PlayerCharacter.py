@@ -72,8 +72,7 @@ class PlayerCharacter(object):
                      character_info['id'],
                      character_info['level'])
         char_obj.new(character_info)
-        char_all = tb_character_info.getObj('all')
-        char_all.sadd(self._pid)
+        tb_character_info.sadd('all', self._pid)
 
     @property
     def character_id(self):
