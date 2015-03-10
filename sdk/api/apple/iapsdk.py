@@ -12,7 +12,7 @@ try_more_times = {1: 0.1, 2: 0.2, 3: 0.7}   # 重试次数及间隔
 
 
 class IAPSDK(object):
-    """ 
+    """
     IAP服务端SDK
     """
 
@@ -27,7 +27,8 @@ class IAPSDK(object):
         """
         data_json = json.dumps(data)
         try:
-            req = urllib2.Request(url, data_json, {'content-type' : 'application/json'})
+            req = urllib2.Request(url, data_json,
+                                  {'content-type': 'application/json'})
             response_stream = urllib2.urlopen(req)
             response = response_stream.read()
         except:
@@ -39,9 +40,10 @@ class IAPSDK(object):
         return json.loads(response)
 
     def verify(self, purchase_info):
-        """ 
+        """
         校验订单有效性
-        @param purchase_info: 从transaction的transactionReceipt属性中得到收据的数据，并以base64方式编码。
+        @param purchase_info:
+        从transaction的transactionReceipt属性中得到收据的数据，并以base64方式编码。
         """
         url = "https://buy.itunes.apple.com/verifyReceipt"
         data = {
@@ -61,7 +63,6 @@ class IAPSDK(object):
             # transaction_id = rcpt['transaction_id']
             return {"status": 100}
 
-
         if result['status'] != 0:
             # 校验为无效交易
             return {"status": 1, "error": "error status %s" % status}
@@ -70,15 +71,16 @@ class IAPSDK(object):
         if self._bids and result['bid'] not in self._bids:
             # 校验为无效交易
             return {"status": 1, "error": "invalid bid %s" % bid}
-        
+
         # 验证成功，执行发货
         rcpt = result['receipt']
         transaction_id = rcpt['transaction_id']
         product_id = rcpt['product_id']
         quantity = rcpt['quantity']
         purchase_date_ms = rcpt['purchase_date_ms']
-        
-        return {"status": 0, "orderid": transaction_id, "goodscode": product_id, "count": quantity,
+
+        return {"status": 0, "orderid": transaction_id,
+                "goodscode": product_id, "count": quantity,
                 "purchase_date": purchase_date_ms}
 
 
