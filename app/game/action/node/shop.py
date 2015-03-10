@@ -202,7 +202,7 @@ def shop_buy_505(pro_data, player):
                                       multiple=item_count,
                                       shop=shop,
                                       luck_config=shop_type_item)  # 消耗
-        return_data = gain(player, shop_item.gain, const.COMMON_BUY, multiple=item_count)  # 获取
+        return_data = gain(player, shop_item.gain, get_reason(shop_item.get('type')), multiple=item_count)  # 获取
 
         get_return(player, consume_return_data, response.consume)
         get_return(player, return_data, response.gain)
@@ -211,6 +211,23 @@ def shop_buy_505(pro_data, player):
     common_response.result = True
     return response.SerializeToString()
 
+def get_reason(shop_type):
+    if shop_type == 3:
+        return const.COMMON_BUY_ITEM
+    elif shop_type == 4:
+        return const.COMMON_BUY_GIFT
+    elif shop_type == 7:
+        return const.COMMON_BUY_MINE
+    elif shop_type == 8:
+        return const.COMMON_BUY_HERO_SOUL
+    elif shop_type == 9:
+        return const.COMMON_BUY_PVP
+    elif shop_type == 11:
+        return const.COMMON_BUY_MELT
+    elif shop_type == 12:
+        return const.COMMON_BUY_EQUIPMENT
+    else:
+        return const.COMMON_BUY
 
 @remoteserviceHandle('gate')
 def refresh_shop_items_507(pro_data, player):

@@ -118,7 +118,6 @@ def push_message_remote(key, character_id, args):
         transit_remote = GlobalObject().remote['transit']
         return transit_remote.push_message_remote(key, character_id, *args)
 
-
 @rootserviceHandle
 def pull_message_remote(character_id):
     transit_remote = GlobalObject().remote['transit']
