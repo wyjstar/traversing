@@ -115,6 +115,7 @@ if __name__ == '__main__':
                                  units=red_units,
                                  slots=slots)
                 pvp_rank[rank] = rank_item
+                break
 
     util.DeleteFromDB(PVP_TABLE_NAME)
     for _ in pvp_rank.values():
