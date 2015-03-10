@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='notice.proto',
   package='',
-  serialized_pb='\n\x0cnotice.proto\"y\n\x0eNoticeResponse\x12\x11\n\tnotice_id\x18\x01 \x02(\t\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\t\x12\x18\n\x10hero_break_level\x18\x04 \x01(\t\x12\x14\n\x0c\x65quipment_no\x18\x05 \x01(\t')
+  serialized_pb='\n\x0cnotice.proto\"y\n\x0eNoticeResponse\x12\x11\n\tnotice_id\x18\x01 \x02(\x05\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x18\n\x10hero_break_level\x18\x04 \x01(\x05\x12\x14\n\x0c\x65quipment_no\x18\x05 \x01(\x05')
 
 
 
@@ -27,8 +27,8 @@ _NOTICERESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='notice_id', full_name='NoticeResponse.notice_id', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -41,22 +41,22 @@ _NOTICERESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='hero_no', full_name='NoticeResponse.hero_no', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='hero_break_level', full_name='NoticeResponse.hero_break_level', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='equipment_no', full_name='NoticeResponse.equipment_no', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

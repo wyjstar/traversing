@@ -248,6 +248,7 @@ def gain(player, item_group, reason, result=None, multiple=1):
             else:
                 hero = player.hero_component.add_hero(item_no)
                 notice_item = game_configs.notes_config.get(3001)
+                logger.debug("=================%s %s %s" % (reason, hero.hero_info.quality, notice_item.parameter1))
                 if reason == const.SHOP_DRAW_HERO and hero.hero_info.quality in notice_item.parameter1:
                     push_notice(3001, player_name=player.base_info.base_name, hero_no=item_no)
                 after_num = 1

@@ -7,7 +7,7 @@ from gfirefly.server.globalobject import GlobalObject
 
 remote_gate = GlobalObject().remote['gate']
 
-def push_notice(notice_id, player_name="", hero_no=0, hero_break_level="", equipment_no=""):
+def push_notice(notice_id, player_name="", hero_no=0, hero_break_level=0, equipment_no=0):
     response = NoticeResponse()
     response.notice_id = notice_id
     response.player_name = player_name
