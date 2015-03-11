@@ -118,4 +118,3 @@ def send_mail(args):
     #    for uid in args['uids'].split(';'):
     #        netforwarding.push_message_remote('receive_mail_remote',
     #                                          int(uid), mail_data)
-    return {"success": 1}
