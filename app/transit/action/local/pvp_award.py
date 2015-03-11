@@ -49,9 +49,8 @@ def pvp_award():
             if 'gate' in child.name:
                 result = child.pull_message_remote('pvp_award_remote', k['character_id'], (award,))
                 if type(result) is bool and result:
-                    break
-                else:
                     logger.debug('pvp_award_tick result:%s,%s,%s', result, k, award)
+                    break
         else:
             logger.debug('pvp_award_tick cache:%s,%s', k, award)
             message_cache.cache('pvp_award_remote', k['character_id'], award)

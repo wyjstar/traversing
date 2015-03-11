@@ -81,6 +81,7 @@ class CharacterBaseInfoComponent(Component):
         self._upgrade_time = int(time.time())
 
         data = dict(level=self._level,
+                    nickname=self._base_name,
                     exp=self.exp,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
@@ -196,6 +197,10 @@ class CharacterBaseInfoComponent(Component):
     @property
     def exp(self):
         return self._exp
+
+    @exp.setter
+    def exp(self, value):
+        self._exp = value
 
     @property
     def vip_level(self):

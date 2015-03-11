@@ -19,6 +19,8 @@ from test.init_data.mock_equipment_chip import init_equipment_chip
 from test.init_data.mock_item import init_item
 import cPickle
 # from app.proto_file.gm_pb2 import *
+from shared.utils import trie_tree
+import re
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -35,6 +37,37 @@ def modify_user_info(data, player):
         player.base_info.vip_level = int(args['attr_value'])
         player.base_info.save_data()
         return {'success': 1}
+    elif args['attr_name'] == 'buy_stamina_times':
+        player.stamina.buy_stamina_times = int(args['attr_value'])
+        player.stamina.save_data()
+        return {'success': 1}
+    elif args['attr_name'] == 'stamina':
+        player.finance._finances[7] = int(args['attr_value'])
+        player.finance.save_data()
+        return {'success': 1}
+    elif args['attr_name'] == 'user_exp':
+        player.base_info.exp = int(args['attr_value'])
+        player.base_info.save_data()
+        return {'success': 1}
+    elif args['attr_name'] == 'nickname':
+        nickname = args['attr_value']
+        match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
+        if match:
+            return {'success': 0, 'message': 2}
+
+        if trie_tree.check.replace_bad_word(nickname) != nickname:
+            return {'success': 0, 'message': 2}
+
+        # 判断昵称是否重复
+        nickname_obj = tb_character_info.getObj('nickname')
+        result = nickname_obj.hsetnx(args['attr_value'], args['uid'])
+        if result:
+            player.base_info.base_name = args['attr_value']
+            player.base_info.save_data()
+            return {'success': 1}
+        else:
+            return {'success': 0, 'message': 0}
+
     else:
         return {'success': 0}
     # push = GmCommonModifyLevel()
