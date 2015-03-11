@@ -57,7 +57,7 @@ def from_admin_rpc_remote(args):
     reason = ''
     args = cPickle.loads(args)
     key = args.get('command')
-    gate_command = ['get_user_info', 'modify_vip_level', 'modify_user_level']
+    gate_command = ['modify_vip_level', 'modify_user_level']
     if args.get('command') in gate_command:
         com = "gm." + args['command'] + "(args)"
         res = eval(com)
