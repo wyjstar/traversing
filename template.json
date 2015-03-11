@@ -12,6 +12,7 @@
                     "rootname": "gate"
                 }
             ],
+            "redis": true,
             "webport": 30003,
             "name": "admin",
             "app": "app.admin",

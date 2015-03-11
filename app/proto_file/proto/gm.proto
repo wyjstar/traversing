@@ -1,0 +1,4 @@
+message GmCommonModifyLevel
+{
+    optional int32 level = 2;
+}

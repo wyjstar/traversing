@@ -61,6 +61,8 @@ class CharacterBaseInfoComponent(Component):
         self.update_vip()
         self.check_time()
 
+        self.save_data()
+
     def save_data(self):
         character_info = tb_character_info.getObj(self._id)
         self._upgrade_time = int(time.time())
@@ -138,6 +140,10 @@ class CharacterBaseInfoComponent(Component):
     @property
     def level(self):
         return self._level
+
+    @level.setter
+    def level(self, value):
+        self._level = value
 
     @property
     def exp(self):

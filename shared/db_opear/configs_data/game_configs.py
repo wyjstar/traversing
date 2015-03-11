@@ -130,9 +130,9 @@ all_config_name = {
     'achievement_config': AchievementConfig(),
     'travel_item_config': TravelItemConfig(),
     'seal_config': SealConfig(),
-    'mine_config':MineConfig(),
+    'mine_config': MineConfig(),
     'formula_config': FormulaConfig(),
-    'mine_match_config':MineMatchConfig(),
+    'mine_match_config': MineMatchConfig(),
     'stone_config': StoneConfig(),
     'newbee_guide_config': NewbeeGuideConfig(),
     'notes_config': NotesConfig()
