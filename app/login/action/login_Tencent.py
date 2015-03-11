@@ -31,8 +31,8 @@ qq_rank_host = ('10.153.96.115', 10000)
 @webserviceHandle('/login')
 def server_login():
     """ account login """
-    openid = request.args.get('openid')
-    access_token = request.args.get('accessToken')
+    openid = request.args.get('open_id')
+    access_token = request.args.get('access_token')
     platform = request.args.get('platform')
     result = eval(__login(platform, openid, access_token))
     if result.get('result') is False:
