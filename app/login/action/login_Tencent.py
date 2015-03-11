@@ -34,6 +34,7 @@ def server_login():
     openid = request.args.get('open_id')
     access_token = request.args.get('access_token')
     platform = request.args.get('platform')
+    logger.debug("open_id, access_token, platform %s %s %s" % (openid, access_token, platform))
     result = eval(__login(platform, openid, access_token))
     if result.get('result') is False:
         return json.dumps(dict(result=False))
@@ -55,6 +56,7 @@ def __login(platform, openid, access_token):
     log = logger_sdk.new_log('TxApi')
     msdk = Msdk(host, qq_appid, qq_appkey, wx_appid, wx_appkey, log=log)
     res = msdk.verify_login(platform, openid, access_token)
+    logger.debug(res)
     logger.debug(res)
     if res.get('ret') == 0:
         return str({'result': True, 'account_id': '\'%s\'' % openid})
