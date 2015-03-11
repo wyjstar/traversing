@@ -13,6 +13,7 @@ from robot_world_boss import RobotWorldBoss
 from robot_stage import RobotStage
 from robot_pvp import RobotPvp
 from robot_mine import RobotMine
+from robot_hero import RobotHero
 
 monkey.patch_os()
 
@@ -33,6 +34,7 @@ robot_type['6'] = RobotWorldBoss
 robot_type['7'] = RobotStage
 robot_type['8'] = RobotPvp
 robot_type['9'] = RobotMine
+robot_type['10'] = RobotHero
 robot_manager = RobotManager()
 
 

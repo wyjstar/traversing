@@ -31,7 +31,8 @@ def push_all_objects(topic_id, message):
 
 @rootserviceHandle
 def push_notice_remote(topic_id, message):
-    groot.child('net').push_all_object_remote(topic_id, message)
+    logger.debug("push_notice_remote===================")
+    push_all_objects(topic_id, message)
 
 @remoteserviceHandle('world')
 def push_message_to_transit_remote(key, character_id, *args):

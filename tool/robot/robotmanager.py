@@ -94,7 +94,7 @@ class RobotManager:
 
 
 def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
-    register_url = 'http://localhost:20100/register?name=%s&pwd=%s' % \
+    register_url = 'http://localhost:30004/register?name=%s&pwd=%s' % \
                    (robot_name, pwd)
     register_response = json.loads((urllib.urlopen(register_url)).read())
     print 'register response:', register_response
@@ -104,7 +104,7 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
         return
     print 'register success'
 
-    login_url = 'http://localhost:20100/login?name=%s&pwd=%s' % \
+    login_url = 'http://localhost:30004/login?name=%s&pwd=%s' % \
                 (robot_name, pwd)
     login_response = json.loads((urllib.urlopen(login_url)).read())
     print 'login response:', login_response
@@ -115,7 +115,7 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
 
     passport = login_response.get('passport')
     print passport
-    login_game_url = 'http://localhost:20097/login?passport=' + passport
+    login_game_url = 'http://localhost:30006/login?passport=' + passport
     login_game_response = (urllib.urlopen(login_game_url)).read()
     print 'login game response:', login_game_response
     login_game_response = json.loads(login_game_response)

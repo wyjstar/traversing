@@ -150,9 +150,14 @@ class Equipment(object):
     """装备 """
 
     def __init__(self, character_id, equipment_id, equipment_name, equipment_no,
-                 strengthen_lv=1, awakening_lv=1, enhance_info=[],
+                 strengthen_lv=1, awakening_lv=1, _enhance_info=0,
                  nobbing_effect={}, is_guard=False, main_attr={},
                  minor_attr={}, prefix=0):
+
+        logger.debug("enhance_info========== %s" % _enhance_info)
+        if _enhance_info == 0:
+            _enhance_info = []
+        logger.debug("enhance_info========== %s" % _enhance_info)
         self._character_id = character_id
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,
@@ -166,7 +171,7 @@ class Equipment(object):
                                                       main_attr,
                                                       minor_attr,
                                                       prefix)
-        self._record = EquipmentEnhanceComponent(self, enhance_info)
+        self._record = EquipmentEnhanceComponent(self, _enhance_info)
 
     def add_data(self, character_id):
         no = self._base_info.equipment_no
