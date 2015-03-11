@@ -109,6 +109,15 @@ def encourage_heros_1703(data, player):
         # 金币鼓舞
         goldcoin_inspire_price = base_config.get("coin_inspire_price")
         goldcoin_inspire_price_multiple = base_config.get("coin_inspire_price_multi")
+        goldcoinInspireLimited = base_config.get("goldcoinInspireLimited")
+
+        if boss.encourage_coin_num >= goldcoinInspireLimited:
+            response.result = False
+            response.result_no = 1703
+            logger.debug("*" * 80)
+            print response
+            return response.SerializePartialToString()
+
         coin = player.finance.coin
         need_coin = goldcoin_inspire_price * (
             pow(goldcoin_inspire_price_multiple, boss.encourage_coin_num))
@@ -126,7 +135,14 @@ def encourage_heros_1703(data, player):
     if request.finance_type == 2:
         # 钻石鼓舞
         money_inspire_price = base_config.get("gold_inspire_price")
+        moneyInspireLimited = base_config.get("moneyInspireLimited")
         #money_inspire_price_multiple = base_config.get("money_inspire_price_multiple")
+        if boss.encourage_gold_num >= moneyInspireLimited:
+            response.result = False
+            response.result_no = 1704
+            logger.debug("*" * 80)
+            print response
+            return response.SerializePartialToString()
         gold = player.finance.gold
         need_gold = money_inspire_price
         if gold < need_gold:
