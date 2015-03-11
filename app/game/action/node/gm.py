@@ -31,6 +31,12 @@ def modify_user_info(data, player):
         player.base_info.level = int(args['attr_value'])
         player.base_info.save_data()
         return {'success': 1}
+    elif args['attr_name'] == 'vip_level':
+        player.base_info.vip_level = int(args['attr_value'])
+        player.base_info.save_data()
+        return {'success': 1}
+    else:
+        return {'success': 0}
     # push = GmCommonModifyLevel()
     # push.level = int(args['level'])
     # remote_gate.push_object_remote(850,

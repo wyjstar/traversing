@@ -62,12 +62,13 @@ def player_logout(player_data):
 
 
 def item_flow(player_data, addorreduce, itemtype, itemnum, itemid, itid,
-              reason, after_num):
+              reason, after_num, event_id):
     log4tx.item_flow(PlatID=plat_id, GameSvrId=game_server_id,
                      dtEventTime=xtime.strdatetime(), GameAppID=game_app_id,
                      OpenID=player_data.base_info.id, ItemID=itemid,
                      ItemType=itemtype, AfterCount=after_num, Count=itemnum,
-                     AddOrReduce=addorreduce, Reason=reason, Itid=itid)
+                     AddOrReduce=addorreduce, Reason=reason, Itid=itid,
+                     ReasonEventID=event_id)
 
 
 def player_exp_flow(player_data, beforelevel, gain_exp, reason):
@@ -134,7 +135,7 @@ def stage_flow(player_data, stage_id, result):
                       Result=result)
 
 
-def sweep_flow(player_data, stage_id, times):
+def sweep_flow(player_data, stage_id, times, reason_event_id):
 
     log4tx.sweep_flow(GameSvrId=game_server_id,
                       dtEventTime=xtime.strdatetime(),
@@ -142,7 +143,8 @@ def sweep_flow(player_data, stage_id, times):
                       OpenID=player_data.base_info.id,
                       PlatID=plat_id,
                       StageId=stage_id,
-                      Times=times)
+                      Times=times,
+                      ReasonEventID=reason_event_id)
 
 
 def creat_guild(player_data, guild_id, user_level):

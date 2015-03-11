@@ -21,6 +21,7 @@ from app.game.action.node._fight_start_logic import pve_assemble_units
 from app.game.action.node._fight_start_logic import pve_assemble_friend
 from shared.utils.const import const
 from shared.tlog import tlog_action
+from shared.utils.pyuuid import get_uuid
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -277,6 +278,12 @@ def stage_sweep(stage_id, times, player):
         res.result = False
         res.result_no = 810
         return response.SerializePartialToString()
+    tlog_event_id = get_uuid()
+
+    # 武将乱入
+    fight_cache_component = player.fight_cache_component
+    fight_cache_component.stage_id = stage_id
+    red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     for _ in range(times):
         drop = []
@@ -294,8 +301,18 @@ def stage_sweep(stage_id, times, player):
         elite_drop = elite_bag.get_drop_items()
         drop.extend(elite_drop)
 
-        data = gain(player, drop, const.STAGE_SWEEP)
+        data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
         get_return(player, data, drops)
+
+        # 乱入武将按概率获取碎片
+        break_stage_id = player.fight_cache_component.break_stage_id
+        if break_stage_id:
+            break_stage_info = game_configs.stage_break_config.get(break_stage_id)
+            ran = random.random()
+            if ran <= break_stage_info.reward_odds:
+                logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
+                data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
+                get_return(player, data, drops)
 
         player.stamina.stamina -= stage_config.vigor
         # 经验
@@ -329,7 +346,7 @@ def stage_sweep(stage_id, times, player):
     player.finance.save_data()
 
     res.result = True
-    tlog_action.log('SweepFlow', player, stage_id, times)
+    tlog_action.log('SweepFlow', player, stage_id, times, tlog_event_id)
     return response.SerializePartialToString()
 
 

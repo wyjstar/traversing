@@ -99,6 +99,7 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
     after_num = 0
     itid = 0
     reason = 0
+    event_id = ''
 
     luckValue = None
     if luck_config:
@@ -159,12 +160,13 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
         result.append([type_id, num, item_no])
 
         # =====Tlog================
-        tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
+        tlog_action.log('ItemFlow', player, const.REDUCE, type_id, num, item_no,
+                        itid, reason, after_num, event_id)
 
     return result
 
 
-def gain(player, item_group, reason, result=None, multiple=1):
+def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
     """获取
     @param item_group: [obj,obj]
     """
@@ -334,7 +336,8 @@ def gain(player, item_group, reason, result=None, multiple=1):
             itid = item_no
             item_no = a
         if type_id != const.TEAM_EXPERIENCE:
-            tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no, itid, reason, after_num)
+            tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no,
+                            itid, reason, after_num, event_id)
         # ==============
 
     return result
