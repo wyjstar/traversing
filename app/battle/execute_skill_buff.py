@@ -38,7 +38,7 @@ def check_hit(skill_buff_info, hit, dodge):
 
 
 def check_block(attacker, target, skill_buff_info):
-    all_vars = dict(blockRate=skill_buff_info.blockRate,
+    all_vars = dict(blockArray=attacker.block,
                     random=get_random_int(0, 99))
     is_block_formula = game_configs.formula_config.get("isBlock").get("formula")
     assert is_block_formula!=None, "isBlock formula can not be None!"
@@ -113,7 +113,7 @@ def execute_demage(attacker, target, skill_buff_info, is_block):
     float_coeff_vars = dict(k1=k1,
                             k2=k2,
                             random=get_random_int(0, 99))
-    float_coeff_formula = game_configs.formula_config.get("levelDamage").get("formula")
+    float_coeff_formula = game_configs.formula_config.get("floatDamage").get("formula")
     assert float_coeff_formula!=None, "levelDamage formula can not be None!"
     float_coeff = eval(float_coeff_formula, float_coeff_vars)
 
