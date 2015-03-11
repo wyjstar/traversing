@@ -70,10 +70,13 @@ class WorldBoss(BaseBoss):
         # notice
         notice_item = game_configs.notes_config.get(1001)
         current_time = time.time()
-        if current_time == str_time_to_timestamp(notice_item.parameter1[0]) or current_time == str_time_to_timestamp(notice_item.parameter1[1]):
+        #logger.debug("current_time:%s, target_time:%s" % (current_time, str_time_to_timestamp(notice_item.parameter1[0])))
+        time1 = str_time_to_timestamp(notice_item.parameter1[0])
+        time2 = str_time_to_timestamp(notice_item.parameter1[1])
+        if (current_time < time1 and current_time > time1-1) or (current_time < time2 and current_time > time2-1):
             response = NoticeResponse()
             response.notice_id = 1001
-            push_all_object_message(2000, response)
+            push_all_object_message(2000, response.SerializePartialToString())
 
         if self._stage_id and self.in_the_time_period() and self._state == 0:
             self.start_boss()
