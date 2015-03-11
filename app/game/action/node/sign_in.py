@@ -74,9 +74,6 @@ def continus_sign_in_1402(pro_data, player):
     days = request.sign_in_days
     response = ContinuousSignInResponse()
 
-    sign_in_prize = game_configs.base_config.get("signInPrize")
-    if not sign_in_prize:
-        return
     # 验证连续签到日期
     if len(player.sign_in_component.sign_in_days) < days:
         response.res.result = False
@@ -90,13 +87,16 @@ def continus_sign_in_1402(pro_data, player):
     player.sign_in_component.continuous_sign_in_prize.append(days)
     player.sign_in_component.save_data()
 
-    drop_bag_id = sign_in_prize.get(days)
-    big_bag = BigBag(drop_bag_id)
-    gain_data = big_bag.get_drop_items()
-    return_data = gain(player, gain_data, const.CONTINUS_SIGN)
+    reward = player.sign_in_component.get_sign_in_reward(days)
+    if reward:
+        response.res.result = False
+        response.res.result_no = 1404
+        return response.SerializePartialToString()
+    return_data = gain(player, reward, const.CONTINUS_SIGN)
     get_return(player, return_data, response.gain)
 
     response.res.result = True
+    logger.debug(response)
     return response.SerializePartialToString()
 
 
