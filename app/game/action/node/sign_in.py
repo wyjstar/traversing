@@ -88,7 +88,7 @@ def continus_sign_in_1402(pro_data, player):
     player.sign_in_component.save_data()
 
     reward = player.sign_in_component.get_sign_in_reward(days)
-    if reward:
+    if not reward:
         response.res.result = False
         response.res.result_no = 1404
         return response.SerializePartialToString()
