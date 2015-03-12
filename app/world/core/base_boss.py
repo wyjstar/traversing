@@ -129,6 +129,8 @@ class BaseBoss(object):
         all_middle_heros = []
         all_low_heros = []
         for k, v in game_configs.hero_config.items():
+            if v.type == 2:
+                continue
             if v.quality in [5, 6]:
                 all_high_heros.append(k)
             if v.quality in [3, 4, 5, 6]:
