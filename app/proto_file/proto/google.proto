@@ -1,0 +1,25 @@
+import "common.proto";
+
+message GoogleGenerateIDRequest{
+	optional int32 channel = 1;
+}
+
+message GoogleGenerateIDResponse{
+	optional string uid = 1;
+}
+
+message GoogleConsumeRequest{
+	optional string data = 1;
+}
+
+message GoogleConsumeResponse{
+    required CommonResponse res = 1;
+}
+
+message GoogleConsumeVerifyRequest{
+	optional string data = 1;
+}
+
+message GoogleConsumeVerifyResponse{
+    required CommonResponse res = 1;
+}
