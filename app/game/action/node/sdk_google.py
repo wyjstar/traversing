@@ -45,4 +45,5 @@ def google_consume_verify_10002(data, player):
     if result:
         pass
     response.res.result = True
+    print result
     return response.SerializeToString()
