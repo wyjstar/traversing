@@ -44,7 +44,7 @@ class PlayerCharacter(object):
                  stone=component.UserStone(self),
                  travel=component.CharacterTravelComponent(self),
                  runt=component.CharacterRuntComponent(self),
-                 recharge=component.CharacterRuntComponent(self)
+                 recharge=component.CharacterRechargeGift(self)
                  )
         self._components = a
 

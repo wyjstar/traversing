@@ -44,6 +44,8 @@ class CharacterRechargeGift(Component):
             activitys = game_configs.activity_config.get(gift_type)
             for activity in activitys:
                 self.type_process(activity, recharge)
+        print '-=-=-=='*8
+        print self._recharge
 
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
@@ -56,7 +58,18 @@ class CharacterRechargeGift(Component):
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
                                           _time_now_struct.tm_mon,
                                           _time_now_struct.tm_mday)
-        _time_now = time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S'))
+        _date_now = time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S'))
+        _time_now = time.time()
+        _str_activity_period = activity.get('parameterT')
+
+        if _str_activity_period != '0':
+            begin, end = _str_activity_period.split(' - ')
+            begin = time.mktime(time.strptime(begin, '%Y-%m-%d %H:%M:%S'))
+            end = time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S'))
+
+            if _time_now < begin and _time_now > end:
+                logger.debug('activity:%s not in time:now%s:begin:%s:end:%s',
+                             activity_id, _time_now, begin, end)
 
         gift_type = activity.get('type')
         if gift_type == 7:  # first time recharge
@@ -64,7 +77,7 @@ class CharacterRechargeGift(Component):
                 logger.debug('recharge first is exist:%s:%s',
                              activity_id, self._recharge[activity_id])
             else:
-                self._recharge[activity_id] = dict(_time_now=0)
+                self._recharge[activity_id] = {_date_now: 0}
 
         if gift_type == 8:  # single recharge
             pass
@@ -73,13 +86,13 @@ class CharacterRechargeGift(Component):
             accumulating = 0
             switch = 0
             if activity_id in self._recharge:
-                accumulating, switch = self._recharge[activity_id].items()
+                accumulating, switch = self._recharge[activity_id].items()[0]
             accumulating += recharge
-            self._recharge[activity_id] = dict(accumulating=switch)
+            self._recharge[activity_id] = {accumulating: switch}
 
         if gift_type == 10:
-            if activity_id in self._recharge:
+            if activity_id not in self._recharge:
                 self._recharge[activity_id] = {}
 
-            if _time_now not in self._recharge[activity_id]:
-                self._recharge[activity_id][_time_now] = 0
+            if _date_now not in self._recharge[activity_id].keys():
+                self._recharge[activity_id][_date_now] = 0

@@ -135,3 +135,7 @@ class RobotActivity(Robot):
         request = google_pb2.RechargeTest()
         request.recharge_num = int(recharge)
         self.send_message(request, 1000000)
+
+    def none_1000000(self, message):
+        print message
+        self.on_command_finish()
