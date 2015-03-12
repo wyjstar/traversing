@@ -13,6 +13,7 @@ from app.gate.service.local.gateservice import local_service
 from shared.utils.ranking import Ranking
 import cPickle
 from gfirefly.server.logobj import logger
+import gm
 
 groot = GlobalObject().root
 
@@ -56,21 +57,22 @@ def from_admin_rpc_remote(args):
     reason = ''
     args = cPickle.loads(args)
     key = args.get('command')
-    print 'command:', args.get('command'), args.get('uid')
-    if args.get('uid'):
+    gate_command = ['modify_vip_level', 'modify_user_level']
+    if args.get('command') in gate_command:
+        com = "gm." + args['command'] + "(args)"
+        res = eval(com)
+    else:
         oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
         if oldvcharacter:
             args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
             child_node = groot.child(oldvcharacter.node)
-            result = child_node.callbackChild(*args)
+            res = child_node.callbackChild(*args)
         else:
-            result = False
-            reason = '玩家不在线'
+            res = {'success': 0, 'message': '玩家不在线'}
 
-    print result, '#######################'
+    print res, '#######################'
 
-    return cPickle.dumps({'result': result, 'reason': reason})
-    # return cPickle.dumps({'result': False, 'data': {'aaa': 111, 'bbb': 222}})
+    return res
 
 
 @rootserviceHandle

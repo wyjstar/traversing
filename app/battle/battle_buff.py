@@ -1,8 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 from gfirefly.server.logobj import logger_cal, logger
-from execute_skill_buff import execute_demage, execute_pure_demage, execute_mp, execute_treat, check_block
-from random_with_seed import get_random_int
+from execute_skill_buff import execute_demage, execute_pure_demage, execute_mp, execute_treat, check_block, actual_value, check_trigger
 
 
 class BuffManager(object):
@@ -17,7 +16,7 @@ class BuffManager(object):
         """
         add a buff.
         """
-        if not self.is_trigger(buff.skill_buff_info):
+        if not check_trigger(buff.skill_buff_info):
             return
         logger_cal.debug("添加buff: %s" % buff.skill_buff_info.id)
         effect_id = buff.skill_buff_info.effectId
@@ -50,12 +49,6 @@ class BuffManager(object):
             for buff in buffs:
                 buff.perform_buff(self._owner)
 
-    def is_trigger(self, buff_info):
-        random_int = get_random_int(1, 99)
-        if random_int >= buff_info.triggerRate:
-            logger_cal.debug("技能: %s, 未触发,not trigger" % buff_info.id)
-            return False
-        return True
 
     def remove(self):
         """docstring for remove"""
@@ -226,10 +219,14 @@ class BuffManager(object):
 
 
     def get_buff_value(self, value, buff_info):
-        if buff_info.valueType == 1:
-            return buff_info.valueEffect + buff_info.levelEffectValue * self._owner.level
-        else:
-            return value * buff_info.valueEffect / 100 + buff_info.levelEffectValue * self._owner.level
+        all_vars=dict(skill_buff=buff_info,
+                      heroLevel=self._owner.level,
+                      attrHero=value)
+        v1 = actual_value("skillbuffEffct_1", all_vars)
+        v2 = actual_value("skillbuffEffct_2", all_vars)
+        if v1:return v1
+        if v2:return v2
+        return 0
 
 
     def __repr__(self):
