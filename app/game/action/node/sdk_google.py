@@ -27,7 +27,7 @@ def google_generate_id_10000(data, player):
 
     response = google_pb2.GoogleGenerateIDResponse()
     response.uid = player.base_info.generate_google_id(request.channel)
-    print response, ' GoogleGenerateIDRequest'
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -35,7 +35,7 @@ def google_generate_id_10000(data, player):
 def google_consume_10001(data, player):
     request = google_pb2.GoogleConsumeRequest()
     request.ParseFromString(data)
-    print request, ' GoogleConsumeRequest'
+    logger.debug(request)
 
     player.base_info.set_google_consume_data(request.data)
 
@@ -49,6 +49,7 @@ def google_consume_10001(data, player):
         logger.debug('google product id is not in rechargeconfig:%s',
                      data.get('productId'))
 
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -56,11 +57,12 @@ def google_consume_10001(data, player):
 def google_consume_verify_10002(data, player):
     request = google_pb2.GoogleConsumeVerifyRequest()
     request.ParseFromString(data)
-    print request, ' GoogleConsumeVerifyRequest'
+    logger.debug(request)
 
     response = google_pb2.GoogleConsumeVerifyResponse()
     response.res.result = False
     result = verify_signature(request.signature, request.data)
+    logger.debug('verify_signature:%s', result)
 
     data = eval(request.data)
     recharge_item = game_configs.recharge_config.get(data.get('productId'))
@@ -75,4 +77,5 @@ def google_consume_verify_10002(data, player):
             get_return(player, return_data, response.gain)
             response.res.result = True
 
+    logger.debug(response)
     return response.SerializeToString()

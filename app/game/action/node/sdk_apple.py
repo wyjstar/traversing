@@ -16,7 +16,7 @@ from shared.utils.const import const
 def apple_consume_verify_11002(data, player):
     request = apple_pb2.AppleConsumeVerifyRequest()
     request.ParseFromString(data)
-    print request, ' GoogleConsumeVerifyRequest'
+    logger.debug(request)
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = False
@@ -36,5 +36,5 @@ def apple_consume_verify_11002(data, player):
             get_return(player, return_data, response.gain)
             response.res.result = True
     response.res.result = True
-    print response
+    logger.debug(response)
     return response.SerializeToString()
