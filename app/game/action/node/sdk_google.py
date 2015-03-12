@@ -3,7 +3,7 @@
 created by server on 15-2-11下午3:49.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from sdk.api.google import google_check
+from sdk.api.google.google_check import verify_signature
 from app.proto_file import google_pb2
 
 
@@ -41,7 +41,7 @@ def google_consume_verify_10002(data, player):
     print request, ' GoogleConsumeVerifyRequest'
 
     response = google_pb2.GoogleConsumeVerifyResponse()
-    result = google_check(VERIFY_KEY, request.data)
+    result = verify_signature(VERIFY_KEY, request.data)
     if result:
         pass
     response.res.result = True
