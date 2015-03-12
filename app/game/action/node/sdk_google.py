@@ -7,7 +7,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import get_return
 from app.game.core.item_group_helper import gain
 from gfirefly.server.logobj import logger
-from sdk.api.google import google_check
+from sdk.api.google.google_check import verify_signature
 from app.proto_file import google_pb2
 from shared.utils.const import const
 
@@ -60,7 +60,7 @@ def google_consume_verify_10002(data, player):
 
     response = google_pb2.GoogleConsumeVerifyResponse()
     response.res.result = False
-    result = google_check('', request.data)
+    result = verify_signature(request.signature, request.data)
 
     data = eval(request.data)
     recharge_item = game_configs.recharge_config.get(data.get('productId'))

@@ -22,6 +22,7 @@ message GoogleConsumeResponse{
 
 message GoogleConsumeVerifyRequest{
 	optional string data = 1;
+	optional string signature = 2;
 }
 
 message GoogleConsumeVerifyResponse{

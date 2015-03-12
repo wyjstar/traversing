@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='google.proto',
   package='',
-  serialized_pb='\n\x0cgoogle.proto\x1a\x0c\x63ommon.proto\"$\n\x0cRechargeTest\x12\x14\n\x0crecharge_num\x18\x01 \x01(\x05\"*\n\x17GoogleGenerateIDRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\"\'\n\x18GoogleGenerateIDResponse\x12\x0b\n\x03uid\x18\x01 \x01(\t\"$\n\x14GoogleConsumeRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"5\n\x15GoogleConsumeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"*\n\x1aGoogleConsumeVerifyRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"a\n\x1bGoogleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0cgoogle.proto\x1a\x0c\x63ommon.proto\"$\n\x0cRechargeTest\x12\x14\n\x0crecharge_num\x18\x01 \x01(\x05\"*\n\x17GoogleGenerateIDRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\"\'\n\x18GoogleGenerateIDResponse\x12\x0b\n\x03uid\x18\x01 \x01(\t\"$\n\x14GoogleConsumeRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"5\n\x15GoogleConsumeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"=\n\x1aGoogleConsumeVerifyRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\"a\n\x1bGoogleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -173,6 +173,13 @@ _GOOGLECONSUMEVERIFYREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='signature', full_name='GoogleConsumeVerifyRequest.signature', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -183,7 +190,7 @@ _GOOGLECONSUMEVERIFYREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=246,
-  serialized_end=288,
+  serialized_end=307,
 )
 
 
@@ -217,8 +224,8 @@ _GOOGLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=290,
-  serialized_end=387,
+  serialized_start=309,
+  serialized_end=406,
 )
 
 _GOOGLECONSUMERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

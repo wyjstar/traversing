@@ -36,4 +36,5 @@ def apple_consume_verify_11002(data, player):
             get_return(player, return_data, response.gain)
             response.res.result = True
     response.res.result = True
+    print response
     return response.SerializeToString()
