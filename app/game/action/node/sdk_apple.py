@@ -29,7 +29,7 @@ def apple_consume_verify_11002(data, player):
     if result:
         if recharge_item is None:
             logger.debug('apple consume goodid not in rechargeconfig:%s',
-                         data.get('productId'))
+                         result.get('goodscode'))
         else:
             return_data = gain(player, recharge_item.get('setting'),
                                const.RECHARGE)  # 获取
