@@ -3,11 +3,11 @@
 created by server on 15-2-11下午3:49.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from sdk.api.google.google_check import verify_signature
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import get_return
 from app.game.core.item_group_helper import gain
 from gfirefly.server.logobj import logger
+from sdk.api.google import google_check
 from app.proto_file import google_pb2
 from shared.utils.const import const
 
@@ -59,21 +59,20 @@ def google_consume_verify_10002(data, player):
     print request, ' GoogleConsumeVerifyRequest'
 
     response = google_pb2.GoogleConsumeVerifyResponse()
-    response.res.result = True
-    result = verify_signature('', request.data)
-    print result
+    response.res.result = False
+    result = google_check('', request.data)
 
     data = eval(request.data)
     recharge_item = game_configs.recharge_config.get(data.get('productId'))
 
     if result:
         if recharge_item is None:
-            response.res.result = False
             logger.debug('google consume goodid not in rechargeconfig:%s',
                          data.get('productId'))
         else:
             return_data = gain(player, recharge_item.get('setting'),
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
+            response.res.result = True
 
     return response.SerializeToString()
