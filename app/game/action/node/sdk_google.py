@@ -4,10 +4,20 @@ created by server on 15-2-11下午3:49.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from sdk.api.google.google_check import verify_signature
+from shared.db_opear.configs_data import game_configs
+from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import gain
+from gfirefly.server.logobj import logger
 from app.proto_file import google_pb2
+from shared.utils.const import const
 
 
-VERIFY_KEY = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz+WQFjaERwKgVIM7+zTmQwc/5i6o67K4YYluAQd7jlUWcJSNhUpiZ1Z4AxKWInffiVR+0ZQBNuDhi7/Mr0deffWaJ8rsa/xHVm9gGwZAHH31Wj+G3voIuejB84FgZmlh1asHgB+VMt+x3HO4/1LbSJvSxlscOl/vuov/+eIokvwsSiR+4Y8yKAnAqaoxcowNR6ER0p0n3VLNQ4UAvFlEisdXCsvW7JZf//ZBy4oKQQlYAkDFoebzpwkyAZEx2d9HEOmx4pZWoQi9JJi4WjrTvbLBXbh7dyqSxHvuVw/PkpJ9UHTNo6DgknWo2A7LDgaQdnTRlGY5mEBMnhCeQYlS3wIDAQAB'
+@remoteserviceHandle('gate')
+def test_1000000(data, player):
+    request = google_pb2.RechargeTest()
+    request.ParseFromString(data)
+    player.recharge.charge(request.recharge_num)
+    return ''
 
 
 @remoteserviceHandle('gate')
@@ -31,6 +41,14 @@ def google_consume_10001(data, player):
 
     response = google_pb2.GoogleConsumeResponse()
     response.res.result = True
+
+    data = eval(request.data)
+    recharge_item = game_configs.recharge_config.get(data.get('productId'))
+    if recharge_item is None:
+        response.res.result = False
+        logger.debug('google product id is not in rechargeconfig:%s',
+                     data.get('productId'))
+
     return response.SerializeToString()
 
 
@@ -41,9 +59,21 @@ def google_consume_verify_10002(data, player):
     print request, ' GoogleConsumeVerifyRequest'
 
     response = google_pb2.GoogleConsumeVerifyResponse()
-    result = verify_signature(VERIFY_KEY, request.data)
-    if result:
-        pass
     response.res.result = True
+    result = verify_signature('', request.data)
     print result
+
+    data = eval(request.data)
+    recharge_item = game_configs.recharge_config.get(data.get('productId'))
+
+    if result:
+        if recharge_item is None:
+            response.res.result = False
+            logger.debug('google consume goodid not in rechargeconfig:%s',
+                         data.get('productId'))
+        else:
+            return_data = gain(player, recharge_item.get('setting'),
+                               const.RECHARGE)  # 获取
+            get_return(player, return_data, response.gain)
+
     return response.SerializeToString()

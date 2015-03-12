@@ -1,5 +1,9 @@
 import "common.proto";
 
+message RechargeTest{
+	optional int32 recharge_num = 1;
+}
+
 message GoogleGenerateIDRequest{
 	optional int32 channel = 1;
 }
@@ -22,4 +26,5 @@ message GoogleConsumeVerifyRequest{
 
 message GoogleConsumeVerifyResponse{
     required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
 }
