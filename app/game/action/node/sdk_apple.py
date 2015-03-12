@@ -22,6 +22,7 @@ def apple_consume_verify_11002(data, player):
     response.res.result = False
     result = IAPSDK().verify(request.purchase_info,
                              request.transaction_id)
+    print '==='*14, result
 
     recharge_item = game_configs.recharge_config.get(result.get('goodscode'))
 
@@ -34,5 +35,5 @@ def apple_consume_verify_11002(data, player):
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
             response.res.result = True
-    response.res.result = result
+    response.res.result = True
     return response.SerializeToString()
