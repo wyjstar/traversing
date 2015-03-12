@@ -7,7 +7,11 @@ from sdk.api.google import google_check
 from app.proto_file import google_pb2
 
 
-VERIFY_KEY = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz+WQFjaERwKgVIM7+zTmQwc/5i6o67K4YYluAQd7jlUWcJSNhUpiZ1Z4AxKWInffiVR+0ZQBNuDhi7/Mr0deffWaJ8rsa/xHVm9gGwZAHH31Wj+G3voIuejB84FgZmlh1asHgB+VMt+x3HO4/1LbSJvSxlscOl/vuov/+eIokvwsSiR+4Y8yKAnAqaoxcowNR6ER0p0n3VLNQ4UAvFlEisdXCsvW7JZf//ZBy4oKQQlYAkDFoebzpwkyAZEx2d9HEOmx4pZWoQi9JJi4WjrTvbLBXbh7dyqSxHvuVw/PkpJ9UHTNo6DgknWo2A7LDgaQdnTRlGY5mEBMnhCeQYlS3wIDAQAB'
+@remoteserviceHandle('gate')
+def test_1000000(data, player):
+    request = google_pb2.RechargeTest()
+    request.ParseFromString(data)
+    player.recharge.recharge(request.recharge_num)
 
 
 @remoteserviceHandle('gate')
@@ -41,7 +45,7 @@ def google_consume_verify_10002(data, player):
     print request, ' GoogleConsumeVerifyRequest'
 
     response = google_pb2.GoogleConsumeVerifyResponse()
-    result = google_check(VERIFY_KEY, request.data)
+    result = google_check('', request.data)
     if result:
         pass
     response.res.result = True

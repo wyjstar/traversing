@@ -8,6 +8,7 @@ from app.proto_file import online_gift_pb2
 from app.proto_file import level_gift_pb2
 from app.proto_file import pvp_rank_pb2
 from app.proto_file import line_up_pb2
+from app.proto_file import google_pb2
 # from app.proto_file import soul_shop_pb2
 
 
@@ -115,17 +116,22 @@ class RobotActivity(Robot):
     def command_arena_shop_refresh(self):
         self.send_message(None, 1511)
 
-    def get_arena_shop_response_1511(self, message):
-        response = soul_shop_pb2.GetShopItemsResponse()
-        response.ParseFromString(message)
-        print response
-        self.on_command_finish()
+    # def get_arena_shop_response_1511(self, message):
+    #     response = soul_shop_pb2.GetShopItemsResponse()
+    #     response.ParseFromString(message)
+    #     print response
+    #     self.on_command_finish()
 
-    def command_get_arena_shop(self):
-        self.send_message(None, 1512)
+    # def command_get_arena_shop(self):
+    #     self.send_message(None, 1512)
 
-    def get_arena_shop_response_1512(self, message):
-        response = soul_shop_pb2.GetShopItemsResponse()
-        response.ParseFromString(message)
-        print response
-        self.on_command_finish()
+    # def get_arena_shop_response_1512(self, message):
+    #     response = soul_shop_pb2.GetShopItemsResponse()
+    #     response.ParseFromString(message)
+    #     print response
+    #     self.on_command_finish()
+
+    def command_recharge(self, recharge):
+        request = google_pb2.RechargeTest()
+        request.recharge_num = int(recharge)
+        self.send_message(request, 1000000)

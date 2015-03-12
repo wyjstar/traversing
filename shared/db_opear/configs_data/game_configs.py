@@ -146,4 +146,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print stone_config.get("weight")
+    print activity_config.keys()
