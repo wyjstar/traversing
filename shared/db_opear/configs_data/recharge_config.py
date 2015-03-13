@@ -14,6 +14,7 @@ class RechargeConfig(object):
     def parser(self, config_value):
         for row in config_value:
             row["setting"] = parse(row.get("setting"))
+            row["fristGift"] = parse(row.get("fristGift"))
             item = CommonItem(row)
             self._items[item.goodsid] = item
 
