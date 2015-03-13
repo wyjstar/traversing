@@ -14,9 +14,37 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='google.proto',
   package='',
-  serialized_pb='\n\x0cgoogle.proto\x1a\x0c\x63ommon.proto\"*\n\x17GoogleGenerateIDRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\"\'\n\x18GoogleGenerateIDResponse\x12\x0b\n\x03uid\x18\x01 \x01(\t\"$\n\x14GoogleConsumeRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"5\n\x15GoogleConsumeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"*\n\x1aGoogleConsumeVerifyRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\";\n\x1bGoogleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x0cgoogle.proto\x1a\x0c\x63ommon.proto\"$\n\x0cRechargeTest\x12\x14\n\x0crecharge_num\x18\x01 \x01(\x05\"*\n\x17GoogleGenerateIDRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\"\'\n\x18GoogleGenerateIDResponse\x12\x0b\n\x03uid\x18\x01 \x01(\t\"$\n\x14GoogleConsumeRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"5\n\x15GoogleConsumeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"=\n\x1aGoogleConsumeVerifyRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\"a\n\x1bGoogleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
+
+
+_RECHARGETEST = _descriptor.Descriptor(
+  name='RechargeTest',
+  full_name='RechargeTest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='recharge_num', full_name='RechargeTest.recharge_num', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=30,
+  serialized_end=66,
+)
 
 
 _GOOGLEGENERATEIDREQUEST = _descriptor.Descriptor(
@@ -42,8 +70,8 @@ _GOOGLEGENERATEIDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=30,
-  serialized_end=72,
+  serialized_start=68,
+  serialized_end=110,
 )
 
 
@@ -70,8 +98,8 @@ _GOOGLEGENERATEIDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=74,
-  serialized_end=113,
+  serialized_start=112,
+  serialized_end=151,
 )
 
 
@@ -98,8 +126,8 @@ _GOOGLECONSUMEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=115,
-  serialized_end=151,
+  serialized_start=153,
+  serialized_end=189,
 )
 
 
@@ -126,8 +154,8 @@ _GOOGLECONSUMERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=153,
-  serialized_end=206,
+  serialized_start=191,
+  serialized_end=244,
 )
 
 
@@ -145,6 +173,13 @@ _GOOGLECONSUMEVERIFYREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='signature', full_name='GoogleConsumeVerifyRequest.signature', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -154,8 +189,8 @@ _GOOGLECONSUMEVERIFYREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=208,
-  serialized_end=250,
+  serialized_start=246,
+  serialized_end=307,
 )
 
 
@@ -173,6 +208,13 @@ _GOOGLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='GoogleConsumeVerifyResponse.gain', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -182,18 +224,26 @@ _GOOGLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=252,
-  serialized_end=311,
+  serialized_start=309,
+  serialized_end=406,
 )
 
 _GOOGLECONSUMERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GOOGLECONSUMEVERIFYRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_GOOGLECONSUMEVERIFYRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+DESCRIPTOR.message_types_by_name['RechargeTest'] = _RECHARGETEST
 DESCRIPTOR.message_types_by_name['GoogleGenerateIDRequest'] = _GOOGLEGENERATEIDREQUEST
 DESCRIPTOR.message_types_by_name['GoogleGenerateIDResponse'] = _GOOGLEGENERATEIDRESPONSE
 DESCRIPTOR.message_types_by_name['GoogleConsumeRequest'] = _GOOGLECONSUMEREQUEST
 DESCRIPTOR.message_types_by_name['GoogleConsumeResponse'] = _GOOGLECONSUMERESPONSE
 DESCRIPTOR.message_types_by_name['GoogleConsumeVerifyRequest'] = _GOOGLECONSUMEVERIFYREQUEST
 DESCRIPTOR.message_types_by_name['GoogleConsumeVerifyResponse'] = _GOOGLECONSUMEVERIFYRESPONSE
+
+class RechargeTest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _RECHARGETEST
+
+  # @@protoc_insertion_point(class_scope:RechargeTest)
 
 class GoogleGenerateIDRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
