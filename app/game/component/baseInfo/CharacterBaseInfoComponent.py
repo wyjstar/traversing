@@ -10,6 +10,9 @@ from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
+from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import gain
+from shared.utils.const import const
 import time
 import uuid
 
@@ -43,6 +46,8 @@ class CharacterBaseInfoComponent(Component):
         self._register_time = int(time.time())  # 注册时间
         self._google_consume_id = ''
         self._google_consume_data = ''
+        self._apple_transaction_id = ''
+        self._is_first_recharge = True
 
     def init_data(self, character_info):
         self._id = character_info['id']
@@ -64,6 +69,8 @@ class CharacterBaseInfoComponent(Component):
                                                  self._register_time)
         self._google_consume_id = character_info.get('google_consume_id', '')
         self._google_consume_data = character_info.get('google_consume_data', '')
+        self._apple_transaction_id = character_info.get('_apple_transaction_id', '')
+        self._is_first_recharge = character_info.get('_is_first_recharge', True)
 
         self.update_vip()
         self.check_time()
@@ -84,7 +91,9 @@ class CharacterBaseInfoComponent(Component):
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
                     google_consume_id=self._google_consume_id,
-                    google_consume_data=self._google_consume_data)
+                    google_consume_data=self._google_consume_data,
+                    apple_transaction_id=self._apple_transaction_id,
+                    is_first_recharge=self._is_first_recharge)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self._id), str(data))
 
@@ -103,7 +112,9 @@ class CharacterBaseInfoComponent(Component):
                     heads=self._heads.SerializeToString(),
                     register_time=self._register_time,
                     google_consume_id=self._google_consume_id,
-                    google_consume_data=self._google_consume_data)
+                    google_consume_data=self._google_consume_data,
+                    apple_transaction_id=self._apple_transaction_id,
+                    is_first_recharge=self._is_first_recharge)
         return data
 
     def check_time(self):
@@ -132,12 +143,30 @@ class CharacterBaseInfoComponent(Component):
         tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
 
     def generate_google_id(self, channel):
-        self._google_consume_id = '%s_%s_%s' % (self._id, channel,
-                                                uuid.uuid1().get_hex())
+        if self._google_consume_id == '':
+            self._google_consume_id = '%s_%s_%s' % (self._id, channel,
+                                                    uuid.uuid1().get_hex())
+        self.save_data()
         return self._google_consume_id
+
+    def reset_google_id(self):
+        self._google_consume_id = ''
+        self.save_data()
 
     def set_google_consume_data(self, data):
         self._google_consume_data = data
+        self.save_data()
+
+    def first_recharge(self, recharge_item, response):
+        logger.info('first recharge :%s:%s', self._id,
+                    recharge_item.get('fristGift'))
+
+        return_data = gain(self.owner,
+                           recharge_item.get('fristGift'),
+                           const.RECHARGE)  # 获取
+
+        get_return(self.owner, return_data, response.gain)
+        self._is_first_recharge = False
         self.save_data()
 
     @property
@@ -341,3 +370,15 @@ class CharacterBaseInfoComponent(Component):
     @property
     def google_consume_data(self):
         return self._google_consume_data
+
+    @property
+    def apple_transaction_id(self):
+        return self._apple_transaction_id
+
+    @apple_transaction_id.setter
+    def apple_transaction_id(self, value):
+        self._apple_transaction_id = value
+
+    @property
+    def is_first_recharge(self):
+        return self._is_first_recharge

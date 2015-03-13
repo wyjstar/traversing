@@ -11,6 +11,10 @@ from sdk.api.apple.iapsdk import IAPSDK
 from app.proto_file import apple_pb2
 from shared.utils.const import const
 
+RECHARGE_FAIL_CODE = 3300010002  # 支付失败
+RECHARGE_SUCCESS_CODE = 3300010003  # 充值成功
+RECHARGE_REPEATED = 3300010004  # 您已购买成功，不可重复
+
 
 @remoteserviceHandle('gate')
 def apple_consume_verify_11002(data, player):
@@ -19,10 +23,17 @@ def apple_consume_verify_11002(data, player):
     logger.debug(request)
 
     response = apple_pb2.AppleConsumeVerifyResponse()
+    response.res.result_no = RECHARGE_FAIL_CODE
     response.res.result = False
-    result = IAPSDK().verify(request.purchase_info,
-                             request.transaction_id)
-    print '==='*14, result
+
+    if player.base_info.apple_transaction_id == request.transaction_id:
+        response.res.result_no = RECHARGE_REPEATED
+        return response.SerializeToString()
+
+    player.base_info.apple_transaction_id = request.transaction_id
+
+    result = IAPSDK().verify(request.purchase_info, request.transaction_id)
+    logger.debug(result)
 
     recharge_item = game_configs.recharge_config.get(result.get('goodscode'))
 
@@ -34,7 +45,15 @@ def apple_consume_verify_11002(data, player):
             return_data = gain(player, recharge_item.get('setting'),
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
+
+            if player.base_info.is_first_recharge:
+                logger.info('apple first recharge :%s:%s',
+                            player.character_id,
+                            recharge_item.get('fristGift'))
+                player.base_info.first_recharge(recharge_item, response)
+
+            response.res.result_no = RECHARGE_SUCCESS_CODE
             response.res.result = True
-    response.res.result = True
+
     logger.debug(response)
     return response.SerializeToString()
