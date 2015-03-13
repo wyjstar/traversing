@@ -80,3 +80,5 @@ import mine
 import runt
 import inherit
 import gm
+import sdk_google
+import sdk_apple

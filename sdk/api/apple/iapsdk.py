@@ -5,9 +5,12 @@
 import json
 import urllib2
 import time
+# from func import xtime
+SANDBOX = True
 
 
 allow_sandbox = True    # 允许使用沙盒支付
+logical_bids = ['com.ttransfer.sanguo.joyu']    # 合法的产品标记
 try_more_times = {1: 0.1, 2: 0.2, 3: 0.7}   # 重试次数及间隔
 
 
@@ -16,7 +19,7 @@ class IAPSDK(object):
     IAP服务端SDK
     """
 
-    def __init__(self, bids=[]):
+    def __init__(self, bids=logical_bids, try_more_times=try_more_times):
         self._bids = bids   # 合法的产品标记
         self.try_more_times = try_more_times
 
@@ -39,13 +42,16 @@ class IAPSDK(object):
             response = self._request(url, data, times=times + 1)
         return json.loads(response)
 
-    def verify(self, purchase_info):
+    def verify(self, purchase_info, transaction_id):
         """
         校验订单有效性
         @param purchase_info:
-        从transaction的transactionReceipt属性中得到收据的数据，并以base64方式编码。
+            从transaction的transactionReceipt属性中得到收据的数据，并以base64方式编码。
         """
-        url = "https://buy.itunes.apple.com/verifyReceipt"
+        if SANDBOX:
+            url = "https://sandbox.itunes.apple.com/verifyReceipt"
+        else:
+            url = "https://buy.itunes.apple.com/verifyReceipt"
         data = {
             "receipt-data": purchase_info
         }
@@ -56,19 +62,32 @@ class IAPSDK(object):
             # 请求异常，下次登陆再校验
             return {"status": 2, "error": e}
 
+        print 'result', result
         status = result['status']
-        if allow_sandbox and status == 21007:
-            # 沙盒环境，验证成功（用于上线前的测试）
-            # rcpt = result['receipt']
-            # transaction_id = rcpt['transaction_id']
-            return {"status": 100}
+#         if allow_sandbox and status == 21007:
+#             # 沙盒环境，验证成功（用于上线前的测试）
+#             # rcpt = result['receipt']
+#             # transaction_id = rcpt['transaction_id']
+# #             return {"status": 100}
+#             # #
+# #             transaction_id = "transaction_id_test_"
+#             now = xtime.timestamp()
+# #             transaction_id += str(now)
+#             transaction_id = transaction_id
+#             product_id = "product_id_test_1001"
+#             quantity = 1000
+#             purchase_date_ms = "purchase_date_ms_test_"
+#             purchase_date_ms += str(now)
+#             return {"status": 0, "orderid": transaction_id,
+#                     "goodscode": product_id, "count": quantity,
+#                     "purchase_date": purchase_date_ms}
 
         if result['status'] != 0:
             # 校验为无效交易
             return {"status": 1, "error": "error status %s" % status}
 
-        bid = result['bid']
-        if self._bids and result['bid'] not in self._bids:
+        bid = result['receipt']['bid']
+        if self._bids and result['receipt']['bid'] not in self._bids:
             # 校验为无效交易
             return {"status": 1, "error": "invalid bid %s" % bid}
 
@@ -84,9 +103,9 @@ class IAPSDK(object):
                 "purchase_date": purchase_date_ms}
 
 
-if __name__ == "__main__":
-    purchase_info = "BASE64-STR"
-    iap = IAPSDK(bids=['com.mobartsgame.dragon.91'])
-    iap.try_more_times = {1: 0.1, 2: 0.2}
-    res = iap.verify(purchase_info)
-    print(res)
+# if __name__ == "__main__":
+#     purchase_info = "BASE64-STR"
+#     iap = IAPSDK(bids=['com.mobartsgame.dragon.91'])
+#     iap.try_more_times = {1: 0.1, 2: 0.2}
+#     res = iap.verify(purchase_info)
+#     print(res)

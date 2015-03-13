@@ -105,7 +105,7 @@ const.TRAVEL_ITEM = 109
 
 const.MAX_CONNECTION = 2000
 const.TIME_OUT = 60 * 10  # 秒
-const.CHANNEL = "tencent" # 渠道 tencent, taiwan
+const.CHANNEL = "taiwan" # 渠道 tencent, taiwan
 const.TLOG_ADDR = ('192.168.10.25', 6667)
 
 # ========t_log=============
@@ -130,6 +130,7 @@ const.SHOP_BUY_GIFT_PACK = 14  # 商城,购买礼包
 const.SHOP_BUY_ITEM = 15  # 商城购买道具
 const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
+const.RECHARGE = 17  # rechage
 #const.COMMON_BUY = 18  # 通用商城购买
 
 #1：商城良将寻访

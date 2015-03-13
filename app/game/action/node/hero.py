@@ -92,7 +92,7 @@ def hero_break_104(data, player):
     hero.break_level += 1
     notice_item = game_configs.notes_config.get(4001)
     if hero.break_level in notice_item.parameter1:
-        push_notice(4001, player_name=player.base_info.base_name, hero_no=hero.hero_no)
+        push_notice(4001, player_name=player.base_info.base_name, hero_no=hero.hero_no, hero_break_level=hero.break_level)
     hero.save_data()
     # 3、返回
     response.res.result = True

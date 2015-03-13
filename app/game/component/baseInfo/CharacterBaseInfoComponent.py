@@ -9,8 +9,9 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
-import time
 from shared.tlog import tlog_action
+import time
+import uuid
 
 
 class CharacterBaseInfoComponent(Component):
@@ -39,7 +40,9 @@ class CharacterBaseInfoComponent(Component):
         self._vip_level = 0  # VIP等级
         self._vip_content = None  # VIP 相关内容，从config中获得
         self._upgrade_time = int(time.time())
-        self._register_time  = int(time.time()) # 注册时间
+        self._register_time = int(time.time())  # 注册时间
+        self._google_consume_id = ''
+        self._google_consume_data = ''
 
     def init_data(self, character_info):
         self._id = character_info['id']
@@ -55,8 +58,12 @@ class CharacterBaseInfoComponent(Component):
 
         self._heads.ParseFromString(character_info['heads'])
         self._vip_level = character_info.get('vip_level')
-        self._upgrade_time = character_info.get('upgrade_time', self._upgrade_time)
-        self._register_time = character_info.get('register_time', self._register_time)
+        self._upgrade_time = character_info.get('upgrade_time',
+                                                self._upgrade_time)
+        self._register_time = character_info.get('register_time',
+                                                 self._register_time)
+        self._google_consume_id = character_info.get('google_consume_id', '')
+        self._google_consume_data = character_info.get('google_consume_data', '')
 
         self.update_vip()
         self.check_time()
@@ -75,7 +82,9 @@ class CharacterBaseInfoComponent(Component):
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
-                    heads=self._heads.SerializeToString())
+                    heads=self._heads.SerializeToString(),
+                    google_consume_id=self._google_consume_id,
+                    google_consume_data=self._google_consume_data)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self._id), str(data))
 
@@ -92,7 +101,9 @@ class CharacterBaseInfoComponent(Component):
                     vip_level=init_vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
-                    register_time=self._register_time)
+                    register_time=self._register_time,
+                    google_consume_id=self._google_consume_id,
+                    google_consume_data=self._google_consume_data)
         return data
 
     def check_time(self):
@@ -118,8 +129,16 @@ class CharacterBaseInfoComponent(Component):
                 return
 
         # =====Tlog================
-        tlog_action.log('PlayerExpFlow', self.owner, before_level,
-                        exp, reason)
+        tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
+
+    def generate_google_id(self, channel):
+        self._google_consume_id = '%s_%s_%s' % (self._id, channel,
+                                                uuid.uuid1().get_hex())
+        return self._google_consume_id
+
+    def set_google_consume_data(self, data):
+        self._google_consume_data = data
+        self.save_data()
 
     @property
     def id(self):
@@ -314,3 +333,11 @@ class CharacterBaseInfoComponent(Component):
     @pvp_high_rank_award.setter
     def pvp_high_rank_award(self, value):
         self._pvp_high_rank_award = value
+
+    @property
+    def google_consume_id(self):
+        return self._google_consume_id
+
+    @property
+    def google_consume_data(self):
+        return self._google_consume_data
