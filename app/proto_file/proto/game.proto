@@ -53,4 +53,5 @@ message GameLoginResponse{
     optional int32 soul_shop_refresh_times = 21; //武魂商店刷新次数刷新次数
 	repeated int32 head = 22;
 	optional int32 now_head = 23;
+	optional bool is_first_recharge = 25;
 }

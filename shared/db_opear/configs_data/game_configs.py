@@ -149,4 +149,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print recharge_config.keys()
+    print language_config.keys()
