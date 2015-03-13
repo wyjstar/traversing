@@ -347,6 +347,6 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
 def pvp_award_remote(pvp_num, is_online, player):
     player.finance[const.PVP] += pvp_num
     player.finance.save_data()
-    logger.debug('pvp award!play:%s,%s:%s', player.character_id,
-                 pvp_num, is_online)
+    logger.debug('pvp award!play:%s,%s-%s:on:%s', player.character_id,
+                 pvp_num, player.finance[const.PVP], is_online)
     return True
