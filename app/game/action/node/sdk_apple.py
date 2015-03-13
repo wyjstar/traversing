@@ -24,6 +24,7 @@ def apple_consume_verify_11002(data, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.message = RECHARGE_FAIL_CODE
+    response.transaction_id = request.transaction_id
     response.res.result = False
 
     if player.base_info.apple_transaction_id == request.transaction_id:
