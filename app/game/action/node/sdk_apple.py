@@ -11,9 +11,9 @@ from sdk.api.apple.iapsdk import IAPSDK
 from app.proto_file import apple_pb2
 from shared.utils.const import const
 
-RECHARGE_FAIL_CODE = 3300010002  # 支付失败
-RECHARGE_SUCCESS_CODE = 3300010003  # 充值成功
-RECHARGE_REPEATED = 3300010004  # 您已购买成功，不可重复
+RECHARGE_FAIL_CODE = '3300010002'  # 支付失败
+RECHARGE_SUCCESS_CODE = '3300010003'  # 充值成功
+RECHARGE_REPEATED = '3300010004'  # 您已购买成功，不可重复
 
 
 @remoteserviceHandle('gate')
@@ -23,11 +23,11 @@ def apple_consume_verify_11002(data, player):
     logger.debug(request)
 
     response = apple_pb2.AppleConsumeVerifyResponse()
-    response.res.result_no = RECHARGE_FAIL_CODE
+    response.res.message = RECHARGE_FAIL_CODE
     response.res.result = False
 
     if player.base_info.apple_transaction_id == request.transaction_id:
-        response.res.result_no = RECHARGE_REPEATED
+        response.res.message = RECHARGE_REPEATED
         return response.SerializeToString()
 
     player.base_info.apple_transaction_id = request.transaction_id
@@ -52,7 +52,7 @@ def apple_consume_verify_11002(data, player):
                             recharge_item.get('fristGift'))
                 player.base_info.first_recharge(recharge_item, response)
 
-            response.res.result_no = RECHARGE_SUCCESS_CODE
+            response.res.message = RECHARGE_SUCCESS_CODE
             response.res.result = True
 
     logger.debug(response)
