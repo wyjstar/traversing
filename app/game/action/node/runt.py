@@ -120,7 +120,7 @@ def runt_pick_842(data, player):
     hero.save_data()
     player.runt.save()
 
-    player.finance.coin -= need_coin
+    player.finance.consume_gold(need_coin)
     player.finance.save_data()
 
     response.res.result = True
@@ -167,7 +167,7 @@ def refresh_runt_844(data, player):
             player.runt.refresh_times[0] += 1
         else:
             if player.finance.gold > game_configs.base_config.get('totemRefreshPrice'):
-                player.finance.gold -= game_configs.base_config.get('totemRefreshPrice')
+                player.finance.consume_gold(game_configs.base_config.get('totemRefreshPrice'))
             else:
                 response.res.result = False
                 response.res.result_no = 102  # 充值币不足

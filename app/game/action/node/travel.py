@@ -182,7 +182,7 @@ def buy_shoes_832(data, player):
         player.travel_component.shoes[shoes_info.shoes_type-1] += \
             shoes_info.shoes_no
 
-    player.finance.gold -= need_good
+    player.finance.consume_gold(need_good)
     player.travel_component.last_buy_shoes[0] += num
 
     player.travel_component.save()
@@ -273,7 +273,7 @@ def travel_settle_833(data, player):
 
     stage_cache.remove(event_cache)
     player.travel_component.save()
-    
+
 
     response.res.result = True
     return response.SerializeToString()
@@ -360,7 +360,7 @@ def no_wait_835(data, player):
         return response.SerializeToString()
 
     gain(player, event_cache[1], const.TRAVEL)
-    player.finance.gold -= event_info.price
+    player.finance.consume_gold(event_info.price)
     player.finance.save_data()
 
     stage_cache.remove(event_cache)
@@ -411,7 +411,7 @@ def auto_travel_837(data, player):
         'already_times': 0}
     player.travel_component.auto[stage_id].append(info)
 
-    player.finance.gold -= auto_travel_config[1]
+    player.finance.consume_gold(auto_travel_config[1])
     player.finance.save_data()
 
     deal_auto_response(response, player)
@@ -503,7 +503,7 @@ def settle_auto_838(data, player):
     player.travel_component.save()
 
     if settle_type:
-        player.finance.gold -= game_configs.travel_event_config.get('events').get(event_id%xs).price
+        player.finance.consume_gold(game_configs.travel_event_config.get('events').get(event_id%xs).price)
         player.finance.save_data()
 
     deal_auto_response(response, player)

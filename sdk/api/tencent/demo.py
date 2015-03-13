@@ -47,6 +47,6 @@ res = msdk.verify_login(2, '8C9477C15CC283575062B2AB7C106C56', '88209224CA8FCD74
 print(res)
 
 # Midas使用实例
-#pay = MidasApi(host, goods_host, valid_host, log=log)
+pay = MidasApi(host, goods_host, valid_host, log=log)
 #res = pay.get_balance_m(1, 1, 1, 1, 1, 1, 1, 1)
 #print(res)

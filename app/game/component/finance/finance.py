@@ -7,6 +7,7 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
+from gfirefly.server.globalobject import GlobalObject
 
 
 # const.COIN = 1
@@ -108,16 +109,40 @@ class CharacterFinanceComponent(Component):
             logger.error('not enough finance:%s:%s:%s',
                          fType, self._finances[fType], num)
             return False
-        self._finances[fType] -= num
+        if fType == 2:
+            self.consume_gold(num)
+        else:
+            self._finances[fType] += num
+        return True
+
+    def add(self, fType, num):
+        if fType >= len(self._finances):
+            logger.error('consume error finance type:%s', fType)
+            return False
+        if fType == 2:
+            self.add_gold(num)
+        else:
+            self._finances[fType] += num
         return True
 
     def add_coin(self, num):
+        if const.PAY:
+            GlobalObject().pay.present_m()
+            coin = GlobalObject().pay.get_balance_m()
+            self._finances[const.COIN] = coin
         self._finances[const.COIN] += num
 
     def consume_coin(self, num):
         if num < self._finances[const.COIN]:
             return False
         self._finances[const.COIN] -= num
+        if const.PAY:
+            pay = GlobalObject().pay
+            pay.pay_m()
+            gold = pay.get_balance_m()
+            if gold != self._finances[const.COIN]:
+                logger.error("gold num != tencent server num")
+            self._finances[const.COIN] = gold
         return True
 
     def add_gold(self, num):

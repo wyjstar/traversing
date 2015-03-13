@@ -135,7 +135,7 @@ def encourage_heros_1703(data, player):
             logger.debug("*" * 80)
             print response
             return response.SerializePartialToString()
-        player.finance.gold -= need_gold
+        player.finance.consume_gold(need_gold)
         player.finance.save_data()
         boss.encourage_gold_num += 1
 
@@ -177,7 +177,7 @@ def pvb_reborn_1704(data, player):
         response.result_no = 1701
         return response.SerializePartialToString()
 
-    player.finance.gold -= need_gold
+    player.finance.consume_gold(need_gold)
     player.finance.save_data()
     response.result = True
     print response

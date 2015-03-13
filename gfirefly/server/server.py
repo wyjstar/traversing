@@ -17,6 +17,9 @@ from gfirefly.server.logobj import logger
 from gtwisted.core import reactor
 from gfirefly.utils import services
 from gfirefly.dbentrust.redis_manager import redis_manager
+from sdk.api.tencent.msdk import Msdk
+from sdk.api.tencent.midas_api import MidasApi
+from sdk.util import logger_sdk
 
 reactor = reactor
 
@@ -65,6 +68,7 @@ class FFServer:
         app = config.get('app')  # 入口模块名称
         cpuid = config.get('cpu')  # 绑定cpu
         mreload = config.get('reload')  # 重新加载模块名称
+        msdk_config = config.get('msdk')  # 重新加载模块名称
         self.servername = servername
 
         if logpath:
@@ -120,6 +124,19 @@ class FFServer:
             self.master_remote.connect(addr)
             GlobalObject().masterremote = self.master_remote
 
+        if msdk_config:
+            #zone_id = msdk_config.get("zone_id")
+            host = msdk_config.get("host")
+            #pay_host = msdk_config.get("pay_host")
+            goods_host = msdk_config.get("buy_goods_host")
+            valid_host = msdk_config.get("valid_host")
+            qq_appid = msdk_config.get("qq_appid")
+            qq_appkey = msdk_config.get("qq_appkey")
+            wx_appid = msdk_config.get("wx_appid")
+            wx_appkey = msdk_config.get("wx_appkey")
+            log = logger_sdk.new_log('TxApi')
+            GlobalObject().msdk = Msdk(host, qq_appid, qq_appkey, wx_appid, wx_appkey, log=log)
+            GlobalObject().pay = MidasApi(host, goods_host, valid_host, log=log)
         import admin
 
     def remote_connect(self, rname, rhost):
