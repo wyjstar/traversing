@@ -173,16 +173,16 @@
          "port": 30011
     },
     "msdk":{
-        "zone_id": 1001
-        "host": 'msdk.qq.com'
+        "zone_id": 1001,
+        "host": "msdk.qq.com",
 
-        "qq_appid":1104297231,
-        "qq_appkey": 'y33yRx3FveVZb1dw'
-        "wx_appid": 'wxf77437c08cb06196'
-        "wx_appkey": '8274b9e862581f8b4976ba90ad2d4b77'
+        "qq_appid": 1104297231,
+        "qq_appkey": "y33yRx3FveVZb1dw",
+        "wx_appid": "wxf77437c08cb06196",
+        "wx_appkey": "8274b9e862581f8b4976ba90ad2d4b77",
 
-        "pay_host": '10.142.22.11:8080'
-        "goods_host": '10.142.22.11:8080'
-        "valid_host": '10.130.2.233:80'
+        "pay_host": "10.142.22.11:8080",
+        "goods_host": "10.142.22.11:8080",
+        "valid_host": "10.130.2.233:80"
     }
 }
