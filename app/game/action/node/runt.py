@@ -28,7 +28,7 @@ def runt_set_841(data, player):
 
     hero = player.hero_component.get_hero(hero_no)
 
-    if runt_po > base_config.get('totemSpaceNum'+str(runt_type)):
+    if runt_po > game_configs.base_config.get('totemSpaceNum'+str(runt_type)):
         response.res.result = False
         response.res.result_no = 827
         return response.SerializeToString()
