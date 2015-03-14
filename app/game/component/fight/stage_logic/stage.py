@@ -6,6 +6,7 @@ from gfirefly.server.logobj import logger
 import time
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
+from shared.tlog import tlog_action
 
 
 class StageLogic(base_stage.BaseStageLogic):
@@ -51,3 +52,5 @@ class StageLogic(base_stage.BaseStageLogic):
         lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         # 结算
         stage_util.settle(player, result, response, lively_event, conf)
+
+        tlog_action.log('StageFlow', player, stage_id, result)

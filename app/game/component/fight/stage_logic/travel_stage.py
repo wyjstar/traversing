@@ -5,6 +5,7 @@ from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 xs = 100000
@@ -54,8 +55,8 @@ class TravelStageLogic(base_stage.BaseStageLogic):
 
         if game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]%xs) and \
                 stage_id == game_configs.travel_event_config.get('events').get(player.travel_component.fight_cache[1]%xs).parameter.items()[0][0]:
-
-            gain(player, event_cache[1], const.TRAVEL)
+            if result:
+                gain(player, event_cache[1], const.TRAVEL)
             stage_cache.remove(event_cache)
             player.travel_component.fight_cache = [0, 0]
             player.travel_component.save()
@@ -65,3 +66,4 @@ class TravelStageLogic(base_stage.BaseStageLogic):
             response.res.result = False
             response.res.result_no = 817
             return
+        tlog_action.log('StageFlow', player, stage_id, result)

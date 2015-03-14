@@ -14,6 +14,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
 from shared.utils import trie_tree
+from shared.tlog import tlog_action
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -96,6 +97,7 @@ def create_guild_801(data, player):
     remote_gate.login_guild_chat_remote(player.dynamic_id, player.guild.g_id)
 
     response.result = True
+    tlog_action.log('ItemFlow', player, g_id, player.base_info.level)
     return response.SerializeToString()
 
 
@@ -165,6 +167,7 @@ def exit_guild_803(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
+    tlog_action.log('ExitGuild', player, m_g_id)
     if guild_obj.get_p_num() == 1:
 
         # 解散公会
@@ -373,6 +376,8 @@ def deal_apply_805(data, player):
                 else:
                     guild_obj.p_list.update({5: [p_id]})
                 guild_obj.p_num += 1
+                tlog_action.log('JoinGuild', player, m_g_id, p_id,
+                                player.base_info.id)
 
     elif res_type == 2:
         p_ids = args.p_ids
@@ -451,6 +456,7 @@ def change_president_806(data, player):
 
             response.result = True
             response.message = "转让成功"
+            tlog_action.log('GuildChangePresident', player, m_g_id, p_p_id)
             return response.SerializeToString()
     # 没有找到此玩家
     logger.debug('guild change president : dont find player')
@@ -502,6 +508,7 @@ def kick_807(data, player):
 
                 # 踢出公会聊天室
                 invitee_player = PlayersManager().get_player_by_id(p_id)
+                tlog_action.log('GuildKick', player, m_g_id, p_id)
                 if invitee_player:  # 在线
                     remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                     invitee_player.guild.g_id = 'no'
@@ -522,6 +529,7 @@ def promotion_808(data, player):
     m_g_id = player.guild.g_id
     m_p_id = player.base_info.id
     m_position = player.guild.position
+    tihuan_id = 0
     if m_position <= 2:
         response.result = False
         response.message = "您不能再晋升了"
@@ -616,6 +624,7 @@ def promotion_808(data, player):
 
     response.result = True
     response.message = "晋升成功"
+    tlog_action.log('GuildPromotion', player, m_g_id, tihuan_id)
     return response.SerializeToString()
 
 
@@ -689,6 +698,7 @@ def worship_809(data, player):
     player.finance.save_data()
     response.result = True
     response.message = "膜拜成功"
+    tlog_action.log('GuildWorship', player, m_g_id, w_type)
     return response.SerializeToString()
 
 

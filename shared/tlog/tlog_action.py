@@ -75,12 +75,202 @@ def player_exp_flow(player_data, beforelevel, gain_exp, reason):
                            Reason=reason, Exp=player_data.base_info.exp)
 
 
+def line_up_change(player_data, slot, hero_id, after_hero_id,
+                   change_type):
+
+    log4tx.hero_break(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      Slot=slot,
+                      HeroId=hero_id,
+                      AfterHeroId=after_hero_id,
+                      ChangeType=change_type)
+
+
+def hero_break(player_data, hero_id, level):
+
+    log4tx.hero_break(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      HeroId=hero_id,
+                      Level=level)
+
+
+def inherit(player_data, inherit_type, origin_id, origin_item_id,
+            target_id, target_item_id):
+
+    log4tx.inherit(GameSvrId=game_server_id,
+                   dtEventTime=xtime.strdatetime(),
+                   GameAppID=game_app_id,
+                   OpenID=player_data.base_info.id,
+                   PlatID=plat_id,
+                   OriginId=origin_id,
+                   OriginItemId=origin_item_id,
+                   TargetId=target_id,
+                   TargetItemId=target_item_id,
+                   InheritType=inherit_type)
+
+
+def stage_flow(player_data, stage_id, result):
+
+    log4tx.stage_flow(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      StageId=stage_id,
+                      Result=result)
+
+
+def sweep_flow(player_data, stage_id, times):
+
+    log4tx.sweep_flow(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      StageId=stage_id,
+                      Times=times)
+
+
+def creat_guild(player_data, guild_id, user_level):
+
+    log4tx.creat_guild(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+                       GuildId=guild_id,
+                       UserLevel=user_level)
+
+
+def join_guild(player_data, guild_id, handler):
+
+    log4tx.join_guild(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      GuildId=guild_id,
+                      Handler=handler)
+
+
+def exit_guild(player_data, guild_id):
+
+    log4tx.exit_guild(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      GuildId=guild_id)
+
+
+def guild_change_president(player_data, guild_id, target_id):
+
+    log4tx.guild_change_president(GameSvrId=game_server_id,
+                                  dtEventTime=xtime.strdatetime(),
+                                  GameAppID=game_app_id,
+                                  OpenID=player_data.base_info.id,
+                                  PlatID=plat_id,
+                                  GuildId=guild_id,
+                                  TargetId=target_id)
+
+
+def guild_kick(player_data, guild_id, target_id):
+
+    log4tx.guild_kick(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      GuildId=guild_id,
+                      TargetId=target_id)
+
+
+def guild_promotion(player_data, guild_id, be_id):
+
+    log4tx.guild_promotion(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+                           GuildId=guild_id,
+                           BeId=be_id)
+
+
+def guild_worship(player_data, guild_id, worship_type):
+
+    log4tx.guild_worship(GameSvrId=game_server_id,
+                         dtEventTime=xtime.strdatetime(),
+                         GameAppID=game_app_id,
+                         OpenID=player_data.base_info.id,
+                         PlatID=plat_id,
+                         GuildId=guild_id,
+                         WorshipType=worship_type)
+
+
+def travel_settle(player_data, stage, event_id, parameter, res,
+                  is_fast_settle):
+
+    log4tx.travel_settle(GameSvrId=game_server_id,
+                         dtEventTime=xtime.strdatetime(),
+                         GameAppID=game_app_id,
+                         OpenID=player_data.base_info.id,
+                         PlatID=plat_id,
+                         Stage=stage,
+                         EventId=event_id,
+                         Parameter=parameter,
+                         Res=res,
+                         IsFastSettle=is_fast_settle)
+
+
+def auto_travel(player_data, stage, time):
+
+    log4tx.auto_travel(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+                       Stage=stage,
+                       Time=time)
+
+
+def hero_refine(player_data, hero_id, refine):
+
+    log4tx.hero_refine(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+                       Stage=stage,
+                       HeroId=hero_id)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
 tlog_funcs['PlayerRegister'] = player_register
 tlog_funcs['ItemFlow'] = item_flow
 tlog_funcs['PlayerExpFlow'] = player_exp_flow
+tlog_funcs['LineUpChange'] = line_up_change
+tlog_funcs['HeroBreak'] = hero_break
+tlog_funcs['Inherit'] = inherit
+tlog_funcs['StageFlow'] = stage_flow
+tlog_funcs['SweepFlow'] = sweep_flow
+tlog_funcs['CreatGuild'] = creat_guild
+tlog_funcs['JoinGuild'] = join_guild
+tlog_funcs['ExitGuild'] = exit_guild
+tlog_funcs['GuildChangePresident'] = guild_change_president
+tlog_funcs['GuildKick'] = guild_kick
+tlog_funcs['GuildPromotion'] = guild_promotion
+tlog_funcs['GuildWorship'] = guild_worship
+tlog_funcs['TravelSettle'] = travel_settle
+tlog_funcs['AutoTravel'] = auto_travel
+tlog_funcs['HeroRefine'] = hero_refine
 
 
 def log(mod, *args, **kwds):
