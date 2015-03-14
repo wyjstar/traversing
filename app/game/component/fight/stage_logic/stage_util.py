@@ -4,6 +4,9 @@ from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
+import random
+from app.game.core.hero_chip import HeroChip
+from shared.db_opear.configs_data import game_configs
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -55,8 +58,15 @@ def settle(player, result, response, lively_event, conf):
     data = gain(player, settlement_drops, const.STAGE)
     get_return(player, data, response.drops)
 
-
-
-
-
-
+    # 乱入武将按概率获取碎片
+    break_stage_id = player.fight_cache_component.break_stage_id
+    if break_stage_id:
+        break_stage_info = game_configs.stage_break_config.get(break_stage_id)
+        ran = random.random()
+        if ran <= break_stage_info.reward_odds:
+            hero_chip = HeroChip(break_stage_info.reward, 1)
+            player.hero_chip_component.add_chip(hero_chip)
+            player.hero_chip_component.save_data()
+            hero_chip_pb = player.drops.hero_chips.add()
+            hero_chip_pb.hero_chip_no = break_stage_info.reward
+            hero_chip_pb.hero_chip_num = 1
