@@ -115,7 +115,7 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
             player.finance.save_data()
 
         elif type_id == const.GOLD:
-            player.finance.gold -= num
+            player.finance.consume_gold(num)
             if shop and luckValue:
                 shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
@@ -150,7 +150,7 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
             after_num = item.num
 
         elif type_id == const.RESOURCE:
-            player.finance[item_no] -= num
+            player.finance.consume(item_no, num)
             player.finance.save_data()
             after_num = player.finance[item_no]
             if shop and luckValue and luckValue.get(item_no):
@@ -201,12 +201,12 @@ def gain(player, item_group, reason, result=None, multiple=1):
                 player.travel_component.save()
                 after_num = shoes[2]
             else:
-                player.finance[item_no] += num
+                player.finance.add(item_no, num)
                 player.finance.save_data()
                 after_num = player.finance[item_no]
 
         elif type_id == const.GOLD:
-            player.finance.gold += num
+            player.finance.add_gold(num)
             player.finance.save_data()
 
         elif type_id == const.HERO_SOUL:

@@ -130,7 +130,7 @@ def repair_sign_in_1403(pro_data, player):
         return response.SerializePartialToString()
 
     # 消耗
-    player.finance.gold -= consume_gold
+    player.finance.consume_gold(consume_gold)
     player.finance.save_data()
     # 签到奖励
 

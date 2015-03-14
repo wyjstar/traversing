@@ -360,7 +360,7 @@ def reset_stage_908(pro_data, player):
         return response.SerializePartialToString()
 
     stage_obj.attacks = 0
-    player.finance.gold -= need_gold
+    player.finance.consume_gold(need_gold)
 
     player.stage_component.save_data()
     player.finance.save_data()

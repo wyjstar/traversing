@@ -45,7 +45,7 @@ def inherit_refine_151(pro_data, player):
 
     target.save_data()
     origin.save_data()
-    player.finance.gold -= game_configs.base_config.get("heroInheritPrice")
+    player.finance.consume_gold(game_configs.base_config.get("heroInheritPrice"))
     player.finance.save_data()
     response.result = True
     return response.SerializeToString()
@@ -93,7 +93,7 @@ def inherit_equipment_152(pro_data, player):
 
     print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
-    player.finance.gold -= game_configs.base_config.get("equInheritPrice")
+    player.finance.consume_gold(game_configs.base_config.get("equInheritPrice"))
     player.finance.save_data()
     response.result = True
     return response.SerializeToString()
@@ -128,7 +128,7 @@ def inherit_upara_153(pro_data, player):
     player.line_up_component.unpars[origin_id] = 1
     player.line_up_component.save_data()
 
-    player.finance.gold -= game_configs.base_config.get("warriorsInheritPrice")
+    player.finance.consume_gold(game_configs.base_config.get("warriorsInheritPrice"))
     player.finance.save_data()
     response.result = True
     return response.SerializeToString()

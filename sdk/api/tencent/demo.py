@@ -2,7 +2,7 @@
 from sdk.api.tencent.midas_api import MidasApi
 
 from sdk.api.tencent.msdk import Msdk
-from sdk.util import logger
+from sdk.util import logger_sdk
 
 
 zone_id = 1001
@@ -38,14 +38,15 @@ ios_discountid = 'UM130826111807639'
 ios_giftid = '1636707689PID201308261118076461'
 
 
-log = logger.new_log('TxApi')
+log = logger_sdk.new_log('TxApi')
 
 # MSDK使用实例
 msdk = Msdk(host, qq_appid, qq_appkey, wx_appid, wx_appkey, log=log)
 res = msdk.verify_login(2, '8C9477C15CC283575062B2AB7C106C56', '88209224CA8FCD74EA4176F0BBFBB3A5')
+#res = msdk.verify_login(1, 'oiqIwt2n_sfeJpmtYV6q-rZZj2-E', 'ezXcEiiBSKSxW0eoylIeJIptOH5pbMgimZXNYDPrYcQMwk5bortAJ4DYovUuVqc2FcPv8JnFkrmoaNzMcXQMvLHzpgKY0yqvRtkW1eeezQeof9rsrNQ6Xde2pLYuoLGYAapBNu1nHFMQUo8OLofSg')
 print(res)
 
 # Midas使用实例
-#pay = MidasApi(host, goods_host, valid_host, log=log)
+pay = MidasApi(host, goods_host, valid_host, log=log)
 #res = pay.get_balance_m(1, 1, 1, 1, 1, 1, 1, 1)
 #print(res)

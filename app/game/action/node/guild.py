@@ -89,7 +89,7 @@ def create_guild_801(data, player):
     player.guild.position = 1
     player.guild.save_data()
     guild_obj.save_data()
-    player.finance.gold -= game_configs.base_config.get('create_money')
+    player.finance.consume_gold(game_configs.base_config.get('create_money'))
     player.finance.save_data()
 
     # 加入公会聊天
@@ -685,7 +685,7 @@ def worship_809(data, player):
     if worship_info[1] == 1:  # 1金币  2元宝
         player.finance.coin -= worship_info[2]
     else:
-        player.finance.gold -= worship_info[2]
+        player.finance.gold.consume_gold(worship_info[2])
     player.finance.save_data()
     response.result = True
     response.message = "膜拜成功"
