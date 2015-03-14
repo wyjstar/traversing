@@ -406,7 +406,8 @@ class CharacterFightCacheComponent(Component):
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
             hero_no = break_config.hero_id
-            self.break_stage_id = break_config.id
+            if odds == 1: # 如果百分比为1， 则按几率掉碎片
+                self.break_stage_id = break_config.id
             break_hero_obj = self.change_hero(hero, hero_no)
 
             unit = break_line_up_slot.assemble_hero(break_hero_obj)
