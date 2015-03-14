@@ -310,8 +310,8 @@ class CharacterFightCacheComponent(Component):
 
     def check_link(self, condition_param):
         for slot in self.line_up_slots.values():
-            if slot.hero_slot.hero_no in self._not_replace:
-                continue
+            #if slot.hero_slot.hero_no in self._not_replace:
+                #continue
             if condition_param in slot.hero_slot.link:
                 link_config = game_configs.link_config.get(
                     slot.hero_slot.hero_no)
