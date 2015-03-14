@@ -97,7 +97,7 @@ def buy_stamina_6(request_proto, player):
         response.result_no = 102
         return response.SerializePartialToString()
 
-    player.finance.consume_goldi(need_gold)
+    player.finance.consume_gold(need_gold)
     player.finance.save_data()
 
     player.stamina.buy_stamina_times += 1
