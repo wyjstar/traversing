@@ -22,21 +22,21 @@ def doWhenStop():
 
 GlobalObject().stophandler = doWhenStop
 
+if game_configs.base_config.get('initial'):
+    robotname_id, robot_level, rhero_id, rhero_level = game_configs.base_config.get('initial')
 
-robotname_id, robot_level, rhero_id, rhero_level = game_configs.base_config.get('initial')
+    player = PlayerCharacter(999, dynamic_id=-1)
+    player.base_info._level = robot_level
 
-player = PlayerCharacter(999, dynamic_id=-1)
-player.base_info._level = robot_level
+    hero = player.hero_component.add_hero(rhero_id)
+    hero.hero_no = rhero_id
+    hero.level = rhero_level
+    hero.break_level = 0
+    hero.exp = 0
 
-hero = player.hero_component.add_hero(rhero_id)
-hero.hero_no = rhero_id
-hero.level = rhero_level
-hero.break_level = 0
-hero.exp = 0
+    player.line_up_component.change_hero(1, rhero_id, 0)
+    PlayersManager().add_player(player)
+    player.create_character_data()
 
-player.line_up_component.change_hero(1, rhero_id, 0)
-PlayersManager().add_player(player)
-player.create_character_data()
-
-character_obj = tb_character_info.getObj(999)
-character_obj.hset('nickname', game_configs.language_config.get('%s' % robotname_id).get('cn'))
+    character_obj = tb_character_info.getObj(999)
+    character_obj.hset('nickname', game_configs.language_config.get('%s' % robotname_id).get('cn'))
