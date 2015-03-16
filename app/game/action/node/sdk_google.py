@@ -17,6 +17,7 @@ def test_1000000(data, player):
     request = google_pb2.RechargeTest()
     request.ParseFromString(data)
     player.recharge.charge(request.recharge_num)
+    player.recharge.save_data()
     return ''
 
 

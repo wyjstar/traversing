@@ -3,6 +3,7 @@
 created by server on 14-7-9下午3:28.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.data_helper import parse
 
 
 class SealConfig(object):
@@ -13,6 +14,7 @@ class SealConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
+            row["expend"] = parse(row.get("expend"))
             item = CommonItem(row)
             self._items[item.id] = item
 
