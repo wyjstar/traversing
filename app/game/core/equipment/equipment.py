@@ -357,7 +357,15 @@ class Equipment(object):
         varNames2 = {1: 'growHp',
                      2: 'growAtk',
                      3: 'growPdef',
-                     4: 'growMdef'}
+                     4: 'growMdef',
+                     5: 'growHit',
+                     6: 'growDodge',
+                     7: 'growCri',
+                     8: 'growCriCoeff',
+                     9: 'growCriDedCoeff',
+                     10: 'growBlock',
+                     11: 'growDuctility'
+                     }
         varNames3 = {1: 'hpHero',
                      2: 'atkHero',
                      3: 'physicalDefHero',
@@ -378,6 +386,13 @@ class Equipment(object):
                        growAtk=0,
                        growPdef=0,
                        growMdef=0,
+                       growHit=0,
+                       growDodge=0,
+                       growCri=0,
+                       growCriCoeff=0,
+                       growCriDedCoeff=0,
+                       growBlock=0,
+                       growDuctility=0,
                        equLevel=self._attribute.strengthen_lv)
 
         for k, v in self._attribute.main_attr.items():

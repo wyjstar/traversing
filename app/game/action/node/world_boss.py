@@ -112,6 +112,7 @@ def encourage_heros_1703(data, player):
         goldcoinInspireLimited = base_config.get("goldcoinInspireLimited")
 
         if boss.encourage_coin_num >= goldcoinInspireLimited:
+            logger.debug("coin encourage too many times %s, %s" % (boss.encourage_coin_num, goldcoinInspireLimited))
             response.result = False
             response.result_no = 1703
             logger.debug("*" * 80)
@@ -138,6 +139,7 @@ def encourage_heros_1703(data, player):
         moneyInspireLimited = base_config.get("moneyInspireLimited")
         #money_inspire_price_multiple = base_config.get("money_inspire_price_multiple")
         if boss.encourage_gold_num >= moneyInspireLimited:
+            logger.error("gold encourage too many times %s, %s" % (boss.encourage_gold_num, moneyInspireLimited))
             response.result = False
             response.result_no = 1704
             logger.debug("*" * 80)
