@@ -53,6 +53,14 @@ def player_login(player_data, handler):
                         DeviceId=handler.device_id, OpenID=player_data.id)
 
 
+def player_logout(player_data):
+    log4tx.player_logout(GameSvrId=game_server_id,
+                         dtEventTime=xtime.strdatetime(),
+                         GameAppID=game_app_id,
+                         PlatID=plat_id, Level=player_data.base_info.level,
+                         OpenID=player_data.base_info.id)
+
+
 def item_flow(player_data, addorreduce, itemtype, itemnum, itemid, itid,
               reason, after_num):
     log4tx.item_flow(PlatID=plat_id, GameSvrId=game_server_id,
@@ -251,9 +259,21 @@ def hero_refine(player_data, hero_id, refine):
                        HeroId=hero_id)
 
 
+def recharge(player_data, isfast, recharege_id):
+
+    log4tx.recharge(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id,
+                    Isfirst=isfirst,
+                    RechargeId=recharege_id)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
+tlog_funcs['PlayerLogout'] = player_logout
 tlog_funcs['PlayerRegister'] = player_register
 tlog_funcs['ItemFlow'] = item_flow
 tlog_funcs['PlayerExpFlow'] = player_exp_flow
@@ -272,6 +292,7 @@ tlog_funcs['GuildWorship'] = guild_worship
 tlog_funcs['TravelSettle'] = travel_settle
 tlog_funcs['AutoTravel'] = auto_travel
 tlog_funcs['HeroRefine'] = hero_refine
+tlog_funcs['Recharge'] = recharge
 
 
 def log(mod, *args, **kwds):

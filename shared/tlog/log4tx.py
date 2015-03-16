@@ -3,7 +3,7 @@
 from shared.tlog import logclient
 from gfirefly.server.logobj import logger
 
-debug = 0
+debug = 1
 LOG_FOR_SELF = 1
 
 
@@ -397,8 +397,8 @@ def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0,
         print sendmsg
 
 
-def player_logout(Uid=0, vGameSvrId=0, dtEventTime=0, vGameAppID=0, vOpenID=0,
-                  iOnlineTime=0, iLevel=0, PlatID=0, ClientVersion=0,
+def player_logout(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, OpenID=0,
+                  OnlineTime=0, Level=0, PlatID=0, ClientVersion=0,
                   SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0,
                   ScreenWidth=0, ScreenHight=0, Density=0, Channel=0, UUID=0,
                   CpuHardware=0, Memory=0, GLRender=0, GLVersion=0,
@@ -406,13 +406,13 @@ def player_logout(Uid=0, vGameSvrId=0, dtEventTime=0, vGameAppID=0, vOpenID=0,
 
     message = ['PlayerLogout']
 
-    message.append(vGameSvrId)
+    message.append(GameSvrId)
     message.append(dtEventTime)
-    message.append(vGameAppID)
+    message.append(GameAppID)
     message.append(PlatID)
-    message.append(vOpenID)
-    message.append(iOnlineTime)
-    message.append(iLevel)
+    message.append(OpenID)
+    message.append(OnlineTime)
+    message.append(Level)
     message.append(PlayerFriendsNum)
     message.append(ClientVersion)
     message.append(SystemSoftware)
@@ -427,7 +427,6 @@ def player_logout(Uid=0, vGameSvrId=0, dtEventTime=0, vGameAppID=0, vOpenID=0,
     message.append(CpuHardware)
     message.append(Memory)
     message.append(GLRender)
-    GLVersion = GLVersion.split('\n')[0]
     message.append(GLVersion)
     message.append(DeviceId)
     message.append(Uid)
@@ -458,6 +457,25 @@ def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
     message.append(SubReason)
     message.append(AddOrReduce)
     message.append(Itid)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def recharge(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
+             OpenID=0, Isfirst=0, RechargeId=0):
+
+    message = ['Recharge']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+    message.append(Isfirst)
+    message.append(RechargeId)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

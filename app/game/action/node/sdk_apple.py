@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from sdk.api.apple.iapsdk import IAPSDK
 from app.proto_file import apple_pb2
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 RECHARGE_FAIL_CODE = '3300010002'  # 支付失败
 RECHARGE_SUCCESS_CODE = '3300010003'  # 充值成功
@@ -47,7 +48,13 @@ def apple_consume_verify_11002(data, player):
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
 
-            player.base_info.first_recharge(recharge_item, response)
+            rres = player.base_info.first_recharge(recharge_item, response)
+            if rres:
+                isfirst = 1
+            else:
+                isfirst = 0
+            tlog_action.log('Recharge', player, isfirst,
+                            recharge_item.get('id'))
 
             response.res.message = RECHARGE_SUCCESS_CODE
             response.res.result = True

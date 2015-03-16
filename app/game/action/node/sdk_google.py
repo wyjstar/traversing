@@ -75,7 +75,14 @@ def google_consume_verify_10002(data, player):
             return_data = gain(player, recharge_item.get('setting'),
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
-            player.base_info.first_recharge(recharge_item, response)
+            rres = player.base_info.first_recharge(recharge_item, response)
+
+            if rres:
+                isfirst = 1
+            else:
+                isfirst = 0
+            tlog_action.log('Recharge', player, isfirst,
+                            recharge_item.get('id'))
 
             response.res.result = True
 
