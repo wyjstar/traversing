@@ -53,6 +53,7 @@ def pvp_award():
                 else:
                     logger.debug('pvp_award_tick result:%s,%s,%s', result, k, award)
         else:
+            logger.debug('pvp_award_tick cache:%s,%s', k, award)
             message_cache.cache('pvp_award_remote', k['character_id'], award)
 
 

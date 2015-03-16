@@ -9,8 +9,12 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
-import time
 from shared.tlog import tlog_action
+from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import gain
+from shared.utils.const import const
+import time
+import uuid
 
 
 class CharacterBaseInfoComponent(Component):
@@ -37,9 +41,12 @@ class CharacterBaseInfoComponent(Component):
         self._heads.now_head = game_configs.base_config.get('initialHead')
 
         self._vip_level = 0  # VIP等级
-        self._vip_content = None  # VIP 相关内容，从config中获得
         self._upgrade_time = int(time.time())
-        self._register_time  = int(time.time()) # 注册时间
+        self._register_time = int(time.time())  # 注册时间
+        self._google_consume_id = ''
+        self._google_consume_data = ''
+        self._apple_transaction_id = ''
+        self._first_recharge_ids = []
 
     def init_data(self, character_info):
         self._id = character_info['id']
@@ -55,10 +62,18 @@ class CharacterBaseInfoComponent(Component):
 
         self._heads.ParseFromString(character_info['heads'])
         self._vip_level = character_info.get('vip_level')
-        self._upgrade_time = character_info.get('upgrade_time', self._upgrade_time)
-        self._register_time = character_info.get('register_time', self._register_time)
+        self._upgrade_time = character_info.get('upgrade_time',
+                                                self._upgrade_time)
+        self._register_time = character_info.get('register_time',
+                                                 self._register_time)
+        self._google_consume_id = character_info.get('google_consume_id', '')
+        self._google_consume_data = character_info.get('google_consume_data', '')
+        self._apple_transaction_id = character_info.get('apple_transaction_id', '')
+        self._first_recharge_ids = character_info.get('first_recharge_ids', [])
 
-        self.update_vip()
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        if vip_content is None:
+            logger.error('cant find vip item%d', self._vip_level)
         self.check_time()
 
         self.save_data()
@@ -75,7 +90,11 @@ class CharacterBaseInfoComponent(Component):
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
-                    heads=self._heads.SerializeToString())
+                    heads=self._heads.SerializeToString(),
+                    google_consume_id=self._google_consume_id,
+                    google_consume_data=self._google_consume_data,
+                    apple_transaction_id=self._apple_transaction_id,
+                    first_recharge_ids=self._first_recharge_ids)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self._id), str(data))
 
@@ -92,7 +111,11 @@ class CharacterBaseInfoComponent(Component):
                     vip_level=init_vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
-                    register_time=self._register_time)
+                    register_time=self._register_time,
+                    google_consume_id=self._google_consume_id,
+                    google_consume_data=self._google_consume_data,
+                    apple_transaction_id=self._apple_transaction_id,
+                    first_recharge_ids=self._first_recharge_ids)
         return data
 
     def check_time(self):
@@ -118,8 +141,40 @@ class CharacterBaseInfoComponent(Component):
                 return
 
         # =====Tlog================
-        tlog_action.log('PlayerExpFlow', self.owner, before_level,
-                        exp, reason)
+        tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
+
+    def generate_google_id(self, channel):
+        if self._google_consume_id == '':
+            self._google_consume_id = '%s_%s_%s' % (self._id, channel,
+                                                    uuid.uuid1().get_hex())
+        self.save_data()
+        return self._google_consume_id
+
+    def reset_google_id(self):
+        self._google_consume_id = ''
+        self.save_data()
+
+    def set_google_consume_data(self, data):
+        self._google_consume_data = data
+        self.save_data()
+
+    def first_recharge(self, recharge_item, response):
+        if recharge_item.get('id') in self._first_recharge_ids:
+            logger.error('first recharge is repeated:%s:%s', self._id,
+                         recharge_item.get('fristGift'))
+            return False
+
+        logger.info('first recharge :%s:%s:%s', self._id,
+                    recharge_item.get('fristGift'), self._first_recharge_ids)
+
+        return_data = gain(self.owner,
+                           recharge_item.get('fristGift'),
+                           const.RECHARGE)  # 获取
+
+        get_return(self.owner, return_data, response.gain)
+        self._first_recharge_ids.append(recharge_item.get('id'))
+        self.save_data()
+        return True
 
     @property
     def id(self):
@@ -156,92 +211,106 @@ class CharacterBaseInfoComponent(Component):
     @vip_level.setter
     def vip_level(self, vip_level):
         self._vip_level = vip_level
-        self.update_vip()
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        if vip_content is None:
+            logger.error('cant find vip item%d', self._vip_level)
 
     @property
     def open_sweep(self):
         """解锁扫荡"""
-        return self._vip_content.openSweep
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.openSweep
 
     @property
     def open_sweep_ten(self):
         """解锁扫荡十次"""
-        return self._vip_content.openSweepTen
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.openSweepTen
 
     @property
     def free_sweep_times(self):
         """每日免费扫荡次数"""
-        return self._vip_content.freeSweepTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.freeSweepTimes
 
     @property
     def reset_stage_times(self):
         """关卡重置次数"""
-        return self._vip_content.resetStageTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.resetStageTimes
 
     @property
     def reset_arena_cd(self):
         """重置竞技场CD"""
-        return self._vip_content.resetArenaCD
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.resetArenaCD
 
     @property
     def buy_arena_times(self):
         """购买竞技场次数"""
-        return self._vip_content.buyArenaTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyArenaTimes
 
     @property
     def buy_stamina_max(self):
         """每日购买体力上限"""
-        return self._vip_content.buyStaminaMax
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyStaminaMax
 
     @property
     def equipment_strength_one_key(self):
         """装备一键强化"""
-        return self._vip_content.equipmentStrengthOneKey
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.equipmentStrengthOneKey
 
     @property
     def shop_refresh_times(self):
         """每日商店刷新次数"""
-        return self._vip_content.shopRefreshTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.shopRefreshTimes
 
     @property
     def activity_copy_times(self):
         """每日活动副本次数"""
-        return self._vip_content.activityCopyTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.activityCopyTimes
 
     @property
     def elite_copy_times(self):
         """每日精英副本次数"""
-        return self._vip_content.eliteCopyTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.eliteCopyTimes
 
     @property
     def equipment_strength_cli_times(self):
         """装备强化暴击次数"""
-        return self._vip_content.equipmentStrengthCliTimes
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.equipmentStrengthCliTimes
 
     @property
     def gifts(self):
         """获得礼包"""
         # todo: send mail
-        return self._vip_content.gifts
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.gifts
 
     @property
     def buy_gifts(self):
         """可购买的礼包"""
         # todo: 礼包ID
-        return self._vip_content.buyGifts
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyGifts
 
     @property
     def guild_worship_times(self):
         """公会膜拜次数"""
-        return self._vip_content.guildWorshipTimes
-
-    def update_vip(self):
-        """更新VIP组件"""
-        self._vip_content = game_configs.vip_config.get(self._vip_level)
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.guildWorshipTimes
 
     @property
     def war_refresh_times(self):
-        return self._vip_content.warFogRefreshNum
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.warFogRefreshNum
 
     @property
     def heads(self):
@@ -314,3 +383,23 @@ class CharacterBaseInfoComponent(Component):
     @pvp_high_rank_award.setter
     def pvp_high_rank_award(self, value):
         self._pvp_high_rank_award = value
+
+    @property
+    def google_consume_id(self):
+        return self._google_consume_id
+
+    @property
+    def google_consume_data(self):
+        return self._google_consume_data
+
+    @property
+    def apple_transaction_id(self):
+        return self._apple_transaction_id
+
+    @apple_transaction_id.setter
+    def apple_transaction_id(self, value):
+        self._apple_transaction_id = value
+
+    @property
+    def first_recharge_ids(self):
+        return self._first_recharge_ids

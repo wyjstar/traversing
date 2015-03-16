@@ -29,6 +29,7 @@ class CharacterFightCacheComponent(Component):
         self._blue_unit = []  # 蓝方战斗单位  [[]] 二维
 
         self._not_replace = []  # 不能替换的英雄
+        self.break_stage_id = 0
 
     def init_data(self, c):
         return
@@ -310,8 +311,8 @@ class CharacterFightCacheComponent(Component):
 
     def check_link(self, condition_param):
         for slot in self.line_up_slots.values():
-            if slot.hero_slot.hero_no in self._not_replace:
-                continue
+            #if slot.hero_slot.hero_no in self._not_replace:
+                #continue
             if condition_param in slot.hero_slot.link:
                 link_config = game_configs.link_config.get(
                     slot.hero_slot.hero_no)
@@ -335,6 +336,7 @@ class CharacterFightCacheComponent(Component):
     def fighting_start(self):
         """战斗开始
         """
+        self.break_stage_id = 0
         red_units = self.red_unit
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
@@ -404,6 +406,8 @@ class CharacterFightCacheComponent(Component):
             break_line_up_slot = copy.deepcopy(old_line_up_slot)
 
             hero_no = break_config.hero_id
+            if odds == 1: # 如果百分比为1， 则按几率掉碎片
+                self.break_stage_id = break_config.id
             break_hero_obj = self.change_hero(hero, hero_no)
 
             unit = break_line_up_slot.assemble_hero(break_hero_obj)

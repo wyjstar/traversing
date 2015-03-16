@@ -43,7 +43,8 @@ class PlayerCharacter(object):
                  mine=component.UserMine(self),
                  stone=component.UserStone(self),
                  travel=component.CharacterTravelComponent(self),
-                 runt=component.CharacterRuntComponent(self)
+                 runt=component.CharacterRuntComponent(self),
+                 recharge=component.CharacterRechargeGift(self)
                  )
         self._components = a
 
@@ -197,3 +198,7 @@ class PlayerCharacter(object):
     @property
     def runt(self):
         return self._components['runt']
+
+    @property
+    def recharge(self):
+        return self._components['recharge']

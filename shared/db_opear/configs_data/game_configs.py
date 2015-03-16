@@ -46,6 +46,7 @@ from stone_config import StoneConfig
 from newbee_guide_config import NewbeeGuideConfig
 from travel_item_group_config import TravelItemGroupConfig
 from notes_config import NotesConfig
+from recharge_config import RechargeConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -90,6 +91,7 @@ formula_config = {}
 newbee_guide_config = {}
 mine_match_config = {}
 notes_config = {}
+recharge_config = {}
 
 
 all_config_name = {
@@ -135,7 +137,8 @@ all_config_name = {
     'mine_match_config': MineMatchConfig(),
     'stone_config': StoneConfig(),
     'newbee_guide_config': NewbeeGuideConfig(),
-    'notes_config': NotesConfig()
+    'notes_config': NotesConfig(),
+    'recharge_config': RechargeConfig()
 }
 
 print("load game_configs===========================")
@@ -146,4 +149,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print stone_config.get("weight")
+    print recharge_config
