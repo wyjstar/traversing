@@ -62,19 +62,6 @@ class PlayerCharacter(object):
         return not character_info.exists()
 
     def create_character_data(self):
-        # fake============================================
-        for pos, hero_id in game_configs.base_config.get('initialHero').items():
-            hero = self.hero_component.add_hero(hero_id)
-            hero.hero_no = hero_id
-            hero.level = 1
-            hero.break_level = 0
-            hero.exp = 0
-            hero.save_data()
-            self.line_up_component.change_hero(1, hero_id, 0)
-        self.friends.add_applicant(999)
-        self.friends.add_friend(999)
-        self.friends.save_data()
-
         character_info = {'id': self._pid}
         for k, c in self._components.items():
             newdict = c.new_data()
@@ -88,6 +75,21 @@ class PlayerCharacter(object):
                      character_info['level'])
         char_obj.new(character_info)
         tb_character_info.sadd('all', self._pid)
+
+        # fake============================================
+        logger.debug('add hero %s', game_configs.base_config.get('initialHero'))
+        for pos, hero_id in game_configs.base_config.get('initialHero').items():
+            hero = self.hero_component.add_hero(hero_id)
+            hero.hero_no = hero_id
+            hero.level = 1
+            hero.break_level = 0
+            hero.exp = 0
+            hero.save_data()
+            self.line_up_component.change_hero(1, hero_id, 0)
+            self.line_up_component.save_data()
+        self.friends.add_applicant(999)
+        self.friends.add_friend(999)
+        self.friends.save_data()
 
     @property
     def character_id(self):

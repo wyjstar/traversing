@@ -94,7 +94,7 @@ class CharacterHerosComponent(Component):
         return str(character_id)+'_'+str(hero_no)
 
     def new_hero_data(self, hero):
-        pid = self.owner.base_info.id
+        pid = self.owner.character_id
         hero_property = hero.hero_proerty_dict()
         char_obj = tb_character_info.getObj(pid).getObj('heroes')
         result = char_obj.hsetnx(hero_property['hero_no'], hero_property)

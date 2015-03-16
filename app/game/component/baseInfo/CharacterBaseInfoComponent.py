@@ -177,11 +177,7 @@ class CharacterBaseInfoComponent(Component):
 
     @property
     def id(self):
-        return self._id
-
-    @id.setter
-    def id(self, bid):
-        self._id = bid
+        return self.owner.character_id
 
     @property
     def base_name(self):
