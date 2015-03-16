@@ -9,6 +9,7 @@ from app.proto_file import level_gift_pb2
 from app.proto_file import pvp_rank_pb2
 from app.proto_file import line_up_pb2
 from app.proto_file import google_pb2
+from app.proto_file import recharge_pb2
 # from app.proto_file import soul_shop_pb2
 
 
@@ -138,4 +139,27 @@ class RobotActivity(Robot):
 
     def none_1000000(self, message):
         print message
+        self.on_command_finish()
+
+    def command_get_recharge(self):
+        self.send_message(None, 1150)
+
+    def none_1150(self, message):
+        response = recharge_pb2.GetRechargeGiftDataResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_take_recharge_gift(self, gift_id, recharge_time):
+        request = recharge_pb2.GetRechargeGiftRequest()
+        recharge_item = request.gift.add()
+        recharge_item.gift_id = int(gift_id)
+        _data = recharge_item.data.add()
+        _data.recharge_accumulation = int(recharge_time)
+        self.send_message(request, 1151)
+
+    def none_1151(self, message):
+        response = recharge_pb2.GetRechargeGiftResponse()
+        response.ParseFromString(message)
+        print response
         self.on_command_finish()

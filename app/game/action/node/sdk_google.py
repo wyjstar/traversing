@@ -17,6 +17,7 @@ def test_1000000(data, player):
     request = google_pb2.RechargeTest()
     request.ParseFromString(data)
     player.recharge.charge(request.recharge_num)
+    player.recharge.save_data()
     return ''
 
 
@@ -76,6 +77,8 @@ def google_consume_verify_10002(data, player):
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
             player.base_info.first_recharge(recharge_item, response)
+
+            player.recharge.charge(recharge_item.get('setting')[0].num, response)
 
             response.res.result = True
 
