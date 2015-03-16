@@ -10,7 +10,7 @@ SANDBOX = True
 
 
 allow_sandbox = True    # 允许使用沙盒支付
-logical_bids = ['com.ttransfer.sanguo.joyu']    # 合法的产品标记
+logical_bids = ['com.mobartsgame.Lord']    # 合法的产品标记
 try_more_times = {1: 0.1, 2: 0.2, 3: 0.7}   # 重试次数及间隔
 
 
