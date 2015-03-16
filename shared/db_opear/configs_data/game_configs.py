@@ -149,7 +149,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for _ in activity_config.get(8):
-        print _
-        print _.get('parameterA')
-        print
+    print language_config.get('3700000002')

@@ -2,6 +2,7 @@
 """
 created by server on 14-6-4下午3:04.
 """
+from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.game import component
@@ -54,6 +55,17 @@ class PlayerCharacter(object):
         # print len(character_info), character_info
         for c in self._components.values():
             c.init_data(character_info)
+
+        # fake============================================
+        for pos, hero_id in game_configs.base_config.get('initialHero'):
+            hero = self.hero_component.add_hero(hero_id)
+            hero.hero_no = hero_id
+            hero.level = 1
+            hero.break_level = 0
+            hero.exp = 0
+            hero.save_data()
+            self.line_up_component.change_hero(1, hero_id, 0)
+        player.friends.add_friend(999)
 
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)
