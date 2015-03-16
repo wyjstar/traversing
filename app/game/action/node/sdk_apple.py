@@ -47,11 +47,7 @@ def apple_consume_verify_11002(data, player):
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
 
-            if player.base_info.is_first_recharge:
-                logger.info('apple first recharge :%s:%s',
-                            player.character_id,
-                            recharge_item.get('fristGift'))
-                player.base_info.first_recharge(recharge_item, response)
+            player.base_info.first_recharge(recharge_item, response)
 
             response.res.message = RECHARGE_SUCCESS_CODE
             response.res.result = True
