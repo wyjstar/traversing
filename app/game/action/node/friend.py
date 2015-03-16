@@ -180,6 +180,7 @@ def _with_battle_info(response, pid):
 def get_player_friend_list_1106(data, player):
     response = friend_pb2.GetPlayerFriendsResponse()
     response.open_receive = player.stamina._open_receive
+    print player.friends.friends
 
     for pid in player.friends.friends + [player.base_info.id]:
         player_data = tb_character_info.getObj(pid)
@@ -190,7 +191,9 @@ def get_player_friend_list_1106(data, player):
                                              'heads', 'upgrade_time'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
-            ap = int(friend_data['attackPoint'])
+            ap = 1
+            if friend_data['attackPoint'] is not None:
+                ap = int(friend_data['attackPoint'])
             response_friend_add.power = ap if ap else 0
             response_friend_add.last_time = friend_data['upgrade_time']
 

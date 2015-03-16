@@ -65,7 +65,9 @@ class PlayerCharacter(object):
             hero.exp = 0
             hero.save_data()
             self.line_up_component.change_hero(1, hero_id, 0)
+        self.friends.add_applicant(999)
         self.friends.add_friend(999)
+        self.friends.save_data()
 
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)

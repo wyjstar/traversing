@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 created by server on 14-5-27下午5:21.
 """
@@ -8,6 +8,7 @@ from app.game.core.PlayersManager import PlayersManager
 from gfirefly.dbentrust.madminanager import MAdminManager
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.character.PlayerCharacter import PlayerCharacter
+from app.game.redis_mode import tb_character_info
 
 
 def doWhenStop():
@@ -26,7 +27,6 @@ robotname_id, robot_level, rhero_id, rhero_level = game_configs.base_config.get(
 
 player = PlayerCharacter(999, dynamic_id=-1)
 player.base_info._level = robot_level
-player.base_info.base_name = game_configs.language_config.get('%s' % robotname_id).get('cn')
 
 hero = player.hero_component.add_hero(rhero_id)
 hero.hero_no = rhero_id
@@ -36,3 +36,7 @@ hero.exp = 0
 
 player.line_up_component.change_hero(1, rhero_id, 0)
 PlayersManager().add_player(player)
+player.create_character_data()
+
+character_obj = tb_character_info.getObj(999)
+character_obj.hset('nickname', game_configs.language_config.get('%s' % robotname_id).get('cn'))
