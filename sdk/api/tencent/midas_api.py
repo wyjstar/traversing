@@ -37,8 +37,9 @@ class MidasApi(object):
         gen_balance:赠送充值币个数
         first_save:是否满足首次充值，1：满足，0：不满足。
         """
-        uri = '/v3/r/mpay/get_balance_m'
+        uri = '/mpay/get_balance_m'
         cookie = common.create_cookie(platform, uri)
+        print cookie, "cookie============"
         params = {
                   'openid':openid,
                   'openkey':access_token,
@@ -50,8 +51,9 @@ class MidasApi(object):
                   'zoneid':zoneid,
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result
 
     def pay_m(self, platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid, amt):

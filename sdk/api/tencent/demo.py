@@ -6,7 +6,7 @@ from sdk.util import logger_sdk
 
 
 zone_id = 1001
-host = 'msdk.qq.com'
+host = 'msdktest.qq.com'
 pay_host = ('10.142.22.11', 8080)
 buy_goods_host = ('10.142.22.11', 8080)
 valid_host = ('10.130.2.233', 80)
@@ -46,7 +46,9 @@ res = msdk.verify_login(2, '8C9477C15CC283575062B2AB7C106C56', '88209224CA8FCD74
 #res = msdk.verify_login(1, 'oiqIwt2n_sfeJpmtYV6q-rZZj2-E', 'ezXcEiiBSKSxW0eoylIeJIptOH5pbMgimZXNYDPrYcQMwk5bortAJ4DYovUuVqc2FcPv8JnFkrmoaNzMcXQMvLHzpgKY0yqvRtkW1eeezQeof9rsrNQ6Xde2pLYuoLGYAapBNu1nHFMQUo8OLofSg')
 print(res)
 
-# Midas使用实例
+# Midas使用实例platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid
 pay = MidasApi(host, goods_host, valid_host, log=log)
-#res = pay.get_balance_m(1, 1, 1, 1, 1, 1, 1, 1)
-#print(res)
+pf='desktop_m_qq-73213123-android-73213123-qq-1104297231-8C9477C15CC283575062B2AB7C106C56'
+pfkey='fa935214548ccaef41f001d8e78956fb'
+res = pay.get_balance_m(2, '8C9477C15CC283575062B2AB7C106C56', qq_appid, qq_appkey, '88209224CA8FCD74EA4176F0BBFBB3A5', 'BC6D94145E6D562472BBD8864F5EC9D1', pf, pfkey, 1)
+print(res)

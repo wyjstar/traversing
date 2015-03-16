@@ -30,7 +30,7 @@ def create_cookie(platform, uri):
         params = {'session_id':'openid', 'session_type':'kp_actoken', 'org_loc':uri}
 
     cookie = urllib.urlencode(params)
-    return cookie.replace('&', ';')
+    return cookie.replace('&', '; ')
 
 def encoding_params(method, uri, params, appkey):
     secret = '%s&' % appkey
