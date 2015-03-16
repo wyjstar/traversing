@@ -47,6 +47,7 @@ class PlayerCharacter(object):
                  recharge=component.CharacterRechargeGift(self)
                  )
         self._components = a
+        self._pay = component.CharacterPay(self)
 
     def init_player_info(self):
         character_obj = tb_character_info.getObj(self._pid)
@@ -202,3 +203,6 @@ class PlayerCharacter(object):
     @property
     def recharge(self):
         return self._components['recharge']
+    @property
+    def pay(self):
+        return self._pay

@@ -18,8 +18,16 @@ def character_login_4(key, dynamic_id, request_proto):
     """角色登录 """
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
+    pay_arg = dict(platform=argument.platform,
+                   open_id=argument.open_id,
+                   open_key=argument.open_key,
+                   pay_token=argument.pay_token,
+                   appid=argument.appid,
+                   pf=argument.pf,
+                   pfkey=argument.pfkey,
+                   zoneid=argument.zoneid)
 
-    data = __character_login(dynamic_id)
+    data = __character_login(dynamic_id, pay_arg)
 
     response = game_pb2.GameLoginResponse()
 
@@ -60,7 +68,7 @@ def character_login_4(key, dynamic_id, request_proto):
     return response.SerializePartialToString()
 
 
-def __character_login(dynamic_id):
+def __character_login(dynamic_id, pay_arg):
 
     user = UsersManager().get_by_dynamic_id(dynamic_id)
 
@@ -84,7 +92,7 @@ def __character_login(dynamic_id):
 
     # game服登录
     child_node = GlobalObject().child(now_node)
-    res_data = child_node.enter_scene_remote(dynamic_id, user.user_id)
+    res_data = child_node.enter_scene_remote(dynamic_id, user.user_id, pay_arg)
     if not res_data['player_data']:
         return {'result': False}
 

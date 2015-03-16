@@ -17,10 +17,11 @@ remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
-def enter_scene_remote(dynamic_id, character_id):
+def enter_scene_remote(dynamic_id, character_id, pay_arg):
     """进入场景"""
     is_new_character = 1
     player = PlayersManager().get_player_by_id(character_id)
+    player.pay.set_pay_arg(pay_arg) # 设置支付参数
     if not player:
         logger.debug('player login:%s', character_id)
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)

@@ -13,20 +13,20 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='tencent.proto',
   package='',
-  serialized_pb='\n\rtencent.proto\"\x1e\n\x0eGetGoldReponse\x12\x0c\n\x04gold\x18\x01 \x02(\x05')
+  serialized_pb='\n\rtencent.proto\"\x1f\n\x0fGetGoldResponse\x12\x0c\n\x04gold\x18\x01 \x02(\x05')
 
 
 
 
-_GETGOLDREPONSE = _descriptor.Descriptor(
-  name='GetGoldReponse',
-  full_name='GetGoldReponse',
+_GETGOLDRESPONSE = _descriptor.Descriptor(
+  name='GetGoldResponse',
+  full_name='GetGoldResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='gold', full_name='GetGoldReponse.gold', index=0,
+      name='gold', full_name='GetGoldResponse.gold', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -42,16 +42,16 @@ _GETGOLDREPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=17,
-  serialized_end=47,
+  serialized_end=48,
 )
 
-DESCRIPTOR.message_types_by_name['GetGoldReponse'] = _GETGOLDREPONSE
+DESCRIPTOR.message_types_by_name['GetGoldResponse'] = _GETGOLDRESPONSE
 
-class GetGoldReponse(_message.Message):
+class GetGoldResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _GETGOLDREPONSE
+  DESCRIPTOR = _GETGOLDRESPONSE
 
-  # @@protoc_insertion_point(class_scope:GetGoldReponse)
+  # @@protoc_insertion_point(class_scope:GetGoldResponse)
 
 
 # @@protoc_insertion_point(module_scope)
