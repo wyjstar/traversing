@@ -66,9 +66,5 @@ def settle(player, result, response, lively_event, conf):
         ran = random.random()
         if ran <= break_stage_info.reward_odds:
             logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
-            hero_chip = HeroChip(break_stage_info.reward, 1)
-            player.hero_chip_component.add_chip(hero_chip)
-            player.hero_chip_component.save_data()
-            hero_chip_pb = response.drops.hero_chips.add()
-            hero_chip_pb.hero_chip_no = break_stage_info.reward
-            hero_chip_pb.hero_chip_num = 1
+            data = gain(player, break_stage_info.reward, const.STAGE)
+            get_return(player, data, response.drops)
