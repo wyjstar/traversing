@@ -45,6 +45,9 @@ class CharacterRechargeGift(Component):
     def charge(self, recharge, response):
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
+            if activitys is None:
+                logger.debug('activity type is not exist:%s', gift_type)
+                continue
             for activity in activitys:
                 self.type_process(activity, recharge, response)
         logger.debug(self._recharge)
