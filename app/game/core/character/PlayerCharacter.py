@@ -57,7 +57,7 @@ class PlayerCharacter(object):
             c.init_data(character_info)
 
         # fake============================================
-        for pos, hero_id in game_configs.base_config.get('initialHero'):
+        for pos, hero_id in game_configs.base_config.get('initialHero').items():
             hero = self.hero_component.add_hero(hero_id)
             hero.hero_no = hero_id
             hero.level = 1
@@ -65,7 +65,7 @@ class PlayerCharacter(object):
             hero.exp = 0
             hero.save_data()
             self.line_up_component.change_hero(1, hero_id, 0)
-        player.friends.add_friend(999)
+        self.friends.add_friend(999)
 
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)
