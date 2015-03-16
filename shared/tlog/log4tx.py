@@ -138,10 +138,10 @@ def creat_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
         print sendmsg
 
 
-def join_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
-               PlatID=0, OpenID=0, GuildId=0, Handler=0):
+def deal_join_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                    PlatID=0, OpenID=0, GuildId=0, BeHandler=0, ResType=0):
 
-    message = ['JoinGuild']
+    message = ['DealJoinGuild']
 
     message.append(GameSvrId)
     message.append(dtEventTime)
@@ -150,7 +150,8 @@ def join_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(GuildId)
-    message.append(Handler)
+    message.append(BeHandler)
+    message.append(ResType)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

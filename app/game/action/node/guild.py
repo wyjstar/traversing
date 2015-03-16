@@ -97,7 +97,7 @@ def create_guild_801(data, player):
     remote_gate.login_guild_chat_remote(player.dynamic_id, player.guild.g_id)
 
     response.result = True
-    tlog_action.log('ItemFlow', player, g_id, player.base_info.level)
+    tlog_action.log('CreatGuild', player, player.guild.g_id, player.base_info.level)
     return response.SerializeToString()
 
 
@@ -167,14 +167,13 @@ def exit_guild_803(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    tlog_action.log('ExitGuild', player, m_g_id)
     if guild_obj.get_p_num() == 1:
 
         # 解散公会
         # 删除公会名字
         guild_name_data = tb_guild_name.getObj('names')
         if guild_name_data.hexists(guild_obj.name):
-            tb_guild_name.hdel(guild_obj.name)
+            guild_name_data.hdel(guild_obj.name)
 
         # 解散公会，删除公会聊天室
         remote_gate.del_guild_room_remote(player.guild.g_id)
@@ -185,6 +184,7 @@ def exit_guild_803(data, player):
         guild_obj.delete_guild()
         response.result = True
         response.message = "公会已解散"
+        tlog_action.log('ExitGuild', player, m_g_id)
         return response.SerializeToString()
 
     position = player.guild.position
@@ -251,6 +251,8 @@ def exit_guild_803(data, player):
             remote_gate.logout_guild_chat_remote(dynamicid)
 
             response.result = True
+            tlog_action.log('GuildChangePresident', player, m_g_id, tihuan_id)
+            tlog_action.log('ExitGuild', player, m_g_id)
             response.message = "公会已转让，自己退出公会"
             return response.SerializeToString()
         player.guild.g_id = 'no'
@@ -261,6 +263,7 @@ def exit_guild_803(data, player):
         # 退出公会聊天
         remote_gate.logout_guild_chat_remote(dynamicid)
         response.result = True
+        tlog_action.log('ExitGuild', player, m_g_id)
         return response.SerializeToString()
     response.result = False
     response.message = "您不在此公会"
@@ -376,17 +379,21 @@ def deal_apply_805(data, player):
                 else:
                     guild_obj.p_list.update({5: [p_id]})
                 guild_obj.p_num += 1
-                tlog_action.log('JoinGuild', player, m_g_id, p_id,
-                                player.base_info.id)
+                tlog_action.log('DealJoinGuild', player, m_g_id,
+                                p_id, 1)
 
     elif res_type == 2:
         p_ids = args.p_ids
         for p_id in p_ids:
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
+            tlog_action.log('DealJoinGuild', player, m_g_id,
+                            p_id, 2)
 
     else:  # res_type == 3
         guild_obj.apply = []
+        tlog_action.log('DealJoinGuild', player, m_g_id,
+                        '', 3)
 
     guild_obj.save_data()
     response.result = True
@@ -474,6 +481,7 @@ def kick_807(data, player):
     p_ids = args.p_ids
     m_g_id = player.guild.g_id
     if player.guild.position != 1:
+        logger.debug('guild kick:you are not position:%s', player.guild.position)
         response.result = False
         response.message = "您不是会长"
         return response.SerializeToString()
@@ -495,7 +503,7 @@ def kick_807(data, player):
                     response.result = False
                     response.message = "此玩家不在公会"
                     return response.SerializeToString()
-                data = {'guild_id': 0,
+                data = {'guild_id': 'no',
                         'position': 5,
                         'contribution': 0,
                         'all_contribution': 0,

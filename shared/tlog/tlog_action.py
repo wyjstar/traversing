@@ -78,15 +78,15 @@ def player_exp_flow(player_data, beforelevel, gain_exp, reason):
 def line_up_change(player_data, slot, hero_id, after_hero_id,
                    change_type):
 
-    log4tx.hero_break(GameSvrId=game_server_id,
-                      dtEventTime=xtime.strdatetime(),
-                      GameAppID=game_app_id,
-                      OpenID=player_data.base_info.id,
-                      PlatID=plat_id,
-                      Slot=slot,
-                      HeroId=hero_id,
-                      AfterHeroId=after_hero_id,
-                      ChangeType=change_type)
+    log4tx.line_up_change(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+                          Slot=slot,
+                          HeroId=hero_id,
+                          AfterHeroId=after_hero_id,
+                          ChangeType=change_type)
 
 
 def hero_break(player_data, hero_id, level):
@@ -148,15 +148,16 @@ def creat_guild(player_data, guild_id, user_level):
                        UserLevel=user_level)
 
 
-def join_guild(player_data, guild_id, handler):
+def deal_join_guild(player_data, guild_id, behandler, res_type):
 
-    log4tx.join_guild(GameSvrId=game_server_id,
-                      dtEventTime=xtime.strdatetime(),
-                      GameAppID=game_app_id,
-                      OpenID=player_data.base_info.id,
-                      PlatID=plat_id,
-                      GuildId=guild_id,
-                      Handler=handler)
+    log4tx.deal_join_guild(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+                           GuildId=guild_id,
+                           BeHandler=behandler,
+                           ResType=res_type)
 
 
 def exit_guild(player_data, guild_id):
@@ -246,7 +247,7 @@ def hero_refine(player_data, hero_id, refine):
                        GameAppID=game_app_id,
                        OpenID=player_data.base_info.id,
                        PlatID=plat_id,
-                       Stage=stage,
+                       Refine=refine,
                        HeroId=hero_id)
 
 
@@ -262,7 +263,7 @@ tlog_funcs['Inherit'] = inherit
 tlog_funcs['StageFlow'] = stage_flow
 tlog_funcs['SweepFlow'] = sweep_flow
 tlog_funcs['CreatGuild'] = creat_guild
-tlog_funcs['JoinGuild'] = join_guild
+tlog_funcs['DealJoinGuild'] = deal_join_guild
 tlog_funcs['ExitGuild'] = exit_guild
 tlog_funcs['GuildChangePresident'] = guild_change_president
 tlog_funcs['GuildKick'] = guild_kick

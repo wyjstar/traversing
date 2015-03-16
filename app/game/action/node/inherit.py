@@ -98,8 +98,10 @@ def inherit_equipment_152(pro_data, player):
     player.finance.gold -= game_configs.base_config.get("equInheritPrice")
     player.finance.save_data()
     response.result = True
-    tlog_action.log('Inherit', player, 2, origin.id, origin.equipment_no,
-                    target.id, target.equipment_no)
+    tlog_action.log('Inherit', player, 2, origin.base_info.id,
+                    origin.base_info.equipment_no,
+                    target.base_info.id,
+                    target.base_info.equipment_no)
     return response.SerializeToString()
 
 

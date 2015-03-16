@@ -233,7 +233,7 @@ class CharacterLineUpComponent(Component):
             assert target_hero != None, "change hero can not be None!"
             target_hero.is_online = True
 
-        tlog_action.log('LineUpChange', player, slot_no, origin_hero_no,
+        tlog_action.log('LineUpChange', self.owner, slot_no, origin_hero_no,
                         hero_no, change_type)
         # 如果无双条件不满足，则无双设为空
         hero_nos = set(self.hero_nos)  # 阵容英雄编号
