@@ -190,8 +190,8 @@ def hero_sell_107(data, player):
 def hero_refine_118(data, player):
     request = hero_request_pb2.HeroRefineRequest()
     request.ParseFromString(data)
-    response = CommonResponse()
-    response.result = False
+    response = hero_response_pb2.HeroRefineResponse()
+    response.res.result = False
 
     hero = player.hero_component.get_hero(request.hero_no)
     _refine_item = game_configs.seal_config.get(request.refine)
@@ -202,14 +202,19 @@ def hero_refine_118(data, player):
         logger.error('cant find refine item:%s', request.refine)
         return response.SerializePartialToString()
 
-    if not player.brew.consume(_refine_item.expend):
+    result = is_afford(player, _refine_item.expend)  # 校验
+    if not result.get('result'):
         logger.error('cant afford refine:%s:cur%s',
                      _refine_item.expend,
                      player.brew.nectar)
         return response.SerializePartialToString()
 
-    response.result = True
     tlog_action.log('HeroRefine', player, request.hero_no, request.refine)
+
+    return_data = consume(player, _refine_item.expend)
+    get_return(player, return_data, response.consume)
+    response.res.result = True
+
     hero.refine = request.refine
     player.brew.save_data()
     hero.save_data()

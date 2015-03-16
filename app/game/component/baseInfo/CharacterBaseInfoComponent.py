@@ -164,25 +164,20 @@ class CharacterBaseInfoComponent(Component):
                          recharge_item.get('fristGift'))
             return False
 
-        logger.info('first recharge :%s:%s:%s', self._id,
-                    recharge_item.get('fristGift'), self._first_recharge_ids)
-
-        return_data = gain(self.owner,
-                           recharge_item.get('fristGift'),
+        return_data = gain(self.owner, recharge_item.get('fristGift'),
                            const.RECHARGE)  # 获取
 
         get_return(self.owner, return_data, response.gain)
         self._first_recharge_ids.append(recharge_item.get('id'))
         self.save_data()
+
+        logger.info('first recharge :%s:%s:%s', self._id,
+                    recharge_item.get('fristGift'), self._first_recharge_ids)
         return True
 
     @property
     def id(self):
-        return self._id
-
-    @id.setter
-    def id(self, bid):
-        self._id = bid
+        return self.owner.character_id
 
     @property
     def base_name(self):

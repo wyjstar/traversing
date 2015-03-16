@@ -7,6 +7,7 @@ from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from app.proto_file import online_gift_pb2
+from app.proto_file import recharge_pb2
 from shared.utils.const import const
 
 
@@ -63,4 +64,26 @@ def get_online_and_level_gift_data_1120(data, player):
     for _ in player.level_gift.received_gift_ids:
         response.received_level_gift_id.append(_)
 
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_online_and_level_gift_data_1150(data, player):
+    response = recharge_pb2.GetRechargeGiftDataResponse()
+    player.recharge.get_data(response)
+    player.recharge.save_data()
+
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_online_and_level_gift_data_1151(data, player):
+    request = recharge_pb2.GetRechargeGiftRequest()
+    request.ParseFromString(data)
+
+    response = recharge_pb2.GetRechargeGiftResponse()
+
+    player.recharge.take_gift(request.gift, response)
+    player.recharge.save_data()
+    response.res.result = True
     return response.SerializeToString()

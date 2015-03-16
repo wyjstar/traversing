@@ -59,5 +59,7 @@ def apple_consume_verify_11002(data, player):
             response.res.message = RECHARGE_SUCCESS_CODE
             response.res.result = True
 
+            player.recharge.charge(recharge_item.get('setting')[0].num, response)
+
     logger.debug(response)
     return response.SerializeToString()
