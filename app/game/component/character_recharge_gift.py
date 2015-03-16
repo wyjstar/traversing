@@ -3,10 +3,13 @@
 created by server on 14-8-26
 """
 import time
+from shared.utils.const import const
 from gfirefly.server.logobj import logger
 from app.game.redis_mode import tb_character_info
 from app.game.component.Component import Component
 from shared.db_opear.configs_data import game_configs
+from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import gain
 
 RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
@@ -39,15 +42,14 @@ class CharacterRechargeGift(Component):
                 del self._recharge[activity_id]
                 continue
 
-    def charge(self, recharge):
+    def charge(self, recharge, response):
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
             for activity in activitys:
-                self.type_process(activity, recharge)
-        print '-=-=-=='*8
-        print self._recharge
+                self.type_process(activity, recharge, response)
+        logger.debug(self._recharge)
 
-    def type_process(self, activity, recharge):
+    def type_process(self, activity, recharge, response):
         activity_id = activity.get('id')
         isopen = activity.get('is_open')
         if isopen != 1:
@@ -80,7 +82,10 @@ class CharacterRechargeGift(Component):
                 self._recharge[activity_id] = {_date_now: 0}
 
         if gift_type == 8:  # single recharge
-            pass
+            if recharge >= activity.get('parameterA'):
+                return_data = gain(self.owner, activity.get('reward'),
+                                   const.RECHARGE)  # 获取
+                get_return(self.owner, return_data, response.gain)
 
         if gift_type == 9:  # accumulating recharge
             accumulating = 0
@@ -127,9 +132,20 @@ class CharacterRechargeGift(Component):
             for data in recharge_item.data:
                 if data.recharge_time in recharge_data and\
                         recharge_data[data.recharge_time] == 0:
+                    self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_time] = 1
                 elif data.recharge_accumulation in recharge_data and\
                         recharge_data[data.recharge_accumulation] == 0:
+                    self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_accumulation] = 1
+                else:
+                    logger.error('error recharge taken:%s:%s', recharge_item,
+                                 self._recharge)
 
         logger.debug(self._recharge)
+
+    def _get_activity_gift(self, activity_id, response):
+        activity = game_configs.activity_config.get(activity_id)
+        return_data = gain(self.owner, activity.get('reward'),
+                           const.RECHARGE)  # 获取
+        get_return(self.owner, return_data, response.gain)

@@ -78,6 +78,8 @@ def google_consume_verify_10002(data, player):
             get_return(player, return_data, response.gain)
             player.base_info.first_recharge(recharge_item, response)
 
+            player.recharge.charge(recharge_item.get('setting')[0].num, response)
+
             response.res.result = True
 
     logger.debug(response)

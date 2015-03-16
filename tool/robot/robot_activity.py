@@ -159,7 +159,7 @@ class RobotActivity(Robot):
         self.send_message(request, 1151)
 
     def none_1151(self, message):
-        response = recharge_pb2.GetRechargeGiftDataResponse()
+        response = recharge_pb2.GetRechargeGiftResponse()
         response.ParseFromString(message)
         print response
         self.on_command_finish()
