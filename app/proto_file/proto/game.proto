@@ -19,6 +19,14 @@ message GameLoginRequest{
 	optional string gl_render = 15;  // opengl render 信息
 	optional string gl_version = 16;  // opengl 版本信息
 	optional string device_id = 17;  // 设备ID
+    optional int32 platform = 18; //平台
+    optional string open_id = 19;//
+    optional string open_key = 20;//
+    optional string pay_token = 21;//
+    optional string appid = 22;//
+    optional string pf = 23;//
+    optional string pfkey = 24;//
+    optional string zoneid = 25;//
 }
 
 //返回结果

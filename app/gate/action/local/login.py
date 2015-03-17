@@ -16,6 +16,7 @@ from shared.tlog import tlog_action
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
     """角色登录 """
+    logger.debug("==============character_login_4===========")
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
     pay_arg = dict(platform=argument.platform,

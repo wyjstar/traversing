@@ -403,3 +403,13 @@ class CharacterBaseInfoComponent(Component):
     @property
     def first_recharge_ids(self):
         return self._first_recharge_ids
+    def set_vip_level(self, gold):
+        """
+        充值后升级vip
+        """
+        for i in range(16):
+            vip_content = game_configs.vip_config.get(i)
+            if gold > vip_content.rechargeAmount:
+                self.vip_level = i
+                self.save_data()
+

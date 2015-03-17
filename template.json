@@ -173,8 +173,8 @@
          "port": 30011
     },
     "msdk":{
-        "zone_id": 1001,
-        "host": "msdk.qq.com",
+        "zone_id": 1,
+        "host": "msdktest.qq.com",
 
         "qq_appid": 1104297231,
         "qq_appkey": "y33yRx3FveVZb1dw",

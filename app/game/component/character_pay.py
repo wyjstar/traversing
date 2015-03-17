@@ -32,11 +32,7 @@ class CharacterPay(Component):
         self._pf = value.get("pf")
         self._pfkey = value.get("pfkey")
         self._zoneid = value.get("zoneid")
-
-        res = self.get_balance_m()
-        logger.debug("login=======gold:%s" % res[0])
-        if res:
-            self.owner.set_gold(res[0])
+        self.get_balance() # 登录时从tx拉取gold
 
     def get_balance_m(self):
         logger.debug("get_balance_m: platform- %s\
@@ -62,7 +58,7 @@ class CharacterPay(Component):
         return
 
         if data['ret'] == 1018:
-            return -1
+            return False
         elif data['ret'] != 0:
             logger.error("get_balance failed: %s" % data)
             return
@@ -70,10 +66,19 @@ class CharacterPay(Component):
         gen_balance = data['gen_balance']
         return balance, gen_balance
 
+    def get_balance(self):
+        result = self.get_balance_m()
+        if not result:
+            return False
 
-        GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
-                                         self._appkey, self._openkey, self._pay_token,
-                                         self._pf, self._pfkey, self._zoneid)
+        balance, gen_balance = result
+        recharge_balance = balance - gen_balance
+        current_balance = recharge_balance - self._owner.finance.gold
+        if current_balance > 0:
+            self._owner.base_info.set_vip_level(balance)
+        self._owner.finance.gold = balance
+        self._owner.finance.save_data()
+
     def pay_m(self, num):
         GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
