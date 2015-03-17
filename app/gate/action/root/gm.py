@@ -6,12 +6,7 @@ import cPickle
 groot = GlobalObject().root
 
 
-def modify_vip_level(args):
-    print args
-    pass
-
-
-def modify_user_level(args):
+def modify_user_info(args):
     oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
     if oldvcharacter:
         args = (args.get('command'), oldvcharacter.dynamic_id,
@@ -19,10 +14,14 @@ def modify_user_level(args):
         child_node = groot.child(oldvcharacter.node)
         res = child_node.callbackChild(*args)
     else:
-        data = {'vip_level': int(args['level'])}
         character_obj = tb_character_info.getObj(int(args.get('uid')))
         if not character_obj.exists():
             return {'success': 0, 'message': 1}
-        character_obj.hmset(data)
-        res = {'success': 1}
+
+        if args['attr_name'] == 'user_level':
+            data = {'level': int(args['attr_value'])}
+            character_obj.hmset(data)
+            res = {'success': 1}
+        else:
+            res = {'success': 0, 'message': 2}
     return res

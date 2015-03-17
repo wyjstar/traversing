@@ -397,7 +397,7 @@ def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0,
         print sendmsg
 
 
-def player_logout(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, OpenID=0,
+def player_logout(GameSvrId=0, dtEventTime=0, GameAppID=0, OpenID=0,
                   OnlineTime=0, Level=0, PlatID=0, ClientVersion=0,
                   SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0,
                   ScreenWidth=0, ScreenHight=0, Density=0, Channel=0, UUID=0,
@@ -429,7 +429,6 @@ def player_logout(Uid=0, GameSvrId=0, dtEventTime=0, GameAppID=0, OpenID=0,
     message.append(GLRender)
     message.append(GLVersion)
     message.append(DeviceId)
-    message.append(Uid)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

@@ -29,22 +29,23 @@ def character_login_4(key, dynamic_id, request_proto):
     player_data = data.get('player_data')
     response.ParseFromString(player_data)
 
-    argument.plat_id = 0
-    argument.client_version = '0.0.0.1'
-    argument.system_software = '1.1'
-    argument.system_hardware = '2.2'
-    argument.telecom_oper = 'tx'
-    argument.network = 'wifi'
-    argument.screen_width = 1024
-    argument.screen_hight = 2048
-    argument.density = 256
-    argument.login_channel = 512
-    argument.mac = '1.1.1'
-    argument.cpu_hardware = 'intel'
-    argument.memory = 1024
-    argument.gl_render = 'abc'
-    argument.gl_version = 'abcd'
-    argument.device_id = '1x2y'
+    # argument.plat_id = 0
+    # argument.client_version = '0.0.0.1'
+    # argument.system_software = '1.1'
+    # argument.system_hardware = '2.2'
+    # argument.telecom_oper = 'tx'
+    # argument.network = 'wifi'
+    # argument.screen_width = 1024
+    # argument.screen_hight = 2048
+    # argument.density = 256
+    # argument.login_channel = 512
+    # argument.mac = '1.1.1'
+    # argument.cpu_hardware = 'intel'
+    # argument.memory = 1024
+    # argument.gl_render = 'abc'
+    # argument.gl_version = 'abcd'
+    # argument.device_id = '1x2y'
+    print '!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#', argument
 
     tlog_action.log('PlayerLogin', response, argument)
     if data.get('is_new_character'):

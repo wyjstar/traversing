@@ -28,7 +28,7 @@ def gm_add_test_data(account_name='hello world'):
 def gm():
     response = {}
     res = {}
-    admin_command = ['update_excel', 'send_mail', 'get_user_info']
+    admin_command = ['update_excel', 'get_user_info']
     if request.args:
         t_dict = request.args
     else:
@@ -55,9 +55,19 @@ def update_excel(args):
 
 def get_user_info(args):
     print args
-    character_obj = tb_character_info.getObj(args['uid'])
-    if not character_obj.exists():
+    if args['search_type'] == '1':
+        character_obj = tb_character_info.getObj(args['search_value'])
+        isexist = character_obj.exists()
+    elif args['search_type'] == '2':
+        nickname_obj = tb_character_info.getObj('nickname')
+        isexist = nickname_obj.hexists(args['search_value'])
+        pid = nickname_obj.hget(args['search_value'])
+        character_obj = tb_character_info.getObj(pid)
+    else:
         return {'success': 0, 'message': 1}
+
+    if not isexist:
+        return {'success': 0, 'message': 2}
 
     character_info = character_obj.hmget(['nickname', 'attackpoint',
                                           'heads', 'upgrade_time',

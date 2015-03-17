@@ -702,7 +702,7 @@ def worship_809(data, player):
     if worship_info[1] == 1:  # 1金币  2元宝
         player.finance.coin -= worship_info[2]
     else:
-        player.finance.gold.consume_gold(worship_info[2])
+        player.finance.consume_gold(worship_info[2])
     player.finance.save_data()
     response.result = True
     response.message = "膜拜成功"
