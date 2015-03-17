@@ -23,7 +23,8 @@ class GameCommandService(CommandService):
         t = time.time()
         try:
             dynamic_id = args[0]
-            # logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
+            #logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
+
             if targetKey != 'enter_scene_remote':
                 _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
                 # print 'find player:', _player
@@ -82,3 +83,4 @@ import inherit
 import gm
 import sdk_google
 import sdk_apple
+import sdk_tencent

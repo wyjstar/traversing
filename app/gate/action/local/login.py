@@ -20,10 +20,11 @@ def character_login_4(key, dynamic_id, request_proto):
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
     pay_arg = dict(platform=argument.platform,
-                   open_id=argument.open_id,
-                   open_key=argument.open_key,
+                   openid=argument.open_id,
+                   openkey=argument.open_key,
                    pay_token=argument.pay_token,
                    appid=argument.appid,
+                   appkey=argument.appkey,
                    pf=argument.pf,
                    pfkey=argument.pfkey,
                    zoneid=argument.zoneid)

@@ -13,11 +13,13 @@ class MidasApi(object):
     支付接口
     """
 
-    def __init__(self, host, goods_host, valid_host, log=None):
+    def __init__(self, host, goods_host, valid_host, log=None, discountid="", giftid=""):
         self.host = host
         self.goods_host = goods_host
         self.valid_host = valid_host
         self.http = HttpRequest(log)
+        self.discountid = discountid
+        self.giftid = giftid
 
     def _new_url(self, uri):
         return "http://%s%s" % (self.host, uri)

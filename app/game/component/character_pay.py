@@ -15,7 +15,7 @@ class CharacterPay(Component):
     def __init__(self, owner):
         super(CharacterPay, self).__init__(owner)
         self._platform = 0
-        self._open_id = ""
+        self._openid = ""
         self._open_key = ""
         self._pay_token = ""
         self._appid = ""
@@ -25,13 +25,14 @@ class CharacterPay(Component):
 
     def set_pay_arg(self, value):
         self._platform = value.get("platform")
-        self._open_id = value.get("openid")
-        self._openkey = value.get("openkey")
-        self._pay_token = value.get("pay_token")
-        self._appid = value.get("appid")
-        self._pf = value.get("pf")
-        self._pfkey = value.get("pfkey")
-        self._zoneid = value.get("zoneid")
+        self._openid = str(value.get("openid"))
+        self._openkey = str(value.get("openkey"))
+        self._pay_token = str(value.get("pay_token"))
+        self._appid = str(value.get("appid"))
+        self._appkey = str(value.get("appkey"))
+        self._pf = str(value.get("pf"))
+        self._pfkey = str(value.get("pfkey"))
+        self._zoneid = str(value.get("zoneid"))
         self.get_balance() # 登录时从tx拉取gold
 
     def get_balance_m(self):
@@ -40,22 +41,25 @@ class CharacterPay(Component):
                      openkey - %s \
                      pay_token - %s \
                      appid - %s \
+                     appkey - %s \
                      pf - %s \
                      pfkey - %s \
                      zoneid - %s "%
-                     (self._platform, self._open_id,
+                     (self._platform, self._openid,
                       self._openkey, self._pay_token,
-                      self._appid, self._pf,
+                      self._appid, self._appkey,
+                      self._pf,
                       self._pfkey, self._zoneid))
-        if const.PAY:
+        if not const.PAY:
             return
         try:
             data = GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
                                          self._pf, self._pfkey, self._zoneid)
+            logger.debug(data)
         except Exception, e:
             logger.error("get balance error:%s" % e)
-        return
+            return
 
         if data['ret'] == 1018:
             return False
@@ -78,6 +82,7 @@ class CharacterPay(Component):
             self._owner.base_info.set_vip_level(balance)
         self._owner.finance.gold = balance
         self._owner.finance.save_data()
+        return True
 
     def pay_m(self, num):
         GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
@@ -88,7 +93,13 @@ class CharacterPay(Component):
                                          self._appkey, self._openkey, self._pay_token,
                                          self._pf, self._pfkey, self._zoneid, num, billno)
 
-    def present_m(self, discountid, giftid, presenttimes):
-        GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
+    def present_m(self, num):
+        """
+        赠送gold, 用于掉落包中的gold
+        """
+        pay = GlobalObject().pay
+        discountid = pay.discountid
+        giftid = pay.giftid
+        GlobalObject().pay.present_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
-                                         self._pf, self._pfkey, self._zoneid, discountid, giftid, presenttimes)
+                                         self._pf, self._pfkey, self._zoneid, discountid, giftid, num)

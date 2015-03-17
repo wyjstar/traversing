@@ -24,6 +24,7 @@ message GameLoginRequest{
     optional string open_key = 20;//
     optional string pay_token = 21;//
     optional string appid = 22;//
+    optional string appkey = 26;//
     optional string pf = 23;//
     optional string pfkey = 24;//
     optional string zoneid = 25;//

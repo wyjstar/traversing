@@ -177,4 +177,4 @@ const.GAIN = 1  # 掉落
 # ==================================================
 
 const.DEBUG = False
-const.PAY=False
+const.PAY=True
