@@ -66,4 +66,4 @@ class TravelStageLogic(base_stage.BaseStageLogic):
             response.res.result = False
             response.res.result_no = 817
             return
-        tlog_action.log('StageFlow', player, stage_id, result)
+        tlog_action.log('RoundFlow', player, stage_id, 4, 0, result)

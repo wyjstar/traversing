@@ -22,6 +22,10 @@ def modify_user_info(args):
             data = {'level': int(args['attr_value'])}
             character_obj.hmset(data)
             res = {'success': 1}
+        elif args['attr_name'] == 'vip_level':
+            data = {'vip_level': int(args['attr_value'])}
+            character_obj.hmset(data)
+            res = {'success': 1}
         else:
             res = {'success': 0, 'message': 2}
     return res

@@ -270,6 +270,20 @@ def recharge(player_data, isfast, recharege_id):
                     RechargeId=recharege_id)
 
 
+def round_flow(player_data, battle_id, battle_type, is_quick, result):
+
+    log4tx.round_flow(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      BattleID=battle_id,
+                      BattleType=battle_type,
+                      isQuick=is_quick,
+                      Result=result)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
@@ -293,6 +307,7 @@ tlog_funcs['TravelSettle'] = travel_settle
 tlog_funcs['AutoTravel'] = auto_travel
 tlog_funcs['HeroRefine'] = hero_refine
 tlog_funcs['Recharge'] = recharge
+tlog_funcs['RoundFlow'] = round_flow
 
 
 def log(mod, *args, **kwds):

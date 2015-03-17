@@ -505,3 +505,31 @@ def player_exp_flow(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def round_flow(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
+               OpenID=0, BattleID=0, BattleType=0, isQuick=0, Result=0,
+               Score=0, Rank=0, Gold=0, ExpChange=0, BattleSoleId=0):
+
+    message = ['RoundFlow']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(BattleID)
+    message.append(BattleType)
+    message.append(isQuick)
+    message.append(Result)
+    message.append(Score)
+    message.append(Rank)
+    message.append(Gold)
+    message.append(ExpChange)
+    message.append(BattleSoleId)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
