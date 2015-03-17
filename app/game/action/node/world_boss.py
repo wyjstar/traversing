@@ -109,7 +109,7 @@ def encourage_heros_1703(data, player):
         # 金币鼓舞
         goldcoin_inspire_price = base_config.get("coin_inspire_price")
         goldcoin_inspire_price_multiple = base_config.get("coin_inspire_price_multi")
-        goldcoinInspireLimited = base_config.get("goldcoinInspireLimited")
+        goldcoinInspireLimited = base_config.get("coin_inspire_limit")
 
         if boss.encourage_coin_num >= goldcoinInspireLimited:
             logger.debug("coin encourage too many times %s, %s" % (boss.encourage_coin_num, goldcoinInspireLimited))
@@ -136,7 +136,7 @@ def encourage_heros_1703(data, player):
     if request.finance_type == 2:
         # 钻石鼓舞
         money_inspire_price = base_config.get("gold_inspire_price")
-        moneyInspireLimited = base_config.get("moneyInspireLimited")
+        moneyInspireLimited = base_config.get("gold_inspire_limit")
         #money_inspire_price_multiple = base_config.get("money_inspire_price_multiple")
         if boss.encourage_gold_num >= moneyInspireLimited:
             logger.error("gold encourage too many times %s, %s" % (boss.encourage_gold_num, moneyInspireLimited))
