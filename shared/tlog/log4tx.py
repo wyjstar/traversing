@@ -99,7 +99,7 @@ def stage_flow(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def sweep_flow(GameSvrId=0, dtEventTime=0, GameAppID=0,
-               PlatID=0, OpenID=0, StageId=0, Times=0):
+               PlatID=0, OpenID=0, StageId=0, Times=0, ReasonEventID=0):
 
     message = ['SweepFlow']
 
@@ -111,6 +111,7 @@ def sweep_flow(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(StageId)
     message.append(Times)
+    message.append(ReasonEventID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -438,7 +439,7 @@ def player_logout(GameSvrId=0, dtEventTime=0, GameAppID=0, OpenID=0,
 
 def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
               OpenID=0, ItemType=0, ItemID=0, AfterCount=0, Count=0,
-              Reason=0, SubReason=0, AddOrReduce=0, Itid=0):
+              Reason=0, SubReason=0, ReasonEventID=0, AddOrReduce=0, Itid=0):
 
     message = ['ItemFlow']
 
@@ -454,6 +455,7 @@ def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
     message.append(Count)
     message.append(Reason)
     message.append(SubReason)
+    message.append(ReasonEventID)
     message.append(AddOrReduce)
     message.append(Itid)
 
