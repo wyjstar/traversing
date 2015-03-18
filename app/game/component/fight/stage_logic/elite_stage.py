@@ -6,6 +6,7 @@ from gfirefly.server.logobj import logger
 import time
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
+from shared.tlog import tlog_action
 
 
 class EliteStageLogic(base_stage.BaseStageLogic):
@@ -40,4 +41,4 @@ class EliteStageLogic(base_stage.BaseStageLogic):
             player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
         lively_event = CountEvent.create_event(EventType.STAGE_2, 1, ifadd=True)
         stage_util.settle(player, result, response, lively_event, conf)
-
+        tlog_action.log('RoundFlow', player, stage_id, 2, 0, result)

@@ -3,10 +3,13 @@
 created by server on 14-8-26
 """
 import time
+from shared.utils.const import const
 from gfirefly.server.logobj import logger
 from app.game.redis_mode import tb_character_info
 from app.game.component.Component import Component
 from shared.db_opear.configs_data import game_configs
+from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import gain
 
 RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
@@ -39,15 +42,17 @@ class CharacterRechargeGift(Component):
                 del self._recharge[activity_id]
                 continue
 
-    def charge(self, recharge):
+    def charge(self, recharge, response):
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
+            if activitys is None:
+                logger.debug('activity type is not exist:%s', gift_type)
+                continue
             for activity in activitys:
-                self.type_process(activity, recharge)
-        print '-=-=-=='*8
-        print self._recharge
+                self.type_process(activity, recharge, response)
+        logger.debug(self._recharge)
 
-    def type_process(self, activity, recharge):
+    def type_process(self, activity, recharge, response):
         activity_id = activity.get('id')
         isopen = activity.get('is_open')
         if isopen != 1:
@@ -80,7 +85,10 @@ class CharacterRechargeGift(Component):
                 self._recharge[activity_id] = {_date_now: 0}
 
         if gift_type == 8:  # single recharge
-            pass
+            if recharge >= activity.get('parameterA'):
+                return_data = gain(self.owner, activity.get('reward'),
+                                   const.RECHARGE)  # 获取
+                get_return(self.owner, return_data, response.gain)
 
         if gift_type == 9:  # accumulating recharge
             accumulating = 0
@@ -96,3 +104,51 @@ class CharacterRechargeGift(Component):
 
             if _date_now not in self._recharge[activity_id].keys():
                 self._recharge[activity_id][_date_now] = 0
+
+    def get_data(self, response):
+        print self._recharge, type(self._recharge)
+        for recharge_id, recharge_data in self._recharge.items():
+            activity = game_configs.activity_config.get(recharge_id)
+            if activity is None:
+                logger.debug('activity id:%s not exist', recharge_id)
+                break
+            item = response.recharge_items.add()
+            item.gift_id = recharge_id
+            item.gift_type = activity.get('type')
+            for k, v in recharge_data.items():
+                _data = item.data.add()
+                _data.is_receive = v
+                if item.gift_type == 7 or item.gift_type == 10:
+                    _data.recharge_time = k
+                elif item.gift_type == 9:
+                    _data.recharge_accumulation = k
+
+    def take_gift(self, recharge_items, response):
+        for recharge_item in recharge_items:
+            if recharge_item.gift_id not in self._recharge:
+                logger.error('recharge id:%s is not exist:%s',
+                             recharge_item.gift_id,
+                             self._recharge)
+                response.res.result = False
+                return
+            recharge_data = self._recharge[recharge_item.gift_id]
+            for data in recharge_item.data:
+                if data.recharge_time in recharge_data and\
+                        recharge_data[data.recharge_time] == 0:
+                    self._get_activity_gift(recharge_item.gift_id, response)
+                    recharge_data[data.recharge_time] = 1
+                elif data.recharge_accumulation in recharge_data and\
+                        recharge_data[data.recharge_accumulation] == 0:
+                    self._get_activity_gift(recharge_item.gift_id, response)
+                    recharge_data[data.recharge_accumulation] = 1
+                else:
+                    logger.error('error recharge taken:%s:%s', recharge_item,
+                                 self._recharge)
+
+        logger.debug(self._recharge)
+
+    def _get_activity_gift(self, activity_id, response):
+        activity = game_configs.activity_config.get(activity_id)
+        return_data = gain(self.owner, activity.get('reward'),
+                           const.RECHARGE)  # 获取
+        get_return(self.owner, return_data, response.gain)

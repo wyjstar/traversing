@@ -110,9 +110,9 @@ class CharacterFinanceComponent(Component):
                          fType, self._finances[fType], num)
             return False
         if fType == 2:
-            self.consume_gold(num)
+            return self.consume_gold(num)
         else:
-            self._finances[fType] += num
+            self._finances[fType] -= num
         return True
 
     def add(self, fType, num):

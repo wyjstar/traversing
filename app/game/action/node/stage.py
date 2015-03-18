@@ -20,6 +20,7 @@ from app.game.action.node._fight_start_logic import pve_process
 from app.game.action.node._fight_start_logic import pve_assemble_units
 from app.game.action.node._fight_start_logic import pve_assemble_friend
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -328,6 +329,7 @@ def stage_sweep(stage_id, times, player):
     player.finance.save_data()
 
     res.result = True
+    tlog_action.log('SweepFlow', player, stage_id, times)
     return response.SerializePartialToString()
 
 

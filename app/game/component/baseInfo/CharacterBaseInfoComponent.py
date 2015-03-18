@@ -68,8 +68,8 @@ class CharacterBaseInfoComponent(Component):
                                                  self._register_time)
         self._google_consume_id = character_info.get('google_consume_id', '')
         self._google_consume_data = character_info.get('google_consume_data', '')
-        self._apple_transaction_id = character_info.get('_apple_transaction_id', '')
-        self._first_recharge_ids = character_info.get('_first_recharge_ids', [])
+        self._apple_transaction_id = character_info.get('apple_transaction_id', '')
+        self._first_recharge_ids = character_info.get('first_recharge_ids', [])
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -94,7 +94,7 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_id=self._google_consume_id,
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
-                    is_first_recharge=self._first_recharge_ids)
+                    first_recharge_ids=self._first_recharge_ids)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self._id), str(data))
 
@@ -115,7 +115,7 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_id=self._google_consume_id,
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
-                    is_first_recharge=self._first_recharge_ids)
+                    first_recharge_ids=self._first_recharge_ids)
         return data
 
     def check_time(self):
@@ -164,25 +164,20 @@ class CharacterBaseInfoComponent(Component):
                          recharge_item.get('fristGift'))
             return False
 
-        logger.info('first recharge :%s:%s:%s', self._id,
-                    recharge_item.get('fristGift'), self._first_recharge_ids)
-
-        return_data = gain(self.owner,
-                           recharge_item.get('fristGift'),
+        return_data = gain(self.owner, recharge_item.get('fristGift'),
                            const.RECHARGE)  # 获取
 
         get_return(self.owner, return_data, response.gain)
         self._first_recharge_ids.append(recharge_item.get('id'))
         self.save_data()
+
+        logger.info('first recharge :%s:%s:%s', self._id,
+                    recharge_item.get('fristGift'), self._first_recharge_ids)
         return True
 
     @property
     def id(self):
-        return self._id
-
-    @id.setter
-    def id(self, bid):
-        self._id = bid
+        return self.owner.character_id
 
     @property
     def base_name(self):

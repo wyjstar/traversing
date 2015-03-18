@@ -22,6 +22,7 @@ from app.game.component.achievement.user_achievement import CountEvent,\
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 xs = 100000
@@ -417,6 +418,7 @@ def auto_travel_837(data, player):
     deal_auto_response(response, player)
 
     response.res.result = True
+    tlog_action.log('AutoTravel', player, stage_id, ttime)
     return response.SerializeToString()
 
 

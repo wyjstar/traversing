@@ -18,23 +18,24 @@ from test.init_data.mock_equipment import init_equipment
 from test.init_data.mock_equipment_chip import init_equipment_chip
 from test.init_data.mock_item import init_item
 import cPickle
-from app.proto_file.gm_pb2 import *
+# from app.proto_file.gm_pb2 import *
 
 
 remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
-def modify_user_level(data, player):
+def modify_user_info(data, player):
     args = cPickle.loads(data)
-    push = GmCommonModifyLevel()
-    push.level = int(args['level'])
-    player.base_info.level = int(args['level'])
-    player.base_info.save_data()
-    remote_gate.push_object_remote(850,
-                                   push.SerializeToString(),
-                                   [player.dynamic_id])
-    return {'success': 1}
+    if args['attr_name'] == 'user_level':
+        player.base_info.level = int(args['attr_value'])
+        player.base_info.save_data()
+        return {'success': 1}
+    # push = GmCommonModifyLevel()
+    # push.level = int(args['level'])
+    # remote_gate.push_object_remote(850,
+    #                                push.SerializeToString(),
+    #                                [player.dynamic_id])
 
 
 # ==========================================================

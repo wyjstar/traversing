@@ -43,3 +43,9 @@ message HeroSellResponse
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
 }
+
+message HeroRefineResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse consume = 2;
+}

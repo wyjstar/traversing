@@ -6,6 +6,8 @@ from gfirefly.server.logobj import logger
 import time
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
+from shared.tlog import tlog_action
+
 
 class ActStageLogic(base_stage.BaseStageLogic):
     """docstring for 活动关卡"""
@@ -47,6 +49,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
         """docstring for 结算"""
         player = self._player
         conf = self.get_stage_config()
+        stage_id = self._stage_id
         tm_time = time.localtime(player.stage_component.act_stage_info[1])
         if tm_time.tm_yday == time.localtime().tm_yday:
             player.stage_component.act_stage_info[0] += conf.timesExpend
@@ -54,3 +57,4 @@ class ActStageLogic(base_stage.BaseStageLogic):
             player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
         lively_event = CountEvent.create_event(EventType.STAGE_3, 1, ifadd=True)
         stage_util.settle(player, result, response, lively_event, conf)
+        tlog_action.log('RoundFlow', player, stage_id, 3, 0, result)

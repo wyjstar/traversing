@@ -9,6 +9,7 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.game.component.mine.monster_mine import MineOpt
+from shared.tlog import tlog_action
 
 
 class CharacterLineUpComponent(Component):
@@ -221,7 +222,10 @@ class CharacterLineUpComponent(Component):
 
         origin_hero_no = slot_obj.hero_slot.hero_no
         origin_hero = self.owner.hero_component.get_hero(origin_hero_no)
-        if origin_hero: origin_hero.is_online = False
+        if origin_hero:
+            origin_hero.is_online = False
+        else:
+            origin_hero_no = 0
         slot_obj.change_hero(hero_no)
 
         target_hero = self.owner.hero_component.get_hero(hero_no)
@@ -229,6 +233,8 @@ class CharacterLineUpComponent(Component):
             assert target_hero != None, "change hero can not be None!"
             target_hero.is_online = True
 
+        tlog_action.log('LineUpChange', self.owner, slot_no, origin_hero_no,
+                        hero_no, change_type)
         # 如果无双条件不满足，则无双设为空
         hero_nos = set(self.hero_nos)  # 阵容英雄编号
         for skill_id, item in game_configs.warriors_config.items():

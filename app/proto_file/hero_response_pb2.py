@@ -15,7 +15,7 @@ import hero_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='',
-  serialized_pb='\n\x13hero_response.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\"*\n\x10GetHerosResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"o\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x13\n\x0b\x62reak_level\x18\x03 \x01(\x05\"[\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB\"V\n\x10HeroSellResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x13hero_response.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\"*\n\x10GetHerosResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"o\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x13\n\x0b\x62reak_level\x18\x03 \x01(\x05\"[\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB\"V\n\x10HeroSellResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"[\n\x12HeroRefineResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -236,6 +236,41 @@ _HEROSELLRESPONSE = _descriptor.Descriptor(
   serialized_end=542,
 )
 
+
+_HEROREFINERESPONSE = _descriptor.Descriptor(
+  name='HeroRefineResponse',
+  full_name='HeroRefineResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='HeroRefineResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='HeroRefineResponse.consume', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=544,
+  serialized_end=635,
+)
+
 _GETHEROSRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
 _HEROUPGRADERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _HEROBREAKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -246,12 +281,15 @@ _HEROCOMPOSERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESP
 _HEROCOMPOSERESPONSE.fields_by_name['hero'].message_type = hero_pb2._HEROPB
 _HEROSELLRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _HEROSELLRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_HEROREFINERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_HEROREFINERESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['GetHerosResponse'] = _GETHEROSRESPONSE
 DESCRIPTOR.message_types_by_name['HeroUpgradeResponse'] = _HEROUPGRADERESPONSE
 DESCRIPTOR.message_types_by_name['HeroBreakResponse'] = _HEROBREAKRESPONSE
 DESCRIPTOR.message_types_by_name['HeroSacrificeResponse'] = _HEROSACRIFICERESPONSE
 DESCRIPTOR.message_types_by_name['HeroComposeResponse'] = _HEROCOMPOSERESPONSE
 DESCRIPTOR.message_types_by_name['HeroSellResponse'] = _HEROSELLRESPONSE
+DESCRIPTOR.message_types_by_name['HeroRefineResponse'] = _HEROREFINERESPONSE
 
 class GetHerosResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -288,6 +326,12 @@ class HeroSellResponse(_message.Message):
   DESCRIPTOR = _HEROSELLRESPONSE
 
   # @@protoc_insertion_point(class_scope:HeroSellResponse)
+
+class HeroRefineResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROREFINERESPONSE
+
+  # @@protoc_insertion_point(class_scope:HeroRefineResponse)
 
 
 # @@protoc_insertion_point(module_scope)
