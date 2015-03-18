@@ -3,6 +3,7 @@
 created by server on 14-7-16下午5:48.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.data_helper import parse
 
 
 class StageBreakConfig(object):
@@ -14,6 +15,7 @@ class StageBreakConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
+            row["discountPrice"] = parse(row.get("discountPrice"))
             item = CommonItem(row)
             # if not item.is_open:  # 乱入开放
             #     continue
