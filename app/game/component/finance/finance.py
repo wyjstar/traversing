@@ -79,7 +79,10 @@ class CharacterFinanceComponent(Component):
 
     @property
     def gold(self):
-        return self._finances[const.GOLD]
+        """
+        get gold num.
+        """
+        return self._finances[const.GOLD] - self._finances[const.CONSUME_GOLD]
 
     @gold.setter
     def gold(self, gold):
