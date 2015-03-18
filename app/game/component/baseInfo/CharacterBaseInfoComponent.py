@@ -25,7 +25,6 @@ class CharacterBaseInfoComponent(Component):
         Constructor
         """
         Component.__init__(self, owner)
-        self._id = 0                   # owner的id
         self._base_name = u''       # 基本名字
         self._level = 1  # 当前等级
         self._exp = 0  # 当前等级获得的经验
@@ -49,7 +48,6 @@ class CharacterBaseInfoComponent(Component):
         self._first_recharge_ids = []
 
     def init_data(self, character_info):
-        self._id = character_info['id']
         self._base_name = character_info['nickname']
         self._level = character_info['level']
         MineOpt.asadd('user_level', self.owner.base_info.id, self._level)
@@ -79,7 +77,7 @@ class CharacterBaseInfoComponent(Component):
         self.save_data()
 
     def save_data(self):
-        character_info = tb_character_info.getObj(self._id)
+        character_info = tb_character_info.getObj(self.id)
         self._upgrade_time = int(time.time())
 
         data = dict(level=self._level,
@@ -96,7 +94,7 @@ class CharacterBaseInfoComponent(Component):
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids)
         character_info.hmset(data)
-        # logger.debug("save level:%s,%s", str(self._id), str(data))
+        # logger.debug("save level:%s,%s", str(self.id), str(data))
 
     def new_data(self):
         init_level = game_configs.base_config.get('initialPlayerLevel')
@@ -134,7 +132,7 @@ class CharacterBaseInfoComponent(Component):
         while self._exp >= game_configs.player_exp_config.get(self._level).get('exp'):
             self._exp -= game_configs.player_exp_config.get(self._level).get('exp')
             self._level += 1
-            logger.info('player id:%s level up ++ %s>>%s', self._id, before_level, self._level)
+            logger.info('player id:%s level up ++ %s>>%s', self.id, before_level, self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
             if not game_configs.player_exp_config.get(self._level):
@@ -145,7 +143,7 @@ class CharacterBaseInfoComponent(Component):
 
     def generate_google_id(self, channel):
         if self._google_consume_id == '':
-            self._google_consume_id = '%s_%s_%s' % (self._id, channel,
+            self._google_consume_id = '%s_%s_%s' % (self.id, channel,
                                                     uuid.uuid1().get_hex())
         self.save_data()
         return self._google_consume_id
@@ -160,7 +158,7 @@ class CharacterBaseInfoComponent(Component):
 
     def first_recharge(self, recharge_item, response):
         if recharge_item.get('id') in self._first_recharge_ids:
-            logger.error('first recharge is repeated:%s:%s', self._id,
+            logger.error('first recharge is repeated:%s:%s', self.id,
                          recharge_item.get('fristGift'))
             return False
 
@@ -171,7 +169,7 @@ class CharacterBaseInfoComponent(Component):
         self._first_recharge_ids.append(recharge_item.get('id'))
         self.save_data()
 
-        logger.info('first recharge :%s:%s:%s', self._id,
+        logger.info('first recharge :%s:%s:%s', self.id,
                     recharge_item.get('fristGift'), self._first_recharge_ids)
         return True
 
