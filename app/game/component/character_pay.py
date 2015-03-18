@@ -35,8 +35,8 @@ class CharacterPay(Component):
         self._zoneid = str(value.get("zoneid"))
         self.get_balance() # 登录时从tx拉取gold
 
-    def get_balance_m(self):
-        logger.debug("get_balance_m: platform- %s\
+    def _get_balance_m(self):
+        logger.debug("_get_balance_m: platform- %s\
                      openid- %s \
                      openkey - %s \
                      pay_token - %s \
@@ -50,7 +50,7 @@ class CharacterPay(Component):
                       self._appid, self._appkey,
                       self._pf,
                       self._pfkey, self._zoneid))
-        if not const.PAY:
+        if not const.REMOTE_DEPLOYED:
             return
         try:
             data = GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
@@ -71,35 +71,106 @@ class CharacterPay(Component):
         return balance, gen_balance
 
     def get_balance(self):
-        result = self.get_balance_m()
+        result = self._get_balance_m()
         if not result:
             return False
 
-        balance, gen_balance = result
-        recharge_balance = balance - gen_balance
-        current_balance = recharge_balance - self._owner.finance.gold
-        if current_balance > 0:
-            self._owner.base_info.set_vip_level(balance)
+        balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
+        recharge_balance = balance - gen_balance # 累计充值数量
+        if recharge_balance > 0:
+            self._owner.base_info.set_vip_level(recharge_balance)
         self._owner.finance.gold = balance
         self._owner.finance.save_data()
         return True
 
-    def pay_m(self, num):
-        GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
+    def _pay_m(self, num):
+        result = {}
+        try:
+            result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
                                          self._pf, self._pfkey, self._zoneid, num)
-    def cancel_pay_m(self, num, billno):
-        GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
-                                         self._appkey, self._openkey, self._pay_token,
-                                         self._pf, self._pfkey, self._zoneid, num, billno)
+        except Exception, e:
+            logger.error("pay error:%s" % e)
+            return
 
-    def present_m(self, num):
+        if result['ret'] == 1018:
+            return False
+        elif result['ret'] != 0:
+            logger.error("pay_m failed: %s", result)
+            return False
+        billno = result['billno']
+        balance = result['balance']
+        return billno, balance
+
+
+
+    def pay(self, num, func=None, *args, **kwargs):
+        """
+        func: 发货方法
+        args, kwargs: 发货方法的参数
+        """
+        result = self._pay_m(num)
+        if not result:
+            return False
+        gain_res = []
+        if not func:
+            self.get_balance()
+            return gain_res
+        billno, _balance = result
+
+        try:
+            gain_res = func(*args, **kwargs)
+        except:
+            self._cancel_pay_m(num, billno)
+            return False
+        self.get_balance()
+        return gain_res
+
+    def _cancel_pay_m(self, num, billno):
+        """
+        取消订单
+        """
+        result = {}
+        try:
+            result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
+                                         self._appkey, self._openkey, self._pay_token,
+                                         self._pf, self._pfkey, self._zoneid, num)
+        except Exception, e:
+            logger.error("pay error:%s" % e)
+            return
+
+        if result['ret'] == 1018:
+            return False
+        elif result['ret'] != 0:
+            logger.error("cancel_pay_m failed: %s", result)
+        return True
+
+    def _present_m(self, num):
         """
         赠送gold, 用于掉落包中的gold
         """
-        pay = GlobalObject().pay
-        discountid = pay.discountid
-        giftid = pay.giftid
-        GlobalObject().pay.present_m(self._platform, self._openid, self._appid,
-                                         self._appkey, self._openkey, self._pay_token,
-                                         self._pf, self._pfkey, self._zoneid, discountid, giftid, num)
+        result = {}
+        try:
+            pay = GlobalObject().pay
+            discountid = pay.discountid
+            giftid = pay.giftid
+            result = GlobalObject().pay.present_m(self._platform, self._openid, self._appid,
+                                            self._appkey, self._openkey, self._pay_token,
+                                            self._pf, self._pfkey, self._zoneid, discountid, giftid, num)
+        except Exception, e:
+            logger.error("present error:%s" % e)
+            return
+
+        if result['ret'] == 1018:
+            return False
+        elif result['ret'] != 0:
+            logger.error("present_m failed: %s", result)
+            return False
+        return True
+
+    def present(self, num):
+        """
+        赠送gold, 用于掉落包中的gold, 更新gold
+        """
+        self._present_m(num)
+        self.get_balance()

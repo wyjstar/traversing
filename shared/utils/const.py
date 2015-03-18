@@ -45,7 +45,7 @@ const.MIDDLE_STONE = 5
 const.HIGH_STONE = 6
 const.STAMINA = 7
 const.PVP = 8
-const.GUILD = 9
+const.CONSUME_GOLD = 9
 const.GUILD2 = 11
 const.TEAM_EXPERIENCE = 12
 const.NECTAR = 13
@@ -177,4 +177,4 @@ const.GAIN = 1  # 掉落
 # ==================================================
 
 const.DEBUG = False
-const.PAY=True
+const.REMOTE_DEPLOYED=True
