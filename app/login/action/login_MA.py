@@ -9,6 +9,10 @@ from flask import request
 from app.login.model.manager import account_cache, server_manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
+from gfirefly.server.globalobject import GlobalObject
+
+
+SERVERS_MA_WEBPORT = GlobalObject().allconfig['servers']['MA']['webport']
 
 
 @webserviceHandle('/login')
@@ -34,7 +38,8 @@ def server_login():
 def __login(passport):
     """login """
     logger.info('player login passport:%s' % passport)
-    url_response = urllib.urlopen('http://localhost:30004/verify?passport=%s' % passport)
+    url = 'http://localhost:%s' % SERVERS_MA_WEBPORT
+    url_response = urllib.urlopen('%s/verify?passport=%s' % (url, passport))
     str_response = url_response.read()
     response = eval(str_response)
     if response.get('result') is True:

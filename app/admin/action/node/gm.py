@@ -16,6 +16,7 @@ from app.proto_file.db_pb2 import Mail_PB
 
 
 remote_gate = GlobalObject().remote['gate']
+MASTER_WEBPORT = GlobalObject().allconfig['master']['webport']
 
 
 @webserviceHandle('/gmtestdata:name')
@@ -48,7 +49,7 @@ def gm():
 def update_excel(args):
     url = args['excel_url']
     urllib.urlretrieve(url, 'config/excel_cpickle')
-    com = "curl localhost:30002/reloadmodule"
+    com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
     return {"success": 1}
 
