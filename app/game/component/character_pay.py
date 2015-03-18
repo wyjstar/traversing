@@ -33,7 +33,8 @@ class CharacterPay(Component):
         self._pf = str(value.get("pf"))
         self._pfkey = str(value.get("pfkey"))
         self._zoneid = str(value.get("zoneid"))
-        self.get_balance() # 登录时从tx拉取gold
+        if const.REMOTE_DEPLOYED:
+            self.get_balance() # 登录时从tx拉取gold
 
     def _get_balance_m(self):
         logger.debug("_get_balance_m: platform- %s\
