@@ -5,7 +5,6 @@ created by sphinx on
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
-from app.proto_file.notice_pb2 import NoticeResponse
 from gfirefly.server.globalobject import rootserviceHandle
 
 childsman = GlobalObject().root.childsmanager
@@ -33,6 +32,11 @@ def push_all_objects(topic_id, message):
 def push_notice_remote(topic_id, message):
     logger.debug("push_notice_remote===================")
     push_all_objects(topic_id, message)
+
+@rootserviceHandle
+def disconnect_remote(dynamic_id):
+    logger.debug("disconnect_remote===================")
+    disconnect(dynamic_id)
 
 @remoteserviceHandle('world')
 def push_message_to_transit_remote(key, character_id, *args):

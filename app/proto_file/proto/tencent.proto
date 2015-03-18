@@ -1,0 +1,7 @@
+import "common.proto";
+//command 2001, request:不发
+message GetGoldResponse{
+    required CommonResponse res = 1;
+    required int32 gold = 2;
+    required int32 vip_level = 3;
+}

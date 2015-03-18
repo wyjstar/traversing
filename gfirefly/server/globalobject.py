@@ -31,6 +31,8 @@ class GlobalObject:
         self.json_model_default_config = {}
         self.json_model_config = {}
         self.logclient = LogClient()
+        self.msdk = None
+        self.pay = None
 
     def config(self, netfactory=None, root=None, remote=None, db=None):
         """配置存放的对象实例

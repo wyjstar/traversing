@@ -8,8 +8,7 @@ from flask import request
 from app.login.model.manager import account_cache, server_manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
-from sdk.api.tencent.msdk import Msdk
-from sdk.util import logger_sdk
+from gfirefly.server.globalobject import GlobalObject
 
 host = 'msdk.qq.com'
 pay_host = ('10.142.22.11', 8080)
@@ -46,9 +45,7 @@ def server_login():
 def __login(platform, openid, access_token):
     """login """
     logger.debug('player login openid:%s access_token %s' % (openid, access_token))
-    log = logger_sdk.new_log('TxApi')
-    msdk = Msdk(host, qq_appid, qq_appkey, wx_appid, wx_appkey, log=log)
-    res = msdk.verify_login(int(platform), openid, access_token)
+    res = GlobalObject().msdk.verify_login(int(platform), openid, access_token)
     logger.debug(res)
     logger.debug(res)
     if res == 0:

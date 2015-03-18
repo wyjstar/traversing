@@ -8,6 +8,7 @@ from gfirefly.server.logobj import logger
 from app.game.core.PlayersManager import PlayersManager
 import traceback
 import time
+from shared.utils.exception import AuthError
 
 
 class GameCommandService(CommandService):
@@ -21,9 +22,10 @@ class GameCommandService(CommandService):
         #                 (target.__name__, self._name))
 
         t = time.time()
+        dynamic_id = args[0]
         try:
-            dynamic_id = args[0]
-            # logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
+            #logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
+
             if targetKey != 'enter_scene_remote':
                 _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
                 # print 'find player:', _player
@@ -36,6 +38,10 @@ class GameCommandService(CommandService):
             else:
                 response = target(*args, **kw)
 
+        except AuthError, e:
+            logger.exception(e)
+            GlobalObject().remote['gate'].disconnect_remote(dynamic_id)
+            return None
         except Exception, e:
             logger.exception(e)
             return None
@@ -82,3 +88,4 @@ import inherit
 import gm
 import sdk_google
 import sdk_apple
+import sdk_tencent

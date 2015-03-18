@@ -50,7 +50,7 @@ class FFServer:
 
     def config(self, config, servername=None, dbconfig=None,
                memconfig=None, redis_config=None, masterconf=None,
-               model_default_config=None, model_config=None):
+               model_default_config=None, model_config=None, msdk_config=None):
         """配置服务器"""
         GlobalObject().json_config = config
         GlobalObject().json_model_config = model_default_config
@@ -68,7 +68,6 @@ class FFServer:
         app = config.get('app')  # 入口模块名称
         cpuid = config.get('cpu')  # 绑定cpu
         mreload = config.get('reload')  # 重新加载模块名称
-        msdk_config = config.get('msdk')  # 重新加载模块名称
         self.servername = servername
 
         if logpath:
@@ -137,6 +136,7 @@ class FFServer:
             log = logger_sdk.new_log('TxApi')
             GlobalObject().msdk = Msdk(host, qq_appid, qq_appkey, wx_appid, wx_appkey, log=log)
             GlobalObject().pay = MidasApi(host, goods_host, valid_host, log=log)
+            print("================================")
         import admin
 
     def remote_connect(self, rname, rhost):

@@ -173,13 +173,16 @@
          "port": 6667
     },
     "msdk":{
-        "zone_id": 1001,
-        "host": "msdk.qq.com",
+        "zone_id": 1,
+        "host": "msdktest.qq.com",
 
         "qq_appid": 1104297231,
         "qq_appkey": "y33yRx3FveVZb1dw",
         "wx_appid": "wxf77437c08cb06196",
         "wx_appkey": "8274b9e862581f8b4976ba90ad2d4b77",
+
+        "discountid": "UM150313205618735",
+        "giftid": "2731288429PID201503132056187441",
 
         "pay_host": "10.142.22.11:8080",
         "goods_host": "10.142.22.11:8080",
