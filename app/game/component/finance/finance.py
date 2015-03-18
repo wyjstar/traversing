@@ -18,7 +18,7 @@ from gfirefly.server.globalobject import GlobalObject
 # const.HIGH_STONE = 6
 # const.STAMINA = 7
 # const.PVP = 8
-# const.GUILD = 9
+# const.CONSUME_GOLD = 9
 # const.GUILD2 = 11
 # const.TEAM_EXPERIENCE = 12
 # const.NECTAR = 13
@@ -126,32 +126,24 @@ class CharacterFinanceComponent(Component):
         return True
 
     def add_coin(self, num):
-        if const.PAY:
-            GlobalObject().pay.present_m()
-            coin = GlobalObject().pay.get_balance_m()
-            self._finances[const.COIN] = coin
         self._finances[const.COIN] += num
 
     def consume_coin(self, num):
         if num < self._finances[const.COIN]:
             return False
         self._finances[const.COIN] -= num
-        if const.PAY:
-            pay = GlobalObject().pay
-            pay.pay_m()
-            gold = pay.get_balance_m()
-            if gold != self._finances[const.COIN]:
-                logger.error("gold num != tencent server num")
-            self._finances[const.COIN] = gold
         return True
 
     def add_gold(self, num):
-        self._finances[const.GOLD] += num
+        if const.REMOTE_DEPLOYED:
+            self._owner.pay.present(num)
+        else:
+            self._finances[const.COIN] += num
 
     def consume_gold(self, num):
         if num > self._finances[const.GOLD]:
             return False
-        self._finances[const.GOLD] -= num
+        self._finances[const.CONSUME_GOLD] += num
         return True
 
     def add_hero_soul(self, num):

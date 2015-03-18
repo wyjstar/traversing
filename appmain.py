@@ -48,6 +48,7 @@ if __name__ == "__main__":
     redis_conf = config.get('redis')
     sersconf = config.get('servers', {})
     masterconf = config.get('master', {})
+    msdkconf = config.get('msdk', {})
 
     mconfig = json.load(open('models.json', 'r'))
     model_default_config = mconfig.get('model_default', {})
@@ -63,5 +64,7 @@ if __name__ == "__main__":
                redis_config=redis_conf,
                masterconf=masterconf,
                model_default_config=model_default_config,
-               model_config=model_config)
+               model_config=model_config,
+               msdk_config=msdkconf
+               )
     ser.start()

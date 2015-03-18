@@ -46,6 +46,7 @@ def server_login_2(command_id, dynamic_id, request_proto):
             account_response.result = __manage_user(uuid,
                                                     account_id,
                                                     dynamic_id)
+    logger.debug(account_response)
     return account_response.SerializeToString()
 
 

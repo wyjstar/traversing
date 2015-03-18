@@ -4,14 +4,16 @@ created by server on 15-2-11下午3:49.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
-from app.proto_file.tencent_pb2 import GetGoldReponse
-from gfirefly.server.globalobject import GlobalObject
+from app.proto_file.tencent_pb2 import GetGoldResponse
 
 @remoteserviceHandle('gate')
 def get_gold_2001(data, player):
     """客户端充值完成后，获取充值币信息"""
-    gold = GlobalObject().pay.get_balance_m(1,1,1)
-    response = GetGoldReponse()
-    response.gold = gold
-    logger.debug("get_gold_2001====== %s" % response.gold)
+    response = GetGoldResponse()
+    response.res.result = False
+    if player.pay.get_balance():
+        response.res.result = True
+        response.gold = player.finance.gold
+        response.vip_level = player.base_info.vip_level
+        logger.debug("get_gold_2001====== %s" % response.gold)
     return response.SerializeToString()

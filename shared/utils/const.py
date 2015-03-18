@@ -45,7 +45,7 @@ const.MIDDLE_STONE = 5
 const.HIGH_STONE = 6
 const.STAMINA = 7
 const.PVP = 8
-const.GUILD = 9
+const.CONSUME_GOLD = 9
 const.GUILD2 = 11
 const.TEAM_EXPERIENCE = 12
 const.NECTAR = 13
@@ -105,7 +105,6 @@ const.TRAVEL_ITEM = 109
 
 const.MAX_CONNECTION = 2000
 const.TIME_OUT = 60 * 10  # 秒
-const.CHANNEL = "taiwan"  # 渠道 tencent, taiwan
 const.TLOG_ADDR = ('192.168.10.25', 6667)
 
 # ========t_log=============
@@ -177,4 +176,5 @@ const.GAIN = 1  # 掉落
 # ==================================================
 
 const.DEBUG = False
-const.PAY=False
+const.REMOTE_DEPLOYED=False
+const.CHANNEL = "taiwan" # 渠道 tencent, taiwan

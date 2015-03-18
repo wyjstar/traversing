@@ -37,16 +37,24 @@ class HttpRequest(object):
             assert exception, "unimplemented method: log.exception"
             exception()
 
-    def request(self, url, data=None, cookie=None, json_type=False, ext_header={}, get_json=True):
+    def request(self, url, data=None, cookie=None, json_type=False, ext_header={}, get_json=True, method='post'):
         """
         请求数据
 
         Example:
             request('http://10.123.11.2:80/v3/pay_m', data={'key':10001})
         """
+        print "======",data, url
         response = {}
         log_response = {}
-        req = urllib2.Request(url)
+        if method.lower() == 'post':
+            dest_url = url
+        elif method.lower() == 'get':
+            if data:
+                dest_url = '%s?%s' % (url, data)
+            else:
+                dest_url = url
+        req = urllib2.Request(dest_url)
         if cookie:
             req.add_header('Cookie', cookie)
         if json_type:
@@ -54,7 +62,14 @@ class HttpRequest(object):
         for k, v in ext_header.items():
             req.add_header(k, v)
         try:
-            result = urllib2.urlopen(req, data=data, timeout=3)
+            if method.lower() == 'post':
+                result = urllib2.urlopen(req, data = data)
+            elif method.lower() == 'get':
+                result = urllib2.urlopen(req)
+            else:
+                raise TypeError, 'method invalid:%s' % method
+
+            #result = urllib2.urlopen(req, data=data, timeout=3)
             response = result.read()
             log_response = response
             if get_json:

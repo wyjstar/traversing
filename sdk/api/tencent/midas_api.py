@@ -6,6 +6,7 @@
 from sdk.api.tencent import common
 from sdk.func import xtime
 from sdk.util.http import HttpRequest
+#from gfirefly.server.logobj import logger
 
 
 class MidasApi(object):
@@ -13,11 +14,13 @@ class MidasApi(object):
     支付接口
     """
 
-    def __init__(self, host, goods_host, valid_host, log=None):
+    def __init__(self, host, goods_host, valid_host, log=None, discountid="", giftid=""):
         self.host = host
         self.goods_host = goods_host
         self.valid_host = valid_host
         self.http = HttpRequest(log)
+        self.discountid = discountid
+        self.giftid = giftid
 
     def _new_url(self, uri):
         return "http://%s%s" % (self.host, uri)
@@ -37,8 +40,9 @@ class MidasApi(object):
         gen_balance:赠送充值币个数
         first_save:是否满足首次充值，1：满足，0：不满足。
         """
-        uri = '/v3/r/mpay/get_balance_m'
+        uri = '/mpay/get_balance_m'
         cookie = common.create_cookie(platform, uri)
+        print cookie, "cookie============"
         params = {
                   'openid':openid,
                   'openkey':access_token,
@@ -50,8 +54,9 @@ class MidasApi(object):
                   'zoneid':zoneid,
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result
 
     def pay_m(self, platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid, amt):
@@ -62,7 +67,7 @@ class MidasApi(object):
         billno：预扣流水号
         balance：预扣后的余额
         """
-        uri = '/v3/r/mpay/pay_m'
+        uri = '/mpay/pay_m'
         cookie = common.create_cookie(platform, uri)
         params = {
                   'openid':openid,
@@ -76,8 +81,9 @@ class MidasApi(object):
                   'amt': amt,
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result
 
     def cancel_pay_m(self, platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid, amt, billno):
@@ -86,7 +92,7 @@ class MidasApi(object):
         {"ret":0}
         ret：返回码
         """
-        uri = '/v3/r/mpay/cancel_pay_m'
+        uri = '/mpay/cancel_pay_m'
         cookie = common.create_cookie(platform, uri)
         params = {
                   'openid':openid,
@@ -101,8 +107,9 @@ class MidasApi(object):
                   'billno': billno,
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result
 
     def present_m(self, platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid, discountid, giftid, presenttimes):
@@ -111,7 +118,7 @@ class MidasApi(object):
         {"ret":0}
         ret：返回码
         """
-        uri = '/v3/r/mpay/present_m'
+        uri = '/mpay/present_m'
         cookie = common.create_cookie(platform, uri)
         params = {
                   'openid':openid,
@@ -127,8 +134,9 @@ class MidasApi(object):
                   'presenttimes': presenttimes,
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result
 
     def buy_goods_m(self, platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid, payitem, goodsmeta, goodsurl, appmode=1):
@@ -137,7 +145,7 @@ class MidasApi(object):
         {"ret":0}
         ret：返回码
         """
-        uri = '/v3/r/mpay/buy_goods_m'
+        uri = '/mpay/buy_goods_m'
         cookie = common.create_cookie(platform, uri)
         params = {
                   'openid':openid,
@@ -154,8 +162,9 @@ class MidasApi(object):
                   'appmode': appmode,
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_goods_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result
 
     def activity_qualification(self, platform, openid, pay_appid, pay_appkey, access_token, pay_token, pf, pfkey, zoneid, req_from):
@@ -176,7 +185,7 @@ class MidasApi(object):
         discounturl：string 活动url，需要传给sdk
         """
         req_from = 'InGame' if req_from==1 else 'Market'
-        uri = '/v3/r/mpay/query_qualify_m'
+        uri = '/mpay/query_qualify_m'
         cookie = common.create_cookie(platform, uri)
         params = {
                   'openid':openid,
@@ -191,6 +200,7 @@ class MidasApi(object):
                   'accounttype': 'save',
                   'format':'json'
         }
-        en_params = common.encoding_params('post', uri, params, pay_appkey)
-        result = self.http.request(self._new_valid_url(uri), en_params, cookie)
+        method = 'get'
+        en_params = common.encoding_params(method, uri, params, pay_appkey)
+        result = self.http.request(self._new_url(uri), en_params, cookie, method=method)
         return result

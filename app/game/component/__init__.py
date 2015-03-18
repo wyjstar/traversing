@@ -32,6 +32,7 @@ from stone.user_stone import UserStone
 from character_runt import CharacterRuntComponent
 from baseInfo.CharacterBaseInfoComponent import CharacterBaseInfoComponent
 from character_recharge_gift import CharacterRechargeGift
+from character_pay import CharacterPay
 
 
 __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
@@ -47,5 +48,6 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterStaminaComponent', 'CharacterShopComponent',
            'CharacterBrewComponent', 'CharacterTravelComponent',
            'UserAchievement', 'UserMine', 'UserStone',
-           'CharacterBaseInfoComponent', 'CharacterRechargeGift'
+           'CharacterBaseInfoComponent', 'CharacterRechargeGift',
+           'CharacterPay'
            ]
