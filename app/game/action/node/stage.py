@@ -309,10 +309,10 @@ def stage_sweep(stage_id, times, player):
         if break_stage_id:
             break_stage_info = game_configs.stage_break_config.get(break_stage_id)
             ran = random.random()
-            if 0 <= break_stage_info.reward_odds:
+            if ran <= break_stage_info.reward_odds:
                 logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
                 data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
-                get_return(player, data, response.drops)
+                get_return(player, data, drops)
 
         player.stamina.stamina -= stage_config.vigor
         # 经验
