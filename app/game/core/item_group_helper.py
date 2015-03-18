@@ -160,7 +160,7 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
         result.append([type_id, num, item_no])
 
         # =====Tlog================
-        tlog_action.log('ItemFlow', player, const.ADD, type_id, num, item_no,
+        tlog_action.log('ItemFlow', player, const.REDUCE, type_id, num, item_no,
                         itid, reason, after_num, event_id)
 
     return result

@@ -280,6 +280,11 @@ def stage_sweep(stage_id, times, player):
         return response.SerializePartialToString()
     tlog_event_id = get_uuid()
 
+    # 武将乱入
+    fight_cache_component = player.fight_cache_component
+    fight_cache_component.stage_id = stage_id
+    red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
+
     for _ in range(times):
         drop = []
         drops = response.drops.add()
@@ -298,6 +303,16 @@ def stage_sweep(stage_id, times, player):
 
         data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
         get_return(player, data, drops)
+
+        # 乱入武将按概率获取碎片
+        break_stage_id = player.fight_cache_component.break_stage_id
+        if break_stage_id:
+            break_stage_info = game_configs.stage_break_config.get(break_stage_id)
+            ran = random.random()
+            if 0 <= break_stage_info.reward_odds:
+                logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
+                data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
+                get_return(player, data, response.drops)
 
         player.stamina.stamina -= stage_config.vigor
         # 经验
