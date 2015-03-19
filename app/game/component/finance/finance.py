@@ -122,7 +122,7 @@ class CharacterFinanceComponent(Component):
         if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
-        if fType == 2:
+        if fType == const.GOLD:
             self.add_gold(num)
         else:
             self._finances[fType] += num
@@ -141,7 +141,7 @@ class CharacterFinanceComponent(Component):
         if const.REMOTE_DEPLOYED:
             self._owner.pay.present(num)
         else:
-            self._finances[const.COIN] += num
+            self._finances[const.GOLD] += num
 
     def consume_gold(self, num):
         if num > self._finances[const.GOLD]:

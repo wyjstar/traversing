@@ -57,20 +57,20 @@ def from_admin_rpc_remote(args):
     reason = ''
     args = cPickle.loads(args)
     key = args.get('command')
-    gate_command = ['modify_user_info']
-    if args.get('command') in gate_command:
-        com = "gm." + args['command'] + "(args)"
-        res = eval(com)
+    # gate_command = ['modify_user_info']
+    # if args.get('command') in gate_command:
+    #     com = "gm." + args['command'] + "(args)"
+    #     res = eval(com)
+    # else:
+    oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
+    if oldvcharacter:
+        args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
+        child_node = groot.child(oldvcharacter.node)
+        res = child_node.callbackChild(*args)
     else:
-        oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
-        if oldvcharacter:
-            args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
-            child_node = groot.child(oldvcharacter.node)
-            res = child_node.callbackChild(*args)
-        else:
-            res = {'success': 0, 'message': '玩家不在线'}
+        res = {'success': 2}
 
-    print res, '#######################'
+    # print res, '#######################'
 
     return res
 
