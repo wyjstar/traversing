@@ -11,8 +11,10 @@ import cPickle
 import urllib
 import re
 import os
-from app.admin.redis_mode import tb_guild_info, tb_guild_name, tb_character_info
+import time
 from app.proto_file.db_pb2 import Mail_PB
+from app.admin.redis_mode import tb_guild_info, tb_guild_name, tb_character_info
+from app.admin.action.root.netforwarding import push_message
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -29,7 +31,7 @@ def gm_add_test_data(account_name='hello world'):
 def gm():
     response = {}
     res = {}
-    admin_command = ['update_excel', 'get_user_info']
+    admin_command = ['update_excel', 'get_user_info', 'send_mail']
     if request.args:
         t_dict = request.args
     else:
@@ -105,27 +107,29 @@ def get_user_info(args):
 
 
 def send_mail(args):
-    print "======1=========1========1=========1====="
-    users = tb_character_info.smem('all')
-    print users
-    #mail = Mail_PB()
+    mail = Mail_PB()
     # mail.sender_id = player.base_info.id
-    #mail.sender_name = player.base_info.base_name
-    #mail.sender_icon = player.base_info.head
-    #mail.receive_id = target_id
-    #mail.receive_name = ''
-    #mail.title = title
-    #mail.content = content
-    #mail.mail_type = MailComponent.TYPE_MESSAGE
-    #mail.prize = ''
-    #mail.send_time = int(time.time())
-    #mail_data = mail.SerializePartialToString()
+    mail.sender_name = args['sender_name']
+    mail.sender_icon = int(args['sender_icon'])
+    mail.receive_name = ''
+    mail.title = args['title']
+    mail.content = args['text']
+    mail.mail_type = 2
+    mail.prize = ''
+    mail.send_time = int(time.time())
+    # mail_data = mail.SerializePartialToString()
 
-    #if args['uids'] == '0':
-    #    for uid in []:
-    #        netforwarding.push_message_remote('receive_mail_remote',
-    #                                          uid, mail_data)
-    #else:
-    #    for uid in args['uids'].split(';'):
-    #        netforwarding.push_message_remote('receive_mail_remote',
-    #                                          int(uid), mail_data)
+    if args['uids'] == '0':
+        users = tb_character_info.smem('all')
+        print users
+        for uid in users:
+            mail.receive_id = uid
+            push_message('receive_mail_remote', uid,
+                         mail.SerializeToString())
+    else:
+        for uid in args['uids'].split(';'):
+            mail.receive_id = int(uid)
+            mail_data = mail.SerializeToString()
+            push_message('receive_mail_remote', int(uid),
+                         mail.SerializeToString())
+    return {'success': 1}

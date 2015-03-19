@@ -6,7 +6,7 @@ message Heads_DB{
 //邮件基本信息
 message Mail_PB
 {
-    required string mail_id = 1; // ID
+    optional string mail_id = 1; // ID
     optional int32 sender_id = 2; //发件人ID
     optional string sender_name = 3; //发件人
     optional int32 sender_icon = 4; //发件人Icon
