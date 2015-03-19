@@ -151,7 +151,7 @@ def new_guide_step_1802(data, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-    player.base_info.newbee_guide_id = new_guide_item.get('backID')
+    player.base_info.newbee_guide_id = request.step_id
     player.base_info.save_data()
     response.res.result = True
 
