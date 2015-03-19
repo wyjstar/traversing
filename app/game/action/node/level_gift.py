@@ -43,20 +43,22 @@ def get_level_gift_1131(data, player):
 def new_level_gift_840(data, player):
     """get online gift"""
     response = level_gift_pb2.NewLevelGiftResponse()
+    response.res.result = False
 
     conf = game_configs.activity_config.get(5)
 
-    for a in range(3, player.base_info.level+1):
+    for a in range(1, player.base_info.level+1):
         if not player.level_gift.level_gift[a]:
-            level_info = response.level_info.add()
-            level_info.level = a
+            if conf.get(a):
+                level_info = response.level_info.add()
+                level_info.level = a
 
-            gain_data = conf.get(a)['reward']
-            return_data = gain(player, gain_data, const.NEW_LEVEL_GIFT)
-            get_return(player, return_data, level_info.drops)
-            player.level_gift.level_gift[a] = 1
+                gain_data = conf.get(a)['reward']
+                return_data = gain(player, gain_data, const.NEW_LEVEL_GIFT)
+                get_return(player, return_data, level_info.drops)
+                player.level_gift.level_gift[a] = 1
+                response.res.result = True
 
     player.level_gift.save_data()
 
-    response.res.result = True
     return response.SerializeToString()
