@@ -176,5 +176,5 @@ const.GAIN = 1  # 掉落
 # ==================================================
 
 const.DEBUG = False
-const.REMOTE_DEPLOYED=False
-const.CHANNEL = "taiwan" # 渠道 tencent, taiwan
+const.REMOTE_DEPLOYED=True
+const.CHANNEL = "tencent" # 渠道 tencent, taiwan
