@@ -6,6 +6,7 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.utils.date_util import days_to_current
+from shared.db_opear.configs_data import game_configs
 
 
 class CharacterSignInComponent(Component):
@@ -94,3 +95,8 @@ class CharacterSignInComponent(Component):
             self._sign_in_days = []
         self.save_data()
 
+    def get_sign_in_reward(self, num):
+        for v in game_configs.activity_config[6]:
+            if v.parameterA == num:
+                return v.reward
+        logger.error("can not find reward!")
