@@ -157,6 +157,7 @@ class WorldBoss(BaseBoss):
         """
         logger.debug("current_stage_id1%s" % self._stage_id)
         current_stage_id = self._stage_id
+        origin_stage_id_am = self._stage_id_am
         if current_stage_id == 0:
             self._stage_id_am = 800101
             self._stage_id_pm = 800102
@@ -168,7 +169,7 @@ class WorldBoss(BaseBoss):
             else:  # pm
                 self._stage_id_pm = current_stage_id + 100
 
-        if current_stage_id == self._stage_id_am:
+        if current_stage_id == origin_stage_id_am:
             self._stage_id = self._stage_id_pm
         else:
             self._stage_id = self._stage_id_am
