@@ -20,5 +20,6 @@ class NewbeeGuideConfig(object):
         for row in config_value:
             data_helper.convert_keystr2num(row.get('rewards'))
             row["rewards"] = parse(row.get("rewards"))
+            row["consume"] = parse(row.get("consume"))
             self._data[row.get('id')] = row
         return self._data
