@@ -276,7 +276,7 @@ def find_friend_request_1107(data, player):
         ap = 1
         if friend_data['attackPoint'] is not None:
             ap = int(friend_data['attackPoint'])
-        response.atk = ap if ap else 0
+        response.power = ap if ap else 0
 
         friend_heads = Heads_DB()
         friend_heads.ParseFromString(friend_data['heads'])
