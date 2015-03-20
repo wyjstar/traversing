@@ -13,7 +13,6 @@ from app.gate.service.local.gateservice import local_service
 from shared.utils.ranking import Ranking
 import cPickle
 from gfirefly.server.logobj import logger
-import gm
 
 groot = GlobalObject().root
 
