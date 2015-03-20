@@ -12,8 +12,8 @@ message RankItems{
 
 message PlayerRankResponse{
     repeated RankItems rank_items = 1;
-	optional int32 player_rank = 2;
-	optional int32 pvp_score = 3;
+    optional int32 player_rank = 2;
+    optional int32 pvp_score = 3;
 }
 
 message PvpFightRequest{
@@ -36,6 +36,7 @@ message PvpFightResponse{
     optional int32 blue_skill = 6;       // 敌方无双
     optional int32 blue_skill_level = 7; // 敌方无双
     optional bool fight_result = 8;      // 战斗结果
-	optional int32 seed1= 9;             // 随机种子1
-	optional int32 seed2= 10;            // 随机种子2
+    optional int32 seed1= 9;             // 随机种子1
+    optional int32 seed2= 10;            // 随机种子2
+    optional GameResourcesResponse gain = 11;
 }

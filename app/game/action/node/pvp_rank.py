@@ -6,6 +6,9 @@ import cPickle
 import random
 import time
 from shared.utils.const import const
+from app.game.core.item_group_helper import gain
+from app.game.core.item_group_helper import get_return
+from shared.utils.const import const
 from app.proto_file import pvp_rank_pb2
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
@@ -146,6 +149,7 @@ def pvp_fight_request_1505(data, player):
                      game_configs.base_config.get('arena_free_times'))
         return False
     request = pvp_rank_pb2.PvpFightRequest()
+    response = pvp_rank_pb2.PvpFightResponse()
     request.ParseFromString(data)
     line_up = request.lineup
     __skill = request.skill
@@ -161,6 +165,13 @@ def pvp_fight_request_1505(data, player):
     if before_player_rank == request.challenge_rank:
         logger.error('cant not fight self')
         return False
+
+    _arena_win_points = game_configs.base_config.get('arena_win_points')
+    if _arena_win_points:
+        return_data = gain(player, _arena_win_points, const.ARENA_WIN)  # 获取
+        get_return(player, return_data, response.gain)
+    else:
+        logger.debug('arena win points is not find')
 
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
@@ -239,7 +250,6 @@ def pvp_fight_request_1505(data, player):
     player.base_info.pvp_times += 1
     player.base_info.pvp_refresh_time = time.time()
     player.base_info.save_data()
-    response = pvp_rank_pb2.PvpFightResponse()
     response.res.result = True
     pvp_assemble_units(red_units, blue_units, response)
     response.fight_result = fight_result
