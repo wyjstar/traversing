@@ -55,7 +55,6 @@ def character_login_4(key, dynamic_id, request_proto):
     # argument.gl_render = 'abc'
     # argument.gl_version = 'abcd'
     # argument.device_id = '1x2y'
-    print '!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#', argument
 
     tlog_action.log('PlayerLogin', response, argument)
     if data.get('is_new_character'):
