@@ -11,6 +11,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import game_pb2
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
+import time
 
 
 @local_service_handle
@@ -61,7 +62,8 @@ def character_login_4(key, dynamic_id, request_proto):
         tlog_action.log('PlayerRegister', response, argument)
 
     nickname = response.nickname
-    if nickname:
+    login_time = int(time.time())
+    if nickname and response.gag < login_time and response.closure < login_time:
         # 聊天室登录
         GlobalObject().child('chat').login_chat_remote(dynamic_id,
                                                        response.id,

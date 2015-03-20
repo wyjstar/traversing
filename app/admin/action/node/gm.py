@@ -33,7 +33,10 @@ def gm_add_test_data(account_name='hello world'):
 def gm():
     response = {}
     res = {}
-    admin_command = ['update_excel', 'get_user_info', 'send_mail']
+    admin_command = ['update_excel', 'get_user_info', 'send_mail',
+                     'get_user_hero_chips', 'get_user_eq_chips',
+                     'get_user_finances', 'get_user_items',
+                     'get_user_guild_info']
     if request.args:
         t_dict = request.args
     else:
@@ -49,6 +52,7 @@ def gm():
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
             res = eval(com)
+    logger.info('+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+server2gm:%s', res)
 
     return json.dumps(res)
 
@@ -197,3 +201,85 @@ def modify_user_info(args):
             return {'success': 0, 'message': 0}
     else:
         return {'success': 0, 'message': 2}
+
+
+def get_user_hero_chips(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    hero_chips_data = character_obj.hget('hero_chips')
+    message = {}
+    if hero_chips_data:
+        for no, num in hero_chips_data.items():
+            message[no] = num
+
+    return {'success': 1, 'message': message}
+
+
+def get_user_eq_chips(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    equipment_chips = character_obj.hget('equipment_chips')
+    message = {}
+    if equipment_chips:
+        for no, num in equipment_chips.items():
+            message[no] = num
+
+    return {'success': 1, 'message': message}
+
+
+def get_user_items(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    items = character_obj.hget('items')
+    message = {}
+    if items:
+        for no, num in items.items():
+            message[no] = num
+
+    return {'success': 1, 'message': message}
+
+
+def get_user_finances(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    finances = character_obj.hget('finances')
+    del finances[0]
+
+    return {'success': 1, 'message': finances}
+
+
+def get_user_guild_info(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    guild_id = character_obj.hget('guild_id')
+    if guild_id == 'no':
+        return {'success': 0, 'message': 2}
+
+    message = {}
+    position = character_obj.hget('position')
+    contribution = character_obj.hget('contribution')
+    all_contribution = character_obj.hget('all_contribution')
+    k_num = character_obj.hget('k_num')
+    worship = character_obj.hget('worship')
+    worship_time = character_obj.hget('worship_time')
+    exit_time = character_obj.hget('exit_time')
+    message = {'guild_id': guild_id,
+               'position': position,
+               'contribution': contribution,
+               'all_contribution': all_contribution,
+               'k_num': k_num,
+               'worship': worship,
+               'worship_time': worship_time,
+               'exit_time': exit_time}
+
+    return {'success': 1, 'message': message}

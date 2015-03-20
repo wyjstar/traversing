@@ -35,6 +35,8 @@ class CharacterBaseInfoComponent(Component):
         self._pvp_refresh_count = 0
         self._pvp_high_rank = 999999  # 玩家pvp最高排名
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
+        self._gag = 1    # 禁言到这个时间戳
+        self._closure = 1    # 封停到这个时间戳
 
         self._heads = Heads_DB()
         self._heads.now_head = game_configs.base_config.get('initialHead')
@@ -57,6 +59,11 @@ class CharacterBaseInfoComponent(Component):
         self._pvp_times = character_info['pvp_times']
         self._pvp_refresh_time = character_info['pvp_refresh_time']
         self._pvp_refresh_count = character_info['pvp_refresh_count']
+
+        self._pvp_high_rank = character_info['pvp_high_rank']
+        self._pvp_high_rank_award = character_info['pvp_high_rank_award']
+        self._gag = character_info['gag']
+        self._closure = character_info['closure']
 
         self._heads.ParseFromString(character_info['heads'])
         self._vip_level = character_info.get('vip_level')
@@ -83,6 +90,10 @@ class CharacterBaseInfoComponent(Component):
         data = dict(level=self._level,
                     nickname=self._base_name,
                     exp=self.exp,
+                    pvp_high_rank=self._pvp_high_rank,
+                    pvp_high_rank_award=self._pvp_high_rank_award,
+                    gag=self._gag,
+                    closure=self._closure,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
@@ -102,6 +113,10 @@ class CharacterBaseInfoComponent(Component):
         init_vip_level = game_configs.base_config.get('initialVipLevel')
         data = dict(level=init_level,
                     exp=self.exp,
+                    pvp_high_rank=self._pvp_high_rank,
+                    pvp_high_rank_award=self._pvp_high_rank_award,
+                    gag=self._gag,
+                    closure=self._closure,
                     nickname=u'',
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
@@ -411,3 +426,18 @@ class CharacterBaseInfoComponent(Component):
                 self.vip_level = i
                 self.save_data()
 
+    @property
+    def gag(self):
+        return self._gag
+
+    @gag.setter
+    def gag(self, value):
+        self._gag = value
+
+    @property
+    def closure(self):
+        return self._closure
+
+    @closure.setter
+    def closure(self, value):
+        self._closure = closure

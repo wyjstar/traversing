@@ -44,6 +44,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     responsedata.level = player.base_info.level
     responsedata.exp = player.base_info.exp
+    responsedata.gag = player.base_info.gag
+    responsedata.closure = player.base_info.closure
 
     for i in player.finance._finances:
         responsedata.finances.append(i)
