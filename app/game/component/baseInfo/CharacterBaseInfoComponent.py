@@ -60,11 +60,10 @@ class CharacterBaseInfoComponent(Component):
         self._pvp_refresh_time = character_info['pvp_refresh_time']
         self._pvp_refresh_count = character_info['pvp_refresh_count']
 
-        if character_info['pvp_high_rank']:
-            self._pvp_high_rank = character_info['pvp_high_rank']
-            self._pvp_high_rank_award = character_info['pvp_high_rank_award']
-            self._gag = character_info['gag']
-            self._closure = character_info['closure']
+        self._pvp_high_rank = character_info['pvp_high_rank']
+        self._pvp_high_rank_award = character_info['pvp_high_rank_award']
+        self._gag = character_info['gag']
+        self._closure = character_info['closure']
 
         self._heads.ParseFromString(character_info['heads'])
         self._vip_level = character_info.get('vip_level')
