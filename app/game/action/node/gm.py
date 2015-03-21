@@ -27,6 +27,22 @@ remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
+def ban_user(data, player):
+    args = cPickle.loads(data)
+    player.base_info.gag = args['lock_time']
+    player.base_info.save_data()
+    return {'success': 1}
+
+
+@remoteserviceHandle('gate')
+def ban_speak(data, player):
+    args = cPickle.loads(data)
+    player.base_info.closure = args['lock_time']
+    player.base_info.save_data()
+    return {'success': 1}
+
+
+@remoteserviceHandle('gate')
 def modify_user_info(data, player):
     args = cPickle.loads(data)
     if args['attr_name'] == 'user_level':
@@ -69,7 +85,7 @@ def modify_user_info(data, player):
             return {'success': 0, 'message': 0}
 
     else:
-        return {'success': 0}
+        return {'success': 0, 'message': 3}
     # push = GmCommonModifyLevel()
     # push.level = int(args['level'])
     # remote_gate.push_object_remote(850,

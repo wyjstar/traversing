@@ -200,7 +200,7 @@ def modify_user_info(args):
         else:
             return {'success': 0, 'message': 0}
     else:
-        return {'success': 0, 'message': 2}
+        return {'success': 0, 'message': 3}
 
 
 def get_user_hero_chips(args):
