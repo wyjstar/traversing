@@ -272,6 +272,16 @@ def find_friend_request_1107(data, player):
         response.id = player_data.hget('id')
         response.nickname = player_data.hget('nickname')
 
+        friend_data = player_data.hmget(['attackPoint', 'heads'])
+        ap = 1
+        if friend_data['attackPoint'] is not None:
+            ap = int(friend_data['attackPoint'])
+        response.power = ap if ap else 0
+
+        friend_heads = Heads_DB()
+        friend_heads.ParseFromString(friend_data['heads'])
+        response.hero_no = friend_heads.now_head
+
         # 添加好友主将的属性
         _with_battle_info(response, player_data.hget('id'))
 

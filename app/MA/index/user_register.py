@@ -90,7 +90,7 @@ def __user_login(account_name='', account_password=''):
                                             account_password=account_password))
     logger.info(get_result)
     if get_result is None:
-        return json.dumps(dict(result=False, id=11, result_no=2,
+        return json.dumps(dict(result=False, id=11, result_no=3300010007,
                           message='account name or password error!'))
 
     if get_result['id'] not in account_login_cache:

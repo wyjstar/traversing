@@ -44,12 +44,12 @@ message CharacterInfo{
     optional float atk = 7;  //攻
     optional float physical_def = 8;  //物理防御
     optional float magic_def = 9;  //魔法防御
-	optional int32 last_time = 10;
+    optional int32 last_time = 10;
 }
 
 // player friend items
 message GetPlayerFriendsResponse{
-	optional int32 open_receive = 1;
+    optional int32 open_receive = 1;
     optional int32 page_num = 2;
     repeated CharacterInfo friends = 3;
     repeated CharacterInfo blacklist = 4;
@@ -58,7 +58,7 @@ message GetPlayerFriendsResponse{
 
 // friend private chat:1060
 message FriendPrivateChatRequest{
-	optional int32 target_uid = 1;
-	optional string content = 2;
+    optional int32 target_uid = 1;
+    optional string content = 2;
 }
 
