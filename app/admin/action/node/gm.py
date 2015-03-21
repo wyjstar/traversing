@@ -283,3 +283,23 @@ def get_user_guild_info(args):
                'exit_time': exit_time}
 
     return {'success': 1, 'message': message}
+
+
+def ban_user(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+    closure = character_obj.hget('closure')
+    data = {'closure': int(args['attr_value'])}
+    character_obj.hmset(data)
+    return {'success': 1}
+
+
+def ban_speak(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+    closure = character_obj.hget('gag')
+    data = {'gag': int(args['attr_value'])}
+    character_obj.hmset(data)
+    return {'success': 1}

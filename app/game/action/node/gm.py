@@ -171,11 +171,11 @@ def add_guild_level_remote(data, player):
     if not guild_data:
         logger.debug('guild name not find1')
         return 0
-    if level >10:
+    if level > 10:
         level = 10
     guild_obj = Guild()
     guild_obj.init_data(guild_data)
     guild_obj.level = int(level)
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)
     guild_obj.save_data()
-    return {'success': 0}
+    return {'success': 1}
