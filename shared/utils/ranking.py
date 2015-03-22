@@ -61,7 +61,7 @@ class Ranking:
         获取某个key的名次
         """
         rank_no = tb_rank.zrank(self.label, key)
-        if not rank_no:
+        if not rank_no and rank_no != 0:
             return 0
         return rank_no + 1
 
