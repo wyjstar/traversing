@@ -403,17 +403,18 @@ class PlayerField(Mine):
                 self_sword = MineOpt.get_user("sword", uid)
                 if self_sword is None:
                     self_sword = 0
-                for one_user in uids:  # 取战力匹配的玩家
-                    one_user = int(one_user)
-                    # print one_user
-                    if one_user == uid:
-                        continue
-                    user_sword = MineOpt.get_user("sword", one_user)
-                    if user_sword is None:
-                        user_sword = 0
-                    if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
-                        continue
-                    match_users.append(one_user)
+                if uids:
+                    for one_user in uids:  # 取战力匹配的玩家
+                        one_user = int(one_user)
+                        # print one_user
+                        if one_user == uid:
+                            continue
+                        user_sword = MineOpt.get_user("sword", one_user)
+                        if user_sword is None:
+                            user_sword = 0
+                        if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
+                            continue
+                        match_users.append(one_user)
                 logger.debug('mine match player:%smatch_users')
                 if not match_users:  # 没有匹配的玩家生成野怪矿
                     return MonsterField.create(uid, nickname)
