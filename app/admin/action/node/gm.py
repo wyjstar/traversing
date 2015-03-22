@@ -53,14 +53,15 @@ def gm():
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
             res = eval(com)
-    logger.info('######################################erver2gm:%s', res)
+    logger.info('######################################server2gm:%s', res)
 
     return json.dumps(res)
 
 
 def update_excel(args):
     url = args['excel_url']
-    urllib.urlretrieve(url, 'config/excel_cpickle')
+    urllib.urlretrieve(url, '/var/excel_cpickle')
+    os.system("cp /var/excel_cpickle config/excel_cpickle")
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
     return {"success": 1}

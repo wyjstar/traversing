@@ -14,6 +14,10 @@ DEFAULT_JSON = dict(server_name='local',
 
 
 if __name__ == "__main__":
+
+    if os.path.exists('/var/excel_cpickle'):
+        os.system("cp /var/excel_cpickle config/excel_cpickle")
+
     if os.path.exists('template.json'):
         template = open('template.json')
         str_template = template.read()

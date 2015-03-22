@@ -79,11 +79,12 @@ def add_guild_to_rank_remote(g_id, dengji):
 
 
 @rootserviceHandle
-def login_chat_remote(dynamic_id, character_id, guild_id, nickname):
+def login_chat_remote(dynamic_id, character_id, guild_id, nickname, gag_time):
     return groot.child('chat').login_chat_remote(dynamic_id,
                                                  character_id,
                                                  nickname,
-                                                 guild_id)
+                                                 guild_id,
+                                                 gag_time)
 
 
 @rootserviceHandle

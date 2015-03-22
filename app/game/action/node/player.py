@@ -64,7 +64,8 @@ def nickname_create_5(request_proto, player):
     remote_gate.login_chat_remote(player.dynamic_id,
                                   player.base_info.id,
                                   player.guild.g_id,
-                                  nickname)
+                                  nickname,
+                                  player.base_info.gag)
 
     response.result = True
     return response.SerializeToString()
