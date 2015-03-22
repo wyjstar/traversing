@@ -69,8 +69,6 @@ def from_admin_rpc_remote(args):
     else:
         res = {'success': 2}
 
-    # print res, '#######################'
-
     return res
 
 

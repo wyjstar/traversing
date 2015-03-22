@@ -13,7 +13,8 @@ import re
 import os
 import time
 from app.proto_file.db_pb2 import Mail_PB
-from app.admin.redis_mode import tb_guild_info, tb_guild_name, tb_character_info
+from app.admin.redis_mode import tb_guild_info, tb_guild_name, \
+    tb_character_info
 from app.admin.action.root.netforwarding import push_message
 from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils import trie_tree
@@ -52,7 +53,7 @@ def gm():
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
             res = eval(com)
-    logger.info('+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+server2gm:%s', res)
+    logger.info('######################################erver2gm:%s', res)
 
     return json.dumps(res)
 
