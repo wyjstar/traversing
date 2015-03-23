@@ -16,6 +16,8 @@ from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHe
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import is_afford
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
 
@@ -162,6 +164,14 @@ def new_guide_step_1802(data, player):
     gain_data = new_guide_item.get('rewards')
     return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
     get_return(player, return_data, response.gain)
+
+    consume_config = new_guide_item.get('consume')
+    result = is_afford(player, consume_config)  # 校验
+    if not result.get('result'):
+        logger.error('newbee guide comsume:%s', consume_config)
+    else:
+        consume_data = consume(player, consume_config)
+        get_return(player, consume_data, response.consume)
 
     return response.SerializePartialToString()
 

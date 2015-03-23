@@ -24,11 +24,11 @@ if __name__ == "__main__":
             replace_items = DEFAULT_JSON.items()
         for k, v in replace_items:
             str_template = str_template.replace('<=%s=>' % k, v)
-            fp = open('config.json', 'w')
 
-            fp.write(str_template)
-            fp.flush()
-            fp.close()
+        fp = open('config.json', 'w')
+        fp.write(str_template)
+        fp.flush()
+        fp.close()
     else:
         print 'can not find template.json'
 
