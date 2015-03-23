@@ -13,6 +13,7 @@ from gfirefly.server.globalobject import GlobalObject
 
 
 SERVERS_MA_WEBPORT = GlobalObject().allconfig['servers']['MA']['webport']
+SERVER_MA_URL = GlobalObject().json_config['MA_url']
 
 
 @webserviceHandle('/login')
@@ -38,7 +39,7 @@ def server_login():
 def __login(passport):
     """login """
     logger.info('player login passport:%s' % passport)
-    url = 'http://localhost:%s' % SERVERS_MA_WEBPORT
+    url = '%s:%s' % (SERVER_MA_URL, SERVERS_MA_WEBPORT)
     url_response = urllib.urlopen('%s/verify?passport=%s' % (url, passport))
     str_response = url_response.read()
     response = eval(str_response)

@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_response.proto',
   package='',
-  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"]\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"2\n\x12\x43hangeHeadResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"\x86\x01\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"2\n\x12\x43hangeHeadResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -76,6 +76,13 @@ _NEWBEEGUIDESTEPRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='NewbeeGuideStepResponse.consume', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -85,8 +92,8 @@ _NEWBEEGUIDESTEPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=99,
-  serialized_end=192,
+  serialized_start=100,
+  serialized_end=234,
 )
 
 
@@ -113,12 +120,13 @@ _CHANGEHEADRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=194,
-  serialized_end=244,
+  serialized_start=236,
+  serialized_end=286,
 )
 
 _NEWBEEGUIDESTEPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _NEWBEEGUIDESTEPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_NEWBEEGUIDESTEPRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _CHANGEHEADRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['PlayerResponse'] = _PLAYERRESPONSE
 DESCRIPTOR.message_types_by_name['NewbeeGuideStepResponse'] = _NEWBEEGUIDESTEPRESPONSE

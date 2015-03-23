@@ -136,3 +136,12 @@ def trigger_mine_boss_remote():
 
     push_all_object_message(1707, response.SerializeToString())
     return True
+@rootserviceHandle
+def get_hp_left_remote(boss_id):
+    """
+    触发boss
+    """
+    boss = get_boss(boss_id)
+    print("+++++++++")
+    print(boss)
+    return int(boss.hp)
