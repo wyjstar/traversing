@@ -28,6 +28,7 @@
         "login": {
             "rootport": 30005,
             "webport": 30006,
+            "MA_url": "http://localhost",
             "db": true,
             "name": "login",
             "app": "app.login",
