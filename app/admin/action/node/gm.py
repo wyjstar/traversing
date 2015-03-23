@@ -307,5 +307,5 @@ def ban_speak(args):
     return {'success': 1}
 
 
-def get_user_heros_info:
+def get_user_heros_info(args):
     return {'success': 1}
