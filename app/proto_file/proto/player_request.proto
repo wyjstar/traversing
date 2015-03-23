@@ -11,6 +11,7 @@ message CreatePlayerRequest{
 
 message NewbeeGuideStepRequest{
 	required int32 step_id = 1;
+    optional string common_id = 2; // 用于装备，符文，武将等
 }
 message ChangeHeadRequest{
 	required int32 hero_id = 1;
