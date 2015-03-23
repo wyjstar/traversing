@@ -75,15 +75,25 @@ def hero_break_104(data, player):
     args = hero_request_pb2.HeroBreakRequest()
     args.ParseFromString(data)
     hero_no = args.hero_no
+    response = hero_response_pb2.HeroBreakResponse()
+    hero = player.hero_component.get_hero(hero_no)
+    res = hero_break_logic(hero_no, player)
+    if not res.get('result'):
+        response.res.result = False
+        response.res.result_no = res.get('result_no')
+        return response.SerializeToString()
+    response.res.result = True
+    response.break_level = hero.break_level
+    return response.SerializeToString()
+
+def hero_break_logic(hero_no, player):
     hero = player.hero_component.get_hero(hero_no)
     response = hero_response_pb2.HeroBreakResponse()
     hero_info = game_configs.hero_config.get(hero_no)
 
     # 验证武将是否突破到上限
     if hero.break_level == hero_info.breakLimit:
-        response.res.result = False
-        response.res.result_no = 201
-        return response.SerializeToString()
+        return {"result": False, "result_no": 201}
 
     consume_info = hero_info.get('consume' + str(hero.break_level+1))
     item_group = parse(consume_info)
@@ -91,9 +101,7 @@ def hero_break_104(data, player):
     # 判断是否足够
     result = is_afford(player, item_group)  # 校验
     if not result.get('result'):
-        response.res.result = False
-        response.res.result_no = result.get('result_no')
-        return response.SerializeToString()
+        return {"result": False, "result_no": result.get('result_no')}
 
     # 返回消耗
     return_data = consume(player, item_group)
@@ -106,11 +114,7 @@ def hero_break_104(data, player):
     hero.save_data()
     # 3、返回
     tlog_action.log('HeroBreak', player, hero_no, hero.break_level)
-    response.res.result = True
-    response.break_level = hero.break_level
-    return response.SerializeToString()
-
-def hero_break_logic():
+    return {"result": False, "break_level": hero.break_level}
 
 
 @remoteserviceHandle('gate')

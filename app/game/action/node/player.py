@@ -178,20 +178,20 @@ def new_guide_step_1802(data, player):
             response.res.result = res.get("result")
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
-    #elif request.step_id == GUIDE_HERO_UPGRADE:
-        #res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
-        #if not res.get("result"):
-            #logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id == GUIDE_HERO_BREAK:
-        #res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
-        #if not res.get("result"):
-            #logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
+    elif request.step_id == GUIDE_HERO_UPGRADE:
+        res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+        if not res.get("result"):
+            logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
+            response.res.result = res.get("result")
+            response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
+    elif request.step_id == GUIDE_HERO_BREAK:
+        res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+        if not res.get("result"):
+            logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
+            response.res.result = res.get("result")
+            response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
 
 
     logger.info('newbee:%s step:%s',
