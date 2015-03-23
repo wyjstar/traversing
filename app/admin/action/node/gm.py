@@ -37,7 +37,7 @@ def gm():
     admin_command = ['update_excel', 'get_user_info', 'send_mail',
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
-                     'get_user_guild_info']
+                     'get_user_guild_info', 'get_user_heros_info']
     if request.args:
         t_dict = request.args
     else:
@@ -53,7 +53,7 @@ def gm():
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
             res = eval(com)
-    logger.info('######################################server2gm:%s', res)
+    logger.info('######################################,server2gm:%s', res)
 
     return json.dumps(res)
 
@@ -304,4 +304,8 @@ def ban_speak(args):
     closure = character_obj.hget('gag')
     data = {'gag': int(args['attr_value'])}
     character_obj.hmset(data)
+    return {'success': 1}
+
+
+def get_user_heros_info:
     return {'success': 1}
