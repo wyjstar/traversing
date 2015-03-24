@@ -240,7 +240,8 @@ def pvb_fight_start_1705(pro_data, player):
     blue_units = stage_info.get('blue_units')
 
     blue_units = blue_units[0]
-
+    blue_units[5].hp = remote_gate['world'].get_hp_left_remote(boss_id)
+    logger.debug("blue_units===========%s" % blue_units[5].hp)
     logger.debug("--" * 40)
 
     # 根据鼓舞次数，增加ATK百分比
