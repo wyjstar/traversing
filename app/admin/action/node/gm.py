@@ -37,7 +37,7 @@ def gm():
     admin_command = ['update_excel', 'get_user_info', 'send_mail',
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
-                     'get_user_guild_info', 'get_user_heros_info']
+                     'get_user_guild_info', 'get_user_heros']
     if request.args:
         t_dict = request.args
     else:
@@ -307,5 +307,46 @@ def ban_speak(args):
     return {'success': 1}
 
 
-def get_user_heros_info(args):
-    return {'success': 1}
+def get_user_heros(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+    message = {}
+    heros = character_obj.hget('heroes')
+    for hid, data in heros.items():
+        hero_mes = {}
+        hero_mes['level'] = data['level']
+        hero_mes['exp'] = data['exp']
+        hero_mes['break_level'] = data['break_level']
+        hero_mes['refine'] = data['refine']
+        if data['is_guard']:
+            hero_mes['is_guard'] = 1
+        else:
+            hero_mes['is_guard'] = 0
+
+        if data['is_online']:
+            hero_mes['is_online'] = 1
+        else:
+            hero_mes['is_online'] = 0
+
+        message[data['hero_no']] = hero_mes
+
+    return {'success': 1, 'message': message}
+
+
+def get_user_eqs(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+    message = {}
+    eqs = character_obj.hget('equipments')
+    for hid, data in heros.items():
+        eq_mes = {}
+        eq_mes['eq_no'] = data['equipment_no']
+        eq_mes['slv'] = data['slv']
+        eq_mes['alv'] = data['alv']
+        eq_mes['prefix'] = data['prefix']
+
+        message[data['id']] = eq_mes
+
+    return {'success': 1, 'message': message}
