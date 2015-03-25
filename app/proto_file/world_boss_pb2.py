@@ -15,7 +15,7 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='world_boss.proto',
   package='',
-  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"\x1d\n\nPvbRequest\x12\x0f\n\x07\x62oss_id\x18\x01 \x02(\t\"X\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x15\n\rfirst_hero_no\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\"\x89\x03\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x18\n\x10lucky_high_heros\x18\x02 \x03(\x05\x12\x1a\n\x12lucky_middle_heros\x18\x03 \x03(\x05\x12\x17\n\x0flucky_low_heros\x18\x04 \x03(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x17\n\x0flast_fight_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\"8\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x02 \x01(\t\"S\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x03 \x01(\t\"U\n\x0fPvbStartRequest\x12\x0f\n\x07\x62oss_id\x18\x04 \x01(\t\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x02 \x01(\x05\x12\x0b\n\x03\x66id\x18\x03 \x01(\x05\"\xcf\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x02(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x02(\x05\x12\x14\n\x0c\x66ight_result\x18\x06 \x02(\x08\x12\r\n\x05seed1\x18\x07 \x01(\x05\x12\r\n\x05seed2\x18\x08 \x02(\x05\"S\n\x10MineBossResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07\x62oss_id\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x03 \x02(\x05')
+  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"\x1d\n\nPvbRequest\x12\x0f\n\x07\x62oss_id\x18\x01 \x02(\t\"X\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x15\n\rfirst_hero_no\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\"O\n\rLuckyHeroAttr\x12\x11\n\tattr_type\x18\x01 \x02(\x05\x12\x17\n\x0f\x61ttr_value_type\x18\x02 \x02(\x05\x12\x12\n\nattr_value\x18\x03 \x02(\x02\"K\n\rLuckyHeroItem\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x1c\n\x04\x61ttr\x18\x03 \x03(\x0b\x32\x0e.LuckyHeroAttr\"\xdf\x02\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12#\n\x0blucky_heros\x18\x02 \x03(\x0b\x32\x0e.LuckyHeroItem\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x17\n\x0flast_fight_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\"8\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x02 \x01(\t\"S\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x03 \x01(\t\"U\n\x0fPvbStartRequest\x12\x0f\n\x07\x62oss_id\x18\x04 \x01(\t\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x02 \x01(\x05\x12\x0b\n\x03\x66id\x18\x03 \x01(\x05\"\xcf\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x02(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x02(\x05\x12\x14\n\x0c\x66ight_result\x18\x06 \x02(\x08\x12\r\n\x05seed1\x18\x07 \x01(\x05\x12\r\n\x05seed2\x18\x08 \x02(\x05\"S\n\x10MineBossResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07\x62oss_id\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x03 \x02(\x05')
 
 
 
@@ -97,6 +97,90 @@ _PVBRANKITEM = _descriptor.Descriptor(
 )
 
 
+_LUCKYHEROATTR = _descriptor.Descriptor(
+  name='LuckyHeroAttr',
+  full_name='LuckyHeroAttr',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='attr_type', full_name='LuckyHeroAttr.attr_type', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='attr_value_type', full_name='LuckyHeroAttr.attr_value_type', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='attr_value', full_name='LuckyHeroAttr.attr_value', index=2,
+      number=3, type=2, cpp_type=6, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=168,
+  serialized_end=247,
+)
+
+
+_LUCKYHEROITEM = _descriptor.Descriptor(
+  name='LuckyHeroItem',
+  full_name='LuckyHeroItem',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='pos', full_name='LuckyHeroItem.pos', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero_no', full_name='LuckyHeroItem.hero_no', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='attr', full_name='LuckyHeroItem.attr', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=249,
+  serialized_end=324,
+)
+
+
 _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
   name='PvbBeforeInfoResponse',
   full_name='PvbBeforeInfoResponse',
@@ -112,98 +196,84 @@ _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='lucky_high_heros', full_name='PvbBeforeInfoResponse.lucky_high_heros', index=1,
-      number=2, type=5, cpp_type=1, label=3,
+      name='lucky_heros', full_name='PvbBeforeInfoResponse.lucky_heros', index=1,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='lucky_middle_heros', full_name='PvbBeforeInfoResponse.lucky_middle_heros', index=2,
-      number=3, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='lucky_low_heros', full_name='PvbBeforeInfoResponse.lucky_low_heros', index=3,
-      number=4, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='debuff_skill_no', full_name='PvbBeforeInfoResponse.debuff_skill_no', index=4,
+      name='debuff_skill_no', full_name='PvbBeforeInfoResponse.debuff_skill_no', index=2,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='rank_items', full_name='PvbBeforeInfoResponse.rank_items', index=5,
+      name='rank_items', full_name='PvbBeforeInfoResponse.rank_items', index=3,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='last_shot_item', full_name='PvbBeforeInfoResponse.last_shot_item', index=6,
+      name='last_shot_item', full_name='PvbBeforeInfoResponse.last_shot_item', index=4,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='open_or_not', full_name='PvbBeforeInfoResponse.open_or_not', index=7,
+      name='open_or_not', full_name='PvbBeforeInfoResponse.open_or_not', index=5,
       number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hp_left', full_name='PvbBeforeInfoResponse.hp_left', index=8,
+      name='hp_left', full_name='PvbBeforeInfoResponse.hp_left', index=6,
       number=9, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='demage_hp', full_name='PvbBeforeInfoResponse.demage_hp', index=9,
+      name='demage_hp', full_name='PvbBeforeInfoResponse.demage_hp', index=7,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='rank_no', full_name='PvbBeforeInfoResponse.rank_no', index=10,
+      name='rank_no', full_name='PvbBeforeInfoResponse.rank_no', index=8,
       number=11, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='fight_times', full_name='PvbBeforeInfoResponse.fight_times', index=11,
+      name='fight_times', full_name='PvbBeforeInfoResponse.fight_times', index=9,
       number=12, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='last_fight_time', full_name='PvbBeforeInfoResponse.last_fight_time', index=12,
+      name='last_fight_time', full_name='PvbBeforeInfoResponse.last_fight_time', index=10,
       number=13, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='encourage_coin_num', full_name='PvbBeforeInfoResponse.encourage_coin_num', index=13,
+      name='encourage_coin_num', full_name='PvbBeforeInfoResponse.encourage_coin_num', index=11,
       number=14, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='encourage_gold_num', full_name='PvbBeforeInfoResponse.encourage_gold_num', index=14,
+      name='encourage_gold_num', full_name='PvbBeforeInfoResponse.encourage_gold_num', index=12,
       number=15, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -218,8 +288,8 @@ _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=169,
-  serialized_end=562,
+  serialized_start=327,
+  serialized_end=678,
 )
 
 
@@ -253,8 +323,8 @@ _PVBPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=564,
-  serialized_end=620,
+  serialized_start=680,
+  serialized_end=736,
 )
 
 
@@ -295,8 +365,8 @@ _ENCOURAGEHEROSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=622,
-  serialized_end=705,
+  serialized_start=738,
+  serialized_end=821,
 )
 
 
@@ -344,8 +414,8 @@ _PVBSTARTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=707,
-  serialized_end=792,
+  serialized_start=823,
+  serialized_end=908,
 )
 
 
@@ -421,8 +491,8 @@ _PVBFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=795,
-  serialized_end=1002,
+  serialized_start=911,
+  serialized_end=1118,
 )
 
 
@@ -463,10 +533,12 @@ _MINEBOSSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1004,
-  serialized_end=1087,
+  serialized_start=1120,
+  serialized_end=1203,
 )
 
+_LUCKYHEROITEM.fields_by_name['attr'].message_type = _LUCKYHEROATTR
+_PVBBEFOREINFORESPONSE.fields_by_name['lucky_heros'].message_type = _LUCKYHEROITEM
 _PVBBEFOREINFORESPONSE.fields_by_name['rank_items'].message_type = _PVBRANKITEM
 _PVBBEFOREINFORESPONSE.fields_by_name['last_shot_item'].message_type = _PVBRANKITEM
 _PVBFIGHTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -475,6 +547,8 @@ _PVBFIGHTRESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNIT
 _MINEBOSSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['PvbRequest'] = _PVBREQUEST
 DESCRIPTOR.message_types_by_name['PvbRankItem'] = _PVBRANKITEM
+DESCRIPTOR.message_types_by_name['LuckyHeroAttr'] = _LUCKYHEROATTR
+DESCRIPTOR.message_types_by_name['LuckyHeroItem'] = _LUCKYHEROITEM
 DESCRIPTOR.message_types_by_name['PvbBeforeInfoResponse'] = _PVBBEFOREINFORESPONSE
 DESCRIPTOR.message_types_by_name['PvbPlayerInfoRequest'] = _PVBPLAYERINFOREQUEST
 DESCRIPTOR.message_types_by_name['EncourageHerosRequest'] = _ENCOURAGEHEROSREQUEST
@@ -493,6 +567,18 @@ class PvbRankItem(_message.Message):
   DESCRIPTOR = _PVBRANKITEM
 
   # @@protoc_insertion_point(class_scope:PvbRankItem)
+
+class LuckyHeroAttr(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _LUCKYHEROATTR
+
+  # @@protoc_insertion_point(class_scope:LuckyHeroAttr)
+
+class LuckyHeroItem(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _LUCKYHEROITEM
+
+  # @@protoc_insertion_point(class_scope:LuckyHeroItem)
 
 class PvbBeforeInfoResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

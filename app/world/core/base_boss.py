@@ -15,9 +15,7 @@ class BaseBoss(object):
     """docstring for Boss 基类"""
     def __init__(self, boss_name, rank_instance, config_name, tb_boss):
         self._boss_name = boss_name    # boss 名称：对应redis key
-        self._lucky_high_heros = []    # 高级幸运武将
-        self._lucky_middle_heros = []  # 中级幸运武将
-        self._lucky_low_heros = []     # 低级幸运武将
+        self._lucky_heros = {}    # 幸运武将
         self._debuff_skill_no = 0      # debuff id
         self._last_shot_item = {}      # 最后击杀
         self._stage_id = 0             # 关卡id
@@ -30,9 +28,7 @@ class BaseBoss(object):
 
     def init_base_data(self, boss_data):
         """docstring for init_base_data"""
-        self._lucky_high_heros = boss_data.get("lucky_high_heros")
-        self._lucky_middle_heros = boss_data.get("lucky_middle_heros")
-        self._lucky_low_heros = boss_data.get("lucky_low_heros")
+        self._lucky_heros = boss_data.get("lucky_heros")
 
         self._debuff_skill_no = boss_data.get("debuff_skill_no")
         self._last_shot_item = boss_data.get("last_shot_item")
@@ -58,9 +54,7 @@ class BaseBoss(object):
 
     def get_data_dict(self):
         return dict(hp=self._hp,
-                    lucky_high_heros=self._lucky_high_heros,
-                    lucky_middle_heros=self._lucky_middle_heros,
-                    lucky_low_heros=self._lucky_low_heros,
+                    lucky_heros=self._lucky_heros,
                     debuff_skill_no=self._debuff_skill_no,
                     last_shot_item=self._last_shot_item,
                     stage_id=self._stage_id,
@@ -79,16 +73,8 @@ class BaseBoss(object):
         self._last_shot_item = value
 
     @property
-    def lucky_high_heros(self):
-        return self._lucky_high_heros
-
-    @property
-    def lucky_middle_heros(self):
-        return self._lucky_middle_heros
-
-    @property
-    def lucky_low_heros(self):
-        return self._lucky_low_heros
+    def lucky_heros(self):
+        return self._lucky_heros
 
     @property
     def boss_dead_time(self):
