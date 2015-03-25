@@ -89,17 +89,18 @@ def stage_start_903(pro_data, player):
     logger.debug("red_best_skill_id,%s" % red_best_skill_id)
     logger.debug("fid,%s" % fid)
     response = stage_response_pb2.StageStartResponse()
-
+    open_stage_id = 0
     if stage_type == 2:
         open_stage_id = game_configs.base_config.get('specialStageStageOpenStage')
     if stage_type == 3:
         open_stage_id = game_configs.base_config.get('activityStageOpenStage')
     if stage_type == 5:
         open_stage_id = game_configs.base_config.get('warFogOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
+    if open_stage_id:
+        if player.stage_component.get_stage(open_stage_id).state == -2:
+            response.res.result = False
+            response.res.result_no = 837
+            return response.SerializeToString()
 
     stage_info = pve_process(stage_id, stage_type, line_up, fid, player, red_best_skill_id)
     result = stage_info.get('result')
