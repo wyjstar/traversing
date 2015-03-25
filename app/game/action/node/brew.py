@@ -11,6 +11,7 @@ from app.game.core.lively import task_status
 
 from gfirefly.server.globalobject import GlobalObject
 remote_gate = GlobalObject().remote['gate']
+from shared.db_opear.configs_data import game_configs
 
 
 @remoteserviceHandle('gate')
