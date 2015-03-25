@@ -104,7 +104,7 @@ def runt_pick_842(data, player):
             need_coin += game_configs.stone_config.get('stones').get(runt_info[1]).PickPrice
             runts.append(runt_info)
 
-    if player.finance.gold < need_coin:
+    if player.finance.coin < need_coin:
         response.res.result = False
         response.res.result_no = 101  # 银币不足
         return response.SerializeToString()
@@ -128,7 +128,7 @@ def runt_pick_842(data, player):
     hero.save_data()
     player.runt.save()
 
-    player.finance.consume_gold(need_coin)
+    player.finance.consume_coin(need_coin)
     player.finance.save_data()
 
     response.res.result = True

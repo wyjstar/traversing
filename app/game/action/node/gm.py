@@ -29,7 +29,6 @@ remote_gate = GlobalObject().remote['gate']
 @remoteserviceHandle('gate')
 def ban_user(data, player):
     args = cPickle.loads(data)
-    # todo 踢人下线
     player.base_info.closure = args['lock_time']
     player.base_info.save_data()
     return {'success': 1}
@@ -38,7 +37,6 @@ def ban_user(data, player):
 @remoteserviceHandle('gate')
 def ban_speak(data, player):
     args = cPickle.loads(data)
-    # todo 踢出聊天室
     remote_gate.login_chat_remote(player.dynamic_id,
                                   player.base_info.id,
                                   player.guild.g_id,
