@@ -14,6 +14,7 @@ from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
+from shared.db_opear.configs_data import game_configs
 
 # from app.proto_file import world_boss_pb2
 
