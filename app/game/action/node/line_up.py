@@ -221,6 +221,15 @@ def unpar_upgrade_705(pro_data, player):
     return response.SerializePartialToString()
 
 
+def change_hero_logic(slot_no, hero_no, change_type, player):
+    if hero_no != 0 and hero_no in player.line_up_component.hero_nos:
+        # 校验该武将是否已经上阵
+        return {"result": False, "result_no": 701}
+
+    player.line_up_component.change_hero(slot_no, hero_no, change_type)
+    player.line_up_component.save_data()
+    return {"result": True }
+
 def change_hero(slot_no, hero_no, change_type, player):
     """
     @param dynamic_id:
@@ -232,16 +241,13 @@ def change_hero(slot_no, hero_no, change_type, player):
     logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d",
                  slot_no, hero_no, change_type)
 
-    # 校验该武将是否已经上阵
+    res = change_hero_logic(slot_no, hero_no, change_type, player)
     response = line_up_pb2.LineUpResponse()
-    if hero_no != 0 and hero_no in player.line_up_component.hero_nos:
+    if not res.get("result"):
         logger.debug("hero already in the line up+++++++")
-        response.res.result = False
-        response.res.result_no = 701
+        response.res.result = res.get("result")
+        response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
-
-    player.line_up_component.change_hero(slot_no, hero_no, change_type)
-    player.line_up_component.save_data()
 
     response = line_up_info(player)
 

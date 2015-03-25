@@ -20,6 +20,9 @@ from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
+from app.game.action.node.line_up import change_hero_logic
+from app.game.action.node.equipment import enhance_equipment
+from app.game.action.node.hero import hero_upgrade_with_item_logic
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -141,6 +144,12 @@ def add_stamina_7(request_proto, player):
     return response.SerializePartialToString()
 
 
+GUIDE_LINE_UP = 20029
+GUIDE_EQUIP_STRENGTH = 10002
+GUIDE_HERO_UPGRADE = 10003
+GUIDE_HERO_BREAK = 10004
+
+
 @remoteserviceHandle('gate')
 def new_guide_step_1802(data, player):
     request = NewbeeGuideStepRequest()
@@ -153,9 +162,36 @@ def new_guide_step_1802(data, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-    player.base_info.newbee_guide_id = request.step_id
-    player.base_info.save_data()
-    response.res.result = True
+
+    if request.step_id == GUIDE_LINE_UP:
+        res = change_hero_logic(new_guide_item.get("Special")[0], new_guide_item.get("Special")[1], 0, player)
+        if not res.get("result"):
+            logger.debug("hero already in the line up+++++++")
+            response.res.result = res.get("result")
+            response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
+    elif request.step_id == GUIDE_EQUIP_STRENGTH:
+        res = enhance_equipment(request.common_id, 1, player)
+        if not res.get("result"):
+            logger.debug("equipment strength error========= %s" % res.get("result_no"))
+            response.res.result = res.get("result")
+            response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
+    #elif request.step_id == GUIDE_HERO_UPGRADE:
+        #res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+        #if not res.get("result"):
+            #logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
+            #response.res.result = res.get("result")
+            #response.res.result_no = res.get("result_no")
+            #return response.SerializePartialToString()
+    #elif request.step_id == GUIDE_HERO_BREAK:
+        #res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+        #if not res.get("result"):
+            #logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
+            #response.res.result = res.get("result")
+            #response.res.result_no = res.get("result_no")
+            #return response.SerializePartialToString()
+
 
     logger.info('newbee:%s step:%s',
                 player.base_info.id,
@@ -172,6 +208,11 @@ def new_guide_step_1802(data, player):
     else:
         consume_data = consume(player, consume_config)
         get_return(player, consume_data, response.consume)
+
+
+    player.base_info.newbee_guide_id = request.step_id
+    player.base_info.save_data()
+    response.res.result = True
 
     return response.SerializePartialToString()
 

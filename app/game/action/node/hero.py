@@ -38,26 +38,35 @@ def hero_upgrade_with_item_103(data, player):
     hero_no = args.hero_no
     exp_item_no = args.exp_item_no
     exp_item_num = args.exp_item_num
-    exp_item = player.item_package.get_item(exp_item_no)
     # 服务器验证
-    if exp_item:
-        if exp_item.num < exp_item_num:
-            response.res.result = False
-            response.res.result_no = 106
-            response.res.message = u"经验药水道具不足！"
-            return response.SerializeToString()
-    else:
+    res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+    if not res.get("result"):
+        response.res.result = res.get("result")
+        response.res.result_no = res.get("result_no")
+        return response.SerializeToString()
+    # 返回
+    hero = res.get("hero")
+    response.res.result = True
+    response.level = hero.level
+    response.exp = hero.exp
+    return response.SerializeToString()
+
+def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
+    """docstring for hero_upgrade_with_item_logic"""
+    exp_item = player.item_package.get_item(exp_item_no)
+    if not exp_item:
         logger.error('item package can not get item:%d' % exp_item_no)
+        return {"result": False}
+    # 服务器验证
+    if exp_item.num < exp_item_num:
+        return {"result": False, "result_no": 106}
     exp = game_configs.item_config.get(exp_item_no).get('funcArg1')
     hero = player.hero_component.get_hero(hero_no)
     hero.upgrade(exp * exp_item_num, player.base_info.level)
     hero.save_data()
     player.item_package.consume_item(exp_item_no, exp_item_num)
-    # 返回
-    response.res.result = True
-    response.level = hero.level
-    response.exp = hero.exp
-    return response.SerializeToString()
+    return {"result": True, "hero": hero}
+
 
 
 @remoteserviceHandle('gate')
@@ -100,6 +109,8 @@ def hero_break_104(data, player):
     response.res.result = True
     response.break_level = hero.break_level
     return response.SerializeToString()
+
+def hero_break_logic():
 
 
 @remoteserviceHandle('gate')

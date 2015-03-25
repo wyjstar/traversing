@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_request.proto',
   package='',
-  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\")\n\x16NewbeeGuideStepRequest\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\"$\n\x11\x43hangeHeadRequest\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05')
+  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\"<\n\x16NewbeeGuideStepRequest\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tcommon_id\x18\x02 \x01(\t\"$\n\x11\x43hangeHeadRequest\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05')
 
 
 
@@ -88,6 +88,13 @@ _NEWBEEGUIDESTEPREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='common_id', full_name='NewbeeGuideStepRequest.common_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -98,7 +105,7 @@ _NEWBEEGUIDESTEPREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=102,
-  serialized_end=143,
+  serialized_end=162,
 )
 
 
@@ -125,8 +132,8 @@ _CHANGEHEADREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=145,
-  serialized_end=181,
+  serialized_start=164,
+  serialized_end=200,
 )
 
 DESCRIPTOR.message_types_by_name['PlayerLoginRequest'] = _PLAYERLOGINREQUEST
