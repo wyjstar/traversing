@@ -81,18 +81,29 @@ def stage_start_903(pro_data, player):
     request.ParseFromString(pro_data)
 
     stage_id = request.stage_id          # 关卡编号
-    stage_type = request.stage_type      # 关卡类型
+    stage_type = request.stage_type      # 关卡类型 1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
     line_up = request.lineup            # 阵容顺序
     red_best_skill_id = request.unparalleled  # 无双编号
     fid = request.fid                    # 好友ID
 
     logger.debug("red_best_skill_id,%s" % red_best_skill_id)
     logger.debug("fid,%s" % fid)
+    response = stage_response_pb2.StageStartResponse()
+
+    if stage_type == 2:
+        open_stage_id = game_configs.base_config.get('specialStageStageOpenStage')
+    if stage_type == 3:
+        open_stage_id = game_configs.base_config.get('activityStageOpenStage')
+    if stage_type == 5:
+        open_stage_id = game_configs.base_config.get('warFogOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
 
     stage_info = pve_process(stage_id, stage_type, line_up, fid, player, red_best_skill_id)
     result = stage_info.get('result')
 
-    response = stage_response_pb2.StageStartResponse()
     res = response.res
     res.result = result
 

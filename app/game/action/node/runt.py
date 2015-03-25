@@ -25,6 +25,13 @@ def runt_set_841(data, player):
     runt_no = args.runt_no
 
     response = RuntSetResponse()
+
+    open_stage_id = game_configs.base_config.get('totemOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
 
     response.res.result = res.get('result')

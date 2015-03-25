@@ -217,6 +217,13 @@ def pvb_fight_start_1705(pro_data, player):
     boss = player.world_boss.get_boss(boss_id)
     base_config = boss.get_base_config()
 
+    response = PvbFightResponse()
+
+    open_stage_id = game_configs.base_config.get('worldbossOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
 
 
     stage_id = boss.stage_id
@@ -224,8 +231,6 @@ def pvb_fight_start_1705(pro_data, player):
     WORLD_BOSS = 5
     stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player, best_skill_id)
     result = stage_info.get('result')
-
-    response = PvbFightResponse()
 
     res = response.res
     res.result = result

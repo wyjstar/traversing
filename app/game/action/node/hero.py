@@ -68,7 +68,6 @@ def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     return {"result": True, "hero": hero}
 
 
-
 @remoteserviceHandle('gate')
 def hero_break_104(data, player):
     """武将突破"""
@@ -76,6 +75,12 @@ def hero_break_104(data, player):
     args.ParseFromString(data)
     hero_no = args.hero_no
     response = hero_response_pb2.HeroBreakResponse()
+    open_stage_id = game_configs.base_config.get('heroBreakOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     res = hero_break_logic(hero_no, player, response)
     if not res.get('result'):
         response.res.result = False
@@ -84,6 +89,7 @@ def hero_break_104(data, player):
     response.res.result = True
     response.break_level = res.get("break_level")
     return response.SerializeToString()
+
 
 def hero_break_logic(hero_no, player, response):
     hero = player.hero_component.get_hero(hero_no)
@@ -120,7 +126,13 @@ def hero_sacrifice_105(data, player):
     """武将献祭"""
     args = hero_request_pb2.HeroSacrificeRequest()
     args.ParseFromString(data)
-    logger.debug(args)
+
+    open_stage_id = game_configs.base_config.get('heroSacrificeOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     heros = player.hero_component.get_heros_by_nos(args.hero_nos)
     if len(heros) == 0:
         logger.error("hero %s is not exists." % str(args.hero_nos))
@@ -206,6 +218,12 @@ def hero_refine_118(data, player):
     response = hero_response_pb2.HeroRefineResponse()
     hero_no = request.hero_no
     refine = request.refine
+
+    open_stage_id = game_configs.base_config.get('sealOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
 
     res = do_hero_refine(player, hero_no, refine)
 

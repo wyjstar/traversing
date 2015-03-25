@@ -153,6 +153,13 @@ def pvp_fight_request_1505(data, player):
     request.ParseFromString(data)
     line_up = request.lineup
     __skill = request.skill
+
+    open_stage_id = game_configs.base_config.get('arenaOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
 
     prere = dict(character_id=player.base_info.id)
