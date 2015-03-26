@@ -19,6 +19,8 @@ class SignInConfig(object):
             day = row["times"]
             if mouth not in self._items:
                 self._items[mouth] = {}
-            self._items[mouth][day] = parse(row.get("reward"))
+            self._items[mouth][day] = {}
+            self._items[mouth][day]["reward"] = parse(row.get("reward"))
+            self._items[mouth][day]["vipDouble"] = parse(row.get("vipDouble"))
 
         return self._items

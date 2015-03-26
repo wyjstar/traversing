@@ -59,9 +59,13 @@ def sign_in_1401(pro_data, player):
     # 获取奖励
     if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
         return
-    gain_data = game_configs.sign_in_config.get(sign_round).get(day)
-    return_data = gain(player, gain_data, const.SIGN_GIFT)
+    sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
+    return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
     get_return(player, return_data, response.gain)
+    #vip双倍
+    if player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+        get_return(player, return_data, response.gain)
+
     response.res.result = True
     return response.SerializePartialToString()
 
