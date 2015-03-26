@@ -76,19 +76,17 @@ def hero_break_104(data, player):
     args.ParseFromString(data)
     hero_no = args.hero_no
     response = hero_response_pb2.HeroBreakResponse()
-    hero = player.hero_component.get_hero(hero_no)
-    res = hero_break_logic(hero_no, player)
+    res = hero_break_logic(hero_no, player, response)
     if not res.get('result'):
         response.res.result = False
         response.res.result_no = res.get('result_no')
         return response.SerializeToString()
     response.res.result = True
-    response.break_level = hero.break_level
+    response.break_level = res.get("break_level")
     return response.SerializeToString()
 
-def hero_break_logic(hero_no, player):
+def hero_break_logic(hero_no, player, response):
     hero = player.hero_component.get_hero(hero_no)
-    response = hero_response_pb2.HeroBreakResponse()
     hero_info = game_configs.hero_config.get(hero_no)
 
     # 验证武将是否突破到上限

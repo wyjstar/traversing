@@ -23,6 +23,7 @@ from app.game.component.character_stamina import max_of_stamina
 from app.game.action.node.line_up import change_hero_logic
 from app.game.action.node.equipment import enhance_equipment
 from app.game.action.node.hero import hero_upgrade_with_item_logic
+from app.game.action.node.hero import hero_break_logic
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -144,10 +145,11 @@ def add_stamina_7(request_proto, player):
     return response.SerializePartialToString()
 
 
-GUIDE_LINE_UP = 20029
-GUIDE_EQUIP_STRENGTH = 10002
-GUIDE_HERO_UPGRADE = 10003
-GUIDE_HERO_BREAK = 10004
+GUIDE_LINE_UP = 20034
+GUIDE_EQUIP_STRENGTH = [40031, 40032, 40033]
+GUIDE_HERO_UPGRADE = 30013
+GUIDE_HERO_BREAK = 40008
+GUIDE_EQUIP_SHOP = 40044
 
 
 @remoteserviceHandle('gate')
@@ -170,7 +172,7 @@ def new_guide_step_1802(data, player):
             response.res.result = res.get("result")
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
-    elif request.step_id == GUIDE_EQUIP_STRENGTH:
+    elif request.step_id in GUIDE_EQUIP_STRENGTH:
         res = enhance_equipment(request.common_id, 1, player)
         if not res.get("result"):
             logger.debug("equipment strength error========= %s" % res.get("result_no"))
@@ -178,19 +180,41 @@ def new_guide_step_1802(data, player):
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
     elif request.step_id == GUIDE_HERO_UPGRADE:
-        res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+        hero = player.hero_component.get_hero(request.common_id)
+        total_exp = 0
+        # 计算装备升级需要的经验丹数量
+        for level in range(player.base_info.level, hero.level):
+            total_exp += game_configs.hero_exp_config.get(level)
+        exp_item_no = 10001
+        item_info = game_configs.hero_config.get(exp_item_no)
+        exp_item_num = (total_exp - hero.exp) / item_info.get("funcArg1") + 1
+
+        res = hero_upgrade_with_item_logic(request.common_id, exp_item_no, exp_item_num, player)
         if not res.get("result"):
             logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
             response.res.result = res.get("result")
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
     elif request.step_id == GUIDE_HERO_BREAK:
-        res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
+        res = hero_break_logic(request.common_id, player, response)
         if not res.get("result"):
             logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
             response.res.result = res.get("result")
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
+    elif request.step_id == GUIDE_EQUIP_SHOP:
+        shop_info = game_configs.shop_config.get(new_guide_item.get('Special')[0])
+        consume_config = shop_info.get('consume')
+        result = is_afford(player, consume_config)  # 校验
+        if not result.get('result'):
+            logger.error('newbee guide comsume:%s', consume_config)
+            response.res.result = res.get("result")
+            response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
+        else:
+            consume_data = consume(player, consume_config)
+            get_return(player, consume_data, response.consume)
+
 
 
     logger.info('newbee:%s step:%s',
@@ -201,13 +225,13 @@ def new_guide_step_1802(data, player):
     return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
     get_return(player, return_data, response.gain)
 
-    consume_config = new_guide_item.get('consume')
-    result = is_afford(player, consume_config)  # 校验
-    if not result.get('result'):
-        logger.error('newbee guide comsume:%s', consume_config)
-    else:
-        consume_data = consume(player, consume_config)
-        get_return(player, consume_data, response.consume)
+    #consume_config = new_guide_item.get('consume')
+    #result = is_afford(player, consume_config)  # 校验
+    #if not result.get('result'):
+        #logger.error('newbee guide comsume:%s', consume_config)
+    #else:
+        #consume_data = consume(player, consume_config)
+        #get_return(player, consume_data, response.consume)
 
 
     player.base_info.newbee_guide_id = request.step_id
