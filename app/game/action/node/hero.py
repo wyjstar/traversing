@@ -126,6 +126,7 @@ def hero_sacrifice_105(data, player):
     """武将献祭"""
     args = hero_request_pb2.HeroSacrificeRequest()
     args.ParseFromString(data)
+    response = hero_response_pb2.HeroSacrificeResponse()
 
     open_stage_id = game_configs.base_config.get('heroSacrificeOpenStage')
     if player.stage_component.get_stage(open_stage_id).state == -2:

@@ -21,6 +21,7 @@ import cPickle
 # from app.proto_file.gm_pb2 import *
 from shared.utils import trie_tree
 import re
+from shared.db_opear.configs_data import game_configs
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -69,6 +70,24 @@ def modify_user_info(data, player):
     elif args['attr_name'] == 'user_exp':
         player.base_info.exp = int(args['attr_value'])
         player.base_info.save_data()
+        return {'success': 1}
+    elif args['attr_name'] == 'stage':
+
+        stage_id = int(args['attr_value'])
+        stage_info = game_configs.stage_config.get('stages').get(stage_id)
+        if not stage_info:
+            return {'success': 0, 'message': 4}
+
+        player.stage_component.get_stage(stage_id).state == -1
+        first_stage_id = game_configs.stage_config.get('first_stage_id')
+        while True:
+            the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']
+            player.stage_component.get_stage(the_last_stage_id).state = 1
+            if the_last_stage_id == first_stage_id:
+                break
+            else:
+                stage_id = the_last_stage_id
+        player.stage_component.save_data()
         return {'success': 1}
     elif args['attr_name'] == 'nickname':
         nickname = args['attr_value']
