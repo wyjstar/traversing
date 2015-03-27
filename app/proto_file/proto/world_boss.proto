@@ -75,8 +75,8 @@ message PvbStartRequest
 }
 message PvbFightResponse{
     required CommonResponse res = 1;
-    optional BattleUnit red = 2;
-    optional BattleUnit blue = 3;
+    repeated BattleUnit red = 2;
+    repeated BattleUnit blue = 3;
     optional int32 red_best_skill = 4;
     optional int32 red_best_skill_level = 5;
     optional bool fight_result = 6;
