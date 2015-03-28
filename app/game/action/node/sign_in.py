@@ -147,13 +147,18 @@ def repair_sign_in_1403(pro_data, player):
     player.sign_in_component.sign_in(day)
     player.sign_in_component.save_data()
     sign_round = player.sign_in_component.sign_round
+    print game_configs.sign_in_config.get(sign_round), "---------"
+    print game_configs.sign_in_config.get(sign_round).get(day), "-------"
     if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
         return
-    gain_data = game_configs.sign_in_config.get(sign_round).get(day)
-    return_data = gain(player, gain_data, const.REPAIR_SIGN)
+    print("===========1")
+    sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
+    return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
     get_return(player, return_data, response.gain)
 
+    print("===========2")
     player.sign_in_component.repair_sign_in_times += 1
     player.sign_in_component.save_data()
     response.res.result = True
+    print("===========3")
     return response.SerializePartialToString()

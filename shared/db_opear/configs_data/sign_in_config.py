@@ -2,7 +2,7 @@
 """
 created by server on 14-8-25下午8:42.
 """
-from shared.db_opear.configs_data.common_item import CommonGroupItem, CommonItem
+#from shared.db_opear.configs_data.common_item import CommonGroupItem, CommonItem
 from shared.db_opear.configs_data.data_helper import parse
 
 
@@ -21,6 +21,6 @@ class SignInConfig(object):
                 self._items[mouth] = {}
             self._items[mouth][day] = {}
             self._items[mouth][day]["reward"] = parse(row.get("reward"))
-            self._items[mouth][day]["vipDouble"] = parse(row.get("vipDouble"))
+            self._items[mouth][day]["vipDouble"] = row.get("vipDouble")
 
         return self._items
