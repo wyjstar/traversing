@@ -51,6 +51,8 @@ def ban_speak(data, player):
 @remoteserviceHandle('gate')
 def modify_user_info(data, player):
     args = cPickle.loads(data)
+    if not args['attr_name'] or not args['attr_value']:
+        return {'success': 0, 'message': 5}
     if args['attr_name'] == 'user_level':
         player.base_info.level = int(args['attr_value'])
         player.base_info.save_data()

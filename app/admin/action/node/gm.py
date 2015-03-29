@@ -18,6 +18,8 @@ from app.admin.redis_mode import tb_guild_info, tb_guild_name, \
 from app.admin.action.root.netforwarding import push_message
 from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils import trie_tree
+from app.game.core.stage.stage import Stage
+from shared.db_opear.configs_data import game_configs
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -155,6 +157,8 @@ def modify_user_info(args):
     #     child_node = groot.child(oldvcharacter.node)
     #     return child_node.callbackChild(*args)
     # else:
+    if not args['attr_name'] or not args['attr_value']:
+        return {'success': 0, 'message': 5}
     character_obj = tb_character_info.getObj(int(args.get('uid')))
     if not character_obj.exists():
         return {'success': 0, 'message': 1}
@@ -185,6 +189,33 @@ def modify_user_info(args):
         data = {'finances': finance}
         character_obj.hmset(data)
         return {'success': 1}
+    elif args['attr_name'] == 'stage':
+        stage_id = int(args['attr_value'])
+        stages = character_obj.hget('stage_info')
+
+        stage_info = game_configs.stage_config.get('stages').get(stage_id)
+        if not stage_info:
+            return {'success': 0, 'message': 4}
+
+        stage_objs = {}
+        for stage_id, stage in stages.items():
+            stage_objs[stage_id] = Stage.loads(stage)
+
+        stage_obj = get_stage(stage_objs, stage_id)
+        stage_obj.state == -1
+        first_stage_id = game_configs.stage_config.get('first_stage_id')
+        while True:
+            the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']
+            stage_obj = get_stage(stage_objs, the_last_stage_id)
+            stage_obj.state = 1
+
+            if the_last_stage_id == first_stage_id:
+                break
+            else:
+                stage_id = the_last_stage_id
+        data = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in stage_objs.iteritems()])}
+        character_obj.hmset(data)
+        return {'success': 1}
     elif args['attr_name'] == 'nickname':
         nickname = args['attr_value']
         match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
@@ -204,6 +235,14 @@ def modify_user_info(args):
             return {'success': 0, 'message': 0}
     else:
         return {'success': 0, 'message': 3}
+
+
+def get_stage(stage_objs, stage_id):
+        stage_obj = stage_objs.get(stage_id)
+        if not stage_obj:
+            stage_obj = Stage(stage_id, state=-2)
+            stage_objs[the_last_stage_id] = stage_obj
+        return stage_obj
 
 
 def get_user_hero_chips(args):
