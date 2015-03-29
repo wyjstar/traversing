@@ -19,6 +19,8 @@ from app.proto_file.db_pb2 import Mail_PB
 from shared.utils.date_util import str_time_to_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from app.proto_file.notice_pb2 import NoticeResponse
+from shared.utils.random_pick import random_pick_with_percent
+from shared.utils.date_util import string_to_timestamp
 
 
 tb_boss = RedisObject('tb_worldboss')
@@ -91,28 +93,41 @@ class WorldBoss(BaseBoss):
         self._rank_instance.clear_rank()  # 重置排行
         self._last_shot_item = {}  # 重置最后击杀
 
-    def update_lucky_hero(self, base_config_info):
+    def update_lucky_hero(self):
         # 初始化幸运武将
-        lucky_hero_1_num = base_config_info.get("lucky_hero_1_num")
-        lucky_hero_2_num = base_config_info.get("lucky_hero_2_num")
-        lucky_hero_3_num = base_config_info.get("lucky_hero_3_num")
-        all_high_heros, all_middle_heros, all_low_heros = self.get_hero_category()
-        self._lucky_high_heros =  random.sample(all_high_heros, lucky_hero_1_num)
+        lucky_heros = {}
+        hero_infos = self.get_lucky_hero_items_in_time()
+        for k, hero_info in hero_infos.items():
+            hero_pool = hero_info.hero
+            for _, v in lucky_heros.items():
+                hero_no = unicode(v.get('hero_no'))
+                if hero_no in hero_pool:
+                    del hero_pool[hero_no]
+            res = random_pick_with_percent(hero_pool)
+            temp = {}
+            temp['lucky_hero_info_id'] = k
+            temp['hero_no']  = int(res)
+            lucky_heros[hero_info.set] = temp
+        self._lucky_heros = lucky_heros
 
-        for k in self._lucky_high_heros: # 去重
-            all_middle_heros.remove(k)
-        self._lucky_middle_heros =  random.sample(all_middle_heros, lucky_hero_2_num)
+    def get_lucky_hero_items_in_time(self):
+        """docstring for get_lucky_hero_items_in_time"""
+        items = {}
+        current = time.time()
+        for k, v in game_configs.lucky_hero_config.items():
+            start = string_to_timestamp(v.timeStart)
+            end = string_to_timestamp(v.timeEnd)
+            if current > start and current < end:
+                items[k] = v
+        return items
 
-        for k in self._lucky_middle_heros: # 去重
-            all_low_heros.remove(k)
-        self._lucky_low_heros =  random.sample(all_low_heros, lucky_hero_3_num)
 
     def update_boss(self):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
         self.set_next_stage(self._hp <= 0)
-        self.update_lucky_hero(game_configs.base_config.get("world_boss"))
+        self.update_lucky_hero()
         self.update_base_boss(game_configs.base_config.get("world_boss"))
 
         self.save_data()

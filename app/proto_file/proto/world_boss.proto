@@ -12,11 +12,22 @@ message PvbRankItem{
     required int32 demage_hp = 4; //伤害血量
 }
 
+message LuckyHeroAttr
+{
+    required int32 attr_type = 1;
+    required int32 attr_value_type = 2;
+    required float attr_value = 3;
+}
+message LuckyHeroItem
+{
+    required int32 pos = 1;
+    required int32 hero_no = 2;
+    repeated LuckyHeroAttr attr = 3;
+}
+
 message PvbBeforeInfoResponse{
     required int32 stage_id = 1;
-    repeated int32 lucky_high_heros = 2;        // 高级武将1个
-    repeated int32 lucky_middle_heros = 3;      // 中级武将2个
-    repeated int32 lucky_low_heros = 4;         // 低级武将3个
+    repeated LuckyHeroItem lucky_heros = 2;        // 武将6个
     optional int32 debuff_skill_no = 5;         // 未遇到奇遇, 则为0
     repeated PvbRankItem rank_items = 6;        // 伤害排名前十的玩家
     optional PvbRankItem last_shot_item = 7;    // 最后击杀boss的玩家，如果没有击杀boss，则为空

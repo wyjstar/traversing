@@ -29,7 +29,7 @@ def string_to_timestamp(time_str):
     input: 2014-09-01 23:59
     output: num
     """
-    d = datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M")
+    d = datetime.datetime.strptime(time_str, "%Y/%m/%d %H:%M:%S")
     return time.mktime(d.timetuple())
 
 def str_time_period_to_timestamp(str_time_period):
@@ -69,6 +69,6 @@ def days_to_current(timestamp):
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)
     print get_current_day_timestamp(0, 0, 0)
-    print string_to_timestamp("2014-09-01 23:59")
+    print string_to_timestamp("2014-09-01 23:59:00")
     print str_time_period_to_timestamp("20:00-23:59")
 

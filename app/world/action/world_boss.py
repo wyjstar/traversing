@@ -12,6 +12,7 @@ import cPickle
 from shared.utils.date_util import get_current_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from gfirefly.server.logobj import logger
+from shared.db_opear.configs_data import game_configs
 
 
 @rootserviceHandle
@@ -30,12 +31,19 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     response = world_boss_pb2.PvbBeforeInfoResponse()
 
     if boss_id == "world_boss":
-        for hero_no in boss.lucky_high_heros:
-            response.lucky_high_heros.append(hero_no)
-        for hero_no in boss.lucky_middle_heros:
-            response.lucky_middle_heros.append(hero_no)
-        for hero_no in boss.lucky_low_heros:
-            response.lucky_low_heros.append(hero_no)
+        for k, hero in boss.lucky_heros.items():
+            hero_no = hero.get("hero_no")
+            lucky_hero_info_id = hero.get("lucky_hero_info_id")
+            lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_info_id)
+
+            hero_pb = response.lucky_heros.add()
+            hero_pb.hero_no = hero_no
+            hero_pb.pos = lucky_hero_info.set
+            for k, v in lucky_hero_info.get("attr").items():
+                hero_attr = hero_pb.attr.add()
+                hero_attr.attr_type = int(k)
+                hero_attr.attr_value_type = v[0]
+                hero_attr.attr_value = v[1]
 
     # 返回伤害前十名
     for rank_item in boss.get_rank_items():

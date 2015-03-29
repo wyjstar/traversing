@@ -47,6 +47,7 @@ from newbee_guide_config import NewbeeGuideConfig
 from travel_item_group_config import TravelItemGroupConfig
 from notes_config import NotesConfig
 from recharge_config import RechargeConfig
+from lucky_hero_config import LuckyHeroConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -92,7 +93,7 @@ newbee_guide_config = {}
 mine_match_config = {}
 notes_config = {}
 recharge_config = {}
-
+lucky_hero_config = {}
 
 all_config_name = {
     'travel_item_group_config': TravelItemGroupConfig(),
@@ -138,7 +139,8 @@ all_config_name = {
     'stone_config': StoneConfig(),
     'newbee_guide_config': NewbeeGuideConfig(),
     'notes_config': NotesConfig(),
-    'recharge_config': RechargeConfig()
+    'recharge_config': RechargeConfig(),
+    'lucky_hero_config': LuckyHeroConfig()
 }
 
 print("load game_configs===========================")
