@@ -23,6 +23,7 @@ from app.game.component.character_stamina import max_of_stamina
 from app.game.action.node.line_up import change_hero_logic
 from app.game.action.node.equipment import enhance_equipment
 from app.game.action.node.hero import hero_upgrade_with_item_logic
+from app.game.action.node.runt import do_runt_set
 from app.game.action.node.hero import hero_break_logic
 
 
@@ -68,7 +69,8 @@ def nickname_create_5(request_proto, player):
     remote_gate.login_chat_remote(player.dynamic_id,
                                   player.base_info.id,
                                   player.guild.g_id,
-                                  nickname)
+                                  nickname,
+                                  player.base_info.gag)
 
     response.result = True
     return response.SerializeToString()
@@ -145,6 +147,8 @@ def add_stamina_7(request_proto, player):
     return response.SerializePartialToString()
 
 
+GUIDE_SET_RUNT = [50029, 50032, 50035]
+GUIDE_REFINE = 60014
 GUIDE_LINE_UP = 20034
 GUIDE_EQUIP_STRENGTH = [40031, 40032, 40033]
 GUIDE_HERO_UPGRADE = 30013
@@ -164,11 +168,33 @@ def new_guide_step_1802(data, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-
     if request.step_id == GUIDE_LINE_UP:
         res = change_hero_logic(new_guide_item.get("Special")[0], new_guide_item.get("Special")[1], 0, player)
         if not res.get("result"):
             logger.debug("hero already in the line up+++++++")
+            response.res.result = res.get("result")
+            response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
+    elif request.step_id in GUIDE_SET_RUNT:
+        runt_po = new_guide_item.get("Special")[0]
+        runt_type = new_guide_item.get("Special")[1]
+        runt_no = request.sub_common_id
+        hero_no = request.common_id
+
+        res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
+        if not res.get("result"):
+            logger.debug("new guide ,runt set  error========= %s" % res.get("result_no"))
+            response.res.result = res.get("result")
+            if res.get('result_no'):
+                response.res.result_no = res.get("result_no")
+            return response.SerializePartialToString()
+    elif request.step_id == GUIDE_REFINE:
+        refine = request.sub_common_id
+        hero_no = request.common_id
+
+        res = do_hero_refine(player, hero_no, refine)
+        if not res.get("result"):
+            logger.debug("new guide ,runt set  error========= %s" % res.get("result_no"))
             response.res.result = res.get("result")
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
@@ -177,7 +203,8 @@ def new_guide_step_1802(data, player):
         if not res.get("result"):
             logger.debug("equipment strength error========= %s" % res.get("result_no"))
             response.res.result = res.get("result")
-            response.res.result_no = res.get("result_no")
+            if res.get('result_no'):
+                response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
     elif request.step_id == GUIDE_HERO_UPGRADE:
         hero = player.hero_component.get_hero(request.common_id)
@@ -214,7 +241,6 @@ def new_guide_step_1802(data, player):
         else:
             consume_data = consume(player, consume_config)
             get_return(player, consume_data, response.consume)
-
 
 
     logger.info('newbee:%s step:%s',

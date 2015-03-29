@@ -8,14 +8,14 @@ from app.chat.service.node.chatgateservice import nodeservice_handle
 
 
 @nodeservice_handle
-def login_chat_remote(dynamic_id, character_id, character_nickname, guild_id):
+def login_chat_remote(dynamic_id, character_id, character_nickname, guild_id, gag_time):
     """登录聊天服务器
     @param dynamic_id: int 客户端的id
     @param character_id: int角色的id
     """
     character = ChaterManager().addchater_by_id(character_id)
     if character:
-        ChaterManager().update_onland(character_id, dynamic_id, guild_id)
+        ChaterManager().update_onland(character_id, dynamic_id, guild_id, gag_time)
         character.name = character_nickname
         character.guild_id = guild_id
         ChatRoomManager().join_room(dynamic_id, character.room_id)

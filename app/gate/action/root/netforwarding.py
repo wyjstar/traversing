@@ -61,17 +61,15 @@ def from_admin_rpc_remote(args):
     #     com = "gm." + args['command'] + "(args)"
     #     res = eval(com)
     # else:
+    if not args.get('uid'):
+        return {'success': 0, 'message': 1}
     oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
         child_node = groot.child(oldvcharacter.node)
-        res = child_node.callbackChild(*args)
+        return child_node.callbackChild(*args)
     else:
-        res = {'success': 2}
-
-    # print res, '#######################'
-
-    return res
+        return {'success': 2}
 
 
 @rootserviceHandle
@@ -81,11 +79,12 @@ def add_guild_to_rank_remote(g_id, dengji):
 
 
 @rootserviceHandle
-def login_chat_remote(dynamic_id, character_id, guild_id, nickname):
+def login_chat_remote(dynamic_id, character_id, guild_id, nickname, gag_time):
     return groot.child('chat').login_chat_remote(dynamic_id,
                                                  character_id,
                                                  nickname,
-                                                 guild_id)
+                                                 guild_id,
+                                                 gag_time)
 
 
 @rootserviceHandle

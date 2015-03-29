@@ -202,6 +202,14 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
                 shoes[2] += num
                 player.travel_component.save()
                 after_num = shoes[2]
+            elif item_no == 14:
+                player.runt.stone2 += num
+                player.runt.save()
+                after_num = player.runt.stone2
+            elif item_no == 15:
+                player.runt.stone1 += num
+                player.runt.save()
+                after_num = player.runt.stone1
             else:
                 player.finance.add(item_no, num)
                 player.finance.save_data()

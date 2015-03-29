@@ -68,7 +68,8 @@ def character_login_4(key, dynamic_id, request_proto):
         GlobalObject().child('chat').login_chat_remote(dynamic_id,
                                                        response.id,
                                                        nickname,
-                                                       response.guild_id)
+                                                       response.guild_id,
+                                                       response.gag)
     return response.SerializePartialToString()
 
 

@@ -25,40 +25,41 @@ def runt_set_841(data, player):
     runt_no = args.runt_no
 
     response = RuntSetResponse()
+    res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
+
+    response.res.result = res.get('result')
+    if res.get('result_no'):
+        response.res.result_no = res.get('result_no')
+    return response.SerializeToString()
+
+
+def do_runt_set(hero_no, runt_type, runt_po, runt_no, player):
+    """镶嵌符文"""
 
     hero = player.hero_component.get_hero(hero_no)
 
     if runt_po > game_configs.base_config.get('totemSpaceNum'+str(runt_type)):
-        response.res.result = False
-        response.res.result_no = 827
-        return response.SerializeToString()
+        return {'result': False, 'result_no': 827}
 
     if hero.runt.get(runt_type):
         if hero.runt.get(runt_type).get(runt_po):
-            response.res.result = False
-            response.res.result_no = 821
-            return response.SerializeToString()
+            return {'result': False, 'result_no': 821}
     else:
         hero.runt[runt_type] = {}
 
     runt_info = player.runt.m_runt.get(runt_no)
     if not runt_info:
-        response.res.result = False
-        response.res.result_no = 825
-        return response.SerializeToString()
+        return {'result': False, 'result_no': 825}
 
     hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
 
     if not player.runt.reduce_runt(runt_no):
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
+        return {'result': False, 'result_no': 800}
 
     hero.save_data()
     player.runt.save()
 
-    response.res.result = True
-    return response.SerializeToString()
+    return {'result': True, 'result_no': 800}
 
 
 @remoteserviceHandle('gate')

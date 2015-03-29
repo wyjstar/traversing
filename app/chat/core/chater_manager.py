@@ -16,6 +16,7 @@ class ChaterManager(object):
         self._chaters = {}  # 在线成员
         self.mapping = {}  # 动态id 对应 角色id
         self.guild = {}
+        self.gag_time = 1
 
     def get_guild_dynamicid(self, guild_id):
         """获取公会成员的动态id
@@ -64,7 +65,7 @@ class ChaterManager(object):
             return self._chaters[chater_id]
         return None
 
-    def update_onland(self, chater_id, dynamic_id, guild_id):
+    def update_onland(self, chater_id, dynamic_id, guild_id, gag_time):
         """设置角色登陆
         @param chater_id: int 角色id
         @param dynamic_id: int 动态id
@@ -72,6 +73,7 @@ class ChaterManager(object):
         chater = self._chaters[chater_id]
         chater.island = True
         chater.dynamic_id = dynamic_id
+        chater.gag_time = gag_time
         self.mapping[dynamic_id] = chater_id  #动态id对应角色id
         if guild_id:
             if not self.guild.get(guild_id):

@@ -78,3 +78,4 @@
 834: 武将不存在
 
 835: travel buy shoes time dont enough
+836: 已经被禁言

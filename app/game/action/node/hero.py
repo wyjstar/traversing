@@ -204,34 +204,44 @@ def hero_refine_118(data, player):
     request = hero_request_pb2.HeroRefineRequest()
     request.ParseFromString(data)
     response = hero_response_pb2.HeroRefineResponse()
-    response.res.result = False
+    hero_no = request.hero_no
+    refine = request.refine
 
-    hero = player.hero_component.get_hero(request.hero_no)
-    _refine_item = game_configs.seal_config.get(request.refine)
+    res = do_hero_refine(player, hero_no, refine)
+
+    response.res.result = res.get('result')
+    if res.get('result_no'):
+        response.res.result_no = res.get('result_no')
+    return response.SerializeToString()
+
+
+def do_hero_refine(player, hero_no, refine):
+    hero = player.hero_component.get_hero(hero_no)
+    _refine_item = game_configs.seal_config.get(refine)
     if not hero:
-        logger.error('cant find hero:%s', request.hero_no)
-        return response.SerializePartialToString()
+        logger.error('cant find hero:%s', hero_no)
+        return {'result': False}
     if not _refine_item:
-        logger.error('cant find refine item:%s', request.refine)
-        return response.SerializePartialToString()
+        logger.error('cant find refine item:%s', refine)
+        return {'result': False}
 
     result = is_afford(player, _refine_item.expend)  # 校验
     if not result.get('result'):
         logger.error('cant afford refine:%s:cur%s',
                      _refine_item.expend,
                      player.brew.nectar)
-        return response.SerializePartialToString()
+        return {'result': False}
 
-    tlog_action.log('HeroRefine', player, request.hero_no, request.refine)
+    tlog_action.log('HeroRefine', player, hero_no, refine)
 
     return_data = consume(player, _refine_item.expend)
     get_return(player, return_data, response.consume)
-    response.res.result = True
 
-    hero.refine = request.refine
+    hero.refine = refine
     player.brew.save_data()
     hero.save_data()
-    return response.SerializePartialToString()
+
+    return {'result': True}
 
 
 def hero_sacrifice_oper(heros, player):

@@ -434,7 +434,7 @@ def settle_auto_838(data, player):
 
     response = SettleAutoResponse()
 
-    if settle_type:
+    if settle_type: # 立即完成,条件够不够
         if not event_id:
             logger.error('travel seetle type and event id dont matching')
             response.res.result = False
@@ -456,15 +456,15 @@ def settle_auto_838(data, player):
         return response.SerializeToString()
 
     auto_travel_info = {}
-    for i in stage_info:
-        if i.get('start_time') == start_time:
+    for i in stage_info: # 遍历本章节所有的自动游历组
+        if i.get('start_time') == start_time: # 找到要处理的自动游历组
             auto_travel_info = i
     if not auto_travel_info:
         logger.error('auto travel, this start time not find')
         response.res.result = False
         response.res.result_no = 818
         return response.SerializeToString()
-    if not event_id:
+    if not event_id: # 全部结算
         if game_configs.base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] != auto_travel_info.get('already_times'):
             logger.error('auto travel dont finish')
             response.res.result = False
@@ -484,7 +484,7 @@ def settle_auto_838(data, player):
         event_conf = game_configs.travel_event_config.get('events').get(event_info[1]%xs)
         if event_conf.type == 1 and not settle_type:
             if int(time.time()) - event_info[3] < \
-                    event_conf.parameter.items()[0][0]:
+                    event_conf.parameter.items()[0][0] * 60:
                 continue
 
         # 结算

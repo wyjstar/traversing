@@ -440,4 +440,4 @@ class CharacterBaseInfoComponent(Component):
 
     @closure.setter
     def closure(self, value):
-        self._closure = closure
+        self._closure = value

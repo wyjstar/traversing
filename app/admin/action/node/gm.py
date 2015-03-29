@@ -13,7 +13,8 @@ import re
 import os
 import time
 from app.proto_file.db_pb2 import Mail_PB
-from app.admin.redis_mode import tb_guild_info, tb_guild_name, tb_character_info
+from app.admin.redis_mode import tb_guild_info, tb_guild_name, \
+    tb_character_info
 from app.admin.action.root.netforwarding import push_message
 from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils import trie_tree
@@ -36,7 +37,8 @@ def gm():
     admin_command = ['update_excel', 'get_user_info', 'send_mail',
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
-                     'get_user_guild_info']
+                     'get_user_guild_info', 'get_user_heros',
+                     'get_user_eqs']
     if request.args:
         t_dict = request.args
     else:
@@ -52,14 +54,15 @@ def gm():
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
             res = eval(com)
-    logger.info('+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+server2gm:%s', res)
+    logger.info('######################################,server2gm:%s', res)
 
     return json.dumps(res)
 
 
 def update_excel(args):
     url = args['excel_url']
-    urllib.urlretrieve(url, 'config/excel_cpickle')
+    urllib.urlretrieve(url, '/var/excel_cpickle')
+    os.system("cp /var/excel_cpickle config/excel_cpickle")
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
     return {"success": 1}
@@ -200,7 +203,7 @@ def modify_user_info(args):
         else:
             return {'success': 0, 'message': 0}
     else:
-        return {'success': 0, 'message': 2}
+        return {'success': 0, 'message': 3}
 
 
 def get_user_hero_chips(args):
@@ -290,7 +293,7 @@ def ban_user(args):
     if not character_obj.exists():
         return {'success': 0, 'message': 1}
     closure = character_obj.hget('closure')
-    data = {'closure': int(args['attr_value'])}
+    data = {'closure': int(args['lock_time'])}
     character_obj.hmset(data)
     return {'success': 1}
 
@@ -300,6 +303,61 @@ def ban_speak(args):
     if not character_obj.exists():
         return {'success': 0, 'message': 1}
     closure = character_obj.hget('gag')
-    data = {'gag': int(args['attr_value'])}
+    data = {'gag': int(args['lock_time'])}
     character_obj.hmset(data)
     return {'success': 1}
+
+
+def get_user_heros(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+    message = {}
+
+    char_obj = character_obj.getObj('heroes')
+    heros = char_obj.hgetall()
+
+    for hid, data in heros.items():
+        hero_mes = {}
+        hero_mes['level'] = data['level']
+        hero_mes['exp'] = data['exp']
+        hero_mes['break_level'] = data['break_level']
+        hero_mes['refine'] = data['refine']
+        if data['is_guard']:
+            hero_mes['is_guard'] = 1
+        else:
+            hero_mes['is_guard'] = 0
+
+        if data['is_online']:
+            hero_mes['is_online'] = 1
+        else:
+            hero_mes['is_online'] = 0
+
+        message[data['hero_no']] = hero_mes
+
+    return {'success': 1, 'message': message}
+
+
+def get_user_eqs(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+    message = {}
+    # eqs = character_obj.hget('equipments')
+
+    char_obj = character_obj.getObj('equipments')
+    eqs = char_obj.hgetall()
+
+    for hid, data in eqs.items():
+        equipment_info = data.get('equipment_info')
+        equipment_id = data.get('id')
+
+        eq_mes = {}
+        eq_mes['eq_no'] = equipment_info['equipment_no']
+        eq_mes['slv'] = equipment_info['slv']
+        eq_mes['alv'] = equipment_info['alv']
+        eq_mes['prefix'] = equipment_info['prefix']
+
+        message[equipment_id] = eq_mes
+
+    return {'success': 1, 'message': message}
