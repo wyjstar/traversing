@@ -27,6 +27,8 @@ def get_stage_by_stage_type(stage_type, stage_id, player):
         return ActStageLogic(player, stage_id)
     elif stage_type == TRAVEL_STAGE:
         return TravelStageLogic(player, stage_id)
-    elif stage_type == MINE_STAGE or stage_type == BOSS_STAGE:
+    elif stage_type == MINE_STAGE:
         return BaseStageLogic(player, stage_id)
+    elif stage_type == BOSS_STAGE:
+        return WorldBossStageLogic(player, stage_id)
     assert False, "stage type %s not defined." % stage_type

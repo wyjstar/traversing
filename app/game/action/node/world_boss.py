@@ -177,27 +177,22 @@ def pvb_reborn_1704(data, player):
     base_config = boss.get_base_config()
 
     response = CommonResponse()
-    # 1. 校验元宝
     gold = player.finance.gold
     money_relive_price = base_config.get('gold_relive_price')
     need_gold = money_relive_price
     print need_gold, gold, "*"*80
-    if gold < need_gold:
-        logger.debug("reborn money not enough error: %s" % 102)
-        response.result = False
-        response.result_no = 102
-        return response.SerializePartialToString()
-
-    #2. 校验CD
     current_time = get_current_timestamp()
-    if current_time - boss.last_fight_time > base_config.get("free_relive_time"):
+
+    not_free = current_time - boss.last_fight_time < base_config.get("free_relive_time")
+    if not_free and gold < need_gold:
         logger.debug("reborn CD error: %s" % 1701)
         response.result = False
         response.result_no = 1701
         return response.SerializePartialToString()
 
-    player.finance.consume_gold(need_gold)
-    player.finance.save_data()
+    if not_free and gold >= need_gold:
+        player.finance.consume_gold(need_gold)
+        player.finance.save_data()
     response.result = True
     print response
     return response.SerializePartialToString()

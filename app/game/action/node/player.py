@@ -169,7 +169,8 @@ def new_guide_step_1802(data, player):
         return response.SerializePartialToString()
 
     if request.step_id == GUIDE_LINE_UP:
-        res = change_hero_logic(new_guide_item.get("Special")[0], new_guide_item.get("Special")[1], 0, player)
+        hero_no = int(request.common_id)
+        res = change_hero_logic(hero_no, new_guide_item.get("Special")[1], 0, player)
         if not res.get("result"):
             logger.debug("hero already in the line up+++++++")
             response.res.result = res.get("result")
@@ -179,7 +180,7 @@ def new_guide_step_1802(data, player):
         runt_po = new_guide_item.get("Special")[0]
         runt_type = new_guide_item.get("Special")[1]
         runt_no = request.sub_common_id
-        hero_no = request.common_id
+        hero_no = int(request.common_id)
 
         res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
         if not res.get("result"):
@@ -190,7 +191,7 @@ def new_guide_step_1802(data, player):
             return response.SerializePartialToString()
     elif request.step_id == GUIDE_REFINE:
         refine = request.sub_common_id
-        hero_no = request.common_id
+        hero_no = int(request.common_id)
 
         res = do_hero_refine(player, hero_no, refine)
         if not res.get("result"):
@@ -207,23 +208,27 @@ def new_guide_step_1802(data, player):
                 response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
     elif request.step_id == GUIDE_HERO_UPGRADE:
-        hero = player.hero_component.get_hero(request.common_id)
+        logger.debug("step_id %s %s" % (request.common_id, request.step_id))
+        hero_no = int(request.common_id)
+        hero = player.hero_component.get_hero(hero_no)
         total_exp = 0
         # 计算装备升级需要的经验丹数量
         for level in range(player.base_info.level, hero.level):
             total_exp += game_configs.hero_exp_config.get(level)
         exp_item_no = 10001
-        item_info = game_configs.hero_config.get(exp_item_no)
+        item_info = game_configs.item_config.get(exp_item_no)
         exp_item_num = (total_exp - hero.exp) / item_info.get("funcArg1") + 1
 
-        res = hero_upgrade_with_item_logic(request.common_id, exp_item_no, exp_item_num, player)
+        res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
         if not res.get("result"):
             logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
             response.res.result = res.get("result")
             response.res.result_no = res.get("result_no")
             return response.SerializePartialToString()
     elif request.step_id == GUIDE_HERO_BREAK:
-        res = hero_break_logic(request.common_id, player, response)
+        logger.debug("step_id %s" % request.common_id)
+        hero_no = int(request.common_id)
+        res = hero_break_logic(hero_no, player, response)
         if not res.get("result"):
             logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
             response.res.result = res.get("result")

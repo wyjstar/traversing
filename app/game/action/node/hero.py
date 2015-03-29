@@ -118,7 +118,7 @@ def hero_break_logic(hero_no, player, response):
     hero.save_data()
     # 3、返回
     tlog_action.log('HeroBreak', player, hero_no, hero.break_level)
-    return {"result": False, "break_level": hero.break_level}
+    return {"result": True, "break_level": hero.break_level}
 
 
 @remoteserviceHandle('gate')
