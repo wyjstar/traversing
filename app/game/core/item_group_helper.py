@@ -186,7 +186,6 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
         group_add = [group_item] * (num - 1)
     item_group.extend(group_add)
 
-
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num * multiple

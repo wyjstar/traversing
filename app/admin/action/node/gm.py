@@ -98,10 +98,10 @@ def get_user_info(args):
         guild_id = ''
     else:
         guild_id = character_info['guild_id']
-        guild_obj = tb_guild_info.getObj()
+        guild_obj = tb_guild_info.getObj(guild_id)
         if guild_obj.exists():
             guild_info = guild_obj.hmget(['name'])
-            positon = character_info['positon']
+            position = character_info['position']
             guild_name = guild_info['name']
         else:
             position = 0

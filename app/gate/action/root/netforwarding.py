@@ -34,6 +34,18 @@ def forwarding_remote(key, dynamic_id, data):
 
 
 @rootserviceHandle
+def is_online_remote(key, dynamic_id, data):
+    """
+    """
+    oldvcharacter = VCharacterManager().get_by_id(dynamic_id)
+    if not oldvcharacter:
+        return 'notonline'
+    args = (key, oldvcharacter.dynamic_id, data)
+    child_node = groot.child(oldvcharacter.node)
+    return child_node.callbackChild(*args)
+
+
+@rootserviceHandle
 def push_object_remote(topic_id, msg, send_list):
     """ send msg to client in send_list
         send_list:
