@@ -176,7 +176,7 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
 def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
     # 结算到当前的产出
     mine = ConfigData.mine(mine_id)
-    if now_data >= mine.outputLimited:
+    if now_data > mine.outputLimited:
         return
     if stype == 1:
         num, last = compute(mine_id,
