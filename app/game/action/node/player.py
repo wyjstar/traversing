@@ -22,7 +22,7 @@ from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
 from app.game.action.node.line_up import change_hero_logic
 from app.game.action.node.equipment import enhance_equipment
-from app.game.action.node.hero import hero_upgrade_with_item_logic
+from app.game.action.node.hero import hero_upgrade_with_item_logic, do_hero_refine
 from app.game.action.node.runt import do_runt_set
 from app.game.action.node.hero import hero_break_logic
 
@@ -264,6 +264,9 @@ def new_guide_step_1802(data, player):
         #consume_data = consume(player, consume_config)
         #get_return(player, consume_data, response.consume)
 
+    logger.debug("gain_data %s %s" % (gain_data, request.step_id))
+    logger.debug(player.base_info.coin)
+    logger.debug("============================")
 
     player.base_info.newbee_guide_id = request.step_id
     player.base_info.save_data()
