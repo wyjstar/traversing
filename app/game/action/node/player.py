@@ -265,7 +265,7 @@ def new_guide_step_1802(data, player):
         #get_return(player, consume_data, response.consume)
 
     logger.debug("gain_data %s %s" % (gain_data, request.step_id))
-    logger.debug(player.base_info.coin)
+    logger.debug(player.finance.coin)
     logger.debug("============================")
 
     player.base_info.newbee_guide_id = request.step_id
