@@ -153,3 +153,10 @@ def get_hp_left_remote(boss_id):
     print("+++++++++")
     print(boss)
     return int(boss.hp)
+@rootserviceHandle
+def get_lucky_heros_remote():
+    """
+    触发boss
+    """
+    return cPickle.dumps(world_boss.lucky_heros)
+

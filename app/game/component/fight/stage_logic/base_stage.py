@@ -12,6 +12,10 @@ class BaseStageLogic(object):
     def stage_id(self):
         return self._stage_id
 
-
     def check(self):
         return {'result': True}
+    def update_hero_self_attr(self, hero_self_attr):
+        """
+        update hero self attr, plus some attr
+        """
+        return hero_self_attr

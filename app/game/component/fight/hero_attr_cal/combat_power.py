@@ -9,7 +9,7 @@ LOG_NAME = ""
 LOG = False
 
 
-def hero_self_attr(player, hero):
+def hero_self_attr(player, hero, stage=None):
     """
     武将自身属性＝基础＋成长＋突破＋突破系数＋炼体＋符文
 
@@ -148,7 +148,7 @@ def hero_self_attr(player, hero):
     ductilityHero_formula = game_configs.formula_config.get("ductilityHero").get("formula")
     ductilityHero = eval(ductilityHero_formula, all_vars)
 
-    return dict(hpHero=hpHero,
+    self_attr = dict(hpHero=hpHero,
                 atkHero=atkHero,
                 physicalDefHero=physicalDefHero,
                 magicDefHero=magicDefHero,
@@ -160,9 +160,12 @@ def hero_self_attr(player, hero):
                 blockHero=blockHero,
                 ductilityHero=ductilityHero
                 )
+    if stage:
+        stage.update_hero_self_attr(hero.hero_no, self_attr, player)
 
+    return self_attr
 
-def hero_lineup_attr(player, hero, line_up_slot_no):
+def hero_lineup_attr(player, hero, line_up_slot_no, stage=None):
     """
     武将在阵容中的属性＝自身属性＋装备＋套装＋羁绊＋游历＋助威＋公会
     return:
@@ -184,7 +187,7 @@ def hero_lineup_attr(player, hero, line_up_slot_no):
     hero_slot = line_up_slot.hero_slot
     hero_info = hero.hero_info
     # 自身属性
-    self_attr = hero_self_attr(player, hero)
+    self_attr = hero_self_attr(player, hero, stage)
     # 装备
     equ_attr = line_up_slot.equ_attr(self_attr)
     # 套装
