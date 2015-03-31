@@ -55,6 +55,7 @@ def gm():
         res = remote_gate.from_admin_rpc_remote(cPickle.dumps(t_dict))
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
+            logger.debug("gm=======%s" % com)
             res = eval(com)
     logger.info('######################################,server2gm:%s', res)
 
