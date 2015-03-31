@@ -97,11 +97,11 @@ class FriendComponent(Component):
 
         friend_stamina = Stamina_DB()
         friend_info = tb_character_info.getObj(friend_id)
-        stamina_data = friend_info.get('stamina')
+        stamina_data = friend_info.hget('stamina')
         if stamina_data is not None:
             friend_stamina.ParseFromString(stamina_data)
 
-            if friend_id in friend_stamina.contributors:
+            if self.owner.base_info.id in friend_stamina.contributors:
                 self._friends[friend_id] = [datetime.datetime.now()]
             else:
                 self._friends[friend_id] = []
