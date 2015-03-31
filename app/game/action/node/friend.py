@@ -191,10 +191,10 @@ def get_player_friend_list_1106(data, player):
                                              'heads', 'upgrade_time'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
-            ap = 1
+            ap = 1010
             if friend_data['attackPoint'] is not None:
                 ap = int(friend_data['attackPoint'])
-            response_friend_add.power = ap if ap else 0
+            response_friend_add.power = ap
             response_friend_add.last_time = friend_data['upgrade_time']
 
             friend_heads = Heads_DB()
@@ -216,8 +216,10 @@ def get_player_friend_list_1106(data, player):
             response_blacklist_add.id = pid
             response_blacklist_add.nickname = black_data['nickname']
             response_blacklist_add.gift = 0
-            ap = int(friend_data['attackPoint'])
-            response_blacklist_add.power = ap if ap else 0
+            ap = 1010
+            if friend_data['attackPoint'] is not None:
+                ap = int(friend_data['attackPoint'])
+            response_blacklist_add.power = ap
             response_blacklist_add.last_time = friend_data['upgrade_time']
 
             black_heads = Heads_DB()
