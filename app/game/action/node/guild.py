@@ -141,11 +141,22 @@ def join_guild_802(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
+    p_list = guild_obj.p_list
+    captain_id = p_list.get(1)[0]
+
     if guild_obj.get_p_num() >= game_configs.guild_config.get(guild_obj.level).p_max:
         response.result = False
         response.message = "公会已满员"
         return response.SerializeToString()
     else:
+        invitee_player = PlayersManager().get_player_by_id(captain_id)
+        if invitee_player:  # 在线
+            remote_gate.push_object_remote(850,
+                                           u'',
+                                           [invitee_player.dynamic_id])
+        else:
+            remote_gate.is_online_remote('modify_user_guild_info_remote', captain_id, {'cmd': 'join_guild'})
+
         guild_obj.join_guild(p_id)
         guild_obj.save_data()
 
@@ -301,6 +312,10 @@ def modify_user_guild_info_remote(data, player):
         player.guild.g_id = 'no'
         player.guild.save_data()
         remote_gate.push_object_remote(814,
+                                       u'',
+                                       [player.dynamic_id])
+    elif data['cmd'] == 'join_guild':
+        remote_gate.push_object_remote(850,
                                        u'',
                                        [player.dynamic_id])
     elif data['cmd'] == 'promotion':
@@ -897,7 +912,10 @@ def get_apply_list_813(data, player):
                 role_info.name = u'无名'
             role_info.level = character_info['level']
             role_info.vip_level = character_info['vip_level']
-            role_info.fight_power = 1
+            ap = 1
+            if character_info['attackPoint'] is not None:
+                ap = int(character_info['attackPoint'])
+            role_info.fight_power = ap
 
     response.result = True
     return response.SerializeToString()
