@@ -119,6 +119,12 @@ def join_guild_802(data, player):
         response.spare_time = game_configs.base_config.get('exit_time') - the_time
         return response.SerializeToString()
 
+    open_stage_id = game_configs.base_config.get('guildOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     if m_g_id != 'no':
         response.result = False
         response.message = "您已加入公会"

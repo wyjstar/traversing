@@ -25,6 +25,13 @@ def runt_set_841(data, player):
     runt_no = args.runt_no
 
     response = RuntSetResponse()
+
+    open_stage_id = game_configs.base_config.get('totemOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
 
     response.res.result = res.get('result')
@@ -97,7 +104,7 @@ def runt_pick_842(data, player):
             need_coin += game_configs.stone_config.get('stones').get(runt_info[1]).PickPrice
             runts.append(runt_info)
 
-    if player.finance.gold < need_coin:
+    if player.finance.coin < need_coin:
         response.res.result = False
         response.res.result_no = 101  # 银币不足
         return response.SerializeToString()
@@ -121,7 +128,7 @@ def runt_pick_842(data, player):
     hero.save_data()
     player.runt.save()
 
-    player.finance.consume_gold(need_coin)
+    player.finance.consume_coin(need_coin)
     player.finance.save_data()
 
     response.res.result = True

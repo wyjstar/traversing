@@ -14,6 +14,7 @@ from app.game.component.achievement.user_achievement import CountEvent,\
     EventType
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
+from shared.db_opear.configs_data import game_configs
 
 # from app.proto_file import world_boss_pb2
 
@@ -212,6 +213,14 @@ def pvb_fight_start_1705(pro_data, player):
     boss = player.world_boss.get_boss(boss_id)
     base_config = boss.get_base_config()
 
+    response = PvbFightResponse()
+    res = response.res
+
+    open_stage_id = game_configs.base_config.get('worldbossOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
 
 
     stage_id = boss.stage_id
@@ -220,9 +229,6 @@ def pvb_fight_start_1705(pro_data, player):
     stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player, best_skill_id)
     result = stage_info.get('result')
 
-    response = PvbFightResponse()
-
-    res = response.res
     res.result = result
     if stage_info.get('result_no'):
         res.result_no = stage_info.get('result_no')

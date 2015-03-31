@@ -37,6 +37,12 @@ def travel_831(data, player):
     stage_id = args.stage_id
     response = TravelResponse()
 
+    open_stage_id = game_configs.base_config.get('travelOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
     if game_configs.base_config.get('travelOpenLevel') > player.base_info.level:
         response.res.result = False
         response.res.result_no = 811  # 等级不够

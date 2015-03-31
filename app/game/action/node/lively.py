@@ -39,8 +39,17 @@ def add_items(player, task_id, gain):
         return_data = item_group_helper.gain(player, reward, const.LIVELY)
         get_return(player, return_data, gain)
 
+
 @remoteserviceHandle('gate')
 def draw_reward_1235(data, player):
+
+    open_stage_id = game_configs.base_config.get('activityOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state == -2:
+        res = CommonResponse()
+        res.result = False
+        res.result_no = 837
+        return res.SerializeToString()
+
     request = rewardRequest()
     request.ParseFromString(data)
     status = player.tasks.reward(request.tid)
