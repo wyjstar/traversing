@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='account.proto',
   package='',
-  serialized_pb='\n\raccount.proto\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"2\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\'\n\x13\x41\x63\x63ountLoginRequest\x12\x10\n\x08passport\x18\x01 \x02(\t')
+  serialized_pb='\n\raccount.proto\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"2\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\'\n\x13\x41\x63\x63ountLoginRequest\x12\x10\n\x08passport\x18\x01 \x02(\t\"\x19\n\x0b\x41\x63\x63ountKick\x12\n\n\x02id\x18\x01 \x02(\x05')
 
 
 
@@ -108,9 +108,38 @@ _ACCOUNTLOGINREQUEST = _descriptor.Descriptor(
   serialized_end=135,
 )
 
+
+_ACCOUNTKICK = _descriptor.Descriptor(
+  name='AccountKick',
+  full_name='AccountKick',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='AccountKick.id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=137,
+  serialized_end=162,
+)
+
 DESCRIPTOR.message_types_by_name['AccountKey'] = _ACCOUNTKEY
 DESCRIPTOR.message_types_by_name['AccountResponse'] = _ACCOUNTRESPONSE
 DESCRIPTOR.message_types_by_name['AccountLoginRequest'] = _ACCOUNTLOGINREQUEST
+DESCRIPTOR.message_types_by_name['AccountKick'] = _ACCOUNTKICK
 
 class AccountKey(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -129,6 +158,12 @@ class AccountLoginRequest(_message.Message):
   DESCRIPTOR = _ACCOUNTLOGINREQUEST
 
   # @@protoc_insertion_point(class_scope:AccountLoginRequest)
+
+class AccountKick(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ACCOUNTKICK
+
+  # @@protoc_insertion_point(class_scope:AccountKick)
 
 
 # @@protoc_insertion_point(module_scope)
