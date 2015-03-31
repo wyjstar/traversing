@@ -5,14 +5,12 @@ Created on 2014-2-23
 @author: lan (www.9miao.com)
 """
 from gfirefly.server.globalobject import GlobalObject
-
+from app.proto_file.account_pb2 import AccountKick
 from gfirefly.server.logobj import logger
 from connection import Connection
 from shared.utils.const import const
 import collections
 import gevent
-
-from app.proto_file.account_pb2 import AccountKick
 
 
 class ConnectionManager:
@@ -89,9 +87,10 @@ class ConnectionManager:
         connection = self._connections[cur_id]
         if new_id in self._connections:
             old_connection = self._connections[new_id]
-            old_connection.loseConnection()
             msg = AccountKick()
-            self._write_data(old_connection, 11, msg)
+            msg.id = 1
+            self.__write_data(old_connection, 11, msg.SerializeToString())
+            old_connection.loseConnection()
             old_connection.dynamic_id = 0
 
         del self._connections[cur_id]
