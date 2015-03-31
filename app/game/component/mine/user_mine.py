@@ -833,7 +833,7 @@ class UserMine(Component):
     def can_reset_free(self):
         self._reset_everyday()
 
-        if self._reset_times >= self.base_info.war_refresh_times:
+        if self._reset_times >= self.owner.base_info.war_refresh_times:
             logger.debug('war fog refresh time:%s-%s',
                          self._reset_times,
                          self.base_info.war_refresh_times)
