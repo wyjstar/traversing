@@ -98,12 +98,16 @@ class FriendComponent(Component):
         friend_stamina = Stamina_DB()
         friend_info = tb_character_info.getObj(friend_id)
         stamina_data = friend_info.get('stamina')
-        friend_stamina.ParseFromString(stamina_data)
+        if stamina_data is not None:
+            friend_stamina.ParseFromString(stamina_data)
 
-        if friend_id in friend_stamina.contributors:
-            self._friends[friend_id] = [datetime.datetime.now()]
+            if friend_id in friend_stamina.contributors:
+                self._friends[friend_id] = [datetime.datetime.now()]
+            else:
+                self._friends[friend_id] = []
         else:
             self._friends[friend_id] = []
+
         return True
 
     def del_friend(self, friend_id):
