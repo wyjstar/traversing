@@ -42,8 +42,9 @@ class EventType:
 
 
 class CountEvent:
-    events = [EventType.STAGE_1, EventType.STAGE_2, EventType.SPORTS, EventType.PRESENT,
-              EventType.STAGE_3, EventType.WINE, EventType.MAGIC, EventType.WORD, EventType.TRAVEL,
+    events = [EventType.STAGE_1, EventType.STAGE_2, EventType.SPORTS,
+              EventType.PRESENT, EventType.STAGE_3, EventType.WINE,
+              EventType.MAGIC, EventType.WORD, EventType.TRAVEL,
               EventType.BOSS, EventType.LIVELY]
 
     @classmethod
@@ -342,7 +343,7 @@ class UserAchievement(Component):
                     lively_add += random.randint(task.reward['17'][0], task.reward['17'][1])
                     self._tasks[task_id]._status = TaskStatus.FINISHED
                     self._update = True
-                    
+
         self._lively += lively_add
         print 'lively_count', self._lively
         return self._lively
