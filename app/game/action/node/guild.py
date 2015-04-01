@@ -3,6 +3,7 @@
 created by server on 14-7-17下午4:50.
 """
 import re
+import cPickle
 import time
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.guild import Guild
@@ -121,8 +122,8 @@ def join_guild_802(data, player):
 
     open_stage_id = game_configs.base_config.get('guildOpenStage')
     if player.stage_component.get_stage(open_stage_id).state == -2:
-        response.res.result = False
-        response.res.result_no = 837
+        response.result = False
+        response.result_no = 837
         return response.SerializeToString()
 
     if m_g_id != 'no':
@@ -222,7 +223,6 @@ def exit_guild_803(data, player):
 
             invitee_player = PlayersManager().get_player_by_id(tihuan_id)
             if invitee_player:  # 在线
-                remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                 invitee_player.guild.position = 1
                 invitee_player.guild.save_data()
             else:
@@ -234,8 +234,10 @@ def exit_guild_803(data, player):
                         'worship': info.get("worship"),
                         'worship_time': info.get("worship_time"),
                         'exit_time': info.get("exit_time")}
-                p_guild_data = tb_character_info.getObj(tihuan_id)
-                p_guild_data.hmset(data)
+                is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', tihuan_id, {'cmd': 'exit_guild', 'position': 1})
+                if is_online == "notonline":
+                    p_guild_data = tb_character_info.getObj(tihuan_id)
+                    p_guild_data.hmset(data)
 
             # if not push_message(1801, tihuan_id):
             #     response.result = False
@@ -274,6 +276,37 @@ def exit_guild_803(data, player):
     response.result = False
     response.message = "您不在此公会"
     return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def modify_user_guild_info_remote(data, player):
+    if data['cmd'] == 'change_president':
+        player.guild.position = data['position']
+        player.guild.save_data()
+    elif data['cmd'] == 'exit_guild':
+        player.guild.position = data['position']
+        player.guild.save_data()
+    elif data['cmd'] == 'deal_apply':
+        remote_gate.login_guild_chat_remote(player.dynamic_id,
+                                            data['guild_id'])
+        player.guild.g_id = data['guild_id']
+        player.guild.position = 5
+        player.guild.contribution = 0
+        player.guild.all_contribution = 0
+        player.guild.k_num = 0
+        player.guild.exit_time = 1
+        player.guild.save_data()
+    elif data['cmd'] == 'kick':
+        remote_gate.logout_guild_chat_remote(player.dynamic_id)
+        player.guild.g_id = 'no'
+        player.guild.save_data()
+        remote_gate.push_object_remote(814,
+                                       u'',
+                                       [player.dynamic_id])
+    elif data['cmd'] == 'promotion':
+        player.guild.position = data['position']
+        player.guild.save_data()
+    return True
 
 
 @remoteserviceHandle('gate')
@@ -374,8 +407,11 @@ def deal_apply_805(data, player):
                         # 'worship': 0,
                         # 'worship_time': 1,
                         'exit_time': 1}
-                p_guild_data = tb_character_info.getObj(p_id)
-                p_guild_data.hmset(data)
+                is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', p_id, {'cmd': 'deal_apply', "guild_id": player.guild.g_id})
+                if is_online == "notonline":
+                    p_guild_data = tb_character_info.getObj(p_id)
+                    p_guild_data.hmset(data)
+
             if guild_obj.apply.count(p_id) == 1:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(5):
@@ -446,20 +482,14 @@ def change_president_806(data, player):
                 return response.SerializeToString()
             invitee_player = PlayersManager().get_player_by_id(p_p_id)
             if invitee_player:  # 在线
-                remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                 invitee_player.guild.position = 1
                 invitee_player.guild.save_data()
             else:
-                data = {'guild_id': info.get("guild_id"),
-                        'position': 1,
-                        'contribution': info.get("contribution"),
-                        'all_contribution': info.get("all_contribution"),
-                        'k_num': info.get("k_num"),
-                        'worship': info.get("worship"),
-                        'worship_time': info.get("worship_time"),
-                        'exit_time': info.get("exit_time")}
-                p_guild_data = tb_character_info.getObj(p_p_id)
-                p_guild_data.hmset(data)
+                data = {'position': 1}
+                is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', p_p_id, {'cmd': 'change_president', 'position': 1})
+                if is_online == "notonline":
+                    p_guild_data = tb_character_info.getObj(p_p_id)
+                    p_guild_data.hmset(data)
 
             player.guild.position = 5
             player.guild.save_data()
@@ -509,17 +539,6 @@ def kick_807(data, player):
                     response.result = False
                     response.message = "此玩家不在公会"
                     return response.SerializeToString()
-                data = {'guild_id': 'no',
-                        'position': 5,
-                        'contribution': 0,
-                        'all_contribution': 0,
-                        'k_num': 0,
-                        # 'worship': 0,
-                        # 'worship_time': 1,
-                        'exit_time': time.time()}
-                p_guild_data = tb_character_info.getObj(p_id)
-                p_guild_data.hmset(data)
-
                 # 踢出公会聊天室
                 invitee_player = PlayersManager().get_player_by_id(p_id)
                 tlog_action.log('GuildKick', player, m_g_id, p_id)
@@ -528,8 +547,21 @@ def kick_807(data, player):
                     invitee_player.guild.g_id = 'no'
                     invitee_player.guild.save_data()
                     remote_gate.push_object_remote(814,
-                                                   args.SerializeToString(),
+                                                   u'',
                                                    [invitee_player.dynamic_id])
+                else:
+                    data = {'guild_id': 'no',
+                            'position': 5,
+                            'contribution': 0,
+                            'all_contribution': 0,
+                            'k_num': 0,
+                            # 'worship': 0,
+                            # 'worship_time': 1,
+                            'exit_time': int(time.time())}
+                    is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', p_id, {'cmd': 'kick'})
+                    if is_online == "notonline":
+                        p_guild_data = tb_character_info.getObj(p_id)
+                        p_guild_data.hmset(data)
 
     response.result = True
     response.message = "踢人成功"
@@ -596,7 +628,6 @@ def promotion_808(data, player):
                 return response.SerializeToString()
             invitee_player = PlayersManager().get_player_by_id(tihuan_id)
             if invitee_player:  # 在线
-                remote_gate.logout_guild_chat_remote(invitee_player.dynamic_id)
                 invitee_player.guild.position = m_position
                 invitee_player.guild.save_data()
             else:
@@ -608,8 +639,11 @@ def promotion_808(data, player):
                         'worship': info.get("worship"),
                         'worship_time': info.get("worship_time"),
                         'exit_time': info.get("exit_time")}
-                p_guild_data = tb_character_info.getObj(tihuan_id)
-                p_guild_data.hmset(data)
+
+                is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', tihuan_id, {'cmd': 'promotion', 'position': m_position})
+                if is_online == "notonline":
+                    p_guild_data = tb_character_info.getObj(tihuan_id)
+                    p_guild_data.hmset(data)
 
             p_list1 = p_list.get(m_position)
             p_list1.remove(m_p_id)
