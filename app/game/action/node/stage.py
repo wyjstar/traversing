@@ -237,6 +237,7 @@ def get_chapter_info(chapter_id, player):
 
     return response
 
+
 def fight_settlement(stage, result, player):
     response = stage_response_pb2.StageSettlementResponse()
     res = response.res
