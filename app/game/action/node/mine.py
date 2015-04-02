@@ -640,7 +640,7 @@ def battle_1253(data, player):
                                    blue_units,
                                    red_best_skill_id,
                                    info.get("best_skill_no"),
-                                   info.get("level"))
+                                   info.get("level"), red_best_skill_id)
         if fight_result:
             # 返回秘境的结果
             pass

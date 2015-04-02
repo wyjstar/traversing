@@ -19,14 +19,12 @@ class CharacterStageComponent(Component):
 
         self._stage_info = {}  # 关卡信息
         self._award_info = {}  # 按章节记录奖励信息
-
         # self._elite_stage_info = {}
         self._elite_stage_info = [0, 1]  # 精英关卡相关信息, {今日挑战次数，最后挑战日期}
-
         # self._act_stage = {}
         self._act_stage_info = [0, 1]  # 活动关卡相关信息, {今日挑战次数，最后挑战日期}
-
         self._stage_up_time = 1  # 关卡挑战次数 更新 时间
+        self._plot_chapter = 1  # 剧情章节
 
     def init_data(self, character_info):
         stages = character_info.get('stage_info')
@@ -39,6 +37,7 @@ class CharacterStageComponent(Component):
         self._elite_stage_info = character_info.get('elite_stage')
         self._act_stage_info = character_info.get('act_stage')
         self._stage_up_time = character_info.get('stage_up_time')
+        self._plot_chapter = character_info.get('plot_chapter')
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -52,6 +51,7 @@ class CharacterStageComponent(Component):
                     [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
                      self._award_info.iteritems()]),
                 'elite_stage': [0, int(time.time())],
+                'plot_chapter': 1,
                 'act_stage': [0, int(time.time())],
                 'stage_up_time': int(time.time())}
         return data
@@ -61,6 +61,7 @@ class CharacterStageComponent(Component):
                  'award_info': dict(
                      [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in self._award_info.iteritems()]),
                  'elite_stage': self._elite_stage_info,
+                 'plot_chapter': self._plot_chapter,
                  'act_stage': self._act_stage_info,
                  'stage_up_time': self._stage_up_time
                  }
@@ -191,3 +192,11 @@ class CharacterStageComponent(Component):
     @stage_up_time.setter
     def stage_up_time(self, stage_up_time):
         self._stage_up_time = stage_up_time
+
+    @property
+    def plot_chapter(self):
+        return self._plot_chapter
+
+    @plot_chapter.setter
+    def plot_chapter(self, values):
+        self._plot_chapter = values

@@ -255,8 +255,6 @@ def get_player_friend_list_1106(data, player):
             logger.error('applicant_list, cant find player id:%d' % pid)
             player.friends.applicant_list.remove(pid)
 
-    logger.debug("======================")
-    logger.debug(response)
 
     return response.SerializePartialToString()
 

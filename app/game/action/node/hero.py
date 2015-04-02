@@ -226,7 +226,7 @@ def hero_refine_118(data, player):
         response.res.result_no = 837
         return response.SerializeToString()
 
-    res = do_hero_refine(player, hero_no, refine)
+    res = do_hero_refine(player, hero_no, refine, response)
 
     response.res.result = res.get('result')
     if res.get('result_no'):
@@ -234,7 +234,7 @@ def hero_refine_118(data, player):
     return response.SerializeToString()
 
 
-def do_hero_refine(player, hero_no, refine):
+def do_hero_refine(player, hero_no, refine, response):
     hero = player.hero_component.get_hero(hero_no)
     _refine_item = game_configs.seal_config.get(refine)
     if not hero:

@@ -161,6 +161,7 @@ def pvp_fight_request_1505(data, player):
         return response.SerializeToString()
 
     __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    logger.debug("best_skill=================== %s" % __best_skill)
 
     prere = dict(character_id=player.base_info.id)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
@@ -200,7 +201,7 @@ def pvp_fight_request_1505(data, player):
 
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"))
+                               record.get("level"), __skill)
 
     logger.debug("fight result:%s" % fight_result)
 
@@ -313,8 +314,10 @@ def pvp_player_rank_refresh_request(data, player):
             choose_fields = eval(v.get('choose'), para)
             logger.info('cur:%s choose:%s', cur_rank, choose_fields)
             for x, y, c in choose_fields:
+                range_nums = range(int(x), int(y)+1)
                 for _ in range(c):
-                    r = random.randint(int(x), int(y))
+                    r = random.choice(range_nums)
+                    range_nums.remove(r)
                     ranks.append(r)
             break
 

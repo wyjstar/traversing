@@ -47,7 +47,23 @@ def get_stages_901(pro_data, player):
         add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
+    response.plot_chapter = player.stage_component.plot_chapter
     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def get_chapter_912(pro_data, player):
+    """取得章节奖励信息
+    """
+    request = stage_request_pb2.UpdataPlotChapterRequest()
+    request.ParseFromString(pro_data)
+    chapter_id = request.chapter_id
+    response = stage_response_pb2.UpdataPlotChapterResponse()
+
+    player.stage_component.plot_chapter = chapter_id
+    player.stage_component.save_data()
+    response.res.result = True
+    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')

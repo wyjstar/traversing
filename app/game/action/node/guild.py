@@ -901,7 +901,6 @@ def get_apply_list_813(data, player):
     guild_apply = guild_obj.apply
 
     for role_id in guild_apply:
-        # TODO 获取玩家 战斗力
         character_info = tb_character_info.getObj(role_id).hgetall()
         if character_info:
             role_info = response.role_info.add()
@@ -927,3 +926,44 @@ def be_change_president_1801(is_online, player):
     player.guild.position = 1
     player.guild.save_data()
     return True
+
+
+@remoteserviceHandle('gate')
+def invite_join_1803(data, player):
+    """邀请加入军团 """
+    args = InviteJoinRequest()
+    args.ParseFromString(data)
+    response = InviteJoinResponse()
+    user_id = args.user_id
+
+    m_g_id = player.guild.g_id
+
+    data1 = tb_guild_info.getObj(m_g_id).hgetall()
+    if not data1 or m_g_id == 'no':
+        response.result = False
+        response.message = "公会ID错误"
+        return response.SerializeToString()
+    if m_g_id == 'no':
+        response.result = False
+        response.message = "没有公会"
+        return response.SerializeToString()
+
+    if player.guild.position != 1:
+        logger.error('invite_join_1802 : you are`t president')
+        response.result = False
+        response.message = "您不是会长"
+        return response.SerializeToString()
+
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
+
+    if guild_obj.get_p_num()+1 > game_configs.guild_config.get(guild_obj.level).p_max:
+        response.result = False
+        response.message = "超出公会人数上限"
+        return response.SerializeToString()
+
+    guild_obj.invite_join[user_id] = int(time.time())
+    guild_obj.save_data()
+
+    response.result = True
+    return response.SerializeToString()
