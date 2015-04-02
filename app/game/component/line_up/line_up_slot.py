@@ -233,12 +233,19 @@ class LineUpSlotComponent(Component):
         return suit_attr
 
 
-    def assemble_hero(self, hero):
+    def get_battle_unit(self, stage):
+        """docstring for get_battle_unit"""
+        hero = self._hero_slot.hero_obj
+        if not hero:
+            return None
+        return self.assemble_hero(hero, stage)
+
+    def assemble_hero(self, hero, stage=None):
         """docstring for assemble_hero"""
 
         line_up_order = self.owner.line_up_order
 
-        attr = combat_power.hero_lineup_attr(self.owner.owner, hero, self._slot_no)
+        attr = combat_power.hero_lineup_attr(self.owner.owner, hero, self._slot_no, stage)
         hero_no = hero.hero_no
         quality = hero.hero_info.get("quality")
         break_skill_buff_ids = []

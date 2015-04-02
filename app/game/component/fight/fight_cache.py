@@ -51,6 +51,18 @@ class CharacterFightCacheComponent(Component):
         self._red_unit = red_unit
         return self._red_unit
 
+    def get_red_units(self):
+        """docstring for get_red_units"""
+        red_units = {}
+        for no, slot in self.line_up_slots.items():
+            logger.debug("xxxxxx%s" % no)
+            red = slot.get_battle_unit(self.stage)
+            logger.debug("xxxxxx%s" % slot.hero_slot.hero_no)
+            if red:
+                red_units[no] = red
+        return red_units
+
+
     @red_unit.setter
     def red_unit(self, value):
         self._red_unit = value
@@ -62,6 +74,14 @@ class CharacterFightCacheComponent(Component):
     @stage_id.setter
     def stage_id(self, stage_id):
         self._stage_id = stage_id
+
+    @property
+    def stage(self):
+        return self._stage
+
+    @stage.setter
+    def stage(self, stage):
+        self._stage = stage
 
     @property
     def drop_num(self):
@@ -337,7 +357,7 @@ class CharacterFightCacheComponent(Component):
         """战斗开始
         """
         self.break_stage_id = 0
-        red_units = self.red_unit
+        red_units = self.get_red_units()
         drop_num = self.__get_drop_num()  # 掉落数量
         blue_units = self.__assmble_monsters()
         monster_unpara = self.__get_monster_unpara()
