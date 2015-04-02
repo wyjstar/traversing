@@ -165,7 +165,7 @@ def del_black_list_1105(data, player):
 
 def _with_battle_info(response, pid):
     # 添加好友主将的属性
-    lord_data = tb_character_info.getObj(pid).get('lord_attr_info')
+    lord_data = tb_character_info.getObj(pid).hget('lord_attr_info')
     if lord_data:
         battle_unit = BattleUnit.loads(lord_data.get('info'))
         response.hero_no = battle_unit.unit_no
