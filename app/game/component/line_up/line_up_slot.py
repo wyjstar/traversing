@@ -84,6 +84,8 @@ class LineUpSlotComponent(Component):
             for i in range(1, 7):
                 self.change_equipment(i, '0')
         self._hero_slot.hero_no = hero_no
+        if self.slot_no == 1:
+            self.update_lord_info()
 
     def change_equipment(self, no, equipment_id):
         """更换装备
@@ -310,10 +312,10 @@ class LineUpSlotComponent(Component):
         """
         更新主将属性
         """
-        unit = self.slot_attr
+        unit = self._owner.get_first_slot().slot_attr
         if not unit:
             return
-        lord_obj = tb_character_info.getObj(self.owner.character_id)
+        lord_obj = tb_character_info.getObj(self._owner._owner.character_id)
         if lord_obj:
             ap = self.combat_power_lineup()
             data = {'info': unit.dumps(), 'power': ap}

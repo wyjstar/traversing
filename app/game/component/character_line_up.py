@@ -353,3 +353,6 @@ class CharacterLineUpComponent(Component):
     @property
     def unpars(self):
         return self._unpars
+    def get_first_slot(self):
+        """get first slot in the line up"""
+        return self._line_up_slots.get(1)

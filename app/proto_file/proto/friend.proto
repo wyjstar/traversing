@@ -45,6 +45,7 @@ message CharacterInfo{
     optional float physical_def = 8;  //物理防御
     optional float magic_def = 9;  //魔法防御
     optional int32 last_time = 10;
+    optional int32 buddy_head = 11;  //小伙伴头像，仅用于支援
 }
 
 // player friend items
