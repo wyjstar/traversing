@@ -188,7 +188,7 @@ def get_player_friend_list_1106(data, player):
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
             friend_data = player_data.hmget(['nickname', 'attackPoint',
-                                             'heads', 'upgrade_time'])
+                                             'heads', 'lord_attr_info', 'upgrade_time'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
             ap = 1
@@ -200,6 +200,10 @@ def get_player_friend_list_1106(data, player):
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             response_friend_add.hero_no = friend_heads.now_head
+
+            info = friend_data.get('lord_attr_info').get('info')
+            f_unit = BattleUnit.loads(info)
+            response_friend_add.buddy_head = f_unit.unit_no
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
@@ -243,6 +247,9 @@ def get_player_friend_list_1106(data, player):
         else:
             logger.error('applicant_list, cant find player id:%d' % pid)
             player.friends.applicant_list.remove(pid)
+
+    logger.debug("======================")
+    logger.debug(response)
 
     return response.SerializePartialToString()
 
