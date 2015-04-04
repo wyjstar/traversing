@@ -51,10 +51,11 @@ class ActStageLogic(base_stage.BaseStageLogic):
         conf = self.get_stage_config()
         stage_id = self._stage_id
         tm_time = time.localtime(player.stage_component.act_stage_info[1])
-        if tm_time.tm_yday == time.localtime().tm_yday:
-            player.stage_component.act_stage_info[0] += conf.timesExpend
-        else:
-            player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
+        if result:
+            if tm_time.tm_yday == time.localtime().tm_yday:
+                player.stage_component.act_stage_info[0] += conf.timesExpend
+            else:
+                player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
         lively_event = CountEvent.create_event(EventType.STAGE_3, 1, ifadd=True)
         stage_util.settle(player, result, response, lively_event, conf)
         tlog_action.log('RoundFlow', player, stage_id, 3, 0, result)
