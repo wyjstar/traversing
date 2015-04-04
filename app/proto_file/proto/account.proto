@@ -14,6 +14,10 @@ message AccountLoginRequest{
 	required string passport = 1;
 }
 
+message AccountKick{
+	required int32 id = 1;
+}
+
 //注册 request: command:1，data:AccountInfo
 //    response: AccountResponse
 

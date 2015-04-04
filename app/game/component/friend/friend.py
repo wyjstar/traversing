@@ -12,6 +12,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from app.proto_file.db_pb2 import Mail_PB
+from app.proto_file.db_pb2 import Stamina_DB
 
 
 class FriendComponent(Component):
@@ -94,7 +95,19 @@ class FriendComponent(Component):
         if friend_id in self._applicants_list:
             del(self._applicants_list[friend_id])
 
-        self._friends[friend_id] = []
+        friend_stamina = Stamina_DB()
+        friend_info = tb_character_info.getObj(friend_id)
+        stamina_data = friend_info.hget('stamina')
+        if stamina_data is not None:
+            friend_stamina.ParseFromString(stamina_data)
+
+            if self.owner.base_info.id in friend_stamina.contributors:
+                self._friends[friend_id] = [datetime.datetime.now()]
+            else:
+                self._friends[friend_id] = []
+        else:
+            self._friends[friend_id] = []
+
         return True
 
     def del_friend(self, friend_id):

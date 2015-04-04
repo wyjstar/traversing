@@ -63,8 +63,11 @@ def sign_in_1401(pro_data, player):
     return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
     get_return(player, return_data, response.gain)
     #vip双倍
+    print("vip================", player.base_info.vip_level, sign_in_info.get("vipDouble"))
     if player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+        return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
         get_return(player, return_data, response.gain)
+    print(response.gain)
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -155,6 +158,11 @@ def repair_sign_in_1403(pro_data, player):
     sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
     return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
     get_return(player, return_data, response.gain)
+
+    #vip双倍
+    if player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+        return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
+        get_return(player, return_data, response.gain)
 
     print("===========2")
     player.sign_in_component.repair_sign_in_times += 1
