@@ -32,7 +32,7 @@ def pvp_award_tick():
 
 def pvp_award():
     arena_award = game_configs.base_config.get('arena_shorttime_points')
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'character_id>1000', ['id', 'character_id'])
+    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'character_id>10000', ['id', 'character_id'])
 
     for k in records:
         childs = groot.childsmanager.childs

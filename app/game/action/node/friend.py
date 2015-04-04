@@ -239,8 +239,13 @@ def get_player_friend_list_1106(data, player):
         if player_data.exists():
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
-            response_applicant_list_add.nickname = player_data.hget('nickname')
             response_applicant_list_add.gift = 0
+            applicant_data = player_data.hmget(['nickname', 'heads'])
+            response_applicant_list_add.nickname = applicant_data['nickname']
+
+            black_heads = Heads_DB()
+            black_heads.ParseFromString(applicant_data['heads'])
+            response_applicant_list_add.hero_no = black_heads.now_head
 
             # 添加好友主将的属性
             _with_battle_info(response_applicant_list_add, pid)
