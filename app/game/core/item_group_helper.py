@@ -104,7 +104,6 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
     luckValue = None
     if luck_config:
         luckValue = luck_config.luckyValue
-        print luckValue
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num * multiple
@@ -176,6 +175,16 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
     after_num = 0
     itid = 0
 
+    # 解决符文只能给一个的问题
+    group_add = []
+    for group_item in item_group:
+        type_id = group_item.item_type
+        num = group_item.num
+        if type_id == const.RUNT:
+            group_item.num = 1
+            group_add = [group_item] * (num - 1)
+    item_group.extend(group_add)
+
     for group_item in item_group:
         type_id = group_item.item_type
         num = group_item.num * multiple
@@ -246,7 +255,6 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
                 hero_chip_config_item = game_configs.chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
                 hero_chip_num = hero_chip_config_item.needNum
-                print hero_chip_num, "--"*30
 
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)
@@ -267,7 +275,6 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             big_bag = BigBag(item_no)
             for i in range(num):
                 temp = big_bag.get_drop_items()
-                print temp, "-+"*30
                 gain(player, temp, reason, result)
             return result
 
@@ -427,7 +434,7 @@ def get_return(player, return_data, game_resources_response):
                 travel_item.shoes_no = item_num
             else:
                 for finance_changes in game_resources_response.finance.finance_changes:
-                    if finance_changes.item_type == item_type:
+                    if finance_changes.item_type == item_type and finance_changes.item_no == item_no:
                         finance_changes.item_num += item_num
                         break
                 else:
