@@ -4,10 +4,20 @@ from shared.db_opear.configs_data import game_configs
 from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
+import cPickle
 remote_gate = GlobalObject().remote['gate']
 
-attr_type = {1:"atkHero"
-}
+attr_type = {1:"hpHero",
+             2:"atkHero",
+             3:"physicalDefHero",
+             4:"magicDefHero",
+             5:"hitHero",
+             6:"dodgeHero",
+             7:"criHero",
+             8:"criCoeffHero",
+             9:"criDedCoeffHero",
+             10:"blockHero",
+             11:"ductilityHero"}
 
 class WorldBossStageLogic(base_stage.BaseStageLogic):
     """docstring for 世界boss"""
@@ -24,13 +34,14 @@ class WorldBossStageLogic(base_stage.BaseStageLogic):
         update hero self attr, plus some attr
         """
         origin_atk = hero_self_attr["atkHero"]
-        lucky_heros = remote_gate['world'].get_lucky_heros_remote()
+        lucky_heros = cPickle.loads(remote_gate['world'].get_lucky_heros_remote())
         atk_rate = 0
         lucky_add = 0
 
         for k, v in lucky_heros.items():
             if v.get("hero_no") == hero_no:
-                lucky_hero_id = v.get("lucky_hero_id")
+                lucky_hero_id = v.get("lucky_hero_info_id")
+                logger.debug("lucky_hero_id %s %s" % (lucky_hero_id, hero_no))
                 lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_id)
                 for attr_no, attr_info in lucky_hero_info.attr.items():
                     attr_name = attr_type.get(int(attr_no))
@@ -38,6 +49,7 @@ class WorldBossStageLogic(base_stage.BaseStageLogic):
                         lucky_add = hero_self_attr[attr_name] * attr_info[1]
                     elif attr_info[0] == 1:
                         lucky_add = attr_info[1]
+                    logger.debug("===========%s %s" % (hero_self_attr[attr_name], lucky_add))
                     hero_self_attr[attr_name] = hero_self_attr[attr_name] + lucky_add
 
         boss = player.world_boss.get_boss("world_boss")
@@ -45,5 +57,6 @@ class WorldBossStageLogic(base_stage.BaseStageLogic):
         atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
                boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
         hero_self_attr["atkHero"] = (1 + atk_rate) * origin_atk
+        logger.debug("atkRate=====%s" % atk_rate)
 
         return hero_self_attr

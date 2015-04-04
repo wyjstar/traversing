@@ -14,7 +14,7 @@ class BaseStageLogic(object):
 
     def check(self):
         return {'result': True}
-    def update_hero_self_attr(self, hero_self_attr):
+    def update_hero_self_attr(self, hero_no, hero_self_attr, player):
         """
         update hero self attr, plus some attr
         """

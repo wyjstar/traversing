@@ -76,6 +76,7 @@ def fight_start(stage, fid, player):
 
     fight_cache_component = player.fight_cache_component
     fight_cache_component.stage_id = stage.stage_id
+    fight_cache_component.stage = stage
     red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
     # 好友

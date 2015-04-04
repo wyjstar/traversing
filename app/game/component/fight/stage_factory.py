@@ -8,6 +8,7 @@ from app.game.component.fight.stage_logic.elite_stage import EliteStageLogic
 from app.game.component.fight.stage_logic.act_stage import ActStageLogic
 from app.game.component.fight.stage_logic.travel_stage import TravelStageLogic
 from app.game.component.fight.stage_logic.base_stage import BaseStageLogic
+from app.game.component.fight.stage_logic.world_boss_stage import WorldBossStageLogic
 
 # 关卡类型:1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
 COMMON_STAGE = 1
