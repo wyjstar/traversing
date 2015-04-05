@@ -49,6 +49,7 @@ def enhance_equipment_402(pro_data, player):
     equipment_id = request.id
     enhance_type = request.type
 
+    response = equipment_response_pb2.EnhanceEquipmentResponse()
     open_stage_id = game_configs.base_config.get('equUpgradeOpenStage')
     if player.stage_component.get_stage(open_stage_id).state == -2:
         response.res.result = False
@@ -60,7 +61,6 @@ def enhance_equipment_402(pro_data, player):
                                      player)
 
     result = enhance_info.get('result')
-    response = equipment_response_pb2.EnhanceEquipmentResponse()
     res = response.res
     res.result = result
     if not result:
