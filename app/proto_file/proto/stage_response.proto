@@ -7,11 +7,17 @@ message StageInfoResponse{
 	repeated Stage stage = 1;
 	required int32 elite_stage_times = 2;
 	required int32 act_stage_times = 3;
+	optional int32 plot_chapter = 4;  //显示剧情章节
 }
 
 //请求章节奖励信息返回 command:902
 message ChapterInfoResponse{
 	repeated StageAward stage_award = 1;
+}
+
+//更新显示剧情章节 command:912
+message UpdataPlotChapterResponse{
+    required CommonResponse res = 1;
 }
 
 // 进入关卡战斗返回 command:903
