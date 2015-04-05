@@ -10,9 +10,9 @@ from app.battle.battle_unit import BattleUnit
 from app.battle.battle_process import BattlePVPProcess
 
 
-def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level):
+def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar):
     """docstring for pvp_process"""
-    save_line_up_order(line_up, player, red_best_skill)
+    save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
     player.fight_cache_component.awake_hero_units(red_units)
     if not blue_units:
@@ -32,6 +32,7 @@ def save_line_up_order(line_up, player, current_unpar):
     if len(line_up_info) != 6:
         logger.error("line up order error %s !" % len(line_up_info))
         return
+    logger.debug("current_unpar%s"% current_unpar)
 
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component.current_unpar = current_unpar
