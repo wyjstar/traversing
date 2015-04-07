@@ -37,7 +37,7 @@ class CharacterStageComponent(Component):
         self._elite_stage_info = character_info.get('elite_stage')
         self._act_stage_info = character_info.get('act_stage')
         self._stage_up_time = character_info.get('stage_up_time')
-        self._plot_chapter = character_info.get('plot_chapter')
+        self._plot_chapter = character_info.get('plot_chapter', 1)
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
