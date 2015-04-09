@@ -265,12 +265,11 @@ def new_guide_step_1802(data, player):
                      request.step_id, gain_data)
     else:
         response.res.result_no = 111
-        logger.debug("new bee reward repeated, id:%s step:%s %s %s %s",
+        logger.debug("new bee reward repeated, id:%s step:%s %s %s",
                      player.base_info.id,
                      request.step_id,
                      my_newbee_sequence,
-                     new_guide_item.get('Sequence'),
-                     player.base_info.id)
+                     new_guide_item.get('Sequence'))
 
     consume_config = new_guide_item.get('consume')
     result = is_afford(player, consume_config)  # 校验
