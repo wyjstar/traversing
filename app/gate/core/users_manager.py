@@ -63,3 +63,6 @@ class UsersManager:
         user = self.get_by_dynamic_id(dynamic_id)
         if user:
             self.drop_user(user)
+
+    def get_online_num(self):
+        return len(self._users)
