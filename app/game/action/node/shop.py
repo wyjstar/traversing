@@ -185,6 +185,18 @@ def shop_buy_505(pro_data, player):
             logger.error('not enough money:%s', price)
             return response.SerializeToString()
 
+        if shop_item.limitVIPeveryday:
+            limit_num = shop_item.limitVIPeveryday.get(player.base_info.vip_level, 0)
+            shop_id_buyed_num = shop['limit_items'].get(shop_id, 0)
+            logger.error("limit shop item:%s:%s limit:%s:%s",
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
+
+            if shop_id_buyed_num + item_count > limit_num:
+                common_response.result = False
+                common_response.result_no = 502
+                return response.SerializeToString()
+            shop['limit_items'][shop_id] = shop_id_buyed_num + item_count
+
         if shop_item.batch == 1:
             if shop_id in shop['item_ids']:
                 shop['item_ids'].remove(shop_id)
