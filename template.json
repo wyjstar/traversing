@@ -32,6 +32,7 @@
             "db": true,
             "name": "login",
             "app": "app.login",
+            "reload":"app.login.model.manager",
             "log": "app/logs/login.log"
         },
         "transit": {

@@ -3,6 +3,7 @@
 *.DS_Store
 *.swp
 *~
+server_list.json
 go/
 igo
 app/logs/
