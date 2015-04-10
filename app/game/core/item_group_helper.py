@@ -285,7 +285,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             itid = item_no
             item_no = equipment.base_info.id
             after_num = player.equipment_component.get_equipment_num(itid)
-            notice_item = game_configs.notes_config.get(3001)
+            notice_item = game_configs.notes_config.get(5001)
             if reason == const.COMMON_BUY_PVP and equipment.equipment_config_info.quality in notice_item.parameter1:
                 push_notice(5001, player_name=player.base_info.base_name, equipment_no=itid)
 

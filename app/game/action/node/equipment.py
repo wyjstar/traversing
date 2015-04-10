@@ -9,6 +9,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from shared.db_opear.configs_data import game_configs
+from app.game.core.notice import push_notice
 
 
 @remoteserviceHandle('gate')
@@ -98,6 +99,7 @@ def compose_equipment_403(pro_data, player):
     request = equipment_request_pb2.ComposeEquipmentRequest()
     request.ParseFromString(pro_data)
     equipment_chip_no = request.no
+    response = equipment_response_pb2.ComposeEquipmentResponse()
 
     open_stage_id = game_configs.base_config.get('equAssembleOpenStage')
     if player.stage_component.get_stage(open_stage_id).state == -2:
@@ -107,7 +109,6 @@ def compose_equipment_403(pro_data, player):
 
     data = compose_equipment(equipment_chip_no, player)
     result = data.get('result')
-    response = equipment_response_pb2.ComposeEquipmentResponse()
     res = response.res
     if not result:
         res.result_no = data.get('result_no')
@@ -308,7 +309,9 @@ def compose_equipment(chip_no, player):
     equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
     chip.chip_num -= compose_num
     player.equipment_chip_component.save_data()
-    # notice
+    notice_item = game_configs.notes_config.get(8001)
+    if equipment_obj.equipment_config_info.quality in notice_item.parameter1:
+        push_notice(8001, player_name=player.base_info.base_name, equipment_no=chip.combine_result)
 
     return {'result': True, 'equipment_obj': equipment_obj}
 

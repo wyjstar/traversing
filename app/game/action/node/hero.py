@@ -183,6 +183,10 @@ def hero_compose_106(data, player):
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
     player.hero_chip_component.save_data()
+    notice_item = game_configs.notes_config.get(9001)
+    logger.debug("=================%s %s" % (hero.hero_info.quality, notice_item.parameter1))
+    if hero.hero_info.quality in notice_item.parameter1:
+        push_notice(9001, player_name=player.base_info.base_name, hero_no=hero_no)
 
     # tlog
     log_action.hero_flow(player, hero.hero_no, 1, 1)
