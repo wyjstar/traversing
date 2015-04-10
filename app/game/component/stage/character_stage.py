@@ -7,7 +7,7 @@ from app.game.core.stage.stage import Stage, StageAward
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 import time
-# from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger
 
 
 class CharacterStageComponent(Component):
@@ -126,6 +126,11 @@ class CharacterStageComponent(Component):
             return False
 
         stage.update(result)
+        open_stage_id = game_configs.base_config.get('warFogOpenStage')
+        if stage.stage_id == open_stage_id and stage.state == 1:
+            logger.debug('reset warfog')
+            self.owner.mine.reset_data()
+
         if result:  # win
             if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
                 conf = game_configs.stage_config.get('stages')
@@ -142,9 +147,6 @@ class CharacterStageComponent(Component):
                     state = self.check_stage_state(stage.stage_id)
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
-                        open_stage_id = game_configs.base_config.get('warFogOpenStage')
-                        if stage.stage_id == open_stage_id:
-                            self.owner.mine.reset_data()
 
         return True
 

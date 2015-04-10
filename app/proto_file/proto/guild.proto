@@ -143,6 +143,7 @@ message InviteJoinRequest{
 // 邀请加入军团command：1803
 message InviteJoinResponse{
 	required bool result = 1;  //处理结果
+    optional bytes message = 2;
 }
 
 // 处理 邀请加入军团command：1804

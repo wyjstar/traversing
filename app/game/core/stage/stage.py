@@ -4,6 +4,7 @@ created by server on 14-7-17下午8:43.
 """
 import cPickle
 from shared.db_opear.configs_data import game_configs
+from gfirefly.server.logobj import logger
 
 
 class Stage(object):

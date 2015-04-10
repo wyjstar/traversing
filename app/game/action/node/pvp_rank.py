@@ -155,7 +155,7 @@ def pvp_fight_request_1505(data, player):
     __skill = request.skill
 
     open_stage_id = game_configs.base_config.get('arenaOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()

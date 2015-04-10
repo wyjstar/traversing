@@ -23,7 +23,7 @@ def inherit_refine_151(pro_data, player):
     response = common_pb2.CommonResponse()
 
     open_stage_id = game_configs.base_config.get('inheritOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.result = False
         response.result_no = 837
         return response.SerializeToString()
@@ -72,7 +72,7 @@ def inherit_equipment_152(pro_data, player):
     response = common_pb2.CommonResponse()
 
     open_stage_id = game_configs.base_config.get('inheritOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.result = False
         response.result_no = 837
         return response.SerializeToString()
@@ -130,7 +130,7 @@ def inherit_upara_153(pro_data, player):
     response = common_pb2.CommonResponse()
 
     open_stage_id = game_configs.base_config.get('inheritOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.result = False
         response.result_no = 837
         return response.SerializeToString()

@@ -155,7 +155,7 @@ def read_mail(mail_ids, mail_type, player):
     elif mail_type == 2:
         # 领取奖励
         get_prize(player, mail_ids, response)
-        # player.mail_component.delete_mails(mail_ids)
+        player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 3 or mail_type == 4:
         # 公告&私信

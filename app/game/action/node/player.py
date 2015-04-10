@@ -260,11 +260,16 @@ def new_guide_step_1802(data, player):
         gain_data = new_guide_item.get('rewards')
         return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
         get_return(player, return_data, response.gain)
-        logger.debug('new bee reward:%s', gain_data)
+        logger.debug('new bee id:%s step:%s reward:%s',
+                     player.base_info.id,
+                     request.step_id, gain_data)
     else:
-        logger.debug("new bee reward repeated, %s %s %s", my_newbee_sequence,
-                     new_guide_item.get('Sequence'),
-                     player.base_info.id)
+        response.res.result_no = 111
+        logger.debug("new bee reward repeated, id:%s step:%s %s %s",
+                     player.base_info.id,
+                     request.step_id,
+                     my_newbee_sequence,
+                     new_guide_item.get('Sequence'))
 
     consume_config = new_guide_item.get('consume')
     result = is_afford(player, consume_config)  # 校验
