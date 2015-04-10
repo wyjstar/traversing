@@ -38,7 +38,7 @@ def travel_831(data, player):
     response = TravelResponse()
 
     open_stage_id = game_configs.base_config.get('travelOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()

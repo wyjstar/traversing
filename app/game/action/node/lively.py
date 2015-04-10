@@ -44,7 +44,7 @@ def add_items(player, task_id, gain):
 def draw_reward_1235(data, player):
 
     open_stage_id = game_configs.base_config.get('activityOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         res = CommonResponse()
         res.result = False
         res.result_no = 837

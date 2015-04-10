@@ -31,7 +31,7 @@ def do_brew_1601(data, player):
     request.ParseFromString(data)
     response = brew_pb2.BrewInfo()
     open_stage_id = game_configs.base_config.get('cookingWineOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()

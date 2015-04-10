@@ -76,7 +76,7 @@ def hero_break_104(data, player):
     hero_no = args.hero_no
     response = hero_response_pb2.HeroBreakResponse()
     open_stage_id = game_configs.base_config.get('heroBreakOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()
@@ -129,7 +129,7 @@ def hero_sacrifice_105(data, player):
     response = hero_response_pb2.HeroSacrificeResponse()
 
     open_stage_id = game_configs.base_config.get('heroSacrificeOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()
@@ -183,6 +183,10 @@ def hero_compose_106(data, player):
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
     player.hero_chip_component.save_data()
+    notice_item = game_configs.notes_config.get(9001)
+    logger.debug("=================%s %s" % (hero.hero_info.quality, notice_item.parameter1))
+    if hero.hero_info.quality in notice_item.parameter1:
+        push_notice(9001, player_name=player.base_info.base_name, hero_no=hero_no)
 
     # tlog
     log_action.hero_flow(player, hero.hero_no, 1, 1)
@@ -221,7 +225,7 @@ def hero_refine_118(data, player):
     refine = request.refine
 
     open_stage_id = game_configs.base_config.get('sealOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()

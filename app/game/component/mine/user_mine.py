@@ -792,7 +792,12 @@ class UserMine(Component):
         return data
 
     def reset_data(self):
-        data = self.new_data()
+        data = dict(mine={'1': {}},
+                    reset_day='',
+                    reset_times=0,
+                    day_before='',
+                    lively=0,
+                    guard={})
         self.init_data(data)
         self.save_data()
 

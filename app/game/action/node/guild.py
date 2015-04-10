@@ -19,6 +19,7 @@ from shared.tlog import tlog_action
 from app.proto_file.db_pb2 import Mail_PB
 from app.game.component.mail.mail import MailComponent
 from app.game.action.root import netforwarding
+from app.game.core.stage.stage import Stage
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -124,7 +125,7 @@ def join_guild_802(data, player):
         return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('guildOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.result = False
         response.message = "未完成指定关卡"
         # response.result_no = 837
@@ -322,6 +323,12 @@ def modify_user_guild_info_remote(data, player):
         remote_gate.push_object_remote(850,
                                        u'',
                                        [player.dynamic_id])
+    elif data['cmd'] == 'canjoinguild':
+        open_stage_id = game_configs.base_config.get('guildOpenStage')
+        if player.stage_component.get_stage(open_stage_id).state != 1:
+            return 0
+        else:
+            return 1
     elif data['cmd'] == 'promotion':
         player.guild.position = data['position']
         player.guild.save_data()
@@ -968,6 +975,51 @@ def invite_join_1803(data, player):
         response.message = "超出公会人数上限"
         return response.SerializeToString()
 
+    info = tb_character_info.getObj(user_id).hget('guild_id')
+    if info != 'no':
+        response.result = False
+        response.message = "对方已有军团"
+        # response.result_no = 837
+        return response.SerializeToString()
+
+    invitee_player = PlayersManager().get_player_by_id(user_id)
+    open_stage_id = game_configs.base_config.get('guildOpenStage')
+    if invitee_player:  # 在线
+        if player.stage_component.get_stage(open_stage_id).state != 1:
+            response.result = False
+            response.message = "对方未开启军团功能"
+            # response.result_no = 837
+            return response.SerializeToString()
+    else:
+        is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', user_id, {'cmd': 'canjoinguild'})
+        if is_online == "notonline":
+            character_obj = tb_character_info.getObj(user_id)
+            if not character_obj.exists():
+                response.result = False
+                response.message = "未知错误"
+                # response.result_no = 800
+                return response.SerializeToString()
+            stages = character_obj.hget('stage_info')
+            stage_objs = {}
+            flog = 1
+            for stage_id_a, stage in stages.items():
+                if stage_id_a == open_stage_id:
+                    flog = 0
+                    stage_obj = Stage.loads(stage)
+                    if stage_obj.state != 1:
+                        flog = 1
+            if flog:
+                response.result = False
+                response.message = "对方未开启军团功能"
+                # response.result_no = 837
+                return response.SerializeToString()
+
+        elif is_online == 0:
+            response.result = False
+            response.message = "对方未开启军团功能"
+            # response.result_no = 837
+            return response.SerializeToString()
+
     if not guild_obj.invite_join.get(user_id):
         for u_id, i_time in guild_obj.invite_join.items():
             if i_time + game_configs.base_config.get('guildInviteTime') > int(time.tiem()):
@@ -1044,7 +1096,7 @@ def deal_invite_join_1804(data, player):
             response.message = "超出公会人数上限"
 
         open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state == -2:
+        if player.stage_component.get_stage(open_stage_id).state != 1:
             response.result = False
             response.message = "未完成指定关卡"
             # response.result_no = 837

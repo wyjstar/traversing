@@ -151,4 +151,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print language_config.get('3700000002')
+    print newbee_guide_config.get(20001)
