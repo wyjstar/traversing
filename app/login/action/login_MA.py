@@ -6,7 +6,8 @@ import json
 import uuid
 import urllib
 from flask import request
-from app.login.model.manager import account_cache, server_manager
+from app.login.model.manager import account_cache
+from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
@@ -30,7 +31,7 @@ def server_login():
 
     server_list = dict(result=True,
                        passport=game_passport,
-                       servers=server_manager.get_server())
+                       servers=manager.server_manager.get_server())
 
     logger.debug(server_list)
     return json.dumps(server_list)
