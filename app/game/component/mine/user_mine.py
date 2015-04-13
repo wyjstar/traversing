@@ -429,7 +429,11 @@ class PlayerField(Mine):
                     if mids:
                         mid = random.choice(mids)
                         match_mine = MineOpt.get_mine(mid)
-                        if match_mine.get('status') == 3:
+                        if match_mine.get('guard_time') > time.time():
+                            logger.debug('this mine is in guard_time:%s',
+                                          match_mine.get('guard_time') - time.time())
+                            match_mine = None
+                        elif match_mine.get('status') == 3:
                             logger.debug('this mine is fade:%s:%s:%s',
                                          mid, one_user,
                                          match_mine.get('status'))
