@@ -150,6 +150,13 @@
             "app": "app.chat",
             "log": "app/logs/chat.log"
         },
+        "dbfront": {
+            "name": "dbfront",
+            "db": true,
+            "redis": true,
+            "app": "app.dbfront",
+            "log": "app/logs/db.log"
+        },
         "world": {
             "rootport": 30010,
             "name": "world",
