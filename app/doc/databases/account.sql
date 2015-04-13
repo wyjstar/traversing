@@ -53,4 +53,13 @@ CREATE TABLE `tb_pvp_rank` (
   INDEX `character_id` (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `tb_character_info`;
+CREATE TABLE `tb_character_info` (
+  `id` bigint(20) NOT NULL,
+  `base_info` mediumblob,
+  `mails` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 -- Dump completed on 2014-09-29 15:45:49

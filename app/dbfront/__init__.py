@@ -1,7 +1,6 @@
-#coding:utf8
+# coding:utf8
 
 import dataloader
 
 
-dataloader.register_madmin()
-dataloader.check_mem_db(10)
+dataloader.check_mem_db(1)
