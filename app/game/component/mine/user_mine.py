@@ -6,6 +6,7 @@ Created on 2014-11-24
 """
 import time
 import random
+import cPickle
 from shared.db_opear.configs_data import game_configs
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
@@ -428,7 +429,11 @@ class PlayerField(Mine):
                     if mids:
                         mid = random.choice(mids)
                         match_mine = MineOpt.get_mine(mid)
-                        if match_mine.get('status') == 3:
+                        if match_mine.get('guard_time') > time.time():
+                            logger.debug('this mine is in guard_time:%s',
+                                          match_mine.get('guard_time') - time.time())
+                            match_mine = None
+                        elif match_mine.get('status') == 3:
                             logger.debug('this mine is fade:%s:%s:%s',
                                          mid, one_user,
                                          match_mine.get('status'))
@@ -753,7 +758,7 @@ class UserMine(Component):
         mine = character_info.get('mine')
         all_mine = mine.get('1')
         if all_mine:
-            self._mine = all_mine
+            self._mine = cPickle.loads(all_mine)
             print self._mine, '-'*8
         else:
             # print '12244444444444444444444444444444444'
@@ -773,7 +778,7 @@ class UserMine(Component):
         self._update = False
         mine_obj = tb_character_info.getObj(self.owner.base_info.id)
         # print 'save_data', mine_obj
-        data = {'mine': {'1': self._mine},
+        data = {'mine': {'1': cPickle.dumps(self._mine)},
                 'reset_day': self._reset_day,
                 'reset_times': self._reset_times,
                 'day_before': self._tby,
@@ -782,7 +787,7 @@ class UserMine(Component):
         mine_obj.hmset(data)
 
     def new_data(self):
-        data = dict(mine={'1': self._mine},
+        data = dict(mine={'1': cPickle.dumps(self._mine)},
                     reset_day=self._reset_day,
                     reset_times=self._reset_times,
                     day_before=self._tby,
