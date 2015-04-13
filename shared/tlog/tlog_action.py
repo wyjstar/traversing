@@ -306,7 +306,6 @@ def online_num(num):
     log4tx.online_num(GameSvrId=game_server_id,
                       dtEventTime=xtime.strdatetime(),
                       GameAppID=game_app_id,
-                      PlatID=plat_id,
 
                       Num=num)
 

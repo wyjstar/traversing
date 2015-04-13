@@ -557,7 +557,7 @@ def new_guide(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
         print sendmsg
 
 
-def online_num(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
+def online_num(GameSvrId=0, dtEventTime=0, GameAppID=0,
                Num=0):
 
     message = ['OnlineNum']
@@ -565,7 +565,6 @@ def online_num(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
     message.append(GameSvrId)
     message.append(dtEventTime)
     message.append(GameAppID)
-    message.append(PlatID)
 
     message.append(Num)
 
