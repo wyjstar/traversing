@@ -18,6 +18,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
+from app.game.core.item_group_helper import get_consume_gold_num
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
 from app.game.action.node.line_up import change_hero_logic
@@ -106,15 +107,15 @@ def buy_stamina_6(request_proto, player):
         response.result_no = 102
         return response.SerializePartialToString()
 
-    player.finance.consume_gold(need_gold)
-    player.finance.save_data()
 
-    player.stamina.buy_stamina_times += 1
+    def func():
+        player.stamina.buy_stamina_times += 1
+        player.stamina.stamina += 120
+        player.stamina.last_buy_stamina_time = int(time.time())
+        player.stamina.save_data()
+        logger.debug("buy stamina++++++++++++++++++++")
 
-    player.stamina.stamina += 120
-    player.stamina.last_buy_stamina_time = int(time.time())
-    player.stamina.save_data()
-
+    player.pay.pay(need_gold, func)
 
     response.result = True
     return response.SerializePartialToString()
@@ -276,18 +277,24 @@ def new_guide_step_1802(data, player):
     result = is_afford(player, consume_config)  # 校验
     if not result.get('result'):
         logger.error('newbee guide comsume:%s', consume_config)
-    else:
+        response.res.result = False
+        response.result_no = 1802
+        return response.SerializePartialToString()
+
+    need_gold = get_consume_gold_num(consume_config)
+    def func():
         consume_data = consume(player, consume_config)
         get_return(player, consume_data, response.consume)
 
-    # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
-    # logger.debug(player.finance.coin)
-    tlog_action.log('NewGuide', player, new_guide_item.get('Sequence'),
-                    my_newbee_sequence)
+        # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
+        # logger.debug(player.finance.coin)
+        tlog_action.log('NewGuide', player, new_guide_item.get('Sequence'),
+                        my_newbee_sequence)
 
-    if my_newbee_sequence < new_guide_item.get('Sequence'):
-        player.base_info.newbee_guide_id = request.step_id
-        player.base_info.save_data()
+        if my_newbee_sequence < new_guide_item.get('Sequence'):
+            player.base_info.newbee_guide_id = request.step_id
+            player.base_info.save_data()
+    player.pay.pay(need_gold, func)
     response.res.result = True
 
     return response.SerializePartialToString()

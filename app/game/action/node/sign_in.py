@@ -11,7 +11,6 @@ from app.game.core.item_group_helper import gain, get_return
 from app.proto_file.sign_in_pb2 import SignInResponse
 from app.proto_file.sign_in_pb2 import ContinuousSignInResponse
 from app.proto_file.sign_in_pb2 import GetSignInResponse
-from app.game.core.drop_bag import BigBag
 from shared.utils.const import const
 from shared.utils.xtime import timestamp_to_date
 from gfirefly.server.logobj import logger
@@ -132,45 +131,40 @@ def repair_sign_in_1403(pro_data, player):
         response.res.result_no = 1404
         return response.SerializePartialToString()
     # 校验消耗元宝数
-    consume_gold = sign_in_add[repair_sign_in_times]
-    if consume_gold > gold:
+    need_gold = sign_in_add[repair_sign_in_times]
+    if need_gold > gold:
         response.res.result = False
         response.res.result_no = 102
         return response.SerializePartialToString()
-
-    # 消耗
-    player.finance.consume_gold(consume_gold)
-    player.finance.save_data()
-    # 签到奖励
-
     # 同一天签到校验
     if player.sign_in_component.is_signd(day):
         response.res.result = False
         response.res.result_no = 1405
         return response.SerializePartialToString()
 
-    player.sign_in_component.sign_in(day)
-    player.sign_in_component.save_data()
-    sign_round = player.sign_in_component.sign_round
-    print game_configs.sign_in_config.get(sign_round), "---------"
-    print game_configs.sign_in_config.get(sign_round).get(day), "-------"
-    if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
-        return
-    print("===========1")
-    sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
-    return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
-    get_return(player, return_data, response.gain)
-
-    #vip双倍
-    if player.base_info.vip_level > 0 and \
-        sign_in_info.get("vipDouble") and \
-        player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+    # 签到奖励
+    def func():
+        player.sign_in_component.sign_in(day)
+        player.sign_in_component.save_data()
+        sign_round = player.sign_in_component.sign_round
+        print game_configs.sign_in_config.get(sign_round), "---------"
+        print game_configs.sign_in_config.get(sign_round).get(day), "-------"
+        if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
+            return
+        sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
         return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
         get_return(player, return_data, response.gain)
 
-    print("===========2")
-    player.sign_in_component.repair_sign_in_times += 1
-    player.sign_in_component.save_data()
+        #vip双倍
+        if player.base_info.vip_level > 0 and \
+            sign_in_info.get("vipDouble") and \
+            player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+            return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN)
+            get_return(player, return_data, response.gain)
+
+        player.sign_in_component.repair_sign_in_times += 1
+        player.sign_in_component.save_data()
+    player.pay.pay(need_gold, func)
     response.res.result = True
     print("===========3")
     return response.SerializePartialToString()

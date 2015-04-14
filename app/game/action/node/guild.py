@@ -79,27 +79,28 @@ def create_guild_801(data, player):
         response.message = "此名已存在"
         return response.SerializeToString()
 
-    # 创建公会
-    guild_obj = Guild()
-    guild_obj.create_guild(p_id, g_name)
+    def func():
+        # 创建公会
+        guild_obj = Guild()
+        guild_obj.create_guild(p_id, g_name)
 
-    guild_name_data.hmset({g_name: guild_obj.g_id})
-    remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
+        guild_name_data.hmset({g_name: guild_obj.g_id})
+        remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
 
-    player.guild.g_id = guild_obj.g_id
-    player.guild.worship = 0
-    player.guild.worship_time = 1
-    player.guild.contribution = 0
-    player.guild.all_contribution = 0
-    player.guild.k_num = 0
-    player.guild.position = 1
-    player.guild.save_data()
-    guild_obj.save_data()
-    player.finance.consume_gold(game_configs.base_config.get('create_money'))
-    player.finance.save_data()
+        player.guild.g_id = guild_obj.g_id
+        player.guild.worship = 0
+        player.guild.worship_time = 1
+        player.guild.contribution = 0
+        player.guild.all_contribution = 0
+        player.guild.k_num = 0
+        player.guild.position = 1
+        player.guild.save_data()
+        guild_obj.save_data()
+        # 加入公会聊天
+        remote_gate.login_guild_chat_remote(player.dynamic_id, player.guild.g_id)
+    need_gold = game_configs.base_config.get('create_money')
+    player.pay.pay(need_gold, func)
 
-    # 加入公会聊天
-    remote_gate.login_guild_chat_remote(player.dynamic_id, player.guild.g_id)
 
     response.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id, player.base_info.level)

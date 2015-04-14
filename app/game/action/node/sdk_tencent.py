@@ -10,11 +10,9 @@ from app.proto_file.tencent_pb2 import GetGoldResponse
 def get_gold_2001(data, player):
     """客户端充值完成后，获取充值币信息"""
     response = GetGoldResponse()
-    response.res.result = False
-    REMOTE_DEPLOYED = player.pay.REMOTE_DEPLOYED
-    if (not REMOTE_DEPLOYED) or (REMOTE_DEPLOYED and player.pay.get_balance()):
-        response.res.result = True
-        response.gold = player.finance.gold
-        response.vip_level = player.base_info.vip_level
-        logger.debug("get_gold_2001====== %s" % response.gold)
+    player.pay.recharge()
+    response.res.result = True
+    response.gold = player.finance.gold
+    response.vip_level = player.base_info.vip_level
+    logger.debug("get_gold_2001============%s" % player.finance.gold)
     return response.SerializeToString()

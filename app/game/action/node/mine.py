@@ -431,15 +431,20 @@ def exchange_1248(data, player):
         common_response.message = message
         return response.SerializePartialToString()
 
-    consume_return_data = item_group_helper.consume(player, shop_item.discountPrice)  # 消耗
 
-    return_data = item_group_helper.gain(player, shop_item.gain, const.MINE_EXCHANGE)  # 获取
-    # extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
-    item_group_helper.get_return(player, consume_return_data, response.consume)
-    item_group_helper.get_return(player, return_data, response.gain)
-    # get_return(player, extra_return_data, response)
-    player.mine.buy_shop(request.position, request.shop_id)
-    player.mine.save_data()
+    def func():
+        consume_return_data = item_group_helper.consume(player, shop_item.discountPrice)  # 消耗
+        return_data = item_group_helper.gain(player, shop_item.gain, const.MINE_EXCHANGE)  # 获取
+        # extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
+        item_group_helper.get_return(player, consume_return_data, response.consume)
+        item_group_helper.get_return(player, return_data, response.gain)
+        # get_return(player, extra_return_data, response)
+        player.mine.buy_shop(request.position, request.shop_id)
+        player.mine.save_data()
+
+    player.pay.pay(shop_item.discountPrice, func)
+
+
 
     return response.SerializePartialToString()
 

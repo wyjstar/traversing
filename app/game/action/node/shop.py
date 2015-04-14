@@ -14,6 +14,7 @@ from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
+from app.game.core.item_group_helper import get_consume_gold_num
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 
@@ -95,16 +96,23 @@ def shop_oper(pro_data, player, reason):
 
     shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
     # 消耗
-    if _is_consume_result:
-        return_data = consume(player, shop_item.consume,
-                              player_type_shop, shop_type_item)
-        get_return(player, return_data, response.consume)
 
-    return_data = gain(player, shop_item.gain, reason)  # 获取
-    extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+    need_gold = get_consume_gold_num(shop_item.consume)
+    if not _is_consume_result:
+        need_gold = 0
+    def func():
+        if _is_consume_result:
+            return_data = consume(player, shop_item.consume,
+                                player_type_shop, shop_type_item)
+            get_return(player, return_data, response.consume)
 
-    get_return(player, return_data, response.gain)
-    get_return(player, extra_return_data, response.gain)
+        return_data = gain(player, shop_item.gain, reason)  # 获取
+        extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+
+        get_return(player, return_data, response.gain)
+        get_return(player, extra_return_data, response.gain)
+
+    player.pay.pay(need_gold, func)
 
     response.res.result = True
     return response.SerializeToString()
@@ -212,14 +220,18 @@ def shop_buy_505(pro_data, player):
 
         shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
 
-        consume_return_data = consume(player, price,
-                                      multiple=item_count,
-                                      shop=shop,
-                                      luck_config=shop_type_item)  # 消耗
-        return_data = gain(player, shop_item.gain, get_reason(shop_item.get('type')), multiple=item_count)  # 获取
+        need_gold = get_consume_gold_num(shop_item.consume, item_count)
+        def func():
+            consume_return_data = consume(player, price,
+                                        multiple=item_count,
+                                        shop=shop,
+                                        luck_config=shop_type_item)  # 消耗
+            return_data = gain(player, shop_item.gain, get_reason(shop_item.get('type')), multiple=item_count)  # 获取
 
-        get_return(player, consume_return_data, response.consume)
-        get_return(player, return_data, response.gain)
+            get_return(player, consume_return_data, response.consume)
+            get_return(player, return_data, response.gain)
+
+        player.pay.pay(need_gold, func)
 
     player.shop.save_data()
     common_response.result = True

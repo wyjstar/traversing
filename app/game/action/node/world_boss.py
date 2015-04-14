@@ -154,9 +154,9 @@ def encourage_heros_1703(data, player):
             logger.debug("*" * 80)
             print response
             return response.SerializePartialToString()
-        player.finance.consume_gold(need_gold)
-        player.finance.save_data()
-        boss.encourage_gold_num += 1
+        def func():
+            boss.encourage_gold_num += 1
+        player.pay.pay(need_gold, func)
 
     player.world_boss.save_data()
     response.result = True
@@ -190,9 +190,10 @@ def pvb_reborn_1704(data, player):
         response.result_no = 1701
         return response.SerializePartialToString()
 
-    if not_free and gold >= need_gold:
-        player.finance.consume_gold(need_gold)
-        player.finance.save_data()
+    if not_free:
+        def func():
+            pass
+        player.pay.pay(need_gold, func)
     response.result = True
     print response
     return response.SerializePartialToString()

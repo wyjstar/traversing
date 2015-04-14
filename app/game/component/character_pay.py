@@ -7,7 +7,10 @@ created by server on 14-8-26
 from app.game.component.Component import Component
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
-
+from shared.tlog import tlog_action
+from gtwisted.core import reactor
+from app.proto_file.tencent_pb2 import GetGoldResponse
+remote_gate = GlobalObject().remote['gate']
 
 class CharacterPay(Component):
 
@@ -21,6 +24,7 @@ class CharacterPay(Component):
         self._pf = ""
         self._pfkey = ""
         self._zoneid = 0
+        self.loop_times = 0
         if 'deploy' not in GlobalObject().allconfig:
             self.REMOTE_DEPLOYED = False
             print 'deploy not in GlobalObject().allconfig'
@@ -73,6 +77,9 @@ class CharacterPay(Component):
             return
         balance = data['balance']
         gen_balance = data['gen_balance']
+        isfirst = data['first_save']
+        if isfirst == 1:
+            tlog_action.log('Recharge', self.owner, isfirst, 1)
         return balance, gen_balance
 
     def get_balance(self):
@@ -81,16 +88,46 @@ class CharacterPay(Component):
             return False
 
         balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
-        recharge_balance = balance - gen_balance # 累计充值数量
+        recharge_balance = balance - self._owner.finance.gold # 累计充值数量
         if recharge_balance > 0:
             self._owner.base_info.set_vip_level(recharge_balance)
         self._owner.finance.gold = balance
-        self._owner.base_info.recharge = recharge_balance
+        self._owner.base_info.recharge += recharge_balance
         self._owner.base_info.save_data()
         self._owner.finance.save_data()
         return True
 
+    def recharge(self):
+        result = self._get_balance_m()
+        if not result:
+            return False
+
+        balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
+        recharge_balance = balance - self._owner.finance.gold # 累计充值数量
+        if recharge_balance > 0:
+            self._owner.base_info.set_vip_level(recharge_balance)
+            self._owner.finance.gold = balance
+            self._owner.base_info.recharge += recharge_balance
+            self._owner.base_info.save_data()
+            self._owner.finance.save_data()
+            self.loop_times = 0
+
+            response = GetGoldResponse()
+            response.res.result = True
+            response.gold = self._owner.finance.gold
+            response.vip_level = self._owner.base_info.vip_level
+            remote_gate.push_notice_remote(2001, response.SerializePartialToString())
+        else:
+            self.loop_times += 1
+            reactor.callLater(30*self.loop_times, self.recharge)
+
     def _pay_m(self, num):
+        if num == 0:
+            return 0, 0
+        if not self.REMOTE_DEPLOYED:
+            self._owner.finance.consume_gold(num)
+            self._owner.finance.save_data()
+            return 0, 0
         result = {}
         try:
             result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
@@ -109,8 +146,6 @@ class CharacterPay(Component):
         balance = result['balance']
         return billno, balance
 
-
-
     def pay(self, num, func=None, *args, **kwargs):
         """
         func: 发货方法
@@ -119,25 +154,28 @@ class CharacterPay(Component):
         result = self._pay_m(num)
         if not result:
             return False
-        gain_res = []
         if not func:
-            self.get_balance()
-            return gain_res
+            return []
         billno, _balance = result
 
         try:
-            gain_res = func(*args, **kwargs)
+            func(*args, **kwargs)
         except:
             self._cancel_pay_m(num, billno)
             return False
         self.get_balance()
-        return gain_res
+        return True
 
     def _cancel_pay_m(self, num, billno):
         """
         取消订单
         """
         result = {}
+        if num == 0:
+            return True
+        if self.REMOTE_DEPLOYED:
+            self._owner.finance.add_gold(num)
+            return True
         try:
             result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
