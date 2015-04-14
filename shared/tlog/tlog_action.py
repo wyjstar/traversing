@@ -264,7 +264,7 @@ def hero_refine(player_data, hero_id, refine):
                        HeroId=hero_id)
 
 
-def recharge(player_data, isfast, recharege_id):
+def recharge(player_data, isfirst, recharege_id):
 
     log4tx.recharge(GameSvrId=game_server_id,
                     dtEventTime=xtime.strdatetime(),
