@@ -157,11 +157,10 @@ class CharacterPay(Component):
         if not func:
             return []
         billno, _balance = result
-
         try:
             func(*args, **kwargs)
-        except:
-            logger.error("pay error: cancel_pay")
+        except Exception, e:
+            logger.error("pay error: cancel_pay %s", e)
             self._cancel_pay_m(num, billno)
             return False
         self.get_balance()
