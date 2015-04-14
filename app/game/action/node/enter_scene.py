@@ -48,10 +48,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.closure = player.base_info.closure
 
     for k, i in enumerate(player.finance._finances):
-        if k == const.GOLD:
-            responsedata.finances.append(i - player.finance._finances[const.CONSUME_GOLD])
-        else:
-            responsedata.finances.append(i)
+        responsedata.finances.append(i)
 
     responsedata.fine_hero = player.last_pick_time.fine_hero
     responsedata.excellent_hero = player.last_pick_time.excellent_hero

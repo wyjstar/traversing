@@ -185,15 +185,15 @@ def buy_shoes_832(data, player):
     else:
         player.travel_component.last_buy_shoes = [0, int(time.time())]
 
-    for shoes_info in args.shoes_infos:
-        player.travel_component.shoes[shoes_info.shoes_type-1] += \
-            shoes_info.shoes_no
 
-    player.finance.consume_gold(need_good)
-    player.travel_component.last_buy_shoes[0] += num
+    def func():
+        for shoes_info in args.shoes_infos:
+            player.travel_component.shoes[shoes_info.shoes_type-1] += \
+                shoes_info.shoes_no
+        player.travel_component.last_buy_shoes[0] += num
+        player.travel_component.save()
 
-    player.travel_component.save()
-    player.finance.save_data()
+    player.pay.pay(need_good, func)
 
     response.res.result = True
     return response.SerializeToString()

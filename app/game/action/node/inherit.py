@@ -47,12 +47,14 @@ def inherit_refine_151(pro_data, player):
         response.result = False
         return response.SerializeToString()
 
-    target.refine = origin.refine
-    origin.refine = 0
+    def func():
+        target.refine = origin.refine
+        origin.refine = 0
+        target.save_data()
+        origin.save_data()
+    gold = game_configs.base_config.get("heroInheritPrice")
+    player.pay.pay(gold, func)
 
-    target.save_data()
-    origin.save_data()
-    player.finance.consume_gold(game_configs.base_config.get("heroInheritPrice"))
     player.finance.save_data()
     response.result = True
     tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id)
@@ -96,19 +98,21 @@ def inherit_equipment_152(pro_data, player):
         response.result = False
         return response.SerializeToString()
 
-    target.attribute.strengthen_lv = origin.attribute.strengthen_lv
-    target.save_data()
+    def func(self):
+        """docstring for func"""
+        target.attribute.strengthen_lv = origin.attribute.strengthen_lv
+        target.save_data()
 
-    origin.attribute.strengthen_lv = 1
-    origin.save_data()
-    # 传承强化过程
-    target.enhance_record.enhance_record = origin.enhance_record.enhance_record
-    origin.enhance_record.enhance_record = []
+        origin.attribute.strengthen_lv = 1
+        origin.save_data()
+        # 传承强化过程
+        target.enhance_record.enhance_record = origin.enhance_record.enhance_record
+        origin.enhance_record.enhance_record = []
 
-    print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
+        print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
-    player.finance.consume_gold(game_configs.base_config.get("equInheritPrice"))
-    player.finance.save_data()
+    gold = game_configs.base_config.get("equInheritPrice")
+    player.pay.pay(gold, func)
     response.result = True
     tlog_action.log('Inherit', player, 2, origin.base_info.id,
                     origin.base_info.equipment_no,
@@ -148,12 +152,13 @@ def inherit_upara_153(pro_data, player):
         response.result = False
         return response.SerializeToString()
 
-    player.line_up_component.unpars[target_id] = origin_level
-    player.line_up_component.unpars[origin_id] = 1
-    player.line_up_component.save_data()
+    def func():
+        player.line_up_component.unpars[target_id] = origin_level
+        player.line_up_component.unpars[origin_id] = 1
+        player.line_up_component.save_data()
 
-    player.finance.consume_gold(game_configs.base_config.get("warriorsInheritPrice"))
-    player.finance.save_data()
+    need_gold = game_configs.base_config.get("warriorsInheritPrice")
+    player.pay.pay(need_gold, func)
     response.result = True
     tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id)
     return response.SerializeToString()

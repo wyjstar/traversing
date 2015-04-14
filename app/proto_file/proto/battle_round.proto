@@ -36,3 +36,13 @@ message Round{
             repeated Buff buffs = 5;                    // 造成的buff组
 }
 
+message BattleStep{
+        required int32 step_id = 1; // id
+        required int32 step_type = 2; // 1:无双 2: 小伙伴
+}
+
+message PvbBattleResult{
+    repeated BattleStep battleStep = 1;
+    repeated bool result = 2;
+}
+

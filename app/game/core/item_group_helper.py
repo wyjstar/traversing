@@ -93,6 +93,20 @@ def is_consume(player, shop_item):
     return True
 
 
+def get_consume_gold_num(item_group, multiple=1):
+    """docstring for get_consume_gold_num"""
+    gold_num = 0
+    for group_item in item_group:
+        type_id = group_item.item_type
+        num = group_item.num * multiple
+        item_no = group_item.item_no
+        if type_id == const.GOLD:
+            gold_num += num
+        elif type_id == const.RESOURCE:
+            if item_no == const.GOLD:
+                gold_num += num
+    return gold_num
+
 def consume(player, item_group, shop=None, luck_config=None, multiple=1):
 # def consume(player, item_group, reason, shop=None, luck_config=None):
     """消耗"""
@@ -116,12 +130,12 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
                 shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
 
-        elif type_id == const.GOLD:
-            player.finance.consume_gold(num)
-            if shop and luckValue:
-                shop['luck_num'] += num * luckValue.get(type_id)
-            player.finance.save_data()
-            after_num = player.finance.gold
+        #elif type_id == const.GOLD:
+            #player.finance.consume_gold(num)
+            #if shop and luckValue:
+                #shop['luck_num'] += num * luckValue.get(type_id)
+            #player.finance.save_data()
+            #after_num = player.finance.gold
 
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul -= num

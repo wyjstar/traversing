@@ -10,7 +10,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 
-from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import consume, get_consume_gold_num
 from app.game.core.item_group_helper import get_return
 from app.game.core.item_group_helper import is_afford
 
@@ -91,29 +91,32 @@ class CharacterBrewComponent(Component):
             logger.error('not enough gold to do brew:%s', _consume)
             return False
 
-        return_data = consume(self.owner, _consume)
-        get_return(self.owner, return_data, response.consume)
+        need_gold = get_consume_gold_num(_consume)
+        def func():
+            return_data = consume(self.owner, _consume)
+            get_return(self.owner, return_data, response.consume)
 
-        self._brew_step += 1
-        critical = critical[brew_type]
-        rand = random.random()*sum(critical.values())
-        for critical_num, rand_range in critical.items():
-            if rand < rand_range:
-                increment = critical_num * game_configs.base_config.get('cookingWineOutput')
-                self._nectar_cur += int(increment)
-                break
-            else:
-                rand -= rand_range
-        logger.info('brew type:%s, rand:%s nectar:%s nectar\
-cur:%s time:%s cri:%s',
-                    brew_type,
-                    rand,
-                    self.nectar,
-                    self._nectar_cur,
-                    self.brew_times,
-                    critical_num)
+            self._brew_step += 1
+            #critical = critical[brew_type]
+            rand = random.random()*sum(critical.values())
+            for critical_num, rand_range in critical.items():
+                if rand < rand_range:
+                    increment = critical_num * game_configs.base_config.get('cookingWineOutput')
+                    self._nectar_cur += int(increment)
+                    break
+                else:
+                    rand -= rand_range
+            logger.info('brew type:%s, rand:%s nectar:%s nectar\
+    cur:%s time:%s cri:%s',
+                        brew_type,
+                        rand,
+                        self.nectar,
+                        self._nectar_cur,
+                        self.brew_times,
+                        critical_num)
 
-        self.save_data()
+            self.save_data()
+        self.owner.pay.pay(need_gold, func)
         return True
 
     def taken_brew(self):

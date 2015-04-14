@@ -7,7 +7,7 @@ created by server on 14-8-26
 from app.game.component.Component import Component
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
-
+from shared.tlog import tlog_action
 
 class CharacterPay(Component):
 
@@ -69,6 +69,9 @@ class CharacterPay(Component):
             return
         balance = data['balance']
         gen_balance = data['gen_balance']
+        isfirst = data['first_save']
+        if isfirst == 1:
+            tlog_action.log('Recharge', self.owner, isfirst, 1)
         return balance, gen_balance
 
     def get_balance(self):
@@ -87,6 +90,12 @@ class CharacterPay(Component):
         return True
 
     def _pay_m(self, num):
+        if num == 0:
+            return 0, 0
+        if not self.REMOTE_DEPLOYED:
+            self._owner.finance.consume_gold(num)
+            self._owner.finance.save_data()
+            return 0, 0
         result = {}
         try:
             result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
@@ -105,8 +114,6 @@ class CharacterPay(Component):
         balance = result['balance']
         return billno, balance
 
-
-
     def pay(self, num, func=None, *args, **kwargs):
         """
         func: 发货方法
@@ -115,25 +122,28 @@ class CharacterPay(Component):
         result = self._pay_m(num)
         if not result:
             return False
-        gain_res = []
         if not func:
-            self.get_balance()
-            return gain_res
+            return []
         billno, _balance = result
 
         try:
-            gain_res = func(*args, **kwargs)
+            func(*args, **kwargs)
         except:
             self._cancel_pay_m(num, billno)
             return False
         self.get_balance()
-        return gain_res
+        return True
 
     def _cancel_pay_m(self, num, billno):
         """
         取消订单
         """
         result = {}
+        if num == 0:
+            return True
+        if self.REMOTE_DEPLOYED:
+            self._owner.finance.add_gold(num)
+            return True
         try:
             result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,

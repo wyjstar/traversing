@@ -99,19 +99,18 @@ class CharacterShopComponent(Component):
             else:
                 ctype, price = refreshprice.items()[0]
             # print ctype, price
+        def func():
+            __shop_data['refresh_times'] += 1
+            __shop_data['last_refresh_time'] = time.time()
+            __shop_data['buyed_item_ids'] = []
+            # data['last_refresh_time'] = time.time()
+            if shop_item.itemNum > 0:
+                # print shop_item, shop_type
+                __shop_data['item_ids'] = self.get_shop_item_ids(shop_type,
+                                                                self._shop_data[shop_type]['luck_num'])
+            self.save_data()
 
-        result = self.owner.finance.consume_gold(price)
-        self.owner.finance.save_data()
-        __shop_data['refresh_times'] += 1
-        __shop_data['last_refresh_time'] = time.time()
-        __shop_data['buyed_item_ids'] = []
-        # data['last_refresh_time'] = time.time()
-        if shop_item.itemNum > 0:
-            # print shop_item, shop_type
-            __shop_data['item_ids'] = self.get_shop_item_ids(shop_type,
-                                                             self._shop_data[shop_type]['luck_num'])
-        self.save_data()
-
+        result = self._owner.pay.pay(price, func)
         return result
 
     def refresh_items(self, type_shop):

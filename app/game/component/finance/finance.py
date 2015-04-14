@@ -82,7 +82,7 @@ class CharacterFinanceComponent(Component):
         """
         get gold num.
         """
-        return self._finances[const.GOLD] - self._finances[const.CONSUME_GOLD]
+        return self._finances[const.GOLD]
 
     @gold.setter
     def gold(self, gold):
@@ -112,9 +112,7 @@ class CharacterFinanceComponent(Component):
             logger.error('not enough finance:%s:%s:%s',
                          fType, self._finances[fType], num)
             return False
-        if fType == 2:
-            return self.consume_gold(num)
-        else:
+        if fType != const.GOLD:
             self._finances[fType] -= num
         return True
 
@@ -144,9 +142,13 @@ class CharacterFinanceComponent(Component):
             self._finances[const.GOLD] += num
 
     def consume_gold(self, num):
+        """
+        消耗元宝
+        """
         if num > self._finances[const.GOLD]:
             return False
         self._finances[const.CONSUME_GOLD] += num
+        self._finances[const.GOLD] -= num
         return True
 
     def add_hero_soul(self, num):

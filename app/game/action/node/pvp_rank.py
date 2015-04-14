@@ -24,7 +24,7 @@ from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.core.item_group_helper import is_afford
-from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import consume, get_consume_gold_num
 from app.game.core.item_group_helper import get_return
 from app.proto_file.shop_pb2 import ShopResponse
 from app.proto_file.db_pb2 import Mail_PB
@@ -288,12 +288,15 @@ def reset_pvp_time_1506(data, player):
         response.res.result_no = 1506
         return response.SerializePartialToString()
 
-    return_data = consume(player, _consume)  # 消耗
-    get_return(player, return_data, response.consume)
-    player.base_info.pvp_times = 0
-    player.base_info.pvp_refresh_time = time.time()
-    player.base_info.pvp_refresh_count += 1
-    player.base_info.save_data()
+    need_gold = get_consume_gold_num(_consume)
+    def func():
+        return_data = consume(player, _consume)  # 消耗
+        get_return(player, return_data, response.consume)
+        player.base_info.pvp_times = 0
+        player.base_info.pvp_refresh_time = time.time()
+        player.base_info.pvp_refresh_count += 1
+        player.base_info.save_data()
+    player.pay.pay(need_gold, func)
 
     return response.SerializePartialToString()
 
