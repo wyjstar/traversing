@@ -129,7 +129,7 @@ const.SHOP_BUY_GIFT_PACK = 14  # 商城,购买礼包
 const.SHOP_BUY_ITEM = 15  # 商城购买道具
 const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
-const.RECHARGE = 17  # rechage
+const.RECHARGE = 33  # rechage
 const.ARENA_WIN = 32  # 竞技场获胜
 #const.COMMON_BUY = 18  # 通用商城购买
 

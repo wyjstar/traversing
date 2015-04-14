@@ -735,17 +735,29 @@ def worship_809(data, player):
             response.message = "元宝不足"
             return response.SerializeToString()
 
+    # 是不是今天，今天判断次数，不是今天重置次数
+    is_today = False
     if (int(time.time())-player.guild.worship_time) < (60*60*24):
+        is_today = True
+    if is_today and player.base_info.guild_worship_times < player.guild.worship:
+        response.result = False
+        response.message = "今天的膜拜次数已用完"
+        return response.SerializeToString()
+
+    # 根据膜拜类型判断减什么钱，然后扣除
+    if worship_info[0] == 1:  # 1金币  2元宝
+        player.finance.coin -= worship_info[1]
+    else:
+        player.finance.consume_gold(worship_info[1])
+
+    # 逻辑
+    if is_today:
         if player.base_info.guild_worship_times > player.guild.worship:
             player.guild.worship += 1
             player.guild.contribution += worship_info[4]
             player.guild.all_contribution += worship_info[4]
             guild_obj.fund += worship_info[3]
             guild_obj.exp += worship_info[2]
-        else:
-            response.result = False
-            response.message = "今天的膜拜次数已用完"
-            return response.SerializeToString()
     else:
         localtime = time.localtime(time.time())
         new_time = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', localtime), '%Y-%m-%d %H:%M:%S'))
@@ -764,11 +776,6 @@ def worship_809(data, player):
     player.guild.save_data()
     guild_obj.save_data()
 
-    # 根据膜拜类型判断减什么钱，然后扣除
-    if worship_info[0] == 1:  # 1金币  2元宝
-        player.finance.coin -= worship_info[1]
-    else:
-        player.finance.consume_gold(worship_info[1])
     player.finance.save_data()
     response.result = True
     response.message = "膜拜成功"
