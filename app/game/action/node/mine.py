@@ -166,14 +166,17 @@ def reset_1242(data, player):
                 response.res.result_no = result.get('result_no')
                 response.res.message = u'消费不足！'
             else:
-                consume_return_data = item_group_helper.consume(player,
-                                                                [price])  # 消耗
-                item_group_helper.get_return(player,
-                                             consume_return_data,
-                                             response.consume)
-                player.mine.reset_map()
-                mine_status(player, response.mine)
-                response.res.result = True
+                need_gold = item_group_helper.get_consume_gold_num([price])
+                def func():
+                    consume_return_data = item_group_helper.consume(player,
+                                                                    [price])  # 消耗
+                    item_group_helper.get_return(player,
+                                                consume_return_data,
+                                                response.consume)
+                    player.mine.reset_map()
+                    mine_status(player, response.mine)
+                    response.res.result = True
+                player.pay.pay(need_gold, func)
     player.mine.save_data()
     return response.SerializePartialToString()
 
@@ -431,6 +434,7 @@ def exchange_1248(data, player):
         common_response.message = message
         return response.SerializePartialToString()
 
+    need_gold = item_group_helper.get_consume_gold_num(shop_item.discountPrice)
 
     def func():
         consume_return_data = item_group_helper.consume(player, shop_item.discountPrice)  # 消耗
@@ -442,7 +446,7 @@ def exchange_1248(data, player):
         player.mine.buy_shop(request.position, request.shop_id)
         player.mine.save_data()
 
-    player.pay.pay(shop_item.discountPrice, func)
+    player.pay.pay(need_gold, func)
 
 
 
@@ -502,8 +506,12 @@ def acc_mine_1250(data, player):
     else:
         response.res.result = True
     # print 'price', price
-    consume_return_data = item_group_helper.consume(player, [price])  # 消耗
-    item_group_helper.get_return(player, consume_return_data, response.consume)
+    need_gold = item_group_helper.get_consume_gold_num([price])
+    def func():
+        consume_return_data = item_group_helper.consume(player, [price])  # 消耗
+        item_group_helper.get_return(player, consume_return_data, response.consume)
+
+    player.pay.pay(need_gold, func)
     last_time = player.mine.acc_mine()
     player.mine.save_data()
 
