@@ -21,11 +21,12 @@ from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
-#from app.game.action.node.line_up import change_hero_logic
-#from app.game.action.node.equipment import enhance_equipment
-#from app.game.action.node.hero import hero_upgrade_with_item_logic, do_hero_refine
-#from app.game.action.node.runt import do_runt_set
-#from app.game.action.node.hero import hero_break_logic
+from app.game.action.node.line_up import change_hero_logic
+from app.game.action.node.equipment import enhance_equipment
+from app.game.action.node.hero import hero_upgrade_with_item_logic, do_hero_refine
+from app.game.action.node.runt import do_runt_set
+from app.game.action.node.hero import hero_break_logic
+from shared.tlog import tlog_action
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -287,6 +288,8 @@ def new_guide_step_1802(data, player):
 
         # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
         # logger.debug(player.finance.coin)
+        tlog_action.log('NewGuide', player, new_guide_item.get('Sequence'),
+                        my_newbee_sequence)
 
         if my_newbee_sequence < new_guide_item.get('Sequence'):
             player.base_info.newbee_guide_id = request.step_id

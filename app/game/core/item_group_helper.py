@@ -323,7 +323,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             player.stamina.save_data()
 
         elif type_id == const.TEAM_EXPERIENCE:
-            player.base_info.addexp(num, const.GAIN)
+            player.base_info.addexp(num, reason)
             player.base_info.save_data()
 
         elif type_id == const.TRAVEL_ITEM:

@@ -6,6 +6,7 @@ from app.gate.core.users_manager import UsersManager
 from gtwisted.core import reactor
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.ranking import Ranking
+from shared.tlog import tlog_action
 
 
 front_ip = GlobalObject().json_config['front_ip']
@@ -22,6 +23,7 @@ def tick():
     else:
         reactor.callLater(60, tick)
     logger.info('server online num:%s', UsersManager().get_online_num())
+    tlog_action.log('OnlineNum', UsersManager().get_online_num())
 
 reactor.callLater(1, tick)
 # 初始化工会排行

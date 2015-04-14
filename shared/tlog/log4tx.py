@@ -535,3 +535,40 @@ def round_flow(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def new_guide(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
+               OpenID=0, Sequence=0, MySequence=0):
+
+    message = ['NewGuide']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Sequence)
+    message.append(MySequence)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def online_num(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               Num=0):
+
+    message = ['OnlineNum']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg

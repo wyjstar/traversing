@@ -289,6 +289,27 @@ def round_flow(player_data, battle_id, battle_type, is_quick, result):
                       Result=result)
 
 
+def new_guide(player_data, sequence, my_sequence):
+
+    log4tx.new_guide(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      Sequence=sequence,
+                      MySequence=my_sequence)
+
+
+def online_num(num):
+
+    log4tx.online_num(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+
+                      Num=num)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
@@ -313,6 +334,8 @@ tlog_funcs['AutoTravel'] = auto_travel
 tlog_funcs['HeroRefine'] = hero_refine
 tlog_funcs['Recharge'] = recharge
 tlog_funcs['RoundFlow'] = round_flow
+tlog_funcs['NewGuide'] = new_guide
+tlog_funcs['OnlineNum'] = online_num
 
 
 def log(mod, *args, **kwds):

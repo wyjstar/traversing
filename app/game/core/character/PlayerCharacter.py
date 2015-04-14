@@ -75,7 +75,7 @@ class PlayerCharacter(object):
                      character_info['id'],
                      character_info['level'])
         char_obj.new(character_info)
-        tb_character_info.sadd('all', self._pid)
+        tb_character_info.sadd('new', self._pid)
 
         # fake============================================
         if self._pid != 999:

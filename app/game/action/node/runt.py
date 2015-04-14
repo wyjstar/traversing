@@ -169,21 +169,27 @@ def refresh_runt_844(data, player):
     """打造刷新"""
     response = RefreshRuntResponse()
 
+    need_gold = False
+    refresh_times = copy.copy(player.runt.refresh_times)
     if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
             and time.localtime(player.runt.refresh_times[1]).tm_yday == time.localtime().tm_yday:
         if game_configs.base_config.get('totemRefreshFreeTimes') > player.runt.refresh_times[0]:
-            player.runt.refresh_times[0] += 1
+            # player.runt.refresh_times[0] += 1
+            refresh_times[0] += 1
         else:
-            if player.finance.gold > game_configs.base_config.get('totemRefreshPrice'):
-                player.finance.consume_gold(game_configs.base_config.get('totemRefreshPrice'))
-            else:
-                response.res.result = False
-                response.res.result_no = 102  # 充值币不足
-                return response.SerializeToString()
-
+            need_gold = True
     else:
-        player.runt.refresh_times = [1, int(time.time())]
+        # player.runt.refresh_times = [1, int(time.time())]
+        refresh_times = [1, int(time.time())]
 
+    if need_gold and player.finance.gold < game_configs.base_config.get('totemRefreshPrice'):
+        response.res.result = False
+        response.res.result_no = 102  # 充值币不足
+        return response.SerializeToString()
+    if need_gold:
+        player.finance.consume_gold(game_configs.base_config.get('totemRefreshPrice'))
+
+    player.runt.refresh_times = refresh_times
     while True:
         new_refresh_id = player.runt.build_refresh()
         if player.runt.refresh_runt:
