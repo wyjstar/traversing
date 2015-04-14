@@ -176,15 +176,21 @@ def buy_shoes_832(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
+    is_today = 0
+    enough_times = 1
     if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday == time.localtime().tm_yday:
-        if player.travel_component.last_buy_shoes[0] + num > game_configs.vip_config.get(player.base_info.vip_level).buyShoeTimes:
+        is_today = 1
+
+    if player.travel_component.last_buy_shoes[0] + num > game_configs.vip_config.get(player.base_info.vip_level).buyShoeTimes:
+        enough_times = 0
+
+    if is_today and not enough_times:
             logger.error('travel buy shoes time dont enough')
             response.res.result = False
             response.res.result_no = 835  # 购买次数不足
             return response.SerializeToString()
-    else:
+    if not is_today:
         player.travel_component.last_buy_shoes = [0, int(time.time())]
-
 
     def func():
         for shoes_info in args.shoes_infos:
@@ -366,10 +372,10 @@ def no_wait_835(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    gain(player, event_cache[1], const.TRAVEL)
     player.finance.consume_gold(event_info.price)
-    player.finance.save_data()
 
+    gain(player, event_cache[1], const.TRAVEL)
+    player.finance.save_data()
     stage_cache.remove(event_cache)
     player.travel_component.save()
 
@@ -394,33 +400,36 @@ def auto_travel_837(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    flag = 0
+    can_auto_travel = 1
+    auto_is_finish = 1
     if player.travel_component.auto.get(stage_id):
+        auto_is_finish = 0
         for auto_travel in player.travel_component.auto.get(stage_id):
             if game_configs.base_config.get('autoTravel').get(auto_travel.get('continued_time'))[0] != auto_travel.get('already_times'):
-                flag = 1
+                can_auto_travel = 0
             else:
                 for auto_travel_event in auto_travel.get('events'):
                     if len(auto_travel_event) < 3:
-                        flag = 1
-    else:
-        player.travel_component.auto[stage_id] = []
+                        can_auto_travel = 0
 
-    if flag:
+    if not can_auto_travel:
         response.res.result = False
         response.res.result_no = 819
         return response.SerializeToString()
 
+    # 扣元宝
+    player.finance.consume_gold(auto_travel_config[1])
+
+    # 逻辑
+    if auto_is_finish:
+        player.travel_component.auto[stage_id] = []
     info = {
         'start_time': int(time.time()),
         'continued_time': ttime,
         'events': [],
         'already_times': 0}
     player.travel_component.auto[stage_id].append(info)
-
-    player.finance.consume_gold(auto_travel_config[1])
     player.finance.save_data()
-
     deal_auto_response(response, player)
 
     response.res.result = True
@@ -479,6 +488,7 @@ def settle_auto_838(data, player):
 
     flag1 = 1
     flag = 1
+    event_infos = []
     for event_info in auto_travel_info.get('events'):
         if event_info[0] == 0 and event_id != event_info[1]: # 如果 状态是未完成 就标志为0
             flag1 = 0
@@ -493,27 +503,25 @@ def settle_auto_838(data, player):
                     event_conf.parameter.items()[0][0] * 60:
                 continue
 
-        # 结算
-        gain(player, event_info[2], const.TRAVEL_AUTO)
-
-        event_info[0] = 1
-        flag = 0
-
-    if flag:
+        event_infos.append(event_info)
+    if not event_infos:
         logger.error('event dont find')
         response.res.result = False
         response.res.result_no = 829
         return response.SerializeToString()
 
-    if game_configs.base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] == auto_travel_info.get('already_times') and flag1:
-        stage_info.remove(auto_travel_info)
-
-    player.travel_component.save()
-
     if settle_type:
         player.finance.consume_gold(game_configs.travel_event_config.get('events').get(event_id%xs).price)
         player.finance.save_data()
 
+    for event_info in event_infos:
+        # 结算
+        gain(player, event_info[2], const.TRAVEL_AUTO)
+        event_info[0] = 1
+
+    if game_configs.base_config.get('autoTravel').get(auto_travel_info.get('continued_time'))[0] == auto_travel_info.get('already_times') and flag1:
+        stage_info.remove(auto_travel_info)
+    player.travel_component.save()
     deal_auto_response(response, player)
 
     response.res.result = True

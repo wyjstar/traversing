@@ -384,22 +384,25 @@ def reset_stage_908(pro_data, player):
     request = stage_request_pb2.ResetStageRequest()
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
-
     response = stage_response_pb2.ResetStageResponse()
 
     stage_obj = player.stage_component.get_stage(stage_id)
+    is_today = 0
+    enough_times = 1
 
     if time.localtime(stage_obj.reset[1]).tm_year == time.localtime().tm_year \
             and time.localtime(stage_obj.reset[1]).tm_yday == time.localtime().tm_yday:
-        if game_configs.vip_config.get(player.base_info.vip_level).buyStageResetTimes <= stage_obj.reset[0]:
-            logger.error("stage reset times not enough")
-            response.res.result = False
-            response.res.result_no = 830
-            return response.SerializePartialToString()
-        else:
-            stage_obj.reset[0] += 1
-    else:
-        stage_obj.reset = [1, int(time.time())]
+        is_today = 1
+
+    if game_configs.vip_config.get(player.base_info.vip_level).buyStageResetTimes <= stage_obj.reset[0]:
+        enough_times = 0
+
+    if is_today and not enough_times:
+        logger.error("stage reset times not enough")
+        response.res.result = False
+        response.res.result_no = 830
+        return response.SerializePartialToString()
+
     need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0] - 1]
     if player.finance.gold < need_gold:
         logger.error("gold not enough")
@@ -407,9 +410,13 @@ def reset_stage_908(pro_data, player):
         response.res.result_no = 102
         return response.SerializePartialToString()
 
-    stage_obj.attacks = 0
     player.finance.consume_gold(need_gold)
 
+    if not is_today:
+        stage_obj.reset = [1, int(time.time())]
+    if is_today and enough_times:
+        stage_obj.reset[0] += 1
+    stage_obj.attacks = 0
     player.stage_component.save_data()
     player.finance.save_data()
 
