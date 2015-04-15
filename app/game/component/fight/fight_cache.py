@@ -30,6 +30,7 @@ class CharacterFightCacheComponent(Component):
 
         self._not_replace = []  # 不能替换的英雄
         self.break_stage_id = 0
+        self._stage = None
 
     def init_data(self, c):
         return
