@@ -16,6 +16,9 @@ from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
 from shared.utils import trie_tree
 from shared.tlog import tlog_action
+from app.proto_file.db_pb2 import Mail_PB
+from app.game.component.mail.mail import MailComponent
+from app.game.action.root import netforwarding
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -957,13 +960,105 @@ def invite_join_1803(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    if guild_obj.get_p_num()+1 > game_configs.guild_config.get(guild_obj.level).p_max:
+    guild_p_max = game_configs.guild_config.get(guild_obj.level).p_max
+
+    if guild_obj.get_p_num()+1 > guild_p_max:
         response.result = False
         response.message = "超出公会人数上限"
         return response.SerializeToString()
 
+    if not guild_obj.invite_join.get(user_id):
+        if len(guild_obj.invite_join)+1 > guild_p_max:
+            response.result = False
+            response.message = "超出可邀请人数上限"
+            return response.SerializeToString()
+
+        mail_id = game_configs.base_config.get('guildInviteMail')
+        mail = Mail_PB()
+        mail.config_id = mail_id
+        mail.receive_id = user_id
+        mail.mail_type = MailComponent.TYPE_MESSAGE
+        mail.send_time = int(time.time())
+        mail.invite_name = player.base_info.base_name
+        mail.guild_name = guild_obj.name
+        mail.guild_person_num = guild_obj.p_num
+        mail.guild_level = guild_obj.level
+        mail.guild_id = guild_obj.g_id
+        mail_data = mail.SerializePartialToString()
+
+        if not netforwarding.push_message('receive_mail_remote',
+                                          user_id,
+                                          mail_data):
+            logger.error('pvp high rank award mail fail, \
+                    player id:%s', player.base_info.id)
+
+            response.result = False
+            response.result_no = 800
+            return response.SerializeToString()
+        else:
+            logger.debug('pvp high rak award mail,mail_id:%s',
+                         mail_id)
+
     guild_obj.invite_join[user_id] = int(time.time())
+
+    guild_obj.save_data()
+    response.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def deal_invite_join_1804(data, player):
+    """处理邀请加入军团 """
+    args = DealInviteJoinRequest()
+    args.ParseFromString(data)
+    response = DealInviteJoinResResponse()
+    guild_id = args.guild_id
+    res = args.res
+    response.result = True
+
+    data1 = tb_guild_info.getObj(guild_id).hgetall()
+    if not data1:
+        response.result = False
+        response.message = "公会ID错误"
+        return response.SerializeToString()
+
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
+
+    if not guild_obj.invite_join.get(player.base_info.id):
+        response.result = False
+        response.message = "未知错误"
+        return response.SerializeToString()
+
+    if res:
+        if player.guild.g_id != 'no':
+            response.result = False
+            response.message = "你已经有军团了"
+
+        if guild_obj.get_p_num()+1 > game_configs.guild_config.get(guild_obj.level).p_max:
+            response.result = False
+            response.message = "超出公会人数上限"
+
+        remote_gate.login_guild_chat_remote(player.dynamic_id,
+                                            player.guild.g_id)
+        player.guild.g_id = guild_id.encode('utf-8')
+        player.guild.position = 5
+        player.guild.contribution = 0
+        player.guild.all_contribution = 0
+        player.guild.k_num = 0
+        player.guild.exit_time = 1
+
+        if guild_obj.p_list.get(5):
+            p_list1 = guild_obj.p_list.get(5)
+            p_list1.append(player.base_info.id)
+            guild_obj.p_list.update({5: p_list1})
+        else:
+            guild_obj.p_list.update({5: [player.base_info.id]})
+        guild_obj.p_num += 1
+
+        player.guild.save_data()
+
+    del guild_obj.invite_join[player.base_info.id]
     guild_obj.save_data()
 
-    response.result = True
     return response.SerializeToString()

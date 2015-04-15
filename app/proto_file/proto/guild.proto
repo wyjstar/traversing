@@ -134,3 +134,25 @@ message GuildRankProto{
     repeated GuildRank guild_rank = 2;
     optional bytes message = 3;
 }
+
+// 邀请加入军团command：1803
+message InviteJoinRequest{
+	required int32 user_id = 1;  //玩家id
+}
+
+// 邀请加入军团command：1803
+message InviteJoinResponse{
+	required bool result = 1;  //处理结果
+}
+
+// 处理 邀请加入军团command：1804
+message DealInviteJoinRequest{
+	required int32 res = 1;  //1 or 0 ，同意or 拒绝
+    optional string guild_id = 2;  //guild id
+}
+
+// 处理 邀请加入军团command：1804
+message DealInviteJoinResResponse{
+	required bool result = 1;  //处理结果
+    optional bytes message = 2;
+}

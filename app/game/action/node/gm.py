@@ -76,6 +76,7 @@ def modify_user_info(data, player):
     elif args['attr_name'] == 'stage':
 
         stage_id = int(args['attr_value'])
+        attr_value = int(args['attr_value'])
         stage_info = game_configs.stage_config.get('stages').get(stage_id)
         if not stage_info:
             return {'success': 0, 'message': 4}
@@ -109,7 +110,11 @@ def modify_user_info(data, player):
             else:
                 stage_id = the_last_stage_id
 
-        player.stage_component.get_stage(int(args['attr_value'])).state = -1
+        player.stage_component.get_stage(attr_value).state = -1
+        if game_configs.stage_config.get('stages').get(attr_value)['section'] == 1:
+            player.stage_component.plot_chapter = game_configs.stage_config.get('stages').get(attr_value)['chapter']
+        else:
+            player.stage_component.plot_chapter = game_configs.stage_config.get('stages').get(attr_value)['chapter'] + 1
         player.stage_component.save_data()
         return {'success': 1}
     elif args['attr_name'] == 'nickname':

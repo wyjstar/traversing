@@ -191,6 +191,7 @@ def modify_user_info(args):
         return {'success': 1}
     elif args['attr_name'] == 'stage':
         stage_id = int(args['attr_value'])
+        attr_value = int(args['attr_value'])
         stages = character_obj.hget('stage_info')
 
         stage_info = game_configs.stage_config.get('stages').get(stage_id)
@@ -234,9 +235,13 @@ def modify_user_info(args):
             else:
                 stage_id = the_last_stage_id
 
-        stage_obj = get_stage(stage_objs, int(args['attr_value']))
+        stage_obj = get_stage(stage_objs, attr_value)
         stage_obj.state = -1
-        data = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in stage_objs.iteritems()])}
+        if game_configs.stage_config.get('stages').get(attr_value)['section'] == 1:
+            chapter_id = game_configs.stage_config.get('stages').get(attr_value)['chapter']
+        else:
+            chapter_id = game_configs.stage_config.get('stages').get(attr_value)['chapter'] + 1
+        data = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in stage_objs.iteritems()]), 'plot_chapter': chapter_id}
         character_obj.hmset(data)
         return {'success': 1}
     elif args['attr_name'] == 'nickname':

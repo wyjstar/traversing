@@ -20,7 +20,11 @@ message Mail_PB
     optional string prize = 12; //奖品
     optional string read_time = 13;  //阅读时间
     optional int32 config_id = 14; //数值表ID
-    optional int32 type_type = 15; //如果是系统通知，类型
+    optional string invite_name = 15; //邀请者名字
+    optional string guild_name = 16; //军团名字
+    optional int32 guild_person_num = 17; //军团人数
+    optional int32 guild_level = 18; //军团等级
+    optional string guild_id = 19; //军团id
 }
 
 message Stamina_DB{

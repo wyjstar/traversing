@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='guild.proto',
   package='',
-  serialized_pb='\n\x0bguild.proto\"I\n\x13GuildCommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"\x93\x01\n\tGuildInfo\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05p_num\x18\x03 \x02(\x05\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x05 \x02(\x05\x12\x0c\n\x04\x66und\x18\x06 \x02(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x02(\x0c\x12\x0e\n\x06record\x18\x08 \x02(\x05\x12\x13\n\x0bmy_position\x18\t \x02(\x05\"]\n\x08RoleInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x11\n\tvip_level\x18\x04 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x02(\x05\"q\n\tRoleInfo1\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x10\n\x08position\x18\x04 \x02(\x05\x12\x18\n\x10\x61ll_contribution\x18\x05 \x02(\x05\x12\r\n\x05k_num\x18\x06 \x02(\x05\"v\n\tGuildRank\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x0c\n\x04name\x18\x03 \x02(\x0c\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x11\n\tpresident\x18\x05 \x02(\t\x12\r\n\x05p_num\x18\x06 \x02(\x05\x12\x0e\n\x06record\x18\x07 \x02(\x05\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\x0c\"[\n\x11JoinGuildResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\x12\x12\n\nspare_time\x18\x04 \x01(\x05\"!\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04\x63\x61ll\x18\x01 \x02(\x0c\"3\n\x10\x44\x65\x61lApplyRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\x12\x10\n\x08res_type\x18\x02 \x02(\x05\"V\n\x11\x44\x65\x61lApplyResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\x12\r\n\x05p_ids\x18\x04 \x03(\x05\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\"\x1c\n\x0bKickRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\"U\n\x11PromotionResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\x12\x0c\n\x04p_id\x18\x04 \x01(\x05\" \n\x0eWorshipRequest\x12\x0e\n\x06w_type\x18\x01 \x02(\x05\"Q\n\x0eGuildInfoProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_info\x18\x02 \x01(\x0b\x32\n.GuildInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"O\n\x0e\x41pplyListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1c\n\trole_info\x18\x02 \x03(\x0b\x32\t.RoleInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"T\n\x12GuildRoleListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1d\n\trole_info\x18\x02 \x03(\x0b\x32\n.RoleInfo1\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"Q\n\x0eGuildRankProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_rank\x18\x02 \x03(\x0b\x32\n.GuildRank\x12\x0f\n\x07message\x18\x03 \x01(\x0c')
+  serialized_pb='\n\x0bguild.proto\"I\n\x13GuildCommonResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"\x93\x01\n\tGuildInfo\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04name\x18\x02 \x02(\x0c\x12\r\n\x05p_num\x18\x03 \x02(\x05\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x0b\n\x03\x65xp\x18\x05 \x02(\x05\x12\x0c\n\x04\x66und\x18\x06 \x02(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x02(\x0c\x12\x0e\n\x06record\x18\x08 \x02(\x05\x12\x13\n\x0bmy_position\x18\t \x02(\x05\"]\n\x08RoleInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x11\n\tvip_level\x18\x04 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x02(\x05\"q\n\tRoleInfo1\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x10\n\x08position\x18\x04 \x02(\x05\x12\x18\n\x10\x61ll_contribution\x18\x05 \x02(\x05\x12\r\n\x05k_num\x18\x06 \x02(\x05\"v\n\tGuildRank\x12\x0c\n\x04g_id\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x0c\n\x04name\x18\x03 \x02(\x0c\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x11\n\tpresident\x18\x05 \x02(\t\x12\r\n\x05p_num\x18\x06 \x02(\x05\x12\x0e\n\x06record\x18\x07 \x02(\x05\"\"\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\x0c\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\x0c\"[\n\x11JoinGuildResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\x12\x12\n\nspare_time\x18\x04 \x01(\x05\"!\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04\x63\x61ll\x18\x01 \x02(\x0c\"3\n\x10\x44\x65\x61lApplyRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\x12\x10\n\x08res_type\x18\x02 \x02(\x05\"V\n\x11\x44\x65\x61lApplyResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\x12\r\n\x05p_ids\x18\x04 \x03(\x05\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\"\x1c\n\x0bKickRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\"U\n\x11PromotionResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x0f\n\x07message\x18\x03 \x01(\x0c\x12\x0c\n\x04p_id\x18\x04 \x01(\x05\" \n\x0eWorshipRequest\x12\x0e\n\x06w_type\x18\x01 \x02(\x05\"Q\n\x0eGuildInfoProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_info\x18\x02 \x01(\x0b\x32\n.GuildInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"O\n\x0e\x41pplyListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1c\n\trole_info\x18\x02 \x03(\x0b\x32\t.RoleInfo\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"T\n\x12GuildRoleListProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1d\n\trole_info\x18\x02 \x03(\x0b\x32\n.RoleInfo1\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"Q\n\x0eGuildRankProto\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x1e\n\nguild_rank\x18\x02 \x03(\x0b\x32\n.GuildRank\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"$\n\x11InviteJoinRequest\x12\x0f\n\x07user_id\x18\x01 \x02(\x05\"$\n\x12InviteJoinResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"6\n\x15\x44\x65\x61lInviteJoinRequest\x12\x0b\n\x03res\x18\x01 \x02(\x05\x12\x10\n\x08guild_id\x18\x02 \x01(\t\"<\n\x19\x44\x65\x61lInviteJoinResResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\x0c')
 
 
 
@@ -850,6 +850,132 @@ _GUILDRANKPROTO = _descriptor.Descriptor(
   serialized_end=1431,
 )
 
+
+_INVITEJOINREQUEST = _descriptor.Descriptor(
+  name='InviteJoinRequest',
+  full_name='InviteJoinRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='user_id', full_name='InviteJoinRequest.user_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1433,
+  serialized_end=1469,
+)
+
+
+_INVITEJOINRESPONSE = _descriptor.Descriptor(
+  name='InviteJoinResponse',
+  full_name='InviteJoinResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='InviteJoinResponse.result', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1471,
+  serialized_end=1507,
+)
+
+
+_DEALINVITEJOINREQUEST = _descriptor.Descriptor(
+  name='DealInviteJoinRequest',
+  full_name='DealInviteJoinRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='DealInviteJoinRequest.res', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='guild_id', full_name='DealInviteJoinRequest.guild_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1509,
+  serialized_end=1563,
+)
+
+
+_DEALINVITEJOINRESRESPONSE = _descriptor.Descriptor(
+  name='DealInviteJoinResResponse',
+  full_name='DealInviteJoinResResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='DealInviteJoinResResponse.result', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='DealInviteJoinResResponse.message', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value="",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1565,
+  serialized_end=1625,
+)
+
 _GUILDINFOPROTO.fields_by_name['guild_info'].message_type = _GUILDINFO
 _APPLYLISTPROTO.fields_by_name['role_info'].message_type = _ROLEINFO
 _GUILDROLELISTPROTO.fields_by_name['role_info'].message_type = _ROLEINFO1
@@ -873,6 +999,10 @@ DESCRIPTOR.message_types_by_name['GuildInfoProto'] = _GUILDINFOPROTO
 DESCRIPTOR.message_types_by_name['ApplyListProto'] = _APPLYLISTPROTO
 DESCRIPTOR.message_types_by_name['GuildRoleListProto'] = _GUILDROLELISTPROTO
 DESCRIPTOR.message_types_by_name['GuildRankProto'] = _GUILDRANKPROTO
+DESCRIPTOR.message_types_by_name['InviteJoinRequest'] = _INVITEJOINREQUEST
+DESCRIPTOR.message_types_by_name['InviteJoinResponse'] = _INVITEJOINRESPONSE
+DESCRIPTOR.message_types_by_name['DealInviteJoinRequest'] = _DEALINVITEJOINREQUEST
+DESCRIPTOR.message_types_by_name['DealInviteJoinResResponse'] = _DEALINVITEJOINRESRESPONSE
 
 class GuildCommonResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -987,6 +1117,30 @@ class GuildRankProto(_message.Message):
   DESCRIPTOR = _GUILDRANKPROTO
 
   # @@protoc_insertion_point(class_scope:GuildRankProto)
+
+class InviteJoinRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _INVITEJOINREQUEST
+
+  # @@protoc_insertion_point(class_scope:InviteJoinRequest)
+
+class InviteJoinResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _INVITEJOINRESPONSE
+
+  # @@protoc_insertion_point(class_scope:InviteJoinResponse)
+
+class DealInviteJoinRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DEALINVITEJOINREQUEST
+
+  # @@protoc_insertion_point(class_scope:DealInviteJoinRequest)
+
+class DealInviteJoinResResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DEALINVITEJOINRESRESPONSE
+
+  # @@protoc_insertion_point(class_scope:DealInviteJoinResResponse)
 
 
 # @@protoc_insertion_point(module_scope)
