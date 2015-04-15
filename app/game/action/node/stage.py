@@ -237,6 +237,7 @@ def get_chapter_info(chapter_id, player):
 
     return response
 
+
 def fight_settlement(stage, result, player):
     response = stage_response_pb2.StageSettlementResponse()
     res = response.res
@@ -430,6 +431,7 @@ def get_award(pro_data, player):
         chapter_obj = chapters_info[0]
 
     conf = chapter_obj.get_conf()
+    chapter_obj.update(player.stage_component.calculation_star(chapter_id))
 
     if 0 <= award_type <= 2:
         if chapter_obj.award_info[award_type] != 0:

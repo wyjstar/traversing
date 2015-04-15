@@ -1,11 +1,11 @@
 # coding:utf8
-'''
+"""
 Created on 2014-2-23
 连接管理器
 @author: lan (www.9miao.com)
-'''
+"""
 from gfirefly.server.globalobject import GlobalObject
-
+from app.proto_file.account_pb2 import AccountKick
 from gfirefly.server.logobj import logger
 from connection import Connection
 from shared.utils.const import const
@@ -14,20 +14,20 @@ import gevent
 
 
 class ConnectionManager:
-    ''' 连接管理器
+    """ 连接管理器
     @param _connections: dict {connID:conn Object}管理的所有连接
-    '''
+    """
 
     def __init__(self):
-        '''初始化
+        """初始化
         @param _connections: dict {connID:conn Object}
-        '''
+        """
         self._connections = {}
         self._queue_conns = collections.OrderedDict()
         self.loop_check()
 
     def getNowConnCnt(self):
-        '''获取当前连接数量'''
+        """获取当前连接数量"""
         return len(self._connections.items())
 
     @property
@@ -43,12 +43,11 @@ class ConnectionManager:
         return dynamic_id in self._connections.keys()
 
     def addConnection(self, conn):
-        '''加入一条连接
+        """加入一条连接
         @param _conn: Conn object
-        '''
-
+        """
         _conn = Connection(conn)
-        if self._connections.has_key(_conn.dynamic_id):
+        if _conn.dynamic_id in self._connections:
             raise Exception("系统记录冲突")
 
         # 连接数达到上限，将连接缓存到队列中
@@ -59,9 +58,9 @@ class ConnectionManager:
         self._connections[_conn.dynamic_id] = _conn
 
     def dropConnectionByID(self, connID):
-        '''更加连接的id删除连接实例
+        """更加连接的id删除连接实例
         @param connID: int 连接的id
-        '''
+        """
         if connID in self._connections:
             del self._connections[connID]
         if connID in self._queue_conns:
@@ -88,6 +87,9 @@ class ConnectionManager:
         connection = self._connections[cur_id]
         if new_id in self._connections:
             old_connection = self._connections[new_id]
+            msg = AccountKick()
+            msg.id = 1
+            self.__write_data(old_connection, 11, msg.SerializeToString())
             old_connection.loseConnection()
             old_connection.dynamic_id = 0
 
@@ -108,7 +110,6 @@ class ConnectionManager:
         if not connection:
             return
         self.__write_data(connection, topic_id, msg)
-
 
     def __write_data(self, connection, topic_id, msg):
         connection_id = connection.dynamic_id
@@ -137,9 +138,9 @@ class ConnectionManager:
         向所有连接推送消息。
         """
         for connection in self._connections.values():
-            if not connection: continue
+            if not connection:
+                continue
             self.__write_data(connection, topic_id, msg)
-
 
     def check_timeout(self):
         for k, v in self._connections.items():

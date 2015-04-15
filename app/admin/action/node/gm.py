@@ -198,21 +198,44 @@ def modify_user_info(args):
             return {'success': 0, 'message': 4}
 
         stage_objs = {}
-        for stage_id, stage in stages.items():
-            stage_objs[stage_id] = Stage.loads(stage)
+        for stage_id_a, stage in stages.items():
+            stage_objs[stage_id_a] = Stage.loads(stage)
 
         stage_obj = get_stage(stage_objs, stage_id)
         stage_obj.state == -1
         first_stage_id = game_configs.stage_config.get('first_stage_id')
+        next_stages = game_configs.stage_config.get('condition_mapping')
+        stage_id_a = stage_id
+
+        while True:
+            if next_stages.get(stage_id):
+                for stage in [get_stage(stage_objs, stage_id_1) for stage_id_1 in next_stages.get(stage_id_a)]:
+                    stage.state = -2
+                for stage_id_1 in next_stages.get(stage_id_a):
+                    if game_configs.stage_config.get('stages').get(stage_id_1)['type'] == 1:
+                        stage_id_a = stage_id_1
+                        break
+                else:
+                    break
+
         while True:
             the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']
-            stage_obj = get_stage(stage_objs, the_last_stage_id)
+
+            stage_obj = get_stage(stage_objs, stage_id)
             stage_obj.state = 1
 
-            if the_last_stage_id == first_stage_id:
+            if next_stages.get(the_last_stage_id):
+                for stage in [get_stage(stage_objs, stage_id_1) for stage_id_1 in next_stages.get(the_last_stage_id)]:
+                    if stage_id != stage.stage_id:
+                        stage.state = -1
+
+            if stage_id == first_stage_id:
                 break
             else:
                 stage_id = the_last_stage_id
+
+        stage_obj = get_stage(stage_objs, int(args['attr_value']))
+        stage_obj.state = -1
         data = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in stage_objs.iteritems()])}
         character_obj.hmset(data)
         return {'success': 1}
@@ -241,7 +264,7 @@ def get_stage(stage_objs, stage_id):
         stage_obj = stage_objs.get(stage_id)
         if not stage_obj:
             stage_obj = Stage(stage_id, state=-2)
-            stage_objs[the_last_stage_id] = stage_obj
+            stage_objs[stage_id] = stage_obj
         return stage_obj
 
 
