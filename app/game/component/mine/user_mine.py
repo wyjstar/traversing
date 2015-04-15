@@ -417,22 +417,25 @@ class PlayerField(Mine):
                         if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
                             continue
                         match_users.append(one_user)
-                logger.debug('mine match player:%smatch_users')
+                random.shuffle(match_users)
+                logger.debug('mine match player:%s', match_users)
                 if not match_users:  # 没有匹配的玩家生成野怪矿
                     return MonsterField.create(uid, nickname)
                 match_mine = None
                 for one_user in match_users:  # 随机玩家占领的野怪矿
-                    # print 'one_user', one_user
                     mids = MineOpt.get_user_mines(one_user)
                     # print 'mids', mids
                     if mids:
-                        mid = random.sample(mids, 1)
-                        if not mid:
-                            continue
-                        match_mine = MineOpt.get_mine(mid[0])
+                        mid = random.choice(mids)
+                        match_mine = MineOpt.get_mine(mid)
+                        if match_mine.get('status') == 3:
+                            logger.debug('this mine is fade:%s:%s:%s',
+                                         mid, one_user,
+                                         match_mine.get('status'))
+                            match_mine = None
                         # print 'match_mine', match_mine
-                        if not match_mine:
-                            continue
+                        if match_mine is not None:
+                            break
                 if not match_mine:  # 没有随到玩家占领的野怪矿，生成野怪矿
                     return MonsterField.create(uid, nickname)
                 else:
@@ -448,9 +451,14 @@ class PlayerField(Mine):
 #         return False
 
     def settle(self, uid=None, nickname=None):
+        mine = ConfigData.mine(self._mine_id)
         tid = self._tid
-        self._tid = uid
-        self._nickname = nickname
+        if self._status == 2 or (self._status == 1 and time.time() > self._last_time):
+            self._status = 3
+        else:
+            self._tid = uid
+            self._nickname = nickname
+            self._guard_time = time.time() + mine.protectTimeFree*60  # 读取数值表配置－刚占领的野怪矿保护时间
         data = self.save_info()
         MineOpt.add_mine(self._tid, self._seq, data)
         MineOpt.unlock(self._seq)

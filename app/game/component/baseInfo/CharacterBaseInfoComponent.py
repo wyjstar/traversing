@@ -48,6 +48,7 @@ class CharacterBaseInfoComponent(Component):
         self._google_consume_data = ''
         self._apple_transaction_id = ''
         self._first_recharge_ids = []
+        self._recharge = 0 # 累积充值
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -75,6 +76,7 @@ class CharacterBaseInfoComponent(Component):
         self._google_consume_data = character_info.get('google_consume_data', '')
         self._apple_transaction_id = character_info.get('apple_transaction_id', '')
         self._first_recharge_ids = character_info.get('first_recharge_ids', [])
+        self._recharge = character_info.get('recharge_accumulation')
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -104,7 +106,8 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_id=self._google_consume_id,
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
-                    first_recharge_ids=self._first_recharge_ids)
+                    first_recharge_ids=self._first_recharge_ids,
+                    recharge_accumulation=self._recharge)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -129,7 +132,8 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_id=self._google_consume_id,
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
-                    first_recharge_ids=self._first_recharge_ids)
+                    first_recharge_ids=self._first_recharge_ids,
+                    recharge_accumulation=self._recharge)
         return data
 
     def check_time(self):
@@ -441,3 +445,10 @@ class CharacterBaseInfoComponent(Component):
     @closure.setter
     def closure(self, value):
         self._closure = value
+    @property
+    def recharge(self):
+        return self._recharge
+
+    @recharge.setter
+    def recharge(self, value):
+        self._recharge = value

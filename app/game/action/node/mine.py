@@ -562,7 +562,7 @@ def process_mine_result(player, position, result, response, stype):
 
             # command:id 为收邮件的命令ID
             if sum(count.values()) > 0:
-                # response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+                response.result = netforwarding.push_message('receive_mail_remote', target, mail)
                 netforwarding.push_message('receive_mail_remote',
                                            target,
                                            mail.SerializePartialToString())
@@ -632,6 +632,7 @@ def battle_1253(data, player):
         # pvp
         red_units = player.fight_cache_component.red_unit
         info = get_save_guard(player, pos)
+        print info
         blue_units = info.get("battle_units")
 
         fight_result = pvp_process(player,
@@ -641,10 +642,8 @@ def battle_1253(data, player):
                                    red_best_skill_id,
                                    info.get("best_skill_no"),
                                    info.get("level"), red_best_skill_id)
-        if fight_result:
-            # 返回秘境的结果
-            pass
-        process_mine_result(player, pos, response, fight_result, mine_type)
+
+        process_mine_result(player, pos, fight_result, response, 0)
 
         blue_best_skill_id = info.get("best_skill_id", 0)
         blue_best_skill_level = info.get("best_skill_level", 0)
