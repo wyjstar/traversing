@@ -3,7 +3,7 @@
 from shared.tlog import logclient
 from gfirefly.server.logobj import logger
 
-debug = 0
+debug = 1
 LOG_FOR_SELF = 1
 
 
@@ -567,6 +567,61 @@ def online_num(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(GameAppID)
 
     message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def money_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
+               OpenID=0, Level=0, AfterMoney=0, Money=0, Reason=0, SubReason=0,
+               ReasonEventID=0, AddOrReduce=0, MoneyType=0, itemId=0, itemAmount=0):
+
+    message = ['MoneyFlow']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(Sequence)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+    message.append(Level)
+    message.append(AfterMoney)
+    message.append(Money)
+    message.append(Reason)
+    message.append(SubReason)
+    message.append(ReasonEventID)
+    message.append(AddOrReduce)
+    message.append(MoneyType)
+    message.append(itemId)
+    message.append(itemAmount)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def item_money_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0,
+                    GameAppID=0, OpenID=0, ItemType=0, ItemID=0,
+                    Count=0, Money=0, Level=0, MoneyType=0):
+
+    message = ['ItemMoneyFlow']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(Sequence)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ItemType)
+    message.append(ItemID)
+    message.append(Count)
+    message.append(Money)
+    message.append(Level)
+    message.append(MoneyType)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

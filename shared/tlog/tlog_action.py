@@ -310,6 +310,39 @@ def online_num(num):
                       Num=num)
 
 
+def money_flow(player_data, after_money, money, reason, addorreduce,
+               money_type):
+
+    log4tx.money_flow(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      Level=player_data.base_info.level,
+                      AfterMoney=after_money,
+                      Money=money, Reason=reason,
+                      AddOrReduce=addorreduce,
+                      MoneyType=money_type)
+
+
+def item_money_flow(player_data, item_type, item_id, count, money,
+                    money_type):
+
+    log4tx.item_money_flow(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+
+                           ItemType=item_type,
+                           ItemID=item_id,
+                           Count=count,
+                           Money=money,
+                           Level=player_data.base_info.level,
+                           MoneyType=money_type)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
@@ -336,6 +369,8 @@ tlog_funcs['Recharge'] = recharge
 tlog_funcs['RoundFlow'] = round_flow
 tlog_funcs['NewGuide'] = new_guide
 tlog_funcs['OnlineNum'] = online_num
+tlog_funcs['MoneyFlow'] = money_flow
+tlog_funcs['ItemMoneyFlow'] = item_money_flow
 
 
 def log(mod, *args, **kwds):
