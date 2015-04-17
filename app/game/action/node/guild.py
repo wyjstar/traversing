@@ -741,7 +741,7 @@ def worship_809(data, player):
     else:
         localtime = time.localtime(time.time())
         new_time = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', localtime), '%Y-%m-%d %H:%M:%S'))
-        player.guild.worship += 1
+        player.guild.worship = 1
         player.guild.contribution += worship_info[4]
         player.guild.all_contribution += worship_info[4]
         guild_obj.fund += worship_info[3]

@@ -121,17 +121,19 @@ def get_user_info(args):
 
 
 def send_mail(args):
+    print 'AAAAAAAAAAAAAAAAAAAA'
     mail = Mail_PB()
     # mail.sender_id = player.base_info.id
     mail.sender_name = args['sender_name']
     mail.sender_icon = int(args['sender_icon'])
-    mail.receive_name = ''
+    # mail.receive_name = ''
     mail.title = args['title']
     mail.content = args['text']
-    mail.mail_type = 2
-    mail.prize = ''
+    mail.mail_type = 4
+    #mail.prize = ''
     mail.send_time = int(time.time())
     # mail_data = mail.SerializePartialToString()
+    print 'BBBBBBBBBBBBBBBBB', mail
 
     if args['uids'] == '0':
         users = tb_character_info.smem('all')
@@ -146,6 +148,7 @@ def send_mail(args):
             mail_data = mail.SerializeToString()
             push_message('receive_mail_remote', int(uid),
                          mail.SerializeToString())
+    print 'CCCCCCCCCCCCCCCCCCCCC'
     return {'success': 1}
 
 
