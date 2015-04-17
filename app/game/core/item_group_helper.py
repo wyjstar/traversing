@@ -355,6 +355,10 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             player.runt.save()
             after_num = player.runt.get_runt_num(item_no)
 
+        if type_id == const.COIN or type_id == const.GOLD:
+            tlog_action.log('MoneyFlow', player, after_num, num, reason,
+                            const.ADD, item_no)
+
         is_over = False       # 是否累加
         for i in result:
             if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id !=const.HERO_CHIP):
