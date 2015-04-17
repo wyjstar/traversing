@@ -116,19 +116,41 @@ def shop_oper(pro_data, player, reason):
         get_return(player, return_data, response.gain)
         get_return(player, extra_return_data, response.gain)
 
-        money = 0
-        money_type = 0
-        shop_item_data = copy.copy(shop_item.consume)
-        if consume_data:
-            money = shop_item.consume[0].num
-            money_type = shop_item.consume[0].item_no
-        tlog_action.log('ItemMoneyFlow', player, shop_item.gain[0].item_type, shop_item.gain[0].item_no,
-                        shop_item.gain[0].num, money, money_type)
+        send_tlog(player, shop_item)
 
     player.pay.pay(need_gold, func)
 
     response.res.result = True
     return response.SerializeToString()
+
+
+def send_tlog(player, shop_item):
+        item_type = shop_item.gain[0].item_type
+        item_id = shop_item.gain[0].item_no
+        count = shop_item.gain[0].num
+        money = shop_item.consume[0].num
+        money_type = shop_item.consume[0].item_no
+        discount_money = 0
+        discount_money_type = 0
+        is_discount = 0
+        if shop_item.discountPrice:
+            is_discount = 1
+            discount_money = shop_item.discountPrice[0].num
+            discount_money_type = shop_item.discountPrice[0].item_no
+        limit_vip_everyday = []
+        if shop_item.limitVIPeveryday:
+            for i in range(30):
+                if shop_item.limitVIPeveryday.get(i):
+                    limit_vip_everyday.append(shop_item.limitVIPeveryday.get(i))
+        limit_vip = []
+        if shop_item.limitVIP:
+            for i in range(30):
+                if shop_item.limitVIP.get(i):
+                    limit_vip.append(shop_item.limitVIP.get(i))
+
+        tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
+                        money, money_type, discount_money, discount_money_type,
+                        str(limit_vip_everyday), str(limit_vip), is_discount)
 
 
 def shop_equipment_oper(pro_data, player):
@@ -243,8 +265,7 @@ def shop_buy_505(pro_data, player):
             get_return(player, consume_return_data, response.consume)
             get_return(player, return_data, response.gain)
             for _ in range(item_count):
-                tlog_action.log('ItemMoneyFlow', player, shop_item.gain[0].item_type, shop_item.gain[0].item_no,
-                                shop_item.gain[0].num, price[0].num, price[0].item_no)
+                send_tlog(player, shop_item)
 
         player.pay.pay(need_gold, func)
 

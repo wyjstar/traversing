@@ -605,7 +605,9 @@ def money_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
 
 def item_money_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0,
                     GameAppID=0, OpenID=0, ItemType=0, ItemID=0,
-                    Count=0, Money=0, Level=0, MoneyType=0):
+                    Count=0, Money=0, Level=0, MoneyType=0,
+                    DiscountMoney=0, DiscountMoneyType=0,
+                    LimitVipEveryday=0, LimitVip=0, IsDiscount=0):
 
     message = ['ItemMoneyFlow']
 
@@ -622,6 +624,11 @@ def item_money_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0,
     message.append(Money)
     message.append(Level)
     message.append(MoneyType)
+    message.append(DiscountMoney)
+    message.append(DiscountMoneyType)
+    message.append(LimitVipEveryday)
+    message.append(LimitVip)
+    message.append(IsDiscount)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

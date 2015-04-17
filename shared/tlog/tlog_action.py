@@ -327,7 +327,8 @@ def money_flow(player_data, after_money, money, reason, addorreduce,
 
 
 def item_money_flow(player_data, item_type, item_id, count, money,
-                    money_type):
+                    money_type, discount_money, discount_money_type,
+                    limit_vip_everyday, limit_vip, is_discount):
 
     log4tx.item_money_flow(GameSvrId=game_server_id,
                            dtEventTime=xtime.strdatetime(),
@@ -340,7 +341,12 @@ def item_money_flow(player_data, item_type, item_id, count, money,
                            Count=count,
                            Money=money,
                            Level=player_data.base_info.level,
-                           MoneyType=money_type)
+                           MoneyType=money_type,
+                           DiscountMoney=discount_money,
+                           DiscountMoneyType=discount_money_type,
+                           LimitVipEveryday=limit_vip_everyday,
+                           LimitVip=limit_vip,
+                           IsDiscount=is_discount)
 
 
 # TLOG分类打印函数
