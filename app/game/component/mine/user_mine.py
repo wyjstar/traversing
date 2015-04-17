@@ -417,7 +417,7 @@ class PlayerField(Mine):
                         if user_sword < self_sword * lowswordrate or user_sword > highswordrate * self_sword:
                             continue
                         match_users.append(one_user)
-                logger.debug('mine match player:%smatch_users')
+                logger.debug('mine match player:%s', match_users)
                 if not match_users:  # 没有匹配的玩家生成野怪矿
                     return MonsterField.create(uid, nickname)
                 match_mine = None
@@ -451,6 +451,7 @@ class PlayerField(Mine):
         tid = self._tid
         self._tid = uid
         self._nickname = nickname
+        self._guard_time = time.time() + mine.protectTimeFree*60  # 读取数值表配置－刚占领的野怪矿保护时间
         data = self.save_info()
         MineOpt.add_mine(self._tid, self._seq, data)
         MineOpt.unlock(self._seq)
