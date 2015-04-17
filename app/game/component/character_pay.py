@@ -45,6 +45,8 @@ class CharacterPay(Component):
             self.get_balance() # 登录时从tx拉取gold
 
     def _get_balance_m(self):
+        if not self.REMOTE_DEPLOYED:
+            return
         logger.debug("_get_balance_m: platform- %s\
                      openid- %s \
                      openkey - %s \
@@ -59,8 +61,6 @@ class CharacterPay(Component):
                       self._appid, self._appkey,
                       self._pf,
                       self._pfkey, self._zoneid))
-        if not self.REMOTE_DEPLOYED:
-            return
         try:
             data = GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
@@ -157,10 +157,10 @@ class CharacterPay(Component):
         if not func:
             return []
         billno, _balance = result
-
         try:
             func(*args, **kwargs)
-        except:
+        except Exception, e:
+            logger.error("pay error: cancel_pay %s", e)
             self._cancel_pay_m(num, billno)
             return False
         self.get_balance()
@@ -173,13 +173,14 @@ class CharacterPay(Component):
         result = {}
         if num == 0:
             return True
-        if self.REMOTE_DEPLOYED:
+        if not self.REMOTE_DEPLOYED:
             self._owner.finance.add_gold(num)
+            self._owner.save_data()
             return True
         try:
-            result = GlobalObject().pay.pay_m(self._platform, self._openid, self._appid,
+            result = GlobalObject().pay.cancel_pay_m(self._platform, self._openid, self._appid,
                                          self._appkey, self._openkey, self._pay_token,
-                                         self._pf, self._pfkey, self._zoneid, num)
+                                         self._pf, self._pfkey, self._zoneid, num, billno)
         except Exception, e:
             logger.error("pay error:%s" % e)
             return
