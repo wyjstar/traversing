@@ -146,3 +146,17 @@ class RobotFriend(Robot):
         response.ParseFromString(message)
         print response
         self.on_command_finish()
+
+    def command_get_recommend_friend_list(self):
+        request = friend_pb2.FriendCommon()
+        self.send_message(request, 1109)
+
+    def get_1109(self, message):
+        # get friend list
+        response = friend_pb2.GetRecommendFriendsResponse()
+        response.ParseFromString(message)
+        # print 'get friends list:'
+        print 'recommend:', len(response.recommend)
+        for _ in response.recommend:
+            print 'recommend:', _
+        self.on_command_finish()

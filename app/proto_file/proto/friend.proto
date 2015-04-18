@@ -63,3 +63,8 @@ message FriendPrivateChatRequest{
     optional string content = 2;
 }
 
+message GetRecommendFriendsResponse{
+    optional int32 open_receive = 1;
+    optional int32 page_num = 2;
+    repeated CharacterInfo recommend = 3;
+}

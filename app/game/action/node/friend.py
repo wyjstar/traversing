@@ -20,6 +20,7 @@ from app.proto_file.db_pb2 import Mail_PB
 from app.proto_file.db_pb2 import Heads_DB
 from app.proto_file.db_pb2 import Stamina_DB
 import datetime
+import random
 import time
 
 
@@ -174,6 +175,7 @@ def _with_battle_info(response, pid):
         response.atk = battle_unit.atk
         response.physical_def = battle_unit.physical_def
         response.magic_def = battle_unit.magic_def
+        response.buddy_head = battle_unit.unit_no
 
 
 @remoteserviceHandle('gate')
@@ -188,7 +190,7 @@ def get_player_friend_list_1106(data, player):
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
             friend_data = player_data.hmget(['nickname', 'attackPoint',
-                                             'heads', 'lord_attr_info', 'upgrade_time'])
+                                             'heads', 'upgrade_time'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
             ap = 1010
@@ -200,10 +202,6 @@ def get_player_friend_list_1106(data, player):
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             response_friend_add.hero_no = friend_heads.now_head
-
-            info = friend_data.get('lord_attr_info').get('info')
-            f_unit = BattleUnit.loads(info)
-            response_friend_add.buddy_head = f_unit.unit_no
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
@@ -254,7 +252,6 @@ def get_player_friend_list_1106(data, player):
         else:
             logger.error('applicant_list, cant find player id:%d' % pid)
             player.friends.applicant_list.remove(pid)
-
 
     return response.SerializePartialToString()
 
@@ -427,3 +424,47 @@ def add_blacklist_request_remote(target_id, is_online, player):
     result = player.friends.add_blacklist(target_id)
     player.friends.save_data()
     return result
+
+
+@remoteserviceHandle('gate')
+def get_recommend_friend_list_1109(data, player):
+    response = friend_pb2.GetRecommendFriendsResponse()
+    response.open_receive = player.stamina._open_receive
+
+    allplayer_ids = tb_character_info.smem('all')
+    allplayer_ids.remove(player.base_info.id)
+    print allplayer_ids
+
+    recommend_ids = []
+    while (len(recommend_ids) < 10 and allplayer_ids):
+        recommend_id = random.choice(allplayer_ids)
+        allplayer_ids.remove(recommend_id)
+        recommend_ids.append(recommend_id)
+    print recommend_ids
+
+    for pid in recommend_ids:
+        player_data = tb_character_info.getObj(pid)
+        if player_data.exists():
+            response_friend_add = response.recommend.add()
+            response_friend_add.id = pid
+            friend_data = player_data.hmget(['nickname', 'attackPoint',
+                                             'heads', 'upgrade_time'])
+            response_friend_add.nickname = friend_data['nickname']
+            response_friend_add.gift = player.friends.last_present_times(pid)
+            ap = 1010
+            if friend_data['attackPoint'] is not None:
+                ap = int(friend_data['attackPoint'])
+            response_friend_add.power = ap
+            response_friend_add.last_time = friend_data['upgrade_time']
+
+            friend_heads = Heads_DB()
+            friend_heads.ParseFromString(friend_data['heads'])
+            response_friend_add.hero_no = friend_heads.now_head
+
+            # 添加好友主将的属性
+            _with_battle_info(response_friend_add, pid)
+        else:
+            logger.error('friend_list, cant find player id:%d' % pid)
+            player.friends.friends.remove(pid)
+
+    return response.SerializePartialToString()
