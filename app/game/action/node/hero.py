@@ -291,7 +291,7 @@ def hero_sacrifice_oper(heros, player):
         # 经验
         exp = hero.get_all_exp()
         total_exp += exp
-        tlog_action.log('HeroSacrifice', player, hero_no)
+        tlog_action.log('HeroSacrifice', player, hero.hero_no)
 
     # baseconfig {1000000: 'item_id'}
     exp_items = game_configs.base_config.get("sacrificeGainExp")
