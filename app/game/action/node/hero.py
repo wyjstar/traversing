@@ -62,8 +62,13 @@ def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
         return {"result": False, "result_no": 106}
     exp = game_configs.item_config.get(exp_item_no).get('funcArg1')
     hero = player.hero_component.get_hero(hero_no)
+    beforelevel = hero.level
     hero.upgrade(exp * exp_item_num, player.base_info.level)
+    afterlevel = hero.level
     hero.save_data()
+    changelevel = afterlevel-beforelevel
+    if changelevel:
+        tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel)
     player.item_package.consume_item(exp_item_no, exp_item_num)
     return {"result": True, "hero": hero}
 
@@ -286,6 +291,7 @@ def hero_sacrifice_oper(heros, player):
         # 经验
         exp = hero.get_all_exp()
         total_exp += exp
+        tlog_action.log('HeroSacrifice', player, hero_no)
 
     # baseconfig {1000000: 'item_id'}
     exp_items = game_configs.base_config.get("sacrificeGainExp")

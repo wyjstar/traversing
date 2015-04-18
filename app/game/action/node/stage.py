@@ -349,8 +349,14 @@ def stage_sweep(stage_id, times, player):
             print lineUpSlotComponent,
             hero = lineUpSlotComponent.hero_slot.hero_obj
             if hero:
+
+                beforelevel = hero.level
                 hero.upgrade(stage_config.HeroExp, player.base_info.level)
+                afterlevel = hero.level
+                changelevel = afterlevel-beforelevel
                 hero.save_data()
+                if changelevel:
+                    tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel)
         # 玩家金钱
         player.finance.coin += stage_config.currency
         # 玩家经验

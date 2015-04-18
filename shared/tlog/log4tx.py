@@ -54,6 +54,25 @@ def hero_break(GameSvrId=0, dtEventTime=0, GameAppID=0,
         print sendmsg
 
 
+def hero_sacrifice(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, HeroId=0):
+
+    message = ['HeroSacrifice']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(HeroId)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
 def inherit(GameSvrId=0, dtEventTime=0, GameAppID=0,
             PlatID=0, OpenID=0, InheritType=0, OriginId=0, OriginItemId=0,
             TargetId=0, TargetItemId=0):
@@ -296,6 +315,28 @@ def auto_travel(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(Stage)
     message.append(Time)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def hero_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, HeroId=0, ChangeLevel=0,
+                 Level=0):
+
+    message = ['HeroUpgrade']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(HeroId)
+    message.append(ChangeLevel)
+    message.append(Level)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

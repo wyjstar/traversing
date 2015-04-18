@@ -133,7 +133,7 @@ def send_message(**kwargs):
     for k, v in kwargs.items():
         message.append(k)
     sendmsg = _format(message)
-    GlobalObject().logclient.send_msg(sendmsg + '\n')
+    # GlobalObject().logclient.send_msg(sendmsg + '\n')
 
 
 def _format(message):
