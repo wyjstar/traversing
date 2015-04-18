@@ -15,6 +15,7 @@ from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from app.game.core.lively import task_status
 from app.proto_file.common_pb2 import CommonResponse
+from shared.db_opear.configs_data import game_configs
 from app.proto_file import friend_pb2
 from app.proto_file.db_pb2 import Mail_PB
 from app.proto_file.db_pb2 import Heads_DB
@@ -433,14 +434,13 @@ def get_recommend_friend_list_1109(data, player):
 
     allplayer_ids = tb_character_info.smem('all')
     allplayer_ids.remove(player.base_info.id)
-    print allplayer_ids
 
+    recommend_num = game_configs.base_config.get('FriendRecommendNum')
     recommend_ids = []
-    while (len(recommend_ids) < 10 and allplayer_ids):
+    while (len(recommend_ids) < recommend_num and allplayer_ids):
         recommend_id = random.choice(allplayer_ids)
         allplayer_ids.remove(recommend_id)
         recommend_ids.append(recommend_id)
-    print recommend_ids
 
     for pid in recommend_ids:
         player_data = tb_character_info.getObj(pid)
