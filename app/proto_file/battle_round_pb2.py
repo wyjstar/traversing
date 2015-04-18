@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='battle_round.proto',
   package='',
-  serialized_pb='\n\x12\x62\x61ttle_round.proto\"\xbb\x01\n\tRoundUnit\x12\n\n\x02id\x18\x01 \x02(\x05\x12\n\n\x02hp\x18\x02 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x03 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x04 \x01(\x02\x12\x11\n\tmagic_def\x18\x05 \x01(\x02\x12\x0b\n\x03hit\x18\x06 \x01(\x02\x12\r\n\x05\x64odge\x18\x07 \x01(\x02\x12\x0b\n\x03\x63ri\x18\x08 \x01(\x02\x12\x11\n\tcri_coeff\x18\t \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\n \x01(\x02\x12\r\n\x05\x62lock\x18\x0b \x01(\x02\"%\n\x06\x45\x66\x66\x65\x63t\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\r\n\x05value\x18\x02 \x02(\x02\"\x99\x01\n\x04\x42uff\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\x1b\n\x07targets\x18\x03 \x03(\x0b\x32\n.RoundUnit\x12\x1d\n\texecutors\x18\x04 \x03(\x0b\x32\n.RoundUnit\x12\x12\n\nhas_parent\x18\x05 \x01(\x05\x12\x0e\n\x06unpara\x18\x06 \x03(\x05\x12\x17\n\x06\x65\x66\x66\x65\x63t\x18\x07 \x01(\x0b\x32\x07.Effect\"o\n\x05Round\x12\x0c\n\x04\x63\x61mp\x18\x01 \x02(\x05\x12\x1c\n\x08\x65xecutor\x18\x02 \x01(\x0b\x32\n.RoundUnit\x12\x10\n\x08skill_id\x18\x03 \x01(\x05\x12\x12\n\nskill_type\x18\x04 \x01(\x05\x12\x14\n\x05\x62uffs\x18\x05 \x03(\x0b\x32\x05.Buff')
+  serialized_pb='\n\x12\x62\x61ttle_round.proto\"\xbb\x01\n\tRoundUnit\x12\n\n\x02id\x18\x01 \x02(\x05\x12\n\n\x02hp\x18\x02 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x03 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x04 \x01(\x02\x12\x11\n\tmagic_def\x18\x05 \x01(\x02\x12\x0b\n\x03hit\x18\x06 \x01(\x02\x12\r\n\x05\x64odge\x18\x07 \x01(\x02\x12\x0b\n\x03\x63ri\x18\x08 \x01(\x02\x12\x11\n\tcri_coeff\x18\t \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\n \x01(\x02\x12\r\n\x05\x62lock\x18\x0b \x01(\x02\"%\n\x06\x45\x66\x66\x65\x63t\x12\x0c\n\x04type\x18\x01 \x02(\x05\x12\r\n\x05value\x18\x02 \x02(\x02\"\x99\x01\n\x04\x42uff\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\x1b\n\x07targets\x18\x03 \x03(\x0b\x32\n.RoundUnit\x12\x1d\n\texecutors\x18\x04 \x03(\x0b\x32\n.RoundUnit\x12\x12\n\nhas_parent\x18\x05 \x01(\x05\x12\x0e\n\x06unpara\x18\x06 \x03(\x05\x12\x17\n\x06\x65\x66\x66\x65\x63t\x18\x07 \x01(\x0b\x32\x07.Effect\"o\n\x05Round\x12\x0c\n\x04\x63\x61mp\x18\x01 \x02(\x05\x12\x1c\n\x08\x65xecutor\x18\x02 \x01(\x0b\x32\n.RoundUnit\x12\x10\n\x08skill_id\x18\x03 \x01(\x05\x12\x12\n\nskill_type\x18\x04 \x01(\x05\x12\x14\n\x05\x62uffs\x18\x05 \x03(\x0b\x32\x05.Buff\"0\n\nBattleStep\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tstep_type\x18\x02 \x02(\x05\"B\n\x0fPvbBattleResult\x12\x1f\n\nbattleStep\x18\x01 \x03(\x0b\x32\x0b.BattleStep\x12\x0e\n\x06result\x18\x02 \x03(\x08')
 
 
 
@@ -276,15 +276,88 @@ _ROUND = _descriptor.Descriptor(
   serialized_end=518,
 )
 
+
+_BATTLESTEP = _descriptor.Descriptor(
+  name='BattleStep',
+  full_name='BattleStep',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='step_id', full_name='BattleStep.step_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='step_type', full_name='BattleStep.step_type', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=520,
+  serialized_end=568,
+)
+
+
+_PVBBATTLERESULT = _descriptor.Descriptor(
+  name='PvbBattleResult',
+  full_name='PvbBattleResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='battleStep', full_name='PvbBattleResult.battleStep', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='result', full_name='PvbBattleResult.result', index=1,
+      number=2, type=8, cpp_type=7, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=570,
+  serialized_end=636,
+)
+
 _BUFF.fields_by_name['targets'].message_type = _ROUNDUNIT
 _BUFF.fields_by_name['executors'].message_type = _ROUNDUNIT
 _BUFF.fields_by_name['effect'].message_type = _EFFECT
 _ROUND.fields_by_name['executor'].message_type = _ROUNDUNIT
 _ROUND.fields_by_name['buffs'].message_type = _BUFF
+_PVBBATTLERESULT.fields_by_name['battleStep'].message_type = _BATTLESTEP
 DESCRIPTOR.message_types_by_name['RoundUnit'] = _ROUNDUNIT
 DESCRIPTOR.message_types_by_name['Effect'] = _EFFECT
 DESCRIPTOR.message_types_by_name['Buff'] = _BUFF
 DESCRIPTOR.message_types_by_name['Round'] = _ROUND
+DESCRIPTOR.message_types_by_name['BattleStep'] = _BATTLESTEP
+DESCRIPTOR.message_types_by_name['PvbBattleResult'] = _PVBBATTLERESULT
 
 class RoundUnit(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -309,6 +382,18 @@ class Round(_message.Message):
   DESCRIPTOR = _ROUND
 
   # @@protoc_insertion_point(class_scope:Round)
+
+class BattleStep(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _BATTLESTEP
+
+  # @@protoc_insertion_point(class_scope:BattleStep)
+
+class PvbBattleResult(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PVBBATTLERESULT
+
+  # @@protoc_insertion_point(class_scope:PvbBattleResult)
 
 
 # @@protoc_insertion_point(module_scope)
