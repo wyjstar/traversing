@@ -38,12 +38,12 @@ def ban_user(data, player):
 @remoteserviceHandle('gate')
 def ban_speak(data, player):
     args = cPickle.loads(data)
+    player.base_info.gag = int(args['lock_time'])
     remote_gate.login_chat_remote(player.dynamic_id,
                                   player.base_info.id,
                                   player.guild.g_id,
                                   player.base_info.base_name,
                                   player.base_info.gag)
-    player.base_info.gag = args['lock_time']
     player.base_info.save_data()
     return {'success': 1}
 

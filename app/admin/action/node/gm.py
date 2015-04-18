@@ -122,11 +122,12 @@ def get_user_info(args):
 
 
 def send_mail(args):
-    a = args.get('awards').split('|')
     gain_info = {}
-    for b in a:
-        award = b.split(':')
-        gain_info[award[0]] = [award[2], award[2], award[1]]
+    if args.get('awards'):
+        a = args.get('awards').split('|')
+        for b in a:
+            award = b.split(':')
+            gain_info[award[0]] = [award[2], award[2], award[1]]
 
     mail = Mail_PB()
     # mail.sender_id = player.base_info.id
@@ -135,7 +136,10 @@ def send_mail(args):
     # mail.receive_name = ''
     mail.title = args['title']
     mail.content = args['text']
-    mail.mail_type = 2
+    if gain_info:
+        mail.mail_type = 2
+    else:
+        mail.mail_type = 4
     mail.prize = str(gain_info)
     mail.send_time = int(time.time())
     # mail_data = mail.SerializePartialToString()

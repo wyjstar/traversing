@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='lively.proto',
   package='',
-  serialized_pb='\n\x0clively.proto\x1a\x0c\x63ommon.proto\"D\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x02(\x05\x12\x0e\n\x06target\x18\x03 \x02(\x05\x12\x0e\n\x06status\x18\x04 \x02(\x05\"\"\n\nTaskUpdate\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\"\x1c\n\rrewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"C\n\x0erewardResponse\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12$\n\x04gain\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\"\x16\n\tTaskDebug\x12\t\n\x01p\x18\x01 \x02(\t')
+  serialized_pb='\n\x0clively.proto\x1a\x0c\x63ommon.proto\"D\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x02(\x05\x12\x0e\n\x06target\x18\x03 \x02(\x05\x12\x0e\n\x06status\x18\x04 \x02(\x05\"\"\n\nTaskUpdate\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\"\x1c\n\rrewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"a\n\x0erewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"\x16\n\tTaskDebug\x12\t\n\x01p\x18\x01 \x02(\t')
 
 
 
@@ -133,14 +133,21 @@ _REWARDRESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='tid', full_name='rewardResponse.tid', index=0,
-      number=1, type=5, cpp_type=1, label=2,
+      number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='gain', full_name='rewardResponse.gain', index=1,
-      number=2, type=11, cpp_type=10, label=2,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='rewardResponse.res', index=2,
+      number=3, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -155,7 +162,7 @@ _REWARDRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=166,
-  serialized_end=233,
+  serialized_end=263,
 )
 
 
@@ -182,12 +189,13 @@ _TASKDEBUG = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=235,
-  serialized_end=257,
+  serialized_start=265,
+  serialized_end=287,
 )
 
 _TASKUPDATE.fields_by_name['tasks'].message_type = _TASK
 _REWARDRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_REWARDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['Task'] = _TASK
 DESCRIPTOR.message_types_by_name['TaskUpdate'] = _TASKUPDATE
 DESCRIPTOR.message_types_by_name['rewardRequest'] = _REWARDREQUEST

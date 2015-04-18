@@ -125,6 +125,9 @@ class LiberateFactory(protocols.ServerFactory):
     def change_id(self, new_id, cur_id):
         return self.connmanager.change_id(new_id, cur_id)
 
+    def kick(self, pid):
+        return self.connmanager.kick(pid)
+
     def pushObject(self, topicID, msg, sendList):
         """服务端向客户端推消息
         @param topicID: int 消息的主题id号

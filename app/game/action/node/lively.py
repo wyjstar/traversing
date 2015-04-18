@@ -43,11 +43,13 @@ def add_items(player, task_id, gain):
 @remoteserviceHandle('gate')
 def draw_reward_1235(data, player):
 
+    response = rewardResponse()
+
     open_stage_id = game_configs.base_config.get('activityOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
         res = CommonResponse()
-        res.result = False
-        res.result_no = 837
+        response.res.result = False
+        response.res.result_no = 837
         return res.SerializeToString()
 
     request = rewardRequest()
@@ -55,18 +57,17 @@ def draw_reward_1235(data, player):
     status = player.tasks.reward(request.tid)
     player.tasks.save_data()
     if status == 0:
-        response = rewardResponse()
+        response.res.result = True
         response.tid = request.tid
         add_items(player, request.tid, response.gain)
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
-        print 'draw_reward_1235::', response
+        # print 'draw_reward_1235::', response
         return response.SerializePartialToString()
     else:
-        common = CommonResponse()
-        common.result = False
-        common.result_no = status
-        common.message = "未完成" if status == 1  else "已领取"
+        response.res.result = False
+        # response.res.result_no = status
+        response.res.message = "未完成" if status == 1  else "已领取"
         if status == -1:
-            common.message = "任务不存在"
-        return common.SerializePartialToString()
+            response.res.message = "任务不存在"
+        return response.SerializePartialToString()

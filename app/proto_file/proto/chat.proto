@@ -23,6 +23,7 @@ message ChatConectingRequest{
 message ChatResponse{
      required bool result = 1;
      optional int32 result_no = 2;
+     optional int32 gag_time = 3;//禁言结束时间。－2 为永久禁言
 }
 
 //推送聊天信息

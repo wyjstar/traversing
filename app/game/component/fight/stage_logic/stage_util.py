@@ -8,6 +8,7 @@ import random
 from app.game.core.hero_chip import HeroChip
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
+from shared.tlog import tlog_action
 
 
 remote_gate = GlobalObject().remote['gate']

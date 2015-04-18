@@ -41,4 +41,6 @@ def send_message_1002(command_id, dynamic_id, request_proto):
     response.result = result
     if info.get('result_no'):
         response.result_no = info.get('result_no')
+    if info.get('gag_time'):
+        response.gag_time = info.get('gag_time')
     return response.SerializeToString()

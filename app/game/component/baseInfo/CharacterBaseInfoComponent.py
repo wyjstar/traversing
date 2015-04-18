@@ -113,9 +113,9 @@ class CharacterBaseInfoComponent(Component):
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
     def new_data(self):
-        init_level = game_configs.base_config.get('initialPlayerLevel')
-        init_vip_level = game_configs.base_config.get('initialVipLevel')
-        data = dict(level=init_level,
+        self._level = game_configs.base_config.get('initialPlayerLevel')
+        self._vip_level = game_configs.base_config.get('initialVipLevel')
+        data = dict(level=self._level,
                     exp=self.exp,
                     pvp_high_rank=self._pvp_high_rank,
                     pvp_high_rank_award=self._pvp_high_rank_award,
@@ -126,7 +126,7 @@ class CharacterBaseInfoComponent(Component):
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
-                    vip_level=init_vip_level,
+                    vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
                     register_time=self._register_time,
