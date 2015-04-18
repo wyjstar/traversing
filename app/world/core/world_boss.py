@@ -22,6 +22,7 @@ from app.proto_file.notice_pb2 import NoticeResponse
 from shared.utils.random_pick import random_pick_with_percent
 from shared.utils.date_util import string_to_timestamp
 from shared.utils.const import const
+from gfirefly.server.logobj import logger
 
 
 tb_boss = RedisObject('tb_worldboss')
@@ -155,10 +156,10 @@ class WorldBoss(BaseBoss):
         i = 0
         hp_max = self.get_hp()
         accumulated_rewards = game_configs.base_config.get('accumulated_rewards')
-        has_award = True
         while True and i < 1000:
             i+=1
             ranks = self._rank_instance.get(100*(i-1)+1, 100*i)
+            logger.debug("send_award_add_up: %s" % ranks)
             if len(ranks) == 0:
                 return
             for player_id, v in ranks:

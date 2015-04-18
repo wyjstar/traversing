@@ -101,7 +101,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
         boss.boss_dead_time = get_current_timestamp()
 
     boss.save_data()
-    return result
+    return result, demage_hp
 
 @rootserviceHandle
 def pvb_player_info_remote(no, boss_id):

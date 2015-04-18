@@ -7,6 +7,7 @@ from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
 from shared.utils.date_util import str_time_period_to_timestamp
+from shared.utils.const import const
 
 
 class CharacterWorldBoss(Component):
@@ -142,9 +143,15 @@ class Boss(object):
 
     def set_award(self, award_type, award):
         """
-        设置奖励
+        设置奖励, 参与奖励做特殊处理
         """
-        self._award[award_type] = award
+        if award_type == const.PVB_IN_AWARD:
+            if not self._award.get(award_type):
+                self._award[award_type] = [award]
+            else:
+                self._award[award_type].append(award)
+        else:
+            self._award[award_type] = award
 
     def get_award(self):
         """
