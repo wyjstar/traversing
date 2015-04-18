@@ -65,14 +65,15 @@ def is_next_day(current_time_stamp, last_time_stamp):
     return False
 
 def days_to_current(timestamp):
-    current_date = datetime.datetime.now()
-    some_date = timestamp_to_date(timestamp)
-    return (current_date-some_date).days
+    now = time.localtime(time.time())
+    some_date = time.localtime(timestamp)
+    return now.tm_yday-some_date.tm_yday
 
 
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)
     print get_current_day_timestamp(0, 0, 0)
-    print string_to_timestamp("2014-09-01 23:59:00")
-    print str_time_period_to_timestamp("20:00-23:59")
+    #print string_to_timestamp("2014-09-01 23:59:00")
+    #print str_time_period_to_timestamp("20:00-23:59")
+    print days_to_current(1429284715)
 
