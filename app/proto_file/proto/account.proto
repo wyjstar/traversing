@@ -15,7 +15,8 @@ message AccountLoginRequest{
 }
 
 message AccountKick{
-	required int32 id = 1;
+	required int32 id = 1; //1异地登录2封停账号
+	optional int32 time = 2;// 封停账号到期时间戳，－2表示永久
 }
 
 //注册 request: command:1，data:AccountInfo

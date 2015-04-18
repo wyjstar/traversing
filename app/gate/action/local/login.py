@@ -12,6 +12,11 @@ from app.proto_file import game_pb2
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 import time
+from app.proto_file.account_pb2 import AccountKick
+from app.gate.action.node.net import kick_by_id_remote
+
+
+groot = GlobalObject().root
 
 
 @local_service_handle
@@ -37,8 +42,20 @@ def character_login_4(key, dynamic_id, request_proto):
     if not data.get('result', True):
         response.res.result = False
         return response.SerializePartialToString()
+
     player_data = data.get('player_data')
     response.ParseFromString(player_data)
+
+    login_time = int(time.time())
+    if response.closure > login_time or response.closure == -2:
+        msg = AccountKick()
+        msg.id = 1
+        msg.time = response.closure
+        groot.child('net').kick_by_id_remote(msg.SerializeToString(), dynamic_id)
+
+        response.res.result = False
+        return response.SerializePartialToString()
+
 
     # argument.plat_id = 0
     # argument.client_version = '0.0.0.1'
@@ -62,8 +79,7 @@ def character_login_4(key, dynamic_id, request_proto):
         tlog_action.log('PlayerRegister', response, argument)
 
     nickname = response.nickname
-    login_time = int(time.time())
-    if nickname and response.gag < login_time and response.closure < login_time:
+    if nickname and response.gag < login_time and response.gag != -2:
         # 聊天室登录
         GlobalObject().child('chat').login_chat_remote(dynamic_id,
                                                        response.id,

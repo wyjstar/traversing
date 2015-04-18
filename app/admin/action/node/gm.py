@@ -41,7 +41,7 @@ def gm():
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
-                     'get_user_eqs']
+                     'get_user_eqs', 'copy_user']
     if request.args:
         t_dict = request.args
     else:
@@ -443,3 +443,18 @@ def get_user_eqs(args):
         message[equipment_id] = eq_mes
 
     return {'success': 1, 'message': message}
+
+
+def copy_user(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    be_copy_character_obj = tb_character_info.getObj(int(args.get('be_copy_uid')))
+    if not be_copy_character_obj.exists():
+        return {'success': 0, 'message': 2}
+    be_copy_character_info = be_copy_character_obj.hgetall()
+
+    character_obj.hmset(be_copy_character_info)
+
+    return {'success': 1}

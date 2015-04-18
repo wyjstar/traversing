@@ -21,7 +21,8 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 
 
 def pvp_award_tick():
-    reactor.callLater(game_configs.base_config.get('arena_shorttime_points_time'), pvp_award_tick)
+    tick_time = game_configs.base_config.get('arena_shorttime_points_time')
+    reactor.callLater(tick_time, pvp_award_tick)
     try:
         pvp_award()
     except Exception, e:
@@ -32,7 +33,11 @@ def pvp_award_tick():
 
 def pvp_award():
     arena_award = game_configs.base_config.get('arena_shorttime_points')
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'character_id>10000', ['id', 'character_id'])
+
+    rank_max = max([_[1] for _ in arena_award.values()])
+    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
+                                     'character_id>10000 and id<=%s' % rank_max,
+                                     ['id', 'character_id'])
 
     for k in records:
         childs = groot.childsmanager.childs
@@ -47,9 +52,12 @@ def pvp_award():
 
         for child in childs.values():
             if 'gate' in child.name:
-                result = child.pull_message_remote('pvp_award_remote', k['character_id'], (award,))
+                result = child.pull_message_remote('pvp_award_remote',
+                                                   k['character_id'],
+                                                   (award,))
                 if type(result) is bool and result:
-                    logger.debug('pvp_award_tick result:%s,%s,%s', result, k, award)
+                    logger.debug('pvp_award_tick result:%s,%s,%s',
+                                 result, k, award)
                     break
         else:
             logger.debug('pvp_award_tick cache:%s,%s', k, award)

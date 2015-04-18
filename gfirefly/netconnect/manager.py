@@ -99,16 +99,14 @@ class ConnectionManager:
         connection.dynamic_id = new_id
         return True
 
-    def kick(self, pid):
+    def kick(self, msg, pid):
         logger.debug("kick>>>%s", pid)
         if pid not in self._connections:
             logger.error("kick err>>>%s", pid)
             return False
 
         old_connection = self._connections[pid]
-        msg = AccountKick()
-        msg.id = 2
-        self.__write_data(old_connection, 11, msg.SerializeToString())
+        self.__write_data(old_connection, 11, msg)
         old_connection.loseConnection()
         old_connection.dynamic_id = 0
 

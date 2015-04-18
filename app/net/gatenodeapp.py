@@ -39,6 +39,6 @@ def change_dynamic_id_remote(old_id, new_id):
 
 
 @remoteserviceHandle('gate')
-def kick_by_id_remote(pid):
-    GlobalObject().netfactory.kick(pid)
+def kick_by_id_remote(msg, pid):
+    GlobalObject().netfactory.kick(msg, pid)
     return True
