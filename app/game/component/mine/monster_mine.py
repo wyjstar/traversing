@@ -69,7 +69,7 @@ class MineOpt(object):
     def updata_level(cls, label, uid, s, t):
         """ label = 'user_level' """
         src = '%s.%s' % (label, s)
-        dst = '%s.%s' % (aabel, t)
+        dst = '%s.%s' % (label, t)
         try:
             tb_rank.smove(src, dst, uid)
         except Exception, e:
