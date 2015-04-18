@@ -14,5 +14,6 @@ def get_gold_2001(data, player):
     response.res.result = True
     response.gold = player.finance.gold
     response.vip_level = player.base_info.vip_level
-    logger.debug("get_gold_2001============%s" % player.finance.gold)
+    response.recharge = player.base_info.recharge
+    logger.debug("get_gold_2001============%s" % response)
     return response.SerializeToString()
