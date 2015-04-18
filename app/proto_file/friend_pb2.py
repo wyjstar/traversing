@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"\xa2\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x05\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\"\x19\n\x17GetPlayerFriendsRequest\"\xc4\x01\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x02\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x11\n\tlast_time\x18\n \x01(\x05\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"\xa2\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x05\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\"\x19\n\x17GetPlayerFriendsRequest\"\xc4\x01\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x02\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x11\n\tlast_time\x18\n \x01(\x05\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo')
 
 
 
@@ -396,9 +396,52 @@ _FRIENDPRIVATECHATREQUEST = _descriptor.Descriptor(
   serialized_end=779,
 )
 
+
+_GETRECOMMENDFRIENDSRESPONSE = _descriptor.Descriptor(
+  name='GetRecommendFriendsResponse',
+  full_name='GetRecommendFriendsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='open_receive', full_name='GetRecommendFriendsResponse.open_receive', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='page_num', full_name='GetRecommendFriendsResponse.page_num', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='recommend', full_name='GetRecommendFriendsResponse.recommend', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=781,
+  serialized_end=885,
+)
+
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['blacklist'].message_type = _CHARACTERINFO
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['applicant_list'].message_type = _CHARACTERINFO
+_GETRECOMMENDFRIENDSRESPONSE.fields_by_name['recommend'].message_type = _CHARACTERINFO
 DESCRIPTOR.message_types_by_name['FriendCommon'] = _FRIENDCOMMON
 DESCRIPTOR.message_types_by_name['AddFriendResponse'] = _ADDFRIENDRESPONSE
 DESCRIPTOR.message_types_by_name['FindFriendRequest'] = _FINDFRIENDREQUEST
@@ -407,6 +450,7 @@ DESCRIPTOR.message_types_by_name['GetPlayerFriendsRequest'] = _GETPLAYERFRIENDSR
 DESCRIPTOR.message_types_by_name['CharacterInfo'] = _CHARACTERINFO
 DESCRIPTOR.message_types_by_name['GetPlayerFriendsResponse'] = _GETPLAYERFRIENDSRESPONSE
 DESCRIPTOR.message_types_by_name['FriendPrivateChatRequest'] = _FRIENDPRIVATECHATREQUEST
+DESCRIPTOR.message_types_by_name['GetRecommendFriendsResponse'] = _GETRECOMMENDFRIENDSRESPONSE
 
 class FriendCommon(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -455,6 +499,12 @@ class FriendPrivateChatRequest(_message.Message):
   DESCRIPTOR = _FRIENDPRIVATECHATREQUEST
 
   # @@protoc_insertion_point(class_scope:FriendPrivateChatRequest)
+
+class GetRecommendFriendsResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GETRECOMMENDFRIENDSRESPONSE
+
+  # @@protoc_insertion_point(class_scope:GetRecommendFriendsResponse)
 
 
 # @@protoc_insertion_point(module_scope)

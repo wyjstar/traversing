@@ -151,4 +151,8 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print newbee_guide_config.get(20001)
+    print base_config.get('arena_shorttime_points')
+    a = base_config.get('arena_shorttime_points')
+    b = a.values()
+    c = [_[1] for _ in b]
+    print max(c)
