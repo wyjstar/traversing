@@ -539,36 +539,50 @@ def process_mine_result(player, position, result, response, stype):
             for k, v in count.items():
                 prize[108].append([v, v, k])
 
-            mail = db_pb2.Mail_PB()
-            mail.sender_id = -1
-            mail.sender_name = ''
-            mail.receive_id = target
-            mail.receive_name = ''
-            mail.title = ''
-            mail.content = ''
-            mail.mail_type = 2
-            mail.prize = prize
-            mail.send_time = int(time.time())
+            if False:
+                mail = db_pb2.Mail_PB()
+                mail.sender_id = -1
+                mail.sender_name = ''
+                mail.receive_id = target
+                mail.receive_name = ''
+                mail.title = ''
+                mail.content = ''
+                mail.mail_type = 2
+                mail.prize = prize
+                mail.send_time = int(time.time())
 
-            battle_process = db_pb2.Mail_PB()
-            battle_process.sender_id = -1
-            battle_process.sender_name = player.base_info.base_name
-            battle_process.receive_id = target
-            battle_process.receive_name = ''
-            battle_process.title = ''
-            battle_process.content = ''
-            battle_process.mail_type = 2
-            battle_process.prize = prize
+                battle_process = db_pb2.Mail_PB()
+                battle_process.sender_id = -1
+                battle_process.sender_name = player.base_info.base_name
+                battle_process.receive_id = target
+                battle_process.receive_name = ''
+                battle_process.title = ''
+                battle_process.content = ''
+                battle_process.mail_type = 2
+                battle_process.prize = prize
 
-            # command:id 为收邮件的命令ID
+                # command:id 为收邮件的命令ID
+                if sum(count.values()) > 0:
+                    response.result = netforwarding.push_message('receive_mail_remote', target, mail)
+                    netforwarding.push_message('receive_mail_remote',
+                                               target,
+                                               mail.SerializePartialToString())
+                    netforwarding.push_message('receive_mail_remote',
+                                               target,
+                                               battle_process.SerializePartialToString())
+
             if sum(count.values()) > 0:
-                response.result = netforwarding.push_message('receive_mail_remote', target, mail)
-                netforwarding.push_message('receive_mail_remote',
-                                           target,
-                                           mail.SerializePartialToString())
-                netforwarding.push_message('receive_mail_remote',
-                                           target,
-                                           battle_process.SerializePartialToString())
+                mail_id = game_configs.base_config.get('warFogRobbedMail')
+
+                player_id = self._last_shot_item['player_id']
+                mail = db_pb2.Mail_PB()
+                mail.config_id = mail_id
+                mail.receive_id = target
+                mail.send_time = int(time.time())
+                mail.prize = str(prize)
+                mail_data = mail.SerializePartialToString()
+                remote_gate.push_message_to_transit_remote('receive_mail_remote',
+                                                           target, mail_data)
 
 
 @remoteserviceHandle('gate')
@@ -643,7 +657,7 @@ def battle_1253(data, player):
                                    info.get("best_skill_no"),
                                    info.get("level"), red_best_skill_id)
 
-        process_mine_result(player, pos, fight_result, response, 0)
+        process_mine_result(player, pos, fight_result, response, 1)
 
         blue_best_skill_id = info.get("best_skill_id", 0)
         blue_best_skill_level = info.get("best_skill_level", 0)

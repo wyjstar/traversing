@@ -513,7 +513,7 @@ def change_president_806(data, player):
             player.guild.save_data()
 
             # 退出公会聊天
-            remote_gate.logout_guild_chat_remote(dynamicid)
+            # remote_gate.logout_guild_chat_remote(dynamicid)
 
             response.result = True
             response.message = "转让成功"
@@ -716,13 +716,13 @@ def worship_809(data, player):
     # {膜拜编号：[资源类型,资源消耗量,获得公会经验,获得公会资金,获得个人贡献值]}
     worship_info = game_configs.base_config.get('worship').get(w_type)
 
-    if worship_info[1] == 1:  # 1金币  2元宝
-        if worship_info[2] > player.finance.coin:
+    if worship_info[0] == 1:  # 1金币  2元宝
+        if worship_info[1] > player.finance.coin:
             response.result = False
-            response.message = "金币不足"
+            response.message = "银两不足"
             return response.SerializeToString()
     else:
-        if worship_info[2] > player.finance.gold:
+        if worship_info[1] > player.finance.gold:
             response.result = False
             response.message = "元宝不足"
             return response.SerializeToString()
@@ -731,7 +731,7 @@ def worship_809(data, player):
         if player.base_info.guild_worship_times > player.guild.worship:
             player.guild.worship += 1
             player.guild.contribution += worship_info[4]
-            player.guild.all_contribution += worship_info[3]
+            player.guild.all_contribution += worship_info[4]
             guild_obj.fund += worship_info[3]
             guild_obj.exp += worship_info[2]
         else:
@@ -757,10 +757,10 @@ def worship_809(data, player):
     guild_obj.save_data()
 
     # 根据膜拜类型判断减什么钱，然后扣除
-    if worship_info[1] == 1:  # 1金币  2元宝
-        player.finance.coin -= worship_info[2]
+    if worship_info[0] == 1:  # 1金币  2元宝
+        player.finance.coin -= worship_info[1]
     else:
-        player.finance.consume_gold(worship_info[2])
+        player.finance.consume_gold(worship_info[1])
     player.finance.save_data()
     response.result = True
     response.message = "膜拜成功"
@@ -1039,22 +1039,24 @@ def deal_invite_join_1804(data, player):
             response.result = False
             response.message = "超出公会人数上限"
 
-        remote_gate.login_guild_chat_remote(player.dynamic_id,
-                                            player.guild.g_id)
-        player.guild.g_id = guild_id.encode('utf-8')
-        player.guild.position = 5
-        player.guild.contribution = 0
-        player.guild.all_contribution = 0
-        player.guild.k_num = 0
-        player.guild.exit_time = 1
+        if response.result:
+            player.guild.g_id = guild_id.encode('utf-8')
+            player.guild.position = 5
+            player.guild.contribution = 0
+            player.guild.all_contribution = 0
+            player.guild.k_num = 0
+            player.guild.exit_time = 1
 
-        if guild_obj.p_list.get(5):
-            p_list1 = guild_obj.p_list.get(5)
-            p_list1.append(player.base_info.id)
-            guild_obj.p_list.update({5: p_list1})
-        else:
-            guild_obj.p_list.update({5: [player.base_info.id]})
-        guild_obj.p_num += 1
+            if guild_obj.p_list.get(5):
+                p_list1 = guild_obj.p_list.get(5)
+                p_list1.append(player.base_info.id)
+                guild_obj.p_list.update({5: p_list1})
+            else:
+                guild_obj.p_list.update({5: [player.base_info.id]})
+            guild_obj.p_num += 1
+
+            remote_gate.login_guild_chat_remote(player.dynamic_id,
+                                                player.guild.g_id)
 
         player.guild.save_data()
 

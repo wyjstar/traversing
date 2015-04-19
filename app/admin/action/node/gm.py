@@ -20,6 +20,7 @@ from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils import trie_tree
 from app.game.core.stage.stage import Stage
 from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data.data_helper import parse
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -121,7 +122,12 @@ def get_user_info(args):
 
 
 def send_mail(args):
-    print 'AAAAAAAAAAAAAAAAAAAA'
+    a = args.get('awards').split('|')
+    gain_info = {}
+    for b in a:
+        award = b.split(':')
+        gain_info[award[0]] = [award[2], award[2], award[1]]
+
     mail = Mail_PB()
     # mail.sender_id = player.base_info.id
     mail.sender_name = args['sender_name']
@@ -129,11 +135,10 @@ def send_mail(args):
     # mail.receive_name = ''
     mail.title = args['title']
     mail.content = args['text']
-    mail.mail_type = 4
-    #mail.prize = ''
+    mail.mail_type = 2
+    mail.prize = str(gain_info)
     mail.send_time = int(time.time())
     # mail_data = mail.SerializePartialToString()
-    print 'BBBBBBBBBBBBBBBBB', mail
 
     if args['uids'] == '0':
         users = tb_character_info.smem('all')
@@ -148,7 +153,6 @@ def send_mail(args):
             mail_data = mail.SerializeToString()
             push_message('receive_mail_remote', int(uid),
                          mail.SerializeToString())
-    print 'CCCCCCCCCCCCCCCCCCCCC'
     return {'success': 1}
 
 
