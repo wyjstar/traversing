@@ -23,9 +23,10 @@ message rewardRequest
 //领奖返回
 message rewardResponse
 {
-	required int32 tid = 1; //任务ID
+	optional int32 tid = 1; //任务ID
 	//repeated ItemPB items = 2; //奖励道具列表
-	required GameResourcesResponse gain = 2; //通用奖励
+	optional GameResourcesResponse gain = 2; //通用奖励
+    required CommonResponse res = 3;
 }
 
 message TaskDebug
