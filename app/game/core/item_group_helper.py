@@ -285,10 +285,10 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
                 after_num = player.hero_chip_component.get_chip(item_no).num
             else:
                 hero = player.hero_component.add_hero(item_no)
-                notice_item = game_configs.notes_config.get(3001)
+                notice_item = game_configs.notes_config.get(2002)
                 logger.debug("=================%s %s %s" % (reason, hero.hero_info.quality, notice_item.parameter1))
                 if reason == const.SHOP_DRAW_HERO and hero.hero_info.quality in notice_item.parameter1:
-                    push_notice(3001, player_name=player.base_info.base_name, hero_no=item_no)
+                    push_notice(2002, player_name=player.base_info.base_name, hero_no=item_no)
                 after_num = 1
 
         elif type_id == const.BIG_BAG:
@@ -303,17 +303,17 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             itid = item_no
             item_no = equipment.base_info.id
             after_num = player.equipment_component.get_equipment_num(itid)
-            notice_item = game_configs.notes_config.get(5001)
+            notice_item = game_configs.notes_config.get(2004)
             if reason == const.COMMON_BUY_PVP and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(5001, player_name=player.base_info.base_name, equipment_no=itid)
+                push_notice(2004, player_name=player.base_info.base_name, equipment_no=itid)
 
-            notice_item = game_configs.notes_config.get(6001)
+            notice_item = game_configs.notes_config.get(2005)
             if reason ==const.COMMON_BUY_MELT and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(6001, player_name=player.base_info.base_name, equipment_no=itid)
+                push_notice(2005, player_name=player.base_info.base_name, equipment_no=itid)
 
-            notice_item = game_configs.notes_config.get(7001)
+            notice_item = game_configs.notes_config.get(2006)
             if reason == const.COMMON_BUY_EQUIPMENT and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(7001, player_name=player.base_info.base_name, equipment_no=itid)
+                push_notice(2006, player_name=player.base_info.base_name, equipment_no=itid)
 
         elif type_id == const.EQUIPMENT_CHIP:
             chip = EquipmentChip(item_no, num)

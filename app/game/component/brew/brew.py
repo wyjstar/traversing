@@ -92,14 +92,15 @@ class CharacterBrewComponent(Component):
             return False
 
         need_gold = get_consume_gold_num(_consume)
+        critical_type = critical[brew_type]
+
         def func():
             return_data = consume(self.owner, _consume)
             get_return(self.owner, return_data, response.consume)
 
             self._brew_step += 1
-            #critical = critical[brew_type]
-            rand = random.random()*sum(critical.values())
-            for critical_num, rand_range in critical.items():
+            rand = random.random()*sum(critical_type.values())
+            for critical_num, rand_range in critical_type.items():
                 if rand < rand_range:
                     increment = critical_num * game_configs.base_config.get('cookingWineOutput')
                     self._nectar_cur += int(increment)

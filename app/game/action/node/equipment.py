@@ -317,9 +317,9 @@ def compose_equipment(chip_no, player):
     equipment_obj = player.equipment_component.add_equipment(chip.combine_result)
     chip.chip_num -= compose_num
     player.equipment_chip_component.save_data()
-    notice_item = game_configs.notes_config.get(8001)
+    notice_item = game_configs.notes_config.get(2007)
     if equipment_obj.equipment_config_info.quality in notice_item.parameter1:
-        push_notice(8001, player_name=player.base_info.base_name, equipment_no=chip.combine_result)
+        push_notice(2007, player_name=player.base_info.base_name, equipment_no=chip.combine_result)
 
     return {'result': True, 'equipment_obj': equipment_obj}
 

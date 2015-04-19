@@ -117,9 +117,9 @@ def hero_break_logic(hero_no, player, response):
     get_return(player, return_data, response.consume)
 
     hero.break_level += 1
-    notice_item = game_configs.notes_config.get(4001)
+    notice_item = game_configs.notes_config.get(2003)
     if hero.break_level in notice_item.parameter1:
-        push_notice(4001, player_name=player.base_info.base_name, hero_no=hero.hero_no, hero_break_level=hero.break_level)
+        push_notice(2003, player_name=player.base_info.base_name, hero_no=hero.hero_no, hero_break_level=hero.break_level)
     hero.save_data()
     # 3、返回
     tlog_action.log('HeroBreak', player, hero_no, hero.break_level)
@@ -188,10 +188,10 @@ def hero_compose_106(data, player):
     hero = player.hero_component.add_hero(hero_no)
     hero_chip.consume_chip(need_num)  # 消耗碎片
     player.hero_chip_component.save_data()
-    notice_item = game_configs.notes_config.get(9001)
+    notice_item = game_configs.notes_config.get(2008)
     logger.debug("=================%s %s" % (hero.hero_info.quality, notice_item.parameter1))
     if hero.hero_info.quality in notice_item.parameter1:
-        push_notice(9001, player_name=player.base_info.base_name, hero_no=hero_no)
+        push_notice(2008, player_name=player.base_info.base_name, hero_no=hero_no)
 
     # tlog
     log_action.hero_flow(player, hero.hero_no, 1, 1)
