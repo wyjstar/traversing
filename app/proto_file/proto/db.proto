@@ -34,4 +34,5 @@ message Stamina_DB{
     optional int32 last_gain_stamina_time = 4 [default = 0];
     optional int32 last_mail_day = 5 [default = 0];
     repeated int32 contributors = 6;
+    optional int32 last_buy_stamina_time = 7 [default = 0];
 }
