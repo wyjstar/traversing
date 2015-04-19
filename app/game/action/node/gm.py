@@ -30,7 +30,12 @@ remote_gate = GlobalObject().remote['gate']
 @remoteserviceHandle('gate')
 def ban_user(data, player):
     args = cPickle.loads(data)
-    player.base_info.closure = args['lock_time']
+    response = BanUser()
+    response.time = int(args['lock_time'])
+    player.base_info.closure = int(args['lock_time'])
+    remote_gate.push_object_remote(1805,
+                                   response.SerializeToString(),
+                                   [player.dynamic_id])
     player.base_info.save_data()
     return {'success': 1}
 

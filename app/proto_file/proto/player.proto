@@ -14,3 +14,7 @@ message FinancePB{
     repeated int32 finances = 8;
     repeated FinanceChanges finance_changes = 9;
 }
+
+message BanUser{
+    required int32 time = 1; //封停结束时间戳。－2为永久
+}

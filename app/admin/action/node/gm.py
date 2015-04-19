@@ -41,7 +41,7 @@ def gm():
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
-                     'get_user_eqs']
+                     'get_user_eqs', 'copy_user']
     if request.args:
         t_dict = request.args
     else:
@@ -443,3 +443,7 @@ def get_user_eqs(args):
         message[equipment_id] = eq_mes
 
     return {'success': 1, 'message': message}
+
+
+def copy_user(args):
+    return {'success': 1}
