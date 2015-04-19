@@ -314,13 +314,13 @@ def round_flow(player_data, battle_id, battle_type, is_quick, result):
 def new_guide(player_data, sequence, my_sequence):
 
     log4tx.new_guide(GameSvrId=game_server_id,
-                      dtEventTime=xtime.strdatetime(),
-                      GameAppID=game_app_id,
-                      OpenID=player_data.base_info.id,
-                      PlatID=plat_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
 
-                      Sequence=sequence,
-                      MySequence=my_sequence)
+                     Sequence=sequence,
+                     MySequence=my_sequence)
 
 
 def online_num(num):
@@ -371,6 +371,45 @@ def item_money_flow(player_data, item_type, item_id, count, money,
                            IsDiscount=is_discount)
 
 
+def equipment_enhance(player_data, equipmeng_no, equipmeng_id,
+                      beforelevel, afterlevel):
+
+    log4tx.equipment_enhance(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             EquipmentNo=equipmeng_no,
+                             EquipmentId=equipmeng_id,
+                             BeforeLevel=beforelevel,
+                             AfterLevel=afterlevel)
+
+
+def equipment_compose(player_data, equipmeng_no, equipmeng_id):
+
+    log4tx.equipment_compose(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             EquipmentNo=equipmeng_no,
+                             EquipmentId=equipmeng_id)
+
+
+def equipment_melting(player_data, equipmeng_no, equipmeng_id):
+
+    log4tx.equipment_melting(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             EquipmentNo=equipmeng_no,
+                             EquipmentId=equipmeng_id)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
@@ -401,6 +440,9 @@ tlog_funcs['OnlineNum'] = online_num
 tlog_funcs['MoneyFlow'] = money_flow
 tlog_funcs['ItemMoneyFlow'] = item_money_flow
 tlog_funcs['HeroSacrifice'] = hero_sacrifice
+tlog_funcs['EquipmentEnhance'] = equipment_enhance
+tlog_funcs['EquipmentCompose'] = equipment_compose
+tlog_funcs['EquipmentMelting'] = equipment_melting
 
 
 def log(mod, *args, **kwds):

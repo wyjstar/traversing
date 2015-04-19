@@ -11,6 +11,49 @@ def _format(message):
     return '|'.join(map(str, message))
 
 
+def equipment_compose(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, EquipmentNo=0, EquipmentId=0):
+
+    message = ['EquipmentCompose']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(EquipmentNo)
+    message.append(EquipmentId)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def equipment_enhance(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, EquipmentNo=0, EquipmentId=0,
+                      BeforeLevel=0, AfterLevel=0):
+
+    message = ['EquipmentEnhance']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(EquipmentNo)
+    message.append(EquipmentId)
+    message.append(BeforeLevel)
+    message.append(AfterLevel)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
 def line_up_change(GameSvrId=0, dtEventTime=0, GameAppID=0,
                    PlatID=0, OpenID=0, Slot=0, HeroId=0, AfterHeroId=0,
                    ChangeType=0):
@@ -670,6 +713,26 @@ def item_money_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0,
     message.append(LimitVipEveryday)
     message.append(LimitVip)
     message.append(IsDiscount)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def equipment_melting(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, EquipmentNo=0, EquipmentId=0):
+
+    message = ['EquipmentMelting']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(EquipmentNo)
+    message.append(EquipmentId)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
