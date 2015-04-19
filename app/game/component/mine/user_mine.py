@@ -832,10 +832,16 @@ class UserMine(Component):
 
     def can_reset_free(self):
         self._reset_everyday()
-        free_everyday = game_configs.base_config['totemRefreshFreeTimes']
-        if self._reset_times >= free_everyday:
+
+        if self._reset_times >= self.owner.base_info.war_refresh_times:
+            logger.debug('war fog refresh time:%s-%s',
+                         self._reset_times,
+                         self.base_info.war_refresh_times)
             return False
         if len(self._mine) < game_configs.base_config['warFogStrongpointNum']:
+            logger.debug('war fog strong num:%s-%s',
+                         len(self._mine),
+                         game_configs.base_config['warFogStrongpointNum'])
             return False
         return True
 
