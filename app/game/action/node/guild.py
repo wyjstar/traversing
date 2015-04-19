@@ -1040,6 +1040,11 @@ def deal_invite_join_1804(data, player):
             response.result = False
             response.message = "超出公会人数上限"
 
+        if player.stage_component.get_stage(open_stage_id).state == -2:
+            response.result = False
+            response.message = "未完成指定关卡"
+            # response.result_no = 837
+
         if response.result:
             player.guild.g_id = guild_id.encode('utf-8')
             player.guild.position = 5
