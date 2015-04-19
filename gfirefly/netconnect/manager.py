@@ -82,6 +82,7 @@ class ConnectionManager:
     def change_id(self, new_id, cur_id):
         logger.debug("change_id %s>>>>>>%s", cur_id, new_id)
         if cur_id not in self._connections:
+            logger.debug("change_id error %s>>>>>>%s", cur_id, new_id)
             return False
 
         connection = self._connections[cur_id]
@@ -96,6 +97,22 @@ class ConnectionManager:
         del self._connections[cur_id]
         self._connections[new_id] = connection
         connection.dynamic_id = new_id
+        return True
+
+    def kick(self, pid):
+        logger.debug("kick>>>%s", pid)
+        if pid not in self._connections:
+            logger.error("kick err>>>%s", pid)
+            return False
+
+        old_connection = self._connections[pid]
+        msg = AccountKick()
+        msg.id = 2
+        self.__write_data(old_connection, 11, msg.SerializeToString())
+        old_connection.loseConnection()
+        old_connection.dynamic_id = 0
+
+        del self._connections[pid]
         return True
 
     def pop_queue(self):
