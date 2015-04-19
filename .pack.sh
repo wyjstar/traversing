@@ -50,6 +50,11 @@ mv ../appmain.py .
 
 rm startmaster.pyc
 rm appmain.pyc
+rm config/config.db
+rm -fr config/excel
+rm -fr config/json
+rm -fr config/lua
+rm -fr config/sql
 
 cd ../
 echo "tar -czf $package.tar.gz $package"
