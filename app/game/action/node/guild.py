@@ -126,7 +126,8 @@ def join_guild_802(data, player):
     open_stage_id = game_configs.base_config.get('guildOpenStage')
     if player.stage_component.get_stage(open_stage_id).state == -2:
         response.result = False
-        response.result_no = 837
+        response.message = "未完成指定关卡"
+        # response.result_no = 837
         return response.SerializeToString()
 
     if m_g_id != 'no':
