@@ -76,7 +76,7 @@ class CharacterBaseInfoComponent(Component):
         self._google_consume_data = character_info.get('google_consume_data', '')
         self._apple_transaction_id = character_info.get('apple_transaction_id', '')
         self._first_recharge_ids = character_info.get('first_recharge_ids', [])
-        self._recharge = character_info.get('recharge')
+        self._recharge = character_info.get('recharge_accumulation')
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -107,7 +107,7 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids,
-                    recharge=self._recharge)
+                    recharge_accumulation=self._recharge)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -133,7 +133,7 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids,
-                    recharge=self._recharge)
+                    recharge_accumulation=self._recharge)
         return data
 
     def check_time(self):
