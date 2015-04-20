@@ -575,11 +575,11 @@ def process_mine_result(player, position, result, response, stype):
 def settle_1252(data, player):
     request = mine_pb2.MineSettleRequest()
     request.ParseFromString(data)
-    # pos = request.pos
-    # result = request.result
+    pos = request.pos
+    result = request.result
     # todo: check result
     # todo: set settle time to calculate acc_mine
-    # process_mine_result(player, pos, result, None, 0)
+    process_mine_result(player, pos, result, None, 0)
     response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
