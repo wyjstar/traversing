@@ -131,6 +131,7 @@ const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
 const.RECHARGE = 33  # rechage
 const.ARENA_WIN = 32  # 竞技场获胜
+const.WORLD_BOSS_AWARD = 1701  # 世界boss奖励
 #const.COMMON_BUY = 18  # 通用商城购买
 
 #1：商城良将寻访
@@ -154,9 +155,10 @@ const.COMMON_BUY_PVP = 1809  # 通用商城PVP商店
 const.COMMON_BUY_MELT = 1811  # 通用商城熔炼商店
 const.COMMON_BUY_EQUIPMENT = 1812  # 通用商城装备商店
 
-const.SIGN_GIFT = 19  # 签到奖励
-const.CONTINUS_SIGN = 20  # 连续签到
-const.REPAIR_SIGN = 21  # 补充签到
+const.SIGN_GIFT = 1401  # 签到奖励
+const.CONTINUS_SIGN = 1402  # 连续签到
+const.REPAIR_SIGN = 1403  # 补充签到
+const.BOX_SIGN = 1404  # 宝箱签到
 const.STAGE_SWEEP = 22  # 关卡扫荡
 const.CHAPTER_AWARD = 23  # 章节奖励
 const.TRAVEL = 24  # 游历
@@ -175,5 +177,10 @@ const.HERO_CHIP_SACRIFICE_OPER = 31  # 武将碎片献祭
 const.GAIN = 1  # 掉落
 
 # ==================================================
+# pvb奖励类型
+const.PVB_TOP_TEN_AWARD = 1 #排名奖
+const.PVB_ADD_UP_AWARD = 2 #累积奖
+const.PVB_LAST_AWARD = 3 #斩杀奖
+const.PVB_IN_AWARD = 4 #参与奖
 
 const.DEBUG = False

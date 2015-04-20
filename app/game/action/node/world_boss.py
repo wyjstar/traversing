@@ -5,8 +5,9 @@ from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
 from app.proto_file import world_boss_pb2
 from gfirefly.server.logobj import logger
 from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, \
-    PvbPlayerInfoRequest, PvbRequest
+    PvbPlayerInfoRequest, PvbRequest, PvbAwardResponse
 from app.proto_file.common_pb2 import CommonResponse
+from app.proto_file.db_pb2 import WorldBossAwardDB
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
@@ -15,6 +16,9 @@ from app.game.component.achievement.user_achievement import CountEvent,\
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
 from shared.db_opear.configs_data import game_configs
+from app.game.core.drop_bag import BigBag
+from app.game.core.item_group_helper import gain, get_return
+from shared.utils.const import const
 
 # from app.proto_file import world_boss_pb2
 
@@ -256,6 +260,7 @@ def pvb_fight_start_1705(pro_data, player):
     # mock fight.
     player_info = {}
     player_info["player_id"] = player.base_info.id
+    player_info["now_head"] = player.base_info.heads.now_head
     player_info["nickname"] = player.base_info.base_name
     player_info["level"] = player.base_info.level
     player_info["line_up_info"] = line_up_info(player).SerializePartialToString()
@@ -265,12 +270,13 @@ def pvb_fight_start_1705(pro_data, player):
     logger.debug("--" * 40)
     print red_units
     print blue_units
-    result = remote_gate['world'].pvb_fight_remote(str_red_units,
+    result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
                                                    best_skill_id, str_blue_units, player_info, boss_id)
     response.fight_result = result
 
     # 玩家信息更新
     boss.fight_times += 1
+    boss.set_award(const.PVB_IN_AWARD, demage_hp)
     boss.last_fight_time = get_current_timestamp()
     player.world_boss.save_data()
 
@@ -291,6 +297,46 @@ def pvb_fight_start_1705(pro_data, player):
     return response.SerializePartialToString()
 
 
+@remoteserviceHandle('gate')
+def receive_pvb_award_remote(pvb_award_data, is_online, player):
+    logger.debug("receive_pvb_award_remote=================")
+    pvb_award = WorldBossAwardDB()
+    pvb_award.ParseFromString(pvb_award_data)
+    award_type = pvb_award.award_type
+    award = cPickle.loads(pvb_award.award)
+    player.world_boss.set_award(award_type, award)
+    return True
 
+def pvb_get_award_1708(data, player):
+    response = world_boss_pb2.PvbStartResponse()
+    award_type, award, is_over = player.world_boss.get_award()
+    response.is_over = is_over
+    if not award:
+        response.SerializePartialToString()
+    if award_type == const.PVB_IN_AWARD:
+        for demage_hp in award:
+            all_vars = dict(damage=demage_hp)
+            coin_world_boss_formula = game_configs.formula_config.get("coinWorldboss").get("formula")
+            assert coin_world_boss_formula!=None, "isHit formula can not be None!"
+            coin = eval(coin_world_boss_formula, all_vars)
+            soul_world_boss_formula = game_configs.formula_config.get("soulWorldboss").get("formula")
+            assert soul_world_boss_formula!=None, "isHit formula can not be None!"
+            soul = eval(soul_world_boss_formula, all_vars)
 
+            change = response.gain.finance.finance_changes.add()
+            change.item_type = 107
+            change.item_num = coin
+            change.item_no = const.COIN
+            change = response.gain.finance.finance_changes.add()
+            change.item_type = 107
+            change.item_num = soul
+            change.item_no = const.HERO_SOUL
+
+    else:
+        bigbag = BigBag(award)
+        drop_items = bigbag.get_drop_items(award)
+        return_data = gain(player, drop_items, const.WORLD_BOSS_AWARD)
+        get_return(player, return_data, response.gain)
+        response.award_type = award_type
+    return response.SerializePartialToString()
 
