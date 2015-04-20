@@ -31,7 +31,9 @@ def is_afford(player, item_group, multiple=1):
         elif type_id == const.PVP and player.finance.pvp_score < num:
             return {'result': False, 'result_no': 110}
         elif type_id == const.RESOURCE:
-            if player.finance[item_no] < num:
+            if item_no == const.GOLD and player.finance[const.GOLD] - player.finance[const.CONSUME_GOLD] < num:
+                return {'result': False, 'result_no': item_no}
+            elif player.finance[item_no] < num:
                 return {'result': False, 'result_no': item_no}
         elif type_id == const.HERO_CHIP:
             hero_chip = player.hero_chip_component.get_chip(item_no)
