@@ -314,8 +314,10 @@ def pvp_player_rank_refresh_request(data, player):
             choose_fields = eval(v.get('choose'), para)
             logger.info('cur:%s choose:%s', cur_rank, choose_fields)
             for x, y, c in choose_fields:
+                range_nums = range(int(x), int(y)+1)
                 for _ in range(c):
-                    r = random.randint(int(x), int(y))
+                    r = random.choice(range_nums)
+                    range_nums.remove(r)
                     ranks.append(r)
             break
 
