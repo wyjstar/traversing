@@ -181,9 +181,15 @@ def get_prize(player, mail_ids, response):
         if mail.config_id:
             mail_conf = game_configs.mail_config.get(mail.config_id)
             prize = data_helper.parse(mail_conf.rewards)
+            return_data = gain(player, prize, const.MAIL)
+            get_return(player, return_data, response.gain)
         else:
-            prize = data_helper.parse(eval(mail.prize))
-
-        # print prize
-        return_data = gain(player, prize, const.MAIL)
-        get_return(player, return_data, response.gain)
+            if isinstance(eval(mail.prize), dict):
+                prize = data_helper.parse(eval(mail.prize))
+                return_data = gain(player, prize, const.MAIL)
+                get_return(player, return_data, response.gain)
+            elif isinstance(eval(mail.prize), list):
+                for prize_data in eval(mail.prize):
+                    prize = data_helper.parse(prize_data)
+                    return_data = gain(player, prize, const.MAIL)
+                    get_return(player, return_data, response.gain)

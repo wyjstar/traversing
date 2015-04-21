@@ -17,7 +17,7 @@ from app.proto_file.common_pb2 import CommonResponse
 def get_line_up_info_701(pro_data, player):
     """取得阵容信息 """
     response = line_up_info(player)
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -184,8 +184,8 @@ def change_equipments_703(pro_data, player):
         response = line_up_info(player)
     else:
         response.res.result_no = res.get("result_no")
-    logger.debug("change_equipments_703")
-    logger.debug(response)
+    # logger.debug("change_equipments_703")
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -205,8 +205,8 @@ def change_multi_equipments_704(pro_data, player):
 
     response = line_up_info(player)
     response.res.result = True
-    logger.debug("change_multi_equipments_704")
-    logger.debug(response)
+    # logger.debug("change_multi_equipments_704")
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -238,13 +238,13 @@ def change_hero(slot_no, hero_no, change_type, player):
     @param kwargs:
     @return:
     """
-    logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d",
-                 slot_no, hero_no, change_type)
+    # logger.debug("change hero: slot_no:%d, hero_no:%d, change_type:%d",
+                 # slot_no, hero_no, change_type)
 
     res = change_hero_logic(slot_no, hero_no, change_type, player)
     response = line_up_pb2.LineUpResponse()
     if not res.get("result"):
-        logger.debug("hero already in the line up+++++++")
+        # logger.debug("hero already in the line up+++++++")
         response.res.result = res.get("result")
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
@@ -252,9 +252,10 @@ def change_hero(slot_no, hero_no, change_type, player):
     response = line_up_info(player)
 
     for slot in response.slot:
-        logger.debug("slot no %d, %d", slot.slot_no, slot.hero.hero_no)
+        # logger.debug("slot no %d, %d", slot.slot_no, slot.hero.hero_no)
         for equip in slot.equs:
-            logger.debug("equip no %d", equip.no)
+            # logger.debug("equip no %d", equip.no)
+            pass
 
     return response.SerializePartialToString()
 
@@ -267,7 +268,7 @@ def change_equipment(slot_no, no, equipment_id, player):
     @param equipment_id: 装备ID
     @return:
     """
-    logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
+    # logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
 
     # 检验装备是否存在
     if equipment_id != '0' and not check_have_equipment(player, equipment_id):
