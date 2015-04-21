@@ -6,7 +6,7 @@ from app.game.component.Component import Component
 from app.game.core.pack.item import Item
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data import game_configs
+#from shared.db_opear.configs_data import game_configs
 
 
 class CharacterItemPackageComponent(Component):
@@ -52,9 +52,9 @@ class CharacterItemPackageComponent(Component):
             item_obj = item
             self._items[item.item_no] = item_obj
 
-        item_max = game_configs.base_config.get("max_item_superposition")
-        if item_obj.num > item_max:
-            item_obj.num = item_max
+        #item_max = game_configs.base_config.get("max_item_superposition")
+        #if item_obj.num > item_max:
+            #item_obj.num = item_max
 
     def get_item(self, item_no):
         return self._items.get(item_no)

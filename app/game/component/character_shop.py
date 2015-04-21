@@ -49,10 +49,13 @@ class CharacterShopComponent(Component):
             data['luck_num'] = 0.0
             data['luck_time'] = time.time()
             data['item_ids'] = self.get_shop_item_ids(t, 0)
+            data['limit_items'] = {}
             # print t, data['item_ids']
             self._shop_data[t] = data
         # print data
-        return {'shop': self._shop_data, 'first_coin_draw': True, 'first_gold_draw': True}
+        return {'shop': self._shop_data,
+                'first_coin_draw': True,
+                'first_gold_draw': True}
 
     def check_time(self):
         current_date_time = time.time()
@@ -61,11 +64,17 @@ class CharacterShopComponent(Component):
             refresh_day = localtime(v['last_refresh_time']).tm_yday
             if current_day != refresh_day:
                 v['refresh_times'] = 0
+                v['limit_items'] = {}
+                v['last_refresh_time'] = time.time()
 
             luck_day = localtime(v['luck_time']).tm_yday
             if current_day != luck_day:
                 v['luck_time'] = time.time()
                 v['luck_num'] = 0.0
+                v['limit_items'] = {}
+
+            if 'limit_items' not in v:
+                v['limit_items'] = {}
 
     def get_shop_data(self, t):
         if t not in self._shop_data:

@@ -535,13 +535,13 @@ def process_mine_result(player, position, result, response, stype):
             harvest_a[k] = v - harvest_b[k]
 
     prize = []
-    for k, v in harvest_b.items():
+    for k, v in harvest_a.items():
         if v > 0:
             prize.append({108: [v, v, k]})
     logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
                  harvest_stone, harvest_a, harvest_b, prize)
 
-    if not add_stones(player, harvest_a, response):
+    if not add_stones(player, harvest_b, response):
         response.res.result = False
         response.res.result_no = 824
         logger.debug('add_stones fail!!!!!!')
