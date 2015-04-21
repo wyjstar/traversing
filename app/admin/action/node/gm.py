@@ -446,4 +446,15 @@ def get_user_eqs(args):
 
 
 def copy_user(args):
+    character_obj = tb_character_info.getObj(int(args.get('uid')))
+    if not character_obj.exists():
+        return {'success': 0, 'message': 1}
+
+    be_copy_character_obj = tb_character_info.getObj(int(args.get('be_copy_uid')))
+    if not be_copy_character_obj.exists():
+        return {'success': 0, 'message': 2}
+    be_copy_character_info = be_copy_character_obj.hgetall()
+
+    character_obj.hmset(be_copy_character_info)
+
     return {'success': 1}

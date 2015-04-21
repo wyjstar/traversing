@@ -22,6 +22,8 @@ import cPickle
 from shared.utils import trie_tree
 import re
 from shared.db_opear.configs_data import game_configs
+from app.proto_file.account_pb2 import AccountKick
+import time
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -30,13 +32,15 @@ remote_gate = GlobalObject().remote['gate']
 @remoteserviceHandle('gate')
 def ban_user(data, player):
     args = cPickle.loads(data)
-    response = BanUser()
-    response.time = int(args['lock_time'])
-    player.base_info.closure = int(args['lock_time'])
-    remote_gate.push_object_remote(1805,
-                                   response.SerializeToString(),
-                                   [player.dynamic_id])
+    ban_user_time = int(args['lock_time'])
+    player.base_info.closure = ban_user_time
     player.base_info.save_data()
+    if ban_user_time > int(time.time()) or ban_user_time == -2:
+        response = AccountKick()
+        response.id = 1
+        response.time = ban_user_time
+        remote_gate.kick_by_id_remote(response.SerializeToString(),
+                                      player.dynamic_id)
     return {'success': 1}
 
 

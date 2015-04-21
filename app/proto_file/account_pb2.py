@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='account.proto',
   package='',
-  serialized_pb='\n\raccount.proto\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"2\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\'\n\x13\x41\x63\x63ountLoginRequest\x12\x10\n\x08passport\x18\x01 \x02(\t\"\x19\n\x0b\x41\x63\x63ountKick\x12\n\n\x02id\x18\x01 \x02(\x05')
+  serialized_pb='\n\raccount.proto\"\x19\n\nAccountKey\x12\x0b\n\x03key\x18\x01 \x02(\t\"2\n\x0f\x41\x63\x63ountResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\'\n\x13\x41\x63\x63ountLoginRequest\x12\x10\n\x08passport\x18\x01 \x02(\t\"\'\n\x0b\x41\x63\x63ountKick\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0c\n\x04time\x18\x02 \x01(\x05')
 
 
 
@@ -123,6 +123,13 @@ _ACCOUNTKICK = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='time', full_name='AccountKick.time', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -133,7 +140,7 @@ _ACCOUNTKICK = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=137,
-  serialized_end=162,
+  serialized_end=176,
 )
 
 DESCRIPTOR.message_types_by_name['AccountKey'] = _ACCOUNTKEY
