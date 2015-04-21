@@ -188,5 +188,9 @@
         "pay_host": "10.142.22.11:8080",
         "goods_host": "10.142.22.11:8080",
         "valid_host": "10.130.2.233:80"
+    },
+    "deploy":{
+        "channel": "taiwan",
+        "remote_deployed": false
     }
 }

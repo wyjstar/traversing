@@ -7,7 +7,6 @@ created by server on 14-8-26
 from app.game.component.Component import Component
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
-from shared.utils.const import const
 
 
 class CharacterPay(Component):
@@ -22,6 +21,7 @@ class CharacterPay(Component):
         self._pf = ""
         self._pfkey = ""
         self._zoneid = 0
+        self.REMOTE_DEPLOYED = GlobalObject().allconfig["deploy"]["remote_deployed"]
 
     def set_pay_arg(self, value):
         self._platform = value.get("platform")
@@ -33,7 +33,7 @@ class CharacterPay(Component):
         self._pf = str(value.get("pf"))
         self._pfkey = str(value.get("pfkey"))
         self._zoneid = str(value.get("zoneid"))
-        if const.REMOTE_DEPLOYED:
+        if self.REMOTE_DEPLOYED:
             self.get_balance() # 登录时从tx拉取gold
 
     def _get_balance_m(self):
@@ -51,7 +51,7 @@ class CharacterPay(Component):
                       self._appid, self._appkey,
                       self._pf,
                       self._pfkey, self._zoneid))
-        if not const.REMOTE_DEPLOYED:
+        if not self.REMOTE_DEPLOYED:
             return
         try:
             data = GlobalObject().pay.get_balance_m(self._platform, self._openid, self._appid,

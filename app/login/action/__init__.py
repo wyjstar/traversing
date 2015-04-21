@@ -4,8 +4,9 @@ created by sphinx on
 """
 import gate
 from shared.utils.const import const
+from gfirefly.server.globalobject import GlobalObject
 
-if const.CHANNEL == "tencent":
+if GlobalObject().allconfig["deploy"]["channel"]== "tencent":
     import login_Tencent
-elif const.CHANNEL == "taiwan":
+elif GlobalObject().allconfig["deploy"]["channel"]== "taiwan":
     import login_MA

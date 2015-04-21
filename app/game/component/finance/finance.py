@@ -138,7 +138,7 @@ class CharacterFinanceComponent(Component):
         return True
 
     def add_gold(self, num):
-        if const.REMOTE_DEPLOYED:
+        if self._owner.pay.REMOTE_DEPLOYED:
             self._owner.pay.present(num)
         else:
             self._finances[const.GOLD] += num
