@@ -43,4 +43,8 @@ message StarAwardRequest{
     required int32 award_type = 2; //0:7star 1:14star 2:21star 3:dragon award
 }
 
+//更新显示剧情章节 command:912
+message UpdataPlotChapterRequest{
+    required int32 chapter_id = 1;//章节编号
+}
 

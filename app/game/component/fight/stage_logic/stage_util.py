@@ -44,7 +44,6 @@ def settle(player, result, response, lively_event, conf):
     player.base_info.addexp(conf.playerExp, const.STAGE)
     player.base_info.save_data()
     for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-        print lineUpSlotComponent,
         hero = lineUpSlotComponent.hero_slot.hero_obj
         if hero:
             hero.upgrade(conf.HeroExp, player.base_info.level)

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='db.proto',
   package='',
-  serialized_pb='\n\x08\x64\x62.proto\"*\n\x08Heads_DB\x12\x0c\n\x04head\x18\x01 \x03(\x05\x12\x10\n\x08now_head\x18\x02 \x01(\x05\"\x8f\x02\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x01(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x13\n\x0bsender_icon\x18\x04 \x01(\x05\x12\x12\n\nreceive_id\x18\x05 \x01(\x05\x12\x14\n\x0creceive_name\x18\x06 \x01(\t\x12\r\n\x05title\x18\x07 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x08 \x01(\t\x12\x11\n\tmail_type\x18\t \x02(\x05\x12\x11\n\tsend_time\x18\n \x01(\x05\x12\x11\n\tis_readed\x18\x0b \x01(\x08\x12\r\n\x05prize\x18\x0c \x01(\t\x12\x11\n\tread_time\x18\r \x01(\t\x12\x11\n\tconfig_id\x18\x0e \x01(\x05\"\xb4\x01\n\nStamina_DB\x12\x17\n\x0copen_receive\x18\x01 \x01(\x05:\x01\x31\x12\x1c\n\x11get_stamina_times\x18\x02 \x01(\x05:\x01\x30\x12\x1c\n\x11\x62uy_stamina_times\x18\x03 \x01(\x05:\x01\x30\x12!\n\x16last_gain_stamina_time\x18\x04 \x01(\x05:\x01\x30\x12\x18\n\rlast_mail_day\x18\x05 \x01(\x05:\x01\x30\x12\x14\n\x0c\x63ontributors\x18\x06 \x03(\x05')
+  serialized_pb='\n\x08\x64\x62.proto\"*\n\x08Heads_DB\x12\x0c\n\x04head\x18\x01 \x03(\x05\x12\x10\n\x08now_head\x18\x02 \x01(\x05\"\xa2\x02\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x01(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x13\n\x0bsender_icon\x18\x04 \x01(\x05\x12\x12\n\nreceive_id\x18\x05 \x01(\x05\x12\x14\n\x0creceive_name\x18\x06 \x01(\t\x12\r\n\x05title\x18\x07 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x08 \x01(\t\x12\x11\n\tmail_type\x18\t \x02(\x05\x12\x11\n\tsend_time\x18\n \x01(\x05\x12\x11\n\tis_readed\x18\x0b \x01(\x08\x12\r\n\x05prize\x18\x0c \x01(\t\x12\x11\n\tread_time\x18\r \x01(\t\x12\x11\n\tconfig_id\x18\x0e \x01(\x05\x12\x11\n\ttype_type\x18\x0f \x01(\x05\"\xb4\x01\n\nStamina_DB\x12\x17\n\x0copen_receive\x18\x01 \x01(\x05:\x01\x31\x12\x1c\n\x11get_stamina_times\x18\x02 \x01(\x05:\x01\x30\x12\x1c\n\x11\x62uy_stamina_times\x18\x03 \x01(\x05:\x01\x30\x12!\n\x16last_gain_stamina_time\x18\x04 \x01(\x05:\x01\x30\x12\x18\n\rlast_mail_day\x18\x05 \x01(\x05:\x01\x30\x12\x14\n\x0c\x63ontributors\x18\x06 \x03(\x05')
 
 
 
@@ -158,6 +158,13 @@ _MAIL_PB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='type_type', full_name='Mail_PB.type_type', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -168,7 +175,7 @@ _MAIL_PB = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=57,
-  serialized_end=328,
+  serialized_end=347,
 )
 
 
@@ -230,8 +237,8 @@ _STAMINA_DB = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=331,
-  serialized_end=511,
+  serialized_start=350,
+  serialized_end=530,
 )
 
 DESCRIPTOR.message_types_by_name['Heads_DB'] = _HEADS_DB

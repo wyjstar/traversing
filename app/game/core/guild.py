@@ -22,6 +22,7 @@ class Guild(object):
         self._p_list = {}  # 成员信息
         self._apply = []  # 加入申请
         self._record = 0  # 战绩
+        self._invite_join = {}  # {id:time, id:time}
 
     def create_guild(self, p_id, name):
         self._name = name
@@ -37,6 +38,7 @@ class Guild(object):
                 'fund': self._fund,
                 'call': self._call,
                 'record': self._record,
+                'invite_join': self._invite_join,
                 'p_list': self._p_list,
                 'apply': self._apply}
         guild_obj = tb_guild_info.getObj(self._g_id)
@@ -50,6 +52,7 @@ class Guild(object):
                 'exp': self._exp,
                 'fund': self._fund,
                 'call': self._call,
+                'invite_join': self._invite_join,
                 'record': self._record,
                 'p_list': self._p_list,
                 'apply': self._apply}
@@ -64,6 +67,7 @@ class Guild(object):
         self._exp = data.get("exp")
         self._fund = data.get("fund")
         self._call = data.get("call")
+        self._invite_join = data.get("invite_join", {})
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
         self._record = data.get("record")
@@ -166,6 +170,14 @@ class Guild(object):
     @call.setter
     def call(self, call):
         self._call = call
+
+    @property
+    def invite_join(self):
+        return self._invite_join
+
+    @invite_join.setter
+    def invite_join(self, values):
+        self._invite_join = values
 
     @property
     def record(self):

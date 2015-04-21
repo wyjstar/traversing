@@ -82,15 +82,17 @@ class MineOpt(object):
 
     @classmethod
     def rand_level(cls, label, front, back):
+        result = []
         for level in range(front, back):
             mem = '%s.%s' % (label, level)
             # print 'rand_level', mem
             try:
                 ret = tb_rank.smem(mem)
                 # print 'rand_level', ret
-                return ret
+                result.extend(ret)
             except Exception, e:
                 print 'rank_level', e
+        return result
 
     @classmethod
     def get_user(cls, label, k):
