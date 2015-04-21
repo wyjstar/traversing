@@ -55,8 +55,6 @@ def player_login(player_data, handler):
 
 
 def player_logout(player_data):
-    import traceback
-    traceback.print_stack()
     online_time = int(time.time())-player_data.base_info.login_time
     log4tx.player_logout(GameSvrId=game_server_id,
                          dtEventTime=xtime.strdatetime(),
