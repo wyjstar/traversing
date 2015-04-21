@@ -4,6 +4,7 @@ from shared.tlog import log4tx
 from shared.utils import xtime
 # from utils.log import log_except
 from gfirefly.server.logobj import logger
+import time
 
 game_server_id = 1
 game_app_id = 1
@@ -54,11 +55,15 @@ def player_login(player_data, handler):
 
 
 def player_logout(player_data):
+    import traceback
+    traceback.print_stack()
+    online_time = int(time.time())-player_data.base_info.login_time
     log4tx.player_logout(GameSvrId=game_server_id,
                          dtEventTime=xtime.strdatetime(),
                          GameAppID=game_app_id,
                          PlatID=plat_id, Level=player_data.base_info.level,
-                         OpenID=player_data.base_info.id)
+                         OpenID=player_data.base_info.id,
+                         OnlineTime=online_time)
 
 
 def item_flow(player_data, addorreduce, itemtype, itemnum, itemid, itid,
@@ -316,8 +321,8 @@ def log(mod, *args, **kwds):
     """
     打印TLOG
     """
-    try:
-        tlog_funcs[mod](*args, **kwds)
-    except:
-        pass
-        # log_except(mod)
+    # try:
+    tlog_funcs[mod](*args, **kwds)
+    # except:
+    #     pass
+    #     log_except(mod)
