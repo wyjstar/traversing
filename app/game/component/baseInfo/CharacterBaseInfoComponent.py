@@ -49,6 +49,7 @@ class CharacterBaseInfoComponent(Component):
         self._apple_transaction_id = ''
         self._first_recharge_ids = []
         self._recharge = 0  # 累积充值
+        self._gen_balance = 0  # 累积赠送
         self._login_time = int(time.time())  # 登录时间
 
     def init_data(self, character_info):
@@ -461,3 +462,10 @@ class CharacterBaseInfoComponent(Component):
     @recharge.setter
     def recharge(self, value):
         self._recharge = value
+    @property
+    def gen_balance(self):
+        return self._gen_balance
+
+    @gen_balance.setter
+    def gen_balance(self, value):
+        self._gen_balance = value

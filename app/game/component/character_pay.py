@@ -77,6 +77,7 @@ class CharacterPay(Component):
             return
         balance = data['balance']
         gen_balance = data['gen_balance']
+        self._owner.base_info.gen_balance = gen_balance
         isfirst = data['first_save']
         if isfirst == 1:
             tlog_action.log('Recharge', self.owner, isfirst, 1)
