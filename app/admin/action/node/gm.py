@@ -87,12 +87,16 @@ def get_user_info(args):
     if not isexist:
         return {'success': 0, 'message': 2}
 
+    finances = character_obj.hget('finances')
     character_info = character_obj.hmget(['nickname', 'attackpoint',
                                           'heads', 'upgrade_time',
                                           'level', 'id', 'exp',
                                           'vip_level', 'register_time',
                                           'upgrade_time', 'guild_id',
-                                          'position'])
+                                          'position', 'finances',
+                                          'recharge_accumulation',
+                                          'gen_balance'])
+    finances = character_info['finances']
     if character_info['guild_id'] == 'no':
         position = 0
         guild_name = ''
@@ -118,6 +122,10 @@ def get_user_info(args):
                         'recently_login_time': character_info['upgrade_time'],
                         'guild_id': guild_id,
                         'guild_name': guild_name,
+                        'gold': finances[2],
+                        'gold_all_cost': finances[9],
+                        'gold_all_recharge': character_info['recharge_accumulation'],
+                        'gold_all_send': character_info['gen_balance'],
                         'position': position}}
 
 
