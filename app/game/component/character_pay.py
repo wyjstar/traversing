@@ -81,6 +81,8 @@ class CharacterPay(Component):
         if recharge_balance > 0:
             self._owner.base_info.set_vip_level(recharge_balance)
         self._owner.finance.gold = balance
+        self._owner.base_info.recharge = recharge_balance
+        self._owner.base_info.save_data()
         self._owner.finance.save_data()
         return True
 

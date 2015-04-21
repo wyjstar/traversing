@@ -65,4 +65,5 @@ message GameLoginResponse{
 	repeated int32 first_recharge_ids = 25;
 	optional int32 gag = 26;
 	optional int32 closure = 27;
+	optional int32 recharge = 28; // 累积充值
 }
