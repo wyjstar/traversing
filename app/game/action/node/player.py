@@ -260,9 +260,9 @@ def new_guide_step_1802(data, player):
         return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
         get_return(player, return_data, response.gain)
     else:
-        logger.debug("new_guide_step_1802, %s %s %s" % (my_newbee_sequence,
-                                           new_guide_item.get('Sequence')),
-                                           player.base_info.id)
+        logger.debug("new_guide_step_1802, %s %s %s", my_newbee_sequence,
+                     new_guide_item.get('Sequence'),
+                     player.base_info.id)
 
     consume_config = new_guide_item.get('consume')
     result = is_afford(player, consume_config)  # 校验
