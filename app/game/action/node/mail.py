@@ -155,7 +155,7 @@ def read_mail(mail_ids, mail_type, player):
     elif mail_type == 2:
         # 领取奖励
         get_prize(player, mail_ids, response)
-        player.mail_component.delete_mails(mail_ids)
+        # player.mail_component.delete_mails(mail_ids)
 
     elif mail_type == 3 or mail_type == 4:
         # 公告&私信
@@ -179,17 +179,18 @@ def get_prize(player, mail_ids, response):
         mail = player.mail_component.get_mail(mail_id)
 
         if mail.config_id:
-            mail_conf = game_configs.mail_config.get(mail.config_id)
-            prize = data_helper.parse(mail_conf.rewards)
-            return_data = gain(player, prize, const.MAIL)
-            get_return(player, return_data, response.gain)
-        else:
-            if isinstance(eval(mail.prize), dict):
-                prize = data_helper.parse(eval(mail.prize))
+            if mail.config_id != game_configs.base_config.get('warFogRobbedMail'):
+                mail_conf = game_configs.mail_config.get(mail.config_id)
+                prize = data_helper.parse(mail_conf.rewards)
                 return_data = gain(player, prize, const.MAIL)
                 get_return(player, return_data, response.gain)
-            elif isinstance(eval(mail.prize), list):
-                for prize_data in eval(mail.prize):
-                    prize = data_helper.parse(prize_data)
-                    return_data = gain(player, prize, const.MAIL)
-                    get_return(player, return_data, response.gain)
+                return
+        if isinstance(eval(mail.prize), dict):
+            prize = data_helper.parse(eval(mail.prize))
+            return_data = gain(player, prize, const.MAIL)
+            get_return(player, return_data, response.gain)
+        elif isinstance(eval(mail.prize), list):
+            for prize_data in eval(mail.prize):
+                prize = data_helper.parse(prize_data)
+                return_data = gain(player, prize, const.MAIL)
+                get_return(player, return_data, response.gain)
