@@ -97,6 +97,7 @@ class BaseBoss(object):
         self._debuff_skill_no = random_pick_with_percent(debuff_skill)
 
         self._hp = self.get_hp()  # 重置血量
+        self._hp = 10  # 重置血量
 
         # todo: 重置玩家信息
         # todo:对前十名发放奖励

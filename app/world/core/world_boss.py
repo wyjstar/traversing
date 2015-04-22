@@ -185,7 +185,7 @@ class WorldBoss(BaseBoss):
         """
         award_data = WorldBossAwardDB()
         award_data.award_type = award_type
-        award_data.award = cPickle.dumps(award)
+        award_data.award = award
         remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
         remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
                                                     int(player_id), award_data)

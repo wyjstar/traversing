@@ -299,20 +299,23 @@ def pvb_fight_start_1705(pro_data, player):
 
 @remoteserviceHandle('gate')
 def receive_pvb_award_remote(pvb_award_data, is_online, player):
-    logger.debug("receive_pvb_award_remote=================")
     pvb_award = WorldBossAwardDB()
     pvb_award.ParseFromString(pvb_award_data)
-    award_type = pvb_award.award_type
-    award = cPickle.loads(pvb_award.award)
-    player.world_boss.set_award(award_type, award)
+    player.world_boss.set_award(pvb_award.award_type, pvb_award.award)
+    logger.debug("receive_pvb_award_remote=================%s" % pvb_award)
     return True
 
+
+@remoteserviceHandle('gate')
 def pvb_get_award_1708(data, player):
-    response = world_boss_pb2.PvbStartResponse()
-    award_type, award, is_over = player.world_boss.get_award()
+    response = PvbAwardResponse()
+    boss = player.world_boss.get_boss("world_boss")
+    award_type, award, is_over = boss.get_award()
+    logger.debug("award_type %s, award %s, is_over %s" % (award_type, award, is_over))
     response.is_over = is_over
     if not award:
         response.SerializePartialToString()
+    response.award_type = award_type # award_type
     if award_type == const.PVB_IN_AWARD:
         for demage_hp in award:
             all_vars = dict(damage=demage_hp)
@@ -331,12 +334,11 @@ def pvb_get_award_1708(data, player):
             change.item_type = 107
             change.item_num = soul
             change.item_no = const.HERO_SOUL
-
-    else:
+    elif award_type != 0:
         bigbag = BigBag(award)
-        drop_items = bigbag.get_drop_items(award)
+        drop_items = bigbag.get_drop_items()
         return_data = gain(player, drop_items, const.WORLD_BOSS_AWARD)
         get_return(player, return_data, response.gain)
-        response.award_type = award_type
+    logger.debug("pvb_get_award_1708:%s" % response)
     return response.SerializePartialToString()
 
