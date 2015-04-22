@@ -975,6 +975,13 @@ def invite_join_1803(data, player):
         response.message = "超出公会人数上限"
         return response.SerializeToString()
 
+    info = tb_character_info.getObj(user_id).hget('guild_id')
+    if info != 'no':
+        response.result = False
+        response.message = "对方已有军团"
+        # response.result_no = 837
+        return response.SerializeToString()
+
     invitee_player = PlayersManager().get_player_by_id(user_id)
     open_stage_id = game_configs.base_config.get('guildOpenStage')
     if invitee_player:  # 在线
