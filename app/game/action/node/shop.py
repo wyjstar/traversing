@@ -194,6 +194,8 @@ def shop_buy_505(pro_data, player):
             if shop_id_buyed_num + item_count > limit_num:
                 common_response.result = False
                 common_response.result_no = 502
+                response.limit_item_current_num = shop_id_buyed_num
+                response.limit_item_max_num = limit_num
                 return response.SerializeToString()
             shop['limit_items'][shop_id] = shop_id_buyed_num + item_count
 
@@ -274,6 +276,9 @@ def refresh_shop_items_507(pro_data, player):
         response.id.append(x)
     for x in shopdata['buyed_item_ids']:
         response.buyed_id.append(x)
+    for k, v in shopdata['limit_items']:
+        response.limit_item_id.append(k)
+        response.limit_item_num.append(v)
 
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
@@ -297,6 +302,9 @@ def get_shop_items_508(pro_data, player):
         response.id.append(x)
     for x in shopdata['buyed_item_ids']:
         response.buyed_id.append(x)
+    for k, v in shopdata['limit_items'].items():
+        response.limit_item_id.append(k)
+        response.limit_item_num.append(v)
 
     logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])

@@ -24,6 +24,8 @@ message ShopResponse
     required CommonResponse res = 1;
     optional GameResourcesResponse consume = 2;
     optional GameResourcesResponse gain = 3;
+    optional int32 limit_item_current_num = 4;
+    optional int32 limit_item_max_num = 5;
 }
 
 //获取武魂商城列表 command:507
@@ -34,4 +36,6 @@ message GetShopItemsResponse
     repeated int32 buyed_id = 3;
     optional int32 luck_num = 4;
     optional int32 refresh_times = 5;
+    repeated int32 limit_item_id = 6;
+    repeated int32 limit_item_num = 7;
 }

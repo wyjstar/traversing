@@ -4,6 +4,7 @@ created by server on 14-7-17下午8:43.
 """
 import cPickle
 from shared.db_opear.configs_data import game_configs
+from gfirefly.server.logobj import logger
 
 
 class Stage(object):
@@ -73,6 +74,10 @@ class Stage(object):
         if result:  # win
             self._attacks += 1  # 攻击次数+1
             self._state = 1  # 状态赢
+            open_stage_id = game_configs.base_config.get('warFogOpenStage')
+            if self.stage_id == open_stage_id:
+                logger.debug('reset warfog')
+                self.owner.mine.reset_data()
         else:
             self._state = 0
 
