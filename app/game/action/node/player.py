@@ -253,10 +253,13 @@ def new_guide_step_1802(data, player):
     logger.info('newbee:%s step:%s',
                 player.base_info.id,
                 player.base_info.newbee_guide_id)
-
-    gain_data = new_guide_item.get('rewards')
-    return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
-    get_return(player, return_data, response.gain)
+    my_newbee_sequence = 0
+    if player.base_info.newbee_guide_id:
+        my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide_id).get('Sequence')
+    if my_newbee_sequence < new_guide_item.get('Sequence'):
+        gain_data = new_guide_item.get('rewards')
+        return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
+        get_return(player, return_data, response.gain)
 
     #consume_config = new_guide_item.get('consume')
     #result = is_afford(player, consume_config)  # 校验
