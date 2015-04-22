@@ -261,13 +261,13 @@ def new_guide_step_1802(data, player):
         return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
         get_return(player, return_data, response.gain)
 
-    #consume_config = new_guide_item.get('consume')
-    #result = is_afford(player, consume_config)  # 校验
-    #if not result.get('result'):
-        #logger.error('newbee guide comsume:%s', consume_config)
-    #else:
-        #consume_data = consume(player, consume_config)
-        #get_return(player, consume_data, response.consume)
+    consume_config = new_guide_item.get('consume')
+    result = is_afford(player, consume_config)  # 校验
+    if not result.get('result'):
+        logger.error('newbee guide comsume:%s', consume_config)
+    else:
+        consume_data = consume(player, consume_config)
+        get_return(player, consume_data, response.consume)
 
     # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
     # logger.debug(player.finance.coin)
