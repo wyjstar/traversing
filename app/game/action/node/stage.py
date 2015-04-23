@@ -113,7 +113,7 @@ def stage_start_903(pro_data, player):
     if stage_type == 5:
         open_stage_id = game_configs.base_config.get('warFogOpenStage')
     if open_stage_id:
-        if player.stage_component.get_stage(open_stage_id).state == -2:
+        if player.stage_component.get_stage(open_stage_id).state != 1:
             response.res.result = False
             response.res.result_no = 837
             return response.SerializeToString()

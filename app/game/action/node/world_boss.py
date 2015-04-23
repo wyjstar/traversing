@@ -217,7 +217,7 @@ def pvb_fight_start_1705(pro_data, player):
     res = response.res
 
     open_stage_id = game_configs.base_config.get('worldbossOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()

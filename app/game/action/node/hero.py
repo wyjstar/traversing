@@ -76,7 +76,7 @@ def hero_break_104(data, player):
     hero_no = args.hero_no
     response = hero_response_pb2.HeroBreakResponse()
     open_stage_id = game_configs.base_config.get('heroBreakOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()
@@ -129,7 +129,7 @@ def hero_sacrifice_105(data, player):
     response = hero_response_pb2.HeroSacrificeResponse()
 
     open_stage_id = game_configs.base_config.get('heroSacrificeOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()
@@ -221,7 +221,7 @@ def hero_refine_118(data, player):
     refine = request.refine
 
     open_stage_id = game_configs.base_config.get('sealOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()

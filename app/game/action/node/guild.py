@@ -125,7 +125,7 @@ def join_guild_802(data, player):
         return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('guildOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state == -2:
+    if player.stage_component.get_stage(open_stage_id).state != 1:
         response.result = False
         response.message = "未完成指定关卡"
         # response.result_no = 837
@@ -325,7 +325,7 @@ def modify_user_guild_info_remote(data, player):
                                        [player.dynamic_id])
     elif data['cmd'] == 'canjoinguild':
         open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state == -2:
+        if player.stage_component.get_stage(open_stage_id).state != 1:
             return 0
         else:
             return 1
@@ -985,7 +985,7 @@ def invite_join_1803(data, player):
     invitee_player = PlayersManager().get_player_by_id(user_id)
     open_stage_id = game_configs.base_config.get('guildOpenStage')
     if invitee_player:  # 在线
-        if player.stage_component.get_stage(open_stage_id).state == -2:
+        if player.stage_component.get_stage(open_stage_id).state != 1:
             response.result = False
             response.message = "对方未开启军团功能"
             # response.result_no = 837
@@ -1006,7 +1006,7 @@ def invite_join_1803(data, player):
                 if stage_id_a == open_stage_id:
                     flog = 0
                     stage_obj = Stage.loads(stage)
-                    if stage_obj.state == -2:
+                    if stage_obj.state != 1:
                         flog = 1
             if flog:
                 response.result = False
@@ -1096,7 +1096,7 @@ def deal_invite_join_1804(data, player):
             response.message = "超出公会人数上限"
 
         open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state == -2:
+        if player.stage_component.get_stage(open_stage_id).state != 1:
             response.result = False
             response.message = "未完成指定关卡"
             # response.result_no = 837
