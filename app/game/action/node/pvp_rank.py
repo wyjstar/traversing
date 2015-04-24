@@ -172,7 +172,9 @@ def pvp_fight_request_1505(data, player):
 
     if before_player_rank == request.challenge_rank:
         logger.error('cant not fight self')
-        return False
+        response.res.result = False
+        response.res.result_no = 1505
+        return response.SerializeToString()
 
     _arena_win_points = game_configs.base_config.get('arena_win_points')
     if _arena_win_points:

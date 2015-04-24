@@ -103,24 +103,37 @@ def shop_oper(pro_data, player, reason):
     if not _is_consume_result:
         need_gold = 0
     def func():
-        consume_data = []
+        #consume_data = []
         if _is_consume_result:
             return_data = consume(player, shop_item.consume,
                                 player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
-            consume_data = return_data
+            #consume_data = return_data
+        logger.debug("hero-draw2")
+        return_data = []
+        extra_return_data = []
+        if shop_item.type==5:
+            # todo: 如何判断shop类型：单抽、十连抽
+            logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
+            gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
+            return_data = gain(player, gain_items, reason)
+            extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
-        return_data = gain(player, shop_item.gain, reason)  # 获取
-        extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+            get_return(player, return_data, response.gain)
+            get_return(player, extra_return_data, response.gain)
+        else:
+            return_data = gain(player, shop_item.gain, reason)  # 获取
+            extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
-        get_return(player, return_data, response.gain)
-        get_return(player, extra_return_data, response.gain)
+            get_return(player, return_data, response.gain)
+            get_return(player, extra_return_data, response.gain)
 
         send_tlog(player, shop_item)
 
     player.pay.pay(need_gold, func)
 
     response.res.result = True
+    logger.debug("response gain %s" % response.gain)
     return response.SerializeToString()
 
 
