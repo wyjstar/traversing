@@ -5,7 +5,7 @@ from gfirefly.server.globalobject import remoteserviceHandle, GlobalObject
 from app.proto_file import world_boss_pb2
 from gfirefly.server.logobj import logger
 from app.proto_file.world_boss_pb2 import PvbFightResponse, PvbBeforeInfoResponse, EncourageHerosRequest, \
-    PvbPlayerInfoRequest, PvbRequest
+    PvbPlayerInfoRequest, PvbRequest, PvbAwardResponse
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.action.node.line_up import line_up_info
 import cPickle
@@ -15,6 +15,8 @@ from app.game.component.achievement.user_achievement import CountEvent,\
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
 from shared.db_opear.configs_data import game_configs
+from app.game.core.item_group_helper import gain, get_return
+from shared.utils.const import const
 
 # from app.proto_file import world_boss_pb2
 
@@ -291,6 +293,21 @@ def pvb_fight_start_1705(pro_data, player):
     return response.SerializePartialToString()
 
 
+@remoteserviceHandle('gate')
+def receive_pvb_award_remote(pvb_award, is_online, player):
+    logger.debug("receive_pvb_award_remote=================")
+    award_type = pvb_award.award_type
+    award = pvb_award.award
+    player.world_boss.set_award(award_type, award)
+    return True
 
-
+def pvb_get_award_1708(data, player):
+    response = world_boss_pb2.PvbStartResponse()
+    award_type, award, is_over = player.world_boss.get_award()
+    response.is_over = is_over
+    if award:
+        return_data = gain(player, award, const.WORLD_BOSS_AWARD)
+        get_return(player, return_data, response.gain)
+        response.award_type = award_type
+    return response.SerializePartialToString()
 

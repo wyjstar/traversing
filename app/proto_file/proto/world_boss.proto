@@ -98,3 +98,12 @@ message MineBossResponse
     required string boss_id = 2; //boss id
     required int32 stage_id = 3; //关卡id
 }
+
+//Pvb奖品:参与奖、累积伤害奖、排行奖、最后击杀奖励 command:1708
+message PvbAwardResponse
+{
+    required bool is_over = 1; //领奖是否结束
+    optional int32 award_type = 2; //奖励类型:排行奖1, 累积奖励2, 最后击杀3, 参与奖4
+    optional GameResourcesResponse gain = 3;
+}
+

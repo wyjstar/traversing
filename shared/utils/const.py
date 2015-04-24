@@ -131,6 +131,7 @@ const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
 const.RECHARGE = 33  # rechage
 const.ARENA_WIN = 32  # 竞技场获胜
+const.WORLD_BOSS_AWARD = 1701  # 世界boss奖励
 #const.COMMON_BUY = 18  # 通用商城购买
 
 #1：商城良将寻访
@@ -175,5 +176,10 @@ const.HERO_CHIP_SACRIFICE_OPER = 31  # 武将碎片献祭
 const.GAIN = 1  # 掉落
 
 # ==================================================
+# pvb奖励类型
+const.PVB_FIRST_TEN_AWARD = 1 #排名奖
+const.PVB_ADD_UP_AWARD = 2 #累积奖
+const.PVB_LAST_AWARD = 3 #斩杀奖
+const.PVB_IN_AWARD = 4 #参与奖
 
 const.DEBUG = False
