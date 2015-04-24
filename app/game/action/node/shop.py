@@ -17,6 +17,8 @@ from app.game.core.item_group_helper import get_return
 from app.game.core.item_group_helper import get_consume_gold_num
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
+from shared.tlog import tlog_action
+import copy
 
 
 @remoteserviceHandle('gate')
@@ -53,7 +55,7 @@ def shop_oper(pro_data, player, reason):
     logger.debug(shop_id)
     logger.debug("---------")
 
-    print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
+    # print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
     if shop_id == 10001 and player.shop.first_coin_draw:
         is_consume(player, shop_item)
 
@@ -101,10 +103,12 @@ def shop_oper(pro_data, player, reason):
     if not _is_consume_result:
         need_gold = 0
     def func():
+        consume_data = []
         if _is_consume_result:
             return_data = consume(player, shop_item.consume,
                                 player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
+            consume_data = return_data
 
         return_data = gain(player, shop_item.gain, reason)  # 获取
         extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
@@ -112,10 +116,41 @@ def shop_oper(pro_data, player, reason):
         get_return(player, return_data, response.gain)
         get_return(player, extra_return_data, response.gain)
 
+        send_tlog(player, shop_item)
+
     player.pay.pay(need_gold, func)
 
     response.res.result = True
     return response.SerializeToString()
+
+
+def send_tlog(player, shop_item):
+        item_type = shop_item.gain[0].item_type
+        item_id = shop_item.gain[0].item_no
+        count = shop_item.gain[0].num
+        money = shop_item.consume[0].num
+        money_type = shop_item.consume[0].item_no
+        discount_money = 0
+        discount_money_type = 0
+        is_discount = 0
+        if shop_item.discountPrice:
+            is_discount = 1
+            discount_money = shop_item.discountPrice[0].num
+            discount_money_type = shop_item.discountPrice[0].item_no
+        limit_vip_everyday = []
+        if shop_item.limitVIPeveryday:
+            for i in range(30):
+                if shop_item.limitVIPeveryday.get(i):
+                    limit_vip_everyday.append(shop_item.limitVIPeveryday.get(i))
+        limit_vip = []
+        if shop_item.limitVIP:
+            for i in range(30):
+                if shop_item.limitVIP.get(i):
+                    limit_vip.append(shop_item.limitVIP.get(i))
+
+        tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
+                        money, money_type, discount_money, discount_money_type,
+                        str(limit_vip_everyday), str(limit_vip), is_discount)
 
 
 def shop_equipment_oper(pro_data, player):
@@ -227,9 +262,10 @@ def shop_buy_505(pro_data, player):
                                         shop=shop,
                                         luck_config=shop_type_item)  # 消耗
             return_data = gain(player, shop_item.gain, get_reason(shop_item.get('type')), multiple=item_count)  # 获取
-
             get_return(player, consume_return_data, response.consume)
             get_return(player, return_data, response.gain)
+            for _ in range(item_count):
+                send_tlog(player, shop_item)
 
         player.pay.pay(need_gold, func)
 

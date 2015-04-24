@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from shared.db_opear.configs_data import game_configs
 from app.game.core.notice import push_notice
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -82,6 +83,9 @@ def enhance_equipment_402(pro_data, player):
         data_format.after_lv = after_lv
         data_format.cost_coin = enhance_cost
         logger.debug("before_lv %s after_lv %s " % (before_lv, after_lv))
+        tlog_action.log('EquipmentEnhance', player,
+                        enhance_info.get('equipment_no'),
+                        equipment_id, before_lv, after_lv)
 
     logger.debug(response.data)
     logger.debug("response.data===================")
@@ -118,6 +122,9 @@ def compose_equipment_403(pro_data, player):
     equipment_obj = data.get('equipment_obj')
     equ = response.equ
     equipment_obj.update_pb(equ)
+    tlog_action.log('EquipmentCompose', player,
+                    equipment_obj.base_info.equipment_no,
+                    equipment_obj.base_info.id)
 
     res.result = True
     return response.SerializePartialToString()
@@ -274,7 +281,8 @@ def enhance_equipment(equipment_id, enhance_type, player):
     equipment_obj.save_data()
     player.finance.save_data()
 
-    return {'result': True, 'enhance_record': enhance_record, 'num': num}
+    return {'result': True, 'enhance_record': enhance_record, 'num': num,
+            'equipment_no': equipment_obj.base_info.equipment_no}
 
 
 def __do_enhance(player, equipment_obj):
@@ -330,6 +338,10 @@ def melting_equipment(equipment_id, response, player):
     gain = item_group_helper.gain(player, melting_items, const.MELTING_EQUIPMENT)
 
     item_group_helper.get_return(player, gain, response.cgr)
+
+    tlog_action.log('EquipmentMelting', player,
+                    equipment_obj.base_info.equipment_no,
+                    equipment_obj.base_info.id)
 
     # 删除装备
     player.equipment_component.delete_equipment(equipment_id)

@@ -240,6 +240,10 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
                 player.finance.save_data()
                 after_num = player.finance[item_no]
 
+            if item_no == 1 or item_no == 2:
+                tlog_action.log('MoneyFlow', player, after_num, num, reason,
+                                const.ADD, item_no)
+
         elif type_id == const.GOLD:
             player.finance.add_gold(num)
             player.finance.save_data()
@@ -350,6 +354,10 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             item_no = player.runt.add_runt(item_no)
             player.runt.save()
             after_num = player.runt.get_runt_num(item_no)
+
+        if type_id == const.COIN or type_id == const.GOLD:
+            tlog_action.log('MoneyFlow', player, after_num, num, reason,
+                            const.ADD, item_no)
 
         is_over = False       # 是否累加
         for i in result:

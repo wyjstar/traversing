@@ -47,7 +47,13 @@ def settle(player, result, response, lively_event, conf):
     for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
         hero = lineUpSlotComponent.hero_slot.hero_obj
         if hero:
+            beforelevel = hero.level
             hero.upgrade(conf.HeroExp, player.base_info.level)
+            afterlevel = hero.level
+            changelevel = afterlevel-beforelevel
+            hero.save_data()
+            if changelevel:
+                tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel)
             hero.save_data()
 
     # 更新等级相关属性

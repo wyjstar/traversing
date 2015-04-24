@@ -101,6 +101,16 @@ def line_up_change(player_data, slot, hero_id, after_hero_id,
                           ChangeType=change_type)
 
 
+def hero_sacrifice(player_data, hero_id):
+
+    log4tx.hero_sacrifice(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+                          HeroId=hero_id)
+
+
 def hero_break(player_data, hero_id, level):
 
     log4tx.hero_break(GameSvrId=game_server_id,
@@ -264,6 +274,18 @@ def hero_refine(player_data, hero_id, refine):
                        HeroId=hero_id)
 
 
+def hero_upgrade(player_data, hero_id, change_level, level):
+
+    log4tx.hero_upgrade(GameSvrId=game_server_id,
+                        dtEventTime=xtime.strdatetime(),
+                        GameAppID=game_app_id,
+                        OpenID=player_data.base_info.id,
+                        PlatID=plat_id,
+                        Level=level,
+                        ChangeLevel=change_level,
+                        HeroId=hero_id)
+
+
 def recharge(player_data, isfirst, recharege_id):
 
     log4tx.recharge(GameSvrId=game_server_id,
@@ -292,13 +314,13 @@ def round_flow(player_data, battle_id, battle_type, is_quick, result):
 def new_guide(player_data, sequence, my_sequence):
 
     log4tx.new_guide(GameSvrId=game_server_id,
-                      dtEventTime=xtime.strdatetime(),
-                      GameAppID=game_app_id,
-                      OpenID=player_data.base_info.id,
-                      PlatID=plat_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
 
-                      Sequence=sequence,
-                      MySequence=my_sequence)
+                     Sequence=sequence,
+                     MySequence=my_sequence)
 
 
 def online_num(num):
@@ -308,6 +330,84 @@ def online_num(num):
                       GameAppID=game_app_id,
 
                       Num=num)
+
+
+def money_flow(player_data, after_money, money, reason, addorreduce,
+               money_type):
+
+    log4tx.money_flow(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      Level=player_data.base_info.level,
+                      AfterMoney=after_money,
+                      Money=money, Reason=reason,
+                      AddOrReduce=addorreduce,
+                      MoneyType=money_type)
+
+
+def item_money_flow(player_data, item_type, item_id, count, money,
+                    money_type, discount_money, discount_money_type,
+                    limit_vip_everyday, limit_vip, is_discount):
+
+    log4tx.item_money_flow(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+
+                           ItemType=item_type,
+                           ItemID=item_id,
+                           Count=count,
+                           Money=money,
+                           Level=player_data.base_info.level,
+                           MoneyType=money_type,
+                           DiscountMoney=discount_money,
+                           DiscountMoneyType=discount_money_type,
+                           LimitVipEveryday=limit_vip_everyday,
+                           LimitVip=limit_vip,
+                           IsDiscount=is_discount)
+
+
+def equipment_enhance(player_data, equipmeng_no, equipmeng_id,
+                      beforelevel, afterlevel):
+
+    log4tx.equipment_enhance(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             EquipmentNo=equipmeng_no,
+                             EquipmentId=equipmeng_id,
+                             BeforeLevel=beforelevel,
+                             AfterLevel=afterlevel)
+
+
+def equipment_compose(player_data, equipmeng_no, equipmeng_id):
+
+    log4tx.equipment_compose(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             EquipmentNo=equipmeng_no,
+                             EquipmentId=equipmeng_id)
+
+
+def equipment_melting(player_data, equipmeng_no, equipmeng_id):
+
+    log4tx.equipment_melting(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             EquipmentNo=equipmeng_no,
+                             EquipmentId=equipmeng_id)
 
 
 # TLOG分类打印函数
@@ -332,10 +432,17 @@ tlog_funcs['GuildWorship'] = guild_worship
 tlog_funcs['TravelSettle'] = travel_settle
 tlog_funcs['AutoTravel'] = auto_travel
 tlog_funcs['HeroRefine'] = hero_refine
+tlog_funcs['HeroUpgrade'] = hero_upgrade
 tlog_funcs['Recharge'] = recharge
 tlog_funcs['RoundFlow'] = round_flow
 tlog_funcs['NewGuide'] = new_guide
 tlog_funcs['OnlineNum'] = online_num
+tlog_funcs['MoneyFlow'] = money_flow
+tlog_funcs['ItemMoneyFlow'] = item_money_flow
+tlog_funcs['HeroSacrifice'] = hero_sacrifice
+tlog_funcs['EquipmentEnhance'] = equipment_enhance
+tlog_funcs['EquipmentCompose'] = equipment_compose
+tlog_funcs['EquipmentMelting'] = equipment_melting
 
 
 def log(mod, *args, **kwds):
