@@ -97,7 +97,7 @@ class CharacterBrewComponent(Component):
             get_return(self.owner, return_data, response.consume)
 
             self._brew_step += 1
-            #critical = critical[brew_type]
+            critical = critical[brew_type]
             rand = random.random()*sum(critical.values())
             for critical_num, rand_range in critical.items():
                 if rand < rand_range:

@@ -175,7 +175,7 @@ class CharacterPay(Component):
             return True
         if not self.REMOTE_DEPLOYED:
             self._owner.finance.add_gold(num)
-            self._owner.save_data()
+            self._owner.finance.save_data()
             return True
         try:
             result = GlobalObject().pay.cancel_pay_m(self._platform, self._openid, self._appid,
