@@ -128,6 +128,7 @@ def modify_user_info(data, player):
             player.stage_component.plot_chapter = game_configs.stage_config.get('stages').get(attr_value)['chapter']
         else:
             player.stage_component.plot_chapter = game_configs.stage_config.get('stages').get(attr_value)['chapter'] + 1
+        player.stage_component.stage_progress = attr_value
         player.stage_component.save_data()
         return {'success': 1}
     elif args['attr_name'] == 'nickname':

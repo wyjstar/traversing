@@ -184,3 +184,6 @@ const.PVB_LAST_AWARD = 3 #斩杀奖
 const.PVB_IN_AWARD = 4 #参与奖
 
 const.DEBUG = False
+
+const.level_rank_xs = 10000000
+const.power_rank_xs = 1000

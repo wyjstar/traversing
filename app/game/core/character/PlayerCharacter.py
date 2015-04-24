@@ -59,6 +59,7 @@ class PlayerCharacter(object):
 
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)
+        logger.debug('is_new_character,pid:', self._pid)
         # print 'exist:', self._pid, not character_info.exists()
         return not character_info.exists()
 
