@@ -7,6 +7,7 @@ from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
 from shared.utils.date_util import str_time_period_to_timestamp
+from shared.utils.const import const
 
 
 class CharacterWorldBoss(Component):
@@ -55,6 +56,7 @@ class Boss(object):
         self._fight_times = 0          # 战斗次数
         self._last_fight_time = 0      # 上次战斗结束时间
         self._stage_id = 0             # 当前关卡
+        self._award = {}               # 奖励
 
     def init_data(self, data):
         """docstring for init_data"""
@@ -65,6 +67,7 @@ class Boss(object):
         self._last_request_time = data.get('last_request_time', 0)
         self._last_fight_time = data.get('last_fight_time', 0)
         self._fight_times = data.get('fight_times', 0)
+        self._award = data.get('award', {})
 
     def get_stage_info(self):
         stage_info = None
@@ -138,6 +141,29 @@ class Boss(object):
     def last_fight_time(self, value):
         self._last_fight_time = value
 
+    def set_award(self, award_type, award):
+        """
+        设置奖励, 参与奖励做特殊处理
+        """
+        if award_type == const.PVB_IN_AWARD:
+            if not self._award.get(award_type):
+                self._award[award_type] = [award]
+            else:
+                self._award[award_type].append(award)
+        else:
+            self._award[award_type] = award
+
+    def get_award(self):
+        """
+        获取奖励
+        """
+        for i in range(1, 5):
+            temp = self._award.get(i)
+            if temp:
+                del self._award[i]
+                return i, temp, False
+        return 0, [], True
+
     def get_data_dict(self):
         """docstring for get_data_dict"""
         return {'encourage_coin_num': self._encourage_coin_num,
@@ -146,7 +172,8 @@ class Boss(object):
                 'last_fight_time': self._last_fight_time,
                 'fight_times': self._fight_times,
                 'stage_id': self._stage_id,
-                'boss_id': self._boss_id}
+                'boss_id': self._boss_id,
+                'award': self._award}
 
     def get_base_config(self):
         if self._boss_id == "world_boss":
