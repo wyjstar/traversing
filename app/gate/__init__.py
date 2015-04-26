@@ -46,14 +46,31 @@ def add_level_rank_info(instance, users):
             rank_value = character_info['attackpoint']
         else:
             rank_value = 0
-        value = character_info['level'] * const.rank_xs + rank_value
+        value = character_info['level'] * const.level_rank_xs + rank_value
+        instance.add(uid, value)  # 添加rank数据
+
+
+def add_power_rank_info(instance, users):
+    for uid in users:
+        character_obj = tb_character_info.getObj(uid)
+        character_info = character_obj.hmget(['level', 'attackpoint'])
+        if character_info['attackpoint']:
+            rank_value = character_info['attackpoint']
+        else:
+            rank_value = 0
+        value = rank_value * const.power_rank_xs + character_info['level']
         instance.add(uid, value)  # 添加rank数据
 
 users = tb_character_info.smem('all')
-print users
 
 instance = Ranking.instance('LevelRank1')
 add_level_rank_info(instance, users)
 
 instance = Ranking.instance('LevelRank2')
 add_level_rank_info(instance, users)
+
+instance = Ranking.instance('PowerRank1')
+add_power_rank_info(instance, users)
+
+instance = Ranking.instance('PowerRank2')
+add_power_rank_info(instance, users)

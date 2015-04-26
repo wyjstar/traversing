@@ -185,4 +185,5 @@ const.PVB_IN_AWARD = 4 #参与奖
 
 const.DEBUG = False
 
-const.rank_xs = 10000000
+const.level_rank_xs = 10000000
+const.power_rank_xs = 1000
