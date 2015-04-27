@@ -346,7 +346,7 @@ def stage_sweep(stage_id, times, player):
         player.stamina.stamina -= stage_config.vigor
         # 经验
         for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-            print lineUpSlotComponent,
+            # print lineUpSlotComponent,
             hero = lineUpSlotComponent.hero_slot.hero_obj
             if hero:
 

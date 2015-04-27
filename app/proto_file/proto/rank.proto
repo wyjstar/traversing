@@ -22,8 +22,9 @@ message RankUserInfo{
     optional string nickname = 3;
     optional int32 level = 4;
     optional int32 fight_power = 5;   //战斗力
-    optional int32 star_num = 6;   //战斗力
+    optional int32 star_num = 6;   //星星数量
     optional int32 stage_id = 7;   //关卡ID
 
     optional int32 last_rank = 8; //返回我的信息的时候返回一下我的上个排行
+    optional int32 user_icon = 9;   //头像
 }

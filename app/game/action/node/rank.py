@@ -10,6 +10,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.proto_file import rank_pb2
 from shared.utils.const import const
+from app.proto_file.db_pb2 import Heads_DB
 import time
 
 
@@ -49,9 +50,9 @@ def get_level_rank(first_no, last_no, player, response):
         rank_name = 'LevelRank1'
         last_rank_name = 'LevelRank2'
 
-    ranks = remote_gate.get_rank_remote(rank_name, first_no, last_no)
     rank_num = first_no
-    for pid, rankinfo in ranks.items():
+    rank_info = remote_gate.get_rank_remote(rank_name, first_no, last_no)
+    for (pid, rankinfo) in rank_info:
         res_user_info = response.user_info.add()
         res_user_info.id = int(pid)
         res_user_info.level = int(rankinfo)/const.level_rank_xs
@@ -59,26 +60,33 @@ def get_level_rank(first_no, last_no, player, response):
         res_user_info.rank = rank_num
 
         character_obj = tb_character_info.getObj(pid)
-        character_info = character_obj.hmget(['nickname'])
+        character_info = character_obj.hmget(['nickname', 'heads'])
         res_user_info.nickname = character_info['nickname']
+
+        heads = Heads_DB()
+        heads.ParseFromString(character_info['heads'])
+        res_user_info.user_icon = heads.now_head
         rank_num += 1
 
     if first_no == 1:
-        rank_no = remote_gate.get_rank_by_key_remote(rank_name, player.base_info.id)
+        rank_no = remote_gate.get_rank_by_key_remote(rank_name,
+                                                     player.base_info.id)
         if rank_no:
-            ranks = remote_gate.get_rank_remote(rank_name, rank_no, rank_no)
+            [(_id, rankinfo)] = remote_gate.get_rank_remote(
+                rank_name, rank_no, rank_no)
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
-            res_my_rank_info.level = int(ranks[str(player.base_info.id)]/const.level_rank_xs)
-            res_my_rank_info.fight_power =\
-                int(ranks[str(player.base_info.id)] % const.level_rank_xs)
+            res_my_rank_info.level = int(rankinfo/const.level_rank_xs)
+            res_my_rank_info.fight_power = int(
+                rankinfo % const.level_rank_xs)
 
-            last_rank_no = remote_gate.get_rank_by_key_remote(last_rank_name, player.base_info.id)
+            last_rank_no = remote_gate.get_rank_by_key_remote(
+                last_rank_name, player.base_info.id)
             if last_rank_no:
                 res_my_rank_info.last_rank = last_rank_no
         # 前100名有多少人
         ranks = remote_gate.get_rank_remote(rank_name, 1, 99999)
-        response.all_num = len(ranks.items())
+        response.all_num = len(ranks)
     response.res.result = True
 
 
@@ -89,9 +97,9 @@ def get_power_rank(first_no, last_no, player, response):
     else:
         rank_name = 'PowerRank1'
         last_rank_name = 'PowerRank2'
-    ranks = remote_gate.get_rank_remote(rank_name, first_no, last_no)
     rank_num = first_no
-    for pid, rankinfo in ranks.items():
+    rank_info = remote_gate.get_rank_remote(rank_name, first_no, last_no)
+    for (pid, rankinfo) in rank_info:
         res_user_info = response.user_info.add()
         res_user_info.id = int(pid)
         res_user_info.fight_power = int(rankinfo)/const.power_rank_xs
@@ -99,26 +107,33 @@ def get_power_rank(first_no, last_no, player, response):
         res_user_info.rank = rank_num
 
         character_obj = tb_character_info.getObj(pid)
-        character_info = character_obj.hmget(['nickname'])
+        character_info = character_obj.hmget(['nickname', 'heads'])
         res_user_info.nickname = character_info['nickname']
+
+        heads = Heads_DB()
+        heads.ParseFromString(character_info['heads'])
+        res_user_info.user_icon = heads.now_head
         rank_num += 1
 
     if first_no == 1:
-        rank_no = remote_gate.get_rank_by_key_remote(rank_name, player.base_info.id)
+        rank_no = remote_gate.get_rank_by_key_remote(rank_name,
+                                                     player.base_info.id)
         if rank_no:
-            ranks = remote_gate.get_rank_remote(rank_name, rank_no, rank_no)
+            [(_id, rankinfo)] = remote_gate.get_rank_remote(rank_name,
+                                                            rank_no, rank_no)
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
-            res_my_rank_info.fight_power = int(ranks[str(player.base_info.id)]/const.power_rank_xs)
+            res_my_rank_info.fight_power = int(rankinfo/const.power_rank_xs)
             res_my_rank_info.level =\
-                int(ranks[str(player.base_info.id)] % const.power_rank_xs)
+                int(rankinfo % const.power_rank_xs)
 
-            last_rank_no = remote_gate.get_rank_by_key_remote(last_rank_name, player.base_info.id)
+            last_rank_no = remote_gate.get_rank_by_key_remote(
+                last_rank_name, player.base_info.id)
             if last_rank_no:
                 res_my_rank_info.last_rank = last_rank_no
         # 前100名有多少人
         ranks = remote_gate.get_rank_remote(rank_name, 1, 99999)
-        response.all_num = len(ranks.items())
+        response.all_num = len(ranks)
     response.res.result = True
 
 
@@ -129,6 +144,47 @@ def get_star_rank(first_no, last_no, player, response):
     else:
         rank_name = 'StarRank1'
         last_rank_name = 'StarRank2'
+
+    rank_num = first_no
+    rank_info = remote_gate.get_rank_remote(rank_name, first_no, last_no)
+    for (pid, rankinfo) in rank_info:
+        res_user_info = response.user_info.add()
+        res_user_info.id = int(pid)
+        res_user_info.star_num = int(rankinfo)/const.power_rank_xs
+        res_user_info.level = int(rankinfo) % const.power_rank_xs
+        res_user_info.rank = rank_num
+
+        character_obj = tb_character_info.getObj(pid)
+        character_info = character_obj.hmget(['nickname', 'heads', 'rank_stage_progress'])
+        res_user_info.nickname = character_info['nickname']
+        res_user_info.stage_id = character_info['rank_stage_progress']
+
+        heads = Heads_DB()
+        heads.ParseFromString(character_info['heads'])
+        res_user_info.user_icon = heads.now_head
+        rank_num += 1
+
+    if first_no == 1:
+        rank_no = remote_gate.get_rank_by_key_remote(rank_name,
+                                                     player.base_info.id)
+        if rank_no:
+            [(_id, rankinfo)] = remote_gate.get_rank_remote(rank_name,
+                                                            rank_no, rank_no)
+            res_my_rank_info = response.my_rank_info
+            res_my_rank_info.rank = rank_no
+            res_my_rank_info.star_num = int(rankinfo/const.power_rank_xs)
+            res_my_rank_info.level =\
+                int(rankinfo % const.power_rank_xs)
+            res_my_rank_info.stage_id = player.stage_component.rank_stage_progress
+
+            last_rank_no = remote_gate.get_rank_by_key_remote(
+                last_rank_name, player.base_info.id)
+            if last_rank_no:
+                res_my_rank_info.last_rank = last_rank_no
+        # 前100名有多少人
+        ranks = remote_gate.get_rank_remote(rank_name, 1, 99999)
+        response.all_num = len(ranks)
+    response.res.result = True
 
 
 def flag_doublu_day():

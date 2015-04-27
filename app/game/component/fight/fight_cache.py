@@ -136,7 +136,6 @@ class CharacterFightCacheComponent(Component):
     def __get_stage_break_config(self):
         """取得关卡乱入信息"""
         stage = self.__get_stage_config()
-        # print stage,
         if stage and "stage_break_id" in stage:
             return game_configs.stage_break_config.get(
                 stage.stage_break_id,
@@ -184,7 +183,6 @@ class CharacterFightCacheComponent(Component):
                 getattr(
                     stage_config, 'round%s' %
                     (i + 1)))
-            print stage_config
             monster_group_id = getattr(stage_config, 'round%s' % (i+1))
             if not monster_group_id:
                 continue
