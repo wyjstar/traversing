@@ -143,7 +143,7 @@ class WorldBoss(BaseBoss):
         """
         排行奖励, top 10
         """
-        award_info = game_configs.base_config.get('hurt_rank_rewards')
+        award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
         for up, down, big_bag_id in award_info.values():
             ranks = self._rank_instance.get(up, down)
             for player_id, v in ranks:
@@ -155,7 +155,7 @@ class WorldBoss(BaseBoss):
         """
         i = 0
         hp_max = self.get_hp()
-        accumulated_rewards = game_configs.base_config.get('accumulated_rewards')
+        accumulated_rewards = game_configs.base_config.get("world_boss").get('accumulated_rewards')
         while True and i < 1000:
             i+=1
             ranks = self._rank_instance.get(100*(i-1)+1, 100*i)
@@ -176,7 +176,7 @@ class WorldBoss(BaseBoss):
         最后击杀
         """
         player_id = self._last_shot_item['player_id']
-        big_bag_id = game_configs.base_config.get('accumulated_rewards')
+        big_bag_id = game_configs.base_config.get("world_boss").get('kill_rewards_worldboss')
         self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
 
     def send_award(self, player_id, award_type, award):
