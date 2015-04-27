@@ -7,8 +7,8 @@ Created on 2015-4-24
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
-from shared.db_opear.configs_data.game_configs import base_config
 from shared.utils import xtime
+from shared.db_opear.configs_data import game_configs
 
 WEEK_REBATE = 0
 MONTH_REBATE = 1
@@ -19,8 +19,8 @@ class OneRebate(object):
     """
     def __init__(self):
         self._start = 0  # 返利卡购买时间
-        self._last = 0  # 返利卡最后一次领取返利时间
-        self._count = 0 #领取次数
+        self._last = 0  # 返利卡最后一次领取时间
+        self._count = 0 #剩余次数
     
     def end_time(self, cont_days):
         return self._start + cont_days*24*60*60
@@ -29,17 +29,26 @@ class OneRebate(object):
         now = xtime.timestamp()
         end = self.end_time(cont_days)
         if now > end:
-            return False
+            return 0
         today = xtime.today_ts()
         if self._last > today: 
-            return False #今日已领取
+            return 0 #今日已领取
         h, m, s = map(int, refresh_time.split(':')) #刷新时间
         today_refresh = today + h*60*60 + m*60+s
         if now < today_refresh: #未刷新
-            return False
+            return 0
+        return 1
+    
+    def last(self, cont_days, refresh_time):
+        return self._count
     
     def draw(self):
         self._last = xtime.timestamp()
+        self._count -= 1
+        
+#     def new_rebate(self):
+#         self._start = xtime.timestamp()
+#         self._count = 0
 
 class Rebate(Component):
     """
@@ -66,9 +75,21 @@ class Rebate(Component):
         rebate = dict(rebate=self._rebate)
         return {'rebate': rebate}
     
-    def rebate_info(self, some):
-        return self._rebate[some]
+    def rebate_info(self, rtype):
+        return self._rebate[rtype]
     
     def set_rebate(self, rtype, some_rebate):
         self._rebate[rtype] = some_rebate
         
+    def rebate_status(self, rtype, cont_days, refresh):
+        one = self._rebate.get(rtype, None)
+        if not one:
+            return 0, 0
+        
+#         switch = one.can_draw(cont_days, refresh)
+        formula = game_configs.formula_config.get("hpCheer").get("formula")
+        all_vars = {}
+        all_vars['start'] = 0
+        switch = eval(formula, all_vars)
+        last = one.last(cont_days, refresh)
+        return switch, last
