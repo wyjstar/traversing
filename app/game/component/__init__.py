@@ -33,6 +33,8 @@ from character_runt import CharacterRuntComponent
 from baseInfo.CharacterBaseInfoComponent import CharacterBaseInfoComponent
 from character_recharge_gift import CharacterRechargeGift
 from character_pay import CharacterPay
+from rebate.rebate import Rebate
+
 
 
 __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
@@ -49,5 +51,5 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterBrewComponent', 'CharacterTravelComponent',
            'UserAchievement', 'UserMine', 'UserStone',
            'CharacterBaseInfoComponent', 'CharacterRechargeGift',
-           'CharacterPay'
+           'CharacterPay', 'Rebate'
            ]

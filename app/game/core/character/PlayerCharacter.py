@@ -45,7 +45,8 @@ class PlayerCharacter(object):
                  stone=component.UserStone(self),
                  travel=component.CharacterTravelComponent(self),
                  runt=component.CharacterRuntComponent(self),
-                 recharge=component.CharacterRechargeGift(self)
+                 recharge=component.CharacterRechargeGift(self),
+                 rebate=component.Rebate(self),
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -224,3 +225,7 @@ class PlayerCharacter(object):
     @property
     def pay(self):
         return self._pay
+
+    @property
+    def rebate(self):
+        return self._components['rebate']
