@@ -10,6 +10,7 @@ from shared.utils.random_pick import random_multi_pick_without_repeat
 from gfirefly.server.logobj import logger
 from time import localtime
 import time
+from app.game.core.drop_bag import BigBag
 
 
 class CharacterShopComponent(Component):
@@ -20,12 +21,15 @@ class CharacterShopComponent(Component):
         self._shop_data = {}
         self._first_coin_draw = True  # 第一次免费抽取为某个特定武将
         self._first_gold_draw = True  # 第一次免费抽取为某个特定武将
+        self._pseudo_times = {} #
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
         self._first_coin_draw = character_info.get('first_coin_draw')
         self._first_gold_draw = character_info.get('first_gold_draw')
+        self._pseudo_times = character_info.get('pseudo_times')
         self.check_time()
+        self.refresh_shop_info()
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
@@ -36,26 +40,36 @@ class CharacterShopComponent(Component):
             shop.hset('shop', self._shop_data)
             shop.hset('first_coin_draw', self._first_coin_draw)
             shop.hset('first_gold_draw', self._first_gold_draw)
+            shop.hset('pseudo_times', self._pseudo_times)
 
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
 
     def new_data(self):
         for t, item in game_configs.shop_type_config.items():
-            data = {}
-            data['buyed_item_ids'] = []
-            data['refresh_times'] = 0
-            data['last_refresh_time'] = time.time()
-            data['luck_num'] = 0.0
-            data['luck_time'] = time.time()
-            data['item_ids'] = self.get_shop_item_ids(t, 0)
-            data['limit_items'] = {}
-            # print t, data['item_ids']
-            self._shop_data[t] = data
-        # print data
+            self._shop_data[t] = self.get_new_shop_info(t)
         return {'shop': self._shop_data,
                 'first_coin_draw': True,
-                'first_gold_draw': True}
+                'first_gold_draw': True,
+                'pseudo_times': self._pseudo_times}
+
+    def refresh_shop_info(self):
+        for t, item in game_configs.shop_type_config.items():
+            if not self._shop_data.get(t):
+                self._shop_data[t] = self.get_new_shop_info(t)
+        self.save_data()
+
+    def get_new_shop_info(self, shop_type):
+        data = {}
+        data['buyed_item_ids'] = []
+        data['refresh_times'] = 0
+        data['last_refresh_time'] = time.time()
+        data['luck_num'] = 0.0
+        data['luck_time'] = time.time()
+        data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
+        data['limit_items'] = {}
+        data['vip_limit_items'] = {}
+        return data
 
     def check_time(self):
         current_date_time = time.time()
@@ -75,6 +89,9 @@ class CharacterShopComponent(Component):
 
             if 'limit_items' not in v:
                 v['limit_items'] = {}
+
+            if 'vip_limit_items' not in v:
+                v['vip_limit_items'] = {}
 
     def get_shop_data(self, t):
         if t not in self._shop_data:
@@ -163,3 +180,28 @@ class CharacterShopComponent(Component):
     @first_gold_draw.setter
     def first_gold_draw(self, value):
         self._first_gold_draw = value
+
+    def get_draw_drop_bag(self, pseudo_bag_id):
+        """docstring for get_draw_drop_bag"""
+        draw_times = self._pseudo_times.get(pseudo_bag_id, 0)
+        pseudo_random_info = game_configs.pseudo_random_config.get(pseudo_bag_id)
+        assert pseudo_random_info!=None, "can not find pseudo bag:%s" % pseudo_bag_id
+        gain = pseudo_random_info.gain
+        drop_items = []
+        for k in sorted(gain.keys(), reverse=True):
+            if draw_times >= k:
+                bags = gain.get(k)
+                for bag_id in bags:
+                    logger.debug("drop_bag_id %s", bag_id)
+                    big_bag = BigBag(bag_id)
+                    drop_items.extend(big_bag.get_drop_items())
+                break
+        logger.debug("drop_items %s", drop_items)
+        self._pseudo_times[pseudo_bag_id] = draw_times + 1
+        self.save_data()
+        return drop_items
+
+
+
+
+

@@ -48,6 +48,7 @@ from travel_item_group_config import TravelItemGroupConfig
 from notes_config import NotesConfig
 from recharge_config import RechargeConfig
 from lucky_hero_config import LuckyHeroConfig
+from pseudo_random_config import PseudoRandomConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -94,6 +95,7 @@ mine_match_config = {}
 notes_config = {}
 recharge_config = {}
 lucky_hero_config = {}
+pseudo_random_config = {}
 
 all_config_name = {
     'travel_item_group_config': TravelItemGroupConfig(),
@@ -140,7 +142,8 @@ all_config_name = {
     'newbee_guide_config': NewbeeGuideConfig(),
     'notes_config': NotesConfig(),
     'recharge_config': RechargeConfig(),
-    'lucky_hero_config': LuckyHeroConfig()
+    'lucky_hero_config': LuckyHeroConfig(),
+    'pseudo_random_config': PseudoRandomConfig(),
 }
 
 print("load game_configs===========================")
@@ -151,6 +154,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
+    print(pseudo_random_config.get(1002))
     print base_config.get('arena_shorttime_points')
     a = base_config.get('arena_shorttime_points')
     b = a.values()

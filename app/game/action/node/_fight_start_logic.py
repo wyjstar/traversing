@@ -88,7 +88,7 @@ def fight_start(stage, fid, player):
         info = lord_data.get('info')
         f_unit = BattleUnit.loads(info)
     else:
-        logger.error('can not find friend id :%d' % fid)
+        logger.debug('can not find friend id :%d' % fid)
 
     return dict(result=True,
                 red_units=red_units,

@@ -103,24 +103,37 @@ def shop_oper(pro_data, player, reason):
     if not _is_consume_result:
         need_gold = 0
     def func():
-        consume_data = []
+        #consume_data = []
         if _is_consume_result:
             return_data = consume(player, shop_item.consume,
                                 player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
-            consume_data = return_data
+            #consume_data = return_data
+        logger.debug("hero-draw2")
+        return_data = []
+        extra_return_data = []
+        if shop_item.type==5:
+            # todo: 如何判断shop类型：单抽、十连抽
+            logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
+            gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
+            return_data = gain(player, gain_items, reason)
+            extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
-        return_data = gain(player, shop_item.gain, reason)  # 获取
-        extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+            get_return(player, return_data, response.gain)
+            get_return(player, extra_return_data, response.gain)
+        else:
+            return_data = gain(player, shop_item.gain, reason)  # 获取
+            extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
-        get_return(player, return_data, response.gain)
-        get_return(player, extra_return_data, response.gain)
+            get_return(player, return_data, response.gain)
+            get_return(player, extra_return_data, response.gain)
 
         send_tlog(player, shop_item)
 
     player.pay.pay(need_gold, func)
 
     response.res.result = True
+    logger.debug("response gain %s" % response.gain)
     return response.SerializeToString()
 
 
@@ -227,6 +240,20 @@ def shop_buy_505(pro_data, player):
             common_response.message = u'消费不足！'
             logger.error('not enough money:%s', price)
             return response.SerializeToString()
+
+        if shop_item.limitVIP:
+            limit_num = shop_item.limitVIP.get(player.base_info.vip_level, 0)
+            shop_id_buyed_num = shop['vip_limit_items'].get(shop_id, 0)
+            logger.error("vip limit shop item:%s:%s limit:%s:%s",
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
+
+            if shop_id_buyed_num + item_count > limit_num:
+                common_response.result = False
+                common_response.result_no = 502
+                response.limit_item_current_num = shop_id_buyed_num
+                response.limit_item_max_num = limit_num
+                return response.SerializeToString()
+            shop['vip_limit_items'][shop_id] = shop_id_buyed_num + item_count
 
         if shop_item.limitVIPeveryday:
             limit_num = shop_item.limitVIPeveryday.get(player.base_info.vip_level, 0)
@@ -353,6 +380,10 @@ def get_shop_items_508(pro_data, player):
     for k, v in shopdata['limit_items'].items():
         response.limit_item_id.append(k)
         response.limit_item_num.append(v)
+    for k, v in shopdata['vip_limit_items'].items():
+        vim_limit_item = response.vip_limit_item.add()
+        vim_limit_item.item_id = k
+        vim_limit_item.item_num = v
 
     logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])
