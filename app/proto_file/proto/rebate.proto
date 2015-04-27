@@ -1,0 +1,18 @@
+
+message rebateData
+{
+	required int32 switch = 1; //返利卡是否可购买
+	required int32 last = 2; //返利卡剩余次数
+}
+
+//返利卡信息返回
+message rebateInfo
+{
+	required rebateData week = 1; //周返利卡信息
+	required rebateData month = 2;//月返利卡信息
+}
+
+//返利卡信息请求
+message rebateRequest
+{
+}
