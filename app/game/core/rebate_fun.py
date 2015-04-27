@@ -76,7 +76,7 @@ def rebate_call(player, recharge_item):
                                            notify,
                                            [player.dynamic_id])
         
-        mail_id = recharge_item.get('mail_id')
+        mail_id = recharge_item.get('mailId')
         mail = db_pb2.Mail_PB()
         mail.config_id = mail_id
         mail.receive_id = player.base_info.id
