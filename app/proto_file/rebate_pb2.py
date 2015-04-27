@@ -8,12 +8,13 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import common_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rebate.proto',
   package='',
-  serialized_pb='\n\x0crebate.proto\"*\n\nrebateData\x12\x0e\n\x06switch\x18\x01 \x02(\x05\x12\x0c\n\x04last\x18\x02 \x02(\x05\"C\n\nrebateInfo\x12\x19\n\x04week\x18\x01 \x02(\x0b\x32\x0b.rebateData\x12\x1a\n\x05month\x18\x02 \x02(\x0b\x32\x0b.rebateData\"\x0f\n\rrebateRequest')
+  serialized_pb='\n\x0crebate.proto\x1a\x0c\x63ommon.proto\"E\n\nrebateData\x12\x0b\n\x03rid\x18\x01 \x02(\x05\x12\x0e\n\x06switch\x18\x02 \x02(\x05\x12\x0c\n\x04last\x18\x03 \x02(\x05\x12\x0c\n\x04\x64raw\x18\x04 \x02(\x05\"\x0f\n\rrebateRequest\"*\n\nrebateInfo\x12\x1c\n\x07rebates\x18\x01 \x03(\x0b\x32\x0b.rebateData\"\x19\n\nrebateDraw\x12\x0b\n\x03rid\x18\x01 \x02(\x05\"]\n\nrebateResp\x12\x0b\n\x03rid\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -26,15 +27,29 @@ _REBATEDATA = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='switch', full_name='rebateData.switch', index=0,
+      name='rid', full_name='rebateData.rid', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='last', full_name='rebateData.last', index=1,
+      name='switch', full_name='rebateData.switch', index=1,
       number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='last', full_name='rebateData.last', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='draw', full_name='rebateData.draw', index=3,
+      number=4, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -48,43 +63,8 @@ _REBATEDATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=16,
-  serialized_end=58,
-)
-
-
-_REBATEINFO = _descriptor.Descriptor(
-  name='rebateInfo',
-  full_name='rebateInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='week', full_name='rebateInfo.week', index=0,
-      number=1, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='month', full_name='rebateInfo.month', index=1,
-      number=2, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=60,
-  serialized_end=127,
+  serialized_start=30,
+  serialized_end=99,
 )
 
 
@@ -104,15 +84,116 @@ _REBATEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=129,
-  serialized_end=144,
+  serialized_start=101,
+  serialized_end=116,
 )
 
-_REBATEINFO.fields_by_name['week'].message_type = _REBATEDATA
-_REBATEINFO.fields_by_name['month'].message_type = _REBATEDATA
+
+_REBATEINFO = _descriptor.Descriptor(
+  name='rebateInfo',
+  full_name='rebateInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rebates', full_name='rebateInfo.rebates', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=118,
+  serialized_end=160,
+)
+
+
+_REBATEDRAW = _descriptor.Descriptor(
+  name='rebateDraw',
+  full_name='rebateDraw',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rid', full_name='rebateDraw.rid', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=162,
+  serialized_end=187,
+)
+
+
+_REBATERESP = _descriptor.Descriptor(
+  name='rebateResp',
+  full_name='rebateResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rid', full_name='rebateResp.rid', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='rebateResp.res', index=1,
+      number=2, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='rebateResp.gain', index=2,
+      number=3, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=189,
+  serialized_end=282,
+)
+
+_REBATEINFO.fields_by_name['rebates'].message_type = _REBATEDATA
+_REBATERESP.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_REBATERESP.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['rebateData'] = _REBATEDATA
-DESCRIPTOR.message_types_by_name['rebateInfo'] = _REBATEINFO
 DESCRIPTOR.message_types_by_name['rebateRequest'] = _REBATEREQUEST
+DESCRIPTOR.message_types_by_name['rebateInfo'] = _REBATEINFO
+DESCRIPTOR.message_types_by_name['rebateDraw'] = _REBATEDRAW
+DESCRIPTOR.message_types_by_name['rebateResp'] = _REBATERESP
 
 class rebateData(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -120,17 +201,29 @@ class rebateData(_message.Message):
 
   # @@protoc_insertion_point(class_scope:rebateData)
 
+class rebateRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _REBATEREQUEST
+
+  # @@protoc_insertion_point(class_scope:rebateRequest)
+
 class rebateInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _REBATEINFO
 
   # @@protoc_insertion_point(class_scope:rebateInfo)
 
-class rebateRequest(_message.Message):
+class rebateDraw(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _REBATEREQUEST
+  DESCRIPTOR = _REBATEDRAW
 
-  # @@protoc_insertion_point(class_scope:rebateRequest)
+  # @@protoc_insertion_point(class_scope:rebateDraw)
+
+class rebateResp(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _REBATERESP
+
+  # @@protoc_insertion_point(class_scope:rebateResp)
 
 
 # @@protoc_insertion_point(module_scope)
