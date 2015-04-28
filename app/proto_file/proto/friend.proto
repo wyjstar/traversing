@@ -46,6 +46,9 @@ message CharacterInfo{
     optional float magic_def = 9;  //魔法防御
     optional int32 last_time = 10;
     optional int32 buddy_head = 11;  //小伙伴头像，仅用于支援
+    optional int32 current = 12; //当前活跃度
+    optional int32 target = 13; //目标活跃度
+    optional int32 stat = 14;//活跃度奖励状态，0未领取，1已领取
 }
 
 // player friend items
@@ -67,4 +70,18 @@ message GetRecommendFriendsResponse{
     optional int32 open_receive = 1;
     optional int32 page_num = 2;
     repeated CharacterInfo recommend = 3;
+}
+
+//领取好友活跃度奖励请求
+message DrawRewardReq
+{
+	required int32 fid = 1;//好友ID
+}
+
+//领取好友活跃度奖励返回
+message DrawRewardRsp
+{
+	required int32 fid = 1;//好友ID
+	required CommonResponse res = 2;
+	optional GameResourcesResponse gain = 3; //通用奖励
 }

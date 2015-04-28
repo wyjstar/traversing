@@ -16,7 +16,9 @@ def rebate_info_5432(data, player):
     """
     获取当前返利卡状态
     """
+    print 'rebate_info_5432'
     response = rebate_info(player)
+    print 'rebate_info_5432', response
     
     return response.SerializePartialToString()
 
@@ -47,4 +49,6 @@ def draw_rebate_5433(data, player):
     else:
         response.res.result = False
         response.res.result_no = 54331
+        
+    print 'draw_rebate_5433', response
     return response.SerializePartialToString()

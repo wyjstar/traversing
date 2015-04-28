@@ -15,7 +15,7 @@ from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from app.game.core.lively import task_status
 from app.proto_file.common_pb2 import CommonResponse
-from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data import game_configs, data_helper
 from app.proto_file import friend_pb2
 from app.proto_file.db_pb2 import Mail_PB
 from app.proto_file.db_pb2 import Heads_DB
@@ -23,6 +23,8 @@ from app.proto_file.db_pb2 import Stamina_DB
 import datetime
 import random
 import time
+from app.game.core.item_group_helper import gain, get_return
+from shared.db_opear.configs_data.game_configs import base_config
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -184,6 +186,8 @@ def get_player_friend_list_1106(data, player):
     response = friend_pb2.GetPlayerFriendsResponse()
     response.open_receive = player.stamina._open_receive
     print player.friends.friends
+    
+    _update = False
 
     for pid in player.friends.friends + [player.base_info.id]:
         player_data = tb_character_info.getObj(pid)
@@ -191,7 +195,7 @@ def get_player_friend_list_1106(data, player):
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
             friend_data = player_data.hmget(['nickname', 'attackPoint',
-                                             'heads', 'upgrade_time'])
+                                             'heads', 'upgrade_time', 'lively', 'last_day'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
             ap = 1010
@@ -203,12 +207,25 @@ def get_player_friend_list_1106(data, player):
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             response_friend_add.hero_no = friend_heads.now_head
+            
+            lively = int(friend_data.get('lively', 0))
+            today = time.strftime("%Y%m%d", time.localtime(time.time()))
+            if today != player_data.get('last_day',''):
+                lively = 0
+            response_friend_add.current = lively
+            response_friend_add.target = base_config['friendActivityValue']
+            stat, update = player.friends.get_reward(pid, today)
+            if update:
+                _update = True
+            response_friend_add.stat = stat
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
         else:
             logger.error('friend_list, cant find player id:%d' % pid)
             player.friends.friends.remove(pid)
+    if _update:
+        player.friends.save_data()
 
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObj(pid)
@@ -256,6 +273,39 @@ def get_player_friend_list_1106(data, player):
 
     return response.SerializePartialToString()
 
+@remoteserviceHandle('gate')
+def draw_friend_lively_1199(data, player):
+    request = friend_pb2.DrawRewardReq()
+    request.ParseFromString(data)
+    response = friend_pb2.DrawRewardRsp()
+    response.fid = request.fid
+    today = time.strftime("%Y%m%d", time.localtime(time.time()))
+    stat, update = player.friends.get_reward(request.fid, today)
+    if stat:
+        response.res.result = False
+        response.res.result_no = 11991 #已领取
+    else:
+        player_data = tb_character_info.getObj(request.fid)
+        friend_data = player_data.hmget([ 'lively', 'last_day'])
+        lively = int(friend_data.get('lively', 0))
+        if today != player_data.get('last_day',''):
+            lively = 0
+        if lively < base_config['friendActivityValue']:
+            response.res.result = False
+            response.res.result_no = 11992 #未完成
+        else:
+            response.res.result = True
+            reward = base_config['friendActivityReward']
+            lively_reward = data_helper.parse(reward)
+            return_data = gain(player, lively_reward)  # 获取
+            get_return(player, return_data, response.gain)
+            player.friends.set_reward(request.fid, today, 1)
+            update=True
+            
+    if update:
+        player.friends.save_data()
+            
+    return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
 def find_friend_request_1107(data, player):
