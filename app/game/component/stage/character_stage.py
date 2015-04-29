@@ -232,3 +232,11 @@ class CharacterStageComponent(Component):
     @stage_progress.setter
     def stage_progress(self, values):
         self._stage_progress = values
+
+    @property
+    def star_num(self):
+        return self._star_num
+
+    @star_num.setter
+    def star_num(self, values):
+        self._star_num = values

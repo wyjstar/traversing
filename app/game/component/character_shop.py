@@ -26,6 +26,7 @@ class CharacterShopComponent(Component):
         self._first_coin_draw = character_info.get('first_coin_draw')
         self._first_gold_draw = character_info.get('first_gold_draw')
         self.check_time()
+        self.refresh_shop_info()
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
@@ -42,20 +43,28 @@ class CharacterShopComponent(Component):
 
     def new_data(self):
         for t, item in game_configs.shop_type_config.items():
-            data = {}
-            data['buyed_item_ids'] = []
-            data['refresh_times'] = 0
-            data['last_refresh_time'] = time.time()
-            data['luck_num'] = 0.0
-            data['luck_time'] = time.time()
-            data['item_ids'] = self.get_shop_item_ids(t, 0)
-            data['limit_items'] = {}
-            # print t, data['item_ids']
-            self._shop_data[t] = data
-        # print data
+            self._shop_data[t] = self.get_new_shop_info(t)
         return {'shop': self._shop_data,
                 'first_coin_draw': True,
                 'first_gold_draw': True}
+
+    def refresh_shop_info(self):
+        for t, item in game_configs.shop_type_config.items():
+            if not self._shop_data.get(t):
+                self._shop_data[t] = self.get_new_shop_info(t)
+        self.save_data()
+
+    def get_new_shop_info(self, shop_type):
+        data = {}
+        data['buyed_item_ids'] = []
+        data['refresh_times'] = 0
+        data['last_refresh_time'] = time.time()
+        data['luck_num'] = 0.0
+        data['luck_time'] = time.time()
+        data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
+        data['limit_items'] = {}
+        data['vip_limit_items'] = {}
+        return data
 
     def check_time(self):
         current_date_time = time.time()
@@ -75,6 +84,9 @@ class CharacterShopComponent(Component):
 
             if 'limit_items' not in v:
                 v['limit_items'] = {}
+
+            if 'vip_limit_items' not in v:
+                v['vip_limit_items'] = {}
 
     def get_shop_data(self, t):
         if t not in self._shop_data:
