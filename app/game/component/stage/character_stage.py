@@ -28,7 +28,7 @@ class CharacterStageComponent(Component):
 
         self._stage_progress = game_configs.stage_config.get('first_stage_id')
         self._rank_stage_progress = game_configs.stage_config.get('first_stage_id')
-        self._star_num = []
+        self._star_num = [0]*40
 
     def init_data(self, character_info):
         stages = character_info.get('stage_info')
@@ -46,7 +46,7 @@ class CharacterStageComponent(Component):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
         self._stage_progress = character_info.get('stage_progress', first_stage_id)
         self._rank_stage_progress = character_info.get('rank_stage_progress', first_stage_id)
-        self._star_num = character_info.get('star_num', [])
+        self._star_num = character_info.get('star_num', [0]*40)
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
