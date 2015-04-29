@@ -187,6 +187,7 @@ def query_1243(data, player):
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
     ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    # print 'query 1243', normal, lucky
     if ret == 0:
         response.res.result = True
         mstatus = player.mine.mine_info(request.position)
@@ -221,7 +222,7 @@ def query_1243(data, player):
         response.res.result_no = ret
 
     player.mine.save_data()
-    # print '1243-response', response.lineup
+    # print '1243-response', response
     return response.SerializePartialToString()
 
 
@@ -512,77 +513,47 @@ def process_mine_result(player, position, result, response, stype):
     @param gain: true or false
     """
     # print 'process_mine_result', position, response, result, stype
-    if result is True:
-        target = player.mine.settle(position)
-        if stype == 1:
-            detail_info = player.mine.detail_info(position)
-            _, _, _, _, normal, lucky, _, _ = detail_info
-            warFogLootRatio = game_configs.base_config['warFogLootRatio']
-            count = {}
-            for k, v in normal.items():
-                if v > 0:
-                    normal = response.normal.add()
-                    normal.stone_id = k
-                    normal.stone_num = int(v * warFogLootRatio)
-                    count[k] = v
-            for k, v in lucky.items():
-                if v > 0:
-                    luck = response.lucky.add()
-                    luck.stone_id = k
-                    luck.stone_num = int(v*warFogLootRatio)
-                    count[k] = v
+    if result is not True:
+        return
 
-            mail = {}
-            prize = {}
-            prize[108] = []
+    detail_info = player.mine.detail_info(position)
+    target = player.mine.settle(position)
+    if stype != 1:
+        return
 
-            for k, v in count.items():
-                prize[108].append([v, v, k])
+    _, _, _, _, normal, lucky, _, _ = detail_info
+    warFogLootRatio = game_configs.base_config['warFogLootRatio']
+    harvest_stone = {}
+    harvest_stone.update(normal)
+    harvest_stone.update(lucky)
 
-            if False:
-                mail = db_pb2.Mail_PB()
-                mail.sender_id = -1
-                mail.sender_name = ''
-                mail.receive_id = target
-                mail.receive_name = ''
-                mail.title = ''
-                mail.content = ''
-                mail.mail_type = 2
-                mail.prize = prize
-                mail.send_time = int(time.time())
+    harvest_a = {}
+    harvest_b = {}
+    for k, v in harvest_stone.items():
+        if v > 0:
+            harvest_b[k] = int(v * warFogLootRatio)
+            harvest_a[k] = v - harvest_b[k]
 
-                battle_process = db_pb2.Mail_PB()
-                battle_process.sender_id = -1
-                battle_process.sender_name = player.base_info.base_name
-                battle_process.receive_id = target
-                battle_process.receive_name = ''
-                battle_process.title = ''
-                battle_process.content = ''
-                battle_process.mail_type = 2
-                battle_process.prize = prize
+    prize = []
+    for k, v in harvest_b.items():
+        if v > 0:
+            prize.append({108: [v, v, k]})
+    logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
+                 harvest_stone, harvest_a, harvest_b, prize)
 
-                # command:id 为收邮件的命令ID
-                if sum(count.values()) > 0:
-                    response.result = netforwarding.push_message('receive_mail_remote', target, mail)
-                    netforwarding.push_message('receive_mail_remote',
-                                               target,
-                                               mail.SerializePartialToString())
-                    netforwarding.push_message('receive_mail_remote',
-                                               target,
-                                               battle_process.SerializePartialToString())
+    if not add_stones(player, harvest_a, response):
+        response.res.result = False
+        response.res.result_no = 824
+        logger.debug('add_stones fail!!!!!!')
 
-            if sum(count.values()) > 0:
-                mail_id = game_configs.base_config.get('warFogRobbedMail')
-
-                player_id = self._last_shot_item['player_id']
-                mail = db_pb2.Mail_PB()
-                mail.config_id = mail_id
-                mail.receive_id = target
-                mail.send_time = int(time.time())
-                mail.prize = str(prize)
-                mail_data = mail.SerializePartialToString()
-                remote_gate.push_message_to_transit_remote('receive_mail_remote',
-                                                           target, mail_data)
+    mail_id = game_configs.base_config.get('warFogRobbedMail')
+    mail = db_pb2.Mail_PB()
+    mail.config_id = mail_id
+    mail.receive_id = target
+    mail.send_time = int(time.time())
+    mail.prize = str(prize)
+    mail_data = mail.SerializePartialToString()
+    netforwarding.push_message('receive_mail_remote', target, mail_data)
 
 
 @remoteserviceHandle('gate')
@@ -646,7 +617,7 @@ def battle_1253(data, player):
         # pvp
         red_units = player.fight_cache_component.red_unit
         info = get_save_guard(player, pos)
-        print info
+        # print info
         blue_units = info.get("battle_units")
 
         fight_result = pvp_process(player,
@@ -671,6 +642,7 @@ def battle_1253(data, player):
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
+    # print 'battle_1253:', response
     return response.SerializePartialToString()
 
 
