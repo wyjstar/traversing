@@ -41,7 +41,7 @@ def gm():
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
-                     'get_user_eqs', 'copy_user']
+                     'get_user_eqs', 'copy_user', 'update_server_list']
     if request.args:
         t_dict = request.args
     else:
@@ -60,6 +60,15 @@ def gm():
     logger.info('######################################,server2gm:%s', res)
 
     return json.dumps(res)
+
+
+def update_server_list(args):
+    url = args['server_list_url']
+    urllib.urlretrieve(url, '/var/server_list.json')
+    os.system("cp /var/server_list.json server_list.json")
+    com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
+    os.system(com)
+    return {"success": 1}
 
 
 def update_excel(args):

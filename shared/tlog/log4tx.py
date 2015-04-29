@@ -3,7 +3,7 @@
 from shared.tlog import logclient
 from gfirefly.server.logobj import logger
 
-debug = 0
+debug = 1
 LOG_FOR_SELF = 1
 
 

@@ -52,8 +52,8 @@ def shop_oper(pro_data, player, reason):
     response = ShopResponse()
     shop_id = request.ids[0]
     shop_item = game_configs.shop_config.get(shop_id)
-    logger.debug(shop_id)
-    logger.debug("---------")
+    # logger.debug(shop_id)
+    # logger.debug("---------")
 
     # print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
     if shop_id == 10001 and player.shop.first_coin_draw:
@@ -109,12 +109,12 @@ def shop_oper(pro_data, player, reason):
                                 player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
             #consume_data = return_data
-        logger.debug("hero-draw2")
+        # logger.debug("hero-draw2")
         return_data = []
         extra_return_data = []
         if shop_item.type==5:
             # todo: 如何判断shop类型：单抽、十连抽
-            logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
+            # logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
             gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
             return_data = gain(player, gain_items, reason)
             extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
@@ -133,7 +133,7 @@ def shop_oper(pro_data, player, reason):
     player.pay.pay(need_gold, func)
 
     response.res.result = True
-    logger.debug("response gain %s" % response.gain)
+    # logger.debug("response gain %s" % response.gain)
     return response.SerializeToString()
 
 
@@ -385,7 +385,7 @@ def get_shop_items_508(pro_data, player):
         vim_limit_item.item_id = k
         vim_limit_item.item_num = v
 
-    logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
+    # logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
     response.refresh_times = shopdata['refresh_times']

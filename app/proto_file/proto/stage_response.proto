@@ -58,6 +58,7 @@ message UnparalleledResponse{
 message StageSweepResponse{
     required CommonResponse res = 1;
 	repeated GameResourcesResponse drops = 2;
+    optional GameResourcesResponse consume = 3;
 }
 
 //重置关卡挑战次数 command:908

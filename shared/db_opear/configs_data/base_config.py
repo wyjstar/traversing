@@ -96,7 +96,9 @@ class BaseConfig(object):
         config_value["equPrefix"] = equPrefix
         config_value["CoinCardFirst"] = parse(config_value["CoinCardFirst"])
         config_value["CardFirst"] = parse(config_value["CardFirst"])
+        config_value["sweepNeedItem"] = parse(config_value["sweepNeedItem"])
         config_value["arena_win_points"] = parse(config_value["arena_win_points"])
+        config_value["price_sweep"] = parse(config_value["price_sweep"])
 
         # modify cook data
         cooking_data = config_value['cookingWinePrice']

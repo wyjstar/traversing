@@ -184,7 +184,7 @@ def get_prize(player, mail_ids, response):
                 prize = data_helper.parse(mail_conf.rewards)
                 return_data = gain(player, prize, const.MAIL)
                 get_return(player, return_data, response.gain)
-                return
+                continue
         if isinstance(eval(mail.prize), dict):
             prize = data_helper.parse(eval(mail.prize))
             return_data = gain(player, prize, const.MAIL)

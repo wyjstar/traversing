@@ -30,6 +30,7 @@ message StageSettlementRequest{
 message StageSweepRequest{
 	required int32 stage_id = 1; //关卡编号
 	required int32 times = 2;  //扫荡次数
+	required int32 sweep_type = 3;  //扫荡类型，1扫荡材料 2元宝
 }
 
 //重置关卡挑战次数 command:908
