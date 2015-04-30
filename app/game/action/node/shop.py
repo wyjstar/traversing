@@ -194,6 +194,8 @@ def shop_buy_505(pro_data, player):
             if shop_id_buyed_num + item_count > limit_num:
                 common_response.result = False
                 common_response.result_no = 502
+                common_response.limit_item_current_num = shop_id_buyed_num
+                common_response.limit_item_max_num = limit_num
                 return response.SerializeToString()
             shop['limit_items'][shop_id] = shop_id_buyed_num + item_count
 
