@@ -114,7 +114,7 @@ def del_friend_request_1103(data, player):
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-
+    print 'del_friend_request_1103', request.target_ids
     for target_id in request.target_ids:
         if not player.friends.del_friend(target_id):
             response.result = False
