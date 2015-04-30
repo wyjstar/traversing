@@ -49,6 +49,8 @@ message CharacterInfo{
     optional int32 current = 12; //当前活跃度
     optional int32 target = 13; //目标活跃度
     optional int32 stat = 14;//活跃度奖励状态，0未领取，1已领取
+    optional int32 level = 15;//玩家等级
+    optional int32 b_rank = 16; //玩家的擂台排名
 }
 
 // player friend items

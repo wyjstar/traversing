@@ -210,7 +210,7 @@ def get_player_friend_list_1106(data, player):
             
             lively = int(friend_data.get('lively', 0))
             today = time.strftime("%Y%m%d", time.localtime(time.time()))
-            if today != player_data.get('last_day',''):
+            if today != friend_data.get('last_day', '0'):
                 lively = 0
             response_friend_add.current = lively
             response_friend_add.target = base_config['friendActivityValue']

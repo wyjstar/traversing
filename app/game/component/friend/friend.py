@@ -28,7 +28,7 @@ class FriendComponent(Component):
         self._friends = character_info.get('friends')
         self._blacklist = character_info.get('blacklist')
         self._applicants_list = character_info.get('applicants_list')
-        self._reward = character_info.get('freward')
+        self._reward = character_info.get('freward', {})
 
     def save_data(self):
         friend_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -41,7 +41,8 @@ class FriendComponent(Component):
     def new_data(self):
         data = dict(friends=self._friends,
                     blacklist=self._blacklist,
-                    applicants_list=self._applicants_list)
+                    applicants_list=self._applicants_list,
+                    freward=self._reward)
         return data
 
     @property
