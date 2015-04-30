@@ -773,16 +773,13 @@ class UserMine(Component):
         self._update = False
         mine_obj = tb_character_info.getObj(self.owner.base_info.id)
         # print 'save_data', mine_obj
-        if mine_obj:
-            data = {'mine': {'1': self._mine},
-                    'reset_day': self._reset_day,
-                    'reset_times': self._reset_times,
-                    'day_before': self._tby,
-                    'lively': self._lively,
-                    'guard': self._guard}
-            mine_obj.hmset(data)
-        else:
-            logger.error('cant find mine:%s', self.owner.base_info.id)
+        data = {'mine': {'1': self._mine},
+                'reset_day': self._reset_day,
+                'reset_times': self._reset_times,
+                'day_before': self._tby,
+                'lively': self._lively,
+                'guard': self._guard}
+        mine_obj.hmset(data)
 
     def new_data(self):
         data = dict(mine={'1': self._mine},
@@ -793,6 +790,11 @@ class UserMine(Component):
                     guard=self._guard)
         # mine_data = tb_character_info.getObj(self.owner.base_info.id)
         return data
+
+    def reset_data(self):
+        data = self.new_data()
+        self.init_data(data)
+        self.save_data()
 
     def if_have_shop(self):
         for mine_id in self._mine:
