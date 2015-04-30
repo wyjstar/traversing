@@ -276,6 +276,9 @@ def refresh_shop_items_507(pro_data, player):
         response.id.append(x)
     for x in shopdata['buyed_item_ids']:
         response.buyed_id.append(x)
+    for k, v in shopdata['limit_items']:
+        response.limit_item_id.append(k)
+        response.limit_item_num.append(v)
 
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
@@ -299,6 +302,9 @@ def get_shop_items_508(pro_data, player):
         response.id.append(x)
     for x in shopdata['buyed_item_ids']:
         response.buyed_id.append(x)
+    for k, v in shopdata['limit_items'].items():
+        response.limit_item_id.append(k)
+        response.limit_item_num.append(v)
 
     logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])

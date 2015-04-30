@@ -36,4 +36,6 @@ message GetShopItemsResponse
     repeated int32 buyed_id = 3;
     optional int32 luck_num = 4;
     optional int32 refresh_times = 5;
+    repeated int32 limit_item_id = 6;
+    repeated int32 limit_item_num = 7;
 }
