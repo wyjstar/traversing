@@ -142,9 +142,6 @@ class CharacterStageComponent(Component):
                     state = self.check_stage_state(stage.stage_id)
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
-                        open_stage_id = game_configs.base_config.get('warFogOpenStage')
-                        if stage.stage_id == open_stage_id:
-                            self.owner.mine.reset_data()
 
         return True
 
