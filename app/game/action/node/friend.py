@@ -25,6 +25,7 @@ import random
 import time
 from app.game.core.item_group_helper import gain, get_return
 from shared.db_opear.configs_data.game_configs import base_config
+from app.game.component.mine.monster_mine import MineOpt
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -178,8 +179,8 @@ def _with_battle_info(response, pid):
         response.atk = battle_unit.atk
         response.physical_def = battle_unit.physical_def
         response.magic_def = battle_unit.magic_def
-        response.buddy_head = battle_unit.unit_no
-
+#         response.buddy_head = 1#battle_unit.unit_no
+        
 
 @remoteserviceHandle('gate')
 def get_player_friend_list_1106(data, player):
@@ -218,6 +219,8 @@ def get_player_friend_list_1106(data, player):
             if update:
                 _update = True
             response_friend_add.stat = stat
+            response_friend_add.level = 1
+            response_friend_add.b_rank = 1
 
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, pid)
@@ -341,12 +344,62 @@ def find_friend_request_1107(data, player):
         friend_heads = Heads_DB()
         friend_heads.ParseFromString(friend_data['heads'])
         response.hero_no = friend_heads.now_head
+        response.level = 1
+        response.b_rank = 1
+        response.last_time = int(time.time()) + 111111111
 
         # 添加好友主将的属性
         _with_battle_info(response, player_data.hget('id'))
 
     return response.SerializePartialToString()
 
+@remoteserviceHandle('gate')
+def recommend_friend_1198(data, player):
+    response = friend_pb2.RecommendRes()
+    x = base_config['friendApplyLevelGap']
+    front = player.base_info.level - x
+    back = player.base_info.level + x
+    uids = MineOpt.rand_level("user_level", front, back+1)
+    print uids
+    statics = base_config['FriendRecommendNum']
+    count = 0
+    for uid in uids:
+        if uid == player.base_info.id:
+            continue
+        if player.friends.is_friend(uid):
+            continue
+        
+        player_data = tb_character_info.getObj(uid)
+        isexist = player_data.exists()
+        if count >= statics:
+            break
+    
+        if isexist:
+            player_data.hget('upgrade_time')
+            count +=1
+            friend = response.rfriend.add()
+            friend.id = player_data.hget('id')
+            print 'friend.id', friend.id
+            friend.nickname = player_data.hget('nickname')
+            print 'friend.nickname', friend.nickname
+            friend_data = player_data.hmget(['attackPoint', 'heads'])
+            ap = 1
+            if friend_data['attackPoint'] is not None:
+                ap = int(friend_data['attackPoint'])
+            friend.power = ap if ap else 0
+    
+            friend_heads = Heads_DB()
+            friend_heads.ParseFromString(friend_data['heads'])
+            friend.hero_no = friend_heads.now_head
+            
+            friend.level = 1
+            friend.b_rank = 1
+            friend.last_time = int(time.time()) + 111111111
+    
+            # 添加好友主将的属性
+            _with_battle_info(friend, player_data.hget('id'))
+        
+    return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
 def given_stamina_1108(data, player):

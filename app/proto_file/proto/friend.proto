@@ -26,7 +26,9 @@ message FindFriendResponse{
     optional float atk = 7;  //攻
     optional float physical_def = 8;  //物理防御
     optional float magic_def = 9;  //魔法防御
-
+    optional int32 level = 10;//玩家等级
+    optional int32 b_rank = 11; //玩家的擂台排名
+    optional int32 last_time = 12;//最后登录时间
 }
 
 message GetPlayerFriendsRequest{
@@ -86,4 +88,15 @@ message DrawRewardRsp
 	required int32 fid = 1;//好友ID
 	required CommonResponse res = 2;
 	optional GameResourcesResponse gain = 3; //通用奖励
+}
+
+//请求推荐好友
+message RecommendReq
+{
+}
+
+//请求推荐好友返回
+message RecommendRes
+{
+	repeated FindFriendResponse rfriend = 1;
 }
