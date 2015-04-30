@@ -163,11 +163,10 @@ class CharacterStageComponent(Component):
                     state = self.check_stage_state(stage.stage_id)
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
-                        if conf.get(stage_id).get('type') == 1:
+                        if chapter_id and conf.get(stage_id).get('type') == 1:
                             self._stage_progress = conf.get(stage_id).get('condition')
-                            if chapter_id:
-                                chapter_star_num = self.calculation_star(chapter_id)
-                                self.star_num[chapter_id] = chapter_star_num
+                            chapter_star_num = self.calculation_star(chapter_id)
+                            self.star_num[chapter_id] = chapter_star_num
 
         return True
 
@@ -242,3 +241,11 @@ class CharacterStageComponent(Component):
     @star_num.setter
     def star_num(self, values):
         self._star_num = values
+
+    @property
+    def rank_stage_progress(self):
+        return self._rank_stage_progress
+
+    @rank_stage_progress.setter
+    def rank_stage_progress(self, values):
+        self._rank_stage_progress = values
