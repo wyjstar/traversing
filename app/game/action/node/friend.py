@@ -26,6 +26,7 @@ import time
 from app.game.core.item_group_helper import gain, get_return
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.mine.monster_mine import MineOpt
+from shared.utils.const import const
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -196,7 +197,7 @@ def get_player_friend_list_1106(data, player):
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
             friend_data = player_data.hmget(['nickname', 'attackPoint',
-                                             'heads', 'upgrade_time', 'lively', 'last_day'])
+                                             'heads', 'upgrade_time', 'lively', 'last_day', 'level'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
             ap = 1010
@@ -208,18 +209,20 @@ def get_player_friend_list_1106(data, player):
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             response_friend_add.hero_no = friend_heads.now_head
-            
+            print 
+            print 'friend_data', friend_data['lively'], friend_data['nickname']
             lively = int(friend_data.get('lively', 0))
             today = time.strftime("%Y%m%d", time.localtime(time.time()))
             if today != friend_data.get('last_day', '0'):
                 lively = 0
             response_friend_add.current = lively
-            response_friend_add.target = base_config['friendActivityValue']
+            print '11111111111111111', base_config['friendActivityValue']
+            response_friend_add.target = 10#base_config['friendActivityValue']
             stat, update = player.friends.get_reward(pid, today)
             if update:
                 _update = True
             response_friend_add.stat = stat
-            response_friend_add.level = 1
+            response_friend_add.level = friend_data['level']
             response_friend_add.b_rank = 1
 
             # 添加好友主将的属性
@@ -291,16 +294,16 @@ def draw_friend_lively_1199(data, player):
         player_data = tb_character_info.getObj(request.fid)
         friend_data = player_data.hmget([ 'lively', 'last_day'])
         lively = int(friend_data.get('lively', 0))
-        if today != player_data.get('last_day',''):
+        if today != friend_data.get('last_day',''):
             lively = 0
-        if lively < base_config['friendActivityValue']:
+        if lively < 10:#base_config['friendActivityValue']:
             response.res.result = False
             response.res.result_no = 11992 #未完成
         else:
             response.res.result = True
             reward = base_config['friendActivityReward']
             lively_reward = data_helper.parse(reward)
-            return_data = gain(player, lively_reward)  # 获取
+            return_data = gain(player, lively_reward, const.LIVELY_REWARD)  # 获取
             get_return(player, return_data, response.gain)
             player.friends.set_reward(request.fid, today, 1)
             update=True
@@ -335,7 +338,7 @@ def find_friend_request_1107(data, player):
         response.id = player_data.hget('id')
         response.nickname = player_data.hget('nickname')
 
-        friend_data = player_data.hmget(['attackPoint', 'heads'])
+        friend_data = player_data.hmget(['attackPoint', 'heads', 'level', 'upgrade_time'])
         ap = 1
         if friend_data['attackPoint'] is not None:
             ap = int(friend_data['attackPoint'])
@@ -344,9 +347,9 @@ def find_friend_request_1107(data, player):
         friend_heads = Heads_DB()
         friend_heads.ParseFromString(friend_data['heads'])
         response.hero_no = friend_heads.now_head
-        response.level = 1
+        response.level = friend_data['level']
         response.b_rank = 1
-        response.last_time = int(time.time()) + 111111111
+        response.last_time = friend_data['upgrade_time']
 
         # 添加好友主将的属性
         _with_battle_info(response, player_data.hget('id'))
@@ -363,6 +366,7 @@ def recommend_friend_1198(data, player):
     print uids
     statics = base_config['FriendRecommendNum']
     count = 0
+    now = int(time.time())
     for uid in uids:
         if uid == player.base_info.id:
             continue
@@ -375,14 +379,16 @@ def recommend_friend_1198(data, player):
             break
     
         if isexist:
-            player_data.hget('upgrade_time')
+            last_time = player_data.hget('upgrade_time')
+            if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
+                continue
             count +=1
             friend = response.rfriend.add()
             friend.id = player_data.hget('id')
             print 'friend.id', friend.id
             friend.nickname = player_data.hget('nickname')
             print 'friend.nickname', friend.nickname
-            friend_data = player_data.hmget(['attackPoint', 'heads'])
+            friend_data = player_data.hmget(['attackPoint', 'heads', 'level', 'upgrade_time'])
             ap = 1
             if friend_data['attackPoint'] is not None:
                 ap = int(friend_data['attackPoint'])
@@ -392,9 +398,9 @@ def recommend_friend_1198(data, player):
             friend_heads.ParseFromString(friend_data['heads'])
             friend.hero_no = friend_heads.now_head
             
-            friend.level = 1
+            friend.level = friend_data['level']
             friend.b_rank = 1
-            friend.last_time = int(time.time()) + 111111111
+            friend.last_time = friend_data['upgrade_time']
     
             # 添加好友主将的属性
             _with_battle_info(friend, player_data.hget('id'))
