@@ -10,6 +10,7 @@ from shared.utils.random_pick import random_multi_pick_without_repeat
 from gfirefly.server.logobj import logger
 from time import localtime
 import time
+from shared.utils.date_util import is_past_time
 from app.game.core.drop_bag import BigBag
 
 
@@ -80,6 +81,14 @@ class CharacterShopComponent(Component):
 
             if 'limit_items' not in v:
                 v['limit_items'] = {}
+
+        #自动刷新列表
+        for shop_type, shop_type_info in game_configs.shop_type_config.items():
+            freeRefreshTime = shop_type_info.freeRefreshTime
+            if shop_type_info.freeRefreshTime == "-1":
+                continue
+            if is_past_time(freeRefreshTime):
+                self.refresh_items(shop_type)
 
     def get_shop_data(self, t):
         if t not in self._shop_data:

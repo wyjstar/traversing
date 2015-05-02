@@ -344,6 +344,37 @@ def refresh_shop_items_507(pro_data, player):
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
 
+@remoteserviceHandle('gate')
+def refresh_shop_items_509(pro_data, player):
+    """
+    refresh shop item at some date.
+    """
+    request = RefreshShopItems()
+    request.ParseFromString(pro_data)
+    shop_type = request.shop_type
+
+
+    response = GetShopItemsResponse()
+    response.res.result = player.shop.refresh_items(shop_type)
+    shopdata = player.shop.get_shop_data(shop_type)
+    if not shopdata:
+        response.res.result = False
+        return response.SerializePartialToString()
+
+    response.res.result = False
+    response.res.result_no = 101
+    return response.SerializePartialToString()
+
+    for x in shopdata['item_ids']:
+        response.id.append(x)
+    for x in shopdata['buyed_item_ids']:
+        response.buyed_id.append(x)
+    for k, v in shopdata['limit_items']:
+        response.limit_item_id.append(k)
+        response.limit_item_num.append(v)
+
+    response.luck_num = int(shopdata['luck_num'])
+    return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
 def get_shop_items_508(pro_data, player):
