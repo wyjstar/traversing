@@ -209,7 +209,6 @@ def get_player_friend_list_1106(data, player):
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             response_friend_add.hero_no = friend_heads.now_head
-            print 
             print 'friend_data', friend_data['lively'], friend_data['nickname']
             lively = int(friend_data.get('lively', 0))
             today = time.strftime("%Y%m%d", time.localtime(time.time()))
@@ -217,7 +216,7 @@ def get_player_friend_list_1106(data, player):
                 lively = 0
             response_friend_add.current = lively
             print '11111111111111111', base_config['friendActivityValue']
-            response_friend_add.target = 10#base_config['friendActivityValue']
+            response_friend_add.target = base_config['friendActivityValue']
             stat, update = player.friends.get_reward(pid, today)
             if update:
                 _update = True
@@ -237,7 +236,7 @@ def get_player_friend_list_1106(data, player):
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             black_data = player_data.hmget(['nickname', 'attackPoint',
-                                            'heads', 'upgrade_time'])
+                                            'heads', 'upgrade_time', 'level'])
             response_blacklist_add = response.blacklist.add()
             response_blacklist_add.id = pid
             response_blacklist_add.nickname = black_data['nickname']
@@ -251,6 +250,9 @@ def get_player_friend_list_1106(data, player):
             black_heads = Heads_DB()
             black_heads.ParseFromString(black_data['heads'])
             response_blacklist_add.hero_no = black_heads.now_head
+            
+            response_blacklist_add.level = black_data['level']
+            response_blacklist_add.b_rank = 1
 
             # 添加好友主将的属性
             _with_battle_info(response_blacklist_add, pid)
@@ -264,12 +266,15 @@ def get_player_friend_list_1106(data, player):
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
             response_applicant_list_add.gift = 0
-            applicant_data = player_data.hmget(['nickname', 'heads'])
+            applicant_data = player_data.hmget(['nickname', 'heads', 'level', 'upgrade_time'])
             response_applicant_list_add.nickname = applicant_data['nickname']
 
             black_heads = Heads_DB()
             black_heads.ParseFromString(applicant_data['heads'])
             response_applicant_list_add.hero_no = black_heads.now_head
+            response_applicant_list_add.last_time = friend_data['upgrade_time']
+            response_applicant_list_add.level = applicant_data['level']
+            response_applicant_list_add.b_rank = 1
 
             # 添加好友主将的属性
             _with_battle_info(response_applicant_list_add, pid)
@@ -296,7 +301,7 @@ def draw_friend_lively_1199(data, player):
         lively = int(friend_data.get('lively', 0))
         if today != friend_data.get('last_day',''):
             lively = 0
-        if lively < 10:#base_config['friendActivityValue']:
+        if lively < base_config['friendActivityValue']:
             response.res.result = False
             response.res.result_no = 11992 #未完成
         else:
@@ -367,7 +372,13 @@ def recommend_friend_1198(data, player):
     statics = base_config['FriendRecommendNum']
     count = 0
     now = int(time.time())
+    
+    has_one = []
     for uid in uids:
+        if uid in has_one:
+            continue
+        else:
+            has_one.append(uid)
         if uid == player.base_info.id:
             continue
         if player.friends.is_friend(uid):
