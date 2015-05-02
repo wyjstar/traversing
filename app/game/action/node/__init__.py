@@ -90,3 +90,4 @@ import sdk_google
 import sdk_apple
 import sdk_tencent
 import rank
+import buy_coin_activity

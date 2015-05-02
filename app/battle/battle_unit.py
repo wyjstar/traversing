@@ -324,6 +324,7 @@ def do_assemble(no, quality, break_skills, hp,
     battle_unit = BattleUnit()
 
     battle_unit.unit_no = no
+    battle_unit.origin_no = no
     battle_unit.unit_name = unit_name
     battle_unit.quality = quality
 

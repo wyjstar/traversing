@@ -27,7 +27,7 @@ class BaseConfig(object):
                 hurt_rank_rewards = config_value.get("worldbossHurtRankRewards"),
                 accumulated_rewards = config_value.get("worldbossAccumulatedReward"),
                 kill_rewards = config_value.get("kill_rewards_worldboss"),
-                last_kill_rewards = config_value.get("kill_rewards_worldboss"),
+                last_kill_rewards = config_value.get("worldbossKillRewards"),
                 time_to_upgrade = config_value.get("time_kill_worldboss_to_upgrade"),
                 lucky_hero_1 = config_value.get("lucky_hero_1"),
                 lucky_hero_2 = config_value.get("lucky_hero_2"),

@@ -63,7 +63,7 @@ def get_fight_info(data, player):
     boss.stage_id = response.stage_id
 
 
-    print response, "-"*80
+    #print response, "-"*80
     print boss.stage_id
 
     boss.reset_info()  # 重设信息
@@ -75,7 +75,7 @@ def get_fight_info(data, player):
     logger.debug("encourage_gold_num %s" % boss.encourage_gold_num)
     response.fight_times = boss.fight_times
     response.last_fight_time = int(boss.last_fight_time)
-    print response
+    #print response
     print "*" * 80
 
     return response.SerializePartialToString()
@@ -250,6 +250,13 @@ def pvb_fight_start_1705(pro_data, player):
     logger.debug("blue_units===========%s" % blue_units[5].hp)
     logger.debug("--" * 40)
 
+    if blue_units[5].hp <= 0:
+        logger.debug("world boss already dead!")
+        response.res.result = False
+        response.res.result_no = 1705
+        return response.SerializePartialToString()
+
+
     # 根据鼓舞次数，增加ATK百分比
     atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
                boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
@@ -276,7 +283,7 @@ def pvb_fight_start_1705(pro_data, player):
 
     # 玩家信息更新
     boss.fight_times += 1
-    boss.set_award(const.PVB_IN_AWARD, demage_hp)
+    boss.demages.append(demage_hp)
     boss.last_fight_time = get_current_timestamp()
     player.world_boss.save_data()
 
@@ -292,7 +299,7 @@ def pvb_fight_start_1705(pro_data, player):
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(best_skill_id)
     response.red_best_skill= best_skill_id
     response.red_best_skill_level = red_best_skill_level
-    print response
+    #print response
 
     return response.SerializePartialToString()
 
@@ -301,8 +308,15 @@ def pvb_fight_start_1705(pro_data, player):
 def receive_pvb_award_remote(pvb_award_data, is_online, player):
     pvb_award = WorldBossAwardDB()
     pvb_award.ParseFromString(pvb_award_data)
-    player.world_boss.set_award(pvb_award.award_type, pvb_award.award)
-    logger.debug("receive_pvb_award_remote=================%s" % pvb_award)
+    boss = player.world_boss.get_boss("world_boss")
+    if pvb_award.award_type == const.PVB_IN_AWARD:
+        boss.set_award(const.PVB_IN_AWARD, boss.demages)
+        boss.demages = []
+        player.world_boss.save_data()
+    else:
+        boss.set_award(pvb_award.award_type, pvb_award.award)
+    player.world_boss.save_data()
+    logger.debug("receive_pvb_award_remote=================%s" % pvb_award.award_type)
     return True
 
 
@@ -328,11 +342,11 @@ def pvb_get_award_1708(data, player):
 
             change = response.gain.finance.finance_changes.add()
             change.item_type = 107
-            change.item_num = coin
+            change.item_num = int(coin)
             change.item_no = const.COIN
             change = response.gain.finance.finance_changes.add()
             change.item_type = 107
-            change.item_num = soul
+            change.item_num = int(soul)
             change.item_no = const.HERO_SOUL
     elif award_type != 0:
         bigbag = BigBag(award)
