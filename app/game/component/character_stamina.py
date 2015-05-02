@@ -10,6 +10,7 @@ from app.proto_file.db_pb2 import Stamina_DB
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 import time
+from shared.utils.date_util import is_next_day
 
 
 def peroid_of_stamina_recover():
@@ -40,12 +41,22 @@ class CharacterStaminaComponent(Component):
 
         stamina_add = (current_time - self._stamina.last_gain_stamina_time) / _peroid
         left_stamina = (current_time - self._stamina.last_gain_stamina_time) % _peroid
+        logger.debug("stamina_add:%s", stamina_add)
+        logger.debug("left_stamina:%s", left_stamina)
+        logger.debug("current stamina:%s", self.owner.finance[const.STAMINA])
+        logger.debug("buy_stamina_times:%s", self._stamina.buy_stamina_times)
+        logger.debug("last_buy_stamina_time:%s", self._stamina.last_buy_stamina_time)
+        logger.debug("current_time:%s", time.time())
 
         if self.owner.finance[const.STAMINA] < max_of_stamina():
             # 如果原来的体力超出上限，则不添加体力
             _value = self.owner.finance[const.STAMINA] + int(stamina_add)
             self.owner.finance[const.STAMINA] = min(_value, max_of_stamina())
         self._stamina.last_gain_stamina_time = current_time - left_stamina
+        if is_next_day(time.time(), self._stamina.last_buy_stamina_time):
+            logger.debug("==================")
+            self._stamina.buy_stamina_times = 0
+        self.save_data()
 
         self.check_time()
 
@@ -131,3 +142,12 @@ class CharacterStaminaComponent(Component):
     def contributors(self):
         self.check_time()
         return self._stamina.contributors
+    @property
+    def last_buy_stamina_time(self):
+        """上次购买体力时间"""
+        return self._stamina.last_buy_stamina_time
+
+    @last_buy_stamina_time.setter
+    def last_buy_stamina_time(self, value):
+        """上次购买体力时间"""
+        self._stamina.last_buy_stamina_time = value

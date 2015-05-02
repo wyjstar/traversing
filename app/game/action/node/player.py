@@ -112,7 +112,9 @@ def buy_stamina_6(request_proto, player):
     player.base_info.save_data()
 
     player.stamina.stamina += 120
+    player.stamina.last_buy_stamina_time = int(time.time())
     player.stamina.save_data()
+
 
     response.result = True
     return response.SerializePartialToString()

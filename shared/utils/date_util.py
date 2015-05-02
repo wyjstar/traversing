@@ -54,10 +54,14 @@ def is_next_day(current_time_stamp, last_time_stamp):
     """docstring for is_nextfname"""
     current_date = timestamp_to_date(current_time_stamp)
     last_date = timestamp_to_date(last_time_stamp)
-    if current_date.year >= current_date.year \
-        and current_date.month >= last_date.month \
-        and current_date.day > last_date.day:
-            return True
+    print("-================is_next_day")
+    print(current_date.day, current_date.year, current_date.month)
+    print(last_date.day, last_date.year, last_date.month)
+    if current_date.year >= last_date.year \
+        or current_date.month >= last_date.month \
+        or current_date.day > last_date.day:
+        print("===========")
+        return True
     return False
 
 def days_to_current(timestamp):
