@@ -26,6 +26,7 @@ def check_mem_db(delta):
             character_info = character_obj.hgetall()
             user_data = dict(id=char_id,
                              base_info=cPickle.dumps(character_info))
+
             insert_result = util.InsertIntoDB(CHARACTER_TABLE_NAME, user_data)
             if not insert_result:
                 logger.error('insert id:%s error', char_id)

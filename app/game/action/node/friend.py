@@ -329,7 +329,7 @@ def find_friend_request_1107(data, player):
     response.atk = 111
     response.hero_no = 11
     response.gift = datetime.datetime.now().day
-
+    print 'request.id_or_nickname', request.id_or_nickname
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObj(request.id_or_nickname)
         isexist = player_data.exists()
@@ -338,7 +338,7 @@ def find_friend_request_1107(data, player):
         isexist = nickname_obj.hexists(request.id_or_nickname)
         pid = nickname_obj.hget(request.id_or_nickname)
         player_data = tb_character_info.getObj(pid)
-
+    print 'isexist', isexist
     if isexist:
         response.id = player_data.hget('id')
         response.nickname = player_data.hget('nickname')

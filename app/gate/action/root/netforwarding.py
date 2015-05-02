@@ -106,7 +106,28 @@ def login_chat_remote(dynamic_id, character_id, guild_id, nickname, gag_time):
                                                  nickname,
                                                  guild_id,
                                                  gag_time)
-
+    
+@rootserviceHandle
+def register_push_message(uid, device_token):
+    return groot.child('push').register_push_message(uid,
+                                                     device_token)
+    
+@rootserviceHandle
+def set_push_switch(uid, *switchs):
+    return groot.child('push').set_push_switch(uid, 
+                                                     switchs)
+    
+@rootserviceHandle
+def add_push_message(uid, msg_type, message, send_time):
+    return groot.child('push').add_push_message(uid, 
+                                                     msg_type,
+                                                     message,
+                                                     send_time)
+    
+@rootserviceHandle
+def online_offline(uid, on_or_off):
+    return groot.child('push').add_push_message(uid, 
+                                                     on_or_off)
 
 @rootserviceHandle
 def login_guild_chat_remote(dynamic_id, guild_id):
