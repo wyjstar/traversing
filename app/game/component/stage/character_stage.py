@@ -148,8 +148,9 @@ class CharacterStageComponent(Component):
 
         if result:  # win
             conf = game_configs.stage_config.get('stages')
-            chapter_id = conf.get(stage_id).get('chapter')
+            chapter_id = None
             if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
+                chapter_id = conf.get(stage_id).get('chapter')
                 chapter = self.get_chapter(chapter_id)
                 chapter.update(self.calculation_star(chapter_id))
                 next_stages = game_configs.stage_config.get('condition_mapping')
@@ -164,8 +165,9 @@ class CharacterStageComponent(Component):
                         stage.state = -1  # 更新状态开启没打过
                         if conf.get(stage_id).get('type') == 1:
                             self._stage_progress = conf.get(stage_id).get('condition')
-                            chapter_star_num = self.calculation_star(chapter_id)
-                            self.star_num[chapter_id] = chapter_star_num
+                            if chapter_id:
+                                chapter_star_num = self.calculation_star(chapter_id)
+                                self.star_num[chapter_id] = chapter_star_num
 
         return True
 
