@@ -49,6 +49,7 @@ def add_level_rank_info(instance, users):
             rank_value = 0
         value = character_info['level'] * const.level_rank_xs + rank_value
         instance.add(uid, value)  # 添加rank数据
+        print 'level', value, rank_value, character_info['level'], uid
 
 
 def add_power_rank_info(instance, users):
@@ -61,17 +62,23 @@ def add_power_rank_info(instance, users):
             rank_value = 0
         value = rank_value * const.power_rank_xs + character_info['level']
         instance.add(uid, value)  # 添加rank数据
+        print 'power', value, rank_value, character_info['level'], uid
 
 
 def add_star_rank_info(instance, users):
     for uid in users:
         character_obj = tb_character_info.getObj(uid)
         character_info = character_obj.hmget(['level', 'stage_progress', 'star_num'])
-        star_num = character_info['star_num']
+        star_num_list = character_info['star_num']
+        star_num = 0
+        for x in star_num_list:
+            star_num += x
+
         value = star_num * const.power_rank_xs + character_info['level']
         instance.add(uid, value)  # 添加rank数据
         data = {'rank_stage_progress': character_info['stage_progress']}
         character_obj.hmset(data)
+        print 'star', value, star_num, character_info['level'], uid
 
 
 def flag_doublu_day():
@@ -85,7 +92,7 @@ def flag_doublu_day():
     return int(time1/(24*60*60)) % 2
 
 
-def tick1():
+def do_tick():
     if flag_doublu_day():
         level_rank_name = 'LevelRank2'
         power_rank_name = 'PowerRank2'
@@ -105,8 +112,14 @@ def tick1():
 
     instance = Ranking.instance(star_rank_name)
     add_star_rank_info(instance, users)
+
+
+def tick1():
+    do_tick
     need_time1 = 24*60*60
     reactor.callLater(need_time1, tick1)
+
+do_tick()
 
 now = int(time.time())
 t = time.localtime(now)
