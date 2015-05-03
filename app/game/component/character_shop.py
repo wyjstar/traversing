@@ -192,16 +192,11 @@ class CharacterShopComponent(Component):
             if draw_times >= k:
                 bags = gain.get(k)
                 for bag_id in bags:
-                    logger.debug("drop_bag_id %s", bag_id)
+                    # logger.debug("drop_bag_id %s", bag_id)
                     big_bag = BigBag(bag_id)
                     drop_items.extend(big_bag.get_drop_items())
                 break
-        logger.debug("drop_items %s", drop_items)
+        # logger.debug("drop_items %s", drop_items)
         self._pseudo_times[pseudo_bag_id] = draw_times + 1
         self.save_data()
         return drop_items
-
-
-
-
-
