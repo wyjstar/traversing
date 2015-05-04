@@ -50,7 +50,7 @@ CREATE TABLE `tb_pvp_rank` (
   `slots` mediumblob NOT NULL,
   `hero_ids` tinyblob NOT NULL,
   `hero_levels` tinyblob NOT NULL,
-  `head_no` int(11) NOT NULL,
+  `head_no` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `character_id` (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
