@@ -26,6 +26,10 @@ class CharacterStageComponent(Component):
         self._stage_up_time = 1  # 关卡挑战次数 更新 时间
         self._plot_chapter = 1  # 剧情章节
 
+        self._stage_progress = game_configs.stage_config.get('first_stage_id')
+        self._rank_stage_progress = game_configs.stage_config.get('first_stage_id')
+        self._star_num = [0]*40
+
     def init_data(self, character_info):
         stages = character_info.get('stage_info')
         for stage_id, stage in stages.items():
@@ -38,6 +42,11 @@ class CharacterStageComponent(Component):
         self._act_stage_info = character_info.get('act_stage')
         self._stage_up_time = character_info.get('stage_up_time')
         self._plot_chapter = character_info.get('plot_chapter', 1)
+
+        first_stage_id = game_configs.stage_config.get('first_stage_id')
+        self._stage_progress = character_info.get('stage_progress', first_stage_id)
+        self._rank_stage_progress = character_info.get('rank_stage_progress', first_stage_id)
+        self._star_num = character_info.get('star_num', [0]*40)
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -53,6 +62,9 @@ class CharacterStageComponent(Component):
                 'elite_stage': [0, int(time.time())],
                 'plot_chapter': 1,
                 'act_stage': [0, int(time.time())],
+                'stage_progress': self._stage_progress,
+                'rank_stage_progress': self._rank_stage_progress,
+                'star_num': self._star_num,
                 'stage_up_time': int(time.time())}
         return data
 
@@ -63,6 +75,9 @@ class CharacterStageComponent(Component):
                  'elite_stage': self._elite_stage_info,
                  'plot_chapter': self._plot_chapter,
                  'act_stage': self._act_stage_info,
+                 'star_num': self._star_num,
+                 'stage_progress': self._stage_progress,
+                 'rank_stage_progress': self._rank_stage_progress,
                  'stage_up_time': self._stage_up_time
                  }
 
@@ -132,8 +147,9 @@ class CharacterStageComponent(Component):
             self.owner.mine.reset_data()
 
         if result:  # win
+            conf = game_configs.stage_config.get('stages')
+            chapter_id = None
             if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
-                conf = game_configs.stage_config.get('stages')
                 chapter_id = conf.get(stage_id).get('chapter')
                 chapter = self.get_chapter(chapter_id)
                 chapter.update(self.calculation_star(chapter_id))
@@ -147,6 +163,10 @@ class CharacterStageComponent(Component):
                     state = self.check_stage_state(stage.stage_id)
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
+                        if chapter_id and conf.get(stage_id).get('type') == 1:
+                            self._stage_progress = conf.get(stage_id).get('condition')
+                            chapter_star_num = self.calculation_star(chapter_id)
+                            self.star_num[chapter_id] = chapter_star_num
 
         return True
 
@@ -205,3 +225,27 @@ class CharacterStageComponent(Component):
     @plot_chapter.setter
     def plot_chapter(self, values):
         self._plot_chapter = values
+
+    @property
+    def stage_progress(self):
+        return self._stage_progress
+
+    @stage_progress.setter
+    def stage_progress(self, values):
+        self._stage_progress = values
+
+    @property
+    def star_num(self):
+        return self._star_num
+
+    @star_num.setter
+    def star_num(self, values):
+        self._star_num = values
+
+    @property
+    def rank_stage_progress(self):
+        return self._rank_stage_progress
+
+    @rank_stage_progress.setter
+    def rank_stage_progress(self, values):
+        self._rank_stage_progress = values

@@ -15,12 +15,14 @@ import cPickle
 import random
 import time
 from gfirefly.server.globalobject import GlobalObject
-from app.proto_file.db_pb2 import Mail_PB
+from app.proto_file.db_pb2 import Mail_PB, WorldBossAwardDB
 from shared.utils.date_util import str_time_to_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from app.proto_file.notice_pb2 import NoticeResponse
 from shared.utils.random_pick import random_pick_with_percent
 from shared.utils.date_util import string_to_timestamp
+from shared.utils.const import const
+from gfirefly.server.logobj import logger
 
 
 tb_boss = RedisObject('tb_worldboss')
@@ -35,14 +37,14 @@ class WorldBoss(BaseBoss):
         self._state = 0               # boss状态：用于boss到期, 重置状态
 
         self.init_data()
-        self.init_time()
+        #self.init_time()
         reactor.callLater(1, self.loop_update)
 
     def init_data(self):
         """docstring for init_data"""
         str_data = tb_boss.get(self._boss_name)
         if not str_data:
-            logger.debug("init data...")
+            logger.debug("init data=============== %s" % self._boss_name)
             self.update_boss()
             return
         world_boss_data = cPickle.loads(str_data)
@@ -132,12 +134,88 @@ class WorldBoss(BaseBoss):
 
         self.save_data()
 
-        # todo:对前十名和最后击杀者发放奖励
-        if self._last_shot_item:
-            self.send_award_mail_kill()
-        self.send_award_mail_damage()
+        # 发放奖励：前十名, 累积伤害, 最后击杀, 参与奖
+        self.send_award_top_ten()
+        self.send_award_add_up()
+        self.send_award_last()
+        self.send_award_in()
 
-    def send_award_mail_damage(self):
+    def send_award_top_ten(self):
+        """
+        排行奖励, top 10
+        """
+        logger.debug("send_award_top_ten===========")
+        award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
+        for up, down, big_bag_id in award_info.values():
+            ranks = self._rank_instance.get(up, down)
+            for player_id, v in ranks:
+                logger.debug("send_award_top_ten: player_id %s, value %s, big_bag_id %s" % (player_id, v, big_bag_id))
+                self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id)
+
+    def send_award_add_up(self):
+        """
+        累积奖励
+        """
+        logger.debug("send_award_add_up==========")
+        hp_max = self.get_hp()
+        accumulated_rewards = game_configs.base_config.get("world_boss").get('accumulated_rewards')
+
+        for player_id, v in self._rank_instance.get(1, 0):
+            for i in range(5, 1, -1):
+                reward_info = accumulated_rewards.get(i)
+                if hp_max * reward_info[0] < v:
+                    self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
+                    break
+                else:
+                    return
+        #对大量玩家进行处理
+        #i = 0
+        #while True and i < 1000:
+            #i+=1
+            #ranks = self._rank_instance.get(100*(i-1)+1, 100*i)
+            #logger.debug("send_award_add_up: %s" % ranks)
+            #if len(ranks) == 0:
+                #return
+            #for player_id, v in ranks:
+                #for i in range(5, 1, -1):
+                    #reward_info = accumulated_rewards.get(i)
+                    #if hp_max * reward_info[0] < v:
+                        #self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
+                        #break
+                    #else:
+                        #return
+
+    def send_award_last(self):
+        """
+        最后击杀
+        """
+        if not self._last_shot_item:
+            return
+        player_id = self._last_shot_item['player_id']
+        big_bag_id = game_configs.base_config.get("world_boss").get('last_kill_rewards')
+        logger.debug("send_award_last=============== player_id %s, big_bag_id %s" % (player_id, big_bag_id))
+        self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
+
+    def send_award_in(self):
+        """ 参与奖励
+        """
+        logger.debug("send_award_in=========== %s", self._rank_instance.get(1, 0))
+        for player_id, v in self._rank_instance.get(1, 0):
+            logger.debug("send_award_in==== %s %s" % (player_id, v))
+            self.send_award(player_id, const.PVB_IN_AWARD, int(v))
+
+    def send_award(self, player_id, award_type, award):
+        """
+        发送奖励
+        """
+        logger.debug("send_award: player_id, award_type, award %s %s %s" % (player_id, award_type, award))
+        award_data = WorldBossAwardDB()
+        award_data.award_type = award_type
+        award_data.award = award
+        remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+        remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
+                                                    int(player_id), award_data.SerializePartialToString())
+    def send_award_damage(self):
         award_mail = game_configs.base_config.get('hurt_rewards_worldboss_rank')
         for up, down, mail_id in award_mail.values():
             ranks = self._rank_instance.get(up, down)
@@ -152,7 +230,10 @@ class WorldBoss(BaseBoss):
                 remote_gate.push_message_to_transit_remote('receive_mail_remote',
                                                            int(player_id), mail_data)
 
-    def send_award_mail_kill(self):
+    def send_award_kill(self):
+        if not self._last_shot_item:
+            return
+        logger.debug("send_award_kill===============")
         mail_id = game_configs.base_config.get('kill_rewards_worldboss')
 
         player_id = self._last_shot_item['player_id']
@@ -179,6 +260,7 @@ class WorldBoss(BaseBoss):
             self._stage_id = 800101
             return
         if kill_or_not:  # 如果boss被击杀，则升级boss
+            logger.debug("kill boss =============")
             if current_stage_id == self._stage_id_am: # am
                 self._stage_id_am = current_stage_id + 100
             else:  # pm

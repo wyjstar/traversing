@@ -1,5 +1,6 @@
 import "common.proto";
 import "stage.proto";
+import "line_up.proto";
 //获取boss开始前的所有信息， command:1701,1704
 message PvbRequest
 {
@@ -8,8 +9,11 @@ message PvbRequest
 message PvbRankItem{
     required string nickname = 1; //玩家昵称
     required int32 level = 2;//等级
-    required int32 first_hero_no = 3;//第一位武将id，用来显示玩家头像
+    required int32 now_head = 3;//玩家头像
     required int32 demage_hp = 4; //伤害血量
+    optional LineUpResponse line_up_info = 5; //阵容信息
+    optional int32 player_id = 6; // 玩家id
+    optional int32 rank_no = 7; // 排名
 }
 
 message LuckyHeroAttr
@@ -41,6 +45,7 @@ message PvbBeforeInfoResponse{
     optional int32 last_fight_time= 13;         // 上次战斗结束时间
     optional int32 encourage_coin_num = 14;     // 金币鼓舞次数
     optional int32 encourage_gold_num = 15;     // 元宝鼓舞次数
+    optional int32 gold_reborn_times = 16;     // 元宝复活次数
 }
 
 //请求pvb玩家信息, command:1702
@@ -98,3 +103,12 @@ message MineBossResponse
     required string boss_id = 2; //boss id
     required int32 stage_id = 3; //关卡id
 }
+
+//Pvb奖品:参与奖、累积伤害奖、排行奖、最后击杀奖励 command:1708
+message PvbAwardResponse
+{
+    required bool is_over = 1; //领奖是否结束
+    optional int32 award_type = 2; //奖励类型:排行奖1, 累积奖励2, 最后击杀3, 参与奖4
+    optional GameResourcesResponse gain = 3;
+}
+

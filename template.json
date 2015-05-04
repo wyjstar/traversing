@@ -200,5 +200,6 @@
     "deploy":{
         "channel": "taiwan",
         "remote_deployed": false
-    }
+    },
+    "server_no": "<=server_no=>"
 }

@@ -10,13 +10,16 @@ monkey.patch_os()
 CONFIG_FILE = 'config.json'
 DEFAULT_JSON = dict(server_name='local',
                     login_ip='127.0.0.1',
-                    front_ip='127.0.0.1')
+                    front_ip='127.0.0.1',
+                    server_no=1)
 
 
 if __name__ == "__main__":
 
     if os.path.exists('/var/excel_cpickle'):
         os.system("cp /var/excel_cpickle config/excel_cpickle")
+    if os.path.exists('/var/server_list.json'):
+        os.system("cp /var/server_list.json server_list.json")
 
     if os.path.exists('template.json'):
         template = open('template.json')

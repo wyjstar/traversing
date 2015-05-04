@@ -81,6 +81,7 @@ class Ranking:
         return tb_rank.zincrby(self.label, key, value)
 
     def clear_rank(self):
+        print "clear_rank========"
         tb_rank.zremrangebyrank(self.label, 0, -1)
 
 

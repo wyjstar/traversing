@@ -13,6 +13,7 @@ from shared.utils.date_util import get_current_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
+#from app.proto_file import line_up_pb2
 
 
 @rootserviceHandle
@@ -27,7 +28,7 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     """
     boss = get_boss(boss_id)
     print "boss ", boss
-    logger.debug("boss %s" % boss_id)
+    logger.debug("stage id %s" % boss.stage_id)
     response = world_boss_pb2.PvbBeforeInfoResponse()
 
     if boss_id == "world_boss":
@@ -46,12 +47,12 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
                 hero_attr.attr_value = v[1]
 
     # 返回伤害前十名
-    for rank_item in boss.get_rank_items():
+    for k, rank_item in enumerate(boss.get_rank_items()):
         rank_item_pb = response.rank_items.add()
-        update_rank_items(rank_item_pb, rank_item)
+        update_rank_items(k+1, rank_item_pb, rank_item)
 
     # 最后击杀
-    update_rank_items(response.last_shot_item, boss.last_shot_item)
+    update_rank_items(-1, response.last_shot_item, boss.last_shot_item)
 
     # 奇遇
     response.debuff_skill_no = boss.debuff_skill_no
@@ -65,15 +66,25 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     response.demage_hp = int(boss.get_demage_hp(player_id))
     # 名次
     response.rank_no = boss.get_rank_no(player_id)
-    print response
 
     return response.SerializeToString()
 
-def update_rank_items(rank_item_pb, rank_item):
+def update_rank_items(k, rank_item_pb, rank_item):
     rank_item_pb.nickname = rank_item.get("nickname", "")
     rank_item_pb.level = rank_item.get("level", 0)
-    rank_item_pb.first_hero_no = rank_item.get("first_hero_no", 0)
+    rank_item_pb.now_head = rank_item.get("now_head", 0) #rank_item.get("first_hero_no", 0)
     rank_item_pb.demage_hp = int(rank_item.get("demage_hp", 0))
+    if rank_item.get("line_up_info"):
+        ##rank_item_pb.line_up_info = line_up_pb2.LineUpResponse()
+        rank_item_pb.line_up_info.ParseFromString(rank_item.get("line_up_info"))
+        #line_up_info = line_up_pb2.LineUpResponse()
+        #rank_item_pb.line_up_info.ParseFromString()
+    rank_item_pb.player_id = rank_item.get("player_id", 0)
+    rank_item_pb.rank_no = k
+    logger.debug("player_id %s", rank_item_pb.player_id)
+    logger.debug("rank_no %s", rank_item_pb.rank_no)
+    logger.debug("demage_hp %s", rank_item_pb.demage_hp)
+
 
 @rootserviceHandle
 def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info, boss_id):
@@ -91,12 +102,6 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
 
     # 保存排行和玩家信息
     demage_hp = blue_units.get(5).hp - hp_left # 伤害血量
-    first_unit = red_units.values()[0]
-    first_hero_no = first_unit.unit_no # 第一个武将no，用于显示头像
-    if first_unit.is_awake:
-        first_hero_no = first_unit.origin_no
-
-    player_info["first_hero_no"] = first_hero_no
     player_info["demage_hp"] = demage_hp
     boss.add_rank_item(player_info)
 
@@ -106,7 +111,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
         boss.boss_dead_time = get_current_timestamp()
 
     boss.save_data()
-    return result
+    return result, demage_hp
 
 @rootserviceHandle
 def pvb_player_info_remote(no, boss_id):

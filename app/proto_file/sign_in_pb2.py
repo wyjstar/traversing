@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='sign_in.proto',
   package='',
-  serialized_pb='\n\rsign_in.proto\x1a\x0c\x63ommon.proto\"\x8a\x01\n\x11GetSignInResponse\x12\x0c\n\x04\x64\x61ys\x18\x01 \x03(\x05\x12\x12\n\nsign_round\x18\x02 \x02(\x05\x12\x13\n\x0b\x63urrent_day\x18\x05 \x02(\x05\x12 \n\x18\x63ontinuous_sign_in_prize\x18\x03 \x03(\x05\x12\x1c\n\x14repair_sign_in_times\x18\x04 \x02(\x05\"\"\n\x13RepairSignInRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"T\n\x0eSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x17\x43ontinuousSignInRequest\x12\x14\n\x0csign_in_days\x18\x01 \x02(\x05\"^\n\x18\x43ontinuousSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\rsign_in.proto\x1a\x0c\x63ommon.proto\"\xa5\x01\n\x11GetSignInResponse\x12\x0c\n\x04\x64\x61ys\x18\x01 \x03(\x05\x12\x12\n\nsign_round\x18\x02 \x02(\x05\x12\x13\n\x0b\x63urrent_day\x18\x05 \x02(\x05\x12 \n\x18\x63ontinuous_sign_in_prize\x18\x03 \x03(\x05\x12\x1c\n\x14repair_sign_in_times\x18\x04 \x02(\x05\x12\x19\n\x11\x62ox_sign_in_prize\x18\x06 \x03(\x05\"\"\n\x13RepairSignInRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"T\n\x0eSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x17\x43ontinuousSignInRequest\x12\x14\n\x0csign_in_days\x18\x01 \x02(\x05\"^\n\x18\x43ontinuousSignInResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"\x1e\n\x10SignInBoxRequest\x12\n\n\x02id\x18\x01 \x02(\x05')
 
 
 
@@ -61,6 +61,13 @@ _GETSIGNINRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='box_sign_in_prize', full_name='GetSignInResponse.box_sign_in_prize', index=5,
+      number=6, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -71,7 +78,7 @@ _GETSIGNINRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=32,
-  serialized_end=170,
+  serialized_end=197,
 )
 
 
@@ -98,8 +105,8 @@ _REPAIRSIGNINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=172,
-  serialized_end=206,
+  serialized_start=199,
+  serialized_end=233,
 )
 
 
@@ -133,8 +140,8 @@ _SIGNINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=208,
-  serialized_end=292,
+  serialized_start=235,
+  serialized_end=319,
 )
 
 
@@ -161,8 +168,8 @@ _CONTINUOUSSIGNINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=294,
-  serialized_end=341,
+  serialized_start=321,
+  serialized_end=368,
 )
 
 
@@ -196,8 +203,36 @@ _CONTINUOUSSIGNINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=343,
-  serialized_end=437,
+  serialized_start=370,
+  serialized_end=464,
+)
+
+
+_SIGNINBOXREQUEST = _descriptor.Descriptor(
+  name='SignInBoxRequest',
+  full_name='SignInBoxRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='SignInBoxRequest.id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=466,
+  serialized_end=496,
 )
 
 _SIGNINRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -209,6 +244,7 @@ DESCRIPTOR.message_types_by_name['RepairSignInRequest'] = _REPAIRSIGNINREQUEST
 DESCRIPTOR.message_types_by_name['SignInResponse'] = _SIGNINRESPONSE
 DESCRIPTOR.message_types_by_name['ContinuousSignInRequest'] = _CONTINUOUSSIGNINREQUEST
 DESCRIPTOR.message_types_by_name['ContinuousSignInResponse'] = _CONTINUOUSSIGNINRESPONSE
+DESCRIPTOR.message_types_by_name['SignInBoxRequest'] = _SIGNINBOXREQUEST
 
 class GetSignInResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -239,6 +275,12 @@ class ContinuousSignInResponse(_message.Message):
   DESCRIPTOR = _CONTINUOUSSIGNINRESPONSE
 
   # @@protoc_insertion_point(class_scope:ContinuousSignInResponse)
+
+class SignInBoxRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SIGNINBOXREQUEST
+
+  # @@protoc_insertion_point(class_scope:SignInBoxRequest)
 
 
 # @@protoc_insertion_point(module_scope)
