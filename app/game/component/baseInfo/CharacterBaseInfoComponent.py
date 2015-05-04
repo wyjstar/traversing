@@ -153,6 +153,9 @@ class CharacterBaseInfoComponent(Component):
     def addexp(self, exp, reason):
         self._exp += exp
         before_level = self._level
+        max_level = game_configs.base_config.get('player_level_max'):
+        if self._level == max_level:
+            return
 
         while self._exp >= game_configs.player_exp_config.get(self._level).get('exp'):
             self._exp -= game_configs.player_exp_config.get(self._level).get('exp')
@@ -160,7 +163,7 @@ class CharacterBaseInfoComponent(Component):
             logger.info('player id:%s level up ++ %s>>%s', self.id, before_level, self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
-            if not game_configs.player_exp_config.get(self._level):
+            if self._level == max_level:
                 return
 
         # =====Tlog================
