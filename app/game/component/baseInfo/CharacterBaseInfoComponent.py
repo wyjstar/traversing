@@ -153,7 +153,7 @@ class CharacterBaseInfoComponent(Component):
     def addexp(self, exp, reason):
         self._exp += exp
         before_level = self._level
-        max_level = game_configs.base_config.get('player_level_max'):
+        max_level = game_configs.base_config.get('player_level_max')
         if self._level == max_level:
             return
 
