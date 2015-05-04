@@ -26,7 +26,7 @@ message Unpar{
 	required int32 unpar_level = 2;
 }
 
-//所有返回
+//所有返回 
 message LineUpResponse{
 	repeated LineUpSlot slot = 1;
 	repeated LineUpSlot sub = 2;
@@ -67,4 +67,22 @@ message ChangeHeroRequest{
 // 查看目标玩家的阵容信息 706
 message GetLineUpRequest{
 	required int32 target_id = 1; // 玩家ID
+}
+
+message EquipmentStrengthInfo
+{
+	required int32 slot_no = 1; // 装备位置编号
+	repeated EnhanceDataFormat data= 2; // 强化数据
+}
+
+// 一键强化请求707
+message AllEquipmentsStrengthRequest{
+	required int32 slot_no = 1; // 位置编号
+}
+message AllEquipmentsStrengthResponse{
+    required CommonResponse res = 1;
+	required int32 slot_no = 5; // 位置编号
+    required int32 coin = 2;  // 消耗
+	repeated EquipmentStrengthInfo infos = 3; // 装备强化信息
+	optional LineUpResponse line_up = 4; // 阵容信息
 }

@@ -11,6 +11,8 @@ from app.game.redis_mode import tb_character_info
 from app.game.core.check import check_have_equipment
 from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import CommonResponse
+from app.game.action.node.equipment import enhance_equipment
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -178,6 +180,7 @@ def change_equipments_703(pro_data, player):
     slot_no = request.slot_no
     no = request.no
     equipment_id = request.equipment_id
+    logger.debug("request %s" % request)
     res = change_equipment(slot_no, no, equipment_id, player)
     response.res.result = res.get("result")
     if res.get("result"):
@@ -220,6 +223,89 @@ def unpar_upgrade_705(pro_data, player):
                                               request.skill_level)
     return response.SerializePartialToString()
 
+
+@remoteserviceHandle('gate')
+def one_key_strength_equipment_707(pro_data, player):
+    """
+    一键强化阵容装备
+    """
+    request = line_up_pb2.AllEquipmentsStrengthRequest()
+    request.ParseFromString(pro_data)
+    slot_no = request.slot_no   #卡牌槽
+    response = line_up_pb2.AllEquipmentsStrengthResponse() # 响应
+
+    # 校验
+    if not player.base_info.all_equipment_strength_one_key:
+        logger.debug('one_key_strength_equipment_707 vip level not reach!%d' % player.base_info.all_equipment_strength_one_key)
+        response.res.result = False
+        response.res.result_no = 403
+        return response.SerializePartialToString()
+
+    line_up_slot = player.line_up_component.line_up_slots[slot_no]
+    equip_slots = line_up_slot.equipment_slots.values()
+    equ_slots = [] # 去掉不能强化的装备
+    for item in equip_slots:
+        if not item.equipment_obj or item.equipment_obj.equipment_config_info.type in [5, 6]:
+            continue
+        equ_slots.append(item)
+
+    def compare(a, b):
+        if a.equipment_obj.attribute.strengthen_lv < b.equipment_obj.attribute.strengthen_lv:
+            return 1
+        elif a.equipment_obj.attribute.strengthen_lv > b.equipment_obj.attribute.strengthen_lv:
+            return -1
+        else:
+            if a.equipment_obj.equipment_config_info.quality < b.equipment_obj.equipment_config_info.quality:
+                return 1
+            elif a.equipment_obj.equipment_config_info.quality < b.equipment_obj.equipment_config_info.quality:
+                return -1
+            else:
+                for i in [2,3,1,4]: # 强化顺序武器2》铠甲3》头盔1》战靴4
+                    if a.equipment_obj.equipment_config_info.type == i:
+                        return 1
+                    if b.equipment_obj.equipment_config_info.type == i:
+                        return -1
+                return 1
+
+    results = []
+
+    origin_coin = player.finance.coin
+    while len(results) < len(equ_slots):
+        sorted_equip_slots = sorted(equ_slots, cmp=compare, reverse=True)
+
+        for equ in sorted_equip_slots:
+            enhance_info_pb = response.infos.add()
+            equipment_id = equ.equipment_obj.base_info.id
+            logger.debug("equ slot no: %s id:%s" % (equ.id, equ.equipment_obj.base_info.id))
+            enhance_info = enhance_equipment(equipment_id, 1, player)
+            if not enhance_info.get('result'):
+                if equ.id not in results: results.append(equ.id)
+                logger.debug("equ slot no fail: %s %s" % (equ.id, enhance_info.get("result_no")))
+                continue
+            logger.debug("equ slot no succ: %s" % equ.id)
+
+            enhance_info_pb.slot_no = equ.id
+            enhance_record = enhance_info.get('enhance_record')
+            for before_lv, after_lv, enhance_cost in enhance_record:
+                data_format = enhance_info_pb.data.add()
+                data_format.before_lv = before_lv
+                data_format.after_lv = after_lv
+                data_format.cost_coin = enhance_cost
+                tlog_action.log('EquipmentEnhance', player,
+                                enhance_info.get('equipment_no'),
+                                equipment_id, before_lv, after_lv)
+            break
+
+    after_coin = player.finance.coin
+
+    line_up_info(player, response.line_up)
+    response.coin = origin_coin - after_coin
+    response.slot_no = slot_no
+    response.res.result = True
+
+    logger.debug(response.coin)
+    logger.debug(response.infos)
+    return response.SerializePartialToString()
 
 def change_hero_logic(slot_no, hero_no, change_type, player):
     if hero_no != 0 and hero_no in player.line_up_component.hero_nos:
@@ -288,10 +374,11 @@ def change_equipment(slot_no, no, equipment_id, player):
     return {"result":True}
 
 
-def line_up_info(player):
+def line_up_info(player, response=None):
     """取得用户的阵容信息
     """
-    response = line_up_pb2.LineUpResponse()
+    if not response:
+        response = line_up_pb2.LineUpResponse()
     for temp in player.line_up_component.line_up_order:
         response.order.append(temp)
     response.unpar_id = player.line_up_component.current_unpar

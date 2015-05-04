@@ -358,7 +358,6 @@ def refresh_shop_items_507(pro_data, player):
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
 
-
 @remoteserviceHandle('gate')
 def get_shop_items_508(pro_data, player):
     """获取商品列表"""

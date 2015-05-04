@@ -10,6 +10,7 @@ from shared.utils.random_pick import random_multi_pick_without_repeat
 from gfirefly.server.logobj import logger
 from time import localtime
 import time
+from shared.utils.date_util import is_past_time
 from app.game.core.drop_bag import BigBag
 
 
@@ -63,7 +64,8 @@ class CharacterShopComponent(Component):
         data = {}
         data['buyed_item_ids'] = []
         data['refresh_times'] = 0
-        data['last_refresh_time'] = time.time()
+        data['last_refresh_time'] = time.time() # 手动刷新
+        data['last_auto_refresh_time'] = time.time() # 自动刷新
         data['luck_num'] = 0.0
         data['luck_time'] = time.time()
         data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
@@ -92,6 +94,15 @@ class CharacterShopComponent(Component):
 
             if 'vip_limit_items' not in v:
                 v['vip_limit_items'] = {}
+
+            #自动刷新列表
+            shop_type_info = game_configs.shop_type_config.get(k)
+            freeRefreshTime = shop_type_info.freeRefreshTime
+            if shop_type_info.freeRefreshTime == "-1":
+                continue
+            logger.debug("%s %s" % (freeRefreshTime, v['last_auto_refresh_time']))
+            if time.time() > is_past_time(freeRefreshTime, v['last_auto_refresh_time']):
+                self.auto_refresh_items(k)
 
     def get_shop_data(self, t):
         if t not in self._shop_data:
@@ -130,10 +141,12 @@ class CharacterShopComponent(Component):
         result = self._owner.pay.pay(price, func)
         return result
 
-    def refresh_items(self, type_shop):
+    def auto_refresh_items(self, type_shop):
+        logger.debug("auto_refresh_items=========")
         if type_shop in self._shop_data:
-            ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop].luck_num)
+            ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop]['luck_num'])
             self._shop_data[type_shop]['item_ids'] = ids
+            self._shop_data[type_shop]['last_auto_refresh_time'] = time.time()
             logger.info('refresh_item_ids:%s', ids)
             self.save_data()
             return True

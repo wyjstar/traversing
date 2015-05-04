@@ -297,6 +297,12 @@ class CharacterBaseInfoComponent(Component):
         return vip_content.equipmentStrengthOneKey
 
     @property
+    def all_equipment_strength_one_key(self):
+        """装备一键强化"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.allStrength
+
+    @property
     def shop_refresh_times(self):
         """每日商店刷新次数"""
         vip_content = game_configs.vip_config.get(self._vip_level)
@@ -475,3 +481,8 @@ class CharacterBaseInfoComponent(Component):
     @gen_balance.setter
     def gen_balance(self, value):
         self._gen_balance = value
+    @property
+    def buy_coin_times(self):
+        """招财进宝次数"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyGetMoneyTimes
