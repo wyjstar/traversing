@@ -179,6 +179,8 @@ def _with_battle_info(response, pid):
         response.physical_def = battle_unit.physical_def
         response.magic_def = battle_unit.magic_def
         response.buddy_head = battle_unit.unit_no
+        response.buddy_power = battle_unit.power
+        response.buddy_level = battle_unit.level
 
     response.id = pid
 
