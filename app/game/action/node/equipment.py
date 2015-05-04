@@ -250,6 +250,9 @@ def enhance_equipment(equipment_id, enhance_type, player):
     strength_max = player.base_info.level + equipment_obj.strength_max
     current_strength_lv = equipment_obj.attribute.strengthen_lv
 
+    if strength_max <= current_strength_lv:
+        return {'result': False, 'result_no': 402, 'message': u''}
+
     num = 0
     if enhance_type == 1:
         result = __do_enhance(player, equipment_obj)

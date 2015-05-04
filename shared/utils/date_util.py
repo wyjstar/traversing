@@ -69,6 +69,25 @@ def days_to_current(timestamp):
     some_date = time.localtime(timestamp)
     return now.tm_yday-some_date.tm_yday
 
+def is_past_time(next_time, last_time):
+    """
+    current_time是否超过下一个时间next_time
+    last_time 上次操作时间
+    next_time 下次应该操作时间 (时:分:秒)：比如下次自动刷新商城
+    return 下次的应该操作时间
+    """
+    _next_time = next_time.split(':')
+    some_date = time.localtime(last_time)
+
+    #get_timestamp(int(_next_time[0], int(_next_time[1]), int(_next_time[2]))
+    hour = int(_next_time[0])
+    minute = int(_next_time[1])
+    sec= int(_next_time[2])
+
+    d = datetime.datetime(some_date.tm_year, some_date.tm_mon, some_date.tm_mday, hour, minute, sec)
+    if d < datetime.datetime.fromtimestamp(last_time):
+        d = d + datetime.timedelta(days=1)
+    return time.mktime(d.timetuple())
 
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)

@@ -45,7 +45,8 @@ class PlayerCharacter(object):
                  stone=component.UserStone(self),
                  travel=component.CharacterTravelComponent(self),
                  runt=component.CharacterRuntComponent(self),
-                 recharge=component.CharacterRechargeGift(self)
+                 recharge=component.CharacterRechargeGift(self),
+                 buy_coin=component.CharacterBuyCoinActivity(self)
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -59,6 +60,7 @@ class PlayerCharacter(object):
 
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)
+        logger.debug('is_new_character,pid:', self._pid)
         # print 'exist:', self._pid, not character_info.exists()
         return not character_info.exists()
 
@@ -223,3 +225,6 @@ class PlayerCharacter(object):
     @property
     def pay(self):
         return self._pay
+    @property
+    def buy_coin(self):
+        return self._components['buy_coin']

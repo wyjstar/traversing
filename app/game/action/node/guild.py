@@ -20,6 +20,7 @@ from app.proto_file.db_pb2 import Mail_PB
 from app.game.component.mail.mail import MailComponent
 from app.game.action.root import netforwarding
 from app.game.core.stage.stage import Stage
+from shared.utils.ranking import Ranking
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -790,9 +791,10 @@ def get_guild_rank_810(data, player):
     response = GuildRankProto()
 
     # 得到公会排行
-    ranks = remote_gate.get_guild_rank_remote()
+    rank_info = remote_gate.get_rank_remote('GuildLevel', 1, 9999)
+
     rank_num = 1
-    for uuid, _rank in ranks.items():
+    for (uuid, _rank) in rank_info:
         data1 = tb_guild_info.getObj(uuid).hgetall()
         if data1:
             guild_obj = Guild()

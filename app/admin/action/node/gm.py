@@ -41,7 +41,7 @@ def gm():
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
-                     'get_user_eqs', 'copy_user']
+                     'get_user_eqs', 'copy_user', 'update_server_list']
     if request.args:
         t_dict = request.args
     else:
@@ -60,6 +60,15 @@ def gm():
     logger.info('######################################,server2gm:%s', res)
 
     return json.dumps(res)
+
+
+def update_server_list(args):
+    url = args['server_list_url']
+    urllib.urlretrieve(url, '/var/server_list.json')
+    os.system("cp /var/server_list.json server_list.json")
+    com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
+    os.system(com)
+    return {"success": 1}
 
 
 def update_excel(args):
@@ -87,12 +96,16 @@ def get_user_info(args):
     if not isexist:
         return {'success': 0, 'message': 2}
 
+    finances = character_obj.hget('finances')
     character_info = character_obj.hmget(['nickname', 'attackpoint',
                                           'heads', 'upgrade_time',
                                           'level', 'id', 'exp',
                                           'vip_level', 'register_time',
                                           'upgrade_time', 'guild_id',
-                                          'position'])
+                                          'position', 'finances',
+                                          'recharge_accumulation',
+                                          'gen_balance'])
+    finances = character_info['finances']
     if character_info['guild_id'] == 'no':
         position = 0
         guild_name = ''
@@ -118,6 +131,10 @@ def get_user_info(args):
                         'recently_login_time': character_info['upgrade_time'],
                         'guild_id': guild_id,
                         'guild_name': guild_name,
+                        'gold': finances[2],
+                        'gold_all_cost': finances[9],
+                        'gold_all_recharge': character_info['recharge_accumulation'],
+                        'gold_all_send': character_info['gen_balance'],
                         'position': position}}
 
 
@@ -256,7 +273,8 @@ def modify_user_info(args):
             chapter_id = game_configs.stage_config.get('stages').get(attr_value)['chapter']
         else:
             chapter_id = game_configs.stage_config.get('stages').get(attr_value)['chapter'] + 1
-        data = {'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in stage_objs.iteritems()]), 'plot_chapter': chapter_id}
+
+        data = {'stage_progress': attr_value, 'stage_info': dict([(stage_id, stage.dumps()) for stage_id, stage in stage_objs.iteritems()]), 'plot_chapter': chapter_id}
         character_obj.hmset(data)
         return {'success': 1}
     elif args['attr_name'] == 'nickname':
@@ -337,6 +355,12 @@ def get_user_finances(args):
 
     finances = character_obj.hget('finances')
     del finances[0]
+    finances[3] = character_obj.hget('lively')
+    finances[13] = character_obj.hget('stone1')
+    finances[14] = character_obj.hget('stone2')
+    finances[17] = character_obj.hget('shoes')[0]
+    finances[18] = character_obj.hget('shoes')[1]
+    finances[19] = character_obj.hget('shoes')[2]
 
     return {'success': 1, 'message': finances}
 

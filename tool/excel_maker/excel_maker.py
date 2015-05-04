@@ -133,6 +133,8 @@ def format_by_type(format_type, value):
     if format_type == 'str':
         if type(value) is float:
             return str(value).split('.')[0]
+        value = value.replace("\\n", "\n")
+
         return value.encode("utf-8")
 
     if format_type == 'eval':
@@ -172,15 +174,15 @@ def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):
         obj_list.append(obj)
 
         print ''
-        insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
+        #insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
 
 
-        print "insert_data_sql:", insert_data_sql
-        if cur:
-            try:
-                cur.execute(insert_data_sql)
-            except Exception, e:
-                raise e
+        #print "insert_data_sql:", insert_data_sql
+        #if cur:
+            #try:
+                #cur.execute(insert_data_sql)
+            #except Exception, e:
+                #raise e
     #print 'obj_list:', json.dumps(obj_list)
     # print 'abc', json.dumps(obj_list, ensure_ascii=False)
 
@@ -225,15 +227,15 @@ def table2jsn_prop(table, jsonFileName, luaFileName, objName, cur=None):
 
     print ''
     #insert_content = insert_content.replace("'", "''")
-    insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
+    #insert_data_sql = "insert into %s values(%s);" % (objName, insert_content[:-1])
 
 
-    print "insert_data_sql:", insert_data_sql
-    if cur:
-        try:
-            cur.execute(insert_data_sql)
-        except Exception, e:
-            raise e
+    #print "insert_data_sql:", insert_data_sql
+    #if cur:
+        #try:
+            #cur.execute(insert_data_sql)
+        #except Exception, e:
+            #raise e
     save_to_file(json.dumps(obj, ensure_ascii=False), luaFileName, objName, PROP_TABLE)
     # save_to_file("[{'id':1}]", path)
     with open(jsonFileName, mode='wb') as f:

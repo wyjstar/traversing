@@ -25,6 +25,7 @@ wx_appkey = '8274b9e862581f8b4976ba90ad2d4b77'
 @webserviceHandle('/login')
 def server_login():
     """ account login """
+    logger.info("server_login login in.")
     openid = request.args.get('open_id')
     access_token = request.args.get('access_token')
     platform = request.args.get('platform')

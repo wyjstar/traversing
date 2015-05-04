@@ -24,7 +24,10 @@ class BaseConfig(object):
                 open_level = config_value.get("worldboss_open_level"),
                 free_fight_times = config_value.get("worldbossFightTimes"),
                 rank_rewards = config_value.get("hurt_rewards_worldboss_rank"),
+                hurt_rank_rewards = config_value.get("worldbossHurtRankRewards"),
+                accumulated_rewards = config_value.get("worldbossAccumulatedReward"),
                 kill_rewards = config_value.get("kill_rewards_worldboss"),
+                last_kill_rewards = config_value.get("worldbossKillRewards"),
                 time_to_upgrade = config_value.get("time_kill_worldboss_to_upgrade"),
                 lucky_hero_1 = config_value.get("lucky_hero_1"),
                 lucky_hero_2 = config_value.get("lucky_hero_2"),
@@ -93,7 +96,9 @@ class BaseConfig(object):
         config_value["equPrefix"] = equPrefix
         config_value["CoinCardFirst"] = parse(config_value["CoinCardFirst"])
         config_value["CardFirst"] = parse(config_value["CardFirst"])
+        config_value["sweepNeedItem"] = parse(config_value["sweepNeedItem"])
         config_value["arena_win_points"] = parse(config_value["arena_win_points"])
+        config_value["price_sweep"] = parse(config_value["price_sweep"])
 
         # modify cook data
         cooking_data = config_value['cookingWinePrice']

@@ -79,6 +79,7 @@ class CharacterBaseInfoComponent(Component):
         self._apple_transaction_id = character_info.get('apple_transaction_id', '')
         self._first_recharge_ids = character_info.get('first_recharge_ids', [])
         self._recharge = character_info.get('recharge_accumulation')
+        self._gen_balance = character_info.get('gen_balance', 0)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -109,7 +110,8 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids,
-                    recharge_accumulation=self._recharge)
+                    recharge_accumulation=self._recharge,
+                    gen_balance=self._gen_balance)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -135,7 +137,8 @@ class CharacterBaseInfoComponent(Component):
                     google_consume_data=self._google_consume_data,
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids,
-                    recharge_accumulation=self._recharge)
+                    recharge_accumulation=self._recharge,
+                    gen_balance=self._gen_balance)
         return data
 
     def check_time(self):
@@ -150,6 +153,9 @@ class CharacterBaseInfoComponent(Component):
     def addexp(self, exp, reason):
         self._exp += exp
         before_level = self._level
+        max_level = game_configs.base_config.get('player_level_max')
+        if self._level == max_level:
+            return
 
         while self._exp >= game_configs.player_exp_config.get(self._level).get('exp'):
             self._exp -= game_configs.player_exp_config.get(self._level).get('exp')
@@ -157,7 +163,7 @@ class CharacterBaseInfoComponent(Component):
             logger.info('player id:%s level up ++ %s>>%s', self.id, before_level, self._level)
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
-            if not game_configs.player_exp_config.get(self._level):
+            if self._level == max_level:
                 return
 
         # =====Tlog================
@@ -289,6 +295,12 @@ class CharacterBaseInfoComponent(Component):
         """装备一键强化"""
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.equipmentStrengthOneKey
+
+    @property
+    def all_equipment_strength_one_key(self):
+        """装备一键强化"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.allStrength
 
     @property
     def shop_refresh_times(self):
@@ -469,3 +481,8 @@ class CharacterBaseInfoComponent(Component):
     @gen_balance.setter
     def gen_balance(self, value):
         self._gen_balance = value
+    @property
+    def buy_coin_times(self):
+        """招财进宝次数"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyGetMoneyTimes
