@@ -40,7 +40,7 @@ def get_online_gift_1121(data, player):
                 data = dict(online_time=player.online_gift.online_time,
                             received_gift_ids=player.online_gift.received_gift_ids)
                 player.online_gift.received_gift_ids.append(request.gift_id)
-                player.online_gift.reset()
+                # player.online_gift.reset()
                 player.online_gift.save_data()
 
                 response.result = True

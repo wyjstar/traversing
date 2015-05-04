@@ -99,6 +99,7 @@ if __name__ == '__main__':
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
                 hero_ids = init_line_up(player, v, level)
+                hero_levels = player.line_up_component.hero_levels
                 red_units = player.fight_cache_component.red_unit
                 print red_units
                 red_units = cPickle.dumps(red_units)
@@ -112,6 +113,7 @@ if __name__ == '__main__':
                                  unpar_skill=0,
                                  unpar_skill_level=0,
                                  hero_ids=cPickle.dumps(hero_ids),
+                                 hero_levels=cPickle.dumps(hero_levels),
                                  ap=player.line_up_component.combat_power,
                                  units=red_units,
                                  slots=slots)
