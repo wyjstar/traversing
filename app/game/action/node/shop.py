@@ -80,14 +80,24 @@ def shop_oper(pro_data, player, reason):
         return response.SerializeToString()
 
     _is_consume_result = is_consume(player, shop_item)
+    price = shop_item.consume
     if _is_consume_result:
-        result = is_afford(player, shop_item.consume)  # 校验
+        result = is_afford(player, price)  # 校验
         if not result.get('result'):
-            response.res.result = False
-            response.res.result_no = result.get('result_no')
-            response.res.message = u'消费不足！'
             logger.error('shop oper is not enough gold')
-            return response.SerializeToString()
+            if not shop_item.alternativeConsume:
+                response.res.result = False
+                response.res.result_no = result.get('result_no')
+                response.res.message = u'消费不足！'
+                return response.SerializeToString()
+            else:
+                price = shop_item.alternativeConsume
+                result = is_afford(player, price)
+                if not result.get('result'):
+                    response.result = False
+                    response.result_no = result.get('result_no')
+                    response.message = u'消费不足2！'
+                    return response.SerializeToString()
 
     player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
     if not player_type_shop:
@@ -98,14 +108,14 @@ def shop_oper(pro_data, player, reason):
     shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
     # 消耗
 
-    need_gold = get_consume_gold_num(shop_item.consume)
+    need_gold = get_consume_gold_num(price)
     if not _is_consume_result:
         need_gold = 0
 
     def func():
         # consume_data = []
         if _is_consume_result:
-            return_data = consume(player, shop_item.consume,
+            return_data = consume(player, price,
                                   player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
             # consume_data = return_data
