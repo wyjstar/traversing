@@ -170,7 +170,8 @@ const.ENHANCE_EQUIPMENT = 28  # 装备强化
 const.ONLINE_GIFT = 29  # 在线奖励
 const.GM = 30  # gm发放
 const.HERO_CHIP_SACRIFICE_OPER = 31  # 武将碎片献祭
-const.BUY_COIN = 1406 # 招财进宝
+const.TOMORROW_GIFT = 32  # 次日奖励
+const.BUY_COIN = 1406  # 招财进宝
 
 # 等级流水
 # const.STAGE = 27  # 关卡
