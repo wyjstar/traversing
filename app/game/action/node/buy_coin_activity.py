@@ -19,7 +19,6 @@ def get_buy_coin_activity_1407(data, player):
     response = buy_coin_activity_pb2.GetBuyCoinInfoResponse()
     response.buy_times = player.buy_coin.buy_times
     response.extra_can_buy_times = player.buy_coin.extra_can_buy_times
-    logger.debug("get_buy_coin_activity_1407: %s %s" % (player.buy_coin.buy_times, player.buy_coin.extra_can_buy_times))
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -64,11 +63,9 @@ def buy_coin_activity_1406(data, player):
             coin_nums = gain_info[k]
             break
     def func():
-        player.buy_coin.buy_times = buy_times + 1
         player.finance.add_coin(coin_nums)
         player.finance.save_data()
 
     player.pay.pay(need_gold, func)
     response.res.result = True
-    logger.debug("response %s", response)
     return response.SerializeToString()

@@ -72,7 +72,7 @@ def get_online_and_level_gift_data_1150(data, player):
     response = recharge_pb2.GetRechargeGiftDataResponse()
     player.recharge.get_data(response)
     player.recharge.save_data()
-    logger.debug("get_online_and_level_gift_data_1150: %s", response)
+    logger.debug("get_online_and_level_gift_data_1150:%s", response)
 
     return response.SerializeToString()
 
