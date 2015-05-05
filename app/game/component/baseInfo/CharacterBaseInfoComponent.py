@@ -51,6 +51,7 @@ class CharacterBaseInfoComponent(Component):
         self._recharge = 0  # 累积充值
         self._gen_balance = 0  # 累积赠送
         self._login_time = int(time.time())  # 登录时间
+        self._tomorrow_gift = 0
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -80,6 +81,7 @@ class CharacterBaseInfoComponent(Component):
         self._first_recharge_ids = character_info.get('first_recharge_ids', [])
         self._recharge = character_info.get('recharge_accumulation')
         self._gen_balance = character_info.get('gen_balance', 0)
+        self._tomorrow_gift = character_info.get('tomorrow_gift', 0)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -111,7 +113,8 @@ class CharacterBaseInfoComponent(Component):
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids,
                     recharge_accumulation=self._recharge,
-                    gen_balance=self._gen_balance)
+                    gen_balance=self._gen_balance,
+                    tomorrow_gift=self._tomorrow_gift)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -138,7 +141,8 @@ class CharacterBaseInfoComponent(Component):
                     apple_transaction_id=self._apple_transaction_id,
                     first_recharge_ids=self._first_recharge_ids,
                     recharge_accumulation=self._recharge,
-                    gen_balance=self._gen_balance)
+                    gen_balance=self._gen_balance,
+                    tomorrow_gift=self._tomorrow_gift)
         return data
 
     def check_time(self):
@@ -442,6 +446,7 @@ class CharacterBaseInfoComponent(Component):
     @property
     def first_recharge_ids(self):
         return self._first_recharge_ids
+
     def set_vip_level(self, gold):
         """
         充值后升级vip
@@ -461,12 +466,21 @@ class CharacterBaseInfoComponent(Component):
         self._gag = value
 
     @property
+    def tomorrow_gift(self):
+        return self._tomorrow_gift
+
+    @tomorrow_gift.setter
+    def tomorrow_gift(self, value):
+        self._tomorrow_gift = value
+
+    @property
     def closure(self):
         return self._closure
 
     @closure.setter
     def closure(self, value):
         self._closure = value
+
     @property
     def recharge(self):
         return self._recharge
@@ -474,6 +488,7 @@ class CharacterBaseInfoComponent(Component):
     @recharge.setter
     def recharge(self, value):
         self._recharge = value
+
     @property
     def gen_balance(self):
         return self._gen_balance
@@ -481,6 +496,7 @@ class CharacterBaseInfoComponent(Component):
     @gen_balance.setter
     def gen_balance(self, value):
         self._gen_balance = value
+
     @property
     def buy_coin_times(self):
         """招财进宝次数"""
