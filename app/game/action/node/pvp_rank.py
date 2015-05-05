@@ -38,7 +38,8 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 def pvp_top_rank_request_1501(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+    columns = ['id', 'nickname', 'level', 'ap',
+               'hero_ids', 'hero_levels', 'head_no']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
     for record in records:
         rank_item = response.rank_items.add()
@@ -64,7 +65,8 @@ def pvp_player_rank_request_1502(data, player):
     response.player_rank = record.get('id') if record else -1
 
     if response.player_rank < 9 and response.player_rank > 0:
-        columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+        columns = ['id', 'nickname', 'level', 'ap',
+                   'hero_ids', 'hero_levels', 'head_no']
         records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
         for record in records:
             rank_item = response.rank_items.add()
@@ -339,7 +341,8 @@ def pvp_player_rank_refresh_request(data, player):
     caret = ','
     prere = 'id in (%s)' % caret.join(str(_) for _ in ranks)
     logger.info('prere:%s', prere)
-    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+    columns = ['id', 'nickname', 'level', 'ap',
+               'hero_ids', 'hero_levels', 'head_no']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
     for record in records:
         rank_item = response.rank_items.add()

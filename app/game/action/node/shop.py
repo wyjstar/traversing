@@ -55,7 +55,6 @@ def shop_oper(pro_data, player, reason):
     # logger.debug(shop_id)
     # logger.debug("---------")
 
-    # print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
     if shop_id == 10001 and player.shop.first_coin_draw:
         is_consume(player, shop_item)
 
@@ -327,6 +326,7 @@ def get_reason(shop_type):
     if shop_type in REASON_HASH:
         return REASON_HASH[shop_type]
     return const.COMMON_BUY
+
 
 
 @remoteserviceHandle('gate')

@@ -311,7 +311,7 @@ class BattleUnit(object):
 def do_assemble(no, quality, break_skills, hp,
                 atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position,
                 level, break_level,
-                is_boss=False, is_hero=True, is_break_hero=False, unit_name="", power):
+                is_boss=False, is_hero=True, is_break_hero=False, unit_name="", power=0):
     """组装战斗单位
     @param no: 编号
     @param quality: 品质
