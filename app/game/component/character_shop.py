@@ -87,8 +87,8 @@ class CharacterShopComponent(Component):
             freeRefreshTime = shop_type_info.freeRefreshTime
             if shop_type_info.freeRefreshTime == "-1":
                 continue
-            if is_past_time(freeRefreshTime):
-                self.refresh_items(shop_type)
+            #if is_past_time(freeRefreshTime):
+                #self.refresh_items(shop_type)
 
     def get_shop_data(self, t):
         if t not in self._shop_data:

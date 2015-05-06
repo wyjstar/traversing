@@ -301,8 +301,9 @@ def pvb_fight_start_1705(pro_data, player):
 def receive_pvb_award_remote(pvb_award_data, is_online, player):
     pvb_award = WorldBossAwardDB()
     pvb_award.ParseFromString(pvb_award_data)
-    player.world_boss.set_award(pvb_award.award_type, pvb_award.award)
-    logger.debug("receive_pvb_award_remote=================%s" % pvb_award)
+    boss = player.world_boss.get_boss("world_boss")
+    boss.set_award(pvb_award.award_type, pvb_award.award)
+    logger.debug("receive_pvb_award_remote=================%s" % pvb_award.award_type)
     return True
 
 
@@ -328,11 +329,11 @@ def pvb_get_award_1708(data, player):
 
             change = response.gain.finance.finance_changes.add()
             change.item_type = 107
-            change.item_num = coin
+            change.item_num = int(coin)
             change.item_no = const.COIN
             change = response.gain.finance.finance_changes.add()
             change.item_type = 107
-            change.item_num = soul
+            change.item_num = int(soul)
             change.item_no = const.HERO_SOUL
     elif award_type != 0:
         bigbag = BigBag(award)

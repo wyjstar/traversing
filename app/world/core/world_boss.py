@@ -137,15 +137,17 @@ class WorldBoss(BaseBoss):
         # 发放奖励：前十名, 累积伤害, 最后击杀, 参与奖
         self.send_award_top_ten()
         self.send_award_add_up()
-        self.send_award_kill()
+        self.send_award_last()
 
     def send_award_top_ten(self):
         """
         排行奖励, top 10
         """
+        logger.debug("send_award_top_ten===========")
         award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
         for up, down, big_bag_id in award_info.values():
             ranks = self._rank_instance.get(up, down)
+            logger.debug("send_award_top_ten: %s" % big_bag_id)
             for player_id, v in ranks:
                 self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id)
 
@@ -153,6 +155,7 @@ class WorldBoss(BaseBoss):
         """
         累积奖励
         """
+        logger.debug("send_award_add_up==========")
         i = 0
         hp_max = self.get_hp()
         accumulated_rewards = game_configs.base_config.get("world_boss").get('accumulated_rewards')
@@ -175,6 +178,9 @@ class WorldBoss(BaseBoss):
         """
         最后击杀
         """
+        if not self._last_shot_item:
+            return
+        logger.debug("send_award_last===============")
         player_id = self._last_shot_item['player_id']
         big_bag_id = game_configs.base_config.get("world_boss").get('kill_rewards_worldboss')
         self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
@@ -183,12 +189,13 @@ class WorldBoss(BaseBoss):
         """
         发送奖励
         """
+        logger.debug("send_award: player_id, award_type, award %s %s %s" % (player_id, award_type, award))
         award_data = WorldBossAwardDB()
         award_data.award_type = award_type
         award_data.award = award
         remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
         remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
-                                                    int(player_id), award_data)
+                                                    int(player_id), award_data.SerializePartialToString())
     def send_award_damage(self):
         award_mail = game_configs.base_config.get('hurt_rewards_worldboss_rank')
         for up, down, mail_id in award_mail.values():
@@ -207,6 +214,7 @@ class WorldBoss(BaseBoss):
     def send_award_kill(self):
         if not self._last_shot_item:
             return
+        logger.debug("send_award_kill===============")
         mail_id = game_configs.base_config.get('kill_rewards_worldboss')
 
         player_id = self._last_shot_item['player_id']

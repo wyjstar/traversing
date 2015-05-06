@@ -277,7 +277,7 @@ def one_key_strength_equipment_707(pro_data, player):
             enhance_info_pb = response.infos.add()
             equipment_id = equ.equipment_obj.base_info.id
             logger.debug("equ slot no: %s id:%s" % (equ.id, equ.equipment_obj.base_info.id))
-            enhance_info = enhance_equipment(equipment_id, 2, player)
+            enhance_info = enhance_equipment(equipment_id, 1, player)
             if not enhance_info.get('result'):
                 if equ.id not in results: results.append(equ.id)
                 logger.debug("equ slot no fail: %s %s" % (equ.id, enhance_info.get("result_no")))
