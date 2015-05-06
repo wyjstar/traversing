@@ -2,6 +2,7 @@
 """
 created by sphinx on
 """
+import time
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.globalobject import remoteserviceHandle
@@ -104,6 +105,11 @@ def get_tomorrow_gift_1122(data, player):
         return response.SerializeToString()
     if player.base_info.tomorrow_gift != 0:
         logger.error('tomorrow gift is taken!')
+        return response.SerializeToString()
+    register_time = time.localtime(player.base_info.register_time)
+    now_time = time.localtime()
+    if now_time.tm_yday != register_time.tm_yday + 1:
+        logger.error('tomorrow gift is miss!')
         return response.SerializeToString()
 
     player.base_info.tomorrow_gift = tomorrow_gift.id
