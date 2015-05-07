@@ -46,6 +46,7 @@ class PlayerCharacter(object):
                  travel=component.CharacterTravelComponent(self),
                  runt=component.CharacterRuntComponent(self),
                  recharge=component.CharacterRechargeGift(self),
+                 rebate=component.Rebate(self),
                  buy_coin=component.CharacterBuyCoinActivity(self)
                  )
         self._components = a
@@ -225,6 +226,12 @@ class PlayerCharacter(object):
     @property
     def pay(self):
         return self._pay
+
+    @property
+    def rebate(self):
+        return self._components['rebate']
+    
     @property
     def buy_coin(self):
         return self._components['buy_coin']
+

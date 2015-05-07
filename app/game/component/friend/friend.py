@@ -21,23 +21,28 @@ class FriendComponent(Component):
         self._friends = {}
         self._blacklist = []
         self._applicants_list = {}
-
+        
+        self._reward = {}
+        
     def init_data(self, character_info):
         self._friends = character_info.get('friends')
         self._blacklist = character_info.get('blacklist')
         self._applicants_list = character_info.get('applicants_list')
+        self._reward = character_info.get('freward', {})
 
     def save_data(self):
         friend_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(friends=self._friends,
                     blacklist=self._blacklist,
-                    applicants_list=self._applicants_list)
+                    applicants_list=self._applicants_list,
+                    freward = self._reward)
         friend_obj.hmset(data)
 
     def new_data(self):
         data = dict(friends=self._friends,
                     blacklist=self._blacklist,
-                    applicants_list=self._applicants_list)
+                    applicants_list=self._applicants_list,
+                    freward=self._reward)
         return data
 
     @property
@@ -213,3 +218,22 @@ class FriendComponent(Component):
             logger.error('can not find stamina mail!!!')
 
         return False
+    
+    def get_reward(self, fid, day):
+        """
+        @param stat: 0:not,1:ok,2:get
+        """
+        update = False
+        if fid in self._reward.keys():
+            if self._reward[fid][0] != day:
+                self._reward[fid] = [day, 0]
+                update = True
+        else:
+            self._reward[fid] = [day, 0]
+            update = True
+        
+        return self._reward[fid][1], update
+    
+    def set_reward(self, fid, day, stat):
+        self._reward[fid] = [day, stat]
+        

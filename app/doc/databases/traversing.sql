@@ -45,6 +45,7 @@ CREATE TABLE `tb_character_info` (
   `friends` blob,
   `blacklist` blob,
   `applicants_list` blob,
+  `freward` blob,
   `shop` blob,
   `lord_attr_info` blob,
 
@@ -80,6 +81,7 @@ CREATE TABLE `tb_character_info` (
   `auto` blob,
 
   `heads` blob,
+  `rebate` blob,
 
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)

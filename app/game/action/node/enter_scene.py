@@ -36,6 +36,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     player.pay.set_pay_arg(pay_arg) # 设置支付参数
 
     remote_gate.pull_message_remote(character_id)
+    remote_gate.online_offline_remote(player.base_info.id, 1)
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True
@@ -101,7 +102,6 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
             awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
 
             combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
-
     logger.debug('login:<%s>%s:%s %s:%s',
                  player,
                  character_id,

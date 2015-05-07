@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"\xab\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x05:\x04\x31\x30\x31\x30\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\"\x19\n\x17GetPlayerFriendsRequest\"\xee\x01\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x02\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x11\n\tlast_time\x18\n \x01(\x05\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\x12\x13\n\x0b\x62uddy_level\x18\x0c \x01(\x05\x12\x13\n\x0b\x62uddy_power\x18\r \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"\xdd\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x05:\x04\x31\x30\x31\x30\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\r\n\x05level\x18\n \x01(\x05\x12\x0e\n\x06\x62_rank\x18\x0b \x01(\x05\x12\x11\n\tlast_time\x18\x0c \x01(\x05\"\x19\n\x17GetPlayerFriendsRequest\"\xbc\x02\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x02\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x11\n\tlast_time\x18\n \x01(\x05\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\x12\x0f\n\x07\x63urrent\x18\x0c \x01(\x05\x12\x0e\n\x06target\x18\r \x01(\x05\x12\x0c\n\x04stat\x18\x0e \x01(\x05\x12\r\n\x05level\x18\x0f \x01(\x05\x12\x0e\n\x06\x62_rank\x18\x10 \x01(\x05\x12\x13\n\x0b\x62uddy_level\x18\x11 \x01(\x05\x12\x13\n\x0b\x62uddy_power\x18\x12 \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\"\x1c\n\rDrawRewardReq\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\"`\n\rDrawRewardRsp\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x0e\n\x0cRecommendReq\"4\n\x0cRecommendRes\x12$\n\x07rfriend\x18\x01 \x03(\x0b\x32\x13.FindFriendResponse')
 
 
 
@@ -173,6 +173,27 @@ _FINDFRIENDRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='level', full_name='FindFriendResponse.level', index=9,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='b_rank', full_name='FindFriendResponse.b_rank', index=10,
+      number=11, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='last_time', full_name='FindFriendResponse.last_time', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -183,7 +204,7 @@ _FINDFRIENDRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=149,
-  serialized_end=320,
+  serialized_end=370,
 )
 
 
@@ -203,8 +224,8 @@ _GETPLAYERFRIENDSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=322,
-  serialized_end=347,
+  serialized_start=372,
+  serialized_end=397,
 )
 
 
@@ -293,15 +314,50 @@ _CHARACTERINFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='buddy_level', full_name='CharacterInfo.buddy_level', index=11,
+      name='current', full_name='CharacterInfo.current', index=11,
       number=12, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='buddy_power', full_name='CharacterInfo.buddy_power', index=12,
+      name='target', full_name='CharacterInfo.target', index=12,
       number=13, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='stat', full_name='CharacterInfo.stat', index=13,
+      number=14, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='level', full_name='CharacterInfo.level', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='b_rank', full_name='CharacterInfo.b_rank', index=15,
+      number=16, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='buddy_level', full_name='CharacterInfo.buddy_level', index=16,
+      number=17, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='buddy_power', full_name='CharacterInfo.buddy_power', index=17,
+      number=18, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -315,8 +371,8 @@ _CHARACTERINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=350,
-  serialized_end=588,
+  serialized_start=400,
+  serialized_end=716,
 )
 
 
@@ -371,8 +427,8 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=591,
-  serialized_end=765,
+  serialized_start=719,
+  serialized_end=893,
 )
 
 
@@ -406,8 +462,8 @@ _FRIENDPRIVATECHATREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=767,
-  serialized_end=830,
+  serialized_start=895,
+  serialized_end=958,
 )
 
 
@@ -448,14 +504,136 @@ _GETRECOMMENDFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=832,
-  serialized_end=936,
+  serialized_start=960,
+  serialized_end=1064,
+)
+
+
+_DRAWREWARDREQ = _descriptor.Descriptor(
+  name='DrawRewardReq',
+  full_name='DrawRewardReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='fid', full_name='DrawRewardReq.fid', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1066,
+  serialized_end=1094,
+)
+
+
+_DRAWREWARDRSP = _descriptor.Descriptor(
+  name='DrawRewardRsp',
+  full_name='DrawRewardRsp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='fid', full_name='DrawRewardRsp.fid', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='res', full_name='DrawRewardRsp.res', index=1,
+      number=2, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='DrawRewardRsp.gain', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1096,
+  serialized_end=1192,
+)
+
+
+_RECOMMENDREQ = _descriptor.Descriptor(
+  name='RecommendReq',
+  full_name='RecommendReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1194,
+  serialized_end=1208,
+)
+
+
+_RECOMMENDRES = _descriptor.Descriptor(
+  name='RecommendRes',
+  full_name='RecommendRes',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rfriend', full_name='RecommendRes.rfriend', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1210,
+  serialized_end=1262,
 )
 
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['blacklist'].message_type = _CHARACTERINFO
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['applicant_list'].message_type = _CHARACTERINFO
 _GETRECOMMENDFRIENDSRESPONSE.fields_by_name['recommend'].message_type = _CHARACTERINFO
+_DRAWREWARDRSP.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_DRAWREWARDRSP.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_RECOMMENDRES.fields_by_name['rfriend'].message_type = _FINDFRIENDRESPONSE
 DESCRIPTOR.message_types_by_name['FriendCommon'] = _FRIENDCOMMON
 DESCRIPTOR.message_types_by_name['AddFriendResponse'] = _ADDFRIENDRESPONSE
 DESCRIPTOR.message_types_by_name['FindFriendRequest'] = _FINDFRIENDREQUEST
@@ -465,6 +643,10 @@ DESCRIPTOR.message_types_by_name['CharacterInfo'] = _CHARACTERINFO
 DESCRIPTOR.message_types_by_name['GetPlayerFriendsResponse'] = _GETPLAYERFRIENDSRESPONSE
 DESCRIPTOR.message_types_by_name['FriendPrivateChatRequest'] = _FRIENDPRIVATECHATREQUEST
 DESCRIPTOR.message_types_by_name['GetRecommendFriendsResponse'] = _GETRECOMMENDFRIENDSRESPONSE
+DESCRIPTOR.message_types_by_name['DrawRewardReq'] = _DRAWREWARDREQ
+DESCRIPTOR.message_types_by_name['DrawRewardRsp'] = _DRAWREWARDRSP
+DESCRIPTOR.message_types_by_name['RecommendReq'] = _RECOMMENDREQ
+DESCRIPTOR.message_types_by_name['RecommendRes'] = _RECOMMENDRES
 
 class FriendCommon(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -519,6 +701,30 @@ class GetRecommendFriendsResponse(_message.Message):
   DESCRIPTOR = _GETRECOMMENDFRIENDSRESPONSE
 
   # @@protoc_insertion_point(class_scope:GetRecommendFriendsResponse)
+
+class DrawRewardReq(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DRAWREWARDREQ
+
+  # @@protoc_insertion_point(class_scope:DrawRewardReq)
+
+class DrawRewardRsp(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DRAWREWARDRSP
+
+  # @@protoc_insertion_point(class_scope:DrawRewardRsp)
+
+class RecommendReq(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _RECOMMENDREQ
+
+  # @@protoc_insertion_point(class_scope:RecommendReq)
+
+class RecommendRes(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _RECOMMENDRES
+
+  # @@protoc_insertion_point(class_scope:RecommendRes)
 
 
 # @@protoc_insertion_point(module_scope)
