@@ -97,6 +97,8 @@ recharge_config = {}
 lucky_hero_config = {}
 pseudo_random_config = {}
 
+push_config = {}
+
 all_config_name = {
     'travel_item_group_config': TravelItemGroupConfig(),
     'base_config': BaseConfig(),
@@ -144,6 +146,7 @@ all_config_name = {
     'recharge_config': RechargeConfig(),
     'lucky_hero_config': LuckyHeroConfig(),
     'pseudo_random_config': PseudoRandomConfig(),
+    'push_config': PushConfig(),
 }
 
 print("load game_configs===========================")

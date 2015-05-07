@@ -26,6 +26,8 @@ def set_push_switch(uid, data):
     request.ParseFromString(data)
     for msg in request.switch:
         Pusher().set_switch(uid, msg.msg_type, msg.switch)
+        
+    return True
 
 @nodeservice_handle
 def add_push_message(uid, msg_type, message, send_time):
@@ -35,7 +37,8 @@ def add_push_message(uid, msg_type, message, send_time):
     @param message: 发送消息
     @param send_time: 发送时间
     """
-    pass
+    Pusher().add_message(uid, msg_type, message, send_time)
+    return True
 
 # @nodeservice_handle
 # def del_push_message(dynamic_id, msg_type):
@@ -51,4 +54,5 @@ def online_offline(uid, on_or_off):
     在线离线通知
     @param on_or_off: 0离线，1在线
     """
-    pass
+    Pusher().on_offf(uid, on_or_off)
+    return True
