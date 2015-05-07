@@ -280,6 +280,131 @@ def pvp_fight_request_1505(data, player):
 
 
 @remoteserviceHandle('gate')
+def pvp_fight_revenge_1507(data, player):
+    request = pvp_rank_pb2.PvpFightRevenge()
+    response = pvp_rank_pb2.PvpFightResponse()
+    request.ParseFromString(data)
+    line_up = request.lineup
+    __skill = request.skill
+
+    open_stage_id = game_configs.base_config.get('arenaOpenStage')
+    if player.stage_component.get_stage(open_stage_id).state != 1:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
+
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    logger.debug("best_skill=================== %s" % __best_skill)
+
+    prere = dict(character_id=player.base_info.id)
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
+    before_player_rank = 0
+    if record:
+        before_player_rank = record.get('id')
+        refresh_rank_data(player, before_player_rank, __skill, __skill_level)
+
+    if before_player_rank == request.challenge_rank:
+        logger.error('cant not fight self')
+        response.res.result = False
+        response.res.result_no = 1505
+        return response.SerializeToString()
+
+    _arena_win_points = game_configs.base_config.get('arena_win_points')
+    if _arena_win_points:
+        return_data = gain(player, _arena_win_points, const.ARENA_WIN)  # 获取
+        get_return(player, return_data, response.gain)
+    else:
+        logger.debug('arena win points is not find')
+
+    prere = dict(id=request.challenge_rank)
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
+                                   ['character_id',
+                                    'nickname',
+                                    'level',
+                                    'ap',
+                                    'best_skill',
+                                    'unpar_skill',
+                                    'unpar_skill_level',
+                                    'units',
+                                    'slots',
+                                    'hero_ids'])
+    blue_units = record.get('units')
+    # print "blue_units:", blue_units
+    blue_units = cPickle.loads(blue_units)
+    # print "blue_units:", blue_units
+    red_units = player.fight_cache_component.red_unit
+
+    fight_result = pvp_process(player, line_up, red_units, blue_units,
+                               __best_skill, record.get("best_skill"),
+                               record.get("level"), __skill)
+
+    logger.debug("fight result:%s" % fight_result)
+
+    if fight_result:
+        logger.debug("fight result:True:%s:%s",
+                     before_player_rank, request.challenge_rank)
+
+        push_message('add_blacklist_request_remote', record['character_id'],
+                     player.base_info.id)
+
+        if before_player_rank != 0:
+            if request.challenge_rank < before_player_rank:
+                prere = dict(id=before_player_rank)
+                result = util.UpdateWithDict(PVP_TABLE_NAME, record, prere)
+                logger.info('update result:%s', result)
+                refresh_rank_data(player, request.challenge_rank,
+                                  __skill, __skill_level)
+        else:
+            refresh_rank_data(player, request.challenge_rank,
+                              __skill, __skill_level)
+
+        # 首次达到某名次的奖励
+        for (rank, mail_id) in game_configs.base_config.get('arena_rank_points').items():
+            if rank < request.challenge_rank:
+                continue
+            if rank in player.base_info.pvp_high_rank_award:
+                continue
+            mail_conf = game_configs.mail_config.get(mail_id)
+            mail = Mail_PB()
+            mail.config_id = mail_id
+            mail.receive_id = player.base_info.id
+            mail.send_time = int(time.time())
+            mail_data = mail.SerializePartialToString()
+            player.base_info.pvp_high_rank_award.append(rank)
+
+            if not netforwarding.push_message('receive_mail_remote',
+                                              player.base_info.id,
+                                              mail_data):
+                logger.error('pvp high rank award mail fail. pid:%s',
+                             player.base_info.id)
+            else:
+                logger.debug('pvp high rak award mail,mail_id:%s',
+                             mail_id)
+                pass
+    else:
+        logger.debug("fight result:False")
+
+    lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
+    tstatus = player.tasks.check_inter(lively_event)
+    if tstatus:
+        task_data = task_status(player)
+        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+
+    player.base_info.pvp_times += 1
+    player.base_info.pvp_refresh_time = time.time()
+    player.base_info.save_data()
+    response.res.result = True
+    pvp_assemble_units(red_units, blue_units, response)
+    response.fight_result = fight_result
+    response.red_skill = __skill
+    response.red_skill_level = __skill_level
+    response.blue_skill = record.get("unpar_skill")
+    response.blue_skill_level = record.get("unpar_skill_level")
+
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
 def reset_pvp_time_1506(data, player):
     player.base_info.check_time()
     response = ShopResponse()
