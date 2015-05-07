@@ -19,14 +19,20 @@ class FriendComponent(Component):
     def __init__(self, owner):
         super(FriendComponent, self).__init__(owner)
         self._friends = {}
-        self._blacklist = []
+        self._blacklist = {}
         self._applicants_list = {}
-        
+
         self._reward = {}
-        
+
     def init_data(self, character_info):
         self._friends = character_info.get('friends')
         self._blacklist = character_info.get('blacklist')
+        if isinstance(self._blacklist, list):
+            d = {}
+            for i in self._blacklist:
+                d[i] = 0
+            self._blacklist = d
+
         self._applicants_list = character_info.get('applicants_list')
         self._reward = character_info.get('freward', {})
 
@@ -35,7 +41,7 @@ class FriendComponent(Component):
         data = dict(friends=self._friends,
                     blacklist=self._blacklist,
                     applicants_list=self._applicants_list,
-                    freward = self._reward)
+                    freward=self._reward)
         friend_obj.hmset(data)
 
     def new_data(self):
@@ -56,7 +62,7 @@ class FriendComponent(Component):
 
     @property
     def blacklist(self):
-        return self._blacklist
+        return self._blacklist.keys()
 
     @property
     def applicant_list(self):
@@ -73,9 +79,20 @@ class FriendComponent(Component):
         return False
 
     def is_in_blacklist(self, target_id):
-        if target_id in self._blacklist:
+        if target_id in self._blacklist.keys():
             return True
         return False
+
+    def can_revenge(self, black_id):
+        if black_id not in self._blacklist.keys():
+            return False
+        if self._blacklist[black_id] != 0:
+            return False
+        return True
+
+    def revenge(self, black_id):
+        if black_id in self._blacklist.keys():
+            self._blacklist[black_id] = 1
 
     def is_in_applicants_list(self, target_id):
         if target_id in self.applicant_list:
@@ -92,7 +109,7 @@ class FriendComponent(Component):
                 del(self._applicants_list[friend_id])
             return False
 
-        if friend_id in self._blacklist:
+        if friend_id in self._blacklist.keys():
             if friend_id in self._applicants_list:
                 del(self._applicants_list[friend_id])
             return False
@@ -131,38 +148,34 @@ class FriendComponent(Component):
         if len(self.blacklist) > max_num_blacklist:
             return False
 
-        if target_id in self._blacklist:
+        if target_id in self._blacklist.keys():
             return False
 
         if target_id in self._friends.keys():
             return False
 
-        self._blacklist.append(target_id)
+        self._blacklist[target_id] = 0
         return True
 
     def del_blacklist(self, target_id):
-        if target_id not in self._blacklist:
+        if target_id not in self._blacklist.keys():
             return False
 
-        self._blacklist.remove(target_id)
+        del self._blacklist[target_id]
         return True
 
     def add_applicant(self, target_id):
         max_num_applicant = game_configs.base_config.get('maxOfFriendApply')
         if len(self.applicant_list) > max_num_applicant:
-            print 'add_applicant-1--------'
             return False
 
         if target_id in self._applicants_list.keys():
-            print 'add_applicant-2--------'
             return False
 
         if target_id in self._friends.keys():
-            print 'add_applicant-3--------'
             return False
 
-        if target_id in self._blacklist:
-            print 'add_applicant-4--------'
+        if target_id in self._blacklist.keys():
             return False
 
         self._applicants_list[target_id] = datetime.datetime.now()
@@ -222,7 +235,7 @@ class FriendComponent(Component):
             logger.error('can not find stamina mail!!!')
 
         return False
-    
+
     def get_reward(self, fid, day):
         """
         @param stat: 0:not,1:ok,2:get
@@ -235,9 +248,8 @@ class FriendComponent(Component):
         else:
             self._reward[fid] = [day, 0]
             update = True
-        
+
         return self._reward[fid][1], update
-    
+
     def set_reward(self, fid, day, stat):
         self._reward[fid] = [day, stat]
-        
