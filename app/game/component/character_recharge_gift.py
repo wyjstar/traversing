@@ -86,9 +86,13 @@ class CharacterRechargeGift(Component):
 
         if gift_type == 8:  # single recharge
             if recharge >= activity.get('parameterA'):
-                return_data = gain(self.owner, activity.get('reward'),
-                                   const.RECHARGE)  # 获取
-                get_return(self.owner, return_data, response.gain)
+                if activity_id not in self._recharge:
+                    self._recharge[activity_id] = {}
+                if len(self._recharge[activity_id]) > activity.get('repeat'):
+                    self._recharge[activity_id].update({_date_now: 0})
+                else:
+                    logger.error('over activity repeat times:%s',
+                                 self._recharge)
 
         if gift_type == 9:  # accumulating recharge
             accumulating = 0
@@ -118,7 +122,7 @@ class CharacterRechargeGift(Component):
             for k, v in recharge_data.items():
                 _data = item.data.add()
                 _data.is_receive = v
-                if item.gift_type == 7 or item.gift_type == 10:
+                if item.gift_type in [7, 8, 10]:
                     _data.recharge_time = k
                 elif item.gift_type == 9:
                     _data.recharge_accumulation = k
