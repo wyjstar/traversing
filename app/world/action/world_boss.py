@@ -28,7 +28,7 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     """
     boss = get_boss(boss_id)
     print "boss ", boss
-    logger.debug("boss %s" % boss_id)
+    logger.debug("stage id %s" % boss.stage_id)
     response = world_boss_pb2.PvbBeforeInfoResponse()
 
     if boss_id == "world_boss":
@@ -47,12 +47,12 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
                 hero_attr.attr_value = v[1]
 
     # 返回伤害前十名
-    for rank_item in boss.get_rank_items():
+    for k, rank_item in enumerate(boss.get_rank_items()):
         rank_item_pb = response.rank_items.add()
-        update_rank_items(rank_item_pb, rank_item)
+        update_rank_items(k+1, rank_item_pb, rank_item)
 
     # 最后击杀
-    update_rank_items(response.last_shot_item, boss.last_shot_item)
+    update_rank_items(-1, response.last_shot_item, boss.last_shot_item)
 
     # 奇遇
     response.debuff_skill_no = boss.debuff_skill_no
@@ -66,11 +66,10 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     response.demage_hp = int(boss.get_demage_hp(player_id))
     # 名次
     response.rank_no = boss.get_rank_no(player_id)
-    print response
 
     return response.SerializeToString()
 
-def update_rank_items(rank_item_pb, rank_item):
+def update_rank_items(k, rank_item_pb, rank_item):
     rank_item_pb.nickname = rank_item.get("nickname", "")
     rank_item_pb.level = rank_item.get("level", 0)
     rank_item_pb.now_head = rank_item.get("now_head", 0) #rank_item.get("first_hero_no", 0)
@@ -80,6 +79,11 @@ def update_rank_items(rank_item_pb, rank_item):
         rank_item_pb.line_up_info.ParseFromString(rank_item.get("line_up_info"))
         #line_up_info = line_up_pb2.LineUpResponse()
         #rank_item_pb.line_up_info.ParseFromString()
+    rank_item_pb.player_id = rank_item.get("player_id", 0)
+    rank_item_pb.rank_no = k
+    logger.debug("player_id %s", rank_item_pb.player_id)
+    logger.debug("rank_no %s", rank_item_pb.rank_no)
+    logger.debug("demage_hp %s", rank_item_pb.demage_hp)
 
 
 @rootserviceHandle

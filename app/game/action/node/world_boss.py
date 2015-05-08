@@ -75,6 +75,8 @@ def get_fight_info(data, player):
     logger.debug("encourage_gold_num %s" % boss.encourage_gold_num)
     response.fight_times = boss.fight_times
     response.last_fight_time = int(boss.last_fight_time)
+    response.gold_reborn_times = boss.gold_reborn_times
+    logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
     #print response
     print "*" * 80
 
@@ -182,8 +184,9 @@ def pvb_reborn_1704(data, player):
 
     response = CommonResponse()
     gold = player.finance.gold
+
     money_relive_price = base_config.get('gold_relive_price')
-    need_gold = money_relive_price
+    need_gold = -1 if boss.gold_reborn_times not in money_relive_price else money_relive_price[boss.gold_reborn_times]
     print need_gold, gold, "*"*80
     current_time = get_current_timestamp()
 
@@ -194,9 +197,16 @@ def pvb_reborn_1704(data, player):
         response.result_no = 1701
         return response.SerializePartialToString()
 
+    if not_free and need_gold == -1:
+        logger.debug("reborn times max : %s" % 1702)
+        response.result = False
+        response.result_no = 1702
+
     if not_free:
         def func():
-            pass
+            boss.last_fight_time = 0
+            boss.gold_reborn_times += 1
+            player.world_boss.save_data()
         player.pay.pay(need_gold, func)
     response.result = True
     print response
@@ -325,6 +335,7 @@ def pvb_get_award_1708(data, player):
     response = PvbAwardResponse()
     boss = player.world_boss.get_boss("world_boss")
     award_type, award, is_over = boss.get_award()
+    player.world_boss.save_data()
     logger.debug("award_type %s, award %s, is_over %s" % (award_type, award, is_over))
     response.is_over = is_over
     if not award:
