@@ -10,7 +10,8 @@ monkey.patch_os()
 CONFIG_FILE = 'config.json'
 DEFAULT_JSON = dict(server_name='local',
                     login_ip='127.0.0.1',
-                    front_ip='127.0.0.1')
+                    front_ip='127.0.0.1',
+                    server_no=1)
 
 
 if __name__ == "__main__":
