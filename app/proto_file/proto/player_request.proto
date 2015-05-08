@@ -17,3 +17,6 @@ message NewbeeGuideStepRequest{
 message ChangeHeadRequest{
 	required int32 hero_id = 1;
 }
+message ChangeBattleSpeed{
+	required int32 speed = 1;
+}

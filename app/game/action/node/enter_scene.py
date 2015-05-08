@@ -82,6 +82,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     responsedata.recharge = player.base_info.recharge  # 累计充值
     responsedata.tomorrow_gift = player.base_info.tomorrow_gift
+    responsedata.battle_speed = player.base_info.battle_speed
 
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.base_info.vip_level)
