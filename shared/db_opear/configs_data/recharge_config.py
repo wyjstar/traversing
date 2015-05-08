@@ -16,6 +16,8 @@ class RechargeConfig(object):
             row["setting"] = parse(row.get("setting"))
             row["fristGift"] = parse(row.get("fristGift"))
             item = CommonItem(row)
-            self._items[item.goodsid] = item
+            if item.get('platform') not in self._items:
+                self._items[item.get('platform')] = {}
+            self._items[item.get('platform')].update({item.goodsid: item})
 
         return self._items
