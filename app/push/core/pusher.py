@@ -131,7 +131,6 @@ class Pusher(object):
         now = int(time.time())
         count = 0
         for mid in self.to_push.keys():
-            print 'mid', mid
             message = self.to_push[mid]
             uid = message.uid
             mtype = message.msg_type
@@ -198,7 +197,7 @@ class Pusher(object):
                 push_day.hset(one, 1)
                 message = game_configs.language_config.get(str(push_config.text)).get('cn')
                 print 'message', message
-                self.add_message(-1, push_config.event, message, (int(time.time())))
+                self.add_message(-1, push_config.event, message, one)
     
     def gen_4(self, pid):
         push_config = game_configs.push_config[pid]

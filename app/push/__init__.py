@@ -22,8 +22,8 @@ def do_push():
     push = Pusher()
     push.gen_task()
     push.process()
-    reactor.callLater(5, do_push)
+    reactor.callLater(10, do_push)
     logger.info('push data num:%s', 1)
     
 
-reactor.callLater(5, do_push)
+reactor.callLater(10, do_push)

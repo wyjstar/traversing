@@ -210,6 +210,13 @@ def pvp_fight_request_1505(data, player):
     if fight_result:
         logger.debug("fight result:True:%s:%s",
                      before_player_rank, request.challenge_rank)
+        
+        push_config = game_configs.push_config[1003]
+        rank_count = push_config.conditions[0]
+        if request.challenge_rank - before_player_rank >= rank_count:
+            txt = game_configs.push_config[1003].text
+            message = game_configs.language_config.get(str(txt)).get('cn')
+            remote_gate.add_push_message_remote(player.base_info.id, 3, message, int(time.time()))
 
         push_message('add_blacklist_request_remote', record['character_id'],
                      player.base_info.id)
