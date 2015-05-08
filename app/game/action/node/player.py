@@ -10,7 +10,7 @@ from shared.utils import trie_tree
 from shared.db_opear.configs_data import game_configs
 from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
-from app.proto_file.player_request_pb2
+from app.proto_file import player_request_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, ChangeHeadRequest
 from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHeadResponse

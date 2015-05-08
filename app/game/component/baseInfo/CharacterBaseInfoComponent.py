@@ -478,6 +478,14 @@ class CharacterBaseInfoComponent(Component):
         self._tomorrow_gift = value
 
     @property
+    def battle_speed(self):
+        return self._battle_speed
+
+    @battle_speed.setter
+    def battle_speed(self, value):
+        self._battle_speed = value
+
+    @property
     def closure(self):
         return self._closure
 
