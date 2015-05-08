@@ -10,6 +10,7 @@ from shared.utils import trie_tree
 from shared.db_opear.configs_data import game_configs
 from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
+from app.proto_file.player_request_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, ChangeHeadRequest
 from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHeadResponse
@@ -314,6 +315,17 @@ def change_head_847(data, player):
         return response.SerializePartialToString()
 
     response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def change_battle_speed_848(data, player):
+    request = player_request_pb2.ChangeBattleSpeed()
+    request.ParseFromString(data)
+    player.base_info.battle_speed = request.speed
+    player.base_info.save_data()
+    response = CommonResponse()
+    response.result = True
     return response.SerializePartialToString()
 
 
