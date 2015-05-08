@@ -1,8 +1,10 @@
 #-*- coding:utf-8 -*-
 import action
-from service.node import chatgateservice
-
+from service.node import pushgateservice
+from gtwisted.core import reactor
 from gfirefly.server.globalobject import GlobalObject
+from app.push.core.pusher import Pusher
+from gfirefly.server.logobj import logger
 
 
 def doWhenStop():
@@ -15,3 +17,13 @@ def doWhenStop():
 
 
 GlobalObject().stophandler = doWhenStop
+
+def do_push():
+    push = Pusher()
+    push.gen_task()
+    push.process()
+    reactor.callLater(5, do_push)
+    logger.info('push data num:%s', 1)
+    
+
+reactor.callLater(5, do_push)

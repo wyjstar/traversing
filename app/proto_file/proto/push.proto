@@ -24,3 +24,4 @@ message msgSwitchRes
 {
 	repeated msgSwitch switch = 1;//消息开关
 }
+

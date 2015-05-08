@@ -163,6 +163,18 @@
             "app": "app.world",
             "redis": true,
             "log": "app/logs/world.log"
+        },
+        "push": {
+            "name": "push",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "app": "app.push",
+            "log": "app/logs/push.log"
         }
     },
     "db": {

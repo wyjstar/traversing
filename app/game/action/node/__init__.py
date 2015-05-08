@@ -15,6 +15,7 @@ class GameCommandService(CommandService):
     def callTarget(self, targetKey, *args, **kw):
         target = self.getTarget(targetKey)
         if not target:
+            print 'targetKey', targetKey
             logger.error('command %s not Found on service' % str(targetKey))
             return None
         # if targetKey not in self.unDisplay:
@@ -91,3 +92,4 @@ import sdk_apple
 import sdk_tencent
 import rank
 import buy_coin_activity
+import push

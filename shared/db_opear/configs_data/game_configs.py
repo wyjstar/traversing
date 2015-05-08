@@ -49,6 +49,7 @@ from notes_config import NotesConfig
 from recharge_config import RechargeConfig
 from lucky_hero_config import LuckyHeroConfig
 from pseudo_random_config import PseudoRandomConfig
+from push_config import PushConfig
 
 travel_item_group_config = {}
 stone_config = {}
