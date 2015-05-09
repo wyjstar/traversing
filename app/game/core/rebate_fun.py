@@ -56,8 +56,7 @@ def rebate_info(player):
     
 
     for rid in game_configs.recharge_config[plat].keys():
-        if game_configs.recharge_config[rid].get('type') == 2:
-            switch, last, can_draw = player.rebate.rebate_status(game_configs.recharge_config[plat][rid].id, game_configs.recharge_config[plat][rid].get('giftDays'))
+        if game_configs.recharge_config[plat][rid].get('type') == 2: switch, last, can_draw = player.rebate.rebate_status(game_configs.recharge_config[plat][rid].id, game_configs.recharge_config[plat][rid].get('giftDays'))
             rebate = response.rebates.add()
             print 'rebate.rid', type(rebate.rid), game_configs.recharge_config[plat][rid].id
             rebate.rid = game_configs.recharge_config[plat][rid].id
