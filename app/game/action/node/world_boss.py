@@ -289,6 +289,13 @@ def pvb_fight_start_1705(pro_data, player):
     print blue_units
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
                                                    best_skill_id, str_blue_units, player_info, boss_id)
+
+    if result == -1:
+        logger.debug("world boss already gone!")
+        response.res.result = False
+        response.res.result_no = 1706
+        return response.SerializePartialToString()
+
     response.fight_result = result
 
     # 玩家信息更新

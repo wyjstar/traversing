@@ -108,6 +108,12 @@ def buy_stamina_6(request_proto, player):
         response.result_no = 102
         return response.SerializePartialToString()
 
+    max_stamina = max_of_stamina()
+    if player.stamina.stamina >= max_stamina:
+        logger.debug("stamina is full++++++++++++")
+        response.result = False
+        response.result_no = 105
+        return response.SerializePartialToString()
 
     def func():
         player.stamina.buy_stamina_times += 1

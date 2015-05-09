@@ -174,8 +174,8 @@ def _with_battle_info(response, pid):
     column = ['lord_attr_info', 'heads', 'nickname',
               'attackPoint', 'upgrade_time']
     friend_data = tb_character_info.getObj(pid).hmget(column)
-    if friend_data.get('info'):
-        battle_unit = BattleUnit.loads(friend_data.get('info'))
+    if friend_data.get('lord_attr_info').get('info'):
+        battle_unit = BattleUnit.loads(friend_data.get('lord_attr_info').get('info'))
         response.hero_no = battle_unit.unit_no
         # response.power = int(friend_data.get('power', 0))
         response.hp = battle_unit.hp
@@ -183,9 +183,9 @@ def _with_battle_info(response, pid):
         response.physical_def = battle_unit.physical_def
         response.magic_def = battle_unit.magic_def
 #         response.buddy_head = 1#battle_unit.unit_no
-        
+
         response.buddy_head = battle_unit.unit_no
-        response.buddy_power = battle_unit.power
+        response.buddy_power = int(battle_unit.power)
         response.buddy_level = battle_unit.level
 
     response.id = pid
@@ -205,7 +205,7 @@ def get_player_friend_list_1106(data, player):
     response = friend_pb2.GetPlayerFriendsResponse()
     response.open_receive = player.stamina._open_receive
     print player.friends.friends
-    
+
     _update = False
 
     for pid in player.friends.friends + [player.base_info.id]:
@@ -268,7 +268,7 @@ def get_player_friend_list_1106(data, player):
             black_heads = Heads_DB()
             black_heads.ParseFromString(black_data['heads'])
             response_blacklist_add.hero_no = black_heads.now_head
-            
+
             response_blacklist_add.level = black_data['level']
             response_blacklist_add.b_rank = 1
 
@@ -302,6 +302,7 @@ def get_player_friend_list_1106(data, player):
             logger.error('applicant_list, cant find player id:%d' % pid)
             player.friends.applicant_list.remove(pid)
 
+    logger.debug("1106 return friends list %s", response)
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -332,10 +333,10 @@ def draw_friend_lively_1199(data, player):
             get_return(player, return_data, response.gain)
             player.friends.set_reward(request.fid, today, 1)
             update=True
-            
+
     if update:
         player.friends.save_data()
-            
+
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -392,7 +393,7 @@ def recommend_friend_1198(data, player):
     statics = base_config['FriendRecommendNum']
     count = 0
     now = int(time.time())
-    
+
     has_one = []
     for uid in uids:
         if uid in has_one:
@@ -403,12 +404,12 @@ def recommend_friend_1198(data, player):
             continue
         if player.friends.is_friend(uid):
             continue
-        
+
         player_data = tb_character_info.getObj(uid)
         isexist = player_data.exists()
         if count >= statics:
             break
-    
+
         if isexist:
             last_time = player_data.hget('upgrade_time')
             if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
@@ -424,18 +425,18 @@ def recommend_friend_1198(data, player):
             if friend_data['attackPoint'] is not None:
                 ap = int(friend_data['attackPoint'])
             friend.power = ap if ap else 0
-    
+
             friend_heads = Heads_DB()
             friend_heads.ParseFromString(friend_data['heads'])
             friend.hero_no = friend_heads.now_head
-            
+
             friend.level = friend_data['level']
             friend.b_rank = 1
             friend.last_time = friend_data['upgrade_time']
-    
+
             # 添加好友主将的属性
             _with_battle_info(friend, player_data.hget('id'))
-        
+
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
