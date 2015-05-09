@@ -60,6 +60,7 @@ def ban_speak(data, player):
 @remoteserviceHandle('gate')
 def modify_user_info(data, player):
     args = cPickle.loads(data)
+    print 'modify_user_info', args
     if not args['attr_name'] or not args['attr_value']:
         return {'success': 0, 'message': 5}
     if args['attr_name'] == 'user_level':
@@ -154,7 +155,7 @@ def modify_user_info(data, player):
         mtype = args['mtype']
         msg = args['msg']
         remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
-
+        return {'success': 0, 'message': 0}
     else:
         return {'success': 0, 'message': 3}
     # push = GmCommonModifyLevel()

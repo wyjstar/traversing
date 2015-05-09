@@ -7,10 +7,11 @@ from app.game.component.fight.stage_factory import get_stage_by_stage_type
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.battle.battle_unit import BattleUnit
-from app.battle.battle_process import BattlePVPProcess
+#from app.battle.battle_process import BattlePVPProcess
+from app.battle.server_process import pvp_start
 
 
-def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar):
+def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2):
     """docstring for pvp_process"""
     save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
@@ -18,10 +19,14 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
-                                blue_best_skill, blue_player_level)
-    fight_result = process.process()
-    return fight_result
+    #process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
+                                #blue_best_skill, blue_player_level)
+    res = pvp_start(red_units, blue_units, red_best_skill, player.base_info.level,
+                                blue_best_skill, blue_player_level, seed1, seed2)
+
+    logger.debug("pvp_process: %s" % res)
+    #fight_result = process.process()
+    return res
 
 
 def save_line_up_order(line_up, player, current_unpar):

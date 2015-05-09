@@ -29,6 +29,7 @@ from app.game.core.item_group_helper import consume, get_consume_gold_num
 from app.proto_file.shop_pb2 import ShopResponse
 from app.proto_file.db_pb2 import Mail_PB
 from app.game.action.root import netforwarding
+from random import randint
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -202,9 +203,11 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
+    seed1 = randint(1, 100)
+    seed2 = randint(1, 100)
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"), __skill)
+                               record.get("level"), __skill, seed1, seed2)
 
     logger.debug("fight result:%s" % fight_result)
 
@@ -283,6 +286,8 @@ def pvp_fight_request_1505(data, player):
     response.red_skill_level = __skill_level
     response.blue_skill = record.get("unpar_skill")
     response.blue_skill_level = record.get("unpar_skill_level")
+    response.seed1 = seed1
+    response.seed2 = seed2
 
     return response.SerializeToString()
 

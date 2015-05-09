@@ -34,6 +34,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
                          player.dynamic_id)
         player.dynamic_id = dynamic_id
     player.pay.set_pay_arg(pay_arg) # 设置支付参数
+    player.base_info.plat_id = pay_arg.get("plat_id") # ios 0 android 1
+    logger.debug("plat_id %s" % pay_arg.get("plat_id"))
 
     remote_gate.pull_message_remote(character_id)
     remote_gate.online_offline_remote(player.base_info.id, 1)
