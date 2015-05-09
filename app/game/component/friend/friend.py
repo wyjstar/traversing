@@ -149,6 +149,7 @@ class FriendComponent(Component):
 
     def add_applicant(self, target_id):
         max_num_applicant = game_configs.base_config.get('maaOfFriendApply')
+        print 'add_applicant', len(self.applicant_list), max_num_applicant
         if len(self.applicant_list) > max_num_applicant:
             print 'add_applicant-1--------'
             return False
