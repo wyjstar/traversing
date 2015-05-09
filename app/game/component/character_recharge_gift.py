@@ -140,17 +140,21 @@ class CharacterRechargeGift(Component):
                 return
             recharge_data = self._recharge[recharge_item.gift_id]
             for data in recharge_item.data:
-                if data.recharge_time in recharge_data and\
+                if recharge_item.gift_type == 8 and data.recharge_time in recharge_data:
+                    self._get_activity_gift(recharge_item.gift_id, response)
+                    del recharge_data[data.recharge_time]
+                    if not recharge_data:
+                        del self._recharge[recharge_item.gift_id]
+                elif data.recharge_time in recharge_data and\
                         recharge_data[data.recharge_time] == 0:
                     self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_time] = 1
-                    if recharge_item.get('type') == 8:
-                        del recharge_data[data.recharge_time]
                 elif data.recharge_accumulation in recharge_data and\
                         recharge_data[data.recharge_accumulation] == 0:
                     self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_accumulation] = 1
                 else:
+                    response.res.result = False
                     logger.error('error recharge taken:%s:%s', recharge_item,
                                  self._recharge)
 
