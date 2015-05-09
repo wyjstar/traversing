@@ -22,6 +22,6 @@ def account_verify_remote(key):
 
 
 @rootserviceHandle
-def server_sync_remote(name, ip, port, status):
-    server_manager.sync_server(name, ip, port, status)
+def server_sync_remote(name, ip, port, status, server_no):
+    server_manager.sync_server(name, ip, port, status, server_no)
     logger.info(server_manager.get_server())

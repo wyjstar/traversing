@@ -234,7 +234,6 @@ class LineUpSlotComponent(Component):
 
         return suit_attr
 
-
     def get_battle_unit(self, stage):
         """docstring for get_battle_unit"""
         hero = self._hero_slot.hero_obj
@@ -265,14 +264,16 @@ class LineUpSlotComponent(Component):
 
         logger.debug(self._slot_no)
         logger.debug(line_up_order)
-        position = line_up_order.index(self._slot_no)
-        position += 1
+        position = line_up_order[self._slot_no - 1]
+        logger.debug(position)
+        #position += 1
         is_boss = False
-        battlt_unit = do_assemble(hero_no, quality, break_skill_buff_ids,
+        power = self.combat_power_lineup()
+        battlt_unit = do_assemble(self._slot_no, hero_no, quality, break_skill_buff_ids,
                                   hp, atk, physical_def, magic_def, hit,
                                   dodge, cri, cri_coeff, cri_ded_coeff,
                                   block, ductility, position, hero.level,
-                                  hero.break_level, is_boss)
+                                  hero.break_level, is_boss, power=power)
 
         return battlt_unit
 

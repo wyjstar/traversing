@@ -148,8 +148,8 @@ class WorldBoss(BaseBoss):
         award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
         for up, down, big_bag_id in award_info.values():
             ranks = self._rank_instance.get(up, down)
-            logger.debug("send_award_top_ten: %s" % big_bag_id)
             for player_id, v in ranks:
+                logger.debug("send_award_top_ten: player_id %s, value %s, big_bag_id %s" % (player_id, v, big_bag_id))
                 self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id)
 
     def send_award_add_up(self):
@@ -191,10 +191,9 @@ class WorldBoss(BaseBoss):
         """
         if not self._last_shot_item:
             return
-        logger.debug("send_award_last===============")
         player_id = self._last_shot_item['player_id']
         big_bag_id = game_configs.base_config.get("world_boss").get('last_kill_rewards')
-        logger.debug("send_award_last=============== %s" % big_bag_id)
+        logger.debug("send_award_last=============== player_id %s, big_bag_id %s" % (player_id, big_bag_id))
         self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
 
     def send_award_in(self):

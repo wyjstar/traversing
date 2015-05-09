@@ -83,6 +83,10 @@ class FriendComponent(Component):
         return False
 
     def add_friend(self, friend_id, is_active=True):
+        max_num_friend = game_configs.base_config.get('max_of_UserFriend')
+        if len(self.friends) > max_num_friend:
+            return False
+
         if friend_id in self._friends.keys():
             if friend_id in self._applicants_list:
                 del(self._applicants_list[friend_id])
@@ -123,6 +127,10 @@ class FriendComponent(Component):
         return True
 
     def add_blacklist(self, target_id):
+        max_num_blacklist = game_configs.base_config.get('max_of_Userblacklist')
+        if len(self.blacklist) > max_num_blacklist:
+            return False
+
         if target_id in self._blacklist:
             return False
 
@@ -140,6 +148,10 @@ class FriendComponent(Component):
         return True
 
     def add_applicant(self, target_id):
+        max_num_applicant = game_configs.base_config.get('maaOfFriendApply')
+        if len(self.applicant_list) > max_num_applicant:
+            return False
+
         if target_id in self._applicants_list.keys():
             return False
 
@@ -197,7 +209,8 @@ class FriendComponent(Component):
 
             # command:id 为收邮件的命令ID
             mail_data = mail.SerializePartialToString()
-            if netforwarding.push_message('receive_mail_remote', target_id, mail_data):
+            if netforwarding.push_message('receive_mail_remote',
+                                          target_id, mail_data):
                 return True
             else:
                 logger.error('stamina mail push message fail')

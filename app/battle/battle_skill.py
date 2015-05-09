@@ -5,6 +5,7 @@ created by server on 14-11-10下午3:43.
 
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger_cal
+from gfirefly.server.logobj import logger
 
 
 class UnitSkill(object):
@@ -21,6 +22,7 @@ class UnitSkill(object):
         self._attack_normal_skill_buffs = []
         self._attack_mp_skill_buffs = []
         self._has_skill_buff = False
+        logger.debug("skill %s" % self._unit_no)
         temp_unit = unit_config.get(self._unit_no)
         skill_info = game_configs.skill_config.get(temp_unit.normalSkill, None)
         self._main_normal_skill_buff, self._attack_normal_skill_buffs, self._has_normal_treat_skill_buff = \

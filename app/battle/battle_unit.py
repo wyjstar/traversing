@@ -11,7 +11,8 @@ class BattleUnit(object):
     """战斗单元"""
 
     def __init__(self):
-        self._slot_no = 0
+        self._slot_no = 0  # 阵容位置
+        self._position = 0  # 位置
         self._unit_name = ""
         self._unit_no = 0
         self._hp_max = 0.0
@@ -35,6 +36,7 @@ class BattleUnit(object):
         self._is_break = False     # 是否为突破
         self._is_awake = False     # 是否觉醒
         self._origin_no = 0        # 突破或者觉醒武将的原始no
+        self._power = 0
 
         self._buff_manager = BuffManager(self)
 
@@ -117,6 +119,14 @@ class BattleUnit(object):
     @slot_no.setter
     def slot_no(self, value):
         self._slot_no = value
+
+    @property
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, value):
+        self._position = value
 
     @property
     def unit_name(self):
@@ -235,12 +245,12 @@ class BattleUnit(object):
         self._ductility = value
 
     def __repr__(self):
-        return ("位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
-                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp(%s), buffs(%s), hp_percent(%s)") \
-               % (
-            self._slot_no, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
+        return ("阵容(%s), 位置(%d), 武将名称(%s), 编号(%s), hp(%s), 攻击(%s), 物防(%s), 魔防(%s), \
+                命中(%s), 闪避(%s), 暴击(%s), 暴击伤害系数(%s), 暴击减免系数(%s), 格挡(%s), 韧性(%s), 等级(%s), 突破等级(%s), mp(%s), buffs(%s), hp_percent(%s), power(%s)") \
+               % (self._slot_no,
+            self._position, self._unit_name, self._unit_no, self.hp, self.atk, self.physical_def, self.magic_def,
             self.hit, self.dodge, self.cri, self.cri_coeff, self.cri_ded_coeff, self.block, self.ductility,
-            self.level, self.break_level, self._skill.mp, self.buff_manager, self.hp_percent)
+            self.level, self.break_level, self._skill.mp, self.buff_manager, self.hp_percent, self._power)
 
     @property
     def hp_max(self):
@@ -249,6 +259,14 @@ class BattleUnit(object):
     @hp_max.setter
     def hp_max(self, value):
         self._hp_max = value
+
+    @property
+    def power(self):
+        return self._power
+
+    @power.setter
+    def power(self, value):
+        self._power = value
 
     @property
     def hp_percent(self):
@@ -270,7 +288,8 @@ class BattleUnit(object):
                     skill=self._skill,
                     is_awake=False,
                     origin_no=0,
-                    is_break=False)
+                    is_break=False,
+                    power=self._power)
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -298,10 +317,10 @@ class BattleUnit(object):
             return 1
 
 
-def do_assemble(no, quality, break_skills, hp,
+def do_assemble(slot_no, no, quality, break_skills, hp,
                 atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position,
                 level, break_level,
-                is_boss=False, is_hero=True, is_break_hero=False, unit_name=""):
+                is_boss=False, is_hero=True, is_break_hero=False, unit_name="", power=0):
     """组装战斗单位
     @param no: 编号
     @param quality: 品质
@@ -344,8 +363,8 @@ def do_assemble(no, quality, break_skills, hp,
 
     battle_unit.level = level
     battle_unit.is_boss = is_boss
-
-    battle_unit.slot_no = position
+    battle_unit.position = position
+    battle_unit.slot_no = slot_no
 
     if is_hero:
         battle_unit.skill = HeroSkill(battle_unit)
@@ -353,6 +372,7 @@ def do_assemble(no, quality, break_skills, hp,
         battle_unit.skill = MonsterSkill(battle_unit)
 
     battle_unit.skill.break_skill_ids = break_skills
+    battle_unit.power = power
     return battle_unit
 
 

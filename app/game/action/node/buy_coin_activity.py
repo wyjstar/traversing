@@ -63,6 +63,8 @@ def buy_coin_activity_1406(data, player):
             coin_nums = gain_info[k]
             break
     def func():
+        player.buy_coin.buy_times = buy_times + 1
+        player.buy_coin.save_data()
         player.finance.add_coin(coin_nums)
         player.finance.save_data()
 

@@ -20,9 +20,9 @@ class ServerManager(object):
                 self._servers[_['name']] = _
             print 'static server list:', self._servers
 
-    def sync_server(self, name, ip, port, status):
+    def sync_server(self, name, ip, port, status, no):
         if not self._is_static:
-            server = dict(name=name, ip=ip, port=port, status=status)
+            server = dict(name=name, ip=ip, port=port, status=status, no=no)
 
             for k, v in self._servers.items():
                 if v.get('name') == name:

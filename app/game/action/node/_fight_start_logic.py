@@ -152,7 +152,7 @@ def assemble(unit_add, unit):
     unit_add.level = unit.level
     unit_add.break_level = unit.break_level
 
-    unit_add.position = unit.slot_no
+    unit_add.position = unit.position
     unit_add.is_boss = unit.is_boss
 
     unit_add.is_awake = unit.is_awake

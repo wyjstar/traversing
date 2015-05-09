@@ -131,7 +131,7 @@ def add_push_message_remote(uid, msg_type, message, send_time):
     
 @rootserviceHandle
 def online_offline_remote(uid, on_or_off):
-    return groot.child('push').add_push_message_remote(uid, 
+    return groot.child('push').online_offline_remote(uid, 
                                                      on_or_off)
 
 @rootserviceHandle
