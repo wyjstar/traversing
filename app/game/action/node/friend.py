@@ -278,7 +278,9 @@ def get_player_friend_list_1106(data, player):
             logger.error('black_list cant find player id:%d' % pid)
             player.friends.blacklist.remove(pid)
 
+    print 'player.friends.applicant_list', player.friends.applicant_list
     for pid in player.friends.applicant_list:
+        print 'player.friends.applicant_list', pid
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             response_applicant_list_add = response.applicant_list.add()

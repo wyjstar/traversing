@@ -103,8 +103,9 @@ class Pusher(object):
             self.offline[uid] = int(time.time())
             push_offline.hset(uid, self.offline[uid])
         else:
-            del self.offline[uid]
-            push_offline.hdel(uid)
+            if uid in self.offline:
+                del self.offline[uid]
+                push_offline.hdel(uid)
         
     def add_message(self, uid, mtype, msg, send_time):
         print 'add_message', uid, mtype, msg, send_time

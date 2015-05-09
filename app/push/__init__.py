@@ -23,7 +23,7 @@ def do_push():
     push.gen_task()
     push.process()
     reactor.callLater(10, do_push)
-    logger.info('push data num:%s', 1)
+#     logger.info('push data num:%s', 1)
     
 
 reactor.callLater(10, do_push)
