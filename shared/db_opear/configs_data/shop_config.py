@@ -17,6 +17,7 @@ class ShopConfig(object):
         for row in config_value:
             convert_keystr2num(row.get("weightGroup"))
             convert_keystr2num(row.get("limitVIPeveryday"))
+            convert_keystr2num(row.get("limitVIP"))
             row["consume"] = parse(row.get("consume"))
             row["gain"] = parse(row.get("gain"))
             row["extraGain"] = parse(row.get("extraGain"))

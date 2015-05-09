@@ -55,7 +55,6 @@ def shop_oper(pro_data, player, reason):
     # logger.debug(shop_id)
     # logger.debug("---------")
 
-    # print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
     if shop_id == 10001 and player.shop.first_coin_draw:
         is_consume(player, shop_item)
 
@@ -300,6 +299,7 @@ def shop_buy_505(pro_data, player):
     common_response.result = True
     return response.SerializeToString()
 
+
 def get_reason(shop_type):
     if shop_type == 3:
         return const.COMMON_BUY_ITEM
@@ -317,6 +317,7 @@ def get_reason(shop_type):
         return const.COMMON_BUY_EQUIPMENT
     else:
         return const.COMMON_BUY
+
 
 @remoteserviceHandle('gate')
 def refresh_shop_items_507(pro_data, player):
@@ -357,6 +358,7 @@ def refresh_shop_items_507(pro_data, player):
 
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
+
 
 @remoteserviceHandle('gate')
 def get_shop_items_508(pro_data, player):
