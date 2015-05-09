@@ -160,6 +160,7 @@ class ConnectionManager:
     def check_timeout(self):
         for k, v in self._connections.items():
             if v.time_out:
+                logger.error('closing one connection which without heart%s', k)
                 v.loseConnection()
 
     def loop_check(self):
