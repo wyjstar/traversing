@@ -164,9 +164,9 @@ class Pusher(object):
 #                 apns_handler.gateway_server.send_notification_multiple(frame)
 #             except Exception, e:
 #                 print e
-        payload = Payload(alert='message.message', sound='default', badge=1)
+#         payload = Payload(alert='message.message', sound='default', badge=1)
 #             frame.add_item(user.device_token, payload, identifier, expiry, priority)
-        apns_handler.gateway_server.send_notification(device_token1, payload)
+#         apns_handler.gateway_server.send_notification(device_token1, payload)
         
     def send_all(self, mtype, message):
 #         frame = Frame()
