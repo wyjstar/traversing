@@ -33,7 +33,10 @@ def draw_rebate_5433(data, player):
     response.rid = req.rid
     response.res.result = True
     recharge_item = None
-    for item in game_configs.recharge_config.values():
+    plat = 'ios'
+    if player.base_info.plat_id == 1:
+        plat = 'android'
+    for item in game_configs.recharge_config[plat].values():
         if item.get('id') == req.rid:
             recharge_item = item
     if recharge_item and recharge_item.get('type') == 2:
