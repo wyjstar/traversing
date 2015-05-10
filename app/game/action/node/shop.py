@@ -52,8 +52,8 @@ def shop_oper(pro_data, player, reason):
     response = ShopResponse()
     shop_id = request.ids[0]
     shop_item = game_configs.shop_config.get(shop_id)
-    logger.debug(shop_id)
-    logger.debug("---------")
+    # logger.debug(shop_id)
+    # logger.debug("---------")
 
     # print shop_id, player.shop.first_coin_draw, player.shop.first_gold_draw, 'shop_id  '*10
     if shop_id == 10001 and player.shop.first_coin_draw:
@@ -109,12 +109,12 @@ def shop_oper(pro_data, player, reason):
                                 player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
             #consume_data = return_data
-        logger.debug("hero-draw2")
+        # logger.debug("hero-draw2")
         return_data = []
         extra_return_data = []
         if shop_item.type==5:
             # todo: 如何判断shop类型：单抽、十连抽
-            logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
+            # logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
             gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
             return_data = gain(player, gain_items, reason)
             extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
@@ -133,7 +133,7 @@ def shop_oper(pro_data, player, reason):
     player.pay.pay(need_gold, func)
 
     response.res.result = True
-    logger.debug("response gain %s" % response.gain)
+    # logger.debug("response gain %s" % response.gain)
     return response.SerializeToString()
 
 
@@ -241,6 +241,20 @@ def shop_buy_505(pro_data, player):
             logger.error('not enough money:%s', price)
             return response.SerializeToString()
 
+        if shop_item.limitVIP:
+            limit_num = shop_item.limitVIP.get(player.base_info.vip_level, 0)
+            shop_id_buyed_num = shop['vip_limit_items'].get(shop_id, 0)
+            logger.error("vip limit shop item:%s:%s limit:%s:%s",
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
+
+            if shop_id_buyed_num + item_count > limit_num:
+                common_response.result = False
+                common_response.result_no = 502
+                response.limit_item_current_num = shop_id_buyed_num
+                response.limit_item_max_num = limit_num
+                return response.SerializeToString()
+            shop['vip_limit_items'][shop_id] = shop_id_buyed_num + item_count
+
         if shop_item.limitVIPeveryday:
             limit_num = shop_item.limitVIPeveryday.get(player.base_info.vip_level, 0)
             shop_id_buyed_num = shop['limit_items'].get(shop_id, 0)
@@ -345,38 +359,6 @@ def refresh_shop_items_507(pro_data, player):
     return response.SerializeToString()
 
 @remoteserviceHandle('gate')
-def refresh_shop_items_509(pro_data, player):
-    """
-    refresh shop item at some date.
-    """
-    request = RefreshShopItems()
-    request.ParseFromString(pro_data)
-    shop_type = request.shop_type
-
-
-    response = GetShopItemsResponse()
-    response.res.result = player.shop.refresh_items(shop_type)
-    shopdata = player.shop.get_shop_data(shop_type)
-    if not shopdata:
-        response.res.result = False
-        return response.SerializePartialToString()
-
-    response.res.result = False
-    response.res.result_no = 101
-    return response.SerializePartialToString()
-
-    for x in shopdata['item_ids']:
-        response.id.append(x)
-    for x in shopdata['buyed_item_ids']:
-        response.buyed_id.append(x)
-    for k, v in shopdata['limit_items']:
-        response.limit_item_id.append(k)
-        response.limit_item_num.append(v)
-
-    response.luck_num = int(shopdata['luck_num'])
-    return response.SerializePartialToString()
-
-@remoteserviceHandle('gate')
 def get_shop_items_508(pro_data, player):
     """获取商品列表"""
     request = GetShopItems()
@@ -397,8 +379,12 @@ def get_shop_items_508(pro_data, player):
     for k, v in shopdata['limit_items'].items():
         response.limit_item_id.append(k)
         response.limit_item_num.append(v)
+    for k, v in shopdata['vip_limit_items'].items():
+        vim_limit_item = response.vip_limit_item.add()
+        vim_limit_item.item_id = k
+        vim_limit_item.item_num = v
 
-    logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
+    # logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
     response.refresh_times = shopdata['refresh_times']

@@ -30,6 +30,7 @@ class CharacterShopComponent(Component):
         self._first_gold_draw = character_info.get('first_gold_draw')
         self._pseudo_times = character_info.get('pseudo_times')
         self.check_time()
+        self.refresh_shop_info()
 
         # for k, v in self._shop_data.items():
         #     print k, v.items()
@@ -47,21 +48,30 @@ class CharacterShopComponent(Component):
 
     def new_data(self):
         for t, item in game_configs.shop_type_config.items():
-            data = {}
-            data['buyed_item_ids'] = []
-            data['refresh_times'] = 0
-            data['last_refresh_time'] = time.time()
-            data['luck_num'] = 0.0
-            data['luck_time'] = time.time()
-            data['item_ids'] = self.get_shop_item_ids(t, 0)
-            data['limit_items'] = {}
-            # print t, data['item_ids']
-            self._shop_data[t] = data
-        # print data
+            self._shop_data[t] = self.get_new_shop_info(t)
         return {'shop': self._shop_data,
                 'first_coin_draw': True,
                 'first_gold_draw': True,
                 'pseudo_times': self._pseudo_times}
+
+    def refresh_shop_info(self):
+        for t, item in game_configs.shop_type_config.items():
+            if not self._shop_data.get(t):
+                self._shop_data[t] = self.get_new_shop_info(t)
+        self.save_data()
+
+    def get_new_shop_info(self, shop_type):
+        data = {}
+        data['buyed_item_ids'] = []
+        data['refresh_times'] = 0
+        data['last_refresh_time'] = time.time() # 手动刷新
+        data['last_auto_refresh_time'] = time.time() # 自动刷新
+        data['luck_num'] = 0.0
+        data['luck_time'] = time.time()
+        data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
+        data['limit_items'] = {}
+        data['vip_limit_items'] = {}
+        return data
 
     def check_time(self):
         current_date_time = time.time()
@@ -82,13 +92,17 @@ class CharacterShopComponent(Component):
             if 'limit_items' not in v:
                 v['limit_items'] = {}
 
-        #自动刷新列表
-        for shop_type, shop_type_info in game_configs.shop_type_config.items():
+            if 'vip_limit_items' not in v:
+                v['vip_limit_items'] = {}
+
+            #自动刷新列表
+            shop_type_info = game_configs.shop_type_config.get(k)
             freeRefreshTime = shop_type_info.freeRefreshTime
             if shop_type_info.freeRefreshTime == "-1":
                 continue
-            #if is_past_time(freeRefreshTime):
-                #self.refresh_items(shop_type)
+            logger.debug("%s %s" % (freeRefreshTime, v['last_auto_refresh_time']))
+            if time.time() > is_past_time(freeRefreshTime, v['last_auto_refresh_time']):
+                self.auto_refresh_items(k)
 
     def get_shop_data(self, t):
         if t not in self._shop_data:
@@ -127,10 +141,12 @@ class CharacterShopComponent(Component):
         result = self._owner.pay.pay(price, func)
         return result
 
-    def refresh_items(self, type_shop):
+    def auto_refresh_items(self, type_shop):
+        logger.debug("auto_refresh_items=========")
         if type_shop in self._shop_data:
-            ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop].luck_num)
+            ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop]['luck_num'])
             self._shop_data[type_shop]['item_ids'] = ids
+            self._shop_data[type_shop]['last_auto_refresh_time'] = time.time()
             logger.info('refresh_item_ids:%s', ids)
             self.save_data()
             return True
@@ -189,16 +205,11 @@ class CharacterShopComponent(Component):
             if draw_times >= k:
                 bags = gain.get(k)
                 for bag_id in bags:
-                    logger.debug("drop_bag_id %s", bag_id)
+                    # logger.debug("drop_bag_id %s", bag_id)
                     big_bag = BigBag(bag_id)
                     drop_items.extend(big_bag.get_drop_items())
                 break
-        logger.debug("drop_items %s", drop_items)
+        # logger.debug("drop_items %s", drop_items)
         self._pseudo_times[pseudo_bag_id] = draw_times + 1
         self.save_data()
         return drop_items
-
-
-
-
-

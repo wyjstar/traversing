@@ -28,7 +28,7 @@ class CharacterStageComponent(Component):
 
         self._stage_progress = game_configs.stage_config.get('first_stage_id')
         self._rank_stage_progress = game_configs.stage_config.get('first_stage_id')
-        self._star_num = []
+        self._star_num = [0]*40
 
     def init_data(self, character_info):
         stages = character_info.get('stage_info')
@@ -46,7 +46,7 @@ class CharacterStageComponent(Component):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
         self._stage_progress = character_info.get('stage_progress', first_stage_id)
         self._rank_stage_progress = character_info.get('rank_stage_progress', first_stage_id)
-        self._star_num = character_info.get('star_num', [])
+        self._star_num = character_info.get('star_num', [0]*40)
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -148,8 +148,9 @@ class CharacterStageComponent(Component):
 
         if result:  # win
             conf = game_configs.stage_config.get('stages')
-            chapter_id = conf.get(stage_id).get('chapter')
+            chapter_id = None
             if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
+                chapter_id = conf.get(stage_id).get('chapter')
                 chapter = self.get_chapter(chapter_id)
                 chapter.update(self.calculation_star(chapter_id))
                 next_stages = game_configs.stage_config.get('condition_mapping')
@@ -162,7 +163,7 @@ class CharacterStageComponent(Component):
                     state = self.check_stage_state(stage.stage_id)
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
-                        if conf.get(stage_id).get('type') == 1:
+                        if chapter_id and conf.get(stage_id).get('type') == 1:
                             self._stage_progress = conf.get(stage_id).get('condition')
                             chapter_star_num = self.calculation_star(chapter_id)
                             self.star_num[chapter_id] = chapter_star_num
@@ -232,3 +233,19 @@ class CharacterStageComponent(Component):
     @stage_progress.setter
     def stage_progress(self, values):
         self._stage_progress = values
+
+    @property
+    def star_num(self):
+        return self._star_num
+
+    @star_num.setter
+    def star_num(self, values):
+        self._star_num = values
+
+    @property
+    def rank_stage_progress(self):
+        return self._rank_stage_progress
+
+    @rank_stage_progress.setter
+    def rank_stage_progress(self, values):
+        self._rank_stage_progress = values

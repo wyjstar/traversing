@@ -22,6 +22,9 @@ from app.game.action.node._fight_start_logic import pve_assemble_friend
 from shared.utils.const import const
 from shared.tlog import tlog_action
 from shared.utils.pyuuid import get_uuid
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import is_afford
+from app.game.core.item_group_helper import get_consume_gold_num
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -193,6 +196,7 @@ def stage_sweep_907(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     times = request.times
+    sweep_type = request.sweep_type
     lively_event = {}
     if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
         lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
@@ -207,7 +211,7 @@ def stage_sweep_907(pro_data, player):
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
-    return stage_sweep(stage_id, times, player)
+    return stage_sweep(stage_id, times, player, sweep_type)
 
 
 def get_stage_info(stage_id, player):
@@ -271,15 +275,17 @@ def fight_settlement(stage, result, player):
     return response.SerializePartialToString()
 
 
-def stage_sweep(stage_id, times, player):
+def stage_sweep(stage_id, times, player, sweep_type):
     response = stage_response_pb2.StageSweepResponse()
     res = response.res
 
+    # 关于关卡挑战次数
     if time.localtime(player.stage_component.stage_up_time).tm_yday != time.localtime().tm_yday:
         player.stage_component.stage_up_time = int(time.time())
         player.stage_component.update_stage_times()
         player.stage_component.save_data()
 
+    # vip等级够不够
     if times == 1:
         if not game_configs.vip_config.get(player.base_info.vip_level).openSweep:
             logger.error('result_no = 803')
@@ -293,6 +299,7 @@ def stage_sweep(stage_id, times, player):
             res.result_no = 803
             return response.SerializePartialToString()
 
+    # 关卡打开没有
     state = player.stage_component.check_stage_state(stage_id)
     if state != 1:
         logger.error('result_no = 803')
@@ -302,83 +309,112 @@ def stage_sweep(stage_id, times, player):
 
     stage_config = game_configs.stage_config.get('stages').get(stage_id)
 
+    # 限制次数够不够
     if player.stage_component.get_stage(stage_id).attacks + times > stage_config.limitTimes:
         logger.error('result_no = 810')
         res.result = False
         res.result_no = 810
         return response.SerializePartialToString()
+
+    # 花费
+    if sweep_type == 1:
+        # 扫荡卷
+        sweep_item = game_configs.base_config.get('sweepNeedItem')
+    elif sweep_type == 2:
+        sweep_item = game_configs.base_config.get('price_sweep')
+    else:
+        logger.error('result_no = 800 ,sweep type error===========')
+        res.result = False
+        res.result_no = 800
+        return response.SerializePartialToString()
+
+    result = is_afford(player, sweep_item, multiple=times)  # 校验
+    if not result.get('result'):
+        logger.error('result_no = 839 ,===========')
+        res.result = False
+        res.result_no = 839
+        return response.SerializePartialToString()
+
+    need_gold = get_consume_gold_num(sweep_item)
+
     tlog_event_id = get_uuid()
 
-    # 武将乱入
-    fight_cache_component = player.fight_cache_component
-    fight_cache_component.stage_id = stage_id
-    red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
+    def func():
 
-    for _ in range(times):
-        drop = []
-        drops = response.drops.add()
-        low = stage_config.low
-        high = stage_config.high
-        drop_num = random.randint(low, high)
+        # 武将乱入
+        fight_cache_component = player.fight_cache_component
+        fight_cache_component.stage_id = stage_id
+        red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
-        for __ in range(drop_num):
-            common_bag = BigBag(stage_config.commonDrop)
-            common_drop = common_bag.get_drop_items()
-            drop.extend(common_drop)
+        for _ in range(times):
+            drop = []
+            drops = response.drops.add()
+            low = stage_config.low
+            high = stage_config.high
+            drop_num = random.randint(low, high)
 
-        elite_bag = BigBag(stage_config.eliteDrop)
-        elite_drop = elite_bag.get_drop_items()
-        drop.extend(elite_drop)
+            for __ in range(drop_num):
+                common_bag = BigBag(stage_config.commonDrop)
+                common_drop = common_bag.get_drop_items()
+                drop.extend(common_drop)
 
-        data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
-        get_return(player, data, drops)
+            elite_bag = BigBag(stage_config.eliteDrop)
+            elite_drop = elite_bag.get_drop_items()
+            drop.extend(elite_drop)
 
-        # 乱入武将按概率获取碎片
-        break_stage_id = player.fight_cache_component.break_stage_id
-        if break_stage_id:
-            break_stage_info = game_configs.stage_break_config.get(break_stage_id)
-            ran = random.random()
-            if ran <= break_stage_info.reward_odds:
-                logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
-                data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
-                get_return(player, data, drops)
+            data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
+            get_return(player, data, drops)
 
-        player.stamina.stamina -= stage_config.vigor
-        # 经验
-        for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
-            # print lineUpSlotComponent,
-            hero = lineUpSlotComponent.hero_slot.hero_obj
-            if hero:
+            # 乱入武将按概率获取碎片
+            break_stage_id = player.fight_cache_component.break_stage_id
+            if break_stage_id:
+                break_stage_info = game_configs.stage_break_config.get(break_stage_id)
+                ran = random.random()
+                if ran <= break_stage_info.reward_odds:
+                    logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
+                    data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
+                    get_return(player, data, drops)
 
-                beforelevel = hero.level
-                hero.upgrade(stage_config.HeroExp, player.base_info.level)
-                afterlevel = hero.level
-                changelevel = afterlevel-beforelevel
-                hero.save_data()
-                if changelevel:
-                    tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel)
-        # 玩家金钱
-        player.finance.coin += stage_config.currency
-        # 玩家经验
-        player.base_info.addexp(stage_config.playerExp, const.STAGE_SWEEP)
-    # 更新等级相关属性
-    player.line_up_component.update_slot_activation()
-    player.line_up_component.save_data()
+            player.stamina.stamina -= stage_config.vigor
+            # 经验
+            for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
+                hero = lineUpSlotComponent.hero_slot.hero_obj
+                if hero:
 
-    # 活跃度
-    lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
-    # 保存活跃度
-    tstatus = player.tasks.check_inter(lively_event)
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+                    beforelevel = hero.level
+                    hero.upgrade(stage_config.HeroExp, player.base_info.level)
+                    afterlevel = hero.level
+                    changelevel = afterlevel-beforelevel
+                    hero.save_data()
+                    if changelevel:
+                        tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel)
+            # 玩家金钱
+            player.finance.coin += stage_config.currency
+            # 玩家经验
+            player.base_info.addexp(stage_config.playerExp, const.STAGE_SWEEP)
+        # 更新等级相关属性
+        player.line_up_component.update_slot_activation()
+        player.line_up_component.save_data()
 
-    player.stage_component.get_stage(stage_id).attacks += times
-    player.stage_component.save_data()
+        return_data = consume(player, sweep_item, multiple=times)
+        get_return(player, return_data, response.consume)
 
-    player.stamina.save_data()
-    player.base_info.save_data()
-    player.finance.save_data()
+        # 活跃度
+        lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
+        # 保存活跃度
+        tstatus = player.tasks.check_inter(lively_event)
+        if tstatus:
+            task_data = task_status(player)
+            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+
+        player.stage_component.get_stage(stage_id).attacks += times
+        player.stage_component.save_data()
+
+        player.stamina.save_data()
+        player.base_info.save_data()
+        player.finance.save_data()
+
+    player.pay.pay(need_gold, func)
 
     res.result = True
     tlog_action.log('SweepFlow', player, stage_id, times, tlog_event_id)
