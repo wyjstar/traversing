@@ -6,7 +6,7 @@ Created on 2015-5-10
 '''
 from apns import APNs, Frame
 from apns import Payload
-apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True, ciphers='123456')
+apns_handler = APNs(use_sandbox=True, cert_file='push_dev2.pem', enhanced=True, ciphers='123456')
 device_token ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
 

@@ -19,7 +19,7 @@ push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
 
 pem_path = os.path.abspath('.')
-apns_handler = APNs(use_sandbox=True, cert_file=pem_path+'/push_dev.pem', enhanced=True)
+apns_handler = APNs(use_sandbox=True, cert_file=pem_path+'/push_dev2.pem', enhanced=True)
 device_token ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
 
@@ -159,7 +159,10 @@ class Pusher(object):
             del self.to_push[mid]
             push_task.hdel(mid)
         if count:
-            apns_handler.gateway_server.send_notification_multiple(frame)
+            try:
+                apns_handler.gateway_server.send_notification_multiple(frame)
+            except Exception, e:
+                print e
         
     def send_all(self, mtype, message):
         frame = Frame()
@@ -175,7 +178,10 @@ class Pusher(object):
                 count += 1
         print 'count', count
         if count:
-            apns_handler.gateway_server.send_notification_multiple(frame)
+            try:
+                apns_handler.gateway_server.send_notification_multiple(frame)
+            except Exception,e:
+                print e
         
     def gen_task(self):
         push_config = game_configs.push_config
