@@ -82,11 +82,14 @@ def from_admin_rpc_remote(args):
     #     com = "gm." + args['command'] + "(args)"
     #     res = eval(com)
     # else:
+    print 'from_admin_rpc_remote', args
     if not args.get('uid'):
         return {'success': 0, 'message': 1}
     oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
+    print 'oldvcharacter', oldvcharacter
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
+        print 'oldvcharacter.node', oldvcharacter.node
         child_node = groot.child(oldvcharacter.node)
         return child_node.callbackChild(*args)
     else:

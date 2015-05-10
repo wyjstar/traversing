@@ -93,3 +93,4 @@ import sdk_tencent
 import rank
 import buy_coin_activity
 import push
+import rebate

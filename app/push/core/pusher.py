@@ -18,8 +18,8 @@ push_task = RedisObject('pushobj.push')
 push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
 
-
-apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
+pem_path = os.path.abspath('.')
+apns_handler = APNs(use_sandbox=True, cert_file=pem_path+'/push_dev.pem', enhanced=True)
 device_token ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
 
@@ -140,7 +140,6 @@ class Pusher(object):
             uid = message.uid
             mtype = message.msg_type
             send_time = message.send_time
-            print 'send_time', send_time, now
             if send_time < now:
                 continue
             if uid == -1:
