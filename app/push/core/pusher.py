@@ -1,4 +1,4 @@
-#coding: utf-8
+# -*- coding:utf-8 -*-
 '''
 Created on 2015-5-2
 
@@ -27,14 +27,14 @@ class PushMessage(object):
         self.message = None
         self.uid = None
         self.msg_type = None
-    
+
     def can_send(self):
         now = int(time.time())
         if now > self.send_time:
             return True
         return False
-    
-        
+
+
 class Character(object):
     def __init__(self):
         self.uid = None
@@ -42,24 +42,24 @@ class Character(object):
         self.switch = {} #消息开关
         self.status = 1
         self.status_time = 0
-    
+
     def set_switch(self, mtype, switch):
         self.switch[mtype] = switch
         self.status = 1
-        
+
     def set_status(self, status):
         self.status = status
         self.status_time = int(time.time())
-        
+
     def can_push(self, mtype):
         return self.switch.get(mtype, 1) and self.status == 0
-    
+
     def on_off(self):
         return self.status
 
 class Pusher(object):
     __metaclass__ = Singleton
-    
+
     def __init__(self):
         self.register = {} #key:uid, value:Character
         self.to_push = {}
@@ -74,7 +74,7 @@ class Pusher(object):
         print self.offline
         self.everyday = push_day.hgetall()
         print self.everyday
-        
+
     def regist(self, uid, device_token):
         print 'device_token', device_token
         user = Character()
@@ -82,24 +82,24 @@ class Pusher(object):
         user.device_token = device_token
         self.register[user.uid] = user
         push_reg.hset(uid, user)
-        
+
     def set_switch(self, uid, mtype, switch):
         if uid not in self.register:
             return
-        
+
         self.register[uid].set_switch(mtype, switch)
         push_reg.hset(uid,  self.register[uid])
-        
+
     def get_switch(self, uid):
         if uid in self.register:
             return self.register[uid].switch
         return {}
-        
+
     def on_offf(self, uid, status):
         if uid in self.register:
             self.register[uid].set_status(status)
             push_reg.hset(uid,  self.register[uid])
-            
+
         if status == 0:
             #离线需要设置系统消息
             self.offline[uid] = int(time.time())
@@ -108,8 +108,9 @@ class Pusher(object):
             if uid in self.offline:
                 del self.offline[uid]
                 push_offline.hdel(uid)
-        
+
     def add_message(self, uid, mtype, msg, send_time):
+        print(msg)
         print 'add_message', uid, mtype, msg, send_time
         if uid in self.register:
             if self.register[uid].status == 1:
@@ -124,7 +125,7 @@ class Pusher(object):
         mid = '%s.%s.%s' %(uid,mtype,time.time())
         self.to_push[mid] = message
         push_task.hset(mid, message)
-            
+
     def process(self):
         print 'process'
 #         frame = Frame()
@@ -150,7 +151,7 @@ class Pusher(object):
                 user = self.register[uid]
             if user == None or not user.can_push(mtype):
                 continue
-                    
+
             payload = Payload(alert=message.message, sound='default', badge=1)
 #             frame.add_item(user.device_token, payload, identifier, expiry, priority)
             apns_handler.gateway_server.send_notification(user.device_token, payload)
@@ -196,7 +197,7 @@ class Pusher(object):
                 self.gen_4(push.id)
             if push.event == 6:
                 self.gen_2(push.id)
-            
+
     def gen_2(self, pid):
         push_config = game_configs.push_config[pid]
         tt = push_config.conditions
@@ -212,7 +213,7 @@ class Pusher(object):
                 message = game_configs.language_config.get(str(push_config.text)).get('cn')
                 print 'message', message
                 self.add_message(-1, push_config.event, message, one)
-    
+
     def gen_4(self, pid):
         push_config = game_configs.push_config[pid]
         days = push_config.conditions[0]
@@ -223,4 +224,4 @@ class Pusher(object):
                 self.add_message(uid, push_config.event, message, int(time.time()))
                 del self.offline[uid]
                 push_offline.hdel(uid)
-                
+
