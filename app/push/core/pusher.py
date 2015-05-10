@@ -11,23 +11,15 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import xtime
 
 from gfirefly.dbentrust.redis_mode import RedisObject
-from app.push.core import APNSWrapper
 
 push_reg = RedisObject('pushobj.reg')
 push_task = RedisObject('pushobj.push')
 push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
 
-apns = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
+apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
 device_token ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
-wrapper = APNSWrapper.APNSNotificationWrapper('push_dev.pem', True, debug_ssl=True)
-message = APNSWrapper.APNSNotification()
-message.token(device_token)
-message.badge(1)
-message.alert('hello, world')
-wrapper.append(message)
-wrapper.notify()
 
 class PushMessage(object):
     def __init__(self):
@@ -166,7 +158,7 @@ class Pusher(object):
             del self.to_push[mid]
             push_task.hdel(mid)
         if count:
-            apns.gateway_server.send_notification_multiple(frame)
+            apns_handler.gateway_server.send_notification_multiple(frame)
         
     def send_all(self, mtype, message):
         frame = Frame()
@@ -182,7 +174,7 @@ class Pusher(object):
                 count += 1
         print 'count', count
         if count:
-            apns.gateway_server.send_notification_multiple(frame)
+            apns_handler.gateway_server.send_notification_multiple(frame)
         
     def gen_task(self):
         push_config = game_configs.push_config
