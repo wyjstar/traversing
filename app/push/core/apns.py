@@ -48,15 +48,14 @@ except ImportError:
     import simplejson as json
 
 # _logger = logging.getLogger(__name__)
-class Mylog(object):
-    def __init__(self, log):
-        self.debug = log
-        self.info = log
-        self.exception = log
-        
 def my_log(msg):
     print msg
     
+class Mylog(object):
+    def __init__(self, log):
+        self.debug = log
+        self.exception = log
+        self.info = log
 _logger = Mylog(my_log)
 
 MAX_PAYLOAD_LENGTH = 2048
@@ -105,7 +104,7 @@ ER_IDENTIFER = 'identifier'
 class APNs(object):
     """A class representing an Apple Push Notification service connection"""
 
-    def __init__(self, use_sandbox=False, cert_file=None, key_file=None, enhanced=False, ciphers=None):
+    def __init__(self, use_sandbox=False, cert_file=None, key_file=None, enhanced=False):
         """
         Set use_sandbox to True to use the sandbox (test) APNs servers.
         Default is False.
@@ -117,7 +116,6 @@ class APNs(object):
         self._feedback_connection = None
         self._gateway_connection = None
         self.enhanced = enhanced
-        self.ciphers = ciphers
 
     @staticmethod
     def packed_uchar(num):
@@ -179,8 +177,7 @@ class APNs(object):
                 use_sandbox = self.use_sandbox,
                 cert_file = self.cert_file,
                 key_file = self.key_file,
-                enhanced = self.enhanced,
-                ciphers = self.ciphers,
+                enhanced = self.enhanced
             )
         return self._gateway_connection
 
@@ -189,7 +186,7 @@ class APNsConnection(object):
     """
     A generic connection class for communicating with the APNs
     """
-    def __init__(self, cert_file=None, key_file=None, timeout=None, enhanced=False, ciphers=None):
+    def __init__(self, cert_file=None, key_file=None, timeout=None, enhanced=False):
         super(APNsConnection, self).__init__()
         self.cert_file = cert_file
         self.key_file = key_file
@@ -198,7 +195,6 @@ class APNsConnection(object):
         self._ssl = None
         self.enhanced = enhanced
         self.connection_alive = False
-        self.ciphers = ciphers
 
     def __del__(self):
         self._disconnect();
@@ -223,7 +219,7 @@ class APNsConnection(object):
             self._last_activity_time = time.time()
             self._socket.setblocking(False)
             self._ssl = wrap_socket(self._socket, self.key_file, self.cert_file,
-                                        do_handshake_on_connect=False, ciphers= self.ciphers)
+                                        do_handshake_on_connect=False)
             while True:
                 try:
                     self._ssl.do_handshake()
@@ -240,7 +236,7 @@ class APNsConnection(object):
             # Fallback for 'SSLError: _ssl.c:489: The handshake operation timed out'
             for i in xrange(3):
                 try:
-                    self._ssl = wrap_socket(self._socket, self.key_file, self.cert_file, ciphers=self.ciphers)
+                    self._ssl = wrap_socket(self._socket, self.key_file, self.cert_file)
                     break
                 except SSLError, ex:
                     if ex.args[0] == SSL_ERROR_WANT_READ:
