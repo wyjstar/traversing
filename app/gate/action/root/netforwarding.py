@@ -114,7 +114,7 @@ def register_push_message_remote(uid, device_token):
                                                      device_token)
     
 @rootserviceHandle
-def set_push_switch_remote(uid, *switchs):
+def set_push_switch_remote(uid, switchs):
     return groot.child('push').set_push_switch_remote(uid, 
                                                      switchs)
     

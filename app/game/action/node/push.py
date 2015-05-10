@@ -29,14 +29,16 @@ def register_push_2222(data, player):
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
-def set_push_switch2223(data, player):
+def set_push_switch_2223(data, player):
     """
     设置推送消息开关
     """
+    print 'set_push_switch_2223', type(data), len(data)
     request = push_pb2.msgSwitchReq()
     request.ParseFromString(data)
+    print 'request', request
     
-    remote_gate.set_push_switch_remote(player.base_info.id, request.SerializePartialToString())
+    remote_gate.set_push_switch_remote(player.base_info.id, data)
     return request.SerializePartialToString()
 
 @remoteserviceHandle('gate')
