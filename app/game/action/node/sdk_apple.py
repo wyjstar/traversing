@@ -38,7 +38,7 @@ def apple_consume_verify_11002(data, player):
     result = IAPSDK().verify(request.purchase_info, request.transaction_id)
     logger.debug(result)
 
-    recharge_item = game_configs.recharge_config.get('ios').get(result.get('goodscode'))
+    recharge_item = game_configs.recharge_config.get('ios').get(result.get('goodsid'))
 
     if result:
         if recharge_item is None:
