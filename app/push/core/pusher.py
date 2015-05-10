@@ -11,6 +11,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import xtime
 
 from gfirefly.dbentrust.redis_mode import RedisObject
+from app.push.core import APNSWrapper
 
 push_reg = RedisObject('pushobj.reg')
 push_task = RedisObject('pushobj.push')
@@ -18,6 +19,8 @@ push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
 
 apns = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
+
+wrapper = APNSWrapper.APNSNotificationWrapper('push_dev.pem', True, debug_ssl=True)
 
 
 class PushMessage(object):
