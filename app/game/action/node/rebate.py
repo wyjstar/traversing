@@ -32,7 +32,10 @@ def draw_rebate_5433(data, player):
     response = rebateResp()
     response.rid = req.rid
     response.res.result = True
-    recharge_item = game_configs.recharge_config.get(req.rid)
+    recharge_item = None
+    for item in game_configs.recharge_config.values():
+        if item.get('id') == req.rid:
+            recharge_item = item
     if recharge_item and recharge_item.get('type') == 2:
         _, last, can_draw = player.rebate.rebate_status(req.rid, recharge_item.get('giftDays'))
         if last > 0 and can_draw:
