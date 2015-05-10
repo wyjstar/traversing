@@ -95,7 +95,7 @@ ER_IDENTIFER = 'identifier'
 class APNs(object):
     """A class representing an Apple Push Notification service connection"""
 
-    def __init__(self, use_sandbox=False, cert_file=None, key_file=None, enhanced=False, ciphers=None):
+    def __init__(self, use_sandbox=False, cert_file=None, key_file=None, enhanced=False, ciphers=None, ssl_version=None):
         """
         Set use_sandbox to True to use the sandbox (test) APNs servers.
         Default is False.
@@ -108,6 +108,7 @@ class APNs(object):
         self._gateway_connection = None
         self.enhanced = enhanced
         self.ciphers = ciphers
+        self.ssl_version = ssl_version
 
     @staticmethod
     def packed_uchar(num):
@@ -170,7 +171,8 @@ class APNs(object):
                 cert_file = self.cert_file,
                 key_file = self.key_file,
                 enhanced = self.enhanced,
-                ciphers = self.ciphers
+                ciphers = self.ciphers,
+                ssl_version = self.ssl_version
             )
         return self._gateway_connection
 
@@ -230,7 +232,7 @@ class APNsConnection(object):
             # Fallback for 'SSLError: _ssl.c:489: The handshake operation timed out'
             for i in xrange(3):
                 try:
-                    self._ssl = wrap_socket(self._socket, self.key_file, self.cert_file)
+                    self._ssl = wrap_socket(self._socket, self.key_file, self.cert_file, ciphers=self.ciphers)
                     break
                 except SSLError, ex:
                     if ex.args[0] == SSL_ERROR_WANT_READ:
