@@ -11,11 +11,13 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import xtime
 
 from gfirefly.dbentrust.redis_mode import RedisObject
+import os
 
 push_reg = RedisObject('pushobj.reg')
 push_task = RedisObject('pushobj.push')
 push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
+
 
 apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
 device_token ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'

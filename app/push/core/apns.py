@@ -47,7 +47,17 @@ try:
 except ImportError:
     import simplejson as json
 
-_logger = logging.getLogger(__name__)
+# _logger = logging.getLogger(__name__)
+class Mylog(object):
+    def __init__(self, log):
+        self.debug = log
+        self.info = log
+        self.exception = log
+        
+def my_log(msg):
+    print msg
+    
+_logger = Mylog(my_log)
 
 MAX_PAYLOAD_LENGTH = 2048
 
