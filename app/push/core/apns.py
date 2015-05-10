@@ -56,6 +56,7 @@ class Mylog(object):
         self.debug = log
         self.exception = log
         self.info = log
+        self.warning = log
 _logger = Mylog(my_log)
 
 MAX_PAYLOAD_LENGTH = 2048

@@ -11,16 +11,14 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import xtime
 
 from gfirefly.dbentrust.redis_mode import RedisObject
-import os
 
 push_reg = RedisObject('pushobj.reg')
 push_task = RedisObject('pushobj.push')
 push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
 
-pem_path = os.path.abspath('.')
-apns_handler = APNs(use_sandbox=True, cert_file=pem_path+'/push_dev2.pem', enhanced=True)
-device_token ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
+apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
+device_token1 ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
 
 class PushMessage(object):
@@ -129,10 +127,10 @@ class Pusher(object):
             
     def process(self):
         print 'process'
-        frame = Frame()
-        identifier = 1
-        expiry = int(time.time())
-        priority = 10
+#         frame = Frame()
+#         identifier = 1
+#         expiry = int(time.time())
+#         priority = 10
         now = int(time.time())
         count = 0
         for mid in self.to_push.keys():
@@ -154,34 +152,40 @@ class Pusher(object):
                 continue
                     
             payload = Payload(alert=message.message, sound='default', badge=1)
-            frame.add_item(user.device_token, payload, identifier, expiry, priority)
+#             frame.add_item(user.device_token, payload, identifier, expiry, priority)
+            apns_handler.gateway_server.send_notification(user.device_token, payload)
             count += 1
             del self.to_push[mid]
             push_task.hdel(mid)
-        if count:
-            try:
-                apns_handler.gateway_server.send_notification_multiple(frame)
-            except Exception, e:
-                print e
+            
+#         if count:
+#             try:
+#                 apns_handler.gateway_server.send_notification_multiple(frame)
+#             except Exception, e:
+#                 print e
+        payload = Payload(alert='message.message', sound='default', badge=1)
+#             frame.add_item(user.device_token, payload, identifier, expiry, priority)
+        apns_handler.gateway_server.send_notification(device_token1, payload)
         
     def send_all(self, mtype, message):
-        frame = Frame()
-        identifier = 1
-        expiry = int(time.time())
-        priority = 10
+#         frame = Frame()
+#         identifier = 1
+#         expiry = int(time.time())
+#         priority = 10
         count = 0
         for user in self.register.values():
-            print user.device_token
+            print 'user.device_token', user.device_token
             if user.can_push(mtype):
                 payload = Payload(alert=message.message, sound='default', badge=1)
-                frame.add_item(user.device_token, payload, identifier, expiry, priority)
+#                 frame.add_item(user.device_token, payload, identifier, expiry, priority)
+                apns_handler.gateway_server.send_notification(user.device_token, payload)
                 count += 1
         print 'count', count
-        if count:
-            try:
-                apns_handler.gateway_server.send_notification_multiple(frame)
-            except Exception,e:
-                print e
+#         if count:
+#             try:
+#                 apns_handler.gateway_server.send_notification_multiple(frame)
+#             except Exception,e:
+#                 print e
         
     def gen_task(self):
         push_config = game_configs.push_config
