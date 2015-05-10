@@ -147,6 +147,7 @@ class CharacterShopComponent(Component):
             ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop]['luck_num'])
             self._shop_data[type_shop]['item_ids'] = ids
             self._shop_data[type_shop]['last_auto_refresh_time'] = time.time()
+            self._shop_data[type_shop]['buyed_item_ids'] = []
             logger.info('refresh_item_ids:%s', ids)
             self.save_data()
             return True

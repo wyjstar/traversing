@@ -289,6 +289,7 @@ class BattleUnit(object):
                     is_awake=False,
                     origin_no=0,
                     is_break=False,
+                    position=self._position,
                     power=self._power)
 
     def dumps(self):

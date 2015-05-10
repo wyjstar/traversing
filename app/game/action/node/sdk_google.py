@@ -45,7 +45,7 @@ def google_consume_10001(data, player):
     response.res.result = True
 
     data = eval(request.data)
-    recharge_item = game_configs.recharge_config.get(data.get('productId'))
+    recharge_item = game_configs.recharge_config.get('android').get(data.get('productId'))
     if recharge_item is None:
         response.res.result = False
         logger.debug('google product id is not in rechargeconfig:%s',
@@ -67,7 +67,7 @@ def google_consume_verify_10002(data, player):
     logger.debug('verify_signature:%s', result)
 
     data = eval(request.data)
-    recharge_item = game_configs.recharge_config.get(data.get('productId'))
+    recharge_item = game_configs.recharge_config.get('android').get(data.get('productId'))
 
     if result:
         if recharge_item is None:

@@ -29,6 +29,7 @@ from app.game.core.item_group_helper import consume, get_consume_gold_num
 from app.proto_file.shop_pb2 import ShopResponse
 from app.proto_file.db_pb2 import Mail_PB
 from app.game.action.root import netforwarding
+from random import randint
 
 remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -184,13 +185,6 @@ def pvp_fight_request_1505(data, player):
         response.res.result_no = 1505
         return response.SerializeToString()
 
-    _arena_win_points = game_configs.base_config.get('arena_win_points')
-    if _arena_win_points:
-        return_data = gain(player, _arena_win_points, const.ARENA_WIN)  # 获取
-        get_return(player, return_data, response.gain)
-    else:
-        logger.debug('arena win points is not find')
-
     prere = dict(id=request.challenge_rank)
     record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
                                    ['character_id',
@@ -209,16 +203,26 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
+    seed1 = randint(1, 100)
+    seed2 = randint(1, 100)
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"), __skill)
+                               record.get("level"), __skill, seed1, seed2)
 
     logger.debug("fight result:%s" % fight_result)
 
     if fight_result:
         logger.debug("fight result:True:%s:%s",
                      before_player_rank, request.challenge_rank)
-        
+
+        _arena_win_points = game_configs.base_config.get('arena_win_points')
+        if _arena_win_points:
+            return_data = gain(player, _arena_win_points, const.ARENA_WIN)  # 获取
+            get_return(player, return_data, response.gain)
+        else:
+            logger.debug('arena win points is not find')
+
+
         push_config = game_configs.push_config[1003]
         rank_count = push_config.conditions[0]
         if request.challenge_rank - before_player_rank >= rank_count:
@@ -275,6 +279,60 @@ def pvp_fight_request_1505(data, player):
     player.base_info.pvp_times += 1
     player.base_info.pvp_refresh_time = time.time()
     player.base_info.save_data()
+    response.res.result = True
+    pvp_assemble_units(red_units, blue_units, response)
+    response.fight_result = fight_result
+    response.red_skill = __skill
+    response.red_skill_level = __skill_level
+    response.blue_skill = record.get("unpar_skill")
+    response.blue_skill_level = record.get("unpar_skill_level")
+    response.seed1 = seed1
+    response.seed2 = seed2
+
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def pvp_fight_revenge_1507(data, player):
+    request = pvp_rank_pb2.PvpFightRevenge()
+    response = pvp_rank_pb2.PvpFightResponse()
+    request.ParseFromString(data)
+    line_up = request.lineup
+    __skill = request.skill
+
+    if not player.friends.can_revenge(request.black_id):
+        logger.error('black id is not in blacklist:%s', request.black_id)
+        response.res.result = False
+        response.res.result_no = 1516
+        return response.SerializePartialToString()
+
+    __best_skill, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    logger.debug("best_skill=================== %s" % __best_skill)
+
+    prere = dict(character_id=request.black_id)
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
+                                   ['character_id',
+                                    'nickname',
+                                    'level',
+                                    'ap',
+                                    'best_skill',
+                                    'unpar_skill',
+                                    'unpar_skill_level',
+                                    'units',
+                                    'slots',
+                                    'hero_ids'])
+    blue_units = record.get('units')
+    # print "blue_units:", blue_units
+    blue_units = cPickle.loads(blue_units)
+    # print "blue_units:", blue_units
+    red_units = player.fight_cache_component.red_unit
+
+    fight_result = pvp_process(player, line_up, red_units, blue_units,
+                               __best_skill, record.get("best_skill"),
+                               record.get("level"), __skill)
+
+    logger.debug("fight revenge result:%s" % fight_result)
+
     response.res.result = True
     pvp_assemble_units(red_units, blue_units, response)
     response.fight_result = fight_result

@@ -38,14 +38,14 @@ def apple_consume_verify_11002(data, player):
     result = IAPSDK().verify(request.purchase_info, request.transaction_id)
     logger.debug(result)
 
-    recharge_item = game_configs.recharge_config.get(result.get('goodscode'))
+    recharge_item = game_configs.recharge_config.get('ios').get(result.get('goodscode'))
 
     if result:
         if recharge_item is None:
             logger.debug('apple consume goodid not in rechargeconfig:%s',
                          result.get('goodscode'))
         else:
-            
+
             if recharge_item.get('type') == 2:
                 rebate_call(player, recharge_item)
                 response.res.result = True
@@ -54,7 +54,7 @@ def apple_consume_verify_11002(data, player):
                 return_data = gain(player, recharge_item.get('setting'),
                                    const.RECHARGE)  # 获取
                 get_return(player, return_data, response.gain)
-    
+
                 rres = player.base_info.first_recharge(recharge_item, response)
                 if rres:
                     isfirst = 1
@@ -62,10 +62,10 @@ def apple_consume_verify_11002(data, player):
                     isfirst = 0
                 tlog_action.log('Recharge', player, isfirst,
                                 recharge_item.get('id'))
-    
+
                 response.res.message = RECHARGE_SUCCESS_CODE
                 response.res.result = True
-    
+
                 player.recharge.charge(recharge_item.get('setting')[0].num, response)
 
     logger.debug(response)

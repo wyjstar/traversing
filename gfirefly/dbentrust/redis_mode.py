@@ -32,6 +32,10 @@ class RedisObject(object):
         client = redis_manager.get_connection(self._name)
         return client.exists(self._name) == 1
 
+    def incr(self):
+        client = redis_manager.get_connection(self._name)
+        return client.incr(self._name)
+
     def hgetall(self):
         client = redis_manager.get_connection(self._name)
         newdict = client.hgetall(self._name)
