@@ -95,7 +95,7 @@ ER_IDENTIFER = 'identifier'
 class APNs(object):
     """A class representing an Apple Push Notification service connection"""
 
-    def __init__(self, use_sandbox=False, cert_file=None, key_file=None, enhanced=False):
+    def __init__(self, use_sandbox=False, cert_file=None, key_file=None, enhanced=False, ciphers=None):
         """
         Set use_sandbox to True to use the sandbox (test) APNs servers.
         Default is False.
@@ -107,6 +107,7 @@ class APNs(object):
         self._feedback_connection = None
         self._gateway_connection = None
         self.enhanced = enhanced
+        self.ciphers = ciphers
 
     @staticmethod
     def packed_uchar(num):
@@ -168,7 +169,8 @@ class APNs(object):
                 use_sandbox = self.use_sandbox,
                 cert_file = self.cert_file,
                 key_file = self.key_file,
-                enhanced = self.enhanced
+                enhanced = self.enhanced,
+                ciphers = self.ciphers
             )
         return self._gateway_connection
 
@@ -177,7 +179,7 @@ class APNsConnection(object):
     """
     A generic connection class for communicating with the APNs
     """
-    def __init__(self, cert_file=None, key_file=None, timeout=None, enhanced=False):
+    def __init__(self, cert_file=None, key_file=None, timeout=None, enhanced=False, ciphers=None):
         super(APNsConnection, self).__init__()
         self.cert_file = cert_file
         self.key_file = key_file
@@ -186,6 +188,7 @@ class APNsConnection(object):
         self._ssl = None
         self.enhanced = enhanced
         self.connection_alive = False
+        self.ciphers = ciphers
 
     def __del__(self):
         self._disconnect();
@@ -210,7 +213,7 @@ class APNsConnection(object):
             self._last_activity_time = time.time()
             self._socket.setblocking(False)
             self._ssl = wrap_socket(self._socket, self.key_file, self.cert_file,
-                                        do_handshake_on_connect=False)
+                                        do_handshake_on_connect=False, ciphers= self.ciphers)
             while True:
                 try:
                     self._ssl.do_handshake()

@@ -75,6 +75,7 @@ class Pusher(object):
         print self.everyday
         
     def regist(self, uid, device_token):
+        print 'device_token', device_token
         user = Character()
         user.uid = uid
         user.device_token = device_token
