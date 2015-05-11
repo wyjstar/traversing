@@ -327,7 +327,7 @@ def pvp_fight_revenge_1507(data, player):
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
-    red_units = player.fight_cache_component.red_unit
+    red_units = player.fight_cache_component.get_red_units()
 
     seed1, seed2 = get_seeds()
     fight_result = pvp_process(player, line_up, red_units, blue_units,
