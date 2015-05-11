@@ -1,0 +1,14 @@
+import "common.proto";
+
+// get init info 1407
+message GetBuyCoinInfoResponse{
+    required int32 buy_times = 1;
+    required int32 extra_can_buy_times = 2;
+}
+
+
+// buy coin response 1406
+message BuyCoinResponse{
+	required CommonResponse res = 1;
+	required GameResourcesResponse gain = 2;
+}

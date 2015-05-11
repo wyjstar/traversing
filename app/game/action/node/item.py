@@ -75,6 +75,11 @@ def use_item_302(pro_data, player):
 
     logger.debug("item_no:%s", item_no)
     logger.debug("item_num:%s", item_num)
+
+    # 使用招财符
+    if item_config_item.canUse == 11:
+        player.buy_coin.extra_can_buy_times += item_num
+
     player.item_package.consume_item(item_no, item_num)
 
     return response.SerializeToString()

@@ -478,3 +478,8 @@ class CharacterBaseInfoComponent(Component):
     @gen_balance.setter
     def gen_balance(self, value):
         self._gen_balance = value
+    @property
+    def buy_coin_times(self):
+        """招财进宝次数"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyGetMoneyTimes
