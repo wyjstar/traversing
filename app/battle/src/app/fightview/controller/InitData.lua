@@ -35,7 +35,8 @@ function initData(_process)
     calculation = getCalculationManager():getCalculation() 
     process = _process
     local data = fightData:getData()
-    --process.fight_type = TYPE_GUIDE
+    set_seed(data.seed1, data.seed2)
+    -- process.fight_type = TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
     if process.fight_type==TYPE_GUIDE then
         return initGuideData()
@@ -44,13 +45,15 @@ function initData(_process)
     elseif process.fight_type==TYPE_STAGE_NORMAL 
         or process.fight_type==TYPE_STAGE_ELITE 
         or process.fight_type == TYPE_STAGE_ACTIVITY 
-        or process.fight_type == TYPE_TRAVEL
-        or process.fight_type == TYPE_MINE_MONSTER then
+        or process.fight_type == TYPE_TRAVEL then
         return initStageData(data)
-    elseif process.fight_type==TYPE_MINE_OTHERUSER
-        or process.fight_type == TYPE_PVP then
+    elseif process.fight_type == TYPE_PVP then
         return initPvpData(data)
+    elseif process.fight_type == TYPE_MINE_OTHERUSER
+        or process.fight_type == TYPE_MINE_MONSTER then
+        return initMineData(data)
     end
+
 end
 
 -- 新手引导中得演示关卡
@@ -153,20 +156,20 @@ function initGuideData()
     demoHero = 
     {
         ["1"] = {[1] = 10042,  [2] = 60,},
-        ["2"] = {[1] = 10046,  [2] = 60,},
-        -- ["3"] = {[1] = 10044,  [2] = 60,},
+        -- ["2"] = {[1] = 10048,  [2] = 60,},
+        ["3"] = {[1] = 10043,  [2] = 60,},
         -- ["4"] = {[1] = 10044,  [2] = 60,},
-        -- ["5"] = {[1] = 10044,  [2] = 60,},
-        -- ["6"] = {[1] = 10044,  [2] = 60,},
+        -- ["5"] = {[1] = 10045,  [2] = 60,},
+        -- ["6"] = {[1] = 10046,  [2] = 60,},
 }
     demoEnemy = 
     {
-        -- ["6"] = {[1] = 10061,  [2] = 60,},
+        ["6"] = {[1] = 10061,  [2] = 60,},
         -- ["2"] = {[1] = 30057,  [2] = 60,},
         -- ["3"] = {[1] = 30059,  [2] = 60,},
         -- ["4"] = {[1] = 10055,  [2] = 60,},
         -- ["5"] = {[1] = 10050,  [2] = 60,},
-        ["3"] = {[1] = 10002,  [2] = 60,},
+        -- ["3"] = {[1] = 10002,  [2] = 60,},
 }
     --for pos, v in pairs(demoHero) do
     local chief = false
@@ -224,9 +227,9 @@ function initGuideData()
             --controller.addChild(UnitView.new(unit))
         end
     end
-    local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
+    local redUnParaSkill = constructUnparaSkill(10011, 1, const.HOME_ARMY, "red", 7)
     local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
-    --local buddySkill = constructBuddySkillWithTemplate(10001, 1)
+    local buddySkill = constructBuddySkill(mockBattleUnit(10001, 12, "red"))
     --print(buddySkill.unit.no, "buddySkill=================")
     --local redUnParaSkill = nil 
     --local blueUnParaSkill = nil 
@@ -234,6 +237,38 @@ function initGuideData()
     return redUnits, {blueUnits, clone(blueUnits), clone(blueUnits)}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
+function initMineData(data)
+    local red_units = data.red
+    local blue_units = data.blue
+    local redUnits = {}
+    local blueUnits = {}
+
+    for i=1,6 do
+        if red_units[i] then
+            local unit = constructBattleUnit(red_units[i], "red")
+            redUnits[unit.pos] = unit
+            updateRedUnitViewProperty(unit)
+        end
+    end
+
+    for i=1,6 do
+        if blue_units[i] then
+            local unit = constructBattleUnit(blue_units[i], "blue")
+            blueUnits[unit.pos] = unit
+            updateBlueUnitViewProperty(unit)
+        end
+    end
+    --optional int32 red_best_skill_id = 4;       // 无双
+        --optional int32 red_best_skill_level = 5; // 无双
+            --optional int32 blue_best_skill_id = 6;       // 无双
+                --optional int32 blue_best_skill_level = 7; // 无双
+
+    local redUnParaSkill = constructUnparaSkill(data.red_best_skill_id, data.red_best_skill_level, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(data.blue_best_skill_id, data.blue_best_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    --local buddySkill = constructBuddySkill(data.replace)
+    --print(buddySkill.unit.no, "buddySkill=================")
+    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+end
 
 -- 世界boss
 function initWorldBossData()
@@ -308,7 +343,6 @@ function initPvpData(data)
     local redUnits = {}
     local blueUnits = {}
 
-    print(red_units)
     for i=1,6 do
         if red_units[i] then
             local unit = constructBattleUnit(red_units[i], "red")
@@ -377,9 +411,11 @@ function constructBattleUnitWithTemplate(data, pos, level, break_level, is_awake
     unit.unit_info = data                       -- 配置信息
     print(unit.no)
     print("g=============".. unit.pos)
-    local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
-    unit.pictureName = pictureName
-    unit.resFrame = res
+    if not SERVER_CODE then
+        local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
+        unit.pictureName = pictureName
+        unit.resFrame = res
+    end
 
     unit.skill = HeroSkill.new(unit)
     unit._skill = HeroSkill.new(unit)
@@ -389,9 +425,6 @@ end
 
 -- 根据战斗返回构造battle unit
 function constructBattleUnit(data, side)
-    print("constructBattleUnit======")
-    table.print(data)
-    print(data.no)
     if not data or data.no == 0 then return nil end
     local unit = BattleUnit.new()
     unit.unit_name = ""
@@ -417,9 +450,11 @@ function constructBattleUnit(data, side)
     unit.is_boss = data.is_boss             -- 是否为boss
     unit.is_break = data.is_break                 -- 是否为乱入
     unit.is_awake = data.is_awake                 -- 是否觉醒
-    unit.origin_no = data.no         -- 乱入或者觉醒武将的原始no
+
+    unit.origin_no = data.origin_no         -- 乱入或者觉醒武将的原始no
+
     unit.chief = false
-    print("constructBattleUnit===========", unit.no, data.origin_no)
+    print("side:",side,"constructBattleUnit===========", data.no," origin_no:", data.origin_no)
     if (process.fight_type == TYPE_STAGE_NORMAL 
         or process.fight_type == TYPE_STAGE_ELITE 
         or process.fight_type == TYPE_STAGE_ACTIVITY 
@@ -429,21 +464,32 @@ function constructBattleUnit(data, side)
         and side == "blue"
         then
         print("==========?", data.no)
-        local unit_info = soldierTemplate:getMonsterTempLateById(data.no)
+        local unit_info = soldierTemplate:getMonsterTempLateById(unit.no)
         print("==========?", unit_info.id)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_MONSTER
-        --local pictureName = soldierTemplate:getMonsterImageName(unit.no)
-        --unit.pictureName = pictureName
+        if not SERVER_CODE then
+            local pictureName = soldierTemplate:getMonsterImageName(unit.no)
+            unit.pictureName = pictureName
+        end
         --unit.resFrame = res
     else
-        local unit_info = soldierTemplate:getHeroTempLateById(data.no)
+        local unit_info = soldierTemplate:getHeroTempLateById(unit.no)
         print("==========?", unit_info.id)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_HERO
-        --local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
-        --unit.pictureName = pictureName
-        --unit.resFrame = res
+        if not SERVER_CODE then
+            local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
+            
+            if unit.is_break then --乱入前武将图片
+                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no)
+                unit.originPictureName = originPictureName
+            end
+
+            unit.pictureName = pictureName
+            
+            unit.resFrame = res
+        end
     end
     unit.skill = HeroSkill.new(unit)        -- 武将技能
     unit._skill = HeroSkill.new(unit)

@@ -124,10 +124,10 @@ function FMBuffManager:perform_passive_buff(process)
 end
 
 function FMBuffManager:_add_buff(buff, effect_id, replace, result)
-    if table.inv({1, 2, 3, 8, 9, 26}, effect_id) then
+    if table.inv({1, 2, 3, 8, 9, 26, 30}, effect_id) then
         buff:perform_buff(self.owner, result)
     end
-    if not table.inv({1, 2, 3, 8, 9, 26}, effect_id) then
+    if not table.inv({1, 2, 3, 8, 9, 26, 30}, effect_id) then
         appendFile2("buff前："..self.owner:str_data(), 1)
     end
     if buff.continue_num > 0 then
@@ -137,7 +137,7 @@ function FMBuffManager:_add_buff(buff, effect_id, replace, result)
             table.insert(self.buffs[effect_id], buff)
         end
     end
-    if not table.inv({1, 2, 3, 8, 9, 26}, effect_id) then
+    if not table.inv({1, 2, 3, 8, 9, 26, 30}, effect_id) then
         appendFile2("buff："..buff:str_data(), 1)
         appendFile2("buff后："..self.owner:str_data(), 1)
         appendFile2("------------------------------", 1)

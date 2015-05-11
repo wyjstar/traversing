@@ -375,6 +375,7 @@ def pvb_get_award_1708(data, player):
         drop_items = bigbag.get_drop_items()
         return_data = gain(player, drop_items, const.WORLD_BOSS_AWARD)
         get_return(player, return_data, response.gain)
+    response.rank_no = remote_gate['world'].get_rank_no_remote(player.base_info.id, "world_boss")
     logger.debug("pvb_get_award_1708:%s" % response)
     return response.SerializePartialToString()
 

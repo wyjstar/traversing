@@ -47,11 +47,13 @@ function FMBuff:perform_hp_mp_buff(owner)
 end
 
 function FMBuff:perform_buff(owner, result)
+    print("FMBuff:perform_buff==============")
     --local temp_buff_set = self.process.temp_buff_set
     --local result = temp_buff_set:get_last_data()
     appendFile2("buff前："..owner:str_data(), 1)
     local attacker = self.process.attacker
     local effect_id = self.skill_buff_info.effectId
+    print("perform buff effect_id "..effect_id)
     if table.inv({1,2,3,8,9,26}, effect_id) then
         -- 伤害或者治疗buff与持续性buff不同，提前一回合去buff
         self.continue_num = self.continue_num - 1
@@ -84,7 +86,7 @@ function FMBuff:perform_buff(owner, result)
         if not attacker.is_monster then
             result.value = unpara(self.process.army, owner, self.skill_buff_info, self.process.playerLevel, extra_msgs)
         else
-            result.value = unpara_monster(attacker.boss.atk, extra_msgs)
+            result.value = unpara_monster(attacker.boss.atk, owner, extra_msgs)
         end
     else
         self.value = self:get_buff_value_util(owner)

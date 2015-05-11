@@ -52,9 +52,15 @@ function FCProcess:pvp_start()
 end
 
 --开始战斗pve 
-function FCProcess:pve_start()
+function FCProcess:pve_start(steps)
     print("FCProcess:pve_start============")
     while self.fightProcess:check_result() == 0 do
+        local step_type = steps[self.fightProcess.step_id]
+        if step_type == TYPE_RED_UNPARAL or step_type == TYPE_BLUE_UNPARAL then
+            self:doUnparaSkill()
+        elseif step_type == TYPE_BUDDY then
+            self:doBuddySkill()
+        end
         self.fightProcess:perform_one_step()
     end
     return self.fightProcess:check_result() == 1
@@ -62,6 +68,25 @@ end
 
 -- 
 function FCProcess:send_message()
+end
+-- 点击无双
+function FCProcess:doUnparaSkill()
+    if self.fightProcess.red_unpara_skill:is_can() then
+        self.fightProcess.red_unpara_skill.ready = true
+    end
+end
+-- 点击小伙伴
+function FCProcess:doBuddySkill()
+    print("doBuddySkill==========")
+    print(self.fightProcess.buddy_skill:is_full())
+    if self.fightProcess.buddy_skill:is_full() then
+        self.fightProcess.buddy_skill.ready = true
+        if self.fightProcess.attacker.side == "blue" and self.fightProcess.small_step == STEP_BEGIN_ACTION then
+            -- 小伙伴打断怒气技能, 跳到下一步
+            self.fightProcess.current_skill_type = TYPE_BUDDY
+            self.fightProcess.small_step = 0
+        end
+    end
 end
 
 
