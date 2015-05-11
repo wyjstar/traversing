@@ -329,9 +329,10 @@ def pvp_fight_revenge_1507(data, player):
     # print "blue_units:", blue_units
     red_units = player.fight_cache_component.red_unit
 
+    seed1, seed2 = get_seeds()
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"), __skill)
+                               record.get("level"), __skill, seed1, seed2)
 
     logger.debug("fight revenge result:%s" % fight_result)
 
