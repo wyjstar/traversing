@@ -80,18 +80,30 @@ class TaskEvents(object):
                 jude = jude or ret
         if jude:
             self._status = TaskStatus.COMPLETE
-            return [self._taskid, task.condition[self._events[0]._seq][1], task.condition[self._events[0]._seq][1], self._status]
+            return [self._taskid,
+                    task.condition[self._events[0]._seq][1],
+                    task.condition[self._events[0]._seq][1],
+                    self._status]
         else:
-            return [self._taskid, self._events[0]._current, task.condition[self._events[0]._seq][1], self._status]
+            return [self._taskid,
+                    self._events[0]._current,
+                    task.condition[self._events[0]._seq][1],
+                    self._status]
 
     def status(self):
         task = game_configs.achievement_config.get(self._taskid)
         if not task:
             return []
         if self._status != TaskStatus.RUNNING:
-            return [self._taskid, task.condition[self._events[0]._seq][1], task.condition[self._events[0]._seq][1], self._status]
+            return [self._taskid,
+                    task.condition[self._events[0]._seq][1],
+                    task.condition[self._events[0]._seq][1],
+                    self._status]
         else:
-            return [self._taskid, self._events[0]._current, task.condition[self._events[0]._seq][1], self._status]
+            return [self._taskid,
+                    self._events[0]._current,
+                    task.condition[self._events[0]._seq][1],
+                    self._status]
 
 
 class TaskEvent(object):
@@ -336,10 +348,11 @@ class UserAchievement(Component):
         统计活跃度获得
         """
         lively_add = 0
-        for task_id in self._tasks:
+        for task_id, task in self._tasks:
             task = game_configs.achievement_config.get(task_id)
             if task and task.sort == TaskType.LIVELY:
-                if self._tasks[task_id]._status == TaskStatus.COMPLETE:# or self._tasks[task_id]._status == TaskStatus.FINISHED:
+                if task._status == TaskStatus.COMPLETE:
+                    # or self._tasks[task_id]._status == TaskStatus.FINISHED:
                     lively_add += random.randint(task.reward['17'][0], task.reward['17'][1])
                     self._tasks[task_id]._status = TaskStatus.FINISHED
                     self._update = True

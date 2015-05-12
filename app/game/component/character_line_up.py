@@ -289,6 +289,12 @@ class CharacterLineUpComponent(Component):
         return [hero_obj.hero_no for hero_obj in self.hero_objs if hero_obj]
 
     @property
+    def hero_levels(self):
+        """英雄编号 list
+        """
+        return [hero_obj.level for hero_obj in self.hero_objs if hero_obj]
+
+    @property
     def on_equipment_ids(self):
         """获取所有已经装备的装备ID"""
         on_equipment_ids = []

@@ -80,14 +80,24 @@ def shop_oper(pro_data, player, reason):
         return response.SerializeToString()
 
     _is_consume_result = is_consume(player, shop_item)
+    price = shop_item.consume
     if _is_consume_result:
-        result = is_afford(player, shop_item.consume)  # 校验
+        result = is_afford(player, price)  # 校验
         if not result.get('result'):
-            response.res.result = False
-            response.res.result_no = result.get('result_no')
-            response.res.message = u'消费不足！'
             logger.error('shop oper is not enough gold')
-            return response.SerializeToString()
+            if not shop_item.alternativeConsume:
+                response.res.result = False
+                response.res.result_no = result.get('result_no')
+                response.res.message = u'消费不足！'
+                return response.SerializeToString()
+            else:
+                price = shop_item.alternativeConsume
+                result = is_afford(player, price)
+                if not result.get('result'):
+                    response.result = False
+                    response.result_no = result.get('result_no')
+                    response.message = u'消费不足2！'
+                    return response.SerializeToString()
 
     player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
     if not player_type_shop:
@@ -98,20 +108,21 @@ def shop_oper(pro_data, player, reason):
     shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
     # 消耗
 
-    need_gold = get_consume_gold_num(shop_item.consume)
+    need_gold = get_consume_gold_num(price)
     if not _is_consume_result:
         need_gold = 0
+
     def func():
-        #consume_data = []
+        # consume_data = []
         if _is_consume_result:
-            return_data = consume(player, shop_item.consume,
-                                player_type_shop, shop_type_item)
+            return_data = consume(player, price,
+                                  player_type_shop, shop_type_item)
             get_return(player, return_data, response.consume)
-            #consume_data = return_data
+            # consume_data = return_data
         # logger.debug("hero-draw2")
         return_data = []
         extra_return_data = []
-        if shop_item.type==5:
+        if shop_item.type == 5:
             # todo: 如何判断shop类型：单抽、十连抽
             # logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
             gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
@@ -234,11 +245,20 @@ def shop_buy_505(pro_data, player):
         price = shop_item.consume if not shop_item.discountPrice else shop_item.discountPrice
         result = is_afford(player, price, multiple=item_count)  # 校验
         if not result.get('result'):
-            common_response.result = False
-            common_response.result_no = result.get('result_no')
-            common_response.message = u'消费不足！'
             logger.error('not enough money:%s', price)
-            return response.SerializeToString()
+            if not shop_item.alternativeConsume:
+                common_response.result = False
+                common_response.result_no = result.get('result_no')
+                common_response.message = u'消费不足！'
+                return response.SerializeToString()
+            else:
+                price = shop_item.alternativeConsume
+                result = is_afford(player, price, multiple=item_count)
+                if not result.get('result'):
+                    common_response.result = False
+                    common_response.result_no = result.get('result_no')
+                    common_response.message = u'消费不足2！'
+                    return response.SerializeToString()
 
         if shop_item.limitVIP:
             limit_num = shop_item.limitVIP.get(player.base_info.vip_level, 0)
@@ -282,12 +302,16 @@ def shop_buy_505(pro_data, player):
         shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
 
         need_gold = get_consume_gold_num(shop_item.consume, item_count)
+
         def func():
             consume_return_data = consume(player, price,
-                                        multiple=item_count,
-                                        shop=shop,
-                                        luck_config=shop_type_item)  # 消耗
-            return_data = gain(player, shop_item.gain, get_reason(shop_item.get('type')), multiple=item_count)  # 获取
+                                          multiple=item_count,
+                                          shop=shop,
+                                          luck_config=shop_type_item)  # 消耗
+            return_data = gain(player,
+                               shop_item.gain,
+                               get_reason(shop_item.get('type')),
+                               multiple=item_count)  # 获取
             get_return(player, consume_return_data, response.consume)
             get_return(player, return_data, response.gain)
             for _ in range(item_count):
@@ -299,24 +323,20 @@ def shop_buy_505(pro_data, player):
     common_response.result = True
     return response.SerializeToString()
 
+REASON_HASH = {3: const.COMMON_BUY_ITEM,
+               4: const.COMMON_BUY_GIFT,
+               7: const.COMMON_BUY_MINE,
+               8: const.COMMON_BUY_HERO_SOUL,
+               9: const.COMMON_BUY_PVP,
+               11: const.COMMON_BUY_MELT,
+               12: const.COMMON_BUY_EQUIPMENT}
+
 
 def get_reason(shop_type):
-    if shop_type == 3:
-        return const.COMMON_BUY_ITEM
-    elif shop_type == 4:
-        return const.COMMON_BUY_GIFT
-    elif shop_type == 7:
-        return const.COMMON_BUY_MINE
-    elif shop_type == 8:
-        return const.COMMON_BUY_HERO_SOUL
-    elif shop_type == 9:
-        return const.COMMON_BUY_PVP
-    elif shop_type == 11:
-        return const.COMMON_BUY_MELT
-    elif shop_type == 12:
-        return const.COMMON_BUY_EQUIPMENT
-    else:
-        return const.COMMON_BUY
+    if shop_type in REASON_HASH:
+        return REASON_HASH[shop_type]
+    return const.COMMON_BUY
+
 
 
 @remoteserviceHandle('gate')

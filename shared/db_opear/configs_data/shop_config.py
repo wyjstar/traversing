@@ -19,6 +19,7 @@ class ShopConfig(object):
             convert_keystr2num(row.get("limitVIPeveryday"))
             convert_keystr2num(row.get("limitVIP"))
             row["consume"] = parse(row.get("consume"))
+            row["alternativeConsume"] = parse(row.get("alternativeConsume"))
             row["gain"] = parse(row.get("gain"))
             row["extraGain"] = parse(row.get("extraGain"))
             row["discountPrice"] = parse(row.get("discountPrice"))
