@@ -243,10 +243,10 @@ def shop_buy_505(pro_data, player):
         if shop_item.limitVIP:
             limit_num = shop_item.limitVIP.get(player.base_info.vip_level, 0)
             shop_id_buyed_num = shop['vip_limit_items'].get(shop_id, 0)
-            logger.error("vip limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num, limit_num)
 
             if shop_id_buyed_num + item_count > limit_num:
+                logger.error("vip limit shop item:%s:%s limit:%s:%s",
+                             shop_id, item_count, shop_id_buyed_num, limit_num)
                 common_response.result = False
                 common_response.result_no = 502
                 response.limit_item_current_num = shop_id_buyed_num
@@ -257,10 +257,10 @@ def shop_buy_505(pro_data, player):
         if shop_item.limitVIPeveryday:
             limit_num = shop_item.limitVIPeveryday.get(player.base_info.vip_level, 0)
             shop_id_buyed_num = shop['limit_items'].get(shop_id, 0)
-            logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num, limit_num)
 
             if shop_id_buyed_num + item_count > limit_num:
+                logger.error("limit shop item:%s:%s limit:%s:%s",
+                             shop_id, item_count, shop_id_buyed_num, limit_num)
                 common_response.result = False
                 common_response.result_no = 502
                 response.limit_item_current_num = shop_id_buyed_num

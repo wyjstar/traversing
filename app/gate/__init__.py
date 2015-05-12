@@ -21,7 +21,7 @@ server_no = GlobalObject().allconfig['server_no']
 def tick():
     result = GlobalObject().remote['login'].server_sync_remote(name, front_ip,
                                                                front_port,
-                                                               'recommend',
+                                                               '1',
                                                                server_no)
     if result is False:
         reactor.callLater(1, tick)
