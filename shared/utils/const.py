@@ -173,6 +173,9 @@ const.GM = 30  # gm发放
 const.HERO_CHIP_SACRIFICE_OPER = 31  # 武将碎片献祭
 const.TOMORROW_GIFT = 32  # 次日奖励
 const.BUY_COIN = 1406  # 招财进宝
+const.ReceivePraiseGift = 33
+const.PraiseGift = 34
+const.ReceiveBlessGift = 35
 
 # 等级流水
 # const.STAGE = 27  # 关卡
