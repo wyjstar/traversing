@@ -364,6 +364,7 @@ class UserAchievement(Component):
         """
         任务检查借口,event根据CountEvent.create_event创建
         """
+        print 'check_intercheck_intercheck_intercheck_intercheck_intercheck_inter', event
         self._refresh()
         if not event:
             return []
