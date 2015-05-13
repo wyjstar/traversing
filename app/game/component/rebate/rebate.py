@@ -92,19 +92,22 @@ class Rebate(Component):
             return 1, 0, 0
         func = None
         refresh = None
+        param = None
         if days == 30:
             func = 'moonCard'
             refresh = base_config['moonCardFreshTime']
+            param = 'moonCardSurplusDay'
         elif days == 7:
             func = 'weekCard'
             refresh = base_config['weekCardFreshTime']
+            param = 'weekCardSurplusDay'
         else:
             func = None
         if func == None:
             return 0, 0, 0
         formula = game_configs.formula_config.get(func).get("formula")
         all_vars = {}
-        all_vars['weekCardSurplusDay'] = one._count
+        all_vars[param] = one._count
         switch = eval(formula, all_vars)
         last = one.last()
         can_draw = one.can_draw(refresh)

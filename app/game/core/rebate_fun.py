@@ -71,7 +71,7 @@ def rebate_call(player, recharge_item):
     """
     rid = recharge_item.get('id')
     days = recharge_item.get('giftDays')
-    switch, _ = player.rebate.rebate_status(rid, days)
+    switch, _, _ = player.rebate.rebate_status(rid, days)
     if switch:
         rebate = player.rebate.rebate_info(rid)
         rebate.new_rebate(days)
