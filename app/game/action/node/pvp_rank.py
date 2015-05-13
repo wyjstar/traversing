@@ -165,6 +165,7 @@ def pvp_fight_request_1505(data, player):
 
     open_stage_id = game_configs.base_config.get('arenaOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
+        logger.error('pvp_fight_request_1505, stage not open')
         response.res.result = False
         response.res.result_no = 837
         return response.SerializeToString()
@@ -323,6 +324,12 @@ def pvp_fight_revenge_1507(data, player):
                                     'units',
                                     'slots',
                                     'hero_ids'])
+    if not record:
+        logger.error('black id is not found:%s', request.black_id)
+        response.res.result = False
+        response.res.result_no = 1517
+        return response.SerializePartialToString()
+
     blue_units = record.get('units')
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
