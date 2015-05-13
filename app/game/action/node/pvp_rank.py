@@ -313,17 +313,7 @@ def pvp_fight_revenge_1507(data, player):
     logger.debug("best_skill=================== %s" % __best_skill)
 
     prere = dict(character_id=request.black_id)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
-                                   ['character_id',
-                                    'nickname',
-                                    'level',
-                                    'ap',
-                                    'best_skill',
-                                    'unpar_skill',
-                                    'unpar_skill_level',
-                                    'units',
-                                    'slots',
-                                    'hero_ids'])
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere)
     if not record:
         logger.error('black id is not found:%s', request.black_id)
         response.res.result = False
