@@ -80,7 +80,7 @@ def rebate_call(player, recharge_item):
         
         notify = rebate_info(player)
         remote_gate.push_object_remote(5432,
-                                           notify,
+                                           notify.SerializePartialToString(),
                                            [player.dynamic_id])
         
         mail_id = recharge_item.get('mailId')
