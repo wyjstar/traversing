@@ -90,8 +90,7 @@ end
 
 --根据英雄资源名字获取人物图片node
 function SoldierTemplate:getBigImageByResName(pictureName, heroId)
-    print("pictureName=========" .. pictureName)
-    print(heroId)
+    print("SoldierTemplate:getBigImageByResName==========>pictureName=" .. pictureName)
 
     getDataManager():getResourceData():loadHeroImageDataById(pictureName)
 
@@ -861,6 +860,16 @@ function SoldierTemplate:getNextSealId(id)
     return seal_config[id].next
 end
 
+--得到当前穴位的显示位置
+function SoldierTemplate:getSealPos(id)
+    return cc.p(seal_config[id]["coordinate"][1], seal_config[id]["coordinate"][2])
+end
+
+--得到当前穴位的显示比例
+function SoldierTemplate:getSealScale(id)
+    return seal_config[id]["ratio"]
+end
+
 --脉数
 function SoldierTemplate:getPulse(id)
     if id == 0 then return 0 end
@@ -870,6 +879,11 @@ end
 function SoldierTemplate:getAcupoint(id)
     if id == 0 then return 0 end
     return seal_config[id].acupoint
+end
+
+--得到穴位列表
+function SoldierTemplate:getSealConfigTable()
+    return seal_config
 end
 
 function SoldierTemplate:getAllMai(id)
@@ -1081,6 +1095,15 @@ function SoldierTemplate:getAllInt(id)
 
     for k,v in pairs(seal_config) do
         if v.id == id then return v.allInt end
+    end
+    return 0
+end
+
+function SoldierTemplate:getFirstIdByPluse(pluse)--得到某个穴位的起始ID
+    for k,v in pairs(seal_config) do
+        if v.pulse == pluse and v.acupoint == 1 then
+            return v.id
+        end
     end
     return 0
 end

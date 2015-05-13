@@ -54,14 +54,19 @@ end
 --开始战斗pve 
 function FCProcess:pve_start(steps)
     print("FCProcess:pve_start============")
+    self.fightProcess:perform_open_skill()
     while self.fightProcess:check_result() == 0 do
-        local step_type = steps[self.fightProcess.step_id]
-        if step_type == TYPE_RED_UNPARAL or step_type == TYPE_BLUE_UNPARAL then
+        local step_type = steps[self.fightProcess.step_id+1]
+        print("step id", self.fightProcess.step_id, step_type)
+        if step_type == TYPE_UNPARAL then
             self:doUnparaSkill()
         elseif step_type == TYPE_BUDDY then
             self:doBuddySkill()
         end
         self.fightProcess:perform_one_step()
+        if self.fightProcess:check_result() == 1 then
+            self.fightProcess:next_round()
+        end
     end
     return self.fightProcess:check_result() == 1
 end
@@ -71,7 +76,9 @@ function FCProcess:send_message()
 end
 -- 点击无双
 function FCProcess:doUnparaSkill()
+    print("doUnparaSkill")
     if self.fightProcess.red_unpara_skill:is_can() then
+        print("doUnparaSkill ready")
         self.fightProcess.red_unpara_skill.ready = true
     end
 end
@@ -88,6 +95,7 @@ function FCProcess:doBuddySkill()
         end
     end
 end
+
 
 
 return FCProcess

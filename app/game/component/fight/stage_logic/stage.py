@@ -48,8 +48,8 @@ class StageLogic(base_stage.BaseStageLogic):
             player.stamina.stamina -= conf.vigor
             player.stamina.save_data()
 
-        # 活跃度
-        lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
+            # 活跃度
+            lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
         # 结算
         stage_util.settle(player, result, response, lively_event, conf)
 

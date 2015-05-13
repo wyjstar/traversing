@@ -152,6 +152,8 @@ def stage_start_903(pro_data, player):
     seed1, seed2 = get_seeds()
     player.fight_cache_component.seed1 = seed1
     player.fight_cache_component.seed2 = seed2
+    player.fight_cache_component.red_best_skill_id = red_best_skill_id
+    player.fight_cache_component.stage_info = stage_info
     response.seed1 = seed1
     response.seed2 = seed2
 

@@ -94,6 +94,7 @@ end
 
 function FMUnParaSkill:clear_mp()
     --释放技能后，减少怒气
+    print("unpara clear_mp", self.mp, self.mp_max1)
     if self.mp == self.mp_max3 then
         self.mp = 0
     elseif self.mp >= self.mp_max2 then
@@ -101,6 +102,7 @@ function FMUnParaSkill:clear_mp()
     elseif self.mp >= self.mp_max1 then
         self.mp = self.mp - self.mp_max1
     end
+    print("unpara clear_mp", self.mp, self.mp_max1)
 end
 
 function FMUnParaSkill:add_mp()
