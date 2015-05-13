@@ -61,8 +61,7 @@ class Rebate(Component):
     def save_data(self):
         char_obj = tb_character_info.getObj(self.owner.base_info.id)
         if char_obj:
-            rebate = dict(rebate=self._rebate)
-            char_obj.hset('rebate', rebate)
+            char_obj.hset('rebate', self._rebate)
         else:
             logger.error('cant find Rebate:%s', self.owner.base_info.id)
 
