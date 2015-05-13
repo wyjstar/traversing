@@ -214,7 +214,8 @@ def get_player_friend_list_1106(data, player):
             response_friend_add = response.friends.add()
             response_friend_add.id = pid
             friend_data = player_data.hmget(['nickname', 'attackPoint',
-                                             'heads', 'upgrade_time', 'lively', 'last_day', 'level'])
+                                             'heads', 'upgrade_time',
+                                             'lively', 'last_day', 'level'])
             response_friend_add.nickname = friend_data['nickname']
             response_friend_add.gift = player.friends.last_present_times(pid)
             ap = 1010
@@ -286,7 +287,10 @@ def get_player_friend_list_1106(data, player):
             response_applicant_list_add = response.applicant_list.add()
             response_applicant_list_add.id = pid
             response_applicant_list_add.gift = 0
-            applicant_data = player_data.hmget(['nickname', 'heads', 'level', 'upgrade_time'])
+            applicant_data = player_data.hmget(['nickname',
+                                                'heads',
+                                                'level',
+                                                'upgrade_time'])
             response_applicant_list_add.nickname = applicant_data['nickname']
 
             black_heads = Heads_DB()
@@ -305,6 +309,7 @@ def get_player_friend_list_1106(data, player):
     logger.debug("1106 return friends list %s", response)
     return response.SerializePartialToString()
 
+
 @remoteserviceHandle('gate')
 def draw_friend_lively_1199(data, player):
     request = friend_pb2.DrawRewardReq()
@@ -315,16 +320,16 @@ def draw_friend_lively_1199(data, player):
     stat, update = player.friends.get_reward(request.fid, today)
     if stat:
         response.res.result = False
-        response.res.result_no = 11991 #已领取
+        response.res.result_no = 11991  # 已领取
     else:
         player_data = tb_character_info.getObj(request.fid)
-        friend_data = player_data.hmget([ 'lively', 'last_day'])
+        friend_data = player_data.hmget(['lively', 'last_day'])
         lively = int(friend_data.get('lively', 0))
-        if today != friend_data.get('last_day',''):
+        if today != friend_data.get('last_day', ''):
             lively = 0
         if lively < base_config['friendActivityValue']:
             response.res.result = False
-            response.res.result_no = 11992 #未完成
+            response.res.result_no = 11992  # 未完成
         else:
             response.res.result = True
             reward = base_config['friendActivityReward']
@@ -332,12 +337,13 @@ def draw_friend_lively_1199(data, player):
             return_data = gain(player, lively_reward, const.LIVELY_REWARD)  # 获取
             get_return(player, return_data, response.gain)
             player.friends.set_reward(request.fid, today, 1)
-            update=True
+            update = True
 
     if update:
         player.friends.save_data()
 
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def find_friend_request_1107(data, player):
@@ -364,7 +370,10 @@ def find_friend_request_1107(data, player):
         response.id = player_data.hget('id')
         response.nickname = player_data.hget('nickname')
 
-        friend_data = player_data.hmget(['attackPoint', 'heads', 'level', 'upgrade_time'])
+        friend_data = player_data.hmget(['attackPoint',
+                                         'heads',
+                                         'level',
+                                         'upgrade_time'])
         ap = 1
         if friend_data['attackPoint'] is not None:
             ap = int(friend_data['attackPoint'])
@@ -378,9 +387,10 @@ def find_friend_request_1107(data, player):
         response.last_time = friend_data['upgrade_time']
 
         # 添加好友主将的属性
-        _with_battle_info(response, player_data.hget('id'))
+        # _with_battle_info(response, player_data.hget('id'))
 
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def recommend_friend_1198(data, player):
@@ -414,13 +424,14 @@ def recommend_friend_1198(data, player):
             last_time = player_data.hget('upgrade_time')
             if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
                 continue
-            count +=1
+            count += 1
             friend = response.rfriend.add()
             friend.id = player_data.hget('id')
             print 'friend.id', friend.id
             friend.nickname = player_data.hget('nickname')
             print 'friend.nickname', friend.nickname
-            friend_data = player_data.hmget(['attackPoint', 'heads', 'level', 'upgrade_time'])
+            friend_data = player_data.hmget(['attackPoint', 'heads',
+                                             'level', 'upgrade_time'])
             ap = 1
             if friend_data['attackPoint'] is not None:
                 ap = int(friend_data['attackPoint'])
@@ -438,6 +449,7 @@ def recommend_friend_1198(data, player):
             _with_battle_info(friend, player_data.hget('id'))
 
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def given_stamina_1108(data, player):

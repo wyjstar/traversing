@@ -50,7 +50,7 @@ message GameLoginResponse{
     optional int32 pvp_refresh_count = 12;
     optional int32 vip_level = 13;
     optional int32 server_time = 14;
-    optional bytes guild_id = 15;
+    optional int32 guild_id = 15;
     optional float combat_power = 16;
 	optional int32 newbee_guide_id = 17;
 	optional int32 register_time = 24;

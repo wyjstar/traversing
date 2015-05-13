@@ -64,7 +64,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.combat_power = player.line_up_component.combat_power
     responsedata.newbee_guide_id = player.base_info.newbee_guide_id
 
-    if player.guild.g_id != 'no':
+    if player.guild.g_id != 0:
         responsedata.guild_id = player.guild.g_id
 
     responsedata.vip_level = player.base_info.vip_level

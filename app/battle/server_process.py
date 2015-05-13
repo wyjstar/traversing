@@ -75,13 +75,16 @@ def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blu
     fight_type = 6
     return pvp_func(fight_data, fight_type)
 
-def pve_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, step_infos):
+def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, step_infos):
     red = []
     blue = []
     for unit in red_units.values():
         red.append(construct_battle_unit(unit))
-    for unit in blue_units.values():
-        blue.append(construct_battle_unit(unit))
+    for units in blue_groups:
+        temp = []
+        for unit in units.values():
+            temp.append(construct_battle_unit(unit))
+        blue.append(lua.table(group=lua.table_from(temp)))
 
     temp = {}
     for step in step_infos:
@@ -99,5 +102,9 @@ def pve_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blu
         seed1 = seed1,
         seed2 = seed2
     )
-    fight_type = 6
-    return pvp_func(fight_data, fight_type, steps)
+    fight_type = 1
+    res = pve_func(fight_data, fight_type, steps)
+    if int(res) == 1:
+        return True
+    return False
+
