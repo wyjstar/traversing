@@ -267,3 +267,12 @@ def add_guild_level_remote(data, player):
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)
     guild_obj.save_data()
     return {'success': 1}
+
+@remoteserviceHandle('gate')
+def add_push_message_remote(data, player):
+    args = cPickle.loads(data)
+    uid = args['uid']
+    mtype = args['mtype']
+    msg = args['msg']
+    remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
+    return {'success': 1}
