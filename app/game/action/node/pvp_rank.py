@@ -245,6 +245,8 @@ def pvp_fight_request_1505(data, player):
                 record['id'] = table_max + 1
                 util.InsertIntoDB(PVP_TABLE_NAME, record)
 
+        player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank,
+                                             request.challenge_rank)
         # 首次达到某名次的奖励
         for (rank, mail_id) in game_configs.base_config.get('arena_rank_points').items():
             if rank < request.challenge_rank:
