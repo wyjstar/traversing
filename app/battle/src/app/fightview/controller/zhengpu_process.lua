@@ -425,7 +425,6 @@ end
 --执行一步，即一个战斗动作
 function FightProcess:perform_one_step()
     appendFile2("perform one step=============="..self.step_id)
-    self.step_id = self.step_id + 1
     cclog("FightProcess:perform_one_step=================>".."skill_type:"..self.current_skill_type.."small_step:"..self.small_step.."red_step:"..self.red_step.."blue_step:"..self.blue_step)
     self:set_step()
     --获取回合结果
@@ -437,6 +436,7 @@ function FightProcess:perform_one_step()
         self.send_message(const.EVENT_FIGHT_RESULT, (result == 1))
         return 
     end
+    self.step_id = self.step_id + 1
     --如果可以执行反击buff，则先执行反击buff
     if self.current_skill_type == TYPE_BACK then
         self:perform_back_buff() 
@@ -660,11 +660,13 @@ function FightProcess:do_buddy_skill()
         --self.buddy_skill:reset()
         -- 保存数据用于与服务器同步
         if self.small_step == STEP_AFTER_BUFF then
+            self.small_step = 0
+        end
+        if self.small_step == STEP_BEFORE_BUFF then
             local stepData = {}
             stepData.step_id = self.step_id
             stepData.step_type = self:get_current_type()
             table.insert(self.steps, stepData)
-            self.small_step = 0
         end
         return true
     end

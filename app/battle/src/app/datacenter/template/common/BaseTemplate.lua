@@ -1396,6 +1396,11 @@ function BaseTemplate:getWorshipData()
     -- body
 end
 
+-- 军团祈福次数
+function BaseTemplate:getParyNumByVipLevel(vip_level)
+    return vip_config[vip_level].guildWorshipTimes
+end
+
 return BaseTemplate
 
 

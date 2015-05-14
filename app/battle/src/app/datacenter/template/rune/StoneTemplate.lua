@@ -84,20 +84,20 @@ function StoneTemplate:getAttrName(attr_type)
     return attributeStr[attr_type]
 end
 
--- --更具品质值获取品质颜色值
--- function StoneTemplate:getColorByQuality(curQuality)
---     local color = ui.COLOR_WHITE
---     if curQuality == 1 then
---         color = ui.COLOR_WHITE
---     elseif curQuality == 2 then
---         color = ui.COLOR_GREEN
---     elseif curQuality == 3 or curQuality == 4 then
---         color = ui.COLOR_BLUE
---     elseif curQuality == 5 or curQuality == 6 then
---         color = ui.COLOR_PURPLE
---     end
---     return color
--- end
+--更具品质值获取品质颜色值
+function StoneTemplate:getStoneColorByQuality(curQuality)
+    local color = ui.COLOR_WHITE
+    if curQuality == 1 or curQuality == 2 then
+        color = ui.COLOR_WHITE
+    elseif curQuality == 3 then
+        color = ui.COLOR_GREEN
+    elseif curQuality == 4 then
+        color = ui.COLOR_BLUE
+    elseif curQuality == 5 or curQuality == 6 then
+        color = ui.COLOR_PURPLE
+    end
+    return color
+end
 
 --更具品质值获取品质颜色值
 function StoneTemplate:getColorByQuality(curQuality)

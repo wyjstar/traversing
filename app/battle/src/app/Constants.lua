@@ -196,6 +196,9 @@ const.EVENT_FIGHT_BEFORE_BUFF       = "FIGHT_BEFORE_BUFF" --开场Buff
 const.EVENT_FIGHT_OPEN_BUFF         = "FIGHT_OPEN_BUFF"   --开始开场BUFF
 const.EVENT_CARD_DIGIT_NUM          = "CARD_DIGIT_NUM"   --分段数值
 const.EVENT_END_BEFORE_BUFFS        = "END_BEFORE_BUFFS" -- 结束回合前Buffs
+
+const.EVENT_FIGHT_END_CLEAR_HERO    = "FIGHT_END_CLEAR_HERO" --战斗结束后清除英雄
+
 const.FONT_NAME                     = MINI_BLACK_FONT_NAME
 
 const.CURSOR_INPUT_DONE             = "CURSOR_INPUT_DONE"  
