@@ -343,6 +343,17 @@ def pvp_fight_revenge_1507(data, player):
 
     logger.debug("fight revenge result:%s" % fight_result)
 
+    if fight_result:
+        player.friends.del_blacklist(request.black_id)
+        player.friends.save_data()
+
+        _arena_win_points = game_configs.base_config.get('arena_win_points')
+        if _arena_win_points:
+            return_data = gain(player, _arena_win_points, const.FRIEND_REVENGE)
+            get_return(player, return_data, response.gain)
+        else:
+            logger.debug('friend revenge points is not find')
+
     response.res.result = True
     pvp_assemble_units(red_units, blue_units, response)
     response.fight_result = fight_result

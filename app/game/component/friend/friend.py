@@ -151,8 +151,8 @@ class FriendComponent(Component):
         if target_id in self._blacklist.keys():
             return False
 
-        if target_id in self._friends.keys():
-            return False
+        # if target_id in self._friends.keys():
+        #     return False
 
         self._blacklist[target_id] = 0
         return True
