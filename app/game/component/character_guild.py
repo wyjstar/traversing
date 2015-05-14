@@ -18,7 +18,7 @@ class CharacterGuildComponent(Component):
     def __init__(self, owner):
         super(CharacterGuildComponent, self).__init__(owner)
         self._g_id = 0  # 公会id
-        self._position = 5  # 职务
+        self._position = 3  # 职务
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
         self._today_contribution = 0  # 今日贡献
@@ -26,6 +26,7 @@ class CharacterGuildComponent(Component):
         self._praise = [0, 1]  # 点赞状态（0没点，1点），时间
         self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献时间
         self._apply_guilds = []  # 已经申请过的军团
+        self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
 
     def init_data(self, character_info):
         """
@@ -71,6 +72,14 @@ class CharacterGuildComponent(Component):
         guild_obj = Guild()
         guild_obj.init_data(data)
         return guild_obj.level
+
+    @property
+    def guild_rank_flag(self):
+        return self._guild_rank_flag
+
+    @guild_rank_flag.setter
+    def guild_rank_flag(self, value):
+        self._guild_rank_flag = value
 
     @property
     def praise(self):
@@ -157,7 +166,6 @@ class CharacterGuildComponent(Component):
 
     @property
     def praise_state(self):
-        print self._praise, 'IIIIIIIIIIIIIIIIIIIIIII'
         if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
             self._praise = [0, int(time.time())]
         return self._praise[0]

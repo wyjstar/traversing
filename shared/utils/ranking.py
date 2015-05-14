@@ -84,6 +84,10 @@ class Ranking:
         print "clear_rank========"
         tb_rank.zremrangebyrank(self.label, 0, -1)
 
+    def remove(self, key):
+        print "remove_rank========", key
+        tb_rank.zremrangebyrank(self.label, key, key)
+
 
 def testcase1():
     # redis_client.connect("127.0.0.1", "6379", 0)

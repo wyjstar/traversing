@@ -19,7 +19,7 @@ from app.proto_file.db_pb2 import Mail_PB, WorldBossAwardDB
 from shared.utils.date_util import str_time_to_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from app.proto_file.notice_pb2 import NoticeResponse
-from shared.utils.random_pick import random_pick_with_percent
+from shared.utils.random_pick import random_pick_with_weight
 from shared.utils.date_util import string_to_timestamp
 from shared.utils.const import const
 from gfirefly.server.logobj import logger
@@ -105,7 +105,7 @@ class WorldBoss(BaseBoss):
                 hero_no = unicode(v.get('hero_no'))
                 if hero_no in hero_pool:
                     del hero_pool[hero_no]
-            res = random_pick_with_percent(hero_pool)
+            res = random_pick_with_weight(hero_pool)
             temp = {}
             temp['lucky_hero_info_id'] = k
             temp['hero_no']  = int(res)

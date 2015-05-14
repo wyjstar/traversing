@@ -8,11 +8,12 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.battle.battle_unit import BattleUnit
 #from app.battle.battle_process import BattlePVPProcess
-from app.battle.server_process import pvp_start, pve_start
+from app.battle.server_process import pvp_start, pve_start, mine_start, mine_pvp_start
 from random import randint
+from shared.utils.const import const
 
 
-def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2):
+def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type):
     """docstring for pvp_process"""
     save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
@@ -21,17 +22,22 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
         return True
 
     #red_best_skill_id = player.fight_cache_component.red_best_skill_id
+
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill)
     #process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
                                 #blue_best_skill, blue_player_level)
-    res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
+    if fight_type == const.BATTLE_PVP:
+        res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
+                                blue_best_skill, blue_player_level, seed1, seed2)
+    elif fight_type == const.BATTLE_MINE_PVP:
+        res = mine_pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
                                 blue_best_skill, blue_player_level, seed1, seed2)
 
     logger.debug("pvp_process: %s" % res)
     #fight_result = process.process()
     return res
 
-def pve_process_check(player, fight_result, steps):
+def pve_process_check(player, fight_result, steps, fight_type):
     """pve 校验"""
     stage_info = player.fight_cache_component.stage_info
     red_units = stage_info.get('red_units')
@@ -47,8 +53,14 @@ def pve_process_check(player, fight_result, steps):
     red_best_skill_id = player.fight_cache_component.red_best_skill_id
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     #try:
-    res = pve_start(red_units, blue_groups, red_best_skill_id, red_best_skill_level,
+
+    if fight_type == const.BATTLE_PVE:
+        res = pve_start(red_units, blue_groups, red_best_skill_id, red_best_skill_level,
                             monster_unpara, 1, f_unit, seed1, seed2, steps)
+    elif fight_type == const.BATTLE_MINE_PVE:
+        blue_units = blue_groups[0]
+        res = mine_start(red_units, blue_units, red_best_skill_id, red_best_skill_level,
+                            monster_unpara, 1, seed1, seed2, steps)
     logger.debug("pve_start %s %s" % (res, fight_result))
     return res == fight_result
     #except Exception, e:

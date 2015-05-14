@@ -272,8 +272,10 @@ end
 
 -- 世界boss
 function initWorldBossData()
-    local red_units = fightData:getData().red
-    local blue_units = fightData:getData().blue
+    local data = fightData:getData()
+    local red_units = data.red
+    local blue_units = data.blue
+    local debuff_skill_no = data.debuff_skill_no
     local redUnits = {}
     local blueUnits = {}
 
@@ -289,8 +291,9 @@ function initWorldBossData()
         if blue_units[i] then
             local unit = constructBattleUnit(blue_units[i], "blue")
             blueUnits[unit.pos] = unit
-            print("initWorldBossData ======", unit)
+            print("initWorldBossData ======", unit, debuff_skill_no)
             updateBossUnitViewProperty(unit)
+            unit.skill:set_break_skill_ids({debuff_skill_no})
         end
     end
 

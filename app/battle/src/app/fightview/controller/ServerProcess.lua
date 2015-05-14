@@ -48,7 +48,7 @@ function FCProcess:pvp_start()
     while self.fightProcess:check_result() == 0 do
         self.fightProcess:perform_one_step()
     end
-    return self.fightProcess:check_result() == 1
+    return self.fightProcess:check_result() == 1, self.fightProcess.blue_hp_total - self.fightProcess:get_total_damage()
 end
 
 --开始战斗pve 

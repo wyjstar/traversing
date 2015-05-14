@@ -55,25 +55,20 @@ class PlayerCharacter(object):
     def init_player_info(self):
         character_obj = tb_character_info.getObj(self._pid)
         character_info = character_obj.hgetall()
-        # print len(character_info), character_info
         for c in self._components.values():
             c.init_data(character_info)
 
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)
         logger.debug('is_new_character,pid:%s', self._pid)
-        # print 'exist:', self._pid, not character_info.exists()
         return not character_info.exists()
 
     def create_character_data(self):
         character_info = {'id': self._pid}
         for k, c in self._components.items():
             newdict = c.new_data()
-            # print '='*88
-            # print k, newdict
             character_info.update(newdict)
         char_obj = tb_character_info.getObj(self._pid)
-        # print len(character_info), character_info
         logger.debug('new player db:%s:level:%s',
                      character_info['id'],
                      character_info['level'])

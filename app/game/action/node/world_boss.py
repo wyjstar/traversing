@@ -19,6 +19,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.drop_bag import BigBag
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
+from random import randint
 
 # from app.proto_file import world_boss_pb2
 
@@ -77,7 +78,7 @@ def get_fight_info(data, player):
     response.last_fight_time = int(boss.last_fight_time)
     response.gold_reborn_times = boss.gold_reborn_times
     logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
-    #print response
+    print response
     print "*" * 80
 
     return response.SerializePartialToString()
@@ -287,8 +288,11 @@ def pvb_fight_start_1705(pro_data, player):
     logger.debug("--" * 40)
     print red_units
     print blue_units
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(best_skill_id)
+    seed1, seed2 = get_seeds()
+    #def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
-                                                   best_skill_id, str_blue_units, player_info, boss_id)
+                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2)
 
     if result == -1:
         logger.debug("world boss already gone!")
@@ -313,10 +317,10 @@ def pvb_fight_start_1705(pro_data, player):
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     pvp_assemble_units(red_units, blue_units, response)
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(best_skill_id)
     response.red_best_skill= best_skill_id
     response.red_best_skill_level = red_best_skill_level
-    #print response
+    response.debuff_skill_no = remote_gate['world'].get_debuff_skill_no_remote(boss_id)
+    print response
 
     return response.SerializePartialToString()
 
@@ -379,3 +383,7 @@ def pvb_get_award_1708(data, player):
     logger.debug("pvb_get_award_1708:%s" % response)
     return response.SerializePartialToString()
 
+def get_seeds():
+    seed1 = randint(1, 100)
+    seed2 = randint(1, 100)
+    return seed1, seed2

@@ -50,7 +50,7 @@ class StageLogic(base_stage.BaseStageLogic):
 
             # 活跃度
             lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
-        # 结算
-        stage_util.settle(player, result, response, lively_event, conf)
+            # 结算
+            stage_util.settle(player, result, response, lively_event, conf)
 
         tlog_action.log('RoundFlow', player, stage_id, 1, 0, result)

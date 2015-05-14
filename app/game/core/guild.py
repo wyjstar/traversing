@@ -29,7 +29,6 @@ class Guild(object):
     def create_guild(self, p_id, name, icon_id):
         guild_index_incr_data = tb_guild_index_incr.getObj('guild_index')
         g_id = guild_index_incr_data.incr() + 100000
-        print 'AAAAAAAAAAAAAAAA,g_id:', g_id
 
         self._name = name
         self._g_id = g_id
@@ -83,8 +82,8 @@ class Guild(object):
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
             self._apply.remove(p_id)
-        if len(self._apply) >= 50:
-            self._apply.pop(0)
+        # if len(self._apply) >= 50:
+        #     self._apply.pop(0)
         self._apply.append(p_id)
 
     def exit_guild(self, p_id, position):

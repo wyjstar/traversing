@@ -194,3 +194,10 @@ const.DEBUG = False
 
 const.level_rank_xs = 10000000
 const.power_rank_xs = 1000
+
+
+const.BATTLE_PVE = 1
+const.BATTLE_PVP = 6
+const.BATTLE_PVB = 7
+const.BATTLE_MINE_PVE = 8
+const.BATTLE_MINE_PVP = 9

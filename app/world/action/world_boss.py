@@ -7,7 +7,7 @@ from gfirefly.server.globalobject import rootserviceHandle
 from app.proto_file import world_boss_pb2
 from app.world.core.world_boss import world_boss
 from app.world.core.mine_boss import mine_boss_manager
-from app.battle.battle_process import BattlePVBProcess
+from app.battle.server_process import world_boss_start
 import cPickle
 from shared.utils.date_util import get_current_timestamp
 from app.world.action.gateforwarding import push_all_object_message
@@ -89,7 +89,7 @@ def update_rank_items(k, rank_item_pb, rank_item):
 
 
 @rootserviceHandle
-def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info, boss_id):
+def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     """
     战斗
     """
@@ -98,8 +98,10 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
         return -1, 0
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
-    process = BattlePVBProcess(red_units, player_info.get("level"), red_best_skill,  blue_units, boss.debuff_skill_no)
-    result, hp_left = process.process()
+    #res = world_boss_start(red_units, player_info.get("level"), red_best_skill,  blue_units, boss.debuff_skill_no)
+    res = world_boss_start(red_units,  blue_units, red_best_skill, red_best_skill_level, 0, 1, player_info.get("level"), boss.debuff_skill_no, seed1, seed2)
+    result = res.get("result")
+    hp_left = res.get("hp_left")
 
     # 保存worldboss数据
     boss.hp = hp_left
@@ -176,3 +178,11 @@ def get_rank_no_remote(player_id, boss_id):
     """
     boss = get_boss(boss_id)
     return boss.get_rank_no(player_id)
+
+@rootserviceHandle
+def get_debuff_skill_no_remote(boss_id):
+    """
+    奇遇
+    """
+    boss = get_boss(boss_id)
+    return boss.debuff_skill_no

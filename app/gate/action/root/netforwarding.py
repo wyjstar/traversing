@@ -64,6 +64,12 @@ def push_object_remote(topic_id, msg, send_list):
 
 
 @rootserviceHandle
+def remove_rank_remote(rank_name, key):
+    level_instance = Ranking.instance(rank_name)
+    level_instance.remove(key)  # 删除rank数据
+
+
+@rootserviceHandle
 def rank_info_remote(rank_name, key, value):
     level_instance = Ranking.instance(rank_name)
     level_instance.add(key, value)  # 添加rank数据

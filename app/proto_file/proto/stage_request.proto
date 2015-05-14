@@ -19,18 +19,13 @@ message StageStartRequest{
 	optional int32 fid = 5;          // 好友ID
 }
 
-message StepInfo
-{
-	required int32 step_id = 1;     //步骤id
-    required int32 step_type = 2;   //步骤类型: 无双、小伙伴
-}
 
 // 关卡结算 command:904
 message StageSettlementRequest{
     required int32 stage_id = 1;
     required int32 stage_type = 2;
 	repeated StepInfo steps = 3; // 战斗步骤
-	required int32 result = 4;  //输赢
+	required bool result = 4;  //输赢
 }
 
 // 扫荡 command:907

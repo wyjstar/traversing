@@ -1,3 +1,5 @@
+g_notice = g_notice or {}   -- 通知的宏定义
+
 const = const or {}
 const.POS_ARMY = cc.p(320, 260)
 const.POS_ENEMY = cc.p(320, 700)
@@ -368,7 +370,7 @@ STEP_BEGIN_ACTION = 2 -- 起手动作
 STEP_DO_BUFF = 3 -- 攻击
 STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
-
+g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"  --次日登陆奖励
 
 
 
