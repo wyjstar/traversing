@@ -13,18 +13,21 @@ class Guild(object):
         """创建一个角色
         """
         self._name = ''  # 名
-        self._g_id = 'no'  # id
+        self._g_id = 0  # id
         self._p_num = 1  # 人数
         self._level = 1  # 等级
-        self._exp = 0  # 经验
-        self._fund = 0  # 资金
+        self._exp = 0  # 经验,凝聚力
+        # self._fund = 0  # 资金
         self._call = ''  # 公告
         self._p_list = {}  # 成员信息
         self._apply = []  # 加入申请
-        self._record = 0  # 战绩
+        # self._record = 0  # 战绩
         self._invite_join = {}  # {id:time, id:time}
+        self._icon_id = 0  # 军团头像
+        self._bless = [0, 0, 1]  # 祈福人数,福运,时间
+        self._praise = [0, 1]  # 点赞人数,时间
 
-    def create_guild(self, p_id, name):
+    def create_guild(self, p_id, name, icon_id):
         self._name = name
         uuid = get_uuid()
         self._g_id = uuid
@@ -35,9 +38,12 @@ class Guild(object):
                 'p_num': self._p_num,
                 'level': self._level,
                 'exp': self._exp,
-                'fund': self._fund,
+                'icon_id': self._icon_id,
+                'bless': self._bless,
+                'praise': self._praise,
+                # 'fund': self._fund,
                 'call': self._call,
-                'record': self._record,
+                # 'record': self._record,
                 'invite_join': self._invite_join,
                 'p_list': self._p_list,
                 'apply': self._apply}
@@ -50,10 +56,13 @@ class Guild(object):
                 'p_num': self._p_num,
                 'level': self._level,
                 'exp': self._exp,
-                'fund': self._fund,
+                'icon_id': self._icon_id,
+                'bless': self._bless,
+                'praise': self._praise,
+                # 'fund': self._fund,
                 'call': self._call,
                 'invite_join': self._invite_join,
-                'record': self._record,
+                # 'record': self._record,
                 'p_list': self._p_list,
                 'apply': self._apply}
         guild_data = tb_guild_info.getObj(self._g_id)
@@ -65,12 +74,15 @@ class Guild(object):
         self._p_num = data.get("p_num")
         self._level = data.get("level")
         self._exp = data.get("exp")
-        self._fund = data.get("fund")
+        self._icon_id = data.get("icon_id")
+        self._bless = data.get("bless")
+        self._praise = data.get("praise")
+        # self._fund = data.get("fund")
         self._call = data.get("call")
         self._invite_join = data.get("invite_join", {})
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
-        self._record = data.get("record")
+        # self._record = data.get("record")
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
@@ -95,9 +107,9 @@ class Guild(object):
     def get_p_num(self):
         return self._p_num
 
-    def get_guild_info(self):
-        return [self._g_id, self._name, self.p_num, self._level,
-                self._exp, self.fund, self._call, self._record]
+    # def get_guild_info(self):
+    #     return [self._g_id, self._name, self.p_num, self._level,
+    #             self._exp, self.fund, self._call, self._record]
 
     @property
     def name(self):
@@ -131,13 +143,13 @@ class Guild(object):
     def p_num(self, p_num):
         self._p_num = p_num
 
-    @property
-    def fund(self):
-        return self._fund
+    # @property
+    # def fund(self):
+    #     return self._fund
 
-    @fund.setter
-    def fund(self, fund):
-        self._fund = fund
+    # @fund.setter
+    # def fund(self, fund):
+    #     self._fund = fund
 
     @property
     def exp(self):
@@ -179,10 +191,34 @@ class Guild(object):
     def invite_join(self, values):
         self._invite_join = values
 
-    @property
-    def record(self):
-        return self._record
+    # @property
+    # def record(self):
+    #     return self._record
 
-    @record.setter
-    def record(self, record):
-        self._record = record
+    # @record.setter
+    # def record(self, record):
+    #     self._record = record
+
+    @property
+    def icon_id(self):
+        return self._icon_id
+
+    @icon_id.setter
+    def icon_id(self, values):
+        self._icon_id = values
+
+    @property
+    def bless(self):
+        return self._bless
+
+    @bless.setter
+    def bless(self, values):
+        self._bless = values
+
+    @property
+    def praise(self):
+        return self._praise
+
+    @praise.setter
+    def praise(self, values):
+        self._praise = values

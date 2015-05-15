@@ -1,22 +1,121 @@
-message GuildCommonResponse
-{
-    required bool result = 1;  //处理结果 True：正确
-    optional int32 result_no = 2;
-    optional bytes message = 3;
+import "common.proto";
+
+// 获取公会排行列表 command：810
+message GetGuildRankRequest{
+    required int32 rank_type = 1;//1获取排行列表，2获取推荐列表
+    required int32 min_rank = 2;
+    required int32 max_rank = 3;
 }
 
-message GuildInfo
-{
-    required string g_id = 1;    //id
-    required bytes name = 2;    //名
-    required int32 p_num = 3;   //人数
-    required int32 level = 4;   //等级
-    required int32 exp = 5;     //经验
-    required int32 fund = 6;    //资金
-    required bytes call = 7;    //公告
-    required int32 record = 8;  //战绩
-    required int32 my_position = 9; //我的职位
+// 获取公会排行列表 command：810
+message GetGuildRankResponse{
+    required CommonResponse res = 1;
+    repeated GuildRank guild_rank = 2;
+}
 
+message GuildRank
+{
+    required int32 g_id = 1;    //id
+    required int32 rank = 2;    //排名
+    required bytes name = 3;    //名
+    required int32 level = 4;   //等级
+    required string president = 5;   //会长
+    required int32 p_num = 6;   //人数
+    required int32 icon_id = 7;   //军团徽章
+    required int32 call = 8;   //公告
+    optional int32 be_apply = 9;   //有没有被我申请
+}
+
+// 加入公会 command：802
+message ApplyGuildRequest{
+	required int32 g_id = 1;  //公会id
+}
+
+message JoinGuildResponse{
+    required CommonResponse res = 1;
+    optional int32 spare_time = 4;
+}
+
+// 退出公会 command：803
+message ExitGuildResponse{
+    required CommonResponse res = 1;
+}
+
+// 搜索军团 command：
+message SelectGuildRequest{
+	required int32 select_type = 1;  //搜索类型
+	required string value = 2;  //搜索值
+}
+
+message SelectGuildResponse{
+    required CommonResponse res = 1;
+    optional GuildRank guild_rank = 2;
+}
+
+// 创建公会 command：801
+message CreateGuildRequest{
+	required bytes name = 1;  //公会名
+	required int32 icon_id = 2;  //军团图标
+}
+
+// 创建公会 command：801
+message CreateGuildResponse{
+    required CommonResponse res = 1;
+}
+
+// 获取公会信息 command：812
+message GuildInfoProto{
+    required CommonResponse res = 1;
+
+    optional int32 g_id = 2;    //id
+    optional bytes name = 3;    //名
+    optional int32 member_num = 4;   //人数
+    optional int32 level = 5;   //等级
+    optional int32 exp = 6;     //经验
+    optional bytes call = 7;    //公告
+    optional int32 icon_id = 8;   //军团徽章
+    optional bytes captain_name = 9;   //团长name
+    optional int32 captain_level = 10;   //团长level
+    optional int32 captain_power = 11;   //团长战力
+    optional int32 gold_num = 12;   //元宝数
+    optional int32 zan_state = 13;   //今天有没有赞过
+    optional int32 position = 14;   //我的职位
+    optional int32 have_apply = 15;   //有没有加军团申请
+    optional int32 captain_vip_level = 16;   //团长vip等级
+}
+
+// 修改公告 command：804
+message EditorCallRequest{
+	required bytes call = 1;  //公告内容
+}
+
+// 修改公告 command：804
+message EditorCallResponse{
+    required CommonResponse res = 1;
+}
+
+
+// 获取申请列表 command：813
+message GetApplyListResponse{
+    required CommonResponse res = 1;
+    repeated ApplyUserInfo role_info = 2;
+}
+
+message ApplyUserInfo
+{
+    required int32 p_id = 1;    //id
+    required string name = 2;    //名
+    required int32 level = 3;   //等级
+    required int32 vip_level = 4;   //vip等级
+    required int32 fight_power = 5;   //战斗力
+    required int32 is_online = 6;  //是否在线，1在线，0不在线
+    optional int32 user_icon = 7;   //玩家头像
+}
+
+// 获取公会成员列表 command：811
+message GetGuildMemberListResponse{
+    required CommonResponse res = 1;
+    repeated RoleInfo role_info = 2;
 }
 
 message RoleInfo
@@ -24,52 +123,23 @@ message RoleInfo
     required int32 p_id = 1;    //id
     required string name = 2;    //名
     required int32 level = 3;   //等级
-    required int32 vip_level = 4;   //vip等级
-    required int32 fight_power = 5;   //战斗力
-}
-
-message RoleInfo1
-{
-    required int32 p_id = 1;    //id
-    required string name = 2;    //名
-    required int32 level = 3;   //等级
     required int32 position = 4;   //职位
     required int32 all_contribution = 5;   //总贡献
-    required int32 k_num = 6;   //杀敌数
+    required int32 contribution = 6;   //今日贡献
+    required int32 fight_power = 7;   //战斗力
+    required int32 is_online = 8;  //是否在线，1在线，0不在线
+    optional int32 user_icon = 9;   //玩家头像
+    optional int32 vip_level = 16;   //vip等级
 }
 
-message GuildRank
-{
-    required string g_id = 1;    //id
-    required int32 rank = 2;    //排名
-    required bytes name = 3;    //名
-    required int32 level = 4;   //等级
-    required string president = 5;   //会长
-    required int32 p_num = 6;   //人数
-    required int32 record = 7;   //战绩
+// 转让军团 command：806 change_president_806
+message ChangePresidentRequest{
+    required int32 p_id = 1;  //目标玩家id
 }
 
-////////////////////////////////////////////////////
-
-// 创建公会 command：801
-message CreateGuildRequest{
-	required bytes name = 1;  //公会名
-}
-
-// 加入公会 command：802
-message JoinGuildRequest{
-	required bytes g_id = 1;  //公会id
-}
-message JoinGuildResponse{
-	required bool result = 1;  //处理结果 True：正确
-    optional int32 result_no = 2;
-    optional bytes message = 3;
-    optional int32 spare_time = 4;
-}
-
-// 修改公告 command：804
-message EditorCallRequest{
-	required bytes call = 1;  //公告内容
+// 转让军团 command：806 change_president_806
+message ChangePresidentResponse{
+    required CommonResponse res = 1;
 }
 
 // 处理加会申请 command：805
@@ -78,15 +148,8 @@ message DealApplyRequest{
 	required int32 res_type = 2;  // 结果：1同意，2不同意,3清空
 }
 message DealApplyResponse{
-    required bool result = 1;  //处理结果 True：正确
-    optional int32 result_no = 2;
-    optional bytes message = 3;
-    repeated int32 p_ids = 4;
-}
-
-// 转让会长 command：806 change_president_806
-message ChangePresidentRequest{
-	required int32 p_id = 1;  //目标玩家id
+    required CommonResponse res = 1;
+    repeated int32 p_ids = 2;  //没有成功加入的玩家ID
 }
 
 // 踢出公会 command：807
@@ -94,45 +157,9 @@ message KickRequest{
 	repeated int32 p_ids = 1;  //目标玩家ids
 }
 
-// 晋升返回 command：808
-message PromotionResponse{
-	required bool result = 1;
-    optional int32 result_no = 2;
-    optional bytes message = 3;
-    optional int32 p_id = 4;
-}
-
-// 膜拜 command：809
-message WorshipRequest{
-	required int32 w_type = 1;  //膜拜类型
-}
-
-// 获取公会信息 command：812
-message GuildInfoProto{
-	required bool result = 1;  //处理结果
-    optional GuildInfo guild_info = 2;
-    optional bytes message = 3;
-}
-
-// 获取申请列表 command：813
-message ApplyListProto{
-	required bool result = 1;  //处理结果
-    repeated RoleInfo role_info = 2;
-    optional bytes message = 3;
-}
-
-// 获取公会成员列表 command：811
-message GuildRoleListProto{
-	required bool result = 1;  //处理结果
-    repeated RoleInfo1 role_info = 2;
-    optional bytes message = 3;
-}
-
-// 获取公会排行列表 command：810
-message GuildRankProto{
-	required bool result = 1;  //处理结果
-    repeated GuildRank guild_rank = 2;
-    optional bytes message = 3;
+// 踢出公会 command：807
+message KickResponse{
+    required CommonResponse res = 1;
 }
 
 // 邀请加入军团command：1803
@@ -142,8 +169,7 @@ message InviteJoinRequest{
 
 // 邀请加入军团command：1803
 message InviteJoinResponse{
-	required bool result = 1;  //处理结果
-    optional bytes message = 2;
+    required CommonResponse res = 1;
 }
 
 // 处理 邀请加入军团command：1804
@@ -154,6 +180,25 @@ message DealInviteJoinRequest{
 
 // 处理 邀请加入军团command：1804
 message DealInviteJoinResResponse{
-	required bool result = 1;  //处理结果
-    optional bytes message = 2;
+    required CommonResponse res = 1;
+}
+
+// 赞一下
+message ZanResResponse{
+    required CommonResponse res = 1;
+}
+
+////////////////////////////////////////////////////
+
+// 晋升返回 command：808
+message PromotionResponse{
+    required bool result = 1;
+    optional int32 result_no = 2;
+    optional bytes message = 3;
+    optional int32 p_id = 4;
+}
+
+// 膜拜 command：809
+message WorshipRequest{
+    required int32 w_type = 1;  //膜拜类型
 }
