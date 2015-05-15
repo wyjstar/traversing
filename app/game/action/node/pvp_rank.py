@@ -429,7 +429,7 @@ def pvp_player_rank_refresh_request(data, player):
     caret = ','
     prere = 'id in (%s)' % caret.join(str(_) for _ in ranks)
     logger.info('prere:%s', prere)
-    columns = ['id', 'nickname', 'level', 'ap',
+    columns = ['id', 'character_id', 'nickname', 'level', 'ap',
                'hero_ids', 'hero_levels', 'head_no']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
     for record in records:
@@ -439,6 +439,7 @@ def pvp_player_rank_refresh_request(data, player):
         rank_item.rank = record.get('id')
         rank_item.ap = record.get('ap')
         rank_item.head_no = record.get('head_no')
+        rank_item.character_id = record.get('character_id')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
         hero_levels = cPickle.loads(record.get('hero_levels'))
