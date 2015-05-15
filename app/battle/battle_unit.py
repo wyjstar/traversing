@@ -154,7 +154,7 @@ class BattleUnit(object):
 
     @property
     def hp(self):
-        return self._hp
+        return int(self._hp)
 
     @hp.setter
     def hp(self, value):
