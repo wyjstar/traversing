@@ -261,6 +261,12 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     -- 构造播放攻击所需的所有信息
     local skillType = skill:get_skill_type()
     print("skillType========"..skillType)
+
+    if not table.ink(target_side, self.back_skill_buff.attacker.no) then
+        -- 如果反击武将已死，则清空反击技能
+        self.back_skill_buff = nil
+    end
+
     return self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.buffs, STEP_DO_BUFF)
 end
 
