@@ -168,6 +168,7 @@ def stage_start_903(pro_data, player):
 
 @remoteserviceHandle('gate')
 def fight_settlement_904(pro_data, player):
+    logger.debug("fight_settlement_904 start: %s" % time.time())
     request = stage_request_pb2.StageSettlementRequest()
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
@@ -207,6 +208,7 @@ def fight_settlement_904(pro_data, player):
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
     logger.debug("steps:%s", request.steps)
+    logger.debug("fight_settlement_904 end: %s" % time.time())
 
     return res
 
