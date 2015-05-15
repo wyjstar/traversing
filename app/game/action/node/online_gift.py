@@ -108,7 +108,7 @@ def get_tomorrow_gift_1122(data, player):
         return response.SerializeToString()
     register_time = time.localtime(player.base_info.register_time)
     now_time = time.localtime()
-    if now_time.tm_yday != register_time.tm_yday + 1:
+    if now_time.tm_yday <= register_time.tm_yday and now_time.tm_year <= register_time.tm_year:
         logger.error('tomorrow gift is miss!')
         return response.SerializeToString()
 
