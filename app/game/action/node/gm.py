@@ -149,6 +149,11 @@ def modify_user_info(data, player):
             return {'success': 1}
         else:
             return {'success': 0, 'message': 0}
+    elif args['attr_name'] == 'push':
+        uid = args['uid']
+        mtype = args['mtype']
+        msg = args['msg']
+        remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
 
     else:
         return {'success': 0, 'message': 3}

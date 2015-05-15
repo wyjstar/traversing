@@ -133,6 +133,7 @@ const.RECHARGE = 33  # rechage
 const.ARENA_WIN = 32  # 竞技场获胜
 const.WORLD_BOSS_AWARD = 1701  # 世界boss奖励
 #const.COMMON_BUY = 18  # 通用商城购买
+const.LIVELY_REWARD = 40 #好友活跃度奖励
 
 #1：商城良将寻访
 #2：商城装备宝箱（作废）
