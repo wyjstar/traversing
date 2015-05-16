@@ -262,7 +262,7 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     local skillType = skill:get_skill_type()
     print("skillType========"..skillType)
 
-    if not table.ink(target_side, self.back_skill_buff.attacker.no) then
+    if self.back_skill_buff and not table.ink(target_side, self.back_skill_buff.attacker.no) then
         -- 如果反击武将已死，则清空反击技能
         self.back_skill_buff = nil
     end
