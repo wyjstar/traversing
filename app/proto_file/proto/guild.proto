@@ -22,12 +22,12 @@ message GuildRank
     required string president = 5;   //会长
     required int32 p_num = 6;   //人数
     required int32 icon_id = 7;   //军团徽章
-    required int32 call = 8;   //公告
+    required bytes call = 8;   //公告
     optional int32 be_apply = 9;   //有没有被我申请
 }
 
 // 加入公会 command：802
-message ApplyGuildRequest{
+message JoinGuildRequest{
 	required int32 g_id = 1;  //公会id
 }
 
@@ -64,7 +64,7 @@ message CreateGuildResponse{
 }
 
 // 获取公会信息 command：812
-message GuildInfoProto{
+message GetGuildInfoResponse{
     required CommonResponse res = 1;
 
     optional int32 g_id = 2;    //id
@@ -77,11 +77,18 @@ message GuildInfoProto{
     optional bytes captain_name = 9;   //团长name
     optional int32 captain_level = 10;   //团长level
     optional int32 captain_power = 11;   //团长战力
-    optional int32 gold_num = 12;   //元宝数
+    optional int32 zan_num = 12;   //今日赞数量
     optional int32 zan_state = 13;   //今天有没有赞过
     optional int32 position = 14;   //我的职位
     optional int32 have_apply = 15;   //有没有加军团申请
     optional int32 captain_vip_level = 16;   //团长vip等级
+    optional int32 captain_icon = 17;   //团长头像
+    optional int32 luck_num = 18;   //福运
+    optional int32 bless_num = 19;   //祈福人数
+    optional int32 bless_state = 20;   //今天有没有祈福
+    optional int32 captain_zan_receive_state = 21;   //团长赞领取状态
+    repeated int32 bless_gift = 22;   //已经领取的祈福奖励
+    optional int32 my_guild_rank = 23;
 }
 
 // 修改公告 command：804
@@ -183,22 +190,58 @@ message DealInviteJoinResResponse{
     required CommonResponse res = 1;
 }
 
-// 赞一下
+// 赞一下 1807
 message ZanResResponse{
+    required CommonResponse res = 1;
+    optional int32 zan_num = 2;   //今日赞数量
+    optional GameResourcesResponse gain = 3;
+}
+
+// 团长领取  1806
+message ReceiveResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+// 祈福 command：809
+message BlessRequest{
+    required int32 bless_type = 1;
+}
+
+// 祈福 command：809
+message BlessResponse{
     required CommonResponse res = 1;
 }
 
-////////////////////////////////////////////////////
-
-// 晋升返回 command：808
-message PromotionResponse{
-    required bool result = 1;
-    optional int32 result_no = 2;
-    optional bytes message = 3;
-    optional int32 p_id = 4;
+// 领取祈福的奖励 command：1808
+message GetBlessGiftRequest{
+    required int32 gift_no = 1;
 }
 
-// 膜拜 command：809
-message WorshipRequest{
-    required int32 w_type = 1;  //膜拜类型
+// 领取祈福的奖励 command：1808
+message GetBlessGiftResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+// 1809
+message FindGuildRequest{
+    optional bytes id_or_name = 1;
+}
+
+// 1809
+message FindGuildResponse{
+    required CommonResponse res = 1;
+    optional GuildRank guild_info = 2;
+}
+
+// 1810
+message AppointRequest{
+    required int32 deal_type = 1;
+    required int32 p_id = 2;
+}
+
+// 1810
+message AppointResponse{
+    required CommonResponse res = 1;
 }

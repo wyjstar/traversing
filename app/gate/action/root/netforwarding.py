@@ -34,6 +34,16 @@ def forwarding_remote(key, dynamic_id, data):
 
 
 @rootserviceHandle
+def online_remote(dynamic_id):
+    """
+    """
+    oldvcharacter = VCharacterManager().get_by_id(dynamic_id)
+    if not oldvcharacter:
+        return 0
+    return 1
+
+
+@rootserviceHandle
 def is_online_remote(key, dynamic_id, data):
     """
     """
@@ -164,6 +174,7 @@ def push_message_remote(key, character_id, args):
     else:
         transit_remote = GlobalObject().remote['transit']
         return transit_remote.push_message_remote(key, character_id, *args)
+
 
 @rootserviceHandle
 def pull_message_remote(character_id):
