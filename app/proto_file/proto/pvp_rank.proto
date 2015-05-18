@@ -35,6 +35,10 @@ message PvpPlayerInfoRequest{
     required int32 player_rank = 1;
 }
 
+message ResetPvpTime{
+	required int32 times = 1;
+}
+
 // 进入关卡战斗返回 command:1503
 message PvpFightResponse{
     required CommonResponse res = 1;
@@ -48,4 +52,5 @@ message PvpFightResponse{
     optional int32 seed1= 9;             // 随机种子1
     optional int32 seed2= 10;            // 随机种子2
     optional GameResourcesResponse gain = 11;
+    optional int32 top_rank = 12;
 }
