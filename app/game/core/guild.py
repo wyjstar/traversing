@@ -76,7 +76,7 @@ class Guild(object):
         self._bless = data.get("bless")
         self._praise = data.get("praise")
         self._call = data.get("call")
-        self._invite_join = data.get("invite_join", {})
+        self._invite_join = data.get("invite_join")
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
 

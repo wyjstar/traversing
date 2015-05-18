@@ -24,7 +24,7 @@ message Mail_PB
     optional bytes guild_name = 16; //军团名字
     optional int32 guild_person_num = 17; //军团人数
     optional int32 guild_level = 18; //军团等级
-    optional string guild_id = 19; //军团id
+    optional int32 guild_id = 19; //军团id
 }
 
 // 世界boss奖励

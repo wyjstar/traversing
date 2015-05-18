@@ -978,8 +978,9 @@ def invite_join_1803(data, player):
 
     if player.guild.position != 1:
         logger.error('invite_join_1802 : you are`t president')
-        response.result = False
-        response.message = "您不是会长"
+        response.res.result = False
+        response.res.result_no = 849
+        # response.res.message = "您不是会长"
         return response.SerializeToString()
 
     guild_obj = Guild()
@@ -988,33 +989,34 @@ def invite_join_1803(data, player):
     guild_p_max = game_configs.guild_config.get(guild_obj.level).p_max
 
     if guild_obj.get_p_num()+1 > guild_p_max:
-        response.result = False
-        response.message = "超出公会人数上限"
+        response.res.result = False
+        response.res.result_no = 845
+        # response.message = "超出公会人数上限"
         return response.SerializeToString()
 
     info = tb_character_info.getObj(user_id).hget('guild_id')
-    if info != 'no':
-        response.result = False
-        response.message = "对方已有军团"
-        # response.result_no = 837
+    if info != 0:
+        response.res.result = False
+        # response.res.message = "对方已有军团"
+        response.res.result_no = 843
         return response.SerializeToString()
 
     invitee_player = PlayersManager().get_player_by_id(user_id)
     open_stage_id = game_configs.base_config.get('guildOpenStage')
     if invitee_player:  # 在线
         if player.stage_component.get_stage(open_stage_id).state != 1:
-            response.result = False
-            response.message = "对方未开启军团功能"
-            # response.result_no = 837
+            response.res.result = False
+            # response.message = "对方未开启军团功能"
+            response.res.result_no = 837
             return response.SerializeToString()
     else:
         is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', user_id, {'cmd': 'canjoinguild'})
         if is_online == "notonline":
             character_obj = tb_character_info.getObj(user_id)
             if not character_obj.exists():
-                response.result = False
-                response.message = "未知错误"
-                # response.result_no = 800
+                response.res.result = False
+                # response.message = "未知错误"
+                response.res.result_no = 800
                 return response.SerializeToString()
             stages = character_obj.hget('stage_info')
             stage_objs = {}
@@ -1026,15 +1028,15 @@ def invite_join_1803(data, player):
                     if stage_obj.state != 1:
                         flog = 1
             if flog:
-                response.result = False
-                response.message = "对方未开启军团功能"
-                # response.result_no = 837
+                response.res.result = False
+                # response.res.message = "对方未开启军团功能"
+                response.res.result_no = 837
                 return response.SerializeToString()
 
         elif is_online == 0:
-            response.result = False
-            response.message = "对方未开启军团功能"
-            # response.result_no = 837
+            response.res.result = False
+            # response.message = "对方未开启军团功能"
+            response.res.result_no = 837
             return response.SerializeToString()
 
     if not guild_obj.invite_join.get(user_id):
@@ -1042,8 +1044,9 @@ def invite_join_1803(data, player):
             if i_time + game_configs.base_config.get('guildInviteTime') > int(time.tiem()):
                 del guild_obj.invite_join[u_id]
         if len(guild_obj.invite_join)+1 > guild_p_max:
-            response.result = False
-            response.message = "超出可邀请人数上限"
+            response.res.result = False
+            response.res.result_no = 845
+            # response.res.message = "超出可邀请人数上限"
             return response.SerializeToString()
 
         mail_id = game_configs.base_config.get('guildInviteMail')
@@ -1065,8 +1068,8 @@ def invite_join_1803(data, player):
             logger.error('pvp high rank award mail fail, \
                     player id:%s', player.base_info.id)
 
-            response.result = False
-            response.result_no = 800
+            response.res.result = False
+            response.res.result_no = 800
             return response.SerializeToString()
         else:
             logger.debug('pvp high rak award mail,mail_id:%s',
@@ -1075,7 +1078,7 @@ def invite_join_1803(data, player):
     guild_obj.invite_join[user_id] = int(time.time())
 
     guild_obj.save_data()
-    response.result = True
+    response.res.result = True
     return response.SerializeToString()
 
 
@@ -1087,51 +1090,52 @@ def deal_invite_join_1804(data, player):
     response = DealInviteJoinResResponse()
     guild_id = args.guild_id
     res = args.res
-    response.result = True
+    response.res.result = True
 
     data1 = tb_guild_info.getObj(guild_id).hgetall()
     if not data1:
-        response.result = False
-        response.message = "公会ID错误"
-        return response.SerializeToString()
+        response.res.result = False
+        response.res.result_no = 844
+        # response.res.message = "公会ID错误"
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
     if not guild_obj.invite_join.get(player.base_info.id):
-        response.result = False
-        response.message = "未知错误"
-        return response.SerializeToString()
+        response.res.result = False
+        response.res.result_no = 800
 
     if res:
-        if player.guild.g_id != 'no':
-            response.result = False
-            response.message = "你已经有军团了"
+        if player.guild.g_id != 0:
+            response.res.result = False
+            response.res.result_no = 843
+            #response.message = "你已经有军团了"
 
         if guild_obj.get_p_num()+1 > game_configs.guild_config.get(guild_obj.level).p_max:
-            response.result = False
-            response.message = "超出公会人数上限"
+            response.res.result = False
+            response.res.result_no = 845
+            # response.message = "超出公会人数上限"
 
         open_stage_id = game_configs.base_config.get('guildOpenStage')
         if player.stage_component.get_stage(open_stage_id).state != 1:
-            response.result = False
-            response.message = "未完成指定关卡"
-            # response.result_no = 837
+            response.res.result = False
+            response.res.result_no = 837
+            # response.message = "未完成指定关卡"
 
-        if response.result:
-            player.guild.g_id = guild_id.encode('utf-8')
-            player.guild.position = 5
+        if response.res.result:
+            player.guild.g_id = guild_obj.g_id
+            player.guild.position = 3
             player.guild.contribution = 0
             player.guild.all_contribution = 0
             player.guild.k_num = 0
             player.guild.exit_time = 1
 
-            if guild_obj.p_list.get(5):
-                p_list1 = guild_obj.p_list.get(5)
+            if guild_obj.p_list.get(3):
+                p_list1 = guild_obj.p_list.get(3)
                 p_list1.append(player.base_info.id)
-                guild_obj.p_list.update({5: p_list1})
+                guild_obj.p_list.update({3: p_list1})
             else:
-                guild_obj.p_list.update({5: [player.base_info.id]})
+                guild_obj.p_list.update({3: [player.base_info.id]})
             guild_obj.p_num += 1
 
             remote_gate.login_guild_chat_remote(player.dynamic_id,
@@ -1372,14 +1376,35 @@ def appoint_1810(data, player):
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
-    if deal_type == 1:
-        pass
     p_list = guild_obj.p_list
-    for p_id in p_ids:
-        for num in range(2, 4):
-            p_list1 = p_list.get(num)
-            if not p_list1 or p_list1.count(p_id) < 1:
-                continue
+    position2_list = p_list.get(2, [])
+    position3_list = p_list.get(3, [])
+    if deal_type == 1:
+        if position2_list and len(position2_list) >= 2:
+            response.res.result = False
+            response.res.result_no = 860
+            return response.SerializeToString()
+        if not position3_list or p_id not in position3_list:
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+        position3_list.remove(p_id)
+        position2_list.append(p_id)
+        guild_obj.p_list = {1: [player.base_info.id],
+                            2: position2_list,
+                            3: position3_list}
+        guild_obj.save_data()
+    else:
+        if not position2_list or p_id not in position2_list:
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+        position2_list.remove(p_id)
+        position3_list.append(p_id)
+        guild_obj.p_list = {1: [player.base_info.id],
+                            2: position2_list,
+                            3: position3_list}
+        guild_obj.save_data()
 
     response.res.result = True
     return response.SerializeToString()
