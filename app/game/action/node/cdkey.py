@@ -7,7 +7,7 @@ from app.proto_file import cdkey_pb2
 
 
 @remoteserviceHandle('gate')
-def get_tomorrow_gift_1122(data, player):
+def get_cdkey_gift_1123(data, player):
     request = cdkey_pb2.CdkeyRequest()
     request.ParseFromString(data)
 
