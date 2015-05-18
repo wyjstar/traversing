@@ -7,10 +7,12 @@ from app.game.component.fight.stage_factory import get_stage_by_stage_type
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.battle.battle_unit import BattleUnit
-from app.battle.battle_process import BattlePVPProcess
+#from app.battle.battle_process import BattlePVPProcess
+from app.battle.server_process import pvp_start, pve_start
+from random import randint
 
 
-def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar):
+def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2):
     """docstring for pvp_process"""
     save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
@@ -18,10 +20,28 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
-                                blue_best_skill, blue_player_level)
-    fight_result = process.process()
-    return fight_result
+    #red_best_skill_id = player.fight_cache_component.red_best_skill_id
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill)
+    #process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
+                                #blue_best_skill, blue_player_level)
+    res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
+                                blue_best_skill, blue_player_level, seed1, seed2)
+
+    logger.debug("pvp_process: %s" % res)
+    #fight_result = process.process()
+    return res
+
+def pve_process_check(player, fight_result, steps):
+    """pve 校验"""
+    red_units, blue_units, drop_num, monster_unpara = player.fight_cache_component.fighting_start()
+
+    seed1 = player.fight_cache_component.seed1
+    seed2 = player.fight_cache_component.seed2
+    red_best_skill_id = player.fight_cache_component.red_best_skill_id
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+    res = pve_start(red_units, blue_units, red_best_skill_id, red_best_skill_level,
+                                monster_unpara, 1, seed1, seed2, steps)
+    return res == fight_result
 
 
 def save_line_up_order(line_up, player, current_unpar):
@@ -159,3 +179,9 @@ def assemble(unit_add, unit):
     unit_add.origin_no = unit.origin_no
     unit_add.is_break = unit.is_break
     unit_add.origin_no = unit.origin_no
+
+def get_seeds():
+    seed1 = randint(1, 100)
+    seed2 = randint(1, 100)
+    return seed1, seed2
+

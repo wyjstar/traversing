@@ -52,6 +52,8 @@ class CharacterBaseInfoComponent(Component):
         self._gen_balance = 0  # 累积赠送
         self._login_time = int(time.time())  # 登录时间
         self._tomorrow_gift = 0
+        self._battle_speed = 1
+        self._plat_id = -1
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -82,6 +84,7 @@ class CharacterBaseInfoComponent(Component):
         self._recharge = character_info.get('recharge_accumulation')
         self._gen_balance = character_info.get('gen_balance', 0)
         self._tomorrow_gift = character_info.get('tomorrow_gift', 0)
+        self._battle_speed = character_info.get('battle_speed', 1)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -114,7 +117,8 @@ class CharacterBaseInfoComponent(Component):
                     first_recharge_ids=self._first_recharge_ids,
                     recharge_accumulation=self._recharge,
                     gen_balance=self._gen_balance,
-                    tomorrow_gift=self._tomorrow_gift)
+                    tomorrow_gift=self._tomorrow_gift,
+                    battle_speed=self._battle_speed)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -142,7 +146,8 @@ class CharacterBaseInfoComponent(Component):
                     first_recharge_ids=self._first_recharge_ids,
                     recharge_accumulation=self._recharge,
                     gen_balance=self._gen_balance,
-                    tomorrow_gift=self._tomorrow_gift)
+                    tomorrow_gift=self._tomorrow_gift,
+                    battle_speed=self._battle_speed)
         return data
 
     def check_time(self):
@@ -474,6 +479,14 @@ class CharacterBaseInfoComponent(Component):
         self._tomorrow_gift = value
 
     @property
+    def battle_speed(self):
+        return self._battle_speed
+
+    @battle_speed.setter
+    def battle_speed(self, value):
+        self._battle_speed = value
+
+    @property
     def closure(self):
         return self._closure
 
@@ -502,3 +515,11 @@ class CharacterBaseInfoComponent(Component):
         """招财进宝次数"""
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.buyGetMoneyTimes
+
+    @property
+    def plat_id(self):
+        return self._plat_id
+
+    @plat_id.setter
+    def plat_id(self, value):
+        self._plat_id = value

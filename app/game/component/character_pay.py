@@ -44,6 +44,13 @@ class CharacterPay(Component):
         if self.REMOTE_DEPLOYED:
             self.get_balance() # 登录时从tx拉取gold
 
+    def refresh_pay_arg(self, value):
+        self._openkey = str(value.get("openkey"))
+        self._pay_token = str(value.get("pay_token"))
+        self._pf = str(value.get("pf"))
+        self._pfkey = str(value.get("pfkey"))
+
+
     def _get_balance_m(self):
         if not self.REMOTE_DEPLOYED:
             return

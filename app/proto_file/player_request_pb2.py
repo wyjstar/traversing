@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_request.proto',
   package='',
-  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\"S\n\x16NewbeeGuideStepRequest\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tcommon_id\x18\x02 \x01(\t\x12\x15\n\rsub_common_id\x18\x03 \x01(\t\"$\n\x11\x43hangeHeadRequest\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05')
+  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\"S\n\x16NewbeeGuideStepRequest\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tcommon_id\x18\x02 \x01(\t\x12\x15\n\rsub_common_id\x18\x03 \x01(\t\"$\n\x11\x43hangeHeadRequest\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05\"\"\n\x11\x43hangeBattleSpeed\x12\r\n\x05speed\x18\x01 \x02(\x05')
 
 
 
@@ -143,10 +143,39 @@ _CHANGEHEADREQUEST = _descriptor.Descriptor(
   serialized_end=223,
 )
 
+
+_CHANGEBATTLESPEED = _descriptor.Descriptor(
+  name='ChangeBattleSpeed',
+  full_name='ChangeBattleSpeed',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='speed', full_name='ChangeBattleSpeed.speed', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=225,
+  serialized_end=259,
+)
+
 DESCRIPTOR.message_types_by_name['PlayerLoginRequest'] = _PLAYERLOGINREQUEST
 DESCRIPTOR.message_types_by_name['CreatePlayerRequest'] = _CREATEPLAYERREQUEST
 DESCRIPTOR.message_types_by_name['NewbeeGuideStepRequest'] = _NEWBEEGUIDESTEPREQUEST
 DESCRIPTOR.message_types_by_name['ChangeHeadRequest'] = _CHANGEHEADREQUEST
+DESCRIPTOR.message_types_by_name['ChangeBattleSpeed'] = _CHANGEBATTLESPEED
 
 class PlayerLoginRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -171,6 +200,12 @@ class ChangeHeadRequest(_message.Message):
   DESCRIPTOR = _CHANGEHEADREQUEST
 
   # @@protoc_insertion_point(class_scope:ChangeHeadRequest)
+
+class ChangeBattleSpeed(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CHANGEBATTLESPEED
+
+  # @@protoc_insertion_point(class_scope:ChangeBattleSpeed)
 
 
 # @@protoc_insertion_point(module_scope)

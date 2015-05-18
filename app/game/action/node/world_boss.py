@@ -289,6 +289,13 @@ def pvb_fight_start_1705(pro_data, player):
     print blue_units
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
                                                    best_skill_id, str_blue_units, player_info, boss_id)
+
+    if result == -1:
+        logger.debug("world boss already gone!")
+        response.res.result = False
+        response.res.result_no = 1706
+        return response.SerializePartialToString()
+
     response.fight_result = result
 
     # 玩家信息更新
@@ -368,6 +375,7 @@ def pvb_get_award_1708(data, player):
         drop_items = bigbag.get_drop_items()
         return_data = gain(player, drop_items, const.WORLD_BOSS_AWARD)
         get_return(player, return_data, response.gain)
+    response.rank_no = remote_gate['world'].get_rank_no_remote(player.base_info.id, "world_boss")
     logger.debug("pvb_get_award_1708:%s" % response)
     return response.SerializePartialToString()
 

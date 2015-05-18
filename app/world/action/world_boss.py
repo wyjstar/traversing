@@ -62,6 +62,8 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     response.open_or_not = boss.open_or_not
     # 剩余血量
     response.hp_left = int(boss.hp)
+    # 最大血量
+    response.hp_max = boss.get_hp()
     # 伤害
     response.demage_hp = int(boss.get_demage_hp(player_id))
     # 名次
@@ -92,6 +94,8 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
     战斗
     """
     boss = get_boss(boss_id)
+    if not boss.open_or_not:
+        return -1, 0
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
     process = BattlePVBProcess(red_units, player_info.get("level"), red_best_skill,  blue_units, boss.debuff_skill_no)
@@ -165,3 +169,10 @@ def get_lucky_heros_remote():
     """
     return cPickle.dumps(world_boss.lucky_heros)
 
+@rootserviceHandle
+def get_rank_no_remote(player_id, boss_id):
+    """
+    触发boss
+    """
+    boss = get_boss(boss_id)
+    return boss.get_rank_no(player_id)

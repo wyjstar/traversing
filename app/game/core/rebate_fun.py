@@ -16,10 +16,13 @@ def notify_mail(player):
     """
     通知可以购买返利卡了
     """
+    plat = 'ios'
+    if player.base_info.plat_id == 1:
+        plat = 'android'
     all_rebates = player.rebate.all_rebates()
     for rid in all_rebates:
-        recharge_item = game_configs.recharge_config.get(rid)
-        if player.rebate.need_mail(rid, game_configs.recharge_config[rid].get('giftDays')):
+        recharge_item = game_configs.recharge_config[plat].get(rid)
+        if player.rebate.need_mail(rid, game_configs.recharge_config[plat][rid].get('giftDays')):
             if recharge_item.get('giftDays') == 30:
                 mail_id = game_configs.base_config.get('moonCardRemindMail')
                 mail = db_pb2.Mail_PB()
@@ -47,12 +50,16 @@ def rebate_info(player):
     获取返利卡状态
     """
     response = rebateInfo()
+    plat = 'ios'
+    if player.base_info.plat_id == 1:
+        plat = 'android'
 
-    for rid in game_configs.recharge_config.keys():
-        if game_configs.recharge_config[rid].get('type') == 2:
-            switch, last, can_draw = player.rebate.rebate_status(rid, game_configs.recharge_config[rid].get('giftDays'))
+    for rid in game_configs.recharge_config[plat].keys():
+        if game_configs.recharge_config[plat][rid].get('type') == 2:
+            switch, last, can_draw = player.rebate.rebate_status(game_configs.recharge_config[plat][rid].id, game_configs.recharge_config[plat][rid].get('giftDays'))
             rebate = response.rebates.add()
-            rebate.rid = rid
+            print 'rebate.rid', type(rebate.rid), game_configs.recharge_config[plat][rid].id
+            rebate.rid = game_configs.recharge_config[plat][rid].id
             rebate.switch = switch
             rebate.last = last
             rebate.draw = can_draw

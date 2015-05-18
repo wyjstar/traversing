@@ -86,9 +86,13 @@ class CharacterRechargeGift(Component):
 
         if gift_type == 8:  # single recharge
             if recharge >= activity.get('parameterA'):
-                return_data = gain(self.owner, activity.get('reward'),
-                                   const.RECHARGE)  # 获取
-                get_return(self.owner, return_data, response.gain)
+                if activity_id not in self._recharge:
+                    self._recharge[activity_id] = {}
+                if len(self._recharge[activity_id]) <= activity.get('repeat') or activity.get('repeat') == -1:
+                    self._recharge[activity_id].update({_date_now: recharge})
+                else:
+                    logger.error('over activity repeat times:%s(%s)',
+                                 self._recharge, activity.get('repeat'))
 
         if gift_type == 9:  # accumulating recharge
             accumulating = 0
@@ -118,8 +122,11 @@ class CharacterRechargeGift(Component):
             for k, v in recharge_data.items():
                 _data = item.data.add()
                 _data.is_receive = v
-                if item.gift_type == 7 or item.gift_type == 10:
+                if item.gift_type in [7, 10]:
                     _data.recharge_time = k
+                if item.gift_type == 8:
+                    _data.recharge_time = k
+                    _data.recharge_accumulation = v
                 elif item.gift_type == 9:
                     _data.recharge_accumulation = k
 
@@ -133,7 +140,12 @@ class CharacterRechargeGift(Component):
                 return
             recharge_data = self._recharge[recharge_item.gift_id]
             for data in recharge_item.data:
-                if data.recharge_time in recharge_data and\
+                if recharge_item.gift_type == 8 and data.recharge_time in recharge_data:
+                    self._get_activity_gift(recharge_item.gift_id, response)
+                    del recharge_data[data.recharge_time]
+                    if not recharge_data:
+                        del self._recharge[recharge_item.gift_id]
+                elif data.recharge_time in recharge_data and\
                         recharge_data[data.recharge_time] == 0:
                     self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_time] = 1
@@ -142,6 +154,7 @@ class CharacterRechargeGift(Component):
                     self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_accumulation] = 1
                 else:
+                    response.res.result = False
                     logger.error('error recharge taken:%s:%s', recharge_item,
                                  self._recharge)
 

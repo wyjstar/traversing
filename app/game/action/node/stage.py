@@ -16,9 +16,10 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pve_process, pve_process_check
 from app.game.action.node._fight_start_logic import pve_assemble_units
 from app.game.action.node._fight_start_logic import pve_assemble_friend
+from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.const import const
 from shared.tlog import tlog_action
 from shared.utils.pyuuid import get_uuid
@@ -147,6 +148,14 @@ def stage_start_903(pro_data, player):
     response.hero_unpar_level = red_best_skill_level
 
     response.drop_num = drop_num
+
+    seed1, seed2 = get_seeds()
+    player.fight_cache_component.seed1 = seed1
+    player.fight_cache_component.seed2 = seed2
+    response.seed1 = seed1
+    response.seed2 = seed2
+
+    red_best_skill_id = player.fight_cache_component.red_best_skill_id
     return response.SerializePartialToString()
 
 
@@ -156,6 +165,16 @@ def fight_settlement_904(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
     result = request.result
+
+    #player.fight_cache_component.red_units
+    if not pve_process_check(player, result, request.steps):
+        logger.error("pve_process_check error!=================")
+        response = stage_response_pb2.StageSettlementResponse()
+        res = response.res
+        res.result = True
+        res.result_no = 9041
+        return response.SerializePartialToString()
+
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
 

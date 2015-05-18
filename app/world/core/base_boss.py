@@ -184,4 +184,4 @@ class BaseBoss(object):
         logger.info("stage info %s id:%s" % (stage_info, self._stage_id))
         monster_group_info = game_configs.monster_group_config.get(stage_info.round1)
         monster_info = game_configs.monster_config.get(monster_group_info.pos5)
-        return monster_info.hp
+        return int(monster_info.hp)

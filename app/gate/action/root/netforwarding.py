@@ -92,11 +92,14 @@ def from_admin_rpc_remote(args):
     #     com = "gm." + args['command'] + "(args)"
     #     res = eval(com)
     # else:
+    print 'from_admin_rpc_remote', args
     if not args.get('uid'):
         return {'success': 0, 'message': 1}
     oldvcharacter = VCharacterManager().get_by_id(int(args.get('uid')))
+    print 'oldvcharacter', oldvcharacter
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id, cPickle.dumps(args))
+        print 'oldvcharacter.node', oldvcharacter.node
         child_node = groot.child(oldvcharacter.node)
         return child_node.callbackChild(*args)
     else:
@@ -124,7 +127,7 @@ def register_push_message_remote(uid, device_token):
                                                      device_token)
     
 @rootserviceHandle
-def set_push_switch_remote(uid, *switchs):
+def set_push_switch_remote(uid, switchs):
     return groot.child('push').set_push_switch_remote(uid, 
                                                      switchs)
     
@@ -141,8 +144,8 @@ def add_push_message_remote(uid, msg_type, message, send_time):
     
 @rootserviceHandle
 def online_offline_remote(uid, on_or_off):
-    return groot.child('push').online_offline_remote(uid, 
-                                                     on_or_off)
+#     return groot.child('push').online_offline_remote(uid,  on_or_off)
+    return True
 
 @rootserviceHandle
 def login_guild_chat_remote(dynamic_id, guild_id):

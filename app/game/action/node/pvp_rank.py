@@ -23,6 +23,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import pvp_process
+from app.game.action.node._fight_start_logic import get_seeds
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume, get_consume_gold_num
 # from app.game.core.item_group_helper import get_return
@@ -200,12 +201,15 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
-    red_units = player.fight_cache_component.red_unit
+    red_units = player.fight_cache_component.get_red_units()
 
+    seed1, seed2 = get_seeds()
+    print("seed1, seed2=========%s %s" % (seed1, seed2))
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"), __skill)
+                               record.get("level"), __skill, seed1, seed2)
 
+    logger.debug("blue_units: %s" % blue_units)
     logger.debug("fight result:%s" % fight_result)
 
     if fight_result:
@@ -283,6 +287,9 @@ def pvp_fight_request_1505(data, player):
     response.red_skill_level = __skill_level
     response.blue_skill = record.get("unpar_skill")
     response.blue_skill_level = record.get("unpar_skill_level")
+    response.seed1 = seed1
+    response.seed2 = seed2
+    logger.debug(response)
 
     return response.SerializeToString()
 

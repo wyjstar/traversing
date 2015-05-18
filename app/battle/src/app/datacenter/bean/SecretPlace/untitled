@@ -1,0 +1,393 @@
+
+-- 查看自己占领和别人占领的矿点信息
+
+local PVSecretPlaceSeizeMineInfo = class("PVSecretPlaceSeizeMineInfo", BaseUIView)
+
+function PVSecretPlaceSeizeMineInfo:ctor(id)
+    self.super.ctor(self, id)
+end
+
+function PVSecretPlaceSeizeMineInfo:onMVCEnter()
+    self:showAttributeView()
+
+    self.UISecretMySeizeMine = {}
+    self.baseRuneSprite = {}
+    self.luckyRuneSprite = {}
+    self.mine = getDataManager():getMineData():getCurrentMine()
+
+    self.detailInfo = getDataManager():getMineData()
+
+    self:initTouchListener()
+
+    self:loadCCBI("secretTerritory/ui_secret_mySeizeMine.ccbi", self.UISecretMySeizeMine)
+
+    self:initView()
+
+    self:initRegisterNetCallBack()
+
+    
+  
+end
+
+function PVSecretPlaceSeizeMineInfo:onExit()
+    cclog("-------onExit----")
+    self:unregisterScriptHandler()
+end
+
+function PVSecretPlaceSeizeMineInfo:initView()
+    self.baseRuneSprite = {}   -- 基础产出 符文
+    self.luckyRuneSprite = {}   -- 幸运产出 符文
+    self.luckyRuneMenuItem = {}   -- 幸运产出 符文
+    
+    for i=1,4 do
+        local _baseName = string.format("baseRuneSprite%d", i)
+        local _baseRuneSprite = self.UISecretMySeizeMine["UISecretMySeizeMine"][_baseName]
+        table.insert(self.baseRuneSprite, _baseRuneSprite)
+
+        local _luckyName = string.format("luckyRuneSprite%d", i)
+        local _luckyRuneSprite = self.UISecretMySeizeMine["UISecretMySeizeMine"][_luckyName]
+        _luckyRuneSprite:setVisible(false)
+        table.insert(self.luckyRuneSprite, _luckyRuneSprite)
+
+        local _luckyItemName = string.format("luckyMenuItem%d", i)
+        local _luckyRuneItem = self.UISecretMySeizeMine["UISecretMySeizeMine"][_luckyItemName]
+        _luckyRuneItem:setVisible(false)
+        table.insert(self.luckyRuneMenuItem, _luckyRuneItem)
+    end
+
+    self.addOutput = self.UISecretMySeizeMine["UISecretMySeizeMine"]["addOutput"]  -- 单位量产
+    self.maxOutput = self.UISecretMySeizeMine["UISecretMySeizeMine"]["maxOutput"]  -- 最大储量
+    self.proTime = self.UISecretMySeizeMine["UISecretMySeizeMine"]["proTime"]  -- 最大储量
+    self.fightNum = self.UISecretMySeizeMine["UISecretMySeizeMine"]["fightNum"]  -- 战力
+
+    self.wushuangName = self.UISecretMySeizeMine["UISecretMySeizeMine"]["wushuangName"]  -- 无双名字
+    self.wushuangIcon = self.UISecretMySeizeMine["UISecretMySeizeMine"]["wushuangIcon"]  -- 无双图标
+    self.wushuangDes = self.UISecretMySeizeMine["UISecretMySeizeMine"]["wushuangDes"]  -- 无双描述
+
+    self.baohuTime = self.UISecretMySeizeMine["UISecretMySeizeMine"]["baohuTime"]  -- 保护剩余时间
+
+    self.robRuneLabel = self.UISecretMySeizeMine["UISecretMySeizeMine"]["robRuneLabel"]  -- 可抢夺多少符文
+
+    self.changeLineupLabel = self.UISecretMySeizeMine["UISecretMySeizeMine"]["changeLineupLabel"]  -- 显示或者隐藏头标题下的文字
+
+    self.otherMineLayer = self.UISecretMySeizeMine["UISecretMySeizeMine"]["otherMineLayer"] -- 其他人占领的layer
+    self.meMineLayer = self.UISecretMySeizeMine["UISecretMySeizeMine"]["meMineLayer"] -- 自己占领的layer
+    self.yeguaiMainLayer = self.UISecretMySeizeMine["UISecretMySeizeMine"]["yeguaiMainLayer"] -- 野怪占领的layer
+
+
+    self.heroSpriteA = self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroSpriteA"] -- 武将头像
+    self.heroSpriteB = self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroSpriteB"] -- 武将头像
+    self.heroSpriteC = self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroSpriteC"] -- 武将头像
+    self.heroSpriteD = self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroSpriteD"] -- 武将头像
+    self.heroSpriteE = self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroSpriteE"] -- 武将头像
+    self.heroSpriteF = self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroSpriteF"] -- 武将头像
+
+
+    self:updateUIInfo()
+end
+
+function PVSecretPlaceSeizeMineInfo:getMineType()
+    --1野怪，2，其他玩家占领，3自己占领
+    if self.mine.type == 2 then
+        return 1
+    else
+        if self.mine.nickname == getDataManager():getCommonData():getUserName() then
+            return 3
+        else
+            return 2
+        end
+    end
+end
+
+-- 更新UI
+function PVSecretPlaceSeizeMineInfo:updateUIInfo()
+    -- 更新基础产出和幸运产出
+    local _nomals = self.detailInfo:getNormals()
+
+    print("-----PVSecretPlaceSeizeMineInfo:updateUIInfo-----")
+    
+    table.print(_nomals)
+    for k,v in pairs(_nomals) do
+        print(k,v.stone_id)
+        local _respng, _quality =  getTemplateManager():getStoneTemplate():getStoneIconByID(v.stone_id)
+        setItemImage(self.baseRuneSprite[k], _respng, _quality)
+    end
+
+    local _luckys = self.detailInfo:getLuckys()
+    for k,v in pairs(_luckys) do
+        local _respng, _quality =  getTemplateManager():getStoneTemplate():getStoneIconByID(v.stone_id)
+        setItemImage(self.luckyRuneSprite[k], _respng, _quality)
+        self.luckyRuneSprite[k]:setVisible(true)
+        self.luckyRuneMenuItem[k]:setVisible(true)
+    end
+
+    --styep = self.mine.type
+    --self.mine.nickname
+    nickname = 'helloc'
+    styep = 1
+    if styep == 2 then
+        self.yeguaiMainLayer:setVisible(true)
+        local strGen = string.format("%d/%s", self.detailInfo:getUnit(self.mine.position), Localize.query("PVSecretPlaceMyMineInfo.1"))
+        self.addOutput:setString(strGen)
+        self.proTime:setString(self.mine.gen_time..Localize.query("PVSecretPlaceMyMineInfo.1"))
+    else
+        if nickname == getDataManager():getCommonData():getUserName() then
+            self.yeguaiMainLayer:setVisible(false)
+            self.meMineLayer:setVisible(true)
+            local strGen = string.format("%d/%s", self.detailInfo:getUnit(self.mine.position), Localize.query("PVSecretPlaceMyMineInfo.1"))
+            self.addOutput:setString(strGen)
+            self.maxOutput:setString(self.detailInfo:getNormalNum(self.mine.position)..'/'..self.detailInfo:getLimit(self.mine.position))
+            self.proTime:setString(self.mine.gen_time..Localize.query("PVSecretPlaceMyMineInfo.1"))
+            print(self.mine.guard_time)
+            local ltime = self.mine.guard_time - getDataManager():getCommonData():getTime()
+            ltime = 1200
+            if ltime > 0 then
+                local str = string.format('%d'..Localize.query("PVSecretPlaceMyMineInfo.1"), ltime/60)
+                self.baohuTime:setString(str)
+            end
+        else
+            self.yeguaiMainLayer:setVisible(false)
+            self.otherMineLayer:setVisible(true)
+        end
+
+    end
+
+-- 更新武将头像
+    local _mineType = self:getMineType()
+    if _mineType == 1 then
+        self:updateMonsterHeadIconInfo()
+    else
+        self:updateHeroHeadIconInfo()
+    end
+end
+
+-- 黄巾军
+function PVSecretPlaceSeizeMineInfo:updateHeroHeadIconInfo()
+    -- 
+    -- local _stage_id = getDataManager():getMineData():getStageID()
+    -- local _monsterGroup = getTemplateManager():getInstanceTemplate():getMonsterGroupByStageID(_stage_id)
+    -- table.print(_monsterGroup)
+
+    -- if _monsterGroup.pos1 > 0 then
+    --     local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos1)
+    --     changeNewIconImage(self.heroSpriteA, _monsterIcon, quality)
+    --     self.heroSpriteA:setScale(0.8)
+    -- end
+    -- if _monsterGroup.pos2 > 0 then
+    --     local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos2)
+    --     changeNewIconImage(self.heroSpriteB, _monsterIcon, quality)
+    --     self.heroSpriteB:setScale(0.8)
+    -- end
+    -- if _monsterGroup.pos3 > 0 then
+    --     local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos3)
+    --     changeNewIconImage(self.heroSpriteC, _monsterIcon, quality)
+    --     self.heroSpriteC:setScale(0.8)
+    -- end
+    -- if _monsterGroup.pos4 > 0 then
+    --     local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos4)
+    --     changeNewIconImage(self.heroSpriteD, _monsterIcon, quality)
+    --     self.heroSpriteD:setScale(0.8)
+    -- end
+    --  if _monsterGroup.pos5 > 0 then
+    --     local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos5)
+    --     changeNewIconImage(self.heroSpriteE, _monsterIcon, quality)
+    --     self.heroSpriteE:setScale(0.8)
+    -- end
+    -- if _monsterGroup.pos6 > 0 then
+    --     local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos6)
+    --     changeNewIconImage(self.heroSpriteF, _monsterIcon, quality)
+    --     self.heroSpriteF:setScale(0.8)
+
+    -- end
+end
+
+-- 黄巾军
+function PVSecretPlaceSeizeMineInfo:updateMonsterHeadIconInfo()
+    
+    self.changeLineupLabel:setVisible(false)
+
+    local _stage_id = getDataManager():getMineData():getStageID()
+    local _monsterGroup = getTemplateManager():getInstanceTemplate():getMonsterGroupByStageID(_stage_id)
+
+    if _monsterGroup.pos1 > 0 then
+        local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos1)
+        changeNewIconImage(self.heroSpriteA, _monsterIcon, quality)
+        self.heroSpriteA:setScale(0.8)
+    end
+    if _monsterGroup.pos2 > 0 then
+        local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos2)
+        changeNewIconImage(self.heroSpriteB, _monsterIcon, quality)
+        self.heroSpriteB:setScale(0.8)
+    end
+    if _monsterGroup.pos3 > 0 then
+        local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos3)
+        changeNewIconImage(self.heroSpriteC, _monsterIcon, quality)
+        self.heroSpriteC:setScale(0.8)
+    end
+    if _monsterGroup.pos4 > 0 then
+        local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos4)
+        changeNewIconImage(self.heroSpriteD, _monsterIcon, quality)
+        self.heroSpriteD:setScale(0.8)
+    end
+     if _monsterGroup.pos5 > 0 then
+        local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos5)
+        changeNewIconImage(self.heroSpriteE, _monsterIcon, quality)
+        self.heroSpriteE:setScale(0.8)
+    end
+    if _monsterGroup.pos6 > 0 then
+        local _monsterIcon, quality = getTemplateManager():getSoldierTemplate():getMonsterIcon(_monsterGroup.pos6)
+        changeNewIconImage(self.heroSpriteF, _monsterIcon, quality)
+        self.heroSpriteF:setScale(0.8)
+
+    end
+end
+
+-- 初始化矿点信息
+function PVSecretPlaceSeizeMineInfo:initData()
+
+    self.mine = getDataManager():getMineData():getCurrentMine()
+
+
+end
+
+function PVSecretPlaceSeizeMineInfo:initRegisterNetCallBack()
+    -- function onReciveMsgCallBack(_id)
+    --     if _id == NET_ID_HERO_REQUEST then -- 获取武将列表
+    --         self:updateUIData(_id)
+    --     elseif _id == HERO_SACRIFICE_REQUEST then -- 献祭
+    --         self:onUpdateSacrificeUI()
+    --     end
+    -- end
+
+    -- self:registerMsg(HERO_SACRIFICE_REQUEST, onReciveMsgCallBack)
+    -- self:registerMsg(NET_ID_HERO_REQUEST, onReciveMsgCallBack)
+end
+
+
+function PVSecretPlaceSeizeMineInfo:initTouchListener()
+    local function onCloseClick()
+        getAudioManager():playEffectButton2()
+        self:onHideView()
+
+    end
+
+    local function zengchanOnClick()
+        cclog("zengchanOnClick")
+        getAudioManager():playEffectButton2()
+    end
+
+    -- 查看自家矿点 收获按钮触发事件
+    local function getOnClick()
+        cclog("getOnClick")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function jichuOne()
+        cclog("jichuOne")
+        getAudioManager():playEffectButton2()
+    end
+    local function jichuTwo()
+        cclog("jichuTwo")
+        getAudioManager():playEffectButton2()
+    end
+    local function jichuThree()
+        cclog("jichuThree")
+        getAudioManager():playEffectButton2()
+    end
+    local function jichuThree()
+        cclog("jichuThree")
+        getAudioManager():playEffectButton2()
+    end
+    local function jichuFour()
+        cclog("jichuFour")
+        getAudioManager():playEffectButton2()
+    end
+    local function luckyOne()
+        cclog("luckyOne")
+        getAudioManager():playEffectButton2()
+    end
+    local function luckyTwo()
+        cclog("luckyTwo")
+        getAudioManager():playEffectButton2()
+    end
+    local function luckyThree()
+        cclog("luckyThree")
+        getAudioManager():playEffectButton2()
+    end
+    local function luckyFour()
+        cclog("luckyFour")
+        getAudioManager():playEffectButton2()
+    end
+
+    -- 查看其他玩家时的攻占按钮触发事件
+    local function gongzhanOnClickA()
+        cclog("gongzhanOnClickA")
+        getAudioManager():playEffectButton2()
+    end
+
+    -- 查看野怪时的攻占按钮触发事件
+    local function gongzhanOnClickB()
+        cclog("gongzhanOnClickB")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function heroIconClickA()
+        cclog("heroIconClickA")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function heroIconClickB()
+        cclog("heroIconClickB")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function heroIconClickC()
+        cclog("heroIconClickC")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function heroIconClickD()
+        cclog("heroIconClickD")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function heroIconClickE()
+        cclog("heroIconClickE")
+        getAudioManager():playEffectButton2()
+    end
+
+    local function heroIconClickF()
+        cclog("heroIconClickF")
+        getAudioManager():playEffectButton2()
+    end
+
+    self.UISecretMySeizeMine["UISecretMySeizeMine"] = {}
+
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["zengchanOnClick"] = zengchanOnClick
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["getOnClick"] = getOnClick
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["onCloseClick"] = onCloseClick
+
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["jichuOne"] = jichuOne
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["jichuTwo"] = jichuTwo
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["jichuThree"] = jichuThree
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["jichuFour"] = jichuFour
+
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["luckyOne"] = luckyOne
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["luckyTwo"] = luckyTwo
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["luckyThree"] = luckyThree
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["luckyFour"] = luckyFour
+
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["gongzhanOnClickA"] = gongzhanOnClickA
+    self.UISecretMySeizeMine["UISecretMySeizeMine"]["gongzhanOnClickB"] = gongzhanOnClickB
+
+
+     self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroIconClickA"] = heroIconClickA
+     self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroIconClickB"] = heroIconClickB
+     self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroIconClickC"] = heroIconClickC
+     self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroIconClickE"] = heroIconClickE
+     self.UISecretMySeizeMine["UISecretMySeizeMine"]["heroIconClickF"] = heroIconClickF
+    
+end
+
+
+return PVSecretPlaceSeizeMineInfo
