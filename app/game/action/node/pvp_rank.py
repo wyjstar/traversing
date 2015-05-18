@@ -153,15 +153,18 @@ def pvp_fight_request_1505(data, player):
     """
     pvp战斗开始
     """
-    player.base_info.check_time()
-
-    if player.base_info.pvp_times > 0:
-        logger.error('not enough pvp times:%s%s', player.base_info.pvp_times,
-                     game_configs.base_config.get('arena_free_times'))
-        return False
     request = pvp_rank_pb2.PvpFightRequest()
     response = pvp_rank_pb2.PvpFightResponse()
     request.ParseFromString(data)
+    player.base_info.check_time()
+
+    if player.base_info.pvp_times <= 0:
+        logger.error('not enough pvp times:%s-%s', player.base_info.pvp_times,
+                     game_configs.base_config.get('arena_free_times'))
+        response.res.result = False
+        response.res.result_no = 836
+        return response.SerializeToString()
+
     line_up = request.lineup
     __skill = request.skill
 
@@ -286,7 +289,7 @@ def pvp_fight_request_1505(data, player):
     response.blue_skill_level = record.get("unpar_skill_level")
     response.seed1 = seed1
     response.seed2 = seed2
-    response.top_rank = player.base_info.pvp_high_rank_award
+    response.top_rank = player.base_info.pvp_high_rank
     logger.debug(response)
 
     return response.SerializeToString()
