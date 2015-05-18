@@ -6,6 +6,7 @@ import time
 from gfirefly.server.logobj import logger
 from app.game.redis_mode import tb_character_info
 from app.game.component.Component import Component
+from shared.db_opear.configs_data import game_configs
 
 
 class CharacterOnlineGift(Component):
@@ -20,10 +21,18 @@ class CharacterOnlineGift(Component):
 
     def init_data(self, character_info):
         data = character_info.get('online_gift')
-        self._online_time = data['online_time']
+        # self._online_time = data['online_time']
+        self._online_time = 0
         self._refresh_time = data.get('refresh_time', time.time())
         self._received_gift_ids = data['received_gift_ids']
         self.check_time()
+        activity_online_gift = game_configs.activity_config.get(4)
+        for gid in self._received_gift_ids:
+            for a in activity_online_gift:
+                if gid == a['id']:
+                    self._online_time = max(self._online_time,
+                                            a['parameterA'])
+
         logger.debug(self.__dict__)
 
     def save_data(self):
