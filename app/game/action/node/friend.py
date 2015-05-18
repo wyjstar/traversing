@@ -171,7 +171,7 @@ def del_black_list_1105(data, player):
 
 def _with_battle_info(response, pid):
     # 添加好友主将的属性
-    column = ['lord_attr_info', 'heads', 'nickname',
+    column = ['lord_attr_info', 'heads', 'nickname', 'vip_level'
               'attackPoint', 'upgrade_time']
     friend_data = tb_character_info.getObj(pid).hmget(column)
     if friend_data.get('lord_attr_info').get('info'):
@@ -194,6 +194,7 @@ def _with_battle_info(response, pid):
     friend_heads.ParseFromString(friend_data['heads'])
     response.hero_no = friend_heads.now_head
     response.last_time = friend_data['upgrade_time']
+    response.vip_level = friend_data['vip_level']
 
     response.nickname = friend_data['nickname']
     if friend_data['attackPoint'] is not None:
