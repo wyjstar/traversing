@@ -34,11 +34,11 @@ def forwarding_remote(key, dynamic_id, data):
 
 
 @rootserviceHandle
-def online_remote(dynamic_id):
+def online_remote(character_id):
     """
     """
-    oldvcharacter = VCharacterManager().get_by_id(dynamic_id)
-    if not oldvcharacter:
+    oldvcharacter = VCharacterManager().get_by_id(character_id)
+    if oldvcharacter is None:
         return 0
     return 1
 

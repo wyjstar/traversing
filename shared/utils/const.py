@@ -178,7 +178,6 @@ const.BUY_COIN = 1406  # 招财进宝
 const.ReceivePraiseGift = 33
 const.PraiseGift = 34
 const.ReceiveBlessGift = 35
-const.StageChestGift = 36  # 关卡首次宝箱
 
 # 等级流水
 # const.STAGE = 27  # 关卡

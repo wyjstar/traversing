@@ -16,7 +16,8 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process, pve_process_check
+from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pve_process_check
 from app.game.action.node._fight_start_logic import pve_assemble_units
 from app.game.action.node._fight_start_logic import pve_assemble_friend
 from app.game.action.node._fight_start_logic import get_seeds
@@ -27,11 +28,10 @@ from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
 from shared.db_opear.configs_data.data_helper import parse
-from app.game.core.item_group_helper import gain, get_return
 import copy
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
@@ -49,7 +49,6 @@ def get_stages_901(pro_data, player):
         add = response.stage.add()
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
-        stage_obj.state = 1
         add.state = stage_obj.state
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
@@ -57,8 +56,6 @@ def get_stages_901(pro_data, player):
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
     response.plot_chapter = player.stage_component.plot_chapter
-    player.stage_component.save_data()
-    print 'AAAAAAAAAAA', response
     return response.SerializePartialToString()
 
 
@@ -639,39 +636,3 @@ def get_gift(player, chapter_obj, chapter_id, response):
     chapter_obj.already_gift.append(gift_id)
 
     return {'res': True, 'gift_id': gift_id}
-
-
-@remoteserviceHandle('gate')
-def open_chest_1811(pro_data, player):
-    request = stage_request_pb2.OpenStageChestRequest()
-    request.ParseFromString(pro_data)
-    stage_id = request.stage_id
-    response = stage_response_pb2.OpenStageChestResponse()
-
-    stage_config = game_configs.stage_config.get('stages').get(stage_id)
-    if not stage_config:
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializePartialToString()
-
-    stage_obj = player.stage_component.get_stage(stage_id)
-
-    if stage_obj.chest_state:
-        response.res.result = False
-        response.res.result_no = 863
-        return response.SerializePartialToString()
-
-    if stage_obj.state != 1:
-        response.res.result = False
-        response.res.result_no = 864
-        return response.SerializePartialToString()
-
-    return_data = gain(player, stage_config.stageBox, const.StageChestGift)
-    get_return(player, return_data, response.drops)
-
-    stage_obj.chest_state = 1
-    player.stage_component.save_data()
-
-    response.res.result = True
-    # logger.debug(response)
-    return response.SerializePartialToString()

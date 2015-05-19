@@ -4,7 +4,7 @@ created by server on 15-2-11下午3:49.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
-from app.proto_file.tencent_pb2 import GetGoldResponse
+from app.proto_file.common_pb2 import GetGoldResponse
 from app.proto_file.game_pb2 import GameLoginRequest
 
 @remoteserviceHandle('gate')
@@ -22,8 +22,6 @@ def get_gold_2001(data, player):
     response = GetGoldResponse()
     player.pay.recharge()
     response.res.result = True
-    response.gold = player.finance.gold
-    response.vip_level = player.base_info.vip_level
-    response.recharge = player.base_info.recharge
+    player.recharge.get_recharge_response(response)
     logger.debug("get_gold_2001============%s" % response)
     return response.SerializeToString()

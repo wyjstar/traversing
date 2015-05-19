@@ -23,7 +23,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.data_helper import parse
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 MASTER_WEBPORT = GlobalObject().allconfig['master']['webport']
 
 

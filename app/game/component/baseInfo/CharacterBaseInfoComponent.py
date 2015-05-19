@@ -159,6 +159,13 @@ class CharacterBaseInfoComponent(Component):
             self._pvp_refresh_time = time.time()
             self.save_data()
 
+    def is_firstday_from_register(self):
+        tm = time.localtime(self._register_time)
+        local_tm = time.localtime()
+        if local_tm.tm_year == tm.tm_year and local_tm.tm_yday == tm.tm_yday:
+            return True
+        return False
+
     def addexp(self, exp, reason):
         self._exp += exp
         before_level = self._level
@@ -458,7 +465,7 @@ class CharacterBaseInfoComponent(Component):
         """
         for i in range(16):
             vip_content = game_configs.vip_config.get(i)
-            if gold > vip_content.rechargeAmount:
+            if gold >= vip_content.rechargeAmount:
                 self.vip_level = i
                 self.save_data()
 
