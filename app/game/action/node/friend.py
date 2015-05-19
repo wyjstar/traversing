@@ -29,7 +29,7 @@ from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')

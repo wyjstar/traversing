@@ -16,7 +16,8 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process, pve_process_check
+from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pve_process_check
 from app.game.action.node._fight_start_logic import pve_assemble_units
 from app.game.action.node._fight_start_logic import pve_assemble_friend
 from app.game.action.node._fight_start_logic import get_seeds
@@ -27,11 +28,10 @@ from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
 from shared.db_opear.configs_data.data_helper import parse
-from app.game.core.item_group_helper import gain, get_return
 import copy
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')

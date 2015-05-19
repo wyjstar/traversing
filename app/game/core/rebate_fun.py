@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 '''
 Created on 2015-4-28
 
@@ -10,7 +10,8 @@ from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import db_pb2
 import time
 from app.game.action.root import netforwarding
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
+
 
 def notify_mail(player):
     """

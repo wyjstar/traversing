@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 '''
 Created on 2015-5-2
 
@@ -9,8 +9,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import push_pb2
 
 
-
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
@@ -25,8 +24,9 @@ def register_push_2222(data, player):
     print request
     remote_gate.register_push_message_remote(player.base_info.id, request.deviceToken)
     response.res.result = True
-    
+
     return response.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def set_push_switch_2223(data, player):
@@ -37,9 +37,10 @@ def set_push_switch_2223(data, player):
     request = push_pb2.msgSwitchReq()
     request.ParseFromString(data)
     print 'request', request
-    
+
     remote_gate.set_push_switch_remote(player.base_info.id, data)
     return request.SerializePartialToString()
+
 
 @remoteserviceHandle('gate')
 def get_push_switch_2224(data, player):

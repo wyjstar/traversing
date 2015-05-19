@@ -26,7 +26,7 @@ from shared.tlog import tlog_action
 
 
 xs = 100000
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
