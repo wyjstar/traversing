@@ -176,7 +176,7 @@ def fight_settlement_904(pro_data, player):
 
     # logger.debug("steps:%s", request.steps)
     #player.fight_cache_component.red_units
-    stage = player.stage_component.get(stage_id)
+    stage = player.stage_component.get_stage(stage_id)
 
     stage_config = player.fight_cache_component.__get_stage_config()
 
