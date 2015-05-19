@@ -213,18 +213,27 @@ def exit_guild_803(data, player):
         response.res.result = False
         response.res.result_no = 846
         # response.res.message = "您还未加入公会"
+        print 'BBBBBBBBBBBBBBBB5', response
         return response.SerializeToString()
 
     if not data1:
         response.res.result = False
         response.res.result_no = 844
         # response.res.message = "公会ID错误"
+        print 'BBBBBBBBBBBBBBBB4', response
         return response.SerializeToString()
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    if guild_obj.get_p_num() == 1:
+    position = player.guild.position
+    position_p = p_list.get(position)
+    if position_p.count(p_id) != 1:
+        response.res.result = False
+        response.res.result_no = 850
+        # response.res.message = "您不在此公会"
+        return response.SerializeToString()
 
+    if guild_obj.get_p_num() == 1:
         # 解散公会
         # 删除公会名字
         guild_name_data = tb_guild_name.getObj('names')
@@ -233,38 +242,39 @@ def exit_guild_803(data, player):
 
         # 解散公会，删除公会聊天室
         remote_gate.del_guild_room_remote(player.guild.g_id)
+        # 删除排行
+        remote_gate.remove_rank_remote('GuildLevel', player.guild.g_id)
+        # 删除军团
+        guild_obj.delete_guild()
 
-    position = player.guild.position
-    p_list = guild_obj.p_list
-    position_p = p_list.get(position)
-
-    if position_p.count(p_id) == 1:
+    else:
         if position == 1:
             response.res.result = False
             response.res.result_no = 857
             # response.res.message = "军团人数大于1，团长不可以退出军团"
+            print 'BBBBBBBBBBBBBBBB3', response
             return response.SerializeToString()
+        else:  # position != 1:
+            p_list = guild_obj.p_list
+            guild_obj.exit_guild(p_id, position)
+            guild_obj.save_data()
+            # 退出公会聊天
+            remote_gate.logout_guild_chat_remote(dynamicid)
 
-        player.guild.g_id = 0
-        player.guild.contribution = 0
-        player.guild.all_contribution = 0
-        player.guild.today_contribution = 0
-        player.guild.position = 1
-        player.guild.praise = [0, 1]
-        player.guild.bless = [0, [], 0, 1]
-        player.guild.g_id = 0
-        player.guild.exit_time = int(time.time())
-        player.guild.save_data()
-        guild_obj.exit_guild(p_id, position)
-        guild_obj.save_data()
-        # 退出公会聊天
-        remote_gate.logout_guild_chat_remote(dynamicid)
-        response.res.result = True
-        tlog_action.log('ExitGuild', player, m_g_id)
-        return response.SerializeToString()
-    response.res.result = False
-    response.res.result_no = 850
-    # response.res.message = "您不在此公会"
+    player.guild.g_id = 0
+    player.guild.contribution = 0
+    player.guild.all_contribution = 0
+    player.guild.today_contribution = 0
+    player.guild.position = 3
+    player.guild.praise = [0, 1]
+    player.guild.bless = [0, [], 0, 1]
+    player.guild.g_id = 0
+    player.guild.exit_time = int(time.time())
+    player.guild.save_data()
+
+    response.res.result = True
+    tlog_action.log('ExitGuild', player, m_g_id)
+    print 'BBBBBBBBBBBBBBBB1', response
     return response.SerializeToString()
 
 
@@ -308,6 +318,9 @@ def modify_user_guild_info_remote(data, player):
         else:
             return 1
     elif data['cmd'] == 'promotion':
+        player.guild.position = data['position']
+        player.guild.save_data()
+    elif data['cmd'] == 'appoint':
         player.guild.position = data['position']
         player.guild.save_data()
     return True
@@ -565,12 +578,12 @@ def kick_807(data, player):
             if not p_list1 or p_list1.count(p_id) < 1:
                 continue
 
-            be_kick_obj = tb_character_info.getObj(p_id).hget('guild_id')
+            be_kick_obj = tb_character_info.getObj(p_id)
             if be_kick_obj.hget('guild_id') == 0:
                 response.res.result = False
                 response.res.result_no = 800
                 return response.SerializeToString()
-            if player.guild.positon == 2 and num != 3:
+            if player.guild.position == 2 and num != 3:
                 response.res.result = False
                 response.res.result_no = 849
                 return response.SerializeToString()
@@ -703,61 +716,125 @@ def bless_809(data, player):
 @remoteserviceHandle('gate')
 def get_guild_rank_810(data, player):
     """获取公会排行 """
+    print 'AASDASDASDADS1'
     args = GetGuildRankRequest()
     args.ParseFromString(data)
     response = GetGuildRankResponse()
     rank_type = args.rank_type
     min_rank = args.min_rank
     max_rank = args.max_rank
+    print min_rank, max_rank, player.guild.apply_guilds, 'AAAAAAAAAAAAABBBBBBBBBDFSDFSDFS'
 
     if rank_type == 1:
         rank_num = min_rank
         # 得到公会排行
         rank_info = remote_gate.get_rank_remote(
             'GuildLevel', min_rank, max_rank)
+        print rank_info, 'ASDASDASDASDASD'
         for (g_id, _rank) in rank_info:
             deal_rank_response_info(player, response, g_id, rank_num)
             rank_num += 1
-    elif rank_type == 2:
-        deal_recommend_rank_response(player, response)
+        response.res.result = True
+    elif rank_type == 2:  # 推荐列表
+        if player.guild.g_id != 0:
+            response.res.result = False
+            response.res.result_no = 843
+            return
+        if min_rank == 1:
+            player.guild.guild_rank_flag = 0
+        if min_rank <= len(player.guild.apply_guilds):
+            print 'affsdfs'
+            if max_rank <= len(player.guild.apply_guilds):
+                rank_num = min_rank
+                for x in range(min_rank-1, max_rank):
+                    g_id = player.guild.apply_guilds[x]
+                    deal_rank_response_info(player, response, g_id, rank_num)
+                    rank_num += 1
+            else:  # len(player.guild.apply_guilds) < max_rank:
+                rank_num = min_rank
+                for x in range(min_rank-1, len(player.guild.apply_guilds)):
+                    g_id = player.guild.apply_guilds[x]
+                    deal_rank_response_info(player, response, g_id, rank_num)
+                    rank_num += 1
 
+                rank_info = remote_gate.get_rank_remote(
+                    'GuildLevel', 1, 99999)
+                guild_rank_flag = 0
+                for (g_id, _rank) in rank_info:
+                    guild_rank_flag += 1
+                    if g_id in player.guild.apply_guilds:
+                        continue
+                    if not deal_rank_response_info(player, response, g_id,
+                                                   rank_num,
+                                                   rank_type=rank_type):
+                        continue
+
+                    rank_num += 1
+                    if rank_num > max_rank:
+                        break
+                player.guild.guild_rank_flag = guild_rank_flag
+        else:  # min_rank > 申请个数
+            # 需要上次查到哪的 redis 排行
+            rank_num = min_rank
+            guild_rank_flag = player.guild.guild_rank_flag
+            rank_info = remote_gate.get_rank_remote(
+                'GuildLevel', 1, 99999)
+            if guild_rank_flag >= len(rank_info):
+                response.res.result = True
+                return response.SerializeToString()
+            for x in range(player.guild.guild_rank_flag, len(rank_info)):
+                guild_rank_flag = x
+                (g_id, _rank) = rank_info[x]
+                if g_id in player.guild.apply_guilds:
+                    continue
+                if not deal_rank_response_info(player, response, g_id,
+                                               rank_num,
+                                               rank_type=rank_type):
+                    continue
+
+                rank_num += 1
+                if rank_num > max_rank:
+                    break
+            player.guild.guild_rank_flag = guild_rank_flag
+
+    player.guild.save_data()
     response.res.result = True
     print response, 'EEEEEEEEEEEEEEEEEEEEE'
     return response.SerializeToString()
 
 
-def deal_recommend_rank_response(player, response):
-    pass
-
-
-def deal_rank_response_info(player, response, g_id, rank_num):
+def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     data1 = tb_guild_info.getObj(g_id).hgetall()
-    if data1:
-        guild_obj = Guild()
-        guild_obj.init_data(data1)
-        guild_rank = response.guild_rank.add()
-        guild_rank.g_id = guild_obj.g_id
-        guild_rank.rank = rank_num
-        guild_rank.name = guild_obj.name
-        guild_rank.level = guild_obj.level
-        guild_rank.icon_id = guild_obj.icon_id
+    # if data1:
+    guild_obj = Guild()
+    guild_obj.init_data(data1)
+    if rank_type == 2 and guild_obj.get_p_num() >= \
+            game_configs.guild_config.get(guild_obj.level).p_max:
+        return False
+    guild_rank = response.guild_rank.add()
+    guild_rank.g_id = guild_obj.g_id
+    guild_rank.rank = rank_num
+    guild_rank.name = guild_obj.name
+    guild_rank.level = guild_obj.level
+    guild_rank.icon_id = guild_obj.icon_id
 
-        president_id = guild_obj.p_list.get(1)[0]
-        char_obj = tb_character_info.getObj(president_id)
-        if char_obj.exists():
-            guild_rank.president = char_obj.hget('nickname')
-        else:
-            guild_rank.president = u'错误'
-            logger.error('guild rank, president player not fond,id:%s',
-                         president_id)
+    print 'xxxxxxxxxxxxxxxxx', guild_obj.p_list
+    president_id = guild_obj.p_list.get(1)[0]
+    char_obj = tb_character_info.getObj(president_id)
+    if char_obj.exists():
+        guild_rank.president = char_obj.hget('nickname')
+    else:
+        guild_rank.president = u'错误'
+        logger.error('guild rank, president player not fond,id:%s',
+                     president_id)
 
-        guild_rank.p_num = guild_obj.p_num
-        guild_rank.call = guild_obj.call
-        # guild_rank.record = guild_obj.record
-        if player.base_info.id in guild_obj.apply:
-            guild_rank.be_apply = 1
-        else:
-            guild_rank.be_apply = 0
+    guild_rank.p_num = guild_obj.p_num
+    guild_rank.call = guild_obj.call
+    if player.base_info.id in guild_obj.apply:
+        guild_rank.be_apply = 1
+    else:
+        guild_rank.be_apply = 0
+    return True
 
 
 @remoteserviceHandle('gate')
@@ -789,6 +866,7 @@ def get_role_list_811(data, player):
         return response.SerializeToString()
 
     for p_list in guild_p_list.values():
+        print 'AAAAAAAAAAAAAABBBBBBBCCCCCCCC', guild_p_list
         for role_id in p_list:
             character_info = tb_character_info.getObj(role_id).hgetall()
             if not character_info:
@@ -825,6 +903,7 @@ def get_role_list_811(data, player):
             role_info.contribution = today_contribution
 
     response.res.result = True
+    print 'AAACCCCCDFDFD', response
     return response.SerializeToString()
 
 
@@ -1365,11 +1444,13 @@ def appoint_1810(data, player):
         response.res.result = False
         response.res.result_no = 800
         # response.message = "公会ID错误"
+        print 'AAAAAABBBBBBBB5', response
         return response.SerializeToString()
 
     if player.guild.position != 1:
         response.res.result = False
         response.res.result_no = 849
+        print 'AAAAAABBBBBBBB4', response
         return response.SerializeToString()
 
     guild_obj = Guild()
@@ -1380,31 +1461,62 @@ def appoint_1810(data, player):
     position2_list = p_list.get(2, [])
     position3_list = p_list.get(3, [])
     if deal_type == 1:
+        now_positon = 2
         if position2_list and len(position2_list) >= 2:
             response.res.result = False
             response.res.result_no = 860
+            print 'AAAAAABBBBBBBB3', response
             return response.SerializeToString()
         if not position3_list or p_id not in position3_list:
             response.res.result = False
             response.res.result_no = 800
+            print 'AAAAAABBBBBBBB2', response, position3_list, p_id, p_list
             return response.SerializeToString()
         position3_list.remove(p_id)
         position2_list.append(p_id)
         guild_obj.p_list = {1: [player.base_info.id],
                             2: position2_list,
                             3: position3_list}
-        guild_obj.save_data()
     else:
+        now_positon = 3
         if not position2_list or p_id not in position2_list:
             response.res.result = False
             response.res.result_no = 800
+            print 'AAAAAABBBBBBBB1', response
             return response.SerializeToString()
         position2_list.remove(p_id)
         position3_list.append(p_id)
         guild_obj.p_list = {1: [player.base_info.id],
                             2: position2_list,
                             3: position3_list}
-        guild_obj.save_data()
 
+    guild_id = tb_character_info.getObj(p_id).hget('guild_id')
+    if guild_id != player.guild.g_id:
+        response.res.result = False
+        response.res.result_no = 800
+        print 'AAAAAABBBBBBBB10', response
+        return response.SerializeToString()
+    # 加入公会聊天室
+    invitee_player = PlayersManager().get_player_by_id(p_id)
+    if invitee_player:  # 在线
+        remote_gate.login_guild_chat_remote(invitee_player.dynamic_id,
+                                            invitee_player.guild.g_id)
+        invitee_player.guild.g_id = player.guild.g_id
+        invitee_player.guild.position = now_positon
+        invitee_player.guild.save_data()
+    else:
+        data = {'guild_id': player.guild.g_id,
+                'position': now_positon}
+        is_online = remote_gate.is_online_remote(
+            'modify_user_guild_info_remote',
+            p_id,
+            {'cmd': 'appoint', "positon": now_positon})
+
+        if is_online == "notonline":
+            p_guild_data = tb_character_info.getObj(p_id)
+            p_guild_data.hmset(data)
+
+    guild_obj.save_data()
     response.res.result = True
+    print 'AAAAAABBBBBBBB', response
     return response.SerializeToString()
