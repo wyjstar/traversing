@@ -43,22 +43,24 @@ def create_guild_801(data, player):
 
     if game_configs.base_config.get('create_level') > player.base_info.level:
         response.res.result = False
-        response.res.message = "等级不够"
+        # response.res.message = "等级不够"
+        response.res.result_no = 811
         return response.SerializeToString()
 
     if game_configs.base_config.get('create_money') > player.finance.gold:
         response.res.result = False
-        response.res.message = "元宝不足"
+        response.res.result_no = 102
         return response.SerializeToString()
 
     if g_id != 0:
         response.res.result = False
-        response.res.message = "您已加入公会"
+        response.res.result_no = 843
+        # response.res.message = "您已加入公会"
         return response.SerializeToString()
 
-    if not g_name:
+    if not g_name or g_name.isdigit():
         response.res.result = False
-        response.res.message = "公会名不能为空"
+        response.res.result_no = 840  # 军团名不合法
         return response.SerializeToString()
 
     match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]',
@@ -168,9 +170,16 @@ def join_guild_802(data, player):
     p_list = guild_obj.p_list
     captain_id = p_list.get(1)[0]
 
-    if len(guild_obj.apply) > 50:
+    if g_id in player.guild.apply_guilds:
+        # 已经申请过此军团
         response.res.result = False
-        # response.res.message = "公会ID错误"
+        response.res.result_no = 861
+        # 861: 已经申请过此军团
+        return response.SerializeToString()
+
+    if len(guild_obj.apply) > game_configs.base_config.get('guildApplyMaxNum'):
+        response.res.result = False
+        # response.res.message = "军团申请人数已满"
         response.res.result_no = 859
         return response.SerializeToString()
 
@@ -192,9 +201,10 @@ def join_guild_802(data, player):
                 captain_id, {'cmd': 'join_guild'})
 
         player.guild.apply_guilds.append(g_id)
-        # guild_obj.join_guild(p_id)
-        guild_obj.apply.append(p_id)
+        guild_obj.join_guild(p_id)
+        # guild_obj.apply.append(p_id)
         guild_obj.save_data()
+        player.guild.save_data()
 
     response.res.result = True
     return response.SerializeToString()
@@ -718,7 +728,8 @@ def get_guild_rank_810(data, player):
         # 得到公会排行
         rank_info = remote_gate.get_rank_remote(
             'GuildLevel', min_rank, max_rank)
-        for (g_id, _rank) in rank_info:
+        for (_g_id, _rank) in rank_info:
+            g_id = int(_g_id)
             deal_rank_response_info(player, response, g_id, rank_num)
             rank_num += 1
         response.res.result = True
@@ -746,7 +757,8 @@ def get_guild_rank_810(data, player):
                 rank_info = remote_gate.get_rank_remote(
                     'GuildLevel', 1, 99999)
                 guild_rank_flag = 0
-                for (g_id, _rank) in rank_info:
+                for (_g_id, _rank) in rank_info:
+                    g_id = int(_g_id)
                     guild_rank_flag += 1
                     if g_id in player.guild.apply_guilds:
                         continue
@@ -770,7 +782,8 @@ def get_guild_rank_810(data, player):
                 return response.SerializeToString()
             for x in range(player.guild.guild_rank_flag, len(rank_info)):
                 guild_rank_flag = x
-                (g_id, _rank) = rank_info[x]
+                (_g_id, _rank) = rank_info[x]
+                g_id = int(_g_id)
                 if g_id in player.guild.apply_guilds:
                     continue
                 if not deal_rank_response_info(player, response, g_id,

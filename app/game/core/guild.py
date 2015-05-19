@@ -82,8 +82,8 @@ class Guild(object):
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
             self._apply.remove(p_id)
-        if len(self._apply) >= 50:
-            self._apply.pop(0)
+        # if len(self._apply) >= 50:
+        #     self._apply.pop(0)
         self._apply.append(p_id)
 
     def exit_guild(self, p_id, position):
