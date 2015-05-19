@@ -197,6 +197,10 @@ def _with_battle_info(response, friend):
     response.vip_level = friend_data['vip_level']
     response.level = friend_data['level']
 
+    is_online = remote_gate.online_remote(friend_data['id'])
+    if is_online:
+        response.last_time = 0
+
     response.nickname = friend_data['nickname']
     if friend_data['attackPoint'] is not None:
         response.power = int(friend_data['attackPoint'])
