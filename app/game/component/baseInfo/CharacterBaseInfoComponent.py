@@ -458,7 +458,7 @@ class CharacterBaseInfoComponent(Component):
         """
         for i in range(16):
             vip_content = game_configs.vip_config.get(i)
-            if gold > vip_content.rechargeAmount:
+            if gold >= vip_content.rechargeAmount:
                 self.vip_level = i
                 self.save_data()
 
