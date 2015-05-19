@@ -4,7 +4,6 @@ created by server on 14-8-14下午3:16.
 """
 from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
 from shared.db_opear.configs_data import game_configs
-from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.globalobject import GlobalObject
@@ -18,7 +17,7 @@ from shared.utils.const import const
 import time
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')

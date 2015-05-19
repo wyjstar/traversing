@@ -10,7 +10,9 @@ from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
-remote_gate = GlobalObject().remote['gate']
+
+remote_gate = GlobalObject().remote.get('gate')
+
 
 class CharacterPay(Component):
 

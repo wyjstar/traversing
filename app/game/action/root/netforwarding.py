@@ -3,7 +3,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.game.core.PlayersManager import PlayersManager
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 # def send_mail(mail):
