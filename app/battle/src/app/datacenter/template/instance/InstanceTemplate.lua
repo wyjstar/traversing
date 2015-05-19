@@ -331,6 +331,22 @@ function InstanceTemplate:getFBList()
 	return _list
 end
 
+function InstanceTemplate:getNextFbStage(stageId)
+	local _list = self:getFBList()
+	local index = 0
+	for i = 1,#_list do
+		if _list[i].id == stageId then
+			index = i
+			break
+		end
+	end
+
+	if index > 0 and index < #_list then
+		return _list[index+1].id
+	end
+	return 0
+end
+
 --------------------------------------------
 --活动关卡
 

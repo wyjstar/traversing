@@ -15,20 +15,29 @@ end
 
 -- 良将 抽取要价
 function ShopTemplate:getHeroUseMoney()
-	return shop_config[10001].consume["1"][1]
+	return shop_config[10001].alternativeConsume["1"][1]
 end
 -- 良将， 抽取10个要价
 function ShopTemplate:getTenHeroUseMoney( ... )
-	return shop_config[10002].consume["1"][1]
+	return shop_config[10002].alternativeConsume["1"][1]
 end
 -- 神将 抽取要价
 function ShopTemplate:getGodHeroUseMoney()
-	return shop_config[50001].consume["2"][1]
+	return shop_config[50001].alternativeConsume["2"][1]
 end
 -- 神将， 抽取10个要价
 function ShopTemplate:getTenGodHeroUseMoney()
 	return shop_config[50002].consume["2"][1]
 end
+--良将 消耗的道具id
+function ShopTemplate:getHeroUseItemId()
+	return shop_config[10001].consume["105"][3]
+end
+--神将 消耗的道具id
+function ShopTemplate:getGodHeroUseItemId()
+	return shop_config[50001].consume["105"][3]
+end
+
 -- 良装 抽取要价
 function ShopTemplate:getEquipUseMoney()
 	return shop_config[20001].consume["1"][1]
@@ -242,7 +251,7 @@ end
  function ShopTemplate:getRechargeListByPlatform(platform)
  	local rechargeList = {}
  	for k,v in pairs(recharge_config) do
- 		if v.flatform == platform then
+ 		if v.platform == platform then
  			table.insert(rechargeList,v)
  		end
  	end
@@ -253,12 +262,19 @@ end
 
  	return rechargeList
  end
-
+function ShopTemplate:getRechargeListByid(id)
+ 	for k,v in pairs(recharge_config) do
+ 		if v.id == id then
+ 			return v
+ 		end
+ 	end
+ 	return nil
+ end
  --获取预览良将id列表
  function ShopTemplate:getPreviewNormalHeroId()
  	local heroes = {}
  	for k,v in pairs(small_bag_config) do
- 		if v["dropId"] == 1000001 then
+ 		if v["dropId"] == 100011 then
  			table.insert(heroes,v["detailID"])
  		end
  	end
@@ -269,7 +285,7 @@ end
  function ShopTemplate:getPreviewEpicHeroId()
  	local heroes = {}
  	for k,v in pairs(small_bag_config) do
- 		if v["dropId"] == 1000004 then
+ 		if v["dropId"] == 200011 then
  			table.insert(heroes,v["detailID"])
  		end
  	end

@@ -8,14 +8,14 @@ local FMUnParaSkill = class("FMUnParaSkill", FMUnParaSkill)
 function FMUnParaSkill:ctor(unpara_info, base_info, level, process)
     print(level)
     self.unpara_info = unpara_info
-    if not unpara_info then
-        return
-    end
     self.mp = base_info[1]
     self.mp_step = base_info[2]
     self.mp_max1 = base_info[3]
     self.mp_max2 = base_info[4]
     self.mp_max3 = base_info[5]
+    if not unpara_info then
+        return
+    end
     self.level = level
     self.mp_max = base_info[level+2]
     self.ready= false
@@ -94,6 +94,7 @@ end
 
 function FMUnParaSkill:clear_mp()
     --释放技能后，减少怒气
+    print("unpara clear_mp", self.mp, self.mp_max1)
     if self.mp == self.mp_max3 then
         self.mp = 0
     elseif self.mp >= self.mp_max2 then
@@ -101,6 +102,7 @@ function FMUnParaSkill:clear_mp()
     elseif self.mp >= self.mp_max1 then
         self.mp = self.mp - self.mp_max1
     end
+    print("unpara clear_mp", self.mp, self.mp_max1)
 end
 
 function FMUnParaSkill:add_mp()

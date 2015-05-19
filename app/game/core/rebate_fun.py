@@ -71,17 +71,17 @@ def rebate_call(player, recharge_item):
     """
     rid = recharge_item.get('id')
     days = recharge_item.get('giftDays')
-    switch, _ = player.rebate.rebate_status(rid, days)
+    switch, _, _ = player.rebate.rebate_status(rid, days)
     if switch:
         rebate = player.rebate.rebate_info(rid)
         rebate.new_rebate(days)
         player.rebate.set_rebate(rid, rebate)
         player.rebate.save_data()
         
-        notify = rebate_info(player)
-        remote_gate.push_object_remote(5432,
-                                           notify,
-                                           [player.dynamic_id])
+#         notify = rebate_info(player)
+#         remote_gate.push_object_remote(5432,
+#                                            notify.SerializePartialToString(),
+#                                            [player.dynamic_id])
         
         mail_id = recharge_item.get('mailId')
         mail = db_pb2.Mail_PB()

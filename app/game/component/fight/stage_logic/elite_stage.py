@@ -40,6 +40,6 @@ class EliteStageLogic(base_stage.BaseStageLogic):
                 player.stage_component.elite_stage_info[0] += conf.timesExpend
             else:
                 player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
-        lively_event = CountEvent.create_event(EventType.STAGE_2, 1, ifadd=True)
+            lively_event = CountEvent.create_event(EventType.STAGE_2, 1, ifadd=True)
         stage_util.settle(player, result, response, lively_event, conf)
         tlog_action.log('RoundFlow', player, stage_id, 2, 0, result)

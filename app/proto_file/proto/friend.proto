@@ -100,5 +100,5 @@ message RecommendReq
 //请求推荐好友返回
 message RecommendRes
 {
-	repeated FindFriendResponse rfriend = 1;
+	repeated CharacterInfo rfriend = 1;
 }

@@ -35,7 +35,7 @@ function FightProcess:ctor(send_message)
     -- 玩家等级
     self.playerLevel=30
     self.step_id = 0  -- 自增
-    self.battleStep = {} -- 同步数据
+    self.steps = {} -- 同步数据
     self.back_skill_buff = nil -- 保存反击buff
     self.current_skill_type = TYPE_NORMAL  -- 当前技能类型
 end
@@ -66,15 +66,15 @@ function FightProcess:init_round()
     self.current_skill_type = TYPE_NORMAL
     self.back_skill_buff = nil
     self.step_id = 0
-    self.battleStep = {}
+    self.steps = {}
     self.playerStep = 30
 end
 
 --执行开场技能
-function FightProcess:perform_open_skill(attacker)
-    print("perform_open_skill=============")
+function FightProcess:perform_open_buff(attacker)
+    print("perform_open_buff=============")
     for i,skill_buff_info in pairs(attacker.skill:get_open_skill_buffs()) do
-        print("perform_open_skill:", attacker.no, self.attacker.no)
+        print("perform_open_buff:", attacker.no, self.attacker.no)
         local target_units, target_side, viewTargetPos = find_target_units(skill_buff_info)
         self:handle_skill_buff(target_side, target_units, skill_buff_info, viewTargetPos)
     end
@@ -335,7 +335,9 @@ end
 
 -- 下一轮数据
 function FightProcess:next_round()
-    self.current_round = self.current_round + 1
+    if self.current_round ~= self.max_round then
+        self.current_round = self.current_round + 1
+    end
     self.current_fight_times = 1
     self.red_step = 1
     self.blue_step = 1
@@ -349,8 +351,8 @@ function FightProcess:next_round()
     end
 end
 
---function FightProcess:perform_open_skill()
-    --cclog("FightProcess:perform_open_skill begin========>")
+--function FightProcess:perform_open_buff()
+    --cclog("FightProcess:perform_open_buff begin========>")
     --local red_actions = self:update_open_state(self.red_units, self.blue_units)
     --local blue_actions = self:update_open_state(self.blue_units, self.red_units)
     --local data = {red_actions=red_actions, blue_actions=blue_actions}
@@ -373,7 +375,7 @@ function FightProcess:update_open_state(army, enemy)
     self.enemy = enemy
     for i,v in pairs(army) do
         self.attacker = v
-        self:perform_open_skill(v)
+        self:perform_open_buff(v)
         for i,buff in pairs(self.temp_buff_set.buffs) do
             print("attacker======:", buff.attacker, buff.attacker.no)
         end
@@ -381,6 +383,14 @@ function FightProcess:update_open_state(army, enemy)
     end
     local step_action = self:construct_step_action(nil, TYPE_NORMAL, SKILL_STAGE_OPEN, self.temp_buff_set.buffs)
     return step_action
+end
+
+function FightProcess:perform_open_skill()
+    cclog("FCProcess:perform_open_skill begin========>")
+    local red_actions = self:update_open_state_red()
+    local blue_actions = self:update_open_state_blue()
+    local data = {red_actions=red_actions, blue_actions=blue_actions}
+    self.send_message(const.EVENT_FIGHT_BEFORE_BUFF, data)
 end
 
 --function FightProcess:send_message(step_action)
@@ -414,7 +424,7 @@ function FightProcess:check_result()
 end
 --执行一步，即一个战斗动作
 function FightProcess:perform_one_step()
-    self.step_id = self.step_id + 1
+    appendFile2("perform one step=============="..self.step_id)
     cclog("FightProcess:perform_one_step=================>".."skill_type:"..self.current_skill_type.."small_step:"..self.small_step.."red_step:"..self.red_step.."blue_step:"..self.blue_step)
     self:set_step()
     --获取回合结果
@@ -426,6 +436,7 @@ function FightProcess:perform_one_step()
         self.send_message(const.EVENT_FIGHT_RESULT, (result == 1))
         return 
     end
+    self.step_id = self.step_id + 1
     --如果可以执行反击buff，则先执行反击buff
     if self.current_skill_type == TYPE_BACK then
         self:perform_back_buff() 
@@ -621,10 +632,12 @@ function FightProcess:do_unpara_skill()
         local attacker = skill:construct_attacker()
         self:perform_one_skill(attack_units, defend_units, attacker)
         skill:reset()
+    end
+    if self.small_step == STEP_BEFORE_BUFF then
         local stepData = {}
         stepData.step_id = self.step_id
         stepData.step_type = self:get_current_type()
-        table.insert(self.battleStep, stepData)
+        table.insert(self.steps, stepData)
     end
     if self.small_step == STEP_DO_BUFF then
         self.small_step = 0
@@ -646,12 +659,14 @@ function FightProcess:do_buddy_skill()
         self:perform_one_skill(self.red_units, self.blue_units, attacker)
         --self.buddy_skill:reset()
         -- 保存数据用于与服务器同步
-        local stepData = {}
-        stepData.step_id = self.step_id
-        stepData.step_type = self:get_current_type()
-        table.insert(self.battleStep, stepData)
         if self.small_step == STEP_AFTER_BUFF then
             self.small_step = 0
+        end
+        if self.small_step == STEP_BEFORE_BUFF then
+            local stepData = {}
+            stepData.step_id = self.step_id
+            stepData.step_type = self:get_current_type()
+            table.insert(self.steps, stepData)
         end
         return true
     end

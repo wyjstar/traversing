@@ -152,10 +152,12 @@ def stage_start_903(pro_data, player):
     seed1, seed2 = get_seeds()
     player.fight_cache_component.seed1 = seed1
     player.fight_cache_component.seed2 = seed2
+    player.fight_cache_component.red_best_skill_id = red_best_skill_id
+    player.fight_cache_component.stage_info = stage_info
     response.seed1 = seed1
     response.seed2 = seed2
 
-    red_best_skill_id = player.fight_cache_component.red_best_skill_id
+    player.fight_cache_component.red_best_skill_id = red_best_skill_id
     return response.SerializePartialToString()
 
 
@@ -166,14 +168,15 @@ def fight_settlement_904(pro_data, player):
     stage_id = request.stage_id
     result = request.result
 
+    logger.debug("steps:%s", request.steps)
     #player.fight_cache_component.red_units
     if not pve_process_check(player, result, request.steps):
         logger.error("pve_process_check error!=================")
-        response = stage_response_pb2.StageSettlementResponse()
-        res = response.res
-        res.result = True
-        res.result_no = 9041
-        return response.SerializePartialToString()
+        #response = stage_response_pb2.StageSettlementResponse()
+        #res = response.res
+        #res.result = False
+        #res.result_no = 9041
+        #return response.SerializePartialToString()
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
@@ -213,6 +216,7 @@ def get_warriors_906(pro_data, player):
 def stage_sweep_907(pro_data, player):
     request = stage_request_pb2.StageSweepRequest()
     request.ParseFromString(pro_data)
+    print 'stage_sweep_907', request
     stage_id = request.stage_id
     times = request.times
     sweep_type = request.sweep_type

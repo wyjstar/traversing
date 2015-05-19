@@ -31,9 +31,11 @@ function LanguageTemplate:getNetRandTips()
     local netTips = {}
     for k, v in pairs(language_config) do
         local idStr = tostring(v.id)
-        local subStr = string.sub(idStr, 1, 2)
-        if subStr == "50" then
-            table.insert(netTips, v)
+        if string.len(idStr) > 9 then
+            local subStr = string.sub(idStr, 1, 2)
+            if subStr == "50" then
+                table.insert(netTips, v)
+            end
         end
     end
     return netTips
