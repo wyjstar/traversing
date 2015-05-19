@@ -193,13 +193,11 @@ def _with_battle_info(response, friend):
     friend_heads = Heads_DB()
     friend_heads.ParseFromString(friend_data['heads'])
     response.hero_no = friend_heads.now_head
-    response.last_time = friend_data['upgrade_time']
     response.vip_level = friend_data['vip_level']
     response.level = friend_data['level']
 
-    is_online = remote_gate.online_remote(friend_data['id'])
-    if is_online:
-        response.last_time = 0
+    if remote_gate.online_remote(friend_data['id']) == 1:
+        response.last_time = friend_data['upgrade_time']
 
     response.nickname = friend_data['nickname']
     if friend_data['attackPoint'] is not None:
