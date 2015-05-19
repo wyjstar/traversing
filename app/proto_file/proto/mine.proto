@@ -202,6 +202,7 @@ message MineBattleResponse{
 	optional int32 seed1= 9;
 	optional int32 seed2= 10;
 	repeated Runt1 runt = 11;
+	optional bool fight_result = 12; // pvp
 }
 
 //返回 StageStartResponse
@@ -216,6 +217,7 @@ message MineSettleRequest
 {
     required int32 pos = 1;  //矿位置
     optional bool result = 2; //战斗结果
+	repeated StepInfo steps = 3; // 战斗步骤
 }
 //返回 CommonResponse 或者自己定义协议
 

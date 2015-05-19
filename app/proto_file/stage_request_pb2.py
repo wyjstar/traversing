@@ -14,7 +14,7 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_request.proto',
   package='',
-  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"l\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\".\n\x08StepInfo\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tstep_type\x18\x02 \x02(\x05\"h\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x18\n\x05steps\x18\x03 \x03(\x0b\x32\t.StepInfo\x12\x0e\n\x06result\x18\x04 \x02(\x05\"H\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\x12\x12\n\nsweep_type\x18\x03 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x10StarAwardRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\x12\n\naward_type\x18\x02 \x02(\x05\".\n\x18UpdataPlotChapterRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05')
+  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"l\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"h\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x18\n\x05steps\x18\x03 \x03(\x0b\x32\t.StepInfo\x12\x0e\n\x06result\x18\x04 \x02(\x08\"H\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\x12\x12\n\nsweep_type\x18\x03 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x10StarAwardRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\x12\n\naward_type\x18\x02 \x02(\x05\".\n\x18UpdataPlotChapterRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05')
 
 
 
@@ -131,41 +131,6 @@ _STAGESTARTREQUEST = _descriptor.Descriptor(
 )
 
 
-_STEPINFO = _descriptor.Descriptor(
-  name='StepInfo',
-  full_name='StepInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='step_id', full_name='StepInfo.step_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='step_type', full_name='StepInfo.step_type', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=226,
-  serialized_end=272,
-)
-
-
 _STAGESETTLEMENTREQUEST = _descriptor.Descriptor(
   name='StageSettlementRequest',
   full_name='StageSettlementRequest',
@@ -196,8 +161,8 @@ _STAGESETTLEMENTREQUEST = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='result', full_name='StageSettlementRequest.result', index=3,
-      number=4, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      number=4, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -210,8 +175,8 @@ _STAGESETTLEMENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=274,
-  serialized_end=378,
+  serialized_start=226,
+  serialized_end=330,
 )
 
 
@@ -252,8 +217,8 @@ _STAGESWEEPREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=380,
-  serialized_end=452,
+  serialized_start=332,
+  serialized_end=404,
 )
 
 
@@ -280,8 +245,8 @@ _RESETSTAGEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=454,
-  serialized_end=491,
+  serialized_start=406,
+  serialized_end=443,
 )
 
 
@@ -315,8 +280,8 @@ _STARAWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=493,
-  serialized_end=551,
+  serialized_start=445,
+  serialized_end=503,
 )
 
 
@@ -343,15 +308,14 @@ _UPDATAPLOTCHAPTERREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=553,
-  serialized_end=599,
+  serialized_start=505,
+  serialized_end=551,
 )
 
-_STAGESETTLEMENTREQUEST.fields_by_name['steps'].message_type = _STEPINFO
+_STAGESETTLEMENTREQUEST.fields_by_name['steps'].message_type = stage_pb2._STEPINFO
 DESCRIPTOR.message_types_by_name['StageInfoRequest'] = _STAGEINFOREQUEST
 DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
 DESCRIPTOR.message_types_by_name['StageStartRequest'] = _STAGESTARTREQUEST
-DESCRIPTOR.message_types_by_name['StepInfo'] = _STEPINFO
 DESCRIPTOR.message_types_by_name['StageSettlementRequest'] = _STAGESETTLEMENTREQUEST
 DESCRIPTOR.message_types_by_name['StageSweepRequest'] = _STAGESWEEPREQUEST
 DESCRIPTOR.message_types_by_name['ResetStageRequest'] = _RESETSTAGEREQUEST
@@ -375,12 +339,6 @@ class StageStartRequest(_message.Message):
   DESCRIPTOR = _STAGESTARTREQUEST
 
   # @@protoc_insertion_point(class_scope:StageStartRequest)
-
-class StepInfo(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _STEPINFO
-
-  # @@protoc_insertion_point(class_scope:StepInfo)
 
 class StageSettlementRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

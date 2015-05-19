@@ -61,3 +61,10 @@ message Unparalleled{
 	repeated int32 unpar = 2; // 无双技能
 	optional bool activate = 3; //是否激活
 }
+
+// 战斗步骤，用于pve校验
+message StepInfo
+{
+	required int32 step_id = 1;     //步骤id
+    required int32 step_type = 2;   //步骤类型: 无双、小伙伴
+}

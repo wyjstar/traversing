@@ -1,6 +1,8 @@
 # coding:utf8
 
 from lupa import LuaRuntime
+from shared.utils.const import const
+from random import randint
 lua = LuaRuntime()
 lua.require("app/battle/src/test_main")
 
@@ -74,9 +76,10 @@ def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blu
         seed1 = seed1,
         seed2 = seed2
     )
-    fight_type = 6
+    fight_type = const.BATTLE_PVP
     res = pvp_func(fight_data, fight_type)
-    if int(res) == 1:
+    print("pvp_start=====:", res)
+    if int(res[0]) == 1:
         return True
     return False
 
@@ -109,9 +112,105 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
         seed1 = seed1,
         seed2 = seed2
     )
-    fight_type = 1
+    fight_type = const.BATTLE_PVE
     res = pve_func(fight_data, fight_type, steps)
     if int(res) == 1:
-        return 1
-    return 0
+        return True
+    return False
 
+def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, player_level, debuff_skill_no, seed1, seed2):
+    red = []
+    blue = []
+    for unit in red_units.values():
+        red.append(construct_battle_unit(unit))
+    for unit in blue_units.values():
+        blue.append(construct_battle_unit(unit))
+
+    fight_data = lua.table(
+        red = lua.table_from(red),
+        blue = lua.table_from(blue),
+        red_best_skill = red_skill,
+        red_best_skill_level = red_skill_level,
+        blue_skill = blue_skill,
+        blue_skill_level = blue_skill_level,
+        seed1 = seed1,
+        seed2 = seed2,
+        debuff_skill_no = debuff_skill_no
+    )
+    fight_type = const.BATTLE_PVB
+    res = pvp_func(fight_data, fight_type)
+    print("pvp_start=====:", res)
+    if int(res[0]) == 1:
+        return {"result":True, "hp_left":res[1]}
+    return {"result":False, "hp_left":res[1]}
+
+       # required CommonResponse res = 1;
+	#repeated BattleUnit red = 2;         // 红方数据 自己
+	#repeated BattleUnit blue = 3;    // 对方数据
+	#optional int32 red_best_skill_id = 4;       // 无双
+	#optional int32 red_best_skill_level = 5; // 无双
+	#optional int32 blue_best_skill_id = 6;       // 无双
+	#optional int32 blue_best_skill_level = 7; // 无双
+	#repeated int32 awake_no = 8;        //
+	#optional int32 seed1= 9;
+       # optional int32 seed2= 10;
+def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2):
+    red = []
+    blue = []
+    for unit in red_units.values():
+        red.append(construct_battle_unit(unit))
+    for unit in blue_units.values():
+        blue.append(construct_battle_unit(unit))
+
+    fight_data = lua.table(
+        red = lua.table_from(red),
+        blue = lua.table_from(blue),
+        red_best_skill_id = red_skill,
+        red_best_skill_level = red_skill_level,
+        blue_best_skill_id = blue_skill,
+        blue_best_skill_level = blue_skill_level,
+        seed1 = seed1,
+        seed2 = seed2
+    )
+    fight_type = const.BATTLE_MINE_PVP
+    res = pvp_func(fight_data, fight_type)
+    print("pvp_start=====:", res)
+    if int(res[0]) == 1:
+        return True
+    return False
+
+def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, step_infos):
+    red = []
+    blue = []
+    for unit in red_units.values():
+        red.append(construct_battle_unit(unit))
+    for unit in blue_units.values():
+        blue.append(construct_battle_unit(unit))
+    temp = {}
+    for step in step_infos:
+        temp[step.step_id] = step.step_type
+    print("pve_start steps %s" % temp)
+    steps = lua.table_from(temp)
+
+    fight_data = lua.table(
+        red = lua.table_from(red),
+        blue = lua.table_from(blue),
+        red_best_skill_id = red_skill,
+        red_best_skill_level = red_skill_level,
+        blue_best_skill_id = blue_skill,
+        blue_best_skill_level = blue_skill_level,
+        seed1 = seed1,
+        seed2 = seed2
+    )
+    fight_type = const.BATTLE_MINE_PVE
+    res = pvp_func(fight_data, fight_type)
+    print("pvp_start=====:", res)
+    res = pve_func(fight_data, fight_type, steps)
+    if int(res) == 1:
+        return True
+    return False
+
+def get_seeds():
+    seed1 = randint(1, 100)
+    seed2 = randint(1, 100)
+    return seed1, seed2

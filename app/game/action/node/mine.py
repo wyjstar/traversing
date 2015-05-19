@@ -27,10 +27,11 @@ from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from app.game.action.node.line_up import line_up_info_detail
-from app.game.action.node._fight_start_logic import pve_process
+from app.game.action.node._fight_start_logic import pve_process, pve_process_check
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
+from app.battle.server_process import get_seeds
 
 remote_gate = GlobalObject().remote['gate']
 
@@ -572,13 +573,18 @@ def process_mine_result(player, position, result, response, stype):
 @remoteserviceHandle('gate')
 def settle_1252(data, player):
     request = mine_pb2.MineSettleRequest()
+    response = common_pb2.CommonResponse()
     request.ParseFromString(data)
     pos = request.pos
     result = request.result
-    # todo: check result
+    if not pve_process_check(player, result, request.steps, const.BATTLE_MINE_PVE):
+        logger.error("mine pve_process_check error!=================")
+        res = response.res
+        res.result = False
+        res.result_no = 9041
+        return response.SerializePartialToString()
     # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0)
-    response = common_pb2.CommonResponse()
     response.result = True
     return response.SerializePartialToString()
 
@@ -604,6 +610,7 @@ def battle_1253(data, player):
     mine_type = mine_info.get("mine_type")  # 根据矿所在位置判断pve or pvp
     # print mine_type, "*"*80
     # print request
+    print("mine battle", mine_type)
     if mine_type == 0:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
@@ -624,7 +631,12 @@ def battle_1253(data, player):
         blue_units = stage_info.get('blue_units')
         blue_units = blue_units[0]
 
-        # # print red_units, blue_units
+        seed1, seed2 = get_seeds()
+        player.fight_cache_component.seed1 = seed1
+        player.fight_cache_component.seed2 = seed2
+        player.fight_cache_component.red_best_skill_id = red_best_skill_id
+        player.fight_cache_component.stage_info = stage_info
+        print red_units, blue_units
 
     elif mine_type == 1:
         # pvp
@@ -632,19 +644,20 @@ def battle_1253(data, player):
         info = get_save_guard(player, pos)
         # print info
         blue_units = info.get("battle_units")
-
+        seed1, seed2 = get_seeds()
         fight_result = pvp_process(player,
                                    line_up,
                                    red_units,
                                    blue_units,
                                    red_best_skill_id,
                                    info.get("best_skill_no"),
-                                   info.get("level"), red_best_skill_id)
-
+                                   info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
+#player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
         process_mine_result(player, pos, fight_result, response, 1)
 
         blue_best_skill_id = info.get("best_skill_id", 0)
         blue_best_skill_level = info.get("best_skill_level", 0)
+        response.fight_result = fight_result
 
         # print red_units, blue_units
 
