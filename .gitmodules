@@ -5,4 +5,4 @@
     
 [submodule "proto"]
 	path = proto
-	url = server@192.168.1.62:/home/server/traversingProto/.git
+	url = server@192.168.1.62:/home/server/traversingProto/
