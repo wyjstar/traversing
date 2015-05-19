@@ -26,6 +26,9 @@ def apple_consume_verify_11002(data, player):
 
     if player.base_info.apple_transaction_id == request.transaction_id:
         logger.debug("recharge repeated!")
+        logger.error('transaction id is not same:%s--%s',
+                     request.transaction_id,
+                     player.base_info.apple_transaction_id)
         response.res.message = RECHARGE_REPEATED
         return response.SerializeToString()
 

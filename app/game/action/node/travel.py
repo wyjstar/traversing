@@ -106,6 +106,7 @@ def travel_831(data, player):
     player.travel_component.save()
     lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
+    player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
@@ -131,13 +132,6 @@ def travel_init_830(data, player):
             if game_configs.travel_event_config.get('events').get(tra[0]%xs).type == 1:
                 if len(tra) == 3:
                     res_travel.time = tra[2]
-
-    res_shose = response.shoes
-    res_shose.shoe1 = player.travel_component.shoes[0]
-    res_shose.shoe2 = player.travel_component.shoes[1]
-    res_shose.shoe3 = player.travel_component.shoes[2]
-    res_shose.use_type = player.travel_component.shoes[3]
-    res_shose.use_no = player.travel_component.shoes[4]
 
     response.chest_time = player.travel_component.chest_time
 

@@ -119,6 +119,7 @@ def search_1241(data, player):
         response.res.result = True
         lively_event = CountEvent.create_event(EventType.MAGIC, 1, ifadd=True)
         tstatus = player.tasks.check_inter(lively_event)
+        player.tasks.save_data()
         if tstatus:
             task_data = task_status(player)
             remote_gate.push_object_remote(1234,
@@ -363,6 +364,7 @@ def harvest_1245(data, player):
             return response.SerializePartialToString()
         lively_event = CountEvent.create_event(EventType.WORD, 1, ifadd=True)
         tstatus = player.tasks.check_inter(lively_event)
+        player.tasks.save_data()
         if tstatus:
             task_data = task_status(player)
             remote_gate.push_object_remote(1234,
@@ -521,7 +523,7 @@ def acc_mine_1250(data, player):
     return response.SerializePartialToString()
 
 
-def process_mine_result(player, position, result, response, stype):
+def process_mine_result(player, position, result, response, stype, hold=1):
     """
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
     @param gain: true or false
@@ -531,7 +533,7 @@ def process_mine_result(player, position, result, response, stype):
         return
 
     detail_info = player.mine.detail_info(position)
-    target = player.mine.settle(position)
+    target = player.mine.settle(position, hold)
     if stype != 1:
         return
 
@@ -658,7 +660,8 @@ def battle_1253(data, player):
                                    info.get("best_skill_no"),
                                    info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
 #player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
-        process_mine_result(player, pos, fight_result, response, 1)
+        hold = request.hold
+        process_mine_result(player, pos, fight_result, response, 1, hold)
 
         blue_best_skill_id = info.get("best_skill_id", 0)
         blue_best_skill_level = info.get("best_skill_level", 0)

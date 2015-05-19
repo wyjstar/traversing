@@ -33,6 +33,7 @@ def settle(player, result, response, lively_event, conf):
 
     # 保存活跃度
     tstatus = player.tasks.check_inter(lively_event)
+    player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])

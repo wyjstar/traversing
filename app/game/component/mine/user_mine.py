@@ -455,14 +455,15 @@ class PlayerField(Mine):
 #             return True
 #         return False
 
-    def settle(self, uid=None, nickname=None):
+    def settle(self, uid=None, nickname=None, hold=1):
         mine = ConfigData.mine(self._mine_id)
         tid = self._tid
         if self._status == 2 or (self._status == 1 and time.time() > self._last_time):
             self._status = 3
         else:
-            self._tid = uid
-            self._nickname = nickname
+            if hold:
+                self._tid = uid
+                self._nickname = nickname
             self._guard_time = time.time() + mine.protectTimeFree*60  # 读取数值表配置－刚占领的野怪矿保护时间
         data = self.save_info()
         MineOpt.add_mine(self._tid, self._seq, data)
@@ -619,7 +620,7 @@ class MonsterField(Mine):
         self._stage_id = stage_id
         return 0, mine.type, 0, -1, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
 
-    def settle(self, uid=None, nickname=None):
+    def settle(self, uid=None, nickname=None, hold=1):
         mine = ConfigData.mine(self._mine_id)
         player_field = PlayerField()
         player_field._seq = self._seq
@@ -1050,9 +1051,9 @@ class UserMine(Component):
         self._update = True
         return last_time
 
-    def settle(self, position):
+    def settle(self, position, hold):
         mine, tid = self._mine[position].settle(self.owner.base_info.id,
-                                                self.owner.base_info.base_name)
+                                                self.owner.base_info.base_name, hold)
         # print 'settle', mine.__dict__
         self._mine[position] = mine  # 更改本地信息
         self._update = True

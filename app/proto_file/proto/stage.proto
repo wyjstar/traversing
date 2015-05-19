@@ -44,6 +44,8 @@ message Stage{
 	optional int32 attacks = 2;  //攻击次数
 	optional int32 state = 3;  //关卡状态 -1:开启没打过 0：输  1：赢
     optional Reset reset = 4;
+	optional int32 chest_state = 5;  //关卡宝箱 0 未开启 1 已开启
+    
 }
 
 message Reset{

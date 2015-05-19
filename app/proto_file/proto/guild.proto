@@ -188,6 +188,7 @@ message DealInviteJoinRequest{
 // 处理 邀请加入军团command：1804
 message DealInviteJoinResResponse{
     required CommonResponse res = 1;
+    optional int32 spare_time = 2;
 }
 
 // 赞一下 1807

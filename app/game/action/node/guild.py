@@ -190,15 +190,9 @@ def join_guild_802(data, player):
         response.res.result_no = 845
         return response.SerializeToString()
     else:
-        invitee_player = PlayersManager().get_player_by_id(captain_id)
-        if invitee_player:  # 在线
-            remote_gate.push_object_remote(850,
-                                           u'',
-                                           [invitee_player.dynamic_id])
-        else:
-            remote_gate.is_online_remote(
-                'modify_user_guild_info_remote',
-                captain_id, {'cmd': 'join_guild'})
+        remote_gate.is_online_remote(
+            'modify_user_guild_info_remote',
+            captain_id, {'cmd': 'join_guild'})
 
         player.guild.apply_guilds.append(g_id)
         guild_obj.join_guild(p_id)
@@ -236,7 +230,7 @@ def exit_guild_803(data, player):
     position = player.guild.position
     p_list = guild_obj.p_list
     position_p = p_list.get(position)
-    if position_p.count(p_id) != 1:
+    if p_id not in position_p:
         response.res.result = False
         response.res.result_no = 850
         # response.res.message = "您不在此公会"
@@ -293,6 +287,8 @@ def modify_user_guild_info_remote(data, player):
         player.guild.position = data['position']
         player.guild.save_data()
     elif data['cmd'] == 'deal_apply':
+        if player.guild.g_id != 0:
+            return 0
         remote_gate.login_guild_chat_remote(player.dynamic_id,
                                             data['guild_id'])
         player.guild.g_id = data['guild_id']
@@ -306,9 +302,14 @@ def modify_user_guild_info_remote(data, player):
         player.guild.apply_guilds = []
 
         player.guild.save_data()
+    elif data['cmd'] == 'deal_apply1':
+        if player.guild.g_id != 0:
+            return 0
+        player.guild.apply_guilds.remove(data['guild_id'])
+        player.guild.save_data()
     elif data['cmd'] == 'kick':
         remote_gate.logout_guild_chat_remote(player.dynamic_id)
-        player.guild.g_id = 'no'
+        player.guild.g_id = 0
         player.guild.save_data()
         remote_gate.push_object_remote(814,
                                        u'',
@@ -329,7 +330,7 @@ def modify_user_guild_info_remote(data, player):
     elif data['cmd'] == 'appoint':
         player.guild.position = data['position']
         player.guild.save_data()
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
@@ -358,7 +359,7 @@ def editor_call_804(data, player):
     p_list = guild_obj.p_list
     position_p_list = p_list.get(position)
 
-    if position_p_list.count(p_id) >= 1:
+    if p_id in position_p_list:
         if position > 2:
             response.res.result = False
             response.res.result_no = 849
@@ -407,47 +408,36 @@ def deal_apply_805(data, player):
             return response.SerializeToString()
 
         for p_id in p_ids:
-            info = tb_character_info.getObj(p_id).hget('guild_id')
-            if info != 0:
-                if guild_obj.apply.count(p_id) == 1:
-                    guild_obj.apply.remove(p_id)
-                    response.p_ids.append(p_id)
-                continue
             # 加入公会聊天室
-            invitee_player = PlayersManager().get_player_by_id(p_id)
-            if invitee_player:  # 在线
-                remote_gate.login_guild_chat_remote(invitee_player.dynamic_id,
-                                                    invitee_player.guild.g_id)
-                invitee_player.guild.g_id = player.guild.g_id
-                invitee_player.guild.position = 3
-                invitee_player.guild.contribution = 0
-                invitee_player.guild.all_contribution = 0
-                invitee_player.guild.today_contribution = 0
-                invitee_player.guild.exit_time = 1
-                invitee_player.guild.praise = [0, 1]
-                invitee_player.guild.bless = [0, [], 0, 1]
-                invitee_player.guild.apply_guilds = []
-                invitee_player.guild.save_data()
-            else:
-                data = {'guild_id': player.guild.g_id,
-                        'position': 3,
-                        'contribution': 0,
-                        'all_contribution': 0,
-                        'today_contribution': 0,
-                        'praise': [0, 1],
-                        'bless': [0, [], 0, 1],
-                        'apply_guilds': [],
-                        'exit_time': 1}
-                is_online = remote_gate.is_online_remote(
-                    'modify_user_guild_info_remote',
-                    p_id,
-                    {'cmd': 'deal_apply', "guild_id": player.guild.g_id})
+            data = {'guild_id': player.guild.g_id,
+                    'position': 3,
+                    'contribution': 0,
+                    'all_contribution': 0,
+                    'today_contribution': 0,
+                    'praise': [0, 1],
+                    'bless': [0, [], 0, 1],
+                    'apply_guilds': [],
+                    'exit_time': 1}
+            is_online = remote_gate.is_online_remote(
+                'modify_user_guild_info_remote',
+                p_id,
+                {'cmd': 'deal_apply', "guild_id": player.guild.g_id})
 
-                if is_online == "notonline":
-                    p_guild_data = tb_character_info.getObj(p_id)
-                    p_guild_data.hmset(data)
+            if is_online == "notonline":
+                p_guild_obj = tb_character_info.getObj(p_id)
+                info = p_guild_obj.hget('guild_id')
+                if info != 0:
+                    if p_id in guild_obj.apply:
+                        guild_obj.apply.remove(p_id)
+                        response.p_ids.append(p_id)
+                    continue
+                p_guild_obj.hmset(data)
+            elif is_online == 0:  # 玩家在线，已经加入军团
+                guild_obj.apply.remove(p_id)
+                response.p_ids.append(p_id)
+                continue
 
-            if guild_obj.apply.count(p_id) == 1:
+            if p_id in guild_obj.apply:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(3):
                     p_list1 = guild_obj.p_list.get(3)
@@ -462,10 +452,29 @@ def deal_apply_805(data, player):
     elif res_type == 2:
         p_ids = args.p_ids
         for p_id in p_ids:
-            if guild_obj.apply.count(p_id) == 1:
+            if p_id in guild_obj.apply:
                 guild_obj.apply.remove(p_id)
             tlog_action.log('DealJoinGuild', player, m_g_id,
                             p_id, 2)
+
+            is_online = remote_gate.is_online_remote(
+                'modify_user_guild_info_remote',
+                p_id,
+                {'cmd': 'deal_apply1', "guild_id": player.guild.g_id})
+
+            if is_online == "notonline":
+                p_guild_obj = tb_character_info.getObj(p_id)
+                info = p_guild_obj.hget('guild_id')
+                if info != 0:
+                    continue
+
+                apply_guilds = p_guild_obj.hget('apply_guilds')
+                if player.guild.g_id in apply_guilds:
+                    apply_guilds.remove(player.guild.g_id)
+                    data = {'apply_guilds': apply_guilds}
+                    p_guild_obj.hmset(data)
+            elif is_online == 0:  # 玩家在线，已经加入军团
+                continue
 
     else:  # res_type == 3
         guild_obj.apply = []
@@ -516,7 +525,7 @@ def change_president_806(data, player):
     p_list = guild_obj.p_list
     for num in range(2, 4):
         p_list1 = p_list.get(num)
-        if p_list1 and p_list1.count(p_p_id) >= 1:
+        if p_list1 and p_p_id in p_list1:
             p_list1.remove(p_p_id)
             p_list3 = p_list.get(3)
             p_list3.append(p_id)
@@ -531,19 +540,15 @@ def change_president_806(data, player):
                 response.res.result_no = 850
                 # response.res.message = "此玩家不在公会"
                 return response.SerializeToString()
-            invitee_player = PlayersManager().get_player_by_id(p_p_id)
-            if invitee_player:  # 在线
-                invitee_player.guild.position = 1
-                invitee_player.guild.save_data()
-            else:
-                data = {'position': 1}
-                is_online = remote_gate.is_online_remote(
-                    'modify_user_guild_info_remote',
-                    p_p_id, {'cmd': 'change_president', 'position': 1})
 
-                if is_online == "notonline":
-                    p_guild_data = tb_character_info.getObj(p_p_id)
-                    p_guild_data.hmset(data)
+            data = {'position': 1}
+            is_online = remote_gate.is_online_remote(
+                'modify_user_guild_info_remote',
+                p_p_id, {'cmd': 'change_president', 'position': 1})
+
+            if is_online == "notonline":
+                p_guild_data = tb_character_info.getObj(p_p_id)
+                p_guild_data.hmset(data)
 
             player.guild.position = 3
             player.guild.save_data()
@@ -581,7 +586,7 @@ def kick_807(data, player):
     for p_id in p_ids:
         for num in range(2, 4):
             p_list1 = p_list.get(num)
-            if not p_list1 or p_list1.count(p_id) < 1:
+            if not p_list1 or p_id not in p_list1:
                 continue
 
             be_kick_obj = tb_character_info.getObj(p_id)
@@ -599,43 +604,22 @@ def kick_807(data, player):
             guild_obj.p_list = p_list
             guild_obj.p_num -= 1
             guild_obj.save_data()
-            # 踢出公会聊天室
-            invitee_player = PlayersManager().get_player_by_id(p_id)
-            tlog_action.log('GuildKick', player, m_g_id, p_id)
-            if invitee_player:  # 在线
-                remote_gate.logout_guild_chat_remote(
-                    invitee_player.dynamic_id)
 
-                invitee_player.guild.contribution = 0
-                invitee_player.guild.all_contribution = 0
-                invitee_player.guild.today_contribution = 0
-                invitee_player.guild.position = 3
-                invitee_player.guild.praise = [0, int(time.time())]
-                invitee_player.guild.bless = [0, [], 0, int(time.time())]
-                invitee_player.guild.exit_time = 1
-                invitee_player.guild.apply_guilds = []
-
-                invitee_player.guild.g_id = 0
-                invitee_player.guild.save_data()
-                remote_gate.push_object_remote(814,
-                                               u'',
-                                               [invitee_player.dynamic_id])
-            else:
-                data = {'guild_id': 0,
-                        'position': 3,
-                        'contribution': 0,
-                        'all_contribution': 0,
-                        'today_contribution': 0,
-                        'praise': [0, 1],
-                        'bless': [0, [], 0, 1],
-                        'apply_guilds': [],
-                        'exit_time': 1}
-                # TODO 玩家被提出，或者退出军团以后，膜拜的记录清理不清理。
-                is_online = remote_gate.is_online_remote(
-                    'modify_user_guild_info_remote', p_id, {'cmd': 'kick'})
-                if is_online == "notonline":
-                    p_guild_data = tb_character_info.getObj(p_id)
-                    p_guild_data.hmset(data)
+            data = {'guild_id': 0,
+                    'position': 3,
+                    'contribution': 0,
+                    'all_contribution': 0,
+                    'today_contribution': 0,
+                    'praise': [0, 1],
+                    'bless': [0, [], 0, 1],
+                    'apply_guilds': [],
+                    'exit_time': 1}
+            # TODO 玩家被提出，或者退出军团以后，膜拜的记录清理不清理。
+            is_online = remote_gate.is_online_remote(
+                'modify_user_guild_info_remote', p_id, {'cmd': 'kick'})
+            if is_online == "notonline":
+                p_guild_data = tb_character_info.getObj(p_id)
+                p_guild_data.hmset(data)
 
     response.res.result = True
     return response.SerializeToString()
@@ -1071,43 +1055,35 @@ def invite_join_1803(data, player):
         response.res.result_no = 843
         return response.SerializeToString()
 
-    invitee_player = PlayersManager().get_player_by_id(user_id)
     open_stage_id = game_configs.base_config.get('guildOpenStage')
-    if invitee_player:  # 在线
-        if player.stage_component.get_stage(open_stage_id).state != 1:
+    is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', user_id, {'cmd': 'canjoinguild'})
+    if is_online == "notonline":
+        character_obj = tb_character_info.getObj(user_id)
+        if not character_obj.exists():
             response.res.result = False
-            # response.message = "对方未开启军团功能"
+            # response.message = "未知错误"
+            response.res.result_no = 800
+            return response.SerializeToString()
+        stages = character_obj.hget('stage_info')
+        stage_objs = {}
+        flog = 1
+        for stage_id_a, stage in stages.items():
+            if stage_id_a == open_stage_id:
+                flog = 0
+                stage_obj = Stage.loads(stage)
+                if stage_obj.state != 1:
+                    flog = 1
+        if flog:
+            response.res.result = False
+            # response.res.message = "对方未开启军团功能"
             response.res.result_no = 837
             return response.SerializeToString()
-    else:
-        is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', user_id, {'cmd': 'canjoinguild'})
-        if is_online == "notonline":
-            character_obj = tb_character_info.getObj(user_id)
-            if not character_obj.exists():
-                response.res.result = False
-                # response.message = "未知错误"
-                response.res.result_no = 800
-                return response.SerializeToString()
-            stages = character_obj.hget('stage_info')
-            stage_objs = {}
-            flog = 1
-            for stage_id_a, stage in stages.items():
-                if stage_id_a == open_stage_id:
-                    flog = 0
-                    stage_obj = Stage.loads(stage)
-                    if stage_obj.state != 1:
-                        flog = 1
-            if flog:
-                response.res.result = False
-                # response.res.message = "对方未开启军团功能"
-                response.res.result_no = 837
-                return response.SerializeToString()
 
-        elif is_online == 0:
-            response.res.result = False
-            # response.message = "对方未开启军团功能"
-            response.res.result_no = 837
-            return response.SerializeToString()
+    elif is_online == 0:
+        response.res.result = False
+        # response.message = "对方未开启军团功能"
+        response.res.result_no = 837
+        return response.SerializeToString()
 
     if not guild_obj.invite_join.get(user_id):
         for u_id, i_time in guild_obj.invite_join.items():
@@ -1161,6 +1137,18 @@ def deal_invite_join_1804(data, player):
     guild_id = args.guild_id
     res = args.res
     response.res.result = True
+
+    m_exit_time = player.guild.exit_time
+    the_time = int(time.time())-m_exit_time
+
+    if m_exit_time != 1 and the_time < \
+            game_configs.base_config.get('exit_time'):
+        response.res.result = False
+        response.res.result_no = 842
+        # response.message = "退出公会半小时内不可加入公会"
+        response.spare_time = game_configs.base_config.get('exit_time') \
+            - the_time
+        return response.SerializeToString()
 
     data1 = tb_guild_info.getObj(guild_id).hgetall()
     if not data1:
@@ -1432,11 +1420,6 @@ def appoint_1810(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    if player.guild.position != 1:
-        response.res.result = False
-        response.res.result_no = 849
-        return response.SerializeToString()
-
     guild_obj = Guild()
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
@@ -1476,25 +1459,15 @@ def appoint_1810(data, player):
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
-    # 加入公会聊天室
-    invitee_player = PlayersManager().get_player_by_id(p_id)
-    if invitee_player:  # 在线
-        remote_gate.login_guild_chat_remote(invitee_player.dynamic_id,
-                                            invitee_player.guild.g_id)
-        invitee_player.guild.g_id = player.guild.g_id
-        invitee_player.guild.position = now_positon
-        invitee_player.guild.save_data()
-    else:
-        data = {'guild_id': player.guild.g_id,
-                'position': now_positon}
-        is_online = remote_gate.is_online_remote(
-            'modify_user_guild_info_remote',
-            p_id,
-            {'cmd': 'appoint', "positon": now_positon})
+    data = {'position': now_positon}
+    is_online = remote_gate.is_online_remote(
+        'modify_user_guild_info_remote',
+        p_id,
+        {'cmd': 'appoint', "position": now_positon})
 
-        if is_online == "notonline":
-            p_guild_data = tb_character_info.getObj(p_id)
-            p_guild_data.hmset(data)
+    if is_online == "notonline":
+        p_guild_data = tb_character_info.getObj(p_id)
+        p_guild_data.hmset(data)
 
     guild_obj.save_data()
     response.res.result = True
