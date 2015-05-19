@@ -213,14 +213,12 @@ def exit_guild_803(data, player):
         response.res.result = False
         response.res.result_no = 846
         # response.res.message = "您还未加入公会"
-        print 'BBBBBBBBBBBBBBBB5', response
         return response.SerializeToString()
 
     if not data1:
         response.res.result = False
         response.res.result_no = 844
         # response.res.message = "公会ID错误"
-        print 'BBBBBBBBBBBBBBBB4', response
         return response.SerializeToString()
 
     guild_obj = Guild()
@@ -252,7 +250,6 @@ def exit_guild_803(data, player):
             response.res.result = False
             response.res.result_no = 857
             # response.res.message = "军团人数大于1，团长不可以退出军团"
-            print 'BBBBBBBBBBBBBBBB3', response
             return response.SerializeToString()
         else:  # position != 1:
             p_list = guild_obj.p_list
@@ -274,7 +271,6 @@ def exit_guild_803(data, player):
 
     response.res.result = True
     tlog_action.log('ExitGuild', player, m_g_id)
-    print 'BBBBBBBBBBBBBBBB1', response
     return response.SerializeToString()
 
 
@@ -642,12 +638,10 @@ def bless_809(data, player):
     args.ParseFromString(data)
     response = BlessResponse()
     bless_type = args.bless_type
-    print args, 'bbbbbbbbbbbbbbbbbbbbbb'
 
     m_g_id = player.guild.g_id
     data1 = tb_guild_info.getObj(m_g_id).hgetall()
     if not data1 or m_g_id == 0:
-        print 'aaaaaaaa111'
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
@@ -660,21 +654,18 @@ def bless_809(data, player):
 
     if worship_info[0] == 1:  # 1金币  2元宝
         if worship_info[1] > player.finance.coin:
-            print 'aaaaaaaa222'
             response.res.result = False
             response.res.result_no = 101
             # response.res.message = "银两不足"
             return response.SerializeToString()
     else:
         if worship_info[1] > player.finance.gold:
-            print 'aaaaaaaa333'
             response.res.result = False
             response.res.result_no = 102
             return response.SerializeToString()
 
     # if player.base_info.guild_worship_times <= player.guild.bless_times:
     if False:
-        print 'aaaaaaaa444'
         response.res.result = False
         response.res.result_no = 854
         # response.message = "今天的膜拜次数已用完"
@@ -709,28 +700,24 @@ def bless_809(data, player):
     response.res.result = True
     # response.message = "膜拜成功"
     tlog_action.log('GuildWorship', player, m_g_id, bless_type)
-    print 'FFFFFFFFFFFFFFFFFFFF', response
     return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
 def get_guild_rank_810(data, player):
     """获取公会排行 """
-    print 'AASDASDASDADS1'
     args = GetGuildRankRequest()
     args.ParseFromString(data)
     response = GetGuildRankResponse()
     rank_type = args.rank_type
     min_rank = args.min_rank
     max_rank = args.max_rank
-    print min_rank, max_rank, player.guild.apply_guilds, 'AAAAAAAAAAAAABBBBBBBBBDFSDFSDFS'
 
     if rank_type == 1:
         rank_num = min_rank
         # 得到公会排行
         rank_info = remote_gate.get_rank_remote(
             'GuildLevel', min_rank, max_rank)
-        print rank_info, 'ASDASDASDASDASD'
         for (g_id, _rank) in rank_info:
             deal_rank_response_info(player, response, g_id, rank_num)
             rank_num += 1
@@ -743,7 +730,6 @@ def get_guild_rank_810(data, player):
         if min_rank == 1:
             player.guild.guild_rank_flag = 0
         if min_rank <= len(player.guild.apply_guilds):
-            print 'affsdfs'
             if max_rank <= len(player.guild.apply_guilds):
                 rank_num = min_rank
                 for x in range(min_rank-1, max_rank):
@@ -799,7 +785,6 @@ def get_guild_rank_810(data, player):
 
     player.guild.save_data()
     response.res.result = True
-    print response, 'EEEEEEEEEEEEEEEEEEEEE'
     return response.SerializeToString()
 
 
@@ -818,7 +803,6 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     guild_rank.level = guild_obj.level
     guild_rank.icon_id = guild_obj.icon_id
 
-    print 'xxxxxxxxxxxxxxxxx', guild_obj.p_list
     president_id = guild_obj.p_list.get(1)[0]
     char_obj = tb_character_info.getObj(president_id)
     if char_obj.exists():
@@ -866,7 +850,6 @@ def get_role_list_811(data, player):
         return response.SerializeToString()
 
     for p_list in guild_p_list.values():
-        print 'AAAAAAAAAAAAAABBBBBBBCCCCCCCC', guild_p_list
         for role_id in p_list:
             character_info = tb_character_info.getObj(role_id).hgetall()
             if not character_info:
@@ -903,7 +886,6 @@ def get_role_list_811(data, player):
             role_info.contribution = today_contribution
 
     response.res.result = True
-    print 'AAACCCCCDFDFD', response
     return response.SerializeToString()
 
 
@@ -952,7 +934,6 @@ def get_guild_info_812(data, player):
         response.captain_level = player.base_info.level
         response.captain_power = int(player.line_up_component.combat_power)
         response.captain_vip_level = player.base_info.vip_level
-        print 'head,HHHHHHHHHHHHHHHHHHHHHHHH', player.base_info.head
         response.captain_icon = player.base_info.head
         response.captain_zan_receive_state = guild_obj.receive_praise_state
 
@@ -977,7 +958,6 @@ def get_guild_info_812(data, player):
             response.captain_icon = heads.now_head
 
     response.res.result = True
-    print 'BBBBBBBBBBBBBBBBB', response
     return response.SerializeToString()
 
 
@@ -1026,7 +1006,6 @@ def get_apply_list_813(data, player):
             role_info.user_icon = heads.now_head
 
     response.res.result = True
-    print response, 'GGGGGGGGGGGGGGGGGGGG'
     return response.SerializeToString()
 
 
@@ -1273,7 +1252,6 @@ def praise_1807(data, player):
     guild_obj.save_data()
 
     response.res.result = True
-    print 'CCCCCCCCCCCCCCCCCCCC', response
     return response.SerializeToString()
 
 
@@ -1320,7 +1298,6 @@ def captailn_receive_1806(data, player):
     player.guild.save_data()
     guild_obj.save_data()
     response.res.result = True
-    print 'DDDDDDDDDDDDDDDDD', response
     return response.SerializeToString()
 
 
@@ -1372,7 +1349,6 @@ def get_bless_gift_1808(data, player):
     player.guild.save_data()
     guild_obj.save_data()
     response.res.result = True
-    print 'EEEEEEEEEEEEEEEEEE', response
     return response.SerializeToString()
 
 
@@ -1392,7 +1368,6 @@ def find_guild_1809(data, player):
         isexist = guild_name_obj.hexists(id_or_name)
         g_id = guild_name_obj.hget(id_or_name)
         guild_obj = tb_guild_info.getObj(g_id)
-    print 'isexist', isexist
     if isexist:
         guild_data = guild_obj.hgetall()
         guild_rank = response.guild_info
@@ -1444,13 +1419,11 @@ def appoint_1810(data, player):
         response.res.result = False
         response.res.result_no = 800
         # response.message = "公会ID错误"
-        print 'AAAAAABBBBBBBB5', response
         return response.SerializeToString()
 
     if player.guild.position != 1:
         response.res.result = False
         response.res.result_no = 849
-        print 'AAAAAABBBBBBBB4', response
         return response.SerializeToString()
 
     guild_obj = Guild()
@@ -1465,12 +1438,10 @@ def appoint_1810(data, player):
         if position2_list and len(position2_list) >= 2:
             response.res.result = False
             response.res.result_no = 860
-            print 'AAAAAABBBBBBBB3', response
             return response.SerializeToString()
         if not position3_list or p_id not in position3_list:
             response.res.result = False
             response.res.result_no = 800
-            print 'AAAAAABBBBBBBB2', response, position3_list, p_id, p_list
             return response.SerializeToString()
         position3_list.remove(p_id)
         position2_list.append(p_id)
@@ -1482,7 +1453,6 @@ def appoint_1810(data, player):
         if not position2_list or p_id not in position2_list:
             response.res.result = False
             response.res.result_no = 800
-            print 'AAAAAABBBBBBBB1', response
             return response.SerializeToString()
         position2_list.remove(p_id)
         position3_list.append(p_id)
@@ -1494,7 +1464,6 @@ def appoint_1810(data, player):
     if guild_id != player.guild.g_id:
         response.res.result = False
         response.res.result_no = 800
-        print 'AAAAAABBBBBBBB10', response
         return response.SerializeToString()
     # 加入公会聊天室
     invitee_player = PlayersManager().get_player_by_id(p_id)
@@ -1518,5 +1487,4 @@ def appoint_1810(data, player):
 
     guild_obj.save_data()
     response.res.result = True
-    print 'AAAAAABBBBBBBB', response
     return response.SerializeToString()

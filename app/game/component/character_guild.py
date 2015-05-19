@@ -166,7 +166,6 @@ class CharacterGuildComponent(Component):
 
     @property
     def praise_state(self):
-        print self._praise, 'IIIIIIIIIIIIIIIIIIIIIII'
         if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
             self._praise = [0, int(time.time())]
         return self._praise[0]
