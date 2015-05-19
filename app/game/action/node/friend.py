@@ -247,7 +247,7 @@ def get_player_friend_list_1106(data, player):
             response_blacklist_add = response.blacklist.add()
 
             # 添加好友主将的属性
-            _with_battle_info(response_blacklist_add, player)
+            _with_battle_info(response_blacklist_add, player_data)
         else:
             logger.error('black_list cant find player id:%d' % pid)
             player.friends.blacklist.remove(pid)
