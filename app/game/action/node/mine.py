@@ -33,7 +33,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 def mine_status(player, response):
@@ -678,7 +678,6 @@ def battle_1253(data, player):
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
-    response.hold = request.hold
     # print 'battle_1253:', response
     return response.SerializePartialToString()
 

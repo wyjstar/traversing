@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='google.proto',
   package='',
-  serialized_pb='\n\x0cgoogle.proto\x1a\x0c\x63ommon.proto\"$\n\x0cRechargeTest\x12\x14\n\x0crecharge_num\x18\x01 \x01(\x05\"*\n\x17GoogleGenerateIDRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\"\'\n\x18GoogleGenerateIDResponse\x12\x0b\n\x03uid\x18\x01 \x01(\t\"$\n\x14GoogleConsumeRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"5\n\x15GoogleConsumeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"=\n\x1aGoogleConsumeVerifyRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\"a\n\x1bGoogleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0cgoogle.proto\x1a\x0c\x63ommon.proto\"$\n\x0cRechargeTest\x12\x14\n\x0crecharge_num\x18\x01 \x01(\x05\"*\n\x17GoogleGenerateIDRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x05\"\'\n\x18GoogleGenerateIDResponse\x12\x0b\n\x03uid\x18\x01 \x01(\t\"$\n\x14GoogleConsumeRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"5\n\x15GoogleConsumeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"=\n\x1aGoogleConsumeVerifyRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\"\x81\x01\n\x1bGoogleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x04info\x18\x03 \x01(\x0b\x32\x10.GetGoldResponse')
 
 
 
@@ -215,6 +215,13 @@ _GOOGLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='info', full_name='GoogleConsumeVerifyResponse.info', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -224,13 +231,14 @@ _GOOGLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=309,
-  serialized_end=406,
+  serialized_start=310,
+  serialized_end=439,
 )
 
 _GOOGLECONSUMERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GOOGLECONSUMEVERIFYRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GOOGLECONSUMEVERIFYRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_GOOGLECONSUMEVERIFYRESPONSE.fields_by_name['info'].message_type = common_pb2._GETGOLDRESPONSE
 DESCRIPTOR.message_types_by_name['RechargeTest'] = _RECHARGETEST
 DESCRIPTOR.message_types_by_name['GoogleGenerateIDRequest'] = _GOOGLEGENERATEIDREQUEST
 DESCRIPTOR.message_types_by_name['GoogleGenerateIDResponse'] = _GOOGLEGENERATEIDRESPONSE
