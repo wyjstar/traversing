@@ -422,14 +422,6 @@ def stage_sweep(stage_id, times, player, sweep_type):
         return_data = consume(player, sweep_item, multiple=times)
         get_return(player, return_data, response.consume)
 
-        # 活跃度
-        lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
-        # 保存活跃度
-        tstatus = player.tasks.check_inter(lively_event)
-        if tstatus:
-            task_data = task_status(player)
-            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
-
         player.stage_component.get_stage(stage_id).attacks += times
         player.stage_component.save_data()
 
