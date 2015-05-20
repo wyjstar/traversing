@@ -42,3 +42,10 @@ message RuntAttr{
     required int32 attr_increment = 3;
     required int32 attr_type = 4;
 }
+
+message GetGoldResponse{
+    optional CommonResponse res = 1;
+    required int32 gold = 2;
+    required int32 vip_level = 3;
+    required int32 recharge = 4;
+}

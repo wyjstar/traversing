@@ -1,5 +1,8 @@
 import "common.proto";
 
+message InitRecharge{
+}
+
 message RechargeData{
     optional float recharge_time = 1;
     optional float recharge_accumulation = 2;

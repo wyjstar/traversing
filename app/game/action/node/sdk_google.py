@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from sdk.api.google.google_check import verify_signature
 from app.proto_file import google_pb2
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -86,7 +87,14 @@ def google_consume_verify_10002(data, player):
             tlog_action.log('Recharge', player, isfirst,
                             recharge_item.get('id'))
 
-            player.recharge.charge(recharge_item.get('setting')[0].num, response)
+            charge_num = recharge_item.get('setting')[0].num # 充值元宝数量
+            # vip
+            player.base_info.recharge += charge_num
+            player.base_info.set_vip_level(player.base_info.recharge)
+
+
+            player.recharge.charge(charge_num, response)
+            player.recharge.get_recharge_response(response) # recharge
 
             response.res.result = True
 

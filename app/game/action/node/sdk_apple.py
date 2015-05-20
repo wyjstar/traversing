@@ -65,8 +65,14 @@ def apple_consume_verify_11002(data, player):
 
                 response.res.message = RECHARGE_SUCCESS_CODE
                 response.res.result = True
+                charge_num = recharge_item.get('setting')[0].num # 充值元宝数量
+                # vip
+                player.base_info.recharge += charge_num
+                player.base_info.set_vip_level(player.base_info.recharge)
 
-                player.recharge.charge(recharge_item.get('setting')[0].num, response)
+
+                player.recharge.charge(charge_num, response)
+                player.recharge.get_recharge_response(response) # recharge
 
     logger.debug(response)
     return response.SerializeToString()

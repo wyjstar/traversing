@@ -14,9 +14,30 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='recharge.proto',
   package='',
-  serialized_pb='\n\x0erecharge.proto\x1a\x0c\x63ommon.proto\"X\n\x0cRechargeData\x12\x15\n\rrecharge_time\x18\x01 \x01(\x02\x12\x1d\n\x15recharge_accumulation\x18\x02 \x01(\x02\x12\x12\n\nis_receive\x18\x03 \x01(\x05\"O\n\x0cRechargeItem\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\x12\x11\n\tgift_type\x18\x02 \x01(\x05\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.RechargeData\"D\n\x1bGetRechargeGiftDataResponse\x12%\n\x0erecharge_items\x18\x01 \x03(\x0b\x32\r.RechargeItem\"5\n\x16GetRechargeGiftRequest\x12\x1b\n\x04gift\x18\x01 \x03(\x0b\x32\r.RechargeItem\"]\n\x17GetRechargeGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0erecharge.proto\x1a\x0c\x63ommon.proto\"\x0e\n\x0cInitRecharge\"X\n\x0cRechargeData\x12\x15\n\rrecharge_time\x18\x01 \x01(\x02\x12\x1d\n\x15recharge_accumulation\x18\x02 \x01(\x02\x12\x12\n\nis_receive\x18\x03 \x01(\x05\"O\n\x0cRechargeItem\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\x12\x11\n\tgift_type\x18\x02 \x01(\x05\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.RechargeData\"D\n\x1bGetRechargeGiftDataResponse\x12%\n\x0erecharge_items\x18\x01 \x03(\x0b\x32\r.RechargeItem\"5\n\x16GetRechargeGiftRequest\x12\x1b\n\x04gift\x18\x01 \x03(\x0b\x32\r.RechargeItem\"]\n\x17GetRechargeGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
+
+
+_INITRECHARGE = _descriptor.Descriptor(
+  name='InitRecharge',
+  full_name='InitRecharge',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=32,
+  serialized_end=46,
+)
 
 
 _RECHARGEDATA = _descriptor.Descriptor(
@@ -56,8 +77,8 @@ _RECHARGEDATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=32,
-  serialized_end=120,
+  serialized_start=48,
+  serialized_end=136,
 )
 
 
@@ -98,8 +119,8 @@ _RECHARGEITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=122,
-  serialized_end=201,
+  serialized_start=138,
+  serialized_end=217,
 )
 
 
@@ -126,8 +147,8 @@ _GETRECHARGEGIFTDATARESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=203,
-  serialized_end=271,
+  serialized_start=219,
+  serialized_end=287,
 )
 
 
@@ -154,8 +175,8 @@ _GETRECHARGEGIFTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=273,
-  serialized_end=326,
+  serialized_start=289,
+  serialized_end=342,
 )
 
 
@@ -189,8 +210,8 @@ _GETRECHARGEGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=328,
-  serialized_end=421,
+  serialized_start=344,
+  serialized_end=437,
 )
 
 _RECHARGEITEM.fields_by_name['data'].message_type = _RECHARGEDATA
@@ -198,11 +219,18 @@ _GETRECHARGEGIFTDATARESPONSE.fields_by_name['recharge_items'].message_type = _RE
 _GETRECHARGEGIFTREQUEST.fields_by_name['gift'].message_type = _RECHARGEITEM
 _GETRECHARGEGIFTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETRECHARGEGIFTRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+DESCRIPTOR.message_types_by_name['InitRecharge'] = _INITRECHARGE
 DESCRIPTOR.message_types_by_name['RechargeData'] = _RECHARGEDATA
 DESCRIPTOR.message_types_by_name['RechargeItem'] = _RECHARGEITEM
 DESCRIPTOR.message_types_by_name['GetRechargeGiftDataResponse'] = _GETRECHARGEGIFTDATARESPONSE
 DESCRIPTOR.message_types_by_name['GetRechargeGiftRequest'] = _GETRECHARGEGIFTREQUEST
 DESCRIPTOR.message_types_by_name['GetRechargeGiftResponse'] = _GETRECHARGEGIFTRESPONSE
+
+class InitRecharge(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _INITRECHARGE
+
+  # @@protoc_insertion_point(class_scope:InitRecharge)
 
 class RechargeData(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

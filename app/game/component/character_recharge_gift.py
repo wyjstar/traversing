@@ -19,18 +19,21 @@ class CharacterRechargeGift(Component):
     def __init__(self, owner):
         super(CharacterRechargeGift, self).__init__(owner)
         self._recharge = {}
+        self._recharge_ids = [] # 已经充值的项
 
     def init_data(self, character_info):
         self._recharge = character_info.get('recharge', {})
+        self._recharge_ids = character_info.get('recharge_ids', [])
         self.check_time()
 
     def save_data(self):
         activity = tb_character_info.getObj(self.owner.base_info.id)
         activity.hset('recharge', self._recharge)
+        activity.hset('recharge_ids', self._recharge_ids)
         self.check_time()
 
     def new_data(self):
-        return {'recharge': self._recharge}
+        return {'recharge': self._recharge, 'recharge_ids': self._recharge_ids}
 
     def check_time(self):
         for activity_id, activity_data in self._recharge.items():
@@ -43,6 +46,9 @@ class CharacterRechargeGift(Component):
                 continue
 
     def charge(self, recharge, response):
+        #保存首次充值id
+        #vip
+        #活动
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
             if activitys is None:
@@ -50,6 +56,7 @@ class CharacterRechargeGift(Component):
                 continue
             for activity in activitys:
                 self.type_process(activity, recharge, response)
+
         logger.debug(self._recharge)
 
     def type_process(self, activity, recharge, response):
@@ -165,3 +172,10 @@ class CharacterRechargeGift(Component):
         return_data = gain(self.owner, activity.get('reward'),
                            const.RECHARGE)  # 获取
         get_return(self.owner, return_data, response.gain)
+
+    def get_recharge_response(self, response):
+        """docstring for get_response"""
+        response.gold = self._owner.finance.gold
+        response.vip_level = self._owner.base_info.vip_level
+        response.recharge = self._owner.base_info.recharge
+
