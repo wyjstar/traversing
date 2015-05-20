@@ -83,7 +83,8 @@ class CharacterTravelComponent(Component):
         max_num = game_configs.base_config.get("travelShoeTimes")
         if self._shoes[0] == max_num:
             self._shoes = [max_num-1, int(time.time())]
-        self._shoes[0] -= 1
+        else:
+            self._shoes[0] -= 1
 
     def get_travel_item_groups(self):
         groups = []
