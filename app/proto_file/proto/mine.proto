@@ -187,7 +187,6 @@ message MineBattleRequest
 	repeated int32 lineup = 2;      // 队形
 	optional int32 unparalleled = 3; // 无双技能ID
 	optional int32 fid = 4;          // 好友ID
-	optional int32 hold = 5; //是否占领 0:抢夺，1抢夺并占领
 }
 
 // 秘境相关，战斗响应，command:1253

@@ -33,7 +33,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 def mine_status(player, response):
@@ -589,7 +589,7 @@ def settle_1252(data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
     # todo: set settle time to calculate acc_mine
-    process_mine_result(player, pos, result, None, 0)
+    process_mine_result(player, pos, result, None, 0, 0)
     response.result = True
     return response.SerializePartialToString()
 
@@ -678,7 +678,6 @@ def battle_1253(data, player):
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
-    response.hold = request.hold
     # print 'battle_1253:', response
     return response.SerializePartialToString()
 

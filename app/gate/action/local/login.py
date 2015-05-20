@@ -50,7 +50,7 @@ def character_login_4(key, dynamic_id, request_proto):
     login_time = int(time.time())
     if response.closure > login_time or response.closure == -2:
         msg = AccountKick()
-        msg.id = 1
+        msg.id = 2
         msg.time = response.closure
         groot.child('net').kick_by_id_remote(msg.SerializeToString(), dynamic_id)
 

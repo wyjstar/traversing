@@ -26,7 +26,7 @@ from app.proto_file.account_pb2 import AccountKick
 import time
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
@@ -37,7 +37,7 @@ def ban_user(data, player):
     player.base_info.save_data()
     if ban_user_time > int(time.time()) or ban_user_time == -2:
         response = AccountKick()
-        response.id = 1
+        response.id = 2
         response.time = ban_user_time
         remote_gate.kick_by_id_remote(response.SerializeToString(),
                                       player.dynamic_id)

@@ -8,9 +8,9 @@ from app.game.redis_mode import tb_character_info
 from app.proto_file.common_pb2 import CommonResponse
 from shared.utils import trie_tree
 from shared.db_opear.configs_data import game_configs
-from test.init_data.init_data import init
 from gfirefly.server.logobj import logger
 from app.proto_file import player_request_pb2
+from app.proto_file import recharge_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, ChangeHeadRequest
 from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHeadResponse
@@ -22,15 +22,10 @@ from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
-from app.game.action.node.line_up import change_hero_logic
-from app.game.action.node.equipment import enhance_equipment
-from app.game.action.node.hero import hero_upgrade_with_item_logic, do_hero_refine
-from app.game.action.node.runt import do_runt_set
-from app.game.action.node.hero import hero_break_logic
 from shared.tlog import tlog_action
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
@@ -334,6 +329,13 @@ def change_battle_speed_848(data, player):
     response.result = True
     return response.SerializePartialToString()
 
+@remoteserviceHandle('gate')
+def recharge_11010(data, player):
+    response = recharge_pb2.InitRecharge()
+    for recharge_id in player.base_info._first_recharge_ids:
+        response.recharge_ids.append(recharge_id)
+
+    return response.SerializePartialToString()
 
 def init_player(player):
     new_character = player.is_new_character()
