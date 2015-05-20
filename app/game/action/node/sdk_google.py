@@ -4,13 +4,9 @@ created by server on 15-2-11下午3:49.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data import game_configs
-from app.game.core.item_group_helper import get_return
-from app.game.core.item_group_helper import gain
 from gfirefly.server.logobj import logger
 from sdk.api.google.google_check import verify_signature
 from app.proto_file import google_pb2
-from shared.utils.const import const
-from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -75,27 +71,7 @@ def google_consume_verify_10002(data, player):
             logger.debug('google consume goodid not in rechargeconfig:%s',
                          data.get('productId'))
         else:
-            return_data = gain(player, recharge_item.get('setting'),
-                               const.RECHARGE)  # 获取
-            get_return(player, return_data, response.gain)
-            rres = player.base_info.first_recharge(recharge_item, response)
-
-            if rres:
-                isfirst = 1
-            else:
-                isfirst = 0
-            tlog_action.log('Recharge', player, isfirst,
-                            recharge_item.get('id'))
-
-            charge_num = recharge_item.get('setting')[0].num # 充值元宝数量
-            # vip
-            player.base_info.recharge += charge_num
-            player.base_info.set_vip_level(player.base_info.recharge)
-
-
-            player.recharge.charge(charge_num, response)
-            player.recharge.get_recharge_response(response) # recharge
-
+            player.recharge.recharge_gain(recharge_item, response) #发送奖励邮件
             response.res.result = True
 
     logger.debug(response)
