@@ -57,7 +57,7 @@ def get_stages_901(pro_data, player):
 
 @remoteserviceHandle('gate')
 def get_chapter_912(pro_data, player):
-    """取得章节奖励信息
+    """取得剧情提示章节
     """
     request = stage_request_pb2.UpdataPlotChapterRequest()
     request.ParseFromString(pro_data)
@@ -89,7 +89,9 @@ def get_chapter_902(pro_data, player):
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
-    # logger.debug(response)
+        for already_gift in chapter_obj.already_gift:
+            stage_award_add.already_gift.append(already_gift)
+    logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -216,7 +218,6 @@ def get_warriors_906(pro_data, player):
 def stage_sweep_907(pro_data, player):
     request = stage_request_pb2.StageSweepRequest()
     request.ParseFromString(pro_data)
-    print 'stage_sweep_907', request
     stage_id = request.stage_id
     times = request.times
     sweep_type = request.sweep_type
@@ -489,17 +490,20 @@ def reset_stage_908(pro_data, player):
     logger.debug('reset stage 908 success')
     return response.SerializePartialToString()
 
+
 @remoteserviceHandle('gate')
 def get_award_909(pro_data, player):
     """取得章节奖励信息
     """
     return get_award(pro_data, player)
 
+
 @remoteserviceHandle('gate')
 def get_award_910(pro_data, player):
     """取得章节奖励信息
     """
     return get_award(pro_data, player)
+
 
 def get_award(pro_data, player):
 
@@ -531,21 +535,40 @@ def get_award(pro_data, player):
             chapter_obj.award_info[award_type] = 1
             bag_id = conf.starGift[award_type]
 
+        drop = get_drop(bag_id)
+        return_data = gain(player, drop, const.CHAPTER_AWARD)
+        get_return(player, return_data, response.drops)
+        player.stage_component.save_data()
+
     else:
-        if chapter_obj.award_info[-1] == -1 or chapter_obj.dragon_gift == 1:
-            logger.error("already receive or can`t receive")
+        if chapter_obj.award_info[-1] == -1:
+            logger.error("can`t receive")
             response.res.result = False
             response.res.result_no = 833
             return response.SerializePartialToString()
         else:
-            chapter_obj.dragon_gift = 1
-            bag_id = conf.dragonGift
+            if chapter_obj.dragon_gift == 0:
+                chapter_obj.dragon_gift = 1
+                res = get_gift(chapter_obj, chapter_id, response)
+                player.stage_component.save_data()
+            else:
+                star_index = len(chapter_obj.already_gift) - 1
+                star_price = game_configs.base_config.get('starPrice')[star_index]
 
-    drop = get_drop(bag_id)
-    return_data = gain(player, drop, const.CHAPTER_AWARD)
-    get_return(player, return_data, response.drops)
+                result = is_afford(player, star_price)
+                if not result.get('result'):
+                    response.res.result = False
+                    response.res.result_no = result.get('result_no')
+                    # common_response.message = u'消费不足2！'
+                    return response.SerializeToString()
 
-    player.stage_component.save_data()
+                res = get_gift(chapter_obj, chapter_id, response)
+                if not res['res']:
+                    response.res.result = False
+                    response.res.result_no = 862
+                    return response.SerializePartialToString()
+                player.stage_component.save_data()
+            consume(player, star_price)  # 消耗
 
     response.res.result = True
     # logger.debug(response)
@@ -558,3 +581,31 @@ def get_drop(bag_id):
     common_drop = common_bag.get_drop_items()
     drops.extend(common_drop)
     return drops
+
+
+def get_gift(chapter_obj, chapter_id, response):
+    already_gift = chapter_obj.already_gift
+    gift_weight = game_configs.stage_config.get('gift_weight')
+    gift_info = game_configs.stage_config.get('gift_info')
+    for x in already_gift:
+        del gift_weight[x]
+    if not gift_weight:
+        return {'res', False}
+    all_weight = 0
+    for (id, weight) in gift_weight.items():
+        all_weight += weight
+    random_num = random.randint(1, all_weight)
+    for (id, weight) in gift_weight.items():
+        if random_num <= weight:
+            gift_id = id
+            break
+        random_num -= weight
+    gift = gift_info[gift_id]
+
+    prize = parse({gift[0]: [gift[2], gift[2], gift[1]]})
+    return_data = gain(player, prize, const.CHAPTER_AWARD)  # 获取
+    get_return(player, return_data, response.gain)
+    response.gift_id = gift_id
+    chapter_obj.already_gift.append[gift_id]
+
+    return {'res': True, 'gift_id': gift_id}
