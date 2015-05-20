@@ -33,6 +33,7 @@ def use_item_302(pro_data, player):
     item_pb.ParseFromString(pro_data)
     item_no = item_pb.item_no
     item_num = item_pb.item_num
+    print("request:", item_pb)
     item_config_item = game_configs.item_config.get(item_no)
     if not item_config_item:
         return
@@ -50,6 +51,7 @@ def use_item_302(pro_data, player):
     if not item or item.num < item_num:
         common_response.result = False
         common_response.result_no = 106
+        print("error:", 106)
         # common_response.message = u"道具不足！"
         return response.SerializeToString()
 
@@ -58,12 +60,13 @@ def use_item_302(pro_data, player):
         box_key_no = func_args1
         box_key = player.item_package.get_item(box_key_no)
         if not box_key or box_key.num < func_args2 * item_num:
+            print("error:", 107)
             common_response.result = False
             common_response.result_no = 107
             # common_response.message = u"box key 不足！" + str(func_args2 * item_num) + "_" + str(box_key.num)
             return response.SerializeToString()
         # 消耗key
-        box_key.num -= func_args2 * item_num
+        #box_key.num -= func_args2 * item_num
         player.item_package.consume_item(box_key_no, item_num)
         player.item_package.save_data()
 

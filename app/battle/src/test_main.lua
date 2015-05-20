@@ -88,12 +88,13 @@ function cclog(data)
 end
 local fcProcess = FCProcess.new("FCProcess")
 
-function setData(fightData, fightType)
+function setData(fightData, fightType, level)
     -- 初始化数据
     -- fightData: 战斗数据
     -- fightType: 战斗类型
     getDataManager():getFightData():setFightType(fightType)
     getDataManager():getFightData():setData(fightData)
+    getDataManager():getCommonData():setPlayerLevel(level)
     print("seed1============"..fightData.seed1)
     print("seed2============"..fightData.seed2)
 end

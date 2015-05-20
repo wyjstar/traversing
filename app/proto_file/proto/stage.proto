@@ -10,7 +10,7 @@ message BattleUnit{
 	required int32 no = 1;              // 战斗单位ID
 	optional int32 quality = 2;         // 战斗单位品质
                                         //
-	optional float hp = 3;              // 战斗单位血量
+	optional int64 hp = 3;              // 战斗单位血量
 	optional float atk = 4;             // 战斗单位攻击
 	optional float physical_def = 5;    // 战斗单位物理防御
 	optional float magic_def = 6;       // 战斗单位魔法防御
@@ -32,6 +32,7 @@ message BattleUnit{
 	optional bool is_break = 28;
 	optional bool is_awake = 29;
 	optional int32 origin_no = 30;
+	optional int64 hp_max = 31;              // 战斗单位血量Max
 }
 
 message BattleUnitGrop{
@@ -54,6 +55,7 @@ message StageAward{
 	required int32 chapter_id = 1; //章节编号
 	repeated int32 award = 2;  //奖励数组 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
 	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+	repeated int32 already_gift = 4;  //已经领取的奖励
 }
 
 message Unparalleled{

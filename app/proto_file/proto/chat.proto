@@ -15,7 +15,7 @@ message ChatConectingRequest{
     required int32 channel = 2;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
     required string content = 3;//聊天内容
     optional ChatObjectInfo other = 4; // 私聊角色信息
-    optional string guild_id = 5;//公会ID
+    optional int32 guild_id = 5;//公会ID
     optional int32 vip_level = 6;
 }
 

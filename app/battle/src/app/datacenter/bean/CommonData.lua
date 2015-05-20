@@ -13,6 +13,7 @@ function CommonData:ctor(item)
     self.totalRecharge = 0
     self.c_BaseTemplate = getTemplateManager():getBaseTemplate()
     self.isHasVipGift = false
+    self.iscanZcjb = false
     self.netTip = nil
 end
 -- function CommonData:clear()
@@ -67,7 +68,7 @@ function CommonData:setData(data)
     self.accountId = data.id                            --玩家id
     self.nickname = data.nickname                       --玩家昵称
     self.register_time = data.register_time
-    cclog("------新用户的注册时间－－－－－－－"..self.register_time)
+    cclog("------新用户的注册时间－－－－－－－"..self.register_time.."等级:"..data.level)
     self.vip = data.vip_level                           --vip等级
     self.exp = data.exp                                 --经验
     self.level = data.level                             --等级
@@ -96,9 +97,13 @@ function CommonData:setData(data)
 
     self.client_time = os.time()
     print("server_time", self.server_time)
-    print("client_time", os.time)
+    print("client_time", self.client_time)
 
     self.finances = data.finances
+
+    print("----self.finances--------")
+    print(self.finances)
+    table.print(self.finances)
 
     self.login_time = data.server_time
 
@@ -112,6 +117,10 @@ function CommonData:setData(data)
     self.head = data.head             --头像列表
     self.now_head = data.now_head     --当前头像id
 
+    self.tomorrow_gift = data.tomorrow_gift
+    print("tomorrow_gift = ", data.tomorrow_gift)
+
+    self.battle_speed = data.battle_speed or 1 --战斗速度
     -- test
     -- self.server_time = os.time({year=2014,month=9,day=20,hour=11,min=6,sec=0})
 
@@ -128,12 +137,16 @@ end
 -- 新版本玩家资源 data.finances
 function CommonData:getFinance(type)
     -- table.print(self.finances)
-    -- print("type, value", type, self.finances[type+1])
+    -- print("CommonData:getFinance=============>type, value", type, self.finances[type+1])
+    if not self.finances[type+1] then
+        error("CommonData:getFinance error, value is nil , type="..type)
+    end
     if self.finances[type+1] < 0 then
         self.finances[type+1] = 0
     end
     return self.finances[type+1]
 end
+
 function CommonData:setFinance(type, num)
     self.finances[type+1] = num
 end
@@ -193,6 +206,14 @@ function CommonData:setVipGift(hasVipGift)
     self.isHasVipGift = hasVipGift
     -- body
 end
+function CommonData:setCanZcjb(canZcjb)
+    self.iscanZcjb = canZcjb
+    -- body
+end
+function CommonData:getCanZcjb()
+    return self.iscanZcjb
+    -- body
+end
 
 -- 返回模拟的服务器时间（客户端以服务器时间为准）
 function CommonData:getTime()
@@ -217,6 +238,8 @@ function CommonData:setBrewTimes(times) self.brew_times = times end
 function CommonData:getBrewStep() return self.brew_step end
 function CommonData:setBrewStep(step) self.brew_step = step end
 
+function CommonData:getBattleSpeed() return self.battle_speed end
+function CommonData:setBattleSpeed(speed) self.battle_speed = speed end
 
 -- 返回战斗力
 function CommonData:getCombatPower() return self.combat_power end
@@ -348,6 +371,7 @@ end
 -- 在线奖励
 function CommonData:setOnlineGiftList(list) self.onlineGiftList = list end
 function CommonData:addGotOnlineGift(giftId) table.insert(self.onlineGiftList, giftId) end
+function CommonData:getGotOnlineGift(giftId) return self.onlineGiftList end
 -- 查询在线奖励是否领取
 function CommonData:isGetOnlineGift(id)
     if self.onlineGiftList == nil then return false end
@@ -356,6 +380,7 @@ function CommonData:isGetOnlineGift(id)
     end
     return false
 end
+
 -- 等级奖励
 function CommonData:setLevelGiftList(list) self.levelGiftList = list end
 -- 添加已获得的等级奖励
@@ -514,6 +539,11 @@ function CommonData:getExp() return self.exp end
 function CommonData:addExp(num) self.exp = self:getExp() + num  getHomeBasicAttrView():updateExp()  getNetManager():sendMsgAfterPlayerUpgrade() end
 
 --等级
+function CommonData:setPlayerLevel(level)
+    self.level = level
+end
+
+--等级
 function CommonData:setLevel(level)
 
     print("setLevel---------level====", level)
@@ -654,12 +684,13 @@ function CommonData:countTimer()
     -- self:getTime()
 
     local function updateTimer(dt)
+        
         -- print("----- updateTimer ------")
         -- self.server_time = self.server_time + 1
         self.during_time = self.during_time + 1
         if self.during_time >= recoverTime then
             -- print("--------- 10到 -------------")
-            if self:getFinance(7) < max then
+            if self:getStamina() < max then
                 getNetManager():getActivityNet():sendRecoverStamina()
                 self.during_time = 0
                 self.last_gain_stamina_time = self:getTime()
@@ -691,9 +722,9 @@ function CommonData:isFeastTime(_timeCanGet)
 
     local _curHour = self:getCurrHour()
     local _curMin = self:getCurrMin()
-    -- print("current :", _curHour,_curMin)
+   -- print("current :", _curHour,_curMin)
     for k,v in pairs(_timeCanGet) do
-        -- print(v.startHour, v.startMin, v.endedHour, v.endedMin)
+    -- print(v.startHour, v.startMin, v.endedHour, v.endedMin)
         if getTheTimeMin(v.startHour,v.startMin) <= getTheTimeMin(_curHour,_curMin) and
                 getTheTimeMin(v.endedHour,v.endedMin) > getTheTimeMin(_curHour,_curMin) then
             return true
@@ -831,6 +862,22 @@ end
 function  CommonData:getRechargeAcc()
     if self.rechargeAcc == nil then self.rechargeAcc = 0 end
     return self.rechargeAcc
+end
+--活动的单次充值数
+function  CommonData:getRechargeSingle(id)
+     local rechargeSingle  = 0
+     if self.rechargeData == nil then return rechargeSingle end
+     for k,v in pairs(self.rechargeData) do
+         if v.gift_id == id then
+
+            if v.data[1].recharge_accumulation == nil then
+                return rechargeSingle
+            else
+                return v.data[1].recharge_accumulation
+            end
+         end
+     end
+    return rechargeSingle
 end
 --活动在点击领取时候的发送信息
 function CommonData:getSendInfo(id)

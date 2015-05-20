@@ -224,7 +224,7 @@ formula_config={
 ,  [112] = {
   ["precondition"] = "1",  ["formula"] = "(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["clientPrecondition"] = "",  ["id"] = 112,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "warriorsDamage",}
 ,  [113] = {
-  ["precondition"] = "1",  ["formula"] = "warriorsBaseDamage*skill_buff.valueEffect+skill_buff.levelEffectValue*playerLevel",  ["clientPrecondition"] = "",  ["id"] = 113,  ["clientFormula"] = "result=warriorsBaseDamage*skill_buff.valueEffect+skill_buff.levelEffectValue*playerLevel",  ["key"] = "warriorsLastDamage",}
+  ["precondition"] = "1",  ["formula"] = "warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["clientPrecondition"] = "",  ["id"] = 113,  ["clientFormula"] = "result=warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["key"] = "warriorsLastDamage",}
 ,  [114] = {
   ["precondition"] = "1",  ["formula"] = "atk*1.5",  ["clientPrecondition"] = "1",  ["id"] = 114,  ["clientFormula"] = "result=atk*1.5",  ["key"] = "monster_warriors_atkArray",}
 ,  [115] = {
@@ -273,4 +273,20 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "1 if weekCardSurplusDay < 4 else 0",  ["clientPrecondition"] = "1",  ["id"] = 136,  ["clientFormula"] = "result=(weekCardSurplusDay < 3 and 1) or 0",  ["key"] = "weekCard",}
 ,  [137] = {
   ["precondition"] = "1",  ["formula"] = "upRank - highestRank",  ["clientPrecondition"] = "1",  ["id"] = 137,  ["clientFormula"] = "result=upRank - highestRank",  ["key"] = "arenaRankUpRewardsValue",}
+,  [138] = {
+  ["precondition"] = "1",  ["formula"] = "heroNum*10",  ["clientPrecondition"] = "1",  ["id"] = 138,  ["clientFormula"] = "result=heroNum*10",  ["key"] = "guide2001",}
+,  [139] = {
+  ["precondition"] = "1",  ["formula"] = "heroNum*10",  ["clientPrecondition"] = "1",  ["id"] = 139,  ["clientFormula"] = "result=heroNum*10",  ["key"] = "guide2002",}
+,  [140] = {
+  ["precondition"] = "1",  ["formula"] = "heroBreak1*10+heroBreak2*10+heroBreak3*10+heroBreak4*10+heroBreak5*10+heroBreak6*10",  ["clientPrecondition"] = "1",  ["id"] = 140,  ["clientFormula"] = "result=heroBreak1*10+heroBreak2*10+heroBreak3*10+heroBreak4*10+heroBreak5*10+heroBreak6*10",  ["key"] = "guide2003",}
+,  [141] = {
+  ["precondition"] = "1",  ["formula"] = "heroStone1*1+heroStone2*1+heroStone3*1+heroStone4*1+heroStone5*1+heroStone6*1",  ["clientPrecondition"] = "1",  ["id"] = 141,  ["clientFormula"] = "result=heroStone1*1+heroStone2*1+heroStone3*1+heroStone4*1+heroStone5*1+heroStone6*1",  ["key"] = "guide2004",}
+,  [142] = {
+  ["precondition"] = "1",  ["formula"] = "heroSeal1*10+heroSeal2*10+heroSeal3*10+heroSeal4*10+heroSeal5*10+heroSeal6*10",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=heroSeal1*10+heroSeal2*10+heroSeal3*10+heroSeal4*10+heroSeal5*10+heroSeal6*10",  ["key"] = "guide2005",}
+,  [143] = {
+  ["precondition"] = "1",  ["formula"] = "cheerNum*10",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=cheerNum*10",  ["key"] = "guide2006",}
+,  [144] = {
+  ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 144,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2007",}
+,  [145] = {
+  ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 145,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2008",}
 ,}

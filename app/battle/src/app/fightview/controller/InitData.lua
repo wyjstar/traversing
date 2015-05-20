@@ -276,6 +276,8 @@ function initWorldBossData()
     local red_units = data.red
     local blue_units = data.blue
     local debuff_skill_no = data.debuff_skill_no
+    local damage_rate = data.damage_rate
+    process.damage_rate = damage_rate
     local redUnits = {}
     local blueUnits = {}
 
@@ -433,9 +435,10 @@ function constructBattleUnit(data, side)
     unit.unit_name = ""
     unit.no = data.no
     unit.hp = data.hp
-    unit.hp_begin = data.hp
+    print("world boss hp", unit.hp, unit.hp_max)
+    unit.hp = data.hp
     --unit.hp_max = data.hp_max
-    unit.hp_max = data.hp
+    unit.hp_max = data.hp_max
     unit.atk = data.atk
     unit.physical_def = data.physical_def
     unit.magic_def = data.magic_def

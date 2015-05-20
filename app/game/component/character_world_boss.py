@@ -59,6 +59,7 @@ class Boss(object):
         self._award = {}               # 奖励
         self._demages = [] # 每次的伤害
         self._gold_reborn_times = 0 # 元宝复活次数
+        self._last_coin_encourage_time = 0 # 上次金币鼓舞时间
 
     def init_data(self, data):
         """docstring for init_data"""
@@ -72,6 +73,7 @@ class Boss(object):
         self._award = data.get('award', {})
         self._demages = data.get('demages', [])
         self._gold_reborn_times = data.get('gold_reborn_times', 0)
+        self._last_coin_encourage_time = data.get('last_coin_encourage_time', 0)
 
     def get_stage_info(self):
         stage_info = None
@@ -97,6 +99,7 @@ class Boss(object):
             self._last_fight_time = 0
             self._last_request_time = get_current_timestamp()
             self._gold_reborn_times = 0
+            self._last_coin_encourage_time = 0 # 上次金币鼓舞时间
 
     @property
     def boss_id(self):
@@ -146,11 +149,11 @@ class Boss(object):
     def last_fight_time(self, value):
         self._last_fight_time = value
 
-    def set_award(self, award_type, award):
+    def set_award(self, award_type, award, rank_no):
         """
         设置奖励, 参与奖励做特殊处理
         """
-        self._award[award_type] = award
+        self._award[award_type] = award, rank_no
 
     def get_award(self):
         """
@@ -160,8 +163,8 @@ class Boss(object):
             temp = self._award.get(i)
             if temp:
                 del self._award[i]
-                return i, temp, False
-        return 0, [], True
+                return i, temp[0], temp[1], False
+        return 0, [], 0, True
 
     def get_data_dict(self):
         """docstring for get_data_dict"""
@@ -174,7 +177,8 @@ class Boss(object):
                 'boss_id': self._boss_id,
                 'award': self._award,
                 'demages': self._demages,
-                'gold_reborn_times': self._gold_reborn_times
+                'gold_reborn_times': self._gold_reborn_times,
+                'last_coin_encourage_time': self._last_coin_encourage_time
                 }
 
     def get_base_config(self):
@@ -198,3 +202,12 @@ class Boss(object):
     @gold_reborn_times.setter
     def gold_reborn_times(self, value):
         self._gold_reborn_times = value
+
+    @property
+    def last_coin_encourage_time(self):
+        return self._last_coin_encourage_time
+
+    @last_coin_encourage_time.setter
+    def last_coin_encourage_time(self, value):
+        self._last_coin_encourage_time = value
+

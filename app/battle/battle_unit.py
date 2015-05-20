@@ -154,7 +154,7 @@ class BattleUnit(object):
 
     @property
     def hp(self):
-        return self._hp
+        return int(self._hp)
 
     @hp.setter
     def hp(self, value):
@@ -254,7 +254,7 @@ class BattleUnit(object):
 
     @property
     def hp_max(self):
-        return self._hp_max
+        return int(self._hp_max)
 
     @hp_max.setter
     def hp_max(self, value):
@@ -350,7 +350,6 @@ def do_assemble(slot_no, no, quality, break_skills, hp,
 
     battle_unit.hp_max = hp
     battle_unit.hp = hp
-    battle_unit.hp_max = hp
     battle_unit.atk = atk
     battle_unit.physical_def = physical_def
     battle_unit.magic_def = magic_def

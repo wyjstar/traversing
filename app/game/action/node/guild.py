@@ -234,6 +234,7 @@ def exit_guild_803(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
     position = player.guild.position
+    p_list = guild_obj.p_list
     position_p = p_list.get(position)
     if position_p.count(p_id) != 1:
         response.res.result = False
@@ -262,7 +263,6 @@ def exit_guild_803(data, player):
             # response.res.message = "军团人数大于1，团长不可以退出军团"
             return response.SerializeToString()
         else:  # position != 1:
-            p_list = guild_obj.p_list
             guild_obj.exit_guild(p_id, position)
             guild_obj.save_data()
             # 退出公会聊天
@@ -674,8 +674,7 @@ def bless_809(data, player):
             response.res.result_no = 102
             return response.SerializeToString()
 
-    # if player.base_info.guild_worship_times <= player.guild.bless_times:
-    if False:
+    if player.base_info.guild_worship_times <= player.guild.bless_times:
         response.res.result = False
         response.res.result_no = 854
         # response.message = "今天的膜拜次数已用完"
@@ -1233,8 +1232,7 @@ def praise_1807(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    # if player.guild.praise_state:
-    if False:
+    if player.guild.praise_state:
         response.res.result = False
         response.res.result_no = 851
         return response.SerializeToString()

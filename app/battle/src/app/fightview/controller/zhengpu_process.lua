@@ -33,11 +33,14 @@ function FightProcess:ctor(send_message)
     --buff数据集合, 用于一次攻击的buff管理，用于View显示
     self.temp_buff_set = BuffSetForView.new(self)
     -- 玩家等级
-    self.playerLevel=30
+    self.playerLevel = 0
     self.step_id = 0  -- 自增
     self.steps = {} -- 同步数据
     self.back_skill_buff = nil -- 保存反击buff
     self.current_skill_type = TYPE_NORMAL  -- 当前技能类型
+    self.damage_rate = 0
+    
+    set_process(self)
 end
 
 function FightProcess:init(fight_type)
@@ -52,6 +55,7 @@ function FightProcess:init(fight_type)
     --总回合数
     self.max_round = table.nums(self.blue_groups)
     self.blue_hp_total = self:get_blue_hp_total()
+    self.playerLevel=getDataManager():getCommonData():getLevel()
     self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
     -- self.buddy_skill.mp_step = 50
@@ -169,6 +173,7 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
         skill:clear_mp()
     end
     main_skill_buff = skill:main_skill_buff(is_mp_skill)
+    print("main_skill_buff", main_skill_buff)
 
     if attacker.buff_manager:is_dizzy() then
         --logger_cal.debug("    攻击者在buff中，无法攻击！")
@@ -256,6 +261,12 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     -- 构造播放攻击所需的所有信息
     local skillType = skill:get_skill_type()
     print("skillType========"..skillType)
+
+    if self.back_skill_buff and not table.ink(target_side, self.back_skill_buff.attacker.no) then
+        -- 如果反击武将已死，则清空反击技能
+        self.back_skill_buff = nil
+    end
+
     return self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.buffs, STEP_DO_BUFF)
 end
 
@@ -693,7 +704,7 @@ function FightProcess:get_blue_hp_total()
     local total = 0
     for _,v in pairs(self.blue_groups) do
         for _,unit in pairs(v) do
-            total = total + unit.hp_begin
+            total = total + unit.hp
         end
     end
     return total

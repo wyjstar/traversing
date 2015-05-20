@@ -15,7 +15,7 @@ import player_response_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage.proto',
   package='',
-  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\xf4\x02\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\n\n\x02hp\x18\x03 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x04 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x05 \x01(\x02\x12\x11\n\tmagic_def\x18\x06 \x01(\x02\x12\x0b\n\x03hit\x18\x07 \x01(\x02\x12\r\n\x05\x64odge\x18\x08 \x01(\x02\x12\x0b\n\x03\x63ri\x18\t \x01(\x02\x12\x11\n\tcri_coeff\x18\n \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\x0b \x01(\x02\x12\r\n\x05\x62lock\x18\x0c \x01(\x02\x12\x11\n\tductility\x18\r \x01(\x02\x12\r\n\x05level\x18\x17 \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x18 \x01(\x05\x12\x0f\n\x07is_boss\x18\x19 \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x1a \x03(\x05\x12\x10\n\x08position\x18\x1b \x01(\x05\x12\x10\n\x08is_break\x18\x1c \x01(\x08\x12\x10\n\x08is_awake\x18\x1d \x01(\x08\x12\x11\n\torigin_no\x18\x1e \x01(\x05\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"P\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\x12\x15\n\x05reset\x18\x04 \x01(\x0b\x32\x06.Reset\"$\n\x05Reset\x12\r\n\x05times\x18\x01 \x02(\x05\x12\x0c\n\x04time\x18\x02 \x02(\x05\"D\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08\".\n\x08StepInfo\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tstep_type\x18\x02 \x02(\x05')
+  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\x84\x03\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\n\n\x02hp\x18\x03 \x01(\x03\x12\x0b\n\x03\x61tk\x18\x04 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x05 \x01(\x02\x12\x11\n\tmagic_def\x18\x06 \x01(\x02\x12\x0b\n\x03hit\x18\x07 \x01(\x02\x12\r\n\x05\x64odge\x18\x08 \x01(\x02\x12\x0b\n\x03\x63ri\x18\t \x01(\x02\x12\x11\n\tcri_coeff\x18\n \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\x0b \x01(\x02\x12\r\n\x05\x62lock\x18\x0c \x01(\x02\x12\x11\n\tductility\x18\r \x01(\x02\x12\r\n\x05level\x18\x17 \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x18 \x01(\x05\x12\x0f\n\x07is_boss\x18\x19 \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x1a \x03(\x05\x12\x10\n\x08position\x18\x1b \x01(\x05\x12\x10\n\x08is_break\x18\x1c \x01(\x08\x12\x10\n\x08is_awake\x18\x1d \x01(\x08\x12\x11\n\torigin_no\x18\x1e \x01(\x05\x12\x0e\n\x06hp_max\x18\x1f \x01(\x03\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"P\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\x12\x15\n\x05reset\x18\x04 \x01(\x0b\x32\x06.Reset\"$\n\x05Reset\x12\r\n\x05times\x18\x01 \x02(\x05\x12\x0c\n\x04time\x18\x02 \x02(\x05\"Z\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\x12\x14\n\x0c\x61lready_gift\x18\x04 \x03(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08\".\n\x08StepInfo\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tstep_type\x18\x02 \x02(\x05')
 
 
 
@@ -78,7 +78,7 @@ _BATTLEUNIT = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='hp', full_name='BattleUnit.hp', index=2,
-      number=3, type=2, cpp_type=6, label=1,
+      number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -209,6 +209,13 @@ _BATTLEUNIT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='hp_max', full_name='BattleUnit.hp_max', index=21,
+      number=31, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -219,7 +226,7 @@ _BATTLEUNIT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=89,
-  serialized_end=461,
+  serialized_end=477,
 )
 
 
@@ -246,8 +253,8 @@ _BATTLEUNITGROP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=463,
-  serialized_end=507,
+  serialized_start=479,
+  serialized_end=523,
 )
 
 
@@ -295,8 +302,8 @@ _STAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=509,
-  serialized_end=589,
+  serialized_start=525,
+  serialized_end=605,
 )
 
 
@@ -330,8 +337,8 @@ _RESET = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=591,
-  serialized_end=627,
+  serialized_start=607,
+  serialized_end=643,
 )
 
 
@@ -363,6 +370,13 @@ _STAGEAWARD = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='already_gift', full_name='StageAward.already_gift', index=3,
+      number=4, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -372,8 +386,8 @@ _STAGEAWARD = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=629,
-  serialized_end=697,
+  serialized_start=645,
+  serialized_end=735,
 )
 
 
@@ -414,8 +428,8 @@ _UNPARALLELED = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=699,
-  serialized_end=758,
+  serialized_start=737,
+  serialized_end=796,
 )
 
 
@@ -449,8 +463,8 @@ _STEPINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=760,
-  serialized_end=806,
+  serialized_start=798,
+  serialized_end=844,
 )
 
 _BATTLEUNITGROP.fields_by_name['group'].message_type = _BATTLEUNIT

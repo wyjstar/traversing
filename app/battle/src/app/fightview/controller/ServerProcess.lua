@@ -45,6 +45,7 @@ end
 --开始战斗pvp 
 function FCProcess:pvp_start()
     print("FCProcess:pvp_start============")
+    self.fightProcess:perform_open_skill()
     while self.fightProcess:check_result() == 0 do
         self.fightProcess:perform_one_step()
     end

@@ -77,8 +77,9 @@ def get_fight_info(data, player):
     response.fight_times = boss.fight_times
     response.last_fight_time = int(boss.last_fight_time)
     response.gold_reborn_times = boss.gold_reborn_times
+    response.last_coin_encourage_time = int(boss.last_coin_encourage_time)
     logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
-    print response
+    #print response
     print "*" * 80
 
     return response.SerializePartialToString()
@@ -118,6 +119,14 @@ def encourage_heros_1703(data, player):
         goldcoin_inspire_price = base_config.get("coin_inspire_price")
         goldcoin_inspire_price_multiple = base_config.get("coin_inspire_price_multi")
         goldcoinInspireLimited = base_config.get("coin_inspire_limit")
+        goldcoin_inspire_CD = base_config.get("coin_inspire_cd")
+        if get_current_timestamp() - boss.last_coin_encourage_time < goldcoin_inspire_CD:
+            logger.debug("coin encourage CD not enough %s, %s" % (boss.last_coin_encourage_time, goldcoin_inspire_CD))
+            response.result = False
+            response.result_no = 1704
+            logger.debug("*" * 80)
+            print response
+            return response.SerializePartialToString()
 
         if boss.encourage_coin_num >= goldcoinInspireLimited:
             logger.debug("coin encourage too many times %s, %s" % (boss.encourage_coin_num, goldcoinInspireLimited))
@@ -140,6 +149,7 @@ def encourage_heros_1703(data, player):
         player.finance.coin -= need_coin
         player.finance.save_data()
         boss.encourage_coin_num += 1
+        boss.last_coin_encourage_time = get_current_timestamp()
 
     if request.finance_type == 2:
         # 钻石鼓舞
@@ -187,7 +197,7 @@ def pvb_reborn_1704(data, player):
     gold = player.finance.gold
 
     money_relive_price = base_config.get('gold_relive_price')
-    need_gold = -1 if boss.gold_reborn_times not in money_relive_price else money_relive_price[boss.gold_reborn_times]
+    need_gold = money_relive_price[-1] if boss.gold_reborn_times >= len(money_relive_price) else money_relive_price[boss.gold_reborn_times]
     print need_gold, gold, "*"*80
     current_time = get_current_timestamp()
 
@@ -231,6 +241,7 @@ def pvb_fight_start_1705(pro_data, player):
 
     response = PvbFightResponse()
     res = response.res
+    print("world_boss_line_up:", line_up)
 
     open_stage_id = game_configs.base_config.get('worldbossOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
@@ -267,13 +278,10 @@ def pvb_fight_start_1705(pro_data, player):
         response.res.result_no = 1705
         return response.SerializePartialToString()
 
-
-    # 根据鼓舞次数，增加ATK百分比
-    atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
+    # 根据鼓舞次数，增加伤害百分比
+    damage_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
                boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
 
-    for slot_no, red_unit in red_units.items():
-        red_unit.atk *= (1 + atk_rate)
 
     # mock fight.
     player_info = {}
@@ -292,7 +300,7 @@ def pvb_fight_start_1705(pro_data, player):
     seed1, seed2 = get_seeds()
     #def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
-                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2)
+                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, seed1, seed2)
 
     if result == -1:
         logger.debug("world boss already gone!")
@@ -320,6 +328,9 @@ def pvb_fight_start_1705(pro_data, player):
     response.red_best_skill= best_skill_id
     response.red_best_skill_level = red_best_skill_level
     response.debuff_skill_no = remote_gate['world'].get_debuff_skill_no_remote(boss_id)
+    response.seed1 = seed1
+    response.seed2 = seed2
+    response.damage_rate = damage_rate
     print response
 
     return response.SerializePartialToString()
@@ -331,11 +342,11 @@ def receive_pvb_award_remote(pvb_award_data, is_online, player):
     pvb_award.ParseFromString(pvb_award_data)
     boss = player.world_boss.get_boss("world_boss")
     if pvb_award.award_type == const.PVB_IN_AWARD:
-        boss.set_award(const.PVB_IN_AWARD, boss.demages)
+        boss.set_award(const.PVB_IN_AWARD, boss.demages, pvb_award.rank_no)
         boss.demages = []
         player.world_boss.save_data()
     else:
-        boss.set_award(pvb_award.award_type, pvb_award.award)
+        boss.set_award(pvb_award.award_type, pvb_award.award, pvb_award.rank_no)
     player.world_boss.save_data()
     logger.debug("receive_pvb_award_remote=================%s" % pvb_award.award_type)
     return True
@@ -345,7 +356,7 @@ def receive_pvb_award_remote(pvb_award_data, is_online, player):
 def pvb_get_award_1708(data, player):
     response = PvbAwardResponse()
     boss = player.world_boss.get_boss("world_boss")
-    award_type, award, is_over = boss.get_award()
+    award_type, award, rank_no, is_over = boss.get_award()
     player.world_boss.save_data()
     logger.debug("award_type %s, award %s, is_over %s" % (award_type, award, is_over))
     response.is_over = is_over
@@ -379,7 +390,8 @@ def pvb_get_award_1708(data, player):
         drop_items = bigbag.get_drop_items()
         return_data = gain(player, drop_items, const.WORLD_BOSS_AWARD)
         get_return(player, return_data, response.gain)
-    response.rank_no = remote_gate['world'].get_rank_no_remote(player.base_info.id, "world_boss")
+    #response.rank_no = remote_gate['world'].get_rank_no_remote(player.base_info.id, "world_boss")
+    response.rank_no = rank_no
     logger.debug("pvb_get_award_1708:%s" % response)
     return response.SerializePartialToString()
 
