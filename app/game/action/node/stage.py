@@ -185,6 +185,7 @@ def fight_settlement_904(pro_data, player):
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
+    logger.debug("steps:%s", request.steps)
 
     return res
 
