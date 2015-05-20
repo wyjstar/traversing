@@ -47,7 +47,7 @@ message CharacterInfo{
     optional float atk = 7;  //攻
     optional float physical_def = 8;  //物理防御
     optional float magic_def = 9;  //魔法防御
-    optional int32 last_time = 10;
+    optional int32 last_time = 10 [default = 0];
     optional int32 buddy_head = 11;  //小伙伴头像，仅用于支援
     optional int32 current = 12; //当前活跃度
     optional int32 target = 13; //目标活跃度

@@ -9,7 +9,7 @@ from shared.db_opear.configs_data import data_helper
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import get_return
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 from shared.utils.const import const
 
 
@@ -32,7 +32,6 @@ def add_items(player, task_id, gain):
     """
     添加道具给玩家
     """
-    add_items = []
     if task_id in game_configs.achievement_config:
         task = game_configs.achievement_config[task_id]
         reward = data_helper.parse(task.reward)
@@ -67,7 +66,7 @@ def draw_reward_1235(data, player):
     else:
         response.res.result = False
         # response.res.result_no = status
-        response.res.message = "未完成" if status == 1  else "已领取"
+        response.res.message = "未完成" if status == 1 else "已领取"
         if status == -1:
             response.res.message = "任务不存在"
         return response.SerializePartialToString()

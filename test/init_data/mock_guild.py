@@ -9,7 +9,7 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import GlobalObject
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 def init_guild(player):
