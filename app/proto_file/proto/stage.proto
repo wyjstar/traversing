@@ -10,7 +10,7 @@ message BattleUnit{
 	required int32 no = 1;              // 战斗单位ID
 	optional int32 quality = 2;         // 战斗单位品质
                                         //
-	optional float hp = 3;              // 战斗单位血量
+	optional int64 hp = 3;              // 战斗单位血量
 	optional float atk = 4;             // 战斗单位攻击
 	optional float physical_def = 5;    // 战斗单位物理防御
 	optional float magic_def = 6;       // 战斗单位魔法防御

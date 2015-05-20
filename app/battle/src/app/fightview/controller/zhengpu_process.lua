@@ -38,6 +38,9 @@ function FightProcess:ctor(send_message)
     self.steps = {} -- 同步数据
     self.back_skill_buff = nil -- 保存反击buff
     self.current_skill_type = TYPE_NORMAL  -- 当前技能类型
+    self.damage_rate = 0
+    
+    set_process(self)
 end
 
 function FightProcess:init(fight_type)

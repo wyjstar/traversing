@@ -41,7 +41,8 @@ def gm():
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
-                     'get_user_eqs', 'copy_user', 'update_server_list']
+                     'get_user_eqs', 'copy_user', 'update_server_list', 
+                     'add_push_message']
     if request.args:
         t_dict = request.args
     else:
@@ -482,3 +483,11 @@ def copy_user(args):
     character_obj.hmset(be_copy_character_info)
 
     return {'success': 1}
+
+def add_push_message(args):
+    print 'add_push_message1111', args
+    uid = int(args.get('uid'))
+    mtype = int(args.get('mtype'))
+    msg = args.get('msg')
+    remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
+    return {'success': 1} 

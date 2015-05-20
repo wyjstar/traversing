@@ -1,12 +1,17 @@
 import(".FightUtil")
 
 formulaTemplate = nil
+process = nil
 
 function getFormulaTemplate()
     if formulaTemplate == nil then
         formulaTemplate = getTemplateManager():getFormulaTemplate()
     end
     return formulaTemplate
+end
+
+function set_process(_process)
+    process = _process
 end
 
 
@@ -101,7 +106,7 @@ function execute_demage(attacker, target, buff_info, is_block, is_cri, extra_msg
     if getFormulaTemplate():getFunc("damage_2Precondition")(buff_info) then
         actual_demage_2 = getFormulaTemplate():getFunc("damage_2")(total_demage, buff_info, attacker.level)
     end
-    actual_demage = actual_demage_1 + actual_demage_2
+    actual_demage = addDamageRate(actual_demage_1 + actual_demage_2)
     target:set_hp(target:get_hp() - actual_demage)
 
     local m1 = ""
@@ -140,9 +145,10 @@ function execute_pure_demage(attacker, target, buff_info, extra_msgs)
     if getFormulaTemplate():getFunc("damage_4Precondition")(buff_info) then
         actual_demage_4 = getFormulaTemplate():getFunc("damage_4")(attacker:get_atk(), buff_info, attacker.level)
     end
-    target:set_hp(target:get_hp() - actual_demage_3 - actual_demage_4)
-    print("execute_pure_demage=========", actual_demage_3 + actual_demage_4)
-    return actual_demage_3 + actual_demage_4
+    actual_demage = addDamageRate(actual_demage_3 + actual_demage_4)
+    target:set_hp(target:get_hp() - actual_demage)
+    print("execute_pure_demage=========", actual_demage)
+    return actual_demage
 end
 
 function execute_treat(attacker, target, buff_info, is_cri, extra_msgs)
@@ -182,6 +188,7 @@ function unpara(attacker_side, target, buff_info, playerLevel, extra_msgs)
     end
     local warriorsDamage = getFormulaTemplate():getFunc("warriorsDamage")(atkArray, target:get_physical_def(), target:get_magic_def())
     local warriorsLastDamage = getFormulaTemplate():getFunc("warriorsLastDamage")(warriorsDamage, buff_info, playerLevel)
+    warriorsLastDamage = addDamageRate(warriorsLastDamage)
     print(warriorsLastDamage, "warriorsLastDamage==========")
     local m1 = ""
     m1 = m1.."总atk:"..tostring(atkArray)
@@ -194,7 +201,8 @@ end
 -- 怪物无双值
 function unpara_monster(atk, target, extra_msgs)
     local warriorsDamage = getFormulaTemplate():getFunc("monster_warriors_atkArray")(atk)
-    target:set_hp(target:get_hp() - warriorsLastDamage)
+    warriorsDamage = addDamageRate(warriorsDamage)
+    target:set_hp(target:get_hp() - warriorsDamage)
     return warriorsDamage
 end
 
@@ -213,4 +221,10 @@ function get_buff_value(value, buff)
         skill_buff_2 = getFormulaTemplate():getFunc("skillbuffEffct_2")(buff_info, value)
     end
     return skill_buff_1 + skill_buff_2
+end
+
+function addDamageRate(value)
+    -- 添加伤害加成
+    damage_rate = process.damage_rate
+    return value * (1 + damage_rate)
 end

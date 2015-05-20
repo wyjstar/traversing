@@ -21,11 +21,7 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    #red_best_skill_id = player.fight_cache_component.red_best_skill_id
-
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill)
-    #process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
-                                #blue_best_skill, blue_player_level)
     if fight_type == const.BATTLE_PVP:
         res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
                                 blue_best_skill, blue_player_level, seed1, seed2)

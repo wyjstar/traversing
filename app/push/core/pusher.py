@@ -139,7 +139,7 @@ class Pusher(object):
             uid = message.uid
             mtype = message.msg_type
             send_time = message.send_time
-            if send_time < now:
+            if send_time > now:
                 continue
             if uid == -1:
                 self.send_all(mtype, message)
