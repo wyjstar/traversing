@@ -52,14 +52,14 @@ def buy_coin_activity_1406(data, player):
 
     if need_gold > player.finance.gold:
         logger.error("buy_coin_activity_1406: gold not enough %s, %s" % (need_gold, player.finance.gold))
-        response.res = False
-        response.result_no = 101
+        response.res.result = False
+        response.res.result_no = 101
         return response.SerializePartialToString()
 
     if extra_can_buy_times + player.base_info.buy_coin_times <= buy_times:
         logger.error("buy_coin_activity_1406: times not enough %s, %s, %s" % (extra_can_buy_times, player.base_info.buy_coin_times, player.buy_times))
-        response.res = False
-        response.result_no = 1406
+        response.res.result = False
+        response.res.result_no = 1406
         return response.SerializePartialToString()
 
     coin_nums = 0 # 银币数量

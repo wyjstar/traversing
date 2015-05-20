@@ -36,6 +36,7 @@ class CharacterLineUpComponent(Component):
         self._line_up_order = [1, 2, 3, 4, 5, 6]
         self._current_unpar = 0
         self._unpars = {}  # 无双
+        self._friend_fight_times = {}  # 小伙伴战斗次数
 
     def init_data(self, character_info):
         line_up_slots = character_info.get('line_up_slots')
@@ -51,6 +52,7 @@ class CharacterLineUpComponent(Component):
         self._line_up_order = character_info.get('line_up_order')
         self._unpars = character_info.get('unpars')
         self._current_unpar = character_info.get('current_unpar')
+        self._friend_fight_times = character_info.get('friend_fight_times', {})
 
         self.update_slot_activation()
 
@@ -63,7 +65,8 @@ class CharacterLineUpComponent(Component):
                                slot_no, sub_slot in self._sub_slots.items()]),
             'line_up_order': self._line_up_order,
             'unpars': self._unpars,
-            'current_unpar': self._current_unpar
+            'current_unpar': self._current_unpar,
+            'friend_fight_times': self._friend_fight_times
         }
 
         line_up_obj = tb_character_info.getObj(self.character_id)
@@ -80,7 +83,9 @@ class CharacterLineUpComponent(Component):
                     sub_slots=__sub_slots,
                     line_up_order=self._line_up_order,
                     unpars=self._unpars,
-                    current_unpar=self._current_unpar)
+                    current_unpar=self._current_unpar,
+                    friend_fight_times=self._friend_fight_times
+                    )
         return data
 
     def update_slot_activation(self):
@@ -360,6 +365,11 @@ class CharacterLineUpComponent(Component):
     @property
     def unpars(self):
         return self._unpars
+
     def get_first_slot(self):
         """get first slot in the line up"""
         return self._line_up_slots.get(1)
+
+    @property
+    def friend_fight_times(self):
+        return self._friend_fight_times

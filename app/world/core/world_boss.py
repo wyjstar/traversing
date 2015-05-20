@@ -84,7 +84,7 @@ class WorldBoss(BaseBoss):
         #logger.debug("current_time:%s, target_time:%s" % (current_time, str_time_to_timestamp(notice_item.parameter1[0])))
 
         # 幸运武将更新
-        if self._lucky_hero_start > current_time or self._lucky_hero_end < current_time:
+        if (not self._lucky_heros) or self._lucky_hero_start > current_time or self._lucky_hero_end < current_time:
             self.update_lucky_hero()
 
         time1 = str_time_to_timestamp(notice_item.parameter1[0])
