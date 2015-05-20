@@ -48,8 +48,9 @@ def travel_831(data, player):
         response.res.result_no = 811  # 等级不够
         return response.SerializeToString()
 
+    player.travel_component.update_shoes()
     shoes = player.travel_component.shoes
-    if shoes[0] + shoes[1] + shoes[2] == 0:
+    if shoes[0] == 0:
         response.res.result = False
         response.res.result_no = 812  # 鞋子不足
         return response.SerializeToString()
@@ -89,20 +90,7 @@ def travel_831(data, player):
     else:
         travel_cache.get(stage_id).append([res_travel_event_id, drops])
 
-    if shoes[3] == 0:
-        for i in[2, 1, 0]:
-            if shoes[i] != 0:
-                shoes[3] = i + 1
-                shoes[4] = 1
-                break
-    else:
-        if game_configs.base_config.get("travelShoe"+str(shoes[3]))[1] == shoes[4] + 1:
-            shoes[shoes[3]-1] -= 1
-            shoes[4] = 0
-            shoes[3] = 0
-        else:
-            shoes[4] += 1
-
+    player.travel_component.use_shoes()
     player.travel_component.save()
     lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
@@ -133,14 +121,11 @@ def travel_init_830(data, player):
                 if len(tra) == 3:
                     res_travel.time = tra[2]
 
-    res_shose = response.shoes
-    res_shose.shoe1 = player.travel_component.shoes[0]
-    res_shose.shoe2 = player.travel_component.shoes[1]
-    res_shose.shoe3 = player.travel_component.shoes[2]
-    res_shose.use_type = player.travel_component.shoes[3]
-    res_shose.use_no = player.travel_component.shoes[4]
-
     response.chest_time = player.travel_component.chest_time
+    res_shose = response.shoes
+    shoes_num, remain_time = player.travel_component.update_shoes()
+    res_shose.num = shoes_num
+    res_shose.remain_time = remain_time
 
     if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday != time.localtime().tm_yday:
         player.travel_component.last_buy_shoes = [0, int(time.time())]
@@ -154,7 +139,7 @@ def travel_init_830(data, player):
     player.travel_component.save()
 
     response.res.result = True
-    # logger.debug(response)
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -166,15 +151,18 @@ def buy_shoes_832(data, player):
     response = BuyShoesResponse()
 
     need_good = 0
-    num = 0
-    for shoes_info in args.shoes_infos:
-        need_good += game_configs.base_config.get("travelShoe"+str(shoes_info.shoes_type))[2] \
-            * shoes_info.shoes_no
-        num += shoes_info.shoes_no
-
+    num = args.num
+    max_num = game_configs.base_config.get("travelShoeTimes")
+    need_good = game_configs.base_config.get("travelVigorPrice")*num
     if player.finance.gold < need_good:
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
+        return response.SerializeToString()
+    player.travel_component.update_shoes()
+    shoes_info = player.travel_component.shoes
+    if shoes_info[0]+num > max_num:
+        response.res.result = False
+        response.res.result_no = 865
         return response.SerializeToString()
 
     is_today = 0
@@ -194,9 +182,7 @@ def buy_shoes_832(data, player):
         player.travel_component.last_buy_shoes = [0, int(time.time())]
 
     def func():
-        for shoes_info in args.shoes_infos:
-            player.travel_component.shoes[shoes_info.shoes_type-1] += \
-                shoes_info.shoes_no
+        shoes_info[0] += num
         player.travel_component.last_buy_shoes[0] += num
         player.travel_component.save()
 
