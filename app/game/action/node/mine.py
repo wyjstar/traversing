@@ -650,9 +650,12 @@ def battle_1253(data, player):
         red_units = player.fight_cache_component.red_unit
         info = get_save_guard(player, pos)
         # print info
-        blue_units = info.get("battle_units")
+        blue_units = info.get("battle_units", {})
         seed1, seed2 = get_seeds()
-        fight_result = pvp_process(player,
+        if not blue_units:
+            fight_result = True
+        else:
+            fight_result = pvp_process(player,
                                    line_up,
                                    red_units,
                                    blue_units,
