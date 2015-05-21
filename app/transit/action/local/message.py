@@ -25,11 +25,25 @@ def push_message_remote(key, character_id, *args):
 
 
 @rootserviceHandle
+def push_message_maintime_remote(key, character_id, maintain_time, *args):
+    logger.debug("message.push_message_maintime_remote")
+    logger.debug(args)
+    childs = groot.childsmanager.childs
+    for child in childs.values():
+        if 'gate' in child.name:
+            result = child.pull_message_remote(key, character_id, *args)
+            if type(result) is bool and result:
+                return
+
+    message_cache.cache_time(key, character_id, maintain_time, *args)
+    return True
+
+
+@rootserviceHandle
 def pull_message_remote(character_id):
     count = 0
     childs = groot.childsmanager.childs
     # print groot.childsmanager
-
 
     logger.debug("pull all message")
     for key, message in message_cache.get(character_id):
