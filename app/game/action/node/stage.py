@@ -170,7 +170,7 @@ def stage_start_903(pro_data, player):
         if fid not in friend_fight_times:
             friend_fight_times[fid] = 0
         supportPriceMax = game_configs.base_config.get('supportPriceMax')
-        need_gold = game_configs.base_config.get('supportPrice').get(friend_fight_times, supportPriceMax)
+        need_gold = game_configs.base_config.get('supportPrice').get(friend_fight_times[fid], supportPriceMax)
         def func():
             friend_fight_times[fid] += 1
             player.friends.fight_last_time = int(time.time())
