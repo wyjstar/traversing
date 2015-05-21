@@ -100,6 +100,10 @@ class BaseConfig(object):
         config_value["arena_win_points"] = parse(config_value["arena_win_points"])
         config_value["arenaRankUpRewards"] = parse(config_value["arenaRankUpRewards"])
         config_value["price_sweep"] = parse(config_value["price_sweep"])
+        config_value["CoinCardCumulateTimes"] = parse(config_value["CoinCardCumulateTimes"])
+        config_value["CoinCardCumulate"] = parse(config_value["CoinCardCumulate"])
+        config_value["CardCumulateTimes"] = parse(config_value["CardCumulateTimes"])
+        config_value["CardCumulate"] = parse(config_value["CardCumulate"])
 
         # modify cook data
         cooking_data = config_value['cookingWinePrice']

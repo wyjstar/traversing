@@ -74,6 +74,7 @@ def shop_oper(pro_data, player, reason):
         return_data = gain(player, card_draw, reason)  # 获取
         get_return(player, return_data, response.gain)
         player.shop.first_gold_draw = False
+        player.shop.single_gold_draw_times += 1
         player.shop.save_data()
 
         response.res.result = True
@@ -122,10 +123,26 @@ def shop_oper(pro_data, player, reason):
         # logger.debug("hero-draw2")
         return_data = []
         extra_return_data = []
+        CoinCardCumulateTimes = game_configs.base_config.get("CoinCardCumulateTimes", 0)
+        CardCumulateTimes = game_configs.base_config.get("CardCumulateTimes", 0)
         if shop_item.type == 5:
             # todo: 如何判断shop类型：单抽、十连抽
             # logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
             gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
+            if shop_item.id == 50001:
+                # 单抽达到指定次数，获得指定武将
+                player.shop.single_gold_draw_times += 1
+                player.shop.save_data()
+                if player.shop.single_gold_draw_times == CardCumulateTimes:
+                    gain_items = game_configs.base_config.get("CardCumulate", [])
+
+            if shop_item.id == 10001:
+                # 单抽达到指定次数，获得指定武将
+                player.shop.single_coin_draw_times += 1
+                player.shop.save_data()
+                if player.shop.single_coin_draw_times == CoinCardCumulateTimes:
+                    gain_items = game_configs.base_config.get("CoinCardCumulate", [])
+
             return_data = gain(player, gain_items, reason)
             extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
