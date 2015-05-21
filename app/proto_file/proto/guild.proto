@@ -11,6 +11,7 @@ message GetGuildRankRequest{
 message GetGuildRankResponse{
     required CommonResponse res = 1;
     repeated GuildRank guild_rank = 2;
+    optional int32 flag = 3;  //有没有军团
 }
 
 message GuildRank

@@ -715,6 +715,7 @@ def get_guild_rank_810(data, player):
             rank_num += 1
         response.res.result = True
     elif rank_type == 2:  # 推荐列表
+        response.flag = 1
         if player.guild.g_id != 0:
             response.res.result = False
             response.res.result_no = 843
@@ -738,6 +739,8 @@ def get_guild_rank_810(data, player):
                 rank_info = remote_gate.get_rank_remote(
                     'GuildLevel', 1, 99999)
                 guild_rank_flag = 0
+                if len(rank_info) == 0:
+                    response.flag = 0
                 for (_g_id, _rank) in rank_info:
                     g_id = int(_g_id)
                     guild_rank_flag += 1

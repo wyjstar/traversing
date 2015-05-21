@@ -28,5 +28,6 @@ def get_cdkey_gift_1123(data, player):
     # gain_data = tomorrow_gift['reward']
     # return_data = gain(player, gain_data, const.TOMORROW_GIFT)
     # get_return(player, return_data, response.gain)
+    response.res.result = True
     response.res.result_no = url_response.get('success')
     return response.SerializeToString()
