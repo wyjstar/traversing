@@ -69,3 +69,8 @@ message GameLoginResponse{
 	optional int32 tomorrow_gift = 29; //
 	optional int32 battle_speed = 30; //
 }
+
+//心跳响应88
+message HeartBeatResponse{
+    optional int32 server_time = 1;
+}

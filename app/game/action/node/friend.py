@@ -22,6 +22,7 @@ from app.proto_file.db_pb2 import Heads_DB
 from app.proto_file.db_pb2 import Stamina_DB
 import datetime
 import random
+from shared.utils.date_util import is_next_day
 import time
 from app.game.core.item_group_helper import gain, get_return
 from shared.db_opear.configs_data.game_configs import base_config
@@ -210,6 +211,11 @@ def get_player_friend_list_1106(data, player):
     response.open_receive = player.stamina._open_receive
     print player.friends.friends
 
+    # 小伙伴支援
+    if is_next_day(time.time(), player.friends.fight_last_time):
+        # clear data in the next day
+        player.friends.fight_times = {}
+        player.friends.save_data()
     _update = False
 
     for pid in player.friends.friends + [player.base_info.id]:
@@ -235,6 +241,7 @@ def get_player_friend_list_1106(data, player):
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, player_data)
             response_friend_add.gift = player.friends.last_present_times(pid)
+            response_friend_add.fight_times = player.friends.fight_times.get(pid, 0)
         else:
             logger.error('friend_list, cant find player id:%d' % pid)
             player.friends.friends.remove(pid)
