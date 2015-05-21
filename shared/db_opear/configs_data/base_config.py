@@ -100,10 +100,25 @@ class BaseConfig(object):
         config_value["arena_win_points"] = parse(config_value["arena_win_points"])
         config_value["arenaRankUpRewards"] = parse(config_value["arenaRankUpRewards"])
         config_value["price_sweep"] = parse(config_value["price_sweep"])
+        #config_value["CoinCardCumulateTimes"] = parse(config_value["CoinCardCumulateTimes"])
+        config_value["CoinCardCumulate"] = parse(config_value["CoinCardCumulate"])
+        #config_value["CardCumulateTimes"] = parse(config_value["CardCumulateTimes"])
+        config_value["CardCumulate"] = parse(config_value["CardCumulate"])
 
         # modify cook data
         cooking_data = config_value['cookingWinePrice']
         for k, v in cooking_data.items():
             cooking_data[k] = [parse(_) for _ in v]
+
+        # 小伙伴支援价格
+        supportPrice = {}
+        supportPriceMax = 0
+        for k, v in config_value["supportPrice"].items():
+            supportPrice[k] = parse(v)[0].num
+            if supportPrice[k] > supportPriceMax:
+                supportPriceMax = supportPrice[k]
+
+        config_value["supportPrice"] = supportPrice
+        config_value["supportPriceMax"] = supportPriceMax
 
         return config_value
