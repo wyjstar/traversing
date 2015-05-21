@@ -7,7 +7,6 @@ created by server on 14-8-20上午11:09.
 from common_item import CommonItem
 from shared.db_opear.configs_data.data_helper import parse
 from shared.db_opear.configs_data.data_helper import convert_keystr2num
-from shared.db_opear.configs_data.data_helper import parse
 
 
 class GuildConfig(object):
