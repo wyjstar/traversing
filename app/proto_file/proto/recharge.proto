@@ -6,7 +6,7 @@ message InitRecharge{
 }
 
 message RechargeData{
-    optional float recharge_time = 1;
+    optional int32 recharge_time = 1;
     optional float recharge_accumulation = 2;
     optional int32 is_receive = 3;
 }

@@ -326,24 +326,24 @@ def find_friend_request_1107(data, player):
         player_data = tb_character_info.getObj(pid)
     print 'isexist', isexist
     if isexist:
-        response.id = player_data.hget('id')
-        response.nickname = player_data.hget('nickname')
 
-        friend_data = player_data.hmget(['attackPoint',
+        friend_data = player_data.hmget(['id',
+                                         'attackPoint',
+                                         'nickname'
                                          'heads',
                                          'level',
                                          'upgrade_time'])
-        ap = 1
+        response.id = friend_data.get('id')
+        response.nickname = friend_data.get('nickname')
         if friend_data['attackPoint'] is not None:
-            ap = int(friend_data['attackPoint'])
-        response.power = ap if ap else 0
+            response.power = int(friend_data['attackPoint'])
 
         friend_heads = Heads_DB()
         friend_heads.ParseFromString(friend_data['heads'])
         response.hero_no = friend_heads.now_head
         response.level = friend_data['level']
-        response.b_rank = 1
-        response.last_time = friend_data['upgrade_time']
+        if remote_gate.online_remote(friend_data['id']) == 1:
+            response.last_time = friend_data['upgrade_time']
 
         # 添加好友主将的属性
         # _with_battle_info(response, player_data)
