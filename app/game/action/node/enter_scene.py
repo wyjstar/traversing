@@ -57,6 +57,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.excellent_hero = player.last_pick_time.excellent_hero
     responsedata.fine_equipment = player.last_pick_time.fine_equipment
     responsedata.excellent_equipment = player.last_pick_time.excellent_equipment
+    responsedata.fine_hero_times = player.shop.single_coin_draw_times
+    responsedata.excellent_hero_times = player.shop.single_gold_draw_times
 
     responsedata.pvp_times = player.base_info.pvp_times
     responsedata.pvp_refresh_count = player.base_info.pvp_refresh_count

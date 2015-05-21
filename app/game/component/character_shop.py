@@ -20,43 +20,28 @@ class CharacterShopComponent(Component):
     def __init__(self, owner):
         super(CharacterShopComponent, self).__init__(owner)
         self._shop_data = {}
-        self._first_coin_draw = True  # 第一次免费抽取为某个特定武将
-        self._first_gold_draw = True  # 第一次免费抽取为某个特定武将
-        self._single_gold_draw_times = 0  # 元宝单抽次数,十连抽必出紫
-        self._pseudo_times = {} #
+        self._shop_extra_args = {}
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
-        self._first_coin_draw = character_info.get('first_coin_draw')
-        self._first_gold_draw = character_info.get('first_gold_draw')
-        self._single_gold_draw_times = character_info.get('single_gold_draw_times')
-        self._pseudo_times = character_info.get('pseudo_times')
+        self._shop_extra_args = character_info.get('shop_extra_args', self.get_new_shop_extra_args())
         self.check_time()
         self.refresh_shop_info()
-
-        # for k, v in self._shop_data.items():
-        #     print k, v.items()
 
     def save_data(self):
         shop = tb_character_info.getObj(self.owner.base_info.id)
         if shop:
-            shop.hset('shop', self._shop_data)
-            shop.hset('first_coin_draw', self._first_coin_draw)
-            shop.hset('first_gold_draw', self._first_gold_draw)
-            shop.hset('single_gold_draw_times', self._single_gold_draw_times)
-            shop.hset('pseudo_times', self._pseudo_times)
-
+            data = {'shop': self._shop_data, 'shop_extra_args': self._shop_extra_args}
+            shop.hmset(data)
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
 
     def new_data(self):
         for t, item in game_configs.shop_type_config.items():
             self._shop_data[t] = self.get_new_shop_info(t)
+        self._shop_extra_args = self.get_new_shop_extra_args()
         return {'shop': self._shop_data,
-                'first_coin_draw': True,
-                'first_gold_draw': True,
-                'single_gold_draw_times': self._single_gold_draw_times,
-                'pseudo_times': self._pseudo_times}
+                'shop_extra_args': self._shop_extra_args}
 
     def refresh_shop_info(self):
         for t, item in game_configs.shop_type_config.items():
@@ -75,6 +60,14 @@ class CharacterShopComponent(Component):
         data['item_ids'] = self.get_shop_item_ids(shop_type, 0)
         data['limit_items'] = {}
         data['vip_limit_items'] = {}
+        return data
+
+    def get_new_shop_extra_args(self):
+        data = {}
+        data['first_coin_draw'] = True # 第一次免费抽取为某个特定武将
+        data['first_gold_draw'] = True # 第一次免费抽取为某个特定武将
+        data['single_coin_draw_times'] = 0 # 元宝单抽次数,十连抽必出紫
+        data['single_gold_draw_times'] = 0 #银两单抽次数,十连抽必出
         return data
 
     def check_time(self):
@@ -185,30 +178,44 @@ class CharacterShopComponent(Component):
         if not items:
             return []
         return random_multi_pick_without_repeat(items, item_num)
+
     @property
     def first_coin_draw(self):
-        return self._first_coin_draw
+        return self._shop_extra_args.get("first_coin_draw")
     @first_coin_draw.setter
     def first_coin_draw(self, value):
-        self._first_coin_draw = value
+        self._shop_extra_args["first_coin_draw"] = value
 
     @property
     def first_gold_draw(self):
-        return self._first_gold_draw
+        return self._shop_extra_args.get("first_gold_draw")
     @first_gold_draw.setter
     def first_gold_draw(self, value):
-        self._first_gold_draw = value
+        self._shop_extra_args["first_gold_draw"] = value
 
     @property
     def single_gold_draw_times(self):
-        return self._single_gold_draw_times
+        return self._shop_extra_args.get("single_gold_draw_times")
+
     @single_gold_draw_times.setter
     def single_gold_draw_times(self, value):
-        self._single_gold_draw_times = value
+        self._shop_extra_args["single_gold_draw_times"] = value
+
+    @property
+    def single_coin_draw_times(self):
+        return self._shop_extra_args.get("single_coin_draw_times")
+
+    @single_coin_draw_times.setter
+    def single_coin_draw_times(self, value):
+        self._shop_extra_args["single_coin_draw_times"] = value
+
+    @property
+    def pseudo_times(self):
+        return self._shop_extra_args.get("pseudo_times")
 
     def get_draw_drop_bag(self, pseudo_bag_id):
         """docstring for get_draw_drop_bag"""
-        draw_times = self._pseudo_times.get(pseudo_bag_id, 0)
+        draw_times = self.pseudo_times.get(pseudo_bag_id, 0)
         pseudo_random_info = game_configs.pseudo_random_config.get(pseudo_bag_id)
         assert pseudo_random_info!=None, "can not find pseudo bag:%s" % pseudo_bag_id
         gain = pseudo_random_info.gain
@@ -222,6 +229,6 @@ class CharacterShopComponent(Component):
                     drop_items.extend(big_bag.get_drop_items())
                 break
         # logger.debug("drop_items %s", drop_items)
-        self._pseudo_times[pseudo_bag_id] = draw_times + 1
+        self.pseudo_times[pseudo_bag_id] = draw_times + 1
         self.save_data()
         return drop_items

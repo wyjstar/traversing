@@ -68,4 +68,7 @@ message GameLoginResponse{
 	optional int32 recharge = 28; // 累积充值
 	optional int32 tomorrow_gift = 29; //
 	optional int32 battle_speed = 30; //
+    //抽取次数
+    optional int32 fine_hero_times = 31;// 良将抽取次数
+    optional int32 excellent_hero_times = 32; //神将抽取次数
 }
