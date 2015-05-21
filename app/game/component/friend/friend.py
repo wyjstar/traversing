@@ -78,6 +78,10 @@ class FriendComponent(Component):
     def fight_times(self):
         return self._fight_times
 
+    @fight_times.setter
+    def fight_times(self, value):
+        self._fight_times = value
+
     @property
     def fight_last_time(self):
         return self._fight_last_time

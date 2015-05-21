@@ -23,7 +23,12 @@ def get_buy_coin_activity_1407(data, player):
         player.buy_coin.save_data()
     print("buy_times", player.buy_coin.buy_times)
     response.buy_times = player.buy_coin.buy_times
-    response.extra_can_buy_times = player.buy_coin.extra_can_buy_times
+    item_no = 63002
+    item = player.item_package.get_item(item_no)
+    if not item:
+        response.extra_can_buy_times = 0
+    else:
+        response.extra_can_buy_times = item.num
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -35,7 +40,7 @@ def buy_coin_activity_1406(data, player):
     response = buy_coin_activity_pb2.BuyCoinResponse()
 
     buy_times = player.buy_coin.buy_times # 购买次数
-    extra_can_buy_times = player.buy_coin.extra_can_buy_times
+    #extra_can_buy_times = player.buy_coin.extra_can_buy_times
     need_gold = 0
     gain_info = game_configs.base_config.get("getMoneyValue")
     free_times = game_configs.base_config.get("getMoneyFreeTimes")
@@ -57,8 +62,13 @@ def buy_coin_activity_1406(data, player):
         response.res.result_no = 201
         return response.SerializePartialToString()
 
-    if extra_can_buy_times + player.base_info.buy_coin_times <= buy_times:
-        logger.error("buy_coin_activity_1406: times not enough %s, %s, %s" % (extra_can_buy_times, player.base_info.buy_coin_times, player.buy_times))
+    item_no = 63002
+    item = player.item_package.get_item(item_no)
+    item_num = 0
+    if item:
+        item_num = item.num
+    if item_num + player.base_info.buy_coin_times <= buy_times:
+        logger.error("buy_coin_activity_1406: times not enough %s, %s, %s" % (item_num, player.base_info.buy_coin_times, player.buy_times))
         response.res.result = False
         response.res.result_no = 1406
         return response.SerializePartialToString()
@@ -69,7 +79,11 @@ def buy_coin_activity_1406(data, player):
             coin_nums = gain_info[k]
             break
     def func():
-        player.buy_coin.buy_times = buy_times + 1
+        if player.base_info.buy_coin_times <= buy_times:
+            # 使用招财令
+            player.item_package.consume_item(item_no, 1)
+        else:
+            player.buy_coin.buy_times = buy_times + 1
         player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
         player.finance.add_coin(coin_nums)
