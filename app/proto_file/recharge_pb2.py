@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='recharge.proto',
   package='',
-  serialized_pb='\n\x0erecharge.proto\x1a\x0c\x63ommon.proto\"$\n\x0cInitRecharge\x12\x14\n\x0crecharge_ids\x18\x01 \x03(\x05\"X\n\x0cRechargeData\x12\x15\n\rrecharge_time\x18\x01 \x01(\x05\x12\x1d\n\x15recharge_accumulation\x18\x02 \x01(\x02\x12\x12\n\nis_receive\x18\x03 \x01(\x05\"O\n\x0cRechargeItem\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\x12\x11\n\tgift_type\x18\x02 \x01(\x05\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.RechargeData\"D\n\x1bGetRechargeGiftDataResponse\x12%\n\x0erecharge_items\x18\x01 \x03(\x0b\x32\r.RechargeItem\"5\n\x16GetRechargeGiftRequest\x12\x1b\n\x04gift\x18\x01 \x03(\x0b\x32\r.RechargeItem\"]\n\x17GetRechargeGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0erecharge.proto\x1a\x0c\x63ommon.proto\"$\n\x0cInitRecharge\x12\x14\n\x0crecharge_ids\x18\x01 \x03(\x05\"X\n\x0cRechargeData\x12\x15\n\rrecharge_time\x18\x01 \x01(\x05\x12\x1d\n\x15recharge_accumulation\x18\x02 \x01(\x05\x12\x12\n\nis_receive\x18\x03 \x01(\x05\"O\n\x0cRechargeItem\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\x12\x11\n\tgift_type\x18\x02 \x01(\x05\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.RechargeData\"D\n\x1bGetRechargeGiftDataResponse\x12%\n\x0erecharge_items\x18\x01 \x03(\x0b\x32\r.RechargeItem\"5\n\x16GetRechargeGiftRequest\x12\x1b\n\x04gift\x18\x01 \x03(\x0b\x32\r.RechargeItem\"]\n\x17GetRechargeGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -63,7 +63,7 @@ _RECHARGEDATA = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='recharge_accumulation', full_name='RechargeData.recharge_accumulation', index=1,
-      number=2, type=2, cpp_type=6, label=1,
+      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
