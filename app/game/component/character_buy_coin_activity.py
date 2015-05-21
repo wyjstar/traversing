@@ -19,12 +19,12 @@ class CharacterBuyCoinActivity(Component):
         data = character_info.get('buy_coin', {})
         self._buy_times = data.get('buy_times', 0)
         self._last_time = data.get('last_time', 0)
-        self._extra_can_buy_times = data.get('extra_can_buy_times', 0)
+        #self._extra_can_buy_times = data.get('extra_can_buy_times', 0)
 
     def save_data(self):
         activity = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(buy_times=self._buy_times,
-                    extra_can_buy_times=self._extra_can_buy_times,
+                    #extra_can_buy_times=self._extra_can_buy_times,
                     last_time=self._last_time
                     )
         activity.hset('buy_coin', data)
@@ -44,13 +44,13 @@ class CharacterBuyCoinActivity(Component):
     def buy_times(self, value):
         self._buy_times = value
 
-    @property
-    def extra_can_buy_times(self):
-        return self._extra_can_buy_times
+    #@property
+    #def extra_can_buy_times(self):
+        #return self._extra_can_buy_times
 
-    @extra_can_buy_times.setter
-    def extra_can_buy_times(self, value):
-        self._extra_can_buy_times = value
+    #@extra_can_buy_times.setter
+    #def extra_can_buy_times(self, value):
+        #self._extra_can_buy_times = value
 
     @property
     def last_time(self):

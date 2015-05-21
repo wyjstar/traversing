@@ -398,6 +398,8 @@ def line_up_info(player, response=None):
         add_unpar.unpar_id = k
         add_unpar.unpar_level = v
 
+
+
     return response
 
 def line_up_info_detail(line_up_slots, sub_slots, response):

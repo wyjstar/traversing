@@ -37,6 +37,7 @@ class CharacterLineUpComponent(Component):
         self._current_unpar = 0
         self._unpars = {}  # 无双
         self._friend_fight_times = {}  # 小伙伴战斗次数
+        self._friend_fight_last_time = 0
 
     def init_data(self, character_info):
         line_up_slots = character_info.get('line_up_slots')
@@ -53,6 +54,7 @@ class CharacterLineUpComponent(Component):
         self._unpars = character_info.get('unpars')
         self._current_unpar = character_info.get('current_unpar')
         self._friend_fight_times = character_info.get('friend_fight_times', {})
+        self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
 
         self.update_slot_activation()
 
@@ -378,3 +380,11 @@ class CharacterLineUpComponent(Component):
     @property
     def friend_fight_times(self):
         return self._friend_fight_times
+
+    @property
+    def friend_fight_last_time(self):
+        return self._friend_fight_last_time
+
+    @friend_fight_last_time.setter
+    def friend_fight_last_time(self, friend_fight_last_time):
+        self._friend_fight_last_time = friend_fight_last_time

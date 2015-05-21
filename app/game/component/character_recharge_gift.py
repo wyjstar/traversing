@@ -135,6 +135,8 @@ class CharacterRechargeGift(Component):
                 if item.gift_type == 8:
                     _data.recharge_time = k
                     _data.recharge_accumulation = v
+                    if _data.recharge_accumulation == 0:
+                        _data.is_receive = 1
                 elif item.gift_type == 9:
                     _data.recharge_accumulation = k
 

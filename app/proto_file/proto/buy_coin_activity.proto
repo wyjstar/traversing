@@ -7,7 +7,7 @@ message GetBuyCoinInfoResponse{
 }
 
 
-// buy coin response 1406
+// buy coin 1406
 message BuyCoinResponse{
 	required CommonResponse res = 1;
 }

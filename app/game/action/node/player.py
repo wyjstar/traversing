@@ -23,6 +23,7 @@ from app.game.core.item_group_helper import get_consume_gold_num
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
 from shared.tlog import tlog_action
+from app.proto_file.game_pb2 import HeartBeatResponse
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -346,3 +347,9 @@ def init_player(player):
 #         logger.debug("mock player info.....")
 #         init(player)
     return new_character
+
+@remoteserviceHandle('gate')
+def heartbeat_88(data, player):
+    response = HeartBeatResponse()
+    response.server_time = int(time.time())
+    return response.SerializePartialToString()

@@ -84,7 +84,7 @@ class WorldBoss(BaseBoss):
         #logger.debug("current_time:%s, target_time:%s" % (current_time, str_time_to_timestamp(notice_item.parameter1[0])))
 
         # 幸运武将更新
-        if (not self._lucky_heros) or self._lucky_hero_start > current_time or self._lucky_hero_end < current_time:
+        if self._lucky_hero_start > current_time or self._lucky_hero_end < current_time:
             self.update_lucky_hero()
 
         time1 = str_time_to_timestamp(notice_item.parameter1[0])
@@ -161,7 +161,8 @@ class WorldBoss(BaseBoss):
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
         self.set_next_stage(self._hp <= 0)
-        #self.update_lucky_hero()
+        if not self._lucky_heros:
+            self.update_lucky_hero()
         self.update_base_boss(game_configs.base_config.get("world_boss"))
 
         self.save_data()
