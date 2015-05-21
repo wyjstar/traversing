@@ -21,6 +21,8 @@ def get_cdkey_gift_1123(data, player):
     logger.debug('cdkey url:%s', url)
 
     url_response = urllib.urlopen(url)
+    str_response = url_response.read()
+    url_response = eval(str_response)
     logger.debug('cdkey url result:%s', url_response)
 
     # gain_data = tomorrow_gift['reward']
