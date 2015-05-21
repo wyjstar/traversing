@@ -98,6 +98,7 @@ class BaseConfig(object):
         config_value["CardFirst"] = parse(config_value["CardFirst"])
         config_value["sweepNeedItem"] = parse(config_value["sweepNeedItem"])
         config_value["arena_win_points"] = parse(config_value["arena_win_points"])
+        config_value["arenaRankUpRewards"] = parse(config_value["arenaRankUpRewards"])
         config_value["price_sweep"] = parse(config_value["price_sweep"])
 
         # modify cook data

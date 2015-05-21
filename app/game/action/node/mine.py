@@ -650,9 +650,12 @@ def battle_1253(data, player):
         red_units = player.fight_cache_component.red_unit
         info = get_save_guard(player, pos)
         # print info
-        blue_units = info.get("battle_units")
+        blue_units = info.get("battle_units", {})
         seed1, seed2 = get_seeds()
-        fight_result = pvp_process(player,
+        if not blue_units:
+            fight_result = True
+        else:
+            fight_result = pvp_process(player,
                                    line_up,
                                    red_units,
                                    blue_units,
@@ -678,6 +681,7 @@ def battle_1253(data, player):
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
+    response.hold = request.hold
     # print 'battle_1253:', response
     return response.SerializePartialToString()
 

@@ -186,6 +186,26 @@ def push_message_remote(key, character_id, args):
 
 
 @rootserviceHandle
+def push_message_maintime_remote(key, character_id, maintain_time, args):
+    logger.debug("netforwarding.push_message_maintime_remote")
+    logger.debug("push time message %s %s %s %s" % (key, character_id,
+                                                    maintain_time, args))
+
+    oldvcharacter = VCharacterManager().get_by_id(character_id)
+    # print VCharacterManager().character_client
+    if oldvcharacter:
+        args = (key, oldvcharacter.dynamic_id) + args + (True,)
+        child_node = groot.child(oldvcharacter.node)
+        return child_node.callbackChild(*args)
+    else:
+        transit_remote = GlobalObject().remote['transit']
+        return transit_remote.push_message_maintime_remote(key,
+                                                           character_id,
+                                                           maintain_time,
+                                                           *args)
+
+
+@rootserviceHandle
 def pull_message_remote(character_id):
     transit_remote = GlobalObject().remote['transit']
     return transit_remote.pull_message_remote(character_id)

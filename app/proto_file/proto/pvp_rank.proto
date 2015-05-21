@@ -54,4 +54,5 @@ message PvpFightResponse{
     optional GameResourcesResponse gain = 11;
     optional int32 top_rank = 12;
     optional GameResourcesResponse award = 13;
+    optional int32 rank_incr = 14;
 }

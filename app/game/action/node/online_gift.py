@@ -84,10 +84,10 @@ def get_online_and_level_gift_data_1151(data, player):
     request.ParseFromString(data)
 
     response = recharge_pb2.GetRechargeGiftResponse()
+    response.res.result = True
 
     player.recharge.take_gift(request.gift, response)
     player.recharge.save_data()
-    response.res.result = True
     return response.SerializeToString()
 
 
