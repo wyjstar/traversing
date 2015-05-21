@@ -240,14 +240,15 @@ def pvp_fight_request_1505(data, player):
         else:
             refresh_rank_data(player, request.challenge_rank,
                               __skill, __skill_level)
+            table_max = util.GetTableCount(PVP_TABLE_NAME)
             if record['character_id'] != 1:
-                table_max = util.GetTableCount(PVP_TABLE_NAME)
                 record['id'] = table_max + 1
                 util.InsertIntoDB(PVP_TABLE_NAME, record)
+            player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank, table_max)
 
         rank_incr = 0
         if request.challenge_rank < player.base_info.pvp_high_rank:
-            rank_incr = min(player.base_info.pvp_high_rank, before_player_rank) - request.challenge_rank
+            rank_incr = player.base_info.pvp_high_rank - request.challenge_rank
         player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank,
                                              request.challenge_rank)
 
