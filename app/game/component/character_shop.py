@@ -22,12 +22,14 @@ class CharacterShopComponent(Component):
         self._shop_data = {}
         self._first_coin_draw = True  # 第一次免费抽取为某个特定武将
         self._first_gold_draw = True  # 第一次免费抽取为某个特定武将
+        self._single_gold_draw_times = 0  # 元宝单抽次数,十连抽必出紫
         self._pseudo_times = {} #
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
         self._first_coin_draw = character_info.get('first_coin_draw')
         self._first_gold_draw = character_info.get('first_gold_draw')
+        self._single_gold_draw_times = character_info.get('single_gold_draw_times')
         self._pseudo_times = character_info.get('pseudo_times')
         self.check_time()
         self.refresh_shop_info()
@@ -41,6 +43,7 @@ class CharacterShopComponent(Component):
             shop.hset('shop', self._shop_data)
             shop.hset('first_coin_draw', self._first_coin_draw)
             shop.hset('first_gold_draw', self._first_gold_draw)
+            shop.hset('single_gold_draw_times', self._single_gold_draw_times)
             shop.hset('pseudo_times', self._pseudo_times)
 
         else:
@@ -52,6 +55,7 @@ class CharacterShopComponent(Component):
         return {'shop': self._shop_data,
                 'first_coin_draw': True,
                 'first_gold_draw': True,
+                'single_gold_draw_times': self._single_gold_draw_times,
                 'pseudo_times': self._pseudo_times}
 
     def refresh_shop_info(self):
@@ -194,6 +198,13 @@ class CharacterShopComponent(Component):
     @first_gold_draw.setter
     def first_gold_draw(self, value):
         self._first_gold_draw = value
+
+    @property
+    def single_gold_draw_times(self):
+        return self._single_gold_draw_times
+    @single_gold_draw_times.setter
+    def single_gold_draw_times(self, value):
+        self._single_gold_draw_times = value
 
     def get_draw_drop_bag(self, pseudo_bag_id):
         """docstring for get_draw_drop_bag"""

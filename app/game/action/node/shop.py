@@ -74,6 +74,7 @@ def shop_oper(pro_data, player, reason):
         return_data = gain(player, card_draw, reason)  # 获取
         get_return(player, return_data, response.gain)
         player.shop.first_gold_draw = False
+        player.shop.single_gold_draw_times += 1
         player.shop.save_data()
 
         response.res.result = True
