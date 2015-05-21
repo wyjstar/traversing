@@ -236,7 +236,7 @@ def exit_guild_803(data, player):
     position = player.guild.position
     p_list = guild_obj.p_list
     position_p = p_list.get(position)
-    if position_p.count(p_id) != 1:
+    if p_id not in position_p:
         response.res.result = False
         response.res.result_no = 850
         # response.res.message = "您不在此公会"
@@ -293,6 +293,8 @@ def modify_user_guild_info_remote(data, player):
         player.guild.position = data['position']
         player.guild.save_data()
     elif data['cmd'] == 'deal_apply':
+        if player.guild.g_id != 0:
+            return 0
         remote_gate.login_guild_chat_remote(player.dynamic_id,
                                             data['guild_id'])
         player.guild.g_id = data['guild_id']
@@ -305,6 +307,11 @@ def modify_user_guild_info_remote(data, player):
         player.guild.exit_time = 1
         player.guild.apply_guilds = []
 
+        player.guild.save_data()
+    elif data['cmd'] == 'deal_apply1':
+        if player.guild.g_id != 0:
+            return 0
+        player.guild.apply_guilds.remove(data['guild_id'])
         player.guild.save_data()
     elif data['cmd'] == 'kick':
         remote_gate.logout_guild_chat_remote(player.dynamic_id)
@@ -329,7 +336,7 @@ def modify_user_guild_info_remote(data, player):
     elif data['cmd'] == 'appoint':
         player.guild.position = data['position']
         player.guild.save_data()
-    return True
+    return 1
 
 
 @remoteserviceHandle('gate')
@@ -358,7 +365,7 @@ def editor_call_804(data, player):
     p_list = guild_obj.p_list
     position_p_list = p_list.get(position)
 
-    if position_p_list.count(p_id) >= 1:
+    if p_id in position_p_list:
         if position > 2:
             response.res.result = False
             response.res.result_no = 849
@@ -407,15 +414,13 @@ def deal_apply_805(data, player):
             return response.SerializeToString()
 
         for p_id in p_ids:
-            info = tb_character_info.getObj(p_id).hget('guild_id')
-            if info != 0:
-                if guild_obj.apply.count(p_id) == 1:
-                    guild_obj.apply.remove(p_id)
-                    response.p_ids.append(p_id)
-                continue
             # 加入公会聊天室
             invitee_player = PlayersManager().get_player_by_id(p_id)
             if invitee_player:  # 在线
+                if invitee_player.guild.g_id != 0:
+                    guild_obj.apply.remove(p_id)
+                    response.p_ids.append(p_id)
+                    continue
                 remote_gate.login_guild_chat_remote(invitee_player.dynamic_id,
                                                     invitee_player.guild.g_id)
                 invitee_player.guild.g_id = player.guild.g_id
@@ -444,10 +449,20 @@ def deal_apply_805(data, player):
                     {'cmd': 'deal_apply', "guild_id": player.guild.g_id})
 
                 if is_online == "notonline":
-                    p_guild_data = tb_character_info.getObj(p_id)
-                    p_guild_data.hmset(data)
+                    p_guild_obj = tb_character_info.getObj(p_id)
+                    info = p_guild_obj.hget('guild_id')
+                    if info != 0:
+                        if p_id in guild_obj.apply:
+                            guild_obj.apply.remove(p_id)
+                            response.p_ids.append(p_id)
+                        continue
+                    p_guild_obj.hmset(data)
+                elif is_online == 0:  # 玩家在线，已经加入军团
+                    guild_obj.apply.remove(p_id)
+                    response.p_ids.append(p_id)
+                    continue
 
-            if guild_obj.apply.count(p_id) == 1:
+            if p_id in guild_obj.apply:
                 guild_obj.apply.remove(p_id)
                 if guild_obj.p_list.get(3):
                     p_list1 = guild_obj.p_list.get(3)
@@ -462,10 +477,36 @@ def deal_apply_805(data, player):
     elif res_type == 2:
         p_ids = args.p_ids
         for p_id in p_ids:
-            if guild_obj.apply.count(p_id) == 1:
+            if p_id in guild_obj.apply:
                 guild_obj.apply.remove(p_id)
             tlog_action.log('DealJoinGuild', player, m_g_id,
                             p_id, 2)
+
+            invitee_player = PlayersManager().get_player_by_id(p_id)
+            if invitee_player:  # 在线
+                if invitee_player.guild.g_id != 0:
+                    continue
+                invitee_player.guild.apply_guilds.remove(m_g_id)
+                invitee_player.guild.save_data()
+            else:
+                is_online = remote_gate.is_online_remote(
+                    'modify_user_guild_info_remote',
+                    p_id,
+                    {'cmd': 'deal_apply1', "guild_id": player.guild.g_id})
+
+                if is_online == "notonline":
+                    p_guild_obj = tb_character_info.getObj(p_id)
+                    info = p_guild_obj.hget('guild_id')
+                    if info != 0:
+                        continue
+
+                    apply_guilds = p_guild_obj.hget('apply_guilds')
+                    if player.guild.g_id in apply_guilds:
+                        apply_guilds.remove(player.guild.g_id)
+                        data = {'apply_guilds': apply_guilds}
+                        p_guild_obj.hmset(data)
+                elif is_online == 0:  # 玩家在线，已经加入军团
+                    continue
 
     else:  # res_type == 3
         guild_obj.apply = []
@@ -516,7 +557,7 @@ def change_president_806(data, player):
     p_list = guild_obj.p_list
     for num in range(2, 4):
         p_list1 = p_list.get(num)
-        if p_list1 and p_list1.count(p_p_id) >= 1:
+        if p_list1 and p_p_id in p_list1:
             p_list1.remove(p_p_id)
             p_list3 = p_list.get(3)
             p_list3.append(p_id)
@@ -581,7 +622,7 @@ def kick_807(data, player):
     for p_id in p_ids:
         for num in range(2, 4):
             p_list1 = p_list.get(num)
-            if not p_list1 or p_list1.count(p_id) < 1:
+            if not p_list1 or p_id not in p_list1:
                 continue
 
             be_kick_obj = tb_character_info.getObj(p_id)
@@ -1161,6 +1202,18 @@ def deal_invite_join_1804(data, player):
     guild_id = args.guild_id
     res = args.res
     response.res.result = True
+
+    m_exit_time = player.guild.exit_time
+    the_time = int(time.time())-m_exit_time
+
+    if m_exit_time != 1 and the_time < \
+            game_configs.base_config.get('exit_time'):
+        response.res.result = False
+        response.res.result_no = 842
+        # response.message = "退出公会半小时内不可加入公会"
+        response.spare_time = game_configs.base_config.get('exit_time') \
+            - the_time
+        return response.SerializeToString()
 
     data1 = tb_guild_info.getObj(guild_id).hgetall()
     if not data1:
