@@ -247,8 +247,8 @@ def pvp_fight_request_1505(data, player):
                 player.base_info.pvp_high_rank = table_max + 1
 
         rank_incr = 0
-        if player.base_info.pvp_high_rank < request.challenge_rank:
-            rank_incr = player.base_info.pvp_high_rank < request.challenge_rank
+        if request.challenge_rank < player.base_info.pvp_high_rank:
+            rank_incr = request.challenge_rank - player.base_info.pvp_high_rank
         player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank,
                                              request.challenge_rank)
 
