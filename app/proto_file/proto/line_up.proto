@@ -26,6 +26,12 @@ message Unpar{
 	required int32 unpar_level = 2;
 }
 
+//好友支援战斗次数
+message FriendFightInfo{
+	required int32 f_id = 1;
+	required int32 friend_fight_times = 2;
+}
+
 //所有返回 
 message LineUpResponse{
 	repeated LineUpSlot slot = 1;
@@ -36,6 +42,7 @@ message LineUpResponse{
     optional int32 unpar_id = 6;  // 当前无双
     repeated TravelItemChapter travel_item_chapter = 7; // 风物志
     optional int32 guild_level = 8; // 公会等级
+    repeated FriendFightInfo friend_fight_info = 9;
 }
 
 message LineUpUnparUpgrade{

@@ -164,6 +164,20 @@ def stage_start_903(pro_data, player):
     response.seed1 = seed1
     response.seed2 = seed2
 
+    # 小伙伴支援消耗
+    if f_unit:
+        friend_fight_times = player.line_up_component.friend_fight_times
+        if fid not in friend_fight_times:
+            friend_fight_times[fid] = 0
+
+        need_gold = game_configs.base_config.get('').get(friend_fight_times, game_configs.base_config.get('max'))
+        def func():
+            friend_fight_times[fid] += 1
+            player.line_up_component.friend_fight_last_time = int(time.time())
+            player.line_up_component.save_data()
+        player.pay.pay(need_gold, func)
+
+
     player.fight_cache_component.red_best_skill_id = red_best_skill_id
     return response.SerializePartialToString()
 

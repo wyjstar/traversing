@@ -106,7 +106,7 @@ class LiberateFactory(protocols.ServerFactory):
             connection = self.connmanager.getConnectionByID(_id)
             connection.set_time()
             print "+++++++++++++++++++++++++++++88++++++++++++++++++++++++"
-            return 'I am the 88 return.'
+            #return 'I am the 88 return.'
         response = self.service.callTarget(commandID, conn, data)
 
         return response

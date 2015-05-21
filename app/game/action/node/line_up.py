@@ -13,6 +13,8 @@ from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.action.node.equipment import enhance_equipment
 from shared.tlog import tlog_action
+from shared.utils.date_util import is_next_day
+import time
 
 
 @remoteserviceHandle('gate')
@@ -397,6 +399,17 @@ def line_up_info(player, response=None):
         add_unpar = response.unpars.add()
         add_unpar.unpar_id = k
         add_unpar.unpar_level = v
+
+    # 小伙伴支援
+    if is_next_day(time.time(), player.line_up_component.friend_fight_last_time):
+        # clear data in the next day
+        player.line_up_component.friend_fight_times = {}
+        player.line_up_component.save_data()
+
+    for k, v in player.line_up_component.friend_fight_times.items():
+        friend_fight_info = response.friend_fight_info.add()
+        friend_fight_info.f_id = k
+        friend_fight_info.friend_fight_times = v
 
     return response
 

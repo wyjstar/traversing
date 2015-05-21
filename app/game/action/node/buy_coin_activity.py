@@ -50,10 +50,11 @@ def buy_coin_activity_1406(data, player):
     if free_times > buy_times:
         need_gold = 0
 
+    logger.debug("get times: %s %s" % (free_times, buy_times))
     if need_gold > player.finance.gold:
         logger.error("buy_coin_activity_1406: gold not enough %s, %s" % (need_gold, player.finance.gold))
         response.res.result = False
-        response.res.result_no = 101
+        response.res.result_no = 201
         return response.SerializePartialToString()
 
     if extra_can_buy_times + player.base_info.buy_coin_times <= buy_times:
