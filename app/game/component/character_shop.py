@@ -68,6 +68,7 @@ class CharacterShopComponent(Component):
         data['first_gold_draw'] = True # 第一次免费抽取为某个特定武将
         data['single_coin_draw_times'] = 0 # 元宝单抽次数,十连抽必出紫
         data['single_gold_draw_times'] = 0 #银两单抽次数,十连抽必出
+        data['pseudo_times'] = {}
         return data
 
     def check_time(self):
