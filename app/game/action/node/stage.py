@@ -166,14 +166,14 @@ def stage_start_903(pro_data, player):
 
     # 小伙伴支援消耗
     if f_unit:
-        friend_fight_times = player.line_up_component.friend_fight_times
+        friend_fight_times = player.friends.fight_times
         if fid not in friend_fight_times:
             friend_fight_times[fid] = 0
-
-        need_gold = game_configs.base_config.get('').get(friend_fight_times, game_configs.base_config.get('max'))
+        supportPriceMax = game_configs.base_config.get('supportPriceMax')
+        need_gold = game_configs.base_config.get('supportPrice').get(friend_fight_times, supportPriceMax)
         def func():
             friend_fight_times[fid] += 1
-            player.line_up_component.friend_fight_last_time = int(time.time())
+            player.friends.fight_last_time = int(time.time())
             player.line_up_component.save_data()
         player.pay.pay(need_gold, func)
 

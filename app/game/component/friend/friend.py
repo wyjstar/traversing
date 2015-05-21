@@ -23,6 +23,8 @@ class FriendComponent(Component):
         self._applicants_list = {}
 
         self._reward = {}
+        self._fight_times = {} # 小伙伴支援次数
+        self._fight_last_time = 0 # 小伙伴上次战斗时间
 
     def init_data(self, character_info):
         self._friends = character_info.get('friends')
@@ -35,20 +37,28 @@ class FriendComponent(Component):
 
         self._applicants_list = character_info.get('applicants_list')
         self._reward = character_info.get('freward', {})
+        self._fight_times = character_info.get('ffight_times', {})
+        self._fight_last_time = character_info.get('ffight_last_time', 0)
 
     def save_data(self):
         friend_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(friends=self._friends,
                     blacklist=self._blacklist,
                     applicants_list=self._applicants_list,
-                    freward=self._reward)
+                    freward=self._reward,
+                    ffight_times=self._fight_times,
+                    ffight_last_time=self._fight_last_time
+                    )
         friend_obj.hmset(data)
 
     def new_data(self):
         data = dict(friends=self._friends,
                     blacklist=self._blacklist,
                     applicants_list=self._applicants_list,
-                    freward=self._reward)
+                    freward=self._reward,
+                    ffight_times=self._fight_times,
+                    ffight_last_time=self._fight_last_time
+                    )
         return data
 
     @property
@@ -63,6 +73,18 @@ class FriendComponent(Component):
     @property
     def blacklist(self):
         return self._blacklist.keys()
+
+    @property
+    def fight_times(self):
+        return self._fight_times
+
+    @property
+    def fight_last_time(self):
+        return self._fight_last_time
+
+    @fight_last_time.setter
+    def fight_last_time(self, value):
+        self._fight_last_time = value
 
     @property
     def applicant_list(self):
