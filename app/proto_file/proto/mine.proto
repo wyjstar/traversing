@@ -203,6 +203,7 @@ message MineBattleResponse{
 	optional int32 seed2= 10;
 	repeated Runt1 runt = 11;
 	optional bool fight_result = 12; // pvp
+	optional int32 hold = 13; //是否占领 0:抢夺，1抢夺并占领
 }
 
 //返回 StageStartResponse
