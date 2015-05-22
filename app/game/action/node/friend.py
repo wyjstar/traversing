@@ -385,12 +385,11 @@ def recommend_friend_1198(data, player):
                 continue
             count += 1
             friend = response.rfriend.add()
-            friend.id = player_data.hget('id')
-            print 'friend.id', friend.id
-            friend.nickname = player_data.hget('nickname')
-            print 'friend.nickname', friend.nickname
-            friend_data = player_data.hmget(['attackPoint', 'heads',
+            friend_data = player_data.hmget(['id', 'nickname',
+                                             'attackPoint', 'heads',
                                              'level', 'upgrade_time'])
+            friend.id = friend_data.get('id')
+            friend.nickname = friend_data.get('nickname')
             ap = 1
             if friend_data['attackPoint'] is not None:
                 ap = int(friend_data['attackPoint'])
