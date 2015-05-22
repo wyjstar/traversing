@@ -589,7 +589,7 @@ def settle_1252(data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
     # todo: set settle time to calculate acc_mine
-    process_mine_result(player, pos, result, None, 0)
+    process_mine_result(player, pos, result, None, 0, 0)
     response.result = True
     return response.SerializePartialToString()
 
