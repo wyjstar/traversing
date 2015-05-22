@@ -50,7 +50,6 @@ def get_stages_901(pro_data, player):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
-        add.state = 1
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
@@ -90,7 +89,6 @@ def get_chapter_902(pro_data, player):
             continue
         stage_award_add = response.stage_award.add()
         stage_award_add.chapter_id = chapter_obj.chapter_id
-        # chapter_obj.update(50)
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
