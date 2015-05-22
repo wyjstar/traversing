@@ -26,6 +26,9 @@ from shared.utils.pyuuid import get_uuid
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
+from shared.db_opear.configs_data.data_helper import parse
+from app.game.core.item_group_helper import gain, get_return
+import copy
 
 
 remote_gate = GlobalObject().remote['gate']
@@ -47,6 +50,7 @@ def get_stages_901(pro_data, player):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
+        add.state = 1
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
     response.elite_stage_times = elite_stage_times
@@ -86,12 +90,13 @@ def get_chapter_902(pro_data, player):
             continue
         stage_award_add = response.stage_award.add()
         stage_award_add.chapter_id = chapter_obj.chapter_id
+        # chapter_obj.update(50)
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
         stage_award_add.dragon_gift = chapter_obj.dragon_gift
         for already_gift in chapter_obj.already_gift:
             stage_award_add.already_gift.append(already_gift)
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -108,8 +113,8 @@ def stage_start_903(pro_data, player):
     red_best_skill_id = request.unparalleled  # 无双编号
     fid = request.fid                    # 好友ID
 
-    logger.debug("red_best_skill_id,%s" % red_best_skill_id)
-    logger.debug("fid,%s" % fid)
+    # logger.debug("red_best_skill_id,%s" % red_best_skill_id)
+    # logger.debug("fid,%s" % fid)
     response = stage_response_pb2.StageStartResponse()
     open_stage_id = 0
     if stage_type == 2:
@@ -170,7 +175,7 @@ def fight_settlement_904(pro_data, player):
     stage_id = request.stage_id
     result = request.result
 
-    logger.debug("steps:%s", request.steps)
+    # logger.debug("steps:%s", request.steps)
     #player.fight_cache_component.red_units
     if not pve_process_check(player, result, request.steps, const.BATTLE_PVE):
         logger.error("pve_process_check error!=================")
@@ -210,7 +215,7 @@ def get_warriors_906(pro_data, player):
 
                 for buff_id in group:
                     buffs.append(buff_id)
-    logger.info('warriors: %s' % response)
+    # logger.info('warriors: %s' % response)
     return response.SerializePartialToString()
 
 
@@ -395,7 +400,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
                 break_stage_info = game_configs.stage_break_config.get(break_stage_id)
                 ran = random.random()
                 if ran <= break_stage_info.reward_odds:
-                    logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
+                    # logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
                     data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
                     get_return(player, data, drops)
 
@@ -479,7 +484,7 @@ def reset_stage_908(pro_data, player):
     player.finance.save_data()
 
     response.res.result = True
-    logger.debug('reset stage 908 success')
+    # logger.debug('reset stage 908 success')
     return response.SerializePartialToString()
 
 
@@ -541,11 +546,16 @@ def get_award(pro_data, player):
         else:
             if chapter_obj.dragon_gift == 0:
                 chapter_obj.dragon_gift = 1
-                res = get_gift(chapter_obj, chapter_id, response)
+                res = get_gift(player, chapter_obj, chapter_id, response)
                 player.stage_component.save_data()
             else:
                 star_index = len(chapter_obj.already_gift) - 1
-                star_price = game_configs.base_config.get('starPrice')[star_index]
+                if star_index > len(game_configs.base_config.get('starPrice'))-1:
+                    response.res.result = False
+                    response.res.result_no = 862
+                    return response.SerializePartialToString()
+                prize = game_configs.base_config.get('starPrice')[star_index]
+                star_price = parse(prize)
 
                 result = is_afford(player, star_price)
                 if not result.get('result'):
@@ -554,13 +564,13 @@ def get_award(pro_data, player):
                     # common_response.message = u'消费不足2！'
                     return response.SerializeToString()
 
-                res = get_gift(chapter_obj, chapter_id, response)
+                res = get_gift(player, chapter_obj, chapter_id, response)
                 if not res['res']:
                     response.res.result = False
                     response.res.result_no = 862
                     return response.SerializePartialToString()
                 player.stage_component.save_data()
-            consume(player, star_price)  # 消耗
+                consume(player, star_price)  # 消耗
 
     response.res.result = True
     # logger.debug(response)
@@ -575,14 +585,14 @@ def get_drop(bag_id):
     return drops
 
 
-def get_gift(chapter_obj, chapter_id, response):
+def get_gift(player, chapter_obj, chapter_id, response):
     already_gift = chapter_obj.already_gift
-    gift_weight = game_configs.stage_config.get('gift_weight')
-    gift_info = game_configs.stage_config.get('gift_info')
+    gift_weight = copy.copy(game_configs.stage_config.get('gift_weight').get(chapter_id))
+    gift_info = game_configs.stage_config.get('gift_info').get(chapter_id)
     for x in already_gift:
         del gift_weight[x]
     if not gift_weight:
-        return {'res', False}
+        return {'res':  False}
     all_weight = 0
     for (id, weight) in gift_weight.items():
         all_weight += weight
@@ -596,8 +606,9 @@ def get_gift(chapter_obj, chapter_id, response):
 
     prize = parse({gift[0]: [gift[2], gift[2], gift[1]]})
     return_data = gain(player, prize, const.CHAPTER_AWARD)  # 获取
-    get_return(player, return_data, response.gain)
+    get_return(player, return_data, response.drops)
     response.gift_id = gift_id
-    chapter_obj.already_gift.append[gift_id]
+    # already_gift.append(gift_id)
+    chapter_obj.already_gift.append(gift_id)
 
     return {'res': True, 'gift_id': gift_id}

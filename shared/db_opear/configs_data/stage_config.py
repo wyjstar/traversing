@@ -3,6 +3,7 @@
 created by server on 14-7-16下午5:48.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.db_opear.configs_data.data_helper import convert_keystr2num
 
 
 class StageConfig(object):
@@ -36,9 +37,15 @@ class StageConfig(object):
 
                 if item.chaptersTab:  # 是章节标签
                     for (id, info) in item.dragonGift.items():
-                        self._gift_weight[item.chapter] = {id: info[3]}
+                        if self._gift_weight.get(item.chapter):
+                            self._gift_weight[item.chapter][id] = info[3]
+                        else:
+                            self._gift_weight[item.chapter] = {id: info[3]}
                         del info[-1]
-                        self._gift_info[item.chapter] = {id: info}
+                        if self._gift_info.get(item.chapter):
+                            self._gift_info[item.chapter][id] = info
+                        else:
+                            self._gift_info[item.chapter] = {id: info}
                 else:
                     self._condition_mapping.setdefault(item.condition, []). \
                         append(item.id)

@@ -102,7 +102,7 @@ class StageAward(object):
     def already_gift(self):
         return self._already_gift
 
-    @dragon_gift.setter
+    @already_gift.setter
     def already_gift(self, v):
         self._already_gift = v
 
