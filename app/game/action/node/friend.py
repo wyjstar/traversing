@@ -349,7 +349,7 @@ def find_friend_request_1107(data, player):
         friend_heads.ParseFromString(friend_data['heads'])
         response.hero_no = friend_heads.now_head
         response.level = friend_data['level']
-        if remote_gate.online_remote(friend_data['id']) == 1:
+        if remote_gate.online_remote(friend_data['id']) == 0:
             response.last_time = friend_data['upgrade_time']
 
         # 添加好友主将的属性
