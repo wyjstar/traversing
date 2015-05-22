@@ -125,6 +125,7 @@ class CharacterLineUpComponent(Component):
 
         self._unpars[skill_id] = skill_upgrade_level
         self.owner.finance.consume_coin(coin)
+        self.owner.finance.consume(const.SPIRIT, spirit)
         self.owner.finance.save_data()
         self.save_data()
 

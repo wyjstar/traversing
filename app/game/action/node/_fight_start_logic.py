@@ -24,10 +24,10 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill)
     if fight_type == const.BATTLE_PVP:
         res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
-                                blue_best_skill, blue_player_level, seed1, seed2)
+                                blue_best_skill, blue_player_level, seed1, seed2, player.base_info.level)
     elif fight_type == const.BATTLE_MINE_PVP:
         res = mine_pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
-                                blue_best_skill, blue_player_level, seed1, seed2)
+                                blue_best_skill, blue_player_level, seed1, seed2, player.base_info.level)
 
     logger.debug("pvp_process: %s" % res)
     #fight_result = process.process()
@@ -52,11 +52,11 @@ def pve_process_check(player, fight_result, steps, fight_type):
 
     if fight_type == const.BATTLE_PVE:
         res = pve_start(red_units, blue_groups, red_best_skill_id, red_best_skill_level,
-                            monster_unpara, 1, f_unit, seed1, seed2, steps)
+                            monster_unpara, 1, f_unit, seed1, seed2, steps, player.base_info.level)
     elif fight_type == const.BATTLE_MINE_PVE:
         blue_units = blue_groups[0]
         res = mine_start(red_units, blue_units, red_best_skill_id, red_best_skill_level,
-                            monster_unpara, 1, seed1, seed2, steps)
+                            monster_unpara, 1, seed1, seed2, steps, player.base_info.level)
     logger.debug("pve_start %s %s" % (res, fight_result))
     return res == fight_result
     #except Exception, e:
@@ -179,6 +179,7 @@ def assemble(unit_add, unit):
         unit_add.break_skills.append(skill_no)
 
     unit_add.hp = unit.hp
+    unit_add.hp_max = unit.hp_max
     unit_add.atk = unit.atk
     unit_add.physical_def = unit.physical_def
     unit_add.magic_def = unit.magic_def

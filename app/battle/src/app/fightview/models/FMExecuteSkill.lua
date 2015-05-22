@@ -193,6 +193,7 @@ function unpara(attacker_side, target, buff_info, playerLevel, extra_msgs)
     local m1 = ""
     m1 = m1.."总atk:"..tostring(atkArray)
     m1 = m1.."--基础伤害:"..tostring(warriorsDamage)
+    m1 = m1.."--实际伤害:"..tostring(warriorsLastDamage).."("..playerLevel..")"
     table.insert(extra_msgs, m1)
     target:set_hp(target:get_hp() - warriorsLastDamage)
     return warriorsLastDamage
@@ -226,5 +227,6 @@ end
 function addDamageRate(value)
     -- 添加伤害加成
     damage_rate = process.damage_rate
+    print("addDamageRate", damage_rate)
     return value * (1 + damage_rate)
 end

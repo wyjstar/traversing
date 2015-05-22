@@ -32,6 +32,7 @@ message BattleUnit{
 	optional bool is_break = 28;
 	optional bool is_awake = 29;
 	optional int32 origin_no = 30;
+	optional int64 hp_max = 31;              // 战斗单位血量Max
 }
 
 message BattleUnitGrop{

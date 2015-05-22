@@ -435,10 +435,10 @@ function constructBattleUnit(data, side)
     unit.unit_name = ""
     unit.no = data.no
     unit.hp = data.hp
-    print("world boss hp", unit.hp)
-    unit.hp_begin = data.hp
+    print("world boss hp", unit.hp, unit.hp_max)
+    unit.hp = data.hp
     --unit.hp_max = data.hp_max
-    unit.hp_max = data.hp
+    unit.hp_max = data.hp_max
     unit.atk = data.atk
     unit.physical_def = data.physical_def
     unit.magic_def = data.magic_def

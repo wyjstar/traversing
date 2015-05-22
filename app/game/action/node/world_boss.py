@@ -78,7 +78,7 @@ def get_fight_info(data, player):
     response.last_fight_time = int(boss.last_fight_time)
     response.gold_reborn_times = boss.gold_reborn_times
     logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
-    print response
+    #print response
     print "*" * 80
 
     return response.SerializePartialToString()
@@ -187,7 +187,7 @@ def pvb_reborn_1704(data, player):
     gold = player.finance.gold
 
     money_relive_price = base_config.get('gold_relive_price')
-    need_gold = -1 if boss.gold_reborn_times not in money_relive_price else money_relive_price[boss.gold_reborn_times]
+    need_gold = money_relive_price[-1] if boss.gold_reborn_times >= len(money_relive_price) else money_relive_price[boss.gold_reborn_times]
     print need_gold, gold, "*"*80
     current_time = get_current_timestamp()
 
@@ -231,6 +231,7 @@ def pvb_fight_start_1705(pro_data, player):
 
     response = PvbFightResponse()
     res = response.res
+    print("world_boss_line_up:", line_up)
 
     open_stage_id = game_configs.base_config.get('worldbossOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
@@ -331,11 +332,11 @@ def receive_pvb_award_remote(pvb_award_data, is_online, player):
     pvb_award.ParseFromString(pvb_award_data)
     boss = player.world_boss.get_boss("world_boss")
     if pvb_award.award_type == const.PVB_IN_AWARD:
-        boss.set_award(const.PVB_IN_AWARD, boss.demages)
+        boss.set_award(const.PVB_IN_AWARD, boss.demages, pvb_award.rank_no)
         boss.demages = []
         player.world_boss.save_data()
     else:
-        boss.set_award(pvb_award.award_type, pvb_award.award)
+        boss.set_award(pvb_award.award_type, pvb_award.award, pvb_award.rank_no)
     player.world_boss.save_data()
     logger.debug("receive_pvb_award_remote=================%s" % pvb_award.award_type)
     return True
@@ -345,7 +346,7 @@ def receive_pvb_award_remote(pvb_award_data, is_online, player):
 def pvb_get_award_1708(data, player):
     response = PvbAwardResponse()
     boss = player.world_boss.get_boss("world_boss")
-    award_type, award, is_over = boss.get_award()
+    award_type, award, rank_no, is_over = boss.get_award()
     player.world_boss.save_data()
     logger.debug("award_type %s, award %s, is_over %s" % (award_type, award, is_over))
     response.is_over = is_over
@@ -379,7 +380,8 @@ def pvb_get_award_1708(data, player):
         drop_items = bigbag.get_drop_items()
         return_data = gain(player, drop_items, const.WORLD_BOSS_AWARD)
         get_return(player, return_data, response.gain)
-    response.rank_no = remote_gate['world'].get_rank_no_remote(player.base_info.id, "world_boss")
+    #response.rank_no = remote_gate['world'].get_rank_no_remote(player.base_info.id, "world_boss")
+    response.rank_no = rank_no
     logger.debug("pvb_get_award_1708:%s" % response)
     return response.SerializePartialToString()
 

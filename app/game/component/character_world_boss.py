@@ -146,11 +146,11 @@ class Boss(object):
     def last_fight_time(self, value):
         self._last_fight_time = value
 
-    def set_award(self, award_type, award):
+    def set_award(self, award_type, award, rank_no):
         """
         设置奖励, 参与奖励做特殊处理
         """
-        self._award[award_type] = award
+        self._award[award_type] = award, rank_no
 
     def get_award(self):
         """
@@ -160,8 +160,8 @@ class Boss(object):
             temp = self._award.get(i)
             if temp:
                 del self._award[i]
-                return i, temp, False
-        return 0, [], True
+                return i, temp[0], temp[1], False
+        return 0, [], 0, True
 
     def get_data_dict(self):
         """docstring for get_data_dict"""

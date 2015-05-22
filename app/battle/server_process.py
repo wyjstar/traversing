@@ -22,8 +22,8 @@ lua.require("app/battle/src/test_main")
 #func = lua.eval('''function() return start(); end''')
 #print(func())
 
-pvp_func = lua.eval('''function(fightData, fightType) setData(fightData, fightType); return pvp_start(); end''')
-pve_func = lua.eval('''function(fightData, fightType, steps) setData(fightData, fightType); return pve_start(steps); end''')
+pvp_func = lua.eval('''function(fightData, fightType, level) setData(fightData, fightType, level); return pvp_start(); end''')
+pve_func = lua.eval('''function(fightData, fightType, steps, level) setData(fightData, fightType, level); return pve_start(steps); end''')
 
 def construct_battle_unit(unit):
     # 构造战斗单元
@@ -34,6 +34,7 @@ def construct_battle_unit(unit):
         quality = unit.quality,
 
         hp = unit.hp,
+        hp_max = unit.hp_max,
         atk = unit.atk,
         physical_def = unit.physical_def,
         magic_def = unit.magic_def,
@@ -57,7 +58,7 @@ def construct_battle_unit(unit):
         origin_no = unit.origin_no
     )
 
-def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2):
+def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -77,13 +78,13 @@ def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blu
         seed2 = seed2
     )
     fight_type = const.BATTLE_PVP
-    res = pvp_func(fight_data, fight_type)
+    res = pvp_func(fight_data, fight_type, level)
     print("pvp_start=====:", res)
     if int(res[0]) == 1:
         return True
     return False
 
-def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, blue_skill_level, f_unit, seed1, seed2, step_infos):
+def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, blue_skill_level, f_unit, seed1, seed2, step_infos, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -113,12 +114,12 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
         seed2 = seed2
     )
     fight_type = const.BATTLE_PVE
-    res = pve_func(fight_data, fight_type, steps)
+    res = pve_func(fight_data, fight_type, steps, level)
     if int(res) == 1:
         return True
     return False
 
-def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, player_level, debuff_skill_no, damage_rate, seed1, seed2):
+def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, player_level, debuff_skill_no, damage_rate, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -139,8 +140,8 @@ def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_sk
         damage_rate= damage_rate
     )
     fight_type = const.BATTLE_PVB
-    res = pvp_func(fight_data, fight_type)
-    print("pvp_start=====:", res)
+    res = pvp_func(fight_data, fight_type, level)
+    print("world_boss_start=====:", res, level)
     if int(res[0]) == 1:
         return {"result":True, "hp_left":res[1]}
     return {"result":False, "hp_left":res[1]}
@@ -155,7 +156,7 @@ def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_sk
 	#repeated int32 awake_no = 8;        //
 	#optional int32 seed1= 9;
        # optional int32 seed2= 10;
-def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2):
+def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -174,13 +175,13 @@ def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill
         seed2 = seed2
     )
     fight_type = const.BATTLE_MINE_PVP
-    res = pvp_func(fight_data, fight_type)
+    res = pvp_func(fight_data, fight_type, level)
     print("pvp_start=====:", res)
     if int(res[0]) == 1:
         return True
     return False
 
-def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, step_infos):
+def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, step_infos, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -206,7 +207,7 @@ def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, bl
     fight_type = const.BATTLE_MINE_PVE
     res = pvp_func(fight_data, fight_type)
     print("pvp_start=====:", res)
-    res = pve_func(fight_data, fight_type, steps)
+    res = pve_func(fight_data, fight_type, steps, level)
     if int(res) == 1:
         return True
     return False
