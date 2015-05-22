@@ -197,19 +197,19 @@ def fight_settlement_904(pro_data, player):
     stage_config = player.fight_cache_component._get_stage_config()
 
     if stage_config.type not in [1, 2, 3] and request.is_skip:
-        logger.error("can not be skip error!=================")
+        logger.error("can not be skip error!=================1")
         response = stage_response_pb2.StageSettlementResponse()
         res = response.res
         res.result = False
-        res.result_no = 9042
+        res.result_no = 9041
         return response.SerializePartialToString()
 
     if request.is_skip and stage.state != 1:
-        logger.error("can not be skip error!=================")
+        logger.error("can not be skip error!=================2")
         response = stage_response_pb2.StageSettlementResponse()
         res = response.res
         res.result = False
-        res.result_no = 9043
+        res.result_no = 9041
         return response.SerializePartialToString()
 
 
