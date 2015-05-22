@@ -23,7 +23,7 @@ from random import randint
 
 # from app.proto_file import world_boss_pb2
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')

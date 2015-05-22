@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='apple.proto',
   package='',
-  serialized_pb='\n\x0b\x61pple.proto\x1a\x0c\x63ommon.proto\"[\n\x19\x41ppleConsumeVerifyRequest\x12\x16\n\x0etransaction_id\x18\x01 \x01(\t\x12\x15\n\rpurchase_info\x18\x02 \x01(\t\x12\x0f\n\x07\x63hannel\x18\x03 \x01(\x05\"\x98\x01\n\x1a\x41ppleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x16\n\x0etransaction_id\x18\x02 \x01(\t\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x04info\x18\x04 \x01(\x0b\x32\x10.GetGoldResponse')
+  serialized_pb='\n\x0b\x61pple.proto\x1a\x0c\x63ommon.proto\"[\n\x19\x41ppleConsumeVerifyRequest\x12\x16\n\x0etransaction_id\x18\x01 \x01(\t\x12\x15\n\rpurchase_info\x18\x02 \x01(\t\x12\x0f\n\x07\x63hannel\x18\x03 \x01(\x05\"x\n\x1a\x41ppleConsumeVerifyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x16\n\x0etransaction_id\x18\x02 \x01(\t\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -89,13 +89,6 @@ _APPLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='info', full_name='AppleConsumeVerifyResponse.info', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -105,13 +98,12 @@ _APPLECONSUMEVERIFYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=123,
-  serialized_end=275,
+  serialized_start=122,
+  serialized_end=242,
 )
 
 _APPLECONSUMEVERIFYRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _APPLECONSUMEVERIFYRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
-_APPLECONSUMEVERIFYRESPONSE.fields_by_name['info'].message_type = common_pb2._GETGOLDRESPONSE
 DESCRIPTOR.message_types_by_name['AppleConsumeVerifyRequest'] = _APPLECONSUMEVERIFYREQUEST
 DESCRIPTOR.message_types_by_name['AppleConsumeVerifyResponse'] = _APPLECONSUMEVERIFYRESPONSE
 

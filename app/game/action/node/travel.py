@@ -26,7 +26,7 @@ from shared.tlog import tlog_action
 
 
 xs = 100000
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -133,6 +133,13 @@ def travel_init_830(data, player):
                 if len(tra) == 3:
                     res_travel.time = tra[2]
 
+    res_shose = response.shoes
+    res_shose.shoe1 = player.travel_component.shoes[0]
+    res_shose.shoe2 = player.travel_component.shoes[1]
+    res_shose.shoe3 = player.travel_component.shoes[2]
+    res_shose.use_type = player.travel_component.shoes[3]
+    res_shose.use_no = player.travel_component.shoes[4]
+
     response.chest_time = player.travel_component.chest_time
 
     if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday != time.localtime().tm_yday:
@@ -147,7 +154,7 @@ def travel_init_830(data, player):
     player.travel_component.save()
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializeToString()
 
 
@@ -169,12 +176,6 @@ def buy_shoes_832(data, player):
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
-    player.travel_component.update_shoes()
-    shoes_info = player.travel_component.shoes
-    if shoes_info[0]+num > max_num:
-        response.res.result = False
-        response.res.result_no = 865
-        return response.SerializeToString()
 
     is_today = 0
     enough_times = 1
@@ -193,7 +194,9 @@ def buy_shoes_832(data, player):
         player.travel_component.last_buy_shoes = [0, int(time.time())]
 
     def func():
-        shoes_info[0] += num
+        for shoes_info in args.shoes_infos:
+            player.travel_component.shoes[shoes_info.shoes_type-1] += \
+                shoes_info.shoes_no
         player.travel_component.last_buy_shoes[0] += num
         player.travel_component.save()
 

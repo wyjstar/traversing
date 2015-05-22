@@ -14,7 +14,7 @@ import stage_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_request.proto',
   package='',
-  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"l\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"y\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x18\n\x05steps\x18\x03 \x03(\x0b\x32\t.StepInfo\x12\x0e\n\x06result\x18\x04 \x02(\x08\x12\x0f\n\x07is_skip\x18\x05 \x01(\x08\"H\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\x12\x12\n\nsweep_type\x18\x03 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x10StarAwardRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\x12\n\naward_type\x18\x02 \x02(\x05\".\n\x18UpdataPlotChapterRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\")\n\x15OpenStageChestRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05')
+  serialized_pb='\n\x13stage_request.proto\x1a\x0bstage.proto\"$\n\x10StageInfoRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"(\n\x12\x43hapterInfoRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\"l\n\x11StageStartRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x04 \x01(\x05\x12\x0b\n\x03\x66id\x18\x05 \x01(\x05\"y\n\x16StageSettlementRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x12\n\nstage_type\x18\x02 \x02(\x05\x12\x18\n\x05steps\x18\x03 \x03(\x0b\x32\t.StepInfo\x12\x0e\n\x06result\x18\x04 \x02(\x08\x12\x0f\n\x07is_skip\x18\x05 \x01(\x08\"H\n\x11StageSweepRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\r\n\x05times\x18\x02 \x02(\x05\x12\x12\n\nsweep_type\x18\x03 \x02(\x05\"%\n\x11ResetStageRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\":\n\x10StarAwardRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\x12\n\naward_type\x18\x02 \x02(\x05\".\n\x18UpdataPlotChapterRequest\x12\x12\n\nchapter_id\x18\x01 \x02(\x05')
 
 
 
@@ -319,34 +319,6 @@ _UPDATAPLOTCHAPTERREQUEST = _descriptor.Descriptor(
   serialized_end=568,
 )
 
-
-_OPENSTAGECHESTREQUEST = _descriptor.Descriptor(
-  name='OpenStageChestRequest',
-  full_name='OpenStageChestRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='stage_id', full_name='OpenStageChestRequest.stage_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=570,
-  serialized_end=611,
-)
-
 _STAGESETTLEMENTREQUEST.fields_by_name['steps'].message_type = stage_pb2._STEPINFO
 DESCRIPTOR.message_types_by_name['StageInfoRequest'] = _STAGEINFOREQUEST
 DESCRIPTOR.message_types_by_name['ChapterInfoRequest'] = _CHAPTERINFOREQUEST
@@ -356,7 +328,6 @@ DESCRIPTOR.message_types_by_name['StageSweepRequest'] = _STAGESWEEPREQUEST
 DESCRIPTOR.message_types_by_name['ResetStageRequest'] = _RESETSTAGEREQUEST
 DESCRIPTOR.message_types_by_name['StarAwardRequest'] = _STARAWARDREQUEST
 DESCRIPTOR.message_types_by_name['UpdataPlotChapterRequest'] = _UPDATAPLOTCHAPTERREQUEST
-DESCRIPTOR.message_types_by_name['OpenStageChestRequest'] = _OPENSTAGECHESTREQUEST
 
 class StageInfoRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -405,12 +376,6 @@ class UpdataPlotChapterRequest(_message.Message):
   DESCRIPTOR = _UPDATAPLOTCHAPTERREQUEST
 
   # @@protoc_insertion_point(class_scope:UpdataPlotChapterRequest)
-
-class OpenStageChestRequest(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _OPENSTAGECHESTREQUEST
-
-  # @@protoc_insertion_point(class_scope:OpenStageChestRequest)
 
 
 # @@protoc_insertion_point(module_scope)

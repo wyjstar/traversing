@@ -71,9 +71,3 @@ message StarAwardResponse{
     optional GameResourcesResponse drops = 2;
     optional int32 gift_id = 3;
 }
-
-// 1810
-message OpenStageChestResponse{
-    required CommonResponse res = 1;
-    optional GameResourcesResponse drops = 2;
-}

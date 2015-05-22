@@ -1,5 +1,6 @@
 import "common.proto";
 import "travel_item.proto";
+import "travel_shoes.proto";
 
 message Chapter{
     repeated Travel travel = 1;
@@ -14,8 +15,11 @@ message Travel{
 }
 
 message Shoes{
-    required int32 num = 1; //当前鞋子数量
-    required int32 remain_time = 2; //获得下个鞋子剩余时间
+    required int32 shoe1 = 1;
+    required int32 shoe2 = 2;
+    required int32 shoe3 = 3;
+    required int32 use_type = 4;
+    required int32 use_no = 5;
 }
 
 // travel 831
@@ -32,7 +36,7 @@ message TravelResponse{
 message TravelInitResponse{
     required CommonResponse res = 1;
     repeated Chapter chapter = 2;
-    optional Shoes shoes = 3;
+    required Shoes shoes = 3;
     required int32 chest_time = 4;
     repeated TravelItemChapter travel_item_chapter = 5;
     repeated StageTravel stage_travel = 6;
@@ -46,7 +50,7 @@ message TravelItemChapter{
 
 // buy shoes 832
 message BuyShoesRequest{
-    required int32 num = 1; //鞋子数量
+    repeated ShoesInfo shoes_infos = 1;
 }
 
 message BuyShoesResponse{

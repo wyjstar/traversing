@@ -1,5 +1,4 @@
 g_notice = g_notice or {}   -- 通知的宏定义
-g_other  = g_other or {}    -- 其他字符串宏定义
 
 const = const or {}
 const.POS_ARMY = cc.p(320, 260)
@@ -374,5 +373,5 @@ STEP_AFTER_BUFF = 4 -- 攻击后清buff
 g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --次日登陆奖励
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
 
-g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
+
 

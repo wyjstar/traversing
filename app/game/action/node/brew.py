@@ -5,12 +5,12 @@ created by sphinx on 14-10-11下午4:36.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import brew_pb2
-from app.game.component.achievement.user_achievement import EventType
-from app.game.component.achievement.user_achievement import CountEvent
+from app.game.component.achievement.user_achievement import CountEvent,\
+    EventType
 from app.game.core.lively import task_status
 
 from gfirefly.server.globalobject import GlobalObject
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 from shared.db_opear.configs_data import game_configs
 
 

@@ -212,16 +212,21 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             after_num = player.finance.coin
 
         elif type_id == const.RESOURCE:
-            if item_no == 20:
-                player.travel_component.update_shoes()
+            if item_no == 18:
                 shoes = player.travel_component.shoes
-                max_num = game_configs.base_config.get("travelShoeTimes")
-                if shoes[0]+num > max_num:
-                    shoes = [max_num, int(time.time())]
-                else:
-                    shoes[0] += num
+                shoes[0] += num
                 player.travel_component.save()
                 after_num = shoes[0]
+            elif item_no == 19:
+                shoes = player.travel_component.shoes
+                shoes[1] += num
+                player.travel_component.save()
+                after_num = shoes[1]
+            elif item_no == 20:
+                shoes = player.travel_component.shoes
+                shoes[2] += num
+                player.travel_component.save()
+                after_num = shoes[2]
             elif item_no == 14:
                 player.runt.stone2 += num
                 player.runt.save()
@@ -436,15 +441,31 @@ def get_return(player, return_data, game_resources_response):
             game_resources_response.team_exp += item_num
 
         elif 107 == item_type:
-            for finance_changes in game_resources_response.finance.finance_changes:
-                if finance_changes.item_type == item_type and finance_changes.item_no == item_no:
-                    finance_changes.item_num += item_num
-                    break
+            if item_no == 18:
+                travel_item = game_resources_response.shoes_info.add()
+                shoes_type = 1
+                travel_item.shoes_type = shoes_type
+                travel_item.shoes_no = item_num
+            elif item_no == 19:
+                travel_item = game_resources_response.shoes_info.add()
+                shoes_type = 2
+                travel_item.shoes_type = shoes_type
+                travel_item.shoes_no = item_num
+            elif item_no == 20:
+                travel_item = game_resources_response.shoes_info.add()
+                shoes_type = 3
+                travel_item.shoes_type = shoes_type
+                travel_item.shoes_no = item_num
             else:
-                change = game_resources_response.finance.finance_changes.add()
-                change.item_type = item_type
-                change.item_num = item_num
-                change.item_no = item_no
+                for finance_changes in game_resources_response.finance.finance_changes:
+                    if finance_changes.item_type == item_type and finance_changes.item_no == item_no:
+                        finance_changes.item_num += item_num
+                        break
+                else:
+                    change = game_resources_response.finance.finance_changes.add()
+                    change.item_type = item_type
+                    change.item_num = item_num
+                    change.item_no = item_no
         elif 108 == item_type:
             [runt_id, main_attr, minor_attr] = player.runt.m_runt.get(item_no)
             runt_pb = game_resources_response.runt.add()

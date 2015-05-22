@@ -6,7 +6,7 @@ from app.proto_file.notice_pb2 import NoticeResponse
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 def push_notice(notice_id, player_name="", hero_no=0, hero_break_level=0, equipment_no=0):
     try:

@@ -11,11 +11,10 @@ class Stage(object):
     """关卡
     """
     def __init__(self, stage_id, attacks=0, state=-1, reset=[0, 1],
-                 drop_num=0, chest_state=0):
+                 drop_num=0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
         self._state = state         # 关卡状态 -2: 未开启 -1：已开启但没打 0：输 1：赢
-        self._chest_state = chest_state         # 关卡宝箱状态 0: 未开启 1：已开启
         self._reset = reset         # 次数重置 【重置次数， 时间】
         self._drop_num = drop_num   # 本关卡掉落包数量, 当战斗失败时设置,防止玩家强退，来刷最大掉落数
 
@@ -48,14 +47,6 @@ class Stage(object):
         self._state = state
 
     @property
-    def chest_state(self):
-        return self._chest_state
-
-    @chest_state.setter
-    def chest_state(self, v):
-        self._chest_state = v
-
-    @property
     def drop_num(self):
         return self._drop_num
 
@@ -67,7 +58,7 @@ class Stage(object):
     def info(self):
         return dict(stage_id=self._stage_id, attacks=self._attacks,
                     state=self._state, reset=self._reset,
-                    drop_num=self._drop_num, chest_state=self._chest_state)
+                    drop_num=self._drop_num)
 
     def dumps(self):
         return cPickle.dumps(self.info)

@@ -58,31 +58,6 @@ class CharacterTravelComponent(Component):
                 'last_buy_shoes': self._last_buy_shoes,
                 'fight_cache': self._fight_cache}
 
-    def update_shoes(self):
-        now = int(time.time())
-        max_num = game_configs.base_config.get("travelShoeTimes")
-        if self._shoes[0] == max_num:
-            return self._shoes[0], 0
-        how_long = now - self._shoes[1]
-        need_time = game_configs.base_config.get("travelVigorNeedTime")*60
-        add_num = how_long/need_time
-        shengyu_time = how_long % need_time
-
-        if add_num+self._shoes[0] >= max_num:
-            self._shoes = [max_num, int(time.time())]
-            shengyu_time = 0
-        else:
-            self._shoes[0] += add_num
-            self._shoes[1] = int(time.time()) - shengyu_time
-        return self._shoes[0], shengyu_time
-
-    def use_shoes(self):
-        now = int(time.time())
-        max_num = game_configs.base_config.get("travelShoeTimes")
-        if self._shoes[0] == max_num:
-            self._shoes = [max_num-1, int(time.time())]
-        self._shoes[0] -= 1
-
     def get_travel_item_groups(self):
         groups = []
         my_travel_items = []

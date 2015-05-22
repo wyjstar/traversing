@@ -10,10 +10,6 @@ from app.game.component.Component import Component
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import get_return
 from app.game.core.item_group_helper import gain
-from app.game.action.root import netforwarding
-from app.proto_file import db_pb2
-from shared.tlog import tlog_action
-from app.game.core.rebate_fun import rebate_call
 
 RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
@@ -46,21 +42,17 @@ class CharacterRechargeGift(Component):
                 del self._recharge[activity_id]
                 continue
 
-    def charge(self, recharge):
-        #保存首次充值id
-        #vip
-        #活动
+    def charge(self, recharge, response):
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
             if activitys is None:
                 logger.debug('activity type is not exist:%s', gift_type)
                 continue
             for activity in activitys:
-                self.type_process(activity, recharge)
-
+                self.type_process(activity, recharge, response)
         logger.debug(self._recharge)
 
-    def type_process(self, activity, recharge):
+    def type_process(self, activity, recharge, response):
         activity_id = activity.get('id')
         isopen = activity.get('is_open')
         if isopen != 1:
@@ -173,53 +165,3 @@ class CharacterRechargeGift(Component):
         return_data = gain(self.owner, activity.get('reward'),
                            const.RECHARGE)  # 获取
         get_return(self.owner, return_data, response.gain)
-
-    def get_recharge_response(self, response):
-        """docstring for get_response"""
-        response.gold = self._owner.finance.gold
-        response.vip_level = self._owner.base_info.vip_level
-        response.recharge = self._owner.base_info.recharge
-
-
-    def send_mail(self, recharge_item):
-        mail_id = recharge_item.get('mailId')
-        mail = db_pb2.Mail_PB()
-        mail.config_id = mail_id
-        mail.receive_id = self._owner.base_info.id
-        mail.send_time = int(time.time())
-        mail.mail_type = 2
-        mail_data = mail.SerializePartialToString()
-        netforwarding.push_message('receive_mail_remote', self._owner.base_info.id, mail_data)
-
-
-    def recharge_gain(self, recharge_item, response):
-        """
-        充值掉落
-        """
-        try:
-            if recharge_item.get('type') == 2:
-                rebate_call(self._owner, recharge_item)
-            else:
-                return_data = gain(self._owner, recharge_item.get('setting'),
-                                const.RECHARGE)  # 获取
-                get_return(self._owner, return_data, response.gain)
-
-                rres = self._owner.base_info.first_recharge(recharge_item, response)
-                if rres:
-                    isfirst = 1
-                else:
-                    isfirst = 0
-                tlog_action.log('Recharge', self._owner, isfirst,
-                                recharge_item.get('id'))
-
-            charge_num = recharge_item.get('activity') # 充值元宝数量
-            # vip
-            self._owner.base_info.recharge += charge_num
-            self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
-
-            # 活动
-            self._owner.recharge.charge(charge_num)
-            self._owner.recharge.get_recharge_response(response.info) # recharge
-            self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
-        except Exception, e:
-            logger.error("recharge gain error!%s" % e)

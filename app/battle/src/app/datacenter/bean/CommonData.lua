@@ -15,7 +15,6 @@ function CommonData:ctor(item)
     self.isHasVipGift = false
     self.iscanZcjb = false
     self.netTip = nil
-    self.oldLevel = 0 --战队升级前的等级
 end
 -- function CommonData:clear()
 --     cclog("---------------CommonData:clear------")
@@ -94,7 +93,7 @@ function CommonData:setData(data)
 
     self.pvp_times = data.pvp_times                     --对战次数
     self.pvp_refresh_count = data.pvp_refresh_count     --重置次数
-    self.server_time = data.server_time                 --登录时间
+    self.server_time = data.server_time
 
     self.client_time = os.time()
     print("server_time", self.server_time)
@@ -122,26 +121,17 @@ function CommonData:setData(data)
     print("tomorrow_gift = ", data.tomorrow_gift)
 
     self.battle_speed = data.battle_speed or 1 --战斗速度
+    -- test
+    -- self.server_time = os.time({year=2014,month=9,day=20,hour=11,min=6,sec=0})
 
-    self.srv_time = data.server_time                --服务器时间，每秒进行更新
-    
-    self:updateSrvTimer()
-end
-
---每一秒更新服务器时间
-function CommonData:updateSrvTimer()
-
-    if self.srvTimer then
-        timer.unscheduleGlobal(self.srvTimer);
-        self.srvTimer = nil
-    end
-
-    if self.srv_time then
-        self.srvTimer = timer.scheduleGlobal(function(dt)
-            self.srv_time = self.srv_time + dt
-            -- print("serverTime:",self.server_time,self.srv_time)
-        end,1)
-    end
+    -- test data
+    -- self:setCoin(10000000)
+    -- self:setGold(10000000)
+    -- self:setStamina(99)
+    -- self:setFineHero( os.time({year=2014,month=9,day=17,hour=10,min=0,sec=0}) )
+    -- self:setExcellentHero( os.time({year=2014,month=9,day=17,hour=10,min=0,sec=0}) )
+    -- self:setFineEquipment( os.time({year=2014,month=9,day=17,hour=11,min=6,sec=0}) )
+    -- self:setExcellentEquipment( os.time({year=2014,month=9,day=17,hour=10,min=9,sec=0}) )
 end
 
 -- 新版本玩家资源 data.finances
@@ -227,10 +217,9 @@ end
 
 -- 返回模拟的服务器时间（客户端以服务器时间为准）
 function CommonData:getTime()
-    return math.floor(self.srv_time)
-    -- local nowTime = os.time()
-    -- local diff_time = nowTime - self.client_time
-    -- return self.server_time + diff_time
+    local nowTime = os.time()
+    local diff_time = nowTime - self.client_time
+    return self.server_time + diff_time
 end
 function CommonData:getDay() return os.date("*t",self:getTime()).day end
 function CommonData:getMonth() return os.date("*t",self:getTime()).month end
@@ -561,8 +550,6 @@ function CommonData:setLevel(level)
     print("self.level====", self.level)
     self.isLeveled = false
     if self.level < level then
-        self.oldLevel = self.level
-
         getNetManager():getInstanceNet():sendGropUpgrade()
         --getNewGManager():setIsGuideLevel()
         self.isLeveled = true
@@ -576,15 +563,6 @@ function CommonData:setLevel(level)
 end
 
 function CommonData:getLevel() return self.level end
-
---升级前的等级
-function CommonData:getOldLevel() return self.oldLevel end
---升级前的体力
-function CommonData:getOldStamina() return self.oldStamina end
---升级前的体力
-function CommonData:setOldStamina(value)
-    self.oldStamina = value
-end
 
 --体力
 function CommonData:setStamina(cur_stamina)

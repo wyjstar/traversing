@@ -29,7 +29,7 @@ from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
 
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -193,11 +193,9 @@ def _with_battle_info(response, friend):
     friend_heads = Heads_DB()
     friend_heads.ParseFromString(friend_data['heads'])
     response.hero_no = friend_heads.now_head
+    response.last_time = friend_data['upgrade_time']
     response.vip_level = friend_data['vip_level']
     response.level = friend_data['level']
-
-    if remote_gate.online_remote(friend_data['id']) == 0:
-        response.last_time = friend_data['upgrade_time']
 
     response.nickname = friend_data['nickname']
     if friend_data['attackPoint'] is not None:
@@ -247,7 +245,7 @@ def get_player_friend_list_1106(data, player):
             response_blacklist_add = response.blacklist.add()
 
             # 添加好友主将的属性
-            _with_battle_info(response_blacklist_add, player_data)
+            _with_battle_info(response_blacklist_add, player)
         else:
             logger.error('black_list cant find player id:%d' % pid)
             player.friends.blacklist.remove(pid)

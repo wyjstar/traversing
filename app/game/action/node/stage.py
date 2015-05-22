@@ -16,8 +16,7 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.component.achievement.user_achievement import EventType
 from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
-from app.game.action.node._fight_start_logic import pve_process
-from app.game.action.node._fight_start_logic import pve_process_check
+from app.game.action.node._fight_start_logic import pve_process, pve_process_check
 from app.game.action.node._fight_start_logic import pve_assemble_units
 from app.game.action.node._fight_start_logic import pve_assemble_friend
 from app.game.action.node._fight_start_logic import get_seeds
@@ -28,10 +27,11 @@ from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
 from shared.db_opear.configs_data.data_helper import parse
+from app.game.core.item_group_helper import gain, get_return
 import copy
 
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')
@@ -52,11 +52,9 @@ def get_stages_901(pro_data, player):
         add.state = stage_obj.state
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
-        add.chest_state = stage_obj.chest_state
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
     response.plot_chapter = player.stage_component.plot_chapter
-    player.stage_component.save_data()
     return response.SerializePartialToString()
 
 

@@ -11,7 +11,7 @@ from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 def get_stage_config(stage_config, stage_type, stage_id):

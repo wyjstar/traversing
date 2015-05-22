@@ -5,6 +5,7 @@ import "hero_chip.proto";
 import "equipment_chip.proto";
 import "player.proto";
 import "travel_item.proto";
+import "travel_shoes.proto";
 message CommonResponse
 {
     required bool result = 1;  //处理结果 True：正确
@@ -23,6 +24,7 @@ message GameResourcesResponse
     optional FinancePB finance = 6;
     optional int32 stamina = 7;
     repeated TravelItem travel_item= 8;
+    repeated ShoesInfo shoes_info = 9;
     repeated Runt1 runt = 10;
     optional int32 team_exp = 11;
 }
@@ -39,11 +41,4 @@ message RuntAttr{
     required float attr_value = 2;
     required int32 attr_increment = 3;
     required int32 attr_type = 4;
-}
-
-message GetGoldResponse{
-    optional CommonResponse res = 1;
-    required int32 gold = 2;
-    required int32 vip_level = 3;
-    required int32 recharge = 4;
 }
