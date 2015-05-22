@@ -408,6 +408,7 @@ def get_shop_items_508(pro_data, player):
 
     response = GetShopItemsResponse()
     shopdata = player.shop.get_shop_data(shop_type)
+    player.shop.check_time()
 
     if not shopdata:
         response.res.result = False
