@@ -245,6 +245,8 @@ def pvp_fight_request_1505(data, player):
                 record['id'] = table_max + 1
                 util.InsertIntoDB(PVP_TABLE_NAME, record)
 
+        player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank,
+                                             request.challenge_rank)
         # 首次达到某名次的奖励
         for (rank, mail_id) in game_configs.base_config.get('arena_rank_points').items():
             if rank < request.challenge_rank:
@@ -313,17 +315,7 @@ def pvp_fight_revenge_1507(data, player):
     logger.debug("best_skill=================== %s" % __best_skill)
 
     prere = dict(character_id=request.black_id)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere,
-                                   ['character_id',
-                                    'nickname',
-                                    'level',
-                                    'ap',
-                                    'best_skill',
-                                    'unpar_skill',
-                                    'unpar_skill_level',
-                                    'units',
-                                    'slots',
-                                    'hero_ids'])
+    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere)
     if not record:
         logger.error('black id is not found:%s', request.black_id)
         response.res.result = False
