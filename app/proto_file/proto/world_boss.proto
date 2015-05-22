@@ -31,23 +31,23 @@ message LuckyHeroItem
 
 message PvbBeforeInfoResponse{
     required int32 stage_id = 1;
-    repeated LuckyHeroItem lucky_heros = 2;        // 武将6个
-    optional int32 debuff_skill_no = 5;         // 未遇到奇遇, 则为0
-    repeated PvbRankItem rank_items = 6;        // 伤害排名前十的玩家
-    optional PvbRankItem last_shot_item = 7;    // 最后击杀boss的玩家，如果没有击杀boss，则为空
-                                                //
-    optional bool open_or_not = 8;              // 是否开启, no:上面参数有效，yes：下面参数有效
-                                                //
-    optional int32 hp_left = 9;                 // 剩余血量
-    optional int32 demage_hp = 10;              // 伤害
-    optional int32 rank_no = 11;                // 名次
-    optional int32 fight_times = 12;            // 战斗次数
-    optional int32 last_fight_time= 13;         // 上次战斗结束时间
-    optional int32 encourage_coin_num = 14;     // 金币鼓舞次数
-    optional int32 encourage_gold_num = 15;     // 元宝鼓舞次数
-    optional int32 gold_reborn_times = 16;     // 元宝复活次数
-    optional int32 hp_max = 17;     //boss最大血量
-    optional int32 last_coin_encourage_time = 18;     // 上次金币鼓舞时间
+    repeated LuckyHeroItem lucky_heros = 2;       // 武将6个
+    optional int32 debuff_skill_no = 5;           // 未遇到奇遇, 则为0
+    repeated PvbRankItem rank_items = 6;          // 伤害排名前十的玩家
+    optional PvbRankItem last_shot_item = 7;      // 最后击杀boss的玩家，如果没有击杀boss，则为空
+                                                  //
+    optional bool open_or_not = 8;                // 是否开启, no:上面参数有效，yes：下面参数有效
+                                                  //
+    optional int32 hp_left = 9;                   // 剩余血量
+    optional int32 demage_hp = 10;                // 伤害
+    optional int32 rank_no = 11;                  // 名次
+    optional int32 fight_times = 12;              // 战斗次数
+    optional int32 last_fight_time= 13;           // 上次战斗结束时间
+    optional int32 encourage_coin_num = 14;       // 金币鼓舞次数
+    optional int32 encourage_gold_num = 15;       // 元宝鼓舞次数
+    optional int32 gold_reborn_times = 16;        // 元宝复活次数
+    optional int32 hp_max = 17;                   // boss最大血量
+    optional int32 last_coin_encourage_time = 18; // 上次金币鼓舞时间
 }
 
 //请求pvb玩家信息, command:1702
