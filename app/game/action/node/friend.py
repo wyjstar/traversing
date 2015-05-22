@@ -336,7 +336,7 @@ def find_friend_request_1107(data, player):
 
         friend_data = player_data.hmget(['id',
                                          'attackPoint',
-                                         'nickname'
+                                         'nickname',
                                          'heads',
                                          'level',
                                          'upgrade_time'])
