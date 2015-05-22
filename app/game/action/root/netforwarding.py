@@ -4,6 +4,7 @@ from app.game.core.PlayersManager import PlayersManager
 
 
 remote_gate = GlobalObject().remote.get('gate')
+MAINTAIN_TIME_DEFAULT = 60*60*24*60
 
 
 # def send_mail(mail):
@@ -23,7 +24,8 @@ def push_message(key, character_id, *args):
         return remote_gate.push_message_remote(key, character_id, args)
 
 
-def push_message_maintime(key, character_id, maintain_time, *args):
+def push_message_maintime(key, character_id,
+                          maintain_time=MAINTAIN_TIME_DEFAULT, *args):
     player = PlayersManager().get_player_by_id(character_id)
     if player:
         kw = {}
