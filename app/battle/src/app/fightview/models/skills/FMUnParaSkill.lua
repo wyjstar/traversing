@@ -187,7 +187,7 @@ function FMUnParaSkill:construct_attacker(side)
     local fight_type = self.process.fight_type
     local attacker = {}
     -- 判断怪物无双
-    if fight_type == TYPE_STAGE_ELITE or fight_type == TYPE_STAGE_ACTIVITY or fight_type == TYPE_STAGE_NORMAL and side == "blue" then
+    if (fight_type == TYPE_STAGE_ELITE or fight_type == TYPE_STAGE_ACTIVITY or fight_type == TYPE_STAGE_NORMAL) and side == "blue" then
         for k, v in pairs(self.process.blue_units) do
             if v.is_boss then
                 attacker.is_monster = true -- 判断是否是怪物无双

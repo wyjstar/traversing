@@ -6,6 +6,7 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
+import time
 
 
 class CharacterTravelComponent(Component):
@@ -16,7 +17,8 @@ class CharacterTravelComponent(Component):
         super(CharacterTravelComponent, self).__init__(owner)
         self._travel = {}  # 游历章节缓存 {stage_id:[[event_id, drop, time]]}
         self._travel_item = {}  # 获得的风物志 {stage_id:[travel_item_id]}
-        self._shoes = [0, 0, 0, 0, 0]  # 剩余鞋子[1,2,3,正在消耗，已消耗个数]
+        self._shoes = [game_configs.base_config.get("travelVigorInit"),
+                       int(time.time())]  # 鞋子个数更新时间
         self._chest_time = 1  # 上次领取宝箱时间
         self._fight_cache = [0, 0]  # [stage_id, event_id]
         self._last_buy_shoes = [0, 1]  # [已用次数, 最后买的时间]
@@ -57,6 +59,32 @@ class CharacterTravelComponent(Component):
                 'auto': self._auto,
                 'last_buy_shoes': self._last_buy_shoes,
                 'fight_cache': self._fight_cache}
+
+    def update_shoes(self):
+        now = int(time.time())
+        max_num = game_configs.base_config.get("travelShoeTimes")
+        if self._shoes[0] == max_num:
+            return self._shoes[0], 0
+        how_long = now - self._shoes[1]
+        need_time = game_configs.base_config.get("travelVigorNeedTime")*60
+        add_num = how_long/need_time
+        shengyu_time = how_long % need_time
+
+        if add_num+self._shoes[0] >= max_num:
+            self._shoes = [max_num, int(time.time())]
+            shengyu_time = 0
+        else:
+            self._shoes[0] += add_num
+            self._shoes[1] = int(time.time()) - shengyu_time
+        return self._shoes[0], shengyu_time
+
+    def use_shoes(self):
+        now = int(time.time())
+        max_num = game_configs.base_config.get("travelShoeTimes")
+        if self._shoes[0] == max_num:
+            self._shoes = [max_num-1, int(time.time())]
+        else:
+            self._shoes[0] -= 1
 
     def get_travel_item_groups(self):
         groups = []
@@ -133,8 +161,8 @@ class CharacterTravelComponent(Component):
     @auto.setter
     def auto(self, value):
         self._auto = value
-    @property
 
+    @property
     def last_buy_shoes(self):
         return self._last_buy_shoes
 

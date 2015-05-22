@@ -289,4 +289,6 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 144,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2007",}
 ,  [145] = {
   ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 145,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2008",}
+,  [146] = {
+  ["precondition"] = "1",  ["formula"] = "atkArray(1.5+heroBreak*0.5)",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=atkArray(1.5+heroBreak*0.5)",  ["key"] = "atkhjqy",}
 ,}
