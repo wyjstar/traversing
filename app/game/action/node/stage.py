@@ -194,23 +194,23 @@ def fight_settlement_904(pro_data, player):
     #player.fight_cache_component.red_units
     stage = player.stage_component.get_stage(stage_id)
 
-    #stage_config = player.fight_cache_component.__get_stage_config()
+    stage_config = player.fight_cache_component._get_stage_config()
 
-    #if stage_config.type not in [1, 2, 3] and request.is_skip:
-        #logger.error("can not be skip error!=================")
-        #response = stage_response_pb2.StageSettlementResponse()
-        #res = response.res
-        #res.result = False
-        #res.result_no = 9042
-        #return response.SerializePartialToString()
+    if stage_config.type not in [1, 2, 3] and request.is_skip:
+        logger.error("can not be skip error!=================")
+        response = stage_response_pb2.StageSettlementResponse()
+        res = response.res
+        res.result = False
+        res.result_no = 9042
+        return response.SerializePartialToString()
 
-    #if request.is_skip and stage.state != 1:
-        #logger.error("can not be skip error!=================")
-        #response = stage_response_pb2.StageSettlementResponse()
-        #res = response.res
-        #res.result = False
-        #res.result_no = 9043
-        #return response.SerializePartialToString()
+    if request.is_skip and stage.state != 1:
+        logger.error("can not be skip error!=================")
+        response = stage_response_pb2.StageSettlementResponse()
+        res = response.res
+        res.result = False
+        res.result_no = 9043
+        return response.SerializePartialToString()
 
 
     if not request.is_skip and not pve_process_check(player, result, request.steps, const.BATTLE_PVE):
