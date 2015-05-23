@@ -77,6 +77,8 @@ class Pusher(object):
 
     def regist(self, uid, device_token):
         print 'device_token', device_token
+        if not device_token:
+            return
         user = Character()
         user.uid = uid
         user.device_token = device_token
