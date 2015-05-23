@@ -678,6 +678,7 @@ def battle_1253(data, player):
     response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
+    response.hold = request.hold
     # print 'battle_1253:', response
     return response.SerializePartialToString()
 
