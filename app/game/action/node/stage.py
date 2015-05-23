@@ -178,7 +178,7 @@ def fight_settlement_904(pro_data, player):
     #player.fight_cache_component.red_units
     stage = player.stage_component.get_stage(stage_id)
 
-    stage_config = player.fight_cache_component.__get_stage_config()
+    #stage_config = player.fight_cache_component.__get_stage_config()
 
     #if stage_config.type not in [1, 2, 3] and request.is_skip:
         #logger.error("can not be skip error!=================")
