@@ -1,4 +1,0 @@
-message ShoesInfo{
-    required int32 shoes_type = 1;
-    required int32 shoes_no = 2;
-}

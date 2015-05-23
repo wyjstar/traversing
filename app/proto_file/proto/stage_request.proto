@@ -51,3 +51,7 @@ message UpdataPlotChapterRequest{
     required int32 chapter_id = 1;//章节编号
 }
 
+// 1810
+message OpenStageChestRequest{
+    required int32 stage_id = 1;
+}
