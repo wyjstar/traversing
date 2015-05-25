@@ -11,7 +11,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
-from test.init_data.init_data import init
+from test.init_data.init_data import init, change_stage
 from test.init_data.mock_heros import init_hero
 from test.init_data.mock_hero_chips import init_hero_chip
 from test.init_data.mock_equipment import init_equipment
@@ -21,7 +21,6 @@ import cPickle
 # from app.proto_file.gm_pb2 import *
 from shared.utils import trie_tree
 import re
-from shared.db_opear.configs_data import game_configs
 from app.proto_file.account_pb2 import AccountKick
 import time
 
@@ -88,49 +87,7 @@ def modify_user_info(data, player):
         player.base_info.save_data()
         return {'success': 1}
     elif args['attr_name'] == 'stage':
-
-        stage_id = int(args['attr_value'])
-        attr_value = int(args['attr_value'])
-        stage_info = game_configs.stage_config.get('stages').get(stage_id)
-        if not stage_info:
-            return {'success': 0, 'message': 4}
-
-        first_stage_id = game_configs.stage_config.get('first_stage_id')
-        next_stages = game_configs.stage_config.get('condition_mapping')
-
-        stage_id_a = stage_id
-        while True:
-            if next_stages.get(stage_id):
-                for stage in [player.stage_component.get_stage(stage_id_1) for stage_id_1 in next_stages.get(stage_id_a)]:
-                    stage.state = -2
-                for stage_id_1 in next_stages.get(stage_id_a):
-                    if game_configs.stage_config.get('stages').get(stage_id_1)['type'] == 1:
-                        stage_id_a = stage_id_1
-                        break
-                else:
-                    break
-
-        while True:
-            the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']
-            player.stage_component.get_stage(stage_id).state = 1
-
-            if next_stages.get(the_last_stage_id):
-                for stage in [player.stage_component.get_stage(stage_id_1) for stage_id_1 in next_stages.get(the_last_stage_id)]:
-                    if stage_id != stage.stage_id:
-                        stage.state = -1
-
-            if stage_id == first_stage_id:
-                break
-            else:
-                stage_id = the_last_stage_id
-
-        player.stage_component.get_stage(attr_value).state = -1
-        if game_configs.stage_config.get('stages').get(attr_value)['section'] == 1:
-            player.stage_component.plot_chapter = game_configs.stage_config.get('stages').get(attr_value)['chapter']
-        else:
-            player.stage_component.plot_chapter = game_configs.stage_config.get('stages').get(attr_value)['chapter'] + 1
-        player.stage_component.stage_progress = attr_value
-        player.stage_component.save_data()
+        change_stage(args['attr_value'], player)
         return {'success': 1}
     elif args['attr_name'] == 'nickname':
         nickname = args['attr_value']
@@ -166,6 +123,7 @@ def modify_user_info(data, player):
 
 
 # ==========================================================
+
 
 
 @remoteserviceHandle('gate')

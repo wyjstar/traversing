@@ -35,13 +35,14 @@ def gm_add_test_data(account_name='hello world'):
 
 @webserviceHandle('/gm', methods=['post', 'get'])
 def gm():
+    print("gm================")
     response = {}
     res = {}
     admin_command = ['update_excel', 'get_user_info', 'send_mail',
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
-                     'get_user_eqs', 'copy_user', 'update_server_list', 
+                     'get_user_eqs', 'copy_user', 'update_server_list',
                      'add_push_message']
     if request.args:
         t_dict = request.args
@@ -51,9 +52,11 @@ def gm():
     logger.info('gm2admin,command:%s', t_dict['command'])
 
     if t_dict['command'] in admin_command:
+        print("=================1")
         com = t_dict['command'] + "(t_dict)"
         res = eval(com)
     else:
+        print("=================2")
         res = remote_gate.from_admin_rpc_remote(cPickle.dumps(t_dict))
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
@@ -490,4 +493,4 @@ def add_push_message(args):
     mtype = int(args.get('mtype'))
     msg = args.get('msg')
     remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
-    return {'success': 1} 
+    return {'success': 1}
