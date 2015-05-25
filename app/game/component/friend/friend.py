@@ -11,8 +11,8 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
-from app.proto_file.db_pb2 import Mail_PB
 from app.proto_file.db_pb2 import Stamina_DB
+from app.game.core.mail_helper import send_mail
 
 
 class FriendComponent(Component):
@@ -237,28 +237,10 @@ class FriendComponent(Component):
             logger.error('given_stamina present!:%s', if_present)
             return True
 
-        stamina_mail = game_configs.mail_config.get(1)
-        if stamina_mail:
-            mail = Mail_PB()
-            mail.sender_id = self.owner.base_info.id
-            mail.sender_name = self.owner.base_info.base_name
-            mail.sender_icon = self.owner.base_info.head
-            mail.receive_id = target_id
-            mail.config_id = 1
-            mail.send_time = int(time.time())
-            mail.nickname = self.owner.base_info.base_name
+        send_mail(conf_id=1, receive_id=target_id,
+                  nickname=self.owner.base_info.base_name)
 
-            # command:id 为收邮件的命令ID
-            mail_data = mail.SerializePartialToString()
-            if netforwarding.push_message('receive_mail_remote',
-                                          target_id, mail_data):
-                return True
-            else:
-                logger.error('stamina mail push message fail')
-        else:
-            logger.error('can not find stamina mail!!!')
-
-        return False
+        return True
 
     def get_reward(self, fid, day):
         """

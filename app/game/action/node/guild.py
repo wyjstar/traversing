@@ -22,7 +22,7 @@ from app.proto_file.db_pb2 import Heads_DB
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
-from app.proto_file.db_pb2 import Mail_PB
+from app.game.core.mail_helper import send_mail
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -247,7 +247,7 @@ def exit_guild_803(data, player):
         remote_gate.remove_rank_remote('GuildLevel', player.guild.g_id)
         # 删除军团
         guild_obj.delete_guild()
-        mail_id = 304
+        send_mail(conf_id=304, receive_id=p_id, guild_name=guild_obj.name)
 
     else:
         if position == 1:
@@ -260,17 +260,7 @@ def exit_guild_803(data, player):
             guild_obj.save_data()
             # 退出公会聊天
             remote_gate.logout_guild_chat_remote(dynamicid)
-        mail_id = 305
-
-    mail = Mail_PB()
-    mail.config_id = mail_id
-    mail.receive_id = p_id
-    mail.send_time = int(time.time())
-    mail.guild_name = m_g_id
-    mail_data = mail.SerializePartialToString()
-    if not netforwarding.push_message('receive_mail_remote',
-                                      p_id, mail_data):
-        logger.error('deal_apply mail push message fail')
+        send_mail(conf_id=305, receive_id=p_id, guild_name=guild_obj.name)
 
     player.guild.g_id = 0
     player.guild.contribution = 0
@@ -447,15 +437,7 @@ def deal_apply_805(data, player):
                 response.p_ids.append(p_id)
                 continue
 
-            mail = Mail_PB()
-            mail.config_id = 303
-            mail.receive_id = p_id
-            mail.send_time = int(time.time())
-            mail.guild_name = m_g_id
-            mail_data = mail.SerializePartialToString()
-            if not netforwarding.push_message('receive_mail_remote',
-                                              p_id, mail_data):
-                logger.error('deal_apply mail push message fail')
+            send_mail(conf_id=303, receive_id=p_id, guild_name=guild_obj.name)
 
             if p_id in guild_obj.apply:
                 guild_obj.apply.remove(p_id)
@@ -573,15 +555,7 @@ def change_president_806(data, player):
             player.guild.position = 3
             player.guild.save_data()
 
-            mail = Mail_PB()
-            mail.config_id = 307
-            mail.receive_id = p_p_id
-            mail.send_time = int(time.time())
-            mail.guild_name = m_g_id
-            mail_data = mail.SerializePartialToString()
-            if not netforwarding.push_message('receive_mail_remote',
-                                              p_p_id, mail_data):
-                logger.error('deal_apply mail push message fail')
+            send_mail(conf_id=307, receive_id=p_p_id, guild_name=guild_obj.name)
 
             response.res.result = True
             # response.res.message = "转让成功"
@@ -651,15 +625,7 @@ def kick_807(data, player):
                 p_guild_data = tb_character_info.getObj(p_id)
                 p_guild_data.hmset(data)
 
-            mail = Mail_PB()
-            mail.config_id = 302
-            mail.receive_id = p_id
-            mail.send_time = int(time.time())
-            mail.guild_name = m_g_id
-            mail_data = mail.SerializePartialToString()
-            if not netforwarding.push_message('receive_mail_remote',
-                                              p_id, mail_data):
-                logger.error('guild kick mail push message fail')
+            send_mail(conf_id=302, receive_id=p_id, guild_name=guild_obj.name)
 
     response.res.result = True
     return response.SerializeToString()
@@ -1139,30 +1105,9 @@ def invite_join_1803(data, player):
             return response.SerializeToString()
 
         mail_id = game_configs.base_config.get('guildInviteMail')
-        mail = Mail_PB()
-        mail.config_id = mail_id
-        mail.receive_id = user_id
-        mail.mail_type = 4
-        mail.send_time = int(time.time())
-        mail.guild_name = guild_obj.name
-        mail.guild_person_num = guild_obj.p_num
-        mail.guild_level = guild_obj.level
-        mail.guild_id = guild_obj.g_id
-        mail.nickname = player.base_info.base_name
-        mail_data = mail.SerializePartialToString()
-
-        if not netforwarding.push_message('receive_mail_remote',
-                                          user_id,
-                                          mail_data):
-            logger.error('invite join guild  mail fail, \
-                    player id:%s', player.base_info.id)
-
-            response.res.result = False
-            response.res.result_no = 800
-            return response.SerializeToString()
-        else:
-            logger.debug('pvp high rak award mail,mail_id:%s',
-                         mail_id)
+        send_mail(conf_id=mail_id, receive_id=user_id, guild_name=guild_obj.name,
+                  guild_p_num=guild_obj.p_num, guild_level=guild_obj.level,
+                  guild_id=guild_obj.g_id)
 
     guild_obj.invite_join[user_id] = int(time.time())
 
@@ -1521,14 +1466,6 @@ def appoint_1810(data, player):
 
     guild_obj.save_data()
 
-    mail = Mail_PB()
-    mail.config_id = 306
-    mail.receive_id = p_id
-    mail.send_time = int(time.time())
-    mail.guild_name = m_g_id
-    mail_data = mail.SerializePartialToString()
-    if not netforwarding.push_message('receive_mail_remote',
-                                      p_id, mail_data):
-        logger.error('guild appoint mail push message fail')
+    send_mail(conf_id=306, receive_id=p_id, guild_name=guild_obj.name)
     response.res.result = True
     return response.SerializeToString()

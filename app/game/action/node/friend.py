@@ -17,7 +17,6 @@ from app.game.core.lively import task_status
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data import game_configs, data_helper
 from app.proto_file import friend_pb2
-from app.proto_file.db_pb2 import Mail_PB
 from app.proto_file.db_pb2 import Heads_DB
 from app.proto_file.db_pb2 import Stamina_DB
 import datetime
@@ -25,6 +24,7 @@ import random
 from shared.utils.date_util import is_next_day
 import time
 from app.game.core.item_group_helper import gain, get_return
+from app.game.core.mail_helper import send_mail
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
@@ -85,7 +85,9 @@ def add_friend_respond_accept_1101(data, player):
                             player.base_info.id):
             response.result = False
 
-        # response.result_no += 1
+    send_mail(conf_id=301, nickname=player.base_info.base_name,
+              receive_id=target_id)
+
     return response.SerializePartialToString()
 
 

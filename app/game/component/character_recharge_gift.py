@@ -14,6 +14,7 @@ from app.game.action.root import netforwarding
 from app.proto_file import db_pb2
 from shared.tlog import tlog_action
 from app.game.core.rebate_fun import rebate_call
+from app.game.core.mail_helper import send_mail
 
 RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
@@ -182,17 +183,9 @@ class CharacterRechargeGift(Component):
         response.vip_level = self._owner.base_info.vip_level
         response.recharge = self._owner.base_info.recharge
 
-
     def send_mail(self, recharge_item):
         mail_id = recharge_item.get('mailId')
-        mail = db_pb2.Mail_PB()
-        mail.config_id = mail_id
-        mail.receive_id = self._owner.base_info.id
-        mail.send_time = int(time.time())
-        mail.mail_type = 2
-        mail_data = mail.SerializePartialToString()
-        netforwarding.push_message('receive_mail_remote', self._owner.base_info.id, mail_data)
-
+        send_mail(conf_id=mail_id, receive_id=self._owner.base_info.id)
 
     def recharge_gain(self, recharge_item, response):
         """
@@ -203,7 +196,7 @@ class CharacterRechargeGift(Component):
                 rebate_call(self._owner, recharge_item)
             else:
                 return_data = gain(self._owner, recharge_item.get('setting'),
-                                const.RECHARGE)  # 获取
+                                   const.RECHARGE)  # 获取
                 get_return(self._owner, return_data, response.gain)
 
                 rres = self._owner.base_info.first_recharge(recharge_item, response)

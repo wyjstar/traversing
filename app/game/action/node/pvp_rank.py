@@ -28,8 +28,8 @@ from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume, get_consume_gold_num
 # from app.game.core.item_group_helper import get_return
 from app.proto_file.shop_pb2 import ShopResponse
-from app.proto_file.db_pb2 import Mail_PB
 from app.game.action.root import netforwarding
+from app.game.core.mail_helper import send_mail
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -288,19 +288,10 @@ def pvp_fight_request_1505(data, player):
     else:
         logger.debug("fight result:False")
 
-    mail = Mail_PB()
     if fight_result:
-        mail.config_id = 123
-        mail.pvp_rank = record['id']
+        send_mail(conf_id=123, receive_id=target_id, pvp_rank=record['id'])
     else:
-        mail.config_id = 124
-    mail.receive_id = target_id
-    mail.send_time = int(time.time())
-    mail.nickname = player.base_info.base_name
-    mail_data = mail.SerializePartialToString()
-    if not netforwarding.push_message('receive_mail_remote',
-                                      target_id, mail_data):
-        logger.error('pvp mail push message fail')
+        send_mail(conf_id=124, receive_id=target_id)
 
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
