@@ -136,13 +136,7 @@ def shop_oper(pro_data, player, reason):
                 if player.shop.single_gold_draw_times == CardCumulateTimes:
                     gain_items = game_configs.base_config.get("CardCumulate", [])
                     player.shop.single_gold_draw_times = 0
-
-            if shop_item.id == 10001:
-                # 单抽达到指定次数，获得指定武将
-                player.shop.single_coin_draw_times += 1
-                if player.shop.single_coin_draw_times == CoinCardCumulateTimes:
-                    gain_items = game_configs.base_config.get("CoinCardCumulate", [])
-                    player.shop.single_coin_draw_times = 0
+                    logger.debug("tenth gold draw %s %s" % (player.shop.single_gold_draw_times, gain_items))
 
             player.shop.save_data()
             return_data = gain(player, gain_items, reason)
@@ -151,7 +145,17 @@ def shop_oper(pro_data, player, reason):
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
         else:
-            return_data = gain(player, shop_item.gain, reason)  # 获取
+            gain_items = shop_item.gain
+            if shop_item.id == 10001:
+                # 单抽达到指定次数，获得指定武将
+                player.shop.single_coin_draw_times += 1
+                if player.shop.single_coin_draw_times == CoinCardCumulateTimes:
+                    gain_items = game_configs.base_config.get("CoinCardCumulate", [])
+                    player.shop.single_coin_draw_times = 0
+                    logger.debug("tenth coin draw %s %s" % (player.shop.single_coin_draw_times, gain_items))
+
+            player.shop.save_data()
+            return_data = gain(player, gain_items, reason)  # 获取
             extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
 
             get_return(player, return_data, response.gain)

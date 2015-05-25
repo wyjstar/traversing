@@ -94,7 +94,7 @@ class CharacterFightCacheComponent(Component):
     def drop_num(self, drop_num):
         self._drop_num = drop_num
 
-    def __get_stage_config(self):
+    def _get_stage_config(self):
         """取得关卡配置数据
         """
         if game_configs.stage_config.get('travel_fight_stages').get(self._stage_id):
@@ -137,7 +137,7 @@ class CharacterFightCacheComponent(Component):
 
     def __get_stage_break_config(self):
         """取得关卡乱入信息"""
-        stage = self.__get_stage_config()
+        stage = self._get_stage_config()
         if stage and "stage_break_id" in stage:
             return game_configs.stage_break_config.get(
                 stage.stage_break_id,
@@ -154,7 +154,7 @@ class CharacterFightCacheComponent(Component):
         if stage:
             drop_num = stage.drop_num
         if not drop_num:
-            stage_config = self.__get_stage_config()
+            stage_config = self._get_stage_config()
             low = stage_config.low
             high = stage_config.high
             drop_num = random.randint(low, high)
@@ -175,7 +175,7 @@ class CharacterFightCacheComponent(Component):
     def __assmble_monsters(self):
         """组装怪物战斗单位
         """
-        stage_config = self.__get_stage_config()  # 关卡配置
+        stage_config = self._get_stage_config()  # 关卡配置
 
         monsters = []
         for i in range(3):
@@ -240,7 +240,7 @@ class CharacterFightCacheComponent(Component):
     def __get_monster_unpara(self):
         """取得怪物无双
         """
-        stage_config = self.__get_stage_config()  # 关卡配置
+        stage_config = self._get_stage_config()  # 关卡配置
         unpara = stage_config.get("warriorsSkill")  # 无双编号
         return unpara
         # if not unpara:

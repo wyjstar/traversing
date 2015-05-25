@@ -334,7 +334,7 @@ def find_friend_request_1107(data, player):
 
         friend_data = player_data.hmget(['id',
                                          'attackPoint',
-                                         'nickname'
+                                         'nickname',
                                          'heads',
                                          'level',
                                          'upgrade_time'])
@@ -347,7 +347,7 @@ def find_friend_request_1107(data, player):
         friend_heads.ParseFromString(friend_data['heads'])
         response.hero_no = friend_heads.now_head
         response.level = friend_data['level']
-        if remote_gate.online_remote(friend_data['id']) == 1:
+        if remote_gate.online_remote(friend_data['id']) == 0:
             response.last_time = friend_data['upgrade_time']
 
         # 添加好友主将的属性
@@ -390,12 +390,11 @@ def recommend_friend_1198(data, player):
                 continue
             count += 1
             friend = response.rfriend.add()
-            friend.id = player_data.hget('id')
-            print 'friend.id', friend.id
-            friend.nickname = player_data.hget('nickname')
-            print 'friend.nickname', friend.nickname
-            friend_data = player_data.hmget(['attackPoint', 'heads',
+            friend_data = player_data.hmget(['id', 'nickname',
+                                             'attackPoint', 'heads',
                                              'level', 'upgrade_time'])
+            friend.id = friend_data.get('id')
+            friend.nickname = friend_data.get('nickname')
             ap = 1
             if friend_data['attackPoint'] is not None:
                 ap = int(friend_data['attackPoint'])
