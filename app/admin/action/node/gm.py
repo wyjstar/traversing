@@ -82,7 +82,6 @@ def update_excel(args):
 
 
 def get_user_info(args):
-    print args
     if args['search_type'] == '1':
         character_obj = tb_character_info.getObj(args['search_value'])
         isexist = character_obj.exists()
@@ -140,12 +139,12 @@ def get_user_info(args):
 
 
 def send_mail(args):
-    gain_info = {}
+    gain_info = []
     if args.get('awards'):
         a = args.get('awards').split('|')
         for b in a:
             award = b.split(':')
-            gain_info[award[0]] = [award[2], award[2], award[1]]
+            gain_info.append({award[0]: [award[2], award[2], award[1]]})
 
     mail = Mail_PB()
     # mail.sender_id = player.base_info.id
@@ -154,17 +153,14 @@ def send_mail(args):
     # mail.receive_name = ''
     mail.title = args['title']
     mail.content = args['text']
+    mail.mail_type = 2
     if gain_info:
-        mail.mail_type = 2
-    else:
-        mail.mail_type = 4
-    mail.prize = str(gain_info)
+        mail.prize = str(gain_info)
     mail.send_time = int(time.time())
     # mail_data = mail.SerializePartialToString()
 
     if args['uids'] == '0':
         users = tb_character_info.smem('all')
-        print users
         for uid in users:
             mail.receive_id = uid
             push_message('receive_mail_remote', uid,
@@ -485,9 +481,8 @@ def copy_user(args):
     return {'success': 1}
 
 def add_push_message(args):
-    print 'add_push_message1111', args
     uid = int(args.get('uid'))
     mtype = int(args.get('mtype'))
     msg = args.get('msg')
     remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
-    return {'success': 1} 
+    return {'success': 1}

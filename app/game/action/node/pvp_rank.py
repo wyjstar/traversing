@@ -209,6 +209,8 @@ def pvp_fight_request_1505(data, player):
     logger.debug("blue_units: %s" % blue_units)
     logger.debug("fight result:%s" % fight_result)
 
+    target_id = record.get("character_id")
+
     if fight_result:
         logger.debug("fight result:True:%s:%s",
                      before_player_rank, request.challenge_rank)
@@ -285,6 +287,20 @@ def pvp_fight_request_1505(data, player):
         #         pass
     else:
         logger.debug("fight result:False")
+
+    mail = Mail_PB()
+    if fight_result:
+        mail.config_id = 123
+        mail.pvp_rank = record['id']
+    else:
+        mail.config_id = 124
+    mail.receive_id = target_id
+    mail.send_time = int(time.time())
+    mail.nickname = player.base_info.base_name
+    mail_data = mail.SerializePartialToString()
+    if not netforwarding.push_message('receive_mail_remote',
+                                      target_id, mail_data):
+        logger.error('pvp mail push message fail')
 
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)

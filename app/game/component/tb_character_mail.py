@@ -8,6 +8,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.proto_file.db_pb2 import Mail_PB
 from shared.utils.pyuuid import get_uuid
+import time
 
 
 class CharacterMailComponent(Component):
@@ -50,10 +51,13 @@ class CharacterMailComponent(Component):
 
     def add_mail(self, mail):
         """添加邮件"""
-        if mail.mail_type == 1:  # 领取体力邮件不能超过15个
-            mails = self.get_mails_by_type(1)
-            if len(mails) >= game_configs.base_config['times_save_vigor']:
-                return
+        mails = self.get_mails_by_type(mail.mail_type)
+        if mail.mail_type != 2 and len(mails) >= 50:
+            last_mail = [0, time.time()]
+            for mail_pb in mails:
+                if mail_pb.send_time < last_mail[1]:
+                    last_mail = [mail_pb.mail_id, mail_pb.send_time]
+            self.delete_mail(last_mail[0])
 
         mail.mail_id = get_uuid()
         mail.receive_id = self.owner.base_info.id
@@ -68,7 +72,8 @@ class CharacterMailComponent(Component):
 
     def get_mails_by_type(self, mail_type):
         """根据邮件类型获取邮件"""
-        return [mail for mail in self._mails.values() if mail.mail_type == mail_type]
+        return [mail for mail in self._mails.values()
+                if mail.mail_type == mail_type]
 
     def get_mail(self, mail_id):
         return self._mails.get(mail_id)
@@ -84,4 +89,11 @@ class CharacterMailComponent(Component):
     def delete_mails(self, mail_ids):
         """批量删除"""
         for mail_id in mail_ids:
-            self.delete_mail(mail_id)
+            self.delete_mail(str(mail_id))
+
+    def save_mail(self, mail_id):
+        if mail_id not in self._mails:
+            return
+        mail = self._mails[mail_id]
+        char_obj = tb_character_info.getObj(self.owner.base_info.id).getObj('mails')
+        char_obj.hset(mail.mail_id, mail.SerializePartialToString())

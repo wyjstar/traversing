@@ -244,11 +244,9 @@ class FriendComponent(Component):
             mail.sender_name = self.owner.base_info.base_name
             mail.sender_icon = self.owner.base_info.head
             mail.receive_id = target_id
-            mail.title = stamina_mail.get('title')
-            mail.content = stamina_mail.get('content')
-            mail.mail_type = stamina_mail.get('type')
+            mail.config_id = 1
             mail.send_time = int(time.time())
-            mail.prize = str(stamina_mail.get('rewards'))
+            mail.nickname = self.owner.base_info.base_name
 
             # command:id 为收邮件的命令ID
             mail_data = mail.SerializePartialToString()

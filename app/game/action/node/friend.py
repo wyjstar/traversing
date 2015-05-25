@@ -225,13 +225,11 @@ def get_player_friend_list_1106(data, player):
             friend_data = player_data.hmget(['lively', 'last_day'])
             response_friend_add.gift = player.friends.last_present_times(pid)
 
-            print 'friend_data', friend_data['lively'], pid
             lively = int(friend_data.get('lively', 0))
             today = time.strftime("%Y%m%d", time.localtime(time.time()))
             if today != friend_data.get('last_day', '0'):
                 lively = 0
             response_friend_add.current = lively
-            print '11111111111111111', base_config['friendActivityValue']
             response_friend_add.target = base_config['friendActivityValue']
             stat, update = player.friends.get_reward(pid, today)
             if update:
@@ -470,43 +468,6 @@ def become_friends_remote(target_id, is_online, player):
     assert(result)
     player.friends.save_data()
     return True
-
-
-@remoteserviceHandle('gate')
-def friend_private_chat_1060(data, player):
-    """ 发送好友单聊邮件
-    @author: jiang
-    """
-    response = CommonResponse()
-    request = friend_pb2.FriendPrivateChatRequest()
-    request.ParseFromString(data)
-    target_id = request.target_uid
-    content = request.content
-
-    title_display_len = 10
-    if len(content) <= title_display_len:
-        title = content
-    else:
-        title = content[:title_display_len] + "..."
-
-    mail = Mail_PB()
-    mail.sender_id = player.base_info.id
-    mail.sender_name = player.base_info.base_name
-    mail.sender_icon = player.base_info.head
-    mail.receive_id = target_id
-    mail.receive_name = ''
-    mail.title = title
-    mail.content = content
-    mail.mail_type = MailComponent.TYPE_MESSAGE
-    mail.prize = ''
-    mail.send_time = int(time.time())
-
-    # command:id 为收邮件的命令ID
-    mail_data = mail.SerializePartialToString()
-    netforwarding.push_message('receive_mail_remote', target_id, mail_data)
-
-    response.result = True
-    return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')

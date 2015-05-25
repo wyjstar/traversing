@@ -2,7 +2,6 @@
 """
 created by server on 14-8-14下午3:16.
 """
-from app.proto_file.mailbox_pb2 import ReadMailResponse, ReceiveMailResponse
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import gain, get_return
@@ -62,25 +61,6 @@ def delete_mail_1303(proto_data, player):
 
 
 @remoteserviceHandle('gate')
-def send_mail_1304(proto_data, player):
-    """发送邮件"""
-    request = mailbox_pb2.SendMailRequest()
-    request.ParseFromString(proto_data)
-    mail = request.mail
-
-    response = CommonResponse()
-    """发送邮件， mail为json类型"""
-    mail.send_time = int(time.time())
-    receive_id = mail.receive_id
-    # command:id 为收邮件的命令ID
-    mail_data = mail.SerializePartialToString()
-    response.result = netforwarding.push_message('receive_mail_remote',
-                                                 receive_id, mail_data)
-    logger.debug('send_mail_1304 %s', response.result)
-    return response.SerializePartialToString()
-
-
-@remoteserviceHandle('gate')
 def receive_mail_remote(mail_data, is_online, player):
     """接收邮件"""
     mail = Mail_PB()
@@ -100,7 +80,7 @@ def receive_mail_remote(mail_data, is_online, player):
     player.mail_component.save_data()
 
     if is_online:
-        response = ReceiveMailResponse()
+        response = mailbox_pb2.ReceiveMailResponse()
         response.mail.CopyFrom(mail)
         remote_gate.push_object_remote(1305,
                                        response.SerializePartialToString(),
@@ -108,31 +88,34 @@ def receive_mail_remote(mail_data, is_online, player):
     return True
 
 
-# @remoteserviceHandle('gate')
-# def receive_mail_from_client_1306(receive_id, proto_data, player):
-#     """在线/登录时，接收邮件"""
-#     mail_type = proto_data.get("mail_type")
-#     sender_id = proto_data.get("sender_id")
-#     sender_name = proto_data.get("sender_name")
-#     title = proto_data.get("title")
-#     content = proto_data.get("content")
-#     send_time = proto_data.get("send_time")
-#     bag = proto_data.get("bag")
-#
-#     player.mail_component.add_mail(sender_id, sender_name, title,
-#                                    content, mail_type, send_time, bag)
-
-
 def is_expire_notice(mail):
     """判断公告是否过期"""
-    if mail.read_time and time.time() - mail.read_time > 7 * 24 * 60 * 60:
-        return True
+    if mail.mail_type == 2:
+        if 100 * 24 * 60 * 60 + mail.send_time <= time.time():
+            return True
+    else:
+        if mail.config_id:
+            mail_conf = game_configs.mail_config.get(mail.config_id)
+            if mail_conf.days != -1 and \
+                    mail_conf.days * 24 * 60 * 60 + mail.send_time <= time.time():
+                return True
+        else:
+            if mail.effec * 24 * 60 * 60 + mail.send_time <= time.time():
+                return True
+
     return False
 
 
-def read_mail(mail_ids, mail_type, player):
+def read_mail(mail_idss, mail_type, player):
     """读取邮件"""
-    response = ReadMailResponse()
+    response = mailbox_pb2.ReadMailResponse()
+    mail_ids = []
+    for mail_id in mail_idss:
+        mail = player.mail_component.get_mail(mail_id)
+        if mail:
+            mail_ids.append(mail_id)
+            mail.is_readed = True
+            player.mail_component.save_mail(mail_id)
     if mail_type == 1:
         # 领取赠送体力
         result = check_gives(mail_ids, player)
@@ -151,15 +134,6 @@ def read_mail(mail_ids, mail_type, player):
         response.current = player.stamina.get_stamina_times
         response.mail_type = mail_type
 
-    elif mail_type == 2:
-        # 领取奖励
-        get_prize(player, mail_ids, response)
-        player.mail_component.delete_mails(mail_ids)
-
-    elif mail_type == 3 or mail_type == 4:
-        # 公告&私信
-        player.mail_component.delete_mails(mail_ids)
-
     response.res.result = True
     return response.SerializePartialToString()
 
@@ -176,9 +150,12 @@ def get_prize(player, mail_ids, response):
     """领取奖励"""
     for mail_id in mail_ids:
         mail = player.mail_component.get_mail(mail_id)
+        if not mail:
+            continue
 
         if mail.config_id:
             if mail.config_id != game_configs.base_config.get('warFogRobbedMail'):
+                # 除了附文矿被抢
                 mail_conf = game_configs.mail_config.get(mail.config_id)
                 prize = data_helper.parse(mail_conf.rewards)
                 return_data = gain(player, prize, const.MAIL)
@@ -193,3 +170,24 @@ def get_prize(player, mail_ids, response):
                 prize = data_helper.parse(prize_data)
                 return_data = gain(player, prize, const.MAIL)
                 get_return(player, return_data, response.gain)
+
+
+@remoteserviceHandle('gate')
+def get_prize_1306(proto_data, player):
+    """获取奖励"""
+    request = mailbox_pb2.GetPrizeRequest()
+    request.ParseFromString(proto_data)
+    mail_id = request.mail_id
+    response = mailbox_pb2.GetPrizeResponse()
+    # 标记已经领取
+    mail = player.mail_component.get_mail(mail_id)
+    if mail.is_got_prize:
+        response.res.result = False
+        response.res.result_no = 863
+        return response.SerializePartialToString()
+    mail.is_got_prize = True
+    player.mail_component.save_mail(mail_id)
+
+    get_prize(player, [mail_id], response)
+    response.res.result = True
+    return response.SerializePartialToString()
