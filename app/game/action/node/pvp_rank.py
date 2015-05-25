@@ -209,6 +209,7 @@ def pvp_fight_request_1505(data, player):
     logger.debug("blue_units: %s" % blue_units)
     logger.debug("fight result:%s" % fight_result)
 
+    rank_incr = 0
     if fight_result:
         logger.debug("fight result:True:%s:%s",
                      before_player_rank, request.challenge_rank)
@@ -246,7 +247,6 @@ def pvp_fight_request_1505(data, player):
                 util.InsertIntoDB(PVP_TABLE_NAME, record)
             player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank, table_max)
 
-        rank_incr = 0
         if request.challenge_rank < player.base_info.pvp_high_rank:
             rank_incr = player.base_info.pvp_high_rank - request.challenge_rank
         player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank,
