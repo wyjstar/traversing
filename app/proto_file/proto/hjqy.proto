@@ -1,22 +1,28 @@
 import "common.proto";
 import "stage.proto";
+import "rank.proto";
+
+
 //command: 2101
 message HjqyInitResponse
 {
     repeated HjqyBossInfo bosses = 1; //boss信息
+    required int64 demage_hp = 2; //玩家伤害总血量
+    repeated int32 hjqy_ids = 3; // 已经领取的黄巾起义累积奖励
 }
 
 message HjqyBossInfo
 {
-    required int32 player_id = 1;    // 触发boss的玩家id
-    required int32 stage_id = 4;    // 关卡id
-    required bool is_share = 3;      // 是否分享给好友
-    optional bool open_or_not = 8;   // 是否开启, no:上面参数有效，yes：下面参数有效
-    optional int32 hp_left = 9;      // 剩余血量
-    optional int32 demage_hp = 10;   // 伤害
-    optional int32 rank_no = 11;     // 名次
-    optional int32 fight_times = 12; // 战斗次数
-    optional int32 hp_max = 13;      // boss最大血量
+    required int32 player_id = 1;     // 触发boss的玩家id
+    required int32 stage_id = 4;      // 关卡id
+    required bool is_share = 3;       // 是否分享给好友
+    optional bool open_or_not = 8;    // 是否开启, no:上面参数有效，yes：下面参数有效
+    optional int32 hp_left = 9;       // 剩余血量
+    optional int32 demage_hp = 10;    // 伤害
+    optional int32 rank_no = 11;      // 名次
+    optional int32 fight_times = 12;  // 战斗次数
+    optional int32 hp_max = 13;       // boss最大血量
+    optional int32 trigger_time = 14; // 触发时间
 }
 
 
@@ -36,7 +42,6 @@ message HjqyBattleRequest
     repeated int32 lineup = 2;   // 队形
     optional int32 skill = 3;    // 无双技能ID
     required int32 attack_type = 4; // 普通攻击:1，全力一击:2
-
 }
 message HjqyBattleResponse{
     required CommonResponse res = 1;
@@ -64,4 +69,8 @@ message HjqyAddRewardResponse
     optional GameResourcesResponse gain = 2;
 }
 
-//排行信息
+//排行信息 2105
+message HjqyRankResponse{
+    repeated RankUserInfo info = 1;
+}
+

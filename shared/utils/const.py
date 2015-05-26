@@ -54,6 +54,8 @@ const.STONE2 = 15
 const.SPIRIT= 16
 const.EQUIPMENT_ELITE = 21
 const.RESOURCE_MAX = 23
+const.HJQYCOIN = 25 # 功勋
+const.HJQYFIGHTTOKEN = 26 # 征讨令
 const.RESOURCE = 107
 
 const.HERO = 101
@@ -180,6 +182,9 @@ const.PraiseGift = 34
 const.ReceiveBlessGift = 35
 const.StageChestGift = 36
 
+
+const.HJQY_ADD_REWARD = 21011
+
 # 等级流水
 # const.STAGE = 27  # 关卡
 # const.STAGE_SWEEP = 22  # 关卡扫荡
@@ -203,3 +208,4 @@ const.BATTLE_PVP = 6
 const.BATTLE_PVB = 7
 const.BATTLE_MINE_PVE = 8
 const.BATTLE_MINE_PVP = 9
+const.BATTLE_HJQY_PVP = 10
