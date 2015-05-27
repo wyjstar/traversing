@@ -30,6 +30,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.item_group_helper import gain, get_return
 import copy
 from shared.utils.random_pick import random_pick_with_weight
+from app.game.core.mail_helper import send_mail
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -733,6 +734,10 @@ def trigger_hjqy(player, result):
     result = remote_gate['world'].create_hjqy_remote(player.base_info.id, blue_units[0], stage_id)
     if not result:
         return False
+    # send trigger reward
+    hjqyOpenReward = game_configs.base_config.get("hjqyOpenReward")
+    send_mail(dict(conf_id=hjqyOpenReward, receive_id=player.base_info.id))
+
     return stage_id
 
 

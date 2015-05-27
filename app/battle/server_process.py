@@ -2,6 +2,7 @@
 
 from lupa import LuaRuntime
 from shared.utils.const import const
+from app.battle.battle_unit import BattleUnit
 from random import randint
 lua = LuaRuntime()
 lua.require("app/battle/src/test_main")
@@ -26,6 +27,9 @@ pvp_func = lua.eval('''function(fightData, fightType, level) setData(fightData, 
 pve_func = lua.eval('''function(fightData, fightType, steps, level) setData(fightData, fightType, level); return pve_start(steps); end''')
 
 def construct_battle_unit(unit):
+    """
+    python to table
+    """
     # 构造战斗单元
     if not unit:
         return None
@@ -57,6 +61,42 @@ def construct_battle_unit(unit):
         is_awake = unit.is_awake,
         origin_no = unit.origin_no
     )
+
+def from_table_to_battle_unit(unit):
+    """
+    table to python
+    """
+    info = dict(
+        unit_no = unit.no,
+        quality = unit.quality,
+
+        hp = unit.hp,
+        hp_max = unit.hp_max,
+        atk = unit.atk,
+        physical_def = unit.physical_def,
+        magic_def = unit.magic_def,
+        hit = unit.hit,
+        dodge = unit.dodge,
+        cri = unit.cri,
+        cri_coeff = unit.cri_coeff,
+        cri_ded_coeff = unit.cri_ded_coeff,
+        block = unit.block,
+        ductility = unit.ductility,
+
+        level = unit.level,
+        break_level = unit.break_level,
+
+        is_boss = unit.is_boss,
+        #break_skills = unit.break_skills,
+        position = unit.position,
+
+        is_break = unit.is_break,
+        is_awake = unit.is_awake,
+        origin_no = unit.origin_no
+    )
+    unit = BattleUnit()
+    unit.set_attrs(info)
+    return unit
 
 def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []
@@ -157,30 +197,25 @@ def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, b
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        red_best_skill = red_skill,
-        red_best_skill_level = red_skill_level,
+        red_skill = red_skill,
+        red_skill_level = red_skill_level,
         blue_skill = blue_skill,
         blue_skill_level = blue_skill_level,
         seed1 = seed1,
         seed2 = seed2,
         attack_type = attack_type
     )
-    fight_type = const.BATTLE_PVB
+    fight_type = const.BATTLE_HJQY
     res = pvp_func(fight_data, fight_type, level)
     print("world_boss_start=====:", res, level)
+    blue_units = {}
+    for k, v in res[2].items():
+        blue_units[k] = from_table_to_battle_unit(v)
+
     if int(res[0]) == 1:
-        return {"result":True, "hp_left":res[1]}
-    return {"result":False, "hp_left":res[1]}
-    #required CommonResponse res = 1;
-    #repeated BattleUnit red = 2;         // 红方数据 自己
-    #repeated BattleUnit blue = 3;        // 对方数据
-    #optional int32 red_skill = 4;        // 我方无双
-    #optional int32 red_skill_level = 5;  // 我方无双
-    #optional int32 blue_skill = 6;       // 敌方无双
-    #optional int32 blue_skill_level = 7; // 敌方无双
-    #optional bool fight_result = 8;      // 战斗结果
-    #optional int32 seed1= 9;             // 随机种子1
-    #optional int32 seed2= 10;            // 随机种子2
+        return {"result":True, "blue_units":blue_units}
+    return {"result":False, "blue_units":blue_units}
+
 def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []
     blue = []

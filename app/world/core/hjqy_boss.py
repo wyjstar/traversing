@@ -71,8 +71,11 @@ class HjqyBossManager(object):
         """
         instance = self._rank_instance
         rank_items = []
-        for player_id, damage_hp in instance.get(1, 10):
+        for rank, v in enumerate(instance.get(1, 10)):
+            player_id = v[0]
+            damage_hp = v[1]
             player_info = self._tb_hjqyboss.get(player_id)
+            player_info["rank"] = rank
             player_info["damage_hp"] = damage_hp
             rank_items.append(player_info)
 
@@ -81,6 +84,10 @@ class HjqyBossManager(object):
     def get_damage_hp(self, player_id):
         damage_hp = self._rank_instance.get_value(player_id)
         return damage_hp
+
+    def get_rank(self, player_id):
+        rank = self._rank_instance.get_rank_no(player_id)
+        return rank
 
 
 class HjqyBoss(object):

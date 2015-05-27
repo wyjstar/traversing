@@ -9,6 +9,7 @@ message HjqyInitResponse
     repeated HjqyBossInfo bosses = 1; //boss信息
     required int64 damage_hp = 2; //玩家伤害总血量
     repeated int32 hjqy_ids = 3; // 已经领取的黄巾起义累积奖励
+    required int32 rank = 4; //排名
 }
 
 message HjqyBossInfo

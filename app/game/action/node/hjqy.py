@@ -29,6 +29,7 @@ def init_2101(pro_data, player):
         construct_boss_pb(data, response)
 
     data.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
+    data.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
     return response.SerializeToString()
 
 def construct_boss_pb(data, response):
@@ -84,13 +85,15 @@ def battle_2103(pro_data, player):
     hjqyExchangeBUFFTime = game_configs.base_config.get("hjqyExchangeBUFFTime")
     hjqyItemRate = game_configs.base_config.get("hjqyItemRate")
 
-    need_hjqy_coin = 1
+    hjqyExchangeBUFFNumber = game_configs.base_config.get("hjqyExchangeBUFFNumber")
+    hjqyExchangeNumber = game_configs.base_config.get("hjqyExchangeNumber")
+    need_hjqy_fight_token = hjqyExchangeNumber
     if attack_type == 2:
-        need_hjqy_coin = 2
+        need_hjqy_fight_token = hjqyExchangeBUFFNumber
     if is_in_period(hjqyExchangeBUFFTime) and attack_type == 2:
-        need_hjqy_coin = need_hjqy_coin * hjqyItemRate
+        need_hjqy_fight_token = need_hjqy_fight_token * hjqyItemRate
 
-    if need_hjqy_coin > player.finance[const.HJQYCOIN]:
+    if need_hjqy_fight_token > player.finance[const.HJQYCOIN]:
         logger.error("hjqy coin not enough！")
         response.res.result = False
         response.res.result_no = 21031
@@ -105,10 +108,22 @@ def battle_2103(pro_data, player):
     red_units = player.fight_cache_component.get_red_units()
     blue_units = remote_gate['world'].blue_units_remote(boss_id)
     seed1, seed2 = get_seeds()
-    fight_result = remote_gate['world'].hjqy_battle_remote(boss_id, red_units, red_best_skill_id, red_best_skill_level, seed1, seed2)
+    player_info = dict(player_id=player.base_info.id,
+            nickname=player.base_info.base_name,
+            user_icon=player.base_info.heads.now_head,
+            level=player.base_info.level)
+    fight_result = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
 
     # 消耗讨伐令
-    player.finance.consume(const.FIGHTTOKEN, need_hjqy_coin)
+    player.finance.consume(const.HJQYFIGHTTOKEN, need_hjqy_fight_token)
+
+    # 功勋奖励
+    hjqyMeritoriousServiceOpenTime = game_configs.base_config.get("hjqyMeritoriousServiceOpenTime")
+    hjqyMeritoriousServiceRate = game_configs.base_config.get("hjqyMeritoriousServiceRate")
+    meritorious_service = player.fight_cache_component._get_stage_config().meritorious_service
+    if is_in_period(hjqyMeritoriousServiceOpenTime): # 增加功勋的活动
+        meritorious_service = meritorious_service * hjqyMeritoriousServiceRate
+    player.finance.add(const.HJQYCOIN, meritorious_service)
 
     response.fight_result = fight_result
     pvp_assemble_units(red_units, blue_units, response)
@@ -119,7 +134,6 @@ def battle_2103(pro_data, player):
     response.attack_type = attack_type
     response.res.result = True
     return response.SerializePartialToString()
-
 
 
 @remoteserviceHandle('gate')
@@ -161,3 +175,20 @@ def add_reward_2104(pro_data, player):
     return response.SerializePartialToString()
 
 
+@remoteserviceHandle('gate')
+def get_rank_2105(pro_data, player):
+    """
+    获取排名:HjqyRankResponse
+    """
+    response = hjqy_pb2.HjqyRankResponse()
+    rank_infos = remote_gate['world'].get_rank_remote()
+    for info in rank_infos:
+        info_pb = response.info.add()
+        info_pb.player_id = info.get("player_id")
+        info_pb.nickname = info.get("nickname")
+        info_pb.user_icon = info.get("user_icon")
+        info_pb.level = info.get("level")
+        info_pb.damage_hp = info.get("damage_hp")
+        info_pb.rank = info.get("rank")
+
+    return response.SerializePartialToString()
