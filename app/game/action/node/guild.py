@@ -1162,6 +1162,18 @@ def deal_invite_join_1804(data, player):
     res = args.res
     response.res.result = True
 
+    m_exit_time = player.guild.exit_time
+    the_time = int(time.time())-m_exit_time
+
+    if m_exit_time != 1 and the_time < \
+            game_configs.base_config.get('exit_time'):
+        response.res.result = False
+        response.res.result_no = 842
+        # response.message = "退出公会半小时内不可加入公会"
+        response.spare_time = game_configs.base_config.get('exit_time') \
+            - the_time
+        return response.SerializeToString()
+
     data1 = tb_guild_info.getObj(guild_id).hgetall()
     if not data1:
         response.res.result = False
