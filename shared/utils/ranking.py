@@ -86,7 +86,7 @@ class Ranking:
 
     def remove(self, key):
         print "remove_rank========", key
-        tb_rank.zremrangebyrank(self.label, key, key)
+        tb_rank.zrem(self.label, key)
 
 
 def testcase1():

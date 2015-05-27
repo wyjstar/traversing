@@ -174,7 +174,7 @@ def fight_settlement_904(pro_data, player):
     result = request.result
 
     # logger.debug("steps:%s", request.steps)
-    #player.fight_cache_component.red_units
+    # player.fight_cache_component.red_units
     if not pve_process_check(player, result, request.steps, const.BATTLE_PVE):
         logger.error("pve_process_check error!=================")
         response = stage_response_pb2.StageSettlementResponse()
