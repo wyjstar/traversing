@@ -79,6 +79,23 @@ def is_past_time(next_time, last_time):
         d = d + datetime.timedelta(days=1)
     return time.mktime(d.timetuple())
 
+def is_in_period(periods):
+    """
+    格式：[("12:00","14:00"),("18:00","20:00")]
+    """
+    now = get_current_timestamp()
+    for item in periods:
+        t0 = item[0].split(':')
+        t1 = item[1].split(':')
+        start = get_current_day_timestamp(hour=int(t0[0]), minute=int(t0[1]))
+        end = get_current_day_timestamp(hour=int(t1[0]), minute=int(t1[1]))
+        if start < now and now > end:
+            return True
+    return False
+
+def is_expired(last_time, expired_time):
+    return last_time + expired_time < get_current_timestamp()
+
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)
     print get_current_day_timestamp(0, 0, 0)
