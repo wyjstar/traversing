@@ -34,6 +34,8 @@ class WorldBoss(BaseBoss):
         super(WorldBoss, self).__init__(boss_name, rank_instance, config_name, tb_boss)
         self._stage_id_am = 0         # 关卡id am
         self._stage_id_pm = 0         # 关卡id pm
+        self._lucky_hero_start = 0         # 当前幸运武将时间
+        self._lucky_hero_end = 0         # 当前幸运武将时间
         self._state = 0               # boss状态：用于boss到期, 重置状态
 
         self.init_data()
@@ -67,7 +69,10 @@ class WorldBoss(BaseBoss):
     def save_data(self):
         base_boss_data = self.get_data_dict()
         world_boss_data = dict(stage_id_am=self._stage_id_am,
-                               stage_id_pm=self._stage_id_pm,)
+                               stage_id_pm=self._stage_id_pm,
+                               lucky_hero_start=self._lucky_hero_start,
+                               lucky_hero_end=self._lucky_hero_end,
+                               )
         world_boss_data.update(base_boss_data)
         str_data = cPickle.dumps(world_boss_data)
         tb_boss.set(self._boss_name, str_data)
