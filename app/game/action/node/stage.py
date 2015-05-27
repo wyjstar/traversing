@@ -258,6 +258,7 @@ def stage_sweep_907(pro_data, player):
 
     tstatus = player.tasks.check_inter(lively_event)
     player.tasks.save_data()
+    player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])

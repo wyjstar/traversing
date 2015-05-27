@@ -119,6 +119,7 @@ def search_1241(data, player):
         response.res.result = True
         lively_event = CountEvent.create_event(EventType.MAGIC, 1, ifadd=True)
         tstatus = player.tasks.check_inter(lively_event)
+        player.tasks.save_data()
         if tstatus:
             task_data = task_status(player)
             remote_gate.push_object_remote(1234,
@@ -363,6 +364,7 @@ def harvest_1245(data, player):
             return response.SerializePartialToString()
         lively_event = CountEvent.create_event(EventType.WORD, 1, ifadd=True)
         tstatus = player.tasks.check_inter(lively_event)
+        player.tasks.save_data()
         if tstatus:
             task_data = task_status(player)
             remote_gate.push_object_remote(1234,

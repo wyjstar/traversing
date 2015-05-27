@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"\xf0\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x05:\x04\x31\x30\x31\x30\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\r\n\x05level\x18\n \x01(\x05\x12\x0e\n\x06\x62_rank\x18\x0b \x01(\x05\x12\x11\n\tlast_time\x18\x0c \x01(\x05\x12\x11\n\tvip_level\x18\r \x01(\x05\"\x19\n\x17GetPlayerFriendsRequest\"\xcf\x02\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0c\n\x04gift\x18\x04 \x01(\x05\x12\r\n\x05power\x18\x05 \x01(\x02\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x11\n\tlast_time\x18\n \x01(\x05\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\x12\x0f\n\x07\x63urrent\x18\x0c \x01(\x05\x12\x0e\n\x06target\x18\r \x01(\x05\x12\x0c\n\x04stat\x18\x0e \x01(\x05\x12\r\n\x05level\x18\x0f \x01(\x05\x12\x0e\n\x06\x62_rank\x18\x10 \x01(\x05\x12\x13\n\x0b\x62uddy_level\x18\x11 \x01(\x05\x12\x13\n\x0b\x62uddy_power\x18\x12 \x01(\x05\x12\x11\n\tvip_level\x18\x13 \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\"\x1c\n\rDrawRewardReq\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\"`\n\rDrawRewardRsp\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x0e\n\x0cRecommendReq\"/\n\x0cRecommendRes\x12\x1f\n\x07rfriend\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"\xf0\x01\n\x12\x46indFriendResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x05:\x04\x31\x30\x31\x30\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\r\n\x05level\x18\n \x01(\x05\x12\x0e\n\x06\x62_rank\x18\x0b \x01(\x05\x12\x11\n\tlast_time\x18\x0c \x01(\x05\x12\x11\n\tvip_level\x18\r \x01(\x05\"\x19\n\x17GetPlayerFriendsRequest\"\xdb\x02\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x02:\x04\x31\x30\x31\x30\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x11\n\tlast_time\x18\n \x01(\x05\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\x12\x0f\n\x07\x63urrent\x18\x0c \x01(\x05\x12\x0e\n\x06target\x18\r \x01(\x05\x12\x0c\n\x04stat\x18\x0e \x01(\x05\x12\r\n\x05level\x18\x0f \x01(\x05\x12\x11\n\x06\x62_rank\x18\x10 \x01(\x05:\x01\x31\x12\x13\n\x0b\x62uddy_level\x18\x11 \x01(\x05\x12\x13\n\x0b\x62uddy_power\x18\x12 \x01(\x05\x12\x11\n\tvip_level\x18\x13 \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\"\x1c\n\rDrawRewardReq\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\"`\n\rDrawRewardRsp\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x0e\n\x0cRecommendReq\"/\n\x0cRecommendRes\x12\x1f\n\x07rfriend\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo')
 
 
 
@@ -267,14 +267,14 @@ _CHARACTERINFO = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='gift', full_name='CharacterInfo.gift', index=3,
       number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      has_default_value=True, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='power', full_name='CharacterInfo.power', index=4,
       number=5, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
+      has_default_value=True, default_value=1010,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -351,7 +351,7 @@ _CHARACTERINFO = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='b_rank', full_name='CharacterInfo.b_rank', index=15,
       number=16, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      has_default_value=True, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -386,7 +386,7 @@ _CHARACTERINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=419,
-  serialized_end=754,
+  serialized_end=766,
 )
 
 
@@ -441,8 +441,8 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=757,
-  serialized_end=931,
+  serialized_start=769,
+  serialized_end=943,
 )
 
 
@@ -476,8 +476,8 @@ _FRIENDPRIVATECHATREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=933,
-  serialized_end=996,
+  serialized_start=945,
+  serialized_end=1008,
 )
 
 
@@ -518,8 +518,8 @@ _GETRECOMMENDFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=998,
-  serialized_end=1102,
+  serialized_start=1010,
+  serialized_end=1114,
 )
 
 
@@ -546,8 +546,8 @@ _DRAWREWARDREQ = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1104,
-  serialized_end=1132,
+  serialized_start=1116,
+  serialized_end=1144,
 )
 
 
@@ -588,8 +588,8 @@ _DRAWREWARDRSP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1134,
-  serialized_end=1230,
+  serialized_start=1146,
+  serialized_end=1242,
 )
 
 
@@ -609,8 +609,8 @@ _RECOMMENDREQ = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1232,
-  serialized_end=1246,
+  serialized_start=1244,
+  serialized_end=1258,
 )
 
 
@@ -637,8 +637,8 @@ _RECOMMENDRES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1248,
-  serialized_end=1295,
+  serialized_start=1260,
+  serialized_end=1307,
 )
 
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO

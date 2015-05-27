@@ -63,8 +63,8 @@ class CharacterRechargeGift(Component):
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
                                           _time_now_struct.tm_mon,
                                           _time_now_struct.tm_mday)
-        _date_now = time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S'))
-        _time_now = time.time()
+        _date_now = int(time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S')))
+        _time_now = int(time.time())
         _str_activity_period = activity.get('parameterT')
 
         if _str_activity_period != '0':
@@ -82,16 +82,16 @@ class CharacterRechargeGift(Component):
                 logger.debug('recharge first is exist:%s:%s',
                              activity_id, self._recharge[activity_id])
             else:
-                self._recharge[activity_id] = {_date_now: 0}
+                self._recharge[activity_id] = {_time_now: 0}
 
         if gift_type == 8:  # single recharge
             if recharge >= activity.get('parameterA'):
                 if activity_id not in self._recharge:
                     self._recharge[activity_id] = {}
-                if len(self._recharge[activity_id]) <= activity.get('repeat') or activity.get('repeat') == -1:
-                    self._recharge[activity_id].update({_date_now: recharge})
+                if len(self._recharge[activity_id]) < activity.get('repeat') or activity.get('repeat') == -1:
+                    self._recharge[activity_id].update({_time_now: recharge})
                 else:
-                    logger.error('over activity repeat times:%s(%s)',
+                    logger.debug('over activity repeat times:%s(%s)',
                                  self._recharge, activity.get('repeat'))
 
         if gift_type == 9:  # accumulating recharge
@@ -142,7 +142,7 @@ class CharacterRechargeGift(Component):
             for data in recharge_item.data:
                 if recharge_item.gift_type == 8 and data.recharge_time in recharge_data:
                     self._get_activity_gift(recharge_item.gift_id, response)
-                    del recharge_data[data.recharge_time]
+                    recharge_data[data.recharge_time] = 0
                     if not recharge_data:
                         del self._recharge[recharge_item.gift_id]
                 elif data.recharge_time in recharge_data and\
