@@ -703,7 +703,7 @@ def trigger_hjqy(player, result):
     if not result:
         return 0
     # 如果已经触发过hjqy，则不触发
-    if remote_gate['world'].is_trggered_hjqy(player.base_info.id):
+    if not remote_gate['world'].is_can_trggere_hjqy_remote(player.base_info.id):
         return 0
 
     # 触发hjqy
@@ -726,7 +726,11 @@ def trigger_hjqy(player, result):
 
     logger.debug("chapter: %s, stage_index: %s" % (stage_info.chapter, stage_index))
     stage_id = hjqyRandomCheckpoint.get(stage_info.chapter)[stage_index-1]
-    result = remote_gate['world'].create_hjqy(player.base_info.id, stage_id)
+
+    player.fight_cache_component.stage_id = stage_id
+    blue_units = player.fight_cache_component._assemble_monster()
+
+    result = remote_gate['world'].create_hjqy_remote(player.base_info.id, blue_units[0], stage_id)
     if not result:
         return False
     return stage_id

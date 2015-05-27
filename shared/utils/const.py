@@ -209,3 +209,9 @@ const.BATTLE_PVB = 7
 const.BATTLE_MINE_PVE = 8
 const.BATTLE_MINE_PVP = 9
 const.BATTLE_HJQY_PVP = 10
+
+const.BOSS_NOT_EXIST = 0 # 不存在
+const.BOSS_LIVE = 1  # 正常
+const.BOSS_DEAD = 2      # 已死
+const.BOSS_RUN_AWAY = 3  # 逃走
+

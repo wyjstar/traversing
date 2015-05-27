@@ -3,59 +3,104 @@
 """
 created by wzp.
 """
-import cPickle
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
-from shared.utils.date_util import str_time_period_to_timestamp
+from shared.utils.date_util import str_time_period_to_timestamp, is_expired
 from gfirefly.server.logobj import logger
 from gfirefly.dbentrust.redis_mode import RedisObject
+from shared.utils.ranking import Ranking
+from shared.utils.const import const
+from gtwisted.core import reactor
 
 
 tb_hjqyboss = RedisObject('tb_hjqyboss')
+tb_hjqyboss_player = RedisObject('tb_hjqyboss_player')
 class HjqyBossManager(object):
     """
     黄巾起义boss Manager
     """
-    def __init__(self):
+    def __init__(self, _tb_hjqyboss, _tb_hjqyboss_player):
         self._bosses = {}
         self.init()
-
+        self._tb_hjqyboss = _tb_hjqyboss
+        self._tb_hjqyboss_player = _tb_hjqyboss_player
 
     def init(self):
         """docstring for init"""
-        boss_data = tb_hjqyboss.hgetall()
+        boss_data = self._tb_hjqyboss.hgetall()
         for boss_id, data in boss_data.items():
             boss = HjqyBoss(boss_id)
             boss.init_data(data)
             self._bosses[boss_id] = boss
+        self._rank_instance = Ranking.instance("HjqyBossDamage")
 
 
-    def add_boss(self, boss_info):
+    def add_boss(self, player_id, blue_units, stage_id):
         """docstring for add_boss"""
-        tb_hjqyboss.hsetnx(boss_info['player_id'], boss_info)
+        boss = HjqyBoss(player_id, self._tb_hjqyboss)
+        boss.blue_units = blue_units
+        boss.stage_id = stage_id
+        boss.trigger_time = int(get_current_timestamp())
+        self._bosses[player_id] = boss
+        boss.save_data()
 
     def get_boss(self, player_id):
         """docstring for get_boss"""
-        return self._bosses.get(player_id)
+        boss = self._bosses.get(player_id)
+        if not boss:
+            logger.error("boss %s not exists." % player_id)
+        return boss
 
+    def add_rank_item(self, player_info):
+        player_id = player_info.get("player_id")
+
+        instance = self._rank_instance
+        instance.incr_value(player_id, player_info.get("damage_hp"))
+
+        # 如果玩家信息在前十名，保存玩家信息到redis
+        rank_no = instance.get_rank_no(player_id)
+        if rank_no > 10:
+            return
+        logger.debug("player_id, damage_hp, rank_no========= %s, %s, %s" % (player_id, player_info.get("damage_hp"), rank_no))
+        str_player_info = player_info
+        self._tb_hjqyboss_player.set(player_id, str_player_info)
+
+    def get_rank_items(self):
+        """
+        返回伤害最大前十名
+        """
+        instance = self._rank_instance
+        rank_items = []
+        for player_id, damage_hp in instance.get(1, 10):
+            player_info = self._tb_hjqyboss.get(player_id)
+            player_info["damage_hp"] = damage_hp
+            rank_items.append(player_info)
+
+        return rank_items
+
+    def get_damage_hp(self, player_id):
+        damage_hp = self._rank_instance.get_value(player_id)
+        return damage_hp
 
 
 class HjqyBoss(object):
     """docstring for Boss"""
-    def __init__(self, boss_id):
-        self._boss_id = boss_id
-        self._stage_id = 0             # 关卡id
-        self._blue_units = {}          # 怪物信息
+    def __init__(self, player_id):
+        self._player_id = player_id
+        self._stage_id = 0     # 关卡id
+        self._blue_units = {}  # 怪物信息
+        self._is_share = False # 是否已经分享
 
 
     def init_data(self, data):
         """docstring for init_data"""
         self._stage_id = data.get("stage_id", 0)
         self._blue_units = data.get("blue_units", {})
+        self._is_share = data.get("is_share", False)
 
     @property
-    def boss_id(self):
-        return self._boss_id
+    def player_id(self):
+        return self._player_id
 
     @property
     def stage_id(self):
@@ -66,16 +111,32 @@ class HjqyBoss(object):
         self._stage_id = value
 
     @property
+    def is_share(self):
+        return self._is_share
+
+    @is_share.setter
+    def is_share(self, value):
+        self._is_share = value
+
+    @property
     def hp(self):
         hp = 0
         for unit in self._blue_units.values():
             hp += unit.hp
         return hp
 
+    @property
+    def hp_max(self):
+        hp_max = 0
+        for unit in self._blue_units.values():
+            hp_max += unit.hp_max
+        return hp_max
+
     def get_data_dict(self):
         return dict(boss_id=self._boss_id,
                     blue_units=self._blue_units,
-                    stage_id=self._stage_id,)
+                    stage_id=self._stage_id,
+                    is_share=self._is_share)
 
     def save_data(self):
         """
@@ -96,62 +157,57 @@ class HjqyBoss(object):
             return time_start<=current and self._boss_dead_time>=current
         return time_start<=current and time_end>=current
 
-    def add_rank_item(self, player_info):
+    def get_state(self):
         """
-        每次战斗结束, 添加排名
+        1: not dead
+        2: dead
+        3: run away
         """
-        player_id = player_info.get("player_id")
+        if self.hp <= 0:
+            return const.BOSS_DEAD
+        elif self.is_expired():
+            return const.BOSS_RUN_AWAY
+        return const.BOSS_LIVE
 
-        instance = self._rank_instance
-        instance.incr_value(player_id, player_info.get("demage_hp"))
-
-        # 如果玩家信息在前十名，保存玩家信息到redis
-        rank_no = instance.get_rank_no(player_id)
-        if rank_no > 10:
-            return
-        logger.debug("player_id, demage_hp, rank_no========= %s, %s, %s" % (player_id, player_info.get("demage_hp"), rank_no))
-        str_player_info = cPickle.dumps(player_info)
-        self._tb_boss.set(player_id, str_player_info)
-
-    def get_rank_items(self):
+    def is_expired(self):
         """
-        返回伤害最大前十名
+        boss 是否逃走
         """
-        instance = self._rank_instance
-        rank_items = []
-        for player_id, demage_hp in instance.get(1, 10):
-            player_info = cPickle.loads(self._tb_boss.get(player_id))
+        expired_time = game_configs.base_config.get("hjqyEscapeTime")*60
+        return is_expired(self._trigger_time, expired_time)
 
-            player_info["demage_hp"] = demage_hp
-            rank_items.append(player_info)
-
-        return rank_items
-
-    def get_rank_item_by_rankno(self, no):
+    def send_rank_reward_mails(self):
         """
-        rank no
+        排行奖励
         """
-        player_id = self._rank_instance.get(no, no)[0][0]
-        player_info = cPickle.loads(self._tb_boss.get(player_id))
-        return player_info
+        pass
+    #def get_rank_item_by_rankno(self, no):
+        #"""
+        #rank no
+        #"""
+        #player_id = self._rank_instance.get(no, no)[0][0]
+        #player_info = cPickle.loads(self._tb_boss.get(player_id))
+        #return player_info
 
-    def get_demage_hp(self, player_id):
-        demage_hp = self._rank_instance.get_value(player_id)
-        return demage_hp
+    #def get_demage_hp(self, player_id):
+        #demage_hp = self._rank_instance.get_value(player_id)
+        #return demage_hp
 
-    def get_rank_no(self, player_id):
-        rank_no = self._rank_instance.get_rank_no(player_id)
-        return rank_no
+    #def get_rank_no(self, player_id):
+        #rank_no = self._rank_instance.get_rank_no(player_id)
+        #return rank_no
 
-    def current_stage_info(self):
-        return game_configs.special_stage_config.get(self._config_name).get(self._stage_id)
+    #def current_stage_info(self):
+        #return game_configs.special_stage_config.get(self._config_name).get(self._stage_id)
 
-    def get_stage_info(self, stage_id):
-        return game_configs.special_stage_config.get(self._config_name).get(stage_id)
+    #def get_stage_info(self, stage_id):
+        #return game_configs.special_stage_config.get(self._config_name).get(stage_id)
 
-    def get_hp(self):
-        stage_info = self.current_stage_info()
-        logger.info("stage info %s id:%s" % (stage_info, self._stage_id))
-        monster_group_info = game_configs.monster_group_config.get(stage_info.round1)
-        monster_info = game_configs.monster_config.get(monster_group_info.pos5)
-        return int(monster_info.hp)
+    #def get_hp(self):
+        #stage_info = self.current_stage_info()
+        #logger.info("stage info %s id:%s" % (stage_info, self._stage_id))
+        #monster_group_info = game_configs.monster_group_config.get(stage_info.round1)
+        #monster_info = game_configs.monster_config.get(monster_group_info.pos5)
+        #return int(monster_info.hp)
+
+hjqy_manager = HjqyBossManager(tb_hjqyboss)

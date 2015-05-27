@@ -119,7 +119,7 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
         return True
     return False
 
-def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, player_level, debuff_skill_no, damage_rate, seed1, seed2, level):
+def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, debuff_skill_no, damage_rate, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -146,16 +146,41 @@ def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_sk
         return {"result":True, "hp_left":res[1]}
     return {"result":False, "hp_left":res[1]}
 
-       # required CommonResponse res = 1;
-	#repeated BattleUnit red = 2;         // 红方数据 自己
-	#repeated BattleUnit blue = 3;    // 对方数据
-	#optional int32 red_best_skill_id = 4;       // 无双
-	#optional int32 red_best_skill_level = 5; // 无双
-	#optional int32 blue_best_skill_id = 6;       // 无双
-	#optional int32 blue_best_skill_level = 7; // 无双
-	#repeated int32 awake_no = 8;        //
-	#optional int32 seed1= 9;
-       # optional int32 seed2= 10;
+def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
+    red = []
+    blue = []
+    for unit in red_units.values():
+        red.append(construct_battle_unit(unit))
+    for unit in blue_units.values():
+        blue.append(construct_battle_unit(unit))
+
+    fight_data = lua.table(
+        red = lua.table_from(red),
+        blue = lua.table_from(blue),
+        red_best_skill = red_skill,
+        red_best_skill_level = red_skill_level,
+        blue_skill = blue_skill,
+        blue_skill_level = blue_skill_level,
+        seed1 = seed1,
+        seed2 = seed2,
+        attack_type = attack_type
+    )
+    fight_type = const.BATTLE_PVB
+    res = pvp_func(fight_data, fight_type, level)
+    print("world_boss_start=====:", res, level)
+    if int(res[0]) == 1:
+        return {"result":True, "hp_left":res[1]}
+    return {"result":False, "hp_left":res[1]}
+    #required CommonResponse res = 1;
+    #repeated BattleUnit red = 2;         // 红方数据 自己
+    #repeated BattleUnit blue = 3;        // 对方数据
+    #optional int32 red_skill = 4;        // 我方无双
+    #optional int32 red_skill_level = 5;  // 我方无双
+    #optional int32 blue_skill = 6;       // 敌方无双
+    #optional int32 blue_skill_level = 7; // 敌方无双
+    #optional bool fight_result = 8;      // 战斗结果
+    #optional int32 seed1= 9;             // 随机种子1
+    #optional int32 seed2= 10;            // 随机种子2
 def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []
     blue = []

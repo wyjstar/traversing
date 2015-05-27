@@ -63,6 +63,8 @@ class CharacterFightCacheComponent(Component):
             logger.debug("xxxxxx%s" % slot.hero_slot.hero_no)
             if red:
                 red_units[no] = red
+        self.awake_hero_units(red_units)
+        self.__break_hero_units(red_units)
         return red_units
 
 
@@ -172,7 +174,7 @@ class CharacterFightCacheComponent(Component):
 
         return slots
 
-    def __assmble_monsters(self):
+    def _assemble_monster(self):
         """组装怪物战斗单位
         """
         stage_config = self._get_stage_config()  # 关卡配置
@@ -361,10 +363,8 @@ class CharacterFightCacheComponent(Component):
         self.break_stage_id = 0
         red_units = self.get_red_units()
         drop_num = self.__get_drop_num()  # 掉落数量
-        blue_units = self.__assmble_monsters()
+        blue_units = self._assemble_monster()
         monster_unpara = self.__get_monster_unpara()
-        self.awake_hero_units(red_units)
-        self.__break_hero_units(red_units)
 
         return red_units, blue_units, drop_num, monster_unpara
 

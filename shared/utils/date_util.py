@@ -93,6 +93,8 @@ def is_in_period(periods):
             return True
     return False
 
+def is_expired(last_time, expired_time):
+    return last_time + expired_time < get_current_timestamp()
 
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)

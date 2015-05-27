@@ -21,7 +21,9 @@ class CharacterHjqyComponent(Component):
         data.hset('hjqy', self._hjqy)
 
     def new_data(self):
-        self._hjqy = {'received_ids': []}
+        self._hjqy = {'received_ids': [],
+                    #'hjqy_bosses': {}
+                }
         return {'hjqy': self._hjqy}
 
     @property
@@ -31,3 +33,4 @@ class CharacterHjqyComponent(Component):
     @received_ids.setter
     def received_ids(self, value):
         self._received_ids = value
+
