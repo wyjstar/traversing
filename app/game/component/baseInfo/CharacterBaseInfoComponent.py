@@ -206,10 +206,6 @@ class CharacterBaseInfoComponent(Component):
                          recharge_item.get('fristGift'))
             return False
 
-        return_data = gain(self.owner, recharge_item.get('fristGift'),
-                           const.RECHARGE)  # 获取
-
-        get_return(self.owner, return_data, response.gain)
         self._first_recharge_ids.append(recharge_item.get('id'))
         self.save_data()
 
