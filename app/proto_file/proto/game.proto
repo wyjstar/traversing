@@ -77,3 +77,8 @@ message GameLoginResponse{
 message HeartBeatResponse{
     optional int32 server_time = 1;
 }
+
+//可恢复性资源，体力, 讨伐令等
+message StaminaOperRequest{
+    optional int32 resource_type = 1;
+}

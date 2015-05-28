@@ -27,4 +27,6 @@ message RankUserInfo{
 
     optional int32 last_rank = 8; //返回我的信息的时候返回一下我的上个排行
     optional int32 user_icon = 9;   //头像
+    
+    optional int64 damage_hp = 10; //伤害血量, 用于黄巾起义
 }

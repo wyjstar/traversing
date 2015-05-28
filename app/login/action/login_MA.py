@@ -21,6 +21,7 @@ SERVER_MA_URL = GlobalObject().json_config['MA_url']
 def server_login():
     """ account login """
 
+    logger.debug('server_login======================')
     verify_passport = request.args.get('passport')
     result = eval(__login(verify_passport))
     if result.get('result') is False:

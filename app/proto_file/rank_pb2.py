@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rank.proto',
   package='',
-  serialized_pb='\n\nrank.proto\x1a\x0c\x63ommon.proto\"F\n\x0eGetRankRequest\x12\x10\n\x08\x66irst_no\x18\x01 \x02(\x05\x12\x0f\n\x07last_no\x18\x02 \x02(\x05\x12\x11\n\trank_type\x18\x03 \x02(\x05\"\x87\x01\n\x0fGetRankResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12 \n\tuser_info\x18\x02 \x03(\x0b\x32\r.RankUserInfo\x12#\n\x0cmy_rank_info\x18\x03 \x01(\x0b\x32\r.RankUserInfo\x12\x0f\n\x07\x61ll_num\x18\x04 \x01(\x05\"\xa8\x01\n\x0cRankUserInfo\x12\x0c\n\x04rank\x18\x01 \x01(\x05\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\r\n\x05level\x18\x04 \x01(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x01(\x05\x12\x10\n\x08star_num\x18\x06 \x01(\x05\x12\x10\n\x08stage_id\x18\x07 \x01(\x05\x12\x11\n\tlast_rank\x18\x08 \x01(\x05\x12\x11\n\tuser_icon\x18\t \x01(\x05')
+  serialized_pb='\n\nrank.proto\x1a\x0c\x63ommon.proto\"F\n\x0eGetRankRequest\x12\x10\n\x08\x66irst_no\x18\x01 \x02(\x05\x12\x0f\n\x07last_no\x18\x02 \x02(\x05\x12\x11\n\trank_type\x18\x03 \x02(\x05\"\x87\x01\n\x0fGetRankResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12 \n\tuser_info\x18\x02 \x03(\x0b\x32\r.RankUserInfo\x12#\n\x0cmy_rank_info\x18\x03 \x01(\x0b\x32\r.RankUserInfo\x12\x0f\n\x07\x61ll_num\x18\x04 \x01(\x05\"\xbb\x01\n\x0cRankUserInfo\x12\x0c\n\x04rank\x18\x01 \x01(\x05\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\r\n\x05level\x18\x04 \x01(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x01(\x05\x12\x10\n\x08star_num\x18\x06 \x01(\x05\x12\x10\n\x08stage_id\x18\x07 \x01(\x05\x12\x11\n\tlast_rank\x18\x08 \x01(\x05\x12\x11\n\tuser_icon\x18\t \x01(\x05\x12\x11\n\tdamage_hp\x18\n \x01(\x03')
 
 
 
@@ -180,6 +180,13 @@ _RANKUSERINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='damage_hp', full_name='RankUserInfo.damage_hp', index=9,
+      number=10, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -190,7 +197,7 @@ _RANKUSERINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=239,
-  serialized_end=407,
+  serialized_end=426,
 )
 
 _GETRANKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
