@@ -10,12 +10,15 @@ function CommonData:ctor(item)
     self.LastStminaTime = nil  -- 上次领取体力时间
     self.AccountResponse = {} -- 注册成功返回数据
     self.isTourist = false
+    self.playerAcount = ""
     self.totalRecharge = 0
     self.c_BaseTemplate = getTemplateManager():getBaseTemplate()
     self.isHasVipGift = false
     self.iscanZcjb = false
     self.netTip = nil
+    self.pushMsg = {}
     self.oldLevel = 0 --战队升级前的等级
+    self.isHasRebate = false
 end
 -- function CommonData:clear()
 --     cclog("---------------CommonData:clear------")
@@ -42,6 +45,15 @@ end
 function CommonData:getAccountResponse()
 
     return self.AccountResponse
+end
+
+--设置当前登录玩家账号
+function CommonData:setPlayerAcount(playerAcount)
+    self.playerAcount = playerAcount
+end
+
+function CommonData:getPlayerAcount()
+    return self.playerAcount
 end
 
 --是否是游客登录
@@ -74,8 +86,9 @@ function CommonData:setData(data)
     self.exp = data.exp                                 --经验
     self.level = data.level                             --等级
     -- self.stamina = data.stamina                         --体力
-    self.totalRecharge = data.recharge
-    print("登陆数据：data.recharge = ",self.totalRecharge)
+    self.totalRecharge = data.recharge                   --累计充值
+    self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
+    self.godHeroTimes = data.excellent_hero_times         --神将累计抽取次数
     self.newbee_guide_id = data.newbee_guide_id
     print("newbee_guide_id", newbee_guide_id)
     print("---------------------------------------------------")
@@ -118,6 +131,7 @@ function CommonData:setData(data)
     self.head = data.head             --头像列表
     self.now_head = data.now_head     --当前头像id
 
+    self.first_recharge_ids = data.first_recharge_ids
     self.tomorrow_gift = data.tomorrow_gift
     print("tomorrow_gift = ", data.tomorrow_gift)
 
@@ -144,11 +158,18 @@ function CommonData:updateSrvTimer()
     end
 end
 
+--收到服务器时间之后更新服务器时间
+function CommonData:setSrvTime(time)
+    print("CommonData:setSrvTime====>preTime:",self.srv_time,"now time:",time)
+    self.srv_time = time
+end
+
 -- 新版本玩家资源 data.finances
 function CommonData:getFinance(type)
     -- table.print(self.finances)
     -- print("CommonData:getFinance=============>type, value", type, self.finances[type+1])
     if not self.finances[type+1] then
+        table.print(self.finances)
         error("CommonData:getFinance error, value is nil , type="..type)
     end
     if self.finances[type+1] < 0 then
@@ -225,6 +246,14 @@ function CommonData:getCanZcjb()
     -- body
 end
 
+function CommonData:setRebateState(hasRebate)
+    self.isHasRebate = hasRebate
+end
+
+function CommonData:getRebateState()
+    return self.isHasRebate
+end
+
 -- 返回模拟的服务器时间（客户端以服务器时间为准）
 function CommonData:getTime()
     return math.floor(self.srv_time)
@@ -289,7 +318,23 @@ function CommonData:addHeadLIstId(id) table.insert(self.head, id) end
 --------------------------
 
 
+function CommonData:setPushMsg(data)
+    self.pushMsg = {}
+    local tempInfo=data
+    for k, v in pairs(tempInfo.switch) do
+        local subData = {}
+        subData.msgType = v.msg_type
+        subData.msgValue = v.switch
+        table.insert(self.pushMsg,subData)
+        print("=========",k)
+        print("push type ",v.msg_type)
+        print("push value ",v.switch)
+    end
+end
 
+function CommonData:getPushMsg()
+    return self.pushMsg
+end
 
 
 -- 上次领取体力的时间
@@ -332,19 +377,49 @@ function CommonData:setSignedByDay(day)
     table.insert(self.signedList, day)
     -- table.insert(self.signedList, 3)
 end
--- 连续签到天数
+--[[--
+
+设置连续签到的天数
+@param days 连续签到的天数  
+]]
 function CommonData:setContinuousSignDays(days) self.continuousSignDays = days end
+--[[--
+
+获取连续签到的天数
+
+]]
 function CommonData:getContinuousSignDays() return self.continuousSignDays end
--- 已经获取的连续签到的奖励  保存列表[7，15，25]
+--[[--
+
+设置[7，15，25]天的连续签到的奖励 
+@param list [7，15，25]天的连续签到的奖励 
+]]
 function CommonData:setContinuousSignedList(list) self.continuousSignedList = list end
+--[[--
+
+获取[7，15，25]天的连续签到的奖励 
+
+]]
 function CommonData:getContinuousSignedList() return self.continuousSignedList end
+
 function CommonData:setContinuousSignedByDay(day) table.insert(self.continuousSignedList, day) end
 function CommonData:setCurContinuousSigned(reward) self.curRewardContinuousSigned = reward end
 function CommonData:getCurContinuousSigned() return self.curRewardContinuousSigned end
---以获取的额外签到奖励
+--[[--
+
+设置额外签到奖励
+@param list  额外签到奖励列表
+
+]]
 function CommonData:setExtraSignGiftList(list)
     self.extraSignGiftList = list
 end
+
+--[[--
+
+获取的额外签到奖励
+
+]]
 function CommonData:getExtraSignGiftList()
     return self.extraSignGiftList
 end
@@ -969,6 +1044,55 @@ function CommonData:analysisTime(timeStr)
     return startTimeTab,endTimeTab
 end
 
+
+-- 获取充值状态
+function CommonData:getRechargeStateById(id) 
+    if self.first_recharge_ids ~= nil then
+        for k,v in pairs(self.first_recharge_ids) do
+            if v == id then
+                return false
+            end
+        end
+    end
+    return true
+end
+
+-- 设置充值状态
+function CommonData:setRechargeStateById(id)
+    local _id = nil
+    local _rechargeList = self.c_BaseTemplate:getRechargeList()
+    for k,v in pairs(_rechargeList) do
+        if v.goodsid == id then
+            _id = v.id
+            break
+        end
+    end
+    table.insert(self.first_recharge_ids,_id)
+end
+
+--解析xx:xx:xx的时间类型
+function CommonData:analysisTime1(timeStr)
+
+    local function toTimeTable(timeStr)
+        local timeTab = {}
+        local strlen = string.len(timeStr)
+        local str = timeStr
+        local pos = string.find(str,":")
+        local hour = tonumber(string.sub(str,1,pos-1))
+        str = string.sub(str,pos+1,-1)
+        pos = string.find(str,":")
+        local min = tonumber(string.sub(str,1,pos-1))
+        local sec = tonumber(string.sub(str,pos+1,-1))
+        timeTab = {hour = hour,min = min,sec = sec}
+        return timeTab
+    end
+
+    local strlen = string.len(timeStr)
+    local startTime = string.sub(timeStr,1,strlen)
+    local startTimeTab = toTimeTable(startTime)
+    return startTimeTab.hour*3600 + startTimeTab.min*60 + startTimeTab.sec ,startTimeTab
+end
+
 --充值数据累计
 function CommonData:setRechargeNum(rechargeNum)
     self.totalRecharge = rechargeNum
@@ -979,14 +1103,31 @@ function CommonData:getRechargeNum()
     return self.totalRecharge
 end
 
+--良将累计抽取次数
+function CommonData:setNormalHeroTimes(times)
+    local perTimes = getTemplateManager():getBaseTemplate():getNormalHeroPerTimes()
+    if times >= perTimes then
+        times = 0
+    end
+    self.normalHeroTimes = times
+end
+
+function CommonData:getNormalHeroTimes()
+    return self.normalHeroTimes
+end
+
+--神将累计抽取次数
+function CommonData:setGodHeroTimes(times)
+    local perTimes = getTemplateManager():getBaseTemplate():getGodHeroPerTimes()
+    if times >= perTimes then
+        times = 0
+    end
+    self.godHeroTimes = times
+end
+
+function CommonData:getGodHeroTimes()
+    return self.godHeroTimes
+end
+
+
 return CommonData
-
-
-
-
-
-
-
-
-
-

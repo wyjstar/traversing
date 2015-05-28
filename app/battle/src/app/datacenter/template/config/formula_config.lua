@@ -242,9 +242,9 @@ formula_config={
 ,  [121] = {
   ["precondition"] = "expHero >= 1000",  ["formula"] = "expHero/1000",  ["clientPrecondition"] = "expHero >= 1000",  ["id"] = 121,  ["clientFormula"] = "result=expHero/1000",  ["key"] = "sacrificeExp_3",}
 ,  [122] = {
-  ["precondition"] = "1",  ["formula"] = "damage if damage<=10000 else 10000+damage/10",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=(damage <= 10000 and damage) or 10000+damage/10",  ["key"] = "coinWorldboss",}
+  ["precondition"] = "1",  ["formula"] = "\"10000\"",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=10000",  ["key"] = "coinWorldboss",}
 ,  [123] = {
-  ["precondition"] = "1",  ["formula"] = "1+damage/10000",  ["clientPrecondition"] = "1",  ["id"] = 123,  ["clientFormula"] = "result=1+damage/10000",  ["key"] = "soulWorldboss",}
+  ["precondition"] = "1",  ["formula"] = "\"10\"",  ["clientPrecondition"] = "1",  ["id"] = 123,  ["clientFormula"] = "result=10",  ["key"] = "soulWorldboss",}
 ,  [124] = {
   ["precondition"] = "1",  ["formula"] = "10000/rank+playerLevel*10",  ["clientPrecondition"] = "1",  ["id"] = 124,  ["clientFormula"] = "result=10000/rank+playerLevel*10",  ["key"] = "coinArenaSuccess",}
 ,  [125] = {
@@ -290,5 +290,5 @@ formula_config={
 ,  [145] = {
   ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 145,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2008",}
 ,  [146] = {
-  ["precondition"] = "1",  ["formula"] = "atkArray(1.5+heroBreak*0.5)",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=atkArray(1.5+heroBreak*0.5)",  ["key"] = "atkhjqy",}
+  ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
 ,}

@@ -292,6 +292,7 @@ MODULE_NAME_SHOP = "ShopModule"             --商城模块
 MODULE_NAME_ACTIVITY = "ActivityModule"     --精彩活动模块
 MODULE_NAME_WAR = "WarModule"           --信箱模块
 MODULE_NAME_LEGION = "LegionModule"     --军团模块
+MODULE_NAME_MISSION = "MissionModule"   --任务模块
 
 const.EVENT_PV_EMBATTLE_SHOW        = "EMBATTLE_SHOW"       --布阵显示
 const.EVENT_PV_SELECT_WS_SHOW       = "SELECT_WS_SHOW"      --选择无双显示
@@ -373,6 +374,15 @@ STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
 g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --次日登陆奖励
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
+g_notice.NOTICE_ADD_SHOES = "NOTICE_ADD_SHOES"                              --自动增加鞋子
+g_notice.NOTICE_TRAVEL_RESTARTTIMER = "NOTICE_TRAVEL_RESTARTTIMER"          --游历界面,重启定时器
+g_notice.NOTICE_TRAVEL_RELOAD_SHOES = "NOTICE_TRAVEL_RELOAD_SHOES"          --游历界面,重新读取鞋子信息
+g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"          --游历界面,重新读取鞋子信息
 
 g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
+
+UPDATE_HEAD = "UPDATE_HEAD"  -- 更新头像
+UPDATE_TL = "UPDATE_TL"      -- 更新体力
+
+guid_titlle = {war = "GUID_OPEN_WAR"}
 
