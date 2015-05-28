@@ -26,7 +26,6 @@ for file_name in os.listdir(root_path):
 result_file.close()
 
 
-os.system("cd ../proto;git checkout .;")
 os.system("cd ../proto;git pull origin master:master;")
 os.system("protoc -o ../proto/traversing_one.pb ../proto/traversing_one.proto --proto_path='../proto'")
 os.system("cd ../app/proto_file/proto;protoc -I=. --python_out=.. ./*")
