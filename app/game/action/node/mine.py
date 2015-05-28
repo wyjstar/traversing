@@ -32,6 +32,7 @@ from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
+from app.game.core.mail_helper import send_mail
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -530,6 +531,7 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     """
     # print 'process_mine_result', position, response, result, stype
     if result is not True:
+        # send_mail(conf_id=122, receive_id=999)
         return
 
     detail_info = player.mine.detail_info(position)
@@ -551,9 +553,11 @@ def process_mine_result(player, position, result, response, stype, hold=1):
             harvest_a[k] = v - harvest_b[k]
 
     prize = []
+    prize_num = 0
     for k, v in harvest_a.items():
         if v > 0:
             prize.append({108: [v, v, k]})
+            prize_num += v
     logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
                  harvest_stone, harvest_a, harvest_b, prize)
 
@@ -563,13 +567,8 @@ def process_mine_result(player, position, result, response, stype, hold=1):
         logger.debug('add_stones fail!!!!!!')
 
     mail_id = game_configs.base_config.get('warFogRobbedMail')
-    mail = db_pb2.Mail_PB()
-    mail.config_id = mail_id
-    mail.receive_id = target
-    mail.send_time = int(time.time())
-    mail.prize = str(prize)
-    mail_data = mail.SerializePartialToString()
-    netforwarding.push_message('receive_mail_remote', target, mail_data)
+    send_mail(conf_id=mail_id, receive_id=target, rune_num=prize_num,
+              nickname=player.base_info.base_name)
 
 
 @remoteserviceHandle('gate')

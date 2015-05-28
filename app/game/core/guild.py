@@ -214,14 +214,14 @@ class Guild(object):
 
     @property
     def bless_luck_num(self):
-        if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
             self._bless = [0, 0, int(time.time())]
             self.save_data()
         return self._bless[1]
 
     @property
     def bless_num(self):
-        if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
             self._bless = [0, 0, int(time.time())]
             self.save_data()
         return self._bless[0]

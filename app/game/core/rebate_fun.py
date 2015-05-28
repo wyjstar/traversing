@@ -26,24 +26,11 @@ def notify_mail(player):
         if player.rebate.need_mail(rid, game_configs.recharge_config[plat][rid].get('giftDays')):
             if recharge_item.get('giftDays') == 30:
                 mail_id = game_configs.base_config.get('moonCardRemindMail')
-                mail = db_pb2.Mail_PB()
-                mail.config_id = mail_id
-                mail.receive_id = player.base_info.id
-                mail.send_time = int(time.time())
-                mail.mail_type = 4
-                mail_data = mail.SerializePartialToString()
-                netforwarding.push_message('receive_mail_remote', player.base_info.id, mail_data)
+                send_mail(conf_id=mail_id, receive_id=player.base_info.id)
                 player.rebate.send_mail(rid)
             else:
                 mail_id = game_configs.base_config.get('weekCardRemindMail')
-                mail = db_pb2.Mail_PB()
-                mail.config_id = mail_id
-                mail.receive_id = player.base_info.id
-                mail.send_time = int(time.time())
-                mail.mail_type = 4
-                mail_data = mail.SerializePartialToString()
-                netforwarding.push_message('receive_mail_remote', player.base_info.id, mail_data)
-                player.rebate.send_mail(rid)
+                send_mail(conf_id=mail_id, receive_id=player.base_info.id)
             player.rebate.save_data()
 
 def rebate_info(player):

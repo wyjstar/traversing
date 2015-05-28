@@ -15,7 +15,8 @@ import cPickle
 import random
 import time
 from gfirefly.server.globalobject import GlobalObject
-from app.proto_file.db_pb2 import Mail_PB, WorldBossAwardDB
+from app.proto_file.db_pb2 import WorldBossAwardDB
+from shared.utils.mail_helper import deal_mail
 from shared.utils.date_util import str_time_to_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from app.proto_file.notice_pb2 import NoticeResponse
@@ -255,12 +256,7 @@ class WorldBoss(BaseBoss):
         for up, down, mail_id in award_mail.values():
             ranks = self._rank_instance.get(up, down)
             for player_id, v in ranks:
-                mail = Mail_PB()
-                mail.config_id = mail_id
-                mail.receive_id = int(player_id)
-                mail.send_time = int(time.time())
-                mail_data = mail.SerializePartialToString()
-
+                mail_date, _ = deal_mail(conf_id=mail_id, receive_id=int(player_id))
                 remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
                 remote_gate.push_message_to_transit_remote('receive_mail_remote',
                                                            int(player_id), mail_data)
@@ -272,11 +268,7 @@ class WorldBoss(BaseBoss):
         mail_id = game_configs.base_config.get('kill_rewards_worldboss')
 
         player_id = self._last_shot_item['player_id']
-        mail = Mail_PB()
-        mail.config_id = mail_id
-        mail.receive_id = player_id
-        mail.send_time = int(time.time())
-        mail_data = mail.SerializePartialToString()
+        mail_date, _ = deal_mail(conf_id=mail_id, receive_id=player_id)
         remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
         remote_gate.push_message_to_transit_remote('receive_mail_remote',
                                                    player_id, mail_data)

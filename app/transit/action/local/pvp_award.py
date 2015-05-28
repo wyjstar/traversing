@@ -9,9 +9,9 @@ from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 from app.transit.root.messagecache import message_cache
 from shared.db_opear.configs_data import game_configs
-from app.proto_file.db_pb2 import Mail_PB
 import time
 import traceback
+from shared.utils.mail_helper import deal_mail
 
 
 groot = GlobalObject().root
@@ -101,12 +101,7 @@ def pvp_daily_award():
             logger.error('pvp daily award error:%s', k)
             continue
 
-        # mail_conf = game_configs.mail_config.get(mail_id)
-        mail = Mail_PB()
-        mail.config_id = mail_id
-        mail.receive_id = k['character_id']
-        mail.send_time = int(time.time())
-        mail_data = mail.SerializePartialToString()
+        mail_date, _ = deal_mail(conf_id=mail_id, receive_id=k['character_id'])
 
         for child in childs.values():
             if 'gate' in child.name:

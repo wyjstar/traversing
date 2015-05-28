@@ -53,6 +53,7 @@ def read_mail_1302(proto_data, player):
 def delete_mail_1303(proto_data, player):
     """删除邮件"""
     request = mailbox_pb2.DeleteMailRequest()
+    request.ParseFromString(proto_data)
     mail_ids = request.mail_ids
     player.mail_component.delete_mails(mail_ids)
     response = CommonResponse()
