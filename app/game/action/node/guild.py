@@ -92,6 +92,7 @@ def create_guild_801(data, player):
 
     def func():
         # 创建公会
+        do_del_player_apply(p_id, player.guild.apply_guilds, 0)
         guild_obj = Guild()
         guild_obj.create_guild(p_id, g_name, icon_id)
 
@@ -106,6 +107,7 @@ def create_guild_801(data, player):
         player.guild.praise = [0, int(time.time())]
         player.guild.bless = [0, [], 0, int(time.time())]
         player.guild.exit_time = 1
+        player.guild.apply_guilds = []
         player.guild.save_data()
         guild_obj.save_data()
         # 加入公会聊天
@@ -245,6 +247,8 @@ def exit_guild_803(data, player):
         remote_gate.del_guild_room_remote(player.guild.g_id)
         # 删除排行
         remote_gate.remove_rank_remote('GuildLevel', player.guild.g_id)
+        # 删除申请加入军团玩家的申请信息
+        del_apply_cache(guild_obj)
         # 删除军团
         guild_obj.delete_guild()
         send_mail(conf_id=304, receive_id=p_id, guild_name=guild_obj.name)
@@ -261,6 +265,7 @@ def exit_guild_803(data, player):
             # 退出公会聊天
             remote_gate.logout_guild_chat_remote(dynamicid)
         send_mail(conf_id=305, receive_id=p_id, guild_name=guild_obj.name)
+        player.guild.exit_time = int(time.time())
 
     player.guild.g_id = 0
     player.guild.contribution = 0
@@ -270,12 +275,25 @@ def exit_guild_803(data, player):
     player.guild.praise = [0, 1]
     player.guild.bless = [0, [], 0, 1]
     player.guild.g_id = 0
-    player.guild.exit_time = int(time.time())
     player.guild.save_data()
 
     response.res.result = True
     tlog_action.log('ExitGuild', player, m_g_id)
     return response.SerializeToString()
+
+
+def del_apply_cache(guild_obj):
+    for p_id in guild_obj.apply:
+        if not netforwarding.push_message('del_apply_cache_remote',
+                                          p_id, guild_obj.g_id):
+            logger.error('del_apply_cache push message fail id:%d' % p_id)
+
+
+@remoteserviceHandle('gate')
+def del_apply_cache_remote(g_id, is_online, player):
+    player.guild.apply_guilds.remove(g_id)
+    player.guild.save_data()
+    return True
 
 
 @remoteserviceHandle('gate')
@@ -408,6 +426,9 @@ def deal_apply_805(data, player):
             return response.SerializeToString()
 
         for p_id in p_ids:
+            if p_id not in guild_obj.apply:
+                continue
+            del_player_apply(p_id, guild_obj.g_id)
             # 加入公会聊天室
             data = {'guild_id': player.guild.g_id,
                     'position': 3,
@@ -439,17 +460,16 @@ def deal_apply_805(data, player):
 
             send_mail(conf_id=303, receive_id=p_id, guild_name=guild_obj.name)
 
-            if p_id in guild_obj.apply:
-                guild_obj.apply.remove(p_id)
-                if guild_obj.p_list.get(3):
-                    p_list1 = guild_obj.p_list.get(3)
-                    p_list1.append(p_id)
-                    guild_obj.p_list.update({3: p_list1})
-                else:
-                    guild_obj.p_list.update({3: [p_id]})
-                guild_obj.p_num += 1
-                tlog_action.log('DealJoinGuild', player, m_g_id,
-                                p_id, 1)
+            guild_obj.apply.remove(p_id)
+            if guild_obj.p_list.get(3):
+                p_list1 = guild_obj.p_list.get(3)
+                p_list1.append(p_id)
+                guild_obj.p_list.update({3: p_list1})
+            else:
+                guild_obj.p_list.update({3: [p_id]})
+            guild_obj.p_num += 1
+            tlog_action.log('DealJoinGuild', player, m_g_id,
+                            p_id, 1)
 
     elif res_type == 2:
         p_ids = args.p_ids
@@ -487,6 +507,24 @@ def deal_apply_805(data, player):
     response.res.result = True
     # response.res.message = "处理成功"
     return response.SerializeToString()
+
+
+def del_player_apply(p_id, guild_id):
+    # 删除其他军团的申请列表里的此玩家
+    character_obj = tb_character_info.getObj(p_id)
+    apply_guilds = character_obj.hget('apply_guilds')
+    do_del_player_apply(p_id, apply_guilds, guild_id)
+
+
+def do_del_player_apply(p_id, apply_guilds, guild_id):
+    for g_id in apply_guilds:
+        if g_id == guild_id:
+            continue
+        guild_data = tb_guild_info.getObj(g_id).hgetall()
+        guild_obj = Guild()
+        guild_obj.init_data(guild_data)
+        guild_obj.apply.remove(p_id)
+        guild_obj.save_data()
 
 
 @remoteserviceHandle('gate')
