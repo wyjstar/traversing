@@ -5,12 +5,14 @@ created by wzp.
 """
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
-from shared.utils.date_util import str_time_period_to_timestamp, is_expired
+from shared.utils.date_util import str_time_period_to_timestamp, is_expired, string_to_timestamp
 from gfirefly.server.logobj import logger
 from gfirefly.dbentrust.redis_mode import RedisObject
 from shared.utils.ranking import Ranking
 from shared.utils.const import const
 from gtwisted.core import reactor
+from shared.utils.mail_helper import deal_mail
+from gfirefly.server.globalobject import GlobalObject
 
 
 tb_hjqyboss = RedisObject('tb_hjqyboss')
@@ -33,6 +35,9 @@ class HjqyBossManager(object):
             boss.init_data(data)
             self._bosses[boss_id] = boss
         self._rank_instance = Ranking.instance("HjqyBossDamage")
+        hjqyDayPointsTime = game_configs.base_config.get("hjqyDayPointsTime")
+        send_rank_reward_time = string_to_timestamp(hjqyDayPointsTime)
+        reactor.callLater(send_rank_reward_time - get_current_timestamp() + 1, self.send_rank_reward_mails)
 
 
     def add_boss(self, player_id, blue_units, stage_id):
@@ -89,6 +94,22 @@ class HjqyBossManager(object):
         rank = self._rank_instance.get_rank_no(player_id)
         return rank
 
+    def send_rank_reward_mails(self):
+        """
+        排行奖励
+        """
+        reactor.callLater(60*60*24, self.send_rank_reward_mails) # 第二天执行
+        logger.debug("hjqy send_award_top_ten===========")
+        award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
+        for up, down, mail_id in award_info.values():
+            ranks = self._rank_instance.get(up, down)
+            for k, v in enumerate(ranks):
+                player_id, val = v
+                logger.debug("send_award_top_ten: player_id %s, value %s, mail_id %s" % (player_id, v, mail_id))
+                mail_data, _ = deal_mail(conf_id=mail_id, receive_id=int(player_id))
+                remote_gate = GlobalObject().child('gate')
+                remote_gate.push_message_to_transit_remote('receive_mail_remote',
+                                                           int(player_id), mail_data)
 
 class HjqyBoss(object):
     """docstring for Boss"""
@@ -183,11 +204,6 @@ class HjqyBoss(object):
         expired_time = game_configs.base_config.get("hjqyEscapeTime")*60
         return is_expired(self._trigger_time, expired_time)
 
-    def send_rank_reward_mails(self):
-        """
-        排行奖励
-        """
-        pass
     #def get_rank_item_by_rankno(self, no):
         #"""
         #rank no

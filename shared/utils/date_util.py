@@ -32,6 +32,14 @@ def string_to_timestamp(time_str):
     d = datetime.datetime.strptime(time_str, "%Y/%m/%d %H:%M:%S")
     return time.mktime(d.timetuple())
 
+def string_to_timestamp_hms(time_str):
+    """
+    input: 23:59:00
+    output: num
+    """
+    times = time_str.split(':')
+    return get_current_day_timestamp(hour=int(times[0]), minute=int(times[1]))
+
 def str_time_period_to_timestamp(str_time_period):
     """
     input: 12:30-12:40
