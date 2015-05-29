@@ -253,7 +253,7 @@ def pvp_fight_request_1505(data, player):
         response.res.result_no = 837
         return response.SerializeToString()
 
-    before_player_rank = tb_pvp_rank.zscore(player.base_info.id)
+    before_player_rank = int(tb_pvp_rank.zscore(player.base_info.id))
     if before_player_rank == request.challenge_rank:
         logger.error('cant not fight self')
         response.res.result = False
@@ -261,7 +261,7 @@ def pvp_fight_request_1505(data, player):
         return response.SerializeToString()
 
     if not before_player_rank:
-        before_player_rank = tb_pvp_rank.getObj('incr').incr()
+        before_player_rank = int(tb_pvp_rank.getObj('incr').incr())
         tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
         player.base_info.pvp_high_rank = before_player_rank
 
@@ -307,13 +307,12 @@ def pvp_fight_request_1505(data, player):
             else:
                 logger.debug('arena rank up points is not find')
 
+            if fight_result:
+                send_mail(conf_id=123, receive_id=target_id,
+                          pvp_rank=before_player_rank,
+                          nickname=player.base_info.base_name)
         else:
             logger.debug("fight result:False")
-
-        if fight_result:
-            send_mail(conf_id=123, receive_id=target_id, pvp_rank=target_id,
-                      nickname=player.base_info.base_name)
-        else:
             send_mail(conf_id=124, receive_id=target_id,
                       nickname=player.base_info.base_name)
 
