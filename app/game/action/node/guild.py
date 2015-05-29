@@ -982,10 +982,6 @@ def get_guild_info_812(data, player):
         response.captain_icon = player.base_info.head
         response.captain_zan_receive_state = guild_obj.receive_praise_state
 
-        if guild_obj.apply:
-            response.have_apply = 1
-        else:
-            response.have_apply = 0
     else:
         president_id = guild_obj.p_list.get(1)[0]
         character_info = tb_character_info.getObj(president_id).hgetall()
@@ -1001,6 +997,11 @@ def get_guild_info_812(data, player):
             heads = Heads_DB()
             heads.ParseFromString(character_info['heads'])
             response.captain_icon = heads.now_head
+    if player.guild.position <= 2:
+        if guild_obj.apply:
+            response.have_apply = 1
+        else:
+            response.have_apply = 0
 
     response.res.result = True
     return response.SerializeToString()
