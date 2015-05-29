@@ -730,7 +730,7 @@ def bless_809(data, player):
     if guild_obj.exp >= game_configs.guild_config.get(guild_obj.level).exp:
         guild_obj.exp -= game_configs.guild_config.get(guild_obj.level).exp
         guild_obj.level += 1
-        rank_helper.add_rank_info('Guildlevel',
+        rank_helper.add_rank_info('GuildLevel',
                                   guild_obj.g_id, guild_obj.level)
 
     player.guild.save_data()

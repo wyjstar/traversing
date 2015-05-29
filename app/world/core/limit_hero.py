@@ -4,12 +4,7 @@ from shared.db_opear.configs_data import game_configs
 from gtwisted.core import reactor
 from shared.utils.mail_helper import deal_mail
 import time
-
-
-def LimitHeroObj():
-    act_id = 0
-
-limit_hero_obj = LimitHeroObj()
+from app.world.action.gateforwarding import limit_hero_obj
 
 
 def send_reward(act_id):
@@ -23,7 +18,8 @@ def send_reward(act_id):
             break
         mail_id = get_mail_id(rank, act_id)
         mail_data, _ = deal_mail(conf_id=mail_id, receive_id=p_id)
-        pass
+        child = childsmanager.childs.values()[0]
+        child.push_message_remote('receive_mail_remote', p_id, mail_data)
         rank += 1
 
 
@@ -41,7 +37,13 @@ def get_mail_id(rank, act_id):
 def deal_end_act():
     send_reward(limit_hero_obj.act_id)
     limit_hero_obj.act_id = 0
+    clear_rank()
     tick_limit_hero()
+
+
+def clear_rank():
+    instance = Ranking.instance('LimitHeroRank')
+    instance.clear_rank()
 
 
 def tick_limit_hero():
@@ -49,7 +51,7 @@ def tick_limit_hero():
     if not act_data['id']:
         return
     limit_hero_obj.act_id = act_data['id']
-    need_time = int(time.time()-act_data['end_time'])
+    need_time = int(act_data['end_time']-time.time())
     reactor.callLater(need_time, deal_end_act)
 
 
@@ -59,6 +61,8 @@ def get_activity_info():
     timeEnd = 0
     now = time.time()
     for act_conf in act_confs:
-        if act_conf.timeStart <= now <= timeEnd:
+        if act_conf.timeStart <= now <= act_conf.timeEnd:
             activity_id = act_conf.id
+            timeEnd = int(act_conf.timeEnd)
+            break
     return {'id': activity_id, 'end_time': timeEnd}
