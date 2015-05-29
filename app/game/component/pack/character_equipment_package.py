@@ -6,7 +6,7 @@ from app.game.component.Component import Component
 from app.game.core.equipment.equipment import Equipment
 from app.game.redis_mode import tb_character_info
 from shared.utils.pyuuid import get_uuid
-
+from shared.db_opear.configs_data.game_configs import equipment_config
 
 class CharacterEquipmentPackageComponent(Component):
     """角色的装备背包
@@ -118,3 +118,15 @@ class CharacterEquipmentPackageComponent(Component):
             if equipment_obj.base_info.equipment_no == equipment_no:
                 num += 1
         return num
+
+    def get_quality_equip_count(self, quality):
+        """
+        :param quality: 指定品质类型
+        :return:返回指定品质装备数量
+        """
+        count = 0
+        for equip_id in self._equipments_obj:
+            equip = equipment_config[equip_id]
+            if equip.quality >= quality:
+                count += 1
+        return count

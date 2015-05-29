@@ -48,7 +48,8 @@ class PlayerCharacter(object):
                  recharge=component.CharacterRechargeGift(self),
                  limit_hero=component.CharacterLimitHeroComponent(self),
                  rebate=component.Rebate(self),
-                 buy_coin=component.CharacterBuyCoinActivity(self)
+                 buy_coin=component.CharacterBuyCoinActivity(self),
+                 share=component.ShareComponent(self),
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
