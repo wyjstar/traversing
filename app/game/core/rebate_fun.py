@@ -37,6 +37,8 @@ def rebate_info(player):
     """
     获取返利卡状态
     """
+    
+    notify_mail(player)
     response = rebateInfo()
     plat = 'ios'
     if player.base_info.plat_id == 1:
