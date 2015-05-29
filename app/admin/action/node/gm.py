@@ -358,9 +358,7 @@ def get_user_finances(args):
     finances[3] = character_obj.hget('lively')
     finances[13] = character_obj.hget('stone1')
     finances[14] = character_obj.hget('stone2')
-    finances[17] = character_obj.hget('shoes')[0]
-    finances[18] = character_obj.hget('shoes')[1]
-    finances[19] = character_obj.hget('shoes')[2]
+    finances[20] = character_obj.hget('shoes')[0]
 
     return {'success': 1, 'message': finances}
 
