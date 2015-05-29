@@ -151,7 +151,7 @@ def user_bind():
                                       device_id=''),
                                  dict(id=get_result['id']))
     logger.info('bind result:%s', result)
-    return json.dumps(dict(result=True))
+    return json.dumps(dict(result=result))
 
 
 @webserviceHandle('/query_touristid')

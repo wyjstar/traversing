@@ -57,7 +57,7 @@ if __name__ == '__main__':
     model_config = mconfig.get('models', {})
     GlobalObject().json_model_config = model_config
     GlobalObject().json_model_default_config = model_default_config
-    GlobalObject().allconfig = {'tlog':0}
+    GlobalObject().allconfig = {'tlog': 0}
 
     # hostname = "127.0.0.1"
     hostname = "localhost"
@@ -72,7 +72,8 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
-    rank_length = 3000
+    rank_length = 30
+    from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
     nickname_set = set()
     while len(nickname_set) < rank_length + 5:
@@ -102,37 +103,34 @@ if __name__ == '__main__':
                 hero_levels = player.line_up_component.hero_levels
                 red_units = player.fight_cache_component.red_unit
                 print red_units
-                red_units = cPickle.dumps(red_units)
-                slots = cPickle.dumps(line_up_info(player))
+                red_units = red_units
+                slots = line_up_info(player).SerializeToString()
+                ap = int(player.line_up_component.combat_power)
 
                 rank_item = dict(nickname=nickname_set.pop(),
-                                 character_id=1,
-                                 level=level,
-                                 id=rank,
+                                 character_id=rank, level=level, id=rank,
+                                 hero_ids=hero_ids,
+                                 hero_levels=hero_levels,
+                                 attackPoint=ap,
                                  best_skill=0,
                                  unpar_skill=0,
                                  unpar_skill_level=0,
-                                 hero_ids=cPickle.dumps(hero_ids),
-                                 hero_levels=cPickle.dumps(hero_levels),
-                                 ap=player.line_up_component.combat_power,
-                                 units=red_units,
-                                 slots=slots)
+                                 copy_units=red_units,
+                                 copy_slots=slots)
                 pvp_rank[rank] = rank_item
                 break
 
-    util.DeleteFromDB(PVP_TABLE_NAME)
+    tb_robot = tb_character_info.getObj('robot')
+    if tb_robot.exists():
+        tb_robot.delete()
+        tb_pvp_rank.delete()
+        tb_pvp_rank.getObj('incr').delete()
+
     for _ in pvp_rank.values():
         print _.get('id'), _.get('nickname'), _.get('character_id')
-        util.InsertIntoDB(PVP_TABLE_NAME, _)
-
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
-                                     'id=1',
-                                     ['id', 'nickname', 'level', 'units'])
-    for r in records:
-        u = r.get('units')
-        print 'before:', u
-        u = cPickle.loads(u)
-        print r.get('nickname'), r.get('level'), r.get('id'), r.get('units')
+        tb_robot.hsetnx(_['id'], _)
+        tb_pvp_rank.zadd(_['id'], _['id'])
+        tb_pvp_rank.getObj('incr').incr()
 
 
 def dbpool_get():

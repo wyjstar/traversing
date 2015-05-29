@@ -48,22 +48,24 @@ class MineOpt(object):
     @classmethod
     def lock(cls, tid):
         label = 'mine.lock'
-        val = tb_rank.zincrby(label, tid, 1)
+        tb_rank.getObj(label)
+        val = tb_rank.zincrby(tid, 1)
         return val
 
     @classmethod
     def unlock(cls, tid):
         label = 'mine.lock'
-        tb_rank.zadd(label, 0, tid)
+        tb_rank.getObj(label)
+        tb_rank.zadd(0, tid)
 
     @classmethod
     def update(cls, label, k, v):
         """ label : "sword",玩家等级，团队战力 """
-        old_score = tb_rank.zget(label, k)
+        old_score = tb_rank.getObj(label).zscore(k)
         if old_score:
             if old_score >= v:
                 return
-        tb_rank.zadd(label, k, v)
+        tb_rank.zadd(k, v)
 
     @classmethod
     def updata_level(cls, label, uid, s, t):
@@ -98,7 +100,7 @@ class MineOpt(object):
     def get_user(cls, label, k):
         """ label : "user_level","sword",玩家等级，团队战力 """
         try:
-            ret = tb_rank.zget(label, k)
+            ret = tb_rank.zscore(k)
         except Exception, e:
             print e
             return 1

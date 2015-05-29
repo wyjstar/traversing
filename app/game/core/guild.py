@@ -2,7 +2,7 @@
 """
 created by server on 14-7-17下午9:05.
 """
-from app.game.redis_mode import tb_guild_info, tb_guild_index_incr
+from app.game.redis_mode import tb_guild_info
 from shared.utils.pyuuid import get_uuid
 import time
 
@@ -25,10 +25,12 @@ class Guild(object):
         self._icon_id = 0  # 军团头像
         self._bless = [0, 0, 1]  # 祈福人数,福运,时间
         self._praise = [0, 0, 1]  # 点赞人数,团长奖励领取状态，时间
+        guild_incr = tb_guild_info.getObj('incr')
+        if not guild_incr.exists():
+            guild_incr.set(100000)
 
     def create_guild(self, p_id, name, icon_id):
-        guild_index_incr_data = tb_guild_index_incr.getObj('guild_index')
-        g_id = guild_index_incr_data.incr() + 100000
+        g_id = tb_guild_info.get('incr').incr()
 
         self._name = name
         self._g_id = g_id

@@ -36,31 +36,33 @@ class Ranking:
         return instance
 
     def add(self, id, value):
-        label = self.label
+        tb = tb_rank.getObj(self.label)
         if _DEBUG:
-            print "[DEBUG] Ranking.do_add: rank:", label, " id:", id, " value", value
+            print "[DEBUG] Ranking.do_add: rank:", self.label, " id:", id, " value", value
 
         rank_len = self.rank_len
-        tb_rank.zadd(label, value, id)
-        len = tb_rank.zcount(label, '-inf', '+inf')
+        tb.zadd(value, id)
+        len = tb.zcount('-inf', '+inf')
         if (len - BUF_SIZE) > rank_len:
-            tb_rank.zremrangebyrank(label, 0, (len - rank_len))
+            tb.zremrangebyrank(0, (len - rank_len))
             if _DEBUG:
-                len = tb_rank.zcount(label, '-inf', '+inf')
+                len = tb.zcount('-inf', '+inf')
                 print "[DEBUG] Ranking.do_add: do remove due to too long, now len =", len
 
     def get(self, start=1, end=1):
         """
         获取排名：start-end
         """
-        print start, end, tb_rank.zcount(self.label, '-inf', '+inf')
-        return tb_rank.zrevrange(self.label, start-1, end-1, withscores=True)
+        tb = tb_rank.getObj(self.label)
+        print start, end, tb.zcount('-inf', '+inf')
+        return tb.zrevrange(start-1, end-1, withscores=True)
 
     def get_rank_no(self, key):
         """
         获取某个key的名次
         """
-        rank_no = tb_rank.zrevrank(self.label, key)
+        tb = tb_rank.getObj(self.label)
+        rank_no = tb.zrevrank(key)
         if not rank_no and rank_no != 0:
             return 0
         return rank_no + 1
@@ -69,7 +71,8 @@ class Ranking:
         """
         获取某个key的值
         """
-        value = tb_rank.zscore(self.label, key)
+        tb = tb_rank.getObj(self.label)
+        value = tb.zscore(key)
         if not value:
             return 0
         return value
@@ -78,15 +81,18 @@ class Ranking:
         """
         增加值，根据key
         """
-        return tb_rank.zincrby(self.label, key, value)
+        tb = tb_rank.getObj(self.label)
+        return tb.zincrby(key, value)
 
     def clear_rank(self):
         print "clear_rank========"
-        tb_rank.zremrangebyrank(self.label, 0, -1)
+        tb = tb_rank.getObj(self.label)
+        tb.zremrangebyrank(0, -1)
 
     def remove(self, key):
         print "remove_rank========", key
-        tb_rank.zrem(self.label, key)
+        tb = tb_rank.getObj(self.label)
+        tb.zrem(key)
 
 
 def testcase1():

@@ -12,7 +12,3 @@ tb_character_info.insert()
 # ���浼�淇℃��琛�
 tb_guild_info = RedisObject('tb_guild_info', 'id')
 tb_guild_info.insert()
-
-# ���浼����琛�
-tb_guild_name = RedisObject('tb_guild_name', 'id')
-tb_guild_name.insert()

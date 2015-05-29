@@ -13,14 +13,12 @@ import re
 import os
 import time
 from app.proto_file.db_pb2 import Mail_PB
-from app.admin.redis_mode import tb_guild_info, tb_guild_name, \
-    tb_character_info
+from app.admin.redis_mode import tb_guild_info, tb_character_info
 from app.admin.action.root.netforwarding import push_message
 from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils import trie_tree
 from app.game.core.stage.stage import Stage
 from shared.db_opear.configs_data import game_configs
-from shared.db_opear.configs_data.data_helper import parse
 
 
 remote_gate = GlobalObject().remote.get('gate')

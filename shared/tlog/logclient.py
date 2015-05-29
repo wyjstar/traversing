@@ -5,7 +5,7 @@ import socket
 from gfirefly.server.logobj import logger
 from gfirefly.server.logobj import logger
 
-tlog = GlobalObject().allconfig['tlog']
+tlog = GlobalObject().allconfig.get('tlog')
 if tlog:
     host = GlobalObject().allconfig['tlog']['host']
     port = GlobalObject().allconfig['tlog']['port']
