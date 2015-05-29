@@ -72,7 +72,7 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
-    rank_length = 30
+    rank_length = 3000
     from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
     nickname_set = set()
