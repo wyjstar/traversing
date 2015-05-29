@@ -31,6 +31,13 @@ message PvpFightRevenge{
     optional int32 skill = 3; //无双技能ID
 }
 
+message PvpFightOvercome{
+    required int32 character_id = 1;
+	required int32 type = 2;
+    repeated int32 lineup = 3; // 队形
+    optional int32 skill = 4; //无双技能ID
+}
+
 message PvpPlayerInfoRequest{
     required int32 player_rank = 1;
 }
