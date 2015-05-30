@@ -74,7 +74,7 @@
 				"heads": "simple",
                 "rebate": "complex",
                 "month_buy":"simple",
-                "last_day":"simple",
+                "last_time":"simple",
                 "mail_id":"simple"
             }
         },
