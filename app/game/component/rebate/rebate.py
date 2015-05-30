@@ -64,7 +64,7 @@ class Rebate(Component):
         mail_id = character_data.get('mail_id')
         self._rebate = rebate
         self._month_buy = month_buy
-        self._last_day = last_time
+        self._last_time = last_time
         self._mail_id = mail_id
 
     def save_data(self):
@@ -78,8 +78,8 @@ class Rebate(Component):
             logger.error('cant find Rebate:%s', self.owner.base_info.id)
 
     def new_data(self):
-        rebate = dict(rebate=self._rebate)
-        return {'rebate': rebate}
+        rebate = dict(rebate=self._rebate, month_buy=self._month_buy, last_time=self._last_time, mail_id=self._mail_id)
+        return rebate
     
     def rebate_info(self, rid):
         one_rebate =  self._rebate.get(rid, None)
@@ -93,7 +93,7 @@ class Rebate(Component):
         
     def all_rebates(self):
         rebates = []
-        for rebate in self._rebate.values():
+        for rebate in self._rebate.keys():
             rebates.append(rebate)
         return rebates
     
