@@ -9,6 +9,7 @@ from gfirefly.dbentrust.madminanager import MAdminManager
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.redis_mode import tb_character_info
+from shared.utils.ranking import Ranking
 
 
 def doWhenStop():
@@ -21,6 +22,15 @@ def doWhenStop():
 
 
 GlobalObject().stophandler = doWhenStop
+
+Ranking.init('GuildLevel', 9999)
+Ranking.init('LevelRank1', 99999)
+Ranking.init('LevelRank2', 99999)
+Ranking.init('PowerRank1', 99999)
+Ranking.init('PowerRank2', 99999)
+Ranking.init('StarRank1', 99999)
+Ranking.init('StarRank2', 99999)
+Ranking.init('LimitHeroRank', 99999)
 
 if game_configs.base_config.get('initial'):
     robotname_id, robot_level, rhero_id, rhero_level = game_configs.base_config.get('initial')

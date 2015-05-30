@@ -290,9 +290,11 @@ def pvp_fight_request_1505(data, player):
         logger.debug("fight result:False")
 
     if fight_result:
-        send_mail(conf_id=123, receive_id=target_id, pvp_rank=record['id'])
+        send_mail(conf_id=123, receive_id=target_id, pvp_rank=record['id'],
+                  nickname=player.base_info.base_name)
     else:
-        send_mail(conf_id=124, receive_id=target_id)
+        send_mail(conf_id=124, receive_id=target_id,
+                  nickname=player.base_info.base_name)
 
     lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)

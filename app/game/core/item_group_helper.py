@@ -451,3 +451,20 @@ def get_return(player, return_data, game_resources_response):
             player.runt.deal_runt_pb(item_no, runt_id, main_attr, minor_attr, runt_pb)
 
     # logger.debug('return resource:%s', game_resources_response)
+
+
+def do_get_draw_drop_bag(pseudo_bag_id, draw_times):
+    pseudo_random_info = game_configs.pseudo_random_config.get(pseudo_bag_id)
+    assert pseudo_random_info!=None, "can not find pseudo bag:%s" % pseudo_bag_id
+    gain = pseudo_random_info.gain
+    drop_items = []
+    for k in sorted(gain.keys(), reverse=True):
+        if draw_times >= k:
+            bags = gain.get(k)
+            for bag_id in bags:
+                # logger.debug("drop_bag_id %s", bag_id)
+                big_bag = BigBag(bag_id)
+                drop_items.extend(big_bag.get_drop_items())
+            break
+    # logger.debug("drop_items %s", drop_items)
+    return drop_items

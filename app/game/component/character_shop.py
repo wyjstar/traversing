@@ -12,6 +12,7 @@ from time import localtime
 import time
 from shared.utils.date_util import is_past_time
 from app.game.core.drop_bag import BigBag
+from app.game.core.item_group_helper import do_get_draw_drop_bag
 
 
 class CharacterShopComponent(Component):
@@ -217,19 +218,7 @@ class CharacterShopComponent(Component):
     def get_draw_drop_bag(self, pseudo_bag_id):
         """docstring for get_draw_drop_bag"""
         draw_times = self.pseudo_times.get(pseudo_bag_id, 0)
-        pseudo_random_info = game_configs.pseudo_random_config.get(pseudo_bag_id)
-        assert pseudo_random_info!=None, "can not find pseudo bag:%s" % pseudo_bag_id
-        gain = pseudo_random_info.gain
-        drop_items = []
-        for k in sorted(gain.keys(), reverse=True):
-            if draw_times >= k:
-                bags = gain.get(k)
-                for bag_id in bags:
-                    # logger.debug("drop_bag_id %s", bag_id)
-                    big_bag = BigBag(bag_id)
-                    drop_items.extend(big_bag.get_drop_items())
-                break
-        # logger.debug("drop_items %s", drop_items)
+        drop =  do_get_draw_drop_bag(pseudo_bag_id, draw_times)
         self.pseudo_times[pseudo_bag_id] = draw_times + 1
         self.save_data()
-        return drop_items
+        return drop
