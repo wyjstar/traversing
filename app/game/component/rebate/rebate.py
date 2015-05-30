@@ -53,15 +53,27 @@ class Rebate(Component):
     def __init__(self, owner):
         super(Rebate, self).__init__(owner)
         self._rebate = {}
+        self._month_buy = 0
+        self._last_day = 0
+        self._mail_id = 0
 
     def init_data(self, character_data):
         rebate = character_data.get('rebate')
+        month_buy = character_data.get('month_buy')
+        last_day = character_data.get('last_day')
+        mail_id = character_data.get('mail_id')
         self._rebate = rebate
+        self._month_buy = month_buy
+        self._last_day = last_day
+        self._mail_id = mail_id
 
     def save_data(self):
         char_obj = tb_character_info.getObj(self.owner.base_info.id)
         if char_obj:
             char_obj.hset('rebate', self._rebate)
+            char_obj.hset('month_buy', self._month_buy)
+            char_obj.hset('last_day', self._last_day)
+            char_obj.hset('mail_id', self._mail_id)
         else:
             logger.error('cant find Rebate:%s', self.owner.base_info.id)
 
@@ -137,3 +149,23 @@ class Rebate(Component):
             return 1
         return 0
         
+    def month_start(self, mail_id):
+        if self._month_buy == 0:
+            self._month_buy = xtime.timestamp()
+            self._mail_id = mail_id
+    
+    def month_mails(self):
+        tomorrow_ts = xtime.tomorrow_ts()
+        mail_times = 0
+        if self._month_buy != 0:
+            while True:
+                if self._last_day == 0:
+                    mail_times += 1
+                    self._last_day = self._month_buy
+                    
+                elif self._last_day + 24*60*60 < tomorrow_ts:
+                    mail_times += 1
+                    self._last_day += 24*60*60
+                else:
+                    break
+        return self._mail_id, mail_times

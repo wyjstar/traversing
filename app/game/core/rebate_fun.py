@@ -10,6 +10,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import db_pb2
 import time
 from app.game.action.root import netforwarding
+from app.game.core.mail_helper import send_mail
 remote_gate = GlobalObject().remote.get('gate')
 
 
@@ -66,6 +67,11 @@ def rebate_call(player, recharge_item):
         rebate = player.rebate.rebate_info(rid)
         rebate.new_rebate(days)
         player.rebate.set_rebate(rid, rebate)
+        if days == 30:
+            player.rebate.month_start(recharge_item.get('mailForEver'))
+        mail_id, times = player.rebate.month_mails()
+        for _ in range(times):
+            send_mail(conf_id=mail_id, receive_id=player._owner.base_info.id)
         player.rebate.save_data()
 
         notify = rebate_info(player)
