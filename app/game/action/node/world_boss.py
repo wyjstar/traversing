@@ -303,6 +303,7 @@ def receive_pvb_award_remote(pvb_award_data, is_online, player):
     pvb_award.ParseFromString(pvb_award_data)
     boss = player.world_boss.get_boss("world_boss")
     boss.set_award(pvb_award.award_type, pvb_award.award)
+    player.world_boss.save_data()
     logger.debug("receive_pvb_award_remote=================%s" % pvb_award.award_type)
     return True
 

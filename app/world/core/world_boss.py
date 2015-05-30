@@ -37,14 +37,14 @@ class WorldBoss(BaseBoss):
         self._state = 0               # boss状态：用于boss到期, 重置状态
 
         self.init_data()
-        self.init_time()
+        #self.init_time()
         reactor.callLater(1, self.loop_update)
 
     def init_data(self):
         """docstring for init_data"""
         str_data = tb_boss.get(self._boss_name)
         if not str_data:
-            logger.debug("init data...")
+            logger.debug("init data=============== %s" % self._boss_name)
             self.update_boss()
             return
         world_boss_data = cPickle.loads(str_data)
@@ -169,7 +169,7 @@ class WorldBoss(BaseBoss):
                 for i in range(5, 1, -1):
                     reward_info = accumulated_rewards.get(i)
                     if hp_max * reward_info[0] < v:
-                        self.send_award(player_id, const.PVB_TOP_TEN_AWARD, reward_info[1])
+                        self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
                         break
                     else:
                         return
@@ -182,7 +182,8 @@ class WorldBoss(BaseBoss):
             return
         logger.debug("send_award_last===============")
         player_id = self._last_shot_item['player_id']
-        big_bag_id = game_configs.base_config.get("world_boss").get('kill_rewards_worldboss')
+        big_bag_id = game_configs.base_config.get("world_boss").get('last_kill_rewards')
+        logger.debug("send_award_last=============== %s" % big_bag_id)
         self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
 
     def send_award(self, player_id, award_type, award):
@@ -241,6 +242,7 @@ class WorldBoss(BaseBoss):
             self._stage_id = 800101
             return
         if kill_or_not:  # 如果boss被击杀，则升级boss
+            logger.debug("kill boss =============")
             if current_stage_id == self._stage_id_am: # am
                 self._stage_id_am = current_stage_id + 100
             else:  # pm

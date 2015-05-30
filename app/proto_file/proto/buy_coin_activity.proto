@@ -10,5 +10,4 @@ message GetBuyCoinInfoResponse{
 // buy coin response 1406
 message BuyCoinResponse{
 	required CommonResponse res = 1;
-	required GameResourcesResponse gain = 2;
 }

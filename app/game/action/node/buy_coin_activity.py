@@ -6,9 +6,9 @@
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import buy_coin_activity_pb2
 from shared.db_opear.configs_data import game_configs
-from app.game.core.item_group_helper import gain, get_return
-from shared.utils.const import const
-from gfirefly.sever.logobj import logger
+#from app.game.core.item_group_helper import gain, get_return
+#from shared.utils.const import const
+from gfirefly.server.logobj import logger
 
 @remoteserviceHandle('gate')
 def get_buy_coin_activity_1407(data, player):
@@ -67,5 +67,5 @@ def buy_coin_activity_1406(data, player):
         player.finance.save_data()
 
     player.pay.pay(need_gold, func)
-    response.result = True
+    response.res.result = True
     return response.SerializeToString()
