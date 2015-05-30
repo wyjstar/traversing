@@ -71,6 +71,7 @@ message GameLoginResponse{
     //抽取次数
     optional int32 fine_hero_times = 31;// 良将抽取次数
     optional int32 excellent_hero_times = 32; //神将抽取次数
+    optional int32 fight_power_rank = 33; //战力排行
 }
 
 //心跳响应88
