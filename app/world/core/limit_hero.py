@@ -2,8 +2,14 @@
 
 from shared.db_opear.configs_data import game_configs
 from gtwisted.core import reactor
-from app.world import limit_hero_obj
 from shared.utils.mail_helper import deal_mail
+import time
+
+
+def LimitHeroObj():
+    act_id = 0
+
+limit_hero_obj = LimitHeroObj()
 
 
 def send_reward(act_id):
@@ -25,7 +31,7 @@ def get_mail_id(rank, act_id):
     reward_info = game_configs.base_config. \
         get('CardTimeParticipateInAwards').get(act_id)
     for _, info in reward_info.items():
-        if info[0] <= rank info[1]:
+        if info[0] <= rank <= info[1]:
             return info[2]
     for _, info in reward_info.items():
         if not info[0]:

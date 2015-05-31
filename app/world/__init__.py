@@ -8,6 +8,7 @@ from shared.utils.ranking import Ranking
 import time
 from gtwisted.core import reactor
 from app.world.core.rank_helper import tick_rank, do_tick_rank
+from app.world.core.limit_hero import tick_limit_hero, limit_hero_obj
 
 
 # 初始化工会排行
@@ -27,11 +28,5 @@ need_time = 24*60*60 - (now - time1) + 2
 do_tick_rank()
 reactor.callLater(need_time, tick_rank)
 
-# tick_limit_hero()
 
-
-def LimitHeroObj():
-    act_id = 0
-
-limit_hero_obj = LimitHeroObj()
 tick_limit_hero()

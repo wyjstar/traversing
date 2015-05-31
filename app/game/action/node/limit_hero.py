@@ -23,7 +23,7 @@ def get_limit_hero_info_1812(data, player):
 
     if not activity_id:
         response.res.result = True
-        logger.debug(response)
+        # logger.debug(response)
         return response.SerializeToString()
 
     response.free_time = player.limit_hero.free_time
@@ -36,7 +36,7 @@ def get_limit_hero_info_1812(data, player):
     response.integral_draw_times = player.limit_hero.integral_draw_times
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializeToString()
 
 
@@ -75,7 +75,7 @@ def draw_1813(data, player):
     if not activity_id:
         response.res.result = False
         response.res.result_no = 864
-        logger.debug(response)
+        # logger.debug(response)
         return response.SerializeToString()
     act_conf = game_configs.activity_config.get(activity_id)
     shop_id = game_configs.base_config.get('CardTimeActivityShop')
@@ -84,7 +84,7 @@ def draw_1813(data, player):
             time.time() < free_time_conf + player.limit_hero.free_time:
         response.res.result = False
         response.res.result_no = 889
-        logger.debug(response)
+        # logger.debug(response)
         return response.SerializeToString()
     elif draw_type == 2:  # 元宝
         need_integral = game_configs.base_config.get('CardTimeLimit')
@@ -128,5 +128,5 @@ def draw_1813(data, player):
     player.pay.pay(need_gold, func)
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializeToString()
