@@ -43,19 +43,19 @@ def buy_coin_activity_1406(data, player):
     #extra_can_buy_times = player.buy_coin.extra_can_buy_times
     need_gold = 0
     gain_info = game_configs.base_config.get("getMoneyValue")
-    free_times = game_configs.base_config.get("getMoneyFreeTimes")
+    #free_times = game_configs.base_config.get("getMoneyFreeTimes")
     buy_times_price = game_configs.base_config.get("getMoneyBuyTimesPrice")
 
     # 获取 need_gold
-    for k in sorted(buy_times_price.keys()):
-        if buy_times - free_times <= k:
+    for k in sorted(buy_times_price.keys(), reverse=True):
+        if buy_times >= k:
             need_gold = buy_times_price[k]
             break
 
-    if free_times > buy_times:
-        need_gold = 0
+    #if free_times > buy_times:
+        #need_gold = 0
 
-    logger.debug("get times: %s %s" % (free_times, buy_times))
+    logger.debug("buy times: %s need_gold: %s" % (buy_times, need_gold))
     if need_gold > player.finance.gold:
         logger.error("buy_coin_activity_1406: gold not enough %s, %s" % (need_gold, player.finance.gold))
         response.res.result = False
@@ -75,7 +75,7 @@ def buy_coin_activity_1406(data, player):
 
     coin_nums = 0 # 银币数量
     for k in sorted(gain_info.keys()):
-        if buy_times - free_times <= k:
+        if buy_times <= k:
             coin_nums = gain_info[k]
             break
     def func():

@@ -887,6 +887,7 @@ class UserMine(Component):
         """ 重置地图 """
         for pos in self._mine.keys():
             if self._mine[pos].can_reset(self.owner.base_info.id):
+                self.un_guard(pos)
                 del self._mine[pos]
                 self._update = True
         self._reset_times += 1

@@ -22,7 +22,7 @@ from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pvp_assemble_units
-from app.game.action.node._fight_start_logic import pvp_process
+from app.game.action.node._fight_start_logic import pvp_process, save_line_up_order
 from app.game.action.node._fight_start_logic import get_seeds
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume, get_consume_gold_num
@@ -197,6 +197,7 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
+    save_line_up_order(line_up, player, __skill) # 先保存阵容，然后构造red_units
     red_units = player.fight_cache_component.get_red_units()
 
     seed1, seed2 = get_seeds()
@@ -379,6 +380,7 @@ def pvp_fight_revenge_1507(data, player):
     response.blue_skill = record.get("unpar_skill")
     response.blue_skill_level = record.get("unpar_skill_level")
 
+    logger.debug("red_units: %s" % response.red)
     return response.SerializeToString()
 
 
