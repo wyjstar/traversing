@@ -48,7 +48,7 @@ def push_message_to_transit_remote(key, character_id, *args):
     logger.debug("push_message_to_transit_remote")
 
     transit_remote = GlobalObject().remote['transit']
-    return transit_remote.push_message_remote(key, character_id, args)
+    return transit_remote.push_message_remote(key, character_id, *args)
 
 
 @rootserviceHandle

@@ -5,7 +5,6 @@ created by wzp.
 """
 import cPickle
 from shared.db_opear.configs_data import game_configs
-from shared.utils.random_pick import random_pick_with_percent
 from shared.utils.date_util import get_current_timestamp
 from shared.utils.date_util import str_time_period_to_timestamp
 from gfirefly.server.logobj import logger
@@ -30,7 +29,6 @@ class BaseBoss(object):
         """docstring for init_base_data"""
         self._lucky_heros = boss_data.get("lucky_heros")
 
-        self._debuff_skill_no = boss_data.get("debuff_skill_no")
         self._last_shot_item = boss_data.get("last_shot_item")
         self._stage_id = boss_data.get("stage_id")
         self._boss_dead_time = boss_data.get("boss_dead_time")
@@ -55,14 +53,10 @@ class BaseBoss(object):
     def get_data_dict(self):
         return dict(hp=self._hp,
                     lucky_heros=self._lucky_heros,
-                    debuff_skill_no=self._debuff_skill_no,
                     last_shot_item=self._last_shot_item,
                     stage_id=self._stage_id,
                     boss_dead_time=self._boss_dead_time)
 
-    @property
-    def debuff_skill_no(self):
-        return self._debuff_skill_no
 
     @property
     def last_shot_item(self):
@@ -92,9 +86,9 @@ class BaseBoss(object):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
-        # 初始化奇遇
-        debuff_skill = base_config_info.get("debuff_skill")
-        self._debuff_skill_no = random_pick_with_percent(debuff_skill)
+        #debuff_skill = base_config_info.get("debuff_skill")
+        #logger.debug("debuff_skill %s" % debuff_skill)
+        #self._debuff_skill_no = random_pick_with_percent(debuff_skill)
 
         self._hp = self.get_hp()  # 重置血量
         #self._hp = 10  # 重置血量

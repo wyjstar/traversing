@@ -20,6 +20,7 @@ from app.game.core.drop_bag import BigBag
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from random import randint
+from shared.utils.random_pick import random_pick_with_percent
 
 # from app.proto_file import world_boss_pb2
 
@@ -69,7 +70,6 @@ def get_fight_info(data, player):
 
     boss.reset_info()  # 重设信息
 
-    player.world_boss.save_data()
     response.encourage_coin_num = boss.encourage_coin_num
     response.encourage_gold_num = boss.encourage_gold_num
     logger.debug("encourage_coin_num %s" % boss.encourage_coin_num)
@@ -81,7 +81,14 @@ def get_fight_info(data, player):
     logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
     #print response
     print "*" * 80
-
+    # 奇遇
+    if boss.fight_times not in boss.debuff_skill:
+        debuff_skill = game_configs.base_config.get("world_boss").get("debuff_skill")
+        debuff_skill_no = random_pick_with_percent(debuff_skill)
+        boss.debuff_skill = {boss.fight_times: debuff_skill_no}
+        logger.debug("debuff_skill %s, debuff_skill_no %s" % (debuff_skill, debuff_skill_no))
+    response.debuff_skill_no = boss.debuff_skill_no
+    player.world_boss.save_data()
     return response.SerializePartialToString()
 
 
@@ -238,6 +245,7 @@ def pvb_fight_start_1705(pro_data, player):
     boss_id = request.boss_id
     boss = player.world_boss.get_boss(boss_id)
     base_config = boss.get_base_config()
+    debuff_skill_no = boss.debuff_skill_no
 
     response = PvbFightResponse()
     res = response.res
@@ -300,7 +308,7 @@ def pvb_fight_start_1705(pro_data, player):
     seed1, seed2 = get_seeds()
     #def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
-                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, seed1, seed2)
+                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, debuff_skill_no, seed1, seed2)
 
     if result == -1:
         logger.debug("world boss already gone!")
@@ -328,7 +336,7 @@ def pvb_fight_start_1705(pro_data, player):
     pvp_assemble_units(red_units, blue_units, response)
     response.red_best_skill= best_skill_id
     response.red_best_skill_level = red_best_skill_level
-    response.debuff_skill_no = remote_gate['world'].get_debuff_skill_no_remote(boss_id)
+    response.debuff_skill_no = debuff_skill_no
     response.seed1 = seed1
     response.seed2 = seed2
     response.damage_rate = damage_rate
@@ -375,8 +383,9 @@ def pvb_get_award_1708(data, player):
             soul_world_boss_formula = game_configs.formula_config.get("soulWorldboss").get("formula")
             assert soul_world_boss_formula!=None, "isHit formula can not be None!"
             soul = eval(soul_world_boss_formula, all_vars)
-            total_coin += coin
-            total_soul += soul
+            total_coin += int(coin)
+            total_soul += int(soul)
+            print("coin and soul" , coin, soul)
 
         change = response.gain.finance.finance_changes.add()
         change.item_type = 107
