@@ -25,7 +25,7 @@ def month_reward(player):
     """
     mail_id, times = player.rebate.month_mails()
     for _ in range(times):
-        send_mail(conf_id=mail_id, receive_id=player._owner.base_info.id)
+        send_mail(conf_id=mail_id, receive_id=player.base_info.id)
     player.rebate.save_data()
 
 @remoteserviceHandle('gate')
