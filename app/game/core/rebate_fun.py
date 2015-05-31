@@ -24,7 +24,10 @@ def notify_mail(player):
     all_rebates = player.rebate.all_rebates()
     for rid in all_rebates:
         recharge_item = game_configs.recharge_config[plat].get(rid)
-        if player.rebate.need_mail(rid, game_configs.recharge_config[plat][rid].get('giftDays')):
+        if not recharge_item:
+            continue
+        
+        if player.rebate.need_mail(rid, recharge_item.get('giftDays')):
             if recharge_item.get('giftDays') == 30:
                 mail_id = game_configs.base_config.get('moonCardRemindMail')
                 send_mail(conf_id=mail_id, receive_id=player.base_info.id)
@@ -71,7 +74,7 @@ def rebate_call(player, recharge_item):
             player.rebate.month_start(recharge_item.get('mailForEver'))
         mail_id, times = player.rebate.month_mails()
         for _ in range(times):
-            send_mail(conf_id=mail_id, receive_id=player._owner.base_info.id)
+            send_mail(conf_id=mail_id, receive_id=player.base_info.id)
         player.rebate.save_data()
 
         notify = rebate_info(player)
