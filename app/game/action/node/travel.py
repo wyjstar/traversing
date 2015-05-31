@@ -139,7 +139,7 @@ def travel_init_830(data, player):
     player.travel_component.save()
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializeToString()
 
 

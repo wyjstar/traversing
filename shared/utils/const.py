@@ -179,6 +179,7 @@ const.ReceivePraiseGift = 33
 const.PraiseGift = 34
 const.ReceiveBlessGift = 35
 const.StageChestGift = 36
+const.LIMIT_HERO = 37
 
 # 等级流水
 # const.STAGE = 27  # 关卡

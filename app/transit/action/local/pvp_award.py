@@ -101,7 +101,7 @@ def pvp_daily_award():
             logger.error('pvp daily award error:%s', k)
             continue
 
-        mail_date, _ = deal_mail(conf_id=mail_id, receive_id=k['character_id'])
+        mail_data, _ = deal_mail(conf_id=mail_id, receive_id=k['character_id'])
 
         for child in childs.values():
             if 'gate' in child.name:

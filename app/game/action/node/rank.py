@@ -10,9 +10,7 @@ from app.proto_file import rank_pb2
 from shared.utils.const import const
 from app.proto_file.db_pb2 import Heads_DB
 import time
-
-
-remote_gate = GlobalObject().remote.get('gate')
+from app.game.core import rank_helper
 
 
 @remoteserviceHandle('gate')
@@ -49,7 +47,7 @@ def get_level_rank(first_no, last_no, player, response):
         last_rank_name = 'LevelRank2'
 
     rank_num = first_no
-    rank_info = remote_gate.get_rank_remote(rank_name, first_no, last_no)
+    rank_info = rank_helper.get_rank(rank_name, first_no, last_no)
     for (pid, rankinfo) in rank_info:
         res_user_info = response.user_info.add()
         res_user_info.id = int(pid)
@@ -67,10 +65,10 @@ def get_level_rank(first_no, last_no, player, response):
         rank_num += 1
 
     if first_no == 1:
-        rank_no = remote_gate.get_rank_by_key_remote(rank_name,
-                                                     player.base_info.id)
+        rank_no = rank_helper.get_rank_by_key(rank_name,
+                                              player.base_info.id)
         if rank_no:
-            [(_id, rankinfo)] = remote_gate.get_rank_remote(
+            [(_id, rankinfo)] = rank_helper.get_rank(
                 rank_name, rank_no, rank_no)
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
@@ -78,12 +76,12 @@ def get_level_rank(first_no, last_no, player, response):
             res_my_rank_info.fight_power = int(
                 rankinfo % const.level_rank_xs)
 
-            last_rank_no = remote_gate.get_rank_by_key_remote(
+            last_rank_no = rank_helper.get_rank_by_key(
                 last_rank_name, player.base_info.id)
             if last_rank_no:
                 res_my_rank_info.last_rank = last_rank_no
         # 前100名有多少人
-        ranks = remote_gate.get_rank_remote(rank_name, 1, 99999)
+        ranks = rank_helper.get_rank(rank_name, 1, 99999)
         response.all_num = len(ranks)
     response.res.result = True
 
@@ -96,7 +94,7 @@ def get_power_rank(first_no, last_no, player, response):
         rank_name = 'PowerRank1'
         last_rank_name = 'PowerRank2'
     rank_num = first_no
-    rank_info = remote_gate.get_rank_remote(rank_name, first_no, last_no)
+    rank_info = rank_helper.get_rank(rank_name, first_no, last_no)
     for (pid, rankinfo) in rank_info:
         res_user_info = response.user_info.add()
         res_user_info.id = int(pid)
@@ -114,23 +112,23 @@ def get_power_rank(first_no, last_no, player, response):
         rank_num += 1
 
     if first_no == 1:
-        rank_no = remote_gate.get_rank_by_key_remote(rank_name,
-                                                     player.base_info.id)
+        rank_no = rank_helper.get_rank_by_key(rank_name,
+                                              player.base_info.id)
         if rank_no:
-            [(_id, rankinfo)] = remote_gate.get_rank_remote(rank_name,
-                                                            rank_no, rank_no)
+            [(_id, rankinfo)] = rank_helper.get_rank(rank_name,
+                                                     rank_no, rank_no)
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
             res_my_rank_info.fight_power = int(rankinfo/const.power_rank_xs)
             res_my_rank_info.level =\
                 int(rankinfo % const.power_rank_xs)
 
-            last_rank_no = remote_gate.get_rank_by_key_remote(
+            last_rank_no = rank_helper.get_rank_by_key(
                 last_rank_name, player.base_info.id)
             if last_rank_no:
                 res_my_rank_info.last_rank = last_rank_no
         # 前100名有多少人
-        ranks = remote_gate.get_rank_remote(rank_name, 1, 99999)
+        ranks = rank_helper.get_rank(rank_name, 1, 99999)
         response.all_num = len(ranks)
     response.res.result = True
 
@@ -144,7 +142,7 @@ def get_star_rank(first_no, last_no, player, response):
         last_rank_name = 'StarRank2'
 
     rank_num = first_no
-    rank_info = remote_gate.get_rank_remote(rank_name, first_no, last_no)
+    rank_info = rank_helper.get_rank(rank_name, first_no, last_no)
     for (pid, rankinfo) in rank_info:
         res_user_info = response.user_info.add()
         res_user_info.id = int(pid)
@@ -163,11 +161,11 @@ def get_star_rank(first_no, last_no, player, response):
         rank_num += 1
 
     if first_no == 1:
-        rank_no = remote_gate.get_rank_by_key_remote(rank_name,
-                                                     player.base_info.id)
+        rank_no = rank_helper.get_rank_by_key(rank_name,
+                                              player.base_info.id)
         if rank_no:
-            [(_id, rankinfo)] = remote_gate.get_rank_remote(rank_name,
-                                                            rank_no, rank_no)
+            [(_id, rankinfo)] = rank_helper.get_rank(rank_name,
+                                                     rank_no, rank_no)
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
             res_my_rank_info.star_num = int(rankinfo/const.power_rank_xs)
@@ -175,12 +173,12 @@ def get_star_rank(first_no, last_no, player, response):
                 int(rankinfo % const.power_rank_xs)
             res_my_rank_info.stage_id = player.stage_component.rank_stage_progress
 
-            last_rank_no = remote_gate.get_rank_by_key_remote(
+            last_rank_no = rank_helper.get_rank_by_key(
                 last_rank_name, player.base_info.id)
             if last_rank_no:
                 res_my_rank_info.last_rank = last_rank_no
         # 前100名有多少人
-        ranks = remote_gate.get_rank_remote(rank_name, 1, 99999)
+        ranks = rank_helper.get_rank(rank_name, 1, 99999)
         response.all_num = len(ranks)
     response.res.result = True
 
