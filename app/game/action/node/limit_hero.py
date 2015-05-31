@@ -28,12 +28,22 @@ def get_limit_hero_info_1812(data, player):
 
     response.free_time = player.limit_hero.free_time
     response.draw_times = player.limit_hero.draw_times
-    rank_no = rank_helper.get_rank_by_key('LimitHeroRank',
-                                          player.base_info.id)
-    response.rank = rank_no
+    deal_response(player, response)
+
     integral = rank_helper.get_value('LimitHeroRank',
                                      player.base_info.id)
     response.integral = int(integral)
+    response.integral_draw_times = player.limit_hero.integral_draw_times
+
+    response.res.result = True
+    logger.debug(response)
+    return response.SerializeToString()
+
+
+def deal_response(player, response):
+    rank_no = rank_helper.get_rank_by_key('LimitHeroRank',
+                                          player.base_info.id)
+    response.rank = rank_no
     rank_info = rank_helper.get_rank('LimitHeroRank', 1, 10)
     rank = 1
     for (p_id, integral) in rank_info:
@@ -44,10 +54,6 @@ def get_limit_hero_info_1812(data, player):
         limit_rank.integral = int(integral)
         limit_rank.nickname = nickname
         rank += 1
-
-    response.res.result = True
-    # logger.debug(response)
-    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
@@ -117,9 +123,10 @@ def draw_1813(data, player):
         rank_helper.add_rank_info('LimitHeroRank',
                                   player.base_info.id, integral+add_integral)
         player.limit_hero.save_data()
+        deal_response(player, response)
 
     player.pay.pay(need_gold, func)
 
     response.res.result = True
-    # logger.debug(response)
+    logger.debug(response)
     return response.SerializeToString()

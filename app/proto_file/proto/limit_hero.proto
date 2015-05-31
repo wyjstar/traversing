@@ -26,4 +26,6 @@ message LimitHeroDrawRequest{
 message LimitHeroDrawResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
+    optional int32 rank = 3;  //积分排行 0未加入排行
+    repeated LimitHeroRank limit_rank = 4;
 }

@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='limit_hero.proto',
   package='',
-  serialized_pb='\n\x10limit_hero.proto\x1a\x0c\x63ommon.proto\"\xd5\x01\n\x18GetLimitHeroInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x61\x63tivity_id\x18\x02 \x01(\x05\x12\x11\n\tfree_time\x18\x03 \x01(\x05\x12\x10\n\x08integral\x18\x04 \x01(\x05\x12\x12\n\ndraw_times\x18\x05 \x01(\x05\x12\x0c\n\x04rank\x18\x06 \x01(\x05\x12\"\n\nlimit_rank\x18\x07 \x03(\x0b\x32\x0e.LimitHeroRank\x12\x1b\n\x13integral_draw_times\x18\x08 \x01(\x05\"A\n\rLimitHeroRank\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x10\n\x08integral\x18\x03 \x02(\x05\")\n\x14LimitHeroDrawRequest\x12\x11\n\tdraw_type\x18\x01 \x02(\x05\"[\n\x15LimitHeroDrawResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x10limit_hero.proto\x1a\x0c\x63ommon.proto\"\xd5\x01\n\x18GetLimitHeroInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x61\x63tivity_id\x18\x02 \x01(\x05\x12\x11\n\tfree_time\x18\x03 \x01(\x05\x12\x10\n\x08integral\x18\x04 \x01(\x05\x12\x12\n\ndraw_times\x18\x05 \x01(\x05\x12\x0c\n\x04rank\x18\x06 \x01(\x05\x12\"\n\nlimit_rank\x18\x07 \x03(\x0b\x32\x0e.LimitHeroRank\x12\x1b\n\x13integral_draw_times\x18\x08 \x01(\x05\"A\n\rLimitHeroRank\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x10\n\x08integral\x18\x03 \x02(\x05\")\n\x14LimitHeroDrawRequest\x12\x11\n\tdraw_type\x18\x01 \x02(\x05\"\x8d\x01\n\x15LimitHeroDrawResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0c\n\x04rank\x18\x03 \x01(\x05\x12\"\n\nlimit_rank\x18\x04 \x03(\x0b\x32\x0e.LimitHeroRank')
 
 
 
@@ -187,6 +187,20 @@ _LIMITHERODRAWRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='rank', full_name='LimitHeroDrawResponse.rank', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='limit_rank', full_name='LimitHeroDrawResponse.limit_rank', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -196,14 +210,15 @@ _LIMITHERODRAWRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=360,
-  serialized_end=451,
+  serialized_start=361,
+  serialized_end=502,
 )
 
 _GETLIMITHEROINFORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETLIMITHEROINFORESPONSE.fields_by_name['limit_rank'].message_type = _LIMITHERORANK
 _LIMITHERODRAWRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _LIMITHERODRAWRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_LIMITHERODRAWRESPONSE.fields_by_name['limit_rank'].message_type = _LIMITHERORANK
 DESCRIPTOR.message_types_by_name['GetLimitHeroInfoResponse'] = _GETLIMITHEROINFORESPONSE
 DESCRIPTOR.message_types_by_name['LimitHeroRank'] = _LIMITHERORANK
 DESCRIPTOR.message_types_by_name['LimitHeroDrawRequest'] = _LIMITHERODRAWREQUEST
