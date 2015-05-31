@@ -15,7 +15,6 @@ from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
 from shared.utils import trie_tree
 from shared.tlog import tlog_action
-from app.game.component.mail.mail import MailComponent
 from app.game.action.root import netforwarding
 from app.game.core.stage.stage import Stage
 from app.proto_file.db_pb2 import Heads_DB
@@ -23,6 +22,7 @@ from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.mail_helper import send_mail
+from app.game.core import rank_helper
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -97,7 +97,7 @@ def create_guild_801(data, player):
         guild_obj.create_guild(p_id, g_name, icon_id)
 
         guild_name_data.hmset({g_name: guild_obj.g_id})
-        remote_gate.add_guild_to_rank_remote(guild_obj.g_id, 1)
+        rank_helper.add_rank_info('GuildLevel', guild_obj.g_id, 1)
 
         player.guild.g_id = guild_obj.g_id
         player.guild.contribution = 0
@@ -246,7 +246,7 @@ def exit_guild_803(data, player):
         # 解散公会，删除公会聊天室
         remote_gate.del_guild_room_remote(player.guild.g_id)
         # 删除排行
-        remote_gate.remove_rank_remote('GuildLevel', player.guild.g_id)
+        rank_helper.remove_rank('GuildLevel', player.guild.g_id)
         # 删除申请加入军团玩家的申请信息
         del_apply_cache(guild_obj)
         # 删除军团
@@ -320,6 +320,9 @@ def modify_user_guild_info_remote(data, player):
         player.guild.apply_guilds = []
 
         player.guild.save_data()
+        remote_gate.push_object_remote(1814,
+                                       u'',
+                                       [player.dynamic_id])
     elif data['cmd'] == 'deal_apply1':
         if player.guild.g_id != 0:
             return 0
@@ -727,7 +730,8 @@ def bless_809(data, player):
     if guild_obj.exp >= game_configs.guild_config.get(guild_obj.level).exp:
         guild_obj.exp -= game_configs.guild_config.get(guild_obj.level).exp
         guild_obj.level += 1
-        remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)
+        rank_helper.add_rank_info('Guildlevel',
+                                  guild_obj.g_id, guild_obj.level)
 
     player.guild.save_data()
     guild_obj.save_data()
@@ -753,8 +757,8 @@ def get_guild_rank_810(data, player):
     if rank_type == 1:
         rank_num = min_rank
         # 得到公会排行
-        rank_info = remote_gate.get_rank_remote(
-            'GuildLevel', min_rank, max_rank)
+        rank_info = rank_helper.get_rank('GuildLevel',
+                                         min_rank, max_rank)
         for (_g_id, _rank) in rank_info:
             g_id = int(_g_id)
             deal_rank_response_info(player, response, g_id, rank_num)
@@ -782,8 +786,7 @@ def get_guild_rank_810(data, player):
                     deal_rank_response_info(player, response, g_id, rank_num)
                     rank_num += 1
 
-                rank_info = remote_gate.get_rank_remote(
-                    'GuildLevel', 1, 99999)
+                rank_info = rank_helper.get_rank('GuildLevel', 1, 9999)
                 guild_rank_flag = 0
                 if len(rank_info) == 0:
                     response.flag = 0
@@ -805,8 +808,7 @@ def get_guild_rank_810(data, player):
             # 需要上次查到哪的 redis 排行
             rank_num = min_rank
             guild_rank_flag = player.guild.guild_rank_flag
-            rank_info = remote_gate.get_rank_remote(
-                'GuildLevel', 1, 99999)
+            rank_info = rank_helper.get_rank('GuildLevel', 1, 9999)
             if guild_rank_flag >= len(rank_info):
                 response.res.result = True
                 return response.SerializeToString()
@@ -969,8 +971,8 @@ def get_guild_info_812(data, player):
     response.bless_state = player.guild.bless_times
     for bless_gift_no in player.guild.bless[1]:
         response.bless_gift.append(bless_gift_no)
-    rank_no = remote_gate.get_rank_by_key_remote('GuildLevel',
-                                                 m_g_id)
+    rank_no = rank_helper.get_rank_by_key('GuildLevel',
+                                          m_g_id)
     response.my_guild_rank = rank_no
     if player.guild.position == 1:
         response.captain_name = str(player.base_info.base_name)
@@ -1319,11 +1321,7 @@ def captailn_receive_1806(data, player):
         response.res.result_no = 853
         return response.SerializeToString()
 
-    if time.localtime(guild_obj.praise[1]).tm_yday != \
-            time.localtime().tm_yday:
-        player.guild.praise = [1, int(time.time())]
-    else:
-        player.guild.praise[0] = 1
+    guild_obj.praise[1] = 1
 
     return_data = gain(player, guild_config.collectSupportGift, const.ReceivePraiseGift)  # 获取
     get_return(player, return_data, response.gain)
@@ -1407,8 +1405,8 @@ def find_guild_1809(data, player):
         guild_obj = Guild()
         guild_obj.init_data(guild_data)
 
-        rank_no = remote_gate.get_rank_by_key_remote('GuildLevel',
-                                                     guild_obj.g_id)
+        rank_no = rank_helper.get_rank_by_key('GuildLevel',
+                                              guild_obj.g_id)
 
         guild_rank.g_id = guild_obj.g_id
         guild_rank.rank = rank_no

@@ -46,6 +46,7 @@ class PlayerCharacter(object):
                  travel=component.CharacterTravelComponent(self),
                  runt=component.CharacterRuntComponent(self),
                  recharge=component.CharacterRechargeGift(self),
+                 limit_hero=component.CharacterLimitHeroComponent(self),
                  rebate=component.Rebate(self),
                  buy_coin=component.CharacterBuyCoinActivity(self)
                  )
@@ -110,6 +111,10 @@ class PlayerCharacter(object):
     @property
     def hero_component(self):
         return self._components['hero_component']
+
+    @property
+    def limit_hero(self):
+        return self._components['limit_hero']
 
     @property
     def finance(self):

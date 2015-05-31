@@ -10,7 +10,6 @@ from gfirefly.server.globalobject import GlobalObject
 from app.gate.core.virtual_character_manager import VCharacterManager
 from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
-from shared.utils.ranking import Ranking
 import cPickle
 from gfirefly.server.logobj import logger
 
@@ -64,31 +63,6 @@ def push_object_remote(topic_id, msg, send_list):
 
 
 @rootserviceHandle
-def remove_rank_remote(rank_name, key):
-    level_instance = Ranking.instance(rank_name)
-    level_instance.remove(key)  # 删除rank数据
-
-
-@rootserviceHandle
-def rank_info_remote(rank_name, key, value):
-    level_instance = Ranking.instance(rank_name)
-    level_instance.add(key, value)  # 添加rank数据
-
-
-@rootserviceHandle
-def get_rank_by_key_remote(rank_name, key):
-    level_instance = Ranking.instance(rank_name)
-    return level_instance.get_rank_no(key)  # 添加rank数据
-
-
-@rootserviceHandle
-def get_rank_remote(rank_name, first_no, last_no):
-    level_instance = Ranking.instance(rank_name)
-    datas = level_instance.get(first_no, last_no)  # 获取排行最高的列表(9999条)
-    return datas
-
-
-@rootserviceHandle
 def from_admin_rpc_remote(args):
     reason = ''
     args = cPickle.loads(args)
@@ -113,45 +87,44 @@ def from_admin_rpc_remote(args):
 
 
 @rootserviceHandle
-def add_guild_to_rank_remote(g_id, dengji):
-    level_instance = Ranking.instance('GuildLevel')
-    level_instance.add(g_id, dengji)  # 添加rank数据
-
-
-@rootserviceHandle
 def login_chat_remote(dynamic_id, character_id, guild_id, nickname, gag_time):
     return groot.child('chat').login_chat_remote(dynamic_id,
                                                  character_id,
                                                  nickname,
                                                  guild_id,
                                                  gag_time)
-    
+
+
 @rootserviceHandle
 def register_push_message_remote(uid, device_token):
-    return groot.child('push').register_push_message_remote(
-                                                     uid,
-                                                     device_token)
-    
+    return groot.child('push').register_push_message_remote(uid,
+                                                            device_token)
+
+
 @rootserviceHandle
 def set_push_switch_remote(uid, switchs):
-    return groot.child('push').set_push_switch_remote(uid, 
-                                                     switchs)
-    
+    return groot.child('push').set_push_switch_remote(uid,
+                                                      switchs)
+
+
 @rootserviceHandle
 def get_push_switch_remote(uid):
     return groot.child('push').get_push_switch_remote(uid)
-    
+
+
 @rootserviceHandle
 def add_push_message_remote(uid, msg_type, message, send_time):
-    return groot.child('push').add_push_message_remote(uid, 
-                                                     msg_type,
-                                                     message,
-                                                     send_time)
-    
+    return groot.child('push').add_push_message_remote(uid,
+                                                       msg_type,
+                                                       message,
+                                                       send_time)
+
+
 @rootserviceHandle
 def online_offline_remote(uid, on_or_off):
     # return groot.child('push').online_offline_remote(uid,  on_or_off)
     return True
+
 
 @rootserviceHandle
 def login_guild_chat_remote(dynamic_id, guild_id):
