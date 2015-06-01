@@ -42,9 +42,10 @@ class CharacterPvpComponent(Component):
         self.check_time()
 
         self.save_data()
+        print self.__dict__
 
     def save_data(self):
-        character_info = tb_character_info.getObj(self.id)
+        character_info = tb_character_info.getObj(self.owner.base_info.id)
 
         data = dict(pvp_overcome=self._pvp_overcome,
                     pvp_overcome_current=self._pvp_overcome_current,

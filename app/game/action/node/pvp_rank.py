@@ -26,6 +26,7 @@ from app.game.action.node._fight_start_logic import get_seeds
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume, get_consume_gold_num
 from app.proto_file.shop_pb2 import ShopResponse
+from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
@@ -375,12 +376,18 @@ def pvp_fight_overcome_1508(data, player):
     request.ParseFromString(data)
     line_up = request.lineup
     skill = request.skill
-    target_id = player.pvp.get_overcome_id(request.index)
 
-    if not target_id:
+    if request.index != player.pvp.pvp_overcome_current + 1:
         logger.error('overcome index is error:%s', request.index)
         response.res.result = False
         response.res.result_no = 150801
+        return response.SerializePartialToString()
+
+    target_id = player.pvp.get_overcome_id(request.index)
+    if not target_id:
+        logger.error('overcome index is not exist:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 150802
         return response.SerializePartialToString()
 
     def settle(player, fight_result):
@@ -399,10 +406,11 @@ def pvp_fight_overcome_1508(data, player):
 
 
 @remoteserviceHandle('gate')
-def get_pvp_overcome_1509(data, player):
-    response = pvp_rank_pb2.PvpFightOvercomeInfo()
-    response.index = player.pvp.pvp_overcome_current
-
+def reset_overcome_time_1509(data, player):
+    request = pvp_rank_pb2.ResetPvpOvercomeTime()
+    request.ParseFromString(data)
+    response = CommonResponse()
+    response.result = True
     return response.SerializeToString()
 
 

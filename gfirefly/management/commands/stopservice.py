@@ -4,7 +4,8 @@ Created on 2013-8-11
 
 @author: lan (www.9miao.com)
 '''
-import urllib, sys
+import urllib
+import sys
 
 
 def execute(*args):
@@ -30,5 +31,3 @@ def execute(*args):
         sys.stdout.write("stop service success \n")
     else:
         sys.stdout.write("stop service failed \n")
-    
-    

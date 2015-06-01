@@ -129,13 +129,13 @@ class CharacterBaseInfoComponent(Component):
 
     def check_time(self):
         pass
-        tm = time.localtime(self._pvp_refresh_time)
-        local_tm = time.localtime()
-        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
-            self._pvp_times += game_configs.base_config.get('arena_free_times')
-            self._pvp_refresh_count = 0
-            self._pvp_refresh_time = time.time()
-            self.save_data()
+        # tm = time.localtime(self._pvp_refresh_time)
+        # local_tm = time.localtime()
+        # if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+        #     self._pvp_times += game_configs.base_config.get('arena_free_times')
+        #     self._pvp_refresh_count = 0
+        #     self._pvp_refresh_time = time.time()
+        #     self.save_data()
 
     def is_firstday_from_register(self):
         tm = time.localtime(self._register_time)

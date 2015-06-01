@@ -50,6 +50,10 @@ message ResetPvpTime{
 	required int32 times = 1;
 }
 
+message ResetPvpOvercomeTime{
+	required int32 times = 1;
+}
+
 // 进入关卡战斗返回 command:1503
 message PvpFightResponse{
     required CommonResponse res = 1;

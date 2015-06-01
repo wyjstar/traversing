@@ -71,6 +71,8 @@ message GameLoginResponse{
     //抽取次数
     optional int32 fine_hero_times = 31;// 良将抽取次数
     optional int32 excellent_hero_times = 32; //神将抽取次数
+    required int32 pvp_overcome_index = 33;
+    required int32 pvp_overcome_refresh_count = 34;
 }
 
 //心跳响应88

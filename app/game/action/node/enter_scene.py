@@ -60,8 +60,10 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.fine_hero_times = player.shop.single_coin_draw_times
     responsedata.excellent_hero_times = player.shop.single_gold_draw_times
 
-    responsedata.pvp_times = player.base_info.pvp_times
-    responsedata.pvp_refresh_count = player.base_info.pvp_refresh_count
+    responsedata.pvp_times = player.pvp.pvp_times
+    responsedata.pvp_refresh_count = player.pvp.pvp_refresh_count
+    responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
+    responsedata.pvp_overcome_refresh_count = player.pvp.pvp_overcome_refresh_count
 
     responsedata.combat_power = player.line_up_component.combat_power
     responsedata.newbee_guide_id = player.base_info.newbee_guide_id
