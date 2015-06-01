@@ -10,9 +10,6 @@ from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
-from app.game.core.item_group_helper import get_return
-from app.game.core.item_group_helper import gain
-from shared.utils.const import const
 import time
 import uuid
 
@@ -30,11 +27,6 @@ class CharacterBaseInfoComponent(Component):
         self._exp = 0  # 当前等级获得的经验
 
         self._newbee_guide_id = 0
-        self._pvp_times = 0  # pvp次数
-        self._pvp_refresh_time = 0
-        self._pvp_refresh_count = 0
-        self._pvp_high_rank = 999999  # 玩家pvp最高排名
-        self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
         self._gag = 1    # 禁言到这个时间戳
         self._closure = 1    # 封停到这个时间戳
 
@@ -62,12 +54,7 @@ class CharacterBaseInfoComponent(Component):
         self._exp = character_info['exp']
 
         self._newbee_guide_id = character_info['newbee_guide_id']
-        self._pvp_times = character_info['pvp_times']
-        self._pvp_refresh_time = character_info['pvp_refresh_time']
-        self._pvp_refresh_count = character_info['pvp_refresh_count']
 
-        self._pvp_high_rank = character_info['pvp_high_rank']
-        self._pvp_high_rank_award = character_info['pvp_high_rank_award']
         self._gag = character_info['gag']
         self._closure = character_info['closure']
 
@@ -100,13 +87,8 @@ class CharacterBaseInfoComponent(Component):
         data = dict(level=self._level,
                     nickname=self._base_name,
                     exp=self.exp,
-                    pvp_high_rank=self._pvp_high_rank,
-                    pvp_high_rank_award=self._pvp_high_rank_award,
                     gag=self._gag,
                     closure=self._closure,
-                    pvp_times=self._pvp_times,
-                    pvp_refresh_time=self._pvp_refresh_time,
-                    pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
@@ -127,14 +109,9 @@ class CharacterBaseInfoComponent(Component):
         self._vip_level = game_configs.base_config.get('initialVipLevel')
         data = dict(level=self._level,
                     exp=self.exp,
-                    pvp_high_rank=self._pvp_high_rank,
-                    pvp_high_rank_award=self._pvp_high_rank_award,
                     gag=self._gag,
                     closure=self._closure,
                     nickname=u'',
-                    pvp_times=self._pvp_times,
-                    pvp_refresh_time=self._pvp_refresh_time,
-                    pvp_refresh_count=self._pvp_refresh_count,
                     newbee_guide_id=self._newbee_guide_id,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
@@ -151,6 +128,7 @@ class CharacterBaseInfoComponent(Component):
         return data
 
     def check_time(self):
+        pass
         tm = time.localtime(self._pvp_refresh_time)
         local_tm = time.localtime()
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
@@ -384,30 +362,6 @@ class CharacterBaseInfoComponent(Component):
         self._newbee_guide_id = value
 
     @property
-    def pvp_times(self):
-        return self._pvp_times
-
-    @pvp_times.setter
-    def pvp_times(self, value):
-        self._pvp_times = value
-
-    @property
-    def pvp_refresh_count(self):
-        return self._pvp_refresh_count
-
-    @pvp_refresh_count.setter
-    def pvp_refresh_count(self, value):
-        self._pvp_refresh_count = value
-
-    @property
-    def pvp_refresh_time(self):
-        return self._pvp_refresh_time
-
-    @pvp_refresh_time.setter
-    def pvp_refresh_time(self, value):
-        self._pvp_refresh_time = value
-
-    @property
     def upgrade_time(self):
         return self._upgrade_time
 
@@ -418,22 +372,6 @@ class CharacterBaseInfoComponent(Component):
     @register_time.setter
     def register_time(self, value):
         self._register_time = value
-
-    @property
-    def pvp_high_rank(self):
-        return self._pvp_high_rank
-
-    @pvp_high_rank.setter
-    def pvp_high_rank(self, value):
-        self._pvp_high_rank = value
-
-    @property
-    def pvp_high_rank_award(self):
-        return self._pvp_high_rank_award
-
-    @pvp_high_rank_award.setter
-    def pvp_high_rank_award(self, value):
-        self._pvp_high_rank_award = value
 
     @property
     def google_consume_id(self):
