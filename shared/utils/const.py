@@ -53,7 +53,7 @@ const.STONE1 = 14
 const.STONE2 = 15
 const.SPIRIT= 16
 const.EQUIPMENT_ELITE = 21
-const.RESOURCE_MAX = 23
+const.RESOURCE_MAX = 29
 const.RESOURCE = 107
 
 const.HERO = 101
