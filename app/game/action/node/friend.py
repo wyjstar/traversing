@@ -424,8 +424,6 @@ def given_stamina_1108(data, player):
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
 
-    request = friend_pb2.FriendCommon()
-    request.ParseFromString(data)
     target_id = request.target_ids[0]
 
     player_data = tb_character_info.getObj(target_id)
