@@ -59,14 +59,10 @@ class CharacterPvpComponent(Component):
         character_info.hmset(data)
 
     def new_data(self):
-        all_ids = tb_character_info.smem('all')
-        for _ in range(12):
-            self._pvp_overcome.append(random.choice(all_ids))
-
         data = dict(pvp_overcome=self._pvp_overcome,
                     pvp_overcome_current=self._pvp_overcome_current,
-                    pvp_overcome_refresh_time=self.pvp_refresh_time,
-                    pvp_overcome_refresh_count=self.pvp_refresh_count,
+                    pvp_overcome_refresh_time=self.pvp_overcome_refresh_time,
+                    pvp_overcome_refresh_count=self.pvp_overcome_refresh_count,
                     pvp_high_rank=self._pvp_high_rank,
                     pvp_high_rank_award=self._pvp_high_rank_award,
                     pvp_times=self._pvp_times,
@@ -82,6 +78,22 @@ class CharacterPvpComponent(Component):
             self._pvp_refresh_count = 0
             self._pvp_refresh_time = time.time()
             self.save_data()
+
+        tm = time.localtime(self._pvp_overcome_refresh_time)
+        if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+            self._pvp_overcome_refresh_time = time.time()
+            self._pvp_overcome_refresh_count = 0
+            self._pvp_overcome_current = 0
+
+    def reset_time(self):
+        all_ids = tb_character_info.smem('all')
+        for _ in range(12):
+            self._pvp_overcome.append(random.choice(all_ids))
+
+        self._pvp_overcome_refresh_time = time.time()
+        self._pvp_overcome_refresh_count += 1
+        self.save_data()
+        return True
 
     def get_overcome_id(self, index):
         if index > len(self._pvp_overcome):

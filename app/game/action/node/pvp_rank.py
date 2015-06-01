@@ -411,6 +411,8 @@ def reset_overcome_time_1509(data, player):
     request.ParseFromString(data)
     response = CommonResponse()
     response.result = True
+    if not player.pvp.reset_time():
+        response.result = False
     return response.SerializeToString()
 
 
