@@ -14,6 +14,7 @@ from app.game.action.node._fight_start_logic import save_line_up_order
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import is_in_period
+import cPickle
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -81,7 +82,7 @@ def battle_2103(pro_data, player):
     response = hjqy_pb2.HjqyBattleResponse()
 
     boss_id = request.owner_id
-    line_up = request.line_up
+    line_up = request.lineup
     attack_type = request.attack_type # 全力一击，普通攻击
 
     hjqyExchangeBUFFTime = game_configs.base_config.get("hjqyExchangeBUFFTime")
@@ -95,7 +96,7 @@ def battle_2103(pro_data, player):
     if is_in_period(hjqyExchangeBUFFTime) and attack_type == 2:
         need_hjqy_fight_token = need_hjqy_fight_token * hjqyItemRate
 
-    if need_hjqy_fight_token > player.finance[const.HJQYCOIN]:
+    if need_hjqy_fight_token > player.finance[const.HJQYFIGHTTOKEN]:
         logger.error("hjqy coin not enough！")
         response.res.result = False
         response.res.result_no = 21031
@@ -106,15 +107,21 @@ def battle_2103(pro_data, player):
     _skill_id, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     save_line_up_order(line_up, player, red_best_skill_id)
 
-    player.fight_cache_component.stage_id = request.stage_id
     red_units = player.fight_cache_component.get_red_units()
-    blue_units = remote_gate['world'].blue_units_remote(boss_id)
+    data = remote_gate['world'].get_boss_info_remote(boss_id)
+    blue_units = cPickle.loads(remote_gate['world'].blue_units_remote(boss_id))
+    stage_id = data.get("stage_id")
+
+    player.fight_cache_component.stage_id = stage_id
     seed1, seed2 = get_seeds()
     player_info = dict(player_id=player.base_info.id,
             nickname=player.base_info.base_name,
             user_icon=player.base_info.heads.now_head,
             level=player.base_info.level)
-    fight_result = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
+
+    str_red_units = cPickle.dumps(red_units)
+    fight_result, boss_state = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
+    logger.debug("============battle over")
 
     # 消耗讨伐令
     player.finance.consume(const.HJQYFIGHTTOKEN, need_hjqy_fight_token)
@@ -129,8 +136,8 @@ def battle_2103(pro_data, player):
 
     response.fight_result = fight_result
     pvp_assemble_units(red_units, blue_units, response)
-    response.red_best_skill= red_best_skill_id
-    response.red_best_skill_level = red_best_skill_level
+    response.red_skill= red_best_skill_id
+    response.red_skill_level = red_best_skill_level
     response.seed1 = seed1
     response.seed2 = seed2
     response.attack_type = attack_type

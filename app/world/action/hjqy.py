@@ -26,7 +26,12 @@ def hjqy_init_remote(player_id, friend_ids):
         boss = hjqy_manager.get_boss(temp_id)
         if boss and (boss.is_share or temp_id == temp_id): #获取hjqy列表
             logger.debug("player id %s" % boss.player_id)
-            bosses[player_id] = dict(player_id=boss.player_id,
+            bosses[player_id] = construct_boss_data(boss)
+            logger.debug("hjqy_init_remote bosses: %s" % bosses)
+    return bosses
+
+def construct_boss_data(boss):
+    return dict(player_id=boss.player_id,
                     stage_id=boss.stage_id,
                     nickname=boss.nickname,
                     is_share=boss.is_share,
@@ -35,8 +40,6 @@ def hjqy_init_remote(player_id, friend_ids):
                     hp_left=boss.hp,
                     state=boss.get_state()
                     )
-    logger.debug("hjqy_init_remote bosses: %s" % bosses)
-    return bosses
 
 @rootserviceHandle
 def hjqy_damage_hp_remote(player_id):
@@ -70,19 +73,21 @@ def share_hjqy_remote(player_id):
 
 #def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
 @rootserviceHandle
-def hjqy_battle_remote(player_info, boss_id, red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2, player_level):
+def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2):
     """开始战斗
     """
     logger.debug("hjqy_battle_remote======")
+    red_units = cPickle.loads(str_red_units)
     result = False
     boss = hjqy_manager.get_boss(boss_id)
     player_id = player_info.get("player_id")
+    player_level = player_info.get("level")
     blue_units = boss.blue_units
 
     origin_hp = boss.hp
-    result = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
+    res = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
 
-    blue_units = result.get("blue_units")
+    blue_units = res.get("blue_units")
     boss.blue_units = blue_units
 
     current_damage_hp = origin_hp - boss.hp
@@ -94,11 +99,13 @@ def hjqy_battle_remote(player_info, boss_id, red_units, red_best_skill_id, red_b
         # send last kill reward mail
         hjqyKillBossReward = game_configs.base_config.get("hjqyKillBossReward")
         mail_data, _ = deal_mail(conf_id=hjqyKillBossReward, receive_id=int(player_id))
-        remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+        remote_gate = GlobalObject().child('gate')
         remote_gate.push_message_to_transit_remote('receive_mail_remote',
                                                    int(player_id), mail_data)
         result = True
-    return dict(result=result, state=boss.state)
+    #return dict(result=result, state=boss.get_state())
+    logger.debug("hjqy_battle_remote over===================")
+    return result, boss.get_state()
 
 @rootserviceHandle
 def blue_units_remote(boss_id):
@@ -106,7 +113,7 @@ def blue_units_remote(boss_id):
     blue_units
     """
     boss = hjqy_manager.get_boss(boss_id)
-    return boss.blue_units
+    return cPickle.dumps(boss.blue_units)
 
 @rootserviceHandle
 def is_can_trigger_hjqy_remote(player_id):
@@ -118,8 +125,8 @@ def is_can_trigger_hjqy_remote(player_id):
     if not boss:
         return True
     if boss.get_state() != const.BOSS_LIVE:
-        return False
-    return True
+        return True
+    return False
 
 @rootserviceHandle
 def create_hjqy_remote(player_id, nickname, str_blue_units, stage_id):
@@ -138,3 +145,9 @@ def get_rank_remote():
     获取玩家排行
     """
     return hjqy_manager.get_rank_items()
+
+
+@rootserviceHandle
+def get_boss_info_remote(boss_id):
+    boss = hjqy_manager.get_boss(boss_id)
+    return construct_boss_data(boss)

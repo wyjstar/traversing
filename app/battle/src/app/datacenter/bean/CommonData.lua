@@ -10,13 +10,11 @@ function CommonData:ctor(item)
     self.LastStminaTime = nil  -- 上次领取体力时间
     self.AccountResponse = {} -- 注册成功返回数据
     self.isTourist = false
-    self.playerAcount = ""
     self.totalRecharge = 0
     self.c_BaseTemplate = getTemplateManager():getBaseTemplate()
     self.isHasVipGift = false
     self.iscanZcjb = false
     self.netTip = nil
-    self.pushMsg = {}
     self.oldLevel = 0 --战队升级前的等级
     self.isHasRebate = false
 end
@@ -45,15 +43,6 @@ end
 function CommonData:getAccountResponse()
 
     return self.AccountResponse
-end
-
---设置当前登录玩家账号
-function CommonData:setPlayerAcount(playerAcount)
-    self.playerAcount = playerAcount
-end
-
-function CommonData:getPlayerAcount()
-    return self.playerAcount
 end
 
 --是否是游客登录
@@ -131,7 +120,6 @@ function CommonData:setData(data)
     self.head = data.head             --头像列表
     self.now_head = data.now_head     --当前头像id
 
-    self.first_recharge_ids = data.first_recharge_ids
     self.tomorrow_gift = data.tomorrow_gift
     print("tomorrow_gift = ", data.tomorrow_gift)
 
@@ -169,7 +157,6 @@ function CommonData:getFinance(type)
     -- table.print(self.finances)
     -- print("CommonData:getFinance=============>type, value", type, self.finances[type+1])
     if not self.finances[type+1] then
-        table.print(self.finances)
         error("CommonData:getFinance error, value is nil , type="..type)
     end
     if self.finances[type+1] < 0 then
@@ -182,7 +169,9 @@ function CommonData:setFinance(type, num)
     self.finances[type+1] = num
 end
 function CommonData:subFinance(type, num)
-    self.finances[type+1] = self.finances[type+1] - num
+    if self.finances[type+1] then
+        self.finances[type+1] = self.finances[type+1] - num
+    end
 end
 function CommonData:addFinance(type, num)
     self.finances[type+1] = self.finances[type+1] + num
@@ -318,23 +307,7 @@ function CommonData:addHeadLIstId(id) table.insert(self.head, id) end
 --------------------------
 
 
-function CommonData:setPushMsg(data)
-    self.pushMsg = {}
-    local tempInfo=data
-    for k, v in pairs(tempInfo.switch) do
-        local subData = {}
-        subData.msgType = v.msg_type
-        subData.msgValue = v.switch
-        table.insert(self.pushMsg,subData)
-        print("=========",k)
-        print("push type ",v.msg_type)
-        print("push value ",v.switch)
-    end
-end
 
-function CommonData:getPushMsg()
-    return self.pushMsg
-end
 
 
 -- 上次领取体力的时间
@@ -1044,32 +1017,6 @@ function CommonData:analysisTime(timeStr)
     return startTimeTab,endTimeTab
 end
 
-
--- 获取充值状态
-function CommonData:getRechargeStateById(id) 
-    if self.first_recharge_ids ~= nil then
-        for k,v in pairs(self.first_recharge_ids) do
-            if v == id then
-                return false
-            end
-        end
-    end
-    return true
-end
-
--- 设置充值状态
-function CommonData:setRechargeStateById(id)
-    local _id = nil
-    local _rechargeList = self.c_BaseTemplate:getRechargeList()
-    for k,v in pairs(_rechargeList) do
-        if v.goodsid == id then
-            _id = v.id
-            break
-        end
-    end
-    table.insert(self.first_recharge_ids,_id)
-end
-
 --解析xx:xx:xx的时间类型
 function CommonData:analysisTime1(timeStr)
 
@@ -1131,3 +1078,13 @@ end
 
 
 return CommonData
+
+
+
+
+
+
+
+
+
+

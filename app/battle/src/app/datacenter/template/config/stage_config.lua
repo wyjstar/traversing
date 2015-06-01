@@ -1372,7 +1372,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303011,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303011,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1444,7 +1444,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303031,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303031,  ["commonDrop"] = 0,  ["name"] = 1400930303,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1532,7 +1532,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303061,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303061,  ["commonDrop"] = 0,  ["name"] = 1400930306,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1566,7 +1566,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303071,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303071,  ["commonDrop"] = 0,  ["name"] = 1400930307,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1618,7 +1618,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303091,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303091,  ["commonDrop"] = 0,  ["name"] = 1400930309,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1670,7 +1670,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303111,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303111,  ["commonDrop"] = 0,  ["name"] = 1400930311,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1718,7 +1718,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303121,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303121,  ["commonDrop"] = 0,  ["name"] = 1400930312,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1754,7 +1754,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303141,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303141,  ["commonDrop"] = 0,  ["name"] = 1400930314,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1788,7 +1788,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303151,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303151,  ["commonDrop"] = 0,  ["name"] = 1400930315,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -1804,7 +1804,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303161,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303161,  ["commonDrop"] = 0,  ["name"] = 1400930316,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -2686,7 +2686,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301021,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301021,  ["commonDrop"] = 0,  ["name"] = 1400930102,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -2756,7 +2756,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301051,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301051,  ["commonDrop"] = 0,  ["name"] = 1400930105,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -2844,7 +2844,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301081,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301081,  ["commonDrop"] = 0,  ["name"] = 1400930108,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -2880,7 +2880,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301091,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301091,  ["commonDrop"] = 0,  ["name"] = 1400930109,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -2946,7 +2946,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301111,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301111,  ["commonDrop"] = 0,  ["name"] = 1400930111,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -2982,7 +2982,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301131,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301131,  ["commonDrop"] = 0,  ["name"] = 1400930113,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3036,7 +3036,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301151,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301151,  ["commonDrop"] = 0,  ["name"] = 1400930115,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3052,7 +3052,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301161,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301161,  ["commonDrop"] = 0,  ["name"] = 1400930116,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3464,7 +3464,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303131,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303131,  ["commonDrop"] = 0,  ["name"] = 1400930313,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3498,7 +3498,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303101,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303101,  ["commonDrop"] = 0,  ["name"] = 1400930310,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3532,7 +3532,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303081,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303081,  ["commonDrop"] = 0,  ["name"] = 1400930308,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3548,7 +3548,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303051,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303051,  ["commonDrop"] = 0,  ["name"] = 1400930305,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3600,7 +3600,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303041,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303041,  ["commonDrop"] = 0,  ["name"] = 1400930304,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3634,7 +3634,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303021,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9303021,  ["commonDrop"] = 0,  ["name"] = 1400930302,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1009,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 1,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3772,7 +3772,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302141,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302141,  ["commonDrop"] = 0,  ["name"] = 1400930214,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -3846,7 +3846,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302111,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302111,  ["commonDrop"] = 0,  ["name"] = 1400930211,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4064,7 +4064,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302071,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302071,  ["commonDrop"] = 0,  ["name"] = 1400930207,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4098,7 +4098,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302061,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302061,  ["commonDrop"] = 0,  ["name"] = 1400930206,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4132,7 +4132,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302051,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302051,  ["commonDrop"] = 0,  ["name"] = 1400930205,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4252,7 +4252,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302031,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302031,  ["commonDrop"] = 0,  ["name"] = 1400930203,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4396,7 +4396,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302011,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302011,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4430,7 +4430,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301141,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301141,  ["commonDrop"] = 0,  ["name"] = 1400930114,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4484,7 +4484,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301121,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301121,  ["commonDrop"] = 0,  ["name"] = 1400930112,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4518,7 +4518,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301101,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301101,  ["commonDrop"] = 0,  ["name"] = 1400930110,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4534,7 +4534,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301071,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301071,  ["commonDrop"] = 0,  ["name"] = 1400930107,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4588,7 +4588,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301061,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301061,  ["commonDrop"] = 0,  ["name"] = 1400930106,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4604,7 +4604,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301041,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301041,  ["commonDrop"] = 0,  ["name"] = 1400930104,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4640,7 +4640,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301031,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301031,  ["commonDrop"] = 0,  ["name"] = 1400930103,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -4656,7 +4656,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301011,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9301011,  ["commonDrop"] = 0,  ["name"] = 1400930101,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1004,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -5864,7 +5864,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302021,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302021,  ["commonDrop"] = 0,  ["name"] = 1400930202,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -5934,7 +5934,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302041,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302041,  ["commonDrop"] = 0,  ["name"] = 1400930204,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6076,7 +6076,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302081,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302081,  ["commonDrop"] = 0,  ["name"] = 1400930208,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6110,7 +6110,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302091,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302091,  ["commonDrop"] = 0,  ["name"] = 1400930209,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6144,7 +6144,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302101,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302101,  ["commonDrop"] = 0,  ["name"] = 1400930210,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6228,7 +6228,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302121,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302121,  ["commonDrop"] = 0,  ["name"] = 1400930212,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6262,7 +6262,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302131,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302131,  ["commonDrop"] = 0,  ["name"] = 1400930213,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6334,7 +6334,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302151,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302151,  ["commonDrop"] = 0,  ["name"] = 1400930215,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }
@@ -6368,7 +6368,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302161,  ["commonDrop"] = 0,  ["name"] = 0,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["restore"] = 100,  ["HeroExp"] = 0,  ["round1"] = 9302161,  ["commonDrop"] = 0,  ["name"] = 1400930216,  ["round3"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["meritorious_service"] = 50,  ["resMap"] = 0,  ["res"] = 1007,  ["stageBox"] = {
 }
 ,  ["chaptersTab"] = 0,  ["iconHero"] = 0,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
 }

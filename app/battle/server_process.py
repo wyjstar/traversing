@@ -95,7 +95,7 @@ def from_table_to_battle_unit(unit):
         origin_no = unit.origin_no
     )
     unit = BattleUnit()
-    unit.set_attrs(info)
+    unit.set_attrs(**info)
     return unit
 
 def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):

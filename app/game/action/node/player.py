@@ -23,7 +23,7 @@ from app.game.core.item_group_helper import get_consume_gold_num
 from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
 from shared.tlog import tlog_action
-from app.proto_file.game_pb2 import HeartBeatResponse, StaminaOperRequest
+from app.proto_file.game_pb2 import HeartBeatResponse, StaminaOperRequest, StaminaOperResponse
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -364,10 +364,11 @@ def buy_stamina_2201(request_proto, player):
     info = player.stamina.get_info(resource_type, player, item.buy_stamina_times)
     current_value = player.finance[resource_type]
 
-    response = CommonResponse()
+    response = StaminaOperResponse()
+    response.resource_type = resource_type
 
     current_buy_stamina_times = item.buy_stamina_times
-    need_gold = info.get("need_gold").get(current_buy_stamina_times+1)[1]
+    need_gold = info.get("need_gold")
     logger.debug("need_gold++++++++++++++++%s", need_gold)
     current_gold = player.finance.gold
 
@@ -376,21 +377,21 @@ def buy_stamina_2201(request_proto, player):
                  current_buy_stamina_times)
     # 校验购买次数上限
     if current_buy_stamina_times >= available_buy_stamina_times:
-        response.result = False
-        response.result_no = 11
+        response.res.result = False
+        response.res.result_no = 11
         return response.SerializePartialToString()
 
     # 校验金币是否不足
     if need_gold > current_gold:
         logger.debug("gold not enough++++++++++++")
-        response.result = False
-        response.result_no = 102
+        response.res.result = False
+        response.res.result_no = 102
         return response.SerializePartialToString()
 
     if current_value >= info.get("max_value"):
         logger.debug("stamina is full++++++++++++")
-        response.result = False
-        response.result_no = 105
+        response.res.result = False
+        response.res.result_no = 105
         return response.SerializePartialToString()
 
     def func():
@@ -402,7 +403,7 @@ def buy_stamina_2201(request_proto, player):
 
     player.pay.pay(need_gold, func)
 
-    response.result = True
+    response.res.result = True
     return response.SerializePartialToString()
 
 
@@ -416,7 +417,8 @@ def add_stamina_2202(request_proto, player):
     info = player.stamina.get_info(resource_type, player, item.buy_stamina_times)
     current_value = player.finance[resource_type]
 
-    response = CommonResponse()
+    response = StaminaOperResponse()
+    response.resource_type = resource_type
 
     # 校验时间是否足够
     current_time = int(time.time())
@@ -424,18 +426,18 @@ def add_stamina_2202(request_proto, player):
 
     if current_time - last_gain_stamina_time < info.get("recover_period"):
         logger.debug("add stamina time not enough +++++++++++++++++++++")
-        response.result_no = 22021
-        response.result = False
+        response.res.result_no = 22021
+        response.res.result = False
         return response.SerializePartialToString()
 
     if current_value >= info.get("max_value"):
         logger.debug("has reach max stamina ++++++++++++++++++++++")
-        response.result_no = 22022
-        response.result = False
+        response.res.result_no = 22022
+        response.res.result = False
         return response.SerializePartialToString()
     player.finance.add(resource_type, info.get("recover_unit"))
 
     item.last_gain_stamina_time = current_time
     player.stamina.save_data()
-    response.result = True
+    response.res.result = True
     return response.SerializePartialToString()

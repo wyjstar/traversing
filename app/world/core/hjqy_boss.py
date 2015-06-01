@@ -95,7 +95,7 @@ class HjqyBossManager(object):
 
     def get_damage_hp(self, player_id):
         damage_hp = self._rank_instance.get_value(player_id)
-        return damage_hp
+        return int(damage_hp)
 
     def get_rank(self, player_id):
         rank = self._rank_instance.get_rank_no(player_id)
@@ -186,14 +186,14 @@ class HjqyBoss(object):
         hp = 0
         for unit in self._blue_units.values():
             hp += unit.hp
-        return hp
+        return int(hp)
 
     @property
     def hp_max(self):
         hp_max = 0
         for unit in self._blue_units.values():
             hp_max += unit.hp_max
-        return hp_max
+        return int(hp_max)
 
     def get_data_dict(self):
         return dict(player_id=self._player_id,

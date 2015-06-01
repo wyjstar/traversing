@@ -71,6 +71,15 @@ message GameLoginResponse{
     //抽取次数
     optional int32 fine_hero_times = 31;// 良将抽取次数
     optional int32 excellent_hero_times = 32; //神将抽取次数
+    //
+    repeated BuyStaminaTimes buy_times = 33; //购买资源（体力，讨伐令，鞋子）次数
+}
+
+message BuyStaminaTimes
+{
+    optional int32 resource_type = 1; //资源类型
+    optional int32 buy_stamina_times = 2; //购买次数
+    optional int32 last_gain_stamina_time = 3; //上次获得体力时间
 }
 
 //心跳响应88
@@ -78,7 +87,12 @@ message HeartBeatResponse{
     optional int32 server_time = 1;
 }
 
-//可恢复性资源，体力, 讨伐令等
+//可恢复性资源，体力, 讨伐令等 2201, 2202
 message StaminaOperRequest{
     optional int32 resource_type = 1;
+}
+//返回 2201 2202 
+message StaminaOperResponse{
+    required CommonResponse res = 1;
+    required int32 resource_type = 2;
 }

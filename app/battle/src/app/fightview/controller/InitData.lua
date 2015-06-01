@@ -15,6 +15,7 @@ local AEMY_ZORDER = 20
 local ENEMY_ZORDER = 10
 local process = nil
 local fightData = nil
+local formulaTemplate = nil
 
 function initData(_process)
     -- 根据战斗类型初始化双方数据
@@ -31,6 +32,7 @@ function initData(_process)
     baseTemplate = getTemplateManager():getBaseTemplate()
     soldierTemplate = getTemplateManager():getSoldierTemplate()
     instanceTemplate = getTemplateManager():getInstanceTemplate()
+    formulaTemplate = getTemplateManager():getFormulaTemplate()
     fightData = getDataManager():getFightData() 
     calculation = getCalculationManager():getCalculation() 
     process = _process
@@ -52,6 +54,8 @@ function initData(_process)
     elseif process.fight_type == TYPE_MINE_OTHERUSER
         or process.fight_type == TYPE_MINE_MONSTER then
         return initMineData(data)
+    elseif process.fight_type == TYPE_HJQY_STAGE then
+        return initHjqyData(data)
     end
 
 end
@@ -373,6 +377,41 @@ function initPvpData(data)
     return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
+function initHjqyData(data)
+    local red_units = data.red
+    local blue_units = data.blue
+    local attack_type = data.attack_type
+    local redUnits = {}
+    local blueUnits = {}
+    local heroBreak = 0
+
+    for i=1,6 do
+        if red_units[i] then
+            local unit = constructBattleUnit(red_units[i], "red")
+            redUnits[unit.pos] = unit
+            updateRedUnitViewProperty(unit)
+        end
+    end
+
+    for i=1,6 do
+        if blue_units[i] then
+            local unit = constructBattleUnit(blue_units[i], "blue")
+            blueUnits[unit.pos] = unit
+            updateBlueUnitViewProperty(unit)
+        end
+    end
+    -- 全力一击增加伤害
+    if attack_type == 2 then
+        process.damage_rate = formulaTemplate:getFunc("hjqyDamage")(heroBreak)
+    end
+    local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    --local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
+    --local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
+    --local buddySkill = constructBuddySkill(data.replace)
+    --print(buddySkill.unit.no, "buddySkill=================")
+    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+end
 -- 根据hero模板构造battle unit
 function constructBattleUnitWithTemplate(data, pos, level, break_level, is_awake, is_break)
     print("data...."..data.id)
@@ -468,7 +507,8 @@ function constructBattleUnit(data, side)
         or process.fight_type == TYPE_STAGE_ACTIVITY 
         or process.fight_type == TYPE_TRAVEL
         or process.fight_type == TYPE_MINE_MONSTER
-        or process.fight_type == TYPE_WORLD_BOSS)
+        or process.fight_type == TYPE_WORLD_BOSS
+        or process.fight_type == TYPE_HJQY_STAGE)
         and side == "blue"
         then
         print("==========?", data.no)
