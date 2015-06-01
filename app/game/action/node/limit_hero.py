@@ -12,13 +12,14 @@ from app.game.core import rank_helper
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.game.redis_mode import tb_character_info
+from app.game.action.root import netforwarding
 
 
 @remoteserviceHandle('gate')
 def get_limit_hero_info_1812(data, player):
 
     response = GetLimitHeroInfoResponse()
-    activity_id = 13001
+    activity_id = netforwarding.get_activity_id()
     response.activity_id = activity_id
 
     if not activity_id:
@@ -26,6 +27,7 @@ def get_limit_hero_info_1812(data, player):
         # logger.debug(response)
         return response.SerializeToString()
 
+    player.limit_hero.update(activity_id)
     response.free_time = player.limit_hero.free_time
     response.draw_times = player.limit_hero.draw_times
     deal_response(player, response)
@@ -71,12 +73,15 @@ def draw_1813(data, player):
     integral = int(rank_helper.get_value('LimitHeroRank',
                                          player.base_info.id))
 
-    activity_id = 13001
+    activity_id = netforwarding.get_activity_id()
     if not activity_id:
         response.res.result = False
         response.res.result_no = 864
         # logger.debug(response)
         return response.SerializeToString()
+
+    player.limit_hero.update(activity_id)
+
     act_conf = game_configs.activity_config.get(activity_id)
     shop_id = game_configs.base_config.get('CardTimeActivityShop')
     shop_conf = game_configs.shop_config.get(shop_id[activity_id])
@@ -115,7 +120,9 @@ def draw_1813(data, player):
 
         player.limit_hero.draw_times += 1
         if draw_flag == 1:
-            player.limit_hero.free_time = int(time.time())
+            free_time = int(time.time())
+            player.limit_hero.free_time = free_time
+            response.free_time = free_time
         elif draw_flag == 2:
             player.limit_hero.integral_draw_times += 1
         # else:
