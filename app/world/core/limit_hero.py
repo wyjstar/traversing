@@ -37,7 +37,13 @@ def get_mail_id(rank, act_id):
 def deal_end_act():
     send_reward(limit_hero_obj.act_id)
     limit_hero_obj.act_id = 0
+    clear_rank()
     tick_limit_hero()
+
+
+def clear_rank():
+    instance = Ranking.instance('LimitHeroRank')
+    instance.clear_rank()
 
 
 def tick_limit_hero():
