@@ -253,17 +253,19 @@ def pvp_fight_request_1505(data, player):
         response.res.result_no = 837
         return response.SerializeToString()
 
-    before_player_rank = int(tb_pvp_rank.zscore(player.base_info.id))
+    before_player_rank = tb_pvp_rank.zscore(player.base_info.id)
+    if not before_player_rank:
+        before_player_rank = int(tb_pvp_rank.getObj('incr').incr())
+        tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
+        player.pvp.pvp_high_rank = before_player_rank
+
+    before_player_rank = int(before_player_rank)
+
     if before_player_rank == request.challenge_rank:
         logger.error('cant not fight self')
         response.res.result = False
         response.res.result_no = 1505
         return response.SerializeToString()
-
-    if not before_player_rank:
-        before_player_rank = int(tb_pvp_rank.getObj('incr').incr())
-        tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
-        player.pvp.pvp_high_rank = before_player_rank
 
     def settle(player, fight_result):
         rank_incr = 0
