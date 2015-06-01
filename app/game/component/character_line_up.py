@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.game.component.mine.monster_mine import MineOpt
 from shared.tlog import tlog_action
+from app.game.action.node.line_up import line_up_info
 
 
 class CharacterLineUpComponent(Component):
@@ -68,7 +69,11 @@ class CharacterLineUpComponent(Component):
             'line_up_order': self._line_up_order,
             'unpars': self._unpars,
             'current_unpar': self._current_unpar,
-            'friend_fight_times': self._friend_fight_times
+            'friend_fight_times': self._friend_fight_times,
+            'attackPoint': self.combat_power,
+            'best_skill': self.get_skill_id_by_unpar(self._current_unpar),
+            'copy_units': self.owner.fight_cache_component.red_unit,
+            'copy_slots': line_up_info(self.owner).SerializeToString()
         }
 
         line_up_obj = tb_character_info.getObj(self.character_id)
@@ -86,7 +91,11 @@ class CharacterLineUpComponent(Component):
                     line_up_order=self._line_up_order,
                     unpars=self._unpars,
                     current_unpar=self._current_unpar,
-                    friend_fight_times=self._friend_fight_times
+                    friend_fight_times=self._friend_fight_times,
+                    best_skill=0,
+                    attackPoint=0,
+                    copy_units=self.owner.fight_cache_component.red_unit,
+                    copy_slots=line_up_info(self.owner).SerializeToString()
                     )
         return data
 
@@ -355,8 +364,6 @@ class CharacterLineUpComponent(Component):
             _power += each_power
 
         MineOpt.update('sword', self.owner.base_info.id, _power)
-        char_obj = tb_character_info.getObj(self.character_id)
-        char_obj.hset('attackPoint', _power)
         return _power
 
     def get_slot_by_hero(self, hero_no):

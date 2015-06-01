@@ -60,7 +60,7 @@ class RedisObject(object):
 
     def hset(self, field, values):
         client = redis_manager.get_connection(self._name)
-        result = client.hset(self._name, field, cPickle.dumps(values))
+        client.hset(self._name, field, cPickle.dumps(values))
         return True
 
     def hsetnx(self, field, values):
@@ -163,59 +163,44 @@ class RedisObject(object):
         client = redis_manager.get_connection(self._name)
         return client.delete(self._name) == 1
 
-    def zscore(self, label, key):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        score = client.zscore(produce_key, key)
+    def zscore(self, key):
+        client = redis_manager.get_connection(self._name)
+        score = client.zscore(self._name, key)
         return score
 
-    def zadd(self, label, score, message):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        return client.zadd(produce_key, score, message) == 1
+    def zadd(self, *arg):
+        client = redis_manager.get_connection(self._name)
+        return client.zadd(self._name, *arg) == 1
 
-    def zget(self, label, k):
-        score = 0
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        score = client.zscore(produce_key, k)
-        return score
-
-    def ztotal(self, label):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        total = client.zcard(produce_key)
+    def ztotal(self):
+        client = redis_manager.get_connection(self._name)
+        total = client.zcard(self._name)
         return total
 
-    def zrem(self, label, k):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        rem = client.zrem(produce_key, k)
+    def zrem(self, key):
+        client = redis_manager.get_connection(self._name)
+        rem = client.zrem(self._name, key)
         return rem == 1
 
-    def zrank(self, label, k):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        rank = client.zrank(produce_key, k)
+    def zrank(self, k):
+        client = redis_manager.get_connection(self._name)
+        rank = client.zrank(self._name, k)
         return rank
 
-    def zrevrank(self, label, k):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        rank = client.zrevrank(produce_key, k)
+    def zrevrank(self, k):
+        client = redis_manager.get_connection(self._name)
+        rank = client.zrevrank(self._name, k)
         return rank
 
-    def zincrby(self, label, k, v):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        val = client.zincrby(produce_key, k, v)
+    def zincrby(self, k, v):
+        client = redis_manager.get_connection(self._name)
+        val = client.zincrby(self._name, k, v)
         return val
 
-    def znear(self, label, k, front, back):
-        produce_key = self.produceKey(label)
-        print 'znear1', label, k, type(label), type(k), front, back
-        client = redis_manager.get_connection(produce_key)
-        index = client.zrevrank(produce_key, k)
+    def znear(self, k, front, back):
+        print 'znear1', self._name, k, type(self._name), type(k), front, back
+        client = redis_manager.get_connection(self._name)
+        index = client.zrevrank(self._name, k)
         print 'znear3', index
         if index is not None:
             index = 20
@@ -224,32 +209,36 @@ class RedisObject(object):
         if index < front:
             _min = 0
             _max = front + back
-        print 'znear2', label, _min, type(_min), _max, type(_max)
-        client = redis_manager.get_connection(produce_key)
-        _range = client.zrevrange(produce_key, _min, _max)
+        print 'znear2', self._name, _min, type(_min), _max, type(_max)
+        client = redis_manager.get_connection(self._name)
+        _range = client.zrevrange(self._name, _min, _max)
         return _range
 
-    def zremrangebyrank(self, label, m, n):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        return client.zremrangebyrank(produce_key, m, n)
+    def zremrangebyrank(self, m, n):
+        client = redis_manager.get_connection(self._name)
+        return client.zremrangebyrank(self._name, m, n)
 
-    def zcount(self, label, m, n):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
+    def zcount(self, m, n):
+        produce_key = self.produceKey(self._name)
+        client = redis_manager.get_connection(self._name)
         return client.zcount(produce_key, m, n)
 
-    def zrevrange(self, label, start, end, withscores=False):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        return client.zrevrange(produce_key, start, end, withscores)
+    def zrevrange(self, start, end, withscores=False):
+        client = redis_manager.get_connection(self._name)
+        return client.zrevrange(self._name, start, end, withscores)
 
-    def zremrangebyscore(self, label, m, n):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        return client.zremrangebyscore(produce_key, m, n)
+    def zremrangebyscore(self, m, n):
+        client = redis_manager.get_connection(self._name)
+        return client.zremrangebyscore(self._name, m, n)
 
-    def zrange(self, label, m, n):
-        produce_key = self.produceKey(label)
-        client = redis_manager.get_connection(produce_key)
-        return client.zrange(produce_key, m, n)
+    def zrange(self, m, n, withscores=False):
+        client = redis_manager.get_connection(self._name)
+        return client.zrange(self._name, m, n, withscores=withscores)
+
+    def zrangebyscore(self, m, n, withscores=False):
+        client = redis_manager.get_connection(self._name)
+        return client.zrangebyscore(self._name, m, n, withscores=withscores)
+
+    def zrevrangebyscore(self, m, n, withscores=False):
+        client = redis_manager.get_connection(self._name)
+        return client.zrevrangebyscore(self._name, m, n, withscores=withscores)

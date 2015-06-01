@@ -30,7 +30,7 @@ class MessageCache:
                                      kw=kw,
                                      uid=unique_id))
         score = time.time() + MAINTAIN_TIME
-        result = message_obj.zadd('', score, message)
+        result = message_obj.zadd(score, message)
         if not result:
             logger.error('cache key:%s, char id:%s, result%s',
                          key, character_id, result)
@@ -46,7 +46,7 @@ class MessageCache:
                                      kw=kw,
                                      uid=unique_id))
         score = time.time() + maintain_time
-        result = message_obj.zadd('', score, message)
+        result = message_obj.zadd(score, message)
         if not result:
             logger.error('cache key:%s, char id:%s, result%s',
                          key, character_id, result)
@@ -54,8 +54,8 @@ class MessageCache:
 
     def get(self, character_id):
         message_obj = _messages.getObj(character_id)
-        message_obj.zremrangebyscore('', 0, time.time())
-        messages = message_obj.zrange('', 0, 10000)
+        message_obj.zremrangebyscore(0, time.time())
+        messages = message_obj.zrange(0, 10000)
 
         for message in messages:
             data = cPickle.loads(message)
@@ -63,7 +63,7 @@ class MessageCache:
 
     def delete(self, key, message):
         message_obj = _messages.getObj(key)
-        result = message_obj.zrem('', message)
+        result = message_obj.zrem(message)
         if not result:
             logger.error('delete key:%s, message:%s, result%s',
                          key, message, result)

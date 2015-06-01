@@ -18,7 +18,8 @@ class LineUpSlotComponent(Component):
     """阵容位置信息组件， 包括1个英雄格子，6个装备格子
     """
 
-    def __init__(self, owner, slot_no, activation=False, hero_no=0,
+    def __init__(self, owner, slot_no, activation=False,
+                 hero_no=0, hero_level=0,
                  equipment_ids={}.fromkeys([1, 2, 3, 4, 5, 6], None)):
         """
         """
@@ -59,7 +60,11 @@ class LineUpSlotComponent(Component):
     def info(self):
         """卡牌信息
         """
-        return dict(slot_no=self._slot_no, activation=self._activation, hero_no=self._hero_slot.hero_no,
+        hero_level = self._hero_slot.hero_obj.level if self._hero_slot.hero_obj else 0
+        return dict(slot_no=self._slot_no,
+                    activation=self._activation,
+                    hero_no=self._hero_slot.hero_no,
+                    hero_level=hero_level,
                     equipment_ids=dict([(slot.id, slot.equipment_id) for slot in self._equipment_slots.values()]))
 
     @classmethod
