@@ -88,7 +88,7 @@ def from_table_to_battle_unit(unit):
 
         is_boss = unit.is_boss,
         #break_skills = unit.break_skills,
-        position = unit.position,
+        position = unit.pos,
 
         is_break = unit.is_break,
         is_awake = unit.is_awake,
@@ -96,6 +96,8 @@ def from_table_to_battle_unit(unit):
     )
     unit = BattleUnit()
     unit.set_attrs(**info)
+    print("from table================")
+    print(unit)
     return unit
 
 def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
@@ -207,14 +209,16 @@ def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, b
     )
     fight_type = const.BATTLE_HJQY
     res = pvp_func(fight_data, fight_type, level)
-    print("world_boss_start=====:", res, level)
-    blue_units = {}
+    print("hjqy_start=====:", res, level, blue_units.keys())
     for k, v in res[2].items():
-        blue_units[k] = from_table_to_battle_unit(v)
+        if v.hp <= 0:
+            del blue_units[k]
+        else:
+            blue_units[k].hp = v.hp
 
     if int(res[0]) == 1:
-        return {"result":True, "blue_units":blue_units}
-    return {"result":False, "blue_units":blue_units}
+        return True
+    return False
 
 def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []

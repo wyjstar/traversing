@@ -111,18 +111,21 @@ class CharacterStaminaComponent(Component):
             recover_period = game_configs.base_config.get("peroid_of_vigor_recover")
             recover_unit = game_configs.base_config.get("unit_of_vigor_recover")
             need_gold = game_configs.base_config.get("price_buy_manual").get(buy_stamina_times+1)[1]
+            can_buy_times = player.base_info.buy_stamina_max
         elif resource_type == const.HJQYFIGHTTOKEN: # 讨伐令
             max_value = game_configs.base_config.get("hjqyItemUpperLimitMax")
             one_buy_value = game_configs.base_config.get("hjqyBuyTime")
             recover_period = game_configs.base_config.get("hjqyReplyTime")
             recover_unit = game_configs.base_config.get("hjqyReplyNumber")
             need_gold = game_configs.base_config.get("hjqyNumberPrice").get(buy_stamina_times+1)[1]
+            can_buy_times = player.base_info.buy_hjqy_max
         elif resource_type == const.SHOE: # 鞋子
             max_value = game_configs.base_config.get("travelShoeTimesMax")
             one_buy_value = game_configs.base_config.get("travelBuyNumber")
             recover_period = game_configs.base_config.get("travelReplyTime")
             recover_unit = game_configs.base_config.get("travelReplyNumber")
             need_gold = game_configs.base_config.get("travelVigorPrice")
+            can_buy_times = player.base_info.buy_shoe_max
         return dict(max_value=max_value,
                 one_buy_value=one_buy_value,
                 recover_period=recover_period,

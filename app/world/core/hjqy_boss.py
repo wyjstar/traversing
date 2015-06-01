@@ -53,6 +53,7 @@ class HjqyBossManager(object):
         boss.blue_units = blue_units
         boss.stage_id = stage_id
         boss.trigger_time = int(get_current_timestamp())
+        boss.hp_max = boss.hp
         self._bosses[player_id] = boss
         boss.save_data()
 
@@ -127,6 +128,7 @@ class HjqyBoss(object):
         self._blue_units = {}  # 怪物信息
         self._is_share = False # 是否已经分享
         self._trigger_time = 0 # 触发时间
+        self._hp_max = 0 # 最大血量
 
 
     def init_data(self, data):
@@ -136,6 +138,7 @@ class HjqyBoss(object):
         self._stage_id = data.get("stage_id", 0)
         self._blue_units = data.get("blue_units", {})
         self._is_share = data.get("is_share", False)
+        self._hp_max = data.get("hp_max", False)
 
     @property
     def player_id(self):
@@ -190,10 +193,11 @@ class HjqyBoss(object):
 
     @property
     def hp_max(self):
-        hp_max = 0
-        for unit in self._blue_units.values():
-            hp_max += unit.hp_max
-        return int(hp_max)
+        return int(self._hp_max)
+
+    @hp_max.setter
+    def hp_max(self, value):
+        self._hp_max = value
 
     def get_data_dict(self):
         return dict(player_id=self._player_id,
@@ -201,6 +205,7 @@ class HjqyBoss(object):
                     blue_units=self._blue_units,
                     stage_id=self._stage_id,
                     trigger_time=self._trigger_time,
+                    hp_max=self._hp_max,
                     is_share=self._is_share)
 
     def save_data(self):

@@ -16,9 +16,37 @@ import rank_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hjqy.proto',
   package='',
-  serialized_pb='\n\nhjqy.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\x1a\nrank.proto\"d\n\x10HjqyInitResponse\x12\x1d\n\x06\x62osses\x18\x01 \x03(\x0b\x32\r.HjqyBossInfo\x12\x11\n\tdamage_hp\x18\x02 \x02(\x03\x12\x10\n\x08hjqy_ids\x18\x03 \x03(\x05\x12\x0c\n\x04rank\x18\x04 \x02(\x05\"\x9d\x01\n\x0cHjqyBossInfo\x12\x11\n\tplayer_id\x18\x01 \x02(\x05\x12\x10\n\x08nickname\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x04 \x02(\x05\x12\x10\n\x08is_share\x18\x03 \x02(\x08\x12\r\n\x05state\x18\x08 \x01(\x05\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x0e\n\x06hp_max\x18\r \x01(\x05\x12\x14\n\x0ctrigger_time\x18\x0e \x01(\x05\"Y\n\x11HjqyBattleRequest\x12\x10\n\x08owner_id\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\x12\x13\n\x0b\x61ttack_type\x18\x04 \x02(\x05\"\x8a\x02\n\x12HjqyBattleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12\x13\n\x0b\x61ttack_type\x18\x0b \x01(\x05\"\"\n\x14HjqyAddRewardRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"[\n\x15HjqyAddRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x10HjqyRankResponse\x12\x1b\n\x04info\x18\x01 \x03(\x0b\x32\r.RankUserInfo')
+  serialized_pb='\n\nhjqy.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\x1a\nrank.proto\"#\n\x0fHjqyInitRequest\x12\x10\n\x08owner_id\x18\x01 \x01(\x05\"d\n\x10HjqyInitResponse\x12\x1d\n\x06\x62osses\x18\x01 \x03(\x0b\x32\r.HjqyBossInfo\x12\x11\n\tdamage_hp\x18\x02 \x02(\x03\x12\x10\n\x08hjqy_ids\x18\x03 \x03(\x05\x12\x0c\n\x04rank\x18\x04 \x02(\x05\"\x9d\x01\n\x0cHjqyBossInfo\x12\x11\n\tplayer_id\x18\x01 \x02(\x05\x12\x10\n\x08nickname\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x04 \x02(\x05\x12\x10\n\x08is_share\x18\x03 \x02(\x08\x12\r\n\x05state\x18\x08 \x01(\x05\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x0e\n\x06hp_max\x18\r \x01(\x05\x12\x14\n\x0ctrigger_time\x18\x0e \x01(\x05\"Y\n\x11HjqyBattleRequest\x12\x10\n\x08owner_id\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\x12\x13\n\x0b\x61ttack_type\x18\x04 \x02(\x05\"\x9d\x02\n\x12HjqyBattleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12\x13\n\x0b\x61ttack_type\x18\x0b \x01(\x05\x12\x11\n\thjqy_coin\x18\x0c \x01(\x05\"\"\n\x14HjqyAddRewardRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"[\n\x15HjqyAddRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"/\n\x10HjqyRankResponse\x12\x1b\n\x04info\x18\x01 \x03(\x0b\x32\r.RankUserInfo')
 
 
+
+
+_HJQYINITREQUEST = _descriptor.Descriptor(
+  name='HjqyInitRequest',
+  full_name='HjqyInitRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='owner_id', full_name='HjqyInitRequest.owner_id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=53,
+  serialized_end=88,
+)
 
 
 _HJQYINITRESPONSE = _descriptor.Descriptor(
@@ -65,8 +93,8 @@ _HJQYINITRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=53,
-  serialized_end=153,
+  serialized_start=90,
+  serialized_end=190,
 )
 
 
@@ -142,8 +170,8 @@ _HJQYBOSSINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=156,
-  serialized_end=313,
+  serialized_start=193,
+  serialized_end=350,
 )
 
 
@@ -191,8 +219,8 @@ _HJQYBATTLEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=315,
-  serialized_end=404,
+  serialized_start=352,
+  serialized_end=441,
 )
 
 
@@ -280,6 +308,13 @@ _HJQYBATTLERESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='hjqy_coin', full_name='HjqyBattleResponse.hjqy_coin', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -289,8 +324,8 @@ _HJQYBATTLERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=407,
-  serialized_end=673,
+  serialized_start=444,
+  serialized_end=729,
 )
 
 
@@ -317,8 +352,8 @@ _HJQYADDREWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=675,
-  serialized_end=709,
+  serialized_start=731,
+  serialized_end=765,
 )
 
 
@@ -352,8 +387,8 @@ _HJQYADDREWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=711,
-  serialized_end=802,
+  serialized_start=767,
+  serialized_end=858,
 )
 
 
@@ -380,8 +415,8 @@ _HJQYRANKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=804,
-  serialized_end=851,
+  serialized_start=860,
+  serialized_end=907,
 )
 
 _HJQYINITRESPONSE.fields_by_name['bosses'].message_type = _HJQYBOSSINFO
@@ -391,6 +426,7 @@ _HJQYBATTLERESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNIT
 _HJQYADDREWARDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _HJQYADDREWARDRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _HJQYRANKRESPONSE.fields_by_name['info'].message_type = rank_pb2._RANKUSERINFO
+DESCRIPTOR.message_types_by_name['HjqyInitRequest'] = _HJQYINITREQUEST
 DESCRIPTOR.message_types_by_name['HjqyInitResponse'] = _HJQYINITRESPONSE
 DESCRIPTOR.message_types_by_name['HjqyBossInfo'] = _HJQYBOSSINFO
 DESCRIPTOR.message_types_by_name['HjqyBattleRequest'] = _HJQYBATTLEREQUEST
@@ -398,6 +434,12 @@ DESCRIPTOR.message_types_by_name['HjqyBattleResponse'] = _HJQYBATTLERESPONSE
 DESCRIPTOR.message_types_by_name['HjqyAddRewardRequest'] = _HJQYADDREWARDREQUEST
 DESCRIPTOR.message_types_by_name['HjqyAddRewardResponse'] = _HJQYADDREWARDRESPONSE
 DESCRIPTOR.message_types_by_name['HjqyRankResponse'] = _HJQYRANKRESPONSE
+
+class HjqyInitRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HJQYINITREQUEST
+
+  # @@protoc_insertion_point(class_scope:HjqyInitRequest)
 
 class HjqyInitResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

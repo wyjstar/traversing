@@ -23,12 +23,16 @@ remote_gate = GlobalObject().remote.get('gate')
 def init_2101(pro_data, player):
     """获取hjqy信息
     """
+    request = hjqy_pb2.HjqyInitRequest()
+    request.ParseFromString(pro_data)
+
     response = hjqy_pb2.HjqyInitResponse()
     friend_ids = player.friends.friends
     data = remote_gate['world'].hjqy_init_remote(player.base_info.id, friend_ids)
     logger.debug("return data %s" % data)
     for boss_data in data.values():
-        construct_boss_pb(boss_data, response)
+        if (request.owner_id and request.owner_id == boss_data.get("player_id")) or (not request.owner_id):
+            construct_boss_pb(boss_data, response)
 
     response.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
     response.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
@@ -141,6 +145,7 @@ def battle_2103(pro_data, player):
     response.seed1 = seed1
     response.seed2 = seed2
     response.attack_type = attack_type
+    response.hjqy_coin = player.finance[const.HJQYCOIN]
     response.res.result = True
     return response.SerializePartialToString()
 

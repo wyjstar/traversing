@@ -85,9 +85,8 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     blue_units = boss.blue_units
 
     origin_hp = boss.hp
-    res = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
+    result = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
 
-    blue_units = res.get("blue_units")
     boss.blue_units = blue_units
 
     current_damage_hp = origin_hp - boss.hp
