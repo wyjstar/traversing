@@ -342,6 +342,11 @@ class CharacterBaseInfoComponent(Component):
         return vip_content.warFogRefreshNum
 
     @property
+    def buyGgzj_times(self):
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyGgzjTimes
+
+    @property
     def heads(self):
         return self._heads
 

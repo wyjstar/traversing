@@ -16,7 +16,7 @@ class CharacterPvpComponent(Component):
         """
         Component.__init__(self, owner)
         self._pvp_overcome = []
-        self._pvp_overcome_current = 0
+        self._pvp_overcome_current = 1
         self._pvp_overcome_refresh_time = 0
         self._pvp_overcome_refresh_count = 0
 
@@ -83,13 +83,17 @@ class CharacterPvpComponent(Component):
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._pvp_overcome_refresh_time = time.time()
             self._pvp_overcome_refresh_count = 0
-            self._pvp_overcome_current = 0
+            self._pvp_overcome_current = 1
 
     def reset_time(self):
+        max_index = max(game_configs.base_config.get('ggzjReward').keys())
         all_ids = tb_character_info.smem('all')
-        for _ in range(12):
+        for _ in range(max_index):
             self._pvp_overcome.append(random.choice(all_ids))
 
+        _times = self.pvp_overcome_refresh_count + 1
+        if _times > self.owner.base_info.buyGgzj_times:
+            return False
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count += 1
         self.save_data()

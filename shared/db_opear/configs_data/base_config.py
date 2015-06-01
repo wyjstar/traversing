@@ -123,4 +123,12 @@ class BaseConfig(object):
         config_value["supportPrice"] = supportPrice
         config_value["supportPriceMax"] = supportPriceMax
 
+        overcome_rewars = config_value['ggzjReward']
+        print overcome_rewars, type(overcome_rewars)
+        rewards = {}
+        for k, v in overcome_rewars.items():
+            print k, v, type(v)
+            rewards[k] = parse(v)
+        config_value['ggzjReward'] = rewards
+
         return config_value
