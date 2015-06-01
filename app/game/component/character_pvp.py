@@ -51,7 +51,7 @@ class CharacterPvpComponent(Component):
         data = dict(pvp_overcome=self._pvp_overcome,
                     pvp_overcome_current=self._pvp_overcome_current,
                     pvp_overcome_refresh_time=self._pvp_overcome_refresh_time,
-                    pvp_overcome_refresh_count=self.pvp_refresh_count,
+                    pvp_overcome_refresh_count=self._pvp_overcome_refresh_count,
                     pvp_high_rank=self._pvp_high_rank,
                     pvp_high_rank_award=self._pvp_high_rank_award,
                     pvp_times=self._pvp_times,

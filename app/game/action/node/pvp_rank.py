@@ -382,7 +382,7 @@ def pvp_fight_overcome_1508(data, player):
     #     response.res.result_no = 150801
     #     return response.SerializeToString()
 
-    if request.index != player.pvp.pvp_overcome_current + 1:
+    if request.index != player.pvp.pvp_overcome_current:
         logger.error('overcome index is error:%s', request.index)
         response.res.result = False
         response.res.result_no = 150801
@@ -399,7 +399,7 @@ def pvp_fight_overcome_1508(data, player):
         logger.debug("fight revenge result:%s" % fight_result)
 
         if fight_result:
-            player.pvp.pvp_overcome_current = request.index
+            player.pvp.pvp_overcome_current += 1
             player.pvp.save_data()
 
             overcome_rewards = game_configs.base_config.get('ggzjReward')
