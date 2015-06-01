@@ -4,6 +4,7 @@ created by server on 15-5-29下午5:21.
 """
 import time
 import random
+from gfirefly.server.logobj import logger
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
@@ -86,17 +87,22 @@ class CharacterPvpComponent(Component):
             self._pvp_overcome_current = 1
 
     def reset_time(self):
+        _times = self.pvp_overcome_refresh_count + 1
+        if _times > self.owner.base_info.buyGgzj_times:
+            logger.error('overcome reset error:%s-%s',
+                         self.pvp_overcome_refresh_count,
+                         self.owner.base_info.buyGgzj_times)
+            return False
+
         max_index = max(game_configs.base_config.get('ggzjReward').keys())
         all_ids = tb_character_info.smem('all')
         for _ in range(max_index):
             self._pvp_overcome.append(random.choice(all_ids))
 
-        _times = self.pvp_overcome_refresh_count + 1
-        if _times > self.owner.base_info.buyGgzj_times:
-            return False
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count += 1
         self.save_data()
+        print self.__dict__
         return True
 
     def get_overcome_id(self, index):
