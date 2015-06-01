@@ -32,10 +32,14 @@ message PvpFightRevenge{
 }
 
 message PvpFightOvercome{
-    required int32 character_id = 1;
-	required int32 type = 2;
-    repeated int32 lineup = 3; // 队形
-    optional int32 skill = 4; //无双技能ID
+    required int32 index = 1;
+    repeated int32 lineup = 2; // 队形
+    optional int32 skill = 3; //无双技能ID
+}
+
+message PvpFightOvercomeInfo{
+    repeated int32 character_ids = 1;
+    required int32 index = 4;
 }
 
 message PvpPlayerInfoRequest{
@@ -43,6 +47,10 @@ message PvpPlayerInfoRequest{
 }
 
 message ResetPvpTime{
+	required int32 times = 1;
+}
+
+message ResetPvpOvercomeTime{
 	required int32 times = 1;
 }
 
