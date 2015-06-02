@@ -5,7 +5,6 @@ created by server on 14-7-24下午6:32.
 from app.game.component.Component import Component
 from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
-from app.game.action.root import netforwarding
 
 
 class CharacterLimitHeroComponent(Component):
@@ -24,15 +23,11 @@ class CharacterLimitHeroComponent(Component):
         """
         初始化公会组件
         """
-        activity_id = netforwarding.get_activity_id()
-        if activity_id == character_info.get("activity_id"):
-            self._free_time = character_info.get("free_time")
-            self._draw_times = character_info.get("draw_times")
-            self._integral_draw_times = \
-                character_info.get("integral_draw_times")
-            self._activity_id = character_info.get("activity_id")
-        else:
-            self._activity_id = activity_id
+        self._free_time = character_info.get("free_time")
+        self._draw_times = character_info.get("draw_times")
+        self._integral_draw_times = \
+            character_info.get("integral_draw_times")
+        self._activity_id = character_info.get("activity_id")
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -55,7 +50,6 @@ class CharacterLimitHeroComponent(Component):
         self._draw_times = 0  # 累计抽取次数
         self._integral_draw_times = 0  # 积分抽取次数
         self._activity_id = activity_id  # 活动ID
-
 
     @property
     def integral_draw_times(self):

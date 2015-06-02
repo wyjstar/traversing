@@ -19,6 +19,7 @@ from app.game.core.mail_helper import send_mail
 
 remote_gate = GlobalObject().remote.get('gate')
 
+
 def notify_mail(player):
     """
     通知可以购买返利卡了
@@ -34,7 +35,6 @@ def notify_mail(player):
         recharge_item = recharge_items.get(rid)
         if not recharge_item:
             continue
-        
         if player.rebate.need_mail(rid, recharge_item.get('giftDays')):
             if recharge_item.get('giftDays') == 30:
                 mail_id = game_configs.base_config.get('moonCardRemindMail')
@@ -45,6 +45,7 @@ def notify_mail(player):
                 send_mail(conf_id=mail_id, receive_id=player.base_info.id)
             player.rebate.save_data()
 
+
 def month_reward(player):
     """
     发放月卡永久奖励
@@ -53,6 +54,7 @@ def month_reward(player):
     for _ in range(times):
         send_mail(conf_id=mail_id, receive_id=player.base_info.id)
     player.rebate.save_data()
+
 
 @remoteserviceHandle('gate')
 def get_all_mail_info_1301(proto_data, player):

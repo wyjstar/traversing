@@ -32,9 +32,9 @@ class RedisObject(object):
         client = redis_manager.get_connection(self._name)
         return client.exists(self._name) == 1
 
-    def incr(self):
+    def incr(self, amount=1):
         client = redis_manager.get_connection(self._name)
-        return client.incr(self._name)
+        return client.incr(self._name, amount=amount)
 
     def hgetall(self):
         client = redis_manager.get_connection(self._name)

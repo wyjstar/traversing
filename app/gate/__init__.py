@@ -10,12 +10,17 @@ from shared.tlog import tlog_action
 from app.gate.redis_mode import tb_character_info
 from shared.utils.const import const
 import time
+from app.game.redis_mode import tb_guild_info
 
 
 front_ip = GlobalObject().json_config['front_ip']
 front_port = GlobalObject().json_config['front_port']
 name = GlobalObject().json_config['name']
 server_no = GlobalObject().allconfig['server_no']
+
+guild_incr = tb_guild_info.getObj('incr')
+if not guild_incr.exists():
+    guild_incr.incr(amount=10000)
 
 
 def tick():

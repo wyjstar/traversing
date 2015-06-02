@@ -23,7 +23,8 @@ def get_limit_hero_info_1812(data, player):
     response.activity_id = activity_id
 
     if not activity_id:
-        response.res.result = True
+        response.res.result = False
+        response.res.result_no = 864
         # logger.debug(response)
         return response.SerializeToString()
 
@@ -126,7 +127,7 @@ def draw_1813(data, player):
         elif draw_flag == 2:
             player.limit_hero.integral_draw_times += 1
         # else:
-        add_integral = shop_conf.Integral[0].item_no
+        add_integral = shop_conf.Integral[0].num
         rank_helper.add_rank_info('LimitHeroRank',
                                   player.base_info.id, integral+add_integral)
         player.limit_hero.save_data()
