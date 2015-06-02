@@ -87,9 +87,11 @@ class HjqyBossManager(object):
         for rank, v in enumerate(instance.get(1, 10)):
             player_id = v[0]
             damage_hp = v[1]
-            player_info = self._tb_hjqyboss.get(player_id)
-            player_info["rank"] = rank
-            player_info["damage_hp"] = damage_hp
+            logger.debug("player_id damage_hp rank %s %s %s" % (player_id, damage_hp, rank))
+            player_info = self._tb_hjqyboss_player.get(player_id)
+            logger.debug(player_info)
+            player_info["rank"] = rank + 1
+            player_info["damage_hp"] = int(damage_hp)
             rank_items.append(player_info)
 
         return rank_items

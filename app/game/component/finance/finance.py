@@ -120,6 +120,7 @@ class CharacterFinanceComponent(Component):
         if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
+        logger.debug("fType %s num %s" % (fType, num))
         if fType == const.GOLD:
             self.add_gold(num)
         else:

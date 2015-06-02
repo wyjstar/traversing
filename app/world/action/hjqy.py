@@ -139,11 +139,14 @@ def create_hjqy_remote(player_id, nickname, str_blue_units, stage_id):
 
 
 @rootserviceHandle
-def get_rank_remote():
+def get_hjqy_rank_remote():
     """
     获取玩家排行
     """
-    return hjqy_manager.get_rank_items()
+    logger.debug("get_hjqy_rank_remote")
+    rank_items = hjqy_manager.get_rank_items()
+    logger.debug(rank_items)
+    return rank_items
 
 
 @rootserviceHandle

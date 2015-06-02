@@ -51,6 +51,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.closure = player.base_info.closure
 
     for k, i in enumerate(player.finance._finances):
+        print(i)
         responsedata.finances.append(i)
 
     responsedata.fine_hero = player.last_pick_time.fine_hero

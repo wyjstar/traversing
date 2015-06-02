@@ -137,6 +137,7 @@ def battle_2103(pro_data, player):
     if is_in_period(hjqyMeritoriousServiceOpenTime): # 增加功勋的活动
         meritorious_service = meritorious_service * hjqyMeritoriousServiceRate
     player.finance.add(const.HJQYCOIN, meritorious_service)
+    player.finance.save_data()
 
     response.fight_result = fight_result
     pvp_assemble_units(red_units, blue_units, response)
@@ -195,10 +196,10 @@ def get_rank_2105(pro_data, player):
     获取排名:HjqyRankResponse
     """
     response = hjqy_pb2.HjqyRankResponse()
-    rank_infos = remote_gate['world'].get_rank_remote()
+    rank_infos = remote_gate['world'].get_hjqy_rank_remote()
     for info in rank_infos:
         info_pb = response.info.add()
-        info_pb.player_id = info.get("player_id")
+        info_pb.id = info.get("player_id")
         info_pb.nickname = info.get("nickname")
         info_pb.user_icon = info.get("user_icon")
         info_pb.level = info.get("level")
