@@ -49,8 +49,8 @@ class PlayerCharacter(object):
                  limit_hero=component.CharacterLimitHeroComponent(self),
                  rebate=component.Rebate(self),
                  buy_coin=component.CharacterBuyCoinActivity(self),
-                 pvp=component.CharacterPvpComponent(self)
-                 share=component.ShareComponent(self),
+                 pvp=component.CharacterPvpComponent(self),
+                 share=component.ShareComponent(self)
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
