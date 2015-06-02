@@ -66,7 +66,6 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     response.demage_hp = int(boss.get_demage_hp(player_id))
     # 名次
     response.rank_no = boss.get_rank_no(player_id)
-    logger.debug("response:%s" % response)
 
     return response.SerializeToString()
 
