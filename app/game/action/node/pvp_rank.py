@@ -100,23 +100,21 @@ def pvp_player_rank_request_1502(data, player):
     response.player_rank = int(rank) if rank else -1
     response.pvp_score = player.finance[const.PVP]
 
-    if not rank:
-        rank_max = tb_pvp_rank.ztotal()
-        records = tb_pvp_rank.zrangebyscore(rank_max - 9, rank_max,
-                                            withscores=True)
-    elif rank < 9:
-        records = tb_pvp_rank.zrangebyscore(1, 10, withscores=True)
-    else:
-        records = tb_pvp_rank.zrangebyscore(rank - 7, rank + 2,
-                                            withscores=True)
+    player_ranks = player.pvp.pvp_arena_players
+
+    records = tb_pvp_rank.zrangebyscore(min(player_ranks), max(player_ranks),
+                                        withscores=True)
 
     # print records, rank
     for char_id, rank in records:
         char_id = int(char_id)
         rank = int(rank)
+        if rank not in player_ranks:
+            continue
         rank_item = response.rank_items.add()
         rank_item.rank = rank
         _with_pvp_info(rank_item, char_id)
+    print response
     return response.SerializeToString()
 
 
@@ -272,6 +270,7 @@ def pvp_fight_request_1505(data, player):
         if fight_result:
             logger.debug("fight result:True:%s:%s",
                          before_player_rank, request.challenge_rank)
+            player.pvp.pvp_player_rank_refresh()
 
             _arena_win_points = game_configs.base_config.get('arena_win_points')
             if _arena_win_points:
