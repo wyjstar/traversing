@@ -84,7 +84,7 @@ class CharacterPvpComponent(Component):
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
             self._pvp_overcome_refresh_time = time.time()
             self._pvp_overcome_refresh_count = 0
-            self._pvp_overcome_current = 1
+            # self._pvp_overcome_current = 1
 
     def reset_time(self):
         _times = self.pvp_overcome_refresh_count + 1

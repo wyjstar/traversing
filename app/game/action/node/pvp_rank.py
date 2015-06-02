@@ -70,9 +70,8 @@ def _with_pvp_info(response, character_id):
 
     response.level = data.get('level')
     response.nickname = data.get('nickname')
-    print data.get('attackPoint')
     response.ap = int(data.get('attackPoint'))
-    response.hero_ids.extend([_ for _ in data['hero_ids']])
+    response.hero_ids.extend([_ for _ in data['hero_ids'] if _])
     response.hero_levels.extend([_ for _ in data['hero_levels']])
     response.head_no = data.get('head_no', 0)
     response.character_id = data.get('character_id')
@@ -111,7 +110,7 @@ def pvp_player_rank_request_1502(data, player):
         records = tb_pvp_rank.zrangebyscore(rank - 7, rank + 2,
                                             withscores=True)
 
-    print records, rank
+    # print records, rank
     for char_id, rank in records:
         char_id = int(char_id)
         rank = int(rank)
@@ -180,14 +179,14 @@ def get_pvp_data(character_id):
         pvp_data['unpar_skill'] = pvp_data['current_unpar']
         skill_level = pvp_data['unpars'].get(pvp_data['current_unpar'], 1)
         pvp_data['unpar_skill_level'] = skill_level
-        print 'get pvp data player:', pvp_data
+        # print 'get pvp data player:', pvp_data
 
         return pvp_data
 
     robot_obj = tb_character_info.getObj('robot')
     if robot_obj.hexists(character_id):
         pvp_data = robot_obj.hget(character_id)
-        print 'get pvp data robot:', pvp_data
+        # print 'get pvp data robot:', pvp_data
         return pvp_data
 
     return {}
