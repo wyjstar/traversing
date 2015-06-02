@@ -31,4 +31,5 @@ def get_cdkey_gift_1123(data, player):
     # get_return(player, return_data, response.gain)
     response.res.result = True
     response.res.result_no = url_response.get('success')
+    response.res.message = url_response.get('success')
     return response.SerializeToString()
