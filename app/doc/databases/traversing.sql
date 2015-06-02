@@ -82,6 +82,9 @@ CREATE TABLE `tb_character_info` (
 
   `heads` blob,
   `rebate` blob,
+  `month_buy` int(11),
+  `last_time` int(11),
+  `mail_id` int(11),
 
   PRIMARY KEY (`id`),
   KEY `nickname` (`nickname`)

@@ -72,7 +72,7 @@ def save_line_up_order(line_up, player, current_unpar):
     if len(line_up_info) != 6:
         logger.error("line up order error %s !" % len(line_up_info))
         return
-    logger.debug("current_unpar%s"% current_unpar)
+    logger.debug("line_up %s, current_unpar%s"% (line_up, current_unpar))
 
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component.current_unpar = current_unpar

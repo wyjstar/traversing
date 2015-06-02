@@ -72,7 +72,10 @@
                 "fight_cache": "complex",
 				"auto": "complex",
 				"heads": "simple",
-                "rebate": "complex"
+                "rebate": "complex",
+                "month_buy":"simple",
+                "last_time":"simple",
+                "mail_id":"simple"
             }
         },
         "tb_character_hero": {

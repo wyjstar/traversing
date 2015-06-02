@@ -54,8 +54,6 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
     # 最后击杀
     update_rank_items(-1, response.last_shot_item, boss.last_shot_item)
 
-    # 奇遇
-    response.debuff_skill_no = boss.debuff_skill_no
     # 关卡id
     response.stage_id = boss.stage_id
     # 是否开启
@@ -89,7 +87,7 @@ def update_rank_items(k, rank_item_pb, rank_item):
 
 
 @rootserviceHandle
-def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, seed1, seed2):
+def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, debuff_skill_no, seed1, seed2):
     """
     战斗
     """
@@ -98,8 +96,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_bl
         return -1, 0
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
-    #res = world_boss_start(red_units, player_info.get("level"), red_best_skill,  blue_units, boss.debuff_skill_no)
-    res = world_boss_start(red_units,  blue_units, red_best_skill, red_best_skill_level, 0, 1, boss.debuff_skill_no, damage_rate, seed1, seed2, player_info.get("level"))
+    res = world_boss_start(red_units,  blue_units, red_best_skill, red_best_skill_level, 0, 1, player_info.get("level"), debuff_skill_no, damage_rate, seed1, seed2, player_info.get("level"))
     result = res.get("result")
     hp_left = res.get("hp_left")
 

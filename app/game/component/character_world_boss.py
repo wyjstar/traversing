@@ -49,17 +49,18 @@ class Boss(object):
     """docstring for Boss"""
     def __init__(self, boss_id=""):
         super(Boss, self).__init__()
-        self._boss_id = boss_id   # boss_id:世界boss(world_boss), mine_boss(...)
-        self._encourage_coin_num = 0   # 金币鼓舞
-        self._encourage_gold_num = 0   # 钻石鼓舞
-        self._last_request_time = 0    # 上次请求时间
-        self._fight_times = 0          # 战斗次数
-        self._last_fight_time = 0      # 上次战斗结束时间
-        self._stage_id = 0             # 当前关卡
-        self._award = {}               # 奖励
-        self._demages = [] # 每次的伤害
-        self._gold_reborn_times = 0 # 元宝复活次数
+        self._boss_id = boss_id            # boss_id:世界boss(world_boss), mine_boss(...)
+        self._encourage_coin_num = 0       # 金币鼓舞
+        self._encourage_gold_num = 0       # 钻石鼓舞
+        self._last_request_time = 0        # 上次请求时间
+        self._fight_times = 0              # 战斗次数
+        self._last_fight_time = 0          # 上次战斗结束时间
+        self._stage_id = 0                 # 当前关卡
+        self._award = {}                   # 奖励
+        self._demages = []                 # 每次的伤害
+        self._gold_reborn_times = 0        # 元宝复活次数
         self._last_coin_encourage_time = 0 # 上次金币鼓舞时间
+        self._debuff_skill = {}         # 奇遇
 
     def init_data(self, data):
         """docstring for init_data"""
@@ -74,6 +75,7 @@ class Boss(object):
         self._demages = data.get('demages', [])
         self._gold_reborn_times = data.get('gold_reborn_times', 0)
         self._last_coin_encourage_time = data.get('last_coin_encourage_time', 0)
+        self._debuff_skill = data.get('debuff_skill', {})
 
     def get_stage_info(self):
         stage_info = None
@@ -100,6 +102,7 @@ class Boss(object):
             self._last_request_time = get_current_timestamp()
             self._gold_reborn_times = 0
             self._last_coin_encourage_time = 0 # 上次金币鼓舞时间
+            self._debuff_skill = {}
 
     @property
     def boss_id(self):
@@ -178,7 +181,8 @@ class Boss(object):
                 'award': self._award,
                 'demages': self._demages,
                 'gold_reborn_times': self._gold_reborn_times,
-                'last_coin_encourage_time': self._last_coin_encourage_time
+                'last_coin_encourage_time': self._last_coin_encourage_time,
+                'debuff_skill': self._debuff_skill
                 }
 
     def get_base_config(self):
@@ -211,3 +215,14 @@ class Boss(object):
     def last_coin_encourage_time(self, value):
         self._last_coin_encourage_time = value
 
+    @property
+    def debuff_skill_no(self):
+        return self._debuff_skill.get(self._fight_times, 0)
+
+    @property
+    def debuff_skill(self):
+        return self._debuff_skill
+
+    @debuff_skill.setter
+    def debuff_skill(self, value):
+        self._debuff_skill = value

@@ -14,10 +14,19 @@ from app.proto_file import mailbox_pb2
 from app.proto_file.db_pb2 import Mail_PB
 from shared.utils.const import const
 import time
+from app.game.core.mail_helper import send_mail
 
 
 remote_gate = GlobalObject().remote.get('gate')
 
+def month_reward(player):
+    """
+    发放月卡永久奖励
+    """
+    mail_id, times = player.rebate.month_mails()
+    for _ in range(times):
+        send_mail(conf_id=mail_id, receive_id=player.base_info.id)
+    player.rebate.save_data()
 
 @remoteserviceHandle('gate')
 def get_all_mail_info_1301(proto_data, player):
@@ -25,7 +34,7 @@ def get_all_mail_info_1301(proto_data, player):
     mails = player.mail_component.get_mails()
 
     response = mailbox_pb2.GetMailInfos()
-
+    month_reward(player)
     expire_ids = []
     for mail in mails:
         if is_expire_notice(mail):

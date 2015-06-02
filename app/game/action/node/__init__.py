@@ -98,3 +98,4 @@ import buy_coin_activity
 import push
 import rebate
 import cdkey
+import limit_hero

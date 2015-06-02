@@ -244,30 +244,9 @@ class WorldBoss(BaseBoss):
         award_data.award_type = award_type
         award_data.award = award
         award_data.rank_no = rank_no
-        remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
+        remote_gate = GlobalObject().child('gate')
         remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
                                                     int(player_id), award_data.SerializePartialToString())
-    def send_award_damage(self):
-        award_mail = game_configs.base_config.get('hurt_rewards_worldboss_rank')
-        for up, down, mail_id in award_mail.values():
-            ranks = self._rank_instance.get(up, down)
-            for player_id, v in ranks:
-                mail_date, _ = deal_mail(conf_id=mail_id, receive_id=int(player_id))
-                remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
-                remote_gate.push_message_to_transit_remote('receive_mail_remote',
-                                                           int(player_id), mail_data)
-
-    def send_award_kill(self):
-        if not self._last_shot_item:
-            return
-        logger.debug("send_award_kill===============")
-        mail_id = game_configs.base_config.get('kill_rewards_worldboss')
-
-        player_id = self._last_shot_item['player_id']
-        mail_date, _ = deal_mail(conf_id=mail_id, receive_id=player_id)
-        remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
-        remote_gate.push_message_to_transit_remote('receive_mail_remote',
-                                                   player_id, mail_data)
 
     def set_next_stage(self, kill_or_not=False):
         """
