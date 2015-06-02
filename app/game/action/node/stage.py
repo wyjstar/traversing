@@ -703,20 +703,22 @@ def trigger_hjqy(player, result):
     # 如果战败则不触发
     if not result:
         return 0
+    logger.debug("trigger_hjqy")
     # 如果已经触发过hjqy，则不触发
-    if not remote_gate['world'].is_can_trggere_hjqy_remote(player.base_info.id):
+    if not remote_gate['world'].is_can_trigger_hjqy_remote(player.base_info.id):
         return 0
 
+    logger.debug("can_trigger_hjqy")
     # 触发hjqy
     open_stage_id = player.stage_component.rank_stage_progress
     stage_info = game_configs.stage_config.get(open_stage_id)
 
-
     rate = random.random()
+    rate = 0.01 # for test
     hjqytrigger = game_configs.base_config.get("hjqytrigger")
     hjqyRandomCheckpoint = game_configs.base_config.get("hjqyRandomCheckpoint")
     logger.debug("rate: %s, hjqytrigger:%s" % (rate, hjqytrigger))
-    if rate > hjqytrigger[0]:
+    if rate <= hjqytrigger[0]:
         return 0
 
     info = {}

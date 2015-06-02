@@ -5,7 +5,7 @@ created by wzp.
 """
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
-from shared.utils.date_util import str_time_period_to_timestamp, is_expired, string_to_timestamp
+from shared.utils.date_util import str_time_period_to_timestamp, is_expired, string_to_timestamp_hms
 from gfirefly.server.logobj import logger
 from gfirefly.dbentrust.redis_mode import RedisObject
 from shared.utils.ranking import Ranking
@@ -23,9 +23,9 @@ class HjqyBossManager(object):
     """
     def __init__(self, _tb_hjqyboss, _tb_hjqyboss_player):
         self._bosses = {}
-        self.init()
         self._tb_hjqyboss = _tb_hjqyboss
         self._tb_hjqyboss_player = _tb_hjqyboss_player
+        self.init()
 
     def init(self):
         """docstring for init"""
@@ -36,7 +36,8 @@ class HjqyBossManager(object):
             self._bosses[boss_id] = boss
         self._rank_instance = Ranking.instance("HjqyBossDamage")
         hjqyDayPointsTime = game_configs.base_config.get("hjqyDayPointsTime")
-        send_rank_reward_time = string_to_timestamp(hjqyDayPointsTime)
+        send_rank_reward_time = string_to_timestamp_hms(hjqyDayPointsTime)
+        send_rank_reward_time = send_rank_reward_time + 24*60*60
         reactor.callLater(send_rank_reward_time - get_current_timestamp() + 1, self.send_rank_reward_mails)
 
 
@@ -233,4 +234,4 @@ class HjqyBoss(object):
         #monster_info = game_configs.monster_config.get(monster_group_info.pos5)
         #return int(monster_info.hp)
 
-hjqy_manager = HjqyBossManager(tb_hjqyboss)
+hjqy_manager = HjqyBossManager(tb_hjqyboss, tb_hjqyboss_player)

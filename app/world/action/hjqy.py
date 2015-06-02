@@ -107,10 +107,11 @@ def blue_units_remote(boss_id):
     return boss.blue_units
 
 @rootserviceHandle
-def is_can_trggere_hjqy_remote(player_id):
+def is_can_trigger_hjqy_remote(player_id):
     """
     玩家是否可触发hjqy
     """
+    logger.debug("is_can_trigger_hjqy_remote")
     boss = hjqy_manager.get_boss(player_id)
     if not boss:
         return True

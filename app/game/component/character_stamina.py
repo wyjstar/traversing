@@ -12,6 +12,12 @@ from shared.utils.const import const
 import time
 from shared.utils.date_util import is_next_day
 
+def peroid_of_stamina_recover():
+    return game_configs.base_config.get('peroid_of_vigor_recover')
+
+
+def max_of_stamina():
+    return game_configs.base_config.get('max_of_vigor')
 
 class CharacterStaminaComponent(Component):
     """可恢复性资源组件: 体力，讨伐令，鞋子"""
@@ -24,7 +30,8 @@ class CharacterStaminaComponent(Component):
         stamina_data = character_info.get('stamina')
         self._stamina.ParseFromString(stamina_data)
         self.save_data()
-        for item in self._stamina:
+        for item in self._stamina.stamina:
+            logger.debug("resource type %s" % item.resource_type)
             self.check_time(item.resource_type)
 
     def save_data(self):
@@ -47,7 +54,8 @@ class CharacterStaminaComponent(Component):
         item = self.get_item(resource_type)
         info = self.get_info(resource_type, self._owner)
         current_time = int(time.time())
-
+        logger.debug("info %s" % info)
+        logger.debug("finance %s" % self.owner.finance[const.STAMINA])
         stamina_add = (current_time - item.last_gain_stamina_time) / info.get("recover_period")
         left_stamina = (current_time - item.last_gain_stamina_time) % info.get("recover_period")
         if self.owner.finance[resource_type] < info.get("max_value"):
@@ -82,18 +90,20 @@ class CharacterStaminaComponent(Component):
         self.owner.finance.save_data()
 
     def get_item(self, resource_type):
-        for item in self._stamina:
+        for item in self._stamina.stamina:
             if item.resource_type == resource_type:
                 return item
         return None
 
-    def get_info(resource_type, player, buy_stamina_times=0):
+    def get_info(self, resource_type, player, buy_stamina_times=0):
         max_value = 0
         one_buy_value = 0
         recover_period = 0
         recover_unit = 0
         can_buy_times = 0
-        need_gold = {}
+        need_gold = 0
+        logger.debug("resource_type %s %s" % (resource_type, const.STAMINA))
+        logger.debug("%s %s" % (type(resource_type), type(const.STAMINA)))
 
         if resource_type == const.STAMINA: # 体力
             max_value = game_configs.base_config.get("max_of_vigor")
@@ -148,7 +158,7 @@ class CharacterStaminaComponent(Component):
     @property
     def get_stamina_times(self):
         """邮件中获取赠送体力次数"""
-        self.check_time()
+        self.check_time(const.STAMINA)
         item = self.get_item(const.STAMINA)
         return item.get_stamina_times
 
@@ -184,7 +194,7 @@ class CharacterStaminaComponent(Component):
 
     @property
     def contributors(self):
-        self.check_time()
+        self.check_time(const.STAMINA)
         item = self.get_item(const.STAMINA)
         return item.contributors
 
