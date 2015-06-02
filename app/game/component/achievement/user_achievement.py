@@ -270,6 +270,10 @@ class SubEvent24(TaskEvent):
     def check(self, data):
         return self.check_count(data, self)
 
+class SubEvent25(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
 
 class UserAchievement(Component):
     def __init__(self, owner=None):

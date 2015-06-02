@@ -50,6 +50,7 @@ class PlayerCharacter(object):
                  rebate=component.Rebate(self),
                  buy_coin=component.CharacterBuyCoinActivity(self),
                  pvp=component.CharacterPvpComponent(self)
+                 share=component.ShareComponent(self),
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
