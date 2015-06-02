@@ -35,3 +35,7 @@ def push_message_maintime(key, character_id,
     else:
         return remote_gate.push_message_maintime_remote(key, character_id,
                                                         maintain_time, args)
+
+
+def get_activity_id():
+    return remote_gate.get_act_id_from_world_remote()

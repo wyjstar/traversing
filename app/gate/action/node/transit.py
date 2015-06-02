@@ -18,8 +18,8 @@ def pull_message_remote(key, character_id, args):
         logger.debug(oldvcharacter.node)
         child_node = groot.child(oldvcharacter.node)
         result = child_node.callbackChild(*args)
-        # print 'gate found character to pull message:', oldvcharacter.__dict__, args, result
+        # logger('gate found character to pull message:%s %s %s',
+        #        oldvcharacter.__dict__, args, result)
         return result
     else:
         return False
-

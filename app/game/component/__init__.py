@@ -34,6 +34,7 @@ from baseInfo.CharacterBaseInfoComponent import CharacterBaseInfoComponent
 from character_recharge_gift import CharacterRechargeGift
 from character_pay import CharacterPay
 from character_limit_hero import CharacterLimitHeroComponent
+from character_pvp import CharacterPvpComponent
 from rebate.rebate import Rebate
 
 from character_buy_coin_activity import CharacterBuyCoinActivity
@@ -54,5 +55,5 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'UserAchievement', 'UserMine', 'UserStone',
            'CharacterBaseInfoComponent', 'CharacterRechargeGift',
            'CharacterPay', 'Rebate', 'CharacterBuyCoinActivity',
-           'CharacterLimitHeroComponent',
+           'CharacterLimitHeroComponent', 'CharacterPvpComponent'
            ]

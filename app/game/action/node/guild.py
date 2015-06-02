@@ -7,7 +7,7 @@ import time
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
-from app.game.redis_mode import tb_guild_info, tb_guild_name
+from app.game.redis_mode import tb_guild_info
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
@@ -82,7 +82,7 @@ def create_guild_801(data, player):
         return response.SerializeToString()
 
     # 判断有没有重名
-    guild_name_data = tb_guild_name.getObj('names')
+    guild_name_data = tb_guild_info.getObj('names')
     _result = guild_name_data.hsetnx(g_name, '')
     if not _result:
         response.res.result = False
@@ -239,7 +239,7 @@ def exit_guild_803(data, player):
     if guild_obj.get_p_num() == 1:
         # 解散公会
         # 删除公会名字
-        guild_name_data = tb_guild_name.getObj('names')
+        guild_name_data = tb_guild_info.getObj('names')
         if guild_name_data.hexists(guild_obj.name):
             guild_name_data.hdel(guild_obj.name)
 
@@ -730,7 +730,7 @@ def bless_809(data, player):
     if guild_obj.exp >= game_configs.guild_config.get(guild_obj.level).exp:
         guild_obj.exp -= game_configs.guild_config.get(guild_obj.level).exp
         guild_obj.level += 1
-        rank_helper.add_rank_info('Guildlevel',
+        rank_helper.add_rank_info('GuildLevel',
                                   guild_obj.g_id, guild_obj.level)
 
     player.guild.save_data()
@@ -982,10 +982,6 @@ def get_guild_info_812(data, player):
         response.captain_icon = player.base_info.head
         response.captain_zan_receive_state = guild_obj.receive_praise_state
 
-        if guild_obj.apply:
-            response.have_apply = 1
-        else:
-            response.have_apply = 0
     else:
         president_id = guild_obj.p_list.get(1)[0]
         character_info = tb_character_info.getObj(president_id).hgetall()
@@ -1001,6 +997,11 @@ def get_guild_info_812(data, player):
             heads = Heads_DB()
             heads.ParseFromString(character_info['heads'])
             response.captain_icon = heads.now_head
+    if player.guild.position <= 2:
+        if guild_obj.apply:
+            response.have_apply = 1
+        else:
+            response.have_apply = 0
 
     response.res.result = True
     return response.SerializeToString()
@@ -1394,7 +1395,7 @@ def find_guild_1809(data, player):
         guild_obj = tb_guild_info.getObj(id_or_name)
         isexist = guild_obj.exists()
     else:
-        guild_name_obj = tb_guild_name.getObj('names')
+        guild_name_obj = tb_guild_info.getObj('names')
         isexist = guild_name_obj.hexists(id_or_name)
         g_id = guild_name_obj.hget(id_or_name)
         guild_obj = tb_guild_info.getObj(g_id)

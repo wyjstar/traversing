@@ -221,3 +221,9 @@ def net_conn_lost_remote_noresult(dynamic_id):
             print "net lost3++++++++++++++++", dynamic_id, vcharacter
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)
+
+
+@rootserviceHandle
+def get_act_id_from_world_remote():
+    world_remote = GlobalObject().remote['world']
+    return world_remote.get_act_id_remote()

@@ -18,6 +18,7 @@ Ranking.init('PowerRank1', 99999)
 Ranking.init('PowerRank2', 99999)
 Ranking.init('StarRank1', 99999)
 Ranking.init('StarRank2', 99999)
+Ranking.init('LimitHeroRank', 99999)
 
 
 now = int(time.time())

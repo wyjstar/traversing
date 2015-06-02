@@ -100,6 +100,7 @@ class BaseConfig(object):
         config_value["sweepNeedItem"] = parse(config_value["sweepNeedItem"])
         config_value["arena_win_points"] = parse(config_value["arena_win_points"])
         config_value["arenaRankUpRewards"] = parse(config_value["arenaRankUpRewards"])
+        config_value["arenaRevengeRewards"] = parse(config_value["arenaRevengeRewards"])
         config_value["price_sweep"] = parse(config_value["price_sweep"])
         #config_value["CoinCardCumulateTimes"] = parse(config_value["CoinCardCumulateTimes"])
         config_value["CoinCardCumulate"] = parse(config_value["CoinCardCumulate"])
@@ -121,5 +122,11 @@ class BaseConfig(object):
 
         config_value["supportPrice"] = supportPrice
         config_value["supportPriceMax"] = supportPriceMax
+
+        overcome_rewars = config_value['ggzjReward']
+        rewards = {}
+        for k, v in overcome_rewars.items():
+            rewards[k] = parse(v)
+        config_value['ggzjReward'] = rewards
 
         return config_value

@@ -39,7 +39,7 @@ def get_rank_info_1805(data, player):
 
 
 def get_level_rank(first_no, last_no, player, response):
-    if flag_doublu_day():
+    if rank_helper.flag_doublu_day():
         rank_name = 'LevelRank2'
         last_rank_name = 'LevelRank1'
     else:
@@ -87,7 +87,7 @@ def get_level_rank(first_no, last_no, player, response):
 
 
 def get_power_rank(first_no, last_no, player, response):
-    if flag_doublu_day():
+    if rank_helper.flag_doublu_day():
         rank_name = 'PowerRank2'
         last_rank_name = 'PowerRank1'
     else:
@@ -134,7 +134,7 @@ def get_power_rank(first_no, last_no, player, response):
 
 
 def get_star_rank(first_no, last_no, player, response):
-    if flag_doublu_day():
+    if rank_helper.flag_doublu_day():
         rank_name = 'StarRank2'
         last_rank_name = 'StarRank1'
     else:
@@ -181,14 +181,3 @@ def get_star_rank(first_no, last_no, player, response):
         ranks = rank_helper.get_rank(rank_name, 1, 99999)
         response.all_num = len(ranks)
     response.res.result = True
-
-
-def flag_doublu_day():
-    """
-    return 0 or 1
-    """
-    now = int(time.time())
-    t = time.localtime(now)
-    time1 = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', t),
-                        '%Y-%m-%d %H:%M:%S'))
-    return int(time1/(24*60*60)) % 2

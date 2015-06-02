@@ -28,7 +28,7 @@ from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.achievement.user_achievement import EventType
 from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process, pve_process_check
-from app.game.action.node._fight_start_logic import pvp_process
+from app.game.action.node._fight_start_logic import pvp_process, save_line_up_order
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
@@ -605,6 +605,7 @@ def battle_1253(data, player):
     blue_best_skill_level = 0
     red_units = {}
     blue_units = {}
+    save_line_up_order(line_up, player, red_best_skill_id)
 
     logger.debug("%s pos" % pos)
 
@@ -646,7 +647,7 @@ def battle_1253(data, player):
 
     elif mine_type == 1:
         # pvp
-        red_units = player.fight_cache_component.red_unit
+        red_units = player.fight_cache_component.get_red_units()
         info = get_save_guard(player, pos)
         # print info
         blue_units = info.get("battle_units", {})

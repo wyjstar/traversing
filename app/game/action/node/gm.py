@@ -4,7 +4,7 @@ created by server on 14-7-17下午4:50.
 """
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
-from app.game.redis_mode import tb_guild_info, tb_guild_name
+from app.game.redis_mode import tb_guild_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
@@ -208,7 +208,7 @@ def add_guild_level_remote(data, player):
     args = cPickle.loads(data)
     level = int(args.get('level'))
     name = args.get('name')
-    guild_name_data = tb_guild_name.getObj('names')
+    guild_name_data = tb_guild_info.getObj('names')
     guild_id = guild_name_data.hget(name)
     if not guild_id:
         logger.debug('guild name not find')

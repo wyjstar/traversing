@@ -31,6 +31,17 @@ def get_target_line_up_info_706(pro_data, player):
     request.ParseFromString(pro_data)
     target_id = request.target_id
 
+    char_obj = tb_character_info.getObj(target_id)
+    if char_obj.exists():
+        response = char_obj.hget('copy_slots')
+        if response:
+            return response
+
+    response = line_up_pb2.LineUpResponse()
+    response.res.result = False
+    return response.SerializePartialToString()
+
+    # ========================remove========================
     invitee_player = PlayersManager().get_player_by_id(target_id)
     if invitee_player:  # 在线
         response = line_up_info(invitee_player)

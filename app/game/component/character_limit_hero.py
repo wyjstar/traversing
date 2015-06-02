@@ -23,16 +23,11 @@ class CharacterLimitHeroComponent(Component):
         """
         初始化公会组件
         """
-        activity_id = 13001
-        if activity_id == character_info.get("activity_id"):
-            self._free_time = character_info.get("free_time")
-            self._draw_times = character_info.get("draw_times")
-            self._integral = character_info.get("integral")
-            self._integral_draw_times = \
-                character_info.get("integral_draw_times")
-            self._activity_id = character_info.get("activity_id")
-        else:
-            self._activity_id = 13001
+        self._free_time = character_info.get("free_time")
+        self._draw_times = character_info.get("draw_times")
+        self._integral_draw_times = \
+            character_info.get("integral_draw_times")
+        self._activity_id = character_info.get("activity_id")
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -47,6 +42,14 @@ class CharacterLimitHeroComponent(Component):
                 'integral_draw_times': self._integral_draw_times,
                 'activity_id': self._activity_id}
         return data
+
+    def update(self, activity_id):
+        if self.activity_id == activity_id:
+            return
+        self._free_time = 1  # 最后免费抽取时间
+        self._draw_times = 0  # 累计抽取次数
+        self._integral_draw_times = 0  # 积分抽取次数
+        self._activity_id = activity_id  # 活动ID
 
     @property
     def integral_draw_times(self):
@@ -76,6 +79,6 @@ class CharacterLimitHeroComponent(Component):
     def activity_id(self):
         return self._activity_id
 
-    @free_time.setter
+    @activity_id.setter
     def activity_id(self, v):
         self._activity_id = v

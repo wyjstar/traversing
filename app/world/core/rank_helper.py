@@ -3,6 +3,7 @@ from shared.utils.const import const
 from gfirefly.dbentrust.redis_mode import RedisObject
 from shared.utils.ranking import Ranking
 import time
+from gtwisted.core import reactor
 
 
 tb_character_info = RedisObject('tb_character_info')

@@ -28,4 +28,5 @@ message LimitHeroDrawResponse{
     optional GameResourcesResponse gain = 2;
     optional int32 rank = 3;  //积分排行 0未加入排行
     repeated LimitHeroRank limit_rank = 4;
+    optional int32 free_time = 5;     //上次免费抽取时间
 }
