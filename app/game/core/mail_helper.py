@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from shared.utils.mail_helper import deal_mail
 from app.game.action.root import netforwarding
+from gfirefly.server.logobj import logger
 
 
 def send_mail(**args):
