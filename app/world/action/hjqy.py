@@ -6,7 +6,7 @@ created by wzp.
 from gfirefly.server.globalobject import rootserviceHandle
 from app.world.core.hjqy_boss import hjqy_manager
 from app.battle.server_process import hjqy_start
-#import cPickle
+import cPickle
 #from shared.utils.date_util import get_current_timestamp
 #from app.world.action.gateforwarding import push_all_object_message
 from gfirefly.server.logobj import logger
@@ -25,8 +25,10 @@ def hjqy_init_remote(player_id, friend_ids):
     for temp_id in friend_ids + [player_id]:
         boss = hjqy_manager.get_boss(temp_id)
         if boss and (boss.is_share or temp_id == temp_id): #获取hjqy列表
+            logger.debug("player id %s" % boss.player_id)
             bosses[player_id] = dict(player_id=boss.player_id,
                     stage_id=boss.stage_id,
+                    nickname=boss.nickname,
                     is_share=boss.is_share,
                     trigger_time=boss.trigger_time,
                     hp_max=boss.hp_max,
@@ -40,7 +42,7 @@ def hjqy_init_remote(player_id, friend_ids):
 def hjqy_damage_hp_remote(player_id):
     """ 获取玩家伤害信息
     """
-    damage_hp = hjqy_manager.get_damage_hp(player_id, 0)
+    damage_hp = hjqy_manager.get_damage_hp(player_id)
     logger.debug("hjqy_damage_hp_remote : %s" % damage_hp)
     return damage_hp
 
@@ -48,7 +50,7 @@ def hjqy_damage_hp_remote(player_id):
 def hjqy_rank_remote(player_id):
     """ 获取玩家伤害排名
     """
-    rank = hjqy_manager.get_rank(player_id, 0)
+    rank = hjqy_manager.get_rank(player_id)
     logger.debug("hjqy_rank_remote:%s" % rank)
     return rank
 
@@ -120,11 +122,13 @@ def is_can_trigger_hjqy_remote(player_id):
     return True
 
 @rootserviceHandle
-def create_hjqy_remote(player_id, blue_units, stage_id):
+def create_hjqy_remote(player_id, nickname, str_blue_units, stage_id):
     """
     触发hjqy
     """
-    hjqy_manager.add_boss(player_id, blue_units, stage_id)
+    logger.debug("create_hjqy_remote")
+    blue_units = cPickle.loads(str_blue_units)
+    hjqy_manager.add_boss(player_id, nickname, blue_units, stage_id)
     return True
 
 

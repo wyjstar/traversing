@@ -31,6 +31,7 @@ from app.game.core.item_group_helper import gain, get_return
 import copy
 from shared.utils.random_pick import random_pick_with_weight
 from app.game.core.mail_helper import send_mail
+import cPickle
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -711,14 +712,15 @@ def trigger_hjqy(player, result):
     logger.debug("can_trigger_hjqy")
     # 触发hjqy
     open_stage_id = player.stage_component.rank_stage_progress
-    stage_info = game_configs.stage_config.get(open_stage_id)
+    player.fight_cache_component.stage_id = open_stage_id
+    stage_info = player.fight_cache_component._get_stage_config()
 
     rate = random.random()
     rate = 0.01 # for test
     hjqytrigger = game_configs.base_config.get("hjqytrigger")
     hjqyRandomCheckpoint = game_configs.base_config.get("hjqyRandomCheckpoint")
     logger.debug("rate: %s, hjqytrigger:%s" % (rate, hjqytrigger))
-    if rate <= hjqytrigger[0]:
+    if rate > hjqytrigger[0]:
         return 0
 
     info = {}
@@ -733,12 +735,13 @@ def trigger_hjqy(player, result):
     player.fight_cache_component.stage_id = stage_id
     blue_units = player.fight_cache_component._assemble_monster()
 
-    result = remote_gate['world'].create_hjqy_remote(player.base_info.id, blue_units[0], stage_id)
+    str_blue_units = cPickle.dumps(blue_units[0])
+    result = remote_gate['world'].create_hjqy_remote(player.base_info.id, player.base_info.base_name, str_blue_units, stage_id)
     if not result:
         return False
     # send trigger reward
     hjqyOpenReward = game_configs.base_config.get("hjqyOpenReward")
-    send_mail(dict(conf_id=hjqyOpenReward, receive_id=player.base_info.id))
+    send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
 
     return stage_id
 

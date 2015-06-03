@@ -25,17 +25,19 @@ def init_2101(pro_data, player):
     response = hjqy_pb2.HjqyInitResponse()
     friend_ids = player.friends.friends
     data = remote_gate['world'].hjqy_init_remote(player.base_info.id, friend_ids)
+    logger.debug("return data %s" % data)
     for boss_data in data.values():
-        construct_boss_pb(data, response)
+        construct_boss_pb(boss_data, response)
 
-    data.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
-    data.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
+    response.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
+    response.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
     return response.SerializeToString()
 
 def construct_boss_pb(data, response):
     """docstring for construct_boss_pb"""
-    boss_pb = response.data.add()
+    boss_pb = response.bosses.add()
     boss_pb.player_id = data.get("player_id")
+    boss_pb.nickname = data.get("nickname")
     boss_pb.stage_id = data.get("stage_id")
     boss_pb.is_share = data.get("is_share")
     boss_pb.trigger_time = data.get("trigger_time")

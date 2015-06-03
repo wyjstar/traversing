@@ -30,7 +30,10 @@ class HjqyBossManager(object):
     def init(self):
         """docstring for init"""
         boss_data = self._tb_hjqyboss.hgetall()
+        logger.debug("init hjqy data")
+        logger.debug(boss_data)
         for boss_id, data in boss_data.items():
+            boss_id = int(boss_id)
             boss = HjqyBoss(boss_id)
             boss.init_data(data)
             self._bosses[boss_id] = boss
@@ -41,9 +44,12 @@ class HjqyBossManager(object):
         reactor.callLater(send_rank_reward_time - get_current_timestamp() + 1, self.send_rank_reward_mails)
 
 
-    def add_boss(self, player_id, blue_units, stage_id):
+    def add_boss(self, player_id, nickname, blue_units, stage_id):
         """docstring for add_boss"""
-        boss = HjqyBoss(player_id, self._tb_hjqyboss)
+        logger.debug("add boss %s %s %s %s" % (player_id, 1, blue_units, stage_id))
+        print(nickname)
+        boss = HjqyBoss(player_id)
+        boss.nickname = nickname
         boss.blue_units = blue_units
         boss.stage_id = stage_id
         boss.trigger_time = int(get_current_timestamp())
@@ -116,13 +122,17 @@ class HjqyBoss(object):
     """docstring for Boss"""
     def __init__(self, player_id):
         self._player_id = player_id
+        self._nickname = ""
         self._stage_id = 0     # 关卡id
         self._blue_units = {}  # 怪物信息
         self._is_share = False # 是否已经分享
+        self._trigger_time = 0 # 触发时间
 
 
     def init_data(self, data):
         """docstring for init_data"""
+        self._player_id = data.get("player_id", 0)
+        self._nickname = data.get("nickname", "")
         self._stage_id = data.get("stage_id", 0)
         self._blue_units = data.get("blue_units", {})
         self._is_share = data.get("is_share", False)
@@ -130,6 +140,14 @@ class HjqyBoss(object):
     @property
     def player_id(self):
         return self._player_id
+
+    @property
+    def nickname(self):
+        return self._nickname
+
+    @nickname.setter
+    def nickname(self, value):
+        self._nickname = value
 
     @property
     def stage_id(self):
@@ -148,6 +166,22 @@ class HjqyBoss(object):
         self._is_share = value
 
     @property
+    def trigger_time(self):
+        return self._trigger_time
+
+    @trigger_time.setter
+    def trigger_time(self, value):
+        self._trigger_time = value
+
+    @property
+    def blue_units(self):
+        return self._blue_units
+
+    @blue_units.setter
+    def blue_units(self, value):
+        self._blue_units = value
+
+    @property
     def hp(self):
         hp = 0
         for unit in self._blue_units.values():
@@ -162,16 +196,18 @@ class HjqyBoss(object):
         return hp_max
 
     def get_data_dict(self):
-        return dict(boss_id=self._boss_id,
+        return dict(player_id=self._player_id,
+                    nickname=self._nickname,
                     blue_units=self._blue_units,
                     stage_id=self._stage_id,
+                    trigger_time=self._trigger_time,
                     is_share=self._is_share)
 
     def save_data(self):
         """
         保存数据
         """
-        tb_hjqyboss.hset(self._boss_id, self.get_data_dict())
+        tb_hjqyboss.hset(self._player_id, self.get_data_dict())
 
     def start_boss(self):
         self._rank_instance.clear_rank()  # 重置排行
