@@ -136,7 +136,6 @@ class FFServer:
             log = logger_sdk.new_log('TxApi')
             GlobalObject().msdk = Msdk(host, qq_appid, qq_appkey, wx_appid, wx_appkey, log=log)
             GlobalObject().pay = MidasApi(host, goods_host, valid_host, log=log)
-            print("================================")
         import admin
 
     def remote_connect(self, rname, rhost):

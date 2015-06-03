@@ -66,9 +66,9 @@ if __name__ == '__main__':
     port = 3306
     dbname = "db_traversing"
     charset = "utf8"
-    dbpool.initPool(host=hostname, user=user,
-                    passwd=password, port=port,
-                    db=dbname, charset=charset)
+    # dbpool.initPool(host=hostname, user=user,
+    #                 passwd=password, port=port,
+    #                 db=dbname, charset=charset)
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
