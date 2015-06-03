@@ -3,6 +3,7 @@
 created by server on 14-6-6上午11:05.
 """
 import cPickle
+from gfirefly.server.logobj import logger
 from chip_config import ChipConfig
 from equipment.equipment_config import EquipmentConfig
 from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
@@ -153,7 +154,7 @@ all_config_name = {
     'hjqy_config': HjqyConfig()
 }
 
-print("load game_configs===========================")
+logger.info("=============load game_configs=============")
 module = cPickle.load(open('config/excel_cpickle', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)
