@@ -4,8 +4,6 @@ from shared.db_opear.configs_data import game_configs
 from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 import time
-from app.game.component.achievement.user_achievement import EventType
-from app.game.component.achievement.user_achievement import CountEvent
 from shared.tlog import tlog_action
 
 
@@ -56,6 +54,5 @@ class ActStageLogic(base_stage.BaseStageLogic):
                 player.stage_component.act_stage_info[0] += conf.timesExpend
             else:
                 player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
-            lively_event = CountEvent.create_event(EventType.STAGE_3, 1, ifadd=True)
             stage_util.settle(player, result, response, lively_event, conf)
         tlog_action.log('RoundFlow', player, stage_id, 3, 0, result)

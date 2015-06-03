@@ -40,7 +40,6 @@ class PlayerCharacter(object):
                  stamina=component.CharacterStaminaComponent(self),
                  shop=component.CharacterShopComponent(self),
                  brew=component.CharacterBrewComponent(self),
-                 tasks=component.UserAchievement(self),
                  mine=component.UserMine(self),
                  stone=component.UserStone(self),
                  travel=component.CharacterTravelComponent(self),
@@ -49,8 +48,8 @@ class PlayerCharacter(object):
                  limit_hero=component.CharacterLimitHeroComponent(self),
                  rebate=component.Rebate(self),
                  buy_coin=component.CharacterBuyCoinActivity(self),
+                 task=component.CharacterTaskComponent(self),
                  pvp=component.CharacterPvpComponent(self)
-                 share=component.ShareComponent(self),
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -203,8 +202,8 @@ class PlayerCharacter(object):
         return self._components['shop']
 
     @property
-    def tasks(self):
-        return self._components['tasks']
+    def task(self):
+        return self._components['task']
 
     @property
     def brew(self):

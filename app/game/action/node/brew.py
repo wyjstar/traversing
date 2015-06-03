@@ -5,8 +5,6 @@ created by sphinx on 14-10-11下午4:36.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import brew_pb2
-from app.game.component.achievement.user_achievement import EventType
-from app.game.component.achievement.user_achievement import CountEvent
 from app.game.core.lively import task_status
 
 from gfirefly.server.globalobject import GlobalObject
@@ -56,11 +54,4 @@ def taken_brew_1602(data, player):
         response.nectar_num = player.brew.nectar
         response.nectar_cur = player.brew.nectar_cur
         response.gold = player.finance.gold
-
-    lively_event = CountEvent.create_event(EventType.WINE, 1, ifadd=True)
-    tstatus = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
     return response.SerializePartialToString()

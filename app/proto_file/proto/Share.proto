@@ -1,6 +1,6 @@
 import "common.proto";
 
-//获取奖励状态 msgid=1300
+//获取奖励状态 msgid=2300
 message ClientGetShareStatusData
 {
 

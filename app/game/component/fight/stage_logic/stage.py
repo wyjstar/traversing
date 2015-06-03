@@ -4,8 +4,6 @@ from shared.db_opear.configs_data import game_configs
 from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 import time
-from app.game.component.achievement.user_achievement import EventType
-from app.game.component.achievement.user_achievement import CountEvent
 from shared.tlog import tlog_action
 
 
@@ -49,7 +47,6 @@ class StageLogic(base_stage.BaseStageLogic):
             player.stamina.save_data()
 
             # 活跃度
-            lively_event = CountEvent.create_event(EventType.STAGE_1, 1, ifadd=True)
             # 结算
             stage_util.settle(player, result, response, lively_event, conf)
 

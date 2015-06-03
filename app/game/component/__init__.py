@@ -26,7 +26,6 @@ from character_stamina import CharacterStaminaComponent
 from character_shop import CharacterShopComponent
 from brew.brew import CharacterBrewComponent
 from character_travel import CharacterTravelComponent
-from achievement.user_achievement import UserAchievement
 from mine.user_mine import UserMine
 from stone.user_stone import UserStone
 from character_runt import CharacterRuntComponent
@@ -36,7 +35,7 @@ from character_pay import CharacterPay
 from character_limit_hero import CharacterLimitHeroComponent
 from character_pvp import CharacterPvpComponent
 from rebate.rebate import Rebate
-from share.share import ShareComponent
+from character_task import CharacterTaskComponent
 
 from character_buy_coin_activity import CharacterBuyCoinActivity
 
@@ -57,5 +56,5 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterBaseInfoComponent', 'CharacterRechargeGift',
            'CharacterPay', 'Rebate', 'CharacterBuyCoinActivity',
            'CharacterLimitHeroComponent', 'CharacterPvpComponent',
-           'ShareComponent',
+           'CharacterTaskComponent',
            ]

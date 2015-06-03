@@ -17,8 +17,6 @@ from shared.db_opear.configs_data import game_configs
 import random
 from gfirefly.server.logobj import logger
 import time
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
 from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
@@ -92,8 +90,6 @@ def travel_831(data, player):
 
     player.travel_component.use_shoes()
     player.travel_component.save()
-    lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
-    tstatus = player.tasks.check_inter(lively_event)
     player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
