@@ -77,11 +77,12 @@ def pvp_daily_award_tick():
         time_interval = time_long
     else:
         time_interval = 60*60*24 + time_long
+    logger.debug('pvp daily award -tick interval time:%s', time_interval)
     reactor.callLater(time_interval, do_pvp_daily_award_tick)
 
 
 def do_pvp_daily_award_tick():
-    reactor.callLater(60*60*24, pvp_daily_award_tick)
+    reactor.callLater(60*60*24, do_pvp_daily_award_tick)
     try:
         pvp_daily_award()
     except Exception, e:
@@ -91,6 +92,7 @@ def do_pvp_daily_award_tick():
 
 
 def pvp_daily_award():
+    logger.debug('pvp daily send award mail ')
     arena_award = game_configs.base_config.get('arena_day_points')
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
                                      'character_id>1000',
