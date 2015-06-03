@@ -118,11 +118,9 @@ class CharacterPvpComponent(Component):
         return self._pvp_overcome[index]
 
     def pvp_player_rank_refresh(self):
-        if self.owner.base_info.is_firstday_from_register():
-            return
         rank = tb_pvp_rank.ztotal()
         if not rank:
-            rank = int(tb_pvp_rank.get('incr'))
+            rank = int(tb_pvp_rank.ztotal())
 
         if rank < 9:
             self._pvp_arena_players = [1, 2, 3, 4, 5, 6, 7, 8, 9]

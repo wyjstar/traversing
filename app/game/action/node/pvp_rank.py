@@ -114,7 +114,7 @@ def pvp_player_rank_request_1502(data, player):
         rank_item = response.rank_items.add()
         rank_item.rank = rank
         _with_pvp_info(rank_item, char_id)
-    print response
+    # print response
     return response.SerializeToString()
 
 
@@ -377,10 +377,10 @@ def pvp_fight_overcome_1508(data, player):
     line_up = request.lineup
     skill = request.skill
 
-    # if player.base_info.is_firstday_from_register():
-    #     response.res.result = False
-    #     response.res.result_no = 150801
-    #     return response.SerializeToString()
+    if player.base_info.is_firstday_from_register():
+        response.res.result = False
+        response.res.result_no = 150801
+        return response.SerializeToString()
 
     if request.index != player.pvp.pvp_overcome_current:
         logger.error('overcome index is error:%s', request.index)
@@ -426,10 +426,10 @@ def reset_overcome_time_1509(data, player):
     request.ParseFromString(data)
     response = CommonResponse()
 
-    # if player.base_info.is_firstday_from_register():
-    #     response.result = False
-    #     response.result_no = 150901
-    #     return response.SerializeToString()
+    if player.base_info.is_firstday_from_register():
+        response.result = False
+        response.result_no = 150901
+        return response.SerializeToString()
 
     response.result = player.pvp.reset_time()
     return response.SerializeToString()
