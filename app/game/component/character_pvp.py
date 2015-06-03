@@ -108,6 +108,7 @@ class CharacterPvpComponent(Component):
 
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count += 1
+        self._pvp_overcome_current = 1
         self.save_data()
         return True
 
