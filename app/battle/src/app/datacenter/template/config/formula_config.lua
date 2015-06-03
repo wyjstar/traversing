@@ -242,9 +242,9 @@ formula_config={
 ,  [121] = {
   ["precondition"] = "expHero >= 1000",  ["formula"] = "expHero/1000",  ["clientPrecondition"] = "expHero >= 1000",  ["id"] = 121,  ["clientFormula"] = "result=expHero/1000",  ["key"] = "sacrificeExp_3",}
 ,  [122] = {
-  ["precondition"] = "1",  ["formula"] = "damage if damage<=10000 else 10000+damage/10",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=(damage <= 10000 and damage) or 10000+damage/10",  ["key"] = "coinWorldboss",}
+  ["precondition"] = "1",  ["formula"] = "\"10000\"",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=10000",  ["key"] = "coinWorldboss",}
 ,  [123] = {
-  ["precondition"] = "1",  ["formula"] = "1+damage/10000",  ["clientPrecondition"] = "1",  ["id"] = 123,  ["clientFormula"] = "result=1+damage/10000",  ["key"] = "soulWorldboss",}
+  ["precondition"] = "1",  ["formula"] = "\"10\"",  ["clientPrecondition"] = "1",  ["id"] = 123,  ["clientFormula"] = "result=10",  ["key"] = "soulWorldboss",}
 ,  [124] = {
   ["precondition"] = "1",  ["formula"] = "10000/rank+playerLevel*10",  ["clientPrecondition"] = "1",  ["id"] = 124,  ["clientFormula"] = "result=10000/rank+playerLevel*10",  ["key"] = "coinArenaSuccess",}
 ,  [125] = {
@@ -278,11 +278,11 @@ formula_config={
 ,  [139] = {
   ["precondition"] = "1",  ["formula"] = "heroNum*10",  ["clientPrecondition"] = "1",  ["id"] = 139,  ["clientFormula"] = "result=heroNum*10",  ["key"] = "guide2002",}
 ,  [140] = {
-  ["precondition"] = "1",  ["formula"] = "heroBreak1*10+heroBreak2*10+heroBreak3*10+heroBreak4*10+heroBreak5*10+heroBreak6*10",  ["clientPrecondition"] = "1",  ["id"] = 140,  ["clientFormula"] = "result=heroBreak1*10+heroBreak2*10+heroBreak3*10+heroBreak4*10+heroBreak5*10+heroBreak6*10",  ["key"] = "guide2003",}
+  ["precondition"] = "1",  ["formula"] = "(heroBreak1+heroBreak2+heroBreak3+heroBreak4+heroBreak5+heroBreak6)*10",  ["clientPrecondition"] = "1",  ["id"] = 140,  ["clientFormula"] = "result=(heroBreak)*10",  ["key"] = "guide2003",}
 ,  [141] = {
-  ["precondition"] = "1",  ["formula"] = "heroStone1*1+heroStone2*1+heroStone3*1+heroStone4*1+heroStone5*1+heroStone6*1",  ["clientPrecondition"] = "1",  ["id"] = 141,  ["clientFormula"] = "result=heroStone1*1+heroStone2*1+heroStone3*1+heroStone4*1+heroStone5*1+heroStone6*1",  ["key"] = "guide2004",}
+  ["precondition"] = "1",  ["formula"] = "(heroStone1+heroStone2+heroStone3+heroStone4+heroStone5+heroStone6)*1",  ["clientPrecondition"] = "1",  ["id"] = 141,  ["clientFormula"] = "result=(heroStone)*1",  ["key"] = "guide2004",}
 ,  [142] = {
-  ["precondition"] = "1",  ["formula"] = "heroSeal1*10+heroSeal2*10+heroSeal3*10+heroSeal4*10+heroSeal5*10+heroSeal6*10",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=heroSeal1*10+heroSeal2*10+heroSeal3*10+heroSeal4*10+heroSeal5*10+heroSeal6*10",  ["key"] = "guide2005",}
+  ["precondition"] = "1",  ["formula"] = "(heroSeal1+heroSeal2+heroSeal3+heroSeal4+heroSeal5+heroSeal6)*10",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=(heroSeal)*10",  ["key"] = "guide2005",}
 ,  [143] = {
   ["precondition"] = "1",  ["formula"] = "cheerNum*10",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=cheerNum*10",  ["key"] = "guide2006",}
 ,  [144] = {
@@ -290,5 +290,5 @@ formula_config={
 ,  [145] = {
   ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 145,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2008",}
 ,  [146] = {
-  ["precondition"] = "1",  ["formula"] = "atkArray(1.5+heroBreak*0.5)",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=atkArray(1.5+heroBreak*0.5)",  ["key"] = "atkhjqy",}
+  ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
 ,}

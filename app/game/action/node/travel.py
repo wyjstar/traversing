@@ -121,7 +121,7 @@ def travel_init_830(data, player):
     res_shose = response.shoes
     shoes_num, remain_time = player.travel_component.update_shoes()
     res_shose.num = shoes_num
-    res_shose.remain_time = remain_time
+    res_shose.remain_time = int(time.time()) - remain_time
 
     if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday != time.localtime().tm_yday:
         player.travel_component.last_buy_shoes = [0, int(time.time())]

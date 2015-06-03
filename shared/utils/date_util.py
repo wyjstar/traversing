@@ -32,6 +32,14 @@ def string_to_timestamp(time_str):
     d = datetime.datetime.strptime(time_str, "%Y/%m/%d %H:%M:%S")
     return time.mktime(d.timetuple())
 
+def string_to_timestamp_hms(time_str):
+    """
+    input: 23:59:00
+    output: num
+    """
+    times = time_str.split(':')
+    return get_current_day_timestamp(hour=int(times[0]), minute=int(times[1]))
+
 def str_time_period_to_timestamp(str_time_period):
     """
     input: 12:30-12:40
@@ -78,6 +86,23 @@ def is_past_time(next_time, last_time):
     if d < datetime.datetime.fromtimestamp(last_time):
         d = d + datetime.timedelta(days=1)
     return time.mktime(d.timetuple())
+
+def is_in_period(periods):
+    """
+    格式：[("12:00","14:00"),("18:00","20:00")]
+    """
+    now = get_current_timestamp()
+    for item in periods:
+        t0 = item[0].split(':')
+        t1 = item[1].split(':')
+        start = get_current_day_timestamp(hour=int(t0[0]), minute=int(t0[1]))
+        end = get_current_day_timestamp(hour=int(t1[0]), minute=int(t1[1]))
+        if start < now and now > end:
+            return True
+    return False
+
+def is_expired(last_time, expired_time):
+    return last_time + expired_time < get_current_timestamp()
 
 if __name__ == '__main__':
     print get_timestamp(2014,11,22)

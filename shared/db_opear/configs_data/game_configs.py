@@ -3,6 +3,7 @@
 created by server on 14-6-6上午11:05.
 """
 import cPickle
+from gfirefly.server.logobj import logger
 from chip_config import ChipConfig
 from equipment.equipment_config import EquipmentConfig
 from equipment.equipment_strengthen_config import EquipmentStrengthenConfig
@@ -50,6 +51,8 @@ from recharge_config import RechargeConfig
 from lucky_hero_config import LuckyHeroConfig
 from pseudo_random_config import PseudoRandomConfig
 from push_config import PushConfig
+from hjqy_config import HjqyConfig
+from currency_config import CurrencyConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -97,8 +100,10 @@ notes_config = {}
 recharge_config = {}
 lucky_hero_config = {}
 pseudo_random_config = {}
+hjqy_config = {}
 
 push_config = {}
+currency_config = {}
 
 all_config_name = {
     'travel_item_group_config': TravelItemGroupConfig(),
@@ -148,9 +153,11 @@ all_config_name = {
     'lucky_hero_config': LuckyHeroConfig(),
     'pseudo_random_config': PseudoRandomConfig(),
     'push_config': PushConfig(),
+    'hjqy_config': HjqyConfig(),
+    'currency_config': CurrencyConfig()
 }
 
-print("load game_configs===========================")
+logger.info("=============load game_configs=============")
 module = cPickle.load(open('config/excel_cpickle', 'r'))
 for config_name in all_config_name.keys():
     config_value = module.get(config_name)

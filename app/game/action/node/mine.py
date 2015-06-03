@@ -241,6 +241,8 @@ def guard_1244(data, player):
     character_line_up = CharacterLineUpComponent(player)
     save_slot = {}
     for slot in request.line_up_slots:
+        if not slot.hero_no:
+            continue
         line_up_slot = LineUpSlotComponent(character_line_up,
                                            slot.slot_no,
                                            activation=True,

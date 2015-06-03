@@ -26,6 +26,9 @@ from app.game.core.item_group_helper import get_consume_gold_num
 from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.item_group_helper import gain, get_return
 import copy
+from shared.utils.random_pick import random_pick_with_weight
+from app.game.core.mail_helper import send_mail
+import cPickle
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -323,6 +326,8 @@ def fight_settlement(stage, result, player):
         return response.SerializeToString()
 
     stage.settle(result, response)
+    #触发黄巾起义
+    response.hjqy_stage_id = trigger_hjqy(player, result)
     return response.SerializePartialToString()
 
 
@@ -458,6 +463,9 @@ def stage_sweep(stage_id, times, player, sweep_type):
         player.finance.save_data()
 
     player.pay.pay(need_gold, func)
+
+    #触发黄巾起义
+    response.hjqy_stage_id = trigger_hjqy(player, result)
 
     res.result = True
     tlog_action.log('SweepFlow', player, stage_id, times, tlog_event_id)
@@ -670,3 +678,60 @@ def open_chest_1811(pro_data, player):
     response.res.result = True
     # logger.debug(response)
     return response.SerializePartialToString()
+
+
+def trigger_hjqy(player, result):
+    """docstring for trigger_hjqy 触发黄巾起义
+    return: stage id
+    """
+    # 如果战败则不触发
+    if not result:
+        return 0
+    logger.debug("trigger_hjqy")
+    # 如果已经触发过hjqy，则不触发
+    if not remote_gate['world'].is_can_trigger_hjqy_remote(player.base_info.id):
+        return 0
+
+    logger.debug("can_trigger_hjqy")
+    # 触发hjqy
+    open_stage_id = player.stage_component.rank_stage_progress
+    player.fight_cache_component.stage_id = open_stage_id
+    stage_info = player.fight_cache_component._get_stage_config()
+    if stage_info.type not in [1]:
+        # 只有在剧情关卡时，才能触发黄巾起义
+        return 0
+
+    rate = random.random()
+    rate = 0.01 # for test
+    hjqytrigger = game_configs.base_config.get("hjqytrigger")
+    hjqyRandomCheckpoint = game_configs.base_config.get("hjqyRandomCheckpoint")
+    logger.debug("rate: %s, hjqytrigger:%s" % (rate, hjqytrigger))
+    if rate > hjqytrigger[0]:
+        return 0
+
+    info = {}
+    for i in range(1, 4):
+        info[i] = hjqytrigger[i]
+
+    stage_index = random_pick_with_weight(info)
+
+    logger.debug("chapter: %s, stage_index: %s" % (stage_info.chapter, stage_index))
+    stage_id = hjqyRandomCheckpoint.get(stage_info.chapter)[stage_index-1]
+
+    player.fight_cache_component.stage_id = stage_id
+    blue_units = player.fight_cache_component._assemble_monster()
+
+    str_blue_units = cPickle.dumps(blue_units[0])
+    result = remote_gate['world'].create_hjqy_remote(player.base_info.id, player.base_info.base_name, str_blue_units, stage_id)
+    if not result:
+        return False
+    # send trigger reward
+    hjqyOpenReward = game_configs.base_config.get("hjqyOpenReward")
+    send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
+
+    return stage_id
+
+
+
+
+
