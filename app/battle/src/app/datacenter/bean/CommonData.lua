@@ -64,7 +64,8 @@ end
 
 --给全部数据赋值(登录网络协议返回时对通用值进行初始化)
 function CommonData:setData(data)
-
+    print("CommonData:setData")
+    table.print(data)
     self.GameLoginResponse = data                       --commonData全部数据
 
     self.accountId = data.id                            --玩家id
@@ -127,7 +128,14 @@ function CommonData:setData(data)
 
     self.srv_time = data.server_time                --服务器时间，每秒进行更新
     
+    self.buy_times = {} --data.buy_times                 --购买资源（体力，讨伐令，鞋子）次数
+
+    for k,v in pairs(data.buy_times) do --{资源类型,购买次数,上次获得体力时间}
+        self.buy_times[v.resource_type] = {resource_type=v.resource_type,buy_stamina_times = v.buy_stamina_times,last_gain_time = v.last_gain_stamina_time}
+    end
+
     self:updateSrvTimer()
+    self:resRecoverTime()
 end
 
 --每一秒更新服务器时间
@@ -200,6 +208,27 @@ end
 function CommonData:addEquipSoul(num)
     self:addFinance(21, num)
 end
+
+----------征讨令Begin----------
+--[[--
+    获得征讨令
+]]
+function CommonData:getCrusade()
+    return self:getFinance(RES_TYPE.CRUSADE )
+end
+--[[--
+    减少征讨令
+]]
+function CommonData:subCrusade(num)
+    self:subFinance(RES_TYPE.CRUSADE , num)
+end
+--[[--
+    添加征讨令
+]]
+function CommonData:addCrusade(num)
+    self:addFinance(RES_TYPE.CRUSADE , num)
+end
+----------征讨令End------------
 
 -- 元气
 function CommonData:getYuanqi()
@@ -389,9 +418,7 @@ function CommonData:setExtraSignGiftList(list)
 end
 
 --[[--
-
-获取的额外签到奖励
-
+    获取的额外签到奖励
 ]]
 function CommonData:getExtraSignGiftList()
     return self.extraSignGiftList
@@ -772,6 +799,48 @@ end
 function CommonData:countTime()
     return self.during_time
 end
+
+--[[--
+    可恢复性资源统一恢复时间计时
+    目前包含（体力、讨伐令、鞋子）,先处理讨
+]]
+function CommonData:resRecoverTime()
+    if self.buy_times[RES_TYPE.CRUSADE ] then --征讨令
+        self.buy_times[RES_TYPE.CRUSADE].max = getTemplateManager():getBaseTemplate():getHjqyItemUpperLimitMax() 
+        self.buy_times[RES_TYPE.CRUSADE].recoverTime = getTemplateManager():getBaseTemplate():getHjqyReplyTime()
+        self.buy_times[RES_TYPE.CRUSADE].recoverNumber = getTemplateManager():getBaseTemplate():getHjqyReplyNumber()
+        self.buy_times[RES_TYPE.CRUSADE].buyNumber  = getTemplateManager():getBaseTemplate():getHjqyBuyTime()
+    end
+    print("CommonData:resRecoverTime=====>begin")
+    table.print(self.buy_times)
+    print("CommonData:resRecoverTime====>end")
+    if self.updateResTimer then
+        timer.unscheduleGlobal(self.updateResTimer)
+        self.updateResTimer = nil
+    end
+
+    local function updateTimer(dt)
+        local curTime = self:getTime()
+        for k,v in pairs(self.buy_times) do
+            if v.max ~= nil then
+                local cur = self:getFinance(k)
+                if cur<v.max then
+                    if v.last_gain_time + v.recoverTime <= curTime then --时间到
+                        getNetManager():getActivityNet():sendAutoAddRes(k)
+                        v.last_gain_time = curTime
+                    end
+                else
+                    v.last_gain_time = curTime
+                end
+            end
+        end
+        -- if self.buy_times[RES_TYPE.CRUSADE ] then --征讨令
+        --     local cur self:getCrusade()
+        -- end
+    end
+    self.updateResTimer = timer.scheduleGlobal(updateTimer,1.0)
+end
+
 -- function CommonData:countOnlineTime()
 --     local function updateTimer( dt )
 --         self.onlineTimes = self.onlineTimes + 1
@@ -1078,13 +1147,3 @@ end
 
 
 return CommonData
-
-
-
-
-
-
-
-
-
-

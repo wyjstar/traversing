@@ -146,7 +146,9 @@ def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
     logger.debug("netforwarding.push_message_remote")
     logger.debug("push message %s %s %s" % (key, character_id, args))
+    to_transit(key, character_id, args)
 
+def to_transit(key, character_id, args):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     # print VCharacterManager().character_client
     if oldvcharacter:
@@ -227,3 +229,4 @@ def net_conn_lost_remote_noresult(dynamic_id):
 def get_act_id_from_world_remote():
     world_remote = GlobalObject().remote['world']
     return world_remote.get_act_id_remote()
+

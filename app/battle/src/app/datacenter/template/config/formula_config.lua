@@ -278,11 +278,11 @@ formula_config={
 ,  [139] = {
   ["precondition"] = "1",  ["formula"] = "heroNum*10",  ["clientPrecondition"] = "1",  ["id"] = 139,  ["clientFormula"] = "result=heroNum*10",  ["key"] = "guide2002",}
 ,  [140] = {
-  ["precondition"] = "1",  ["formula"] = "(heroBreak1+heroBreak2+heroBreak3+heroBreak4+heroBreak5+heroBreak6)*10",  ["clientPrecondition"] = "1",  ["id"] = 140,  ["clientFormula"] = "result=(heroBreak1+heroBreak2+heroBreak3+heroBreak4+heroBreak5+heroBreak6)*10",  ["key"] = "guide2003",}
+  ["precondition"] = "1",  ["formula"] = "(heroBreak1+heroBreak2+heroBreak3+heroBreak4+heroBreak5+heroBreak6)*10",  ["clientPrecondition"] = "1",  ["id"] = 140,  ["clientFormula"] = "result=(heroBreak)*10",  ["key"] = "guide2003",}
 ,  [141] = {
-  ["precondition"] = "1",  ["formula"] = "(heroStone1+heroStone2+heroStone3+heroStone4+heroStone5+heroStone6)*1",  ["clientPrecondition"] = "1",  ["id"] = 141,  ["clientFormula"] = "result=(heroStone1+heroStone2+heroStone3+heroStone4+heroStone5+heroStone6)*1",  ["key"] = "guide2004",}
+  ["precondition"] = "1",  ["formula"] = "(heroStone1+heroStone2+heroStone3+heroStone4+heroStone5+heroStone6)*1",  ["clientPrecondition"] = "1",  ["id"] = 141,  ["clientFormula"] = "result=(heroStone)*1",  ["key"] = "guide2004",}
 ,  [142] = {
-  ["precondition"] = "1",  ["formula"] = "(heroSeal1+heroSeal2+heroSeal3+heroSeal4+heroSeal5+heroSeal6)*10",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=(heroSeal1+heroSeal2+heroSeal3+heroSeal4+heroSeal5+heroSeal6)*10",  ["key"] = "guide2005",}
+  ["precondition"] = "1",  ["formula"] = "(heroSeal1+heroSeal2+heroSeal3+heroSeal4+heroSeal5+heroSeal6)*10",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=(heroSeal)*10",  ["key"] = "guide2005",}
 ,  [143] = {
   ["precondition"] = "1",  ["formula"] = "cheerNum*10",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=cheerNum*10",  ["key"] = "guide2006",}
 ,  [144] = {

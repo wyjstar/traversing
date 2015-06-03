@@ -58,7 +58,7 @@ def hjqy_rank_remote(player_id):
     return rank
 
 @rootserviceHandle
-def share_hjqy_remote(player_id):
+def share_hjqy_remote(player_id, friends_ids):
     """分享
     """
     logger.debug("share_hjqy_remote:%s" % player_id)
@@ -68,7 +68,6 @@ def share_hjqy_remote(player_id):
     boss.is_share = True
 
     #remote_gate.push_object_remote(2112, task_data, [player.dynamic_id])
-    #push_all_object_message(2112,"")
     return True
 
 #def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
@@ -87,9 +86,11 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     origin_hp = boss.hp
     result = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
 
+    logger.debug("blue unit length %s" % len(blue_units))
     boss.blue_units = blue_units
 
     current_damage_hp = origin_hp - boss.hp
+    logger.debug("origin_hp %s, current_hp %s, current_damage_hp %s" % (origin_hp, boss.hp, current_damage_hp))
 
     player_info["damage_hp"] = current_damage_hp
     hjqy_manager.add_rank_item(player_info) # 添加排行
@@ -104,6 +105,7 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
         result = True
     #return dict(result=result, state=boss.get_state())
     logger.debug("hjqy_battle_remote over===================")
+    boss.save_data()
     return result, boss.get_state()
 
 @rootserviceHandle

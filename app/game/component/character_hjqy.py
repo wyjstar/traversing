@@ -14,7 +14,7 @@ class CharacterHjqyComponent(Component):
         self._hjqy = {}
 
     def init_data(self, character_info):
-        self._hjqy = character_info.get('hjqy')
+        self._hjqy = character_info.get('hjqy', {})
 
     def save_data(self):
         data = tb_character_info.getObj(self.owner.base_info.id)
@@ -28,9 +28,10 @@ class CharacterHjqyComponent(Component):
 
     @property
     def received_ids(self):
-        return self._received_ids
+        received_ids = self._hjqy.get('received_ids', [])
+        self._hjqy['received_ids'] = received_ids
+        return received_ids
 
     @received_ids.setter
     def received_ids(self, value):
-        self._received_ids = value
-
+        self._hjqy['received_ids'] = value

@@ -395,8 +395,6 @@ function initHjqyData(data)
 
     for i=1,6 do
         if blue_units[i] then
-            print("blue=================", i)
-            table.print(blue_units[i])
             local unit = constructBattleUnit(blue_units[i], "blue")
             blueUnits[unit.pos] = unit
             updateBlueUnitViewProperty(unit)
@@ -479,7 +477,6 @@ function constructBattleUnit(data, side)
     unit.no = data.no
     unit.hp = data.hp
     print("world boss hp", unit.hp, unit.hp_max)
-    table.print(unit)
     unit.hp = data.hp
     --unit.hp_max = data.hp_max
     unit.hp_max = data.hp_max

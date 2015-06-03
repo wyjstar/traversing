@@ -386,3 +386,7 @@ guid_titlle = {war = "GUID_OPEN_WAR"}
 TYPE_SHOP_SECRETPLACE = 7   --秘境商店
 TYPE_SHOP_MERIT       = 18  --功勋商店(黄巾起义)
 TYPE_SHOP_TREASURE    = 19  --奇珍（过关斩将）
+
+RES_TYPE = {}
+RES_TYPE.CRUSADE      = 26  --征讨令
+RES_TYPE.STAMINA      = 7   --体力

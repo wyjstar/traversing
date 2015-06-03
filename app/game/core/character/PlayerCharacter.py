@@ -49,7 +49,8 @@ class PlayerCharacter(object):
                  limit_hero=component.CharacterLimitHeroComponent(self),
                  rebate=component.Rebate(self),
                  buy_coin=component.CharacterBuyCoinActivity(self),
-                 pvp=component.CharacterPvpComponent(self)
+                 pvp=component.CharacterPvpComponent(self),
+                 hjqy=component.CharacterHjqyComponent(self)
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -240,3 +241,7 @@ class PlayerCharacter(object):
     @property
     def pvp(self):
         return self._components['pvp']
+
+    @property
+    def hjqy_component(self):
+        return self._components['hjqy']

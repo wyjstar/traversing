@@ -248,33 +248,5 @@ class HjqyBoss(object):
         expired_time = game_configs.base_config.get("hjqyEscapeTime")*60
         return is_expired(self._trigger_time, expired_time)
 
-    #def get_rank_item_by_rankno(self, no):
-        #"""
-        #rank no
-        #"""
-        #player_id = self._rank_instance.get(no, no)[0][0]
-        #player_info = cPickle.loads(self._tb_boss.get(player_id))
-        #return player_info
-
-    #def get_demage_hp(self, player_id):
-        #demage_hp = self._rank_instance.get_value(player_id)
-        #return demage_hp
-
-    #def get_rank_no(self, player_id):
-        #rank_no = self._rank_instance.get_rank_no(player_id)
-        #return rank_no
-
-    #def current_stage_info(self):
-        #return game_configs.special_stage_config.get(self._config_name).get(self._stage_id)
-
-    #def get_stage_info(self, stage_id):
-        #return game_configs.special_stage_config.get(self._config_name).get(stage_id)
-
-    #def get_hp(self):
-        #stage_info = self.current_stage_info()
-        #logger.info("stage info %s id:%s" % (stage_info, self._stage_id))
-        #monster_group_info = game_configs.monster_group_config.get(stage_info.round1)
-        #monster_info = game_configs.monster_config.get(monster_group_info.pos5)
-        #return int(monster_info.hp)
 
 hjqy_manager = HjqyBossManager(tb_hjqyboss, tb_hjqyboss_player)

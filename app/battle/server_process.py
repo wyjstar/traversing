@@ -210,11 +210,11 @@ def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, b
     fight_type = const.BATTLE_HJQY
     res = pvp_func(fight_data, fight_type, level)
     print("hjqy_start=====:", res, level, blue_units.keys())
-    for k, v in res[2].items():
-        if v.hp <= 0:
+    for k, v in blue_units.items():
+        if k not in res[2]:
             del blue_units[k]
         else:
-            blue_units[k].hp = v.hp
+            blue_units[k].hp = res[2][k].hp
 
     if int(res[0]) == 1:
         return True

@@ -1,4 +1,4 @@
-FormulaTemplate = FormulaTemplate or class("FormulaTemplate")
+local FormulaTemplate = class("FormulaTemplate")
 
 import("..config.formula_config")
 
@@ -25,7 +25,8 @@ formulaArgs={
     ["heal_1"] = {"(skill_buff)", "(allHeal, skill_buff, heroLevel)"}, 
     ["heal_2"] = {"(skill_buff)", "(allHeal, skill_buff, heroLevel)"}, 
     ["skillbuffEffct_1"] = {"(skill_buff)", "(skill_buff, heroLevel)"},
-    ["skillbuffEffct_2"] = {"(skill_buff)", "(skill_buff, attrHero)"}
+    ["skillbuffEffct_2"] = {"(skill_buff)", "(skill_buff, attrHero)"},
+    ["hjqyDamage"] = {false, "(heroBreak)"}
 }
 
 function FormulaTemplate:ctor(controller)

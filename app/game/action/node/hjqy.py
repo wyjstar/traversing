@@ -36,6 +36,8 @@ def init_2101(pro_data, player):
 
     response.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
     response.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
+    for temp in player.hjqy_component.received_ids:
+        response.hjqy_ids.append(temp)
     return response.SerializeToString()
 
 def construct_boss_pb(data, response):
@@ -69,6 +71,8 @@ def share_2102(pro_data, player):
     """
     response = CommonResponse()
     result = remote_gate['world'].share_hjqy_remote(player.base_info.id)
+    friend_ids = player.friends.friends
+    remote_gate.push_object_remote(2112, '', friend_ids)
     response.result = result
     return response.SerializeToString()
 

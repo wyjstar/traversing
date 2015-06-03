@@ -14,3 +14,4 @@ cp -r ~/work/transfer/TTransfer/src/app/fightview/controller/InitData.lua app/ba
 cp -r ~/work/transfer/TTransfer/src/app/Constants.lua app/battle/src/app/Constants.lua
 
 cp -r ~/work/transfer/TTransfer/src/app/datacenter/bean/CommonData.lua app/battle/src/app/datacenter/bean/CommonData.lua
+cp -r ~/work/transfer/TTransfer/src/app/datacenter/template/common/FormulaTemplate.lua app/battle/src/app/datacenter/template/common/FormulaTemplate.lua
