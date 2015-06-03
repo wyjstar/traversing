@@ -19,7 +19,7 @@ class CharacterPvpComponent(Component):
         Component.__init__(self, owner)
         self._pvp_overcome = []
         self._pvp_overcome_current = 1
-        self._pvp_overcome_refresh_time = 0
+        self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count = 0
 
         self._pvp_times = 0  # pvp次数
