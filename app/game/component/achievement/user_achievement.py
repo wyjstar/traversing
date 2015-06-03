@@ -270,7 +270,43 @@ class SubEvent24(TaskEvent):
     def check(self, data):
         return self.check_count(data, self)
 
+
 class SubEvent25(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent26(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent27(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent28(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent29(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent30(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent31(TaskEvent):
+    def check(self, data):
+        return self.check_count(data, self)
+
+
+class SubEvent32(TaskEvent):
     def check(self, data):
         return self.check_count(data, self)
 
