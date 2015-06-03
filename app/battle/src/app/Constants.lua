@@ -201,7 +201,7 @@ const.EVENT_CARD_DIGIT_NUM          = "CARD_DIGIT_NUM"   --分段数值
 const.EVENT_END_BEFORE_BUFFS        = "END_BEFORE_BUFFS" -- 结束回合前Buffs
 
 const.EVENT_FIGHT_END_CLEAR_HERO    = "FIGHT_END_CLEAR_HERO" --战斗结束后清除英雄
-
+const.EVENT_FIGHT_SET_SKIP_ENABLED  = "FIGHT_SET_SKIP_ENABLED" --设置战斗跳过可点击
 const.FONT_NAME                     = MINI_BLACK_FONT_NAME
 
 const.CURSOR_INPUT_DONE             = "CURSOR_INPUT_DONE"  
@@ -246,19 +246,16 @@ TYPE_HERO_REPLACE = 2
 TYPE_HERO_AWAKE = 3
 TYPE_HERO_WORLD_BOSS = 4
 
---  1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
-TYPE_GUIDE = 0              --演示关卡
-TYPE_STAGE_NORMAL = 1       -- 普通关卡（剧情）， stage_config
-TYPE_STAGE_ELITE = 2        -- 精英关卡， special_stage_config
-TYPE_STAGE_ACTIVITY = 3     -- 活动关卡， special_stage_config
-TYPE_TRAVEL         = 4     --travel
-
-TYPE_PVP            = 6     --pvp
-
-TYPE_WORLD_BOSS     = 7     --世界boss
-
-TYPE_MINE_MONSTER           = 8       -- 攻占也怪
-TYPE_MINE_OTHERUSER         = 9       -- 攻占其他玩家
+TYPE_GUIDE          = 0          -- 演示关卡
+TYPE_STAGE_NORMAL   = 1          -- 普通关卡（剧情）， stage_config
+TYPE_STAGE_ELITE    = 2          -- 精英关卡， special_stage_config
+TYPE_STAGE_ACTIVITY = 3          -- 活动关卡， special_stage_config
+TYPE_TRAVEL         = 4          -- travel
+TYPE_PVP            = 6          -- pvp
+TYPE_WORLD_BOSS     = 7          -- 世界boss
+TYPE_MINE_MONSTER   = 8          -- 攻占也怪
+TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
+TYPE_HJQY_STAGE     = 10         -- 黄巾起义
 
 TYPE_TEST               = 10000
 TYPE_MODE_PVP = 0
@@ -292,6 +289,7 @@ MODULE_NAME_SHOP = "ShopModule"             --商城模块
 MODULE_NAME_ACTIVITY = "ActivityModule"     --精彩活动模块
 MODULE_NAME_WAR = "WarModule"           --信箱模块
 MODULE_NAME_LEGION = "LegionModule"     --军团模块
+MODULE_NAME_MISSION = "MissionModule"   --任务模块
 
 const.EVENT_PV_EMBATTLE_SHOW        = "EMBATTLE_SHOW"       --布阵显示
 const.EVENT_PV_SELECT_WS_SHOW       = "SELECT_WS_SHOW"      --选择无双显示
@@ -373,6 +371,22 @@ STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
 g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --次日登陆奖励
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
+g_notice.NOTICE_ADD_SHOES = "NOTICE_ADD_SHOES"                              --自动增加鞋子
+g_notice.NOTICE_TRAVEL_RESTARTTIMER = "NOTICE_TRAVEL_RESTARTTIMER"          --游历界面,重启定时器
+g_notice.NOTICE_TRAVEL_RELOAD_SHOES = "NOTICE_TRAVEL_RELOAD_SHOES"          --游历界面,重新读取鞋子信息
+g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"          --游历界面,重新读取鞋子信息
 
 g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
 
+UPDATE_HEAD = "UPDATE_HEAD"  -- 更新头像
+UPDATE_TL = "UPDATE_TL"      -- 更新体力
+
+guid_titlle = {war = "GUID_OPEN_WAR"}
+
+TYPE_SHOP_SECRETPLACE = 7   --秘境商店
+TYPE_SHOP_MERIT       = 18  --功勋商店(黄巾起义)
+TYPE_SHOP_TREASURE    = 19  --奇珍（过关斩将）
+
+RES_TYPE = {}
+RES_TYPE.CRUSADE      = 26  --征讨令
+RES_TYPE.STAMINA      = 7   --体力

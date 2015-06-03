@@ -100,3 +100,4 @@ import rebate
 import cdkey
 import limit_hero
 import share
+import hjqy

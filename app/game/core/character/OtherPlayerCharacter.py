@@ -8,7 +8,7 @@ from gfirefly.server.logobj import logger
 from app.game import component
 
 
-class PlayerCharacter(object):
+class OtherPlayerCharacter(object):
     """玩家角色类 """
 
     def __init__(self, pid, name=u'MLGB', dynamic_id=-1, status=1):
@@ -19,39 +19,35 @@ class PlayerCharacter(object):
         self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
         a = dict(base_info=component.CharacterBaseInfoComponent(self),
                  hero_component=component.CharacterHerosComponent(self),
-                 finance=component.CharacterFinanceComponent(self),
-                 hero_chip_component=component.CharacterHeroChipsComponent(self),
-                 item_package=component.CharacterItemPackageComponent(self),
+                 #finance=component.CharacterFinanceComponent(self),
+                 #hero_chip_component=component.CharacterHeroChipsComponent(self),
+                 #item_package=component.CharacterItemPackageComponent(self),
                  equipment=component.CharacterEquipmentPackageComponent(self),
-                 equipment_chip=component.CharacterEquipmentChipComponent(self),
+                 #equipment_chip=component.CharacterEquipmentChipComponent(self),
                  line_up=component.CharacterLineUpComponent(self),
-                 stage=component.CharacterStageComponent(self),
-                 last_pick_time=component.CharacterLastPickTimeComponent(self),
-                 fight_cache=component.CharacterFightCacheComponent(self),
-                 friends=component.FriendComponent(self),
+                 #stage=component.CharacterStageComponent(self),
+                 #last_pick_time=component.CharacterLastPickTimeComponent(self),
+                 #fight_cache=component.CharacterFightCacheComponent(self),
+                 #friends=component.FriendComponent(self),
                  guild=component.CharacterGuildComponent(self),
-                 mail=component.CharacterMailComponent(self),
-                 sign_in=component.CharacterSignInComponent(self),
-                 feast=component.CharacterFeastComponent(self),
-                 online_gift=component.CharacterOnlineGift(self),
-                 level_gift=component.CharacterLevelGift(self),
-                 login_gift=component.CharacterLoginGiftComponent(self),
-                 world_boss=component.CharacterWorldBoss(self),
-                 stamina=component.CharacterStaminaComponent(self),
-                 shop=component.CharacterShopComponent(self),
-                 brew=component.CharacterBrewComponent(self),
-                 tasks=component.UserAchievement(self),
-                 mine=component.UserMine(self),
-                 stone=component.UserStone(self),
+                 #mail=component.CharacterMailComponent(self),
+                 #sign_in=component.CharacterSignInComponent(self),
+                 #feast=component.CharacterFeastComponent(self),
+                 #online_gift=component.CharacterOnlineGift(self),
+                 #level_gift=component.CharacterLevelGift(self),
+                 #login_gift=component.CharacterLoginGiftComponent(self),
+                 #world_boss=component.CharacterWorldBoss(self),
+                 #stamina=component.CharacterStaminaComponent(self),
+                 #shop=component.CharacterShopComponent(self),
+                 #brew=component.CharacterBrewComponent(self),
+                 #tasks=component.UserAchievement(self),
+                 #mine=component.UserMine(self),
+                 #stone=component.UserStone(self),
                  travel=component.CharacterTravelComponent(self),
-                 runt=component.CharacterRuntComponent(self),
-                 recharge=component.CharacterRechargeGift(self),
-                 limit_hero=component.CharacterLimitHeroComponent(self),
-                 rebate=component.Rebate(self),
-                 buy_coin=component.CharacterBuyCoinActivity(self),
-                 pvp=component.CharacterPvpComponent(self),
-                 share=component.ShareComponent(self),
-                 hjqy=component.CharacterHjqyComponent(self)
+                 #runt=component.CharacterRuntComponent(self),
+                 #recharge=component.CharacterRechargeGift(self),
+                 #rebate=component.Rebate(self),
+                 #buy_coin=component.CharacterBuyCoinActivity(self)
                  )
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -114,10 +110,6 @@ class PlayerCharacter(object):
     @property
     def hero_component(self):
         return self._components['hero_component']
-
-    @property
-    def limit_hero(self):
-        return self._components['limit_hero']
 
     @property
     def finance(self):
@@ -226,7 +218,6 @@ class PlayerCharacter(object):
     @property
     def recharge(self):
         return self._components['recharge']
-
     @property
     def pay(self):
         return self._pay
@@ -239,10 +230,3 @@ class PlayerCharacter(object):
     def buy_coin(self):
         return self._components['buy_coin']
 
-    @property
-    def pvp(self):
-        return self._components['pvp']
-
-    @property
-    def hjqy_component(self):
-        return self._components['hjqy']

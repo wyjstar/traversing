@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='db.proto',
   package='',
-  serialized_pb='\n\x08\x64\x62.proto\"*\n\x08Heads_DB\x12\x0c\n\x04head\x18\x01 \x03(\x05\x12\x10\n\x08now_head\x18\x02 \x01(\x05\"\xbf\x03\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x01(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x13\n\x0bsender_icon\x18\x04 \x01(\x05\x12\x12\n\nreceive_id\x18\x05 \x01(\x05\x12\x14\n\x0creceive_name\x18\x06 \x01(\t\x12\r\n\x05title\x18\x07 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x08 \x01(\t\x12\x11\n\tmail_type\x18\t \x02(\x05\x12\x11\n\tsend_time\x18\n \x01(\x05\x12\x11\n\tis_readed\x18\x0b \x01(\x08\x12\r\n\x05prize\x18\x0c \x01(\t\x12\x11\n\tread_time\x18\r \x01(\t\x12\x11\n\tconfig_id\x18\x0e \x01(\x05\x12\x10\n\x08nickname\x18\x0f \x01(\t\x12\x12\n\nguild_name\x18\x10 \x01(\x0c\x12\x18\n\x10guild_person_num\x18\x11 \x01(\x05\x12\x13\n\x0bguild_level\x18\x12 \x01(\x05\x12\x10\n\x08guild_id\x18\x13 \x01(\x05\x12\x10\n\x08rune_num\x18\x14 \x01(\x05\x12\x10\n\x08pvp_rank\x18\x15 \x01(\x05\x12\r\n\x05\x65\x66\x66\x65\x63\x18\x16 \x01(\x05\x12\x14\n\x0cis_got_prize\x18\x17 \x01(\x08\"F\n\x10WorldBossAwardDB\x12\x12\n\naward_type\x18\x01 \x01(\x05\x12\r\n\x05\x61ward\x18\x02 \x01(\x05\x12\x0f\n\x07rank_no\x18\x03 \x01(\x05\"\xd6\x01\n\nStamina_DB\x12\x17\n\x0copen_receive\x18\x01 \x01(\x05:\x01\x31\x12\x1c\n\x11get_stamina_times\x18\x02 \x01(\x05:\x01\x30\x12\x1c\n\x11\x62uy_stamina_times\x18\x03 \x01(\x05:\x01\x30\x12!\n\x16last_gain_stamina_time\x18\x04 \x01(\x05:\x01\x30\x12\x18\n\rlast_mail_day\x18\x05 \x01(\x05:\x01\x30\x12\x14\n\x0c\x63ontributors\x18\x06 \x03(\x05\x12 \n\x15last_buy_stamina_time\x18\x07 \x01(\x05:\x01\x30')
+  serialized_pb='\n\x08\x64\x62.proto\"*\n\x08Heads_DB\x12\x0c\n\x04head\x18\x01 \x03(\x05\x12\x10\n\x08now_head\x18\x02 \x01(\x05\"\xbf\x03\n\x07Mail_PB\x12\x0f\n\x07mail_id\x18\x01 \x01(\t\x12\x11\n\tsender_id\x18\x02 \x01(\x05\x12\x13\n\x0bsender_name\x18\x03 \x01(\t\x12\x13\n\x0bsender_icon\x18\x04 \x01(\x05\x12\x12\n\nreceive_id\x18\x05 \x01(\x05\x12\x14\n\x0creceive_name\x18\x06 \x01(\t\x12\r\n\x05title\x18\x07 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x08 \x01(\t\x12\x11\n\tmail_type\x18\t \x02(\x05\x12\x11\n\tsend_time\x18\n \x01(\x05\x12\x11\n\tis_readed\x18\x0b \x01(\x08\x12\r\n\x05prize\x18\x0c \x01(\t\x12\x11\n\tread_time\x18\r \x01(\t\x12\x11\n\tconfig_id\x18\x0e \x01(\x05\x12\x10\n\x08nickname\x18\x0f \x01(\t\x12\x12\n\nguild_name\x18\x10 \x01(\x0c\x12\x18\n\x10guild_person_num\x18\x11 \x01(\x05\x12\x13\n\x0bguild_level\x18\x12 \x01(\x05\x12\x10\n\x08guild_id\x18\x13 \x01(\x05\x12\x10\n\x08rune_num\x18\x14 \x01(\x05\x12\x10\n\x08pvp_rank\x18\x15 \x01(\x05\x12\r\n\x05\x65\x66\x66\x65\x63\x18\x16 \x01(\x05\x12\x14\n\x0cis_got_prize\x18\x17 \x01(\x08\"F\n\x10WorldBossAwardDB\x12\x12\n\naward_type\x18\x01 \x01(\x05\x12\r\n\x05\x61ward\x18\x02 \x01(\x05\x12\x0f\n\x07rank_no\x18\x03 \x01(\x05\"\xf0\x01\n\nStamina_DB\x12\x17\n\x0copen_receive\x18\x01 \x01(\x05:\x01\x31\x12\x1c\n\x11get_stamina_times\x18\x02 \x01(\x05:\x01\x30\x12\x1c\n\x11\x62uy_stamina_times\x18\x03 \x01(\x05:\x01\x30\x12!\n\x16last_gain_stamina_time\x18\x04 \x01(\x05:\x01\x30\x12\x18\n\rlast_mail_day\x18\x05 \x01(\x05:\x01\x30\x12\x14\n\x0c\x63ontributors\x18\x06 \x03(\x05\x12 \n\x15last_buy_stamina_time\x18\x07 \x01(\x05:\x01\x30\x12\x18\n\rresource_type\x18\x08 \x01(\x05:\x01\x30\".\n\x0e\x41ll_Stamina_DB\x12\x1c\n\x07stamina\x18\x01 \x03(\x0b\x32\x0b.Stamina_DB')
 
 
 
@@ -333,6 +333,13 @@ _STAMINA_DB = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='resource_type', full_name='Stamina_DB.resource_type', index=7,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=True, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -343,13 +350,43 @@ _STAMINA_DB = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=579,
-  serialized_end=793,
+  serialized_end=819,
 )
 
+
+_ALL_STAMINA_DB = _descriptor.Descriptor(
+  name='All_Stamina_DB',
+  full_name='All_Stamina_DB',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='stamina', full_name='All_Stamina_DB.stamina', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=821,
+  serialized_end=867,
+)
+
+_ALL_STAMINA_DB.fields_by_name['stamina'].message_type = _STAMINA_DB
 DESCRIPTOR.message_types_by_name['Heads_DB'] = _HEADS_DB
 DESCRIPTOR.message_types_by_name['Mail_PB'] = _MAIL_PB
 DESCRIPTOR.message_types_by_name['WorldBossAwardDB'] = _WORLDBOSSAWARDDB
 DESCRIPTOR.message_types_by_name['Stamina_DB'] = _STAMINA_DB
+DESCRIPTOR.message_types_by_name['All_Stamina_DB'] = _ALL_STAMINA_DB
 
 class Heads_DB(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -374,6 +411,12 @@ class Stamina_DB(_message.Message):
   DESCRIPTOR = _STAMINA_DB
 
   # @@protoc_insertion_point(class_scope:Stamina_DB)
+
+class All_Stamina_DB(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ALL_STAMINA_DB
+
+  # @@protoc_insertion_point(class_scope:All_Stamina_DB)
 
 
 # @@protoc_insertion_point(module_scope)

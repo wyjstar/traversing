@@ -6,6 +6,7 @@ from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import rootserviceHandle
+from app.gate.action.root.netforwarding import to_transit
 
 childsman = GlobalObject().root.childsmanager
 groot = GlobalObject().root
@@ -52,9 +53,7 @@ def disconnect_remote(dynamic_id):
 @remoteserviceHandle('world')
 def push_message_to_transit_remote(key, character_id, *args):
     logger.debug("push_message_to_transit_remote")
-
-    transit_remote = GlobalObject().remote['transit']
-    return transit_remote.push_message_remote(key, character_id, *args)
+    to_transit(key, character_id, args)
 
 
 @rootserviceHandle

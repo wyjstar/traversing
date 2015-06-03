@@ -42,6 +42,7 @@ message StageStartResponse{
 message StageSettlementResponse{
     required CommonResponse res = 1;
 	optional GameResourcesResponse drops = 2;
+    optional int32 hjqy_stage_id = 3; //黄巾起义关卡id
 }
 
 // 请求队形信息: 905
@@ -59,6 +60,7 @@ message StageSweepResponse{
     required CommonResponse res = 1;
 	repeated GameResourcesResponse drops = 2;
     optional GameResourcesResponse consume = 3;
+    optional int32 hjqy_stage_id = 4;//黄巾起义关卡id
 }
 
 //重置关卡挑战次数 command:908

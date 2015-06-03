@@ -12,6 +12,10 @@ groot = GlobalObject().root
 @remoteserviceHandle('transit')
 def pull_message_remote(key, character_id, args):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
+    logger.debug("pull_message_remote =============")
+    logger.debug(args)
+    logger.debug((key, oldvcharacter.dynamic_id))
+    logger.debug((False,))
     if oldvcharacter:
         args = (key, oldvcharacter.dynamic_id) + args + (False,)
         logger.debug(args)

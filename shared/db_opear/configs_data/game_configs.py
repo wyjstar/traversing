@@ -50,6 +50,7 @@ from recharge_config import RechargeConfig
 from lucky_hero_config import LuckyHeroConfig
 from pseudo_random_config import PseudoRandomConfig
 from push_config import PushConfig
+from hjqy_config import HjqyConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -97,6 +98,7 @@ notes_config = {}
 recharge_config = {}
 lucky_hero_config = {}
 pseudo_random_config = {}
+hjqy_config = {}
 
 push_config = {}
 
@@ -148,6 +150,7 @@ all_config_name = {
     'lucky_hero_config': LuckyHeroConfig(),
     'pseudo_random_config': PseudoRandomConfig(),
     'push_config': PushConfig(),
+    'hjqy_config': HjqyConfig()
 }
 
 print("load game_configs===========================")
