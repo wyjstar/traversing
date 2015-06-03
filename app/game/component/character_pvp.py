@@ -8,6 +8,7 @@ from gfirefly.server.logobj import logger
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
+from app.game.redis_mode import tb_pvp_rank
 
 
 class CharacterPvpComponent(Component):
@@ -26,6 +27,7 @@ class CharacterPvpComponent(Component):
         self._pvp_refresh_count = 0
         self._pvp_high_rank = 999999  # 玩家pvp最高排名
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
+        self._pvp_arena_players = []
 
     def init_data(self, character_info):
         self._pvp_overcome = character_info['pvp_overcome']
@@ -40,10 +42,11 @@ class CharacterPvpComponent(Component):
         self._pvp_high_rank = character_info['pvp_high_rank']
         self._pvp_high_rank_award = character_info['pvp_high_rank_award']
 
+        self._pvp_arena_players = character_info.get('pvp_arena_players', [])
+
         self.check_time()
 
         self.save_data()
-        print self.__dict__
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
@@ -56,7 +59,8 @@ class CharacterPvpComponent(Component):
                     pvp_high_rank_award=self._pvp_high_rank_award,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
-                    pvp_refresh_count=self._pvp_refresh_count)
+                    pvp_refresh_count=self._pvp_refresh_count,
+                    pvp_arena_players=self._pvp_arena_players)
         character_info.hmset(data)
 
     def new_data(self):
@@ -68,7 +72,8 @@ class CharacterPvpComponent(Component):
                     pvp_high_rank_award=self._pvp_high_rank_award,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
-                    pvp_refresh_count=self._pvp_refresh_count)
+                    pvp_refresh_count=self._pvp_refresh_count,
+                    pvp_arena_players=self._pvp_arena_players)
         return data
 
     def check_time(self):
@@ -82,6 +87,8 @@ class CharacterPvpComponent(Component):
 
         tm = time.localtime(self._pvp_overcome_refresh_time)
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
+            if not self._pvp_overcome:
+                self.reset_time()
             self._pvp_overcome_refresh_time = time.time()
             self._pvp_overcome_refresh_count = 0
             # self._pvp_overcome_current = 1
@@ -102,7 +109,6 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count += 1
         self.save_data()
-        print self.__dict__
         return True
 
     def get_overcome_id(self, index):
@@ -110,6 +116,30 @@ class CharacterPvpComponent(Component):
             return 0
 
         return self._pvp_overcome[index]
+
+    def pvp_player_rank_refresh(self):
+        rank = tb_pvp_rank.ztotal()
+        if not rank:
+            rank = int(tb_pvp_rank.ztotal())
+
+        if rank < 9:
+            self._pvp_arena_players = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            return
+
+        self._pvp_arena_players = [rank]
+        for v in game_configs.arena_fight_config.values():
+            play_rank = v.get('play_rank')
+            if rank in range(play_rank[0], play_rank[1] + 1):
+                para = dict(k=rank)
+                choose_fields = eval(v.get('choose'), para)
+                logger.info('cur:%s choose:%s', rank, choose_fields)
+                for x, y, c in choose_fields:
+                    range_nums = range(int(x), int(y)+1)
+                    for _ in range(c):
+                        r = random.choice(range_nums)
+                        range_nums.remove(r)
+                        self._pvp_arena_players.append(r)
+                break
 
     @property
     def pvp_overcome(self):
@@ -182,3 +212,10 @@ class CharacterPvpComponent(Component):
     # @pvp_overcome_refresh_count.setter
     # def pvp_overcome_refresh_count(self, value):
     #     self._pvp_overcome_refresh_count = value
+
+    @property
+    def pvp_arena_players(self):
+        if not self._pvp_arena_players:
+            self.pvp_player_rank_refresh()
+            self.save_data()
+        return self._pvp_arena_players
