@@ -53,7 +53,7 @@ def disconnect_remote(dynamic_id):
 @remoteserviceHandle('world')
 def push_message_to_transit_remote(key, character_id, *args):
     logger.debug("push_message_to_transit_remote")
-    to_transit(key, character_id, args)
+    return to_transit(key, character_id, args)
 
 
 @rootserviceHandle

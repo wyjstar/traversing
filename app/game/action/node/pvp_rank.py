@@ -3,9 +3,7 @@
 created by sphinx on 27/10/14.
 """
 import cPickle
-import random
 import time
-from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.proto_file.db_pb2 import Heads_DB
@@ -117,27 +115,6 @@ def pvp_player_rank_request_1502(data, player):
         _with_pvp_info(rank_item, char_id)
     # print response
     return response.SerializeToString()
-
-
-# @remoteserviceHandle('gate')
-# def pvp_player_rank_refresh_request_1503(data, player):
-#     return pvp_player_rank_refresh_request(data, player)
-
-
-# @remoteserviceHandle('gate')
-# def pvp_player_info_request_1504(data, player):
-#     request = pvp_rank_pb2.PvpPlayerInfoRequest()
-#     request.ParseFromString(data)
-#     record = util.GetOneRecordInfo(PVP_TABLE_NAME,
-#                                    dict(id=request.player_rank),
-#                                    ['slots'])
-#     if record:
-#         response = record.get('slots')
-#         response = cPickle.loads(response)
-#         return response.SerializeToString()
-#     else:
-#         logger.error('can not find player rank:%s', request.player_rank)
-#         return None
 
 
 def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level,
@@ -286,7 +263,8 @@ def pvp_fight_request_1505(data, player):
             if request.challenge_rank - before_player_rank >= rank_count:
                 txt = game_configs.push_config[1003].text
                 message = game_configs.language_config.get(str(txt)).get('cn')
-                remote_gate.add_push_message_remote(player.base_info.id, 3, message, int(time.time()))
+                remote_gate.add_push_message_remote(player.base_info.id, 3,
+                                                    message, int(time.time()))
 
             push_message('add_blacklist_request_remote', target_id,
                          player.base_info.id)
@@ -298,7 +276,7 @@ def pvp_fight_request_1505(data, player):
             if request.challenge_rank < player.pvp.pvp_high_rank:
                 rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
             player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
-                                                 request.challenge_rank)
+                                           request.challenge_rank)
 
             # 首次达到某名次的奖励
             arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')
@@ -309,10 +287,9 @@ def pvp_fight_request_1505(data, player):
             else:
                 logger.debug('arena rank up points is not find')
 
-            if fight_result:
-                send_mail(conf_id=123, receive_id=target_id,
-                          pvp_rank=before_player_rank,
-                          nickname=player.base_info.base_name)
+            send_mail(conf_id=123, receive_id=target_id,
+                      pvp_rank=before_player_rank,
+                      nickname=player.base_info.base_name)
         else:
             logger.debug("fight result:False")
             send_mail(conf_id=124, receive_id=target_id,
@@ -323,7 +300,8 @@ def pvp_fight_request_1505(data, player):
         player.tasks.save_data()
         if tstatus:
             task_data = task_status(player)
-            remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
+            remote_gate.push_object_remote(1234, task_data,
+                                           [player.dynamic_id])
 
         player.pvp.pvp_times -= 1
         player.pvp.pvp_refresh_time = time.time()
@@ -477,55 +455,6 @@ def reset_pvp_time_1506(data, player):
     return response.SerializePartialToString()
 
 
-def pvp_player_rank_refresh_request(data, player):
-    table_max = util.GetTableCount(PVP_TABLE_NAME)
-    response = pvp_rank_pb2.PlayerRankResponse()
-
-    prere = dict(character_id=player.base_info.id)
-    record = util.GetOneRecordInfo(PVP_TABLE_NAME, prere, ['id'])
-    response.player_rank = record.get('id') if record else -1
-    cur_rank = record.get('id') if record else table_max
-
-    ranks = [cur_rank]
-    for v in game_configs.arena_fight_config.values():
-        play_rank = v.get('play_rank')
-        if cur_rank in range(play_rank[0], play_rank[1] + 1):
-            para = dict(k=cur_rank)
-            choose_fields = eval(v.get('choose'), para)
-            logger.info('cur:%s choose:%s', cur_rank, choose_fields)
-            for x, y, c in choose_fields:
-                range_nums = range(int(x), int(y)+1)
-                for _ in range(c):
-                    r = random.choice(range_nums)
-                    range_nums.remove(r)
-                    ranks.append(r)
-            break
-
-    if not ranks:
-        raise Exception('rank field error!')
-
-    caret = ','
-    prere = 'id in (%s)' % caret.join(str(_) for _ in ranks)
-    logger.info('prere:%s', prere)
-    columns = ['id', 'character_id', 'nickname', 'level', 'attackPoint',
-               'hero_ids', 'hero_levels', 'head_no']
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
-    for record in records:
-        rank_item = response.rank_items.add()
-        rank_item.level = record.get('level')
-        rank_item.nickname = record.get('nickname')
-        rank_item.rank = record.get('id')
-        rank_item.attackPoint = record.get('attackPoint')
-        rank_item.head_no = record.get('head_no')
-        rank_item.character_id = record.get('character_id')
-        hero_ids = cPickle.loads(record.get('hero_ids'))
-        rank_item.hero_ids.extend([_ for _ in hero_ids])
-        hero_levels = cPickle.loads(record.get('hero_levels'))
-        rank_item.hero_levels.extend([_ for _ in hero_levels])
-    response.pvp_score = player.finance[const.PVP]
-    return response.SerializeToString()
-
-
 @remoteserviceHandle('gate')
 def pvp_award_remote(pvp_num, is_online, player):
     player.finance[const.PVP] += pvp_num
@@ -533,6 +462,3 @@ def pvp_award_remote(pvp_num, is_online, player):
     logger.debug('pvp award!play:%s,%s-%s:on:%s', player.character_id,
                  pvp_num, player.finance[const.PVP], is_online)
     return True
-
-
-
