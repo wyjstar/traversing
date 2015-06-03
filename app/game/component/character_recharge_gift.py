@@ -201,7 +201,9 @@ class CharacterRechargeGift(Component):
 
                 rres = self._owner.base_info.first_recharge(recharge_item, response)
                 if rres:
+                    #首次充值
                     isfirst = 1
+                    self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
                 else:
                     isfirst = 0
                 tlog_action.log('Recharge', self._owner, isfirst,
@@ -215,6 +217,5 @@ class CharacterRechargeGift(Component):
             # 活动
             self._owner.recharge.charge(charge_num)
             self._owner.recharge.get_recharge_response(response.info) # recharge
-            self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
         except Exception, e:
             logger.error("recharge gain error!%s" % e)
