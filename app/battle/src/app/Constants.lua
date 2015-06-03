@@ -205,7 +205,7 @@ const.EVENT_FIGHT_SET_SKIP_ENABLED  = "FIGHT_SET_SKIP_ENABLED" --设置战斗跳
 const.FONT_NAME                     = MINI_BLACK_FONT_NAME
 
 const.CURSOR_INPUT_DONE             = "CURSOR_INPUT_DONE"  
-
+const.CURSOR_INPUT_CHANGE           = "CURSOR_INPUT_CHANGE"
 const.test = "test"  --测试
 
 BUDDY_SEAT = 12
@@ -374,7 +374,8 @@ g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --�
 g_notice.NOTICE_ADD_SHOES = "NOTICE_ADD_SHOES"                              --自动增加鞋子
 g_notice.NOTICE_TRAVEL_RESTARTTIMER = "NOTICE_TRAVEL_RESTARTTIMER"          --游历界面,重启定时器
 g_notice.NOTICE_TRAVEL_RELOAD_SHOES = "NOTICE_TRAVEL_RELOAD_SHOES"          --游历界面,重新读取鞋子信息
-g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"          --游历界面,重新读取鞋子信息
+g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"      --游历界面,重新读取鞋子信息
+g_notice.NOTICE_PVP_CLEARANCE_UPDATA = "NOTICE_PVP_CLEARANCE_UPDATA"        --过关斩将界面,重新刷新当前的关卡信息
 
 g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
 
@@ -389,4 +390,8 @@ TYPE_SHOP_TREASURE    = 19  --奇珍（过关斩将）
 
 RES_TYPE = {}
 RES_TYPE.CRUSADE      = 26  --征讨令
+RES_TYPE.FEAT         = 25  --功勋
 RES_TYPE.STAMINA      = 7   --体力
+-- 次日开启类型
+const.nextDay_openType = {WORLDBOSS=23,ACTIVITY=2,HJQY=27,GGZJ = 28}      --同成就表配置的达成条件值相匹配
+

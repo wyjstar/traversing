@@ -17,6 +17,7 @@ function CommonData:ctor(item)
     self.netTip = nil
     self.oldLevel = 0 --战队升级前的等级
     self.isHasRebate = false
+    self.rank = 0
 end
 -- function CommonData:clear()
 --     cclog("---------------CommonData:clear------")
@@ -127,16 +128,31 @@ function CommonData:setData(data)
     self.battle_speed = data.battle_speed or 1 --战斗速度
 
     self.srv_time = data.server_time                --服务器时间，每秒进行更新
-    
+
     self.buy_times = {} --data.buy_times                 --购买资源（体力，讨伐令，鞋子）次数
 
-    for k,v in pairs(data.buy_times) do --{资源类型,购买次数,上次获得体力时间}
-        self.buy_times[v.resource_type] = {resource_type=v.resource_type,buy_stamina_times = v.buy_stamina_times,last_gain_time = v.last_gain_stamina_time}
+    if data.buy_times then
+        for k,v in pairs(data.buy_times) do --{资源类型,购买次数,上次获得体力时间}
+            self.buy_times[v.resource_type] = {resource_type=v.resource_type,buy_stamina_times = v.buy_stamina_times,last_gain_time = v.last_gain_stamina_time}
+        end
     end
 
     self:updateSrvTimer()
     self:resRecoverTime()
+
+    self:setPowerRank(data.fight_power_rank)
+
+    self.pvp_overcome_index = data.pvp_overcome_index                   -- 过关斩将当前进行的关卡(从0开始计数)
+    self.pvp_overcome_refresh_count = data.pvp_overcome_refresh_count   -- 可刷新的次数
+    print("self.pvp_overcome_index = "..self.pvp_overcome_index)
+    print("self.pvp_overcome_refresh_count = "..self.pvp_overcome_refresh_count)
+
 end
+
+function CommonData:setPowerRank(rank)
+    self.rank = rank
+end
+
 
 --每一秒更新服务器时间
 function CommonData:updateSrvTimer()
@@ -303,6 +319,8 @@ function CommonData:setBattleSpeed(speed) self.battle_speed = speed end
 function CommonData:getCombatPower() return self.combat_power end
 function CommonData:setCombatPower(num) self.combat_power = num end
 
+--返回战力排行
+function CommonData:getPowerRank() return self.rank end
 
 
 --------------------------
@@ -382,7 +400,7 @@ end
 --[[--
 
 设置连续签到的天数
-@param days 连续签到的天数  
+@param days 连续签到的天数
 ]]
 function CommonData:setContinuousSignDays(days) self.continuousSignDays = days end
 --[[--
@@ -393,13 +411,13 @@ function CommonData:setContinuousSignDays(days) self.continuousSignDays = days e
 function CommonData:getContinuousSignDays() return self.continuousSignDays end
 --[[--
 
-设置[7，15，25]天的连续签到的奖励 
-@param list [7，15，25]天的连续签到的奖励 
+设置[7，15，25]天的连续签到的奖励
+@param list [7，15，25]天的连续签到的奖励
 ]]
 function CommonData:setContinuousSignedList(list) self.continuousSignedList = list end
 --[[--
 
-获取[7，15，25]天的连续签到的奖励 
+获取[7，15，25]天的连续签到的奖励
 
 ]]
 function CommonData:getContinuousSignedList() return self.continuousSignedList end
@@ -441,15 +459,18 @@ end
 function CommonData:setOnlineTime(time)
     -- cclog("---setOnlineTime-----"..time)
     self.onlineTimes = time
-    self.getOnlineRec = os.time()
+    -- self.getOnlineRec = os.time()
 end
+
 function CommonData:getOnlineTime()
-    if not self.onlineTimes then
-        return 0
-    end
-    local nowTime = os.time()
-    local diff_time = nowTime - self.getOnlineRec
-    return self.onlineTimes + diff_time
+    -- if not self.onlineTimes then
+    --     return 0
+    -- end
+    -- local nowTime = os.time()
+    -- local diff_time = nowTime - self.getOnlineRec
+    -- return self.onlineTimes + diff_time
+    --在线累计时间 + 服务器当前时间 - 客户端登陆时间
+    return self.onlineTimes + self.srv_time - self.server_time
 end
 
 -- function CommonData:getLastOnlineTime() return self.LastOnlineTime end
@@ -748,6 +769,24 @@ function CommonData:subGold(num) self:subFinance(2, num); getHomeBasicAttrView()
 -- 修改战斗力
 function CommonData:updateCombatPower() getHomeBasicAttrView():updateCombatPower(); end
 
+--[[--
+得到通关令的数量
+@return number 通关令的数量
+]]
+function CommonData:getClearanceCoin()
+    return self.finances[27+1] or 0
+end
+
+--[[--
+更改通关令的数量
+@param number num 修改的数量(正数为增加,负数为减少)
+]]
+function CommonData:changeClearanceCoin(num) 
+    self:subFinance(27, num);
+    if self.finances[27+1] then
+        self.finances[27+1] = self.finances[27+1] + num
+    end
+end
 
 -----------------------------
 ------private function-------
@@ -781,7 +820,7 @@ function CommonData:countTimer()
     -- self:getTime()
 
     local function updateTimer(dt)
-        
+
         -- print("----- updateTimer ------")
         -- self.server_time = self.server_time + 1
         self.during_time = self.during_time + 1
@@ -834,9 +873,6 @@ function CommonData:resRecoverTime()
                 end
             end
         end
-        -- if self.buy_times[RES_TYPE.CRUSADE ] then --征讨令
-        --     local cur self:getCrusade()
-        -- end
     end
     self.updateResTimer = timer.scheduleGlobal(updateTimer,1.0)
 end
@@ -975,7 +1011,11 @@ function CommonData:setRechargeActivityData(data)
         end
     end
 end
---充值活动是否可领取
+
+--[[--
+    充值活动是否可领取
+    @param int id 奖品id
+]]
 function CommonData:rechargeGiftCanGet(id)
     cclog("--------------id---------"..id)
     if self.rechargeData == nil then return false end
@@ -986,7 +1026,11 @@ function CommonData:rechargeGiftCanGet(id)
     end
     return false
 end
---充值活动奖励是否领取过
+
+--[[--
+    充值活动奖励是否领取过
+    @param int id 奖品id
+]]
 function CommonData:rechargeGiftIsGot(id)
     if self.rechargeData == nil then return false end
     for k,v in pairs(self.rechargeData) do
@@ -997,12 +1041,19 @@ function CommonData:rechargeGiftIsGot(id)
     end
     return false
 end
---活动的累计充值数
+
+--[[--
+    活动的累计充值数
+]]
 function  CommonData:getRechargeAcc()
     if self.rechargeAcc == nil then self.rechargeAcc = 0 end
     return self.rechargeAcc
 end
---活动的单次充值数
+
+--[[--
+    活动的单次充值数
+    @param int id 奖品id
+]]
 function  CommonData:getRechargeSingle(id)
      local rechargeSingle  = 0
      if self.rechargeData == nil then return rechargeSingle end
@@ -1018,7 +1069,10 @@ function  CommonData:getRechargeSingle(id)
      end
     return rechargeSingle
 end
---活动在点击领取时候的发送信息
+--[[--
+    活动在点击领取时候的发送信息
+    @param int id 奖品id
+]]
 function CommonData:getSendInfo(id)
     for k,v in pairs(self.rechargeData) do
         if v.gift_id == id then
@@ -1026,7 +1080,11 @@ function CommonData:getSendInfo(id)
         end
     end
 end
---设置某一奖励领取了
+
+--[[--
+    设置某一奖励领取了
+    @param int id 奖品id
+]]
 function CommonData:setRechargeGiftGot(id)
     if self.rechargeData == nil then return end
     for k,v in pairs(self.rechargeData) do
@@ -1067,9 +1125,17 @@ function CommonData:analysisTime(timeStr)
         local str2 = timex
         pos = string.find(str2,":")
         local hour = tonumber(string.sub(str2,1,pos-1))
+        print("之前 ======== hour ===== ", hour)
+        if hour < 10 then
+            hour = "0" .. hour
+        end
+        print("之后 ======== hour ===== ", hour)
         str2 = string.sub(str2,pos+1,-1)
         pos = string.find(str2,":")
         local min = tonumber(string.sub(str2,1,pos-1))
+        if min < 10 then
+            min = "0" .. min
+        end
         local sec = tonumber(string.sub(str2,pos+1,-1))
 
         timeTab = {year = year,month = month,day = day,hour = hour,min = min,sec = sec}
@@ -1143,6 +1209,94 @@ end
 
 function CommonData:getGodHeroTimes()
     return self.godHeroTimes
+end
+
+--[[--
+    
+    判断次日开启的功能开启时间
+    @param type 23,蛊雕之乱 2,任务 27, 黄巾起义 28, 过关斩将
+    @return string 开启时间
+]]
+function CommonData:contentOpenTime(type)
+    print("type====>>",type)
+    local _type = type
+    if _type == nil  then return nil end
+
+    local _itemOpenDay = nil
+    if _type == const.nextDay_openType.WORLDBOSS then
+        _itemOpenDay = self.c_BaseTemplate:getWorldbossOpenDay()  -- 蛊雕之乱
+    elseif _type == const.nextDay_openType.ACTIVITY then
+        _itemOpenDay = self.c_BaseTemplate:getActivityOpenDay()  -- 任务
+    elseif _type == const.nextDay_openType.HJQY then
+        _itemOpenDay = self.c_BaseTemplate:getHjqyOpenDay() -- 黄巾起义
+    elseif _type == const.nextDay_openType.GGZJ then
+        _itemOpenDay = self.c_BaseTemplate:getGgzjOpenDay() -- 过关斩将
+    end
+
+    if _itemOpenDay == nil then print("<<=====is null=====>>") return nil end
+
+    for k,v in pairs(_itemOpenDay) do
+        return v[1]
+    end
+
+end
+--[[--
+    
+    判断次日开启的功能是否开启
+    @param type 23,蛊雕之乱 2,任务 27, 黄巾起义 28, 过关斩将
+    @return bool 是否开启
+]]
+function CommonData:isOpenByType(type)
+    local _type = type
+    if _type == nil then return false end
+
+    local _item = {1,1,1,1}
+    local _itemOpenDay = nil
+    if _type == const.nextDay_openType.WORLDBOSS then
+        _itemOpenDay = self.c_BaseTemplate:getWorldbossOpenDay()  -- 蛊雕之乱
+    elseif _type == const.nextDay_openType.ACTIVITY then
+        _itemOpenDay = self.c_BaseTemplate:getActivityOpenDay()  -- 任务
+    elseif _type == const.nextDay_openType.HJQY then
+        _itemOpenDay = self.c_BaseTemplate:getHjqyOpenDay() -- 黄巾起义
+    elseif _type == const.nextDay_openType.GGZJ then
+        _itemOpenDay = self.c_BaseTemplate:getGgzjOpenDay() -- 过关斩将
+    end
+
+    if _itemOpenDay == nil then return false end
+
+   for k,v in pairs(_itemOpenDay) do
+        _item.day = tonum(k)
+        _item.time = v[1]
+       break
+   end
+
+   local _day_ = (_item.day<2 and 1) or (_item.day-1)
+
+    local  _regist_time = self:getRegistTime()
+
+    local nextDaytime = os.date("*t", tonumber(_regist_time) + tonumber(_day_*24*60*60))  
+
+    local curYear = self:getYear()
+    local curMonth = self:getMonth()
+    local curDay = self:getDay()
+    local curHour = self:getCurrHour()
+    local curMin = self:getCurrMin()
+    local curSec = self:getCurSec()
+
+    --当前时间
+    local nowTime = os.time({year = curYear, month = curMonth, day = curDay, hour = curHour, min = curMin, sec = curSec})
+
+    -- 次日开启时间
+    local times = string.split(_item.time, ":")
+
+    local destTime = os.time({year = nextDaytime.year, month = nextDaytime.month, day = nextDaytime.day, hour = tonum(times[1]), min = tonum(times[2]), sec = tonum(times[3])})
+   
+    local _left_open_time = destTime - nowTime
+
+    print("---_left_open_time-----")
+    print(_left_open_time)
+
+    return _left_open_time <= 0 
 end
 
 
