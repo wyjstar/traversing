@@ -290,8 +290,6 @@ def pvp_fight_request_1505(data, player):
             send_mail(conf_id=123, receive_id=target_id,
                       pvp_rank=before_player_rank,
                       nickname=player.base_info.base_name)
-            player.pvp.pvp_times -= 1
-            player.pvp.pvp_refresh_time = time.time()
         else:
             logger.debug("fight result:False")
             send_mail(conf_id=124, receive_id=target_id,
@@ -305,6 +303,8 @@ def pvp_fight_request_1505(data, player):
             remote_gate.push_object_remote(1234, task_data,
                                            [player.dynamic_id])
 
+        player.pvp.pvp_times -= 1
+        player.pvp.pvp_refresh_time = time.time()
         player.pvp.save_data()
         response.res.result = True
         # response.top_rank = player.pvp.pvp_high_rank

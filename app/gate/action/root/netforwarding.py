@@ -146,7 +146,8 @@ def push_message_remote(key, character_id, args):
     # print 'gate receive push message'
     logger.debug("netforwarding.push_message_remote")
     logger.debug("push message %s %s %s" % (key, character_id, args))
-    to_transit(key, character_id, args)
+    return to_transit(key, character_id, args)
+
 
 def to_transit(key, character_id, args):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
