@@ -150,7 +150,7 @@ def battle_2103(pro_data, player):
     response.seed1 = seed1
     response.seed2 = seed2
     response.attack_type = attack_type
-    response.hjqy_coin = player.finance[const.HJQYCOIN]
+    response.hjqy_coin = meritorious_service
     response.res.result = True
     return response.SerializePartialToString()
 
