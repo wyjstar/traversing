@@ -714,6 +714,9 @@ def trigger_hjqy(player, result):
     open_stage_id = player.stage_component.rank_stage_progress
     player.fight_cache_component.stage_id = open_stage_id
     stage_info = player.fight_cache_component._get_stage_config()
+    if stage_info.type not in [1]:
+        # 只有在剧情关卡时，才能触发黄巾起义
+        return 0
 
     rate = random.random()
     rate = 0.01 # for test
