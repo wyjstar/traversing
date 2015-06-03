@@ -120,7 +120,7 @@ class CharacterPvpComponent(Component):
     def pvp_player_rank_refresh(self):
         if self.owner.base_info.is_firstday_from_register():
             return
-        rank = tb_pvp_rank.zscore(self.owner.base_info.id)
+        rank = tb_pvp_rank.ztotal()
         if not rank:
             rank = int(tb_pvp_rank.get('incr'))
 
