@@ -120,9 +120,9 @@ class Mine(object):
 
 def gen_stone(num, odds_dict, limit, store, now_data):
     # 发放符文石
-    if now_data > limit:
+    if now_data >= limit:
         logger.error('gen_stone:%s > %s', now_data, limit)
-        return
+        return store
     for _ in range(0, num):
         stone_id = random_pick(odds_dict, sum(odds_dict.values()))
         stone_id = int(stone_id)
@@ -180,7 +180,7 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
 def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
     # 结算到当前的产出
     mine = ConfigData.mine(mine_id)
-    if now_data > mine.outputLimited:
+    if now_data >= mine.outputLimited:
         logger.error('get_cur:%s > %s', now_data, mine.outputLimited)
         now_data = mine.outputLimited
     if stype == 1:
