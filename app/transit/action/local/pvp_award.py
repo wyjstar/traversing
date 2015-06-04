@@ -69,9 +69,14 @@ def pvp_daily_award_tick():
     award_time_x = game_configs.base_config.get('arena_day_points_time')
     award_time = time.strftime("%Y-%m-%d %X", time.localtime())[0:-8]
     award_time += award_time_x
+    now_time = int(time.time())
     award_strptime = time.strptime(award_time, "%Y-%m-%d %X")
     award_mktime = time.mktime(award_strptime)
-    time_interval = 60*60*24 - abs(time.time() - award_mktime)
+    time_long = award_mktime - now_time
+    if time_long >= 0:
+        time_interval = time_long
+    else:
+        time_interval = 60*60*24 + time_long
     reactor.callLater(time_interval, do_pvp_daily_award_tick)
 
 
