@@ -58,7 +58,7 @@ def hjqy_rank_remote(player_id):
     return rank
 
 @rootserviceHandle
-def share_hjqy_remote(player_id, friends_ids):
+def share_hjqy_remote(player_id):
     """分享
     """
     logger.debug("share_hjqy_remote:%s" % player_id)
