@@ -249,7 +249,6 @@ def pvp_fight_request_1505(data, player):
         if fight_result:
             logger.debug("fight result:True:%s:%s",
                          before_player_rank, request.challenge_rank)
-            player.pvp.pvp_player_rank_refresh()
 
             _arena_win_points = game_configs.base_config.get('arena_win_points')
             if _arena_win_points:

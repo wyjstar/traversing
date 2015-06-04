@@ -25,6 +25,7 @@ class CharacterPvpComponent(Component):
         self._pvp_times = 0  # pvp次数
         self._pvp_refresh_time = 0
         self._pvp_refresh_count = 0
+        self._pvp_current_rank = 0
         self._pvp_high_rank = 999999  # 玩家pvp最高排名
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
         self._pvp_arena_players = []
@@ -56,6 +57,7 @@ class CharacterPvpComponent(Component):
                     pvp_overcome_refresh_time=self._pvp_overcome_refresh_time,
                     pvp_overcome_refresh_count=self._pvp_overcome_refresh_count,
                     pvp_high_rank=self._pvp_high_rank,
+                    pvp_current_rank=self._pvp_current_rank,
                     pvp_high_rank_award=self._pvp_high_rank_award,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
@@ -69,6 +71,7 @@ class CharacterPvpComponent(Component):
                     pvp_overcome_refresh_time=self.pvp_overcome_refresh_time,
                     pvp_overcome_refresh_count=self.pvp_overcome_refresh_count,
                     pvp_high_rank=self._pvp_high_rank,
+                    pvp_current_rank=self._pvp_current_rank,
                     pvp_high_rank_award=self._pvp_high_rank_award,
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
@@ -119,9 +122,14 @@ class CharacterPvpComponent(Component):
         return self._pvp_overcome[index]
 
     def pvp_player_rank_refresh(self):
-        rank = tb_pvp_rank.ztotal()
+        rank = tb_pvp_rank.zscore(self.owner.base_info.id)
         if not rank:
             rank = int(tb_pvp_rank.ztotal())
+            self._pvp_arena_players = range(rank-9, rank + 1)
+
+        if self._pvp_current_rank == rank:
+            return
+        self._pvp_current_rank = rank
 
         if rank < 9:
             self._pvp_arena_players = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -216,7 +224,6 @@ class CharacterPvpComponent(Component):
 
     @property
     def pvp_arena_players(self):
-        if not self._pvp_arena_players:
-            self.pvp_player_rank_refresh()
-            self.save_data()
+        self.pvp_player_rank_refresh()
+        self.save_data()
         return self._pvp_arena_players

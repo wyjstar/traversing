@@ -37,8 +37,8 @@ def pvp_award():
 
     records = tb_pvp_rank.zrangebyscore(0, 10000, withscores=True)
 
+    childs = groot.childsmanager.childs
     for k, v in records:
-        childs = groot.childsmanager.childs
         rank = int(v)
         character_id = int(k)
         if character_id < 10000:
@@ -94,27 +94,27 @@ def do_pvp_daily_award_tick():
 def pvp_daily_award():
     logger.debug('pvp daily send award mail ')
     arena_award = game_configs.base_config.get('arena_day_points')
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
-                                     'character_id>1000',
-                                     ['id', 'character_id'])
+    records = tb_pvp_rank.zrangebyscore(0, 10000, withscores=True)
 
-    for k in records:
-        childs = groot.childsmanager.childs
-        rank = k['id']
+    childs = groot.childsmanager.childs
+    for k, v in records:
+        rank = int(v)
+        character_id = int(k)
+        if character_id < 10000:
+            continue
         for up, down, mail_id in arena_award.values():
             if rank >= up and rank <= down:
-                mail = mail_id
                 break
         else:
-            logger.error('pvp daily award error:%s', k)
+            logger.error('pvp daily award error:%s-%s', rank, character_id)
             continue
 
-        mail_data, _ = deal_mail(conf_id=mail_id, receive_id=k['character_id'])
+        mail_data, _ = deal_mail(conf_id=mail_id, receive_id=character_id)
 
         for child in childs.values():
             if 'gate' in child.name:
                 result = child.pull_message_remote('receive_mail_remote',
-                                                   k['character_id'],
+                                                   character_id,
                                                    (mail_data,))
                 if type(result) is bool and result:
                     break
@@ -122,5 +122,4 @@ def pvp_daily_award():
                     logger.debug('pvp_daily_award_tick result:%s,%s,%s',
                                  result, k, mail_data)
         else:
-            message_cache.cache('receive_mail_remote', k['character_id'],
-                                mail_data)
+            message_cache.cache('receive_mail_remote', character_id, mail_data)
