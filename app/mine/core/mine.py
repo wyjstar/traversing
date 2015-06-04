@@ -228,7 +228,7 @@ class PlayerField(Mine):
         self._gen_time = 0
 
     def save_info(self):
-        print 'save_info self.lineup', self._lineup
+#         print 'save_info self.lineup', self._lineup
         info = {'seq': self._seq,
                 'uid': self._tid,
                 'type': self._type,
@@ -244,7 +244,7 @@ class PlayerField(Mine):
                 'normal':self._normal,
                 'lucky':self._lucky
                 }
-        print info['lineup']
+#         print info['lineup']
         return info
 
     def update_info(self, info):
@@ -408,7 +408,7 @@ class MineData(object):
     def get_lock(self, seq):
         label = 'mine.lock'
         mine_obj.getObj(label)
-        print 'mine_obj', mine_obj
+#         print 'mine_obj', mine_obj
         val = mine_obj.get(seq)
         if val == None:
             val = 0
@@ -438,6 +438,7 @@ class MineData(object):
         return True
             
     def settle(self, seq, result, uid=None, nickname=None, hold=1):
+        print 'settle', seq, result, uid, nickname, hold
         try:
             if result == False:
                 self.unlock_mine(uid, seq)

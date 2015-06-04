@@ -647,7 +647,7 @@ def battle_1253(data, player):
     elif mine_type == 1:
         # pvp
         mine_lock = player.mine.start(request.pos)
-        if mine_lock:
+        if not mine_lock:
             response.res.result = False
             return response.SerializePartialToString()
         try:
