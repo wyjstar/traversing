@@ -359,13 +359,16 @@ def buy_stamina_2201(request_proto, player):
     """购买可恢复资源"""
     request = StaminaOperRequest()
     request.ParseFromString(request_proto)
-    resource_type = request.resource_type
+    resource_type = request.finance_changes.item_no
+    num = request.finance_changes.item_num
     item = player.stamina.get_item(resource_type)
     info = player.stamina.get_info(resource_type, player, item.buy_stamina_times)
     current_value = player.finance[resource_type]
 
     response = StaminaOperResponse()
-    response.resource_type = resource_type
+    response.finance_changes.item_type = 107
+    response.finance_changes.item_no = resource_type
+    response.finance_changes.item_num = num
 
     current_buy_stamina_times = item.buy_stamina_times
     need_gold = info.get("need_gold")
@@ -376,13 +379,13 @@ def buy_stamina_2201(request_proto, player):
     logger.debug("available_buy_stamina_times:%s,%s", available_buy_stamina_times,
                  current_buy_stamina_times)
     # 校验购买次数上限
-    if current_buy_stamina_times >= available_buy_stamina_times:
+    if current_buy_stamina_times + num > available_buy_stamina_times:
         response.res.result = False
         response.res.result_no = 11
         return response.SerializePartialToString()
 
     # 校验金币是否不足
-    if need_gold > current_gold:
+    if need_gold*num > current_gold:
         logger.debug("gold not enough++++++++++++")
         response.res.result = False
         response.res.result_no = 102
@@ -395,13 +398,13 @@ def buy_stamina_2201(request_proto, player):
         return response.SerializePartialToString()
 
     def func():
-        item.buy_stamina_times += 1
-        player.finance.add(resource_type, info.get("one_buy_value"))
+        item.buy_stamina_times += num
+        player.finance.add(resource_type, info.get("one_buy_value")*num)
         item.last_buy_stamina_time = int(time.time())
         player.finance.save_data()
         logger.debug("buy stamina++++++++++++++++++++")
 
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold*num, func)
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -412,13 +415,16 @@ def add_stamina_2202(request_proto, player):
     """按时自动增长资源"""
     request = StaminaOperRequest()
     request.ParseFromString(request_proto)
-    resource_type = request.resource_type
+    resource_type = request.finance_changes.item_no
+    num = request.finance_changes.item_num
     item = player.stamina.get_item(resource_type)
     info = player.stamina.get_info(resource_type, player, item.buy_stamina_times)
     current_value = player.finance[resource_type]
 
     response = StaminaOperResponse()
-    response.resource_type = resource_type
+    response.finance_changes.item_type = 107
+    response.finance_changes.item_no = resource_type
+    response.finance_changes.item_num = num
 
     # 校验时间是否足够
     current_time = int(time.time())

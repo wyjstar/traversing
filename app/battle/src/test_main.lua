@@ -15,10 +15,8 @@ local DataManager = import(framework.PACKAGE_NAME.."src.app.datacenter.bean.Data
 
 cc = cc or {}
 function cc.pAdd(t, t1)
-    print(data)
 end
 function cc.p(p1, p2)
-    print(data)
 end
 import(framework.PACKAGE_NAME.."src.app.Constants")
 
@@ -50,7 +48,6 @@ function getActionUtil()
     return nil
 end
 function createFile()
-    print("createFile=============")
     --local filename = cc.FileUtils:getInstance():getWritablePath().."output"
     local filename = "output"
     local f = io.open(filename, "w")
@@ -59,7 +56,6 @@ end
 
 function appendFile2(message, tab_num)
     --local filename = cc.FileUtils:getInstance():getWritablePath().."output"
-    print("appendFile2=============")
     local filename = "output"
     f = io.open(filename, "a")
 
@@ -84,7 +80,6 @@ end
 
 
 function cclog(data)
-    print(data)
 end
 local fcProcess = FCProcess.new("FCProcess")
 

@@ -1,4 +1,5 @@
 import "common.proto";
+import "player.proto";
 
 // 游戏服登录 command：4
 message GameLoginRequest{
@@ -92,10 +93,10 @@ message HeartBeatResponse{
 
 //可恢复性资源，体力, 讨伐令等 2201, 2202
 message StaminaOperRequest{
-    optional int32 resource_type = 1;
+    required FinanceChanges finance_changes = 2;
 }
 //返回 2201 2202 
 message StaminaOperResponse{
     required CommonResponse res = 1;
-    required int32 resource_type = 2;
+    required FinanceChanges finance_changes = 2;
 }
