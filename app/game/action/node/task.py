@@ -5,6 +5,10 @@ created by server on 14-7-17上午11:07.
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import task_pb2
 from shared.db_opear.configs_data import game_configs
+from gfirefly.server.logobj import logger
+from app.game.core.item_group_helper import gain, get_return
+from shared.utils.const import const
+from app.game.core.task import task_status
 
 
 @remoteserviceHandle('gate')
@@ -13,15 +17,15 @@ def get_task_info_1821(data, player):
     args = task_pb2.TaskInfoRequest()
     args.ParseFromString(data)
     sort = args.sort
-    response = TaskInfoResponse()
+    response = task_pb2.TaskInfoResponse()
 
-    sort_conf = game_configs.achievement_config.get('sort')
+    sort_conf = game_configs.achievement_config.get('sort').get(sort)
     first_tasks = game_configs.achievement_config.get('first_task')
     for tid in sort_conf:
         if tid not in first_tasks:
-            player.tasks.task_status(tid, pesponse)
+            continue
+        task_status(player, tid, response)
 
-    response.res.result = True
     return response.SerializeToString()
 
 
@@ -30,14 +34,25 @@ def get_task_reward_1822(data, player):
     """获取任务信息"""
     args = task_pb2.TaskRewardRequest()
     args.ParseFromString(data)
-    sort = args.sort
-    response = TaskRewardResponse()
+    tid = args.tid
+    response = task_pb2.TaskRewardResponse()
+    task_conf = game_configs.achievement_config.get('tasks').get(t_id)
 
-    sort_conf = game_configs.achievement_config.get('sort')
-    first_tasks = game_configs.achievement_config.get('first_task')
-    for tid in sort_conf:
-        if tid not in first_tasks:
-            player.tasks.task_status(tid, pesponse)
+    state = player.task.tasks.get(tid)
+    if not state or state == 3:
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+    if state == 1:
+        res = player.task.get_condition_info(task_conf)
+        if not res.get('state'):
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+        gain_data = gain(player, task_conf.reward, const.Task)
+        get_return(player, gain_data, response.gain)
+        player.task._tasks[tid] = 3
+        player.task.save_data()
 
     response.res.result = True
     return response.SerializeToString()

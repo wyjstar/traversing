@@ -14,34 +14,34 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='task.proto',
   package='',
-  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"G\n\x05Task1\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\")\n\x10TaskInfoResponse\x12\x15\n\x05tasks\x18\x01 \x03(\x0b\x32\x06.Task1\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
 
-_TASK1 = _descriptor.Descriptor(
-  name='Task1',
-  full_name='Task1',
+_TASK = _descriptor.Descriptor(
+  name='Task',
+  full_name='Task',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='tid', full_name='Task1.tid', index=0,
+      name='tid', full_name='Task.tid', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='condition', full_name='Task1.condition', index=1,
+      name='condition', full_name='Task.condition', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='status', full_name='Task1.status', index=2,
+      name='status', full_name='Task.status', index=2,
       number=3, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -57,7 +57,7 @@ _TASK1 = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=28,
-  serialized_end=99,
+  serialized_end=98,
 )
 
 
@@ -98,8 +98,8 @@ _TASKCONDITION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=101,
-  serialized_end=170,
+  serialized_start=100,
+  serialized_end=169,
 )
 
 
@@ -126,8 +126,8 @@ _TASKINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=172,
-  serialized_end=203,
+  serialized_start=171,
+  serialized_end=202,
 )
 
 
@@ -154,8 +154,8 @@ _TASKINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=205,
-  serialized_end=246,
+  serialized_start=204,
+  serialized_end=244,
 )
 
 
@@ -182,8 +182,8 @@ _TASKREWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=248,
-  serialized_end=280,
+  serialized_start=246,
+  serialized_end=278,
 )
 
 
@@ -224,26 +224,26 @@ _TASKREWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=282,
-  serialized_end=383,
+  serialized_start=280,
+  serialized_end=381,
 )
 
-_TASK1.fields_by_name['condition'].message_type = _TASKCONDITION
-_TASKINFORESPONSE.fields_by_name['tasks'].message_type = _TASK1
+_TASK.fields_by_name['condition'].message_type = _TASKCONDITION
+_TASKINFORESPONSE.fields_by_name['tasks'].message_type = _TASK
 _TASKREWARDRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _TASKREWARDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-DESCRIPTOR.message_types_by_name['Task1'] = _TASK1
+DESCRIPTOR.message_types_by_name['Task'] = _TASK
 DESCRIPTOR.message_types_by_name['TaskCondition'] = _TASKCONDITION
 DESCRIPTOR.message_types_by_name['TaskInfoRequest'] = _TASKINFOREQUEST
 DESCRIPTOR.message_types_by_name['TaskInfoResponse'] = _TASKINFORESPONSE
 DESCRIPTOR.message_types_by_name['TaskRewardRequest'] = _TASKREWARDREQUEST
 DESCRIPTOR.message_types_by_name['TaskRewardResponse'] = _TASKREWARDRESPONSE
 
-class Task1(_message.Message):
+class Task(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _TASK1
+  DESCRIPTOR = _TASK
 
-  # @@protoc_insertion_point(class_scope:Task1)
+  # @@protoc_insertion_point(class_scope:Task)
 
 class TaskCondition(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

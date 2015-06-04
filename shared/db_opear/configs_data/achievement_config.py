@@ -8,13 +8,6 @@ from shared.db_opear.configs_data.data_helper import convert_keystr2num
 from shared.db_opear.configs_data.data_helper import parse
 
 
-class TaskType:
-    ACHIEVE = 1
-    LIVELY = 2
-    LIVELY_REWARD = 3
-    SHARE = 4
-
-
 class AchievementConfig(object):
     def __init__(self):
         self._items = {}
@@ -30,7 +23,7 @@ class AchievementConfig(object):
             item = CommonItem(row)
 
             self._items[item.id] = item
-            if item.id:
+            if item.unlock:
                 self._unlock[item.unlock] = item.id
             else:
                 self._first_task.append(item.id)

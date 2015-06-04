@@ -975,7 +975,7 @@ def get_guild_info_812(data, player):
                                           m_g_id)
     response.my_guild_rank = rank_no
     if player.guild.position == 1:
-        response.captain_name = str(player.base_info.base_name)
+        response.captain_name = player.base_info.base_name
         response.captain_level = player.base_info.level
         response.captain_power = int(player.line_up_component.combat_power)
         response.captain_vip_level = player.base_info.vip_level
