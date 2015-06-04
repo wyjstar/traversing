@@ -691,7 +691,7 @@ def battle_1253(data, player):
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
     response.hold = request.hold
-    # print 'battle_1253:', response
+    print 'battle_1253:', response
     return response.SerializePartialToString()
 
 

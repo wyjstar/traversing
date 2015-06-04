@@ -524,7 +524,7 @@ class PlayerField(Mine):
         查看玩家占领的野怪矿详情
         """
         data = remote_gate.mine_detail_info_remote(self._tid, self._seq)
-        print 'detail_info', data
+        print 'detail_info', cPickle.loads(data)
         return cPickle.loads(data)
 #         self.update_mine()
 # #         now = time.time()
