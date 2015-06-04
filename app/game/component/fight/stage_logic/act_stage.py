@@ -54,5 +54,5 @@ class ActStageLogic(base_stage.BaseStageLogic):
                 player.stage_component.act_stage_info[0] += conf.timesExpend
             else:
                 player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
-            stage_util.settle(player, result, response, lively_event, conf)
+            stage_util.settle(player, result, response, conf)
         tlog_action.log('RoundFlow', player, stage_id, 3, 0, result)

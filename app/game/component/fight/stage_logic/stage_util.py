@@ -25,7 +25,7 @@ def get_stage_config(stage_config, stage_type, stage_id):
     return stage_info
 
 
-def settle(player, result, response, lively_event, conf):
+def settle(player, result, response, conf):
     """docstring for settle"""
     # 保存关卡信息
     player.stage_component.save_data()
