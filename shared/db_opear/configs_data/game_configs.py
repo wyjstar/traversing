@@ -51,6 +51,7 @@ from lucky_hero_config import LuckyHeroConfig
 from pseudo_random_config import PseudoRandomConfig
 from push_config import PushConfig
 from hjqy_config import HjqyConfig
+from currency_config import CurrencyConfig
 
 travel_item_group_config = {}
 stone_config = {}
@@ -101,6 +102,7 @@ pseudo_random_config = {}
 hjqy_config = {}
 
 push_config = {}
+currency_config = {}
 
 all_config_name = {
     'travel_item_group_config': TravelItemGroupConfig(),
@@ -150,7 +152,8 @@ all_config_name = {
     'lucky_hero_config': LuckyHeroConfig(),
     'pseudo_random_config': PseudoRandomConfig(),
     'push_config': PushConfig(),
-    'hjqy_config': HjqyConfig()
+    'hjqy_config': HjqyConfig(),
+    'currency_config': CurrencyConfig()
 }
 
 print("load game_configs===========================")
