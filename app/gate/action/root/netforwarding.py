@@ -154,6 +154,10 @@ def mine_harvest_remote(uid, seq):
     return groot.child('mine').mine_harvest_remote(uid, seq)
 
 @rootserviceHandle
+def mine_update_remote(uid, seq):
+    return groot.child('mine').mine_update_remote(uid, seq)
+
+@rootserviceHandle
 def login_guild_chat_remote(dynamic_id, guild_id):
     return groot.child('chat').login_guild_chat_remote(dynamic_id, guild_id)
 

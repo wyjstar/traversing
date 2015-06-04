@@ -479,7 +479,7 @@ class PlayerField(Mine):
 #         MineOpt.unlock(self._seq)
 #         return self, tid
     def settle(self, uid=None, result=True, nickname=None, hold=1):
-        data, uid, nickname = remote_gate.mine_settle_remote(uid, result, nickname, hold)
+        data, uid, nickname = remote_gate.mine_settle_remote(uid, self._seq, result, nickname, hold)
         self.update_info(data)
         
         return self, self._normal, self._lucky, uid, nickname
