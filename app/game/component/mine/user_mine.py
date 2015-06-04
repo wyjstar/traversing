@@ -516,6 +516,7 @@ class PlayerField(Mine):
 
     def mine_info(self):
         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
+        print 'mine_info', data
         return data
 
     def detail_info(self):
@@ -523,7 +524,8 @@ class PlayerField(Mine):
         查看玩家占领的野怪矿详情
         """
         data = remote_gate.mine_detail_info_remote(self._tid, self._seq)
-        return data
+        print 'detail_info', data
+        return cPickle.loads(data)
 #         self.update_mine()
 # #         now = time.time()
 # #         self.get_cur(now)
@@ -555,7 +557,8 @@ class PlayerField(Mine):
 #             return 0
 
     def guard(self, nickname, info):
-        result = remote_gate.mine_guard_remote(self._tid, self._seq, nickname, info)
+#         print 'guard', type(self._tid), type(self._seq), type(self._seq), type(info)
+        result = remote_gate.mine_guard_remote(self._tid, self._seq, nickname, cPickle.dumps(info))
         return result
 
 #     def draw_stones(self):

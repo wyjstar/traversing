@@ -9,6 +9,7 @@ from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 from app.transit.root.messagecache import message_cache
 from shared.db_opear.configs_data import game_configs
+from app.game.redis_mode import tb_pvp_rank
 import time
 import traceback
 from shared.utils.mail_helper import deal_mail
@@ -34,14 +35,14 @@ def pvp_award_tick():
 def pvp_award():
     arena_award = game_configs.base_config.get('arena_shorttime_points')
 
-    rank_max = max([_[1] for _ in arena_award.values()])
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
-                                     'character_id>10000 and id<=%s' % rank_max,
-                                     ['id', 'character_id'])
+    records = tb_pvp_rank.zrangebyscore(0, 10000, withscores=True)
 
-    for k in records:
+    for k, v in records:
         childs = groot.childsmanager.childs
-        rank = k['id']
+        rank = int(v)
+        character_id = int(k)
+        if character_id < 10000:
+            continue
         for up, down, score in arena_award.values():
             if rank >= up and rank <= down:
                 award = score
@@ -53,7 +54,7 @@ def pvp_award():
         for child in childs.values():
             if 'gate' in child.name:
                 result = child.pull_message_remote('pvp_award_remote',
-                                                   k['character_id'],
+                                                   character_id,
                                                    (award,))
                 if type(result) is bool and result:
                     logger.debug('pvp_award_tick result:%s,%s,%s',
@@ -61,7 +62,7 @@ def pvp_award():
                     break
         else:
             logger.debug('pvp_award_tick cache:%s,%s', k, award)
-            message_cache.cache('pvp_award_remote', k['character_id'], award)
+            message_cache.cache('pvp_award_remote', character_id, award)
 
 
 def pvp_daily_award_tick():

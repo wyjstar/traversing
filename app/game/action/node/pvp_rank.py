@@ -13,7 +13,6 @@ from app.proto_file import pvp_rank_pb2
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
 from app.game.action.node._fight_start_logic import assemble
-from app.game.action.node.line_up import line_up_info
 from app.game.action.root.netforwarding import push_message
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data import game_configs
@@ -22,11 +21,12 @@ from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pvp_assemble_units
-from app.game.action.node._fight_start_logic import pvp_process, save_line_up_order
+from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import get_seeds
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume, get_consume_gold_num
 from app.proto_file.shop_pb2 import ShopResponse
+from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
@@ -232,10 +232,10 @@ def pvp_fight_request_1505(data, player):
     request = pvp_rank_pb2.PvpFightRequest()
     response = pvp_rank_pb2.PvpFightResponse()
     request.ParseFromString(data)
-    player.base_info.check_time()
+    player.pvp.check_time()
 
-    if player.base_info.pvp_times <= 0:
-        logger.error('not enough pvp times:%s-%s', player.base_info.pvp_times,
+    if player.pvp.pvp_times <= 0:
+        logger.error('not enough pvp times:%s-%s', player.pvp.pvp_times,
                      game_configs.base_config.get('arena_free_times'))
         response.res.result = False
         response.res.result_no = 836
@@ -254,20 +254,22 @@ def pvp_fight_request_1505(data, player):
         return response.SerializeToString()
 
     before_player_rank = tb_pvp_rank.zscore(player.base_info.id)
+    if not before_player_rank:
+        before_player_rank = int(tb_pvp_rank.getObj('incr').incr())
+        tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
+        player.pvp.pvp_high_rank = before_player_rank
+
+    before_player_rank = int(before_player_rank)
+
     if before_player_rank == request.challenge_rank:
         logger.error('cant not fight self')
         response.res.result = False
         response.res.result_no = 1505
         return response.SerializeToString()
 
-    if not before_player_rank:
-        before_player_rank = tb_pvp_rank.getObj('incr').incr()
-        tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
-        player.base_info.pvp_high_rank = before_player_rank
-
     def settle(player, fight_result):
         rank_incr = 0
-        response.top_rank = player.base_info.pvp_high_rank
+        response.top_rank = player.pvp.pvp_high_rank
         if fight_result:
             logger.debug("fight result:True:%s:%s",
                          before_player_rank, request.challenge_rank)
@@ -293,9 +295,9 @@ def pvp_fight_request_1505(data, player):
                 tb_pvp_rank.zadd(request.challenge_rank, player.base_info.id,
                                  before_player_rank, target_id)
 
-            if request.challenge_rank < player.base_info.pvp_high_rank:
-                rank_incr = player.base_info.pvp_high_rank - request.challenge_rank
-            player.base_info.pvp_high_rank = min(player.base_info.pvp_high_rank,
+            if request.challenge_rank < player.pvp.pvp_high_rank:
+                rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
+            player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
                                                  request.challenge_rank)
 
             # 首次达到某名次的奖励
@@ -307,13 +309,12 @@ def pvp_fight_request_1505(data, player):
             else:
                 logger.debug('arena rank up points is not find')
 
+            if fight_result:
+                send_mail(conf_id=123, receive_id=target_id,
+                          pvp_rank=before_player_rank,
+                          nickname=player.base_info.base_name)
         else:
             logger.debug("fight result:False")
-
-        if fight_result:
-            send_mail(conf_id=123, receive_id=target_id, pvp_rank=target_id,
-                      nickname=player.base_info.base_name)
-        else:
             send_mail(conf_id=124, receive_id=target_id,
                       nickname=player.base_info.base_name)
 
@@ -324,11 +325,11 @@ def pvp_fight_request_1505(data, player):
             task_data = task_status(player)
             remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
-        player.base_info.pvp_times -= 1
-        player.base_info.pvp_refresh_time = time.time()
-        player.base_info.save_data()
+        player.pvp.pvp_times -= 1
+        player.pvp.pvp_refresh_time = time.time()
+        player.pvp.save_data()
         response.res.result = True
-        # response.top_rank = player.base_info.pvp_high_rank
+        # response.top_rank = player.pvp.pvp_high_rank
         response.rank_incr = rank_incr
         logger.debug(response)
 
@@ -371,18 +372,84 @@ def pvp_fight_revenge_1507(data, player):
 
 
 @remoteserviceHandle('gate')
+def pvp_fight_overcome_1508(data, player):
+    request = pvp_rank_pb2.PvpFightOvercome()
+    response = pvp_rank_pb2.PvpFightResponse()
+    request.ParseFromString(data)
+    line_up = request.lineup
+    skill = request.skill
+
+    # if player.base_info.is_firstday_from_register():
+    #     response.res.result = False
+    #     response.res.result_no = 150801
+    #     return response.SerializeToString()
+
+    if request.index != player.pvp.pvp_overcome_current:
+        logger.error('overcome index is error:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 150801
+        return response.SerializePartialToString()
+
+    target_id = player.pvp.get_overcome_id(request.index)
+    if not target_id:
+        logger.error('overcome index is not exist:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 150802
+        return response.SerializePartialToString()
+
+    def settle(player, fight_result):
+        logger.debug("fight revenge result:%s" % fight_result)
+
+        if fight_result:
+            player.pvp.pvp_overcome_current += 1
+            player.pvp.save_data()
+
+            overcome_rewards = game_configs.base_config.get('ggzjReward')
+            if request.index not in overcome_rewards:
+                logger.error('overcome reward is not exist:%s', request.index)
+                response.res.result = False
+                response.res.result_no = 150803
+                return response.SerializePartialToString()
+
+            overcome_reward = overcome_rewards[request.index]
+            return_data = gain(player, overcome_reward, const.PVP_OVERCOME)
+            get_return(player, return_data, response.gain)
+
+        response.res.result = True
+        logger.debug("red_units: %s" % response.red)
+        return response.SerializeToString()
+
+    return pvp_fight(player, target_id, line_up, skill, response, settle)
+
+
+@remoteserviceHandle('gate')
+def reset_overcome_time_1509(data, player):
+    request = pvp_rank_pb2.ResetPvpOvercomeTime()
+    request.ParseFromString(data)
+    response = CommonResponse()
+
+    # if player.base_info.is_firstday_from_register():
+    #     response.result = False
+    #     response.result_no = 150901
+    #     return response.SerializeToString()
+
+    response.result = player.pvp.reset_time()
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
 def reset_pvp_time_1506(data, player):
     request = pvp_rank_pb2.ResetPvpTime()
     request.ParseFromString(data)
 
-    player.base_info.check_time()
+    player.pvp.check_time()
     response = ShopResponse()
     response.res.result = True
     vip_level = player.base_info.vip_level
     reset_times_max = game_configs.vip_config.get(vip_level).get('buyArenaTimes')
-    if player.base_info.pvp_refresh_count + request.times > reset_times_max:
+    if player.pvp.pvp_refresh_count + request.times > reset_times_max:
         logger.error('over arenatime could buy:%s+%s>%s',
-                     player.base_info.pvp_refresh_count,
+                     player.pvp.pvp_refresh_count,
                      request.times,
                      reset_times_max)
         response.res.result = False
@@ -401,10 +468,10 @@ def reset_pvp_time_1506(data, player):
     def func():
         return_data = consume(player, _consume)  # 消耗
         get_return(player, return_data, response.consume)
-        player.base_info.pvp_times += request.times
-        player.base_info.pvp_refresh_time = time.time()
-        player.base_info.pvp_refresh_count += request.times
-        player.base_info.save_data()
+        player.pvp.pvp_times += request.times
+        player.pvp.pvp_refresh_time = time.time()
+        player.pvp.pvp_refresh_count += request.times
+        player.pvp.save_data()
     player.pay.pay(need_gold, func)
 
     return response.SerializePartialToString()
@@ -466,3 +533,6 @@ def pvp_award_remote(pvp_num, is_online, player):
     logger.debug('pvp award!play:%s,%s-%s:on:%s', player.character_id,
                  pvp_num, player.finance[const.PVP], is_online)
     return True
+
+
+

@@ -227,13 +227,14 @@ class PlayerField(Mine):
         self._lucky = {}  # 幸运石
         self._gen_time = 0
 
-    def save_info(self, lineup=None):
+    def save_info(self):
+        print 'save_info self.lineup', self._lineup
         info = {'seq': self._seq,
                 'uid': self._tid,
                 'type': self._type,
                 'status': self._status,
                 'nickname': self._nickname,
-                'lineup': lineup if lineup else self._lineup,
+                'lineup':  self._lineup,
                 'guard_time': self._guard_time,
                 'mine_id': self._mine_id,
                 'normal_harvest': self._normal_harvest,
@@ -243,6 +244,7 @@ class PlayerField(Mine):
                 'normal':self._normal,
                 'lucky':self._lucky
                 }
+        print info['lineup']
         return info
 
     def update_info(self, info):
@@ -324,6 +326,7 @@ class PlayerField(Mine):
         mine = ConfigData.mine(self._mine_id)
         # print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
         limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
+        print 'detail_info', self._lineup
         return 0, 1, 0, limit, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
 
 
@@ -352,7 +355,9 @@ class MineData(object):
     def save_data(self, seq, lineup=None):
         label = 'mine'
         rdobj = mine_obj.getObj(label)
-        rdobj.hset(seq, self.mines[seq].save_info(lineup))
+        if lineup != None:
+            self.mines[seq]._lineup = lineup
+        rdobj.hset(seq, self.mines[seq].save_info())
         
     def get_data(self, seq):
         label = 'mine'
@@ -403,7 +408,8 @@ class MineData(object):
     def get_lock(self, seq):
         label = 'mine.lock'
         mine_obj.getObj(label)
-        val = mine_obj.zget(seq)
+        print 'mine_obj', mine_obj
+        val = mine_obj.get(seq)
         if val == None:
             val = 0
         self.lock[seq] = int(val)
@@ -416,6 +422,9 @@ class MineData(object):
                 return False
             else:
                 self.lock[seq] = uid
+                label = 'mine.lock'
+                mine_obj.getObj(label)
+                mine_obj.set(seq, uid)
             return True
         else:
             self.get_lock(seq)
@@ -425,7 +434,7 @@ class MineData(object):
         self.lock[seq] = 0
         label = 'mine.lock'
         mine_obj.getObj(label)
-        mine_obj.zadd(0, seq)
+        mine_obj.set(seq, 0)
         return True
             
     def settle(self, seq, result, uid=None, nickname=None, hold=1):

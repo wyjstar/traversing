@@ -12,6 +12,7 @@ from gfirefly.server.logobj import logger
 from app.game.component.fight.hero_attr_cal.combat_power import combat_power_hero_lineup
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
+from app.game.core import rank_helper
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -60,8 +61,10 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.fine_hero_times = player.shop.single_coin_draw_times
     responsedata.excellent_hero_times = player.shop.single_gold_draw_times
 
-    responsedata.pvp_times = player.base_info.pvp_times
-    responsedata.pvp_refresh_count = player.base_info.pvp_refresh_count
+    responsedata.pvp_times = player.pvp.pvp_times
+    responsedata.pvp_refresh_count = player.pvp.pvp_refresh_count
+    responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
+    responsedata.pvp_overcome_refresh_count = player.pvp.pvp_overcome_refresh_count
 
     responsedata.combat_power = player.line_up_component.combat_power
     responsedata.newbee_guide_id = player.base_info.newbee_guide_id
@@ -87,6 +90,16 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.recharge = player.base_info.recharge  # 累计充值
     responsedata.tomorrow_gift = player.base_info.tomorrow_gift
     responsedata.battle_speed = player.base_info.battle_speed
+    # 战力排行
+    if rank_helper.flag_doublu_day():
+        rank_name = 'PowerRank2'
+        last_rank_name = 'PowerRank1'
+    else:
+        rank_name = 'PowerRank1'
+        last_rank_name = 'PowerRank2'
+    rank_no = rank_helper.get_rank_by_key(rank_name,
+                                          player.base_info.id)
+    responsedata.fight_power_rank = rank_no
 
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.base_info.vip_level)
