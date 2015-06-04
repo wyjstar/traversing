@@ -986,7 +986,7 @@ def get_guild_info_812(data, player):
         president_id = guild_obj.p_list.get(1)[0]
         character_info = tb_character_info.getObj(president_id).hgetall()
         if character_info:
-            response.captain_name = str(character_info['nickname'])
+            response.captain_name = character_info['nickname']
             response.captain_level = character_info['level']
             ap = 1
             if character_info['attackPoint'] is not None:

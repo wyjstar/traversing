@@ -5,7 +5,6 @@ created by sphinx on 14-10-11下午4:36.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import brew_pb2
-from app.game.core.lively import task_status
 
 from gfirefly.server.globalobject import GlobalObject
 remote_gate = GlobalObject().remote.get('gate')

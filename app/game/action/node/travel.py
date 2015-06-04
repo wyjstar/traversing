@@ -17,7 +17,6 @@ from shared.db_opear.configs_data import game_configs
 import random
 from gfirefly.server.logobj import logger
 import time
-from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
 from shared.tlog import tlog_action
@@ -90,10 +89,6 @@ def travel_831(data, player):
 
     player.travel_component.use_shoes()
     player.travel_component.save()
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     response.res.result = True
     return response.SerializeToString()

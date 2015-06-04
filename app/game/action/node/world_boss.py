@@ -11,7 +11,6 @@ from app.proto_file.db_pb2 import WorldBossAwardDB
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
-from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
 from shared.db_opear.configs_data import game_configs
 from app.game.core.drop_bag import BigBag

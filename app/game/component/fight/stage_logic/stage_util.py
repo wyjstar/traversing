@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
@@ -32,11 +31,6 @@ def settle(player, result, response, lively_event, conf):
     player.stage_component.save_data()
 
     # 保存活跃度
-    tstatus = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     # 增加玩家和武将经验，增加金币
     if not result:
