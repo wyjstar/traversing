@@ -135,15 +135,17 @@ class Rebate(Component):
             return 0
         if days == 30:
             func = 'moonCard'
+            param = 'moonCardSurplusDay'
         elif days == 7:
             func = 'weekCard'
+            param = 'weekCardSurplusDay'
         else:
             func = None
         if func == None:
             return 0, 0, 0
         formula = game_configs.formula_config.get(func).get("formula")
         all_vars = {}
-        all_vars['weekCardSurplusDay'] = one._count
+        all_vars[param] = one._count
         switch = eval(formula, all_vars)
         if switch and one._start != one._mail:
             return 1
