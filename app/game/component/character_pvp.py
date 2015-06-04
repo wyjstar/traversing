@@ -41,6 +41,7 @@ class CharacterPvpComponent(Component):
         self._pvp_refresh_count = character_info['pvp_refresh_count']
 
         self._pvp_high_rank = character_info['pvp_high_rank']
+        self._pvp_current_rank = character_info['pvp_current_rank']
         self._pvp_high_rank_award = character_info['pvp_high_rank_award']
 
         self._pvp_arena_players = character_info.get('pvp_arena_players', [])
