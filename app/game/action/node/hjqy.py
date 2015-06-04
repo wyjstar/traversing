@@ -13,7 +13,7 @@ from shared.utils.const import const
 from app.game.action.node._fight_start_logic import save_line_up_order
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
-from shared.utils.date_util import is_in_period
+from shared.utils.date_util import is_in_period, is_next_day, get_current_timestamp
 import cPickle
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -36,8 +36,15 @@ def init_2101(pro_data, player):
 
     response.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
     response.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
+
+    if is_next_day(get_current_timestamp(), player.hjqy_component.last_time):
+        player.hjqy_component.received_ids = []
+        player.hjqy_component.last_time = get_current_timestamp()
+        player.hjqy_component.save_data()
+
     for temp in player.hjqy_component.received_ids:
         response.hjqy_ids.append(temp)
+
     return response.SerializeToString()
 
 def construct_boss_pb(data, response):

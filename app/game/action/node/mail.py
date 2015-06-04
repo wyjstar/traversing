@@ -39,10 +39,10 @@ def notify_mail(player):
             if recharge_item.get('giftDays') == 30:
                 mail_id = game_configs.base_config.get('moonCardRemindMail')
                 send_mail(conf_id=mail_id, receive_id=player.base_info.id)
-                player.rebate.send_mail(rid)
             else:
                 mail_id = game_configs.base_config.get('weekCardRemindMail')
                 send_mail(conf_id=mail_id, receive_id=player.base_info.id)
+            player.rebate.send_mail(rid)
             player.rebate.save_data()
 
 

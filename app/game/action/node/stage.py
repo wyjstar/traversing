@@ -692,14 +692,18 @@ def trigger_hjqy(player, result):
     if not remote_gate['world'].is_can_trigger_hjqy_remote(player.base_info.id):
         return 0
 
+    stage_info = player.fight_cache_component._get_stage_config()
+    logger.debug(stage_info.type)
+    logger.debug(stage_info.id)
+    if stage_info.type not in [1]:
+        # 只有在剧情关卡时，才能触发黄巾起义
+        return 0
+
     logger.debug("can_trigger_hjqy")
     # 触发hjqy
     open_stage_id = player.stage_component.rank_stage_progress
     player.fight_cache_component.stage_id = open_stage_id
     stage_info = player.fight_cache_component._get_stage_config()
-    if stage_info.type not in [1]:
-        # 只有在剧情关卡时，才能触发黄巾起义
-        return 0
 
     rate = random.random()
     rate = 0.01 # for test

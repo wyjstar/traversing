@@ -121,6 +121,9 @@ class HjqyBossManager(object):
                 remote_gate.push_message_to_transit_remote('receive_mail_remote',
                                                            int(player_id), mail_data)
 
+        #clear rankinfo
+        self._rank_instance.clear_rank()
+
 class HjqyBoss(object):
     """docstring for Boss"""
     def __init__(self, player_id):

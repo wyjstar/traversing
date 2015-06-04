@@ -655,6 +655,10 @@ def battle_1253(data, player):
         response.seed1 = seed1
         response.seed2 = seed2
 
+        red_best_skill_id = 0
+        red_best_skill_level = 1
+        blue_best_skill_id = 0
+        blue_best_skill_level = 1
         # print red_units, blue_units
 
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
