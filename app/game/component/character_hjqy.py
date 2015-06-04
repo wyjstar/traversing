@@ -22,7 +22,7 @@ class CharacterHjqyComponent(Component):
 
     def new_data(self):
         self._hjqy = {'received_ids': [],
-                    #'hjqy_bosses': {}
+                    'last_time': 0
                 }
         return {'hjqy': self._hjqy}
 
@@ -35,3 +35,11 @@ class CharacterHjqyComponent(Component):
     @received_ids.setter
     def received_ids(self, value):
         self._hjqy['received_ids'] = value
+
+    @property
+    def last_time(self):
+        return self._hjqy.get('last_time', 0)
+
+    @last_time.setter
+    def last_time(self, value):
+        self._hjqy['last_time'] = value
