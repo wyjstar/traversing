@@ -536,7 +536,7 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     if stype != 1:
         return
     if result is not True:
-        send_mail(conf_id=122, receive_id=target)
+        send_mail(conf_id=122, receive_id=target, nickname=nickname )
         return
 
     warFogLootRatio = game_configs.base_config['warFogLootRatio']
