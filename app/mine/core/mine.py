@@ -119,7 +119,7 @@ class Mine(object):
 
 def gen_stone(num, odds_dict, limit, store, now_data):
     # 发放符文石
-    if now_data > limit:
+    if now_data >= limit:
         logger.error('gen_stone:%s > %s', now_data, limit)
         return
     for _ in range(0, num):
@@ -179,7 +179,7 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
 def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
     # 结算到当前的产出
     mine = ConfigData.mine(mine_id)
-    if now_data > mine.outputLimited:
+    if now_data >= mine.outputLimited:
         logger.error('get_cur:%s > %s', now_data, mine.outputLimited)
         now_data = mine.outputLimited
     if stype == 1:
@@ -446,19 +446,18 @@ class MineData(object):
             else:
                 self.get_detail_info(seq)
                 tid = self.mines[seq]._tid
-                nickname = self.mines[seq]._nickname
+                srcname = self.mines[seq]._nickname
                 if self._status == 2 or (self._status == 1 and time.time() > self._last_time):
                     self._status = 3
-                else:
-                    if hold:
-                        self.mines[seq]._tid = uid
-                        self.mines[seq]._nickname = nickname
+                if hold:
+                    self.mines[seq]._tid = uid
+                    self.mines[seq]._nickname = nickname
                 self.save_data(seq)
                 self.unlock_mine(uid, seq)
         except Exception, e:
             self.unlock_mine(uid, seq)
             
-        return self.mines[seq].save_info(), tid, nickname
+        return self.mines[seq].save_info(), tid, srcname
     
     def guard(self, uid, seq, nickname, data):
         self.get_info(seq)

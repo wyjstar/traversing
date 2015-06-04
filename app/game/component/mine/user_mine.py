@@ -647,7 +647,7 @@ class MonsterField(Mine):
         self._stage_id = stage_id
         return 0, mine.type, 0, -1, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
 
-    def settle(self, uid=None, nickname=None, hold=1):
+    def settle(self, uid=None, result=True, nickname=None, hold=1):
         mine = ConfigData.mine(self._mine_id)
         player_field = PlayerField()
         player_field._seq = self._seq
@@ -999,12 +999,10 @@ class UserMine(Component):
             self._mine[0] = UserSelf.create(self.owner.base_info.id,
                                             self.owner.base_info.base_name)
         for pos in self._mine.keys():
-            if self._mine[pos]._type == MineType.PLAYER_FIELD:
-                mine_info = remote_gate = GlobalObject().remote.get('gate')
             mine_info = self._mine[pos].mine_info()
             if mine_info['type'] == MineType.PLAYER_FIELD:
-                    if mine_info['nickname'] != self.owner.base_info.base_name:
-                        self.un_guard(pos)
+                if mine_info['nickname'] != self.owner.base_info.base_name:
+                    self.un_guard(pos)
             
             mine_info['position'] = pos
             mine_infos.append(mine_info)
@@ -1084,7 +1082,7 @@ class UserMine(Component):
         return last_time
 
     def settle(self, position, result, hold):
-        mine, normal, lucky, tid, nickname = self._mine[position].settle(self.owner.base_info.id,
+        mine, normal, lucky, tid, nickname = self._mine[position].settle(self.owner.base_info.id,result,
                                                 self.owner.base_info.base_name, hold)
         # print 'settle', mine.__dict__
         self._mine[position] = mine  # 更改本地信息

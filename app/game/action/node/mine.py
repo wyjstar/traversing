@@ -530,11 +530,12 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     @param gain: true or false
     """
     # print 'process_mine_result', position, response, result, stype
-    
 
     normal, lucky, target, nickname = player.mine.settle(position, result, hold)
+    
     if stype != 1:
         return
+    
     if result is not True:
         send_mail(conf_id=122, receive_id=target, nickname=nickname )
         return
@@ -587,7 +588,7 @@ def settle_1252(data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
     # todo: set settle time to calculate acc_mine
-    process_mine_result(player, pos, result, None, 0, 0)
+    process_mine_result(player, pos, result, None, 0, 1)
     response.result = True
     return response.SerializePartialToString()
 
