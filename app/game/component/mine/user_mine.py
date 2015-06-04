@@ -12,6 +12,8 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from monster_mine import MineOpt
+from gfirefly.server.globalobject import GlobalObject
+remote_gate = GlobalObject().remote.get('gate')
 
 
 def random_pick(odds_dict, num_top=1):
@@ -338,6 +340,8 @@ class PlayerField(Mine):
                 'lucky_harvest': self._lucky_harvest,
                 'normal_end': self._normal_end,
                 'lucky_end': self._lucky_end,
+                'normal':self._normal,
+                'lucky':self._lucky
                 }
         return info
 
@@ -356,17 +360,21 @@ class PlayerField(Mine):
         self._lucky_harvest = info.get('lucky_harvest')
         self._normal_end = info.get('normal_end')
         self._lucky_end = info.get('lucky_end')
-        self._normal = {}
-        self._lucky = {}
+        self._normal = info.get('normal')
+        self._lucky = info.get('lucky')
         self._last_time = self._normal_end
         mine = ConfigData.mine(self._mine_id)
         # print 'update_info', self._mine_id
         for nor_id in mine.group1.keys():
             if int(nor_id) == 0:
                 continue
+            if int(nor_id) in self._normal:
+                continue
             self._normal[int(nor_id)] = 0
         for sp_id in mine.randomStoneId.keys():
             if int(sp_id) == 0:
+                continue
+            if int(sp_id) in self._lucky:
                 continue
             self._lucky[int(sp_id)] = 0
 
@@ -449,26 +457,32 @@ class PlayerField(Mine):
                     return mine
 
     def start_battle(self):
-        return True
+        lock = remote_gate.mine_ask_battle_remote(self._tid, self._seq)
+        return lock
 #         lock = MineOpt.lock(self._seq)
 #         if lock == 1:
 #             return True
 #         return False
 
-    def settle(self, uid=None, nickname=None, hold=1):
-        mine = ConfigData.mine(self._mine_id)
-        tid = self._tid
-        if self._status == 2 or (self._status == 1 and time.time() > self._last_time):
-            self._status = 3
-        else:
-            if hold:
-                self._tid = uid
-                self._nickname = nickname
-            self._guard_time = time.time() + mine.protectTimeFree*60  # 读取数值表配置－刚占领的野怪矿保护时间
-        data = self.save_info()
-        MineOpt.add_mine(self._tid, self._seq, data)
-        MineOpt.unlock(self._seq)
-        return self, tid
+#     def settle(self, uid=None, nickname=None, hold=1):
+#         mine = ConfigData.mine(self._mine_id)
+#         tid = self._tid
+#         if self._status == 2 or (self._status == 1 and time.time() > self._last_time):
+#             self._status = 3
+#         else:
+#             if hold:
+#                 self._tid = uid
+#                 self._nickname = nickname
+#             self._guard_time = time.time() + mine.protectTimeFree*60  # 读取数值表配置－刚占领的野怪矿保护时间
+#         data = self.save_info()
+#         MineOpt.add_mine(self._tid, self._seq, data)
+#         MineOpt.unlock(self._seq)
+#         return self, tid
+    def settle(self, uid=None, result=True, nickname=None, hold=1):
+        data, uid, nickname = remote_gate.mine_settle_remote(uid, result, nickname, hold)
+        self.update_info(data)
+        
+        return self, self._normal, self._lucky, uid, nickname
 
     def get_cur_data(self, now):
         now_data = sum(self._normal.values()) + sum(self._lucky.values())
@@ -501,64 +515,73 @@ class PlayerField(Mine):
         self.get_cur_data(now)
 
     def mine_info(self):
-        self.update_mine()
-        return Mine.mine_info(self)
+        data = remote_gate.mine_query_info_remote(self._tid, self._seq)
+        return data
 
     def detail_info(self):
         """
         查看玩家占领的野怪矿详情
         """
-        self.update_mine()
-#         now = time.time()
-#         self.get_cur(now)
-#         if now >= self._increase:
-#             last_increase =  0
+        data = remote_gate.mine_detail_info_remote(self._tid, self._seq)
+        return data
+#         self.update_mine()
+# #         now = time.time()
+# #         self.get_cur(now)
+# #         if now >= self._increase:
+# #             last_increase =  0
+# #         else:
+# #             last_increase = self._increase
+#         mine = ConfigData.mine(self._mine_id)
+#         # print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
+#         limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
+#         return 0, 1, 0, limit, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
+
+#     def guard(self, nickname, info):
+#         """ 驻守攻占的野怪矿 """
+#         lock = MineOpt.lock(self._seq)
+#         print 'guard.lock', lock
+#         if lock > 1:
+#             MineOpt.unlock(self._seq)
+#             return 12440  # 战斗中
+#         self.update_mine()
+#         if self._nickname != nickname:
+#             MineOpt.unlock(self._seq)
+#             return 12441  # 非自己的矿
 #         else:
-#             last_increase = self._increase
-        mine = ConfigData.mine(self._mine_id)
-        # print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
-        limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
-        return 0, 1, 0, limit, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
+#             data = self.save_info(lineup=info)
+#             # print 'guard.data', data
+#             MineOpt.add_mine(self._tid, self._seq, data)
+#             MineOpt.unlock(self._seq)
+#             return 0
 
     def guard(self, nickname, info):
-        """ 驻守攻占的野怪矿 """
-        lock = MineOpt.lock(self._seq)
-        print 'guard.lock', lock
-        if lock > 1:
-            MineOpt.unlock(self._seq)
-            return 12440  # 战斗中
-        self.update_mine()
-        if self._nickname != nickname:
-            MineOpt.unlock(self._seq)
-            return 12441  # 非自己的矿
-        else:
-            data = self.save_info(lineup=info)
-            # print 'guard.data', data
-            MineOpt.add_mine(self._tid, self._seq, data)
-            MineOpt.unlock(self._seq)
-            return 0
+        result = remote_gate.mine_guard_remote(self._tid, self._seq, nickname, info)
+        return result
 
+#     def draw_stones(self):
+#         # 领取产出
+#         # print 'draw_stones'
+#         lock = MineOpt.lock(self._seq)
+#         if lock != 1:
+#             return {}
+#         self.update_mine()
+#         stones = {}
+#         # print self._normal, self._lucky
+#         for k, v in self._normal.items():
+#             stones[k] = v
+#             self._normal[k] = 0
+#         for k, v in self._lucky.items():
+#             stones[k] = v
+#             self._lucky[k] = 0
+# 
+#         self._status = 3
+#         save_data = self.save_info()
+#         MineOpt.add_mine(self._tid, self._seq, save_data)
+#         MineOpt.unlock(self._seq)
+# 
+#         return stones
     def draw_stones(self):
-        # 领取产出
-        # print 'draw_stones'
-        lock = MineOpt.lock(self._seq)
-        if lock != 1:
-            return {}
-        self.update_mine()
-        stones = {}
-        # print self._normal, self._lucky
-        for k, v in self._normal.items():
-            stones[k] = v
-            self._normal[k] = 0
-        for k, v in self._lucky.items():
-            stones[k] = v
-            self._lucky[k] = 0
-
-        self._status = 3
-        save_data = self.save_info()
-        MineOpt.add_mine(self._tid, self._seq, save_data)
-        MineOpt.unlock(self._seq)
-
+        status, stones = remote_gate.mine_harvest_remote(self._tid, self._seq)
         return stones
 
     def mine_data(self):
@@ -567,7 +590,8 @@ class PlayerField(Mine):
         return info
 
     def guard_info(self):
-        self.update_mine()
+        data = remote_gate.mine_update_remote(self._tid, self._seq)
+        self.update_info(data)
         return self._lineup
 
 
@@ -635,10 +659,11 @@ class MonsterField(Mine):
         player_field._nickname = nickname
         data = player_field.save_info()
         # print 'settle-------', data
-        MineOpt.add_mine(player_field._tid, player_field._seq, data)
+#         MineOpt.add_mine(player_field._tid, player_field._seq, data)
+        remote_gate.mine_add_field_remote(uid, player_field._seq, data)
         # print 'settle', player_field.__dict__
         src_id = 0
-        return player_field, src_id
+        return player_field, {}, {}, src_id, ''
 
 
 class Chest(Mine):
@@ -971,10 +996,13 @@ class UserMine(Component):
             self._mine[0] = UserSelf.create(self.owner.base_info.id,
                                             self.owner.base_info.base_name)
         for pos in self._mine.keys():
+            if self._mine[pos]._type == MineType.PLAYER_FIELD:
+                mine_info = remote_gate = GlobalObject().remote.get('gate')
             mine_info = self._mine[pos].mine_info()
             if mine_info['type'] == MineType.PLAYER_FIELD:
                     if mine_info['nickname'] != self.owner.base_info.base_name:
                         self.un_guard(pos)
+            
             mine_info['position'] = pos
             mine_infos.append(mine_info)
         return mine_infos
@@ -1052,13 +1080,13 @@ class UserMine(Component):
         self._update = True
         return last_time
 
-    def settle(self, position, hold):
-        mine, tid = self._mine[position].settle(self.owner.base_info.id,
+    def settle(self, position, result, hold):
+        mine, normal, lucky, tid, nickname = self._mine[position].settle(self.owner.base_info.id,
                                                 self.owner.base_info.base_name, hold)
         # print 'settle', mine.__dict__
         self._mine[position] = mine  # 更改本地信息
         self._update = True
-        return tid
+        return normal, lucky, tid, nickname
 
     def get_blue(self, position):
         if position in self._mine:

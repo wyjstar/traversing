@@ -530,16 +530,15 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     @param gain: true or false
     """
     # print 'process_mine_result', position, response, result, stype
-    if result is not True:
-        # send_mail(conf_id=122, receive_id=999)
-        return
+    
 
-    detail_info = player.mine.detail_info(position)
-    target = player.mine.settle(position, hold)
+    normal, lucky, target, nickname = player.mine.settle(position, result, hold)
     if stype != 1:
         return
+    if result is not True:
+        send_mail(conf_id=122, receive_id=target)
+        return
 
-    _, _, _, _, normal, lucky, _, _ = detail_info
     warFogLootRatio = game_configs.base_config['warFogLootRatio']
     harvest_stone = {}
     harvest_stone.update(normal)
@@ -647,30 +646,39 @@ def battle_1253(data, player):
 
     elif mine_type == 1:
         # pvp
-        red_units = player.fight_cache_component.get_red_units()
-        info = get_save_guard(player, pos)
-        # print info
-        blue_units = info.get("battle_units", {})
-        seed1, seed2 = get_seeds()
-        if not blue_units:
-            fight_result = True
-        else:
-            fight_result = pvp_process(player,
-                                   line_up,
-                                   red_units,
-                                   blue_units,
-                                   red_best_skill_id,
-                                   info.get("best_skill_no"),
-                                   info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
-#player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
-        hold = request.hold
-        process_mine_result(player, pos, fight_result, response, 1, hold)
-
-        blue_best_skill_id = info.get("best_skill_id", 0)
-        blue_best_skill_level = info.get("best_skill_level", 0)
-        response.fight_result = fight_result
-        response.seed1 = seed1
-        response.seed2 = seed2
+        mine_lock = player.mine.start()
+        if mine_lock:
+            response.res.result = False
+            return response.SerializePartialToString()
+        try:
+            red_units = player.fight_cache_component.get_red_units()
+            info = get_save_guard(player, pos)
+            # print info
+            blue_units = info.get("battle_units", {})
+            seed1, seed2 = get_seeds()
+            if not blue_units:
+                fight_result = True
+            else:
+                fight_result = pvp_process(player,
+                                       line_up,
+                                       red_units,
+                                       blue_units,
+                                       red_best_skill_id,
+                                       info.get("best_skill_no"),
+                                       info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
+    #player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
+            hold = request.hold
+            process_mine_result(player, pos, fight_result, response, 1, hold)
+    
+            blue_best_skill_id = info.get("best_skill_id", 0)
+            blue_best_skill_level = info.get("best_skill_level", 0)
+            response.fight_result = fight_result
+            response.seed1 = seed1
+            response.seed2 = seed2
+        except Exception, e:
+            player.mine.settle(request.pos, False, 0)
+            response.res.result = False
+            return response.SerializePartialToString()
 
         # print red_units, blue_units
 
