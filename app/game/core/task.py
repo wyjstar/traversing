@@ -11,7 +11,6 @@ def task_status(player, tid, response):
     task_res = response.tasks.add()
     task_res.tid = tid
     task_conf = game_configs.achievement_config.get('tasks').get(tid)
-    print 'AAAAAAAAAAAAAAAAAAA', tid, task_conf
     while True:
         state = player.task.tasks.get(tid)
         next_task = unlock_conf.get(tid)
