@@ -263,7 +263,7 @@ class UserSelf(Mine):
         return Mine.mine_info(self)
 
     def get_cur_data(self, now):
-        now_data = sum(self._normal.values()) + sum(self._lucky.values())
+        now_data = sum(self._normal.values())# + sum(self._lucky.values())
         last, stone = get_cur(self._mine_id,
                               now_data,
                               self._normal,
@@ -273,7 +273,7 @@ class UserSelf(Mine):
                               self._increase, 1)
         self._normal_harvest = last
         self._normal = stone
-        now_data = sum(self._normal.values()) + sum(self._lucky.values())
+        now_data = sum(self._normal.values())# + sum(self._lucky.values())
         last, stone = get_cur(self._mine_id,
                               now_data,
                               self._lucky,

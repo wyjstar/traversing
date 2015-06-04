@@ -328,7 +328,7 @@ def guard_1244(data, player):
 
 def add_stones(player, stones, response):
     response.res.result = True
-
+    print 'add_stones', stones
     for stone_id, num in stones.items():
         for _ in range(num):
             runt_no = player.runt.add_runt(stone_id)
