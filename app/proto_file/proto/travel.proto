@@ -13,11 +13,6 @@ message Travel{
 	optional int32 state = 4;
 }
 
-message Shoes{
-    required int32 num = 1; //当前鞋子数量
-    required int32 remain_time = 2; //获得下个鞋子剩余时间
-}
-
 // travel 831
 message TravelRequest{
     required int32 stage_id = 1;
@@ -26,17 +21,16 @@ message TravelResponse{
     required CommonResponse res = 1;
     optional int32 event_id = 2;
     optional GameResourcesResponse drops = 3;
+    optional GameResourcesResponse consume = 4;
 }
 
 // travel_init 830
 message TravelInitResponse{
     required CommonResponse res = 1;
     repeated Chapter chapter = 2;
-    optional Shoes shoes = 3;
+    repeated StageTravel stage_travel = 3;
     required int32 chest_time = 4;
     repeated TravelItemChapter travel_item_chapter = 5;
-    repeated StageTravel stage_travel = 6;
-    required int32 buy_shoe_times = 7;
 }
 
 message TravelItemChapter{

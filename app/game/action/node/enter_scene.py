@@ -53,7 +53,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     for k, i in enumerate(player.finance._finances):
         print(i)
-        responsedata.finances.append(i)
+        responsedata.finances.append(int(i))
 
     responsedata.fine_hero = player.last_pick_time.fine_hero
     responsedata.excellent_hero = player.last_pick_time.excellent_hero
@@ -87,8 +87,10 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         item_pb.resource_type = item.resource_type
         item_pb.buy_stamina_times = item.buy_stamina_times
         item_pb.last_gain_stamina_time = item.last_gain_stamina_time
+        logger.debug("stamina %s buy_stamina_times %s last_gain_stamina_time %s" % (item.resource_type, item.buy_stamina_times, item.last_gain_stamina_time))
 
 
+    logger.debug("stamina %s" % buy_times_pb)
     if player.base_info.heads.head:
         for head in player.base_info.heads.head:
             responsedata.head.append(head)

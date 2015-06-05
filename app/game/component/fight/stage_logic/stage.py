@@ -48,6 +48,6 @@ class StageLogic(base_stage.BaseStageLogic):
 
             # 活跃度
             # 结算
-            stage_util.settle(player, result, response, lively_event, conf)
+            stage_util.settle(player, result, response, conf)
 
         tlog_action.log('RoundFlow', player, stage_id, 1, 0, result)
