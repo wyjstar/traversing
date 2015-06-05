@@ -133,6 +133,8 @@ def format_by_type(format_type, value):
     if format_type == 'str':
         if type(value) is float:
             return str(value).split('.')[0]
+        value = value.replace("\\n", "\n")
+
         return value.encode("utf-8")
 
     if format_type == 'eval':
