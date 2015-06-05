@@ -52,6 +52,7 @@ def get_stages_901(pro_data, player):
         add.state = stage_obj.state
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
+        add.chest_state = stage_obj.chest_state
     response.elite_stage_times = elite_stage_times
     response.act_stage_times = act_stage_times
     response.plot_chapter = player.stage_component.plot_chapter
