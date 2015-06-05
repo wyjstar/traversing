@@ -169,11 +169,11 @@ def del_black_list_1105(data, player):
     return response.SerializePartialToString()
 
 
-def _with_battle_info(response, pid):
+def _with_battle_info(response, friend):
     # 添加好友主将的属性
-    column = ['lord_attr_info', 'heads', 'nickname',
-              'attackPoint', 'upgrade_time']
-    friend_data = tb_character_info.getObj(pid).hmget(column)
+    column = ['id', 'lord_attr_info', 'heads', 'nickname', 'vip_level',
+              'attackPoint', 'upgrade_time', 'level']
+    friend_data = friend.hmget(column)
     if friend_data.get('lord_attr_info').get('info'):
         battle_unit = BattleUnit.loads(friend_data.get('lord_attr_info').get('info'))
         response.hero_no = battle_unit.unit_no
@@ -188,12 +188,14 @@ def _with_battle_info(response, pid):
         response.buddy_power = int(battle_unit.power)
         response.buddy_level = battle_unit.level
 
-    response.id = pid
+    response.id = friend_data['id']
 
     friend_heads = Heads_DB()
     friend_heads.ParseFromString(friend_data['heads'])
     response.hero_no = friend_heads.now_head
     response.last_time = friend_data['upgrade_time']
+    response.vip_level = friend_data['vip_level']
+    response.level = friend_data['level']
 
     response.nickname = friend_data['nickname']
     if friend_data['attackPoint'] is not None:
@@ -212,22 +214,10 @@ def get_player_friend_list_1106(data, player):
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             response_friend_add = response.friends.add()
-            response_friend_add.id = pid
-            friend_data = player_data.hmget(['nickname', 'attackPoint',
-                                             'heads', 'upgrade_time',
-                                             'lively', 'last_day', 'level'])
-            response_friend_add.nickname = friend_data['nickname']
+            friend_data = player_data.hmget(['lively', 'last_day'])
             response_friend_add.gift = player.friends.last_present_times(pid)
-            ap = 1010
-            if friend_data['attackPoint'] is not None:
-                ap = int(friend_data['attackPoint'])
-            response_friend_add.power = ap
-            response_friend_add.last_time = friend_data['upgrade_time']
 
-            friend_heads = Heads_DB()
-            friend_heads.ParseFromString(friend_data['heads'])
-            response_friend_add.hero_no = friend_heads.now_head
-            print 'friend_data', friend_data['lively'], friend_data['nickname']
+            print 'friend_data', friend_data['lively'], pid
             lively = int(friend_data.get('lively', 0))
             today = time.strftime("%Y%m%d", time.localtime(time.time()))
             if today != friend_data.get('last_day', '0'):
@@ -239,11 +229,9 @@ def get_player_friend_list_1106(data, player):
             if update:
                 _update = True
             response_friend_add.stat = stat
-            response_friend_add.level = friend_data['level']
-            response_friend_add.b_rank = 1
 
             # 添加好友主将的属性
-            _with_battle_info(response_friend_add, pid)
+            _with_battle_info(response_friend_add, player_data)
             response_friend_add.gift = player.friends.last_present_times(pid)
         else:
             logger.error('friend_list, cant find player id:%d' % pid)
@@ -254,27 +242,10 @@ def get_player_friend_list_1106(data, player):
     for pid in player.friends.blacklist:
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
-            black_data = player_data.hmget(['nickname', 'attackPoint',
-                                            'heads', 'upgrade_time', 'level'])
             response_blacklist_add = response.blacklist.add()
-            response_blacklist_add.id = pid
-            response_blacklist_add.nickname = black_data['nickname']
-            response_blacklist_add.gift = 0
-            ap = 1010
-            if friend_data['attackPoint'] is not None:
-                ap = int(friend_data['attackPoint'])
-            response_blacklist_add.power = ap
-            response_blacklist_add.last_time = friend_data['upgrade_time']
-
-            black_heads = Heads_DB()
-            black_heads.ParseFromString(black_data['heads'])
-            response_blacklist_add.hero_no = black_heads.now_head
-
-            response_blacklist_add.level = black_data['level']
-            response_blacklist_add.b_rank = 1
 
             # 添加好友主将的属性
-            _with_battle_info(response_blacklist_add, pid)
+            _with_battle_info(response_blacklist_add, player)
         else:
             logger.error('black_list cant find player id:%d' % pid)
             player.friends.blacklist.remove(pid)
@@ -285,23 +256,9 @@ def get_player_friend_list_1106(data, player):
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             response_applicant_list_add = response.applicant_list.add()
-            response_applicant_list_add.id = pid
-            response_applicant_list_add.gift = 0
-            applicant_data = player_data.hmget(['nickname',
-                                                'heads',
-                                                'level',
-                                                'upgrade_time'])
-            response_applicant_list_add.nickname = applicant_data['nickname']
-
-            black_heads = Heads_DB()
-            black_heads.ParseFromString(applicant_data['heads'])
-            response_applicant_list_add.hero_no = black_heads.now_head
-            response_applicant_list_add.last_time = friend_data['upgrade_time']
-            response_applicant_list_add.level = applicant_data['level']
-            response_applicant_list_add.b_rank = 1
 
             # 添加好友主将的属性
-            _with_battle_info(response_applicant_list_add, pid)
+            _with_battle_info(response_applicant_list_add, player_data)
         else:
             logger.error('applicant_list, cant find player id:%d' % pid)
             player.friends.applicant_list.remove(pid)
@@ -387,7 +344,7 @@ def find_friend_request_1107(data, player):
         response.last_time = friend_data['upgrade_time']
 
         # 添加好友主将的属性
-        # _with_battle_info(response, player_data.hget('id'))
+        # _with_battle_info(response, player_data)
 
     return response.SerializePartialToString()
 
@@ -446,7 +403,7 @@ def recommend_friend_1198(data, player):
             friend.last_time = friend_data['upgrade_time']
 
             # 添加好友主将的属性
-            _with_battle_info(friend, player_data.hget('id'))
+            _with_battle_info(friend, player_data)
 
     return response.SerializePartialToString()
 
@@ -477,6 +434,7 @@ def given_stamina_1108(data, player):
 
     lively_event = CountEvent.create_event(EventType.PRESENT, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
+    player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
@@ -599,7 +557,7 @@ def get_recommend_friend_list_1109(data, player):
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             response_friend_add = response.recommend.add()
-            _with_battle_info(response_friend_add, pid)
+            _with_battle_info(response_friend_add, player_data)
             response_friend_add.gift = player.friends.last_present_times(pid)
         else:
             logger.error('friend_list, cant find player id:%d' % pid)

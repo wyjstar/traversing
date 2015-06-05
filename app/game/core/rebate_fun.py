@@ -78,10 +78,10 @@ def rebate_call(player, recharge_item):
         player.rebate.set_rebate(rid, rebate)
         player.rebate.save_data()
         
-#         notify = rebate_info(player)
-#         remote_gate.push_object_remote(5432,
-#                                            notify.SerializePartialToString(),
-#                                            [player.dynamic_id])
+        notify = rebate_info(player)
+        remote_gate.push_object_remote(5432,
+                                           notify.SerializePartialToString(),
+                                           [player.dynamic_id])
         
         mail_id = recharge_item.get('mailId')
         mail = db_pb2.Mail_PB()

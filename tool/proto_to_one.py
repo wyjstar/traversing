@@ -11,7 +11,7 @@ try:
 except:
     pass
 
-result_file = open("traversing_one.proto", "w")
+result_file = open("../proto/traversing_one.proto", "w")
 for file_name in os.listdir(root_path):
     if file_name.endswith('.proto'):
         file_path = root_path + file_name
@@ -25,4 +25,9 @@ for file_name in os.listdir(root_path):
         result_file.write("\n")
 result_file.close()
 
-os.system("protoc -o traversing_one.pb traversing_one.proto")
+
+os.system("cd ../app/proto_file/proto;git pull origin master:master;")
+os.system("protoc -o ../proto/traversing_one.pb ../proto/traversing_one.proto --proto_path='../proto'")
+os.system("cd ../app/proto_file/proto;protoc -I=. --python_out=.. ./*")
+os.system("cd ../app/proto_file/proto;git commit -am 'update';git push origin master:master")
+#os.system("protoc -I=. --python_out=.. ./*")

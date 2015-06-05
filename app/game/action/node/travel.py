@@ -106,6 +106,7 @@ def travel_831(data, player):
     player.travel_component.save()
     lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
     tstatus = player.tasks.check_inter(lively_event)
+    player.tasks.save_data()
     if tstatus:
         task_data = task_status(player)
         remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])

@@ -3,3 +3,6 @@
 	url = server@192.168.1.62:/home/server/traversingConfig/.git
     ignore = all
     
+[submodule "proto"]
+	path = proto
+	url = server@192.168.1.62:/home/server/traversingProto/
