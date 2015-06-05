@@ -127,7 +127,7 @@ class BattlePVBProcess(object):
             return True
         logger_cal.debug("开始战斗...")
 
-        #return True, 0
+        return True, 0
         blue_units = None
         for i in range(game_configs.base_config.get("max_times_fight")):
             i = i + 1

@@ -138,6 +138,7 @@ class WorldBoss(BaseBoss):
         self.send_award_top_ten()
         self.send_award_add_up()
         self.send_award_last()
+        self.send_award_in()
 
     def send_award_top_ten(self):
         """
@@ -156,23 +157,33 @@ class WorldBoss(BaseBoss):
         累积奖励
         """
         logger.debug("send_award_add_up==========")
-        i = 0
         hp_max = self.get_hp()
         accumulated_rewards = game_configs.base_config.get("world_boss").get('accumulated_rewards')
-        while True and i < 1000:
-            i+=1
-            ranks = self._rank_instance.get(100*(i-1)+1, 100*i)
-            logger.debug("send_award_add_up: %s" % ranks)
-            if len(ranks) == 0:
-                return
-            for player_id, v in ranks:
-                for i in range(5, 1, -1):
-                    reward_info = accumulated_rewards.get(i)
-                    if hp_max * reward_info[0] < v:
-                        self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
-                        break
-                    else:
-                        return
+
+        for player_id, v in self._rank_instance.get(1, 0):
+            for i in range(5, 1, -1):
+                reward_info = accumulated_rewards.get(i)
+                if hp_max * reward_info[0] < v:
+                    self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
+                    break
+                else:
+                    return
+        #对大量玩家进行处理
+        #i = 0
+        #while True and i < 1000:
+            #i+=1
+            #ranks = self._rank_instance.get(100*(i-1)+1, 100*i)
+            #logger.debug("send_award_add_up: %s" % ranks)
+            #if len(ranks) == 0:
+                #return
+            #for player_id, v in ranks:
+                #for i in range(5, 1, -1):
+                    #reward_info = accumulated_rewards.get(i)
+                    #if hp_max * reward_info[0] < v:
+                        #self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
+                        #break
+                    #else:
+                        #return
 
     def send_award_last(self):
         """
@@ -185,6 +196,14 @@ class WorldBoss(BaseBoss):
         big_bag_id = game_configs.base_config.get("world_boss").get('last_kill_rewards')
         logger.debug("send_award_last=============== %s" % big_bag_id)
         self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
+
+    def send_award_in(self):
+        """ 参与奖励
+        """
+        logger.debug("send_award_in=========== %s", self._rank_instance.get(1, 0))
+        for player_id, v in self._rank_instance.get(1, 0):
+            logger.debug("send_award_in==== %s %s" % (player_id, v))
+            self.send_award(player_id, const.PVB_IN_AWARD, int(v))
 
     def send_award(self, player_id, award_type, award):
         """

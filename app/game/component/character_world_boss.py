@@ -57,6 +57,7 @@ class Boss(object):
         self._last_fight_time = 0      # 上次战斗结束时间
         self._stage_id = 0             # 当前关卡
         self._award = {}               # 奖励
+        self._demages = [] # 每次的伤害
 
     def init_data(self, data):
         """docstring for init_data"""
@@ -68,6 +69,7 @@ class Boss(object):
         self._last_fight_time = data.get('last_fight_time', 0)
         self._fight_times = data.get('fight_times', 0)
         self._award = data.get('award', {})
+        self._demages = data.get('demages', [])
 
     def get_stage_info(self):
         stage_info = None
@@ -145,13 +147,7 @@ class Boss(object):
         """
         设置奖励, 参与奖励做特殊处理
         """
-        if award_type == const.PVB_IN_AWARD:
-            if not self._award.get(award_type):
-                self._award[award_type] = [award]
-            else:
-                self._award[award_type].append(award)
-        else:
-            self._award[award_type] = award
+        self._award[award_type] = award
 
     def get_award(self):
         """
@@ -173,10 +169,19 @@ class Boss(object):
                 'fight_times': self._fight_times,
                 'stage_id': self._stage_id,
                 'boss_id': self._boss_id,
-                'award': self._award}
+                'award': self._award,
+                'demages': self._demages}
 
     def get_base_config(self):
         if self._boss_id == "world_boss":
             return game_configs.base_config.get("world_boss")
         else:
             return game_configs.base_config.get("mine_boss")
+
+    @property
+    def demages(self):
+        return self._demages
+
+    @demages.setter
+    def demages(self, value):
+        self._demages = value
