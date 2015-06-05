@@ -63,14 +63,14 @@ class CharacterTravelComponent(Component):
     def update_shoes(self):
         now = int(time.time())
         max_num = game_configs.base_config.get("travelShoeTimes")
-        if self.shoes[0] == max_num:
-            return self.shoes[0], 0
-        how_long = now - self.shoes[1]
+        if self._shoes[0] == max_num:
+            return self._shoes[0], 0
+        how_long = now - self._shoes[1]
         need_time = game_configs.base_config.get("travelVigorNeedTime")*60
         add_num = how_long/need_time
         shengyu_time = how_long % need_time
 
-        if add_num+shoes[0] >= max_num:
+        if add_num+self._shoes[0] >= max_num:
             self._shoes = [max_num, int(time.time())]
             shengyu_time = 0
         else:

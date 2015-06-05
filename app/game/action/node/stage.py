@@ -58,7 +58,6 @@ def get_stages_901(pro_data, player):
     response.act_stage_times = act_stage_times
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
-    print 'AAAAAAAAAAA', response
     return response.SerializePartialToString()
 
 
