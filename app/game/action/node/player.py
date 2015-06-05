@@ -402,6 +402,7 @@ def buy_stamina_2201(request_proto, player):
         player.finance.add(resource_type, info.get("one_buy_value")*num)
         item.last_buy_stamina_time = int(time.time())
         player.finance.save_data()
+        player.stamina.save_data()
         logger.debug("buy stamina++++++++++++++++++++")
 
     player.pay.pay(need_gold*num, func)
