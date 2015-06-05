@@ -222,7 +222,7 @@ class Pusher(object):
         now = time.time()
         for uid in self.offline.keys():
             if now - self.offline[uid] > days*24*60*60:
-                message = game_configs.language_config.get(push_config.text).get('cn')
+                message = game_configs.language_config.get(str(push_config.text)).get('cn')
                 self.add_message(uid, push_config.event, message, int(time.time()))
                 del self.offline[uid]
                 push_offline.hdel(uid)
