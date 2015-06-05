@@ -250,6 +250,13 @@ def pvb_fight_start_1705(pro_data, player):
     logger.debug("blue_units===========%s" % blue_units[5].hp)
     logger.debug("--" * 40)
 
+    if blue_units[5].hp <= 0:
+        logger.debug("world boss already dead!")
+        response.res.result = False
+        response.res.result_no = 1705
+        return response.SerializePartialToString()
+
+
     # 根据鼓舞次数，增加ATK百分比
     atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
                boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
