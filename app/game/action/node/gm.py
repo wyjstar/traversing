@@ -26,7 +26,7 @@ from app.proto_file.account_pb2 import AccountKick
 import time
 
 
-remote_gate = GlobalObject().remote['gate']
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')

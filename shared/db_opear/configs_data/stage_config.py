@@ -4,7 +4,6 @@ created by server on 14-7-16下午5:48.
 """
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.data_helper import convert_keystr2num
-from shared.db_opear.configs_data.data_helper import parse
 
 
 class StageConfig(object):
@@ -26,7 +25,6 @@ class StageConfig(object):
     def parser(self, config_value):
         for row in config_value:
             convert_keystr2num(row.get("dragonGift"))
-            row["stageBox"] = parse(row.get("stageBox"))
             item = CommonItem(row)
 
             if item.sort == 1:

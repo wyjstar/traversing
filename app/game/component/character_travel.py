@@ -6,7 +6,6 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
-import time
 
 
 class CharacterTravelComponent(Component):
@@ -17,8 +16,7 @@ class CharacterTravelComponent(Component):
         super(CharacterTravelComponent, self).__init__(owner)
         self._travel = {}  # 游历章节缓存 {stage_id:[[event_id, drop, time]]}
         self._travel_item = {}  # 获得的风物志 {stage_id:[travel_item_id]}
-        self._shoes = [game_configs.base_config.get("travelVigorInit"),
-                       int(time.time())]  # 鞋子个数更新时间
+        self._shoes = [0, 0, 0, 0, 0]  # 剩余鞋子[1,2,3,正在消耗，已消耗个数]
         self._chest_time = 1  # 上次领取宝箱时间
         self._fight_cache = [0, 0]  # [stage_id, event_id]
         self._last_buy_shoes = [0, 1]  # [已用次数, 最后买的时间]
@@ -160,8 +158,8 @@ class CharacterTravelComponent(Component):
     @auto.setter
     def auto(self, value):
         self._auto = value
-
     @property
+
     def last_buy_shoes(self):
         return self._last_buy_shoes
 
