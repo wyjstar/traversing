@@ -1,10 +1,5 @@
 import "common.proto";
 
-// command:11010 初始充值请求
-message InitRecharge{
-    repeated int32 recharge_ids = 1; //已购买的充值项,用于首冲双倍
-}
-
 message RechargeData{
     optional float recharge_time = 1;
     optional float recharge_accumulation = 2;

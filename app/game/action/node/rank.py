@@ -4,6 +4,8 @@ created by K.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
+from shared.db_opear.configs_data import game_configs
+from app.game.redis_mode import tb_guild_info, tb_guild_name
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.proto_file import rank_pb2
@@ -12,7 +14,7 @@ from app.proto_file.db_pb2 import Heads_DB
 import time
 
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')

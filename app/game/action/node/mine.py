@@ -33,7 +33,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 def mine_status(player, response):

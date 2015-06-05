@@ -11,9 +11,6 @@ import time
 from shared.utils.exception import AuthError
 
 
-remote_gate = GlobalObject().remote.get('gate')
-
-
 class GameCommandService(CommandService):
     def callTarget(self, targetKey, *args, **kw):
         target = self.getTarget(targetKey)
@@ -44,7 +41,7 @@ class GameCommandService(CommandService):
 
         except AuthError, e:
             logger.exception(e)
-            remote_gate.disconnect_remote(dynamic_id)
+            GlobalObject().remote['gate'].disconnect_remote(dynamic_id)
             return None
         except Exception, e:
             logger.exception(e)
@@ -58,7 +55,7 @@ class GameCommandService(CommandService):
 
 
 if 'gate' in GlobalObject().remote:
-    reference = remote_gate._reference
+    reference = GlobalObject().remote['gate']._reference
     reference.addService(GameCommandService("gateremote"))
 
 

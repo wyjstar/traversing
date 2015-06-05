@@ -3,11 +3,12 @@
 created by server on 14-7-17下午4:50.
 """
 import re
+import cPickle
 import time
 from app.game.core.PlayersManager import PlayersManager
 from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
-from app.game.redis_mode import tb_guild_info, tb_guild_name
+from app.game.redis_mode import tb_guild_info, tb_guild_name, tb_guild_index_incr
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import remoteserviceHandle
@@ -19,13 +20,14 @@ from app.proto_file.db_pb2 import Mail_PB
 from app.game.component.mail.mail import MailComponent
 from app.game.action.root import netforwarding
 from app.game.core.stage.stage import Stage
+from shared.utils.ranking import Ranking
 from app.proto_file.db_pb2 import Heads_DB
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
 
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 
 
 @remoteserviceHandle('gate')

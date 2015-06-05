@@ -31,7 +31,7 @@ from app.proto_file.shop_pb2 import ShopResponse
 from app.proto_file.db_pb2 import Mail_PB
 from app.game.action.root import netforwarding
 
-remote_gate = GlobalObject().remote.get('gate')
+remote_gate = GlobalObject().remote['gate']
 PVP_TABLE_NAME = 'tb_pvp_rank'
 
 

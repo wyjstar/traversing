@@ -1,4 +1,4 @@
-# coding: utf-8
+#coding: utf-8
 '''
 Created on 2015-4-28
 
@@ -10,8 +10,7 @@ from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import db_pb2
 import time
 from app.game.action.root import netforwarding
-remote_gate = GlobalObject().remote.get('gate')
-
+remote_gate = GlobalObject().remote['gate']
 
 def notify_mail(player):
     """
@@ -78,8 +77,18 @@ def rebate_call(player, recharge_item):
         rebate.new_rebate(days)
         player.rebate.set_rebate(rid, rebate)
         player.rebate.save_data()
-
+        
         notify = rebate_info(player)
         remote_gate.push_object_remote(5432,
                                            notify.SerializePartialToString(),
                                            [player.dynamic_id])
+        
+        mail_id = recharge_item.get('mailId')
+        mail = db_pb2.Mail_PB()
+        mail.config_id = mail_id
+        mail.receive_id = player.base_info.id
+        mail.send_time = int(time.time())
+        mail.mail_type = 2
+        mail_data = mail.SerializePartialToString()
+        netforwarding.push_message('receive_mail_remote', player.base_info.id, mail_data)
+        

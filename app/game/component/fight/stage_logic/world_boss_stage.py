@@ -5,9 +5,7 @@ from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 import cPickle
-
-remote_gate = GlobalObject().remote.get('gate')
-
+remote_gate = GlobalObject().remote['gate']
 
 attr_type = {1:"hpHero",
              2:"atkHero",
