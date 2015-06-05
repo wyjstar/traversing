@@ -32,7 +32,7 @@ message TravelResponse{
 message TravelInitResponse{
     required CommonResponse res = 1;
     repeated Chapter chapter = 2;
-    required Shoes shoes = 3;
+    optional Shoes shoes = 3;
     required int32 chest_time = 4;
     repeated TravelItemChapter travel_item_chapter = 5;
     repeated StageTravel stage_travel = 6;
