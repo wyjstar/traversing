@@ -59,7 +59,8 @@ if __name__ == '__main__':
     GlobalObject().json_model_default_config = model_default_config
     GlobalObject().allconfig = {'tlog':0}
 
-    hostname = "127.0.0.1"
+    # hostname = "127.0.0.1"
+    hostname = "localhost"
     user = "root"
     password = "123456"
     port = 3306
