@@ -63,6 +63,7 @@ class CharacterOnlineGift(Component):
 
     @property
     def online_time(self):
+        self.check_time()
         elapse = time.time() - self._login_on_time
         return self._online_time + elapse
 
