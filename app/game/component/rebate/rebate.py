@@ -171,3 +171,4 @@ class Rebate(Component):
                 else:
                     break
         return self._mail_id, mail_times
+    
