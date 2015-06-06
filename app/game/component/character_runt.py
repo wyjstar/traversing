@@ -56,7 +56,7 @@ class CharacterRuntComponent(Component):
         return refresh_id
 
     def add_runt(self, runt_id):
-        if len(self._m_runt) + 1 >= game_configs.base_config.get('totemStash'):
+        if len(self._m_runt) + 1 > game_configs.base_config.get('totemStash'):
             return 0
 
         runt_no = get_uuid()
