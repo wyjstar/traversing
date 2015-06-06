@@ -162,12 +162,12 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
             data = dat(now, harvest, dur)
             # harvest += dat*(dur*60)
             start = harvest + data*(dur*60)
-            num = int(data * per * ratio)
+            num = int(data * per * (1+ratio))
         else:
             mine = ConfigData.mine(mine_id)
             ratio = mine.increase  # 增产比例
             incr_dat = dat(increase, harvest, dur)
-            dat1 = int(incr_dat * per * ratio)  # 增产部分
+            dat1 = int(incr_dat * per * (1+ratio))  # 增产部分
             nor_dat = dat(now, increase, dur)
             dat2 = (nor_dat*per)  # 未增产部分
             num = dat1+dat2
