@@ -469,3 +469,15 @@ class CharacterBaseInfoComponent(Component):
     @plat_id.setter
     def plat_id(self, value):
         self._plat_id = value
+
+    @property
+    def buy_hjqy_max(self):
+        """每日购买讨伐令上限"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyhjqyCopyTimes
+
+    @property
+    def buy_shoe_max(self):
+        """每日购买鞋子上限"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyShoeTimes

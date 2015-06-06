@@ -121,7 +121,7 @@ class Mine(object):
 def gen_stone(num, odds_dict, limit, store, now_data):
     # 发放符文石
     if now_data >= limit:
-        logger.error('gen_stone:%s > %s', now_data, limit)
+        logger.error('gen_stone:%s >= %s', now_data, limit)
         return store
     for _ in range(0, num):
         stone_id = random_pick(odds_dict, sum(odds_dict.values()))

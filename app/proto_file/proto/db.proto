@@ -44,10 +44,16 @@ message WorldBossAwardDB
 
 message Stamina_DB{
     optional int32 open_receive = 1 [default = 1];
-    optional int32 get_stamina_times = 2 [default = 0];
-    optional int32 buy_stamina_times = 3 [default = 0];
-    optional int32 last_gain_stamina_time = 4 [default = 0];
-    optional int32 last_mail_day = 5 [default = 0];
-    repeated int32 contributors = 6;
-    optional int32 last_buy_stamina_time = 7 [default = 0];
+    optional int32 get_stamina_times = 2 [default = 0]; // 体力，从邮件中获取体力的次数
+    optional int32 buy_stamina_times = 3 [default = 0];//
+    optional int32 last_gain_stamina_time = 4 [default = 0];//
+    optional int32 last_mail_day = 5 [default = 0]; //体力
+    repeated int32 contributors = 6;//体力
+    optional int32 last_buy_stamina_time = 7 [default = 0]; //
+    optional int32 resource_type = 8 [default = 0]; //资源id
+}
+
+message All_Stamina_DB
+{
+    repeated Stamina_DB stamina = 1;
 }

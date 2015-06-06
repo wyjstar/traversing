@@ -108,3 +108,15 @@ class CharacterHerosComponent(Component):
         hero = self._heros.get(hero_no)
         assert hero is not None, ("hero %s not exists!" % hero_no)
         return hero.is_guard
+
+    def get_quality_hero_count(self, quality):
+        """
+        :param quality: 品质类型
+        :return: 返回指定品质武将数量
+        """
+        count = 0
+        for hero_id in self._heros:
+            hero = game_configs.hero_config[hero_id]
+            if hero.quality >= quality:
+                count += 1
+        return count

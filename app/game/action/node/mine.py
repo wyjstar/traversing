@@ -252,6 +252,8 @@ def guard_1244(data, player):
     character_line_up = CharacterLineUpComponent(player)
     save_slot = {}
     for slot in request.line_up_slots:
+        if not slot.hero_no:
+            continue
         line_up_slot = LineUpSlotComponent(character_line_up,
                                            slot.slot_no,
                                            activation=True,
@@ -681,6 +683,10 @@ def battle_1253(data, player):
             response.res.result = False
             return response.SerializePartialToString()
 
+        red_best_skill_id = 0
+        red_best_skill_level = 1
+        blue_best_skill_id = 0
+        blue_best_skill_level = 1
         # print red_units, blue_units
 
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)

@@ -25,6 +25,8 @@ class FriendComponent(Component):
         self._reward = {}
         self._fight_times = {} # 小伙伴支援次数
         self._fight_last_time = 0 # 小伙伴上次战斗时间
+        self._given_record = []     #体力赠送纪录（用来第二天重置）
+        self._reset_time = 0        #体力赠送记录重置的时间(最后一次在几号)
 
     def init_data(self, character_info):
         self._friends = character_info.get('friends')
@@ -39,6 +41,16 @@ class FriendComponent(Component):
         self._reward = character_info.get('freward', {})
         self._fight_times = character_info.get('ffight_times', {})
         self._fight_last_time = character_info.get('ffight_last_time', 0)
+        self._given_record = character_info.get('given_record', [])
+        self._reset_time = character_info.get('reset_time', 0)
+
+        print("#"*66)
+        print(self._given_record, self._reset_time)
+        today = time.localtime(time.time())
+        if self._reset_time != today.tm_mday:
+            print("#"*66, "reset given record")
+            self._reset_time = today.tm_mday
+            self._given_record = []
 
     def save_data(self):
         friend_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -47,7 +59,9 @@ class FriendComponent(Component):
                     applicants_list=self._applicants_list,
                     freward=self._reward,
                     ffight_times=self._fight_times,
-                    ffight_last_time=self._fight_last_time
+                    ffight_last_time=self._fight_last_time,
+                    given_record=self._given_record,
+                    reset_time=self._reset_time
                     )
         friend_obj.hmset(data)
 
@@ -57,7 +71,9 @@ class FriendComponent(Component):
                     applicants_list=self._applicants_list,
                     freward=self._reward,
                     ffight_times=self._fight_times,
-                    ffight_last_time=self._fight_last_time
+                    ffight_last_time=self._fight_last_time,
+                    given_record=self._given_record,
+                    reset_time=self._reset_time
                     )
         return data
 
@@ -160,6 +176,9 @@ class FriendComponent(Component):
         else:
             self._friends[friend_id] = []
 
+        if friend_id in self._given_record:
+            self._friends[friend_id] = [datetime.datetime.now()]
+
         return True
 
     def del_friend(self, friend_id):
@@ -225,7 +244,6 @@ class FriendComponent(Component):
         if target_id not in self._friends.keys():
             logger.error('given_stamina can not find friend!:%s', target_id)
             return False
-
         given_time_list = self._friends[target_id]
         given_times = len(given_time_list)
         if given_times >= 1:
@@ -239,6 +257,7 @@ class FriendComponent(Component):
 
         send_mail(conf_id=1, receive_id=target_id,
                   nickname=self.owner.base_info.base_name)
+        self._given_record.append(target_id)
 
         return True
 

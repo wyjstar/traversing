@@ -5,7 +5,7 @@ created by wzp on 14-6-19下午7: 51.
 import time
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
-from app.proto_file.game_pb2 import GameLoginResponse
+from app.proto_file.game_pb2 import GameLoginResponse, BuyStaminaTimes
 from app.game.action.node.player import init_player
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
@@ -52,6 +52,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.closure = player.base_info.closure
 
     for k, i in enumerate(player.finance._finances):
+        print(i)
         responsedata.finances.append(i)
 
     responsedata.fine_hero = player.last_pick_time.fine_hero
@@ -80,6 +81,14 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.server_time = int(time.time())
     responsedata.register_time = player.base_info.register_time
     # responsedata.soul_shop_refresh_times = player.soul_shop.refresh_times
+    buy_times_pb = responsedata.buy_times
+    for item in player.stamina._stamina.stamina:
+        item_pb = buy_times_pb.add()
+        item_pb.resource_type = item.resource_type
+        item_pb.buy_stamina_times = item.buy_stamina_times
+        item_pb.last_gain_stamina_time = item.last_gain_stamina_time
+
+
     if player.base_info.heads.head:
         for head in player.base_info.heads.head:
             responsedata.head.append(head)
