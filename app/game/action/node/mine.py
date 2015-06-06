@@ -358,6 +358,13 @@ def harvest_1245(data, player):
     request.ParseFromString(data)
     response = mine_pb2.drawStones()
     response.position = request.position
+    detail_info = player.mine.detail_info(request.position)
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    num = sum(normal.values()) + sum(lucky.values())
+    if player.runt.bag_is_full(num):
+        response.res.result = False
+        response.res.result_no = 12451
+        return response.SerializePartialToString()
     stones = player.mine.harvest(request.position)
     # print 'stones', stones
     if stones:
