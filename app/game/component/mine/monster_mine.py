@@ -65,7 +65,7 @@ class MineOpt(object):
         if old_score:
             if old_score >= v:
                 return
-        tb_rank.zadd(k, v)
+        tb_rank.getObj(label).zadd(v, k)
 
     @classmethod
     def updata_level(cls, label, uid, s, t):
@@ -100,7 +100,7 @@ class MineOpt(object):
     def get_user(cls, label, k):
         """ label : "user_level","sword",玩家等级，团队战力 """
         try:
-            ret = tb_rank.zscore(k)
+            ret = tb_rank.get(label).zscore(k)
         except Exception, e:
             print e
             return 1
