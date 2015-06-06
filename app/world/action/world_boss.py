@@ -96,7 +96,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_bl
         return -1, 0
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
-    res = world_boss_start(red_units,  blue_units, red_best_skill, red_best_skill_level, 0, 1, player_info.get("level"), debuff_skill_no, damage_rate, seed1, seed2)
+    res = world_boss_start(red_units,  blue_units, red_best_skill, red_best_skill_level, 0, 1, debuff_skill_no, damage_rate, seed1, seed2, player_info.get("level"))
     result = res.get("result")
     hp_left = res.get("hp_left")
 
