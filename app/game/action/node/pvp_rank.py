@@ -67,7 +67,7 @@ def _with_pvp_info(response, character_id):
     response.level = data.get('level')
     response.nickname = data.get('nickname')
     response.ap = int(data.get('attackPoint'))
-    response.hero_ids.extend([_ for _ in data['hero_ids'] if _])
+    response.hero_ids.extend([_ for _ in data['hero_ids']])
     response.hero_levels.extend([_ for _ in data['hero_levels']])
     response.head_no = data.get('head_no', 0)
     response.character_id = data.get('character_id')
@@ -399,7 +399,7 @@ def reset_overcome_time_1509(data, player):
         response.result_no = 150901
         return response.SerializeToString()
 
-    response.result = player.pvp.reset_time()
+    response.result = player.pvp.reset_overcome()
     return response.SerializeToString()
 
 

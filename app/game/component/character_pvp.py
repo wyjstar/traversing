@@ -4,11 +4,15 @@ created by server on 15-5-29下午5:21.
 """
 import time
 import random
+from shared.utils.const import const
 from gfirefly.server.logobj import logger
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_pvp_rank
+from app.game.core import rank_helper
+from gfirefly.dbentrust.redis_mode import RedisObject
+tb_rank = RedisObject('tb_rank')
 
 
 class CharacterPvpComponent(Component):
@@ -91,25 +95,27 @@ class CharacterPvpComponent(Component):
 
         tm = time.localtime(self._pvp_overcome_refresh_time)
         if local_tm.tm_year != tm.tm_year or local_tm.tm_yday != tm.tm_yday:
-            if not self._pvp_overcome:
-                self.reset_time()
-            self._pvp_overcome_refresh_time = time.time()
-            self._pvp_overcome_refresh_count = 0
-            # self._pvp_overcome_current = 1
+            if not self._pvp_overcome and self.reset_overcome():
+                self._pvp_overcome_refresh_time = time.time()
+                self._pvp_overcome_refresh_count = 0
+                # self._pvp_overcome_current = 1
+                self.save_data()
 
-    def reset_time(self):
+    def reset_overcome(self):
         _times = self.pvp_overcome_refresh_count + 1
         if _times > self.owner.base_info.buyGgzj_times:
-            logger.error('overcome reset error:%s-%s',
+            logger.error('overcome reset times error:%s-%s',
                          self.pvp_overcome_refresh_count,
                          self.owner.base_info.buyGgzj_times)
             return False
 
-        max_index = max(game_configs.base_config.get('ggzjReward').keys())
-        all_ids = tb_character_info.smem('all')
-        for _ in range(max_index):
-            self._pvp_overcome.append(random.choice(all_ids))
-
+        character_info = tb_character_info.getObj(self.owner.base_info.id)
+        ids = get_overcomes(self.owner.base_info.id,
+                            int(character_info.hget('attackPoint')))
+        if not ids:
+            return False
+        logger.debug('reset overcome:%s', ids)
+        self._pvp_overcome = ids
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count += 1
         self._pvp_overcome_current = 1
@@ -133,7 +139,7 @@ class CharacterPvpComponent(Component):
         self._pvp_current_rank = rank
 
         if rank < 9:
-            self._pvp_arena_players = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            self._pvp_arena_players = range(1, 11)
             return
 
         self._pvp_arena_players = [rank]
@@ -228,3 +234,48 @@ class CharacterPvpComponent(Component):
         self.pvp_player_rank_refresh()
         self.save_data()
         return self._pvp_arena_players
+
+
+def get_overcomes(player_id, player_ap):
+    rank_name, _ = rank_helper.get_power_rank_name()
+    rank = tb_rank.getObj(rank_name)
+    rank_toal = rank.ztotal()
+    if rank_toal < 20:
+        logger.error('reset overcome not enough player:%s', rank_toal)
+        return []
+    types = [20001, 20002, 20003]
+    count = 0
+    ids = set()
+    for _id in types:
+        item = game_configs.arena_fight_config.get(_id)
+        if not item:
+            logger.error('arena_fight_config:%d', _id)
+        scope = eval(item.choose, dict(k=player_ap))[0]
+        count += scope[2]
+        _min, _max = scope[0], scope[1]
+        _min *= const.power_rank_xs
+        _max *= const.power_rank_xs
+        increment = player_ap * 20 / 100 * const.power_rank_xs
+        index = 1
+        while len(ids) < count:
+            res = rank.zrangebyscore(_min - increment * (index - 1),
+                                     _max + increment * (index - 1),
+                                     withscores=True)
+            index += index
+            random.shuffle(res)
+            if len(res) > count:
+                res = filter(lambda x: int(x[0]) != player_id, res)
+                ids_index = 0
+                while len(ids) < count:
+                    ids.add(res[ids_index])
+                    ids_index += 1
+
+    overcome_ids = [0]
+    ids = sorted(ids, key=lambda x: x[1])
+    for _id, _ in ids:
+        overcome_ids.append(int(_id))
+    logger.debug('get overcome %s-%s', overcome_ids, len(overcome_ids))
+    return overcome_ids
+
+
+# get_overcomes(10008, 256)
