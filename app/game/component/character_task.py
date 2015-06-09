@@ -5,6 +5,7 @@ created by cui.
 from shared.db_opear.configs_data import game_configs
 import time
 from app.game.component.Component import Component
+from app.game.redis_mode import tb_character_info
 
 
 class CharacterTaskComponent(Component):

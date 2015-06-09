@@ -39,3 +39,14 @@ message TaskRewardResponse
 	optional GameResourcesResponse gain = 2; //通用奖励
     required CommonResponse res = 3;
 }
+
+//通知服务器分享
+message ShareRequest
+{
+    required int32 tid = 1; //任务ID
+}
+
+message ShareResponse
+{
+    required CommonResponse res = 1;
+}
