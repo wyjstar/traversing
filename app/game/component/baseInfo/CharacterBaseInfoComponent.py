@@ -491,10 +491,8 @@ class CharacterBaseInfoComponent(Component):
         if not activity_info.is_open:
             logger.debug("activity close by is_open.")
             return False
-        start = string_to_timestamp(activity_info.timeStart, "%Y-%m-%d %H:%M:%S")
-        end = string_to_timestamp(activity_info.timeEnd, "%Y-%m-%d %H:%M:%S")
         current_time = get_current_timestamp()
-        if start > current_time or current_time > end:
+        if activity_info.timeStart > current_time or current_time > activity_info.timeEnd:
             logger.debug("activity close by timeStart timeEnd.")
             return False
         return True
