@@ -36,6 +36,12 @@ def get_target_line_up_info_706(pro_data, player):
         response = char_obj.hget('copy_slots')
         if response:
             return response
+    else:
+        robot_obj = tb_character_info.getObj('robot')
+        if robot_obj.hexists(target_id):
+            robot_obj = robot_obj.hget(target_id)
+            response = robot_obj.get('copy_slots')
+            return response
 
     response = line_up_pb2.LineUpResponse()
     response.res.result = False
