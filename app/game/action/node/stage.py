@@ -727,10 +727,11 @@ def trigger_hjqy(player, result):
 
     str_blue_units = cPickle.dumps(blue_units[0])
     result = remote_gate['world'].create_hjqy_remote(player.base_info.id, player.base_info.base_name, str_blue_units, stage_id)
+    logger.debug("8============= %s" % result)
     if not result:
         return False
     # send trigger reward
-    hjqyOpenReward = game_configs.base_config.get("hjqyOpenReward")
+    hjqyOpenReward = game_configs.base_config.get("hjqyOpenRewardID")
     send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
 
     return stage_id
