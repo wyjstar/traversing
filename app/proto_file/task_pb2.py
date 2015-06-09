@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='task.proto',
   package='',
-  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"\x1b\n\x0cShareRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"-\n\rShareResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -228,16 +228,75 @@ _TASKREWARDRESPONSE = _descriptor.Descriptor(
   serialized_end=381,
 )
 
+
+_SHAREREQUEST = _descriptor.Descriptor(
+  name='ShareRequest',
+  full_name='ShareRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tid', full_name='ShareRequest.tid', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=383,
+  serialized_end=410,
+)
+
+
+_SHARERESPONSE = _descriptor.Descriptor(
+  name='ShareResponse',
+  full_name='ShareResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='ShareResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=412,
+  serialized_end=457,
+)
+
 _TASK.fields_by_name['condition'].message_type = _TASKCONDITION
 _TASKINFORESPONSE.fields_by_name['tasks'].message_type = _TASK
 _TASKREWARDRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _TASKREWARDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_SHARERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['Task'] = _TASK
 DESCRIPTOR.message_types_by_name['TaskCondition'] = _TASKCONDITION
 DESCRIPTOR.message_types_by_name['TaskInfoRequest'] = _TASKINFOREQUEST
 DESCRIPTOR.message_types_by_name['TaskInfoResponse'] = _TASKINFORESPONSE
 DESCRIPTOR.message_types_by_name['TaskRewardRequest'] = _TASKREWARDREQUEST
 DESCRIPTOR.message_types_by_name['TaskRewardResponse'] = _TASKREWARDRESPONSE
+DESCRIPTOR.message_types_by_name['ShareRequest'] = _SHAREREQUEST
+DESCRIPTOR.message_types_by_name['ShareResponse'] = _SHARERESPONSE
 
 class Task(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -274,6 +333,18 @@ class TaskRewardResponse(_message.Message):
   DESCRIPTOR = _TASKREWARDRESPONSE
 
   # @@protoc_insertion_point(class_scope:TaskRewardResponse)
+
+class ShareRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SHAREREQUEST
+
+  # @@protoc_insertion_point(class_scope:ShareRequest)
+
+class ShareResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SHARERESPONSE
+
+  # @@protoc_insertion_point(class_scope:ShareResponse)
 
 
 # @@protoc_insertion_point(module_scope)
