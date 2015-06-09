@@ -30,7 +30,7 @@ def init_login_gift_825(pro_data, player):
     response.cumulative_day_num = component_login_gift.cumulative_day_num
 
     logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
-    logger.debug("login_gift.cumulative_day %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
+    logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
     return response.SerializeToString()
 
 
@@ -99,6 +99,6 @@ def get_login_gift(activity_id, response, player):
         component_login_gift.continuous_day_num += 1
         component_login_gift.save_data()
     logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
-    logger.debug("login_gift.cumulative_day %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
+    logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
     return True, 0
 
