@@ -21,6 +21,7 @@ from shared.utils.const import const
 from shared.tlog import tlog_action
 from app.game.core.item_group_helper import is_afford, consume
 from app.game.core.item_group_helper import gain, get_return
+from app.game.core.task import hook_task, CONDITIONId
 
 
 xs = 100000
@@ -92,6 +93,8 @@ def travel_831(data, player):
     return_data = consume(player, need_items)
     get_return(player, return_data, response.consume)
     player.travel_component.save()
+
+    hook_task(player, CONDITIONId.TRAVEL, 1)
 
     response.res.result = True
     return response.SerializeToString()

@@ -25,6 +25,7 @@ from app.game.core.mail_helper import send_mail
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
+from app.game.core.task import hook_task, CONDITIONId
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -434,6 +435,8 @@ def given_stamina_1108(data, player):
         return response.SerializePartialToString()  #
 
     player.friends.save_data()
+    hook_task(player, CONDITIONId.SEND_STAMINA, 1)
+    return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')

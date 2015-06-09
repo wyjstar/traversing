@@ -25,6 +25,7 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.action.node._fight_start_logic import save_line_up_order
+from app.game.core.task import hook_task, CONDITIONId
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -278,6 +279,8 @@ def pvp_fight_request_1505(data, player):
                 rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
             player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
                                            request.challenge_rank)
+            if player.pvp.pvp_high_rank > request.challenge_rank:
+                hook_task(player, CONDITIONId.PVP_RANK, request.challenge_rank)
 
             # 首次达到某名次的奖励
             arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')
@@ -295,6 +298,8 @@ def pvp_fight_request_1505(data, player):
             logger.debug("fight result:False")
             send_mail(conf_id=124, receive_id=target_id,
                       nickname=player.base_info.base_name)
+
+        hook_task(player, CONDITIONId.PVP_RANk_TIMES, 1)
 
         player.pvp.pvp_times -= 1
         player.pvp.pvp_refresh_time = time.time()

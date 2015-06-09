@@ -29,6 +29,7 @@ import copy
 from shared.utils.random_pick import random_pick_with_weight
 from app.game.core.mail_helper import send_mail
 import cPickle
+from app.game.core.task import hook_task, CONDITIONId
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -451,6 +452,10 @@ def stage_sweep(stage_id, times, player, sweep_type):
         # 更新等级相关属性
         player.line_up_component.update_slot_activation()
         player.line_up_component.save_data()
+
+        # hook task
+        hook_task(player, CONDITIONId.STAGE, stage_id)
+        hook_task(player, CONDITIONId.ANY_STAGE, 1)
 
         return_data = consume(player, sweep_item, multiple=times)
         get_return(player, return_data, response.consume)

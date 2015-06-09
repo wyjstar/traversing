@@ -7,6 +7,7 @@ from app.game.core.hero import Hero
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
+from app.game.core.task import hook_task, CONDITIONId
 
 
 class CharacterHerosComponent(Component):
@@ -62,10 +63,31 @@ class CharacterHerosComponent(Component):
         self._heros[hero_no] = hero
         self.new_hero_data(hero)
 
-        if game_configs.hero_config.get(hero_no).get('quality') >= 5:
+        hero_conf = game_configs.hero_config.get(hero_no)
+
+        if hero_conf.color == 3:
             if not (hero_no in self.owner.base_info.heads.head):
                 self.owner.base_info.heads.head.append(hero_no)
             self.owner.base_info.save_data()
+
+        cid = 0
+        color = hero_conf.color
+        color_num = 0
+        star6_num = 0
+        if hero_conf.color == 1:
+            cid = CONDITIONId.GREEN_HERO
+        elif hero_conf.color == 2:
+            cid = CONDITIONId.BLUE_HERO
+        if cid:
+            for hero_no, hero_obj in self._heros.items():
+                h_conf = game_configs.hero_config.get(hero_no)
+                if h_conf.color == color:
+                    color_num += 1
+                if h_conf.quality == 6:
+                    star6_num += 1
+            hook_task(self.owner, cid, color_num)
+            hook_task(self.owner, CONDITIONId.STAR6_HERO, star6_num)
+
         return hero
 
     def add_hero_without_save(self, hero_no):

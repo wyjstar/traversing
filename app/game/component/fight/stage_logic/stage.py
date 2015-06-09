@@ -5,6 +5,7 @@ from app.game.component.fight.stage_logic import stage_util, base_stage
 from gfirefly.server.logobj import logger
 import time
 from shared.tlog import tlog_action
+from app.game.core.task import hook_task, CONDITIONId
 
 
 class StageLogic(base_stage.BaseStageLogic):
@@ -43,6 +44,10 @@ class StageLogic(base_stage.BaseStageLogic):
         # todo: 更新战斗次数
         # 体力
         if result:
+            # hook task
+            hook_task(player, CONDITIONId.STAGE, stage_id)
+            hook_task(player, CONDITIONId.ANY_STAGE, 1)
+
             player.stamina.stamina -= conf.vigor
             player.stamina.save_data()
 

@@ -9,6 +9,7 @@ from app.proto_file import brew_pb2
 from gfirefly.server.globalobject import GlobalObject
 remote_gate = GlobalObject().remote.get('gate')
 from shared.db_opear.configs_data import game_configs
+from app.game.core.task import hook_task, CONDITIONId
 
 
 @remoteserviceHandle('gate')
@@ -53,4 +54,5 @@ def taken_brew_1602(data, player):
         response.nectar_num = player.brew.nectar
         response.nectar_cur = player.brew.nectar_cur
         response.gold = player.finance.gold
+    hook_task(player, CONDITIONId.BREW, 1)
     return response.SerializePartialToString()

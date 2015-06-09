@@ -20,5 +20,13 @@ class EquipmentConfig(object):
         for row in config_value:
             if row.get('gain'):
                 row['gain'] = data_helper.parse(row.get("gain"))
+
+            if row['quality'] == 2:
+                row['color'] = 1
+            elif row['quality'] == 3 or row['quality'] == 4:
+                row['color'] = 2
+            elif row['quality'] == 5 or row['quality'] == 6:
+                row['color'] = 3
+
             self._equipments[row.get('id')] = CommonItem(row)
         return self._equipments

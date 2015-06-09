@@ -6,7 +6,9 @@ from app.game.component.Component import Component
 from app.game.core.equipment.equipment import Equipment
 from app.game.redis_mode import tb_character_info
 from shared.utils.pyuuid import get_uuid
-from shared.db_opear.configs_data.game_configs import equipment_config
+from shared.db_opear.configs_data import game_configs
+from app.game.core.task import hook_task, CONDITIONId
+
 
 class CharacterEquipmentPackageComponent(Component):
     """角色的装备背包
@@ -62,6 +64,28 @@ class CharacterEquipmentPackageComponent(Component):
         self._equipments_obj[equipment_id] = equipment_obj
 
         equipment_obj.add_data(self.owner.base_info.id)
+
+        equ_conf = game_configs.equipment_config.get(equipment_no)
+
+        cid = 0
+        color = equ_conf.color
+        color_num = 0
+        star6_num = 0
+        if equ_conf.color == 1:
+            cid = CONDITIONId.GREEN_EQU
+        elif equ_conf.color == 2:
+            cid = CONDITIONId.BLUE_EQU
+        if cid:
+            for _, equ_obj in self._equipments_obj.items():
+                e_conf = game_configs.equipment_config. \
+                    get(equ_obj.base_info.equipment_no)
+                if e_conf.color == color:
+                    color_num += 1
+                if e_conf.quality == 6:
+                    star6_num += 1
+            hook_task(self.owner, cid, color_num)
+            hook_task(self.owner, CONDITIONId.STAR6_EQU, star6_num)
+
         return equipment_obj
 
     def add_exist_equipment(self, equipment):
@@ -126,7 +150,7 @@ class CharacterEquipmentPackageComponent(Component):
         """
         count = 0
         for equip_id in self._equipments_obj:
-            equip = equipment_config[equip_id]
+            equip = game_configs.equipment_config[equip_id]
             if equip.quality >= quality:
                 count += 1
         return count

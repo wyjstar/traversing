@@ -18,6 +18,7 @@ from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from random import randint
 from shared.utils.random_pick import random_pick_with_percent
+from app.game.core.task import hook_task, CONDITIONId, update_condition
 
 # from app.proto_file import world_boss_pb2
 
@@ -330,9 +331,21 @@ def pvb_fight_start_1705(pro_data, player):
     response.seed1 = seed1
     response.seed2 = seed2
     response.damage_rate = damage_rate
-    print response
+    if boss_id == 'world_boss':
+        hook_task(player, CONDITIONId.PVBOSS_TIMES, 1)
+    else:
+        hook_task(player, CONDITIONId.NMRQ, 1)
 
     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def boss_task_remote(num, is_online, player):
+    if is_online:
+        hook_task(player, CONDITIONId.PVBOSS, num)
+    else:
+        update_condition(player, CONDITIONId.PVBOSS, num)
+    return True
 
 
 @remoteserviceHandle('gate')

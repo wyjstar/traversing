@@ -12,6 +12,7 @@ from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 import time
 import uuid
+from app.game.core.task import hook_task, CONDITIONId
 
 
 class CharacterBaseInfoComponent(Component):
@@ -160,6 +161,8 @@ class CharacterBaseInfoComponent(Component):
             if self._level == max_level:
                 return
 
+        # hook task
+        hook_task(self.owner, CONDITIONId.LEVEL, self._level)
         # =====Tlog================
         tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
 
@@ -405,8 +408,9 @@ class CharacterBaseInfoComponent(Component):
         for i in range(16):
             vip_content = game_configs.vip_config.get(i)
             if gold >= vip_content.rechargeAmount:
-                self.vip_level = i
+                self._vip_level = i
                 self.save_data()
+        hook_task(player, CONDITIONId.VIP_LEVEL, self._vip_level)
 
     @property
     def gag(self):

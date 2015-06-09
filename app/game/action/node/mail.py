@@ -15,6 +15,7 @@ from app.proto_file.db_pb2 import Mail_PB
 from shared.utils.const import const
 import time
 from app.game.core.mail_helper import send_mail
+from app.game.core.task import hook_task, CONDITIONId
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -136,7 +137,7 @@ def is_expire_notice(mail):
         if mail.config_id:
             mail_conf = game_configs.mail_config.get(mail.config_id)
             if mail_conf.days != -1 and \
-                    mail_conf.days * 24 * 60 * 60 + mail.send_time <= time.time():
+                    mail_conf.days*24*60*60 + mail.send_time <= time.time():
                 return True
         else:
             if mail.effec * 24 * 60 * 60 + mail.send_time <= time.time():
@@ -172,6 +173,7 @@ def read_mail(mail_idss, mail_type, player):
         response.target = game_configs.base_config['times_get_vigor_from_friend']
         response.current = player.stamina.get_stamina_times
         response.mail_type = mail_type
+        hook_task(player, CONDITIONId.RECEIVE_STAMINA, 1)
 
     response.res.result = True
     return response.SerializePartialToString()
