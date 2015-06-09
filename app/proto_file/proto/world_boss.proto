@@ -12,6 +12,8 @@ message PvbRankItem{
     required int32 now_head = 3;//玩家头像
     required int32 demage_hp = 4; //伤害血量
     optional LineUpResponse line_up_info = 5; //阵容信息
+    optional int32 player_id = 6; // 玩家id
+    optional int32 rank_no = 7; // 排名
 }
 
 message LuckyHeroAttr

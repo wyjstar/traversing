@@ -325,6 +325,7 @@ def pvb_get_award_1708(data, player):
     response = PvbAwardResponse()
     boss = player.world_boss.get_boss("world_boss")
     award_type, award, is_over = boss.get_award()
+    player.world_boss.save_data()
     logger.debug("award_type %s, award %s, is_over %s" % (award_type, award, is_over))
     response.is_over = is_over
     if not award:

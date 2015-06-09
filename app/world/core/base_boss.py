@@ -137,9 +137,9 @@ class BaseBoss(object):
 
         # 如果玩家信息在前十名，保存玩家信息到redis
         rank_no = instance.get_rank_no(player_id)
-        logger.debug("player_id, demage_hp, rank_no========= %s, %s, %s" % (player_id, player_info.get("demage_hp"), rank_no))
         if rank_no > 10:
             return
+        logger.debug("player_id, demage_hp, rank_no========= %s, %s, %s" % (player_id, player_info.get("demage_hp"), rank_no))
         str_player_info = cPickle.dumps(player_info)
         self._tb_boss.set(player_id, str_player_info)
 
