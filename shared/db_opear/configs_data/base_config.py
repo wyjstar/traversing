@@ -95,6 +95,7 @@ class BaseConfig(object):
             equPrefix[v[0]].append(v[1:])
         config_value["equPrefix"] = equPrefix
         config_value["CoinCardFirst"] = parse(config_value["CoinCardFirst"])
+        config_value["travelExpend"] = parse(config_value["travelExpend"])
         config_value["CardTimeCumulate"] = parse(config_value["CardTimeCumulate"])
         config_value["CardFirst"] = parse(config_value["CardFirst"])
         config_value["sweepNeedItem"] = parse(config_value["sweepNeedItem"])
