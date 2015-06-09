@@ -30,6 +30,11 @@ def check_mem_db(delta):
             insert_result = util.InsertIntoDB(CHARACTER_TABLE_NAME, user_data)
             if not insert_result:
                 logger.error('insert id:%s error', char_id)
+                result = util.GetOneRecordInfo(CHARACTER_TABLE_NAME,
+                                               dict(id=char_id), ['id'])
+                if result:
+                    tb_character_info.sadd('all', char_id)
+                    tb_character_info.srem('new', char_id)
             else:
                 tb_character_info.sadd('all', char_id)
                 tb_character_info.srem('new', char_id)
@@ -47,12 +52,19 @@ def check_mem_db(delta):
         character_info = character_obj.hgetall()
         user_data = dict(base_info=cPickle.dumps(character_info))
         pwere = dict(id=char_id)
-        result = util.UpdateWithDict(CHARACTER_TABLE_NAME, user_data, pwere)
+        result = util.GetOneRecordInfo(CHARACTER_TABLE_NAME, pwere, ['id'])
         if not result:
-            logger.error('update id:%s error', char_id)
+            logger.error('all insert id:%s error', char_id)
+            tb_character_info.sadd('new', char_id)
         else:
-            ALL_CHARACTER_IDS.remove(char_id)
-            # logger.info('save character:%s', char_id)
+            result = util.UpdateWithDict(CHARACTER_TABLE_NAME,
+                                         user_data, pwere)
+            if not result:
+                logger.error('update id:%s error', char_id)
+            # else:
+            #     logger.info('save character:%s', char_id)
+
+        ALL_CHARACTER_IDS.remove(char_id)
         break
 
     reactor.callLater(delta, check_mem_db, delta)
