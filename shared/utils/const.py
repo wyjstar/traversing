@@ -184,6 +184,7 @@ const.PraiseGift = 34
 const.ReceiveBlessGift = 35
 const.StageChestGift = 36
 const.LIMIT_HERO = 37
+const.TASK = 38
 
 
 const.HJQY_ADD_REWARD = 21011

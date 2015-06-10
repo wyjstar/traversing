@@ -2,6 +2,7 @@ message ChatObjectInfo{
     required int32 id = 1;//角色id
     optional string nickname=2;//角色昵称
     optional int32 vip_level = 3;
+    optional int32 guild_position = 4;
 }
 
 //登录 command:1001
@@ -17,6 +18,7 @@ message ChatConectingRequest{
     optional ChatObjectInfo other = 4; // 私聊角色信息
     optional int32 guild_id = 5;//公会ID
     optional int32 vip_level = 6;
+    optional int32 guild_position = 7;
 }
 
 //返回结果

@@ -566,6 +566,8 @@ end
 --获取是否可以领取连续登陆奖励
 function CommonData:getIsCanGetSeriesReward()
     local serialBaseList = getTemplateManager():getBaseTemplate():getSerialBaseList()
+    --print("<<======连续登陆列表=========>>")
+    --table.print(serialBaseList)
     local serialTotalDay = self:getLoginContinueDay()
     for i = 1, serialTotalDay do
         local item = serialBaseList[i]
@@ -807,36 +809,47 @@ function CommonData:subNum(theNum, subNum)
 	return theNum
 end
 
+--[[--
+    体力的恢复，目前不需要了
+    用resRecoverTime 代替
+]]
 function CommonData:countTimer()
     print("～～～～～～～～～～～")
-    local recoverTime = getTemplateManager():getBaseTemplate():getStaminaRecoverTime()   -- 300秒
-    local max = getTemplateManager():getBaseTemplate():getStaminaMax()                   -- 最大体力
-    -- self.during_time = 0
-    local x = self.last_gain_stamina_time
-    -- self.during_time = self.server_time - x
-    self.during_time = self:getTime() - x
+    -- local recoverTime = getTemplateManager():getBaseTemplate():getStaminaRecoverTime()   -- 300秒
+    -- local max = getTemplateManager():getBaseTemplate():getStaminaMax()                   -- 最大体力
+    -- -- self.during_time = 0
+    -- local x = self.last_gain_stamina_time
+    -- -- self.during_time = self.server_time - x
+    -- self.during_time = self:getTime() - x
 
-    -- print(self.during_time)
-    -- self:getTime()
+    -- -- print(self.during_time)
+    -- -- self:getTime()
 
-    local function updateTimer(dt)
+    -- local function updateTimer(dt)
 
-        -- print("----- updateTimer ------")
-        -- self.server_time = self.server_time + 1
-        self.during_time = self.during_time + 1
-        if self.during_time >= recoverTime then
-            -- print("--------- 10到 -------------")
-            if self:getStamina() < max then
-                getNetManager():getActivityNet():sendRecoverStamina()
-                self.during_time = 0
-                self.last_gain_stamina_time = self:getTime()
-            end
-        end
-    end
-    timer.scheduleGlobal(updateTimer, 1.0)
+    --     -- print("----- updateTimer ------")
+    --     -- self.server_time = self.server_time + 1
+    --     self.during_time = self.during_time + 1
+    --     if self.during_time >= recoverTime then
+    --         -- print("--------- 10到 -------------")
+    --         if self:getStamina() < max then
+    --             getNetManager():getActivityNet():sendRecoverStamina()
+    --             self.during_time = 0
+    --             self.last_gain_stamina_time = self:getTime()
+    --         end
+    --     end
+    -- end
+    -- timer.scheduleGlobal(updateTimer, 1.0)
 end
+--[[--
+    体力恢复剩余时间
+]]
 function CommonData:countTime()
-    return self.during_time
+    return self.buy_times[RES_TYPE.STAMINA].retainTime
+end
+
+function CommonData:getResBuyTimeByType(type)
+    return self.buy_times[type]
 end
 
 --[[--
@@ -844,12 +857,19 @@ end
     目前包含（体力、讨伐令、鞋子）,先处理讨
 ]]
 function CommonData:resRecoverTime()
-    if self.buy_times[RES_TYPE.CRUSADE ] then --征讨令
-        self.buy_times[RES_TYPE.CRUSADE].max = getTemplateManager():getBaseTemplate():getHjqyItemUpperLimitMax() 
-        self.buy_times[RES_TYPE.CRUSADE].recoverTime = getTemplateManager():getBaseTemplate():getHjqyReplyTime()
-        self.buy_times[RES_TYPE.CRUSADE].recoverNumber = getTemplateManager():getBaseTemplate():getHjqyReplyNumber()
-        self.buy_times[RES_TYPE.CRUSADE].buyNumber  = getTemplateManager():getBaseTemplate():getHjqyBuyTime()
+
+    local resTemp = getTemplateManager():getResourceTemplate()
+
+    for k,v in pairs(self.buy_times) do
+        local rescfg = resTemp:getResById(k)
+        v.buyPrice = rescfg.buyPrice
+        v.storageMax = rescfg.storageMax
+        v.recoveryTime = rescfg.recoveryTime
+        v.buyNumber = rescfg.buyOneNumber
+        v.recoverNumber = rescfg.recoveryNumber
+        v.retainTime = 0
     end
+
     print("CommonData:resRecoverTime=====>begin")
     table.print(self.buy_times)
     print("CommonData:resRecoverTime====>end")
@@ -861,14 +881,16 @@ function CommonData:resRecoverTime()
     local function updateTimer(dt)
         local curTime = self:getTime()
         for k,v in pairs(self.buy_times) do
-            if v.max ~= nil then
+            if v.storageMax ~= nil then
                 local cur = self:getFinance(k)
-                if cur<v.max then
-                    if v.last_gain_time + v.recoverTime <= curTime then --时间到
-                        getNetManager():getActivityNet():sendAutoAddRes(k)
+                if cur<v.storageMax then
+                    v.retainTime = v.last_gain_time + v.recoveryTime - curTime --剩余时间
+                    if v.last_gain_time + v.recoveryTime <= curTime then --时间到
+                        getNetManager():getActivityNet():sendAutoAddRes(k,v.recoverNumber)
                         v.last_gain_time = curTime
                     end
                 else
+                    v.retainTime = 0 --剩余时间
                     v.last_gain_time = curTime
                 end
             end

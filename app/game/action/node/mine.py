@@ -11,7 +11,6 @@ from app.proto_file import line_up_pb2
 from app.proto_file import db_pb2
 from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
-from app.game.core.lively import task_status
 
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
@@ -24,8 +23,6 @@ from shared.db_opear.configs_data.common_item import CommonGroupItem
 from app.game.component.character_line_up import CharacterLineUpComponent
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
-from app.game.component.achievement.user_achievement import CountEvent
-from app.game.component.achievement.user_achievement import EventType
 from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process, pve_process_check
 from app.game.action.node._fight_start_logic import pvp_process, save_line_up_order
@@ -118,14 +115,6 @@ def search_1241(data, player):
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(one_mine, response.mine)
         response.res.result = True
-        lively_event = CountEvent.create_event(EventType.MAGIC, 1, ifadd=True)
-        tstatus = player.tasks.check_inter(lively_event)
-        player.tasks.save_data()
-        if tstatus:
-            task_data = task_status(player)
-            remote_gate.push_object_remote(1234,
-                                           task_data,
-                                           [player.dynamic_id])
     else:
         response.res.result = False
         response.res.result_no = 12410
@@ -372,14 +361,6 @@ def harvest_1245(data, player):
             response.res.result = False
             response.res.result_no = 824
             return response.SerializePartialToString()
-        lively_event = CountEvent.create_event(EventType.WORD, 1, ifadd=True)
-        tstatus = player.tasks.check_inter(lively_event)
-        player.tasks.save_data()
-        if tstatus:
-            task_data = task_status(player)
-            remote_gate.push_object_remote(1234,
-                                           task_data,
-                                           [player.dynamic_id])
 
     else:
         response.res.result = False

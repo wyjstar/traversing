@@ -75,7 +75,7 @@ message GetGuildInfoResponse{
     optional int32 exp = 6;     //经验
     optional bytes call = 7;    //公告
     optional int32 icon_id = 8;   //军团徽章
-    optional bytes captain_name = 9;   //团长name
+    optional string captain_name = 9;   //团长name
     optional int32 captain_level = 10;   //团长level
     optional int32 captain_power = 11;   //团长战力
     optional int32 zan_num = 12;   //今日赞数量

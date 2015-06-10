@@ -212,17 +212,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
             after_num = player.finance.coin
 
         elif type_id == const.RESOURCE:
-            if item_no == 20:
-                player.travel_component.update_shoes()
-                shoes = player.travel_component.shoes
-                max_num = game_configs.base_config.get("travelShoeTimes")
-                if shoes[0]+num > max_num:
-                    shoes = [max_num, int(time.time())]
-                else:
-                    shoes[0] += num
-                player.travel_component.save()
-                after_num = shoes[0]
-            elif item_no == 14:
+            if item_no == 14:
                 player.runt.stone2 += num
                 player.runt.save()
                 after_num = player.runt.stone2

@@ -113,7 +113,7 @@ class CharacterFinanceComponent(Component):
                          fType, self._finances[fType], num)
             return False
         if fType != const.GOLD:
-            self._finances[fType] -= num
+            self._finances[fType] -= int(num)
         return True
 
     def add(self, fType, num):
@@ -124,7 +124,7 @@ class CharacterFinanceComponent(Component):
         if fType == const.GOLD:
             self.add_gold(num)
         else:
-            self._finances[fType] += num
+            self._finances[fType] += int(num)
         return True
 
     def add_coin(self, num):

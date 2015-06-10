@@ -3,7 +3,6 @@
 created by server on 14-7-17上午11:07.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from app.game.core.item_group_helper import gain, get_return
 from app.game.core.drop_bag import BigBag
 from app.proto_file.travel_pb2 import TravelResponse, TravelRequest, \
     TravelInitResponse, BuyShoesRequest, BuyShoesResponse, \
@@ -17,12 +16,11 @@ from shared.db_opear.configs_data import game_configs
 import random
 from gfirefly.server.logobj import logger
 import time
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
-from app.game.core.lively import task_status
 from gfirefly.server.globalobject import GlobalObject
 from shared.utils.const import const
 from shared.tlog import tlog_action
+from app.game.core.item_group_helper import is_afford, consume
+from app.game.core.item_group_helper import gain, get_return
 
 
 xs = 100000
@@ -48,13 +46,13 @@ def travel_831(data, player):
         response.res.result_no = 811  # 等级不够
         return response.SerializeToString()
 
-    player.travel_component.update_shoes()
-    shoes = player.travel_component.shoes
-    if shoes[0] == 0:
+    # ====================判断够不够
+    need_items = game_configs.base_config.get('travelExpend')
+    result = is_afford(player, need_items)  # 校验
+    if not result.get('result'):
         response.res.result = False
-        response.res.result_no = 812  # 鞋子不足
-        return response.SerializeToString()
-
+        response.res.result_no = 888
+        return response.SerializePartialToString()
     travel_cache = player.travel_component.travel
 
     travel_event_id = get_travel_event_id()
@@ -90,14 +88,10 @@ def travel_831(data, player):
     else:
         travel_cache.get(stage_id).append([res_travel_event_id, drops])
 
-    player.travel_component.use_shoes()
+    # ====================消耗
+    return_data = consume(player, need_items)
+    get_return(player, return_data, response.consume)
     player.travel_component.save()
-    lively_event = CountEvent.create_event(EventType.TRAVEL, 1, ifadd=True)
-    tstatus = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     response.res.result = True
     return response.SerializeToString()
@@ -122,15 +116,7 @@ def travel_init_830(data, player):
                     res_travel.time = tra[2]
 
     response.chest_time = player.travel_component.chest_time
-    res_shose = response.shoes
-    shoes_num, remain_time = player.travel_component.update_shoes()
-    res_shose.num = shoes_num
-    res_shose.remain_time = int(time.time()) - remain_time
 
-    if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday != time.localtime().tm_yday:
-        player.travel_component.last_buy_shoes = [0, int(time.time())]
-
-    response.buy_shoe_times = player.travel_component.last_buy_shoes[0]
     player.travel_component.update_travel_item(response)
 
     update_auto(player, 1)
@@ -140,55 +126,6 @@ def travel_init_830(data, player):
 
     response.res.result = True
     # logger.debug(response)
-    return response.SerializeToString()
-
-
-@remoteserviceHandle('gate')
-def buy_shoes_832(data, player):
-    """buy_shoes"""
-    args = BuyShoesRequest()
-    args.ParseFromString(data)
-    response = BuyShoesResponse()
-
-    need_good = 0
-    num = args.num
-    max_num = game_configs.base_config.get("travelShoeTimes")
-    need_good = game_configs.base_config.get("travelVigorPrice")*num
-    if player.finance.gold < need_good:
-        response.res.result = False
-        response.res.result_no = 102  # 充值币不足
-        return response.SerializeToString()
-    player.travel_component.update_shoes()
-    shoes_info = player.travel_component.shoes
-    if shoes_info[0]+num > max_num:
-        response.res.result = False
-        response.res.result_no = 865
-        return response.SerializeToString()
-
-    is_today = 0
-    enough_times = 1
-    if time.localtime(player.travel_component.last_buy_shoes[1]).tm_yday == time.localtime().tm_yday:
-        is_today = 1
-
-    if player.travel_component.last_buy_shoes[0] + num > game_configs.vip_config.get(player.base_info.vip_level).buyShoeTimes:
-        enough_times = 0
-
-    if is_today and not enough_times:
-            logger.error('travel buy shoes time dont enough')
-            response.res.result = False
-            response.res.result_no = 835  # 购买次数不足
-            return response.SerializeToString()
-    if not is_today:
-        player.travel_component.last_buy_shoes = [0, int(time.time())]
-
-    def func():
-        shoes_info[0] += num
-        player.travel_component.last_buy_shoes[0] += num
-        player.travel_component.save()
-
-    player.pay.pay(need_good, func)
-
-    response.res.result = True
     return response.SerializeToString()
 
 

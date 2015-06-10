@@ -17,11 +17,8 @@ class CharacterTravelComponent(Component):
         super(CharacterTravelComponent, self).__init__(owner)
         self._travel = {}  # 游历章节缓存 {stage_id:[[event_id, drop, time]]}
         self._travel_item = {}  # 获得的风物志 {stage_id:[travel_item_id]}
-        self._shoes = [game_configs.base_config.get("travelVigorInit"),
-                       int(time.time())]  # 鞋子个数更新时间
         self._chest_time = 1  # 上次领取宝箱时间
         self._fight_cache = [0, 0]  # [stage_id, event_id]
-        self._last_buy_shoes = [0, 1]  # [已用次数, 最后买的时间]
 
         # {stage_id:[{start_tiem:0, continued_time:0,
         # 'events': [[state, event_id, drop, start_time]], already_times: 0}]}
@@ -30,10 +27,8 @@ class CharacterTravelComponent(Component):
     def init_data(self, character_info):
         self._travel = character_info.get('travel')
         self._travel_item = character_info.get('travel_item')
-        self._shoes = character_info.get('shoes')
         self._chest_time = character_info.get('chest_time')
         self._fight_cache = character_info.get('fight_cache')
-        self._last_buy_shoes = character_info.get('last_buy_shoes', self._last_buy_shoes)
         self._auto = character_info.get('auto')
         for travel_stage_id in game_configs.stage_config.get('travel_stages'):
             if not self._travel_item.get(travel_stage_id):
@@ -43,10 +38,8 @@ class CharacterTravelComponent(Component):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'travel': self._travel,
                         'travel_item': self._travel_item,
-                        'shoes': self._shoes,
                         'chest_time': self._chest_time,
                         'auto': self._auto,
-                        'last_buy_shoes': self._last_buy_shoes,
                         'fight_cache': self._fight_cache})
 
     def new_data(self):
@@ -54,37 +47,9 @@ class CharacterTravelComponent(Component):
             self._travel_item[travel_stage_id] = []
         return {'travel': self._travel,
                 'travel_item': self._travel_item,
-                'shoes': self._shoes,
                 'chest_time': self._chest_time,
                 'auto': self._auto,
-                'last_buy_shoes': self._last_buy_shoes,
                 'fight_cache': self._fight_cache}
-
-    def update_shoes(self):
-        now = int(time.time())
-        max_num = game_configs.base_config.get("travelShoeTimes")
-        if self._shoes[0] == max_num:
-            return self._shoes[0], 0
-        how_long = now - self._shoes[1]
-        need_time = game_configs.base_config.get("travelVigorNeedTime")*60
-        add_num = how_long/need_time
-        shengyu_time = how_long % need_time
-
-        if add_num+self._shoes[0] >= max_num:
-            self._shoes = [max_num, int(time.time())]
-            shengyu_time = 0
-        else:
-            self._shoes[0] += add_num
-            self._shoes[1] = int(time.time()) - shengyu_time
-        return self._shoes[0], shengyu_time
-
-    def use_shoes(self):
-        now = int(time.time())
-        max_num = game_configs.base_config.get("travelShoeTimes")
-        if self._shoes[0] == max_num:
-            self._shoes = [max_num-1, int(time.time())]
-        else:
-            self._shoes[0] -= 1
 
     def get_travel_item_groups(self):
         groups = []
@@ -113,14 +78,6 @@ class CharacterTravelComponent(Component):
 
         return CommonItem(dict(hp=hp, atk=atk, physical_def=physical_def,
                                magic_def=magic_def))
-
-    @property
-    def shoes(self):
-        return self._shoes
-
-    @shoes.setter
-    def shoes(self, shoes):
-        self._shoes = shoes
 
     @property
     def travel(self):
@@ -162,14 +119,6 @@ class CharacterTravelComponent(Component):
     def auto(self, value):
         self._auto = value
 
-    @property
-    def last_buy_shoes(self):
-        return self._last_buy_shoes
-
-    @last_buy_shoes.setter
-    def last_buy_shoes(self, value):
-        self._last_buy_shoes = value
-
     def update_travel_item(self, response):
         """docstring for update_travel_item"""
         for (stage_id, item) in self.travel_item.items():
@@ -179,5 +128,3 @@ class CharacterTravelComponent(Component):
                 travel_item = travel_item_chapter.travel_item.add()
                 travel_item.id = travel_item_id
                 travel_item.num = num
-
-

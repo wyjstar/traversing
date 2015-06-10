@@ -1,0 +1,59 @@
+import "common.proto";
+//任务
+message Task
+{
+    required int32 tid = 1; //任务ID
+    repeated TaskCondition condition = 2; //任务当前值,如果状态是完成,不法这个值
+    required int32 status = 3;//当前状态 1未完成2已完成3已领取
+}
+
+message TaskCondition
+{
+    required int32 condition_no = 1;
+    optional int32 current = 2;
+    optional int32 state = 3;  // 0未完成 1 完成
+}
+
+//获取任务列表
+message TaskInfoRequest
+{
+    required int32 sort = 1; //任务分类1成就2活跃度3分享
+}
+
+//获取任务列表
+message TaskInfoResponse
+{
+    repeated Task tasks = 1; //任务列表
+}
+
+//请求领取奖励
+message TaskRewardRequest
+{
+	required int32 tid = 1; //任务ID
+}
+
+//领奖返回
+message TaskRewardResponse
+{
+	optional int32 tid = 1; //任务ID
+	optional GameResourcesResponse gain = 2; //通用奖励
+    required CommonResponse res = 3;
+}
+
+//通知服务器分享
+message ShareRequest
+{
+    required int32 tid = 1; //任务ID
+}
+
+message ShareResponse
+{
+    required CommonResponse res = 1;
+    optional int32 tid = 2; //任务ID
+}
+
+message FulfilTask
+{
+    repeated int32 tid = 1; //任务ID
+    optional int32 lively = 2; //活跃度
+}

@@ -11,9 +11,6 @@ from app.game.redis_mode import tb_character_info
 from app.game.action.root.netforwarding import push_message
 from app.game.component.mail.mail import MailComponent
 from app.game.action.root import netforwarding
-from app.game.component.achievement.user_achievement import CountEvent
-from app.game.component.achievement.user_achievement import EventType
-from app.game.core.lively import task_status
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data import game_configs, data_helper
 from app.proto_file import friend_pb2
@@ -437,14 +434,6 @@ def given_stamina_1108(data, player):
         return response.SerializePartialToString()  #
 
     player.friends.save_data()
-
-    lively_event = CountEvent.create_event(EventType.PRESENT, 1, ifadd=True)
-    tstatus = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
-    return response.SerializePartialToString()  # fail
 
 
 @remoteserviceHandle('gate')

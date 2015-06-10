@@ -14,10 +14,7 @@ from app.game.action.node._fight_start_logic import assemble
 from app.game.action.root.netforwarding import push_message
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data import game_configs
-from app.game.component.achievement.user_achievement import CountEvent
-from app.game.component.achievement.user_achievement import EventType
 from gfirefly.server.globalobject import GlobalObject
-from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import get_seeds
@@ -293,14 +290,6 @@ def pvp_fight_request_1505(data, player):
             logger.debug("fight result:False")
             send_mail(conf_id=124, receive_id=target_id,
                       nickname=player.base_info.base_name)
-
-        lively_event = CountEvent.create_event(EventType.SPORTS, 1, ifadd=True)
-        tstatus = player.tasks.check_inter(lively_event)
-        player.tasks.save_data()
-        if tstatus:
-            task_data = task_status(player)
-            remote_gate.push_object_remote(1234, task_data,
-                                           [player.dynamic_id])
 
         player.pvp.pvp_times -= 1
         player.pvp.pvp_refresh_time = time.time()

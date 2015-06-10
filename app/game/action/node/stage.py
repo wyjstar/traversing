@@ -11,10 +11,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from shared.db_opear.configs_data import game_configs
 from app.game.core.drop_bag import BigBag
-from app.game.core.lively import task_status
 from app.game.core.item_group_helper import gain, get_return
-from app.game.component.achievement.user_achievement import EventType
-from app.game.component.achievement.user_achievement import CountEvent
 from app.game.component.fight.stage_factory import get_stage_by_stage_type
 from app.game.action.node._fight_start_logic import pve_process, pve_process_check
 from app.game.action.node._fight_start_logic import pve_assemble_units
@@ -267,20 +264,6 @@ def stage_sweep_907(pro_data, player):
     stage_id = request.stage_id
     times = request.times
     sweep_type = request.sweep_type
-    lively_event = {}
-    if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
-        lively_event = CountEvent.create_event(EventType.STAGE_1, times, ifadd=True)
-    elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
-        lively_event = CountEvent.create_event(EventType.STAGE_2, times, ifadd=True)
-    elif game_configs.special_stage_config.get('act_stages').get(stage_id):  # 活动关卡
-        lively_event = CountEvent.create_event(EventType.STAGE_3, times, ifadd=True)
-
-    tstatus = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     return stage_sweep(stage_id, times, player, sweep_type)
 
@@ -744,10 +727,11 @@ def trigger_hjqy(player, result):
 
     str_blue_units = cPickle.dumps(blue_units[0])
     result = remote_gate['world'].create_hjqy_remote(player.base_info.id, player.base_info.base_name, str_blue_units, stage_id)
+    logger.debug("8============= %s" % result)
     if not result:
         return False
     # send trigger reward
-    hjqyOpenReward = game_configs.base_config.get("hjqyOpenReward")
+    hjqyOpenReward = game_configs.base_config.get("hjqyOpenRewardID")
     send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
 
     return stage_id

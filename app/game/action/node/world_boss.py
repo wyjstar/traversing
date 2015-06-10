@@ -11,9 +11,6 @@ from app.proto_file.db_pb2 import WorldBossAwardDB
 from app.game.action.node.line_up import line_up_info
 import cPickle
 from shared.utils.date_util import get_current_timestamp
-from app.game.component.achievement.user_achievement import CountEvent,\
-    EventType
-from app.game.core.lively import task_status
 from app.game.action.node._fight_start_logic import pve_process, pvp_assemble_units
 from shared.db_opear.configs_data import game_configs
 from app.game.core.drop_bag import BigBag
@@ -325,13 +322,6 @@ def pvb_fight_start_1705(pro_data, player):
     player.world_boss.save_data()
 
     logger.debug("fight end..")
-
-    lively_event = CountEvent.create_event(EventType.BOSS, 1, ifadd=True)
-    tstatus = player.tasks.check_inter(lively_event)
-    player.tasks.save_data()
-    if tstatus:
-        task_data = task_status(player)
-        remote_gate.push_object_remote(1234, task_data, [player.dynamic_id])
 
     pvp_assemble_units(red_units, blue_units, response)
     response.red_best_skill= best_skill_id
