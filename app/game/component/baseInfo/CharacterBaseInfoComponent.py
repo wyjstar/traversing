@@ -10,6 +10,7 @@ from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
+from shared.utils.date_util import get_current_timestamp, string_to_timestamp
 import time
 import uuid
 
@@ -481,3 +482,19 @@ class CharacterBaseInfoComponent(Component):
         """每日购买鞋子上限"""
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.buyShoeTimes
+
+    def is_activiy_open(self, activity_id):
+        activity_info = game_configs.activity_config.get(activity_id)
+        if not activity_info:
+            logger.error("can not find activity_config by id %s" % activity_id)
+            return False
+        if not activity_info.is_open:
+            logger.debug("activity close by is_open.")
+            return False
+        start = string_to_timestamp(activity_info.timeStart, "%Y-%m-%d %H:%M:%S")
+        end = string_to_timestamp(activity_info.timeEnd, "%Y-%m-%d %H:%M:%S")
+        current_time = get_current_timestamp()
+        if start > current_time or current_time > end:
+            logger.debug("activity close by timeStart timeEnd.")
+            return False
+        return True
