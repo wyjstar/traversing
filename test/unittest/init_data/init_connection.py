@@ -9,15 +9,16 @@ import json
 from gfirefly.server.globalobject import GlobalObject
 from test.unittest.settings import config_model_path, config_path
 # from gfirefly.dbentrust.madminanager import
-from gfirefly.dbentrust.memclient import mclient
 from gfirefly.server.logobj import log_init
+from gfirefly.dbentrust.redis_manager import redis_manager
+
 
 
 def init():
     hostname = "127.0.0.1"  #  要连接的数据库主机名
-    user = "test"  #  要连接的数据库用户名
-    password = "test"  #  要连接的数据库密码
-    port = 8066  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
+    user = "root"  #  要连接的数据库用户名
+    password = "123456"  #  要连接的数据库密码
+    port = 3306  #  3306 是MySQL服务使用的TCP端口号，一般默认是3306
     dbname = "db_traversing"  #  要使用的数据库库名
     charset = "utf8"  #  要使用的数据库的编码
     dbpool.initPool(host=hostname, user=user, passwd=password, port=port, db=dbname,
@@ -32,16 +33,18 @@ config = json.load(open(config_path, 'r'))
 GlobalObject().json_config = config
 
 # init memconfig
-memconfig = config.get("memcached")
-urls = memconfig.get('urls')
-hostname = str(memconfig.get('hostname'))
-mclient.connect(urls, hostname)
+#memconfig = config.get("memcached")
+#urls = memconfig.get('urls')
+#hostname = str(memconfig.get('hostname'))
+#mclient.connect(urls, hostname)
 
 # init redis
 redis_config = config.get("redis")
 host = redis_config.get("host")
 port = redis_config.get("port")
 db = redis_config.get("db", 0)
+connection_setting = redis_config.get('urls')
+redis_manager.connection_setup(connection_setting)
 
 # init log
 log_init("output")  # 日志处理

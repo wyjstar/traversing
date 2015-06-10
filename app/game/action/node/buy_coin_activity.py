@@ -43,7 +43,7 @@ def buy_coin_activity_1406(data, player):
     #extra_can_buy_times = player.buy_coin.extra_can_buy_times
     need_gold = 0
     gain_info = game_configs.base_config.get("getMoneyValue")
-    #free_times = game_configs.base_config.get("getMoneyFreeTimes")
+    free_times = game_configs.base_config.get("getMoneyFreeTimes")
     buy_times_price = game_configs.base_config.get("getMoneyBuyTimesPrice")
 
     # 获取 need_gold
@@ -67,8 +67,8 @@ def buy_coin_activity_1406(data, player):
     item_num = 0
     if item:
         item_num = item.num
-    if item_num + player.base_info.buy_coin_times <= buy_times:
-        logger.error("buy_coin_activity_1406: times not enough %s, %s, %s" % (item_num, player.base_info.buy_coin_times, player.buy_times))
+    if item_num + player.base_info.buy_coin_times + free_times <= buy_times:
+        logger.error("buy_coin_activity_1406: times not enough %s, %s, %s" % (item_num, player.base_info.buy_coin_times, player.buy_coin.buy_times))
         response.res.result = False
         response.res.result_no = 1406
         return response.SerializePartialToString()
@@ -79,7 +79,7 @@ def buy_coin_activity_1406(data, player):
             coin_nums = gain_info[k]
             break
     def func():
-        if player.base_info.buy_coin_times <= buy_times:
+        if player.base_info.buy_coin_times + free_times <= buy_times:
             # 使用招财令
             player.item_package.consume_item(item_no, 1)
         else:
@@ -89,6 +89,8 @@ def buy_coin_activity_1406(data, player):
         player.finance.add_coin(coin_nums)
         player.finance.save_data()
 
-    player.pay.pay(need_gold, func)
-    response.res.result = True
+    res = player.pay.pay(need_gold, func)
+    response.res.result = res
+    if not res:
+        response.res.result_no = 100
     return response.SerializeToString()

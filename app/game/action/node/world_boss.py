@@ -333,8 +333,6 @@ def pvb_fight_start_1705(pro_data, player):
     response.damage_rate = damage_rate
     if boss_id == 'world_boss':
         hook_task(player, CONDITIONId.PVBOSS_TIMES, 1)
-    else:
-        hook_task(player, CONDITIONId.NMRQ, 1)
 
     return response.SerializePartialToString()
 
