@@ -439,20 +439,18 @@ class MineData(object):
     def settle(self, seq, result, uid=None, nickname=None, hold=1):
         print 'settle', seq, result, uid, nickname, hold
         try:
-            if result == False:
-                self.unlock_mine(uid, seq)
-                return {}, 0, ''
-            else:
-                self.get_detail_info(seq)
-                tid = self.mines[seq]._tid
-                srcname = self.mines[seq]._nickname
-                if self.mines[seq]._status == 2 or (self.mines[seq]._status == 1 and time.time() > self.mines[seq]._last_time):
-                    self.mines[seq]._status = 3
+            self.get_detail_info(seq)
+            tid = self.mines[seq]._tid
+            srcname = self.mines[seq]._nickname
+        
+            if self.mines[seq]._status == 2 or (self.mines[seq]._status == 1 and time.time() > self.mines[seq]._last_time):
+                self.mines[seq]._status = 3
+            if result == True:
                 if hold:
                     self.mines[seq]._tid = uid
                     self.mines[seq]._nickname = nickname
-                self.save_data(seq)
-                self.unlock_mine(uid, seq)
+            self.save_data(seq)
+            self.unlock_mine(uid, seq)
         except Exception, e:
             self.unlock_mine(uid, seq)
             

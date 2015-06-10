@@ -479,7 +479,8 @@ class PlayerField(Mine):
 #         MineOpt.unlock(self._seq)
 #         return self, tid
     def settle(self, uid=None, result=True, nickname=None, hold=1):
-        data, uid, nickname = remote_gate.mine_settle_remote(uid, self._seq, result, nickname, hold)
+        result = remote_gate.mine_settle_remote(uid, self._seq, result, nickname, hold)
+        data, uid, nickname = cPickle.loads(result)
         self.update_info(data)
         
         return self, self._normal, self._lucky, uid, nickname
@@ -516,7 +517,7 @@ class PlayerField(Mine):
 
     def mine_info(self):
         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
-        print 'mine_info', data
+        print 'mine_info', cPickle.loads(data)
         return data
 
     def detail_info(self):
@@ -585,7 +586,7 @@ class PlayerField(Mine):
 #         return stones
     def draw_stones(self):
         status, stones = remote_gate.mine_harvest_remote(self._tid, self._seq)
-        return stones
+        return cPickle.loads(stones)
 
     def mine_data(self):
         info = {}
@@ -594,7 +595,8 @@ class PlayerField(Mine):
 
     def guard_info(self):
         data = remote_gate.mine_update_remote(self._tid, self._seq)
-        self.update_info(data)
+        
+        self.update_info(cPickle.loads(data))
         return self._lineup
 
 
