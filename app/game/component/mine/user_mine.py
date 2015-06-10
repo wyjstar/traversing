@@ -645,7 +645,7 @@ class MonsterField(Mine):
             lucky[int(sp_id)] = 0
         stage_id = random.sample(mine.monster, 1)[0]
         self._stage_id = stage_id
-        return 0, mine.type, 0, -1, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
+        return 0, mine.type, 0, mine.outputLimited, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
 
     def settle(self, uid=None, result=True, nickname=None, hold=1):
         mine = ConfigData.mine(self._mine_id)
