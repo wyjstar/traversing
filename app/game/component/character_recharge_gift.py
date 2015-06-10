@@ -194,6 +194,7 @@ class CharacterRechargeGift(Component):
         try:
             if recharge_item.get('type') == 2:
                 rebate_call(self._owner, recharge_item)
+                self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
             else:
                 return_data = gain(self._owner, recharge_item.get('setting'),
                                    const.RECHARGE)  # 获取
