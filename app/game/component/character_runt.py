@@ -55,7 +55,7 @@ class CharacterRuntComponent(Component):
             flag = weight
         return refresh_id
 
-    def bag_is_full(num):
+    def bag_is_full(self, num):
         if len(self._m_runt) + num > \
                 game_configs.base_config.get('totemStash'):
             return 1
