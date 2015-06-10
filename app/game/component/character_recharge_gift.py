@@ -191,32 +191,29 @@ class CharacterRechargeGift(Component):
         """
         充值掉落
         """
-        try:
-            if recharge_item.get('type') == 2:
-                rebate_call(self._owner, recharge_item)
+        if recharge_item.get('type') == 2:
+            rebate_call(self._owner, recharge_item)
+            self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
+        else:
+            return_data = gain(self._owner, recharge_item.get('setting'),
+                               const.RECHARGE)  # 获取
+            get_return(self._owner, return_data, response.gain)
+
+            rres = self._owner.base_info.first_recharge(recharge_item, response)
+            if rres:
+                #首次充值
+                isfirst = 1
                 self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
             else:
-                return_data = gain(self._owner, recharge_item.get('setting'),
-                                   const.RECHARGE)  # 获取
-                get_return(self._owner, return_data, response.gain)
+                isfirst = 0
+            tlog_action.log('Recharge', self._owner, isfirst,
+                            recharge_item.get('id'))
 
-                rres = self._owner.base_info.first_recharge(recharge_item, response)
-                if rres:
-                    #首次充值
-                    isfirst = 1
-                    self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
-                else:
-                    isfirst = 0
-                tlog_action.log('Recharge', self._owner, isfirst,
-                                recharge_item.get('id'))
+        charge_num = recharge_item.get('activity') # 充值元宝数量
+        # vip
+        self._owner.base_info.recharge += charge_num
+        self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
 
-            charge_num = recharge_item.get('activity') # 充值元宝数量
-            # vip
-            self._owner.base_info.recharge += charge_num
-            self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
-
-            # 活动
-            self._owner.recharge.charge(charge_num)
-            self._owner.recharge.get_recharge_response(response.info) # recharge
-        except Exception, e:
-            logger.error("recharge gain error!%s" % e)
+        # 活动
+        self._owner.recharge.charge(charge_num)
+        self._owner.recharge.get_recharge_response(response.info) # recharge
