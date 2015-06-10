@@ -8,7 +8,8 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
-from app.game.core.task import task_status, get_condition_info
+from app.game.core.task import task_status, get_condition_info, \
+    CONDITIONId
 
 
 @remoteserviceHandle('gate')
@@ -39,13 +40,13 @@ def get_task_reward_1822(data, player):
     task_conf = game_configs.achievement_config.get('tasks').get(tid)
 
     state = player.task.tasks.get(tid)
-    if state and  state == 3:
+    if state and state == 3:
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
 
     res = get_condition_info(player, task_conf)
-    if not res.get('state'):
+    if state == 1 and not res.get('state'):
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
@@ -65,6 +66,24 @@ def share_1823(data, player):
     args.ParseFromString(data)
     tid = args.tid
     response = task_pb2.ShareResponse()
+
+    task_conf = game_configs.achievement_config.get('tasks').get(tid)
+    if task_conf.sort != 4:
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    res = get_condition_info(player, task_conf)
+
+    condition_info = res.get('condition_info')
+    for x in condition_info:
+        if not x[1] and task_conf.condition.get(x[0])[0] != CONDITIONId.SHARE:
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+
+    player.task._tasks[tid] = 2
+    player.task.save_data()
 
     response.tid = tid
     response.res.result = True
