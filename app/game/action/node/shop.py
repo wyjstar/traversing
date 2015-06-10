@@ -332,7 +332,7 @@ def shop_buy_505(pro_data, player):
 
         shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
 
-        need_gold = get_consume_gold_num(shop_item.consume, item_count)
+        need_gold = get_consume_gold_num(price, item_count)
 
         def func():
             consume_return_data = consume(player, price,
