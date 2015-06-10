@@ -66,5 +66,6 @@ def share_1823(data, player):
     tid = args.tid
     response = task_pb2.ShareResponse()
 
+    response.tid = tid
     response.res.result = True
     return response.SerializeToString()
