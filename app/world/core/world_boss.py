@@ -69,7 +69,12 @@ class WorldBoss(BaseBoss):
 
     def save_data(self):
         base_boss_data = self.get_data_dict()
-        world_boss_data = dict(stage_id_am=self._stage_id_am)
+        world_boss_data = dict(stage_id_am=self._stage_id_am,
+                stage_id_pm=self._stage_id_pm,
+                lucky_hero_start=self._lucky_hero_start,
+                lucky_hero_end=self._lucky_hero_end,
+                state=self._state,
+                )
         world_boss_data.update(base_boss_data)
         str_data = cPickle.dumps(world_boss_data)
         tb_boss.set(self._boss_name, str_data)
