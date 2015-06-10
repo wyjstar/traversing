@@ -30,6 +30,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 from app.game.core.mail_helper import send_mail
+from shared.utils import xtime
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -489,6 +490,15 @@ def acc_mine_1250(data, player):
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
     response = mine_pb2.IncreaseResponse()
+    
+    detail_info = player.mine.detail_info(request.position)
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    now = xtime.timestamp()
+    main_mine = game_configs.mine_config.get(10001)
+    if last_increase + main_mine.increaseTime * 60 - now > main_mine.increaseMaxTime * 60:
+        response.res.result = True
+        response.result_no = 12501
+        return response.SerializePartialToString()
     increasePrice = player.mine.price(request.position)
     price = CommonGroupItem(0, increasePrice, increasePrice, const.GOLD)
     result = item_group_helper.is_afford(player, [price])  # 校验
