@@ -444,7 +444,8 @@ class MineData(object):
             srcname = self.mines[seq]._nickname
         
             if self.mines[seq]._status == 2 or (self.mines[seq]._status == 1 and time.time() > self.mines[seq]._last_time):
-                self.mines[seq]._status = 3
+                if result == True:
+                    self.mines[seq]._status = 3
             if result == True:
                 if hold:
                     self.mines[seq]._tid = uid

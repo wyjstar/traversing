@@ -518,7 +518,7 @@ class PlayerField(Mine):
     def mine_info(self):
         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
         print 'mine_info', cPickle.loads(data)
-        return data
+        return cPickle.loads(data)
 
     def detail_info(self):
         """
