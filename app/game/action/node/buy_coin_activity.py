@@ -67,7 +67,7 @@ def buy_coin_activity_1406(data, player):
     item_num = 0
     if item:
         item_num = item.num
-    if item_num + player.base_info.buy_coin_times + free_times <= buy_times:
+    if player.base_info.buy_coin_times + free_times <= buy_times and item_num == 0:
         logger.error("buy_coin_activity_1406: times not enough %s, %s, %s" % (item_num, player.base_info.buy_coin_times, player.buy_coin.buy_times))
         response.res.result = False
         response.res.result_no = 1406
@@ -82,8 +82,7 @@ def buy_coin_activity_1406(data, player):
         if player.base_info.buy_coin_times + free_times <= buy_times:
             # 使用招财令
             player.item_package.consume_item(item_no, 1)
-        else:
-            player.buy_coin.buy_times = buy_times + 1
+        player.buy_coin.buy_times = buy_times + 1
         player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
         player.finance.add_coin(coin_nums)

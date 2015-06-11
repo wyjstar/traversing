@@ -454,8 +454,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
         player.line_up_component.save_data()
 
         # hook task
-        hook_task(player, CONDITIONId.STAGE, stage_id)
-        hook_task(player, CONDITIONId.ANY_STAGE, 1)
+        hook_task(player, CONDITIONId.ANY_STAGE, times)
 
         return_data = consume(player, sweep_item, multiple=times)
         get_return(player, return_data, response.consume)
