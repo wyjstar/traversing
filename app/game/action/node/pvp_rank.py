@@ -222,8 +222,8 @@ def pvp_fight_request_1505(data, player):
 
     line_up = request.lineup
     skill = request.skill
-    target_id = tb_pvp_rank.zrangebyscore(request.challenge_rank,
-                                          request.challenge_rank)[0]
+    target_id = int(tb_pvp_rank.zrangebyscore(request.challenge_rank,
+                                              request.challenge_rank)[0])
 
     open_stage_id = game_configs.base_config.get('arenaOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
