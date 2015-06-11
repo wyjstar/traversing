@@ -84,6 +84,11 @@ def do_tick_rank():
     instance = Ranking.instance(star_rank_name)
     add_star_rank_info(instance, users)
 
+    for uid in users:
+        char_obj = tb_character_info.getObj(uid)
+        pvp_unit = char_obj.hget('copy_units')
+        char_obj.hset('copy_units2', pvp_unit)
+
 
 def tick_rank():
     do_tick_rank()
