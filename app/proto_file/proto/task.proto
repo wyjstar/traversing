@@ -49,5 +49,11 @@ message ShareRequest
 message ShareResponse
 {
     required CommonResponse res = 1;
-	optional int32 tid = 2; //任务ID
+    optional int32 tid = 2; //任务ID
+}
+
+message FulfilTask
+{
+    repeated int32 tid = 1; //任务ID
+    optional int32 lively = 2; //活跃度
 }

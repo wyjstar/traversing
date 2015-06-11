@@ -4,6 +4,7 @@ created by server on 14-7-17上午11:07.
 """
 from shared.db_opear.configs_data import game_configs
 import time
+from app.proto_file import task_pb2
 
 
 def task_status(player, tid, response):
@@ -14,7 +15,6 @@ def task_status(player, tid, response):
     while True:
         state = player.task.tasks.get(tid)
         next_task = unlock_conf.get(tid)
-        # TODO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if next_task and state and state == 3:  # 有后续，已领取
             tid = next_task
             continue
@@ -148,19 +148,60 @@ UPDATE_CONDITION_COVER = [25, 26, 28, 30]  # 如果比原来值大覆盖
 UPDATE_CONDITION_INSERT = [32]  # 插入列表
 
 
-def update_condition(player, cid, *args, **kw):
+def update_condition(player, cid, num):
     if cid in UPDATE_CONDITION_ADD:
-        update_condition_add(player, cid, *arg)
+        update_condition_add(player, cid, num)
     elif cid in UPDATE_CONDITION_COVER:
-        update_condition_cover(player, cid, *arg)
+        update_condition_cover(player, cid, num)
     elif cid in UPDATE_CONDITION_INSERT:
-        update_condition_insert(player, cid, *arg)
+        update_condition_insert(player, cid, num)
 
 
 # ==============
 
 
-# def hook_task(player, c)
+def hook_task(player, cid, num, is_lively=False, proto_data=''):
+    conf_tids = game_configs.achievement_config.get('conditions').get(cid)
+    tids = []
+    lively = 0
+    if not is_lively:
+        proto_data = task_pb2.FulfilTask()
+    for tid in conf_tids:
+        state = player.task.tasks[tid]
+        task_conf = game_configs.achievement_config.get('tasks').get(tid)
+        if task_conf.unlock and player.task.tasks[task_conf.unlock] != 3:
+            continue
+        if state and state == 2:
+            continue
+        if state and state == 3:
+            continue
+        flag = 0
+        if cid == 1:
+            for _, v in t_conf.condition.items():
+                if num == v[1]:
+                    flag = 1
+                    break
+        else:
+            flag = 1
+        tids.append(tid)
+    update_condition(player, cid, num)
+    if cid == 32:
+        return
+    for tid in tids:
+        task_conf = game_configs.achievement_config.get('tasks').get(tid)
+        res = get_condition_info(player, task_conf)
+        if not res['state']:
+            continue
+        if task_conf.sort == 2 and not is_lively:
+            lively += task_conf.reward.num
+        proto_data.tid.append(tid)
+    if lively != 0:
+        hook_task(player, 24, lively, is_lively=True, proto_data=proto_data)
+        proto_data.lively = lively
+    else:
+        remote_gate.push_object_remote(1824,
+                                       proto_data.SerializeToString(),
+                                       [player.dynamic_id])
 
 
 # ==============

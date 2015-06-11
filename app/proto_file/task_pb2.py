@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='task.proto',
   package='',
-  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"\x1b\n\x0cShareRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\":\n\rShareResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03tid\x18\x02 \x01(\x05')
+  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"\x1b\n\x0cShareRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\":\n\rShareResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03tid\x18\x02 \x01(\x05\")\n\nFulfilTask\x12\x0b\n\x03tid\x18\x01 \x03(\x05\x12\x0e\n\x06lively\x18\x02 \x01(\x05')
 
 
 
@@ -291,6 +291,41 @@ _SHARERESPONSE = _descriptor.Descriptor(
   serialized_end=470,
 )
 
+
+_FULFILTASK = _descriptor.Descriptor(
+  name='FulfilTask',
+  full_name='FulfilTask',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tid', full_name='FulfilTask.tid', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='lively', full_name='FulfilTask.lively', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=472,
+  serialized_end=513,
+)
+
 _TASK.fields_by_name['condition'].message_type = _TASKCONDITION
 _TASKINFORESPONSE.fields_by_name['tasks'].message_type = _TASK
 _TASKREWARDRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
@@ -304,6 +339,7 @@ DESCRIPTOR.message_types_by_name['TaskRewardRequest'] = _TASKREWARDREQUEST
 DESCRIPTOR.message_types_by_name['TaskRewardResponse'] = _TASKREWARDRESPONSE
 DESCRIPTOR.message_types_by_name['ShareRequest'] = _SHAREREQUEST
 DESCRIPTOR.message_types_by_name['ShareResponse'] = _SHARERESPONSE
+DESCRIPTOR.message_types_by_name['FulfilTask'] = _FULFILTASK
 
 class Task(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -352,6 +388,12 @@ class ShareResponse(_message.Message):
   DESCRIPTOR = _SHARERESPONSE
 
   # @@protoc_insertion_point(class_scope:ShareResponse)
+
+class FulfilTask(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FULFILTASK
+
+  # @@protoc_insertion_point(class_scope:FulfilTask)
 
 
 # @@protoc_insertion_point(module_scope)
