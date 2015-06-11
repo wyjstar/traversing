@@ -15,20 +15,22 @@ def init_login_gift_825(pro_data, player):
     """登录奖励
     """
     response = InitLoginGiftResponse()
+    component_login_gift = player.login_gift
+    for k, v in component_login_gift.cumulative_day.items():
+        temp_pb = response.cumulative_day.add()
+        temp_pb.activity_id = k
+        temp_pb.state = v
 
-    cumulative_received, continuous_received, cumulative_day, continuous_day = init_login_gift(player)
-    for i in cumulative_received:
-        response.cumulative_received.append(i)
+    for k, v in component_login_gift.continuous_day.items():
+        temp_pb = response.continuous_day.add()
+        temp_pb.activity_id = k
+        temp_pb.state = v
 
-    for i in continuous_received:
-        response.continuous_received.append(i)
+    response.continuous_day_num = component_login_gift.continuous_day_num
+    response.cumulative_day_num = component_login_gift.cumulative_day_num
 
-    response.cumulative_day.login_day = cumulative_day[0]
-    response.cumulative_day.is_new_p = cumulative_day[1]
-
-    response.continuous_day.login_day = continuous_day[0]
-    response.continuous_day.is_new_p = continuous_day[1]
-
+    logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
+    logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
     return response.SerializeToString()
 
 
@@ -39,83 +41,64 @@ def get_login_gift_826(pro_data, player):
     args = GetLoginGiftRequest()
     args.ParseFromString(pro_data)
     activity_id = args.activity_id
-    activity_type = args.activity_type
+    #activity_type = args.activity_type
     response = GetLoginGiftResponse()
-    res, err_no = get_login_gift(activity_id, activity_type, response, player)
+    res, err_no = get_login_gift(activity_id, response, player)
     response.result = res
     if err_no:
             response.result_no = err_no
     return response.SerializeToString()
 
 
-def init_login_gift(player):
-    """
-    获取登录活动信息
-    """
-    return player.login_gift.cumulative_received, player.login_gift.continuous_received,\
-        player.login_gift.cumulative_day, player.login_gift.continuous_day
-
-
-def get_login_gift(activity_id, activity_type, response, player):
+def get_login_gift(activity_id, response, player):
     """
     领取登录奖励
     """
-    flag = 1
-    if activity_type == 1:  # 累积登录
-        if player.login_gift.cumulative_received.count(activity_id) == 0:  # 未领取
-            if player.login_gift.cumulative_day[1]:  # 是新手活动
-                for i in game_configs.activity_config.get(1):
-                    if i.get('id') == activity_id:
-                        if i.get('parameterA') <= player.login_gift.cumulative_day[0]:
-                            player.login_gift.cumulative_received.append(activity_id)
-                            gain_data = i['reward']
-                            return_data = gain(player, gain_data, const.CUMULATIVE_LOGIN_GIFT)
-                            get_return(player, return_data, response.gain)
-                            res = True
-                            err_no = 0
-                            flag = 0
-                        else:
-                            res = False
-                            err_no = 802  # 条件没有达到
-                if flag:
-                    logger.error('get login gift activity_id non find ,activity id:%s', activity_id)
-                    res = False
-                    err_no = 800
+    component_login_gift = player.login_gift
+    if not component_login_gift.is_open(activity_id):
+        logger.error("login gift activity closed.")
+        return False, 82601
+    activity_info = game_configs.activity_config.get(activity_id)
+    if not activity_info:
+        logger.error("can not find activity_config by id %s" % activity_id)
+        return False, 82604
 
-            else:  # 未知错误,不是新手活动的情况，目前代码不应该走这里
-                logger.error('get login gift 不是新手活动，activity type:%s', activity_type)
-                res = False
-                err_no = 800
-        else:
-            res = False
-            err_no = 801  # 已经领取过
-    else:  # 连续登录奖励
-        if player.login_gift.continuous_received.count(activity_id) == 0: # 未领取
-            if player.login_gift.continuous_day[1]:  # 是新手活动
-                for i in game_configs.activity_config.get(2):
-                    if i.get('id') == activity_id:
-                        if i.get('parameterA') <= player.login_gift.continuous_day[0]:
-                            player.login_gift.continuous_received.append(activity_id)
-                            gain_data = i['reward']
-                            return_data = gain(player, gain_data, const.CONTINUOUS_LOGIN_GIFT)
-                            get_return(player, return_data, response.gain)
-                            res = True
-                            err_no = 0
-                            flag = 0
-                        else:
-                            res = False
-                            err_no = 802  # 条件没有达到
-                if flag:
-                    logger.error('get login gift activity_id non find ,activity id:%s', activity_id)
-                    res = False
-                    err_no = 800
+    if activity_info.type == 1:
+        # 累积登录
+        parameterA = activity_info.parameterA
+        cumulative_day = component_login_gift.cumulative_day
 
-            else:  # 未知错误,不是新手活动的情况，目前代码不应该走这里
-                logger.error('get login gift 不是新手活动，activity type:%s', activity_type)
-                res = False
-                err_no = 800
-        else:
-            res = False
-            err_no = 801  # 已经领取过
-    player.login_gift.save_data()
-    return res, err_no
+        if parameterA > len(component_login_gift.cumulative_day):
+            return False, 82602
+
+        if cumulative_day[activity_id] != 0:
+            logger.error("current activity_info state %s" % cumulative_day[activity_id])
+            return False, 82603
+
+        return_data = gain(player, activity_info.reward, const.LOGIN_GIFT_CONTINUS)
+        get_return(player, return_data, response.gain)
+        component_login_gift.cumulative_day[activity_id] = 1
+        component_login_gift.save_data()
+
+
+    elif activity_info.type == 2:
+        # 连续登录
+        parameterA = activity_info.parameterA
+        continuous_day = component_login_gift.continuous_day
+
+        if parameterA > len(component_login_gift.continuous_day):
+            return False, 82612
+
+        if continuous_day[activity_id] != 0:
+            logger.error("current activity_info state %s" % continuous_day[activity_id])
+            return False, 82613
+
+        return_data = gain(player, activity_info.reward, const.LOGIN_GIFT_CUMULATIVE)
+        get_return(player, return_data, response.gain)
+        component_login_gift.continuous_day[activity_id] = 1
+        component_login_gift.continuous_day_num += 1
+        component_login_gift.save_data()
+    logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
+    logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
+    return True, 0
+

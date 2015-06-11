@@ -6,6 +6,8 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 import time
 from shared.db_opear.configs_data import game_configs
+from shared.utils.date_util import days_to_current, get_current_timestamp
+from gfirefly.server.logobj import logger
 
 
 class CharacterLoginGiftComponent(Component):
@@ -13,85 +15,74 @@ class CharacterLoginGiftComponent(Component):
 
     def __init__(self, owner):
         super(CharacterLoginGiftComponent, self).__init__(owner)
-        self._continuous_received = []  # 连续登录，已经领过的
-        self._cumulative_received = []  # 累积登录，已经领过的
-        self._continuous_day = [1, 1]  # [连续登录天数, 是不是首登] 1首登时间内 0 不在时间内
-        self._cumulative_day = [1, 1]  # 累积登录天数
+        self._continuous_day = {}    # 连续登录
+        self._cumulative_day = {}    # 累积登录
+        self._continuous_day_num = 1 # 连续登录天数
+        self.new_item()
         self._last_login = int(time.time())  # 日期
 
     def init_data(self, character_info):
         data = character_info.get('login_gift')
-        # print data, type(data)
-        # print time.localtime(data.get('last_login')), type(time.localtime(data.get('last_login')))
-        if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday:  # 上次更新是今天
-            self._continuous_received = data.get('continuous_received')
-            self._cumulative_received = data.get('cumulative_received')
-            self._continuous_day = data.get('continuous_day')
-            self._cumulative_day = data.get('cumulative_day')
-        else:  # 上次更新不是今天，需要更新活动数据
-            # 累积登录活动
-            cumulative_login_config = game_configs.activity_config.get(1)[0]  # 新注册用户的累积活动配置
-            if data.get('cumulative_day')[1] and (data.get('cumulative_day')[0]+1) <= cumulative_login_config.get('parameterB'):
-                # 新手累积登录活动
-                self._cumulative_day[0] = data.get('cumulative_day')[0] + 1
-                self._cumulative_day[1] = 1
-                self._cumulative_received = data.get('cumulative_received')
-            else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
-                self._cumulative_day[0] = data.get('cumulative_day')[0]
-                self._cumulative_day[1] = 1
-                self._cumulative_received = data.get('cumulative_received')
+        self._continuous_day = data.get('continuous_day', {})
+        self._continuous_day_num = data.get('continuous_day_num', 0)
+        self._cumulative_day = data.get('cumulative_day', {})
+        self._last_login= data.get('last_login')
+        self.check_time()
 
-            continuous_login_config = game_configs.activity_config.get(2)[0]  # 新注册用户的连续登录活动配置
-            if data.get('continuous_day')[1] and (data.get('continuous_day')[0]+1) <= continuous_login_config.get('parameterB'):
-                # 新手连续登录活动
-                # TODO  判断是不是昨天！！！！！！！！！！！！！！！！！！！！！！！
-                if time.localtime(data.get('last_login')).tm_mday == time.localtime().tm_mday-1:
-                    self._continuous_day[0] = data.get('continuous_day')[0] + 1
-                    self._continuous_day[1] = 1
-                    self._continuous_received = data.get('continuous_received')
-                else:  # 不是昨天
-                    self._continuous_day[0] = 1
-                    self._continuous_day[1] = 1
-                    self._continuous_received = data.get('continuous_received')
-            else:  # 不是新手活动，S1不做，所以没有更新成不是新手期间
-                self._continuous_day[0] = data.get('continuous_day')[0]
-                self._continuous_day[1] = 1
-                self._continuous_received = data.get('continuous_received')
-            self._last_login = int(time.time())
+    def new_item(self):
+        """docstring for new_item"""
+        activity_infos = game_configs.activity_config.get(2)
+        for info in activity_infos:
+            self._continuous_day[info.id] = -1
 
-            self.save_data()
+        activity_infos = game_configs.activity_config.get(1)
+        for info in activity_infos:
+            self._cumulative_day[info.id] = -1
+
+        self._continuous_day[2001] = 0
+        self._cumulative_day[1001] = 0
+
+    def check_time(self):
+        """docstring for check_time"""
+        if days_to_current(self._last_login) > 1:
+            activity_infos = game_configs.activity_config.get(2)
+            for info in activity_infos:
+                self._continuous_day[info.id] = -1
+            self._continuous_day[2001] = 0
+            self._continuous_day_num = 1
+
+        elif days_to_current(self._last_login) == 1:
+            self._continuous_day_num += 1
+            for k in sorted(self._continuous_day.keys()):
+                v = self._continuous_day[k]
+                activity_info = game_configs.activity_config.get(k)
+                if v == -1 or activity_info.parameterA == 7:
+                    self._continuous_day[k] = 0
+                    break
+
+        if days_to_current(self._last_login) > 0:
+            self._cumulative_day.append(-1)
+            for k, v in self._cumulative_day.items():
+                if v == -1:
+                    self._cumulative_day[k] = 0
+                    break
+
+        self._last_login = get_current_timestamp()
+        self.save_data()
 
     def save_data(self):
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
         sign_in_data.hset('login_gift', {
-            'continuous_received': self._continuous_received,
-            'cumulative_received': self._cumulative_received,
             'cumulative_day': self._cumulative_day,
             'continuous_day': self._continuous_day,
+            'continuous_day_num': self._continuous_day_num,
             'last_login': self._last_login})
 
     def new_data(self):
-        return {'login_gift': {'last_login': int(time.time()),
-                               'continuous_received': [],
-                               'cumulative_received': [],
-                               'continuous_day': [1, 1],
-                               'cumulative_day': [1, 1]}}
-
-    @property
-    def continuous_received(self):
-        return self._continuous_received
-
-    @continuous_received.setter
-    def continuous_received(self, value):
-        self._continuous_received = value
-
-    @property
-    def cumulative_received(self):
-        return self._cumulative_received
-
-    @cumulative_received.setter
-    def cumulative_received(self, value):
-        self._cumulative_received = value
+        return {'login_gift': {'last_login': self._last_login,
+                               'continuous_day': self._continuous_day,
+                               'continuous_day_num': self._continuous_day_num,
+                               'cumulative_day': self._cumulative_day}}
 
     @property
     def continuous_day(self):
@@ -108,3 +99,42 @@ class CharacterLoginGiftComponent(Component):
     @cumulative_day.setter
     def cumulative_day(self, value):
         self._cumulative_day = value
+
+    @property
+    def cumulative_day_num(self):
+        for k in sorted(self._cumulative_day.keys()):
+            if self._cumulative_day[k] == -1:
+                activity_info = game_configs.activity_config.get(k)
+                if not activity_info:
+                    logger.error("can not find activity_config by id %s" % k)
+                return activity_info.parameterA
+        return 8
+
+    @property
+    def continuous_day_num(self):
+        return self._continuous_day_num
+
+    @continuous_day_num.setter
+    def continuous_day_num(self, value):
+        self._continuous_day_num = value
+
+    def is_open(self, activity_id):
+        """
+        check if it opened.
+        """
+        activity_info = game_configs.activity_config.get(activity_id)
+        if not activity_info:
+            logger.error("can not find activity_config by id %s" % activity_id)
+            return False
+        if activity_info.type == 1:
+            res = False
+            for item in self._cumulative_day:
+                if not item:
+                    res = True
+            if not res and len(self._cumulative_day) == 7:
+                return False
+
+        if not self._owner.base_info.is_activiy_open(activity_id):
+            return False
+        return True
+
