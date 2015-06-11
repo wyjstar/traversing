@@ -147,6 +147,7 @@
                     "rootname": "gate"
                 }
             ],
+            "redis": true,
             "app": "app.chat",
             "log": "app/logs/chat.log"
         },
