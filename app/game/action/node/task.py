@@ -32,7 +32,7 @@ def get_task_info_1821(data, player):
 
 @remoteserviceHandle('gate')
 def get_task_reward_1822(data, player):
-    """获取任务信息"""
+    """获取任务奖励"""
     args = task_pb2.TaskRewardRequest()
     args.ParseFromString(data)
     tid = args.tid
@@ -55,6 +55,7 @@ def get_task_reward_1822(data, player):
     player.task._tasks[tid] = 3
     player.task.save_data()
 
+    response.tid = tid
     response.res.result = True
     return response.SerializeToString()
 

@@ -48,29 +48,9 @@ def get_condition_info(player, task_conf):
     condition_info = []  # [[no, state, value]]
     task_type = task_conf.type
     for condition_no, condition_conf in task_conf.condition.items():
-        # condition_conf [condition_id, v, v]
-        condition_id = condition_conf[0]
-        state = 0
+        res = check_condition(player, condition_conf, task_type)
+        condition_info.append([condition_no, res['state'], res['value']])
 
-        if condition_id == 1:
-            if player.stage_component. \
-                    get_stage(condition_conf[1]).state == 1:
-                state = 1
-            value = 0
-        elif condition_id == 24:  # 活跃度
-            value = player.task.lively
-        else:
-            if task_type == 1:  # 单次
-                value = 0
-                if player.task.conditions.get(condition_id):
-                    value = player.task.conditions.get(condition_id)
-            else:  # 2 每日
-                value = 0
-                if player.task.conditions_day.get(condition_id):
-                    value = player.task.conditions.get(condition_id)
-            if value >= condition_conf[1]:
-                state = 1
-        condition_info.append([condition_no, state, value])
     if composition == 1:  # 且
         state = 1
         for x in condition_info:
@@ -123,33 +103,141 @@ class CONDITIONId:
     SHARE = 32
 
 
-def update_condition1(player):
-    pass
-
-
-def update_condition2(player):
-    pass
-
-
-def update_condition_default(player, cid, num, isadd=False):
-    if cid in []:
-        return
-    if isadd:
+def update_condition_add(player, cid, num):
+    if player.task.conditions.get(cid):
         player.task.conditions[cid] += num
-    player.task.conditions[cid] = num
+        player.task.conditions_day[cid] += num
+    else:
+        player.task.conditions[cid] = num
+        player.task.conditions_day[cid] = num
     player.task.save_data()
 
 
-UPDATE_CONDITION_MAP = {}
-UPDATE_CONDITION_MAP[1] = update_condition1
-UPDATE_CONDITION_MAP[2] = update_condition2
+def update_condition_COVER(player, cid, num):
+    condition = 0
+    condition_day = 0
+    if player.task.conditions.get(cid):
+        condition = player.task.conditions.get(cid)
+        condition_day = player.task._conditions_day.get(cid)
+    if num > condition:
+        player.task.conditions[cid] = num
+    if num > condition_day:
+        player.task.conditions_day[cid] = num
+    player.task.save_data()
+
+
+def update_condition_insert(player, cid, num):
+    if player.task.conditions.get(cid):
+        if num not in player.task.conditions.get(cid):
+            player.task.conditions[cid].append(num)
+    else:
+        player.task.conditions[cid] = [num]
+    if player.task.conditions_day.get(cid):
+        if num not in player.task.conditions_day.get(cid):
+            player.task.conditions_day[cid].append(num)
+    else:
+        player.task.conditions_day[cid] = [num]
+    player.task.save_data()
+
+
+# UPDATE_CONDITION_MAP = {}
+# UPDATE_CONDITION_MAP[1] = update_condition1
+UPDATE_CONDITION_ADD = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                        17, 18, 19, 20, 21, 22, 23, 24, 27, 29]  # 增加
+UPDATE_CONDITION_COVER = [25, 26, 28, 30]  # 如果比原来值大覆盖
+UPDATE_CONDITION_INSERT = [32]  # 插入列表
 
 
 def update_condition(player, cid, *args, **kw):
-    if cid in UPDATE_CONDITION_MAP:
-        fun = UPDATE_CONDITION_MAP[cid]
-        fun(player, *arg, **kw)
-    else:
-        update_condition_default(player, cid, *arg, **kw)
+    if cid in UPDATE_CONDITION_ADD:
+        update_condition_add(player, cid, *arg)
+    elif cid in UPDATE_CONDITION_COVER:
+        update_condition_cover(player, cid, *arg)
+    elif cid in UPDATE_CONDITION_INSERT:
+        update_condition_insert(player, cid, *arg)
 
-    # check()
+
+# ==============
+
+
+# def hook_task(player, c)
+
+
+# ==============
+
+
+def check_condition1(player, condition_conf, task_type):
+    if player.stage_component. \
+            get_stage(condition_conf[1]).state == 1:
+                return {'state': 1, 'value': 0}
+    return {'state': 0, 'value': 0}
+
+
+def check_condition2(player, condition_conf, task_type):
+    if player.base_info.level >= condition_conf[1]:
+        return {'state': 1, 'value': 0}
+    return {'state': 0, 'value': 0}
+
+
+def check_condition31(player, condition_conf, task_type):
+    if player.base_info.vip_level >= condition_conf[1]:
+        return {'state': 1, 'value': 0}
+    return {'state': 0, 'value': 0}
+
+
+def check_condition32(player, condition_conf, task_type):
+    value = get_condition_value(player, condition_conf, task_type)
+    if value and condition_conf[1] in value:
+        return {'state': 1, 'value': 0}
+    return {'state': 0, 'value': 0}
+
+
+def check_condition_const(player, condition_conf, task_type):
+    value = get_condition_value(player, condition_conf, task_type)
+    state = 0
+    if value >= condition_conf[1]:
+        state = 1
+    return {'state': state, 'value': value}
+
+
+def check_condition_rank(player, condition_conf, task_type):
+    value = get_condition_value(player, condition_conf, task_type)
+    state = 0
+    if value <= condition_conf[1]:
+        state = 1
+    return {'state': state, 'value': value}
+
+
+def get_condition_value(player, condition_conf, task_type):
+    condition_id = condition_conf[0]
+    value = 0
+    if task_type == 1:  # 单次
+        value = 0
+        if player.task.conditions.get(condition_id):
+            value = player.task.conditions.get(condition_id)
+    else:  # 2 每日
+        value = 0
+        if player.task.conditions_day.get(condition_id):
+            value = player.task.conditions.get(condition_id)
+    return value
+
+
+CHECK_CONDITION_MAP = {}
+CHECK_CONDITION_MAP[1] = check_condition1
+CHECK_CONDITION_MAP[2] = check_condition2
+CHECK_CONDITION_MAP[31] = check_condition2
+CHECK_CONDITION_MAP[32] = check_condition2
+CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30]
+CHEAK_CONDITION_RANK = [25, 26, ]
+
+
+def check_condition(player, condition_conf, task_type):
+    cid = condition_conf[0]
+    if cid in CHECK_CONDITION_MAP:
+        fun = CHECK_CONDITION_MAP[cid]
+        return fun(player, condition_conf, task_type)
+    elif cid in CHEAK_CONDITION_CONST:
+        return check_condition_const(player, condition_conf, task_type)
+    elif cid in CHEAK_CONDITION_RANK:
+        return check_condition_rank(player, condition_conf, task_type)

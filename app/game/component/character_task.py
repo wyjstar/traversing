@@ -18,26 +18,23 @@ class CharacterTaskComponent(Component):
         self._last_day = 1  # 最后刷新时间
 
     def init_data(self, character_info):
-        self._conditions = character_info.get('conditions1')
-        self._conditions_day = character_info.get('conditions_day1')
-        self._tasks = character_info.get('tasks1')
-        self._lively = character_info.get('lively1')
-        self._last_day = character_info.get('last_day1')
+        self._conditions = character_info.get('conditions')
+        self._conditions_day = character_info.get('conditions_day')
+        self._tasks = character_info.get('tasks')
+        self._last_day = character_info.get('last_day')
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data_obj.hmset({'conditions1': self._conditions,
-                        'conditions_day1': self._conditions_day,
-                        'tasks1': self._tasks,
-                        'lively': self._lively,
+        data_obj.hmset({'conditions': self._conditions,
+                        'conditions_day': self._conditions_day,
+                        'tasks': self._tasks,
                         'last_day': self._last_day})
 
     def new_data(self):
-        return {'conditions1': self._conditions,
-                'conditions_day1': self._conditions_day,
-                'tasks1': self._tasks,
-                'lively1': self._lively,
-                'last_day1': self._last_day}
+        return {'conditions': self._conditions,
+                'conditions_day': self._conditions_day,
+                'tasks': self._tasks,
+                'last_day': self._last_day}
 
     def update(self):
         if time.localtime(self._last_day).tm_yday == time.localtime().tm_yday:
@@ -75,14 +72,6 @@ class CharacterTaskComponent(Component):
     @tasks.setter
     def tasks(self, v):
         self._tasks = v
-
-    @property
-    def lively(self):
-        return self._lively
-
-    @lively.setter
-    def lively(self, v):
-        self._lively = v
 
     @property
     def last_day(self):
