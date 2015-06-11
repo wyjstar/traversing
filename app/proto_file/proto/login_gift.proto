@@ -1,7 +1,7 @@
 import "common.proto";
 message LoginInfo
 {
-    required int32 login_day = 1; // 登录天数 1-7
+    required int32 activity_id = 1; // 活动id
     required int32 state = 2; // -1 未达成 0 已达成未领取 1 已领取
 }
 
@@ -9,6 +9,8 @@ message LoginInfo
 message InitLoginGiftResponse{
 	repeated LoginInfo cumulative_day = 1;  //累积登录
 	repeated LoginInfo continuous_day = 2;  //连续登录
+	optional int32 cumulative_day_num = 3;  //连续登录天数
+	optional int32 continuous_day_num = 4;  //连续登录天数
 }
 
 // get login gift 826

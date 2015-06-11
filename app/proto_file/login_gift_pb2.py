@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='login_gift.proto',
   package='',
-  serialized_pb='\n\x10login_gift.proto\x1a\x0c\x63ommon.proto\"-\n\tLoginInfo\x12\x11\n\tlogin_day\x18\x01 \x02(\x05\x12\r\n\x05state\x18\x02 \x02(\x05\"_\n\x15InitLoginGiftResponse\x12\"\n\x0e\x63umulative_day\x18\x01 \x03(\x0b\x32\n.LoginInfo\x12\"\n\x0e\x63ontinuous_day\x18\x02 \x03(\x0b\x32\n.LoginInfo\"A\n\x13GetLoginGiftRequest\x12\x13\n\x0b\x61\x63tivity_id\x18\x01 \x02(\x05\x12\x15\n\ractivity_type\x18\x02 \x02(\x05\"_\n\x14GetLoginGiftResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x10login_gift.proto\x1a\x0c\x63ommon.proto\"/\n\tLoginInfo\x12\x13\n\x0b\x61\x63tivity_id\x18\x01 \x02(\x05\x12\r\n\x05state\x18\x02 \x02(\x05\"\x97\x01\n\x15InitLoginGiftResponse\x12\"\n\x0e\x63umulative_day\x18\x01 \x03(\x0b\x32\n.LoginInfo\x12\"\n\x0e\x63ontinuous_day\x18\x02 \x03(\x0b\x32\n.LoginInfo\x12\x1a\n\x12\x63umulative_day_num\x18\x03 \x01(\x05\x12\x1a\n\x12\x63ontinuous_day_num\x18\x04 \x01(\x05\"A\n\x13GetLoginGiftRequest\x12\x13\n\x0b\x61\x63tivity_id\x18\x01 \x02(\x05\x12\x15\n\ractivity_type\x18\x02 \x02(\x05\"_\n\x14GetLoginGiftResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -27,7 +27,7 @@ _LOGININFO = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='login_day', full_name='LoginInfo.login_day', index=0,
+      name='activity_id', full_name='LoginInfo.activity_id', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -50,7 +50,7 @@ _LOGININFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=34,
-  serialized_end=79,
+  serialized_end=81,
 )
 
 
@@ -75,6 +75,20 @@ _INITLOGINGIFTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='cumulative_day_num', full_name='InitLoginGiftResponse.cumulative_day_num', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='continuous_day_num', full_name='InitLoginGiftResponse.continuous_day_num', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -84,8 +98,8 @@ _INITLOGINGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=81,
-  serialized_end=176,
+  serialized_start=84,
+  serialized_end=235,
 )
 
 
@@ -119,8 +133,8 @@ _GETLOGINGIFTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=178,
-  serialized_end=243,
+  serialized_start=237,
+  serialized_end=302,
 )
 
 
@@ -161,8 +175,8 @@ _GETLOGINGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=245,
-  serialized_end=340,
+  serialized_start=304,
+  serialized_end=399,
 )
 
 _INITLOGINGIFTRESPONSE.fields_by_name['cumulative_day'].message_type = _LOGININFO

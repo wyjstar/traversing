@@ -16,15 +16,18 @@ def init_login_gift_825(pro_data, player):
     """
     response = InitLoginGiftResponse()
 
-    for k, v in enumerate(player.login_gift.cumulative_day):
+    for k, v in player.login_gift.cumulative_day.item():
         temp_pb = response.cumulative_day.add()
-        temp_pb.login_day = k + 1
+        temp_pb.activity_id = k
         temp_pb.state = v
 
-    for k, v in enumerate(player.login_gift.continuous_day):
+    for k, v in player.login_gift.continuous_day.item():
         temp_pb = response.continuous_day.add()
-        temp_pb.login_day = k + 1
+        temp_pb.activity_id = k
         temp_pb.state = v
+
+    response.continuous_day_num = player.login_gift.continuous_day_num
+    response.cumulative_day_num = player.login_gift.cumulative_day_num
 
     return response.SerializeToString()
 
@@ -65,13 +68,13 @@ def get_login_gift(activity_id, response, player):
         if parameterA > len(player.login_gift.cumulative_day):
             return False, 82602
 
-        if cumulative_day[parameterA-1] != 0:
-            logger.error("current activity_info state %s" % cumulative_day[parameterA-1])
+        if cumulative_day[activity_id] != 0:
+            logger.error("current activity_info state %s" % cumulative_day[activity_id])
             return False, 82603
 
         return_data = gain(player, activity_info.reward, const.LOGIN_GIFT_CONTINUS)
         get_return(player, return_data, response.gain)
-        player.login_gift.cumulative_day[parameterA-1] = 1
+        player.login_gift.cumulative_day[activity_id] = 1
         player.login_gift.save_data()
 
         return True, 0
@@ -84,12 +87,14 @@ def get_login_gift(activity_id, response, player):
         if parameterA > len(player.login_gift.continuous_day):
             return False, 82612
 
-        if continuous_day[parameterA-1] != 0:
-            logger.error("current activity_info state %s" % continuous_day[parameterA-1])
+        if continuous_day[activity_id] != 0:
+            logger.error("current activity_info state %s" % continuous_day[activity_id])
             return False, 82613
 
         return_data = gain(player, activity_info.reward)
         get_return(player, return_data, response.gain, const.LOGIN_GIFT_CUMULATIVE)
-        player.login_gift.continuous_day[parameterA-1] = 1
+        player.login_gift.continuous_day[activity_id] = 1
+        player.login_gift.continuous_day_num += 1
         player.login_gift.save_data()
         return True, 0
+
