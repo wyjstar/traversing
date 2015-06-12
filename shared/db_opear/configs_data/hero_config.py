@@ -20,5 +20,11 @@ class HeroConfig(object):
             convert_keystr2num(row.get('awake'))
             row["sacrificeGain"] = parse(row.get("sacrificeGain"))
             row["sellGain"] = parse(row.get("sellGain"))
+            if row['quality'] == 2:
+                row['color'] = 1
+            elif row['quality'] == 3 or row['quality'] == 4:
+                row['color'] = 2
+            elif row['quality'] == 5 or row['quality'] == 6:
+                row['color'] = 3
             self.heros[row.get('id')] = CommonItem(row)
         return self.heros

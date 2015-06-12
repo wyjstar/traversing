@@ -30,6 +30,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 from app.game.core.mail_helper import send_mail
+from app.game.core.task import hook_task, CONDITIONId
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -115,6 +116,7 @@ def search_1241(data, player):
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(one_mine, response.mine)
         response.res.result = True
+        hook_task(player, CONDITIONId.MINE_EXPLORE, 1)
     else:
         response.res.result = False
         response.res.result_no = 12410
@@ -362,7 +364,7 @@ def harvest_1245(data, player):
 
     player.mine.save_data()
     player.runt.save()
-    # print '1245-response', response
+    hook_task(player, CONDITIONId.GAIN_RUNT, 1)
     return response.SerializePartialToString()
 
 

@@ -37,6 +37,8 @@ class AchievementConfig(object):
 
             for _, condition in item.condition.items():
                 if self._conditions.get(condition[0]):
+                    if item.id in self._conditions[condition[0]]:
+                        continue
                     self._conditions[condition[0]].append(item.id)
                 else:
                     self._conditions[condition[0]] = [item.id]

@@ -19,6 +19,7 @@ from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from shared.tlog import tlog_action
 import copy
+from app.game.core.task import hook_task, CONDITIONId
 
 
 @remoteserviceHandle('gate')
@@ -144,6 +145,7 @@ def shop_oper(pro_data, player, reason):
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
+            times = 1
         else:
             gain_items = shop_item.gain
             if shop_item.id == 10001:
@@ -160,8 +162,10 @@ def shop_oper(pro_data, player, reason):
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
+            times = 10
 
         send_tlog(player, shop_item)
+        hook_task(player, CONDITIONId.HERO_GET, times)
 
     player.pay.pay(need_gold, func)
 

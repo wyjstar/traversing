@@ -14,6 +14,7 @@ from gfirefly.server.logobj import logger
 import time
 from shared.tlog import tlog_action
 from app.game.core.notice import push_notice
+from app.game.core.task import hook_task, CONDITIONId
 
 
 def is_afford(player, item_group, multiple=1):
@@ -426,6 +427,9 @@ def get_return(player, return_data, game_resources_response):
             game_resources_response.team_exp += item_num
 
         elif 107 == item_type:
+            if item_no == 26:
+                hook_task(player, CONDITIONId.GGZJ, num)
+
             for finance_changes in game_resources_response.finance.finance_changes:
                 if finance_changes.item_type == item_type and finance_changes.item_no == item_no:
                     finance_changes.item_num += item_num

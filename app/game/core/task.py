@@ -5,6 +5,10 @@ created by server on 14-7-17上午11:07.
 from shared.db_opear.configs_data import game_configs
 import time
 from app.proto_file import task_pb2
+from gfirefly.server.globalobject import GlobalObject
+
+
+remote_gate = GlobalObject().remote.get('gate')
 
 
 def task_status(player, tid, response):
@@ -39,7 +43,7 @@ def task_status(player, tid, response):
                     condition_res = task_res.condition.add()
                     condition_res.condition_no = x[0]
                     condition_res.state = x[1]
-                    condition_res.current = x[2]
+                    condition_res.current = int(x[2])
                 break
 
 
@@ -91,12 +95,12 @@ class CONDITIONId:
     MINE_EXPLORE = 20
     GAIN_RUNT = 21
     TRAVEL = 22
-    PVBOSS = 23
+    PVBOSS_TIMES = 23
     LIVELY = 24
     PVP_RANK = 25
     PVBOSS = 26
-    NMRQ = 27
-    GGZJ = 28
+    NMRQ = 27  # 南蛮入侵次数
+    GGZJ = 28  # 过关斩将通关令个数
     HERO_GET = 29
     FIGHT_POWER = 30
     VIP_LEVEL = 31
@@ -113,7 +117,7 @@ def update_condition_add(player, cid, num):
     player.task.save_data()
 
 
-def update_condition_COVER(player, cid, num):
+def update_condition_cover(player, cid, num):
     condition = 0
     condition_day = 0
     if player.task.conditions.get(cid):
@@ -142,9 +146,9 @@ def update_condition_insert(player, cid, num):
 
 # UPDATE_CONDITION_MAP = {}
 # UPDATE_CONDITION_MAP[1] = update_condition1
-UPDATE_CONDITION_ADD = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+UPDATE_CONDITION_ADD = [3, 4, 5, 12, 13, 14, 15, 16,
                         17, 18, 19, 20, 21, 22, 23, 24, 27, 29]  # 增加
-UPDATE_CONDITION_COVER = [25, 26, 28, 30]  # 如果比原来值大覆盖
+UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 25, 26, 28, 30]  # 如果比原来值大覆盖
 UPDATE_CONDITION_INSERT = [32]  # 插入列表
 
 
@@ -158,6 +162,8 @@ def update_condition(player, cid, num):
 
 
 # ==============
+# from app.game.core.task import hook_task, CONDITIONId
+# hook(player, cid, num)
 
 
 def hook_task(player, cid, num, is_lively=False, proto_data=''):
@@ -167,9 +173,11 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
     if not is_lively:
         proto_data = task_pb2.FulfilTask()
     for tid in conf_tids:
-        state = player.task.tasks[tid]
+        state = player.task.tasks.get(tid)
+        if not state:
+            state = 1
         task_conf = game_configs.achievement_config.get('tasks').get(tid)
-        if task_conf.unlock and player.task.tasks[task_conf.unlock] != 3:
+        if task_conf.unlock and player.task.tasks.get(task_conf.unlock) != 3:
             continue
         if state and state == 2:
             continue
@@ -177,15 +185,17 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
             continue
         flag = 0
         if cid == 1:
-            for _, v in t_conf.condition.items():
+            for _, v in task_conf.condition.items():
                 if num == v[1]:
                     flag = 1
-                    break
+                    # break
         else:
             flag = 1
         tids.append(tid)
     update_condition(player, cid, num)
     if cid == 32:
+        return
+    if not tids:
         return
     for tid in tids:
         task_conf = game_configs.achievement_config.get('tasks').get(tid)
@@ -195,7 +205,7 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
         if task_conf.sort == 2 and not is_lively:
             lively += task_conf.reward.num
         proto_data.tid.append(tid)
-    if lively != 0:
+    if lively:
         hook_task(player, 24, lively, is_lively=True, proto_data=proto_data)
         proto_data.lively = lively
     else:
