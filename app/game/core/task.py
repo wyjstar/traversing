@@ -104,15 +104,19 @@ class CONDITIONId:
     HERO_GET = 29
     FIGHT_POWER = 30
     VIP_LEVEL = 31
-    SHARE = 32
+    HERO_GET_LIANG = 32
+    SHARE = 33
 
 
 def update_condition_add(player, cid, num):
     if player.task.conditions.get(cid):
         player.task.conditions[cid] += num
-        player.task.conditions_day[cid] += num
     else:
         player.task.conditions[cid] = num
+
+    if player.task.conditions_day.get(cid):
+        player.task.conditions_day[cid] += num
+    else:
         player.task.conditions_day[cid] = num
     player.task.save_data()
 
@@ -122,10 +126,11 @@ def update_condition_cover_rank(player, cid, num):
     condition_day = 0
     if player.task.conditions.get(cid):
         condition = player.task.conditions.get(cid)
-        condition_day = player.task._conditions_day.get(cid)
-    if num < condition:
+    if player.task.conditions_day.get(cid):
+        condition_day = player.task.conditions_day.get(cid)
+    if num < condition or condition == 0:
         player.task.conditions[cid] = num
-    if num < condition_day:
+    if num < condition_day or condition_day == 0:
         player.task.conditions_day[cid] = num
     player.task.save_data()
 
@@ -135,7 +140,8 @@ def update_condition_cover(player, cid, num):
     condition_day = 0
     if player.task.conditions.get(cid):
         condition = player.task.conditions.get(cid)
-        condition_day = player.task._conditions_day.get(cid)
+    if player.task.conditions_day.get(cid):
+        condition_day = player.task.conditions_day.get(cid)
     if num > condition:
         player.task.conditions[cid] = num
     if num > condition_day:
@@ -160,10 +166,10 @@ def update_condition_insert(player, cid, num):
 # UPDATE_CONDITION_MAP = {}
 # UPDATE_CONDITION_MAP[1] = update_condition1
 UPDATE_CONDITION_ADD = [3, 4, 5, 12, 13, 14, 15, 16,
-                        17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29]  # 增加
-UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 30]  # 如果比原来值大覆盖
+                        17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 32]  # 增加
+UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11]  # 如果比原来值大覆盖
 UPDATE_CONDITION_COVER_RANK = [25, 26]  # 如果比原来值小覆盖
-UPDATE_CONDITION_INSERT = [32]  # 插入列表
+UPDATE_CONDITION_INSERT = [33]  # 插入列表
 
 
 def update_condition(player, cid, num):
@@ -207,30 +213,31 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
                     # break
         else:
             flag = 1
-        tids.append(tid)
+        if flag:
+            tids.append(tid)
     update_condition(player, cid, num)
-    if cid == 32:
+    if cid == 33:
         return
     if not tids:
         return
     for tid in tids:
-        share_cids = game_configs.achievement_config.get('conditions').get(32)
+        share_cids = game_configs.achievement_config.get('conditions').get(33)
         task_conf = game_configs.achievement_config.get('tasks').get(tid)
         res = get_condition_info(player, task_conf)
         if not res['state'] and tid not in share_cids:
             continue
         if task_conf.sort == 2 and res['state']:
             lively += task_conf.reward[0].num
+            player.task.tasks[tid] = 3
         if res['state']:
             proto_data.tid.append(tid)
         else:  # 未完成的分享类
             condition_info = res.get('condition_info')
             state = 1
             for x in condition_info:
-                if x[1] and task_conf.condition.get(x[0])[0] != 32:
+                if x[1] or task_conf.condition.get(x[0])[0] == 33:
                     continue
                 state = 0
-                task_conf.condition.get(x[0])[0]
             if state:
                 proto_data.tid.append(tid)
     if lively and not is_lively:
@@ -239,6 +246,7 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
         remote_gate.push_object_remote(1824,
                                        proto_data.SerializeToString(),
                                        [player.dynamic_id])
+    player.task.save_data()
 
 
 # ==============
@@ -257,13 +265,19 @@ def check_condition2(player, condition_conf, task_type):
     return {'state': 0, 'value': 0}
 
 
+def check_condition30(player, condition_conf, task_type):
+    if player.line_up_component.combat_power >= condition_conf[1]:
+        return {'state': 1, 'value': 0}
+    return {'state': 0, 'value': 0}
+
+
 def check_condition31(player, condition_conf, task_type):
     if player.base_info.vip_level >= condition_conf[1]:
         return {'state': 1, 'value': 0}
     return {'state': 0, 'value': 0}
 
 
-def check_condition32(player, condition_conf, task_type):
+def check_condition33(player, condition_conf, task_type):
     value = get_condition_value(player, condition_conf, task_type)
     if value and condition_conf[1] in value:
         return {'state': 1, 'value': 0}
@@ -296,17 +310,18 @@ def get_condition_value(player, condition_conf, task_type):
     else:  # 2 每日
         value = 0
         if player.task.conditions_day.get(condition_id):
-            value = player.task.conditions.get(condition_id)
+            value = player.task.conditions_day.get(condition_id)
     return value
 
 
 CHECK_CONDITION_MAP = {}
 CHECK_CONDITION_MAP[1] = check_condition1
 CHECK_CONDITION_MAP[2] = check_condition2
+CHECK_CONDITION_MAP[30] = check_condition30
 CHECK_CONDITION_MAP[31] = check_condition31
-CHECK_CONDITION_MAP[32] = check_condition32
+CHECK_CONDITION_MAP[33] = check_condition33
 CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30]
+                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 32]
 CHEAK_CONDITION_RANK = [25, 26]
 
 

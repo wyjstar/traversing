@@ -4,13 +4,14 @@ created by sphinx on
 """
 import json
 import uuid
-import urllib
 from flask import request
 from app.login.model.manager import account_cache
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
+from geventhttpclient import HTTPClient
+from geventhttpclient.url import URL
 
 
 SERVERS_MA_WEBPORT = GlobalObject().allconfig['servers']['MA']['webport']
@@ -41,10 +42,12 @@ def server_login():
 def __login(passport):
     """login """
     logger.info('player login passport:%s' % passport)
-    url = '%s:%s' % (SERVER_MA_URL, SERVERS_MA_WEBPORT)
-    url_response = urllib.urlopen('%s/verify?passport=%s' % (url, passport))
-    str_response = url_response.read()
-    response = eval(str_response)
+    domain = '%s:%s' % (SERVER_MA_URL, SERVERS_MA_WEBPORT)
+    url = '%s/verify?passport=%s' % (domain, passport)
+    url = URL(url)
+    http = HTTPClient(url.host, port=url.port)
+    response = eval(http.get(url.request_uri).read())
+    http.close()
     if response.get('result') is True:
         return str({'result': True, 'account_id': '\'%s\'' % passport})
     return str({'result': False})

@@ -239,6 +239,24 @@ def guard_1244(data, player):
     response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+    # 取消原来已经驻守的武将
+    info = get_save_guard(player, request.pos)
+    if info and info.get("line_up"):
+        str_line_up = info.get("line_up")
+        line_up_response = line_up_pb2.LineUpResponse()
+        line_up_response.ParseFromString(str_line_up)
+        for slot in line_up_response.slot:
+            if not slot.hero.hero_no:
+                continue
+            hero = player.hero_component.get_hero(slot.hero_no)
+            hero.is_guard = False
+            hero.save_data()
+            for equ_slot in slot.equs:
+                equip = player.equipment_component.get_equipment(equ_slot.equ.id)
+                if not equip:
+                    continue
+                equip.attribute.is_guard = False
+                equip.save_data()
 
     # 构造阵容组件
     character_line_up = CharacterLineUpComponent(player)
@@ -492,7 +510,7 @@ def acc_mine_1250(data, player):
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
     response = mine_pb2.IncreaseResponse()
-    
+
     detail_info = player.mine.detail_info(request.position)
     ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
     now = xtime.timestamp()
@@ -534,10 +552,10 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     # print 'process_mine_result', position, response, result, stype
 
     normal, lucky, target, nickname = player.mine.settle(position, result, hold)
-    
+
     if stype != 1:
         return
-    
+
     if result is not True:
         send_mail(conf_id=122, receive_id=target, nickname=nickname )
         return
@@ -672,7 +690,7 @@ def battle_1253(data, player):
     #player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
             hold = request.hold
             process_mine_result(player, pos, fight_result, response, 1, hold)
-    
+
             blue_best_skill_id = info.get("best_skill_id", 0)
             blue_best_skill_level = info.get("best_skill_level", 0)
             response.fight_result = fight_result

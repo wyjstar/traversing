@@ -25,6 +25,9 @@ from shared.utils.date_util import string_to_timestamp
 from shared.utils.const import const
 from gfirefly.server.logobj import logger
 
+def get_remote_gate():
+    """docstring for get_remote_gate"""
+    return GlobalObject().child('gate')
 
 tb_boss = RedisObject('tb_worldboss')
 
@@ -103,6 +106,7 @@ class WorldBoss(BaseBoss):
         if self._stage_id and self._state == 1 and (not self.in_the_time_period()):
             self.update_boss()
             self._state = 0
+
         reactor.callLater(1, self.loop_update)
 
     def start_boss(self):
@@ -146,9 +150,6 @@ class WorldBoss(BaseBoss):
         for k, v in game_configs.lucky_hero_config.items():
             start = string_to_timestamp(v.timeStart)
             end = string_to_timestamp(v.timeEnd)
-            #print("start:", start)
-            #print("end:", end)
-            #print("current:", current)
             if current > start and current < end:
                 items[k] = v
                 self._lucky_hero_start = start
@@ -178,9 +179,8 @@ class WorldBoss(BaseBoss):
         ranks = self._rank_instance.get(1, 3000)
         for k, v in enumerate(ranks):
             player_id, val = v
-            remote_gate.push_message_to_transit_remote('boss_task_remote',
-                                                       int(player_id),
-                                                       k+1)
+            get_remote_gate().push_message_to_transit_remote(
+                'boss_task_remote', int(player_id), k+1)
 
     def send_award_top_ten(self):
         """
@@ -256,8 +256,7 @@ class WorldBoss(BaseBoss):
         award_data.award_type = award_type
         award_data.award = award
         award_data.rank_no = rank_no
-        remote_gate = GlobalObject().child('gate')
-        remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
+        get_remote_gate().push_message_to_transit_remote('receive_pvb_award_remote',
                                                     int(player_id), award_data.SerializePartialToString())
 
     def set_next_stage(self, kill_or_not=False):

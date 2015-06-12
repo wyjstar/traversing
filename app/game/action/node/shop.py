@@ -66,7 +66,7 @@ def shop_oper(pro_data, player, reason):
         player.shop.first_coin_draw = False
         player.shop.save_data()
 
-        hook_task(player, CONDITIONId.HERO_GET, 1)
+        hook_task(player, CONDITIONId.HERO_GET_LIANG, 1)
 
         response.res.result = True
         return response.SerializeToString()
@@ -149,7 +149,10 @@ def shop_oper(pro_data, player, reason):
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
-            times = 1
+            if shop_item.id == 50001:
+                hook_task(player, CONDITIONId.HERO_GET, 1)
+            else:
+                hook_task(player, CONDITIONId.HERO_GET, 10)
         else:
             gain_items = shop_item.gain
             if shop_item.id == 10001:
@@ -166,10 +169,12 @@ def shop_oper(pro_data, player, reason):
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
-            times = 10
+            if shop_item.id == 10001:
+                hook_task(player, CONDITIONId.HERO_GET_LIANG, 1)
+            else:
+                hook_task(player, CONDITIONId.HERO_GET_LIANG, 10)
 
         send_tlog(player, shop_item)
-        hook_task(player, CONDITIONId.HERO_GET, times)
 
     player.pay.pay(need_gold, func)
 
@@ -332,7 +337,7 @@ def shop_buy_505(pro_data, player):
 
         shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
 
-        need_gold = get_consume_gold_num(shop_item.consume, item_count)
+        need_gold = get_consume_gold_num(price, item_count)
 
         def func():
             consume_return_data = consume(player, price,

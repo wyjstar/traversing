@@ -9,7 +9,8 @@ from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from app.game.core.task import task_status, get_condition_info, \
-    CONDITIONId
+    CONDITIONId, UPDATE_CONDITION_ADD, UPDATE_CONDITION_COVER, \
+    UPDATE_CONDITION_COVER_RANK
 
 
 @remoteserviceHandle('gate')
@@ -20,13 +21,14 @@ def get_task_info_1821(data, player):
     sort = args.sort
     response = task_pb2.TaskInfoResponse()
 
+    player.task.update()
+
     sort_conf = game_configs.achievement_config.get('sort').get(sort)
     first_tasks = game_configs.achievement_config.get('first_task')
     for tid in sort_conf:
         if tid not in first_tasks:
             continue
         task_status(player, tid, response)
-
 
     return response.SerializeToString()
 
@@ -38,6 +40,9 @@ def get_task_reward_1822(data, player):
     args.ParseFromString(data)
     tid = args.tid
     response = task_pb2.TaskRewardResponse()
+
+    player.task.update()
+
     task_conf = game_configs.achievement_config.get('tasks').get(tid)
 
     state = player.task.tasks.get(tid)
@@ -63,11 +68,13 @@ def get_task_reward_1822(data, player):
 
 @remoteserviceHandle('gate')
 def share_1823(data, player):
-    """推送任务信息"""
+    """分享"""
     args = task_pb2.ShareRequest()
     args.ParseFromString(data)
     tid = args.tid
     response = task_pb2.ShareResponse()
+
+    player.task.update()
 
     task_conf = game_configs.achievement_config.get('tasks').get(tid)
     if task_conf.sort != 4:
@@ -84,9 +91,29 @@ def share_1823(data, player):
             response.res.result_no = 800
             return response.SerializeToString()
 
-    player.task._tasks[tid] = 2
+    player.task.tasks[tid] = 2
     player.task.save_data()
 
     response.tid = tid
     response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_condition_info_1825(data, player):
+    """成长引导"""
+    response = task_pb2.ConditionsResponse()
+    cids = UPDATE_CONDITION_ADD + UPDATE_CONDITION_COVER + \
+        UPDATE_CONDITION_COVER_RANK
+
+    player.task.update()
+
+    for cid in cids:
+        num = player.task.conditions_day.get(cid)
+        if not num:
+            num = 0
+        condition_info = response.condition_info.add()
+        condition_info.cid = cid
+        condition_info.num = num
+
     return response.SerializeToString()

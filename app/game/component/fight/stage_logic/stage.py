@@ -44,9 +44,6 @@ class StageLogic(base_stage.BaseStageLogic):
         # todo: 更新战斗次数
         # 体力
         if result:
-            # hook task
-            hook_task(player, CONDITIONId.STAGE, stage_id)
-            hook_task(player, CONDITIONId.ANY_STAGE, 1)
 
             player.stamina.stamina -= conf.vigor
             player.stamina.save_data()
@@ -54,5 +51,8 @@ class StageLogic(base_stage.BaseStageLogic):
             # 活跃度
             # 结算
             stage_util.settle(player, result, response, conf)
+            # hook task
+            hook_task(player, CONDITIONId.ANY_STAGE, 1)
+            hook_task(player, CONDITIONId.STAGE, stage_id)
 
         tlog_action.log('RoundFlow', player, stage_id, 1, 0, result)

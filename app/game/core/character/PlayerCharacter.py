@@ -6,6 +6,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.game import component
+from collections import OrderedDict
 
 
 class PlayerCharacter(object):
@@ -17,41 +18,42 @@ class PlayerCharacter(object):
         """
         self._pid = pid
         self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
-        a = dict(base_info=component.CharacterBaseInfoComponent(self),
-                 hero_component=component.CharacterHerosComponent(self),
-                 finance=component.CharacterFinanceComponent(self),
-                 hero_chip_component=component.CharacterHeroChipsComponent(self),
-                 item_package=component.CharacterItemPackageComponent(self),
-                 equipment=component.CharacterEquipmentPackageComponent(self),
-                 equipment_chip=component.CharacterEquipmentChipComponent(self),
-                 line_up=component.CharacterLineUpComponent(self),
-                 stage=component.CharacterStageComponent(self),
-                 last_pick_time=component.CharacterLastPickTimeComponent(self),
-                 fight_cache=component.CharacterFightCacheComponent(self),
-                 friends=component.FriendComponent(self),
-                 guild=component.CharacterGuildComponent(self),
-                 mail=component.CharacterMailComponent(self),
-                 sign_in=component.CharacterSignInComponent(self),
-                 feast=component.CharacterFeastComponent(self),
-                 online_gift=component.CharacterOnlineGift(self),
-                 level_gift=component.CharacterLevelGift(self),
-                 login_gift=component.CharacterLoginGiftComponent(self),
-                 world_boss=component.CharacterWorldBoss(self),
-                 stamina=component.CharacterStaminaComponent(self),
-                 shop=component.CharacterShopComponent(self),
-                 brew=component.CharacterBrewComponent(self),
-                 mine=component.UserMine(self),
-                 stone=component.UserStone(self),
-                 travel=component.CharacterTravelComponent(self),
-                 runt=component.CharacterRuntComponent(self),
-                 recharge=component.CharacterRechargeGift(self),
-                 limit_hero=component.CharacterLimitHeroComponent(self),
-                 rebate=component.Rebate(self),
-                 buy_coin=component.CharacterBuyCoinActivity(self),
-                 task=component.CharacterTaskComponent(self),
-                 pvp=component.CharacterPvpComponent(self),
-                 hjqy=component.CharacterHjqyComponent(self)
-                 )
+        a = OrderedDict()
+        a['base_info']=component.CharacterBaseInfoComponent(self)
+        a['hero_component']=component.CharacterHerosComponent(self)
+        a['finance']=component.CharacterFinanceComponent(self)
+        a['hero_chip_component']=component.CharacterHeroChipsComponent(self)
+        a['item_package']=component.CharacterItemPackageComponent(self)
+        a['equipment']=component.CharacterEquipmentPackageComponent(self)
+        a['equipment_chip']=component.CharacterEquipmentChipComponent(self)
+        a['task']=component.CharacterTaskComponent(self)
+        a['line_up']=component.CharacterLineUpComponent(self)
+        a['stage']=component.CharacterStageComponent(self)
+        a['last_pick_time']=component.CharacterLastPickTimeComponent(self)
+        a['fight_cache']=component.CharacterFightCacheComponent(self)
+        a['friends']=component.FriendComponent(self)
+        a['guild']=component.CharacterGuildComponent(self)
+        a['mail']=component.CharacterMailComponent(self)
+        a['sign_in']=component.CharacterSignInComponent(self)
+        a['feast']=component.CharacterFeastComponent(self)
+        a['online_gift']=component.CharacterOnlineGift(self)
+        a['level_gift']=component.CharacterLevelGift(self)
+        a['login_gift']=component.CharacterLoginGiftComponent(self)
+        a['world_boss']=component.CharacterWorldBoss(self)
+        a['stamina']=component.CharacterStaminaComponent(self)
+        a['shop']=component.CharacterShopComponent(self)
+        a['brew']=component.CharacterBrewComponent(self)
+        a['mine']=component.UserMine(self)
+        a['stone']=component.UserStone(self)
+        a['travel']=component.CharacterTravelComponent(self)
+        a['runt']=component.CharacterRuntComponent(self)
+        a['recharge']=component.CharacterRechargeGift(self)
+        a['limit_hero']=component.CharacterLimitHeroComponent(self)
+        a['rebate']=component.Rebate(self)
+        a['buy_coin']=component.CharacterBuyCoinActivity(self)
+        a['pvp']=component.CharacterPvpComponent(self)
+        a['hjqy']=component.CharacterHjqyComponent(self)
+        logger.debug("keys %s" % a.keys())
         self._components = a
         self._pay = component.CharacterPay(self)
 
@@ -59,7 +61,8 @@ class PlayerCharacter(object):
         logger.debug("init_player_info===========")
         character_obj = tb_character_info.getObj(self._pid)
         character_info = character_obj.hgetall()
-        for c in self._components.values():
+        for k, c in self._components.items():
+            print(k)
             c.init_data(character_info)
 
     def is_new_character(self):

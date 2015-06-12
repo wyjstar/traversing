@@ -110,7 +110,7 @@ class HjqyBossManager(object):
         """
         reactor.callLater(60*60*24, self.send_rank_reward_mails) # 第二天执行
         logger.debug("hjqy send_award_top_ten===========")
-        award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
+        award_info = game_configs.base_config.get("hjqyDayReward")
         for up, down, mail_id in award_info.values():
             ranks = self._rank_instance.get(up, down)
             for k, v in enumerate(ranks):

@@ -61,6 +61,8 @@ class CharacterLineUpComponent(Component):
         self.update_slot_activation()
 
     def save_data(self):
+        power = self.combat_power
+        hook_task(self.owner, CONDITIONId.FIGHT_POWER, power)
         props = {
             'line_up_slots': dict([(slot_no, slot.dumps()) for
                                    slot_no, slot in
@@ -71,7 +73,7 @@ class CharacterLineUpComponent(Component):
             'unpars': self._unpars,
             'current_unpar': self._current_unpar,
             'friend_fight_times': self._friend_fight_times,
-            'attackPoint': self.combat_power,
+            'attackPoint': power,
             'best_skill': self.get_skill_id_by_unpar(self._current_unpar),
             'copy_units': self.owner.fight_cache_component.red_unit,
             'copy_slots': line_up_info(self.owner).SerializeToString()
@@ -365,7 +367,6 @@ class CharacterLineUpComponent(Component):
             _power += each_power
 
         MineOpt.update('sword', self.owner.base_info.id, _power)
-        hook_task(self.owner, CONDITIONId.FIGHT_POWER, _power)
         return _power
 
     def get_slot_by_hero(self, hero_no):
