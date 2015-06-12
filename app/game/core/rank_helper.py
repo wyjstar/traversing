@@ -37,3 +37,24 @@ def flag_doublu_day():
     time1 = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', t),
                         '%Y-%m-%d %H:%M:%S'))
     return int(time1/(24*60*60)) % 2
+
+
+def get_star_rank_name():
+    if flag_doublu_day():
+        return 'StarRank2', 'StarRank1'
+    else:
+        return 'StarRank1', 'StarRank2'
+
+
+def get_power_rank_name():
+    if flag_doublu_day():
+        return 'PowerRank2', 'PowerRank1'
+    else:
+        return 'PowerRank1', 'PowerRank2'
+
+
+def get_level_rank_name():
+    if flag_doublu_day():
+        return 'LevelRank2', 'LevelRank1'
+    else:
+        return 'LevelRank1', 'LevelRank2'

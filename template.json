@@ -175,6 +175,18 @@
             "redis": true,
             "app": "app.push",
             "log": "app/logs/push.log"
+        },
+        "mine": {
+            "name": "mine",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "app": "app.mine",
+            "log": "app/logs/mine.log"
         }
     },
     "db": {

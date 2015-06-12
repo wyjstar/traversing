@@ -442,9 +442,11 @@ def add_stamina_2202(request_proto, player):
         response.res.result_no = 22022
         response.res.result = False
         return response.SerializePartialToString()
+
     player.finance.add(resource_type, info.get("recover_unit"))
 
     item.last_gain_stamina_time = current_time
     player.finance.save_data()
+    logger.debug("add stmina %s %s" % (resource_type, info.get("recover_unit")))
     response.res.result = True
     return response.SerializePartialToString()

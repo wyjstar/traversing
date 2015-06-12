@@ -31,6 +31,7 @@ from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 from app.game.core.mail_helper import send_mail
 from app.game.core.task import hook_task, CONDITIONId
+from shared.utils import xtime
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -321,7 +322,7 @@ def guard_1244(data, player):
 
 def add_stones(player, stones, response):
     response.res.result = True
-
+    print 'add_stones', stones
     for stone_id, num in stones.items():
         for _ in range(num):
             runt_no = player.runt.add_runt(stone_id)
@@ -349,6 +350,13 @@ def harvest_1245(data, player):
     request.ParseFromString(data)
     response = mine_pb2.drawStones()
     response.position = request.position
+    detail_info = player.mine.detail_info(request.position)
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    num = sum(normal.values()) + sum(lucky.values())
+    if player.runt.bag_is_full(num):
+        response.res.result = False
+        response.res.result_no = 12451
+        return response.SerializePartialToString()
     stones = player.mine.harvest(request.position)
     # print 'stones', stones
     if stones:
@@ -484,6 +492,15 @@ def acc_mine_1250(data, player):
     request = mine_pb2.positionRequest()
     request.ParseFromString(data)
     response = mine_pb2.IncreaseResponse()
+    
+    detail_info = player.mine.detail_info(request.position)
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    now = xtime.timestamp()
+    main_mine = game_configs.mine_config.get(10001)
+    if last_increase + main_mine.increaseTime * 60 - now > main_mine.increaseMaxTime * 60:
+        response.res.result = True
+        response.result_no = 12501
+        return response.SerializePartialToString()
     increasePrice = player.mine.price(request.position)
     price = CommonGroupItem(0, increasePrice, increasePrice, const.GOLD)
     result = item_group_helper.is_afford(player, [price])  # 校验
@@ -515,16 +532,16 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     @param gain: true or false
     """
     # print 'process_mine_result', position, response, result, stype
-    if result is not True:
-        # send_mail(conf_id=122, receive_id=999)
-        return
 
-    detail_info = player.mine.detail_info(position)
-    target = player.mine.settle(position, hold)
+    normal, lucky, target, nickname = player.mine.settle(position, result, hold)
+    
     if stype != 1:
         return
+    
+    if result is not True:
+        send_mail(conf_id=122, receive_id=target, nickname=nickname )
+        return
 
-    _, _, _, _, normal, lucky, _, _ = detail_info
     warFogLootRatio = game_configs.base_config['warFogLootRatio']
     harvest_stone = {}
     harvest_stone.update(normal)
@@ -573,7 +590,7 @@ def settle_1252(data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
     # todo: set settle time to calculate acc_mine
-    process_mine_result(player, pos, result, None, 0, 0)
+    process_mine_result(player, pos, result, None, 0, 1)
     response.result = True
     return response.SerializePartialToString()
 
@@ -632,30 +649,39 @@ def battle_1253(data, player):
 
     elif mine_type == 1:
         # pvp
-        red_units = player.fight_cache_component.get_red_units()
-        info = get_save_guard(player, pos)
-        # print info
-        blue_units = info.get("battle_units", {})
-        seed1, seed2 = get_seeds()
-        if not blue_units:
-            fight_result = True
-        else:
-            fight_result = pvp_process(player,
-                                   line_up,
-                                   red_units,
-                                   blue_units,
-                                   red_best_skill_id,
-                                   info.get("best_skill_no"),
-                                   info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
-#player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
-        hold = request.hold
-        process_mine_result(player, pos, fight_result, response, 1, hold)
-
-        blue_best_skill_id = info.get("best_skill_id", 0)
-        blue_best_skill_level = info.get("best_skill_level", 0)
-        response.fight_result = fight_result
-        response.seed1 = seed1
-        response.seed2 = seed2
+        mine_lock = player.mine.start(request.pos)
+        if not mine_lock:
+            response.res.result = False
+            return response.SerializePartialToString()
+        try:
+            red_units = player.fight_cache_component.get_red_units()
+            info = get_save_guard(player, pos)
+            # print info
+            blue_units = info.get("battle_units", {})
+            seed1, seed2 = get_seeds()
+            if not blue_units:
+                fight_result = True
+            else:
+                fight_result = pvp_process(player,
+                                       line_up,
+                                       red_units,
+                                       blue_units,
+                                       red_best_skill_id,
+                                       info.get("best_skill_no"),
+                                       info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
+    #player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
+            hold = request.hold
+            process_mine_result(player, pos, fight_result, response, 1, hold)
+    
+            blue_best_skill_id = info.get("best_skill_id", 0)
+            blue_best_skill_level = info.get("best_skill_level", 0)
+            response.fight_result = fight_result
+            response.seed1 = seed1
+            response.seed2 = seed2
+        except Exception, e:
+            player.mine.settle(request.pos, False, 0)
+            response.res.result = False
+            return response.SerializePartialToString()
 
         red_best_skill_id = 0
         red_best_skill_level = 1
@@ -671,7 +697,7 @@ def battle_1253(data, player):
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
     response.hold = request.hold
-    # print 'battle_1253:', response
+    print 'battle_1253:', response
     return response.SerializePartialToString()
 
 

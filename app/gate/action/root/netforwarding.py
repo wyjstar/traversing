@@ -125,6 +125,37 @@ def online_offline_remote(uid, on_or_off):
     # return groot.child('push').online_offline_remote(uid,  on_or_off)
     return True
 
+@rootserviceHandle
+def mine_add_field_remote(uid, seq, data):
+    return groot.child('mine').mine_add_field_remote(uid, seq, data)
+
+@rootserviceHandle
+def mine_query_info_remote(uid, seq):
+    return groot.child('mine').mine_query_info_remote(uid, seq)
+
+@rootserviceHandle
+def mine_detail_info_remote(uid, seq):
+    return groot.child('mine').mine_detail_info_remote(uid, seq)
+
+@rootserviceHandle
+def mine_ask_battle_remote(uid, seq):
+    return groot.child('mine').mine_ask_battle_remote(uid, seq)
+
+@rootserviceHandle
+def mine_settle_remote(uid, seq, result, nickname, hold):
+    return groot.child('mine').mine_settle_remote(uid, seq, result, nickname, hold)
+
+@rootserviceHandle
+def mine_guard_remote(uid, seq, nickname, data):
+    return groot.child('mine').mine_guard_remote(uid, seq, nickname, data)
+
+@rootserviceHandle
+def mine_harvest_remote(uid, seq):
+    return groot.child('mine').mine_harvest_remote(uid, seq)
+
+@rootserviceHandle
+def mine_update_remote(uid, seq):
+    return groot.child('mine').mine_update_remote(uid, seq)
 
 @rootserviceHandle
 def login_guild_chat_remote(dynamic_id, guild_id):

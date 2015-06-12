@@ -201,7 +201,7 @@ def _with_battle_info(response, friend):
         response.last_time = friend_data['upgrade_time']
 
     response.nickname = friend_data['nickname']
-    if friend_data['attackPoint'] is not None:
+    if friend_data['attackPoint']:
         response.power = int(friend_data['attackPoint'])
 
 

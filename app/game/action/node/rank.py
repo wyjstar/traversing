@@ -3,13 +3,11 @@
 created by K.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
-from gfirefly.server.globalobject import GlobalObject
 from app.game.redis_mode import tb_character_info
-from gfirefly.server.logobj import logger
+# from gfirefly.server.logobj import logger
 from app.proto_file import rank_pb2
 from shared.utils.const import const
 from app.proto_file.db_pb2 import Heads_DB
-import time
 from app.game.core import rank_helper
 
 
@@ -39,12 +37,7 @@ def get_rank_info_1805(data, player):
 
 
 def get_level_rank(first_no, last_no, player, response):
-    if rank_helper.flag_doublu_day():
-        rank_name = 'LevelRank2'
-        last_rank_name = 'LevelRank1'
-    else:
-        rank_name = 'LevelRank1'
-        last_rank_name = 'LevelRank2'
+    rank_name, last_rank_name = rank_helper.get_level_rank_name()
 
     rank_num = first_no
     rank_info = rank_helper.get_rank(rank_name, first_no, last_no)
@@ -87,12 +80,7 @@ def get_level_rank(first_no, last_no, player, response):
 
 
 def get_power_rank(first_no, last_no, player, response):
-    if rank_helper.flag_doublu_day():
-        rank_name = 'PowerRank2'
-        last_rank_name = 'PowerRank1'
-    else:
-        rank_name = 'PowerRank1'
-        last_rank_name = 'PowerRank2'
+    rank_name, last_rank_name = rank_helper.get_power_rank_name()
     rank_num = first_no
     rank_info = rank_helper.get_rank(rank_name, first_no, last_no)
     for (pid, rankinfo) in rank_info:
@@ -120,8 +108,7 @@ def get_power_rank(first_no, last_no, player, response):
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
             res_my_rank_info.fight_power = int(rankinfo/const.power_rank_xs)
-            res_my_rank_info.level =\
-                int(rankinfo % const.power_rank_xs)
+            res_my_rank_info.level = int(rankinfo % const.power_rank_xs)
 
             last_rank_no = rank_helper.get_rank_by_key(
                 last_rank_name, player.base_info.id)
@@ -134,12 +121,7 @@ def get_power_rank(first_no, last_no, player, response):
 
 
 def get_star_rank(first_no, last_no, player, response):
-    if rank_helper.flag_doublu_day():
-        rank_name = 'StarRank2'
-        last_rank_name = 'StarRank1'
-    else:
-        rank_name = 'StarRank1'
-        last_rank_name = 'StarRank2'
+    rank_name, last_rank_name = rank_helper.get_star_rank_name()
 
     rank_num = first_no
     rank_info = rank_helper.get_rank(rank_name, first_no, last_no)
@@ -169,8 +151,7 @@ def get_star_rank(first_no, last_no, player, response):
             res_my_rank_info = response.my_rank_info
             res_my_rank_info.rank = rank_no
             res_my_rank_info.star_num = int(rankinfo/const.power_rank_xs)
-            res_my_rank_info.level =\
-                int(rankinfo % const.power_rank_xs)
+            res_my_rank_info.level = int(rankinfo % const.power_rank_xs)
             res_my_rank_info.stage_id = player.stage_component.rank_stage_progress
 
             last_rank_no = rank_helper.get_rank_by_key(
