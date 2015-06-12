@@ -497,7 +497,7 @@ def acc_mine_1250(data, player):
     ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
     now = xtime.timestamp()
     main_mine = game_configs.mine_config.get(10001)
-    if last_increase + main_mine.increaseTime * 60 - now > main_mine.increaseMaxTime * 60:
+    if last_increase + main_mine.increasTime * 60 - now > main_mine.increasMaxTime * 60:
         response.res.result = True
         response.result_no = 12501
         return response.SerializePartialToString()
