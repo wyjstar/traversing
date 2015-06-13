@@ -83,8 +83,8 @@ class CharacterEquipmentPackageComponent(Component):
                     color_num += 1
                 if e_conf.quality == 6:
                     star6_num += 1
-            hook_task(player, cid, color_num)
-            hook_task(player, CONDITIONId.STAR6_EQU, star6_num)
+            hook_task(self.owner, cid, color_num)
+            hook_task(self.owner, CONDITIONId.STAR6_EQU, star6_num)
 
         return equipment_obj
 

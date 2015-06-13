@@ -79,14 +79,14 @@ class CharacterHerosComponent(Component):
         elif hero_conf.color == 2:
             cid = CONDITIONId.BLUE_HERO
         if cid:
-            for hero in self._heros:
-                h_conf = game_configs.hero_config.get(hero.hero_no)
+            for hero_no, hero_obj in self._heros.items():
+                h_conf = game_configs.hero_config.get(hero_no)
                 if h_conf.color == color:
                     color_num += 1
                 if h_conf.quality == 6:
                     star6_num += 1
-            hook_task(player, cid, color_num)
-            hook_task(player, CONDITIONId.STAR6_HERO, star6_num)
+            hook_task(self.owner, cid, color_num)
+            hook_task(self.owner, CONDITIONId.STAR6_HERO, star6_num)
 
         return hero
 

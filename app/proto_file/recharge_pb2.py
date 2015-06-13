@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='recharge.proto',
   package='',
-  serialized_pb='\n\x0erecharge.proto\x1a\x0c\x63ommon.proto\"$\n\x0cInitRecharge\x12\x14\n\x0crecharge_ids\x18\x01 \x03(\x05\"X\n\x0cRechargeData\x12\x15\n\rrecharge_time\x18\x01 \x01(\x05\x12\x1d\n\x15recharge_accumulation\x18\x02 \x01(\x05\x12\x12\n\nis_receive\x18\x03 \x01(\x05\"O\n\x0cRechargeItem\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\x12\x11\n\tgift_type\x18\x02 \x01(\x05\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.RechargeData\"D\n\x1bGetRechargeGiftDataResponse\x12%\n\x0erecharge_items\x18\x01 \x03(\x0b\x32\r.RechargeItem\"5\n\x16GetRechargeGiftRequest\x12\x1b\n\x04gift\x18\x01 \x03(\x0b\x32\r.RechargeItem\"]\n\x17GetRechargeGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0erecharge.proto\x1a\x0c\x63ommon.proto\"$\n\x0cInitRecharge\x12\x14\n\x0crecharge_ids\x18\x01 \x03(\x05\"X\n\x0cRechargeData\x12\x15\n\rrecharge_time\x18\x01 \x01(\x05\x12\x1d\n\x15recharge_accumulation\x18\x02 \x01(\x05\x12\x12\n\nis_receive\x18\x03 \x01(\x05\"O\n\x0cRechargeItem\x12\x0f\n\x07gift_id\x18\x01 \x02(\x05\x12\x11\n\tgift_type\x18\x02 \x01(\x05\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.RechargeData\"Q\n\x1bGetRechargeGiftDataResponse\x12%\n\x0erecharge_items\x18\x01 \x03(\x0b\x32\r.RechargeItem\x12\x0b\n\x03\x61\x61\x61\x18\x02 \x01(\t\"5\n\x16GetRechargeGiftRequest\x12\x1b\n\x04gift\x18\x01 \x03(\x0b\x32\r.RechargeItem\"]\n\x17GetRechargeGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -145,6 +145,13 @@ _GETRECHARGEGIFTDATARESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='aaa', full_name='GetRechargeGiftDataResponse.aaa', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -155,7 +162,7 @@ _GETRECHARGEGIFTDATARESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=241,
-  serialized_end=309,
+  serialized_end=322,
 )
 
 
@@ -182,8 +189,8 @@ _GETRECHARGEGIFTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=311,
-  serialized_end=364,
+  serialized_start=324,
+  serialized_end=377,
 )
 
 
@@ -217,8 +224,8 @@ _GETRECHARGEGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=366,
-  serialized_end=459,
+  serialized_start=379,
+  serialized_end=472,
 )
 
 _RECHARGEITEM.fields_by_name['data'].message_type = _RECHARGEDATA

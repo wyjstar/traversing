@@ -137,7 +137,7 @@ def is_expire_notice(mail):
         if mail.config_id:
             mail_conf = game_configs.mail_config.get(mail.config_id)
             if mail_conf.days != -1 and \
-                    mail_conf.days * 24 * 60 * 60 + mail.send_time <= time.time():
+                    mail_conf.days*24*60*60 + mail.send_time <= time.time():
                 return True
         else:
             if mail.effec * 24 * 60 * 60 + mail.send_time <= time.time():

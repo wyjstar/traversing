@@ -162,7 +162,7 @@ class CharacterBaseInfoComponent(Component):
                 return
 
         # hook task
-        hook_task(player, CONDITIONId.LEVEL, self._level)
+        hook_task(self.owner, CONDITIONId.LEVEL, self._level)
         # =====Tlog================
         tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
 

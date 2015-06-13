@@ -27,6 +27,7 @@ def get_task_info_1821(data, player):
             continue
         task_status(player, tid, response)
 
+
     return response.SerializeToString()
 
 
@@ -62,7 +63,7 @@ def get_task_reward_1822(data, player):
 
 @remoteserviceHandle('gate')
 def share_1823(data, player):
-    """获取任务信息"""
+    """推送任务信息"""
     args = task_pb2.ShareRequest()
     args.ParseFromString(data)
     tid = args.tid

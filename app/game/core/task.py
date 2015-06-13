@@ -14,14 +14,13 @@ remote_gate = GlobalObject().remote.get('gate')
 def task_status(player, tid, response):
     unlock_conf = game_configs.achievement_config.get('unlock')
     task_res = response.tasks.add()
-    task_res.tid = tid
     task_conf = game_configs.achievement_config.get('tasks').get(tid)
     while True:
+        task_res.tid = tid
         state = player.task.tasks.get(tid)
         next_task = unlock_conf.get(tid)
         if next_task and state and state == 3:  # 有后续，已领取
             tid = next_task
-            continue
         else:
             if not next_task and state and state == 2:  # 无后续，已完成未领取
                 task_res.status = 2
@@ -168,6 +167,8 @@ def update_condition(player, cid, num):
 
 def hook_task(player, cid, num, is_lively=False, proto_data=''):
     conf_tids = game_configs.achievement_config.get('conditions').get(cid)
+    if not conf_tids:
+        conf_tids = []
     tids = []
     lively = 0
     if not is_lively:
@@ -198,16 +199,27 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
     if not tids:
         return
     for tid in tids:
+        share_cids = game_configs.achievement_config.get('conditions').get(32)
         task_conf = game_configs.achievement_config.get('tasks').get(tid)
         res = get_condition_info(player, task_conf)
-        if not res['state']:
+        if not res['state'] and tid not in share_cids:
             continue
-        if task_conf.sort == 2 and not is_lively:
+        if task_conf.sort == 2 and res['state']:
             lively += task_conf.reward.num
-        proto_data.tid.append(tid)
-    if lively:
+        if res['state']:
+            proto_data.tid.append(tid)
+        else:  # 未完成的分享类
+            condition_info = res.get('condition_info')
+            state = 1
+            for x in condition_info:
+                if x[1] and task_conf.condition.get(x[0])[0] != 32:
+                    continue
+                state = 0
+                task_conf.condition.get(x[0])[0]
+            if state:
+                proto_data.tid.append(tid)
+    if lively and not is_lively:
         hook_task(player, 24, lively, is_lively=True, proto_data=proto_data)
-        proto_data.lively = lively
     else:
         remote_gate.push_object_remote(1824,
                                        proto_data.SerializeToString(),
@@ -254,7 +266,7 @@ def check_condition_const(player, condition_conf, task_type):
 def check_condition_rank(player, condition_conf, task_type):
     value = get_condition_value(player, condition_conf, task_type)
     state = 0
-    if value <= condition_conf[1]:
+    if value <= condition_conf[1] and value:
         state = 1
     return {'state': state, 'value': value}
 
@@ -276,11 +288,11 @@ def get_condition_value(player, condition_conf, task_type):
 CHECK_CONDITION_MAP = {}
 CHECK_CONDITION_MAP[1] = check_condition1
 CHECK_CONDITION_MAP[2] = check_condition2
-CHECK_CONDITION_MAP[31] = check_condition2
-CHECK_CONDITION_MAP[32] = check_condition2
+CHECK_CONDITION_MAP[31] = check_condition31
+CHECK_CONDITION_MAP[32] = check_condition32
 CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                          18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30]
-CHEAK_CONDITION_RANK = [25, 26, ]
+CHEAK_CONDITION_RANK = [25, 26]
 
 
 def check_condition(player, condition_conf, task_type):
