@@ -45,6 +45,7 @@ message PvbBeforeInfoResponse{
     optional int32 last_fight_time= 13;         // 上次战斗结束时间
     optional int32 encourage_coin_num = 14;     // 金币鼓舞次数
     optional int32 encourage_gold_num = 15;     // 元宝鼓舞次数
+    optional int32 gold_reborn_times = 16;     // 元宝复活次数
 }
 
 //请求pvb玩家信息, command:1702

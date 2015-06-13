@@ -58,6 +58,7 @@ class Boss(object):
         self._stage_id = 0             # 当前关卡
         self._award = {}               # 奖励
         self._demages = [] # 每次的伤害
+        self._gold_reborn_times = 0 # 元宝复活次数
 
     def init_data(self, data):
         """docstring for init_data"""
@@ -70,6 +71,7 @@ class Boss(object):
         self._fight_times = data.get('fight_times', 0)
         self._award = data.get('award', {})
         self._demages = data.get('demages', [])
+        self._gold_reborn_times = data.get('gold_reborn_times', 0)
 
     def get_stage_info(self):
         stage_info = None
@@ -94,6 +96,7 @@ class Boss(object):
             self._fight_times = 0
             self._last_fight_time = 0
             self._last_request_time = get_current_timestamp()
+            self._gold_reborn_times = 0
 
     @property
     def boss_id(self):
@@ -170,7 +173,9 @@ class Boss(object):
                 'stage_id': self._stage_id,
                 'boss_id': self._boss_id,
                 'award': self._award,
-                'demages': self._demages}
+                'demages': self._demages,
+                'gold_reborn_times': self._gold_reborn_times
+                }
 
     def get_base_config(self):
         if self._boss_id == "world_boss":
@@ -185,3 +190,11 @@ class Boss(object):
     @demages.setter
     def demages(self, value):
         self._demages = value
+
+    @property
+    def gold_reborn_times(self):
+        return self._gold_reborn_times
+
+    @gold_reborn_times.setter
+    def gold_reborn_times(self, value):
+        self._gold_reborn_times = value
