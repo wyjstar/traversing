@@ -16,8 +16,8 @@ class CharacterBuyCoinActivity(Component):
 
     def init_data(self, character_info):
         data = character_info.get('buy_coin')
-        self._buy_times = data['buy_times']
-        self._extra_can_buy_times = data['extra_can_buy_times']
+        self._buy_times = data.get('buy_times', 0)
+        self._extra_can_buy_times = data.get('extra_can_buy_times', 0)
 
     def save_data(self):
         activity = tb_character_info.getObj(self.owner.base_info.id)
