@@ -15,7 +15,7 @@ class CharacterBuyCoinActivity(Component):
         self._extra_can_buy_times = 0 # 招财符提高的可购买次数
 
     def init_data(self, character_info):
-        data = character_info.get('buy_coin')
+        data = character_info.get('buy_coin', {})
         self._buy_times = data.get('buy_times', 0)
         self._extra_can_buy_times = data.get('extra_can_buy_times', 0)
 
