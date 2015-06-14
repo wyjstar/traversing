@@ -40,7 +40,7 @@ def get_online_gift_1121(data, player):
                 data = dict(online_time=player.online_gift.online_time,
                             received_gift_ids=player.online_gift.received_gift_ids)
                 player.online_gift.received_gift_ids.append(request.gift_id)
-                player.online_gift.reset()
+                # player.online_gift.reset()
                 player.online_gift.save_data()
 
                 response.result = True
@@ -72,7 +72,7 @@ def get_online_and_level_gift_data_1150(data, player):
     response = recharge_pb2.GetRechargeGiftDataResponse()
     player.recharge.get_data(response)
     player.recharge.save_data()
-    logger.debug("get_online_and_level_gift_data_1150:%s" %response)
+    logger.debug("get_online_and_level_gift_data_1150:", response)
 
     return response.SerializeToString()
 
@@ -87,4 +87,30 @@ def get_online_and_level_gift_data_1151(data, player):
     player.recharge.take_gift(request.gift, response)
     player.recharge.save_data()
     response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_tomorrow_gift_1122(data, player):
+    response = online_gift_pb2.GetActivityResponse()
+    response.result = False
+
+    tomorrow_gift = game_configs.activity_config.get(15)[0]
+    if not tomorrow_gift:
+        logger.error('tomorrow gift is not exist')
+        return response.SerializeToString()
+    if not tomorrow_gift.get('is_open'):
+        logger.error('tomorrow gift is not open')
+        return response.SerializeToString()
+    if player.base_info.tomorrow_gift != 0:
+        logger.error('tomorrow gift is taken!')
+        return response.SerializeToString()
+
+    player.base_info.tomorrow_gift = tomorrow_gift.id
+    player.base_info.save_data()
+
+    gain_data = tomorrow_gift['reward']
+    return_data = gain(player, gain_data, const.TOMORROW_GIFT)
+    get_return(player, return_data, response.gain)
+    response.result = True
     return response.SerializeToString()

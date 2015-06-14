@@ -8,7 +8,7 @@ import time
 from shared.utils.const import const
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
-from shared.utils.const import const
+# from shared.utils.const import const
 from app.proto_file import pvp_rank_pb2
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.node.line_up import line_up_info
@@ -25,7 +25,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume, get_consume_gold_num
-from app.game.core.item_group_helper import get_return
+# from app.game.core.item_group_helper import get_return
 from app.proto_file.shop_pb2 import ShopResponse
 from app.proto_file.db_pb2 import Mail_PB
 from app.game.action.root import netforwarding
@@ -38,7 +38,8 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 def pvp_top_rank_request_1501(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+    columns = ['id', 'nickname', 'level', 'ap',
+               'hero_ids', 'hero_levels', 'head_no']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
     for record in records:
         rank_item = response.rank_items.add()
@@ -46,8 +47,11 @@ def pvp_top_rank_request_1501(data, player):
         rank_item.nickname = record.get('nickname')
         rank_item.rank = record.get('id')
         rank_item.ap = record.get('ap')
+        rank_item.head_no = record.get('head_no')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+        hero_levels = cPickle.loads(record.get('hero_levels'))
+        rank_item.hero_levels.extend([_ for _ in hero_levels])
     response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
@@ -61,7 +65,8 @@ def pvp_player_rank_request_1502(data, player):
     response.player_rank = record.get('id') if record else -1
 
     if response.player_rank < 9 and response.player_rank > 0:
-        columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+        columns = ['id', 'nickname', 'level', 'ap',
+                   'hero_ids', 'hero_levels', 'head_no']
         records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
         for record in records:
             rank_item = response.rank_items.add()
@@ -69,8 +74,11 @@ def pvp_player_rank_request_1502(data, player):
             rank_item.nickname = record.get('nickname')
             rank_item.rank = record.get('id')
             rank_item.ap = record.get('ap')
+            rank_item.head_no = record.get('head_no')
             hero_ids = cPickle.loads(record.get('hero_ids'))
             rank_item.hero_ids.extend([_ for _ in hero_ids])
+            hero_levels = cPickle.loads(record.get('hero_levels'))
+            rank_item.hero_levels.extend([_ for _ in hero_levels])
         response.pvp_score = player.finance[const.PVP]
         return response.SerializeToString()
     # if not record:
@@ -242,8 +250,8 @@ def pvp_fight_request_1505(data, player):
             if not netforwarding.push_message('receive_mail_remote',
                                               player.base_info.id,
                                               mail_data):
-                logger.error('pvp high rank award mail fail, \
-                        player id:%s', player.base_info.id)
+                logger.error('pvp high rank award mail fail. pid:%s',
+                             player.base_info.id)
             else:
                 logger.debug('pvp high rak award mail,mail_id:%s',
                              mail_id)
@@ -291,6 +299,7 @@ def reset_pvp_time_1506(data, player):
         return response.SerializePartialToString()
 
     need_gold = get_consume_gold_num(_consume)
+
     def func():
         return_data = consume(player, _consume)  # 消耗
         get_return(player, return_data, response.consume)
@@ -332,7 +341,8 @@ def pvp_player_rank_refresh_request(data, player):
     caret = ','
     prere = 'id in (%s)' % caret.join(str(_) for _ in ranks)
     logger.info('prere:%s', prere)
-    columns = ['id', 'nickname', 'level', 'ap', 'hero_ids']
+    columns = ['id', 'nickname', 'level', 'ap',
+               'hero_ids', 'hero_levels', 'head_no']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, prere, columns)
     for record in records:
         rank_item = response.rank_items.add()
@@ -340,8 +350,11 @@ def pvp_player_rank_refresh_request(data, player):
         rank_item.nickname = record.get('nickname')
         rank_item.rank = record.get('id')
         rank_item.ap = record.get('ap')
+        rank_item.head_no = record.get('head_no')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
+        hero_levels = cPickle.loads(record.get('hero_levels'))
+        rank_item.hero_levels.extend([_ for _ in hero_levels])
     response.pvp_score = player.finance[const.PVP]
     return response.SerializeToString()
 
@@ -350,8 +363,11 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
     red_units = cPickle.dumps(player.fight_cache_component.red_unit)
     slots = cPickle.dumps(line_up_info(player))
     hero_nos = player.line_up_component.hero_nos
+    hero_levels = player.line_up_component.hero_levels
     best_skill = player.line_up_component.get_skill_id_by_unpar(skill)
+    head = player.base_info.head
     rank_data = dict(hero_ids=cPickle.dumps(hero_nos),
+                     hero_levels=cPickle.dumps(hero_levels),
                      level=player.base_info.level,
                      nickname=player.base_info.base_name,
                      best_skill=best_skill,
@@ -360,7 +376,8 @@ def refresh_rank_data(player, rank_id, skill, skill_level):
                      ap=int(player.line_up_component.combat_power),
                      character_id=player.base_info.id,
                      units=red_units,
-                     slots=slots)
+                     slots=slots,
+                     head_no=head)
 
     prere = dict(id=rank_id)
     result = util.UpdateWithDict(PVP_TABLE_NAME, rank_data, prere)

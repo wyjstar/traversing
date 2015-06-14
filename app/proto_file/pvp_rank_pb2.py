@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='pvp_rank.proto',
   package='',
-  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"X\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\x12\x10\n\x08hero_ids\x18\x05 \x03(\x05\"\\\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\x12\x13\n\x0bplayer_rank\x18\x02 \x01(\x05\x12\x11\n\tpvp_score\x18\x03 \x01(\x05\"H\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"\x99\x02\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"~\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\x12\x10\n\x08hero_ids\x18\x05 \x03(\x05\x12\x13\n\x0bhero_levels\x18\x06 \x03(\x05\x12\x0f\n\x07head_no\x18\x07 \x02(\x05\"\\\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\x12\x13\n\x0bplayer_rank\x18\x02 \x01(\x05\x12\x11\n\tpvp_score\x18\x03 \x01(\x05\"H\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"\x99\x02\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -62,6 +62,20 @@ _RANKITEMS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='hero_levels', full_name='RankItems.hero_levels', index=5,
+      number=6, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='head_no', full_name='RankItems.head_no', index=6,
+      number=7, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -72,7 +86,7 @@ _RANKITEMS = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=45,
-  serialized_end=133,
+  serialized_end=171,
 )
 
 
@@ -113,8 +127,8 @@ _PLAYERRANKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=135,
-  serialized_end=227,
+  serialized_start=173,
+  serialized_end=265,
 )
 
 
@@ -155,8 +169,8 @@ _PVPFIGHTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=229,
-  serialized_end=301,
+  serialized_start=267,
+  serialized_end=339,
 )
 
 
@@ -183,8 +197,8 @@ _PVPPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=303,
-  serialized_end=346,
+  serialized_start=341,
+  serialized_end=384,
 )
 
 
@@ -281,8 +295,8 @@ _PVPFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=349,
-  serialized_end=630,
+  serialized_start=387,
+  serialized_end=668,
 )
 
 _PLAYERRANKRESPONSE.fields_by_name['rank_items'].message_type = _RANKITEMS
