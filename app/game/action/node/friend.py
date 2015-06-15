@@ -82,8 +82,8 @@ def add_friend_respond_accept_1101(data, player):
                             player.base_info.id):
             response.result = False
 
-    send_mail(conf_id=301, nickname=player.base_info.base_name,
-              receive_id=target_id)
+        send_mail(conf_id=301, nickname=player.base_info.base_name,
+                  receive_id=target_id)
 
     return response.SerializePartialToString()
 
