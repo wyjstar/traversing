@@ -285,7 +285,7 @@ def draw_friend_lively_1199(data, player):
         response.res.result_no = 11991  # 已领取
     else:
         player_data = tb_character_info.getObj(request.fid)
-        friend_data = player_data.hmget(['lively', 'last_day'])
+        friend_data = player_data.hmget(['conditions_day', 'last_day'])
         conditions_day = friend_data.get('conditions_day', {})
         lively = conditions_day.get(24, 0)
         if today != friend_data.get('last_day', ''):
