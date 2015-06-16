@@ -177,7 +177,7 @@ def join_guild_802(data, player):
         # 861: 已经申请过此军团
         return response.SerializeToString()
 
-    if len(guild_obj.apply) > game_configs.base_config.get('guildApplyMaxNum'):
+    if len(guild_obj.apply) >= game_configs.base_config.get('guildApplyMaxNum'):
         response.res.result = False
         # response.res.message = "军团申请人数已满"
         response.res.result_no = 859

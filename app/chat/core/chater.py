@@ -32,15 +32,22 @@ class Chater(object):
     def say_bad_words_once(self):
         now_time = time.time()
         self._bad_words_times.append(now_time)
-        self._bad_words_times = filter(lambda x: x > now_time-60*60,
-                                       self._bad_words_times)
+        # self._bad_words_times = filter(lambda x: x > now_time-60*60,
+        #                                self._bad_words_times)
+        char_obj = tb_character_info.getObj(self._character_id)
+        char_obj.hset('say_bad_words_times', self._bad_words_times)
+
+    def clear_say_bad_words(self):
+        self._bad_words_times = []
+        # self._bad_words_times = filter(lambda x: x > now_time-60*60,
+        #                                self._bad_words_times)
         char_obj = tb_character_info.getObj(self._character_id)
         char_obj.hset('say_bad_words_times', self._bad_words_times)
 
     def say_bad_words_times(self):
-        now_time = time.time()
-        self._bad_words_times = filter(lambda x: x > now_time-60*60,
-                                       self._bad_words_times)
+        # now_time = time.time()
+        # self._bad_words_times = filter(lambda x: x > now_time-60*60,
+        #                                self._bad_words_times)
         return len(self._bad_words_times)
 
     @property

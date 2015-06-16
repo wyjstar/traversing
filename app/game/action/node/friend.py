@@ -294,9 +294,10 @@ def draw_friend_lively_1199(data, player):
         friend_data = player_data.hmget(['conditions_day', 'last_day'])
         conditions_day = friend_data.get('conditions_day', {})
         lively = conditions_day.get(24, 0)
-        if today != friend_data.get('last_day', ''):
+        if today != time.strftime("%Y%m%d", time.localtime(friend_data.get('last_day', '0'))):
             lively = 0
         if lively < base_config['friendActivityValue']:
+            logger.debug('error_no:11992,lively:%d' % lively)
             response.res.result = False
             response.res.result_no = 11992  # 未完成
         else:

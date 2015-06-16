@@ -56,20 +56,37 @@ def tick_limit_hero():
     act_data = get_activity_info()
     if not act_data['id']:
         return
-    limit_hero_obj.act_id = act_data['id']
-    need_time = int(act_data['end_time']-time.time())
-    print need_time, 'limit hero end time ============'
-    reactor.callLater(need_time, deal_end_act)
+    if act_data['end_time']:
+        limit_hero_obj.act_id = act_data['id']
+        need_time = int(act_data['end_time']-time.time())
+        print need_time, 'limit hero end time ============'
+        reactor.callLater(need_time, deal_end_act)
+        return
+    if act_data['start_time']:
+        need_time = int(act_data['start_time']-time.time())
+        print need_time, 'limit hero start time ============'
+        reactor.callLater(need_time, tick_limit_hero)
 
 
 def get_activity_info():
     act_confs = game_configs.activity_config.get(17)
     activity_id = 0
     timeEnd = 0
+    timeStart = 0
     now = time.time()+1
     for act_conf in act_confs:
-        if act_conf.timeStart <= now <= act_conf.timeEnd:
+        if act_conf.timeEnd <= now:
+            continue
+        if act_conf.timeStart <= now < act_conf.timeEnd:
             activity_id = act_conf.id
             timeEnd = int(act_conf.timeEnd)
             break
-    return {'id': activity_id, 'end_time': timeEnd}
+        if act_conf.timeStart > now:
+            if not activity_id:
+                activity_id = act_conf.id
+                timeStart = act_conf.timeStart
+            elif timeStart > act_conf.timeStart:
+                activity_id = act_conf.id
+                timeStart = act_conf.timeStart
+
+    return {'id': activity_id, 'end_time': timeEnd, 'start_time': timeStart}
