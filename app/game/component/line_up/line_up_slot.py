@@ -272,7 +272,7 @@ class LineUpSlotComponent(Component):
                                   hp, atk, physical_def, magic_def, hit,
                                   dodge, cri, cri_coeff, cri_ded_coeff,
                                   block, ductility, position, hero.level,
-                                  hero.break_level, is_boss, power)
+                                  hero.break_level, is_boss, power=power)
 
         return battlt_unit
 

@@ -342,6 +342,8 @@ def pvb_get_award_1708(data, player):
         response.SerializePartialToString()
     response.award_type = award_type # award_type
     if award_type == const.PVB_IN_AWARD:
+        total_coin = 0
+        total_soul = 0
         for demage_hp in award:
             all_vars = dict(damage=demage_hp)
             coin_world_boss_formula = game_configs.formula_config.get("coinWorldboss").get("formula")
@@ -350,15 +352,17 @@ def pvb_get_award_1708(data, player):
             soul_world_boss_formula = game_configs.formula_config.get("soulWorldboss").get("formula")
             assert soul_world_boss_formula!=None, "isHit formula can not be None!"
             soul = eval(soul_world_boss_formula, all_vars)
+            total_coin += coin
+            total_soul += soul
 
-            change = response.gain.finance.finance_changes.add()
-            change.item_type = 107
-            change.item_num = int(coin)
-            change.item_no = const.COIN
-            change = response.gain.finance.finance_changes.add()
-            change.item_type = 107
-            change.item_num = int(soul)
-            change.item_no = const.HERO_SOUL
+        change = response.gain.finance.finance_changes.add()
+        change.item_type = 107
+        change.item_num = int(total_coin)
+        change.item_no = const.COIN
+        change = response.gain.finance.finance_changes.add()
+        change.item_type = 107
+        change.item_num = int(total_soul)
+        change.item_no = const.HERO_SOUL
     elif award_type != 0:
         bigbag = BigBag(award)
         drop_items = bigbag.get_drop_items()
