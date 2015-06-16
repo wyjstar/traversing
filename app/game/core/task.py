@@ -3,7 +3,6 @@
 created by server on 14-7-17上午11:07.
 """
 from shared.db_opear.configs_data import game_configs
-import time
 from app.proto_file import task_pb2
 from gfirefly.server.globalobject import GlobalObject
 
@@ -242,7 +241,7 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
                 proto_data.tid.append(tid)
     if lively and not is_lively:
         hook_task(player, 24, lively, is_lively=True, proto_data=proto_data)
-    elif remote_gate.is_connected():
+    elif remote_gate and remote_gate.is_connected():
         remote_gate.push_object_remote(1824,
                                        proto_data.SerializeToString(),
                                        [player.dynamic_id])

@@ -693,7 +693,7 @@ def trigger_hjqy(player, result):
         return 0
     logger.debug("trigger_hjqy")
     # 活动是否开启
-    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_TASK):
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_HJQY):
         logger.error("hjqy have not open.")
         return 0
 

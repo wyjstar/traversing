@@ -14,6 +14,11 @@ local CalculationManager = import(framework.PACKAGE_NAME.."src.app.datacenter.ca
 local DataManager = import(framework.PACKAGE_NAME.."src.app.datacenter.bean.DataManager")
 
 cc = cc or {}
+ui = ui or {}
+EventProtocol = EventProtocol or {}
+function EventProtocol.extend(...)
+    -- body
+end
 function cc.pAdd(t, t1)
 end
 function cc.p(p1, p2)

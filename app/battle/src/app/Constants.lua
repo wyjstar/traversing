@@ -1,5 +1,8 @@
 g_notice = g_notice or {}   -- 通知的宏定义
 g_other  = g_other or {}    -- 其他字符串宏定义
+g_friendSubmodule = g_friendSubmodule or {}     -- 好友子模块名称定义
+
+G_BOTTOM_DEFINE = G_BOTTOM_DEFINE or {}       -- 按钮属性宏定义
 
 const = const or {}
 const.POS_ARMY = cc.p(320, 260)
@@ -206,6 +209,9 @@ const.FONT_NAME                     = MINI_BLACK_FONT_NAME
 
 const.CURSOR_INPUT_DONE             = "CURSOR_INPUT_DONE"  
 const.CURSOR_INPUT_CHANGE           = "CURSOR_INPUT_CHANGE"
+
+const.EVENT_HJQY_REWARD_NOTICE      = "HJQY_REWARD_NOTICE" --黄巾起义Reward红点提示
+
 const.test = "test"  --测试
 
 BUDDY_SEAT = 12
@@ -256,6 +262,9 @@ TYPE_WORLD_BOSS     = 7          -- 世界boss
 TYPE_MINE_MONSTER   = 8          -- 攻占也怪
 TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
+TYPE_STAGE_JIA = 3               -- 难度甲
+TYPE_STAGE_YI = 2                -- 难度乙
+TYPE_STAGE_BING = 1              -- 难度丙
 
 TYPE_TEST               = 10000
 TYPE_MODE_PVP = 0
@@ -310,7 +319,6 @@ INSTANCE_NOTICE          = 6            --讨伐
 UPDATE_MINE_NOTICE = "UPDATE_MINE_NOTICE"
 UPDATE_BOSS_NOTICE = "UPDATE_BOSS_NOTICE"
 UPDATE_PVP_NOTICE = "UPDATE_PVP_NOTICE"
-UPDATE_FRIEND_NOTICE = "update_friendNotice"
 UPDATE_AREANOTICE = "UPDATE_AREANOTICE"
 UPDATE_LEGION_NOTICE = "UPDATE_LEGION_NOTICE"
 
@@ -371,27 +379,86 @@ STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
 g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --次日登陆奖励
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
-g_notice.NOTICE_ADD_SHOES = "NOTICE_ADD_SHOES"                              --自动增加鞋子
-g_notice.NOTICE_TRAVEL_RESTARTTIMER = "NOTICE_TRAVEL_RESTARTTIMER"          --游历界面,重启定时器
-g_notice.NOTICE_TRAVEL_RELOAD_SHOES = "NOTICE_TRAVEL_RELOAD_SHOES"          --游历界面,重新读取鞋子信息
 g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"      --游历界面,重新读取鞋子信息
 g_notice.NOTICE_PVP_CLEARANCE_UPDATA = "NOTICE_PVP_CLEARANCE_UPDATA"        --过关斩将界面,重新刷新当前的关卡信息
 
 g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
+
+g_friendSubmodule.SUBMODULE_PUSH_FRIEND = "SUBMODULE_PUSH_FRIEND"           -- 好友,推送好友子模块
+
+G_BOTTOM_DEFINE.GET_COINS_CANCEL = {
+    ["normalFrame"] = "#ui_common1_button_blue.png",
+    ["selectedFrame"] = "#ui_common_cancel.png",
+    ["disabledFrame"] = nil,
+    ["callBack"] = nil,
+}
+G_BOTTOM_DEFINE.GET_COINS_JUMP = {
+    ["normalFrame"] = "#ui_common_button_yel.png",
+    ["selectedFrame"] = "#ui_btn_title_goto.png",
+    ["disabledFrame"] = nil,
+    ["callBack"] = function ()
+        getOtherModule():showUIView("activity.PVActivityPage", 5)
+    end,
+}
 
 UPDATE_HEAD = "UPDATE_HEAD"  -- 更新头像
 UPDATE_TL = "UPDATE_TL"      -- 更新体力
 
 guid_titlle = {war = "GUID_OPEN_WAR"}
 
-TYPE_SHOP_SECRETPLACE = 7   --秘境商店
-TYPE_SHOP_MERIT       = 18  --功勋商店(黄巾起义)
-TYPE_SHOP_TREASURE    = 19  --奇珍（过关斩将）
+TYPE_SHOP = {
+    SECRETPLACE = 7,   --秘境商店
+    MERIT       = 18,  --功勋商店(黄巾起义)
+    TREASURE    = 19  --奇珍（过关斩将）
+}
 
-RES_TYPE = {}
-RES_TYPE.CRUSADE      = 26  --征讨令
-RES_TYPE.FEAT         = 25  --功勋
-RES_TYPE.STAMINA      = 7   --体力
+RES_TYPE = {
+    CRUSADE      = 26,  --征讨令
+    FEAT         = 25,  --功勋
+    STAMINA      = 7 ,  --体力
+    YUANQI       = 16,  --元气
+    PVP_SCROE    = 8,   --PVP声望
+    GOLD         = 2,   --金币
+    COIN         = 1,   --银锭
+    EQUIP_SOUL   = 21,  --装备精华
+    HERO_SOUL    = 3,   --武魂值
+    CLEARANCE_COIN = 27, --通关令
+    SHOES = 20, --鞋子
+}
 -- 次日开启类型
 const.nextDay_openType = {WORLDBOSS=23,ACTIVITY=2,HJQY=27,GGZJ = 28}      --同成就表配置的达成条件值相匹配
+--[[--
+事件名称定义
+]]
+EventName = {
+    UPDATE_EXP = "update_exp",--更新经验
+    UPDATE_TL = "update_tili",--更新体力
+    UPDATE_HEAD = "update_head",--更新头像
+    UPDATE_NAME = "update_name",--更新名称
+    UPDATE_COMBAT_POWER = "update_combat_power",--更新战斗力
+    UPDATE_VIP = "update_vip",--更新VIP
+    UPDATE_LEVEL = "update_level",--更新等级
+    UPDATE_SILVER = "update_silver",--更新银锭
+    UPDATE_GOLD = "update_gold",    --更新元宝
+    UPDATE_SHOES = "update_shoes", --更新鞋子
+    UPDATE_FRIEND = "update_friend", --更新好友
+    DISABLE_NEXT_REWARD = "disable_next_reward", --禁用次日登陆奖励
+    SUB_SHOES = "sub_shoes", --消耗鞋子
+    UPDATE_ACTIVE = "update_active", --更新(精彩活动中的)分享任务
+    UPDATE_TASK = "update_task", --更新任务
+    UNLOCK_NEW_FEATURE_STAGEID = "UNLOCK_NEW_FEATURE_STAGEID", --当前stageid通知，用于更新新功能开启
+    UPDATE_ARENA_CHALLENGE_NUM = "UPDATE_ARENA_CHALLENGE_NUM",  --更新擂台挑战次数
+    UPDATE_MAIL = "UPDATE_MAIL", -- 更新邮件通知
+    FULL_MAIL = "FULL_MAIL", -- 邮箱已满消息
+    UPDATE_SCRECT_PLACE = "UPDATE_SCRECT_PLACE", --更新秘境数据通知
+}
+
+NoticeColor = {
+    [1] = ui.COLOR_WHITE,
+    [2] = ui.COLOR_GREEN,
+    [3] = ui.COLOR_BLUE,
+    [4] = ui.COLOR_BLUE,
+    [5] = ui.COLOR_PURPLE,
+    [6] = ui.COLOR_PURPLE,
+}
 

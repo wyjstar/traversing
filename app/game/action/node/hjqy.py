@@ -119,16 +119,27 @@ def battle_2103(pro_data, player):
     if need_hjqy_fight_token > player.finance[const.HJQYFIGHTTOKEN]:
         logger.error("hjqy coin not enough！")
         response.res.result = False
-        response.res.result_no = 21031
+        response.res.result_no = 210301
         return response.SerializePartialToString()
 
+    data = remote_gate['world'].get_boss_info_remote(boss_id)
+    if data.get('state') == const.BOSS_DEAD:
+        logger.error("hjqy boss dead！")
+        response.res.result = False
+        response.res.result_no = 210302
+        return response.SerializePartialToString()
+    if data.get('state') == const.BOSS_RUN_AWAY:
+        logger.error("hjqy boss run away！")
+        response.res.result = False
+        response.res.result_no = 210303
+        return response.SerializePartialToString()
 
     red_best_skill_id = request.skill
     _skill_id, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     save_line_up_order(line_up, player, red_best_skill_id)
 
     red_units = player.fight_cache_component.get_red_units()
-    data = remote_gate['world'].get_boss_info_remote(boss_id)
+
     blue_units = cPickle.loads(remote_gate['world'].blue_units_remote(boss_id))
     stage_id = data.get("stage_id")
 

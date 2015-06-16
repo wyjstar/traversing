@@ -8,7 +8,7 @@ function FMHeroSkill:ctor(unit)
     local unit_info = unit.unit_info
 
     local mp_info = self.baseTemplate:getBaseInfoById("chushi_value_config")
-    if unit.is_break then
+    if unit.is_break or unit_info.type == 1 then
         mp_info = self.baseTemplate:getBaseInfoById("stage_break_angry_value")
     elseif unit.is_awake then
         mp_info = self.baseTemplate:getBaseInfoById("angryValueAwakeHero")

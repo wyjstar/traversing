@@ -735,13 +735,9 @@ function FightProcess:is_last_hero_dead(target_unit)
     --不是最后一轮
     if not self:is_last_round() then return false end
 
-    local _quality = target_unit.unit_info.quality
+    -- local _quality = target_unit.unit_info.quality
     --品级不正确
     -- if _quality ~= 5 and _quality ~= 6 then return false end
-
-    if target_unit.viewTargetPos ~= TYPE_NORMAL_POS then
-        return false
-    end
 
     local units = nil
     

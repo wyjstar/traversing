@@ -163,6 +163,12 @@ class WorldBoss(BaseBoss):
         """
         boss被打死或者boss到期后，更新下一个boss相关信息。
         """
+        # 发放奖励：前十名, 累积伤害, 最后击杀, 参与奖
+        if self._stage_id:
+            self.send_award_top_ten()
+            self.send_award_add_up()
+            self.send_award_last()
+            self.send_award_in()
         self.set_next_stage(self._hp <= 0)
         if not self._lucky_heros:
             self.update_lucky_hero()
@@ -170,11 +176,6 @@ class WorldBoss(BaseBoss):
 
         self.save_data()
 
-        # 发放奖励：前十名, 累积伤害, 最后击杀, 参与奖
-        self.send_award_top_ten()
-        self.send_award_add_up()
-        self.send_award_last()
-        self.send_award_in()
 
         ranks = self._rank_instance.get(1, 3000)
         for k, v in enumerate(ranks):
@@ -204,14 +205,14 @@ class WorldBoss(BaseBoss):
         accumulated_rewards = game_configs.base_config.get("world_boss").get('accumulated_rewards')
 
         for player_id, v in self._rank_instance.get(1, 0):
-            for i in range(5, 1, -1):
+            for i in range(len(accumulated_rewards), 0, -1):
                 reward_info = accumulated_rewards.get(i)
                 logger.debug("percent %s hp_max %s damage %s actual damage %s" % (reward_info[0], hp_max, reward_info[0]*hp_max, v))
                 if hp_max * reward_info[0] < v:
                     self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
                     break
                 else:
-                    return
+                    continue
         #对大量玩家进行处理
         #i = 0
         #while True and i < 1000:

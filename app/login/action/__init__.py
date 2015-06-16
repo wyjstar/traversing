@@ -10,3 +10,5 @@ if GlobalObject().allconfig["deploy"]["channel"]== "tencent":
     import login_Tencent
 elif GlobalObject().allconfig["deploy"]["channel"]== "taiwan":
     import login_MA
+elif GlobalObject().allconfig["deploy"]["channel"]== "tbt":
+    import login_TBT
