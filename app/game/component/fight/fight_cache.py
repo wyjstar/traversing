@@ -205,6 +205,7 @@ class CharacterFightCacheComponent(Component):
                 logger.info('怪物ID：%s' % monster_id)
 
                 battle_unit = do_assemble(
+                    0,
                     monster_config.id,
                     monster_config.quality,
                     [],
