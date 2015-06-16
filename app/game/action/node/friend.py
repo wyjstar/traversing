@@ -41,20 +41,26 @@ def add_friend_request_1100(data, player):
 
     if len(request.target_ids) < 1:
         response.result = False
-        response.result_no = 5  # fail
+        response.result_no = 11005  # fail
+        return response.SerializePartialToString()  # fail
+
+    max_num_friend = game_configs.base_config.get('max_of_UserFriend')
+    if len(player.friends.friends) >= max_num_friend:
+        response.result = False
+        response.result_no = 11003  # fail
         return response.SerializePartialToString()  # fail
 
     target_id = request.target_ids[0]
 
     if target_id == player.base_info.id:
         response.result = False  # cant invite oneself as friend
-        response.result_no = 4  # fail
+        response.result_no = 11004  # fail
         return response.SerializePartialToString()  # fail
 
     if not push_message('add_friend_request_remote', target_id,
                         player.base_info.id):
         response.result = False
-        response.result_no = 2
+        response.result_no = 11002
         return response.SerializePartialToString()  # fail
 
     return response.SerializePartialToString()
