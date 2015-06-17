@@ -24,6 +24,12 @@ message PvpFightRequest{
     optional int32 skill = 3; //无双技能ID
 }
 
+message PvpFightRevenge{
+    required int32 black_id = 1;
+    repeated int32 lineup = 2; // 队形
+    optional int32 skill = 3; //无双技能ID
+}
+
 message PvpPlayerInfoRequest{
     required int32 player_rank = 1;
 }

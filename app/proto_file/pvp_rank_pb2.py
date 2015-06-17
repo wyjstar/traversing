@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='pvp_rank.proto',
   package='',
-  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"~\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\x12\x10\n\x08hero_ids\x18\x05 \x03(\x05\x12\x13\n\x0bhero_levels\x18\x06 \x03(\x05\x12\x0f\n\x07head_no\x18\x07 \x02(\x05\"\\\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\x12\x13\n\x0bplayer_rank\x18\x02 \x01(\x05\x12\x11\n\tpvp_score\x18\x03 \x01(\x05\"H\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"\x99\x02\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"~\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\x12\x10\n\x08hero_ids\x18\x05 \x03(\x05\x12\x13\n\x0bhero_levels\x18\x06 \x03(\x05\x12\x0f\n\x07head_no\x18\x07 \x02(\x05\"\\\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\x12\x13\n\x0bplayer_rank\x18\x02 \x01(\x05\x12\x11\n\tpvp_score\x18\x03 \x01(\x05\"H\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"B\n\x0fPvpFightRevenge\x12\x10\n\x08\x62lack_id\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"\x99\x02\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -174,6 +174,48 @@ _PVPFIGHTREQUEST = _descriptor.Descriptor(
 )
 
 
+_PVPFIGHTREVENGE = _descriptor.Descriptor(
+  name='PvpFightRevenge',
+  full_name='PvpFightRevenge',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='black_id', full_name='PvpFightRevenge.black_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='lineup', full_name='PvpFightRevenge.lineup', index=1,
+      number=2, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='skill', full_name='PvpFightRevenge.skill', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=341,
+  serialized_end=407,
+)
+
+
 _PVPPLAYERINFOREQUEST = _descriptor.Descriptor(
   name='PvpPlayerInfoRequest',
   full_name='PvpPlayerInfoRequest',
@@ -197,8 +239,8 @@ _PVPPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=341,
-  serialized_end=384,
+  serialized_start=409,
+  serialized_end=452,
 )
 
 
@@ -295,8 +337,8 @@ _PVPFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=387,
-  serialized_end=668,
+  serialized_start=455,
+  serialized_end=736,
 )
 
 _PLAYERRANKRESPONSE.fields_by_name['rank_items'].message_type = _RANKITEMS
@@ -307,6 +349,7 @@ _PVPFIGHTRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCE
 DESCRIPTOR.message_types_by_name['RankItems'] = _RANKITEMS
 DESCRIPTOR.message_types_by_name['PlayerRankResponse'] = _PLAYERRANKRESPONSE
 DESCRIPTOR.message_types_by_name['PvpFightRequest'] = _PVPFIGHTREQUEST
+DESCRIPTOR.message_types_by_name['PvpFightRevenge'] = _PVPFIGHTREVENGE
 DESCRIPTOR.message_types_by_name['PvpPlayerInfoRequest'] = _PVPPLAYERINFOREQUEST
 DESCRIPTOR.message_types_by_name['PvpFightResponse'] = _PVPFIGHTRESPONSE
 
@@ -327,6 +370,12 @@ class PvpFightRequest(_message.Message):
   DESCRIPTOR = _PVPFIGHTREQUEST
 
   # @@protoc_insertion_point(class_scope:PvpFightRequest)
+
+class PvpFightRevenge(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PVPFIGHTREVENGE
+
+  # @@protoc_insertion_point(class_scope:PvpFightRevenge)
 
 class PvpPlayerInfoRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
