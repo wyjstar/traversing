@@ -281,7 +281,7 @@ def new_guide_step_1802(data, player):
     if not result.get('result'):
         logger.error('newbee guide comsume:%s', consume_config)
         response.res.result = False
-        response.result_no = 1802
+        response.res.result_no = 1802
         return response.SerializePartialToString()
 
     need_gold = get_consume_gold_num(consume_config)
