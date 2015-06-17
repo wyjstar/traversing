@@ -4,16 +4,19 @@ created by sphinx on
 """
 
 from gtwisted.core import reactor
-from gfirefly.dbentrust import util
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 from app.transit.root.messagecache import message_cache
 from shared.db_opear.configs_data import game_configs
-from app.game.redis_mode import tb_pvp_rank
+from gfirefly.dbentrust.redis_mode import RedisObject
+tb_pvp_rank = RedisObject('tb_pvp_rank')
+#from app.game.redis_mode import tb_pvp_rank
 import time
 import traceback
 from shared.utils.mail_helper import deal_mail
+from gfirefly.dbentrust.redis_mode import RedisObject
 
+tb_pvp_rank = RedisObject('tb_pvp_rank')
 
 groot = GlobalObject().root
 
