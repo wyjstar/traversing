@@ -168,7 +168,8 @@ class CharacterBaseInfoComponent(Component):
 
         register_time = self._owner.base_info.register_time
         if days_to_current(register_time) > days or \
-            (days_to_current(register_time) == days and string_to_timestamp_hms(ts)) > get_current_timestamp():
+            (days_to_current(register_time) == days and string_to_timestamp_hms(ts)) < get_current_timestamp():
+                logger.error("%s %s" % (string_to_timestamp_hms(ts), get_current_timestamp()))
                 return True
         return False
 
