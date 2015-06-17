@@ -75,15 +75,16 @@ class CharacterEquipmentPackageComponent(Component):
             cid = CONDITIONId.GREEN_EQU
         elif equ_conf.color == 2:
             cid = CONDITIONId.BLUE_EQU
-        if cid:
-            for _, equ_obj in self._equipments_obj.items():
-                e_conf = game_configs.equipment_config. \
-                    get(equ_obj.base_info.equipment_no)
-                if e_conf.color == color:
-                    color_num += 1
-                if e_conf.quality == 6:
-                    star6_num += 1
+        for _, equ_obj in self._equipments_obj.items():
+            e_conf = game_configs.equipment_config. \
+                get(equ_obj.base_info.equipment_no)
+            if e_conf.color == color and cid:
+                color_num += 1
+            if e_conf.quality == 6:
+                star6_num += 1
+        if color_num:
             hook_task(self.owner, cid, color_num)
+        if star6_num:
             hook_task(self.owner, CONDITIONId.STAR6_EQU, star6_num)
 
         return equipment_obj
