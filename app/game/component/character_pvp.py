@@ -279,4 +279,57 @@ def get_overcomes(player_id, player_ap):
     return overcome_ids
 
 
+def arraged_ids(ids_set):
+    overcome_ids = [0]
+    ids = sorted(ids_set, key=lambda x: x[1])
+    for _id, _ in ids:
+        overcome_ids.append(int(_id))
+    logger.debug('get overcome %s-%s', overcome_ids, len(overcome_ids))
+    return overcome_ids
+
+
+def get_overcomes_by_score(rank, player_id, player_ap):
+    ids = set()
+    for item in game_configs.arena_fight_config.values():
+        if item.type != 2:
+            continue
+        scope = eval(item.choose, dict(k=player_ap))[0]
+        _min, _max, count = scope
+        _min *= const.power_rank_xs
+        _max *= const.power_rank_xs
+        res = rank.zrangebyscore(_min, _max, withscores=True)
+        if len(res) < count:
+            break
+        random.shuffle(res)
+        res = filter(lambda x: int(x[0]) != player_id, res)
+        ids.add(res[_] for _ in range(count))
+        print _min, _max, ids
+
+    return arraged_ids(ids)
+
+
+def get_overcomes_by_rank(rank, player_id, player_ap):
+    ids = set()
+    player_rank = rank.zrank(player_id)
+    if not player_rank:
+        logger.error('player no rank from pvpovercom:%s', player_id)
+        return []
+    for item in game_configs.arena_fight_config.values():
+        if item.type != 3:
+            continue
+        if player_rank not in range(item.choose[0], item.choose[0] + 1):
+            continue
+        scope = eval(item.choose, dict(k=player_rank))[0]
+        _min, _max, count = scope
+        res = rank.zrangebyscore(_min, _max, withscores=True)
+        if len(res) < count:
+            break
+        random.shuffle(res)
+        res = filter(lambda x: int(x[0]) != player_id, res)
+        ids.add(res[_] for _ in range(count))
+        print _min, _max, ids
+
+    return arraged_ids(ids)
+
+
 # get_overcomes(10008, 256)
