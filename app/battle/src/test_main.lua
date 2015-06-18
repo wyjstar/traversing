@@ -1,15 +1,17 @@
-require("src.framework.debug")
-require("src.framework.functions")
+framework = framework or {}
+framework.PACKAGE_NAME = "app.battle."
+require(framework.PACKAGE_NAME.."src.framework.debug")
+require(framework.PACKAGE_NAME.."src.framework.functions")
 --require("src.app.util.Util")
 --require("src.app.controller.GameController")
 --require("src.app.fightview.init")
 --require("src.app.fightview.init_after")
 --g_FightScene = {}
 --g_FightScene.fightType = TYPE_GUIDE
-local FCProcess = import("src.app.fightview.controller.ServerProcess")
-local TemplateManager = import("src.app.datacenter.template.TemplateManager")
-local CalculationManager = import("src.app.datacenter.calculation.CalculationManager")
-local DataManager = import("src.app.datacenter.bean.DataManager")
+local FCProcess = import(framework.PACKAGE_NAME.."src.app.fightview.controller.ServerProcess")
+local TemplateManager = import(framework.PACKAGE_NAME.."src.app.datacenter.template.TemplateManager")
+local CalculationManager = import(framework.PACKAGE_NAME.."src.app.datacenter.calculation.CalculationManager")
+local DataManager = import(framework.PACKAGE_NAME.."src.app.datacenter.bean.DataManager")
 cc = cc or {}
 function cc.pAdd(t, t1)
     print(data)
@@ -17,7 +19,7 @@ end
 function cc.p(p1, p2)
     print(data)
 end
-import("src.app.Constants")
+import(framework.PACKAGE_NAME.."src.app.Constants")
 
 function getTemplateManager()
     if g_TemplateManager == nil then
@@ -85,8 +87,7 @@ function start()
     -- 开始战斗
     print("start======")
     fcProcess:init()
-    fcProcess:start()
-    return "start"
+    return fcProcess:start()
 end
 
 

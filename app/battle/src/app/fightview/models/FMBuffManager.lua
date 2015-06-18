@@ -1,6 +1,6 @@
 -- SkillBuffManager
 -- 每个武将身上的buff集合
-require("src.app.fightview.models.FMExecuteSkill")
+import(".FMExecuteSkill")
 
 
 local FMBuffManager = class("FMBuffManager")

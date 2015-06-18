@@ -1,5 +1,5 @@
 --战斗数据层
-require("src.app.fightview.controller.InitData")
+import(".InitData")
 local FightProcess = import(".zhengpu_process")
 local FCProcess = class("FCProcess", mvc.ModelBase)
 

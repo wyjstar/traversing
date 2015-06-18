@@ -2,7 +2,7 @@
 
 from lupa import LuaRuntime
 lua = LuaRuntime()
-lua.require("src/test_main")
+lua.require("app/battle/src/test_main")
 
 #TYPE_GUIDE = 0              --演示关卡
 #TYPE_STAGE_NORMAL = 1       -- 普通关卡（剧情）， stage_config
@@ -25,7 +25,7 @@ func = lua.eval('''function(fightData, fightType) setData(fightData, fightType);
 def construct_battle_unit(unit):
     # 构造战斗单元
     return lua.table(
-        no = unit.no,
+        no = unit.unit_no,
         quality = unit.quality,
 
         hp = unit.hp,
@@ -44,7 +44,7 @@ def construct_battle_unit(unit):
         break_level = unit.break_level,
 
         is_boss = unit.is_boss,
-        break_skills = unit.break_skills,
+        #break_skills = unit.break_skills,
         position = unit.position,
 
         is_break = unit.is_break,
@@ -61,8 +61,8 @@ def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blu
         blue.append(construct_battle_unit(unit))
 
     fight_data = lua.table(
-        red = lua.table(red),
-        blue = lua.table(blue),
+        red = lua.table_from(red),
+        blue = lua.table_from(blue),
         red_skill = red_skill,
         red_skill_level = red_skill_level,
         blue_skill = blue_skill,

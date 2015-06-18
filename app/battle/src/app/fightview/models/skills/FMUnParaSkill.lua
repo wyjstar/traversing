@@ -1,6 +1,6 @@
 -- 无双技能类
 --
-require("src.app.fightview.models.FightUtil")
+import("..FightUtil")
 local FMBuffManager = import("..FMBuffManager")
 local FMUnParaSkill = class("FMUnParaSkill", FMUnParaSkill)
 

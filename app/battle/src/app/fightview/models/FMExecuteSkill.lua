@@ -1,4 +1,4 @@
-require("src.app.fightview.models.FightUtil")
+import(".FightUtil")
 
 formulaTemplate = nil
 

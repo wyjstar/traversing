@@ -4,7 +4,7 @@ local UnParaSkill = import("..models.skills.FMUnParaSkill")
 local HeroSkill = import("..models.skills.FMHeroSkill")
 local MonsterSkill = import("..models.skills.FMMonsterSkill")
 local BuddySkill = import("..models.skills.FMBuddySkill")
-require("src.app.fightview.models.FightUtil")
+import("..models.FightUtil")
 
 
 local baseTemplate = nil
@@ -35,7 +35,7 @@ function initData(_process)
     calculation = getCalculationManager():getCalculation() 
     process = _process
     local data = fightData:getData()
-    process.fight_type = TYPE_GUIDE
+    --process.fight_type = TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
     if process.fight_type==TYPE_GUIDE then
         return initGuideData()
@@ -308,6 +308,7 @@ function initPvpData(data)
     local redUnits = {}
     local blueUnits = {}
 
+    print(red_units)
     for i=1,6 do
         if red_units[i] then
             local unit = constructBattleUnit(red_units[i], "red")
@@ -388,6 +389,9 @@ end
 
 -- 根据战斗返回构造battle unit
 function constructBattleUnit(data, side)
+    print("constructBattleUnit======")
+    table.print(data)
+    print(data.no)
     if not data or data.no == 0 then return nil end
     local unit = BattleUnit.new()
     unit.unit_name = ""
@@ -429,17 +433,17 @@ function constructBattleUnit(data, side)
         print("==========?", unit_info.id)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_MONSTER
-        local pictureName = soldierTemplate:getMonsterImageName(unit.no)
-        unit.pictureName = pictureName
+        --local pictureName = soldierTemplate:getMonsterImageName(unit.no)
+        --unit.pictureName = pictureName
         --unit.resFrame = res
     else
         local unit_info = soldierTemplate:getHeroTempLateById(data.no)
         print("==========?", unit_info.id)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_HERO
-        local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
-        unit.pictureName = pictureName
-        unit.resFrame = res
+        --local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
+        --unit.pictureName = pictureName
+        --unit.resFrame = res
     end
     unit.skill = HeroSkill.new(unit)        -- 武将技能
     unit._skill = HeroSkill.new(unit)

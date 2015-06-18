@@ -8,8 +8,8 @@ local FVAction = import("src.app.fightview.modeldata.FVAction")
 
 local FVActionSpec = import("src.app.fightview.modeldata.FVActionSpec")
 
-require("src.app.fightview.modeldata.XFightParticle")
-require("src.app.fightview.modeldata.FightUitl")
+import("..modeldata.XFightParticle")
+import("..modeldata.FightUitl")
 
 --正常的速度
 NORMAL_ACTION_SPEED = 1.5

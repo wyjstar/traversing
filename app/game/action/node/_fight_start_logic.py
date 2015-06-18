@@ -21,7 +21,7 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
 
     #process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
                                 #blue_best_skill, blue_player_level)
-    res = pvp_start(red_units, red_best_skill, player.base_info.level, blue_units,
+    res = pvp_start(red_units, blue_units, red_best_skill, player.base_info.level,
                                 blue_best_skill, blue_player_level, seed1, seed2)
 
     logger.debug("pvp_process: %s" % res)

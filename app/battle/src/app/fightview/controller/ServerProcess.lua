@@ -1,5 +1,6 @@
 --战斗数据层
-require("src.app.fightview.controller.InitData")
+--require(framework.PACKAGE_NAME.."src.app.fightview.controller.InitData")
+import(".InitData")
 local FightProcess = import(".zhengpu_process")
 local FCProcess = class("FCProcess")
 
@@ -28,8 +29,9 @@ end
 -- 初始化数据，测试阶段目前为假值
 function FCProcess:init()
     cclog("FCProcess:init=====================>")
-    self.fight_type = TYPE_GUIDE
-    self.fightProcess:init(self.fight_type)
+    --self.fight_type = TYPE_GUIDE
+    local fight_type = getDataManager():getFightData():getFightType()
+    self.fightProcess:init(fight_type)
 
     --self.red_units, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
     --self.blue_units = self.blue_groups[self.current_round]
@@ -46,6 +48,7 @@ function FCProcess:start()
     while self.fightProcess:check_result() == 0 do
         self.fightProcess:perform_one_step()
     end
+    return self.fightProcess:check_result() == 1
 end
 
 -- 

@@ -1,5 +1,5 @@
-require("src.app.fightview.models.FindTargetUnits")
-require("src.app.fightview.models.FMExecuteSkill")
+import("..models.FindTargetUnits")
+import("..models.FMExecuteSkill")
 local BuffSetForView = import("..models.BuffSetForView")
 local Buff = import("..models.FMBuff")
 local FightProcess = class("FightProcess")
