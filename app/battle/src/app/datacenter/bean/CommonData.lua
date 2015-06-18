@@ -1441,5 +1441,9 @@ function CommonData:getEmployPrice()
     return self.employPrice
 end
 
+--等级
+function CommonData:setPlayerLevel(level)
+    self.level = level
+end
 return CommonData
 
