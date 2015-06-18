@@ -10,7 +10,9 @@ from shared.tlog import tlog_action
 from app.gate.redis_mode import tb_character_info
 from shared.utils.const import const
 import time
-from app.game.redis_mode import tb_guild_info
+from gfirefly.dbentrust.redis_mode import RedisObject
+tb_guild_info = RedisObject('tb_guild_info')
+#from app.game.redis_mode import tb_guild_info
 
 
 front_ip = GlobalObject().json_config['front_ip']
