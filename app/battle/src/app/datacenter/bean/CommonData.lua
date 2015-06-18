@@ -3,9 +3,11 @@
 --	包括，玩家信息，银币，金币，战斗力 等等
 --
 DROP_BREW = 13
+
 local CommonData = class("CommonData")
 
 function CommonData:ctor(item)
+    EventProtocol.extend(self)    
     self.GameLoginResponse = {}
     self.LastStminaTime = nil  -- 上次领取体力时间
     self.AccountResponse = {} -- 注册成功返回数据
@@ -18,6 +20,8 @@ function CommonData:ctor(item)
     self.oldLevel = 0 --战队升级前的等级
     self.isHasRebate = false
     self.rank = 0
+    self.loginContinueDay = 0
+    self.loginTotalDay = 0
 end
 -- function CommonData:clear()
 --     cclog("---------------CommonData:clear------")
@@ -76,6 +80,10 @@ function CommonData:setData(data)
     self.vip = data.vip_level                           --vip等级
     self.exp = data.exp                                 --经验
     self.level = data.level                             --等级
+
+    -- 将等级写入到userdefault中
+    saveTeamLevel(self.level)
+        
     -- self.stamina = data.stamina                         --体力
     self.totalRecharge = data.recharge                   --累计充值
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
@@ -122,8 +130,8 @@ function CommonData:setData(data)
     self.head = data.head             --头像列表
     self.now_head = data.now_head     --当前头像id
 
-    self.tomorrow_gift = data.tomorrow_gift
-    print("tomorrow_gift = ", data.tomorrow_gift)
+    self.tomorrow_gift = data.tomorrow_gift     -- 次日登陆奖励是否收到
+    print("tomorrow_gift = ", self.tomorrow_gift)
 
     self.battle_speed = data.battle_speed or 1 --战斗速度
 
@@ -176,36 +184,53 @@ function CommonData:setSrvTime(time)
     self.srv_time = time
 end
 
--- 新版本玩家资源 data.finances
-function CommonData:getFinance(type)
+--[[--
+获得资源数量
+@param number type 资源的类型
+]]
+function CommonData:getFinance(type_)
     -- table.print(self.finances)
-    -- print("CommonData:getFinance=============>type, value", type, self.finances[type+1])
-    if not self.finances[type+1] then
-        error("CommonData:getFinance error, value is nil , type="..type)
+    -- print("CommonData:getFinance=============>type", type_)
+    if not self.finances[type_+1] then
+        error("CommonData:getFinance error, value is nil , type="..type_)
     end
-    if self.finances[type+1] < 0 then
-        self.finances[type+1] = 0
+    if self.finances[type_+1] < 0 then
+        self.finances[type_+1] = 0
     end
-    return self.finances[type+1]
+    return self.finances[type_+1]
 end
 
-function CommonData:setFinance(type, num)
-    self.finances[type+1] = num
-end
-function CommonData:subFinance(type, num)
-    if self.finances[type+1] then
-        self.finances[type+1] = self.finances[type+1] - num
+function CommonData:setFinance(type_, num)
+    print("CommonData:setFinance==================>",type_, num)
+    if num < 0 then num = 0 end
+    self.finances[type_+1] = num
+    
+    if type_ == RES_TYPE.STAMINA then
+        self:dispatchEvent(EventName.UPDATE_TL)
+    elseif type_ == RES_TYPE.GOLD then
+        self:dispatchEvent(EventName.UPDATE_GOLD)   
+        --print("<<=======send UPDATE_GOLD event=======>>")     
+    elseif type_ == RES_TYPE.COIN then
+        self:dispatchEvent(EventName.UPDATE_SILVER)        
     end
 end
-function CommonData:addFinance(type, num)
-    self.finances[type+1] = self.finances[type+1] + num
 
-    getHomeBasicAttrView():updateStamina()
-    getHomeBasicAttrView():updateExp()
+function CommonData:subFinance(type_, num)
+    print("CommonData:subFinance==================>",type_, num)     
+    if self.finances[type_+1] then
+        self:setFinance(type_, self.finances[type_+1] - num)
+    end
 
-    getHomeBasicAttrView():updateGold()
-    getHomeBasicAttrView():updateCoin()
+    if type_ ==  RES_TYPE.SHOES then -- 游历消耗鞋子需要通知游历主界面和章节游历界面
+        self:dispatchEvent(EventName.SUB_SHOES)
+    end
+end
 
+function CommonData:addFinance(type_, num)
+    print("CommonData:addFinance==================>",type_, num) 
+    if self.finances[type_+1] then
+        self:setFinance(type_, self.finances[type_+1] + num)
+    end 
 end
 
 function CommonData:getRegistTime()
@@ -215,14 +240,14 @@ end
 
 -- 装备精华
 function CommonData:getEquipSoul()
-    return self:getFinance(21)
+    return self:getFinance(RES_TYPE.EQUIP_SOUL)
 end
 
 function CommonData:subEquipSoul(num)
-    self:subFinance(21, num)
+    self:subFinance(RES_TYPE.EQUIP_SOUL, num)
 end
 function CommonData:addEquipSoul(num)
-    self:addFinance(21, num)
+    self:addFinance(RES_TYPE.EQUIP_SOUL, num)
 end
 
 ----------征讨令Begin----------
@@ -248,19 +273,19 @@ end
 
 -- 元气
 function CommonData:getYuanqi()
-    return self:getFinance(16)
+    return self:getFinance(RES_TYPE.YUANQI)
 end
 -- 元气
 function CommonData:setYuanqi(num)
-    self:setFinance(16, num)
+    self:setFinance(RES_TYPE.YUANQI, num)
 end
 -- 元气
 function CommonData:subYuanqi(num)
-    self:subFinance(16, num)
+    self:subFinance(RES_TYPE.YUANQI, num)
 end
 -- 元气
 function CommonData:addYuanqi(num)
-    self:addFinance(16, num)
+    self:addFinance(RES_TYPE.YUANQI, num)
 end
 --是否有Vip礼包
 function CommonData:getVipGift()
@@ -332,7 +357,10 @@ function CommonData:getPowerRank() return self.rank end
     --     end
     -- end
 -- end
-function CommonData:setHead(id) self.now_head = id end
+function CommonData:setHead(id) 
+    self.now_head = id
+    self:dispatchEvent(EventName.UPDATE_HEAD) 
+end
 
 function CommonData:getHead()
     -- if self.now_head == nil then
@@ -353,9 +381,10 @@ function CommonData:setHeadLIst(list) self.head = list end
 function CommonData:addHeadLIstId(id) table.insert(self.head, id) end
 --------------------------
 
-
-
-
+-- 通用资源:鞋子
+function CommonData:getShoesBuyTimes() return self.buy_times[RES_TYPE.SHOES].buy_stamina_times end     -- 已购买的鞋子数量
+function CommonData:getShoesStorageMax() return self.buy_times[RES_TYPE.SHOES].storageMax end          -- 最大的鞋子数量
+function CommonData:getShoesRetainTime() return self.buy_times[RES_TYPE.SHOES].retainTime end          -- 剩余恢复时间
 
 -- 上次领取体力的时间
 function CommonData:getLastStminaTime() return self.LastStminaTime end
@@ -459,6 +488,7 @@ end
 function CommonData:setOnlineTime(time)
     -- cclog("---setOnlineTime-----"..time)
     self.onlineTimes = time
+    self.server_time = self:getTime()
     -- self.getOnlineRec = os.time()
 end
 
@@ -470,7 +500,7 @@ function CommonData:getOnlineTime()
     -- local diff_time = nowTime - self.getOnlineRec
     -- return self.onlineTimes + diff_time
     --在线累计时间 + 服务器当前时间 - 客户端登陆时间
-    return self.onlineTimes + self.srv_time - self.server_time
+    return self.onlineTimes + self:getTime() - self.server_time
 end
 
 -- function CommonData:getLastOnlineTime() return self.LastOnlineTime end
@@ -502,27 +532,53 @@ function CommonData:isGetLevelGift(id)
 end
 -- 连续登陆奖励
 function CommonData:setLoginContinueGiftList(list) self.loginContinueGiftList = list end
-function CommonData:addLoginContinueGift(giftId) table.insert(self.loginContinueGiftList, giftId) end
-function CommonData:isGetLoginContinueGift(id)
-    if self.loginContinueGiftList == nil then return false end
+function CommonData:addLoginContinueGift(giftId) 
+    if self.loginContinueGiftList == nil then return nil end
+
+    local isExist = false
     for k,v in pairs(self.loginContinueGiftList) do
-        if v == id then return true end
+        if v.activity_id == giftId then 
+             v.state = 1
+             isExist = true
+             break
+        end
     end
-    return false
+    if isExist == false then 
+        local data = {activity_id = giftId, state = 1}
+        table.insert(self.loginContinueGiftList, data) 
+    end
+end
+function CommonData:getLoginContinueGift(id)
+    if self.loginContinueGiftList == nil then return nil end
+    for k,v in pairs(self.loginContinueGiftList) do
+        if v.activity_id == id then return v end
+    end
+    return nil
 end
 -- 累积登陆奖励
 function CommonData:setLoginTotalGiftList(list) self.loginTotalGiftList = list end
-function CommonData:addLoginTotalGift(giftId) table.insert(self.loginTotalGiftList, giftId) end
-function CommonData:isGetLoginTotalGift(id)
-    if self.loginTotalGiftList == nil then return false end
-    for k,v in pairs(self.loginTotalGiftList) do
-        if v == id then return true end
-    end
-    return false
-end
+function CommonData:addLoginTotalGift(giftId) 
+    if self.loginTotalGiftList == nil then return nil end
 
-function CommonData:getLoginTotalGiftList()
-    return self.loginTotalGiftList
+    local isExist = false
+    for k,v in pairs(self.loginTotalGiftList) do
+        if v.activity_id == giftId then 
+             v.state = 1
+             isExist = true
+             break
+        end
+    end
+    if isExist == false then 
+        local data = {activity_id = giftId, state = 1}
+        table.insert(self.loginTotalGiftList, data) 
+    end
+end
+function CommonData:getLoginTotalGift(id)
+    if self.loginTotalGiftList == nil then return nil end
+    for k,v in pairs(self.loginTotalGiftList) do
+        if v.activity_id == id then return v end
+    end
+    return nil
 end
 
 -- 累积登陆时间
@@ -533,11 +589,11 @@ function CommonData:getLoginTotalDay() return self.loginTotalDay end
 function CommonData:setLoginContinueDay(day) self.loginContinueDay = day end
 function CommonData:getLoginContinueDay() return self.loginContinueDay end
 
-function CommonData:getHeroSoul() return self:getFinance(3) end
+function CommonData:getHeroSoul() return self:getFinance(RES_TYPE.HERO_SOUL) end
 -- 增加武魂值
 function CommonData:addHero_soul(num)
     --self.GameLoginResponse.hero_soul = self.GameLoginResponse.hero_soul + num
-    self:addFinance(3, num)
+    self:addFinance(RES_TYPE.HERO_SOUL, num)
 end
 
 --获取是否能领取累计登陆奖励
@@ -554,9 +610,12 @@ function CommonData:getIsCanGetTotleReward()
     -- print("loginTotalDay=====" .. loginTotalDay)
     for i = 1, loginTotalDay do
         local item = totleBaseList[i]
+        if item == nil and i > 7 then
+            item = totleBaseList[7]
+        end
         local id = item.id
-        local isGot = self:isGetLoginTotalGift(id)
-        if isGot == false then
+        local item = self:getLoginTotalGift(id)
+        if item and item.state == 0 then
             return true
         end
     end
@@ -571,9 +630,10 @@ function CommonData:getIsCanGetSeriesReward()
     local serialTotalDay = self:getLoginContinueDay()
     for i = 1, serialTotalDay do
         local item = serialBaseList[i]
+        if item == nil then return false end
         local id = item.id
-        local isGot = self:isGetLoginContinueGift(id)
-        if isGot == false then
+        local item = self:getLoginContinueGift(id)
+        if item and item.state == 0 then
             return true
         end
     end
@@ -604,7 +664,7 @@ end
 -- 减少武魂值
 function CommonData:reductionHero_soul(num)
     -- self.GameLoginResponse.hero_soul = self.GameLoginResponse.hero_soul - num
-    self:subFinance(3, num)
+    self:subFinance(RES_TYPE.HERO_SOUL, num)
 end
 
 -- -- 减少充值币
@@ -614,14 +674,14 @@ end
 
 --pvp声望
 function CommonData:getPvpStore()
-    return self:getFinance(8)  --self.pvp_score
+    return self:getFinance(RES_TYPE.PVP_SCROE)  --self.pvp_score
 end
 function CommonData:subPvpStore(num)
     -- self.pvp_score = self.pvp_score - num
-    return self:subFinance(8, num)
+    return self:subFinance(RES_TYPE.PVP_SCROE, num)
 end
 function CommonData:setPvpStore(num)
-    self:setFinance(8, num)
+    self:setFinance(RES_TYPE.PVP_SCROE, num)
 end
 --玩家id
 function CommonData:setAccountId(cur_id) self.accountId = cur_id end
@@ -632,45 +692,61 @@ function CommonData:getAccountId() return self.accountId end
 -- function CommonData:getAccountId() return self.accountId end
 
 --玩家昵称
-function CommonData:setUserName(cur_name) self.nickname = cur_name; getHomeBasicAttrView():updateUserName() end
+function CommonData:setUserName(cur_name) 
+    self.nickname = cur_name
+    self:dispatchEvent(EventName.UPDATE_NAME) 
+end
+
 function CommonData:getUserName() return self.nickname end
 
 --vip
 function CommonData:setVip(cur_vip)
     self.vip = cur_vip
-    getHomeBasicAttrView():updateVip()
+    self:dispatchEvent(EventName.UPDATE_VIP)
 end
+
 function CommonData:getVip() return self.vip end
 
 --经验
-function CommonData:setExp(cur_exp) self.exp = cur_exp; getHomeBasicAttrView():updateExp()  getNetManager():sendMsgAfterPlayerUpgrade() end
-function CommonData:getExp() return self.exp end
-function CommonData:addExp(num) self.exp = self:getExp() + num  getHomeBasicAttrView():updateExp()  getNetManager():sendMsgAfterPlayerUpgrade() end
-
---等级
-function CommonData:setPlayerLevel(level)
-    self.level = level
+function CommonData:setExp(cur_exp) 
+    self.exp = cur_exp
+    -- getNetManager():sendMsgAfterPlayerUpgrade()
+    self:dispatchEvent(EventName.UPDATE_EXP) 
 end
 
---等级
-function CommonData:setLevel(level)
+function CommonData:getExp() return self.exp end
 
-    print("setLevel---------level====", level)
-    print("self.level====", self.level)
-    self.isLeveled = false
-    if self.level < level then
-        self.oldLevel = self.level
-
-        getNetManager():getInstanceNet():sendGropUpgrade()
-        --getNewGManager():setIsGuideLevel()
-        self.isLeveled = true
-
+function CommonData:addExp(num)
+    if num == nil or num == 0 then return end
+    local exp = self.exp + num
+    local level = self:getLevel()
+    local maxExp = getTemplateManager():getPlayerTemplate():getMaxExpByLevel(level)
+    --如果经验大于当前等级最大经验,则升级
+    while exp > maxExp do
+        level = level + 1
+        exp = exp - maxExp
+        maxExp = getTemplateManager():getPlayerTemplate():getMaxExpByLevel(level)
     end
-    self.level = level
+    self:setExp(exp)
+    self:setLevel(level) 
+    -- getNetManager():sendMsgAfterPlayerUpgrade()  
+end
 
-    --getHomePageView():updateViewLevel()
-    getHomeBasicAttrView():updateLevel()
-    getHomeBasicAttrView():updateExp()
+--[[--
+设置等级，等级提升则发送升级消息
+@param int level 等级
+]]
+function CommonData:setLevel(level)
+    if self.level ~= level then
+        self.oldLevel = self.level
+        self.level = level        
+        getNetManager():getInstanceNet():sendGropUpgrade()
+        -- getNetManager():sendMsgAfterPlayerUpgrade()        
+        self:dispatchEvent(EventName.UPDATE_LEVEL)
+
+        -- 将等级写入到userdefault中
+        saveTeamLevel(self.level)
+    end 
 end
 
 function CommonData:getLevel() return self.level end
@@ -686,11 +762,16 @@ end
 
 --体力
 function CommonData:setStamina(cur_stamina)
-    self:setFinance(7, cur_stamina)
-    getHomeBasicAttrView():updateStamina()
+    self:setFinance(RES_TYPE.STAMINA, cur_stamina)
+    -- getHomeBasicAttrView():updateStamina()
 end
-function CommonData:getStamina() return self:getFinance(7) end
-function CommonData:addStamina(num) self:setFinance(7, self:getFinance(7) + num); getHomeBasicAttrView():updateStamina() end
+
+function CommonData:getStamina() return self:getFinance(RES_TYPE.STAMINA) end
+
+function CommonData:addStamina(num) 
+    self:addFinance(RES_TYPE.STAMINA, num)
+    -- getHomeBasicAttrView():updateStamina()
+end
 
 --购买体力次数
 function CommonData:getBuyStaminaTimes() return self.buy_stamina_times end
@@ -699,10 +780,11 @@ function CommonData:addBuyStaminaTimes() self.buy_stamina_times = self.buy_stami
 --元宝
 function CommonData:setGold(cur_gold)
     -- self.gold = cur_gold
-    self:setFinance(2, cur_gold)
-    getHomeBasicAttrView():updateGold()
+    self:setFinance(RES_TYPE.GOLD, cur_gold)
+    -- getHomeBasicAttrView():updateGold()  
 end
-function CommonData:getGold() return self:getFinance(2) end --self.gold end
+
+function CommonData:getGold() return self:getFinance(RES_TYPE.GOLD) end --self.gold end
 
 --金币
 function CommonData:setCoin(cur_coin)
@@ -710,10 +792,17 @@ function CommonData:setCoin(cur_coin)
     if cur_coin <= 0 then
         cur_coin = 0
     end
-    self:setFinance(1, cur_coin)
-    getHomeBasicAttrView():updateCoin()
+    self:setFinance(RES_TYPE.COIN, cur_coin)
+    -- getHomeBasicAttrView():updateCoin()
 end
-function CommonData:getCoin() return self:getFinance(1) end -- self.coin end
+--[[--
+更新银锭
+@param int num 可正负
+]]
+function CommonData:updateCoin(num)
+    self:setCoin(self:getCoin() + num)
+end
+function CommonData:getCoin() return self:getFinance(RES_TYPE.COIN) end -- self.coin end
 
 --一般装备上次抽取时间
 function CommonData:setFineEquipment(cur_fine_equipment) self.fine_equipment = cur_fine_equipment end
@@ -745,7 +834,10 @@ function CommonData:addHighStone(num) self.high_stone = self:addNum(self.high_st
 function CommonData:getHighStone() return self.high_stone end
 
 --对战次数
-function CommonData:setPvpTimes(cur_pvp_times) self.pvp_times = cur_pvp_times end
+function CommonData:setPvpTimes(cur_pvp_times)
+    self.pvp_times = cur_pvp_times 
+    self:dispatchEvent(EventName.UPDATE_ARENA_CHALLENGE_NUM)
+end
 function CommonData:getPvpTimes() return self.pvp_times end
 
 --挑战次数重置的次数
@@ -754,40 +846,48 @@ function CommonData:getPvpRefreshCount() return self.pvp_refresh_count end
 function CommonData:updatePvpRefreshCount(count)
     self.pvp_refresh_count = self.pvp_refresh_count + count
 end
--- 加num的银子
--- @num: 添加的银子数量
-function CommonData:addCoin(num) self:addFinance(1, num);getHomeBasicAttrView():updateCoin(); end
+
 -- 扣除num的银子
 -- @num: 银子的数量，正数
-function CommonData:subCoin(num) self:subFinance(1, num);getHomeBasicAttrView():updateCoin(); end
+function CommonData:subCoin(num) 
+    self:subFinance(RES_TYPE.COIN, num)
+    -- getHomeBasicAttrView():updateCoin()
+end
 
 -- 加num的金子
 -- @num: 添加的金子数量
-function CommonData:addGold(num) self:addFinance(2, num);getHomeBasicAttrView():updateGold(); end
+function CommonData:addGold(num) 
+    print("CommonData:addGold==================>")
+    self:addFinance(RES_TYPE.GOLD, num)
+    -- getHomeBasicAttrView():updateGold()   
+end
 -- 扣除num的金子
 -- @num: 金子的数量，正数
-function CommonData:subGold(num) self:subFinance(2, num); getHomeBasicAttrView():updateGold(); end
+function CommonData:subGold(num) 
+    self:subFinance(RES_TYPE.GOLD, num)
+    -- getHomeBasicAttrView():updateGold()  
+end
 
 -- 修改战斗力
-function CommonData:updateCombatPower() getHomeBasicAttrView():updateCombatPower(); end
+function CommonData:updateCombatPower() 
+    self:dispatchEvent(EventName.UPDATE_COMBAT_POWER) 
+end
 
 --[[--
 得到通关令的数量
 @return number 通关令的数量
 ]]
 function CommonData:getClearanceCoin()
-    return self.finances[27+1] or 0
+    return self:getFinance(RES_TYPE.CLEARANCE_COIN)
 end
 
 --[[--
 更改通关令的数量
 @param number num 修改的数量(正数为增加,负数为减少)
 ]]
-function CommonData:changeClearanceCoin(num) 
-    self:subFinance(27, num);
-    if self.finances[27+1] then
-        self.finances[27+1] = self.finances[27+1] + num
-    end
+function CommonData:changeClearanceCoin(num)
+    local cur = self:getClearanceCoin() + num
+    self:setFinance(RES_TYPE.CLEARANCE_COIN, cur)
 end
 
 -----------------------------
@@ -808,39 +908,6 @@ function CommonData:subNum(theNum, subNum)
 	theNum = theNum - subNum
 	return theNum
 end
-
---[[--
-    体力的恢复，目前不需要了
-    用resRecoverTime 代替
-]]
-function CommonData:countTimer()
-    print("～～～～～～～～～～～")
-    -- local recoverTime = getTemplateManager():getBaseTemplate():getStaminaRecoverTime()   -- 300秒
-    -- local max = getTemplateManager():getBaseTemplate():getStaminaMax()                   -- 最大体力
-    -- -- self.during_time = 0
-    -- local x = self.last_gain_stamina_time
-    -- -- self.during_time = self.server_time - x
-    -- self.during_time = self:getTime() - x
-
-    -- -- print(self.during_time)
-    -- -- self:getTime()
-
-    -- local function updateTimer(dt)
-
-    --     -- print("----- updateTimer ------")
-    --     -- self.server_time = self.server_time + 1
-    --     self.during_time = self.during_time + 1
-    --     if self.during_time >= recoverTime then
-    --         -- print("--------- 10到 -------------")
-    --         if self:getStamina() < max then
-    --             getNetManager():getActivityNet():sendRecoverStamina()
-    --             self.during_time = 0
-    --             self.last_gain_stamina_time = self:getTime()
-    --         end
-    --     end
-    -- end
-    -- timer.scheduleGlobal(updateTimer, 1.0)
-end
 --[[--
     体力恢复剩余时间
 ]]
@@ -848,8 +915,25 @@ function CommonData:countTime()
     return self.buy_times[RES_TYPE.STAMINA].retainTime
 end
 
-function CommonData:getResBuyTimeByType(type)
-    return self.buy_times[type]
+function CommonData:getResBuyTimeByType(_type)
+    return self.buy_times[_type]
+end
+
+--[[--
+增加资源的已购买次数
+@param number type 资源类型
+@param number num 增加的购买次数
+]]
+function CommonData:setBuyTimes(_type, num)
+    if not _type then
+        return
+    end
+    num = num or 0
+    if num < 0 then
+        num = 0
+    end
+
+    self.buy_times[_type].buy_stamina_times = num
 end
 
 --[[--
@@ -1024,10 +1108,12 @@ end
 --初始化充值活动
 function CommonData:setRechargeActivityData(data)
     cclog("------------初始化充值活动-----------")
-    table.print(data)
+    --table.print(data)
     self.rechargeData = data
     for k,v in pairs (self.rechargeData) do
-        if v.data.recharge_time ~= nil then print("----recharge_time---"..v.data.recharge_time) end
+        --print("<<=====gitft id=====>>",v.gift_id)
+        --table.print(v.data)
+        --if v.data[1].recharge_time ~= nil then print("----recharge_time---"..v.data[1].recharge_time) end
         if v.gift_type == 9 then
             self.rechargeAcc = v.data[1].recharge_accumulation
         end
@@ -1057,8 +1143,10 @@ function CommonData:rechargeGiftIsGot(id)
     if self.rechargeData == nil then return false end
     for k,v in pairs(self.rechargeData) do
         if v.gift_id == id then
-            if v.data[1].is_receive == 0 then return false
-            elseif v.data[1].is_receive == 1 then return true end
+            if v.data[1].is_receive == 1 then return true 
+            else
+                return false 
+            end
         end
     end
     return false
@@ -1085,10 +1173,12 @@ function  CommonData:getRechargeSingle(id)
             if v.data[1].recharge_accumulation == nil then
                 return rechargeSingle
             else
+                print("充值数=========>>",v.data[1].recharge_accumulation)
                 return v.data[1].recharge_accumulation
             end
          end
      end
+
     return rechargeSingle
 end
 --[[--
@@ -1269,6 +1359,7 @@ end
     @return bool 是否开启
 ]]
 function CommonData:isOpenByType(type)
+    if not ISSHOW_STAGE_OPEN then return true end
     local _type = type
     if _type == nil then return false end
 
@@ -1321,5 +1412,34 @@ function CommonData:isOpenByType(type)
     return _left_open_time <= 0 
 end
 
+--[[--
+是否得到次日登陆奖励
+]]
+function CommonData:isGetNextDayReward()
+    return self.tomorrow_gift ~= 0
+end
+
+--[[--
+设置领取次日登陆奖励
+]]
+function CommonData:setGetNextDayReward()
+    self.tomorrow_gift = 1
+    self:dispatchEvent(EventName.DISABLE_NEXT_REWARD)
+end
+
+--[[--
+设置当前的小伙伴支援价格
+]]
+function CommonData:setEmployPrice(price)
+    self.employPrice = price
+end
+
+--[[--
+获取当前的小伙伴支援价格
+]]
+function CommonData:getEmployPrice()
+    return self.employPrice
+end
 
 return CommonData
+
