@@ -108,6 +108,7 @@ class Pusher(object):
                 push_offline.hdel(uid)
 
     def add_message(self, uid, mtype, msg, send_time):
+        print(msg)
         print 'add_message', uid, mtype, msg, send_time
         if uid in self.register:
             if self.register[uid].status == 1:
