@@ -53,6 +53,7 @@ class CharacterBaseInfoComponent(Component):
         self._login_time = int(time.time())  # 登录时间
         self._tomorrow_gift = 0
         self._battle_speed = 1
+        self._plat_id = -1
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -514,3 +515,11 @@ class CharacterBaseInfoComponent(Component):
         """招财进宝次数"""
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.buyGetMoneyTimes
+
+    @property
+    def plat_id(self):
+        return self._plat_id
+
+    @plat_id.setter
+    def plat_id(self, value):
+        self._plat_id = value
