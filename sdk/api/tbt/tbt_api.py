@@ -5,6 +5,9 @@ from geventhttpclient.url import URL
 
 TBT_URL = 'http://tgi.tongbu.com/api/LoginCheck.ashx?'
 
+# AppId：150651
+# AppKey：vF8Se3rBOlbJ#VL6vFSpe3BZObyI#Ki6
+
 
 def verify_login(session, appid):
     """
