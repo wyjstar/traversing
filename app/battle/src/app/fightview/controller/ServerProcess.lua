@@ -42,9 +42,18 @@ function FCProcess:init()
 end
 
 
---开始战斗 
-function FCProcess:start()
-    print("FCProcess:start============")
+--开始战斗pvp 
+function FCProcess:pvp_start()
+    print("FCProcess:pvp_start============")
+    while self.fightProcess:check_result() == 0 do
+        self.fightProcess:perform_one_step()
+    end
+    return self.fightProcess:check_result() == 1
+end
+
+--开始战斗pve 
+function FCProcess:pve_start()
+    print("FCProcess:pve_start============")
     while self.fightProcess:check_result() == 0 do
         self.fightProcess:perform_one_step()
     end
