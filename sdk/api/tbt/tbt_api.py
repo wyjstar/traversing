@@ -1,12 +1,22 @@
 # coding: utf-8
-from sdk.util.http import HttpRequest
-from sdk.util import logger_sdk
+from geventhttpclient import HTTPClient
+from geventhttpclient.url import URL
+
+
+TBT_URL = 'http://tgi.tongbu.com/api/LoginCheck.ashx?'
+
+# AppId：150651
+# AppKey：vF8Se3rBOlbJ#VL6vFSpe3BZObyI#Ki6
+
 
 def verify_login(session, appid):
     """
     登陆校验
     """
-    log = logger_sdk.new_log('TBT')
-    http = HttpRequest(log)
-    url = "http://tgi.tongbu.com/api/LoginCheck.ashx?session=%s&appid=%s" % (session, appid)
-    return http.request(url, method='get')
+    url = "%ssession=%s&appid=%s" % (TBT_URL, session, appid)
+
+    url = URL(url)
+    http = HTTPClient(url.host, port=url.port)
+    response = eval(http.get(url.request_uri).read())
+    http.close()
+    return response

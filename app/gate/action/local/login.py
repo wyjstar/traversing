@@ -25,8 +25,8 @@ def character_login_4(key, dynamic_id, request_proto):
     logger.debug("==============character_login_4===========")
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
-    pay_arg = dict(plat_id = argument.plat_id,
-            platform=argument.platform,
+    pay_arg = dict(plat_id=argument.plat_id,
+                   platform=argument.platform,
                    openid=argument.open_id,
                    openkey=argument.open_key,
                    pay_token=argument.pay_token,
