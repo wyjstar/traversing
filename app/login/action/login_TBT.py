@@ -16,8 +16,8 @@ from sdk.api.tbt.tbt_api import verify_login
 APP_ID = GlobalObject().allconfig['msdk']['appid']
 
 
-@webserviceHandle('/login')
-def server_login():
+@webserviceHandle('/login_tbt')
+def tbt_server_login():
     """ account login """
     logger.info("server_login login in.")
     print request.args

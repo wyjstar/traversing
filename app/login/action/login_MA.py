@@ -19,7 +19,7 @@ SERVER_MA_URL = GlobalObject().json_config['MA_url']
 
 
 @webserviceHandle('/login')
-def server_login():
+def ma_server_login():
     """ account login """
 
     logger.debug('server_login======================')
