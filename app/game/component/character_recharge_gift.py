@@ -122,8 +122,11 @@ class CharacterRechargeGift(Component):
             for k, v in recharge_data.items():
                 _data = item.data.add()
                 _data.is_receive = v
-                if item.gift_type in [7, 8, 10]:
+                if item.gift_type in [7, 10]:
                     _data.recharge_time = k
+                if item.gift_type == 8:
+                    _data.recharge_time = k
+                    _data.recharge_accumulation = v
                 elif item.gift_type == 9:
                     _data.recharge_accumulation = k
 
