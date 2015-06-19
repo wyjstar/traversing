@@ -83,11 +83,11 @@ function setData(fightData, fightType)
     getDataManager():getFightData():setData(fightData)
 end
 
-function start()
+function pvp_start()
     -- 开始战斗
     print("start======")
     fcProcess:init()
-    return fcProcess:start()
+    return fcProcess:pvp_start()
 end
 
 

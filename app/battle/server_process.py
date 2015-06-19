@@ -20,7 +20,7 @@ lua.require("app/battle/src/test_main")
 #func = lua.eval('''function() return start(); end''')
 #print(func())
 
-func = lua.eval('''function(fightData, fightType) setData(fightData, fightType); return start(); end''')
+func = lua.eval('''function(fightData, fightType) setData(fightData, fightType); return pvp_start(); end''')
 
 def construct_battle_unit(unit):
     # 构造战斗单元
