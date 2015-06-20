@@ -92,6 +92,8 @@ def pvb_fight_remote(str_red_units, red_best_skill, str_blue_units, player_info,
     战斗
     """
     boss = get_boss(boss_id)
+    if boss.open_or_not:
+        return -1, 0
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
     process = BattlePVBProcess(red_units, player_info.get("level"), red_best_skill,  blue_units, boss.debuff_skill_no)
