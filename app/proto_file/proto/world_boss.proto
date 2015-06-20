@@ -46,6 +46,7 @@ message PvbBeforeInfoResponse{
     optional int32 encourage_coin_num = 14;     // 金币鼓舞次数
     optional int32 encourage_gold_num = 15;     // 元宝鼓舞次数
     optional int32 gold_reborn_times = 16;     // 元宝复活次数
+    optional int32 hp_max = 17;     //boss最大血量
 }
 
 //请求pvb玩家信息, command:1702
@@ -110,5 +111,6 @@ message PvbAwardResponse
     required bool is_over = 1; //领奖是否结束
     optional int32 award_type = 2; //奖励类型:排行奖1, 累积奖励2, 最后击杀3, 参与奖4
     optional GameResourcesResponse gain = 3;
+    optional int32 rank_no = 4; //排行
 }
 

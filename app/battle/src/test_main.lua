@@ -84,10 +84,15 @@ function setData(fightData, fightType)
 end
 
 function pvp_start()
-    -- 开始战斗
-    print("start======")
+    -- 开始pvp战斗
+    print("pvp start======")
     fcProcess:init()
     return fcProcess:pvp_start()
 end
 
-
+function pve_start(steps)
+    -- 开始pve战斗
+    print("pve start======")
+    fcProcess:init()
+    return fcProcess:pve_start(steps)
+end

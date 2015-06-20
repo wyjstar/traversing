@@ -1,5 +1,6 @@
 import("..models.FindTargetUnits")
 import("..models.FMExecuteSkill")
+
 local BuffSetForView = import("..models.BuffSetForView")
 local Buff = import("..models.FMBuff")
 local FightProcess = class("FightProcess")
@@ -7,6 +8,7 @@ local FightProcess = class("FightProcess")
 function FightProcess:ctor(send_message)
 	self.send_message = send_message
     --动作数据类，可获取action.json和buff_action.json数据
+    self.actionUtil = getActionUtil()	
     self.is_begin_action = nil -- 是否是起手动作
     init_find_target_units(self)
     self.small_step = 0 -- 1:before buff 攻击前清buff  2:begin action 起手动作 3:do buff 攻击 4:after buff 攻击后清buff
@@ -16,11 +18,11 @@ function FightProcess:ctor(send_message)
     self.red_unpara_skill = nil--我方无双
     self.blue_unpara_skill = nil--敌方无双
     self.buddy_skill = nil--小伙伴
-    --self.dropInfoTable = {}--掉落包
+    self.dropInfoTable = {}--掉落包
     --BaseTemplate.lua 获取基本信息
     self.baseTemplate = getTemplateManager():getBaseTemplate()
     --战斗数据对象
-    --self.fightData = getDataManager():getFightData()    
+    self.fightData = getDataManager():getFightData()    
     --初始值
     self.red_step = 1--我方步数
     self.blue_step = 1--敌方步数
@@ -36,11 +38,12 @@ function FightProcess:ctor(send_message)
     self.battleStep = {} -- 同步数据
     createFile()
     self.back_skill_buff = nil -- 保存反击buff
+    self.current_skill_type = TYPE_NORMAL  -- 当前技能类型
 end
 
 function FightProcess:init(fight_type)
     cclog("FightProcess:init=====================>")
-    --self.fight_type = getDataManager():getFightData():getFightType()
+    self.fight_type = getDataManager():getFightData():getFightType()
     self.fight_type = fight_type
     self.dropNum = 3
     self.red_units, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
@@ -48,6 +51,8 @@ function FightProcess:init(fight_type)
     --总回合数
     self.max_round = table.nums(self.blue_groups)
     self.blue_hp_total = self:get_blue_hp_total()
+    -- self.red_unpara_skill.mp_step = 50
+    -- self.buddy_skill.mp_step = 50
 end
 
 --执行开场技能
@@ -111,7 +116,7 @@ function FightProcess:perform_before_buff(army, enemy, attacker)
         attacker.buff_manager:perform_passive_buff(self) -- 被动buff
     end
 
-    return self:construct_step_action(attacker, TYPE_NORMAL, SKILL_STAGE_IN_BUFF, self.temp_buff_set.before_buffs, STEP_BEFORE_BUFF)
+    return self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.before_buffs, STEP_BEFORE_BUFF)
 end
 
 -- 起手动作
@@ -119,7 +124,7 @@ function FightProcess:perform_begin_action(army, enemy, attacker)
     print("FightProcess:perform_begin_action====================")
     local skill = attacker.skill
     local is_mp_skill = skill:is_mp_skill()
-    local step_action = self:construct_step_action(attacker, TYPE_NORMAL, SKILL_STAGE_IN_BUFF, self.temp_buff_set.before_buffs, STEP_BEGIN_ACTION)
+    local step_action = self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.before_buffs, STEP_BEGIN_ACTION)
     step_action.beginAction = attacker.skill:get_begin_action(is_mp_skill)
     return step_action
 end
@@ -225,11 +230,18 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     -- 在攻击技能触发完成后，处理mp
     skill:add_mp(is_mp_skill)
 
-
+    if self.current_skill_type == TYPE_NORMAL then
+        self.red_unpara_skill:add_mp()
+        self.blue_unpara_skill:add_mp()
+    end
+    if attacker.side == "blue" and self.buddy_skill and self.current_skill_type == TYPE_NORMAL then  --小伙伴被攻击则增加怒气
+        self.buddy_skill:add_mp()
+        print("buddy_skills1===="..self.buddy_skill.mp)
+    end
     -- 构造播放攻击所需的所有信息
     local skillType = skill:get_skill_type()
     print("skillType========"..skillType)
-    return self:construct_step_action(attacker, skillType, SKILL_STAGE_IN_BUFF, self.temp_buff_set.buffs, STEP_DO_BUFF)
+    return self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.buffs, STEP_DO_BUFF)
 end
 
 -- 攻击后buff
@@ -239,7 +251,7 @@ function FightProcess:perform_after_buff(army, enemy, attacker)
     if attacker.buff_manager then
         attacker.buff_manager:perform_active_buff(self)   --主动buff，在攻击有效后触发
     end
-    return self:construct_step_action(attacker, TYPE_NORMAL, SKILL_STAGE_IN_BUFF, self.temp_buff_set.after_buffs, STEP_AFTER_BUFF)
+    return self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.after_buffs, STEP_AFTER_BUFF)
 end
 
 function FightProcess:construct_step_action(attacker, skillType, skillStage, buffs, skillSmallStep)
@@ -262,6 +274,7 @@ function FightProcess:before_or_after_skill(skill_buff_info, main_target_units, 
 end
 -- 处理buff
 function FightProcess:handle_skill_buff(target_side, target_units, skill_buff_info, viewTargetPos)
+    print("FightProcess:handle_skill_buff")
     print("trigger1=========", skill_buff_info.id)
     appendFile2("trigger1========="..tostring(skill_buff_info.id), 0)
     self.temp_buff_set:add(skill_buff_info, viewTargetPos)
@@ -278,6 +291,7 @@ function FightProcess:handle_skill_buff(target_side, target_units, skill_buff_in
 end
 -- 处理主技能
 function FightProcess:handle_main_skill_buff(target_side, main_target_unit_infos, skill_buff_info, viewTargetPos)
+    print("FightProcess:handle_main_skill_buff")
     self.temp_buff_set:add(skill_buff_info, viewTargetPos)
     local temp_buff = {}
     local target_infos = {}
@@ -292,6 +306,13 @@ function FightProcess:handle_main_skill_buff(target_side, main_target_unit_infos
     end
 end
 
+function FightProcess:getActions(skill_buff_info)
+    if skill_buff_info.actEffect ~= 0 then
+        return self.actionUtil.buffdata[string.format(skill_buff_info.actEffect)].actions
+    end
+    return {}
+end
+
 function FightProcess:set_small_step()
     self.small_step = self.small_step + 1
     print("set_small_step:"..self.small_step)
@@ -303,6 +324,7 @@ function FightProcess:next_round()
     self.current_fight_times = 1
     self.red_step = 1
     self.blue_step = 1
+    self.small_step = 0
 
     self.blue_units = self.blue_groups[self.current_round]
 
@@ -378,25 +400,38 @@ end
 --执行一步，即一个战斗动作
 function FightProcess:perform_one_step()
     self.step_id = self.step_id + 1
-    if self.small_step == 4 then
-        self:set_step()
-    end
-    cclog("FightProcess:perform_one_step=================>")
+    cclog("FightProcess:perform_one_step=================>".."skill_type:"..self.current_skill_type.."small_step:"..self.small_step.."red_step:"..self.red_step.."blue_step:"..self.blue_step)
+    self:set_step()
     --获取回合结果
     local result = self:check_result()
     --如果战斗结束则发送结束消息
     if result == 1 or result == -1 then
         -- 战斗结束，发送结果
+        print("lose============")
         self.send_message(const.EVENT_FIGHT_RESULT, (result == 1))
         return 
     end
     --如果可以执行反击buff，则先执行反击buff
-    if self:perform_back_buff() then return end    
+    if self.current_skill_type == TYPE_BACK then
+        self:perform_back_buff() 
+    elseif self.current_skill_type == TYPE_BUDDY then
+        self:do_buddy_skill()
+    elseif self.current_skill_type == TYPE_RED_UNPARAL then
+        self:do_unpara_skill()
+    elseif self.current_skill_type == TYPE_BLUE_UNPARAL then
+        self:do_unpara_skill()
+    elseif self.current_skill_type == TYPE_NORMAL then
+        self:do_normal_skill()
+    end    
     --如果可以执行小伙伴技能，则先执行小伙伴
-    if self:do_buddy_skill() then return end    
+    --if self:do_buddy_skill() then return end    
     --如果可以执行无双技能，则先执行无双
-    if self:do_unpara_skill() then return end
+    --if self:do_unpara_skill() then return end
 
+end
+
+function FightProcess:do_normal_skill()
+    print("do_normal_skill==================")
     local attack_units = nil--攻击阵容
     local defend_units = nil--防御阵容
     local who_step = nil--攻击者位置
@@ -415,25 +450,76 @@ function FightProcess:perform_one_step()
     local attacker = attack_units[who_step]
     --如存在则执行技能，否则执行下一步
     if attacker then
+        print("attacker is not nil")
         self:perform_one_skill(attack_units, defend_units, attacker)
     else
-        self:set_step()
+        self:set_normal_step()
+        print("attacker is nil")
         self:perform_one_step()
         return
     end
-    self.red_unpara_skill:add_mp()
-    self.blue_unpara_skill:add_mp()
-    print("buddy_skills1====")
-    print(self.buddy_skill)
-    print(self.attacker.side)
-    if attacker.side == "blue" and self.buddy_skill then  --小伙伴被攻击则增加怒气
-        self.buddy_skill:add_mp()
-        print("buddy_skills1===="..self.buddy_skill.mp)
+    if self.small_step == STEP_AFTER_BUFF then
+        self:set_normal_step()
     end
 end
+
+
 --计步器
 function FightProcess:set_step()
+    print("set_step===========", self.red_unpara_skill.mp)
+    print("set_step===========", self.blue_unpara_skill.mp)
+    if self:is_current_skill_end() then
+        print("is_current_skill_end=============")
+        print(self.red_unpara_skill:is_ready())
+        if self.back_skill_buff then
+            print("change to back")
+            self.current_skill_type = TYPE_BACK
+        elseif self.red_unpara_skill:is_ready() then
+            print("change to red_unpara_skill")
+            self.current_skill_type = TYPE_RED_UNPARAL
+        elseif self.blue_unpara_skill:is_ready() then
+            print("change to blue_unpara_skill")
+            self.current_skill_type = TYPE_BLUE_UNPARAL
+        elseif self.buddy_skill and self.buddy_skill:is_ready() then
+            print("change to buddy_skill")
+            self.current_skill_type = TYPE_BUDDY
+        else
+            print("change to normal")
+            self.current_skill_type = TYPE_NORMAL
+        end
+    end
+end
+
+function FightProcess:is_current_skill_end()
+    -- 是否当前技能结束
+    
+    if self.current_skill_type == TYPE_BACK and not self.back_skill_buff then
+        print("is_current_skill_end======back")
+        return true
+    end
+    if self.current_skill_type == TYPE_NORMAL and self.small_step == 0 then
+        print("is_current_skill_end======normal")
+        return true
+    end
+    if self.current_skill_type == TYPE_RED_UNPARAL and self.small_step == 0 then
+        print("is_current_skill_end======red_unpara")
+        return true
+    end
+    if self.current_skill_type == TYPE_BLUE_UNPARAL and self.small_step == 0 then
+        print("is_current_skill_end======blue_unpara")
+        return true
+    end
+    if self.current_skill_type == TYPE_BUDDY and self.small_step == 0 then
+        print("is_current_skill_end======buddy")
+        return true
+    end
+    return false
+end
+
+
+function FightProcess:set_normal_step()
     self.small_step = 0
+
     if self.red_step == self.blue_step then
         self.red_step = self.red_step + 1
     else
@@ -451,6 +537,7 @@ end
 
 --处理反击相关的buff
 function FightProcess:perform_back_buff()
+    print("FightProcess:perform_back_buff=============")
     local v = self.back_skill_buff
     if not v then return false end
 
@@ -464,12 +551,13 @@ function FightProcess:perform_back_buff()
     self.enemy = enemy
     self.attacker = attacker
     if table.ink(army, attacker.pos) and v then
-        local step_action = self.fightProcess:perform_back_skill(attacker, v["skill_buff_info"], target)
+        local step_action = self:perform_back_skill(attacker, v["skill_buff_info"], target)
         if step_action then
             self.send_message(const.EVENT_ROUND_BEGIN, step_action)        
         end
     end
     self.back_skill_buff = nil
+    self.small_step = 0
     return true
 end
 
@@ -493,19 +581,21 @@ end
 
 -- 执行无双
 function FightProcess:do_unpara_skill()
-    print("do_unpara_skill============")
+    --if self.red_unpara_skill:is_ready() and self.small_step ~= 1  then return false end
+    
     local skill = nil
     local isDone = false
     local attacker = nil
     local attack_units = nil
     local defend_units = nil
 
-    if self.red_unpara_skill:is_ready() then
+
+    if self.current_skill_type == TYPE_RED_UNPARAL then
         isDone = true
         skill = self.red_unpara_skill
         attack_units = self.red_units
         defend_units = self.blue_units        
-    elseif self.blue_unpara_skill:is_ready() then
+    elseif self.current_skill_type == TYPE_BLUE_UNPARAL then
         isDone = true
         skill = self.blue_unpara_skill
         attack_units = self.blue_units
@@ -518,8 +608,11 @@ function FightProcess:do_unpara_skill()
         skill:reset()
         local stepData = {}
         stepData.step_id = self.step_id
-        stepData.step_type = TYPE_UNPARAL
+        stepData.step_type = self:get_current_type()
         table.insert(self.battleStep, stepData)
+    end
+    if self.small_step == STEP_DO_BUFF then
+        self.small_step = 0
     end
 
     return isDone
@@ -527,7 +620,7 @@ end
 
 -- 执行小伙伴
 function FightProcess:do_buddy_skill()
-    if self.buddy_skill and self.buddy_skill:is_ready() then
+    if self.current_skill_type == TYPE_BUDDY then
         print("do_buddy_skill============")
         local attacker = self.buddy_skill.unit
         attacker.skill = self.buddy_skill
@@ -540,8 +633,11 @@ function FightProcess:do_buddy_skill()
         -- 保存数据用于与服务器同步
         local stepData = {}
         stepData.step_id = self.step_id
-        stepData.step_type = TYPE_BUDDY
+        stepData.step_type = self:get_current_type()
         table.insert(self.battleStep, stepData)
+        if self.small_step == STEP_AFTER_BUFF then
+            self.small_step = 0
+        end
         return true
     end
     return false
@@ -578,7 +674,7 @@ function FightProcess:get_total_damage()
     local left = 0
     for _,v in pairs(self.blue_groups) do
         for _,unit in pairs(v) do
-            left = left + unit.hp_begin
+            left = left + unit.hp
         end
     end
     return self.blue_hp_total - left
@@ -612,5 +708,12 @@ function FightProcess:is_last_hero_dead(target_unit)
     if table.nums(units) > 0 then return false end
     if table.nums(units) == 0 then return true end
     return false
+end
+
+function FightProcess:get_current_type()
+    if self.current_skill_type == TYPE_RED_UNPARAL or self.current_skill_type == TYPE_BLUE_UNPARAL then
+        return TYPE_UNPARAL
+    end
+    return self.current_skill_type
 end
 return FightProcess
