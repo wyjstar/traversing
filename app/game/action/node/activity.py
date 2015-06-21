@@ -31,11 +31,16 @@ def get_act_gift_1832(data, player):
         res = get_20_gift(player, act_conf, response)
     elif act_type == 21:  # 通关关卡
         res = get_21_gift(player, act_conf, response)
+    elif act_type == 23:  # 精华商店刷新
+        res = get_23_gift(player, act_conf, response)
     if res:
-        if received_ids:
-            player.act.received_ids.get(act_type).append(act_id)
+        if act_type == 23:
+            player.act.act23_info[2] = 1
         else:
-            player.act.received_ids[act_type] = [act_id]
+            if received_ids:
+                player.act.received_ids.get(act_type).append(act_id)
+            else:
+                player.act.received_ids[act_type] = [act_id]
         player.act.save_data()
         response.res.result = True
 
@@ -43,13 +48,22 @@ def get_act_gift_1832(data, player):
 
 
 def get_20_gift(player, act_conf, response):  # 战力
-    # power = player.line_up_component.combat_power
-    # if act_conf.parameterA > player.line_up_component.highest_power:
-    if act_conf.parameterA > player.line_up_component.combat_power:
+    # if act_conf.parameterA > player.line_up_component.combat_power:
+    if act_conf.parameterA > player.line_up_component.highest_power:
         response.res.result_no = 802
         return 0
     gain_data = act_conf.reward
     return_data = gain(player, gain_data, const.ACT20)
+    get_return(player, return_data, response.gain)
+    return 1
+
+
+def get_23_gift(player, act_conf, response):  # 通关关卡
+    if not player.act.act23_state:
+        response.res.result_no = 800
+        return 0
+    gain_data = act_conf.reward
+    return_data = gain(player, gain_data, const.ACT21)
     get_return(player, return_data, response.gain)
     return 1
 
@@ -70,11 +84,28 @@ def get_act_info_1831(data, player):
     args = activity_pb2.GetActInfoRequese()
     args.ParseFromString(data)
     act_type = args.act_type
-
     response = activity_pb2.GetActInfoResponse()
+
+    act_confs = game_configs.activity_config.get(act_type)
+    is_open = 0
+    act_id = 0
+    for act_conf in act_confs:
+        if player.base_info.is_activiy_open(act_conf.id):
+            is_open = 1
+            act_id = act_conf.id
+            break
+    if not is_open:
+        response.res.result = True
+        response.res.result_no = 800
+        return response.SerializeToString()
+
     received_ids = player.act.received_ids.get(act_type)
     if received_ids:
         for id in received_ids:
             response.received_act_ids.append(id)
+    if act_type == 23:
+        response.times = player.act.act23_times
+        if player.act.act23_state:
+            response.received_act_ids.append(act_id)
     response.res.result = True
     return response.SerializeToString()

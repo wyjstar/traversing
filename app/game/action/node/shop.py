@@ -396,6 +396,7 @@ def refresh_shop_items_507(pro_data, player):
         response.res.result_no = 50702
         return response.SerializePartialToString()
 
+    print '==============================', shop_type
     shopdata = player.shop.get_shop_data(shop_type)
     if not shopdata:
         response.res.result = False
@@ -408,6 +409,18 @@ def refresh_shop_items_507(pro_data, player):
     for k, v in shopdata['limit_items']:
         response.limit_item_id.append(k)
         response.limit_item_num.append(v)
+
+    if shop_type == 11:
+        # 11活动
+        act_confs = game_configs.activity_config.get(23)
+        is_open = 0
+        for act_conf in act_confs:
+            if player.base_info.is_activiy_open(act_conf.id):
+                is_open = 1
+                break
+        if is_open:
+            player.act.add_act23_times()
+            player.act.save_data()
 
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()
