@@ -281,7 +281,7 @@ class PlayerField(Mine):
             self._lucky[int(sp_id)] = 0
 
     def get_cur_data(self, now):
-        now_data = sum(self._normal.values())# + sum(self._lucky.values())
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
         # print 'get_cur_data', self._mine_id, now_data, self._normal, self._normal_harvest, self._normal_end, now, self._increase
         last, stone = get_cur(self._mine_id,
                               now_data,
@@ -292,7 +292,7 @@ class PlayerField(Mine):
                               self._increase, 1)
         self._normal_harvest = last
         self._normal = stone
-        now_data = sum(self._normal.values())# + sum(self._lucky.values())
+        now_data = sum(self._normal.values()) + sum(self._lucky.values())
         # print 'get_cur_data', self._mine_id, now_data, self._lucky, self._lucky_harvest, self._lucky_end, now, self._increase
         last, stone = get_cur(self._mine_id,
                               now_data,
@@ -325,8 +325,8 @@ class PlayerField(Mine):
 #             last_increase = self._increase
         mine = ConfigData.mine(self._mine_id)
         # print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
-        limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
-        return 0, 1, 0, limit, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
+#         limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
+        return 0, 1, 0, mine.outputLimited, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
 
 
 

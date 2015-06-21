@@ -140,14 +140,15 @@ def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level,
 
 
 def get_pvp_data(character_id):
-    keys = ['level',
-            'attackPoint',
-            'best_skill',
-            'unpars',
-            'current_unpar',
-            'copy_units']
     char_obj = tb_character_info.getObj(character_id)
     if char_obj.exists():
+        keys = ['level',
+                'attackPoint',
+                'best_skill',
+                'unpars',
+                'current_unpar',
+                'copy_units',
+                'copy_units2']
         pvp_data = char_obj.hmget(keys)
         pvp_data['character_id'] = character_id
         pvp_data['unpar_skill'] = pvp_data['current_unpar']
@@ -166,7 +167,8 @@ def get_pvp_data(character_id):
     return {}
 
 
-def pvp_fight(player, character_id, line_up, skill, response, callback):
+def pvp_fight(player, character_id, line_up, skill, response, callback,
+              is_copy_unit=False):
     record = get_pvp_data(character_id)
     if not record:
         logger.error('player id is not found:%s', character_id)
@@ -177,7 +179,10 @@ def pvp_fight(player, character_id, line_up, skill, response, callback):
     best_skill, skill_level = player.line_up_component.get_skill_info_by_unpar(skill)
     logger.debug("best_skill=================== %s" % best_skill)
 
-    blue_units = record.get('copy_units')
+    if is_copy_unit:
+        blue_units = record.get('copy_units2')
+    else:
+        blue_units = record.get('copy_units')
     save_line_up_order(line_up, player, skill)
     red_units = player.fight_cache_component.get_red_units()
 
@@ -390,7 +395,8 @@ def pvp_fight_overcome_1508(data, player):
         logger.debug("red_units: %s" % response.red)
         return response.SerializeToString()
 
-    return pvp_fight(player, target_id, line_up, skill, response, settle)
+    return pvp_fight(player, target_id, line_up, skill, response,
+                     settle, is_copy_unit=True)
 
 
 @remoteserviceHandle('gate')
