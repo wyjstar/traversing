@@ -66,6 +66,8 @@ def shop_oper(pro_data, player, reason):
         player.shop.first_coin_draw = False
         player.shop.save_data()
 
+        hook_task(player, CONDITIONId.HERO_GET, 1)
+
         response.res.result = True
         return response.SerializeToString()
 
@@ -78,6 +80,8 @@ def shop_oper(pro_data, player, reason):
         player.shop.first_gold_draw = False
         player.shop.single_gold_draw_times += 1
         player.shop.save_data()
+
+        hook_task(player, CONDITIONId.HERO_GET, 1)
 
         response.res.result = True
         return response.SerializeToString()
