@@ -167,9 +167,10 @@ class CharacterBaseInfoComponent(Component):
         ts = open_info.values()[0][0]
 
         register_time = self._owner.base_info.register_time
-        if days_to_current(register_time) > days or \
-            (days_to_current(register_time) == days and string_to_timestamp_hms(ts)) < get_current_timestamp():
-                logger.error("%s %s %s" % (ts, string_to_timestamp_hms(ts), get_current_timestamp()))
+        logger.error("days %s tocurent_days %s %s %s" % (days, days_to_current(register_time), string_to_timestamp_hms(ts), get_current_timestamp()))
+        if days_to_current(register_time) > days-1 or \
+            (days_to_current(register_time) == days-1 and string_to_timestamp_hms(ts) < get_current_timestamp()):
+                logger.debug("check open date True")
                 return True
         return False
 
