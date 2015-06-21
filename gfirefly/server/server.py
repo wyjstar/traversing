@@ -71,7 +71,7 @@ class FFServer:
         mreload = config.get('reload')  # 重新加载模块名称
         self.servername = servername
         if servername == 'net':
-            time.sleep(2)
+            time.sleep(6)
 
         if logpath:
             log_init(logpath)  # 日志处理

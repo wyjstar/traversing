@@ -13,6 +13,7 @@ message NewbeeGuideStepResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
     optional GameResourcesResponse consume = 3;
+    optional int32 step_id = 4;
 }
 message ChangeHeadResponse{
     required CommonResponse res = 1;

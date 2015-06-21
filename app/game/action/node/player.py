@@ -302,6 +302,7 @@ def new_guide_step_1802(data, player):
             player.base_info.save_data()
     player.pay.pay(need_gold, func)
     response.res.result = True
+    response.step_id = request.step_id
 
     return response.SerializePartialToString()
 

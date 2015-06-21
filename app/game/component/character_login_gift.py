@@ -58,14 +58,14 @@ class CharacterLoginGiftComponent(Component):
         """docstring for check_time"""
         logger.debug("login_time================== %s" % days_to_current(self._last_login))
         if days_to_current(self._last_login) > 1:
-            activity_infos = game_configs.activity_config.get(2)
+            activity_infos = game_configs.activity_config.get(2, [])
             for info in activity_infos:
                 self._continuous_day[info.id] = -1
             self._continuous_day[2001] = 0
             self._continuous_day_num = 1
 
             # 7天乐
-            activity_infos = game_configs.activity_config.get(18)
+            activity_infos = game_configs.activity_config.get(18, [])
             for info in activity_infos:
                 self._continuous_7day[info.id] = -1
             self._continuous_7day[18001] = 0
@@ -76,7 +76,7 @@ class CharacterLoginGiftComponent(Component):
             self._continuous_day_num += 1
             for k in sorted(self._continuous_day.keys()):
                 v = self._continuous_day[k]
-                activity_info = game_configs.activity_config.get(k)
+                activity_info = game_configs.activity_config.get(k, [])
                 if v == -1 or activity_info.parameterA == 7:
                     self._continuous_day[k] = 0
                     break
@@ -85,7 +85,7 @@ class CharacterLoginGiftComponent(Component):
             self._continuous_7day_num += 1
             for k in sorted(self._continuous_7day.keys()):
                 v = self._continuous_7day[k]
-                activity_info = game_configs.activity_config.get(k)
+                activity_info = game_configs.activity_config.get(k, [])
                 if v == -1:
                     self._continuous_7day[k] = 0
                     break
