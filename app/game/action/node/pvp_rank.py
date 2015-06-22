@@ -201,13 +201,15 @@ def pvp_fight_request_1505(data, player):
     # print "blue_units:", blue_units
     blue_units = cPickle.loads(blue_units)
     # print "blue_units:", blue_units
-    red_units = player.fight_cache_component.red_unit
+    red_units = player.fight_cache_component.get_red_units()
 
     seed1, seed2 = get_seeds()
+    print("seed1, seed2=========%s %s" % (seed1, seed2))
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
                                record.get("level"), __skill, seed1, seed2)
 
+    logger.debug("blue_units: %s" % blue_units)
     logger.debug("fight result:%s" % fight_result)
 
     if fight_result:
@@ -287,6 +289,7 @@ def pvp_fight_request_1505(data, player):
     response.blue_skill_level = record.get("unpar_skill_level")
     response.seed1 = seed1
     response.seed2 = seed2
+    logger.debug(response)
 
     return response.SerializeToString()
 

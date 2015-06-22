@@ -36,23 +36,38 @@ function FightProcess:ctor(send_message)
     self.playerLevel=30
     self.step_id = 0  -- 自增
     self.battleStep = {} -- 同步数据
-    createFile()
     self.back_skill_buff = nil -- 保存反击buff
     self.current_skill_type = TYPE_NORMAL  -- 当前技能类型
 end
 
 function FightProcess:init(fight_type)
     cclog("FightProcess:init=====================>")
+    createFile()
     self.fight_type = getDataManager():getFightData():getFightType()
     self.fight_type = fight_type
     self.dropNum = 3
     self.red_units, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
+    self:init_round()
     self.blue_units = self.blue_groups[self.current_round]
     --总回合数
     self.max_round = table.nums(self.blue_groups)
     self.blue_hp_total = self:get_blue_hp_total()
+    self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
     -- self.buddy_skill.mp_step = 50
+end
+
+function FightProcess:init_round()
+    self.red_step = 1--我方步数
+    self.blue_step = 1--敌方步数
+    self.current_round = 1--当前回合数
+    self.current_fight_times = 1--当前战斗回合数
+    self.small_step = 0 
+    self.current_skill_type = TYPE_NORMAL
+    self.back_skill_buff = nil
+    self.step_id = 0
+    self.battleStep = {}
+    self.playerStep = 30
 end
 
 --执行开场技能

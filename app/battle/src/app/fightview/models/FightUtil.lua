@@ -3,18 +3,16 @@ local s2 = 3.0
 require("math")
 
 function set_seed(x1, x2)
+    appendFile2("set_seed======="..x1.."============"..x2)
     s1 = x1
     s2 = x2
-    s1 = math.random(os.time())
-    s2 = math.random(os.time())
 end
 
 function get_random_int(_begin, _end)
     -- 获取随机数，从begin到end
-    s1 = math.random(os.time())
-    s2 = math.random(os.time())
     s1, s2, ran = rnd(s1, s2)
     x = (_end - _begin) * ran + _begin
+    appendFile2("get_random_int======="..math.floor(x))
     return math.floor(x)
 end
 

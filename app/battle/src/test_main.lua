@@ -12,6 +12,7 @@ local FCProcess = import(framework.PACKAGE_NAME.."src.app.fightview.controller.S
 local TemplateManager = import(framework.PACKAGE_NAME.."src.app.datacenter.template.TemplateManager")
 local CalculationManager = import(framework.PACKAGE_NAME.."src.app.datacenter.calculation.CalculationManager")
 local DataManager = import(framework.PACKAGE_NAME.."src.app.datacenter.bean.DataManager")
+
 cc = cc or {}
 function cc.pAdd(t, t1)
     print(data)
@@ -20,6 +21,9 @@ function cc.p(p1, p2)
     print(data)
 end
 import(framework.PACKAGE_NAME.."src.app.Constants")
+
+SERVER_CODE = 1
+
 
 function getTemplateManager()
     if g_TemplateManager == nil then
@@ -46,6 +50,7 @@ function getActionUtil()
     return nil
 end
 function createFile()
+    print("createFile=============")
     --local filename = cc.FileUtils:getInstance():getWritablePath().."output"
     local filename = "output"
     local f = io.open(filename, "w")
@@ -54,6 +59,7 @@ end
 
 function appendFile2(message, tab_num)
     --local filename = cc.FileUtils:getInstance():getWritablePath().."output"
+    print("appendFile2=============")
     local filename = "output"
     f = io.open(filename, "a")
 
@@ -70,6 +76,13 @@ function appendFile2(message, tab_num)
     f:close()
 end
 
+-- 数值处理小数点的数值
+function roundNumber(number)
+    -- return math.round(number)        -- 四舍五入
+    return math.floor(number)           -- 舍去小数点
+end
+
+
 function cclog(data)
     print(data)
 end
@@ -81,6 +94,8 @@ function setData(fightData, fightType)
     -- fightType: 战斗类型
     getDataManager():getFightData():setFightType(fightType)
     getDataManager():getFightData():setData(fightData)
+    print("seed1============"..fightData.seed1)
+    print("seed2============"..fightData.seed2)
 end
 
 function pvp_start()
@@ -96,3 +111,4 @@ function pve_start(steps)
     fcProcess:init()
     return fcProcess:pve_start(steps)
 end
+

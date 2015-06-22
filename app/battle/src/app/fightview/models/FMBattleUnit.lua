@@ -116,7 +116,7 @@ function FMBattleUnit:get_break_skill_nos()
 end
 
 function FMBattleUnit:is_dead()
-    if self.hp <= 0 then
+    if tonumber(self.hp) <= 0 then
         return true
     end
     return false
@@ -130,19 +130,19 @@ end
 
 function FMBattleUnit:str_data()
     local info = ""
-    info=info.."武将no:"..self.no.."---"
-    info=info.."hp:"..self:get_hp().."---"
-    info=info.."mp:"..self.skill.mp.."---"
-    info=info.."攻击:"..self:get_atk().."---"
-    info=info.."物理防御:"..self:get_physical_def().."---"
-    info=info.."魔法防御:"..self:get_magic_def().."---"
-    info=info.."命中:"..self:get_hit().."---"
-    info=info.."闪避:"..self:get_dodge().."---\n"
-    info=info.."\t暴击:"..self:get_cri().."---"
-    info=info.."暴击系数:"..self:get_cri_coeff().."---"
-    info=info.."暴击减免系数:"..self:get_cri_ded_coeff().."---"
-    info=info.."格挡:"..self:get_block().."---"
-    info=info.."韧性:"..self:get_ductility().."---"
+    info=info.."武将no:"..roundNumber(self.no).."---"
+    info=info.."hp:"..roundNumber(self:get_hp()).."---"
+    info=info.."mp:"..roundNumber(self.skill.mp).."---"
+    info=info.."攻击:"..roundNumber(self:get_atk()).."---"
+    info=info.."物理防御:"..roundNumber(self:get_physical_def()).."---"
+    info=info.."魔法防御:"..roundNumber(self:get_magic_def()).."---"
+    info=info.."命中:"..roundNumber(self:get_hit()).."---"
+    info=info.."闪避:"..roundNumber(self:get_dodge()).."---\n"
+    info=info.."\t暴击:"..roundNumber(self:get_cri()).."---"
+    info=info.."暴击系数:"..roundNumber(self:get_cri_coeff()).."---"
+    info=info.."暴击减免系数:"..roundNumber(self:get_cri_ded_coeff()).."---"
+    info=info.."格挡:"..roundNumber(self:get_block()).."---"
+    info=info.."韧性:"..roundNumber(self:get_ductility()).."---"
     info=info.."位置:"..self.pos.."---"
     info=info.."等级:"..self.level.."---"
     info=info.."突破等级:"..self.break_level.."---"

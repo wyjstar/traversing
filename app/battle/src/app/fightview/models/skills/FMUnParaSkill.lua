@@ -1,6 +1,7 @@
 -- 无双技能类
 --
 import("..FightUtil")
+
 local FMBuffManager = import("..FMBuffManager")
 local FMUnParaSkill = class("FMUnParaSkill", FMUnParaSkill)
 

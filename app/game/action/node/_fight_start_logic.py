@@ -20,8 +20,8 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    red_best_skill_id = player.fight_cache_component.red_best_skill_id
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
+    #red_best_skill_id = player.fight_cache_component.red_best_skill_id
+    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill)
     #process = BattlePVPProcess(red_units, red_best_skill, player.base_info.level, blue_units,
                                 #blue_best_skill, blue_player_level)
     res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
@@ -54,7 +54,7 @@ def save_line_up_order(line_up, player, current_unpar):
         return
     logger.debug("current_unpar%s"% current_unpar)
 
-    layer.line_up_component.line_up_order = line_up_info
+    player.line_up_component.line_up_order = line_up_info
     player.line_up_component.current_unpar = current_unpar
     player.line_up_component.save_data()
 

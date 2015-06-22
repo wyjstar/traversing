@@ -187,12 +187,14 @@ function unpara(attacker_side, target, buff_info, playerLevel, extra_msgs)
     m1 = m1.."总atk:"..tostring(atkArray)
     m1 = m1.."--基础伤害:"..tostring(warriorsDamage)
     table.insert(extra_msgs, m1)
+    target:set_hp(target:get_hp() - warriorsLastDamage)
     return warriorsLastDamage
 end
 
 -- 怪物无双值
-function unpara_monster(atk, extra_msgs)
+function unpara_monster(atk, target, extra_msgs)
     local warriorsDamage = getFormulaTemplate():getFunc("monster_warriors_atkArray")(atk)
+    target:set_hp(target:get_hp() - warriorsLastDamage)
     return warriorsDamage
 end
 
