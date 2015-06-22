@@ -13,7 +13,6 @@ class TEManager(object):
         """
         self._events = {}  # {time:[函数]}
         self._day_events = {}  # {time:[函数]}
-        self._last_deal = 1  # 上次更新时间
 
     def add_event(self, time, type, event):
         pass

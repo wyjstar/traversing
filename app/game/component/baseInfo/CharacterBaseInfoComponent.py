@@ -548,9 +548,9 @@ class CharacterBaseInfoComponent(Component):
         if not activity_info:
             logger.error("can not find activity_config by id %s" % activity_id)
             return False
-        if not activity_info.is_open:
-            logger.debug("activity close by is_open.")
-            return False
+        # if not activity_info.is_open:
+        #     logger.debug("activity close by is_open.")
+        #     return False
         current_time = get_current_timestamp()
         if activity_info.timeStart > current_time or current_time > activity_info.timeEnd:
             logger.debug("activity close by timeStart timeEnd.")

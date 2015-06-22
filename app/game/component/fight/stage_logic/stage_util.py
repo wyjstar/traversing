@@ -25,7 +25,7 @@ def get_stage_config(stage_config, stage_type, stage_id):
     return stage_info
 
 
-def settle(player, result, response, conf):
+def settle(player, result, response, conf, stage_type=0):
     """docstring for settle"""
     # 保存关卡信息
     player.stage_component.save_data()
@@ -58,7 +58,20 @@ def settle(player, result, response, conf):
 
     # 构造掉落
     settlement_drops = player.fight_cache_component.fighting_settlement(result)
-    data = gain(player, settlement_drops, const.STAGE)
+
+    is_open = 0
+    if stage_type == 1:
+        act_confs = game_configs.activity_config.get(27, [])
+        part_multiple = []
+        for act_conf in act_confs:
+            if self.owner.base_info.is_activiy_open(act_conf.id):
+                is_open = 1
+                part_multiple = [act_conf.parameterC, act_conf.parameterA]
+                break
+    if is_open:
+        data = gain(player, settlement_drops, const.STAGE, part_multiple=part_multiple)
+    else:
+        data = gain(player, settlement_drops, const.STAGE)
     get_return(player, data, response.drops)
 
     # 乱入武将按概率获取碎片

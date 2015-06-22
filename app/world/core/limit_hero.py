@@ -83,7 +83,7 @@ def tick_limit_hero():
 
 
 def get_activity_info():
-    act_confs = game_configs.activity_config.get(17)
+    act_confs = game_configs.activity_config.get(17, [])
     activity_id = 0
     timeEnd = 0
     timeStart = 0

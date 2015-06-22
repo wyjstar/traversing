@@ -19,7 +19,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         conf = self.get_stage_config()
         tm_time = time.localtime(player.stage_component.elite_stage_info[1])
 
-        act_confs = game_configs.activity_config.get(24)
+        act_confs = game_configs.activity_config.get(24, [])
         is_open = 0
         add_times = 0
         act_conf1 = None

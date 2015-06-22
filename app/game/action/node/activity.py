@@ -59,7 +59,7 @@ def get_20_gift(player, act_conf, response):  # 战力
 
 
 def get_23_gift(player, act_conf, response):  # 通关关卡
-    if not player.act.act23_state:
+    if player.act.act23_state:
         response.res.result_no = 800
         return 0
     gain_data = act_conf.reward
@@ -86,7 +86,7 @@ def get_act_info_1831(data, player):
     act_type = args.act_type
     response = activity_pb2.GetActInfoResponse()
 
-    act_confs = game_configs.activity_config.get(act_type)
+    act_confs = game_configs.activity_config.get(act_type, [])
     is_open = 0
     act_id = 0
     for act_conf in act_confs:

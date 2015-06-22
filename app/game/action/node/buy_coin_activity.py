@@ -39,7 +39,8 @@ def buy_coin_activity_1406(data, player):
     """
     response = buy_coin_activity_pb2.BuyCoinResponse()
 
-    buy_times = player.buy_coin.buy_times # 购买次数
+    all_buy_times = player.buy_coin.buy_times # 购买次数
+    buy_times = all_buy_times
     #extra_can_buy_times = player.buy_coin.extra_can_buy_times
     need_gold = 0
     gain_info = game_configs.base_config.get("getMoneyValue")
@@ -47,6 +48,20 @@ def buy_coin_activity_1406(data, player):
     buy_times_price = game_configs.base_config.get("getMoneyBuyTimesPrice")
 
     # 获取 need_gold
+    act_confs = game_configs.activity_config.get(26, [])
+    is_open = 0
+    xs = 1
+    add_times = 0
+    for act_conf in act_confs:
+        if player.base_info.is_activiy_open(act_conf.id):
+            is_open = 1
+            add_times = act_conf.parameterA
+            xs = act_conf.parameterB
+            free_times += act_conf.parameterA
+            buy_times -= act_conf.parameterA
+            if buy_times < 0:
+                buy_times == 0
+            break
     for k in sorted(buy_times_price.keys(), reverse=True):
         if buy_times >= k:
             need_gold = buy_times_price[k]
@@ -85,7 +100,9 @@ def buy_coin_activity_1406(data, player):
         player.buy_coin.buy_times = buy_times + 1
         player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
-        player.finance.add_coin(coin_nums)
+        if is_open:
+            coin_nums *= xs
+        player.finance.add_coin(int(coin_nums))
         player.finance.save_data()
 
     res = player.pay.pay(need_gold, func)
