@@ -56,6 +56,7 @@ class PlayerCharacter(object):
         self._pay = component.CharacterPay(self)
 
     def init_player_info(self):
+        logger.debug("init_player_info===========")
         character_obj = tb_character_info.getObj(self._pid)
         character_info = character_obj.hgetall()
         for c in self._components.values():

@@ -24,12 +24,12 @@ def get_current_day_timestamp(hour=0, minute=0, sec=0):
 def get_current_timestamp():
     return time.time()
 
-def string_to_timestamp(time_str):
+def string_to_timestamp(time_str, scheme="%Y/%m/%d %H:%M:%S"):
     """
     input: 2014-09-01 23:59
     output: num
     """
-    d = datetime.datetime.strptime(time_str, "%Y/%m/%d %H:%M:%S")
+    d = datetime.datetime.strptime(time_str, scheme)
     return time.mktime(d.timetuple())
 
 def string_to_timestamp_hms(time_str):
