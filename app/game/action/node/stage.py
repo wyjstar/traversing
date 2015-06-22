@@ -155,7 +155,7 @@ def stage_start_903(pro_data, player):
     response.seed1 = seed1
     response.seed2 = seed2
 
-    red_best_skill_id = player.fight_cache_component.red_best_skill_id
+    player.fight_cache_component.red_best_skill_id = red_best_skill_id
     return response.SerializePartialToString()
 
 
@@ -166,14 +166,15 @@ def fight_settlement_904(pro_data, player):
     stage_id = request.stage_id
     result = request.result
 
+    logger.debug("steps:%s", request.steps)
     #player.fight_cache_component.red_units
     if not pve_process_check(player, result, request.steps):
         logger.error("pve_process_check error!=================")
-        response = stage_response_pb2.StageSettlementResponse()
-        res = response.res
-        res.result = True
-        res.result_no = 9041
-        return response.SerializePartialToString()
+        #response = stage_response_pb2.StageSettlementResponse()
+        #res = response.res
+        #res.result = False
+        #res.result_no = 9041
+        #return response.SerializePartialToString()
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
