@@ -59,6 +59,7 @@ def get_task_reward_1822(data, player):
 
     if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_TASK) and task_conf.sort != 4:
         response.res.result = False
+        logger.debug('error_no:150901')
         response.res.result_no = 150901
         return response.SerializeToString()
 

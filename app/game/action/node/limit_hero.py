@@ -25,7 +25,7 @@ def get_limit_hero_info_1812(data, player):
     if not activity_id:
         response.res.result = False
         response.res.result_no = 864
-        # logger.debug(response)
+        logger.debug(response)
         return response.SerializeToString()
 
     player.limit_hero.update(activity_id)
@@ -43,7 +43,7 @@ def get_limit_hero_info_1812(data, player):
     response.integral_draw_times = player.limit_hero.integral_draw_times
 
     response.res.result = True
-    # logger.debug(response)
+    logger.debug(response)
     return response.SerializeToString()
 
 

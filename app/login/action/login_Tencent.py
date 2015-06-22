@@ -22,8 +22,8 @@ wx_appid = 'wxf77437c08cb06196'
 wx_appkey = '8274b9e862581f8b4976ba90ad2d4b77'
 
 
-@webserviceHandle('/login')
-def server_login():
+@webserviceHandle('/login_qq')
+def qq_server_login():
     """ account login """
     logger.info("server_login login in.")
     openid = request.args.get('open_id')
