@@ -22,6 +22,7 @@ class CharacterLoginGiftComponent(Component):
         self._last_login = int(time.time())  # 日期
 
     def init_data(self, character_info):
+        logger.debug("login_gift_init_data===========")
         data = character_info.get('login_gift')
         self._continuous_day = data.get('continuous_day', {})
         self._continuous_day_num = data.get('continuous_day_num', 0)
@@ -44,6 +45,7 @@ class CharacterLoginGiftComponent(Component):
 
     def check_time(self):
         """docstring for check_time"""
+        logger.debug("login_time================== %s" % days_to_current(self._last_login))
         if days_to_current(self._last_login) > 1:
             activity_infos = game_configs.activity_config.get(2)
             for info in activity_infos:
@@ -61,8 +63,8 @@ class CharacterLoginGiftComponent(Component):
                     break
 
         if days_to_current(self._last_login) > 0:
-            self._cumulative_day.append(-1)
-            for k, v in self._cumulative_day.items():
+            for k in sorted(self._cumulative_day.keys()):
+                v = self._cumulative_day[k]
                 if v == -1:
                     self._cumulative_day[k] = 0
                     break
@@ -107,7 +109,7 @@ class CharacterLoginGiftComponent(Component):
                 activity_info = game_configs.activity_config.get(k)
                 if not activity_info:
                     logger.error("can not find activity_config by id %s" % k)
-                return activity_info.parameterA
+                return activity_info.parameterA - 1
         return 8
 
     @property
@@ -126,15 +128,14 @@ class CharacterLoginGiftComponent(Component):
         if not activity_info:
             logger.error("can not find activity_config by id %s" % activity_id)
             return False
-        if activity_info.type == 1:
-            res = False
-            for item in self._cumulative_day:
-                if not item:
-                    res = True
-            if not res and len(self._cumulative_day) == 7:
-                return False
-
         if not self._owner.base_info.is_activiy_open(activity_id):
             return False
+        if activity_info.type == 1:
+            # 累积七天后关闭
+            res = False
+            for k, v in self._cumulative_day.items():
+                if v != 1:
+                    res = True
+            return res
         return True
 

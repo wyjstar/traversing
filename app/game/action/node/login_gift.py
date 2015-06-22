@@ -96,7 +96,6 @@ def get_login_gift(activity_id, response, player):
         return_data = gain(player, activity_info.reward, const.LOGIN_GIFT_CUMULATIVE)
         get_return(player, return_data, response.gain)
         component_login_gift.continuous_day[activity_id] = 1
-        component_login_gift.continuous_day_num += 1
         component_login_gift.save_data()
     logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
     logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
