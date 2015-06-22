@@ -205,7 +205,7 @@ class WorldBoss(BaseBoss):
         accumulated_rewards = game_configs.base_config.get("world_boss").get('accumulated_rewards')
 
         for player_id, v in self._rank_instance.get(1, 0):
-            for i in range(5, 1, -1):
+            for i in range(len(accumulated_rewards), 0, -1):
                 reward_info = accumulated_rewards.get(i)
                 logger.debug("percent %s hp_max %s damage %s actual damage %s" % (reward_info[0], hp_max, reward_info[0]*hp_max, v))
                 if hp_max * reward_info[0] < v:
