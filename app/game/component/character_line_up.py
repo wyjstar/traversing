@@ -61,6 +61,7 @@ class CharacterLineUpComponent(Component):
         self._hight_power = character_info.get('hight_power', 0)
 
         self.update_slot_activation()
+        self.save_data(['line_up_slots', 'sub_slots'])
 
     def save_data(self, prop_names=[]):
         power = self.combat_power
@@ -109,21 +110,16 @@ class CharacterLineUpComponent(Component):
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态
-        flag = False
         for i in range(1, 7):
             slot = self._line_up_slots[i]
             __level = game_configs.base_config.get("hero_position_open_level").get(i)
             if self.owner.base_info.level >= __level:
                 slot.activation = True
-                flag = True
         for i in range(1, 7):
             slot = self._sub_slots[i]
             __level = game_configs.base_config.get("friend_position_open_level").get(i)
             if self.owner.base_info.level >= __level:
                 slot.activation = True
-                flag = True
-        if flag:
-            self.save_data()
 
     def unpar_upgrade(self, skill_id, skill_upgrade_level):
         if skill_id not in self._unpars:
