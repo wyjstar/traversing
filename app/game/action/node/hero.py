@@ -315,9 +315,10 @@ def hero_sacrifice_oper(heros, player):
 
     player.item_package.add_item(Item(exp_item_no, exp_item_num))
     player.item_package.save_data()
-    item_pb = gain_response.items.add()
-    item_pb.item_no = exp_item_no
-    item_pb.item_num = exp_item_num
+    if exp_item_no:
+        item_pb = gain_response.items.add()
+        item_pb.item_no = exp_item_no
+        item_pb.item_num = exp_item_num
     response.res.result = True
     # print "*"*80
     # print response
