@@ -1080,7 +1080,7 @@ def invite_join_1803(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    if player.guild.position != 1:
+    if player.guild.position == 3:
         logger.error('invite_join_1802 : you are`t president')
         response.res.result = False
         response.res.result_no = 849
@@ -1102,7 +1102,7 @@ def invite_join_1803(data, player):
     if info != 0:
         response.res.result = False
         # response.res.message = "对方已有军团"
-        response.res.result_no = 843
+        response.res.result_no = 865
         return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('guildOpenStage')
@@ -1126,7 +1126,7 @@ def invite_join_1803(data, player):
         if flog:
             response.res.result = False
             # response.res.message = "对方未开启军团功能"
-            response.res.result_no = 837
+            response.res.result_no = 866
             return response.SerializeToString()
 
     elif is_online == 0:
@@ -1503,6 +1503,10 @@ def appoint_1810(data, player):
 
     guild_obj.save_data()
 
-    send_mail(conf_id=306, receive_id=p_id, guild_name=guild_obj.name)
+    if deal_type == 1:
+        mail_id = 306
+    else:  # deal type == 2
+        mail_id = 308
+    send_mail(conf_id=mail_id, receive_id=p_id, guild_name=guild_obj.name)
     response.res.result = True
     return response.SerializeToString()

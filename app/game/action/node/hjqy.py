@@ -15,6 +15,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import is_in_period, is_next_day, get_current_timestamp
 import cPickle
+from app.game.core.task import hook_task, CONDITIONId
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -159,6 +160,9 @@ def battle_2103(pro_data, player):
     response.attack_type = attack_type
     response.hjqy_coin = meritorious_service
     response.res.result = True
+
+    hook_task(player, CONDITIONId.HJQY, 1)
+
     return response.SerializePartialToString()
 
 

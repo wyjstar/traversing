@@ -21,6 +21,7 @@ def task_status(player, tid, response):
         next_task = unlock_conf.get(tid)
         if next_task and state and state == 3:  # 有后续，已领取
             tid = next_task
+            task_conf = game_configs.achievement_config.get('tasks').get(tid)
         else:
             if not next_task and state and state == 2:  # 无后续，已完成未领取
                 task_res.status = 2
@@ -98,7 +99,7 @@ class CONDITIONId:
     LIVELY = 24
     PVP_RANK = 25
     PVBOSS = 26
-    NMRQ = 27  # 南蛮入侵次数
+    HJQY = 27  # 南蛮入侵次数
     GGZJ = 28  # 过关斩将通关令个数
     HERO_GET = 29
     FIGHT_POWER = 30
@@ -112,6 +113,19 @@ def update_condition_add(player, cid, num):
         player.task.conditions_day[cid] += num
     else:
         player.task.conditions[cid] = num
+        player.task.conditions_day[cid] = num
+    player.task.save_data()
+
+
+def update_condition_cover_rank(player, cid, num):
+    condition = 0
+    condition_day = 0
+    if player.task.conditions.get(cid):
+        condition = player.task.conditions.get(cid)
+        condition_day = player.task._conditions_day.get(cid)
+    if num < condition:
+        player.task.conditions[cid] = num
+    if num < condition_day:
         player.task.conditions_day[cid] = num
     player.task.save_data()
 
@@ -146,8 +160,9 @@ def update_condition_insert(player, cid, num):
 # UPDATE_CONDITION_MAP = {}
 # UPDATE_CONDITION_MAP[1] = update_condition1
 UPDATE_CONDITION_ADD = [3, 4, 5, 12, 13, 14, 15, 16,
-                        17, 18, 19, 20, 21, 22, 23, 24, 27, 29]  # 增加
-UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 25, 26, 28, 30]  # 如果比原来值大覆盖
+                        17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29]  # 增加
+UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 30]  # 如果比原来值大覆盖
+UPDATE_CONDITION_COVER_RANK = [25, 26]  # 如果比原来值小覆盖
 UPDATE_CONDITION_INSERT = [32]  # 插入列表
 
 
@@ -156,8 +171,8 @@ def update_condition(player, cid, num):
         update_condition_add(player, cid, num)
     elif cid in UPDATE_CONDITION_COVER:
         update_condition_cover(player, cid, num)
-    elif cid in UPDATE_CONDITION_INSERT:
-        update_condition_insert(player, cid, num)
+    elif cid in UPDATE_CONDITION_COVER_RANK:
+        update_condition_cover_rank(player, cid, num)
 
 
 # ==============
