@@ -220,7 +220,7 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
                 proto_data.tid.append(tid)
     if lively and not is_lively:
         hook_task(player, 24, lively, is_lively=True, proto_data=proto_data)
-    else:
+    elif remote_gate.is_connected():
         remote_gate.push_object_remote(1824,
                                        proto_data.SerializeToString(),
                                        [player.dynamic_id])
