@@ -97,7 +97,7 @@ def buy_coin_activity_1406(data, player):
         if player.base_info.buy_coin_times + free_times <= buy_times:
             # 使用招财令
             player.item_package.consume_item(item_no, 1)
-        player.buy_coin.buy_times = buy_times + 1
+        player.buy_coin.buy_times = all_buy_times + 1
         player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
         if is_open:
