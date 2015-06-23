@@ -205,7 +205,7 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
         if not res['state'] and tid not in share_cids:
             continue
         if task_conf.sort == 2 and res['state']:
-            lively += task_conf.reward.num
+            lively += task_conf.reward[0].num
         if res['state']:
             proto_data.tid.append(tid)
         else:  # 未完成的分享类

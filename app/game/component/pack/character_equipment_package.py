@@ -6,7 +6,7 @@ from app.game.component.Component import Component
 from app.game.core.equipment.equipment import Equipment
 from app.game.redis_mode import tb_character_info
 from shared.utils.pyuuid import get_uuid
-from shared.db_opear.configs_data.game_configs import equipment_config
+from shared.db_opear.configs_data import game_configs
 from app.game.core.task import hook_task, CONDITIONId
 
 
@@ -150,7 +150,7 @@ class CharacterEquipmentPackageComponent(Component):
         """
         count = 0
         for equip_id in self._equipments_obj:
-            equip = equipment_config[equip_id]
+            equip = game_configs.equipment_config[equip_id]
             if equip.quality >= quality:
                 count += 1
         return count
