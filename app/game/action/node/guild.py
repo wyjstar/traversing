@@ -1080,7 +1080,7 @@ def invite_join_1803(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    if player.guild.position != 1:
+    if player.guild.position == 3:
         logger.error('invite_join_1802 : you are`t president')
         response.res.result = False
         response.res.result_no = 849
