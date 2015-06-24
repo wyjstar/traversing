@@ -216,6 +216,7 @@ def get_warriors_906(pro_data, player):
 def stage_sweep_907(pro_data, player):
     request = stage_request_pb2.StageSweepRequest()
     request.ParseFromString(pro_data)
+    print 'stage_sweep_907', request
     stage_id = request.stage_id
     times = request.times
     sweep_type = request.sweep_type

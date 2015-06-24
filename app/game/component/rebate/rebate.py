@@ -61,8 +61,7 @@ class Rebate(Component):
     def save_data(self):
         char_obj = tb_character_info.getObj(self.owner.base_info.id)
         if char_obj:
-            rebate = dict(rebate=self._rebate)
-            char_obj.hset('rebate', rebate)
+            char_obj.hset('rebate', self._rebate)
         else:
             logger.error('cant find Rebate:%s', self.owner.base_info.id)
 
@@ -92,19 +91,22 @@ class Rebate(Component):
             return 1, 0, 0
         func = None
         refresh = None
+        param = None
         if days == 30:
             func = 'moonCard'
             refresh = base_config['moonCardFreshTime']
+            param = 'moonCardSurplusDay'
         elif days == 7:
             func = 'weekCard'
             refresh = base_config['weekCardFreshTime']
+            param = 'weekCardSurplusDay'
         else:
             func = None
         if func == None:
             return 0, 0, 0
         formula = game_configs.formula_config.get(func).get("formula")
         all_vars = {}
-        all_vars['weekCardSurplusDay'] = one._count
+        all_vars[param] = one._count
         switch = eval(formula, all_vars)
         last = one.last()
         can_draw = one.can_draw(refresh)

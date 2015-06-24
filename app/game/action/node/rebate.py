@@ -7,7 +7,7 @@ Created on 2015-4-27
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.rebate_fun import rebate_info
 from app.proto_file.rebate_pb2 import rebateDraw, rebateResp
-from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data import game_configs, data_helper
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 
@@ -46,7 +46,8 @@ def draw_rebate_5433(data, player):
             rebate.draw()
             player.rebate.set_rebate(req.rid, rebate)
             player.rebate.save_data()
-            return_data = gain(player, recharge_item.get('everydayGift'),
+            day_reward = data_helper.parse(recharge_item.get('everydayGift'))
+            return_data = gain(player, day_reward,
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
         else:
