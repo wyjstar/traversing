@@ -47,6 +47,7 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
             chater.gag_time = gag_time
             char_obj = tb_character_info.getObj(character_id)
             char_obj.hset('gag', gag_time)
+            content = content1
         else:
             content = content1
             chater.say_bad_words_once()
