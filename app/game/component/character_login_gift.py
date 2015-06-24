@@ -98,8 +98,15 @@ class CharacterLoginGiftComponent(Component):
                     self._cumulative_day[k] = 0
                     break
 
-        if days_to_current(self._owner.base_info.register_time) > 7:
+        activity_infos = game_configs.activity_config.get(2, [])
+        days_to_register = days_to_current(self._owner.base_info.register_time)
+        if activity_infos and days_to_register >= activity_infos[0].parameterB:
+            self._cumulative_day_num = -1
+
+        activity_infos = game_configs.activity_config.get(18, [])
+        if activity_infos and days_to_register >= activity_infos[0].parameterB:
             self._continuous_7day_num = -1
+
         self._last_login = get_current_timestamp()
         self.save_data()
 
