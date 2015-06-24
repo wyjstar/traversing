@@ -64,7 +64,7 @@ def settle(player, result, response, conf, stage_type=0):
         act_confs = game_configs.activity_config.get(27, [])
         part_multiple = []
         for act_conf in act_confs:
-            if self.owner.base_info.is_activiy_open(act_conf.id):
+            if player.base_info.is_activiy_open(act_conf.id):
                 is_open = 1
                 part_multiple = [act_conf.parameterC, act_conf.parameterA]
                 break
