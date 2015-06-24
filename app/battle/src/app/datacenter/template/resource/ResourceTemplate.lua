@@ -36,6 +36,19 @@ function ResourceTemplate:getPathNameById(id)
 
     return pathName
 end
+function ResourceTemplate:getqualityById(id)
+
+	local quality = 0
+
+	local resouceConfig = resource_config[id]
+	if resouceConfig then
+		quality = resouceConfig.quality
+	else
+		cclog("ERROR:can't find getResourceById By id====", id)
+	end
+
+    return quality
+end
 
 function ResourceTemplate:getResourceName(id)
 	local nameId = resource_config[id].name

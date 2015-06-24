@@ -181,6 +181,7 @@ const.EVENT_UNPARA_BE_AUTO_EXE      = "UNPARA_BE_AUTO_EXE"
 const.EVENT_UPDATE_UI_ROUND         = "UPDATE_UI_ROUND"
 
 const.EVENT_UPDATE_UI_VIEW          = "UPDATE_UI_VIEW"
+const.EVENT_INIT_UI_VIEW            = "INIT_UI_VIEW" --首次初始化UI
 
 const.EVENT_UPDATE_UI_SROUND        = "UPDATE_UI_SROUND"
 
@@ -197,17 +198,19 @@ const.EVENT_CARD_DIGIT_NUM          = "CARD_DIGIT_NUM"   --分段数值
 const.EVENT_END_BEFORE_BUFFS        = "END_BEFORE_BUFFS" -- 结束回合前Buffs
 const.FONT_NAME                     = MINI_BLACK_FONT_NAME
 
+const.CURSOR_INPUT_DONE             = "CURSOR_INPUT_DONE"  
+
 const.test = "test"  --测试
 
 BUDDY_SEAT = 12
 REPLACE_SEAT = 13
 
-TYPE_BEGIN_ACTION = 0
+TYPE_BACK = 0
 TYPE_NORMAL = 1
 TYPE_UNPARAL = 2
 TYPE_BUDDY = 3
-TYPE_BEFORE_BUFF = 4
-TYPE_AFTER_BUFF = 5
+TYPE_RED_UNPARAL= 4
+TYPE_BLUE_UNPARAL = 5
 
 TYPE_UNPARAL_F = 1
 TYPE_UNPARAL_S = 2
@@ -275,11 +278,14 @@ CONFIG_FIRST_OFF_HEIGHT = 50
 
 
 MODULE_NAME_HOMEPAGE = "HomePageModule"     --首页
+MODULE_NAME_HOMEPAGE2 = "HomePageModule2"     --首页
 MODULE_NAME_LINEUP = "LineUpModule"         --阵容
 MODULE_NAME_OTHER   = "OtherModule"         --其他
 MODULE_NAME_CRUSADE = "CrusadeModule"       --讨伐模块
 MODULE_NAME_SHOP = "ShopModule"             --商城模块
+MODULE_NAME_ACTIVITY = "ActivityModule"     --精彩活动模块
 MODULE_NAME_WAR = "WarModule"           --信箱模块
+MODULE_NAME_LEGION = "LegionModule"     --军团模块
 
 const.EVENT_PV_EMBATTLE_SHOW        = "EMBATTLE_SHOW"       --布阵显示
 const.EVENT_PV_SELECT_WS_SHOW       = "SELECT_WS_SHOW"      --选择无双显示

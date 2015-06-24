@@ -271,4 +271,6 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "1 if moonCardSurplusDay < 4 else 0",  ["clientPrecondition"] = "1",  ["id"] = 135,  ["clientFormula"] = "result=(moonCardSurplusDay < 4 and 1) or 0",  ["key"] = "moonCard",}
 ,  [136] = {
   ["precondition"] = "1",  ["formula"] = "1 if weekCardSurplusDay < 4 else 0",  ["clientPrecondition"] = "1",  ["id"] = 136,  ["clientFormula"] = "result=(weekCardSurplusDay < 3 and 1) or 0",  ["key"] = "weekCard",}
+,  [137] = {
+  ["precondition"] = "1",  ["formula"] = "upRank - highestRank",  ["clientPrecondition"] = "1",  ["id"] = 137,  ["clientFormula"] = "result=upRank - highestRank",  ["key"] = "arenaRankUpRewardsValue",}
 ,}

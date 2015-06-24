@@ -93,6 +93,11 @@ function BaseTemplate:getOpenLvStrengthen()
     end
     return 0
 end
+function BaseTemplate:getZCJBNum()
+    local vipLevel = getDataManager():getCommonData():getVip()
+    return vip_config[vipLevel].buyGetMoneyTimes
+    -- body
+end
 
 --获得助威加成，根据位置
 function BaseTemplate:getCheerAddBySeat(seat)
@@ -116,6 +121,9 @@ end
 -- @ return a table
 function BaseTemplate:getManualTime()
     return base_config["time_vigor_activity"]
+end
+function BaseTemplate:getManualLabel()
+    return base_config["vigorActivityName"]
 end
 
 --获得领取体力的值
@@ -267,7 +275,53 @@ function BaseTemplate:getAllLoginPrizeList()
     table.sort( _list, cmp )
     return _list
 end
+function BaseTemplate:getContinLoginPrize()
+    local _list = {} -- {id=xxx,type=X,parameterA=XXX,reward={...}}
+    local _index = 1
+     for k,v in pairs(activity_config) do
+        if v.type == 2 then -- 连续登陆奖励
+            _list[_index] = {id=v.id,type=2,parameterA=v.parameterA,reward=v.reward,canget=false,isgot=false}
+            _index = _index + 1
+        end
+    end
 
+    local function cmp(a,b)
+        if a.type < b.type then return true
+        elseif a.type == b.type then
+            if a.parameterA < b.parameterA then return true
+            else return false end
+        else return false
+        end
+    end
+
+    table.sort( _list, cmp )
+    return _list
+    -- body
+end
+function BaseTemplate:getTotalLoginPrize()
+    local _list = {} -- {id=xxx,type=X,parameterA=XXX,reward={...}}
+    local _index = 1
+      for k,v in pairs(activity_config) do
+        if v.type == 1 then -- 累积登陆奖励
+            local premise = v.premise
+            _list[_index] = {id=v.id,type= 1,parameterA=v.parameterA,reward=v.reward}
+            _index = _index + 1
+        end
+    end
+
+    local function cmp(a,b)
+        if a.type < b.type then return true
+        elseif a.type == b.type then
+            if a.parameterA < b.parameterA then return true
+            else return false end
+        else return false
+        end
+    end
+
+    table.sort( _list, cmp )
+    return _list
+    -- body
+end
 --获取活动页面的登陆奖励信息
 -- function BaseTemplate:getLoginPrizeList()
 --     local _list = {} -- {id=xxx,type=X,parameterA=XXX,reward={...}}
@@ -626,6 +680,33 @@ function BaseTemplate:getBossFightSkipVipLevel()
     return 0
 end
 
+--判断两倍速是否开启
+function BaseTemplate:getFightTwoTimesOpen()
+    -- body
+    return getDataManager():getCommonData():getLevel() >= base_config.SpeedUpTwoTimesOpenLevel
+end
+
+function BaseTemplate:getFightTwoTimesLevel()
+    return base_config.SpeedUpTwoTimesOpenLevel
+end
+
+--获取VIP等级是否开启三倍速
+function BaseTemplate:getVipFightThreeTimes()
+    local vipLevel = getDataManager():getCommonData():getVip()
+    return vip_config[vipLevel].SpeedUpThreeTimes
+end
+
+function BaseTemplate:getFightThreeTimesThreeLevel()
+    local num = table.nums(vip_config)
+    for i=0,num do
+        local v = vip_config[i]
+        if v.SpeedUpThreeTimes == 1 then
+            return v.id
+        end
+    end
+    return 0
+end
+
 -- @ return type : 1 普通钱币， 2 充值币
 -- @ return money : 具体钱数
 function BaseTemplate:getBuyStaminaMoney()
@@ -743,13 +824,9 @@ end
 --获取竞技场短时间奖励(竞技场相关)
 function BaseTemplate:getArenaShorTimePoints(rank_value)
     local score = base_config["arena_shorttime_points"]
-    for i = 1, 6 do
-        local key = tostring(i)
-        local points = score[key]
-        print("points [1]", points[1])
-        print("points [2]", points[2])
-        if rank_value >= points[1] and rank_value <= points[2] then
-            return points[3]
+    for k,v in pairs(score) do
+        if rank_value >= v[1] and rank_value <= v[2] then
+            return v[3]
         end
     end
 end
@@ -1274,8 +1351,8 @@ function BaseTemplate:getRecruitForGuide()
 end
 
 --阵容装备一键强化VIP等级
-function BaseTemplate:getLineUpEquipStrengthVipLevel()
-
+function BaseTemplate:getLineUpEquipStrengthVipLevel(vip_level)
+    return vip_config[vip_level].allStrength
 end
 
 
@@ -1284,4 +1361,42 @@ end
 function BaseTemplate:getShopRefreshTimes(vip_level)
     return vip_config[vip_level].shopRefreshTimes
 end
+
+----------------------扫荡相关----------------------
+
+function BaseTemplate:getSweepPrice( ... )
+    local priceInfo = base_config["price_sweep"]
+    return priceInfo["107"][1]
+end
+
+function BaseTemplate:getSweepItemId( ... )
+    local itemInfo = base_config["sweepNeedItem"]
+    return itemInfo["105"][3]
+end
+
+----------------获取招财进宝－－消耗
+function BaseTemplate:getZCJBConsumData()
+    return base_config["getMoneyBuyTimesPrice"]
+    -- body
+end
+----------------获取招财进宝 获取的银币
+function BaseTemplate:getZCJBGainData()
+    return base_config["getMoneyValue"]
+    -- body
+end
+function BaseTemplate:getZCJBTotalTime()
+    local curViplevel = getDataManager():getCommonData():getVip()
+    return vip_config[curViplevel].buyGetMoneyTimes
+    -- body
+end
+
+--军团祈福数据
+function BaseTemplate:getWorshipData()
+    return base_config["worship"]
+    -- body
+end
+
 return BaseTemplate
+
+
+
