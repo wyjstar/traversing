@@ -88,11 +88,12 @@ def buy_coin_activity_1406(data, player):
         response.res.result_no = 1406
         return response.SerializePartialToString()
 
-    coin_nums = 0 # 银币数量
+    coin_nums = 0  # 银币数量
     for k in sorted(gain_info.keys(), reverse=True):
         if buy_times >= k:
             coin_nums = gain_info[k]
             break
+
     def func():
         if player.base_info.buy_coin_times + free_times <= buy_times:
             # 使用招财令
@@ -101,8 +102,8 @@ def buy_coin_activity_1406(data, player):
         player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
         if is_open:
-            coin_nums *= xs
-        player.finance.add_coin(int(coin_nums))
+            add_coin_nums = coin_nums * xs
+        player.finance.add_coin(int(add_coin_nums))
         player.finance.save_data()
 
     res = player.pay.pay(need_gold, func)

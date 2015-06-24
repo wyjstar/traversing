@@ -49,7 +49,7 @@ def get_act_gift_1832(data, player):
 
 def get_20_gift(player, act_conf, response):  # 战力
     # if act_conf.parameterA > player.line_up_component.combat_power:
-    if act_conf.parameterA > player.line_up_component.highest_power:
+    if act_conf.parameterA > player.line_up_component.hight_power:
         response.res.result_no = 802
         return 0
     gain_data = act_conf.reward
