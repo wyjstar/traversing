@@ -23,6 +23,10 @@ class StageLogic(base_stage.BaseStageLogic):
         if state == -2:
             logger.error("普通关卡%s开始战斗出错:%s" % (stage_id,803))
             return {'result': False, 'result_no': 803}  # 803 未开启
+
+        if self._player.stamina.stamina < conf.vigor:
+            return {'result': False, 'result_no': 108}  # 108
+
         if time.localtime(player.stage_component.stage_up_time).tm_yday == time.localtime().tm_yday:
             if player.stage_component.get_stage(stage_id).attacks >= conf.limitTimes:
                 logger.error("本次关卡%s攻击次数不足: %s" % (stage_id,810))

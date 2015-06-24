@@ -77,6 +77,8 @@ message GameLoginResponse{
     optional int32 pvp_overcome_refresh_count = 35;
     //
     repeated BuyStaminaTimes buy_times = 36; //购买资源（体力，讨伐令，鞋子）次数
+    //
+    optional bool is_open_next_day_activity = 37; // 是否开启次日功能
 }
 
 message BuyStaminaTimes

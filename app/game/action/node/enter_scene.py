@@ -112,6 +112,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
                                           player.base_info.id)
     responsedata.fight_power_rank = rank_no
 
+    responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.base_info.vip_level)
     logger.debug("recharge:%d", player.base_info.recharge)
