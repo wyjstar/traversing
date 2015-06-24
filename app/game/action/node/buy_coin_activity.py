@@ -60,7 +60,7 @@ def buy_coin_activity_1406(data, player):
             free_times += act_conf.parameterA
             buy_times -= act_conf.parameterA
             if buy_times < 0:
-                buy_times == 0
+                buy_times = 0
             break
     for k in sorted(buy_times_price.keys(), reverse=True):
         if buy_times >= k:
@@ -103,6 +103,9 @@ def buy_coin_activity_1406(data, player):
         player.buy_coin.save_data()
         if is_open:
             add_coin_nums = coin_nums * xs
+        else:
+            add_coin_nums = coin_nums
+
         player.finance.add_coin(int(add_coin_nums))
         player.finance.save_data()
 

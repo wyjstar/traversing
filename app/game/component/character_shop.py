@@ -175,7 +175,7 @@ class CharacterShopComponent(Component):
     def get_shop_item_ids(self, shop_type, luck_num):
         """随机筛选ids"""
         items = {}
-        for item in game_configs.shop_config.get(shop_type):
+        for item in game_configs.shop_config.get(shop_type, []):
             if item.weight == -1:
                 continue
             elif item.weight == -2:
