@@ -251,7 +251,7 @@ end
  function ShopTemplate:getRechargeListByPlatform(platform)
  	local rechargeList = {}
  	for k,v in pairs(recharge_config) do
- 		if v.flatform == platform then
+ 		if v.platform == platform then
  			table.insert(rechargeList,v)
  		end
  	end
