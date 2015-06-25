@@ -294,9 +294,10 @@ def draw_friend_lively_1199(data, player):
         friend_data = player_data.hmget(['conditions_day', 'last_day'])
         conditions_day = friend_data.get('conditions_day', {})
         lively = conditions_day.get(24, 0)
-        if today != friend_data.get('last_day', ''):
+        if today != time.strftime("%Y%m%d", time.localtime(friend_data.get('last_day', '0'))):
             lively = 0
         if lively < base_config['friendActivityValue']:
+            logger.debug('error_no:11992,lively:%d' % lively)
             response.res.result = False
             response.res.result_no = 11992  # 未完成
         else:
@@ -367,52 +368,68 @@ def recommend_friend_1198(data, player):
     back = player.base_info.level + x
     uids = MineOpt.rand_level("user_level", front, back+1)
     statics = base_config['FriendRecommendNum']
+    add_count_conf = base_config.get('friendApplyLevelGapAdd', 5)
+    player_level_max = base_config['player_level_max']
     count = 0
     now = int(time.time())
 
     has_one = []
-    for uid in uids:
-        if uid in has_one:
-            continue
-        else:
-            has_one.append(uid)
-        if uid == player.base_info.id:
-            continue
-        if player.friends.is_friend(uid):
-            continue
-
-        player_data = tb_character_info.getObj(uid)
-        isexist = player_data.exists()
+    add_count = 1
+    while True:
+        for uid in uids:
+            if uid in has_one:
+                continue
+            else:
+                has_one.append(uid)
+            if uid == player.base_info.id:
+                continue
+            if player.friends.is_friend(uid):
+                continue
+    
+            player_data = tb_character_info.getObj(uid)
+            isexist = player_data.exists()
+            if count >= statics:
+                break
+    
+            if isexist:
+                last_time = player_data.hget('upgrade_time')
+                if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
+                    continue
+                count += 1
+                friend = response.rfriend.add()
+                friend_data = player_data.hmget(['id', 'nickname',
+                                                 'attackPoint', 'heads',
+                                                 'level', 'upgrade_time'])
+                friend.id = friend_data.get('id')
+                friend.nickname = friend_data.get('nickname')
+                ap = 1
+                if friend_data['attackPoint'] is not None:
+                    ap = int(friend_data['attackPoint'])
+                friend.power = ap if ap else 0
+    
+                friend_heads = Heads_DB()
+                friend_heads.ParseFromString(friend_data['heads'])
+                friend.hero_no = friend_heads.now_head
+    
+                friend.level = friend_data['level']
+                friend.b_rank = 1
+                if remote_gate.online_remote(friend_data['id']) == 0:
+                    friend.last_time = friend_data['upgrade_time']
+    
+                # 添加好友主将的属性
+                _with_battle_info(friend, player_data)
         if count >= statics:
             break
-
-        if isexist:
-            last_time = player_data.hget('upgrade_time')
-            if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
-                continue
-            count += 1
-            friend = response.rfriend.add()
-            friend_data = player_data.hmget(['id', 'nickname',
-                                             'attackPoint', 'heads',
-                                             'level', 'upgrade_time'])
-            friend.id = friend_data.get('id')
-            friend.nickname = friend_data.get('nickname')
-            ap = 1
-            if friend_data['attackPoint'] is not None:
-                ap = int(friend_data['attackPoint'])
-            friend.power = ap if ap else 0
-
-            friend_heads = Heads_DB()
-            friend_heads.ParseFromString(friend_data['heads'])
-            friend.hero_no = friend_heads.now_head
-
-            friend.level = friend_data['level']
-            friend.b_rank = 1
-            if remote_gate.online_remote(friend_data['id']) == 0:
-                friend.last_time = friend_data['upgrade_time']
-
-            # 添加好友主将的属性
-            _with_battle_info(friend, player_data)
+        else:
+            front = front - add_count*add_count_conf
+            back = back + add_count*add_count_conf
+            if front <= 0:
+                front = 1
+            if back > player_level_max:
+                back = player_level_max
+            uids = MineOpt.rand_level("user_level", front, back+1)
+        if back >= player_level_max:
+            break
 
     return response.SerializePartialToString()
 

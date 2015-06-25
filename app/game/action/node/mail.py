@@ -106,15 +106,18 @@ def receive_mail_remote(mail_data, is_online, player):
     mail = Mail_PB()
     mail.ParseFromString(mail_data)
     logger.debug('receive_mail:%s', mail)
-    if not mail.config_id:
-        if mail.mail_type == 1:
-            # 领取赠送体力
-            if mail.sender_id in player.stamina.contributors:
-                logger.error('this contributor has already given stamina:%s',
-                             mail.sender_id)
+    if mail.mail_type == 1:
+        if mail.sender_id in player.stamina.contributors:
+            logger.error('this contributor has already given stamina:%s',
+                         mail.sender_id)
+            return True
+        else:
+            player.stamina.contributors.append(mail.sender_id)
+    if mail.config_id == game_configs.base_config.get('guildInviteMail'):
+        mails = player.mail_component.get_mails()
+        for mail_pb in mails:
+            if mail.guild_id and mail_pb.guild_id == mail.guild_id:
                 return True
-            else:
-                player.stamina.contributors.append(mail.sender_id)
 
     player.mail_component.add_mail(mail)
     player.mail_component.save_data()

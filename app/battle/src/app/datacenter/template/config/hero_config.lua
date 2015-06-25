@@ -223,8 +223,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 100,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100011,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100012,  ["id"] = 10001,  ["consume6"] = {
 }
@@ -263,8 +263,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 80,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100021,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100022,  ["id"] = 10002,  ["consume6"] = {
 }
@@ -303,8 +303,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 115,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100031,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100032,  ["id"] = 10003,  ["consume6"] = {
 }
@@ -343,8 +343,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 90,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100041,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100042,  ["id"] = 10004,  ["consume6"] = {
 }
@@ -383,8 +383,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 100,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100051,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100052,  ["id"] = 10005,  ["consume6"] = {
 }
@@ -423,8 +423,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 90,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100061,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100062,  ["id"] = 10006,  ["consume6"] = {
 }
@@ -463,8 +463,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 115,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100071,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100072,  ["id"] = 10007,  ["consume6"] = {
 }
@@ -503,8 +503,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 81,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100081,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100082,  ["id"] = 10008,  ["consume6"] = {
 }
@@ -543,8 +543,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 90,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100091,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100092,  ["id"] = 10009,  ["consume6"] = {
 }
@@ -583,8 +583,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 104,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100101,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100102,  ["id"] = 10010,  ["consume6"] = {
 }
@@ -623,8 +623,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 100,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100111,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100112,  ["id"] = 10011,  ["consume6"] = {
 }
@@ -663,8 +663,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 90,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100121,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100122,  ["id"] = 10012,  ["consume6"] = {
 }
@@ -703,8 +703,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 80,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100131,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100132,  ["id"] = 10013,  ["consume6"] = {
 }
@@ -743,8 +743,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 120,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100141,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100142,  ["id"] = 10014,  ["consume6"] = {
 }
@@ -783,8 +783,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 72,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100151,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100152,  ["id"] = 10015,  ["consume6"] = {
 }
@@ -823,8 +823,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 100,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100161,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100162,  ["id"] = 10016,  ["consume6"] = {
 }
@@ -863,8 +863,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 115,  ["breakLimit"] = 3,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100171,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100172,  ["id"] = 10017,  ["consume6"] = {
 }
@@ -903,8 +903,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 132,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100181,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100182,  ["id"] = 10018,  ["consume6"] = {
 }
@@ -943,8 +943,8 @@ hero_config={
 ,  ["parameters4"] = 0,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 132,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100191,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 10,  [2] = 10,  [3] = 0,}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100192,  ["id"] = 10019,  ["consume6"] = {
 }
@@ -989,8 +989,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 126,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100201,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100202,  ["id"] = 10020,  ["consume6"] = {
 }
@@ -1065,8 +1065,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 86,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100221,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100222,  ["id"] = 10022,  ["consume6"] = {
 }
@@ -1117,8 +1117,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 140,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100231,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100232,  ["id"] = 10023,  ["consume6"] = {
 }
@@ -1169,8 +1169,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 161,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100241,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100242,  ["id"] = 10024,  ["consume6"] = {
 }
@@ -1221,8 +1221,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 168,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100251,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100252,  ["id"] = 10025,  ["consume6"] = {
 }
@@ -1273,8 +1273,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 108,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100261,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100262,  ["id"] = 10026,  ["consume6"] = {
 }
@@ -1325,8 +1325,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 96,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100271,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100272,  ["id"] = 10027,  ["consume6"] = {
 }
@@ -1377,8 +1377,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 112,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100281,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100282,  ["id"] = 10028,  ["consume6"] = {
 }
@@ -1429,8 +1429,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 120,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100291,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100292,  ["id"] = 10029,  ["consume6"] = {
 }
@@ -1481,8 +1481,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 185,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100301,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100302,  ["id"] = 10030,  ["consume6"] = {
 }
@@ -1533,8 +1533,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 112,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100311,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100312,  ["id"] = 10031,  ["consume6"] = {
 }
@@ -1585,8 +1585,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 108,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100321,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100322,  ["id"] = 10032,  ["consume6"] = {
 }
@@ -1637,8 +1637,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 138,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100331,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100332,  ["id"] = 10033,  ["consume6"] = {
 }
@@ -1689,8 +1689,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 138,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100341,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100342,  ["id"] = 10034,  ["consume6"] = {
 }
@@ -1741,8 +1741,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 161,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100351,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100352,  ["id"] = 10035,  ["consume6"] = {
 }
@@ -1793,8 +1793,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 126,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100361,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100362,  ["id"] = 10036,  ["consume6"] = {
 }
@@ -1845,8 +1845,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 126,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100371,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100372,  ["id"] = 10037,  ["consume6"] = {
 }
@@ -1897,8 +1897,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 120,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100381,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100382,  ["id"] = 10038,  ["consume6"] = {
 }
@@ -1949,8 +1949,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 140,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100391,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 100,  [2] = 100,  [3] = 0,}
+  ["107"] = {
+  [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100392,  ["id"] = 10039,  ["consume6"] = {
 }
@@ -2001,8 +2001,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 120,  ["breakLimit"] = 5,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100401,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100402,  ["id"] = 10040,  ["consume6"] = {
 }
@@ -2059,8 +2059,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 144,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100411,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100414,  ["id"] = 10041,  ["consume6"] = {
   ["1"] = {
@@ -2123,8 +2123,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 192,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100421,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100424,  ["id"] = 10042,  ["consume6"] = {
   ["1"] = {
@@ -2187,8 +2187,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 192,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100431,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100434,  ["id"] = 10043,  ["consume6"] = {
   ["1"] = {
@@ -2251,8 +2251,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 128,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100441,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100444,  ["id"] = 10044,  ["consume6"] = {
   ["1"] = {
@@ -2315,8 +2315,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 200,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100451,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100454,  ["id"] = 10045,  ["consume6"] = {
   ["1"] = {
@@ -2379,8 +2379,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 200,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100461,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100464,  ["id"] = 10046,  ["consume6"] = {
   ["1"] = {
@@ -2443,8 +2443,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 128,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100471,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100474,  ["id"] = 10047,  ["consume6"] = {
   ["1"] = {
@@ -2507,8 +2507,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 200,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100481,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100484,  ["id"] = 10048,  ["consume6"] = {
   ["1"] = {
@@ -2571,8 +2571,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 144,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100491,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100494,  ["id"] = 10049,  ["consume6"] = {
   ["1"] = {
@@ -2635,8 +2635,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 115,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100501,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100504,  ["id"] = 10050,  ["consume6"] = {
   ["1"] = {
@@ -2699,8 +2699,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 240,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100521,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100524,  ["id"] = 10052,  ["consume6"] = {
   ["1"] = {
@@ -2763,8 +2763,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 230,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100531,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100534,  ["id"] = 10053,  ["consume6"] = {
   ["1"] = {
@@ -2827,8 +2827,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 128,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100541,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100544,  ["id"] = 10054,  ["consume6"] = {
   ["1"] = {
@@ -2891,8 +2891,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 184,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1100551,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100554,  ["id"] = 10055,  ["consume6"] = {
   ["1"] = {
@@ -2955,8 +2955,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 180,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100561,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100564,  ["id"] = 10056,  ["consume6"] = {
   ["1"] = {
@@ -3019,8 +3019,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 192,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100581,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100584,  ["id"] = 10058,  ["consume6"] = {
   ["1"] = {
@@ -3083,8 +3083,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.1,  ["70000"] = 0.05,  ["80000"] = 0.07,  ["50000"] = 0.04,  ["100000"] = 0.2,  ["20000"] = 0.03,  ["130000"] = 1,  ["10000"] = 0.02,  ["5000"] = 0.01,  ["110000"] = 0.3,  ["120000"] = 0.5,}
 ,  ["growPhysicalDef"] = 160,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100611,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 0,}
+  ["107"] = {
+  [1] = 2000,  [2] = 2000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100614,  ["id"] = 10061,  ["consume6"] = {
   ["1"] = {
@@ -3147,8 +3147,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
   ["90000"] = 0.3,  ["70000"] = 0.1,  ["80000"] = 0.2,  ["50000"] = 0.05,  ["60000"] = 0.07,  ["30000"] = 0.04,  ["100000"] = 0.5,  ["10000"] = 0.02,  ["20000"] = 0.03,  ["110000"] = 1,  ["5000"] = 0.01,}
 ,  ["growPhysicalDef"] = 192,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100621,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 500,  [2] = 500,  [3] = 0,}
+  ["107"] = {
+  [1] = 500,  [2] = 500,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100624,  ["id"] = 10062,  ["consume6"] = {
   ["1"] = {
@@ -3211,8 +3211,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 264,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1300511,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 4000,  [2] = 4000,  [3] = 0,}
+  ["107"] = {
+  [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300513,  ["id"] = 30051,  ["consume6"] = {
   ["1"] = {
@@ -3323,8 +3323,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 276,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1300571,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 4000,  [2] = 4000,  [3] = 0,}
+  ["107"] = {
+  [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300573,  ["id"] = 30057,  ["consume6"] = {
   ["1"] = {
@@ -3387,8 +3387,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 194,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300591,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 4000,  [2] = 4000,  [3] = 0,}
+  ["107"] = {
+  [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300593,  ["id"] = 30059,  ["consume6"] = {
   ["1"] = {
@@ -3451,8 +3451,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 216,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300601,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 4000,  [2] = 4000,  [3] = 0,}
+  ["107"] = {
+  [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300603,  ["id"] = 30060,  ["consume6"] = {
   ["1"] = {
@@ -3515,8 +3515,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 80,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 248,  ["breakLimit"] = 7,  ["criDedCoeff"] = 100,  ["normalSkill"] = 1300631,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 4000,  [2] = 4000,  [3] = 0,}
+  ["107"] = {
+  [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300633,  ["id"] = 30063,  ["consume6"] = {
   ["1"] = {
@@ -3741,8 +3741,8 @@ hero_config={
 ,  ["parameters4"] = 45,  ["parameters3"] = 30,  ["parameters6"] = 0,  ["awake"] = {
 }
 ,  ["growPhysicalDef"] = 96,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100211,  ["sacrificeGain"] = {
-  ["3"] = {
-  [1] = 20,  [2] = 20,  [3] = 0,}
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100212,  ["id"] = 10021,  ["consume6"] = {
 }

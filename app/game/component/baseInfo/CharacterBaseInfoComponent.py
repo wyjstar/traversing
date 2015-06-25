@@ -49,6 +49,7 @@ class CharacterBaseInfoComponent(Component):
         self._tomorrow_gift = 0
         self._battle_speed = 1
         self._plat_id = -1
+        self._is_open_next_day_activity = False
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -75,6 +76,7 @@ class CharacterBaseInfoComponent(Component):
         self._gen_balance = character_info.get('gen_balance', 0)
         self._tomorrow_gift = character_info.get('tomorrow_gift', 0)
         self._battle_speed = character_info.get('battle_speed', 1)
+        self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -103,7 +105,9 @@ class CharacterBaseInfoComponent(Component):
                     recharge_accumulation=self._recharge,
                     gen_balance=self._gen_balance,
                     tomorrow_gift=self._tomorrow_gift,
-                    battle_speed=self._battle_speed)
+                    battle_speed=self._battle_speed,
+                    is_open_next_day_activity=self._is_open_next_day_activity,
+                    )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -127,7 +131,9 @@ class CharacterBaseInfoComponent(Component):
                     recharge_accumulation=self._recharge,
                     gen_balance=self._gen_balance,
                     tomorrow_gift=self._tomorrow_gift,
-                    battle_speed=self._battle_speed)
+                    battle_speed=self._battle_speed,
+                    is_open_next_day_activity=self._is_open_next_day_activity,
+                    )
         return data
 
     def check_time(self):
@@ -504,6 +510,14 @@ class CharacterBaseInfoComponent(Component):
     @plat_id.setter
     def plat_id(self, value):
         self._plat_id = value
+
+    @property
+    def is_open_next_day_activity(self):
+        return self._is_open_next_day_activity
+
+    @is_open_next_day_activity.setter
+    def is_open_next_day_activity(self, value):
+        self._is_open_next_day_activity = value
 
     @property
     def buy_hjqy_max(self):

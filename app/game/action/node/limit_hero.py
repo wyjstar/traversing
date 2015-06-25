@@ -25,7 +25,7 @@ def get_limit_hero_info_1812(data, player):
     if not activity_id:
         response.res.result = False
         response.res.result_no = 864
-        # logger.debug(response)
+        logger.debug(response)
         return response.SerializeToString()
 
     player.limit_hero.update(activity_id)
@@ -43,7 +43,7 @@ def get_limit_hero_info_1812(data, player):
     response.integral_draw_times = player.limit_hero.integral_draw_times
 
     response.res.result = True
-    # logger.debug(response)
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -132,7 +132,7 @@ def draw_1813(data, player):
             player.limit_hero.integral_draw_times += 1
         # else:
         add_integral = shop_conf.Integral[0].num
-        rank_integral = integral + add_integral + time.time()/10000000000
+        rank_integral = integral + add_integral + 1 - time.time()/10000000000
         rank_helper.add_rank_info('LimitHeroRank',
                                   player.base_info.id, rank_integral)
         player.limit_hero.save_data()
