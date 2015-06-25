@@ -36,7 +36,7 @@ function front_attack(value, attacker, target_units)
     if table.nums(front_units) ~= 0 then
         return front_units, TYPE_FRONT_ROW
     else
-        return table.values(target_units), TYPE_FRONT_ROW
+        return table.values(target_units), TYPE_BACK_ROW
     end
 end
 
@@ -51,7 +51,7 @@ function back_attack(value, attacker, target_units)
     if #back_units ~= 0 then
         return back_units, TYPE_BACK_ROW
     else
-        return table.values(target_units), TYPE_BACK_ROW
+        return table.values(target_units), TYPE_FRONT_ROW
     end
 end
 
@@ -180,7 +180,7 @@ function find_target_units(skill_buff_info, main_target_units, viewMainTargetPos
     --local attacker = skill_buff_info
     local attacker = process.attacker
     local target_pos = skill_buff_info.effectPos
-    table.print(target_pos)
+    -- table.print(target_pos)
     local key = 0
     local value = 0
     for k, v in pairs(target_pos) do

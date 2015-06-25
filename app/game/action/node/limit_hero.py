@@ -132,7 +132,7 @@ def draw_1813(data, player):
             player.limit_hero.integral_draw_times += 1
         # else:
         add_integral = shop_conf.Integral[0].num
-        rank_integral = integral + add_integral + time.time()/10000000000
+        rank_integral = integral + add_integral + 1 - time.time()/10000000000
         rank_helper.add_rank_info('LimitHeroRank',
                                   player.base_info.id, rank_integral)
         player.limit_hero.save_data()

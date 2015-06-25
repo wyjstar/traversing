@@ -262,6 +262,7 @@ TYPE_WORLD_BOSS     = 7          -- 世界boss
 TYPE_MINE_MONSTER   = 8          -- 攻占也怪
 TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
+
 TYPE_STAGE_JIA = 3               -- 难度甲
 TYPE_STAGE_YI = 2                -- 难度乙
 TYPE_STAGE_BING = 1              -- 难度丙
@@ -282,10 +283,12 @@ CONFIG_CARD_KIND_Y = 20
 CONFIG_CARD_HERO_X = 0
 CONFIG_CARD_HERO_Y = 0
 
-CONFIG_CARD_EFFECTA_X = 152
-CONFIG_CARD_EFFECTA_Y = 162
-CONFIG_CARD_EFFECTB_X = 152
-CONFIG_CARD_EFFECTB_Y = 162
+-- 武将图片经1.2被放大后的中心点坐标
+CONFIG_CARD_EFFECTA_X = 143.4
+CONFIG_CARD_EFFECTA_Y = 195
+CONFIG_CARD_EFFECTB_X = 143.4
+CONFIG_CARD_EFFECTB_Y = 195     
+
 CONFIG_FIRST_OFF_HEIGHT = 50
 
 
@@ -394,7 +397,7 @@ G_BOTTOM_DEFINE.GET_COINS_CANCEL = {
 }
 G_BOTTOM_DEFINE.GET_COINS_JUMP = {
     ["normalFrame"] = "#ui_common_button_yel.png",
-    ["selectedFrame"] = "#ui_btn_title_goto.png",
+    ["selectedFrame"] = "#ui_common_qzc.png",
     ["disabledFrame"] = nil,
     ["callBack"] = function ()
         getOtherModule():showUIView("activity.PVActivityPage", 5)
@@ -451,10 +454,23 @@ EventName = {
     UPDATE_MAIL = "UPDATE_MAIL", -- 更新邮件通知
     FULL_MAIL = "FULL_MAIL", -- 邮箱已满消息
     UPDATE_SCRECT_PLACE = "UPDATE_SCRECT_PLACE", --更新秘境数据通知
+
+    UPDATE_GGZJ = "UPDATE_GGZJ", --更新过关斩将红点
+    UPDATE_BOSS = "UPDATE_BOSS", --更新枭雄红点
+    UPDATE_SOLDIER = "UPDATE_SOLDIER", --更新武将红点
+    UPDATE_EQUIP = "UPDATE_EQUIP", -- 更新装备红点
+    UPDATE_WINE = "UPDATE_WINE", -- 煮酒红点
+    UPDATE_SIGN = "UPDATE_SIGN", -- 更新签到
+    UPDATE_HJQY = "UPDATE_HJQY", -- 更新黄巾起义
+    UPDATE_ZHENGZHAN = "UPDATE_ZHENGZHAN", -- 更新征战按钮红点
+
+    GUIDE_HANDLE = "GUIDE_HANDLE", --新手引导（出现小手）
+    UPDATE_LEGION_APPLY_LIST = "UPDATE_LEGION_APPLY_LIST", --军团申请列表更新
+    UPDATE_LEGION_INFO = "UPDATE_LEGION_INFO", --军团信息更新
 }
 
 NoticeColor = {
-    [1] = ui.COLOR_WHITE,
+    [1] = ui.COLOR_FEN,
     [2] = ui.COLOR_GREEN,
     [3] = ui.COLOR_BLUE,
     [4] = ui.COLOR_BLUE,

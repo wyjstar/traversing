@@ -15,29 +15,43 @@ childsmanager = GlobalObject().root.childsmanager
 def send_reward(act_id):
     instance = Ranking.instance('LimitHeroRank')
     rank_info = instance.get(1, 9999)
-    rank = 1
+    rank = 0
     for (p_id, integral) in rank_info:
+        rank += 1
         need_integral = game_configs.base_config. \
             get('CardTimeParticipateInAwards')
-        if int(integral) < need_integral:
-            break
+
         mail_id = get_mail_id(rank, act_id)
+        if mail_id:
+            mail_data, _ = deal_mail(conf_id=mail_id, receive_id=int(p_id),
+                                     rank=rank, integral=int(integral))
+            for child in childsmanager.childs.values():
+                child.push_message_remote('receive_mail_remote', int(p_id),
+                                          mail_data)
+                break
+
+        need_integral = game_configs.base_config. \
+            get('CardTimeParticipateInAwards')
+        mail_id = game_configs.base_config. \
+            get('CardTimeActivity2').get(act_id)[0]
+        if int(integral) < need_integral:
+            continue
         mail_data, _ = deal_mail(conf_id=mail_id, receive_id=int(p_id))
         for child in childsmanager.childs.values():
-            child.push_message_remote('receive_mail_remote', int(p_id), mail_data)
+            child.push_message_remote('receive_mail_remote', int(p_id),
+                                      mail_data)
             break
-        rank += 1
 
 
 def get_mail_id(rank, act_id):
+    mail_id = 0
     reward_info = game_configs.base_config. \
         get('CardTimeActivity').get(act_id)
     for _, info in reward_info.items():
         if info[0] <= rank <= info[1]:
-            return info[2]
-    for _, info in reward_info.items():
-        if not info[0]:
-            return info[2]
+            mail_id = info[2]
+            break
+    return mail_id
 
 
 def deal_end_act():

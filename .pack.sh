@@ -55,6 +55,7 @@ rm -fr config/excel
 rm -fr config/json
 rm -fr config/lua
 rm -fr config/sql
+rm -fr app/logs
 
 cd ../
 echo "tar -czf $package.tar.gz $package"

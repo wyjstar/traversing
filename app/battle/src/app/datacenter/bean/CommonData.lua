@@ -76,20 +76,28 @@ function CommonData:setData(data)
     self.accountId = data.id                            --玩家id
     self.nickname = data.nickname                       --玩家昵称
     self.register_time = data.register_time
-    cclog("------新用户的注册时间－－－－－－－"..self.register_time.."等级:"..data.level)
+    --cclog("----π－－－－"..self.register_time.."等级:"..data.level)
     self.vip = data.vip_level                           --vip等级
     self.exp = data.exp                                 --经验
     self.level = data.level                             --等级
-
+    self.oldLevel = self.level
     -- 将等级写入到userdefault中
     saveTeamLevel(self.level)
+    self.isCiriOpened = data.is_open_next_day_activity   --次日开启功能是否已开启过
         
     -- self.stamina = data.stamina                         --体力
     self.totalRecharge = data.recharge                   --累计充值
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
     self.godHeroTimes = data.excellent_hero_times         --神将累计抽取次数
-    self.newbee_guide_id = data.newbee_guide_id
-    print("newbee_guide_id", newbee_guide_id)
+    print("newbee_guide_id", data.newbee_guide_id)
+
+    --data.newbee_guide_id = 30029
+    if (data.newbee_guide_id == 0) then
+        getNewGManager():setCurrentGID(GuideId.G_GUIDE_START)  --新手引导记录编号
+    else
+        getNewGManager():setCurrentGID(data.newbee_guide_id)
+    end
+    --getNewGManager():setCurrentGID(101)
     print("---------------------------------------------------")
     -- self.gold = data.gold                               --元宝
     -- self.coin = data.coin                               --金币
@@ -150,11 +158,16 @@ function CommonData:setData(data)
 
     self:setPowerRank(data.fight_power_rank)
 
-    self.pvp_overcome_index = data.pvp_overcome_index                   -- 过关斩将当前进行的关卡(从0开始计数)
-    self.pvp_overcome_refresh_count = data.pvp_overcome_refresh_count   -- 可刷新的次数
+    self:setPvpOvercomeIndex(data.pvp_overcome_index)                  -- 过关斩将当前进行的关卡(从0开始计数)
+    self:setPvpOvercomeRefreshCount(data.pvp_overcome_refresh_count)   -- 可刷新的次数
     print("self.pvp_overcome_index = "..self.pvp_overcome_index)
     print("self.pvp_overcome_refresh_count = "..self.pvp_overcome_refresh_count)
 
+end
+
+--次日开启功能是否已开启过
+function CommonData:getIsCiriOpend()
+    return self.isCiriOpened
 end
 
 function CommonData:setPowerRank(rank)
@@ -298,15 +311,17 @@ function CommonData:setVipGift(hasVipGift)
 end
 function CommonData:setCanZcjb(canZcjb)
     self.iscanZcjb = canZcjb
-    -- body
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_ACTIVE)
 end
 function CommonData:getCanZcjb()
     return self.iscanZcjb
-    -- body
 end
 
 function CommonData:setRebateState(hasRebate)
     self.isHasRebate = hasRebate
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_ACTIVE)
 end
 
 function CommonData:getRebateState()
@@ -333,7 +348,11 @@ function CommonData:setNectarNum(num) self.nectar_num = num end
 function CommonData:getNectarCur() return self.nectar_cur end
 function CommonData:setNectarCur(num) self.nectar_cur = num end
 function CommonData:getBrewTimes() return self.brew_times end
-function CommonData:setBrewTimes(times) self.brew_times = times end
+function CommonData:setBrewTimes(times) 
+    self.brew_times = times
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_WINE)
+end
 function CommonData:getBrewStep() return self.brew_step end
 function CommonData:setBrewStep(step) self.brew_step = step end
 
@@ -396,6 +415,8 @@ function CommonData:getRepaireTimes() return self.repaireTimes end
 -- 签到列表
 function CommonData:setSignedList(list)
     self.signedList = list
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_SIGN)
 end
 function CommonData:getSignedList() return self.signedList end
 --当前签到为哪一组
@@ -413,8 +434,6 @@ function CommonData:getSoul_shop_refresh_times() return self.GameLoginResponse.s
 
 -- 查询某天是否签过到
 function CommonData:lookIsSigned(day)
-    -- cclog("------------setSignedList---111-----"..day)
-    -- table.print(self.signedList)
     for k,v in pairs(self.signedList) do
         if v == day then return true end
     end
@@ -422,9 +441,9 @@ function CommonData:lookIsSigned(day)
 end
 -- 将某天签到状态改为已签到
 function CommonData:setSignedByDay(day)
-    -- cclog("-----------setSignedByDay--------")
     table.insert(self.signedList, day)
-    -- table.insert(self.signedList, 3)
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_SIGN)
 end
 --[[--
 
@@ -582,11 +601,19 @@ function CommonData:getLoginTotalGift(id)
 end
 
 -- 累积登陆时间
-function CommonData:setLoginTotalDay(day) self.loginTotalDay = day end
+function CommonData:setLoginTotalDay(day) 
+    self.loginTotalDay = day
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_ACTIVE)
+end
 function CommonData:getLoginTotalDay() return self.loginTotalDay end
 
 --连续登录奖励
-function CommonData:setLoginContinueDay(day) self.loginContinueDay = day end
+function CommonData:setLoginContinueDay(day) 
+    self.loginContinueDay = day
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_ACTIVE)
+end
 function CommonData:getLoginContinueDay() return self.loginContinueDay end
 
 function CommonData:getHeroSoul() return self:getFinance(RES_TYPE.HERO_SOUL) end
@@ -741,7 +768,9 @@ function CommonData:setLevel(level)
         self.oldLevel = self.level
         self.level = level        
         getNetManager():getInstanceNet():sendGropUpgrade()
-        -- getNetManager():sendMsgAfterPlayerUpgrade()        
+        -- getNetManager():sendMsgAfterPlayerUpgrade()      
+        -- 发送红点消息
+        self:dispatchEvent(EventName.UPDATE_ACTIVE)
         self:dispatchEvent(EventName.UPDATE_LEVEL)
 
         -- 将等级写入到userdefault中
@@ -961,6 +990,8 @@ function CommonData:resRecoverTime()
         timer.unscheduleGlobal(self.updateResTimer)
         self.updateResTimer = nil
     end
+    print("CommonData:resRecoverTime====>",self:getTime())
+    table.print(self.buy_times)
 
     local function updateTimer(dt)
         local curTime = self:getTime()
@@ -1083,25 +1114,25 @@ end
 
 -- 煮酒
 function CommonData:isOpenBrew()
-    local startLv = self.baseTemp:getBrewStartLevel()
+    local startLv = self.c_BaseTemplate:getBrewStartLevel()
 
 end
 
 -- pvp
 function CommonData:isOpenArena()
-    local startLv = self.baseTemp:getArenaLevel()
+    local startLv = self.c_BaseTemplate:getArenaLevel()
 
 end
 
 -- 秘境
 function CommonData:isOpenRune()
-    local startLv = self.baseTemp:getRuneLevel()
+    local startLv = self.c_BaseTemplate:getRuneLevel()
 
 end
 
 -- 世界boss
 function CommonData:isOpenWorldBoss()
-    local startLv = self.baseTemp:openWorldBossLevel()
+    local startLv = self.c_BaseTemplate:openWorldBossLevel()
 
 end
 ----------------充值活动相关-------------------------
@@ -1118,6 +1149,8 @@ function CommonData:setRechargeActivityData(data)
             self.rechargeAcc = v.data[1].recharge_accumulation
         end
     end
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_ACTIVE)
 end
 
 --[[--
@@ -1441,9 +1474,125 @@ function CommonData:getEmployPrice()
     return self.employPrice
 end
 
+--[[--
+设置过关斩将当前进行的关卡
+]]
+function CommonData:setPvpOvercomeIndex(idx)
+    idx = idx or 1
+    if idx < 1 then idx = 1 end
+    self.pvp_overcome_index = idx
+end
+--[[--
+增加过关斩将当前进行的关卡
+]]
+function CommonData:addPvpOvercomeIndex(num)
+    num = num or 1
+    if num < 1 then num = 1 end
+    self.pvp_overcome_index = self.pvp_overcome_index + num
+end
+--[[--
+得到过关斩将当前进行的关卡
+]]
+function CommonData:getPvpOvercomeIndex()
+    return self.pvp_overcome_index
+end
+--[[--
+设置过关斩将的已重置次数
+]]
+function CommonData:setPvpOvercomeRefreshCount(idx)
+    idx = idx or 0
+    if idx < 0 then idx = 0 end
+    self.pvp_overcome_refresh_count = idx
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_GGZJ)
+end
+--[[--
+增加过关斩将当前已重置次数
+]]
+function CommonData:addPvpOvercomeRefreshCount(num)
+    num = num or 1
+    if num < 1 then num = 1 end
+    self.pvp_overcome_refresh_count = self.pvp_overcome_refresh_count + num
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_GGZJ)
+end
+--[[--
+得到过关斩将当前已重置次数
+]]
+function CommonData:getPvpOvercomeRefreshCount()
+    return self.pvp_overcome_refresh_count
+end
+
+--[[--
+是否过关斩将需要显示红点
+]]
+function CommonData:isPvpRedDotInHome()
+    print("CommonData:isPvpRedDotInHome", self.c_BaseTemplate:getCurBuyGgzjTimes(), self.pvp_overcome_refresh_count)
+    return self.c_BaseTemplate:getCurBuyGgzjTimes() - self.pvp_overcome_refresh_count > 0
+end
+
 --等级
 function CommonData:setPlayerLevel(level)
     self.level = level
 end
+--[[--
+是否煮酒需要显示红点
+]]
+function CommonData:isWineRedDotInHome()
+    local startLv = self.c_BaseTemplate:getBrewStartLevel()
+    local lv = self:getLevel()
+    local brewFlag = (lv >= startLv)
+    if brewFlag then
+        local brew_times = self:getBrewTimes()
+        local brew_times_max = self.c_BaseTemplate:getBrewTimesMax()
+        local isCanBrew = (brew_times_max - brew_times ) > 0
+        return isCanBrew
+    end
+    return false
+end
+
+--[[--
+是否签到要显示红点
+]]
+function CommonData:isSignRedDotInHome()
+    local nowDay = self:getSignCurrDay()
+    local isSigned = self:lookIsSigned(nowDay)
+    return not isSigned
+end
+
+--[[--
+精彩活动,单次充值 红点
+]]
+function CommonData:isOnceRechargeRedDot()
+    local reSingleList = self.c_BaseTemplate:getRchargeSingle()
+    for k,v in pairs(reSingleList) do
+        if not self:rechargeGiftIsGot(v.id) and (self:getRechargeSingle(v.id) >= v.parameterA) then
+            return true
+        end
+    end
+    return false
+end
+
+--[[--
+精彩活动,累计充值 红点
+]]
+function CommonData:isSumRechargeRedDot()
+    local reAccList = self.c_BaseTemplate:getRchargeAcc()
+    for k,v in pairs(reAccList) do
+        if not self:rechargeGiftIsGot(v.id) and (self:getRechargeAcc() >= v.parameterA) then
+            return true
+        end
+    end
+    return false
+end
+
+--[[--
+精彩活动,美味大餐 红点
+]]
+function CommonData:isGiftRedDot()
+    local timeCanGet = self:getTimeCanGet()
+    return self:isFeastTime(timeCanGet) and not self:isEatFeast(timeCanGet)
+end
+
 return CommonData
 

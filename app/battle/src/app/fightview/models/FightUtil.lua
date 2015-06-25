@@ -3,9 +3,9 @@ local s2 = 3.0
 require("math")
 
 function set_seed(x1, x2)
-    appendFile2("set_seed======="..x1.."============"..x2)
-    s1 = x1
-    s2 = x2
+    s1 = x1 or s1
+    s2 = x2 or s2
+    appendFile2("set_seed======="..s1.."============"..s2)
 end
 
 function get_random_int(_begin, _end)
