@@ -61,8 +61,10 @@ class CharacterStaminaComponent(Component):
         if self.owner.finance[resource_type] < info.get("max_value"):
             # 如果原来的超出上限，则不添加
             _value = self.owner.finance[resource_type] + int(stamina_add)
+            if _value < 0:
+                _value = 0
             self.owner.finance._finances[resource_type] = min(_value, info.get("max_value"))
-        if int(stamina_add) > 0:
+        if int(stamina_add) > 0 or int(stamina_add) < 0:
             item.last_gain_stamina_time = current_time
 
         if is_next_day(time.time(), item.last_buy_stamina_time):

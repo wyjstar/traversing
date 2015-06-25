@@ -36,7 +36,7 @@ function front_attack(value, attacker, target_units)
     if table.nums(front_units) ~= 0 then
         return front_units, TYPE_FRONT_ROW
     else
-        return table.values(target_units), TYPE_FRONT_ROW
+        return table.values(target_units), TYPE_BACK_ROW
     end
 end
 
@@ -51,7 +51,7 @@ function back_attack(value, attacker, target_units)
     if #back_units ~= 0 then
         return back_units, TYPE_BACK_ROW
     else
-        return table.values(target_units), TYPE_BACK_ROW
+        return table.values(target_units), TYPE_FRONT_ROW
     end
 end
 

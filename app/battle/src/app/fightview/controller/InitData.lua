@@ -36,9 +36,10 @@ function initData(_process)
     fightData = getDataManager():getFightData() 
     calculation = getCalculationManager():getCalculation() 
     process = _process
-    local data = fightData:getData()
+    local data = fightData:getData() or {}
     set_seed(data.seed1, data.seed2)
     -- process.fight_type = TYPE_GUIDE
+    process.fight_type =  process.fight_type or TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
     if process.fight_type==TYPE_GUIDE then
         return initGuideData()
@@ -61,7 +62,10 @@ function initData(_process)
 end
 
 -- 新手引导中得演示关卡
-function initGuideData()
+--[[--
+    战斗测试
+]]
+function initTESTData()
     -- return 我方数据，敌方数据，我方View，敌方View，我方无双，敌方无双
     -- 演示关卡中所有武将全部觉醒, 突破等级0
     local redUnits = {}
@@ -77,95 +81,16 @@ function initGuideData()
     ["6"] = {[1] = 10056,  [2] = 33,}}
     demoEnemy = {["5"] = {[1] = 10058,  [2] = 33,},
     ["6"] = {[1] = 10050,  [2] = 33,}}
-    demoEnemy = 
-    {
-        ["1"] = {[1] = 10056,  [2] = 33,},
-        ["2"] = {[1] = 10046,  [2] = 33,},
-        ["3"] = {[1] = 10061,  [2] = 33,},
-        ["4"] = {[1] = 10058,  [2] = 33,},
-        ["5"] = {[1] = 10053,  [2] = 33,},
-        ["6"] = {[1] = 10045,  [2] = 33,},
-}
+    
     demoHero = 
     {
-        ["1"] = {[1] = 10050,  [2] = 33,},
-        ["2"] = {[1] = 10056,  [2] = 33,},
-        ["3"] = {[1] = 10047,  [2] = 33,},
-        ["4"] = {[1] = 10028,  [2] = 33,},
-        ["5"] = {[1] = 10054,  [2] = 33,},
-        ["6"] = {[1] = 10025,  [2] = 33,},
-}
-    demoEnemy = 
-    {
-        --["1"] = {[1] = 10050,  [2] = 33,},
-        ["2"] = {[1] = 10046,  [2] = 1,},
-        --["3"] = {[1] = 30063,  [2] = 33,},
-}
-    demoHero = 
-    {
-        ["1"] = {[1] = 10050,  [2] = 1,},
-        --["2"] = {[1] = 10046,  [2] = 33,},
-        ["3"] = {[1] = 30063,  [2] = 1,},
-}
-    demoEnemy = 
-    {
-        ["1"] = {[1] = 10020,  [2] = 1,},
-        ["2"] = {[1] = 10046,  [2] = 1,},
-        --["3"] = {[1] = 10061,  [2] = 1,},
-        --["4"] = {[1] = 30057,  [2] = 1,},
-        --["5"] = {[1] = 30060,  [2] = 1,},
-        --["6"] = {[1] = 10045,  [2] = 1,},
-}
-    demoHero = 
-    {
-        ["1"] = {[1] = 10044,  [2] = 1,},
-        ["2"] = {[1] = 10062,  [2] = 1,},
-        --["2"] = {[1] = 10056,  [2] = 1,},
-        --["3"] = {[1] = 10047,  [2] = 1,},
-        --["4"] = {[1] = 10028,  [2] = 1,},
-        --["5"] = {[1] = 10054,  [2] = 1,},
-        --["6"] = {[1] = 10025,  [2] = 1,},
-}
-    demoEnemy = 
-    {
-        --["1"] = {[1] = 10041,  [2] = 80,},
-        ["5"] = {[1] = 10013,  [2] = 60,},
-        -- ["2"] = {[1] = 10042,  [2] = 60,},
-        -- ["2"] = {[1] = 10045,  [2] = 60,},
-        -- ["3"] = {[1] = 10045,  [2] = 60,},
-        -- ["4"] = {[1] = 10045,  [2] = 60,},
-        -- ["5"] = {[1] = 10045,  [2] = 60,},
-        -- ["6"] = {[1] = 10045,  [2] = 60,},
-        -- ["3"] = {[1] = 10061,  [2] = 1,},
-        --["4"] = {[1] = 30057,  [2] = 1,},
-        --["5"] = {[1] = 30060,  [2] = 1,},
-        --["6"] = {[1] = 10045,  [2] = 1,},
-}
-    demoHero = 
-    {
-        -- ["1"] = {[1] = 10047,  [2] = 60,},
-        ["5"] = {[1] = 10041,  [2] = 60,},
-        -- ["2"] = {[1] = 10056,  [2] = 60,},
-        -- ["3"] = {[1] = 10056,  [2] = 60,},
-        -- ["4"] = {[1] = 10056,  [2] = 60,},
-        -- ["5"] = {[1] = 10056,  [2] = 60,},
-        -- ["6"] = {[1] = 10056,  [2] = 60,},
-        --["2"] = {[1] = 10045,  [2] = 30,},
-        --["2"] = {[1] = 10056,  [2] = 1,},
-        --["3"] = {[1] = 10047,  [2] = 1,},
-        --["4"] = {[1] = 10028,  [2] = 1,},
-        --["5"] = {[1] = 10054,  [2] = 1,},
-        --["6"] = {[1] = 10025,  [2] = 1,},
-}
-    demoHero = 
-    {
-        ["1"] = {[1] = 10042,  [2] = 60,},
+        ["1"] = {[1] = 30063,  [2] = 60,},
         -- ["2"] = {[1] = 10048,  [2] = 60,},
         ["3"] = {[1] = 10043,  [2] = 60,},
         -- ["4"] = {[1] = 10044,  [2] = 60,},
         -- ["5"] = {[1] = 10045,  [2] = 60,},
         -- ["6"] = {[1] = 10046,  [2] = 60,},
-}
+    }
     demoEnemy = 
     {
         ["6"] = {[1] = 10061,  [2] = 60,},
@@ -174,7 +99,7 @@ function initGuideData()
         -- ["4"] = {[1] = 10055,  [2] = 60,},
         -- ["5"] = {[1] = 10050,  [2] = 60,},
         -- ["3"] = {[1] = 10002,  [2] = 60,},
-}
+    }
     --for pos, v in pairs(demoHero) do
     local chief = false
     for i=1,6 do
@@ -184,19 +109,11 @@ function initGuideData()
             local unit_no = v[1]
             local unit_level = v[2]
             local data = soldierTemplate:getHeroTempLateById(unit_no)
-            local isawake = false
-            if i == 2 then
-                isawake = false
-            end
+            local isawake = true
             local break_level = 0
-            if i == 1 then
-                break_level = 7
-            elseif i == 2 then
-                break_level = 7
-            end
-            break_level = i - 1
-            local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
             print("=====================initGuideData1")
+            local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
+            
             if not chief then
                 --unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, false, false)
                 unit.chief = true
@@ -239,6 +156,109 @@ function initGuideData()
     --local blueUnParaSkill = nil 
     --local buddySkill = nil
     return redUnits, {blueUnits, clone(blueUnits), clone(blueUnits)}, redUnParaSkill, blueUnParaSkill, buddySkill
+end
+
+--[[--
+    演示战斗
+]]
+function initGuideData()
+        -- return 我方数据，敌方数据，我方View，敌方View，我方无双，敌方无双
+    -- 演示关卡中所有武将全部觉醒, 突破等级0
+    local redUnits = {}
+    local blueUnits = {}
+    local redUnParaSkill = nil
+    local blueUnParaSkill = nil
+    --local redUnitViews = {}
+    --local blueUnitViews = {}
+    local demoHero = baseTemplate:getBaseInfoById("demoHero")
+    local demoEnemy = baseTemplate:getBaseInfoById("demoEnemy")
+
+    -- demoHero = 
+    -- {
+    --     ["5"] = {[1] = 10044,  [2] = 190,[3] = 50,[4] = 175000},
+    --     ["1"] = {[1] = 10045,  [2] = 195,[3] = 50,[4] = 150000},
+    --     ["3"] = {[1] = 10046,  [2] = 160,[3] = 50,[4] = 200000},
+    --     -- ["4"] = {[1] = 10044,  [2] = 60,},
+    --     -- ["5"] = {[1] = 10045,  [2] = 60,},
+    --     -- ["6"] = {[1] = 10046,  [2] = 60,},
+    -- }
+    -- demoEnemy = 
+    -- {
+    --     ["1"] = {[1] = 10049,  [2] = 200,[3] = 50,[4] = 140000},
+    --     ["5"] = {[1] = 10048,  [2] = 190,[3] = 50,[4] = 50000},
+    --     ["3"] = {[1] = 10061,  [2] = 160,[3] = 50,[4] = 240000},
+    --     -- ["4"] = {[1] = 10055,  [2] = 60,},
+    --     -- ["5"] = {[1] = 10050,  [2] = 60,},
+    --     -- ["3"] = {[1] = 10002,  [2] = 60,},
+    -- }
+
+    for i=1,6 do
+        v = demoHero[tostring(i)]
+        if v then
+            local pos = i
+            local unit_no = v[1]
+            local unit_level = v[2]
+            local data = soldierTemplate:getHeroTempLateById(unit_no)
+            local isawake = true
+            local break_level = 0
+            local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
+            unit.skill.mp = v[3] or unit.skill.mp
+
+            for k,v in pairs(unit.skill.attack_normal_skill_buffs) do
+                if v.effectId == 24 then
+                    v.triggerRate = 0
+                end
+            end
+
+            unit._skill.mp = v[3] or unit._skill.mp
+            unit.cri_coeff = 1000
+            unit.cri_ded_coeff = 0
+            unit.block = 0                 -- 格挡率
+            unit.ductility = 0         -- 韧性
+            unit.hp = v[4] or unit.hp
+            unit.hp_max = v[4] or unit.hp_max
+            unit.hit = 1000                     -- 命中率
+            unit.dodge = 0                 -- 闪避率
+            redUnits[pos] = unit
+            updateRedUnitViewProperty(unit)
+        end
+    end
+
+    for pos, v in pairs(demoEnemy) do
+        local pos = tonumber(pos)
+        if v then
+            local unit_no = v[1]
+            local unit_level = v[2]
+            local data = soldierTemplate:getHeroTempLateById(unit_no)
+            local break_level = 0
+            local isawake = true
+            local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
+            for k,v in pairs(unit.skill.attack_normal_skill_buffs) do
+                if v.effectId == 24 then
+                    v.triggerRate = 0
+                end
+            end
+            blueUnits[pos] = unit
+            unit.skill.mp = v[3]
+            unit._skill.mp = v[3]
+            unit.cri_coeff = 1000
+            unit.cri_ded_coeff = 0
+            unit.block = 0                 -- 格挡率
+            unit.ductility = 0         -- 韧性
+            unit.hp = v[4] or unit.hp   
+            unit.hp_max = v[4] or unit.hp_max
+            unit.hit = 1000                     -- 命中率
+            unit.dodge = 0                 -- 闪避率
+            updateBlueUnitViewProperty(unit)
+        end
+    end
+    local redUnParaSkill = constructUnparaSkill(10020, 1, const.HOME_ARMY, "red", 7)
+
+    redUnParaSkill.mp_step = 8
+
+    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
+    -- local buddySkill = constructBuddySkill(mockBattleUnit(10001, 12, "red"))
+    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 function initMineData(data)
@@ -460,6 +480,12 @@ function constructBattleUnitWithTemplate(data, pos, level, break_level, is_awake
     if not SERVER_CODE then
         local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
         unit.pictureName = pictureName
+
+        if unit.is_break or unit.is_awake then --乱入前武将图片
+            local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no)
+            unit.originPictureName = originPictureName
+        end
+
         unit.resFrame = res
     end
 

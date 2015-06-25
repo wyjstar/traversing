@@ -324,9 +324,11 @@ function FightProcess:handle_skill_buff(target_side, target_units, skill_buff_in
     end
     print("trigger=========", skill_buff_info.id)
     for _, target_unit in pairs(target_units) do
-        local result = self.temp_buff_set:add_data(target_unit) -- add data for view
-        local buff = Buff.new(target_side, skill_buff_info, self)
-        target_unit.buff_manager:add(buff, result)
+        if target_unit.hp > 0 then
+            local result = self.temp_buff_set:add_data(target_unit) -- add data for view
+            local buff = Buff.new(target_side, skill_buff_info, self)
+            target_unit.buff_manager:add(buff, result)
+        end
     end
 end
 -- 处理主技能
