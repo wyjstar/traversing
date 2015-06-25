@@ -23,7 +23,8 @@ def send_reward(act_id):
 
         mail_id = get_mail_id(rank, act_id)
         if mail_id:
-            mail_data, _ = deal_mail(conf_id=mail_id, receive_id=int(p_id))
+            mail_data, _ = deal_mail(conf_id=mail_id, receive_id=int(p_id),
+                                     rank=rank, integral=int(integral))
             for child in childsmanager.childs.values():
                 child.push_message_remote('receive_mail_remote', int(p_id),
                                           mail_data)

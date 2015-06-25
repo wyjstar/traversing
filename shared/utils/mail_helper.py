@@ -6,7 +6,7 @@ from gfirefly.server.logobj import logger
 
 def deal_mail(conf_id=0, nickname='', receive_id=0, guild_name='',
               guild_p_num=0, guild_level=0, guild_id=0, pvp_rank=0,
-              rune_num=0):
+              rune_num=0, rank=0, integral=0):
     mail = Mail_PB()
     if conf_id:
         mail.config_id = conf_id
@@ -24,6 +24,10 @@ def deal_mail(conf_id=0, nickname='', receive_id=0, guild_name='',
         mail.pvp_rank = pvp_rank
     if rune_num:
         mail.rune_num = rune_num
+    if rank:
+        mail.rank = rank
+    if integral:
+        mail.integral = integral
     mail.send_time = int(time.time())
     mail_data = mail.SerializePartialToString()
     return mail_data, receive_id
