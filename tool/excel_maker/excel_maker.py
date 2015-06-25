@@ -9,7 +9,7 @@ import codecs
 import xlrd
 import json
 import cPickle
-import MySQLdb
+import pymysql
 import sqlite3
 import traceback
 from lupa import LuaRuntime
@@ -20,9 +20,9 @@ PROP_TABLE = ['base_config']
 ROOT_PATH = '../../../traversingConfig'
 
 
-conn = MySQLdb.connect(host="127.0.0.1", user="root", passwd="123456", port=3306, db="traversing_master", charset="utf8")
+conn = pymysql.Connect(host="127.0.0.1", user="root", passwd="123456", port=3306, db="db_traversing", charset="utf8")
 
-_escape_string = MySQLdb._mysql.escape_string
+_escape_string = pymysql.escape_string
 
 def _escape(arg):
     """ format sql with args, take from dbapi src.
@@ -238,8 +238,8 @@ def table2jsn_prop(table, jsonFileName, luaFileName, objName, cur=None):
             #raise e
     save_to_file(json.dumps(obj, ensure_ascii=False), luaFileName, objName, PROP_TABLE)
     # save_to_file("[{'id':1}]", path)
-    with open(jsonFileName, mode='wb') as f:
-        json.dump(obj, f, ensure_ascii=False)
+    f = open(jsonFileName, mode='wb')
+    json.dump(obj, f, ensure_ascii=False)
     #
     # print "Create ", path, " OK"
     return
