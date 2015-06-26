@@ -14,9 +14,9 @@ function FMHeroSkill:ctor(unit)
         mp_info = self.baseTemplate:getBaseInfoById("angryValueAwakeHero")
     end
     FMHeroSkill.super.ctor(self, unit, unit_info, mp_info)
-    self._break_skill_ids = {}
     self._break_skill_buffs = {}
-    self:set_break_skill_ids(unit:get_break_skill_nos())
+    self._break_skill_ids = unit:get_break_skill_nos()
+    self:set_break_skill_ids(self._break_skill_ids)
     self.after_skill_buffs = {}
     self.main_is_hit = false
     self.main_is_block = true
@@ -103,23 +103,24 @@ end
 function FMHeroSkill:set_break_skill_ids(value)
     print("FMHeroSkill:set_break_skill_ids==========")
     table.print(value)
-    self._break_skill_ids = value
     self._break_skill_buffs["back"] = {}
-    for _,id in pairs(self._break_skill_ids) do
+    for _,id in pairs(value) do
         local skill_info = self.soldierTemplate:getSkillTempLateById(id)
-        for i,buff_id in pairs(skill_info.group) do
-            local skill_buff_info = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
-            trigger_type = skill_buff_info.triggerType
-            if not table.ink(self._break_skill_buffs, trigger_type) then
-                self._break_skill_buffs[trigger_type] = {}
-            end
-            if table.inv({4, 5}, trigger_type) then
-                local info = {}
-                info.trigger_type = trigger_type
-                info.skill_buff_info = skill_buff_info
-                table.insert(self._break_skill_buffs["back"], info)
-            else
-                table.insert(self._break_skill_buffs[trigger_type], skill_buff_info)
+        if skill_info then
+            for i,buff_id in pairs(skill_info.group) do
+                local skill_buff_info = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
+                trigger_type = skill_buff_info.triggerType
+                if not table.ink(self._break_skill_buffs, trigger_type) then
+                    self._break_skill_buffs[trigger_type] = {}
+                end
+                if table.inv({4, 5}, trigger_type) then
+                    local info = {}
+                    info.trigger_type = trigger_type
+                    info.skill_buff_info = skill_buff_info
+                    table.insert(self._break_skill_buffs["back"], info)
+                else
+                    table.insert(self._break_skill_buffs[trigger_type], skill_buff_info)
+                end
             end
         end
     end

@@ -88,6 +88,7 @@ message PvbFightResponse{
     optional bool fight_result = 6;
     optional int32 seed1 = 7;
     optional int32 seed2 = 8;
+    optional int32 debuff_skill_no = 9;         // 未遇到奇遇, 则为0
 }
 
 //战斗结算，command:1706

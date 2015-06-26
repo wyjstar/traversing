@@ -207,7 +207,7 @@ def pvp_fight_request_1505(data, player):
     print("seed1, seed2=========%s %s" % (seed1, seed2))
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"), __skill, seed1, seed2)
+                               record.get("level"), __skill, seed1, seed2, const.BATTLE_PVP)
 
     logger.debug("blue_units: %s" % blue_units)
     logger.debug("fight result:%s" % fight_result)
@@ -332,7 +332,7 @@ def pvp_fight_revenge_1507(data, player):
     seed1, seed2 = get_seeds()
     fight_result = pvp_process(player, line_up, red_units, blue_units,
                                __best_skill, record.get("best_skill"),
-                               record.get("level"), __skill, seed1, seed2)
+                               record.get("level"), __skill, seed1, seed2, const.BATTLE_PVP)
 
     logger.debug("fight revenge result:%s" % fight_result)
 
