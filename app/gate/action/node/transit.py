@@ -10,11 +10,14 @@ groot = GlobalObject().root
 
 
 @remoteserviceHandle('transit')
-def pull_message_remote(key, character_id, *args):
+def pull_message_remote(key, character_id, args):
     oldvcharacter = VCharacterManager().get_by_id(character_id)
     logger.debug("pull_message_remote =============,args:%s" % args)
     if oldvcharacter:
-        args = (key, oldvcharacter.dynamic_id) + args + (False,)
+        if isinstance(args, tuple):
+            args = (key, oldvcharacter.dynamic_id) + args + (False,)
+        else:
+            args = (key, oldvcharacter.dynamic_id, args, False)
         logger.debug(args)
         logger.debug(oldvcharacter.node)
         child_node = groot.child(oldvcharacter.node)
