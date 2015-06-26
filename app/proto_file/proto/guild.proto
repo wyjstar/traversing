@@ -237,7 +237,7 @@ message FindGuildResponse{
 
 // 1810
 message AppointRequest{
-    required int32 deal_type = 1;
+    required int32 deal_type = 1; //1提拔2撤销
     required int32 p_id = 2;
 }
 

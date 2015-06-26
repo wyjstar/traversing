@@ -29,7 +29,6 @@ class Guild(object):
     def create_guild(self, p_id, name, icon_id):
         guild_index_incr_data = tb_guild_index_incr.getObj('guild_index')
         g_id = guild_index_incr_data.incr() + 100000
-        print 'AAAAAAAAAAAAAAAA,g_id:', g_id
 
         self._name = name
         self._g_id = g_id
