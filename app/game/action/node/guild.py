@@ -1102,7 +1102,7 @@ def invite_join_1803(data, player):
     if info != 0:
         response.res.result = False
         # response.res.message = "对方已有军团"
-        response.res.result_no = 843
+        response.res.result_no = 865
         return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('guildOpenStage')
@@ -1126,7 +1126,7 @@ def invite_join_1803(data, player):
         if flog:
             response.res.result = False
             # response.res.message = "对方未开启军团功能"
-            response.res.result_no = 837
+            response.res.result_no = 866
             return response.SerializeToString()
 
     elif is_online == 0:
