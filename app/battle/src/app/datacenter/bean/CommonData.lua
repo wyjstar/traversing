@@ -76,20 +76,28 @@ function CommonData:setData(data)
     self.accountId = data.id                            --玩家id
     self.nickname = data.nickname                       --玩家昵称
     self.register_time = data.register_time
-    cclog("------新用户的注册时间－－－－－－－"..self.register_time.."等级:"..data.level)
+    --cclog("----π－－－－"..self.register_time.."等级:"..data.level)
     self.vip = data.vip_level                           --vip等级
     self.exp = data.exp                                 --经验
     self.level = data.level                             --等级
-
+    self.oldLevel = self.level
     -- 将等级写入到userdefault中
     saveTeamLevel(self.level)
+    self.isCiriOpened = data.is_open_next_day_activity   --次日开启功能是否已开启过
         
     -- self.stamina = data.stamina                         --体力
     self.totalRecharge = data.recharge                   --累计充值
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
     self.godHeroTimes = data.excellent_hero_times         --神将累计抽取次数
-    self.newbee_guide_id = data.newbee_guide_id
-    print("newbee_guide_id", newbee_guide_id)
+    print("newbee_guide_id", data.newbee_guide_id)
+
+    --data.newbee_guide_id = 30029
+    if (data.newbee_guide_id == 0) then
+        getNewGManager():setCurrentGID(GuideId.G_GUIDE_START)  --新手引导记录编号
+    else
+        getNewGManager():setCurrentGID(data.newbee_guide_id)
+    end
+    --getNewGManager():setCurrentGID(101)
     print("---------------------------------------------------")
     -- self.gold = data.gold                               --元宝
     -- self.coin = data.coin                               --金币
@@ -155,6 +163,11 @@ function CommonData:setData(data)
     print("self.pvp_overcome_index = "..self.pvp_overcome_index)
     print("self.pvp_overcome_refresh_count = "..self.pvp_overcome_refresh_count)
 
+end
+
+--次日开启功能是否已开启过
+function CommonData:getIsCiriOpend()
+    return self.isCiriOpened
 end
 
 function CommonData:setPowerRank(rank)

@@ -3180,7 +3180,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1030051,}
 ,}
-,  ["resPicture3"] = 1300514,  ["atk"] = 432,  ["rageSkill"] = 1300512,  ["growMagicDef"] = 240,  ["consume4"] = {
+,  ["resPicture3"] = 1300515,  ["atk"] = 432,  ["rageSkill"] = 1300512,  ["growMagicDef"] = 240,  ["consume4"] = {
   ["1"] = {
   [1] = 500000,  [2] = 500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3214,7 +3214,7 @@ hero_config={
   ["107"] = {
   [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1300513,  ["id"] = 30051,  ["consume6"] = {
+,  ["resPicture2"] = 1300514,  ["id"] = 30051,  ["consume6"] = {
   ["1"] = {
   [1] = 1500000,  [2] = 1500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3230,7 +3230,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1030051,}
 ,}
-,  ["resPicture"] = 1300512,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030051,}
+,  ["resPicture"] = 1300513,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030051,}
 ,  [20055] = {
   ["resIcon"] = 1200551,  ["describeStr"] = 1100010055,  ["growHp"] = 966,  ["physicalDef"] = 219,  ["parameters5"] = 60,  ["dodge"] = 50,  ["toGet"] = 0,  ["block"] = 150,  ["audio"] = 220055,  ["sellGain"] = {
   ["1"] = {
@@ -3292,7 +3292,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1030057,}
 ,}
-,  ["resPicture3"] = 1300574,  ["atk"] = 384,  ["rageSkill"] = 1300572,  ["growMagicDef"] = 194,  ["consume4"] = {
+,  ["resPicture3"] = 1300575,  ["atk"] = 384,  ["rageSkill"] = 1300572,  ["growMagicDef"] = 194,  ["consume4"] = {
   ["1"] = {
   [1] = 500000,  [2] = 500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3326,7 +3326,7 @@ hero_config={
   ["107"] = {
   [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1300573,  ["id"] = 30057,  ["consume6"] = {
+,  ["resPicture2"] = 1300574,  ["id"] = 30057,  ["consume6"] = {
   ["1"] = {
   [1] = 1500000,  [2] = 1500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3342,7 +3342,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1030057,}
 ,}
-,  ["resPicture"] = 1300572,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030057,}
+,  ["resPicture"] = 1300573,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030057,}
 ,  [30059] = {
   ["resIcon"] = 1300591,  ["describeStr"] = 1100010059,  ["growHp"] = 864,  ["physicalDef"] = 194,  ["parameters5"] = 60,  ["dodge"] = 0,  ["toGet"] = 20030059,  ["block"] = 0,  ["audio"] = 230059,  ["sellGain"] = {
   ["1"] = {
@@ -3356,7 +3356,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1030059,}
 ,}
-,  ["resPicture3"] = 1300594,  ["atk"] = 686,  ["rageSkill"] = 1300592,  ["growMagicDef"] = 216,  ["consume4"] = {
+,  ["resPicture3"] = 1300595,  ["atk"] = 686,  ["rageSkill"] = 1300592,  ["growMagicDef"] = 216,  ["consume4"] = {
   ["1"] = {
   [1] = 500000,  [2] = 500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3390,7 +3390,7 @@ hero_config={
   ["107"] = {
   [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1300593,  ["id"] = 30059,  ["consume6"] = {
+,  ["resPicture2"] = 1300594,  ["id"] = 30059,  ["consume6"] = {
   ["1"] = {
   [1] = 1500000,  [2] = 1500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3406,7 +3406,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1030059,}
 ,}
-,  ["resPicture"] = 1300592,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030059,}
+,  ["resPicture"] = 1300593,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030059,}
 ,  [30060] = {
   ["resIcon"] = 1300601,  ["describeStr"] = 1100010060,  ["growHp"] = 864,  ["physicalDef"] = 216,  ["parameters5"] = 60,  ["dodge"] = 0,  ["toGet"] = 20030060,  ["block"] = 0,  ["audio"] = 230060,  ["sellGain"] = {
   ["1"] = {
@@ -3420,7 +3420,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1030060,}
 ,}
-,  ["resPicture3"] = 1300604,  ["atk"] = 686,  ["rageSkill"] = 1300602,  ["growMagicDef"] = 194,  ["consume4"] = {
+,  ["resPicture3"] = 1300605,  ["atk"] = 686,  ["rageSkill"] = 1300602,  ["growMagicDef"] = 194,  ["consume4"] = {
   ["1"] = {
   [1] = 500000,  [2] = 500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3454,7 +3454,7 @@ hero_config={
   ["107"] = {
   [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1300603,  ["id"] = 30060,  ["consume6"] = {
+,  ["resPicture2"] = 1300604,  ["id"] = 30060,  ["consume6"] = {
   ["1"] = {
   [1] = 1500000,  [2] = 1500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3470,7 +3470,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1030060,}
 ,}
-,  ["resPicture"] = 1300602,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030060,}
+,  ["resPicture"] = 1300603,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030060,}
 ,  [30063] = {
   ["resIcon"] = 1300631,  ["describeStr"] = 1100010063,  ["growHp"] = 1214,  ["physicalDef"] = 248,  ["parameters5"] = 60,  ["dodge"] = 50,  ["toGet"] = 20030063,  ["block"] = 150,  ["audio"] = 230063,  ["sellGain"] = {
   ["1"] = {
@@ -3484,7 +3484,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1030063,}
 ,}
-,  ["resPicture3"] = 1300634,  ["atk"] = 384,  ["rageSkill"] = 1300632,  ["growMagicDef"] = 216,  ["consume4"] = {
+,  ["resPicture3"] = 1300635,  ["atk"] = 384,  ["rageSkill"] = 1300632,  ["growMagicDef"] = 216,  ["consume4"] = {
   ["1"] = {
   [1] = 500000,  [2] = 500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3518,7 +3518,7 @@ hero_config={
   ["107"] = {
   [1] = 4000,  [2] = 4000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1300633,  ["id"] = 30063,  ["consume6"] = {
+,  ["resPicture2"] = 1300634,  ["id"] = 30063,  ["consume6"] = {
   ["1"] = {
   [1] = 1500000,  [2] = 1500000,  [3] = 0,}
 ,  ["105"] = {
@@ -3534,7 +3534,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1030063,}
 ,}
-,  ["resPicture"] = 1300632,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030063,}
+,  ["resPicture"] = 1300633,  ["parameters7"] = 100,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030063,}
 ,  [20053] = {
   ["resIcon"] = 1200531,  ["describeStr"] = 1100010053,  ["growHp"] = 1104,  ["physicalDef"] = 276,  ["parameters5"] = 60,  ["dodge"] = 50,  ["toGet"] = 0,  ["block"] = 150,  ["audio"] = 220053,  ["sellGain"] = {
   ["1"] = {

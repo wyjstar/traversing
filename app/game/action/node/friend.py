@@ -395,11 +395,13 @@ def recommend_friend_1198(data, player):
                 last_time = player_data.hget('upgrade_time')
                 if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
                     continue
-                count += 1
-                friend = response.rfriend.add()
                 friend_data = player_data.hmget(['id', 'nickname',
                                                  'attackPoint', 'heads',
                                                  'level', 'upgrade_time'])
+                if not friend_data.get('nickname'):
+                    continue
+                count += 1
+                friend = response.rfriend.add()
                 friend.id = friend_data.get('id')
                 friend.nickname = friend_data.get('nickname')
                 ap = 1
