@@ -100,7 +100,7 @@ class MineOpt(object):
     def get_user(cls, label, k):
         """ label : "user_level","sword",玩家等级，团队战力 """
         try:
-            ret = tb_rank.get(label).zscore(k)
+            ret = tb_rank.getObj(label).zscore(k)
         except Exception, e:
             print e
             return 1

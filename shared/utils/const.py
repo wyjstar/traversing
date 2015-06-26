@@ -186,6 +186,9 @@ const.StageChestGift = 36
 const.LIMIT_HERO = 37
 const.TASK = 38
 
+const.LOGIN_GIFT_CONTINUS = 8061
+const.LOGIN_GIFT_CUMULATIVE = 8062
+
 
 const.HJQY_ADD_REWARD = 21011
 
