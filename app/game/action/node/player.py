@@ -452,3 +452,11 @@ def add_stamina_2202(request_proto, player):
     logger.debug("add stmina %s %s" % (resource_type, info.get("recover_unit")))
     response.res.result = True
     return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def open_next_day_activity_2203(request_proto, player):
+    player.base_info.is_open_next_day_activity = True
+    player.base_info.save_data()
+    response = CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
