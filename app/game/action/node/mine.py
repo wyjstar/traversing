@@ -577,7 +577,10 @@ def settle_1252(data, player):
     request.ParseFromString(data)
     pos = request.pos
     result = request.result
-    if not pve_process_check(player, result, request.steps, const.BATTLE_MINE_PVE):
+    mine_info = get_mine_info(player, pos)
+    mine_type = mine_info.get("mine_type")  # 根据矿所在位置判断pve or pvp
+    print("pos %s, mine_info %s" % (pos, mine_type))
+    if mine_type == 0 and not pve_process_check(player, result, request.steps, const.BATTLE_MINE_PVE):
         logger.error("mine pve_process_check error!=================")
         res = response.res
         res.result = False
@@ -636,6 +639,8 @@ def battle_1253(data, player):
         player.fight_cache_component.seed2 = seed2
         player.fight_cache_component.red_best_skill_id = red_best_skill_id
         player.fight_cache_component.stage_info = stage_info
+        response.seed1 = seed1
+        response.seed2 = seed2
         print red_units, blue_units
 
     elif mine_type == 1:
@@ -658,6 +663,8 @@ def battle_1253(data, player):
         blue_best_skill_id = info.get("best_skill_id", 0)
         blue_best_skill_level = info.get("best_skill_level", 0)
         response.fight_result = fight_result
+        response.seed1 = seed1
+        response.seed2 = seed2
 
         # print red_units, blue_units
 

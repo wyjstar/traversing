@@ -320,6 +320,8 @@ def pvb_fight_start_1705(pro_data, player):
     response.red_best_skill= best_skill_id
     response.red_best_skill_level = red_best_skill_level
     response.debuff_skill_no = remote_gate['world'].get_debuff_skill_no_remote(boss_id)
+    response.seed1 = seed1
+    response.seed2 = seed2
     print response
 
     return response.SerializePartialToString()
