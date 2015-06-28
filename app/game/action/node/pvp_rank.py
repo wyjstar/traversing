@@ -39,7 +39,7 @@ PVP_TABLE_NAME = 'tb_pvp_rank'
 def pvp_top_rank_request_1501(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    columns = ['id', 'nickname', 'level', 'ap',
+    columns = ['id', 'character_id', 'nickname', 'level', 'ap',
                'hero_ids', 'hero_levels', 'head_no']
     records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
     for record in records:
@@ -49,6 +49,7 @@ def pvp_top_rank_request_1501(data, player):
         rank_item.rank = record.get('id')
         rank_item.ap = record.get('ap')
         rank_item.head_no = record.get('head_no')
+        rank_item.character_id = record.get('character_id')
         hero_ids = cPickle.loads(record.get('hero_ids'))
         rank_item.hero_ids.extend([_ for _ in hero_ids])
         hero_levels = cPickle.loads(record.get('hero_levels'))
@@ -66,7 +67,7 @@ def pvp_player_rank_request_1502(data, player):
     response.player_rank = record.get('id') if record else -1
 
     if response.player_rank < 9 and response.player_rank > 0:
-        columns = ['id', 'nickname', 'level', 'ap',
+        columns = ['id', 'character_id', 'nickname', 'level', 'ap',
                    'hero_ids', 'hero_levels', 'head_no']
         records = util.GetSomeRecordInfo(PVP_TABLE_NAME, 'id<=10', columns)
         for record in records:
@@ -76,6 +77,7 @@ def pvp_player_rank_request_1502(data, player):
             rank_item.rank = record.get('id')
             rank_item.ap = record.get('ap')
             rank_item.head_no = record.get('head_no')
+            rank_item.character_id = record.get('character_id')
             hero_ids = cPickle.loads(record.get('hero_ids'))
             rank_item.hero_ids.extend([_ for _ in hero_ids])
             hero_levels = cPickle.loads(record.get('hero_levels'))
@@ -342,6 +344,17 @@ def pvp_fight_revenge_1507(data, player):
                                record.get("level"), __skill, seed1, seed2, const.BATTLE_PVP)
 
     logger.debug("fight revenge result:%s" % fight_result)
+
+    if fight_result:
+        player.friends.del_blacklist(request.black_id)
+        player.friends.save_data()
+
+        _arena_win_points = game_configs.base_config.get('arena_win_points')
+        if _arena_win_points:
+            return_data = gain(player, _arena_win_points, const.FRIEND_REVENGE)
+            get_return(player, return_data, response.gain)
+        else:
+            logger.debug('friend revenge points is not find')
 
     response.res.result = True
     pvp_assemble_units(red_units, blue_units, response)
