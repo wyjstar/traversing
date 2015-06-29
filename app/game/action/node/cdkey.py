@@ -11,7 +11,10 @@ from geventhttpclient.url import URL
 
 
 SERVER_NO = GlobalObject().allconfig.get('server_no', 0)
+CDKEY_URL = GlobalObject().allconfig.get('msdk').get('cdkey_url')
 SERVER_TOKEN = '8284e374e15ae005b8300a0ebfdf803f'
+
+print CDKEY_URL
 
 
 @remoteserviceHandle('gate')
@@ -20,7 +23,9 @@ def get_cdkey_gift_1123(data, player):
     request.ParseFromString(data)
 
     response = cdkey_pb2.CdkeyResqonse()
-    url = 'http://192.168.1.60:2600/cdkey/verify?area_id=%s&uid=%s&code=%s&token=%s' % (SERVER_NO, player.base_info.id, request.cdkey, SERVER_TOKEN)
+    url = '%s/verify?area_id=%s&uid=%s&code=%s&token=%s' % \
+          (CDKEY_URL, SERVER_NO, player.base_info.id,
+           request.cdkey, SERVER_TOKEN)
     logger.debug('cdkey url:%s', url)
 
     url = URL(url)
