@@ -14,8 +14,6 @@ SERVER_NO = GlobalObject().allconfig.get('server_no', 0)
 CDKEY_URL = GlobalObject().allconfig.get('msdk').get('cdkey_url')
 SERVER_TOKEN = '8284e374e15ae005b8300a0ebfdf803f'
 
-print CDKEY_URL
-
 
 @remoteserviceHandle('gate')
 def get_cdkey_gift_1123(data, player):
