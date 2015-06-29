@@ -1,7 +1,7 @@
 # coding:utf8
 
 from gevent import monkey
-monkey.patch_os()
+monkey.patch_all()
 import sys
 import json
 import code
