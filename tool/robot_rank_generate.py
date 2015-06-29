@@ -16,6 +16,7 @@ from gfirefly.server.logobj import log_init_only_out
 from gfirefly.distributed.node import RemoteObject
 from shared.db_opear.configs_data import game_configs
 from gfirefly.dbentrust.redis_manager import redis_manager
+from shared.utils.const import const
 
 
 GlobalObject().remote['gate'] = RemoteObject('gate')
@@ -72,7 +73,7 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
-    rank_length = 3000
+    rank_length = const.ROBOT_NUM
     from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
     nickname_set = set()

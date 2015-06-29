@@ -99,4 +99,5 @@ message StaminaOperRequest{
 message StaminaOperResponse{
     required CommonResponse res = 1;
     required FinanceChanges finance_changes = 2;
+    optional int32 buy_times = 3;
 }

@@ -222,3 +222,4 @@ const.BOSS_LIVE = 1  # 正常
 const.BOSS_DEAD = 2      # 已死
 const.BOSS_RUN_AWAY = 3  # 逃走
 
+const.ROBOT_NUM = 300

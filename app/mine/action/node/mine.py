@@ -22,7 +22,7 @@ def mine_update_remote(uid, seq):
     更新信息
     """
     data = MineData().get_toupdata(seq)
-    return data
+    return cPickle.dumps(data)
 
 @nodeservice_handle
 def mine_query_info_remote(uid, seq):
@@ -32,7 +32,7 @@ def mine_query_info_remote(uid, seq):
     """
     info = MineData().get_info(seq)
         
-    return info
+    return cPickle.dumps(info)
 
 @nodeservice_handle
 def mine_detail_info_remote(uid, seq):
@@ -60,8 +60,8 @@ def mine_settle_remote(uid, seq, result, nickname, hold):
     @param result: 战斗结果
     @param nickname: 攻占着昵称
     """
-    data, uid, nickname = MineData().settle(seq, result, uid, nickname, hold)
-    return data, uid, nickname
+    data = MineData().settle(seq, result, uid, nickname, hold)
+    return cPickle.dumps(data)
 
 @nodeservice_handle
 def mine_guard_remote(uid, seq, nickname, data):
@@ -79,6 +79,6 @@ def mine_harvest_remote(uid, seq):
     收获
     """
     status, data = MineData().harvest(uid, seq)
-    return status, data
+    return status, cPickle.dumps(data)
 
     

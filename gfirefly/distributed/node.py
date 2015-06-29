@@ -128,3 +128,10 @@ class RemoteObject(object):
         self._factory._protocol.setProxyReference(self._reference)
         deferedRemote = self._factory.getRootObject(timeout=self._timeout)
         deferedRemote.callRemoteNotForResult('takeProxy', self._name)
+
+    def is_connected(self):
+        deferedRemote = self._factory.getRootObject(timeout=self._timeout)
+        if deferedRemote.broker:
+            return True
+        else:
+            return False
