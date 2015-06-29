@@ -383,20 +383,17 @@ def refresh_shop_items_507(pro_data, player):
     shop_type = request.shop_type
 
     response = GetShopItemsResponse()
-    # max_shop_refresh_times = player.base_info.shop_refresh_times
-
-    # cancel vip temprory
-    # if max_shop_refresh_times <= player.soul_shop.refresh_times:
-    # logger.debug("already reach refresh max!")
-    #     response.res.result = False
-    #     response.res.result_no = 501
-    #     return response.SerializePartialToString()
+    if not player.shop.check_shop_refresh_times(shop_type):
+        logger.debug("already reach refresh max!")
+        response.res.result = False
+        response.res.result_no = 50701
+        return response.SerializePartialToString()
 
     response.res.result = player.shop.refresh_price(shop_type)
     if not response.res.result:
         logger.debug("gold not enough!")
         response.res.result = False
-        response.res.result_no = 101
+        response.res.result_no = 50702
         return response.SerializePartialToString()
 
     shopdata = player.shop.get_shop_data(shop_type)
