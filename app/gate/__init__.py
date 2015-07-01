@@ -37,4 +37,4 @@ def tick():
     logger.info('server online num:%s', UsersManager().get_online_num())
     tlog_action.log('OnlineNum', UsersManager().get_online_num())
 
-reactor.callLater(1, tick)
+reactor.callLater(3, tick)
