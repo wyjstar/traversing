@@ -35,6 +35,7 @@ class CharacterFinanceComponent(Component):
         self._finances = [0] * const.RESOURCE_MAX
 
     def init_data(self, data):
+        print("init data ============finance")
         self._finances = data['finances']
         while len(self._finances) < const.RESOURCE_MAX:
             self._finances.append(0)

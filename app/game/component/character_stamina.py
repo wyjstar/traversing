@@ -29,10 +29,10 @@ class CharacterStaminaComponent(Component):
     def init_data(self, character_info):
         stamina_data = character_info.get('stamina')
         self._stamina.ParseFromString(stamina_data)
-        self.save_data()
         for item in self._stamina.stamina:
             logger.debug("resource type %s" % item.resource_type)
             self.check_time(item.resource_type)
+        self.save_data()
 
     def save_data(self):
         info = tb_character_info.getObj(self.owner.base_info.id)
@@ -55,17 +55,19 @@ class CharacterStaminaComponent(Component):
         info = self.get_info(resource_type, self._owner)
         current_time = int(time.time())
         logger.debug("info %s" % info)
-        logger.debug("finance %s" % self.owner.finance[const.STAMINA])
         stamina_add = (current_time - item.last_gain_stamina_time) / info.get("recover_period")
-        left_stamina = (current_time - item.last_gain_stamina_time) % info.get("recover_period")
+        #left_stamina = (current_time - item.last_gain_stamina_time) % info.get("recover_period")
+        logger.debug("stamina_add %s " % (stamina_add,))
         if self.owner.finance[resource_type] < info.get("max_value"):
             # 如果原来的超出上限，则不添加
             _value = self.owner.finance[resource_type] + int(stamina_add)
-            self.owner.finance[resource_type] = min(_value, info.get("max_value"))
-        item.last_gain_stamina_time = current_time - left_stamina
+            self.owner.finance._finances[resource_type] = min(_value, info.get("max_value"))
+        item.last_gain_stamina_time = current_time
         if is_next_day(time.time(), item.last_buy_stamina_time):
             item.buy_stamina_times = 0
 
+        self._owner.finance.save_data()
+        logger.debug("check_time finance %s" % self.owner.finance._finances)
         if resource_type != const.STAMINA:
             return
         # 体力相关
@@ -76,7 +78,6 @@ class CharacterStaminaComponent(Component):
             item.last_mail_day = dateNow
             item.get_stamina_times = 0
             item.ClearField('contributors')
-            self.save_data()
 
     @property
     def stamina(self):

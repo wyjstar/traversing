@@ -406,6 +406,7 @@ def buy_stamina_2201(request_proto, player):
         logger.debug("buy stamina++++++++++++++++++++")
 
     player.pay.pay(need_gold*num, func)
+    response.buy_times = item.buy_stamina_times
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -446,6 +447,7 @@ def add_stamina_2202(request_proto, player):
     player.finance.add(resource_type, info.get("recover_unit"))
 
     item.last_gain_stamina_time = current_time
+    player.stamina.save_data()
     player.finance.save_data()
     logger.debug("add stmina %s %s" % (resource_type, info.get("recover_unit")))
     response.res.result = True
