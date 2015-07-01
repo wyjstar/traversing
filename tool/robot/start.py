@@ -16,7 +16,7 @@ from robot_mine import RobotMine
 from robot_hero import RobotHero
 from robot_zhangchao import RobotZhangChao
 
-monkey.patch_os()
+monkey.patch_all()
 
 RED = '\033[31m'
 GREEN = '\033[32m'
