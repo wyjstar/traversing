@@ -22,7 +22,7 @@ wx_appid = 'wxf77437c08cb06196'
 wx_appkey = '8274b9e862581f8b4976ba90ad2d4b77'
 
 
-@webserviceHandle('/login_qq')
+@webserviceHandle('/login_tencent')
 def qq_server_login():
     """ account login """
     logger.info("server_login login in.")
