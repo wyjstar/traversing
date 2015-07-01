@@ -9,6 +9,7 @@ from shared.db_opear.configs_data import game_configs
 #from app.game.core.item_group_helper import gain, get_return
 #from shared.utils.const import const
 from gfirefly.server.logobj import logger
+from shared.utils.date_util import days_to_current, get_current_timestamp
 
 @remoteserviceHandle('gate')
 def get_buy_coin_activity_1407(data, player):
@@ -17,6 +18,10 @@ def get_buy_coin_activity_1407(data, player):
     respone: GetBuyCoinInfoResponse
     """
     response = buy_coin_activity_pb2.GetBuyCoinInfoResponse()
+    if days_to_current(player.buy_coin.last_time) > 0:
+        player.buy_coin.buy_times = 0
+        player.buy_coin.save_data()
+    print("buy_times", player.buy_coin.buy_times)
     response.buy_times = player.buy_coin.buy_times
     response.extra_can_buy_times = player.buy_coin.extra_can_buy_times
     return response.SerializePartialToString()
@@ -64,6 +69,7 @@ def buy_coin_activity_1406(data, player):
             break
     def func():
         player.buy_coin.buy_times = buy_times + 1
+        player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
         player.finance.add_coin(coin_nums)
         player.finance.save_data()

@@ -267,13 +267,10 @@ def pvb_fight_start_1705(pro_data, player):
         response.res.result_no = 1705
         return response.SerializePartialToString()
 
-
-    # 根据鼓舞次数，增加ATK百分比
-    atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
+    # 根据鼓舞次数，增加伤害百分比
+    damage_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
                boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
 
-    for slot_no, red_unit in red_units.items():
-        red_unit.atk *= (1 + atk_rate)
 
     # mock fight.
     player_info = {}
@@ -292,7 +289,7 @@ def pvb_fight_start_1705(pro_data, player):
     seed1, seed2 = get_seeds()
     #def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
-                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2)
+                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, seed1, seed2)
 
     if result == -1:
         logger.debug("world boss already gone!")
@@ -322,6 +319,7 @@ def pvb_fight_start_1705(pro_data, player):
     response.debuff_skill_no = remote_gate['world'].get_debuff_skill_no_remote(boss_id)
     response.seed1 = seed1
     response.seed2 = seed2
+    response.damage_rate = damage_rate
     print response
 
     return response.SerializePartialToString()

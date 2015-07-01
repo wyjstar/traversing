@@ -370,8 +370,8 @@ STEP_BEGIN_ACTION = 2 -- 起手动作
 STEP_DO_BUFF = 3 -- 攻击
 STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
-g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"  --次日登陆奖励
-
+g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --次日登陆奖励
+g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
 
 
 

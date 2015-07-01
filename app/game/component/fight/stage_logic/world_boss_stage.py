@@ -33,11 +33,10 @@ class WorldBossStageLogic(base_stage.BaseStageLogic):
         """
         update hero self attr, plus some attr
         """
-        origin_atk = hero_self_attr["atkHero"]
         lucky_heros = cPickle.loads(remote_gate['world'].get_lucky_heros_remote())
-        atk_rate = 0
         lucky_add = 0
 
+        print("hero_self_attr_origin", hero_self_attr)
         for k, v in lucky_heros.items():
             if v.get("hero_no") == hero_no:
                 lucky_hero_id = v.get("lucky_hero_info_id")
@@ -51,12 +50,6 @@ class WorldBossStageLogic(base_stage.BaseStageLogic):
                         lucky_add = attr_info[1]
                     logger.debug("===========%s %s" % (hero_self_attr[attr_name], lucky_add))
                     hero_self_attr[attr_name] = hero_self_attr[attr_name] + lucky_add
-
-        boss = player.world_boss.get_boss("world_boss")
-        base_config = boss.get_base_config()
-        atk_rate = boss.encourage_coin_num * base_config.get("coin_inspire_atk", 0) + \
-               boss.encourage_gold_num * base_config.get("gold_inspire_atk", 0)
-        hero_self_attr["atkHero"] = (1 + atk_rate) * origin_atk
-        logger.debug("atkRate=====%s" % atk_rate)
+        print("hero_self_attr_after", hero_self_attr)
 
         return hero_self_attr

@@ -118,7 +118,7 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
         return True
     return False
 
-def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, player_level, debuff_skill_no, seed1, seed2):
+def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, player_level, debuff_skill_no, damage_rate, seed1, seed2):
     red = []
     blue = []
     for unit in red_units.values():
@@ -135,7 +135,8 @@ def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_sk
         blue_skill_level = blue_skill_level,
         seed1 = seed1,
         seed2 = seed2,
-        debuff_skill_no = debuff_skill_no
+        debuff_skill_no = debuff_skill_no,
+        damage_rate= damage_rate
     )
     fight_type = const.BATTLE_PVB
     res = pvp_func(fight_data, fight_type)

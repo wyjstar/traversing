@@ -89,6 +89,7 @@ message PvbFightResponse{
     optional int32 seed1 = 7;
     optional int32 seed2 = 8;
     optional int32 debuff_skill_no = 9;         // 未遇到奇遇, 则为0
+    optional float damage_rate = 10;         // 鼓舞伤害加成
 }
 
 //战斗结算，command:1706

@@ -45,7 +45,7 @@ function get_fight_mode(fight_type)
 
 --TYPE_MINE_MONSTER           = 8       -- 攻占也怪
 --TYPE_MINE_OTHERUSER         = 9       -- 攻占其他玩家
-    if fight_type == TYPE_GUIDE or fight_type == TYPE_PVP or fight_type == TYPE_MINE_OTHERUSER then
+    if fight_type == TYPE_GUIDE or fight_type == TYPE_PVP or fight_type == TYPE_MINE_OTHERUSER or fight_type == TYPE_WORLD_BOSS then
         return TYPE_MODE_PVP
     else
         return TYPE_MODE_PVE
