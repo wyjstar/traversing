@@ -411,7 +411,7 @@ class CharacterBaseInfoComponent(Component):
             if gold >= vip_content.rechargeAmount:
                 self._vip_level = i
                 self.save_data()
-        hook_task(player, CONDITIONId.VIP_LEVEL, self._vip_level)
+        hook_task(self.owner, CONDITIONId.VIP_LEVEL, self._vip_level)
 
     @property
     def gag(self):
