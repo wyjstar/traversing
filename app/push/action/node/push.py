@@ -2,10 +2,11 @@
 """
 created by server on 14-5-20下午12:11.
 """
-from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import push_pb2
 from app.push.core.pusher import Pusher
 from shared.db_opear.configs_data import game_configs
+
+from gfirefly.server.globalobject import remoteserviceHandle
 
 
 @remoteserviceHandle('gate')

@@ -102,3 +102,5 @@ class remoteserviceHandle:
             remote = GlobalObject().remote[self.remotename]
             service = remote._reference._service
             service.mapTarget(target)
+        else:
+            print self.remotename, target, '='*398
