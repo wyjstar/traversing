@@ -57,8 +57,6 @@ class Character(object):
 
 
 class Pusher(object):
-    __metaclass__ = Singleton
-
     def __init__(self):
         self.register = {}  # key:uid, value:Character
         self.to_push = {}
@@ -217,3 +215,5 @@ class Pusher(object):
                 self.add_message(uid, push_config.event, message, int(time.time()))
                 del self.offline[uid]
                 push_offline.hdel(uid)
+
+pusher = Pusher()
