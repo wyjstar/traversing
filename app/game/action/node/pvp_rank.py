@@ -141,7 +141,7 @@ def pvp_fight_assemble_data(red_units, blue_units, red_skill, red_skill_level,
 
 def get_pvp_data(character_id):
     char_obj = tb_character_info.getObj(character_id)
-    if character_id < 10000 and char_obj.exists():
+    if character_id >= 10000 and char_obj.exists():
         keys = ['level',
                 'attackPoint',
                 'best_skill',
