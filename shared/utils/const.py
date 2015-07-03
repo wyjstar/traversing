@@ -51,6 +51,7 @@ const.TEAM_EXPERIENCE = 12
 const.NECTAR = 13
 const.STONE1 = 14
 const.STONE2 = 15
+const.SPIRIT= 16
 const.EQUIPMENT_ELITE = 21
 const.RESOURCE_MAX = 23
 const.RESOURCE = 107

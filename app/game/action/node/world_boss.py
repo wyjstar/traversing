@@ -231,6 +231,7 @@ def pvb_fight_start_1705(pro_data, player):
 
     response = PvbFightResponse()
     res = response.res
+    print("world_boss_line_up:", line_up)
 
     open_stage_id = game_configs.base_config.get('worldbossOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
