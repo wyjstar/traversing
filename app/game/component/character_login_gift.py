@@ -30,7 +30,7 @@ class CharacterLoginGiftComponent(Component):
         self._continuous_day = data.get('continuous_day', {})
         self._continuous_day_num = data.get('continuous_day_num', 0)
         self._continuous_day = data.get('continuous_7day', {})
-        self._continuous_day_num = data.get('continuous_7day_num', 0)
+        self._continuous_7day_num = data.get('continuous_7day_num', 0)
         self._cumulative_day_num = data.get('cumulative_day_num', 0)
         self._cumulative_day = data.get('cumulative_day', {})
         self._last_login= data.get('last_login')
@@ -162,6 +162,14 @@ class CharacterLoginGiftComponent(Component):
     @continuous_day_num.setter
     def continuous_day_num(self, value):
         self._continuous_day_num = value
+
+    @property
+    def continuous_7day_num(self):
+        return self._continuous_7day_num
+
+    @continuous_7day_num.setter
+    def continuous_7day_num(self, value):
+        self._continuous_7day_num = value
 
     def is_open(self, activity_id):
         """
