@@ -1,6 +1,5 @@
 #-*- coding:utf-8 -*-
 import action
-from service.node import pushgateservice
 from gtwisted.core import reactor
 from gfirefly.server.globalobject import GlobalObject
 from app.push.core.pusher import Pusher

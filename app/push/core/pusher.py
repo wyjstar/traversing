@@ -1,24 +1,22 @@
 # -*- coding:utf-8 -*-
-'''
+"""
 Created on 2015-5-2
-
 @author: hack
-'''
-from gfirefly.utils.singleton import Singleton
-import time
-from app.push.core.apns import APNs, Payload
-from shared.db_opear.configs_data import game_configs
-from shared.utils import xtime
+"""
 
+import time
+from shared.utils import xtime
+from shared.db_opear.configs_data import game_configs
+from gfirefly.utils.singleton import Singleton
 from gfirefly.dbentrust.redis_mode import RedisObject
+
+# from push_apns import push_by_token
+from push_xinge import push_by_token
 
 push_reg = RedisObject('pushobj.reg')
 push_task = RedisObject('pushobj.push')
 push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
-
-apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
-device_token1 = '8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
 
 class PushMessage(object):
@@ -39,7 +37,7 @@ class Character(object):
     def __init__(self):
         self.uid = None
         self.device_token = None
-        self.switch = {} #消息开关
+        self.switch = {}  # 消息开关
         self.status = 1
         self.status_time = 0
 
@@ -62,7 +60,7 @@ class Pusher(object):
     __metaclass__ = Singleton
 
     def __init__(self):
-        self.register = {} #key:uid, value:Character
+        self.register = {}  # key:uid, value:Character
         self.to_push = {}
         self.offline = {}
         self.everyday = {}
@@ -155,9 +153,7 @@ class Pusher(object):
             if user is None or not user.can_push(mtype):
                 continue
 
-            payload = Payload(alert=message.message, sound='default', badge=1)
-#             frame.add_item(user.device_token, payload, identifier, expiry, priority)
-            apns_handler.gateway_server.send_notification(user.device_token, payload)
+            push_by_token(user.device_token, message.message)
             count += 1
             del self.to_push[mid]
             push_task.hdel(mid)
@@ -172,17 +168,11 @@ class Pusher(object):
 #         apns_handler.gateway_server.send_notification(device_token1, payload)
 
     def send_all(self, mtype, message):
-#         frame = Frame()
-#         identifier = 1
-#         expiry = int(time.time())
-#         priority = 10
         count = 0
         for user in self.register.values():
             print 'user.device_token', user.device_token
             if user.can_push(mtype):
-                payload = Payload(alert=message.message, sound='default', badge=1)
-#                 frame.add_item(user.device_token, payload, identifier, expiry, priority)
-                apns_handler.gateway_server.send_notification(user.device_token, payload)
+                push_by_token(user.device_token, message.message)
                 count += 1
         print 'count', count
 #         if count:
