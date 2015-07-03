@@ -2,12 +2,13 @@
 """
 created by server on 14-5-20下午12:11.
 """
-from app.push.service.node.pushgateservice import nodeservice_handle
+from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import push_pb2
 from app.push.core.pusher import Pusher
 from shared.db_opear.configs_data import game_configs
 
-@nodeservice_handle
+
+@remoteserviceHandle('gate')
 def register_push_message_remote(uid, device_token):
     """
     消息推送注册
@@ -16,7 +17,8 @@ def register_push_message_remote(uid, device_token):
     Pusher().regist(uid, device_token)
     return True
 
-@nodeservice_handle
+
+@remoteserviceHandle('gate')
 def set_push_switch_remote(uid, data):
     """
     设置推送消息开关
@@ -27,10 +29,10 @@ def set_push_switch_remote(uid, data):
     request.ParseFromString(data)
     for msg in request.switch:
         Pusher().set_switch(uid, msg.msg_type, msg.switch)
-        
     return True
 
-@nodeservice_handle
+
+@remoteserviceHandle('gate')
 def get_push_switch_remote(uid):
     switches = push_pb2.msgSwitchRes()
     user_switch = Pusher().get_switch(uid)
@@ -45,7 +47,8 @@ def get_push_switch_remote(uid):
                 one_switch.switch = 1
     return switches.SerializePartialToString()
 
-@nodeservice_handle
+
+@remoteserviceHandle('gate')
 def add_push_message_remote(uid, msg_type, message, send_time):
     """
     添加发送推送消息的任务
@@ -56,7 +59,6 @@ def add_push_message_remote(uid, msg_type, message, send_time):
     Pusher().add_message(uid, msg_type, message, send_time)
     return True
 
-# @nodeservice_handle
 # def del_push_message(dynamic_id, msg_type):
 #     """
 #     删除推送消息
@@ -64,7 +66,8 @@ def add_push_message_remote(uid, msg_type, message, send_time):
 #     """
 #     pass
 
-@nodeservice_handle
+
+@remoteserviceHandle('gate')
 def online_offline_remote(uid, on_or_off):
     """
     在线离线通知
