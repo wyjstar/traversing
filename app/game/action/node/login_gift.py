@@ -16,6 +16,7 @@ def init_login_gift_825(pro_data, player):
     """
     response = InitLoginGiftResponse()
     component_login_gift = player.login_gift
+    component_login_gift.check_time()
     for k, v in component_login_gift.cumulative_day.items():
         temp_pb = response.cumulative_day.add()
         temp_pb.activity_id = k
