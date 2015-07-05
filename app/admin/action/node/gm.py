@@ -66,8 +66,8 @@ def gm():
 
 def update_server_list(args):
     url = args['server_list_url']
-    urllib.urlretrieve(url, '/var/server_list.json')
-    os.system("cp /var/server_list.json server_list.json")
+    urllib.urlretrieve(url, '/tmp/server_list.json')
+    os.system("cp /tmp/server_list.json server_list.json")
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
     return {"success": 1}
@@ -75,8 +75,8 @@ def update_server_list(args):
 
 def update_excel(args):
     url = args['excel_url']
-    urllib.urlretrieve(url, '/var/excel_cpickle')
-    os.system("cp /var/excel_cpickle config/excel_cpickle")
+    urllib.urlretrieve(url, '/tmp/excel_cpickle')
+    os.system("cp /tmp/excel_cpickle config/excel_cpickle")
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
     return {"success": 1}
