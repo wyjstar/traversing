@@ -1142,11 +1142,13 @@ class UserMine(Component):
         if position in self._guard:
             for hero_no in self._guard[position].keys():
                 hero = self._owner.hero_component.get_hero(hero_no)
-                hero.is_guard = False
-                hero.save_data()
-                for equid in self._guard[position][hero_no]:
-                    equip = self._owner.equipment_component.get_equipment(equid)
-                    equip.attribute.is_guard = False
-                    equip.save_data()
+                if hero:
+                    hero.is_guard = False
+                    hero.save_data()
+                    for equid in self._guard[position][hero_no]:
+                        equip = self._owner.equipment_component.get_equipment(equid)
+                        if equip:
+                            equip.attribute.is_guard = False
+                            equip.save_data()
             del self._guard[position]
             self._update = True
