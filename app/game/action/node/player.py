@@ -468,12 +468,12 @@ def first_recharge_activity_2204(request_proto, player):
     """
     response = recharge_pb2.GetRechargeGiftResponse()
     response.res.result = True
-    if player.base_info.recharge_accumulation == 0:
+    if player.base_info.recharge == 0:
         response.res.result = False
         response.res.result_no = 22041
         return response.SerializePartialToString()
 
-    if player.base_info.recharge_accumulation == 1:
+    if player.base_info.first_recharge_activity == 1:
         response.res.result = False
         response.res.result_no = 22042
         return response.SerializePartialToString()
