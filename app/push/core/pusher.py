@@ -6,12 +6,18 @@ Created on 2015-5-2
 
 import time
 from shared.utils import xtime
+from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
-from gfirefly.utils.singleton import Singleton
 from gfirefly.dbentrust.redis_mode import RedisObject
+from gfirefly.server.globalobject import GlobalObject
 
-# from push_apns import push_by_token
-from push_xinge import push_by_token
+PUSH_CHANNEL = GlobalObject().allconfig['push']['channel']
+if PUSH_CHANNEL == 'xinge':
+    logger.debug(' import xinge')
+    from push_xinge import push_by_token
+elif PUSH_CHANNEL == 'apns':
+    logger.debug(' import apns')
+    from push_apns import push_by_token
 
 push_reg = RedisObject('pushobj.reg')
 push_task = RedisObject('pushobj.push')
@@ -62,18 +68,17 @@ class Pusher(object):
         self.to_push = {}
         self.offline = {}
         self.everyday = {}
-        print '__init__'
         self.register = push_reg.hgetall()
-        print self.register
+        logger.info(self.register)
         self.to_push = push_task.hgetall()
-        print self.to_push
+        logger.info(self.to_push)
         self.offline = push_offline.hgetall()
-        print self.offline
+        logger.info(self.offline)
         self.everyday = push_day.hgetall()
-        print self.everyday
+        logger.info(self.everyday)
 
     def regist(self, uid, device_token):
-        print 'device_token', device_token
+        logger.info('device_token:%s', device_token)
         if not device_token:
             return
         user = Character()
@@ -109,8 +114,7 @@ class Pusher(object):
                 push_offline.hdel(uid)
 
     def add_message(self, uid, mtype, msg, send_time):
-        print(msg)
-        print 'add_message', uid, mtype, msg, send_time
+        logger.info('add_message:%s-%s-%s-%s', uid, mtype, msg, send_time)
         if uid in self.register:
             if self.register[uid].status == 1:
                 return
@@ -126,11 +130,11 @@ class Pusher(object):
         push_task.hset(mid, message)
 
     def process(self):
-        print 'process'
-#         frame = Frame()
-#         identifier = 1
-#         expiry = int(time.time())
-#         priority = 10
+        # print 'process'
+        # frame = Frame()
+        # identifier = 1
+        # expiry = int(time.time())
+        # priority = 10
         now = int(time.time())
         count = 0
         for mid in self.to_push.keys():
@@ -168,11 +172,11 @@ class Pusher(object):
     def send_all(self, mtype, message):
         count = 0
         for user in self.register.values():
-            print 'user.device_token', user.device_token
+            logger.info('user.device_token:%s', user.device_token)
             if user.can_push(mtype):
                 push_by_token(user.device_token, message.message)
                 count += 1
-        print 'count', count
+        logger.debug('count:%s', count)
 #         if count:
 #             try:
 #                 apns_handler.gateway_server.send_notification_multiple(frame)
@@ -201,8 +205,9 @@ class Pusher(object):
             else:
                 self.everyday[one] = 1
                 push_day.hset(one, 1)
-                message = game_configs.language_config.get(str(push_config.text)).get('cn')
-                print 'message', message
+                txt = str(push_config.text)
+                message = game_configs.language_config.get(txt).get('cn')
+                logger.info('message:%s', message)
                 self.add_message(-1, push_config.event, message, one)
 
     def gen_4(self, pid):
@@ -211,8 +216,10 @@ class Pusher(object):
         now = time.time()
         for uid in self.offline.keys():
             if now - self.offline[uid] > days*24*60*60:
-                message = game_configs.language_config.get(str(push_config.text)).get('cn')
-                self.add_message(uid, push_config.event, message, int(time.time()))
+                txt = str(push_config.text)
+                message = game_configs.language_config.get(txt).get('cn')
+                self.add_message(uid, push_config.event,
+                                 message, int(time.time()))
                 del self.offline[uid]
                 push_offline.hdel(uid)
 
