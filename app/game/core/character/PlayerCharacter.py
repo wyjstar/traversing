@@ -2,11 +2,15 @@
 """
 created by server on 14-6-4下午3:04.
 """
+import cPickle
 from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.game import component
 from collections import OrderedDict
+from gfirefly.dbentrust import util
+
+CHARACTER_TABLE_NAME = 'tb_character_info'
 
 
 class PlayerCharacter(object):
@@ -19,40 +23,40 @@ class PlayerCharacter(object):
         self._pid = pid
         self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
         a = OrderedDict()
-        a['base_info']=component.CharacterBaseInfoComponent(self)
-        a['hero_component']=component.CharacterHerosComponent(self)
-        a['finance']=component.CharacterFinanceComponent(self)
-        a['hero_chip_component']=component.CharacterHeroChipsComponent(self)
-        a['item_package']=component.CharacterItemPackageComponent(self)
-        a['equipment']=component.CharacterEquipmentPackageComponent(self)
-        a['equipment_chip']=component.CharacterEquipmentChipComponent(self)
-        a['task']=component.CharacterTaskComponent(self)
-        a['line_up']=component.CharacterLineUpComponent(self)
-        a['stage']=component.CharacterStageComponent(self)
-        a['last_pick_time']=component.CharacterLastPickTimeComponent(self)
-        a['fight_cache']=component.CharacterFightCacheComponent(self)
-        a['friends']=component.FriendComponent(self)
-        a['guild']=component.CharacterGuildComponent(self)
-        a['mail']=component.CharacterMailComponent(self)
-        a['sign_in']=component.CharacterSignInComponent(self)
-        a['feast']=component.CharacterFeastComponent(self)
-        a['online_gift']=component.CharacterOnlineGift(self)
-        a['level_gift']=component.CharacterLevelGift(self)
-        a['login_gift']=component.CharacterLoginGiftComponent(self)
-        a['world_boss']=component.CharacterWorldBoss(self)
-        a['stamina']=component.CharacterStaminaComponent(self)
-        a['shop']=component.CharacterShopComponent(self)
-        a['brew']=component.CharacterBrewComponent(self)
-        a['mine']=component.UserMine(self)
-        a['stone']=component.UserStone(self)
-        a['travel']=component.CharacterTravelComponent(self)
-        a['runt']=component.CharacterRuntComponent(self)
-        a['recharge']=component.CharacterRechargeGift(self)
-        a['limit_hero']=component.CharacterLimitHeroComponent(self)
-        a['rebate']=component.Rebate(self)
-        a['buy_coin']=component.CharacterBuyCoinActivity(self)
-        a['pvp']=component.CharacterPvpComponent(self)
-        a['hjqy']=component.CharacterHjqyComponent(self)
+        a['base_info'] = component.CharacterBaseInfoComponent(self)
+        a['hero_component'] = component.CharacterHerosComponent(self)
+        a['finance'] = component.CharacterFinanceComponent(self)
+        a['hero_chip_component'] = component.CharacterHeroChipsComponent(self)
+        a['item_package'] = component.CharacterItemPackageComponent(self)
+        a['equipment'] = component.CharacterEquipmentPackageComponent(self)
+        a['equipment_chip'] = component.CharacterEquipmentChipComponent(self)
+        a['task'] = component.CharacterTaskComponent(self)
+        a['line_up'] = component.CharacterLineUpComponent(self)
+        a['stage'] = component.CharacterStageComponent(self)
+        a['last_pick_time'] = component.CharacterLastPickTimeComponent(self)
+        a['fight_cache'] = component.CharacterFightCacheComponent(self)
+        a['friends'] = component.FriendComponent(self)
+        a['guild'] = component.CharacterGuildComponent(self)
+        a['mail'] = component.CharacterMailComponent(self)
+        a['sign_in'] = component.CharacterSignInComponent(self)
+        a['feast'] = component.CharacterFeastComponent(self)
+        a['online_gift'] = component.CharacterOnlineGift(self)
+        a['level_gift'] = component.CharacterLevelGift(self)
+        a['login_gift'] = component.CharacterLoginGiftComponent(self)
+        a['world_boss'] = component.CharacterWorldBoss(self)
+        a['stamina'] = component.CharacterStaminaComponent(self)
+        a['shop'] = component.CharacterShopComponent(self)
+        a['brew'] = component.CharacterBrewComponent(self)
+        a['mine'] = component.UserMine(self)
+        a['stone'] = component.UserStone(self)
+        a['travel'] = component.CharacterTravelComponent(self)
+        a['runt'] = component.CharacterRuntComponent(self)
+        a['recharge'] = component.CharacterRechargeGift(self)
+        a['limit_hero'] = component.CharacterLimitHeroComponent(self)
+        a['rebate'] = component.Rebate(self)
+        a['buy_coin'] = component.CharacterBuyCoinActivity(self)
+        a['pvp'] = component.CharacterPvpComponent(self)
+        a['hjqy'] = component.CharacterHjqyComponent(self)
         logger.debug("keys %s" % a.keys())
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -68,6 +72,24 @@ class PlayerCharacter(object):
     def is_new_character(self):
         character_info = tb_character_info.getObj(self._pid)
         logger.debug('is_new_character,pid:%s', self._pid)
+        if not character_info.exists():
+            pwere = dict(id=self._pid)
+            result = util.GetOneRecordInfo(CHARACTER_TABLE_NAME, pwere)
+            if result:
+                logger.info('loads player in redis:%s-%s', self._pid,
+                            len(result.get('base_info')))
+                character_info.hmset(cPickle.loads(result['base_info']))
+                equipments = cPickle.loads(result['equipments'])
+                if equipments:
+                    character_info.getObj('equipments').hmset(equipments)
+                mails = cPickle.loads(result['mails'])
+                if mails:
+                    character_info.getObj('mails').hmset(mails)
+                heroes = cPickle.loads(result['heroes'])
+                if heroes:
+                    character_info.getObj('heroes').hmset(heroes)
+                tb_character_info.sadd('all', self._pid)
+
         return not character_info.exists()
 
     def create_character_data(self):
