@@ -51,11 +51,11 @@ class ActStageLogic(base_stage.BaseStageLogic):
         stage_id = self._stage_id
         tm_time = time.localtime(player.stage_component.act_stage_info[1])
         if result:
-            hook_task(player, CONDITIONId.STAGE, stage_id)
-            hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
             if tm_time.tm_yday == time.localtime().tm_yday:
                 player.stage_component.act_stage_info[0] += conf.timesExpend
             else:
                 player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
             stage_util.settle(player, result, response, conf)
+            hook_task(player, CONDITIONId.STAGE, stage_id)
+            hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
         tlog_action.log('RoundFlow', player, stage_id, 3, 0, result)

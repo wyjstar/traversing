@@ -183,9 +183,8 @@ class WorldBoss(BaseBoss):
         ranks = self._rank_instance.get(1, 3000)
         for k, v in enumerate(ranks):
             player_id, val = v
-            get_remote_gate().push_message_to_transit_remote('boss_task_remote',
-                                                       int(player_id),
-                                                       k+1)
+            get_remote_gate().push_message_to_transit_remote(
+                'boss_task_remote', int(player_id), k+1)
 
     def send_award_top_ten(self):
         """

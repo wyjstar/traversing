@@ -29,14 +29,14 @@ message TaskInfoResponse
 //请求领取奖励
 message TaskRewardRequest
 {
-	required int32 tid = 1; //任务ID
+    required int32 tid = 1; //任务ID
 }
 
 //领奖返回
 message TaskRewardResponse
 {
-	optional int32 tid = 1; //任务ID
-	optional GameResourcesResponse gain = 2; //通用奖励
+    optional int32 tid = 1; //任务ID
+    optional GameResourcesResponse gain = 2; //通用奖励
     required CommonResponse res = 3;
 }
 
@@ -56,4 +56,16 @@ message FulfilTask
 {
     repeated int32 tid = 1; //任务ID
     optional int32 lively = 2; //活跃度
+}
+
+message ConditionsResponse
+{
+    repeated ConditionInfo condition_info = 1;
+}
+
+
+message ConditionInfo
+{
+    required int32 cid = 1; //条件ID
+    required int32 num = 2;
 }

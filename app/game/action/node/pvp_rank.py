@@ -277,10 +277,10 @@ def pvp_fight_request_1505(data, player):
 
             if request.challenge_rank < player.pvp.pvp_high_rank:
                 rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
-            player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
-                                           request.challenge_rank)
             if player.pvp.pvp_high_rank > request.challenge_rank:
                 hook_task(player, CONDITIONId.PVP_RANK, request.challenge_rank)
+            player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
+                                           request.challenge_rank)
 
             # 首次达到某名次的奖励
             arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')
