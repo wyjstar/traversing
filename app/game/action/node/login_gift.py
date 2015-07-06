@@ -27,11 +27,18 @@ def init_login_gift_825(pro_data, player):
         temp_pb.activity_id = k
         temp_pb.state = v
 
+    for k, v in component_login_gift.continuous_7day.items():
+        temp_pb = response.continuous_7day.add()
+        temp_pb.activity_id = k
+        temp_pb.state = v
+
     response.continuous_day_num = component_login_gift.continuous_day_num
     response.cumulative_day_num = component_login_gift.cumulative_day_num
+    response.continuous_7day_num = component_login_gift.continuous_7day_num
 
     logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
     logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
+    logger.debug("login_gift.continuous_7day %s %s" % (component_login_gift.continuous_7day, component_login_gift.continuous_7day_num))
     return response.SerializeToString()
 
 
@@ -98,7 +105,28 @@ def get_login_gift(activity_id, response, player):
         get_return(player, return_data, response.gain)
         component_login_gift.continuous_day[activity_id] = 1
         component_login_gift.save_data()
+
+    elif activity_info.type == 18:
+        # 7天乐
+        parameterA = activity_info.parameterA
+        continuous_7day = component_login_gift.continuous_7day
+
+        if parameterA > len(component_login_gift.continuous_7day):
+            return False, 82632
+
+        if continuous_7day[activity_id] != 0:
+            logger.error("current activity_info state %s" % continuous_7day[activity_id])
+            return False, 82633
+
+        if component_login_gift.continuous_7day_num == -1:
+            return False, 82634
+
+        return_data = gain(player, activity_info.reward, const.LOGIN_GIFT_CUMULATIVE)
+        get_return(player, return_data, response.gain)
+        component_login_gift.continuous_7day[activity_id] = 1
+        component_login_gift.save_data()
     logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
     logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
+    logger.debug("login_gift.continuous_7day %s %s" % (component_login_gift.continuous_7day, component_login_gift.continuous_7day_num))
     return True, 0
 

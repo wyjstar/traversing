@@ -159,14 +159,19 @@ class CharacterStageComponent(Component):
                 next_stages = game_configs.special_stage_config.get('condition_mapping')
             # 开启下一关卡
             if next_stages.get(stage_id):
-                for stage in [self.get_stage(stage_id) for stage_id in next_stages.get(stage_id)]:
+                for stage in [self.get_stage(temp_stage_id) for temp_stage_id in next_stages.get(stage_id)]:
                     state = self.check_stage_state(stage.stage_id)
+                    logger.debug("next stage state===========atk_stage_id %s next_stage_id %s state %s chapter_id %s" %\
+                            (stage_id, stage.stage_id, state, chapter_id))
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
-                        if chapter_id and conf.get(stage_id).get('type') == 1:
-                            self._stage_progress = conf.get(stage_id).get('condition')
-                            chapter_star_num = self.calculation_star(chapter_id)
-                            self.star_num[chapter_id] = chapter_star_num
+                        if chapter_id and conf.get(stage.stage_id).get('type') == 1:
+                            logger.debug("next stage win=============")
+                            self._stage_progress = stage_id
+            # 计算星星
+            if chapter_id:
+                chapter_star_num = self.calculation_star(chapter_id)
+                self.star_num[chapter_id] = chapter_star_num
 
         return True
 
