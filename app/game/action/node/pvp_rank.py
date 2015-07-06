@@ -441,10 +441,10 @@ def reset_pvp_time_1506(data, player):
         response.res.result_no = 1506
         return response.SerializePartialToString()
 
-    need_gold = get_consume_gold_num(_consume)
+    need_gold = get_consume_gold_num(_consume) * request.times
 
     def func():
-        return_data = consume(player, _consume)  # 消耗
+        return_data = consume(player, _consume, multiple=request.times)  # 消耗
         get_return(player, return_data, response.consume)
         player.pvp.pvp_times += request.times
         player.pvp.pvp_refresh_time = time.time()
