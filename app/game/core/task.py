@@ -111,9 +111,12 @@ class CONDITIONId:
 def update_condition_add(player, cid, num):
     if player.task.conditions.get(cid):
         player.task.conditions[cid] += num
-        player.task.conditions_day[cid] += num
     else:
         player.task.conditions[cid] = num
+
+    if player.task.conditions_day.get(cid):
+        player.task.conditions_day[cid] += num
+    else:
         player.task.conditions_day[cid] = num
     player.task.save_data()
 
@@ -123,7 +126,8 @@ def update_condition_cover_rank(player, cid, num):
     condition_day = 0
     if player.task.conditions.get(cid):
         condition = player.task.conditions.get(cid)
-        condition_day = player.task._conditions_day.get(cid)
+    if player.task.conditions_day.get(cid):
+        condition_day = player.task.conditions_day.get(cid)
     if num < condition or condition == 0:
         player.task.conditions[cid] = num
     if num < condition_day or condition_day == 0:
@@ -136,7 +140,8 @@ def update_condition_cover(player, cid, num):
     condition_day = 0
     if player.task.conditions.get(cid):
         condition = player.task.conditions.get(cid)
-        condition_day = player.task._conditions_day.get(cid)
+    if player.task.conditions_day.get(cid):
+        condition_day = player.task.conditions_day.get(cid)
     if num > condition:
         player.task.conditions[cid] = num
     if num > condition_day:
