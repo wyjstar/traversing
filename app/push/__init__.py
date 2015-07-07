@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import action
 from gtwisted.core import reactor
 from app.push.core.pusher import pusher
 # from gfirefly.server.logobj import logger

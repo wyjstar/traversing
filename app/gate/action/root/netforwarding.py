@@ -64,7 +64,6 @@ def push_object_remote(topic_id, msg, send_list):
 
 @rootserviceHandle
 def from_admin_rpc_remote(args):
-    reason = ''
     args = cPickle.loads(args)
     key = args.get('command')
     # gate_command = ['modify_user_info']
@@ -94,36 +93,6 @@ def login_chat_remote(dynamic_id, character_id, guild_id, nickname, gag_time):
                                                  guild_id,
                                                  gag_time)
 
-
-@rootserviceHandle
-def register_push_message_remote(uid, device_token):
-    return groot.child('push').register_push_message_remote(uid,
-                                                            device_token)
-
-
-@rootserviceHandle
-def set_push_switch_remote(uid, switchs):
-    return groot.child('push').set_push_switch_remote(uid,
-                                                      switchs)
-
-
-@rootserviceHandle
-def get_push_switch_remote(uid):
-    return groot.child('push').get_push_switch_remote(uid)
-
-
-@rootserviceHandle
-def add_push_message_remote(uid, msg_type, message, send_time):
-    return groot.child('push').add_push_message_remote(uid,
-                                                       msg_type,
-                                                       message,
-                                                       send_time)
-
-
-@rootserviceHandle
-def online_offline_remote(uid, on_or_off):
-    return groot.child('push').online_offline_remote(uid,  on_or_off)
-    return True
 
 @rootserviceHandle
 def mine_add_field_remote(uid, seq, data):
@@ -261,4 +230,3 @@ def net_conn_lost_remote_noresult(dynamic_id):
 def get_act_id_from_world_remote():
     world_remote = GlobalObject().remote['world']
     return world_remote.get_act_id_remote()
-

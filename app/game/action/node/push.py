@@ -22,8 +22,8 @@ def register_push_2222(data, player):
     response = push_pb2.registerPushRes()
     print 'register_push_2222'
     print request
-    remote_gate.register_push_message_remote(player.base_info.id,
-                                             request.deviceToken)
+    remote_gate['push'].register_push_message_remote(player.base_info.id,
+                                                     request.deviceToken)
     response.res.result = True
 
     return response.SerializePartialToString()
@@ -39,7 +39,7 @@ def set_push_switch_2223(data, player):
     request.ParseFromString(data)
     print 'request', request
 
-    remote_gate.set_push_switch_remote(player.base_info.id, data)
+    remote_gate['push'].set_push_switch_remote(player.base_info.id, data)
     return request.SerializePartialToString()
 
 
@@ -49,7 +49,7 @@ def get_push_switch_2224(data, player):
     获取推送消息开关
     """
     # print 'get_push_switch_2224'
-    response = remote_gate.get_push_switch_remote(player.base_info.id)
+    response = remote_gate['push'].get_push_switch_remote(player.base_info.id)
     res = push_pb2.msgSwitchRes()
     res.ParseFromString(response)
     print res

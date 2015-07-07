@@ -24,8 +24,14 @@ class BilateralBroker(rpc.PBServerProtocl):
         self.factory.root.remote_takeProxy(name, self)
 
     def remote_transit(self, node, command, *arg, **kw):
-        _node = GlobalObject().remote[node]
-        return _node.__getattr__(command)(*arg, **kw)
+        _node = GlobalObject().remote.get(node)
+        if _node:
+            return _node.__getattr__(command)(*arg, **kw)
+        _node = GlobalObject().child(node)
+        if _node:
+            return _node.__getattr__(command)(*arg, **kw)
+        logger.error('remote_transit:%s-%s', node, command)
+        return None
 
     def remote_callTarget(self, command, *args, **kw):
         """远程调用方法
