@@ -3,4 +3,4 @@
 import dataloader
 
 
-dataloader.check_mem_db(1)
+dataloader.check_mem_db(0)
