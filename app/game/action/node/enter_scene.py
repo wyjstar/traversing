@@ -39,7 +39,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     logger.debug("plat_id %s" % pay_arg.get("plat_id"))
 
     remote_gate.pull_message_remote(character_id)
-    remote_gate.online_offline_remote(player.base_info.id, 1)
+    remote_gate['push'].online_offline_remote(player.base_info.id, 1)
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True

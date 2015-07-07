@@ -112,7 +112,8 @@ def modify_user_info(data, player):
         uid = args['uid']
         mtype = args['mtype']
         msg = args['msg']
-        remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
+        remote_gate['push'].add_push_message_remote(uid, mtype, msg,
+                                                    int(time.time()))
         return {'success': 0, 'message': 0}
     else:
         return {'success': 0, 'message': 3}
@@ -227,11 +228,12 @@ def add_guild_level_remote(data, player):
     guild_obj.save_data()
     return {'success': 1}
 
+
 @remoteserviceHandle('gate')
 def add_push_message_remote(data, player):
     args = cPickle.loads(data)
     uid = args['uid']
     mtype = args['mtype']
     msg = args['msg']
-    remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
+    remote_gate['push'].add_push_message_remote(uid, mtype, msg, int(time.time()))
     return {'success': 1}
