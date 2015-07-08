@@ -187,7 +187,7 @@ class CharacterRechargeGift(Component):
         mail_id = recharge_item.get('mailId')
         send_mail(conf_id=mail_id, receive_id=self._owner.base_info.id)
 
-    def recharge_gain(self, recharge_item, response):
+    def recharge_gain(self, recharge_item, response, is_tencent=False):
         """
         充值掉落
         """
@@ -195,9 +195,10 @@ class CharacterRechargeGift(Component):
             rebate_call(self._owner, recharge_item)
             self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
         else:
-            return_data = gain(self._owner, recharge_item.get('setting'),
-                               const.RECHARGE)  # 获取
-            get_return(self._owner, return_data, response.gain)
+            if not is_tencent:
+                return_data = gain(self._owner, recharge_item.get('setting'),
+                                const.RECHARGE)  # 获取
+                get_return(self._owner, return_data, response.gain)
 
             rres = self._owner.base_info.first_recharge(recharge_item, response)
             if rres:
