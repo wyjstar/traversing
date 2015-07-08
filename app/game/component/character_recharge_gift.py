@@ -191,7 +191,9 @@ class CharacterRechargeGift(Component):
         """
         充值掉落
         """
+        logger.debug("recharge_gain========1")
         if recharge_item.get('type') == 2:
+            logger.debug("recharge_gain========")
             rebate_call(self._owner, recharge_item)
             self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
         else:
@@ -217,4 +219,5 @@ class CharacterRechargeGift(Component):
 
         # 活动
         self._owner.recharge.charge(charge_num)
-        self._owner.recharge.get_recharge_response(response.info) # recharge
+        if not is_tencent:
+            self._owner.recharge.get_recharge_response(response.info) # recharge

@@ -21,10 +21,11 @@ def get_gold_2001(data, player):
     response = GetGoldResponse()
     player.pay.refresh_pay_arg(pay_arg) # 设置支付参数
 
+    logger.debug("recharge_id %s" % request.recharge_id)
     # add 月卡
     recharge_item = game_configs.recharge_config.get(request.recharge_id)
     if recharge_item is None:
-        logger.debug('google consume goodid not in rechargeconfig:%s',
+        logger.debug('not in rechargeconfig:%s',
                         data.get('productId'))
     else:
         player.recharge.recharge_gain(recharge_item, response, True) #发送奖励邮件
