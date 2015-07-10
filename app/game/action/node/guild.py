@@ -674,8 +674,7 @@ def bless_809(data, player):
             response.res.result_no = 102
             return response.SerializeToString()
 
-    # if player.base_info.guild_worship_times <= player.guild.bless_times:
-    if False:
+    if player.base_info.guild_worship_times <= player.guild.bless_times:
         response.res.result = False
         response.res.result_no = 854
         # response.message = "今天的膜拜次数已用完"
@@ -1233,8 +1232,7 @@ def praise_1807(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    # if player.guild.praise_state:
-    if False:
+    if player.guild.praise_state:
         response.res.result = False
         response.res.result_no = 851
         return response.SerializeToString()

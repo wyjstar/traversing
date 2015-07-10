@@ -82,11 +82,11 @@ class Stage(object):
 class StageAward(object):
     """关卡奖励
     """
-    def __init__(self, chapter_id, dragon_gift=-1, award_info=[]):
+    def __init__(self, chapter_id, dragon_gift=-1, award_info=[], already_gift=[]):
         self._chapter_id = chapter_id  # 章节编号
         self._award_info = award_info  # 奖励领取信息 list -1:奖励没达成 0：奖励达成没有领取 1：已经领取
         self._dragon_gift = dragon_gift  # 龙纹奖励 int -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-        self._already_gift = []  # 已领奖励
+        self._already_gift = already_gift  # 已领奖励
 
     @property
     def chapter_id(self):
@@ -99,6 +99,14 @@ class StageAward(object):
         return self._award_info
 
     @property
+    def already_gift(self):
+        return self._already_gift
+
+    @already_gift.setter
+    def already_gift(self, v):
+        self._already_gift = v
+
+    @property
     def dragon_gift(self):
         return self._dragon_gift
 
@@ -109,7 +117,7 @@ class StageAward(object):
     @property
     def info(self):
         return dict(chapter_id=self._chapter_id, award_info=self._award_info,
-                    dragon_gift=self._dragon_gift)
+                    dragon_gift=self._dragon_gift, already_gift=self._already_gift)
 
     def dumps(self):
         return cPickle.dumps(self.info)

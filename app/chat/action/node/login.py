@@ -19,7 +19,7 @@ def login_chat_remote(dynamic_id, character_id, character_nickname, guild_id, ga
         character.name = character_nickname
         character.guild_id = guild_id
         ChatRoomManager().join_room(dynamic_id, character.room_id)
-        if guild_id != 'no':
+        if guild_id != 0:
             ChatRoomManager().join_room(dynamic_id, character.guild_id)
     return True
 
