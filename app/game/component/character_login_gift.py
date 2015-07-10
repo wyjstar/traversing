@@ -18,6 +18,7 @@ class CharacterLoginGiftComponent(Component):
         self._continuous_day = {}    # 连续登录
         self._cumulative_day = {}    # 累积登录
         self._continuous_day_num = 1 # 连续登录天数
+        self._cumulative_day_num = 1 # 累积登录天数
         self.new_item()
         self._last_login = int(time.time())  # 日期
 
@@ -26,6 +27,7 @@ class CharacterLoginGiftComponent(Component):
         data = character_info.get('login_gift')
         self._continuous_day = data.get('continuous_day', {})
         self._continuous_day_num = data.get('continuous_day_num', 0)
+        self._cumulative_day_num = data.get('cumulative_day_num', 0)
         self._cumulative_day = data.get('cumulative_day', {})
         self._last_login= data.get('last_login')
         self.check_time()
@@ -63,6 +65,7 @@ class CharacterLoginGiftComponent(Component):
                     break
 
         if days_to_current(self._last_login) > 0:
+            self._cumulative_day_num+= 1
             for k in sorted(self._cumulative_day.keys()):
                 v = self._cumulative_day[k]
                 if v == -1:
@@ -78,12 +81,14 @@ class CharacterLoginGiftComponent(Component):
             'cumulative_day': self._cumulative_day,
             'continuous_day': self._continuous_day,
             'continuous_day_num': self._continuous_day_num,
+            'cumulative_day_num': self._cumulative_day_num,
             'last_login': self._last_login})
 
     def new_data(self):
         return {'login_gift': {'last_login': self._last_login,
                                'continuous_day': self._continuous_day,
                                'continuous_day_num': self._continuous_day_num,
+                               'cumulative_day_num': self._cumulative_day_num,
                                'cumulative_day': self._cumulative_day}}
 
     @property
@@ -104,13 +109,11 @@ class CharacterLoginGiftComponent(Component):
 
     @property
     def cumulative_day_num(self):
-        for k in sorted(self._cumulative_day.keys()):
-            if self._cumulative_day[k] == -1:
-                activity_info = game_configs.activity_config.get(k)
-                if not activity_info:
-                    logger.error("can not find activity_config by id %s" % k)
-                return activity_info.parameterA - 1
-        return 8
+        return self._cumulative_day_num
+
+    @cumulative_day_num.setter
+    def cumulative_day_num(self, value):
+        self._cumulative_day_num = value
 
     @property
     def continuous_day_num(self):
