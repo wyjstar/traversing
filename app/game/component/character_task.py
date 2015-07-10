@@ -48,6 +48,7 @@ class CharacterTaskComponent(Component):
         self._conditions_day = {}
         self._lively = 0
         self._last_day = int(time.time())
+        self.save_data()
 
     @property
     def conditions(self):
