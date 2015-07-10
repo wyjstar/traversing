@@ -11,7 +11,6 @@ from shared.utils.const import const
 from app.game.component.mine.monster_mine import MineOpt
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
-from app.game.core.task import hook_task, CONDITIONId
 
 
 class CharacterLineUpComponent(Component):
@@ -365,7 +364,6 @@ class CharacterLineUpComponent(Component):
             _power += each_power
 
         MineOpt.update('sword', self.owner.base_info.id, _power)
-        hook_task(self.owner, CONDITIONId.FIGHT_POWER, _power)
         return _power
 
     def get_slot_by_hero(self, hero_no):
