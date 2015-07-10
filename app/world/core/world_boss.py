@@ -148,9 +148,10 @@ class WorldBoss(BaseBoss):
         award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
         for up, down, big_bag_id in award_info.values():
             ranks = self._rank_instance.get(up, down)
-            for player_id, v in ranks:
+            for k, v in enumerate(ranks):
+                player_id, val = v
                 logger.debug("send_award_top_ten: player_id %s, value %s, big_bag_id %s" % (player_id, v, big_bag_id))
-                self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id)
+                self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id, k+up)
 
     def send_award_add_up(self):
         """
@@ -204,7 +205,7 @@ class WorldBoss(BaseBoss):
             logger.debug("send_award_in==== %s %s" % (player_id, v))
             self.send_award(player_id, const.PVB_IN_AWARD, int(v))
 
-    def send_award(self, player_id, award_type, award):
+    def send_award(self, player_id, award_type, award, rank_no=0):
         """
         发送奖励
         """
@@ -212,6 +213,7 @@ class WorldBoss(BaseBoss):
         award_data = WorldBossAwardDB()
         award_data.award_type = award_type
         award_data.award = award
+        award_data.rank_no = rank_no
         remote_gate = GlobalObject().root.childsmanager.childs.values()[0]
         remote_gate.push_message_to_transit_remote('receive_pvb_award_remote',
                                                     int(player_id), award_data.SerializePartialToString())

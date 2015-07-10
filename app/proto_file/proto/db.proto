@@ -32,6 +32,7 @@ message WorldBossAwardDB
 {
     optional int32 award_type = 1; // 奖励类型
     optional int32 award = 2; // 奖励 打包id
+    optional int32 rank_no = 3; // 排名:排名奖励有用
 }
 
 message Stamina_DB{

@@ -142,7 +142,7 @@ def inherit_upara_153(pro_data, player):
     origin_level = player.line_up_component.unpars.get(origin_id)
     target_level = player.line_up_component.unpars.get(target_id)
 
-    if not origin_level or (not target_level):
+    if not origin_level:
         logger.error("unpara %s or %s not exists" % (origin_id, target_id))
         response.result = False
         return response.SerializeToString()

@@ -8,7 +8,6 @@ function FMBattleUnit:ctor(data)
     self.unit_name = ""
     self.hp = 0
     self.hp_max = 0
-    self.hp_begin = 0
     self.atk = 0
     self.physical_def = 0
     self.magic_def = 0
