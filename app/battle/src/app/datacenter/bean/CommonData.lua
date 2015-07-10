@@ -118,6 +118,7 @@ function CommonData:setData(data)
     self.now_head = data.now_head     --当前头像id
 
     self.tomorrow_gift = data.tomorrow_gift
+    print("tomorrow_gift = ", data.tomorrow_gift)
 
     self.battle_speed = data.battle_speed or 1 --战斗速度
     -- test

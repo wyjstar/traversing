@@ -22,20 +22,26 @@ function FMUnParaSkill:ctor(unpara_info, base_info, level, process)
     self.process = process
     print("FMUnParaSkill:ctor=====", self.process)
     self.soldierTemplate = getTemplateManager():getSoldierTemplate()
-    skill_info = self.soldierTemplate:getSkillTempLateById(unpara_info["triggle"..level])
-    self._main_skill_buff = nil
+    self._main_skill_buff = {}
     self._skill_buffs = {}
-    if skill_info then
-        for _, buff_id in pairs(skill_info.group) do
-            local skill_buff = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
-            print("m++++++++++1")
-            if skill_buff.skill_key == 1 then
-                print("m++++++++++2")
-                self._main_skill_buff = skill_buff
+
+    for i=1,level do
+        self._skill_buffs[i] = {}
+        print("m++++++++++0", i)
+        skill_info = self.soldierTemplate:getSkillTempLateById(unpara_info["triggle"..i])
+        if skill_info then
+            for _, buff_id in pairs(skill_info.group) do
+                local skill_buff = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
+                print("m++++++++++1", i,buff_id, skill_buff)
+                if skill_buff.skill_key == 1 then
+                    print("m++++++++++2")
+                    self._main_skill_buff[i] = skill_buff
+                end
+                table.insert(self._skill_buffs[i], skill_buff)
             end
-            table.insert(self._skill_buffs, skill_buff)
         end
     end
+    self.current_level = 0
     self.HOME = {}
     self.side = ""
     self.viewPos = 0
@@ -79,6 +85,7 @@ function FMUnParaSkill:is_full()
 end
 
 function FMUnParaSkill:is_mp_skill()
+    self:set_current_level()
     return true
 end
 
@@ -89,7 +96,8 @@ end
 
 function FMUnParaSkill:skill_buffs()
     --docstring for skill_buff_ids--
-    return self._skill_buffs
+    
+    return self._skill_buffs[self.current_level]
 end
 
 function FMUnParaSkill:clear_mp()
@@ -149,11 +157,11 @@ function FMUnParaSkill:reset()
 end
 
 function FMUnParaSkill:main_skill_buff()
-    return self._main_skill_buff
+    return self._main_skill_buff[self.current_level]
 end
 
 function FMUnParaSkill:attack_skill_buffs()
-    return self._skill_buffs
+    return self._skill_buffs[self.current_level]
 end
 
 function FMUnParaSkill:get_before_skill_buffs()
@@ -203,5 +211,16 @@ end
 
 function FMUnParaSkill:clear()
     self.after_skill_buffs = {}
+end
+
+
+function FMUnParaSkill:set_current_level()
+    if self.mp>=self.mp_max3 then
+        self.current_level = 3
+    elseif self.mp >= self.mp_max2 then
+        self.current_level = 2
+    elseif self.mp >= self.mp_max1 then
+        self.current_level = 1
+    end
 end
 return FMUnParaSkill

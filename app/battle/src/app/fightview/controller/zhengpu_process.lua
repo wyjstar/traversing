@@ -173,6 +173,7 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
         skill:clear_mp()
     end
     main_skill_buff = skill:main_skill_buff(is_mp_skill)
+    print("main_skill_buff", main_skill_buff)
 
     if attacker.buff_manager:is_dizzy() then
         --logger_cal.debug("    攻击者在buff中，无法攻击！")
