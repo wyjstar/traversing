@@ -213,7 +213,8 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
                     # break
         else:
             flag = 1
-        tids.append(tid)
+        if flag:
+            tids.append(tid)
     update_condition(player, cid, num)
     if cid == 33:
         return
