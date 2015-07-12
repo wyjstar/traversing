@@ -427,15 +427,14 @@ class CharacterFightCacheComponent(Component):
             if red_unit.is_awake:
                 hero = self.owner.hero_component.get_hero(red_unit.origin_no)
 
-            old_line_up_slot = self.line_up_slots.get(red_unit.slot_no)
-            break_line_up_slot = copy.deepcopy(old_line_up_slot)
+            line_up_slot = self.line_up_slots.get(red_unit.slot_no)
 
             hero_no = break_config.hero_id
             if odds == 1: # 如果百分比为1， 则按几率掉碎片
                 self.break_stage_id = break_config.id
             break_hero_obj = self.change_hero(hero, hero_no)
 
-            unit = break_line_up_slot.assemble_hero(break_hero_obj)
+            unit = line_up_slot.assemble_hero(break_hero_obj)
             logger.info('乱入替换战斗单位属性: %s' % unit)
 
             unit.is_break = True
@@ -443,7 +442,6 @@ class CharacterFightCacheComponent(Component):
             for key, red in red_units.items():
                 if red.unit_no == red_unit.unit_no:
                     red_units[key] = unit
-
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
             hero = self.owner.hero_component.get_hero(red.unit_no)
@@ -455,15 +453,14 @@ class CharacterFightCacheComponent(Component):
                 continue
             if not hero_item.get('awake'):
                 continue
-            old_line_up_slot = self.line_up_slots.get(red.slot_no)
+            line_up_slot = self.line_up_slots.get(red.slot_no)
             ap = combat_power.combat_power_hero_self(self.owner, hero)
             for upAp, prob in hero_item.get('awake').items():
                 if ap > upAp and _rand < prob:
-                    break_line_up_slot = copy.deepcopy(old_line_up_slot)
                     target_hero_no = hero_item.get('awakeHeroID')
                     break_hero_obj = self.change_hero(hero, target_hero_no)
 
-                    unit = break_line_up_slot.assemble_hero(break_hero_obj)
+                    unit = line_up_slot.assemble_hero(break_hero_obj)
                     unit.is_awake = True
                     unit.origin_no = red.unit_no
                     red_units[no] = unit
