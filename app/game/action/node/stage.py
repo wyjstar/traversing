@@ -451,7 +451,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
             player.base_info.addexp(stage_config.playerExp, const.STAGE_SWEEP)
         # 更新等级相关属性
         player.line_up_component.update_slot_activation()
-        player.line_up_component.save_data()
+        player.line_up_component.save_data(['line_up_slots', 'sub_slots'])
 
         # hook task
         hook_task(player, CONDITIONId.ANY_STAGE, times)

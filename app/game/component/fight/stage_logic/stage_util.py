@@ -54,7 +54,7 @@ def settle(player, result, response, conf):
 
     # 更新等级相关属性
     player.line_up_component.update_slot_activation()
-    player.line_up_component.save_data()
+    player.line_up_component.save_data(['line_up_slots', 'sub_slots'])
 
     # 构造掉落
     settlement_drops = player.fight_cache_component.fighting_settlement(result)
