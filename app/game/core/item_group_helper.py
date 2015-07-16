@@ -200,7 +200,6 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
         if type_id in part_multiple[0]:
             num = int(num * part_multiple[1])
 
-        num = group_item.num
         item_no = group_item.item_no
         front_type_id = type_id # 记录类型，用于武将已存在的情况。
         if type_id == const.COIN:
