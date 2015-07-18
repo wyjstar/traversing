@@ -310,7 +310,7 @@ def get_condition_value(player, condition_conf, task_type):
     else:  # 2 每日
         value = 0
         if player.task.conditions_day.get(condition_id):
-            value = player.task.conditions.get(condition_id)
+            value = player.task.conditions_day.get(condition_id)
     return value
 
 
