@@ -1,7 +1,12 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 """
 created by server on 14-5-19上午10:31.
 """
+import time
+from gfirefly.dbentrust.redis_mode import RedisObject
+
+
+tb_character_info = RedisObject('tb_character_info')
 
 
 class Chater(object):
@@ -21,6 +26,22 @@ class Chater(object):
         self._island = True  # 是否在线  False表示离线,True表示在线
         self._guild_id = guild_id
         self._last_time = 1
+        char_obj = tb_character_info.getObj(self._character_id)
+        self._bad_words_times = char_obj.hget('say_bad_words_times', [])
+
+    def say_bad_words_once(self):
+        now_time = time.time()
+        self._bad_words_times.append(now_time)
+        self._bad_words_times = filter(lambda x: x > now_time-60*60,
+                                       self._bad_words_times)
+        char_obj = tb_character_info.getObj(self._character_id)
+        char_obj.hset('say_bad_words_times', self._bad_words_times)
+
+    def say_bad_words_times(self):
+        now_time = time.time()
+        self._bad_words_times = filter(lambda x: x > now_time-60*60,
+                                       self._bad_words_times)
+        return len(self._bad_words_times)
 
     @property
     def character_id(self):

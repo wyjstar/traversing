@@ -9,23 +9,22 @@ from gfirefly.server.globalobject import GlobalObject
 from app.battle.battle_unit import BattleUnit
 from app.game.redis_mode import tb_character_info
 from app.game.action.root.netforwarding import push_message
-from app.game.component.mail.mail import MailComponent
-from app.game.action.root import netforwarding
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data import game_configs, data_helper
 from app.proto_file import friend_pb2
 from app.proto_file.db_pb2 import Heads_DB
 from app.proto_file.db_pb2 import Stamina_DB
-import datetime
-import random
 from shared.utils.date_util import is_next_day
-import time
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.mail_helper import send_mail
 from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.redis_mode import tb_pvp_rank
+import datetime
+import random
+import time
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -196,6 +195,9 @@ def _with_battle_info(response, friend):
     response.hero_no = friend_heads.now_head
     response.vip_level = friend_data['vip_level']
     response.level = friend_data['level']
+    rank = tb_pvp_rank.zscore(friend_data['id'])
+    if rank:
+        response.b_rank = int(rank)
 
     if remote_gate.online_remote(friend_data['id']) == 0:
         response.last_time = friend_data['upgrade_time']
@@ -406,7 +408,8 @@ def recommend_friend_1198(data, player):
 
             friend.level = friend_data['level']
             friend.b_rank = 1
-            friend.last_time = friend_data['upgrade_time']
+            if remote_gate.online_remote(friend_data['id']) == 0:
+                friend.last_time = friend_data['upgrade_time']
 
             # 添加好友主将的属性
             _with_battle_info(friend, player_data)
