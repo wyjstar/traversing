@@ -113,8 +113,7 @@ def get_condition_info_1825(data, player):
         if not num:
             num = 0
         condition_info = response.condition_info.add()
-        condition_info.c_id = c_id
+        condition_info.cid = cid
         condition_info.num = num
 
-    response.res.result = True
     return response.SerializeToString()
