@@ -167,7 +167,7 @@ def update_condition_insert(player, cid, num):
 # UPDATE_CONDITION_MAP[1] = update_condition1
 UPDATE_CONDITION_ADD = [3, 4, 5, 12, 13, 14, 15, 16,
                         17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 32]  # 增加
-UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 30]  # 如果比原来值大覆盖
+UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11]  # 如果比原来值大覆盖
 UPDATE_CONDITION_COVER_RANK = [25, 26]  # 如果比原来值小覆盖
 UPDATE_CONDITION_INSERT = [33]  # 插入列表
 
@@ -213,7 +213,8 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
                     # break
         else:
             flag = 1
-        tids.append(tid)
+        if flag:
+            tids.append(tid)
     update_condition(player, cid, num)
     if cid == 33:
         return
@@ -264,6 +265,12 @@ def check_condition2(player, condition_conf, task_type):
     return {'state': 0, 'value': 0}
 
 
+def check_condition30(player, condition_conf, task_type):
+    if player.line_up_component.combat_power >= condition_conf[1]:
+        return {'state': 1, 'value': 0}
+    return {'state': 0, 'value': 0}
+
+
 def check_condition31(player, condition_conf, task_type):
     if player.base_info.vip_level >= condition_conf[1]:
         return {'state': 1, 'value': 0}
@@ -303,13 +310,14 @@ def get_condition_value(player, condition_conf, task_type):
     else:  # 2 每日
         value = 0
         if player.task.conditions_day.get(condition_id):
-            value = player.task.conditions.get(condition_id)
+            value = player.task.conditions_day.get(condition_id)
     return value
 
 
 CHECK_CONDITION_MAP = {}
 CHECK_CONDITION_MAP[1] = check_condition1
 CHECK_CONDITION_MAP[2] = check_condition2
+CHECK_CONDITION_MAP[30] = check_condition30
 CHECK_CONDITION_MAP[31] = check_condition31
 CHECK_CONDITION_MAP[33] = check_condition33
 CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,

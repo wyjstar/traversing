@@ -44,9 +44,11 @@ class RedisObject(object):
             result[k] = cPickle.loads(v)
         return result
 
-    def hget(self, field):
+    def hget(self, field, default=None):
         client = redis_manager.get_connection(self._name)
         value = client.hget(self._name, field)
+        if value is None:
+            return default
         return cPickle.loads(value) if value else value
 
     def hmget(self, fiedls):

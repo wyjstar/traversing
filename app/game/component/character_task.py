@@ -14,7 +14,6 @@ class CharacterTaskComponent(Component):
         self._conditions = {}  # 永久条件进度{条件ID:{}}
         self._conditions_day = {}  # 每日条件进度{条件ID:参数}
         self._tasks = {}  # 所有任务 {id:state} 1 未完成2完成未领取3已领取
-        self._lively = 0  # 活跃度
         self._last_day = 1  # 最后刷新时间
 
     def init_data(self, character_info):
@@ -46,8 +45,8 @@ class CharacterTaskComponent(Component):
                 self._tasks[task_id] = 1
         # 每日刷新类型的  修改状态
         self._conditions_day = {}
-        self._lively = 0
         self._last_day = int(time.time())
+        self.save_data()
 
     @property
     def conditions(self):
