@@ -158,6 +158,7 @@ def enter_scene_9(data, player):
     responsedata = GameLoginResponse()
     responsedata.res.result = True
 
+    player.pvp.check_time()
     responsedata.pvp_times = player.pvp.pvp_times
     responsedata.pvp_refresh_count = player.pvp.pvp_refresh_count
     responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
