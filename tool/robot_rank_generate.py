@@ -4,7 +4,6 @@ created by sphinx.
 """
 from gevent import monkey
 monkey.patch_all()
-import cPickle
 import sys
 import copy
 import random
@@ -54,51 +53,24 @@ if __name__ == '__main__':
         rank_length = const.ROBOT_NUM
     else:
         rank_length = int(sys.argv[1])
+
+    mconfig = json.load(open('config.json', 'r'))
+    GlobalObject().allconfig = mconfig
+
     redis_config = ["127.0.0.1:6379"]
+    redis_config = mconfig.get('redis').get('urls')
     redis_manager.connection_setup(redis_config)
     log_init_only_out()
 
-    mconfig = json.load(open('models.json', 'r'))
-    model_default_config = mconfig.get('model_default', {})
-    model_config = mconfig.get('models', {})
-    GlobalObject().json_model_config = model_config
-    GlobalObject().json_model_default_config = model_default_config
-    GlobalObject().allconfig = {'tlog': 0,
-    "msdk":{
-        "zone_id": 1,
-        "host": "msdktest.qq.com",
+    # dbpool.initPool(host=mconfig['host'],
+    #                 user=mconfig['user'],
+    #                 passwd=mconfig['passwd'],
+    #                 port=mconfig['port'],
+    #                 db=mconfig['db'],
+    #                 charset=mconfig['charset'])
 
-        "qq_appid": 1104297231,
-        "qq_appkey": "y33yRx3FveVZb1dw",
-        "wx_appid": "wxf77437c08cb06196",
-        "wx_appkey": "8274b9e862581f8b4976ba90ad2d4b77",
-
-        "discountid": "UM150313205618735",
-        "giftid": "2731288429PID201503132056187441",
-
-        "pay_host": "10.142.22.11:8080",
-        "goods_host": "10.142.22.11:8080",
-        "valid_host": "10.130.2.233:80",
-
-        "cdkey_url": "http://192.168.1.60:2600/cdkey",
-
-        "appid": 150651
-    },
-            }
-
-    # hostname = "127.0.0.1"
-    hostname = "localhost"
-    user = "root"
-    password = "123456"
-    port = 3306
-    dbname = "db_traversing"
-    charset = "utf8"
-    # dbpool.initPool(host=hostname, user=user,
-    #                 passwd=password, port=port,
-    #                 db=dbname, charset=charset)
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
-
     from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
     nickname_set = set()
@@ -167,19 +139,7 @@ def dbpool_get():
 
 @get_connection
 def nopool_get(conn):
-    # hostname = "192.168.10.27"
-    # user = "test"
-    # password = "test"
-    # port = 8066
-    # dbname = "db_traversing"
-    # charset = "utf8"
-    # import pymysql
     from pymysql.cursors import DictCursor
-    # con = pymysql.Connect(host=hostname, user=user,
-    #                       passwd=password, port=port,
-    #                       db=dbname, charset=charset)
-    # result = conn.query('select * from %s where id<10' % PVP_TABLE_NAME)
-    # print result
     cursor = conn.cursor(cursor=DictCursor)
     cursor.execute('select * from %s where id<10' % PVP_TABLE_NAME)
     result = cursor.fetchall()
