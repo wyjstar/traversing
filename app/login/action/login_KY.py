@@ -21,7 +21,7 @@ def ky_server_login():
     if result.get('code') != 0:
         return json.dumps(dict(result=False))
 
-    openid = result.get('guid')
+    openid = result.get('data').get('guid')
     game_passport = uuid.uuid1().get_hex()
     account_cache[game_passport] = openid
 
