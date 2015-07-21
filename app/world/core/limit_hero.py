@@ -7,6 +7,7 @@ import time
 from app.world.action.gateforwarding import limit_hero_obj
 from shared.utils.ranking import Ranking
 from gfirefly.server.globalobject import GlobalObject
+from shared.time_event_manager.te_manager import te_manager
 
 
 childsmanager = GlobalObject().root.childsmanager
@@ -72,14 +73,16 @@ def tick_limit_hero():
         return
     if act_data['end_time']:
         limit_hero_obj.act_id = act_data['id']
-        need_time = int(act_data['end_time']-time.time())
-        print need_time, 'limit hero end time ============'
-        reactor.callLater(need_time, deal_end_act)
+        # need_time = int(act_data['end_time']-time.time())
+        print act_data['end_time'], 'limit hero end time ============'
+        te_manager.add_event(act_data['end_time'], 1, deal_end_act)
+        # reactor.callLater(need_time, deal_end_act)
         return
     if act_data['start_time']:
-        need_time = int(act_data['start_time']-time.time())
-        print need_time, 'limit hero start time ============'
-        reactor.callLater(need_time, tick_limit_hero)
+        # need_time = int(act_data['start_time']-time.time())
+        print act_data['start_time'], 'limit hero start time ============'
+        te_manager.add_event(act_data['end_time'], 1, tick_limit_hero)
+        # reactor.callLater(need_time, tick_limit_hero)
 
 
 def get_activity_info():

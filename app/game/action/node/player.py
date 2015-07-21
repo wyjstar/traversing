@@ -42,13 +42,13 @@ def nickname_create_5(request_proto, player):
     match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
     if match:
         response.result = False
-        response.result_no = 1
+        response.result_no = 868
         logger.info('not support emoji')
         return response.SerializeToString()
 
     if trie_tree.check.replace_bad_word(nickname) != nickname:
         response.result = False
-        response.result_no = 1
+        response.result_no = 869
         return response.SerializeToString()
 
     # 判断昵称是否重复
@@ -57,12 +57,12 @@ def nickname_create_5(request_proto, player):
     print 'is new player:', result
     if not result:
         response.result = False
-        response.result_no = 1
+        response.result_no = 870
         return response.SerializeToString()
 
     character_obj = tb_character_info.getObj(player.base_info.id)
     if not character_obj:
-        response.result_no = 2
+        response.result_no = 800
         return response.SerializeToString()
     player.base_info.base_name = nickname
     character_obj.hset('nickname', nickname)

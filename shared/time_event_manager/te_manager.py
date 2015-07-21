@@ -14,6 +14,7 @@ class TEManager(object):
         """
         self._events = {}  # {time:[函数]}
         self._day_events = {}  # {time:[函数]}
+        # 时间过去必须要做的事件 比如限时武将活动的结算 所有活动的结算
 
     def add_event(self, time, type, event):
         """
@@ -40,7 +41,7 @@ class TEManager(object):
     def events(self, v):
         self._events = v
 
-    def deal_event(the_time):
+    def deal_event(self, the_time=0):
         now = int(time.time())
         next_time = 0
         for x, _ in self._events.items():
@@ -51,12 +52,37 @@ class TEManager(object):
                 continue
             if x < next_time:
                 next_time = x
+
+        t = time.localtime(now)
+        time0 = int(time.mktime(time.strptime(
+                            time.strftime('%Y-%m-%d 00:00:00', t),
+                            '%Y-%m-%d %H:%M:%S')))
         for x, _ in self._day_events.items():
-            if x <= now or x > now+60:
+            x_time = time0 + x
+
+            if x_time <= now or x_time > now+60:
                 continue
             if not next_time:
-                next_time = x
+                next_time = x_time
                 continue
-            if x < next_time:
-                next_time = x
-        reactor.callLater(x, deal_event, time)
+            if x_time < next_time:
+                next_time = x_time
+
+        if next_time:
+            reactor.callLater(next_time-now, self.deal_event, the_time=next_time)
+        else:
+            reactor.callLater(60, self.deal_event, the_time=next_time)
+
+        if not the_time:
+            return
+        day_time = the_time - time0
+        if not day_time:
+            day_time = 60 * 60 * 24
+        events = self._events.get(the_time, [])
+        for event in events:
+            event()
+        events = self._day_events.get(day_time, [])
+        for event in events:
+            event()
+
+te_manager = TEManager()
