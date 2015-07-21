@@ -21,9 +21,9 @@ KUAIYONG_URL = 'http://f_signin.bppstore.com/loginCheck.php?'
 
 
 def verify_login(token):
-    sig = md5(APP_KEY + token).hexdigest
+    sig = md5(APP_KEY + token).hexdigest()
     url = '%stokenKey=%s&sign=%s' % (KUAIYONG_URL, token, sig)
-    logger.debug('', url)
+    logger.debug('kuaiyong url:%s', url)
     url = URL(url)
     http = HTTPClient(url.host, port=url.port)
     response = eval(http.get(url.request_uri).read())
