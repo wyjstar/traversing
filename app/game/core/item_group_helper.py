@@ -382,7 +382,7 @@ def get_return(player, return_data, game_resources_response):
 
     for lst in return_data:
         item_type = lst[0]
-        item_num = lst[1]
+        item_num = int(lst[1])
         item_no = lst[2]
 
         if const.COIN == item_type:

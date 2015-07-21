@@ -19,4 +19,5 @@ message GetActInfoResponse{
     required CommonResponse res = 1;
     repeated int32 received_act_ids = 2;
     optional int32 times = 3;
+    optional int32 act_type = 4;
 }

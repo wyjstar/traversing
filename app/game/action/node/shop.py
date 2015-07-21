@@ -352,8 +352,14 @@ def shop_buy_505(pro_data, player):
             get_return(player, return_data, response.gain)
             for _ in range(item_count):
                 send_tlog(player, shop_item)
+            logger.debug("allBuyRefresh %s" % shop_type_item.allBuyRefresh)
+            if not shop['item_ids'] and shop_type_item.allBuyRefresh:
+                logger.debug("shop auto refresh =============")
+                player.shop.auto_refresh_items(shop_item.get('type'))
+                response.is_all_buy = True
 
         player.pay.pay(need_gold, func)
+
 
     player.shop.save_data()
     common_response.result = True
@@ -388,7 +394,7 @@ def refresh_shop_items_507(pro_data, player):
         response.res.result_no = 50701
         return response.SerializePartialToString()
 
-    response.res.result = player.shop.refresh_price(shop_type)
+    response.res.result = player.shop.refresh_price(shop_type, response)
     if not response.res.result:
         logger.debug("gold not enough!")
         response.res.result = False
@@ -421,6 +427,7 @@ def refresh_shop_items_507(pro_data, player):
             player.act.save_data()
 
     response.luck_num = int(shopdata['luck_num'])
+    logger.debug("response %s", response)
     return response.SerializeToString()
 
 

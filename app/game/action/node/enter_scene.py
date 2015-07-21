@@ -5,7 +5,7 @@ created by wzp on 14-6-19下午7: 51.
 import time
 from app.game.core.character.PlayerCharacter import PlayerCharacter
 from app.game.core.PlayersManager import PlayersManager
-from app.proto_file.game_pb2 import GameLoginResponse, BuyStaminaTimes
+from app.proto_file.game_pb2 import GameLoginResponse
 from app.game.action.node.player import init_player
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
@@ -115,12 +115,9 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     # 战力排行
     if rank_helper.flag_doublu_day():
         rank_name = 'PowerRank2'
-        last_rank_name = 'PowerRank1'
     else:
         rank_name = 'PowerRank1'
-        last_rank_name = 'PowerRank2'
-    rank_no = rank_helper.get_rank_by_key(rank_name,
-                                          player.base_info.id)
+    rank_no = rank_helper.get_rank_by_key(rank_name, player.base_info.id)
     responsedata.fight_power_rank = rank_no
 
     responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
@@ -154,3 +151,32 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     return {'player_data': responsedata.SerializeToString(),
             'is_new_character': is_new_character}
+
+
+@remoteserviceHandle('gate')
+def enter_scene_9(data, player):
+    responsedata = GameLoginResponse()
+    responsedata.res.result = True
+
+    player.pvp.check_time()
+    responsedata.pvp_times = player.pvp.pvp_times
+    responsedata.pvp_refresh_count = player.pvp.pvp_refresh_count
+    responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
+    responsedata.pvp_overcome_refresh_count = player.pvp.pvp_overcome_refresh_count
+
+    if rank_helper.flag_doublu_day():
+        rank_name = 'PowerRank2'
+    else:
+        rank_name = 'PowerRank1'
+    rank_no = rank_helper.get_rank_by_key(rank_name, player.base_info.id)
+    responsedata.fight_power_rank = rank_no
+
+    buy_times_pb = responsedata.buy_times
+    for item in player.stamina._stamina.stamina:
+        item_pb = buy_times_pb.add()
+        item_pb.resource_type = item.resource_type
+        item_pb.buy_stamina_times = item.buy_stamina_times
+        item_pb.last_gain_stamina_time = item.last_gain_stamina_time
+        logger.debug("stamina %s buy_stamina_times %s last_gain_stamina_time %s" % (item.resource_type, item.buy_stamina_times, item.last_gain_stamina_time))
+
+    return responsedata.SerializeToString()

@@ -8,6 +8,8 @@ from app.proto_file.runt_pb2 import RuntSetRequest, RuntSetResponse, \
     RefiningRuntRequest, RefiningRuntResponse, BuildRuntResponse
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import is_afford
 import random
 import time
 from shared.utils.pyuuid import get_uuid
@@ -169,24 +171,29 @@ def refresh_runt_844(data, player):
     """打造刷新"""
     response = RefreshRuntResponse()
 
-    need_gold = False
+    need_gold = 0  # 0 免费，1 招募令，2 元宝
     refresh_times = copy.copy(player.runt.refresh_times)
     if time.localtime(player.runt.refresh_times[1]).tm_year == time.localtime().tm_year \
             and time.localtime(player.runt.refresh_times[1]).tm_yday == time.localtime().tm_yday:
-        if game_configs.base_config.get('totemRefreshFreeTimes') > player.runt.refresh_times[0]:
-            # player.runt.refresh_times[0] += 1
-            refresh_times[0] += 1
-        else:
-            need_gold = True
+        refresh_times[0] += 1
+        if game_configs.base_config.get('totemRefreshFreeTimes') <= player.runt.refresh_times[0]:
+            need_gold = 1
     else:
         # player.runt.refresh_times = [1, int(time.time())]
         refresh_times = [1, int(time.time())]
 
-    if need_gold and player.finance.gold < game_configs.base_config.get('totemRefreshPrice'):
+    need_item = game_configs.base_config.get('totemRefreshItem')
+    if need_gold == 1 and not is_afford(player, need_item).get('result'):
+        need_gold = 2
+
+    if need_gold == 2 and player.finance.gold < game_configs.base_config.get('totemRefreshPrice'):
         response.res.result = False
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
-    if need_gold:
+
+    if need_gold == 1:
+        consume(player, need_item)
+    if need_gold == 2:
         player.finance.consume_gold(game_configs.base_config.get('totemRefreshPrice'))
 
     player.runt.refresh_times = refresh_times
