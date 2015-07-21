@@ -15,13 +15,13 @@ from sdk.api.kuaiyong import verify_login
 @webserviceHandle('/login_ky')
 def ky_server_login():
     """ account login """
-    token = request.args.get('token')
+    token = request.args.get('open_id')
     result = __login(token)
     logger.debug("kuaiyong login in token:%s result:%s" % (token, result))
     if result.get('code') != 0:
         return json.dumps(dict(result=False))
 
-    openid = result.get('data').get('guid')
+    openid = result.get('guid')
     game_passport = uuid.uuid1().get_hex()
     account_cache[game_passport] = openid
 
@@ -36,7 +36,8 @@ def ky_server_login():
 def __login(token):
     """login """
     res = verify_login(token)
-    logger.debug(res)
+    # logger.debug(res)
+    return res
     if res > 0:
         return {'result': True, 'ret': '\'%s\'' % res}
     return {'result': False, "ret": res}
