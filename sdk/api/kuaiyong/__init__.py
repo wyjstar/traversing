@@ -31,12 +31,18 @@ def verify_login(token):
     return response
 
 
+def parse_str(code):
+    for _ in code.sqlit('&'):
+        exec(_)
+    return dealseq, fee, payresult
+
+
 def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
                     post_uid, post_subject, post_v):
 
     if post_sign == "":
         logger.debug(" Unable to get required value")
-        return "failed"
+        return False
 
     post_sign = base64.standard_b64decode(post_sign)
 
@@ -67,7 +73,7 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
 
     if verify:
         logger.debug('Failed to verify data')
-        return 'failed'
+        return False
 
     # 对加密的notify_data进行解密
     post_notify_data_decode = base64.standard_b64decode(post_notify_data)
@@ -76,7 +82,7 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
 
     logger.debug('Notify data decoded as %s', decode_notify_data)
 
-    parse_str(decode_notify_data)
+    dealseq, fee, payresult = parse_str(decode_notify_data)
 
     logger.debug('dealseq:%s fee:%s payresult:%s', dealseq, fee, payresult)
 
@@ -84,7 +90,7 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
     if dealseq == post_dealseq:
         logger.debug(" Success")
         # TODO：开发商根据dealseq将支付结果记录下来，并根据支付结果做相应处理
-        return "success"
+        return True
     else:
         logger.debug(" Dealseq values did not match")
-        return "failed"
+        return False
