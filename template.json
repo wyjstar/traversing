@@ -45,6 +45,7 @@
         },
         "gate": {
             "rootport": 30008,
+            "webport": 30013,
             "remoteport": [
                 {
                     "roothost": "127.0.0.1",

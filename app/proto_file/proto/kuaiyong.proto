@@ -1,0 +1,10 @@
+import "common.proto";
+
+message KuaiyongFlowIdResponse{
+	optional string flow_id = 1;
+}
+
+message KuaiyongRechargeResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
