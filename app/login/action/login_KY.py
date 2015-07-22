@@ -21,12 +21,16 @@ def ky_server_login():
     if result.get('code') != 0:
         return json.dumps(dict(result=False))
 
-    openid = result.get('data').get('guid')
+    result_data = result.get('data')
+    openid = result_data.get('guid')
+    user_name = result_data.get('username')
     game_passport = uuid.uuid1().get_hex()
     account_cache[game_passport] = openid
 
     server_list = dict(result=True,
                        passport=game_passport,
+                       openid=openid,
+                       username=user_name,
                        servers=manager.server_manager.get_server())
 
     logger.debug(server_list)
