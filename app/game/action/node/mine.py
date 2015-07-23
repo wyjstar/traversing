@@ -248,7 +248,7 @@ def guard_1244(data, player):
         for slot in line_up_response.slot:
             if not slot.hero.hero_no:
                 continue
-            hero = player.hero_component.get_hero(slot.hero_no)
+            hero = player.hero_component.get_hero(slot.hero.hero_no)
             hero.is_guard = False
             hero.save_data()
             for equ_slot in slot.equs:

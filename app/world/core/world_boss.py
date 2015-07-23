@@ -206,6 +206,7 @@ class WorldBoss(BaseBoss):
         for player_id, v in self._rank_instance.get(1, 0):
             for i in range(5, 1, -1):
                 reward_info = accumulated_rewards.get(i)
+                logger.debug("percent %s hp_max %s damage %s actual damage %s" % (reward_info[0], hp_max, reward_info[0]*hp_max, v))
                 if hp_max * reward_info[0] < v:
                     self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
                     break
