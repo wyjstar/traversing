@@ -36,7 +36,7 @@ def recharge_response():
 
         oldvcharacter = VCharacterManager().get_by_id(player_id)
         if not oldvcharacter:
-            logger.debug('fail get player node:%s', player_id)
+            logger.error('fail get player node:%s', player_id)
             return 'failed'
         child_node = GlobalObject().child(oldvcharacter.node)
         result = child_node.kuaiyong_recharge_remote(oldvcharacter.dynamic_id,
@@ -44,6 +44,5 @@ def recharge_response():
                                                      True)
         if result:
             return 'success'
-            # return 'failed'
 
     return 'failed'

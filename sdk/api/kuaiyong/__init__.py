@@ -31,9 +31,12 @@ def verify_login(token):
 
 
 def parse_str(code):
+    result = {}
     for _ in code.split('&'):
-        exec(_)
-    return dealseq, fee, payresult
+        kv = _.split('=')
+        result[kv[0]] = kv[1]
+
+    return result
 
 
 def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
@@ -67,18 +70,19 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
 
     logger.debug('Notify data decoded as %s', decode_notify_data)
 
-    dealseq, fee, payresult = parse_str(decode_notify_data)
+    result = parse_str(decode_notify_data)
+    dealseq, fee, payresult = result['dealseq'], result['fee'], result['payresult'],
 
     logger.debug('dealseq:%s fee:%s payresult:%s', dealseq, fee, payresult)
 
     # 比较解密出的数据中的dealseq和参数中的dealseq是否一致
-    if dealseq != int(post_dealseq):
+    if dealseq != post_dealseq:
         logger.debug(" Dealseq values did not match:%s-%s",
                      dealseq, post_dealseq)
         return False
 
-    if payresult != 0:
-        logger.debug("recharge fail payresult:%s", payresult)
+    if payresult != '0':
+        logger.error("recharge fail payresult:%s", payresult)
         return False
 
     logger.debug('kuaiyong verify success!')
