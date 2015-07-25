@@ -115,7 +115,6 @@ def del_friend_request_1103(data, player):
     response.result_no = 0
     request = friend_pb2.FriendCommon()
     request.ParseFromString(data)
-    print 'del_friend_request_1103', request.target_ids
     for target_id in request.target_ids:
         if not player.friends.del_friend(target_id):
             response.result = False
@@ -211,7 +210,6 @@ def _with_battle_info(response, friend):
 def get_player_friend_list_1106(data, player):
     response = friend_pb2.GetPlayerFriendsResponse()
     response.open_receive = player.stamina._open_receive
-    print player.friends.friends
 
     # 小伙伴支援
     if is_next_day(time.time(), player.friends.fight_last_time):
@@ -224,12 +222,13 @@ def get_player_friend_list_1106(data, player):
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             response_friend_add = response.friends.add()
-            friend_data = player_data.hmget(['lively', 'last_day'])
+            friend_data = player_data.hmget(['conditions_day', 'last_day'])
             response_friend_add.gift = player.friends.last_present_times(pid)
 
-            lively = int(friend_data.get('lively', 0))
+            conditions_day = friend_data.get('conditions_day', {})
+            lively = conditions_day.get(24, 0)
             today = time.strftime("%Y%m%d", time.localtime(time.time()))
-            if today != friend_data.get('last_day', '0'):
+            if today != time.strftime("%Y%m%d", time.localtime(friend_data.get('last_day', '0'))):
                 lively = 0
             response_friend_add.current = lively
             response_friend_add.target = base_config['friendActivityValue']
@@ -259,9 +258,7 @@ def get_player_friend_list_1106(data, player):
             logger.error('black_list cant find player id:%d' % pid)
             player.friends.blacklist.remove(pid)
 
-    print 'player.friends.applicant_list', player.friends.applicant_list
     for pid in player.friends.applicant_list:
-        print 'player.friends.applicant_list', pid
         player_data = tb_character_info.getObj(pid)
         if player_data.exists():
             response_applicant_list_add = response.applicant_list.add()
@@ -272,7 +269,6 @@ def get_player_friend_list_1106(data, player):
             logger.error('applicant_list, cant find player id:%d' % pid)
             player.friends.applicant_list.remove(pid)
 
-    logger.debug("1106 return friends list %s", response)
     return response.SerializePartialToString()
 
 
@@ -290,7 +286,8 @@ def draw_friend_lively_1199(data, player):
     else:
         player_data = tb_character_info.getObj(request.fid)
         friend_data = player_data.hmget(['lively', 'last_day'])
-        lively = int(friend_data.get('lively', 0))
+        conditions_day = friend_data.get('conditions_day', {})
+        lively = conditions_day.get(24, 0)
         if today != friend_data.get('last_day', ''):
             lively = 0
         if lively < base_config['friendActivityValue']:
@@ -322,7 +319,6 @@ def find_friend_request_1107(data, player):
     response.atk = 111
     response.hero_no = 11
     response.gift = datetime.datetime.now().day
-    print 'request.id_or_nickname', request.id_or_nickname
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObj(request.id_or_nickname)
         isexist = player_data.exists()
@@ -331,7 +327,6 @@ def find_friend_request_1107(data, player):
         isexist = nickname_obj.hexists(request.id_or_nickname)
         pid = nickname_obj.hget(request.id_or_nickname)
         player_data = tb_character_info.getObj(pid)
-    print 'isexist', isexist
     if isexist:
 
         friend_data = player_data.hmget(['id',
@@ -365,7 +360,6 @@ def recommend_friend_1198(data, player):
     front = player.base_info.level - x
     back = player.base_info.level + x
     uids = MineOpt.rand_level("user_level", front, back+1)
-    print uids
     statics = base_config['FriendRecommendNum']
     count = 0
     now = int(time.time())
@@ -444,7 +438,6 @@ def given_stamina_1108(data, player):
 
 @remoteserviceHandle('gate')
 def add_friend_request_remote(target_id, is_online, player):
-    # print 'target_id:', target_id, 'ison:', is_online
     logger.debug('add friend request:%s, %s', is_online, target_id)
     result = player.friends.add_applicant(target_id)
     # assert(result)

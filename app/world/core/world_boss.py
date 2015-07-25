@@ -107,7 +107,6 @@ class WorldBoss(BaseBoss):
             self.update_boss()
             self._state = 0
 
-        print("state %s open_or_not %s" % (self._state, self.open_or_not))
         reactor.callLater(1, self.loop_update)
 
     def start_boss(self):
@@ -151,9 +150,6 @@ class WorldBoss(BaseBoss):
         for k, v in game_configs.lucky_hero_config.items():
             start = string_to_timestamp(v.timeStart)
             end = string_to_timestamp(v.timeEnd)
-            #print("start:", start)
-            #print("end:", end)
-            #print("current:", current)
             if current > start and current < end:
                 items[k] = v
                 self._lucky_hero_start = start

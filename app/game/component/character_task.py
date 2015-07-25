@@ -23,6 +23,9 @@ class CharacterTaskComponent(Component):
         self._last_day = character_info.get('last_day')
 
     def save_data(self):
+                        'conditions_day': self._conditions_day,
+                        'tasks': self._tasks,
+                        'last_day': self._last_day}
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'conditions': self._conditions,
                         'conditions_day': self._conditions_day,
