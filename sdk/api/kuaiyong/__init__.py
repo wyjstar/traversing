@@ -13,7 +13,10 @@ except:
 if __name__ != '__main__':
     from gfirefly.server.logobj import logger
 
-pub = RSA.load_pub_key('kuaiyong_pub.pem')
+try:
+    pub = RSA.load_pub_key('kuaiyong_pub.pem')
+except:
+    pass
 
 APP_KEY = '05826e2d277a5d2b1f21464ee6beb599'
 
