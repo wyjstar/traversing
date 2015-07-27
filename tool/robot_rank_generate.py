@@ -74,11 +74,13 @@ if __name__ == '__main__':
     from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
     nickname_set = set()
+    nickname_set2 = set()
     while len(nickname_set) < rank_length + 5:
         pre1 = random.choice(game_configs.rand_name_config.get('pre1'))
         pre2 = random.choice(game_configs.rand_name_config.get('pre2'))
         str = random.choice(game_configs.rand_name_config.get('str'))
         nickname_set.add(pre1 + pre2 + str)
+        nickname_set2.add(pre1 + pre2 + str)
 
     player = PlayerCharacter(1, dynamic_id=1)
     player.create_character_data()
@@ -93,6 +95,8 @@ if __name__ == '__main__':
     pvp_rank = {}
     for rank in range(1, rank_length+1):
         for k, v in game_configs.robot_born_config.items():
+            if v.get('group') != 1:
+                continue
             rank_period = v.get('period')
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')
@@ -118,9 +122,42 @@ if __name__ == '__main__':
                 pvp_rank[rank] = rank_item
                 break
 
+    pvp_rank2 = {}
+    for rank in range(1, rank_length+1):
+        for k, v in game_configs.robot_born_config.items():
+            if v.get('group') != 3:
+                continue
+            rank_period = v.get('period')
+            if rank in range(rank_period[0] - 1, rank_period[1] + 1):
+                print rank, 'robot2'
+                level_period = v.get('level')
+                level = random.randint(level_period[0], level_period[1])
+                hero_ids = init_line_up(player, v, level)
+                hero_levels = player.line_up_component.hero_levels
+                red_units = player.fight_cache_component.red_unit
+                print red_units
+                red_units = red_units
+                slots = line_up_info(player).SerializeToString()
+                ap = int(player.line_up_component.combat_power)
+
+                rank_item = dict(nickname=nickname_set2.pop(),
+                                 character_id=rank, level=level, id=rank,
+                                 hero_ids=hero_ids,
+                                 hero_levels=hero_levels,
+                                 attackPoint=ap,
+                                 best_skill=0,
+                                 unpar_skill=0,
+                                 unpar_skill_level=0,
+                                 copy_units=red_units,
+                                 copy_slots=slots)
+                pvp_rank2[rank] = rank_item
+                break
+
     tb_robot = tb_character_info.getObj('robot')
+    tb_robot2 = tb_character_info.getObj('robot2')
     if tb_robot.exists():
         tb_robot.delete()
+        tb_robot2.delete()
         tb_pvp_rank.delete()
         tb_pvp_rank.getObj('incr').delete()
 
@@ -129,6 +166,10 @@ if __name__ == '__main__':
         tb_robot.hsetnx(_['id'], _)
         tb_pvp_rank.zadd(_['id'], _['id'])
         tb_pvp_rank.getObj('incr').incr()
+
+    for _ in pvp_rank2.values():
+        print 'robot2', _.get('id'), _.get('nickname'), _.get('character_id')
+        tb_robot2.hsetnx(_['id'], _)
 
 
 def dbpool_get():

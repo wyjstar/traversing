@@ -242,8 +242,11 @@ def get_overcomes(player_id, player_ap):
     rank = tb_rank.getObj(rank_name)
     rank_toal = rank.ztotal()
     if rank_toal < 20:
-        logger.error('reset overcome not enough player:%s', rank_toal)
-        return []
+        robot_ids = set([0])
+        while len(robot_ids) != 16:
+            robot_ids.add(random.randint(1, const.ROBOT_NUM))
+        logger.error('reset overcome not enough player:%s', robot_ids)
+        return sorted(list(robot_ids), reverse=True)
     types = [20001, 20002, 20003]
     count = 0
     ids = set()
