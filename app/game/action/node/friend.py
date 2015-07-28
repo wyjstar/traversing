@@ -341,7 +341,6 @@ def find_friend_request_1107(data, player):
     request.ParseFromString(data)
 
     response = friend_pb2.FindFriendResponse()
-    response.gift = datetime.datetime.now().day
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObj(request.id_or_nickname)
         if player_data.exists():
