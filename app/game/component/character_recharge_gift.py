@@ -122,6 +122,10 @@ class CharacterRechargeGift(Component):
 
     def get_data(self, response):
         print self._recharge, type(self._recharge)
+        _time_now_struct = time.gmtime()
+        str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
+                                          _time_now_struct.tm_mon,
+                                          _time_now_struct.tm_mday)
         _date_now = int(time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S')))
         for recharge_id, recharge_data in self._recharge.items():
             activity = game_configs.activity_config.get(recharge_id)
