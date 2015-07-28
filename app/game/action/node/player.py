@@ -39,10 +39,9 @@ def nickname_create_5(request_proto, player):
     nickname = argument.nickname
     response = CommonResponse()
 
-    match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
-    # match = re.search(u'^[_a-zA-Z0-9\u4e00-\u9fa5]+$', nickname)
-    # print nickname, type(nickname), '=============================================='
-    if match:
+    # match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]', nickname)
+    match = re.search(u'^[a-zA-Z0-9\u4e00-\u9fa5]+$', nickname)
+    if not match:
         response.result = False
         response.result_no = 868
         logger.info('not support emoji')
