@@ -14,6 +14,16 @@ from app.game.core import rank_helper
 from gfirefly.dbentrust.redis_mode import RedisObject
 tb_rank = RedisObject('tb_rank')
 
+tb_robot2 = tb_character_info.getObj('robot2')
+robot2_rank = {}
+for robot_id in tb_robot2.hkeys():
+    robot_data = tb_robot2.hget(robot_id)
+    robot2_rank[int(robot_id)] = robot_data.get('attackPoint')
+
+robot2_rank = sorted(robot2_rank.items(), key=lambda _: _[1])
+# for _ in robot2_rank:
+#     print _
+
 
 class CharacterPvpComponent(Component):
     def __init__(self, owner):
@@ -242,11 +252,28 @@ def get_overcomes(player_id, player_ap):
     rank = tb_rank.getObj(rank_name)
     rank_toal = rank.ztotal()
     if rank_toal < 20:
-        robot_ids = set([0])
+        robot_ids = set([(0, 0)])
+        index = 0
+        for i in range(len(robot2_rank)):
+            rid, rap = robot2_rank[i]
+            if rap > player_ap:
+                index = i
+                break
+        else:
+            index = len(robot2_rank)
+
+        _min = max(index - 20, 0)
+        _max = min(index + 20, len(robot2_rank) - 1)
+        print _min, _max
         while len(robot_ids) != 16:
-            robot_ids.add(random.randint(1, const.ROBOT_NUM))
-        logger.error('reset overcome not enough player:%s', robot_ids)
-        return sorted(list(robot_ids), reverse=True)
+            _id = random.randint(_min, _max)
+            print _id
+            robot_ids.add(robot2_rank[_id])
+        robot_ids = sorted(list(robot_ids), key=lambda x: x[1])
+        robot_ids = dict(robot_ids).keys()
+        logger.error('reset overcome not enough player:%s(%s)',
+                     robot_ids, index)
+        return robot_ids
     types = [20001, 20002, 20003]
     count = 0
     ids = set()
