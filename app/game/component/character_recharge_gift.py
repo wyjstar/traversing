@@ -48,9 +48,9 @@ class CharacterRechargeGift(Component):
                 continue
 
     def charge(self, recharge):
-        #保存首次充值id
-        #vip
-        #活动
+        # 保存首次充值id
+        # vip
+        # 活动
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
             if activitys is None:
@@ -59,6 +59,7 @@ class CharacterRechargeGift(Component):
             for activity in activitys:
                 self.type_process(activity, recharge)
 
+        self.save_data()
         logger.debug(self._recharge)
 
     def type_process(self, activity, recharge):
