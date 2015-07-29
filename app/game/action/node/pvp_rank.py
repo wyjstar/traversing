@@ -162,6 +162,7 @@ def get_pvp_data(character_id):
     if robot_obj.hexists(character_id):
         pvp_data = robot_obj.hget(character_id)
         # print 'get pvp data robot:', pvp_data
+        pvp_data['copy_units2'] = pvp_data['copy_units']
         return pvp_data
 
     return {}

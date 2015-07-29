@@ -63,10 +63,10 @@ class CharacterRechargeGift(Component):
 
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
-        isopen = activity.get('is_open')
-        if isopen != 1:
-            logger.debug('activity:%s is not open', activity_id)
-            return
+        # isopen = activity.get('is_open')
+        # if isopen != 1:
+        #     logger.debug('activity:%s is not open', activity_id)
+        #     return
 
         _time_now_struct = time.gmtime()
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
