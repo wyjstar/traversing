@@ -43,9 +43,9 @@ class CharacterRechargeGift(Component):
             if activity is None:
                 del self._recharge[activity_id]
                 continue
-            if not activity.get('is_open'):
-                del self._recharge[activity_id]
-                continue
+            # if not activity.get('is_open'):
+            #     del self._recharge[activity_id]
+            #     continue
 
     def charge(self, recharge):
         # 保存首次充值id
