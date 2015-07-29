@@ -113,11 +113,12 @@ class CharacterRechargeGift(Component):
             self._recharge[activity_id] = {accumulating: switch}
 
         if gift_type == 10:
-            if activity_id not in self._recharge:
-                self._recharge[activity_id] = {}
+            if recharge >= activity.get('parameterA'):
+                if activity_id not in self._recharge:
+                    self._recharge[activity_id] = {}
 
-            if _date_now not in self._recharge[activity_id].keys():
-                self._recharge[activity_id][_date_now] = 0
+                if _date_now not in self._recharge[activity_id].keys():
+                    self._recharge[activity_id][_date_now] = 0
 
     def get_data(self, response):
         print self._recharge, type(self._recharge)
