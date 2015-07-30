@@ -98,7 +98,7 @@ def inherit_equipment_152(pro_data, player):
         response.result = False
         return response.SerializeToString()
 
-    def func(self):
+    def func():
         """docstring for func"""
         target.attribute.strengthen_lv = origin.attribute.strengthen_lv
         target.save_data()

@@ -74,8 +74,8 @@ def buy_coin_activity_1406(data, player):
         return response.SerializePartialToString()
 
     coin_nums = 0 # 银币数量
-    for k in sorted(gain_info.keys()):
-        if buy_times <= k:
+    for k in sorted(gain_info.keys(), reverse=True):
+        if buy_times >= k:
             coin_nums = gain_info[k]
             break
     def func():
