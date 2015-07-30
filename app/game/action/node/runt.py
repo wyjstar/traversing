@@ -280,7 +280,7 @@ def build_runt_846(data, player):
     player.runt.stone2 -= need_stone2
     player.finance.coin -= need_coin
 
-    if len(player.runt.m_runt) + 1 >= game_configs.base_config.get('totemStash'):
+    if len(player.runt.m_runt) + 1 > game_configs.base_config.get('totemStash'):
         response.res.result = False
         response.res.result_no = 824
         return response.SerializeToString()

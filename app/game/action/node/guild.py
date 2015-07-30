@@ -272,8 +272,6 @@ def exit_guild_803(data, player):
     player.guild.all_contribution = 0
     player.guild.today_contribution = 0
     player.guild.position = 3
-    player.guild.praise = [0, 1]
-    player.guild.bless = [0, [], 0, 1]
     player.guild.g_id = 0
     player.guild.save_data()
 
@@ -299,8 +297,13 @@ def del_apply_cache_remote(g_id, is_online, player):
 @remoteserviceHandle('gate')
 def modify_user_guild_info_remote(data, player):
     if data['cmd'] == 'change_president':
+        proto_data = PositionChange()
+        proto_data.position = data['position']
         player.guild.position = data['position']
         player.guild.save_data()
+        remote_gate.push_object_remote(1815,
+                                       proto_data.SerializeToString(),
+                                       [player.dynamic_id])
     elif data['cmd'] == 'exit_guild':
         player.guild.position = data['position']
         player.guild.save_data()
@@ -314,8 +317,6 @@ def modify_user_guild_info_remote(data, player):
         player.guild.all_contribution = 0
         player.guild.today_contribution = 0
         player.guild.position = 3
-        player.guild.praise = [0, int(time.time())]
-        player.guild.bless = [0, [], 0, int(time.time())]
         player.guild.exit_time = 1
         player.guild.apply_guilds = []
 
@@ -345,12 +346,6 @@ def modify_user_guild_info_remote(data, player):
             return 0
         else:
             return 1
-    elif data['cmd'] == 'promotion':
-        player.guild.position = data['position']
-        player.guild.save_data()
-    elif data['cmd'] == 'appoint':
-        player.guild.position = data['position']
-        player.guild.save_data()
     return 1
 
 
@@ -438,8 +433,6 @@ def deal_apply_805(data, player):
                     'contribution': 0,
                     'all_contribution': 0,
                     'today_contribution': 0,
-                    'praise': [0, 1],
-                    'bless': [0, [], 0, 1],
                     'apply_guilds': [],
                     'exit_time': 1}
             is_online = remote_gate.is_online_remote(
@@ -655,8 +648,6 @@ def kick_807(data, player):
                     'contribution': 0,
                     'all_contribution': 0,
                     'today_contribution': 0,
-                    'praise': [0, 1],
-                    'bless': [0, [], 0, 1],
                     'apply_guilds': [],
                     'exit_time': 1}
             # TODO 玩家被提出，或者退出军团以后，膜拜的记录清理不清理。
@@ -765,14 +756,14 @@ def get_guild_rank_810(data, player):
             rank_num += 1
         response.res.result = True
     elif rank_type == 2:  # 推荐列表
-        response.flag = 1
+        response.flag = 0
         if player.guild.g_id != 0:
             response.res.result = False
             response.res.result_no = 843
-            return
+            return response.SerializeToString()
         if min_rank == 1:
             player.guild.guild_rank_flag = 0
-        if min_rank <= len(player.guild.apply_guilds):
+        if min_rank <= len(player.guild.apply_guilds):  # 申请列表不为0的时候 一定是false
             if max_rank <= len(player.guild.apply_guilds):
                 rank_num = min_rank
                 for x in range(min_rank-1, max_rank):
@@ -788,8 +779,6 @@ def get_guild_rank_810(data, player):
 
                 rank_info = rank_helper.get_rank('GuildLevel', 1, 9999)
                 guild_rank_flag = 0
-                if len(rank_info) == 0:
-                    response.flag = 0
                 for (_g_id, _rank) in rank_info:
                     g_id = int(_g_id)
                     guild_rank_flag += 1
@@ -804,11 +793,15 @@ def get_guild_rank_810(data, player):
                     if rank_num > max_rank:
                         break
                 player.guild.guild_rank_flag = guild_rank_flag
-        else:  # min_rank > 申请个数
+        else:  # min_rank > 申请个数 无申请
             # 需要上次查到哪的 redis 排行
             rank_num = min_rank
             guild_rank_flag = player.guild.guild_rank_flag
             rank_info = rank_helper.get_rank('GuildLevel', 1, 9999)
+            if len(rank_info) == 0:
+                response.flag = 1
+                response.res.result = True
+                return response.SerializeToString()
             if guild_rank_flag >= len(rank_info):
                 response.res.result = True
                 return response.SerializeToString()
@@ -1132,7 +1125,7 @@ def invite_join_1803(data, player):
     elif is_online == 0:
         response.res.result = False
         # response.message = "对方未开启军团功能"
-        response.res.result_no = 837
+        response.res.result_no = 866
         return response.SerializeToString()
 
     if not guild_obj.invite_join.get(user_id):
@@ -1148,7 +1141,7 @@ def invite_join_1803(data, player):
         mail_id = game_configs.base_config.get('guildInviteMail')
         send_mail(conf_id=mail_id, receive_id=user_id, guild_name=guild_obj.name,
                   guild_p_num=guild_obj.p_num, guild_level=guild_obj.level,
-                  guild_id=guild_obj.g_id)
+                  guild_id=guild_obj.g_id, nickname=player.base_info.base_name)
 
     guild_obj.invite_join[user_id] = int(time.time())
 
@@ -1385,7 +1378,7 @@ def get_bless_gift_1808(data, player):
 
 @remoteserviceHandle('gate')
 def find_guild_1809(data, player):
-    """索索军团 """
+    """搜索军团 """
     args = FindGuildRequest()
     args.ParseFromString(data)
     response = FindGuildResponse()
@@ -1495,7 +1488,7 @@ def appoint_1810(data, player):
     is_online = remote_gate.is_online_remote(
         'modify_user_guild_info_remote',
         p_id,
-        {'cmd': 'appoint', "position": now_positon})
+        {'cmd': 'change_president', "position": now_positon})
 
     if is_online == "notonline":
         p_guild_data = tb_character_info.getObj(p_id)

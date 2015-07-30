@@ -31,6 +31,7 @@ class Guild(object):
 
         self._name = name
         self._g_id = g_id
+        self._icon_id = icon_id
         self._p_list = {1: [p_id]}
         # fund 资金
         data = {'id': self._g_id,

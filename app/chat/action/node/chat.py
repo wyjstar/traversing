@@ -33,9 +33,10 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
     if content:
         content = trie_tree.check.replace_bad_word(content.encode("utf-8"))
 
+    if chater.gag_time > int(time.time()) or chater.gag_time == -2:
+        return {'result': False, 'result_no': 836, 'gag_time': chater.gag_time}  # 已被禁言
+
     if room_id == 1:  # 世界聊天频道
-        if chater.gag_time > int(time.time()) or chater.gag_time == -2:
-            return {'result': False, 'result_no': 836, 'gag_time': chater.gag_time}  # 已被禁言
         last_time = chater.last_time
         if int(time.time()) - last_time < game_configs.base_config.get('chat_interval'):
             return {'result': False, 'result_no': 806}  # 60秒内不可聊天

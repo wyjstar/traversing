@@ -143,7 +143,7 @@ class FriendComponent(Component):
 
     def add_friend(self, friend_id, is_active=True):
         max_num_friend = game_configs.base_config.get('max_of_UserFriend')
-        if len(self.friends) > max_num_friend:
+        if len(self.friends) >= max_num_friend:
             return False
 
         if friend_id in self._friends.keys():
@@ -190,7 +190,7 @@ class FriendComponent(Component):
 
     def add_blacklist(self, target_id):
         max_num_blacklist = game_configs.base_config.get('max_of_Userblacklist')
-        if len(self.blacklist) > max_num_blacklist:
+        if len(self.blacklist) >= max_num_blacklist:
             return False
 
         if target_id in self._blacklist.keys():
@@ -211,7 +211,7 @@ class FriendComponent(Component):
 
     def add_applicant(self, target_id):
         max_num_applicant = game_configs.base_config.get('maxOfFriendApply')
-        if len(self.applicant_list) > max_num_applicant:
+        if len(self.applicant_list) >= max_num_applicant:
             return False
 
         if target_id in self._applicants_list.keys():
