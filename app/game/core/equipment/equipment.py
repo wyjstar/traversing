@@ -18,14 +18,15 @@ import copy
 EQUIP_ATTR_CONFIG = game_configs.equipment_attribute_config
 
 
-def init_equipment_attr(equipment_no):
+def init_equipment_attr(equipment_no, attr_id=0):
     mainAttr, minorAttr = {}, {}
     equipment_item = game_configs.equipment_config.get(equipment_no)
     if not equipment_item:
         logger.error('error equipment no:%s', equipment_no)
         return mainAttr, minorAttr
 
-    equip_attr_id = equipment_item.attr
+    equip_attr_id = equipment_item.attr if attr_id == 0 else attr_id
+    logger('init_equipment_attr %s %s', equip_attr_id, attr_id)
     equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
     if not equipment_attr_item:
         logger.error('error equipment attr no:%s:%s',
@@ -181,9 +182,9 @@ class Equipment(object):
                                                       prefix)
         self._record = EquipmentEnhanceComponent(self, _enhance_info)
 
-    def add_data(self, character_id):
+    def add_data(self, character_id, attr_id=0):
         no = self._base_info.equipment_no
-        mainAttr, minorAttr, prefix = init_equipment_attr(no)
+        mainAttr, minorAttr, prefix = init_equipment_attr(no, attr_id)
         self._attribute.main_attr = mainAttr
         self._attribute.minor_attr = minorAttr
         self._attribute.prefix = prefix

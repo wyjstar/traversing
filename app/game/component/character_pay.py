@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
+import traceback
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -52,7 +53,6 @@ class CharacterPay(Component):
         self._pf = str(value.get("pf"))
         self._pfkey = str(value.get("pfkey"))
 
-
     def _get_balance_m(self):
         if not self.REMOTE_DEPLOYED:
             return
@@ -77,6 +77,7 @@ class CharacterPay(Component):
             logger.debug(data)
         except Exception, e:
             logger.error("get balance error:%s" % e)
+            logger.error(traceback.format_exc())
             return
 
         if data['ret'] == 1018:
@@ -159,6 +160,7 @@ class CharacterPay(Component):
                                          self._pf, self._pfkey, self._zoneid, num)
         except Exception, e:
             logger.error("pay error:%s" % e)
+            logger.error(traceback.format_exc())
             return
 
         if result['ret'] == 1018:
@@ -185,6 +187,7 @@ class CharacterPay(Component):
             func(*args, **kwargs)
         except Exception, e:
             logger.error("pay error: cancel_pay %s", e)
+            logger.error(traceback.format_exc())
             self._cancel_pay_m(num, billno)
             return False
         self.get_balance()
@@ -229,6 +232,7 @@ class CharacterPay(Component):
                                             self._pf, self._pfkey, self._zoneid, discountid, giftid, num)
         except Exception, e:
             logger.error("present error:%s" % e)
+            logger.error(traceback.format_exc())
             return
 
         if result['ret'] == 1018:

@@ -55,7 +55,7 @@ class CharacterEquipmentPackageComponent(Component):
     def new_data(self):
         return {}
 
-    def add_equipment(self, equipment_no):
+    def add_equipment(self, equipment_no, lucky_attr):
         """添加装备
         """
         character_id = self.owner.base_info.id
@@ -63,7 +63,7 @@ class CharacterEquipmentPackageComponent(Component):
         equipment_obj = Equipment(character_id, equipment_id, '', equipment_no)
         self._equipments_obj[equipment_id] = equipment_obj
 
-        equipment_obj.add_data(self.owner.base_info.id)
+        equipment_obj.add_data(self.owner.base_info.id, lucky_attr)
 
         equ_conf = game_configs.equipment_config.get(equipment_no)
 
