@@ -339,6 +339,19 @@ def shop_buy_505(pro_data, player):
 
         need_gold = get_consume_gold_num(price, item_count)
 
+        _lucky_attr = 0
+        shop_item_attr = shop_item.get('attr')
+        # print 'luck attr', shop_item_attr
+        if shop_item_attr:
+            lucky_keys = sorted(shop_item_attr.keys())
+            for k in lucky_keys:
+                # print k, shop_item_attr[k]
+                if shop['luck_num'] >= k:
+                    _lucky_attr = shop_item_attr[k]
+                    # print 'luck Num attr', shop['luck_num'], shop_item_attr[k], shop_item_attr
+                else:
+                    break
+
         def func():
             consume_return_data = consume(player, price,
                                           multiple=item_count,
@@ -347,7 +360,8 @@ def shop_buy_505(pro_data, player):
             return_data = gain(player,
                                shop_item.gain,
                                get_reason(shop_item.get('type')),
-                               multiple=item_count)  # 获取
+                               multiple=item_count,
+                               lucky_attr_id=_lucky_attr)  # 获取
             get_return(player, consume_return_data, response.consume)
             get_return(player, return_data, response.gain)
             for _ in range(item_count):
