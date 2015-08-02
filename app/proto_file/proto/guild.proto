@@ -11,7 +11,7 @@ message GetGuildRankRequest{
 message GetGuildRankResponse{
     required CommonResponse res = 1;
     repeated GuildRank guild_rank = 2;
-    optional int32 flag = 3;  //有没有军团
+    optional int32 flag = 3;  //有没有军团 默认1 无军团1  满0
 }
 
 message GuildRank
@@ -247,4 +247,9 @@ message AppointRequest{
 // 1810
 message AppointResponse{
     required CommonResponse res = 1;
+}
+
+// 1815
+message PositionChange{
+    required int32 position = 1;
 }
