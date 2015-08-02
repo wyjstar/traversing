@@ -1125,7 +1125,7 @@ def invite_join_1803(data, player):
     elif is_online == 0:
         response.res.result = False
         # response.message = "对方未开启军团功能"
-        response.res.result_no = 837
+        response.res.result_no = 866
         return response.SerializeToString()
 
     if not guild_obj.invite_join.get(user_id):
