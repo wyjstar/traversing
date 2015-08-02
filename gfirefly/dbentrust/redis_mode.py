@@ -146,7 +146,7 @@ class RedisObject(object):
         return True
 
     def set(self, key, value):
-        produce_key = self.produceKey(str(key))
+        produce_key = self.produceKey(unicode(key))
         client = redis_manager.get_connection(produce_key)
         client.set(produce_key, cPickle.dumps(value))
 

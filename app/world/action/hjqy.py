@@ -26,7 +26,7 @@ def hjqy_init_remote(player_id, friend_ids):
         boss = hjqy_manager.get_boss(temp_id)
         if boss and (boss.is_share or temp_id == temp_id): #获取hjqy列表
             logger.debug("player id %s" % boss.player_id)
-            bosses[player_id] = construct_boss_data(boss)
+            bosses[boss.player_id] = construct_boss_data(boss)
             logger.debug("hjqy_init_remote bosses: %s" % bosses)
     return bosses
 

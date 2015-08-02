@@ -516,9 +516,11 @@ class PlayerField(Mine):
         self.get_cur_data(now)
 
     def mine_info(self):
-        data = remote_gate.mine_query_info_remote(self._tid, self._seq)
-        print 'mine_info', cPickle.loads(data)
-        return cPickle.loads(data)
+#         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
+#         print 'mine_info', cPickle.loads(data)
+        self.guard_info()
+        
+        return Mine.mine_info(self)
 
     def detail_info(self):
         """

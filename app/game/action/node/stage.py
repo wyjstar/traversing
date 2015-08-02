@@ -699,13 +699,13 @@ def trigger_hjqy(player, result):
     stage_info = player.fight_cache_component._get_stage_config()
     logger.debug(stage_info.type)
     logger.debug(stage_info.id)
-    if stage_info.type not in [1]:
+    if stage_info.type not in [1, 2, 3]:
         # 只有在剧情关卡时，才能触发黄巾起义
         return 0
 
     logger.debug("can_trigger_hjqy")
     # 触发hjqy
-    open_stage_id = player.stage_component.rank_stage_progress
+    open_stage_id = player.stage_component.stage_progress
     player.fight_cache_component.stage_id = open_stage_id
     stage_info = player.fight_cache_component._get_stage_config()
 
@@ -731,7 +731,7 @@ def trigger_hjqy(player, result):
 
     str_blue_units = cPickle.dumps(blue_units[0])
     result = remote_gate['world'].create_hjqy_remote(player.base_info.id, player.base_info.base_name, str_blue_units, stage_id)
-    logger.debug("8============= %s" % result)
+    logger.debug("8============= %s %s" % (stage_id, open_stage_id))
     if not result:
         return False
     # send trigger reward
