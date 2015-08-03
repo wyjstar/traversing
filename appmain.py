@@ -15,9 +15,13 @@ def dump_stacks(signal, frame):
     codes = []
     for threadId, stack in sys._current_frames().items():
         for filename, lineno, name, line in traceback.extract_stack(stack):
-            codes.append('File: "%s", line %d, in %s' % (filename, lineno, name))
+            codes.append('File: "%s", line %d, in %s' % (filename,
+                                                         lineno,
+                                                         name))
             if line:
                 codes.append("  %s" % (line.strip()))
+    for line in codes:
+        print line
 
 
 def print_stack(signal, frame):
