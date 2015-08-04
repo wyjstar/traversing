@@ -14,6 +14,7 @@ from app.game.core.task import hook_task, CONDITIONId
 
 @remoteserviceHandle('gate')
 def get_brew_info_1600(data, player):
+    player.brew.check_time()
     response = brew_pb2.BrewInfo()
     response.brew_times = player.brew.brew_times
     response.brew_step = player.brew.brew_step
