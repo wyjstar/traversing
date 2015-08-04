@@ -269,9 +269,9 @@ def new_guide_step_1802(data, player):
         gain_data = new_guide_item.get('rewards')
         return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
         get_return(player, return_data, response.gain)
-        logger.debug('new bee id:%s step:%s reward:%s',
-                     player.base_info.id,
-                     request.step_id, gain_data)
+        logger.debug('new bee id:%s step:%s reward:%s response:%s',
+                     player.base_info.id, request.step_id,
+                     gain_data, response.gain)
     else:
         response.res.result_no = 111
         logger.debug("new bee reward repeated, id:%s step:%s %s %s",
