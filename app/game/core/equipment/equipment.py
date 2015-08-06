@@ -53,7 +53,7 @@ def init_equipment_attr(equipment_no, attr_id=0):
     # calculation for prefx
     prefix = get_prefix(equipment_item, mainAttr, minorAttr)
 
-    return mainAttr, minorAttr, prefix
+    return mainAttr, minorAttr, prefix, equip_attr_id
 
 def get_prefix(equipment_item, mainAttr, minorAttr):
     """docstring for get_prefix"""
@@ -161,7 +161,7 @@ class Equipment(object):
     def __init__(self, character_id, equipment_id, equipment_name, equipment_no,
                  strengthen_lv=1, awakening_lv=1, _enhance_info=0,
                  nobbing_effect={}, is_guard=False, main_attr={},
-                 minor_attr={}, prefix=0):
+                 minor_attr={}, prefix=0, attr_id=0):
 
         # logger.debug("enhance_info========== %s" % _enhance_info)
         if _enhance_info == 0:
@@ -179,15 +179,16 @@ class Equipment(object):
                                                       is_guard,
                                                       main_attr,
                                                       minor_attr,
-                                                      prefix)
+                                                      prefix, attr_id)
         self._record = EquipmentEnhanceComponent(self, _enhance_info)
 
     def add_data(self, character_id, attr_id=0):
         no = self._base_info.equipment_no
-        mainAttr, minorAttr, prefix = init_equipment_attr(no, attr_id)
+        mainAttr, minorAttr, prefix, equip_attr_id = init_equipment_attr(no, attr_id)
         self._attribute.main_attr = mainAttr
         self._attribute.minor_attr = minorAttr
         self._attribute.prefix = prefix
+        self._attribute.attr_id = equip_attr_id
         data = dict(id=self._base_info.id,
                     equipment_info=dict(equipment_no=no,
                                         slv=self._attribute.strengthen_lv,
@@ -195,7 +196,8 @@ class Equipment(object):
                                         is_guard=self._attribute.is_guard,
                                         main_attr=mainAttr,
                                         minor_attr=minorAttr,
-                                        prefix=prefix),
+                                        prefix=prefix,
+                                        attr_id=equip_attr_id),
                     enhance_info=self._record.enhance_record,
                     nobbing_effect=self._attribute.nobbing_effect)
 
@@ -212,7 +214,9 @@ class Equipment(object):
                                    'is_guard': self._attribute.is_guard,
                                    'main_attr': self._attribute.main_attr,
                                    'minor_attr': self._attribute.minor_attr,
-                                   'prefix': self._attribute.prefix},
+                                   'prefix': self._attribute.prefix,
+                                   'attr_id': self._attribute.attr_id,
+                                   },
                 'enhance_info': self._record.enhance_record,
                 'nobbing_effect': self._attribute.nobbing_effect}
 
@@ -301,6 +305,7 @@ class Equipment(object):
         equipment_pb.awakening_lv = self.attribute.awakening_lv
         equipment_pb.is_guard = self.attribute.is_guard
         equipment_pb.prefix = self.attribute.prefix
+        equipment_pb.attr_id = self.attribute.attr_id
         equipment_pb.nobbing_effect = 0
         equipment_pb.hero_no = 0
 
@@ -323,8 +328,8 @@ class Equipment(object):
             data_format.before_lv = before_lv
             data_format.after_lv = after_lv
             data_format.cost_coin = enhance_cost
-        # logger.debug("equipment_pb.data===============")
-        # logger.debug(equipment_pb.data)
+        #logger.debug("equipment_pb.data===============")
+        #logger.debug(equipment_pb.attr_id)
 
     def calculate_attr(self, hero_self_attr):
         """根据属性和强化等级计算装备属性"""

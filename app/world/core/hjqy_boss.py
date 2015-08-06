@@ -47,7 +47,6 @@ class HjqyBossManager(object):
     def add_boss(self, player_id, nickname, blue_units, stage_id):
         """docstring for add_boss"""
         logger.debug("add boss %s %s %s %s" % (player_id, 1, blue_units, stage_id))
-        print(nickname)
         boss = HjqyBoss(player_id)
         boss.nickname = nickname
         boss.blue_units = blue_units

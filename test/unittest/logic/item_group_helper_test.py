@@ -15,10 +15,10 @@ class ItemGroupHelperTest(unittest.TestCase):
     def setUp(self):
         from test.unittest.init_test_data import init
 
-        init()
-        self.player = PlayersManager().get_player_by_id(1)
+        self.player = init()
+        #self.player = PlayersManager().get_player_by_id(1)
 
-    def test_parse(self):
+    def tst_parse(self):
         data = {1: [1, 1, 1001], 2: [2, 2, 1002], 3: [3, 3, 1003]}
         item_group = parse(data)
         first = item_group[0]
@@ -31,7 +31,7 @@ class ItemGroupHelperTest(unittest.TestCase):
         self.assertEqual(last.num, 3, "first item type id error!%d_%d" % (last.num, 3))
         self.assertEqual(last.item_no, 1003, "first item type id error!%d_%d" % (last.item_no, 1003))
 
-    def test_is_afford(self):
+    def tst_is_afford(self):
         consume_data = {const.COIN: [30000, 30000, 0],
                         const.GOLD: [10000, 10000, 0],
                         const.HERO_SOUL: [20000, 20000, 0],
@@ -79,7 +79,7 @@ class ItemGroupHelperTest(unittest.TestCase):
         result = is_afford(self.player, parse(consume_data_copy))
         self.assertEqual(result.get('result'), False)
 
-    def test_consume(self):
+    def tst_consume(self):
         consume_data = {const.COIN: [30000, 30000, 0],
                         const.GOLD: [10000, 10000, 0],
                         const.HERO_SOUL: [20000, 20000, 0],
@@ -100,7 +100,7 @@ class ItemGroupHelperTest(unittest.TestCase):
         item = self.player.item_package.get_item(1000111)
         self.assertEqual(item.num, 0, 'item_count %d_%d' % (item.num, 0))
 
-    def test_gain(self):
+    def tst_gain(self):
         gain_data = {const.COIN: [30000, 30000, 0],
                      const.GOLD: [10000, 10000, 0],
                      const.HERO_SOUL: [20000, 20000, 0],
@@ -156,7 +156,7 @@ class ItemGroupHelperTest(unittest.TestCase):
                 lst.append(equipment)
         return lst
 
-    def test_get_return(self):
+    def tst_get_return(self):
         response = GameResourcesResponse()
         return_data = [[const.COIN, 30000, 0],
                        [const.GOLD, 10000, 0],
@@ -211,8 +211,17 @@ class ItemGroupHelperTest(unittest.TestCase):
         self.assertEqual(equipment_chip.equipment_chip_num, 300, "%d_%d" % (equipment_chip.equipment_chip_num, 300))
 
 
+    def test_gain(self):
+        response = GameResourcesResponse()
+        gain_data = {106:[1,1,1203]}
+        #print(self.player)
+        return_data = gain(self.player, parse(gain_data), 111)
+        get_return(self.player, return_data, response)
+        print response
 
 
+if __name__ == '__main__':
+    unittest.main()
 
 
 
