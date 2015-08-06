@@ -377,20 +377,20 @@ def recommend_friend_1198(data, player):
     add_count = 1
     while True:
         for uid in uids:
-            if uid in has_one:
+            if uid == player.base_info.id:
+                continue
+            elif player.friends.is_friend(uid):
+                continue
+            elif uid in has_one:
                 continue
             else:
                 has_one.append(uid)
-            if uid == player.base_info.id:
-                continue
-            if player.friends.is_friend(uid):
-                continue
-    
+
             player_data = tb_character_info.getObj(uid)
             isexist = player_data.exists()
             if count >= statics:
                 break
-    
+
             if isexist:
                 last_time = player_data.hget('upgrade_time')
                 if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
@@ -408,16 +408,16 @@ def recommend_friend_1198(data, player):
                 if friend_data['attackPoint'] is not None:
                     ap = int(friend_data['attackPoint'])
                 friend.power = ap if ap else 0
-    
+
                 friend_heads = Heads_DB()
                 friend_heads.ParseFromString(friend_data['heads'])
                 friend.hero_no = friend_heads.now_head
-    
+
                 friend.level = friend_data['level']
                 friend.b_rank = 1
                 if remote_gate.online_remote(friend_data['id']) == 0:
                     friend.last_time = friend_data['upgrade_time']
-    
+
                 # 添加好友主将的属性
                 _with_battle_info(friend, player_data)
         if count >= statics:
@@ -430,7 +430,7 @@ def recommend_friend_1198(data, player):
             if back > player_level_max:
                 back = player_level_max
             uids = MineOpt.rand_level("user_level", front, back+1)
-        if back >= player_level_max:
+        if back > player_level_max*2:
             break
 
     return response.SerializePartialToString()
