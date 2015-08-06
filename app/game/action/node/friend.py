@@ -430,7 +430,7 @@ def recommend_friend_1198(data, player):
             if back > player_level_max:
                 back = player_level_max
             uids = MineOpt.rand_level("user_level", front, back+1)
-        if back > player_level_max*2:
+        if back >= player_level_max and front <= 1:
             break
 
     return response.SerializePartialToString()
