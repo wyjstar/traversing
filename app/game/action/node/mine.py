@@ -560,28 +560,28 @@ def process_mine_result(player, position, result, response, stype, hold=1):
         send_mail(conf_id=122, receive_id=target, nickname=nickname )
         return
 
-    warFogLootRatio = game_configs.base_config['warFogLootRatio']
+#     warFogLootRatio = game_configs.base_config['warFogLootRatio']
     harvest_stone = {}
     harvest_stone.update(normal)
     harvest_stone.update(lucky)
 
     harvest_a = {}
     harvest_b = {}
-    for k, v in harvest_stone.items():
-        if v > 0:
-            harvest_b[k] = int(v * warFogLootRatio)
-            harvest_a[k] = v - harvest_b[k]
-
+#     for k, v in harvest_stone.items():
+#         if v > 0:
+#             harvest_b[k] = int(v * warFogLootRatio)
+#             harvest_a[k] = v - harvest_b[k]
+ 
     prize = []
     prize_num = 0
-    for k, v in harvest_a.items():
+    for k, v in harvest_stone.items():
         if v > 0:
             prize.append({108: [v, v, k]})
             prize_num += v
     logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
                  harvest_stone, harvest_a, harvest_b, prize)
 
-    if not add_stones(player, harvest_b, response):
+    if not add_stones(player, harvest_stone, response):
         response.res.result = False
         response.res.result_no = 824
         logger.debug('add_stones fail!!!!!!')
