@@ -23,8 +23,7 @@ def runt_set_841(data, player):
     args.ParseFromString(data)
     hero_no = args.hero_no
     runt_type = args.runt_type
-    runt_po = args.runt_po
-    runt_no = args.runt_no
+    runt_set_infos = args.runt_set_info
 
     response = RuntSetResponse()
 
@@ -34,41 +33,39 @@ def runt_set_841(data, player):
         response.res.result_no = 837
         return response.SerializeToString()
 
-    res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
+    for runt_set_info in runt_set_infos:
+        runt_po = args.runt_po
+        runt_no = args.runt_no
 
-    response.res.result = res.get('result')
-    if res.get('result_no'):
-        response.res.result_no = res.get('result_no')
-    return response.SerializeToString()
+        if runt_po > game_configs.base_config.get('totemSpaceNum'+str(runt_type)):
+            return {'result': False, 'result_no': 827}
 
+        if hero.runt.get(runt_type):
+            if hero.runt.get(runt_type).get(runt_po):
+                return {'result': False, 'result_no': 821}
+        else:
+            hero.runt[runt_type] = {}
 
-def do_runt_set(hero_no, runt_type, runt_po, runt_no, player):
-    """镶嵌符文"""
+        runt_info = player.runt.m_runt.get(runt_no)
+        if not runt_info:
+            return {'result': False, 'result_no': 825}
 
-    hero = player.hero_component.get_hero(hero_no)
-
-    if runt_po > game_configs.base_config.get('totemSpaceNum'+str(runt_type)):
-        return {'result': False, 'result_no': 827}
-
-    if hero.runt.get(runt_type):
-        if hero.runt.get(runt_type).get(runt_po):
-            return {'result': False, 'result_no': 821}
-    else:
-        hero.runt[runt_type] = {}
-
-    runt_info = player.runt.m_runt.get(runt_no)
-    if not runt_info:
-        return {'result': False, 'result_no': 825}
-
-    hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
-
-    if not player.runt.reduce_runt(runt_no):
-        return {'result': False, 'result_no': 800}
+    for runt_set_info in runt_set_infos:
+        runt_po = args.runt_po
+        runt_no = args.runt_no
+        hero = player.hero_component.get_hero(hero_no)
+        hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
+        player.runt.reduce_runt(runt_no)
 
     hero.save_data()
     player.runt.save()
 
-    return {'result': True, 'result_no': 800}
+    return response.SerializeToString()
+
+
+# def do_runt_set(hero_no, runt_type, runt_po, runt_no, player):
+#     """镶嵌符文"""
+#     pass
 
 
 @remoteserviceHandle('gate')
