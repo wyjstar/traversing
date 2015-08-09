@@ -692,6 +692,11 @@ def trigger_hjqy(player, result):
     if not result:
         return 0
     logger.debug("trigger_hjqy")
+    # 活动是否开启
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_TASK):
+        logger.error("hjqy have not open.")
+        return 0
+
     # 如果已经触发过hjqy，则不触发
     if not remote_gate['world'].is_can_trigger_hjqy_remote(player.base_info.id):
         return 0

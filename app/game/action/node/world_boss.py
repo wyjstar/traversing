@@ -255,6 +255,10 @@ def pvb_fight_start_1705(pro_data, player):
         response.res.result_no = 837
         return response.SerializeToString()
 
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_WORLD_BOSS):
+        response.res.result = False
+        response.res.result_no = 150901
+        return response.SerializeToString()
 
     stage_id = boss.stage_id
     logger.debug("stage_id,%s" % stage_id)

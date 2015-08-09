@@ -97,6 +97,10 @@ def battle_2103(pro_data, player):
     request.ParseFromString(pro_data)
     response = hjqy_pb2.HjqyBattleResponse()
 
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_WORLD_BOSS):
+        response.res.result = False
+        response.res.result_no = 150901
+        return response.SerializeToString()
     boss_id = request.owner_id
     line_up = request.lineup
     attack_type = request.attack_type # 全力一击，普通攻击

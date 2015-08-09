@@ -10,10 +10,11 @@ from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
-from shared.utils.date_util import get_current_timestamp, string_to_timestamp
+from shared.utils.date_util import get_current_timestamp, string_to_timestamp_hms, days_to_current
 import time
 import uuid
 from app.game.core.task import hook_task, CONDITIONId
+from shared.utils.const import const
 
 
 class CharacterBaseInfoComponent(Component):
@@ -139,12 +140,39 @@ class CharacterBaseInfoComponent(Component):
         #     self._pvp_refresh_time = time.time()
         #     self.save_data()
 
-    def is_firstday_from_register(self):
-        tm = time.localtime(self._register_time)
-        local_tm = time.localtime()
-        if local_tm.tm_year == tm.tm_year and local_tm.tm_yday == tm.tm_yday:
+    def is_firstday_from_register(self, feature_type):
+        """
+        feature_type: 功能类型(世界boss， 活跃度， 黄巾起义， 过关斩将)
+        """
+        open_info = None
+        if feature_type == const.OPEN_FEATURE_HJQY:
+            open_info = game_configs.base_config.get("hjqyOpenDay")
+        elif feature_type == const.OPEN_FEATURE_TASK:
+            open_info = game_configs.base_config.get("activityOpenDay")
+        elif feature_type == const.OPEN_FEATURE_WORLD_BOSS:
+            open_info = game_configs.base_config.get("worldbossOpenDay")
+        elif feature_type == const.OPEN_FEATURE_GGZJ:
+            open_info = game_configs.base_config.get("ggzjOpenDay")
+
+        if not open_info:
+            logger.error("open feature next day config error! feature_type %s" % feature_type)
             return True
+        if self.check_open_date(open_info):
+            return False
+        return True
+
+    def check_open_date(self, open_info):
+        logger.debug("open_info============%s" % open_info)
+        days = open_info.keys()[0]
+        ts = open_info.values()[0]
+
+        register_time = self._owner.base_info.register_time
+        if days_to_current(register_time) > days or \
+            (days_to_current(register_time) == days and string_to_timestamp_hms(ts)):
+                return True
         return False
+
+
 
     def addexp(self, exp, reason):
         self._exp += exp

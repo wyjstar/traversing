@@ -223,3 +223,8 @@ const.BOSS_DEAD = 2      # 已死
 const.BOSS_RUN_AWAY = 3  # 逃走
 
 const.ROBOT_NUM = 300
+
+const.OPEN_FEATURE_HJQY = 1 # 黄巾起义
+const.OPEN_FEATURE_TASK = 2 # 任务系统
+const.OPEN_FEATURE_WORLD_BOSS = 3 # 世界boss
+const.OPEN_FEATURE_GGZJ = 4 # 过关斩将

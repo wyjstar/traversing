@@ -355,7 +355,7 @@ def pvp_fight_overcome_1508(data, player):
     line_up = request.lineup
     skill = request.skill
 
-    if player.base_info.is_firstday_from_register():
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_GGZJ):
         response.res.result = False
         response.res.result_no = 150801
         return response.SerializeToString()
@@ -405,7 +405,7 @@ def reset_overcome_time_1509(data, player):
     request.ParseFromString(data)
     response = CommonResponse()
 
-    if player.base_info.is_firstday_from_register():
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_GGZJ):
         response.result = False
         response.result_no = 150901
         return response.SerializeToString()

@@ -56,6 +56,12 @@ def get_task_reward_1822(data, player):
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
+
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_TASK):
+        response.res.result = False
+        response.res.result_no = 150901
+        return response.SerializeToString()
+
     gain_data = gain(player, task_conf.reward, const.TASK)
     get_return(player, gain_data, response.gain)
     player.task._tasks[tid] = 3
