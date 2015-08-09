@@ -150,6 +150,7 @@ def battle_2103(pro_data, player):
     hjqyMeritoriousServiceOpenTime = game_configs.base_config.get("hjqyMeritoriousServiceOpenTime")
     hjqyMeritoriousServiceRate = game_configs.base_config.get("hjqyMeritoriousServiceRate")
     meritorious_service = player.fight_cache_component._get_stage_config().meritorious_service
+    logger.debug("========= %s %s ========"%(is_in_period(hjqyMeritoriousServiceOpenTime), hjqyMeritoriousServiceOpenTime ))
     if is_in_period(hjqyMeritoriousServiceOpenTime): # 增加功勋的活动
         meritorious_service = meritorious_service * hjqyMeritoriousServiceRate
     player.finance.add(const.HJQYCOIN, meritorious_service)

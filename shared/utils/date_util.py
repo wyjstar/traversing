@@ -97,7 +97,7 @@ def is_in_period(periods):
         t1 = item[1].split(':')
         start = get_current_day_timestamp(hour=int(t0[0]), minute=int(t0[1]))
         end = get_current_day_timestamp(hour=int(t1[0]), minute=int(t1[1]))
-        if start < now and now > end:
+        if start < now and now < end:
             return True
     return False
 
