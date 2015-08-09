@@ -281,7 +281,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
                     push_notice(2002, player_name=player.base_info.base_name, hero_no=item_no)
                 after_num = 1
 
-                result.append([type_id, hero_chip_num, item_no])
+                result.append([type_id, 1, item_no])
 
                 tlog_action.log('ItemFlow', player, const.ADD, type_id,
                                 1, item_no, itid, reason,
@@ -368,12 +368,12 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
 
         is_over = False       # 是否累加
         for i in result:
-            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id != const.HERO_CHIP and type_id != const.RUNT and type_id !=const.EQUIPMENT and type_id !=const.HERO):
+            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id != const.HERO_CHIP and type_id != const.RUNT and type_id != const.EQUIPMENT and type_id != const.HERO):
                 i[1] += num
                 is_over = True
                 continue
 
-        if not is_over and type_id !=const.RUNT:
+        if not is_over and type_id !=const.RUNT and type_id != const.HERO and type_id != const.EQUIPMENT:
             result.append([type_id, num, item_no])
 
         # ====tlog======
