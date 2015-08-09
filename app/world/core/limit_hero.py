@@ -19,12 +19,12 @@ def send_reward(act_id):
     for (p_id, integral) in rank_info:
         need_integral = game_configs.base_config. \
             get('CardTimeParticipateInAwards')
-        if integral < need_integral:
+        if int(integral) < need_integral:
             break
         mail_id = get_mail_id(rank, act_id)
-        mail_data, _ = deal_mail(conf_id=mail_id, receive_id=p_id)
+        mail_data, _ = deal_mail(conf_id=mail_id, receive_id=int(p_id))
         for child in childsmanager.childs.values():
-            child.push_message_remote('receive_mail_remote', p_id, mail_data)
+            child.push_message_remote('receive_mail_remote', int(p_id), mail_data)
             break
         rank += 1
 
@@ -58,6 +58,7 @@ def tick_limit_hero():
         return
     limit_hero_obj.act_id = act_data['id']
     need_time = int(act_data['end_time']-time.time())
+    print need_time, 'limit hero end time ============'
     reactor.callLater(need_time, deal_end_act)
 
 
