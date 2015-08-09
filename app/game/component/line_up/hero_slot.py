@@ -62,7 +62,7 @@ class HeroSlotComponent(SlotBaseInfoComponent):
         equipment_ids = self.owner.equipment_nos  # 装备编号
         for no in trigger_list:
             if len('%s' % no) == 5:  # 英雄ID
-                if no not in self.owner.hero_nos:  # 羁绊需要英雄不在阵容中
+                if no not in self.owner.owner.all_lineup_hero_nos:  # 羁绊需要英雄不在阵容中
                     activation = 0
                     break
             elif len('%s' % no) == 6:  # 装备ID

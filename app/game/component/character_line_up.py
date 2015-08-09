@@ -314,6 +314,12 @@ class CharacterLineUpComponent(Component):
         return [hero_obj.hero_no for hero_obj in self.hero_objs if hero_obj]
 
     @property
+    def all_lineup_hero_nos(self):
+        """英雄编号:阵容+助威
+        """
+        return [hero_obj.hero_no for hero_obj in self.hero_objs if hero_obj] + \
+                [line_up_slot.hero_slot.hero_no for line_up_slot in self.sub_slots.values() if line_up_slot.hero_slot and line_up_slot.hero_slot.hero_no]
+    @property
     def hero_levels(self):
         """英雄编号 list
         """
