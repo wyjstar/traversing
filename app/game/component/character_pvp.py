@@ -155,6 +155,8 @@ class CharacterPvpComponent(Component):
 
         self._pvp_arena_players = [rank]
         for v in game_configs.arena_fight_config.values():
+            if v.get('type') != 1:
+                continue
             play_rank = v.get('play_rank')
             if rank in range(play_rank[0], play_rank[1] + 1):
                 para = dict(k=rank)
