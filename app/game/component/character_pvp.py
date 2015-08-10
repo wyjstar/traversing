@@ -142,7 +142,7 @@ class CharacterPvpComponent(Component):
     def pvp_player_rank_refresh(self):
         rank = tb_pvp_rank.zscore(self.owner.base_info.id)
         rank_max = int(tb_pvp_rank.ztotal())
-        if not rank:
+        if not rank or rank_max:
             rank = rank_max
             self._pvp_arena_players = range(rank-9, rank + 1)
             return
@@ -168,6 +168,10 @@ class CharacterPvpComponent(Component):
                     _min = int(x)
                     _max = min(int(y), rank_max)
                     range_nums = range(_min, _max+1)
+                    if not range_nums:
+                        logger.error('pvp rank range error:min:%s max:%s, rank_max:%s',
+                                     _min, _max, rank_max)
+                        continue
                     for _ in range(c):
                         r = random.choice(range_nums)
                         range_nums.remove(r)
