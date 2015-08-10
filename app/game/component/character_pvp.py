@@ -141,9 +141,11 @@ class CharacterPvpComponent(Component):
 
     def pvp_player_rank_refresh(self):
         rank = tb_pvp_rank.zscore(self.owner.base_info.id)
+        rank_max = int(tb_pvp_rank.ztotal())
         if not rank:
-            rank = int(tb_pvp_rank.ztotal())
+            rank = rank_max
             self._pvp_arena_players = range(rank-9, rank + 1)
+            return
 
         if self._pvp_current_rank == rank:
             return
@@ -163,7 +165,9 @@ class CharacterPvpComponent(Component):
                 choose_fields = eval(v.get('choose'), para)
                 logger.info('cur:%s choose:%s', rank, choose_fields)
                 for x, y, c in choose_fields:
-                    range_nums = range(int(x), int(y)+1)
+                    _min = int(x)
+                    _max = min(int(y), rank_max)
+                    range_nums = range(_min, _max+1)
                     for _ in range(c):
                         r = random.choice(range_nums)
                         range_nums.remove(r)
