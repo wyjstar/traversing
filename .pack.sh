@@ -2,6 +2,7 @@
 echo "current branch:"
 git rev-parse --abbrev-ref HEAD
 # make sure
+echo "package type: $1"
 echo -n "version: "
 read version
 
@@ -27,7 +28,7 @@ fi
 echo "mkdir $temp_dir"
 mkdir $temp_dir
 
-for dir in gfirefly gtwisted config test shared app cobar deploy tool sdk appmain.py models.json mgc.config template.json startmaster.py; do
+for dir in gfirefly gtwisted config test shared app cobar deploy tool sdk appmain.py models.json mgc.config template.json startmaster.py kuaiyong_pub.pem; do
     echo "cp -fr $dir $temp_dir"
     cp -fr $dir $temp_dir/
 done
@@ -85,10 +86,12 @@ if [ "$confirm" != "Y" ];then
     exit 0
 fi
 
+echo "echo:" $1
 ftp -n<<!
 open 192.168.1.90 21003
 user server server
 cd server
+cd $1
 bin
 put $package.tar.gz
 put $package.md5

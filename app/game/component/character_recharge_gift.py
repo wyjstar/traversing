@@ -208,25 +208,24 @@ class CharacterRechargeGift(Component):
         充值掉落
         """
         logger.debug("recharge_gain========1")
+        isfirst = 0
+        if not is_tencent:
+            return_data = gain(self._owner, recharge_item.get('setting'),
+                            const.RECHARGE)  # 获取
+            get_return(self._owner, return_data, response.gain)
         if recharge_item.get('type') == 2:
             logger.debug("recharge_gain========")
             rebate_call(self._owner, recharge_item)
             self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
         else:
-            if not is_tencent:
-                return_data = gain(self._owner, recharge_item.get('setting'),
-                                const.RECHARGE)  # 获取
-                get_return(self._owner, return_data, response.gain)
-
             rres = self._owner.base_info.first_recharge(recharge_item, response)
             if rres:
                 #首次充值
                 isfirst = 1
                 self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
-            else:
-                isfirst = 0
-            tlog_action.log('Recharge', self._owner, isfirst,
-                            recharge_item.get('id'))
+
+        tlog_action.log('Recharge', self._owner, isfirst,
+                        recharge_item.get('id'))
 
         charge_num = recharge_item.get('activity') # 充值元宝数量
         # vip
