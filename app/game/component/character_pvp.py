@@ -145,6 +145,7 @@ class CharacterPvpComponent(Component):
         if not rank:
             rank = rank_max
             self._pvp_arena_players = range(rank-9, rank + 1)
+            return
 
         if self._pvp_current_rank == rank:
             return
