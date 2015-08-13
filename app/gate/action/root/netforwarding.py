@@ -25,6 +25,7 @@ def forwarding_remote(key, dynamic_id, data):
     else:
         oldvcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
         if not oldvcharacter:
+            logger.error('cant find player:%s', dynamic_id)
             return
         child_node = GlobalObject().child(oldvcharacter.node)
         result = child_node.callbackChild(key, dynamic_id, data)
