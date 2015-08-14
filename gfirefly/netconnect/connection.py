@@ -36,6 +36,10 @@ class Connection(object):
         self.instance.transport.sessionno = value
 
     @property
+    def ipaddress(self):
+        return self.instance.transport.getAddress()[0]
+
+    @property
     def time_out(self):
         """判断链接是否过期"""
         if time.time() - self.last_heart_beat_time > const.TIME_OUT:
