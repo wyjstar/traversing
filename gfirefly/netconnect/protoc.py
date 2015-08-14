@@ -128,6 +128,9 @@ class LiberateFactory(protocols.ServerFactory):
     def kick(self, msg, pid):
         return self.connmanager.kick(msg, pid)
 
+    def get_ipaddress(self, pid):
+        return self.connmanager.get_ipaddress(pid)
+
     def pushObject(self, topicID, msg, sendList):
         """服务端向客户端推消息
         @param topicID: int 消息的主题id号
