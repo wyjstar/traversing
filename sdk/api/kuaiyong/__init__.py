@@ -3,16 +3,20 @@
 created by sphinx on
 """
 import base64
-from Crypto.PublicKey import RSA
-from Crypto.Signature import PKCS1_v1_5
 from hashlib import md5
 from geventhttpclient import HTTPClient
 from geventhttpclient.url import URL
-from M2Crypto import RSA
+try:
+    from M2Crypto import RSA
+except:
+    pass
 if __name__ != '__main__':
     from gfirefly.server.logobj import logger
 
-pub = RSA.load_pub_key('kuaiyong_pub.pem')
+try:
+    pub = RSA.load_pub_key('kuaiyong_pub.pem')
+except:
+    pass
 
 APP_KEY = '05826e2d277a5d2b1f21464ee6beb599'
 
