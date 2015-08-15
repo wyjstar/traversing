@@ -8,14 +8,13 @@ from Crypto.Signature import PKCS1_v1_5
 from hashlib import md5
 from geventhttpclient import HTTPClient
 from geventhttpclient.url import URL
-from gfirefly.server.logobj import logger
+from M2Crypto import RSA
+if __name__ != '__main__':
+    from gfirefly.server.logobj import logger
 
-# 测试用公钥，请替换为对应游戏的公钥，从快用平台上获取的是无格式的公钥，需要转换
-PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3bYVta6I7Jkonvrv5UOO6KcmewJDY2qvLwp0lVr7g3ASNwx1S8/oTm1CFfbSfDaosZ58MmhVQ+BKepEy3yAN9NEV72cM8C+roI3yXsXzszwCBeCa22Qj6M+twzOfH/7YhAifsm5g1jXSLMWj+c8eNFwzdaAGbHzRvwiKUCUv9BwIDAQAB'
+pub = RSA.load_pub_key('kuaiyong_pub.pem')
 
 APP_KEY = '05826e2d277a5d2b1f21464ee6beb599'
-
-VERIFY_KEY = RSA.importKey(base64.standard_b64decode(PUBLIC_KEY))
 
 KUAIYONG_URL = 'http://f_signin.bppstore.com/loginCheck.php?'
 
@@ -32,9 +31,12 @@ def verify_login(token):
 
 
 def parse_str(code):
-    for _ in code.sqlit('&'):
-        exec(_)
-    return dealseq, fee, payresult
+    result = {}
+    for _ in code.split('&'):
+        kv = _.split('=')
+        result[kv[0]] = kv[1]
+
+    return result
 
 
 def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
@@ -47,50 +49,59 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
     post_sign = base64.standard_b64decode(post_sign)
 
     # 对输入参数根据参数名排序，并拼接为key=value&key=value格式；
-    parametersArray = {}
-
-    parametersArray['notify_data'] = post_notify_data
-    parametersArray['orderid'] = post_orderid
-    parametersArray['dealseq'] = post_dealseq
-    parametersArray['uid'] = post_uid
-    parametersArray['subject'] = post_subject
-    parametersArray['v'] = post_v
-
-    # ksort($parametersArray)
-
-    sourcestr = "?"
-    for key, value in parametersArray:
-        sourcestr += '&%s=%s' % (key, value)
-
-    logger.debug('Raw sign is: %s', sourcestr)
+    # sourcestr = "?" + 'notify_data=' + post_notify_data
+    # sourcestr += '&orderid=' +  post_orderid
+    # sourcestr += '&dealseq=' +  post_dealseq
+    # sourcestr += '&uid=' +  post_uid
+    # sourcestr += '&subject=' +  post_subject
+    # sourcestr += '&v=' +  post_v
+    # logger.debug('Raw sign is: %s', sourcestr)
 
     # 对数据进行验签，注意对公钥做格式转换
-    verifier = PKCS1_v1_5.new(VERIFY_KEY)
-    sig = base64.standard_b64decode(post_sign)
-    verify = verifier.verify(sourcestr, sig)
-
-    logger.debug('Verification result is %s', verify)
-
-    if verify:
-        logger.debug('Failed to verify data')
-        return False
+    # verify = pub.verify(sourcestr, sig)
+    # logger.debug('Verification result is %s', verify)
+    # if verify:
+    #     logger.debug('Failed to verify data')
+    #     return False
 
     # 对加密的notify_data进行解密
-    post_notify_data_decode = base64.standard_b64decode(post_notify_data)
-
-    decode_notify_data = VERIFY_KEY.decrypt(post_notify_data_decode)
+    decode_data = base64.standard_b64decode(post_notify_data)
+    decode_notify_data = pub.public_decrypt(decode_data, RSA.pkcs1_padding)
 
     logger.debug('Notify data decoded as %s', decode_notify_data)
 
-    dealseq, fee, payresult = parse_str(decode_notify_data)
+    result = parse_str(decode_notify_data)
+    dealseq, fee, payresult = result['dealseq'], result['fee'], result['payresult'],
 
     logger.debug('dealseq:%s fee:%s payresult:%s', dealseq, fee, payresult)
 
     # 比较解密出的数据中的dealseq和参数中的dealseq是否一致
-    if dealseq == post_dealseq:
-        logger.debug(" Success")
-        # TODO：开发商根据dealseq将支付结果记录下来，并根据支付结果做相应处理
-        return True
-    else:
-        logger.debug(" Dealseq values did not match")
+    if dealseq != post_dealseq:
+        logger.debug(" Dealseq values did not match:%s-%s",
+                     dealseq, post_dealseq)
         return False
+
+    if payresult != '0':
+        logger.error("recharge fail payresult:%s", payresult)
+        return False
+
+    logger.debug('kuaiyong verify success!')
+    return True
+
+
+if __name__ == '__main__':
+    class Logger:
+        def debug(self, fmt, *arg):
+            print fmt % arg
+    logger = Logger()
+
+    orderid = u'15072310073510103155877'
+    uid = u's55af7268c55bb'
+    v = u'1.0'
+    dealseq = u'2'
+    subject = u'60'
+    notify_data = u'qT5Z0dXYGpsKTpjmopQnpEtoUsBlkNdNxThfaNCI+EPbq72IpfSoUgvWO7n+2tY8uMO8LVitMn7e0B/60zYTiHGE3U80G+LgYIc2SH1fyFxbT3PAUz60PIUWJ/Wp2LPjjU7NW9zhIukGgsUg+KGYrCe6LV6aKwi2G9LQzJwOfVs='
+    sign = u'C0v1ftibEFJ45Dzh+21y4fboA3HirFFcNunuq/RgZ5C0F7cFysyeJp6nTqc4YgatxpADnbQZhm57p9B9jrI69dx8kzJZlpgYSt+xdg1ydXrPj/HUDhoN/ESZ0f/aNOomv+fvE/a7qpnwklsqy0S9Tf0EBCSVlwEhS11EboAJCOU='
+
+    recharge_verify(sign, notify_data, orderid, dealseq,
+                    uid, subject, v)
