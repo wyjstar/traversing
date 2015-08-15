@@ -403,6 +403,14 @@ def stage_sweep(stage_id, times, player, sweep_type):
         fight_cache_component.stage_id = stage_id
         red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
+        is_open = 0
+        act_confs = game_configs.activity_config.get(27, [])
+        part_multiple = []
+        for act_conf in act_confs:
+            if player.base_info.is_activiy_open(act_conf.id):
+                is_open = 1
+                part_multiple = [act_conf.parameterC, act_conf.parameterA]
+                break
         for _ in range(times):
             drop = []
             drops = response.drops.add()
@@ -419,7 +427,11 @@ def stage_sweep(stage_id, times, player, sweep_type):
             elite_drop = elite_bag.get_drop_items()
             drop.extend(elite_drop)
 
-            data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
+            if is_open:
+                data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id, part_multiple=part_multiple)
+            else:
+                data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
+            # data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
             get_return(player, data, drops)
 
             # 乱入武将按概率获取碎片
@@ -466,7 +478,8 @@ def stage_sweep(stage_id, times, player, sweep_type):
         player.base_info.save_data()
         player.finance.save_data()
 
-    player.pay.pay(need_gold, func)
+    # player.pay.pay(need_gold, func)
+    func()
 
     #触发黄巾起义
     response.hjqy_stage_id = trigger_hjqy(player, result, times)

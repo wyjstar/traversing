@@ -252,27 +252,40 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
             after_num = player.item_package.get_item(item_no).num
 
         elif type_id == const.HERO:
-            if player.hero_component.contain_hero(item_no):
+            is_have = player.hero_component.contain_hero(item_no)
+            if not is_have:
+                num -= 1
+            if num != 0:
                 # 已经存在该武将，自动转换为武将碎片
                 # 获取hero对应的hero_chip_no, hero_chip_num
                 hero_chip_config_item = game_configs.chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
-                hero_chip_num = hero_chip_config_item.needNum
+                hero_chip_num = hero_chip_config_item.needNum * num
 
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)
                 player.hero_chip_component.save_data()
                 type_id = const.HERO_CHIP
-                item_no = hero_chip_no
-                num = hero_chip_num
-                after_num = player.hero_chip_component.get_chip(item_no).num
-            else:
+                after_num = player.hero_chip_component.get_chip(hero_chip_no).num
+
+                result.append([type_id, hero_chip_num, hero_chip_no])
+
+                tlog_action.log('ItemFlow', player, const.ADD, type_id,
+                                hero_chip_num, hero_chip_no, itid, reason,
+                                after_num, event_id)
+            if not is_have:
                 hero = player.hero_component.add_hero(item_no)
                 notice_item = game_configs.notes_config.get(2002)
                 logger.debug("=================%s %s %s" % (reason, hero.hero_info.quality, notice_item.parameter1))
                 if reason == const.SHOP_DRAW_HERO and hero.hero_info.quality in notice_item.parameter1:
                     push_notice(2002, player_name=player.base_info.base_name, hero_no=item_no)
                 after_num = 1
+
+                result.append([type_id, hero_chip_num, item_no])
+
+                tlog_action.log('ItemFlow', player, const.ADD, type_id,
+                                1, item_no, itid, reason,
+                                after_num, event_id)
 
         elif type_id == const.BIG_BAG:
             big_bag = BigBag(item_no)
@@ -282,21 +295,30 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
             return result
 
         elif type_id == const.EQUIPMENT:
-            equipment = player.equipment_component.add_equipment(item_no)
-            itid = item_no
-            item_no = equipment.base_info.id
-            after_num = player.equipment_component.get_equipment_num(itid)
-            notice_item = game_configs.notes_config.get(2004)
-            if reason == const.COMMON_BUY_PVP and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(2004, player_name=player.base_info.base_name, equipment_no=itid)
+            for _ in range(num):
+                equipment = player.equipment_component.add_equipment(item_no)
+                itid = item_no
+                item_no = equipment.base_info.id
+                after_num = player.equipment_component.get_equipment_num(itid)
+                notice_item = game_configs.notes_config.get(2004)
+                if reason == const.COMMON_BUY_PVP and equipment.equipment_config_info.quality in notice_item.parameter1:
+                    push_notice(2004, player_name=player.base_info.base_name, equipment_no=itid)
 
-            notice_item = game_configs.notes_config.get(2005)
-            if reason ==const.COMMON_BUY_MELT and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(2005, player_name=player.base_info.base_name, equipment_no=itid)
+                notice_item = game_configs.notes_config.get(2005)
+                if reason ==const.COMMON_BUY_MELT and equipment.equipment_config_info.quality in notice_item.parameter1:
+                    push_notice(2005, player_name=player.base_info.base_name, equipment_no=itid)
 
-            notice_item = game_configs.notes_config.get(2006)
-            if reason == const.COMMON_BUY_EQUIPMENT and equipment.equipment_config_info.quality in notice_item.parameter1:
-                push_notice(2006, player_name=player.base_info.base_name, equipment_no=itid)
+                notice_item = game_configs.notes_config.get(2006)
+                if reason == const.COMMON_BUY_EQUIPMENT and equipment.equipment_config_info.quality in notice_item.parameter1:
+                    push_notice(2006, player_name=player.base_info.base_name, equipment_no=itid)
+
+                result.append([type_id, 1, item_no])
+
+                a = itid
+                itid = item_no
+                item_no = a
+                tlog_action.log('ItemFlow', player, const.ADD, type_id, 1,
+                                item_no, itid, reason, after_num, event_id)
 
         elif type_id == const.EQUIPMENT_CHIP:
             chip = EquipmentChip(item_no, num)
@@ -346,7 +368,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
 
         is_over = False       # 是否累加
         for i in result:
-            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id !=const.HERO_CHIP and type_id !=const.RUNT):
+            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id != const.HERO_CHIP and type_id != const.RUNT and type_id !=const.EQUIPMENT and type_id !=const.HERO):
                 i[1] += num
                 is_over = True
                 continue
@@ -355,11 +377,11 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
             result.append([type_id, num, item_no])
 
         # ====tlog======
-        if type_id in [const.EQUIPMENT, const.RUNT]:
+        if type_id in [const.RUNT]:
             a = itid
             itid = item_no
             item_no = a
-        if type_id != const.TEAM_EXPERIENCE:
+        if type_id != const.TEAM_EXPERIENCE and type_id != const.EQUIPMENT and type_id != const.HERO:
             tlog_action.log('ItemFlow', player, const.ADD, type_id, num,
                             item_no, itid, reason, after_num, event_id)
         # ==============
