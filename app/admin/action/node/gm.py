@@ -66,8 +66,11 @@ def gm():
 
 
 def update_server_list(args):
-    url = args['server_list_url']
-    urllib.urlretrieve(url, '/tmp/server_list.json')
+    dataversion = args['dataversion']
+    dataversion = json.loads(dataversion)
+    with open('/tmp/server_list.json', 'w') as f:
+        json.dump(dataversion, f)
+
     os.system("cp /tmp/server_list.json server_list.json")
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
