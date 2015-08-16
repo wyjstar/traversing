@@ -115,7 +115,7 @@ class WorldBoss(BaseBoss):
 
     def update_lucky_hero(self):
         # 初始化幸运武将
-        logger.debug("update lucky hero: start %s, end %s" % (self._lucky_hero_start, self._lucky_hero_end))
+        #logger.debug("update lucky hero: start %s, end %s" % (self._lucky_hero_start, self._lucky_hero_end))
         #current = time.time()
         #if not self.is_next_lucky_hero(current):
             #return
@@ -154,8 +154,8 @@ class WorldBoss(BaseBoss):
                 items[k] = v
                 self._lucky_hero_start = start
                 self._lucky_hero_end = end
-        if len(items) != 6:
-            logger.error("config error! lucky heros num not enough!")
+        #if len(items) != 6:
+            #logger.error("config error! lucky heros num not enough!")
         return items
 
 
