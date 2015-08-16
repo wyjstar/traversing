@@ -21,7 +21,9 @@ def get_sign_in_1400(pro_data, player):
     """获取签到初始化信息"""
     response = GetSignInResponse()
     sign_in_component = player.sign_in_component
+    logger.debug("get_sign_in %s" % sign_in_component.sign_round)
     sign_in_component.clear_sign_days()
+    logger.debug("get_sign_in %s" % sign_in_component.sign_round)
     [response.days.append(i) for i in sign_in_component.sign_in_days]
     response.sign_round = sign_in_component.sign_round
     response.current_day = sign_in_component.current_day()

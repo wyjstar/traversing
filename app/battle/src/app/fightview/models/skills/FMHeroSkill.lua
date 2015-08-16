@@ -43,7 +43,7 @@ function FMHeroSkill:set_after_skill_buffs(is_hit, is_mp_skill)
     local temp = {}
 
     print("has_treat_skill:", self:has_treat_skill(is_mp_skill), is_mp_skill, self.unit_no)
-    table.print(self._break_skill_buffs[9])
+    -- table.print(self._break_skill_buffs[9])
     if self:has_treat_skill(is_mp_skill) and self._break_skill_buffs[9] then
         table.insertTo(temp, self._break_skill_buffs[9])
     end
@@ -79,7 +79,7 @@ function FMHeroSkill:get_back_skill_buffs(is_hit, is_block)
 
     for i=len,1,-1 do
         local buff = self._break_skill_buffs["back"][i]
-        table.print(buff)
+        -- table.print(buff)
         print("trigger_type:"..buff.trigger_type..buff.skill_buff_info.id)
 
         if buff.trigger_type == 4 then
@@ -102,7 +102,7 @@ end
 
 function FMHeroSkill:set_break_skill_ids(value)
     print("FMHeroSkill:set_break_skill_ids==========")
-    table.print(value)
+    -- table.print(value)
     self._break_skill_buffs["back"] = {}
     for _,id in pairs(value) do
         local skill_info = self.soldierTemplate:getSkillTempLateById(id)

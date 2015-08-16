@@ -50,6 +50,8 @@ function FightProcess:init(fight_type)
     self.fight_type = fight_type
     self.dropNum = 3
     self.red_units, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
+    self.redAtkArray = self:get_atk_array(self.red_units, self.red_unpara_skill) -- 用来计算无双值
+    print("==========redAtkArray", self.redAtkArray)
     self:init_round()
     self.blue_units = self.blue_groups[self.current_round]
     --总回合数
@@ -59,6 +61,18 @@ function FightProcess:init(fight_type)
     self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
     -- self.buddy_skill.mp_step = 50
+end
+
+function FightProcess:get_atk_array(units, unpara_skill)
+    local nos = unpara_skill:get_hero_nos()
+    local atk_array = 0
+    for k,v in pairs(units) do
+        if table.inv(nos, v.origin_no) then
+            print("*********", v:get_atk(), v.origin_no, v.no)
+            atk_array = atk_array + v:get_atk()
+        end
+    end
+    return atk_array
 end
 
 function FightProcess:init_round()
@@ -187,7 +201,7 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
 
     print("2===========")
     print("main skill buff +++++++++")
-    table.print(main_skill_buff)
+    -- table.print(main_skill_buff)
 
     local main_target_units, main_target_side, viewMainTargetPos = find_target_units(main_skill_buff)  -- 主技能作用目标
 
@@ -223,14 +237,14 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     end
     -- 2.主技能释放前，触发的buff
     print("before_skill_buffs+++++")
-    table.print(skill:get_before_skill_buffs())
+    -- table.print(skill:get_before_skill_buffs())
     for _, skill_buff_info in pairs(skill:get_before_skill_buffs()) do
         self:before_or_after_skill(skill_buff_info, main_target_units)
     end
 
     -- 3.触发攻击技能
     print("attack_skill_buffs+++++")
-    table.print(skill:attack_skill_buffs(is_mp_skill))
+    -- table.print(skill:attack_skill_buffs(is_mp_skill))
     for _, skill_buff_info in pairs(skill:attack_skill_buffs(is_mp_skill)) do
         local temp_buff = {}
         if skill_buff_info.skill_key == 1 then

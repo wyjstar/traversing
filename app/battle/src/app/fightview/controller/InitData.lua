@@ -477,7 +477,6 @@ function constructBattleUnit(data, side)
     unit.no = data.no
     unit.hp = data.hp
     print("world boss hp", unit.hp, unit.hp_max)
-    unit.hp = data.hp
     --unit.hp_max = data.hp_max
     unit.hp_max = data.hp_max
     unit.atk = data.atk
@@ -528,8 +527,7 @@ function constructBattleUnit(data, side)
         unit.unit_type = UNIT_TYPE_HERO
         if not SERVER_CODE then
             local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
-            
-            if unit.is_break then --乱入前武将图片
+            if unit.is_break or unit.is_awake then --乱入前武将图片
                 local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no)
                 unit.originPictureName = originPictureName
             end
@@ -575,7 +573,7 @@ end
 function constructUnparaSkill(uparaId, level, HOMES, side, viewPos)
     local uparaInfo = instanceTemplate:getWSInfoById(uparaId)
     print("constructUnparaSkill=============", uparaId)
-    table.print(uparaInfo)
+    -- table.print(uparaInfo)
     --print(level)
     --print("p+++")
     local base_info = baseTemplate:getBaseInfoById("wushang_value_config")

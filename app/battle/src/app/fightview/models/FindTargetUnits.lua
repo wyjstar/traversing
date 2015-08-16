@@ -180,7 +180,7 @@ function find_target_units(skill_buff_info, main_target_units, viewMainTargetPos
     --local attacker = skill_buff_info
     local attacker = process.attacker
     local target_pos = skill_buff_info.effectPos
-    table.print(target_pos)
+    -- table.print(target_pos)
     local key = 0
     local value = 0
     for k, v in pairs(target_pos) do

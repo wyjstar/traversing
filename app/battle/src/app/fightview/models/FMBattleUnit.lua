@@ -46,6 +46,13 @@ function FMBattleUnit:set_hp(value)
     end
 end
 
+--[[--
+    返回最大的血量
+]]
+function FMBattleUnit:get_hp_max()
+    return self.hp_max
+end
+
 function FMBattleUnit:get_hp_percent()
     print("hp",self.hp,"hp_max",self.hp_max)
     return (self.hp / self.hp_max)*100

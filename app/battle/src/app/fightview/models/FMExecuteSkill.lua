@@ -182,10 +182,10 @@ end
 
 -- 无双值
 function unpara(attacker_side, target, buff_info, playerLevel, extra_msgs)
-    local atkArray = 0
-    for _,v in pairs(attacker_side) do
-        atkArray = atkArray + v.atk
-    end
+    local atkArray = process.redAtkArray
+    --for _,v in pairs(attacker_side) do
+        --atkArray = atkArray + v.atk
+    --end
     local warriorsDamage = getFormulaTemplate():getFunc("warriorsDamage")(atkArray, target:get_physical_def(), target:get_magic_def())
     local warriorsLastDamage = getFormulaTemplate():getFunc("warriorsLastDamage")(warriorsDamage, buff_info, playerLevel)
     warriorsLastDamage = addDamageRate(warriorsLastDamage)

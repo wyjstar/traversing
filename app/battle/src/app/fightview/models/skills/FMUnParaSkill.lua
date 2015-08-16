@@ -60,20 +60,24 @@ function FMUnParaSkill:get_skill_nos()
 end
 
 function FMUnParaSkill:get_hero_num()
+    return table.nums(self:get_hero_nos())
+end
+
+function FMUnParaSkill:get_hero_nos()
     local item = self.unpara_info
     if item == nil then
-        return 0
+        return {}
     end
 
-    local tempIndex = 0
+    local nos = {}
     for i = 1, 6 do
         local name = "condition" .. i
         local conditionValue = item[name]
         if conditionValue ~= 0 then
-            tempIndex = tempIndex + 1
+            table.insert(nos, conditionValue)
         end
     end
-    return tempIndex
+    return nos
 end
 
 function FMUnParaSkill:is_full()

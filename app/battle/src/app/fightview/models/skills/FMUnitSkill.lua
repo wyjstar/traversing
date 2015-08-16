@@ -26,7 +26,7 @@ function FMUnitSkill:ctor(unit, unit_info, mp_info)
     print("main_normal_skill_buff==========="..self.unit_no)
     if self.unit_no == 10048 then
         print("main_normal_skill_buff===========")
-        table.print(self.main_normal_skill_buff)
+        -- table.print(self.main_normal_skill_buff)
     end
     
 
@@ -52,7 +52,7 @@ function FMUnitSkill:get_skill_buff(skill_buff_ids)
         end
     end
     print("has_treat_skill_buff:", has_treat_skill_buff)
-    table.print(skill_buff_ids)
+    -- table.print(skill_buff_ids)
     return main_skill_buff, attack_skill_buffs, has_treat_skill_buff
 end
 
