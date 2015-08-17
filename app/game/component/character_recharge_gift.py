@@ -82,9 +82,10 @@ class CharacterRechargeGift(Component):
             begin = time.mktime(time.strptime(begin, '%Y-%m-%d %H:%M:%S'))
             end = time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S'))
 
-            if _time_now < begin and _time_now > end:
+            if _time_now < begin or _time_now > end:
                 logger.debug('activity:%s not in time:now%s:begin:%s:end:%s',
                              activity_id, _time_now, begin, end)
+                return
 
         gift_type = activity.get('type')
         if gift_type == 7:  # first time recharge
