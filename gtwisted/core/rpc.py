@@ -15,6 +15,7 @@ import gevent
 import struct
 import rpc_pb2
 import marshal
+import traceback
 
 
 ASK_SIGNAL = "ASK"  # 请求结果的信号
@@ -53,11 +54,11 @@ def _write_parameter(proto, arg):
         proto.python_param = marshal.dumps(arg)
     else:
         print 'error type < '*30, type(arg), arg
+        traceback.print_stack()
 
 
 def _read_parameter(proto):
     if len(proto.ListFields()) < 1:
-        import traceback
         traceback.print_stack()
     desc, arg = proto.ListFields()[0]
     if desc.name == 'is_null':
@@ -142,6 +143,7 @@ class PBProtocl(BaseProtocol):
 
         if kw:
             print 'rpc kw para'*10, kw
+            traceback.print_stack()
 
         # request.args = str(args)
         # request.kw = str(kw)
