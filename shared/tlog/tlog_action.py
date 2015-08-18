@@ -8,7 +8,7 @@ from gfirefly.server.globalobject import GlobalObject
 import time
 
 game_server_id = GlobalObject().allconfig['server_no']
-game_app_id = 1
+game_app_id = GlobalObject().allconfig['msdk']['appid']
 plat_id = 1
 
 

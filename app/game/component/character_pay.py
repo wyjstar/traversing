@@ -27,7 +27,8 @@ class CharacterPay(Component):
         self._appid = ""
         self._pf = ""
         self._pfkey = ""
-        self._zoneid = 0
+        self._zoneid = GlobalObject().allconfig.get('server_no')
+
         self.loop_times = 0
         if 'deploy' not in GlobalObject().allconfig:
             self.REMOTE_DEPLOYED = False
@@ -44,7 +45,7 @@ class CharacterPay(Component):
         self._appkey = str(value.get("appkey"))
         self._pf = str(value.get("pf"))
         self._pfkey = str(value.get("pfkey"))
-        self._zoneid = str(value.get("zoneid"))
+        #self._zoneid = str(value.get("zoneid"))
         if self.REMOTE_DEPLOYED:
             self.get_balance() # 登录时从tx拉取gold
 
