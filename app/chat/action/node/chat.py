@@ -9,6 +9,10 @@ from app.proto_file import chat_pb2
 from app.chat.service.node.chatgateservice import noderemote
 from shared.utils import trie_tree
 from shared.db_opear.configs_data import game_configs
+from gfirefly.dbentrust.redis_mode import RedisObject
+
+
+tb_character_info = RedisObject('tb_character_info')
 
 
 @nodeservice_handle
@@ -37,11 +41,11 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
     if content:
         content1 = trie_tree.check.replace_bad_word(content.encode("utf-8"))
     if content != content1:
-        if chater.say_bad_words_times() >= game_configs.base_config.get('StopTalkNeedTimes'):
+        if chater.say_bad_words_times()+1 >= game_configs.base_config.get('StopTalkNeedTimes'):
             chater.clear_say_bad_words()
             gag_time = int(time.time()) + game_configs.base_config.get('StopTalkTime')*60
             chater.gag_time = gag_time
-            char_obj = tb_character_info.getObj(self._character_id)
+            char_obj = tb_character_info.getObj(character_id)
             char_obj.hset('gag', gag_time)
             return {'result': False, 'result_no': 836, 'gag_time': chater.gag_time}  # 已被禁言867
         else:
