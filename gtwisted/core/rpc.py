@@ -31,7 +31,7 @@ def _write_parameter(proto, arg):
         proto.bool_param = arg
     elif isinstance(arg, unicode):
         proto.string_param = arg
-    elif isinstance(arg, int):
+    elif isinstance(arg, int) or isinstance(arg, long):
         proto.int_param = arg
     elif isinstance(arg, float):
         proto.float_param = arg
@@ -52,13 +52,12 @@ def _write_parameter(proto, arg):
     elif isinstance(arg, dict):
         proto.python_param = marshal.dumps(arg)
     else:
-        print 'error type < '*30, type(arg), arg
+        logger.error('error type:%s arg:%s', type(arg), arg)
 
 
 def _read_parameter(proto):
     if len(proto.ListFields()) < 1:
-        import traceback
-        traceback.print_stack()
+        logger.error('error read para:%s', len(proto.ListFields()))
     desc, arg = proto.ListFields()[0]
     if desc.name == 'is_null':
         return None
@@ -141,7 +140,7 @@ class PBProtocl(BaseProtocol):
             _write_parameter(para, arg)
 
         if kw:
-            print 'rpc kw para'*10, kw
+            logger.error('rpc kw para:%s', kw)
 
         # request.args = str(args)
         # request.kw = str(kw)
@@ -152,7 +151,7 @@ class PBProtocl(BaseProtocol):
         """
         _length = len(data)
         if _length > RPC_DATA_MAX_LENGTH:
-            print _length, 'len=-='*12
+            logger.error('length error:%s', _length)
             raise RPCDataTooLongError
         self.transport.sendall(struct.pack("!i", _length)+data)
 

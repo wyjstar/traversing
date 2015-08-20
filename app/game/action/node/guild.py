@@ -519,8 +519,9 @@ def do_del_player_apply(p_id, apply_guilds, guild_id):
         guild_data = tb_guild_info.getObj(g_id).hgetall()
         guild_obj = Guild()
         guild_obj.init_data(guild_data)
-        guild_obj.apply.remove(p_id)
-        guild_obj.save_data()
+        if p_id in guild_obj.apply:
+            guild_obj.apply.remove(p_id)
+            guild_obj.save_data()
 
 
 @remoteserviceHandle('gate')

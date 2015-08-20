@@ -20,6 +20,7 @@ from shared.utils import trie_tree
 from app.game.core.stage.stage import Stage
 from shared.db_opear.configs_data import game_configs
 import zipfile
+from app.proto_file.account_pb2 import AccountKick
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -85,7 +86,9 @@ def update_excel(args):
         url = args['excel_url']
     else:
         logger.error("excel_url not exists!!!")
-        url="http://192.168.1.60:2600/static/upload/server_cfg_1435338130"
+        # url="http://192.168.1.60:2600/static/upload/server_cfg_1435338130"
+        return {'success': 0, 'message': 1}
+
     res = urllib.urlretrieve(url, '/tmp/config.zip')
     print res
     print("update_excell=========2")
@@ -95,6 +98,14 @@ def update_excel(args):
 
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
+
+    # 通知客户端下线更新
+    if int(args['force_client_update']):
+        response = AccountKick()
+        response.id = 3
+        remote_gate.push_notice_remote(11,
+                                       response.SerializeToString())
+
     return {"success": 1}
 
 
