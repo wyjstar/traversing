@@ -43,14 +43,14 @@ class CharacterRechargeGift(Component):
             if activity is None:
                 del self._recharge[activity_id]
                 continue
-            if not activity.get('is_open'):
-                del self._recharge[activity_id]
-                continue
+            # if not activity.get('is_open'):
+            #     del self._recharge[activity_id]
+            #     continue
 
     def charge(self, recharge):
-        #保存首次充值id
-        #vip
-        #活动
+        # 保存首次充值id
+        # vip
+        # 活动
         for gift_type in RECHARGE_GIFT_TYPE:
             activitys = game_configs.activity_config.get(gift_type)
             if activitys is None:
@@ -59,14 +59,15 @@ class CharacterRechargeGift(Component):
             for activity in activitys:
                 self.type_process(activity, recharge)
 
+        self.save_data()
         logger.debug(self._recharge)
 
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
-        isopen = activity.get('is_open')
-        if isopen != 1:
-            logger.debug('activity:%s is not open', activity_id)
-            return
+        # isopen = activity.get('is_open')
+        # if isopen != 1:
+        #     logger.debug('activity:%s is not open', activity_id)
+        #     return
 
         _time_now_struct = time.gmtime()
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,

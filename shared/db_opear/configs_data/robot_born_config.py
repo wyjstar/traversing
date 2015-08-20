@@ -13,7 +13,6 @@ class RobotBornConfig(object):
     def parser(self, config_value):
         for row in config_value:
             item = CommonItem(row)
-            if item.get('group') == 1:
-                self._items[item.id] = item
+            self._items[item.id] = item
 
         return self._items
