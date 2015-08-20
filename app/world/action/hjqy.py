@@ -97,7 +97,7 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
 
     if boss.get_state() == const.BOSS_DEAD: # 击杀boss
         # send last kill reward mail
-        hjqyKillBossReward = game_configs.base_config.get("hjqyKillBossReward")
+        hjqyKillBossReward = game_configs.base_config.get("hjqyKillBossRewardID")
         mail_data, _ = deal_mail(conf_id=hjqyKillBossReward, receive_id=int(player_id))
         remote_gate = GlobalObject().child('gate')
         remote_gate.push_message_to_transit_remote('receive_mail_remote',

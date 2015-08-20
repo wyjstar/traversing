@@ -5,7 +5,7 @@ import json
 
 from gevent import monkey
 
-monkey.patch_os()
+monkey.patch_all()
 
 CONFIG_FILE = 'config.json'
 DEFAULT_JSON = dict(server_name='local',
