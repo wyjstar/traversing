@@ -42,6 +42,7 @@ def server_login_2(command_id, dynamic_id, request_proto):
         # print account_id
         if account_id == 0:
             account_response.result = False
+            account_response.message = '2'
         else:
             account_response.result = __manage_user(uuid,
                                                     account_id,
