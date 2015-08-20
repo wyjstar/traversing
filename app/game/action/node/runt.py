@@ -33,9 +33,10 @@ def runt_set_841(data, player):
         response.res.result_no = 837
         return response.SerializeToString()
 
+    hero = player.hero_component.get_hero(hero_no)
     for runt_set_info in runt_set_infos:
-        runt_po = args.runt_po
-        runt_no = args.runt_no
+        runt_po = runt_set_info.runt_po
+        runt_no = runt_set_info.runt_no
 
         if runt_po > game_configs.base_config.get('totemSpaceNum'+str(runt_type)):
             return {'result': False, 'result_no': 827}
@@ -51,15 +52,15 @@ def runt_set_841(data, player):
             return {'result': False, 'result_no': 825}
 
     for runt_set_info in runt_set_infos:
-        runt_po = args.runt_po
-        runt_no = args.runt_no
-        hero = player.hero_component.get_hero(hero_no)
+        runt_po = runt_set_info.runt_po
+        runt_no = runt_set_info.runt_no
         hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
         player.runt.reduce_runt(runt_no)
 
     hero.save_data()
     player.runt.save()
 
+    response.res.result = True
     return response.SerializeToString()
 
 

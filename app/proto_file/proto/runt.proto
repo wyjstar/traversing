@@ -12,7 +12,7 @@ message RuntSetResponse{
 }
 
 message RuntSetInfo{
-    required int32 hero_no = 1;
+    required bytes runt_no = 1;
     required int32 runt_po = 2;
 }
 
