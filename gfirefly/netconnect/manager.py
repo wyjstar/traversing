@@ -9,6 +9,7 @@ from app.proto_file.account_pb2 import AccountKick
 from gfirefly.server.logobj import logger
 from connection import Connection
 from shared.utils.const import const
+import traceback
 import collections
 import gevent
 
@@ -135,18 +136,20 @@ class ConnectionManager:
         self.__write_data(connection, topic_id, msg)
 
     def __write_data(self, connection, topic_id, msg):
-        connection_id = connection.dynamic_id
+        # connection_id = connection.dynamic_id
         try:
-
             connection.safeToWriteData(topic_id, msg)
         except Exception, e:
-            e = "%s, %s:%s" % (e, topic_id, msg)
             logger.exception(e)
-            self.dropConnectionByID(connection_id)
-            dynamic_id = connection.transport.sessionno
-            if dynamic_id != 0:
-                remote_gate = GlobalObject().remote['gate']
-                remote_gate.net_conn_lost_remote_noresult(dynamic_id)
+            e = "%s, %s:%s" % (e, topic_id, msg)
+            logger.error(e)
+            # self.dropConnectionByID(connection_id)
+            # dynamic_id = connection.transport.sessionno
+            # if dynamic_id != 0:
+            #     remote_gate = GlobalObject().remote['gate']
+            #     remote_gate.net_conn_lost_remote_noresult(connection_id)
+        except:
+            logger.error(traceback.format_exc())
 
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息"""
