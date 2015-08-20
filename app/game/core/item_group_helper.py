@@ -265,10 +265,9 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
                 player.hero_chip_component.add_chip(hero_chip)
                 player.hero_chip_component.save_data()
-                type_id = const.HERO_CHIP
                 after_num = player.hero_chip_component.get_chip(hero_chip_no).num
 
-                result.append([type_id, hero_chip_num, hero_chip_no])
+                result.append([const.HERO_CHIP, hero_chip_num, hero_chip_no])
 
                 tlog_action.log('ItemFlow', player, const.ADD, type_id,
                                 hero_chip_num, hero_chip_no, itid, reason,
