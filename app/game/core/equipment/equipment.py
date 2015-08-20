@@ -158,15 +158,16 @@ def rand_pick_attr(attr):
 class Equipment(object):
     """装备 """
 
-    def __init__(self, character_id, equipment_id, equipment_name, equipment_no,
-                 strengthen_lv=1, awakening_lv=1, _enhance_info=0,
+    def __init__(self, character_id, equipment_id, equipment_name,
+                 equipment_no,
+                 strengthen_lv=1, awakening_lv=1, _enhance_info=None,
                  nobbing_effect={}, is_guard=False, main_attr={},
                  minor_attr={}, prefix=0, attr_id=0):
 
-        # logger.debug("enhance_info========== %s" % _enhance_info)
-        if _enhance_info == 0:
-            _enhance_info = []
-        # logger.debug("enhance_info========== %s" % _enhance_info)
+        _enhance_info = _enhance_info if _enhance_info else []
+        nobbing_effect = nobbing_effect if nobbing_effect else {}
+        main_attr = main_attr if main_attr else {}
+        minor_attr = minor_attr if minor_attr else {}
         self._character_id = character_id
         self._base_info = EquipmentBaseInfoComponent(self,
                                                      equipment_id,

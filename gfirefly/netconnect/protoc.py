@@ -104,9 +104,10 @@ class LiberateFactory(protocols.ServerFactory):
         if commandID == 88:
             _id = conn.transport.sessionno
             connection = self.connmanager.getConnectionByID(_id)
-            connection.set_time()
+            if connection:
+                connection.set_time()
             print "+++++++++++++++++++++++++++++88++++++++++++++++++++++++"
-            #return 'I am the 88 return.'
+            # return 'I am the 88 return.'
         response = self.service.callTarget(commandID, conn, data)
 
         return response

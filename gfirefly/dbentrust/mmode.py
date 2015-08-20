@@ -42,13 +42,13 @@ class MMode(MemObject):
     """内存数据模型，最终对应到的是表中的一条记录
     """
 
-    def __init__(self, name, pk, data={}):
+    def __init__(self, name, pk, data=None):
         """
         """
         MemObject.__init__(self, name, mclient)
         self._state = MMODE_STATE_ORI  # 对象的状态 0未变更  1新建 2更新 3删除
         self._pk = pk
-        self.data = data
+        self.data = data if data else {}
         self._time = time.time()
 
     def update(self, key, values):
