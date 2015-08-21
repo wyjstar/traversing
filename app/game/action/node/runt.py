@@ -39,17 +39,23 @@ def runt_set_841(data, player):
         runt_no = runt_set_info.runt_no
 
         if runt_po > game_configs.base_config.get('totemSpaceNum'+str(runt_type)):
-            return {'result': False, 'result_no': 827}
+            response.res.result = False
+            response.res.result_no = 827
+            return response.SerializeToString()
 
         if hero.runt.get(runt_type):
             if hero.runt.get(runt_type).get(runt_po):
-                return {'result': False, 'result_no': 821}
+                response.res.result = False
+                response.res.result_no = 821
+                return response.SerializeToString()
         else:
             hero.runt[runt_type] = {}
 
         runt_info = player.runt.m_runt.get(runt_no)
         if not runt_info:
-            return {'result': False, 'result_no': 825}
+            response.res.result = False
+            response.res.result_no = 825
+            return response.SerializeToString()
 
     for runt_set_info in runt_set_infos:
         runt_po = runt_set_info.runt_po
@@ -307,5 +313,4 @@ def build_runt_846(data, player):
     player.finance.save_data()
 
     response.res.result = True
-    print response
     return response.SerializeToString()
