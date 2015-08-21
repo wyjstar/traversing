@@ -69,7 +69,7 @@ class CharacterRechargeGift(Component):
         #     logger.debug('activity:%s is not open', activity_id)
         #     return
 
-        _time_now_struct = time.gmtime()
+        _time_now_struct = time.localtime()
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
                                           _time_now_struct.tm_mon,
                                           _time_now_struct.tm_mday)
@@ -123,7 +123,7 @@ class CharacterRechargeGift(Component):
 
     def get_data(self, response):
         print self._recharge, type(self._recharge)
-        _time_now_struct = time.gmtime()
+        _time_now_struct = time.localtime()
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
                                           _time_now_struct.tm_mon,
                                           _time_now_struct.tm_mday)
