@@ -110,14 +110,14 @@ function execute_demage(attacker, target, buff_info, is_block, is_cri, extra_msg
     target:set_hp(target:get_hp() - actual_demage)
 
     local m1 = ""
-    m1 = m1.."是否暴击:"..tostring(is_cri)
-    m1 = m1.."--是否格挡:"..tostring(is_block)
-    m1 = m1.."--基础伤害值:"..tostring(base_demage_value).."("..tostring(k1).."-"..tostring(k2).."-"..tostring(attacker.level)..")"
-    m1 = m1.."--暴击系数:"..tostring(cri_coeff).."("..tostring(attacker:get_cri_coeff()).."-"..tostring(attacker:get_cri_ded_coeff())..")"
-    m1 = m1.."--等级系数:"..tostring(level_coeff).."("..tostring(attacker.level)..")"
-    m1 = m1.."--浮动伤害系数:"..tostring(float_coeff).."("..tostring(k1).."-"..tostring(k2).."-"..tostring(random)..")"
-    m1 = m1.."--总伤害:"..tostring(total_demage)
-    m1 = m1.."--实际伤害:"..tostring(actual_demage)
+    m1 = m1.."是否暴击:"..roundNumberIfNumber(is_cri)
+    m1 = m1.."--是否格挡:"..roundNumberIfNumber(is_block)
+    m1 = m1.."--基础伤害值:"..roundNumberIfNumber(base_demage_value).."("..roundNumberIfNumber(k1).."-"..roundNumberIfNumber(k2).."-"..roundNumberIfNumber(attacker.level)..")"
+    m1 = m1.."--暴击系数:"..roundNumberIfNumber(cri_coeff).."("..roundNumberIfNumber(attacker:get_cri_coeff()).."-"..roundNumberIfNumber(attacker:get_cri_ded_coeff())..")"
+    m1 = m1.."--等级系数:"..roundNumberIfNumber(level_coeff).."("..roundNumberIfNumber(attacker.level)..")"
+    m1 = m1.."--浮动伤害系数:"..roundNumberIfNumber(float_coeff).."("..roundNumberIfNumber(k1).."-"..roundNumberIfNumber(k2).."-"..roundNumberIfNumber(random)..")"
+    m1 = m1.."--总伤害:"..roundNumberIfNumber(total_demage)
+    m1 = m1.."--实际伤害:"..roundNumberIfNumber(actual_demage)
     table.insert(extra_msgs, m1)
 
     return actual_demage
@@ -172,10 +172,10 @@ function execute_treat(attacker, target, buff_info, is_cri, extra_msgs)
     local actual_treat = actual_treat_1 + actual_treat_2
     target:set_hp(target:get_hp() + actual_treat)
     local m1 = ""
-    m1 = m1.."是否暴击:"..tostring(is_cri)
-    m1 = m1.."攻击:"..tostring(attacker:get_atk())
-    m1 = m1.."暴击系数:"..tostring(attacker:get_cri_coeff())
-    m1 = m1.."--总治疗值:"..tostring(total_heal)
+    m1 = m1.."是否暴击:"..roundNumberIfNumber(is_cri)
+    m1 = m1.."攻击:"..roundNumberIfNumber(attacker:get_atk())
+    m1 = m1.."暴击系数:"..roundNumberIfNumber(attacker:get_cri_coeff())
+    m1 = m1.."--总治疗值:"..roundNumberIfNumber(total_heal)
     table.insert(extra_msgs, m1)
     return actual_treat
 end
@@ -196,9 +196,9 @@ function unpara(attacker, target, buff_info, playerLevel, extra_msgs)
     warriorsLastDamage = addDamageRate(attacker.side, warriorsLastDamage)
     print(warriorsLastDamage, "warriorsLastDamage==========")
     local m1 = ""
-    m1 = m1.."总atk:"..tostring(atkArray)
-    m1 = m1.."--基础伤害:"..tostring(warriorsDamage)
-    m1 = m1.."--实际伤害:"..tostring(warriorsLastDamage).."("..playerLevel..")"
+    m1 = m1.."总atk:"..roundNumberIfNumber(atkArray)
+    m1 = m1.."--基础伤害:"..roundNumberIfNumber(warriorsDamage)
+    m1 = m1.."--实际伤害:"..roundNumberIfNumber(warriorsLastDamage).."("..playerLevel..")"
     table.insert(extra_msgs, m1)
     target:set_hp(target:get_hp() - warriorsLastDamage)
     return warriorsLastDamage
@@ -237,4 +237,13 @@ function addDamageRate(side, value)
         return value * (1 + damage_rate)
     end
     return value
+end
+-- 数值处理小数点的数值, 返回string
+function roundNumberIfNumber(value)
+    print(value, "wzp======1", type(value))
+    if type(value) ~= "number" then
+        return tostring(value)
+    end
+    -- return math.round(number)        -- 四舍五入
+    return tostring(math.floor(value))           -- 舍去小数点
 end

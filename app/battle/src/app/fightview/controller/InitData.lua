@@ -277,7 +277,7 @@ function initMineData(data)
 
     for i=1,6 do
         if blue_units[i] then
-            local unit = constructBattleUnit(blue_units[i], "blue")
+            local unit = constructBattleUnit(blue_units[i], "blue", true)
             blueUnits[unit.pos] = unit
             updateBlueUnitViewProperty(unit)
         end
@@ -345,12 +345,12 @@ function initStageData(data)
     end
 
     local blue
-    for _,blue_units in pairs(blue_group) do
+    for k,blue_units in pairs(blue_group) do
         local blueUnits = {}
         print("blue_units==========="..table.nums(blue_units.group))
         for i=1,6 do
             if blue_units.group[i] then
-                local unit = constructBattleUnit(blue_units.group[i], "blue")
+                local unit = constructBattleUnit(blue_units.group[i], "blue", k==table.nums(blue_group))
                 blueUnits[unit.pos] = unit
                 updateBlueUnitViewProperty(unit)
             end
@@ -415,7 +415,7 @@ function initHjqyData(data)
 
     for i=1,6 do
         if blue_units[i] then
-            local unit = constructBattleUnit(blue_units[i], "blue")
+            local unit = constructBattleUnit(blue_units[i], "blue", true)
             blueUnits[unit.pos] = unit
             updateBlueUnitViewProperty(unit)
         end
@@ -491,14 +491,25 @@ function constructBattleUnitWithTemplate(data, pos, level, break_level, is_awake
         unit.resFrame = res
     end
 
-    unit.skill = HeroSkill.new(unit)
-    unit._skill = HeroSkill.new(unit)
+    boss_mp_info = nil
+--TYPE_STAGE_NORMAL   = 1          -- 普通关卡（剧情）， stage_config
+--TYPE_STAGE_ELITE    = 2          -- 精英关卡， special_stage_config
+--TYPE_STAGE_ACTIVITY = 3          -- 活动关卡， special_stage_config
+--TYPE_TRAVEL         = 4          -- travel
+--TYPE_PVP            = 6          -- pvp
+--TYPE_WORLD_BOSS     = 7          -- 世界boss
+--TYPE_MINE_MONSTER   = 8          -- 攻占也怪
+--TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
+--TYPE_HJQY_STAGE     = 10         -- 黄巾起义
+
+    unit.skill = HeroSkill.new(unit, boss_mp_info)
+    unit._skill = HeroSkill.new(unit, boss_mp_info)
 
     return unit
 end
 
 -- 根据战斗返回构造battle unit
-function constructBattleUnit(data, side)
+function constructBattleUnit(data, side, is_last_round)
     if not data or data.no == 0 then return nil end
     local unit = BattleUnit.new()
     unit.unit_name = ""
@@ -529,6 +540,7 @@ function constructBattleUnit(data, side)
 
     unit.chief = false
     print("side:",side,"constructBattleUnit===========", data.no," origin_no:", data.origin_no,"break_level:",unit.break_level)
+    local boss_mp_info = nil
     if (process.fight_type == TYPE_STAGE_NORMAL 
         or process.fight_type == TYPE_STAGE_ELITE 
         or process.fight_type == TYPE_STAGE_ACTIVITY 
@@ -547,8 +559,24 @@ function constructBattleUnit(data, side)
             local pictureName = soldierTemplate:getMonsterImageName(unit.no)
             unit.pictureName = pictureName
         end
+        local bossOpeningRage = baseTemplate:getBaseInfoById("BOSSOpeningRage")
+        if process.fight_type == TYPE_STAGE_NORMAL then
+            boss_mp_info = bossOpeningRage[tostring(1)]
+        elseif process.fight_type == TYPE_STAGE_ACTIVITY then
+            boss_mp_info = bossOpeningRage[tostring(2)]
+        elseif process.fight_type == TYPE_STAGE_ELITE then
+            boss_mp_info = bossOpeningRage[tostring(3)]
+        elseif process.fight_type == TYPE_HJQY_STAGE then
+            boss_mp_info = bossOpeningRage[tostring(4)]
+        elseif process.fight_type == TYPE_MINE_MONSTER then
+            boss_mp_info = bossOpeningRage[tostring(5)]
+        end
+        if not is_last_round then
+            boss_mp_info = nil
+        end
         --unit.resFrame = res
     else
+        print("boss_mp_info========", boss_mp_info)
         local unit_info = soldierTemplate:getHeroTempLateById(unit.no)
         print("==========?", unit_info.id)
         unit.unit_info = unit_info                       -- 配置信息
@@ -565,8 +593,10 @@ function constructBattleUnit(data, side)
             unit.resFrame = res
         end
     end
-    unit.skill = HeroSkill.new(unit)        -- 武将技能
-    unit._skill = HeroSkill.new(unit)
+
+
+    unit.skill = HeroSkill.new(unit, boss_mp_info)        -- 武将技能
+    unit._skill = HeroSkill.new(unit, boss_mp_info)
     return unit
 end
 

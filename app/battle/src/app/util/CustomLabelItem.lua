@@ -18,7 +18,7 @@ function CustomLabelItem:selected(hasEffect)
 	self.normalSprite:setVisible(false)
 	self.selectedSprite:setVisible(true)
 	if self.callback_ then
-		self.callback_()		
+		return self.callback_()		
 	end
 end
 

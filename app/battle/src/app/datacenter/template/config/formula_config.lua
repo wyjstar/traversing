@@ -236,11 +236,11 @@ formula_config={
 ,  [118] = {
   ["precondition"] = "skill_buff.effectId >3 and skill_buff.effectId != 26 and skill_buff.valueType == 2",  ["formula"] = "attrHero*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId >3 and skill_buff.effectId ~= 26 and skill_buff.valueType == 2",  ["id"] = 118,  ["clientFormula"] = "result=attrHero*skill_buff.valueEffect/100",  ["key"] = "skillbuffEffct_2",}
 ,  [119] = {
-  ["precondition"] = "expHero >= 100 and expHero < 500",  ["formula"] = "expHero/100",  ["clientPrecondition"] = "expHero >= 100 and expHero < 500",  ["id"] = 119,  ["clientFormula"] = "result=expHero/100",  ["key"] = "sacrificeExp_1",}
+  ["precondition"] = "expHero >= 50 and expHero < 100",  ["formula"] = "expHero/50",  ["clientPrecondition"] = "expHero >= 50 and expHero < 100",  ["id"] = 119,  ["clientFormula"] = "result=expHero/50",  ["key"] = "sacrificeExp_1",}
 ,  [120] = {
-  ["precondition"] = "expHero >= 500 and expHero < 1000",  ["formula"] = "expHero/500",  ["clientPrecondition"] = "expHero >= 500 and expHero < 1000",  ["id"] = 120,  ["clientFormula"] = "result=expHero/500",  ["key"] = "sacrificeExp_2",}
+  ["precondition"] = "expHero >= 100 and expHero < 200",  ["formula"] = "expHero/100",  ["clientPrecondition"] = "expHero >= 100 and expHero < 200",  ["id"] = 120,  ["clientFormula"] = "result=expHero/100",  ["key"] = "sacrificeExp_2",}
 ,  [121] = {
-  ["precondition"] = "expHero >= 1000",  ["formula"] = "expHero/1000",  ["clientPrecondition"] = "expHero >= 1000",  ["id"] = 121,  ["clientFormula"] = "result=expHero/1000",  ["key"] = "sacrificeExp_3",}
+  ["precondition"] = "expHero >= 200",  ["formula"] = "expHero/200",  ["clientPrecondition"] = "expHero >= 200",  ["id"] = 121,  ["clientFormula"] = "result=expHero/200",  ["key"] = "sacrificeExp_3",}
 ,  [122] = {
   ["precondition"] = "1",  ["formula"] = "\"10000\"",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=10000",  ["key"] = "coinWorldboss",}
 ,  [123] = {

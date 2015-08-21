@@ -66,10 +66,13 @@ end
 function FightProcess:get_atk_array(units, unpara_skill)
     local nos = unpara_skill:get_hero_nos()
     local atk_array = 0
-    for k,v in pairs(units) do
-        if table.inv(nos, v.origin_no) then
-            print("*********", v:get_atk(), v.origin_no, v.no)
-            atk_array = atk_array + v:get_atk()
+    for k=1,6 do
+        local v = units[k]
+        if v then
+            if table.inv(nos, v.origin_no) then
+                print("*********", v:get_atk(), v.origin_no, v.no)
+                atk_array = atk_array + v:get_atk()
+            end
         end
     end
     return atk_array
@@ -216,22 +219,25 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     local main_target_unit_infos = {}
     
     -- 1.计算命中, 格挡
-    for _, target_unit in pairs(main_target_units) do
-        is_block = check_block(attacker, target_unit, main_skill_buff)
-        is_hit = check_hit(main_skill_buff, attacker, target_unit) 
-        table.insert(main_target_unit_infos, {target_unit, is_block, is_hit})
-        skill:set_after_skill_buffs(is_hit, is_mp_skill)
-        local back_buff_infos = target_unit.skill:get_back_skill_buffs(is_hit, is_block)
-        for i,v in pairs(back_buff_infos) do
-            print("back_buff_infos============"..v.id)
-            if v and check_trigger(v) then
-                local result = {}
-                result.army = enemy
-                result.enemy = army
-                result.attacker = target_unit
-                result.skill_buff_info = v 
-                self.back_skill_buff = result
-                break
+    for i=1,6 do
+        local target_unit = main_target_units[i]
+        if target_unit then
+            is_block = check_block(attacker, target_unit, main_skill_buff)
+            is_hit = check_hit(main_skill_buff, attacker, target_unit) 
+            table.insert(main_target_unit_infos, {target_unit, is_block, is_hit})
+            skill:set_after_skill_buffs(is_hit, is_mp_skill)
+            local back_buff_infos = target_unit.skill:get_back_skill_buffs(is_hit, is_block)
+            for i,v in pairs(back_buff_infos) do
+                print("back_buff_infos============"..v.id)
+                if v and check_trigger(v) then
+                    local result = {}
+                    result.army = enemy
+                    result.enemy = army
+                    result.attacker = target_unit
+                    result.skill_buff_info = v 
+                    self.back_skill_buff = result
+                    break
+                end
             end
         end
     end
@@ -400,13 +406,16 @@ end
 function FightProcess:update_open_state(army, enemy)
     self.army = army
     self.enemy = enemy
-    for i,v in pairs(army) do
-        self.attacker = v
-        self:perform_open_buff(v)
-        for i,buff in pairs(self.temp_buff_set.buffs) do
-            print("attacker======:", buff.attacker, buff.attacker.no)
+    for i=1,6 do
+        local v = army[i]
+        if v then
+            self.attacker = v
+            self:perform_open_buff(v)
+            for i,buff in pairs(self.temp_buff_set.buffs) do
+                print("attacker======:", buff.attacker, buff.attacker.no)
+            end
+            print("attacker.HOME", self.attacker.HOME, self.attacker.no)
         end
-        print("attacker.HOME", self.attacker.HOME, self.attacker.no)
     end
     local step_action = self:construct_step_action(nil, TYPE_NORMAL, SKILL_STAGE_OPEN, self.temp_buff_set.buffs)
     return step_action
@@ -622,10 +631,12 @@ function FightProcess:get_all_skill_nos()
         table.insert(skill_nos, v.unit_info.rageSkill)-- 怒气技能
         table.insertTo(skill_nos, v:get_break_skill_nos())-- 突破技能
     end
-    for _, v in pairs(self.blue_units) do
-        table.insert(skill_nos, v.unit_info.normalSkill)
-        table.insert(skill_nos, v.unit_info.rageSkill)
-        table.insertTo(skill_nos, v:get_break_skill_nos())
+    for _,_v in pairs(self.blue_groups) do
+        for _, v in pairs(_v) do
+            table.insert(skill_nos, v.unit_info.normalSkill)
+            table.insert(skill_nos, v.unit_info.rageSkill)
+            table.insertTo(skill_nos, v:get_break_skill_nos())
+        end
     end
     table.insertTo(skill_nos, self.red_unpara_skill:get_skill_nos())
     table.insertTo(skill_nos, self.blue_unpara_skill:get_skill_nos())
@@ -705,13 +716,15 @@ end
 
 function FightProcess:logInfo()
     appendFile2("我方:----------\n", 0)
-    for _, v in pairs(self.red_units) do
+    for i=1,6 do
+        local v = self.red_units[i]
         if v then
             appendFile2(v:str_data(), 0)
         end
     end
     appendFile2("敌方:----------\n", 0)
-    for _, v in pairs(self.blue_units) do
+    for i=1,6 do
+        local v = self.blue_units[i]
         if v then
             appendFile2(v:str_data(), 0)
         end

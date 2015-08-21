@@ -9,6 +9,8 @@ const = const or {}
 const.POS_ARMY = cc.p(320, 260)
 const.POS_ENEMY = cc.p(320, 700)
 
+const.BACK_FROM_CIRIKAIQI = "BACK_FROM_CIRIKAIQI"
+
 const.POS_UNPARA_ICON_STAGE = cc.p(130,355)
 const.POS_UNPARA_ICON_FIGHT = cc.p(55,55)
 const.FIGHT_POS_UNPARA_ICON = cc.p(130,355)
@@ -408,7 +410,7 @@ G_BOTTOM_DEFINE.GET_COINS_CANCEL = {
     ["callBack"] = nil,
 }
 G_BOTTOM_DEFINE.GET_COINS_JUMP = {
-    ["normalFrame"] = "#ui_common_btn_yel2.png",
+    ["normalFrame"] = "#ui_common_btn_yellow.png",
     ["selectedFrame"] = "#lan_common_qzc.png",
     ["disabledFrame"] = nil,
     ["callBack"] = function ()
@@ -422,9 +424,28 @@ UPDATE_TL = "UPDATE_TL"      -- 更新体力
 guid_titlle = {war = "GUID_OPEN_WAR"}
 
 TYPE_SHOP = {
+    SHOP_ITEM   = 3,   --商城-道具
+    SHOP_GIFT   = 4,   --商城-礼包
     SECRETPLACE = 7,   --秘境商店
+    SOUL        = 9,   --武魂商店(武将炼化)
+    PVP         = 10,  --军功商店(擂台)
+    SMELT       = 11,  --精华商店(装备炼化)
+    SHOP_EQUIP  = 12,  --商城-装备
     MERIT       = 18,  --功勋商店(黄巾起义)
-    TREASURE    = 19  --奇珍（过关斩将）
+    TREASURE    = 19   --珍宝（过关斩将）
+--[[
+1   商城良将寻访
+2   商城良兵宝箱
+3   商城道具
+4   商城礼包
+5   商城神将寻访
+6   商城神兵宝箱
+7   密境商店
+9   武魂商店
+10  竞技场商店
+11  熔炼商店
+12  抽装备商店
+]]
 }
 
 RES_TYPE = {
@@ -487,7 +508,10 @@ EventName = {
     UPDATE_FB_TIMES = "UPDATE_FB_TIMES",  --更新精英副本挑战次数
     UPDATE_SOLDIER_EXP = "UPDATE_SOLDIER_EXP", --更新英雄经验值
     UPDATE_SOLDIER_BREAK = "UPDATE_SOLDIER_BREAK", --更新英雄突破等级
+    UPDATE_CHAT = "update_chat", --更新聊天提示
     UPDATE_REFRESH_24 = "UPDATE_REFRESH_24",   --24点更新
+    UPDATE_EQUIP_STRENGTH_LV = "UPDATE_EQUIP_STRENGTH_LV",--装备强化等级清算
+    UPDATE_LINEUP_EQUIP_STRENGTH_LV = "UPDATE_LINEUP_EQUIP_STRENGTH_LV", --阵容中装备强化等级
 }
 
 NoticeColor = {
@@ -499,9 +523,13 @@ NoticeColor = {
     [6] = ui.COLOR_PURPLE,
 }
 
+const.FettersInfoCount = 5  --羁绊信息最大个数
+const.MAX_HERO_POSITION = 6 --最大阵容个数
+const.MAX_EQUIP_POSITION = 6
 
 G_PLATFORM.NONE = 0         -- 无平台
 G_PLATFORM.WEIXIN = 1       -- 微信平台
 G_PLATFORM.QQ = 2           -- QQ平台
 G_PLATFORM.QHALL = 3        -- 游戏大厅平台
 
+const.C_WS_MAX_LEVEL = 3

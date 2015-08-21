@@ -31,7 +31,7 @@ function FMBuff:perform_hp_mp_buff(owner)
     elseif effect_id == 26 then
         owner:set_hp(owner.hp+self.value)
     end
-    appendFile2("值:"..self.value.."\n", 1)
+    appendFile2("值:"..roundNumberIfNumber(self.value).."\n", 1)
     appendFile2("buff后："..owner:str_data(), 1)
     appendFile2("------------------------------", 1)
     if owner.hp <= 0 then
@@ -96,7 +96,7 @@ function FMBuff:perform_buff(owner, result)
     for _,v in pairs(result.extra_msgs) do
         appendFile2("详细信息:"..v, 1)
     end
-    appendFile2("值:"..result.value.."\n", 1)
+    appendFile2("值:"..roundNumberIfNumber(result.value).."\n", 1)
     appendFile2("buff后："..owner:str_data(), 1)
     appendFile2("------------------------------", 1)
     if owner.hp <= 0 then
@@ -177,6 +177,15 @@ function FMBuff:str_data()
     temp = temp.."--替换权重:"..tostring(buff_info.replace)
     temp = temp.."--触发率:"..tostring(buff_info.triggerRate)
     return temp
+end
+-- 数值处理小数点的数值, 返回string
+function roundNumberIfNumber(value)
+    print(value, "wzp======1", type(value))
+    if type(value) ~= "number" then
+        return tostring(value)
+    end
+    -- return math.round(number)        -- 四舍五入
+    return tostring(math.floor(value))           -- 舍去小数点
 end
 
 

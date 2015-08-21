@@ -202,9 +202,26 @@ function CommonData:setData(data)
 
     getDataManager():pushTask(CustomTask.new(handler(self,self.updateTestTask), 20,2)) 
 
+    self:setStoryId(data.story_id)
+
     --初始化定时器
     self:initTasks()
 
+end
+
+--[[--
+    设置剧情Id
+]]
+function CommonData:setStoryId(story_id )
+    print("CommonData:setStoryId==>",story_id)
+    self.storyId_ = story_id
+end
+
+--[[--
+    获取剧情关卡Id
+]]
+function CommonData:getStoryId()
+    return self.storyId_
 end
 
 --[[--
@@ -245,6 +262,11 @@ function CommonData:getFirstRechargeRewardGot()
     else
         return false
     end
+end
+
+--缓存次日开启已经开启过
+function CommonData:setIsCiriOpend()
+    self.isCiriOpened = true
 end
 
 --次日开启功能是否已开启过
@@ -474,7 +496,14 @@ function CommonData:getHeadList() return self.head end
 function CommonData:setHeadLIst(list) self.head = list end
 
 -- 在头像列表中添加头像ID
-function CommonData:addHeadLIstId(id) table.insert(self.head, id) end
+function CommonData:addHeadLIstId(id)
+    for k,v in pairs(self.head) do
+        if v == id then -- 重复ID不必添加
+            return
+        end
+    end
+    table.insert(self.head, id) 
+end
 --------------------------
 
 -- 通用资源:鞋子
@@ -1207,6 +1236,25 @@ function CommonData:isOpenByType(type)
     print(_left_open_time)
 
     return _left_open_time <= 0 
+end
+
+--[[--
+判断是否到次日开启的时间
+
+@return bool opened 是否开启
+@return int cirikaiqiPeriod 到开启的时间差
+]]
+function CommonData:isCiriOpend()
+    local nextDayNum, nextDayTimeStr = getTemplateManager():getBaseTemplate():getNextDayOpenTime()
+    local ciriKaiQiEndTime = setDesTime(self:getRegistTime(), nextDayNum, nextDayTimeStr)
+    local cirikaiqiPeriod = ciriKaiQiEndTime - self:getTime()
+    local opened = nil
+    if cirikaiqiPeriod < 0 then
+        opened = true
+    else
+        opened = false
+    end
+    return opened,cirikaiqiPeriod
 end
 
 --[[--

@@ -2,7 +2,7 @@
 local UnitSkill = import(".FMUnitSkill")
 local FMHeroSkill = class("FMHeroSkill", UnitSkill)
 
-function FMHeroSkill:ctor(unit)
+function FMHeroSkill:ctor(unit, boss_mp_info)
     self.baseTemplate = getTemplateManager():getBaseTemplate()
     self.soldierTemplate = getTemplateManager():getSoldierTemplate()
     local unit_info = unit.unit_info
@@ -12,6 +12,12 @@ function FMHeroSkill:ctor(unit)
         mp_info = self.baseTemplate:getBaseInfoById("stage_break_angry_value")
     elseif unit.is_awake then
         mp_info = self.baseTemplate:getBaseInfoById("angryValueAwakeHero")
+    end
+
+    -- set boss mp 
+    if unit.pos == 5 and boss_mp_info then
+        mp_info = boss_mp_info
+        print("agemd======", mp_info)
     end
     FMHeroSkill.super.ctor(self, unit, unit_info, mp_info)
     self._break_skill_buffs = {}
