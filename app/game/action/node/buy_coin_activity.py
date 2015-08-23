@@ -54,7 +54,7 @@ def buy_coin_activity_1406(data, player):
         if player.base_info.is_activiy_open(act_conf.id):
             xs = act_conf.parameterB
             free_times += act_conf.parameterA
-            if act_conf.parameterC[0] < buy_times:
+            if act_conf.parameterC[0] <= buy_times:
                 xs = 1
 
             break
@@ -65,8 +65,8 @@ def buy_coin_activity_1406(data, player):
 
     if free_times > buy_times:
         need_gold = 0
+    logger.debug("need_gold %s, free_times %s, all_buy_times %s, xs %s" % (need_gold, free_times, all_buy_times, xs))
 
-    logger.debug("buy times: %s need_gold: %s" % (buy_times, need_gold))
     if need_gold > player.finance.gold:
         logger.error("buy_coin_activity_1406: gold not enough %s, %s" % (need_gold, player.finance.gold))
         response.res.result = False
