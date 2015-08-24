@@ -102,14 +102,14 @@ def inherit_equipment_152(pro_data, player):
     def func():
         """docstring for func"""
         target.attribute.strengthen_lv = origin.attribute.strengthen_lv
-        target.save_data()
 
         origin.attribute.strengthen_lv = 1
-        origin.save_data()
         # 传承强化过程
         target.enhance_record.enhance_record = origin.enhance_record.enhance_record
         origin.enhance_record.enhance_record = []
 
+        target.save_data()
+        origin.save_data()
         print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
     gold = game_configs.base_config.get("equInheritPrice")
