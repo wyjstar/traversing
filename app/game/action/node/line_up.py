@@ -398,6 +398,7 @@ def line_up_info(player, response=None):
     """
     if not response:
         response = line_up_pb2.LineUpResponse()
+        response.res.result = True
     for temp in player.line_up_component.line_up_order:
         response.order.append(temp)
     response.unpar_id = player.line_up_component.current_unpar
