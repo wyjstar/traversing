@@ -477,7 +477,7 @@ def add_friend_request_remote(target_id, is_online, player):
 @remoteserviceHandle('gate')
 def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
-    assert(result)
+    # assert(result)
     player.friends.save_data()
     return True
 
