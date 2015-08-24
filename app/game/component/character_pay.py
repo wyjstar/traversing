@@ -12,6 +12,7 @@ from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
 import traceback
 from shared.utils.const import const
+from app.game.action.root.netforwarding import push_message
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -143,7 +144,7 @@ class CharacterPay(Component):
             response.res.result = True
             response.gold = self._owner.finance.gold
             response.vip_level = self._owner.base_info.vip_level
-            remote_gate.push_message_remote(2001, self._owner.base_info.id, response.SerializePartialToString())
+            push_message(2001, self._owner.base_info.id, response.SerializePartialToString())
         else:
             self.loop_times += 1
             reactor.callLater(30*self.loop_times, self.recharge)
