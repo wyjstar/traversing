@@ -21,6 +21,7 @@ from app.game.core.stage.stage import Stage
 from shared.db_opear.configs_data import game_configs
 import zipfile
 from app.proto_file.account_pb2 import AccountKick
+from gfirefly.dbentrust import util
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -53,11 +54,9 @@ def gm():
     logger.info('gm2admin,command:%s', t_dict['command'])
 
     if t_dict['command'] in admin_command:
-        print("=================1")
         com = t_dict['command'] + "(t_dict)"
         res = eval(com)
     else:
-        print("=================2")
         res = remote_gate.from_admin_rpc_remote(cPickle.dumps(t_dict))
         if res['success'] == 2:
             com = t_dict['command'] + "(t_dict)"
@@ -127,6 +126,15 @@ def get_user_info(args):
         isexist = nickname_obj.hexists(args['search_value'])
         pid = nickname_obj.hget(args['search_value'])
         character_obj = tb_character_info.getObj(pid)
+    elif args['search_type'] == '3':
+        uuid = args['search_value']
+        sql_result = util.GetOneRecordInfo('tb_account', dict(uuid=uuid))
+        if sql_result is not None:
+            pid = sql_result['id']
+            character_obj = tb_character_info.getObj(pid)
+            isexist = character_obj.exists()
+        else:
+            return {'success': 0, 'message': 3}
     else:
         return {'success': 0, 'message': 1}
 

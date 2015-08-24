@@ -13,6 +13,7 @@
                 }
             ],
             "redis": true,
+            "db": true,
             "webport": 30003,
             "name": "admin",
             "app": "app.admin",
