@@ -190,18 +190,14 @@ def pull_message_remote(character_id):
     return transit_remote.pull_message_remote(character_id)
 
 
-def save_playerinfo_in_db(dynamic_id):
-    """
-    """
-    vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
+def save_playerinfo_in_db(dynamic_id, vcharacter):
     child_node = groot.child(vcharacter.node)
     result = child_node.net_conn_lost_remote(dynamic_id)
     return result
 
 
 def drop_client(dynamic_id, vcharacter):
-    """清理客户端的记录
-    """
+    """清理客户端的记录"""
     node = vcharacter.node
     if node:  # 角色在场景中的处理
         SceneSerManager().drop_client(node, dynamic_id)
@@ -218,21 +214,26 @@ def net_conn_lost_remote_noresult(dynamic_id):
     print "net lost1++++++++++++++++", dynamic_id
     if vcharacter and vcharacter.node:
         vcharacter.locked = True  # 锁定角色
-        vcharacter.state = 0 # 设置掉线状态
-        reactor.callLater(const.KEEP_USER_AFTER_DROP, net_conn_lost, dynamic_id, vcharacter)
+        vcharacter.state = 0  # 设置掉线状态
+        reactor.callLater(const.KEEP_USER_AFTER_DROP,
+                          net_conn_lost,
+                          dynamic_id,
+                          vcharacter)
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)
+
 
 def net_conn_lost(dynamic_id, vcharacter):
     """docstring for net_conn_lost"""
     if vcharacter.state == 1:
         return
-    result = save_playerinfo_in_db(dynamic_id)
+    result = save_playerinfo_in_db(dynamic_id, vcharacter)
 
     if result:
         drop_client(dynamic_id, vcharacter)
         UsersManager().drop_by_dynamic_id(dynamic_id)
         print "net lost3++++++++++++++++", dynamic_id, vcharacter
+
 
 @rootserviceHandle
 def get_act_id_from_world_remote():
