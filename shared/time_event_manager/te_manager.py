@@ -18,7 +18,7 @@ class TEManager(object):
 
     def add_event(self, time, type, event):
         """
-        time 当日秒数 时间戳
+        time 事件处理时间 当日秒数 时间戳
         type 1 时间戳 2 当日秒数
         event 函数
         """
@@ -42,6 +42,7 @@ class TEManager(object):
         self._events = v
 
     def deal_event(self, the_time=0):
+        print("deal_event==============")
         now = int(time.time())
         next_time = 0
         for x, _ in self._events.items():
