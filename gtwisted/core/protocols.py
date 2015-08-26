@@ -42,14 +42,15 @@ class BaseProtocol(Greenlet):
         self.connectionMade()
         try:
             while True:
+                print self.transport
                 data = self.transport.recv(1024)
                 if not data:
                     break
 #                 gevent.spawn(self.dataReceived,data)
                 self.dataReceived(data)
         except Exception, e:
-            if not isinstance(e, socket.error):
-                logger.exception(e)
+            # if not isinstance(e, socket.error):
+            #     logger.exception(e)
             self.connectionLost(reason=e)
         else:
             self.connectionLost(reason=None)
