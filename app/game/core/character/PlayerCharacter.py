@@ -23,7 +23,7 @@ class PlayerCharacter(object):
         self._pid = pid
         self._dynamic_id = dynamic_id  # 角色登陆服务器时的动态id
         a = OrderedDict()
-        a['ap_gift']=component.CharacterApGiftComponent(self)
+        a['act'] = component.CharacterActComponent(self)
         a['base_info'] = component.CharacterBaseInfoComponent(self)
         a['hero_component'] = component.CharacterHerosComponent(self)
         a['finance'] = component.CharacterFinanceComponent(self)
@@ -274,5 +274,5 @@ class PlayerCharacter(object):
         return self._components['hjqy']
 
     @property
-    def ap_gift(self):
-        return self._components['ap_gift']
+    def act(self):
+        return self._components['act']

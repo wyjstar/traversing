@@ -32,7 +32,7 @@ def get_target_line_up_info_706(pro_data, player):
     target_id = request.target_id
 
     char_obj = tb_character_info.getObj(target_id)
-    if target_id < 10000 and char_obj.exists():
+    if target_id >= 10000 and char_obj.exists():
         response = char_obj.hget('copy_slots')
         if response:
             return response
