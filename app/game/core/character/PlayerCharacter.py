@@ -53,6 +53,7 @@ class PlayerCharacter(object):
         a['buy_coin']=component.CharacterBuyCoinActivity(self)
         a['pvp']=component.CharacterPvpComponent(self)
         a['hjqy']=component.CharacterHjqyComponent(self)
+        a['ap_gift']=component.CharacterApGiftComponent(self)
         logger.debug("keys %s" % a.keys())
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -249,3 +250,7 @@ class PlayerCharacter(object):
     @property
     def hjqy_component(self):
         return self._components['hjqy']
+
+    @property
+    def ap_gift(self):
+        return self._components['ap_gift']
