@@ -16,5 +16,6 @@ message GetActInfoRequese{
 }
 
 message GetActInfoResponse{
-    repeated int32 received_act_ids = 1;
+    required CommonResponse res = 1;
+    repeated int32 received_act_ids = 2;
 }

@@ -186,6 +186,8 @@ const.ReceiveBlessGift = 35
 const.StageChestGift = 36
 const.LIMIT_HERO = 37
 const.TASK = 38
+const.ACT20 = 41
+const.ACT21 = 42
 
 const.LOGIN_GIFT_CONTINUS = 8061
 const.LOGIN_GIFT_CUMULATIVE = 8062

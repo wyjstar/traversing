@@ -10,7 +10,7 @@ class CharacterActComponent(Component):
 
     def __init__(self, owner):
         super(CharacterActComponent, self).__init__(owner)
-        self._received_gift_ids = {}
+        self._received_ids = {}
         self._received_time = 1
 
     def init_data(self, character_info):
@@ -18,27 +18,27 @@ class CharacterActComponent(Component):
         if not data:
             self.new_data()
             return
-        self._received_gift_ids = data['received_gift_ids']
+        self._received_ids = data['received_ids']
         self._received_time = data['received_time']
 
     def save_data(self):
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data = dict(received_gift_ids=self._received_gift_ids,
+        data = dict(received_ids=self._received_gift_ids,
                     received_time=self._received_time)
         character_obj.hset('act_info', data)
 
     def new_data(self):
-        data = dict(received_gift_ids=[],
+        data = dict(received_ids=[],
                     received_time=self._received_time)
         return {'act_info': data}
 
     @property
-    def received_gift_ids(self):
-        return self._received_gift_ids
+    def received_ids(self):
+        return self._received_ids
 
-    @received_gift_ids.setter
-    def received_gift_ids(self, value):
-        self._received_gift_ids = value
+    @received_ids.setter
+    def received_ids(self, value):
+        self._received_ids = value
 
     @property
     def received_time(self):
