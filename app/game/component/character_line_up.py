@@ -60,8 +60,7 @@ class CharacterLineUpComponent(Component):
         self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
         self._hight_power = character_info.get('hight_power', 0)
 
-        self.update_slot_activation()
-        self.save_data(['line_up_slots', 'sub_slots'])
+        self.owner.set_level_related()
 
     def save_data(self, prop_names=[]):
         power = self.combat_power

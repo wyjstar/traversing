@@ -64,8 +64,7 @@ def modify_user_info(data, player):
     if not args['attr_name'] or not args['attr_value']:
         return {'success': 0, 'message': 5}
     if args['attr_name'] == 'user_level':
-        player.base_info.level = int(args['attr_value'])
-        player.base_info.save_data()
+        player.set_level_related(int(args['attr_value']))
         return {'success': 1}
     elif args['attr_name'] == 'newbee_guide':
         player.base_info.newbee_guide_id = int(args['attr_value'])
@@ -153,8 +152,7 @@ def add_level_remote(data, player):
     if level > 200:
         level = 200
 
-    player.base_info._level = level
-    player.base_info.save_data()
+    player.set_level_related(level)
     return {'success': 1}
 
 
