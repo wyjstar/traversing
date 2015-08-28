@@ -1,0 +1,20 @@
+import "common.proto";
+
+//1832
+message GetActGiftRequest{
+    required int32 act_id = 1;
+}
+
+message GetActGiftResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+//1831
+message GetActInfoRequese{
+    required int32 act_type = 1;
+}
+
+message GetActInfoResponse{
+    repeated int32 received_act_ids = 1;
+}
