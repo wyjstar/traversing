@@ -29,7 +29,8 @@ class LiberateProtocol(protocols.BaseProtocol):
     def connectionLost(self, reason):
         """连接断开处理
         """
-        logger.info('Client %d login out.' % (self.transport.sessionno))
+        logger.info('Client %d login out(%s).' % (self.transport.sessionno,
+                                                  reason))
         self.factory.doConnectionLost(self)
         self.factory.connmanager.dropConnectionByID(self.transport.sessionno)
 

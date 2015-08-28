@@ -214,7 +214,8 @@ def travel_settle_833(data, player):
         gain_data = gain(player, common_drop, const.TRAVEL)
         get_return(player, gain_data, response.drops)
     else:
-        gain(player, event_cache[1], const.TRAVEL)
+        gain_data = gain(player, event_cache[1], const.TRAVEL)
+        get_return(player, gain_data, response.drops)
 
     stage_cache.remove(event_cache)
     player.travel_component.save()

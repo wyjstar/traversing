@@ -48,8 +48,8 @@ class BaseProtocol(Greenlet):
 #                 gevent.spawn(self.dataReceived,data)
                 self.dataReceived(data)
         except Exception, e:
-            if not isinstance(e, socket.error):
-                logger.exception(e)
+            # if not isinstance(e, socket.error):
+            #     logger.exception(e)
             self.connectionLost(reason=e)
         else:
             self.connectionLost(reason=None)
