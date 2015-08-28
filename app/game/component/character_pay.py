@@ -115,11 +115,11 @@ class CharacterPay(Component):
         balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
         recharge_balance = balance - self._owner.finance.gold # 累计充值数量
         if recharge_balance > 0:
-            self._owner.recharge.charge(recharge_balance) # 充值活动
-            self._owner.base_info.recharge += recharge_balance
-            self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
+            #self._owner.recharge.charge(recharge_balance) # 充值活动
+            #self._owner.base_info.recharge += recharge_balance
+            #self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
             self._owner.finance.gold = balance
-            self._owner.base_info.save_data()
+            #self._owner.base_info.save_data()
             self._owner.finance.save_data()
             self.loop_times = 0
 

@@ -392,7 +392,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
         res.result_no = 839
         return response.SerializePartialToString()
 
-    need_gold = get_consume_gold_num(sweep_item)
+    need_gold = get_consume_gold_num(sweep_item, times)
 
     tlog_event_id = get_uuid()
 
@@ -455,7 +455,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
 
         # hook task
         hook_task(player, CONDITIONId.ANY_STAGE, times)
-
+        logger.debug("sweep time %s %s" % (times, sweep_item))
         return_data = consume(player, sweep_item, multiple=times)
         get_return(player, return_data, response.consume)
 
@@ -469,7 +469,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
     player.pay.pay(need_gold, func)
 
     #触发黄巾起义
-    response.hjqy_stage_id = trigger_hjqy(player, result)
+    response.hjqy_stage_id = trigger_hjqy(player, result, times)
 
     res.result = True
     tlog_action.log('SweepFlow', player, stage_id, times, tlog_event_id)
@@ -501,6 +501,7 @@ def reset_stage_908(pro_data, player):
         return response.SerializePartialToString()
 
     need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0] - 1]
+    logger.debug("reset stage %s %s" % (stage_obj.reset[0], need_gold))
     if player.finance.gold < need_gold:
         logger.error("gold not enough")
         response.res.result = False
@@ -684,7 +685,7 @@ def open_chest_1811(pro_data, player):
     return response.SerializePartialToString()
 
 
-def trigger_hjqy(player, result):
+def trigger_hjqy(player, result, times=1):
     """docstring for trigger_hjqy 触发黄巾起义
     return: stage id
     """
@@ -715,13 +716,18 @@ def trigger_hjqy(player, result):
     player.fight_cache_component.stage_id = open_stage_id
     stage_info = player.fight_cache_component._get_stage_config()
 
-    rate = random.random()
     #rate = 0.01 # for test
     hjqytrigger = game_configs.base_config.get("hjqytrigger")
     hjqyRandomCheckpoint = game_configs.base_config.get("hjqyRandomCheckpoint")
+    rate = 1
+    for i in range(times):
+        rate = random.random()
+        if rate <= hjqytrigger[0]:
+            break
     logger.debug("rate: %s, hjqytrigger:%s" % (rate, hjqytrigger))
     if rate > hjqytrigger[0]:
         return 0
+
 
     info = {}
     for i in range(1, 4):
@@ -732,7 +738,7 @@ def trigger_hjqy(player, result):
     logger.debug("chapter: %s, stage_index: %s, stage_id: %s, open_stage_id: %s" % (stage_info.chapter, stage_index, player.fight_cache_component.stage_id, open_stage_id))
 
     if stage_info.chapter not in hjqyRandomCheckpoint:
-        return False
+        return 0
 
     stage_id = hjqyRandomCheckpoint.get(stage_info.chapter)[stage_index-1]
 
@@ -742,7 +748,7 @@ def trigger_hjqy(player, result):
     if monster_lv - player.base_info.level > hjqyRule2:
         logger.debug("monster_lv %s, player.base_info.level %s, hjqyRule2 %s" % (monster_lv, player.base_info.level, hjqyRule2))
         if (stage_info.chapter - 1) not in hjqyRandomCheckpoint:
-            return False
+            return 0
         stage_id = hjqyRandomCheckpoint.get(stage_info.chapter-1)[stage_index-1]
 
     player.fight_cache_component.stage_id = stage_id
@@ -754,7 +760,7 @@ def trigger_hjqy(player, result):
     result = remote_gate['world'].create_hjqy_remote(player.base_info.id, player.base_info.base_name, str_blue_units, stage_id)
     logger.debug("8============= %s %s" % (stage_id, open_stage_id))
     if not result:
-        return False
+        return 0
     # send trigger reward
     hjqyOpenReward = game_configs.base_config.get("hjqyOpenRewardID")
     send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
