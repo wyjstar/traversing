@@ -266,8 +266,8 @@ def pvp_fight_request_1505(data, player):
             if request.challenge_rank - before_player_rank >= rank_count:
                 txt = game_configs.push_config[1003].text
                 message = game_configs.language_config.get(str(txt)).get('cn')
-                remote_gate.add_push_message_remote(player.base_info.id, 3,
-                                                    message, int(time.time()))
+                remote_gate['push'].add_push_message_remote(player.base_info.id, 3,
+                                                            message, int(time.time()))
 
             push_message('add_blacklist_request_remote', target_id,
                          player.base_info.id)
@@ -441,10 +441,10 @@ def reset_pvp_time_1506(data, player):
         response.res.result_no = 1506
         return response.SerializePartialToString()
 
-    need_gold = get_consume_gold_num(_consume)
+    need_gold = get_consume_gold_num(_consume) * request.times
 
     def func():
-        return_data = consume(player, _consume)  # 消耗
+        return_data = consume(player, _consume, multiple=request.times)  # 消耗
         get_return(player, return_data, response.consume)
         player.pvp.pvp_times += request.times
         player.pvp.pvp_refresh_time = time.time()

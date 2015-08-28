@@ -801,9 +801,9 @@ function CommonData:addStamina(num)
     -- getHomeBasicAttrView():updateStamina()
 end
 
---购买体力次数
-function CommonData:getBuyStaminaTimes() return self.buy_stamina_times end
-function CommonData:addBuyStaminaTimes() self.buy_stamina_times = self.buy_stamina_times + 1 end
+--购买体力次数 (已经无效了)
+-- function CommonData:getBuyStaminaTimes() return self.buy_stamina_times end
+-- function CommonData:addBuyStaminaTimes() self.buy_stamina_times = self.buy_stamina_times + 1 end
 
 --元宝
 function CommonData:setGold(cur_gold)

@@ -460,3 +460,32 @@ def open_next_day_activity_2203(request_proto, player):
     response = CommonResponse()
     response.result = True
     return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def first_recharge_activity_2204(request_proto, player):
+    """
+    首次充值
+    """
+    response = recharge_pb2.GetRechargeGiftResponse()
+    response.res.result = True
+    if player.base_info.recharge == 0:
+        response.res.result = False
+        response.res.result_no = 22041
+        return response.SerializePartialToString()
+
+    if player.base_info.first_recharge_activity == 1:
+        response.res.result = False
+        response.res.result_no = 22042
+        return response.SerializePartialToString()
+
+    activity_info = game_configs.activity_config.get(7)[0]
+    if activity_info:
+        logger.error("activity not exist!")
+
+    player.base_info.first_recharge_activity = 1
+    player.base_info.save_data()
+    return_data = gain(player, activity_info.get('reward', {}), const.FIRST_RECHARGE)
+    get_return(player, return_data, response.gain)
+
+    return response.SerializePartialToString()
+

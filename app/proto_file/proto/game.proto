@@ -79,6 +79,8 @@ message GameLoginResponse{
     repeated BuyStaminaTimes buy_times = 36; //购买资源（体力，讨伐令，鞋子）次数
     //
     optional bool is_open_next_day_activity = 37; // 是否开启次日功能
+    //
+    optional int32 first_recharge_activity = 38; // 是否已获得首次充值 -1:没领过 1:领过 
 }
 
 message BuyStaminaTimes

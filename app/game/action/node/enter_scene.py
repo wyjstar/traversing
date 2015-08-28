@@ -39,7 +39,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     logger.debug("plat_id %s" % pay_arg.get("plat_id"))
 
     remote_gate.pull_message_remote(character_id)
-    remote_gate.online_offline_remote(player.base_info.id, 1)
+    remote_gate['push'].online_offline_remote(player.base_info.id, 1)
 
     responsedata = GameLoginResponse()
     responsedata.res.result = True
@@ -113,11 +113,13 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.fight_power_rank = rank_no
 
     responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
+    responsedata.first_recharge_activity = player.base_info.first_recharge_activity
     logger.debug("character info:----------------------")
     logger.debug("vip_level:%d", player.base_info.vip_level)
     logger.debug("recharge:%d", player.base_info.recharge)
     logger.debug("register_time:%d", player.base_info.register_time)
     logger.debug("buy_stamina_times:%d", player.stamina.buy_stamina_times)
+    logger.debug("first_recharge_activity:%d", player.base_info.first_recharge_activity)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)

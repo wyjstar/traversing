@@ -36,30 +36,13 @@ CREATE TABLE `tb_user` (
   INDEX `device_id` (`device_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `tb_pvp_rank`;
-CREATE TABLE `tb_pvp_rank` (
-  `id` bigint(20) NOT NULL,
-  `character_id` bigint(20) NOT NULL,
-  `nickname` varchar(128) DEFAULT '',
-  `level` int(11) NOT NULL DEFAULT '1',
-  `ap` int(11) NOT NULL,
-  `best_skill` int(11) NOT NULL,
-  `unpar_skill` int(11) NOT NULL,
-  `unpar_skill_level` int(11) NOT NULL,
-  `units` blob NOT NULL,
-  `slots` mediumblob NOT NULL,
-  `hero_ids` tinyblob NOT NULL,
-  `hero_levels` tinyblob NOT NULL,
-  `head_no` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  INDEX `character_id` (`character_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS `tb_character_info`;
 CREATE TABLE `tb_character_info` (
   `id` bigint(20) NOT NULL,
   `base_info` mediumblob,
   `mails` mediumblob,
+  `heroes` mediumblob,
+  `equipments` mediumblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

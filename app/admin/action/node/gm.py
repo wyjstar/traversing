@@ -495,9 +495,11 @@ def copy_user(args):
 
     return {'success': 1}
 
+
 def add_push_message(args):
     uid = int(args.get('uid'))
     mtype = int(args.get('mtype'))
     msg = args.get('msg')
-    remote_gate.add_push_message_remote(uid, mtype, msg, int(time.time()))
+    remote_gate['push'].add_push_message_remote(uid, mtype, msg,
+                                                int(time.time()))
     return {'success': 1}

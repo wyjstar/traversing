@@ -50,6 +50,7 @@ class CharacterBaseInfoComponent(Component):
         self._battle_speed = 1
         self._plat_id = -1
         self._is_open_next_day_activity = False
+        self._first_recharge_activity = -1 # -1 没领 1 领过
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -77,6 +78,7 @@ class CharacterBaseInfoComponent(Component):
         self._tomorrow_gift = character_info.get('tomorrow_gift', 0)
         self._battle_speed = character_info.get('battle_speed', 1)
         self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
+        self._first_recharge_activity = character_info.get('first_recharge_activity', False)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -107,6 +109,7 @@ class CharacterBaseInfoComponent(Component):
                     tomorrow_gift=self._tomorrow_gift,
                     battle_speed=self._battle_speed,
                     is_open_next_day_activity=self._is_open_next_day_activity,
+                    first_recharge_activity=self._first_recharge_activity,
                     )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -133,6 +136,7 @@ class CharacterBaseInfoComponent(Component):
                     tomorrow_gift=self._tomorrow_gift,
                     battle_speed=self._battle_speed,
                     is_open_next_day_activity=self._is_open_next_day_activity,
+                    first_recharge_activity=self._first_recharge_activity,
                     )
         return data
 
@@ -518,6 +522,14 @@ class CharacterBaseInfoComponent(Component):
     @is_open_next_day_activity.setter
     def is_open_next_day_activity(self, value):
         self._is_open_next_day_activity = value
+
+    @property
+    def first_recharge_activity(self):
+        return self._first_recharge_activity
+
+    @first_recharge_activity.setter
+    def first_recharge_activity(self, value):
+        self._first_recharge_activity = value
 
     @property
     def buy_hjqy_max(self):
