@@ -76,7 +76,7 @@ def save_line_up_order(line_up, player, current_unpar, stage_id=0):
     player.fight_cache_component.stage_id = stage_id
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component.current_unpar = current_unpar
-    player.line_up_component.save_data()
+    player.line_up_component.save_data(["line_up_order", "current_unpar"])
 
 
 def pvp_assemble_units(red_units, blue_units, response):

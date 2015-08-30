@@ -290,6 +290,7 @@ class Equipment(object):
         equipment_pb.no = self.base_info.equipment_no
         equipment_pb.strengthen_lv = self.attribute.strengthen_lv
         equipment_pb.awakening_lv = self.attribute.awakening_lv
+        equipment_pb.is_guard = self.attribute.is_guard
         equipment_pb.prefix = self.attribute.prefix
         equipment_pb.nobbing_effect = 0
         equipment_pb.hero_no = 0

@@ -482,7 +482,7 @@ class PlayerField(Mine):
         result = remote_gate.mine_settle_remote(uid, self._seq, result, nickname, hold)
         data, uid, nickname = cPickle.loads(result)
         self.update_info(data)
-        
+
         return self, self._normal, self._lucky, uid, nickname
 
     def get_cur_data(self, now):
@@ -519,7 +519,7 @@ class PlayerField(Mine):
 #         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
 #         print 'mine_info', cPickle.loads(data)
         self.guard_info()
-        
+
         return Mine.mine_info(self)
 
     def detail_info(self):
@@ -579,12 +579,12 @@ class PlayerField(Mine):
 #         for k, v in self._lucky.items():
 #             stones[k] = v
 #             self._lucky[k] = 0
-# 
+#
 #         self._status = 3
 #         save_data = self.save_info()
 #         MineOpt.add_mine(self._tid, self._seq, save_data)
 #         MineOpt.unlock(self._seq)
-# 
+#
 #         return stones
     def draw_stones(self):
         status, stones = remote_gate.mine_harvest_remote(self._tid, self._seq)
@@ -597,7 +597,7 @@ class PlayerField(Mine):
 
     def guard_info(self):
         data = remote_gate.mine_update_remote(self._tid, self._seq)
-        
+
         self.update_info(cPickle.loads(data))
         return self._lineup
 
@@ -1007,7 +1007,7 @@ class UserMine(Component):
             if mine_info['type'] == MineType.PLAYER_FIELD:
                 if mine_info['nickname'] != self.owner.base_info.base_name:
                     self.un_guard(pos)
-            
+
             mine_info['position'] = pos
             mine_infos.append(mine_info)
         return mine_infos
@@ -1133,7 +1133,7 @@ class UserMine(Component):
         """
         {hid, []}
         """
-        self.un_guard(position)
+        #self.un_guard(position)
         self._guard[position] = slots
         self._update = True
 

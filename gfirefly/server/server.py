@@ -20,6 +20,7 @@ from gfirefly.dbentrust.redis_manager import redis_manager
 from sdk.api.tencent.msdk import Msdk
 from sdk.api.tencent.midas_api import MidasApi
 from sdk.util import logger_sdk
+import time
 
 reactor = reactor
 
@@ -69,6 +70,8 @@ class FFServer:
         cpuid = config.get('cpu')  # 绑定cpu
         mreload = config.get('reload')  # 重新加载模块名称
         self.servername = servername
+        if servername == 'net':
+            time.sleep(2)
 
         if logpath:
             log_init(logpath)  # 日志处理
