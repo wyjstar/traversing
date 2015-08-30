@@ -11,9 +11,12 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from app.proto_file import player_request_pb2
 from app.proto_file import recharge_pb2
+from app.proto_file import player_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
-from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, ChangeHeadRequest
-from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, ChangeHeadResponse
+from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, \
+    ChangeHeadRequest
+from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, \
+    ChangeHeadResponse, UpdateHightPowerResponse
 from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.game.core.item_group_helper import gain, get_return
@@ -490,3 +493,16 @@ def first_recharge_activity_2204(request_proto, player):
 
     return response.SerializePartialToString()
 
+@remoteserviceHandle('gate')
+def heartbeat_1833(data, player):
+    response = UpdateHightPowerResponse()
+
+    combat_power = player.line_up_component.combat_power
+    hight_power = player.line_up_component.hight_power
+    if hight_power and hight_power >= combat_power:
+        response.hight_power = hight_power
+    else:
+        response.hight_power = combat_power
+        player.line_up_component.hight_power = combat_power
+        player.line_up_component.save_data()
+    return response.SerializePartialToString()

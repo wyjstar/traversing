@@ -40,6 +40,7 @@ class CharacterLineUpComponent(Component):
         self._unpars = {}  # 无双
         self._friend_fight_times = {}  # 小伙伴战斗次数
         self._friend_fight_last_time = 0
+        self._hight_power = 0
 
     def init_data(self, character_info):
         line_up_slots = character_info.get('line_up_slots')
@@ -57,6 +58,7 @@ class CharacterLineUpComponent(Component):
         self._current_unpar = character_info.get('current_unpar')
         self._friend_fight_times = character_info.get('friend_fight_times', {})
         self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
+        self._hight_power = character_info.get('hight_power', 0)
 
         self.update_slot_activation()
 
@@ -74,6 +76,7 @@ class CharacterLineUpComponent(Component):
             'current_unpar': self._current_unpar,
             'friend_fight_times': self._friend_fight_times,
             'attackPoint': power,
+            'hight_power': self._hight_power,
             'best_skill': self.get_skill_id_by_unpar(self._current_unpar),
             'copy_units': self.owner.fight_cache_component.red_unit,
             'copy_slots': line_up_info(self.owner).SerializeToString()
@@ -97,6 +100,7 @@ class CharacterLineUpComponent(Component):
                     friend_fight_times=self._friend_fight_times,
                     best_skill=0,
                     attackPoint=0,
+                    hight_power=0,
                     copy_units=self.owner.fight_cache_component.red_unit,
                     copy_slots=line_up_info(self.owner).SerializeToString()
                     )
@@ -404,3 +408,11 @@ class CharacterLineUpComponent(Component):
     @friend_fight_last_time.setter
     def friend_fight_last_time(self, friend_fight_last_time):
         self._friend_fight_last_time = friend_fight_last_time
+
+    @property
+    def hight_power(self):
+        return self._hight_power
+
+    @hight_power.setter
+    def hight_power(self, v):
+        self._hight_power = v

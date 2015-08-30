@@ -275,6 +275,9 @@ def pvp_fight_request_1505(data, player):
             if request.challenge_rank < before_player_rank:
                 tb_pvp_rank.zadd(request.challenge_rank, player.base_info.id,
                                  before_player_rank, target_id)
+                send_mail(conf_id=123, receive_id=target_id,
+                          pvp_rank=before_player_rank,
+                          nickname=player.base_info.base_name)
 
             if request.challenge_rank < player.pvp.pvp_high_rank:
                 rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
@@ -291,10 +294,6 @@ def pvp_fight_request_1505(data, player):
                 get_return(player, return_data, response.award)
             else:
                 logger.debug('arena rank up points is not find')
-
-            send_mail(conf_id=123, receive_id=target_id,
-                      pvp_rank=before_player_rank,
-                      nickname=player.base_info.base_name)
         else:
             logger.debug("fight result:False")
             send_mail(conf_id=124, receive_id=target_id,

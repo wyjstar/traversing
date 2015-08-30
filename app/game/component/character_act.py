@@ -23,12 +23,12 @@ class CharacterActComponent(Component):
 
     def save_data(self):
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data = dict(received_ids=self._received_gift_ids,
+        data = dict(received_ids=self._received_ids,
                     received_time=self._received_time)
         character_obj.hset('act_info', data)
 
     def new_data(self):
-        data = dict(received_ids=[],
+        data = dict(received_ids={},
                     received_time=self._received_time)
         return {'act_info': data}
 

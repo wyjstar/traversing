@@ -25,15 +25,19 @@ def get_act_gift_1832(data, player):
     act_type = act_conf.type
     received_ids = player.act.received_ids.get(act_type)
     if received_ids and act_id in received_ids:
-        response.res.result_no = 800
+        response.res.result_no = 801
         return response.SerializeToString()
     if act_type == 20:  # 战力
-        res = get_20_gift(act_conf, response)
+        res = get_20_gift(player, act_conf, response)
     elif act_type == 21:  # 通关关卡
-        res = get_21_gift(act_conf, response)
+        res = get_21_gift(player, act_conf, response)
     if res:
-        player.act.received_ids.append(act_id)
+        if received_ids:
+            player.act.received_ids.get(act_type).append(act_id)
+        else:
+            player.act.received_ids[act_type] = [act_id]
         player.act.save_data()
+        response.res.result = True
 
     return response.SerializeToString()
 
@@ -42,7 +46,7 @@ def get_20_gift(player, act_conf, response):  # 战力
     # power = player.line_up_component.combat_power
     # if act_conf.parameterA > player.line_up_component.highest_power:
     if act_conf.parameterA > player.line_up_component.combat_power:
-        response.res.result_no = 800
+        response.res.result_no = 802
         return 0
     gain_data = act_conf.reward
     return_data = gain(player, gain_data, const.ACT20)
@@ -68,9 +72,9 @@ def get_act_info_1831(data, player):
     act_type = args.act_type
 
     response = activity_pb2.GetActInfoResponse()
-    received_ids = player.ap_gift.received_ids.get(act_type)
+    received_ids = player.act.received_ids.get(act_type)
     if received_ids:
         for id in received_ids:
-            response.received_ids.append(id)
+            response.received_act_ids.append(id)
     response.res.result = True
     return response.SerializeToString()
