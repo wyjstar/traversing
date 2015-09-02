@@ -1,0 +1,15 @@
+import "common.proto";
+
+message BrewInfo{
+    optional int32 brew_times = 1;
+    optional int32 brew_step = 2;
+    optional int32 nectar_num = 3;
+    optional int32 nectar_cur = 4;
+    optional int32 gold = 5;
+    optional CommonResponse res = 6;
+    optional GameResourcesResponse consume = 7;
+}
+
+message DoBrew{
+    optional int32 brew_type = 1;
+}

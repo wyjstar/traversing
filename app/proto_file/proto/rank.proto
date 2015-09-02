@@ -1,0 +1,32 @@
+import "common.proto";
+
+//1805
+message GetRankRequest{
+    required int32 first_no = 1;
+    required int32 last_no = 2;
+    required int32 rank_type = 3;
+}
+
+//1805
+message GetRankResponse{
+    required CommonResponse res = 1;
+    repeated RankUserInfo user_info = 2;
+    optional RankUserInfo my_rank_info= 3;// 如果查的是1-n名，会返回我的rank信息
+    optional int32 all_num= 4;//总人数
+}
+
+//1805
+message RankUserInfo{
+    optional int32 rank = 1;
+    optional int32 id = 2;
+    optional string nickname = 3;
+    optional int32 level = 4;
+    optional int32 fight_power = 5;   //战斗力
+    optional int32 star_num = 6;   //星星数量
+    optional int32 stage_id = 7;   //关卡ID
+
+    optional int32 last_rank = 8; //返回我的信息的时候返回一下我的上个排行
+    optional int32 user_icon = 9;   //头像
+    
+    optional int64 damage_hp = 10; //伤害血量, 用于黄巾起义
+}

@@ -1,0 +1,12 @@
+import "common.proto";
+
+// 上次吃酒席时间 command：821
+message GetEatTimeResponse{
+	required CommonResponse res = 1;
+	optional int32 eat_time = 2;
+}
+
+// 吃酒席 command：820
+message EatFeastResponse{
+	required int32 res = 1; //1:已经吃过 2 成功吃 3还没到时间
+}

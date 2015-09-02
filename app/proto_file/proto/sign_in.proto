@@ -1,0 +1,38 @@
+import "common.proto";
+
+// 获取签到初始化信息:1400
+message GetSignInResponse{
+    repeated int32 days = 1; // 签到日期
+    required int32 sign_round = 2; //签到组
+    required int32 current_day = 5; //登陆当天
+    repeated int32 continuous_sign_in_prize = 3; //已经获取的连续签到奖励，保存列表[7，15，25]
+    required int32 repair_sign_in_times = 4; //补充签到次数
+    repeated int32 box_sign_in_prize = 6; //已经获取的宝箱签到奖励，保存列表[]
+}
+
+// 补签:1403
+message RepairSignInRequest{
+    required int32 day = 1;
+}
+
+// 签到，补签:1401，1403, 1404
+message SignInResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+// 连续签到获取额外奖励:1402
+message ContinuousSignInRequest{
+    required int32 sign_in_days = 1; //连续登录天数: 7, 15 , 25
+}
+
+// 连续签到返回奖励:1402
+message ContinuousSignInResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+// 签到宝箱领奖:1404
+message SignInBoxRequest{
+    required int32 id = 1;
+}

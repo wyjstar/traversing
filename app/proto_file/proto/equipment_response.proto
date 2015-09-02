@@ -1,0 +1,43 @@
+import "common.proto";
+import "equipment.proto";
+
+// 请求全部装备返回 command：401
+message GetEquipmentResponse{
+	required CommonResponse res = 1;
+	repeated EquipmentPB equipment = 2;
+}
+
+// 装备强化返回 command: 402
+message EnhanceEquipmentResponse{
+	required CommonResponse res = 1;
+	optional int32 num = 3; // 强化次数, 用于一键强化
+	repeated EnhanceDataFormat data= 2;
+}
+
+// 装备合成返回 command:  403
+message ComposeEquipmentResponse{
+	required CommonResponse res = 1;
+	optional EquipmentPB equ = 2;  //装备
+}
+
+// 装备锤炼返回 command:  404
+message NobbingEquipmentResponse{
+	required CommonResponse res = 1;
+	optional EquipmentPB equ = 2;  //装备
+	optional GameResourcesResponse cgr = 3; // 消耗
+}
+
+
+// 装备熔炼返回 command:405
+message MeltingEquipmentResponse{
+	required CommonResponse res = 1;
+	optional GameResourcesResponse cgr = 2; // 消耗
+}
+
+
+// 装备觉醒 command:406
+message AwakeningEquipmentResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse cgr = 2; // 消耗
+}

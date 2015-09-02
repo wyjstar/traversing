@@ -1,0 +1,49 @@
+import "hero.proto";
+import "equipment.proto";
+import "item.proto";
+import "hero_chip.proto";
+import "equipment_chip.proto";
+import "player.proto";
+import "travel_item.proto";
+message CommonResponse
+{
+    required bool result = 1;  //处理结果 True：正确
+    optional int32 result_no = 2;
+    optional string message = 3;
+}
+
+// 数据集合
+message GameResourcesResponse
+{
+    repeated HeroPB heros = 1;
+    repeated EquipmentPB equipments = 2;
+    repeated ItemPB items = 3;
+    repeated HeroChipPB hero_chips = 4;
+    repeated EquipmentChipPB equipment_chips = 5;
+    optional FinancePB finance = 6;
+    optional int32 stamina = 7;
+    repeated TravelItem travel_item= 8;
+    repeated Runt1 runt = 10;
+    optional int32 team_exp = 11;
+}
+
+message Runt1{
+    required bytes runt_no = 1;
+    repeated RuntAttr main_attr = 2;
+    repeated RuntAttr minor_attr = 3;
+    required int32 runt_id = 4;
+}
+
+message RuntAttr{
+    required int32 attr_value_type = 1;
+    required float attr_value = 2;
+    required int32 attr_increment = 3;
+    required int32 attr_type = 4;
+}
+
+message GetGoldResponse{
+    optional CommonResponse res = 1;
+    required int32 gold = 2;
+    required int32 vip_level = 3;
+    required int32 recharge = 4;
+}

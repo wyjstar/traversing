@@ -1,0 +1,22 @@
+import "common.proto";
+
+// get level gift
+message GetLevelGift{
+	required int32 gift_id = 1;
+}
+
+message GetLevelGiftResponse{
+	required bool result = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+message NewLevelGiftResponse{
+    required CommonResponse res = 1;
+    repeated LevelGiftInfo level_info = 2;
+}
+
+//840
+message LevelGiftInfo{
+    required int32 level = 1;
+    required GameResourcesResponse drops = 2;
+}

@@ -1,0 +1,239 @@
+{
+    "master": {
+        "roothost": "127.0.0.1",
+        "rootport": 30001,
+        "webport": 30002
+    },
+    "servers": {
+        "admin": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "db": true,
+            "webport": 30003,
+            "name": "admin",
+            "app": "app.admin",
+            "log": "app/logs/admin.log"
+        },
+        "MA": {
+            "webport": 30004,
+            "name": "MA",
+            "db": true,
+            "app": "app.MA",
+            "log": "app/logs/MA.log"
+        },
+        "login": {
+            "rootport": 30005,
+            "webport": 30006,
+            "MA_url": "http://localhost",
+            "db": true,
+            "name": "login",
+            "app": "app.login",
+            "reload":"app.login.model.manager",
+            "log": "app/logs/login.log"
+        },
+        "transit": {
+            "rootport": 30007,
+            "name": "transit",
+            "redis": true,
+            "db": true,
+            "app": "app.transit",
+            "log": "app/logs/transit.log"
+        },
+        "gate": {
+            "rootport": 30008,
+            "webport": 30013,
+            "remoteport": [
+                {
+                    "roothost": "127.0.0.1",
+                    "rootport": 30007,
+                    "rootname": "transit"
+                },
+                {
+                    "roothost": "<=login_ip=>",
+                    "rootport": 30005,
+                    "rootname": "login"
+                },
+                {
+                    "roothost": "127.0.0.1",
+                    "rootport": 30010,
+                    "rootname": "world"
+                }
+            ],
+            "mem": true,
+            "redis": true,
+            "db": true,
+            "app": "app.gate",
+            "log": "app/logs/gate.log",
+            "name": "<=server_name=>",
+            "front_ip": "<=front_ip=>",
+            "front_port": 30009
+        },
+        "net": {
+            "netport": 30009,
+            "name": "net",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.net",
+            "log": "app/logs/net.log"
+        },
+        "game1": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game1.log",
+            "redis": true
+        },
+        "game2": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game2.log",
+            "redis": true
+        },
+        "game3": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game3.log",
+            "redis": true
+        },
+        "game4": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game4.log",
+            "redis": true
+        },
+        "chat": {
+            "name": "chat",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "app": "app.chat",
+            "log": "app/logs/chat.log"
+        },
+        "dbfront": {
+            "name": "dbfront",
+            "db": true,
+            "redis": true,
+            "app": "app.dbfront",
+            "log": "app/logs/db.log"
+        },
+        "world": {
+            "rootport": 30010,
+            "name": "world",
+            "app": "app.world",
+            "redis": true,
+            "log": "app/logs/world.log"
+        },
+        "push": {
+            "name": "push",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "app": "app.push",
+            "log": "app/logs/push.log"
+        },
+        "mine": {
+            "name": "mine",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "app": "app.mine",
+            "log": "app/logs/mine.log"
+        }
+    },
+    "db": {
+        "host": "127.0.0.1",
+        "user": "root",
+        "passwd": "123456",
+        "port": 3306,
+        "db": "db_traversing",
+        "charset": "utf8"
+    },
+    "redis": {
+        "urls": ["127.0.0.1:6379"],
+        "hostname": "tt"
+    },
+    "tlog":{
+         "host": "192.168.1.60",
+         "port": 6667
+    },
+    "msdk":{
+        "zone_id": 1,
+        "host": "msdktest.qq.com",
+
+        "qq_appid": 1104297231,
+        "qq_appkey": "y33yRx3FveVZb1dw",
+        "wx_appid": "wxf77437c08cb06196",
+        "wx_appkey": "8274b9e862581f8b4976ba90ad2d4b77",
+
+        "discountid": "UM150313205618735",
+        "giftid": "2731288429PID201503132056187441",
+
+        "pay_host": "10.142.22.11:8080",
+        "goods_host": "10.142.22.11:8080",
+        "valid_host": "10.130.2.233:80",
+
+        "cdkey_url": "http://192.168.1.60:2600/cdkey",
+
+        "appid": 150651
+    },
+    "push":{
+        "channel": "xinge"
+    },
+    "deploy":{
+        "channel": "taiwan",
+        "remote_deployed": false
+    },
+    "server_no": "<=server_no=>"
+}

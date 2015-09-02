@@ -1,0 +1,132 @@
+import "common.proto";
+import "travel_item.proto";
+
+message Chapter{
+    repeated Travel travel = 1;
+    required int32 stage_id =2;
+}
+
+message Travel{
+    required int32 event_id = 1;
+    optional GameResourcesResponse drops = 2;
+    optional int32 time = 3;
+	optional int32 state = 4;
+}
+
+// travel 831
+message TravelRequest{
+    required int32 stage_id = 1;
+}
+message TravelResponse{
+    required CommonResponse res = 1;
+    optional int32 event_id = 2;
+    optional GameResourcesResponse drops = 3;
+    optional GameResourcesResponse consume = 4;
+}
+
+// travel_init 830
+message TravelInitResponse{
+    required CommonResponse res = 1;
+    repeated Chapter chapter = 2;
+    repeated StageTravel stage_travel = 3;
+    required int32 chest_time = 4;
+    repeated TravelItemChapter travel_item_chapter = 5;
+}
+
+message TravelItemChapter{
+    required int32 stage_id = 1;
+    repeated TravelItem travel_item = 2;
+}
+
+// buy shoes 832
+message BuyShoesRequest{
+    required int32 num = 1; //鞋子数量
+}
+
+message BuyShoesResponse{
+    required CommonResponse res =1;
+}
+
+// travel_settle 833
+message TravelSettleRequest{
+    required int32 stage_id = 1;
+    required int32 event_id =2;
+	optional int64 parameter = 3;  //如果是答题类型，发送答案id
+}
+
+message TravelSettleResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse drops = 2;
+}
+
+// 834
+message EventStartRequest{
+    required int32 stage_id = 1;
+    required int32 event_id = 2;
+}
+message EventStartResponse{
+    required CommonResponse res = 1;
+    optional int32 time = 2;
+}
+
+// 835
+message NoWaitRequest{
+    required int32 stage_id = 1;
+    required int32 event_id = 2;
+}
+message NoWaitResponse{
+    required CommonResponse res = 1;
+    optional int32 time = 2;
+}
+
+// 836
+message OpenChestResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse drops = 2;
+}
+
+// 837
+message AutoTravelRequest{
+    required int32 ttime = 1;
+    required int32 stage_id = 2;
+}
+
+message AutoTravelResponse{
+    required CommonResponse res = 1;
+    repeated StageTravel stage_travel = 2;
+}
+
+message AutoTravel{
+    required int32 start_time = 1;
+    required int32 continued_time = 2;
+    repeated Travel travel = 3;
+    required int32 already_times = 4;
+}
+
+message StageTravel{
+    required int32 stage_id = 1;
+    repeated AutoTravel auto_travel = 2;
+}
+
+// 838
+message SettleAutoRequest{
+    required int32 stage_id = 1;
+    required int32 start_time = 2;
+    required int32 event_id = 3;  // 0:all
+    required int32 settle_type =4; // 0 普通 1,等待时间事件的快速完成
+}
+
+message SettleAutoResponse{
+    required CommonResponse res = 1;
+    repeated StageTravel stage_travel = 2;
+}
+
+//839
+message FastFinishAutoRequest{
+    required int32 stage_id = 1;
+    required int32 start_time = 2;
+}
+message FastFinishAutoResponse{
+    required CommonResponse res = 1;
+    repeated StageTravel stage_travel = 2;
+}

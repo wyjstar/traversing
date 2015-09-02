@@ -1,0 +1,58 @@
+import "stage.proto";
+
+//请求关卡信息 command:901
+message StageInfoRequest{
+	required int32 stage_id = 1; //关卡编号 0: 全部信息
+}
+
+//请求章节奖励信息 command:902
+message ChapterInfoRequest{
+	required int32 chapter_id = 1; //章节编号 0：全部信息
+}
+
+// 进入关卡战斗 command:903
+message StageStartRequest{
+	required int32 stage_id = 1;     // 关卡编号
+    required int32 stage_type = 2;   // 关卡类型:1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
+	repeated int32 lineup = 3;      // 队形
+	optional int32 unparalleled = 4; // 无双技能ID
+	optional int32 fid = 5;          // 好友ID
+}
+
+
+// 关卡结算 command:904
+message StageSettlementRequest{
+    required int32 stage_id = 1;
+    required int32 stage_type = 2;
+	repeated StepInfo steps = 3; // 战斗步骤
+	required bool result = 4;  //输赢
+	optional bool is_skip = 5; // 是否跳过
+}
+
+// 扫荡 command:907
+message StageSweepRequest{
+	required int32 stage_id = 1; //关卡编号
+	required int32 times = 2;  //扫荡次数
+	required int32 sweep_type = 3;  //扫荡类型，1扫荡材料 2元宝
+}
+
+//重置关卡挑战次数 command:908
+message ResetStageRequest{
+	required int32 stage_id = 1;
+}
+
+//星星抽奖 command:909
+message StarAwardRequest{
+    required int32 chapter_id = 1;//章节编号
+    required int32 award_type = 2; //0:7star 1:14star 2:21star 3:dragon award
+}
+
+//更新显示剧情章节 command:912
+message UpdataPlotChapterRequest{
+    required int32 chapter_id = 1;//章节编号
+}
+
+// 1810
+message OpenStageChestRequest{
+    required int32 stage_id = 1;
+}

@@ -1,0 +1,95 @@
+import "common.proto";
+
+// add_friend_common 好友
+message FriendCommon{
+    repeated int32 target_ids = 1;  // invitee id
+}
+
+// add friend response
+message AddFriendResponse{
+    required bool result = 1;      //result
+}
+
+// find friend by friend's player id or nickname
+message FindFriendRequest{
+    optional bytes id_or_nickname = 1;
+}
+
+//
+message FindFriendResponse{
+	repeated CharacterInfo infos = 1;
+}
+
+message GetPlayerFriendsRequest{
+
+}
+
+// character information
+message CharacterInfo{
+    optional int32 id = 1;
+    optional string nickname = 2;
+    optional int32 hero_no = 3;  //英雄编号
+    optional int32 gift = 4 [default = 0];
+    optional float power = 5 [default = 1010];  // 战斗力
+    optional float hp = 6;  //血
+    optional float atk = 7;  //攻
+    optional float physical_def = 8;  //物理防御
+    optional float magic_def = 9;  //魔法防御
+    optional int32 last_time = 10 [default = 0];
+    optional int32 buddy_head = 11;  //小伙伴头像，仅用于支援
+    optional int32 current = 12; //当前活跃度
+    optional int32 target = 13; //目标活跃度
+    optional int32 stat = 14;//活跃度奖励状态，0未领取，1已领取
+    optional int32 level = 15;//玩家等级
+    optional int32 b_rank = 16 [default = 1]; //玩家的擂台排名
+    optional int32 buddy_level = 17;
+    optional int32 buddy_power = 18;
+    optional int32 vip_level = 19;
+    optional int32 fight_times = 20; // 攻击次数
+}
+
+// player friend items
+message GetPlayerFriendsResponse{
+    optional int32 open_receive = 1;
+    optional int32 page_num = 2;
+    repeated CharacterInfo friends = 3;
+    repeated CharacterInfo blacklist = 4;
+    repeated CharacterInfo applicant_list = 5;
+}
+
+// friend private chat:1060
+message FriendPrivateChatRequest{
+    optional int32 target_uid = 1;
+    optional string content = 2;
+}
+
+message GetRecommendFriendsResponse{
+    optional int32 open_receive = 1;
+    optional int32 page_num = 2;
+    repeated CharacterInfo recommend = 3;
+}
+
+//领取好友活跃度奖励请求
+message DrawRewardReq
+{
+	required int32 fid = 1;//好友ID
+}
+
+//领取好友活跃度奖励返回
+message DrawRewardRsp
+{
+	required int32 fid = 1;//好友ID
+	required CommonResponse res = 2;
+	optional GameResourcesResponse gain = 3; //通用奖励
+}
+
+//请求推荐好友
+message RecommendReq
+{
+}
+
+//请求推荐好友返回
+message RecommendRes
+{
+	repeated CharacterInfo rfriend = 1;
+}

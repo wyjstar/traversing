@@ -1,0 +1,25 @@
+message RPCProtocol{
+    required bytes msgType = 1;
+    required bytes key = 2;
+    required bytes name = 3;
+    optional Parameter result = 4;
+    repeated Parameter parameters = 5;  
+
+    message Parameter {
+        optional bytes python_param = 1;
+        optional bytes proto_param = 2;
+        optional string string_param = 3;
+        optional sint32 int_param = 4;
+        optional uint32 uint_param = 5;
+        optional sint64 int64_param = 6;
+        optional uint64 uint64_param = 7;
+        optional bool bool_param = 8;
+        optional float float_param = 9;
+        optional double double_param = 10;
+        optional bool is_null = 11;
+        repeated Parameter tuples = 12;
+        repeated Parameter list = 13;
+        optional bool null_list = 14;
+        optional bool null_tuple = 15;
+    }  
+}

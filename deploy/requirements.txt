@@ -1,0 +1,6 @@
+protobuf
+flask
+affinity
+pymysql
+redis
+pycrypto

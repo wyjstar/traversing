@@ -1,0 +1,25 @@
+import "game.proto";
+import "common.proto";
+
+message PlayerResponse
+{
+    required int64 id = 1;
+    required string nickname = 2;
+
+}
+
+
+message NewbeeGuideStepResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+    optional GameResourcesResponse consume = 3;
+    optional int32 step_id = 4;
+}
+message ChangeHeadResponse{
+    required CommonResponse res = 1;
+}
+
+//1833
+message UpdateHightPowerResponse{
+    required float hight_power = 1;
+}

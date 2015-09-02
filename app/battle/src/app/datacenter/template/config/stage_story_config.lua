@@ -1,0 +1,236 @@
+stage_story_config={
+  [10080113] = {
+  ["languageId"] = 2910080113,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10080113,  ["stageId"] = 100801,  ["resId"] = 1100072,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110028,}
+,  [10040512] = {
+  ["languageId"] = 2910040512,  ["monsterGroup"] = 1,  ["next"] = 10040513,  ["id"] = 10040512,  ["stageId"] = 100405,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10140111] = {
+  ["languageId"] = 2910140111,  ["monsterGroup"] = 1,  ["next"] = 10140112,  ["id"] = 10140111,  ["stageId"] = 101401,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10040513] = {
+  ["languageId"] = 2910040513,  ["monsterGroup"] = 1,  ["next"] = 10040514,  ["id"] = 10040513,  ["stageId"] = 100405,  ["resId"] = 1200022,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110019,}
+,  [10040514] = {
+  ["languageId"] = 2910040514,  ["monsterGroup"] = 1,  ["next"] = 10040515,  ["id"] = 10040514,  ["stageId"] = 100405,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10070001] = {
+  ["languageId"] = 2910070001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10070001,  ["stageId"] = 100700,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10040515] = {
+  ["languageId"] = 2910040515,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10040515,  ["stageId"] = 100405,  ["resId"] = 1100232,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110020,}
+,  [10100512] = {
+  ["languageId"] = 2910100512,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10100512,  ["stageId"] = 101005,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10020211] = {
+  ["languageId"] = 2910020211,  ["monsterGroup"] = 1,  ["next"] = 10020212,  ["id"] = 10020211,  ["stageId"] = 100202,  ["resId"] = 1200132,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110011,}
+,  [10020212] = {
+  ["languageId"] = 2910020212,  ["monsterGroup"] = 1,  ["next"] = 10020213,  ["id"] = 10020212,  ["stageId"] = 100202,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10020213] = {
+  ["languageId"] = 2910020213,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10020213,  ["stageId"] = 100202,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10070111] = {
+  ["languageId"] = 2910070111,  ["monsterGroup"] = 1,  ["next"] = 10070112,  ["id"] = 10070111,  ["stageId"] = 100701,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10080211] = {
+  ["languageId"] = 2910080211,  ["monsterGroup"] = 1,  ["next"] = 10080212,  ["id"] = 10080211,  ["stageId"] = 100802,  ["resId"] = 1100553,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110029,}
+,  [10030511] = {
+  ["languageId"] = 2910030511,  ["monsterGroup"] = 1,  ["next"] = 10030512,  ["id"] = 10030511,  ["stageId"] = 100305,  ["resId"] = 1100222,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110015,}
+,  [10070113] = {
+  ["languageId"] = 2910070113,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10070113,  ["stageId"] = 100701,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10030512] = {
+  ["languageId"] = 2910030512,  ["monsterGroup"] = 1,  ["next"] = 10030513,  ["id"] = 10030512,  ["stageId"] = 100305,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10130111] = {
+  ["languageId"] = 2910130111,  ["monsterGroup"] = 1,  ["next"] = 10130112,  ["id"] = 10130111,  ["stageId"] = 101301,  ["resId"] = 1100362,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110033,}
+,  [10040711] = {
+  ["languageId"] = 2910040711,  ["monsterGroup"] = 1,  ["next"] = 10040712,  ["id"] = 10040711,  ["stageId"] = 100407,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10090511] = {
+  ["languageId"] = 2910090511,  ["monsterGroup"] = 1,  ["next"] = 10090512,  ["id"] = 10090511,  ["stageId"] = 100905,  ["resId"] = 1100302,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110031,}
+,  [10040712] = {
+  ["languageId"] = 2910040712,  ["monsterGroup"] = 1,  ["next"] = 10040713,  ["id"] = 10040712,  ["stageId"] = 100407,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10130113] = {
+  ["languageId"] = 2910130113,  ["monsterGroup"] = 1,  ["next"] = 10130114,  ["id"] = 10130113,  ["stageId"] = 101301,  ["resId"] = 1100362,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110033,}
+,  [10040713] = {
+  ["languageId"] = 2910040713,  ["monsterGroup"] = 1,  ["next"] = 10040714,  ["id"] = 10040713,  ["stageId"] = 100407,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10130114] = {
+  ["languageId"] = 2910130114,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10130114,  ["stageId"] = 101301,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10040714] = {
+  ["languageId"] = 2910040714,  ["monsterGroup"] = 1,  ["next"] = 10040715,  ["id"] = 10040714,  ["stageId"] = 100407,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10040715] = {
+  ["languageId"] = 2910040715,  ["monsterGroup"] = 1,  ["next"] = 10040716,  ["id"] = 10040715,  ["stageId"] = 100407,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10120001] = {
+  ["languageId"] = 2910120001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10120001,  ["stageId"] = 101200,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10040716] = {
+  ["languageId"] = 2910040716,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10040716,  ["stageId"] = 100407,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10060111] = {
+  ["languageId"] = 2910060111,  ["monsterGroup"] = 1,  ["next"] = 10060112,  ["id"] = 10060111,  ["stageId"] = 100601,  ["resId"] = 1100252,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110024,}
+,  [10040732] = {
+  ["languageId"] = 2910040732,  ["monsterGroup"] = 3,  ["next"] = 10040733,  ["id"] = 10040732,  ["stageId"] = 100407,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10020511] = {
+  ["languageId"] = 2910020511,  ["monsterGroup"] = 1,  ["next"] = 10020512,  ["id"] = 10020511,  ["stageId"] = 100205,  ["resId"] = 1100212,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110012,}
+,  [10060113] = {
+  ["languageId"] = 2910060113,  ["monsterGroup"] = 1,  ["next"] = 10060114,  ["id"] = 10060113,  ["stageId"] = 100601,  ["resId"] = 1100252,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110024,}
+,  [20001] = {
+  ["languageId"] = 2900020001,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20001,  ["stageId"] = 0,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 6,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [20003] = {
+  ["languageId"] = 2900020003,  ["monsterGroup"] = 1,  ["next"] = 20004,  ["id"] = 20003,  ["stageId"] = 0,  ["resId"] = 1100463,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110035,}
+,  [10020513] = {
+  ["languageId"] = 2910020513,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10020513,  ["stageId"] = 100205,  ["resId"] = 1100212,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110012,}
+,  [20007] = {
+  ["languageId"] = 2900020007,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20007,  ["stageId"] = 0,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 2,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10050001] = {
+  ["languageId"] = 2910050001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10050001,  ["stageId"] = 100500,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10140114] = {
+  ["languageId"] = 2910140114,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10140114,  ["stageId"] = 101401,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10030713] = {
+  ["languageId"] = 2910030713,  ["monsterGroup"] = 1,  ["next"] = 10030714,  ["id"] = 10030713,  ["stageId"] = 100307,  ["resId"] = 1200142,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110003,}
+,  [10140113] = {
+  ["languageId"] = 2910140113,  ["monsterGroup"] = 1,  ["next"] = 10140114,  ["id"] = 10140113,  ["stageId"] = 101401,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10030714] = {
+  ["languageId"] = 2910030714,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10030714,  ["stageId"] = 100307,  ["resId"] = 1100473,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110016,}
+,  [10140112] = {
+  ["languageId"] = 2910140112,  ["monsterGroup"] = 1,  ["next"] = 10140113,  ["id"] = 10140112,  ["stageId"] = 101401,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10130112] = {
+  ["languageId"] = 2910130112,  ["monsterGroup"] = 1,  ["next"] = 10130113,  ["id"] = 10130112,  ["stageId"] = 101301,  ["resId"] = 1100352,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110034,}
+,  [10110001] = {
+  ["languageId"] = 2910110001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10110001,  ["stageId"] = 101100,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10090512] = {
+  ["languageId"] = 2910090512,  ["monsterGroup"] = 1,  ["next"] = 10090513,  ["id"] = 10090512,  ["stageId"] = 100905,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10050111] = {
+  ["languageId"] = 2910050111,  ["monsterGroup"] = 1,  ["next"] = 10050112,  ["id"] = 10050111,  ["stageId"] = 100501,  ["resId"] = 1100052,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110021,}
+,  [10100511] = {
+  ["languageId"] = 2910100511,  ["monsterGroup"] = 1,  ["next"] = 10100512,  ["id"] = 10100511,  ["stageId"] = 101005,  ["resId"] = 1100322,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110032,}
+,  [10090514] = {
+  ["languageId"] = 2910090514,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10090514,  ["stageId"] = 100905,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10050112] = {
+  ["languageId"] = 2910050112,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10050112,  ["stageId"] = 100501,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10020611] = {
+  ["languageId"] = 2910020611,  ["monsterGroup"] = 1,  ["next"] = 10020612,  ["id"] = 10020611,  ["stageId"] = 100206,  ["resId"] = 1200152,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110014,}
+,  [10090513] = {
+  ["languageId"] = 2910090513,  ["monsterGroup"] = 1,  ["next"] = 10090514,  ["id"] = 10090513,  ["stageId"] = 100905,  ["resId"] = 1100302,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110031,}
+,  [10020612] = {
+  ["languageId"] = 2910020612,  ["monsterGroup"] = 1,  ["next"] = 10020613,  ["id"] = 10020612,  ["stageId"] = 100206,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10110111] = {
+  ["languageId"] = 2910110111,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10110111,  ["stageId"] = 101101,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10020613] = {
+  ["languageId"] = 2910020613,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10020613,  ["stageId"] = 100206,  ["resId"] = 1200152,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110014,}
+,  [10090113] = {
+  ["languageId"] = 2910090113,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10090113,  ["stageId"] = 100901,  ["resId"] = 1100292,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110030,}
+,  [10090112] = {
+  ["languageId"] = 2910090112,  ["monsterGroup"] = 1,  ["next"] = 10090113,  ["id"] = 10090112,  ["stageId"] = 100901,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10020712] = {
+  ["languageId"] = 2910020712,  ["monsterGroup"] = 1,  ["next"] = 10020713,  ["id"] = 10020712,  ["stageId"] = 100207,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10020711] = {
+  ["languageId"] = 2910020711,  ["monsterGroup"] = 1,  ["next"] = 10020712,  ["id"] = 10020711,  ["stageId"] = 100207,  ["resId"] = 1100212,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110012,}
+,  [10020713] = {
+  ["languageId"] = 2910020713,  ["monsterGroup"] = 1,  ["next"] = 10020714,  ["id"] = 10020713,  ["stageId"] = 100207,  ["resId"] = 1100212,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110012,}
+,  [10080214] = {
+  ["languageId"] = 2910080214,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10080214,  ["stageId"] = 100802,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10020714] = {
+  ["languageId"] = 2910020714,  ["monsterGroup"] = 1,  ["next"] = 10020715,  ["id"] = 10020714,  ["stageId"] = 100207,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10080213] = {
+  ["languageId"] = 2910080213,  ["monsterGroup"] = 1,  ["next"] = 10080214,  ["id"] = 10080213,  ["stageId"] = 100802,  ["resId"] = 1100553,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110029,}
+,  [10020715] = {
+  ["languageId"] = 2910020715,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10020715,  ["stageId"] = 100207,  ["resId"] = 1100212,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110012,}
+,  [10100001] = {
+  ["languageId"] = 2910100001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10100001,  ["stageId"] = 101000,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10080212] = {
+  ["languageId"] = 2910080212,  ["monsterGroup"] = 1,  ["next"] = 10080213,  ["id"] = 10080212,  ["stageId"] = 100802,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10080112] = {
+  ["languageId"] = 2910080112,  ["monsterGroup"] = 1,  ["next"] = 10080113,  ["id"] = 10080112,  ["stageId"] = 100801,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10080111] = {
+  ["languageId"] = 2910080111,  ["monsterGroup"] = 1,  ["next"] = 10080112,  ["id"] = 10080111,  ["stageId"] = 100801,  ["resId"] = 1100072,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110028,}
+,  [10070112] = {
+  ["languageId"] = 2910070112,  ["monsterGroup"] = 1,  ["next"] = 10070113,  ["id"] = 10070112,  ["stageId"] = 100701,  ["resId"] = 1300632,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110027,}
+,  [10060713] = {
+  ["languageId"] = 2910060713,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10060713,  ["stageId"] = 100607,  ["resId"] = 1100503,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110026,}
+,  [10060712] = {
+  ["languageId"] = 2910060712,  ["monsterGroup"] = 1,  ["next"] = 10060713,  ["id"] = 10060712,  ["stageId"] = 100607,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10160001] = {
+  ["languageId"] = 2910160001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10160001,  ["stageId"] = 101600,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10060711] = {
+  ["languageId"] = 2910060711,  ["monsterGroup"] = 1,  ["next"] = 10060712,  ["id"] = 10060711,  ["stageId"] = 100607,  ["resId"] = 1100613,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110025,}
+,  [10060114] = {
+  ["languageId"] = 2910060114,  ["monsterGroup"] = 1,  ["next"] = 10060115,  ["id"] = 10060114,  ["stageId"] = 100601,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10060116] = {
+  ["languageId"] = 2910060116,  ["monsterGroup"] = 1,  ["next"] = 10060117,  ["id"] = 10060116,  ["stageId"] = 100601,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10060117] = {
+  ["languageId"] = 2910060117,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10060117,  ["stageId"] = 100601,  ["resId"] = 1100252,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110024,}
+,  [10060511] = {
+  ["languageId"] = 2910060511,  ["monsterGroup"] = 1,  ["next"] = 10060512,  ["id"] = 10060511,  ["stageId"] = 100605,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10030001] = {
+  ["languageId"] = 2910030001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10030001,  ["stageId"] = 100300,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10060115] = {
+  ["languageId"] = 2910060115,  ["monsterGroup"] = 1,  ["next"] = 10060116,  ["id"] = 10060115,  ["stageId"] = 100601,  ["resId"] = 1100252,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110024,}
+,  [10060512] = {
+  ["languageId"] = 2910060512,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10060512,  ["stageId"] = 100605,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10060112] = {
+  ["languageId"] = 2910060112,  ["monsterGroup"] = 1,  ["next"] = 10060113,  ["id"] = 10060112,  ["stageId"] = 100601,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10050712] = {
+  ["languageId"] = 2910050712,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10050712,  ["stageId"] = 100507,  ["resId"] = 1100543,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110023,}
+,  [10050711] = {
+  ["languageId"] = 2910050711,  ["monsterGroup"] = 1,  ["next"] = 10050712,  ["id"] = 10050711,  ["stageId"] = 100507,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10040313] = {
+  ["languageId"] = 2910040313,  ["monsterGroup"] = 1,  ["next"] = 10040314,  ["id"] = 10040313,  ["stageId"] = 100403,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10090001] = {
+  ["languageId"] = 2910090001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10090001,  ["stageId"] = 100900,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10040311] = {
+  ["languageId"] = 2910040311,  ["monsterGroup"] = 1,  ["next"] = 10040312,  ["id"] = 10040311,  ["stageId"] = 100403,  ["resId"] = 1200032,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110017,}
+,  [10030111] = {
+  ["languageId"] = 2910030111,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10030111,  ["stageId"] = 100301,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10040211] = {
+  ["languageId"] = 2910040211,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10040211,  ["stageId"] = 100402,  ["resId"] = -1,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110001,}
+,  [10040001] = {
+  ["languageId"] = 2910040001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10040001,  ["stageId"] = 100400,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10050511] = {
+  ["languageId"] = 2910050511,  ["monsterGroup"] = 1,  ["next"] = 10050512,  ["id"] = 10050511,  ["stageId"] = 100505,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10040733] = {
+  ["languageId"] = 2910040733,  ["monsterGroup"] = 3,  ["next"] = -1,  ["id"] = 10040733,  ["stageId"] = 100407,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10150001] = {
+  ["languageId"] = 2910150001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10150001,  ["stageId"] = 101500,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10040731] = {
+  ["languageId"] = 2910040731,  ["monsterGroup"] = 3,  ["next"] = 10040732,  ["id"] = 10040731,  ["stageId"] = 100407,  ["resId"] = 1100483,  ["position"] = 2,  ["trigger"] = 2,  ["type"] = 2,  ["resIdName"] = 3400110010,}
+,  [10090111] = {
+  ["languageId"] = 2910090111,  ["monsterGroup"] = 1,  ["next"] = 10090112,  ["id"] = 10090111,  ["stageId"] = 100901,  ["resId"] = 1100292,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110030,}
+,  [10040312] = {
+  ["languageId"] = 2910040312,  ["monsterGroup"] = 1,  ["next"] = 10040313,  ["id"] = 10040312,  ["stageId"] = 100403,  ["resId"] = 1100042,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110018,}
+,  [10020113] = {
+  ["languageId"] = 2910020113,  ["monsterGroup"] = 1,  ["next"] = 10020114,  ["id"] = 10020113,  ["stageId"] = 100201,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [20002] = {
+  ["languageId"] = 2900020002,  ["monsterGroup"] = 1,  ["next"] = 20003,  ["id"] = 20002,  ["stageId"] = 0,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10020001] = {
+  ["languageId"] = 2910020001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10020001,  ["stageId"] = 100200,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10040314] = {
+  ["languageId"] = 2910040314,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10040314,  ["stageId"] = 100403,  ["resId"] = 1100042,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110018,}
+,  [10050512] = {
+  ["languageId"] = 2910050512,  ["monsterGroup"] = 1,  ["next"] = 10050513,  ["id"] = 10050512,  ["stageId"] = 100505,  ["resId"] = 1100493,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110022,}
+,  [10130001] = {
+  ["languageId"] = 2910130001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10130001,  ["stageId"] = 101300,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10050513] = {
+  ["languageId"] = 2910050513,  ["monsterGroup"] = 1,  ["next"] = 10050514,  ["id"] = 10050513,  ["stageId"] = 100505,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10020512] = {
+  ["languageId"] = 2910020512,  ["monsterGroup"] = 1,  ["next"] = 10020513,  ["id"] = 10020512,  ["stageId"] = 100205,  ["resId"] = 1100012,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110013,}
+,  [10050514] = {
+  ["languageId"] = 2910050514,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10050514,  ["stageId"] = 100505,  ["resId"] = 1100493,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110022,}
+,  [10080001] = {
+  ["languageId"] = 2910080001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10080001,  ["stageId"] = 100800,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10060001] = {
+  ["languageId"] = 2910060001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10060001,  ["stageId"] = 100600,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10020111] = {
+  ["languageId"] = 2910020111,  ["monsterGroup"] = 1,  ["next"] = 10020112,  ["id"] = 10020111,  ["stageId"] = 100201,  ["resId"] = 1200112,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110007,}
+,  [20004] = {
+  ["languageId"] = 2900020004,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20004,  ["stageId"] = 0,  ["resId"] = 1100453,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110036,}
+,  [20005] = {
+  ["languageId"] = 2900020005,  ["monsterGroup"] = 1,  ["next"] = 20006,  ["id"] = 20005,  ["stageId"] = 0,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 5,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10020112] = {
+  ["languageId"] = 2910020112,  ["monsterGroup"] = 1,  ["next"] = 10020113,  ["id"] = 10020112,  ["stageId"] = 100201,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [20006] = {
+  ["languageId"] = 2900020006,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20006,  ["stageId"] = 0,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10140001] = {
+  ["languageId"] = 2910140001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10140001,  ["stageId"] = 101400,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10030711] = {
+  ["languageId"] = 2910030711,  ["monsterGroup"] = 1,  ["next"] = 10030712,  ["id"] = 10030711,  ["stageId"] = 100307,  ["resId"] = 1200142,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110003,}
+,  [10020114] = {
+  ["languageId"] = 2910020114,  ["monsterGroup"] = 1,  ["next"] = 10020115,  ["id"] = 10020114,  ["stageId"] = 100201,  ["resId"] = 1100443,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110005,}
+,  [10030712] = {
+  ["languageId"] = 2910030712,  ["monsterGroup"] = 1,  ["next"] = 10030713,  ["id"] = 10030712,  ["stageId"] = 100307,  ["resId"] = 5,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110002,}
+,  [10020115] = {
+  ["languageId"] = 2910020115,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10020115,  ["stageId"] = 100201,  ["resId"] = 1200112,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110007,}
+,  [10040511] = {
+  ["languageId"] = 2910040511,  ["monsterGroup"] = 1,  ["next"] = 10040512,  ["id"] = 10040511,  ["stageId"] = 100405,  ["resId"] = 1200022,  ["position"] = 2,  ["trigger"] = 1,  ["type"] = 2,  ["resIdName"] = 3400110019,}
+,  [10010001] = {
+  ["languageId"] = 2910010001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10010001,  ["stageId"] = 100100,  ["resId"] = 0,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["resIdName"] = 0,}
+,  [10030513] = {
+  ["languageId"] = 2910030513,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10030513,  ["stageId"] = 100305,  ["resId"] = 1100222,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["resIdName"] = 3400110015,}
+,}

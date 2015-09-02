@@ -1,0 +1,85 @@
+import "common.proto";
+import "stage.proto";
+import "rank.proto";
+
+
+//command: 2101
+message HjqyInitRequest{
+    optional int32 owner_id = 1; // 0: 返回全体boss, 否则返回owner的boss 
+}
+message HjqyInitResponse
+{
+    repeated HjqyBossInfo bosses = 1; //boss信息
+    required int64 damage_hp = 2; //玩家伤害总血量
+    repeated int32 hjqy_ids = 3; // 已经领取的黄巾起义累积奖励
+    required int32 rank = 4; //排名
+}
+
+message HjqyBossInfo
+{
+    required int32 player_id = 1;     // 触发boss的玩家id
+    required string nickname = 2;     // 触发boss的玩家name
+    required int32 stage_id = 4;      // 关卡id
+    required bool is_share = 3;       // 是否分享给好友
+    optional int32 state = 8;         // boss 状态1.live 2.dead 3. run awary
+    optional int32 hp_left = 9;       // 剩余血量
+    /*optional int32 damage_hp = 10;    // 伤害*/
+    /*optional int32 rank_no = 11;    // 名次*/
+    /*optional int32 fight_times = 12;  // 战斗次数*/
+    optional int32 hp_max = 13;       // boss最大血量
+    optional int32 trigger_time = 14; // 触发时间
+}
+
+
+//触发黄巾起义, 战斗结算时添加
+
+
+//分享boss, cammand:2102, 广播协议号:2112
+//request:无
+//response:CommonResponse
+
+//开始战斗, command:2103, 
+//request:HjqyBattleRequest
+//response:HjqyBattleResponse
+message HjqyBattleRequest
+{
+    required int32 owner_id = 1; // 触发boss的玩家id
+    repeated int32 lineup = 2;   // 队形
+    optional int32 skill = 3;    // 无双技能ID
+    required int32 attack_type = 4; // 普通攻击:1，全力一击:2
+}
+message HjqyBattleResponse{
+    required CommonResponse res = 1;
+    repeated BattleUnit red = 2;         // 红方数据 自己
+    repeated BattleUnit blue = 3;        // 对方数据
+    optional int32 red_skill = 4;        // 我方无双
+    optional int32 red_skill_level = 5;  // 我方无双
+    optional int32 blue_skill = 6;       // 敌方无双
+    optional int32 blue_skill_level = 7; // 敌方无双
+    optional bool fight_result = 8;      // 战斗结果
+    optional int32 seed1= 9;             // 随机种子1
+    optional int32 seed2= 10;            // 随机种子2
+    optional int32 attack_type = 11;     // 普通攻击:1，全力一击:2
+    optional int32 hjqy_coin = 12;     // 功勋
+    optional int32 stage_id = 13;     // stage id
+}
+//结算奖励, 发放时间
+
+//排名奖励和击杀奖励，根据邮件发送
+
+//累计奖励, 手动获取, command: 2104
+message HjqyAddRewardRequest{
+    required int32 id = 1; //hjqy_config 中的id
+}
+message HjqyAddRewardResponse
+{
+     required CommonResponse res = 1; 
+     optional GameResourcesResponse gain = 2; 
+} 
+
+//排行信息 2105
+
+message HjqyRankResponse{
+    repeated RankUserInfo info = 1;
+}
+

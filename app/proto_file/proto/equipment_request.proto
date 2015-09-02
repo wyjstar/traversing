@@ -1,0 +1,37 @@
+// 请求全部装备 command：401
+message GetEquipmentsRequest{
+	required int32 type = 1; //请求装备类型 -1：一件 0：全部 1：武器 2：头盔 3：衣服 4：项链 5：饰品 6：宝物
+	optional string id = 2;  //装备ID
+}
+
+
+// 装备强化 command: 402
+message EnhanceEquipmentRequest{
+	required string id = 1;  //装备ID
+	optional int32 type = 2; //强化类型 1：强化 2：自动强化
+}
+
+
+// 装备合成 command:  403
+message ComposeEquipmentRequest{
+	required int32 no = 1;  //装备碎片No
+}
+
+
+// 装备锤炼 command:  404
+message NobbingEquipmentRequest{
+	required string id = 1; // 装备ID
+}
+
+
+// 装备熔炼 command:405
+message MeltingEquipmentRequest{
+	repeated string id = 1; // 装备ID
+}
+
+
+// 装备觉醒 command:406
+message AwakeningEquipmentRequest
+{
+    required string ids = 1; // 装备ID
+}

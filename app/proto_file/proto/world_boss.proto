@@ -1,0 +1,119 @@
+import "common.proto";
+import "stage.proto";
+import "line_up.proto";
+//获取boss开始前的所有信息， command:1701,1704
+message PvbRequest
+{
+    required string boss_id = 1; //boss id
+}
+message PvbRankItem{
+    required string nickname = 1; //玩家昵称
+    required int32 level = 2;//等级
+    required int32 now_head = 3;//玩家头像
+    required int32 demage_hp = 4; //伤害血量
+    optional LineUpResponse line_up_info = 5; //阵容信息
+    optional int32 player_id = 6; // 玩家id
+    optional int32 rank_no = 7; // 排名
+}
+
+message LuckyHeroAttr
+{
+    required int32 attr_type = 1;
+    required int32 attr_value_type = 2;
+    required float attr_value = 3;
+}
+message LuckyHeroItem
+{
+    required int32 pos = 1;
+    required int32 hero_no = 2;
+    repeated LuckyHeroAttr attr = 3;
+}
+
+message PvbBeforeInfoResponse{
+    required int32 stage_id = 1;
+    repeated LuckyHeroItem lucky_heros = 2;       // 武将6个
+    optional int32 debuff_skill_no = 5;           // 未遇到奇遇, 则为0
+    repeated PvbRankItem rank_items = 6;          // 伤害排名前十的玩家
+    optional PvbRankItem last_shot_item = 7;      // 最后击杀boss的玩家，如果没有击杀boss，则为空
+                                                  //
+    optional bool open_or_not = 8;                // 是否开启, no:上面参数有效，yes：下面参数有效
+                                                  //
+    optional int32 hp_left = 9;                   // 剩余血量
+    optional int32 demage_hp = 10;                // 伤害
+    optional int32 rank_no = 11;                  // 名次
+    optional int32 fight_times = 12;              // 战斗次数
+    optional int32 last_fight_time= 13;           // 上次战斗结束时间
+    optional int32 encourage_coin_num = 14;       // 金币鼓舞次数
+    optional int32 encourage_gold_num = 15;       // 元宝鼓舞次数
+    optional int32 gold_reborn_times = 16;        // 元宝复活次数
+    optional int32 hp_max = 17;                   // boss最大血量
+    optional int32 last_coin_encourage_time = 18; // 上次金币鼓舞时间
+}
+
+//请求pvb玩家信息, command:1702
+//响应协议
+message PvbPlayerInfoRequest{
+    required int32 rank_no = 1;// 排名
+    optional string boss_id = 2; // boss_id
+}
+
+//鼓舞， command:1703
+//响应协议CommonResponse
+message EncourageHerosRequest{
+    required int32 finance_type = 1;  //1:金币，2:元宝
+    required int32 finance_num = 2;   //金币或者元宝数量
+    optional string boss_id = 3; // boss_id
+}
+
+
+//使用元宝复活, command:1704
+//请求协议: PvbRequest
+//响应协议CommonResponse
+
+
+//开始战斗, command:1705
+message PvbStartRequest
+{
+	optional string boss_id = 4;     //boss id
+	repeated int32 lineup = 1;      // 队形
+	optional int32 unparalleled = 2; // 无双技能ID
+	optional int32 fid = 3;          // 好友ID
+
+}
+message PvbFightResponse{
+    required CommonResponse res = 1;
+    repeated BattleUnit red = 2;
+    repeated BattleUnit blue = 3;
+    optional int32 red_best_skill = 4;
+    optional int32 red_best_skill_level = 5;
+    optional bool fight_result = 6;
+    optional int32 seed1 = 7;
+    optional int32 seed2 = 8;
+    optional int32 debuff_skill_no = 9;         // 未遇到奇遇, 则为0
+    optional float damage_rate = 10;         // 鼓舞伤害加成
+}
+
+//战斗结算，command:1706
+//请求协议: PvbRequest 
+//响应协议PvbBeforeInfoResponse
+
+
+//todo:战斗奖励，在整个战斗结束时使用邮件推送
+
+//秘境boss触发, 向全服推送的消息 1707
+message MineBossResponse
+{
+    required CommonResponse res = 1; 
+    required string boss_id = 2; //boss id
+    required int32 stage_id = 3; //关卡id
+}
+
+//Pvb奖品:参与奖、累积伤害奖、排行奖、最后击杀奖励 command:1708
+message PvbAwardResponse
+{
+    required bool is_over = 1; //领奖是否结束
+    optional int32 award_type = 2; //奖励类型:排行奖1, 累积奖励2, 最后击杀3, 参与奖4
+    optional GameResourcesResponse gain = 3;
+    optional int32 rank_no = 4; //排行
+}
+

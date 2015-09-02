@@ -1,0 +1,27 @@
+
+
+message PlayerLoginRequest
+{
+    required string token = 1;
+}
+
+message CreatePlayerRequest{
+     optional string nickname = 1;//角色昵称
+}
+
+message NewbeeGuideStepRequest{
+	required int32 step_id = 1;
+    optional string common_id = 2; // 用于装备，符文，武将等
+    optional string sub_common_id = 3; // 用于装备，符文，武将等
+}
+message ChangeHeadRequest{
+	required int32 hero_id = 1;
+}
+message ChangeBattleSpeed{
+	required int32 speed = 1;
+}
+
+// 剧情
+message ChangeStageStory{
+	required int32 story_id = 1;
+}

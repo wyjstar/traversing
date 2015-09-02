@@ -1,0 +1,11 @@
+// 武将碎片
+message HeroChipPB{
+	required int32 hero_chip_no = 1;  //编号
+	required int32 hero_chip_num = 2;  //数量
+}
+
+// 返回碎片列表 command:108
+message GetHeroChipsResponse
+{
+    repeated HeroChipPB hero_chips = 1;
+}

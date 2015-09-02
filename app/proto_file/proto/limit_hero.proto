@@ -1,0 +1,32 @@
+import "common.proto";
+
+// 获取限时武将信息 command：1812
+message GetLimitHeroInfoResponse{
+    required CommonResponse res = 1;
+    optional int32 activity_id = 2;
+    optional int32 free_time = 3;     //上次免费抽取时间
+    optional int32 integral = 4;      //现有积分
+    optional int32 draw_times = 5;  //总抽取次数
+    optional int32 rank = 6;  //积分排行 0未加入排行
+    repeated LimitHeroRank limit_rank = 7;
+    optional int32 integral_draw_times = 8;  //积分抽取次数
+}
+
+message LimitHeroRank{
+    required string nickname = 1;
+    required int32 rank = 2;    //排名
+    required int32 integral = 3;  //积分
+}
+
+// 抽奖 command：1813
+message LimitHeroDrawRequest{
+	required int32 draw_type = 1;  //抽奖类型  1免费2元宝
+}
+
+message LimitHeroDrawResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+    optional int32 rank = 3;  //积分排行 0未加入排行
+    repeated LimitHeroRank limit_rank = 4;
+    optional int32 free_time = 5;     //上次免费抽取时间
+}

@@ -1,0 +1,35 @@
+import "common.proto";
+message rebateData
+{
+	required int32 rid = 1; //返利卡ID
+	required int32 switch = 2; //返利卡是否可购买,1可购买，0不可购买
+	required int32 last = 3; //返利卡剩余次数
+	required int32 draw = 4;//当前是否可领取1,可领取，0不可领取
+}
+
+//返利卡信息请求
+message rebateRequest
+{
+}
+
+//返利卡信息返回
+message rebateInfo
+{
+	repeated rebateData rebates = 1; //返利卡
+}
+
+
+//领取返利卡每日奖励请求
+message rebateDraw
+{
+	required int32 rid = 1; //返利卡ID
+}
+
+//返利卡每日奖励返回
+message rebateResp
+{
+	
+	required int32 rid = 1; //返利卡ID
+	required CommonResponse res = 2; 
+	required GameResourcesResponse gain = 3;
+}

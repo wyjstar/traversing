@@ -1,0 +1,59 @@
+import "common.proto";
+import "db.proto";
+
+
+//汇总邮箱信息, command : 1301
+message GetMailInfos
+{
+    repeated Mail_PB mails = 1;
+    optional int32 target = 2;
+    optional int32 current = 3;
+}
+
+//读邮件, command : 1302
+message ReadMailRequest
+{
+    repeated string mail_ids = 1;
+    optional int32 mail_type = 2;
+}
+
+//读邮件, command : 1302
+message ReadMailResponse
+{
+    required CommonResponse res = 1;
+    optional int32 target = 2;
+    optional int32 current = 3;
+    optional int32 mail_type = 4;
+    optional GameResourcesResponse gain = 5;
+}
+
+//删除邮件, command : 1303
+message DeleteMailRequest
+{
+    repeated string mail_ids = 1;
+}
+
+//发送邮件, command: 1304
+message SendMailRequest
+{
+    required Mail_PB mail = 1;
+}
+
+//接收邮件, command: 1305
+message ReceiveMailResponse
+{
+    required Mail_PB mail = 1;
+}
+
+//获取奖励, command : 1306
+message GetPrizeRequest
+{
+    required string mail_id = 1;
+}
+
+//获取奖励, command : 1306
+message GetPrizeResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

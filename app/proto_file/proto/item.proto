@@ -1,0 +1,8 @@
+
+// 道具
+message ItemPB{
+	required int32 item_no = 1;  //道具编号
+	required int32 item_num = 2;  //道具数量
+}
+
+

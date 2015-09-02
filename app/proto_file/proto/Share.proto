@@ -1,0 +1,20 @@
+import "common.proto";
+
+//获取奖励状态 msgid=2300
+message ClientGetShareStatusData
+{
+
+}
+
+//领取奖励
+message ClientGetShareReward
+{
+    required int32 task_id=1;
+}
+
+
+message ServerShareStatusData
+{
+    repeated int32 task_id=1;            //已经领取奖励的分享任务ID列表
+}
+

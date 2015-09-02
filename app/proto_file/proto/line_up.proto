@@ -1,0 +1,88 @@
+import "common.proto";
+import "hero.proto";
+import "equipment.proto";
+import "travel_item.proto";
+import "travel.proto";
+
+//格子装备
+message SlotEquipment{
+	required int32 no = 1; // 装备格子编号
+	optional EquipmentPB equ = 2; // 装备
+}
+
+
+// 阵容格子
+message LineUpSlot{
+	required int32 slot_no = 1; // 位置编号
+	optional bool activation = 2; //是否激活
+	optional HeroPB hero = 3; //英雄
+	repeated SlotEquipment equs = 4; //装备
+}
+
+
+// 取得阵容 701
+message Unpar{
+	required int32 unpar_id = 1;
+	required int32 unpar_level = 2;
+}
+
+//所有返回 
+message LineUpResponse{
+	repeated LineUpSlot slot = 1;
+	repeated LineUpSlot sub = 2;
+	repeated Unpar unpars = 3;
+	optional CommonResponse res = 4;
+    repeated int32 order = 5;
+    optional int32 unpar_id = 6;  // 当前无双
+    repeated TravelItemChapter travel_item_chapter = 7; // 风物志
+    optional int32 guild_level = 8; // 公会等级
+}
+
+message LineUpUnparUpgrade{
+	required int32 skill_id = 1;
+	required int32 skill_level = 2;
+}
+
+// 更换装备 703
+message ChangeEquipmentsRequest
+{
+	required int32 slot_no = 1; // 位置编号
+    optional int32 no = 2;  //装备格子编号
+    optional string equipment_id = 3; // 装备ID
+}
+
+// 更换多个装备 704
+message ChangeMultiEquipmentsRequest
+{
+    repeated ChangeEquipmentsRequest equs = 1; //多个装备
+}
+
+// 更换武将 702
+message ChangeHeroRequest{
+	required int32 slot_no = 1; // 位置编号
+	optional int32 change_type = 2; // 更换类型：0：阵容 1：助威
+	optional int32 hero_no = 3; // 英雄编号
+}
+
+// 查看目标玩家的阵容信息 706
+message GetLineUpRequest{
+	required int32 target_id = 1; // 玩家ID
+}
+
+message EquipmentStrengthInfo
+{
+	required int32 slot_no = 1; // 装备位置编号
+	repeated EnhanceDataFormat data= 2; // 强化数据
+}
+
+// 一键强化请求707
+message AllEquipmentsStrengthRequest{
+	required int32 slot_no = 1; // 位置编号
+}
+message AllEquipmentsStrengthResponse{
+    required CommonResponse res = 1;
+	required int32 slot_no = 5; // 位置编号
+    required int32 coin = 2;  // 消耗
+	repeated EquipmentStrengthInfo infos = 3; // 装备强化信息
+	optional LineUpResponse line_up = 4; // 阵容信息
+}

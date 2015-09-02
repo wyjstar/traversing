@@ -1,0 +1,133 @@
+
+main.lua                游戏入口，定义全局变量app
+config.lua              游戏配置
+framework/              framework目录
+app/                    游戏内容目录
+
+./app:
+Constants.lua           游戏常量
+MyApp.lua               游戏主函数
+comm/                   网络连接目录
+editor/                 动作编辑器目录
+scenes/                 场景
+test/                   测试
+
+
+./app/editor:
+ActionEditorLayer.lua   编辑器主窗口
+ActionEditorList.lua    编辑器动作列表
+ActionEditorView.lua    编辑器编辑窗口
+ActionEditorCell.lua    编辑器编辑子窗口
+ActionUtil.lua          动作文件存取
+
+./app/fightview/controller:
+FCFightController.lua  战斗控制类
+FCMain.lua              注册事件类
+
+./app/fight/execcute:
+BaseExe.lua             FENormal FEUnpara 所继承类，负责处理公共逻辑
+FEControl.lua           游戏处理控制器
+FENormal.lua            正常技能，小伙伴技能处理类
+FEUnpara.lua            无双技能处理类
+FVMain.lua              派发界面显示接收类，然后根据需求转给FENormal FEUnpara
+
+./app/fight/modeldata:
+ActionUtil.lua          读取数据处理类
+FightUtil.lua           战斗所用工具类
+FMCard.lua              战斗卡牌数据
+FMCardProcess.lua       战斗流程中所用计算获取数值方法类
+FMProcess.lua           战斗流程
+FMTempFightData.lua     战斗单例数据
+FVAction.lua            动作生成
+FVActionSpec.lua        特殊动作生成
+FVParticleManager.lua   特效管理器，方便慢镜头时处理全部特效
+XFightParticle.lua      战斗所用粒子特效
+
+./app/fight/Prelude:
+FVCardPrelude.lua       入场卡牌
+FVLayerPrelude.lua      入场卡牌层
+
+./app/fight/ui:
+FVCombo.lua             废弃
+FVDrop.lua              宝箱
+FVEntry.lua             武将乱入特效层
+FVFightFailUI.lua       失败
+FVFriend.lua            小伙伴特效层
+FVLayerUI.lua           战斗主ui
+FVUnpara.lua            无双层
+
+./app/fight/view:
+
+background.lua          战斗地图才层
+FVLayerBullet.lua       战斗子弹类，不受卡牌位置约束的动作
+
+card:
+FVCardBoard.lua         卡牌黑色板
+FVCradHarm.lua          卡牌伤害处理显示层
+FVCardImage.lua         卡牌纹理显示层
+FVCardItem.lua          卡牌集合显示层
+FVCardLayer.lua         Idle卡牌英雄层
+FVCardLight.lua         光效层
+FVCardState.lua         卡牌状态层
+
+carddead:
+FVCardDead.lua          死亡卡牌
+FVLayerDead.lua         死亡卡牌层
+FVLayerDeadS.lua        死亡卡牌特效
+
+flash:
+FVLayerFlash.lua        刀光显示层
+
+FVLayerShadow.lua       阴影层
+
+
+./app/scenes:
+FightScene.lua          战斗场景
+MenuScene.lua           进入游戏场景
+PlayerScene.lua         玩家场景
+
+
+
+./framework:
+init.lua                入口
+debug.lua               debug信息
+functions.lua           lua 语言扩展
+cocos/                  cocos2dx的lua模块
+extend/                 cocos2dx对象扩展
+extern/                 json、protobuf等模块
+mvc/                    mvc架构
+network/                网络模块
+
+./framework/cocos:
+AudioEngine.lua         音频
+CCBReaderLoad.lua       ccb支持
+Cocos2d.lua             cocos2dx扩展
+Cocos2dConstants.lua    cocos2dx常量
+GuiConstants.lua        ui常量
+Opengl.lua              opengl扩展
+OpenglConstants.lua     opengl常量
+
+./framework/extend:
+device.lua              设备环境
+game.lua                cocos2dx对象包装
+scr.lua                 屏幕信息
+timer.lua               定时器
+ui.lua                  ui包装
+
+./framework/extern:
+json.lua                json支持
+protobuf.lua            protobuf支持
+
+./framework/mvc:
+App.lua                 app基类
+Event.lua               事件槽
+CtrlBase.lua            ctrl基类
+ModelBase.lua           model基类
+CollectBase.lua         model数据收集器（游戏内需要其他model数据时都通过collect收集，避免模块间耦合）
+ViewBase.lua            view基类
+ViewNode.lua            viewnode基类（挂载与view下层，可派发事件）
+
+./framework/network:
+buffer.lua              网络包组合分离
+network.lua             网络连接
+=====

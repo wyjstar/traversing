@@ -1,0 +1,10 @@
+import "common.proto";
+
+message CdkeyRequest{
+    required string cdkey = 1;
+}
+
+message CdkeyResqonse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

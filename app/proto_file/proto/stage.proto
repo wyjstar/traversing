@@ -1,0 +1,74 @@
+import "common.proto";
+import "player_response.proto";
+
+message Skill{
+	required int32 id = 1;  //技能ID
+	repeated int32 buffs = 2;  //技能buff组
+}
+
+message BattleUnit{
+	required int32 no = 1;              // 战斗单位ID
+	optional int32 quality = 2;         // 战斗单位品质
+                                        //
+	optional int64 hp = 3;              // 战斗单位血量
+	optional float atk = 4;             // 战斗单位攻击
+	optional float physical_def = 5;    // 战斗单位物理防御
+	optional float magic_def = 6;       // 战斗单位魔法防御
+	optional float hit = 7;             // 战斗单位命中率
+	optional float dodge = 8;           // 战斗单位闪避率
+	optional float cri = 9;             // 战斗单位暴击率
+	optional float cri_coeff = 10;      // 战斗单位暴击伤害系数
+	optional float cri_ded_coeff = 11;  // 战斗单位暴伤减免系数
+	optional float block = 12;          // 战斗单位格挡率
+    optional float ductility = 13;      // 韧性
+                                        //
+	optional int32 level = 23;          // 等级
+	optional int32 break_level = 24;    // 突破等级
+                                        //
+	optional bool is_boss = 25;         // 是否是boss
+	repeated int32 break_skills = 26;   // 突破技能
+	optional int32 position = 27;       // 位置
+                                        //
+	optional bool is_break = 28;
+	optional bool is_awake = 29;
+	optional int32 origin_no = 30;
+	optional int64 hp_max = 31;              // 战斗单位血量Max
+}
+
+message BattleUnitGrop{
+	repeated BattleUnit group = 1;
+}
+
+message Stage{
+	required int32 stage_id = 1;  //关卡编号
+	optional int32 attacks = 2;  //攻击次数
+	optional int32 state = 3;  //关卡状态 -1:开启没打过 0：输  1：赢
+    optional Reset reset = 4;
+	optional int32 chest_state = 5;  //关卡宝箱 0 未开启 1 已开启
+    
+}
+
+message Reset{
+    required int32 times = 1;
+    required int32 time = 2;
+}
+
+message StageAward{
+	required int32 chapter_id = 1; //章节编号
+	repeated int32 award = 2;  //奖励数组 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+	repeated int32 already_gift = 4;  //已经领取的奖励
+}
+
+message Unparalleled{
+	required int32 id = 1; //无双ID
+	repeated int32 unpar = 2; // 无双技能
+	optional bool activate = 3; //是否激活
+}
+
+// 战斗步骤，用于pve校验
+message StepInfo
+{
+	required int32 step_id = 1;     //步骤id
+    required int32 step_type = 2;   //步骤类型: 无双、小伙伴
+}

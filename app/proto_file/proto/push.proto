@@ -1,0 +1,27 @@
+import "common.proto";
+message registerPush
+{
+	required string deviceToken = 1; //推送消息ID
+}
+
+message registerPushRes
+{
+	required CommonResponse res = 1; //通用返回
+}
+
+message msgSwitch
+{
+	required int32 msg_type = 1;//消息类型
+	required int32 switch = 2;//消息开关
+}
+
+message msgSwitchReq
+{
+	repeated msgSwitch switch = 1;//消息开关 
+}
+
+message msgSwitchRes
+{
+	repeated msgSwitch switch = 1;//消息开关
+}
+

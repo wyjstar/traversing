@@ -1,0 +1,62 @@
+message Heads_DB{
+	repeated int32 head = 1;
+	optional int32 now_head = 2;
+}
+
+//邮件基本信息
+message Mail_PB
+{
+    optional string mail_id = 1; // ID
+    optional int32 sender_id = 2; //发件人ID
+    optional string sender_name = 3; //发件人
+    optional int32 sender_icon = 4; //发件人Icon
+    optional int32 receive_id = 5; //收件人ID
+    optional string receive_name = 6; //收件人
+    optional string title = 7; //标题
+    optional string content = 8; //邮件内容
+    required int32 mail_type = 9; //邮件类型 1体力2系统3战斗4社交
+    optional int32 send_time = 10; //发件时间
+    optional bool is_readed = 11; //是否已读
+    optional string prize = 12; //奖品
+    optional string read_time = 13;  //阅读时间
+
+    optional int32 config_id = 14; //数值表ID
+
+    optional string nickname = 15; //邀请者名字
+    optional bytes guild_name = 16; //军团名字
+    optional int32 guild_person_num = 17; //军团人数
+    optional int32 guild_level = 18; //军团等级
+    optional int32 guild_id = 19; //军团id
+    optional int32 rune_num = 20;  //附文个数
+    optional int32 pvp_rank = 21;  //擂台排行
+
+    optional int32 integral = 24;
+    optional int32 rank = 25;
+
+    optional int32 effec = 22;  //有效时间
+    optional bool is_got_prize = 23;  //是否已经获取奖励
+}
+
+// 世界boss奖励
+message WorldBossAwardDB
+{
+    optional int32 award_type = 1; // 奖励类型
+    optional int32 award = 2; // 奖励 打包id
+    optional int32 rank_no = 3; // 排名:排名奖励有用
+}
+
+message Stamina_DB{
+    optional int32 open_receive = 1 [default = 1];
+    optional int32 get_stamina_times = 2 [default = 0]; // 体力，从邮件中获取体力的次数
+    optional int32 buy_stamina_times = 3 [default = 0];//
+    optional int32 last_gain_stamina_time = 4 [default = 0];//
+    optional int32 last_mail_day = 5 [default = 0]; //体力
+    repeated int32 contributors = 6;//体力
+    optional int32 last_buy_stamina_time = 7 [default = 0]; //
+    optional int32 resource_type = 8 [default = 0]; //资源id
+}
+
+message All_Stamina_DB
+{
+    repeated Stamina_DB stamina = 1;
+}

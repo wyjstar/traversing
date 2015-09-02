@@ -1,0 +1,30 @@
+message AccountKey{
+	required string key = 1; //服务器生成的KEY，标识机器
+}
+
+
+//返回结果
+message AccountResponse{
+     required bool result = 1;
+     optional string message = 2;
+}
+
+// 登录 command:2
+message AccountLoginRequest{
+	required string passport = 1;
+}
+
+message AccountKick{
+	required int32 id = 1; //1异地登录2封停账号3热更新
+	optional int32 time = 2;// 封停账号到期时间戳，－2表示永久
+}
+
+//注册 request: command:1，data:AccountInfo
+//    response: AccountResponse
+
+//登录 request: command:2, data:AccountLoginRequest
+//    response: AccountResponse
+
+//绑定 request: command:3, data:AccountInfo
+//    response: AccountResponse
+

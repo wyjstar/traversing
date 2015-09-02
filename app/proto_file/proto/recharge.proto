@@ -1,0 +1,32 @@
+import "common.proto";
+
+// command:11010 初始充值请求
+message InitRecharge{
+    repeated int32 recharge_ids = 1; //已购买的充值项,用于首冲双倍
+}
+
+message RechargeData{
+    optional int32 recharge_time = 1;
+    optional int32 recharge_accumulation = 2;
+    optional int32 is_receive = 3;
+}
+
+message RechargeItem{
+    required int32 gift_id = 1;
+    optional int32 gift_type = 2;
+	repeated RechargeData data = 3;
+}
+
+message GetRechargeGiftDataResponse{
+	repeated RechargeItem recharge_items = 1;
+}
+
+message GetRechargeGiftRequest{
+    repeated RechargeItem gift = 1;
+}
+
+message GetRechargeGiftResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+

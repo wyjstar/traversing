@@ -1,0 +1,14 @@
+import "common.proto";
+
+message AppleConsumeVerifyRequest{
+	optional string transaction_id = 1;
+	optional string purchase_info = 2;
+	optional int32 channel = 3;
+}
+
+message AppleConsumeVerifyResponse{
+    required CommonResponse res = 1;
+	optional string transaction_id = 2;
+    optional GameResourcesResponse gain = 3;
+    optional GetGoldResponse info = 4;
+}

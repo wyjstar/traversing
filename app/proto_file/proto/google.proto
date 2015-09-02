@@ -1,0 +1,32 @@
+import "common.proto";
+
+message RechargeTest{
+	optional int32 recharge_num = 1;
+}
+
+message GoogleGenerateIDRequest{
+	optional int32 channel = 1;
+}
+
+message GoogleGenerateIDResponse{
+	optional string uid = 1;
+}
+
+message GoogleConsumeRequest{
+	optional string data = 1;
+}
+
+message GoogleConsumeResponse{
+    required CommonResponse res = 1;
+}
+
+message GoogleConsumeVerifyRequest{
+	optional string data = 1;
+	optional string signature = 2;
+}
+
+message GoogleConsumeVerifyResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+    optional GetGoldResponse info = 3;
+}

@@ -1,0 +1,50 @@
+import "common.proto";
+
+//武魂商城购买请求 command:506
+message RefreshShopItems
+{
+    required int32 shop_type = 1;
+}
+
+message GetShopItems
+{
+    required int32 shop_type = 1;
+}
+
+//商城请求 command:501/502/503/504
+message ShopRequest
+{
+    repeated int32 ids = 1; // 对应shop配置表中商品编号
+    repeated int32 item_count = 2;
+}
+
+//商城返回 command:501/502/503/504
+message ShopResponse
+{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse consume = 2;
+    optional GameResourcesResponse gain = 3;
+    optional int32 limit_item_current_num = 4;
+    optional int32 limit_item_max_num = 5;
+    optional bool is_all_buy = 6; // 是否已经全部购买
+}
+
+//获取武魂商城列表 command:507
+message GetShopItemsResponse
+{
+    required CommonResponse res = 1;
+    repeated int32 id = 2;
+    repeated int32 buyed_id = 3;
+    optional int32 luck_num = 4;
+    optional int32 refresh_times = 5;
+    repeated int32 limit_item_id = 6;
+    repeated int32 limit_item_num = 7;
+    repeated VipLimitItem vip_limit_item = 8;
+    optional GameResourcesResponse consume = 9; //统一消耗
+}
+
+message VipLimitItem
+{
+    required int32 item_id = 1;
+    required int32 item_num = 2;
+}

@@ -1,0 +1,22 @@
+import "common.proto";
+
+// get online gift
+message GetOnlineGift{
+    required int32 gift_id = 1;
+}
+
+message GetOnlineGiftResponse{
+    required bool result = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+message GetOnlineLevelGiftData{
+    optional int32 online_time = 1;
+    repeated int32 received_online_gift_id = 2;
+    repeated int32 received_level_gift_id = 3;
+}
+
+message GetActivityResponse{
+    required bool result = 1;
+    optional GameResourcesResponse gain = 2;
+}

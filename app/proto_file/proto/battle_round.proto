@@ -1,0 +1,48 @@
+message RoundUnit{
+        required int32 id = 1;                            //战斗单位ID
+        optional float hp = 2;                            // 战斗单位血量
+        optional float atk = 3;                           //战斗单位攻击
+        optional float physical_def = 4;             //战斗单位物理防御
+        optional float magic_def = 5;                //战斗单位魔法防御
+        optional float hit = 6;                           //战斗单位命中率
+        optional float dodge = 7;                     //战斗单位闪避率
+        optional float cri = 8;                          //战斗单位暴击率
+        optional float cri_coeff = 9;                //战斗单位暴击伤害系数
+        optional float cri_ded_coeff = 10;      //战斗单位暴伤减免系数
+        optional float block = 11;                  //战斗单位格挡率
+}
+
+
+message Effect{
+        required int32 type = 1;
+        required float value = 2;
+}
+
+message Buff{
+            required int32  id = 1;
+            required string name = 2;                //buff 名称
+            repeated RoundUnit targets = 3;         //buff 对应的目标
+            repeated RoundUnit executors = 4;       //buff 执行者
+            optional int32 has_parent = 5;          //0:木有引发他的buff 其它值 引发它的buff id
+            repeated int32 unpara = 6;              //无双攻击起始
+            optional  Effect effect = 7;               // 造成的影响
+}
+
+message Round{
+            required int32 camp = 1;                    // camp 1:army <-> red 2:enemy <-> blue
+            optional RoundUnit executor = 2;      // 这个round的技能施放者
+            optional int32 skill_id = 3;                 // 施放的技能ID
+            optional int32 skill_type = 4;             //
+            repeated Buff buffs = 5;                    // 造成的buff组
+}
+
+message BattleStep{
+        required int32 step_id = 1; // id
+        required int32 step_type = 2; // 1:无双 2: 小伙伴
+}
+
+message PvbBattleResult{
+    repeated BattleStep battleStep = 1;
+    repeated bool result = 2;
+}
+

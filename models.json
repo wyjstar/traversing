@@ -1,0 +1,178 @@
+{
+    "model_default": {
+        "pkey_field": "id",
+        "cache_prefix": "rktest",
+        "def_attrs": {}
+    },
+
+    "models": {
+        "tb_account": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "uuid": "simple",
+                "last_login": "simple",
+                "create_time": "simple"
+            }
+        },
+        "tb_character_info": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "nickname": "simple",
+                "hero_list": "simple",
+                "hero_chip_list": "simple",
+                "level": "simple",
+                "exp": "simple",
+                "fine_hero_last_pick_time": "simple",
+                "excellent_hero_last_pick_time": "simple",
+                "fine_equipment_last_pick_time": "simple",
+                "excellent_equipment_last_pick_time": "simple",
+                "stamina": "complex",
+                "finances": "complex",
+                "pvp_times": "simple",
+                "pvp_refresh_time": "simple",
+                "pvp_refresh_count": "simple",
+                "last_login_time": "simple",
+                "get_stamina_times": "simple",
+                "vip_level": "simple",
+                "newbee_guide_id": "simple",
+                "create_time": "simple",
+                "brew": "complex",
+                "friends": "complex",
+                "blacklist": "complex",
+                "applicants_list": "complex",
+                "shop": "complex",
+                "lord_attr_info": "complex",
+                "m_runt": "complex",
+                "stone1": "simple",
+                "stone2": "simple",
+                "refresh_runt": "complex",
+                "refresh_times": "complex",
+                "g_id": "simple",
+                "position": "simple",
+                "contribution": "simple",
+                "all_contribution": "simple",
+                "k_num": "simple",
+                "worship": "simple",
+                "worship_time": "simple",
+                "exit_time": "simple",
+                "online_gift": "complex",
+                "sign_in": "complex",
+                "level_gift": "complex",
+                "login_gift": "complex",
+                "world_boss": "complex",
+                "feast": "simple",
+                "equipment_chips": "complex",
+                "hero_chips": "complex",
+                "travel": "complex",
+                "shoes": "complex",
+                "chest_time": "simple",
+                "travel_item": "complex",
+                "fight_cache": "complex",
+				"auto": "complex",
+				"heads": "simple",
+                "rebate": "complex",
+                "month_buy":"simple",
+                "last_time":"simple",
+                "mail_id":"simple"
+            }
+        },
+        "tb_character_hero": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "character_id": "simple",
+                "property": "complex"
+            }
+        },
+        "tb_character_item_package": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "items": "complex"
+            }
+        },
+        "tb_character_line_up": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "line_up_slots": "complex",
+                "sub_slots": "complex",
+                "line_up_order": "complex",
+                "unpars": "complex"
+            }
+        },
+        "tb_equipment_info": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "character_id":"simple",
+                "equipment_info": "complex",
+                "enhance_info": "complex",
+                "nobbing_effect": "complex"
+            }
+        },
+        "tb_character_stages":{
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "stage_info": "complex",
+                "award_info": "complex",
+                "elite_stage": "complex",
+                "act_stage": "complex",
+                "stage_up_time": "simple"
+            }
+        },
+        "tb_guild_info":{
+            "pkey_field": "id",
+            "def_attrs": {
+                "id":"simple",
+                "info": "complex"
+            }
+        },
+        "tb_guild_name": {
+            "pkey_field": "g_name",
+            "def_attrs": {
+                "id": "simple",
+                "info": "complex"
+            }
+        },
+        "tb_mail_info": {
+            "pkey_field": "id",
+            "def_attrs": {
+                "id": "simple",
+                "character_id": "simple",
+                "property": "complex"
+            }
+        },
+        "tb_character_lively":{
+        	"pkey_field": "id",
+        	"def_attrs": {
+        		"id": "simple",
+        		"tasks": "complex",
+        		"lively": "simple",
+        		"event_map": "complex",
+                "last_day":"simple"
+        	}
+        },
+        "tb_character_mine":{
+            "pkey_field": "id",
+            "def_attrs":{
+                "id":"simple",
+                "reset_day":"simple",
+                "reset_times":"simple",
+                "day_before":"simple",
+                "lively":"simple",
+                "mine":"complex"
+            }
+        },
+        "tb_character_stone":{
+            "pkey_field": "id",
+            "def_attrs":{
+                "id":"simple",
+                "stones":"complex"
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+message NoticeResponse{
+	optional int32 notice_id = 1; //表notes_config
+    optional string player_name = 2; //玩家名
+    optional int32 hero_no = 3; //武将no
+    optional int32 hero_break_level = 4; // 武将突破等级
+    optional int32 equipment_no = 5; //装备no
+	optional string msg = 6; // 如果notice_id == 2001, 则直接显示消息。
+}
