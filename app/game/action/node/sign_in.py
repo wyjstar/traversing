@@ -61,13 +61,14 @@ def sign_in_1401(pro_data, player):
     if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
         return
     sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
-    return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
-    get_return(player, return_data, response.gain)
     #vip双倍
     print("vip================", player.base_info.vip_level, sign_in_info.get("vipDouble"))
     if player.base_info.vip_level > 0 and \
         sign_in_info.get("vipDouble") and \
         player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+        return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT, multiple=2)
+        get_return(player, return_data, response.gain)
+    else:
         return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
         get_return(player, return_data, response.gain)
     print(response.gain)
