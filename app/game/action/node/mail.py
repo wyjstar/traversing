@@ -230,8 +230,8 @@ def get_prize_1306(proto_data, player):
         response.res.result_no = 863
         return response.SerializePartialToString()
 
-    if isinstance(eval(mail.prize), list):
-        num = 0
+    num = 0
+    if mail.prize and isinstance(eval(mail.prize), list):
         for xx in eval(mail.prize):
             for x in xx.items():
                 if int(x[0]) == 108:
