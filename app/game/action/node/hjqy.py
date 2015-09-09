@@ -16,6 +16,7 @@ from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import is_in_period, is_next_day, get_current_timestamp
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.core.mail_helper import send_mail
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -80,7 +81,11 @@ def share_2102(pro_data, player):
     response = CommonResponse()
     result = remote_gate['world'].share_hjqy_remote(player.base_info.id)
     friend_ids = player.friends.friends
-    remote_gate.push_object_remote(2112, '', friend_ids)
+    boss_info = remote_gate['world'].get_boss_info_remote(player.base_info.id)
+    for fid in friend_ids:
+        send_mail(conf_id=512, receive_id=fid, nickname=player.base_info.base_name, boss_id=boss_info.get('stage_id'))
+
+    #remote_gate.push_object_remote(2112, '', friend_ids)
     response.result = result
     return response.SerializeToString()
 
