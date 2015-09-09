@@ -478,3 +478,26 @@ def assembly_sub_slots(sub_slots, response):
                 add_link = hero.links.add()
                 add_link.link_no = key
                 add_link.is_activation = value
+
+@remoteserviceHandle('gate')
+def save_line_order_708(pro_data, player):
+    """
+    保存布阵信息
+    """
+    request = line_up_pb2.SaveLineUpOrderRequest()
+    request.ParseFromString(pro_data)
+    response = CommonResponse()
+    response.result = True
+    line_up_info = []  # {hero_id:pos}
+    for line in request.lineup:
+        line_up_info.append(line)
+    if len(line_up_info) != 6:
+        logger.error("line up order error %s !" % len(line_up_info))
+        response.result = False
+        return
+    logger.debug("line_up %s, current_unpar%s"% (request.lineup, request.unparalleled))
+    player.line_up_component.line_up_order = line_up_info
+    player.line_up_component.current_unpar = request.unparalleled
+    player.line_up_component.save_data(["line_up_order", "current_unpar"])
+
+    return response.SerializePartialToString()

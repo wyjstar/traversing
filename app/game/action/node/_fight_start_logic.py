@@ -58,7 +58,7 @@ def pve_process_check(player, fight_result, steps, fight_type):
         res = mine_start(red_units, blue_units, red_best_skill_id, red_best_skill_level,
                             monster_unpara, 1, seed1, seed2, steps, player.base_info.level)
     logger.debug("pve_start %s %s" % (res, fight_result))
-    return res == fight_result
+    return res[0] == fight_result, res[1], res[2]
     #except Exception, e:
         ##logger.debug(e)
         #raise e
@@ -99,7 +99,8 @@ def pve_process(stage_id, stage_type, line_up, fid, player, current_unpar):
     best_skill_id: unpar
     fid: friend id.
     """
-    save_line_up_order(line_up, player, current_unpar, stage_id)
+    player.fight_cache_component.stage_id = stage_id
+    #save_line_up_order(line_up, player, current_unpar, stage_id)
 
     stage = get_stage_by_stage_type(stage_type, stage_id, player)
 

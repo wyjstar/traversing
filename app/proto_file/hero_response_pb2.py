@@ -15,7 +15,7 @@ import hero_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='',
-  serialized_pb='\n\x13hero_response.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\"*\n\x10GetHerosResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"o\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x13\n\x0b\x62reak_level\x18\x03 \x01(\x05\"[\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB\"V\n\x10HeroSellResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"[\n\x12HeroRefineResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x13hero_response.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\"*\n\x10GetHerosResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"o\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x13\n\x0b\x62reak_level\x18\x03 \x01(\x05\"[\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB\"V\n\x10HeroSellResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"[\n\x12HeroRefineResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"j\n\x18OneKeyHeroUpgradeRespone\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x03(\x05')
 
 
 
@@ -271,6 +271,55 @@ _HEROREFINERESPONSE = _descriptor.Descriptor(
   serialized_end=635,
 )
 
+
+_ONEKEYHEROUPGRADERESPONE = _descriptor.Descriptor(
+  name='OneKeyHeroUpgradeRespone',
+  full_name='OneKeyHeroUpgradeRespone',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='OneKeyHeroUpgradeRespone.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='level', full_name='OneKeyHeroUpgradeRespone.level', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='exp', full_name='OneKeyHeroUpgradeRespone.exp', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='exp_item_num', full_name='OneKeyHeroUpgradeRespone.exp_item_num', index=3,
+      number=4, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=637,
+  serialized_end=743,
+)
+
 _GETHEROSRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
 _HEROUPGRADERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _HEROBREAKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -283,6 +332,7 @@ _HEROSELLRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONS
 _HEROSELLRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _HEROREFINERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _HEROREFINERESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_ONEKEYHEROUPGRADERESPONE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['GetHerosResponse'] = _GETHEROSRESPONSE
 DESCRIPTOR.message_types_by_name['HeroUpgradeResponse'] = _HEROUPGRADERESPONSE
 DESCRIPTOR.message_types_by_name['HeroBreakResponse'] = _HEROBREAKRESPONSE
@@ -290,6 +340,7 @@ DESCRIPTOR.message_types_by_name['HeroSacrificeResponse'] = _HEROSACRIFICERESPON
 DESCRIPTOR.message_types_by_name['HeroComposeResponse'] = _HEROCOMPOSERESPONSE
 DESCRIPTOR.message_types_by_name['HeroSellResponse'] = _HEROSELLRESPONSE
 DESCRIPTOR.message_types_by_name['HeroRefineResponse'] = _HEROREFINERESPONSE
+DESCRIPTOR.message_types_by_name['OneKeyHeroUpgradeRespone'] = _ONEKEYHEROUPGRADERESPONE
 
 class GetHerosResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -332,6 +383,12 @@ class HeroRefineResponse(_message.Message):
   DESCRIPTOR = _HEROREFINERESPONSE
 
   # @@protoc_insertion_point(class_scope:HeroRefineResponse)
+
+class OneKeyHeroUpgradeRespone(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ONEKEYHEROUPGRADERESPONE
+
+  # @@protoc_insertion_point(class_scope:OneKeyHeroUpgradeRespone)
 
 
 # @@protoc_insertion_point(module_scope)

@@ -69,7 +69,7 @@ function FCProcess:pve_start(steps)
             self.fightProcess:next_round()
         end
     end
-    return self.fightProcess:check_result() == 1
+    return self.fightProcess:check_result() == 1, self.fightProcess:get_total_damage()/self.fightProcess.blue_hp_total, table.nums(self.fightProcess.red_units)
 end
 
 -- 

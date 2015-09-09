@@ -38,3 +38,8 @@ message HeroRefineRequest
     required int32 hero_no= 1;
     required int32 refine = 2;
 }
+// 武将一键升级请求, command:119
+message HeroRequest
+{
+    required int32 hero_no = 1;
+}

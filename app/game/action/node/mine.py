@@ -25,9 +25,8 @@ from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
 from app.game.action.node.line_up import line_up_info_detail
 from app.game.action.node._fight_start_logic import pve_process, pve_process_check
-from app.game.action.node._fight_start_logic import pvp_process, save_line_up_order
+from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import pvp_assemble_units
-from app.game.action.root import netforwarding
 from app.battle.server_process import get_seeds
 from app.game.core.mail_helper import send_mail
 from app.game.core.task import hook_task, CONDITIONId
@@ -639,7 +638,7 @@ def battle_1253(data, player):
     blue_best_skill_level = 0
     red_units = {}
     blue_units = {}
-    save_line_up_order(line_up, player, red_best_skill_id)
+    #save_line_up_order(line_up, player, red_best_skill_id)
 
     logger.debug("%s pos" % pos)
 

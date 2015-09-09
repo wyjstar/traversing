@@ -49,3 +49,12 @@ message HeroRefineResponse
     required CommonResponse res = 1;
     optional GameResourcesResponse consume = 2;
 }
+
+// 武将一键升级返回，command:119
+message OneKeyHeroUpgradeRespone
+{
+    required CommonResponse res = 1;
+    optional int32 level = 2;
+    optional int32 exp = 3;
+    repeated int32 exp_item_num = 4; // 消耗的经验丹 1大经验丹2中经验丹3小经验丹
+}

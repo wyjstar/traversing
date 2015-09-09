@@ -217,8 +217,11 @@ def fight_settlement_904(pro_data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
 
+    res = (True, 1, -1)
+    if not request.is_skip:
+        res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
 
-    if not request.is_skip and not pve_process_check(player, result, request.steps, const.BATTLE_PVE):
+    if not request.is_skip and not res[0]:
         logger.error("pve_process_check error!=================")
         os.system("cp output ..")
         response = stage_response_pb2.StageSettlementResponse()
@@ -227,6 +230,8 @@ def fight_settlement_904(pro_data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
 
+    logger.debug("damage percent: %s" % res[1])
+    logger.debug("red units: %s" % res[2])
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
     logger.debug("steps:%s", request.steps)

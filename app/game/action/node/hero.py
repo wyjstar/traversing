@@ -74,6 +74,77 @@ def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     player.item_package.consume_item(exp_item_no, exp_item_num)
     return {"result": True, "hero": hero}
 
+@remoteserviceHandle('gate')
+def one_key_hero_upgrade_with_item_119(data, player):
+    """阵容界面武将一键升级"""
+    args = hero_request_pb2.HeroRequest()
+    args.ParseFromString(data)
+    response = hero_response_pb2.OneKeyHeroUpgradeRespone()
+    hero_no = args.hero_no
+    # 服务器验证
+    res = one_key_hero_upgrade_logic(hero_no, player)
+    if not res.get("result"):
+        response.res.result = res.get("result")
+        response.res.result_no = res.get("result_no")
+        return response.SerializeToString()
+    # 返回
+    hero = res.get("hero")
+    response.res.result = True
+    response.level = hero.level
+    response.exp = hero.exp
+    response.exp_item_num.append(res.get('small_exp_num'))
+    response.exp_item_num.append(res.get('middle_exp_num'))
+    response.exp_item_num.append(res.get('big_exp_num'))
+    logger.debug(res)
+    logger.debug(response)
+    return response.SerializeToString()
+
+def one_key_hero_upgrade_logic(hero_no, player):
+    hero = player.hero_component.get_hero(hero_no)
+    total_exp = 0
+    small_exp_item = player.item_package.get_item(10001)
+    middle_exp_item = player.item_package.get_item(10002)
+    big_exp_item = player.item_package.get_item(10003)
+    small_exp = game_configs.item_config.get(10001).get('funcArg1')
+    middle_exp = game_configs.item_config.get(10002).get('funcArg1')
+    big_exp = game_configs.item_config.get(10003).get('funcArg1')
+    need_total_exp = hero.need_exp_to_max(player.base_info.level)
+    logger.debug('need_total_exp %s' % need_total_exp)
+    if small_exp_item:
+        logger.debug("small_exp_item num %s" % small_exp_item.num)
+    if middle_exp_item:
+        logger.debug("middle_exp_item num %s" % middle_exp_item.num)
+    if big_exp_item:
+        logger.debug("big_exp_item num %s" % big_exp_item.num)
+
+    small_exp_num = 0
+    middle_exp_num = 0
+    big_exp_num = 0
+    if small_exp_item:
+        for i in range(small_exp_item.num):
+            if total_exp > need_total_exp:
+                break
+            total_exp += small_exp
+            small_exp_num = i + 1
+
+    if middle_exp_item:
+        for i in range(middle_exp_item.num):
+            if total_exp > need_total_exp:
+                break
+            total_exp += middle_exp
+            middle_exp_num = i + 1
+
+    if big_exp_item:
+        for i in range(big_exp_item.num):
+            if total_exp > need_total_exp:
+                break
+            total_exp += big_exp
+            big_exp_num = i + 1
+
+    hero.upgrade(small_exp * small_exp_num + middle_exp * middle_exp_num + big_exp * big_exp_num, player.base_info.level)
+
+    return {"result": True, "hero": hero, "small_exp_num": small_exp_num, "middle_exp_num": middle_exp_num, "big_exp_num": big_exp_num}
+
 
 @remoteserviceHandle('gate')
 def hero_break_104(data, player):

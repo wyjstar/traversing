@@ -156,9 +156,10 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
     )
     fight_type = const.BATTLE_PVE
     res = pve_func(fight_data, fight_type, steps, level)
-    if int(res) == 1:
-        return True
-    return False
+    print("pve_func result", res[0], res[1], res[2])
+    if int(res[0]) == 1:
+        return True, res[1], res[2]
+    return False, res[1], res[2]
 
 def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, debuff_skill_no, damage_rate, seed1, seed2, level):
     red = []
@@ -271,9 +272,10 @@ def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, bl
     res = pvp_func(fight_data, fight_type)
     print("pvp_start=====:", res)
     res = pve_func(fight_data, fight_type, steps, level)
-    if int(res) == 1:
-        return True
-    return False
+    print("pve_func result", res[0], res[1], res[2])
+    if int(res[0]) == 1:
+        return True, res[1], res[2]
+    return False, res[1], res[2]
 
 def get_seeds():
     seed1 = randint(1, 100)

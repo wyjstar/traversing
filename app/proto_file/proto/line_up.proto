@@ -86,3 +86,10 @@ message AllEquipmentsStrengthResponse{
 	repeated EquipmentStrengthInfo infos = 3; // 装备强化信息
 	optional LineUpResponse line_up = 4; // 阵容信息
 }
+
+// 保存布阵信息请求708,  返回：CommonResponse
+message SaveLineUpOrderRequest
+{
+	repeated int32 lineup = 1;      // 队形
+	optional int32 unparalleled = 2; // 无双技能ID
+}
