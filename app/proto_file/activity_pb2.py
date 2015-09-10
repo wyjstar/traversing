@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='activity.proto',
   package='',
-  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"#\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"X\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05')
+  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05')
 
 
 
@@ -33,6 +33,13 @@ _GETACTGIFTREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='quantity', full_name='GetActGiftRequest.quantity', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -43,7 +50,7 @@ _GETACTGIFTREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=32,
-  serialized_end=67,
+  serialized_end=85,
 )
 
 
@@ -68,6 +75,13 @@ _GETACTGIFTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='GetActGiftResponse.consume', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -77,8 +91,8 @@ _GETACTGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=69,
-  serialized_end=157,
+  serialized_start=88,
+  serialized_end=217,
 )
 
 
@@ -105,8 +119,8 @@ _GETACTINFOREQUESE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=159,
-  serialized_end=196,
+  serialized_start=219,
+  serialized_end=256,
 )
 
 
@@ -154,12 +168,13 @@ _GETACTINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=198,
-  serialized_end=307,
+  serialized_start=258,
+  serialized_end=367,
 )
 
 _GETACTGIFTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETACTGIFTRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_GETACTGIFTRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _GETACTINFORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['GetActGiftRequest'] = _GETACTGIFTREQUEST
 DESCRIPTOR.message_types_by_name['GetActGiftResponse'] = _GETACTGIFTRESPONSE

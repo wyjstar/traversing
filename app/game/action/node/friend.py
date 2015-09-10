@@ -17,7 +17,6 @@ from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils.date_util import is_next_day
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.mail_helper import send_mail
-from shared.db_opear.configs_data.game_configs import base_config
 from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
 from app.game.core.task import hook_task, CONDITIONId
@@ -237,7 +236,7 @@ def get_player_friend_list_1106(data, player):
             if today != time.strftime("%Y%m%d", time.localtime(friend_data.get('last_day', '0'))):
                 lively = 0
             response_friend_add.current = lively
-            response_friend_add.target = base_config['friendActivityValue']
+            response_friend_add.target = game_configs.base_config['friendActivityValue']
             stat, update = player.friends.get_reward(pid, today)
             if update:
                 _update = True
@@ -296,13 +295,13 @@ def draw_friend_lively_1199(data, player):
         lively = conditions_day.get(24, 0)
         if today != time.strftime("%Y%m%d", time.localtime(friend_data.get('last_day', '0'))):
             lively = 0
-        if lively < base_config['friendActivityValue']:
+        if lively < game_configs.base_config['friendActivityValue']:
             logger.debug('error_no:11992,lively:%d' % lively)
             response.res.result = False
             response.res.result_no = 11992  # 未完成
         else:
             response.res.result = True
-            reward = base_config['friendActivityReward']
+            reward = game_configs.base_config['friendActivityReward']
             lively_reward = data_helper.parse(reward)
             return_data = gain(player, lively_reward, const.LIVELY_REWARD)  # 获取
             get_return(player, return_data, response.gain)
@@ -363,13 +362,13 @@ def find_friend_request_1107(data, player):
 @remoteserviceHandle('gate')
 def recommend_friend_1198(data, player):
     response = friend_pb2.RecommendRes()
-    x = base_config['friendApplyLevelGap']
+    x = game_configs.base_config['friendApplyLevelGap']
     front = player.base_info.level - x
     back = player.base_info.level + x
     uids = MineOpt.rand_level("user_level", front, back+1)
-    statics = base_config['FriendRecommendNum']
-    add_count_conf = base_config.get('friendApplyLevelGapAdd', 5)
-    player_level_max = base_config['player_level_max']
+    statics = game_configs.base_config['FriendRecommendNum']
+    add_count_conf = game_configs.base_config.get('friendApplyLevelGapAdd', 5)
+    player_level_max = game_configs.base_config['player_level_max']
     count = 0
     now = int(time.time())
 
@@ -393,7 +392,7 @@ def recommend_friend_1198(data, player):
 
             if isexist:
                 last_time = player_data.hget('upgrade_time')
-                if now - last_time > base_config['friendApplyOfflineDay']*24*60*60:
+                if now - last_time > game_configs.base_config['friendApplyOfflineDay']*24*60*60:
                     continue
                 friend_data = player_data.hmget(['id', 'nickname',
                                                  'attackPoint', 'heads',

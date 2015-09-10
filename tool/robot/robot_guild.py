@@ -8,7 +8,6 @@ from app.proto_file.equipment_response_pb2 import EnhanceEquipmentResponse
 from app.proto_file.stage_request_pb2 import *
 from app.proto_file.stage_response_pb2 import *
 from app.proto_file.travel_pb2 import *
-from app.proto_file.travel_shoes_pb2 import *
 from app.proto_file.runt_pb2 import *
 from app.proto_file.level_gift_pb2 import *
 
@@ -83,7 +82,6 @@ class RobotGuild(Robot):
         argument.ParseFromString(message)
         print argument
         self.on_command_finish()
-
 
     def command_buy_shoes(self):
         argument1 = BuyShoesRequest()

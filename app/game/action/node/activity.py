@@ -5,8 +5,14 @@
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import activity_pb2
 from shared.db_opear.configs_data import game_configs
-from app.game.core.item_group_helper import gain, get_return
+from gfirefly.server.logobj import logger
 from shared.utils.const import const
+from shared.db_opear.configs_data.data_helper import parse
+
+from app.game.core.item_group_helper import is_afford
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import gain
+from app.game.core.item_group_helper import get_return
 
 
 @remoteserviceHandle('gate')
@@ -108,5 +114,50 @@ def get_act_info_1831(data, player):
         response.times = player.act.act23_times
         if player.act.act23_state:
             response.received_act_ids.append(act_id)
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_activity_28_gift_1834(data, player):
+    request = activity_pb2.GetActGiftRequest()
+    request.ParseFromString(data)
+    activity_id = request.act_id
+    quantity = request.quantity
+    response = activity_pb2.GetActGiftResponse()
+    response.res.result = False
+
+    activity_conf = game_configs.activity_config.get(activity_id)
+    if not activity_conf:
+        logger.error('not found activity id:%s', activity_id)
+        response.res.result_no = 183401
+        return response.SerializeToString()
+    if not player.base_info.is_activiy_open(activity_id):
+        logger.error('activity not open id:%s', activity_id)
+        response.res.result_no = 183402
+        return response.SerializeToString()
+
+    price = activity_conf.parameterA
+    activity_consume = parse({107: [price, price, 28]})
+    for i in range(30):
+        print player.finance[i]
+    result = is_afford(player, activity_consume, multiple=quantity)
+    if not result.get('result'):
+        logger.error('activity not enough res:%s', price)
+        response.res.result_no = 183403
+        return response.SerializeToString()
+
+    consume_data = consume(player,
+                           activity_consume,
+                           const.act_28,
+                           multiple=quantity)
+    get_return(player, consume_data, response.consume)
+
+    return_data = gain(player,
+                       activity_conf.reward,
+                       const.act_28,
+                       multiple=quantity)
+    get_return(player, return_data, response.gain)
+
     response.res.result = True
     return response.SerializeToString()

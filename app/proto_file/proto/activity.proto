@@ -3,11 +3,13 @@ import "common.proto";
 //1832
 message GetActGiftRequest{
     required int32 act_id = 1;
+	optional int32 quantity = 2;
 }
 
 message GetActGiftResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
+    optional GameResourcesResponse consume = 3;
 }
 
 //1831
