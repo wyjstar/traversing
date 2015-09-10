@@ -368,9 +368,9 @@ def shop_buy_505(pro_data, player):
                                lucky_attr_id=_lucky_attr)  # 获取
             get_return(player, consume_return_data, response.consume)
             get_return(player, return_data, response.gain)
-            if shop_item.luckyValue:
+            if shop_item.ExchangeValue:
                 lucky_data = gain(player,
-                                  shop_item.luckyValue,
+                                  shop_item.ExchangeValue,
                                   get_reason(shop_item.get('type')))
                 get_return(player, lucky_data, response.gain)
 
