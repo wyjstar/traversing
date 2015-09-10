@@ -197,6 +197,7 @@ const.INHERIT_UPARA = 63  # 无双传承
 const.ENCOURAGE_HEROS = 64  # pvb鼓舞士气
 const.PVB_REBORN = 65  # pvb复活
 const.StageChestGift = 66  # 关卡宝箱
+const.act_28 = 67  # 关卡宝箱
 
 
 const.LOGIN_GIFT_CONTINUS = 8061

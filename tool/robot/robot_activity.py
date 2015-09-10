@@ -10,6 +10,8 @@ from app.proto_file import pvp_rank_pb2
 from app.proto_file import line_up_pb2
 from app.proto_file import google_pb2
 from app.proto_file import recharge_pb2
+from app.proto_file import activity_pb2
+from app.proto_file import shop_pb2
 # from app.proto_file import soul_shop_pb2
 
 
@@ -160,6 +162,30 @@ class RobotActivity(Robot):
 
     def none_1151(self, message):
         response = recharge_pb2.GetRechargeGiftResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_get_activity_gift(self, activity_id, quantity):
+        request = activity_pb2.GetActGiftRequest()
+        request.act_id = int(activity_id)
+        request.quantity = int(quantity)
+        self.send_message(request, 1834)
+
+    def none_1834(self, message):
+        response = activity_pb2.GetActGiftResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_buy_shop_item(self, shop_id, num):
+        request = shop_pb2.ShopRequest()
+        request.ids.append(int(shop_id))
+        request.item_count.append(int(num))
+        self.send_message(request, 505)
+
+    def none_505(self, message):
+        response = shop_pb2.ShopResponse()
         response.ParseFromString(message)
         print response
         self.on_command_finish()
