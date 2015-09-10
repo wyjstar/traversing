@@ -138,7 +138,7 @@ def get_activity_28_gift_1834(data, player):
         return response.SerializeToString()
 
     price = activity_conf.parameterA
-    activity_consume = parse({107: [price, price, 28]})
+    activity_consume = parse({107: [price, price, 29]})
     for i in range(30):
         print player.finance[i]
     result = is_afford(player, activity_consume, multiple=quantity)
