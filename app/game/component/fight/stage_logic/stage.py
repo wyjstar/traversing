@@ -54,7 +54,7 @@ class StageLogic(base_stage.BaseStageLogic):
 
             # 活跃度
             # 结算
-            stage_util.settle(player, result, response, conf, stage_type=1)
+            stage_util.settle(player, result, response, conf)
             # hook task
             hook_task(player, CONDITIONId.ANY_STAGE, 1)
             hook_task(player, CONDITIONId.STAGE, stage_id)

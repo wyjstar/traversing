@@ -35,6 +35,7 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
         for k, hero in boss.lucky_heros.items():
             hero_no = hero.get("hero_no")
             lucky_hero_info_id = hero.get("lucky_hero_info_id")
+            logger.debug("lucky_hero_info_id %s" % lucky_hero_info_id)
             lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_info_id)
 
             hero_pb = response.lucky_heros.add()

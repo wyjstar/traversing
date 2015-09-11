@@ -232,6 +232,18 @@ def fight_settlement_904(pro_data, player):
 
     logger.debug("damage percent: %s" % res[1])
     logger.debug("red units: %s" % res[2])
+    player.fight_cache_component.damage_percent = res[1]
+
+    star = 0 # star num
+    for i in range(1, 4):
+        star_condition = game_configs.base_config.get('star_condition')
+        v = star_condition[i]
+        if res[2] <= v and res[2] != 0:
+            star = i
+            break
+
+    # todo: 如果跳过则不记录，通关星级
+
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
     logger.debug("steps:%s", request.steps)
