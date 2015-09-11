@@ -6,8 +6,12 @@ import "common.proto";
 message StageInfoResponse{
 	repeated Stage stage = 1;
 	required int32 elite_stage_times = 2;
-	required int32 act_stage_times = 3;
+	optional int32 act_stage_times = 3; //过期字段
 	optional int32 plot_chapter = 4;  //显示剧情章节
+	optional int32 act_coin_stage_times = 5; //活动宝库
+	optional int32 act_exp_stage_times = 6;  //活动校场
+    repeated LuckyHeroItem act_coin_lucky_heros = 7; //活动宝库幸运武将
+    repeated LuckyHeroItem act_exp_lucky_heros = 8; //活动校场幸运武将
 }
 
 //请求章节奖励信息返回 command:902

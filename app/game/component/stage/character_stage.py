@@ -8,6 +8,8 @@ from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 import time
 from gfirefly.server.logobj import logger
+from shared.utils.date_util import get_current_timestamp, is_next_day
+from shared.common_logic.lucky_hero import update_lucky_hero
 
 
 class CharacterStageComponent(Component):
@@ -17,14 +19,18 @@ class CharacterStageComponent(Component):
     def __init__(self, owner):
         super(CharacterStageComponent, self).__init__(owner)
 
-        self._stage_info = {}  # 关卡信息
-        self._award_info = {}  # 按章节记录奖励信息
-        # self._elite_stage_info = {}
+        self._stage_info = {}            # 关卡信息
+        self._award_info = {}            # 按章节记录奖励信息
+                                         # self._elite_stage_info = {}
         self._elite_stage_info = [0, 1]  # 精英关卡相关信息, {今日挑战次数，最后挑战日期}
-        # self._act_stage = {}
-        self._act_stage_info = [0, 1]  # 活动关卡相关信息, {今日挑战次数，最后挑战日期}
-        self._stage_up_time = 1  # 关卡挑战次数 更新 时间
-        self._plot_chapter = 1  # 剧情章节
+                                         # self._act_stage = {}
+        self._act_stage_info = [0, 0, 1] # 活动关卡相关信息, {今日挑战宝库次数，今日挑战校场次数,最后挑战日期}
+        self._stage_up_time = 1          # 关卡挑战次数 更新 时间
+        self._plot_chapter = 1           # 剧情章节
+        self._act_coin_lucky_heros = []  # 宝库幸运武将
+        self._act_exp_lucky_heros = []   # 校场幸运武将
+        self._act_coin_lucky_heros_time = [0, 0]   #  宝库幸运武将时间，[幸运武将开始时间，幸运武将结束时间]
+        self._act_exp_lucky_heros_time = [0, 0]   #  校场幸运武将时间，[幸运武将开始时间，幸运武将结束时间]
 
         self._stage_progress = game_configs.stage_config.get('first_stage_id')
         self._rank_stage_progress = game_configs.stage_config.get('first_stage_id')
@@ -40,6 +46,8 @@ class CharacterStageComponent(Component):
             self._award_info[chapter_id] = StageAward.loads(stage_award)
         self._elite_stage_info = character_info.get('elite_stage')
         self._act_stage_info = character_info.get('act_stage')
+        self._act_coin_lucky_heros = character_info.get('act_coin_lucky_heros')
+        self._act_exp_lucky_heros = character_info.get('act_exp_lucky_heros')
         self._stage_up_time = character_info.get('stage_up_time')
         self._plot_chapter = character_info.get('plot_chapter', 1)
 
@@ -47,6 +55,32 @@ class CharacterStageComponent(Component):
         self._stage_progress = character_info.get('stage_progress', first_stage_id)
         self._rank_stage_progress = character_info.get('rank_stage_progress', first_stage_id)
         self._star_num = character_info.get('star_num', [0]*40)
+
+    def check_time(self):
+        """
+        时间改变，重置数据
+        """
+        current_time_stamp = get_current_timestamp()
+        if self._act_coin_lucky_heros_time[0] > current_time_stamp or self._act_coin_lucky_heros_time[1] < current_time_stamp:
+            self._act_coin_lucky_heros, self._act_coin_lucky_heros_time[0], self._act_coin_lucky_heros_time[1] = update_lucky_hero(4)
+        if self._act_exp_lucky_heros_time[0] > current_time_stamp or self._act_exp_lucky_heros_time[1] < current_time_stamp:
+            self._act_exp_lucky_heros, self._act_exp_lucky_heros_time[0], self._act_exp_lucky_heros_time[1] = update_lucky_hero(5)
+
+        if is_next_day(current_time_stamp, self._elite_stage_info[1]):
+            self._elite_stage_info[0] = 0
+            self._elite_stage_info[1] = current_time_stamp
+        if is_next_day(current_time_stamp, self._act_stage_info[2]):
+            self._act_stage_info[0] = 0
+            self._act_stage_info[1] = 0
+            self._act_stage_info[2] = current_time_stamp
+        logger.debug("character_stage check time")
+        logger.debug(self._act_exp_lucky_heros)
+        logger.debug(self._act_exp_lucky_heros_time)
+        logger.debug(self._act_coin_lucky_heros)
+        logger.debug(self._act_coin_lucky_heros_time)
+        logger.debug(self._elite_stage_info)
+        logger.debug(self._act_stage_info)
+        self.save_data()
 
     def new_data(self):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
@@ -61,7 +95,7 @@ class CharacterStageComponent(Component):
                      self._award_info.iteritems()]),
                 'elite_stage': [0, int(time.time())],
                 'plot_chapter': 1,
-                'act_stage': [0, int(time.time())],
+                'act_stage': [0, 0, int(time.time())],
                 'stage_progress': self._stage_progress,
                 'rank_stage_progress': self._rank_stage_progress,
                 'star_num': self._star_num,
@@ -78,7 +112,11 @@ class CharacterStageComponent(Component):
                  'star_num': self._star_num,
                  'stage_progress': self._stage_progress,
                  'rank_stage_progress': self._rank_stage_progress,
-                 'stage_up_time': self._stage_up_time
+                 'stage_up_time': self._stage_up_time,
+                 'act_coin_lucky_heros': self._act_coin_lucky_heros,
+                 'act_exp_lucky_heros': self._act_exp_lucky_heros,
+                 'act_coin_lucky_heros_time': self._act_coin_lucky_heros_time,
+                 'act_exp_lucky_heros_time': self._act_exp_lucky_heros_time,
                  }
 
         char_obj = tb_character_info.getObj(self.owner.base_info.id)

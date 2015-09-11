@@ -16,7 +16,7 @@ import line_up_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='world_boss.proto',
   package='',
-  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\x1a\rline_up.proto\"\x1d\n\nPvbRequest\x12\x0f\n\x07\x62oss_id\x18\x01 \x02(\t\"\x9e\x01\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x10\n\x08now_head\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\x12%\n\x0cline_up_info\x18\x05 \x01(\x0b\x32\x0f.LineUpResponse\x12\x11\n\tplayer_id\x18\x06 \x01(\x05\x12\x0f\n\x07rank_no\x18\x07 \x01(\x05\"O\n\rLuckyHeroAttr\x12\x11\n\tattr_type\x18\x01 \x02(\x05\x12\x17\n\x0f\x61ttr_value_type\x18\x02 \x02(\x05\x12\x12\n\nattr_value\x18\x03 \x02(\x02\"K\n\rLuckyHeroItem\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12\x1c\n\x04\x61ttr\x18\x03 \x03(\x0b\x32\x0e.LuckyHeroAttr\"\xac\x03\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12#\n\x0blucky_heros\x18\x02 \x03(\x0b\x32\x0e.LuckyHeroItem\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x17\n\x0flast_fight_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\x12\x19\n\x11gold_reborn_times\x18\x10 \x01(\x05\x12\x0e\n\x06hp_max\x18\x11 \x01(\x05\x12 \n\x18last_coin_encourage_time\x18\x12 \x01(\x05\"8\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x02 \x01(\t\"S\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x03 \x01(\t\"U\n\x0fPvbStartRequest\x12\x0f\n\x07\x62oss_id\x18\x04 \x01(\t\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x02 \x01(\x05\x12\x0b\n\x03\x66id\x18\x03 \x01(\x05\"\xfd\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x01(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x06 \x01(\x08\x12\r\n\x05seed1\x18\x07 \x01(\x05\x12\r\n\x05seed2\x18\x08 \x01(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\t \x01(\x05\x12\x13\n\x0b\x64\x61mage_rate\x18\n \x01(\x02\"S\n\x10MineBossResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07\x62oss_id\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x03 \x02(\x05\"n\n\x10PvbAwardResponse\x12\x0f\n\x07is_over\x18\x01 \x02(\x08\x12\x12\n\naward_type\x18\x02 \x01(\x05\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0f\n\x07rank_no\x18\x04 \x01(\x05')
+  serialized_pb='\n\x10world_boss.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\x1a\rline_up.proto\"\x1d\n\nPvbRequest\x12\x0f\n\x07\x62oss_id\x18\x01 \x02(\t\"\x9e\x01\n\x0bPvbRankItem\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\r\n\x05level\x18\x02 \x02(\x05\x12\x10\n\x08now_head\x18\x03 \x02(\x05\x12\x11\n\tdemage_hp\x18\x04 \x02(\x05\x12%\n\x0cline_up_info\x18\x05 \x01(\x0b\x32\x0f.LineUpResponse\x12\x11\n\tplayer_id\x18\x06 \x01(\x05\x12\x0f\n\x07rank_no\x18\x07 \x01(\x05\"\xac\x03\n\x15PvbBeforeInfoResponse\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12#\n\x0blucky_heros\x18\x02 \x03(\x0b\x32\x0e.LuckyHeroItem\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\x05 \x01(\x05\x12 \n\nrank_items\x18\x06 \x03(\x0b\x32\x0c.PvbRankItem\x12$\n\x0elast_shot_item\x18\x07 \x01(\x0b\x32\x0c.PvbRankItem\x12\x13\n\x0bopen_or_not\x18\x08 \x01(\x08\x12\x0f\n\x07hp_left\x18\t \x01(\x05\x12\x11\n\tdemage_hp\x18\n \x01(\x05\x12\x0f\n\x07rank_no\x18\x0b \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x0c \x01(\x05\x12\x17\n\x0flast_fight_time\x18\r \x01(\x05\x12\x1a\n\x12\x65ncourage_coin_num\x18\x0e \x01(\x05\x12\x1a\n\x12\x65ncourage_gold_num\x18\x0f \x01(\x05\x12\x19\n\x11gold_reborn_times\x18\x10 \x01(\x05\x12\x0e\n\x06hp_max\x18\x11 \x01(\x05\x12 \n\x18last_coin_encourage_time\x18\x12 \x01(\x05\"8\n\x14PvbPlayerInfoRequest\x12\x0f\n\x07rank_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x02 \x01(\t\"S\n\x15\x45ncourageHerosRequest\x12\x14\n\x0c\x66inance_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x66inance_num\x18\x02 \x02(\x05\x12\x0f\n\x07\x62oss_id\x18\x03 \x01(\t\"U\n\x0fPvbStartRequest\x12\x0f\n\x07\x62oss_id\x18\x04 \x01(\t\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x02 \x01(\x05\x12\x0b\n\x03\x66id\x18\x03 \x01(\x05\"\xfd\x01\n\x10PvbFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x16\n\x0ered_best_skill\x18\x04 \x01(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x06 \x01(\x08\x12\r\n\x05seed1\x18\x07 \x01(\x05\x12\r\n\x05seed2\x18\x08 \x01(\x05\x12\x17\n\x0f\x64\x65\x62uff_skill_no\x18\t \x01(\x05\x12\x13\n\x0b\x64\x61mage_rate\x18\n \x01(\x02\"S\n\x10MineBossResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07\x62oss_id\x18\x02 \x02(\t\x12\x10\n\x08stage_id\x18\x03 \x02(\x05\"n\n\x10PvbAwardResponse\x12\x0f\n\x07is_over\x18\x01 \x02(\x08\x12\x12\n\naward_type\x18\x02 \x01(\x05\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0f\n\x07rank_no\x18\x04 \x01(\x05')
 
 
 
@@ -116,90 +116,6 @@ _PVBRANKITEM = _descriptor.Descriptor(
   extension_ranges=[],
   serialized_start=94,
   serialized_end=252,
-)
-
-
-_LUCKYHEROATTR = _descriptor.Descriptor(
-  name='LuckyHeroAttr',
-  full_name='LuckyHeroAttr',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='attr_type', full_name='LuckyHeroAttr.attr_type', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='attr_value_type', full_name='LuckyHeroAttr.attr_value_type', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='attr_value', full_name='LuckyHeroAttr.attr_value', index=2,
-      number=3, type=2, cpp_type=6, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=254,
-  serialized_end=333,
-)
-
-
-_LUCKYHEROITEM = _descriptor.Descriptor(
-  name='LuckyHeroItem',
-  full_name='LuckyHeroItem',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='pos', full_name='LuckyHeroItem.pos', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hero_no', full_name='LuckyHeroItem.hero_no', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='attr', full_name='LuckyHeroItem.attr', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=335,
-  serialized_end=410,
 )
 
 
@@ -331,8 +247,8 @@ _PVBBEFOREINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=413,
-  serialized_end=841,
+  serialized_start=255,
+  serialized_end=683,
 )
 
 
@@ -366,8 +282,8 @@ _PVBPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=843,
-  serialized_end=899,
+  serialized_start=685,
+  serialized_end=741,
 )
 
 
@@ -408,8 +324,8 @@ _ENCOURAGEHEROSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=901,
-  serialized_end=984,
+  serialized_start=743,
+  serialized_end=826,
 )
 
 
@@ -457,8 +373,8 @@ _PVBSTARTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=986,
-  serialized_end=1071,
+  serialized_start=828,
+  serialized_end=913,
 )
 
 
@@ -548,8 +464,8 @@ _PVBFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1074,
-  serialized_end=1327,
+  serialized_start=916,
+  serialized_end=1169,
 )
 
 
@@ -590,8 +506,8 @@ _MINEBOSSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1329,
-  serialized_end=1412,
+  serialized_start=1171,
+  serialized_end=1254,
 )
 
 
@@ -639,13 +555,12 @@ _PVBAWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1414,
-  serialized_end=1524,
+  serialized_start=1256,
+  serialized_end=1366,
 )
 
 _PVBRANKITEM.fields_by_name['line_up_info'].message_type = line_up_pb2._LINEUPRESPONSE
-_LUCKYHEROITEM.fields_by_name['attr'].message_type = _LUCKYHEROATTR
-_PVBBEFOREINFORESPONSE.fields_by_name['lucky_heros'].message_type = _LUCKYHEROITEM
+_PVBBEFOREINFORESPONSE.fields_by_name['lucky_heros'].message_type = common_pb2._LUCKYHEROITEM
 _PVBBEFOREINFORESPONSE.fields_by_name['rank_items'].message_type = _PVBRANKITEM
 _PVBBEFOREINFORESPONSE.fields_by_name['last_shot_item'].message_type = _PVBRANKITEM
 _PVBFIGHTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -655,8 +570,6 @@ _MINEBOSSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONS
 _PVBAWARDRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['PvbRequest'] = _PVBREQUEST
 DESCRIPTOR.message_types_by_name['PvbRankItem'] = _PVBRANKITEM
-DESCRIPTOR.message_types_by_name['LuckyHeroAttr'] = _LUCKYHEROATTR
-DESCRIPTOR.message_types_by_name['LuckyHeroItem'] = _LUCKYHEROITEM
 DESCRIPTOR.message_types_by_name['PvbBeforeInfoResponse'] = _PVBBEFOREINFORESPONSE
 DESCRIPTOR.message_types_by_name['PvbPlayerInfoRequest'] = _PVBPLAYERINFOREQUEST
 DESCRIPTOR.message_types_by_name['EncourageHerosRequest'] = _ENCOURAGEHEROSREQUEST
@@ -676,18 +589,6 @@ class PvbRankItem(_message.Message):
   DESCRIPTOR = _PVBRANKITEM
 
   # @@protoc_insertion_point(class_scope:PvbRankItem)
-
-class LuckyHeroAttr(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _LUCKYHEROATTR
-
-  # @@protoc_insertion_point(class_scope:LuckyHeroAttr)
-
-class LuckyHeroItem(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _LUCKYHEROITEM
-
-  # @@protoc_insertion_point(class_scope:LuckyHeroItem)
 
 class PvbBeforeInfoResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

@@ -47,3 +47,17 @@ message GetGoldResponse{
     required int32 vip_level = 3;
     required int32 recharge = 4;
 }
+
+message LuckyHeroAttr
+{
+    required int32 attr_type = 1;
+    required int32 attr_value_type = 2;
+    required float attr_value = 3;
+}
+message LuckyHeroItem
+{
+    required int32 pos = 1;
+    required int32 hero_no = 2;
+    repeated LuckyHeroAttr attr = 3;
+}
+

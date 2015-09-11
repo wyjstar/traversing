@@ -35,6 +35,8 @@ class BigBag(object):
             logger.exception(e)
         drop_item_group = []
         for drop_item in drop_items:
+            if drop_item.item_type == 0:
+                continue
             drop_item_type = u'%s' % drop_item.item_type
             drop_item_no = drop_item.item_no
             drop_item_num = drop_item.item_num
