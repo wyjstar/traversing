@@ -21,8 +21,9 @@ attr_type = {1:"hpHero",
 
 class ActStageLogic(base_stage.BaseStageLogic):
     """docstring for 活动关卡"""
-    def __init__(self, player, stage_id):
+    def __init__(self, player, stage_id, stage_type):
         super(ActStageLogic, self).__init__(player, stage_id)
+        self.stage_type = stage_type
 
     def check(self):
         """校验关卡是否开启"""
@@ -77,7 +78,11 @@ class ActStageLogic(base_stage.BaseStageLogic):
         """
         update hero self attr, plus some attr
         """
-        lucky_heros = cPickle.loads(remote_gate['world'].get_lucky_heros_remote())
+        lucky_heros = {}
+        if self.stage_type == 4:
+            player.stage_component._act_coin_lucky_heros
+        elif self.stage_type == 5:
+            player.stage_component._act_exp_lucky_heros
         lucky_add = 0
 
         print("hero_self_attr_origin", hero_self_attr)

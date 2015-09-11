@@ -134,7 +134,7 @@ def stage_start_903(pro_data, player):
     request.ParseFromString(pro_data)
 
     stage_id = request.stage_id          # 关卡编号
-    stage_type = request.stage_type      # 关卡类型 1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
+    stage_type = request.stage_type      # 关卡类型 1.普通关卡2.精英关卡7.活动宝库关卡8.活动校场关卡4.游历关卡5.秘境关卡
     line_up = request.lineup            # 阵容顺序
     red_best_skill_id = request.unparalleled  # 无双编号
     fid = request.fid                    # 好友ID
@@ -263,7 +263,7 @@ def fight_settlement_904(pro_data, player):
             star = i
             break
 
-    # todo: 如果跳过则不记录，通关星级
+    # todo: 如果跳过或者打败,则不记录通关星级
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
