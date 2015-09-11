@@ -29,7 +29,7 @@ class PlayersManager:
         @return:
         """
         if player.base_info.id in self._players:
-            raise Exception("系统记录冲突")
+            #raise Exception("系统记录冲突")
             return
         self._players[player.base_info.id] = player
 

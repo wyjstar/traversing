@@ -75,7 +75,7 @@ def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     return {"result": True, "hero": hero}
 
 @remoteserviceHandle('gate')
-def one_key_hero_upgrade_with_item_119(data, player):
+def one_key_hero_upgrade_with_item_120(data, player):
     """阵容界面武将一键升级"""
     args = hero_request_pb2.HeroRequest()
     args.ParseFromString(data)
@@ -142,6 +142,10 @@ def one_key_hero_upgrade_logic(hero_no, player):
             big_exp_num = i + 1
 
     hero.upgrade(small_exp * small_exp_num + middle_exp * middle_exp_num + big_exp * big_exp_num, player.base_info.level)
+
+    player.item_package.consume_item(10001, small_exp_num)
+    player.item_package.consume_item(10002, middle_exp_num)
+    player.item_package.consume_item(10003, big_exp_num)
 
     return {"result": True, "hero": hero, "small_exp_num": small_exp_num, "middle_exp_num": middle_exp_num, "big_exp_num": big_exp_num}
 

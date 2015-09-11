@@ -18,7 +18,7 @@ import travel_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x11travel_item.proto\x1a\x0ctravel.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\".\n\x05Unpar\x12\x10\n\x08unpar_id\x18\x01 \x02(\x05\x12\x13\n\x0bunpar_level\x18\x02 \x02(\x05\"\xe2\x01\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\x12\x18\n\x03sub\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x16\n\x06unpars\x18\x03 \x03(\x0b\x32\x06.Unpar\x12\x1c\n\x03res\x18\x04 \x01(\x0b\x32\x0f.CommonResponse\x12\r\n\x05order\x18\x05 \x03(\x05\x12\x10\n\x08unpar_id\x18\x06 \x01(\x05\x12/\n\x13travel_item_chapter\x18\x07 \x03(\x0b\x32\x12.TravelItemChapter\x12\x13\n\x0bguild_level\x18\x08 \x01(\x05\";\n\x12LineUpUnparUpgrade\x12\x10\n\x08skill_id\x18\x01 \x02(\x05\x12\x13\n\x0bskill_level\x18\x02 \x02(\x05\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"F\n\x1c\x43hangeMultiEquipmentsRequest\x12&\n\x04\x65qus\x18\x01 \x03(\x0b\x32\x18.ChangeEquipmentsRequest\"J\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x63hange_type\x18\x02 \x01(\x05\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\"%\n\x10GetLineUpRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"J\n\x15\x45quipmentStrengthInfo\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"/\n\x1c\x41llEquipmentsStrengthRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\"\xa5\x01\n\x1d\x41llEquipmentsStrengthResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07slot_no\x18\x05 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x02 \x02(\x05\x12%\n\x05infos\x18\x03 \x03(\x0b\x32\x16.EquipmentStrengthInfo\x12 \n\x07line_up\x18\x04 \x01(\x0b\x32\x0f.LineUpResponse')
+  serialized_pb='\n\rline_up.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x11travel_item.proto\x1a\x0ctravel.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\".\n\x05Unpar\x12\x10\n\x08unpar_id\x18\x01 \x02(\x05\x12\x13\n\x0bunpar_level\x18\x02 \x02(\x05\"\xf7\x01\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\x12\x18\n\x03sub\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x16\n\x06unpars\x18\x03 \x03(\x0b\x32\x06.Unpar\x12\x1c\n\x03res\x18\x04 \x01(\x0b\x32\x0f.CommonResponse\x12\r\n\x05order\x18\x05 \x03(\x05\x12\x10\n\x08unpar_id\x18\x06 \x01(\x05\x12/\n\x13travel_item_chapter\x18\x07 \x03(\x0b\x32\x12.TravelItemChapter\x12\x13\n\x0bguild_level\x18\x08 \x01(\x05\x12\x13\n\x0b\x63\x61ption_pos\x18\t \x01(\x05\";\n\x12LineUpUnparUpgrade\x12\x10\n\x08skill_id\x18\x01 \x02(\x05\x12\x13\n\x0bskill_level\x18\x02 \x02(\x05\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"F\n\x1c\x43hangeMultiEquipmentsRequest\x12&\n\x04\x65qus\x18\x01 \x03(\x0b\x32\x18.ChangeEquipmentsRequest\"J\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x63hange_type\x18\x02 \x01(\x05\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\"%\n\x10GetLineUpRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"J\n\x15\x45quipmentStrengthInfo\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"/\n\x1c\x41llEquipmentsStrengthRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\"\xa5\x01\n\x1d\x41llEquipmentsStrengthResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07slot_no\x18\x05 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x02 \x02(\x05\x12%\n\x05infos\x18\x03 \x03(\x0b\x32\x16.EquipmentStrengthInfo\x12 \n\x07line_up\x18\x04 \x01(\x0b\x32\x0f.LineUpResponse\">\n\x16SaveLineUpOrderRequest\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x02 \x01(\x05\"(\n\x11SetCaptainRequest\x12\x13\n\x0b\x63\x61ption_pos\x18\x01 \x02(\x05')
 
 
 
@@ -205,6 +205,13 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='caption_pos', full_name='LineUpResponse.caption_pos', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -215,7 +222,7 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=302,
-  serialized_end=528,
+  serialized_end=549,
 )
 
 
@@ -249,8 +256,8 @@ _LINEUPUNPARUPGRADE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=530,
-  serialized_end=589,
+  serialized_start=551,
+  serialized_end=610,
 )
 
 
@@ -291,8 +298,8 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=591,
-  serialized_end=667,
+  serialized_start=612,
+  serialized_end=688,
 )
 
 
@@ -319,8 +326,8 @@ _CHANGEMULTIEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=669,
-  serialized_end=739,
+  serialized_start=690,
+  serialized_end=760,
 )
 
 
@@ -361,8 +368,8 @@ _CHANGEHEROREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=741,
-  serialized_end=815,
+  serialized_start=762,
+  serialized_end=836,
 )
 
 
@@ -389,8 +396,8 @@ _GETLINEUPREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=817,
-  serialized_end=854,
+  serialized_start=838,
+  serialized_end=875,
 )
 
 
@@ -424,8 +431,8 @@ _EQUIPMENTSTRENGTHINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=856,
-  serialized_end=930,
+  serialized_start=877,
+  serialized_end=951,
 )
 
 
@@ -452,8 +459,8 @@ _ALLEQUIPMENTSSTRENGTHREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=932,
-  serialized_end=979,
+  serialized_start=953,
+  serialized_end=1000,
 )
 
 
@@ -508,8 +515,71 @@ _ALLEQUIPMENTSSTRENGTHRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=982,
-  serialized_end=1147,
+  serialized_start=1003,
+  serialized_end=1168,
+)
+
+
+_SAVELINEUPORDERREQUEST = _descriptor.Descriptor(
+  name='SaveLineUpOrderRequest',
+  full_name='SaveLineUpOrderRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='lineup', full_name='SaveLineUpOrderRequest.lineup', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='unparalleled', full_name='SaveLineUpOrderRequest.unparalleled', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1170,
+  serialized_end=1232,
+)
+
+
+_SETCAPTAINREQUEST = _descriptor.Descriptor(
+  name='SetCaptainRequest',
+  full_name='SetCaptainRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='caption_pos', full_name='SetCaptainRequest.caption_pos', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1234,
+  serialized_end=1274,
 )
 
 _SLOTEQUIPMENT.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
@@ -537,6 +607,8 @@ DESCRIPTOR.message_types_by_name['GetLineUpRequest'] = _GETLINEUPREQUEST
 DESCRIPTOR.message_types_by_name['EquipmentStrengthInfo'] = _EQUIPMENTSTRENGTHINFO
 DESCRIPTOR.message_types_by_name['AllEquipmentsStrengthRequest'] = _ALLEQUIPMENTSSTRENGTHREQUEST
 DESCRIPTOR.message_types_by_name['AllEquipmentsStrengthResponse'] = _ALLEQUIPMENTSSTRENGTHRESPONSE
+DESCRIPTOR.message_types_by_name['SaveLineUpOrderRequest'] = _SAVELINEUPORDERREQUEST
+DESCRIPTOR.message_types_by_name['SetCaptainRequest'] = _SETCAPTAINREQUEST
 
 class SlotEquipment(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -609,6 +681,18 @@ class AllEquipmentsStrengthResponse(_message.Message):
   DESCRIPTOR = _ALLEQUIPMENTSSTRENGTHRESPONSE
 
   # @@protoc_insertion_point(class_scope:AllEquipmentsStrengthResponse)
+
+class SaveLineUpOrderRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SAVELINEUPORDERREQUEST
+
+  # @@protoc_insertion_point(class_scope:SaveLineUpOrderRequest)
+
+class SetCaptainRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SETCAPTAINREQUEST
+
+  # @@protoc_insertion_point(class_scope:SetCaptainRequest)
 
 
 # @@protoc_insertion_point(module_scope)

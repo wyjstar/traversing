@@ -418,7 +418,8 @@ def line_up_info(player, response=None):
         add_unpar.unpar_id = k
         add_unpar.unpar_level = v
 
-
+    response.caption_pos = player.line_up_component.caption_pos
+    logger.debug("line_up_info caption_pos %s" % response.caption_pos)
 
     return response
 
@@ -500,4 +501,27 @@ def save_line_order_708(pro_data, player):
     player.line_up_component.current_unpar = request.unparalleled
     player.line_up_component.save_data(["line_up_order", "current_unpar"])
 
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def set_captain_709(pro_data, player):
+    """
+    设置队长
+    """
+    request = line_up_pb2.SetCaptainRequest()
+    request.ParseFromString(pro_data)
+    caption_pos = request.caption_pos
+    logger.debug("request %s" % request.caption_pos)
+
+    response = CommonResponse()
+    line_up_slots = player.line_up_component.line_up_slots
+    if caption_pos not in line_up_slots or (not line_up_slots[caption_pos].hero_slot.hero_obj):
+        response.result = False
+        return response.SerializePartialToString()
+
+    player.line_up_component.caption_pos = caption_pos
+    player.line_up_component.save_data()
+    response.result = True
+    logger.debug(response)
     return response.SerializePartialToString()

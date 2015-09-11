@@ -36,6 +36,7 @@ message LineUpResponse{
     optional int32 unpar_id = 6;  // 当前无双
     repeated TravelItemChapter travel_item_chapter = 7; // 风物志
     optional int32 guild_level = 8; // 公会等级
+    optional int32 caption_pos = 9; // 队长槽位
 }
 
 message LineUpUnparUpgrade{
@@ -92,4 +93,10 @@ message SaveLineUpOrderRequest
 {
 	repeated int32 lineup = 1;      // 队形
 	optional int32 unparalleled = 2; // 无双技能ID
+}
+
+// 设置队长请求709,  返回：CommonResponse
+message SetCaptainRequest
+{
+	required int32 caption_pos = 1; // 武将槽位置 1-6
 }

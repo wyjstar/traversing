@@ -6,15 +6,13 @@ base class
 """
 
 import unittest
-from test.unittest.init_test_data import init
-from gfirefly.dbentrust.dbpool import dbpool
 
 class BaseTestCase(unittest.TestCase):
     """docstring for BaseTestCase"""
 
     def setUp(self):
+        from test.unittest.init_test_data import init
         self.player = init()
-        dbpool.closePool()
 
     def Equal(self, res, expected):
         self.assertEqual(res, expected, "error!%s_%s" % (res, expected))

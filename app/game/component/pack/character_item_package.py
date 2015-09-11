@@ -64,6 +64,7 @@ class CharacterItemPackageComponent(Component):
 
     def consume_item(self, item_no, item_num):
         item = self._items.get(item_no)
+        if not item: return
         item.num -= item_num
         if item.num == 0:
             del self._items[item_no]
