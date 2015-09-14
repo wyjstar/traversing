@@ -52,7 +52,7 @@ def get_target_info_1826(data, player):
             if info.get('jindu'):
                 target_info_pro.jindu = info.get('jindu')
             if info.get('state'):
-                target_info_pro.jindu = info.get('state')
+                target_info_pro.state = info.get('state')
 
     response.res.result = True
     return response.SerializeToString()
