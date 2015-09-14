@@ -46,6 +46,7 @@ message CharacterInfo{
     optional int32 buddy_power = 18;
     optional int32 vip_level = 19;
     optional int32 fight_times = 20; // 攻击次数
+    optional int32 fight_last_time = 21; // 攻击次数
 }
 
 // player friend items
