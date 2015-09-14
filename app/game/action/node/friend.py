@@ -414,6 +414,8 @@ def get_recommend(player, up, down, recommend_num, response):
                     friend.last_time = friend_data['upgrade_time']
                 friend.fight_times = player.friends.fight_times.get(friend.id, [0])[0]
                 friend.fight_last_time = len(player.friends.fight_times.get(friend.id, []))
+                friend.fight_times = player.friends.fight_times.get(uid, [0])[0]
+                friend.fight_last_time = len(player.friends.fight_times.get(uid, []))
 
                 # 添加好友主将的属性
                 _with_battle_info(friend, player_data)
