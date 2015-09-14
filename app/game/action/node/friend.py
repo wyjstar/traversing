@@ -246,8 +246,8 @@ def get_player_friend_list_1106(data, player):
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, player_data)
             response_friend_add.gift = player.friends.last_present_times(pid)
-            response_friend_add.fight_times = int(player.friends.fight_times.get(pid, [0])[0])
-            response_friend_add.fight_last_time = len(player.friends.fight_times.get(pid, []))
+            response_friend_add.fight_last_time = int(player.friends.fight_times.get(pid, [0])[0])
+            response_friend_add.fight_times = len(player.friends.fight_times.get(pid, []))
         else:
             logger.error('friend_list, cant find player id:%d' % pid)
             player.friends.friends.remove(pid)
@@ -412,10 +412,8 @@ def get_recommend(player, up, down, recommend_num, response):
                 friend.b_rank = 1
                 if remote_gate.online_remote(friend_data['id']) == 0:
                     friend.last_time = friend_data['upgrade_time']
-                friend.fight_times = player.friends.fight_times.get(friend.id, [0])[0]
-                friend.fight_last_time = len(player.friends.fight_times.get(friend.id, []))
-                friend.fight_times = player.friends.fight_times.get(uid, [0])[0]
-                friend.fight_last_time = len(player.friends.fight_times.get(uid, []))
+                friend.fight_last_time = player.friends.fight_times.get(uid, [0])[0]
+                friend.fight_times = len(player.friends.fight_times.get(uid, []))
 
                 # 添加好友主将的属性
                 _with_battle_info(friend, player_data)
