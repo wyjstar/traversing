@@ -1,14 +1,16 @@
 stone_config={
   [130201] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 1,  ["mainAttr"] = {
+  ["PickPrice"] = 8000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["2"] = {
   [1] = 1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 140101,  [2] = 140201,  [3] = 140301,  [4] = 140401,}
 ,  ["price"] = {
-  [1] = 100,  [2] = 0,  [3] = 100000,}
-,  ["stone1"] = 9,  ["weight"] = 1000,  ["res"] = 203,  ["quality"] = 4,  ["type"] = 2,  ["id"] = 130201,  ["mainAttrNum"] = 1,  ["name"] = 4400130201,  ["minorAttrNum"] = 2,  ["minorAttr"] = {
+  [1] = 30,  [2] = 0,  [3] = 10000,}
+,  ["stone1"] = 12,  ["weight"] = 500,  ["res"] = 203,  ["quality"] = 4,  ["type"] = 2,  ["id"] = 130201,  ["mainAttrNum"] = 1,  ["name"] = 4400130201,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 2,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,  ["3"] = {
@@ -32,7 +34,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [110301] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 2000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["3"] = {
   [1] = 1,  [2] = 1,  [3] = 15,  [4] = 30,}
 ,}
@@ -40,19 +42,23 @@ stone_config={
   [1] = 120101,  [2] = 120201,  [3] = 120301,  [4] = 120401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 301,  ["quality"] = 2,  ["type"] = 3,  ["id"] = 110301,  ["mainAttrNum"] = 1,  ["name"] = 4400110301,  ["minorAttrNum"] = 0,  ["minorAttr"] = {
+,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 301,  ["quality"] = 2,  ["type"] = 3,  ["id"] = 110301,  ["mainAttrNum"] = 1,  ["name"] = 4400110301,  ["minorAttrNum"] = {
+}
+,  ["minorAttr"] = {
 }
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [150201] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 4,  ["mainAttr"] = {
+  ["PickPrice"] = 50000,  ["stone2"] = 3,  ["mainAttr"] = {
   ["2"] = {
   [1] = 1,  [2] = 1,  [3] = 500,  [4] = 1000,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 500,  [2] = 50,  [3] = 1000000,}
-,  ["stone1"] = 81,  ["weight"] = 10,  ["res"] = 205,  ["quality"] = 6,  ["type"] = 2,  ["id"] = 150201,  ["mainAttrNum"] = 1,  ["name"] = 4400150201,  ["minorAttrNum"] = 4,  ["minorAttr"] = {
+  [1] = 120,  [2] = 20,  [3] = 50000,}
+,  ["stone1"] = 50,  ["weight"] = 50,  ["res"] = 205,  ["quality"] = 6,  ["type"] = 2,  ["id"] = 150201,  ["mainAttrNum"] = 1,  ["name"] = 4400150201,  ["minorAttrNum"] = {
+  [1] = 3,  [2] = 4,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,  ["3"] = {
@@ -76,7 +82,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [120101] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 4000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,}
@@ -84,7 +90,9 @@ stone_config={
   [1] = 130101,  [2] = 130201,  [3] = 130301,  [4] = 130401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 102,  ["quality"] = 3,  ["type"] = 1,  ["id"] = 120101,  ["mainAttrNum"] = 1,  ["name"] = 4400120101,  ["minorAttrNum"] = 1,  ["minorAttr"] = {
+,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 102,  ["quality"] = 3,  ["type"] = 1,  ["id"] = 120101,  ["mainAttrNum"] = 1,  ["name"] = 4400120101,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 1,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,  ["3"] = {
@@ -108,15 +116,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [140301] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 2,  ["mainAttr"] = {
+  ["PickPrice"] = 15000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["3"] = {
   [1] = 1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 200,  [2] = 20,  [3] = 300000,}
-,  ["stone1"] = 27,  ["weight"] = 100,  ["res"] = 304,  ["quality"] = 5,  ["type"] = 3,  ["id"] = 140301,  ["mainAttrNum"] = 1,  ["name"] = 4400140301,  ["minorAttrNum"] = 3,  ["minorAttr"] = {
+  [1] = 60,  [2] = 4,  [3] = 30000,}
+,  ["stone1"] = 25,  ["weight"] = 200,  ["res"] = 304,  ["quality"] = 5,  ["type"] = 3,  ["id"] = 140301,  ["mainAttrNum"] = 1,  ["name"] = 4400140301,  ["minorAttrNum"] = {
+  [1] = 2,  [2] = 3,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,  ["3"] = {
@@ -140,15 +150,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [150101] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 4,  ["mainAttr"] = {
+  ["PickPrice"] = 50000,  ["stone2"] = 3,  ["mainAttr"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 1000,  [4] = 2000,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 500,  [2] = 50,  [3] = 1000000,}
-,  ["stone1"] = 81,  ["weight"] = 10,  ["res"] = 105,  ["quality"] = 6,  ["type"] = 1,  ["id"] = 150101,  ["mainAttrNum"] = 1,  ["name"] = 4400150101,  ["minorAttrNum"] = 4,  ["minorAttr"] = {
+  [1] = 120,  [2] = 20,  [3] = 50000,}
+,  ["stone1"] = 50,  ["weight"] = 50,  ["res"] = 105,  ["quality"] = 6,  ["type"] = 1,  ["id"] = 150101,  ["mainAttrNum"] = 1,  ["name"] = 4400150101,  ["minorAttrNum"] = {
+  [1] = 3,  [2] = 4,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,  ["3"] = {
@@ -172,7 +184,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [120301] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 4000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["3"] = {
   [1] = 1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,}
@@ -180,7 +192,9 @@ stone_config={
   [1] = 130101,  [2] = 130201,  [3] = 130301,  [4] = 130401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 302,  ["quality"] = 3,  ["type"] = 3,  ["id"] = 120301,  ["mainAttrNum"] = 1,  ["name"] = 4400120301,  ["minorAttrNum"] = 1,  ["minorAttr"] = {
+,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 302,  ["quality"] = 3,  ["type"] = 3,  ["id"] = 120301,  ["mainAttrNum"] = 1,  ["name"] = 4400120301,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 1,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,  ["3"] = {
@@ -204,15 +218,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [130101] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 1,  ["mainAttr"] = {
+  ["PickPrice"] = 8000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 140101,  [2] = 140201,  [3] = 140301,  [4] = 140401,}
 ,  ["price"] = {
-  [1] = 100,  [2] = 0,  [3] = 100000,}
-,  ["stone1"] = 9,  ["weight"] = 1000,  ["res"] = 103,  ["quality"] = 4,  ["type"] = 1,  ["id"] = 130101,  ["mainAttrNum"] = 1,  ["name"] = 4400130101,  ["minorAttrNum"] = 2,  ["minorAttr"] = {
+  [1] = 30,  [2] = 0,  [3] = 10000,}
+,  ["stone1"] = 12,  ["weight"] = 500,  ["res"] = 103,  ["quality"] = 4,  ["type"] = 1,  ["id"] = 130101,  ["mainAttrNum"] = 1,  ["name"] = 4400130101,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 2,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,  ["3"] = {
@@ -236,7 +252,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [110201] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 2000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["2"] = {
   [1] = 1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,}
@@ -244,19 +260,23 @@ stone_config={
   [1] = 120101,  [2] = 120201,  [3] = 120301,  [4] = 120401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 201,  ["quality"] = 2,  ["type"] = 2,  ["id"] = 110201,  ["mainAttrNum"] = 1,  ["name"] = 4400110201,  ["minorAttrNum"] = 0,  ["minorAttr"] = {
+,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 201,  ["quality"] = 2,  ["type"] = 2,  ["id"] = 110201,  ["mainAttrNum"] = 1,  ["name"] = 4400110201,  ["minorAttrNum"] = {
+}
+,  ["minorAttr"] = {
 }
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [140101] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 2,  ["mainAttr"] = {
+  ["PickPrice"] = 15000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 500,  [4] = 1000,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 200,  [2] = 20,  [3] = 300000,}
-,  ["stone1"] = 27,  ["weight"] = 100,  ["res"] = 104,  ["quality"] = 5,  ["type"] = 1,  ["id"] = 140101,  ["mainAttrNum"] = 1,  ["name"] = 4400140101,  ["minorAttrNum"] = 3,  ["minorAttr"] = {
+  [1] = 60,  [2] = 4,  [3] = 30000,}
+,  ["stone1"] = 25,  ["weight"] = 200,  ["res"] = 104,  ["quality"] = 5,  ["type"] = 1,  ["id"] = 140101,  ["mainAttrNum"] = 1,  ["name"] = 4400140101,  ["minorAttrNum"] = {
+  [1] = 2,  [2] = 3,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,  ["3"] = {
@@ -280,7 +300,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [110401] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 2000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["4"] = {
   [1] = 1,  [2] = 1,  [3] = 15,  [4] = 30,}
 ,}
@@ -288,19 +308,23 @@ stone_config={
   [1] = 120101,  [2] = 120201,  [3] = 120301,  [4] = 120401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 401,  ["quality"] = 2,  ["type"] = 4,  ["id"] = 110401,  ["mainAttrNum"] = 1,  ["name"] = 4400110401,  ["minorAttrNum"] = 0,  ["minorAttr"] = {
+,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 401,  ["quality"] = 2,  ["type"] = 4,  ["id"] = 110401,  ["mainAttrNum"] = 1,  ["name"] = 4400110401,  ["minorAttrNum"] = {
+}
+,  ["minorAttr"] = {
 }
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [150401] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 4,  ["mainAttr"] = {
+  ["PickPrice"] = 50000,  ["stone2"] = 3,  ["mainAttr"] = {
   ["4"] = {
   [1] = 1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 500,  [2] = 50,  [3] = 1000000,}
-,  ["stone1"] = 81,  ["weight"] = 10,  ["res"] = 405,  ["quality"] = 6,  ["type"] = 4,  ["id"] = 150401,  ["mainAttrNum"] = 1,  ["name"] = 4400150401,  ["minorAttrNum"] = 4,  ["minorAttr"] = {
+  [1] = 120,  [2] = 20,  [3] = 50000,}
+,  ["stone1"] = 50,  ["weight"] = 50,  ["res"] = 405,  ["quality"] = 6,  ["type"] = 4,  ["id"] = 150401,  ["mainAttrNum"] = 1,  ["name"] = 4400150401,  ["minorAttrNum"] = {
+  [1] = 3,  [2] = 4,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,  ["3"] = {
@@ -324,7 +348,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [120201] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 4000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["2"] = {
   [1] = 1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,}
@@ -332,7 +356,9 @@ stone_config={
   [1] = 130101,  [2] = 130201,  [3] = 130301,  [4] = 130401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 202,  ["quality"] = 3,  ["type"] = 2,  ["id"] = 120201,  ["mainAttrNum"] = 1,  ["name"] = 4400120201,  ["minorAttrNum"] = 1,  ["minorAttr"] = {
+,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 202,  ["quality"] = 3,  ["type"] = 2,  ["id"] = 120201,  ["mainAttrNum"] = 1,  ["name"] = 4400120201,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 1,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,  ["3"] = {
@@ -356,7 +382,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [110101] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 2000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,}
@@ -364,19 +390,23 @@ stone_config={
   [1] = 120101,  [2] = 120201,  [3] = 120301,  [4] = 120401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 101,  ["quality"] = 2,  ["type"] = 1,  ["id"] = 110101,  ["mainAttrNum"] = 1,  ["name"] = 4400110101,  ["minorAttrNum"] = 0,  ["minorAttr"] = {
+,  ["stone1"] = 1,  ["weight"] = 0,  ["res"] = 101,  ["quality"] = 2,  ["type"] = 1,  ["id"] = 110101,  ["mainAttrNum"] = 1,  ["name"] = 4400110101,  ["minorAttrNum"] = {
+}
+,  ["minorAttr"] = {
 }
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [140401] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 2,  ["mainAttr"] = {
+  ["PickPrice"] = 15000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["4"] = {
   [1] = 1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 200,  [2] = 20,  [3] = 300000,}
-,  ["stone1"] = 27,  ["weight"] = 100,  ["res"] = 404,  ["quality"] = 5,  ["type"] = 4,  ["id"] = 140401,  ["mainAttrNum"] = 1,  ["name"] = 4400140401,  ["minorAttrNum"] = 3,  ["minorAttr"] = {
+  [1] = 60,  [2] = 4,  [3] = 30000,}
+,  ["stone1"] = 25,  ["weight"] = 200,  ["res"] = 404,  ["quality"] = 5,  ["type"] = 4,  ["id"] = 140401,  ["mainAttrNum"] = 1,  ["name"] = 4400140401,  ["minorAttrNum"] = {
+  [1] = 2,  [2] = 3,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,  ["3"] = {
@@ -400,15 +430,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [150301] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 4,  ["mainAttr"] = {
+  ["PickPrice"] = 50000,  ["stone2"] = 3,  ["mainAttr"] = {
   ["3"] = {
   [1] = 1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 500,  [2] = 50,  [3] = 1000000,}
-,  ["stone1"] = 81,  ["weight"] = 10,  ["res"] = 305,  ["quality"] = 6,  ["type"] = 3,  ["id"] = 150301,  ["mainAttrNum"] = 1,  ["name"] = 4400150301,  ["minorAttrNum"] = 4,  ["minorAttr"] = {
+  [1] = 120,  [2] = 20,  [3] = 50000,}
+,  ["stone1"] = 50,  ["weight"] = 50,  ["res"] = 305,  ["quality"] = 6,  ["type"] = 3,  ["id"] = 150301,  ["mainAttrNum"] = 1,  ["name"] = 4400150301,  ["minorAttrNum"] = {
+  [1] = 3,  [2] = 4,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,  ["3"] = {
@@ -432,15 +464,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [140201] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 2,  ["mainAttr"] = {
+  ["PickPrice"] = 15000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["2"] = {
   [1] = 1,  [2] = 1,  [3] = 250,  [4] = 500,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 150101,  [2] = 150201,  [3] = 150301,  [4] = 150401,}
 ,  ["price"] = {
-  [1] = 200,  [2] = 20,  [3] = 300000,}
-,  ["stone1"] = 27,  ["weight"] = 100,  ["res"] = 204,  ["quality"] = 5,  ["type"] = 2,  ["id"] = 140201,  ["mainAttrNum"] = 1,  ["name"] = 4400140201,  ["minorAttrNum"] = 3,  ["minorAttr"] = {
+  [1] = 60,  [2] = 4,  [3] = 30000,}
+,  ["stone1"] = 25,  ["weight"] = 200,  ["res"] = 204,  ["quality"] = 5,  ["type"] = 2,  ["id"] = 140201,  ["mainAttrNum"] = 1,  ["name"] = 4400140201,  ["minorAttrNum"] = {
+  [1] = 2,  [2] = 3,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 125,  [4] = 250,}
 ,  ["3"] = {
@@ -464,7 +498,7 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [120401] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 0,  ["mainAttr"] = {
+  ["PickPrice"] = 4000,  ["stone2"] = 0,  ["mainAttr"] = {
   ["4"] = {
   [1] = 1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,}
@@ -472,7 +506,9 @@ stone_config={
   [1] = 130101,  [2] = 130201,  [3] = 130301,  [4] = 130401,}
 ,  ["price"] = {
 }
-,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 402,  ["quality"] = 3,  ["type"] = 4,  ["id"] = 120401,  ["mainAttrNum"] = 1,  ["name"] = 4400120401,  ["minorAttrNum"] = 1,  ["minorAttr"] = {
+,  ["stone1"] = 3,  ["weight"] = 0,  ["res"] = 402,  ["quality"] = 3,  ["type"] = 4,  ["id"] = 120401,  ["mainAttrNum"] = 1,  ["name"] = 4400120401,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 1,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 30,  [4] = 60,}
 ,  ["3"] = {
@@ -496,15 +532,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [130401] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 1,  ["mainAttr"] = {
+  ["PickPrice"] = 8000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["4"] = {
   [1] = 1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 140101,  [2] = 140201,  [3] = 140301,  [4] = 140401,}
 ,  ["price"] = {
-  [1] = 100,  [2] = 0,  [3] = 100000,}
-,  ["stone1"] = 9,  ["weight"] = 1000,  ["res"] = 403,  ["quality"] = 4,  ["type"] = 4,  ["id"] = 130401,  ["mainAttrNum"] = 1,  ["name"] = 4400130401,  ["minorAttrNum"] = 2,  ["minorAttr"] = {
+  [1] = 30,  [2] = 0,  [3] = 10000,}
+,  ["stone1"] = 12,  ["weight"] = 500,  ["res"] = 403,  ["quality"] = 4,  ["type"] = 4,  ["id"] = 130401,  ["mainAttrNum"] = 1,  ["name"] = 4400130401,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 2,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,  ["3"] = {
@@ -528,15 +566,17 @@ stone_config={
 ,}
 ,  ["description"] = 0,  ["biggerStoneCri"] = 0.01,  ["biggerStoneNum"] = 1,}
 ,  [130301] = {
-  ["PickPrice"] = 50000,  ["stone2"] = 1,  ["mainAttr"] = {
+  ["PickPrice"] = 8000,  ["stone2"] = 1,  ["mainAttr"] = {
   ["3"] = {
   [1] = 1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,}
 ,  ["biggerStoneId"] = {
   [1] = 140101,  [2] = 140201,  [3] = 140301,  [4] = 140401,}
 ,  ["price"] = {
-  [1] = 100,  [2] = 0,  [3] = 100000,}
-,  ["stone1"] = 9,  ["weight"] = 1000,  ["res"] = 303,  ["quality"] = 4,  ["type"] = 3,  ["id"] = 130301,  ["mainAttrNum"] = 1,  ["name"] = 4400130301,  ["minorAttrNum"] = 2,  ["minorAttr"] = {
+  [1] = 30,  [2] = 0,  [3] = 10000,}
+,  ["stone1"] = 12,  ["weight"] = 500,  ["res"] = 303,  ["quality"] = 4,  ["type"] = 3,  ["id"] = 130301,  ["mainAttrNum"] = 1,  ["name"] = 4400130301,  ["minorAttrNum"] = {
+  [1] = 1,  [2] = 2,}
+,  ["minorAttr"] = {
   ["1"] = {
   [1] = 0.1,  [2] = 1,  [3] = 60,  [4] = 125,}
 ,  ["3"] = {

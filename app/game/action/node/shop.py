@@ -149,6 +149,11 @@ def shop_oper(pro_data, player, reason):
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
+            if need_gold > 0 and shop_item.ExchangeValue:
+                lucky_data = gain(player,
+                                  shop_item.ExchangeValue,
+                                  reason)
+                get_return(player, lucky_data, response.gain)
             if shop_item.id == 50001:
                 hook_task(player, CONDITIONId.HERO_GET, 1)
             else:
@@ -169,6 +174,11 @@ def shop_oper(pro_data, player, reason):
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
+            if need_gold > 0 and shop_item.ExchangeValue:
+                lucky_data = gain(player,
+                                  shop_item.ExchangeValue,
+                                  reason)
+                get_return(player, lucky_data, response.gain)
             if shop_item.id == 10001:
                 hook_task(player, CONDITIONId.HERO_GET_LIANG, 1)
             else:

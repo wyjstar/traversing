@@ -44,7 +44,7 @@ end
 
 function CustomRotateMenu:updatePosition()
   	local menuSize = self.contentLayer:getContentSize()
-  	local disY = menuSize.height / 8
+  	local disY =  1 --menuSize.height / 100
   	local disX = menuSize.width / 3
   	for k,v in pairs(self.itemsTable) do
     		local x = menuSize.width / 2 + disX * math.sin((k) * self.unitAngle + self.angle)
@@ -52,7 +52,7 @@ function CustomRotateMenu:updatePosition()
     		v:setPosition(x,y)
     		v:setLocalZOrder(-y)
     		v:setOpacity(192 + 63 * math.cos(k*self.unitAngle + self.angle))
-    		v:setScale(0.85 + 0.15 * math.cos(k*self.unitAngle + self.angle))
+    		v:setScale(0.75 + 0.25 * math.cos(k*self.unitAngle + self.angle))
         if #v:getChildren() > 0 then
             for k_,v_ in pairs(v:getChildren()) do
                 v_:setOpacity(192 + 63 * math.cos(k*self.unitAngle + self.angle))
@@ -66,7 +66,7 @@ function CustomRotateMenu:updatePositionWithAnimation()
         v:stopAllActions()
     end
     local menuSize = self.contentLayer:getContentSize()
-    local disY = menuSize.height / 8
+    local disY = 1--menuSize.height / 100
     local disX = menuSize.width / 3
     for k,v in pairs(self.itemsTable) do
         local x = menuSize.width / 2 + disX*math.sin((k)*self.unitAngle + self.angle)
@@ -82,7 +82,7 @@ function CustomRotateMenu:updatePositionWithAnimation()
             end
         end
 
-        local scaleTo = cc.ScaleTo:create(animationDuration, 0.85 + 0.15*math.cos(k*self.unitAngle + self.angle))
+        local scaleTo = cc.ScaleTo:create(animationDuration, 0.75 + 0.25*math.cos(k*self.unitAngle + self.angle))
         v:runAction(scaleTo)
         v:setLocalZOrder(-y)
     end
@@ -127,6 +127,16 @@ end
 
 function CustomRotateMenu:reset()
     self.angle = 0
+end
+
+function CustomRotateMenu:setAngle(angle)
+    self.angle = angle
+    self:rectify(true)
+    self:updatePosition()
+end
+
+function CustomRotateMenu:setCurrentIndex(idx)
+    self:setAngle((idx-1)*self.unitAngle)
 end
 
 function CustomRotateMenu:addLayerTouchEvent()
@@ -182,7 +192,8 @@ function CustomRotateMenu:getCurrentIndex()
     if (#self.itemsTable == 0) then
         return nil
     end
-    local index = math.floor((2 * PI - self.angle) / self.unitAngle+0.1*self.unitAngle)
+    -- local index = math.floor((2 * PI - self.angle) / self.unitAngle+0.1*self.unitAngle)
+    local index = math.floor(self.angle / self.unitAngle+0.1*self.unitAngle)
     return index % #self.itemsTable + 1
 end
 

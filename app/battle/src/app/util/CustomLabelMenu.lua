@@ -31,14 +31,20 @@ end
 
 function CustomLabelMenu:changeLabel(index, hasEffect)
 	if self.curIndex == index or index == nil or index == 0 or index > #self.items_ then return end
-	self.curIndex = index
-	for i = 1, #self.items_ do
-		if self.items_[i].index_ == index then
-			self.items_[i]:selected(hasEffect)
-		else
-			self.items_[i]:unselected()
+	if self.items_[index]:selected(hasEffect) then -- selected返回true,表示无法跳转到该页签
+		self.items_[self.curIndex]:selected()
+		self.items_[index]:unselected()
+	else
+		for i = 1, #self.items_ do
+			if self.items_[i].index_ == index then
+				-- self.items_[i]:selected(hasEffect)
+			else
+				self.items_[i]:unselected()
+			end
 		end
+		self.curIndex = index
 	end
+
 end
 
 function CustomLabelMenu:checkLabel(x, y)
