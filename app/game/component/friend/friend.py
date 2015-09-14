@@ -23,10 +23,10 @@ class FriendComponent(Component):
         self._applicants_list = {}
 
         self._reward = {}
-        self._fight_times = {} # 小伙伴支援次数
-        self._fight_last_time = 0 # 小伙伴上次战斗时间
-        self._given_record = []     #体力赠送纪录（用来第二天重置）
-        self._reset_time = 0        #体力赠送记录重置的时间(最后一次在几号)
+        self._fight_times = {}  # 小伙伴支援次数
+        self._fight_last_time = {}  # 小伙伴上次战斗时间
+        self._given_record = []      # 体力赠送纪录（用来第二天重置）
+        self._reset_time = 0         # 体力赠送记录重置的时间(最后一次在几号)
 
     def init_data(self, character_info):
         self._friends = character_info.get('friends')
@@ -39,8 +39,8 @@ class FriendComponent(Component):
 
         self._applicants_list = character_info.get('applicants_list')
         self._reward = character_info.get('freward', {})
-        self._fight_times = character_info.get('ffight_times', {})
-        self._fight_last_time = character_info.get('ffight_last_time', 0)
+        self._fight_times = character_info.get('ffight_times_', {})
+        self._fight_last_time = character_info.get('ffight_last_time_', {})
         self._given_record = character_info.get('given_record', [])
         self._reset_time = character_info.get('reset_time', 0)
 
@@ -58,8 +58,8 @@ class FriendComponent(Component):
                     blacklist=self._blacklist,
                     applicants_list=self._applicants_list,
                     freward=self._reward,
-                    ffight_times=self._fight_times,
-                    ffight_last_time=self._fight_last_time,
+                    ffight_times_=self._fight_times,
+                    ffight_last_time_=self._fight_last_time,
                     given_record=self._given_record,
                     reset_time=self._reset_time
                     )
@@ -70,12 +70,23 @@ class FriendComponent(Component):
                     blacklist=self._blacklist,
                     applicants_list=self._applicants_list,
                     freward=self._reward,
-                    ffight_times=self._fight_times,
-                    ffight_last_time=self._fight_last_time,
+                    ffight_times_=self._fight_times,
+                    ffight_last_time_=self._fight_last_time,
                     given_record=self._given_record,
                     reset_time=self._reset_time
                     )
         return data
+
+    def check_time(self):
+        supporttime = game_configs.base_config.get('supporttime')
+        now = time.time()
+        for pid in self._fight_times.keys():
+            if not self._fight_times[pid]:
+                del(self._fight_times[pid])
+                continue
+            _time = self._fight_times[pid][0]
+            if (now - _time) / 60 > supporttime:
+                del(self._fight_times[pid])
 
     @property
     def friends(self):
@@ -94,17 +105,9 @@ class FriendComponent(Component):
     def fight_times(self):
         return self._fight_times
 
-    @fight_times.setter
-    def fight_times(self, value):
-        self._fight_times = value
-
     @property
     def fight_last_time(self):
         return self._fight_last_time
-
-    @fight_last_time.setter
-    def fight_last_time(self, value):
-        self._fight_last_time = value
 
     @property
     def applicant_list(self):

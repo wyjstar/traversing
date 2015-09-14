@@ -217,10 +217,11 @@ def get_player_friend_list_1106(data, player):
     response.open_receive = player.stamina._open_receive
 
     # 小伙伴支援
-    if is_next_day(time.time(), player.friends.fight_last_time):
-        # clear data in the next day
-        player.friends.fight_times = {}
-        player.friends.save_data()
+    player.friends.check_time()
+    # if is_next_day(time.time(), player.friends.fight_last_time):
+    #     # clear data in the next day
+    #     player.friends.fight_times = {}
+    #     player.friends.save_data()
     _update = False
 
     for pid in player.friends.friends + [player.base_info.id]:
@@ -245,7 +246,8 @@ def get_player_friend_list_1106(data, player):
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, player_data)
             response_friend_add.gift = player.friends.last_present_times(pid)
-            response_friend_add.fight_times = player.friends.fight_times.get(pid, 0)
+            response_friend_add.fight_times = int(player.friends.fight_times.get(pid, [0])[0])
+            response_friend_add.fight_last_time = len(player.friends.fight_times.get(pid, []))
         else:
             logger.error('friend_list, cant find player id:%d' % pid)
             player.friends.friends.remove(pid)
@@ -357,6 +359,76 @@ def find_friend_request_1107(data, player):
         fill_friend_info(player_data, info)
 
     return response.SerializePartialToString()
+
+
+def get_recommend(player, up, down, recommend_num, response):
+    front = player.base_info.level - down
+    back = player.base_info.level + up
+    uids = MineOpt.rand_level("user_level", front, back+1)
+    add_count_conf = game_configs.base_config.get('friendApplyLevelGapAdd', 5)
+    player_level_max = game_configs.base_config['player_level_max']
+    count = 0
+    now = int(time.time())
+
+    has_one = []
+    add_count = 1
+    while True:
+        for uid in uids:
+            if uid == player.base_info.id:
+                continue
+            elif player.friends.is_friend(uid):
+                continue
+            elif uid in has_one:
+                continue
+            else:
+                has_one.append(uid)
+
+            player_data = tb_character_info.getObj(uid)
+            isexist = player_data.exists()
+            if count >= recommend_num:
+                break
+
+            if isexist:
+                last_time = player_data.hget('upgrade_time')
+                if now - last_time > game_configs.base_config['friendApplyOfflineDay']*24*60*60:
+                    continue
+                friend_data = player_data.hmget(['id', 'nickname',
+                                                 'attackPoint', 'heads',
+                                                 'level', 'upgrade_time'])
+                if not friend_data.get('nickname'):
+                    continue
+                count += 1
+                friend = response.rfriend.add()
+                friend.id = friend_data.get('id')
+                friend.nickname = friend_data.get('nickname')
+                if friend_data['attackPoint'] is not None:
+                    friend.power = int(friend_data['attackPoint'])
+
+                friend_heads = Heads_DB()
+                friend_heads.ParseFromString(friend_data['heads'])
+                friend.hero_no = friend_heads.now_head
+
+                friend.level = friend_data['level']
+                friend.b_rank = 1
+                if remote_gate.online_remote(friend_data['id']) == 0:
+                    friend.last_time = friend_data['upgrade_time']
+                friend.fight_times = player.friends.fight_times.get(friend.id, [0])[0]
+                friend.fight_last_time = len(player.friends.fight_times.get(friend.id, []))
+
+                # 添加好友主将的属性
+                _with_battle_info(friend, player_data)
+        if count >= recommend_num:
+            break
+        else:
+            front = front - add_count*add_count_conf
+            back = back + add_count*add_count_conf
+            if front <= 0:
+                front = 1
+            if back > player_level_max:
+                back = player_level_max
+            uids = MineOpt.rand_level("user_level", front, back+1)
+        if back >= player_level_max and front <= 1:
+            break
 
 
 @remoteserviceHandle('gate')
@@ -521,27 +593,7 @@ def add_blacklist_request_remote(target_id, is_online, player):
 
 @remoteserviceHandle('gate')
 def get_recommend_friend_list_1109(data, player):
-    response = friend_pb2.GetRecommendFriendsResponse()
-    response.open_receive = player.stamina._open_receive
-
-    allplayer_ids = tb_character_info.smem('all')
-    allplayer_ids.remove(player.base_info.id)
-
-    recommend_num = game_configs.base_config.get('FriendRecommendNum')
-    recommend_ids = []
-    while (len(recommend_ids) < recommend_num and allplayer_ids):
-        recommend_id = random.choice(allplayer_ids)
-        allplayer_ids.remove(recommend_id)
-        recommend_ids.append(recommend_id)
-
-    for pid in recommend_ids:
-        player_data = tb_character_info.getObj(pid)
-        if player_data.exists():
-            response_friend_add = response.recommend.add()
-            _with_battle_info(response_friend_add, player_data)
-            response_friend_add.gift = player.friends.last_present_times(pid)
-        else:
-            logger.error('friend_list, cant find player id:%d' % pid)
-            player.friends.friends.remove(pid)
+    response = friend_pb2.RecommendRes()
+    get_recommend(player, 5, 0, 10, response)
 
     return response.SerializePartialToString()

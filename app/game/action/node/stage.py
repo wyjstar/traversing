@@ -193,17 +193,30 @@ def stage_start_903(pro_data, player):
 
     # 小伙伴支援消耗
     if f_unit:
+        player.friends.check_time()
         friend_fight_times = player.friends.fight_times
         if fid not in friend_fight_times:
-            friend_fight_times[fid] = 0
-        supportPriceMax = game_configs.base_config.get('supportPriceMax')
-        need_gold = game_configs.base_config.get('supportPrice').get(friend_fight_times[fid], supportPriceMax)
-        def func():
-            friend_fight_times[fid] += 1
-            player.friends.fight_last_time = int(time.time())
-            player.line_up_component.save_data()
-        player.pay.pay(need_gold, const.STAGE, func)
+            friend_fight_times[fid] = []
 
+        supportPrice = game_configs.base_config.get('supportPrice')
+        f_times = len(friend_fight_times[fid])
+        price = None
+        for _ in sorted(supportPrice.keys()):
+            if f_times >= _:
+                price = supportPrice[_]
+        # todo calculate real price
+        result = is_afford(player, price)  # 校验
+        if not is_afford(player, price).get('result'):
+            logger.error('stage 903 not enough money!:%s', price)
+            response.res.result = False
+            response.res.result_no = 101
+            return response.SerializePartialToString()
+
+        return_data = consume(player, price, const.STAGE)
+        get_return(player, return_data, response.consume)
+
+        friend_fight_times[fid].append(int(time.time()))
+        player.friends.save_data()
 
     player.fight_cache_component.red_best_skill_id = red_best_skill_id
     return response.SerializePartialToString()
@@ -218,7 +231,7 @@ def fight_settlement_904(pro_data, player):
     result = request.result
 
     # logger.debug("steps:%s", request.steps)
-    #player.fight_cache_component.red_units
+    # player.fight_cache_component.red_units
     stage = player.stage_component.get_stage(stage_id)
 
     stage_config = player.fight_cache_component._get_stage_config()

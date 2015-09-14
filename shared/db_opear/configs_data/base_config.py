@@ -118,7 +118,7 @@ class BaseConfig(object):
         supportPrice = {}
         supportPriceMax = 0
         for k, v in config_value["supportPrice"].items():
-            supportPrice[k] = parse(v)[0].num
+            supportPrice[k] = parse(v)
             if supportPrice[k] > supportPriceMax:
                 supportPriceMax = supportPrice[k]
 

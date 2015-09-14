@@ -40,6 +40,7 @@ message StageStartResponse{
 	repeated int32 awake_no = 13;
 	optional int32 seed1= 14;
 	optional int32 seed2= 15;
+    optional GameResourcesResponse consume = 16;
 }
 
 // 关卡结算返回 command:904

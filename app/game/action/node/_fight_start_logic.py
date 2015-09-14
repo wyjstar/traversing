@@ -156,20 +156,20 @@ def pve_assemble_units(red_units, blue_groups, response):
             blue_add = blue_group_add.group.add()
             assemble(blue_add, blue_unit)
 
-    #if blue_skill:
-        #response.monster_unpar = blue_skill
+    # if blue_skill:
+    #     response.monster_unpar = blue_skill
 
-    #response.hero_unpar = red_skill
-    #if red_skill in player.line_up_component.unpars:
-        #unpar_level = player.line_up_component.unpars[red_skill]
-        #response.hero_unpar_level = unpar_level
+    # response.hero_unpar = red_skill
+    # if red_skill in player.line_up_component.unpars:
+    #     unpar_level = player.line_up_component.unpars[red_skill]
+    #     response.hero_unpar_level = unpar_level
 
 
 def pve_assemble_friend(f_unit, response):
     if f_unit:
         friend = response.friend
         assemble(friend, f_unit)
-    logger.debug('进入关卡返回数据:%s', response)
+    # logger.debug('进入关卡返回数据:%s', response)
 
 
 def assemble(unit_add, unit):
