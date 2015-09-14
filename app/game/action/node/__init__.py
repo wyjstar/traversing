@@ -104,3 +104,4 @@ import task
 import hjqy
 import activity
 import sdk_kuaiyong
+import start_target

@@ -10,9 +10,32 @@ from app.proto_file.stage_response_pb2 import *
 from app.proto_file.travel_pb2 import *
 from app.proto_file.runt_pb2 import *
 from app.proto_file.level_gift_pb2 import *
+from app.proto_file.start_target_pb2 import *
 
 
 class RobotGuild(Robot):
+    def command_start_target_get(self):
+        argument1 = GetStartTargetRewardRequest()
+        argument1.target_id = 29001
+        self.send_message(argument1, 1827)
+
+    def start_target_get_1827(self, message):
+        argument = GetStartTargetRewardResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_start_target(self):
+        argument1 = GetStartTargetInfoRequest()
+        argument1.day = 0
+        self.send_message(argument1, 1826)
+
+    def start_target_1826(self, message):
+        argument = GetStartTargetInfoResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_new_level_gift(self):
         argument1 = StageInfoRequest()
         argument1.stage_id = 0

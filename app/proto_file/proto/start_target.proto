@@ -1,0 +1,30 @@
+import "common.proto";
+
+//1826
+message GetStartTargetInfoRequest{
+    required int32 day = 1;  //第几天  0为所有
+}
+
+//1826
+message GetStartTargetInfoResponse{
+    required CommonResponse res = 1;
+    required int32 day = 2;
+    repeated StartTargetInfo start_target_info = 3;  //目标信息
+}
+
+message StartTargetInfo{
+    required int32 target_id = 1;  // 目标ID
+    optional int32 jindu = 2;  // 目标进度 半价商品已买个数
+    optional int32 state = 3;  // 状态  1不可领取  2已达成未领取 3已领取
+}
+
+//1827
+message GetStartTargetRewardRequest{
+    required int32 target_id = 1;
+}
+
+//1827
+message GetStartTargetRewardResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

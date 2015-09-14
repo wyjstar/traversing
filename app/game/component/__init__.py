@@ -40,6 +40,7 @@ from character_hjqy import CharacterHjqyComponent
 from character_act import CharacterActComponent
 
 from character_buy_coin_activity import CharacterBuyCoinActivity
+from character_start_target import CharacterStartTargetComponent
 
 
 __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
@@ -58,6 +59,6 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterBaseInfoComponent', 'CharacterRechargeGift',
            'CharacterPay', 'Rebate', 'CharacterBuyCoinActivity',
            'CharacterLimitHeroComponent', 'CharacterPvpComponent',
-           'CharacterTaskComponent',
+           'CharacterTaskComponent', 'CharacterStartTargetComponent',
            'CharacterHjqyComponent', 'CharacterActComponent'
            ]
