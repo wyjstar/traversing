@@ -106,7 +106,7 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     #return dict(result=result, state=boss.get_state())
     logger.debug("hjqy_battle_remote over===================")
     boss.save_data()
-    return result, boss.get_state()
+    return result, boss.get_state(), current_damage_hp
 
 @rootserviceHandle
 def blue_units_remote(boss_id):

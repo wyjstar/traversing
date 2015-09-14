@@ -79,3 +79,15 @@ message OpenStageChestResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse drops = 2;
 }
+
+// 1828
+message GetStarRandomResponse{
+    required CommonResponse res = 1;
+    optional int32 random_num = 2;
+}
+
+// 1829
+message DealRandomResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse drops = 2;
+}

@@ -56,8 +56,10 @@ message Reset{
 message StageAward{
 	required int32 chapter_id = 1; //章节编号
 	repeated int32 award = 2;  //奖励数组 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-	repeated int32 already_gift = 4;  //已经领取的奖励
+	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取(作废)
+	repeated int32 already_gift = 4;  //已经领取的奖励(作废)
+    repeated int32 now_random = 5;  //当前随机值
+	optional int32 star_gift = 6; //星星抽奖  1:未达成 2：已经放弃 3未处理 1：已领取
 }
 
 message Unparalleled{

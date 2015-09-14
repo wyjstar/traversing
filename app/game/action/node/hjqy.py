@@ -151,7 +151,7 @@ def battle_2103(pro_data, player):
             level=player.base_info.level)
 
     str_red_units = cPickle.dumps(red_units)
-    fight_result, boss_state = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
+    fight_result, boss_state, current_damage_hp = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
     logger.debug("============battle over")
 
     # 消耗讨伐令
@@ -179,6 +179,13 @@ def battle_2103(pro_data, player):
     response.res.result = True
 
     hook_task(player, CONDITIONId.HJQY, 1)
+
+    # start target
+    if player.start_target.is_underway():
+        all_current_damage_hp = remote_gate['world'].\
+            hjqy_damage_hp_remote(player.base_info.id)
+        player.start_target.condition_update(38, current_damage_hp)
+        player.start_target.condition_update(39, all_current_damage_hp)
 
     return response.SerializePartialToString()
 

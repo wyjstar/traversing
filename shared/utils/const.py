@@ -198,6 +198,8 @@ const.ENCOURAGE_HEROS = 64  # pvb鼓舞士气
 const.PVB_REBORN = 65  # pvb复活
 const.StageChestGift = 66  # 关卡宝箱
 
+const.START_TARGET = 67  # 开服7日活动
+
 
 const.LOGIN_GIFT_CONTINUS = 8061
 const.LOGIN_GIFT_CUMULATIVE = 8062
