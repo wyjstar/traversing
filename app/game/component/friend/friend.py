@@ -85,7 +85,7 @@ class FriendComponent(Component):
                 del(self._fight_times[pid])
                 continue
             _time = self._fight_times[pid][0]
-            if now - _time > supporttime:
+            if (now - _time) / 60 > supporttime:
                 del(self._fight_times[pid])
 
     @property

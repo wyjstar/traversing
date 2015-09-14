@@ -246,7 +246,7 @@ def get_player_friend_list_1106(data, player):
             # 添加好友主将的属性
             _with_battle_info(response_friend_add, player_data)
             response_friend_add.gift = player.friends.last_present_times(pid)
-            response_friend_add.fight_times = player.friends.fight_times.get(pid, [0])[0]
+            response_friend_add.fight_times = int(player.friends.fight_times.get(pid, [0])[0])
             response_friend_add.fight_last_time = len(player.friends.fight_times.get(pid, []))
         else:
             logger.error('friend_list, cant find player id:%d' % pid)

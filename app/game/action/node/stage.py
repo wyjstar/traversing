@@ -180,20 +180,21 @@ def stage_start_903(pro_data, player):
         f_times = len(friend_fight_times[fid])
         price = None
         for _ in sorted(supportPrice.keys()):
-            if f_times < _:
+            if f_times >= _:
                 price = supportPrice[_]
         # todo calculate real price
         result = is_afford(player, price)  # 校验
-        if not is_afford(player, price).result.get('result'):
+        if not is_afford(player, price).get('result'):
             logger.error('stage 903 not enough money!:%s', price)
             response.res.result = False
             response.res.result_no = 101
             return response.SerializePartialToString()
 
-        return_data = consume(player, supportPrice, const.STAGE)
+        return_data = consume(player, price, const.STAGE)
         get_return(player, return_data, response.consume)
 
-        friend_fight_times[fid].append(time.time())
+        friend_fight_times[fid].append(int(time.time()))
+        player.friends.save_data()
 
     player.fight_cache_component.red_best_skill_id = red_best_skill_id
     return response.SerializePartialToString()
