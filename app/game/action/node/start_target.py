@@ -16,7 +16,7 @@ def get_target_info_1826(data, player):
     """获取任务信息"""
     args = start_target_pb2.GetStartTargetInfoRequest()
     args.ParseFromString(data)
-    day = args.day  # 0为所有
+    # day = args.day  # 0为所有
     response = start_target_pb2.GetStartTargetInfoResponse()
 
     # 第几天登录
@@ -30,11 +30,11 @@ def get_target_info_1826(data, player):
     response.day = day
     # 需要查询的目标ID
     target_ids = {}
-    if day:
+    if args.day:
         ids = []
-        for a, b in game_configs.base_config.get('seven'+str(day)).items():
+        for a, b in game_configs.base_config.get('seven'+str(args.day)).items():
             ids += b
-        target_ids[day] = ids
+        target_ids[args.day] = ids
     else:
         for x in [1, 2, 3, 4, 5, 6, 7]:
             if x > day:
