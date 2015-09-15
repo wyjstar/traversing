@@ -138,7 +138,7 @@ def get_target_info(player, target_id, day):
             player.start_target.target_info[target_id] = [2, jindu]
             return {'state': 2, 'jindu': target_conf.parameterA}
         else:
-            if jindu < target_info[1]:
+            if not target_info or jindu < target_info[1]:
                 player.start_target.target_info[target_id] = [1, jindu]
                 return {'state': 1, 'jindu': jindu}
             else:
@@ -171,7 +171,7 @@ def get_target_info(player, target_id, day):
             player.start_target.target_info[target_id] = [2, jindu]
             return {'state': 2, 'jindu': target_conf.parameterA}
         else:
-            if jindu > target_info[1]:
+            if not target_info or jindu > target_info[1]:
                 player.start_target.target_info[target_id] = [1, jindu]
                 return {'state': 1, 'jindu': jindu}
             else:
@@ -187,7 +187,7 @@ def get_target_info(player, target_id, day):
             player.start_target.target_info[target_id] = [2, jindu]
             return {'state': 2, 'jindu': target_conf.parameterB}
         else:
-            if jindu > target_info[1]:
+            if not target_info or jindu > target_info[1]:
                 player.start_target.target_info[target_id] = [1, jindu]
                 return {'state': 1, 'jindu': jindu}
             else:
@@ -208,7 +208,7 @@ def get_target_info(player, target_id, day):
             player.start_target.target_info[target_id] = [2, jindu]
             return {'state': 2, 'jindu': target_conf.parameterB}
         else:
-            if jindu > target_info[1]:
+            if not target_info or jindu > target_info[1]:
                 player.start_target.target_info[target_id] = [1, jindu]
                 return {'state': 1, 'jindu': jindu}
             else:
@@ -239,7 +239,7 @@ def get_target_info(player, target_id, day):
             player.start_target.target_info[target_id] = [2, jindu]
             return {'state': 2, 'jindu': target_conf.parameterA}
         else:
-            if jindu > target_info[1]:
+            if not target_info or jindu > target_info[1]:
                 player.start_target.target_info[target_id] = [1, jindu]
                 return {'state': 1, 'jindu': jindu}
             else:
