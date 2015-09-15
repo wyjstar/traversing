@@ -232,8 +232,8 @@ def get_target_info(player, target_id, day):
                     # [runt_no, runt_id, main_attr, minor_attr] = runt_info
                     quality = game_configs.stone_config.get('stones'). \
                         get(runt_info[1]).quality
-                if quality == target_conf.parameterB:
-                    jindu += 1
+                    if quality == target_conf.parameterB:
+                        jindu += 1
 
         if jindu >= target_conf.parameterA:
             player.start_target.target_info[target_id] = [2, jindu]
