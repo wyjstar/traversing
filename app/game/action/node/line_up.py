@@ -418,7 +418,8 @@ def line_up_info(player, response=None):
         add_unpar.unpar_id = k
         add_unpar.unpar_level = v
 
-
+    response.caption_pos = player.line_up_component.caption_pos
+    logger.debug("line_up_info caption_pos %s" % response.caption_pos)
 
     return response
 
@@ -478,3 +479,49 @@ def assembly_sub_slots(sub_slots, response):
                 add_link = hero.links.add()
                 add_link.link_no = key
                 add_link.is_activation = value
+
+@remoteserviceHandle('gate')
+def save_line_order_708(pro_data, player):
+    """
+    保存布阵信息
+    """
+    request = line_up_pb2.SaveLineUpOrderRequest()
+    request.ParseFromString(pro_data)
+    response = CommonResponse()
+    response.result = True
+    line_up_info = []  # {hero_id:pos}
+    for line in request.lineup:
+        line_up_info.append(line)
+    if len(line_up_info) != 6:
+        logger.error("line up order error %s !" % len(line_up_info))
+        response.result = False
+        return
+    logger.debug("line_up %s, current_unpar%s"% (request.lineup, request.unparalleled))
+    player.line_up_component.line_up_order = line_up_info
+    player.line_up_component.current_unpar = request.unparalleled
+    player.line_up_component.save_data(["line_up_order", "current_unpar"])
+
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def set_captain_709(pro_data, player):
+    """
+    设置队长
+    """
+    request = line_up_pb2.SetCaptainRequest()
+    request.ParseFromString(pro_data)
+    caption_pos = request.caption_pos
+    logger.debug("request %s" % request.caption_pos)
+
+    response = CommonResponse()
+    line_up_slots = player.line_up_component.line_up_slots
+    if caption_pos not in line_up_slots or (not line_up_slots[caption_pos].hero_slot.hero_obj):
+        response.result = False
+        return response.SerializePartialToString()
+
+    player.line_up_component.caption_pos = caption_pos
+    player.line_up_component.save_data()
+    response.result = True
+    logger.debug(response)
+    return response.SerializePartialToString()

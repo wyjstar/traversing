@@ -41,6 +41,7 @@ class CharacterLineUpComponent(Component):
         self._friend_fight_times = {}  # 小伙伴战斗次数
         self._friend_fight_last_time = 0
         self._hight_power = 0
+        self._caption_pos = 1
 
     def init_data(self, character_info):
         line_up_slots = character_info.get('line_up_slots')
@@ -59,6 +60,7 @@ class CharacterLineUpComponent(Component):
         self._friend_fight_times = character_info.get('friend_fight_times', {})
         self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
         self._hight_power = character_info.get('hight_power', 0)
+        self._caption_pos = character_info.get('caption_pos', 0)
 
         self.owner.set_level_related()
 
@@ -78,6 +80,7 @@ class CharacterLineUpComponent(Component):
             'attackPoint': power,
             'hight_power': self._hight_power,
             'best_skill': self.get_skill_id_by_unpar(self._current_unpar),
+            'caption_pos': self._caption_pos,
         }
         if ('copy_units' in prop_names) or (not prop_names):
             props['copy_units'] = self.owner.fight_cache_component.red_unit
@@ -102,6 +105,7 @@ class CharacterLineUpComponent(Component):
                     best_skill=0,
                     attackPoint=0,
                     hight_power=0,
+                    caption_pos=0,
                     copy_units=self.owner.fight_cache_component.red_unit,
                     copy_slots=line_up_info(self.owner).SerializeToString()
                     )
@@ -180,13 +184,21 @@ class CharacterLineUpComponent(Component):
     def lead_hero_no(self):
         """主力英雄编号
         """
-        slot = self._line_up_slots.get(1)
+        slot = self._line_up_slots.get(self._caption_pos)
         if not slot:
             return 0
         hero_no = slot.hero_slot.hero_no
         if not hero_no:
             return 0
         return hero_no
+
+    @property
+    def caption_pos(self):
+        return self._caption_pos
+
+    @caption_pos.setter
+    def caption_pos(self, caption_pos):
+        self._caption_pos = caption_pos
 
     @property
     def line_up_slots(self):
@@ -252,6 +264,9 @@ class CharacterLineUpComponent(Component):
         else:
             origin_hero_no = 0
         slot_obj.change_hero(hero_no)
+        if hero_no == 0 and slot_no == self.caption_pos:
+            # 队长下阵，更改队长
+            self.remove_caption_hero()
 
         target_hero = self.owner.hero_component.get_hero(hero_no)
         if hero_no != 0:
@@ -391,7 +406,7 @@ class CharacterLineUpComponent(Component):
 
     def get_first_slot(self):
         """get first slot in the line up"""
-        return self._line_up_slots.get(1)
+        return self._line_up_slots.get(self._caption_pos)
 
     @property
     def friend_fight_times(self):
@@ -412,3 +427,13 @@ class CharacterLineUpComponent(Component):
     @hight_power.setter
     def hight_power(self, v):
         self._hight_power = v
+
+    def remove_caption_hero(self):
+        """移除队长"""
+        for k in range(1, 7):
+            v = self._line_up_slots[k]
+            if v.hero_slot.hero_obj:
+                self._caption_pos = k
+                break
+
+

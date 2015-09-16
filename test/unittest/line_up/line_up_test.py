@@ -4,6 +4,7 @@ created by server on 14-7-14下午6:12.
 """
 
 from test.unittest.base.base_test_case import BaseTestCase
+import unittest
 
 class LineUpTest(BaseTestCase):
     """test heros_component and hero"""
@@ -21,3 +22,5 @@ class LineUpTest(BaseTestCase):
         line_up_slot = self.player.line_up_component.line_up_slots.get(2)
         self.NotEqual(line_up_slot.set_equ_skill_ids, [])
 
+if __name__ == '__main__':
+    unittest.main()

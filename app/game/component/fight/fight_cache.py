@@ -10,6 +10,8 @@ from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 import copy
 from app.game.component.fight.hero_attr_cal import combat_power
+from shared.db_opear.configs_data.common_item import CommonGroupItem
+from shared.utils.const import const
 
 
 class CharacterFightCacheComponent(Component):
@@ -373,8 +375,9 @@ class CharacterFightCacheComponent(Component):
 
     def fighting_settlement(self, result):
         """战斗结算
-        stage_type: 1剧情关卡 2副本关卡 3活动关卡
+        stage_type: 1剧情关卡 6精英关卡 4活动宝库关卡5活动校场关卡
         """
+        stage_info = self._get_stage_config()
         self.owner.stage_component.settlement(self._stage_id, result)
         self.owner.stage_component.save_data()
         drops = []
@@ -389,6 +392,39 @@ class CharacterFightCacheComponent(Component):
         elite_bag = BigBag(self._elite_drop)
         elite_drop = elite_bag.get_drop_items()
         drops.extend(elite_drop)
+
+        if stage_info.type == 4:
+            # 宝库活动副本
+            formula = game_configs.formula_config.get("Activitycurrency").get("formula")
+            assert formula!=None, "Activitycurrency formula can not be None!"
+            coin_num = eval(formula, {"damage_percent": self.damage_percent,"currency": stage_info.currency})
+            drops.append(CommonGroupItem(const.RESOURCE, coin_num, coin_num, const.COIN))
+
+        elif stage_info.type == 5:
+            # 校场活动副本
+            formula = game_configs.formula_config.get("ActivityExpDrop").get("formula")
+            assert formula!=None, "ActivityExpDrop formula can not be None!"
+            exp_drop = eval(formula, {"damage_percent": self.damage_percent,"ExpDrop": stage_info.ExpDrop})
+
+            if stage_info.id % 10 == 1:
+                formula = game_configs.formula_config.get("ActivityExpDropConvert_1").get("formula")
+                assert formula!=None, "ActivityExpDrop formula can not be None!"
+                exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
+                drops.append(CommonGroupItem(const.ITEM, exp_item_num, exp_item_num, 10001))
+            elif stage_info.id % 10 ==2:
+                formula = game_configs.formula_config.get("ActivityExpDropConvert_2").get("formula")
+                assert formula!=None, "ActivityExpDrop formula can not be None!"
+                exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
+                drops.append(CommonGroupItem(const.ITEM, exp_item_num, exp_item_num, 10002))
+            elif stage_info.id % 10 ==3:
+                formula = game_configs.formula_config.get("ActivityExpDropConvert_3").get("formula")
+                assert formula!=None, "ActivityExpDrop formula can not be None!"
+                exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
+                drops.append(CommonGroupItem(const.ITEM, exp_item_num, exp_item_num, 10003))
+        elif stage_info.type == 6:
+            # 精英活动副本
+            hero_soul_num = stage_info.reward
+            drops.append(CommonGroupItem(const.RESOURCE, hero_soul_num, hero_soul_num, const.HERO_SOUL))
 
         return drops
 

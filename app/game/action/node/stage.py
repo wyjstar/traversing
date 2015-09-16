@@ -44,7 +44,7 @@ def get_stages_901(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj, elite_stage_times, act_stage_times = get_stage_info(stage_id, player)
+    stages_obj, elite_stage_times, act_coin_stage_times, act_exp_stage_times, act_coin_lucky_heros, act_exp_lucky_heros = get_stage_info(stage_id, player)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -58,12 +58,34 @@ def get_stages_901(pro_data, player):
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
         add.chest_state = stage_obj.chest_state
+
     response.elite_stage_times = elite_stage_times
-    response.act_stage_times = act_stage_times
+    response.act_coin_stage_times = act_coin_stage_times
+    response.act_exp_stage_times = act_exp_stage_times
+
+    construct_lucky_heros(act_coin_lucky_heros, response.act_coin_lucky_heros)
+    construct_lucky_heros(act_exp_lucky_heros, response.act_exp_lucky_heros)
+
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
+    logger.debug(response)
     return response.SerializePartialToString()
 
+def construct_lucky_heros(lucky_heros, response_lucky_heros):
+    for k, hero in lucky_heros.items():
+        hero_no = hero.get("hero_no")
+        lucky_hero_info_id = hero.get("lucky_hero_info_id")
+        logger.debug("lucky_hero_info_id %s" % lucky_hero_info_id)
+        lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_info_id)
+
+        hero_pb = response_lucky_heros.add()
+        hero_pb.hero_no = hero_no
+        hero_pb.pos = lucky_hero_info.set
+        for k, v in lucky_hero_info.get("attr").items():
+            hero_attr = hero_pb.attr.add()
+            hero_attr.attr_type = int(k)
+            hero_attr.attr_value_type = v[0]
+            hero_attr.attr_value = v[1]
 
 @remoteserviceHandle('gate')
 def get_chapter_912(pro_data, player):
@@ -113,7 +135,7 @@ def stage_start_903(pro_data, player):
     request.ParseFromString(pro_data)
 
     stage_id = request.stage_id          # 关卡编号
-    stage_type = request.stage_type      # 关卡类型 1.普通关卡2.精英关卡3.活动关卡4.游历关卡5.秘境关卡
+    stage_type = request.stage_type      # 关卡类型 1.普通关卡2.精英关卡7.活动宝库关卡8.活动校场关卡4.游历关卡5.秘境关卡
     line_up = request.lineup            # 阵容顺序
     red_best_skill_id = request.unparalleled  # 无双编号
     fid = request.fid                    # 好友ID
@@ -217,8 +239,11 @@ def fight_settlement_904(pro_data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
 
+    res = (True, 1, -1)
+    if not request.is_skip:
+        res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
 
-    if not request.is_skip and not pve_process_check(player, result, request.steps, const.BATTLE_PVE):
+    if not request.is_skip and not res[0]:
         logger.error("pve_process_check error!=================")
         os.system("cp output ..")
         response = stage_response_pb2.StageSettlementResponse()
@@ -226,6 +251,20 @@ def fight_settlement_904(pro_data, player):
         res.result = False
         res.result_no = 9041
         return response.SerializePartialToString()
+
+    logger.debug("damage percent: %s" % res[1])
+    logger.debug("red units: %s" % res[2])
+    player.fight_cache_component.damage_percent = res[1]
+
+    star = 0 # star num
+    for i in range(1, 4):
+        star_condition = game_configs.base_config.get('star_condition')
+        v = star_condition[i]
+        if res[2] <= v and res[2] != 0:
+            star = i
+            break
+
+    # todo: 如果跳过或者打败,则不记录通关星级
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player)
@@ -290,17 +329,22 @@ def get_stage_info(stage_id, player):
         stages_obj = player.stage_component.get_stages()
         response.extend(stages_obj)
 
-    if time.localtime(player.stage_component.elite_stage_info[1]).tm_yday == time.localtime().tm_yday:
-        elite_stage_times = player.stage_component.elite_stage_info[0]
-    else:
-        elite_stage_times = 0
+    player.stage_component.check_time() #  时间改变，重置数据
+    #if time.localtime(player.stage_component.elite_stage_info[1]).tm_yday == time.localtime().tm_yday:
+        #elite_stage_times = player.stage_component.elite_stage_info[0]
+    #else:
+        #elite_stage_times = 0
 
-    if time.localtime(player.stage_component.act_stage_info[1]).tm_yday == time.localtime().tm_yday:
-        act_stage_times = player.stage_component.act_stage_info[0]
-    else:
-        act_stage_times = 0
+    #if time.localtime(player.stage_component.act_stage_info[1]).tm_yday == time.localtime().tm_yday:
+        #act_stage_times = player.stage_component.act_stage_info[0]
+    #else:
+        #act_stage_times = 0
 
-    return response, elite_stage_times, act_stage_times
+    return response, player.stage_component.elite_stage_info[0], \
+        player.stage_component.act_stage_info[0],\
+        player.stage_component.act_stage_info[1],\
+        player.stage_component._act_coin_lucky_heros,\
+        player.stage_component._act_exp_lucky_heros
 
 
 def get_chapter_info(chapter_id, player):

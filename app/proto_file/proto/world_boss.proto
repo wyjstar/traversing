@@ -16,19 +16,6 @@ message PvbRankItem{
     optional int32 rank_no = 7; // 排名
 }
 
-message LuckyHeroAttr
-{
-    required int32 attr_type = 1;
-    required int32 attr_value_type = 2;
-    required float attr_value = 3;
-}
-message LuckyHeroItem
-{
-    required int32 pos = 1;
-    required int32 hero_no = 2;
-    repeated LuckyHeroAttr attr = 3;
-}
-
 message PvbBeforeInfoResponse{
     required int32 stage_id = 1;
     repeated LuckyHeroItem lucky_heros = 2;       // 武将6个

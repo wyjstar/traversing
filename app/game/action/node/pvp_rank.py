@@ -24,7 +24,6 @@ from app.proto_file.shop_pb2 import ShopResponse
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
-from app.game.action.node._fight_start_logic import save_line_up_order
 from app.game.core.task import hook_task, CONDITIONId
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -184,7 +183,7 @@ def pvp_fight(player, character_id, line_up, skill, response, callback,
         blue_units = record.get('copy_units2')
     else:
         blue_units = record.get('copy_units')
-    save_line_up_order(line_up, player, skill)
+    #save_line_up_order(line_up, player, skill)
 
     red_units = player.fight_cache_component.get_red_units()
 

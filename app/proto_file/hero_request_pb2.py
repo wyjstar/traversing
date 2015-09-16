@@ -14,7 +14,7 @@ import hero_chip_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_request.proto',
   package='',
-  serialized_pb='\n\x12hero_request.proto\x1a\x0fhero_chip.proto\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"#\n\x10HeroBreakRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"I\n\x14HeroSacrificeRequest\x12\x10\n\x08hero_nos\x18\x01 \x03(\x05\x12\x1f\n\nhero_chips\x18\x02 \x03(\x0b\x32\x0b.HeroChipPB\"*\n\x12HeroComposeRequest\x12\x14\n\x0chero_chip_no\x18\x01 \x02(\x05\"#\n\x0fHeroSellRequest\x12\x10\n\x08hero_nos\x18\x01 \x03(\x05\"4\n\x11HeroRefineRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x0e\n\x06refine\x18\x02 \x02(\x05')
+  serialized_pb='\n\x12hero_request.proto\x1a\x0fhero_chip.proto\"X\n\x1aHeroUpgradeWithItemRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x65xp_item_no\x18\x02 \x02(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x03 \x02(\x05\"#\n\x10HeroBreakRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\"I\n\x14HeroSacrificeRequest\x12\x10\n\x08hero_nos\x18\x01 \x03(\x05\x12\x1f\n\nhero_chips\x18\x02 \x03(\x0b\x32\x0b.HeroChipPB\"*\n\x12HeroComposeRequest\x12\x14\n\x0chero_chip_no\x18\x01 \x02(\x05\"#\n\x0fHeroSellRequest\x12\x10\n\x08hero_nos\x18\x01 \x03(\x05\"4\n\x11HeroRefineRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05\x12\x0e\n\x06refine\x18\x02 \x02(\x05\"\x1e\n\x0bHeroRequest\x12\x0f\n\x07hero_no\x18\x01 \x02(\x05')
 
 
 
@@ -214,6 +214,34 @@ _HEROREFINEREQUEST = _descriptor.Descriptor(
   serialized_end=374,
 )
 
+
+_HEROREQUEST = _descriptor.Descriptor(
+  name='HeroRequest',
+  full_name='HeroRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='hero_no', full_name='HeroRequest.hero_no', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=376,
+  serialized_end=406,
+)
+
 _HEROSACRIFICEREQUEST.fields_by_name['hero_chips'].message_type = hero_chip_pb2._HEROCHIPPB
 DESCRIPTOR.message_types_by_name['HeroUpgradeWithItemRequest'] = _HEROUPGRADEWITHITEMREQUEST
 DESCRIPTOR.message_types_by_name['HeroBreakRequest'] = _HEROBREAKREQUEST
@@ -221,6 +249,7 @@ DESCRIPTOR.message_types_by_name['HeroSacrificeRequest'] = _HEROSACRIFICEREQUEST
 DESCRIPTOR.message_types_by_name['HeroComposeRequest'] = _HEROCOMPOSEREQUEST
 DESCRIPTOR.message_types_by_name['HeroSellRequest'] = _HEROSELLREQUEST
 DESCRIPTOR.message_types_by_name['HeroRefineRequest'] = _HEROREFINEREQUEST
+DESCRIPTOR.message_types_by_name['HeroRequest'] = _HEROREQUEST
 
 class HeroUpgradeWithItemRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -257,6 +286,12 @@ class HeroRefineRequest(_message.Message):
   DESCRIPTOR = _HEROREFINEREQUEST
 
   # @@protoc_insertion_point(class_scope:HeroRefineRequest)
+
+class HeroRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROREQUEST
+
+  # @@protoc_insertion_point(class_scope:HeroRequest)
 
 
 # @@protoc_insertion_point(module_scope)

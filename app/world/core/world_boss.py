@@ -24,6 +24,7 @@ from shared.utils.random_pick import random_pick_with_weight
 from shared.utils.date_util import string_to_timestamp
 from shared.utils.const import const
 from gfirefly.server.logobj import logger
+from shared.common_logic.lucky_hero import update_lucky_hero
 
 def get_remote_gate():
     """docstring for get_remote_gate"""
@@ -91,7 +92,7 @@ class WorldBoss(BaseBoss):
         # 幸运武将更新
         if self._lucky_hero_start > current_time or self._lucky_hero_end < current_time:
             #logger.debug("lucky_hero_start %s, current_time %s, lucky_hero_end %s" % (self._lucky_hero_start, current_time, self._lucky_hero_end))
-            self.update_lucky_hero()
+            self._lucky_heros, self._lucky_hero_start, self._lucky_hero_end = update_lucky_hero(1)
 
         time1 = str_time_to_timestamp(notice_item.parameter1[0])
         time2 = str_time_to_timestamp(notice_item.parameter1[1])

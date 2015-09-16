@@ -34,6 +34,12 @@ class SpecialStageConfig(object):
                     self._condition_mapping.setdefault(item.condition, []).append(item.id)
                 else:
                     self._first_stage_id.append(item.id)
+            elif item.type == 4:
+                self._act_stages[item.id] = item
+                if item.condition != 0:  # 开启条件不是0
+                    self._condition_mapping.setdefault(item.condition, []).append(item.id)
+                else:
+                    self._first_stage_id.append(item.id)
             elif item.type == 7:
                 self._world_boss_stages[item.id] = item
             elif item.type == 8:

@@ -122,6 +122,17 @@ class Hero(object):
 
         return level, temp_exp
 
+    def need_exp_to_max(self, player_level):
+        """升到最高级, 所需经验"""
+        need_exp = 0
+        for level in range(self._level, player_level+1):
+            level_exp = game_configs.hero_exp_config.get(level).get('exp', 0)
+            if level == self._level:
+                need_exp += (level_exp-self._exp)
+            else:
+                need_exp += level_exp
+        return need_exp
+
     def save_data(self):
         char_obj = tb_character_info.getObj(self._character_id).getObj('heroes')
         data = self.hero_proerty_dict()

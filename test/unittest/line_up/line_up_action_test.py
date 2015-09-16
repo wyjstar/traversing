@@ -6,21 +6,19 @@ created by server on 14-7-14下午8:04.
 import test.unittest.init_data.init_connection
 import unittest
 from app.game.action.node.line_up import *
-from app.game.service.gatenoteservice import remoteservice
 from app.proto_file.line_up_pb2 import *
 from app.game.core.PlayersManager import PlayersManager
-from app.game.logic.line_up import get_line_up_info
 from app.proto_file import line_up_pb2
 from app.proto_file import common_pb2
+from test.unittest.test_tool import call
 
 
 class LineUpActionTest(unittest.TestCase):
     def setUp(self):
         from test.unittest.init_test_data import init
-        init()
-        self.player = PlayersManager().get_player_by_id(1)
+        self.player = init()
 
-    def test_get_line_up_info_701(self):
+    def tst_get_line_up_info_701(self):
         str_response = get_line_up_info(1)
         response = line_up_pb2.LineUpResponse()
         response.ParseFromString(str_response)
@@ -60,12 +58,12 @@ class LineUpActionTest(unittest.TestCase):
         # print (response.res.result_no, "res")
         # print (response.res.message, "message")
 
-    def test_change_hero_702(self):
+    def tst_change_hero_702(self):
         request = ChangeHeroRequest()
         request.hero_no = 10003
         request.slot_no = 1
         request.change_type = 1
-        str_response = remoteservice.callTarget(702, 1, request.SerializeToString())
+        str_response = call(702, request.SerializeToString())
 
         response = line_up_pb2.LineUpResponse()
         response.ParseFromString(str_response)
@@ -75,7 +73,7 @@ class LineUpActionTest(unittest.TestCase):
         self.assertEqual(line_up_slot.hero_slot.hero_no, 10003, "%d_%d" % (line_up_slot.hero_slot.hero_no, 10003))
         self.assertEqual(response.sub[0].hero.hero_no, 10003, "%d_%d" % (response.sub[0].hero.hero_no, 10003))
 
-    def test_change_equipments_703(self):
+    def tst_change_equipments_703(self):
         equipments = self.player.equipment_component.get_all()
         last_equipment_id = equipments[len(equipments)-1].base_info.id
 
@@ -100,3 +98,13 @@ class LineUpActionTest(unittest.TestCase):
         # line_up_order = self.player.line_up_component.line_up_order
         # self.assertEqual(line_up_order[2], 3, "%d_%d" % (line_up_order[2], 3))
 
+    def test_set_caption_709(self):
+        """
+        """
+        request = SetCaptainRequest()
+        request.caption_pos = 5
+        str_response = call(709, request.SerializeToString())
+
+
+if __name__ == '__main__':
+    unittest.main()

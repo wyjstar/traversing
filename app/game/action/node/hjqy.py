@@ -10,7 +10,6 @@ from app.proto_file import hjqy_pb2
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
-from app.game.action.node._fight_start_logic import save_line_up_order
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import is_in_period, is_next_day, get_current_timestamp
@@ -141,7 +140,6 @@ def battle_2103(pro_data, player):
 
     red_best_skill_id = request.skill
     _skill_id, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
-    save_line_up_order(line_up, player, red_best_skill_id)
 
     stage_id = data.get("stage_id")
     player.fight_cache_component.stage_id = stage_id

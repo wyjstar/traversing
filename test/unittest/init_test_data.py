@@ -12,11 +12,13 @@ from test.unittest.init_data.mock_runt import init_runt
 from test.unittest.init_data.mock_player import init_player
 from test.unittest.init_data.mock_travel_item import init_travel_item
 from app.game.core.character.PlayerCharacter import PlayerCharacter
+from app.game.core.PlayersManager import PlayersManager
 
 def init():
     """reinit all data , every test case """
 
-    player = PlayerCharacter(1)
+    player = PlayerCharacter(1, dynamic_id=1)
+    PlayersManager().add_player(player)
     init_player(player)
     init_hero(player)
     init_hero_chip(player)
