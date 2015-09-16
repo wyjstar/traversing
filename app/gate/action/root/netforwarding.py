@@ -217,15 +217,15 @@ def net_conn_lost_remote_noresult(dynamic_id):
         vcharacter.state = 0  # 设置掉线状态
         reactor.callLater(const.KEEP_USER_AFTER_DROP,
                           net_conn_lost,
-                          dynamic_id,
-                          vcharacter)
+                          dynamic_id)
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)
 
 
-def net_conn_lost(dynamic_id, vcharacter):
+def net_conn_lost(dynamic_id):
     """docstring for net_conn_lost"""
-    if vcharacter.state == 1:
+    vcharacter = VCharacterManager().get_by_dynamic_id(dynamic_id)
+    if not vcharacter or vcharacter.state == 1:
         return
     result = save_playerinfo_in_db(dynamic_id, vcharacter)
 
