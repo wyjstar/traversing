@@ -17,8 +17,6 @@ remote_gate = GlobalObject().remote.get('gate')
 class GameCommandService(CommandService):
     def callTarget(self, targetKey, *args, **kw):
         target = self.getTarget(targetKey)
-        logger.info("call method begin %s on service[%s]",
-                    target.__name__, self._name)
         if not target:
             print 'targetKey', targetKey
             logger.error('command %s not Found on service' % str(targetKey))
@@ -38,6 +36,8 @@ class GameCommandService(CommandService):
                 if not _player:
                     logger.error('cantfind player dynamic id:%s', dynamic_id)
                     return {'result': False, 'result_no': 1, 'message': u''}
+                logger.info("call method begin %s on service[%s], player id %s",
+                    target.__name__, self._name, _player.base_info.id)
                 args = args[1:]
                 kw['player'] = _player
                 response = target(*args, **kw)
