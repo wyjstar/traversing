@@ -406,7 +406,7 @@ class CharacterLineUpComponent(Component):
 
     def get_first_slot(self):
         """get first slot in the line up"""
-        return self._line_up_slots.get(1)
+        return self._line_up_slots.get(self._caption_pos)
 
     @property
     def friend_fight_times(self):
