@@ -66,6 +66,7 @@ class CharacterStageComponent(Component):
         if self._act_exp_lucky_heros_time[0] > current_time_stamp or self._act_exp_lucky_heros_time[1] < current_time_stamp:
             self._act_exp_lucky_heros, self._act_exp_lucky_heros_time[0], self._act_exp_lucky_heros_time[1] = update_lucky_hero(5)
 
+        logger.debug(self._act_stage_info)
         if is_next_day(current_time_stamp, self._elite_stage_info[1]):
             self._elite_stage_info[0] = 0
             self._elite_stage_info[1] = current_time_stamp

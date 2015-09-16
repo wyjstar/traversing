@@ -29,9 +29,9 @@ class ActStageLogic(base_stage.BaseStageLogic):
         """校验关卡是否开启"""
         player = self._player
         conf = self.get_stage_config()
-        tm_time = time.localtime(player.stage_component.act_stage_info[1])
-        if tm_time.tm_yday == time.localtime().tm_yday \
-            and game_configs.vip_config.get(player.base_info.vip_level).activityCopyTimes - player.stage_component.act_stage_info[0] < conf.timesExpend:
+        if (self.stage_type == 4 and player.base_info.activity_copy_times1 - player.stage_component.act_stage_info[0] < conf.timesExpend) or\
+            (self.stage_type == 5 and player.base_info.activity_copy_times2 - player.stage_component.act_stage_info[1] < conf.timesExpend):
+
             logger.error("活动关卡开始战斗出错: %s" % 805)
             return {'result': False, 'result_no': 805}  # 805 次数不足
         if conf.weeklyControl:
@@ -61,12 +61,11 @@ class ActStageLogic(base_stage.BaseStageLogic):
         player = self._player
         conf = self.get_stage_config()
         stage_id = self._stage_id
-        tm_time = time.localtime(player.stage_component.act_stage_info[1])
         if result:
-            if tm_time.tm_yday == time.localtime().tm_yday:
+            if self.stage_type == 4:
                 player.stage_component.act_stage_info[0] += conf.timesExpend
-            else:
-                player.stage_component.act_stage_info = [conf.timesExpend, int(time.time())]
+            elif self.stage_type == 5:
+                player.stage_component.act_stage_info[1] += conf.timesExpend
             stage_util.settle(player, result, response, conf)
             hook_task(player, CONDITIONId.STAGE, stage_id)
             hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
@@ -80,9 +79,9 @@ class ActStageLogic(base_stage.BaseStageLogic):
         """
         lucky_heros = {}
         if self.stage_type == 4:
-            player.stage_component._act_coin_lucky_heros
+            lucky_heros = player.stage_component._act_coin_lucky_heros
         elif self.stage_type == 5:
-            player.stage_component._act_exp_lucky_heros
+            lucky_heros = player.stage_component._act_exp_lucky_heros
         lucky_add = 0
 
         print("hero_self_attr_origin", hero_self_attr)

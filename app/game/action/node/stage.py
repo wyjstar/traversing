@@ -68,6 +68,7 @@ def get_stages_901(pro_data, player):
 
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
+    logger.debug(response)
     return response.SerializePartialToString()
 
 def construct_lucky_heros(lucky_heros, response_lucky_heros):
