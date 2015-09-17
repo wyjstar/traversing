@@ -114,6 +114,9 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.tomorrow_gift = player.base_info.tomorrow_gift
     responsedata.battle_speed = player.base_info.battle_speed
     responsedata.story_id = player.base_info.story_id
+    for k, i in enumerate(player.base_info._button_one_time):
+        responsedata.button_one_time.append(int(i))
+    logger.debug("button_one_time %s" % player.base_info._button_one_time)
     # 战力排行
     if rank_helper.flag_doublu_day():
         rank_name = 'PowerRank2'

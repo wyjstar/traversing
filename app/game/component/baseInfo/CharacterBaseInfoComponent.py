@@ -52,6 +52,7 @@ class CharacterBaseInfoComponent(Component):
         self._is_open_next_day_activity = False
         self._first_recharge_activity = -1 # -1 没领 1 领过
         self._story_id = 0
+        self._button_one_time = [0] * 3 # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -81,6 +82,7 @@ class CharacterBaseInfoComponent(Component):
         self._story_id = character_info.get('story_id', 0)
         self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
         self._first_recharge_activity = character_info.get('first_recharge_activity', False)
+        self._button_one_time = character_info.get('button_one_time', [])
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -113,6 +115,7 @@ class CharacterBaseInfoComponent(Component):
                     is_open_next_day_activity=self._is_open_next_day_activity,
                     first_recharge_activity=self._first_recharge_activity,
                     story_id=self._story_id,
+                    button_one_time=self._button_one_time,
                     )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -141,6 +144,7 @@ class CharacterBaseInfoComponent(Component):
                     is_open_next_day_activity=self._is_open_next_day_activity,
                     first_recharge_activity=self._first_recharge_activity,
                     story_id=self._story_id,
+                    button_one_time=self._button_one_time,
                     )
         return data
 

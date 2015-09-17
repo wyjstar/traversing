@@ -84,6 +84,8 @@ message GameLoginResponse{
     optional int32 first_recharge_activity = 38; // 是否已获得首次充值 -1:没领过 1:领过 
     optional float hight_power = 39; // 最高战力
 	optional int32 story_id = 40; // 关卡剧情
+    repeated int32 button_one_time = 41; //  0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
+
 }
 
 message BuyStaminaTimes

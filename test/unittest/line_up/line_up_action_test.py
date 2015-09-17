@@ -9,7 +9,7 @@ from app.game.action.node.line_up import *
 from app.proto_file.line_up_pb2 import *
 from app.game.core.PlayersManager import PlayersManager
 from app.proto_file import line_up_pb2
-from app.proto_file import common_pb2
+from app.proto_file import player_request_pb2
 from test.unittest.test_tool import call
 
 
@@ -104,6 +104,13 @@ class LineUpActionTest(unittest.TestCase):
         request = SetCaptainRequest()
         request.caption_pos = 5
         str_response = call(709, request.SerializeToString())
+
+    def test_set_caption_2203(self):
+        """
+        """
+        request = player_request_pb2.ButtonOneTimeRequest()
+        request.button_id = 0
+        str_response = call(2203, request.SerializeToString())
 
 
 if __name__ == '__main__':

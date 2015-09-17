@@ -6,6 +6,7 @@ import time
 from shared.utils.date_util import string_to_timestamp
 from shared.utils.random_pick import random_pick_with_weight
 from shared.db_opear.configs_data import game_configs
+from gfirefly.server.logobj import logger
 
 def update_lucky_hero(lucky_hero_type):
     # 初始化幸运武将
@@ -15,12 +16,15 @@ def update_lucky_hero(lucky_hero_type):
         #return
     lucky_heros = {}
     hero_infos, lucky_hero_start, lucky_hero_end = get_lucky_hero_items_in_time(lucky_hero_type)
+    logger.debug("hero_infos %s" % hero_infos)
     for k, hero_info in hero_infos.items():
         hero_pool = hero_info.hero
+        logger.debug("hero_pool1 %s" % hero_pool)
         for _, v in lucky_heros.items():
             hero_no = unicode(v.get('hero_no'))
             if hero_no in hero_pool:
                 del hero_pool[hero_no]
+        logger.debug("hero_pool2 %s" % hero_pool)
         res = random_pick_with_weight(hero_pool)
         temp = {}
         temp['lucky_hero_info_id'] = k
