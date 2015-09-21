@@ -130,6 +130,7 @@ def get_chapter_902(pro_data, player):
             stage_award_add.award.append(award)
         stage_award_add.star_gift = chapter_obj.star_gift
         stage_award_add.now_random = chapter_obj.now_random
+        stage_award_add.random_gift_times = chapter_obj.random_gift_times
     # logger.debug(response)
     return response.SerializePartialToString()
 
