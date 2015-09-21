@@ -603,8 +603,58 @@ def get_condition_state6(player, info):
 
 
 def get_condition_state7(player, info):
-    return False
+    line_up_slots = player.line_up_component.line_up_slots
+    res = False
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if hero_obj and hero_obj.hero_no == info[1]:
+            if info[2] and hero_obj.level < info[2]:
+                continue
+            if info[3]:
+                link_res = 0
+                for link_no, link_info in hero_obj.link.items():
+                    if link_no == info[3] and link_info:
+                        link_res = 1
+                        break
+                if link_res:
+                    continue
+            res = True
+            break
+    return True
 
 
 def get_condition_state8(player, info):
+    line_up_slots = player.line_up_component.line_up_slots
+    res = False
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+
+        for equ_slot_no, equ_slot_obj in slot.equipment_slots.items:
+            if not equ_slot_obj.equipment_id or equ_slot_obj.equipment_id != info[1]:
+                continue
+            if not info[2]:
+                res = True
+                break
+            equipment_obj = equ_slot_obj.equipment_obj
+            if equipment_obj.attribute.strengthen_lv >= info[2]:
+                res = True
+            break
+
+    if not info[3]:
+        return res
+
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if hero_obj:
+            if info[3] not in hero_obj.link.keys():
+                continue
+            for link_no, link_info in hero_obj.link.items():
+                if link_no == info[3] and link_info:
+                    return True
     return False

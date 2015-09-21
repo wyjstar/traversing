@@ -667,22 +667,20 @@ def get_star_random_1828(pro_data, player):
     response = stage_response_pb2.GetStarRandomResponse()
 
     chapters_info = get_chapter_info(chapter_id, player)
-    if len(chapters_info) != 1 or chapter_id == 1 or chapter_id == 2 or len(chapters_info[0].award_info) == 0:
-        logger.error("chapter_info dont find,or chapter_id == 1 or chapter_id == 2")
-        response.res.result = False
-        response.res.result_no = 831
-        return response.SerializePartialToString()
-    else:
-        chapter_obj = chapters_info[0]
-
+    chapter_obj = chapters_info[0]
     chapter_conf = chapter_obj.get_conf()
     chapter_obj.update(player.stage_component.calculation_star(chapter_id))
 
-    if (chapter_obj.star_gift == 3 and chapter_obj.now_random) or chapter_obj.star_gift == 1:
-        # 已经达到最大值
+    if not chapter_conf.starMagnification or len(chapters_info[0].award_info) == 0:
+        logger.error("get_star_random_1828, not chapter_conf.starMagnification or len(chapters_info[0].award_info) == 0")
+        response.res.result = False
+        response.res.result_no = 831
+        return response.SerializePartialToString()
+
+    if chapter_obj.star_gift == 1:
         response.res.result = False
         response.res.result_no = 800
-        logger.error("get_star_random_1828, please deal random, or alreaday get gift")
+        logger.error("get_star_random_1828, alreaday get gift")
         return response.SerializePartialToString()
 
     # chapter_obj.random_gift_times

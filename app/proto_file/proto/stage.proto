@@ -74,3 +74,10 @@ message StepInfo
 	required int32 step_id = 1;     //步骤id
     required int32 step_type = 2;   //步骤类型: 无双、小伙伴
 }
+
+// 1842
+message StepInfo
+{
+	required int32 step_id = 1;     //步骤id
+    required int32 step_type = 2;   //步骤类型: 无双、小伙伴
+}
