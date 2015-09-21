@@ -61,3 +61,8 @@ message LuckyHeroItem
     repeated LuckyHeroAttr attr = 3;
 }
 
+message StageLuckyHeroItems
+{
+    required int32 stage_id = 1; // 关卡id
+    repeated LuckyHeroItem heros = 2; //幸运武将列表
+}
