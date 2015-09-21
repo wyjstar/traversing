@@ -72,3 +72,9 @@ message DealRandomRequest{
     required int32 chapter_id = 1;//章节编号
     required int32 res = 2;  //1领取2放弃
 }
+
+// 1841
+message LookHideStageRequest
+{
+	required int32 chapter_id = 1;
+}

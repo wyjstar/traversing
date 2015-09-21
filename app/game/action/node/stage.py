@@ -68,8 +68,10 @@ def get_stages_901(pro_data, player):
 
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
+    for chapter_id in player.stage_component.already_look_hide_stage:
+        response.already_look_hide_stage.append(chapter_id)
     logger.debug(response.stage_lucky_hero)
-    logger.debug(response)
+    logger.debug(response.already_look_hide_stage)
     return response.SerializePartialToString()
 
 def construct_lucky_heros(stage_lucky_heros, response_stage_lucky_hero):
@@ -694,11 +696,11 @@ def get_star_random_1828(pro_data, player):
     chapter_conf = chapter_obj.get_conf()
     chapter_obj.update(player.stage_component.calculation_star(chapter_id))
 
-    if (chapter_obj.star_gift == 3 and chapter_obj.now_random) or chapter_obj.star_gift == 1:
+    if chapter_obj.star_gift == 1:
         # 已经达到最大值
         response.res.result = False
         response.res.result_no = 800
-        logger.error("get_star_random_1828, please deal random, or alreaday get gift")
+        logger.error("get_star_random_1828,  alreaday get gift")
         return response.SerializePartialToString()
 
     # chapter_obj.random_gift_times
@@ -767,7 +769,14 @@ def deal_random_1829(pro_data, player):
                            const.STAGE_STAR_GIFT,
                            multiple=drop_num)  # 获取
 
-        get_return(player, return_data, response.drops)
+        return_data1 = []
+        for rd in return_data:
+            if not return_data1:
+                return_data1.append(return_data[0])
+            else:
+                return_data1[0][1] += rd[1]
+
+        get_return(player, return_data1, response.drops)
         chapter_obj.star_gift = 1
     else:  # res 为2， 放弃
         random_num_conf = game_configs.lottery_config.get(chapter_obj.now_random)
@@ -923,3 +932,20 @@ def trigger_hjqy(player, result, times=1):
     send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
 
     return stage_id
+
+
+@remoteserviceHandle('gate')
+def look_hide_stage_1842(pro_data, player):
+    """取得关卡信息
+    """
+    request = stage_request_pb2.LookHideStageRequest()
+    request.ParseFromString(pro_data)
+    chapter_id = request.chapter_id
+
+    if not player.stage_component.already_look_hide_stage.count(chapter_id):
+        player.stage_component.already_look_hide_stage.append(chapter_id)
+        player.stage_component.save_data()
+
+    response = stage_response_pb2.LookHideStageResponse()
+    response.res.result = True
+    return response.SerializePartialToString()

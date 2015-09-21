@@ -11,6 +11,7 @@ message StageInfoResponse{
 	optional int32 act_coin_stage_times = 5; //活动宝库
 	optional int32 act_exp_stage_times = 6;  //活动校场
     repeated StageLuckyHeroItems stage_lucky_hero = 7; //活动关卡幸运武将
+    repeated int32 already_look_hide_stage = 8; //活动关卡幸运武将
 }
 
 //请求章节奖励信息返回 command:902
@@ -99,5 +100,11 @@ message DealRandomResponse{
 
 //更新显示剧情章节 command:1930
 message UpdataChapterPromptResponse{
+    required CommonResponse res = 1;
+}
+
+// 1841
+message LookHideStageResponse
+{
     required CommonResponse res = 1;
 }

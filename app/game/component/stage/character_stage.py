@@ -19,6 +19,7 @@ class CharacterStageComponent(Component):
     def __init__(self, owner):
         super(CharacterStageComponent, self).__init__(owner)
 
+        self._already_look_hide_stage = [] # 已经看过隐藏关卡提示的章节 [chapter_id]
         self._stage_info = {}             # 关卡信息
         self._award_info = {}             # 按章节记录奖励信息
                                           # self._elite_stage_info = {}
@@ -35,7 +36,7 @@ class CharacterStageComponent(Component):
 
         self._stage_progress = game_configs.stage_config.get('first_stage_id')
         self._rank_stage_progress = game_configs.stage_config.get('first_stage_id')
-        self._star_num = [0]*40
+        self._star_num = [0]*100
 
     def init_data(self, character_info):
         stages = character_info.get('stage_info')
@@ -56,7 +57,8 @@ class CharacterStageComponent(Component):
         first_stage_id = game_configs.stage_config.get('first_stage_id')
         self._stage_progress = character_info.get('stage_progress', first_stage_id)
         self._rank_stage_progress = character_info.get('rank_stage_progress', first_stage_id)
-        self._star_num = character_info.get('star_num', [0]*40)
+        self._star_num = character_info.get('star_num', [0]*100)
+        self._already_look_hide_stage = character_info.get('already_look_hide_stage', [])
 
     def check_time(self):
         """
@@ -108,6 +110,7 @@ class CharacterStageComponent(Component):
                 'stage_progress': self._stage_progress,
                 'rank_stage_progress': self._rank_stage_progress,
                 'star_num': self._star_num,
+                'already_look_hide_stage': self._already_look_hide_stage,
                 'stage_up_time': int(time.time()),
                 'act_lucky_heros': act_lucky_heros}
         return data
@@ -123,6 +126,7 @@ class CharacterStageComponent(Component):
                  'stage_progress': self._stage_progress,
                  'rank_stage_progress': self._rank_stage_progress,
                  'stage_up_time': self._stage_up_time,
+                 'already_look_hide_stage': self._already_look_hide_stage,
                  'act_lucky_heros': self._act_lucky_heros
                  }
 
@@ -212,7 +216,7 @@ class CharacterStageComponent(Component):
                 if chapter_star_num == chapter_conf.condition2:
                     hide_stage_id = game_configs.stage_config. \
                         get('chapter_hide_stage').get(chapter_id)
-                    hide_stage_obj = self.get_stage(temp_stage_id)
+                    hide_stage_obj = self.get_stage(hide_stage_id)
                     if hide_stage_obj.state == -2:
                         hide_stage_obj.state = -1
                 # 获取那蛋疼的掉落
@@ -257,6 +261,14 @@ class CharacterStageComponent(Component):
                 continue
             num += stage.star_num
         return num
+
+    @property
+    def already_look_hide_stage(self):
+        return self._already_look_hide_stage
+
+    @already_look_hide_stage.setter
+    def elite_stage_info(self, v):
+        self._already_look_hide_stage = v
 
     @property
     def elite_stage_info(self):
