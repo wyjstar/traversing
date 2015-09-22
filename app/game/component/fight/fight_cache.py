@@ -375,7 +375,7 @@ class CharacterFightCacheComponent(Component):
 
     def fighting_settlement(self, result, star_num):
         """战斗结算
-        stage_type: 1剧情关卡 6精英关卡 4活动宝库关卡5活动校场关卡
+        stage_type: 1剧情关卡 6精英关卡 4活动宝库关卡5活动校场关卡 14隐藏关卡
         """
         stage_info = self._get_stage_config()
         self.owner.stage_component.settlement(self._stage_id, result, star_num)
@@ -387,10 +387,14 @@ class CharacterFightCacheComponent(Component):
                 common_bag = BigBag(self._common_drop)
                 common_drop = common_bag.get_drop_items()
                 drops.extend(common_drop)
-            if self._elite_drop and stage_info.type != 1:
-                elite_bag = BigBag(self._elite_drop)
-                elite_drop = elite_bag.get_drop_items()
-                drops.extend(elite_drop)
+            if stage_info.type == 1 or stage_info.type == 4:
+                get_stage_drop(self._owner, stage_info, drops)
+                self.owner.stage_component.save_data()
+            else:
+                if self._elite_drop:
+                    elite_bag = BigBag(self._elite_drop)
+                    elite_drop = elite_bag.get_drop_items()
+                    drops.extend(elite_drop)
 
         if stage_info.type == 4:
             # 宝库活动副本
@@ -479,6 +483,7 @@ class CharacterFightCacheComponent(Component):
             for key, red in red_units.items():
                 if red.unit_no == red_unit.unit_no:
                     red_units[key] = unit
+
     def awake_hero_units(self, red_units):
         for no, red in red_units.items():
             hero = self.owner.hero_component.get_hero(red.unit_no)
@@ -510,3 +515,150 @@ class CharacterFightCacheComponent(Component):
         break_hero_obj = copy.deepcopy(origin_hero)  # 实例化一个替换英雄对象
         break_hero_obj.hero_no = target_hero_no
         return break_hero_obj
+
+
+def get_stage_drop(player, stage_conf, drops):
+    stage_obj = player.stage_component.get_stage(stage_conf.id)
+
+    elite_drop_stage, elite_drop2_stage = stage_obj.have_elite_drop(stage_conf)
+    # stage_obj.attack_times += 1
+
+    if elite_drop2_stage and stage_conf.eliteDrop2:  # 掉落保底
+        elite_bag = BigBag(stage_conf.eliteDrop2)
+        elite_drop2 = elite_bag.get_drop_items()
+        drops.extend(elite_drop2)
+
+    if not elite_drop_stage or not stage_conf.eliteDrop:
+        return
+
+    if stage_conf.type == 1:
+        elite_bag = BigBag(stage_conf.eliteDrop)
+        elite_drop = elite_bag.get_drop_items()
+        drops.extend(elite_drop)
+        if elite_drop:
+            stage_obj.elite_drop_times += 1
+    else:
+        if elite_drop2_stage:
+            return
+        # 根据条件得到概率
+        elite_drop2_condition_state = get_elite_drop2_condition_state(player, stage_conf)
+        if not elite_drop2_condition_state:
+            return
+
+        elite_bag = BigBag(stage_conf.eliteDrop)
+        elite_drop = elite_bag.get_drop_items()
+        drops.extend(elite_drop)
+        if elite_drop:
+            stage_obj.elite_drop_times += 1
+
+
+def get_elite_drop2_condition_state(player, stage_conf):
+    gailv = 0
+    determination = stage_conf.Determination
+    for type, info in determination.items():
+        info1 = copy.copy(info)
+        del info1[0]
+        res = eval('get_condition_state'+str(type)+'(player, info1)')
+        if res:
+            gailv += info[0]
+    print gailv, '================================gailv'
+    return random.random() > gailv
+
+
+def get_condition_state1(player, info):
+    return False
+
+
+def get_condition_state2(player, info):
+    line_up_slots = player.line_up_component.line_up_slots
+    num = 0
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if hero_obj:
+            if hero_obj.break_level >= info[2]:
+                num += 1
+    if num >= info[1]:
+        return True
+    return False
+
+
+def get_condition_state3(player, info):
+    if player.base_info.level >= info[1]:
+        return True
+    return False
+
+
+def get_condition_state4(player, info):
+    if player.base_info.vip_level >= info[1]:
+        return True
+    return False
+
+
+def get_condition_state5(player, info):
+    if player.line_up_component.combat_power >= info[1]:
+        return True
+    return False
+
+
+def get_condition_state6(player, info):
+    return False
+
+
+def get_condition_state7(player, info):
+    line_up_slots = player.line_up_component.line_up_slots
+    res = False
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if hero_obj and hero_obj.hero_no == info[1]:
+            if info[2] and hero_obj.level < info[2]:
+                continue
+            if info[3]:
+                link_res = 0
+                for link_no, link_info in slot.hero_slot.link.items():
+                    if link_no == info[3] and link_info:
+                        link_res = 1
+                        break
+                if link_res:
+                    continue
+            res = True
+            break
+    return True
+
+
+def get_condition_state8(player, info):
+    line_up_slots = player.line_up_component.line_up_slots
+    res = False
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+
+        for equ_slot_no, equ_slot_obj in slot.equipment_slots.items():
+            if not equ_slot_obj.equipment_id or equ_slot_obj.equipment_id != info[1]:
+                continue
+            if not info[2]:
+                res = True
+                break
+            equipment_obj = equ_slot_obj.equipment_obj
+            if equipment_obj.attribute.strengthen_lv >= info[2]:
+                res = True
+            break
+
+    if not info[3]:
+        return res
+
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if hero_obj:
+            if info[3] not in slot.hero_slot.link.keys():
+                continue
+            for link_no, link_info in slot.hero_slot.link.items():
+                if link_no == info[3] and link_info:
+                    return True
+    return False

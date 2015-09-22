@@ -6,13 +6,15 @@ import cPickle
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 import time
+import random
 
 
 class Stage(object):
     """关卡
     """
     def __init__(self, stage_id, attacks=0, state=-1, reset=None,
-                 drop_num=0, chest_state=0, star_num=0):
+                 drop_num=0, chest_state=0, star_num=0, attack_times=0,
+                 elite_drop2_info=None, elite_drop_times=0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
         self._state = state         # 关卡状态 -2: 未开启 -1：已开启但没打 0：输 1：赢
@@ -21,9 +23,47 @@ class Stage(object):
         self._drop_num = drop_num   # 本关卡掉落包数量, 当战斗失败时设置,防止玩家强退，来刷最大掉落数
         self._star_num = star_num  # 通关关卡后得到的星星数量 0-3
 
-        # self._attack_times = attack_times  # 通关次数， 用来计算掉落
-        # self._elite_drop2_info = elite_drop2_info  # 保底包 掉落信息 [0，0，0，0，0，1，0]
-        # self._elite_drop_times = elite_drop_times  # 随机精英包本周期内已经掉落次数
+        self._attack_times = attack_times  # 通关次数， 用来计算掉落
+        self._elite_drop2_info = elite_drop2_info if elite_drop2_info else [] # 保底包 掉落信息 [0，0，0，0，0，1，0]
+        self._elite_drop_times = elite_drop_times  # 随机精英包本周期内已经掉落次数
+
+    def have_elite_drop(self, stage_conf):
+        """
+        """
+        drop1_state = 0
+        drop2_state = 0
+        if self._attack_times == stage_conf.eliteDropFrequency or not self._elite_drop2_info:
+            self._attack_times = 0
+            self._elite_drop_times = 0
+            self._elite_drop2_info = [0] * stage_conf.eliteDropFrequency
+            num = random.randint(stage_conf.Lowerlimit, stage_conf.Upperlimit)
+            for _ in range(num):
+                for _ in range(num):
+                    x = random.randint(0, stage_conf.eliteDropFrequency-1)
+                    if not self._elite_drop2_info[x]:
+                        self._elite_drop2_info[x] = 1
+                        break
+        if self._elite_drop2_info[self.attack_times]:
+            drop2_state = 1
+        if self._elite_drop_times < stage_conf.SpecialDropmax:
+            drop1_state = 1
+        return drop1_state, drop2_state
+
+    @property
+    def elite_drop2_info(self):
+        return self._elite_drop2_info
+
+    @elite_drop2_info.setter
+    def elite_drop2_info(self, v):
+        self._elite_drop2_info = v
+
+    @property
+    def elite_drop_times(self):
+        return self._elite_drop_times
+
+    @elite_drop_times.setter
+    def elite_drop_times(self, v):
+        self._elite_drop_times = v
 
     @property
     def attack_times(self):
@@ -90,7 +130,9 @@ class Stage(object):
         return dict(stage_id=self._stage_id, attacks=self._attacks,
                     state=self._state, reset=self._reset,
                     drop_num=self._drop_num, chest_state=self._chest_state,
-                    star_num=self._star_num)
+                    star_num=self._star_num, attack_times=self._attack_times,
+                    elite_drop2_info=self._elite_drop2_info,
+                    elite_drop_times=self._elite_drop_times)
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -221,5 +263,5 @@ class StageAward(object):
                 stage = item
                 break
         if not stage:
-            print self._chapter_id, '================787968686868768687686876868======'
+            pass
         return stage
