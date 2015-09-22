@@ -381,17 +381,16 @@ class CharacterFightCacheComponent(Component):
         self.owner.stage_component.settlement(self._stage_id, result)
         self.owner.stage_component.save_data()
         drops = []
-        if not result:
-            return drops
-        # 关卡掉落
-        for _ in range(self._drop_num):
-            common_bag = BigBag(self._common_drop)
-            common_drop = common_bag.get_drop_items()
-            drops.extend(common_drop)
+        if result:
+            # 关卡掉落
+            for _ in range(self._drop_num):
+                common_bag = BigBag(self._common_drop)
+                common_drop = common_bag.get_drop_items()
+                drops.extend(common_drop)
 
-        elite_bag = BigBag(self._elite_drop)
-        elite_drop = elite_bag.get_drop_items()
-        drops.extend(elite_drop)
+            elite_bag = BigBag(self._elite_drop)
+            elite_drop = elite_bag.get_drop_items()
+            drops.extend(elite_drop)
 
         if stage_info.type == 4:
             # 宝库活动副本
