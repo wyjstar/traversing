@@ -6,6 +6,7 @@ import cPickle
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 import time
+import random
 
 
 class Stage(object):
@@ -23,7 +24,7 @@ class Stage(object):
         self._star_num = star_num  # 通关关卡后得到的星星数量 0-3
 
         self._attack_times = attack_times  # 通关次数， 用来计算掉落
-        self._elite_drop2_info = elite_drop2_info  # 保底包 掉落信息 [0，0，0，0，0，1，0]
+        self._elite_drop2_info = elite_drop2_info if elite_drop2_info else [] # 保底包 掉落信息 [0，0，0，0，0，1，0]
         self._elite_drop_times = elite_drop_times  # 随机精英包本周期内已经掉落次数
 
     def have_elite_drop(self, stage_conf):
@@ -31,7 +32,7 @@ class Stage(object):
         """
         drop1_state = 0
         drop2_state = 0
-        if self._attack_times == stage_conf.eliteDropFrequency:
+        if self._attack_times == stage_conf.eliteDropFrequency or not self._elite_drop2_info:
             self._attack_times = 0
             self._elite_drop_times = 0
             self._elite_drop2_info = [0] * stage_conf.eliteDropFrequency

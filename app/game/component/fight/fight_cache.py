@@ -375,7 +375,7 @@ class CharacterFightCacheComponent(Component):
 
     def fighting_settlement(self, result, star_num):
         """战斗结算
-        stage_type: 1剧情关卡 6精英关卡 4活动宝库关卡5活动校场关卡
+        stage_type: 1剧情关卡 6精英关卡 4活动宝库关卡5活动校场关卡 14隐藏关卡
         """
         stage_info = self._get_stage_config()
         self.owner.stage_component.settlement(self._stage_id, result, star_num)
@@ -387,7 +387,7 @@ class CharacterFightCacheComponent(Component):
                 common_bag = BigBag(self._common_drop)
                 common_drop = common_bag.get_drop_items()
                 drops.extend(common_drop)
-            if stage_info.type == 1:
+            if stage_info.type == 1 or stage_info.type == 4:
                 get_stage_drop(self._owner, stage_info, drops)
                 self.owner.stage_component.save_data()
             else:
@@ -516,7 +516,7 @@ class CharacterFightCacheComponent(Component):
 
 
 def get_stage_drop(player, stage_conf, drops):
-    stage_obj = player.stage_component.get_stage(stage_id)
+    stage_obj = player.stage_component.get_stage(stage_conf.id)
 
     elite_drop_stage, elite_drop2_stage = stage_obj.have_elite_drop(stage_conf)
     # stage_obj.attack_times += 1
@@ -559,6 +559,8 @@ def get_elite_drop2_condition_state(player, stage_conf):
         res = eval('get_condition_state'+str(type)+'(player, info1)')
         if res:
             gailv += info[0]
+    print gailv, '================================gailv'
+    return random.random() > gailv
 
 
 def get_condition_state1(player, info):
@@ -614,7 +616,7 @@ def get_condition_state7(player, info):
                 continue
             if info[3]:
                 link_res = 0
-                for link_no, link_info in hero_obj.link.items():
+                for link_no, link_info in slot.hero_slot.link.items():
                     if link_no == info[3] and link_info:
                         link_res = 1
                         break
@@ -632,7 +634,7 @@ def get_condition_state8(player, info):
         if not slot.activation:  # 如果卡牌位未激活
             continue
 
-        for equ_slot_no, equ_slot_obj in slot.equipment_slots.items:
+        for equ_slot_no, equ_slot_obj in slot.equipment_slots.items():
             if not equ_slot_obj.equipment_id or equ_slot_obj.equipment_id != info[1]:
                 continue
             if not info[2]:
@@ -652,9 +654,9 @@ def get_condition_state8(player, info):
 
         hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
-            if info[3] not in hero_obj.link.keys():
+            if info[3] not in slot.hero_slot.link.keys():
                 continue
-            for link_no, link_info in hero_obj.link.items():
+            for link_no, link_info in slot.hero_slot.link.items():
                 if link_no == info[3] and link_info:
                     return True
     return False
