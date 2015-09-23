@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='start_target.proto',
   package='',
-  serialized_pb='\n\x12start_target.proto\x1a\x0c\x63ommon.proto\"(\n\x19GetStartTargetInfoRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"t\n\x1aGetStartTargetInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03\x64\x61y\x18\x02 \x01(\x05\x12+\n\x11start_target_info\x18\x03 \x03(\x0b\x32\x10.StartTargetInfo\"B\n\x0fStartTargetInfo\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\x12\r\n\x05jindu\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"0\n\x1bGetStartTargetRewardRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"b\n\x1cGetStartTargetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x12start_target.proto\x1a\x0c\x63ommon.proto\"(\n\x19GetStartTargetInfoRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"t\n\x1aGetStartTargetInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03\x64\x61y\x18\x02 \x01(\x05\x12+\n\x11start_target_info\x18\x03 \x03(\x0b\x32\x10.StartTargetInfo\"B\n\x0fStartTargetInfo\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\x12\r\n\x05jindu\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"0\n\x1bGetStartTargetRewardRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"b\n\x1cGetStartTargetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"B\n\x0fPushStartTarget\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\x12\r\n\x05jindu\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05')
 
 
 
@@ -193,6 +193,48 @@ _GETSTARTTARGETREWARDRESPONSE = _descriptor.Descriptor(
   serialized_end=412,
 )
 
+
+_PUSHSTARTTARGET = _descriptor.Descriptor(
+  name='PushStartTarget',
+  full_name='PushStartTarget',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='target_id', full_name='PushStartTarget.target_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='jindu', full_name='PushStartTarget.jindu', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='state', full_name='PushStartTarget.state', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=414,
+  serialized_end=480,
+)
+
 _GETSTARTTARGETINFORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETSTARTTARGETINFORESPONSE.fields_by_name['start_target_info'].message_type = _STARTTARGETINFO
 _GETSTARTTARGETREWARDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -202,6 +244,7 @@ DESCRIPTOR.message_types_by_name['GetStartTargetInfoResponse'] = _GETSTARTTARGET
 DESCRIPTOR.message_types_by_name['StartTargetInfo'] = _STARTTARGETINFO
 DESCRIPTOR.message_types_by_name['GetStartTargetRewardRequest'] = _GETSTARTTARGETREWARDREQUEST
 DESCRIPTOR.message_types_by_name['GetStartTargetRewardResponse'] = _GETSTARTTARGETREWARDRESPONSE
+DESCRIPTOR.message_types_by_name['PushStartTarget'] = _PUSHSTARTTARGET
 
 class GetStartTargetInfoRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -232,6 +275,12 @@ class GetStartTargetRewardResponse(_message.Message):
   DESCRIPTOR = _GETSTARTTARGETREWARDRESPONSE
 
   # @@protoc_insertion_point(class_scope:GetStartTargetRewardResponse)
+
+class PushStartTarget(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PUSHSTARTTARGET
+
+  # @@protoc_insertion_point(class_scope:PushStartTarget)
 
 
 # @@protoc_insertion_point(module_scope)

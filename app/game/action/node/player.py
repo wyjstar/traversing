@@ -61,12 +61,9 @@ def nickname_create_5(request_proto, player):
         response.result_no = 870
         return response.SerializeToString()
 
-    character_obj = tb_character_info.getObj(player.base_info.id)
-    if not character_obj:
-        response.result_no = 800
-        return response.SerializeToString()
     player.base_info.base_name = nickname
-    character_obj.hset('nickname', nickname)
+    player.base_info.register_time = int(time.time())
+    player.base_info.save_data()
 
     # 加入聊天
     remote_gate.login_chat_remote(player.dynamic_id,
