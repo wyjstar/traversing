@@ -388,6 +388,8 @@ class CharacterLineUpComponent(Component):
             _power += each_power
 
         MineOpt.update('sword', self.owner.base_info.id, _power)
+        if _power > self._hight_power:
+            self._hight_power = _power
         return _power
 
     def get_slot_by_hero(self, hero_no):

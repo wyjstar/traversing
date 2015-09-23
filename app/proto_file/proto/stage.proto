@@ -45,6 +45,7 @@ message Stage{
 	optional int32 state = 3;  //关卡状态 -1:开启没打过 0：输  1：赢
     optional Reset reset = 4;
 	optional int32 chest_state = 5;  //关卡宝箱 0 未开启 1 已开启
+    optional int32 star_num = 6;  //本关卡星星数量 0-3
     
 }
 
@@ -56,10 +57,9 @@ message Reset{
 message StageAward{
 	required int32 chapter_id = 1; //章节编号
 	repeated int32 award = 2;  //奖励数组 -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-	optional int32 dragon_gift = 3; //龙纹奖励 -1:奖励没达成 0：奖励达成没有领取 1：已经领取(作废)
-	repeated int32 already_gift = 4;  //已经领取的奖励(作废)
-    repeated int32 now_random = 5;  //当前随机值
-	optional int32 star_gift = 6; //星星抽奖  1:未达成 2：已经放弃 3未处理 1：已领取
+    optional int32 now_random = 3;  //当前随机值
+	optional int32 star_gift = 4; //星星抽奖  -1:未达成 1：已领取 2:已经放弃 3未处理
+	optional int32 random_gift_times = 5; // 随机过的次数
 }
 
 message Unparalleled{
@@ -69,6 +69,13 @@ message Unparalleled{
 }
 
 // 战斗步骤，用于pve校验
+message StepInfo
+{
+	required int32 step_id = 1;     //步骤id
+    required int32 step_type = 2;   //步骤类型: 无双、小伙伴
+}
+
+// 1842
 message StepInfo
 {
 	required int32 step_id = 1;     //步骤id

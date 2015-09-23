@@ -53,7 +53,9 @@ from pseudo_random_config import PseudoRandomConfig
 from push_config import PushConfig
 from hjqy_config import HjqyConfig
 from currency_config import CurrencyConfig
+from lottery_config import LotteryConfig
 
+lottery_config = {}
 travel_item_group_config = {}
 stone_config = {}
 travel_item_config = {}
@@ -106,6 +108,7 @@ push_config = {}
 currency_config = {}
 
 all_config_name = {
+    'lottery_config': LotteryConfig(),
     'travel_item_group_config': TravelItemGroupConfig(),
     'base_config': BaseConfig(),
     'hero_config': HeroConfig(),

@@ -45,7 +45,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         """get_stage_config"""
         return stage_util.get_stage_config(game_configs.special_stage_config, "elite_stages", self._stage_id)
 
-    def settle(self, result, response):
+    def settle(self, result, response, star_num=0):
         """docstring for 结算"""
         player = self._player
         stage_id = self._stage_id
@@ -56,7 +56,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
                 player.stage_component.elite_stage_info[0] += conf.timesExpend
             else:
                 player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
-            stage_util.settle(player, result, response, conf)
+            stage_util.settle(player, result, response, conf, star_num=star_num)
             # hook task
             hook_task(player, CONDITIONId.STAGE, stage_id)
             hook_task(player, CONDITIONId.ANY_ELITE_STAGE, 1)

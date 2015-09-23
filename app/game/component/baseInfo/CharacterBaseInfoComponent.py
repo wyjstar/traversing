@@ -82,7 +82,7 @@ class CharacterBaseInfoComponent(Component):
         self._story_id = character_info.get('story_id', 0)
         self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
         self._first_recharge_activity = character_info.get('first_recharge_activity', False)
-        self._button_one_time = character_info.get('button_one_time', [])
+        self._button_one_time = character_info.get('button_one_time', [0,0,0])
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:

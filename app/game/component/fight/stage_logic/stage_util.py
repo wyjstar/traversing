@@ -25,7 +25,7 @@ def get_stage_config(stage_config, stage_type, stage_id):
     return stage_info
 
 
-def settle(player, result, response, conf, stage_type=0):
+def settle(player, result, response, conf, stage_type=0, star_num=0):
     """docstring for settle"""
     # 保存关卡信息
     player.stage_component.save_data()
@@ -33,7 +33,7 @@ def settle(player, result, response, conf, stage_type=0):
     # 保存活跃度
 
     # 增加玩家和武将经验，增加金币
-    if not result:
+    if not result and stage_type not in [4, 5]:
         return
 
     player.finance.coin += conf.currency
@@ -55,7 +55,7 @@ def settle(player, result, response, conf, stage_type=0):
     # 更新等级相关属性
 
     # 构造掉落
-    settlement_drops = player.fight_cache_component.fighting_settlement(result)
+    settlement_drops = player.fight_cache_component.fighting_settlement(result, star_num)
 
     is_open = 0
     if stage_type == 1:
