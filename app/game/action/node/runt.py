@@ -287,7 +287,6 @@ def build_runt_846(data, player):
 
     [runt_no, runt_id, main_attr, minor_attr] = player.runt.refresh_runt
     player.runt.m_runt[runt_no] = [runt_id, main_attr, minor_attr]
-    player.runt.deal_runt_pb(runt_no, runt_id, mainAttr, minorAttr, response.refresh_runt)
 
     while True:
         new_refresh_id = player.runt.build_refresh()
@@ -297,6 +296,7 @@ def build_runt_846(data, player):
     runt_no = get_uuid()
     mainAttr, minorAttr = player.runt.get_attr(new_refresh_id)
     player.runt.refresh_runt = [runt_no, new_refresh_id, mainAttr, minorAttr]
+    player.runt.deal_runt_pb(runt_no, new_refresh_id, mainAttr, minorAttr, response.refresh_runt)
 
     player.runt.save()
     player.finance.save_data()
