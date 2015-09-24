@@ -193,23 +193,13 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
     after_num = 0
     itid = 0
 
-    # 解决符文只能给一个的问题
-    # multiple
-    # part multiple
-    group_add = []
     for group_item in item_group:
         type_id = group_item.item_type
-        group_item.num *= multiple
-        if type_id in part_multiple[0]:
-            group_item.num = int(group_item.num * part_multiple[1])
-        num = group_item.num
-        if type_id == const.RUNT:
-            group_item.num = 1
-            group_add = [group_item] * (num - 1)
-    item_group.extend(group_add)
 
-    for group_item in item_group:
-        type_id = group_item.item_type
+        num = group_item.num * multiple
+        if type_id in part_multiple[0]:
+            num = int(num * part_multiple[1])
+
         num = group_item.num
         item_no = group_item.item_no
         front_type_id = type_id # 记录类型，用于武将已存在的情况。
@@ -345,7 +335,9 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
 
         elif type_id == const.RUNT:
             itid = item_no
-            item_no = player.runt.add_runt(item_no)
+            for _ in range(num):
+                item_no = player.runt.add_runt(item_no)
+                result.append([type_id, 1, item_no])
             player.runt.save()
             after_num = player.runt.get_runt_num(item_no)
 
@@ -355,12 +347,12 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
 
         is_over = False       # 是否累加
         for i in result:
-            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id !=const.HERO_CHIP):
+            if i[0] == type_id and i[2] == item_no and (front_type_id != const.HERO and type_id !=const.HERO_CHIP and type_id !=const.RUNT):
                 i[1] += num
                 is_over = True
                 continue
 
-        if not is_over:
+        if not is_over and type_id !=const.RUNT:
             result.append([type_id, num, item_no])
 
         # ====tlog======
