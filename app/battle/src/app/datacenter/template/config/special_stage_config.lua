@@ -4,7 +4,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400804102,  ["round3"] = 0,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "20:00-20:30",}
 ,  [600103] = {
-  ["resIcon"] = 6003,  ["round2"] = 6001032,  ["levelLimit"] = 50,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1003,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600103,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600103,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600103,  ["round1"] = 6001031,  ["weeklyControl"] = {
+  ["resIcon"] = 6003,  ["round2"] = 6001032,  ["levelLimit"] = 50,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1010,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600103,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600103,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600103,  ["round1"] = 6001031,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 0,  [4] = 1,  [5] = 0,  [6] = 1,  [7] = 0,}
 ,  ["name"] = 1400601003,  ["round3"] = 6001033,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "0:00-23:59",}
 ,  [802701] = {
@@ -620,7 +620,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400806502,  ["round3"] = 0,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "20:00-20:30",}
 ,  [600201] = {
-  ["resIcon"] = 6001,  ["round2"] = 6002012,  ["levelLimit"] = 0,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1001,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600201,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600201,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600201,  ["round1"] = 6002011,  ["weeklyControl"] = {
+  ["resIcon"] = 6001,  ["round2"] = 6002012,  ["levelLimit"] = 0,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1011,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600201,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600201,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600201,  ["round1"] = 6002011,  ["weeklyControl"] = {
   [1] = 1,  [2] = 0,  [3] = 1,  [4] = 0,  [5] = 1,  [6] = 0,  [7] = 1,}
 ,  ["name"] = 1400602001,  ["round3"] = 6002013,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "0:00-23:59",}
 ,  [806501] = {
@@ -628,7 +628,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400806501,  ["round3"] = 0,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "12:00-12:30",}
 ,  [600202] = {
-  ["resIcon"] = 6002,  ["round2"] = 6002022,  ["levelLimit"] = 30,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1001,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600202,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600202,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600202,  ["round1"] = 6002021,  ["weeklyControl"] = {
+  ["resIcon"] = 6002,  ["round2"] = 6002022,  ["levelLimit"] = 30,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1011,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600202,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600202,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600202,  ["round1"] = 6002021,  ["weeklyControl"] = {
   [1] = 1,  [2] = 0,  [3] = 1,  [4] = 0,  [5] = 1,  [6] = 0,  [7] = 1,}
 ,  ["name"] = 1400602002,  ["round3"] = 6002023,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "0:00-23:59",}
 ,  [806402] = {
@@ -636,7 +636,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400806402,  ["round3"] = 0,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "20:00-20:30",}
 ,  [600203] = {
-  ["resIcon"] = 6003,  ["round2"] = 6002032,  ["levelLimit"] = 50,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1001,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600203,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600203,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600203,  ["round1"] = 6002031,  ["weeklyControl"] = {
+  ["resIcon"] = 6003,  ["round2"] = 6002032,  ["levelLimit"] = 50,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1011,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600203,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600203,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600203,  ["round1"] = 6002031,  ["weeklyControl"] = {
   [1] = 1,  [2] = 0,  [3] = 1,  [4] = 0,  [5] = 1,  [6] = 0,  [7] = 1,}
 ,  ["name"] = 1400602003,  ["round3"] = 6002033,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "0:00-23:59",}
 ,  [802801] = {
@@ -716,7 +716,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400805901,  ["round3"] = 0,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "12:00-12:30",}
 ,  [600101] = {
-  ["resIcon"] = 6001,  ["round2"] = 6001012,  ["levelLimit"] = 0,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1003,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600101,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600101,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600101,  ["round1"] = 6001011,  ["weeklyControl"] = {
+  ["resIcon"] = 6001,  ["round2"] = 6001012,  ["levelLimit"] = 0,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1010,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600101,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600101,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600101,  ["round1"] = 6001011,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 0,  [4] = 1,  [5] = 0,  [6] = 1,  [7] = 0,}
 ,  ["name"] = 1400601001,  ["round3"] = 6001013,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "0:00-23:59",}
 ,  [802301] = {
@@ -732,7 +732,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400802302,  ["round3"] = 0,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "20:00-20:30",}
 ,  [600102] = {
-  ["resIcon"] = 6002,  ["round2"] = 6001022,  ["levelLimit"] = 30,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1003,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600102,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600102,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600102,  ["round1"] = 6001021,  ["weeklyControl"] = {
+  ["resIcon"] = 6002,  ["round2"] = 6001022,  ["levelLimit"] = 30,  ["high"] = 9,  ["condition"] = 0,  ["timesDir"] = 1,  ["viewDir"] = 0,  ["warriorsSkill"] = 0,  ["resHero"] = 0,  ["res"] = 1010,  ["restore"] = 100,  ["info"] = 0,  ["currency"] = 0,  ["type"] = 5,  ["commonDrop"] = 1600102,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 600102,  ["HeroExp"] = 0,  ["low"] = 5,  ["eliteDrop"] = 2600102,  ["round1"] = 6001021,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 0,  [4] = 1,  [5] = 0,  [6] = 1,  [7] = 0,}
 ,  ["name"] = 1400601002,  ["round3"] = 6001023,  ["playerExp"] = 0,  ["timesExpend"] = 1,  ["close_time"] = "2024-08-31 23:59",  ["timeControl"] = "0:00-23:59",}
 ,  [800701] = {

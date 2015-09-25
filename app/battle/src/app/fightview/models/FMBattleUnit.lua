@@ -138,7 +138,7 @@ function FMBattleUnit:str_data()
     local info = ""
     info=info.."武将no:"..roundNumber(self.no).."---"
     info=info.."hp:"..roundNumber(self:get_hp()).."---"
-    info=info.."mp:"..roundNumber(self.skill.mp).."---"
+    info=info.."mp:"..roundNumber(self.skill.mp or 0).."---"
     info=info.."攻击:"..roundNumber(self:get_atk()).."---"
     info=info.."物理防御:"..roundNumber(self:get_physical_def()).."---"
     info=info.."魔法防御:"..roundNumber(self:get_magic_def()).."---"

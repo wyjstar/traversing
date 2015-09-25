@@ -97,7 +97,6 @@ function CommonData:setData(data)
     else
         getNewGManager():setCurrentGID(data.newbee_guide_id)
     end
-    --getNewGManager():setCurrentGID(101)
     print("---------------------------------------------------")
     -- self.gold = data.gold                               --元宝
     -- self.coin = data.coin                               --金币
