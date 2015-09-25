@@ -169,7 +169,7 @@ class CharacterStageComponent(Component):
                             logger.debug("next stage win=============")
                             self._stage_progress = stage_id
             # 计算星星
-            if chapter_id:
+            if chapter_id and chapter_id != 1:
                 chapter_star_num = self.calculation_star(chapter_id)
                 self.star_num[chapter_id] = chapter_star_num
 
