@@ -16,29 +16,30 @@ class StageConfig(object):
         self._first_stage_id = None    # 第一关
         self._chapter_ids = set()      # 章节编号
         self._condition_mapping = {}   # 开启条件 {'开启条件关卡编号'：['开启关卡编号']}
-        self._activity_stages = {}     # 活动关卡
         self._travel_stages = []       #
         self._travel_fight_stages = {} # 战斗事件关卡
         self._mine_stages = {}         # 秘境矿
-        self._gift_weight = {}         # ｛章节：权重｝
-        self._gift_info = {}           # {章节：［type，id，num］}
+        # self._gift_weight = {}         # ｛章节：权重｝
+        # self._gift_info = {}           # {章节：［type，id，num］}
         self._hjqy_stages = {}         # {章节：［type，id，num］}
+        self._chapter_hide_stage = {}  # {章节：隐藏关卡ID}
 
     def parser(self, config_value):
         for row in config_value:
-            convert_keystr2num(row.get("dragonGift"))
+            row["dragonGift"] = parse(row.get("dragonGift"))
             row["stageBox"] = parse(row.get("stageBox"))
             item = CommonItem(row)
 
             if item.sort == 1:
-                if item.type == 4:  # 活动
-                    self._activity_stages[item.id] = item
-                    continue
+                if item.type == 4:  # 隐藏关卡
+                    self._chapter_hide_stage[item.id] = item
 
                 self._chapter_ids.add(item.chapter)
                 self._stages[item.id] = item
 
                 if item.chaptersTab:  # 是章节标签
+                    pass
+                    '''
                     for (id, info) in item.dragonGift.items():
                         if self._gift_weight.get(item.chapter):
                             self._gift_weight[item.chapter][id] = info[3]
@@ -49,6 +50,7 @@ class StageConfig(object):
                             self._gift_info[item.chapter][id] = info
                         else:
                             self._gift_info[item.chapter] = {id: info}
+                    '''
                 else:
                     self._condition_mapping.setdefault(item.condition, []). \
                         append(item.id)
@@ -75,10 +77,8 @@ class StageConfig(object):
                 'first_stage_id': self._first_stage_id,
                 'chapter_ids': list(self._chapter_ids),
                 'condition_mapping': self._condition_mapping,
-                'activity_stages': self._activity_stages,
+                'chapter_hide_stage': self._chapter_hide_stage,
                 'travel_stages': self._travel_stages,
                 'travel_fight_stages': self._travel_fight_stages,
                 'mine_stages': self._mine_stages,
-                'gift_weight': self._gift_weight,
-                'gift_info': self._gift_info,
                 'hjqy_stages': self._hjqy_stages}

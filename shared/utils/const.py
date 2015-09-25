@@ -199,7 +199,8 @@ const.PVB_REBORN = 65  # pvb复活
 const.StageChestGift = 66  # 关卡宝箱
 const.act_28 = 67  # 关卡宝箱
 
-const.START_TARGET = 67  # 开服7日活动
+const.START_TARGET = 68  # 开服7日活动
+const.STAGE_STAR_GIFT = 69  # 满星抽奖
 
 
 const.LOGIN_GIFT_CONTINUS = 8061

@@ -307,18 +307,16 @@ def modify_user_info(args):
         stage_id_a = stage_id
 
         while True:
-            if next_stages.get(stage_id):
-                for stage in [get_stage(stage_objs, stage_id_1) for stage_id_1 in next_stages.get(stage_id_a)]:
-                    stage.state = -2
-                for stage_id_1 in next_stages.get(stage_id_a):
-                    if game_configs.stage_config.get('stages').get(stage_id_1)['type'] == 1:
-                        stage_id_a = stage_id_1
-                        break
-                else:
+            if not next_stages.get(stage_id_a):
+                break
+            for stage in [get_stage(stage_objs, stage_id_1) for stage_id_1 in next_stages.get(stage_id_a)]:
+                stage.state = -2
+            for stage_id_1 in next_stages.get(stage_id_a):
+                if game_configs.stage_config.get('stages').get(stage_id_1)['type'] == 1:
+                    stage_id_a = stage_id_1
                     break
             else:
-                logger.error('modify_user_info,stage,stageid:', stage_id)
-                return {'success': 0, 'message': 4}
+                break
 
         while True:
             the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']

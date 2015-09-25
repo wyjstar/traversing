@@ -373,25 +373,24 @@ class CharacterFightCacheComponent(Component):
 
         return red_units, blue_units, drop_num, monster_unpara
 
-    def fighting_settlement(self, result):
+    def fighting_settlement(self, result, star_num):
         """战斗结算
         stage_type: 1剧情关卡 6精英关卡 4活动宝库关卡5活动校场关卡
         """
         stage_info = self._get_stage_config()
-        self.owner.stage_component.settlement(self._stage_id, result)
+        self.owner.stage_component.settlement(self._stage_id, result, star_num)
         self.owner.stage_component.save_data()
         drops = []
-        if not result:
-            return drops
-        # 关卡掉落
-        for _ in range(self._drop_num):
-            common_bag = BigBag(self._common_drop)
-            common_drop = common_bag.get_drop_items()
-            drops.extend(common_drop)
-
-        elite_bag = BigBag(self._elite_drop)
-        elite_drop = elite_bag.get_drop_items()
-        drops.extend(elite_drop)
+        if result:
+            # 关卡掉落
+            for _ in range(self._drop_num):
+                common_bag = BigBag(self._common_drop)
+                common_drop = common_bag.get_drop_items()
+                drops.extend(common_drop)
+            if self._elite_drop and stage_info.type != 1:
+                elite_bag = BigBag(self._elite_drop)
+                elite_drop = elite_bag.get_drop_items()
+                drops.extend(elite_drop)
 
         if stage_info.type == 4:
             # 宝库活动副本
@@ -425,6 +424,8 @@ class CharacterFightCacheComponent(Component):
             # 精英活动副本
             hero_soul_num = stage_info.reward
             drops.append(CommonGroupItem(const.RESOURCE, hero_soul_num, hero_soul_num, const.HERO_SOUL))
+
+        logger.debug("drops %s" % drops)
 
         return drops
 

@@ -56,32 +56,27 @@ class ActStageLogic(base_stage.BaseStageLogic):
         """get_stage_config"""
         return stage_util.get_stage_config(game_configs.special_stage_config, "act_stages", self._stage_id)
 
-    def settle(self, result, response):
+    def settle(self, result, response, star_num=0):
         """docstring for 结算"""
         player = self._player
         conf = self.get_stage_config()
         stage_id = self._stage_id
-        if result:
-            if self.stage_type == 4:
-                player.stage_component.act_stage_info[0] += conf.timesExpend
-            elif self.stage_type == 5:
-                player.stage_component.act_stage_info[1] += conf.timesExpend
-            stage_util.settle(player, result, response, conf)
-            hook_task(player, CONDITIONId.STAGE, stage_id)
-            hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
-            tlog_action.log('RoundFlow', player, stage_id, 3, 0, 1)
-        else:
-            tlog_action.log('RoundFlow', player, stage_id, 3, 0, 0)
+        if self.stage_type == 4:
+            player.stage_component.act_stage_info[0] += conf.timesExpend
+        elif self.stage_type == 5:
+            player.stage_component.act_stage_info[1] += conf.timesExpend
+        stage_util.settle(player, result, response, conf, stage_type=self.stage_type, star_num=star_num)
+        hook_task(player, CONDITIONId.STAGE, stage_id)
+        hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
+        tlog_action.log('RoundFlow', player, stage_id, 3, 0, 1)
+        #else:
+            #tlog_action.log('RoundFlow', player, stage_id, 3, 0, 0)
 
     def update_hero_self_attr(self, hero_no, hero_self_attr, player):
         """
         update hero self attr, plus some attr
         """
-        lucky_heros = {}
-        if self.stage_type == 4:
-            lucky_heros = player.stage_component._act_coin_lucky_heros
-        elif self.stage_type == 5:
-            lucky_heros = player.stage_component._act_exp_lucky_heros
+        lucky_heros = player.stage_component._act_lucky_heros.get(self._stage_id, {}).get('heros', {})
         lucky_add = 0
 
         print("hero_self_attr_origin", hero_self_attr)
