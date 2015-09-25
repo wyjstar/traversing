@@ -47,6 +47,7 @@ message StageSettlementResponse{
     required CommonResponse res = 1;
 	optional GameResourcesResponse drops = 2;
     optional int32 hjqy_stage_id = 3; //黄巾起义关卡id
+    optional int32 star_num = 4; //星星数
 }
 
 // 请求队形信息: 905

@@ -395,7 +395,9 @@ def fight_settlement(stage, result, player, star_num):
     stage.settle(result, response, star_num=star_num)
     #触发黄巾起义
     response.hjqy_stage_id = trigger_hjqy(player, result)
+    response.star_num = star_num
     logger.debug("drops %s" % response.drops)
+    logger.debug("star_num %s" % response.star_num)
     return response.SerializePartialToString()
 
 
