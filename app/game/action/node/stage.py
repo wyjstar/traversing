@@ -276,10 +276,14 @@ def fight_settlement_904(pro_data, player):
     player.fight_cache_component.damage_percent = res[1]
 
     star = 0  # star num
+    stage_info = player.fight_cache_component.stage_info
+    red_units = stage_info.get('red_units')
+
+    death_num = len(red_units) - res[2]
     for i in range(1, 4):
         star_condition = game_configs.base_config.get('star_condition')
         v = star_condition[i]
-        if res[2] <= v and res[2] != 0:
+        if death_num >= v and res[2] != 0:
             star = i
             break
 
