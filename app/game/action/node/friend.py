@@ -385,9 +385,6 @@ def get_recommend(player, up, down, recommend_num, response):
             break
 
         if isexist:
-            last_time = player_data.hget('upgrade_time')
-            if now - last_time > game_configs.base_config['friendApplyOfflineDay']*24*60*60:
-                continue
             friend_data = player_data.hmget(['id', 'nickname',
                                              'attackPoint', 'heads',
                                              'level', 'upgrade_time'])
