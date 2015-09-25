@@ -85,6 +85,7 @@ def get_act_info_1831(data, player):
     args.ParseFromString(data)
     act_type = args.act_type
     response = activity_pb2.GetActInfoResponse()
+    response.act_type = act_type
 
     act_confs = game_configs.activity_config.get(act_type, [])
     is_open = 0
