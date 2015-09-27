@@ -387,7 +387,7 @@ class CharacterFightCacheComponent(Component):
                 common_bag = BigBag(self._common_drop)
                 common_drop = common_bag.get_drop_items()
                 drops.extend(common_drop)
-            if stage_info.type == 1 or stage_info.type == 4:
+            if stage_info.type == 1 or stage_info.type == 14:
                 get_stage_drop(self._owner, stage_info, drops)
                 self.owner.stage_component.save_data()
             else:
