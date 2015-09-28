@@ -8,6 +8,7 @@ from gtwisted.core import protocols, reactor
 from gfirefly.server.logobj import logger
 from gfirefly.netconnect.manager import ConnectionManager
 from gfirefly.netconnect.datapack import DataPackProtoc
+from gevent.coros import BoundedSemaphore
 
 reactor = reactor
 
@@ -25,6 +26,7 @@ class LiberateProtocol(protocols.BaseProtocol):
                                                     address[0], address[1]))
         self.factory.connmanager.addConnection(self)
         self.factory.doConnectionMade(self)
+        self.sem = BoundedSemaphore(1)
 
     def connectionLost(self, reason):
         """连接断开处理
@@ -41,7 +43,9 @@ class LiberateProtocol(protocols.BaseProtocol):
         if data is None:
             return
         senddata = self.factory.produceResult(data, command)
+        self.sem.acquire()
         self.transport.sendall(senddata)
+        self.sem.release()
 
     def dataReceived(self, data):
         """数据到达处理

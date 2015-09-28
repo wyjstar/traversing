@@ -72,10 +72,7 @@ class MineOpt(object):
         """ label = 'user_level' """
         src = '%s.%s' % (label, s)
         dst = '%s.%s' % (label, t)
-        try:
-            tb_rank.smove(src, dst, uid)
-        except Exception, e:
-            print 'update_level, error', e
+        tb_rank.smove(src, dst, uid)
 
     @classmethod
     def asadd(cls, label, uid, grade):
@@ -88,12 +85,9 @@ class MineOpt(object):
         for level in range(front, back):
             mem = '%s.%s' % (label, level)
             # print 'rand_level', mem
-            try:
-                ret = tb_rank.smem(mem)
-                # print 'rand_level', ret
-                result.extend(ret)
-            except Exception, e:
-                print 'rank_level', e
+            ret = tb_rank.smem(mem)
+            # print 'rand_level', ret
+            result.extend(ret)
         return result
 
     @classmethod

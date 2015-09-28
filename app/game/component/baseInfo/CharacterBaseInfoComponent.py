@@ -193,30 +193,21 @@ class CharacterBaseInfoComponent(Component):
         return False
 
     def addexp(self, exp, reason):
-        self._exp += exp
-        before_level = self._level
-        max_level = game_configs.base_config.get('player_level_max')
-        if self._level == max_level:
-            return
+        # =====Tlog================
+        tlog_action.log('PlayerExpFlow', self.owner, self.level, exp, reason)
 
-        while self._exp >= game_configs.player_exp_config.get(self._level).get('exp'):
-            self._exp -= game_configs.player_exp_config.get(self._level).get('exp')
-            self._level += 1
-            logger.info('player id:%s level up ++ %s>>%s', self.id, before_level, self._level)
-            MineOpt.updata_level('user_level', self.owner.base_info.id,
-                                 self._level-1, self._level)
-            if self._level == max_level:
+        max_level = game_configs.base_config.get('player_level_max')
+        if self.level == max_level:
+            return
+        self._exp += exp
+
+        exp_config = game_configs.player_exp_config
+        while self._exp >= exp_config.get(self.level).get('exp'):
+            self._exp -= exp_config.get(self.level).get('exp')
+            self.level += 1
+            if self.level == max_level:
                 self._exp = 0
                 break
-        if self._level > before_level:
-            # 更新 七日奖励
-            target_update(self.owner, [43])
-
-        # hook task
-        hook_task(self.owner, CONDITIONId.LEVEL, self._level)
-        # =====Tlog================
-        tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
-        return
 
     def generate_google_id(self, channel):
         if self._google_consume_id == '':
@@ -264,7 +255,15 @@ class CharacterBaseInfoComponent(Component):
 
     @level.setter
     def level(self, value):
-        self._level = value
+        if self._level != value:
+            logger.info('player id:%s level up ++ %s>>%s',
+                        self.id, self._level, value)
+            MineOpt.updata_level('user_level', self.owner.base_info.id,
+                                 self._level, value)
+            # hook task
+            hook_task(self.owner, CONDITIONId.LEVEL, self._level)
+            target_update(self.owner, [43])
+            self._level = value
 
     @property
     def login_time(self):
