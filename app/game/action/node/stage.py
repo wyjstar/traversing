@@ -288,14 +288,12 @@ def fight_settlement_904(pro_data, player):
     red_units = stage_info.get('red_units')
 
     death_num = len(red_units) - res[2]
-    for i in range(1, 4):
+    for i in range(3, 0, -1):
         star_condition = game_configs.base_config.get('star_condition')
         v = star_condition[i]
         if death_num >= v and res[2] != 0:
             star = i
             break
-
-    # todo: 如果跳过或者打败,则不记录通关星级
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player, star)
