@@ -83,7 +83,7 @@ def get_target_info1(player, target_id, day):
     conditions = player.start_target.conditions
     if target_info and target_info[0] == 3:
         return {'state': 3}
-    elif target_info and target_info[0] == 2:
+    elif target_conf.type != 30 and target_info and target_info[0] == 2:
         return {'state': 2}
 
     if target_conf.type == 28:
