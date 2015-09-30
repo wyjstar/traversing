@@ -740,8 +740,8 @@ def deal_random_1829(pro_data, player):
     response = stage_response_pb2.DealRandomResponse()
 
     chapters_info = get_chapter_info(chapter_id, player)
-    if len(chapters_info) != 1 or chapter_id == 1 or (chapter_id == 2 and award_type == 2) or len(chapters_info[0].award_info) == 0:
-        logger.error("deal_random_1829,chapter_info dont find,or (chapter_id == 1 and award_type == 2 )")
+    if len(chapters_info) != 1 or chapter_id == 1 or len(chapters_info[0].award_info) == 0:
+        logger.error("deal_random_1829,chapter_info dont find, chapter_id == 1")
         response.res.result = False
         response.res.result_no = 800
         return response.SerializePartialToString()
