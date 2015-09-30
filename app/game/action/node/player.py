@@ -62,7 +62,6 @@ def nickname_create_5(request_proto, player):
         return response.SerializeToString()
 
     player.base_info.base_name = nickname
-    player.base_info.register_time = int(time.time())
     player.base_info.save_data()
 
     # 加入聊天
