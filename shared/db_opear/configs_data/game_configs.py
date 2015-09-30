@@ -54,7 +54,9 @@ from push_config import PushConfig
 from hjqy_config import HjqyConfig
 from currency_config import CurrencyConfig
 from lottery_config import LotteryConfig
+from activity_type_config import ActivityTypeConfig
 
+activity_type_config = {}
 lottery_config = {}
 travel_item_group_config = {}
 stone_config = {}
@@ -108,6 +110,7 @@ push_config = {}
 currency_config = {}
 
 all_config_name = {
+    'activity_type_config': ActivityTypeConfig(),
     'lottery_config': LotteryConfig(),
     'travel_item_group_config': TravelItemGroupConfig(),
     'base_config': BaseConfig(),

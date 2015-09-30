@@ -46,6 +46,7 @@ class CharacterPvpComponent(Component):
 
     def init_data(self, character_info):
         self._pvp_overcome = character_info['pvp_overcome']
+        print self._pvp_overcome, '============================12====1='
         self._pvp_overcome_current = character_info['pvp_overcome_current']
         self._pvp_overcome_refresh_time = character_info['pvp_overcome_refresh_time']
         self._pvp_overcome_refresh_count = character_info['pvp_overcome_refresh_count']
