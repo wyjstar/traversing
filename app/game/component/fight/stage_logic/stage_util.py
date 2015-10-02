@@ -39,6 +39,7 @@ def settle(player, result, response, conf, stage_type=0, star_num=0):
     player.finance.coin += conf.currency
     player.finance.save_data()
     player.base_info.addexp(conf.playerExp, const.STAGE)
+    player.set_level_related()
     player.base_info.save_data()
     for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
         hero = lineUpSlotComponent.hero_slot.hero_obj
