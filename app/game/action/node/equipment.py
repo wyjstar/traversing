@@ -164,10 +164,20 @@ def melting_equipment_405(pro_data, player):
 
     equipment_ids = request.id
 
+    total_strength_coin = 0
     for equipment_id in equipment_ids:
-        melting_equipment(equipment_id, response, player)
+        total_strength_coin += melting_equipment(equipment_id, response, player)
 
+    player.finance.coin += total_strength_coin
+    player.finance.save_data()
+
+    response.cgr.finance.coin += total_strength_coin
+    change = response.cgr.finance.finance_changes.add()
+    change.item_type = 107
+    change.item_num = total_strength_coin
+    change.item_no = 1
     response.res.result = True
+    logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
 
@@ -355,13 +365,9 @@ def melting_equipment(equipment_id, response, player):
         strength_coin += record[2]
 
     strength_coin = int(strength_coin*game_configs.base_config.get("equRefundRatio"))
-    player.finance.coin += strength_coin
-    player.finance.save_data()
-    response.cgr.finance.coin += strength_coin
-    change = response.cgr.finance.finance_changes.add()
-    change.item_type = 107
-    change.item_num = strength_coin
-    change.item_no = 1
+    return strength_coin
+
+
 
 
 def awakening_equipment(equipment_id, player):
