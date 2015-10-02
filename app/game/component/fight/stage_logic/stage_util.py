@@ -66,11 +66,13 @@ def settle(player, result, response, conf, stage_type=0, star_num=0):
                 is_open = 1
                 part_multiple = [act_conf.parameterC, act_conf.parameterA]
                 break
+    logger.debug("stage_util.drops %s" % settlement_drops)
     if is_open:
         data = gain(player, settlement_drops, const.STAGE, part_multiple=part_multiple)
     else:
         data = gain(player, settlement_drops, const.STAGE)
     get_return(player, data, response.drops)
+    logger.debug("stage_util.drops %s" % response.drops)
 
     # 乱入武将按概率获取碎片
     break_stage_id = player.fight_cache_component.break_stage_id

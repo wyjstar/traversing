@@ -401,7 +401,7 @@ class CharacterFightCacheComponent(Component):
             formula = game_configs.formula_config.get("Activitycurrency").get("formula")
             assert formula!=None, "Activitycurrency formula can not be None!"
             coin_num = eval(formula, {"damage_percent": self.damage_percent,"currency": stage_info.currency})
-            drops.append(CommonGroupItem(const.RESOURCE, coin_num, coin_num, const.COIN))
+            drops.append(CommonGroupItem(const.COIN, coin_num, coin_num, const.RESOURCE))
 
         elif stage_info.type == 5:
             # 校场活动副本
@@ -413,17 +413,17 @@ class CharacterFightCacheComponent(Component):
                 formula = game_configs.formula_config.get("ActivityExpDropConvert_1").get("formula")
                 assert formula!=None, "ActivityExpDrop formula can not be None!"
                 exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
-                drops.append(CommonGroupItem(const.ITEM, exp_item_num, exp_item_num, 10001))
+                drops.append(CommonGroupItem(10001, exp_item_num, exp_item_num, const.ITEM))
             elif stage_info.id % 10 ==2:
                 formula = game_configs.formula_config.get("ActivityExpDropConvert_2").get("formula")
                 assert formula!=None, "ActivityExpDrop formula can not be None!"
                 exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
-                drops.append(CommonGroupItem(const.ITEM, exp_item_num, exp_item_num, 10002))
+                drops.append(CommonGroupItem(10002, exp_item_num, exp_item_num, const.ITEM))
             elif stage_info.id % 10 ==3:
                 formula = game_configs.formula_config.get("ActivityExpDropConvert_3").get("formula")
                 assert formula!=None, "ActivityExpDrop formula can not be None!"
                 exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
-                drops.append(CommonGroupItem(const.ITEM, exp_item_num, exp_item_num, 10003))
+                drops.append(CommonGroupItem(10003, exp_item_num, exp_item_num, const.ITEM))
         elif stage_info.type == 6:
             # 精英活动副本
             hero_soul_num = stage_info.reward

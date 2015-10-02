@@ -298,6 +298,8 @@ def fight_settlement_904(pro_data, player):
             star = i
             break
 
+    if request.is_skip:
+        star = 3
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
     res = fight_settlement(stage, result, player, star)
     logger.debug("steps:%s", request.steps)
