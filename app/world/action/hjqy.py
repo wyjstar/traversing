@@ -154,4 +154,6 @@ def get_hjqy_rank_remote():
 @rootserviceHandle
 def get_boss_info_remote(boss_id):
     boss = hjqy_manager.get_boss(boss_id)
-    return construct_boss_data(boss)
+    if boss:
+        return construct_boss_data(boss)
+

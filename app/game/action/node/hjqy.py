@@ -127,7 +127,8 @@ def battle_2103(pro_data, player):
         return response.SerializePartialToString()
 
     data = remote_gate['world'].get_boss_info_remote(boss_id)
-    if data.get('state') == const.BOSS_DEAD:
+
+    if not data or data.get('state') == const.BOSS_DEAD:
         logger.error("hjqy boss dead！")
         response.res.result = False
         response.res.result_no = 210302
