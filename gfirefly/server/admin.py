@@ -8,6 +8,9 @@ from gfirefly.server.globalobject import GlobalObject, masterserviceHandle
 from gtwisted.core import reactor
 from gfirefly.server.logobj import logger
 
+from shared.utils.lua_runtime import lua
+reload_lua_func = lua.eval('''function() reload_lua_config(); end''')
+
 reactor = reactor
 
 
@@ -31,8 +34,9 @@ def sreload():
     logger.debug("1==base_config.resource_for_InitUser %s" % game_configs.base_config.get("resource_for_InitUser"))
     if GlobalObject().reloadmodule:
         reload(GlobalObject().reloadmodule)
+        reload_lua_func()
     logger.debug("2==base_config.resource_for_InitUser %s" % game_configs.base_config.get("resource_for_InitUser"))
-    from shared.db_opear.configs_data.game_configs import base_config
+
 
     return True
 

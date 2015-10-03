@@ -115,3 +115,29 @@ function pve_start(steps)
     return fcProcess:pve_start(steps)
 end
 
+function reload_lua_config()
+    -- body
+    local baseTemplate = getTemplateManager():getBaseTemplate()
+    print("reload lua config============")
+    print("demoHero",baseTemplate:getBaseInfoById("demoHero"))
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.monster_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.monster_config')
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.base_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.base_config')
+
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.hero_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.hero_config')
+
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.monster_group_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.monster_group_config')
+
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.formula_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.formula_config')
+
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.skill_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.skill_config')
+
+    package.loaded[ '.app.battle.src.app.datacenter.template.config.skill_buff_config'] = nil
+    require( '.app.battle.src.app.datacenter.template.config.skill_buff_config')
+    print("demoHero",baseTemplate:getBaseInfoById("demoHero"))
+end

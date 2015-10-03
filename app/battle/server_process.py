@@ -1,11 +1,10 @@
 # coding:utf8
 
-from lupa import LuaRuntime
+#from lupa import LuaRuntime
 from shared.utils.const import const
 from app.battle.battle_unit import BattleUnit
 from random import randint
-lua = LuaRuntime()
-lua.require("app/battle/src/test_main")
+from shared.utils.lua_runtime import lua
 
 #TYPE_GUIDE = 0              --演示关卡
 #TYPE_STAGE_NORMAL = 1       -- 普通关卡（剧情）， stage_config
@@ -280,3 +279,4 @@ def get_seeds():
     seed1 = randint(1, 100)
     seed2 = randint(1, 100)
     return seed1, seed2
+
