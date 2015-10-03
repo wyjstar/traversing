@@ -16,13 +16,16 @@ class CharacterStartTargetComponent(Component):
 
     def init_data(self, character_info):
         self._target_info = character_info.get('target_info')
+        self._conditions = character_info.get('target_conditions')
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data_obj.hmset({'target_info': self._target_info})
+        data_obj.hmset({'target_info': self._target_info,
+                        'target_conditions': self._conditions})
 
     def new_data(self):
-        return {'target_info': self._target_info}
+        return {'target_info': self._target_info,
+                'target_conditions': self._conditions}
 
     @property
     def target_info(self):
@@ -36,7 +39,7 @@ class CharacterStartTargetComponent(Component):
     def conditions(self):
         return self._conditions
 
-    @target_info.setter
+    @conditions.setter
     def conditions(self, v):
         self._conditions = v
 
@@ -79,3 +82,13 @@ class CharacterStartTargetComponent(Component):
         if day and day <= 7:
             is_open = 1
         return is_underway, day
+
+    def update_29(self):
+        start_target_is_open, start_target_day = self.is_open()
+        if start_target_is_open:
+            if self._conditions.get(29):
+                self._conditions[29][start_target_day-1] = 1
+            else:
+                start_target_jindu = [0, 0, 0, 0, 0, 0, 0]
+                start_target_jindu[start_target_day-1] = 1
+                self._conditions[29] = start_target_jindu

@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='start_target.proto',
   package='',
-  serialized_pb='\n\x12start_target.proto\x1a\x0c\x63ommon.proto\"(\n\x19GetStartTargetInfoRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"t\n\x1aGetStartTargetInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03\x64\x61y\x18\x02 \x02(\x05\x12+\n\x11start_target_info\x18\x03 \x03(\x0b\x32\x10.StartTargetInfo\"B\n\x0fStartTargetInfo\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\x12\r\n\x05jindu\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"0\n\x1bGetStartTargetRewardRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"b\n\x1cGetStartTargetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x12start_target.proto\x1a\x0c\x63ommon.proto\"(\n\x19GetStartTargetInfoRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x02(\x05\"t\n\x1aGetStartTargetInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03\x64\x61y\x18\x02 \x01(\x05\x12+\n\x11start_target_info\x18\x03 \x03(\x0b\x32\x10.StartTargetInfo\"B\n\x0fStartTargetInfo\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\x12\r\n\x05jindu\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"0\n\x1bGetStartTargetRewardRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"b\n\x1cGetStartTargetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -63,7 +63,7 @@ _GETSTARTTARGETINFORESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='day', full_name='GetStartTargetInfoResponse.day', index=1,
-      number=2, type=5, cpp_type=1, label=2,
+      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
