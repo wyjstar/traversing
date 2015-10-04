@@ -108,6 +108,7 @@ def battle_2103(pro_data, player):
     boss_id = request.owner_id
     line_up = request.lineup
     attack_type = request.attack_type # 全力一击，普通攻击
+    logger.debug("request %s" % request)
 
     hjqyExchangeBUFFTime = game_configs.base_config.get("hjqyExchangeBUFFTime")
     hjqyItemRate = game_configs.base_config.get("hjqyItemRate")
