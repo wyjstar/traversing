@@ -672,6 +672,7 @@ def battle_1253(data, player):
             response.res.result = False
             return response.SerializePartialToString()
         try:
+            player.fight_cache_component.stage_id = 0
             red_units = player.fight_cache_component.get_red_units()
             info = get_save_guard(player, pos)
             # print info

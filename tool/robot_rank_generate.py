@@ -58,7 +58,28 @@ if __name__ == '__main__':
     model_config = mconfig.get('models', {})
     GlobalObject().json_model_config = model_config
     GlobalObject().json_model_default_config = model_default_config
-    GlobalObject().allconfig = {'tlog': 0}
+    GlobalObject().allconfig = {'tlog': 0,
+    "msdk":{
+        "zone_id": 1,
+        "host": "msdktest.qq.com",
+
+        "qq_appid": 1104297231,
+        "qq_appkey": "y33yRx3FveVZb1dw",
+        "wx_appid": "wxf77437c08cb06196",
+        "wx_appkey": "8274b9e862581f8b4976ba90ad2d4b77",
+
+        "discountid": "UM150313205618735",
+        "giftid": "2731288429PID201503132056187441",
+
+        "pay_host": "10.142.22.11:8080",
+        "goods_host": "10.142.22.11:8080",
+        "valid_host": "10.130.2.233:80",
+
+        "cdkey_url": "http://192.168.1.60:2600/cdkey",
+
+        "appid": 150651
+    },
+            }
 
     # hostname = "127.0.0.1"
     hostname = "localhost"

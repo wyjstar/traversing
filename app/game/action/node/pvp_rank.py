@@ -184,6 +184,7 @@ def pvp_fight(player, character_id, line_up, skill, response, callback,
     else:
         blue_units = record.get('copy_units')
     save_line_up_order(line_up, player, skill)
+
     red_units = player.fight_cache_component.get_red_units()
 
     seed1, seed2 = get_seeds()

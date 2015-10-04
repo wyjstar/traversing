@@ -138,12 +138,12 @@ def battle_2103(pro_data, player):
     _skill_id, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     save_line_up_order(line_up, player, red_best_skill_id)
 
+    stage_id = data.get("stage_id")
+    player.fight_cache_component.stage_id = stage_id
     red_units = player.fight_cache_component.get_red_units()
 
     blue_units = cPickle.loads(remote_gate['world'].blue_units_remote(boss_id))
-    stage_id = data.get("stage_id")
 
-    player.fight_cache_component.stage_id = stage_id
     seed1, seed2 = get_seeds()
     player_info = dict(player_id=player.base_info.id,
             nickname=player.base_info.base_name,

@@ -15,7 +15,7 @@ from shared.utils.const import const
 
 def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type):
     """docstring for pvp_process"""
-    save_line_up_order(line_up, player, current_unpar)
+    #save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
     player.fight_cache_component.awake_hero_units(red_units)
     if not blue_units:
@@ -64,7 +64,7 @@ def pve_process_check(player, fight_result, steps, fight_type):
         #raise e
         #return False
 
-def save_line_up_order(line_up, player, current_unpar):
+def save_line_up_order(line_up, player, current_unpar, stage_id=0):
     """docstring for save_line_up_order"""
     line_up_info = []  # {hero_id:pos}
     for line in line_up:
@@ -73,7 +73,7 @@ def save_line_up_order(line_up, player, current_unpar):
         logger.error("line up order error %s !" % len(line_up_info))
         return
     logger.debug("line_up %s, current_unpar%s"% (line_up, current_unpar))
-
+    player.fight_cache_component.stage_id = stage_id
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component.current_unpar = current_unpar
     player.line_up_component.save_data()
@@ -99,7 +99,7 @@ def pve_process(stage_id, stage_type, line_up, fid, player, current_unpar):
     best_skill_id: unpar
     fid: friend id.
     """
-    save_line_up_order(line_up, player, current_unpar)
+    save_line_up_order(line_up, player, current_unpar, stage_id)
 
     stage = get_stage_by_stage_type(stage_type, stage_id, player)
 
