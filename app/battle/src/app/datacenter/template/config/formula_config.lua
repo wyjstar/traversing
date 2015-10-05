@@ -295,4 +295,14 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 147,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
 ,  [148] = {
   ["precondition"] = "1",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "1",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
+,  [150] = {
+  ["precondition"] = "1",  ["formula"] = "damage_percent*currency",  ["clientPrecondition"] = "1",  ["id"] = 150,  ["clientFormula"] = "result=damage_percent*currency",  ["key"] = "Activitycurrency",}
+,  [151] = {
+  ["precondition"] = "1",  ["formula"] = "damage_percent*ExpDrop",  ["clientPrecondition"] = "1",  ["id"] = 151,  ["clientFormula"] = "result=damage_percent*ExpDrop",  ["key"] = "ActivityExpDrop",}
+,  [152] = {
+  ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/100",  ["clientPrecondition"] = "1",  ["id"] = 152,  ["clientFormula"] = "result=ActivityExpDrop/100",  ["key"] = "ActivityExpDropConvert_1",}
+,  [153] = {
+  ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/500",  ["clientPrecondition"] = "1",  ["id"] = 153,  ["clientFormula"] = "result=ActivityExpDrop/500",  ["key"] = "ActivityExpDropConvert_2",}
+,  [154] = {
+  ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 154,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
 ,}

@@ -84,6 +84,9 @@ const.EVENT_HIT_ITEM_START          = "HIT_ITEM_START"
 
 const.EVENT_PLAY_BE_HIT_ACT         = "PLAY_HIT_ACT"  --播放被攻击动作
 
+const.EVENT_PLAY_HIT_BUFF_ACT       = "PLAY_HIT_BUFF_ACT" --播放被攻击Buff动画
+const.EVENT_PLAY_BUFF_ACT           = "PLAY_BUFF_ACT" --播放Buff动画
+
 const.EVENT_HIT_ARMY_IMPACT         = "HIT_ARMY_IMPACT"
 
 const.EVENT_PLAY_HIT_IMPACT         = "PLAY_HIT_IMPACT"
@@ -209,6 +212,7 @@ const.EVENT_END_BEFORE_BUFFS        = "END_BEFORE_BUFFS" -- 结束回合前Buffs
 const.EVENT_FIGHT_END_CLEAR_HERO    = "FIGHT_END_CLEAR_HERO" --战斗结束后清除英雄
 const.EVENT_FIGHT_SET_SKIP_ENABLED  = "FIGHT_SET_SKIP_ENABLED" --设置战斗跳过可点击
 const.EVENT_GUILD_FIGHT_AWAKE       = "GUILD_FIGHT_AWAKE" --演示战斗中的剧情完之后武将觉醒
+const.EVENT_BLOOD_FLASH             = "BLOOD_FLASH"         --红色
 
 const.FONT_NAME                     = MINI_BLACK_FONT_NAME
 
@@ -267,6 +271,7 @@ TYPE_WORLD_BOSS     = 7          -- 世界boss
 TYPE_MINE_MONSTER   = 8          -- 攻占也怪
 TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
+TYPE_TEST           = 999        -- 测试战斗
 
 TYPE_PVP_NORMAL     = 0          --正常的PVP,擂台
 TYPE_PVP_CLEARANCE  = 1          --过关斩将
@@ -275,6 +280,12 @@ TYPE_PVP_REVANGE    = 2          --坏蛋反击
 TYPE_STAGE_JIA = 3               -- 难度甲
 TYPE_STAGE_YI = 2                -- 难度乙
 TYPE_STAGE_BING = 1              -- 难度丙
+
+HUODONG_FIGHT_TYPE_JK = "jk_activity"   --金库试炼战斗
+HUODONG_FIGHT_TYPE_JC = "jc_activity"   --校场试炼战斗
+
+JK_HD_STAGE_TYPE = 7     --金库活动stage type,发送战斗请求时用
+JC_HD_STAGE_TYPE = 8     --校场活动stage type,发送战斗请求时用
 
 TYPE_TEST               = 10000
 TYPE_MODE_PVP = 0
@@ -336,7 +347,6 @@ UPDATE_MINE_NOTICE = "UPDATE_MINE_NOTICE"
 UPDATE_BOSS_NOTICE = "UPDATE_BOSS_NOTICE"
 UPDATE_PVP_NOTICE = "UPDATE_PVP_NOTICE"
 UPDATE_AREANOTICE = "UPDATE_AREANOTICE"
-UPDATE_LEGION_NOTICE = "UPDATE_LEGION_NOTICE"
 
 
 
@@ -376,7 +386,9 @@ RES_TYPE_EQUIP      = 102   --装备
 RES_TYPE_HERO_CHIP  = 103   --英雄碎片
 RES_TYPE_EQUIP_CHIP = 104   --装备碎片
 RES_TYPE_ITEM_CHIP  = 105   --道具碎片
+RES_TYPE_COMMON     = 107   --通用资源
 RES_TYPE_RUNT       = 108   --符文碎片
+RES_TYPE_TRAVEL     = 109   --风物志
 
 -- 阶段
 SKILL_STAGE_OPEN = 1  -- 开场buff
@@ -393,7 +405,6 @@ STEP_BEGIN_ACTION = 2 -- 起手动作
 STEP_DO_BUFF = 3 -- 攻击
 STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
-g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --次日登陆奖励
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
 g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"      --游历界面,重新读取鞋子信息
 g_notice.NOTICE_PVP_CLEARANCE_UPDATA = "NOTICE_PVP_CLEARANCE_UPDATA"        --过关斩将界面,重新刷新当前的关卡信息
@@ -418,21 +429,9 @@ G_BOTTOM_DEFINE.GET_COINS_JUMP = {
     end,
 }
 
-UPDATE_HEAD = "UPDATE_HEAD"  -- 更新头像
-UPDATE_TL = "UPDATE_TL"      -- 更新体力
-
 guid_titlle = {war = "GUID_OPEN_WAR"}
 
 TYPE_SHOP = {
-    SHOP_ITEM   = 3,   --商城-道具
-    SHOP_GIFT   = 4,   --商城-礼包
-    SECRETPLACE = 7,   --秘境商店
-    SOUL        = 9,   --武魂商店(武将炼化)
-    PVP         = 10,  --军功商店(擂台)
-    SMELT       = 11,  --精华商店(装备炼化)
-    SHOP_EQUIP  = 12,  --商城-装备
-    MERIT       = 18,  --功勋商店(黄巾起义)
-    TREASURE    = 19   --珍宝（过关斩将）
 --[[
 1   商城良将寻访
 2   商城良兵宝箱
@@ -446,6 +445,15 @@ TYPE_SHOP = {
 11  熔炼商店
 12  抽装备商店
 ]]
+    SHOP_ITEM   = 3,   --商城-道具
+    SHOP_GIFT   = 4,   --商城-礼包
+    SECRETPLACE = 7,   --秘境商店
+    SOUL        = 9,   --武魂商店(武将炼化)
+    PVP         = 10,  --军功商店(擂台)
+    SMELT       = 11,  --精华商店(装备炼化)
+    SHOP_EQUIP  = 12,  --商城-装备
+    MERIT       = 18,  --功勋商店(黄巾起义)
+    TREASURE    = 19   --珍宝（过关斩将）
 }
 
 RES_TYPE = {
@@ -459,8 +467,18 @@ RES_TYPE = {
     EQUIP_SOUL   = 21,  --装备精华
     HERO_SOUL    = 3,   --武魂值
     CLEARANCE_COIN = 27, --通关令
-    SHOES = 20, --鞋子
+    SHOES        = 20, --鞋子
+    PLAYER_EXP   = 12, --战队经验
+    GOD_HERO_SOUL= 29, --将魂
 }
+
+TRAVEL_EVENT_TYPE = {
+    WAIT        = 1, -- 有等待时间的事件 参数：等待时间（分钟）
+    FIGHT       = 2, -- 战斗的事件 参数：关卡ID
+    QUESTION    = 3, -- 答题事件 参数：languageID（答案选项）]
+    GET         = 4, -- 直接领取奖励事件
+}
+
 -- 次日开启类型
 const.nextDay_openType = {WORLDBOSS=23,ACTIVITY=2,HJQY=27,GGZJ = 28}      --同成就表配置的达成条件值相匹配
 --[[--
@@ -512,6 +530,10 @@ EventName = {
     UPDATE_REFRESH_24 = "UPDATE_REFRESH_24",   --24点更新
     UPDATE_EQUIP_STRENGTH_LV = "UPDATE_EQUIP_STRENGTH_LV",--装备强化等级清算
     UPDATE_LINEUP_EQUIP_STRENGTH_LV = "UPDATE_LINEUP_EQUIP_STRENGTH_LV", --阵容中装备强化等级
+    UPDATE_LINEUP_WS_UPGRADE = "UPDATE_LINEUP_WS_UPGRADE",--无双升级
+    TRAVEL_EVENT_CHANGE = "TRAVEL_EVENT_CHANGE", -- 游历,加入等待事件到列表中
+    UPDATE_LINEUP = "UPDATE_LINEUP",--更新了阵容信息
+    UPDATE_SEVENDAY = "UPDATE_SEVENDAY",  --更新七日红点提示
 }
 
 NoticeColor = {
@@ -533,3 +555,34 @@ G_PLATFORM.QQ = 2           -- QQ平台
 G_PLATFORM.QHALL = 3        -- 游戏大厅平台
 
 const.C_WS_MAX_LEVEL = 3
+
+--定义网络错误代码
+const.NET_ERR_CODE = {
+    RuneBagFull = 12451, --符文收获时背包满
+}
+
+--[[--
+排名模块
+]]
+RANK = {
+    NUM_SPECIA = 3, -- 特殊显示的排名数量(前3名)
+    NUM_PAGE   = 7, -- 每页显示的排名数量
+}
+
+--[[--
+签到模块
+]]
+SIGN = {
+    STATE_SIGNED        = 1, -- 已签到状态
+    STATE_REPAIR_SIGN   = 2, -- 可补签状态
+    STATE_SIGN          = 3, -- 可签到状态
+    STATE_NO            = 4, -- 未签不可签状态
+}
+
+--[[--
+征战界面提示图标
+]]
+HOME_TIP_TYPE = {
+    HJQY_BUFF        = 1, -- 征讨令减半
+    HJQY_MERITORIOUS = 2, -- 收益翻倍
+}

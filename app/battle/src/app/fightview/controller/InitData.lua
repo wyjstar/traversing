@@ -38,7 +38,7 @@ function initData(_process)
     process = _process
     local data = fightData:getData() or {}
     set_seed(data.seed1, data.seed2)
-    -- process.fight_type = TYPE_GUIDE
+    process.fight_type = TYPE_TEST
     process.fight_type =  process.fight_type or TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
     if process.fight_type==TYPE_GUIDE then
@@ -57,6 +57,8 @@ function initData(_process)
         return initMineData(data)
     elseif process.fight_type == TYPE_HJQY_STAGE then
         return initHjqyData(data)
+    elseif process.fight_type == TYPE_TEST then
+        return initTESTData()
     end
 
 end
@@ -84,21 +86,25 @@ function initTESTData()
     
     demoHero = 
     {
-        ["1"] = {[1] = 30063,  [2] = 60,},
-        -- ["2"] = {[1] = 10048,  [2] = 60,},
-        ["3"] = {[1] = 10043,  [2] = 60,},
-        -- ["4"] = {[1] = 10044,  [2] = 60,},
-        -- ["5"] = {[1] = 10045,  [2] = 60,},
-        -- ["6"] = {[1] = 10046,  [2] = 60,},
+        ["1"] = {[1] = 10061,  [2] = 60,},
+        -- ["2"] = {[1] = 10045,  [2] = 60,},
+        -- ["3"] = {[1] = 10044,  [2] = 60,},
+        -- ["4"] = {[1] = 10001,  [2] = 60,},
+        -- ["5"] = {[1] = 10001,  [2] = 60,},
+        -- ["6"] = {[1] = 10001,  [2] = 60,},        
+        -- ["1"] = {[1] = 10056,  [2] = 60,},--赵云
+        -- ["2"] = {[1] = 10047,  [2] = 60,},--张角
+        -- ["3"] = {[1] = 10061,  [2] = 60,},--貂蝉
+        -- ["4"] = {[1] = 20061,  [2] = 60,},--圣貂蝉
+        -- ["5"] = {[1] = 10048,  [2] = 60,},--吕布
+        -- ["6"] = {[1] = 10050,  [2] = 60,},--董卓
     }
     demoEnemy = 
     {
-        ["6"] = {[1] = 10061,  [2] = 60,},
-        -- ["2"] = {[1] = 30057,  [2] = 60,},
-        -- ["3"] = {[1] = 30059,  [2] = 60,},
-        -- ["4"] = {[1] = 10055,  [2] = 60,},
-        -- ["5"] = {[1] = 10050,  [2] = 60,},
-        -- ["3"] = {[1] = 10002,  [2] = 60,},
+        -- ["2"] = {[1] = 10065,  [2] = 60,},
+        ["2"] = {[1] = 10001,  [2] = 60,},
+        -- ["5"] = {[1] = 10001,  [2] = 60,},
+        -- ["6"] = {[1] = 10001,  [2] = 60,},
     }
     --for pos, v in pairs(demoHero) do
     local chief = false
@@ -109,16 +115,17 @@ function initTESTData()
             local unit_no = v[1]
             local unit_level = v[2]
             local data = soldierTemplate:getHeroTempLateById(unit_no)
-            local isawake = true
+            local isawake = false
+            -- local break_level = 8 - i
             local break_level = 0
             print("=====================initGuideData1")
             local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
             
-            if not chief then
-                --unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, false, false)
-                unit.chief = true
-                chief = true
-            end
+            -- if not chief then
+            --     --unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, false, false)
+            --     unit.chief = true
+            --     chief = true
+            -- end
             unit.hp_max = 100000000
             unit.hp = 100000000
             redUnits[pos] = unit
@@ -148,9 +155,9 @@ function initTESTData()
             --controller.addChild(UnitView.new(unit))
         end
     end
-    local redUnParaSkill = constructUnparaSkill(10011, 1, const.HOME_ARMY, "red", 7)
+    local redUnParaSkill = constructUnparaSkill(10001, 1, const.HOME_ARMY, "red", 7)
     local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
-    local buddySkill = constructBuddySkill(mockBattleUnit(10001, 12, "red"))
+    -- local buddySkill = constructBuddySkill(mockBattleUnit(0, 12, "red"))
     --print(buddySkill.unit.no, "buddySkill=================")
     --local redUnParaSkill = nil 
     --local blueUnParaSkill = nil 

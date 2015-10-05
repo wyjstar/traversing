@@ -111,21 +111,23 @@ function FMHeroSkill:set_break_skill_ids(value)
     -- table.print(value)
     self._break_skill_buffs["back"] = {}
     for _,id in pairs(value) do
-        local skill_info = self.soldierTemplate:getSkillTempLateById(id)
-        if skill_info then
-            for i,buff_id in pairs(skill_info.group) do
-                local skill_buff_info = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
-                trigger_type = skill_buff_info.triggerType
-                if not table.ink(self._break_skill_buffs, trigger_type) then
-                    self._break_skill_buffs[trigger_type] = {}
-                end
-                if table.inv({4, 5}, trigger_type) then
-                    local info = {}
-                    info.trigger_type = trigger_type
-                    info.skill_buff_info = skill_buff_info
-                    table.insert(self._break_skill_buffs["back"], info)
-                else
-                    table.insert(self._break_skill_buffs[trigger_type], skill_buff_info)
+        if id and id > 0 then
+            local skill_info = self.soldierTemplate:getSkillTempLateById(id)
+            if skill_info then
+                for i,buff_id in pairs(skill_info.group) do
+                    local skill_buff_info = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
+                    trigger_type = skill_buff_info.triggerType
+                    if not table.ink(self._break_skill_buffs, trigger_type) then
+                        self._break_skill_buffs[trigger_type] = {}
+                    end
+                    if table.inv({4, 5}, trigger_type) then
+                        local info = {}
+                        info.trigger_type = trigger_type
+                        info.skill_buff_info = skill_buff_info
+                        table.insert(self._break_skill_buffs["back"], info)
+                    else
+                        table.insert(self._break_skill_buffs[trigger_type], skill_buff_info)
+                    end
                 end
             end
         end
