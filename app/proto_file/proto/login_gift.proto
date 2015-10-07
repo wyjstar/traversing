@@ -11,6 +11,8 @@ message InitLoginGiftResponse{
 	repeated LoginInfo continuous_day = 2;  //连续登录
 	optional int32 cumulative_day_num = 3;  //连续登录天数
 	optional int32 continuous_day_num = 4;  //连续登录天数
+	repeated LoginInfo continuous_7day = 5;  //七天乐
+	optional int32 continuous_7day_num = 6;  //七天乐
 }
 
 // get login gift 826

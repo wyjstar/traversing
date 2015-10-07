@@ -27,11 +27,18 @@ def init_login_gift_825(pro_data, player):
         temp_pb.activity_id = k
         temp_pb.state = v
 
+    for k, v in component_login_gift.continuous_7day.items():
+        temp_pb = response.continuous_7day.add()
+        temp_pb.activity_id = k
+        temp_pb.state = v
+
     response.continuous_day_num = component_login_gift.continuous_day_num
     response.cumulative_day_num = component_login_gift.cumulative_day_num
+    response.continuous_7day_num = component_login_gift.continuous_7day_num
 
     logger.debug("login_gift.continuous_day %s %s" % (component_login_gift.continuous_day, component_login_gift.continuous_day_num))
     logger.debug("login_gift.cumulative_day %s %s" % (component_login_gift.cumulative_day, component_login_gift.cumulative_day_num))
+    logger.debug("login_gift.continuous_7day %s %s" % (component_login_gift.continuous_7day, component_login_gift.continuous_7day_num))
     return response.SerializeToString()
 
 
