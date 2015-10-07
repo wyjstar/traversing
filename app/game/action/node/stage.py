@@ -702,12 +702,12 @@ def trigger_hjqy(player, result):
         return 0
 
     stage_info = player.fight_cache_component._get_stage_config()
-    logger.debug(stage_info.chapter)
-    logger.debug(stage_info.type)
-    logger.debug(stage_info.id)
     if stage_info.type not in [1, 2, 3]:
         # 只有在剧情关卡时，才能触发黄巾起义
         return 0
+    logger.debug(stage_info.chapter)
+    logger.debug(stage_info.type)
+    logger.debug(stage_info.id)
 
     logger.debug("can_trigger_hjqy")
     # 触发hjqy
@@ -730,6 +730,9 @@ def trigger_hjqy(player, result):
     stage_index = random_pick_with_weight(info)
 
     logger.debug("chapter: %s, stage_index: %s, stage_id: %s, open_stage_id: %s" % (stage_info.chapter, stage_index, player.fight_cache_component.stage_id, open_stage_id))
+
+    if stage_info.chapter not in hjqyRandomCheckpoint:
+        return False
     stage_id = hjqyRandomCheckpoint.get(stage_info.chapter)[stage_index-1]
 
     player.fight_cache_component.stage_id = stage_id
