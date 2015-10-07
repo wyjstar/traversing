@@ -55,20 +55,20 @@ notes_config={
 ,  ["times"] = 1,  ["id"] = 3003,  ["text"] = 3500000008,  ["event"] = 21,  ["parameter2"] = {
 }
 ,}
-,  [1002] = {
-  ["parameter1"] = {
-  [1] = 1,}
-,  ["type"] = 1,  ["parameter3"] = {
-}
-,  ["times"] = 1,  ["id"] = 1002,  ["text"] = 3500000001,  ["event"] = 10,  ["parameter2"] = {
-}
-,}
 ,  [2007] = {
   ["parameter1"] = {
   [1] = 5,  [2] = 6,}
 ,  ["type"] = 2,  ["parameter3"] = {
 }
 ,  ["times"] = 1,  ["id"] = 2007,  ["text"] = 3500002007,  ["event"] = 8,  ["parameter2"] = {
+}
+,}
+,  [1002] = {
+  ["parameter1"] = {
+  [1] = 1,}
+,  ["type"] = 1,  ["parameter3"] = {
+}
+,  ["times"] = 1,  ["id"] = 1002,  ["text"] = 3500000001,  ["event"] = 10,  ["parameter2"] = {
 }
 ,}
 ,  [3002] = {
@@ -87,20 +87,20 @@ notes_config={
 ,  ["times"] = 1,  ["id"] = 3004,  ["text"] = 3500000009,  ["event"] = 22,  ["parameter2"] = {
 }
 ,}
+,  [2005] = {
+  ["parameter1"] = {
+  [1] = 5,  [2] = 6,}
+,  ["type"] = 2,  ["parameter3"] = {
+}
+,  ["times"] = 1,  ["id"] = 2005,  ["text"] = 3500002005,  ["event"] = 6,  ["parameter2"] = {
+}
+,}
 ,  [2001] = {
   ["parameter1"] = {
 }
 ,  ["type"] = 1,  ["parameter3"] = {
 }
 ,  ["times"] = 3,  ["id"] = 2001,  ["text"] = 0,  ["event"] = 2,  ["parameter2"] = {
-}
-,}
-,  [1001] = {
-  ["parameter1"] = {
-  [1] = "11:50:00",  [2] = "19:50:00",}
-,  ["type"] = 1,  ["parameter3"] = {
-}
-,  ["times"] = 3,  ["id"] = 1001,  ["text"] = 3500001001,  ["event"] = 1,  ["parameter2"] = {
 }
 ,}
 ,  [2002] = {
@@ -135,12 +135,12 @@ notes_config={
 ,  ["times"] = 1,  ["id"] = 1003,  ["text"] = 3500000002,  ["event"] = 10,  ["parameter2"] = {
 }
 ,}
-,  [2005] = {
+,  [1001] = {
   ["parameter1"] = {
-  [1] = 5,  [2] = 6,}
-,  ["type"] = 2,  ["parameter3"] = {
+  [1] = "11:50:00",  [2] = "19:50:00",}
+,  ["type"] = 1,  ["parameter3"] = {
 }
-,  ["times"] = 1,  ["id"] = 2005,  ["text"] = 3500002005,  ["event"] = 6,  ["parameter2"] = {
+,  ["times"] = 3,  ["id"] = 1001,  ["text"] = 3500001001,  ["event"] = 1,  ["parameter2"] = {
 }
 ,}
 ,}

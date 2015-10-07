@@ -19,6 +19,7 @@ from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils import trie_tree
 from app.game.core.stage.stage import Stage
 from shared.db_opear.configs_data import game_configs
+import zipfile
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -42,6 +43,7 @@ def gm():
                      'get_user_guild_info', 'get_user_heros',
                      'get_user_eqs', 'copy_user', 'update_server_list',
                      'add_push_message']
+    print request.args, type(request.args)
     if request.args:
         t_dict = request.args
     else:
@@ -78,9 +80,19 @@ def update_server_list(args):
 
 
 def update_excel(args):
-    url = args['excel_url']
-    urllib.urlretrieve(url, '/tmp/excel_cpickle')
+    print("update_excell=========1")
+    if 'excel_url' in args:
+        url = args['excel_url']
+    else:
+        logger.error("excel_url not exists!!!")
+        url="http://192.168.1.60:2600/static/upload/server_cfg_1435338130"
+    res = urllib.urlretrieve(url, '/tmp/config.zip')
+    print res
+    print("update_excell=========2")
+    os.system("cd /tmp; unzip -o config.zip")
     os.system("cp /tmp/excel_cpickle config/excel_cpickle")
+    os.system("cp -r /tmp/lua/ app/battle/src/app/datacenter/template/config/")
+
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
     return {"success": 1}

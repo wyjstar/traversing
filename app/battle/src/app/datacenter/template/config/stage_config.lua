@@ -1982,7 +1982,7 @@ stage_config={
 }
 ,  ["high"] = 3,  ["condition"] = 201005,  ["restore"] = 100,  ["HeroExp"] = 24,  ["round1"] = 3010051,  ["commonDrop"] = 1100100,  ["name"] = 0,  ["round3"] = 3010053,  ["chapter"] = 10,  ["round2"] = 3010052,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 806,  ["playerExp"] = 6,  ["meritorious_service"] = 0,  ["resMap"] = 0,  ["res"] = 0,  ["stageBox"] = {
 }
-,  ["chaptersTab"] = 0,  ["iconHero"] = 1100321,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
+,  ["chaptersTab"] = 0,  ["iconHero"] = 1100301,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
@@ -2346,7 +2346,7 @@ stage_config={
 }
 ,  ["high"] = 3,  ["condition"] = 100905,  ["restore"] = 100,  ["HeroExp"] = 22,  ["round1"] = 2009051,  ["commonDrop"] = 1100100,  ["name"] = 0,  ["round3"] = 2009053,  ["chapter"] = 9,  ["round2"] = 2009052,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 643,  ["playerExp"] = 6,  ["meritorious_service"] = 0,  ["resMap"] = 0,  ["res"] = 0,  ["stageBox"] = {
 }
-,  ["chaptersTab"] = 0,  ["iconHero"] = 1100301,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
+,  ["chaptersTab"] = 0,  ["iconHero"] = 1100321,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
@@ -3282,7 +3282,7 @@ stage_config={
 }
 ,  ["high"] = 3,  ["condition"] = 200905,  ["restore"] = 100,  ["HeroExp"] = 22,  ["round1"] = 3009051,  ["commonDrop"] = 1100100,  ["name"] = 0,  ["round3"] = 3009053,  ["chapter"] = 9,  ["round2"] = 3009052,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 750,  ["playerExp"] = 6,  ["meritorious_service"] = 0,  ["resMap"] = 0,  ["res"] = 0,  ["stageBox"] = {
 }
-,  ["chaptersTab"] = 0,  ["iconHero"] = 1100301,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
+,  ["chaptersTab"] = 0,  ["iconHero"] = 1100321,  ["type"] = 3,  ["icon"] = 0,  ["fristGift"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
@@ -3374,7 +3374,7 @@ stage_config={
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["chaptersTab"] = 0,  ["iconHero"] = 1100301,  ["type"] = 1,  ["icon"] = 2002,  ["fristGift"] = {
+,  ["chaptersTab"] = 0,  ["iconHero"] = 1100321,  ["type"] = 1,  ["icon"] = 2002,  ["fristGift"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
@@ -4450,7 +4450,7 @@ stage_config={
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["chaptersTab"] = 0,  ["iconHero"] = 1100321,  ["type"] = 1,  ["icon"] = 2002,  ["fristGift"] = {
+,  ["chaptersTab"] = 0,  ["iconHero"] = 1100301,  ["type"] = 1,  ["icon"] = 2002,  ["fristGift"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
@@ -7000,7 +7000,7 @@ stage_config={
 }
 ,  ["high"] = 3,  ["condition"] = 101005,  ["restore"] = 100,  ["HeroExp"] = 24,  ["round1"] = 2010051,  ["commonDrop"] = 1100100,  ["name"] = 0,  ["round3"] = 2010053,  ["chapter"] = 10,  ["round2"] = 2010052,  ["levelLimit"] = 0,  ["isBoss"] = 1,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["currency"] = 691,  ["playerExp"] = 6,  ["meritorious_service"] = 0,  ["resMap"] = 0,  ["res"] = 0,  ["stageBox"] = {
 }
-,  ["chaptersTab"] = 0,  ["iconHero"] = 1100321,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
+,  ["chaptersTab"] = 0,  ["iconHero"] = 1100301,  ["type"] = 2,  ["icon"] = 0,  ["fristGift"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}

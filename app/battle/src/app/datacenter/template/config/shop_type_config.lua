@@ -71,10 +71,26 @@ shop_type_config={
 ,  ["refreshItem"] = {
 }
 ,  ["allBuyRefresh"] = 0,}
+,  [18] = {
+  ["itemNum"] = -1,  ["openStage"] = 0,  ["openLevel"] = 1,  ["id"] = 18,  ["refresh"] = -1,  ["freeRefreshTimes"] = 0,  ["luckyValueResetTime"] = "-1",  ["refreshPrice"] = {
+}
+,  ["freeRefreshTime"] = "-1",  ["luckyValueLimited"] = 0,  ["luckyValue"] = {
+}
+,  ["refreshItem"] = {
+}
+,  ["allBuyRefresh"] = 0,}
+,  [19] = {
+  ["itemNum"] = -1,  ["openStage"] = 0,  ["openLevel"] = 1,  ["id"] = 19,  ["refresh"] = -1,  ["freeRefreshTimes"] = 0,  ["luckyValueResetTime"] = "-1",  ["refreshPrice"] = {
+}
+,  ["freeRefreshTime"] = "-1",  ["luckyValueLimited"] = 0,  ["luckyValue"] = {
+}
+,  ["refreshItem"] = {
+}
+,  ["allBuyRefresh"] = 0,}
 ,  [24] = {
   ["itemNum"] = -1,  ["openStage"] = 0,  ["openLevel"] = 1,  ["id"] = 24,  ["refresh"] = -1,  ["freeRefreshTimes"] = 0,  ["luckyValueResetTime"] = "-1",  ["refreshPrice"] = {
 }
-,  ["freeRefreshTime"] = "-1",  ["luckyValueLimited"] = 0,  ["luckyValue"] = {
+,  ["freeRefreshTime"] = "9:00:00",  ["luckyValueLimited"] = 0,  ["luckyValue"] = {
 }
 ,  ["refreshItem"] = {
 }
