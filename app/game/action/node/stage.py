@@ -716,7 +716,7 @@ def trigger_hjqy(player, result):
     stage_info = player.fight_cache_component._get_stage_config()
 
     rate = random.random()
-    rate = 0.01 # for test
+    #rate = 0.01 # for test
     hjqytrigger = game_configs.base_config.get("hjqytrigger")
     hjqyRandomCheckpoint = game_configs.base_config.get("hjqyRandomCheckpoint")
     logger.debug("rate: %s, hjqytrigger:%s" % (rate, hjqytrigger))
