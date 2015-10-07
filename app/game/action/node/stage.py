@@ -729,7 +729,7 @@ def trigger_hjqy(player, result):
 
     stage_index = random_pick_with_weight(info)
 
-    logger.debug("chapter: %s, stage_index: %s" % (stage_info.chapter, stage_index))
+    logger.debug("chapter: %s, stage_index: %s, stage_id: %s, open_stage_id: %s" % (stage_info.chapter, stage_index, player.fight_cache_component.stage_id, open_stage_id))
     stage_id = hjqyRandomCheckpoint.get(stage_info.chapter)[stage_index-1]
 
     player.fight_cache_component.stage_id = stage_id
