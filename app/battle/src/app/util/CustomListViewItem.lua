@@ -46,8 +46,10 @@ function CustomListViewItem:getItem()
 end
 
 function CustomListViewItem:removeItem()
-    self.item_:removeFromParentAndCleanup(true)
-    self.item_ = nil
+    if self.item_ then
+        self.item_:removeFromParentAndCleanup(true)
+        self.item_ = nil        
+    end
 end
 
 function CustomListViewItem:getIdx()

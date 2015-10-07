@@ -81,6 +81,7 @@ function BuffSetForView:getActions(buff_info)
     end
     print("getAction:=======", buff_info.actEffect, self.actionUtil.buffdata[string.format(buff_info.actEffect)])
     if buff_info.actEffect ~= 0 then
+        assert(self.actionUtil.buffdata[string.format(buff_info.actEffect)],"not find act_effect in skill_buff_info by actEffect:"..buff_info.actEffect)
         return self.actionUtil.buffdata[string.format(buff_info.actEffect)].actions
     end
     return {}

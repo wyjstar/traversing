@@ -47,7 +47,7 @@ function FMBuffManager:perform_hp_mp_buff(process)
     print("perform_hp_mp_buff=========")
     appendFile2("hp mp 相关buff------------------------------", 1)
     for k, buffs in pairs(self.buffs) do
-        if table.inv({3, 8, 9, 26, 27}, k) then
+        if table.inv({3, 8, 9, 26, 27, 33, 34, 35}, k) then
             local i = 1
             while buffs[i] do
                 local buff = buffs[i]
@@ -70,7 +70,7 @@ function FMBuffManager:perform_active_buff(process)
     print("FMBuffManager:perform_active_buff======")
     -- 在回合开始时，使buff生效
     for k, buffs in pairs(self.buffs) do
-        if table.inv({6, 7, 14, 15, 18, 19, 20, 21, 24, 25}, k) then
+        if table.inv({6, 7, 14, 15, 18, 19, 20, 21, 24, 25, 31, 32, 36}, k) then
             local i = 1
             while buffs[i] do
                 local buff = buffs[i]
@@ -124,10 +124,11 @@ function FMBuffManager:perform_passive_buff(process)
 end
 
 function FMBuffManager:_add_buff(buff, effect_id, replace, result)
-    if table.inv({1, 2, 3, 8, 9, 26, 30}, effect_id) then
+    local effectIds = {1, 2, 3, 8, 9, 26, 30, 33, 34, 35}
+    if table.inv(effectIds, effect_id) then
         buff:perform_buff(self.owner, result)
     end
-    if not table.inv({1, 2, 3, 8, 9, 26, 30}, effect_id) then
+    if not table.inv(effectIds, effect_id) then
         appendFile2("buff前："..self.owner:str_data(), 1)
     end
     if buff.continue_num > 0 then
@@ -137,7 +138,7 @@ function FMBuffManager:_add_buff(buff, effect_id, replace, result)
             table.insert(self.buffs[effect_id], buff)
         end
     end
-    if not table.inv({1, 2, 3, 8, 9, 26, 30}, effect_id) then
+    if not table.inv(effectIds, effect_id) then
         appendFile2("buff："..buff:str_data(), 1)
         appendFile2("buff后："..self.owner:str_data(), 1)
         appendFile2("------------------------------", 1)
@@ -199,20 +200,22 @@ function FMBuffManager:get_buffed_ductility(ductility)
 end
 
 function FMBuffManager:is_dizzy()
-    return self:is_state_util(24)
+    return self:is_state_util({24, 31, 32})
 end
 
 function FMBuffManager:is_slient()
-    return self:is_state_util(25)
+    return self:is_state_util({25, 36})
 end
 
-function FMBuffManager:is_state_util(no)
-    local temp_buffs = self.buffs[no]
-    if not temp_buffs then
-        temp_buffs = {}
-    end
-    for _,buff_info in pairs(temp_buffs) do
-        return true
+function FMBuffManager:is_state_util(nos)
+    for _, no in pairs(nos) do
+        local temp_buffs = self.buffs[no]
+        if not temp_buffs then
+            temp_buffs = {}
+        end
+        for _,buff_info in pairs(temp_buffs) do
+            return true
+        end
     end
     return false
 end

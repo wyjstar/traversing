@@ -51,14 +51,14 @@ function CustomScrollView:ctor(scrollRect,opt)
     self.showScroll = opt.showScroll or (self.direction == CustomScrollView.DIRECTION_VERTICAL)
     self.buttons = {}
     --滚动层
-    self.scrollView = cc.ScrollView:create()
+    self.scrollView = cc.CustomScrollView:create()
     self.scrollView:setVisible(false)
     self.scrollView:setViewSize(self.touchSize)
     self.scrollView:ignoreAnchorPointForPosition(true)
     self.scrollView:setDirection(self.direction)
     self.scrollView:setClippingToBounds(true)
     self.scrollView:setBounceable(true)
-    self.scrollView:setDelegate()
+    -- self.scrollView:setDelegate()
     self:addChild(self.scrollView)  
     self.scrollView:registerDidScrollHandler(handler(self,self.resetArrowTip))    
     --handler,是否支持多点触摸，优先级，是否吞噬触摸事件
@@ -67,17 +67,18 @@ function CustomScrollView:ctor(scrollRect,opt)
     self.enabled_ = true
     --添加滚动条
     if self.showScroll then
-        self.scrollBg = cc.Scale9Sprite:create("res/ui/vr_slider_bg.png")
-        self.scrollBg:setContentSize(cc.size(self.scrollBg:getContentSize().width, self.touchSize.height))
-        self.scrollBg:setAnchorPoint(cc.p(1, 0))
-        self.scrollBg:setPosition(self.touchSize.width, 0)
-        self.scrollBg:setVisible(false)        
-        self:addChild(self.scrollBg)     
+        -- self.scrollBg = cc.Scale9Sprite:create("res/ui/vr_slider_bg.png")
+        -- self.scrollBg:setContentSize(cc.size(self.scrollBg:getContentSize().width, self.touchSize.height))
+        -- self.scrollBg:setAnchorPoint(cc.p(1, 0))
+        -- self.scrollBg:setPosition(self.touchSize.width, 0)
+        -- self.scrollBg:setVisible(false)        
+        -- self:addChild(self.scrollBg)
+
         self.scrollBar = cc.Scale9Sprite:create("res/ui/vr_slider.png")
         self.scrollBar:setAnchorPoint(cc.p(0.5,1))
-        self.scrollBar:setPosition(0, self.scrollBg:getContentSize().height)
+        self.scrollBar:setPosition(self.touchSize.width, self.touchSize.height)
         self.scrollBar:setVisible(false)
-        self.scrollBg:addChild(self.scrollBar)
+        self:addChild(self.scrollBar)
 
         CustomScrollView.SCROLL_BAR_MIN_LENGTH = self.scrollBar:getContentSize().height
     end
@@ -108,7 +109,13 @@ function CustomScrollView:updateScrollBarPosition_()
             local y = math.floor(self.touchSize.height - distance)
             if y < self.scrollBar:getContentSize().height then y = self.scrollBar:getContentSize().height end
             if y > self.touchSize.height then y = self.touchSize.height end
-            self.scrollBar:setPositionY(y)            
+
+            if math.abs(self.scrollBar:getPositionY() - y) < 0.001 then
+                self.scrollBar:setOpacity(self.scrollBar:getOpacity()*0.98)
+            else
+                self.scrollBar:setPositionY(y)
+                self.scrollBar:setOpacity(255)
+            end            
         end
     end    
 end
@@ -474,7 +481,7 @@ function CustomScrollView:updateScrollBarSize()
     if self.showScroll then
         if self.ratio >= 1 then
             self.scrollBar:setVisible(false)
-            self.scrollBg:setVisible(false)            
+            -- self.scrollBg:setVisible(false)            
             self.updateScrollBar = false
             return
         end
@@ -482,7 +489,7 @@ function CustomScrollView:updateScrollBarSize()
             self.maxScrollHeight = self.scrollView:getContentSize().height - self.touchSize.height
             self.updateScrollBar = true        
             self.scrollBar:setVisible(true)
-            self.scrollBg:setVisible(true)          
+            -- self.scrollBg:setVisible(true)          
             local scrollViewSize = self.scrollView:getContentSize()
             local height = math.floor(self.ratio*self.touchSize.height)
             if height < CustomScrollView.SCROLL_BAR_MIN_LENGTH then
@@ -559,7 +566,14 @@ end
 function CustomScrollView:getAllButtons()
     return self.buttons
 end
-
+--[[--
+删除一个cell
+]]
+function CustomScrollView:delButtonByIdx(idx)
+    if idx and idx >= 1 and idx <= table.nums(self.buttons) then
+        table.remove(self.buttons, idx)
+    end
+end
 --[[
 跳转到顶部
 ]]

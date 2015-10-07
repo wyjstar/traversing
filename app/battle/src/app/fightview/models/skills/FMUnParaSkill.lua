@@ -147,7 +147,7 @@ end
 
 -- 是否是自动释放
 function FMUnParaSkill:is_auto()
-    if get_fight_mode(self.process.fight_type) == TYPE_MODE_PVP then
+    if get_fight_mode(self.process.fight_type) == TYPE_MODE_PVP or self.side == "blue" then
         print("is_auto===========", true)
         return true
     end

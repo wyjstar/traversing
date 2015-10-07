@@ -23,15 +23,6 @@ function CommonData:ctor(item)
     self.c_BaseTemplate = getTemplateManager():getBaseTemplate()
 
 end
--- function CommonData:clear()
---     cclog("---------------CommonData:clear------")
---     self.GameLoginResponse = {}
---     self.LastStminaTime = nil  -- 上次领取体力时间
---     self.AccountResponse = {} -- 注册成功返回数据
---     self.isTourist = false
---     self.signedList = nil
---     cclog("---------------CommonData:clear------")
--- end
 
 --初始化定时器
 function CommonData:initTasks()
@@ -60,10 +51,11 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getActivityNet():sendGetLoginGiftListMsg()      -- 连续登陆奖励
     getNetManager():getActivityNet():sendGetLoginGiftListMsg()      -- 累计登陆奖励
     getNetManager():getActivityNet():sendZcjbGetdata()              -- 招财进宝奖励
-    getNetManager():getActivityNet():sendGetSignListMsg()           -- 签到刷新
     getNetManager():getActivityNet():sendGetBrewInfoMsg()           -- 煮酒数据
     getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
+    getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
+    getNetManager():getSevenDayNet():sendGetDayList(0)              -- 七日活动刷新
     --重置定时器
     task:setEnabled(false)
     self:initRefreshTime24()
@@ -120,10 +112,10 @@ function CommonData:setData(data)
     self.oldLevel = self.level
     -- 将等级写入到userdefault中
     saveTeamLevel(self.level)
-    self.isCiriOpened = data.is_open_next_day_activity   --次日开启功能是否已开启过
-    --wp:test
-    -- self.isFirstRechargeRewardGot = data.first_recharge_activity  --是否领过首冲好礼 -1没领过，1领过
-        
+    --button_one_time服务端从0开始，客户端要+1
+    self.isCiriOpened = data.button_one_time[0+1]  --次日开启功能是否已开启过
+    self.isFirstRechargeRewardGot = data.button_one_time[1+1] --是否领过首冲好礼 -1没领过，1领过
+    
     -- self.stamina = data.stamina                         --体力
     self.totalRecharge = data.recharge                   --累计充值
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
@@ -350,7 +342,11 @@ end
 function CommonData:addFinance(type_, num)
     print("CommonData:addFinance==================>",type_, num) 
     if self.finances[type_+1] then
-        self:setFinance(type_, self.finances[type_+1] + num)
+        if type_ == RES_TYPE.PLAYER_EXP then        -- 如果是战队经验 单独添加
+            self:addExp(num)
+        else
+            self:setFinance(type_, self.finances[type_+1] + num)
+        end 
     end 
 end
 
@@ -515,95 +511,12 @@ function CommonData:getShoesRetainTime() return self.buy_times[RES_TYPE.SHOES].r
 function CommonData:getLastStminaTime() return self.LastStminaTime end
 function CommonData:setLastStminaTime(time) self.LastStminaTime = time end
 
--- 补签次数
-function CommonData:setRepaireTimes(times) self.repaireTimes = times end
-function CommonData:getRepaireTimes() return self.repaireTimes end
--- 签到列表
-function CommonData:setSignedList(list)
-    self.signedList = list
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_SIGN)
-end
-function CommonData:getSignedList() return self.signedList end
---当前签到为哪一组
-function CommonData:setSignRound(roundId) self.SignRoundId = roundId end
-function CommonData:getSignRound() return self.SignRoundId end
---当前签到为哪一天
-function CommonData:setSignCurrDay(currday) 
-    self.SignCurrDay = currday 
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_SIGN)
-end
-function CommonData:getSignCurrDay() return self.SignCurrDay end
 
 -- 武魂商店刷新次数
 function CommonData:setSoul_shop_refresh_times(times)
      self.GameLoginResponse.soul_shop_refresh_times = self.GameLoginResponse.soul_shop_refresh_times + times
 end
 function CommonData:getSoul_shop_refresh_times() return self.GameLoginResponse.soul_shop_refresh_times end
-
--- 查询某天是否签过到
-function CommonData:lookIsSigned(day)
-    for k,v in pairs(self.signedList) do
-        if v == day then return true end
-    end
-    return false
-end
--- 将某天签到状态改为已签到
-function CommonData:setSignedByDay(day)
-    table.insert(self.signedList, day)
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_SIGN)
-end
---[[--
-
-设置连续签到的天数
-@param days 连续签到的天数
-]]
-function CommonData:setContinuousSignDays(days) self.continuousSignDays = days end
---[[--
-
-获取连续签到的天数
-
-]]
-function CommonData:getContinuousSignDays() return self.continuousSignDays end
---[[--
-
-设置[7，15，25]天的连续签到的奖励
-@param list [7，15，25]天的连续签到的奖励
-]]
-function CommonData:setContinuousSignedList(list) self.continuousSignedList = list end
---[[--
-
-获取[7，15，25]天的连续签到的奖励
-
-]]
-function CommonData:getContinuousSignedList() return self.continuousSignedList end
-
-function CommonData:setContinuousSignedByDay(day) table.insert(self.continuousSignedList, day) end
-function CommonData:setCurContinuousSigned(reward) self.curRewardContinuousSigned = reward end
-function CommonData:getCurContinuousSigned() return self.curRewardContinuousSigned end
---[[--
-
-设置额外签到奖励
-@param list  额外签到奖励列表
-
-]]
-function CommonData:setExtraSignGiftList(list)
-    self.extraSignGiftList = list
-end
-
---[[--
-    获取的额外签到奖励
-]]
-function CommonData:getExtraSignGiftList()
-    return self.extraSignGiftList
-end
-function CommonData:addExtraSignGiftListByID(id)
-    table.insert(self.extraSignGiftList, id)
-    cclog("----------------addExtraSignGiftListByID-------")
-    table.print(self.extraSignGiftList)
-end
 -- 在线时间
 -- function CommonData:setOnlineTime(time) self.onlineTimes = time end
 -- function CommonData:getOnlineTime()
@@ -698,7 +611,7 @@ function CommonData:setVip(cur_vip)
     self:dispatchEvent(EventName.UPDATE_VIP)
 end
 
-function CommonData:getVip() return self.vip end
+function CommonData:getVip() return tonumber(self.vip) end
 
 --经验
 function CommonData:setExp(cur_exp) 
@@ -1379,12 +1292,8 @@ end
 是否签到要显示红点
 ]]
 function CommonData:isSignRedDotInHome()
-    local nowDay = self:getSignCurrDay()
-    local isSigned = self:lookIsSigned(nowDay)
-    return not isSigned
+    return not getDataManager():getSignData():isGotCurDay()
 end
-
-
 
 --[[--
 精彩活动,美味大餐 红点

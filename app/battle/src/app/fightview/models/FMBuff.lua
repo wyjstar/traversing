@@ -18,16 +18,16 @@ end
 function FMBuff:perform_hp_mp_buff(owner)
     appendFile2("buff前："..owner:str_data(), 1)
     local effect_id = self.skill_buff_info.effectId
-    if table.inv({3,8,9,26}, effect_id) then
+    if table.inv({3,8,9,26, 33, 34, 35}, effect_id) then
         -- 伤害或者治疗buff与持续性buff不同，提前一回合去buff
         self.continue_num = self.continue_num - 1
     end
     if effect_id == 3 then
         owner:set_hp(owner.hp-self.value)
     elseif effect_id == 8 then
-        owner:set_mp(owner.skill.mp+self.value)
+        owner.skill:set_mp(owner.skill.mp+self.value)
     elseif effect_id == 9 then
-        owner:set_mp(owner.skill.mp+self.value)
+        owner.skill:set_mp(owner.skill.mp+self.value)
     elseif effect_id == 26 then
         owner:set_hp(owner.hp+self.value)
     end
@@ -54,7 +54,7 @@ function FMBuff:perform_buff(owner, result)
     local attacker = self.process.attacker
     local effect_id = self.skill_buff_info.effectId
     print("perform buff effect_id "..effect_id)
-    if table.inv({1,2,3,8,9,26}, effect_id) then
+    if table.inv({1,2,3,8,9,26, 33, 34, 35}, effect_id) then
         -- 伤害或者治疗buff与持续性buff不同，提前一回合去buff
         self.continue_num = self.continue_num - 1
     end
@@ -67,8 +67,8 @@ function FMBuff:perform_buff(owner, result)
         end
         result.is_cri = check_cri(attacker.cri, owner.ductility, self.skill_buff_info)
         result.value = execute_demage(attacker, owner, self.skill_buff_info, is_block, result.is_cri, extra_msgs)
-    elseif table.inv({3}, effect_id) then
-        print("2============")
+    elseif table.inv({3, 33, 34, 35}, effect_id) then
+        print("2============",effect_id)
         result.value = execute_pure_demage(attacker, owner, self.skill_buff_info, extra_msgs)
         self.value = result.value
     elseif table.inv({8, 9}, effect_id) then

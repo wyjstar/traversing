@@ -6,14 +6,31 @@ local animationDuration = 0.3
 local PI = math.pi
 local sharedScheduler = cc.Director:getInstance():getScheduler()
 
-function CustomRotateMenu:ctor(contentLayer)
+--[[--
+构造方法
+@param Layer contentLayer 控件所在的layer
+@param table params 控制参数
+    - xRatio x半轴长度与contentLayer宽度的比值 默认 0.33
+    - yRatio y半轴长度与contentLayer高度度比值 默认 0.01
+]]
+function CustomRotateMenu:ctor(contentLayer, params)
   	self.contentLayer = contentLayer
+    assert(self.contentLayer, "ERROR: you must be set contentLayer when create CustomRotateMenu")
   	self.angle = 0
     self.unitAngle = 0
     self.touchEnabled = true 
     self.itemsTable = {}
     self.selectedItem = nil
     self.delegate = nil
+
+    params = params or {}
+    local xRatio = params.xRatio or 0.33
+    local yRatio = params.yRatio or 0.01
+    local menuSize = self.contentLayer:getContentSize()
+    self.disX = menuSize.width * xRatio
+    self.disY = menuSize.height * yRatio
+    print("CustomRotateMenu:ctor", self.disX, self.disY)
+
     self:init()
   	self:addLayerTouchEvent()
 end
@@ -27,12 +44,12 @@ function CustomRotateMenu:setTouchEnabled(enabled)
 end
 
 function CustomRotateMenu:addMenuItem(menuItem)
-	  table.insert(self.itemsTable,menuItem)
+    self.itemsTable[#self.itemsTable+1] = menuItem
 end
 
 function CustomRotateMenu:reloadData()
     if #self.itemsTable > 0 then
-        self.unitAngle = 2*PI / table.getn(self.itemsTable)
+        self.unitAngle = 2*PI / table.nums(self.itemsTable)
         for k,v in pairs(self.itemsTable) do
             v:setPosition(cc.p(self.contentLayer:getContentSize().width / 2,self.contentLayer:getContentSize().height / 2))
             self.contentLayer:addChild(v)
@@ -44,11 +61,9 @@ end
 
 function CustomRotateMenu:updatePosition()
   	local menuSize = self.contentLayer:getContentSize()
-  	local disY =  1 --menuSize.height / 100
-  	local disX = menuSize.width / 3
   	for k,v in pairs(self.itemsTable) do
-    		local x = menuSize.width / 2 + disX * math.sin((k) * self.unitAngle + self.angle)
-    		local y = menuSize.height / 2 - disY * math.cos((k) * self.unitAngle + self.angle)
+    		local x = menuSize.width / 2 + self.disX * math.sin((k) * self.unitAngle + self.angle)
+    		local y = menuSize.height / 2 - self.disY * math.cos((k) * self.unitAngle + self.angle)
     		v:setPosition(x,y)
     		v:setLocalZOrder(-y)
     		v:setOpacity(192 + 63 * math.cos(k*self.unitAngle + self.angle))
@@ -66,11 +81,9 @@ function CustomRotateMenu:updatePositionWithAnimation()
         v:stopAllActions()
     end
     local menuSize = self.contentLayer:getContentSize()
-    local disY = 1--menuSize.height / 100
-    local disX = menuSize.width / 3
     for k,v in pairs(self.itemsTable) do
-        local x = menuSize.width / 2 + disX*math.sin((k)*self.unitAngle + self.angle)
-        local y = menuSize.height / 2 - disY*math.cos((k)*self.unitAngle + self.angle)
+        local x = menuSize.width / 2 + self.disX*math.sin((k)*self.unitAngle + self.angle)
+        local y = menuSize.height / 2 - self.disY*math.cos((k)*self.unitAngle + self.angle)
         local moveTo = cc.MoveTo:create(animationDuration, cc.p(x, y))
         v:runAction(moveTo)
         local fadeTo = cc.FadeTo:create(animationDuration, (192 + 63 * math.cos(k*self.unitAngle + self.angle)))
@@ -163,6 +176,9 @@ function CustomRotateMenu:addLayerTouchEvent()
         end
         self.angle = self.angle + angle
         self:updatePosition()
+        if self.delegate.rotateTouchMovedEvent then
+            self.delegate:rotateTouchMovedEvent()
+        end
     end
     local function onTouchEnded(touch, event)
         local xDelta = touch:getLocation().x - touch:getStartLocation().x
@@ -194,7 +210,18 @@ function CustomRotateMenu:getCurrentIndex()
     end
     -- local index = math.floor((2 * PI - self.angle) / self.unitAngle+0.1*self.unitAngle)
     local index = math.floor(self.angle / self.unitAngle+0.1*self.unitAngle)
-    return index % #self.itemsTable + 1
+    
+    index = index % #self.itemsTable -- 取得以0开头的真实序号(可能出现值为数组长度的index)
+
+    return #self.itemsTable - index -- 取得与self.itemsTable中一致的编号(从1开头)     注:self.itemsTable中编号较小的item,index值更大
+end
+
+function CustomRotateMenu:getCurrentItem()
+    return self.itemsTable[self:getCurrentIndex()]
+end
+
+function CustomRotateMenu:getAllItems()
+    return self.itemsTable
 end
 
 function CustomRotateMenu:rotateDidEnd()
