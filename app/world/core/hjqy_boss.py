@@ -191,10 +191,7 @@ class HjqyBoss(object):
 
     @property
     def hp(self):
-        hp = 0
-        for unit in self._blue_units.values():
-            hp += unit.hp
-        return int(hp)
+        return int(self._blue_units.get(5).hp)
 
     @property
     def hp_max(self):
