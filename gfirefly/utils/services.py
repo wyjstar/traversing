@@ -63,7 +63,8 @@ class Service(object):
         """
         target = self.getTarget(targetKey)
         if not target:
-            logger.error('command %s not Found on service' % str(targetKey))
+            logger.error('command %s not Found on service[%s]' % (str(targetKey), self._name))
+            logger.debug(self._targets)
             return None
         # if targetKey not in self.unDisplay:
         #     logger.info("call method %s on service[%s]" %

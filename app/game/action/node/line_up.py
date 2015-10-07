@@ -32,7 +32,7 @@ def get_target_line_up_info_706(pro_data, player):
     target_id = request.target_id
 
     char_obj = tb_character_info.getObj(target_id)
-    if char_obj.exists():
+    if target_id < 10000 and char_obj.exists():
         response = char_obj.hget('copy_slots')
         if response:
             return response
@@ -43,8 +43,10 @@ def get_target_line_up_info_706(pro_data, player):
             response = robot_obj.get('copy_slots')
             return response
 
+    logger.error('get_target_line_up_info_706 cant find player:%s', target_id)
     response = line_up_pb2.LineUpResponse()
     response.res.result = False
+    response.res.result_no = 70601
     return response.SerializePartialToString()
 
     # ========================remove========================

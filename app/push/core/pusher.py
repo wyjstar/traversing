@@ -6,7 +6,7 @@ Created on 2015-5-2
 '''
 from gfirefly.utils.singleton import Singleton
 import time
-from app.push.core.apns import APNs, Payload, Frame
+from app.push.core.apns import APNs, Payload
 from shared.db_opear.configs_data import game_configs
 from shared.utils import xtime
 
@@ -18,7 +18,7 @@ push_offline = RedisObject('pushobj.offline')
 push_day = RedisObject('pushobj.day')
 
 apns_handler = APNs(use_sandbox=True, cert_file='push_dev.pem', enhanced=True)
-device_token1 ='8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
+device_token1 = '8690afe1f1f1067b3f45e0a26a3af4eef5391449e8d07073a83220462bf061be'
 
 
 class PushMessage(object):
@@ -56,6 +56,7 @@ class Character(object):
 
     def on_off(self):
         return self.status
+
 
 class Pusher(object):
     __metaclass__ = Singleton
@@ -103,7 +104,7 @@ class Pusher(object):
             push_reg.hset(uid,  self.register[uid])
 
         if status == 0:
-            #离线需要设置系统消息
+            # 离线需要设置系统消息
             self.offline[uid] = int(time.time())
             push_offline.hset(uid, self.offline[uid])
         else:
@@ -124,7 +125,7 @@ class Pusher(object):
         message.msg_type = mtype
         message.send_time = send_time
         message.message = msg
-        mid = '%s.%s.%s' %(uid,mtype,time.time())
+        mid = '%s.%s.%s' % (uid, mtype, time.time())
         self.to_push[mid] = message
         push_task.hset(mid, message)
 
@@ -151,7 +152,7 @@ class Pusher(object):
             user = None
             if uid in self.register:
                 user = self.register[uid]
-            if user == None or not user.can_push(mtype):
+            if user is None or not user.can_push(mtype):
                 continue
 
             payload = Payload(alert=message.message, sound='default', badge=1)
@@ -160,7 +161,7 @@ class Pusher(object):
             count += 1
             del self.to_push[mid]
             push_task.hdel(mid)
-            
+
 #         if count:
 #             try:
 #                 apns_handler.gateway_server.send_notification_multiple(frame)
@@ -169,7 +170,7 @@ class Pusher(object):
 #         payload = Payload(alert='message.message', sound='default', badge=1)
 #             frame.add_item(user.device_token, payload, identifier, expiry, priority)
 #         apns_handler.gateway_server.send_notification(device_token1, payload)
-        
+
     def send_all(self, mtype, message):
 #         frame = Frame()
 #         identifier = 1
@@ -189,7 +190,7 @@ class Pusher(object):
 #                 apns_handler.gateway_server.send_notification_multiple(frame)
 #             except Exception,e:
 #                 print e
-        
+
     def gen_task(self):
         push_config = game_configs.push_config
         for push in push_config.values():
@@ -204,7 +205,7 @@ class Pusher(object):
         push_config = game_configs.push_config[pid]
         tt = push_config.conditions
         for t in tt:
-            h,m = map(int, t.split(':'))
+            h, m = map(int, t.split(':'))
             today_ts = xtime.today_ts()
             one = today_ts + h*60*60 + m*60
             if one in self.everyday:
@@ -226,4 +227,3 @@ class Pusher(object):
                 self.add_message(uid, push_config.event, message, int(time.time()))
                 del self.offline[uid]
                 push_offline.hdel(uid)
-
