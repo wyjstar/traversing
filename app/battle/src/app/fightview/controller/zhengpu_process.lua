@@ -196,9 +196,10 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
         --logger_cal.debug("    攻击者在buff中，无法攻击！")
         print("1===========")
         appendFile2("\t\t dizzy=====", 0)
-        if attacker.buff_manager then
-            attacker.buff_manager:perform_active_buff(self)
-        end
+        --if attacker.buff_manager then
+            --attacker.buff_manager:perform_active_buff(self)
+        --end
+        --appendFile2("\t\t dizzy=====1", 0)
         return self:construct_step_action(attacker, TYPE_NORMAL, SKILL_STAGE_IN_BUFF, {}, STEP_DO_BUFF)
     end
 
@@ -292,7 +293,7 @@ end
 
 -- 攻击后buff
 function FightProcess:perform_after_buff(army, enemy, attacker)
-    print("FightProcess:perform_after_buff")
+    appendFile2("FightProcess:perform_after_buff", 0)
     -- 攻击后进行执行buff
     if attacker.buff_manager then
         attacker.buff_manager:perform_active_buff(self)   --主动buff，在攻击有效后触发
