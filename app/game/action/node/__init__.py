@@ -27,15 +27,17 @@ class GameCommandService(CommandService):
 
         t = time.time()
         dynamic_id = args[0]
+        _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
         try:
             #logger.debug('key and dynamic_id,%s,%s', dynamic_id, targetKey)
 
             if targetKey != 'enter_scene_remote':
-                _player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
+                #_player = PlayersManager().get_player_by_dynamic_id(dynamic_id)
                 # print 'find player:', _player
                 if not _player:
                     logger.error('cantfind player dynamic id:%s', dynamic_id)
-                    return {'result': False, 'result_no': 1, 'message': u''}
+                    raise Exception("cantfind player dynamic id")
+                    #return {'result': False, 'result_no': 1, 'message': u''}
                 logger.info("call method begin %s on service[%s], player id %s",
                     target.__name__, self._name, _player.base_info.id)
                 args = args[1:]
@@ -47,15 +49,15 @@ class GameCommandService(CommandService):
         except AuthError, e:
             logger.exception(e)
             remote_gate.disconnect_remote(dynamic_id)
-            remote_gate.push_object_remote(9999, "", self._owner.base_info.id)
+            remote_gate.push_object_remote(9999, "", _player.base_info.id)
             return None
         except Exception, e:
             logger.exception(e)
-            remote_gate.push_object_remote(9999, "", self._owner.base_info.id)
+            remote_gate.push_object_remote(9999, "", _player.base_info.id)
             return None
         except:
             logger.error(traceback.format_exc())
-            remote_gate.push_object_remote(9999, "", self._owner.base_info.id)
+            remote_gate.push_object_remote(9999, "", _player.base_info.id)
             return None
         logger.info("call method %s on service[%s]:%f",
                     target.__name__, self._name, time.time() - t)
