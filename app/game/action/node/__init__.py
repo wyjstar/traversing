@@ -47,12 +47,15 @@ class GameCommandService(CommandService):
         except AuthError, e:
             logger.exception(e)
             remote_gate.disconnect_remote(dynamic_id)
+            remote_gate.push_object_remote(9999, "", self._owner.base_info.id)
             return None
         except Exception, e:
             logger.exception(e)
+            remote_gate.push_object_remote(9999, "", self._owner.base_info.id)
             return None
         except:
             logger.error(traceback.format_exc())
+            remote_gate.push_object_remote(9999, "", self._owner.base_info.id)
             return None
         logger.info("call method %s on service[%s]:%f",
                     target.__name__, self._name, time.time() - t)
