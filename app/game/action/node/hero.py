@@ -142,6 +142,7 @@ def one_key_hero_upgrade_logic(hero_no, player):
             big_exp_num = i + 1
 
     hero.upgrade(small_exp * small_exp_num + middle_exp * middle_exp_num + big_exp * big_exp_num, player.base_info.level)
+    hero.save_data()
 
     player.item_package.consume_item(10001, small_exp_num)
     player.item_package.consume_item(10002, middle_exp_num)
