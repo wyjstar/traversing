@@ -25,6 +25,7 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.component.character_pvp import get_player_pvp_stage
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -77,7 +78,7 @@ def _with_pvp_info(response, character_id):
 def pvp_top_rank_request_1501(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    records = tb_pvp_rank.zrangebyscore(1, 10, withscores=True)
+    records = tb_pvp_rank.zrangebyscore(1, 20, withscores=True)
     for char_id, rank in records:
         char_id = int(char_id)
         rank = int(rank)
@@ -92,9 +93,31 @@ def pvp_top_rank_request_1501(data, player):
 def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    rank = tb_pvp_rank.zscore(player.base_info.id)
+    _id = int(tb_pvp_rank.zrangebyscore(player.pvp.pvp_upstage_challenge_rank,
+                                        player.pvp.pvp_upstage_challenge_rank))
+    response.pvp_upstage_challenge_id = _id
+
+    rank = int(tb_pvp_rank.zscore(player.base_info.id))
     response.player_rank = int(rank) if rank else -1
     response.pvp_score = player.finance[const.PVP]
+
+    top_rank = []
+    stage_info = get_player_pvp_stage(rank)
+    if stage_info:
+        top_begin, _ = stage_info.get('play_rank')
+        top_rank.append(range(top_begin, top_begin + 10))
+
+    if top_rank:
+        records = tb_pvp_rank.zrangebyscore(min(top_rank), max(top_rank),
+                                            withscores=True)
+        for char_id, rank in records:
+            char_id = int(char_id)
+            rank = int(rank)
+            if rank not in top_rank:
+                continue
+            rank_item = response.rank_items.add()
+            rank_item.rank = rank
+            _with_pvp_info(rank_item, char_id)
 
     player_ranks = player.pvp.pvp_arena_players
 
@@ -110,7 +133,7 @@ def pvp_player_rank_request_1502(data, player):
         rank_item = response.rank_items.add()
         rank_item.rank = rank
         _with_pvp_info(rank_item, char_id)
-    # print response
+    print response
     return response.SerializeToString()
 
 
@@ -183,7 +206,7 @@ def pvp_fight(player, character_id, line_up, skill, response, callback,
         blue_units = record.get('copy_units2')
     else:
         blue_units = record.get('copy_units')
-    #save_line_up_order(line_up, player, skill)
+    # save_line_up_order(line_up, player, skill)
 
     red_units = player.fight_cache_component.get_red_units()
 
@@ -225,6 +248,11 @@ def pvp_fight_request_1505(data, player):
     skill = request.skill
     target_id = int(tb_pvp_rank.zrangebyscore(request.challenge_rank,
                                               request.challenge_rank)[0])
+    # if target_id != request.challenge_id:
+    #     logger.error('pvp challenge id changed!!')
+    #     response.res.result = False
+    #     response.res.result_no = 838
+    #     return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('arenaOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
@@ -283,6 +311,18 @@ def pvp_fight_request_1505(data, player):
                 rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
             if player.pvp.pvp_high_rank > request.challenge_rank:
                 hook_task(player, CONDITIONId.PVP_RANK, request.challenge_rank)
+
+            # stage award
+            stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
+            stage_info_current = get_player_pvp_stage(request.challenge_rank)
+            if not stage_info_current and stage_info_before != stage_info_current:
+                arena_stage_reward = stage_info_current.get('Reward')
+                stage_reward_data = gain(player, arena_stage_reward,
+                                         const.ARENA_WIN)
+                get_return(player, stage_reward_data, response.award2)
+                logger.debug('stage award',
+                             stage_info_current, stage_info_before)
+
             player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
                                            request.challenge_rank)
             logger.debug(" history_high_rank %s current %s" % (player.pvp.pvp_high_rank, before_player_rank))

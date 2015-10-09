@@ -15,13 +15,17 @@ from gfirefly.dbentrust.redis_mode import RedisObject
 from app.game.action.node.start_target import target_update
 tb_rank = RedisObject('tb_rank')
 
-tb_robot2 = tb_character_info.getObj('robot2')
-robot2_rank = {}
-for robot_id in tb_robot2.hkeys():
-    robot_data = tb_robot2.hget(robot_id)
-    robot2_rank[int(robot_id)] = robot_data.get('attackPoint')
 
-robot2_rank = sorted(robot2_rank.items(), key=lambda _: _[1])
+def get_player_pvp_stage(rank):
+    for v in game_configs.arena_fight_config.values():
+        if v.get('type') != 4:
+            continue
+        if not v.get('play_rank'):
+            continue
+        top_begin, top_end = v.get('play_rank')
+        if rank >= top_begin and rank <= top_end:
+            return v
+    return None
 
 
 class CharacterPvpComponent(Component):
@@ -42,6 +46,7 @@ class CharacterPvpComponent(Component):
         self._pvp_high_rank = 99999  # 玩家pvp最高排名
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
         self._pvp_arena_players = []
+        self._pvp_upstage_challenge_rank = 0
 
     def init_data(self, character_info):
         self._pvp_overcome = character_info['pvp_overcome']
@@ -58,6 +63,8 @@ class CharacterPvpComponent(Component):
         self._pvp_high_rank_award = character_info['pvp_high_rank_award']
 
         self._pvp_arena_players = character_info.get('pvp_arena_players', [])
+
+        self._pvp_upstage_challenge_rank = character_info.get('pvp_upstage_challenge_rank', 0)
 
         self.check_time()
 
@@ -76,7 +83,8 @@ class CharacterPvpComponent(Component):
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
-                    pvp_arena_players=self._pvp_arena_players)
+                    pvp_arena_players=self._pvp_arena_players,
+                    pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank)
         character_info.hmset(data)
 
     def new_data(self):
@@ -90,7 +98,8 @@ class CharacterPvpComponent(Component):
                     pvp_times=self._pvp_times,
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
-                    pvp_arena_players=self._pvp_arena_players)
+                    pvp_arena_players=self._pvp_arena_players,
+                    pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank)
         return data
 
     def check_time(self):
@@ -139,7 +148,7 @@ class CharacterPvpComponent(Component):
         return self._pvp_overcome[index]
 
     def pvp_player_rank_refresh(self):
-        rank = tb_pvp_rank.zscore(self.owner.base_info.id)
+        rank = int(tb_pvp_rank.zscore(self.owner.base_info.id))
         rank_max = int(tb_pvp_rank.ztotal())
         if not rank or rank_max == rank:
             rank = rank_max
@@ -154,29 +163,37 @@ class CharacterPvpComponent(Component):
             self._pvp_arena_players = range(1, 11)
             return
 
-        self._pvp_arena_players = [rank]
-        for v in game_configs.arena_fight_config.values():
-            if v.get('type') != 1:
-                continue
-            play_rank = v.get('play_rank')
-            if rank in range(play_rank[0], play_rank[1] + 1):
-                para = dict(k=rank)
-                choose_fields = eval(v.get('choose'), para)
-                logger.info('cur:%s choose:%s', rank, choose_fields)
-                for x, y, c in choose_fields:
-                    _min = int(x)
-                    _max = min(int(y), rank_max)
-                    range_nums = range(_min, _max+1)
-                    if not range_nums:
-                        logger.error('pvp rank range error:min:%s max:%s, rank_max:%s',
-                                     _min, _max, rank_max)
-                        continue
-                    for _ in range(c):
-                        r = random.choice(range_nums)
-                        range_nums.remove(r)
-                        self._pvp_arena_players.append(r)
-                break
-                logger.info('pvp rank refresh:%s', self._pvp_arena_players)
+        self._pvp_arena_players = range(max(1, rank-8), min(rank+1, rank_max))
+        stage_info = get_player_pvp_stage(rank)
+        if stage_info:
+            _choose = stage_info.get('choose')
+            if _choose:
+                a, b = _choose[0]
+                _id = random.randint(a, b)
+                self._pvp_upstage_challenge_rank = _id
+
+        # for v in game_configs.arena_fight_config.values():
+        #     if v.get('type') != 1:
+        #         continue
+        #     play_rank = v.get('play_rank')
+        #     if rank in range(play_rank[0], play_rank[1] + 1):
+        #         para = dict(k=rank)
+        #         choose_fields = eval(v.get('choose'), para)
+        #         logger.info('cur:%s choose:%s', rank, choose_fields)
+        #         for x, y, c in choose_fields:
+        #             _min = int(x)
+        #             _max = min(int(y), rank_max)
+        #             range_nums = range(_min, _max+1)
+        #             if not range_nums:
+        #                 logger.error('pvp rank range error:min:%s max:%s, rank_max:%s',
+        #                              _min, _max, rank_max)
+        #                 continue
+        #             for _ in range(c):
+        #                 r = random.choice(range_nums)
+        #                 range_nums.remove(r)
+        #                 self._pvp_arena_players.append(r)
+        #         break
+        #         logger.info('pvp rank refresh:%s', self._pvp_arena_players)
 
     @property
     def pvp_overcome(self):
@@ -251,6 +268,10 @@ class CharacterPvpComponent(Component):
     def pvp_overcome_refresh_count(self):
         return self._pvp_overcome_refresh_count
 
+    @property
+    def pvp_upstage_challenge_rank(self):
+        return self._pvp_upstage_challenge_rank
+
     # @pvp_overcome_refresh_count.setter
     # def pvp_overcome_refresh_count(self, value):
     #     self._pvp_overcome_refresh_count = value
@@ -265,31 +286,6 @@ class CharacterPvpComponent(Component):
 def get_overcomes(player_id, player_ap):
     rank_name, _ = rank_helper.get_power_rank_name()
     rank = tb_rank.getObj(rank_name)
-    rank_toal = rank.ztotal()
-    if rank_toal < 20:
-        if len(robot2_rank) < 20:
-            logger.error('not robot2 exist')
-            return []
-        robot_ids = set([(0, 0)])
-        index = 0
-        for i in range(len(robot2_rank)):
-            rid, rap = robot2_rank[i]
-            if rap > player_ap:
-                index = i
-                break
-        else:
-            index = len(robot2_rank)
-
-        _min = max(index - 20, 0)
-        _max = min(index + 20, len(robot2_rank) - 1)
-        while len(robot_ids) != 16:
-            _id = random.randint(_min, _max)
-            robot_ids.add(robot2_rank[_id])
-        robot_ids = sorted(list(robot_ids), key=lambda x: x[1])
-        robot_ids = dict(robot_ids).keys()
-        logger.error('reset overcome not enough player:%s(%s)',
-                     robot_ids, index)
-        return robot_ids
     types = [20001, 20002, 20003]
     count = 0
     ids = set()
