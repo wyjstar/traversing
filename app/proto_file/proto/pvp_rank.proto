@@ -17,12 +17,14 @@ message PlayerRankResponse{
     repeated RankItems rank_items = 1;
     optional int32 player_rank = 2;
     optional int32 pvp_score = 3;
+    optional int32 pvp_upstage_challenge_id = 4;
 }
 
 message PvpFightRequest{
     required int32 challenge_rank = 1;
-    repeated int32 lineup = 2; // 队形
-    optional int32 skill = 3; //无双技能ID
+    optional int32 challenge_id = 2;
+    repeated int32 lineup = 3; // 队形
+    optional int32 skill = 4; //无双技能ID
 }
 
 message PvpFightRevenge{
@@ -69,5 +71,6 @@ message PvpFightResponse{
     optional GameResourcesResponse gain = 11;
     optional int32 top_rank = 12;
     optional GameResourcesResponse award = 13;
-    optional int32 rank_incr = 14;
+    optional GameResourcesResponse award2 = 14;
+    optional int32 rank_incr = 15;
 }
