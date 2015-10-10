@@ -118,7 +118,7 @@ function FMUnParaSkill:clear_mp()
 end
 
 function FMUnParaSkill:add_mp()
-    print("FMUnParaSkill:add_mp")
+    print("FMUnParaSkill:add_mp",self.mp,self.mp_step,self.mp_max)
     --docstring for add_mp--
     if not self.unpara_info then
         return 

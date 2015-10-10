@@ -143,7 +143,7 @@ function FightProcess:perform_before_buff(army, enemy, attacker)
     print("FightProcess:perform_begin_action====================")
     local skill = attacker.skill
     -- 攻击前进行执行buff
-    if skill:get_skill_type() == TYPE_NORMAL then
+    if skill:get_skill_type() == TYPE_NORMAL and (attacker.buff_manager and not attacker.buff_manager:is_dizzy()) then
         attacker.buff_manager:perform_hp_mp_buff(self) -- hp mp buff
 
         if not table.ink(army, attacker.pos) then
@@ -161,7 +161,9 @@ function FightProcess:perform_begin_action(army, enemy, attacker)
     local skill = attacker.skill
     local is_mp_skill = skill:is_mp_skill()
     local step_action = self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.before_buffs, STEP_BEGIN_ACTION)
-    step_action.beginAction = attacker.skill:get_begin_action(is_mp_skill)
+    if attacker.buff_manager and attacker.buff_manager:is_dizzy() then
+        step_action.beginAction = attacker.skill:get_begin_action(is_mp_skill)
+    end
     return step_action
 end
 
@@ -295,7 +297,7 @@ end
 function FightProcess:perform_after_buff(army, enemy, attacker)
     appendFile2("FightProcess:perform_after_buff", 0)
     -- 攻击后进行执行buff
-    if attacker.buff_manager then
+    if attacker.buff_manager and attacker.buff_manager:is_dizzy() then
         attacker.buff_manager:perform_active_buff(self)   --主动buff，在攻击有效后触发
     end
     return self:construct_step_action(attacker, self:get_current_type(), SKILL_STAGE_IN_BUFF, self.temp_buff_set.after_buffs, STEP_AFTER_BUFF)
