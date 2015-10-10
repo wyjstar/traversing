@@ -15,7 +15,7 @@ import player_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game.proto',
   package='',
-  serialized_pb='\n\ngame.proto\x1a\x0c\x63ommon.proto\x1a\x0cplayer.proto\"\x8b\x04\n\x10GameLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\x12\x0f\n\x07plat_id\x18\x02 \x01(\x05\x12\x16\n\x0e\x63lient_version\x18\x03 \x01(\t\x12\x17\n\x0fsystem_software\x18\x04 \x01(\t\x12\x17\n\x0fsystem_hardware\x18\x05 \x01(\t\x12\x14\n\x0ctelecom_oper\x18\x06 \x01(\t\x12\x0f\n\x07network\x18\x07 \x01(\t\x12\x14\n\x0cscreen_width\x18\x08 \x01(\x05\x12\x14\n\x0cscreen_hight\x18\t \x01(\x05\x12\x0f\n\x07\x64\x65nsity\x18\n \x01(\x02\x12\x15\n\rlogin_channel\x18\x0b \x01(\x05\x12\x0b\n\x03mac\x18\x0c \x01(\t\x12\x14\n\x0c\x63pu_hardware\x18\r \x01(\t\x12\x0e\n\x06memory\x18\x0e \x01(\x05\x12\x11\n\tgl_render\x18\x0f \x01(\t\x12\x12\n\ngl_version\x18\x10 \x01(\t\x12\x11\n\tdevice_id\x18\x11 \x01(\t\x12\x10\n\x08platform\x18\x12 \x01(\x05\x12\x0f\n\x07open_id\x18\x13 \x01(\t\x12\x10\n\x08open_key\x18\x14 \x01(\t\x12\x11\n\tpay_token\x18\x15 \x01(\t\x12\r\n\x05\x61ppid\x18\x16 \x01(\t\x12\x0e\n\x06\x61ppkey\x18\x1a \x01(\t\x12\n\n\x02pf\x18\x17 \x01(\t\x12\r\n\x05pfkey\x18\x18 \x01(\t\x12\x0e\n\x06zoneid\x18\x19 \x01(\t\x12\x13\n\x0brecharge_id\x18\x1b \x01(\x05\"\xd5\x07\n\x11GameLoginResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\r\n\x05level\x18\x04 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x05 \x01(\x05\x12\x10\n\x08\x66inances\x18\x06 \x03(\x05\x12\x11\n\tfine_hero\x18\x07 \x01(\x05\x12\x16\n\x0e\x65xcellent_hero\x18\x08 \x01(\x05\x12\x16\n\x0e\x66ine_equipment\x18\t \x01(\x05\x12\x1b\n\x13\x65xcellent_equipment\x18\n \x01(\x05\x12\x11\n\tpvp_times\x18\x0b \x01(\x05\x12\x19\n\x11pvp_refresh_count\x18\x0c \x01(\x05\x12\x11\n\tvip_level\x18\r \x01(\x05\x12\x13\n\x0bserver_time\x18\x0e \x01(\x05\x12\x10\n\x08guild_id\x18\x0f \x01(\x05\x12\x14\n\x0c\x63ombat_power\x18\x10 \x01(\x02\x12\x17\n\x0fnewbee_guide_id\x18\x11 \x01(\x05\x12\x15\n\rregister_time\x18\x18 \x01(\x05\x12\x19\n\x11get_stamina_times\x18\x12 \x01(\x05\x12\x19\n\x11\x62uy_stamina_times\x18\x13 \x01(\x05\x12\x1e\n\x16last_gain_stamina_time\x18\x14 \x01(\x05\x12\x1f\n\x17soul_shop_refresh_times\x18\x15 \x01(\x05\x12\x0c\n\x04head\x18\x16 \x03(\x05\x12\x10\n\x08now_head\x18\x17 \x01(\x05\x12\x1a\n\x12\x66irst_recharge_ids\x18\x19 \x03(\x05\x12\x0b\n\x03gag\x18\x1a \x01(\x05\x12\x0f\n\x07\x63losure\x18\x1b \x01(\x05\x12\x10\n\x08recharge\x18\x1c \x01(\x05\x12\x15\n\rtomorrow_gift\x18\x1d \x01(\x05\x12\x14\n\x0c\x62\x61ttle_speed\x18\x1e \x01(\x05\x12\x17\n\x0f\x66ine_hero_times\x18\x1f \x01(\x05\x12\x1c\n\x14\x65xcellent_hero_times\x18  \x01(\x05\x12\x18\n\x10\x66ight_power_rank\x18! \x01(\x05\x12\x1a\n\x12pvp_overcome_index\x18\" \x01(\x05\x12\"\n\x1apvp_overcome_refresh_count\x18# \x01(\x05\x12#\n\tbuy_times\x18$ \x03(\x0b\x32\x10.BuyStaminaTimes\x12!\n\x19is_open_next_day_activity\x18% \x01(\x08\x12\x1f\n\x17\x66irst_recharge_activity\x18& \x01(\x05\x12\x13\n\x0bhight_power\x18\' \x01(\x02\x12\x10\n\x08story_id\x18( \x01(\x05\x12\x17\n\x0f\x62utton_one_time\x18) \x03(\x05\"c\n\x0f\x42uyStaminaTimes\x12\x15\n\rresource_type\x18\x01 \x01(\x05\x12\x19\n\x11\x62uy_stamina_times\x18\x02 \x01(\x05\x12\x1e\n\x16last_gain_stamina_time\x18\x03 \x01(\x05\"(\n\x11HeartBeatResponse\x12\x13\n\x0bserver_time\x18\x01 \x01(\x05\">\n\x12StaminaOperRequest\x12(\n\x0f\x66inance_changes\x18\x02 \x02(\x0b\x32\x0f.FinanceChanges\"p\n\x13StaminaOperResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12(\n\x0f\x66inance_changes\x18\x02 \x02(\x0b\x32\x0f.FinanceChanges\x12\x11\n\tbuy_times\x18\x03 \x01(\x05')
+  serialized_pb='\n\ngame.proto\x1a\x0c\x63ommon.proto\x1a\x0cplayer.proto\"\x8b\x04\n\x10GameLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\x12\x0f\n\x07plat_id\x18\x02 \x01(\x05\x12\x16\n\x0e\x63lient_version\x18\x03 \x01(\t\x12\x17\n\x0fsystem_software\x18\x04 \x01(\t\x12\x17\n\x0fsystem_hardware\x18\x05 \x01(\t\x12\x14\n\x0ctelecom_oper\x18\x06 \x01(\t\x12\x0f\n\x07network\x18\x07 \x01(\t\x12\x14\n\x0cscreen_width\x18\x08 \x01(\x05\x12\x14\n\x0cscreen_hight\x18\t \x01(\x05\x12\x0f\n\x07\x64\x65nsity\x18\n \x01(\x02\x12\x15\n\rlogin_channel\x18\x0b \x01(\x05\x12\x0b\n\x03mac\x18\x0c \x01(\t\x12\x14\n\x0c\x63pu_hardware\x18\r \x01(\t\x12\x0e\n\x06memory\x18\x0e \x01(\x05\x12\x11\n\tgl_render\x18\x0f \x01(\t\x12\x12\n\ngl_version\x18\x10 \x01(\t\x12\x11\n\tdevice_id\x18\x11 \x01(\t\x12\x10\n\x08platform\x18\x12 \x01(\x05\x12\x0f\n\x07open_id\x18\x13 \x01(\t\x12\x10\n\x08open_key\x18\x14 \x01(\t\x12\x11\n\tpay_token\x18\x15 \x01(\t\x12\r\n\x05\x61ppid\x18\x16 \x01(\t\x12\x0e\n\x06\x61ppkey\x18\x1a \x01(\t\x12\n\n\x02pf\x18\x17 \x01(\t\x12\r\n\x05pfkey\x18\x18 \x01(\t\x12\x0e\n\x06zoneid\x18\x19 \x01(\t\x12\x13\n\x0brecharge_id\x18\x1b \x01(\x05\"\xf1\x07\n\x11GameLoginResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x10\n\x08nickname\x18\x03 \x01(\t\x12\r\n\x05level\x18\x04 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x05 \x01(\x05\x12\x10\n\x08\x66inances\x18\x06 \x03(\x05\x12\x11\n\tfine_hero\x18\x07 \x01(\x05\x12\x16\n\x0e\x65xcellent_hero\x18\x08 \x01(\x05\x12\x16\n\x0e\x66ine_equipment\x18\t \x01(\x05\x12\x1b\n\x13\x65xcellent_equipment\x18\n \x01(\x05\x12\x11\n\tpvp_times\x18\x0b \x01(\x05\x12\x19\n\x11pvp_refresh_count\x18\x0c \x01(\x05\x12\x11\n\tvip_level\x18\r \x01(\x05\x12\x13\n\x0bserver_time\x18\x0e \x01(\x05\x12\x10\n\x08guild_id\x18\x0f \x01(\x05\x12\x14\n\x0c\x63ombat_power\x18\x10 \x01(\x02\x12\x17\n\x0fnewbee_guide_id\x18\x11 \x01(\x05\x12\x15\n\rregister_time\x18\x18 \x01(\x05\x12\x19\n\x11get_stamina_times\x18\x12 \x01(\x05\x12\x19\n\x11\x62uy_stamina_times\x18\x13 \x01(\x05\x12\x1e\n\x16last_gain_stamina_time\x18\x14 \x01(\x05\x12\x1f\n\x17soul_shop_refresh_times\x18\x15 \x01(\x05\x12\x0c\n\x04head\x18\x16 \x03(\x05\x12\x10\n\x08now_head\x18\x17 \x01(\x05\x12\x1a\n\x12\x66irst_recharge_ids\x18\x19 \x03(\x05\x12\x0b\n\x03gag\x18\x1a \x01(\x05\x12\x0f\n\x07\x63losure\x18\x1b \x01(\x05\x12\x10\n\x08recharge\x18\x1c \x01(\x05\x12\x15\n\rtomorrow_gift\x18\x1d \x01(\x05\x12\x14\n\x0c\x62\x61ttle_speed\x18\x1e \x01(\x05\x12\x17\n\x0f\x66ine_hero_times\x18\x1f \x01(\x05\x12\x1c\n\x14\x65xcellent_hero_times\x18  \x01(\x05\x12\x18\n\x10\x66ight_power_rank\x18! \x01(\x05\x12\x1a\n\x12pvp_overcome_index\x18\" \x01(\x05\x12\x1a\n\x12pvp_overcome_stars\x18$ \x01(\x05\x12\"\n\x1apvp_overcome_refresh_count\x18% \x01(\x05\x12#\n\tbuy_times\x18& \x03(\x0b\x32\x10.BuyStaminaTimes\x12!\n\x19is_open_next_day_activity\x18\' \x01(\x08\x12\x1f\n\x17\x66irst_recharge_activity\x18( \x01(\x05\x12\x13\n\x0bhight_power\x18) \x01(\x02\x12\x10\n\x08story_id\x18* \x01(\x05\x12\x17\n\x0f\x62utton_one_time\x18+ \x03(\x05\"c\n\x0f\x42uyStaminaTimes\x12\x15\n\rresource_type\x18\x01 \x01(\x05\x12\x19\n\x11\x62uy_stamina_times\x18\x02 \x01(\x05\x12\x1e\n\x16last_gain_stamina_time\x18\x03 \x01(\x05\"(\n\x11HeartBeatResponse\x12\x13\n\x0bserver_time\x18\x01 \x01(\x05\">\n\x12StaminaOperRequest\x12(\n\x0f\x66inance_changes\x18\x02 \x02(\x0b\x32\x0f.FinanceChanges\"p\n\x13StaminaOperResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12(\n\x0f\x66inance_changes\x18\x02 \x02(\x0b\x32\x0f.FinanceChanges\x12\x11\n\tbuy_times\x18\x03 \x01(\x05')
 
 
 
@@ -476,50 +476,57 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='pvp_overcome_refresh_count', full_name='GameLoginResponse.pvp_overcome_refresh_count', index=34,
-      number=35, type=5, cpp_type=1, label=1,
+      name='pvp_overcome_stars', full_name='GameLoginResponse.pvp_overcome_stars', index=34,
+      number=36, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='buy_times', full_name='GameLoginResponse.buy_times', index=35,
-      number=36, type=11, cpp_type=10, label=3,
+      name='pvp_overcome_refresh_count', full_name='GameLoginResponse.pvp_overcome_refresh_count', index=35,
+      number=37, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='buy_times', full_name='GameLoginResponse.buy_times', index=36,
+      number=38, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_open_next_day_activity', full_name='GameLoginResponse.is_open_next_day_activity', index=36,
-      number=37, type=8, cpp_type=7, label=1,
+      name='is_open_next_day_activity', full_name='GameLoginResponse.is_open_next_day_activity', index=37,
+      number=39, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='first_recharge_activity', full_name='GameLoginResponse.first_recharge_activity', index=37,
-      number=38, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hight_power', full_name='GameLoginResponse.hight_power', index=38,
-      number=39, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='story_id', full_name='GameLoginResponse.story_id', index=39,
+      name='first_recharge_activity', full_name='GameLoginResponse.first_recharge_activity', index=38,
       number=40, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='button_one_time', full_name='GameLoginResponse.button_one_time', index=40,
-      number=41, type=5, cpp_type=1, label=3,
+      name='hight_power', full_name='GameLoginResponse.hight_power', index=39,
+      number=41, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='story_id', full_name='GameLoginResponse.story_id', index=40,
+      number=42, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='button_one_time', full_name='GameLoginResponse.button_one_time', index=41,
+      number=43, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -534,7 +541,7 @@ _GAMELOGINRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=569,
-  serialized_end=1550,
+  serialized_end=1578,
 )
 
 
@@ -575,8 +582,8 @@ _BUYSTAMINATIMES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1552,
-  serialized_end=1651,
+  serialized_start=1580,
+  serialized_end=1679,
 )
 
 
@@ -603,8 +610,8 @@ _HEARTBEATRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1653,
-  serialized_end=1693,
+  serialized_start=1681,
+  serialized_end=1721,
 )
 
 
@@ -631,8 +638,8 @@ _STAMINAOPERREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1695,
-  serialized_end=1757,
+  serialized_start=1723,
+  serialized_end=1785,
 )
 
 
@@ -673,8 +680,8 @@ _STAMINAOPERRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1759,
-  serialized_end=1871,
+  serialized_start=1787,
+  serialized_end=1899,
 )
 
 _GAMELOGINRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
