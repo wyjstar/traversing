@@ -159,12 +159,14 @@ class CharacterPvpComponent(Component):
         return self._pvp_overcome[index]
 
     def pvp_player_rank_refresh(self):
-        rank = int(tb_pvp_rank.zscore(self.owner.base_info.id))
+        rank = tb_pvp_rank.zscore(self.owner.base_info.id)
         rank_max = int(tb_pvp_rank.ztotal())
         if not rank or rank_max == rank:
             rank = rank_max
             self._pvp_arena_players = range(rank-9, rank + 1)
             return
+        else:
+            rank = int(rank)
 
         if self._pvp_current_rank == rank:
             return
