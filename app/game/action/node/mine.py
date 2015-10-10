@@ -83,7 +83,6 @@ def mine_status(player, response):
 
 
 def one_mine_info(mstatus, one_mine):
-    print '4343434896865', mstatus
     position = mstatus.get('position', None)
     if position is not None:
         one_mine.position = position
@@ -220,6 +219,7 @@ def query_1243(data, player):
         if stype == 2:
             response.stage_id = int(lineup)
         if stype == 1:
+            response.accelerate_times = player.mine._mine[request.position]._accelerate_times
             if lineup is not None:
                 response.lineup.ParseFromString(lineup)
 
@@ -568,6 +568,7 @@ def acc_mine_1250(data, player):
         response.res.result = True
     # print 'price', price
     need_gold = item_group_helper.get_consume_gold_num([price])
+
     def func():
         consume_return_data = item_group_helper.consume(player, [price], const.MINE_ACC)  # 消耗
         item_group_helper.get_return(player, consume_return_data, response.consume)

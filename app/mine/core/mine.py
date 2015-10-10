@@ -124,6 +124,8 @@ def gen_stone(num, odds_dict, limit, store, now_data):
         return
     for _ in range(0, num):
         stone_id = random_pick(odds_dict, sum(odds_dict.values()))
+        if stone_id is None:
+            continue
         stone_id = int(stone_id)
         if stone_id == 0:
             continue
