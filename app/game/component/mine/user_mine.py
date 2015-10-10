@@ -538,6 +538,7 @@ class PlayerField(Mine):
 
     def draw_stones(self):
         status, normal, lucky = remote_gate.mine_harvest_remote(self._tid, self._seq)
+        self._status = 3
         return cPickle.loads(normal), cPickle.loads(lucky)
 
     def mine_data(self):
@@ -595,7 +596,7 @@ class MonsterField(Mine):
         monster_mine._nickname = u"野怪"
         monster_mine._seq = '%s.%s' % (nickname, time.time())
         mine = ConfigData.mine(monster_mine._mine_id)
-        monster_mine._gen_time = int(mine.timeLimitedR / 60)
+        monster_mine._gen_time = int(mine.timeLimitedR)
         # print 'monster_mine._gen_time', monster_mine._gen_time
         return monster_mine
 
