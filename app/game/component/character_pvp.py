@@ -40,6 +40,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_refresh_count = 0
         self._pvp_overcome_awards = []
         self._pvp_overcome_stars = 0
+        self._pvp_overcome_buff = {}
 
         self._pvp_times = 0  # pvp次数
         self._pvp_refresh_time = 0
@@ -69,6 +70,7 @@ class CharacterPvpComponent(Component):
         self._pvp_upstage_challenge_rank = character_info.get('pvp_upstage_challenge_rank', 0)
         self._pvp_overcome_awards = character_info.get('pvp_overcome_awards', [])
         self._pvp_overcome_stars = character_info.get('pvp_overcome_stars', 0)
+        self._pvp_overcome_buff = character_info.get('pvp_overcome_buff', {})
 
         self.check_time()
 
@@ -91,7 +93,8 @@ class CharacterPvpComponent(Component):
                     pvp_arena_players=self._pvp_arena_players,
                     pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank,
                     pvp_overcome_awards=self._pvp_overcome_awards,
-                    pvp_overcome_stars=self._pvp_overcome_stars)
+                    pvp_overcome_stars=self._pvp_overcome_stars,
+                    pvp_overcome_buff=self._pvp_overcome_buff)
         character_info.hmset(data)
 
     def new_data(self):
@@ -108,7 +111,8 @@ class CharacterPvpComponent(Component):
                     pvp_arena_players=self._pvp_arena_players,
                     pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank,
                     pvp_overcome_awards=self._pvp_overcome_awards,
-                    pvp_overcome_stars=self._pvp_overcome_stars)
+                    pvp_overcome_stars=self._pvp_overcome_stars,
+                    pvp_overcome_buff=self._pvp_overcome_buff)
         return data
 
     def check_time(self):
@@ -149,6 +153,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_current = 1
         self._pvp_overcome_awards = []
         self._pvp_overcome_stars = 0
+        self._pvp_overcome_buff = {}
         self.save_data()
         return True
 
@@ -223,6 +228,14 @@ class CharacterPvpComponent(Component):
     @pvp_overcome_awards.setter
     def pvp_overcome_awards(self, value):
         self._pvp_overcome_awards = value
+
+    @property
+    def pvp_overcome_buff(self):
+        return self._pvp_overcome_buff
+
+    @pvp_overcome_buff.setter
+    def pvp_overcome_buff(self, value):
+        self._pvp_overcome_buff = value
 
     @property
     def pvp_overcome_stars(self):

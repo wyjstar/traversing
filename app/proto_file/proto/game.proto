@@ -75,16 +75,17 @@ message GameLoginResponse{
     optional int32 excellent_hero_times = 32; //神将抽取次数
     optional int32 fight_power_rank = 33; //战力排行
     optional int32 pvp_overcome_index = 34;
-    optional int32 pvp_overcome_refresh_count = 35;
+    optional int32 pvp_overcome_stars = 36;
+    optional int32 pvp_overcome_refresh_count = 36;
     //
-    repeated BuyStaminaTimes buy_times = 36; //购买资源（体力，讨伐令，鞋子）次数
+    repeated BuyStaminaTimes buy_times = 37; //购买资源（体力，讨伐令，鞋子）次数
     //
-    optional bool is_open_next_day_activity = 37; // 是否开启次日功能
+    optional bool is_open_next_day_activity = 38; // 是否开启次日功能
     //
-    optional int32 first_recharge_activity = 38; // 是否已获得首次充值 -1:没领过 1:领过 
-    optional float hight_power = 39; // 最高战力
-	optional int32 story_id = 40; // 关卡剧情
-    repeated int32 button_one_time = 41; //  0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
+    optional int32 first_recharge_activity = 39; // 是否已获得首次充值 -1:没领过 1:领过 
+    optional float hight_power = 40; // 最高战力
+	optional int32 story_id = 41; // 关卡剧情
+    repeated int32 button_one_time = 42; //  0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
 
 }
 

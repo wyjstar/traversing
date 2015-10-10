@@ -2,8 +2,9 @@
 """
 created by sphinx on 27/10/14.
 """
-import cPickle
 import time
+import random
+import cPickle
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.proto_file.db_pb2 import Heads_DB
@@ -590,6 +591,79 @@ def PvpOvercomAward_1510(data, player):
     get_return(player, return_data, response.gain)
     player.pvp.pvp_overcome_awards.append(request.index)
     player.pvp.save_data()
+
+    response.res.result = True
+    return response.SerializePartialToString()
+
+
+def random_buf(buff):
+    wights = 0
+    for v in buff.values():
+        wights += v[1]
+
+    _rand_num = random.randint(0, wights)
+    for item in buff.values():
+        star, w, bt, vt, value = item
+        if _rand_num < w:
+            return item
+        else:
+            _rand_num -= w
+
+
+@remoteserviceHandle('gate')
+def PvpOvercomeBuff_1511(data, player):
+    request = pvp_rank_pb2.GetPvpOvercomeBuffRequest()
+    request.ParseFromString(data)
+
+    player.pvp.check_time()
+    response = pvp_rank_pb2.GetPvpOvercomeBuffResponse()
+    ggzj_item = game_configs.ggzj_config.get(request.index)
+
+    if not ggzj_item:
+        logger.error('ggzj config id err:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 151101
+        return response.SerializePartialToString()
+
+    if ggzj_item.get('section') > player.pvp.pvp_overcome_current:
+        logger.error('ggzj award id err:%s(%s-%s)',
+                     request.index,
+                     ggzj_item.get('section'),
+                     player.pvp.pvp_overcome_current)
+        response.res.result = False
+        response.res.result_no = 151102
+        return response.SerializePartialToString()
+
+    if request.num == 1:
+        buff = ggzj_item.get('buff1')
+    elif request.num == 2:
+        buff = ggzj_item.get('buff2')
+    else:
+        buff = ggzj_item.get('buff3')
+
+    if not buff:
+        logger.error('ggzj buff is null:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 151104
+        return response.SerializePartialToString()
+
+    logger.info('ggzj take buff %s %s', request.index, buff)
+
+    star, _, bt, vt, value = random_buf(buff)
+    if star > player.pvp.pvp_overcome_stars:
+        logger.error('ggzj buff not enough star:%s-%s',
+                     star, player.pvp.pvp_overcome_stars)
+        response.res.result = False
+        response.res.result_no = 151105
+        return response.SerializePartialToString()
+
+    player.pvp.pvp_overcome_stars -= star
+    player.pvp.pvp_overcome_buff[bt] = [vt, value]
+    player.pvp.save_data()
+    res_buff = response.buff.add()
+    res_buff.buff_type = bt
+    res_buff.value_type = vt
+    res_buff.value = value
 
     response.res.result = True
     return response.SerializePartialToString()
