@@ -315,6 +315,7 @@ def get_overcomes(player_id, player_ap):
     rank = tb_rank.getObj(rank_name)
     rank_toal = rank.ztotal()
     if rank_toal < 50:
+        logger.error('not enough player')
         return []
     types = [20001, 20002, 20003]
     count = 0
