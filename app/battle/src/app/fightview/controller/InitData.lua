@@ -371,7 +371,7 @@ function initStageData(data)
         table.insert(blueGroup, blueUnits)
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.hero_unpar, data.hero_unpar_level, const.HOME_ARMY, "red", 7)
+    local redUnParaSkill = constructUnparaSkill(data.hero_unpar, data.hero_unpar_level, const.HOME_ARMY, "red", 7 )
     local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     local buddySkill = constructBuddySkill(data.friend)

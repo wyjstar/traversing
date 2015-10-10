@@ -2,7 +2,6 @@
 --
 --	包括，玩家信息，银币，金币，战斗力 等等
 --
-DROP_BREW = 13
 local CustomTask = import("...util.CustomTask")
 local CommonData = class("CommonData")
 
@@ -320,7 +319,9 @@ function CommonData:setFinance(type_, num)
         self:dispatchEvent(EventName.UPDATE_GOLD)   
         --print("<<=======send UPDATE_GOLD event=======>>")     
     elseif type_ == RES_TYPE.COIN then
-        self:dispatchEvent(EventName.UPDATE_SILVER)        
+        self:dispatchEvent(EventName.UPDATE_SILVER)
+    elseif type_ == RES_TYPE.QJYL then
+        self:dispatchEvent(EventName.UPDATE_QJYL)
     end
 end
 
@@ -1301,6 +1302,31 @@ end
 function CommonData:isGiftRedDot()
     local timeCanGet = self:getTimeCanGet()
     return self:isFeastTime(timeCanGet) and not self:isEatFeast(timeCanGet)
+end
+
+--[[--
+是否显示经脉红点,如果拥有的琼浆玉露能够完成至少一次点穴,那么显示红点
+]]
+function CommonData:isJingMaiRedDotInHome()
+    print("CommonData:isJingMaiRedDotInHome")
+    -- 获取琼浆玉露数量
+    local qjyl = self:getFinance(RES_TYPE.QJYL)
+    -- 获取下次点穴的消耗
+    local heroList = getDataManager():getSoldierData():getSoldierData()
+    for k,v in pairs(heroList) do
+        if v.hero_no then
+            local sealID = getDataManager():getSoldierData():getSealById(v.hero_no)
+            sealID = sealID or 0
+            local nextSealID = getTemplateManager():getSealTemplate():getNext(sealID)
+            print("_LZD:-------------", v.hero_no, sealID, nextSealID)
+            local sealCost = getTemplateManager():getSealTemplate():getExpend(nextSealID)
+            if sealCost and qjyl >= sealCost then -- 可以点穴
+                return true
+            end
+        end
+    end
+
+    return false
 end
 
 return CommonData

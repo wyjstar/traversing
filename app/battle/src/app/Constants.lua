@@ -470,6 +470,7 @@ RES_TYPE = {
     SHOES        = 20, --鞋子
     PLAYER_EXP   = 12, --战队经验
     GOD_HERO_SOUL= 29, --将魂
+    QJYL         = 13, --琼浆玉露
 }
 
 TRAVEL_EVENT_TYPE = {
@@ -534,6 +535,7 @@ EventName = {
     TRAVEL_EVENT_CHANGE = "TRAVEL_EVENT_CHANGE", -- 游历,加入等待事件到列表中
     UPDATE_LINEUP = "UPDATE_LINEUP",--更新了阵容信息
     UPDATE_SEVENDAY = "UPDATE_SEVENDAY",  --更新七日红点提示
+    UPDATE_QJYL = "UPDATE_QJYL", --更新经脉红点
 }
 
 NoticeColor = {
