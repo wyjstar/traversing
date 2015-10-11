@@ -129,7 +129,6 @@ if __name__ == '__main__':
                 continue
             rank_period = v.get('period')
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
-                print rank, 'robot2'
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
                 hero_ids = init_line_up(player, v, level)
