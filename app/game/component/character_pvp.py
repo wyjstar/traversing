@@ -313,6 +313,9 @@ class CharacterPvpComponent(Component):
 def get_overcomes(player_id, player_ap):
     rank_name, _ = rank_helper.get_power_rank_name()
     rank = tb_rank.getObj(rank_name)
+    rank_toal = rank.ztotal()
+    if rank_toal < 50:
+        return []
     types = [20001, 20002, 20003]
     count = 0
     ids = set()
