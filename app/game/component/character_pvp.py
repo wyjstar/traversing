@@ -16,7 +16,7 @@ from app.game.action.node.start_target import target_update
 tb_rank = RedisObject('tb_rank')
 
 
-def get_player_pvp_stage(rank):
+def get_player_pvp_stage_up(rank):
     for v in game_configs.arena_fight_config.values():
         if v.get('type') != 4:
             continue
@@ -38,6 +38,8 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_current = 1
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count = 0
+        self._pvp_overcome_awards = []
+        self._pvp_overcome_stars = 0
 
         self._pvp_times = 0  # pvp次数
         self._pvp_refresh_time = 0
@@ -65,10 +67,13 @@ class CharacterPvpComponent(Component):
         self._pvp_arena_players = character_info.get('pvp_arena_players', [])
 
         self._pvp_upstage_challenge_rank = character_info.get('pvp_upstage_challenge_rank', 0)
+        self._pvp_overcome_awards = character_info.get('pvp_overcome_awards', [])
+        self._pvp_overcome_stars = character_info.get('pvp_overcome_stars', 0)
 
         self.check_time()
 
         self.save_data()
+        self.reset_overcome()
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
@@ -84,7 +89,9 @@ class CharacterPvpComponent(Component):
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
                     pvp_arena_players=self._pvp_arena_players,
-                    pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank)
+                    pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank,
+                    pvp_overcome_awards=self._pvp_overcome_awards,
+                    pvp_overcome_stars=self._pvp_overcome_stars)
         character_info.hmset(data)
 
     def new_data(self):
@@ -99,7 +106,9 @@ class CharacterPvpComponent(Component):
                     pvp_refresh_time=self._pvp_refresh_time,
                     pvp_refresh_count=self._pvp_refresh_count,
                     pvp_arena_players=self._pvp_arena_players,
-                    pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank)
+                    pvp_upstage_challenge_rank=self._pvp_upstage_challenge_rank,
+                    pvp_overcome_awards=self._pvp_overcome_awards,
+                    pvp_overcome_stars=self._pvp_overcome_stars)
         return data
 
     def check_time(self):
@@ -138,6 +147,8 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_refresh_time = time.time()
         self._pvp_overcome_refresh_count += 1
         self._pvp_overcome_current = 1
+        self._pvp_overcome_awards = []
+        self._pvp_overcome_stars = 0
         self.save_data()
         return True
 
@@ -163,37 +174,37 @@ class CharacterPvpComponent(Component):
             self._pvp_arena_players = range(1, 11)
             return
 
-        self._pvp_arena_players = range(max(1, rank-8), min(rank+1, rank_max))
-        stage_info = get_player_pvp_stage(rank)
+        # self._pvp_arena_players = range(max(1, rank-8), min(rank+1, rank_max))
+        stage_info = get_player_pvp_stage_up(rank)
         if stage_info:
-            _choose = stage_info.get('choose')
+            _choose = eval(stage_info.get('choose'))
             if _choose:
                 a, b = _choose[0]
                 _id = random.randint(a, b)
                 self._pvp_upstage_challenge_rank = _id
 
-        # for v in game_configs.arena_fight_config.values():
-        #     if v.get('type') != 1:
-        #         continue
-        #     play_rank = v.get('play_rank')
-        #     if rank in range(play_rank[0], play_rank[1] + 1):
-        #         para = dict(k=rank)
-        #         choose_fields = eval(v.get('choose'), para)
-        #         logger.info('cur:%s choose:%s', rank, choose_fields)
-        #         for x, y, c in choose_fields:
-        #             _min = int(x)
-        #             _max = min(int(y), rank_max)
-        #             range_nums = range(_min, _max+1)
-        #             if not range_nums:
-        #                 logger.error('pvp rank range error:min:%s max:%s, rank_max:%s',
-        #                              _min, _max, rank_max)
-        #                 continue
-        #             for _ in range(c):
-        #                 r = random.choice(range_nums)
-        #                 range_nums.remove(r)
-        #                 self._pvp_arena_players.append(r)
-        #         break
-        #         logger.info('pvp rank refresh:%s', self._pvp_arena_players)
+        for v in game_configs.arena_fight_config.values():
+            if v.get('type') != 1:
+                continue
+            play_rank = v.get('play_rank')
+            if rank in range(play_rank[0], play_rank[1] + 1):
+                para = dict(k=rank)
+                choose_fields = eval(v.get('choose'), para)
+                logger.info('cur:%s choose:%s', rank, choose_fields)
+                for x, y, c in choose_fields:
+                    _min = int(x)
+                    _max = min(int(y), rank_max)
+                    range_nums = range(_min, _max+1)
+                    if not range_nums:
+                        logger.error('pvp rank range error:min:%s max:%s, rank_max:%s',
+                                     _min, _max, rank_max)
+                        continue
+                    for _ in range(c):
+                        r = random.choice(range_nums)
+                        range_nums.remove(r)
+                        self._pvp_arena_players.append(r)
+                break
+                logger.info('pvp rank refresh:%s', self._pvp_arena_players)
 
     @property
     def pvp_overcome(self):
@@ -202,6 +213,22 @@ class CharacterPvpComponent(Component):
     @pvp_overcome.setter
     def pvp_overcome(self, value):
         self._pvp_overcome = value
+
+    @property
+    def pvp_overcome_awards(self):
+        return self._pvp_overcome_awards
+
+    @pvp_overcome_awards.setter
+    def pvp_overcome_awards(self, value):
+        self._pvp_overcome_awards = value
+
+    @property
+    def pvp_overcome_stars(self):
+        return self._pvp_overcome_stars
+
+    @pvp_overcome_stars.setter
+    def pvp_overcome_stars(self, value):
+        self._pvp_overcome_stars = value
 
     @property
     def pvp_overcome_current(self):

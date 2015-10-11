@@ -55,6 +55,7 @@ from hjqy_config import HjqyConfig
 from currency_config import CurrencyConfig
 from lottery_config import LotteryConfig
 from activity_type_config import ActivityTypeConfig
+from ggzj_config import GgzjConfig
 
 activity_type_config = {}
 lottery_config = {}
@@ -108,6 +109,7 @@ hjqy_config = {}
 
 push_config = {}
 currency_config = {}
+ggzj_config = {}
 
 all_config_name = {
     'activity_type_config': ActivityTypeConfig(),
@@ -160,7 +162,8 @@ all_config_name = {
     'pseudo_random_config': PseudoRandomConfig(),
     'push_config': PushConfig(),
     'hjqy_config': HjqyConfig(),
-    'currency_config': CurrencyConfig()
+    'currency_config': CurrencyConfig(),
+    'ggzj_config': GgzjConfig()
 }
 
 logger.info("=============load game_configs=============")
@@ -171,4 +174,4 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    print arena_fight_config
+    print ggzj_config

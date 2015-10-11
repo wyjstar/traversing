@@ -18,5 +18,3 @@ class CurrencyConfig(object):
             item = CommonItem(row)
             self._items[item.id] = item
         return self._items
-
-

@@ -35,13 +35,13 @@ message PvpFightRevenge{
 
 message PvpFightOvercome{
     required int32 index = 1;
-    repeated int32 lineup = 2; // 队形
-    optional int32 skill = 3; //无双技能ID
+    repeated int32 lineup = 3; // 队形
+    optional int32 skill = 4; //无双技能ID
 }
 
 message PvpFightOvercomeInfo{
     repeated int32 character_ids = 1;
-    required int32 index = 4;
+    required int32 index = 2;
 }
 
 message PvpPlayerInfoRequest{
@@ -73,4 +73,21 @@ message PvpFightResponse{
     optional GameResourcesResponse award = 13;
     optional GameResourcesResponse award2 = 14;
     optional int32 rank_incr = 15;
+}
+
+message PvpOvercomeAwardRequest{
+	required int32 index = 1;
+}
+
+message PvpOvercomeAwardResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+message GetPvpOvercomeBuffRequest{
+	required int32 id = 1;
+	required int32 index = 2;
+}
+
+message GetPvpOvercomeBuffResponse{
 }

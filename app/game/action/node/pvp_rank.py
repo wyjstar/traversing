@@ -25,7 +25,6 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
-from app.game.component.character_pvp import get_player_pvp_stage
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -74,6 +73,18 @@ def _with_pvp_info(response, character_id):
     response.character_id = data.get('character_id')
 
 
+def get_player_pvp_stage(rank):
+    for v in game_configs.arena_fight_config.values():
+        if v.get('type') != 5:
+            continue
+        if not v.get('play_rank'):
+            continue
+        top_begin, top_end = v.get('play_rank')
+        if rank >= top_begin and rank <= top_end:
+            return v
+    return None
+
+
 @remoteserviceHandle('gate')
 def pvp_top_rank_request_1501(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
@@ -93,9 +104,12 @@ def pvp_top_rank_request_1501(data, player):
 def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
-    _id = int(tb_pvp_rank.zrangebyscore(player.pvp.pvp_upstage_challenge_rank,
-                                        player.pvp.pvp_upstage_challenge_rank))
-    response.pvp_upstage_challenge_id = _id
+    if player.pvp.pvp_upstage_challenge_rank != 0:
+        _id = int(tb_pvp_rank.zrangebyscore(player.pvp.pvp_upstage_challenge_rank,
+                                            player.pvp.pvp_upstage_challenge_rank)[0])
+        response.pvp_upstage_challenge_id = _id
+    else:
+        response.pvp_upstage_challenge_id = 0
 
     rank = int(tb_pvp_rank.zscore(player.base_info.id))
     response.player_rank = int(rank) if rank else -1
@@ -103,10 +117,16 @@ def pvp_player_rank_request_1502(data, player):
 
     top_rank = []
     stage_info = get_player_pvp_stage(rank)
+    print stage_info, rank
     if stage_info:
-        top_begin, _ = stage_info.get('play_rank')
-        top_rank.append(range(top_begin, top_begin + 10))
+        _choose = eval(stage_info.get('choose'))
+        if _choose:
+            _min, _max, count = _choose[0]
+            top_rank.extend(range(_min, _max))
+        else:
+            logger.error('pvp stage not found choose:%s', stage_info)
 
+    print top_rank
     if top_rank:
         records = tb_pvp_rank.zrangebyscore(min(top_rank), max(top_rank),
                                             withscores=True)
@@ -244,10 +264,22 @@ def pvp_fight_request_1505(data, player):
         response.res.result_no = 836
         return response.SerializeToString()
 
+    challenge_rank = request.challenge_rank
+    if challenge_rank < 0 and player.pvp.pvp_upstage_challenge_rank != 0:
+        challenge_rank = player.pvp.pvp_upstage_challenge_rank
+
+    if challenge_rank < 0:
+        logger.error('pvp challenge rank error!!',
+                     challenge_rank,
+                     player.pvp.pvp_upstage_challenge_rank)
+        response.res.result = False
+        response.res.result_no = 839
+        return response.SerializeToString()
+
     line_up = request.lineup
     skill = request.skill
-    target_id = int(tb_pvp_rank.zrangebyscore(request.challenge_rank,
-                                              request.challenge_rank)[0])
+    target_id = int(tb_pvp_rank.zrangebyscore(challenge_rank,
+                                              challenge_rank)[0])
     # if target_id != request.challenge_id:
     #     logger.error('pvp challenge id changed!!')
     #     response.res.result = False
@@ -269,7 +301,7 @@ def pvp_fight_request_1505(data, player):
 
     before_player_rank = int(before_player_rank)
 
-    if before_player_rank == request.challenge_rank:
+    if before_player_rank == challenge_rank:
         logger.error('cant not fight self')
         response.res.result = False
         response.res.result_no = 1505
@@ -280,7 +312,7 @@ def pvp_fight_request_1505(data, player):
         response.top_rank = player.pvp.pvp_high_rank
         if fight_result:
             logger.debug("fight result:True:%s:%s",
-                         before_player_rank, request.challenge_rank)
+                         before_player_rank, challenge_rank)
 
             _arena_win_points = game_configs.base_config.get('arena_win_points')
             if _arena_win_points:
@@ -291,7 +323,7 @@ def pvp_fight_request_1505(data, player):
 
             push_config = game_configs.push_config[1003]
             rank_count = push_config.conditions[0]
-            if request.challenge_rank - before_player_rank >= rank_count:
+            if challenge_rank - before_player_rank >= rank_count:
                 txt = game_configs.push_config[1003].text
                 message = game_configs.language_config.get(str(txt)).get('cn')
                 remote_gate['push'].add_push_message_remote(player.base_info.id, 3,
@@ -300,22 +332,22 @@ def pvp_fight_request_1505(data, player):
             push_message('add_blacklist_request_remote', target_id,
                          player.base_info.id)
 
-            if request.challenge_rank < before_player_rank:
-                tb_pvp_rank.zadd(request.challenge_rank, player.base_info.id,
+            if challenge_rank < before_player_rank:
+                tb_pvp_rank.zadd(challenge_rank, player.base_info.id,
                                  before_player_rank, target_id)
                 send_mail(conf_id=123, receive_id=target_id,
                           pvp_rank=before_player_rank,
                           nickname=player.base_info.base_name)
 
-            if request.challenge_rank < player.pvp.pvp_high_rank:
-                rank_incr = player.pvp.pvp_high_rank - request.challenge_rank
-            if player.pvp.pvp_high_rank > request.challenge_rank:
-                hook_task(player, CONDITIONId.PVP_RANK, request.challenge_rank)
+            if challenge_rank < player.pvp.pvp_high_rank:
+                rank_incr = player.pvp.pvp_high_rank - challenge_rank
+            if player.pvp.pvp_high_rank > challenge_rank:
+                hook_task(player, CONDITIONId.PVP_RANK, challenge_rank)
 
             # stage award
             stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
-            stage_info_current = get_player_pvp_stage(request.challenge_rank)
-            if not stage_info_current and stage_info_before != stage_info_current:
+            stage_info_current = get_player_pvp_stage(challenge_rank)
+            if not stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
                 arena_stage_reward = stage_info_current.get('Reward')
                 stage_reward_data = gain(player, arena_stage_reward,
                                          const.ARENA_WIN)
@@ -324,7 +356,7 @@ def pvp_fight_request_1505(data, player):
                              stage_info_current, stage_info_before)
 
             player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
-                                           request.challenge_rank)
+                                           challenge_rank)
             logger.debug(" history_high_rank %s current %s" % (player.pvp.pvp_high_rank, before_player_rank))
 
             # 首次达到某名次的奖励
@@ -401,13 +433,21 @@ def pvp_fight_overcome_1508(data, player):
         response.res.result_no = 150801
         return response.SerializeToString()
 
-    if request.index != player.pvp.pvp_overcome_current:
-        logger.error('overcome index is error:%s', request.index)
+    ggzj_item = game_configs.ggzj_config.get(request.index)
+    if not ggzj_item:
+        logger.error('ggzj config id err:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 150804
+        return response.SerializePartialToString()
+
+    if ggzj_item.get('section') != player.pvp.pvp_overcome_current:
+        logger.error('overcome index is error:%s-%s',
+                     ggzj_item.get('section'), player.pvp.pvp_overcome_current)
         response.res.result = False
         response.res.result_no = 150801
         return response.SerializePartialToString()
 
-    target_id = player.pvp.get_overcome_id(request.index)
+    target_id = player.pvp.get_overcome_id(ggzj_item.get('index'))
     if not target_id:
         logger.error('overcome index is not exist:%s', request.index)
         response.res.result = False
@@ -419,17 +459,14 @@ def pvp_fight_overcome_1508(data, player):
 
         if fight_result:
             player.pvp.pvp_overcome_current += 1
+            player.pvp.pvp_overcome_stars += ggzj_item.get('star')
             player.pvp.save_data()
 
-            overcome_rewards = game_configs.base_config.get('ggzjReward')
-            if request.index not in overcome_rewards:
-                logger.error('overcome reward is not exist:%s', request.index)
-                response.res.result = False
-                response.res.result_no = 150803
-                return response.SerializePartialToString()
-
-            overcome_reward = overcome_rewards[request.index]
-            return_data = gain(player, overcome_reward, const.PVP_OVERCOME)
+            return_data = gain(player, ggzj_item.get('reward1'),
+                               const.PVP_OVERCOME)
+            get_return(player, return_data, response.gain)
+            return_data = gain(player, ggzj_item.get('reward2'),
+                               const.PVP_OVERCOME)
             get_return(player, return_data, response.gain)
 
         response.res.result = True
@@ -484,7 +521,9 @@ def reset_pvp_time_1506(data, player):
     need_gold = get_consume_gold_num(_consume) * request.times
 
     def func():
-        return_data = consume(player, _consume, const.RESET_PVP_TIME, multiple=request.times)  # 消耗
+        return_data = consume(player, _consume,
+                              const.RESET_PVP_TIME,
+                              multiple=request.times)  # 消耗
         get_return(player, return_data, response.consume)
         player.pvp.pvp_times += request.times
         player.pvp.pvp_refresh_time = time.time()
@@ -502,3 +541,53 @@ def pvp_award_remote(pvp_num, is_online, player):
     logger.debug('pvp award!play:%s,%s-%s:on:%s', player.character_id,
                  pvp_num, player.finance[const.PVP], is_online)
     return True
+
+
+@remoteserviceHandle('gate')
+def PvpOvercomAward_1510(data, player):
+    request = pvp_rank_pb2.PvpOvercomeAwardRequest()
+    request.ParseFromString(data)
+
+    player.pvp.check_time()
+    response = pvp_rank_pb2.PvpOvercomeAwardResponse()
+    ggzj_item = game_configs.ggzj_config.get(request.index)
+
+    if not ggzj_item:
+        logger.error('ggzj config id err:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 151001
+        return response.SerializePartialToString()
+
+    if ggzj_item.get('section') > player.pvp.pvp_overcome_current:
+        logger.error('ggzj award id err:%s(%s-%s)',
+                     request.index,
+                     ggzj_item.get('section'),
+                     player.pvp.pvp_overcome_current)
+        response.res.result = False
+        response.res.result_no = 151002
+        return response.SerializePartialToString()
+
+    if request.index in player.pvp.pvp_overcome_awards:
+        logger.error('ggzj award id repeat:%s-%s',
+                     request.index, player.pvp.pvp_overcome_awards)
+        response.res.result = False
+        response.res.result_no = 151003
+        return response.SerializePartialToString()
+
+    award = ggzj_item.get('database')
+    if not award:
+        logger.error('ggzj database is null:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 151004
+        return response.SerializePartialToString()
+
+    logger.info('ggzj take award %s %s',
+                request.index, ggzj_item.get('database'))
+
+    return_data = gain(player, award, const.PVP_OVERCOME)
+    get_return(player, return_data, response.gain)
+    player.pvp.pvp_overcome_awards.append(request.index)
+    player.pvp.save_data()
+
+    response.res.result = True
+    return response.SerializePartialToString()
