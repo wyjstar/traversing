@@ -84,10 +84,18 @@ message PvpOvercomeAwardResponse{
     optional GameResourcesResponse gain = 2;
 }
 
+message BattleBuff{
+	required int32 buff_type = 1;
+	required int32 value_type = 2;
+	required float value = 3;
+}
+
 message GetPvpOvercomeBuffRequest{
-	required int32 id = 1;
-	required int32 index = 2;
+	required int32 index = 1;
+	required int32 num = 2;
 }
 
 message GetPvpOvercomeBuffResponse{
+    required CommonResponse res = 1;
+	repeated BattleBuff buff = 2;
 }

@@ -66,6 +66,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.pvp_times = player.pvp.pvp_times
     responsedata.pvp_refresh_count = player.pvp.pvp_refresh_count
     responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
+    responsedata.pvp_overcome_stars = player.pvp.pvp_overcome_stars
     responsedata.pvp_overcome_refresh_count = player.pvp.pvp_overcome_refresh_count
 
     combat_power = player.line_up_component.combat_power
@@ -171,6 +172,7 @@ def enter_scene_9(data, player):
     responsedata.pvp_times = player.pvp.pvp_times
     responsedata.pvp_refresh_count = player.pvp.pvp_refresh_count
     responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
+    responsedata.pvp_overcome_stars = player.pvp.pvp_overcome_stars
     responsedata.pvp_overcome_refresh_count = player.pvp.pvp_overcome_refresh_count
 
     if rank_helper.flag_doublu_day():
