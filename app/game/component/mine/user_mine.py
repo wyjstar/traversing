@@ -129,6 +129,8 @@ def gen_stone(num, odds_dict, limit, store, now_data):
         return store
     for _ in range(0, num):
         stone_id = random_pick(odds_dict, sum(odds_dict.values()))
+        if stone_id is None:
+            continue
         stone_id = int(stone_id)
         if stone_id == 0:
             continue
@@ -297,7 +299,7 @@ class UserSelf(Mine):
         else:
             last_increase = self._increase
         mine = ConfigData.mine(self._mine_id)
-        return 0, 0, last_increase, mine.outputLimited, self._normal, self._lucky, None, 0  # ret, msg, last_increase, limit, normal, lucky, heros
+        return 0, 0, last_increase, mine.outputLimited, self._normal, self._lucky, None, 0, 0  # ret, msg, last_increase, limit, normal, lucky, heros
 
     def price(self):
         mine = ConfigData.mine(self._mine_id)
@@ -529,7 +531,7 @@ class PlayerField(Mine):
         if char_obj.exists():
             lineup = char_obj.hget('copy_slots')
 
-        return ret, stype, last_increase, limit, normal, lucky, lineup, guard_time
+        return ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, self._accelerate_times
 
     def guard(self, nickname, info):
 #         print 'guard', type(self._tid), type(self._seq), type(self._seq), type(info)
@@ -562,7 +564,7 @@ class PlayerField(Mine):
 
     def acc_mine_time(self):
         self._accelerate_times += 1
-        self._last_time -= game_configs.base_config.get('stoneReduceTime') * 60
+        ret, stype, last_increase, limit, normal, lucky, _, _, _ = self.detail_info()
         return True
 
     def get_acc_time_gold(self):
@@ -623,7 +625,7 @@ class MonsterField(Mine):
             lucky[int(sp_id)] = 0
         stage_id = random.sample(mine.monster, 1)[0]
         self._stage_id = stage_id
-        return 0, mine.type, 0, mine.outputLimited, normal, lucky, stage_id, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
+        return 0, mine.type, 0, mine.outputLimited, normal, lucky, stage_id, 0, 0  # ret, type, last_increase, limit, normal, lucky, stage_id
 
     def settle(self, uid=None, result=True, nickname=None, hold=1):
         mine = ConfigData.mine(self._mine_id)
