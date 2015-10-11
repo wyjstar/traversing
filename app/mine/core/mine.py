@@ -538,4 +538,6 @@ class MineData(object):
         data = self.mines[seq].save_info()
 
     def acc_mine_time(self, uid, seq, change_time):
-        return self.mines[seq].acc_mine_time(change_time)
+        result = self.mines[seq].acc_mine_time(change_time)
+        self.save_data(seq)
+        return result
