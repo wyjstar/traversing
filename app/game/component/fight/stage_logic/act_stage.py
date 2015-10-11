@@ -58,4 +58,6 @@ class ActStageLogic(base_stage.BaseStageLogic):
             stage_util.settle(player, result, response, conf)
             hook_task(player, CONDITIONId.STAGE, stage_id)
             hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
-        tlog_action.log('RoundFlow', player, stage_id, 3, 0, result)
+            tlog_action.log('RoundFlow', player, stage_id, 3, 0, 1)
+        else:
+            tlog_action.log('RoundFlow', player, stage_id, 3, 0, 0)
