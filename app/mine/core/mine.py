@@ -335,6 +335,7 @@ class PlayerField(Mine):
         self._lucky_harvest -= change_time
         self._normal_end -= change_time
         self._lucky_end -= change_time
+        self._last_time -= change_time
         return True
 
 """
