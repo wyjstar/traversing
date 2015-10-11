@@ -198,7 +198,7 @@ def query_1243(data, player):
     response = mine_pb2.mineDetail()
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
     # print 'query 1243', normal, lucky
     if ret == 0:
         response.res.result = True
@@ -219,7 +219,8 @@ def query_1243(data, player):
         if stype == 2:
             response.stage_id = int(lineup)
         if stype == 1:
-            response.accelerate_times = player.mine._mine[request.position]._accelerate_times
+            if acc_times is not None:
+                response.accelerate_times = acc_times
             if lineup is not None:
                 response.lineup.ParseFromString(lineup)
 
@@ -396,7 +397,7 @@ def harvest_1245(data, player):
     response = mine_pb2.drawStones()
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
     num = sum(normal.values()) + sum(lucky.values())
     if player.runt.bag_is_full(num):
         response.res.result = False
@@ -549,7 +550,7 @@ def acc_mine_1250(data, player):
     response = mine_pb2.IncreaseResponse()
 
     detail_info = player.mine.detail_info(request.position)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
     now = xtime.timestamp()
     main_mine = game_configs.mine_config.get(10001)
     if last_increase + main_mine.increasTime * 60 - now > main_mine.increasMaxTime * 60:
@@ -809,7 +810,7 @@ def mine_accelerate_1254(data, player):
     response = mine_pb2.MineAccelerateResponse()
 
     detail_info = player.mine.detail_info(pos)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
 
     need_gold = player.mine._mine[pos].get_acc_time_gold()
     if need_gold == 0:

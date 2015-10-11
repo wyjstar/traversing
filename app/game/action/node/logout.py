@@ -25,7 +25,7 @@ def net_conn_lost_remote(player):
 
     remote_gate['push'].online_offline_remote(player.base_info.id, 0)
     detail_info = player.mine.detail_info(0)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, _ = detail_info
     stones = sum(normal.values()) + sum(lucky.values())
     outputGroup1 = game_configs.mine_config[10001].outputGroup1
     timeGroup1 = game_configs.mine_config[10001].timeGroup1
