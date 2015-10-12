@@ -51,5 +51,5 @@ def init_single_hero(player, runts, hero_no):
     hero1.break_level = 7
     hero1.level = 200
     hero1.runt = runts
-    hero1.refine = 4008016
+    hero1.refine = 400020
     hero1.save_data()
