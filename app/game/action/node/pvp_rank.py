@@ -645,20 +645,7 @@ def GetPvpOvercomeBuff_1511(data, player):
         response.res.result_no = 151102
         return response.SerializePartialToString()
 
-    if request.num == 1:
-        buff = ggzj_item.get('buff1')
-    elif request.num == 2:
-        buff = ggzj_item.get('buff2')
-    else:
-        buff = ggzj_item.get('buff3')
-
-    if not buff:
-        logger.error('ggzj buff is null:%s', request.index)
-        response.res.result = False
-        response.res.result_no = 151104
-        return response.SerializePartialToString()
-
-    logger.info('ggzj take buff %s %s', request.index, buff)
+    logger.info('ggzj take buff %s %s', request.index, ggzj_item.get('buff1'))
 
     if request.index not in player.pvp.pvp_overcome_buff_init.keys():
         _buff_data = []
@@ -669,8 +656,10 @@ def GetPvpOvercomeBuff_1511(data, player):
         player.pvp.pvp_overcome_buff_init[request.index] = _buff_data
         player.pvp.save_data()
 
-    for star, _, bt, vt, value in player.pvp.pvp_overcome_buff_init.values():
+    print player.pvp.pvp_overcome_buff_init
+    for star, _, bt, vt, value in player.pvp.pvp_overcome_buff_init[request.index]:
         res_buff = response.buff.add()
+        res_buff.index = request.index
         res_buff.buff_type = bt
         res_buff.value_type = vt
         res_buff.value = value
@@ -693,11 +682,18 @@ def BuyPvpOvercomeBuff_1512(data, player):
         response.res.result_no = 151204
         return response.SerializePartialToString()
 
+    if request.index in player.pvp.pvp_overcome_buff:
+        logger.error('ggzj buff index is repeat:%s-%s',
+                     request.index, player.pvp.pvp_overcome_buff)
+        response.res.result = False
+        response.res.result_no = 151205
+        return response.SerializePartialToString()
+
     logger.info('ggzj take buff %s %s--%s',
                 request.index, request.num,
-                player.pvp.pvp_overcome_buff)
+                player.pvp.pvp_overcome_buff_init)
 
-    star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index]
+    star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index][request.num]
     if star > player.pvp.pvp_overcome_stars:
         logger.error('ggzj buff not enough star:%s-%s',
                      star, player.pvp.pvp_overcome_stars)
@@ -706,12 +702,33 @@ def BuyPvpOvercomeBuff_1512(data, player):
         return response.SerializePartialToString()
 
     player.pvp.pvp_overcome_stars -= star
-    player.pvp.pvp_overcome_buff[bt] = [vt, value]
+    player.pvp.pvp_overcome_buff[request.index] = [bt, vt, value]
     player.pvp.save_data()
     res_buff = response.buff.add()
+    res_buff.index = request.index
     res_buff.buff_type = bt
     res_buff.value_type = vt
     res_buff.value = value
 
     response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def GetPvpOvercomeInfo_1513(data, player):
+    player.pvp.check_time()
+    response = pvp_rank_pb2.GetPvpOvercomeInfo()
+
+    response.pvp_overcome_index = player.pvp.pvp_overcome_current
+    response.stars = player.pvp.pvp_overcome_stars
+    response.refresh_count = player.pvp.pvp_overcome_refresh_count
+    response.awarded.extend(player.pvp.pvp_overcome_awards)
+    for k, v in player.pvp.pvp_overcome_buff.items():
+        res_buff = response.buff.add()
+        res_buff.index = k
+        bt, vt, value = v
+        res_buff.buff_type = bt
+        res_buff.value_type = vt
+        res_buff.value = value
+
     return response.SerializePartialToString()

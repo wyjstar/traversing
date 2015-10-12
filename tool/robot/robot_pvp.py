@@ -73,7 +73,7 @@ class RobotPvp(Robot):
         self.on_command_finish()
 
     def command_buy_fight_overcome_buff(self, index, num):
-        request = pvp_rank_pb2.GetPvpOvercomeBuffRequest()
+        request = pvp_rank_pb2.BuyPvpOvercomeBuffRequest()
         request.index = int(index)
         request.num = int(num)
 
@@ -81,6 +81,16 @@ class RobotPvp(Robot):
 
     def fight_1512(self, message):
         response = pvp_rank_pb2.GetPvpOvercomeBuffResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_get_overcome_info(self):
+
+        self.send_message(None, 1513)
+
+    def fight_1513(self, message):
+        response = pvp_rank_pb2.GetPvpOvercomeInfo()
         response.ParseFromString(message)
         print response
         self.on_command_finish()

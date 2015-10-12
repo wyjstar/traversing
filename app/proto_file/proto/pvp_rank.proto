@@ -86,9 +86,10 @@ message PvpOvercomeAwardResponse{
 }
 
 message BattleBuff{
-	required int32 buff_type = 1;
-	required int32 value_type = 2;
-	required float value = 3;
+	required int32 index = 1;
+	required int32 buff_type = 2;
+	required int32 value_type = 3;
+	required float value = 4;
 }
 
 message GetPvpOvercomeBuffRequest{
@@ -108,4 +109,12 @@ message BuyPvpOvercomeBuffRequest{
 message BuyPvpOvercomeBuffResponse{
     required CommonResponse res = 1;
 	repeated BattleBuff buff = 2;
+}
+
+message GetPvpOvercomeInfo{
+    required int32 pvp_overcome_index = 1;
+    required int32 stars = 2;
+    required int32 refresh_count = 3;
+    repeated int32 awarded = 4;
+	repeated BattleBuff buff = 5;
 }

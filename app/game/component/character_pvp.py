@@ -41,7 +41,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_awards = []
         self._pvp_overcome_stars = 0
         self._pvp_overcome_buff_init = {}
-        self._pvp_overcome_buff = []
+        self._pvp_overcome_buff = {}
 
         self._pvp_times = 0  # pvp次数
         self._pvp_refresh_time = 0
@@ -72,7 +72,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_awards = character_info.get('pvp_overcome_awards', [])
         self._pvp_overcome_stars = character_info.get('pvp_overcome_stars', 0)
         self._pvp_overcome_buff_init = character_info.get('pvp_overcome_buff_init', {})
-        self._pvp_overcome_buff = character_info.get('pvp_overcome_buff', [])
+        self._pvp_overcome_buff = character_info.get('pvp_overcome_buff', {})
 
         self.check_time()
 
