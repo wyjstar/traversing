@@ -206,6 +206,16 @@ class LineUpSlotComponent(Component):
             _refine_attr = game_configs.seal_config.get(hero_obj.refine)
             if _refine_attr:
                 attr += _refine_attr
+                extra_attr = None
+                for k, v in game_configs.seal_config:
+                    if v.get('allInt') > 0:
+                        continue
+                    if v.get('allInt2') > _refine_attr.get('allInt2'):
+                        continue
+                    extra_attr = v
+                if extra_attr:
+                    attr += extra_attr
+
             else:
                 logger.error('cant find refine config:%s', hero_obj.refine)
         attr += self.owner.owner.travel_component.get_travel_item_attr()
