@@ -73,6 +73,7 @@ message PvpFightResponse{
     optional GameResourcesResponse award = 13;
     optional GameResourcesResponse award2 = 14;
     optional int32 rank_incr = 15;
+    optional GameResourcesResponse consume = 16;
 }
 
 message PvpOvercomeAwardRequest{
@@ -92,10 +93,19 @@ message BattleBuff{
 
 message GetPvpOvercomeBuffRequest{
 	required int32 index = 1;
-	required int32 num = 2;
 }
 
 message GetPvpOvercomeBuffResponse{
+    required CommonResponse res = 1;
+	repeated BattleBuff buff = 2;
+}
+
+message BuyPvpOvercomeBuffRequest{
+	required int32 index = 1;
+	required int32 num = 2;
+}
+
+message BuyPvpOvercomeBuffResponse{
     required CommonResponse res = 1;
 	repeated BattleBuff buff = 2;
 }

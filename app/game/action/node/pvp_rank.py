@@ -258,14 +258,22 @@ def pvp_fight_request_1505(data, player):
     request = pvp_rank_pb2.PvpFightRequest()
     response = pvp_rank_pb2.PvpFightResponse()
     request.ParseFromString(data)
-    player.pvp.check_time()
+    # player.pvp.check_time()
 
-    if player.pvp.pvp_times <= 0:
-        logger.error('not enough pvp times:%s-%s', player.pvp.pvp_times,
-                     game_configs.base_config.get('arena_free_times'))
+    arena_consume = game_configs.get('arenaConsume')
+    result = is_afford(player, arena_consume)  # 校验
+    if not result.get('result'):
+        logger.error('not enough consume:%s', arena_consume)
         response.res.result = False
-        response.res.result_no = 836
-        return response.SerializeToString()
+        response.res.result_no = 150501
+        return response.SerializePartialToString()
+
+    # if player.pvp.pvp_times <= 0:
+    #     logger.error('not enough pvp times:%s-%s', player.pvp.pvp_times,
+    #                  game_configs.base_config.get('arena_free_times'))
+    #     response.res.result = False
+    #     response.res.result_no = 836
+    #     return response.SerializeToString()
 
     challenge_rank = request.challenge_rank
     if challenge_rank < 0 and player.pvp.pvp_upstage_challenge_rank != 0:
@@ -309,6 +317,9 @@ def pvp_fight_request_1505(data, player):
         response.res.result = False
         response.res.result_no = 1505
         return response.SerializeToString()
+
+    return_data = consume(player, arena_consume, const.PVP)
+    get_return(player, return_data, response.consume)
 
     def settle(player, fight_result):
         rank_incr = 0
@@ -611,7 +622,7 @@ def random_buf(buff):
 
 
 @remoteserviceHandle('gate')
-def PvpOvercomeBuff_1511(data, player):
+def GetPvpOvercomeBuff_1511(data, player):
     request = pvp_rank_pb2.GetPvpOvercomeBuffRequest()
     request.ParseFromString(data)
 
@@ -649,12 +660,49 @@ def PvpOvercomeBuff_1511(data, player):
 
     logger.info('ggzj take buff %s %s', request.index, buff)
 
-    star, _, bt, vt, value = random_buf(buff)
+    if request.index not in player.pvp.pvp_overcome_buff_init.keys():
+        _buff_data = []
+
+        _buff_data.append(random_buf(ggzj_item.get('buff1')))
+        _buff_data.append(random_buf(ggzj_item.get('buff2')))
+        _buff_data.append(random_buf(ggzj_item.get('buff3')))
+        player.pvp.pvp_overcome_buff_init[request.index] = _buff_data
+        player.pvp.save_data()
+
+    for star, _, bt, vt, value in player.pvp.pvp_overcome_buff_init.values():
+        res_buff = response.buff.add()
+        res_buff.buff_type = bt
+        res_buff.value_type = vt
+        res_buff.value = value
+
+    response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def BuyPvpOvercomeBuff_1512(data, player):
+    request = pvp_rank_pb2.BuyPvpOvercomeBuffRequest()
+    request.ParseFromString(data)
+
+    player.pvp.check_time()
+    response = pvp_rank_pb2.BuyPvpOvercomeBuffResponse()
+
+    if request.index not in player.pvp.pvp_overcome_buff_init:
+        logger.error('ggzj buff index is null:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 151204
+        return response.SerializePartialToString()
+
+    logger.info('ggzj take buff %s %s--%s',
+                request.index, request.num,
+                player.pvp.pvp_overcome_buff)
+
+    star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index]
     if star > player.pvp.pvp_overcome_stars:
         logger.error('ggzj buff not enough star:%s-%s',
                      star, player.pvp.pvp_overcome_stars)
         response.res.result = False
-        response.res.result_no = 151105
+        response.res.result_no = 151205
         return response.SerializePartialToString()
 
     player.pvp.pvp_overcome_stars -= star
