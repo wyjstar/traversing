@@ -622,7 +622,7 @@ def random_buf(buff):
 
 
 @remoteserviceHandle('gate')
-def PvpOvercomeBuff_1511(data, player):
+def GetPvpOvercomeBuff_1511(data, player):
     request = pvp_rank_pb2.GetPvpOvercomeBuffRequest()
     request.ParseFromString(data)
 
@@ -660,12 +660,49 @@ def PvpOvercomeBuff_1511(data, player):
 
     logger.info('ggzj take buff %s %s', request.index, buff)
 
-    star, _, bt, vt, value = random_buf(buff)
+    if request.index not in player.pvp.pvp_overcome_buff_init.keys():
+        _buff_data = []
+
+        _buff_data.append(random_buf(ggzj_item.get('buff1')))
+        _buff_data.append(random_buf(ggzj_item.get('buff2')))
+        _buff_data.append(random_buf(ggzj_item.get('buff3')))
+        player.pvp.pvp_overcome_buff_init[request.index] = _buff_data
+        player.pvp.save_data()
+
+    for star, _, bt, vt, value in player.pvp.pvp_overcome_buff_init.values():
+        res_buff = response.buff.add()
+        res_buff.buff_type = bt
+        res_buff.value_type = vt
+        res_buff.value = value
+
+    response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def BuyPvpOvercomeBuff_1512(data, player):
+    request = pvp_rank_pb2.BuyPvpOvercomeBuffRequest()
+    request.ParseFromString(data)
+
+    player.pvp.check_time()
+    response = pvp_rank_pb2.BuyPvpOvercomeBuffResponse()
+
+    if request.index not in player.pvp.pvp_overcome_buff_init:
+        logger.error('ggzj buff index is null:%s', request.index)
+        response.res.result = False
+        response.res.result_no = 151204
+        return response.SerializePartialToString()
+
+    logger.info('ggzj take buff %s %s--%s',
+                request.index, request.num,
+                player.pvp.pvp_overcome_buff)
+
+    star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index]
     if star > player.pvp.pvp_overcome_stars:
         logger.error('ggzj buff not enough star:%s-%s',
                      star, player.pvp.pvp_overcome_stars)
         response.res.result = False
-        response.res.result_no = 151105
+        response.res.result_no = 151205
         return response.SerializePartialToString()
 
     player.pvp.pvp_overcome_stars -= star
