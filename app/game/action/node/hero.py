@@ -350,13 +350,13 @@ def do_hero_refine(player, hero_no, refine, response):
         logger.error('cant find refine item:%s', refine)
         return {'result': False, 'result_no': 11802}
 
-    current_refine_item = game_configs.seal_config.get(hero.refine)
-    if current_refine_item.get('heroLevelRestrictions') > hero.level:
+    if _refine_item.get('heroLevelRestrictions') > hero.level:
         logger.error('refine player level is error:%s-%s',
-                     current_refine_item.get('heroLevelRestrictions'),
+                     _refine_item.get('heroLevelRestrictions'),
                      hero.level)
         return {'result': False, 'result_no': 11805}
 
+    current_refine_item = game_configs.seal_config.get(hero.refine)
     if current_refine_item and _refine_item.id != current_refine_item.get('next'):
         logger.error('not next refine item:%s', refine)
         return {'result': False, 'result_no': 11803}
