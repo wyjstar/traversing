@@ -90,6 +90,7 @@ message BattleBuff{
 	required int32 buff_type = 2;
 	required int32 value_type = 3;
 	required float value = 4;
+	optional int32 star = 5;
 }
 
 message GetPvpOvercomeBuffRequest{
