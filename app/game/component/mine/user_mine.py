@@ -565,6 +565,7 @@ class PlayerField(Mine):
     def acc_mine_time(self):
         self._accelerate_times += 1
         change_time = game_configs.base_config.get('stoneReduceTime') * 60
+        self._last_time -= change_time
         result = remote_gate['mine'].acc_mine_time_remote(self._tid,
                                                           self._seq,
                                                           change_time)
