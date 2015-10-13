@@ -721,9 +721,8 @@ def battle_1253(data, player):
 
         player.fight_cache_component.stage_id = 0
         red_units = player.fight_cache_component.get_red_units()
-        info = get_save_guard(player, pos)
-        # print info
-        blue_units = player.mine._mine[request.pos].get_blue_units()
+        blue_data = player.mine._mine[request.pos].get_blue_units()
+        blue_units = blue_data.get('copy_units')
         seed1, seed2 = get_seeds()
         if not blue_units:
             fight_result = True
@@ -733,16 +732,16 @@ def battle_1253(data, player):
                                        red_units,
                                        blue_units,
                                        red_best_skill_id,
-                                       info.get("best_skill_no"),
-                                       info.get("level"),
+                                       blue_data.get("best_skill_no"),
+                                       blue_data.get("level"),
                                        red_best_skill_id,
                                        seed1, seed2,
                                        const.BATTLE_MINE_PVP)
         hold = request.hold
         process_mine_result(player, pos, fight_result, response, 1, hold)
 
-        blue_best_skill_id = info.get("best_skill_id", 0)
-        blue_best_skill_level = info.get("best_skill_level", 0)
+        blue_best_skill_id = blue_data.get("best_skill_id", 0)
+        blue_best_skill_level = blue_data.get("best_skill_level", 0)
         response.fight_result = fight_result
         response.seed1 = seed1
         response.seed2 = seed2
