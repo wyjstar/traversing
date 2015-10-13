@@ -717,6 +717,7 @@ def battle_1253(data, player):
         mine_lock = player.mine.start(request.pos)
         if not mine_lock:
             response.res.result = False
+            logger.error('mine lock!!!')
             return response.SerializePartialToString()
 
         player.fight_cache_component.stage_id = 0
