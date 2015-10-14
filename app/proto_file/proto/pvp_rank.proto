@@ -11,13 +11,16 @@ message RankItems{
     repeated int32 hero_levels = 6;
     required int32 head_no = 7;
     required int32 character_id = 8;
+    required int32 vip_level = 9 [default = -1];
+    required string guild_name = 10;
 }
 
 message PlayerRankResponse{
     repeated RankItems rank_items = 1;
     optional int32 player_rank = 2;
     optional int32 pvp_score = 3;
-    optional int32 pvp_upstage_challenge_id = 4;
+    optional int32 pvp_upstage_challenge_id = 4 [default = 0];
+    optional string pvp_upstage_challenge_nickname = 5;
 }
 
 message PvpFightRequest{

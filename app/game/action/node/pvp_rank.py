@@ -27,6 +27,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.component.fight.stage_logic.pvp_stage import PvpStageLogic
+from app.admin.redis_mode import tb_guild_info
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -51,7 +52,9 @@ def _with_pvp_info(response, character_id):
                 'level',
                 'nickname',
                 'attackPoint',
-                'heads']
+                'heads',
+                'vip_level',
+                'guild_id']
         data = char_obj.hmget(keys)
         heads = Heads_DB()
         heads.ParseFromString(data['heads'])
@@ -60,6 +63,12 @@ def _with_pvp_info(response, character_id):
         data['hero_ids'] = hero_nos
         data['hero_levels'] = hero_levels
         data['character_id'] = character_id
+
+        response.vip_level = data.get('vip_level')
+        g_id = data.get('guild_id')
+        if g_id:
+            response.guild_name = tb_guild_info.getObj(g_id).hget('name')
+
     elif robot_obj.hexists(character_id):
         data = robot_obj.hget(character_id)
     else:
@@ -110,8 +119,17 @@ def pvp_player_rank_request_1502(data, player):
         _id = int(tb_pvp_rank.zrangebyscore(player.pvp.pvp_upstage_challenge_rank,
                                             player.pvp.pvp_upstage_challenge_rank)[0])
         response.pvp_upstage_challenge_id = _id
-    else:
-        response.pvp_upstage_challenge_id = 0
+
+        char_obj = tb_character_info.getObj(_id)
+        robot_obj = tb_character_info.getObj('robot')
+        data = {}
+        if _id >= 10000 and char_obj.exists():
+            response.pvp_upstage_challenge_nickname = char_obj.hget('nickname')
+        elif robot_obj.hexists(_id):
+            data = robot_obj.hget(_id)
+            response.pvp_upstage_challenge_nickname = data.get('nickname')
+        else:
+            logger.error('no pvp info:%s', _id)
 
     rank = tb_pvp_rank.zscore(player.base_info.id)
     response.player_rank = int(rank) if rank else -1
@@ -262,7 +280,7 @@ def pvp_fight_request_1505(data, player):
     request.ParseFromString(data)
     # player.pvp.check_time()
 
-    arena_consume = game_configs.get('arenaConsume')
+    arena_consume = game_configs.base_confi.get('arenaConsume')
     result = is_afford(player, arena_consume)  # 校验
     if not result.get('result'):
         logger.error('not enough consume:%s', arena_consume)
@@ -293,11 +311,11 @@ def pvp_fight_request_1505(data, player):
     skill = request.skill
     target_id = int(tb_pvp_rank.zrangebyscore(challenge_rank,
                                               challenge_rank)[0])
-    # if target_id != request.challenge_id:
-    #     logger.error('pvp challenge id changed!!')
-    #     response.res.result = False
-    #     response.res.result_no = 838
-    #     return response.SerializeToString()
+    if target_id != request.challenge_id:
+        logger.error('pvp challenge id changed!!')
+        response.res.result = False
+        response.res.result_no = 150508
+        return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('arenaOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:

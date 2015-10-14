@@ -225,3 +225,5 @@ class Guild(object):
             self._bless = [0, 0, int(time.time())]
             self.save_data()
         return self._bless[0]
+
+g_guild = Guild()

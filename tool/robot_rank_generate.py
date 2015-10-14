@@ -170,13 +170,13 @@ if __name__ == '__main__':
         tb_pvp_rank.getObj('incr').delete()
 
     for _ in pvp_rank.values():
-        print _.get('id'), _.get('nickname'), _.get('character_id')
+        print _.get('id'), _.get('nickname'), _.get('character_id'), _.get('attackPoint')
         tb_robot.hsetnx(_['id'], _)
         tb_pvp_rank.zadd(_['id'], _['id'])
         tb_pvp_rank.getObj('incr').incr()
 
     for _ in pvp_rank2.values():
-        print 'robot2', _.get('id'), _.get('nickname'), _.get('character_id')
+        print 'robot2', _.get('id'), _.get('nickname'), _.get('character_id'), _.get('attackPoint')
         tb_robot2.hsetnx(_['id'], _)
 
 
