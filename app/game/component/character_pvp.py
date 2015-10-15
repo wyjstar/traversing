@@ -171,7 +171,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_awards = []
         self._pvp_overcome_stars = 0
         self._pvp_overcome_buff_init = {}
-        self._pvp_overcome_buff = []
+        self._pvp_overcome_buff = {}
         self._pvp_overcome_failed = False
         self.save_data()
         return True
