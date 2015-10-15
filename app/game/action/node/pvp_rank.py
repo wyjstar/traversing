@@ -116,8 +116,8 @@ def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     if player.pvp.pvp_upstage_challenge_rank != 0:
-        _id = int(tb_pvp_rank.zrangebyscore(player.pvp.pvp_upstage_challenge_rank,
-                                            player.pvp.pvp_upstage_challenge_rank)[0])
+        _up_stage_rank = player.pvp.pvp_upstage_challenge_rank
+        _id = int(tb_pvp_rank.zrangebyscore(_up_stage_rank, _up_stage_rank)[0])
         response.pvp_upstage_challenge_id = _id
 
         char_obj = tb_character_info.getObj(_id)
@@ -171,6 +171,8 @@ def pvp_player_rank_request_1502(data, player):
         char_id = int(char_id)
         _rank = int(_rank)
         if _rank not in player_ranks:
+            continue
+        if _rank in top_rank:
             continue
         rank_item = response.rank_items.add()
         rank_item.rank = _rank
@@ -382,8 +384,14 @@ def pvp_fight_request_1505(data, player):
             # stage award
             stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
             stage_info_current = get_player_pvp_stage(challenge_rank)
-            if not stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
+            logger.debug('up stage: %s-%s, %s-%s',
+                         player.pvp.pvp_high_rank,
+                         challenge_rank,
+                         stage_info_before.get('Gradient'),
+                         stage_info_current.get('Gradient'))
+            if stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
                 arena_stage_reward = stage_info_current.get('Reward')
+                logger.debug('up stage reward:%s', arena_stage_reward)
                 stage_reward_data = gain(player, arena_stage_reward,
                                          const.ARENA_WIN)
                 get_return(player, stage_reward_data, response.award2)

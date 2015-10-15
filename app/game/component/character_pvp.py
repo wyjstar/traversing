@@ -201,6 +201,7 @@ class CharacterPvpComponent(Component):
             return
 
         # self._pvp_arena_players = range(max(1, rank-8), min(rank+1, rank_max))
+        self._pvp_arena_players = []
         stage_info = get_player_pvp_stage_up(rank)
         if stage_info:
             _choose = eval(stage_info.get('choose'))
@@ -225,12 +226,16 @@ class CharacterPvpComponent(Component):
                         logger.error('pvp rank range error:min:%s max:%s, rank_max:%s',
                                      _min, _max, rank_max)
                         continue
+                    if len(range_nums) < c:
+                        logger.error('pvp rank not enough:min:%s max:%s, rank_max:%s',
+                                     _min, _max, rank_max)
+                        continue
                     for _ in range(c):
                         r = random.choice(range_nums)
                         range_nums.remove(r)
                         self._pvp_arena_players.append(r)
                 break
-                logger.info('pvp rank refresh:%s', self._pvp_arena_players)
+        logger.info('pvp rank refresh:%s', self._pvp_arena_players)
 
     @property
     def pvp_overcome(self):
