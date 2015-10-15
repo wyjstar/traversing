@@ -83,7 +83,7 @@ def get_target_info1(player, target_id, day):
     conditions = player.start_target.conditions
     if target_info and target_info[0] == 3:
         return {'state': 3}
-    elif target_conf.type != 30 and target_info and target_info[0] == 2:
+    elif target_info and target_info[0] == 2:
         return {'state': 2}
 
     if target_conf.type == 28:
@@ -104,7 +104,7 @@ def get_target_info1(player, target_id, day):
             return {'state': 1}
     elif target_conf.type == 30:
         if not target_info:
-            player.start_target.target_info[target_id] = [2, 0]
+            player.start_target.target_info[target_id] = [1, 0]
             return {'state': 2, 'jindu': 0}
         else:
             return {'state': target_info[0], 'jindu': target_info[1]}
@@ -342,7 +342,7 @@ def get_target_info_1827(data, player):
     target_conf = game_configs.activity_config.get(target_id)
 
     info = get_target_info(player, target_id, day)
-    if info.get('state') != 2:
+    if target_conf.type != 30 and info.get('state') != 2:
         response.res.result = False
         logger.error("this start target 条件不满足")
         response.res.result_no = 800
@@ -359,7 +359,7 @@ def get_target_info_1827(data, player):
             if target_conf.count <= (info.get('jindu') + 1):
                 player.start_target.target_info[target_id] = [3, 0]
             else:
-                player.start_target.target_info[target_id] = [2, info.get('jindu') + 1]
+                player.start_target.target_info[target_id] = [1, info.get('jindu') + 1]
         else:
             player.start_target.target_info[target_id] = [3, 0]
 

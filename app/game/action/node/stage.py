@@ -629,8 +629,8 @@ def get_award_909(pro_data, player):
     response = stage_response_pb2.StarAwardResponse()
 
     chapters_info = get_chapter_info(chapter_id, player)
-    if len(chapters_info) != 1 or chapter_id == 1 or (chapter_id == 2 and award_type ==2) or len(chapters_info[0].award_info) == 0:
-        logger.error("chapter_info dont find,or (chapter_id == 1 and award_type == 2 ) or ")
+    if len(chapters_info) != 1 or chapter_id == 1 or len(chapters_info[0].award_info) == 0:
+        logger.error("chapter_info dont find")
         response.res.result = False
         response.res.result_no = 831
         return response.SerializePartialToString()

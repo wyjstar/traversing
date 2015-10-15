@@ -63,8 +63,17 @@ class CharacterStartTargetComponent(Component):
         register_time = self.owner.base_info.register_time
         act_conf = game_configs.activity_type_config.get(202)
         total_time = act_conf.parameterT
+        time.localtime(register_time)
 
-        day = (now - (register_time - register_time%(24*60*60))) / (24*60*60) + 1
+        t0 = time.localtime(now)
+        time0 = int(time.mktime(time.strptime(
+                    time.strftime('%Y-%m-%d 00:00:00', t0),
+                    '%Y-%m-%d %H:%M:%S')))
+        t1 = time.localtime(register_time)
+        time1 = int(time.mktime(time.strptime(
+                    time.strftime('%Y-%m-%d 00:00:00', t1),
+                    '%Y-%m-%d %H:%M:%S')))
+        day = (time0 - time1)/(24*60*60)
 
         if act_conf.timeStart > now or now > act_conf.timeEnd:
             logger.debug("202 activity type close by timeStart timeEnd.")
@@ -82,6 +91,16 @@ class CharacterStartTargetComponent(Component):
         register_time = self.owner.base_info.register_time
         act_conf = game_configs.activity_type_config.get(202)
         now = int(time.time())
+
+        t0 = time.localtime(now)
+        time0 = int(time.mktime(time.strptime(
+                    time.strftime('%Y-%m-%d 00:00:00', t0),
+                    '%Y-%m-%d %H:%M:%S')))
+        t1 = time.localtime(register_time)
+        time1 = int(time.mktime(time.strptime(
+                    time.strftime('%Y-%m-%d 00:00:00', t1),
+                    '%Y-%m-%d %H:%M:%S')))
+        day = (time0 - time1)/(24*60*60)
 
         if act_conf.timeStart > now or now > act_conf.timeEnd:
             logger.debug("202 activity type close by timeStart timeEnd.")
