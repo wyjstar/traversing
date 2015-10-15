@@ -68,8 +68,9 @@ def get_stages_901(pro_data, player):
 
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
+
 
 def construct_lucky_heros(lucky_heros, response_lucky_heros):
     for k, hero in lucky_heros.items():
@@ -86,6 +87,7 @@ def construct_lucky_heros(lucky_heros, response_lucky_heros):
             hero_attr.attr_type = int(k)
             hero_attr.attr_value_type = v[0]
             hero_attr.attr_value = v[1]
+
 
 @remoteserviceHandle('gate')
 def get_chapter_912(pro_data, player):

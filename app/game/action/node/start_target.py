@@ -27,6 +27,9 @@ def get_target_info_1826(data, player):
         response.res.result_no = 890  # 不在活动时间内
         return response.SerializeToString()
 
+    # 更新一下 登录奖励的状态
+    # player.start_target.update_29()
+
     response.day = day
     # 需要查询的目标ID
     target_ids = {}
@@ -54,11 +57,21 @@ def get_target_info_1826(data, player):
             if info.get('state'):
                 target_info_pro.state = info.get('state')
 
+    player.start_target.save_data()
+
     response.res.result = True
     return response.SerializeToString()
 
 
 def get_target_info(player, target_id, day):
+    info = get_target_info1(player, target_id, day)
+    if info.get('jindu'):
+        a = info.get('jindu')
+        info['jindu'] = int(a)
+    return info
+
+
+def get_target_info1(player, target_id, day):
     target_info = player.start_target.target_info.get(target_id)
     target_conf = game_configs.activity_config.get(target_id)
     conditions = player.start_target.conditions
@@ -77,7 +90,9 @@ def get_target_info(player, target_id, day):
                 return {'state': 1, 'jindu': target_info[1]}
 
     elif target_conf.type == 29:
-        if day == target_conf.parameterA:
+        jindu = get_condition(conditions, 29)
+        # if jindu and jindu[int(target_conf.parameterA)-1]:
+        if day >= target_conf.parameterA:
             return {'state': 2}
         else:
             return {'state': 1}
@@ -228,12 +243,13 @@ def get_target_info(player, target_id, day):
                 continue
             hero_obj = slot.hero_slot.hero_obj  # 英雄实例
             if hero_obj:
-                for (runt_po, runt_info) in hero_obj.runt.items():
-                    # [runt_no, runt_id, main_attr, minor_attr] = runt_info
-                    quality = game_configs.stone_config.get('stones'). \
-                        get(runt_info[1]).quality
-                    if quality == target_conf.parameterB:
-                        jindu += 1
+                for (runt_type, item) in hero_obj.runt.items():
+                    for (runt_po, runt_info) in item.items():
+                        # [runt_no, runt_id, main_attr, minor_attr] = runt_info
+                        quality = game_configs.stone_config.get('stones'). \
+                            get(runt_info[1]).quality
+                        if quality == target_conf.parameterB:
+                            jindu += 1
 
         if jindu >= target_conf.parameterA:
             player.start_target.target_info[target_id] = [2, jindu]
@@ -262,7 +278,7 @@ def get_target_info(player, target_id, day):
         jindu = player.base_info.level
     elif target_conf.type == 46:
         # 战斗力达到a
-        jindu = player.line_up.hight_power
+        jindu = player.line_up_component.hight_power
 
     # 到到a的统一在这里返回
     if jindu >= target_conf.parameterA:
@@ -333,6 +349,7 @@ def get_target_info_1827(data, player):
         player.start_target.target_info[target_id] = [3, 0]
 
     player.pay.pay(need_gold, const.START_TARGET, func)
+    player.start_target.save_data()
 
     response.res.result = True
     return response.SerializeToString()

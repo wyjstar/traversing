@@ -139,6 +139,9 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
     # logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
 
+    # 更新7日奖励的状态
+    # player.start_target.update_29()
+
     if const.DEBUG:
         for slot_no, slot in player.line_up_component.line_up_slots.items():
             hero = slot.hero_slot.hero_obj

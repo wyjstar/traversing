@@ -8,7 +8,7 @@ message GetStartTargetInfoRequest{
 //1826
 message GetStartTargetInfoResponse{
     required CommonResponse res = 1;
-    required int32 day = 2;
+    optional int32 day = 2;
     repeated StartTargetInfo start_target_info = 3;  //目标信息
 }
 
