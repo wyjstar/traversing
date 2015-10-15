@@ -27,7 +27,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.component.fight.stage_logic.pvp_stage import PvpStageLogic
-from app.admin.redis_mode import tb_guild_info
+from app.game.redis_mode import tb_guild_info
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
