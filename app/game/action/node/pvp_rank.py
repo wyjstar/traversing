@@ -280,7 +280,7 @@ def pvp_fight_request_1505(data, player):
     request.ParseFromString(data)
     # player.pvp.check_time()
 
-    arena_consume = game_configs.base_confi.get('arenaConsume')
+    arena_consume = game_configs.base_config.get('arenaConsume')
     result = is_afford(player, arena_consume)  # 校验
     if not result.get('result'):
         logger.error('not enough consume:%s', arena_consume)
@@ -300,7 +300,7 @@ def pvp_fight_request_1505(data, player):
         challenge_rank = player.pvp.pvp_upstage_challenge_rank
 
     if challenge_rank < 0:
-        logger.error('pvp challenge rank error!!',
+        logger.error('pvp challenge rank error!!%s-%s',
                      challenge_rank,
                      player.pvp.pvp_upstage_challenge_rank)
         response.res.result = False
@@ -312,7 +312,8 @@ def pvp_fight_request_1505(data, player):
     target_id = int(tb_pvp_rank.zrangebyscore(challenge_rank,
                                               challenge_rank)[0])
     if target_id != request.challenge_id:
-        logger.error('pvp challenge id changed!!')
+        logger.error('pvp challenge id changed!!%s-%s',
+                     target_id, request.challenge_id)
         response.res.result = False
         response.res.result_no = 150508
         return response.SerializeToString()
