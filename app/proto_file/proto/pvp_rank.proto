@@ -117,5 +117,7 @@ message GetPvpOvercomeInfo{
     required int32 stars = 2;
     required int32 refresh_count = 3;
     repeated int32 awarded = 4;
-	repeated BattleBuff buff = 5;
+    repeated BattleBuff buff = 5;
+    repeated int32 target_fight_powers = 6;
+    repeated int32 target_ids = 7;
 }
