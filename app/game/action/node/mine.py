@@ -86,7 +86,7 @@ def mine_status(player, response):
     return response
 
 
-def one_mine_info(mstatus, one_mine):
+def one_mine_info(player, mstatus, one_mine):
     position = mstatus.get('position', None)
     if position is not None:
         one_mine.position = position
@@ -105,6 +105,21 @@ def one_mine_info(mstatus, one_mine):
     gen_time = mstatus.get('gen_time', None)
     if gen_time is not None:
         one_mine.gen_time = int(gen_time)
+
+    if one_mine.type == MineType.PLAYER_FIELD:
+        uid = mstatus.get('uid')
+        if uid == player.base_info.id:
+            one_mine.fight_power = int(player.line_up_component.combat_power)
+            one_mine.is_guild = player.guild.g_id
+        else:
+            one_mine.is_friend = player.friends.is_friend(uid)
+            data_obj = tb_character_info.getObj(uid)
+            if data_obj.exists():
+                data = data_obj.hmget(['guild_id', 'attackPoint'])
+                one_mine.is_guild = data['guild_id'] != 0
+                one_mine.fight_power = int(data['attackPoint'])
+            else:
+                logger.errr('mine info cant find uid:%s', uid)
 
 
 @remoteserviceHandle('gate')
@@ -132,7 +147,7 @@ def search_1241(data, player):
         player.mine.search_mine(request.position, mine_boss)
         player.mine.save_data()
         one_mine = player.mine.mine_info(request.position)
-        one_mine_info(one_mine, response.mine)
+        one_mine_info(player, one_mine, response.mine)
         response.res.result = True
         hook_task(player, CONDITIONId.MINE_EXPLORE, 1)
     else:
@@ -207,7 +222,7 @@ def query_1243(data, player):
     if ret == 0:
         response.res.result = True
         mstatus = player.mine.mine_info(request.position)
-        one_mine_info(mstatus, response.mine)
+        one_mine_info(player, mstatus, response.mine)
         response.limit = limit
         for sid, num in normal.items():
             one_type = response.normal.add()
