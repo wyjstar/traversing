@@ -104,9 +104,10 @@ def get_target_info1(player, target_id, day):
             return {'state': 1}
     elif target_conf.type == 30:
         if not target_info:
-            return {'jindu': 0}
+            player.start_target.target_info[target_id] = [1, 0]
+            return {'state': 2, 'jindu': 0}
         else:
-            return {'jindu': target_info[1]}
+            return {'state': target_info[0], 'jindu': target_info[1]}
     elif target_conf.type == 31:
         if target_info and target_info[0] == 2:
             return {'state': 2}
@@ -176,8 +177,10 @@ def get_target_info1(player, target_id, day):
             if hero_obj:
                 if hero_obj.refine >= target_conf.parameterA:
                     jindu += 1
-            if jindu >= target_conf.parameterB:
-                state = 2
+
+        if jindu >= target_conf.parameterB:
+            state = 2
+
         if state == 2:
             player.start_target.target_info[target_id] = \
                 [2, target_conf.parameterB]
@@ -187,7 +190,7 @@ def get_target_info1(player, target_id, day):
         return {'state': state, 'jindu': jindu}
     elif target_conf.type == 35:
         # 过关斩将通关第十关
-        jindu = player.pvp.pvp_overcome_current
+        jindu = player.pvp.pvp_overcome_current - 1
         if jindu >= target_conf.parameterA:
             player.start_target.target_info[target_id] = [2, jindu]
             return {'state': 2, 'jindu': target_conf.parameterA}
@@ -313,7 +316,6 @@ def get_target_info_1827(data, player):
     args.ParseFromString(data)
     target_id = args.target_id
     response = start_target_pb2.GetStartTargetRewardResponse()
-    print target_id, '==========================1'
 
     # 第几天登录
     is_open, day = player.start_target.is_open()
@@ -353,11 +355,16 @@ def get_target_info_1827(data, player):
     def func():
         return_data = gain(player, target_conf.reward, const.START_TARGET)  # 获取
         get_return(player, return_data, response.gain)
-        player.start_target.target_info[target_id] = [3, 0]
+        if target_conf.type == 30:
+            if target_conf.count <= (info.get('jindu') + 1):
+                player.start_target.target_info[target_id] = [3, 0]
+            else:
+                player.start_target.target_info[target_id] = [1, info.get('jindu') + 1]
+        else:
+            player.start_target.target_info[target_id] = [3, 0]
 
     player.pay.pay(need_gold, const.START_TARGET, func)
     player.start_target.save_data()
 
     response.res.result = True
-    print response, '=================2'
     return response.SerializeToString()

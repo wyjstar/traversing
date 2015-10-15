@@ -21,8 +21,6 @@ for robot_id in tb_robot2.hkeys():
     robot2_rank[int(robot_id)] = robot_data.get('attackPoint')
 
 robot2_rank = sorted(robot2_rank.items(), key=lambda _: _[1])
-# for _ in robot2_rank:
-#     print _
 
 
 class CharacterPvpComponent(Component):
@@ -40,7 +38,7 @@ class CharacterPvpComponent(Component):
         self._pvp_refresh_time = 0
         self._pvp_refresh_count = 0
         self._pvp_current_rank = 0
-        self._pvp_high_rank = 999999  # 玩家pvp最高排名
+        self._pvp_high_rank = 99999  # 玩家pvp最高排名
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
         self._pvp_arena_players = []
 
