@@ -205,7 +205,7 @@ class CharacterPvpComponent(Component):
         if stage_info:
             _choose = eval(stage_info.get('choose'))
             if _choose:
-                a, b = _choose[0]
+                a, b, _ = _choose[0]
                 _id = random.randint(a, b)
                 self._pvp_upstage_challenge_rank = _id
 

@@ -104,6 +104,7 @@ class BaseConfig(object):
         config_value["arenaRevengeRewards"] = parse(config_value["arenaRevengeRewards"])
         config_value["price_sweep"] = parse(config_value["price_sweep"])
         config_value["totemRefreshItem"] = parse(config_value["totemRefreshItem"])
+        config_value["arenaConsume"] = parse(config_value["arenaConsume"])
         #config_value["CoinCardCumulateTimes"] = parse(config_value["CoinCardCumulateTimes"])
         config_value["CoinCardCumulate"] = parse(config_value["CoinCardCumulate"])
         #config_value["CardCumulateTimes"] = parse(config_value["CardCumulateTimes"])
