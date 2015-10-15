@@ -362,7 +362,7 @@ def add_stones(player, stones, response):
                 return 0
             else:
                 runt_info = player.runt.m_runt.get(runt_no)
-                runt_pb = response.runt.add()
+                runt_pb = response.normal.add()
                 [runt_id, main_attr, minor_attr] = runt_info
                 # print runt_no
                 player.runt.deal_runt_pb(runt_no,

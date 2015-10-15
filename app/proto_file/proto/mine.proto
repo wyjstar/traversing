@@ -86,7 +86,8 @@ message drawStones
 {
 	required int32 position = 1;
 	required CommonResponse res = 2;//通用返回
-	repeated Runt1 runt = 3;
+	repeated Runt1 normal = 3;
+	repeated Runt1 lucky = 4;
 }
 
 //1246请求
