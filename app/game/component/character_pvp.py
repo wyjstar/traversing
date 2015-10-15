@@ -16,6 +16,15 @@ from app.game.action.node.start_target import target_update
 tb_rank = RedisObject('tb_rank')
 
 
+tb_robot2 = tb_character_info.getObj('robot2')
+robot2_rank = {}
+for robot_id in tb_robot2.hkeys():
+    robot_data = tb_robot2.hget(robot_id)
+    robot2_rank[int(robot_id)] = robot_data.get('attackPoint')
+
+robot2_rank = sorted(robot2_rank.items(), key=lambda _: _[1])
+
+
 def get_player_pvp_stage_up(rank):
     for v in game_configs.arena_fight_config.values():
         if v.get('type') != 4:
@@ -42,6 +51,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_stars = 0
         self._pvp_overcome_buff_init = {}
         self._pvp_overcome_buff = {}
+        self._pvp_overcome_failed = False
 
         self._pvp_times = 0  # pvp次数
         self._pvp_refresh_time = 0
@@ -73,6 +83,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_stars = character_info.get('pvp_overcome_stars', 0)
         self._pvp_overcome_buff_init = character_info.get('pvp_overcome_buff_init', {})
         self._pvp_overcome_buff = character_info.get('pvp_overcome_buff', {})
+        self._pvp_overcome_failed = character_info.get('pvp_overcome_failed', False)
 
         self.check_time()
 
@@ -97,7 +108,8 @@ class CharacterPvpComponent(Component):
                     pvp_overcome_awards=self._pvp_overcome_awards,
                     pvp_overcome_stars=self._pvp_overcome_stars,
                     pvp_overcome_buff_init=self._pvp_overcome_buff_init,
-                    pvp_overcome_buff=self._pvp_overcome_buff)
+                    pvp_overcome_buff=self._pvp_overcome_buff,
+                    pvp_overcome_failed=self._pvp_overcome_failed)
         character_info.hmset(data)
 
     def new_data(self):
@@ -116,7 +128,8 @@ class CharacterPvpComponent(Component):
                     pvp_overcome_awards=self._pvp_overcome_awards,
                     pvp_overcome_stars=self._pvp_overcome_stars,
                     pvp_overcome_buff_init=self._pvp_overcome_buff_init,
-                    pvp_overcome_buff=self._pvp_overcome_buff)
+                    pvp_overcome_buff=self._pvp_overcome_buff,
+                    pvp_overcome_failed=self._pvp_overcome_failed)
         return data
 
     def check_time(self):
@@ -159,6 +172,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_stars = 0
         self._pvp_overcome_buff_init = {}
         self._pvp_overcome_buff = []
+        self._pvp_overcome_failed = False
         self.save_data()
         return True
 
@@ -222,9 +236,9 @@ class CharacterPvpComponent(Component):
     def pvp_overcome(self):
         return self._pvp_overcome
 
-    @pvp_overcome.setter
-    def pvp_overcome(self, value):
-        self._pvp_overcome = value
+    # @pvp_overcome.setter
+    # def pvp_overcome(self, value):
+    #     self._pvp_overcome = value
 
     @property
     def pvp_overcome_awards(self):
@@ -249,6 +263,14 @@ class CharacterPvpComponent(Component):
     @pvp_overcome_buff_init.setter
     def pvp_overcome_buff_init(self, value):
         self._pvp_overcome_buff_init = value
+
+    @property
+    def pvp_overcome_failed(self):
+        return self._pvp_overcome_failed
+
+    @pvp_overcome_failed.setter
+    def pvp_overcome_failed(self, value):
+        self._pvp_overcome_failed = value
 
     @property
     def pvp_overcome_stars(self):
@@ -343,8 +365,32 @@ def get_overcomes(player_id, player_ap):
     rank = tb_rank.getObj(rank_name)
     rank_toal = rank.ztotal()
     if rank_toal < 50:
-        logger.error('not enough player')
-        return []
+        if len(robot2_rank) < 50:
+            logger.error('not robot2 exist')
+            return []
+        robot_ids = set([(0, 0)])
+        index = 0
+        for i in range(len(robot2_rank)):
+            rid, rap = robot2_rank[i]
+            if rap > player_ap:
+                index = i
+                break
+        else:
+            index = len(robot2_rank)
+
+        _min = max(index - 50, 0)
+        _max = min(index + 50, len(robot2_rank) - 1)
+        while len(robot_ids) != 46:
+            _id = random.randint(_min, _max)
+            robot_ids.add(robot2_rank[_id])
+        robot_ids = sorted(list(robot_ids), key=lambda x: x[1])
+        ids = [[0, 0]]
+        for _id, ap in robot_ids:
+            ids.append([_id, ap])
+
+        logger.error('reset overcome not enough player:%s(%s)', ids, index)
+        return ids
+
     types = [20001, 20002, 20003]
     count = 0
     ids = set()
@@ -372,10 +418,10 @@ def get_overcomes(player_id, player_ap):
                     ids.add(res[ids_index])
                     ids_index += 1
 
-    overcome_ids = [0]
+    overcome_ids = [[0, 0]]
     ids = sorted(ids, key=lambda x: x[1])
-    for _id, _ in ids:
-        overcome_ids.append(int(_id))
+    for _id, ap in ids:
+        overcome_ids.append([int(_id), int(ap)])
     logger.debug('get overcome %s-%s', overcome_ids, len(overcome_ids))
     return overcome_ids
 

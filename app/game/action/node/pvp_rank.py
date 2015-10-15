@@ -442,7 +442,14 @@ def pvp_fight_overcome_1508(data, player):
     line_up = request.lineup
     skill = request.skill
 
+    if player.pvp.pvp_overcome_failed:
+        logger.error('overcome is already failed')
+        response.res.result = False
+        response.res.result_no = 150805
+        return response.SerializeToString()
+
     if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_GGZJ):
+        logger.error('overcome is not open ')
         response.res.result = False
         response.res.result_no = 150801
         return response.SerializeToString()
@@ -482,8 +489,12 @@ def pvp_fight_overcome_1508(data, player):
             return_data = gain(player, ggzj_item.get('reward2'),
                                const.PVP_OVERCOME)
             get_return(player, return_data, response.gain)
+            response.res.result = True
+        else:
+            player.pvp.pvp_overcome_failed = True
+            player.pvp.save_data()
+            response.res.result = False
 
-        response.res.result = True
         logger.debug("red_units: %s" % response.red)
         return response.SerializeToString()
 
@@ -724,6 +735,9 @@ def GetPvpOvercomeInfo_1513(data, player):
     response.stars = player.pvp.pvp_overcome_stars
     response.refresh_count = player.pvp.pvp_overcome_refresh_count
     response.awarded.extend(player.pvp.pvp_overcome_awards)
+    response.is_failed = player.pvp.pvp_overcome_failed
+    for _id, ap in player.pvp.pvp_overcome:
+        response.target_fight_powers.append(ap)
     for k, v in player.pvp.pvp_overcome_buff.items():
         res_buff = response.buff.add()
         res_buff.index = k
