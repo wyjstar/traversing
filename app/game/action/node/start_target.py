@@ -243,12 +243,13 @@ def get_target_info1(player, target_id, day):
                 continue
             hero_obj = slot.hero_slot.hero_obj  # 英雄实例
             if hero_obj:
-                for (runt_po, runt_info) in hero_obj.runt.items():
-                    # [runt_no, runt_id, main_attr, minor_attr] = runt_info
-                    quality = game_configs.stone_config.get('stones'). \
-                        get(runt_info[1]).quality
-                    if quality == target_conf.parameterB:
-                        jindu += 1
+                for (runt_type, item) in hero_obj.runt.items():
+                    for (runt_po, runt_info) in item.items():
+                        # [runt_no, runt_id, main_attr, minor_attr] = runt_info
+                        quality = game_configs.stone_config.get('stones'). \
+                            get(runt_info[1]).quality
+                        if quality == target_conf.parameterB:
+                            jindu += 1
 
         if jindu >= target_conf.parameterA:
             player.start_target.target_info[target_id] = [2, jindu]
