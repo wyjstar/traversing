@@ -317,12 +317,8 @@ def gain(player, item_group, reason,
                     push_notice(2006, player_name=player.base_info.base_name, equipment_no=itid)
 
                 result.append([type_id, 1, item_no])
-
-                a = itid
-                itid = item_no
-                item_no = a
                 tlog_action.log('ItemFlow', player, const.ADD, type_id, 1,
-                                item_no, itid, reason, after_num, event_id)
+                                itid, item_no, reason, after_num, event_id)
 
         elif type_id == const.EQUIPMENT_CHIP:
             chip = EquipmentChip(item_no, num)
