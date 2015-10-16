@@ -353,8 +353,6 @@ def guard_1244(data, player):
 
 
 def add_stones(player, stones, response):
-    response.res.result = True
-    print 'add_stones', stones
     for stone_id, num in stones.items():
         for _ in range(num):
             runt_no = player.runt.add_runt(stone_id)
@@ -362,7 +360,7 @@ def add_stones(player, stones, response):
                 return 0
             else:
                 runt_info = player.runt.m_runt.get(runt_no)
-                runt_pb = response.normal.add()
+                runt_pb = response.runt.add()
                 [runt_id, main_attr, minor_attr] = runt_info
                 # print runt_no
                 player.runt.deal_runt_pb(runt_no,
@@ -392,7 +390,7 @@ def harvest_1245(data, player):
     stones = player.mine.harvest(request.position)
     # print 'stones', stones
     if stones:
-        if not add_stones(player, stones, response):
+        if not add_stones(player, stones, response.normal):
             response.res.result = False
             response.res.result_no = 824
             return response.SerializePartialToString()
@@ -595,7 +593,7 @@ def process_mine_result(player, position, result, response, stype, hold=1):
     logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
                  harvest_stone, harvest_a, harvest_b, prize)
 
-    if not add_stones(player, harvest_stone, response):
+    if not add_stones(player, harvest_stone, response.gain):
         response.res.result = False
         response.res.result_no = 824
         logger.debug('add_stones fail!!!!!!')
@@ -646,7 +644,6 @@ def battle_1253(data, player):
     blue_best_skill_level = 0
     red_units = {}
     blue_units = {}
-    #save_line_up_order(line_up, player, red_best_skill_id)
 
     logger.debug("%s pos" % pos)
 
@@ -654,9 +651,11 @@ def battle_1253(data, player):
     response = mine_pb2.MineBattleResponse()
 
     mine_type = mine_info.get("mine_type")  # 根据矿所在位置判断pve or pvp
-    # print mine_type, "*"*80
+    # print mine_info, "*"*80
+    # detail_info = player.mine.detail_info(request.pos)
+    # print detail_info, '='*18
     # print request
-    print("mine battle", mine_type)
+    # print("mine battle", mine_type)
     if mine_type == 0:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
@@ -692,36 +691,34 @@ def battle_1253(data, player):
         if not mine_lock:
             response.res.result = False
             return response.SerializePartialToString()
-        try:
-            player.fight_cache_component.stage_id = 0
-            red_units = player.fight_cache_component.get_red_units()
-            info = get_save_guard(player, pos)
-            # print info
-            blue_units = info.get("battle_units", {})
-            seed1, seed2 = get_seeds()
-            if not blue_units:
-                fight_result = True
-            else:
-                fight_result = pvp_process(player,
+
+        player.fight_cache_component.stage_id = 0
+        red_units = player.fight_cache_component.get_red_units()
+        info = get_save_guard(player, pos)
+        # print info
+        blue_units = player.mine._mine[request.pos].get_blue_units()
+        seed1, seed2 = get_seeds()
+        if not blue_units:
+            fight_result = True
+        else:
+            fight_result = pvp_process(player,
                                        line_up,
                                        red_units,
                                        blue_units,
                                        red_best_skill_id,
                                        info.get("best_skill_no"),
-                                       info.get("level"), red_best_skill_id, seed1, seed2, const.BATTLE_MINE_PVP)
-    #player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type
-            hold = request.hold
-            process_mine_result(player, pos, fight_result, response, 1, hold)
+                                       info.get("level"),
+                                       red_best_skill_id,
+                                       seed1, seed2,
+                                       const.BATTLE_MINE_PVP)
+        hold = request.hold
+        process_mine_result(player, pos, fight_result, response, 1, hold)
 
-            blue_best_skill_id = info.get("best_skill_id", 0)
-            blue_best_skill_level = info.get("best_skill_level", 0)
-            response.fight_result = fight_result
-            response.seed1 = seed1
-            response.seed2 = seed2
-        except Exception, e:
-            player.mine.settle(request.pos, False, 0)
-            response.res.result = False
-            return response.SerializePartialToString()
+        blue_best_skill_id = info.get("best_skill_id", 0)
+        blue_best_skill_level = info.get("best_skill_level", 0)
+        response.fight_result = fight_result
+        response.seed1 = seed1
+        response.seed2 = seed2
 
         red_best_skill_id = 0
         red_best_skill_level = 1
