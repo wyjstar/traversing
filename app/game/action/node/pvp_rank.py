@@ -489,12 +489,11 @@ def pvp_fight_overcome_1508(data, player):
             return_data = gain(player, ggzj_item.get('reward2'),
                                const.PVP_OVERCOME)
             get_return(player, return_data, response.gain)
-            response.res.result = True
         else:
             player.pvp.pvp_overcome_failed = True
             player.pvp.save_data()
-            response.res.result = False
 
+        response.res.result = True
         logger.debug("red_units: %s" % response.red)
         return response.SerializeToString()
 
@@ -705,13 +704,15 @@ def BuyPvpOvercomeBuff_1512(data, player):
                 request.index, request.num,
                 player.pvp.pvp_overcome_buff_init)
 
-    star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index][request.num]
-    if star > player.pvp.pvp_overcome_stars:
-        logger.error('ggzj buff not enough star:%s-%s',
-                     star, player.pvp.pvp_overcome_stars)
-        response.res.result = False
-        response.res.result_no = 151205
-        return response.SerializePartialToString()
+    star, bt, vt, value = 0, 0, 0, 0
+    if request.num >= 0:
+        star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index][request.num]
+        if star > player.pvp.pvp_overcome_stars:
+            logger.error('ggzj buff not enough star:%s-%s',
+                         star, player.pvp.pvp_overcome_stars)
+            response.res.result = False
+            response.res.result_no = 151205
+            return response.SerializePartialToString()
 
     player.pvp.pvp_overcome_stars -= star
     player.pvp.pvp_overcome_buff[request.index] = [bt, vt, value]

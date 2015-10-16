@@ -88,7 +88,7 @@ class CharacterPvpComponent(Component):
         self.check_time()
 
         self.save_data()
-        self.reset_overcome()
+        # self.reset_overcome()
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
@@ -180,7 +180,7 @@ class CharacterPvpComponent(Component):
         if index > len(self._pvp_overcome):
             return 0
 
-        return self._pvp_overcome[index]
+        return self._pvp_overcome[index][0]
 
     def pvp_player_rank_refresh(self):
         rank = tb_pvp_rank.zscore(self.owner.base_info.id)
@@ -384,7 +384,7 @@ def get_overcomes(player_id, player_ap):
             _id = random.randint(_min, _max)
             robot_ids.add(robot2_rank[_id])
         robot_ids = sorted(list(robot_ids), key=lambda x: x[1])
-        ids = [[0, 0]]
+        ids = []
         for _id, ap in robot_ids:
             ids.append([_id, ap])
 
