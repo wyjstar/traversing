@@ -2,7 +2,6 @@
 """
 created by server on 14-7-9下午2:39.
 """
-from shared.db_opear.configs_data.common_item import CommonGroupItem
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
@@ -18,7 +17,6 @@ from app.game.core.item_group_helper import get_consume_gold_num
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from shared.tlog import tlog_action
-import copy
 from app.game.core.task import hook_task, CONDITIONId
 
 
@@ -287,6 +285,13 @@ def shop_buy_505(pro_data, player):
             common_response.result = False
             common_response.result_no = 911
             logger.error('error shop id:%s', shop_id)
+            return response.SerializeToString()
+        if shop_item.get('limitLevel') > player.base_info.level:
+            common_response.result = False
+            common_response.result_no = 50501
+            logger.error('shop item level limit:%s-%s',
+                         player.base_info.level,
+                         shop_item.get('limitLevel'))
             return response.SerializeToString()
 
         shop = player.shop.get_shop_data(shop_item.get('type'))
