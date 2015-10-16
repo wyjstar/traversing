@@ -6,6 +6,8 @@ Created on 2013-8-2
 '''
 from gfirefly.utils.singleton import Singleton
 from shared.utils.logclient import LogClient
+from gfirefly.server.logobj import logger
+import traceback
 
 
 class GlobalObject:
@@ -78,12 +80,19 @@ class webserviceHandle:
     def __call__(self, cls):
         """
         """
-        if self._url:
-            child_name = self._url
-        else:
-            child_name = cls.__name__
+        try:
+            if self._url:
+                child_name = self._url
+            else:
+                child_name = cls.__name__
 
-        return GlobalObject().webroot.route(child_name, **self.kw)(cls)
+            return GlobalObject().webroot.route(child_name, **self.kw)(cls)
+        except Exception, e:
+            logger.exception(e)
+            return "error"
+        except:
+            logger.error(traceback.format_exc())
+            return "error"
 
 
 class remoteserviceHandle:

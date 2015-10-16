@@ -13,6 +13,9 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from monster_mine import MineOpt
 from gfirefly.server.globalobject import GlobalObject
+from app.game.action.node.pvp_rank import get_pvp_data
+
+
 remote_gate = GlobalObject().remote.get('gate')
 
 
@@ -437,11 +440,11 @@ class PlayerField(Mine):
                     if mids:
                         mid = random.choice(mids)
                         match_mine = MineOpt.get_mine(mid)
-                        if match_mine.get('guard_time') > time.time():
-                            logger.debug('this mine is in guard_time:%s',
-                                          match_mine.get('guard_time') - time.time())
-                            match_mine = None
-                        elif match_mine.get('status') == 3:
+                        # if match_mine.get('guard_time') > time.time():
+                        #     logger.debug('this mine is in guard_time:%s',
+                        #                   match_mine.get('guard_time') - time.time())
+                        #     match_mine = None
+                        if match_mine.get('status') == 3:
                             logger.debug('this mine is fade:%s:%s:%s',
                                          mid, one_user,
                                          match_mine.get('status'))
@@ -600,6 +603,14 @@ class PlayerField(Mine):
 
         self.update_info(cPickle.loads(data))
         return self._lineup
+
+    def get_blue_units(self):
+        record = get_pvp_data(self._tid)
+        if not record:
+            logger.error('player id is not found:%s', self._tid)
+            return None
+
+        return record.get('copy_units')
 
 
 class MonsterField(Mine):
