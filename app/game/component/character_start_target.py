@@ -73,7 +73,7 @@ class CharacterStartTargetComponent(Component):
         time1 = int(time.mktime(time.strptime(
                     time.strftime('%Y-%m-%d 00:00:00', t1),
                     '%Y-%m-%d %H:%M:%S')))
-        day = (time0 - time1)/(24*60*60)
+        day = (time0 - time1)/(24*60*60) + 1
 
         if act_conf.timeStart > now or now > act_conf.timeEnd:
             logger.debug("202 activity type close by timeStart timeEnd.")
@@ -100,7 +100,7 @@ class CharacterStartTargetComponent(Component):
         time1 = int(time.mktime(time.strptime(
                     time.strftime('%Y-%m-%d 00:00:00', t1),
                     '%Y-%m-%d %H:%M:%S')))
-        day = (time0 - time1)/(24*60*60)
+        day = (time0 - time1)/(24*60*60) + 1
 
         if act_conf.timeStart > now or now > act_conf.timeEnd:
             logger.debug("202 activity type close by timeStart timeEnd.")
