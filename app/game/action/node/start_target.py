@@ -86,15 +86,6 @@ def get_target_info1(player, target_id, day):
     elif target_info and target_info[0] == 2:
         return {'state': 2}
 
-    if target_conf.type == 28:
-        if not target_info:
-            return {'state': 1, 'jindu': 0}
-        else:
-            if target_info[1] >= target_conf.parameterA:
-                return {'state': 2, 'jindu': target_info[1]}
-            else:
-                return {'state': 1, 'jindu': target_info[1]}
-
     elif target_conf.type == 29:
         # jindu = get_condition(conditions, 29)
         # if jindu and jindu[int(target_conf.parameterA)-1]:
