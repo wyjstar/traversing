@@ -30,7 +30,7 @@ model_config = json.load(open(config_model_path, 'r'))
 GlobalObject().json_model_config = model_config.get("models")
 
 config = json.load(open(config_path, 'r'))
-GlobalObject().json_config = config
+GlobalObject().allconfig = config
 
 # init memconfig
 #memconfig = config.get("memcached")

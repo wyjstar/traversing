@@ -335,7 +335,7 @@ class Hero(object):
     def hero_links(self):
         """英雄羁绊配置数据
         """
-        return game_configs.link_config.get(self._hero_no)
+        return game_configs.link_config.get(self._hero_no, {})
 
     @property
     def normal_skill_id(self):

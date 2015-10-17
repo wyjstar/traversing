@@ -12,12 +12,14 @@ from shared.utils.const import const
 import time
 from shared.utils.date_util import is_next_day
 
+
 def peroid_of_stamina_recover():
     return game_configs.base_config.get('peroid_of_vigor_recover')
 
 
 def max_of_stamina():
     return game_configs.base_config.get('max_of_vigor')
+
 
 class CharacterStaminaComponent(Component):
     """可恢复性资源组件: 体力，讨伐令，鞋子"""
@@ -40,13 +42,19 @@ class CharacterStaminaComponent(Component):
 
     def new_data(self):
         stamina_pb = self._stamina.stamina.add()
-        stamina_pb.resource_type = const.STAMINA        # 体力
-        stamina_pb = self._stamina.stamina.add()        #
-        stamina_pb.resource_type = const.HJQYFIGHTTOKEN # 讨伐令
-        stamina_pb = self._stamina.stamina.add()        #
-        stamina_pb.resource_type = const.SHOE           # 鞋
+        stamina_pb.resource_type = const.STAMINA         # 体力
+        stamina_pb = self._stamina.stamina.add()         #
+        stamina_pb.resource_type = const.HJQYFIGHTTOKEN  # 讨伐令
+        stamina_pb = self._stamina.stamina.add()         #
+        stamina_pb.resource_type = const.SHOE            # 鞋
 
         return dict(stamina=self._stamina.SerializeToString())
+
+    def check_time_all(self):
+        for item in self._stamina.stamina:
+            logger.debug("refresh resource type %s" % item.resource_type)
+            self.check_time(item.resource_type)
+        self.save_data()
 
     def check_time(self, resource_type):
         """docstring for _check_time"""
@@ -56,7 +64,7 @@ class CharacterStaminaComponent(Component):
         current_time = int(time.time())
         logger.debug("info %s" % info)
         stamina_add = (current_time - item.last_gain_stamina_time) / info.get("recover_period")
-        #left_stamina = (current_time - item.last_gain_stamina_time) % info.get("recover_period")
+        # left_stamina = (current_time - item.last_gain_stamina_time) % info.get("recover_period")
         logger.debug("stamina_add %s " % (stamina_add,))
         if self.owner.finance[resource_type] < info.get("max_value"):
             # 如果原来的超出上限，则不添加
@@ -211,5 +219,3 @@ class CharacterStaminaComponent(Component):
         """上次购买体力时间"""
         item = self.get_item(const.STAMINA)
         item.last_buy_stamina_time = value
-
-
