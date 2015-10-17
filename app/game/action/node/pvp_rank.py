@@ -137,29 +137,29 @@ def pvp_player_rank_request_1502(data, player):
     if not rank:
         rank = tb_pvp_rank.ztotal()
 
-    top_rank = []
-    stage_info = get_player_pvp_stage(rank)
-    print stage_info, rank
-    if stage_info:
-        _choose = eval(stage_info.get('choose'))
-        if _choose:
-            _min, _max, count = _choose[0]
-            top_rank.extend(range(_min, _max))
-        else:
-            logger.error('pvp stage not found choose:%s', stage_info)
+    # top_rank = []
+    # stage_info = get_player_pvp_stage(rank)
+    # print stage_info, rank
+    # if stage_info:
+    #     _choose = eval(stage_info.get('choose'))
+    #     if _choose:
+    #         _min, _max, count = _choose[0]
+    #         top_rank.extend(range(_min, _max))
+    #     else:
+    #         logger.error('pvp stage not found choose:%s', stage_info)
 
-    print top_rank
-    if top_rank:
-        records = tb_pvp_rank.zrangebyscore(min(top_rank), max(top_rank),
-                                            withscores=True)
-        for char_id, _rank in records:
-            char_id = int(char_id)
-            _rank = int(_rank)
-            if _rank not in top_rank:
-                continue
-            rank_item = response.rank_items.add()
-            rank_item.rank = _rank
-            _with_pvp_info(rank_item, char_id)
+    # print top_rank
+    # if top_rank:
+    #     records = tb_pvp_rank.zrangebyscore(min(top_rank), max(top_rank),
+    #                                         withscores=True)
+    #     for char_id, _rank in records:
+    #         char_id = int(char_id)
+    #         _rank = int(_rank)
+    #         if _rank not in top_rank:
+    #             continue
+    #         rank_item = response.rank_items.add()
+    #         rank_item.rank = _rank
+    #         _with_pvp_info(rank_item, char_id)
 
     player_ranks = player.pvp.pvp_arena_players
 
@@ -172,8 +172,8 @@ def pvp_player_rank_request_1502(data, player):
         _rank = int(_rank)
         if _rank not in player_ranks:
             continue
-        if _rank in top_rank:
-            continue
+        # if _rank in top_rank:
+        #     continue
         rank_item = response.rank_items.add()
         rank_item.rank = _rank
         _with_pvp_info(rank_item, char_id)
