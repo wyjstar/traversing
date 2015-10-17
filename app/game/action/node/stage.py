@@ -52,6 +52,9 @@ def get_stages_901(pro_data, player):
         add.stage_id = stage_obj.stage_id
         add.attacks = stage_obj.attacks
         add.state = stage_obj.state
+
+        if time.localtime(stage_obj.reset[1]).tm_yday != time.localtime().tm_yday:
+            stage_obj.reset = [0, int(time.time())]
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
         add.chest_state = stage_obj.chest_state
