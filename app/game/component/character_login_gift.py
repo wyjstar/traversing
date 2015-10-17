@@ -71,7 +71,7 @@ class CharacterLoginGiftComponent(Component):
             self._continuous_day[18001] = 0
             self._continuous_day_num = 1
             if days_to_current(self._owner.base_info.register_time) > 7:
-                self._continuous_day_num = -1
+                self._continuous_7day_num = -1
 
 
         elif days_to_current(self._last_login) == 1:
