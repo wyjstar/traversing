@@ -184,6 +184,15 @@ def hero_break_104(data, player):
 def hero_break_logic(hero_no, player, response):
     hero = player.hero_component.get_hero(hero_no)
     hero_info = game_configs.hero_config.get(hero_no)
+    break_through = game_configs.base_config.get('breakthrough')
+    target_break_level = hero.break_level + 1
+    if target_break_level not in break_through:
+        logger.debug("hero_break_logic can find target break level %s" % target_break_level)
+        return {"result": False, "result_no": 10401}
+
+    if hero.level < break_through[target_break_level]:
+        logger.debug("hero_break_logic level is not enough %s" % hero.level)
+        return {"result": False, "result_no": 10402}
 
     # 验证武将是否突破到上限
     if hero.break_level == hero_info.breakLimit:
