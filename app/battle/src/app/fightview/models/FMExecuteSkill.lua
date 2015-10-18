@@ -106,7 +106,7 @@ function execute_demage(attacker, target, buff_info, is_block, is_cri, extra_msg
     if getFormulaTemplate():getFunc("damage_2Precondition")(buff_info) then
         actual_demage_2 = getFormulaTemplate():getFunc("damage_2")(total_demage, buff_info, attacker.level)
     end
-    actual_demage = addDamageRate(actual_demage_1 + actual_demage_2)
+    actual_demage = addDamageRate(attacker.side, actual_demage_1 + actual_demage_2)
     target:set_hp(target:get_hp() - actual_demage)
 
     local m1 = ""
@@ -145,7 +145,7 @@ function execute_pure_demage(attacker, target, buff_info, extra_msgs)
     if getFormulaTemplate():getFunc("damage_4Precondition")(buff_info) then
         actual_demage_4 = getFormulaTemplate():getFunc("damage_4")(attacker:get_atk(), buff_info, attacker.level)
     end
-    actual_demage = addDamageRate(actual_demage_3 + actual_demage_4)
+    actual_demage = addDamageRate(attacker.side, actual_demage_3 + actual_demage_4)
     target:set_hp(target:get_hp() - actual_demage)
     print("execute_pure_demage=========", actual_demage)
     return actual_demage
@@ -181,14 +181,18 @@ function execute_treat(attacker, target, buff_info, is_cri, extra_msgs)
 end
 
 -- 无双值
-function unpara(attacker_side, target, buff_info, playerLevel, extra_msgs)
+function unpara(attacker, target, buff_info, playerLevel, extra_msgs)
+    local atkArray = process.redAtkArray
+    if attacker.side == "blue" then
+        atkArray = process.blueAtkArray
+    end
     local atkArray = process.redAtkArray
     --for _,v in pairs(attacker_side) do
         --atkArray = atkArray + v.atk
     --end
     local warriorsDamage = getFormulaTemplate():getFunc("warriorsDamage")(atkArray, target:get_physical_def(), target:get_magic_def())
     local warriorsLastDamage = getFormulaTemplate():getFunc("warriorsLastDamage")(warriorsDamage, buff_info, playerLevel)
-    warriorsLastDamage = addDamageRate(warriorsLastDamage)
+    warriorsLastDamage = addDamageRate(attacker.side, warriorsLastDamage)
     print(warriorsLastDamage, "warriorsLastDamage==========")
     local m1 = ""
     m1 = m1.."总atk:"..tostring(atkArray)
@@ -202,7 +206,7 @@ end
 -- 怪物无双值
 function unpara_monster(atk, target, extra_msgs)
     local warriorsDamage = getFormulaTemplate():getFunc("monster_warriors_atkArray")(atk)
-    warriorsDamage = addDamageRate(warriorsDamage)
+    warriorsDamage = addDamageRate("blue", warriorsDamage)
     target:set_hp(target:get_hp() - warriorsDamage)
     return warriorsDamage
 end
@@ -224,9 +228,12 @@ function get_buff_value(value, buff)
     return skill_buff_1 + skill_buff_2
 end
 
-function addDamageRate(value)
+function addDamageRate(side, value)
     -- 添加伤害加成
-    damage_rate = process.damage_rate
-    print("addDamageRate", damage_rate)
-    return value * (1 + damage_rate)
+    if side == "red" then
+        damage_rate = process.damage_rate
+        print("addDamageRate", damage_rate)
+        return value * (1 + damage_rate)
+    end
+    return value
 end

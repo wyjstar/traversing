@@ -3,6 +3,7 @@ g_other  = g_other or {}    -- 其他字符串宏定义
 g_friendSubmodule = g_friendSubmodule or {}     -- 好友子模块名称定义
 
 G_BOTTOM_DEFINE = G_BOTTOM_DEFINE or {}       -- 按钮属性宏定义
+G_LOCK_DEFINE = G_LOCK_DEFINE or {}             -- 功能锁宏定义
 
 const = const or {}
 const.POS_ARMY = cc.p(320, 260)
@@ -392,19 +393,21 @@ g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --�
 g_friendSubmodule.SUBMODULE_PUSH_FRIEND = "SUBMODULE_PUSH_FRIEND"           -- 好友,推送好友子模块
 
 G_BOTTOM_DEFINE.GET_COINS_CANCEL = {
-    ["normalFrame"] = "#ui_common1_button_blue.png",
-    ["selectedFrame"] = "#ui_common_cancel.png",
+    ["normalFrame"] = "#ui_common_btn_blue2.png",
+    ["selectedFrame"] = "#lan_common_cancel.png",
     ["disabledFrame"] = nil,
     ["callBack"] = nil,
 }
 G_BOTTOM_DEFINE.GET_COINS_JUMP = {
-    ["normalFrame"] = "#ui_common_button_yel.png",
-    ["selectedFrame"] = "#ui_common_qzc.png",
+    ["normalFrame"] = "#ui_common_btn_yel2.png",
+    ["selectedFrame"] = "#lan_common_qzc.png",
     ["disabledFrame"] = nil,
     ["callBack"] = function ()
         getOtherModule():showUIView("activity.PVActivityPage", 5)
     end,
 }
+
+G_LOCK_DEFINE.SHARE_LOCK = false      -- 是否锁住分享有礼功能
 
 UPDATE_HEAD = "UPDATE_HEAD"  -- 更新头像
 UPDATE_TL = "UPDATE_TL"      -- 更新体力
