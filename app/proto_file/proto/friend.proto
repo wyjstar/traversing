@@ -17,19 +17,7 @@ message FindFriendRequest{
 
 //
 message FindFriendResponse{
-    optional int32  id = 1;
-    optional string nickname = 2;
-    optional int32 hero_no = 3;  //英雄编号
-    optional int32 gift = 4 [default = 0];
-    optional int32 power = 5 [default = 1010];  // 战斗力
-    optional float hp = 6;  //血
-    optional float atk = 7;  //攻
-    optional float physical_def = 8;  //物理防御
-    optional float magic_def = 9;  //魔法防御
-    optional int32 level = 10;//玩家等级
-    optional int32 b_rank = 11; //玩家的擂台排名
-    optional int32 last_time = 12;//最后登录时间
-    optional int32 vip_level = 13;
+	repeated CharacterInfo infos = 1;
 }
 
 message GetPlayerFriendsRequest{

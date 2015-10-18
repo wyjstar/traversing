@@ -526,7 +526,7 @@ function constructBattleUnit(data, side)
     unit.origin_no = data.origin_no         -- 乱入或者觉醒武将的原始no
 
     unit.chief = false
-    print("side:",side,"constructBattleUnit===========", data.no," origin_no:", data.origin_no)
+    print("side:",side,"constructBattleUnit===========", data.no," origin_no:", data.origin_no,"break_level:",unit.break_level)
     if (process.fight_type == TYPE_STAGE_NORMAL 
         or process.fight_type == TYPE_STAGE_ELITE 
         or process.fight_type == TYPE_STAGE_ACTIVITY 
@@ -552,9 +552,9 @@ function constructBattleUnit(data, side)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_HERO
         if not SERVER_CODE then
-            local pictureName, res = soldierTemplate:getHeroImageName(unit.no)
+            local pictureName, res = soldierTemplate:getHeroImageName(unit.no,unit.break_level)
             if unit.is_break or unit.is_awake then --乱入前武将图片
-                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no)
+                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no,unit.break_level)
                 unit.originPictureName = originPictureName
             end
 

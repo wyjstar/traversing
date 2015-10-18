@@ -113,14 +113,20 @@ class CharacterRechargeGift(Component):
             self._recharge[activity_id] = {accumulating: switch}
 
         if gift_type == 10:
-            if activity_id not in self._recharge:
-                self._recharge[activity_id] = {}
+            if recharge >= activity.get('parameterA'):
+                if activity_id not in self._recharge:
+                    self._recharge[activity_id] = {}
 
-            if _date_now not in self._recharge[activity_id].keys():
-                self._recharge[activity_id][_date_now] = 0
+                if _date_now not in self._recharge[activity_id].keys():
+                    self._recharge[activity_id][_date_now] = 0
 
     def get_data(self, response):
         print self._recharge, type(self._recharge)
+        _time_now_struct = time.gmtime()
+        str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
+                                          _time_now_struct.tm_mon,
+                                          _time_now_struct.tm_mday)
+        _date_now = int(time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S')))
         for recharge_id, recharge_data in self._recharge.items():
             activity = game_configs.activity_config.get(recharge_id)
             if activity is None:
@@ -130,16 +136,25 @@ class CharacterRechargeGift(Component):
             item.gift_id = recharge_id
             item.gift_type = activity.get('type')
             for k, v in recharge_data.items():
-                _data = item.data.add()
-                _data.is_receive = v
-                if item.gift_type in [7, 10]:
+                if item.gift_type == 7:
+                    _data = item.data.add()
+                    _data.is_receive = v
                     _data.recharge_time = k
+                if item.gift_type == 10:
+                    if v == 0 or k == _date_now:
+                        _data = item.data.add()
+                        _data.is_receive = v
+                        _data.recharge_time = k
                 if item.gift_type == 8:
+                    _data = item.data.add()
+                    _data.is_receive = v
                     _data.recharge_time = k
                     _data.recharge_accumulation = v
                     if _data.recharge_accumulation == 0:
                         _data.is_receive = 1
                 elif item.gift_type == 9:
+                    _data = item.data.add()
+                    _data.is_receive = v
                     _data.recharge_accumulation = k
 
     def take_gift(self, recharge_items, response):

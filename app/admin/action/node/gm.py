@@ -240,18 +240,22 @@ def modify_user_info(args):
         attr_value = int(args['attr_value'])
         stages = character_obj.hget('stage_info')
 
+        next_stages = game_configs.stage_config.get('condition_mapping')
+
         stage_info = game_configs.stage_config.get('stages').get(stage_id)
         if not stage_info:
             return {'success': 0, 'message': 4}
-
+        if not next_stages.get(stage_id):
+            return {'success': 0, 'message': 4}
+        if game_configs.stage_config.get('stages').get(stage_id)['type'] != 1:
+            return {'success': 0, 'message': 4}
         stage_objs = {}
         for stage_id_a, stage in stages.items():
             stage_objs[stage_id_a] = Stage.loads(stage)
 
         stage_obj = get_stage(stage_objs, stage_id)
-        stage_obj.state == -1
+        stage_obj.state = -1
         first_stage_id = game_configs.stage_config.get('first_stage_id')
-        next_stages = game_configs.stage_config.get('condition_mapping')
         stage_id_a = stage_id
 
         while True:
@@ -264,6 +268,9 @@ def modify_user_info(args):
                         break
                 else:
                     break
+            else:
+                logger.error('modify_user_info,stage,stageid:', stage_id)
+                return {'success': 0, 'message': 4}
 
         while True:
             the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']

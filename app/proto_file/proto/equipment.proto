@@ -26,6 +26,7 @@ message EquipmentPB{
     repeated EquAttr main_attr = 10;
     repeated EquAttr minor_attr = 11;
 	optional int64 prefix= 12;         // 装备前缀
+    optional int32 attr_id = 13; // 如果是掉落装备，则与equipment_config中的attrid一致。 如果是商店购买的装备，则是根据幸运值计算后的结果。
 }
 
 message EquAttr{

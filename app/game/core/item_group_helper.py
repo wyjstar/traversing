@@ -182,7 +182,12 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
     return result
 
 
-def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_multiple=[[],1]):
+def gain(player, item_group, reason,
+         result=None,
+         multiple=1,
+         event_id='',
+         part_multiple=[[], 1],
+         lucky_attr_id=0):
     """获取
     @param item_group: [obj,obj]
     act 掉落翻倍. [[type_ids], xs]  [[翻倍类型列表]，系数]
@@ -295,7 +300,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
 
         elif type_id == const.EQUIPMENT:
             for _ in range(num):
-                equipment = player.equipment_component.add_equipment(item_no)
+                equipment = player.equipment_component.add_equipment(item_no, lucky_attr_id)
                 itid = item_no
                 item_no = equipment.base_info.id
                 after_num = player.equipment_component.get_equipment_num(itid)
@@ -312,12 +317,8 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_
                     push_notice(2006, player_name=player.base_info.base_name, equipment_no=itid)
 
                 result.append([type_id, 1, item_no])
-
-                a = itid
-                itid = item_no
-                item_no = a
                 tlog_action.log('ItemFlow', player, const.ADD, type_id, 1,
-                                item_no, itid, reason, after_num, event_id)
+                                itid, item_no, reason, after_num, event_id)
 
         elif type_id == const.EQUIPMENT_CHIP:
             chip = EquipmentChip(item_no, num)

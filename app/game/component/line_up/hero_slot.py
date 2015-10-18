@@ -41,8 +41,8 @@ class HeroSlotComponent(SlotBaseInfoComponent):
         if not self.hero_obj:
             return link_data
         for i in range(1, 6):
-            link_no = getattr(self.hero_obj.hero_links, 'link%s' % i)  # 羁绊技能
-            trigger_list = getattr(self.hero_obj.hero_links, 'trigger%s' % i)  # 羁绊触发条件
+            link_no = self.hero_obj.hero_links.get('link%s' % i)  # 羁绊技能
+            trigger_list = self.hero_obj.hero_links.get('trigger%s' % i)  # 羁绊触发条件
             if not link_no:
                 continue
 

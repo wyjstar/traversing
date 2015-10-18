@@ -22,6 +22,8 @@ function CommonData:ctor(item)
     self.rank = 0
     self.loginContinueDay = 0
     self.loginTotalDay = 0
+    self.login7DaysEnjoy = 0
+    
 end
 -- function CommonData:clear()
 --     cclog("---------------CommonData:clear------")
@@ -84,20 +86,22 @@ function CommonData:setData(data)
     -- 将等级写入到userdefault中
     saveTeamLevel(self.level)
     self.isCiriOpened = data.is_open_next_day_activity   --次日开启功能是否已开启过
+    --wp:test
+    -- self.isFirstRechargeRewardGot = data.first_recharge_activity  --是否领过首冲好礼 -1没领过，1领过
         
     -- self.stamina = data.stamina                         --体力
     self.totalRecharge = data.recharge                   --累计充值
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
     self.godHeroTimes = data.excellent_hero_times         --神将累计抽取次数
-    print("newbee_guide_id", data.newbee_guide_id)
 
-    --data.newbee_guide_id = 30029
+    --data.newbee_guide_id = 20030
     if (data.newbee_guide_id == 0) then
         getNewGManager():setCurrentGID(GuideId.G_GUIDE_START)  --新手引导记录编号
     else
         getNewGManager():setCurrentGID(data.newbee_guide_id)
     end
     print("---------------------------------------------------")
+
     -- self.gold = data.gold                               --元宝
     -- self.coin = data.coin                               --金币
     -- self.junior_stone = data.junior_stone               --初级熔炼石
@@ -128,6 +132,7 @@ function CommonData:setData(data)
     self.login_time = data.server_time
 
     self.combat_power = data.combat_power
+    self.max_combat_power = data.hight_power--data.max_combat_power   --历史最高战力
     self.get_stamina_times = data.get_stamina_times     -- 通过邮件获取体力次数
     self.buy_stamina_times = data.buy_stamina_times     -- 购买体力次数
     print("------self.buy_stamina_times--------",self.buy_stamina_times)
@@ -162,6 +167,15 @@ function CommonData:setData(data)
     print("self.pvp_overcome_index = "..self.pvp_overcome_index)
     print("self.pvp_overcome_refresh_count = "..self.pvp_overcome_refresh_count)
 
+end
+
+--是否领取过首冲好礼
+function CommonData:getFirstRechargeRewardGot()
+    if self.isFirstRechargeRewardGot == 1 then
+        return true
+    else
+        return false
+    end
 end
 
 --次日开启功能是否已开启过
@@ -235,6 +249,10 @@ function CommonData:subFinance(type_, num)
 
     if type_ ==  RES_TYPE.SHOES then -- 游历消耗鞋子需要通知游历主界面和章节游历界面
         self:dispatchEvent(EventName.SUB_SHOES)
+    end
+
+    if type_ == RES_TYPE.PVP_SCROE then  -- 消耗军功
+        self:dispatchEvent(EventName.SUB_PVP_SCROE)
     end
 end
 
@@ -359,8 +377,16 @@ function CommonData:getBattleSpeed() return self.battle_speed end
 function CommonData:setBattleSpeed(speed) self.battle_speed = speed end
 
 -- 返回战斗力
-function CommonData:getCombatPower() return self.combat_power end
+function CommonData:getCombatPower() return roundNumber(self.combat_power) end
 function CommonData:setCombatPower(num) self.combat_power = num end
+
+--返回最高战力
+function CommonData:getMaxCombatPower() 
+    if self.max_combat_power == nil then self.max_combat_power = 0 end
+    return roundNumber(self.max_combat_power) 
+end
+--设置最高战力
+function CommonData:setMaxCombatPower(num) self.max_combat_power = num end
 
 --返回战力排行
 function CommonData:getPowerRank() return self.rank end
@@ -573,6 +599,7 @@ function CommonData:getLoginContinueGift(id)
     end
     return nil
 end
+
 -- 累积登陆奖励
 function CommonData:setLoginTotalGiftList(list) self.loginTotalGiftList = list end
 function CommonData:addLoginTotalGift(giftId) 
@@ -594,6 +621,32 @@ end
 function CommonData:getLoginTotalGift(id)
     if self.loginTotalGiftList == nil then return nil end
     for k,v in pairs(self.loginTotalGiftList) do
+        if v.activity_id == id then return v end
+    end
+    return nil
+end
+
+-- 开服7天乐
+function CommonData:set7DaysEnjoyList(list) self.sevenDEnjoyList = list end
+function CommonData:add7DaysEnjoyGift(giftId) 
+    if self.sevenDEnjoyList == nil then return nil end
+
+    local isExist = false
+    for k,v in pairs(self.sevenDEnjoyList) do
+        if v.activity_id == giftId then 
+             v.state = 1
+             isExist = true
+             break
+        end
+    end
+    if isExist == false then 
+        local data = {activity_id = giftId, state = 1}
+        table.insert(self.sevenDEnjoyList, data) 
+    end
+end
+function CommonData:get7DaysEnjoyGift(id)
+    if self.sevenDEnjoyList == nil then return nil end
+    for k,v in pairs(self.sevenDEnjoyList) do
         if v.activity_id == id then return v end
     end
     return nil
@@ -625,11 +678,11 @@ end
 --获取是否能领取累计登陆奖励
 function CommonData:getIsCanGetTotleReward()
     -- print("getIsCanGetTotleReward-------")
-    local totleBaseList = getTemplateManager():getBaseTemplate():getTotleBaseList()
+    local totleBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(1)
     -- table.print(totleBaseList)
     -- print("getIsCanGetTotleReward-------")
     -- table.print(self.loginTotalGiftList)
-    -- print("11111111111111")
+    -- print("11111111111111")getTotleBaseList()
 
 
     local loginTotalDay = self:getLoginTotalDay()
@@ -650,7 +703,7 @@ end
 
 --获取是否可以领取连续登陆奖励
 function CommonData:getIsCanGetSeriesReward()
-    local serialBaseList = getTemplateManager():getBaseTemplate():getSerialBaseList()
+    local serialBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(2)
     --print("<<======连续登陆列表=========>>")
     --table.print(serialBaseList)
     local serialTotalDay = self:getLoginContinueDay()
@@ -666,9 +719,35 @@ function CommonData:getIsCanGetSeriesReward()
     return false
 end
 
+--开服7天乐
+function CommonData:set7DaysEnjoy(day) 
+    self.login7DaysEnjoy = day
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_ACTIVE)
+end
+
+function CommonData:get7DaysEnjoy() return self.login7DaysEnjoy end
+
+function CommonData:canGet7DEnjoyRewards()
+    local serialBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(18)
+    --print("<<======连续登陆列表=========>>")
+    --table.print(serialBaseList)
+    local serialTotalDay = self:get7DaysEnjoy()
+    for i = 1, serialTotalDay do
+        local item = serialBaseList[i]
+        if item == nil then return false end
+        local id = item.id
+        local item = self:get7DaysEnjoyGift(id)
+        if item and item.state == 0 then
+            return true
+        end
+    end
+    return false
+end
+
 --获得是否可以领取战队等级奖励
 function CommonData:getIsCanGetLevelReward()
-    local lvBaglBaseList = getTemplateManager():getBaseTemplate():getLvBag()
+    local lvBaglBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(3)
     if self.level == 1 then
         return false
     end
@@ -753,8 +832,9 @@ function CommonData:addExp(num)
         exp = exp - maxExp
         maxExp = getTemplateManager():getPlayerTemplate():getMaxExpByLevel(level)
     end
+    self:setLevel(level) --由于setExp中最了等级，所以先设置等级，再设置经验
     self:setExp(exp)
-    self:setLevel(level) 
+
     -- getNetManager():sendMsgAfterPlayerUpgrade()  
 end
 
@@ -898,7 +978,16 @@ end
 
 -- 修改战斗力
 function CommonData:updateCombatPower() 
+    local power = roundNumber(getCalculationManager():getCalculation():CombatPowerAllSoldierLineUp())
+    self:setCombatPower(power)
+
     self:dispatchEvent(EventName.UPDATE_COMBAT_POWER) 
+end
+
+-- 修改历史最高战斗力
+function CommonData:updateMaxCombatPower(power)
+   self:setMaxCombatPower(power)
+   self:dispatchEvent(EventName.UPDATE_MAX_COMBAT_POWER)
 end
 
 --[[--
@@ -1247,51 +1336,50 @@ function CommonData:giftCanGetByType(_type)
     return false
 end
 
+function CommonData:transformTimeToLabel(timeStr)
+    local timeTab = {}
+    local strlen = string.len(timeStr)
+    local pos = string.find(timeStr, " ")
+    local data = string.sub(timeStr,1,pos-1)
+    local timex = string.sub(timeStr,pos+1,strlen)
+
+    local str = data
+    local pos = string.find(str,"-")
+    local year = tonumber(string.sub(str,1,pos-1))
+    str = string.sub(str,pos+1,-1)
+    pos = string.find(str,"-")
+    local month = tonumber(string.sub(str,1,pos-1))
+    local day = tonumber(string.sub(str,pos+1,-1))
+
+    local str2 = timex
+    pos = string.find(str2,":")
+    local hour = tonumber(string.sub(str2,1,pos-1))
+    print("之前 ======== hour ===== ", hour)
+    if hour < 10 then
+        hour = "0" .. hour
+    end
+    print("之后 ======== hour ===== ", hour)
+    str2 = string.sub(str2,pos+1,-1)
+    pos = string.find(str2,":")
+    local min = tonumber(string.sub(str2,1,pos-1))
+    if min < 10 then
+        min = "0" .. min
+    end
+    local sec = tonumber(string.sub(str2,pos+1,-1))
+
+    timeTab = {year = year,month = month,day = day,hour = hour,min = min,sec = sec}
+    return timeTab
+end
+
 --解析xxxx-xx-xx xx:xx:xx - yyyy-yy-yy yy:yy:yy的时间类型
 function CommonData:analysisTime(timeStr)
-
-    local function toTimeTable(timeStr)
-
-        local timeTab = {}
-        local strlen = string.len(timeStr)
-        local pos = string.find(timeStr, " ")
-        local data = string.sub(timeStr,1,pos-1)
-        local timex = string.sub(timeStr,pos+1,strlen)
-
-        local str = data
-        local pos = string.find(str,"-")
-        local year = tonumber(string.sub(str,1,pos-1))
-        str = string.sub(str,pos+1,-1)
-        pos = string.find(str,"-")
-        local month = tonumber(string.sub(str,1,pos-1))
-        local day = tonumber(string.sub(str,pos+1,-1))
-
-        local str2 = timex
-        pos = string.find(str2,":")
-        local hour = tonumber(string.sub(str2,1,pos-1))
-        print("之前 ======== hour ===== ", hour)
-        if hour < 10 then
-            hour = "0" .. hour
-        end
-        print("之后 ======== hour ===== ", hour)
-        str2 = string.sub(str2,pos+1,-1)
-        pos = string.find(str2,":")
-        local min = tonumber(string.sub(str2,1,pos-1))
-        if min < 10 then
-            min = "0" .. min
-        end
-        local sec = tonumber(string.sub(str2,pos+1,-1))
-
-        timeTab = {year = year,month = month,day = day,hour = hour,min = min,sec = sec}
-        return timeTab
-    end
 
     local strlen = string.len(timeStr)
     local startTime = string.sub(timeStr,1,(strlen+1)/2-2)
     local endTime = string.sub(timeStr,(strlen+1)/2+2,strlen)
 
-    local startTimeTab = toTimeTable(startTime)
-    local endTimeTab = toTimeTable(endTime)
+    local startTimeTab = self:transformTimeToLable(startTime)
+    local endTimeTab = self:transformTimeToLable(endTime)
 
     return startTimeTab,endTimeTab
 end
@@ -1322,6 +1410,7 @@ end
 --充值数据累计
 function CommonData:setRechargeNum(rechargeNum)
     self.totalRecharge = rechargeNum
+    self:dispatchEvent(EventName.UPDATE_RECHARGE_NUM)
 end
 
 --获取充值数据
@@ -1563,7 +1652,7 @@ end
 精彩活动,单次充值 红点
 ]]
 function CommonData:isOnceRechargeRedDot()
-    local reSingleList = self.c_BaseTemplate:getRchargeSingle()
+    local reSingleList = self.c_BaseTemplate:getAcivityInfoByType(8)
     for k,v in pairs(reSingleList) do
         if not self:rechargeGiftIsGot(v.id) and (self:getRechargeSingle(v.id) >= v.parameterA) then
             return true
@@ -1576,7 +1665,7 @@ end
 精彩活动,累计充值 红点
 ]]
 function CommonData:isSumRechargeRedDot()
-    local reAccList = self.c_BaseTemplate:getRchargeAcc()
+    local reAccList = self.c_BaseTemplate:getAcivityInfoByType(9)
     for k,v in pairs(reAccList) do
         if not self:rechargeGiftIsGot(v.id) and (self:getRechargeAcc() >= v.parameterA) then
             return true

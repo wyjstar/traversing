@@ -315,47 +315,47 @@ def draw_friend_lively_1199(data, player):
     return response.SerializePartialToString()
 
 
+def fill_friend_info(player_data, response):
+    friend_data = player_data.hmget(['id',
+                                     'attackPoint',
+                                     'nickname',
+                                     'heads',
+                                     'level',
+                                     'upgrade_time'])
+    response.id = friend_data.get('id')
+    response.nickname = friend_data.get('nickname')
+    if friend_data['attackPoint'] is not None:
+        response.power = int(friend_data['attackPoint'])
+
+    friend_heads = Heads_DB()
+    friend_heads.ParseFromString(friend_data['heads'])
+    response.hero_no = friend_heads.now_head
+    response.level = friend_data['level']
+    if remote_gate.online_remote(friend_data['id']) == 0:
+        response.last_time = friend_data['upgrade_time']
+
+
 @remoteserviceHandle('gate')
 def find_friend_request_1107(data, player):
     request = friend_pb2.FindFriendRequest()
     request.ParseFromString(data)
 
     response = friend_pb2.FindFriendResponse()
-    response.id = 0
-    response.nickname = 'none'
-    response.atk = 111
-    response.hero_no = 11
-    response.gift = datetime.datetime.now().day
     if request.id_or_nickname.isdigit():
         player_data = tb_character_info.getObj(request.id_or_nickname)
-        isexist = player_data.exists()
-    else:
-        nickname_obj = tb_character_info.getObj('nickname')
-        isexist = nickname_obj.hexists(request.id_or_nickname)
-        pid = nickname_obj.hget(request.id_or_nickname)
-        player_data = tb_character_info.getObj(pid)
+        if player_data.exists():
+            info = response.infos.add()
+            info.gift = datetime.datetime.now().day
+            fill_friend_info(player_data, info)
+
+    nickname_obj = tb_character_info.getObj('nickname')
+    isexist = nickname_obj.hexists(request.id_or_nickname)
+    pid = nickname_obj.hget(request.id_or_nickname)
+    player_data = tb_character_info.getObj(pid)
     if isexist:
-
-        friend_data = player_data.hmget(['id',
-                                         'attackPoint',
-                                         'nickname',
-                                         'heads',
-                                         'level',
-                                         'upgrade_time'])
-        response.id = friend_data.get('id')
-        response.nickname = friend_data.get('nickname')
-        if friend_data['attackPoint'] is not None:
-            response.power = int(friend_data['attackPoint'])
-
-        friend_heads = Heads_DB()
-        friend_heads.ParseFromString(friend_data['heads'])
-        response.hero_no = friend_heads.now_head
-        response.level = friend_data['level']
-        if remote_gate.online_remote(friend_data['id']) == 0:
-            response.last_time = friend_data['upgrade_time']
-
-        # 添加好友主将的属性
-        # _with_battle_info(response, player_data)
+        info = response.infos.add()
+        info.gift = datetime.datetime.now().day
+        fill_friend_info(player_data, info)
 
     return response.SerializePartialToString()
 
