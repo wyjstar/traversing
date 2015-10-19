@@ -330,9 +330,7 @@ class PlayerField(Mine):
         self._normal = {}  # 符文石
         self._lucky = {}  # 幸运石
         self._gen_time = 0
-        self._is_friend = False
-        self._is_guild = False
-        self._fight_power = 0
+        self._accelerate_times = 0
 
     def save_info(self, lineup=None):
         info = {'seq': self._seq,
@@ -349,9 +347,7 @@ class PlayerField(Mine):
                 'lucky_end': self._lucky_end,
                 'normal': self._normal,
                 'lucky': self._lucky,
-                'is_friend': self._is_friend,
-                'is_guild': self._is_guild,
-                'fight_power': self._fight_power
+                'accelerate_times': self._accelerate_times
                 }
         return info
 
@@ -376,14 +372,8 @@ class PlayerField(Mine):
         self._lucky_end = info.get('lucky_end')
         self._normal = info.get('normal')
         self._lucky = info.get('lucky')
-        self._is_friend = info.get('is_friend', False)
-        self._is_guild = info.get('is_guild', False)
-        self._fight_power = info.get('fight_power', 0)
-
-        player_data = tb_character_info.getObj(self._tid)
-        if player_data.exists():
-            self._fight_power = int(player_data.hget('attackPoint'))
-        print 'fight power', self._fight_power
+        self._lucky = info.get('lucky')
+        self._accelerate_times = info.get('accelerate_times')
 
         self._last_time = self._normal_end
         mine = ConfigData.mine(self._mine_id)
@@ -482,25 +472,7 @@ class PlayerField(Mine):
     def start_battle(self):
         lock = remote_gate.mine_ask_battle_remote(self._tid, self._seq)
         return lock
-#         lock = MineOpt.lock(self._seq)
-#         if lock == 1:
-#             return True
-#         return False
 
-#     def settle(self, uid=None, nickname=None, hold=1):
-#         mine = ConfigData.mine(self._mine_id)
-#         tid = self._tid
-#         if self._status == 2 or (self._status == 1 and time.time() > self._last_time):
-#             self._status = 3
-#         else:
-#             if hold:
-#                 self._tid = uid
-#                 self._nickname = nickname
-#             self._guard_time = time.time() + mine.protectTimeFree*60  # 读取数值表配置－刚占领的野怪矿保护时间
-#         data = self.save_info()
-#         MineOpt.add_mine(self._tid, self._seq, data)
-#         MineOpt.unlock(self._seq)
-#         return self, tid
     def settle(self, uid=None, result=True, nickname=None, hold=1):
         result = remote_gate.mine_settle_remote(uid, self._seq, result, nickname, hold)
         data, uid, nickname = cPickle.loads(result)
@@ -539,18 +511,9 @@ class PlayerField(Mine):
         self.get_cur_data(now)
 
     def mine_info(self):
-#         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
-#         print 'mine_info', cPickle.loads(data)
         # self.guard_info()
 
-        print self.__dict__
         info = Mine.mine_info(self)
-        try:
-            info['is_friend'] = self._is_friend
-            info['is_guild'] = self._is_guild
-            info['fight_power'] = self._fight_power
-        except:
-            pass
 
         return info
 
@@ -566,63 +529,12 @@ class PlayerField(Mine):
             lineup = char_obj.hget('copy_slots')
 
         return ret, stype, last_increase, limit, normal, lucky, lineup, guard_time
-#         self.update_mine()
-# #         now = time.time()
-# #         self.get_cur(now)
-# #         if now >= self._increase:
-# #             last_increase =  0
-# #         else:
-# #             last_increase = self._increase
-#         mine = ConfigData.mine(self._mine_id)
-#         # print 'detail_info', self._normal, self._lucky, self._guard_time, self._seq
-#         limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
-#         return 0, 1, 0, limit, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
-
-#     def guard(self, nickname, info):
-#         """ 驻守攻占的野怪矿 """
-#         lock = MineOpt.lock(self._seq)
-#         print 'guard.lock', lock
-#         if lock > 1:
-#             MineOpt.unlock(self._seq)
-#             return 12440  # 战斗中
-#         self.update_mine()
-#         if self._nickname != nickname:
-#             MineOpt.unlock(self._seq)
-#             return 12441  # 非自己的矿
-#         else:
-#             data = self.save_info(lineup=info)
-#             # print 'guard.data', data
-#             MineOpt.add_mine(self._tid, self._seq, data)
-#             MineOpt.unlock(self._seq)
-#             return 0
 
     def guard(self, nickname, info):
 #         print 'guard', type(self._tid), type(self._seq), type(self._seq), type(info)
         result = remote_gate.mine_guard_remote(self._tid, self._seq, nickname, cPickle.dumps(info))
         return result
 
-#     def draw_stones(self):
-#         # 领取产出
-#         # print 'draw_stones'
-#         lock = MineOpt.lock(self._seq)
-#         if lock != 1:
-#             return {}
-#         self.update_mine()
-#         stones = {}
-#         # print self._normal, self._lucky
-#         for k, v in self._normal.items():
-#             stones[k] = v
-#             self._normal[k] = 0
-#         for k, v in self._lucky.items():
-#             stones[k] = v
-#             self._lucky[k] = 0
-#
-#         self._status = 3
-#         save_data = self.save_info()
-#         MineOpt.add_mine(self._tid, self._seq, save_data)
-#         MineOpt.unlock(self._seq)
-#
-#         return stones
     def draw_stones(self):
         status, stones = remote_gate.mine_harvest_remote(self._tid, self._seq)
         return cPickle.loads(stones)
@@ -645,6 +557,21 @@ class PlayerField(Mine):
             return None
 
         return record.get('copy_units')
+
+    def acc_mine_time(self):
+        self._accelerate_times += 1
+        self._gen_time += game_configs.base_config.get('stoneReduceTime') * 60
+        return True
+
+    def get_acc_time_gold(self):
+        stoneReduceTimePrice = game_configs.base_config.get('stoneReduceTimePrice')
+        if self._accelerate_times >= len(stoneReduceTimePrice):
+            logger.error('accelerate time, over index:%s-%s',
+                         stoneReduceTimePrice,
+                         self._accelerate_times)
+            return 0
+        need_gold = stoneReduceTimePrice[self._accelerate_times]
+        return need_gold
 
 
 class MonsterField(Mine):
