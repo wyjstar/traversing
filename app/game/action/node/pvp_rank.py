@@ -622,7 +622,7 @@ def random_buf(buff):
     for v in buff.values():
         wights += v[1]
 
-    _rand_num = random.randint(0, wights)
+    _rand_num = random.random() * wights
     for item in buff.values():
         star, w, bt, vt, value = item
         if _rand_num < w:

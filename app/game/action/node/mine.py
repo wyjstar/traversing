@@ -4,13 +4,12 @@ Created on 2014-11-24
 
 @author: hack
 """
-import time
 from app.proto_file import mine_pb2
 from app.proto_file import common_pb2
 from app.proto_file import line_up_pb2
-from app.proto_file import db_pb2
 from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
+from app.game.redis_mode import tb_character_info
 
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
@@ -32,6 +31,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.core.task import hook_task, CONDITIONId
 from shared.utils import xtime
 from app.game.action.node.start_target import target_update
+from app.game.component.mine.user_mine import MineType
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -47,6 +47,7 @@ def mine_status(player, response):
     mine_status = player.mine.mine_status()
     player.mine.save_data()
     for mstatus in mine_status:
+        print mstatus
         one_mine = response.mine.add()
         position = mstatus.get('position', None)
         if position is not None:
@@ -67,15 +68,17 @@ def mine_status(player, response):
         if gen_time is not None:
             one_mine.gen_time = int(gen_time)
 
-        is_friend = mstatus.get('is_friend', None)
-        if is_friend is not None:
-            one_mine.is_friend = is_friend
-        is_guild = mstatus.get('is_guild', None)
-        if is_guild is not None:
-            one_mine.is_guild = is_guild
-        fight_power = mstatus.get('fight_power', None)
-        if fight_power is not None:
-            one_mine.fight_power = fight_power
+        if one_mine.type == MineType.PLAYER_FIELD:
+            uid = mstatus.get('uid')
+            one_mine.is_friend = player.friends.is_friend(uid)
+            data_obj = tb_character_info.getObj(uid)
+            if data_obj.exists():
+                data = data_obj.hmget(['guild_id', 'attackPoint'])
+                one_mine.is_guild = data['guild_id'] != 0
+                one_mine.fight_power = int(data['attackPoint'])
+            else:
+                logger.errr('mine info cant find uid:%s', uid)
+
     return response
 
 
@@ -121,7 +124,7 @@ def search_1241(data, player):
     request.ParseFromString(data)
     response = mine_pb2.searchResponse()
     response.position = request.position
-    # print 'response.position', response.position
+    print 'response.position', response.position
     if player.mine.can_search(request.position):
         player.mine.search_mine(request.position, mine_boss)
         player.mine.save_data()
