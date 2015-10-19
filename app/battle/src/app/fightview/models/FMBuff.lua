@@ -68,7 +68,11 @@ function FMBuff:perform_buff(owner, result)
         result.is_cri = check_cri(attacker.cri, owner.ductility, self.skill_buff_info)
         result.value = execute_demage(attacker, owner, self.skill_buff_info, is_block, result.is_cri, extra_msgs)
     elseif table.inv({3, 33, 34, 35}, effect_id) then
+<<<<<<< HEAD
         print("2============",effect_id)
+=======
+        print("2============")
+>>>>>>> tc_wzp
         result.value = execute_pure_demage(attacker, owner, self.skill_buff_info, extra_msgs)
         self.value = result.value
     elseif table.inv({8, 9}, effect_id) then

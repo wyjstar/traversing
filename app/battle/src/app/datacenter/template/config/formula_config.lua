@@ -305,6 +305,7 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/500",  ["clientPrecondition"] = "1",  ["id"] = 153,  ["clientFormula"] = "result=ActivityExpDrop/500",  ["key"] = "ActivityExpDropConvert_2",}
 ,  [154] = {
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 154,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
+<<<<<<< HEAD
 ,  [155] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
 ,  [156] = {
@@ -313,4 +314,6 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "hero_info.physicalDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 157,  ["clientFormula"] = "result=hero_info.physicalDef*parameters",  ["key"] = "hero_Breakthrough.physicalDef",}
 ,  [158] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.magicDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 158,  ["clientFormula"] = "result=hero_info.magicDef*parameters",  ["key"] = "hero_Breakthrough.magicDef",}
+=======
+>>>>>>> tc_wzp
 ,}

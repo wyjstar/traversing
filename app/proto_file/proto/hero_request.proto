@@ -43,3 +43,10 @@ message HeroRequest
 {
     required int32 hero_no = 1;
 }
+
+// 武将觉醒请求, command:121
+message HeroAwakeRequest
+{
+    required int32 hero_no = 1; // 武将编号
+    optional int32 awake_item_num = 2; // 觉醒道具数量
+}

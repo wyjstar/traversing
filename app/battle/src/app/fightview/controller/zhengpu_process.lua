@@ -449,8 +449,13 @@ end
 function FightProcess:check_result()
     --阵亡或战斗回合达到最大值则输
     print("red_units:",table.nums(self.red_units),"blue_units:",table.nums(self.blue_units))
+<<<<<<< HEAD
     -- if table.nums(self.red_units) == 0 then
     if table.nums(self.red_units) == 0 or self.current_fight_times > self.fight_times_max then
+=======
+    if table.nums(self.red_units) == 0 then
+    -- if table.nums(self.red_units) == 0 or self.current_fight_times > self.fight_times_max then
+>>>>>>> tc_wzp
         self:logInfo()
         appendFile2("lose========"..self.current_fight_times.."=="..self.fight_times_max, 0)
         return -1 -- lose

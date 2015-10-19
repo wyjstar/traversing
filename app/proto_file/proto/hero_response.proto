@@ -58,3 +58,12 @@ message OneKeyHeroUpgradeRespone
     optional int32 exp = 3;
     repeated int32 exp_item_num = 4; // 消耗的经验丹 1小经验丹2中经验丹3大经验丹
 }
+
+// 武将觉醒返回, command:121
+message HeroAwakeResponse
+{
+    required CommonResponse res = 1;
+    required int32 awake_level = 2;
+    required int32 awake_exp = 3;
+    optional GameResourcesResponse consume = 4; // 觉醒实际消耗
+}

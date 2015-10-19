@@ -54,7 +54,10 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
     getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
+<<<<<<< HEAD
     getNetManager():getSevenDayNet():sendGetDayList(0)              -- 七日活动刷新
+=======
+>>>>>>> tc_wzp
     --重置定时器
     task:setEnabled(false)
     self:initRefreshTime24()
