@@ -215,3 +215,11 @@ message MineSettleRequest
 
 message MineSpeed{
 }
+
+message MineAccelerateRequest{
+    required int32 pos = 1;  //矿位置
+}
+
+message MineAccelerateResponse{
+	required CommonResponse res = 1;
+}
