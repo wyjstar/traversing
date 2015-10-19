@@ -506,13 +506,14 @@ class MineData(object):
             return False, {}
         try:
             self.get_detail_info(seq)
-            stones = {}
+            normal = {}
+            lucky = {}
             # print self._normal, self._lucky
             for k, v in self.mines[seq]._normal.items():
-                stones[k] = v
+                normal[k] = v
                 self.mines[seq]._normal[k] = 0
             for k, v in self.mines[seq]._lucky.items():
-                stones[k] = v
+                lucky[k] = v
                 self.mines[seq]._lucky[k] = 0
 
             self.mines[seq]._status = 3
@@ -522,7 +523,7 @@ class MineData(object):
             return False, {}
         self.unlock_mine(uid, seq)
 
-        return True, stones
+        return True, normal, lucky
 
     def get_toupdata(self, seq):
         self.get_detail_info(seq)

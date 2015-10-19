@@ -253,15 +253,16 @@ class UserSelf(Mine):
 
     def draw_stones(self):
         # 领取产出
-        stones = {}
+        normal = {}
+        lucky = {}
         for k, v in self._normal.items():
-            stones[k] = v
+            normal[k] = v
             self._normal[k] = 0
         for k, v in self._lucky.items():
-            stones[k] = v
+            lucky[k] = v
             self._lucky[k] = 0
 
-        return stones
+        return normal, lucky
 
     def mine_info(self):
         return Mine.mine_info(self)
@@ -536,8 +537,8 @@ class PlayerField(Mine):
         return result
 
     def draw_stones(self):
-        status, stones = remote_gate.mine_harvest_remote(self._tid, self._seq)
-        return cPickle.loads(stones)
+        status, normal, lucky = remote_gate.mine_harvest_remote(self._tid, self._seq)
+        return status, cPickle.loads(normal), cPickle.loads(lucky)
 
     def mine_data(self):
         info = {}
@@ -995,12 +996,12 @@ class UserMine(Component):
         # print 'harvest', position
         if position in self._mine:
             # print '1111'
-            stones = self._mine[position].draw_stones()
+            statue, normal, lucky = self._mine[position].draw_stones()
             # print stones
-            if stones:
+            if statue:
                 self._update = True
-                return stones
-        return {}
+                return normal, lucky
+        return {}, {}
 
     def shop_info(self, position):
         """ 查看神秘商店信息 """
