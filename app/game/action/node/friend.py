@@ -181,21 +181,8 @@ def _with_battle_info(response, friend):
     friend_data = friend.hmget(column)
     if friend_data.get('lord_attr_info').get('info'):
         battle_unit = BattleUnit.loads(friend_data.get('lord_attr_info').get('info'))
-        #response.hero_no = battle_unit.unit_no
-        # response.power = int(friend_data.get('power', 0))
-        #response.hp = battle_unit.hp
-        #response.atk = battle_unit.atk
-        #response.physical_def = battle_unit.physical_def
-        #response.magic_def = battle_unit.magic_def
-##         response.buddy_head = 1#battle_unit.unit_no
-
-        #response.buddy_head = battle_unit.unit_no
-        #response.buddy_power = int(battle_unit.power)
-        #response.buddy_level = battle_unit.level
         assemble(response.friend_info, battle_unit)
         logger.debug(response.friend_info)
-
-
 
     response.id = friend_data['id']
 
