@@ -6,6 +6,7 @@ from app.mine.service.node.minegateservice import nodeservice_handle
 from app.mine.core.mine import MineData
 import cPickle
 
+
 @nodeservice_handle
 def mine_add_field_remote(uid, seq, data):
     """
@@ -13,8 +14,8 @@ def mine_add_field_remote(uid, seq, data):
     @param nickname: 昵称
     """
     MineData().add_field(uid, seq, data)
-    
     return True
+
 
 @nodeservice_handle
 def mine_update_remote(uid, seq):
@@ -24,6 +25,7 @@ def mine_update_remote(uid, seq):
     data = MineData().get_toupdata(seq)
     return cPickle.dumps(data)
 
+
 @nodeservice_handle
 def mine_query_info_remote(uid, seq):
     """
@@ -31,8 +33,8 @@ def mine_query_info_remote(uid, seq):
     @param seq: 矿点ID
     """
     info = MineData().get_info(seq)
-        
     return cPickle.dumps(info)
+
 
 @nodeservice_handle
 def mine_detail_info_remote(uid, seq):
@@ -42,15 +44,15 @@ def mine_detail_info_remote(uid, seq):
     detail_info = MineData().get_detail_info(seq)
     return cPickle.dumps(detail_info)
 
+
 @nodeservice_handle
 def mine_ask_battle_remote(uid, seq):
     """
     请求攻占玩家占领的野怪矿
     """
-    
     result = MineData().lock_mine(uid, seq)
-    
     return result
+
 
 @nodeservice_handle
 def mine_settle_remote(uid, seq, result, nickname, hold):
@@ -63,6 +65,7 @@ def mine_settle_remote(uid, seq, result, nickname, hold):
     data = MineData().settle(seq, result, uid, nickname, hold)
     return cPickle.dumps(data)
 
+
 @nodeservice_handle
 def mine_guard_remote(uid, seq, nickname, data):
     """
@@ -73,12 +76,11 @@ def mine_guard_remote(uid, seq, nickname, data):
     code = MineData().guard(uid, seq, nickname, cPickle.loads(data))
     return code
 
+
 @nodeservice_handle
 def mine_harvest_remote(uid, seq):
     """
     收获
     """
-    status, data = MineData().harvest(uid, seq)
-    return status, cPickle.dumps(data)
-
-    
+    status, normal, lucky = MineData().harvest(uid, seq)
+    return status, cPickle.dumps(normal), cPickle.dumps(lucky)
