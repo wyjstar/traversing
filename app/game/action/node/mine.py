@@ -402,15 +402,19 @@ def harvest_1245(data, player):
         response.res.result_no = 12451
         logger.error('mine harvest bag is full!')
         return response.SerializePartialToString()
-    stones = player.mine.harvest(request.position)
+    normal, lucky = player.mine.harvest(request.position)
     # print 'stones', stones
-    if stones:
-        if not add_stones(player, stones, response.normal):
+    if normal:
+        if not add_stones(player, normal, response.normal):
             response.res.result = False
             response.res.result_no = 12452
             logger.error('mine harvest add stones fail!')
             return response.SerializePartialToString()
-
+        if not add_stones(player, lucky, response.lucky):
+            response.res.result = False
+            response.res.result_no = 12452
+            logger.error('mine harvest add stones fail!')
+            return response.SerializePartialToString()
     else:
         response.res.result = False
         response.res.result_no = 12450
