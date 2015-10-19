@@ -791,3 +791,15 @@ def mine_boss():
 #     response = common_pb2.CommonResponse()
 #     response.result = True
 #     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def mine_accelerate_1254(data, player):
+    """docstring for battle"""
+    request = mine_pb2.MineAccelerateRequest()
+    request.ParseFromString(data)
+    # pos = request.pos                    # 矿所在位置
+    response = mine_pb2.MineAccelerateResponse()
+
+    response.res.result = True
+    return response.SerializePartialToString()
