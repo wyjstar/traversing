@@ -18,11 +18,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104601] = {
@@ -44,11 +40,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103706] = {
@@ -70,11 +62,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100701] = {
@@ -96,11 +84,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103003] = {
@@ -124,11 +108,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102108] = {
@@ -136,11 +116,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -170,11 +146,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102300] = {
@@ -222,11 +194,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104602] = {
@@ -248,11 +216,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103707] = {
@@ -276,11 +240,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100702] = {
@@ -302,11 +262,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103004] = {
@@ -328,11 +284,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102301] = {
@@ -354,11 +306,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101406] = {
@@ -380,11 +328,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104603] = {
@@ -408,11 +352,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103708] = {
@@ -420,11 +360,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -454,11 +390,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100703] = {
@@ -482,11 +414,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103900] = {
@@ -534,11 +462,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102302] = {
@@ -560,11 +484,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101407] = {
@@ -588,11 +508,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104604] = {
@@ -614,11 +530,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100704] = {
@@ -640,11 +552,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [500001] = {
@@ -688,11 +596,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102303] = {
@@ -716,11 +620,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101408] = {
@@ -728,11 +628,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -762,11 +658,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [104605] = {
@@ -790,11 +682,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101600] = {
@@ -842,11 +730,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103902] = {
@@ -868,11 +752,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103007] = {
@@ -896,11 +776,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102304] = {
@@ -922,11 +798,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104606] = {
@@ -948,11 +820,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101601] = {
@@ -974,11 +842,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100706] = {
@@ -1000,11 +864,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103903] = {
@@ -1028,11 +888,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103008] = {
@@ -1040,11 +896,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -1074,11 +926,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [103200] = {
@@ -1126,11 +974,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104607] = {
@@ -1154,11 +998,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101602] = {
@@ -1180,11 +1020,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100707] = {
@@ -1208,11 +1044,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [910001] = {
@@ -1256,11 +1088,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [910002] = {
@@ -1326,11 +1154,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102306] = {
@@ -1352,11 +1176,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [910006] = {
@@ -1424,11 +1244,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [910008] = {
@@ -1458,11 +1274,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -1492,11 +1304,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [103905] = {
@@ -1520,11 +1328,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100900] = {
@@ -1570,11 +1374,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102307] = {
@@ -1598,11 +1398,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101604] = {
@@ -1624,11 +1420,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103906] = {
@@ -1650,11 +1442,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100901] = {
@@ -1676,11 +1464,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103203] = {
@@ -1704,11 +1488,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102308] = {
@@ -1716,11 +1496,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -1750,11 +1526,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102500] = {
@@ -1802,11 +1574,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103907] = {
@@ -1830,11 +1598,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100902] = {
@@ -1856,11 +1620,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103204] = {
@@ -1882,11 +1642,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102501] = {
@@ -1908,11 +1664,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101606] = {
@@ -1934,11 +1686,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103908] = {
@@ -1946,11 +1694,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -1980,11 +1724,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100903] = {
@@ -2008,11 +1748,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104100] = {
@@ -2060,11 +1796,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100200] = {
@@ -2110,11 +1842,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101607] = {
@@ -2138,11 +1866,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100904] = {
@@ -2164,11 +1888,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104101] = {
@@ -2190,11 +1910,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103206] = {
@@ -2216,11 +1932,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100201] = {
@@ -2242,11 +1954,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102503] = {
@@ -2270,11 +1978,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101608] = {
@@ -2282,11 +1986,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -2316,11 +2016,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101800] = {
@@ -2368,11 +2064,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104102] = {
@@ -2394,11 +2086,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103207] = {
@@ -2422,11 +2110,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100202] = {
@@ -2448,11 +2132,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102504] = {
@@ -2474,11 +2154,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101801] = {
@@ -2500,11 +2176,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100906] = {
@@ -2526,11 +2198,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104103] = {
@@ -2554,11 +2222,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103208] = {
@@ -2566,11 +2230,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -2600,11 +2260,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100203] = {
@@ -2628,11 +2284,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103400] = {
@@ -2680,11 +2332,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101802] = {
@@ -2706,11 +2354,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100907] = {
@@ -2734,11 +2378,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104104] = {
@@ -2760,11 +2400,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100204] = {
@@ -2786,11 +2422,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [103401] = {
@@ -2812,11 +2444,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102506] = {
@@ -2838,11 +2466,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101803] = {
@@ -2866,11 +2490,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100908] = {
@@ -2878,11 +2498,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -2912,11 +2528,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [104105] = {
@@ -2940,11 +2552,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101100] = {
@@ -2992,11 +2600,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [103402] = {
@@ -3018,11 +2622,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102507] = {
@@ -3046,11 +2646,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101804] = {
@@ -3072,11 +2668,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104106] = {
@@ -3098,11 +2690,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101101] = {
@@ -3124,11 +2712,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100206] = {
@@ -3150,11 +2734,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103403] = {
@@ -3178,11 +2758,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102508] = {
@@ -3190,11 +2766,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -3224,11 +2796,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102700] = {
@@ -3276,11 +2844,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104107] = {
@@ -3304,11 +2868,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101102] = {
@@ -3330,11 +2890,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100207] = {
@@ -3358,11 +2914,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103404] = {
@@ -3384,11 +2936,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102701] = {
@@ -3410,11 +2958,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101806] = {
@@ -3436,11 +2980,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104108] = {
@@ -3448,11 +2988,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -3482,11 +3018,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101103] = {
@@ -3510,11 +3042,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104300] = {
@@ -3562,11 +3090,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100400] = {
@@ -3612,11 +3136,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101807] = {
@@ -3640,11 +3160,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101104] = {
@@ -3666,11 +3182,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104301] = {
@@ -3692,11 +3204,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103406] = {
@@ -3718,11 +3226,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100401] = {
@@ -3744,11 +3248,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102703] = {
@@ -3772,11 +3272,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101808] = {
@@ -3784,11 +3280,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -3818,11 +3310,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102000] = {
@@ -3870,11 +3358,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104302] = {
@@ -3896,11 +3380,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103407] = {
@@ -3924,11 +3404,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100402] = {
@@ -3950,11 +3426,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102704] = {
@@ -3976,11 +3448,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102001] = {
@@ -4002,11 +3470,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101106] = {
@@ -4028,11 +3492,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104303] = {
@@ -4056,11 +3516,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103408] = {
@@ -4068,11 +3524,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -4102,11 +3554,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100403] = {
@@ -4130,11 +3578,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103600] = {
@@ -4182,11 +3626,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102002] = {
@@ -4208,11 +3648,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101107] = {
@@ -4236,11 +3672,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104304] = {
@@ -4262,11 +3694,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100404] = {
@@ -4288,11 +3716,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103601] = {
@@ -4314,11 +3738,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102706] = {
@@ -4340,11 +3760,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102003] = {
@@ -4368,11 +3784,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101108] = {
@@ -4380,11 +3792,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -4414,11 +3822,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [104305] = {
@@ -4442,11 +3846,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101300] = {
@@ -4494,11 +3894,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103602] = {
@@ -4520,11 +3916,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102707] = {
@@ -4548,11 +3940,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102004] = {
@@ -4574,11 +3962,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104306] = {
@@ -4600,11 +3984,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101301] = {
@@ -4626,11 +4006,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100406] = {
@@ -4652,11 +4028,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103603] = {
@@ -4680,11 +4052,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102708] = {
@@ -4692,11 +4060,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -4726,11 +4090,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930101] = {
@@ -4862,11 +4222,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930106] = {
@@ -4912,11 +4268,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930107] = {
@@ -4960,11 +4312,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930108] = {
@@ -5120,11 +4468,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930114] = {
@@ -5216,11 +4560,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930116] = {
@@ -5374,11 +4714,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930122] = {
@@ -5422,11 +4758,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930123] = {
@@ -5470,11 +4802,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930124] = {
@@ -5654,11 +4982,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930130] = {
@@ -5702,11 +5026,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930131] = {
@@ -5752,11 +5072,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930132] = {
@@ -5888,11 +5204,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930137] = {
@@ -5936,11 +5248,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930138] = {
@@ -5986,11 +5294,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930139] = {
@@ -6020,11 +5324,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -6054,11 +5354,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930140] = {
@@ -6190,11 +5486,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930145] = {
@@ -6240,11 +5532,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930146] = {
@@ -6288,11 +5576,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100604] = {
@@ -6314,11 +5598,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103801] = {
@@ -6340,11 +5620,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102906] = {
@@ -6366,11 +5642,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102203] = {
@@ -6394,11 +5666,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101308] = {
@@ -6406,11 +5674,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -6440,11 +5704,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [104505] = {
@@ -6468,11 +5728,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101500] = {
@@ -6520,11 +5776,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103802] = {
@@ -6546,11 +5798,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102907] = {
@@ -6574,11 +5822,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102204] = {
@@ -6600,11 +5844,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104506] = {
@@ -6626,11 +5866,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101501] = {
@@ -6652,11 +5888,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100606] = {
@@ -6678,11 +5910,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103803] = {
@@ -6706,11 +5934,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102908] = {
@@ -6718,11 +5942,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -6752,11 +5972,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [103100] = {
@@ -6804,11 +6020,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104507] = {
@@ -6832,11 +6044,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101502] = {
@@ -6858,11 +6066,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100607] = {
@@ -6886,11 +6090,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103804] = {
@@ -6912,11 +6112,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103101] = {
@@ -6938,11 +6134,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102206] = {
@@ -6964,11 +6156,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104508] = {
@@ -6976,11 +6164,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -7010,11 +6194,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101503] = {
@@ -7038,11 +6218,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [900001] = {
@@ -7072,11 +6248,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -7106,11 +6278,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [900002] = {
@@ -7156,11 +6324,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100800] = {
@@ -7228,11 +6392,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102207] = {
@@ -7256,11 +6416,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101504] = {
@@ -7282,11 +6438,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103806] = {
@@ -7308,11 +6460,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100801] = {
@@ -7334,11 +6482,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103103] = {
@@ -7362,11 +6506,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102208] = {
@@ -7374,11 +6514,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -7408,11 +6544,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102400] = {
@@ -7460,11 +6592,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103807] = {
@@ -7488,11 +6616,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100802] = {
@@ -7514,11 +6638,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103104] = {
@@ -7540,11 +6660,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930201] = {
@@ -7640,11 +6756,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -7674,11 +6786,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100803] = {
@@ -7702,11 +6810,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930206] = {
@@ -7798,11 +6902,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930208] = {
@@ -7868,11 +6968,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101507] = {
@@ -7896,11 +6992,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930212] = {
@@ -7966,11 +7058,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930214] = {
@@ -8014,11 +7102,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930215] = {
@@ -8062,11 +7146,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930216] = {
@@ -8134,11 +7214,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101508] = {
@@ -8146,11 +7222,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -8180,11 +7252,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930220] = {
@@ -8276,11 +7344,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930222] = {
@@ -8324,11 +7388,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930223] = {
@@ -8374,11 +7434,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930224] = {
@@ -8444,11 +7500,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930227] = {
@@ -8514,11 +7566,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930229] = {
@@ -8562,11 +7610,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930230] = {
@@ -8612,11 +7656,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930231] = {
@@ -8646,11 +7686,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -8680,11 +7716,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930232] = {
@@ -8754,11 +7786,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930235] = {
@@ -8824,11 +7852,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930237] = {
@@ -8874,11 +7898,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930238] = {
@@ -8922,11 +7942,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930239] = {
@@ -8992,11 +8008,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102406] = {
@@ -9018,11 +8030,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930243] = {
@@ -9090,11 +8098,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930245] = {
@@ -9124,11 +8128,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -9158,11 +8158,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930246] = {
@@ -9208,11 +8204,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101000] = {
@@ -9258,11 +8250,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102407] = {
@@ -9286,11 +8274,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101704] = {
@@ -9312,11 +8296,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104006] = {
@@ -9338,11 +8318,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101001] = {
@@ -9364,11 +8340,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103303] = {
@@ -9392,11 +8364,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102408] = {
@@ -9404,11 +8372,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -9438,11 +8402,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102600] = {
@@ -9490,11 +8450,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104007] = {
@@ -9518,11 +8474,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101002] = {
@@ -9544,11 +8496,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103304] = {
@@ -9570,11 +8518,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102601] = {
@@ -9596,11 +8540,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101706] = {
@@ -9622,11 +8562,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104008] = {
@@ -9634,11 +8570,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -9668,11 +8600,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101003] = {
@@ -9696,11 +8624,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104200] = {
@@ -9748,11 +8672,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100300] = {
@@ -9798,11 +8718,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101707] = {
@@ -9826,11 +8742,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101004] = {
@@ -9852,11 +8764,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104201] = {
@@ -9878,11 +8786,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103306] = {
@@ -9904,11 +8808,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100301] = {
@@ -9930,11 +8830,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102603] = {
@@ -9958,11 +8854,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101708] = {
@@ -9970,11 +8862,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -10004,11 +8892,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101900] = {
@@ -10056,11 +8940,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104202] = {
@@ -10082,11 +8962,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103307] = {
@@ -10110,11 +8986,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100302] = {
@@ -10136,11 +9008,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102604] = {
@@ -10162,11 +9030,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101901] = {
@@ -10188,11 +9052,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101006] = {
@@ -10214,11 +9074,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104203] = {
@@ -10242,11 +9098,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103308] = {
@@ -10254,11 +9106,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -10288,11 +9136,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100303] = {
@@ -10316,11 +9160,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103500] = {
@@ -10368,11 +9208,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930301] = {
@@ -10416,11 +9252,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101007] = {
@@ -10444,11 +9276,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104204] = {
@@ -10470,11 +9298,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930305] = {
@@ -10518,11 +9342,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930306] = {
@@ -10566,11 +9386,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930307] = {
@@ -10614,11 +9430,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930308] = {
@@ -10686,11 +9498,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101008] = {
@@ -10698,11 +9506,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -10732,11 +9536,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [104205] = {
@@ -10760,11 +9560,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101200] = {
@@ -10834,11 +9630,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930314] = {
@@ -10882,11 +9674,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930315] = {
@@ -10932,11 +9720,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930316] = {
@@ -11002,11 +9786,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930319] = {
@@ -11050,11 +9830,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101201] = {
@@ -11076,11 +9852,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930321] = {
@@ -11124,11 +9896,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930322] = {
@@ -11174,11 +9942,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930323] = {
@@ -11208,11 +9972,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -11242,11 +10002,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930324] = {
@@ -11316,11 +10072,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930327] = {
@@ -11366,11 +10118,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101202] = {
@@ -11392,11 +10140,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930329] = {
@@ -11442,11 +10186,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930330] = {
@@ -11490,11 +10230,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930331] = {
@@ -11560,11 +10296,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101906] = {
@@ -11586,11 +10318,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930335] = {
@@ -11620,11 +10348,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -11654,11 +10378,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101203] = {
@@ -11682,11 +10402,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930337] = {
@@ -11716,11 +10432,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -11750,11 +10462,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930338] = {
@@ -11800,11 +10508,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100500] = {
@@ -11872,11 +10576,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101907] = {
@@ -11900,11 +10600,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930343] = {
@@ -11970,11 +10666,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930345] = {
@@ -12018,11 +10710,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930346] = {
@@ -12066,11 +10754,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100501] = {
@@ -12092,11 +10776,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102803] = {
@@ -12120,11 +10800,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101908] = {
@@ -12132,11 +10808,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -12166,11 +10838,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102100] = {
@@ -12218,11 +10886,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104402] = {
@@ -12244,11 +10908,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103507] = {
@@ -12272,11 +10932,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100502] = {
@@ -12298,11 +10954,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102804] = {
@@ -12324,11 +10976,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102101] = {
@@ -12350,11 +10998,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101206] = {
@@ -12376,11 +11020,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930342] = {
@@ -12426,11 +11066,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930341] = {
@@ -12460,11 +11096,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -12494,11 +11126,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100503] = {
@@ -12522,11 +11150,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930339] = {
@@ -12618,11 +11242,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930334] = {
@@ -12732,11 +11352,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930325] = {
@@ -12782,11 +11398,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930320] = {
@@ -12830,11 +11442,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930318] = {
@@ -12900,11 +11508,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930311] = {
@@ -12948,11 +11552,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930310] = {
@@ -12996,11 +11596,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930304] = {
@@ -13114,11 +11710,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930241] = {
@@ -13148,11 +11740,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -13182,11 +11770,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100408] = {
@@ -13194,11 +11778,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -13228,11 +11808,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [104405] = {
@@ -13256,11 +11832,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101400] = {
@@ -13308,11 +11880,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100505] = {
@@ -13336,11 +11904,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100600] = {
@@ -13386,11 +11950,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102900] = {
@@ -13438,11 +11998,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930242] = {
@@ -13486,11 +12042,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100601] = {
@@ -13512,11 +12064,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102901] = {
@@ -13538,11 +12086,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102104] = {
@@ -13564,11 +12108,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102007] = {
@@ -13592,11 +12132,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102902] = {
@@ -13618,11 +12154,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100602] = {
@@ -13644,11 +12176,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104406] = {
@@ -13670,11 +12198,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101401] = {
@@ -13696,11 +12220,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104307] = {
@@ -13724,11 +12244,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100506] = {
@@ -13750,11 +12266,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930234] = {
@@ -13800,11 +12312,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930233] = {
@@ -13834,11 +12342,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -13868,11 +12372,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102008] = {
@@ -13880,11 +12380,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -13914,11 +12410,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [930210] = {
@@ -13988,11 +12480,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102105] = {
@@ -14016,11 +12504,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [900003] = {
@@ -14050,11 +12534,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -14084,11 +12564,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [102903] = {
@@ -14112,11 +12588,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104407] = {
@@ -14140,11 +12612,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101402] = {
@@ -14166,11 +12634,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100508] = {
@@ -14178,11 +12642,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -14212,11 +12672,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100507] = {
@@ -14240,11 +12696,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [102904] = {
@@ -14266,11 +12718,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103704] = {
@@ -14292,11 +12740,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930211] = {
@@ -14340,11 +12784,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930226] = {
@@ -14390,11 +12830,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103001] = {
@@ -14416,11 +12852,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [910004] = {
@@ -14464,11 +12896,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103800] = {
@@ -14514,11 +12942,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [910005] = {
@@ -14548,11 +12972,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -14582,11 +13002,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [101403] = {
@@ -14610,11 +13026,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930219] = {
@@ -14706,11 +13118,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100700] = {
@@ -14778,11 +13186,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101506] = {
@@ -14804,11 +13208,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [103002] = {
@@ -14830,11 +13230,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930205] = {
@@ -14880,11 +13276,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100102] = {
@@ -14906,11 +13298,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100103] = {
@@ -14934,11 +13322,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100202,  ["playerExp"] = 6,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2100201,  ["playerExp"] = 6,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [104608] = {
@@ -14946,11 +13330,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -14980,11 +13360,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,  [100208] = {
@@ -14992,11 +13368,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
-<<<<<<< HEAD
 ,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
-=======
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100201,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
->>>>>>> tc_wzp
 }
 ,  ["condition2"] = 21,  ["Determination"] = {
   ["1"] = {
@@ -15026,11 +13398,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-<<<<<<< HEAD
 ,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100204,  ["playerExp"] = 18,  ["starGift"] = {
-=======
-,  ["limitTimes"] = 5,  ["vigor"] = 18,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100201,  ["playerExp"] = 18,  ["starGift"] = {
->>>>>>> tc_wzp
 }
 ,  ["section"] = 8,  ["HeroExp"] = 108,  ["stage_break_id"] = 12,}
 ,}

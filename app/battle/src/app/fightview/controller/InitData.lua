@@ -38,10 +38,6 @@ function initData(_process)
     process = _process
     local data = fightData:getData() or {}
     set_seed(data.seed1, data.seed2)
-<<<<<<< HEAD
-=======
-    process.fight_type = TYPE_TEST
->>>>>>> tc_wzp
     process.fight_type =  process.fight_type or TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
     if process.fight_type==TYPE_GUIDE then
@@ -89,16 +85,12 @@ function initTESTData()
     
     demoHero = 
     {
-<<<<<<< HEAD
         -- ["1"] = {[1] = 10001,  [2] = 60,},
         -- ["2"] = {[1] = 10002,  [2] = 60,},
         -- ["3"] = {[1] = 10003,  [2] = 60,},
         ["2"] = {[1] = 10004,  [2] = 60,},
         ["1"] = {[1] = 10005,  [2] = 60,},
         ["3"] = {[1] = 10006,  [2] = 60,},
-=======
-        ["1"] = {[1] = 10061,  [2] = 60,},
->>>>>>> tc_wzp
         -- ["2"] = {[1] = 10045,  [2] = 60,},
         -- ["3"] = {[1] = 10044,  [2] = 60,},
         -- ["4"] = {[1] = 10001,  [2] = 60,},
@@ -113,19 +105,12 @@ function initTESTData()
     }
     demoEnemy = 
     {
-<<<<<<< HEAD
         ["2"] = {[1] = 10005,  [2] = 60,},
         -- ["2"] = {[1] = 10002,  [2] = 60,},
         -- ["3"] = {[1] = 10003,  [2] = 60,},
         -- ["4"] = {[1] = 10004,  [2] = 60,},
         -- ["5"] = {[1] = 10005,  [2] = 60,},
         -- ["6"] = {[1] = 10006,  [2] = 60,},
-=======
-        -- ["2"] = {[1] = 10065,  [2] = 60,},
-        ["2"] = {[1] = 10001,  [2] = 60,},
-        -- ["5"] = {[1] = 10001,  [2] = 60,},
-        -- ["6"] = {[1] = 10001,  [2] = 60,},
->>>>>>> tc_wzp
     }
     --for pos, v in pairs(demoHero) do
     local chief = false
@@ -176,11 +161,7 @@ function initTESTData()
             --controller.addChild(UnitView.new(unit))
         end
     end
-<<<<<<< HEAD
     local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
-=======
-    local redUnParaSkill = constructUnparaSkill(10001, 1, const.HOME_ARMY, "red", 7)
->>>>>>> tc_wzp
     local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     -- local buddySkill = constructBuddySkill(mockBattleUnit(0, 12, "red"))
     --print(buddySkill.unit.no, "buddySkill=================")

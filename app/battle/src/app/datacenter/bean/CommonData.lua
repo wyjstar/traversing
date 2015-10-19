@@ -54,10 +54,7 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
     getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
-<<<<<<< HEAD
     getNetManager():getSevenDayNet():sendGetDayList(0)              -- 七日活动刷新
-=======
->>>>>>> tc_wzp
     --重置定时器
     task:setEnabled(false)
     self:initRefreshTime24()
@@ -1312,22 +1309,23 @@ end
 ]]
 function CommonData:isJingMaiRedDotInHome()
     print("CommonData:isJingMaiRedDotInHome")
-    -- 获取琼浆玉露数量
-    local qjyl = self:getFinance(RES_TYPE.QJYL)
-    -- 获取下次点穴的消耗
-    local heroList = getDataManager():getSoldierData():getSoldierData()
-    for k,v in pairs(heroList) do
-        if v.hero_no then
-            local sealID = getDataManager():getSoldierData():getSealById(v.hero_no)
-            sealID = sealID or 0
-            local nextSealID = getTemplateManager():getSealTemplate():getNext(sealID)
-            print("_LZD:-------------", v.hero_no, sealID, nextSealID)
-            local sealCost = getTemplateManager():getSealTemplate():getExpend(nextSealID)
-            if sealCost and qjyl >= sealCost then -- 可以点穴
-                return true
-            end
-        end
-    end
+    -- -- 获取琼浆玉露数量
+    -- local qjyl = self:getFinance(RES_TYPE.QJYL)
+    -- -- 获取下次点穴的消耗
+    -- local heroList = getDataManager():getSoldierData():getSoldierData()
+    -- for k,v in pairs(heroList) do
+    --     if v.hero_no then
+    --         local sealID = getDataManager():getSoldierData():getSealById(v.hero_no)
+    --         sealID = sealID or 0
+    --         print("_LZD:-----1--------", v.hero_no, sealID)
+    --         local nextSealID = getTemplateManager():getSealTemplate():getNext(sealID)
+    --         print("_LZD:-----2--------", v.hero_no, sealID, nextSealID)
+    --         local sealCost = getTemplateManager():getSealTemplate():getExpend(nextSealID)
+    --         if sealCost and qjyl >= sealCost then -- 可以点穴
+    --             return true
+    --         end
+    --     end
+    -- end
 
     return false
 end
