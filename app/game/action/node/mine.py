@@ -802,17 +802,26 @@ def mine_accelerate_1254(data, player):
     detail_info = player.mine.detail_info(pos)
     ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
 
-    need_gold = player._mine[pos].get_acc_time_gold()
+    need_gold = player.mine._mine[pos].get_acc_time_gold()
+    if need_gold == 0:
+        logger.error('gold num error:%s', need_gold)
+        response.res.result = False
+        response.res.result_no = 125401
+        return response.SerializePartialToString()
+
+    price = []
+    price.append(CommonGroupItem(const.COIN, need_gold, need_gold, const.GOLD))
 
     def func():
         consume_return_data = item_group_helper.consume(player,
-                                                        [need_gold],
+                                                        price,
                                                         const.MINE_ACC)
         item_group_helper.get_return(player,
                                      consume_return_data,
                                      response.consume)
-        player._mine[pos].acc_mine_time()
+        player.mine._mine[pos].acc_mine_time()
 
     player.pay.pay(need_gold, const.MINE_ACC, func)
     response.res.result = True
+    print response
     return response.SerializePartialToString()
