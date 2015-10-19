@@ -82,6 +82,7 @@ message mineDetail
 	optional int32 incrcost = 11;//增产花费
 	optional int32 stage_id = 12; //关卡id
 	optional int32 guard_time = 13;//保护时间
+	optional int32 accelerate_times = 14;
 }
 
 //1245返回

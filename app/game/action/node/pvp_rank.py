@@ -156,7 +156,7 @@ def pvp_player_rank_request_1502(data, player):
         rank_item = response.rank_items.add()
         rank_item.rank = _rank
         _with_pvp_info(rank_item, char_id)
-    print response
+    # print response
     return response.SerializeToString()
 
 
