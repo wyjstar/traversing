@@ -16,6 +16,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from shared.utils.const import const
 from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
+import random
 
 
 @remoteserviceHandle('gate')
@@ -409,3 +410,94 @@ def hero_sacrifice_oper(heros, player):
     # print "*"*80
     # print response
     return response
+
+
+@remoteserviceHandle('gate')
+def hero_awake_119(data, player):
+    request = hero_request_pb2.HeroAwakeRequest()
+    request.ParseFromString(data)
+    response = hero_response_pb2.HeroAwakeResponse()
+    hero_no = request.hero_no
+    awake_item_num = request.awake_item_num
+
+    res = do_hero_awake(player, hero_no, awake_item_num, response.consume)
+    response.res.result = res.get('result')
+    if res.get('result_no'):
+        response.res.result_no = res.get('result_no')
+    logger.debug(response)
+    return response.SerializeToString()
+
+def do_hero_awake(player, hero_no, awake_item_num, response_consume):
+    """docstring for do_hero_awake"""
+    hero = player.hero_component.get_hero(hero_no)
+    if not hero:
+        logger.error("hero not exist! hero_no %s" % hero_no)
+        return {'result': False, 'result_no': 11901}
+
+    awake_info = game_configs.awake_config.get(hero.awake_level)
+
+    singleConsumption = awake_info.singleConsumption
+    singleCoin = awake_info.silver
+
+    if not is_afford(player, singleConsumption):
+        logger.error("singleConsumption is not afford!")
+        return {'result': False, 'result_no': 11902}
+
+    if not is_afford(player, singleCoin):
+        logger.error("singleCoin is not afford!")
+        return {'result': False, 'result_no': 11903}
+
+    if hero.awake_level >= 10:
+        logger.error("the hero has reached the max awake level!")
+        return {'result': False, 'result_no': 11904}
+
+    singleConsumptionNum = singleConsumption[105][0]
+    left_awake_item = awake_item_num
+
+
+    while left_awake_item > singleConsumptionNum:
+        # consume
+        if not is_afford(player, singleConsumption) or \
+            not is_afford(player, singleCoin):
+                break
+        return_data1 = consume(player, singleConsumption, const.HERO_AWAKE)
+        return_data2 = consume(player, singleCoin, const.HERO_AWAKE)
+        get_return(player, return_data1, response_consume)
+        get_return(player, return_data2, response_consume)
+
+        # trigger or not, add exp, add level
+        exp_percent = hero.awake_exp * 1.0 / awake_info.experience
+        is_trigger = False
+        for k in sorted(awake_info.triggerProbability.keys(), reverse=True):
+            if exp_percent > k:
+                v = awake_info.triggerProbability[k]
+                target_percent = random.uniform(v[0], v[1])
+                if random.random() < target_percent:
+                    is_trigger = True
+                    break
+
+        if is_trigger: # 触发满级概率
+            hero.awake_exp = 0
+            hero.awake_level += 1
+            break
+        else:
+            hero.awake_exp += singleConsumptionNum
+            if hero.awake_exp >= awake_info.experience:
+                hero.awake_exp = hero.awake_exp - awake_info.experience
+                hero.awake_level += 1
+
+        left_awake_item -= singleConsumptionNum
+
+
+
+    #actual_consume_item_num = 0
+    hero.save_date()
+
+    return {'result': True}
+
+
+
+
+
+
+

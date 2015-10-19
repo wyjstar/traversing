@@ -208,6 +208,7 @@ const.LOGIN_GIFT_CUMULATIVE = 8062
 
 const.HJQY_ADD_REWARD = 21011
 
+const.HERO_AWAKE = 119   # 英雄觉醒
 # 等级流水
 # const.STAGE = 27  # 关卡
 # const.STAGE_SWEEP = 22  # 关卡扫荡
