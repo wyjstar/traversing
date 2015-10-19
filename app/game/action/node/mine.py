@@ -801,5 +801,20 @@ def mine_accelerate_1254(data, player):
     # pos = request.pos                    # 矿所在位置
     response = mine_pb2.MineAccelerateResponse()
 
+    detail_info = player.mine.detail_info(request.position)
+    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
+
+    need_gold = player._mine[request.position].get_acc_time_gold()
+
+    def func():
+        consume_return_data = item_group_helper.consume(player,
+                                                        [need_gold],
+                                                        const.MINE_ACC)
+        item_group_helper.get_return(player,
+                                     consume_return_data,
+                                     response.consume)
+        player._mine[request.position].acc_mine_time()
+
+    player.pay.pay(need_gold, const.MINE_ACC, func)
     response.res.result = True
     return response.SerializePartialToString()
