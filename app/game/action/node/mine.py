@@ -494,8 +494,6 @@ def exchange_1248(data, player):
 
     player.pay.pay(need_gold, const.MINE_EXCHANGE, func)
 
-
-
     return response.SerializePartialToString()
 
 
@@ -798,13 +796,13 @@ def mine_accelerate_1254(data, player):
     """docstring for battle"""
     request = mine_pb2.MineAccelerateRequest()
     request.ParseFromString(data)
-    # pos = request.pos                    # 矿所在位置
+    pos = request.pos                    # 矿所在位置
     response = mine_pb2.MineAccelerateResponse()
 
-    detail_info = player.mine.detail_info(request.position)
+    detail_info = player.mine.detail_info(pos)
     ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = detail_info
 
-    need_gold = player._mine[request.position].get_acc_time_gold()
+    need_gold = player._mine[pos].get_acc_time_gold()
 
     def func():
         consume_return_data = item_group_helper.consume(player,
@@ -813,7 +811,7 @@ def mine_accelerate_1254(data, player):
         item_group_helper.get_return(player,
                                      consume_return_data,
                                      response.consume)
-        player._mine[request.position].acc_mine_time()
+        player._mine[pos].acc_mine_time()
 
     player.pay.pay(need_gold, const.MINE_ACC, func)
     response.res.result = True

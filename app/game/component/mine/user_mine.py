@@ -560,7 +560,7 @@ class PlayerField(Mine):
 
     def acc_mine_time(self):
         self._accelerate_times += 1
-        self._gen_time += game_configs.base_config.get('stoneReduceTime') * 60
+        self._last_time -= game_configs.base_config.get('stoneReduceTime') * 60
         return True
 
     def get_acc_time_gold(self):

@@ -222,4 +222,5 @@ message MineAccelerateRequest{
 
 message MineAccelerateResponse{
 	required CommonResponse res = 1;
+	required GameResourcesResponse consume = 2;
 }
