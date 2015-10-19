@@ -22,6 +22,9 @@ message mineData
 	optional string nickname = 4;//昵称
 	optional int32 last_time = 5;//生产结束时间点
 	optional int32 gen_time = 6;//生产时间
+	optional int32 is_guild = 7;
+	optional int32 is_friend = 8;
+	optional int32 fight_power = 9;
 }
 
 //更新矿点信息1240返回
@@ -79,6 +82,7 @@ message mineDetail
 	optional int32 incrcost = 11;//增产花费
 	optional int32 stage_id = 12; //关卡id
 	optional int32 guard_time = 13;//保护时间
+	optional int32 accelerate_times = 14;
 }
 
 //1245返回
@@ -86,8 +90,8 @@ message drawStones
 {
 	required int32 position = 1;
 	required CommonResponse res = 2;//通用返回
-	repeated Runt1 normal = 3;
-	repeated Runt1 lucky = 4;
+	optional GameResourcesResponse normal = 3;
+	optional GameResourcesResponse lucky = 4;
 }
 
 //1246请求
@@ -204,7 +208,7 @@ message MineBattleResponse{
 	repeated int32 awake_no = 8;        //
 	optional int32 seed1= 9;
 	optional int32 seed2= 10;
-	repeated Runt1 runt = 11;
+	optional GameResourcesResponse gain = 11;
 	optional bool fight_result = 12; // pvp
 	optional int32 hold = 13; //是否占领 0:抢夺，1抢夺并占领
 }
@@ -225,3 +229,5 @@ message MineSettleRequest
 }
 //返回 CommonResponse 或者自己定义协议
 
+message MineSpeed{
+}
