@@ -329,6 +329,9 @@ class PlayerField(Mine):
         self._normal = {}  # 符文石
         self._lucky = {}  # 幸运石
         self._gen_time = 0
+        self._is_friend = False
+        self._is_guild = False
+        self._fight_power = 0
 
     def save_info(self, lineup=None):
         info = {'seq': self._seq,
@@ -343,8 +346,11 @@ class PlayerField(Mine):
                 'lucky_harvest': self._lucky_harvest,
                 'normal_end': self._normal_end,
                 'lucky_end': self._lucky_end,
-                'normal':self._normal,
-                'lucky':self._lucky
+                'normal': self._normal,
+                'lucky': self._lucky,
+                'is_friend': self._is_friend,
+                'is_guild': self._is_guild,
+                'fight_power': self._fight_power
                 }
         return info
 
@@ -365,6 +371,14 @@ class PlayerField(Mine):
         self._lucky_end = info.get('lucky_end')
         self._normal = info.get('normal')
         self._lucky = info.get('lucky')
+        self._is_friend = info.get('is_friend', False)
+        self._is_guild = info.get('is_guild', False)
+        self._fight_power = info.get('fight_power', 0)
+
+        player_data = tb_character_info.getObj(self._tid)
+        if player_data.exists():
+            self._fight_power = player_data.hget('attackPoint')
+
         self._last_time = self._normal_end
         mine = ConfigData.mine(self._mine_id)
         # print 'update_info', self._mine_id
@@ -521,17 +535,27 @@ class PlayerField(Mine):
     def mine_info(self):
 #         data = remote_gate.mine_query_info_remote(self._tid, self._seq)
 #         print 'mine_info', cPickle.loads(data)
-        self.guard_info()
+        # self.guard_info()
 
-        return Mine.mine_info(self)
+        info = Mine.mine_info(self)
+        info['is_friend'] = False
+        info['is_guild'] = False
+        info['fight_power'] = 0
+
+        return info
 
     def detail_info(self):
         """
         查看玩家占领的野怪矿详情
         """
         data = remote_gate.mine_detail_info_remote(self._tid, self._seq)
-        print 'detail_info', cPickle.loads(data)
-        return cPickle.loads(data)
+        ret, stype, last_increase, limit, normal, lucky, lineup, guard_time = cPickle.loads(data)
+
+        char_obj = tb_character_info.getObj(self._tid)
+        if char_obj.exists():
+            lineup = char_obj.hget('copy_slots')
+
+        return ret, stype, last_increase, limit, normal, lucky, lineup, guard_time
 #         self.update_mine()
 # #         now = time.time()
 # #         self.get_cur(now)
@@ -1016,6 +1040,7 @@ class UserMine(Component):
         for pos in self._mine.keys():
             mine_info = self._mine[pos].mine_info()
             if mine_info['type'] == MineType.PLAYER_FIELD:
+                print mine_info
                 if mine_info['nickname'] != self.owner.base_info.base_name:
                     self.un_guard(pos)
 

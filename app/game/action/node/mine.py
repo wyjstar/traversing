@@ -66,28 +66,39 @@ def mine_status(player, response):
         gen_time = mstatus.get('gen_time', None)
         if gen_time is not None:
             one_mine.gen_time = int(gen_time)
+
+        is_friend = mstatus.get('is_friend', None)
+        if is_friend is not None:
+            one_mine.is_friend = is_friend
+        is_guild = mstatus.get('is_guild', None)
+        if is_guild is not None:
+            one_mine.is_guild = is_guild
+        fight_power = mstatus.get('fight_power', None)
+        if fight_power is not None:
+            one_mine.fight_power = fight_power
     return response
 
 
 def one_mine_info(mstatus, one_mine):
-        position = mstatus.get('position', None)
-        if position is not None:
-            one_mine.position = position
-        mtype = mstatus.get('type', None)
-        if mtype is not None:
-            one_mine.type = mtype
-        status = mstatus.get('status', None)
-        if status is not None:
-            one_mine.status = status
-        nickname = mstatus.get('nickname', None)
-        if nickname is not None:
-            one_mine.nickname = nickname
-        last_time = mstatus.get('last_time', None)
-        if last_time is not None:
-            one_mine.last_time = int(last_time)
-        gen_time = mstatus.get('gen_time', None)
-        if gen_time is not None:
-            one_mine.gen_time = int(gen_time)
+    print '4343434896865', mstatus
+    position = mstatus.get('position', None)
+    if position is not None:
+        one_mine.position = position
+    mtype = mstatus.get('type', None)
+    if mtype is not None:
+        one_mine.type = mtype
+    status = mstatus.get('status', None)
+    if status is not None:
+        one_mine.status = status
+    nickname = mstatus.get('nickname', None)
+    if nickname is not None:
+        one_mine.nickname = nickname
+    last_time = mstatus.get('last_time', None)
+    if last_time is not None:
+        one_mine.last_time = int(last_time)
+    gen_time = mstatus.get('gen_time', None)
+    if gen_time is not None:
+        one_mine.gen_time = int(gen_time)
 
 
 @remoteserviceHandle('gate')
@@ -98,7 +109,7 @@ def query_1240(data, player):
     response = mine_pb2.mineUpdate()
     mine_status(player, response)
     player.mine.save_data()
-    # print '1240-response', response
+    print '1240-response', response
     return response.SerializePartialToString()
 
 
@@ -207,7 +218,7 @@ def query_1243(data, player):
             response.stage_id = int(lineup)
         if stype == 1:
             if lineup is not None:
-                response.lineup.ParseFromString(lineup.get('line_up'))
+                response.lineup.ParseFromString(lineup)
 
         mid = player.mine.mid(request.position)
         main_mine = game_configs.mine_config.get(mid)

@@ -22,8 +22,8 @@ message mineData
 	optional string nickname = 4;//昵称
 	optional int32 last_time = 5;//生产结束时间点
 	optional int32 gen_time = 6;//生产时间
-	optional int32 is_guild = 7;
-	optional int32 is_friend = 8;
+	optional bool is_guild = 7;
+	optional bool is_friend = 8;
 	optional int32 fight_power = 9;
 }
 
