@@ -97,6 +97,7 @@ class Mine(object):
 
     def mine_info(self):
         info = {}
+        info['uid'] = self._tid
         info['type'] = self._type
         info['status'] = self._status
         info['nickname'] = self._nickname
@@ -355,8 +356,12 @@ class PlayerField(Mine):
         return info
 
     def update_info(self, info):
+        #     player_data = tb_character_info.getObj(self.owner.base_info.id)
+        #     if player_data.exists():
+        #         fight_power = friend.hget('attackPoint')
+
         # print type(info)
-        # print 'update_info', info['seq']
+        print 'update_info', info['seq']
         self._seq = info.get('seq', -1)
         self._tid = info.get('uid', -1)
         self._type = info.get('type')
@@ -377,7 +382,8 @@ class PlayerField(Mine):
 
         player_data = tb_character_info.getObj(self._tid)
         if player_data.exists():
-            self._fight_power = player_data.hget('attackPoint')
+            self._fight_power = int(player_data.hget('attackPoint'))
+        print 'fight power', self._fight_power
 
         self._last_time = self._normal_end
         mine = ConfigData.mine(self._mine_id)
@@ -537,10 +543,14 @@ class PlayerField(Mine):
 #         print 'mine_info', cPickle.loads(data)
         # self.guard_info()
 
+        print self.__dict__
         info = Mine.mine_info(self)
-        info['is_friend'] = False
-        info['is_guild'] = False
-        info['fight_power'] = 0
+        try:
+            info['is_friend'] = self._is_friend
+            info['is_guild'] = self._is_guild
+            info['fight_power'] = self._fight_power
+        except:
+            pass
 
         return info
 
