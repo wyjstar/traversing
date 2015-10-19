@@ -9,7 +9,6 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.utils import xtime
 from shared.db_opear.configs_data import game_configs
-from shared.db_opear.configs_data.game_configs import base_config
 
 WEEK_REBATE = 0
 MONTH_REBATE = 1
@@ -106,11 +105,11 @@ class Rebate(Component):
         param = None
         if days == 30:
             func = 'moonCard'
-            refresh = base_config['moonCardFreshTime']
+            refresh = game_configs.base_config['moonCardFreshTime']
             param = 'moonCardSurplusDay'
         elif days == 7:
             func = 'weekCard'
-            refresh = base_config['weekCardFreshTime']
+            refresh = game_configs.base_config['weekCardFreshTime']
             param = 'weekCardSurplusDay'
         else:
             func = None
@@ -133,20 +132,23 @@ class Rebate(Component):
         one = self._rebate.get(rid, None)
         if not one:
             return 0
-        if days == 30:
-            func = 'moonCard'
-            param = 'moonCardSurplusDay'
-        elif days == 7:
-            func = 'weekCard'
-            param = 'weekCardSurplusDay'
-        else:
-            func = None
-        if func == None:
-            return 0, 0, 0
-        formula = game_configs.formula_config.get(func).get("formula")
-        all_vars = {}
-        all_vars[param] = one._count
-        switch = eval(formula, all_vars)
+        # if days == 30:
+        #     func = 'moonCard'
+        #     param = 'moonCardSurplusDay'
+        # elif days == 7:
+        #     func = 'weekCard'
+        #     param = 'weekCardSurplusDay'
+        # else:
+        #     func = None
+        # if func == None:
+        #     return 0, 0, 0
+        # formula = game_configs.formula_config.get(func).get("formula")
+        # all_vars = {}
+        # all_vars[param] = one._count
+        # switch = eval(formula, all_vars)
+        switch = 0
+        if one._count == game_configs.base_config['moonCardRemindDays']:
+            switch = 1
         if switch and one._start != one._mail:
             return 1
         return 0
