@@ -637,6 +637,7 @@ class MonsterField(Mine):
         player_field._last_time = player_field._lucky_end
         player_field._tid = uid
         player_field._nickname = nickname
+        player_field._gen_time = self._gen_time
         data = player_field.save_info()
         # print 'settle-------', data
 #         MineOpt.add_mine(player_field._tid, player_field._seq, data)
