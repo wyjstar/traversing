@@ -400,23 +400,28 @@ def harvest_1245(data, player):
     if player.runt.bag_is_full(num):
         response.res.result = False
         response.res.result_no = 12451
+        logger.error('mine harvest bag is full!')
         return response.SerializePartialToString()
     stones = player.mine.harvest(request.position)
     # print 'stones', stones
     if stones:
         if not add_stones(player, stones, response.normal):
             response.res.result = False
-            response.res.result_no = 824
+            response.res.result_no = 12452
+            logger.error('mine harvest add stones fail!')
             return response.SerializePartialToString()
 
     else:
         response.res.result = False
         response.res.result_no = 12450
         response.res.message = u"没有可以领取的符文石"
+        logger.error('mine harvest no stones to harvest!')
+        return response.SerializePartialToString()
 
     player.mine.save_data()
     player.runt.save()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
+    response.res.result = True
     return response.SerializePartialToString()
 
 

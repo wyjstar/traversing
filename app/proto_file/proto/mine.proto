@@ -94,22 +94,6 @@ message drawStones
 	optional GameResourcesResponse lucky = 4;
 }
 
-//1246请求
-message battleRequest
-{
-	required int32 position = 1; //位置
-	required PvpFightRequest data = 2; //战斗请求数据
-}
-
-//1246返回
-message battleResponse
-{
-	required int32 position = 1; //位置
-	required PvpFightResponse  data = 2;//战斗结果
-	repeated stoneData normal = 3;//符文石数据
-	repeated stoneData lucky = 4;//符文石数据
-}
-
 //神秘商人兑换1247请求，查看矿点兑换列表
 //message shopRequest
 //{
