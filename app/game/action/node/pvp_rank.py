@@ -246,14 +246,14 @@ def pvp_fight(player, character_id, line_up, skill, response,
         return response.SerializePartialToString()
 
     best_skill, skill_level = player.line_up_component.get_skill_info_by_unpar(skill)
-    logger.debug("best_skill=================== %s" % best_skill)
+    logger.debug("best_skill : %s" % best_skill)
 
     if is_copy_unit:
         blue_units = record.get('copy_units2')
     else:
         blue_units = record.get('copy_units')
     # save_line_up_order(line_up, player, skill)
-    player.fight_cache_component.stage_id = 0 # 设置后，不会出现乱入
+    player.fight_cache_component.stage_id = 0  # 设置后，不会出现乱入
     player.fight_cache_component.stage = PvpStageLogic()
 
     red_units = player.fight_cache_component.get_red_units()
@@ -336,6 +336,13 @@ def pvp_fight_request_1505(data, player):
         tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
         player.pvp.pvp_high_rank = before_player_rank
 
+    if before_player_rank != request.self_rank:
+        logger.error('pvp self rank changed!!%s-%s',
+                     before_player_rank, request.self_rank)
+        response.res.result = False
+        response.res.result_no = 150509
+        return response.SerializeToString()
+
     before_player_rank = int(before_player_rank)
 
     if before_player_rank == challenge_rank:
@@ -368,7 +375,8 @@ def pvp_fight_request_1505(data, player):
             txt = game_configs.push_config[1003].text
             message = game_configs.language_config.get(str(txt)).get('cn')
             remote_gate['push'].add_push_message_remote(player.base_info.id, 3,
-                                                        message, int(time.time()))
+                                                        message,
+                                                        int(time.time()))
 
         push_message('add_blacklist_request_remote', target_id,
                      player.base_info.id)
@@ -388,7 +396,10 @@ def pvp_fight_request_1505(data, player):
         # stage award
         stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
         stage_info_current = get_player_pvp_stage(challenge_rank)
-        if not stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
+        before_gradient = stage_info_before.get('Gradient')
+        current_gradient = stage_info_current.get('Gradient')
+        if stage_info_current and stage_info_current \
+           and before_gradient > current_gradient:
             arena_stage_reward = stage_info_current.get('Reward')
             stage_reward_data = gain(player, arena_stage_reward,
                                      const.ARENA_WIN)
@@ -398,12 +409,13 @@ def pvp_fight_request_1505(data, player):
 
         player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
                                        challenge_rank)
-        logger.debug(" history_high_rank %s current %s" % (player.pvp.pvp_high_rank, before_player_rank))
+        logger.debug("history_high_rank %s current %s" %
+                     (player.pvp.pvp_high_rank, before_player_rank))
 
         # 首次达到某名次的奖励
-        arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')
-        if arena_rank_up_rewards:
-            return_data = gain(player, arena_rank_up_rewards,
+        arena_rank_rewards = game_configs.base_config.get('arenaRankUpRewards')
+        if arena_rank_rewards:
+            return_data = gain(player, arena_rank_rewards,
                                const.ARENA_WIN, multiple=rank_incr)
             get_return(player, return_data, response.award)
         else:
@@ -424,7 +436,6 @@ def pvp_fight_request_1505(data, player):
     logger.debug(response)
 
     return response.SerializeToString()
-
 
 
 @remoteserviceHandle('gate')
@@ -457,7 +468,6 @@ def pvp_fight_revenge_1507(data, player):
     response.res.result = True
     logger.debug("red_units: %s" % response.red)
     return response.SerializeToString()
-
 
 
 @remoteserviceHandle('gate')
@@ -549,8 +559,7 @@ def reset_pvp_time_1506(data, player):
     player.pvp.check_time()
     response = ShopResponse()
     response.res.result = True
-    vip_level = player.base_info.vip_level
-    reset_times_max = game_configs.vip_config.get(vip_level).get('buyArenaTimes')
+    reset_times_max = player.base_info.buy_arena_times()
     if player.pvp.pvp_refresh_count + request.times > reset_times_max:
         logger.error('over arenatime could buy:%s+%s>%s',
                      player.pvp.pvp_refresh_count,
@@ -691,7 +700,8 @@ def GetPvpOvercomeBuff_1511(data, player):
         player.pvp.pvp_overcome_buff_init[request.index] = _buff_data
         player.pvp.save_data()
 
-    for star, _, bt, vt, value in player.pvp.pvp_overcome_buff_init[request.index]:
+    _overcome_buf = player.pvp.pvp_overcome_buff_init[request.index]
+    for star, _, bt, vt, value in _overcome_buf:
         res_buff = response.buff.add()
         res_buff.index = request.index
         res_buff.star = star
@@ -730,7 +740,8 @@ def BuyPvpOvercomeBuff_1512(data, player):
 
     star, bt, vt, value = 0, 0, 0, 0
     if request.num >= 0:
-        star, _, bt, vt, value = player.pvp.pvp_overcome_buff_init[request.index][request.num]
+        _overcome_buf = player.pvp.pvp_overcome_buff_init[request.index]
+        star, _, bt, vt, value = _overcome_buf[request.num]
         if star > player.pvp.pvp_overcome_stars:
             logger.error('ggzj buff not enough star:%s-%s',
                          star, player.pvp.pvp_overcome_stars)
