@@ -91,7 +91,7 @@ def update_excel(args):
     print("update_excell=========2")
     os.system("cd /tmp; unzip -o config.zip")
     os.system("cp /tmp/excel_cpickle config/excel_cpickle")
-    os.system("cp -r /tmp/lua/ app/battle/src/app/datacenter/template/config/")
+    os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
@@ -376,10 +376,6 @@ def get_user_finances(args):
 
     finances = character_obj.hget('finances')
     del finances[0]
-    finances[3] = character_obj.hget('lively')
-    finances[13] = character_obj.hget('stone1')
-    finances[14] = character_obj.hget('stone2')
-    finances[20] = character_obj.hget('shoes')[0]
 
     return {'success': 1, 'message': finances}
 

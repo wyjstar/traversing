@@ -171,7 +171,7 @@ def enter_scene_9(data, player):
     rank_no = rank_helper.get_rank_by_key(rank_name, player.base_info.id)
     responsedata.fight_power_rank = rank_no
 
-    player.stamina._stamina.check_time_all()
+    player.stamina.check_time_all()
     buy_times_pb = responsedata.buy_times
     for item in player.stamina._stamina.stamina:
         item_pb = buy_times_pb.add()

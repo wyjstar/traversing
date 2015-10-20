@@ -423,6 +423,8 @@ function initHjqyData(data)
     -- 全力一击增加伤害
     if attack_type == 2 then
         process.damage_rate = formulaTemplate:getFunc("hjqyDamage")(heroBreak)
+    else
+        process.damage_rate = 0
     end
     local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
     local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
@@ -430,6 +432,7 @@ function initHjqyData(data)
     --local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
+    print(attack_type, "attack_type ===========")
     return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 -- 根据hero模板构造battle unit

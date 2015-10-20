@@ -208,6 +208,7 @@ class CharacterRechargeGift(Component):
         充值掉落
         """
         logger.debug("recharge_gain========1")
+        isfirst = 0
         if recharge_item.get('type') == 2:
             logger.debug("recharge_gain========")
             rebate_call(self._owner, recharge_item)
@@ -223,10 +224,9 @@ class CharacterRechargeGift(Component):
                 #首次充值
                 isfirst = 1
                 self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
-            else:
-                isfirst = 0
-            tlog_action.log('Recharge', self._owner, isfirst,
-                            recharge_item.get('id'))
+
+        tlog_action.log('Recharge', self._owner, isfirst,
+                        recharge_item.get('id'))
 
         charge_num = recharge_item.get('activity') # 充值元宝数量
         # vip
