@@ -421,7 +421,7 @@ def get_overcomes(player_id, player_ap):
     overcome_ids = [[0, 0]]
     ids = sorted(ids, key=lambda x: x[1])
     for _id, ap in ids:
-        overcome_ids.append([int(_id), int(ap)])
+        overcome_ids.append([int(_id), int(ap) / const.power_rank_xs])
     logger.debug('get overcome %s-%s', overcome_ids, len(overcome_ids))
     return overcome_ids
 
