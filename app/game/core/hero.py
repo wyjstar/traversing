@@ -8,6 +8,7 @@ from app.game.core.fight.skill_helper import SkillHelper
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonItem
 from app.game.redis_mode import tb_character_info
+import random
 
 
 class Hero(object):
@@ -29,6 +30,10 @@ class Hero(object):
         self._character_id = character_id
         self._is_guard = False
         self._is_online = False
+        self._awake_level = 0
+        self._awake_exp = 0
+        self._awake_item_num = 0
+        self._break_item_num = 0
 
         self._runt = {}
 
@@ -41,6 +46,10 @@ class Hero(object):
         self._is_guard = hero_property.get("is_guard")
         self._is_online = hero_property.get("is_online")
         self._runt = hero_property.get("runt")
+        self._awake_level = hero_property.get("awake_level", 0)
+        self._awake_exp = hero_property.get("awake_exp", 0)
+        self._awake_item_num = hero_property.get("awake_item_num", 0)
+        self._break_item_num = hero_property.get("break_item_num", 0)
 
     @property
     def runt(self):
@@ -89,6 +98,38 @@ class Hero(object):
     @break_level.setter
     def break_level(self, value):
         self._break_level = value
+
+    @property
+    def awake_level(self):
+        return self._awake_level
+
+    @awake_level.setter
+    def awake_level(self, value):
+        self._awake_level = value
+
+    @property
+    def awake_exp(self):
+        return self._awake_exp
+
+    @awake_exp.setter
+    def awake_exp(self, value):
+        self._awake_exp = value
+
+    @property
+    def awake_item_num(self):
+        return self._awake_item_num
+
+    @awake_item_num.setter
+    def awake_item_num(self, value):
+        self._awake_item_num = value
+
+    @property
+    def break_item_num(self):
+        return self._break_item_num
+
+    @break_item_num.setter
+    def break_item_num(self, value):
+        self._break_item_num = value
 
     def get_all_exp(self):
         """根据等级+当前等级经验，得到总经验"""
@@ -148,7 +189,11 @@ class Hero(object):
             'refine': self._refine,
             'is_guard': self._is_guard,
             'is_online': self._is_online,
-            'runt': self._runt
+            'runt': self._runt,
+            'awake_level': self._awake_level,
+            'awake_exp': self._awake_exp,
+            'awake_item_num': self._awake_item_num,
+            'break_item_num': self._break_item_num,
         }
         return hero_property
 
@@ -165,6 +210,11 @@ class Hero(object):
         hero_pb.is_guard = self._is_guard
         hero_pb.is_online = self._is_online
         hero_pb.is_guard = self._is_guard
+        hero_pb.awake_level = self._awake_level
+        hero_pb.awake_exp = self._awake_exp
+        hero_pb.awake_item_num = self._awake_item_num
+        hero_pb.break_item_num = self._break_item_num
+
         for (runt_type, item) in self._runt.items():
             runt_type_pb = hero_pb.runt_type.add()
             runt_type_pb.runt_type = runt_type
@@ -466,3 +516,10 @@ class Hero(object):
                     buffs.append(buff_id)
                     continue
         return buffs
+
+    def is_awake(self):
+        v = game_configs.awake_config.get(self._awake_level).get('awakeProbability')
+        target_percent = random.uniform(v[0], v[1])
+        if random.random() < target_percent:
+            return True
+        return False

@@ -39,6 +39,9 @@ def hero_self_attr(player, hero, stage=None):
     refine_attr = hero.refine_attr()
     # 符文
     runt_attr = hero.runt_attr()
+    # awake_percent
+    print("hero.awake_level %s" % hero.awake_level)
+    addition = game_configs.awake_config.get(hero.awake_level).get("addition")
 
     all_vars = dict(
         hero_info=hero_info,
@@ -88,6 +91,7 @@ def hero_self_attr(player, hero, stage=None):
         ductilityB=break_attr.get("ductility", 0),
         ductilitySeal=refine_attr.get("ductility", 0),
         ductilityStone=runt_attr.get("ductility", 0),
+        awake_percent=addition,
     )
 
     log(hero.hero_no, "计算武将自身属性所需的所有参数：", "", all_vars)

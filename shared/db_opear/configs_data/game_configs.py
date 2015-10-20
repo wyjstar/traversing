@@ -56,6 +56,7 @@ from currency_config import CurrencyConfig
 from lottery_config import LotteryConfig
 from activity_type_config import ActivityTypeConfig
 from ggzj_config import GgzjConfig
+from awake_config import AwakeConfig
 
 activity_type_config = {}
 lottery_config = {}
@@ -110,6 +111,7 @@ hjqy_config = {}
 push_config = {}
 currency_config = {}
 ggzj_config = {}
+awake_config = {}
 
 all_config_name = {
     'activity_type_config': ActivityTypeConfig(),
@@ -164,6 +166,7 @@ all_config_name = {
     'hjqy_config': HjqyConfig(),
     'currency_config': CurrencyConfig(),
     'ggzj_config': GgzjConfig()
+    'awake_config': AwakeConfig(),
 }
 
 logger.info("=============load game_configs=============")
@@ -175,3 +178,5 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     print ggzj_config
+    #print arena_fight_config
+    #print awake_config

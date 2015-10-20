@@ -30,6 +30,10 @@ message HeroPB
     repeated LinkPB links = 7;
     repeated RuntType runt_type = 8;
     optional bool is_online = 9;
+    optional int32 awake_level = 10; //觉醒等级
+    optional int32 awake_exp = 11; //觉醒经验
+    optional int32 awake_item_num = 12; //觉醒丹数量
+    optional int32 break_item_num = 13; //突破丹数量
 }
 
 message RuntAttr1{

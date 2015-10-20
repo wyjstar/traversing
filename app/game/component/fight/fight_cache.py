@@ -490,23 +490,17 @@ class CharacterFightCacheComponent(Component):
             if not hero:
                 continue
             hero_item = hero.hero_info
-            _rand = random.random()
             if not hero_item:
                 continue
-            if not hero_item.get('awake'):
-                continue
             line_up_slot = self.line_up_slots.get(red.slot_no)
-            ap = combat_power.combat_power_hero_self(self.owner, hero)
-            for upAp, prob in hero_item.get('awake').items():
-                if ap > upAp and _rand < prob:
-                    target_hero_no = hero_item.get('awakeHeroID')
-                    break_hero_obj = self.change_hero(hero, target_hero_no)
+            if hero.is_awake():
+                target_hero_no = hero_item.get('awakeHeroID')
+                break_hero_obj = self.change_hero(hero, target_hero_no)
 
-                    unit = line_up_slot.assemble_hero(break_hero_obj)
-                    unit.is_awake = True
-                    unit.origin_no = red.unit_no
-                    red_units[no] = unit
-                    break
+                unit = line_up_slot.assemble_hero(break_hero_obj)
+                unit.is_awake = True
+                unit.origin_no = red.unit_no
+                red_units[no] = unit
 
     def change_hero(self, origin_hero, target_hero_no):
         """docstring for change_hero, 觉醒，乱入
