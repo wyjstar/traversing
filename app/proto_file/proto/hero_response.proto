@@ -21,6 +21,7 @@ message HeroBreakResponse
     required CommonResponse res = 1;
     optional GameResourcesResponse consume = 2;
     optional int32 break_level = 3;
+    optional int32 break_item_num = 4;// 消耗的突破丹数量
 }
 
 //武将献祭 command:105
@@ -63,7 +64,8 @@ message OneKeyHeroUpgradeRespone
 message HeroAwakeResponse
 {
     required CommonResponse res = 1;
-    required int32 awake_level = 2;
-    required int32 awake_exp = 3;
-    optional GameResourcesResponse consume = 4; // 觉醒实际消耗
+    optional int32 awake_level = 2;
+    optional int32 awake_exp = 3;
+    optional int32 awake_item_num = 4; // 消耗的觉醒丹数量
+    optional GameResourcesResponse consume = 5; // 觉醒实际消耗
 }

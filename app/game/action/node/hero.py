@@ -18,18 +18,28 @@ from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
 from app.game.action.node.start_target import target_update
 import random
+from shared.utils.date_util import days_to_current, get_current_timestamp
 
 
 @remoteserviceHandle('gate')
 def get_heros_101(pro_data, player):
     """取得武将列表 """
     response = hero_response_pb2.GetHerosResponse()
+
+    clear_or_not = days_to_current(player.base_info._hero_awake_time) > 0
+
     for hero in player.hero_component.get_heros():
+        if clear_or_not:
+            logger.debug("clear hero awake")
+            hero.awake_exp = 0
+            hero.save_data()
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
-        if hero_pb.hero_no == 10045:
-            logger.debug("%s %s " % (hero.hero_no, hero_pb.is_guard))
+        #if hero_pb.hero_no == 10045:
+            #logger.debug("%s %s " % (hero.hero_no, hero_pb.is_guard))
 
+    player.base_info._hero_awake_time = get_current_timestamp()
+    player.base_info.save_data()
     return response.SerializePartialToString()
 
 
@@ -179,6 +189,7 @@ def hero_break_104(data, player):
     target_update(player, [32])
     response.res.result = True
     response.break_level = res.get("break_level")
+    response.break_item_num = res.get("break_item_num")
     return response.SerializeToString()
 
 
@@ -187,11 +198,12 @@ def hero_break_logic(hero_no, player, response):
     hero_info = game_configs.hero_config.get(hero_no)
     break_through = game_configs.base_config.get('breakthrough')
     target_break_level = hero.break_level + 1
+    logger.debug("target_break_level %s" % target_break_level)
     if target_break_level not in break_through:
         logger.debug("hero_break_logic can find target break level %s" % target_break_level)
         return {"result": False, "result_no": 10401}
 
-    if hero.level < break_through[target_break_level]:
+    if hero.level < break_through[target_break_level][0]:
         logger.debug("hero_break_logic level is not enough %s" % hero.level)
         return {"result": False, "result_no": 10402}
 
@@ -211,6 +223,11 @@ def hero_break_logic(hero_no, player, response):
     return_data = consume(player, item_group, const.HERO_BREAK)
     get_return(player, return_data, response.consume)
 
+    for item in item_group:
+        if item.item_type == 105 and item.item_no == 20006:
+            hero.break_item_num += item.num
+            hero.save_data()
+
     hero.break_level += 1
     notice_item = game_configs.notes_config.get(2003)
     if hero.break_level in notice_item.parameter1:
@@ -218,7 +235,7 @@ def hero_break_logic(hero_no, player, response):
     hero.save_data()
     # 3、返回
     tlog_action.log('HeroBreak', player, hero_no, hero.break_level)
-    return {"result": True, "break_level": hero.break_level}
+    return {"result": True, "break_level": hero.break_level, "break_item_num": hero.break_item_num}
 
 
 @remoteserviceHandle('gate')
@@ -384,6 +401,10 @@ def hero_sacrifice_oper(heros, player):
     total_exp = 0
     exp_item_no = 0
     exp_item_num = 0
+    awake_item_no = 90001
+    awake_item_num = 0
+    break_item_no = 20006
+    break_item_num = 0
 
     response = hero_response_pb2.HeroSacrificeResponse()
     gain_response = response.gain
@@ -395,6 +416,10 @@ def hero_sacrifice_oper(heros, player):
         exp = hero.get_all_exp()
         total_exp += exp
         tlog_action.log('HeroSacrifice', player, hero.hero_no)
+        # 觉醒丹
+        awake_item_num += hero.awake_item_num
+        # 突破丹
+        break_item_num += hero.break_item_num
 
     # baseconfig {1000000: 'item_id'}
     exp_items = game_configs.base_config.get("sacrificeGainExp")
@@ -415,13 +440,27 @@ def hero_sacrifice_oper(heros, player):
             exp_item_no = item_no
             exp_item_num = total_exp/exp
             break
+    heroAwakeBack = game_configs.base_config.get('heroAwakeBack')
+    heroBreakBack = game_configs.base_config.get('heroBreakBack')
+    awake_item_num = int(awake_item_num * heroAwakeBack)
+    break_item_num = int(break_item_num * heroBreakBack)
 
     player.item_package.add_item(Item(exp_item_no, exp_item_num))
+    player.item_package.add_item(Item(awake_item_no, awake_item_num))
+    player.item_package.add_item(Item(break_item_no, break_item_num))
     player.item_package.save_data()
     if exp_item_no:
         item_pb = gain_response.items.add()
         item_pb.item_no = exp_item_no
         item_pb.item_num = exp_item_num
+    if awake_item_num:
+        item_pb = gain_response.items.add()
+        item_pb.item_no = awake_item_no
+        item_pb.item_num = awake_item_num
+    if break_item_num:
+        item_pb = gain_response.items.add()
+        item_pb.item_no = break_item_no
+        item_pb.item_num = break_item_num
     response.res.result = True
     # print "*"*80
     # print response
@@ -429,21 +468,21 @@ def hero_sacrifice_oper(heros, player):
 
 
 @remoteserviceHandle('gate')
-def hero_awake_119(data, player):
+def hero_awake_121(data, player):
     request = hero_request_pb2.HeroAwakeRequest()
     request.ParseFromString(data)
     response = hero_response_pb2.HeroAwakeResponse()
     hero_no = request.hero_no
     awake_item_num = request.awake_item_num
 
-    res = do_hero_awake(player, hero_no, awake_item_num, response.consume)
+    res = do_hero_awake(player, hero_no, awake_item_num, response)
     response.res.result = res.get('result')
     if res.get('result_no'):
         response.res.result_no = res.get('result_no')
-    logger.debug(response)
+    logger.debug("response %s" % response)
     return response.SerializeToString()
 
-def do_hero_awake(player, hero_no, awake_item_num, response_consume):
+def do_hero_awake(player, hero_no, awake_item_num, response):
     """docstring for do_hero_awake"""
     hero = player.hero_component.get_hero(hero_no)
     if not hero:
@@ -451,8 +490,10 @@ def do_hero_awake(player, hero_no, awake_item_num, response_consume):
         return {'result': False, 'result_no': 11901}
 
     awake_info = game_configs.awake_config.get(hero.awake_level)
+    logger.debug("hero.awake_level %s, hero_no %s, awake_item_num %s" % (hero.awake_level, hero_no, awake_item_num))
 
     singleConsumption = awake_info.singleConsumption
+    logger.debug("singleConsumption %s" % singleConsumption)
     singleCoin = awake_info.silver
 
     if not is_afford(player, singleConsumption):
@@ -467,19 +508,22 @@ def do_hero_awake(player, hero_no, awake_item_num, response_consume):
         logger.error("the hero has reached the max awake level!")
         return {'result': False, 'result_no': 11904}
 
-    singleConsumptionNum = singleConsumption[105][0]
+    singleConsumptionNum = singleConsumption[0].num
     left_awake_item = awake_item_num
 
 
-    while left_awake_item > singleConsumptionNum:
+    while left_awake_item >= singleConsumptionNum:
         # consume
         if not is_afford(player, singleConsumption) or \
             not is_afford(player, singleCoin):
                 break
         return_data1 = consume(player, singleConsumption, const.HERO_AWAKE)
         return_data2 = consume(player, singleCoin, const.HERO_AWAKE)
-        get_return(player, return_data1, response_consume)
-        get_return(player, return_data2, response_consume)
+        get_return(player, return_data1, response.consume)
+        get_return(player, return_data2, response.consume)
+
+        # record awake item num
+        hero.awake_item_num += singleConsumptionNum
 
         # trigger or not, add exp, add level
         exp_percent = hero.awake_exp * 1.0 / awake_info.experience
@@ -493,10 +537,12 @@ def do_hero_awake(player, hero_no, awake_item_num, response_consume):
                     break
 
         if is_trigger: # 触发满级概率
+            logger.debug("is_trigger!")
             hero.awake_exp = 0
             hero.awake_level += 1
             break
         else:
+            logger.debug("not is_trigger!")
             hero.awake_exp += singleConsumptionNum
             if hero.awake_exp >= awake_info.experience:
                 hero.awake_exp = hero.awake_exp - awake_info.experience
@@ -504,10 +550,11 @@ def do_hero_awake(player, hero_no, awake_item_num, response_consume):
 
         left_awake_item -= singleConsumptionNum
 
-
-
     #actual_consume_item_num = 0
-    hero.save_date()
+    hero.save_data()
+    response.awake_level = hero.awake_level
+    response.awake_exp = hero.awake_exp
+    response.awake_item_num = hero.awake_item_num
 
     return {'result': True}
 

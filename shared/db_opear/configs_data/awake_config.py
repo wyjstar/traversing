@@ -20,5 +20,5 @@ class AwakeConfig(object):
             convert_keystr2num(row.get('triggerProbability'))
             row["singleConsumption"] = parse(row.get("singleConsumption"))
             row["silver"] = parse(row.get("silver"))
-            self.items[row.get('id')] = CommonItem(row)
+            self.items[row.get('level')] = CommonItem(row)
         return self.items

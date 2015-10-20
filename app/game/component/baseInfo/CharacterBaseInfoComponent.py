@@ -54,6 +54,7 @@ class CharacterBaseInfoComponent(Component):
         self._first_recharge_activity = -1 # -1 没领 1 领过
         self._story_id = 0
         self._button_one_time = [0] * 3 # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
+        self._hero_awake_time = int(time.time()) # 武将觉醒时间，用于次日清除相关武将觉醒进度。
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -84,6 +85,7 @@ class CharacterBaseInfoComponent(Component):
         self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
         self._first_recharge_activity = character_info.get('first_recharge_activity', False)
         self._button_one_time = character_info.get('button_one_time', [0,0,0])
+        self._hero_awake_time = character_info.get('hero_awake_time', int(time.time()))
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -117,6 +119,7 @@ class CharacterBaseInfoComponent(Component):
                     first_recharge_activity=self._first_recharge_activity,
                     story_id=self._story_id,
                     button_one_time=self._button_one_time,
+                    hero_awake_time=self._hero_awake_time,
                     )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -146,6 +149,7 @@ class CharacterBaseInfoComponent(Component):
                     first_recharge_activity=self._first_recharge_activity,
                     story_id=self._story_id,
                     button_one_time=self._button_one_time,
+                    hero_awake_time=self._hero_awake_time,
                     )
         return data
 
@@ -581,3 +585,4 @@ class CharacterBaseInfoComponent(Component):
             logger.debug("activity close by timeStart timeEnd.")
             return False
         return True
+

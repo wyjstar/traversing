@@ -40,6 +40,7 @@ def hero_self_attr(player, hero, stage=None):
     # 符文
     runt_attr = hero.runt_attr()
     # awake_percent
+    print("hero.awake_level %s" % hero.awake_level)
     addition = game_configs.awake_config.get(hero.awake_level).get("addition")
 
     all_vars = dict(

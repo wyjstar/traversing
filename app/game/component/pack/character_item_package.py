@@ -45,6 +45,7 @@ class CharacterItemPackageComponent(Component):
     def add_item(self, item):
         """添加道具
         """
+        if item.num <= 0: return
         if item.item_no in self._items:  # 已经存在的item_no
             item_obj = self._items[item.item_no]
             item_obj.modify_num(item.num, add=True)

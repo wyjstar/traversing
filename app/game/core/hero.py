@@ -32,6 +32,8 @@ class Hero(object):
         self._is_online = False
         self._awake_level = 0
         self._awake_exp = 0
+        self._awake_item_num = 0
+        self._break_item_num = 0
 
         self._runt = {}
 
@@ -46,6 +48,8 @@ class Hero(object):
         self._runt = hero_property.get("runt")
         self._awake_level = hero_property.get("awake_level", 0)
         self._awake_exp = hero_property.get("awake_exp", 0)
+        self._awake_item_num = hero_property.get("awake_item_num", 0)
+        self._break_item_num = hero_property.get("break_item_num", 0)
 
     @property
     def runt(self):
@@ -111,6 +115,22 @@ class Hero(object):
     def awake_exp(self, value):
         self._awake_exp = value
 
+    @property
+    def awake_item_num(self):
+        return self._awake_item_num
+
+    @awake_item_num.setter
+    def awake_item_num(self, value):
+        self._awake_item_num = value
+
+    @property
+    def break_item_num(self):
+        return self._break_item_num
+
+    @break_item_num.setter
+    def break_item_num(self, value):
+        self._break_item_num = value
+
     def get_all_exp(self):
         """根据等级+当前等级经验，得到总经验"""
         total_exp = 0
@@ -171,7 +191,9 @@ class Hero(object):
             'is_online': self._is_online,
             'runt': self._runt,
             'awake_level': self._awake_level,
-            'awake_exp': self._awake_exp
+            'awake_exp': self._awake_exp,
+            'awake_item_num': self._awake_item_num,
+            'break_item_num': self._break_item_num,
         }
         return hero_property
 
@@ -188,6 +210,11 @@ class Hero(object):
         hero_pb.is_guard = self._is_guard
         hero_pb.is_online = self._is_online
         hero_pb.is_guard = self._is_guard
+        hero_pb.awake_level = self._awake_level
+        hero_pb.awake_exp = self._awake_exp
+        hero_pb.awake_item_num = self._awake_item_num
+        hero_pb.break_item_num = self._break_item_num
+
         for (runt_type, item) in self._runt.items():
             runt_type_pb = hero_pb.runt_type.add()
             runt_type_pb.runt_type = runt_type
