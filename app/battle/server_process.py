@@ -156,10 +156,17 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
     )
     fight_type = const.BATTLE_PVE
     res = pve_func(fight_data, fight_type, steps, level)
-    print("pve_func result", res[0], res[1], res[2])
+    print("pve_func result", res[0], res[1], res[2], res[3], res[4])
+
+    round_to_kill_num = {}
+    for k in range(1, len(res[4])+1):
+        round_to_kill_num[k] = res[4][k]
+        print("round, kill units num", k, res[4][k])
+
+
     if int(res[0]) == 1:
-        return True, res[1], res[2]
-    return False, res[1], res[2]
+        return True, res[1], res[2], res[3], round_to_kill_num
+    return False, res[1], res[2], res[3], round_to_kill_num
 
 def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, debuff_skill_no, damage_rate, seed1, seed2, level):
     red = []
