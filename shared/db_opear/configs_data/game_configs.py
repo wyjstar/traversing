@@ -165,7 +165,7 @@ all_config_name = {
     'push_config': PushConfig(),
     'hjqy_config': HjqyConfig(),
     'currency_config': CurrencyConfig(),
-    'ggzj_config': GgzjConfig()
+    'ggzj_config': GgzjConfig(),
     'awake_config': AwakeConfig(),
 }
 
