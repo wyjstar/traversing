@@ -564,8 +564,11 @@ class PlayerField(Mine):
 
     def acc_mine_time(self):
         self._accelerate_times += 1
-        ret, stype, last_increase, limit, normal, lucky, _, _, _ = self.detail_info()
-        return True
+        change_time = game_configs.base_config.get('stoneReduceTime') * 60
+        result = remote_gate['mine'].acc_mine_time_remote(self._tid,
+                                                          self._seq,
+                                                          change_time)
+        return result
 
     def get_acc_time_gold(self):
         stoneReduceTimePrice = game_configs.base_config.get('stoneReduceTimePrice')

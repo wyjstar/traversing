@@ -330,8 +330,12 @@ class PlayerField(Mine):
 #         limit, _ = compute(self._mine_id, 0, mine.timeGroupR, mine.outputGroupR, self._normal_end, self._normal_harvest, self._normal_end)
         return 0, 1, 0, mine.outputLimited, self._normal, self._lucky, self._lineup, self._guard_time  # ret,last_increase, limit, normal, lucky, heros
 
-
-
+    def acc_mine_time(self, change_time):
+        self._normal_harvest -= change_time
+        self._lucky_harvest -= change_time
+        self._normal_end -= change_time
+        self._lucky_end -= change_time
+        return True
 
 """
 label = 'mine.%s' % uid
@@ -531,4 +535,6 @@ class MineData(object):
     def get_toupdata(self, seq):
         self.get_detail_info(seq)
         data = self.mines[seq].save_info()
-        return data
+
+    def acc_mine_time(self, uid, seq, change_time):
+        return self.mines[seq].acc_mine_time(change_time)

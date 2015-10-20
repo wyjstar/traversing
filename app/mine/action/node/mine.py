@@ -84,3 +84,8 @@ def mine_harvest_remote(uid, seq):
     """
     status, normal, lucky = MineData().harvest(uid, seq)
     return status, cPickle.dumps(normal), cPickle.dumps(lucky)
+
+
+@nodeservice_handle
+def acc_mine_time_remote(uid, seq, change_time):
+    return MineData().acc_mine_time(uid, seq, change_time)
