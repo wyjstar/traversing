@@ -70,14 +70,18 @@ def mine_status(player, response):
 
         if one_mine.type == MineType.PLAYER_FIELD:
             uid = mstatus.get('uid')
-            one_mine.is_friend = player.friends.is_friend(uid)
-            data_obj = tb_character_info.getObj(uid)
-            if data_obj.exists():
-                data = data_obj.hmget(['guild_id', 'attackPoint'])
-                one_mine.is_guild = data['guild_id'] != 0
-                one_mine.fight_power = int(data['attackPoint'])
+            if uid == player.base_info.id:
+                one_mine.fight_power = int(player.line_up_component.combat_power)
+                one_mine.is_guild = player.guild.g_id
             else:
-                logger.errr('mine info cant find uid:%s', uid)
+                one_mine.is_friend = player.friends.is_friend(uid)
+                data_obj = tb_character_info.getObj(uid)
+                if data_obj.exists():
+                    data = data_obj.hmget(['guild_id', 'attackPoint'])
+                    one_mine.is_guild = data['guild_id'] != 0
+                    one_mine.fight_power = int(data['attackPoint'])
+                else:
+                    logger.errr('mine info cant find uid:%s', uid)
 
     return response
 
