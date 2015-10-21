@@ -236,7 +236,7 @@ def query_1243(data, player):
         response.res.result_no = ret
 
     player.mine.save_data()
-    # print '1243-response', response
+    print '1243-response', response.mine, response.mine.nickname
     return response.SerializePartialToString()
 
 

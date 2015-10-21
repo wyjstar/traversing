@@ -348,11 +348,14 @@ label = 'mine.%s' % uid
         rdobj.hset(mid, data)
 """
 
+
 class MineData(object):
     """
     符文秘境操作
     """
+
     __metaclass__ = Singleton
+
     def __init__(self):
         self.mines = {}
         self.users = {}
@@ -363,7 +366,7 @@ class MineData(object):
         rdobj = mine_obj.getObj(label)
         if lineup != None:
             self.mines[seq]._lineup = lineup
-        print self.mines[seq].save_info()
+        print 'save data', self.mines[seq].save_info()
         rdobj.hset(seq, self.mines[seq].save_info())
 
     def get_data(self, seq):
@@ -445,55 +448,54 @@ class MineData(object):
         return True
 
     def settle(self, seq, result, uid=None, nickname=None, hold=1):
-        print 'settle', seq, result, uid, nickname, hold
+        logger.debug('settle %s %s %s %s %s', seq, result, uid, nickname, hold)
         warFogLootRatio = game_configs.base_config['warFogLootRatio']
         ret = PlayerField()
         harvest_a_nor = {}
         harvest_a_luc = {}
         harvest_a = {}
         harvest_b = {}
-        try:
-            self.get_detail_info(seq)
-            tid = self.mines[seq]._tid
-            srcname = self.mines[seq]._nickname
-            ret.update_info(self.mines[seq].save_info())
-            harvest_stone = {}
-            harvest_stone.update(self.mines[seq]._normal)
-            harvest_stone.update(self.mines[seq]._lucky)
-            if self.mines[seq]._status == 2 or (self.mines[seq]._status == 1 and time.time() > self.mines[seq]._last_time):
-                if result == True:
-                    self.mines[seq]._status = 3
+
+        self.get_detail_info(seq)
+        tid = self.mines[seq]._tid
+        srcname = self.mines[seq]._nickname
+        ret.update_info(self.mines[seq].save_info())
+        harvest_stone = {}
+        harvest_stone.update(self.mines[seq]._normal)
+        harvest_stone.update(self.mines[seq]._lucky)
+        if self.mines[seq]._status == 2 or (self.mines[seq]._status == 1 and time.time() > self.mines[seq]._last_time):
             if result == True:
-                if hold:
-                    self.mines[seq]._tid = uid
-                    self.mines[seq]._nickname = nickname
+                self.mines[seq]._status = 3
+        if result == True:
+            if hold:
+                self.mines[seq]._tid = uid
+                self.mines[seq]._nickname = nickname
 
-                for k, v in self.mines[seq]._normal.items():
-                    if v > 0:
-                        harvest_a_nor[k] = int(v*warFogLootRatio)
-                        self.mines[seq]._normal[k] = v - int(v*warFogLootRatio)
-                        ret._normal = harvest_a_nor
-                        harvest_b[k] = int(v*warFogLootRatio)
-                        harvest_a[k] = v - int(v*warFogLootRatio)
+            for k, v in self.mines[seq]._normal.items():
+                if v > 0:
+                    harvest_a_nor[k] = int(v*warFogLootRatio)
+                    self.mines[seq]._normal[k] = v - int(v*warFogLootRatio)
+                    ret._normal = harvest_a_nor
+                    harvest_b[k] = int(v*warFogLootRatio)
+                    harvest_a[k] = v - int(v*warFogLootRatio)
 
-                for k, v in self.mines[seq]._lucky.items():
-                    if v > 0:
-                        harvest_a_luc[k] = int(v*warFogLootRatio)
-                        self.mines[seq]._lucky[k] = v - int(v*warFogLootRatio)
-                        ret._lucky = harvest_a_luc
-                        harvest_b[k] = int(v*warFogLootRatio)
-                        harvest_a[k] = v - int(v*warFogLootRatio)
-                prize = []
-                for k, v in harvest_a.items():
-                    if v > 0:
-                        prize.append({108: [v, v, k]})
-                logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
-                             harvest_stone, harvest_a, harvest_b, prize)
-            self.save_data(seq)
-            self.unlock_mine(uid, seq)
-        except Exception, e:
-            self.unlock_mine(uid, seq)
+            for k, v in self.mines[seq]._lucky.items():
+                if v > 0:
+                    harvest_a_luc[k] = int(v*warFogLootRatio)
+                    self.mines[seq]._lucky[k] = v - int(v*warFogLootRatio)
+                    ret._lucky = harvest_a_luc
+                    harvest_b[k] = int(v*warFogLootRatio)
+                    harvest_a[k] = v - int(v*warFogLootRatio)
+            prize = []
+            for k, v in harvest_a.items():
+                if v > 0:
+                    prize.append({108: [v, v, k]})
+            logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
+                         harvest_stone, harvest_a, harvest_b, prize)
+        self.save_data(seq)
+        self.unlock_mine(uid, seq)
 
+        ret.update_info(self.mines[seq].save_info())
         return ret.save_info(), tid, srcname
 
     def guard(self, uid, seq, nickname, data):
