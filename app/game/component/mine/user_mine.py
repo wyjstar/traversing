@@ -560,7 +560,7 @@ class PlayerField(Mine):
             logger.error('player id is not found:%s', self._tid)
             return None
 
-        return record.get('copy_units')
+        return record
 
     def acc_mine_time(self):
         self._accelerate_times += 1
