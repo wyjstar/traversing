@@ -465,6 +465,7 @@ def refresh_shop_items_507(pro_data, player):
             player.act.save_data()
 
     response.luck_num = int(shopdata['luck_num'])
+    response.refresh_times = int(shopdata['refresh_times'])
     logger.debug("response %s", response)
     return response.SerializeToString()
 
@@ -478,6 +479,15 @@ def get_shop_items_508(pro_data, player):
 
     response = GetShopItemsResponse()
     shopdata = player.shop.get_shop_data(shop_type)
+
+    shop_is_open = player.owner.base_info.vip_shop_open
+    _is_open = shop_is_open.get(shop_type, 0)
+    if _is_open == 0:
+        logger.error('shop is not open with vip:%s--%s',
+                     shop_type, shop_is_open)
+        response.res.result_no = 50801
+        response.res.result = False
+        return response.SerializePartialToString()
 
     if not shopdata:
         response.res.result = False
