@@ -368,20 +368,21 @@ def guard_1244(data, player):
 
 def add_stones(player, stones, response):
     for stone_id, num in stones.items():
-        for _ in range(num):
-            runt_no = player.runt.add_runt(stone_id)
-            if not runt_no:
-                return 0
-            else:
-                runt_info = player.runt.m_runt.get(runt_no)
-                runt_pb = response.runt.add()
-                [runt_id, main_attr, minor_attr] = runt_info
-                # print runt_no
-                player.runt.deal_runt_pb(runt_no,
-                                         runt_id,
-                                         main_attr,
-                                         minor_attr,
-                                         runt_pb)
+        add_items(player, response, [stone_id], num=num)
+        # for _ in range(num):
+        #     runt_no = player.runt.add_runt(stone_id)
+        #     if not runt_no:
+        #         return 0
+        #     else:
+        #         runt_info = player.runt.m_runt.get(runt_no)
+        #         runt_pb = response.runt.add()
+        #         [runt_id, main_attr, minor_attr] = runt_info
+        #         # print runt_no
+        #         player.runt.deal_runt_pb(runt_no,
+        #                                  runt_id,
+        #                                  main_attr,
+        #                                  minor_attr,
+        #                                  runt_pb)
     return 1
 
 
@@ -502,15 +503,17 @@ def exchange_1248(data, player):
     return response.SerializePartialToString()
 
 
-def add_items(player, response, drop_ids):
+def add_items(player, response, drop_ids, num=1):
     """ 添加道具给玩家 """
     for drop_id in drop_ids:
         big_bag = BigBag(drop_id)
         drop_item_group = big_bag.get_drop_items()
         return_data = item_group_helper.gain(player,
                                              drop_item_group,
-                                             const.MINE_REWARD)
-        item_group_helper.get_return(player, return_data, response.gain)
+                                             const.MINE_REWARD,
+                                             multiple=num
+                                             )
+        item_group_helper.get_return(player, return_data, response)
     return response
 
 
@@ -531,7 +534,7 @@ def reward_1249(data, player):
         return items.SerializePartialToString()
     player.mine.save_data()
     drop_id = game_configs.base_config['warFogChest']
-    add_items(player, items, [drop_id])
+    add_items(player, items.gain, [drop_id])
     # print 'reward_1249-response', response
     return response.SerializePartialToString()
 
