@@ -144,7 +144,6 @@ def stage_start_903(pro_data, player):
     request.ParseFromString(pro_data)
 
     stage_id = request.stage_id          # 关卡编号
-    stage_type = request.stage_type      # 关卡类型 1.普通关卡2.精英关卡7.活动宝库关卡8.活动校场关卡4.游历关卡5.秘境关卡
     line_up = request.lineup            # 阵容顺序
     red_best_skill_id = request.unparalleled  # 无双编号
     fid = request.fid                    # 好友ID
@@ -152,12 +151,14 @@ def stage_start_903(pro_data, player):
     # logger.debug("red_best_skill_id,%s" % red_best_skill_id)
     # logger.debug("fid,%s" % fid)
     response = stage_response_pb2.StageStartResponse()
+    player.fight_cache_component.stage_id = stage_id
+    stage_config = player.fight_cache_component._get_stage_config()
     open_stage_id = 0
-    if stage_type == 2:
+    if stage_config.type == 6: # 精英
         open_stage_id = game_configs.base_config.get('specialStageStageOpenStage')
-    if stage_type == 3:
+    if stage_config.type in [4, 5]: # 活动
         open_stage_id = game_configs.base_config.get('activityStageOpenStage')
-    if stage_type == 5:
+    if stage_config.type == 8: # 秘境
         open_stage_id = game_configs.base_config.get('warFogOpenStage')
     if open_stage_id:
         if player.stage_component.get_stage(open_stage_id).state != 1:
@@ -165,7 +166,7 @@ def stage_start_903(pro_data, player):
             response.res.result_no = 837
             return response.SerializeToString()
 
-    stage_info = pve_process(stage_id, stage_type, line_up, fid, player, red_best_skill_id)
+    stage_info = pve_process(stage_id, stage_config.type, line_up, fid, player, red_best_skill_id)
     result = stage_info.get('result')
 
     res = response.res
@@ -304,20 +305,24 @@ def fight_settlement_904(pro_data, player):
 
     if request.is_skip:
         star = 3
-    stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
-    ELITE_STAGE = 2
-    if request.stage_type == ELITE_STAGE:
+    stage = get_stage_by_stage_type(stage_config.type, stage_id, player)
+    if stage_config.type == 6 and result:
+        logger.debug("it is a elite stage!")
         conditions = stage_config.ClearanceConditions
         for k, cond in conditions.items():
-            if k == 1 and (cond[0] in round_to_kill_num or round_to_kill_num[cond[0]] < cond[1]):
-                    result = False
-                    break
+            logger.debug("k %s %s condi %s" % (k, type(k), cond))
+            if k == 1 and (cond[0] in round_to_kill_num and round_to_kill_num[cond[0]] < cond[1]):
+                logger.debug("elite condition 1 is not met!")
+                result = False
+                break
             if k == 2 and (death_num > cond[0]):
-                    result = False
-                    break
+                logger.debug("elite condition 2 is not met!")
+                result = False
+                break
             if k == 3 and (red_left_hp_percent < cond[0]):
-                    result = False
-                    break
+                logger.debug("elite condition 3 is not met!")
+                result = False
+                break
 
     res = fight_settlement(stage, result, player, star)
     logger.debug("steps:%s", request.steps)

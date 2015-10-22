@@ -5,6 +5,7 @@ created by server on 14-9-24下午3:23.
 
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.db_opear.configs_data.data_helper import parse
+from shared.db_opear.configs_data.data_helper import convert_keystr2num
 
 
 class SpecialStageConfig(object):
@@ -22,6 +23,7 @@ class SpecialStageConfig(object):
     def parser(self, config_value):
         for row in config_value:
             row['ClearanceReward'] = parse(row['ClearanceReward'])
+            convert_keystr2num(row['ClearanceConditions'])
             item = CommonItem(row)
 
             if item.type == 6:
