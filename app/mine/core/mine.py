@@ -356,6 +356,7 @@ class MineData(object):
         rdobj = mine_obj.getObj(label)
         if lineup != None:
             self.mines[seq]._lineup = lineup
+        print self.mines[seq].save_info()
         rdobj.hset(seq, self.mines[seq].save_info())
 
     def get_data(self, seq):

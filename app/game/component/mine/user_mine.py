@@ -538,7 +538,7 @@ class PlayerField(Mine):
 
     def draw_stones(self):
         status, normal, lucky = remote_gate.mine_harvest_remote(self._tid, self._seq)
-        return status, cPickle.loads(normal), cPickle.loads(lucky)
+        return cPickle.loads(normal), cPickle.loads(lucky)
 
     def mine_data(self):
         info = {}
@@ -997,11 +997,10 @@ class UserMine(Component):
         # print 'harvest', position
         if position in self._mine:
             # print '1111'
-            statue, normal, lucky = self._mine[position].draw_stones()
-            # print stones
-            if statue:
-                self._update = True
-                return normal, lucky
+            normal, lucky = self._mine[position].draw_stones()
+            print 'harvest', normal, lucky
+            self._update = True
+            return normal, lucky
         return {}, {}
 
     def shop_info(self, position):

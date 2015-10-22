@@ -426,6 +426,7 @@ def harvest_1245(data, player):
     player.runt.save()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
     response.res.result = True
+    print 'mine harvest', response
     return response.SerializePartialToString()
 
 
