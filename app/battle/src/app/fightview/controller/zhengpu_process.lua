@@ -595,8 +595,10 @@ function FightProcess:set_normal_step()
         self.blue_step = self.blue_step + 1
     end
     if self.red_step == 7 and self.blue_step == 7 then
-        cclog("FightProcess:set_step=======>next round")
-        self.round_to_kill_num[self.current_fight_times] = self.init_blue_units_num - table.nums(self.blue_groups[1])
+        if self.round_to_kill_num[self.current_fight_times] == nil then
+            print("FightProcess:set_step=======>next round"..tostring(self.init_blue_units_num - table.nums(self.blue_groups[1])))
+            self.round_to_kill_num[self.current_fight_times] = self.init_blue_units_num - table.nums(self.blue_groups[1])
+        end
         self.current_fight_times = self.current_fight_times + 1
         appendFile2("current_fight_times:"..self.current_fight_times, 0)
         self.red_step = 1 
