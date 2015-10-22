@@ -431,7 +431,7 @@ class CharacterFightCacheComponent(Component):
             hero_soul_num = stage_info.reward
             drops.append(CommonGroupItem(const.RESOURCE, hero_soul_num, hero_soul_num, const.HERO_SOUL))
             self.add_settle_coin(drops, stage_info.currency)
-            drops.extend(stage_info.ClearanceReward)
+            #drops.extend(stage_info.ClearanceReward)
 
 
         logger.debug("drops %s" % drops)

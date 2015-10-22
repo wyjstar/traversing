@@ -22,7 +22,7 @@ class SpecialStageConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
-            row['ClearanceReward'] = parse(row['ClearanceReward'])
+            row['stageBox'] = parse(row['stageBox'])
             convert_keystr2num(row['ClearanceConditions'])
             item = CommonItem(row)
 
