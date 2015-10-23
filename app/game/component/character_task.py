@@ -41,6 +41,8 @@ class CharacterTaskComponent(Component):
         for task_id, state in self._tasks.items():
             task_conf = game_configs.achievement_config. \
                 get('tasks').get(task_id)
+            if not task_conf:
+                continue
             if task_conf.type == 2:  # 日常类
                 self._tasks[task_id] = 1
         # 每日刷新类型的  修改状态
