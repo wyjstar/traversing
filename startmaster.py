@@ -4,6 +4,7 @@ import os
 import json
 
 from gevent import monkey
+import urllib
 
 monkey.patch_all()
 
@@ -19,9 +20,20 @@ if __name__ == "__main__":
     if not os.path.exists('app/logs'):
         os.system("mkdir app/logs")
 
-    if os.path.exists('/tmp/excel_cpickle'):
+    try:
+        res = urllib.urlretrieve("http://127.0.0.1:2600/static/upload/", '/tmp/config.zip')
+        print res
+        print("update_excell=========2")
+        os.system("cd /tmp; unzip -o config.zip")
         os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
+
+    except Exception, e:
+        print("gm is not running!")
+
+    #if os.path.exists('/tmp/excel_cpickle'):
+        #os.system("cp /tmp/excel_cpickle config/excel_cpickle")
+        #os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
 
     if os.path.exists('/tmp/server_list.json'):
