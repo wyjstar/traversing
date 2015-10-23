@@ -276,13 +276,13 @@ def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, bl
         seed2 = seed2
     )
     fight_type = const.BATTLE_MINE_PVE
-    res = pvp_func(fight_data, fight_type)
-    print("pvp_start=====:", res)
+    #res = pvp_func(fight_data, fight_type)
+    #print("pvp_start=====:", res)
     res = pve_func(fight_data, fight_type, steps, level)
-    print("pve_func result", res[0], res[1], res[2])
+    print("pve_func result", res[0], res[1], res[2], res[3], res[4])
     if int(res[0]) == 1:
-        return True, res[1], res[2]
-    return False, res[1], res[2]
+        return True, res[1], res[2], res[3], res[4]
+    return False, res[1], res[2], res[3], res[4]
 
 def get_seeds():
     seed1 = randint(1, 100)
