@@ -389,7 +389,7 @@ def pvp_fight_request_1505(data, player):
                          challenge_rank,
                          stage_info_before.get('Gradient'),
                          stage_info_current.get('Gradient'))
-            if not stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
+            if stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
                 arena_stage_reward = stage_info_current.get('Reward')
                 logger.debug('up stage reward:%s', arena_stage_reward)
                 stage_reward_data = gain(player, arena_stage_reward,
