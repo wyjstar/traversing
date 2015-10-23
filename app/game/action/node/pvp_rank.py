@@ -116,8 +116,8 @@ def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
     if player.pvp.pvp_upstage_challenge_rank != 0:
-        _id = int(tb_pvp_rank.zrangebyscore(player.pvp.pvp_upstage_challenge_rank,
-                                            player.pvp.pvp_upstage_challenge_rank)[0])
+        _up_stage_rank = player.pvp.pvp_upstage_challenge_rank
+        _id = int(tb_pvp_rank.zrangebyscore(_up_stage_rank, _up_stage_rank)[0])
         response.pvp_upstage_challenge_id = _id
 
         char_obj = tb_character_info.getObj(_id)

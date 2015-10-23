@@ -5,15 +5,17 @@ created by wzp.
 from robot import Robot
 from app.proto_file import pvp_rank_pb2
 
+
 class RobotPvp(Robot):
 
-    def command_fight(self):
-        arg = pvp_rank_pb2.PvpFightRequest()
-        arg.challenge_rank = 1
+    def command_fight(self, rank, tid):
+        request = pvp_rank_pb2.PvpFightRequest()
+        request.challenge_rank = int(rank)
+        request.challenge_id = int(tid)
         for i in range(1, 7):
-            arg.lineup.append(i)
+            request.lineup.append(i)
 
-        self.send_message(arg, 1505)
+        self.send_message(request, 1505)
 
     def fight_1505(self, message):
         response = pvp_rank_pb2.PvpFightResponse()
@@ -91,6 +93,15 @@ class RobotPvp(Robot):
 
     def fight_1513(self, message):
         response = pvp_rank_pb2.GetPvpOvercomeInfo()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_get_player_rank(self):
+        self.send_message(None, 1502)
+
+    def fight_1502(self, message):
+        response = pvp_rank_pb2.PlayerRankResponse()
         response.ParseFromString(message)
         print response
         self.on_command_finish()

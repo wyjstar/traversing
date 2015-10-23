@@ -6,7 +6,6 @@ Created on 2013-8-2
 '''
 from gfirefly.utils.singleton import Singleton
 from shared.utils.logclient import LogClient
-from gfirefly.server.logobj import logger
 import traceback
 
 
@@ -88,10 +87,10 @@ class webserviceHandle:
 
             return GlobalObject().webroot.route(child_name, **self.kw)(cls)
         except Exception, e:
-            logger.exception(e)
+            print e
             return "error"
         except:
-            logger.error(traceback.format_exc())
+            print traceback.format_exc()
             return "error"
 
 
