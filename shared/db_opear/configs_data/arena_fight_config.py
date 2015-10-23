@@ -15,10 +15,10 @@ class ArenaFightConfig(object):
         for row in config_value:
             item = CommonItem(row)
             data = item.get('choose')
-            row["consume"] = parse(row.get("Reward"))
+            row["Reward"] = parse(row.get("Reward"))
             if data:
                 data = compile(data, '', 'eval')
-                item['choose'] = data
-            self._items[item.id] = item
+                row['choose'] = data
+            self._items[item.id] = row
 
         return self._items
