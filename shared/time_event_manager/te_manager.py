@@ -69,10 +69,8 @@ class TEManager(object):
                 next_time = x_time
 
         if next_time:
-            print self._events, self._day_events, 'te_manager,=======================================1'
             reactor.callLater(next_time-now, self.deal_event, the_time=next_time)
         else:
-            print self._events, self._day_events, 'te_manager,=======================================2'
             reactor.callLater(60, self.deal_event, the_time=next_time)
 
         if not the_time:
