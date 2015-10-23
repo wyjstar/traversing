@@ -252,6 +252,9 @@ def get_overcomes(player_id, player_ap):
     rank = tb_rank.getObj(rank_name)
     rank_toal = rank.ztotal()
     if rank_toal < 20:
+        if len(robot2_rank) < 20:
+            logger.error('not robot2 exist')
+            return []
         robot_ids = set([(0, 0)])
         index = 0
         for i in range(len(robot2_rank)):
@@ -264,10 +267,8 @@ def get_overcomes(player_id, player_ap):
 
         _min = max(index - 20, 0)
         _max = min(index + 20, len(robot2_rank) - 1)
-        print _min, _max
         while len(robot_ids) != 16:
             _id = random.randint(_min, _max)
-            print _id
             robot_ids.add(robot2_rank[_id])
         robot_ids = sorted(list(robot_ids), key=lambda x: x[1])
         robot_ids = dict(robot_ids).keys()
