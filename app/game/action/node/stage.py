@@ -271,7 +271,7 @@ def fight_settlement_904(pro_data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
 
-    res = (True, 1, -1)
+    res = (True, 1, 1, -1, {})
     if not request.is_skip:
         res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
 
