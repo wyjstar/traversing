@@ -435,7 +435,7 @@ def start_target_get_gift(player_data, target_id):
                                  TargetID=target_id)
 
 
-def sign_in(player_data, day, is_double):
+def sign_in(player_data, day, is_double, config_id):
 
     log4tx.sign_in(GameSvrId=game_server_id,
                    dtEventTime=xtime.strdatetime(),
@@ -444,10 +444,11 @@ def sign_in(player_data, day, is_double):
                    PlatID=plat_id,
 
                    Day=day,
-                   IsDouble=is_double)
+                   IsDouble=is_double,
+                   ConfigID=config_id)
 
 
-def continus_sign_in(player_data, day):
+def continus_sign_in(player_data, day, config_id):
 
     log4tx.continus_sign_in(GameSvrId=game_server_id,
                             dtEventTime=xtime.strdatetime(),
@@ -455,10 +456,11 @@ def continus_sign_in(player_data, day):
                             OpenID=player_data.base_info.id,
                             PlatID=plat_id,
 
-                            Day=day)
+                            Day=day,
+                            ConfigID=config_id)
 
 
-def repair_sign_in(player_data, day, day1):
+def repair_sign_in(player_data, day, day1, config_id):
 
     log4tx.repair_sign_in(GameSvrId=game_server_id,
                           dtEventTime=xtime.strdatetime(),
@@ -467,10 +469,11 @@ def repair_sign_in(player_data, day, day1):
                           PlatID=plat_id,
 
                           Day=day,
-                          Day1=day1)
+                          Day1=day1,
+                          ConfigID=config_id)
 
 
-def sign_in_box(player_data, box_id):
+def sign_in_box(player_data, box_id, config_id):
 
     log4tx.sign_in_box(GameSvrId=game_server_id,
                        dtEventTime=xtime.strdatetime(),
@@ -478,7 +481,8 @@ def sign_in_box(player_data, box_id):
                        OpenID=player_data.base_info.id,
                        PlatID=plat_id,
 
-                       BoxID=box_id)
+                       BoxID=box_id,
+                       ConfigID=config_id)
 
 
 def online_gift(player_data, gift_id):
@@ -514,7 +518,7 @@ def feast(player_data, stamina):
                  Stamina=stamina)
 
 
-def activity(player_data, activity_id):
+def activity(player_data, activity_id, arg):
 
     log4tx.activity(GameSvrId=game_server_id,
                     dtEventTime=xtime.strdatetime(),
@@ -522,6 +526,7 @@ def activity(player_data, activity_id):
                     OpenID=player_data.base_info.id,
                     PlatID=plat_id,
 
+                    Arg=arg,
                     ActivityID=activity_id)
 
 
@@ -533,10 +538,11 @@ def level_gift(player_data, activity_id):
                       OpenID=player_data.base_info.id,
                       PlatID=plat_id,
 
-                      ActivityID=activity_id)
+                      ActivityID=activity_id,
+                      Level=player_data.base_info.level)
 
 
-def share(player_data, tid):
+def share(player_data, tid, share_type):
 
     log4tx.share(GameSvrId=game_server_id,
                  dtEventTime=xtime.strdatetime(),
@@ -544,7 +550,8 @@ def share(player_data, tid):
                  OpenID=player_data.base_info.id,
                  PlatID=plat_id,
 
-                 TaskID=tid)
+                 TaskID=tid,
+                 ShareType=share_type)
 
 
 def draw_rebate(player_data, rid):
@@ -630,7 +637,7 @@ def open_star_chest(player_data, chapter_id, award_type):
                            AwardType=award_type)
 
 
-def star_random(player_data, random_num, times):
+def star_random(player_data, random_num, times, chapter_id):
 
     log4tx.star_random(GameSvrId=game_server_id,
                        dtEventTime=xtime.strdatetime(),
@@ -639,10 +646,11 @@ def star_random(player_data, random_num, times):
                        PlatID=plat_id,
 
                        RandomNum=random_num,
+                       ChapterID=chapter_id,
                        Times=times)
 
 
-def deal_star_random(player_data, random_num, deal_type):
+def deal_star_random(player_data, random_num, deal_type, chapter_id):
 
     log4tx.deal_star_random(GameSvrId=game_server_id,
                             dtEventTime=xtime.strdatetime(),
@@ -651,6 +659,7 @@ def deal_star_random(player_data, random_num, deal_type):
                             PlatID=plat_id,
 
                             RandomNum=random_num,
+                            ChapterID=chapter_id,
                             DealType=deal_type)
 
 

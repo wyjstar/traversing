@@ -781,7 +781,7 @@ def start_target_get_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
-            PlatID=0, OpenID=0, Day=0, IsDouble=0):
+            PlatID=0, OpenID=0, Day=0, IsDouble=0, ConfigID=0):
 
     message = ['SignIn']
 
@@ -793,6 +793,7 @@ def sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(Day)
     message.append(IsDouble)
+    message.append(ConfigID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -801,7 +802,7 @@ def sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def continus_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                     PlatID=0, OpenID=0, Day=0):
+                     PlatID=0, OpenID=0, Day=0, ConfigID=0):
 
     message = ['ContinusSignIn']
 
@@ -812,6 +813,7 @@ def continus_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(Day)
+    message.append(ConfigID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -820,7 +822,7 @@ def continus_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def repair_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                   PlatID=0, OpenID=0, Day=0, Day1=0):
+                   PlatID=0, OpenID=0, Day=0, Day1=0, ConfigID=0):
 
     message = ['RepairSignIn']
 
@@ -832,6 +834,7 @@ def repair_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(Day)
     message.append(Day1)
+    message.append(ConfigID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -840,7 +843,7 @@ def repair_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def sign_in_box(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                PlatID=0, OpenID=0, BoxID=0):
+                PlatID=0, OpenID=0, BoxID=0, ConfigID=0):
 
     message = ['SignInBox']
 
@@ -851,6 +854,7 @@ def sign_in_box(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(BoxID)
+    message.append(ConfigID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -916,7 +920,7 @@ def feast(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def activity(GameSvrId=0, dtEventTime=0, GameAppID=0,
-             PlatID=0, OpenID=0, ActivityID=0):
+             PlatID=0, OpenID=0, ActivityID=0, Arg=0):
 
     message = ['Activity']
 
@@ -927,6 +931,7 @@ def activity(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(ActivityID)
+    message.append(Arg)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -935,7 +940,7 @@ def activity(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def level_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
-               PlatID=0, OpenID=0, ActivityID=0):
+               PlatID=0, OpenID=0, ActivityID=0, Level=0):
 
     message = ['LevelGift']
 
@@ -946,6 +951,7 @@ def level_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(ActivityID)
+    message.append(Level)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -954,7 +960,7 @@ def level_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def share(GameSvrId=0, dtEventTime=0, GameAppID=0,
-          PlatID=0, OpenID=0, TaskID=0):
+          PlatID=0, OpenID=0, TaskID=0, ShareType=0):
 
     message = ['Share']
 
@@ -965,6 +971,7 @@ def share(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(TaskID)
+    message.append(ShareType)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1112,7 +1119,8 @@ def open_star_chest(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                PlatID=0, OpenID=0, RandomNum=0, Times=0):
+                PlatID=0, OpenID=0, RandomNum=0, Times=0,
+                ChapterID=0):
 
     message = ['StarRandom']
 
@@ -1124,6 +1132,7 @@ def star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(RandomNum)
     message.append(Times)
+    message.append(ChapterID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1132,7 +1141,7 @@ def star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def deal_star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                     PlatID=0, OpenID=0, RandomNum=0, DealType=0):
+                     PlatID=0, OpenID=0, RandomNum=0, DealType=0, ChapterID=0):
 
     message = ['DealStarRandom']
 
@@ -1144,6 +1153,7 @@ def deal_star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(RandomNum)
     message.append(DealType)
+    message.append(ChapterID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

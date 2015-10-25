@@ -103,7 +103,7 @@ class CharacterSignInComponent(Component):
     def get_sign_in_reward(self, num):
         for v in game_configs.activity_config[6]:
             if v.parameterA == num:
-                return v.reward
+                return v.reward, v.id
         logger.error("can not find reward!")
     @property
     def box_sign_in_prize(self):

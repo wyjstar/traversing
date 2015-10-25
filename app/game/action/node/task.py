@@ -80,6 +80,9 @@ def share_1823(data, player):
     args = task_pb2.ShareRequest()
     args.ParseFromString(data)
     tid = args.tid
+    share_type = 0
+    if args.share_type:
+        share_type = args.share_type
     response = task_pb2.ShareResponse()
 
     player.task.update()
@@ -101,7 +104,7 @@ def share_1823(data, player):
 
     player.task.tasks[tid] = 2
     player.task.save_data()
-    tlog_action.log('Share', player, tid)
+    tlog_action.log('Share', player, tid, share_type)
 
     response.tid = tid
     response.res.result = True

@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='task.proto',
   package='',
-  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"\x1b\n\x0cShareRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\":\n\rShareResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03tid\x18\x02 \x01(\x05\")\n\nFulfilTask\x12\x0b\n\x03tid\x18\x01 \x03(\x05\x12\x0e\n\x06lively\x18\x02 \x01(\x05\"<\n\x12\x43onditionsResponse\x12&\n\x0e\x63ondition_info\x18\x01 \x03(\x0b\x32\x0e.ConditionInfo\")\n\rConditionInfo\x12\x0b\n\x03\x63id\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05')
+  serialized_pb='\n\ntask.proto\x1a\x0c\x63ommon.proto\"F\n\x04Task\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12!\n\tcondition\x18\x02 \x03(\x0b\x32\x0e.TaskCondition\x12\x0e\n\x06status\x18\x03 \x02(\x05\"E\n\rTaskCondition\x12\x14\n\x0c\x63ondition_no\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\"\x1f\n\x0fTaskInfoRequest\x12\x0c\n\x04sort\x18\x01 \x02(\x05\"(\n\x10TaskInfoResponse\x12\x14\n\x05tasks\x18\x01 \x03(\x0b\x32\x05.Task\" \n\x11TaskRewardRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\"e\n\x12TaskRewardResponse\x12\x0b\n\x03tid\x18\x01 \x01(\x05\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"/\n\x0cShareRequest\x12\x0b\n\x03tid\x18\x01 \x02(\x05\x12\x12\n\nshare_type\x18\x02 \x01(\x05\":\n\rShareResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0b\n\x03tid\x18\x02 \x01(\x05\")\n\nFulfilTask\x12\x0b\n\x03tid\x18\x01 \x03(\x05\x12\x0e\n\x06lively\x18\x02 \x01(\x05\"<\n\x12\x43onditionsResponse\x12&\n\x0e\x63ondition_info\x18\x01 \x03(\x0b\x32\x0e.ConditionInfo\")\n\rConditionInfo\x12\x0b\n\x03\x63id\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05')
 
 
 
@@ -243,6 +243,13 @@ _SHAREREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='share_type', full_name='ShareRequest.share_type', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -253,7 +260,7 @@ _SHAREREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=383,
-  serialized_end=410,
+  serialized_end=430,
 )
 
 
@@ -287,8 +294,8 @@ _SHARERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=412,
-  serialized_end=470,
+  serialized_start=432,
+  serialized_end=490,
 )
 
 
@@ -322,8 +329,8 @@ _FULFILTASK = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=472,
-  serialized_end=513,
+  serialized_start=492,
+  serialized_end=533,
 )
 
 
@@ -350,8 +357,8 @@ _CONDITIONSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=515,
-  serialized_end=575,
+  serialized_start=535,
+  serialized_end=595,
 )
 
 
@@ -385,8 +392,8 @@ _CONDITIONINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=577,
-  serialized_end=618,
+  serialized_start=597,
+  serialized_end=638,
 )
 
 _TASK.fields_by_name['condition'].message_type = _TASKCONDITION

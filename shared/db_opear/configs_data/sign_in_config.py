@@ -22,5 +22,6 @@ class SignInConfig(object):
             self._items[mouth][day] = {}
             self._items[mouth][day]["reward"] = parse(row.get("reward"))
             self._items[mouth][day]["vipDouble"] = row.get("vipDouble")
+            self._items[mouth][day]["id"] = row.get("id")
 
         return self._items
