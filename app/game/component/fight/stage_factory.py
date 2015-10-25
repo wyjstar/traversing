@@ -13,18 +13,20 @@ from app.game.component.fight.stage_logic.world_boss_stage import WorldBossStage
 
 def get_stage_by_stage_type(stage_type, stage_id, player):
     """根据关卡类型返回对应的关卡对象"""
-    if stage_type == 1: # 普通关卡
+    if stage_type == 1:  # 普通关卡
         return StageLogic(player, stage_id)
-    elif stage_type == 6: # 精英关卡
+    elif stage_type == 14:  # 普通关卡
+        return StageLogic(player, stage_id)
+    elif stage_type == 6:  # 精英关卡
         return EliteStageLogic(player, stage_id)
-    elif stage_type == 4: # coin 活动关卡
+    elif stage_type == 4:  # coin 活动关卡
         return ActStageLogic(player, stage_id, 4)
-    elif stage_type == 5: # exp 活动关卡
+    elif stage_type == 5:  # exp 活动关卡
         return ActStageLogic(player, stage_id, 5)
-    elif stage_type == 9: # 游历
+    elif stage_type == 9:  # 游历
         return TravelStageLogic(player, stage_id)
-    elif stage_type == 8: # 秘境
+    elif stage_type == 8:  # 秘境
         return BaseStageLogic(player, stage_id)
-    elif stage_type == 7: # 世界boss
+    elif stage_type == 7:  # 世界boss
         return WorldBossStageLogic(player, stage_id)
     assert False, "stage type %s not defined." % stage_type

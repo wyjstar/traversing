@@ -62,7 +62,7 @@ def sign_in_1401(pro_data, player):
     if not game_configs.sign_in_config.get(sign_round) or not game_configs.sign_in_config.get(sign_round).get(day):
         return
     sign_in_info = game_configs.sign_in_config.get(sign_round).get(day)
-    #vip双倍
+    # vip双倍
     print("vip================", player.base_info.vip_level, sign_in_info.get("vipDouble"))
     if player.base_info.vip_level > 0 and \
             sign_in_info.get("vipDouble") and \
@@ -77,8 +77,7 @@ def sign_in_1401(pro_data, player):
     else:
         return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
         get_return(player, return_data, response.gain)
-    print(response.gain)
-    tlog_action.log('SignIn', player, day, is_double)
+    tlog_action.log('SignIn', player, day, is_double, sign_in_info.get('id'))
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -105,7 +104,7 @@ def continus_sign_in_1402(pro_data, player):
     player.sign_in_component.continuous_sign_in_prize.append(days)
     player.sign_in_component.save_data()
 
-    reward = player.sign_in_component.get_sign_in_reward(days)
+    reward, config_id = player.sign_in_component.get_sign_in_reward(days)
     if not reward:
         response.res.result = False
         response.res.result_no = 1404
@@ -113,7 +112,7 @@ def continus_sign_in_1402(pro_data, player):
     return_data = gain(player, reward, const.CONTINUS_SIGN)
     get_return(player, return_data, response.gain)
 
-    tlog_action.log('ContinusSignIn', player, days)
+    tlog_action.log('ContinusSignIn', player, days, config_id)
 
     response.res.result = True
     logger.debug(response)
@@ -182,11 +181,9 @@ def repair_sign_in_1403(pro_data, player):
 
         player.sign_in_component.repair_sign_in_times += 1
         player.sign_in_component.save_data()
-        tlog_action.log('RepairSignIn', player, day, len(player.sign_in_component.sign_in_days))
+        tlog_action.log('RepairSignIn', player, day, len(player.sign_in_component.sign_in_days), sign_in_info.get("id"))
     player.pay.pay(need_gold, const.REPAIR_SIGN, func)
     response.res.result = True
-    print(response.gain)
-    print("===========3")
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -218,7 +215,7 @@ def sign_in_box_1404(pro_data, player):
 
     player.sign_in_component.box_sign_in_prize.append(_id)
     player.sign_in_component.save_data()
-    tlog_action.log('SignInBox', player, _id)
+    tlog_action.log('SignInBox', player, _id, activity_info.id)
 
     response.res.result = True
     logger.debug(response)
