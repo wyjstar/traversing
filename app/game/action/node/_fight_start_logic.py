@@ -201,6 +201,8 @@ def assemble(unit_add, unit):
     unit_add.origin_no = unit.origin_no
     unit_add.is_break = unit.is_break
     unit_add.origin_no = unit.origin_no
+    unit_add.awake_level = unit.awake_level
+    unit_add.power = int(unit.power)
 
 def get_seeds():
     seed1 = randint(1, 100)

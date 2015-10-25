@@ -37,6 +37,7 @@ class BattleUnit(object):
         self._is_awake = False     # 是否觉醒
         self._origin_no = 0        # 突破或者觉醒武将的原始no
         self._power = 0
+        self._awake_level = 0 # 觉醒等级
 
         self._buff_manager = BuffManager(self)
 
@@ -269,6 +270,14 @@ class BattleUnit(object):
         self._power = value
 
     @property
+    def awake_level(self):
+        return self._awake_level
+
+    @awake_level.setter
+    def awake_level(self, value):
+        self._awake_level = value
+
+    @property
     def hp_percent(self):
         """hp 百分比"""
         return self._hp / self._hp_max
@@ -290,7 +299,9 @@ class BattleUnit(object):
                     origin_no=0,
                     is_break=False,
                     position=self._position,
-                    power=self._power)
+                    power=self._power,
+                    awake_level=self._awake_level
+                    )
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -321,7 +332,7 @@ class BattleUnit(object):
 def do_assemble(slot_no, no, quality, break_skills, hp,
                 atk, physical_def, magic_def, hit, dodge, cri, cri_coeff, cri_ded_coeff, block, ductility, position,
                 level, break_level,
-                is_boss=False, is_hero=True, is_break_hero=False, unit_name="", power=0):
+                is_boss=False, is_hero=True, is_break_hero=False, unit_name="", power=0, awake_level=0):
     """组装战斗单位
     @param no: 编号
     @param quality: 品质
@@ -373,6 +384,7 @@ def do_assemble(slot_no, no, quality, break_skills, hp,
 
     battle_unit.skill.break_skill_ids = break_skills
     battle_unit.power = power
+    battle_unit.awake_level = awake_level
     return battle_unit
 
 

@@ -89,8 +89,7 @@ class LineUpSlotComponent(Component):
             for i in range(1, 7):
                 self.change_equipment(i, '0')
         self._hero_slot.hero_no = hero_no
-        if self.slot_no == 1:
-            self.update_lord_info()
+        self.update_lord_info()
 
     def change_equipment(self, no, equipment_id):
         """更换装备
@@ -288,7 +287,7 @@ class LineUpSlotComponent(Component):
                                   hp, atk, physical_def, magic_def, hit,
                                   dodge, cri, cri_coeff, cri_ded_coeff,
                                   block, ductility, position, hero.level,
-                                  hero.break_level, is_boss, power=power)
+                                  hero.break_level, is_boss, power=power, awake_level=hero.awake_level)
 
         return battlt_unit
 

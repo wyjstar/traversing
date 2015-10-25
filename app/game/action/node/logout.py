@@ -54,5 +54,6 @@ def net_conn_lost_remote(player):
 
     # TODO 是否需要保存数据
     player.line_up_component.save_data()
+    player.line_up_component.line_up_slots[1].update_lord_info()
     PlayersManager().drop_player(player)
     return True
