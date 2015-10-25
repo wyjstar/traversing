@@ -33,6 +33,8 @@ message BattleUnit{
 	optional bool is_awake = 29;
 	optional int32 origin_no = 30;
 	optional int64 hp_max = 31;              // 战斗单位血量Max
+	optional int32 awake_level = 32;         // 觉醒等级
+	optional float power = 33;               // 战斗力
 }
 
 message BattleUnitGrop{

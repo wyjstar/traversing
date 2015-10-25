@@ -247,7 +247,7 @@ const.OPEN_FEATURE_TASK = 2 # 任务系统
 const.OPEN_FEATURE_WORLD_BOSS = 3 # 世界boss
 const.OPEN_FEATURE_GGZJ = 4 # 过关斩将
 
-const.KEEP_USER_AFTER_DROP = 60*5 # 玩家掉线后保持玩家对象的时间
+const.KEEP_USER_AFTER_DROP = 60 # 玩家掉线后保持玩家对象的时间
 
 const.NEXT_DAY_FEATURES_BUTTON = 0 # 第二天功能开启按钮
 const.FIRST_RECHARGE_BUTTON = 1 # 首次充值按钮

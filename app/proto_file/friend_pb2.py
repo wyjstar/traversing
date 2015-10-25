@@ -9,12 +9,13 @@ from google.protobuf import descriptor_pb2
 
 
 import common_pb2
+import stage_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='friend.proto',
   package='',
-  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"3\n\x12\x46indFriendResponse\x12\x1d\n\x05infos\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo\"\x19\n\x17GetPlayerFriendsRequest\"\x8c\x03\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x02:\x04\x31\x30\x31\x30\x12\n\n\x02hp\x18\x06 \x01(\x02\x12\x0b\n\x03\x61tk\x18\x07 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x08 \x01(\x02\x12\x11\n\tmagic_def\x18\t \x01(\x02\x12\x14\n\tlast_time\x18\n \x01(\x05:\x01\x30\x12\x12\n\nbuddy_head\x18\x0b \x01(\x05\x12\x0f\n\x07\x63urrent\x18\x0c \x01(\x05\x12\x0e\n\x06target\x18\r \x01(\x05\x12\x0c\n\x04stat\x18\x0e \x01(\x05\x12\r\n\x05level\x18\x0f \x01(\x05\x12\x11\n\x06\x62_rank\x18\x10 \x01(\x05:\x01\x31\x12\x13\n\x0b\x62uddy_level\x18\x11 \x01(\x05\x12\x13\n\x0b\x62uddy_power\x18\x12 \x01(\x05\x12\x11\n\tvip_level\x18\x13 \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x14 \x01(\x05\x12\x17\n\x0f\x66ight_last_time\x18\x15 \x01(\x05\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\"\x1c\n\rDrawRewardReq\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\"`\n\rDrawRewardRsp\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x0e\n\x0cRecommendReq\"/\n\x0cRecommendRes\x12\x1f\n\x07rfriend\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo')
+  serialized_pb='\n\x0c\x66riend.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"\"\n\x0c\x46riendCommon\x12\x12\n\ntarget_ids\x18\x01 \x03(\x05\"#\n\x11\x41\x64\x64\x46riendResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\"+\n\x11\x46indFriendRequest\x12\x16\n\x0eid_or_nickname\x18\x01 \x01(\x0c\"3\n\x12\x46indFriendResponse\x12\x1d\n\x05infos\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo\"\x19\n\x17GetPlayerFriendsRequest\"\xae\x02\n\rCharacterInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\x12\x0f\n\x04gift\x18\x04 \x01(\x05:\x01\x30\x12\x13\n\x05power\x18\x05 \x01(\x02:\x04\x31\x30\x31\x30\x12\x14\n\tlast_time\x18\n \x01(\x05:\x01\x30\x12\x0f\n\x07\x63urrent\x18\x0c \x01(\x05\x12\x0e\n\x06target\x18\r \x01(\x05\x12\x0c\n\x04stat\x18\x0e \x01(\x05\x12\r\n\x05level\x18\x0f \x01(\x05\x12\x11\n\x06\x62_rank\x18\x10 \x01(\x05:\x01\x31\x12\x11\n\tvip_level\x18\x13 \x01(\x05\x12\x13\n\x0b\x66ight_times\x18\x14 \x01(\x05\x12\x17\n\x0f\x66ight_last_time\x18\x15 \x01(\x05\x12 \n\x0b\x66riend_info\x18\x16 \x01(\x0b\x32\x0b.BattleUnit\"\xae\x01\n\x18GetPlayerFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12\x1f\n\x07\x66riends\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\x12!\n\tblacklist\x18\x04 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x0e\x61pplicant_list\x18\x05 \x03(\x0b\x32\x0e.CharacterInfo\"?\n\x18\x46riendPrivateChatRequest\x12\x12\n\ntarget_uid\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"h\n\x1bGetRecommendFriendsResponse\x12\x14\n\x0copen_receive\x18\x01 \x01(\x05\x12\x10\n\x08page_num\x18\x02 \x01(\x05\x12!\n\trecommend\x18\x03 \x03(\x0b\x32\x0e.CharacterInfo\"\x1c\n\rDrawRewardReq\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\"`\n\rDrawRewardRsp\x12\x0b\n\x03\x66id\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x0e\n\x0cRecommendReq\"/\n\x0cRecommendRes\x12\x1f\n\x07rfriend\x18\x01 \x03(\x0b\x32\x0e.CharacterInfo')
 
 
 
@@ -42,8 +43,8 @@ _FRIENDCOMMON = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=30,
-  serialized_end=64,
+  serialized_start=43,
+  serialized_end=77,
 )
 
 
@@ -70,8 +71,8 @@ _ADDFRIENDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=66,
-  serialized_end=101,
+  serialized_start=79,
+  serialized_end=114,
 )
 
 
@@ -98,8 +99,8 @@ _FINDFRIENDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=103,
-  serialized_end=146,
+  serialized_start=116,
+  serialized_end=159,
 )
 
 
@@ -126,8 +127,8 @@ _FINDFRIENDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=148,
-  serialized_end=199,
+  serialized_start=161,
+  serialized_end=212,
 )
 
 
@@ -147,8 +148,8 @@ _GETPLAYERFRIENDSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=201,
-  serialized_end=226,
+  serialized_start=214,
+  serialized_end=239,
 )
 
 
@@ -195,114 +196,72 @@ _CHARACTERINFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hp', full_name='CharacterInfo.hp', index=5,
-      number=6, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='atk', full_name='CharacterInfo.atk', index=6,
-      number=7, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='physical_def', full_name='CharacterInfo.physical_def', index=7,
-      number=8, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='magic_def', full_name='CharacterInfo.magic_def', index=8,
-      number=9, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='last_time', full_name='CharacterInfo.last_time', index=9,
+      name='last_time', full_name='CharacterInfo.last_time', index=5,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=True, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='buddy_head', full_name='CharacterInfo.buddy_head', index=10,
-      number=11, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='current', full_name='CharacterInfo.current', index=11,
+      name='current', full_name='CharacterInfo.current', index=6,
       number=12, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='target', full_name='CharacterInfo.target', index=12,
+      name='target', full_name='CharacterInfo.target', index=7,
       number=13, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='stat', full_name='CharacterInfo.stat', index=13,
+      name='stat', full_name='CharacterInfo.stat', index=8,
       number=14, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='level', full_name='CharacterInfo.level', index=14,
+      name='level', full_name='CharacterInfo.level', index=9,
       number=15, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='b_rank', full_name='CharacterInfo.b_rank', index=15,
+      name='b_rank', full_name='CharacterInfo.b_rank', index=10,
       number=16, type=5, cpp_type=1, label=1,
       has_default_value=True, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='buddy_level', full_name='CharacterInfo.buddy_level', index=16,
-      number=17, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='buddy_power', full_name='CharacterInfo.buddy_power', index=17,
-      number=18, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='vip_level', full_name='CharacterInfo.vip_level', index=18,
+      name='vip_level', full_name='CharacterInfo.vip_level', index=11,
       number=19, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='fight_times', full_name='CharacterInfo.fight_times', index=19,
+      name='fight_times', full_name='CharacterInfo.fight_times', index=12,
       number=20, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='fight_last_time', full_name='CharacterInfo.fight_last_time', index=20,
+      name='fight_last_time', full_name='CharacterInfo.fight_last_time', index=13,
       number=21, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='friend_info', full_name='CharacterInfo.friend_info', index=14,
+      number=22, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -315,8 +274,8 @@ _CHARACTERINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=229,
-  serialized_end=625,
+  serialized_start=242,
+  serialized_end=544,
 )
 
 
@@ -371,8 +330,8 @@ _GETPLAYERFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=628,
-  serialized_end=802,
+  serialized_start=547,
+  serialized_end=721,
 )
 
 
@@ -406,8 +365,8 @@ _FRIENDPRIVATECHATREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=804,
-  serialized_end=867,
+  serialized_start=723,
+  serialized_end=786,
 )
 
 
@@ -448,8 +407,8 @@ _GETRECOMMENDFRIENDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=869,
-  serialized_end=973,
+  serialized_start=788,
+  serialized_end=892,
 )
 
 
@@ -476,8 +435,8 @@ _DRAWREWARDREQ = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=975,
-  serialized_end=1003,
+  serialized_start=894,
+  serialized_end=922,
 )
 
 
@@ -518,8 +477,8 @@ _DRAWREWARDRSP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1005,
-  serialized_end=1101,
+  serialized_start=924,
+  serialized_end=1020,
 )
 
 
@@ -539,8 +498,8 @@ _RECOMMENDREQ = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1103,
-  serialized_end=1117,
+  serialized_start=1022,
+  serialized_end=1036,
 )
 
 
@@ -567,11 +526,12 @@ _RECOMMENDRES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1119,
-  serialized_end=1166,
+  serialized_start=1038,
+  serialized_end=1085,
 )
 
 _FINDFRIENDRESPONSE.fields_by_name['infos'].message_type = _CHARACTERINFO
+_CHARACTERINFO.fields_by_name['friend_info'].message_type = stage_pb2._BATTLEUNIT
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['friends'].message_type = _CHARACTERINFO
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['blacklist'].message_type = _CHARACTERINFO
 _GETPLAYERFRIENDSRESPONSE.fields_by_name['applicant_list'].message_type = _CHARACTERINFO
