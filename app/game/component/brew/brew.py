@@ -95,7 +95,7 @@ class CharacterBrewComponent(Component):
         critical_type = critical[brew_type]
 
         def func():
-            return_data = consume(self.owner, _consume)
+            return_data = consume(self.owner, _consume, const.DREW)
             get_return(self.owner, return_data, response.consume)
 
             self._brew_step += 1
@@ -117,7 +117,7 @@ class CharacterBrewComponent(Component):
                         critical_num)
 
             self.save_data()
-        self.owner.pay.pay(need_gold, func)
+        self.owner.pay.pay(need_gold, const.DREW, func)
         return True
 
     def taken_brew(self):
@@ -147,8 +147,8 @@ class CharacterBrewComponent(Component):
             self._nectar_cur = game_configs.base_config.get('cookingWineOutput')
             self._brew_step = 1
 
-    def consume(self, value):
-        return self.owner.finance.consume(const.NECTAR, value)
+    def consume(self, value, reason):
+        return self.owner.finance.consume(const.NECTAR, value, reason)
 
     @property
     def nectar(self):

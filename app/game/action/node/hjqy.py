@@ -155,7 +155,7 @@ def battle_2103(pro_data, player):
     logger.debug("============battle over")
 
     # 消耗讨伐令
-    player.finance.consume(const.HJQYFIGHTTOKEN, need_hjqy_fight_token)
+    player.finance.consume(const.HJQYFIGHTTOKEN, need_hjqy_fight_token, const.HJQY_BATTLE)
 
     # 功勋奖励
     hjqyMeritoriousServiceOpenTime = game_configs.base_config.get("hjqyMeritoriousServiceOpenTime")
@@ -164,7 +164,7 @@ def battle_2103(pro_data, player):
     logger.debug("========= %s %s ========"%(is_in_period(hjqyMeritoriousServiceOpenTime), hjqyMeritoriousServiceOpenTime ))
     if is_in_period(hjqyMeritoriousServiceOpenTime): # 增加功勋的活动
         meritorious_service = meritorious_service * hjqyMeritoriousServiceRate
-    player.finance.add(const.HJQYCOIN, meritorious_service)
+    player.finance.add(const.HJQYCOIN, meritorious_service, reason=const.HJQY_BATTLE)
     player.finance.save_data()
 
     response.fight_result = fight_result

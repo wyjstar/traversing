@@ -138,7 +138,7 @@ def draw_1813(data, player):
         player.limit_hero.save_data()
         deal_response(player, response)
 
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.LIMIT_HERO, func)
 
     response.res.result = True
     # logger.debug(response)

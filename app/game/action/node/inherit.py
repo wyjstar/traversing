@@ -8,6 +8,7 @@ from app.proto_file import inherit_pb2, common_pb2
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -53,7 +54,7 @@ def inherit_refine_151(pro_data, player):
         target.save_data()
         origin.save_data()
     gold = game_configs.base_config.get("heroInheritPrice")
-    player.pay.pay(gold, func)
+    player.pay.pay(gold, const.INHERIT_REFINE, func)
 
     player.finance.save_data()
     response.result = True
@@ -112,7 +113,7 @@ def inherit_equipment_152(pro_data, player):
         print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
 
     gold = game_configs.base_config.get("equInheritPrice")
-    player.pay.pay(gold, func)
+    player.pay.pay(gold, const.INHERIT_EQUIPMENT, func)
     response.result = True
     tlog_action.log('Inherit', player, 2, origin.base_info.id,
                     origin.base_info.equipment_no,
@@ -158,7 +159,7 @@ def inherit_upara_153(pro_data, player):
         player.line_up_component.save_data()
 
     need_gold = game_configs.base_config.get("warriorsInheritPrice")
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.INHERIT_UPARA, func)
     response.result = True
     tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id)
     return response.SerializeToString()

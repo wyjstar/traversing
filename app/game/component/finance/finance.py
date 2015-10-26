@@ -105,7 +105,7 @@ class CharacterFinanceComponent(Component):
             return False
         return True
 
-    def consume(self, fType, num):
+    def consume(self, fType, num, reason):
         if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
@@ -115,35 +115,54 @@ class CharacterFinanceComponent(Component):
             return False
         if fType != const.GOLD:
             self._finances[fType] -= int(num)
+            if reason:
+                tlog_action.log('ItemFlow', player, const.REDUCE, const.RESOURCE, num,
+                                fType, 0, reason, after_num, 0)
         return True
 
-    def add(self, fType, num):
+    def add(self, fType, num, reason=0):
         if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
         logger.debug("fType %s num %s" % (fType, num))
         if fType == const.GOLD:
-            self.add_gold(num)
+            self.add_gold(num, reason)
         else:
             self._finances[fType] += int(num)
+            if reason:
+                tlog_action.log('ItemFlow', player, const.ADD, const.RESOURCE, num,
+                                fType, 0, reason, after_num, 0)
         return True
 
-    def add_coin(self, num):
+    def add_coin(self, num, reason):
         self._finances[const.COIN] += num
+        tlog_action.log('ItemFlow', player, const.ADD, const.RESOURCE, num,
+                        1, 0, reason, self._finances[const.COIN], 0)
+        tlog_action.log('MoneyFlow', self.owner, self._finances[const.COIN],
+                        num, reason, const.ADD, 1)
 
-    def consume_coin(self, num):
+    def consume_coin(self, num, reason):
         if num < self._finances[const.COIN]:
             return False
         self._finances[const.COIN] -= num
+        tlog_action.log('ItemFlow', player, const.REDUCE, const.RESOURCE, num,
+                        1, 0, reason, self._finances[const.COIN], 0)
+        tlog_action.log('MoneyFlow', self.owner, self._finances[const.COIN],
+                        num, reason, const.REDUCE, 1)
         return True
 
-    def add_gold(self, num):
+    def add_gold(self, num, reason):
         if self._owner.pay.REMOTE_DEPLOYED:
             self._owner.pay.present(num)
         else:
             self._finances[const.GOLD] += num
+        if reason:
+            tlog_action.log('ItemFlow', player, const.ADD, const.RESOURCE, num,
+                            2, 0, reason, self._finances[const.CONSUME_GOLD], 0)
+            tlog_action.log('MoneyFlow', self.owner, self._finances[const.CONSUME_GOLD],
+                            num, reason, const.ADD, 2)
 
-    def consume_gold(self, num):
+    def consume_gold(self, num, reason):
         """
         消耗元宝
         """
@@ -151,6 +170,11 @@ class CharacterFinanceComponent(Component):
             return False
         self._finances[const.CONSUME_GOLD] += num
         self._finances[const.GOLD] -= num
+        if reason:
+            tlog_action.log('ItemFlow', player, const.REDUCE, const.RESOURCE, num,
+                            2, 0, reason, self._finances[const.CONSUME_GOLD], 0)
+            tlog_action.log('MoneyFlow', self.owner, self._finances[const.COIN],
+                            num, reason, const.REDUCE, 2)
         return True
 
     def add_hero_soul(self, num):

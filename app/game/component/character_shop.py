@@ -14,6 +14,7 @@ from shared.utils.date_util import is_past_time
 from app.game.core.drop_bag import BigBag
 from app.game.core.item_group_helper import do_get_draw_drop_bag
 from app.game.core.item_group_helper import is_afford, consume, get_consume_gold_num, get_return
+from shared.utils.const import const
 
 
 class CharacterShopComponent(Component):
@@ -137,7 +138,7 @@ class CharacterShopComponent(Component):
             if refresh_items and has_refresh_item:
                 price = 0
                 # 如果有刷新令，则消耗刷新令
-                return_data = consume(self._owner, refresh_items, shop=None, luck_config=None, multiple=1)
+                return_data = consume(self._owner, refresh_items, const.SHOP_REFRESH, shop=None, luck_config=None, multiple=1)
                 get_return(self._owner, return_data, response.consume)
             elif not has_refresh_item or not refresh_items:
                 price = get_consume_gold_num(refreshprice)
@@ -151,7 +152,7 @@ class CharacterShopComponent(Component):
                             xs = act_conf.parameterC[0]
                             price = int(price*xs)
                             break
-                return_data = consume(self._owner, refreshprice, shop=None, luck_config=None, multiple=xs)
+                return_data = consume(self._owner, refreshprice, const.SHOP_REFRESH, shop=None, luck_config=None, multiple=xs)
                 get_return(self._owner, return_data, response.consume)
 
         def func():
@@ -165,7 +166,7 @@ class CharacterShopComponent(Component):
                                                                 self._shop_data[shop_type]['luck_num'])
             self.save_data()
 
-        result = self._owner.pay.pay(price, func)
+        result = self._owner.pay.pay(price, const.SHOP_REFRESH, func)
         return result
 
     def auto_refresh_items(self, type_shop):

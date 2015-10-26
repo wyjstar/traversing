@@ -164,14 +164,15 @@ def reset_1242(data, player):
                 need_gold = item_group_helper.get_consume_gold_num([price])
                 def func():
                     consume_return_data = item_group_helper.consume(player,
-                                                                    [price])  # 消耗
+                                                                    [price],
+                                                                    const.MINE_RESET)  # 消耗
                     item_group_helper.get_return(player,
                                                 consume_return_data,
                                                 response.consume)
                     player.mine.reset_map()
                     mine_status(player, response.mine)
                     response.res.result = True
-                player.pay.pay(need_gold, func)
+                player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
     return response.SerializePartialToString()
 
@@ -452,7 +453,7 @@ def exchange_1248(data, player):
     need_gold = item_group_helper.get_consume_gold_num(shop_item.discountPrice)
 
     def func():
-        consume_return_data = item_group_helper.consume(player, shop_item.discountPrice)  # 消耗
+        consume_return_data = item_group_helper.consume(player, shop_item.discountPrice, const.MINE_EXCHANGE)  # 消耗
         return_data = item_group_helper.gain(player, shop_item.gain, const.MINE_EXCHANGE)  # 获取
         # extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
         item_group_helper.get_return(player, consume_return_data, response.consume)
@@ -461,7 +462,7 @@ def exchange_1248(data, player):
         player.mine.buy_shop(request.position, request.shop_id)
         player.mine.save_data()
 
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.MINE_EXCHANGE, func)
 
 
 
@@ -532,10 +533,10 @@ def acc_mine_1250(data, player):
     # print 'price', price
     need_gold = item_group_helper.get_consume_gold_num([price])
     def func():
-        consume_return_data = item_group_helper.consume(player, [price])  # 消耗
+        consume_return_data = item_group_helper.consume(player, [price], const.MINE_ACC)  # 消耗
         item_group_helper.get_return(player, consume_return_data, response.consume)
 
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.MINE_ACC, func)
     last_time = player.mine.acc_mine()
     player.mine.save_data()
 

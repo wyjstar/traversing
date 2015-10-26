@@ -114,7 +114,7 @@ def create_guild_801(data, player):
         remote_gate.login_guild_chat_remote(player.dynamic_id,
                                             player.guild.g_id)
     need_gold = game_configs.base_config.get('create_money')
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.GUILD_CREATE, func)
 
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
@@ -706,7 +706,7 @@ def bless_809(data, player):
     if worship_info[0] == 1:  # 1金币  2元宝
         player.finance.coin -= worship_info[1]
     else:
-        player.finance.consume_gold(worship_info[1])
+        player.finance.consume_gold(worship_info[1], const.GUILD_BLESS)
 
     # 逻辑
     player.guild.bless[0] += 1

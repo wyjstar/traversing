@@ -166,7 +166,7 @@ def repair_sign_in_1403(pro_data, player):
 
         player.sign_in_component.repair_sign_in_times += 1
         player.sign_in_component.save_data()
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.REPAIR_SIGN, func)
     response.res.result = True
     print("===========3")
     return response.SerializePartialToString()

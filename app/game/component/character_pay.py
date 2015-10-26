@@ -150,7 +150,7 @@ class CharacterPay(Component):
         if num == 0:
             return 0, 0
         if not self.REMOTE_DEPLOYED:
-            self._owner.finance.consume_gold(num)
+            self._owner.finance.consume_gold(num, 0)
             self._owner.finance.save_data()
             return 0, 0
         result = {}
@@ -172,7 +172,7 @@ class CharacterPay(Component):
         balance = result['balance']
         return billno, balance
 
-    def pay(self, num, func=None, *args, **kwargs):
+    def pay(self, num, reason, func=None, *args, **kwargs):
         """
         func: 发货方法
         args, kwargs: 发货方法的参数
@@ -191,6 +191,8 @@ class CharacterPay(Component):
             self._cancel_pay_m(num, billno)
             return False
         self.get_balance()
+        tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
+                        2, 0, reason, self.owner.finance.gold, 0)
         return True
 
     def _cancel_pay_m(self, num, billno):
@@ -201,7 +203,7 @@ class CharacterPay(Component):
         if num == 0:
             return True
         if not self.REMOTE_DEPLOYED:
-            self._owner.finance.add_gold(num)
+            self._owner.finance.add_gold(num, 0)
             self._owner.finance.save_data()
             return True
         try:

@@ -180,7 +180,7 @@ def stage_start_903(pro_data, player):
             friend_fight_times[fid] += 1
             player.friends.fight_last_time = int(time.time())
             player.line_up_component.save_data()
-        player.pay.pay(need_gold, func)
+        player.pay.pay(need_gold, const.STAGE, func)
 
 
     player.fight_cache_component.red_best_skill_id = red_best_skill_id
@@ -473,7 +473,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
         # hook task
         hook_task(player, CONDITIONId.ANY_STAGE, times)
         logger.debug("sweep time %s %s" % (times, sweep_item))
-        return_data = consume(player, sweep_item, multiple=times)
+        return_data = consume(player, sweep_item, const.STAGE_SWEEP, multiple=times)
         get_return(player, return_data, response.consume)
 
         player.stage_component.get_stage(stage_id).attacks += times
@@ -483,8 +483,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
         player.base_info.save_data()
         player.finance.save_data()
 
-    # player.pay.pay(need_gold, func)
-    func()
+    player.pay.pay(need_gold, const.STAGE_SWEEP, func)
 
     #触发黄巾起义
     response.hjqy_stage_id = trigger_hjqy(player, result, times)
@@ -529,7 +528,7 @@ def reset_stage_908(pro_data, player):
         response.res.result_no = 102
         return response.SerializePartialToString()
 
-    player.finance.consume_gold(need_gold)
+    player.finance.consume_gold(need_gold, const.RESET_STAGE)
 
     if is_today and times_enough:
         stage_obj.reset[0] += 1
@@ -624,9 +623,9 @@ def get_award(pro_data, player):
                     response.res.result_no = 862
                     return response.SerializePartialToString()
                 player.stage_component.save_data()
-                consume(player, star_price)  # 消耗
+                consume(player, star_price, const.STAGE_SWEEP)  # 消耗
                 need_gold = get_consume_gold_num(star_price)
-                player.finance.consume_gold(need_gold)
+                player.finance.consume_gold(need_gold, const.STAGE_SWEEP)
                 player.finance.save_data()
 
     response.res.result = True

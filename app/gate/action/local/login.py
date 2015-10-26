@@ -57,7 +57,6 @@ def character_login_4(key, dynamic_id, request_proto):
         response.res.result = False
         return response.SerializePartialToString()
 
-
     # argument.plat_id = 0
     # argument.client_version = '0.0.0.1'
     # argument.system_software = '1.1'

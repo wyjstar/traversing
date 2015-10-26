@@ -57,7 +57,7 @@ def shop_oper(pro_data, player, reason):
     # logger.debug("---------")
 
     if shop_id == 10001 and player.shop.first_coin_draw:
-        is_consume(player, shop_item)
+        is_consume(player, shop_item, reason)
 
         card_draw = game_configs.base_config.get("CoinCardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
@@ -72,7 +72,7 @@ def shop_oper(pro_data, player, reason):
         return response.SerializeToString()
 
     if shop_id == 50001 and player.shop.first_gold_draw:
-        is_consume(player, shop_item)
+        is_consume(player, shop_item, reason)
 
         card_draw = game_configs.base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
@@ -86,7 +86,7 @@ def shop_oper(pro_data, player, reason):
         response.res.result = True
         return response.SerializeToString()
 
-    _is_consume_result = is_consume(player, shop_item)
+    _is_consume_result = is_consume(player, shop_item, reason)
     price = shop_item.consume
     if _is_consume_result:
         result = is_afford(player, price)  # 校验
@@ -123,7 +123,7 @@ def shop_oper(pro_data, player, reason):
         # consume_data = []
         if _is_consume_result:
             return_data = consume(player, price,
-                                  player_type_shop, shop_type_item)
+                                  player_type_shop, reason, shop_type_item)
             get_return(player, return_data, response.consume)
             # consume_data = return_data
         # logger.debug("hero-draw2")
@@ -176,7 +176,7 @@ def shop_oper(pro_data, player, reason):
 
         send_tlog(player, shop_item)
 
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, reason, func)
 
     response.res.result = True
     logger.debug("response gain %s" % response.gain)
@@ -239,7 +239,7 @@ def shop_equipment_oper(pro_data, player):
                 return response.SerializePartialToString()
 
         for i in range(shop_num):
-            return_data = consume(player, shop_item.consume)  # 消耗
+            return_data = consume(player, shop_item.consume, const.SHOP_DRAW_EQUIPMENT)  # 消耗
             get_return(player, return_data, response.consume)
 
         for i in range(shop_num):
@@ -354,6 +354,7 @@ def shop_buy_505(pro_data, player):
 
         def func():
             consume_return_data = consume(player, price,
+                                          get_reason(shop_item.get('type')),
                                           multiple=item_count,
                                           shop=shop,
                                           luck_config=shop_type_item)  # 消耗
@@ -372,8 +373,7 @@ def shop_buy_505(pro_data, player):
                 player.shop.auto_refresh_items(shop_item.get('type'))
                 response.is_all_buy = True
 
-        player.pay.pay(need_gold, func)
-
+        player.pay.pay(need_gold, get_reason(shop_item.get('type')), func)
 
     player.shop.save_data()
     common_response.result = True

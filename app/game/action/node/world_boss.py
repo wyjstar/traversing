@@ -178,7 +178,7 @@ def encourage_heros_1703(data, player):
             return response.SerializePartialToString()
         def func():
             boss.encourage_gold_num += 1
-        player.pay.pay(need_gold, func)
+        player.pay.pay(need_gold, const.ENCOURAGE_HEROS, func)
 
     player.world_boss.save_data()
     response.result = True
@@ -223,7 +223,7 @@ def pvb_reborn_1704(data, player):
             boss.last_fight_time = 0
             boss.gold_reborn_times += 1
             player.world_boss.save_data()
-        player.pay.pay(need_gold, func)
+        player.pay.pay(need_gold, const.PVB_REBORN, func)
     response.result = True
     print response
     return response.SerializePartialToString()

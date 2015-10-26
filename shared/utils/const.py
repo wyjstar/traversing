@@ -135,8 +135,8 @@ const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
 const.RECHARGE = 33  # rechage
 const.ARENA_WIN = 32  # 竞技场获胜
-const.FRIEND_REVENGE = 32  # 竞技场获胜
-const.PVP_OVERCOME = 33  # 竞技场获胜
+const.FRIEND_REVENGE = 34  # 竞技场获胜
+const.PVP_OVERCOME = 35  # 竞技场获胜
 const.WORLD_BOSS_AWARD = 1701  # 世界boss奖励
 # const.COMMON_BUY = 18  # 通用商城购买
 const.LIVELY_REWARD = 40  # 好友活跃度奖励
@@ -178,20 +178,42 @@ const.ENHANCE_EQUIPMENT = 28  # 装备强化
 const.ONLINE_GIFT = 29  # 在线奖励
 const.GM = 30  # gm发放
 const.HERO_CHIP_SACRIFICE_OPER = 31  # 武将碎片献祭
-const.TOMORROW_GIFT = 32  # 次日奖励
+const.TOMORROW_GIFT = 36  # 次日奖励
 const.BUY_COIN = 1406  # 招财进宝
 const.ReceivePraiseGift = 33
-const.PraiseGift = 34
-const.ReceiveBlessGift = 35
+const.PraiseGift = 39
 const.StageChestGift = 36
 const.LIMIT_HERO = 37
 const.TASK = 38
 const.ACT20 = 41
 const.ACT21 = 42
+const.ReceiveBlessGift = 43
+const.HERO_BREAK = 44  # 英雄突破
+const.HERO_REFINE = 45  # 英雄炼体
+const.HJQY_BATTLE = 46  # 黄巾起义战斗
+const.MINE_RESET = 47  # 秘境重置地图
+const.MINE_ACC = 48  # 秘境增产
+const.RESET_PVP_TIME = 49  # 重置pvp时间
+const.RUNT_REFRESH = 50  # 符文打造刷新
+const.DREW = 51  # 煮酒
+const.UNPAR_UPGRADE = 52  # 无双升级
+const.SHOP_REFRESH = 53  # 商城刷新
+const.BUY_STAMINA = 54  # 购买体力
+const.AUTO_ADD = 55  # 自动恢复
+const.BUY_COIN_ACT = 56  # 招财进宝活动
+const.RUNT_PICK = 57  # 摘除符文
+const.GUILD_BLESS = 58  # 军团膜拜
+const.RESET_STAGE = 59  # 重置关卡
+const.GUILD_CREATE = 60  # 创建军团
+const.INHERIT_REFINE = 61  # 炼体传承
+const.INHERIT_EQUIPMENT = 62  # 装备传承
+const.INHERIT_UPARA = 63  # 无双传承
+const.ENCOURAGE_HEROS = 64  # pvb鼓舞士气
+const.PVB_REBORN = 65  # pvb复活
+
 
 const.LOGIN_GIFT_CONTINUS = 8061
 const.LOGIN_GIFT_CUMULATIVE = 8062
-
 
 const.HJQY_ADD_REWARD = 21011
 
