@@ -86,6 +86,10 @@ class SceneSerManager:
     def get_best_sceneid(self):
         """获取最佳的game服务器
         """
+        for child in GlobalObject().root.childsmanager._childs.values():
+            if "game" in child.name and child.id not in self._scenesers:
+                self.add_scene(child.id)
+
         serverlist = self._scenesers.values()
         print("serverlist: %s" % serverlist)
         slist = sorted(serverlist, reverse=False, key=lambda ser: ser.get_client_count())

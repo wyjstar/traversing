@@ -29,7 +29,14 @@ class VCharacterManager:
 
     def get_by_dynamic_id(self, dynamic_id):
         character_id = self.client_character.get(dynamic_id)
+        print("client_character keys %s %s" % (self.client_character.keys(), character_id))
         return self.get_by_id(character_id)
+
+    def update_dynamic_id(self, old_dynamic_id, vcharacter):
+        if old_dynamic_id in self.client_character:
+            del self.client_character[old_dynamic_id]
+        self.client_character[vcharacter.dynamic_id] = vcharacter.character_id
+        print("client_character keys %s" % self.client_character.keys())
 
     def drop_by_dynamic_id(self, dynamic_id):
         """

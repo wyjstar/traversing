@@ -70,10 +70,10 @@ class FFServer:
         cpuid = config.get('cpu')  # 绑定cpu
         mreload = config.get('reload')  # 重新加载模块名称
         self.servername = servername
-        if servername == 'net':
-            time.sleep(6)
-        if servername == 'gate':
-            time.sleep(6)
+        #if servername == 'net':
+            #time.sleep(6)
+        #if servername == 'gate':
+            #time.sleep(16)
 
         if logpath:
             log_init(logpath)  # 日志处理
