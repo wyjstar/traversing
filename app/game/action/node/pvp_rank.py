@@ -253,6 +253,7 @@ def pvp_fight(player, character_id, line_up, skill, response,
     else:
         blue_units = record.get('copy_units')
     # save_line_up_order(line_up, player, skill)
+    player.fight_cache_component.stage_id = 0 # 设置后，不会出现乱入
     player.fight_cache_component.stage = PvpStageLogic()
 
     red_units = player.fight_cache_component.get_red_units()
