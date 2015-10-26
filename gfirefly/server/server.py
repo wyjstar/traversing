@@ -72,6 +72,8 @@ class FFServer:
         self.servername = servername
         if servername == 'net':
             time.sleep(6)
+        if servername == 'gate':
+            time.sleep(6)
 
         if logpath:
             log_init(logpath)  # 日志处理
