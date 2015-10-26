@@ -108,12 +108,9 @@ class RemoteObject(object):
 
     def connect(self, addr):
         """初始化远程调用对象"""
-        try:
-            self._addr = addr
-            reactor.connectTCP(addr[0], addr[1], self._factory)
-            self.takeProxy()
-        except Exception, e:
-            print("连接被拒绝！ %s" % e.message)
+        self._addr = addr
+        reactor.connectTCP(addr[0], addr[1], self._factory)
+        self.takeProxy()
 
 
     def reconnect(self, addr=()):
