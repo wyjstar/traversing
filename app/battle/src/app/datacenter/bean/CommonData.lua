@@ -3,7 +3,7 @@
 --	包括，玩家信息，银币，金币，战斗力 等等
 --
 DROP_BREW = 13
-
+local CustomTask = import("...util.CustomTask")
 local CommonData = class("CommonData")
 
 function CommonData:ctor(item)
@@ -13,17 +13,15 @@ function CommonData:ctor(item)
     self.AccountResponse = {} -- 注册成功返回数据
     self.isTourist = false
     self.totalRecharge = 0
-    self.c_BaseTemplate = getTemplateManager():getBaseTemplate()
     self.isHasVipGift = false
     self.iscanZcjb = false
     self.netTip = nil
     self.oldLevel = 0 --战队升级前的等级
     self.isHasRebate = false
     self.rank = 0
-    self.loginContinueDay = 0
-    self.loginTotalDay = 0
-    self.login7DaysEnjoy = 0
     
+    self.c_BaseTemplate = getTemplateManager():getBaseTemplate()
+
 end
 -- function CommonData:clear()
 --     cclog("---------------CommonData:clear------")
@@ -34,6 +32,43 @@ end
 --     self.signedList = nil
 --     cclog("---------------CommonData:clear------")
 -- end
+
+--初始化定时器
+function CommonData:initTasks()
+    --24:00的定时器
+    self:initRefreshTime24()
+    
+
+    --9:00刷新的定时器
+
+end
+
+function CommonData:initRefreshTime24()
+    local curYear = self:getYear()
+    local curMonth = self:getMonth()
+    local curDay = self:getDay()
+    local taskTime = {year = curYear, month = curMonth, day = curDay, hour = 24, min = 0, sec = 0} 
+    self.refreshTime24 = os.time(taskTime) + 30 --延迟30秒进行同步数据
+    local subTime = self.refreshTime24 - self:getTime()
+    getDataManager():pushTask(CustomTask.new(handler(self,self.updateRefreshTime24), subTime,1))
+end
+
+function CommonData:updateRefreshTime24(task,dt)
+    print("CommonData:updateRefreshTime24",dt)
+    --定时器到24点
+    getNetManager():getActivityNet():sendGetOnlineLevelGiftList()   -- 在线奖励
+    getNetManager():getActivityNet():sendGetLoginGiftListMsg()      -- 连续登陆奖励
+    getNetManager():getActivityNet():sendGetLoginGiftListMsg()      -- 累计登陆奖励
+    getNetManager():getActivityNet():sendZcjbGetdata()              -- 招财进宝奖励
+    getNetManager():getActivityNet():sendGetSignListMsg()           -- 签到刷新
+    getNetManager():getActivityNet():sendGetBrewInfoMsg()           -- 煮酒数据
+    getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
+    getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
+    --重置定时器
+    task:setEnabled(false)
+    self:initRefreshTime24()
+    self:dispatchEvent(EventName.UPDATE_REFRESH_24)
+end
 
 function CommonData:setNetTip(tipStr)
     self.netTip = tipStr
@@ -96,9 +131,9 @@ function CommonData:setData(data)
 
     --data.newbee_guide_id = 20030
     if (data.newbee_guide_id == 0) then
-        getNewGManager():setCurrentGID(GuideId.G_GUIDE_START)  --新手引导记录编号
+        getNewGManager():updateBaseInfo(GuideId.G_GUIDE_START)  --新手引导记录编号
     else
-        getNewGManager():setCurrentGID(data.newbee_guide_id)
+        getNewGManager():updateBaseInfo(data.newbee_guide_id)
     end
     print("---------------------------------------------------")
 
@@ -164,9 +199,43 @@ function CommonData:setData(data)
 
     self:setPvpOvercomeIndex(data.pvp_overcome_index)                  -- 过关斩将当前进行的关卡(从0开始计数)
     self:setPvpOvercomeRefreshCount(data.pvp_overcome_refresh_count)   -- 可刷新的次数
-    print("self.pvp_overcome_index = "..self.pvp_overcome_index)
-    print("self.pvp_overcome_refresh_count = "..self.pvp_overcome_refresh_count)
 
+    getDataManager():pushTask(CustomTask.new(handler(self,self.updateTestTask), 20,2)) 
+
+    --初始化定时器
+    self:initTasks()
+
+end
+
+--[[--
+    刷新用户数据
+    - 返回的数据结构与Login相同，但是目前只有以下字段有数据，需要添加时与服务协商添加
+]]
+function CommonData:refreshData(data)
+    if data.buy_times then
+        print("before update")
+        table.print(self.buy_times)
+        for k,v in pairs(data.buy_times) do --{资源类型,购买次数,上次获得体力时间}
+            if self.buy_times[v.resource_type] ~= nil then
+                self.buy_times[v.resource_type].buy_stamina_times = v.buy_stamina_times
+            end
+        end
+        print("after update")
+        table.print(self.buy_times)
+    end
+
+    print("CommonData:refreshData==>",data.pvp_times,"    ",data.pvp_refresh_count,"  ",data.pvp_overcome_index,"   ",data.pvp_overcome_refresh_count)
+
+    self:setPvpTimes(data.pvp_times)
+    self:setPvpRefreshCount(data.pvp_refresh_count)
+    self:setPvpOvercomeIndex(data.pvp_overcome_index)                  -- 过关斩将当前进行的关卡(从0开始计数)
+    self:setPvpOvercomeRefreshCount(data.pvp_overcome_refresh_count)   -- 可刷新的次数
+
+    self:setPowerRank(data.fight_power_rank)
+end
+
+function CommonData:updateTestTask(task,dt)
+    print("CommonData:updateTestTask====>",task.count_)
 end
 
 --是否领取过首冲好礼
@@ -326,28 +395,11 @@ function CommonData:setVipGift(hasVipGift)
     self.isHasVipGift = hasVipGift
     -- body
 end
-function CommonData:setCanZcjb(canZcjb)
-    self.iscanZcjb = canZcjb
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_ACTIVE)
-end
-function CommonData:getCanZcjb()
-    return self.iscanZcjb
-end
 
-function CommonData:setRebateState(hasRebate)
-    self.isHasRebate = hasRebate
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_ACTIVE)
-end
-
-function CommonData:getRebateState()
-    return self.isHasRebate
-end
 
 -- 返回模拟的服务器时间（客户端以服务器时间为准）
 function CommonData:getTime()
-    return math.floor(self.srv_time)
+    return math.floor(self.srv_time or 0)
     -- local nowTime = os.time()
     -- local diff_time = nowTime - self.client_time
     -- return self.server_time + diff_time
@@ -448,7 +500,11 @@ function CommonData:getSignedList() return self.signedList end
 function CommonData:setSignRound(roundId) self.SignRoundId = roundId end
 function CommonData:getSignRound() return self.SignRoundId end
 --当前签到为哪一天
-function CommonData:setSignCurrDay(currday) self.SignCurrDay = currday end
+function CommonData:setSignCurrDay(currday) 
+    self.SignCurrDay = currday 
+    -- 发送红点消息
+    self:dispatchEvent(EventName.UPDATE_SIGN)
+end
 function CommonData:getSignCurrDay() return self.SignCurrDay end
 
 -- 武魂商店刷新次数
@@ -562,208 +618,11 @@ function CommonData:isGetOnlineGift(id)
     return false
 end
 
--- 等级奖励
-function CommonData:setLevelGiftList(list) self.levelGiftList = list end
--- 添加已获得的等级奖励
-function CommonData:addGotLevelGift(giftId) table.insert(self.levelGiftList, giftId) end
--- 查询等级奖励是否已经领取
-function CommonData:isGetLevelGift(id)
-    if self.levelGiftList == nil then return false end
-    for k,v in pairs(self.levelGiftList) do
-        if v == id then return true end
-    end
-    return false
-end
--- 连续登陆奖励
-function CommonData:setLoginContinueGiftList(list) self.loginContinueGiftList = list end
-function CommonData:addLoginContinueGift(giftId) 
-    if self.loginContinueGiftList == nil then return nil end
-
-    local isExist = false
-    for k,v in pairs(self.loginContinueGiftList) do
-        if v.activity_id == giftId then 
-             v.state = 1
-             isExist = true
-             break
-        end
-    end
-    if isExist == false then 
-        local data = {activity_id = giftId, state = 1}
-        table.insert(self.loginContinueGiftList, data) 
-    end
-end
-function CommonData:getLoginContinueGift(id)
-    if self.loginContinueGiftList == nil then return nil end
-    for k,v in pairs(self.loginContinueGiftList) do
-        if v.activity_id == id then return v end
-    end
-    return nil
-end
-
--- 累积登陆奖励
-function CommonData:setLoginTotalGiftList(list) self.loginTotalGiftList = list end
-function CommonData:addLoginTotalGift(giftId) 
-    if self.loginTotalGiftList == nil then return nil end
-
-    local isExist = false
-    for k,v in pairs(self.loginTotalGiftList) do
-        if v.activity_id == giftId then 
-             v.state = 1
-             isExist = true
-             break
-        end
-    end
-    if isExist == false then 
-        local data = {activity_id = giftId, state = 1}
-        table.insert(self.loginTotalGiftList, data) 
-    end
-end
-function CommonData:getLoginTotalGift(id)
-    if self.loginTotalGiftList == nil then return nil end
-    for k,v in pairs(self.loginTotalGiftList) do
-        if v.activity_id == id then return v end
-    end
-    return nil
-end
-
--- 开服7天乐
-function CommonData:set7DaysEnjoyList(list) self.sevenDEnjoyList = list end
-function CommonData:add7DaysEnjoyGift(giftId) 
-    if self.sevenDEnjoyList == nil then return nil end
-
-    local isExist = false
-    for k,v in pairs(self.sevenDEnjoyList) do
-        if v.activity_id == giftId then 
-             v.state = 1
-             isExist = true
-             break
-        end
-    end
-    if isExist == false then 
-        local data = {activity_id = giftId, state = 1}
-        table.insert(self.sevenDEnjoyList, data) 
-    end
-end
-function CommonData:get7DaysEnjoyGift(id)
-    if self.sevenDEnjoyList == nil then return nil end
-    for k,v in pairs(self.sevenDEnjoyList) do
-        if v.activity_id == id then return v end
-    end
-    return nil
-end
-
--- 累积登陆时间
-function CommonData:setLoginTotalDay(day) 
-    self.loginTotalDay = day
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_ACTIVE)
-end
-function CommonData:getLoginTotalDay() return self.loginTotalDay end
-
---连续登录奖励
-function CommonData:setLoginContinueDay(day) 
-    self.loginContinueDay = day
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_ACTIVE)
-end
-function CommonData:getLoginContinueDay() return self.loginContinueDay end
-
 function CommonData:getHeroSoul() return self:getFinance(RES_TYPE.HERO_SOUL) end
 -- 增加武魂值
 function CommonData:addHero_soul(num)
     --self.GameLoginResponse.hero_soul = self.GameLoginResponse.hero_soul + num
     self:addFinance(RES_TYPE.HERO_SOUL, num)
-end
-
---获取是否能领取累计登陆奖励
-function CommonData:getIsCanGetTotleReward()
-    -- print("getIsCanGetTotleReward-------")
-    local totleBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(1)
-    -- table.print(totleBaseList)
-    -- print("getIsCanGetTotleReward-------")
-    -- table.print(self.loginTotalGiftList)
-    -- print("11111111111111")getTotleBaseList()
-
-
-    local loginTotalDay = self:getLoginTotalDay()
-    -- print("loginTotalDay=====" .. loginTotalDay)
-    for i = 1, loginTotalDay do
-        local item = totleBaseList[i]
-        if item == nil and i > 7 then
-            item = totleBaseList[7]
-        end
-        local id = item.id
-        local item = self:getLoginTotalGift(id)
-        if item and item.state == 0 then
-            return true
-        end
-    end
-    return false
-end
-
---获取是否可以领取连续登陆奖励
-function CommonData:getIsCanGetSeriesReward()
-    local serialBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(2)
-    --print("<<======连续登陆列表=========>>")
-    --table.print(serialBaseList)
-    local serialTotalDay = self:getLoginContinueDay()
-    for i = 1, serialTotalDay do
-        local item = serialBaseList[i]
-        if item == nil then return false end
-        local id = item.id
-        local item = self:getLoginContinueGift(id)
-        if item and item.state == 0 then
-            return true
-        end
-    end
-    return false
-end
-
---开服7天乐
-function CommonData:set7DaysEnjoy(day) 
-    self.login7DaysEnjoy = day
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_ACTIVE)
-end
-
-function CommonData:get7DaysEnjoy() return self.login7DaysEnjoy end
-
-function CommonData:canGet7DEnjoyRewards()
-    local serialBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(18)
-    --print("<<======连续登陆列表=========>>")
-    --table.print(serialBaseList)
-    local serialTotalDay = self:get7DaysEnjoy()
-    for i = 1, serialTotalDay do
-        local item = serialBaseList[i]
-        if item == nil then return false end
-        local id = item.id
-        local item = self:get7DaysEnjoyGift(id)
-        if item and item.state == 0 then
-            return true
-        end
-    end
-    return false
-end
-
---获得是否可以领取战队等级奖励
-function CommonData:getIsCanGetLevelReward()
-    local lvBaglBaseList = getTemplateManager():getBaseTemplate():getActLoginInfoByType(3)
-    if self.level == 1 then
-        return false
-    end
-
-    local size = self.level - 1
-    for k, v in pairs(lvBaglBaseList) do
-        local parameterA = v.parameterA
-        if parameterA <= self.level then
-            local id = v.id
-            local isGot = self:isGetLevelGift(id)
-            if isGot == false then
-                return true
-            end
-        end
-    end
-    return false
 end
 
 -- 减少武魂值
@@ -826,8 +685,8 @@ function CommonData:addExp(num)
     local exp = self.exp + num
     local level = self:getLevel()
     local maxExp = getTemplateManager():getPlayerTemplate():getMaxExpByLevel(level)
-    --如果经验大于当前等级最大经验,则升级
-    while exp > maxExp do
+    --如果经验大于等于当前等级最大经验,则升级
+    while exp >= maxExp do
         level = level + 1
         exp = exp - maxExp
         maxExp = getTemplateManager():getPlayerTemplate():getMaxExpByLevel(level)
@@ -847,7 +706,7 @@ function CommonData:setLevel(level)
         self.oldLevel = self.level
         self.level = level        
         getNetManager():getInstanceNet():sendGropUpgrade()
-        -- getNetManager():sendMsgAfterPlayerUpgrade()      
+        getNetManager():sendMsgAfterPlayerUpgrade()      
         -- 发送红点消息
         self:dispatchEvent(EventName.UPDATE_ACTIVE)
         self:dispatchEvent(EventName.UPDATE_LEVEL)
@@ -1223,189 +1082,6 @@ function CommonData:isOpenWorldBoss()
     local startLv = self.c_BaseTemplate:openWorldBossLevel()
 
 end
-----------------充值活动相关-------------------------
---初始化充值活动
-function CommonData:setRechargeActivityData(data)
-    cclog("------------初始化充值活动-----------")
-    --table.print(data)
-    self.rechargeData = data
-    for k,v in pairs (self.rechargeData) do
-        --print("<<=====gitft id=====>>",v.gift_id)
-        --table.print(v.data)
-        --if v.data[1].recharge_time ~= nil then print("----recharge_time---"..v.data[1].recharge_time) end
-        if v.gift_type == 9 then
-            self.rechargeAcc = v.data[1].recharge_accumulation
-        end
-    end
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_ACTIVE)
-end
-
---[[--
-    充值活动是否可领取
-    @param int id 奖品id
-]]
-function CommonData:rechargeGiftCanGet(id)
-    cclog("--------------id---------"..id)
-    if self.rechargeData == nil then return false end
-    for k,v in pairs(self.rechargeData) do
-        if v.gift_id == id then
-            return true
-        end
-    end
-    return false
-end
-
---[[--
-    充值活动奖励是否领取过
-    @param int id 奖品id
-]]
-function CommonData:rechargeGiftIsGot(id)
-    if self.rechargeData == nil then return false end
-    for k,v in pairs(self.rechargeData) do
-        if v.gift_id == id then
-            if v.data[1].is_receive == 1 then return true 
-            else
-                return false 
-            end
-        end
-    end
-    return false
-end
-
---[[--
-    活动的累计充值数
-]]
-function  CommonData:getRechargeAcc()
-    if self.rechargeAcc == nil then self.rechargeAcc = 0 end
-    return self.rechargeAcc
-end
-
---[[--
-    活动的单次充值数
-    @param int id 奖品id
-]]
-function  CommonData:getRechargeSingle(id)
-     local rechargeSingle  = 0
-     if self.rechargeData == nil then return rechargeSingle end
-     for k,v in pairs(self.rechargeData) do
-         if v.gift_id == id then
-
-            if v.data[1].recharge_accumulation == nil then
-                return rechargeSingle
-            else
-                print("充值数=========>>",v.data[1].recharge_accumulation)
-                return v.data[1].recharge_accumulation
-            end
-         end
-     end
-
-    return rechargeSingle
-end
---[[--
-    活动在点击领取时候的发送信息
-    @param int id 奖品id
-]]
-function CommonData:getSendInfo(id)
-    for k,v in pairs(self.rechargeData) do
-        if v.gift_id == id then
-            return v
-        end
-    end
-end
-
---[[--
-    设置某一奖励领取了
-    @param int id 奖品id
-]]
-function CommonData:setRechargeGiftGot(id)
-    if self.rechargeData == nil then return end
-    for k,v in pairs(self.rechargeData) do
-        if v.gift_id == id then
-            if v.data[1].is_receive == 0 then
-            v.data[1].is_receive = 1 end
-        end
-    end
-end
-function CommonData:giftCanGetByType(_type)
-    for k,v in pairs(self.rechargeData) do
-        if v.gift_type == _type then
-            if v.data[1].is_receive == 0 then return true end
-        end
-    end
-    return false
-end
-
-function CommonData:transformTimeToLabel(timeStr)
-    local timeTab = {}
-    local strlen = string.len(timeStr)
-    local pos = string.find(timeStr, " ")
-    local data = string.sub(timeStr,1,pos-1)
-    local timex = string.sub(timeStr,pos+1,strlen)
-
-    local str = data
-    local pos = string.find(str,"-")
-    local year = tonumber(string.sub(str,1,pos-1))
-    str = string.sub(str,pos+1,-1)
-    pos = string.find(str,"-")
-    local month = tonumber(string.sub(str,1,pos-1))
-    local day = tonumber(string.sub(str,pos+1,-1))
-
-    local str2 = timex
-    pos = string.find(str2,":")
-    local hour = tonumber(string.sub(str2,1,pos-1))
-    print("之前 ======== hour ===== ", hour)
-    if hour < 10 then
-        hour = "0" .. hour
-    end
-    print("之后 ======== hour ===== ", hour)
-    str2 = string.sub(str2,pos+1,-1)
-    pos = string.find(str2,":")
-    local min = tonumber(string.sub(str2,1,pos-1))
-    if min < 10 then
-        min = "0" .. min
-    end
-    local sec = tonumber(string.sub(str2,pos+1,-1))
-
-    timeTab = {year = year,month = month,day = day,hour = hour,min = min,sec = sec}
-    return timeTab
-end
-
---解析xxxx-xx-xx xx:xx:xx - yyyy-yy-yy yy:yy:yy的时间类型
-function CommonData:analysisTime(timeStr)
-
-    local strlen = string.len(timeStr)
-    local startTime = string.sub(timeStr,1,(strlen+1)/2-2)
-    local endTime = string.sub(timeStr,(strlen+1)/2+2,strlen)
-
-    local startTimeTab = self:transformTimeToLable(startTime)
-    local endTimeTab = self:transformTimeToLable(endTime)
-
-    return startTimeTab,endTimeTab
-end
-
---解析xx:xx:xx的时间类型
-function CommonData:analysisTime1(timeStr)
-
-    local function toTimeTable(timeStr)
-        local timeTab = {}
-        local strlen = string.len(timeStr)
-        local str = timeStr
-        local pos = string.find(str,":")
-        local hour = tonumber(string.sub(str,1,pos-1))
-        str = string.sub(str,pos+1,-1)
-        pos = string.find(str,":")
-        local min = tonumber(string.sub(str,1,pos-1))
-        local sec = tonumber(string.sub(str,pos+1,-1))
-        timeTab = {hour = hour,min = min,sec = sec}
-        return timeTab
-    end
-
-    local strlen = string.len(timeStr)
-    local startTime = string.sub(timeStr,1,strlen)
-    local startTimeTab = toTimeTable(startTime)
-    return startTimeTab.hour*3600 + startTimeTab.min*60 + startTimeTab.sec ,startTimeTab
-end
 
 --充值数据累计
 function CommonData:setRechargeNum(rechargeNum)
@@ -1616,7 +1292,12 @@ end
 ]]
 function CommonData:isPvpRedDotInHome()
     print("CommonData:isPvpRedDotInHome", self.c_BaseTemplate:getCurBuyGgzjTimes(), self.pvp_overcome_refresh_count)
-    return self.c_BaseTemplate:getCurBuyGgzjTimes() - self.pvp_overcome_refresh_count > 0
+    local _isOpen = self:isOpenByType(const.nextDay_openType.HJQY)
+    if _isOpen then
+        return self.c_BaseTemplate:getCurBuyGgzjTimes() - self.pvp_overcome_refresh_count > 0
+    else
+        return false
+    end
 end
 
 --等级
@@ -1627,6 +1308,13 @@ end
 是否煮酒需要显示红点
 ]]
 function CommonData:isWineRedDotInHome()
+    -- 判断功能是否开启
+    local openStageId = getTemplateManager():getBaseTemplate():getCookingWineOpenStage()
+    local isOpen = getDataManager():getStageData():getIsOpenByStageId(openStageId)
+    if not isOpen then
+      return false
+    end
+    
     local startLv = self.c_BaseTemplate:getBrewStartLevel()
     local lv = self:getLevel()
     local brewFlag = (lv >= startLv)
@@ -1648,31 +1336,7 @@ function CommonData:isSignRedDotInHome()
     return not isSigned
 end
 
---[[--
-精彩活动,单次充值 红点
-]]
-function CommonData:isOnceRechargeRedDot()
-    local reSingleList = self.c_BaseTemplate:getAcivityInfoByType(8)
-    for k,v in pairs(reSingleList) do
-        if not self:rechargeGiftIsGot(v.id) and (self:getRechargeSingle(v.id) >= v.parameterA) then
-            return true
-        end
-    end
-    return false
-end
 
---[[--
-精彩活动,累计充值 红点
-]]
-function CommonData:isSumRechargeRedDot()
-    local reAccList = self.c_BaseTemplate:getAcivityInfoByType(9)
-    for k,v in pairs(reAccList) do
-        if not self:rechargeGiftIsGot(v.id) and (self:getRechargeAcc() >= v.parameterA) then
-            return true
-        end
-    end
-    return false
-end
 
 --[[--
 精彩活动,美味大餐 红点

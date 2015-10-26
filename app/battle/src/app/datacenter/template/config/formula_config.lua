@@ -290,5 +290,9 @@ formula_config={
 ,  [145] = {
   ["precondition"] = "1",  ["formula"] = "EquNum*10",  ["clientPrecondition"] = "1",  ["id"] = 145,  ["clientFormula"] = "result=EquNum*10",  ["key"] = "guide2008",}
 ,  [146] = {
-  ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
+  ["precondition"] = "1",  ["formula"] = "warriorLevel*100",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=warriorLevel*100",  ["key"] = "guide2009",}
+,  [147] = {
+  ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 147,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
+,  [148] = {
+  ["precondition"] = "1",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "1",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
 ,}

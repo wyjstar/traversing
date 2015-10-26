@@ -335,6 +335,7 @@ def change_battle_speed_848(data, player):
     response.result = True
     return response.SerializePartialToString()
 
+
 @remoteserviceHandle('gate')
 def recharge_11010(data, player):
     response = recharge_pb2.InitRecharge()
@@ -507,4 +508,14 @@ def heartbeat_1833(data, player):
         response.hight_power = combat_power
         player.line_up_component.hight_power = combat_power
         player.line_up_component.save_data()
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def change_stage_story_2205(data, player):
+    request = player_request_pb2.ChangeStageStory()
+    request.ParseFromString(data)
+    player.base_info.story_id = request.story_id
+    player.base_info.save_data()
+    response = CommonResponse()
+    response.result = True
     return response.SerializePartialToString()

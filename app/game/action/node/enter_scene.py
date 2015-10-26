@@ -112,6 +112,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.recharge = player.base_info.recharge  # 累计充值
     responsedata.tomorrow_gift = player.base_info.tomorrow_gift
     responsedata.battle_speed = player.base_info.battle_speed
+    responsedata.story_id = player.base_info.story_id
     # 战力排行
     if rank_helper.flag_doublu_day():
         rank_name = 'PowerRank2'

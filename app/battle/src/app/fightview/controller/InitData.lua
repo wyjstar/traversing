@@ -162,7 +162,7 @@ end
     演示战斗
 ]]
 function initGuideData()
-        -- return 我方数据，敌方数据，我方View，敌方View，我方无双，敌方无双
+    -- return 我方数据，敌方数据，我方View，敌方View，我方无双，敌方无双
     -- 演示关卡中所有武将全部觉醒, 突破等级0
     local redUnits = {}
     local blueUnits = {}
@@ -432,7 +432,6 @@ function initHjqyData(data)
     --local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
-    print(attack_type, "attack_type ===========")
     return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 -- 根据hero模板构造battle unit
@@ -623,7 +622,7 @@ function constructBuddySkill(data)
     --local pos = 12
     --local unit = constructBattleUnitWithTemplate(data, pos, unit_level, 0, false, false)
     print("constructBuddySkill:=====")
-    print(data)
+    table.print(data)
     local unit = constructBattleUnit(data, "red")
     if not unit then
         return nil

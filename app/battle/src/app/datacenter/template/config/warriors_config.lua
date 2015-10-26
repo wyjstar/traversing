@@ -59,6 +59,12 @@ warriors_config={
 ,  ["discription"] = 3200010020,  ["triggle1"] = 4100201,  ["condition1"] = 10045,  ["condition5"] = 0,  ["triggle3"] = 4100203,  ["id"] = 10020,  ["condition2"] = 10046,  ["triggle2"] = 4100202,  ["icon"] = 5007,  ["is_open"] = 1,  ["name"] = 2700010020,  ["expend3"] = {
   [1] = 500,  [2] = 500000,}
 ,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 10044,  ["condition6"] = 0,}
+,  [10028] = {
+  ["expend2"] = {
+  [1] = 100,  [2] = 100000,}
+,  ["discription"] = 3200010028,  ["triggle1"] = 4100031,  ["condition1"] = 10023,  ["condition5"] = 0,  ["triggle3"] = 4100033,  ["id"] = 10028,  ["condition2"] = 10050,  ["triggle2"] = 4100032,  ["icon"] = 5003,  ["is_open"] = 1,  ["name"] = 2700010003,  ["expend3"] = {
+  [1] = 500,  [2] = 500000,}
+,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
 ,  [10005] = {
   ["expend2"] = {
   [1] = 100,  [2] = 100000,}
@@ -77,6 +83,12 @@ warriors_config={
 ,  ["discription"] = 3200010021,  ["triggle1"] = 4100211,  ["condition1"] = 10050,  ["condition5"] = 0,  ["triggle3"] = 4100213,  ["id"] = 10021,  ["condition2"] = 10061,  ["triggle2"] = 4100212,  ["icon"] = 5008,  ["is_open"] = 1,  ["name"] = 2700010021,  ["expend3"] = {
   [1] = 500,  [2] = 500000,}
 ,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 10048,  ["condition6"] = 0,}
+,  [10029] = {
+  ["expend2"] = {
+  [1] = 100,  [2] = 100000,}
+,  ["discription"] = 3200010029,  ["triggle1"] = 4100131,  ["condition1"] = 10036,  ["condition5"] = 0,  ["triggle3"] = 4100133,  ["id"] = 10029,  ["condition2"] = 10035,  ["triggle2"] = 4100132,  ["icon"] = 5020,  ["is_open"] = 1,  ["name"] = 2700010013,  ["expend3"] = {
+  [1] = 500,  [2] = 500000,}
+,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
 ,  [10006] = {
   ["expend2"] = {
   [1] = 100,  [2] = 100000,}
@@ -95,6 +107,12 @@ warriors_config={
 ,  ["discription"] = 3200010022,  ["triggle1"] = 4100221,  ["condition1"] = 10044,  ["condition5"] = 0,  ["triggle3"] = 4100223,  ["id"] = 10022,  ["condition2"] = 30063,  ["triggle2"] = 4100222,  ["icon"] = 5009,  ["is_open"] = 1,  ["name"] = 2700010022,  ["expend3"] = {
   [1] = 500,  [2] = 500000,}
 ,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 10054,  ["condition6"] = 0,}
+,  [10030] = {
+  ["expend2"] = {
+  [1] = 100,  [2] = 100000,}
+,  ["discription"] = 3200010030,  ["triggle1"] = 4100071,  ["condition1"] = 10040,  ["condition5"] = 0,  ["triggle3"] = 4100073,  ["id"] = 10030,  ["condition2"] = 10041,  ["triggle2"] = 4100072,  ["icon"] = 5027,  ["is_open"] = 1,  ["name"] = 2700010007,  ["expend3"] = {
+  [1] = 500,  [2] = 500000,}
+,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
 ,  [10007] = {
   ["expend2"] = {
   [1] = 100,  [2] = 100000,}
@@ -111,6 +129,12 @@ warriors_config={
   ["expend2"] = {
   [1] = 100,  [2] = 100000,}
 ,  ["discription"] = 3200010023,  ["triggle1"] = 4100231,  ["condition1"] = 30060,  ["condition5"] = 0,  ["triggle3"] = 4100233,  ["id"] = 10023,  ["condition2"] = 10047,  ["triggle2"] = 4100232,  ["icon"] = 5024,  ["is_open"] = 1,  ["name"] = 2700010023,  ["expend3"] = {
+  [1] = 500,  [2] = 500000,}
+,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
+,  [10031] = {
+  ["expend2"] = {
+  [1] = 100,  [2] = 100000,}
+,  ["discription"] = 3200010032,  ["triggle1"] = 4100161,  ["condition1"] = 10030,  ["condition5"] = 0,  ["triggle3"] = 4100163,  ["id"] = 10031,  ["condition2"] = 10058,  ["triggle2"] = 4100162,  ["icon"] = 5028,  ["is_open"] = 1,  ["name"] = 2700010016,  ["expend3"] = {
   [1] = 500,  [2] = 500000,}
 ,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
 ,  [10008] = {
@@ -159,6 +183,12 @@ warriors_config={
   ["expend2"] = {
   [1] = 100,  [2] = 100000,}
 ,  ["discription"] = 3200010002,  ["triggle1"] = 4100021,  ["condition1"] = 10021,  ["condition5"] = 0,  ["triggle3"] = 4100023,  ["id"] = 10002,  ["condition2"] = 10022,  ["triggle2"] = 4100022,  ["icon"] = 5002,  ["is_open"] = 1,  ["name"] = 2700010002,  ["expend3"] = {
+  [1] = 500,  [2] = 500000,}
+,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
+,  [10032] = {
+  ["expend2"] = {
+  [1] = 100,  [2] = 100000,}
+,  ["discription"] = 3200010033,  ["triggle1"] = 4100191,  ["condition1"] = 10062,  ["condition5"] = 0,  ["triggle3"] = 4100193,  ["id"] = 10032,  ["condition2"] = 10065,  ["triggle2"] = 4100192,  ["icon"] = 5006,  ["is_open"] = 1,  ["name"] = 2700010019,  ["expend3"] = {
   [1] = 500,  [2] = 500000,}
 ,  ["condition7"] = 0,  ["condition4"] = 0,  ["condition3"] = 0,  ["condition6"] = 0,}
 ,}
