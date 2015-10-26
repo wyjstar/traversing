@@ -60,7 +60,7 @@ def _with_pvp_info(response, character_id):
         data = char_obj.hmget(keys)
         heads = Heads_DB()
         heads.ParseFromString(data['heads'])
-        data['head'] = heads.now_head
+        data['head_no'] = heads.now_head
         hero_nos, hero_levels = _get_hero_no_and_level(data['line_up_slots'])
         data['hero_ids'] = hero_nos
         data['hero_levels'] = hero_levels
