@@ -8,6 +8,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from gfirefly.server.globalobject import GlobalObject
+from shared.tlog import tlog_action
 
 
 # const.COIN = 1
