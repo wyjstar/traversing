@@ -11,6 +11,7 @@ from shared.tlog import tlog_action
 from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
 import traceback
+from shared.utils.const import const
 
 remote_gate = GlobalObject().remote.get('gate')
 
