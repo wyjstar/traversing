@@ -31,6 +31,7 @@ from app.battle.server_process import get_seeds
 from app.game.core.mail_helper import send_mail
 from app.game.core.task import hook_task, CONDITIONId
 from shared.utils import xtime
+from app.game.action.node.start_target import target_update
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -623,9 +624,11 @@ def settle_1252(data, player):
     # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0, 1)
     # 7日奖励 占领矿点
-    if player.start_target.is_underway():
+    if player.start_target.is_open():
         player.start_target.condition_add(41, 1)
         player.start_target.save_data()
+        # 更新 七日奖励
+        target_update(player, [41])
 
     response.result = True
     return response.SerializePartialToString()

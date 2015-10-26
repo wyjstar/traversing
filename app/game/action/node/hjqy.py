@@ -16,6 +16,7 @@ from shared.utils.date_util import is_in_period, is_next_day, get_current_timest
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.core.mail_helper import send_mail
+from app.game.action.node.start_target import target_update
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -184,12 +185,14 @@ def battle_2103(pro_data, player):
     hook_task(player, CONDITIONId.HJQY, 1)
 
     # start target
-    if player.start_target.is_underway():
+    if player.start_target.is_open():
         all_current_damage_hp = remote_gate['world'].\
             hjqy_damage_hp_remote(player.base_info.id)
         player.start_target.condition_update(38, current_damage_hp)
         player.start_target.condition_update(39, all_current_damage_hp)
         player.start_target.save_data()
+        # 更新 七日奖励
+        target_update(player, [38, 39])
 
     return response.SerializePartialToString()
 

@@ -11,6 +11,7 @@ from shared.utils.const import const
 from shared.db_opear.configs_data import game_configs
 from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
+from app.game.action.node.start_target import target_update
 
 
 @remoteserviceHandle('gate')
@@ -90,6 +91,9 @@ def enhance_equipment_402(pro_data, player):
     logger.debug(response.data)
     logger.debug("response.data===================")
     response.num = enhance_info.get("num")
+
+    # 更新 七日奖励
+    target_update(player, [36])
     return response.SerializePartialToString()
 
 

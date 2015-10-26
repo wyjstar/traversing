@@ -12,6 +12,7 @@ from app.game.component.mine.monster_mine import MineOpt
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.action.node.start_target import target_update
 
 
 class CharacterLineUpComponent(Component):
@@ -272,6 +273,9 @@ class CharacterLineUpComponent(Component):
         if hero_no != 0:
             assert target_hero != None, "change hero can not be None!"
             target_hero.is_online = True
+
+            # 更新 七日奖励
+            target_update(self.owner, [31, 32, 34])
 
         tlog_action.log('LineUpChange', self.owner, slot_no, origin_hero_no,
                         hero_no, change_type)

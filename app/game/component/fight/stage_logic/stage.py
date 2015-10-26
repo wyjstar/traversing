@@ -6,6 +6,7 @@ from gfirefly.server.logobj import logger
 import time
 from shared.tlog import tlog_action
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.action.node.start_target import target_update
 
 
 class StageLogic(base_stage.BaseStageLogic):
@@ -58,6 +59,9 @@ class StageLogic(base_stage.BaseStageLogic):
             # hook task
             hook_task(player, CONDITIONId.ANY_STAGE, 1)
             hook_task(player, CONDITIONId.STAGE, stage_id)
+
+            # 更新 七日奖励
+            target_update(player, [45])
 
             tlog_action.log('RoundFlow', player, stage_id, 1, 0, 1)
         else:

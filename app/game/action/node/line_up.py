@@ -13,6 +13,7 @@ from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.action.node.equipment import enhance_equipment
 from shared.tlog import tlog_action
+from app.game.action.node.start_target import target_update
 
 
 @remoteserviceHandle('gate')
@@ -378,19 +379,21 @@ def change_equipment(slot_no, no, equipment_id, player):
     # 检验装备是否存在
     if equipment_id != '0' and not check_have_equipment(player, equipment_id):
         logger.debug("1check_have_equipment %s", equipment_id)
-        return {"result":False, "result_no":702}
+        return {"result": False, "result_no": 702}
 
     # 校验该装备是否已经装备
     if equipment_id != '0' and equipment_id in player.line_up_component.on_equipment_ids:
         logger.debug("2check_have_equipment")
-        return {"result":False, "result_no":703}
+        return {"result": False, "result_no": 703}
 
     # 校验装备类型
     if not player.line_up_component.change_equipment(slot_no, no, equipment_id):
         logger.debug("3check_have_equipment")
-        return {"result":False, "result_no":704}
+        return {"result": False, "result_no": 704}
     player.line_up_component.save_data()
-    return {"result":True}
+    # 更新 七日奖励
+    target_update(player, [36])
+    return {"result": True}
 
 
 def line_up_info(player, response=None):

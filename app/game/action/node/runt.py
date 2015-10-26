@@ -15,6 +15,7 @@ import time
 from shared.utils.pyuuid import get_uuid
 import copy
 from shared.utils.const import const
+from app.game.action.node.start_target import target_update
 
 
 @remoteserviceHandle('gate')
@@ -65,6 +66,7 @@ def runt_set_841(data, player):
         hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
         player.runt.reduce_runt(runt_no)
 
+    target_update(player, [40])
     hero.save_data()
     player.runt.save()
 

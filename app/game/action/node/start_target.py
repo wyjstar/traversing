@@ -3,12 +3,16 @@
 created by.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
+from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import start_target_pb2
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 import time
+
+
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
@@ -64,16 +68,16 @@ def get_target_info_1826(data, player):
 
 
 def get_target_info(player, target_id, day):
-    if player.start_target.is_underway():
-        info = get_target_info1(player, target_id, day)
-        if info.get('jindu'):
-            a = info.get('jindu')
-            info['jindu'] = int(a)
-    else:
-        target_info = player.start_target.target_info.get(target_id)
-        info = {'state': target_info[0]}
-        if len(target_info) == 2:
-            info['jindu'] = int(target_info[1])
+    # if player.start_target.is_underway():
+    info = get_target_info1(player, target_id, day)
+    if info.get('jindu'):
+        a = info.get('jindu')
+        info['jindu'] = int(a)
+    # else:
+    #     target_info = player.start_target.target_info.get(target_id)
+    #     info = {'state': target_info[0]}
+    #     if len(target_info) == 2:
+    #        info['jindu'] = int(target_info[1])
     return info
 
 
@@ -192,10 +196,12 @@ def get_target_info1(player, target_id, day):
             else:
                 return {'state': 1, 'jindu': target_info[1]}
     elif target_conf.type == 36:
-        equipments = player.equipment_component.get_all()
+        equipments = player.equipment_component.get_equipment()
         jindu = 0
-        for equipment in equipments:
-            if equipment.attribute.strengthen_lv >= target_conf.parameterA:
+
+        for equipment_id in player.line_up_component.on_equipment_ids:
+            equipment_obj = player.equipment_component.get_equipment(equipment_id)
+            if equipment_obj.attribute.strengthen_lv >= target_conf.parameterA:
                 jindu += 1
 
         if jindu >= target_conf.parameterB:
@@ -333,7 +339,7 @@ def get_target_info_1827(data, player):
     target_conf = game_configs.activity_config.get(target_id)
 
     info = get_target_info(player, target_id, day)
-    if target_conf.type != 30 and info.get('state') != 2:
+    if (target_conf.type != 30 and info.get('state') != 2) or (target_conf.type == 30 and info.get('state') == 3):
         response.res.result = False
         logger.error("this start target 条件不满足")
         response.res.result_no = 800
@@ -359,3 +365,37 @@ def get_target_info_1827(data, player):
 
     response.res.result = True
     return response.SerializeToString()
+
+
+def target_update(player, conditions):
+    print conditions, '==============a================='
+    # 第几天登录
+    if player.base_info.id < 10000:
+        return
+
+    is_open, day = player.start_target.is_open()
+    if not is_open:
+        return
+
+    target_ids = []
+    for x in [1, 2, 3, 4, 5, 6, 7]:
+        if x > day:
+            continue
+        for a, b in game_configs.base_config.get('seven'+str(x)).items():
+            target_ids += b
+
+    for target_id in target_ids:
+        target_info = player.start_target.target_info.get(target_id)
+        target_conf = game_configs.activity_config.get(target_id)
+        if target_conf.type not in conditions:
+            continue
+        if target_info and target_info[0] == 3:
+            continue
+        else:
+            info = get_target_info(player, target_id, day)
+            if info.get('state') == 2:
+                remote_gate.push_object_remote(1841,
+                                               u'',
+                                               [player.dynamic_id])
+                print '====================================================111'
+                return

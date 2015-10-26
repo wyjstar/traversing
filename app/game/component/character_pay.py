@@ -12,6 +12,7 @@ from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
 import traceback
 from shared.utils.const import const
+from app.game.action.node.start_target import target_update
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -110,9 +111,11 @@ class CharacterPay(Component):
             self._owner.base_info.recharge += recharge_balance
             self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
             # 七日活动 累积充值
-            if player.start_target.is_underway():
+            if player.start_target.is_open():
                 player.start_target.condition_update(44, self._owner.base_info.recharge)
                 player.start_target.save_data()
+                # 更新 七日奖励
+                target_update(self.owner, [44])
         self._owner.base_info.gen_balance = gen_balance
         self._owner.finance.gold = balance
         self._owner.base_info.save_data()
