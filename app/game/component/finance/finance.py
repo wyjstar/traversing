@@ -118,7 +118,7 @@ class CharacterFinanceComponent(Component):
             self._finances[fType] -= int(num)
             if reason:
                 tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
-                                fType, 0, reason, after_num, 0)
+                                fType, 0, reason, self._finances[fType], 0)
         return True
 
     def add(self, fType, num, reason=0):
@@ -132,7 +132,7 @@ class CharacterFinanceComponent(Component):
             self._finances[fType] += int(num)
             if reason:
                 tlog_action.log('ItemFlow', self.owner, const.ADD, const.RESOURCE, num,
-                                fType, 0, reason, after_num, 0)
+                                fType, 0, reason, self._finances[fType], 0)
         return True
 
     def add_coin(self, num, reason):

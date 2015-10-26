@@ -57,7 +57,7 @@ def shop_oper(pro_data, player, reason):
     # logger.debug("---------")
 
     if shop_id == 10001 and player.shop.first_coin_draw:
-        is_consume(player, shop_item, reason)
+        is_consume(player, shop_item)
 
         card_draw = game_configs.base_config.get("CoinCardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
@@ -72,7 +72,7 @@ def shop_oper(pro_data, player, reason):
         return response.SerializeToString()
 
     if shop_id == 50001 and player.shop.first_gold_draw:
-        is_consume(player, shop_item, reason)
+        is_consume(player, shop_item)
 
         card_draw = game_configs.base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
@@ -86,7 +86,7 @@ def shop_oper(pro_data, player, reason):
         response.res.result = True
         return response.SerializeToString()
 
-    _is_consume_result = is_consume(player, shop_item, reason)
+    _is_consume_result = is_consume(player, shop_item)
     price = shop_item.consume
     if _is_consume_result:
         result = is_afford(player, price)  # 校验
