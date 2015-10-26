@@ -17,6 +17,7 @@ from test.init_data.mock_hero_chips import init_hero_chip
 from test.init_data.mock_equipment import init_equipment
 from test.init_data.mock_equipment_chip import init_equipment_chip
 from test.init_data.mock_item import init_item
+from shared.db_opear.configs_data import game_configs
 import cPickle
 # from app.proto_file.gm_pb2 import *
 from shared.utils import trie_tree
@@ -85,6 +86,18 @@ def modify_user_info(data, player):
     elif args['attr_name'] == 'user_exp':
         player.base_info.exp = int(args['attr_value'])
         player.base_info.save_data()
+        return {'success': 1}
+    elif args['attr_name'] == 'stage1':
+        print("change stage1:", args)
+        stage_ids = args['attr_value'].split(';')
+        for stage_id in stage_ids:
+            stage_id = int(stage_id)
+            stage_info = game_configs.stage_config.get('stages').get(stage_id)
+            if not stage_info:
+                return {'success': 0, 'message': 4}
+            stage = player.stage_component.get_stage(stage_id)
+            stage.state = 1
+        player.stage_component.save_data()
         return {'success': 1}
     elif args['attr_name'] == 'stage':
         print("change stage:", args)
