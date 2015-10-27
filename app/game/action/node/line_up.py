@@ -14,6 +14,9 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.game.action.node.equipment import enhance_equipment
 from shared.tlog import tlog_action
 from app.game.action.node.start_target import target_update
+from shared.db_opear.configs_data import game_configs
+from app.game.core.item_group_helper import consume, is_afford
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -235,12 +238,25 @@ def change_multi_equipments_704(pro_data, player):
 
 @remoteserviceHandle('gate')
 def unpar_upgrade_705(pro_data, player):
-    request = line_up_pb2.LineUpUnparUpgrade()
-    request.ParseFromString(pro_data)
+    """
+    无双升级
+    """
     response = CommonResponse()
-    __line_up = player.line_up_component
-    response.result = __line_up.unpar_upgrade(request.skill_id,
-                                              request.skill_level)
+    response.result = True
+    _line_up = player.line_up_component
+    resource1 = game_configs.skill_peerless_grade.get(_line_up._unpar_level).resource1
+    resource2 = game_configs.skill_peerless_grade.get(_line_up._unpar_level).resource2
+    if not is_afford(player, resource1) or not is_afford(player, resource2):
+        logger.error("resource not enough!")
+        response.result = False
+        response.result_no = 70501
+        return response.SerializePartialToString()
+
+    consume(player, resource1, const.UNPAR_UPGRADE)
+    consume(player, resource2, const.UNPAR_UPGRADE)
+    _line_up.unpar_level = _line_up.unpar_level + 1
+    _line_up.save_data()
+    logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
 
@@ -399,15 +415,16 @@ def change_equipment(slot_no, no, equipment_id, player):
 def line_up_info(player, response=None):
     """取得用户的阵容信息
     """
+    _line_up = player.line_up_component
     if not response:
         response = line_up_pb2.LineUpResponse()
         response.res.result = True
-    for temp in player.line_up_component.line_up_order:
+    for temp in _line_up.line_up_order:
         response.order.append(temp)
-    response.unpar_id = player.line_up_component.current_unpar
+    response.unpar_id = _line_up.current_unpar
 
     # 武将和装备
-    line_up_info_detail(player.line_up_component.line_up_slots, player.line_up_component.sub_slots, response)
+    line_up_info_detail(_line_up.line_up_slots, _line_up.sub_slots, response)
 
     # 风物志
     player.travel_component.update_travel_item(response)
@@ -416,12 +433,13 @@ def line_up_info(player, response=None):
     response.guild_level = player.guild.get_guild_level()
 
     # 无双
-    for k, v in player.line_up_component.unpars.items():
-        add_unpar = response.unpars.add()
-        add_unpar.unpar_id = k
-        add_unpar.unpar_level = v
+    response.unpar_level = _line_up.unpar_level
+    response.unpar_type = _line_up.unpar_type
+    response.unpar_other_id = _line_up.unpar_other_id
+    for hero_no in _line_up._ever_have_heros:
+        response.ever_have_heros.append(hero_no)
 
-    response.caption_pos = player.line_up_component.caption_pos
+    response.caption_pos = _line_up.caption_pos
     logger.debug("line_up_info caption_pos %s" % response.caption_pos)
 
     return response
@@ -501,8 +519,9 @@ def save_line_order_708(pro_data, player):
         return
     logger.debug("line_up %s, current_unpar%s"% (request.lineup, request.unparalleled))
     player.line_up_component.line_up_order = line_up_info
-    player.line_up_component.current_unpar = request.unparalleled
-    player.line_up_component.save_data(["line_up_order", "current_unpar"])
+    player.line_up_component._unpar_type = request.unpar_type
+    player.line_up_component._unpar_other_id = request.unpar_other_id
+    player.line_up_component.save_data(["line_up_order", "unpar_type", "unpar_other_id"])
 
     return response.SerializePartialToString()
 
@@ -524,7 +543,7 @@ def set_captain_709(pro_data, player):
         return response.SerializePartialToString()
 
     player.line_up_component.caption_pos = caption_pos
-    player.line_up_component.save_data()
+    player.line_up_component.save_data(["caption_pos"])
     response.result = True
     logger.debug(response)
     return response.SerializePartialToString()

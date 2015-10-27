@@ -88,7 +88,7 @@ def update_rank_items(k, rank_item_pb, rank_item):
 
 
 @rootserviceHandle
-def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, debuff_skill_no, seed1, seed2):
+def pvb_fight_remote(str_red_units, unpar_type, unpar_other_id, str_blue_units, player_info, boss_id, damage_rate, debuff_skill_no, seed1, seed2):
     """
     战斗
     """
@@ -97,7 +97,7 @@ def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_bl
         return -1, 0
     red_units = cPickle.loads(str_red_units)
     blue_units = cPickle.loads(str_blue_units)
-    res = world_boss_start(red_units,  blue_units, red_best_skill, red_best_skill_level, 0, 1, debuff_skill_no, damage_rate, seed1, seed2, player_info.get("level"))
+    res = world_boss_start(red_units,  blue_units, unpar_type, unpar_other_id, 0, 1, debuff_skill_no, damage_rate, seed1, seed2, player_info.get("level"))
     result = res.get("result")
     hp_left = res.get("hp_left")
 

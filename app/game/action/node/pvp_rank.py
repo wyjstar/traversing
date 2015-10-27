@@ -245,8 +245,6 @@ def pvp_fight(player, character_id, line_up, skill, response,
         response.res.result_no = 150001
         return response.SerializePartialToString()
 
-    best_skill, skill_level = player.line_up_component.get_skill_info_by_unpar(skill)
-    logger.debug("best_skill=================== %s" % best_skill)
 
     if is_copy_unit:
         blue_units = record.get('copy_units2')
@@ -260,18 +258,13 @@ def pvp_fight(player, character_id, line_up, skill, response,
 
     seed1, seed2 = get_seeds()
     fight_result = pvp_process(player, line_up, red_units, blue_units,
-                               best_skill, record.get("best_skill"),
-                               record.get("level"), skill, seed1, seed2,
+                               seed1, seed2,
                                const.BATTLE_PVP)
 
     pvp_assemble_units(red_units, blue_units, response)
     response.seed1 = seed1
     response.seed2 = seed2
     response.fight_result = fight_result
-    response.red_skill = skill
-    response.red_skill_level = skill_level
-    response.blue_skill = record.get("unpar_skill")
-    response.blue_skill_level = record.get("unpar_skill_level")
     return fight_result
 
 

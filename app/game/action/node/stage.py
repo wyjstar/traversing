@@ -166,7 +166,7 @@ def stage_start_903(pro_data, player):
             response.res.result_no = 837
             return response.SerializeToString()
 
-    stage_info = pve_process(stage_id, stage_config.type, line_up, fid, player, red_best_skill_id)
+    stage_info = pve_process(stage_id, stage_config.type, line_up, fid, player)
     result = stage_info.get('result')
 
     res = response.res

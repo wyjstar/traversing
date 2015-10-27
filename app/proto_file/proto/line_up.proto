@@ -21,28 +21,32 @@ message LineUpSlot{
 
 
 // 取得阵容 701
-message Unpar{
-	required int32 unpar_id = 1;
-	required int32 unpar_level = 2;
-}
+/*message Unpar{*/
+    /*required int32 unpar_id = 1;*/
+	/*required int32 unpar_level = 2;//无双等级*/
+    /*required int32 unpar_type = 3;*/
+/*}*/
 
 //所有返回 
 message LineUpResponse{
 	repeated LineUpSlot slot = 1;
 	repeated LineUpSlot sub = 2;
-	repeated Unpar unpars = 3;
+	/*repeated Unpar unpars = 3;*/
+    optional int32 unpar_level = 3; //无双等级
 	optional CommonResponse res = 4;
     repeated int32 order = 5;
-    optional int32 unpar_id = 6;  // 当前无双
     repeated TravelItemChapter travel_item_chapter = 7; // 风物志
     optional int32 guild_level = 8; // 公会等级
     optional int32 caption_pos = 9; // 队长槽位
+    repeated int32 ever_have_heros = 10; // 点亮的武将列表
+    optional int32 unpar_type = 11;  // 当前激活的无双类型：战，刺，法，牧
+    optional int32 unpar_other_id = 12;  // 当前激活的无双附加技能
 }
 
-message LineUpUnparUpgrade{
-	required int32 skill_id = 1;
-	required int32 skill_level = 2;
-}
+/*message LineUpUnparUpgrade{*/
+	/*required int32 skill_id = 1;*/
+	/*required int32 skill_level = 2;*/
+/*}*/
 
 // 更换装备 703
 message ChangeEquipmentsRequest
@@ -92,7 +96,9 @@ message AllEquipmentsStrengthResponse{
 message SaveLineUpOrderRequest
 {
 	repeated int32 lineup = 1;      // 队形
-	optional int32 unparalleled = 2; // 无双技能ID
+    /*optional int32 unparalleled = 2; // 无双技能ID*/
+	optional int32 unpar_type = 3; // 无双类型
+	optional int32 unpar_other_id = 4; // 无双附加技能
 }
 
 // 设置队长请求709,  返回：CommonResponse

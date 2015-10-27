@@ -18,7 +18,7 @@ import travel_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='line_up.proto',
   package='',
-  serialized_pb='\n\rline_up.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x11travel_item.proto\x1a\x0ctravel.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\".\n\x05Unpar\x12\x10\n\x08unpar_id\x18\x01 \x02(\x05\x12\x13\n\x0bunpar_level\x18\x02 \x02(\x05\"\xf7\x01\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\x12\x18\n\x03sub\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x16\n\x06unpars\x18\x03 \x03(\x0b\x32\x06.Unpar\x12\x1c\n\x03res\x18\x04 \x01(\x0b\x32\x0f.CommonResponse\x12\r\n\x05order\x18\x05 \x03(\x05\x12\x10\n\x08unpar_id\x18\x06 \x01(\x05\x12/\n\x13travel_item_chapter\x18\x07 \x03(\x0b\x32\x12.TravelItemChapter\x12\x13\n\x0bguild_level\x18\x08 \x01(\x05\x12\x13\n\x0b\x63\x61ption_pos\x18\t \x01(\x05\";\n\x12LineUpUnparUpgrade\x12\x10\n\x08skill_id\x18\x01 \x02(\x05\x12\x13\n\x0bskill_level\x18\x02 \x02(\x05\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"F\n\x1c\x43hangeMultiEquipmentsRequest\x12&\n\x04\x65qus\x18\x01 \x03(\x0b\x32\x18.ChangeEquipmentsRequest\"J\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x63hange_type\x18\x02 \x01(\x05\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\"%\n\x10GetLineUpRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"J\n\x15\x45quipmentStrengthInfo\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"/\n\x1c\x41llEquipmentsStrengthRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\"\xa5\x01\n\x1d\x41llEquipmentsStrengthResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07slot_no\x18\x05 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x02 \x02(\x05\x12%\n\x05infos\x18\x03 \x03(\x0b\x32\x16.EquipmentStrengthInfo\x12 \n\x07line_up\x18\x04 \x01(\x0b\x32\x0f.LineUpResponse\">\n\x16SaveLineUpOrderRequest\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x02 \x01(\x05\"(\n\x11SetCaptainRequest\x12\x13\n\x0b\x63\x61ption_pos\x18\x01 \x02(\x05')
+  serialized_pb='\n\rline_up.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\x1a\x0f\x65quipment.proto\x1a\x11travel_item.proto\x1a\x0ctravel.proto\"6\n\rSlotEquipment\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"f\n\nLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x12\n\nactivation\x18\x02 \x01(\x08\x12\x15\n\x04hero\x18\x03 \x01(\x0b\x32\x07.HeroPB\x12\x1c\n\x04\x65qus\x18\x04 \x03(\x0b\x32\x0e.SlotEquipment\"\xa7\x02\n\x0eLineUpResponse\x12\x19\n\x04slot\x18\x01 \x03(\x0b\x32\x0b.LineUpSlot\x12\x18\n\x03sub\x18\x02 \x03(\x0b\x32\x0b.LineUpSlot\x12\x13\n\x0bunpar_level\x18\x03 \x01(\x05\x12\x1c\n\x03res\x18\x04 \x01(\x0b\x32\x0f.CommonResponse\x12\r\n\x05order\x18\x05 \x03(\x05\x12/\n\x13travel_item_chapter\x18\x07 \x03(\x0b\x32\x12.TravelItemChapter\x12\x13\n\x0bguild_level\x18\x08 \x01(\x05\x12\x13\n\x0b\x63\x61ption_pos\x18\t \x01(\x05\x12\x17\n\x0f\x65ver_have_heros\x18\n \x03(\x05\x12\x12\n\nunpar_type\x18\x0b \x01(\x05\x12\x16\n\x0eunpar_other_id\x18\x0c \x01(\x05\"L\n\x17\x43hangeEquipmentsRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\n\n\x02no\x18\x02 \x01(\x05\x12\x14\n\x0c\x65quipment_id\x18\x03 \x01(\t\"F\n\x1c\x43hangeMultiEquipmentsRequest\x12&\n\x04\x65qus\x18\x01 \x03(\x0b\x32\x18.ChangeEquipmentsRequest\"J\n\x11\x43hangeHeroRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x13\n\x0b\x63hange_type\x18\x02 \x01(\x05\x12\x0f\n\x07hero_no\x18\x03 \x01(\x05\"%\n\x10GetLineUpRequest\x12\x11\n\ttarget_id\x18\x01 \x02(\x05\"J\n\x15\x45quipmentStrengthInfo\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12 \n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x12.EnhanceDataFormat\"/\n\x1c\x41llEquipmentsStrengthRequest\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\"\xa5\x01\n\x1d\x41llEquipmentsStrengthResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0f\n\x07slot_no\x18\x05 \x02(\x05\x12\x0c\n\x04\x63oin\x18\x02 \x02(\x05\x12%\n\x05infos\x18\x03 \x03(\x0b\x32\x16.EquipmentStrengthInfo\x12 \n\x07line_up\x18\x04 \x01(\x0b\x32\x0f.LineUpResponse\"T\n\x16SaveLineUpOrderRequest\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\x12\x12\n\nunpar_type\x18\x03 \x01(\x05\x12\x16\n\x0eunpar_other_id\x18\x04 \x01(\x05\"(\n\x11SetCaptainRequest\x12\x13\n\x0b\x63\x61ption_pos\x18\x01 \x02(\x05')
 
 
 
@@ -107,41 +107,6 @@ _LINEUPSLOT = _descriptor.Descriptor(
 )
 
 
-_UNPAR = _descriptor.Descriptor(
-  name='Unpar',
-  full_name='Unpar',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='unpar_id', full_name='Unpar.unpar_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='unpar_level', full_name='Unpar.unpar_level', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=253,
-  serialized_end=299,
-)
-
-
 _LINEUPRESPONSE = _descriptor.Descriptor(
   name='LineUpResponse',
   full_name='LineUpResponse',
@@ -164,9 +129,9 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='unpars', full_name='LineUpResponse.unpars', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='unpar_level', full_name='LineUpResponse.unpar_level', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -185,33 +150,47 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='unpar_id', full_name='LineUpResponse.unpar_id', index=5,
-      number=6, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='travel_item_chapter', full_name='LineUpResponse.travel_item_chapter', index=6,
+      name='travel_item_chapter', full_name='LineUpResponse.travel_item_chapter', index=5,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='guild_level', full_name='LineUpResponse.guild_level', index=7,
+      name='guild_level', full_name='LineUpResponse.guild_level', index=6,
       number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='caption_pos', full_name='LineUpResponse.caption_pos', index=8,
+      name='caption_pos', full_name='LineUpResponse.caption_pos', index=7,
       number=9, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='ever_have_heros', full_name='LineUpResponse.ever_have_heros', index=8,
+      number=10, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='unpar_type', full_name='LineUpResponse.unpar_type', index=9,
+      number=11, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='unpar_other_id', full_name='LineUpResponse.unpar_other_id', index=10,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -221,43 +200,8 @@ _LINEUPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=302,
+  serialized_start=254,
   serialized_end=549,
-)
-
-
-_LINEUPUNPARUPGRADE = _descriptor.Descriptor(
-  name='LineUpUnparUpgrade',
-  full_name='LineUpUnparUpgrade',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='skill_id', full_name='LineUpUnparUpgrade.skill_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='skill_level', full_name='LineUpUnparUpgrade.skill_level', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=551,
-  serialized_end=610,
 )
 
 
@@ -298,8 +242,8 @@ _CHANGEEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=612,
-  serialized_end=688,
+  serialized_start=551,
+  serialized_end=627,
 )
 
 
@@ -326,8 +270,8 @@ _CHANGEMULTIEQUIPMENTSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=690,
-  serialized_end=760,
+  serialized_start=629,
+  serialized_end=699,
 )
 
 
@@ -368,8 +312,8 @@ _CHANGEHEROREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=762,
-  serialized_end=836,
+  serialized_start=701,
+  serialized_end=775,
 )
 
 
@@ -396,8 +340,8 @@ _GETLINEUPREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=838,
-  serialized_end=875,
+  serialized_start=777,
+  serialized_end=814,
 )
 
 
@@ -431,8 +375,8 @@ _EQUIPMENTSTRENGTHINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=877,
-  serialized_end=951,
+  serialized_start=816,
+  serialized_end=890,
 )
 
 
@@ -459,8 +403,8 @@ _ALLEQUIPMENTSSTRENGTHREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=953,
-  serialized_end=1000,
+  serialized_start=892,
+  serialized_end=939,
 )
 
 
@@ -515,8 +459,8 @@ _ALLEQUIPMENTSSTRENGTHRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1003,
-  serialized_end=1168,
+  serialized_start=942,
+  serialized_end=1107,
 )
 
 
@@ -535,8 +479,15 @@ _SAVELINEUPORDERREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='unparalleled', full_name='SaveLineUpOrderRequest.unparalleled', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      name='unpar_type', full_name='SaveLineUpOrderRequest.unpar_type', index=1,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='unpar_other_id', full_name='SaveLineUpOrderRequest.unpar_other_id', index=2,
+      number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -550,8 +501,8 @@ _SAVELINEUPORDERREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1170,
-  serialized_end=1232,
+  serialized_start=1109,
+  serialized_end=1193,
 )
 
 
@@ -578,8 +529,8 @@ _SETCAPTAINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1234,
-  serialized_end=1274,
+  serialized_start=1195,
+  serialized_end=1235,
 )
 
 _SLOTEQUIPMENT.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
@@ -587,7 +538,6 @@ _LINEUPSLOT.fields_by_name['hero'].message_type = hero_pb2._HEROPB
 _LINEUPSLOT.fields_by_name['equs'].message_type = _SLOTEQUIPMENT
 _LINEUPRESPONSE.fields_by_name['slot'].message_type = _LINEUPSLOT
 _LINEUPRESPONSE.fields_by_name['sub'].message_type = _LINEUPSLOT
-_LINEUPRESPONSE.fields_by_name['unpars'].message_type = _UNPAR
 _LINEUPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _LINEUPRESPONSE.fields_by_name['travel_item_chapter'].message_type = travel_pb2._TRAVELITEMCHAPTER
 _CHANGEMULTIEQUIPMENTSREQUEST.fields_by_name['equs'].message_type = _CHANGEEQUIPMENTSREQUEST
@@ -597,9 +547,7 @@ _ALLEQUIPMENTSSTRENGTHRESPONSE.fields_by_name['infos'].message_type = _EQUIPMENT
 _ALLEQUIPMENTSSTRENGTHRESPONSE.fields_by_name['line_up'].message_type = _LINEUPRESPONSE
 DESCRIPTOR.message_types_by_name['SlotEquipment'] = _SLOTEQUIPMENT
 DESCRIPTOR.message_types_by_name['LineUpSlot'] = _LINEUPSLOT
-DESCRIPTOR.message_types_by_name['Unpar'] = _UNPAR
 DESCRIPTOR.message_types_by_name['LineUpResponse'] = _LINEUPRESPONSE
-DESCRIPTOR.message_types_by_name['LineUpUnparUpgrade'] = _LINEUPUNPARUPGRADE
 DESCRIPTOR.message_types_by_name['ChangeEquipmentsRequest'] = _CHANGEEQUIPMENTSREQUEST
 DESCRIPTOR.message_types_by_name['ChangeMultiEquipmentsRequest'] = _CHANGEMULTIEQUIPMENTSREQUEST
 DESCRIPTOR.message_types_by_name['ChangeHeroRequest'] = _CHANGEHEROREQUEST
@@ -622,23 +570,11 @@ class LineUpSlot(_message.Message):
 
   # @@protoc_insertion_point(class_scope:LineUpSlot)
 
-class Unpar(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _UNPAR
-
-  # @@protoc_insertion_point(class_scope:Unpar)
-
 class LineUpResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _LINEUPRESPONSE
 
   # @@protoc_insertion_point(class_scope:LineUpResponse)
-
-class LineUpUnparUpgrade(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _LINEUPUNPARUPGRADE
-
-  # @@protoc_insertion_point(class_scope:LineUpUnparUpgrade)
 
 class ChangeEquipmentsRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
