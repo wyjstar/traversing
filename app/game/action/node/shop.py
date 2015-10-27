@@ -209,7 +209,10 @@ def send_tlog(player, shop_item):
 
         tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
                         money, money_type, discount_money, discount_money_type,
-                        str(limit_vip_everyday), str(limit_vip), is_discount)
+                        '', '', is_discount)
+        # tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
+        #                 money, money_type, discount_money, discount_money_type,
+        #                 str(limit_vip_everyday), str(limit_vip), is_discount)
 
 
 def shop_equipment_oper(pro_data, player):

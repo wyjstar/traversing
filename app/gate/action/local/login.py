@@ -22,7 +22,7 @@ groot = GlobalObject().root
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
     """角色登录 """
-    # print groot.child('net').get_ipaddress_remote(dynamic_id)
+    ip =  groot.child('net').get_ipaddress_remote(dynamic_id)
     logger.debug("==============character_login_4===========")
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
@@ -75,9 +75,9 @@ def character_login_4(key, dynamic_id, request_proto):
     # argument.gl_version = 'abcd'
     # argument.device_id = '1x2y'
 
-    tlog_action.log('PlayerLogin', response, argument)
+    tlog_action.log('PlayerLogin', response, argument, ip)
     if data.get('is_new_character'):
-        tlog_action.log('PlayerRegister', response, argument)
+        tlog_action.log('PlayerRegister', response, argument, ip)
 
     nickname = response.nickname
     if nickname and response.gag < login_time and response.gag != -2:

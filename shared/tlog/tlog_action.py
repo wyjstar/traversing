@@ -12,7 +12,7 @@ game_app_id = 1
 plat_id = 1
 
 
-def player_register(player_data, handler):
+def player_register(player_data, handler, ip):
     log4tx.player_register(GameSvrId=game_server_id,
                            dtEventTime=xtime.strdatetime(),
                            GameAppID=game_app_id, PlatID=plat_id,
@@ -31,10 +31,11 @@ def player_register(player_data, handler):
                            Memory=handler.memory,
                            GLRender=handler.gl_render,
                            GLVersion=handler.gl_version,
-                           DeviceId=handler.device_id, Nickname='nickname')
+                           DeviceId=handler.device_id, Nickname='nickname',
+                           IP=ip)
 
 
-def player_login(player_data, handler):
+def player_login(player_data, handler, ip):
     log4tx.player_login(GameSvrId=game_server_id,
                         dtEventTime=xtime.strdatetime(),
                         GameAppID=game_app_id,
@@ -52,7 +53,8 @@ def player_login(player_data, handler):
                         CpuHardware=handler.cpu_hardware,
                         Memory=handler.memory, GLRender=handler.gl_render,
                         GLVersion=handler.gl_version,
-                        DeviceId=handler.device_id, OpenID=player_data.id)
+                        DeviceId=handler.device_id, OpenID=player_data.id,
+                        IP=ip)
 
 
 def player_logout(player_data):
