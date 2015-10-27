@@ -117,10 +117,10 @@ def runt_pick_842(data, player):
             need_coin += game_configs.stone_config.get('stones').get(runt_info[1]).PickPrice
             runts.append(runt_info)
 
-    if player.finance.coin < need_coin:
-        response.res.result = False
-        response.res.result_no = 101  # 银币不足
-        return response.SerializeToString()
+    # if player.finance.coin < need_coin:
+    #     response.res.result = False
+    #     response.res.result_no = 101  # 银币不足
+    #     return response.SerializeToString()
 
     if len(player.runt.m_runt) + len(runts) > \
             game_configs.base_config.get('totemStash'):
@@ -141,8 +141,8 @@ def runt_pick_842(data, player):
     hero.save_data()
     player.runt.save()
 
-    player.finance.consume_coin(need_coin, const.RUNT_PICK)
-    player.finance.save_data()
+    # player.finance.consume_coin(need_coin, const.RUNT_PICK)
+    # player.finance.save_data()
 
     response.res.result = True
     return response.SerializeToString()
