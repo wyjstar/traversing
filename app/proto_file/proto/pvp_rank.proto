@@ -28,6 +28,7 @@ message PvpFightRequest{
     optional int32 challenge_id = 2;
     repeated int32 lineup = 3; // 队形
     optional int32 skill = 4; //无双技能ID
+    optional int32 self_rank = 5;
 }
 
 message PvpFightRevenge{
