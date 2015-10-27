@@ -19,6 +19,7 @@ class VIPConfig(object):
 
         for row in config_value:
             convert_keystr2num(row.get("shopOpen"))
+            convert_keystr2num(row.get("shopRefreshTime"))
             self._items[row.get('id')] = CommonItem(row)
 
         return self._items
