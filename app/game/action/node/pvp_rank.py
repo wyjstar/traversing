@@ -392,7 +392,7 @@ def pvp_fight_request_1505(data, player):
             stage_reward_data = gain(player, arena_stage_reward,
                                      const.ARENA_WIN)
             get_return(player, stage_reward_data, response.award2)
-            logger.debug('stage award',
+            logger.debug('stage award %s %s',
                          stage_info_current, stage_info_before)
 
         player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,

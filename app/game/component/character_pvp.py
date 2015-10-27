@@ -267,6 +267,8 @@ class CharacterPvpComponent(Component):
                         range_nums.remove(r)
                         self._pvp_arena_players.append(r)
                 break
+        else:
+            logger.error('not found rank:%s in config', rank)
         logger.info('pvp rank refresh:%s', self._pvp_arena_players)
 
     @property

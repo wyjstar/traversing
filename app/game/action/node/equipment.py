@@ -37,7 +37,7 @@ def get_equipments_401(pro_data, player):
         equipment_add = response.equipment.add()
         obj.update_pb(equipment_add)
 
-    print response, '====================================='
+    # print response, '====================================='
     return response.SerializePartialToString()
 
 
@@ -74,13 +74,13 @@ def enhance_equipment_402(pro_data, player):
 
     enhance_record = enhance_info.get('enhance_record')
 
-    #flag = 1
-    #data_format.cost_coin = 0
+    # flag = 1
+    # data_format.cost_coin = 0
     for before_lv, after_lv, enhance_cost in enhance_record:
         data_format = response.data.add()
-        #if flag == 1:
-            #data_format.before_lv = before_lv
-            #flag = 2
+        # if flag == 1:
+        #     data_format.before_lv = before_lv
+        #     flag = 2
         data_format.before_lv = before_lv
         data_format.after_lv = after_lv
         data_format.cost_coin = enhance_cost
@@ -89,8 +89,8 @@ def enhance_equipment_402(pro_data, player):
                         enhance_info.get('equipment_no'),
                         equipment_id, before_lv, after_lv)
 
-    logger.debug(response.data)
-    logger.debug("response.data===================")
+    # logger.debug(response.data)
+    # logger.debug("response.data===================")
     response.num = enhance_info.get("num")
 
     # 更新 七日奖励
