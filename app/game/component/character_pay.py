@@ -192,7 +192,7 @@ class CharacterPay(Component):
             return False
         self.get_balance()
         tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
-                        2, 0, reason, self.owner.finance.gold, 0)
+                        2, 0, reason, self.owner.finance.gold, '')
         return True
 
     def _cancel_pay_m(self, num, billno):

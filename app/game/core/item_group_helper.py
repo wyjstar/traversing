@@ -110,7 +110,7 @@ def get_consume_gold_num(item_group, multiple=1):
 
 
 def consume(player, item_group, reason,
-            shop=None, event_id=0,
+            shop=None, event_id='',
             luck_config=None, multiple=1):
     """消耗"""
     result = []

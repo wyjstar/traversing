@@ -412,7 +412,7 @@ def player_register(GameSvrId=0, dtEventTime=0, GameAppID=0,
                     SystemSoftware=0, SystemHardware=0, TelecomOper=0,
                     Network=0, ScreenWidth=0, ScreenHight=0, Density=0,
                     RegChannel=0, UUID=0, CpuHardware=0, Memory=0, GLRender=0,
-                    GLVersion=0, DeviceId=0, Nickname=0):
+                    GLVersion=0, DeviceId=0, Nickname=0, IP=0):
 
     message = ['PlayerRegister']
 
@@ -437,6 +437,7 @@ def player_register(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(GLVersion)
     message.append(DeviceId)
     message.append(Nickname)
+    message.append(IP)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -449,7 +450,7 @@ def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0,
                  SystemSoftware=0, SystemHardware=0, TelecomOper=0, Network=0,
                  ScreenWidth=0, ScreenHight=0, Density=0, LoginChannel=0,
                  UUID=0, CpuHardware=0, Memory=0, GLRender=0,
-                 GLVersion=0, DeviceId=0):
+                 GLVersion=0, DeviceId=0, IP=0):
 
     message = ['PlayerLogin']
 
@@ -475,6 +476,7 @@ def player_login(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0, OpenID=0,
     message.append(GLRender)
     message.append(GLVersion)
     message.append(DeviceId)
+    message.append(IP)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
